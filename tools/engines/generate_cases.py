@@ -41,6 +41,13 @@ def log_uniform(rng, lo, hi):
     return int(round(math.exp(rng.uniform(math.log(lo), math.log(hi)))))
 
 
+def saver_answers(person):
+    """Form 8880: no retirement contributions or distributions in other years, and no screen fired."""
+    return {f"{person}.sav_born": True, f"{person}.sav_student": False, f"{person}.sav_claimed": False, f"{person}.sav_trad": False,
+            f"{person}.sav_able": False, f"{person}.sav_roth": 0, f"{person}.sav_excess": False, f"{person}.sav_voluntary": 0,
+            f"{person}.sav_prior_joint": 0, f"{person}.sav_prior_other": 0}
+
+
 def gen_case(rng, i):
     inputs = {
         "f1040.status": "single", "$person": ["taxpayer"], "person[taxpayer].role": "taxpayer", "person[taxpayer].rrta": False,
@@ -50,6 +57,7 @@ def gen_case(rng, i):
         "sd.other_forms": False, "sd.carryover": False,
         "qbi.unsupported": False,
         "qbi.carryforward": 0,
+        "f5695.part1_any": False, "f5695.part2_any": False,
         "$sc@person[taxpayer]": [],
         "f4952.line4g": 0, "f4952.carryover": False, "f4952.unsupported": False, "f4952.alternative_allocation": False,
         "f8959.unsupported": False, "f8960.unsupported": False, "f8960.refund": False, "f8960.allocated_taxes": 0,
@@ -65,7 +73,10 @@ def gen_case(rng, i):
         # nobody's qualifying child, with no tax-exempt interest.
         "f1040.tax_exempt_interest": 0, "div.box12": 0, "eic.qc_of_another": False, "person[taxpayer].born_before_2001": True, "person[taxpayer].born_after_1960": True, "eic.us_home": True, "eic.married": False,
         "$retirement": [],
+        # Form 2441: no care expenses and no dependent care benefits.
+        "f2441.care": False, "f2441.benefits": False,
     }
+    inputs.update(saver_answers(TAXPAYER))
     facts = {}
     features = set()
 
@@ -86,6 +97,7 @@ def gen_case(rng, i):
     for k, e in enumerate(employers):
         for box, v in e.items():
             inputs[f"person[taxpayer].w2[emp_{chr(97 + k)}].{box}"] = v
+        inputs[f"person[taxpayer].w2[emp_{chr(97 + k)}].box12_any"] = False
     facts.update(wages=wages, withheld=withheld, medicare_wages=medicare_wages)
     if n_emp == 2 and sum(e["box3"] for e in employers) > WAGE_BASE:
         features.add("excess_social_security")
@@ -271,6 +283,7 @@ def make_joint(case, j):
                    f"{SPOUSE}.age65": age >= 66, f"{SPOUSE}.blind": False, f"{SPOUSE}.born_before_2001": True,
                    f"{SPOUSE}.born_after_1960": age < 66, f"{SPOUSE}.educator_expenses": 0,
                    f"$tipjob@{SPOUSE}": [], f"$otjob@{SPOUSE}": [], f"$f8889@{SPOUSE}": [], f"$sc@{SPOUSE}": []})
+    inputs.update(saver_answers(SPOUSE))
     if age >= 66:
         inputs[f"{SPOUSE}.died_before_65"] = False; features.add("spouse_senior")
     n_emp = 0 if r.random() < 0.3 else (1 if r.random() < 0.6 else 2)
@@ -283,6 +296,7 @@ def make_joint(case, j):
         e = {"box1": w, "box2": rate(w, (r.randint(8, 25), 100)), "box3": box3, "box4": rate(box3, SS_RATE), "box5": w,
              "box6": rate(w, MEDICARE_RATE) + (rate(w - ADDL_MEDICARE_START, ADDL_MEDICARE_RATE) if w > ADDL_MEDICARE_START else 0), "box7": 0}
         for box, v in e.items(): inputs[f"{SPOUSE}.w2[{k}].{box}"] = v
+        inputs[f"{SPOUSE}.w2[{k}].box12_any"] = False
         wages += w; medicare += w; withheld += e["box2"]; box3s.append(box3)
     if n_emp == 2 and sum(box3s) > WAGE_BASE:
         features.add("excess_social_security")

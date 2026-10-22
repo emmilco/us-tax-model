@@ -164,10 +164,9 @@
   {
    "id": "cdcc",
    "group": "other_credits",
-   "gates": [
-    "scope.credits"
-   ],
-   "label": "Child and dependent care credit",
+   "gates": [],
+   "refused": false,
+   "label": "Child and dependent care credit (supported since Stage 15; its remaining refusals are unmeasured gates)",
    "micro": {
     "positive": [
      "cdcc"
@@ -187,10 +186,9 @@
   {
    "id": "savers",
    "group": "other_credits",
-   "gates": [
-    "scope.credits"
-   ],
-   "label": "Saver's credit",
+   "gates": [],
+   "refused": false,
+   "label": "Saver's credit (supported since Stage 15; its remaining refusals are unmeasured gates)",
    "irs": {
     "combine": "sum",
     "cells": [
@@ -206,10 +204,9 @@
   {
    "id": "energy",
    "group": "other_credits",
-   "gates": [
-    "scope.credits"
-   ],
-   "label": "Residential energy credits",
+   "gates": [],
+   "refused": false,
+   "label": "Residential energy credits (supported since Stage 15; its remaining refusals are unmeasured gates)",
    "irs": {
     "combine": "max",
     "cells": [

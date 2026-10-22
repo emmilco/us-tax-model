@@ -4,17 +4,17 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 
 | Property | Statement | Cases | Applicable | Result |
 | --- | --- | --- | --- | --- |
-| sdtw_skip_rule | Computing lines 23–43 of the Schedule D Tax Worksheet unconditionally gives the same lines 45, 47 and Form 1040 line 16 as skipping them, and every skipped component of line 41 and line 45 is zero when computed anyway. | 400 | 137 | holds |
-| tax_bounds | Form 1040 line 16 is non-negative, at most the top rate (37/100) on taxable income plus one Tax Table band ($50), and at most the tax on all taxable income from the Tax Table or Tax Computation Worksheet. | 400 | 137 | holds |
-| deduction_choice | With no election to itemize and no spouse itemizing, Form 1040 line 16 under the project's standard-or-itemized choice is at most line 16 under either deduction forced. | 400 | 135 | holds |
-| refusal_propagates | No line computes a value from an operand that is a refusal; every line evaluated from a refused operand is a refusal. | 400 | 344 | holds |
-| tax_monotone | Raising W-2 box 1 of the first employer, all else fixed, never lowers Form 1040 line 16. | 400 | 135 | holds |
-| tax_monotone_by_method | Raising W-2 box 1 of the first employer, all else fixed, never lowers the Qualified Dividends and Capital Gain Tax Worksheet line 25 or the Schedule D Tax Worksheet line 47, each where it is computed on both returns. | 400 | 135 | holds |
+| sdtw_skip_rule | Computing lines 23–43 of the Schedule D Tax Worksheet unconditionally gives the same lines 45, 47 and Form 1040 line 16 as skipping them, and every skipped component of line 41 and line 45 is zero when computed anyway. | 400 | 140 | holds |
+| tax_bounds | Form 1040 line 16 is non-negative, at most the top rate (37/100) on taxable income plus one Tax Table band ($50), and at most the tax on all taxable income from the Tax Table or Tax Computation Worksheet. | 400 | 139 | holds |
+| deduction_choice | With no election to itemize and no spouse itemizing, Form 1040 line 16 under the project's standard-or-itemized choice is at most line 16 under either deduction forced. | 400 | 138 | holds |
+| refusal_propagates | No line computes a value from an operand that is a refusal; every line evaluated from a refused operand is a refusal. | 400 | 346 | holds |
+| tax_monotone | Raising W-2 box 1 of the first employer, all else fixed, never lowers Form 1040 line 16. | 400 | 139 | holds |
+| tax_monotone_by_method | Raising W-2 box 1 of the first employer, all else fixed, never lowers the Qualified Dividends and Capital Gain Tax Worksheet line 25 or the Schedule D Tax Worksheet line 47, each where it is computed on both returns. | 400 | 140 | holds |
 
 ## sdtw_skip_rule
 
 - Rewritten lines (skip rule removed in the variant): 21 — 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43.
-- Cases where Form 1040 line 16 came from this worksheet: 137. Cases with lines 1 and 16 equal (lines 23–43 skipped): 76; lines 1 and 32 equal with lines 1 and 16 different (lines 33–43 skipped): 7; Schedule D line 19 zero after line 32 (lines 35–40 skipped): 50; lines 41–43 skipped after line 32: 1.
+- Cases where Form 1040 line 16 came from this worksheet: 139. Cases with lines 1 and 16 equal (lines 23–43 skipped): 94; lines 1 and 32 equal with lines 1 and 16 different (lines 33–43 skipped): 9; Schedule D line 19 zero after line 32 (lines 35–40 skipped): 29; lines 41–43 skipped after line 32: 7.
 
 ## deduction_choice
 
@@ -26,11 +26,11 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 
 ## tax_monotone_by_method
 
-- Cases compared: QDCG worksheet line 25 135, Schedule D Tax Worksheet line 47 135.
+- Cases compared: QDCG worksheet line 25 140, Schedule D Tax Worksheet line 47 140.
 
 ## Branch coverage of the generated corpus
 
-1444 of 1524 branches (choose guards, Bool lines both ways, floor and positive sides of subtract_floor0, left and right of smaller_of and larger_of) reached by the 400 generated returns. Unreached:
+1766 of 1901 branches (choose guards, Bool lines both ways, floor and positive sides of subtract_floor0, left and right of smaller_of and larger_of) reached by the 400 generated returns. Unreached:
 
 - asset.outside:true
 - asset.screen:true
@@ -41,28 +41,67 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - asset.bonus_same:false
 - asset.bonus_mixed:true
 - asset.ub_prior_a:floor
-- carloan.requirements:false
+- carloan.mixed_qualifying:floor
+- dcprov.household:true
+- dcprov.related:true
+- dcprov.see_statement:true
+- dependent.dc_under13:false
+- dependent.dc_no_tin:true
+- dependent.dc_line2c:true
 - eic.step1_foreign:false
 - eic.step1_resident:false
 - eic.step2_other:false
+- eic.step3_married:false
 - eic.wsb_line5_stop:true
 - eic.clergy:true
-- f1040.line6d:true
 - f1040.line27b:true
+- f2441.nondependent_gate:true
+- f2441.provider_ineligible:true
+- f2441.line1_box:true
+- f2441.statement_notice:true
+- f2441.household_notice:true
+- f2441.line2_box:true
+- f2441.two_or_more:true
+- f2441.limit#0
+- f2441.line3_expenses:right
+- f2441.attrib_gate:true
+- f2441.line6:positive
+- f2441.line11:right
+- f2441.line20:positive
+- f2441.line21:left
+- f2441.line24_20_21:right
+- f2441.line24:right
+- f2441.line25:positive
+- f2441.line29:floor
+- f2441.line31:left
+- f5695.ctc#0
+- f5695.line15:right
+- f5695.line16:positive
+- f5695.ac_no_qmid:true
+- f5695.wh_no_qmid:true
+- f5695.furnace_no_qmid:true
+- f5695.enabling_no_qmid:true
+- f5695.line28:right
+- f5695.hp_capped:right
+- f5695.separate_homes_joint:true
 - f8889.bad_months:true
 - f8889.line13_figured:right
 - f8959.line16:positive
 - f8960.bad_allocation:true
 - household.roster_ok:false
 - household.roster_bad:true
-- otjob.figured#4
+- otjob.flsa:false
 - otjob.figured#5
+- otjob.col_b#0
 - person.itin_applied:true
 - person.hsa_repeated:true
 - person.sep_s7:right
 - person.sep_s21:right
 - person.ne_comp:right
+- qdcg.line14:right
+- qdcg.line17:right
 - qdcg.line25:right
+- retirement.sav_404k:true
 - s1.ebl:true
 - s1.sc_1a:true
 - s179.line4:positive
@@ -70,15 +109,18 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - s179.line9:left
 - s179.line11:right
 - s1a.line4c_one:right
-- s1a.line18_over:true
-- s1a.line18_pos:positive
-- s1a.line21_amount#1
-- s1a.line24_calc:right
-- s1a.spouse_died_before_65:true
-- s1a.spouse_senior_decedent:true
+- s1a.line27_over:true
+- s1a.line27_pos:positive
+- s1a.line30_figured:positive
+- s1a.line30_amount#1
+- s8812.clw_a4#0
 - s8812.few_children:false
 - s8812.line27#1
-- sa.standard#0
+- s8812.clwb_complete:true
+- s8812.clwb_three:true
+- s8812.clwb_11#0
+- s8812.clwb_12:right
+- sa.saltremaining:floor
 - sales.special:true
 - sc.statutory:true
 - sc.passive:false
@@ -88,6 +130,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - sc.screened:true
 - sc.ho_other:true
 - sc.ho_screened:true
+- sc.ho_multi:true
 - sc.at_risk:false
 - sc.not_at_risk:true
 - sc.inventory_other:true
@@ -106,9 +149,21 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - scveh.bonus_mixed:true
 - scveh.s179_line10:right
 - scveh.line11:floor
+- scveh.line15:floor
+- scveh.b100:floor
 - scveh.d6:left
 - scveh.too_old:true
 - sd.screen:true
-- sdtw.raw39:positive
+- sdtw.raw30:right
 - sdtw.line47:right
+- tipjob.qualified:false
+- tipjob.mixed:true
 - tipjob.col_d:right
+- w2.box10_bad:true
+- w2.box12_userra:true
+- w2.has_g:true
+- w2.g_governmental:true
+- w2.g_bad:true
+- w2.g_gov_part#0
+- w2.g_counted#0
+- w2.code_h:true

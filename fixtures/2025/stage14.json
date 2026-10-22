@@ -155,7 +155,21 @@
         "$ltc@person[taxpayer].sc[shop]": [],
         "person[taxpayer].se_screen": false,
         "person[taxpayer].plan": "none",
-        "s179.line10": 0
+        "s179.line10": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[shop].line3": {
@@ -374,7 +388,21 @@
         "$ltc@person[taxpayer].sc[shop]": [],
         "person[taxpayer].se_screen": false,
         "person[taxpayer].plan": "none",
-        "s179.line10": 0
+        "s179.line10": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[shop].line24b": {
@@ -565,7 +593,21 @@
         "$ltc@person[taxpayer].sc[odd]": [],
         "person[taxpayer].se_screen": false,
         "person[taxpayer].plan": "none",
-        "s179.line10": 0
+        "s179.line10": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[odd].line31": {
@@ -750,7 +792,22 @@
         "$ltc@person[taxpayer].sc[side]": [],
         "person[taxpayer].se_screen": false,
         "person[taxpayer].plan": "none",
-        "s179.line10": 0
+        "s179.line10": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[big].box12_any": false
       },
       "expect": {
         "person[taxpayer].se_line6": {
@@ -930,7 +987,22 @@
         "$ltc@person[taxpayer].sc[side]": [],
         "person[taxpayer].se_screen": false,
         "person[taxpayer].plan": "none",
-        "s179.line10": 0
+        "s179.line10": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[job].box12_any": false
       },
       "expect": {
         "person[taxpayer].se_line12": {
@@ -1104,7 +1176,22 @@
         "$ltc@person[taxpayer].sc[new]": [],
         "person[taxpayer].se_screen": false,
         "person[taxpayer].plan": "none",
-        "s179.line10": 0
+        "s179.line10": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[job].box12_any": false
       },
       "expect": {
         "person[taxpayer].sc[new].line31": {
@@ -1291,7 +1378,21 @@
         "$ltc@person[taxpayer].sc[shop]": [],
         "person[taxpayer].se_screen": false,
         "person[taxpayer].plan": "none",
-        "s179.line10": 0
+        "s179.line10": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].se_line12": {
@@ -1469,7 +1570,21 @@
         "$ltc@person[taxpayer].sc[home]": [],
         "person[taxpayer].se_screen": false,
         "person[taxpayer].plan": "none",
-        "s179.line10": 0
+        "s179.line10": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[home].ho_line4": {
@@ -1687,7 +1802,21 @@
         "person[taxpayer].sc[shop].ho_home_sqft": 2000,
         "$scveh@person[taxpayer].sc[shop]": [],
         "$asset@person[taxpayer].sc[shop]": [],
-        "$ltc@person[taxpayer].sc[shop]": []
+        "$ltc@person[taxpayer].sc[shop]": [],
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[home].line30": {
@@ -1919,7 +2048,21 @@
         "person[taxpayer].sc[shop].ho_home_sqft": 2000,
         "$scveh@person[taxpayer].sc[shop]": [],
         "$asset@person[taxpayer].sc[shop]": [],
-        "$ltc@person[taxpayer].sc[shop]": []
+        "$ltc@person[taxpayer].sc[shop]": [],
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[home].line30": {
@@ -2093,7 +2236,21 @@
         "$ltc@person[taxpayer].sc[home]": [],
         "person[taxpayer].se_screen": false,
         "person[taxpayer].plan": "none",
-        "s179.line10": 0
+        "s179.line10": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[home].ho_line4": {
@@ -2263,7 +2420,21 @@
         "$ltc@person[taxpayer].sc[home]": [],
         "person[taxpayer].se_screen": false,
         "person[taxpayer].plan": "none",
-        "s179.line10": 0
+        "s179.line10": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[home].ho_line4": {
@@ -2433,7 +2604,21 @@
         "$ltc@person[taxpayer].sc[home]": [],
         "person[taxpayer].se_screen": false,
         "person[taxpayer].plan": "none",
-        "s179.line10": 0
+        "s179.line10": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[home].line30": {
@@ -2630,7 +2815,21 @@
         "person[taxpayer].sc[home].asset[desk].s179": 100000,
         "person[taxpayer].sc[home].asset[desk].after_jan19": true,
         "person[taxpayer].sc[home].asset[desk].bonus_choice": "none",
-        "person[taxpayer].sc[home].asset[desk].bonus_same": true
+        "person[taxpayer].sc[home].asset[desk].bonus_same": true,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[home].line30": {
@@ -2809,7 +3008,21 @@
         "person[taxpayer].sc[van].scveh[car].miles_commuting": 2000,
         "person[taxpayer].sc[van].scveh[car].miles_other": 3000,
         "person[taxpayer].sc[van].scveh[car].parking": 15000,
-        "person[taxpayer].sc[van].scveh[car].smr_ok": true
+        "person[taxpayer].sc[van].scveh[car].smr_ok": true,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[van].scveh[car].line9": {
@@ -2999,7 +3212,21 @@
         "person[taxpayer].sc[rides].scveh[car].prior_179": 0,
         "person[taxpayer].sc[rides].scveh[car].prior_conv": "hy",
         "person[taxpayer].sc[rides].scveh[car].placed": "y2025",
-        "person[taxpayer].sc[rides].scveh[car].cost": 4000000
+        "person[taxpayer].sc[rides].scveh[car].cost": 4000000,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[rides].scveh[car].line9": {
@@ -3197,7 +3424,21 @@
         "person[taxpayer].sc[rides].scveh[car].prior_179": 0,
         "person[taxpayer].sc[rides].scveh[car].prior_conv": "hy",
         "person[taxpayer].sc[rides].scveh[car].placed": "y2025",
-        "person[taxpayer].sc[rides].scveh[car].cost": 3000000
+        "person[taxpayer].sc[rides].scveh[car].cost": 3000000,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "mq.applies": {
@@ -3389,7 +3630,21 @@
         "person[taxpayer].sc[rides].scveh[car].prior_179": 0,
         "person[taxpayer].sc[rides].scveh[car].prior_conv": "hy",
         "person[taxpayer].sc[rides].scveh[car].placed": "y2023",
-        "person[taxpayer].sc[rides].scveh[car].cost": 2500000
+        "person[taxpayer].sc[rides].scveh[car].cost": 2500000,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[rides].scveh[car].line7": {
@@ -3581,7 +3836,21 @@
         "person[taxpayer].sc[rides].scveh[car].prior_179": 0,
         "person[taxpayer].sc[rides].scveh[car].prior_conv": "hy",
         "person[taxpayer].sc[rides].scveh[car].placed": "y2019",
-        "person[taxpayer].sc[rides].scveh[car].cost": 8000000
+        "person[taxpayer].sc[rides].scveh[car].cost": 8000000,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[rides].scveh[car].d_total": {
@@ -3775,7 +4044,21 @@
         "person[taxpayer].sc[haul].scveh[suv].prior_179": 0,
         "person[taxpayer].sc[haul].scveh[suv].prior_conv": "hy",
         "person[taxpayer].sc[haul].scveh[suv].placed": "y2025",
-        "person[taxpayer].sc[haul].scveh[suv].cost": 7000000
+        "person[taxpayer].sc[haul].scveh[suv].cost": 7000000,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[haul].scveh[suv].line16": {
@@ -3964,7 +4247,21 @@
         "person[taxpayer].sc[haul].scveh[suv].prior_179": 0,
         "person[taxpayer].sc[haul].scveh[suv].prior_conv": "hy",
         "person[taxpayer].sc[haul].scveh[suv].placed": "y2025",
-        "person[taxpayer].sc[haul].scveh[suv].cost": 7000000
+        "person[taxpayer].sc[haul].scveh[suv].cost": 7000000,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[haul].scveh[suv].s179_2025_ok": {
@@ -4154,7 +4451,21 @@
         "person[taxpayer].sc[rides].scveh[car].prior_179": 0,
         "person[taxpayer].sc[rides].scveh[car].prior_conv": "hy",
         "person[taxpayer].sc[rides].scveh[car].placed": "y2025",
-        "person[taxpayer].sc[rides].scveh[car].cost": 4000000
+        "person[taxpayer].sc[rides].scveh[car].cost": 4000000,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[rides].scveh[car].placed": {
@@ -4346,7 +4657,21 @@
         "person[taxpayer].sc[rides].scveh[car].prior_conv": "hy",
         "person[taxpayer].sc[rides].scveh[car].placed": "y2025",
         "person[taxpayer].sc[rides].scveh[car].cost": 4000000,
-        "person[taxpayer].sc[rides].scveh[car].lease": 600000
+        "person[taxpayer].sc[rides].scveh[car].lease": 600000,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[rides].scveh[car].line9": {
@@ -4530,7 +4855,21 @@
         "person[taxpayer].sc[desk].asset[pc].bonus_same": true,
         "person[taxpayer].sc[desk].asset[pc].prior_conv": "hy",
         "person[taxpayer].sc[desk].asset[pc].prior_179": 0,
-        "person[taxpayer].sc[desk].asset[pc].prior_bonus": 0
+        "person[taxpayer].sc[desk].asset[pc].prior_bonus": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[desk].asset[pc].macrs2025": {
@@ -4714,7 +5053,21 @@
         "person[taxpayer].sc[desk].asset[sofa].bonus_same": true,
         "person[taxpayer].sc[desk].asset[sofa].prior_conv": "hy",
         "person[taxpayer].sc[desk].asset[sofa].prior_179": 0,
-        "person[taxpayer].sc[desk].asset[sofa].prior_bonus": 0
+        "person[taxpayer].sc[desk].asset[sofa].prior_bonus": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "mq.applies": {
@@ -4909,7 +5262,21 @@
         "person[taxpayer].sc[desk].asset[sofa].bonus_same": true,
         "person[taxpayer].sc[desk].asset[sofa].prior_conv": "hy",
         "person[taxpayer].sc[desk].asset[sofa].prior_179": 0,
-        "person[taxpayer].sc[desk].asset[sofa].prior_bonus": 0
+        "person[taxpayer].sc[desk].asset[sofa].prior_bonus": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "mq.applies": {
@@ -5108,7 +5475,21 @@
         "person[taxpayer].sc[desk].asset[sofa].bonus_same": true,
         "person[taxpayer].sc[desk].asset[sofa].prior_conv": "hy",
         "person[taxpayer].sc[desk].asset[sofa].prior_179": 0,
-        "person[taxpayer].sc[desk].asset[sofa].prior_bonus": 0
+        "person[taxpayer].sc[desk].asset[sofa].prior_bonus": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "mq.applies": {
@@ -5291,7 +5672,21 @@
         "person[taxpayer].sc[desk].asset[saw].bonus_same": true,
         "person[taxpayer].sc[desk].asset[saw].prior_conv": "hy",
         "person[taxpayer].sc[desk].asset[saw].prior_179": 0,
-        "person[taxpayer].sc[desk].asset[saw].prior_bonus": 0
+        "person[taxpayer].sc[desk].asset[saw].prior_bonus": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[desk].asset[saw].bonus": {
@@ -5478,7 +5873,21 @@
         "person[taxpayer].sc[desk].asset[pc].bonus_same": true,
         "person[taxpayer].sc[desk].asset[pc].prior_conv": "hy",
         "person[taxpayer].sc[desk].asset[pc].prior_179": 0,
-        "person[taxpayer].sc[desk].asset[pc].prior_bonus": 0
+        "person[taxpayer].sc[desk].asset[pc].prior_bonus": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[desk].asset[pc].bonus": {
@@ -5661,7 +6070,21 @@
         "person[taxpayer].sc[desk].asset[pc].bonus_same": true,
         "person[taxpayer].sc[desk].asset[pc].prior_conv": "hy",
         "person[taxpayer].sc[desk].asset[pc].prior_179": 0,
-        "person[taxpayer].sc[desk].asset[pc].prior_bonus": 0
+        "person[taxpayer].sc[desk].asset[pc].prior_bonus": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[desk].asset[pc].bonus": {
@@ -5841,7 +6264,21 @@
         "person[taxpayer].sc[desk].asset[saw].bonus_same": true,
         "person[taxpayer].sc[desk].asset[saw].prior_conv": "hy",
         "person[taxpayer].sc[desk].asset[saw].prior_179": 0,
-        "person[taxpayer].sc[desk].asset[saw].prior_bonus": 0
+        "person[taxpayer].sc[desk].asset[saw].prior_bonus": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[desk].asset[saw].macrs2025": {
@@ -6028,7 +6465,21 @@
         "person[taxpayer].sc[desk].asset[saw].bonus_same": true,
         "person[taxpayer].sc[desk].asset[saw].prior_conv": "hy",
         "person[taxpayer].sc[desk].asset[saw].prior_179": 0,
-        "person[taxpayer].sc[desk].asset[saw].prior_bonus": 0
+        "person[taxpayer].sc[desk].asset[saw].prior_bonus": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "s179.line11": {
@@ -6228,7 +6679,22 @@
         "person[taxpayer].sc[desk].asset[saw].bonus_same": true,
         "person[taxpayer].sc[desk].asset[saw].prior_conv": "hy",
         "person[taxpayer].sc[desk].asset[saw].prior_179": 0,
-        "person[taxpayer].sc[desk].asset[saw].prior_bonus": 0
+        "person[taxpayer].sc[desk].asset[saw].prior_bonus": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[job].box12_any": false
       },
       "expect": {
         "s179.line11": {
@@ -6403,7 +6869,21 @@
         "$ltc@person[taxpayer].sc[desk]": [],
         "person[taxpayer].se_screen": false,
         "person[taxpayer].plan": "none",
-        "s179.line10": 300000
+        "s179.line10": 300000,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "s179.line1": {
@@ -6639,7 +7119,21 @@
         "person[taxpayer].sc[shop].tips_ot": false,
         "$scveh@person[taxpayer].sc[shop]": [],
         "$asset@person[taxpayer].sc[shop]": [],
-        "$ltc@person[taxpayer].sc[shop]": []
+        "$ltc@person[taxpayer].sc[shop]": [],
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[desk].s179_allowed": {
@@ -6836,7 +7330,21 @@
         "person[taxpayer].sc[desk].asset[saw].bonus_same": true,
         "person[taxpayer].sc[desk].asset[saw].prior_conv": "hy",
         "person[taxpayer].sc[desk].asset[saw].prior_179": 0,
-        "person[taxpayer].sc[desk].asset[saw].prior_bonus": 0
+        "person[taxpayer].sc[desk].asset[saw].prior_bonus": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[desk].asset[saw].macrs_prior": {
@@ -7019,7 +7527,21 @@
         "person[taxpayer].sc[desk].asset[saw].bonus_same": true,
         "person[taxpayer].sc[desk].asset[saw].prior_conv": "hy",
         "person[taxpayer].sc[desk].asset[saw].prior_179": 1000000,
-        "person[taxpayer].sc[desk].asset[saw].prior_bonus": 0
+        "person[taxpayer].sc[desk].asset[saw].prior_bonus": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[desk].asset[saw].ub_prior_a": {
@@ -7206,7 +7728,21 @@
         "person[taxpayer].sc[desk].asset[pc].bonus_same": true,
         "person[taxpayer].sc[desk].asset[pc].prior_conv": "hy",
         "person[taxpayer].sc[desk].asset[pc].prior_179": 0,
-        "person[taxpayer].sc[desk].asset[pc].prior_bonus": 2000000
+        "person[taxpayer].sc[desk].asset[pc].prior_bonus": 2000000,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[desk].asset[pc].macrs_prior": {
@@ -7381,7 +7917,21 @@
         "person[taxpayer].sc[desk].asset[pc].bonus_same": true,
         "person[taxpayer].sc[desk].asset[pc].prior_conv": "mq3",
         "person[taxpayer].sc[desk].asset[pc].prior_179": 0,
-        "person[taxpayer].sc[desk].asset[pc].prior_bonus": 0
+        "person[taxpayer].sc[desk].asset[pc].prior_bonus": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[desk].asset[pc].macrs_prior": {
@@ -7556,7 +8106,21 @@
         "person[taxpayer].sc[desk].asset[fitout].bonus_same": true,
         "person[taxpayer].sc[desk].asset[fitout].prior_conv": "hy",
         "person[taxpayer].sc[desk].asset[fitout].prior_179": 0,
-        "person[taxpayer].sc[desk].asset[fitout].prior_bonus": 0
+        "person[taxpayer].sc[desk].asset[fitout].prior_bonus": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[desk].asset[fitout].macrs2025": {
@@ -7735,7 +8299,21 @@
         "person[taxpayer].sc[desk].asset[pc].bonus_same": true,
         "person[taxpayer].sc[desk].asset[pc].prior_conv": "hy",
         "person[taxpayer].sc[desk].asset[pc].prior_179": 0,
-        "person[taxpayer].sc[desk].asset[pc].prior_bonus": 0
+        "person[taxpayer].sc[desk].asset[pc].prior_bonus": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[desk].asset[pc].macrs_prior": {
@@ -7910,7 +8488,21 @@
         "person[taxpayer].sc[desk].asset[cam].bonus_same": true,
         "person[taxpayer].sc[desk].asset[cam].prior_conv": "hy",
         "person[taxpayer].sc[desk].asset[cam].prior_179": 0,
-        "person[taxpayer].sc[desk].asset[cam].prior_bonus": 0
+        "person[taxpayer].sc[desk].asset[cam].prior_bonus": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[desk].asset[cam].dep_listed": {
@@ -8097,7 +8689,21 @@
         "person[taxpayer].sc[desk].asset[cows].bonus_same": true,
         "person[taxpayer].sc[desk].asset[cows].prior_conv": "hy",
         "person[taxpayer].sc[desk].asset[cows].prior_179": 0,
-        "person[taxpayer].sc[desk].asset[cows].prior_bonus": 0
+        "person[taxpayer].sc[desk].asset[cows].prior_bonus": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[desk].asset[cows].cost": {
@@ -8269,7 +8875,21 @@
         "s179.line10": 0,
         "person[taxpayer].plan_screen": false,
         "person[taxpayer].sep_rate": 25,
-        "person[taxpayer].sep_contrib": 1800000
+        "person[taxpayer].sep_contrib": 1800000,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sep_s5": {
@@ -8439,7 +9059,21 @@
         "s179.line10": 0,
         "person[taxpayer].plan_screen": false,
         "person[taxpayer].sep_rate": 25,
-        "person[taxpayer].sep_contrib": 1900000
+        "person[taxpayer].sep_contrib": 1900000,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sep_deduction": {
@@ -8612,7 +9246,21 @@
         "person[taxpayer].simple_deferral": 1800000,
         "person[taxpayer].simple_age": "age50",
         "person[taxpayer].simple_kind": "match",
-        "person[taxpayer].simple_employer": 166230
+        "person[taxpayer].simple_employer": 166230,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].simple_comp": {
@@ -8784,7 +9432,21 @@
         "person[taxpayer].simple_deferral": 2175000,
         "person[taxpayer].simple_age": "age60_63",
         "person[taxpayer].simple_kind": "nonelective",
-        "person[taxpayer].simple_employer": 110820
+        "person[taxpayer].simple_employer": 110820,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].catchup_max": {
@@ -8956,7 +9618,21 @@
         "person[taxpayer].simple_deferral": 1800000,
         "person[taxpayer].simple_age": "under50",
         "person[taxpayer].simple_kind": "match",
-        "person[taxpayer].simple_employer": 0
+        "person[taxpayer].simple_employer": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].simple_deduction": {
@@ -9128,7 +9804,21 @@
         "$ltc@person[taxpayer].sc[firm]": [],
         "person[taxpayer].se_screen": false,
         "person[taxpayer].plan": "none",
-        "s179.line10": 0
+        "s179.line10": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[firm].f7206_line14": {
@@ -9297,7 +9987,21 @@
         "$ltc@person[taxpayer].sc[firm]": [],
         "person[taxpayer].se_screen": false,
         "person[taxpayer].plan": "none",
-        "s179.line10": 0
+        "s179.line10": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[firm].f7206_line14": {
@@ -9466,7 +10170,21 @@
         "person[taxpayer].sc[firm].ltc[mom].payments": 250000,
         "person[taxpayer].sc[firm].ltc[mom].age": "to60",
         "person[taxpayer].sc[firm].ltc[dad].payments": 300000,
-        "person[taxpayer].sc[firm].ltc[dad].age": "over70"
+        "person[taxpayer].sc[firm].ltc[dad].age": "over70",
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[firm].f7206_line2": {
@@ -9677,7 +10395,21 @@
         "person[taxpayer].sc[side].tips_ot": false,
         "$scveh@person[taxpayer].sc[side]": [],
         "$asset@person[taxpayer].sc[side]": [],
-        "$ltc@person[taxpayer].sc[side]": []
+        "$ltc@person[taxpayer].sc[side]": [],
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[main].f7206_line7": {
@@ -9850,7 +10582,21 @@
         "$ltc@person[taxpayer].sc[firm]": [],
         "person[taxpayer].se_screen": false,
         "person[taxpayer].plan": "none",
-        "s179.line10": 0
+        "s179.line10": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[firm].f7206_line1": {
@@ -10092,7 +10838,31 @@
         "$asset@person[spouse].sc[s]": [],
         "$ltc@person[spouse].sc[s]": [],
         "person[spouse].se_screen": false,
-        "person[spouse].plan": "none"
+        "person[spouse].plan": "none",
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[spouse].sav_born": true,
+        "person[spouse].sav_student": false,
+        "person[spouse].sav_claimed": false,
+        "person[spouse].sav_trad": false,
+        "person[spouse].sav_able": false,
+        "person[spouse].sav_roth": 0,
+        "person[spouse].sav_excess": false,
+        "person[spouse].sav_voluntary": 0,
+        "person[spouse].sav_prior_joint": 0,
+        "person[spouse].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].se_line12": {
@@ -10287,7 +11057,32 @@
         "$ltc@person[taxpayer].sc[t]": [],
         "person[taxpayer].se_screen": false,
         "person[taxpayer].plan": "none",
-        "s179.line10": 0
+        "s179.line10": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[spouse].sav_born": true,
+        "person[spouse].sav_student": false,
+        "person[spouse].sav_claimed": false,
+        "person[spouse].sav_trad": false,
+        "person[spouse].sav_able": false,
+        "person[spouse].sav_roth": 0,
+        "person[spouse].sav_excess": false,
+        "person[spouse].sav_voluntary": 0,
+        "person[spouse].sav_prior_joint": 0,
+        "person[spouse].sav_prior_other": 0,
+        "person[spouse].w2[job].box12_any": false
       },
       "expect": {
         "person[taxpayer].se_line12": {
@@ -10446,7 +11241,21 @@
         "$ltc@person[taxpayer].sc[b]": [],
         "person[taxpayer].se_screen": false,
         "person[taxpayer].plan": "none",
-        "s179.line10": 0
+        "s179.line10": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[b].line1": {
@@ -10627,7 +11436,21 @@
         "$ltc@person[taxpayer].sc[b]": [],
         "person[taxpayer].se_screen": false,
         "person[taxpayer].plan": "none",
-        "s179.line10": 0
+        "s179.line10": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[b].line1": {
@@ -10808,7 +11631,21 @@
         "$ltc@person[taxpayer].sc[b]": [],
         "person[taxpayer].se_screen": false,
         "person[taxpayer].plan": "none",
-        "s179.line10": 0
+        "s179.line10": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[b].line1": {
@@ -10989,7 +11826,21 @@
         "$ltc@person[taxpayer].sc[b]": [],
         "person[taxpayer].se_screen": false,
         "person[taxpayer].plan": "none",
-        "s179.line10": 0
+        "s179.line10": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[b].line1": {
@@ -11170,7 +12021,21 @@
         "$ltc@person[taxpayer].sc[b]": [],
         "person[taxpayer].se_screen": false,
         "person[taxpayer].plan": "none",
-        "s179.line10": 0
+        "s179.line10": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[b].line1": {
@@ -11351,7 +12216,21 @@
         "$ltc@person[taxpayer].sc[b]": [],
         "person[taxpayer].se_screen": false,
         "person[taxpayer].plan": "none",
-        "s179.line10": 0
+        "s179.line10": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[b].loss_allowed": {
@@ -11532,7 +12411,21 @@
         "$ltc@person[taxpayer].sc[b]": [],
         "person[taxpayer].se_screen": false,
         "person[taxpayer].plan": "none",
-        "s179.line10": 0
+        "s179.line10": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[b].line35": {
@@ -11700,7 +12593,21 @@
         "$ltc@person[taxpayer].sc[b]": [],
         "person[taxpayer].se_screen": true,
         "person[taxpayer].plan": "none",
-        "s179.line10": 0
+        "s179.line10": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].se_line2": {
@@ -11890,7 +12797,22 @@
         "$ltc@person[taxpayer].sc[b]": [],
         "person[taxpayer].se_screen": false,
         "person[taxpayer].plan": "none",
-        "s179.line10": 0
+        "s179.line10": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[job].box12_any": false
       },
       "expect": {
         "s1.line3": {
@@ -12071,7 +12993,21 @@
         "$ltc@person[taxpayer].sc[b]": [],
         "person[taxpayer].se_screen": false,
         "person[taxpayer].plan": "none",
-        "s179.line10": 0
+        "s179.line10": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "qbi.via_8995a": {
@@ -12239,7 +13175,21 @@
         "$ltc@person[taxpayer].sc[b]": [],
         "person[taxpayer].se_screen": false,
         "person[taxpayer].plan": "none",
-        "s179.line10": 0
+        "s179.line10": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "s1a.line5_calc": {
@@ -12414,7 +13364,21 @@
         "$ltc@person[taxpayer].sc[odd]": [],
         "person[taxpayer].se_screen": false,
         "person[taxpayer].plan": "none",
-        "s179.line10": 0
+        "s179.line10": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "eic.wsb_4b": {
@@ -12601,7 +13565,22 @@
         "$ltc@person[taxpayer].sc[odd]": [],
         "person[taxpayer].se_screen": false,
         "person[taxpayer].plan": "none",
-        "s179.line10": 0
+        "s179.line10": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[job].box12_any": false
       },
       "expect": {
         "eic.wsb_4b": {
@@ -12799,7 +13778,21 @@
         "$ltc@person[taxpayer].sc[odd]": [],
         "person[taxpayer].se_screen": false,
         "person[taxpayer].plan": "none",
-        "s179.line10": 0
+        "s179.line10": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "eic.wsb_4b": {
@@ -12996,7 +13989,21 @@
         "person[taxpayer].sc[r].scveh[car].prior_179": 0,
         "person[taxpayer].sc[r].scveh[car].prior_conv": "hy",
         "person[taxpayer].sc[r].scveh[car].placed": "y2025",
-        "person[taxpayer].sc[r].scveh[car].cost": 4000000
+        "person[taxpayer].sc[r].scveh[car].cost": 4000000,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[r].scveh[car].cost": {
@@ -13181,7 +14188,21 @@
         "person[taxpayer].sc[r].scveh[car].prior_179": 0,
         "person[taxpayer].sc[r].scveh[car].prior_conv": "hy",
         "person[taxpayer].sc[r].scveh[car].placed": "y2017",
-        "person[taxpayer].sc[r].scveh[car].cost": 4000000
+        "person[taxpayer].sc[r].scveh[car].cost": 4000000,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[r].scveh[car].cost": {
@@ -13371,7 +14392,21 @@
         "person[taxpayer].sc[r].scveh[car].prior_179": 0,
         "person[taxpayer].sc[r].scveh[car].prior_conv": "hy",
         "person[taxpayer].sc[r].scveh[car].placed": "y2025",
-        "person[taxpayer].sc[r].scveh[car].cost": 4000000
+        "person[taxpayer].sc[r].scveh[car].cost": 4000000,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[r].scveh[car].bonus_full": {
@@ -13549,7 +14584,21 @@
         "person[taxpayer].sc[r].scveh[car].miles_commuting": 0,
         "person[taxpayer].sc[r].scveh[car].miles_other": 0,
         "person[taxpayer].sc[r].scveh[car].parking": 0,
-        "person[taxpayer].sc[r].scveh[car].smr_ok": false
+        "person[taxpayer].sc[r].scveh[car].smr_ok": false,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[r].scveh[car].smr_amount": {
@@ -13739,7 +14788,21 @@
         "person[taxpayer].sc[r].scveh[car].prior_179": 0,
         "person[taxpayer].sc[r].scveh[car].prior_conv": "hy",
         "person[taxpayer].sc[r].scveh[car].placed": "y2025",
-        "person[taxpayer].sc[r].scveh[car].cost": 4000000
+        "person[taxpayer].sc[r].scveh[car].cost": 4000000,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[r].scveh[car].bonus_forty": {
@@ -13923,7 +14986,21 @@
         "person[taxpayer].sc[d].asset[cam].bonus_same": true,
         "person[taxpayer].sc[d].asset[cam].prior_conv": "hy",
         "person[taxpayer].sc[d].asset[cam].prior_179": 0,
-        "person[taxpayer].sc[d].asset[cam].prior_bonus": 0
+        "person[taxpayer].sc[d].asset[cam].prior_bonus": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[d].asset[cam].basis": {
@@ -14107,7 +15184,21 @@
         "person[taxpayer].sc[d].asset[pc].bonus_same": true,
         "person[taxpayer].sc[d].asset[pc].prior_conv": "hy",
         "person[taxpayer].sc[d].asset[pc].prior_179": 0,
-        "person[taxpayer].sc[d].asset[pc].prior_bonus": 0
+        "person[taxpayer].sc[d].asset[pc].prior_bonus": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[d].asset[pc].after179": {
@@ -14291,7 +15382,21 @@
         "person[taxpayer].sc[d].asset[pc].bonus_same": true,
         "person[taxpayer].sc[d].asset[pc].prior_conv": "hy",
         "person[taxpayer].sc[d].asset[pc].prior_179": 0,
-        "person[taxpayer].sc[d].asset[pc].prior_bonus": 0
+        "person[taxpayer].sc[d].asset[pc].prior_bonus": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[d].asset[pc].after179": {
@@ -14466,7 +15571,21 @@
         "person[taxpayer].sc[d].asset[pc].bonus_same": true,
         "person[taxpayer].sc[d].asset[pc].prior_conv": "hy",
         "person[taxpayer].sc[d].asset[pc].prior_179": 0,
-        "person[taxpayer].sc[d].asset[pc].prior_bonus": 0
+        "person[taxpayer].sc[d].asset[pc].prior_bonus": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[d].asset[pc].after179": {
@@ -14650,7 +15769,21 @@
         "person[taxpayer].sc[d].asset[pc].bonus_same": false,
         "person[taxpayer].sc[d].asset[pc].prior_conv": "hy",
         "person[taxpayer].sc[d].asset[pc].prior_179": 0,
-        "person[taxpayer].sc[d].asset[pc].prior_bonus": 0
+        "person[taxpayer].sc[d].asset[pc].prior_bonus": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[d].asset[pc].bonus_full": {
@@ -14834,7 +15967,21 @@
         "person[taxpayer].sc[d].asset[pc].bonus_same": true,
         "person[taxpayer].sc[d].asset[pc].prior_conv": "hy",
         "person[taxpayer].sc[d].asset[pc].prior_179": 0,
-        "person[taxpayer].sc[d].asset[pc].prior_bonus": 0
+        "person[taxpayer].sc[d].asset[pc].prior_bonus": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[d].asset[pc].basis": {
@@ -15007,7 +16154,21 @@
         "person[taxpayer].simple_deferral": 1000000,
         "person[taxpayer].simple_age": "under50",
         "person[taxpayer].simple_kind": "match",
-        "person[taxpayer].simple_employer": 200000
+        "person[taxpayer].simple_employer": 200000,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].simple_deduction": {
@@ -15178,7 +16339,21 @@
         "s179.line10": 0,
         "person[taxpayer].plan_screen": true,
         "person[taxpayer].sep_rate": 10,
-        "person[taxpayer].sep_contrib": 100
+        "person[taxpayer].sep_contrib": 100,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sep_contrib": {
@@ -15368,7 +16543,21 @@
         "person[taxpayer].sc[r].scveh[car].prior_179": 0,
         "person[taxpayer].sc[r].scveh[car].prior_conv": "hy",
         "person[taxpayer].sc[r].scveh[car].placed": "y2025",
-        "person[taxpayer].sc[r].scveh[car].cost": 3000000
+        "person[taxpayer].sc[r].scveh[car].cost": 3000000,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[r].scveh[car].line9w": {
@@ -15557,7 +16746,21 @@
         "person[taxpayer].sc[r].scveh[car].prior_179": 0,
         "person[taxpayer].sc[r].scveh[car].prior_conv": "hy",
         "person[taxpayer].sc[r].scveh[car].placed": "y2025",
-        "person[taxpayer].sc[r].scveh[car].cost": 9000000
+        "person[taxpayer].sc[r].scveh[car].cost": 9000000,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[r].scveh[car].line10": {
@@ -15750,7 +16953,21 @@
         "person[taxpayer].sc[r].scveh[car].prior_179": 0,
         "person[taxpayer].sc[r].scveh[car].prior_conv": "hy",
         "person[taxpayer].sc[r].scveh[car].placed": "y2025",
-        "person[taxpayer].sc[r].scveh[car].cost": 3000000
+        "person[taxpayer].sc[r].scveh[car].cost": 3000000,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[r].scveh[car].line16": {
@@ -15938,7 +17155,21 @@
         "person[taxpayer].sc[r].scveh[car].prior_179": 0,
         "person[taxpayer].sc[r].scveh[car].prior_conv": "mq4",
         "person[taxpayer].sc[r].scveh[car].placed": "y2022",
-        "person[taxpayer].sc[r].scveh[car].cost": 5000000
+        "person[taxpayer].sc[r].scveh[car].cost": 5000000,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[r].scveh[car].line7": {
@@ -16118,7 +17349,21 @@
         "person[taxpayer].sc[r].scveh[car].prior_179": 200000,
         "person[taxpayer].sc[r].scveh[car].prior_conv": "hy",
         "person[taxpayer].sc[r].scveh[car].placed": "y2024",
-        "person[taxpayer].sc[r].scveh[car].cost": 1500000
+        "person[taxpayer].sc[r].scveh[car].cost": 1500000,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[r].scveh[car].line15": {
@@ -16298,7 +17543,21 @@
         "person[taxpayer].sc[r].scveh[car].prior_179": 300000,
         "person[taxpayer].sc[r].scveh[car].prior_conv": "mq2",
         "person[taxpayer].sc[r].scveh[car].placed": "y2019",
-        "person[taxpayer].sc[r].scveh[car].cost": 6000000
+        "person[taxpayer].sc[r].scveh[car].cost": 6000000,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[r].scveh[car].d_total": {
@@ -16482,7 +17741,21 @@
         "person[taxpayer].sc[r].scveh[truck].prior_179": 0,
         "person[taxpayer].sc[r].scveh[truck].prior_conv": "hy",
         "person[taxpayer].sc[r].scveh[truck].placed": "y2023",
-        "person[taxpayer].sc[r].scveh[truck].cost": 6000000
+        "person[taxpayer].sc[r].scveh[truck].cost": 6000000,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[r].scveh[truck].macrs_v": {
@@ -16658,7 +17931,21 @@
         "person[taxpayer].sc[r].scveh[truck].prior_179": 0,
         "person[taxpayer].sc[r].scveh[truck].prior_conv": "hy",
         "person[taxpayer].sc[r].scveh[truck].placed": "y2019",
-        "person[taxpayer].sc[r].scveh[truck].cost": 6000000
+        "person[taxpayer].sc[r].scveh[truck].cost": 6000000,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[r].scveh[truck].macrs_v": {
@@ -16834,7 +18121,21 @@
         "person[taxpayer].sc[d].asset[pc].bonus_same": true,
         "person[taxpayer].sc[d].asset[pc].prior_conv": "hy",
         "person[taxpayer].sc[d].asset[pc].prior_179": 0,
-        "person[taxpayer].sc[d].asset[pc].prior_bonus": 0
+        "person[taxpayer].sc[d].asset[pc].prior_bonus": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "mq.applies": {
@@ -17017,7 +18318,21 @@
         "person[taxpayer].sc[d].asset[van].bonus_same": true,
         "person[taxpayer].sc[d].asset[van].prior_conv": "hy",
         "person[taxpayer].sc[d].asset[van].prior_179": 200000,
-        "person[taxpayer].sc[d].asset[van].prior_bonus": 400000
+        "person[taxpayer].sc[d].asset[van].prior_bonus": 400000,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[d].asset[van].ub_prior": {
@@ -17197,7 +18512,21 @@
         "person[taxpayer].sc[d].asset[pc].bonus_same": true,
         "person[taxpayer].sc[d].asset[pc].prior_conv": "hy",
         "person[taxpayer].sc[d].asset[pc].prior_179": 0,
-        "person[taxpayer].sc[d].asset[pc].prior_bonus": 0
+        "person[taxpayer].sc[d].asset[pc].prior_bonus": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[d].asset[pc].basis": {
@@ -17381,7 +18710,21 @@
         "person[taxpayer].sc[d].asset[pc].bonus_same": true,
         "person[taxpayer].sc[d].asset[pc].prior_conv": "hy",
         "person[taxpayer].sc[d].asset[pc].prior_179": 0,
-        "person[taxpayer].sc[d].asset[pc].prior_bonus": 0
+        "person[taxpayer].sc[d].asset[pc].prior_bonus": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[d].asset[pc].macrs2025": {
@@ -17560,7 +18903,21 @@
         "person[taxpayer].sc[d].asset[pc].bonus_same": true,
         "person[taxpayer].sc[d].asset[pc].prior_conv": "hy",
         "person[taxpayer].sc[d].asset[pc].prior_179": 0,
-        "person[taxpayer].sc[d].asset[pc].prior_bonus": 0
+        "person[taxpayer].sc[d].asset[pc].prior_bonus": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[d].asset[pc].macrs_prior": {
@@ -17751,7 +19108,21 @@
         "person[taxpayer].sc[d].asset[sofa].bonus_same": true,
         "person[taxpayer].sc[d].asset[sofa].prior_conv": "hy",
         "person[taxpayer].sc[d].asset[sofa].prior_179": 0,
-        "person[taxpayer].sc[d].asset[sofa].prior_bonus": 0
+        "person[taxpayer].sc[d].asset[sofa].prior_bonus": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "mq.applies": {
@@ -17921,7 +19292,21 @@
         "s179.line10": 0,
         "person[taxpayer].plan_screen": false,
         "person[taxpayer].sep_rate": 10,
-        "person[taxpayer].sep_contrib": 844865
+        "person[taxpayer].sep_contrib": 844865,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "s1.line16": {
@@ -18093,7 +19478,22 @@
         "$ltc@person[taxpayer].sc[b]": [],
         "person[taxpayer].se_screen": false,
         "person[taxpayer].plan": "none",
-        "s179.line10": 0
+        "s179.line10": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[job].box12_any": false
       },
       "expect": {
         "s1.line3": {
@@ -18274,7 +19674,21 @@
         "person[taxpayer].sc[r].scveh[car].prior_179": 0,
         "person[taxpayer].sc[r].scveh[car].prior_conv": "hy",
         "person[taxpayer].sc[r].scveh[car].placed": "y2025",
-        "person[taxpayer].sc[r].scveh[car].cost": 4000000
+        "person[taxpayer].sc[r].scveh[car].cost": 4000000,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[r].scveh[car].placed": {
@@ -18452,7 +19866,21 @@
         "person[taxpayer].sc[r].scveh[car].miles_commuting": 0,
         "person[taxpayer].sc[r].scveh[car].miles_other": 5000,
         "person[taxpayer].sc[r].scveh[car].parking": 0,
-        "person[taxpayer].sc[r].scveh[car].smr_ok": true
+        "person[taxpayer].sc[r].scveh[car].smr_ok": true,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[r].scveh[car].line9": {
@@ -18611,7 +20039,21 @@
         "$ltc@person[taxpayer].sc[b]": [],
         "person[taxpayer].se_screen": false,
         "person[taxpayer].plan": "none",
-        "s179.line10": 0
+        "s179.line10": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].se_line6": {
@@ -18776,7 +20218,21 @@
         "$ltc@person[taxpayer].sc[b]": [],
         "person[taxpayer].se_screen": false,
         "person[taxpayer].plan": "none",
-        "s179.line10": 0
+        "s179.line10": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[b].f7206_line14": {
@@ -18958,7 +20414,21 @@
         "person[taxpayer].sc[d].asset[press].bonus_same": true,
         "person[taxpayer].sc[d].asset[press].prior_conv": "hy",
         "person[taxpayer].sc[d].asset[press].prior_179": 0,
-        "person[taxpayer].sc[d].asset[press].prior_bonus": 0
+        "person[taxpayer].sc[d].asset[press].prior_bonus": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "s179.line4": {
@@ -19141,7 +20611,21 @@
         "person[taxpayer].sc[d].asset[press].bonus_same": true,
         "person[taxpayer].sc[d].asset[press].prior_conv": "hy",
         "person[taxpayer].sc[d].asset[press].prior_179": 0,
-        "person[taxpayer].sc[d].asset[press].prior_bonus": 0
+        "person[taxpayer].sc[d].asset[press].prior_bonus": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "s179.line4": {
@@ -19336,7 +20820,21 @@
         "person[taxpayer].sc[d].asset[press].bonus_same": true,
         "person[taxpayer].sc[d].asset[press].prior_conv": "hy",
         "person[taxpayer].sc[d].asset[press].prior_179": 0,
-        "person[taxpayer].sc[d].asset[press].prior_bonus": 0
+        "person[taxpayer].sc[d].asset[press].prior_bonus": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "s179.line4": {
@@ -19519,7 +21017,21 @@
         "person[taxpayer].sc[d].asset[press].bonus_same": true,
         "person[taxpayer].sc[d].asset[press].prior_conv": "hy",
         "person[taxpayer].sc[d].asset[press].prior_179": 0,
-        "person[taxpayer].sc[d].asset[press].prior_bonus": 0
+        "person[taxpayer].sc[d].asset[press].prior_bonus": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "s179.line1": {
@@ -19711,7 +21223,21 @@
         "person[taxpayer].sc[h].scveh[suv].prior_179": 0,
         "person[taxpayer].sc[h].scveh[suv].prior_conv": "hy",
         "person[taxpayer].sc[h].scveh[suv].placed": "y2025",
-        "person[taxpayer].sc[h].scveh[suv].cost": 7000000
+        "person[taxpayer].sc[h].scveh[suv].cost": 7000000,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[h].scveh[suv].s179_2025_ok": {
@@ -19885,7 +21411,21 @@
         "person[taxpayer].sep_contrib": {
           "param": "ret.sep_dollar_limit",
           "offset": 0
-        }
+        },
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sep_s21": {
@@ -20060,7 +21600,21 @@
         },
         "person[taxpayer].simple_age": "under50",
         "person[taxpayer].simple_kind": "match",
-        "person[taxpayer].simple_employer": 0
+        "person[taxpayer].simple_employer": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "s1.line16": {
@@ -20224,7 +21778,21 @@
         "person[taxpayer].simple_deferral": 0,
         "person[taxpayer].simple_age": "under50",
         "person[taxpayer].simple_kind": "nonelective",
-        "person[taxpayer].simple_employer": 700000
+        "person[taxpayer].simple_employer": 700000,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].ne_max": {
@@ -20419,7 +21987,21 @@
         "person[taxpayer].sc[d].asset[cam].bonus_same": true,
         "person[taxpayer].sc[d].asset[cam].prior_conv": "hy",
         "person[taxpayer].sc[d].asset[cam].prior_179": 0,
-        "person[taxpayer].sc[d].asset[cam].prior_bonus": 0
+        "person[taxpayer].sc[d].asset[cam].prior_bonus": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[d].f6": {
@@ -20642,7 +22224,21 @@
         "person[taxpayer].sc[d].asset[cam].bonus_same": true,
         "person[taxpayer].sc[d].asset[cam].prior_conv": "hy",
         "person[taxpayer].sc[d].asset[cam].prior_179": 0,
-        "person[taxpayer].sc[d].asset[cam].prior_bonus": 0
+        "person[taxpayer].sc[d].asset[cam].prior_bonus": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[d].asset[cam].f25": {
@@ -20844,7 +22440,22 @@
         "$ltc@person[taxpayer].sc[side]": [],
         "person[taxpayer].se_screen": false,
         "person[taxpayer].plan": "none",
-        "s179.line10": 0
+        "s179.line10": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "s1a.line5_calc": {
@@ -20955,7 +22566,21 @@
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
         "qbi.carryforward": 0,
-        "s179.line10": 300000
+        "s179.line10": 300000,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "s179.line13": {
@@ -21128,7 +22753,21 @@
         "person[taxpayer].simple_deferral": 100000,
         "person[taxpayer].simple_age": "under50",
         "person[taxpayer].simple_kind": "match",
-        "person[taxpayer].simple_employer": 0
+        "person[taxpayer].simple_employer": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].simple_deferral": {
@@ -21312,7 +22951,21 @@
         "person[taxpayer].sc[d].asset[pc].bonus_same": false,
         "person[taxpayer].sc[d].asset[pc].prior_conv": "hy",
         "person[taxpayer].sc[d].asset[pc].prior_179": 0,
-        "person[taxpayer].sc[d].asset[pc].prior_bonus": 0
+        "person[taxpayer].sc[d].asset[pc].prior_bonus": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[d].asset[pc].bonus_forty": {
@@ -21505,7 +23158,22 @@
         "$ltc@person[taxpayer].sc[gig]": [],
         "person[taxpayer].se_screen": false,
         "person[taxpayer].plan": "none",
-        "s179.line10": 0
+        "s179.line10": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "s1a.line14b_calc": {
@@ -21673,7 +23341,21 @@
         "$ltc@person[taxpayer].sc[shop]": [],
         "person[taxpayer].se_screen": false,
         "person[taxpayer].plan": "none",
-        "s179.line10": 0
+        "s179.line10": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[shop].line28": {
@@ -21853,7 +23535,21 @@
         "person[taxpayer].sc[r].scveh[car].prior_179": 200000,
         "person[taxpayer].sc[r].scveh[car].prior_conv": "mq3",
         "person[taxpayer].sc[r].scveh[car].placed": "y2019",
-        "person[taxpayer].sc[r].scveh[car].cost": 4000000
+        "person[taxpayer].sc[r].scveh[car].cost": 4000000,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[r].scveh[car].d1": {
@@ -22037,7 +23733,21 @@
         "person[taxpayer].simple_deferral": 1800000,
         "person[taxpayer].simple_age": "age50",
         "person[taxpayer].simple_kind": "match",
-        "person[taxpayer].simple_employer": 0
+        "person[taxpayer].simple_employer": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].catchup_max": {
@@ -22214,7 +23924,21 @@
         "person[taxpayer].simple_deferral": 1650000,
         "person[taxpayer].simple_age": "under50",
         "person[taxpayer].simple_kind": "match",
-        "person[taxpayer].simple_employer": 554100
+        "person[taxpayer].simple_employer": 554100,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].match_max": {
@@ -22380,7 +24104,21 @@
         "s179.line10": 0,
         "person[taxpayer].plan_screen": false,
         "person[taxpayer].sep_rate": 5,
-        "person[taxpayer].sep_contrib": 1750000
+        "person[taxpayer].sep_contrib": 1750000,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sep_s5": {
@@ -22563,7 +24301,21 @@
         "person[taxpayer].sc[d].asset[saw].bonus_same": true,
         "person[taxpayer].sc[d].asset[saw].prior_conv": "hy",
         "person[taxpayer].sc[d].asset[saw].prior_179": 0,
-        "person[taxpayer].sc[d].asset[saw].prior_bonus": 0
+        "person[taxpayer].sc[d].asset[saw].prior_bonus": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "s179.line5": {
@@ -22753,7 +24505,21 @@
         "person[taxpayer].sc[h].asset[desk].bonus_same": true,
         "person[taxpayer].sc[h].asset[desk].prior_conv": "hy",
         "person[taxpayer].sc[h].asset[desk].prior_179": 0,
-        "person[taxpayer].sc[h].asset[desk].prior_bonus": 0
+        "person[taxpayer].sc[h].asset[desk].prior_bonus": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[h].ho_line1": {
@@ -22926,7 +24692,21 @@
         "s179.line10": 0,
         "person[taxpayer].plan_screen": false,
         "person[taxpayer].sep_rate": 25,
-        "person[taxpayer].sep_contrib": 1800000
+        "person[taxpayer].sep_contrib": 1800000,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[f].f7206_line9": {
@@ -23106,7 +24886,21 @@
         "person[taxpayer].sc[v].scveh[car].miles_other": 0,
         "person[taxpayer].sc[v].scveh[car].parking": 0,
         "person[taxpayer].sc[v].scveh[car].operating": 0,
-        "person[taxpayer].sc[v].scveh[car].lease": 300000
+        "person[taxpayer].sc[v].scveh[car].lease": 300000,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[v].line20a": {
@@ -23277,7 +25071,21 @@
         },
         "person[taxpayer].simple_age": "under50",
         "person[taxpayer].simple_kind": "match",
-        "person[taxpayer].simple_employer": 0
+        "person[taxpayer].simple_employer": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].simple_deduction": {
@@ -23458,7 +25266,22 @@
         "$ltc@person[taxpayer].sc[b]": [],
         "person[taxpayer].se_screen": false,
         "person[taxpayer].plan": "none",
-        "s179.line10": 0
+        "s179.line10": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[job].box12_any": false
       },
       "expect": {
         "s1.line3": {
@@ -23640,7 +25463,21 @@
         "$ltc@person[taxpayer].sc[big]": [],
         "person[taxpayer].se_screen": false,
         "person[taxpayer].plan": "none",
-        "s179.line10": 0
+        "s179.line10": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "f8959.line8": {
@@ -23840,7 +25677,21 @@
         "person[taxpayer].sc[d].asset[saw].s179": 100000,
         "person[taxpayer].sc[d].asset[saw].after_jan19": true,
         "person[taxpayer].sc[d].asset[saw].bonus_choice": "none",
-        "person[taxpayer].sc[d].asset[saw].bonus_same": true
+        "person[taxpayer].sc[d].asset[saw].bonus_same": true,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "s179.line11": {
@@ -24075,7 +25926,31 @@
         "person[taxpayer].born_before_2001": true,
         "person[taxpayer].born_after_1960": true,
         "person[spouse].born_before_2001": true,
-        "person[spouse].born_after_1960": true
+        "person[spouse].born_after_1960": true,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[spouse].sav_born": true,
+        "person[spouse].sav_student": false,
+        "person[spouse].sav_claimed": false,
+        "person[spouse].sav_trad": false,
+        "person[spouse].sav_able": false,
+        "person[spouse].sav_roth": 0,
+        "person[spouse].sav_excess": false,
+        "person[spouse].sav_voluntary": 0,
+        "person[spouse].sav_prior_joint": 0,
+        "person[spouse].sav_prior_other": 0
       },
       "expect": {
         "s1.line15": {
@@ -24318,7 +26193,31 @@
         "person[taxpayer].born_before_2001": true,
         "person[taxpayer].born_after_1960": true,
         "person[spouse].born_before_2001": true,
-        "person[spouse].born_after_1960": true
+        "person[spouse].born_after_1960": true,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[spouse].sav_born": true,
+        "person[spouse].sav_student": false,
+        "person[spouse].sav_claimed": false,
+        "person[spouse].sav_trad": false,
+        "person[spouse].sav_able": false,
+        "person[spouse].sav_roth": 0,
+        "person[spouse].sav_excess": false,
+        "person[spouse].sav_voluntary": 0,
+        "person[spouse].sav_prior_joint": 0,
+        "person[spouse].sav_prior_other": 0
       },
       "expect": {
         "s1.line15": {
@@ -24500,7 +26399,21 @@
         "f1040.tax_exempt_interest": 0,
         "div.box12": 0,
         "person[taxpayer].born_before_2001": true,
-        "person[taxpayer].born_after_1960": true
+        "person[taxpayer].born_after_1960": true,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "eic.wsb_4b": {
@@ -24679,7 +26592,21 @@
         "div.box12": 0,
         "person[taxpayer].born_before_2001": true,
         "person[taxpayer].born_after_1960": true,
-        "sli.claimed": false
+        "sli.claimed": false,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "f1040.line11b": {
@@ -24882,7 +26809,22 @@
         "person[taxpayer].sc[h].asset[saw].bonus_same": true,
         "person[taxpayer].sc[h].asset[saw].prior_conv": "hy",
         "person[taxpayer].sc[h].asset[saw].prior_179": 0,
-        "person[taxpayer].sc[h].asset[saw].prior_bonus": 0
+        "person[taxpayer].sc[h].asset[saw].prior_bonus": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[job].box12_any": false
       },
       "expect": {
         "person[taxpayer].sc[h].line30": {
@@ -25066,7 +27008,21 @@
         "person[taxpayer].sc[d].asset[saw].bonus_same": true,
         "person[taxpayer].sc[d].asset[saw].prior_conv": "hy",
         "person[taxpayer].sc[d].asset[saw].prior_179": 0,
-        "person[taxpayer].sc[d].asset[saw].prior_bonus": 0
+        "person[taxpayer].sc[d].asset[saw].prior_bonus": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "s179.line5": {
@@ -25250,7 +27206,21 @@
         "person[taxpayer].sc[d].asset[saw].bonus_same": true,
         "person[taxpayer].sc[d].asset[saw].prior_conv": "hy",
         "person[taxpayer].sc[d].asset[saw].prior_179": 0,
-        "person[taxpayer].sc[d].asset[saw].prior_bonus": 0
+        "person[taxpayer].sc[d].asset[saw].prior_bonus": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "s179.mfs": {
@@ -25416,7 +27386,21 @@
         "s179.line10": 0,
         "person[taxpayer].plan_screen": false,
         "person[taxpayer].sep_rate": 25,
-        "person[taxpayer].sep_contrib": 1800000
+        "person[taxpayer].sep_contrib": 1800000,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].se_line4c": {
@@ -25646,7 +27630,21 @@
         "person[taxpayer].sc[rides].scveh[car].prior_conv": "hy",
         "person[taxpayer].sc[rides].scveh[car].placed": "y2025",
         "person[taxpayer].sc[rides].scveh[car].cost": 4000000,
-        "person[taxpayer].sc[rides].scveh[car].lease": 600000
+        "person[taxpayer].sc[rides].scveh[car].lease": 600000,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sc[rides].scveh[car].total_c": {
@@ -25862,7 +27860,21 @@
         "person[taxpayer].sc[shop].tips_ot": false,
         "$scveh@person[taxpayer].sc[shop]": [],
         "$asset@person[taxpayer].sc[shop]": [],
-        "$ltc@person[taxpayer].sc[shop]": []
+        "$ltc@person[taxpayer].sc[shop]": [],
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0
       },
       "expect": {
         "person[taxpayer].sep_deduction": {

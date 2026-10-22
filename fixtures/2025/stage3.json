@@ -90,7 +90,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "sales[a].h": {
@@ -192,7 +196,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "sales[a].h": {
@@ -294,7 +302,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "sales[a].h": {
@@ -396,7 +408,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "sales[a].h": {
@@ -498,7 +514,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "sd.line8a.d": {
@@ -614,7 +634,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "sd.line8a.d": {
@@ -720,7 +744,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "sd.line1b.h": {
@@ -830,7 +858,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "sd.line2.h": {
@@ -940,7 +972,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "sd.line3.h": {
@@ -1050,7 +1086,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "sd.line8b.h": {
@@ -1160,7 +1200,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "sd.line9.h": {
@@ -1270,7 +1314,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "sd.line10.h": {
@@ -1380,7 +1428,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "sales[a].g": {
@@ -1490,7 +1542,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "sales[a].g": {
@@ -1600,7 +1656,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "sales[a].g": {
@@ -1710,7 +1770,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "sales[a].g": {
@@ -1820,7 +1884,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "sales[a].g": {
@@ -1930,7 +1998,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "sales[a].g": {
@@ -2040,7 +2112,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "sales[a].g": {
@@ -2150,7 +2226,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "sales[a].g": {
@@ -2260,7 +2340,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "sales[a].g": {
@@ -2370,7 +2454,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "sales[a].g": {
@@ -2480,7 +2568,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "sales[a].g": {
@@ -2590,7 +2682,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "sales[a].g": {
@@ -2700,7 +2796,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "sd.line16": {
@@ -2811,7 +2911,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "sd.line16": {
@@ -2921,7 +3025,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "sd.line16": {
@@ -3032,7 +3140,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "sd.line16": {
@@ -3142,7 +3254,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "sd.line16": {
@@ -3253,7 +3369,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "sd.line16": {
@@ -3363,7 +3483,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "sd.line16": {
@@ -3474,7 +3598,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "sd.line16": {
@@ -3584,7 +3712,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "sd.line16": {
@@ -3695,7 +3827,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "sd.line16": {
@@ -3805,7 +3941,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "sd.line16": {
@@ -3916,7 +4056,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "sd.line16": {
@@ -4026,7 +4170,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "sd.line16": {
@@ -4137,7 +4285,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "sd.line16": {
@@ -4247,7 +4399,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "sd.line16": {
@@ -4358,7 +4514,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "sd.line16": {
@@ -4468,7 +4628,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "sd.line16": {
@@ -4583,7 +4747,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "sd.line16": {
@@ -4703,7 +4871,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "sd.line1b.h": {
@@ -4806,7 +4978,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "sd.filed": {
@@ -4917,7 +5093,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "sd.filed": {
@@ -5028,7 +5208,11 @@
         "s1a.tips": false,
         "s1a.overtime": false,
         "s1a.carloan": false,
-        "$sc@person[taxpayer]": []
+        "$sc@person[taxpayer]": [],
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "f1040.line7a": {
@@ -5574,7 +5758,11 @@
         "s1a.tips": false,
         "s1a.overtime": false,
         "s1a.carloan": false,
-        "$sc@person[taxpayer]": []
+        "$sc@person[taxpayer]": [],
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "f1040.line7a": {
@@ -6120,7 +6308,11 @@
         "s1a.tips": false,
         "s1a.overtime": false,
         "s1a.carloan": false,
-        "$sc@person[taxpayer]": []
+        "$sc@person[taxpayer]": [],
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "f1040.line7a": {
@@ -6666,7 +6858,11 @@
         "s1a.tips": false,
         "s1a.overtime": false,
         "s1a.carloan": false,
-        "$sc@person[taxpayer]": []
+        "$sc@person[taxpayer]": [],
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "f1040.line7a": {
@@ -7212,7 +7408,11 @@
         "s1a.tips": false,
         "s1a.overtime": false,
         "s1a.carloan": false,
-        "$sc@person[taxpayer]": []
+        "$sc@person[taxpayer]": [],
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "f1040.line7a": {
@@ -7758,7 +7958,11 @@
         "s1a.tips": false,
         "s1a.overtime": false,
         "s1a.carloan": false,
-        "$sc@person[taxpayer]": []
+        "$sc@person[taxpayer]": [],
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "f1040.line7a": {
@@ -8304,7 +8508,11 @@
         "s1a.tips": false,
         "s1a.overtime": false,
         "s1a.carloan": false,
-        "$sc@person[taxpayer]": []
+        "$sc@person[taxpayer]": [],
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "f1040.line7a": {
@@ -8850,7 +9058,11 @@
         "s1a.tips": false,
         "s1a.overtime": false,
         "s1a.carloan": false,
-        "$sc@person[taxpayer]": []
+        "$sc@person[taxpayer]": [],
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "f1040.line7a": {
@@ -9396,7 +9608,11 @@
         "s1a.tips": false,
         "s1a.overtime": false,
         "s1a.carloan": false,
-        "$sc@person[taxpayer]": []
+        "$sc@person[taxpayer]": [],
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "f1040.line7a": {
@@ -9942,7 +10158,11 @@
         "s1a.tips": false,
         "s1a.overtime": false,
         "s1a.carloan": false,
-        "$sc@person[taxpayer]": []
+        "$sc@person[taxpayer]": [],
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "f1040.line7a": {
@@ -10488,7 +10708,11 @@
         "s1a.tips": false,
         "s1a.overtime": false,
         "s1a.carloan": false,
-        "$sc@person[taxpayer]": []
+        "$sc@person[taxpayer]": [],
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "f1040.line7a": {
@@ -11034,7 +11258,11 @@
         "s1a.tips": false,
         "s1a.overtime": false,
         "s1a.carloan": false,
-        "$sc@person[taxpayer]": []
+        "$sc@person[taxpayer]": [],
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "f1040.line7a": {
@@ -11580,7 +11808,11 @@
         "s1a.tips": false,
         "s1a.overtime": false,
         "s1a.carloan": false,
-        "$sc@person[taxpayer]": []
+        "$sc@person[taxpayer]": [],
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "f1040.line7a": {
@@ -12204,7 +12436,11 @@
         "s1a.tips": false,
         "s1a.overtime": false,
         "s1a.carloan": false,
-        "$sc@person[taxpayer]": []
+        "$sc@person[taxpayer]": [],
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "f1040.line7a": {
@@ -12838,7 +13074,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "f1040.line16": {
@@ -12948,7 +13188,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "f1040.line16": {
@@ -13058,7 +13302,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "f1040.line16": {
@@ -13168,7 +13416,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "f1040.gate.sdtw": {
@@ -13281,7 +13533,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "f1040.gate.sdtw": {
@@ -13394,7 +13650,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "f1040.gate.sdtw": {
@@ -13507,7 +13767,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "f1040.gate.sdtw": {
@@ -13620,7 +13884,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "f1040.gate.sdtw": {
@@ -13743,7 +14011,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "sd.line7": {
@@ -13936,7 +14208,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "sd.line1a.d": {

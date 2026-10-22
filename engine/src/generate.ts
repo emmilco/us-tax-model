@@ -67,6 +67,13 @@ const BOOL_TRUE_PERCENT: Record<string, number> = {
   "sa.elect_itemize": 10,
   "person[taxpayer].born_before_2001": 85, "eic.us_home": 95,
   "s1a.tips": 20, "s1a.overtime": 20, "s1a.carloan": 15, "person[taxpayer].died_before_65": 2,
+  // Form 5695: each part's screen is sometimes yes; once inside, its eligibility answers and QMID
+  // attestations are usually yes, so the parts are figured rather than mostly zero or refused.
+  "f5695.part1_any": 15, "f5695.part2_any": 15,
+  "f5695.line17a": 70, "f5695.line17b": 95, "f5695.line17c": 95, "f5695.line21a": 70, "f5695.line21b": 95,
+  "f5695.qmid_doors": 95, "f5695.qmid_windows": 95, "f5695.qmid_ac": 95, "f5695.qmid_wh": 95,
+  "f5695.qmid_furnace": 95, "f5695.qmid_enabling": 95, "f5695.qmid_hp": 95,
+  "person[taxpayer].sav_born": 95,
 };
 const DEFAULT_TRUE_PERCENT = 10;
 
@@ -76,14 +83,15 @@ const MODELLED = new Set([
   "f1040.line3a", "sb.ordinary_dividends", "qbi.dividends", "sd.distributions", "div.box2b", "div.box2d",
   "sa.line1", "sa.line5a", "sa.line5b", "sa.line8a", "sa.line11", "f4952.line1", "f4952.line4g", "ftc.taxes",
   "s1.uc_paid", "s1.uc_repaid", "person[taxpayer].educator_expenses", `${HSA}.line2`, `${HSA}.line9`, `${HSA}.months_eligible`, `${HSA}.months_family`, "sli.interest",
+  "person[taxpayer].sav_roth",
 ]);
 
-interface Employer { box1: number; box2pct: number; box7: number; over: number }
+interface Employer { box1: number; box2pct: number; box7: number; over: number; deferral: number }
 interface Sale { box: string; aggregate: boolean; code: string; special: boolean; aggregate_eligible: boolean; proceeds: number; reported_basis: number; correct_basis: number; wash_loss: number; invalid: boolean }
 interface Gift { deduction: number; public_securities: boolean; special: boolean }
 interface Dependent { relationship: string; age: number; younger: boolean; student: boolean; disabled: boolean; months: number; self_support: boolean; joint_return: boolean; citizen: boolean; canada_mexico: boolean; married: boolean; tin: boolean; work_ssn: boolean; gross_income: number; supported: boolean; other_claimant: boolean; divorced_rule: boolean; multiple_support: boolean; parent_home_paid: boolean; us_half: boolean; eic_ssn: boolean }
 interface Household { taxpayer_tin: boolean; taxpayer_work_ssn: boolean; home_cost: boolean; unmarried: boolean }
-interface Distribution { account: string; code: string; box1: number; box5: number; rollover: number; special: boolean; annuity: boolean; cost: number; used_last_year: boolean; last_line4: number; joint_life: boolean; age: number; combined_age: number; months: number; recovered: number }
+interface Distribution { account: string; code: string; box1: number; box5: number; rollover: number; special: boolean; annuity: boolean; cost: number; used_last_year: boolean; last_line4: number; joint_life: boolean; age: number; combined_age: number; months: number; recovered: number; savExcluded: boolean }
 
 interface TipJob { qualified: boolean; amount: number }
 interface OvertimeJob { flsa: boolean; special: boolean; method: string; statement: number }
@@ -92,7 +100,7 @@ interface ScheduleOneA { tips: TipJob[]; overtime: OvertimeJob[]; loans: CarLoan
 interface SpouseHsa { has: boolean; months: number; familyMonths: number; decFamily: boolean; contrib: number; age55: boolean; agreed: boolean; allocated: number }
 interface Spouse {
   employers: Employer[]; age65: boolean; blind: boolean; tin: boolean; work_ssn: boolean; died: boolean; eicAge: boolean;
-  educator: number; eligible: boolean; tips: TipJob[]; overtime: OvertimeJob[]; hsa: SpouseHsa;
+  educator: number; eligible: boolean; tips: TipJob[]; overtime: OvertimeJob[]; hsa: SpouseHsa; roth: number; born: boolean;
 }
 
 interface Vehicle {
@@ -135,6 +143,7 @@ interface Spec {
   s1a: ScheduleOneA;
   flags: Record<string, boolean>;
   extras: Record<string, number>;
+  roth: number;
   businesses: Business[]; plan: Plan; spouseBusinesses: Business[]; spousePlan: Plan;
 }
 
@@ -251,6 +260,7 @@ export function returnArbitrary(data: CanonicalData): fc.Arbitrary<Inputs> {
     box2pct: fc.integer({ min: 0, max: 30 }),
     box7: rareMoney(2_000_000),
     over: rareMoney(200_000, 5),
+    deferral: rareMoney(1_500_000, 35),
   });
   const sale = fc.record<Sale>({
     box: fc.oneof({ weight: 19, arbitrary: fc.constantFrom("A", "B", "C", "D", "E", "F") }, { weight: 1, arbitrary: fc.constantFrom("G", "H", "I", "J", "K", "L") }),
@@ -287,6 +297,7 @@ export function returnArbitrary(data: CanonicalData): fc.Arbitrary<Inputs> {
     joint_life: rareTrue(30), age: fc.integer({ min: 50, max: 80 }), combined_age: fc.integer({ min: 100, max: 160 }),
     months: fc.oneof({ weight: 4, arbitrary: fc.constant(12) }, { weight: 1, arbitrary: fc.integer({ min: 1, max: 12 }) }),
     recovered: money(5_000_000),
+    savExcluded: rareTrue(10),
   });
   const gift = fc.record<Gift>({
   deduction: fc.oneof({ weight: 3, arbitrary: money(500_000) }, { weight: 1, arbitrary: fc.integer({ min: 500_001, max: 2_000_000 }) }),
@@ -312,6 +323,7 @@ export function returnArbitrary(data: CanonicalData): fc.Arbitrary<Inputs> {
     spouse: fc.record<Spouse>({
       employers: fc.array(employer, { maxLength: 2 }), age65: rareTrue(25), blind: rareTrue(5), tin: rareTrue(97), work_ssn: rareTrue(93),
       died: rareTrue(3), eicAge: rareTrue(85), educator: rareMoney(60_000, 15), eligible: rareTrue(70),
+      roth: rareMoney(700_000, 20), born: rareTrue(95),
       tips: fc.array(fc.record<TipJob>({ qualified: fc.constant(true), amount: money(3_000_000) }), { maxLength: 2 }),
       overtime: fc.array(fc.record<OvertimeJob>({ flsa: fc.constant(true), special: fc.constant(false), method: fc.constantFrom("premium", "employer_reported", "total_time_and_half"), statement: money(3_000_000) }), { maxLength: 1 }),
       hsa: fc.record<SpouseHsa>({ has: rareTrue(30), months: fc.oneof({ weight: 1, arbitrary: fc.constant(12) }, { weight: 1, arbitrary: fc.integer({ min: 1, max: 12 }) }),
@@ -341,6 +353,7 @@ export function returnArbitrary(data: CanonicalData): fc.Arbitrary<Inputs> {
         nonqualifying: money(1_000_000), down: money(1_000_000), refiBalance: money(8_000_000),
         refiWhole: fc.oneof({ weight: 19, arbitrary: fc.constant(true) }, { weight: 1, arbitrary: fc.constant(false) }) }), { maxLength: 2 }),
     }),
+    roth: rareMoney(700_000, 20),
     flags: fc.record(Object.fromEntries(boolKeys.map((k) => [k, rareTrue(BOOL_TRUE_PERCENT[k] ?? DEFAULT_TRUE_PERCENT)]))),
     extras: fc.record(Object.fromEntries(extraKeys.map((k) => [k, rareMoney(500_000, 2)]))),
     // About a third of returns have a business; a joint return's spouse sometimes has one as well.
@@ -351,6 +364,13 @@ export function returnArbitrary(data: CanonicalData): fc.Arbitrary<Inputs> {
     spousePlan: planArbitrary,
   });
   return spec.map((s) => buildInputs(data, s));
+}
+
+/** Form W-2 box 12 for the saver's credit: a code D elective deferral when the employer has one, no other code. */
+function putBox12(inputs: Inputs, W: string, deferral: number): void {
+  Object.assign(inputs, { [`${W}.box12_any`]: deferral > 0, [`${W}.box12_userra`]: false, [`${W}.box12_d`]: deferral,
+    [`${W}.box12_e`]: 0, [`${W}.box12_f`]: 0, [`${W}.box12_g`]: 0, [`${W}.box12_h`]: 0, [`${W}.box12_s`]: 0, [`${W}.box12_aa`]: 0,
+    [`${W}.box12_bb`]: 0, [`${W}.box12_ee`]: 0, [`${W}.g_governmental`]: false, [`${W}.g_elective`]: 0 });
 }
 
 function buildInputs(data: CanonicalData, s: Spec): Inputs {
@@ -392,7 +412,12 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
     inputs[`${p}.box4`] = rate(box3 + box7, 62, 1000) + e.over;
     inputs[`${p}.box5`] = box5;
     inputs[`${p}.box6`] = rate(box5, 145, 10000) + (box5 > ADDL_MEDICARE_START ? rate(box5 - ADDL_MEDICARE_START, 9, 1000) : 0);
+    // Form 2441 Part III: dependent care benefits on the first Form W-2 when the return has benefits, none in box 1.
+    inputs[`${p}.box10`] = i === 0 && inputs["f2441.benefits"] === true ? box1 % 700_000 : 0;
+    inputs[`${p}.box10_wages`] = 0;
+    putBox12(inputs, p, Math.min(e.deferral, box1));
   });
+  inputs["person[taxpayer].sav_roth"] = s.roth;
 
   const interest = investor ? [] : low ? s.interest.map((a) => a % 50_000) : s.interest;
   inputs["$interest"] = interest.map((_, i) => `bank_${String.fromCharCode(97 + i)}`);
@@ -429,6 +454,15 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
   s.gifts.forEach((g, i) => { for (const [k, v] of Object.entries(g)) inputs[`gift[item_${String.fromCharCode(97 + i)}].${k}`] = v; });
   inputs["$dependent"] = s.dependents.map((_, i) => `dep_${String.fromCharCode(97 + i)}`);
   s.dependents.forEach((d, i) => { for (const [k, v] of Object.entries(d)) inputs[`dependent[dep_${String.fromCharCode(97 + i)}].${k}`] = v; });
+  // Form 2441, derived from the generated facts so the random stream is unchanged: a child turning 13 is under 13
+  // for part of the year, a permanently and totally disabled person cannot care for themselves, and the expenses vary
+  // with the age. One care provider, identified by its number.
+  s.dependents.forEach((d, i) => {
+    const D = `dependent[dep_${String.fromCharCode(97 + i)}]`;
+    inputs[`${D}.dc_under13`] = true; inputs[`${D}.dc_incapable`] = d.disabled; inputs[`${D}.dc_paid`] = (d.age * 37_000) % 900_000;
+  });
+  inputs["$dcprov"] = ["prov_a"];
+  Object.assign(inputs, { "dcprov[prov_a].tin_kind": "tin", "dcprov[prov_a].household": false, "dcprov[prov_a].paid": 0, "dcprov[prov_a].related": false });
   const HOUSEHOLD_KEYS: Record<string, string> = { taxpayer_tin: "person[taxpayer].tin", taxpayer_work_ssn: "person[taxpayer].work_ssn" };
   for (const [k, v] of Object.entries(s.household)) inputs[HOUSEHOLD_KEYS[k] ?? `household.${k}`] = v;
   inputs["person[taxpayer].itin_applied"] = false;
@@ -440,8 +474,11 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
   inputs["$retirement"] = dists.map((_, i) => `r${i + 1}`);
   dists.forEach((d, i) => {
     const code = s.clean ? (d.account === "roth_ira" ? "qualified_roth_Q" : d.code === "qualified_roth_Q" || d.code === "other" ? "normal_7" : d.code) : d.code;
-    const entry = { ...d, code, special: s.clean ? false : d.special, annuity: d.account === "plan" && d.annuity,
-      box5: d.account === "plan" ? d.box5 : 0, rollover: Math.min(d.rollover, d.box1) };
+    const { savExcluded, ...fields } = d;
+    // Form 8880 line 4: a plan distribution is sometimes from a military retirement plan, an IRA one sometimes inherited.
+    const entry = { ...fields, code, special: s.clean ? false : d.special, annuity: d.account === "plan" && d.annuity,
+      box5: d.account === "plan" ? d.box5 : 0, rollover: Math.min(d.rollover, d.box1),
+      sav_military: d.account === "plan" && savExcluded, sav_404k: false, sav_inherited: d.account !== "plan" && savExcluded };
     for (const [k, v] of Object.entries(entry)) inputs[`retirement[r${i + 1}].${k}`] = v;
   });
   inputs["ssb.benefits"] = retiree ? s.benefits : 0;
@@ -494,6 +531,8 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
       [`${P}.role`]: "spouse", [`${P}.rrta`]: false, [`${P}.age65`]: sp.age65, [`${P}.blind`]: sp.blind, [`${P}.tin`]: sp.tin || sp.work_ssn,
       [`${P}.work_ssn`]: sp.work_ssn, [`${P}.itin_applied`]: false, [`${P}.born_before_2001`]: sp.eicAge || sp.age65, [`${P}.born_after_1960`]: !sp.age65 && sp.eicAge,
       [`${P}.educator_expenses`]: sp.educator, [`${P}.eligible_educator`]: sp.eligible,
+      [`${P}.sav_born`]: sp.born, [`${P}.sav_student`]: false, [`${P}.sav_claimed`]: false, [`${P}.sav_trad`]: false, [`${P}.sav_able`]: false,
+      [`${P}.sav_roth`]: sp.roth, [`${P}.sav_excess`]: false, [`${P}.sav_voluntary`]: 0, [`${P}.sav_prior_joint`]: 0, [`${P}.sav_prior_other`]: 0,
     });
     if (sp.age65) inputs[`${P}.died_before_65`] = sp.died;
     const keys = sp.employers.map((_, k) => `emp_${String.fromCharCode(97 + k)}`);
@@ -502,7 +541,9 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
       const box1 = e.box1, box3 = Math.min(box1, Math.max(0, WAGE_BASE - e.box7)), box5 = box1 + e.box7;
       Object.assign(inputs, { [`${P}.w2[${keys[k]}].box1`]: box1, [`${P}.w2[${keys[k]}].box2`]: rate(box1, e.box2pct, 100), [`${P}.w2[${keys[k]}].box3`]: box3,
         [`${P}.w2[${keys[k]}].box7`]: e.box7, [`${P}.w2[${keys[k]}].box4`]: rate(box3 + e.box7, 62, 1000) + e.over,
-        [`${P}.w2[${keys[k]}].box5`]: box5, [`${P}.w2[${keys[k]}].box6`]: rate(box5, 145, 10000) + (box5 > ADDL_MEDICARE_START ? rate(box5 - ADDL_MEDICARE_START, 9, 1000) : 0) });
+        [`${P}.w2[${keys[k]}].box5`]: box5, [`${P}.w2[${keys[k]}].box6`]: rate(box5, 145, 10000) + (box5 > ADDL_MEDICARE_START ? rate(box5 - ADDL_MEDICARE_START, 9, 1000) : 0),
+        [`${P}.w2[${keys[k]}].box10`]: 0, [`${P}.w2[${keys[k]}].box10_wages`]: 0 });
+      putBox12(inputs, `${P}.w2[${keys[k]}]`, Math.min(e.deferral, box1));
     });
     inputs[`$tipjob@${P}`] = inputs["s1a.tips"] === true ? sp.tips.map((_, k) => `tip_${k + 1}`) : [];
     if (inputs["s1a.tips"] === true) sp.tips.forEach((tj, k) => { inputs[`${P}.tipjob[tip_${k + 1}].qualified`] = tj.qualified; inputs[`${P}.tipjob[tip_${k + 1}].amount`] = tj.amount; });

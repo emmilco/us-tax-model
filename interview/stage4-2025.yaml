@@ -19,6 +19,7 @@ interview:
     locator: Form 1040 (2025), related form references
   questions:
   - div.box2b
+  - f2441.benefits
   - div.box2c
   - div.box2d
   - div.box2e

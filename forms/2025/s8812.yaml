@@ -242,17 +242,21 @@ form:
     - id: s8812.clw_a2
       printed: (helper)
       type: Dollars
-      label: Credit Limit Worksheet A, line 2. Schedule 3 lines 1, 2, 3, 4, 5b, 6d, 6f, 6l and 6m; in this slice Schedule 3 line 1 alone, the other credits being refused
+      label: Credit Limit Worksheet A, line 2. Schedule 3 lines 1, 2, 3, 4, 5b, 6d, 6f, 6l and 6m; in this tool lines 1, 2, 4 and 5b, the other credits being refused
       expr:
-        op: copy
-        from: s3.line1
+        op: sum
+        of:
+          - s3.line1
+          - s3.line2
+          - s3.line4
+          - s3.line5b
       cite:
         doc: i1040s8812
         locator: p. 4, Credit Limit Worksheet A, line 2
       refuses:
         - when: scope.credits
-          form: Credit Limit Worksheet A, line 2 (Schedule 3 lines 2–4, 5b, 6d, 6f, 6l, 6m)
-          remedy: Credits other than the foreign tax credit and the dependent credits are outside this tool.
+          form: Credit Limit Worksheet A, line 2 (Schedule 3 lines 3, 6d, 6f, 6l, 6m)
+          remedy: Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the saver's credit and the residential energy credits are outside this tool.
           cite:
             doc: i1040s8812
             locator: p. 4, Credit Limit Worksheet A, line 2
@@ -270,16 +274,30 @@ form:
     - id: s8812.clw_a4
       printed: (helper)
       type: NonNegDollars
-      label: Credit Limit Worksheet A, line 4. Credit Limit Worksheet B amount, zero when that worksheet is not completed
+      label: Credit Limit Worksheet A, line 4. If you are not completing Credit Limit Worksheet B, enter -0-; otherwise, enter
+        the amount from Credit Limit Worksheet B
       expr:
-        op: copy
-        from: s8812.zero
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - s8812.clwb_complete
+                - const: true
+            then: s8812.clwb_15
+          - guard:
+              op: test
+              eq:
+                - s8812.clwb_complete
+                - const: false
+            then: s8812.zero
       cite:
         doc: i1040s8812
-        locator: p. 4, Credit Limit Worksheet A, line 4, "If you are not completing Credit Limit Worksheet B, enter -0-"
+        locator: p. 4, Credit Limit Worksheet A, line 4, "If you are not completing Credit Limit Worksheet B, enter -0-;
+          otherwise, enter the amount from Credit Limit Worksheet B"
       refuses:
         - when: scope.credits
-          form: Credit Limit Worksheet B (Forms 8396, 8839, 5695 Part I, 8859)
+          form: Credit Limit Worksheet B (Forms 8396, 8839, 8859)
           remedy: The credits that call for Credit Limit Worksheet B are outside this tool.
           cite:
             doc: i1040s8812
@@ -841,3 +859,281 @@ form:
           cite:
             doc: f1040s8812
             locator: Schedule 8812 (2025), after line 20, "If you are a bona fide resident of Puerto Rico, go to line 21"
+    - id: s8812.clwb_complete
+      printed: (helper)
+      type: Bool
+      label: Complete Credit Limit Worksheet B (claiming the residential clean energy credit, Form 5695 Part I, and line 4 of
+        Schedule 8812 is more than zero)
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - f5695.claiming_part1
+              - const: true
+          - op: test
+            gt:
+              - s8812.line4
+              - const: 0
+                type: Count
+      cite:
+        doc: i1040s8812
+        locator: p. 4, Credit Limit Worksheet A, "Complete Credit Limit Worksheet B only if you meet all the following", "Line
+          4 of Schedule 8812 is more than zero"
+      note: The mortgage interest, adoption and District of Columbia homebuyer credits (Forms 8396, 8839 and 8859) are refused
+        by scope.credits on Credit Limit Worksheet A line 4, and Form 2555 (condition 2) by sa.excluded_income on lines 2a to
+        2c, so condition 1 is the residential clean energy credit alone.
+    - id: s8812.clwb_1
+      printed: (helper)
+      type: NonNegDollars
+      label: Credit Limit Worksheet B, line 1. Enter the amount from Schedule 8812, line 12
+      expr:
+        op: copy
+        from: s8812.line12
+      cite:
+        doc: i1040s8812
+        locator: p. 5, Credit Limit Worksheet B, line 1, "Enter the amount from Schedule 8812, line 12"
+    - id: s8812.clwb_2
+      printed: (helper)
+      type: NonNegDollars
+      label: Credit Limit Worksheet B, line 2. Number of qualifying children under age 17 with the required social security
+        number × $1,700
+      expr:
+        op: copy
+        from: s8812.line16b
+      cite:
+        doc: i1040s8812
+        locator: p. 5, Credit Limit Worksheet B, line 2, "The number of children you use for this line is the same as the
+          number of children you used for line 4 of Schedule 8812"
+      note: Schedule 8812 line 16b is the same product, the sum over dependents of $1,700 for each qualifying child counted on
+        line 4.
+    - id: s8812.clwb_3
+      printed: (helper)
+      type: Dollars
+      label: Credit Limit Worksheet B, line 3. Enter your earned income from line 7 of the Earned Income Worksheet
+      expr:
+        op: copy
+        from: s8812.eiw_7
+      cite:
+        doc: i1040s8812
+        locator: p. 5, Credit Limit Worksheet B, line 3, "Enter your earned income from line 7 of the Earned Income Worksheet"
+    - id: s8812.clwb_4
+      printed: (helper)
+      type: NonNegDollars
+      label: Credit Limit Worksheet B, line 4. Is the amount on line 3 more than $2,500? No. Leave line 4 blank, enter -0- on
+        line 5. Yes. Subtract $2,500 from the amount on line 3
+      expr:
+        op: subtract_floor0
+        from: s8812.clwb_3
+        take:
+          param: actc.earned_floor
+      cite:
+        doc: i1040s8812
+        locator: p. 5, Credit Limit Worksheet B, line 4, "Is the amount on line 3 more than $2,500?"
+    - id: s8812.clwb_5
+      printed: (helper)
+      type: NonNegDollars
+      label: Credit Limit Worksheet B, line 5. Multiply the amount on line 4 by 15% (0.15) and enter the result
+      expr:
+        op: multiply_rate
+        amount: s8812.clwb_4
+        rate:
+          param: actc.rate
+      cite:
+        doc: i1040s8812
+        locator: p. 5, Credit Limit Worksheet B, line 5, "Multiply the amount on line 4 by 15% (0.15) and enter the result"
+      ambiguity: amb.2025.multiplication_subcent
+    - id: s8812.clwb_three
+      printed: (helper)
+      type: Bool
+      label: Credit Limit Worksheet B, line 6. On line 2 of this worksheet, is the amount $5,100 or more?
+      expr:
+        op: test
+        ge:
+          - s8812.clwb_2
+          - param: actc.three_children
+      cite:
+        doc: i1040s8812
+        locator: p. 5, Credit Limit Worksheet B, line 6, "On line 2 of this worksheet, is the amount $5,100 or more?"
+    - id: s8812.clwb_5_covers
+      printed: (helper)
+      type: Bool
+      label: Credit Limit Worksheet B, line 6. Line 5 is equal to or more than line 1
+      expr:
+        op: test
+        ge:
+          - s8812.clwb_5
+          - s8812.clwb_1
+      cite:
+        doc: i1040s8812
+        locator: p. 5, Credit Limit Worksheet B, line 6, "If line 5 above is equal to or more than line 1 above, leave lines 7
+          through 10 blank, enter -0- on line 11"
+    - id: s8812.clwb_7
+      printed: (helper)
+      type: Dollars
+      label: Credit Limit Worksheet B, line 7. Social security and Medicare tax withheld (Forms W-2, boxes 4 and 6); with
+        Additional Medicare Tax, the amount from the Additional Medicare Tax and RRTA Tax Worksheet
+      expr:
+        op: copy
+        from: s8812.line21
+      cite:
+        doc: i1040s8812
+        locator: p. 5, Credit Limit Worksheet B, line 7, "If your employer withheld or you paid Additional Medicare Tax or Tier
+          1 RRTA taxes, use the Additional Medicare Tax and RRTA Tax Worksheet to figure the amount to enter"
+      note: Schedule 8812 line 21 is the same amount (the Additional Medicare Tax and RRTA Tax Worksheet line 16, which is
+        boxes 4 and 6 when there is no Additional Medicare Tax); on a joint return it includes the spouse's amounts, as the
+        worksheet's footnote requires.
+    - id: s8812.clwb_8
+      printed: (helper)
+      type: NonNegDollars
+      label: Credit Limit Worksheet B, line 8. Enter the total of any amounts from Schedule 1, line 15; Schedule 2, line 5;
+        Schedule 2, line 6; and Schedule 2, line 13
+      expr:
+        op: copy
+        from: s8812.line22
+      cite:
+        doc: i1040s8812
+        locator: p. 5, Credit Limit Worksheet B, line 8, "Enter the total of any amounts from"
+    - id: s8812.clwb_9
+      printed: (helper)
+      type: Dollars
+      label: Credit Limit Worksheet B, line 9. Add lines 7 and 8
+      expr:
+        op: sum
+        of:
+          - s8812.clwb_7
+          - s8812.clwb_8
+      cite:
+        doc: i1040s8812
+        locator: p. 5, Credit Limit Worksheet B, line 9, "Add lines 7 and 8"
+    - id: s8812.clwb_10
+      printed: (helper)
+      type: NonNegDollars
+      label: Credit Limit Worksheet B, line 10. 1040 and 1040-SR filers. Enter the total of the amounts from Form 1040,
+        line 27a, and Schedule 3, line 11
+      expr:
+        op: sum
+        of:
+          - f1040.line27a
+          - s3.line11
+      cite:
+        doc: i1040s8812
+        locator: p. 6, Credit Limit Worksheet B—Continued, line 10, "1040 and 1040-SR filers. Enter the total of the amounts
+          from Form 1040 or 1040-SR, line 27a, and Schedule 3, line 11"
+    - id: s8812.clwb_11_figured
+      printed: (helper)
+      type: NonNegDollars
+      label: Credit Limit Worksheet B, line 11 when lines 7 through 10 are completed. Subtract line 10 from line 9. If the
+        result is zero or less, enter -0-
+      expr:
+        op: subtract_floor0
+        from: s8812.clwb_9
+        take: s8812.clwb_10
+      cite:
+        doc: i1040s8812
+        locator: p. 6, Credit Limit Worksheet B—Continued, line 11, "Subtract line 10 from line 9. If the result is zero or
+          less, enter -0-"
+    - id: s8812.clwb_11_three
+      printed: (helper)
+      type: NonNegDollars
+      label: Credit Limit Worksheet B, line 11 when line 2 is $5,100 or more. Zero if line 5 is equal to or more than line 1;
+        otherwise lines 7 through 11
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - s8812.clwb_5_covers
+                - const: true
+            then: s8812.zero
+          - guard:
+              op: test
+              eq:
+                - s8812.clwb_5_covers
+                - const: false
+            then: s8812.clwb_11_figured
+      cite:
+        doc: i1040s8812
+        locator: p. 5, Credit Limit Worksheet B, line 6, "Yes. If line 5 above is equal to or more than line 1 above, leave
+          lines 7 through 10 blank, enter -0- on line 11, and go to line 12. Otherwise, go to line 7"
+    - id: s8812.clwb_11
+      printed: (helper)
+      type: NonNegDollars
+      label: Credit Limit Worksheet B, line 11. Zero when line 2 is less than $5,100; otherwise as line 6 directs
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - s8812.clwb_three
+                - const: true
+            then: s8812.clwb_11_three
+          - guard:
+              op: test
+              eq:
+                - s8812.clwb_three
+                - const: false
+            then: s8812.zero
+      cite:
+        doc: i1040s8812
+        locator: p. 5, Credit Limit Worksheet B, line 6, "No. If you are a bona fide resident of Puerto Rico and line 5 above
+          is less than line 1 above, go to line 7. Otherwise, leave lines 7 through 10 blank, enter -0- on line 11"
+      refuses:
+        - when: s8812.puerto_rico
+          form: Credit Limit Worksheet B, line 6, for bona fide residents of Puerto Rico
+          remedy: The Puerto Rico path through Credit Limit Worksheet B is outside this tool.
+          cite:
+            doc: i1040s8812
+            locator: p. 5, Credit Limit Worksheet B, line 6, "If you are a bona fide resident of Puerto Rico and line 5 above
+              is less than line 1 above, go to line 7"
+    - id: s8812.clwb_12
+      printed: (helper)
+      type: NonNegDollars
+      label: Credit Limit Worksheet B, line 12. Enter the larger of line 5 or line 11
+      expr:
+        op: larger_of
+        of:
+          - s8812.clwb_5
+          - s8812.clwb_11
+      cite:
+        doc: i1040s8812
+        locator: p. 6, Credit Limit Worksheet B—Continued, line 12, "Enter the larger of line 5 or line 11"
+    - id: s8812.clwb_13
+      printed: (helper)
+      type: NonNegDollars
+      label: Credit Limit Worksheet B, line 13. Enter the smaller of line 2 or line 12
+      expr:
+        op: smaller_of
+        of:
+          - s8812.clwb_2
+          - s8812.clwb_12
+      cite:
+        doc: i1040s8812
+        locator: p. 6, Credit Limit Worksheet B—Continued, line 13, "Enter the smaller of line 2 or line 12"
+    - id: s8812.clwb_14
+      printed: (helper)
+      type: NonNegDollars
+      label: Credit Limit Worksheet B, line 14. Is the amount on line 13 of this worksheet more than the amount on line 1? No.
+        Subtract line 13 from line 1. Yes. Enter -0-
+      expr:
+        op: subtract_floor0
+        from: s8812.clwb_1
+        take: s8812.clwb_13
+      cite:
+        doc: i1040s8812
+        locator: p. 6, Credit Limit Worksheet B—Continued, line 14, "Is the amount on line 13 of this worksheet more than the
+          amount on line 1? No. Subtract line 13 from line 1. Enter the result. Yes. Enter -0-"
+    - id: s8812.clwb_15
+      printed: (helper)
+      type: NonNegDollars
+      label: Credit Limit Worksheet B, line 15. Enter the total of the amounts from Schedule 3, lines 5a, 6c, 6g and 6h; in
+        this tool line 5a, the others being refused. Enter this amount on line 4 of Credit Limit Worksheet A
+      expr:
+        op: copy
+        from: s3.line5a
+      cite:
+        doc: i1040s8812
+        locator: p. 6, Credit Limit Worksheet B—Continued, line 15, "Enter this amount on line 4 of Credit Limit Worksheet A"
+      note: Lines 6c, 6g and 6h (Forms 8839, 8396 and 8859) are refused by scope.credits on Credit Limit Worksheet A line 4.

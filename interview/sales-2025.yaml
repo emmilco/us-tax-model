@@ -12,6 +12,7 @@ interview:
     locator: Parts I and II, transaction rows
   questions:
   - $sales
+  - f2441.benefits
   - sales.box
   - sales.route
   - sales.code

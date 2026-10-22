@@ -1,0 +1,38 @@
+{
+ "kind": "classm",
+ "form": "f8880",
+ "rulings": [
+  {
+   "case": "classm.f8880.1",
+   "printed": "8",
+   "project": "$-12,028.87",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 7 is zero in this case, and the model stopped there and left the later lines at zero; the project figures every line regardless and applies the stop on line 12 (f8880.can_take), which is zero here on both sides. f8880 p. 1, line 7, \"Add the amounts on line 6. If zero, stop; you can't take this credit\". As the stop rulings in reviews/2025/classm/eic and s8812.",
+   "drop": true
+  },
+  {
+   "case": "classm.f8880.1",
+   "printed": "9",
+   "project": "50%",
+   "model": "0%",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 7 is zero in this case, and the model stopped there and left the later lines at zero; the project figures every line regardless and applies the stop on line 12 (f8880.can_take), which is zero here on both sides. f8880 p. 1, line 7, \"Add the amounts on line 6. If zero, stop; you can't take this credit\". As the stop rulings in reviews/2025/classm/eic and s8812.",
+   "drop": true
+  },
+  {
+   "case": "classm.f8880.4",
+   "printed": "11",
+   "project": "$26.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 7 is zero in this case, and the model stopped there and left the later lines at zero; the project figures every line regardless and applies the stop on line 12 (f8880.can_take), which is zero here on both sides. f8880 p. 1, line 7, \"Add the amounts on line 6. If zero, stop; you can't take this credit\". As the stop rulings in reviews/2025/classm/eic and s8812.",
+   "drop": true
+  },
+  {
+   "case": "classm.f8880.4",
+   "printed": "8",
+   "project": "$73,135.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 7 is zero in this case, and the model stopped there and left the later lines at zero; the project figures every line regardless and applies the stop on line 12 (f8880.can_take), which is zero here on both sides. f8880 p. 1, line 7, \"Add the amounts on line 6. If zero, stop; you can't take this credit\". As the stop rulings in reviews/2025/classm/eic and s8812.",
+   "drop": true
+  }
+ ]
+}

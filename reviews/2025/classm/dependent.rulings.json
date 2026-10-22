@@ -4,10 +4,98 @@
  "rulings": [
   {
    "case": "classm.dependent.1",
+   "printed": "dependent[dep_a].dc_child",
+   "project": "no",
+   "model": "yes",
+   "ruling": "Ruling: second construction right about the label, project value retained; model value dropped from the fixture; proposed finding (label only). The person is a qualifying child aged 11 at the end of 2025, under 13 all year. `dependent.dc_child` is the turned-13 route only (`dependent.dc_age13`, 13 at the end of 2025, and `dependent.dc_under13`); the all-year route is `dependent.dc_child_all_year` (yes here), and `dependent.dc_qp` takes either, so the qualifying-person result is unchanged (i2441 p. 1, Qualifying Person(s), \"If the child turned 13 during the year, the child is a qualifying person for the part of the year they were under age 13\"). But the label given to the model, \"Your qualifying child who is your dependent and was under 13 for at least part of 2025 when the care was provided\", is true of this child, so the model's yes follows the label. Proposed fix: label it as the child who turned 13 in 2025, e.g. \"Your qualifying child who is your dependent, was 13 at the end of 2025 and was under 13 for part of 2025 when the care was provided\"; the value stays no. Fixed during integration (BUG-0080): the label of `dependent.dc_child` now says the child turned 13 during 2025.",
+   "drop": true
+  },
+  {
+   "case": "classm.dependent.1",
+   "printed": "dependent[dep_a].dc_line2d",
+   "project": "$4,070.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. This entry is not a qualifying person (`dependent.dc_qp` no, which the model agrees with: you did not pay for care so you could work (`f2441.care` no)); the model leaves it off line 2. The project shows the entry's expenses in its column (d) line, and the line 3 total `f2441.paid_total` sums column (d) only over entries with `dependent.dc_qp` true, so no amount on Form 2441 differs (i2441 p. 3, Line 2, \"Don't list a person on line 2 unless they are listed as an eligible person under Qualifying Person(s), earlier\").",
+   "drop": true
+  },
+  {
+   "case": "classm.dependent.1",
+   "printed": "dependent[dep_b].dc_line2d",
+   "project": "$8,270.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. This entry is not a qualifying person (`dependent.dc_qp` no, which the model agrees with: you did not pay for care so you could work (`f2441.care` no)); the model leaves it off line 2. The project shows the entry's expenses in its column (d) line, and the line 3 total `f2441.paid_total` sums column (d) only over entries with `dependent.dc_qp` true, so no amount on Form 2441 differs (i2441 p. 3, Line 2, \"Don't list a person on line 2 unless they are listed as an eligible person under Qualifying Person(s), earlier\").",
+   "drop": true
+  },
+  {
+   "case": "classm.dependent.1",
+   "printed": "dependent[dep_c].dc_line2d",
+   "project": "$3,330.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. This entry is not a qualifying person (`dependent.dc_qp` no, which the model agrees with: you did not pay for care so you could work (`f2441.care` no)); the model leaves it off line 2. The project shows the entry's expenses in its column (d) line, and the line 3 total `f2441.paid_total` sums column (d) only over entries with `dependent.dc_qp` true, so no amount on Form 2441 differs (i2441 p. 3, Line 2, \"Don't list a person on line 2 unless they are listed as an eligible person under Qualifying Person(s), earlier\").",
+   "drop": true
+  },
+  {
+   "case": "classm.dependent.1",
    "printed": "dependent[dep_c].hoh_test1",
    "project": "yes",
    "model": "no",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Test 1 says 'Your parent didn't have to live with you'; the project does not test where the parent lived, the model excludes a parent who lives with you. Such a parent qualifies the filer through Test 2 (hoh_test2 admits a claimed parent who lived with you more than half the year), so head of household eligibility is the same (i1040gi p. 14, Head of Household).",
+   "drop": true
+  },
+  {
+   "case": "classm.dependent.2",
+   "printed": "dependent[dep_a].dc_line2d",
+   "project": "$4,810.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. This entry is not a qualifying person (`dependent.dc_qp` no, which the model agrees with: you did not pay for care so you could work (`f2441.care` no)); the model leaves it off line 2. The project shows the entry's expenses in its column (d) line, and the line 3 total `f2441.paid_total` sums column (d) only over entries with `dependent.dc_qp` true, so no amount on Form 2441 differs (i2441 p. 3, Line 2, \"Don't list a person on line 2 unless they are listed as an eligible person under Qualifying Person(s), earlier\").",
+   "drop": true
+  },
+  {
+   "case": "classm.dependent.2",
+   "printed": "dependent[dep_b].dc_line2d",
+   "project": "$1,110.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. This entry is not a qualifying person (`dependent.dc_qp` no, which the model agrees with: you did not pay for care so you could work (`f2441.care` no)); the model leaves it off line 2. The project shows the entry's expenses in its column (d) line, and the line 3 total `f2441.paid_total` sums column (d) only over entries with `dependent.dc_qp` true, so no amount on Form 2441 differs (i2441 p. 3, Line 2, \"Don't list a person on line 2 unless they are listed as an eligible person under Qualifying Person(s), earlier\").",
+   "drop": true
+  },
+  {
+   "case": "classm.dependent.2",
+   "printed": "dependent[dep_c].dc_line2d",
+   "project": "$4,070.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. This entry is not a qualifying person (`dependent.dc_qp` no, which the model agrees with: you did not pay for care so you could work (`f2441.care` no)); the model leaves it off line 2. The project shows the entry's expenses in its column (d) line, and the line 3 total `f2441.paid_total` sums column (d) only over entries with `dependent.dc_qp` true, so no amount on Form 2441 differs (i2441 p. 3, Line 2, \"Don't list a person on line 2 unless they are listed as an eligible person under Qualifying Person(s), earlier\").",
+   "drop": true
+  },
+  {
+   "case": "classm.dependent.3",
+   "printed": "dependent[dep_a].dc_line2d",
+   "project": "$370.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. This entry is not a qualifying person (`dependent.dc_qp` no, which the model agrees with: you did not pay for care so you could work (`f2441.care` no)); the model leaves it off line 2. The project shows the entry's expenses in its column (d) line, and the line 3 total `f2441.paid_total` sums column (d) only over entries with `dependent.dc_qp` true, so no amount on Form 2441 differs (i2441 p. 3, Line 2, \"Don't list a person on line 2 unless they are listed as an eligible person under Qualifying Person(s), earlier\").",
+   "drop": true
+  },
+  {
+   "case": "classm.dependent.3",
+   "printed": "dependent[dep_b].dc_line2d",
+   "project": "$1,110.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. This entry is not a qualifying person (`dependent.dc_qp` no, which the model agrees with: you did not pay for care so you could work (`f2441.care` no)); the model leaves it off line 2. The project shows the entry's expenses in its column (d) line, and the line 3 total `f2441.paid_total` sums column (d) only over entries with `dependent.dc_qp` true, so no amount on Form 2441 differs (i2441 p. 3, Line 2, \"Don't list a person on line 2 unless they are listed as an eligible person under Qualifying Person(s), earlier\").",
+   "drop": true
+  },
+  {
+   "case": "classm.dependent.3",
+   "printed": "dependent[dep_c].dc_line2d",
+   "project": "$4,200.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. This entry is not a qualifying person (`dependent.dc_qp` no, which the model agrees with: you did not pay for care so you could work (`f2441.care` no)); the model leaves it off line 2. The project shows the entry's expenses in its column (d) line, and the line 3 total `f2441.paid_total` sums column (d) only over entries with `dependent.dc_qp` true, so no amount on Form 2441 differs (i2441 p. 3, Line 2, \"Don't list a person on line 2 unless they are listed as an eligible person under Qualifying Person(s), earlier\").",
+   "drop": true
+  },
+  {
+   "case": "classm.dependent.4",
+   "printed": "dependent[dep_a].dc_line2d",
+   "project": "$1,850.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. This entry is not a qualifying person (`dependent.dc_qp` no, which the model agrees with: you did not pay for care so you could work (`f2441.care` no)); the model leaves it off line 2. The project shows the entry's expenses in its column (d) line, and the line 3 total `f2441.paid_total` sums column (d) only over entries with `dependent.dc_qp` true, so no amount on Form 2441 differs (i2441 p. 3, Line 2, \"Don't list a person on line 2 unless they are listed as an eligible person under Qualifying Person(s), earlier\").",
    "drop": true
   },
   {
@@ -16,6 +104,22 @@
    "project": "yes",
    "model": "no",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Test 1 (i1040gi p. 14) covers a parent whose main home you kept up for all of 2025, with or without the parent living with you; the project's hoh_test1 encodes only the parent who does not live with you (the question asks 'For a parent not living with you'), and a dependent parent who lived with you all year in the home you kept up qualifies you through Test 2, item 1, so head of household eligibility is the same either way.",
+   "drop": true
+  },
+  {
+   "case": "classm.dependent.5",
+   "printed": "dependent[dep_a].dc_line2d",
+   "project": "$1,360.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. This entry is not a qualifying person (`dependent.dc_qp` no, which the model agrees with: a household member aged 28 who is able to care for themselves); the model leaves it off line 2. The project shows the entry's expenses in its column (d) line, and the line 3 total `f2441.paid_total` sums column (d) only over entries with `dependent.dc_qp` true, so no amount on Form 2441 differs (i2441 p. 3, Line 2, \"Don't list a person on line 2 unless they are listed as an eligible person under Qualifying Person(s), earlier\").",
+   "drop": true
+  },
+  {
+   "case": "classm.dependent.5",
+   "printed": "dependent[dep_b].dc_child",
+   "project": "no",
+   "model": "yes",
+   "ruling": "Ruling: second construction right about the label, project value retained; model value dropped from the fixture; proposed finding (label only). The person is a qualifying child aged 3 at the end of 2025, under 13 all year. `dependent.dc_child` is the turned-13 route only (`dependent.dc_age13`, 13 at the end of 2025, and `dependent.dc_under13`); the all-year route is `dependent.dc_child_all_year` (yes here), and `dependent.dc_qp` takes either, so the qualifying-person result is unchanged (i2441 p. 1, Qualifying Person(s), \"If the child turned 13 during the year, the child is a qualifying person for the part of the year they were under age 13\"). But the label given to the model, \"Your qualifying child who is your dependent and was under 13 for at least part of 2025 when the care was provided\", is true of this child, so the model's yes follows the label. Proposed fix: label it as the child who turned 13 in 2025, e.g. \"Your qualifying child who is your dependent, was 13 at the end of 2025 and was under 13 for part of 2025 when the care was provided\"; the value stays no. Fixed during integration (BUG-0080): the label of `dependent.dc_child` now says the child turned 13 during 2025.",
    "drop": true
   }
  ]

@@ -125,7 +125,22 @@
         "person[taxpayer].tipjob[emp0].qualified": true,
         "person[taxpayer].tipjob[emp0].amount": 800000,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "s1a.line3": {
@@ -297,7 +312,22 @@
         "person[taxpayer].tipjob[emp1].qualified": true,
         "person[taxpayer].tipjob[emp1].amount": 450000,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "s1a.line4a": {
@@ -446,7 +476,22 @@
         "person[taxpayer].tipjob[emp0].qualified": true,
         "person[taxpayer].tipjob[emp0].amount": 3000000,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "s1a.line6": {
@@ -587,7 +632,22 @@
         "person[taxpayer].tipjob[emp0].qualified": true,
         "person[taxpayer].tipjob[emp0].amount": 2000000,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "s1a.line10": {
@@ -728,7 +788,22 @@
         "person[taxpayer].tipjob[emp0].qualified": true,
         "person[taxpayer].tipjob[emp0].amount": 200000,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "s1a.line12": {
@@ -869,7 +944,22 @@
         "person[taxpayer].tipjob[emp0].qualified": true,
         "person[taxpayer].tipjob[emp0].amount": 500000,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "s1a.line10": {
@@ -1010,7 +1100,22 @@
         "person[taxpayer].tipjob[emp0].qualified": true,
         "person[taxpayer].tipjob[emp0].amount": 500000,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "s1a.line10": {
@@ -1151,7 +1256,22 @@
         "person[taxpayer].tipjob[emp0].qualified": true,
         "person[taxpayer].tipjob[emp0].amount": 800000,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "s1a.line13": {
@@ -1292,7 +1412,22 @@
         "person[taxpayer].tipjob[emp0].qualified": false,
         "person[taxpayer].tipjob[emp0].amount": 800000,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "s1a.line13": {
@@ -1436,7 +1571,22 @@
         "person[taxpayer].otjob[ot0].method": "premium",
         "person[taxpayer].otjob[ot0].statement": 600000,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "s1a.line14a": {
@@ -1587,7 +1737,22 @@
         "person[taxpayer].otjob[ot0].method": "total_time_and_half",
         "person[taxpayer].otjob[ot0].statement": 1500000,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "s1a.line14a": {
@@ -1726,7 +1891,22 @@
         "person[taxpayer].otjob[ot0].method": "premium_double",
         "person[taxpayer].otjob[ot0].statement": 1000000,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "s1a.line14a": {
@@ -1865,7 +2045,22 @@
         "person[taxpayer].otjob[ot0].method": "total_double",
         "person[taxpayer].otjob[ot0].statement": 2000000,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "s1a.line14a": {
@@ -2004,7 +2199,22 @@
         "person[taxpayer].otjob[ot0].method": "total_time_and_half",
         "person[taxpayer].otjob[ot0].statement": 100000,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "s1a.line14a": {
@@ -2143,7 +2353,22 @@
         "person[taxpayer].otjob[ot0].method": "total_time_and_half",
         "person[taxpayer].otjob[ot0].statement": 100001,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "s1a.line14a": {
@@ -2287,7 +2512,22 @@
         "person[taxpayer].otjob[ot1].method": "total_time_and_half",
         "person[taxpayer].otjob[ot1].statement": 1200000,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "s1a.line14a": {
@@ -2430,7 +2670,22 @@
         "person[taxpayer].otjob[ot0].method": "premium",
         "person[taxpayer].otjob[ot0].statement": 1000000,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "s1a.line18": {
@@ -2570,7 +2825,22 @@
         ],
         "person[taxpayer].otjob[ot0].flsa": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "s1a.line14a": {
@@ -2708,7 +2978,22 @@
         "person[taxpayer].otjob[ot0].special_rule": false,
         "person[taxpayer].otjob[ot0].method": "other",
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "s1a.line21": {
@@ -2851,7 +3136,22 @@
         "person[taxpayer].otjob[ot0].special_rule": true,
         "person[taxpayer].otjob[ot0].method": "premium",
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "s1a.line21": {
@@ -2996,7 +3296,22 @@
         "carloan[VIN0].interest": 320000,
         "carloan[VIN0].mixed": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "s1a.line23": {
@@ -3144,7 +3459,22 @@
         "carloan[VIN0].interest": 500000,
         "carloan[VIN0].mixed": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "s1a.line27": {
@@ -3297,7 +3627,22 @@
         "carloan[VIN0].interest": 500000,
         "carloan[VIN0].mixed": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "s1a.line27": {
@@ -3447,7 +3792,22 @@
         "carloan[VIN1].interest": 600000,
         "carloan[VIN1].mixed": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "s1a.line23": {
@@ -3590,7 +3950,22 @@
         "carloan[VIN0].vehicle": false,
         "carloan[VIN0].interest": 300000,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "s1a.line23": {
@@ -3733,7 +4108,22 @@
         "carloan[VIN0].nonqualifying": 600000,
         "carloan[VIN0].down": 400000,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "s1a.line23": {
@@ -3875,7 +4265,22 @@
         "carloan[VIN0].refi_balance": 3000000,
         "carloan[VIN0].financed": 3800000,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "s1a.line23": {
@@ -4017,7 +4422,22 @@
         "carloan[VIN0].refi_balance": 2500000,
         "carloan[VIN0].financed": 2000000,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "s1a.line30": {
@@ -4153,7 +4573,22 @@
         "carloan[VIN0].interest": 250000,
         "carloan[VIN0].mixed": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "s1a.line30": {
@@ -4292,7 +4727,22 @@
         "carloan[VIN0].nonqualifying": 1000000,
         "carloan[VIN0].down": 0,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "s1a.line30": {
@@ -4430,7 +4880,22 @@
         "carloan[VIN0].refi_balance": 2000000,
         "carloan[VIN0].financed": 2000000,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "s1a.line30": {
@@ -4568,7 +5033,22 @@
         "s1a.carloan": false,
         "person[taxpayer].died_before_65": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "s1a.line35": {
@@ -4717,7 +5197,22 @@
         "s1a.carloan": false,
         "person[taxpayer].died_before_65": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "s1a.line33": {
@@ -4858,7 +5353,22 @@
         "s1a.carloan": false,
         "person[taxpayer].died_before_65": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "s1a.line34": {
@@ -4995,7 +5505,22 @@
         "s1a.carloan": false,
         "person[taxpayer].died_before_65": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "s1a.line33": {
@@ -5136,7 +5661,22 @@
         "s1a.carloan": false,
         "person[taxpayer].died_before_65": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "s1a.line36a": {
@@ -5269,7 +5809,22 @@
         "s1a.carloan": false,
         "person[taxpayer].died_before_65": true,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "s1a.line37": {
@@ -5427,7 +5982,22 @@
         "carloan[VIN0].interest": 300000,
         "carloan[VIN0].mixed": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "s1a.line13": {
@@ -5588,7 +6158,22 @@
         "s1a.carloan": false,
         "person[taxpayer].died_before_65": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "s1a.line38": {
@@ -5725,7 +6310,22 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "s1a.line38": {
@@ -5874,7 +6474,22 @@
         "carloan[VIN0].interest": 300000,
         "carloan[VIN0].mixed": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "s1a.line13": {
@@ -6041,7 +6656,32 @@
         "$f8889@person[spouse]": [],
         "$sc@person[taxpayer]": [],
         "$sc@person[spouse]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false,
+        "person[spouse].sav_born": true,
+        "person[spouse].sav_student": false,
+        "person[spouse].sav_claimed": false,
+        "person[spouse].sav_trad": false,
+        "person[spouse].sav_able": false,
+        "person[spouse].sav_roth": 0,
+        "person[spouse].sav_excess": false,
+        "person[spouse].sav_voluntary": 0,
+        "person[spouse].sav_prior_joint": 0,
+        "person[spouse].sav_prior_other": 0
       },
       "expect": {
         "s1a.line9": {
@@ -6210,7 +6850,32 @@
         "$f8889@person[spouse]": [],
         "$sc@person[taxpayer]": [],
         "$sc@person[spouse]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false,
+        "person[spouse].sav_born": true,
+        "person[spouse].sav_student": false,
+        "person[spouse].sav_claimed": false,
+        "person[spouse].sav_trad": false,
+        "person[spouse].sav_able": false,
+        "person[spouse].sav_roth": 0,
+        "person[spouse].sav_excess": false,
+        "person[spouse].sav_voluntary": 0,
+        "person[spouse].sav_prior_joint": 0,
+        "person[spouse].sav_prior_other": 0
       },
       "expect": {
         "s1a.line26": {
@@ -6361,7 +7026,32 @@
         "$f8889@person[spouse]": [],
         "$sc@person[taxpayer]": [],
         "$sc@person[spouse]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false,
+        "person[spouse].sav_born": true,
+        "person[spouse].sav_student": false,
+        "person[spouse].sav_claimed": false,
+        "person[spouse].sav_trad": false,
+        "person[spouse].sav_able": false,
+        "person[spouse].sav_roth": 0,
+        "person[spouse].sav_excess": false,
+        "person[spouse].sav_voluntary": 0,
+        "person[spouse].sav_prior_joint": 0,
+        "person[spouse].sav_prior_other": 0
       },
       "expect": {
         "s1a.line32": {
@@ -6501,7 +7191,22 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "s1a.line23": {
@@ -6642,7 +7347,22 @@
         "person[taxpayer].tipjob[emp0].qualified": true,
         "person[taxpayer].tipjob[emp0].amount": 800000,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "s1a.line13": {
@@ -6787,7 +7507,22 @@
         "person[taxpayer].tipjob[emp1].qualified": true,
         "person[taxpayer].tipjob[emp1].amount": 300000,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "s1a.line4c": {
@@ -6938,7 +7673,22 @@
         "s1a.carloan": false,
         "person[taxpayer].died_before_65": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "s1a.line36a": {
@@ -7079,7 +7829,22 @@
         "person[taxpayer].tipjob[emp0].qualified": true,
         "person[taxpayer].tipjob[emp0].amount": 800000,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "s1a.line4c": {
@@ -7227,7 +7992,22 @@
         "person[taxpayer].otjob[ot0].method": "premium",
         "person[taxpayer].otjob[ot0].statement": 300000,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "s1a.line14a": {
@@ -7373,7 +8153,22 @@
         "person[taxpayer].tipjob[emp0].qualified": true,
         "person[taxpayer].tipjob[emp0].amount": 800000,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "s1a.line13": {

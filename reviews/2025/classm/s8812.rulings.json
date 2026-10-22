@@ -77,9 +77,25 @@
   {
    "case": "classm.s8812.1",
    "printed": "25",
+   "project": "$2,925.57",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 16b is $1,700, less than $5,100, and the filer is not a bona fide resident of Puerto Rico, so line 20 says \"Otherwise, skip Part II-B and enter the smaller of line 17 or line 20 on line 27\" (f1040s8812 p. 2, line 20); the model leaves Part II-B blank. The project figures Part II-B anyway and line 27 is the smaller of $1,700.00 and $0.00 = $0.00 on both sides (agreed). Project's working: line 21 = Additional Medicare Tax and RRTA Tax Worksheet line 16 (i1040s8812 p. 9) = box 4 $2,448.00 + box 6 $478.00 - Form 8959 line 22 $0.43 = $2,925.57; line 23 = $2,925.57 + $0; line 24 = Form 1040 line 27a $0 + Schedule 3 line 11 $0 = $0; line 25 = $2,925.57; line 26 = larger of line 20 $0 and $2,925.57.",
+   "drop": true
+  },
+  {
+   "case": "classm.s8812.1",
+   "printed": "25",
    "project": "$3,825.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 16b is $0 (no qualifying child with the required SSN) and the form says \"If zero, stop here; you cannot claim the additional child tax credit\" (Schedule 8812 (2025), line 16b), so the model leaves Parts II-A and II-B blank; the project figures every line and line 27 is $0 on both sides (agreed). Project's working: line 18a is the Earned Income Worksheet amount, wages $50,000.00 (not taking the EIC); line 19 = $50,000.00 - $2,500 = $47,500.00; line 20 = 15% = $7,125.00; line 21 = W-2 box 4 $3,100.00 + box 6 $725.00 = $3,825.00; line 23 = $3,825.00 + $0; line 25 = $3,825.00 - $0; line 26 = larger of $7,125.00 and $3,825.00.",
+   "drop": true
+  },
+  {
+   "case": "classm.s8812.1",
+   "printed": "26",
+   "project": "$2,925.57",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 16b is $1,700, less than $5,100, and the filer is not a bona fide resident of Puerto Rico, so line 20 says \"Otherwise, skip Part II-B and enter the smaller of line 17 or line 20 on line 27\" (f1040s8812 p. 2, line 20); the model leaves Part II-B blank. The project figures Part II-B anyway and line 27 is the smaller of $1,700.00 and $0.00 = $0.00 on both sides (agreed). Project's working: line 21 = Additional Medicare Tax and RRTA Tax Worksheet line 16 (i1040s8812 p. 9) = box 4 $2,448.00 + box 6 $478.00 - Form 8959 line 22 $0.43 = $2,925.57; line 23 = $2,925.57 + $0; line 24 = Form 1040 line 27a $0 + Schedule 3 line 11 $0 = $0; line 25 = $2,925.57; line 26 = larger of line 20 $0 and $2,925.57.",
    "drop": true
   },
   {
@@ -116,10 +132,74 @@
   },
   {
    "case": "classm.s8812.2",
+   "printed": "13",
+   "project": "$418.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 8 ($0) is not more than line 11 ($0), and the form says \"No. Stop here. You cannot take the child tax credit, credit for other dependents, or additional child tax credit\" (f1040s8812 p. 1, line 12), so the model leaves the later lines blank; the project figures every line and lines 14 and 27 are $0 on both sides (agreed). Project's working: line 13 = Credit Limit Worksheet A (i1040s8812 p. 4): line 1 Form 1040 line 18 $618.00 - line 2 (Schedule 3 lines 1 $0, 2 $0, 4 $200.00, 5b $0) $200.00 = $418.00, line 4 $0 (Credit Limit Worksheet B not completed), line 5 $418.00; line 18a = EIC Step 5 earned income $26,469.00 (taking the EIC, no Schedule C); line 19 = $26,469.00 - $2,500 = $23,969.00; line 20 = 15% = $3,595.35; line 21 = box 4 $1,641.00 + box 6 $384.00 - Form 8959 line 22 $0.20 = $2,024.80; line 23 = $2,024.80 + $0; line 24 = Form 1040 line 27a $3,781.00 + Schedule 3 line 11 $0 = $3,781.00; line 25 = $0; line 26 = larger of $3,595.35 and $0.",
+   "drop": true
+  },
+  {
+   "case": "classm.s8812.2",
    "printed": "16b",
    "project": "$1,700.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The printed 'Stop here' (Schedule 8812 line 12 when line 8 is not more than line 11, line 16a or 16b at zero) and the skip of Part II-B for fewer than three children leave the later lines blank; the project computes every line regardless, and the lines past the stop do not reach Form 1040 (lines 14 and 27 carry the credits).",
+   "drop": true
+  },
+  {
+   "case": "classm.s8812.2",
+   "printed": "18a",
+   "project": "$26,469.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 8 ($0) is not more than line 11 ($0), and the form says \"No. Stop here. You cannot take the child tax credit, credit for other dependents, or additional child tax credit\" (f1040s8812 p. 1, line 12), so the model leaves the later lines blank; the project figures every line and lines 14 and 27 are $0 on both sides (agreed). Project's working: line 13 = Credit Limit Worksheet A (i1040s8812 p. 4): line 1 Form 1040 line 18 $618.00 - line 2 (Schedule 3 lines 1 $0, 2 $0, 4 $200.00, 5b $0) $200.00 = $418.00, line 4 $0 (Credit Limit Worksheet B not completed), line 5 $418.00; line 18a = EIC Step 5 earned income $26,469.00 (taking the EIC, no Schedule C); line 19 = $26,469.00 - $2,500 = $23,969.00; line 20 = 15% = $3,595.35; line 21 = box 4 $1,641.00 + box 6 $384.00 - Form 8959 line 22 $0.20 = $2,024.80; line 23 = $2,024.80 + $0; line 24 = Form 1040 line 27a $3,781.00 + Schedule 3 line 11 $0 = $3,781.00; line 25 = $0; line 26 = larger of $3,595.35 and $0.",
+   "drop": true
+  },
+  {
+   "case": "classm.s8812.2",
+   "printed": "19",
+   "project": "$23,969.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 8 ($0) is not more than line 11 ($0), and the form says \"No. Stop here. You cannot take the child tax credit, credit for other dependents, or additional child tax credit\" (f1040s8812 p. 1, line 12), so the model leaves the later lines blank; the project figures every line and lines 14 and 27 are $0 on both sides (agreed). Project's working: line 13 = Credit Limit Worksheet A (i1040s8812 p. 4): line 1 Form 1040 line 18 $618.00 - line 2 (Schedule 3 lines 1 $0, 2 $0, 4 $200.00, 5b $0) $200.00 = $418.00, line 4 $0 (Credit Limit Worksheet B not completed), line 5 $418.00; line 18a = EIC Step 5 earned income $26,469.00 (taking the EIC, no Schedule C); line 19 = $26,469.00 - $2,500 = $23,969.00; line 20 = 15% = $3,595.35; line 21 = box 4 $1,641.00 + box 6 $384.00 - Form 8959 line 22 $0.20 = $2,024.80; line 23 = $2,024.80 + $0; line 24 = Form 1040 line 27a $3,781.00 + Schedule 3 line 11 $0 = $3,781.00; line 25 = $0; line 26 = larger of $3,595.35 and $0.",
+   "drop": true
+  },
+  {
+   "case": "classm.s8812.2",
+   "printed": "20",
+   "project": "$3,595.35",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 8 ($0) is not more than line 11 ($0), and the form says \"No. Stop here. You cannot take the child tax credit, credit for other dependents, or additional child tax credit\" (f1040s8812 p. 1, line 12), so the model leaves the later lines blank; the project figures every line and lines 14 and 27 are $0 on both sides (agreed). Project's working: line 13 = Credit Limit Worksheet A (i1040s8812 p. 4): line 1 Form 1040 line 18 $618.00 - line 2 (Schedule 3 lines 1 $0, 2 $0, 4 $200.00, 5b $0) $200.00 = $418.00, line 4 $0 (Credit Limit Worksheet B not completed), line 5 $418.00; line 18a = EIC Step 5 earned income $26,469.00 (taking the EIC, no Schedule C); line 19 = $26,469.00 - $2,500 = $23,969.00; line 20 = 15% = $3,595.35; line 21 = box 4 $1,641.00 + box 6 $384.00 - Form 8959 line 22 $0.20 = $2,024.80; line 23 = $2,024.80 + $0; line 24 = Form 1040 line 27a $3,781.00 + Schedule 3 line 11 $0 = $3,781.00; line 25 = $0; line 26 = larger of $3,595.35 and $0.",
+   "drop": true
+  },
+  {
+   "case": "classm.s8812.2",
+   "printed": "21",
+   "project": "$2,024.80",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 8 ($0) is not more than line 11 ($0), and the form says \"No. Stop here. You cannot take the child tax credit, credit for other dependents, or additional child tax credit\" (f1040s8812 p. 1, line 12), so the model leaves the later lines blank; the project figures every line and lines 14 and 27 are $0 on both sides (agreed). Project's working: line 13 = Credit Limit Worksheet A (i1040s8812 p. 4): line 1 Form 1040 line 18 $618.00 - line 2 (Schedule 3 lines 1 $0, 2 $0, 4 $200.00, 5b $0) $200.00 = $418.00, line 4 $0 (Credit Limit Worksheet B not completed), line 5 $418.00; line 18a = EIC Step 5 earned income $26,469.00 (taking the EIC, no Schedule C); line 19 = $26,469.00 - $2,500 = $23,969.00; line 20 = 15% = $3,595.35; line 21 = box 4 $1,641.00 + box 6 $384.00 - Form 8959 line 22 $0.20 = $2,024.80; line 23 = $2,024.80 + $0; line 24 = Form 1040 line 27a $3,781.00 + Schedule 3 line 11 $0 = $3,781.00; line 25 = $0; line 26 = larger of $3,595.35 and $0.",
+   "drop": true
+  },
+  {
+   "case": "classm.s8812.2",
+   "printed": "23",
+   "project": "$2,024.80",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 8 ($0) is not more than line 11 ($0), and the form says \"No. Stop here. You cannot take the child tax credit, credit for other dependents, or additional child tax credit\" (f1040s8812 p. 1, line 12), so the model leaves the later lines blank; the project figures every line and lines 14 and 27 are $0 on both sides (agreed). Project's working: line 13 = Credit Limit Worksheet A (i1040s8812 p. 4): line 1 Form 1040 line 18 $618.00 - line 2 (Schedule 3 lines 1 $0, 2 $0, 4 $200.00, 5b $0) $200.00 = $418.00, line 4 $0 (Credit Limit Worksheet B not completed), line 5 $418.00; line 18a = EIC Step 5 earned income $26,469.00 (taking the EIC, no Schedule C); line 19 = $26,469.00 - $2,500 = $23,969.00; line 20 = 15% = $3,595.35; line 21 = box 4 $1,641.00 + box 6 $384.00 - Form 8959 line 22 $0.20 = $2,024.80; line 23 = $2,024.80 + $0; line 24 = Form 1040 line 27a $3,781.00 + Schedule 3 line 11 $0 = $3,781.00; line 25 = $0; line 26 = larger of $3,595.35 and $0.",
+   "drop": true
+  },
+  {
+   "case": "classm.s8812.2",
+   "printed": "24",
+   "project": "$3,781.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 8 ($0) is not more than line 11 ($0), and the form says \"No. Stop here. You cannot take the child tax credit, credit for other dependents, or additional child tax credit\" (f1040s8812 p. 1, line 12), so the model leaves the later lines blank; the project figures every line and lines 14 and 27 are $0 on both sides (agreed). Project's working: line 13 = Credit Limit Worksheet A (i1040s8812 p. 4): line 1 Form 1040 line 18 $618.00 - line 2 (Schedule 3 lines 1 $0, 2 $0, 4 $200.00, 5b $0) $200.00 = $418.00, line 4 $0 (Credit Limit Worksheet B not completed), line 5 $418.00; line 18a = EIC Step 5 earned income $26,469.00 (taking the EIC, no Schedule C); line 19 = $26,469.00 - $2,500 = $23,969.00; line 20 = 15% = $3,595.35; line 21 = box 4 $1,641.00 + box 6 $384.00 - Form 8959 line 22 $0.20 = $2,024.80; line 23 = $2,024.80 + $0; line 24 = Form 1040 line 27a $3,781.00 + Schedule 3 line 11 $0 = $3,781.00; line 25 = $0; line 26 = larger of $3,595.35 and $0.",
+   "drop": true
+  },
+  {
+   "case": "classm.s8812.2",
+   "printed": "26",
+   "project": "$3,595.35",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 8 ($0) is not more than line 11 ($0), and the form says \"No. Stop here. You cannot take the child tax credit, credit for other dependents, or additional child tax credit\" (f1040s8812 p. 1, line 12), so the model leaves the later lines blank; the project figures every line and lines 14 and 27 are $0 on both sides (agreed). Project's working: line 13 = Credit Limit Worksheet A (i1040s8812 p. 4): line 1 Form 1040 line 18 $618.00 - line 2 (Schedule 3 lines 1 $0, 2 $0, 4 $200.00, 5b $0) $200.00 = $418.00, line 4 $0 (Credit Limit Worksheet B not completed), line 5 $418.00; line 18a = EIC Step 5 earned income $26,469.00 (taking the EIC, no Schedule C); line 19 = $26,469.00 - $2,500 = $23,969.00; line 20 = 15% = $3,595.35; line 21 = box 4 $1,641.00 + box 6 $384.00 - Form 8959 line 22 $0.20 = $2,024.80; line 23 = $2,024.80 + $0; line 24 = Form 1040 line 27a $3,781.00 + Schedule 3 line 11 $0 = $3,781.00; line 25 = $0; line 26 = larger of $3,595.35 and $0.",
    "drop": true
   },
   {
@@ -196,6 +276,46 @@
   },
   {
    "case": "classm.s8812.4",
+   "printed": "13",
+   "project": "$45,320.72",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 8 ($500.00) is not more than line 11 ($4,200.00), and the form says \"No. Stop here. You cannot take the child tax credit, credit for other dependents, or additional child tax credit\" (f1040s8812 p. 1, line 12), so the model leaves the later lines blank; the project figures every line and lines 14 and 27 are $0 on both sides (agreed). Project's working: line 13 = Credit Limit Worksheet A (i1040s8812 p. 4): line 1 Form 1040 line 18 $45,320.72 - line 2 (Schedule 3 lines 1, 2, 4 and 5b, all $0) = $45,320.72, line 4 $0, line 5 $45,320.72; line 18a = Earned Income Worksheet line 7 (not taking the EIC) = Form 1040 line 1z $208,026.00; line 19 = $205,526.00; line 20 = 15% = $30,828.90; line 21 = box 4 $11,429.00 + box 6 $3,017.00 + Form 8959 line 7 $72.23 - Form 8959 line 22 $0.62 = $14,517.61; line 23 = $14,517.61 + $0; line 24 = Form 1040 line 27a $0 + Schedule 3 line 11 $510.80 = $510.80; line 25 = $14,006.81; line 26 = larger of $30,828.90 and $14,006.81.",
+   "drop": true
+  },
+  {
+   "case": "classm.s8812.4",
+   "printed": "18a",
+   "project": "$208,026.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 8 ($500.00) is not more than line 11 ($4,200.00), and the form says \"No. Stop here. You cannot take the child tax credit, credit for other dependents, or additional child tax credit\" (f1040s8812 p. 1, line 12), so the model leaves the later lines blank; the project figures every line and lines 14 and 27 are $0 on both sides (agreed). Project's working: line 13 = Credit Limit Worksheet A (i1040s8812 p. 4): line 1 Form 1040 line 18 $45,320.72 - line 2 (Schedule 3 lines 1, 2, 4 and 5b, all $0) = $45,320.72, line 4 $0, line 5 $45,320.72; line 18a = Earned Income Worksheet line 7 (not taking the EIC) = Form 1040 line 1z $208,026.00; line 19 = $205,526.00; line 20 = 15% = $30,828.90; line 21 = box 4 $11,429.00 + box 6 $3,017.00 + Form 8959 line 7 $72.23 - Form 8959 line 22 $0.62 = $14,517.61; line 23 = $14,517.61 + $0; line 24 = Form 1040 line 27a $0 + Schedule 3 line 11 $510.80 = $510.80; line 25 = $14,006.81; line 26 = larger of $30,828.90 and $14,006.81.",
+   "drop": true
+  },
+  {
+   "case": "classm.s8812.4",
+   "printed": "19",
+   "project": "$205,526.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 8 ($500.00) is not more than line 11 ($4,200.00), and the form says \"No. Stop here. You cannot take the child tax credit, credit for other dependents, or additional child tax credit\" (f1040s8812 p. 1, line 12), so the model leaves the later lines blank; the project figures every line and lines 14 and 27 are $0 on both sides (agreed). Project's working: line 13 = Credit Limit Worksheet A (i1040s8812 p. 4): line 1 Form 1040 line 18 $45,320.72 - line 2 (Schedule 3 lines 1, 2, 4 and 5b, all $0) = $45,320.72, line 4 $0, line 5 $45,320.72; line 18a = Earned Income Worksheet line 7 (not taking the EIC) = Form 1040 line 1z $208,026.00; line 19 = $205,526.00; line 20 = 15% = $30,828.90; line 21 = box 4 $11,429.00 + box 6 $3,017.00 + Form 8959 line 7 $72.23 - Form 8959 line 22 $0.62 = $14,517.61; line 23 = $14,517.61 + $0; line 24 = Form 1040 line 27a $0 + Schedule 3 line 11 $510.80 = $510.80; line 25 = $14,006.81; line 26 = larger of $30,828.90 and $14,006.81.",
+   "drop": true
+  },
+  {
+   "case": "classm.s8812.4",
+   "printed": "20",
+   "project": "$30,828.90",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 8 ($500.00) is not more than line 11 ($4,200.00), and the form says \"No. Stop here. You cannot take the child tax credit, credit for other dependents, or additional child tax credit\" (f1040s8812 p. 1, line 12), so the model leaves the later lines blank; the project figures every line and lines 14 and 27 are $0 on both sides (agreed). Project's working: line 13 = Credit Limit Worksheet A (i1040s8812 p. 4): line 1 Form 1040 line 18 $45,320.72 - line 2 (Schedule 3 lines 1, 2, 4 and 5b, all $0) = $45,320.72, line 4 $0, line 5 $45,320.72; line 18a = Earned Income Worksheet line 7 (not taking the EIC) = Form 1040 line 1z $208,026.00; line 19 = $205,526.00; line 20 = 15% = $30,828.90; line 21 = box 4 $11,429.00 + box 6 $3,017.00 + Form 8959 line 7 $72.23 - Form 8959 line 22 $0.62 = $14,517.61; line 23 = $14,517.61 + $0; line 24 = Form 1040 line 27a $0 + Schedule 3 line 11 $510.80 = $510.80; line 25 = $14,006.81; line 26 = larger of $30,828.90 and $14,006.81.",
+   "drop": true
+  },
+  {
+   "case": "classm.s8812.4",
+   "printed": "21",
+   "project": "$14,517.61",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 8 ($500.00) is not more than line 11 ($4,200.00), and the form says \"No. Stop here. You cannot take the child tax credit, credit for other dependents, or additional child tax credit\" (f1040s8812 p. 1, line 12), so the model leaves the later lines blank; the project figures every line and lines 14 and 27 are $0 on both sides (agreed). Project's working: line 13 = Credit Limit Worksheet A (i1040s8812 p. 4): line 1 Form 1040 line 18 $45,320.72 - line 2 (Schedule 3 lines 1, 2, 4 and 5b, all $0) = $45,320.72, line 4 $0, line 5 $45,320.72; line 18a = Earned Income Worksheet line 7 (not taking the EIC) = Form 1040 line 1z $208,026.00; line 19 = $205,526.00; line 20 = 15% = $30,828.90; line 21 = box 4 $11,429.00 + box 6 $3,017.00 + Form 8959 line 7 $72.23 - Form 8959 line 22 $0.62 = $14,517.61; line 23 = $14,517.61 + $0; line 24 = Form 1040 line 27a $0 + Schedule 3 line 11 $510.80 = $510.80; line 25 = $14,006.81; line 26 = larger of $30,828.90 and $14,006.81.",
+   "drop": true
+  },
+  {
+   "case": "classm.s8812.4",
    "printed": "21",
    "project": "$2,636.79",
    "model": "$0.00",
@@ -205,9 +325,33 @@
   {
    "case": "classm.s8812.4",
    "printed": "23",
+   "project": "$14,517.61",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 8 ($500.00) is not more than line 11 ($4,200.00), and the form says \"No. Stop here. You cannot take the child tax credit, credit for other dependents, or additional child tax credit\" (f1040s8812 p. 1, line 12), so the model leaves the later lines blank; the project figures every line and lines 14 and 27 are $0 on both sides (agreed). Project's working: line 13 = Credit Limit Worksheet A (i1040s8812 p. 4): line 1 Form 1040 line 18 $45,320.72 - line 2 (Schedule 3 lines 1, 2, 4 and 5b, all $0) = $45,320.72, line 4 $0, line 5 $45,320.72; line 18a = Earned Income Worksheet line 7 (not taking the EIC) = Form 1040 line 1z $208,026.00; line 19 = $205,526.00; line 20 = 15% = $30,828.90; line 21 = box 4 $11,429.00 + box 6 $3,017.00 + Form 8959 line 7 $72.23 - Form 8959 line 22 $0.62 = $14,517.61; line 23 = $14,517.61 + $0; line 24 = Form 1040 line 27a $0 + Schedule 3 line 11 $510.80 = $510.80; line 25 = $14,006.81; line 26 = larger of $30,828.90 and $14,006.81.",
+   "drop": true
+  },
+  {
+   "case": "classm.s8812.4",
+   "printed": "23",
    "project": "$2,636.79",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 16b is $0 (no qualifying child with the required SSN) and the form says \"If zero, stop here; you cannot claim the additional child tax credit\" (Schedule 8812 (2025), line 16b), so the model leaves Parts II-A and II-B blank; the project figures every line and line 27 is $0 on both sides (agreed). Project's working: line 21 = Additional Medicare Tax and RRTA Tax Worksheet line 16 (i1040s8812 p. 9) = box 4 $2,137.00 + box 6 $500.00 - Additional Medicare Tax withheld (Form 8959 line 22) $0.21 = $2,636.79; line 23 = line 21 + $0; line 25 = line 23 - $0; line 26 = larger of $0 and $2,636.79.",
+   "drop": true
+  },
+  {
+   "case": "classm.s8812.4",
+   "printed": "24",
+   "project": "$510.80",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 8 ($500.00) is not more than line 11 ($4,200.00), and the form says \"No. Stop here. You cannot take the child tax credit, credit for other dependents, or additional child tax credit\" (f1040s8812 p. 1, line 12), so the model leaves the later lines blank; the project figures every line and lines 14 and 27 are $0 on both sides (agreed). Project's working: line 13 = Credit Limit Worksheet A (i1040s8812 p. 4): line 1 Form 1040 line 18 $45,320.72 - line 2 (Schedule 3 lines 1, 2, 4 and 5b, all $0) = $45,320.72, line 4 $0, line 5 $45,320.72; line 18a = Earned Income Worksheet line 7 (not taking the EIC) = Form 1040 line 1z $208,026.00; line 19 = $205,526.00; line 20 = 15% = $30,828.90; line 21 = box 4 $11,429.00 + box 6 $3,017.00 + Form 8959 line 7 $72.23 - Form 8959 line 22 $0.62 = $14,517.61; line 23 = $14,517.61 + $0; line 24 = Form 1040 line 27a $0 + Schedule 3 line 11 $510.80 = $510.80; line 25 = $14,006.81; line 26 = larger of $30,828.90 and $14,006.81.",
+   "drop": true
+  },
+  {
+   "case": "classm.s8812.4",
+   "printed": "25",
+   "project": "$14,006.81",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 8 ($500.00) is not more than line 11 ($4,200.00), and the form says \"No. Stop here. You cannot take the child tax credit, credit for other dependents, or additional child tax credit\" (f1040s8812 p. 1, line 12), so the model leaves the later lines blank; the project figures every line and lines 14 and 27 are $0 on both sides (agreed). Project's working: line 13 = Credit Limit Worksheet A (i1040s8812 p. 4): line 1 Form 1040 line 18 $45,320.72 - line 2 (Schedule 3 lines 1, 2, 4 and 5b, all $0) = $45,320.72, line 4 $0, line 5 $45,320.72; line 18a = Earned Income Worksheet line 7 (not taking the EIC) = Form 1040 line 1z $208,026.00; line 19 = $205,526.00; line 20 = 15% = $30,828.90; line 21 = box 4 $11,429.00 + box 6 $3,017.00 + Form 8959 line 7 $72.23 - Form 8959 line 22 $0.62 = $14,517.61; line 23 = $14,517.61 + $0; line 24 = Form 1040 line 27a $0 + Schedule 3 line 11 $510.80 = $510.80; line 25 = $14,006.81; line 26 = larger of $30,828.90 and $14,006.81.",
    "drop": true
   },
   {
@@ -224,6 +368,14 @@
    "project": "$2,636.79",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 16b is $0 (no qualifying child with the required SSN) and the form says \"If zero, stop here; you cannot claim the additional child tax credit\" (Schedule 8812 (2025), line 16b), so the model leaves Parts II-A and II-B blank; the project figures every line and line 27 is $0 on both sides (agreed). Project's working: line 21 = Additional Medicare Tax and RRTA Tax Worksheet line 16 (i1040s8812 p. 9) = box 4 $2,137.00 + box 6 $500.00 - Additional Medicare Tax withheld (Form 8959 line 22) $0.21 = $2,636.79; line 23 = line 21 + $0; line 25 = line 23 - $0; line 26 = larger of $0 and $2,636.79.",
+   "drop": true
+  },
+  {
+   "case": "classm.s8812.4",
+   "printed": "26",
+   "project": "$30,828.90",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 8 ($500.00) is not more than line 11 ($4,200.00), and the form says \"No. Stop here. You cannot take the child tax credit, credit for other dependents, or additional child tax credit\" (f1040s8812 p. 1, line 12), so the model leaves the later lines blank; the project figures every line and lines 14 and 27 are $0 on both sides (agreed). Project's working: line 13 = Credit Limit Worksheet A (i1040s8812 p. 4): line 1 Form 1040 line 18 $45,320.72 - line 2 (Schedule 3 lines 1, 2, 4 and 5b, all $0) = $45,320.72, line 4 $0, line 5 $45,320.72; line 18a = Earned Income Worksheet line 7 (not taking the EIC) = Form 1040 line 1z $208,026.00; line 19 = $205,526.00; line 20 = 15% = $30,828.90; line 21 = box 4 $11,429.00 + box 6 $3,017.00 + Form 8959 line 7 $72.23 - Form 8959 line 22 $0.62 = $14,517.61; line 23 = $14,517.61 + $0; line 24 = Form 1040 line 27a $0 + Schedule 3 line 11 $510.80 = $510.80; line 25 = $14,006.81; line 26 = larger of $30,828.90 and $14,006.81.",
    "drop": true
   }
  ]

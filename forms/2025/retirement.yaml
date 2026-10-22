@@ -1009,6 +1009,121 @@ form:
       doc: i1040gi
       locator: pp. 27-30, lines 4a and 5a
     refuses: *id002
+  - id: retirement.sav_military
+    printed: (helper)
+    label: Is this a distribution from a military retirement plan (other than the federal Thrift Savings Plan)?
+    type: Bool
+    expr:
+      op: input
+      source: Is this a distribution from a military retirement plan (such as military retired pay), other than the federal
+        Thrift Savings Plan (TSP)?
+    cite:
+      doc: f8880
+      locator: 'p. 2, Line 4, "Distributions from a military retirement plan (other than the federal TSP)"'
+  - id: retirement.sav_404k
+    printed: (helper)
+    label: Is this a distribution of dividends paid on stock held by an employee stock ownership plan (section 404(k))?
+    type: Bool
+    expr:
+      op: input
+      source: Is this a distribution of dividends paid on stock held by an employee stock ownership plan under section 404(k)
+        (reported on its own Form 1099-R)?
+    cite:
+      doc: f8880
+      locator: 'p. 2, Line 4, "Distributions of dividends paid on stock held by an employee stock ownership plan under section
+        404(k)"'
+  - id: retirement.sav_inherited
+    printed: (helper)
+    label: Is this a distribution from an inherited IRA that you received as a beneficiary other than the owner's spouse?
+    type: Bool
+    expr:
+      op: input
+      source: Is this a distribution from an inherited IRA that you (or your spouse, on a joint return) received as a beneficiary
+        who was not the IRA owner's spouse?
+    cite:
+      doc: f8880
+      locator: 'p. 2, Line 4, "Distributions from an inherited IRA by a nonspousal beneficiary"'
+    ambiguity: amb.2025.savers_inherited_plans
+  - id: retirement.sav_excluded
+    printed: (helper)
+    label: A distribution Form 8880 line 4 does not count (from a military retirement plan or of section 404(k) dividends, for a
+      plan; from an inherited IRA as a nonspouse beneficiary, for an IRA)
+    type: Bool
+    expr:
+      op: test
+      any:
+      - op: test
+        all:
+        - op: test
+          eq:
+          - retirement.is_ira
+          - const: false
+        - op: test
+          eq:
+          - retirement.sav_military
+          - const: true
+      - op: test
+        all:
+        - op: test
+          eq:
+          - retirement.is_ira
+          - const: false
+        - op: test
+          eq:
+          - retirement.sav_404k
+          - const: true
+      - op: test
+        all:
+        - op: test
+          eq:
+          - retirement.is_ira
+          - const: true
+        - op: test
+          eq:
+          - retirement.sav_inherited
+          - const: true
+    cite:
+      doc: f8880
+      locator: 'p. 2, Line 4, "Don’t include any of the following"; "Distributions of dividends paid on stock held by an employee
+        stock ownership plan under section 404(k)"; "Distributions from a military retirement plan (other than the federal TSP)";
+        "Distributions from an inherited IRA by a nonspousal beneficiary"'
+    ambiguity: amb.2025.savers_inherited_plans
+  - id: retirement.sav_gross
+    printed: (helper)
+    label: The distribution less the part rolled over (the whole distribution for a direct rollover)
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: retirement.box1
+      take: retirement.rolled
+    cite:
+      doc: f8880
+      locator: 'p. 2, Line 4, "Enter the total amount of distributions"; "Distributions not taxable as the result of a rollover
+        or a trustee-to- trustee transfer"'
+    ambiguity: amb.2025.savers_line4_gross
+  - id: retirement.sav_amount
+    printed: (helper)
+    label: This distribution's amount on Form 8880 line 4
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - retirement.sav_excluded
+          - const: true
+        then: retirement.zero
+      - guard:
+          op: test
+          eq:
+          - retirement.sav_excluded
+          - const: false
+        then: retirement.sav_gross
+    cite:
+      doc: f8880
+      locator: 'p. 2, Line 4, "Enter the total amount of distributions you, and your spouse if filing jointly, received after
+        2022 and before the due date of your 2025 return (including extensions) from any of the following types of plans"'
   collection:
     cite:
       doc: i1040gi

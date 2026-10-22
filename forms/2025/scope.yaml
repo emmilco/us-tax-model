@@ -19,20 +19,20 @@ form:
     - id: scope.credits
       printed: (helper)
       type: Bool
-      label: 'Do you want to claim any credit other than the foreign tax credit claimed without Form 1116, the excess social security credit, the child tax credit, the credit for other dependents, the additional child tax credit and the earned income credit, or do you have any other amount for Schedule 3 Part I (for example a Form 8978 adjustment)?'
+      label: 'Do you want to claim any credit other than the foreign tax credit claimed without Form 1116, the excess social security credit, the child tax credit, the credit for other dependents, the additional child tax credit, the earned income credit, the credit for child and dependent care expenses (Form 2441), the retirement savings contributions credit (Form 8880) and the residential energy credits (Form 5695), or do you have any other amount for Schedule 3 Part I (for example a Form 8978 adjustment)?'
       expr:
         op: input
-        source: 'Do you want to claim any credit other than the foreign tax credit claimed without Form 1116, the excess social security credit, the child tax credit, the credit for other dependents, the additional child tax credit and the earned income credit, or do you have any other amount for Schedule 3 Part I (for example a Form 8978 adjustment)?'
+        source: 'Do you want to claim any credit other than the foreign tax credit claimed without Form 1116, the excess social security credit, the child tax credit, the credit for other dependents, the additional child tax credit, the earned income credit, the credit for child and dependent care expenses (Form 2441), the retirement savings contributions credit (Form 8880) and the residential energy credits (Form 5695), or do you have any other amount for Schedule 3 Part I (for example a Form 8978 adjustment)?'
       cite:
         doc: f1040
         locator: Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31
     - id: scope.other_income
       printed: (helper)
       type: Bool
-      label: 'Any nonresident alien status (you or your spouse, for any part of 2025) or other income or return treatment outside wages, interest, dividends, supported securities sales, Form 1099-R distributions and social security benefits, including wages or tips not on a Form W-2, Medicaid waiver payments (whether or not in Form W-2 box 1), dependent care or adoption benefits, other earned income (Form 1040 lines 1b-1h), or income or loss from a passive activity (including gain on selling an interest in one)?'
+      label: 'Any nonresident alien status (you or your spouse, for any part of 2025) or other income or return treatment outside wages, interest, dividends, supported securities sales, Form 1099-R distributions and social security benefits, including wages or tips not on a Form W-2, Medicaid waiver payments (whether or not in Form W-2 box 1), adoption benefits, dependent care benefits other than those shown in box 10 of a Form W-2 (or a grace-period amount from such a plan), other earned income (Form 1040 lines 1b to 1d and 1f to 1h), or income or loss from a passive activity (including gain on selling an interest in one)?'
       expr:
         op: input
-        source: 'Any nonresident alien status (you or your spouse, for any part of 2025) or other income or return treatment outside wages, interest, dividends, supported securities sales, Form 1099-R distributions and social security benefits, including wages or tips not on a Form W-2, Medicaid waiver payments (whether or not in Form W-2 box 1), dependent care or adoption benefits, other earned income (Form 1040 lines 1b-1h), or income or loss from a passive activity (including gain on selling an interest in one)?'
+        source: 'Any nonresident alien status (you or your spouse, for any part of 2025) or other income or return treatment outside wages, interest, dividends, supported securities sales, Form 1099-R distributions and social security benefits, including wages or tips not on a Form W-2, Medicaid waiver payments (whether or not in Form W-2 box 1), adoption benefits, dependent care benefits other than those shown in box 10 of a Form W-2 (or a grace-period amount from such a plan), other earned income (Form 1040 lines 1b to 1d and 1f to 1h), or income or loss from a passive activity (including gain on selling an interest in one)?'
       cite:
         doc: f1040
         locator: Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31
@@ -66,8 +66,8 @@ form:
             doc: f1040
             locator: Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31
         - when: scope.credits
-          form: Other credit forms (Schedule 3 lines 2 to 4, 5b, 6d, 6f, 6l and 6m; Form 1040 lines 29 to 31)
-          remedy: Credits other than the foreign tax credit by election, the excess social security credit, the Schedule 8812 credits and the earned income credit require forms outside this proof of concept.
+          form: Other credit forms (Schedule 3 lines 3 and 6a to 6z; Form 1040 lines 29 to 31)
+          remedy: Credits other than the foreign tax credit by election, the excess social security credit, the Schedule 8812 credits, the earned income credit, the child and dependent care credit, the saver's credit and the residential energy credits require forms outside this proof of concept.
           cite:
             doc: f1040
             locator: Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31

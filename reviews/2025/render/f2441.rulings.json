@@ -1,0 +1,24 @@
+{
+ "kind": "render",
+ "form": "f2441",
+ "rulings": [
+  {
+   "printed": "16",
+   "restated": "Add helper \"Total of the qualified expenses incurred and paid in 2025 for the qualifying persons (line 2, column (d), before excluding any benefits)\" and helper \"Qualified expenses for care of the qualifying persons in 2025 that you paid, or will pay, in 2026\".",
+   "model": "The line 16 instructions say \"Enter the total of all qualified expenses incurred in 2025 ... It doesn't matter when the expenses were paid.\" The restatement adds only expenses paid in 2025 and those paid or to be paid in 2026. Expenses for 2025 care that were prepaid in 2024 are left out, and there is no refusal for them.",
+   "ruling": "Ruling: project retained (representation). The restatement's helper \"Total of the qualified expenses incurred and paid in 2025\" is the sum of each person's column (d), dependent.dc_paid; the project's column (d) per person (dependent.dc_line2d) is a copy of dependent.dc_paid, so the sums are the same. 2025 care prepaid in 2024 is not left out: dependent.dc_paid asks for it (\"Include care you prepaid in 2024 for 2025\"), as the publication directs (p503 p. 10, Expenses prepaid in an earlier year, \"you can count the prepaid expenses only in the year the care is received. Claim the expenses for the later year as if they were actually paid in that later year\"), and f2441.paid_2026 adds 2025 care paid in 2026, so the line is all care incurred in 2025 whenever paid (i2441 p. 5, Line 16, \"It doesn't matter when the expenses were paid\"). No change to the data."
+  },
+  {
+   "printed": "22",
+   "restated": "Enter the amount from helper \"Year parameter sales.zero\".",
+   "model": "Line 22 says \"Is any amount on line 12 or 13 from your sole proprietorship or partnership? ... Yes. Enter the amount here.\" The restatement always enters $0 and has no refusal for amounts from a sole proprietorship or partnership.",
+   "ruling": "Ruling: project retained (scope). Both Yes cases are refused on other lines, so the answer is always No and line 22 is zero (f2441 p. 2, line 22, \"Is any amount on line 12 or 13 from your sole proprietorship or partnership? No. Enter -0-\"): benefits from your own sole proprietorship by the Schedule C screen (sc.special, \"contributions you made on your own behalf, as a self-employed person, to a dependent care assistance program (Form 2441, Parts I and III)\"), a partnership by the Schedule 1 screen (scope.schedule1, \"partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1)\"), and any benefit not shown in Form W-2 box 10 by scope.other_income (\"dependent care benefits other than those shown in box 10 of a Form W-2\"). The rendering's note names the refusals. No change to the data."
+  },
+  {
+   "printed": "CLW 2",
+   "restated": "Enter the amount from s3 line 1.",
+   "model": "The worksheet says \"Enter the amount from Schedule 3 (Form 1040), line 1 (foreign tax credit) and line 6l (Form 8978, line 14).\" The restatement takes only Schedule 3 line 1, leaves out line 6l, and has no refusal for it.",
+   "ruling": "Ruling: project retained (scope). Schedule 3 line 6l (Form 8978, line 14) is refused before this worksheet is reached: the credits screen (scope.credits) asks whether the filer has \"any other amount for Schedule 3 Part I (for example a Form 8978 adjustment)\", and a Yes refuses the return. On every return the tool prepares line 6l is zero, so worksheet line 2 is Schedule 3 line 1 alone (i2441 p. 5, Line 10 Credit Limit Worksheet, \"Enter the amount from Schedule 3 (Form 1040), line 1 (foreign tax credit) and line 6l (Form 8978, line 14)\"). The refusal is the screen's, not this line's, and the rendering's note names it. No change to the data."
+  }
+ ]
+}

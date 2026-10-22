@@ -1,0 +1,643 @@
+form:
+  id: f8880
+  kind: form
+  title: Form 8880 — Credit for Qualified Retirement Savings Contributions (the saver's credit)
+  tax_year: 2025
+  note: Lines 1 to 12, column (a) for you and column (b) for your spouse on a joint return, with the Credit Limit
+    Worksheet. Each column's contributions and eligibility are this person's (person.sav_*); line 4 takes the 2025
+    Forms 1099-R of the return (both columns on a joint return) and each person's distributions of the other years
+    of the testing period. Traditional IRA and ABLE contributions, ABLE distributions, code H, year-designated box 12
+    entries and deferrals over the limit are refused.
+  lines:
+  - id: f8880.zero
+    printed: (helper)
+    label: Year parameter sales.zero
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: sales.zero
+    cite:
+      doc: f8880
+      locator: Form 8880 (2025), lines 5, 7 and 12
+  - id: f8880.joint
+    printed: (helper)
+    label: Married filing jointly
+    type: Bool
+    expr:
+      op: test
+      eq:
+      - f1040.status
+      - const: mfj
+    cite:
+      doc: f8880
+      locator: 'p. 2, Column (b), "Complete column (b) only if you’re filing a joint return"'
+  - id: f8880.line1a
+    printed: 1(a)
+    label: Traditional and Roth IRA contributions, and ABLE account contributions by the designated beneficiary for
+      2025. Do not include rollover contributions (you)
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: person
+      field: person.sav_line1
+      where:
+        op: test
+        eq:
+        - person.role
+        - const: taxpayer
+    cite:
+      doc: f8880
+      locator: Form 8880 (2025), line 1, column (a)
+  - id: f8880.line1b
+    printed: 1(b)
+    label: Traditional and Roth IRA contributions, and ABLE account contributions by the designated beneficiary for
+      2025. Do not include rollover contributions (your spouse)
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: person
+      field: person.sav_line1
+      where:
+        op: test
+        eq:
+        - person.role
+        - const: spouse
+    cite:
+      doc: f8880
+      locator: 'Form 8880 (2025), line 1, column (b); p. 2, Column (b), "Complete column (b) only if you’re filing a joint
+        return"'
+  - id: f8880.line2a
+    printed: 2(a)
+    label: Elective deferrals to a 401(k) or other qualified employer plan, voluntary employee contributions, and 501(c)(18)(D)
+      plan contributions for 2025 (you)
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: person
+      field: person.sav_line2
+      where:
+        op: test
+        eq:
+        - person.role
+        - const: taxpayer
+    cite:
+      doc: f8880
+      locator: Form 8880 (2025), line 2, column (a)
+  - id: f8880.line2b
+    printed: 2(b)
+    label: Elective deferrals to a 401(k) or other qualified employer plan, voluntary employee contributions, and 501(c)(18)(D)
+      plan contributions for 2025 (your spouse)
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: person
+      field: person.sav_line2
+      where:
+        op: test
+        eq:
+        - person.role
+        - const: spouse
+    cite:
+      doc: f8880
+      locator: 'Form 8880 (2025), line 2, column (b); p. 2, Column (b), "Complete column (b) only if you’re filing a joint
+        return"'
+  - id: f8880.line3a
+    printed: 3(a)
+    label: Add lines 1 and 2 (you)
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - f8880.line1a
+      - f8880.line2a
+    cite:
+      doc: f8880
+      locator: Form 8880 (2025), line 3, column (a)
+  - id: f8880.line3b
+    printed: 3(b)
+    label: Add lines 1 and 2 (your spouse)
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - f8880.line1b
+      - f8880.line2b
+    cite:
+      doc: f8880
+      locator: Form 8880 (2025), line 3, column (b)
+  - id: f8880.dist_2025
+    printed: (helper)
+    label: Distributions received in 2025 that line 4 counts (the Forms 1099-R of the return, less rollovers and the
+      excluded kinds)
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: retirement
+      field: retirement.sav_amount
+    cite:
+      doc: f8880
+      locator: 'p. 2, Line 4, "Enter the total amount of distributions you, and your spouse if filing jointly, received after
+        2022 and before the due date of your 2025 return (including extensions)"; "If you’re filing a joint return, include
+        both spouses’ amounts in both columns"'
+  - id: f8880.prior_joint_sum
+    printed: (helper)
+    label: Both spouses' distributions in 2023, 2024 and 2026 (before the due date) from years for which you filed a joint
+      return
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: person
+      field: person.sav_prior_joint
+    cite:
+      doc: f8880
+      locator: 'p. 2, Line 4, "If you’re filing a joint return, include both spouses’ amounts in both columns. Exception. Don’t
+        include your spouse’s distributions with yours when entering an amount on line 4 if you and your spouse didn’t file
+        a joint return for the year the distribution was received"'
+    ambiguity: amb.2025.savers_2026_joint
+  - id: f8880.prior_joint
+    printed: (helper)
+    label: Distributions from years filed jointly, counted in both columns (on a joint return; none otherwise)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8880.joint
+          - const: true
+        then: f8880.prior_joint_sum
+      - guard:
+          op: test
+          eq:
+          - f8880.joint
+          - const: false
+        then: f8880.zero
+    cite:
+      doc: f8880
+      locator: 'p. 2, Line 4, "If you’re filing a joint return, include both spouses’ amounts in both columns"'
+  - id: f8880.prior_own_a
+    printed: (helper)
+    label: Your own distributions in 2023, 2024 and 2026 (before the due date) from years not filed jointly with your spouse
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: person
+      field: person.sav_prior_other
+      where:
+        op: test
+        eq:
+        - person.role
+        - const: taxpayer
+    cite:
+      doc: f8880
+      locator: 'p. 2, Line 4, "Exception. Don’t include your spouse’s distributions with yours when entering an amount on line
+        4 if you and your spouse didn’t file a joint return for the year the distribution was received"'
+  - id: f8880.prior_own_b
+    printed: (helper)
+    label: Your spouse's own distributions in 2023, 2024 and 2026 (before the due date) from years not filed jointly with
+      you
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: person
+      field: person.sav_prior_other
+      where:
+        op: test
+        eq:
+        - person.role
+        - const: spouse
+    cite:
+      doc: f8880
+      locator: 'p. 2, Line 4, "Exception. Don’t include your spouse’s distributions with yours when entering an amount on line
+        4 if you and your spouse didn’t file a joint return for the year the distribution was received"'
+  - id: f8880.line4a
+    printed: 4(a)
+    label: Certain distributions received after 2022 and before the due date (including extensions) of your 2025 tax return
+      (see instructions). If married filing jointly, include both spouses' amounts in both columns. See instructions for
+      an exception (you)
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - f8880.dist_2025
+      - f8880.prior_joint
+      - f8880.prior_own_a
+    cite:
+      doc: f8880
+      locator: 'Form 8880 (2025), line 4, column (a); p. 2, Line 4, "If you’re filing a joint return, include both spouses’
+        amounts in both columns. Exception. Don’t include your spouse’s distributions with yours when entering an amount
+        on line 4 if you and your spouse didn’t file a joint return for the year the distribution was received"'
+    ambiguity: amb.2025.savers_line4_gross
+  - id: f8880.line4b_joint
+    printed: (helper)
+    label: Line 4, column (b), on a joint return
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - f8880.dist_2025
+      - f8880.prior_joint
+      - f8880.prior_own_b
+    cite:
+      doc: f8880
+      locator: 'p. 2, Line 4, "Example. You received a distribution of $5,000 from a qualified retirement plan in 2025. Your
+        spouse received a distribution of $2,000 from a Roth IRA in 2023. You and your spouse file a joint return in 2025,
+        but didn’t file a joint return in 2023. You would include $5,000 in column (a) and $7,000 in column (b)"'
+  - id: f8880.line4b
+    printed: 4(b)
+    label: Certain distributions received after 2022 and before the due date (including extensions) of your 2025 tax return
+      (see instructions). If married filing jointly, include both spouses' amounts in both columns. See instructions for
+      an exception (your spouse)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8880.joint
+          - const: true
+        then: f8880.line4b_joint
+      - guard:
+          op: test
+          eq:
+          - f8880.joint
+          - const: false
+        then: f8880.zero
+    cite:
+      doc: f8880
+      locator: 'Form 8880 (2025), line 4, column (b); p. 2, Column (b), "Complete column (b) only if you’re filing a joint
+        return"'
+  - id: f8880.line5a
+    printed: 5(a)
+    label: Subtract line 4 from line 3. If zero or less, enter -0- (you)
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f8880.line3a
+      take: f8880.line4a
+    cite:
+      doc: f8880
+      locator: Form 8880 (2025), line 5, column (a)
+  - id: f8880.line5b
+    printed: 5(b)
+    label: Subtract line 4 from line 3. If zero or less, enter -0- (your spouse)
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f8880.line3b
+      take: f8880.line4b
+    cite:
+      doc: f8880
+      locator: Form 8880 (2025), line 5, column (b)
+  - id: f8880.cap
+    printed: (helper)
+    label: Year parameter savers.cap ($2,000)
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: savers.cap
+    cite:
+      doc: f8880
+      locator: Form 8880 (2025), line 6, "In each column, enter the smaller of line 5 or $2,000"
+  - id: f8880.inelig_a
+    printed: (helper)
+    label: Your entry, if you were born after January 1, 2008, are claimed as a dependent on someone else's 2025 return,
+      or were a student
+    type: Count
+    expr:
+      op: sum_over
+      collection: person
+      field: person.one
+      where:
+        op: test
+        all:
+        - op: test
+          eq:
+          - person.role
+          - const: taxpayer
+        - op: test
+          eq:
+          - person.sav_ineligible
+          - const: true
+    cite:
+      doc: f8880
+      locator: 'p. 2, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a)
+        was born after January 1, 2008; (b) is claimed as a dependent on someone else’s 2025 tax return; or (c) was a student"'
+    ambiguity: amb.2025.savers_ineligible_column
+  - id: f8880.inelig_b
+    printed: (helper)
+    label: Your spouse's entry, if your spouse was born after January 1, 2008, is claimed as a dependent on someone else's
+      2025 return, or was a student
+    type: Count
+    expr:
+      op: sum_over
+      collection: person
+      field: person.one
+      where:
+        op: test
+        all:
+        - op: test
+          eq:
+          - person.role
+          - const: spouse
+        - op: test
+          eq:
+          - person.sav_ineligible
+          - const: true
+    cite:
+      doc: f8880
+      locator: 'p. 2, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a)
+        was born after January 1, 2008; (b) is claimed as a dependent on someone else’s 2025 tax return; or (c) was a student"'
+    ambiguity: amb.2025.savers_ineligible_column
+  - id: f8880.elig_a
+    printed: (helper)
+    label: You can take the credit for your own contributions (column (a))
+    type: Bool
+    expr:
+      op: test
+      eq:
+      - f8880.inelig_a
+      - const: 0
+        type: Count
+    cite:
+      doc: f8880
+      locator: 'p. 2, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a)
+        was born after January 1, 2008; (b) is claimed as a dependent on someone else’s 2025 tax return; or (c) was a student"'
+    ambiguity: amb.2025.savers_ineligible_column
+  - id: f8880.elig_b
+    printed: (helper)
+    label: Your spouse can take the credit for your spouse's own contributions (column (b))
+    type: Bool
+    expr:
+      op: test
+      eq:
+      - f8880.inelig_b
+      - const: 0
+        type: Count
+    cite:
+      doc: f8880
+      locator: 'p. 2, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a)
+        was born after January 1, 2008; (b) is claimed as a dependent on someone else’s 2025 tax return; or (c) was a student"'
+    ambiguity: amb.2025.savers_ineligible_column
+  - id: f8880.line6a_figured
+    printed: (helper)
+    label: The smaller of line 5 or $2,000 (column (a))
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - f8880.line5a
+      - f8880.cap
+    cite:
+      doc: f8880
+      locator: Form 8880 (2025), line 6, "In each column, enter the smaller of line 5 or $2,000"
+  - id: f8880.line6b_figured
+    printed: (helper)
+    label: The smaller of line 5 or $2,000 (column (b))
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - f8880.line5b
+      - f8880.cap
+    cite:
+      doc: f8880
+      locator: Form 8880 (2025), line 6, "In each column, enter the smaller of line 5 or $2,000"
+  - id: f8880.line6a
+    printed: 6(a)
+    label: In each column, enter the smaller of line 5 or $2,000 (you)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8880.elig_a
+          - const: true
+        then: f8880.line6a_figured
+      - guard:
+          op: test
+          eq:
+          - f8880.elig_a
+          - const: false
+        then: f8880.zero
+    cite:
+      doc: f8880
+      locator: 'Form 8880 (2025), line 6, column (a); p. 1, Caution, "You cannot take this credit if either of the following
+        applies"'
+    ambiguity: amb.2025.savers_ineligible_column
+  - id: f8880.line6b
+    printed: 6(b)
+    label: In each column, enter the smaller of line 5 or $2,000 (your spouse)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8880.elig_b
+          - const: true
+        then: f8880.line6b_figured
+      - guard:
+          op: test
+          eq:
+          - f8880.elig_b
+          - const: false
+        then: f8880.zero
+    cite:
+      doc: f8880
+      locator: 'Form 8880 (2025), line 6, column (b); p. 1, Caution, "You cannot take this credit if either of the following
+        applies"'
+    ambiguity: amb.2025.savers_ineligible_column
+  - id: f8880.line7
+    printed: '7'
+    label: Add the amounts on line 6. If zero, stop; you can't take this credit
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - f8880.line6a
+      - f8880.line6b
+    cite:
+      doc: f8880
+      locator: 'Form 8880 (2025), line 7; p. 2, Line 7, "Add the amounts from line 6, columns (a) and (b), and enter the total"'
+  - id: f8880.line8
+    printed: '8'
+    label: Enter the amount from Form 1040, 1040-SR, or 1040-NR, line 11a
+    type: Dollars
+    expr:
+      op: copy
+      from: f1040.line11a
+    cite:
+      doc: f8880
+      locator: Form 8880 (2025), line 8
+    refuses:
+    - when: sa.excluded_income
+      form: Form 8880 line 8 refigured for excluded income (Pub. 590-A)
+      remedy: With an exclusion or deduction for foreign earned income or foreign housing, or income from Puerto Rico or American
+        Samoa, line 8 is figured by Pub. 590-A, which this tool does not apply.
+      cite:
+        doc: f8880
+        locator: 'Form 8880 (2025), line 8, "* See Pub. 590-A, Contributions to Individual Retirement Arrangements, for the amount
+          to enter if you claim any exclusion or deduction for foreign earned income, foreign housing, income from Puerto Rico,
+          or income from American Samoa"'
+  - id: f8880.line9
+    printed: '9'
+    label: Enter the applicable decimal amount from the table below
+    type: Rate
+    expr:
+      op: rate_lookup
+      table: savers_rate
+      key: f8880.line8
+      status: f1040.status
+    cite:
+      doc: f8880
+      locator: Form 8880 (2025), line 9, "Enter the applicable decimal amount from the table below"
+  - id: f8880.line10
+    printed: '10'
+    label: Multiply line 7 by line 9
+    type: NonNegDollars
+    expr:
+      op: multiply_rate
+      amount: f8880.line7
+      rate: f8880.line9
+    cite:
+      doc: f8880
+      locator: Form 8880 (2025), line 10
+  - id: f8880.clw1
+    printed: (CLW 1)
+    label: Enter the amount from Form 1040, 1040-SR, or 1040-NR, line 18
+    type: Dollars
+    expr:
+      op: copy
+      from: f1040.line18
+    cite:
+      doc: f8880
+      locator: 'p. 2, Credit Limit Worksheet, "1. Enter the amount from Form 1040, 1040-SR, or 1040-NR, line 18"'
+  - id: f8880.clw2
+    printed: (CLW 2)
+    label: Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l
+    type: Dollars
+    expr:
+      op: sum
+      of:
+      - s3.line1
+      - s3.line2
+    cite:
+      doc: f8880
+      locator: 'p. 2, Credit Limit Worksheet, "2. Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l"
+        (lines 3, 6d and 6l are refused by scope.credits)'
+  - id: f8880.clw3
+    printed: (CLW 3)
+    label: Subtract line 2 from line 1. Also enter this amount on Form 8880, line 11. But if zero or less, stop; you can't
+      take the credit
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f8880.clw1
+      take: f8880.clw2
+    cite:
+      doc: f8880
+      locator: 'p. 2, Credit Limit Worksheet, "3. Subtract line 2 from line 1. Also enter this amount on Form 8880, line 11.
+        But if zero or less, stop; you can’t take the credit"'
+  - id: f8880.line11
+    printed: '11'
+    label: Limitation based on tax liability. Enter the amount from the Credit Limit Worksheet in the instructions
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: f8880.clw3
+    cite:
+      doc: f8880
+      locator: 'Form 8880 (2025), line 11; p. 2, Line 11, "Complete this worksheet to figure the amount to enter on line 11"'
+  - id: f8880.agi_limit
+    printed: (helper)
+    label: 'Year parameter savers.agi_limit ($39,500; $59,250 if head of household; $79,000 if married filing jointly)'
+    type: Dollars
+    expr:
+      op: param
+      ref: savers.agi_limit
+    cite:
+      doc: f8880
+      locator: 'p. 1, Caution, "The amount on Form 1040, 1040-SR, or 1040-NR, line 11a, is more than $39,500 ($59,250 if head
+        of household; $79,000 if married filing jointly)"'
+  - id: f8880.line3_total
+    printed: (helper)
+    label: Line 3, columns (a) and (b) together
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - f8880.line3a
+      - f8880.line3b
+    cite:
+      doc: f8880
+      locator: Form 8880 (2025), lines 3 and 7 (with no contributions in either column, line 7 is zero)
+  - id: f8880.can_take
+    printed: (helper)
+    label: 'The credit is figured: contributions in a column (with none, line 7 is zero), line 8 not more than the limit
+      (so line 9 is not zero), the Credit Limit Worksheet line 3 more than zero, and line 7 more than zero'
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        gt:
+        - f8880.line3_total
+        - param: sales.zero
+      - op: test
+        le:
+        - f8880.line8
+        - f8880.agi_limit
+      - op: test
+        gt:
+        - f8880.clw3
+        - param: sales.zero
+      - op: test
+        gt:
+        - f8880.line7
+        - param: sales.zero
+    cite:
+      doc: f8880
+      locator: 'Form 8880 (2025), line 7, "If zero, stop; you can’t take this credit", and line 9, "Note: If line 9 is zero,
+        stop; you can’t take this credit"; p. 1, Caution; p. 2, Credit Limit Worksheet, "But if zero or less, stop; you can’t
+        take the credit—don’t file this form"'
+  - id: f8880.line12_figured
+    printed: (helper)
+    label: The smaller of line 10 or line 11
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - f8880.line10
+      - f8880.line11
+    cite:
+      doc: f8880
+      locator: Form 8880 (2025), line 12
+  - id: f8880.line12
+    printed: '12'
+    label: Credit for qualified retirement savings contributions. Enter the smaller of line 10 or line 11 here and on Schedule
+      3 (Form 1040), line 4
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8880.can_take
+          - const: true
+        then: f8880.line12_figured
+      - guard:
+          op: test
+          eq:
+          - f8880.can_take
+          - const: false
+        then: f8880.zero
+    cite:
+      doc: f8880
+      locator: Form 8880 (2025), line 12

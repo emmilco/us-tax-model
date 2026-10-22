@@ -77,9 +77,25 @@
   {
    "case": "classm.person.4",
    "printed": "person[taxpayer].sep_rate_c",
+   "project": "$0.03",
+   "model": "$3.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. As in the earlier rulings on this line: the plan rate is carried as an amount (3% as $0.03) so that Pub. 560's rate for the self-employed, rate / (1 + rate) (chapter 5, Rate Table for Self-Employed), is figured exactly; the model wrote the percentage as a number. The lines that use it, the Deduction Worksheet for Self-Employed steps 5 to 7 and 21, the SEP deduction and Schedule 1 line 16, agree.",
+   "drop": true
+  },
+  {
+   "case": "classm.person.4",
+   "printed": "person[taxpayer].sep_rate_c",
    "project": "$0.14",
    "model": "$14.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The plan rate is carried as an amount (14% as $0.14) so that Pub. 560's rate for the self-employed, rate / (1 + rate) (chapter 5, Rate Table for Self-Employed), is figured exactly; the model wrote the percentage as a number. The lines that use it, the Deduction Worksheet for Self-Employed steps 5 and 6, and the SEP deduction agree.",
+   "drop": true
+  },
+  {
+   "case": "classm.person.4",
+   "printed": "person[taxpayer].sep_rate_plus",
+   "project": "$1.03",
+   "model": "$103.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. As in the earlier rulings on this line: the plan rate is carried as an amount (3% as $0.03, plus 100% as $1.03) so that Pub. 560's rate for the self-employed, rate / (1 + rate) (chapter 5, Rate Table for Self-Employed), is figured exactly; the model wrote the percentage as a number. The lines that use it, the Deduction Worksheet for Self-Employed steps 5 to 7 and 21, the SEP deduction and Schedule 1 line 16, agree.",
    "drop": true
   },
   {

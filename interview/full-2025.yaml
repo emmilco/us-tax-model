@@ -6,6 +6,11 @@ interview:
   - f1040.line33
   - f1040.line34
   - f1040.line37
+  - f2441.line1_box
+  - f2441.line1_paid
+  - f2441.statement_notice
+  - f2441.household_notice
+  - f5695.line32b
   initial: {}
   cite:
     doc: f1040

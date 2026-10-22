@@ -347,3 +347,91 @@
 - **Encoded (Bool):** helper "Qualifying child for the EIC (relationship, age, not filing a joint return, lived with you in the United States for more than half of 2025)" = true and helper "SSN valid for the EIC, issued on or before the due date of your return?" = true
 - Expr: `{"all":[{"eq":["dependent.eic_child",{"const":true}],"op":"test"},{"eq":["dependent.eic_ssn",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 46, Worksheet A, line 2, "the number of qualifying children you have who have valid SSNs"; pp. 44–45, Social security number (SSN), "For the EIC, a valid SSN is a number issued by the Social Security Administration unless 'Not Valid for Employment' is printed on the social security card" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `dependent.dc_child_all_year`
+
+- **Authored helper label:** Your qualifying child who is your dependent and was under age 13 for all of 2025 (age 12 or younger at the end of 2025)
+- **Encoded (Bool):** helper "Qualifying child who is your dependent (Step 2)" = true and helper "Age at the end of 2025" < 13 (dc.child_age)
+- Expr: `{"all":[{"eq":["dependent.qc_dependent",{"const":true}],"op":"test"},{"lt":["dependent.age",{"param":"dc.child_age"}],"op":"test"}],"op":"test"}`
+- Cite: [i2441] p. 1, Qualifying Person(s), "A qualifying child under age 13 whom you can claim as a dependent. If the child turned 13 during the year, the child is a qualifying person for the part of the year they were under age 13" (2025; sha256 86f0669e)
+
+## (helper) — `dependent.dc_age13`
+
+- **Authored helper label:** Your qualifying child who is your dependent and was 13 at the end of 2025 (who may have been under 13 for part of the year)
+- **Encoded (Bool):** helper "Qualifying child who is your dependent (Step 2)" = true and helper "Age at the end of 2025" = 13 (dc.child_age)
+- Expr: `{"all":[{"eq":["dependent.qc_dependent",{"const":true}],"op":"test"},{"eq":["dependent.age",{"param":"dc.child_age"}],"op":"test"}],"op":"test"}`
+- Cite: [i2441] p. 1, Qualifying Person(s), "A qualifying child under age 13 whom you can claim as a dependent. If the child turned 13 during the year, the child is a qualifying person for the part of the year they were under age 13" (2025; sha256 86f0669e)
+
+## (helper) — `dependent.dc_under13`
+
+- **Authored helper label:** Under age 13 for part of 2025 when the care was provided?
+- **Encoded (Bool):** Input — Was this child under age 13 for part of 2025, when you paid for their care? (A child who turned 13 in 2025 is a qualifying person only for the part of the year before their 13th birthday.)
+- Expr: `{"op":"input","source":"Was this child under age 13 for part of 2025, when you paid for their care? (A child who turned 13 in 2025 is a qualifying person only for the part of the year before their 13th birthday.)"}`
+- Cite: [p503] p. 3, Person qualifying for part of year, "You determine a person's qualifying status each day. For example, if your child for whom you pay child and dependent care expenses turns 13 years old and no longer qualifies on September 16, count only those expenses through September 15" (For use in preparing 2025 returns; sha256 3a00d0c1)
+
+## (helper) — `dependent.dc_child`
+
+- **Authored helper label:** Your qualifying child who is your dependent, turned 13 during 2025 and was under 13 for part of 2025 when the care was provided
+- **Encoded (Bool):** helper "Your qualifying child who is your dependent and was 13 at the end of 2025 (who may have been under 13 for part of the year)" = true and helper "Under age 13 for part of 2025 when the care was provided?" = true
+- Expr: `{"all":[{"eq":["dependent.dc_age13",{"const":true}],"op":"test"},{"eq":["dependent.dc_under13",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [i2441] p. 1, Qualifying Person(s), "A qualifying child under age 13 whom you can claim as a dependent. If the child turned 13 during the year, the child is a qualifying person for the part of the year they were under age 13" (2025; sha256 86f0669e)
+
+## (helper) — `dependent.dc_incapable`
+
+- **Authored helper label:** Physically or mentally not able to care for themselves?
+- **Encoded (Bool):** Input — In 2025, was this person physically or mentally not able to care for themselves (unable to dress, clean or feed themselves because of a physical or mental disability, or needing constant attention to prevent them from injuring themselves or others)? This is a different test from permanent and total disability.
+- Expr: `{"op":"input","source":"In 2025, was this person physically or mentally not able to care for themselves (unable to dress, clean or feed themselves because of a physical or mental disability, or needing constant attention to prevent them from injuring themselves or others)? This is a different test from permanent and total disability."}`
+- Cite: [i2441] p. 1, Physically or mentally not able to care for oneself, "Persons who can't dress, clean, or feed themselves because of physical or mental disabilities are considered not able to care for themselves. Also, persons who must have constant attention to prevent them from injuring themselves or others are considered not able to care for themselves" (2025; sha256 86f0669e)
+
+## (helper) — `dependent.dc_disabled_qp`
+
+- **Authored helper label:** Your dependent who lived with you for more than half of 2025 and was not able to care for themselves
+- **Encoded (Bool):** helper "Lived with you for more than half of 2025" = true and helper "Physically or mentally not able to care for themselves?" = true
+- Expr: `{"all":[{"eq":["dependent.lived_half",{"const":true}],"op":"test"},{"eq":["dependent.dc_incapable",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [i2441] p. 1, Qualifying Person(s), "Any disabled person who wasn't physically or mentally able to care for themselves who lived with you for more than half the year and whom you can claim as a dependent" (2025; sha256 86f0669e)
+
+## (helper) — `dependent.dc_qp`
+
+- **Authored helper label:** A qualifying person for Form 2441 (you have care expenses, and this person is your dependent and either your qualifying child under 13 or not able to care for themselves and living with you for more than half the year)
+- **Encoded (Bool):** f2441 helper "Did you pay for the care of a qualifying person so you could work or look for work?" = true and helper "Your dependent" = true and (helper "Your qualifying child who is your dependent and was under age 13 for all of 2025 (age 12 or younger at the end of 2025)" = true or helper "Your dependent who lived with you for more than half of 2025 and was not able to care for themselves" = true or helper "Your qualifying child who is your dependent, turned 13 during 2025 and was under 13 for part of 2025 when the care was provided" = true)
+- Expr: `{"all":[{"eq":["f2441.care",{"const":true}],"op":"test"},{"eq":["dependent.claimed",{"const":true}],"op":"test"},{"any":[{"eq":["dependent.dc_child_all_year",{"const":true}],"op":"test"},{"eq":["dependent.dc_disabled_qp",{"const":true}],"op":"test"},{"eq":["dependent.dc_child",{"const":true}],"op":"test"}],"op":"test"}],"op":"test"}`
+- Cite: [i2441] p. 1, Qualifying Person(s), "A qualifying child under age 13 whom you can claim as a dependent. If the child turned 13 during the year, the child is a qualifying person for the part of the year they were under age 13"; p. 1, Qualifying Person(s), "Any disabled person who wasn't physically or mentally able to care for themselves who lived with you for more than half the year and whom you can claim as a dependent"; p. 3, Line 2, "Don't list a person on line 2 unless they are listed as an eligible person under Qualifying Person(s), earlier" (2025; sha256 86f0669e)
+
+## (gate) — `dependent.dc_no_tin`
+
+- **Authored helper label:** A qualifying person with no SSN, ITIN or ATIN
+- **Encoded (Bool):** helper "A qualifying person for Form 2441 (you have care expenses, and this person is your dependent and either your qualifying child under 13 or not able to care for themselves and living with you for more than half the year)" = true and helper "SSN, ITIN or ATIN issued on or before the due date of your return?" = false
+- Expr: `{"all":[{"eq":["dependent.dc_qp",{"const":true}],"op":"test"},{"eq":["dependent.tin",{"const":false}],"op":"test"}],"op":"test"}`
+- Cite: [i2441] p. 3, Column (b), "You must enter the qualifying person's SSN" and "If the qualifying person has an ITIN or adoption taxpayer identification number (ATIN), see Taxpayer identification number in Pub. 503" (2025; sha256 86f0669e)
+
+## (helper) — `dependent.dc_count`
+
+- **Authored helper label:** One qualifying person
+- **Encoded (Count):** Enter 1 (dependent.one).
+- **Refusal:** when dependent.dc_no_tin is true, cannot complete Qualifying person without an SSN, ITIN or ATIN (Form 2441, line 2, column (b)). A qualifying person must be listed with an SSN, ITIN or ATIN; the credit may otherwise be reduced or disallowed. A child born and died in 2025 without an SSN (entered as "Died" with records attached) is also outside this tool. Cite: [i2441] p. 3, Column (b), "Be sure the name and SSN entered agree with the person's social security card. Otherwise, at the time we process your return, we may reduce or disallow your credit" and "If the child was born and died in 2025 and didn't have an SSN, enter “Died” in column (b)" (2025; sha256 86f0669e)
+- Expr: `{"op":"param","ref":"dependent.one"}`
+- Cite: [i2441] p. 3, Line 2, "Complete columns (a) through (d) for each qualifying person" (2025; sha256 86f0669e)
+
+## (helper) — `dependent.dc_paid`
+
+- **Authored helper label:** Qualified expenses incurred and paid in 2025 for this person's care
+- **Encoded (NonNegDollars):** Input — Qualified expenses you incurred and paid in 2025 for this person's care while they were a qualifying person (under age 13, or not able to care for themselves), so that you (and your spouse, if filing jointly) could work or look for work. Include care you prepaid in 2024 for 2025, your share of employment taxes on a care provider's wages, and expenses paid with dependent care benefits (reimbursed from a dependent care account or paid by your employer to the provider); Form 2441 subtracts the benefits you exclude. Do not include 2024 care paid in 2025, 2025 care paid in 2026, payments for care in 2026, amounts reimbursed by a state social services agency, payments to a provider who may not be listed (your spouse, your dependent, your child under 19, or the parent of your child under 13), or expenses you claim as medical expenses; zero if none
+- Interpretation: amb.2025.dc_line30
+- Expr: `{"op":"input","source":"Qualified expenses you incurred and paid in 2025 for this person's care while they were a qualifying person (under age 13, or not able to care for themselves), so that you (and your spouse, if filing jointly) could work or look for work. Include care you prepaid in 2024 for 2025, your share of employment taxes on a care provider's wages, and expenses paid with dependent care benefits (reimbursed from a dependent care account or paid by your employer to the provider); Form 2441 subtracts the benefits you exclude. Do not include 2024 care paid in 2025, 2025 care paid in 2026, payments for care in 2026, amounts reimbursed by a state social services agency, payments to a provider who may not be listed (your spouse, your dependent, your child under 19, or the parent of your child under 13), or expenses you claim as medical expenses; zero if none"}`
+- Cite: [i2441] pp. 3–4, Column (d), "Enter the qualified expenses you incurred and paid in 2025 for the person listed in column (a)" and "Expenses you incurred in 2025 but didn't pay until 2026"; p503 p. 10, Expenses prepaid in an earlier year, "If you pay for services before they are provided, you can count the prepaid expenses only in the year the care is received" (2025; sha256 86f0669e)
+
+## 2(d) — `dependent.dc_line2d`
+
+- **Authored helper label:** Qualified expenses you incurred and paid in 2025 for the person listed in column (a)
+- **Encoded (NonNegDollars):** Enter the amount from helper "Qualified expenses incurred and paid in 2025 for this person's care".
+- **Refusal:** when dependent.dc_no_tin is true, cannot complete Qualifying person without an SSN, ITIN or ATIN (Form 2441, line 2, column (b)). A qualifying person must be listed with an SSN, ITIN or ATIN; the credit may otherwise be reduced or disallowed. A child born and died in 2025 without an SSN (entered as "Died" with records attached) is also outside this tool. Cite: [i2441] p. 3, Column (b), "Be sure the name and SSN entered agree with the person's social security card. Otherwise, at the time we process your return, we may reduce or disallow your credit" and "If the child was born and died in 2025 and didn't have an SSN, enter “Died” in column (b)" (2025; sha256 86f0669e)
+- Interpretation: amb.2025.dc_line30
+- Expr: `{"from":"dependent.dc_paid","op":"copy"}`
+- Cite: [f2441] Form 2441 (2025), line 2, column (d) (2025; created 2025-03-18; sha256 6c3c2d19)
+
+## 2(c) — `dependent.dc_line2c`
+
+- **Authored helper label:** Check here if the qualifying person was over age 12 and was disabled
+- **Encoded (Bool):** helper "A qualifying person for Form 2441 (you have care expenses, and this person is your dependent and either your qualifying child under 13 or not able to care for themselves and living with you for more than half the year)" = true and helper "Age at the end of 2025" ≥ 13 (dc.child_age) and helper "Physically or mentally not able to care for themselves?" = true
+- Expr: `{"all":[{"eq":["dependent.dc_qp",{"const":true}],"op":"test"},{"ge":["dependent.age",{"param":"dc.child_age"}],"op":"test"},{"eq":["dependent.dc_incapable",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [i2441] p. 3, Column (c), "Check the box in column (c) if the qualifying person listed in column (a) was over age 12 at the time the care was provided and was disabled" (2025; sha256 86f0669e)

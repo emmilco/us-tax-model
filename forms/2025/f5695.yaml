@@ -1,0 +1,2165 @@
+form:
+  id: f5695
+  kind: form
+  title: Form 5695 — Residential Energy Credits (Parts I and II)
+  tax_year: 2025
+  note: Part I (residential clean energy credit, to Schedule 3 line 5a) and Part II (energy efficient home improvement
+    credit, to Schedule 3 line 5b), with the Residential Clean Energy Credit Limit Worksheet (line 14) and the Energy
+    Efficient Home Improvement Credit Limit Worksheet (line 31). Fuel cell property (lines 7a to 11), business use of an
+    item, joint occupancy with anyone other than a spouse, spouses with separate main homes, improvements related to the
+    construction of a home and items without a valid QMID are refused. Addresses and QMIDs are not values (the data model
+    has no strings); a QMID is an attestation per category. Each part is figured only when its screen question is
+    answered Yes; otherwise its Schedule 3 line is zero.
+  lines:
+  - id: f5695.zero
+    printed: (helper)
+    label: Year parameter sales.zero
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: sales.zero
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), lines 5b, 11, 18b to 20d, 22d to 26c and 29h
+  - id: f5695.part1_any
+    printed: (helper)
+    label: Any residential clean energy property paid for in 2025, or a carryforward from 2024
+    type: Bool
+    expr:
+      op: input
+      source: Did you pay in 2025 for solar electric, solar water heating, small wind energy, geothermal heat pump, battery
+        storage or fuel cell property for a home in the United States, or do you have a residential clean energy credit
+        carryforward from line 16 of your 2024 Form 5695?
+    cite:
+      doc: i5695
+      locator: p. 2, Residential Clean Energy Credit (Part I), "You may be able to take a credit of 30% of your costs of
+        qualified solar electric property, solar water heating property, small wind energy property, geothermal heat pump
+        property, battery storage technology, and fuel cell property"; p. 1, Purpose of Form, "Also use Form 5695 to take
+        any residential clean energy credit carryforward from 2024"
+  - id: f5695.part2_any
+    printed: (helper)
+    label: Any energy efficient home improvement costs paid in 2025
+    type: Bool
+    expr:
+      op: input
+      source: Did you pay in 2025 for insulation or air sealing, exterior doors, exterior windows or skylights, central air
+        conditioners, natural gas, propane or oil water heaters, furnaces or hot water boilers, electric or natural gas
+        heat pumps or heat pump water heaters, biomass stoves or boilers, panelboards, subpanelboards, branch circuits or
+        feeders, or a home energy audit, for a home in the United States?
+    cite:
+      doc: i5695
+      locator: p. 2, Energy Efficient Home Improvement Credit (Part II), "You may be able to take a credit equal to 30% of
+        the sum of"; p. 1, Reminders, "A 30% credit, up to a maximum of $1,200, may be allowed for"
+  - id: f5695.business_use
+    printed: (helper)
+    label: Is any item whose cost is entered on Form 5695 used less than 80% for nonbusiness purposes?
+    type: Bool
+    expr:
+      op: input
+      source: Is any item whose cost you are entering on Form 5695 used less than 80% for nonbusiness purposes (that is,
+        is more than 20% of its use for a business)?
+    cite:
+      doc: i5695
+      locator: p. 1, Costs, "If less than 80% of the use of an item is for nonbusiness purposes, only that portion of the
+        costs that is allocable to the nonbusiness use can be used to determine either credit"
+  - id: f5695.construction_later
+    printed: (helper)
+    label: Part I costs connected with constructing or reconstructing a home whose original use by you did not begin in
+      2025?
+    type: Bool
+    expr:
+      op: input
+      source: Are any of the Part I costs (solar, wind, geothermal or battery property) connected with the construction or
+        reconstruction of a home whose original use by you did not begin in 2025 (for example, a home built in 2025 that
+        you first lived in in 2026)?
+    cite:
+      doc: i5695
+      locator: p. 1, Costs, "in the case of costs connected with the reconstruction of your home, when your original use of
+        the reconstructed home begins. For purposes of the residential clean energy credit only, costs connected with the
+        construction of a home are treated as being paid when your original use of the constructed home begins"; fs-2025-05
+        question 7, "If such construction or reconstruction is completed and taxpayer’s original use of the structure
+        begins after December 31, 2025, the expenditure will be treated as made after December 31, 2025"
+  - id: f5695.line1
+    printed: "1"
+    label: Qualified solar electric property costs
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Qualified solar electric property costs you paid for a home in the United States (it need not be your main
+        home), including labor (net of subsidies and rebates; see help; zero if none)
+    cite:
+      doc: i5695
+      locator: p. 4, Line 1, "Enter the amounts you paid for qualified solar electric property"; p. 2, Qualified solar
+        electric property costs, "The home doesn't have to be your main home"; p. 2, Caution, "If you received a subsidy
+        from a public utility for the purchase or installation of an energy conservation product and that subsidy wasn't
+        included in your gross income, you must reduce your cost for the product by the amount of that subsidy before you
+        figure your credit"; p. 2, Association or cooperative costs, "you are treated as having paid your proportionate
+        share of any costs of such association or corporation"; fs-2025-01 p. 16, Residential Clean Energy Property Credit
+        - General questions, "Rebates generally represent a reduction in the purchase price or cost of property, so the tax
+        credit amount must be reduced by the amount of the rebate", "Generally, a taxpayer is not required to reduce the
+        purchase price or cost of property acquired with a governmental energy-efficiency incentive unless that incentive
+        qualifies as a rebate under federal income tax law"; fs-2025-01 p. 16, Residential Clean Energy Property Credit -
+        General questions, "Financing costs such as interest, as well as other miscellaneous costs such as origination fees
+        and the cost of an extended warranty, are not eligible expenditures"
+  - id: f5695.line2
+    printed: "2"
+    label: Qualified solar water heating property costs
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Qualified solar water heating property costs you paid for a home in the United States (it need not be your
+        main home; at least half of the energy it uses to heat water must come from the sun, and it must be certified by
+        the Solar Rating Certification Corporation or a comparable entity endorsed by your state), including labor (net of
+        subsidies and rebates; see help; zero if none)
+    cite:
+      doc: i5695
+      locator: p. 4, Line 2, "Enter the amounts you paid for qualified solar water heating property"; p. 2, Qualified solar
+        water heating property costs, "if at least half of the energy used by the solar water heating property for such
+        purpose is derived from the sun"
+  - id: f5695.line3
+    printed: "3"
+    label: Qualified small wind energy property costs
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Qualified small wind energy property costs you paid for a home in the United States (it need not be your main
+        home), including labor (net of subsidies and rebates; see help; zero if none)
+    cite:
+      doc: i5695
+      locator: p. 4, Line 3, "Enter the amounts you paid for qualified small wind energy property"; pp. 2-3, Qualified
+        small wind energy property costs, "property that uses a wind turbine to generate electricity"
+  - id: f5695.line4
+    printed: "4"
+    label: Qualified geothermal heat pump property costs
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Qualified geothermal heat pump property costs you paid for a home in the United States (it need not be your
+        main home; it must meet the Energy Star requirements in effect at the time of purchase), including labor (net of
+        subsidies and rebates; see help; zero if none)
+    cite:
+      doc: i5695
+      locator: p. 4, Line 4, "Enter the amounts you paid for qualified geothermal heat pump property"; p. 2, Qualified
+        geothermal heat pump property costs, "must meet the requirements of the Energy Star program that are in effect at
+        the time of purchase"
+  - id: f5695.line5a
+    printed: 5a
+    label: Qualified battery storage technology. Does the qualified battery storage technology have a capacity of at least 3
+      kilowatt hours? If you checked the No box, you cannot claim a credit for qualified battery storage technology
+    type: Bool
+    expr:
+      op: input
+      source: Did you pay in 2025 for battery storage technology installed in connection with your home in the United States
+        that has a capacity of at least 3 kilowatt hours? (Answer No if you had none; a battery of less than 3 kilowatt hours
+        cannot be claimed.)
+    cite:
+      doc: i5695
+      locator: p. 4, Lines 5a and 5b, "To qualify for the credit, the qualified battery storage technology must have a
+        capacity of at least 3 kilowatt hours"; p. 2, Qualified battery storage technology costs, "installed in connection
+        with your home located in the United States"
+    ambiguity: amb.2025.f5695_battery_second_home
+  - id: f5695.battery_cost
+    printed: (helper)
+    label: Qualified battery storage technology costs
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Qualified battery storage technology costs you paid (capacity of at least 3 kilowatt hours), including labor
+        (net of subsidies and rebates; see help)
+    cite:
+      doc: i5695
+      locator: p. 4, Lines 5a and 5b, "enter the amounts you paid for qualified battery storage technology on line 5b"
+  - id: f5695.line5b
+    printed: 5b
+    label: If you checked the Yes box, enter the qualified battery technology costs
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f5695.line5a
+          - const: true
+        then: f5695.battery_cost
+      - guard:
+          op: test
+          eq:
+          - f5695.line5a
+          - const: false
+        then: f5695.zero
+    cite:
+      doc: i5695
+      locator: p. 4, Lines 5a and 5b, "If you check the ... No ... box, you can't include any battery storage technology
+        costs on line 5b"
+  - id: f5695.line6a
+    printed: 6a
+    label: Add lines 1 through 5b
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - f5695.line1
+      - f5695.line2
+      - f5695.line3
+      - f5695.line4
+      - f5695.line5b
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), line 6a
+    refuses:
+    - when: f5695.business_use
+      form: Form 5695 for an item used less than 80% for nonbusiness purposes
+      remedy: Allocating an item's cost between business and nonbusiness use is outside this tool.
+      cite:
+        doc: i5695
+        locator: p. 1, Costs, "only that portion of the costs that is allocable to the nonbusiness use can be used to
+          determine either credit"
+    - when: f5695.construction_later
+      form: Form 5695 Part I for a constructed or reconstructed home whose original use did not begin in 2025
+      remedy: Costs of constructing or reconstructing a home are treated as paid when your original use of the home begins;
+        a home first used in another year is outside this tool.
+      cite:
+        doc: i5695
+        locator: p. 1, Costs, "costs connected with the construction of a home are treated as being paid when your original
+          use of the constructed home begins"
+  - id: f5695.rce_rate
+    printed: (helper)
+    label: Year parameter f5695.rce_rate (30%)
+    type: Rate
+    expr:
+      op: param
+      ref: f5695.rce_rate
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), line 6b, "Multiply line 6a by 30% (0.30)"
+  - id: f5695.line6b
+    printed: 6b
+    label: Multiply line 6a by 30% (0.30)
+    type: NonNegDollars
+    expr:
+      op: multiply_rate
+      amount: f5695.line6a
+      rate: f5695.rce_rate
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), line 6b
+    ambiguity: amb.2025.multiplication_subcent
+  - id: f5695.line7a
+    printed: 7a
+    label: Qualified fuel cell property. Was qualified fuel cell property installed on, or in connection with, your main home
+      located in the United States?
+    type: Bool
+    expr:
+      op: input
+      source: Was qualified fuel cell property installed on, or in connection with, your main home located in the United
+        States in 2025? (Answer No if you had none.)
+    cite:
+      doc: i5695
+      locator: p. 4, Lines 7a Through 7c, "Any qualified fuel cell property costs must have been for your main home located
+        in the United States"
+  - id: f5695.line11
+    printed: "11"
+    label: Enter the smaller of line 9 or line 10
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: f5695.zero
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), lines 7a and 11, "If you checked the ... No ... box, you cannot claim a credit for qualified
+        fuel cell property. Skip lines 7b through 11"
+    note: Zero when line 7a is No, as the form directs; fuel cell property (lines 7b to 11) is refused.
+    refuses:
+    - when: f5695.line7a
+      form: Form 5695 lines 7b to 11 (qualified fuel cell property)
+      remedy: The credit for qualified fuel cell property (its capacity limit and the joint occupancy rule) is outside this
+        tool.
+      cite:
+        doc: i5695
+        locator: p. 4, Lines 7a Through 7c; p. 2, Qualified fuel cell property costs, "The credit amount for costs paid for
+          qualified fuel cell property is limited to $500 for each one-half kilowatt of capacity of the property"
+  - id: f5695.line12
+    printed: "12"
+    label: Credit carryforward from 2024. Enter the amount, if any, from your 2024 Form 5695, line 16
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The residential clean energy credit carryforward from 2024, the amount on line 16 of your 2024 Form 5695
+        (zero if none)
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), line 12; i5695 p. 1, Purpose of Form, "Also use Form 5695 to take any residential clean
+        energy credit carryforward from 2024"
+  - id: f5695.line13
+    printed: "13"
+    label: Add lines 6b, 11, and 12
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - f5695.line6b
+      - f5695.line11
+      - f5695.line12
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), line 13
+  - id: f5695.claiming_part1
+    printed: (helper)
+    label: Claiming the residential clean energy credit (Part I is completed and line 13 is more than zero)
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f5695.part1_any
+        - const: true
+      - op: test
+        gt:
+        - f5695.line13
+        - param: sales.zero
+    cite:
+      doc: i1040s8812
+      locator: p. 4, Credit Limit Worksheet A, "You are claiming one or more of the following credits", "Residential clean
+        energy credit, Form 5695, Part I"
+    ambiguity: amb.2025.clwb_claiming_part1
+  - id: f5695.rce_ws1
+    printed: (helper)
+    label: Residential Clean Energy Credit Limit Worksheet, line 1. Enter the amount from Form 1040, line 18
+    type: Dollars
+    expr:
+      op: copy
+      from: f1040.line18
+    cite:
+      doc: i5695
+      locator: p. 5, Residential Clean Energy Credit Limit Worksheet—Line 14, line 1, "Enter the amount from Form 1040,
+        1040-SR, or 1040-NR, line 18"
+  - id: f5695.ctc_line19
+    printed: (helper)
+    label: 'Form 1040, line 19, when Credit Limit Worksheet B is not completed: the smaller of Schedule 8812 line 12 and
+      Credit Limit Worksheet A line 3 (line 4 of that worksheet being zero)'
+    type: Dollars
+    expr:
+      op: smaller_of
+      of:
+      - s8812.line12
+      - s8812.clw_a3
+    cite:
+      doc: i1040s8812
+      locator: p. 4, Credit Limit Worksheet A, "If you are not completing Credit Limit Worksheet B, enter -0-"
+    note: Form 1040 line 19 is Schedule 8812 line 14, the smaller of line 12 and line 13, and line 13 is Credit Limit
+      Worksheet A line 3 less line 4. When Credit Limit Worksheet B is not completed line 4 is zero, so this is that
+      amount, figured without reading line 4, which reads Schedule 3 line 5a.
+  - id: f5695.ctc
+    printed: (helper)
+    label: Child tax credit or credit for other dependents, Form 1040, line 19, or Credit Limit Worksheet B, line 14 when
+      the instructions for Schedule 8812 direct you to complete that worksheet
+    type: Dollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - s8812.clwb_complete
+          - const: true
+        then: s8812.clwb_14
+      - guard:
+          op: test
+          eq:
+          - s8812.clwb_complete
+          - const: false
+        then: f5695.ctc_line19
+    cite:
+      doc: i5695
+      locator: p. 5, Residential Clean Energy Credit Limit Worksheet—Line 14, "Include the amount in the instructions for
+        Schedule 8812 (Form 1040), Credit Limit Worksheet B, line 14, instead of the amount from Form 1040, 1040-SR, or
+        1040-NR, line 19, if the instructions for Schedule 8812 (Form 1040) direct you to complete Credit Limit Worksheet B"
+  - id: f5695.rce_ws2
+    printed: (helper)
+    label: 'Residential Clean Energy Credit Limit Worksheet, line 2. Schedule 3 lines 6l, 1, 2, 6d, 3 and 4, Form 5695 line
+      32, Schedule 3 lines 6m and 6f, Form 1040 line 19 (or Credit Limit Worksheet B line 14), and Schedule 3 lines 6g, 6c
+      and 6h; in this tool Schedule 3 lines 1, 2 and 4, Form 5695 line 32 and the child tax credit, the others being
+      refused'
+    type: Dollars
+    expr:
+      op: sum
+      of:
+      - s3.line1
+      - s3.line2
+      - s3.line4
+      - s3.line5b
+      - f5695.ctc
+    cite:
+      doc: i5695
+      locator: p. 5, Residential Clean Energy Credit Limit Worksheet—Line 14, line 2, "Enter the total of the following
+        credit(s)/adjustment(s) if you are taking the credit(s)/adjustment(s) on your 2025 income tax return"
+    note: Form 5695 line 32 is read as Schedule 3 line 5b, which is line 32 when Part II is completed and zero otherwise.
+    refuses:
+    - when: scope.credits
+      form: Residential Clean Energy Credit Limit Worksheet, line 2 (Schedule 3 lines 3, 6c, 6d, 6f, 6g, 6h, 6l and 6m)
+      remedy: Credits other than the foreign tax credit, the dependent credits and the residential energy credits are
+        outside this tool.
+      cite:
+        doc: i5695
+        locator: p. 5, Residential Clean Energy Credit Limit Worksheet—Line 14, line 2
+  - id: f5695.rce_ws3
+    printed: (helper)
+    label: Residential Clean Energy Credit Limit Worksheet, line 3. Subtract line 2 from line 1. If zero or less, enter -0-
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f5695.rce_ws1
+      take: f5695.rce_ws2
+    cite:
+      doc: i5695
+      locator: p. 5, Residential Clean Energy Credit Limit Worksheet—Line 14, line 3, "Subtract line 2 from line 1. Also
+        enter this amount on Form 5695, line 14. If zero or less, enter -0- on Form 5695, lines 14 and 15"
+  - id: f5695.line14
+    printed: "14"
+    label: Limitation based on tax liability. Enter the amount from the Residential Clean Energy Credit Limit Worksheet
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: f5695.rce_ws3
+    cite:
+      doc: i5695
+      locator: p. 4, Line 14, "Complete the following worksheet to figure the amount to enter on line 14"
+  - id: f5695.line15
+    printed: "15"
+    label: Residential clean energy credit. Enter the smaller of line 13 or line 14. Also include this amount on Schedule 3
+      (Form 1040), line 5a
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - f5695.line13
+      - f5695.line14
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), line 15
+  - id: f5695.line16
+    printed: "16"
+    label: Credit carryforward to 2026. If line 15 is less than line 13, subtract line 15 from line 13
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f5695.line13
+      take: f5695.line15
+    cite:
+      doc: i5695
+      locator: p. 5, Line 16, "If you can't use all of the credit because of the tax liability limit (that is, line 14 is
+        less than line 13), you can carry the unused portion of the credit to 2026"
+  # Part II, Section A
+  - id: f5695.line17a
+    printed: 17a
+    label: Are the qualified energy efficiency improvements installed in or on your main home located in the United States?
+    type: Bool
+    expr:
+      op: input
+      source: Are qualified energy efficiency improvements (insulation or air sealing, exterior doors, exterior windows or
+        skylights) installed in or on your main home located in the United States, a home you owned during 2025? (Answer
+        No if you have none.)
+    cite:
+      doc: i5695
+      locator: p. 5, Lines 17a Through 17e, "Line 17a. To qualify for the credit, any qualified energy efficiency
+        improvements must have been for your main home located in the United States"; p. 3, Section A—Qualified Energy
+        Efficiency Improvements, "installed on or in your main home that you owned during 2025 located in the United States"
+  - id: f5695.line17b
+    printed: 17b
+    label: Are you the original user of the qualified energy efficiency improvements?
+    type: Bool
+    expr:
+      op: input
+      source: Are you the original user of the qualified energy efficiency improvements?
+    cite:
+      doc: i5695
+      locator: p. 5, Lines 17a Through 17e, "Line 17b. To qualify for the credit, you must be the original user of the
+        qualified energy efficiency improvements"
+  - id: f5695.line17c
+    printed: 17c
+    label: Are the components reasonably expected to remain in use for at least 5 years?
+    type: Bool
+    expr:
+      op: input
+      source: Are the components reasonably expected to remain in use for at least 5 years on your main home?
+    cite:
+      doc: i5695
+      locator: p. 5, Lines 17a Through 17e, "Line 17c. To qualify for the credit, the components must be reasonably
+        expected to remain in use for at least 5 years on your main home located in the United States"
+  - id: f5695.sec_a_claimed
+    printed: (helper)
+    label: Lines 17a, 17b and 17c are all Yes (Section A is completed)
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f5695.line17a
+        - const: true
+      - op: test
+        eq:
+        - f5695.line17b
+        - const: true
+      - op: test
+        eq:
+        - f5695.line17c
+        - const: true
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), line 17c, "If you checked the ... No ... box for line 17a, 17b, or 17c, you cannot claim
+        the energy efficient home improvement credit. Do not complete Part II, Section A"
+    ambiguity: amb.2025.f5695_17abc_section_a
+  - id: f5695.line17e
+    printed: 17e
+    label: Were any of these improvements related to the construction of this main home?
+    type: Bool
+    expr:
+      op: input
+      source: Were any of these qualified energy efficiency improvements related to the construction of this main home (a
+        new home, rather than an existing home or an addition to or renovation of one), even if they were made after you
+        moved in?
+    cite:
+      doc: i5695
+      locator: p. 5, Lines 17a Through 17e, "Line 17e. You cannot claim the credit for expenses related to the construction
+        of a new home"
+  - id: f5695.sec_a_new_home
+    printed: (helper)
+    label: Section A is completed and line 17e is Yes
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f5695.sec_a_claimed
+        - const: true
+      - op: test
+        eq:
+        - f5695.line17e
+        - const: true
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), line 17e, "If you checked the ... Yes ... box, you can only claim the energy efficient home
+        improvement credit for qualifying improvements that were not related to the construction of the home"
+  - id: f5695.eehi_rate
+    printed: (helper)
+    label: Year parameter f5695.eehi_rate (30%)
+    type: Rate
+    expr:
+      op: param
+      ref: f5695.eehi_rate
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), lines 18b, 19c, 19g, 20d, 22d, 23d, 24d, 25e, 26c and 29h, "Multiply ... by 30% (0.30)"
+  - id: f5695.line18a
+    printed: 18a
+    label: Enter the cost of insulation material or system (include air sealing material or system) specifically and
+      primarily designed to reduce heat loss or gain of your home that meets the criteria established by the IECC
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The cost of insulation material or system (including air sealing material or system) specifically and
+        primarily designed to reduce heat loss or gain of your home that meets the criteria established by the IECC, not
+        counting labor (net of subsidies and rebates; see help; zero if none)
+    cite:
+      doc: i5695
+      locator: p. 5, Lines 18a and 18b, "Line 18a. Enter the amounts you paid for any insulation material or air sealing
+        material or system"; p. 5, Lines 18a and 18b, "Don't include on lines 18a, 19a, 19d, 19e, 20a, and 20b any amounts
+        paid for the onsite preparation, assembly, or original installation of the components"; p. 3, Subsidized energy
+        financing, "Any amounts provided for by subsidized energy financing can't be used to figure the energy efficient
+        home improvement credit"; fs-2025-01 p. 11, Energy Efficient Home Improvement Credit - General questions, "Rebates
+        generally represent a reduction in the purchase price or cost of property, so the tax credit amount must be reduced
+        by the amount of the rebate", "A taxpayer may not claim a credit for the amount of the subsidy that is used to
+        purchase or install qualifying property"; fs-2025-01 p. 12, Energy Efficient Home Improvement Credit - General
+        questions, "Financing costs such as interest are not eligible expenditures for purposes of the credit"
+  - id: f5695.ins_30
+    printed: (helper)
+    label: Line 18a multiplied by 30% (0.30)
+    type: NonNegDollars
+    expr:
+      op: multiply_rate
+      amount: f5695.line18a
+      rate: f5695.eehi_rate
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), line 18b, "Multiply line 18a by 30% (0.30)"
+    ambiguity: amb.2025.multiplication_subcent
+  - id: f5695.insulation_max
+    printed: (helper)
+    label: Year parameter f5695.insulation_max ($1,200)
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: f5695.insulation_max
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), line 18b, "Do not enter more than $1,200"
+  - id: f5695.ins_capped
+    printed: (helper)
+    label: Line 18a multiplied by 30%, not more than $1,200
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - f5695.ins_30
+      - f5695.insulation_max
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), line 18b, "Multiply line 18a by 30% (0.30). Enter the results. Do not enter more than
+        $1,200"
+  - id: f5695.line18b
+    printed: 18b
+    label: Multiply line 18a by 30% (0.30). Enter the results. Do not enter more than $1,200
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f5695.sec_a_claimed
+          - const: true
+        then: f5695.ins_capped
+      - guard:
+          op: test
+          eq:
+          - f5695.sec_a_claimed
+          - const: false
+        then: f5695.zero
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), lines 17a to 17c and 18b, "Do not complete Part II, Section A"
+  - id: f5695.line19a
+    printed: 19a
+    label: Enter the cost of the most expensive door you bought
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The cost of the most expensive exterior door you bought that meets the applicable Energy Star requirements,
+        not counting labor (net of subsidies and rebates; see help; zero if none)
+    cite:
+      doc: i5695
+      locator: p. 6, Lines 19a Through 19h, "Line 19a. Enter the amount you paid for the most expensive exterior door that
+        meets the Energy Star program requirements"
+  - id: f5695.door1_30
+    printed: (helper)
+    label: Line 19a multiplied by 30% (0.30)
+    type: NonNegDollars
+    expr:
+      op: multiply_rate
+      amount: f5695.line19a
+      rate: f5695.eehi_rate
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), line 19c, "Multiply line 19a by 30% (0.30)"
+    ambiguity: amb.2025.multiplication_subcent
+  - id: f5695.door_max
+    printed: (helper)
+    label: Year parameter f5695.door_max ($250)
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: f5695.door_max
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), line 19c, "Do not enter more than $250"
+  - id: f5695.line19c
+    printed: 19c
+    label: Multiply line 19a by 30% (0.30). Do not enter more than $250
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - f5695.door1_30
+      - f5695.door_max
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), line 19c
+  - id: f5695.line19d_i
+    printed: 19d (i)
+    label: Enter the Qualified Manufacturer Identification Number(s) and cost(s) of the two next most expensive door(s), the
+      first
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The cost of the second most expensive qualifying exterior door, not counting labor (net of subsidies and
+        rebates; see help; zero if none)
+    cite:
+      doc: i5695
+      locator: p. 6, Lines 19a Through 19h, "Line 19d. Enter the QMID(s) and amount(s) you paid for the two next most
+        expensive qualifying exterior doors in 2025"
+  - id: f5695.line19d_ii
+    printed: 19d (ii)
+    label: Enter the Qualified Manufacturer Identification Number(s) and cost(s) of the two next most expensive door(s), the
+      second
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The cost of the third most expensive qualifying exterior door, not counting labor (net of subsidies and
+        rebates; see help; zero if none)
+    cite:
+      doc: i5695
+      locator: p. 6, Lines 19a Through 19h, "Line 19d. Enter the QMID(s) and amount(s) you paid for the two next most
+        expensive qualifying exterior doors in 2025"
+  - id: f5695.line19e
+    printed: 19e
+    label: Enter the cost of all other qualifying exterior doors. If none, enter -0-
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The cost of all other qualifying exterior doors, not counting labor (net of subsidies and rebates; see help;
+        zero if none)
+    cite:
+      doc: i5695
+      locator: p. 6, Lines 19a Through 19h, "Line 19e. Enter the amounts paid for all other qualifying exterior doors in
+        2025"
+  - id: f5695.line19f
+    printed: 19f
+    label: Add lines 19d and 19e
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - f5695.line19d_i
+      - f5695.line19d_ii
+      - f5695.line19e
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), line 19f
+  - id: f5695.line19g
+    printed: 19g
+    label: Multiply line 19f by 30% (0.30)
+    type: NonNegDollars
+    expr:
+      op: multiply_rate
+      amount: f5695.line19f
+      rate: f5695.eehi_rate
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), line 19g
+    ambiguity: amb.2025.multiplication_subcent
+  - id: f5695.doors_sum
+    printed: (helper)
+    label: Add lines 19c and 19g
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - f5695.line19c
+      - f5695.line19g
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), line 19h, "Add lines 19c and 19g"
+  - id: f5695.doors_max
+    printed: (helper)
+    label: Year parameter f5695.doors_max ($500)
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: f5695.doors_max
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), line 19h, "Do not enter more than $500"
+  - id: f5695.doors_cost
+    printed: (helper)
+    label: Total cost of exterior doors (lines 19a and 19f)
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - f5695.line19a
+      - f5695.line19f
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), lines 19a, 19d and 19e
+  - id: f5695.qmid_doors
+    printed: (helper)
+    label: Do you have a valid QMID for each exterior door entered on lines 19a, 19d and 19e?
+    type: Bool
+    expr:
+      op: input
+      source: Do you have the valid four-character qualified manufacturer identification number (QMID) of each exterior door
+        whose cost you entered?
+    cite:
+      doc: i5695
+      locator: p. 3, Section A—Qualified Energy Efficiency Improvements, "For exterior doors, windows, and skylights
+        installed in 2025, a valid QMID must be reported on the applicable line(s)"
+  - id: f5695.doors_no_qmid
+    printed: (helper)
+    label: Exterior door costs entered without a valid QMID for each door
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        gt:
+        - f5695.doors_cost
+        - param: sales.zero
+      - op: test
+        eq:
+        - f5695.qmid_doors
+        - const: false
+    cite:
+      doc: i5695
+      locator: p. 5, Part II Energy Efficient Home Improvement Credit, "To qualify for the energy efficient home improvement
+        credit for specified property, you must provide a valid QMID for each item"
+  - id: f5695.doors_capped
+    printed: (helper)
+    label: Add lines 19c and 19g, not more than $500
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - f5695.doors_sum
+      - f5695.doors_max
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), line 19h, "Add lines 19c and 19g. Do not enter more than $500"
+    refuses:
+    - when: f5695.doors_no_qmid
+      form: Form 5695 line 19 (an exterior door without a valid QMID)
+      remedy: An exterior door installed in 2025 qualifies only with a valid QMID reported for it; obtain the QMID from the
+        manufacturer, or do not claim that door.
+      cite:
+        doc: i5695
+        locator: p. 5, Part II Energy Efficient Home Improvement Credit, "you must provide a valid QMID for each item"
+  - id: f5695.line19h
+    printed: 19h
+    label: Add lines 19c and 19g. Do not enter more than $500
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f5695.sec_a_claimed
+          - const: true
+        then: f5695.doors_capped
+      - guard:
+          op: test
+          eq:
+          - f5695.sec_a_claimed
+          - const: false
+        then: f5695.zero
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), lines 17a to 17c and 19h, "Do not complete Part II, Section A"
+  - id: f5695.line20a_i
+    printed: 20a (i)
+    label: Enter the Qualified Manufacturer Identification Number(s) and cost(s) of the four most expensive window(s)/
+      skylight(s), the first
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The cost of the most expensive exterior window or skylight that meets the Energy Star certification
+        requirements, not counting labor (net of subsidies and rebates; see help; zero if none)
+    cite:
+      doc: i5695
+      locator: p. 6, Lines 20a Through 20d, "Line 20a. Enter the QMID and amounts you paid for the four most expensive
+        exterior windows and skylights that meet Energy Star certification requirements on lines (i) through (iv)"
+  - id: f5695.line20a_ii
+    printed: 20a (ii)
+    label: Enter the Qualified Manufacturer Identification Number(s) and cost(s) of the four most expensive window(s)/
+      skylight(s), the second
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The cost of the second most expensive exterior window or skylight that meets the Energy Star certification
+        requirements, not counting labor (net of subsidies and rebates; see help; zero if none)
+    cite:
+      doc: i5695
+      locator: p. 6, Lines 20a Through 20d, "Line 20a. Enter the QMID and amounts you paid for the four most expensive
+        exterior windows and skylights"
+  - id: f5695.line20a_iii
+    printed: 20a (iii)
+    label: Enter the Qualified Manufacturer Identification Number(s) and cost(s) of the four most expensive window(s)/
+      skylight(s), the third
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The cost of the third most expensive exterior window or skylight that meets the Energy Star certification
+        requirements, not counting labor (net of subsidies and rebates; see help; zero if none)
+    cite:
+      doc: i5695
+      locator: p. 6, Lines 20a Through 20d, "Line 20a. Enter the QMID and amounts you paid for the four most expensive
+        exterior windows and skylights"
+  - id: f5695.line20a_iv
+    printed: 20a (iv)
+    label: Enter the Qualified Manufacturer Identification Number(s) and cost(s) of the four most expensive window(s)/
+      skylight(s), the fourth
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The cost of the fourth most expensive exterior window or skylight that meets the Energy Star certification
+        requirements, not counting labor (net of subsidies and rebates; see help; zero if none)
+    cite:
+      doc: i5695
+      locator: p. 6, Lines 20a Through 20d, "Line 20a. Enter the QMID and amounts you paid for the four most expensive
+        exterior windows and skylights"
+  - id: f5695.line20b
+    printed: 20b
+    label: Enter the cost of all other exterior windows and skylights. If none, enter -0-
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The cost of all other exterior windows and skylights that meet the Energy Star most efficient certification
+        requirements, not counting labor (net of subsidies and rebates; see help; zero if none)
+    cite:
+      doc: i5695
+      locator: p. 6, Lines 20a Through 20d, "Line 20b. Enter the amount you paid for all other exterior windows and
+        skylights that meet Energy Star most efficient certification requirements"
+  - id: f5695.line20c
+    printed: 20c
+    label: Add lines 20a and 20b
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - f5695.line20a_i
+      - f5695.line20a_ii
+      - f5695.line20a_iii
+      - f5695.line20a_iv
+      - f5695.line20b
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), line 20c
+  - id: f5695.windows_30
+    printed: (helper)
+    label: Line 20c multiplied by 30% (0.30)
+    type: NonNegDollars
+    expr:
+      op: multiply_rate
+      amount: f5695.line20c
+      rate: f5695.eehi_rate
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), line 20d, "Multiply line 20c by 30% (0.30)"
+    ambiguity: amb.2025.multiplication_subcent
+  - id: f5695.windows_max
+    printed: (helper)
+    label: Year parameter f5695.windows_max ($600)
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: f5695.windows_max
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), line 20d, "Do not enter more than $600"
+  - id: f5695.qmid_windows
+    printed: (helper)
+    label: Do you have a valid QMID for each window and skylight entered on lines 20a and 20b?
+    type: Bool
+    expr:
+      op: input
+      source: Do you have the valid four-character qualified manufacturer identification number (QMID) of each exterior
+        window and skylight whose cost you entered?
+    cite:
+      doc: i5695
+      locator: p. 3, Section A—Qualified Energy Efficiency Improvements, "For exterior doors, windows, and skylights
+        installed in 2025, a valid QMID must be reported on the applicable line(s)"
+  - id: f5695.windows_no_qmid
+    printed: (helper)
+    label: Window and skylight costs entered without a valid QMID for each item
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        gt:
+        - f5695.line20c
+        - param: sales.zero
+      - op: test
+        eq:
+        - f5695.qmid_windows
+        - const: false
+    cite:
+      doc: i5695
+      locator: p. 5, Part II Energy Efficient Home Improvement Credit, "To qualify for the energy efficient home improvement
+        credit for specified property, you must provide a valid QMID for each item"
+  - id: f5695.windows_capped
+    printed: (helper)
+    label: Line 20c multiplied by 30%, not more than $600
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - f5695.windows_30
+      - f5695.windows_max
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), line 20d, "Multiply line 20c by 30% (0.30). Enter the results. Do not enter more than $600"
+    refuses:
+    - when: f5695.windows_no_qmid
+      form: Form 5695 line 20 (an exterior window or skylight without a valid QMID)
+      remedy: An exterior window or skylight installed in 2025 qualifies only with a valid QMID reported for it; obtain the
+        QMID from the manufacturer, or do not claim that item.
+      cite:
+        doc: i5695
+        locator: p. 5, Part II Energy Efficient Home Improvement Credit, "you must provide a valid QMID for each item"
+  - id: f5695.line20d
+    printed: 20d
+    label: Multiply line 20c by 30% (0.30). Enter the results. Do not enter more than $600
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f5695.sec_a_claimed
+          - const: true
+        then: f5695.windows_capped
+      - guard:
+          op: test
+          eq:
+          - f5695.sec_a_claimed
+          - const: false
+        then: f5695.zero
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), lines 17a to 17c and 20d, "Do not complete Part II, Section A"
+  # Part II, Section B
+  - id: f5695.line21a
+    printed: 21a
+    label: Did you incur costs for qualified energy property installed on or in connection with a home located in the United
+      States that you use as a residence?
+    type: Bool
+    expr:
+      op: input
+      source: Did you incur costs for qualified energy property (central air conditioners; natural gas, propane or oil water
+        heaters, furnaces or hot water boilers; panelboards, subpanelboards, branch circuits or feeders; electric or
+        natural gas heat pumps or heat pump water heaters; biomass stoves or boilers) installed on or in connection with a
+        home located in the United States that you use as a residence (it may be a second home or a home you rent)?
+        (Answer No if you have none.)
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), line 21a; i5695 p. 3, Section B—Residential Energy Property Expenditures, "costs of new
+        qualified energy property that is installed on or in connection with a home that you used during 2025 located in the
+        United States"; fs-2025-01 p. 5, Energy Efficient Home Improvement Credit - Qualifying residence, "such property may
+        be installed in the taxpayer’s second home"
+    ambiguity: amb.2025.f5695_section_b_residence
+  - id: f5695.line21b
+    printed: 21b
+    label: Was the qualified energy property originally placed into service by you?
+    type: Bool
+    expr:
+      op: input
+      source: Was the qualified energy property originally placed into service by you (new property, not used by anyone
+        before)?
+    cite:
+      doc: i5695
+      locator: p. 6, Section B—Residential Energy Property Expenditures Lines 21a Through 21c, "Line 21b. To qualify for the
+        credit, the qualified energy property must have been originally placed in service by you"
+  - id: f5695.sec_b_claimed
+    printed: (helper)
+    label: Lines 21a and 21b are both Yes
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f5695.line21a
+        - const: true
+      - op: test
+        eq:
+        - f5695.line21b
+        - const: true
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), line 21b, "If you checked the ... No ... box for line 21a or 21b, you cannot claim the credit
+        for your residential energy property costs. Skip lines 22 through 25 and line 29. Go to line 26"
+  - id: f5695.b_new_home
+    printed: (helper)
+    label: Is any Section B residential energy property for a newly constructed home?
+    type: Bool
+    expr:
+      op: input
+      source: Is any of this residential energy property installed in connection with the construction of a new home (rather
+        than an existing home, or an addition to or renovation of one)?
+    cite:
+      doc: i5695
+      locator: p. 1, Costs, "The energy efficient home improvement credit (Part II) is only available for existing homes";
+        fs-2025-01 p. 5, Energy Efficient Home Improvement Credit - Qualifying residence, "A taxpayer can claim the credit
+        only for qualifying expenditures incurred for an existing home, or for an addition to or renovation of an existing
+        home, but not for a newly constructed home"
+  - id: f5695.sec_b_new_home
+    printed: (helper)
+    label: Section B is completed for property installed in connection with the construction of a new home
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f5695.sec_b_claimed
+        - const: true
+      - op: test
+        eq:
+        - f5695.b_new_home
+        - const: true
+    cite:
+      doc: i5695
+      locator: p. 1, Costs, "The energy efficient home improvement credit (Part II) is only available for existing homes"
+  - id: f5695.item_max
+    printed: (helper)
+    label: Year parameter f5695.item_max ($600)
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: f5695.item_max
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), lines 22d, 23d, 24d and 25e, "Do not enter more than $600"
+  - id: f5695.line22a
+    printed: 22a
+    label: Enter the Qualified Manufacturer Identification Number and cost of the most expensive central air conditioner
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The cost of the most expensive central air conditioner that achieves the highest efficiency tier established
+        by the Consortium for Energy Efficiency (CEE) in effect at the beginning of 2025, including labor (net of subsidies
+        and rebates; see help; zero if none)
+    cite:
+      doc: i5695
+      locator: p. 6, Lines 22a Through 22d, "Line 22a. Enter the QMID and amount you paid for the most expensive central air
+        conditioner"; p. 6, Tip, "Include on lines 22a, 22b, 23a, 23b, 24a, 24b, 25c, and 29a through 29f any labor costs"
+  - id: f5695.line22b
+    printed: 22b
+    label: Enter the cost of all other central air conditioners. If none, enter -0-
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The cost of all other central air conditioners that achieve that tier, including labor (net of subsidies and
+        rebates; see help; zero if none)
+    cite:
+      doc: i5695
+      locator: p. 6, Lines 22a Through 22d, "Line 22b. Enter the amounts you paid for all other central air conditioners"
+  - id: f5695.line22c
+    printed: 22c
+    label: Add lines 22a and 22b
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - f5695.line22a
+      - f5695.line22b
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), line 22c
+  - id: f5695.ac_30
+    printed: (helper)
+    label: Line 22c multiplied by 30% (0.30)
+    type: NonNegDollars
+    expr:
+      op: multiply_rate
+      amount: f5695.line22c
+      rate: f5695.eehi_rate
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), line 22d, "Multiply line 22c by 30% (0.30)"
+    ambiguity: amb.2025.multiplication_subcent
+  - id: f5695.qmid_ac
+    printed: (helper)
+    label: Do you have a valid QMID for each central air conditioner entered on lines 22a and 22b?
+    type: Bool
+    expr:
+      op: input
+      source: Do you have the valid four-character qualified manufacturer identification number (QMID) of each central air
+        conditioner whose cost you entered?
+    cite:
+      doc: i5695
+      locator: p. 3, Section B—Residential Energy Property Expenditures, "For qualified energy property installed in 2025, a
+        valid QMID must be reported on the applicable line(s)"
+  - id: f5695.ac_no_qmid
+    printed: (helper)
+    label: Central air conditioner costs entered without a valid QMID for each item
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        gt:
+        - f5695.line22c
+        - param: sales.zero
+      - op: test
+        eq:
+        - f5695.qmid_ac
+        - const: false
+    cite:
+      doc: i5695
+      locator: p. 5, Part II Energy Efficient Home Improvement Credit, "To qualify for the energy efficient home improvement
+        credit for specified property, you must provide a valid QMID for each item"
+  - id: f5695.ac_capped
+    printed: (helper)
+    label: Line 22c multiplied by 30%, not more than $600
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - f5695.ac_30
+      - f5695.item_max
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), line 22d, "Multiply line 22c by 30% (0.30). Enter the results. Do not enter more than $600"
+    ambiguity: amb.2025.f5695_category_cap
+    refuses:
+    - when: f5695.ac_no_qmid
+      form: Form 5695 line 22 (a central air conditioner without a valid QMID)
+      remedy: Qualified energy property installed in 2025 qualifies only with a valid QMID reported for it; obtain the QMID
+        from the manufacturer, or do not claim that item.
+      cite:
+        doc: i5695
+        locator: p. 5, Part II Energy Efficient Home Improvement Credit, "you must provide a valid QMID for each item"
+  - id: f5695.line22d
+    printed: 22d
+    label: Multiply line 22c by 30% (0.30). Enter the results. Do not enter more than $600
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f5695.sec_b_claimed
+          - const: true
+        then: f5695.ac_capped
+      - guard:
+          op: test
+          eq:
+          - f5695.sec_b_claimed
+          - const: false
+        then: f5695.zero
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), lines 21b and 22d, "Skip lines 22 through 25 and line 29"
+  - id: f5695.line23a_i
+    printed: 23a (i)
+    label: Enter the Qualified Manufacturer Identification Number(s) and cost(s) of the two most expensive natural gas,
+      propane, or oil water heater(s), the first
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The cost of the most expensive natural gas, propane or oil water heater that achieves the highest efficiency
+        tier established by the CEE in effect at the beginning of 2025, including labor (net of subsidies and rebates; see
+        help; zero if none)
+    cite:
+      doc: i5695
+      locator: p. 6, Lines 23a Through 23d, "Line 23a. Enter the QMID and amounts you paid for the two most expensive natural
+        gas, propane, or oil water heaters"
+  - id: f5695.line23a_ii
+    printed: 23a (ii)
+    label: Enter the Qualified Manufacturer Identification Number(s) and cost(s) of the two most expensive natural gas,
+      propane, or oil water heater(s), the second
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The cost of the second most expensive such water heater, including labor (net of subsidies and rebates; see
+        help; zero if none)
+    cite:
+      doc: i5695
+      locator: p. 6, Lines 23a Through 23d, "Line 23a. Enter the QMID and amounts you paid for the two most expensive natural
+        gas, propane, or oil water heaters"
+  - id: f5695.line23b
+    printed: 23b
+    label: Enter the cost of all other natural gas, propane, or oil water heaters. If none, enter -0-
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The cost of all other such water heaters, including labor (net of subsidies and rebates; see help; zero if
+        none)
+    cite:
+      doc: i5695
+      locator: p. 6, Lines 23a Through 23d, "Line 23b. Enter the amounts you paid for all other natural gas, propane, or oil
+        water heaters"
+  - id: f5695.line23c
+    printed: 23c
+    label: Add lines 23a and 23b
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - f5695.line23a_i
+      - f5695.line23a_ii
+      - f5695.line23b
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), line 23c
+  - id: f5695.wh_30
+    printed: (helper)
+    label: Line 23c multiplied by 30% (0.30)
+    type: NonNegDollars
+    expr:
+      op: multiply_rate
+      amount: f5695.line23c
+      rate: f5695.eehi_rate
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), line 23d, "Multiply line 23c by 30% (0.30)"
+    ambiguity: amb.2025.multiplication_subcent
+  - id: f5695.qmid_wh
+    printed: (helper)
+    label: Do you have a valid QMID for each water heater entered on lines 23a and 23b?
+    type: Bool
+    expr:
+      op: input
+      source: Do you have the valid four-character qualified manufacturer identification number (QMID) of each natural gas,
+        propane or oil water heater whose cost you entered?
+    cite:
+      doc: i5695
+      locator: p. 3, Section B—Residential Energy Property Expenditures, "For qualified energy property installed in 2025, a
+        valid QMID must be reported on the applicable line(s)"
+  - id: f5695.wh_no_qmid
+    printed: (helper)
+    label: Water heater costs entered without a valid QMID for each item
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        gt:
+        - f5695.line23c
+        - param: sales.zero
+      - op: test
+        eq:
+        - f5695.qmid_wh
+        - const: false
+    cite:
+      doc: i5695
+      locator: p. 5, Part II Energy Efficient Home Improvement Credit, "To qualify for the energy efficient home improvement
+        credit for specified property, you must provide a valid QMID for each item"
+  - id: f5695.wh_capped
+    printed: (helper)
+    label: Line 23c multiplied by 30%, not more than $600
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - f5695.wh_30
+      - f5695.item_max
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), line 23d, "Multiply line 23c by 30% (0.30). Enter the results. Do not enter more than $600"
+    ambiguity: amb.2025.f5695_category_cap
+    refuses:
+    - when: f5695.wh_no_qmid
+      form: Form 5695 line 23 (a water heater without a valid QMID)
+      remedy: Qualified energy property installed in 2025 qualifies only with a valid QMID reported for it; obtain the QMID
+        from the manufacturer, or do not claim that item.
+      cite:
+        doc: i5695
+        locator: p. 5, Part II Energy Efficient Home Improvement Credit, "you must provide a valid QMID for each item"
+  - id: f5695.line23d
+    printed: 23d
+    label: Multiply line 23c by 30% (0.30). Enter the results. Do not enter more than $600
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f5695.sec_b_claimed
+          - const: true
+        then: f5695.wh_capped
+      - guard:
+          op: test
+          eq:
+          - f5695.sec_b_claimed
+          - const: false
+        then: f5695.zero
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), lines 21b and 23d, "Skip lines 22 through 25 and line 29"
+  - id: f5695.line24a
+    printed: 24a
+    label: Enter the Qualified Manufacturer Identification Number and cost of the most expensive natural gas, propane, or oil
+      furnace or hot water boiler
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The cost of the most expensive natural gas, propane or oil furnace or hot water boiler that achieves the highest
+        efficiency tier established by the CEE in effect at the beginning of 2025 (an oil furnace or boiler must also meet
+        the 2021 Energy Star efficiency criteria and be rated for fuel blends at least 20% of which by volume is an eligible
+        fuel), including labor (net of subsidies and rebates; see help; zero if none)
+    cite:
+      doc: i5695
+      locator: p. 6, Lines 24a Through 24d, "Line 24a. Enter the QMID and amount you paid for the most expensive natural gas,
+        propane, or oil furnace or hot water boilers"
+  - id: f5695.line24b
+    printed: 24b
+    label: Enter the cost of all other natural gas, propane, or oil furnace or hot water boilers. If none, enter -0-
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The cost of all other such furnaces and hot water boilers, including labor (net of subsidies and rebates; see
+        help; zero if none)
+    cite:
+      doc: i5695
+      locator: p. 6, Lines 24a Through 24d, "Line 24b. Enter the amounts you paid for all other natural gas, propane, or oil
+        furnace or hot water boilers"
+  - id: f5695.line24c
+    printed: 24c
+    label: Add lines 24a and 24b
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - f5695.line24a
+      - f5695.line24b
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), line 24c
+  - id: f5695.furnace_30
+    printed: (helper)
+    label: Line 24c multiplied by 30% (0.30)
+    type: NonNegDollars
+    expr:
+      op: multiply_rate
+      amount: f5695.line24c
+      rate: f5695.eehi_rate
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), line 24d, "Multiply line 24c by 30% (0.30)"
+    ambiguity: amb.2025.multiplication_subcent
+  - id: f5695.qmid_furnace
+    printed: (helper)
+    label: Do you have a valid QMID for each furnace or hot water boiler entered on lines 24a and 24b?
+    type: Bool
+    expr:
+      op: input
+      source: Do you have the valid four-character qualified manufacturer identification number (QMID) of each furnace or
+        hot water boiler whose cost you entered?
+    cite:
+      doc: i5695
+      locator: p. 3, Section B—Residential Energy Property Expenditures, "For qualified energy property installed in 2025, a
+        valid QMID must be reported on the applicable line(s)"
+  - id: f5695.furnace_no_qmid
+    printed: (helper)
+    label: Furnace and hot water boiler costs entered without a valid QMID for each item
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        gt:
+        - f5695.line24c
+        - param: sales.zero
+      - op: test
+        eq:
+        - f5695.qmid_furnace
+        - const: false
+    cite:
+      doc: i5695
+      locator: p. 5, Part II Energy Efficient Home Improvement Credit, "To qualify for the energy efficient home improvement
+        credit for specified property, you must provide a valid QMID for each item"
+  - id: f5695.furnace_capped
+    printed: (helper)
+    label: Line 24c multiplied by 30%, not more than $600
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - f5695.furnace_30
+      - f5695.item_max
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), line 24d, "Multiply line 24c by 30% (0.30). Enter the results. Do not enter more than $600"
+    ambiguity: amb.2025.f5695_category_cap
+    refuses:
+    - when: f5695.furnace_no_qmid
+      form: Form 5695 line 24 (a furnace or hot water boiler without a valid QMID)
+      remedy: Qualified energy property installed in 2025 qualifies only with a valid QMID reported for it; obtain the QMID
+        from the manufacturer, or do not claim that item.
+      cite:
+        doc: i5695
+        locator: p. 5, Part II Energy Efficient Home Improvement Credit, "you must provide a valid QMID for each item"
+  - id: f5695.line24d
+    printed: 24d
+    label: Multiply line 24c by 30% (0.30). Enter the results. Do not enter more than $600
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f5695.sec_b_claimed
+          - const: true
+        then: f5695.furnace_capped
+      - guard:
+          op: test
+          eq:
+          - f5695.sec_b_claimed
+          - const: false
+        then: f5695.zero
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), lines 21b and 24d, "Skip lines 22 through 25 and line 29"
+  - id: f5695.line25a
+    printed: 25a
+    label: Did you install improvements or replacements of panelboards, subpanelboards, branch circuits, or feeders (enabling
+      property) to enable the installation and use of a separate qualified energy efficient improvement or qualified energy
+      property (enabled property), and were both the enabling property and the enabled property installed in 2025?
+    type: Bool
+    expr:
+      op: input
+      source: Did you install improvements or replacements of panelboards, subpanelboards, branch circuits or feeders
+        (enabling property) to enable the installation and use of separate enabled property (windows or skylights on line
+        20a, a central air conditioner on line 22a, a water heater on line 23a, a furnace or hot water boiler on line 24a, a
+        heat pump on line 29a, a heat pump water heater on line 29c, or a biomass stove or boiler on line 29e), and were both
+        installed in 2025? (If one was installed in 2024 and the other in 2025, you may choose to treat both as installed in
+        2025. Answer No if you have none.)
+    cite:
+      doc: i5695
+      locator: p. 6, Lines 25a Through 25e, "both the enabling property and the enabled property must be installed in 2025",
+        "If the enabling property and the enabled property were installed in consecutive tax years, then you can treat both
+        as having been installed in the later of the tax year"; pp. 6-7, Line 25b, "Enter the code for the type(s) of enabled
+        property from the following list"
+  - id: f5695.enabling_claimed
+    printed: (helper)
+    label: Lines 21a, 21b and 25a are all Yes
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f5695.sec_b_claimed
+        - const: true
+      - op: test
+        eq:
+        - f5695.line25a
+        - const: true
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), line 25a, "If you checked the ... No ... box, you cannot claim the credit for enabling
+        property. Skip lines 25b through 25e"
+  - id: f5695.line25c
+    printed: 25c
+    label: Enter the cost of improvements or replacement of enabling property
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The cost of improvements to or replacement of panelboards, subpanelboards, branch circuits or feeders installed
+        in a manner consistent with the National Electric Code, with a load capacity of at least 200 amps, installed with
+        the enabled property, including labor (net of subsidies and rebates; see help)
+    cite:
+      doc: i5695
+      locator: p. 7, Line 25c, "Enter the amounts you paid for improvements to or replacement of panelboards, subpanelboards,
+        branch circuits, or feeders that were installed in a manner consistent with the National Electric Code, have a load
+        capacity of at least 200 amps"
+  - id: f5695.enabling_30
+    printed: (helper)
+    label: Line 25c multiplied by 30% (0.30)
+    type: NonNegDollars
+    expr:
+      op: multiply_rate
+      amount: f5695.line25c
+      rate: f5695.eehi_rate
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), line 25e, "Multiply line 25c by 30% (0.30)"
+    ambiguity: amb.2025.multiplication_subcent
+  - id: f5695.qmid_enabling
+    printed: (helper)
+    label: Do you have a valid QMID for the enabling property entered on line 25c?
+    type: Bool
+    expr:
+      op: input
+      source: Do you have the valid four-character qualified manufacturer identification number (QMID) of each item of
+        enabling property whose cost you entered?
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), line 25d; i5695 p. 3, Section B—Residential Energy Property Expenditures, "For qualified
+        energy property installed in 2025, a valid QMID must be reported on the applicable line(s)"
+  - id: f5695.enabling_no_qmid
+    printed: (helper)
+    label: Enabling property costs entered without a valid QMID for each item
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        gt:
+        - f5695.line25c
+        - param: sales.zero
+      - op: test
+        eq:
+        - f5695.qmid_enabling
+        - const: false
+    cite:
+      doc: i5695
+      locator: p. 5, Part II Energy Efficient Home Improvement Credit, "To qualify for the energy efficient home improvement
+        credit for specified property, you must provide a valid QMID for each item"
+  - id: f5695.enabling_capped
+    printed: (helper)
+    label: Line 25c multiplied by 30%, not more than $600
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - f5695.enabling_30
+      - f5695.item_max
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), line 25e, "Multiply line 25c by 30% (0.30). Enter the results. Do not enter more than $600"
+    ambiguity: amb.2025.f5695_category_cap
+    refuses:
+    - when: f5695.enabling_no_qmid
+      form: Form 5695 line 25 (enabling property without a valid QMID)
+      remedy: Qualified energy property installed in 2025 qualifies only with a valid QMID reported for it; obtain the QMID
+        from the manufacturer, or do not claim that item.
+      cite:
+        doc: i5695
+        locator: p. 5, Part II Energy Efficient Home Improvement Credit, "you must provide a valid QMID for each item"
+  - id: f5695.line25e
+    printed: 25e
+    label: Multiply line 25c by 30% (0.30). Enter the results. Do not enter more than $600
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f5695.enabling_claimed
+          - const: true
+        then: f5695.enabling_capped
+      - guard:
+          op: test
+          eq:
+          - f5695.enabling_claimed
+          - const: false
+        then: f5695.zero
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), lines 21b, 25a and 25e, "Skip lines 25b through 25e"
+  - id: f5695.line26a
+    printed: 26a
+    label: Did you incur costs for a home energy audit that included an inspection of your main home located in the United
+      States and a written report prepared by a certified home energy auditor?
+    type: Bool
+    expr:
+      op: input
+      source: Did you incur costs in 2025 for a home energy audit that included an inspection of your main home located in
+        the United States (owned or rented) and a written report prepared by a Qualified Home Energy Auditor, or under the
+        supervision of one, certified by a Qualified Certification Program at the time of the audit? (Answer No if you had
+        none.)
+    cite:
+      doc: i5695
+      locator: p. 7, Lines 26a Through 26c, "Line 26a. To qualify for the credit, a home energy audit must have included an
+        inspection of your main home located in the United States and a written report prepared by a Qualified Home Energy
+        Auditor"
+  - id: f5695.line26b
+    printed: 26b
+    label: Enter the cost of the home energy audits
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The cost of the home energy audits you paid in 2025 (net of subsidies and rebates; see help)
+    cite:
+      doc: i5695
+      locator: p. 7, Lines 26a Through 26c, "Line 26b. Enter the amounts you paid for home energy audits in 2025"
+  - id: f5695.audit_30
+    printed: (helper)
+    label: Line 26b multiplied by 30% (0.30)
+    type: NonNegDollars
+    expr:
+      op: multiply_rate
+      amount: f5695.line26b
+      rate: f5695.eehi_rate
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), line 26c, "Multiply line 26b by 30% (0.30)"
+    ambiguity: amb.2025.multiplication_subcent
+  - id: f5695.audit_max
+    printed: (helper)
+    label: Year parameter f5695.audit_max ($150)
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: f5695.audit_max
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), line 26c, "Do not enter more than $150"
+  - id: f5695.audit_capped
+    printed: (helper)
+    label: Line 26b multiplied by 30%, not more than $150
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - f5695.audit_30
+      - f5695.audit_max
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), line 26c, "Multiply line 26b by 30% (0.30). Enter the results. Do not enter more than $150"
+  - id: f5695.line26c
+    printed: 26c
+    label: Multiply line 26b by 30% (0.30). Enter the results. Do not enter more than $150
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f5695.line26a
+          - const: true
+        then: f5695.audit_capped
+      - guard:
+          op: test
+          eq:
+          - f5695.line26a
+          - const: false
+        then: f5695.zero
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), lines 26a and 26c, "If you checked the ... No ... box, you cannot claim the home energy audit
+        credit"
+  - id: f5695.line27
+    printed: "27"
+    label: Add lines 18b, 19h, 20d, 22d, 23d, 24d, 25e, and 26c
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - f5695.line18b
+      - f5695.line19h
+      - f5695.line20d
+      - f5695.line22d
+      - f5695.line23d
+      - f5695.line24d
+      - f5695.line25e
+      - f5695.line26c
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), line 27
+  - id: f5695.annual_max
+    printed: (helper)
+    label: Year parameter f5695.annual_max ($1,200)
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: f5695.annual_max
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), line 28, "Enter the smaller of line 27 or $1,200"
+  - id: f5695.line28
+    printed: "28"
+    label: Enter the smaller of line 27 or $1,200
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - f5695.line27
+      - f5695.annual_max
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), line 28
+  - id: f5695.line29a
+    printed: 29a
+    label: Enter the Qualified Manufacturer Identification Number and cost of the most expensive electric or natural gas heat
+      pump
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The cost of the most expensive electric or natural gas heat pump that achieves the highest efficiency tier
+        established by the CEE in effect at the beginning of 2025, including labor (net of subsidies and rebates; see help;
+        zero if none)
+    cite:
+      doc: i5695
+      locator: p. 7, Lines 29a Through 29h, "Line 29a. Enter the QMID and amount you paid for the most expensive electric or
+        natural gas heat pump"
+  - id: f5695.line29b
+    printed: 29b
+    label: Enter the cost of all other electric or natural gas heat pumps. If none, enter -0-
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The cost of all other such heat pumps, including labor (net of subsidies and rebates; see help; zero if none)
+    cite:
+      doc: i5695
+      locator: p. 7, Lines 29a Through 29h, "Line 29b. Enter the amounts you paid for all other electric or natural gas heat
+        pumps"
+  - id: f5695.line29c
+    printed: 29c
+    label: Enter the Qualified Manufacturer Identification Number and cost of the most expensive electric or natural gas heat
+      pump water heater
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The cost of the most expensive electric or natural gas heat pump water heater that achieves the highest
+        efficiency tier established by the CEE in effect at the beginning of 2025, including labor (net of subsidies and
+        rebates; see help; zero if none)
+    cite:
+      doc: i5695
+      locator: p. 7, Lines 29a Through 29h, "Line 29c. Enter the QMID and amount you paid for the most expensive electric or
+        natural gas heat pump water heater"
+  - id: f5695.line29d
+    printed: 29d
+    label: Enter the cost of all other electric or natural gas heat pump water heaters. If none, enter -0-
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The cost of all other such heat pump water heaters, including labor (net of subsidies and rebates; see help;
+        zero if none)
+    cite:
+      doc: i5695
+      locator: p. 7, Lines 29a Through 29h, "Line 29d. Enter the amounts you paid for all other electric or natural gas heat
+        pump water heaters"
+  - id: f5695.line29e
+    printed: 29e
+    label: Enter the Qualified Manufacturer Identification Number and cost of the most expensive biomass stove or boiler
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The cost of the most expensive biomass stove or biomass boiler with a thermal efficiency rating of at least 75%
+        (measured by the higher heating value of the fuel), including labor (net of subsidies and rebates; see help; zero
+        if none)
+    cite:
+      doc: i5695
+      locator: p. 7, Lines 29a Through 29h, "Line 29e. Enter the QMID and amount you paid for the most expensive biomass
+        stove or biomass boiler that has a thermal efficiency rating of at least 75%"
+  - id: f5695.line29f
+    printed: 29f
+    label: Enter the cost of all other biomass stoves and biomass boilers. If none, enter -0-
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The cost of all other such biomass stoves and biomass boilers, including labor (net of subsidies and rebates;
+        see help; zero if none)
+    cite:
+      doc: i5695
+      locator: p. 7, Lines 29a Through 29h, "Line 29f. Enter the amounts you paid for all other biomass stoves and biomass
+        boilers"
+  - id: f5695.line29g
+    printed: 29g
+    label: Add lines 29a through 29f
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - f5695.line29a
+      - f5695.line29b
+      - f5695.line29c
+      - f5695.line29d
+      - f5695.line29e
+      - f5695.line29f
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), line 29g
+  - id: f5695.hp_30
+    printed: (helper)
+    label: Line 29g multiplied by 30% (0.30)
+    type: NonNegDollars
+    expr:
+      op: multiply_rate
+      amount: f5695.line29g
+      rate: f5695.eehi_rate
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), line 29h, "Multiply line 29g by 30% (0.30)"
+    ambiguity: amb.2025.multiplication_subcent
+  - id: f5695.heat_pump_max
+    printed: (helper)
+    label: Year parameter f5695.heat_pump_max ($2,000)
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: f5695.heat_pump_max
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), line 29h, "Do not enter more than $2,000"
+  - id: f5695.qmid_hp
+    printed: (helper)
+    label: Do you have a valid QMID for each heat pump, heat pump water heater and biomass stove or boiler entered on lines
+      29a to 29f?
+    type: Bool
+    expr:
+      op: input
+      source: Do you have the valid four-character qualified manufacturer identification number (QMID) of each heat pump,
+        heat pump water heater and biomass stove or boiler whose cost you entered?
+    cite:
+      doc: i5695
+      locator: p. 3, Section B—Residential Energy Property Expenditures, "For qualified energy property installed in 2025, a
+        valid QMID must be reported on the applicable line(s)"
+  - id: f5695.hp_no_qmid
+    printed: (helper)
+    label: Heat pump, heat pump water heater or biomass costs entered without a valid QMID for each item
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        gt:
+        - f5695.line29g
+        - param: sales.zero
+      - op: test
+        eq:
+        - f5695.qmid_hp
+        - const: false
+    cite:
+      doc: i5695
+      locator: p. 5, Part II Energy Efficient Home Improvement Credit, "To qualify for the energy efficient home improvement
+        credit for specified property, you must provide a valid QMID for each item"
+  - id: f5695.hp_capped
+    printed: (helper)
+    label: Line 29g multiplied by 30%, not more than $2,000
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - f5695.hp_30
+      - f5695.heat_pump_max
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), line 29h, "Multiply line 29g by 30% (0.30). Enter the results. Do not enter more than $2,000"
+    refuses:
+    - when: f5695.hp_no_qmid
+      form: Form 5695 line 29 (a heat pump, heat pump water heater or biomass stove or boiler without a valid QMID)
+      remedy: Qualified energy property installed in 2025 qualifies only with a valid QMID reported for it; obtain the QMID
+        from the manufacturer, or do not claim that item.
+      cite:
+        doc: i5695
+        locator: p. 5, Part II Energy Efficient Home Improvement Credit, "you must provide a valid QMID for each item"
+  - id: f5695.line29h
+    printed: 29h
+    label: Multiply line 29g by 30% (0.30). Enter the results. Do not enter more than $2,000
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f5695.sec_b_claimed
+          - const: true
+        then: f5695.hp_capped
+      - guard:
+          op: test
+          eq:
+          - f5695.sec_b_claimed
+          - const: false
+        then: f5695.zero
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), lines 21b and 29h, "Skip lines 22 through 25 and line 29"
+  - id: f5695.joint_occupancy
+    printed: (helper)
+    label: Did you occupy the home jointly with someone other than your spouse, each occupant completing their own Form 5695?
+    type: Bool
+    expr:
+      op: input
+      source: Did you occupy the home jointly with someone other than your spouse on a joint return, so that each occupant
+        completes their own Form 5695 for the same property? (Answer No if you and a neighbor only shared the cost of
+        property benefiting each of your own main homes, and enter only the part of the cost you paid.)
+    cite:
+      doc: i5695
+      locator: p. 3, Joint occupancy, "If you occupied your home jointly with someone, each occupant must complete their own
+        Form 5695"; p. 3, Joint ownership of qualified property, "You figure your credit on the part of the cost you paid"
+  - id: f5695.separate_homes
+    printed: (helper)
+    label: Did you and your spouse own and live apart in separate main homes?
+    type: Bool
+    expr:
+      op: input
+      source: Did you and your spouse both own and live apart in separate main homes in 2025?
+    cite:
+      doc: i5695
+      locator: p. 3, Married taxpayers with more than one home, "If both you and your spouse owned and lived apart in
+        separate main homes, the limit on the amount of the credit applies to each of you separately"
+  - id: f5695.separate_homes_joint
+    printed: (helper)
+    label: Married filing jointly with separate main homes
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f1040.status
+        - const: mfj
+      - op: test
+        eq:
+        - f5695.separate_homes
+        - const: true
+    cite:
+      doc: i5695
+      locator: p. 3, Married taxpayers with more than one home, "If you are filing a joint return, figure your energy
+        efficient home improvement credit as follows"
+  - id: f5695.line30
+    printed: "30"
+    label: Add lines 28 and 29h
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - f5695.line28
+      - f5695.line29h
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), line 30
+    refuses:
+    - when: f5695.business_use
+      form: Form 5695 for an item used less than 80% for nonbusiness purposes
+      remedy: Allocating an item's cost between business and nonbusiness use is outside this tool.
+      cite:
+        doc: i5695
+        locator: p. 1, Costs, "only that portion of the costs that is allocable to the nonbusiness use can be used to
+          determine either credit"
+    - when: f5695.joint_occupancy
+      form: Form 5695 Part II for joint occupants (line 32a)
+      remedy: Allocating the credit limits among joint occupants by the amounts each paid, with the statement line 32a
+        requires, is outside this tool.
+      cite:
+        doc: i5695
+        locator: p. 3, Joint occupancy, "If the aggregate credit that would be allowed to all occupants for any item of
+          property exceeds the credit limit below, then you must figure your allocable share of the credit from each
+          property"
+    - when: f5695.separate_homes_joint
+      form: Form 5695 Part II for spouses with separate main homes (a separate Form 5695 for each main home)
+      remedy: Figuring lines 17a through 30 on a separate Form 5695 for each spouse's main home and combining them on line
+        30 is outside this tool.
+      cite:
+        doc: i5695
+        locator: p. 3, Married taxpayers with more than one home, "Complete lines 17a through 30 of a separate Form 5695 for
+          each main home"
+    - when: f5695.sec_a_new_home
+      form: Form 5695 Part II, Section A, with improvements related to the construction of the main home (line 17e Yes)
+      remedy: Separating improvements related to the construction of a home from those that are not is outside this tool.
+      cite:
+        doc: i5695
+        locator: p. 5, Lines 17a Through 17e, "If the qualified improvements for which you are seeking to claim the credit
+          are related to the construction of a new home, check the ... Yes ... box. If you check the ... Yes ... box, skip
+          lines 18a through 20d"
+    - when: f5695.sec_b_new_home
+      form: Form 5695 Part II, Section B, for property installed in connection with the construction of a new home
+      remedy: The energy efficient home improvement credit is only available for existing homes; separating such property
+        from property for an existing home is outside this tool.
+      cite:
+        doc: i5695
+        locator: p. 1, Costs, "The energy efficient home improvement credit (Part II) is only available for existing homes"
+  - id: f5695.eehi_ws1
+    printed: (helper)
+    label: Energy Efficient Home Improvement Credit Limit Worksheet, line 1. Enter the amount from Form 1040, line 18
+    type: Dollars
+    expr:
+      op: copy
+      from: f1040.line18
+    cite:
+      doc: i5695
+      locator: p. 7, Energy Efficient Home Improvement Credit Limit Worksheet—Line 31, line 1, "Enter the amount from Form
+        1040, 1040-SR, or 1040-NR, line 18"
+  - id: f5695.eehi_ws2
+    printed: (helper)
+    label: 'Energy Efficient Home Improvement Credit Limit Worksheet, line 2. Schedule 3 lines 6l, 1, 2, 6d, 3 and 4; in this
+      tool lines 1, 2 and 4, the others being refused'
+    type: Dollars
+    expr:
+      op: sum
+      of:
+      - s3.line1
+      - s3.line2
+      - s3.line4
+    cite:
+      doc: i5695
+      locator: p. 7, Energy Efficient Home Improvement Credit Limit Worksheet—Line 31, line 2, "Enter the total of the
+        following credit(s)/adjustment(s) if you are taking the credit(s)/adjustment(s) on your 2025 income tax return"
+    refuses:
+    - when: scope.credits
+      form: Energy Efficient Home Improvement Credit Limit Worksheet, line 2 (Schedule 3 lines 3, 6d and 6l)
+      remedy: Credits other than the foreign tax credit, the dependent credits and the residential energy credits are
+        outside this tool.
+      cite:
+        doc: i5695
+        locator: p. 7, Energy Efficient Home Improvement Credit Limit Worksheet—Line 31, line 2
+  - id: f5695.eehi_ws3
+    printed: (helper)
+    label: Energy Efficient Home Improvement Credit Limit Worksheet, line 3. Subtract line 2 from line 1. If zero or less,
+      enter -0-
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f5695.eehi_ws1
+      take: f5695.eehi_ws2
+    cite:
+      doc: i5695
+      locator: p. 7, Energy Efficient Home Improvement Credit Limit Worksheet—Line 31, line 3, "Subtract line 2 from line 1.
+        Also enter this amount on Form 5695, line 31. If zero or less, enter -0- on Form 5695, lines 31 and 32"
+  - id: f5695.line31
+    printed: "31"
+    label: Limitation based on tax liability. Enter the amount from the Energy Efficient Home Improvement Credit Limit
+      Worksheet
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: f5695.eehi_ws3
+    cite:
+      doc: i5695
+      locator: p. 7, Line 31, "Complete the worksheet below to figure the amount to enter on line 31"
+  - id: f5695.line32
+    printed: "32"
+    label: Energy efficient home improvement credit. Enter the smaller of line 30 or line 31. Also include this amount on
+      Schedule 3 (Form 1040), line 5b
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - f5695.line30
+      - f5695.line31
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), line 32
+  - id: f5695.line32a
+    printed: 32a
+    label: If the special rule for joint occupants applies, check here and attach a statement
+    type: Bool
+    expr:
+      op: test
+      eq:
+      - f5695.joint_occupancy
+      - const: true
+    cite:
+      doc: i5695
+      locator: p. 7, Lines 32a and 32b, "Line 32a. Joint occupants of a home who are claiming the energy efficient home
+        improvement credit must check the box on line 32a"
+    note: Joint occupancy is refused on line 30, so the box is unchecked on every return this tool completes.
+  - id: f5695.condo
+    printed: (helper)
+    label: Do you live in a condominium or cooperative and claim a fractional share of its costs?
+    type: Bool
+    expr:
+      op: input
+      source: Do you live in a condominium or cooperative and include in Part II a fractional share of the qualified energy
+        efficiency improvements or residential energy property costs of the condominium management association or the
+        cooperative housing corporation?
+    cite:
+      doc: i5695
+      locator: p. 7, Lines 32a and 32b, "Line 32b. Occupants of a condominium or cooperative who are claiming a fractional
+        share of the qualified energy efficiency improvements or residential energy property costs must check the box on line
+        32b"
+  - id: f5695.line32b
+    printed: 32b
+    label: If you live in a condominium or cooperative and have a fractional share of the qualified energy efficiency
+      improvements or residential energy property expenditures, check here
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f5695.part2_any
+        - const: true
+      - op: test
+        eq:
+        - f5695.condo
+        - const: true
+    cite:
+      doc: i5695
+      locator: p. 7, Lines 32a and 32b, "must check the box on line 32b"

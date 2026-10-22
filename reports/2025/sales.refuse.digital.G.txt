@@ -8,6 +8,10 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = $0
       cite: [i1040gi] Instructions for Form 1040, pp. 23–24, lines 1a–1h (2025; printed date 2026-02-25; 482e9c48)
       note: confirmed roster $person: taxpayer
+  1e  Taxable dependent care benefits from Form 2441, line 26
+      = $0
+      cite: [i1040gi] p. 24, Line 1e, "Taxable Dependent Care Benefits From Form 2441, Line 26" and "But first complete Form 2441 to see if you can exclude part or all of the benefits" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["f2441.benefits",{"const":false}],"op":"test"}
   1z  Add lines 1a through 1h
       = $0
       cite: [f1040] Form 1040 (2025), line 1z (2025; created 2025-09-05; 3d31c226)
@@ -63,6 +67,14 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L)
       cite: [i1040gi] Instructions for Form 1040, line 16 (2025; printed date 2026-02-25; 482e9c48)
       note: guard incomplete
+
+== Form 2441 — Child and Dependent Care Expenses (Parts I to III) ==
+  (helper) Year parameter sales.zero
+      = $0
+      cite: [f2441] Form 2441 (2025), lines 6, 9b, 20, 22 and 25 (2025; created 2025-03-18; 6c3c2d19)
+  (helper) Did you receive dependent care benefits?
+      = false
+      cite: [f2441] Form 2441 (2025), Part I, "Did you receive dependent care benefits? No. Complete only Part II below. Yes. Complete Part III on page 2 next."; i2441 p. 1, Purpose of Form (2025; created 2025-03-18; 6c3c2d19)
 
 == Household facts for dependents and head of household ==
   (helper) Number of entries for you
@@ -377,6 +389,8 @@ Values sheet — tax year 2025 (not a complete return for all filers)
 Path choices (guard wording per the rendered worksheets in rendered/2025/):
   sd.to1040: chose REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L)
   f1040.sd.to1040: chose REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L)
+  f1040.line1e: chose $0 (guard 1)
+      not taken: guard 0 = false
   ssb.line18: chose $0 (guard 1)
       not taken: guard 0 = false
   f1040.ssb.line18: chose $0 (guard 1)
@@ -416,7 +430,10 @@ Derivations:
   household.roster_bad: test(household.roster_ok = true; false = false)
   f1040.household.roster_bad: test(household.roster_ok = true; false = false)
   f1040.line1a: sum_over(household.roster_bad = false; person[taxpayer].box1 = $0)
-  f1040.line1z: copy(f1040.line1a = $0)
+  f2441.zero: param(#sales.zero = $0)
+  f1040.f2441.zero: param(#sales.zero = $0)
+  f1040.line1e: choose(f2441.benefits = false; true = true; f2441.benefits = false; false = false; f2441.zero = $0)
+  f1040.line1z: sum(f1040.line1a = $0; f1040.line1e = $0)
   sb.line2: sum_over(sb.unsupported = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false)
   sb.zero: param(#sales.zero = $0)
   sb.line3: copy(sb.unsupported = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false; sb.zero = $0)

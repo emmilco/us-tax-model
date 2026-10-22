@@ -921,3 +921,41 @@ later grouping.
 - **Where:** `forms/2025/person.yaml` (`person.plan_screened`); `ambiguities/2025.yaml` (`amb.2025.f7206_plan_attribution`, `amb.2025.qbi_attribution` reasons).
 - **Fix (owner):** a SEP or SIMPLE plan with more than one Schedule C is refused through the plan screen's gate; the two register reasons are corrected, their readings unchanged.
 - **Tags:** wrong-premise; overstatement; caught-by-review
+
+## BUG-0079 — A refusal can wait behind an unknown operand in the binary atoms
+
+- **Date:** 2026-10-22
+- **Caught by:** the Stage 15 Form 2441 authoring: the `refusal_propagates` property failed on `f2441.line9a` for generated returns that lacked some Form 2441 inputs, until the generator supplied them.
+- **Symptom:** `sum` returns a refusal among its operands before an unknown one, but `multiply_rate` (and, per the authoring agent, `subtract` and `multiply_count`) return the first operand's unknown before looking at the second operand, so a refusal carried by the second operand is not reported while the first is unanswered. The refusal appears once the first operand is known, so no return is produced wrongly; it can arrive later in the interview than the early-refusal rule intends.
+- **Root cause:** each atom's evaluator checks its operands in order and returns the first incomplete one, with no common rule that a refusal outranks an unknown; the Lean evaluator agrees case for case (compare finds no difference).
+- **Where:** `engine/src/eval.ts` (`multiply_rate` checked; the other binary atoms per the agent's report, not yet checked one by one); `lean/TaxFormalization/Eval.lean`.
+- **Fix:** open, for the owner. Proposed: one rule for every atom, a refusal among the operands outranks an unknown (as `sum` does), in both evaluators, with a property test.
+- **Tags:** evaluator; refusal-order; caught-by-property
+
+## BUG-0080 — Form 2441's column (c) box was checked for a qualifying person under 13
+
+- **Date:** 2026-10-22
+- **Caught by:** the Stage 15 transcription and render reviews of `dependent` (both, independently) and its class M review.
+- **Symptom:**
+  - Line 2 column (c), "Check here if the qualifying person was over age 12 and was disabled", was checked for every qualifying person unable to care for themselves except a qualifying child under 13 all year, so a disabled qualifying relative under 13 (for example an unrelated household member aged 10) had it checked.
+  - The label of `dependent.dc_child` said "under 13 for at least part of 2025", while the line holds only the child who turned 13 during 2025 (the all-year route is `dependent.dc_child_all_year`); the class M model, reading the label, answered yes for children aged 11 and 3.
+  - Neither changes an amount: the box is a display line, and `dependent.dc_qp` takes both routes.
+- **Root cause:** the box's test stood in "not a qualifying child all year" for "over age 12" (i2441 p. 3, Column (c), "was over age 12 at the time the care was provided and was disabled"); the helper's label described the qualifying-child test as a whole instead of its own route.
+- **Where:** `forms/2025/dependent.yaml` (`dependent.dc_line2c`, `dependent.dc_child`).
+- **Fix:** the box tests `dependent.age` at or over `dc.child_age`; the label names the turned-13 route.
+- **Tags:** display; wrong-premise; caught-by-review
+
+## BUG-0081 — The Schedule 1 refusal text still listed only the Stage 11 adjustments
+
+- **Date:** 2026-10-22
+- **Caught by:** the Stage 15 render review of `scope` (rerun because the credits screen changed).
+- **Symptom:** the refusal shown when the Schedule 1 screen is answered Yes, under `scope.ready` and on Form 1040
+  lines 8 and 10, says "Schedule 1 income and adjustments other than unemployment compensation, educator expenses,
+  the HSA deduction and student loan interest are outside this tool", while the screen's own question treats
+  Schedule C income, the self-employment tax deduction, self-employed SEP and SIMPLE contributions and the
+  self-employed health insurance deduction as supported (since Stage 14). No value changes.
+- **Root cause:** Stage 14 narrowed the question and not the three refusal texts that repeat its list.
+- **Where:** `forms/2025/scope.yaml` (the `scope.schedule1` refusal), `forms/2025/f1040.yaml` (lines 8 and 10).
+- **Fix:** open (TASKS.md T-050): the three texts list the same supported items as the question, with the reviews
+  of `scope` and `f1040` rerun after.
+- **Tags:** wording; stale-text; caught-by-review

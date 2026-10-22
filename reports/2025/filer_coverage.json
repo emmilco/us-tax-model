@@ -5,12 +5,12 @@
  "microdata_filing_units_unweighted_total": 157629339.546014,
  "raking_max_share_error": 7.132191345032847e-07,
  "coverage": {
-  "central": 0.5801386940055673,
-  "low": 0.5080762748315577,
-  "high": 0.7185988802417096,
-  "microdata_part": 0.7185988802417096,
-  "irs_only_independent_factor": 0.8073192290675857,
-  "irs_only_share_sum": 0.21052260541015194
+  "central": 0.6472485889166303,
+  "low": 0.6072999132859158,
+  "high": 0.7405999390446065,
+  "microdata_part": 0.7405999390446065,
+  "irs_only_independent_factor": 0.8739517177811249,
+  "irs_only_share_sum": 0.1333000257586907
  },
  "categories": [
   {
@@ -48,42 +48,6 @@
    "microdata_share_before_raking": 0.005307730052777667,
    "share": 0.04490196447608361,
    "basis": "IRS count, overlap from microdata"
-  },
-  {
-   "id": "cdcc",
-   "group": "other_credits",
-   "label": "Child and dependent care credit",
-   "gates": [
-    "scope.credits"
-   ],
-   "irs_returns": 5720294.0,
-   "microdata_share_before_raking": 0.0400503037780639,
-   "share": 0.03561780626819611,
-   "basis": "IRS count, overlap from microdata"
-  },
-  {
-   "id": "savers",
-   "group": "other_credits",
-   "label": "Saver's credit",
-   "gates": [
-    "scope.credits"
-   ],
-   "irs_returns": 9831548.0,
-   "microdata_share_before_raking": null,
-   "share": 0.06121680582932825,
-   "basis": "IRS count only (independence assumed)"
-  },
-  {
-   "id": "energy",
-   "group": "other_credits",
-   "label": "Residential energy credits",
-   "gates": [
-    "scope.credits"
-   ],
-   "irs_returns": 2570561.0,
-   "microdata_share_before_raking": null,
-   "share": 0.01600577382213298,
-   "basis": "IRS count only (independence assumed)"
   },
   {
    "id": "other_nonrefundable",
@@ -353,48 +317,48 @@
  ],
  "greedy_order": [
   {
-   "group": "other_credits",
-   "label": "Other credits (dependent care, saver's, energy, others)",
-   "coverage_after": 0.6532176303949329
-  },
-  {
    "group": "schedule1_misc",
    "label": "Other Schedule 1 income and adjustments",
-   "coverage_after": 0.7309738673521409
+   "coverage_after": 0.7242942966688722
   },
   {
    "group": "schedule_e",
    "label": "Rental, royalty, partnership, S corporation, estate (Schedule E)",
-   "coverage_after": 0.7985864670141478
+   "coverage_after": 0.79128905873272
   },
   {
    "group": "premium_tax_credit",
    "label": "Premium tax credit (Form 8962)",
-   "coverage_after": 0.8475932138972115
+   "coverage_after": 0.8398479865563306
   },
   {
    "group": "education",
    "label": "Education credits (Form 8863)",
-   "coverage_after": 0.8890302673350041
+   "coverage_after": 0.8809063920838406
   },
   {
    "group": "capital_loss_carryover",
    "label": "Capital loss carryover",
-   "coverage_after": 0.9212858813398768
+   "coverage_after": 0.9128672573113619
   },
   {
    "group": "retirement_penalty",
    "label": "Additional tax on retirement plans (Form 5329)",
-   "coverage_after": 0.9514584425018772
+   "coverage_after": 0.9427641044376377
   },
   {
    "group": "married",
    "label": "Married filing separately",
-   "coverage_after": 0.9769168339166064
+   "coverage_after": 0.9679898594579183
   },
   {
    "group": "farm",
    "label": "Farm income (Schedule F)",
+   "coverage_after": 0.9786108241155096
+  },
+  {
+   "group": "other_credits",
+   "label": "Other credits (dependent care, saver's, energy, others)",
    "coverage_after": 0.9876357469972091
   },
   {
@@ -410,17 +374,17 @@
  ],
  "coverage_without_model_only_category": {},
  "gain_if_covered_alone": {
-  "married": 0.018037778871924925,
-  "premium_tax_credit": 0.035474510695365,
-  "education": 0.02656112298790203,
-  "other_credits": 0.07307893638936558,
-  "schedule_e": 0.043126843743715004,
-  "capital_loss_carryover": 0.021048473230533382,
-  "retirement_penalty": 0.018999824681855237,
-  "schedule1_misc": 0.06709586057276962,
-  "schedule2_misc": 0.002626462413666153,
-  "other_earned_income": 0.004615422623788001,
-  "farm": 0.002683635815075469
+  "married": 0.019841715497374013,
+  "premium_tax_credit": 0.041933113135284805,
+  "education": 0.030390938874026774,
+  "other_credits": 0.0059690414783025725,
+  "schedule_e": 0.048293948629938854,
+  "capital_loss_carryover": 0.02348334068746205,
+  "retirement_penalty": 0.021197706414107897,
+  "schedule1_misc": 0.07704570775224195,
+  "schedule2_misc": 0.0029302890992332076,
+  "other_earned_income": 0.005149330343533265,
+  "farm": 0.002905131013902662
  },
  "gates_mapped": [
   "f8889.unsupported",
@@ -440,6 +404,7 @@
   "asset.s179_bad",
   "asset.screened",
   "carloan.refi_nested",
+  "dependent.dc_no_tin",
   "dependent.divorced_rule",
   "dependent.income_exception",
   "dependent.married",
@@ -450,11 +415,33 @@
   "div.bad_special",
   "div.section1202",
   "div.unsupported",
+  "f2441.attrib_gate",
+  "f2441.line14_bad",
+  "f2441.nondependent_gate",
+  "f2441.plans_differ",
+  "f2441.prior_year",
+  "f2441.provider_ineligible",
+  "f2441.spouse_died_gate",
+  "f2441.student_disabled",
   "f4952.alternative_allocation",
   "f4952.bad_dividends",
   "f4952.bad_election",
   "f4952.carryover",
   "f4952.unsupported",
+  "f5695.ac_no_qmid",
+  "f5695.business_use",
+  "f5695.construction_later",
+  "f5695.doors_no_qmid",
+  "f5695.enabling_no_qmid",
+  "f5695.furnace_no_qmid",
+  "f5695.hp_no_qmid",
+  "f5695.joint_occupancy",
+  "f5695.line7a",
+  "f5695.sec_a_new_home",
+  "f5695.sec_b_new_home",
+  "f5695.separate_homes_joint",
+  "f5695.wh_no_qmid",
+  "f5695.windows_no_qmid",
   "f8889.allocation_bad",
   "f8889.bad_months",
   "f8889.excess",
@@ -473,6 +460,10 @@
   "person.over",
   "person.plan_screened",
   "person.rrta",
+  "person.sav_able",
+  "person.sav_excess_gate",
+  "person.sav_trad",
+  "person.se_rrta",
   "person.se_screened",
   "person.sep_excess",
   "person.simple_excess",
@@ -483,6 +474,7 @@
   "s1.ebl",
   "s1.sc_1a",
   "s1.uc_unsupported",
+  "s179.mfs",
   "s179.multi",
   "s179.orphan",
   "s1a.senior_decedent",
@@ -503,6 +495,7 @@
   "sb.unsupported",
   "sc.hi_screened",
   "sc.ho_both_limits",
+  "sc.ho_multi",
   "sc.ho_screened",
   "sc.inventory_other",
   "sc.not_at_risk",
@@ -510,6 +503,7 @@
   "scope.other_line16",
   "scveh.bonus_mixed",
   "scveh.low_use",
+  "scveh.no_miles",
   "scveh.s179_bad",
   "scveh.screened",
   "scveh.smr_bad",
@@ -519,6 +513,10 @@
   "ssb.lump_sum",
   "ssb.pub915",
   "ssb.terror_disability",
-  "tipjob.mixed"
+  "tipjob.mixed",
+  "w2.box10_bad",
+  "w2.box12_userra",
+  "w2.code_h",
+  "w2.g_bad"
  ]
 }

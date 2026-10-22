@@ -402,6 +402,78 @@ register:
         doc: p946
         locator: p. 62, Depreciation Worksheet for Passenger Automobiles, line 10; p. 20, Carryover of disallowed deduction
       status: Agent reading, after Stage 14 (scveh render review), for the owner's review (TASKS.md T-046).
+    - id: amb.2025.dc_ineligible_providers
+      text_at_issue: 'i2441 p. 2, item 4: "The person who provided the care wasn''t your spouse, the parent of your qualifying child,
+        or a person whom you can claim as a dependent. If your child (including stepchild or foster child) provided the care, they
+        must have been age 19 or older by the end of 2025 and they can''t be your dependent"; p503 p. 8, Payments to Relatives or
+        Dependents: "A person for whom you (or your spouse if filing jointly) can claim as a dependent", "Your child ... who was
+        under age 19 at the end of the year, even if they aren''t your dependent", "A person who was your spouse any time during
+        the year" and "The parent of your qualifying person if your qualifying person is your child and under age 13".'
+      readings:
+      - Pub. 503's list of four (dcprov.related), which is broader for a spouse (at any time during the year) and narrower for a
+        parent (only of your child under 13).
+      - The instructions' list (your spouse, the parent of your qualifying child, your dependent, your child under 19).
+      chosen: The first (dcprov.related asks Pub. 503's list; a Yes refuses Form 2441).
+      reason: The owner's decision (Stage 15, decision 6). The publication is the more specific text, and both lists agree on a
+        dependent and a child under 19. A provider in either list refuses, so the reading decides only which question is asked.
+      cite:
+        doc: p503
+        locator: p. 8, Payments to Relatives or Dependents, "However, don't count any amounts you pay to"
+      status: Owner ruling, Stage 15 (T-048).
+    - id: amb.2025.dc_line1e_attribution
+      text_at_issue: 'i2441 p. 4, Lines 4 and 5: "If filing jointly, figure your and your spouse''s earned income separately" and
+        earned income "generally includes ... The amount shown on Form 1040, 1040-SR, or 1040-NR, line 1z"; line 1z includes line
+        1e (Form 2441 line 26), a figure for the return, not for either spouse.'
+      readings:
+      - Line 1e is the earned income of the spouse whose Forms W-2 show box 10; when both spouses' (or neither spouse's) Forms W-2
+        show box 10 on a joint return, line 1e is above zero and a credit remains (line 31 above zero), the form is refused.
+      - Line 1e is split between the spouses in proportion to each spouse's part of line 12.
+      - Line 1e is the filer's (line 4) earned income.
+      chosen: The first (person.dc_1e, f2441.attrib_gate). On a return that is not joint there is one person and line 1e is theirs.
+        When the split is undetermined but no credit remains (line 31 is zero, so line 3 and line 6 are zero whatever lines 4 and 5
+        hold), line 1e is shown in the taxpayer's line 4, keeping lines 4 and 5 together equal to line 1z plus self-employment
+        earnings; the credit cannot differ.
+      reason: The owner's decision (Stage 15, decision 6). Taxable benefits arise from one spouse's plan; the instructions give no
+        rule for dividing a joint line 26, and the case where it matters (benefits over the exclusion with a credit still left) is
+        rare, since excluded benefits of $5,000 leave at most $1,000 of the $6,000 limit.
+      cite:
+        doc: i2441
+        locator: p. 4, Lines 4 and 5, "If filing jointly, figure your and your spouse's earned income separately"
+      status: Owner ruling, Stage 15 (T-048); the display of line 1e on line 4 in the undetermined case with no credit is an agent
+        reading for the owner's review.
+    - id: amb.2025.dc_line30
+      text_at_issue: 'Form 2441 line 30: "Complete line 2 on page 1 of this form. Don''t include in column (d) any benefits shown on
+        line 28 above. Then, add the amounts in column (d) and enter the total here"; the instructions give no rule for dividing
+        line 28 among the qualifying persons.'
+      readings:
+      - Line 30 is the total of the qualified expenses incurred and paid in 2025 for all qualifying persons less line 28, and not
+        less than zero; column (d) shows each person's expenses before excluding benefits.
+      - Each person's column (d) is asked net of the benefits that paid for that person's care, and line 30 is their sum.
+      chosen: The first (f2441.line30; dependent.dc_paid and dependent.dc_line2d ask and show each person's expenses including
+        those paid with dependent care benefits).
+      reason: The owner's decision (Stage 15, decision 6). The total is determined by the text and verifiable; an allocation of line
+        28 among persons is not. In Pub. 503's example (the Paris family, p. 13) the benefits covered one child's expenses and the
+        total less the benefits is the line 30 the example uses ($19,500 less $1,000).
+      cite:
+        doc: f2441
+        locator: Form 2441 (2025), line 30
+      status: Owner ruling, Stage 15 (T-048).
+    - id: amb.2025.dc_plan_maximum
+      text_at_issue: 'Form 2441 line 21: "However, don''t enter more than the maximum amount allowed under your dependent care plan";
+        i2441 p. 5, Line 21: "if your dependent care plan only allows a maximum of $4,000 to be excluded, substitute $4,000". The
+        text speaks of one plan; spouses, or one person with two employers, may have more than one.'
+      readings:
+      - One plan maximum for the return (f2441.plan_max), the smaller of it and $5,000; refused when the plans allow different
+        maximums.
+      - The $5,000 limit, reduced only if every plan's maximum is lower.
+      - The sum of the plans' maximums, not more than $5,000.
+      chosen: The first (f2441.plan_max, f2441.plans_differ).
+      reason: The owner's decision (Stage 15, decision 6). Where every plan allows the same maximum the readings agree; where they
+        differ the text does not decide, so that case is refused.
+      cite:
+        doc: i2441
+        locator: p. 5, Line 21, "Don't enter more than the maximum amount allowed under your dependent care plan"
+      status: Owner ruling, Stage 15 (T-048).
     - id: amb.2025.dc_rate_nonpositive_agi
       text_at_issue: 'Form 2441, line 8: "Enter on line 8 the decimal amount shown below that applies to the amount on line 7", in a
         table whose first band is "Over $0 But not over 15,000".'
@@ -418,3 +490,177 @@ register:
         doc: f2441
         locator: Form 2441 (2025), line 8
       status: Owner ruling, Stage 15 (T-048).
+    - id: amb.2025.f5695_17abc_section_a
+      text_at_issue: 'Form 5695, after line 17c: "If you checked the No box for line 17a, 17b, or 17c, you cannot claim the
+        energy efficient home improvement credit. Do not complete Part II, Section A." The instructions for lines 17a to 17c
+        say each time "If you check the No box, you can''t take the energy efficient home improvement credit."'
+      readings:
+      - A No on line 17a, 17b or 17c zeroes Section A (lines 18b, 19h and 20d) only; Section B and the home energy audit are
+        figured by their own tests (lines 21a, 21b and 26a).
+      - A No on any of them disallows the whole of Part II.
+      chosen: The first (f5695.sec_a_claimed gates lines 18b, 19h and 20d only).
+      reason: The owner's decision. Section B has its own residence test on line 21a, "a home located in the United States
+        that you use as a residence", which is not limited to the main home, and its own original-use test on line 21b, and
+        the audit has its own test on line 26a; the form's direction is "Do not complete Part II, Section A". Reading the
+        No as disallowing Section B would make line 21a's wider residence test unreachable for anyone without Section A
+        improvements on a main home.
+      cite:
+        doc: f5695
+        locator: Form 5695 (2025), lines 17a to 17c and 21a; i5695 p. 5, Lines 17a Through 17e
+      status: Owner ruling, Stage 15 (T-048).
+    - id: amb.2025.f5695_category_cap
+      text_at_issue: 'Form 5695 lines 22d, 23d, 24d and 25e cap 30% of each category''s total cost at $600 ("Multiply line 22c
+        by 30% (0.30). Enter the results. Do not enter more than $600"); the instructions list "A credit limit of $600 for
+        any qualified energy property item" (i5695 p. 2).'
+      readings:
+      - The form's cap of $600 on each category (central air conditioners, water heaters, furnaces and boilers, enabling
+        property), whatever the number of items in it.
+      - A cap of $600 on each item, so that two central air conditioners could give up to $1,200 before line 28.
+      chosen: The first (f5695.ac_capped, wh_capped, furnace_capped and enabling_capped against f5695.item_max).
+      reason: The owner's decision to encode the form as printed. The joint occupancy list of credit limits (i5695 p. 3) also
+        gives the limit by category ("$600 for central air conditioners"). The two readings differ only for a filer with two
+        or more items in one category whose 30% exceeds $600 together, and line 28's $1,200 limit narrows even that.
+      cite:
+        doc: f5695
+        locator: Form 5695 (2025), lines 22d, 23d, 24d and 25e; i5695 p. 2, Energy Efficient Home Improvement Credit (Part
+          II), "A credit limit of $600 for any qualified energy property item"
+      status: Owner ruling, Stage 15 (T-048).
+    - id: amb.2025.f5695_battery_second_home
+      text_at_issue: 'i5695 p. 2: lines 1 to 4 each say "The home doesn''t have to be your main home"; qualified battery storage
+        technology costs are for technology "installed in connection with your home located in the United States", with
+        nothing said either way about a main home. Fuel cell property, by contrast, is for "your main home".'
+      readings:
+      - Battery storage technology on any home in the United States you used as a residence counts, as lines 1 to 4 do.
+      - Battery storage technology counts only on the main home, as fuel cell property does.
+      chosen: The first (f5695.line5a asks for battery storage technology installed in connection with your home in the United
+        States, not your main home).
+      reason: The owner's decision. The text names the main home where it means it (fuel cell property, line 7a) and does not
+        for the battery; the Part I general rule is that improvements to "more than one home that you used as a residence"
+        go on one Form 5695 (i5695 p. 2).
+      cite:
+        doc: i5695
+        locator: p. 2, Qualified battery storage technology costs, "installed in connection with your home located in the
+          United States"
+      status: Owner ruling, Stage 15 (T-048).
+    - id: amb.2025.f5695_section_b_residence
+      text_at_issue: 'Form 5695 line 21a: "a home located in the United States that you use as a residence"; i5695 p. 3,
+        Section B: "a home that you used during 2025"; but the Schedule 3 line 5b instructions describe the credit as for
+        improvements "to your main home" (i1040gi p. 116) and line 17d says "You can only claim the energy efficient home
+        improvement credit on one main home" (i5695 p. 5).'
+      readings:
+      - Section B property (lines 22 to 25 and 29) counts on any home in the United States you use as a residence, a second
+        home or a rented home included; Section A and the audit require the main home.
+      - All of Part II requires the main home.
+      chosen: The first (f5695.line21a's question says the home may be a second home or a home you rent).
+      reason: The owner's decision. Line 21a and the Section B paragraph state the wider test, line 21c asks for "each home",
+        and Fact Sheet 2025-01 says "such property may be installed in the taxpayer’s second home" and that "the taxpayer may
+        rent the home". The main-home statements are in Section A (lines 17a and 17d) and in a summary in the Form 1040
+        instructions.
+      cite:
+        doc: fs-2025-01
+        locator: p. 5, Energy Efficient Home Improvement Credit - Qualifying residence, "In this case, the taxpayer may rent
+          the home in which such property is installed, and such property may be installed in the taxpayer’s second home"
+      status: Owner ruling, Stage 15 (T-048).
+    - id: amb.2025.clwb_claiming_part1
+      text_at_issue: 'i1040s8812 p. 4, Credit Limit Worksheet A: "Complete Credit Limit Worksheet B only if you meet all the
+        following. 1. You are claiming one or more of the following credits. ... c. Residential clean energy credit, Form
+        5695, Part I." Whether one is claiming the credit depends on Form 5695 line 15, which is limited by a worksheet that
+        reads Credit Limit Worksheet B line 14 when Worksheet B is completed.'
+      readings:
+      - Claiming the credit means completing Form 5695 Part I with line 13 (the credit before the tax limit, the 2024
+        carryforward included) more than zero.
+      - Claiming the credit means Form 5695 line 15 (the credit allowed) is more than zero.
+      chosen: The first (f5695.claiming_part1).
+      reason: The second is circular (line 15 depends on whether Worksheet B is completed). The readings cannot differ in any
+        amount. With Worksheet B completed, the Part I limit subtracts Worksheet B line 14, which is never more than Schedule
+        8812 line 12, instead of Form 1040 line 19, the smaller of line 12 and Credit Limit Worksheet A line 3; so the limit
+        with Worksheet B is at least the limit without it. If line 13 is more than zero and line 15 is zero with Worksheet B,
+        it is zero without it too, and Credit Limit Worksheet A line 4 (Worksheet B line 15, Schedule 3 line 5a) is zero
+        either way; if line 15 is more than zero, both readings complete Worksheet B.
+      cite:
+        doc: i1040s8812
+        locator: p. 4, Credit Limit Worksheet A, "Complete Credit Limit Worksheet B only if you meet all the following"
+      status: Agent reading, Stage 15 (T-048), for the owner's review.
+    - id: amb.2025.savers_ineligible_column
+      text_at_issue: 'Form 8880, Caution and Who Can Take This Credit: "You cannot take this credit if either of the following
+        applies ... The person(s) who made the qualified contribution or elective deferral (a) was born after January 1, 2008;
+        (b) is claimed as a dependent on someone else’s 2025 tax return; or (c) was a student".'
+      readings:
+      - On a joint return, an ineligible spouse's own column is zero (line 6 of that column), and the other spouse's column is
+        figured as usual.
+      - On a joint return, one ineligible spouse bars the whole credit.
+      chosen: The first (f8880.line6a and f8880.line6b through f8880.elig_a and f8880.elig_b).
+      reason: The owner's decision (Stage 15 premise map, decision 4). The test is of "the person(s) who made the qualified
+        contribution or elective deferral", so it reads as a test of each contributor, and the form keeps each spouse's
+        contributions in their own column. Whether a person is claimed as a dependent is asked of each person
+        (person.sav_claimed), not read from the return's "can claim" question; it is asked only when someone can claim you or
+        your spouse (sa.dependent), since otherwise no one is claimed.
+      cite:
+        doc: f8880
+        locator: 'p. 2, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a) was
+          born after January 1, 2008; (b) is claimed as a dependent on someone else’s 2025 tax return; or (c) was a student"'
+      status: Owner decision, Stage 15 (T-048).
+    - id: amb.2025.savers_line4_gross
+      text_at_issue: 'Form 8880, Line 4: "Enter the total amount of distributions you, and your spouse if filing jointly, received
+        after 2022 and before the due date of your 2025 return (including extensions) from any of the following types of plans",
+        followed by a list of distributions not to include.'
+      readings:
+      - The gross distribution (Form 1099-R box 1) less the part rolled over, the listed kinds excluded; a nontaxable part (basis
+        recovered, a qualified Roth distribution) counts.
+      - The taxable amount of each distribution.
+      chosen: The first (retirement.sav_gross; f8880.line4a and f8880.line4b).
+      reason: The owner's decision (Stage 15 premise map, decision 4). The text says "total amount of distributions" and
+        excludes only the kinds it lists; a rollover is excluded because it is "not taxable as the result of a rollover", and the
+        other exclusions it lists either need a form this tool refuses (retirement.special, retirement.bad_code) or are asked for
+        each Form 1099-R (retirement.sav_military, retirement.sav_404k, retirement.sav_inherited).
+      cite:
+        doc: f8880
+        locator: 'p. 2, Line 4, "Enter the total amount of distributions"; "Don’t include any of the following"'
+      status: Owner decision, Stage 15 (T-048).
+    - id: amb.2025.savers_2026_joint
+      text_at_issue: 'Form 8880, Line 4: "Exception. Don’t include your spouse’s distributions with yours when entering an amount
+        on line 4 if you and your spouse didn’t file a joint return for the year the distribution was received." A distribution
+        received in 2026, before the due date of the 2025 return, is received in a year whose return is not yet filed.'
+      readings:
+      - A 2026 distribution counts as from a year filed jointly when the 2025 return is joint (both columns).
+      - A 2026 distribution counts as from a year filed jointly only if the spouses expect to file jointly for 2026.
+      - A 2026 distribution goes in the column of the spouse who received it only.
+      chosen: The first (person.sav_prior_joint includes 2026; f8880.prior_joint).
+      reason: The owner's decision (Stage 15 premise map, decision 4). The 2026 return cannot be known when the 2025 return is
+        prepared, and the 2025 return's filing status is the one fact available.
+      cite:
+        doc: f8880
+        locator: 'p. 2, Line 4, "Exception. Don’t include your spouse’s distributions with yours when entering an amount on line
+          4 if you and your spouse didn’t file a joint return for the year the distribution was received"'
+      status: Owner decision, Stage 15 (T-048).
+    - id: amb.2025.savers_inherited_plans
+      text_at_issue: 'Form 8880, Line 4, among the distributions not to include: "Distributions from an inherited IRA by a nonspousal
+        beneficiary." The list names no inherited employer plan.'
+      readings:
+      - Only an inherited IRA of a nonspouse beneficiary is excluded; distributions from an inherited 401(k), 403(b) or other
+        plan count.
+      - Distributions to a nonspouse beneficiary from any inherited plan are excluded.
+      chosen: The first (retirement.sav_inherited is asked of IRA distributions only).
+      reason: The owner's decision (Stage 15 premise map, decision 4), the literal reading of the list.
+      cite:
+        doc: f8880
+        locator: 'p. 2, Line 4, "Distributions from an inherited IRA by a nonspousal beneficiary"'
+      status: Owner decision, Stage 15 (T-048).
+    - id: amb.2025.savers_sep_contrib
+      text_at_issue: 'Form 8880, Line 2: "Elective deferrals (including designated Roth contributions under section 402A, if applicable)
+        to a 401(k), 403(b), governmental 457(b), SEP, SIMPLE, or the federal TSP." A self-employed person''s own SEP contribution
+        (Pub. 560 chapter 2) is an employer contribution, not an elective deferral; the person''s SIMPLE IRA salary reduction
+        contributions (chapter 3) are.'
+      readings:
+      - The self-employed SIMPLE salary reduction contributions (person.simple_deferral) count on line 2; the self-employed SEP
+        contribution (person.sep_contrib) does not.
+      - Both count.
+      - Neither counts.
+      chosen: The first (person.sav_simple_plan).
+      reason: The owner's decision (Stage 15 premise map, decision 2). Only elective deferrals to a SEP (code F, a salary
+        reduction SEP) are named; a SEP contribution a self-employed person makes for themselves is a nonelective contribution.
+      cite:
+        doc: f8880
+        locator: 'p. 2, Line 2, "Elective deferrals (including designated Roth contributions under section 402A, if applicable)
+          to a 401(k), 403(b), governmental 457(b), SEP, SIMPLE, or the federal TSP"'
+      status: Owner decision, Stage 15 (T-048).

@@ -37,7 +37,11 @@
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
-        "$sc@person[taxpayer]": []
+        "$sc@person[taxpayer]": [],
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "s3.line11": {
@@ -90,7 +94,11 @@
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
-        "$sc@person[taxpayer]": []
+        "$sc@person[taxpayer]": [],
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "s3.line11": {
@@ -143,7 +151,11 @@
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
-        "$sc@person[taxpayer]": []
+        "$sc@person[taxpayer]": [],
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "s3.line11": {
@@ -196,7 +208,11 @@
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
-        "$sc@person[taxpayer]": []
+        "$sc@person[taxpayer]": [],
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "s3.line11": {
@@ -249,7 +265,11 @@
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
-        "$sc@person[taxpayer]": []
+        "$sc@person[taxpayer]": [],
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "s3.line11": {
@@ -302,7 +322,11 @@
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
-        "$sc@person[taxpayer]": []
+        "$sc@person[taxpayer]": [],
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "s3.line11": {
@@ -355,7 +379,11 @@
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
-        "$sc@person[taxpayer]": []
+        "$sc@person[taxpayer]": [],
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "s3.line11": {
@@ -404,7 +432,11 @@
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
-        "$sc@person[taxpayer]": []
+        "$sc@person[taxpayer]": [],
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "s3.line11": {
@@ -459,7 +491,11 @@
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
-        "$sc@person[taxpayer]": []
+        "$sc@person[taxpayer]": [],
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "s3.line11": {
@@ -511,7 +547,11 @@
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
-        "$sc@person[taxpayer]": []
+        "$sc@person[taxpayer]": [],
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "s3.line11": {
@@ -594,7 +634,11 @@
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
-        "$sc@person[taxpayer]": []
+        "$sc@person[taxpayer]": [],
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "s3.line11": {
@@ -674,7 +718,11 @@
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
-        "$sc@person[taxpayer]": []
+        "$sc@person[taxpayer]": [],
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "s3.line11": {
@@ -718,7 +766,11 @@
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
-        "$sc@person[taxpayer]": []
+        "$sc@person[taxpayer]": [],
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "s3.line11": {
@@ -769,7 +821,11 @@
         "$w2@person[spouse]": [],
         "$f8889@person[spouse]": [],
         "$sc@person[taxpayer]": [],
-        "$sc@person[spouse]": []
+        "$sc@person[spouse]": [],
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "s3.line11": {
@@ -813,7 +869,11 @@
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
-        "$sc@person[taxpayer]": []
+        "$sc@person[taxpayer]": [],
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "s3.line11": {
@@ -884,7 +944,11 @@
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
-        "$sc@person[taxpayer]": []
+        "$sc@person[taxpayer]": [],
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "s3.line11": {
@@ -964,7 +1028,11 @@
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
-        "$sc@person[taxpayer]": []
+        "$sc@person[taxpayer]": [],
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "s3.line11": {
@@ -1017,7 +1085,11 @@
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
-        "$sc@person[taxpayer]": []
+        "$sc@person[taxpayer]": [],
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "s3.line11": {
@@ -1070,7 +1142,11 @@
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
-        "$sc@person[taxpayer]": []
+        "$sc@person[taxpayer]": [],
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "s3.line11": {
@@ -1128,7 +1204,11 @@
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "$sc@person[taxpayer]": [],
-        "$sc@person[second]": []
+        "$sc@person[second]": [],
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "s3.line11": {
@@ -1183,7 +1263,11 @@
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
-        "$sc@person[taxpayer]": []
+        "$sc@person[taxpayer]": [],
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "s3.line11": {

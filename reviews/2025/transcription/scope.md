@@ -4,11 +4,11 @@ Second transcription of `Proof-of-concept scope screening` by an isolated model 
 
 | field | value |
 | --- | --- |
-| date | 2026-10-19 |
+| date | 2026-10-22 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | 14471b1749496531467228079b9db14da797e811f68c712f29b7b20cda934b73 |
-| subject sha256 | e91928dd7660e0b178a39077d74dafe790c4b42b617fcb97015b6286c6a3c613 |
+| prompt sha256 | 6d21f5e77a52a96255dcba3863ded11ca0485e488469d99c7c91587df709292c |
+| subject sha256 | 73ed1276cd1aaef3a09ac6118f6f2e7d2f132d478d3c3a732b2835f48ffe7b3b |
 | printed lines compared | 0 |
 | agree / disagree / missing | 0 / 0 / 0 |
 | extra printed lines in second | none |
@@ -26,9 +26,6 @@ Second transcription of `Proof-of-concept scope screening` by an isolated model 
 
 ```yaml
 ```yaml
-# No printed lines or helper lines were requested for form "scope".
-# The inputs scope.schedule1, scope.credits, scope.other_income and scope.other_line16
-# already exist and are not redefined.
 lines: []
 ```
 ```

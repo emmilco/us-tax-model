@@ -810,3 +810,198 @@
 - **Encoded (Count):** Add sc.one over every confirmed sc entry for which column (screen) (sc.tips_ot) = true, within the current person when parent-bound. An unanswered roster is unknown.
 - Expr: `{"collection":"sc","field":"sc.one","op":"sum_over","where":{"eq":["sc.tips_ot",{"const":true}],"op":"test"}}`
 - Cite: [i1040gi] p. 104, Schedule 1-A, line 5 (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.dc_benefits`
+
+- **Authored helper label:** This person's dependent care benefits from Forms W-2 box 10, less the part reported in box 1
+- **Encoded (NonNegDollars):** Add w2.dc_benefits over every confirmed w2 entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"w2","field":"w2.dc_benefits","op":"sum_over"}`
+- Cite: [i2441] p. 5, Line 12, "Amounts you received as an employee should be shown in box 10 of your Form(s) W-2" (2025; sha256 86f0669e)
+
+## (helper) — `person.dc_box10`
+
+- **Authored helper label:** Total of box 10 of this person's Forms W-2
+- **Encoded (NonNegDollars):** Add w2.box10 over every confirmed w2 entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Interpretation: amb.2025.dc_line1e_attribution
+- Expr: `{"collection":"w2","field":"w2.box10","op":"sum_over"}`
+- Cite: [i2441] p. 5, Line 12, "Amounts you received as an employee should be shown in box 10 of your Form(s) W-2" (2025; sha256 86f0669e)
+
+## (helper) — `person.dc_has_box10`
+
+- **Authored helper label:** This person's Forms W-2 show dependent care benefits in box 10
+- **Encoded (Bool):** helper "Total of box 10 of this person's Forms W-2" > $0 (sales.zero)
+- Interpretation: amb.2025.dc_line1e_attribution
+- Expr: `{"gt":["person.dc_box10",{"param":"sales.zero"}],"op":"test"}`
+- Cite: [i2441] p. 4, Lines 4 and 5, "If filing jointly, figure your and your spouse's earned income separately" and "The amount shown on Form 1040, 1040-SR, or 1040-NR, line 1z" (2025; sha256 86f0669e)
+
+## (helper) — `person.dc_1e_mine`
+
+- **Authored helper label:** Form 1040 line 1e is counted in this person's earned income: the only person whose Forms W-2 show box 10, or, when there is no such single person, the taxpayer
+- **Encoded (Bool):** (f2441 helper "Exactly one person on the return has Forms W-2 showing box 10" = true and helper "This person's Forms W-2 show dependent care benefits in box 10" = true or f2441 helper "Exactly one person on the return has Forms W-2 showing box 10" = false and helper "Whose entry is this, yours or your spouse's?" = 'taxpayer')
+- Interpretation: amb.2025.dc_line1e_attribution
+- Expr: `{"any":[{"all":[{"eq":["f2441.one_box10",{"const":true}],"op":"test"},{"eq":["person.dc_has_box10",{"const":true}],"op":"test"}],"op":"test"},{"all":[{"eq":["f2441.one_box10",{"const":false}],"op":"test"},{"eq":["person.role",{"const":"taxpayer"}],"op":"test"}],"op":"test"}],"op":"test"}`
+- Cite: [i2441] p. 4, Lines 4 and 5, "If filing jointly, figure your and your spouse's earned income separately" and "The amount shown on Form 1040, 1040-SR, or 1040-NR, line 1z" (2025; sha256 86f0669e)
+
+## (helper) — `person.dc_1e_counted`
+
+- **Authored helper label:** Form 1040 line 1e is more than zero and is counted in this person's earned income
+- **Encoded (Bool):** f2441 helper "Form 1040 line 1e (taxable dependent care benefits) is more than zero" = true and helper "Form 1040 line 1e is counted in this person's earned income: the only person whose Forms W-2 show box 10, or, when there is no such single person, the taxpayer" = true
+- Interpretation: amb.2025.dc_line1e_attribution
+- Expr: `{"all":[{"eq":["f2441.has_1e",{"const":true}],"op":"test"},{"eq":["person.dc_1e_mine",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [i2441] p. 4, Lines 4 and 5, "If filing jointly, figure your and your spouse's earned income separately" and "The amount shown on Form 1040, 1040-SR, or 1040-NR, line 1z" (2025; sha256 86f0669e)
+
+## (helper) — `person.dc_zero`
+
+- **Authored helper label:** No taxable dependent care benefits counted for this person
+- **Encoded (NonNegDollars):** Enter $0 (sales.zero).
+- Expr: `{"op":"param","ref":"sales.zero"}`
+- Cite: [i2441] p. 4, Lines 4 and 5, "If filing jointly, figure your and your spouse's earned income separately" and "The amount shown on Form 1040, 1040-SR, or 1040-NR, line 1z" (2025; sha256 86f0669e)
+
+## (helper) — `person.dc_1e`
+
+- **Authored helper label:** This person's share of Form 1040 line 1e (taxable dependent care benefits) in Form 2441 earned income
+- **Encoded (NonNegDollars):** Choose — [helper "Form 1040 line 1e is more than zero and is counted in this person's earned income" = true → f1040 line 1e] [helper "Form 1040 line 1e is more than zero and is counted in this person's earned income" = false → helper "No taxable dependent care benefits counted for this person"]
+- Interpretation: amb.2025.dc_line1e_attribution
+- Expr: `{"alternatives":[{"guard":{"eq":["person.dc_1e_counted",{"const":true}],"op":"test"},"then":"f1040.line1e"},{"guard":{"eq":["person.dc_1e_counted",{"const":false}],"op":"test"},"then":"person.dc_zero"}],"op":"choose"}`
+- Cite: [i2441] p. 4, Lines 4 and 5, "If filing jointly, figure your and your spouse's earned income separately" and "The amount shown on Form 1040, 1040-SR, or 1040-NR, line 1z" (2025; sha256 86f0669e)
+
+## (helper) — `person.dc_earned`
+
+- **Authored helper label:** This person's earned income for Form 2441 lines 4 and 5: Form W-2 box 1, the person's share of line 1e, and Schedule SE line 3 less the deduction on Schedule 1 line 15 (or the Schedule C profit or loss when no Schedule SE is filed)
+- **Encoded (Dollars):** Add helper "Total W-2 box 1 for this person", helper "This person's share of Form 1040 line 1e (taxable dependent care benefits) in Form 2441 earned income", and helper "Worksheet B, Parts 1 and 2, for this person".
+- Interpretation: amb.2025.dc_line1e_attribution
+- Expr: `{"of":["person.box1","person.dc_1e","person.eic_se"],"op":"sum"}`
+- Cite: [i2441] p. 4, Lines 4 and 5, "The amount shown on Form 1040, 1040-SR, or 1040-NR, line 1z" and "The amount shown on Schedule SE (Form 1040), line 3, minus any deduction you claim on Schedule 1 (Form 1040), line 15"; p503 p. 11, Self-employment earnings, "Include your self-employment earnings in earned income, even if they are less than $400 and you didn't file Schedule SE (Form 1040)" (2025; sha256 86f0669e)
+
+## (helper) — `person.dc_earned_b`
+
+- **Authored helper label:** This person's earned income for Form 2441 lines 18 and 19: as for lines 4 and 5, without the dependent care benefits of line 12 (so without line 1e)
+- **Encoded (Dollars):** Add helper "Total W-2 box 1 for this person" and helper "Worksheet B, Parts 1 and 2, for this person".
+- Expr: `{"of":["person.box1","person.eic_se"],"op":"sum"}`
+- Cite: [i2441] p. 5, Line 18, "Earned income for figuring the amount of dependent care benefits you are able to exclude or deduct from your income is determined in the same way as earned income for figuring the credit is determined" and "for purposes of lines 18 and 19, earned income doesn’t include any dependent care benefits shown on line 12" (2025; sha256 86f0669e)
+
+## (helper) — `person.sav_born`
+
+- **Authored helper label:** Were you born before January 2, 2008?
+- **Encoded (Bool):** Input — Were you born before January 2, 2008?
+- Expr: `{"op":"input","source":"Were you born before January 2, 2008?"}`
+- Cite: [f8880] p. 2, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a) was born after January 1, 2008" (2025; created 2025-11-04; sha256 ba2b2877)
+
+## (helper) — `person.sav_student`
+
+- **Authored helper label:** Were you a student in 2025 (during any part of 5 calendar months, enrolled as a full-time student at a school, or taking a full-time, on-farm training course given by a school or a state, county, or local government agency)?
+- **Encoded (Bool):** Input — Were you a student in 2025: during any part of 5 calendar months of 2025, were you enrolled as a full-time student at a school, or did you take a full-time, on-farm training course given by a school or a state, county, or local government agency? (A school includes technical, trade, and mechanical schools. It does not include on-the-job training courses, correspondence schools, or schools offering courses only through the Internet.)
+- Expr: `{"op":"input","source":"Were you a student in 2025: during any part of 5 calendar months of 2025, were you enrolled as a full-time student at a school, or did you take a full-time, on-farm training course given by a school or a state, county, or local government agency? (A school includes technical, trade, and mechanical schools. It does not include on-the-job training courses, correspondence schools, or schools offering courses only through the Internet.)"}`
+- Cite: [f8880] p. 2, Who Can Take This Credit, "You were a student if during any part of 5 calendar months of 2025 you: • Were enrolled as a full-time student at a school; or • Took a full-time, on-farm training course given by a school or a state, county, or local government agency" (2025; created 2025-11-04; sha256 ba2b2877)
+
+## (helper) — `person.sav_claimed`
+
+- **Authored helper label:** Are you claimed as a dependent on someone else's 2025 tax return?
+- **Encoded (Bool):** Input — Are you claimed as a dependent on someone else's 2025 tax return?
+- Expr: `{"op":"input","source":"Are you claimed as a dependent on someone else's 2025 tax return?"}`
+- Cite: [f8880] p. 2, Who Can Take This Credit, "(b) is claimed as a dependent on someone else’s 2025 tax return" (2025; created 2025-11-04; sha256 ba2b2877)
+
+## (helper) — `person.sav_ineligible`
+
+- **Authored helper label:** Born after January 1, 2008, claimed as a dependent on someone else's 2025 return, or a student (the dependent question is asked only if someone can claim you or your spouse as a dependent)
+- **Encoded (Bool):** (helper "Were you born before January 2, 2008?" = false or helper "Were you a student in 2025 (during any part of 5 calendar months, enrolled as a full-time student at a school, or taking a full-time, on-farm training course given by a school or a state, county, or local government agency)?" = true or sa helper "Can someone claim you or your spouse as a dependent for 2025, or are you a dual-status alien? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)" = true and helper "Are you claimed as a dependent on someone else's 2025 tax return?" = true)
+- Expr: `{"any":[{"eq":["person.sav_born",{"const":false}],"op":"test"},{"eq":["person.sav_student",{"const":true}],"op":"test"},{"all":[{"eq":["sa.dependent",{"const":true}],"op":"test"},{"eq":["person.sav_claimed",{"const":true}],"op":"test"}],"op":"test"}],"op":"test"}`
+- Cite: [f8880] p. 2, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a) was born after January 1, 2008; (b) is claimed as a dependent on someone else’s 2025 tax return; or (c) was a student" (2025; created 2025-11-04; sha256 ba2b2877)
+
+## (screen) — `person.sav_trad`
+
+- **Authored helper label:** Did you make contributions (other than rollover contributions) to a traditional IRA for 2025?
+- **Encoded (Bool):** Input — Did you make contributions (other than rollover contributions) to a traditional IRA for 2025, deductible or not, including contributions made by the due date of your 2025 return for 2025?
+- Expr: `{"op":"input","source":"Did you make contributions (other than rollover contributions) to a traditional IRA for 2025, deductible or not, including contributions made by the due date of your 2025 return for 2025?"}`
+- Cite: [f8880] Form 8880 (2025), line 1, "Traditional and Roth IRA contributions"; i1040gi p. 95, Line 20, "If you made any nondeductible contributions to a traditional" (2025; created 2025-11-04; sha256 ba2b2877)
+
+## (screen) — `person.sav_able`
+
+- **Authored helper label:** As the designated beneficiary of an ABLE account, did you contribute to it for 2025, or did you receive a distribution from an ABLE account after 2022 (through the due date of your 2025 return)?
+- **Encoded (Bool):** Input — As the designated beneficiary of an ABLE account, did you contribute to it for 2025, or did you receive any distribution from an ABLE account after 2022 and before the due date of your 2025 return (including extensions)?
+- Expr: `{"op":"input","source":"As the designated beneficiary of an ABLE account, did you contribute to it for 2025, or did you receive any distribution from an ABLE account after 2022 and before the due date of your 2025 return (including extensions)?"}`
+- Cite: [f8880] Form 8880 (2025), line 1, "ABLE account contributions by the designated beneficiary"; p. 2, Line 4, "Traditional or Roth IRAs, or ABLE accounts" (2025; created 2025-11-04; sha256 ba2b2877)
+
+## (helper) — `person.sav_roth`
+
+- **Authored helper label:** Your contributions to a Roth IRA for 2025 (not rollovers or conversions)
+- **Encoded (NonNegDollars):** Input — Your contributions to a Roth IRA for 2025, including contributions made by the due date of your 2025 return that are for 2025; do not include rollover contributions or conversions; zero if none
+- Expr: `{"op":"input","source":"Your contributions to a Roth IRA for 2025, including contributions made by the due date of your 2025 return that are for 2025; do not include rollover contributions or conversions; zero if none"}`
+- Cite: [f8880] Form 8880 (2025), line 1, "Do not include rollover contributions"; p. 2, Who Can Take This Credit, "(a) contributions (other than rollover contributions) to a traditional or Roth IRA" (2025; created 2025-11-04; sha256 ba2b2877)
+
+## (helper) — `person.sav_line1`
+
+- **Authored helper label:** Form 8880 line 1 for this person (Roth IRA contributions for 2025)
+- **Encoded (NonNegDollars):** Enter the amount from helper "Your contributions to a Roth IRA for 2025 (not rollovers or conversions)".
+- **Refusal:** when person.sav_trad is true, cannot complete Traditional IRA contributions on Form 8880 line 1 (the IRA deduction, Form 8606). Traditional IRA contributions are reported with the IRA deduction (Schedule 1, line 20) or on Form 8606, which this tool does not prepare. Cite: [i1040gi] p. 95, Line 20, "If you made any nondeductible contributions to a traditional" (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Refusal:** when person.sav_able is true, cannot complete ABLE account contributions or distributions on Form 8880 (Pub. 907). Contributions to an ABLE account by its designated beneficiary (line 1) and ABLE distributions (line 4) are outside this tool. Cite: [f8880] p. 2, What’s New, "See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about ABLE accounts" (2025; created 2025-11-04; sha256 ba2b2877)
+- Expr: `{"from":"person.sav_roth","op":"copy"}`
+- Cite: [f8880] Form 8880 (2025), line 1 (2025; created 2025-11-04; sha256 ba2b2877)
+
+## (helper) — `person.sav_w2`
+
+- **Authored helper label:** Elective deferrals and designated Roth contributions for 2025 from this person's Forms W-2, box 12
+- **Encoded (NonNegDollars):** Add w2.sav_deferral over every confirmed w2 entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"w2","field":"w2.sav_deferral","op":"sum_over"}`
+- Cite: [f8880] p. 2, Line 2, "These amounts may be shown in box 12 of your Form(s) W-2 for 2025" (2025; created 2025-11-04; sha256 ba2b2877)
+
+## (screen) — `person.sav_excess`
+
+- **Authored helper label:** Were your elective deferrals and designated Roth contributions for 2025 more than the limit for your plans?
+- **Encoded (Bool):** Input — Is the total of your elective deferrals and designated Roth contributions for 2025 (Form W-2 box 12, from all your employers) more than the limit that applies to you (for a 401(k) plan, $23,500 plus any catch-up contributions your plan allows), so that you have excess deferrals?
+- Expr: `{"op":"input","source":"Is the total of your elective deferrals and designated Roth contributions for 2025 (Form W-2 box 12, from all your employers) more than the limit that applies to you (for a 401(k) plan, $23,500 plus any catch-up contributions your plan allows), so that you have excess deferrals?"}`
+- Cite: [iw2w3] p. 20, Box 12—Codes, "Even though the 2025 limit for elective deferrals and designated Roth contributions is $23,500, Alex's total elective deferral amount of $26,500 is reported in box 12 with code D" (2025; printed date 2025-02-19; sha256 bfecbc99)
+
+## (gate) — `person.sav_excess_gate`
+
+- **Authored helper label:** Elective deferrals in box 12 over the limit for 2025
+- **Encoded (Bool):** helper "Elective deferrals and designated Roth contributions for 2025 from this person's Forms W-2, box 12" > $0 (sales.zero) and column (screen) (person.sav_excess) = true
+- Expr: `{"all":[{"gt":["person.sav_w2",{"param":"sales.zero"}],"op":"test"},{"eq":["person.sav_excess",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [iw2w3] p. 20, Box 12—Codes, "Even though the 2025 limit for elective deferrals and designated Roth contributions is $23,500, Alex's total elective deferral amount of $26,500 is reported in box 12 with code D" (2025; printed date 2025-02-19; sha256 bfecbc99)
+
+## (helper) — `person.sav_voluntary`
+
+- **Authored helper label:** Voluntary employee contributions for 2025 to a qualified retirement plan (after-tax, not designated Roth)
+- **Encoded (NonNegDollars):** Input — Voluntary after-tax employee contributions you made for 2025 to a qualified retirement plan (including the federal Thrift Savings Plan), which may be shown in box 14 of your Form W-2; not designated Roth contributions, and not contributions designated under section 414(h)(2) (treated as employer contributions); zero if none
+- Expr: `{"op":"input","source":"Voluntary after-tax employee contributions you made for 2025 to a qualified retirement plan (including the federal Thrift Savings Plan), which may be shown in box 14 of your Form W-2; not designated Roth contributions, and not contributions designated under section 414(h)(2) (treated as employer contributions); zero if none"}`
+- Cite: [f8880] p. 2, Line 2, "Voluntary employee contributions to a qualified retirement plan, as defined in section 4974(c) (including the federal TSP)"; "Contributions designated under section 414(h)(2) are treated as employer contributions" (2025; created 2025-11-04; sha256 ba2b2877)
+
+## (helper) — `person.sav_simple_plan`
+
+- **Authored helper label:** This self-employed person's own SIMPLE IRA salary reduction contributions, by plan
+- **Encoded (NonNegDollars):** Choose — [helper "Retirement plan of this self-employed person" = 'none' → line zero] [helper "Retirement plan of this self-employed person" = 'sep' → line zero] [helper "Retirement plan of this self-employed person" = 'simple' → helper "Salary reduction contributions for yourself to your SIMPLE IRA (including catch-up)"]
+- Interpretation: amb.2025.savers_sep_contrib
+- Expr: `{"alternatives":[{"guard":{"eq":["person.plan",{"const":"none"}],"op":"test"},"then":"person.zero"},{"guard":{"eq":["person.plan",{"const":"sep"}],"op":"test"},"then":"person.zero"},{"guard":{"eq":["person.plan",{"const":"simple"}],"op":"test"},"then":"person.simple_deferral"}],"op":"choose"}`
+- Cite: [f8880] p. 2, Line 2, "Elective deferrals (including designated Roth contributions under section 402A, if applicable) to a 401(k), 403(b), governmental 457(b), SEP, SIMPLE, or the federal TSP" (2025; created 2025-11-04; sha256 ba2b2877)
+
+## (helper) — `person.sav_simple`
+
+- **Authored helper label:** This person's own SIMPLE IRA salary reduction contributions as a self-employed person
+- **Encoded (NonNegDollars):** Choose — [helper "This person has at least one Schedule C" = true → helper "This self-employed person's own SIMPLE IRA salary reduction contributions, by plan"] [helper "This person has at least one Schedule C" = false → line zero]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.has_sc",{"const":true}],"op":"test"},"then":"person.sav_simple_plan"},{"guard":{"eq":["person.has_sc",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
+- Cite: [f8880] p. 2, Line 2, "Elective deferrals (including designated Roth contributions under section 402A, if applicable) to a 401(k), 403(b), governmental 457(b), SEP, SIMPLE, or the federal TSP" (2025; created 2025-11-04; sha256 ba2b2877)
+
+## (helper) — `person.sav_line2`
+
+- **Authored helper label:** Form 8880 line 2 for this person (box 12 deferrals, voluntary contributions and own SIMPLE salary reduction contributions)
+- **Encoded (NonNegDollars):** Add helper "Elective deferrals and designated Roth contributions for 2025 from this person's Forms W-2, box 12", helper "Voluntary employee contributions for 2025 to a qualified retirement plan (after-tax, not designated Roth)", and helper "This person's own SIMPLE IRA salary reduction contributions as a self-employed person".
+- **Refusal:** when person.sav_excess_gate is true, cannot complete Excess elective deferrals on Form 8880 line 2. Elective deferrals over the limit for the year, and their later distribution, are outside this tool. Cite: [iw2w3] p. 20, Box 12—Codes, "Even though the 2025 limit for elective deferrals and designated Roth contributions is $23,500" (2025; printed date 2025-02-19; sha256 bfecbc99)
+- Expr: `{"of":["person.sav_w2","person.sav_voluntary","person.sav_simple"],"op":"sum"}`
+- Cite: [f8880] Form 8880 (2025), line 2; p. 2, Line 2, "Include on line 2 any of the following amounts" (2025; created 2025-11-04; sha256 ba2b2877)
+
+## (helper) — `person.sav_prior_joint`
+
+- **Authored helper label:** Your distributions in 2023 and 2024 from years for which you and your spouse filed a joint return, and in 2026 before the due date of your 2025 return (a joint return only)
+- **Encoded (NonNegDollars):** Input — On a joint return: the distributions you received in 2023 and 2024 in a year for which you and your spouse filed a joint return, plus those you receive in 2026 before the due date of your 2025 return (including extensions), from a traditional or Roth IRA; a 401(k), 403(b), governmental 457(b), 501(c)(18)(D), SEP or SIMPLE plan, or the federal TSP; or another qualified retirement plan. Do not include rollovers or trustee-to-trustee transfers, in-plan Roth rollovers, amounts rolled over or converted to a Roth IRA, plan loans treated as distributions, distributions of excess contributions or deferrals, IRA contributions returned by the due date, section 404(k) dividends, distributions from a military retirement plan (other than the TSP), or distributions from an inherited IRA as a nonspouse beneficiary; zero if none
+- **Refusal:** when person.sav_able is true, cannot complete ABLE account contributions or distributions on Form 8880 (Pub. 907). Contributions to an ABLE account by its designated beneficiary (line 1) and ABLE distributions (line 4) are outside this tool. Cite: [f8880] p. 2, What’s New, "See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about ABLE accounts" (2025; created 2025-11-04; sha256 ba2b2877)
+- Interpretation: amb.2025.savers_2026_joint
+- Expr: `{"op":"input","source":"On a joint return: the distributions you received in 2023 and 2024 in a year for which you and your spouse filed a joint return, plus those you receive in 2026 before the due date of your 2025 return (including extensions), from a traditional or Roth IRA; a 401(k), 403(b), governmental 457(b), 501(c)(18)(D), SEP or SIMPLE plan, or the federal TSP; or another qualified retirement plan. Do not include rollovers or trustee-to-trustee transfers, in-plan Roth rollovers, amounts rolled over or converted to a Roth IRA, plan loans treated as distributions, distributions of excess contributions or deferrals, IRA contributions returned by the due date, section 404(k) dividends, distributions from a military retirement plan (other than the TSP), or distributions from an inherited IRA as a nonspouse beneficiary; zero if none"}`
+- Cite: [f8880] p. 2, Line 4, "If you’re filing a joint return, include both spouses’ amounts in both columns. Exception. Don’t include your spouse’s distributions with yours when entering an amount on line 4 if you and your spouse didn’t file a joint return for the year the distribution was received" (2025; created 2025-11-04; sha256 ba2b2877)
+
+## (helper) — `person.sav_prior_other`
+
+- **Authored helper label:** Your distributions in 2023 and 2024 from years for which you did not file a joint return with your spouse on this return (on a return that is not joint, all of your 2023, 2024 and early-2026 distributions)
+- **Encoded (NonNegDollars):** Input — The distributions you received in 2023 and 2024 in a year for which you did not file a joint return with your spouse on this return (on a return that is not a joint return: all your distributions in 2023 and 2024, and in 2026 before the due date of your 2025 return, including extensions), from a traditional or Roth IRA; a 401(k), 403(b), governmental 457(b), 501(c)(18)(D), SEP or SIMPLE plan, or the federal TSP; or another qualified retirement plan. Do not include rollovers or trustee-to-trustee transfers, in-plan Roth rollovers, amounts rolled over or converted to a Roth IRA, plan loans treated as distributions, distributions of excess contributions or deferrals, IRA contributions returned by the due date, section 404(k) dividends, distributions from a military retirement plan (other than the TSP), or distributions from an inherited IRA as a nonspouse beneficiary; zero if none
+- **Refusal:** when person.sav_able is true, cannot complete ABLE account contributions or distributions on Form 8880 (Pub. 907). Contributions to an ABLE account by its designated beneficiary (line 1) and ABLE distributions (line 4) are outside this tool. Cite: [f8880] p. 2, What’s New, "See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about ABLE accounts" (2025; created 2025-11-04; sha256 ba2b2877)
+- Expr: `{"op":"input","source":"The distributions you received in 2023 and 2024 in a year for which you did not file a joint return with your spouse on this return (on a return that is not a joint return: all your distributions in 2023 and 2024, and in 2026 before the due date of your 2025 return, including extensions), from a traditional or Roth IRA; a 401(k), 403(b), governmental 457(b), 501(c)(18)(D), SEP or SIMPLE plan, or the federal TSP; or another qualified retirement plan. Do not include rollovers or trustee-to-trustee transfers, in-plan Roth rollovers, amounts rolled over or converted to a Roth IRA, plan loans treated as distributions, distributions of excess contributions or deferrals, IRA contributions returned by the due date, section 404(k) dividends, distributions from a military retirement plan (other than the TSP), or distributions from an inherited IRA as a nonspouse beneficiary; zero if none"}`
+- Cite: [f8880] p. 2, Line 4, "Enter the total amount of distributions you, and your spouse if filing jointly, received after 2022 and before the due date of your 2025 return (including extensions)"; "Exception. Don’t include your spouse’s distributions with yours when entering an amount on line 4 if you and your spouse didn’t file a joint return for the year the distribution was received" (2025; created 2025-11-04; sha256 ba2b2877)

@@ -417,3 +417,48 @@
 - **Refusal:** when retirement.annuity_rollover is true, cannot complete Pub. 575 (rollover of a pension or annuity figured by the Simplified Method). A rollover from a pension or annuity whose taxable part is figured with the Simplified Method is outside this tool. Cite: [i1040gi] p. 30, Rollovers, 'See Pub. 575 for more details on rollovers' (2025; printed date 2026-02-25; sha256 482e9c48)
 - Expr: `{"alternatives":[{"guard":{"eq":["retirement.show_a",{"const":true}],"op":"test"},"then":"retirement.box1"},{"guard":{"eq":["retirement.show_a",{"const":false}],"op":"test"},"then":"retirement.zero"}],"op":"choose"}`
 - Cite: [i1040gi] pp. 27-30, lines 4a and 5a (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `retirement.sav_military`
+
+- **Authored helper label:** Is this a distribution from a military retirement plan (other than the federal Thrift Savings Plan)?
+- **Encoded (Bool):** Input — Is this a distribution from a military retirement plan (such as military retired pay), other than the federal Thrift Savings Plan (TSP)?
+- Expr: `{"op":"input","source":"Is this a distribution from a military retirement plan (such as military retired pay), other than the federal Thrift Savings Plan (TSP)?"}`
+- Cite: [f8880] p. 2, Line 4, "Distributions from a military retirement plan (other than the federal TSP)" (2025; created 2025-11-04; sha256 ba2b2877)
+
+## (helper) — `retirement.sav_404k`
+
+- **Authored helper label:** Is this a distribution of dividends paid on stock held by an employee stock ownership plan (section 404(k))?
+- **Encoded (Bool):** Input — Is this a distribution of dividends paid on stock held by an employee stock ownership plan under section 404(k) (reported on its own Form 1099-R)?
+- Expr: `{"op":"input","source":"Is this a distribution of dividends paid on stock held by an employee stock ownership plan under section 404(k) (reported on its own Form 1099-R)?"}`
+- Cite: [f8880] p. 2, Line 4, "Distributions of dividends paid on stock held by an employee stock ownership plan under section 404(k)" (2025; created 2025-11-04; sha256 ba2b2877)
+
+## (helper) — `retirement.sav_inherited`
+
+- **Authored helper label:** Is this a distribution from an inherited IRA that you received as a beneficiary other than the owner's spouse?
+- **Encoded (Bool):** Input — Is this a distribution from an inherited IRA that you (or your spouse, on a joint return) received as a beneficiary who was not the IRA owner's spouse?
+- Interpretation: amb.2025.savers_inherited_plans
+- Expr: `{"op":"input","source":"Is this a distribution from an inherited IRA that you (or your spouse, on a joint return) received as a beneficiary who was not the IRA owner's spouse?"}`
+- Cite: [f8880] p. 2, Line 4, "Distributions from an inherited IRA by a nonspousal beneficiary" (2025; created 2025-11-04; sha256 ba2b2877)
+
+## (helper) — `retirement.sav_excluded`
+
+- **Authored helper label:** A distribution Form 8880 line 4 does not count (from a military retirement plan or of section 404(k) dividends, for a plan; from an inherited IRA as a nonspouse beneficiary, for an IRA)
+- **Encoded (Bool):** (helper "IRA distribution (lines 4a and 4b)" = false and helper "Is this a distribution from a military retirement plan (other than the federal Thrift Savings Plan)?" = true or helper "IRA distribution (lines 4a and 4b)" = false and helper "Is this a distribution of dividends paid on stock held by an employee stock ownership plan (section 404(k))?" = true or helper "IRA distribution (lines 4a and 4b)" = true and helper "Is this a distribution from an inherited IRA that you received as a beneficiary other than the owner's spouse?" = true)
+- Interpretation: amb.2025.savers_inherited_plans
+- Expr: `{"any":[{"all":[{"eq":["retirement.is_ira",{"const":false}],"op":"test"},{"eq":["retirement.sav_military",{"const":true}],"op":"test"}],"op":"test"},{"all":[{"eq":["retirement.is_ira",{"const":false}],"op":"test"},{"eq":["retirement.sav_404k",{"const":true}],"op":"test"}],"op":"test"},{"all":[{"eq":["retirement.is_ira",{"const":true}],"op":"test"},{"eq":["retirement.sav_inherited",{"const":true}],"op":"test"}],"op":"test"}],"op":"test"}`
+- Cite: [f8880] p. 2, Line 4, "Don’t include any of the following"; "Distributions of dividends paid on stock held by an employee stock ownership plan under section 404(k)"; "Distributions from a military retirement plan (other than the federal TSP)"; "Distributions from an inherited IRA by a nonspousal beneficiary" (2025; created 2025-11-04; sha256 ba2b2877)
+
+## (helper) — `retirement.sav_gross`
+
+- **Authored helper label:** The distribution less the part rolled over (the whole distribution for a direct rollover)
+- **Encoded (NonNegDollars):** Subtract helper "Amount rolled over (the whole distribution for a direct rollover)" from helper "Gross distribution, box 1". If zero or less, enter -0-.
+- Interpretation: amb.2025.savers_line4_gross
+- Expr: `{"from":"retirement.box1","op":"subtract_floor0","take":"retirement.rolled"}`
+- Cite: [f8880] p. 2, Line 4, "Enter the total amount of distributions"; "Distributions not taxable as the result of a rollover or a trustee-to- trustee transfer" (2025; created 2025-11-04; sha256 ba2b2877)
+
+## (helper) — `retirement.sav_amount`
+
+- **Authored helper label:** This distribution's amount on Form 8880 line 4
+- **Encoded (NonNegDollars):** Choose — [helper "A distribution Form 8880 line 4 does not count (from a military retirement plan or of section 404(k) dividends, for a plan; from an inherited IRA as a nonspouse beneficiary, for an IRA)" = true → helper "No amount"] [helper "A distribution Form 8880 line 4 does not count (from a military retirement plan or of section 404(k) dividends, for a plan; from an inherited IRA as a nonspouse beneficiary, for an IRA)" = false → helper "The distribution less the part rolled over (the whole distribution for a direct rollover)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["retirement.sav_excluded",{"const":true}],"op":"test"},"then":"retirement.zero"},{"guard":{"eq":["retirement.sav_excluded",{"const":false}],"op":"test"},"then":"retirement.sav_gross"}],"op":"choose"}`
+- Cite: [f8880] p. 2, Line 4, "Enter the total amount of distributions you, and your spouse if filing jointly, received after 2022 and before the due date of your 2025 return (including extensions) from any of the following types of plans" (2025; created 2025-11-04; sha256 ba2b2877)

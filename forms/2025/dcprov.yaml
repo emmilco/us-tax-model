@@ -1,0 +1,90 @@
+form:
+  id: dcprov
+  kind: worksheet
+  title: Form 2441, Part I — persons or organizations who provided the care, one entry per care provider
+  tax_year: 2025
+  note: One entry per care provider. The provider's name and address (columns (a) and (b)) are written on the form by the
+    filer and are not modelled; the identifying number is modelled by its kind, the household-employee box and the amount
+    paid as given. A provider who is an ineligible related person is refused.
+  lines:
+    - id: dcprov.one
+      printed: (helper)
+      type: Count
+      label: One care provider
+      expr:
+        op: param
+        ref: dc.one
+      cite:
+        doc: i2441
+        locator: 'p. 2, Line 1, "Complete columns (a) through (e) for each person or organization that provided the care"'
+    - id: dcprov.tin_kind
+      printed: 1(c)
+      type: Enum(dc_tin_kind)
+      label: Identifying number (SSN or EIN)
+      expr:
+        op: input
+        source: 'What do you enter in column (c), the provider''s identifying number? tin (you have the provider''s SSN, ITIN
+          or EIN and enter it), tax_exempt (a tax-exempt organization: enter "Tax-Exempt"), lafcp (you live abroad and
+          the foreign provider has no U.S. number: enter "LAFCP"), see_statement (the provider did not give you the
+          information: enter "See Attached Statement" and attach a statement saying so), or employer (your employer
+          furnished the care under its dependent care plan: enter "See W-2" in column (b), leave column (c) blank and
+          enter -0- in column (e))'
+      cite:
+        doc: i2441
+        locator: 'p. 3, Column (c), "If the care provider is an individual, enter their SSN or individual taxpayer identification number (ITIN). Otherwise, enter the provider''s employer identification number (EIN)"; p. 3, Due Diligence, "Enter “See Attached Statement” in the columns for which you don''t have the information. Then, attach a statement to your return explaining that the provider didn''t give you the information you requested"; p. 3, Columns (a) and (b), "enter “See W-2” in column (b), leave column (c) blank, check the “No” box in column (d), and enter -0- in column (e)"'
+    - id: dcprov.household
+      printed: 1(d)
+      type: Bool
+      label: Was the care provider your household employee in 2025?
+      expr:
+        op: input
+        source: Was this care provider your household employee in 2025? (Someone you pay to care for your dependent or spouse
+          in your home, controlling not only what work is done but how it is done, is probably a household employee; nannies
+          generally are, daycare centers are not.)
+      cite:
+        doc: i2441
+        locator: 'p. 3, Column (d), "You must check either the "Yes" or "No" box in column (d) to indicate whether or not the care provider listed in column (a) was your household employee during the year" and "For example, nannies are generally household employees, while daycare centers are not"'
+    - id: dcprov.paid
+      printed: 1(e)
+      type: NonNegDollars
+      label: Amount paid
+      expr:
+        op: input
+        source: The total amount you actually paid this provider in 2025, including amounts your employer paid to the provider
+          on your behalf, whenever the care was provided and without reducing it by any reimbursement; zero if your employer
+          furnished the care
+      cite:
+        doc: i2441
+        locator: 'p. 3, Column (e), "Enter the total amount you actually paid in 2025 to the care provider. Also, include amounts your employer paid to a third party on your behalf. It doesn''t matter when the expenses were incurred. Don''t reduce this amount by any reimbursement you received"'
+    - id: dcprov.related
+      printed: (helper)
+      type: Bool
+      label: Was the provider a person to whom payments do not count (a person you or your spouse can claim as a dependent,
+        your child under 19 at the end of 2025, a person who was your spouse at any time in 2025, or the parent of your qualifying
+        child under 13)?
+      expr:
+        op: input
+        source: 'Was this provider any of these: a person you (or your spouse, if filing jointly) can claim as a dependent;
+          your child (including a stepchild or foster child) who was under age 19 at the end of 2025, even if not your dependent;
+          a person who was your spouse at any time during 2025; or the parent of your qualifying person, if that person
+          is your child under age 13?'
+      cite:
+        doc: p503
+        locator: 'p. 8, Payments to Relatives or Dependents, "However, don''t count any amounts you pay to" and "The parent of your qualifying person if your qualifying person is your child and under age 13"'
+      ambiguity: amb.2025.dc_ineligible_providers
+    - id: dcprov.see_statement
+      printed: (helper)
+      type: Bool
+      label: Column (c) reads "See Attached Statement"
+      expr:
+        op: test
+        eq:
+          - dcprov.tin_kind
+          - const: see_statement
+      cite:
+        doc: i2441
+        locator: 'p. 3, Due Diligence, "Enter “See Attached Statement” in the columns for which you don''t have the information"'
+  collection:
+    cite:
+      doc: i2441
+      locator: 'p. 2, Line 1, "Complete columns (a) through (e) for each person or organization that provided the care"'

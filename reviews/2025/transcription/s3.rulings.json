@@ -1,0 +1,24 @@
+{
+ "kind": "transcription",
+ "form": "s3",
+ "rulings": [
+  {
+   "printed": "2",
+   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"ref\": \"f2441.care\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"ref\": \"f2441.care\"}], \"test\": \"eq\"}, \"then\": {\"ref\": \"f2441.line11\"}}], \"op\": \"choose\"}",
+   "second": "{\"ref\": \"f2441.line11\"}",
+   "ruling": "Ruling: representation; project retained. Both enter Form 2441 line 11; the project adds the Form 2441 question whether care for a qualifying person was paid for so the filer could work (f2441.care) and enters zero when it was not, where the second reads line 11 directly. With no such care there are no Part II expenses, so line 11 is zero either way: i2441 p. 1, Purpose of Form, \"If you paid someone to care for your child or other qualifying person so you (or your spouse if filing jointly) could work or look for work in 2025, you may be able to take the credit for child and dependent care expenses\"; f1040s3 p. 1, line 2, \"Credit for child and dependent care expenses from Form 2441, line 11\"."
+  },
+  {
+   "printed": "5a",
+   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"ref\": \"f5695.part1_any\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"ref\": \"f5695.part1_any\"}], \"test\": \"eq\"}, \"then\": {\"ref\": \"f5695.line15\"}}], \"op\": \"choose\"}",
+   "second": "{\"ref\": \"f5695.line15\"}",
+   "ruling": "Ruling: representation; project retained. Both enter Form 5695 line 15; the project enters zero when the filer has no residential clean energy property paid for in 2025 and no 2024 carryforward (f5695.part1_any), Part I then not being completed, where the second reads line 15 directly. i5695 p. 1, Purpose of Form, \"Also use Form 5695 to take any residential clean energy credit carryforward from 2024\"; f5695 p. 1, line 15, \"Residential clean energy credit. Enter the smaller of line 13 or line 14. Also include this amount on Schedule 3 (Form 1040), line 5a\". With no Part I cost and no carryforward, line 15 is zero either way."
+  },
+  {
+   "printed": "5b",
+   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"ref\": \"f5695.part2_any\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"ref\": \"f5695.part2_any\"}], \"test\": \"eq\"}, \"then\": {\"ref\": \"f5695.line32\"}}], \"op\": \"choose\"}",
+   "second": "{\"ref\": \"f5695.line32\"}",
+   "ruling": "Ruling: representation; project retained. Both enter Form 5695 line 32; the project enters zero when the filer paid no energy efficient home improvement costs in 2025 (f5695.part2_any), Part II then not being completed, where the second reads line 32 directly. f5695 p. 4, line 32, \"Energy efficient home improvement credit. Enter the smaller of line 30 or line 31. Also include this amount on Schedule 3 (Form 1040), line 5b\"; the credit has no carryforward, so with no Part II cost line 32 is zero either way."
+  }
+ ]
+}

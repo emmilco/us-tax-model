@@ -1,0 +1,22 @@
+{
+ "kind": "classm",
+ "form": "s3",
+ "rulings": [
+  {
+   "case": "classm.s3.2",
+   "printed": "5a",
+   "project": "$0.00",
+   "model": "$985.50",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The generated return answers no to \"Any residential clean energy property paid for in 2025, or a carryforward from 2024\" (f5695.part1_any) yet gives a Part I cost ($3,285.00 on Form 5695 line 3, so line 15 figures to $985.50); the model used the line 15 amount \"despite filer's 'no' answer\". With no Part I property and no carryforward Part I is not completed and Schedule 3 line 5a has nothing to enter (i5695 p. 1, Purpose of Form, \"Use Form 5695 to figure and take your residential energy credits\"; f5695 p. 1, line 15, \"Also include this amount on Schedule 3 (Form 1040), line 5a\"); the project enters zero. Project's working: line 5a = $0.00.",
+   "drop": true
+  },
+  {
+   "case": "classm.s3.2",
+   "printed": "8",
+   "project": "$0.00",
+   "model": "$985.50",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The generated return answers no to \"Any residential clean energy property paid for in 2025, or a carryforward from 2024\" (f5695.part1_any) yet gives a Part I cost ($3,285.00 on Form 5695 line 3, so line 15 figures to $985.50); the model used the line 15 amount \"despite filer's 'no' answer\". With no Part I property and no carryforward Part I is not completed and Schedule 3 line 5a has nothing to enter (i5695 p. 1, Purpose of Form, \"Use Form 5695 to figure and take your residential energy credits\"; f5695 p. 1, line 15, \"Also include this amount on Schedule 3 (Form 1040), line 5a\"); the project enters zero. Project's working: line 8 = lines 1 $0 + 2 $0 + 4 $0 + 5a $0 + 5b $0 = $0.00.",
+   "drop": true
+  }
+ ]
+}

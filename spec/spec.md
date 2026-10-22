@@ -85,18 +85,18 @@ Growth proceeds in order of the coverage each addition gains under that estimate
 - The Schedule 1-A deductions: the enhanced deduction for seniors, qualified overtime compensation, qualified tips and qualified passenger vehicle loan interest, for unmarried filers.
 - Married filing jointly: a person-by-person record for each spouse (facts, Forms W-2, tip and overtime employers, Form 8889), with the joint rules of the lines in scope, among them the spouses' standard deduction boxes, educator expenses per person, the Schedule 1-A deductions per spouse, the HSA rules for spouses with family coverage, and the identification rules of the earned income credit and the child tax credit.
 - Self-employment: Schedule C with Schedule SE, depreciation (Form 4562), the self-employed health insurance deduction, SEP and SIMPLE contributions and the qualified business income deduction.
+- Other credits (Stage 15): the child and dependent care credit with dependent care benefits (Form 2441), the saver's credit (Form 8880) and the residential energy credits (Form 5695), with Schedule 8812 Credit Limit Worksheet B; the other nonrefundable credits (general business, adoption, clean vehicle, elderly or disabled, education and the rest) stay refused.
 
-Remaining, in the order of the estimate when this section was last revised (the estimated coverage after each, from about 58% now):
+Remaining, in the order of the estimate when this section was last revised (the estimated coverage after each, from about 65% now; after Stage 15 the 80% goal and the 95% target each fall one step later than before, because the other nonrefundable credits stay refused):
 
-1. Other credits: child and dependent care, the saver's credit, the residential energy credits (65%).
-2. The remaining Schedule 1 income and adjustments, among them a taxable state refund, other income, gambling winnings and the IRA deduction (73%).
-3. Schedule E: rental and royalty income, partnerships, S corporations, estates and trusts (80%, the first goal).
-4. The premium tax credit (85%).
-5. The education credits (89%).
-6. The capital loss carryover (92%).
-7. The additional tax on qualified retirement plans, Form 5329 (95%, the target).
-8. Married filing separately.
-9. Form 1116 and the remaining deferrals of 2.2, and the smaller situations the report lists.
+1. The remaining Schedule 1 income and adjustments, among them a taxable state refund, other income, gambling winnings and the IRA deduction (72%).
+2. Schedule E: rental and royalty income, partnerships, S corporations, estates and trusts (79%).
+3. The premium tax credit (84%, the first goal).
+4. The education credits (88%).
+5. The capital loss carryover (91%).
+6. The additional tax on qualified retirement plans, Form 5329 (94%).
+7. Married filing separately (97%, the target).
+8. Form 1116 and the remaining deferrals of 2.2, and the smaller situations the report lists.
 
 State returns are outside the federal goal. New York is the first state intended once federal coverage is met; it is a separate decision with its own sources, and nothing in the federal encoding assumes it.
 

@@ -12,6 +12,7 @@ bank:
     scveh: 'For this vehicle — '
     asset: 'For this property — '
     ltc: 'For this person covered by long-term care insurance — '
+    dcprov: 'For this care provider (Form 2441, Part I) — '
   questions:
   - input: $person
     order: 0
@@ -376,6 +377,14 @@ bank:
   - input: w2.box2
     order: 3
     help: Read iw2w3, p. 17, box 2. Enter cents for money. Enter null if you do not know; it never becomes zero.
+  - input: w2.box10
+    order: 21
+    help: Money is integer cents. Box 10 shows the dependent care benefits your employer provided, including any amount over
+      your plan's exclusion. Unknown may be null; do not guess.
+  - input: w2.box10_wages
+    order: 21
+    help: Money is integer cents. Benefits over the plan's exclusion are also included in boxes 1, 3 and 5; ask your employer
+      if you are not sure. Unknown may be null; do not guess.
   - input: f1040.line25b
     order: 10
     help: Total box 4 withholding shown on your 1099s. Enter cents for money. Enter null if you do not know; it
@@ -485,6 +494,85 @@ bank:
     order: 2
     help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
       do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f2441.care
+    order: 20
+    help: Money is integer cents. Answer true/false for questions. Unknown may be null; do not guess. Married filing
+      separately and unsupported items are refused with citations.
+  - input: f2441.benefits
+    order: 20
+    help: Money is integer cents. Answer true/false for questions. Unknown may be null; do not guess. Married filing
+      separately and unsupported items are refused with citations.
+  - input: f2441.student_disabled
+    order: 21
+    help: Money is integer cents. Answer true/false for questions. Unknown may be null; do not guess. Married filing
+      separately and unsupported items are refused with citations.
+  - input: f2441.spouse_died
+    order: 21
+    help: Money is integer cents. Answer true/false for questions. Unknown may be null; do not guess. Married filing
+      separately and unsupported items are refused with citations.
+  - input: f2441.nondependent
+    order: 21
+    help: Money is integer cents. Answer true/false for questions. Unknown may be null; do not guess. Married filing
+      separately and unsupported items are refused with citations.
+  - input: dependent.dc_incapable
+    order: 21
+    help: Money is integer cents. Answer true/false for questions. Unknown may be null; do not guess. Married filing
+      separately and unsupported items are refused with citations.
+  - input: dependent.dc_under13
+    order: 21
+    help: Money is integer cents. Answer true/false for questions. Unknown may be null; do not guess. Married filing
+      separately and unsupported items are refused with citations.
+  - input: dependent.dc_paid
+    order: 21
+    help: Money is integer cents. Answer true/false for questions. Unknown may be null; do not guess. Married filing
+      separately and unsupported items are refused with citations.
+  - input: f2441.prior_year
+    order: 21
+    help: Money is integer cents. Answer true/false for questions. Unknown may be null; do not guess. Married filing
+      separately and unsupported items are refused with citations.
+  - input: f2441.line13
+    order: 22
+    help: Money is integer cents. Answer true/false for questions. Unknown may be null; do not guess. Married filing
+      separately and unsupported items are refused with citations.
+  - input: f2441.line14
+    order: 22
+    help: Money is integer cents. Answer true/false for questions. Unknown may be null; do not guess. Married filing
+      separately and unsupported items are refused with citations.
+  - input: f2441.paid_2026
+    order: 22
+    help: Money is integer cents. Answer true/false for questions. Unknown may be null; do not guess. Married filing
+      separately and unsupported items are refused with citations.
+  - input: f2441.plans_differ
+    order: 22
+    help: Money is integer cents. Answer true/false for questions. Unknown may be null; do not guess. Married filing
+      separately and unsupported items are refused with citations.
+  - input: f2441.plan_max
+    order: 22
+    help: Money is integer cents. Answer true/false for questions. Unknown may be null; do not guess. Married filing
+      separately and unsupported items are refused with citations.
+  - input: dcprov.tin_kind
+    order: 23
+    help: Money is integer cents. Answer true/false for questions. Unknown may be null; do not guess. Married filing
+      separately and unsupported items are refused with citations.
+  - input: dcprov.household
+    order: 23
+    help: Money is integer cents. Answer true/false for questions. Unknown may be null; do not guess. Married filing
+      separately and unsupported items are refused with citations.
+  - input: dcprov.paid
+    order: 23
+    help: Money is integer cents. Answer true/false for questions. Unknown may be null; do not guess. Married filing
+      separately and unsupported items are refused with citations.
+  - input: dcprov.related
+    order: 23
+    help: Money is integer cents. Answer true/false for questions. Unknown may be null; do not guess. Married filing
+      separately and unsupported items are refused with citations.
+  - input: $dcprov
+    order: 23
+    help: Enter a JSON array of distinct keys, one per person or organization that provided the care (for example
+      ["daycare_a","sitter_b"]); [] if no one did (for example, if you are filing Form 2441 only to report taxable benefits).
+      Names and addresses are written on the form and are not asked here.
+    prompt: List a stable key for each person or organization that provided care for your qualifying persons in 2025
+      (Form 2441, Part I).
   - input: person.tin
     order: 2
     help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
@@ -1113,3 +1201,254 @@ bank:
   - input: carloan.col_ii_input
     order: 12
     help: Money is integer cents.
+  - input: f5695.part1_any
+    order: 24
+    help: 'Answer true or false. Answer true also if your only Part I amount is a carryforward from 2024.'
+  - input: f5695.part2_any
+    order: 24
+    help: 'Answer true or false. There is no carryforward of this credit from an earlier year.'
+  - input: f5695.business_use
+    order: 25
+    help: 'Answer true or false. An item used 80% or more for nonbusiness purposes counts in full.'
+  - input: f5695.construction_later
+    order: 25
+    help: 'Answer true or false. For the residential clean energy credit, costs of constructing or reconstructing a home are treated as paid when your original use of the home begins; such costs for a home you first use after 2025 cannot be claimed.'
+  - input: f5695.line1
+    order: 25
+    help: 'Money is integer cents; zero if none. A cost counts in 2025 when the original installation is completed. Include labor for onsite preparation, assembly or original installation and for piping or wiring to connect the property to the home. Reduce the cost by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you), and by any rebate: a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs such as interest, origination fees or an extended warranty. If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation. Costs for more than one home go on the same line.'
+  - input: f5695.line2
+    order: 25
+    help: 'Money is integer cents; zero if none. A cost counts in 2025 when the original installation is completed. Include labor for onsite preparation, assembly or original installation and for piping or wiring to connect the property to the home. Reduce the cost by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you), and by any rebate: a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs such as interest, origination fees or an extended warranty. If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation. Costs for more than one home go on the same line.'
+  - input: f5695.line3
+    order: 25
+    help: 'Money is integer cents; zero if none. A cost counts in 2025 when the original installation is completed. Include labor for onsite preparation, assembly or original installation and for piping or wiring to connect the property to the home. Reduce the cost by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you), and by any rebate: a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs such as interest, origination fees or an extended warranty. If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation. Costs for more than one home go on the same line.'
+  - input: f5695.line4
+    order: 25
+    help: 'Money is integer cents; zero if none. A cost counts in 2025 when the original installation is completed. Include labor for onsite preparation, assembly or original installation and for piping or wiring to connect the property to the home. Reduce the cost by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you), and by any rebate: a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs such as interest, origination fees or an extended warranty. If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation. Costs for more than one home go on the same line.'
+  - input: f5695.line5a
+    order: 25
+    help: 'Answer true or false.'
+  - input: f5695.battery_cost
+    order: 25
+    help: 'Money is integer cents; zero if none. A cost counts in 2025 when the original installation is completed. Include labor for onsite preparation, assembly or original installation and for piping or wiring to connect the property to the home. Reduce the cost by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you), and by any rebate: a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs such as interest, origination fees or an extended warranty. If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation. Costs for more than one home go on the same line.'
+  - input: f5695.line7a
+    order: 25
+    help: 'Answer true or false. Fuel cell property is refused by this tool.'
+  - input: f5695.line12
+    order: 25
+    help: 'Money is integer cents; zero if none.'
+  - input: f5695.line17a
+    order: 26
+    help: 'Answer true or false. Your main home is generally the home where you live most of the time; you have only one main home at a time. A home you rent does not qualify for Section A.'
+  - input: f5695.line17b
+    order: 26
+    help: 'Answer true or false.'
+  - input: f5695.line17c
+    order: 26
+    help: 'Answer true or false.'
+  - input: f5695.line17e
+    order: 26
+    help: 'Answer true or false. Answer false if the improvements are to an existing home or are an addition to or renovation of an existing home.'
+  - input: f5695.line18a
+    order: 26
+    help: 'Money is integer cents; zero if none. Enter the cost of the components only: do not include labor for onsite preparation, assembly or original installation. Reduce the cost by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you), and by any rebate: a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs such as interest, origination fees or an extended warranty. Do not include amounts provided by subsidized energy financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized financing for projects to conserve or produce energy). If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.'
+  - input: f5695.line19a
+    order: 26
+    help: 'Money is integer cents; zero if none. Enter the cost of the components only: do not include labor for onsite preparation, assembly or original installation. Reduce the cost by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you), and by any rebate: a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs such as interest, origination fees or an extended warranty. Do not include amounts provided by subsidized energy financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized financing for projects to conserve or produce energy). If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.'
+  - input: f5695.line19d_i
+    order: 26
+    help: 'Money is integer cents; zero if none. Enter the cost of the components only: do not include labor for onsite preparation, assembly or original installation. Reduce the cost by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you), and by any rebate: a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs such as interest, origination fees or an extended warranty. Do not include amounts provided by subsidized energy financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized financing for projects to conserve or produce energy). If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.'
+  - input: f5695.line19d_ii
+    order: 26
+    help: 'Money is integer cents; zero if none. Enter the cost of the components only: do not include labor for onsite preparation, assembly or original installation. Reduce the cost by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you), and by any rebate: a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs such as interest, origination fees or an extended warranty. Do not include amounts provided by subsidized energy financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized financing for projects to conserve or produce energy). If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.'
+  - input: f5695.line19e
+    order: 26
+    help: 'Money is integer cents; zero if none. Enter the cost of the components only: do not include labor for onsite preparation, assembly or original installation. Reduce the cost by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you), and by any rebate: a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs such as interest, origination fees or an extended warranty. Do not include amounts provided by subsidized energy financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized financing for projects to conserve or produce energy). If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.'
+  - input: f5695.qmid_doors
+    order: 26
+    help: 'Answer true or false. The QMID is the four-character alphanumeric qualified manufacturer identification number the manufacturer gives for the item; each item installed in 2025 needs a valid one. If you answer false, the return is refused: obtain the QMID, or do not enter that item''s cost.'
+  - input: f5695.line20a_i
+    order: 26
+    help: 'Money is integer cents; zero if none. Enter the cost of the components only: do not include labor for onsite preparation, assembly or original installation. Reduce the cost by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you), and by any rebate: a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs such as interest, origination fees or an extended warranty. Do not include amounts provided by subsidized energy financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized financing for projects to conserve or produce energy). If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.'
+  - input: f5695.line20a_ii
+    order: 26
+    help: 'Money is integer cents; zero if none. Enter the cost of the components only: do not include labor for onsite preparation, assembly or original installation. Reduce the cost by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you), and by any rebate: a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs such as interest, origination fees or an extended warranty. Do not include amounts provided by subsidized energy financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized financing for projects to conserve or produce energy). If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.'
+  - input: f5695.line20a_iii
+    order: 26
+    help: 'Money is integer cents; zero if none. Enter the cost of the components only: do not include labor for onsite preparation, assembly or original installation. Reduce the cost by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you), and by any rebate: a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs such as interest, origination fees or an extended warranty. Do not include amounts provided by subsidized energy financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized financing for projects to conserve or produce energy). If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.'
+  - input: f5695.line20a_iv
+    order: 26
+    help: 'Money is integer cents; zero if none. Enter the cost of the components only: do not include labor for onsite preparation, assembly or original installation. Reduce the cost by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you), and by any rebate: a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs such as interest, origination fees or an extended warranty. Do not include amounts provided by subsidized energy financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized financing for projects to conserve or produce energy). If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.'
+  - input: f5695.line20b
+    order: 26
+    help: 'Money is integer cents; zero if none. Enter the cost of the components only: do not include labor for onsite preparation, assembly or original installation. Reduce the cost by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you), and by any rebate: a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs such as interest, origination fees or an extended warranty. Do not include amounts provided by subsidized energy financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized financing for projects to conserve or produce energy). If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.'
+  - input: f5695.qmid_windows
+    order: 26
+    help: 'Answer true or false. The QMID is the four-character alphanumeric qualified manufacturer identification number the manufacturer gives for the item; each item installed in 2025 needs a valid one. If you answer false, the return is refused: obtain the QMID, or do not enter that item''s cost.'
+  - input: f5695.line21a
+    order: 27
+    help: 'Answer true or false.'
+  - input: f5695.line21b
+    order: 27
+    help: 'Answer true or false.'
+  - input: f5695.b_new_home
+    order: 27
+    help: 'Answer true or false. The energy efficient home improvement credit is only available for existing homes.'
+  - input: f5695.line22a
+    order: 27
+    help: 'Money is integer cents; zero if none. Include labor for onsite preparation, assembly or original installation. Reduce the cost by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you), and by any rebate: a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs such as interest, origination fees or an extended warranty. Do not include amounts provided by subsidized energy financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized financing for projects to conserve or produce energy). If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.'
+  - input: f5695.line22b
+    order: 27
+    help: 'Money is integer cents; zero if none. Include labor for onsite preparation, assembly or original installation. Reduce the cost by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you), and by any rebate: a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs such as interest, origination fees or an extended warranty. Do not include amounts provided by subsidized energy financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized financing for projects to conserve or produce energy). If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.'
+  - input: f5695.qmid_ac
+    order: 27
+    help: 'Answer true or false. The QMID is the four-character alphanumeric qualified manufacturer identification number the manufacturer gives for the item; each item installed in 2025 needs a valid one. If you answer false, the return is refused: obtain the QMID, or do not enter that item''s cost.'
+  - input: f5695.line23a_i
+    order: 27
+    help: 'Money is integer cents; zero if none. Include labor for onsite preparation, assembly or original installation. Reduce the cost by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you), and by any rebate: a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs such as interest, origination fees or an extended warranty. Do not include amounts provided by subsidized energy financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized financing for projects to conserve or produce energy). If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.'
+  - input: f5695.line23a_ii
+    order: 27
+    help: 'Money is integer cents; zero if none. Include labor for onsite preparation, assembly or original installation. Reduce the cost by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you), and by any rebate: a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs such as interest, origination fees or an extended warranty. Do not include amounts provided by subsidized energy financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized financing for projects to conserve or produce energy). If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.'
+  - input: f5695.line23b
+    order: 27
+    help: 'Money is integer cents; zero if none. Include labor for onsite preparation, assembly or original installation. Reduce the cost by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you), and by any rebate: a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs such as interest, origination fees or an extended warranty. Do not include amounts provided by subsidized energy financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized financing for projects to conserve or produce energy). If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.'
+  - input: f5695.qmid_wh
+    order: 27
+    help: 'Answer true or false. The QMID is the four-character alphanumeric qualified manufacturer identification number the manufacturer gives for the item; each item installed in 2025 needs a valid one. If you answer false, the return is refused: obtain the QMID, or do not enter that item''s cost.'
+  - input: f5695.line24a
+    order: 27
+    help: 'Money is integer cents; zero if none. Include labor for onsite preparation, assembly or original installation. Reduce the cost by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you), and by any rebate: a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs such as interest, origination fees or an extended warranty. Do not include amounts provided by subsidized energy financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized financing for projects to conserve or produce energy). If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.'
+  - input: f5695.line24b
+    order: 27
+    help: 'Money is integer cents; zero if none. Include labor for onsite preparation, assembly or original installation. Reduce the cost by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you), and by any rebate: a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs such as interest, origination fees or an extended warranty. Do not include amounts provided by subsidized energy financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized financing for projects to conserve or produce energy). If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.'
+  - input: f5695.qmid_furnace
+    order: 27
+    help: 'Answer true or false. The QMID is the four-character alphanumeric qualified manufacturer identification number the manufacturer gives for the item; each item installed in 2025 needs a valid one. If you answer false, the return is refused: obtain the QMID, or do not enter that item''s cost.'
+  - input: f5695.line25a
+    order: 27
+    help: 'Answer true or false. Doors and insulation are not enabled property.'
+  - input: f5695.line25c
+    order: 27
+    help: 'Money is integer cents; zero if none. Include labor for onsite preparation, assembly or original installation. Reduce the cost by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you), and by any rebate: a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs such as interest, origination fees or an extended warranty. Do not include amounts provided by subsidized energy financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized financing for projects to conserve or produce energy). If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.'
+  - input: f5695.qmid_enabling
+    order: 27
+    help: 'Answer true or false. The QMID is the four-character alphanumeric qualified manufacturer identification number the manufacturer gives for the item; each item installed in 2025 needs a valid one. If you answer false, the return is refused: obtain the QMID, or do not enter that item''s cost.'
+  - input: f5695.line26a
+    order: 27
+    help: 'Answer true or false.'
+  - input: f5695.line26b
+    order: 27
+    help: 'Money is integer cents. Reduce the cost by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you), and by any rebate: a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs such as interest, origination fees or an extended warranty. Do not include amounts provided by subsidized energy financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized financing for projects to conserve or produce energy).'
+  - input: f5695.line29a
+    order: 27
+    help: 'Money is integer cents; zero if none. Include labor for onsite preparation, assembly or original installation. Reduce the cost by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you), and by any rebate: a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs such as interest, origination fees or an extended warranty. Do not include amounts provided by subsidized energy financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized financing for projects to conserve or produce energy). If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.'
+  - input: f5695.line29b
+    order: 27
+    help: 'Money is integer cents; zero if none. Include labor for onsite preparation, assembly or original installation. Reduce the cost by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you), and by any rebate: a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs such as interest, origination fees or an extended warranty. Do not include amounts provided by subsidized energy financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized financing for projects to conserve or produce energy). If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.'
+  - input: f5695.line29c
+    order: 27
+    help: 'Money is integer cents; zero if none. Include labor for onsite preparation, assembly or original installation. Reduce the cost by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you), and by any rebate: a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs such as interest, origination fees or an extended warranty. Do not include amounts provided by subsidized energy financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized financing for projects to conserve or produce energy). If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.'
+  - input: f5695.line29d
+    order: 27
+    help: 'Money is integer cents; zero if none. Include labor for onsite preparation, assembly or original installation. Reduce the cost by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you), and by any rebate: a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs such as interest, origination fees or an extended warranty. Do not include amounts provided by subsidized energy financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized financing for projects to conserve or produce energy). If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.'
+  - input: f5695.line29e
+    order: 27
+    help: 'Money is integer cents; zero if none. Include labor for onsite preparation, assembly or original installation. Reduce the cost by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you), and by any rebate: a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs such as interest, origination fees or an extended warranty. Do not include amounts provided by subsidized energy financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized financing for projects to conserve or produce energy). If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.'
+  - input: f5695.line29f
+    order: 27
+    help: 'Money is integer cents; zero if none. Include labor for onsite preparation, assembly or original installation. Reduce the cost by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you), and by any rebate: a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs such as interest, origination fees or an extended warranty. Do not include amounts provided by subsidized energy financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized financing for projects to conserve or produce energy). If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.'
+  - input: f5695.qmid_hp
+    order: 27
+    help: 'Answer true or false. The QMID is the four-character alphanumeric qualified manufacturer identification number the manufacturer gives for the item; each item installed in 2025 needs a valid one. If you answer false, the return is refused: obtain the QMID, or do not enter that item''s cost.'
+  - input: f5695.joint_occupancy
+    order: 25
+    help: 'Answer true or false. These rules do not apply to married individuals filing a joint return. Joint occupancy is refused by this tool.'
+  - input: f5695.separate_homes
+    order: 25
+    help: 'Answer true or false.'
+  - input: f5695.condo
+    order: 27
+    help: 'Answer true or false. It changes no amount; the box is shown on line 32b.'
+  - input: person.sav_born
+    order: 25
+    help: The saver's credit (Form 8880) is not allowed for contributions made by a person born after January 1, 2008.
+      Answer true or false.
+  - input: person.sav_student
+    order: 25
+    help: A student for the saver's credit (Form 8880). Answer true or false.
+  - input: person.sav_claimed
+    order: 25
+    help: Asked because someone can claim you or your spouse as a dependent. Answer true only if this person is actually
+      claimed on someone else's 2025 return. Answer true or false.
+  - input: person.sav_trad
+    order: 25
+    help: Traditional IRA contributions are outside this tool; the IRA deduction and Form 8606 are not prepared. Answer
+      true or false.
+  - input: person.sav_able
+    order: 25
+    help: ABLE accounts (Pub. 907) are outside this tool. Answer true or false.
+  - input: person.sav_roth
+    order: 25
+    help: Money is integer cents. Contributions for 2025 may be made up to the due date of your 2025 return. A contribution
+      later recharacterized as a traditional IRA contribution is a traditional IRA contribution.
+  - input: person.sav_excess
+    order: 25
+    help: Your plan administrator tells you if you deferred more than the limit. Answer true or false.
+  - input: person.sav_voluntary
+    order: 25
+    help: Money is integer cents. Required employee contributions and employer contributions are not voluntary
+      contributions.
+  - input: person.sav_prior_joint
+    order: 25
+    help: Money is integer cents. Distributions in these years go in both columns of Form 8880 line 4.
+  - input: person.sav_prior_other
+    order: 25
+    help: Money is integer cents. On a joint return these go only in your own column of Form 8880 line 4.
+  - input: w2.box12_any
+    order: 25
+    help: Box 12 holds up to four amounts, each with a code of one or two letters. Answer true or false.
+  - input: w2.box12_userra
+    order: 25
+    help: Answer true or false.
+  - input: w2.box12_d
+    order: 25
+    help: Money is integer cents; the code D amount in box 12, zero if none.
+  - input: w2.box12_e
+    order: 25
+    help: Money is integer cents; the code E amount in box 12, zero if none.
+  - input: w2.box12_f
+    order: 25
+    help: Money is integer cents; the code F amount in box 12, zero if none.
+  - input: w2.box12_g
+    order: 25
+    help: Money is integer cents; the code G amount in box 12, zero if none.
+  - input: w2.box12_h
+    order: 25
+    help: Money is integer cents; the code H amount in box 12, zero if none.
+  - input: w2.box12_s
+    order: 25
+    help: Money is integer cents; the code S amount in box 12, zero if none.
+  - input: w2.box12_aa
+    order: 25
+    help: Money is integer cents; the code AA amount in box 12, zero if none.
+  - input: w2.box12_bb
+    order: 25
+    help: Money is integer cents; the code BB amount in box 12, zero if none.
+  - input: w2.box12_ee
+    order: 25
+    help: Money is integer cents; the code EE amount in box 12, zero if none.
+  - input: w2.g_governmental
+    order: 25
+    help: Answer true or false.
+  - input: w2.g_elective
+    order: 25
+    help: Money is integer cents.
+  - input: retirement.sav_military
+    order: 25
+    help: Answer true or false.
+  - input: retirement.sav_404k
+    order: 25
+    help: Answer true or false.
+  - input: retirement.sav_inherited
+    order: 25
+    help: Answer true or false.

@@ -108,6 +108,420 @@ form:
       cite:
         doc: f8959
         locator: Form 8959 (2025), lines 1–24; i8959 pp. 1–3
+    - id: w2.box10
+      printed: "10"
+      type: NonNegDollars
+      label: Dependent care benefits
+      expr:
+        op: input
+        source: Form W-2 box 10, dependent care benefits; zero if the box is blank
+      cite:
+        doc: iw2w3
+        locator: 'pp. 18–19, Box 10—Dependent care benefits, "Report all amounts paid or incurred (regardless of any employee forfeitures), including those in excess of the $5,000 exclusion" and "Include any amounts over your plan’s exclusion in boxes 1, 3, and 5"'
+    - id: w2.has_box10
+      printed: (helper)
+      type: Bool
+      label: This Form W-2 shows dependent care benefits in box 10
+      expr:
+        op: test
+        gt:
+          - w2.box10
+          - param: sales.zero
+      cite:
+        doc: i2441
+        locator: 'p. 5, Line 12, "Amounts you received as an employee should be shown in box 10 of your Form(s) W-2"'
+    - id: w2.box10_wages
+      printed: (helper)
+      type: NonNegDollars
+      label: The part of box 10 that exceeds your plan's exclusion and is also reported as wages in box 1
+      expr:
+        op: input
+        source: Of the dependent care benefits in box 10, the part your employer also included as wages in box 1 because it
+          exceeds your plan's exclusion (your employer can tell you; it is often the amount of box 10 over $5,000); zero
+          if none
+      cite:
+        doc: i2441
+        locator: 'p. 5, Line 12, "don’t include amounts reported in box 10 that exceed your plan''s exclusion and are therefore reported as wages in box 1 of Form(s) W-2"'
+    - id: w2.box10_bad
+      printed: (gate)
+      type: Bool
+      label: The part of box 10 reported in box 1 is more than box 10
+      expr:
+        op: test
+        gt:
+          - w2.box10_wages
+          - w2.box10
+      cite:
+        doc: i2441
+        locator: 'p. 5, Line 12, "don’t include amounts reported in box 10 that exceed your plan''s exclusion and are therefore reported as wages in box 1 of Form(s) W-2"'
+    - id: w2.dc_net
+      printed: (helper)
+      type: NonNegDollars
+      label: Box 10 less the part of it reported as wages in box 1
+      expr:
+        op: subtract_floor0
+        from: w2.box10
+        take: w2.box10_wages
+      cite:
+        doc: i2441
+        locator: 'p. 5, Line 12, "don’t include amounts reported in box 10 that exceed your plan''s exclusion and are therefore reported as wages in box 1 of Form(s) W-2"'
+      refuses:
+        - when: w2.box10_bad
+          form: Form W-2 box 10 amounts
+          remedy: The part of box 10 reported as wages in box 1 cannot be more than box 10. Check the amounts with your
+            employer.
+          cite:
+            doc: i2441
+            locator: 'p. 5, Line 12, "don’t include amounts reported in box 10 that exceed your plan''s exclusion and are therefore reported as wages in box 1 of Form(s) W-2"'
+    - id: w2.dc_benefits
+      printed: (helper)
+      type: NonNegDollars
+      label: Dependent care benefits from this Form W-2 for Form 2441 line 12
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - w2.has_box10
+                - const: true
+            then: w2.dc_net
+          - guard:
+              op: test
+              eq:
+                - w2.has_box10
+                - const: false
+            then: w2.dc_zero
+      cite:
+        doc: i2441
+        locator: 'p. 5, Line 12, "Amounts you received as an employee should be shown in box 10 of your Form(s) W-2; however, don’t include amounts reported in box 10 that exceed your plan''s exclusion and are therefore reported as wages in box 1 of Form(s) W-2"'
+    - id: w2.dc_zero
+      printed: (helper)
+      type: NonNegDollars
+      label: No dependent care benefits on this Form W-2
+      expr:
+        op: param
+        ref: sales.zero
+      cite:
+        doc: i2441
+        locator: 'p. 5, Line 12, "Amounts you received as an employee should be shown in box 10 of your Form(s) W-2"'
+    - id: w2.box12_any
+      printed: (helper)
+      label: Does box 12 of this Form W-2 show an amount with code D, E, F, G, H, S, AA, BB or EE?
+      type: Bool
+      expr:
+        op: input
+        source: Does box 12 of this Form W-2 show any amount with code D, E, F, G, H, S, AA, BB or EE (elective deferrals and
+          designated Roth contributions to retirement plans)?
+      cite:
+        doc: f8880
+        locator: 'p. 2, Line 2, "These amounts may be shown in box 12 of your Form(s) W-2 for 2025"'
+    - id: w2.box12_userra
+      printed: (helper)
+      label: Does box 12 show an amount with a year after its code (make-up contributions for an earlier year under USERRA)?
+      type: Bool
+      expr:
+        op: input
+        source: Does box 12 of this Form W-2 show any amount with a year after its code (for example "D 24"), which are make-up
+          contributions for an earlier year under the Uniformed Services Employment and Reemployment Rights Act (USERRA)?
+      cite:
+        doc: iw2w3
+        locator: 'p. 20, Box 12—Codes, "for a prior year, you must enter the prior-year contributions separately. Beginning
+          with the earliest year, enter the code, the year, and the amount"'
+    - id: w2.box12_d
+      printed: 12 (D)
+      label: Box 12, code D. Elective deferrals under a section 401(k) cash or deferred arrangement (plan), including a SIMPLE
+        401(k)
+      type: NonNegDollars
+      expr:
+        op: input
+        source: Form W-2 box 12, code D (elective deferrals to a section 401(k) plan, including a SIMPLE 401(k)); zero if none
+      cite:
+        doc: iw2w3
+        locator: 'p. 20, Box 12—Codes, "Code D—Elective deferrals under a section 401(k) cash or deferred arrangement (plan).
+          Also show deferrals under a SIMPLE retirement account that is part of a section 401(k) arrangement"'
+    - id: w2.box12_e
+      printed: 12 (E)
+      label: Box 12, code E. Elective deferrals under a section 403(b) salary reduction agreement
+      type: NonNegDollars
+      expr:
+        op: input
+        source: Form W-2 box 12, code E (elective deferrals under a section 403(b) salary reduction agreement); zero if none
+      cite:
+        doc: iw2w3
+        locator: 'p. 20, Box 12—Codes, "Code E—Elective deferrals under a section 403(b) salary reduction agreement"'
+    - id: w2.box12_f
+      printed: 12 (F)
+      label: Box 12, code F. Elective deferrals under a section 408(k)(6) salary reduction SEP
+      type: NonNegDollars
+      expr:
+        op: input
+        source: Form W-2 box 12, code F (elective deferrals under a section 408(k)(6) salary reduction SEP, including a Roth
+          SEP IRA); zero if none
+      cite:
+        doc: iw2w3
+        locator: 'p. 20, Box 12—Codes, "Code F—Elective deferrals under a section 408(k) (6) salary reduction SEP (this includes
+          elective deferrals made to a Roth SEP IRA)"'
+    - id: w2.box12_g
+      printed: 12 (G)
+      label: Box 12, code G. Elective deferrals and employer contributions (including nonelective deferrals) to any governmental
+        or nongovernmental section 457(b) deferred compensation plan
+      type: NonNegDollars
+      expr:
+        op: input
+        source: Form W-2 box 12, code G (elective deferrals and employer contributions to a governmental or nongovernmental section
+          457(b) plan); zero if none
+      cite:
+        doc: iw2w3
+        locator: 'p. 20, Box 12—Codes, "Code G—Elective deferrals and employer contributions (including nonelective deferrals)
+          to any governmental or nongovernmental section 457(b) deferred compensation plan"'
+    - id: w2.box12_h
+      printed: 12 (H)
+      label: Box 12, code H. Elective deferrals under section 501(c)(18)(D) tax-exempt organization plan
+      type: NonNegDollars
+      expr:
+        op: input
+        source: Form W-2 box 12, code H (elective deferrals to a section 501(c)(18)(D) tax-exempt organization plan); zero if
+          none
+      cite:
+        doc: iw2w3
+        locator: 'p. 20, Box 12—Codes, "Code H—Elective deferrals under section 501(c) (18)(D) tax-exempt organization plan"'
+    - id: w2.box12_s
+      printed: 12 (S)
+      label: Box 12, code S. Employee salary reduction contributions under a section 408(p) SIMPLE plan
+      type: NonNegDollars
+      expr:
+        op: input
+        source: Form W-2 box 12, code S (salary reduction contributions to a section 408(p) SIMPLE plan, including a Roth SIMPLE
+          IRA); zero if none
+      cite:
+        doc: iw2w3
+        locator: 'p. 21, Code S—Employee salary reduction contributions under a section 408(p) SIMPLE plan, "(this includes
+          salary reduction contributions made to a Roth SIMPLE IRA)"'
+    - id: w2.box12_aa
+      printed: 12 (AA)
+      label: Box 12, code AA. Designated Roth contributions under a section 401(k) plan
+      type: NonNegDollars
+      expr:
+        op: input
+        source: Form W-2 box 12, code AA (designated Roth contributions to a section 401(k) plan); zero if none
+      cite:
+        doc: iw2w3
+        locator: 'p. 21, Code AA—Designated Roth contributions under a section 401(k) plan, "Use this code to report designated
+          Roth contributions under a section 401(k) plan"'
+    - id: w2.box12_bb
+      printed: 12 (BB)
+      label: Box 12, code BB. Designated Roth contributions under a section 403(b) plan
+      type: NonNegDollars
+      expr:
+        op: input
+        source: Form W-2 box 12, code BB (designated Roth contributions to a section 403(b) plan); zero if none
+      cite:
+        doc: iw2w3
+        locator: 'p. 21, Code BB—Designated Roth contributions under a section 403(b) plan, "Use this code to report designated
+          Roth contributions under a section 403(b) plan"'
+    - id: w2.box12_ee
+      printed: 12 (EE)
+      label: Box 12, code EE. Designated Roth contributions under a governmental section 457(b) plan
+      type: NonNegDollars
+      expr:
+        op: input
+        source: Form W-2 box 12, code EE (designated Roth contributions to a governmental section 457(b) plan); zero if none
+      cite:
+        doc: iw2w3
+        locator: 'p. 21, Code EE—Designated Roth contributions under a governmental section 457(b) plan'
+    - id: w2.has_g
+      printed: (helper)
+      label: Box 12 shows an amount with code G
+      type: Bool
+      expr:
+        op: test
+        gt:
+        - w2.box12_g
+        - param: sales.zero
+      cite:
+        doc: iw2w3
+        locator: 'p. 20, Box 12—Codes, "Code G—Elective deferrals and employer contributions (including nonelective deferrals)
+          to any governmental or nongovernmental section 457(b) deferred compensation plan"'
+    - id: w2.g_governmental
+      printed: (helper)
+      label: Is the code G amount from a governmental section 457(b) plan (a plan of a state or local government)?
+      type: Bool
+      expr:
+        op: input
+        source: Is the code G amount in box 12 of this Form W-2 from a governmental section 457(b) plan (one maintained by a
+          state or local government), rather than a nongovernmental (tax-exempt organization) 457(b) plan?
+      cite:
+        doc: f8880
+        locator: 'p. 2, Line 2, "Elective deferrals (including designated Roth contributions under section 402A, if applicable)
+          to a 401(k), 403(b), governmental 457(b), SEP, SIMPLE, or the federal TSP"'
+    - id: w2.g_elective
+      printed: (helper)
+      label: The part of the code G amount that is your own elective deferrals (not employer or nonelective contributions)
+      type: NonNegDollars
+      expr:
+        op: input
+        source: The part of the code G amount in box 12 of this Form W-2 that is your own elective deferrals (the salary you chose
+          to defer), not employer contributions or nonelective contributions; your employer or plan statement shows it
+      cite:
+        doc: iw2w3
+        locator: 'p. 20, Box 12—Codes, "Code G—Elective deferrals and employer contributions (including nonelective deferrals)
+          to any governmental or nongovernmental section 457(b) deferred compensation plan"'
+    - id: w2.g_bad
+      printed: (gate)
+      label: The elective part of a governmental 457(b) code G amount is more than the code G amount
+      type: Bool
+      expr:
+        op: test
+        all:
+        - op: test
+          eq:
+          - w2.g_governmental
+          - const: true
+        - op: test
+          gt:
+          - w2.g_elective
+          - w2.box12_g
+      cite:
+        doc: iw2w3
+        locator: 'p. 20, Box 12—Codes, "Code G—Elective deferrals and employer contributions (including nonelective deferrals)
+          to any governmental or nongovernmental section 457(b) deferred compensation plan"'
+    - id: w2.g_gov_part
+      printed: (helper)
+      label: Code G elective deferrals to a governmental section 457(b) plan
+      type: NonNegDollars
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - w2.g_governmental
+            - const: true
+          then: w2.g_elective
+        - guard:
+            op: test
+            eq:
+            - w2.g_governmental
+            - const: false
+          then: w2.zero
+      cite:
+        doc: f8880
+        locator: 'p. 2, Line 2, "Elective deferrals (including designated Roth contributions under section 402A, if applicable)
+          to a 401(k), 403(b), governmental 457(b), SEP, SIMPLE, or the federal TSP"'
+      refuses:
+      - when: w2.g_bad
+        form: Form W-2 box 12, code G
+        remedy: The elective deferrals entered for code G cannot be more than the code G amount in box 12. Check the amounts
+          against your Form W-2 and your plan statement.
+        cite:
+          doc: iw2w3
+          locator: 'p. 20, Box 12—Codes, "Code G—Elective deferrals and employer contributions (including nonelective deferrals)
+            to any governmental or nongovernmental section 457(b) deferred compensation plan"'
+    - id: w2.g_counted
+      printed: (helper)
+      label: Code G amount counted on Form 8880 line 2
+      type: NonNegDollars
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - w2.has_g
+            - const: true
+          then: w2.g_gov_part
+        - guard:
+            op: test
+            eq:
+            - w2.has_g
+            - const: false
+          then: w2.zero
+      cite:
+        doc: f8880
+        locator: 'p. 2, Who Can Take This Credit, "(b) elective deferrals to a 401(k), 403(b), governmental 457(b), SEP, SIMPLE,
+          or the federal Thrift Savings Plan (TSP)"'
+    - id: w2.zero
+      printed: (helper)
+      label: Year parameter sales.zero
+      type: NonNegDollars
+      expr:
+        op: param
+        ref: sales.zero
+      cite:
+        doc: f8880
+        locator: Form 8880 (2025), line 2
+    - id: w2.code_h
+      printed: (gate)
+      label: Box 12 shows an amount with code H (501(c)(18)(D) plan)
+      type: Bool
+      expr:
+        op: test
+        gt:
+        - w2.box12_h
+        - param: sales.zero
+      cite:
+        doc: iw2w3
+        locator: 'p. 20, Box 12—Codes, "Code H—Elective deferrals under section 501(c) (18)(D) tax-exempt organization plan. Be
+          sure to include this amount in box 1 as wages. The employee will deduct the amount on their Form 1040 or 1040-SR"'
+    - id: w2.sav_listed
+      printed: (helper)
+      label: Box 12 codes D, E, F, S, AA, BB and EE, and the governmental 457(b) elective part of code G
+      type: NonNegDollars
+      expr:
+        op: sum
+        of:
+        - w2.box12_d
+        - w2.box12_e
+        - w2.box12_f
+        - w2.g_counted
+        - w2.box12_s
+        - w2.box12_aa
+        - w2.box12_bb
+        - w2.box12_ee
+      cite:
+        doc: f8880
+        locator: 'p. 2, Line 2, "Elective deferrals (including designated Roth contributions under section 402A, if applicable)
+          to a 401(k), 403(b), governmental 457(b), SEP, SIMPLE, or the federal TSP"; "These amounts may be shown in box 12 of
+          your Form(s) W-2 for 2025"'
+      refuses:
+      - when: w2.box12_userra
+        form: Form W-2 box 12 make-up contributions for an earlier year (USERRA)
+        remedy: Form 8880 line 2 counts contributions for 2025; box 12 amounts designated for an earlier year are outside this
+          tool.
+        cite:
+          doc: iw2w3
+          locator: 'p. 20, Box 12—Codes, "for a prior year, you must enter the prior-year contributions separately"'
+      - when: w2.code_h
+        form: Section 501(c)(18)(D) plan contributions (Form W-2 box 12, code H; Schedule 1, line 24f)
+        remedy: Contributions to a 501(c)(18)(D) plan are deducted on Schedule 1 and count on Form 8880 line 2; that deduction
+          is outside this tool.
+        cite:
+          doc: iw2w3
+          locator: 'p. 20, Box 12—Codes, "Code H—Elective deferrals under section 501(c) (18)(D) tax-exempt organization plan.
+            Be sure to include this amount in box 1 as wages. The employee will deduct the amount on their Form 1040 or 1040-SR"'
+    - id: w2.sav_deferral
+      printed: (helper)
+      label: Elective deferrals and designated Roth contributions for 2025 from this Form W-2 counted on Form 8880 line 2
+      type: NonNegDollars
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - w2.box12_any
+            - const: true
+          then: w2.sav_listed
+        - guard:
+            op: test
+            eq:
+            - w2.box12_any
+            - const: false
+          then: w2.zero
+      cite:
+        doc: f8880
+        locator: 'p. 2, Line 2, "These amounts may be shown in box 12 of your Form(s) W-2 for 2025"'
   collection:
     parent: person
     cite:

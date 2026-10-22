@@ -1,0 +1,30 @@
+{
+ "kind": "classm",
+ "form": "f5695",
+ "rulings": [
+  {
+   "case": "classm.f5695.4",
+   "printed": "22c",
+   "project": "$5,000.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 21a is No in this case, and the model followed \"Skip lines 22 through 25 and line 29\" (f5695 p. 3, lines 21a and 21b, \"If you checked the “No” box for line 21a or 21b, you cannot claim the credit for your residential energy property costs. Skip lines 22 through 25 and line 29. Go to line 26\") and left line 22c blank; the project adds lines 22a and 22b regardless and applies the Section B test on line 22d (f5695.sec_b_claimed), which is $0 on both sides (agreed), as are lines 27 and 32. As the skip and stop rulings in reviews/2025/classm/eic, s8812 and sd.",
+   "drop": true
+  },
+  {
+   "case": "classm.f5695.5",
+   "printed": "23c",
+   "project": "$694.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 21a is No in this case, and the model followed \"Skip lines 22 through 25 and line 29\" (f5695 p. 3, lines 21a and 21b, \"If you checked the “No” box for line 21a or 21b, you cannot claim the credit for your residential energy property costs. Skip lines 22 through 25 and line 29. Go to line 26\") and left line 23c blank; the project adds lines 23a and 23b regardless and applies the Section B test on line 23d (f5695.sec_b_claimed), which is $0 on both sides (agreed), as are lines 27 and 32. As the skip and stop rulings in reviews/2025/classm/eic, s8812 and sd.",
+   "drop": true
+  },
+  {
+   "case": "classm.f5695.7",
+   "printed": "14",
+   "project": "$5,573.00",
+   "model": "$4,973.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. In this case the Part II screen (f5695.part2_any) is No, so Schedule 3 line 5b is $0, yet the generated return carries window costs, so the project's line 32 is $600 (agreed). The model subtracted that $600 on worksheet line 2; the project subtracts Schedule 3 line 5b, the credit taken on the return: i5695 p. 5, Residential Clean Energy Credit Limit Worksheet—Line 14, line 2, \"Enter the total of the following credit(s)/adjustment(s) if you are taking the credit(s)/adjustment(s) on your 2025 income tax return\" and \"Note: Enter the total of the preceding credit(s)/adjustment(s) only if allowed and taken on your 2025 income tax return\". Part I is not completed here either (f5695.part1_any No, line 13 $0), so line 15 and Schedule 3 line 5a are $0 on both sides (agreed). The hand predictions, where Part II is completed, put line 32 on worksheet line 2 as the project does (none has both parts).",
+   "drop": true
+  }
+ ]
+}

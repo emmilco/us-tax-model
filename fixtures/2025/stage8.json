@@ -135,7 +135,22 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -592,7 +607,22 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -1121,7 +1151,22 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "dependent[a].actc_amount": {
@@ -1776,7 +1821,22 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "dependent[a].actc_amount": {
@@ -2379,7 +2439,22 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -2826,7 +2901,22 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "dependent[parent].actc_amount": {
@@ -3278,7 +3368,22 @@
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -3954,7 +4059,22 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "dependent[age19].actc_amount": {
@@ -4656,7 +4776,22 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "dependent[age17].actc_amount": {
@@ -5303,7 +5438,22 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "dependent[all_year].actc_amount": {
@@ -5937,7 +6087,22 @@
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -6546,7 +6711,22 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -6991,7 +7171,22 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -7435,7 +7630,22 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -8125,7 +8335,22 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -8815,7 +9040,22 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -9505,7 +9745,22 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "dependent[parent].actc_amount": {
@@ -10180,7 +10435,22 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "dependent[parent].actc_amount": {
@@ -10862,7 +11132,22 @@
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -11541,7 +11826,11 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -11615,8 +11904,8 @@
         "f1040.line19": {
           "kind": "refusal",
           "gate": "scope.credits",
-          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 2–4, 5b, 6d, 6f, 6l, 6m)",
-          "remedy": "Credits other than the foreign tax credit and the dependent credits are outside this tool.",
+          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 3, 6d, 6f, 6l, 6m)",
+          "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the saver's credit and the residential energy credits are outside this tool.",
           "cite": {
             "doc": "i1040s8812",
             "locator": "p. 4, Credit Limit Worksheet A, line 2",
@@ -11628,8 +11917,8 @@
         "f1040.line28": {
           "kind": "refusal",
           "gate": "scope.credits",
-          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 2–4, 5b, 6d, 6f, 6l, 6m)",
-          "remedy": "Credits other than the foreign tax credit and the dependent credits are outside this tool.",
+          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 3, 6d, 6f, 6l, 6m)",
+          "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the saver's credit and the residential energy credits are outside this tool.",
           "cite": {
             "doc": "i1040s8812",
             "locator": "p. 4, Credit Limit Worksheet A, line 2",
@@ -11641,8 +11930,8 @@
         "f1040.line34": {
           "kind": "refusal",
           "gate": "scope.credits",
-          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 2–4, 5b, 6d, 6f, 6l, 6m)",
-          "remedy": "Credits other than the foreign tax credit and the dependent credits are outside this tool.",
+          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 3, 6d, 6f, 6l, 6m)",
+          "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the saver's credit and the residential energy credits are outside this tool.",
           "cite": {
             "doc": "i1040s8812",
             "locator": "p. 4, Credit Limit Worksheet A, line 2",
@@ -11654,8 +11943,8 @@
         "f1040.line37": {
           "kind": "refusal",
           "gate": "scope.credits",
-          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 2–4, 5b, 6d, 6f, 6l, 6m)",
-          "remedy": "Credits other than the foreign tax credit and the dependent credits are outside this tool.",
+          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 3, 6d, 6f, 6l, 6m)",
+          "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the saver's credit and the residential energy credits are outside this tool.",
           "cite": {
             "doc": "i1040s8812",
             "locator": "p. 4, Credit Limit Worksheet A, line 2",
@@ -11699,8 +11988,8 @@
         "s8812.clw_a2": {
           "kind": "refusal",
           "gate": "scope.credits",
-          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 2–4, 5b, 6d, 6f, 6l, 6m)",
-          "remedy": "Credits other than the foreign tax credit and the dependent credits are outside this tool.",
+          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 3, 6d, 6f, 6l, 6m)",
+          "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the saver's credit and the residential energy credits are outside this tool.",
           "cite": {
             "doc": "i1040s8812",
             "locator": "p. 4, Credit Limit Worksheet A, line 2",
@@ -11712,8 +12001,8 @@
         "s8812.clw_a3": {
           "kind": "refusal",
           "gate": "scope.credits",
-          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 2–4, 5b, 6d, 6f, 6l, 6m)",
-          "remedy": "Credits other than the foreign tax credit and the dependent credits are outside this tool.",
+          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 3, 6d, 6f, 6l, 6m)",
+          "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the saver's credit and the residential energy credits are outside this tool.",
           "cite": {
             "doc": "i1040s8812",
             "locator": "p. 4, Credit Limit Worksheet A, line 2",
@@ -11725,7 +12014,7 @@
         "s8812.clw_a4": {
           "kind": "refusal",
           "gate": "scope.credits",
-          "form": "Credit Limit Worksheet B (Forms 8396, 8839, 5695 Part I, 8859)",
+          "form": "Credit Limit Worksheet B (Forms 8396, 8839, 8859)",
           "remedy": "The credits that call for Credit Limit Worksheet B are outside this tool.",
           "cite": {
             "doc": "i1040s8812",
@@ -11738,8 +12027,8 @@
         "s8812.clw_a5": {
           "kind": "refusal",
           "gate": "scope.credits",
-          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 2–4, 5b, 6d, 6f, 6l, 6m)",
-          "remedy": "Credits other than the foreign tax credit and the dependent credits are outside this tool.",
+          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 3, 6d, 6f, 6l, 6m)",
+          "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the saver's credit and the residential energy credits are outside this tool.",
           "cite": {
             "doc": "i1040s8812",
             "locator": "p. 4, Credit Limit Worksheet A, line 2",
@@ -11751,8 +12040,8 @@
         "s8812.earned_covers": {
           "kind": "refusal",
           "gate": "scope.credits",
-          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 2–4, 5b, 6d, 6f, 6l, 6m)",
-          "remedy": "Credits other than the foreign tax credit and the dependent credits are outside this tool.",
+          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 3, 6d, 6f, 6l, 6m)",
+          "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the saver's credit and the residential energy credits are outside this tool.",
           "cite": {
             "doc": "i1040s8812",
             "locator": "p. 4, Credit Limit Worksheet A, line 2",
@@ -11800,8 +12089,8 @@
         "s8812.from_part_iia": {
           "kind": "refusal",
           "gate": "scope.credits",
-          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 2–4, 5b, 6d, 6f, 6l, 6m)",
-          "remedy": "Credits other than the foreign tax credit and the dependent credits are outside this tool.",
+          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 3, 6d, 6f, 6l, 6m)",
+          "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the saver's credit and the residential energy credits are outside this tool.",
           "cite": {
             "doc": "i1040s8812",
             "locator": "p. 4, Credit Limit Worksheet A, line 2",
@@ -11813,8 +12102,8 @@
         "s8812.from_part_iib": {
           "kind": "refusal",
           "gate": "scope.credits",
-          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 2–4, 5b, 6d, 6f, 6l, 6m)",
-          "remedy": "Credits other than the foreign tax credit and the dependent credits are outside this tool.",
+          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 3, 6d, 6f, 6l, 6m)",
+          "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the saver's credit and the residential energy credits are outside this tool.",
           "cite": {
             "doc": "i1040s8812",
             "locator": "p. 4, Credit Limit Worksheet A, line 2",
@@ -11842,8 +12131,8 @@
         "s8812.line13": {
           "kind": "refusal",
           "gate": "scope.credits",
-          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 2–4, 5b, 6d, 6f, 6l, 6m)",
-          "remedy": "Credits other than the foreign tax credit and the dependent credits are outside this tool.",
+          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 3, 6d, 6f, 6l, 6m)",
+          "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the saver's credit and the residential energy credits are outside this tool.",
           "cite": {
             "doc": "i1040s8812",
             "locator": "p. 4, Credit Limit Worksheet A, line 2",
@@ -11855,8 +12144,8 @@
         "s8812.line14": {
           "kind": "refusal",
           "gate": "scope.credits",
-          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 2–4, 5b, 6d, 6f, 6l, 6m)",
-          "remedy": "Credits other than the foreign tax credit and the dependent credits are outside this tool.",
+          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 3, 6d, 6f, 6l, 6m)",
+          "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the saver's credit and the residential energy credits are outside this tool.",
           "cite": {
             "doc": "i1040s8812",
             "locator": "p. 4, Credit Limit Worksheet A, line 2",
@@ -11868,8 +12157,8 @@
         "s8812.line16a": {
           "kind": "refusal",
           "gate": "scope.credits",
-          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 2–4, 5b, 6d, 6f, 6l, 6m)",
-          "remedy": "Credits other than the foreign tax credit and the dependent credits are outside this tool.",
+          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 3, 6d, 6f, 6l, 6m)",
+          "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the saver's credit and the residential energy credits are outside this tool.",
           "cite": {
             "doc": "i1040s8812",
             "locator": "p. 4, Credit Limit Worksheet A, line 2",
@@ -11885,8 +12174,8 @@
         "s8812.line17": {
           "kind": "refusal",
           "gate": "scope.credits",
-          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 2–4, 5b, 6d, 6f, 6l, 6m)",
-          "remedy": "Credits other than the foreign tax credit and the dependent credits are outside this tool.",
+          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 3, 6d, 6f, 6l, 6m)",
+          "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the saver's credit and the residential energy credits are outside this tool.",
           "cite": {
             "doc": "i1040s8812",
             "locator": "p. 4, Credit Limit Worksheet A, line 2",
@@ -11938,8 +12227,8 @@
         "s8812.line27": {
           "kind": "refusal",
           "gate": "scope.credits",
-          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 2–4, 5b, 6d, 6f, 6l, 6m)",
-          "remedy": "Credits other than the foreign tax credit and the dependent credits are outside this tool.",
+          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 3, 6d, 6f, 6l, 6m)",
+          "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the saver's credit and the residential energy credits are outside this tool.",
           "cite": {
             "doc": "i1040s8812",
             "locator": "p. 4, Credit Limit Worksheet A, line 2",
@@ -11991,8 +12280,8 @@
         "s8812.part_iib_result": {
           "kind": "refusal",
           "gate": "scope.credits",
-          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 2–4, 5b, 6d, 6f, 6l, 6m)",
-          "remedy": "Credits other than the foreign tax credit and the dependent credits are outside this tool.",
+          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 3, 6d, 6f, 6l, 6m)",
+          "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the saver's credit and the residential energy credits are outside this tool.",
           "cite": {
             "doc": "i1040s8812",
             "locator": "p. 4, Credit Limit Worksheet A, line 2",
@@ -12147,7 +12436,22 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -12762,7 +13066,22 @@
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -13509,7 +13828,22 @@
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -14142,7 +14476,22 @@
         "s1a.overtime": false,
         "s1a.carloan": false,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false
       },
       "expect": {
         "dependent[child].actc_amount": {

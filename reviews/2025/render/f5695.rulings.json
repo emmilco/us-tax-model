@@ -1,0 +1,12 @@
+{
+ "kind": "render",
+ "form": "f5695",
+ "rulings": [
+  {
+   "printed": "14",
+   "restated": "Enter the amount from helper \"Residential Clean Energy Credit Limit Worksheet, line 3. Subtract line 2 from line 1. If zero or less, enter -0-\".",
+   "model": "The worksheet structure matches: line 1 minus line 2, floored at zero, with the excluded credits refused and Form 5695 line 32 taken as Schedule 3 line 5b. However, the program's test for completing Credit Limit Worksheet B leaves out the CLW A condition '2. You are not filing Form 2555', and no refusal shown covers that case. The Credit Limit Worksheet B text needed to check line 14 of that worksheet is not provided.",
+   "ruling": "Ruling: project retained (scope). Condition 2 of the Credit Limit Worksheet B test, \"You are not filing Form 2555\" (i1040s8812 p. 4, Credit Limit Worksheet A, \"Complete Credit Limit Worksheet B only if you meet all the following ... 2. You are not filing Form 2555\"), is not tested because a filer of Form 2555 is refused elsewhere: Schedule 8812 lines 2a to 2c refuse when sa.excluded_income (\"Are you filing Form 2555 or Form 4563, or do you have income excluded as a bona fide resident of Puerto Rico?\") is Yes, as the note on s8812.clwb_complete records; with no Schedule 8812 line 4 the worksheet is not completed in any case. The refusal sits on another form, so the model was not shown it. The model found the worksheet structure, the refused credits and the line 32 reading to match; the missing Credit Limit Worksheet B text is a gap in the excerpt, not in the restatement, and that worksheet is judged in the s8812 logs."
+  }
+ ]
+}

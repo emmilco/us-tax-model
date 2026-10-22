@@ -59,6 +59,10 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = $100,000
       cite: [i1040gi] Instructions for Form 1040, pp. 23–24, lines 1a–1h (2025; printed date 2026-02-25; 482e9c48)
       note: confirmed roster $person: taxpayer
+  1e  Taxable dependent care benefits from Form 2441, line 26
+      = $0
+      cite: [i1040gi] p. 24, Line 1e, "Taxable Dependent Care Benefits From Form 2441, Line 26" and "But first complete Form 2441 to see if you can exclude part or all of the benefits" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["f2441.benefits",{"const":false}],"op":"test"}
   1z  Add lines 1a through 1h
       = $100,000
       cite: [f1040] Form 1040 (2025), line 1z (2025; created 2025-09-05; 3d31c226)
@@ -130,6 +134,14 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = UNKNOWN (no input supplied for s1a.carloan)
       cite: [i1040gi] Instructions for Form 1040, line 16 (2025; printed date 2026-02-25; 482e9c48)
       note: taken: {"eq":["f1040.gate.sdtw",{"const":false}],"op":"test"}
+
+== Form 2441 — Child and Dependent Care Expenses (Parts I to III) ==
+  (helper) Year parameter sales.zero
+      = $0
+      cite: [f2441] Form 2441 (2025), lines 6, 9b, 20, 22 and 25 (2025; created 2025-03-18; 6c3c2d19)
+  (helper) Did you receive dependent care benefits?
+      = false
+      cite: [f2441] Form 2441 (2025), Part I, "Did you receive dependent care benefits? No. Complete only Part II below. Yes. Complete Part III on page 2 next."; i2441 p. 1, Purpose of Form (2025; created 2025-03-18; 6c3c2d19)
 
 == Form 4952 — supported investment-interest deduction and election ==
   1   Investment interest paid or accrued in 2025
@@ -920,10 +932,10 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Any income or adjustment requiring Schedule 1 other than business income or loss from Schedule C, unemployment compensation, educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction and student loan interest, including a taxable state or local tax refund; alimony; an IRA deduction; statutory-employee wages or clergy income; church employee income (wages from a church that elected exemption from social security and Medicare taxes); other qualified retirement plans for the self-employed (such as a solo 401(k) or other Keogh plan); rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1); rental of personal property; farm income (Schedule F); gambling winnings, prizes or other income for Schedule 1 line 8; or an exclusion of Medicaid waiver payments (Schedule 1 line 8s)? (Schedule 1-A deductions are asked separately.)
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
-  (helper) Do you want to claim any credit other than the foreign tax credit claimed without Form 1116, the excess social security credit, the child tax credit, the credit for other dependents, the additional child tax credit and the earned income credit, or do you have any other amount for Schedule 3 Part I (for example a Form 8978 adjustment)?
+  (helper) Do you want to claim any credit other than the foreign tax credit claimed without Form 1116, the excess social security credit, the child tax credit, the credit for other dependents, the additional child tax credit, the earned income credit, the credit for child and dependent care expenses (Form 2441), the retirement savings contributions credit (Form 8880) and the residential energy credits (Form 5695), or do you have any other amount for Schedule 3 Part I (for example a Form 8978 adjustment)?
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
-  (helper) Any nonresident alien status (you or your spouse, for any part of 2025) or other income or return treatment outside wages, interest, dividends, supported securities sales, Form 1099-R distributions and social security benefits, including wages or tips not on a Form W-2, Medicaid waiver payments (whether or not in Form W-2 box 1), dependent care or adoption benefits, other earned income (Form 1040 lines 1b-1h), or income or loss from a passive activity (including gain on selling an interest in one)?
+  (helper) Any nonresident alien status (you or your spouse, for any part of 2025) or other income or return treatment outside wages, interest, dividends, supported securities sales, Form 1099-R distributions and social security benefits, including wages or tips not on a Form W-2, Medicaid waiver payments (whether or not in Form W-2 box 1), adoption benefits, dependent care benefits other than those shown in box 10 of a Form W-2 (or a grace-period amount from such a plan), other earned income (Form 1040 lines 1b to 1d and 1f to 1h), or income or loss from a passive activity (including gain on selling an interest in one)?
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
   (helper) Any additional Form 1040 line 16 tax or filing, including filing Form 8814 (even with no tax), Form 4972, Form 8615, a section 962 election, Form 8621, a Form 8978 amount, or recapture of an education credit?
@@ -1114,6 +1126,8 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   f1040.sd.to1040: chose $0 (guard 1)
       not taken: guard 0 = false
+  f1040.line1e: chose $0 (guard 1)
+      not taken: guard 0 = false
   ssb.line18: chose $0 (guard 1)
       not taken: guard 0 = false
   f1040.ssb.line18: chose $0 (guard 1)
@@ -1206,7 +1220,10 @@ Derivations:
   f1040.household.roster_bad: test(household.roster_ok = true; false = false)
   person[taxpayer].box1: sum_over(person[taxpayer].w2[a].box1 = $100,000)
   f1040.line1a: sum_over(household.roster_bad = false; person[taxpayer].box1 = $100,000)
-  f1040.line1z: copy(f1040.line1a = $100,000)
+  f2441.zero: param(#sales.zero = $0)
+  f1040.f2441.zero: param(#sales.zero = $0)
+  f1040.line1e: choose(f2441.benefits = false; true = true; f2441.benefits = false; false = false; f2441.zero = $0)
+  f1040.line1z: sum(f1040.line1a = $100,000; f1040.line1e = $0)
   sb.line2: sum_over(sb.unsupported = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false)
   sb.zero: param(#sales.zero = $0)
   sb.line3: copy(sb.unsupported = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false; sb.zero = $0)

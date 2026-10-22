@@ -6,12 +6,16 @@ Review these renderings line by line against the archived IRS sources in `source
 | --- | --- | --- |
 | asset.md | form | 68 |
 | carloan.md | form | 24 |
-| dependent.md | worksheet | 48 |
+| dcprov.md | worksheet | 6 |
+| dependent.md | worksheet | 60 |
 | div.md | form | 22 |
 | eic.md | worksheet | 83 |
-| f1040.md | form | 62 |
+| f1040.md | form | 63 |
+| f2441.md | form | 80 |
 | f4562.md | form | 15 |
 | f4952.md | form | 25 |
+| f5695.md | form | 141 |
+| f8880.md | form | 40 |
 | f8889.md | form | 78 |
 | f8959.md | form | 26 |
 | f8960.md | form | 30 |
@@ -25,16 +29,16 @@ Review these renderings line by line against the archived IRS sources in `source
 | ltc.md | form | 4 |
 | mq.md | worksheet | 7 |
 | otjob.md | form | 12 |
-| person.md | worksheet | 113 |
+| person.md | worksheet | 139 |
 | qbi.md | form | 13 |
 | qdcg.md | worksheet | 27 |
-| retirement.md | form | 58 |
+| retirement.md | form | 64 |
 | s1.md | form | 27 |
 | s179.md | form | 26 |
 | s1a.md | form | 136 |
 | s2.md | form | 9 |
-| s3.md | form | 10 |
-| s8812.md | form | 62 |
+| s3.md | form | 14 |
+| s8812.md | form | 81 |
 | sa.md | form | 58 |
 | sales.md | form | 25 |
 | sb.md | form | 12 |
@@ -50,7 +54,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | tcw.md | def | 47 |
 | tipjob.md | form | 6 |
 | u1250.md | form | 19 |
-| w2.md | form | 10 |
+| w2.md | form | 38 |
 | auto_limit.md | keyed | 0 rows |
 | auto_limit_first_nobonus.md | keyed | 0 rows |
 | class_lives.md | keyed | 0 rows |

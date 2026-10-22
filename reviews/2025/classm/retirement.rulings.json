@@ -3,11 +3,43 @@
  "form": "retirement",
  "rulings": [
   {
+   "case": "classm.retirement.1",
+   "printed": "retirement[r2].show_a",
+   "project": "yes",
+   "model": "no",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. As in the earlier ruling on classm.retirement.9: box 1 is $0, so line 5a is $0 whether or not the entry is shown (amount_a agrees); the project shows it because box 5 ($545.00) is nonzero on a plan distribution outside the Simplified Method, i1040gi p. 28, Partially Taxable Pensions and Annuities.",
+   "drop": true
+  },
+  {
    "case": "classm.retirement.3",
    "printed": "retirement[r2].annuity_taxable",
    "project": "$25,133.56",
    "model": "$27,508.00",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained. The entry is a traditional IRA distribution (retirement.annuity is false), whose taxable amount is the IRA route's figure, $27,508.00 (retirement.taxable, which agrees); the Simplified Method helper is figured for every entry but read only for an annuity with cost. Dropped from the fixture as not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.retirement.3",
+   "printed": "retirement[r2].annuity_taxable",
+   "project": "$31,376.00",
+   "model": "$41,168.00",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The entry is a plan distribution outside the Simplified Method (retirement.annuity is false), whose taxable amount is box 1 less box 5, $38,511.00 (retirement.plan_taxable and retirement.taxable, which agree); the Simplified Method helper (worksheet line 9, $31,376.00, while cost is left) is figured for every entry but read only for an annuity (retirement.plan_taxable). Dropped from the fixture as not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.retirement.3",
+   "printed": "retirement[r2].ira_taxable",
+   "project": "$41,168.00",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The entry is not an IRA distribution (retirement.is_ira is no, agreed); the IRA helper, box 1 less the amount rolled over ($41,168.00), is figured for every entry but read only for an IRA (retirement.taxable), and the taxable amount, $38,511.00, agrees. Dropped from the fixture as not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.retirement.4",
+   "printed": "retirement[r1].ira_taxable",
+   "project": "$34,952.00",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The entry is a Simplified Method annuity from a plan (retirement.is_ira is no, agreed); the IRA helper, box 1 less the amount rolled over ($34,952.00), is figured for every entry but read only for an IRA (retirement.taxable), and the taxable amount, $28,774.04, agrees. Dropped from the fixture as not evidence.",
    "drop": true
   },
   {

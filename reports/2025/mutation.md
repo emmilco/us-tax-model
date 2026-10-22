@@ -7,12 +7,12 @@ the fixture test compares).
 
 | Metric | Value |
 | --- | --- |
-| Mutants | 1733 |
-| Killed by the checker | 178 |
-| Killed by fixtures | 1363 |
-| Surviving | 192 (161 provably equivalent) |
-| Mutation score (raw) | 88.9% |
-| Mutation score (equivalent mutants excluded) | 98.0% |
+| Mutants | 2087 |
+| Killed by the checker | 211 |
+| Killed by fixtures | 1598 |
+| Surviving | 278 (111 provably equivalent) |
+| Mutation score (raw) | 86.7% |
+| Mutation score (equivalent mutants excluded) | 91.5% |
 
 ## Surviving — classified equivalent
 
@@ -28,6 +28,9 @@ the fixture test compares).
 - `operand.eic.eic.wsb_4b.earned_income` (replace an operand, eic.eic.wsb_4b): eic.earned_income is Step 5 line 3 plus line 4, and line 4 (nontaxable combat pay) is zero in this tool (eic.zero, refused otherwise), so the two operands are equal at every input.
 - `operand.eic.eic.wsb_6.zero` (replace an operand, eic.eic.wsb_6): Both operands are the zero line: Step 5 line 4 copies eic.zero (combat pay is refused).
 - `boundary.eic.eic.wsb_4b_positive` (replace strict greater-than with inclusive, eic.eic.wsb_4b_positive): The inclusive test differs only at Worksheet B line 4b = 0. wsb_4b_positive is read only by the line 5 stop, an all-test that requires self-employment before it and, after it, Step 5 question 3 to be No; for a self-employed filer question 3 compares line 4b with the EIC limit, so at line 4b = 0 it asks whether 0 < limit, which holds for every limit (all are positive). The stop is therefore false on both routes, and question 3 reads only lines the stop has already evaluated without refusal, so no refusal is newly reached. (structural conditions re-checked this run.)
+- `operand.f2441.f2441.line11.line10` (replace an operand, f2441.f2441.line11): Copy-chain identity: f2441.line10 and f2441.clw3 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
+- `operand.f5695.f5695.line15.line14` (replace an operand, f5695.f5695.line15): Copy-chain identity: f5695.line14 and f5695.rce_ws3 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
+- `operand.f5695.f5695.line32.line31` (replace an operand, f5695.f5695.line32): Copy-chain identity: f5695.line31 and f5695.eehi_ws3 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.f8959.f8959.line3.zero` (replace an operand, f8959.f8959.line3): Copy-chain identity: f8959.zero and f8959.line2 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.f8959.f8959.line23.zero` (replace an operand, f8959.f8959.line23): Copy-chain identity: f8959.zero and f8959.line14 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.f8959.f8959.line4.line2` (replace an operand, f8959.f8959.line4): Copy-chain identity: f8959.line2 and f8959.line23 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
@@ -44,8 +47,6 @@ the fixture test compares).
 - `operand.f8960.f8960.line4c.line4b` (replace an operand, f8960.f8960.line4c): Copy-chain identity: f8960.line4b and f8960.line10 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.f8995.f8995.line9.line8` (replace an operand, f8995.f8995.line9): Copy-chain identity: f8995.line8 and f8995.line6 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.f8995a.f8995a.line31.line30` (replace an operand, f8995a.f8995a.line31): Copy-chain identity: f8995a.line30 and f8995a.line28 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
-- `filter.person.person.hsa_step1` (remove collection filter, person.person.hsa_step1): person.hsa_step1 keeps only a Form 8889 that uses the spouse rule of line 6. Its total household.hsa_step1_sum is read only by f8889.allocation_bad, which is reached only on a form that uses the rule and which already holds when exactly one form uses it (household.hsa_split_count is 1); when both forms use it the filter keeps every form. So dropping the filter changes no value that is read. (structural conditions re-checked this run.)
-- `filter.person.person.hsa_share` (remove collection filter, person.person.hsa_share): person.hsa_share keeps only a Form 8889 that uses the spouse rule of line 6. Its total household.hsa_share_sum is read only by f8889.allocation_bad, which is reached only on a form that uses the rule and which already holds when exactly one form uses it (household.hsa_split_count is 1); when both forms use it the filter keeps every form. So dropping the filter changes no value that is read. (structural conditions re-checked this run.)
 - `operand.person.person.sep_s1.sc_total` (replace an operand, person.person.sep_s1): person.se_line2 copies person.sc_total, adding only the Schedule SE refusal; step 1 is read only by step 3, which also reads step 2 (person.se_line13), and step 2 refuses exactly when person.se_line2 does, so step 3 and everything after it are the same.
 - `operand.person.person.simple_catchup.simple_regular` (replace an operand, person.person.simple_catchup): person.simple_regular is the smaller of the deferral and the $16,500 limit, so the deferral less it, floored at zero, equals the deferral less $16,500 floored at zero at every input.
 - `operand.qdcg.qdcg.line8.line7` (replace an operand, qdcg.qdcg.line8): Provably equivalent: line 8 is min(line 5, line 7) and line 7 is min(line 1, line 6) with line 5 ≤ line 1; min(line 5, min(line 1, line 6)) = min(line 5, line 6), so substituting line 6 for line 7 cannot change any value.
@@ -83,7 +84,6 @@ the fixture test compares).
 - `operand.s8812.s8812.line2d.line2a` (replace an operand, s8812.s8812.line2d): Shared-gate identity: s8812.line2a and s8812.line2b, s8812.line2c are the same value behind the same refusal gates (sa.excluded_income) with identical refusal text, and s8812.zero is that value ungated; whichever operand refuses, the sum carries the same refusal, and when none does the operands are equal.
 - `operand.s8812.s8812.line2d.line2b` (replace an operand, s8812.s8812.line2d): Shared-gate identity: s8812.line2b and s8812.line2a, s8812.line2c are the same value behind the same refusal gates (sa.excluded_income) with identical refusal text, and s8812.zero is that value ungated; whichever operand refuses, the sum carries the same refusal, and when none does the operands are equal.
 - `operand.s8812.s8812.line2d.line2c` (replace an operand, s8812.s8812.line2d): Shared-gate identity: s8812.line2c and s8812.line2a, s8812.line2b are the same value behind the same refusal gates (sa.excluded_income) with identical refusal text, and s8812.zero is that value ungated; whichever operand refuses, the sum carries the same refusal, and when none does the operands are equal.
-- `operand.s8812.s8812.line13.clw_a5` (replace an operand, s8812.s8812.line13): Credit Limit Worksheet A line 5 is line 3 less line 4, and line 4 is zero behind the same gate that line 2, an operand of line 3, carries. When the gate fires, line 3 already refuses and the subtraction returns its first operand's refusal; when it does not, line 4 is zero. Line 13 therefore reads the same value from line 5 as from line 3 on every input. (structural conditions re-checked this run.)
 - `operand.s8812.s8812.line14.line13` (replace an operand, s8812.s8812.line14): Copy-chain identity: s8812.line13 and s8812.clw_a5 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.s8812.s8812.eiw_3.zero` (replace an operand, s8812.s8812.eiw_3): Both operands are zero: Earned Income Worksheet line 1b (nontaxable combat pay) copies the zero line in this tool, refused otherwise.
 - `operand.sa.sa.line3.line2` (replace an operand, sa.sa.line3): Copy-chain identity: sa.line2 and sa.agi expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
@@ -127,67 +127,92 @@ the fixture test compares).
 - `param.eic.ws_threshold0.joint.$1` (shift a money parameter (+$1), eic.ws_threshold0.joint): Line 5 amount eic.ws_threshold0.joint: in eic_0 the bands covering [eic.ws_threshold0.joint, eic.ws_threshold0.joint + $1) print each table's maximum in the column used, so shifting the amount by $1 can only turn a lookup equal to the maximum into a blank line 5; line 6 is line 2 either way. (structural conditions re-checked this run.)
 - `param.eic.ws_threshold0.other.$1` (shift a money parameter (+$1), eic.ws_threshold0.other): Line 5 amount eic.ws_threshold0.other: in eic_0 the bands covering [eic.ws_threshold0.other, eic.ws_threshold0.other + $1) print each table's maximum in the column used, so shifting the amount by $1 can only turn a lookup equal to the maximum into a blank line 5; line 6 is line 2 either way. (structural conditions re-checked this run.)
 - `param.eic.ws_threshold1.joint.$1` (shift a money parameter (+$1), eic.ws_threshold1.joint): Line 5 amount eic.ws_threshold1.joint: in eic_1, eic_2, eic_3 the bands covering [eic.ws_threshold1.joint, eic.ws_threshold1.joint + $1) print each table's maximum in the column used, so shifting the amount by $1 can only turn a lookup equal to the maximum into a blank line 5; line 6 is line 2 either way. (structural conditions re-checked this run.)
-- `table.dc_rate.band0.$1` (shift a rate band bound (+$1), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
-- `table.dc_rate.band0.+1pt` (shift a rate band's rates (+1 point), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
-- `table.dc_rate.band1.$1` (shift a rate band bound (+$1), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
-- `table.dc_rate.band1.+1pt` (shift a rate band's rates (+1 point), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
-- `table.dc_rate.band2.$1` (shift a rate band bound (+$1), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
-- `table.dc_rate.band2.+1pt` (shift a rate band's rates (+1 point), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
-- `table.dc_rate.band3.$1` (shift a rate band bound (+$1), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
-- `table.dc_rate.band3.+1pt` (shift a rate band's rates (+1 point), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
-- `table.dc_rate.band4.$1` (shift a rate band bound (+$1), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
-- `table.dc_rate.band4.+1pt` (shift a rate band's rates (+1 point), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
-- `table.dc_rate.band5.$1` (shift a rate band bound (+$1), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
-- `table.dc_rate.band5.+1pt` (shift a rate band's rates (+1 point), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
-- `table.dc_rate.band6.$1` (shift a rate band bound (+$1), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
-- `table.dc_rate.band6.+1pt` (shift a rate band's rates (+1 point), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
-- `table.dc_rate.band7.$1` (shift a rate band bound (+$1), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
-- `table.dc_rate.band7.+1pt` (shift a rate band's rates (+1 point), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
-- `table.dc_rate.band8.$1` (shift a rate band bound (+$1), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
-- `table.dc_rate.band8.+1pt` (shift a rate band's rates (+1 point), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
-- `table.dc_rate.band9.$1` (shift a rate band bound (+$1), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
-- `table.dc_rate.band9.+1pt` (shift a rate band's rates (+1 point), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
-- `table.dc_rate.band10.$1` (shift a rate band bound (+$1), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
-- `table.dc_rate.band10.+1pt` (shift a rate band's rates (+1 point), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
-- `table.dc_rate.band11.$1` (shift a rate band bound (+$1), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
-- `table.dc_rate.band11.+1pt` (shift a rate band's rates (+1 point), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
-- `table.dc_rate.band12.$1` (shift a rate band bound (+$1), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
-- `table.dc_rate.band12.+1pt` (shift a rate band's rates (+1 point), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
-- `table.dc_rate.band13.$1` (shift a rate band bound (+$1), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
-- `table.dc_rate.band13.+1pt` (shift a rate band's rates (+1 point), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
-- `table.dc_rate.band14.$1` (shift a rate band bound (+$1), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
-- `table.dc_rate.band14.+1pt` (shift a rate band's rates (+1 point), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
-- `table.dc_rate.band15.+1pt` (shift a rate band's rates (+1 point), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
-- `table.savers_rate.band0.$1` (shift a rate band bound (+$1), savers_rate): Unread table: no line of any form or definition looks up savers_rate, so changing it cannot change any value.
-- `table.savers_rate.band0.+1pt` (shift a rate band's rates (+1 point), savers_rate): Unread table: no line of any form or definition looks up savers_rate, so changing it cannot change any value.
-- `table.savers_rate.band1.$1` (shift a rate band bound (+$1), savers_rate): Unread table: no line of any form or definition looks up savers_rate, so changing it cannot change any value.
-- `table.savers_rate.band1.+1pt` (shift a rate band's rates (+1 point), savers_rate): Unread table: no line of any form or definition looks up savers_rate, so changing it cannot change any value.
-- `table.savers_rate.band2.$1` (shift a rate band bound (+$1), savers_rate): Unread table: no line of any form or definition looks up savers_rate, so changing it cannot change any value.
-- `table.savers_rate.band2.+1pt` (shift a rate band's rates (+1 point), savers_rate): Unread table: no line of any form or definition looks up savers_rate, so changing it cannot change any value.
-- `table.savers_rate.band3.$1` (shift a rate band bound (+$1), savers_rate): Unread table: no line of any form or definition looks up savers_rate, so changing it cannot change any value.
-- `table.savers_rate.band3.+1pt` (shift a rate band's rates (+1 point), savers_rate): Unread table: no line of any form or definition looks up savers_rate, so changing it cannot change any value.
-- `table.savers_rate.band4.$1` (shift a rate band bound (+$1), savers_rate): Unread table: no line of any form or definition looks up savers_rate, so changing it cannot change any value.
-- `table.savers_rate.band4.+1pt` (shift a rate band's rates (+1 point), savers_rate): Unread table: no line of any form or definition looks up savers_rate, so changing it cannot change any value.
-- `table.savers_rate.band5.$1` (shift a rate band bound (+$1), savers_rate): Unread table: no line of any form or definition looks up savers_rate, so changing it cannot change any value.
-- `table.savers_rate.band5.+1pt` (shift a rate band's rates (+1 point), savers_rate): Unread table: no line of any form or definition looks up savers_rate, so changing it cannot change any value.
-- `table.savers_rate.band6.$1` (shift a rate band bound (+$1), savers_rate): Unread table: no line of any form or definition looks up savers_rate, so changing it cannot change any value.
-- `table.savers_rate.band6.+1pt` (shift a rate band's rates (+1 point), savers_rate): Unread table: no line of any form or definition looks up savers_rate, so changing it cannot change any value.
-- `table.savers_rate.band7.$1` (shift a rate band bound (+$1), savers_rate): Unread table: no line of any form or definition looks up savers_rate, so changing it cannot change any value.
-- `table.savers_rate.band7.+1pt` (shift a rate band's rates (+1 point), savers_rate): Unread table: no line of any form or definition looks up savers_rate, so changing it cannot change any value.
-- `table.savers_rate.band8.$1` (shift a rate band bound (+$1), savers_rate): Unread table: no line of any form or definition looks up savers_rate, so changing it cannot change any value.
-- `table.savers_rate.band8.+1pt` (shift a rate band's rates (+1 point), savers_rate): Unread table: no line of any form or definition looks up savers_rate, so changing it cannot change any value.
-- `table.savers_rate.band9.+1pt` (shift a rate band's rates (+1 point), savers_rate): Unread table: no line of any form or definition looks up savers_rate, so changing it cannot change any value.
 
 ## Surviving — not yet explained
 
 | Mutant | Kind | Location | Note |
 | --- | --- | --- | --- |
+| refusal.dependent.dependent.dc_count.0 | remove refusal | dependent.dependent.dc_count |  |
+| refusal.dependent.dependent.dc_line2d.0 | remove refusal | dependent.dependent.dc_line2d |  |
 | refusal.f1040.f1040.line16.0 | remove refusal | f1040.f1040.line16 |  |
 | refusal.f1040.f1040.line29.0 | remove refusal | f1040.f1040.line29 |  |
 | refusal.f1040.f1040.line30.0 | remove refusal | f1040.f1040.line30 |  |
+| filter.f2441.f2441.statement_count | remove collection filter | f2441.f2441.statement_count |  |
+| filter.f2441.f2441.household_count | remove collection filter | f2441.f2441.household_count |  |
+| filter.f2441.f2441.qp_count | remove collection filter | f2441.f2441.qp_count |  |
+| refusal.f2441.f2441.qp_count.0 | remove refusal | f2441.f2441.qp_count |  |
+| boundary.f2441.f2441.line2_box | replace strict greater-than with inclusive | f2441.f2441.line2_box |  |
+| refusal.f2441.f2441.paid_total.0 | remove refusal | f2441.f2441.paid_total |  |
+| refusal.f2441.f2441.paid_total.1 | remove refusal | f2441.f2441.paid_total |  |
+| refusal.f2441.f2441.line4.0 | remove refusal | f2441.f2441.line4 |  |
+| refusal.f2441.f2441.line4.1 | remove refusal | f2441.f2441.line4 |  |
+| refusal.f2441.f2441.line4.2 | remove refusal | f2441.f2441.line4 |  |
+| refusal.f2441.f2441.line4.3 | remove refusal | f2441.f2441.line4 |  |
+| refusal.f2441.f2441.line5.0 | remove refusal | f2441.f2441.line5 |  |
+| refusal.f2441.f2441.line5.1 | remove refusal | f2441.f2441.line5 |  |
+| refusal.f2441.f2441.line5.2 | remove refusal | f2441.f2441.line5 |  |
+| refusal.f2441.f2441.line5.3 | remove refusal | f2441.f2441.line5 |  |
+| refusal.f2441.f2441.line5.4 | remove refusal | f2441.f2441.line5 |  |
+| operand.f2441.f2441.line6_34.line4 | replace an operand | f2441.f2441.line6_34 | f2441.line4 -> f2441.line5 (Dollars) |
+| refusal.f2441.f2441.line9b.0 | remove refusal | f2441.f2441.line9b |  |
+| refusal.f2441.f2441.line11.0 | remove refusal | f2441.f2441.line11 |  |
+| refusal.f2441.f2441.line15.0 | remove refusal | f2441.f2441.line15 |  |
+| refusal.f2441.f2441.line18.0 | remove refusal | f2441.f2441.line18 |  |
+| refusal.f2441.f2441.line18.1 | remove refusal | f2441.f2441.line18 |  |
+| refusal.f2441.f2441.line18.2 | remove refusal | f2441.f2441.line18 |  |
+| refusal.f2441.f2441.line19.0 | remove refusal | f2441.f2441.line19 |  |
+| refusal.f2441.f2441.line19.1 | remove refusal | f2441.f2441.line19 |  |
+| refusal.f2441.f2441.line19.2 | remove refusal | f2441.f2441.line19 |  |
+| refusal.f2441.f2441.line19.3 | remove refusal | f2441.f2441.line19 |  |
+| operand.f2441.f2441.line20_17_18.line18 | replace an operand | f2441.f2441.line20_17_18 | f2441.line18 -> f2441.line19 (Dollars) |
+| refusal.f2441.f2441.line21.0 | remove refusal | f2441.f2441.line21 |  |
+| operand.f2441.f2441.line24.line24_20_21 | replace an operand | f2441.f2441.line24 | f2441.line24_20_21 -> f2441.line21 (NonNegDollars) |
+| operand.f2441.f2441.line25.line24 | replace an operand | f2441.f2441.line25 | f2441.line24 -> f2441.line22 (NonNegDollars) |
+| refusal.f2441.f2441.line26.0 | remove refusal | f2441.f2441.line26 |  |
 | operand.f4952.f4952.line3.line2 | replace an operand | f4952.f4952.line3 | f4952.line2 -> f4952.zero (NonNegDollars) |
 | refusal.f4952.f4952.required.1 | remove refusal | f4952.f4952.required |  |
 | refusal.f4952.f4952.required.2 | remove refusal | f4952.f4952.required |  |
+| refusal.f5695.f5695.line6a.0 | remove refusal | f5695.f5695.line6a |  |
+| refusal.f5695.f5695.line6a.1 | remove refusal | f5695.f5695.line6a |  |
+| refusal.f5695.f5695.line11.0 | remove refusal | f5695.f5695.line11 |  |
+| refusal.f5695.f5695.rce_ws2.0 | remove refusal | f5695.f5695.rce_ws2 |  |
+| operand.f5695.f5695.line16.line15 | replace an operand | f5695.f5695.line16 | f5695.line15 -> f5695.line14 (NonNegDollars) |
+| operand.f5695.f5695.doors_sum.line19g | replace an operand | f5695.f5695.doors_sum | f5695.line19g -> f5695.line19f (NonNegDollars) |
+| operand.f5695.f5695.doors_cost.line19a | replace an operand | f5695.f5695.doors_cost | f5695.line19a -> f5695.doors_max (NonNegDollars) |
+| operand.f5695.f5695.doors_cost.line19f | replace an operand | f5695.f5695.doors_cost | f5695.line19f -> f5695.doors_max (NonNegDollars) |
+| refusal.f5695.f5695.doors_capped.0 | remove refusal | f5695.f5695.doors_capped |  |
+| refusal.f5695.f5695.windows_capped.0 | remove refusal | f5695.f5695.windows_capped |  |
+| operand.f5695.f5695.windows_capped.windows_30 | replace an operand | f5695.f5695.windows_capped | f5695.windows_30 -> f5695.line20c (NonNegDollars) |
+| refusal.f5695.f5695.ac_capped.0 | remove refusal | f5695.f5695.ac_capped |  |
+| operand.f5695.f5695.ac_capped.ac_30 | replace an operand | f5695.f5695.ac_capped | f5695.ac_30 -> f5695.line22c (NonNegDollars) |
+| refusal.f5695.f5695.wh_capped.0 | remove refusal | f5695.f5695.wh_capped |  |
+| operand.f5695.f5695.wh_capped.wh_30 | replace an operand | f5695.f5695.wh_capped | f5695.wh_30 -> f5695.line23c (NonNegDollars) |
+| operand.f5695.f5695.wh_capped.item_max | replace an operand | f5695.f5695.wh_capped | f5695.item_max -> f5695.line23c (NonNegDollars) |
+| operand.f5695.f5695.line24c.line24a | replace an operand | f5695.f5695.line24c | f5695.line24a -> f5695.line23d (NonNegDollars) |
+| operand.f5695.f5695.line24c.line24b | replace an operand | f5695.f5695.line24c | f5695.line24b -> f5695.line23d (NonNegDollars) |
+| operand.f5695.f5695.furnace_30.line24c | replace an operand | f5695.f5695.furnace_30 | f5695.line24c -> f5695.line23d (NonNegDollars) |
+| refusal.f5695.f5695.furnace_capped.0 | remove refusal | f5695.f5695.furnace_capped |  |
+| operand.f5695.f5695.furnace_capped.furnace_30 | replace an operand | f5695.f5695.furnace_capped | f5695.furnace_30 -> f5695.line24c (NonNegDollars) |
+| operand.f5695.f5695.furnace_capped.item_max | replace an operand | f5695.f5695.furnace_capped | f5695.item_max -> f5695.line24c (NonNegDollars) |
+| operand.f5695.f5695.enabling_30.line25c | replace an operand | f5695.f5695.enabling_30 | f5695.line25c -> f5695.line24d (NonNegDollars) |
+| refusal.f5695.f5695.enabling_capped.0 | remove refusal | f5695.f5695.enabling_capped |  |
+| minmax.f5695.f5695.enabling_capped | swap smaller_of/larger_of | f5695.f5695.enabling_capped |  |
+| operand.f5695.f5695.enabling_capped.enabling_30 | replace an operand | f5695.f5695.enabling_capped | f5695.enabling_30 -> f5695.line24d (NonNegDollars) |
+| operand.f5695.f5695.enabling_capped.item_max | replace an operand | f5695.f5695.enabling_capped | f5695.item_max -> f5695.line24d (NonNegDollars) |
+| operand.f5695.f5695.line27.line26c | replace an operand | f5695.f5695.line27 | f5695.line26c -> f5695.audit_capped (NonNegDollars) |
+| refusal.f5695.f5695.hp_capped.0 | remove refusal | f5695.f5695.hp_capped |  |
+| operand.f5695.f5695.hp_capped.hp_30 | replace an operand | f5695.f5695.hp_capped | f5695.hp_30 -> f5695.line29g (NonNegDollars) |
+| refusal.f5695.f5695.line30.0 | remove refusal | f5695.f5695.line30 |  |
+| refusal.f5695.f5695.line30.1 | remove refusal | f5695.f5695.line30 |  |
+| refusal.f5695.f5695.line30.2 | remove refusal | f5695.f5695.line30 |  |
+| refusal.f5695.f5695.line30.3 | remove refusal | f5695.f5695.line30 |  |
+| refusal.f5695.f5695.line30.4 | remove refusal | f5695.f5695.line30 |  |
+| operand.f5695.f5695.line30.line29h | replace an operand | f5695.f5695.line30 | f5695.line29h -> f5695.hp_capped (NonNegDollars) |
+| refusal.f5695.f5695.eehi_ws2.0 | remove refusal | f5695.f5695.eehi_ws2 |  |
+| filter.f8880.f8880.prior_own_b | remove collection filter | f8880.f8880.prior_own_b |  |
+| operand.f8880.f8880.line4b_joint.dist_2025 | replace an operand | f8880.f8880.line4b_joint | f8880.dist_2025 -> f8880.line4a (NonNegDollars) |
+| operand.f8880.f8880.line6b_figured.cap | replace an operand | f8880.f8880.line6b_figured | f8880.cap -> f8880.line6a_figured (NonNegDollars) |
+| refusal.f8880.f8880.line8.0 | remove refusal | f8880.f8880.line8 |  |
 | operand.f8959.f8959.line16.line14 | replace an operand | f8959.f8959.line16 | f8959.line14 -> f8959.line13 (NonNegDollars) |
 | operand.f8959.f8959.line16.line15 | replace an operand | f8959.f8959.line16 | f8959.line15 -> f8959.line13 (NonNegDollars) |
 | operand.f8959.f8959.line18.line17 | replace an operand | f8959.f8959.line18 | f8959.line17 -> f8959.line16 (NonNegDollars) |
@@ -196,7 +221,21 @@ the fixture test compares).
 | operand.f8960.f8960.line12.line11 | replace an operand | f8960.f8960.line12 | f8960.line11 -> f8960.line9d (NonNegDollars) |
 | refusal.person.person.medicare5.0 | remove refusal | person.person.medicare5 |  |
 | refusal.person.person.medicare6.0 | remove refusal | person.person.medicare6 |  |
+| operand.person.person.dc_earned.eic_se | replace an operand | person.person.dc_earned | person.eic_se -> person.eic_se_has (Dollars) |
+| refusal.person.person.sav_line1.0 | remove refusal | person.person.sav_line1 |  |
+| refusal.person.person.sav_line1.1 | remove refusal | person.person.sav_line1 |  |
+| refusal.person.person.sav_line2.0 | remove refusal | person.person.sav_line2 |  |
+| refusal.person.person.sav_prior_joint.0 | remove refusal | person.person.sav_prior_joint |  |
+| refusal.person.person.sav_prior_other.0 | remove refusal | person.person.sav_prior_other |  |
 | refusal.s3.s3.line8.0 | remove refusal | s3.s3.line8 |  |
+| operand.s8812.s8812.clwb_7.line21 | replace an operand | s8812.s8812.clwb_7 | s8812.line21 -> s8812.clwb_3 (Dollars) |
+| operand.s8812.s8812.clwb_8.line22 | replace an operand | s8812.s8812.clwb_8 | s8812.line22 -> s8812.clwb_5 (NonNegDollars) |
+| operand.s8812.s8812.clwb_9.clwb_7 | replace an operand | s8812.s8812.clwb_9 | s8812.clwb_7 -> s8812.clwb_3 (Dollars) |
+| operand.s8812.s8812.clwb_9.clwb_8 | replace an operand | s8812.s8812.clwb_9 | s8812.clwb_8 -> s8812.clwb_3 (Dollars) |
+| operand.s8812.s8812.clwb_11_figured.clwb_9 | replace an operand | s8812.s8812.clwb_11_figured | s8812.clwb_9 -> s8812.clwb_8 (NonNegDollars) |
+| operand.s8812.s8812.clwb_11_figured.clwb_10 | replace an operand | s8812.s8812.clwb_11_figured | s8812.clwb_10 -> s8812.clwb_8 (NonNegDollars) |
+| refusal.s8812.s8812.clwb_11.0 | remove refusal | s8812.s8812.clwb_11 |  |
+| operand.s8812.s8812.clwb_12.clwb_11 | replace an operand | s8812.s8812.clwb_12 | s8812.clwb_11 -> s8812.clwb_11_three (NonNegDollars) |
 | refusal.sa.sa.line17.1 | remove refusal | sa.sa.line17 |  |
 | refusal.sa.sa.line17.2 | remove refusal | sa.sa.line17 |  |
 | operand.sdtw.sdtw.line17.line16 | replace an operand | sdtw.sdtw.line17 | sdtw.line16 -> sdtw.line15 (NonNegDollars) |
@@ -213,3 +252,50 @@ the fixture test compares).
 | operand.sdtw.sdtw.raw42.line41 | replace an operand | sdtw.sdtw.raw42 | sdtw.line41 -> sdtw.raw41 (Dollars) |
 | operand.sdtw.sdtw.raw43.line42 | replace an operand | sdtw.sdtw.raw43 | sdtw.line42 -> sdtw.raw42 (Dollars) |
 | operand.sdtw.sdtw.line45.line43 | replace an operand | sdtw.sdtw.line45 | sdtw.line43 -> sdtw.raw43 (Dollars) |
+| refusal.w2.w2.dc_net.0 | remove refusal | w2.w2.dc_net |  |
+| refusal.w2.w2.g_gov_part.0 | remove refusal | w2.w2.g_gov_part |  |
+| refusal.w2.w2.sav_listed.0 | remove refusal | w2.w2.sav_listed |  |
+| refusal.w2.w2.sav_listed.1 | remove refusal | w2.w2.sav_listed |  |
+| operand.w2.w2.sav_listed.box12_f | replace an operand | w2.w2.sav_listed | w2.box12_f -> w2.zero (NonNegDollars) |
+| operand.w2.w2.sav_listed.box12_s | replace an operand | w2.w2.sav_listed | w2.box12_s -> w2.zero (NonNegDollars) |
+| operand.w2.w2.sav_listed.box12_bb | replace an operand | w2.w2.sav_listed | w2.box12_bb -> w2.zero (NonNegDollars) |
+| operand.w2.w2.sav_listed.box12_ee | replace an operand | w2.w2.sav_listed | w2.box12_ee -> w2.zero (NonNegDollars) |
+| param.dc.exclusion_max.$1 | shift a money parameter (+$1) | dc.exclusion_max |  |
+| param.f5695.audit_max.$1 | shift a money parameter (+$1) | f5695.audit_max |  |
+| param.f5695.insulation_max.$1 | shift a money parameter (+$1) | f5695.insulation_max |  |
+| param.savers.agi_limit.$1 | shift a money parameter (+$1) | savers.agi_limit |  |
+| table.dc_rate.band1.$1 | shift a rate band bound (+$1) | dc_rate |  |
+| table.dc_rate.band2.$1 | shift a rate band bound (+$1) | dc_rate |  |
+| table.dc_rate.band3.$1 | shift a rate band bound (+$1) | dc_rate |  |
+| table.dc_rate.band3.+1pt | shift a rate band's rates (+1 point) | dc_rate |  |
+| table.dc_rate.band4.$1 | shift a rate band bound (+$1) | dc_rate |  |
+| table.dc_rate.band4.+1pt | shift a rate band's rates (+1 point) | dc_rate |  |
+| table.dc_rate.band5.$1 | shift a rate band bound (+$1) | dc_rate |  |
+| table.dc_rate.band5.+1pt | shift a rate band's rates (+1 point) | dc_rate |  |
+| table.dc_rate.band6.$1 | shift a rate band bound (+$1) | dc_rate |  |
+| table.dc_rate.band6.+1pt | shift a rate band's rates (+1 point) | dc_rate |  |
+| table.dc_rate.band7.$1 | shift a rate band bound (+$1) | dc_rate |  |
+| table.dc_rate.band7.+1pt | shift a rate band's rates (+1 point) | dc_rate |  |
+| table.dc_rate.band8.$1 | shift a rate band bound (+$1) | dc_rate |  |
+| table.dc_rate.band9.$1 | shift a rate band bound (+$1) | dc_rate |  |
+| table.dc_rate.band9.+1pt | shift a rate band's rates (+1 point) | dc_rate |  |
+| table.dc_rate.band10.$1 | shift a rate band bound (+$1) | dc_rate |  |
+| table.dc_rate.band11.$1 | shift a rate band bound (+$1) | dc_rate |  |
+| table.dc_rate.band11.+1pt | shift a rate band's rates (+1 point) | dc_rate |  |
+| table.dc_rate.band12.$1 | shift a rate band bound (+$1) | dc_rate |  |
+| table.dc_rate.band12.+1pt | shift a rate band's rates (+1 point) | dc_rate |  |
+| table.dc_rate.band13.$1 | shift a rate band bound (+$1) | dc_rate |  |
+| table.dc_rate.band13.+1pt | shift a rate band's rates (+1 point) | dc_rate |  |
+| table.dc_rate.band14.$1 | shift a rate band bound (+$1) | dc_rate |  |
+| table.dc_rate.band14.+1pt | shift a rate band's rates (+1 point) | dc_rate |  |
+| table.savers_rate.band0.$1 | shift a rate band bound (+$1) | savers_rate |  |
+| table.savers_rate.band1.$1 | shift a rate band bound (+$1) | savers_rate |  |
+| table.savers_rate.band2.$1 | shift a rate band bound (+$1) | savers_rate |  |
+| table.savers_rate.band3.$1 | shift a rate band bound (+$1) | savers_rate |  |
+| table.savers_rate.band4.$1 | shift a rate band bound (+$1) | savers_rate |  |
+| table.savers_rate.band5.$1 | shift a rate band bound (+$1) | savers_rate |  |
+| table.savers_rate.band6.$1 | shift a rate band bound (+$1) | savers_rate |  |
+| table.savers_rate.band7.$1 | shift a rate band bound (+$1) | savers_rate |  |
+| table.savers_rate.band7.+1pt | shift a rate band's rates (+1 point) | savers_rate |  |
+| table.savers_rate.band8.$1 | shift a rate band bound (+$1) | savers_rate |  |
+| table.savers_rate.band9.+1pt | shift a rate band's rates (+1 point) | savers_rate |  |
