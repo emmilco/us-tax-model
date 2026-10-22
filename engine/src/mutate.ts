@@ -103,11 +103,12 @@ function mutations(data: CanonicalData): Mutation[] {
       if (expr.op === "multiply_count") refs.push(expr.amount, expr.count);
       if (expr.op === "prorate") refs.push(expr.amount, expr.part);
       if (expr.op === "keyed_lookup") refs.push(...expr.keys);
+      if (expr.op === "rate_lookup") refs.push(expr.key, ...(expr.status ? [expr.status] : []));
       if (expr.op === "copy" && typeof expr.from === "string") refs.push(expr.from);
       for (const ref of refs) {
         if (!ref.startsWith(doc.id + ".")) continue; // same-document only
-        // A lookup key is replaced by a line of the key's own type (an enum or a count), not the result's.
-        const wantType = expr.op === "keyed_lookup" ? doc.lines.find((l) => l.id === ref)?.type : line.type;
+        // A lookup key is replaced by a line of the key's own type (an enum, a count or an amount), not the result's.
+        const wantType = expr.op === "keyed_lookup" || expr.op === "rate_lookup" ? doc.lines.find((l) => l.id === ref)?.type : line.type;
         const candidate = [...doc.lines]
           .slice(0, idx)
           .reverse()
@@ -128,6 +129,9 @@ function mutations(data: CanonicalData): Mutation[] {
             if (e.amount === ref) e.amount = candidate.id;
             if (e.count === ref) e.count = candidate.id;
             if (e.part === ref) e.part = candidate.id;
+            const rk = e as { key?: string; status?: string };
+            if (rk.key === ref) rk.key = candidate.id;
+            if (rk.status === ref) rk.status = candidate.id;
             const k = e as { keys?: string[] };
             if (Array.isArray(k.keys)) k.keys = k.keys.map((r) => (r === ref ? candidate.id : r));
           },
@@ -164,6 +168,37 @@ function mutations(data: CanonicalData): Mutation[] {
         },
       });
     }
+  }
+
+  // Rate tables: each band's upper bound +$1; each band's rates +1 percentage point,
+  // exactly (num/den + 1/100), kept at most 1.
+  for (const table of data.tables) {
+    if (table.kind !== "rate_bands") continue;
+    (table.rate_bands ?? []).forEach((band, i) => {
+      if (band.not_over !== null) {
+        out.push({
+          id: `table.${table.id}.band${i}.\$1`,
+          kind: "shift a rate band bound (+$1)",
+          where: table.id,
+          apply: (d) => {
+            const bands = d.tables.find((t) => t.id === table.id)!.rate_bands!;
+            bands[i]!.not_over! += 100;
+            bands[i + 1]!.over! += 100;
+          },
+        });
+      }
+      out.push({
+        id: `table.${table.id}.band${i}.+1pt`,
+        kind: "shift a rate band's rates (+1 point)",
+        where: table.id,
+        apply: (d) => {
+          for (const r of d.tables.find((t) => t.id === table.id)!.rate_bands![i]!.rates) {
+            r.num = Math.min(100 * r.den, 100 * r.num + r.den);
+            r.den = 100 * r.den;
+          }
+        },
+      });
+    });
   }
 
   return out;
@@ -401,6 +436,13 @@ function unreadParameter(data: CanonicalData, mutation: Mutation): string | unde
   const tableBound = name === "ordinary.table_boundary";
   if (tableBound || allDocs(data).some((doc) => doc.lines.some((l) => reads(l.expr)))) return undefined;
   return `Unread parameter: no line of any form or definition reads ${name}; it serves a cross-check outside the computation, so shifting it cannot change any value.`;
+}
+
+function unreadTable(data: CanonicalData, mutation: Mutation): string | undefined {
+  if (!mutation.id.startsWith("table.")) return undefined;
+  const name = mutation.where;
+  if (allDocs(data).some((doc) => doc.lines.some((l) => (l.expr as { table?: string }).table === name))) return undefined;
+  return `Unread table: no line of any form or definition looks up ${name}, so changing it cannot change any value.`;
 }
 
 // A refusal entry that cannot change any value because another line carrying the same gate
@@ -662,7 +704,7 @@ export async function runMutation(): Promise<number> {
   const killed = killedByCheck + killedByFixtures;
   const score = total === 0 ? 0 : killed / total;
   for(const survivor of survivors) {
-    const reason=aliasEquivalence(baseline,survivor) ?? sharedGateEquivalence(baseline,survivor) ?? unreadParameter(baseline,survivor);
+    const reason=aliasEquivalence(baseline,survivor) ?? sharedGateEquivalence(baseline,survivor) ?? unreadParameter(baseline,survivor) ?? unreadTable(baseline,survivor);
     if(reason)EQUIVALENT[survivor.id]=reason;
     const conditional=EQUIVALENT_IF[survivor.id];
     if(conditional && conditional.holds(baseline))EQUIVALENT[survivor.id]=conditional.reason+" (structural conditions re-checked this run.)";

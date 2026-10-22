@@ -258,6 +258,7 @@ GRAMMAR = """Expression grammar (YAML). Exactly one atom per line. Operands writ
   {op: multiply_count, amount: <ref>, count: <ref>}         # an amount times a whole number (a Count line), e.g. a monthly amount times months
   {op: prorate, amount: <ref>, part: <ref>, whole: <operand>, places: <int>}  # amount times (part / whole), the ratio rounded half-up to <places> decimal places and kept between 0 and 1
   {op: keyed_lookup, table: <table id>, keys: [<ref>, ...]}  # the entry of a printed table (a rate, an amount, a number or a category) found by the values of the key lines, in the table's key order
+  {op: rate_lookup, table: <table id>, key: <ref>, status: <ref>}  # the rate of a printed "Over / But not over" table for the amount on the key line; status (the filing status line) only when the table has filing-status columns
   {op: round, of: <ref>, unit: <integer cents>, rule: half_up | up | down}  # e.g. up to the next $1,000: unit 100000, rule up
   {op: table_lookup, table: tax_table, key: <ref>, status: <ref>}
   {op: sum_over, collection: <collection id>, field: <line id within the entry>, where: <test>}  # where optional
@@ -640,6 +641,11 @@ class Expander:
             return {"op": op, "amount": self.ref(e["amount"], depth), "part": self.ref(e["part"], depth), "whole": self.operand(e["whole"], depth), "places": e.get("places")}
         if op == "keyed_lookup":
             return {"op": op, "table": e.get("table"), "keys": [self.ref(k, depth) for k in e["keys"]]}
+        if op == "rate_lookup":
+            out = {"op": op, "table": e.get("table"), "key": self.ref(e["key"], depth)}
+            if e.get("status") is not None:
+                out["status"] = self.ref(e["status"], depth)
+            return out
         if op == "table_lookup":
             return {"op": op, "table": e.get("table"), "key": self.ref(e["key"], depth), "status": self.ref(e["status"], depth)}
         if op == "sum_over":

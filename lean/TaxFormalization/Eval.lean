@@ -109,6 +109,18 @@ def bandTax (table : Json) (col : Nat) (cents : Int) : Option (Int × Int) :=
       | _, _, _ => none)
   | _ => none
 
+/-- The bands of a rate table for one column, in order: the upper bound ("but not
+over", none when open) and the rate. -/
+def rateBandRows (table : Json) (col : Nat) : List (Option Int × Json) :=
+  match objGet table "rate_bands" with
+  | some (.arr bands) =>
+    bands.toList.map (fun b =>
+      let r := match objGet b "rates" with
+        | some (.arr rs) => (rs[col]?).getD Json.null
+        | _ => Json.null
+      (numGet b "not_over", mkRate ((numGet r "num").getD 0) ((numGet r "den").getD 1)))
+  | _ => []
+
 /-- A keyed table's key as a normalized string: an enum value or a count. -/
 def keyedKey (k : Json) : String :=
   match k with
@@ -499,6 +511,33 @@ def eval (ctx : Ctx) : Nat → Frame → Cmd → EvalM Json
           | some col =>
             match bandTax table col ((moneyOf keyV).getD 0) with
             | some (_, c) => pure (mkMoney c)
+            | none => pure (unknown s!"no band for {moneyOf keyV}")
+    | "rate_lookup" =>
+      let tableId := (strGet expr "table").getD ""
+      match ctx.tables.get? tableId with
+      | none => pure (unknown s!"table {tableId} missing")
+      | some table =>
+        let keyV ← eval ctx fuel frame (.line ((strGet expr "key").getD ""))
+        if isUnknown keyV then pure keyV
+        else
+          let hasCols : Bool := match objGet table "columns" with
+            | some (.arr cs) => cs.size != 0
+            | _ => false
+          let colE : Except Json Nat ←
+            if hasCols then do
+              let statusV ← eval ctx fuel frame (.line ((strGet expr "status").getD ""))
+              if isUnknown statusV then pure (Except.error statusV)
+              else
+                let status := (strGet statusV "value").getD ""
+                match columnIndex table status with
+                | some c => pure (Except.ok c)
+                | none => pure (Except.error (unknown s!"no column for {status}"))
+            else pure (Except.ok 0)
+          match colE with
+          | Except.error e => pure e
+          | Except.ok col =>
+            match rateBand (rateBandRows table col) ((moneyOf keyV).getD 0) with
+            | some v => pure v
             | none => pure (unknown s!"no band for {moneyOf keyV}")
     | "keyed_lookup" =>
       let tableId := (strGet expr "table").getD ""

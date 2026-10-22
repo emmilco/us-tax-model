@@ -223,3 +223,12 @@
 - Reason: The two differ only when the business income limit cuts the year's section 179 deduction and the vehicle carries part of it. The basis is reduced by the whole amount elected, the carryover included, since Pub. 946 says that on a disposition before the carryover is used "you must add it back to the property's basis" (p. 20); the worksheet then limits the year's depreciation by the same amount. The second reading would let the year's depreciation room grow by an amount that is still deductible later.
 - Status: Agent reading, after Stage 14 (scveh render review), for the owner's review (TASKS.md T-046).
 - Cite: [p946] p. 62, Depreciation Worksheet for Passenger Automobiles, line 10; p. 20, Carryover of disallowed deduction (For use in preparing 2025 returns; sha256 07fadfb2)
+
+## amb.2025.dc_rate_nonpositive_agi
+
+- Text at issue: Form 2441, line 8: "Enter on line 8 the decimal amount shown below that applies to the amount on line 7", in a table whose first band is "Over $0 But not over 15,000".
+- Candidate readings: Line 7 of zero or less takes the first band's .35. | Line 7 of zero or less has no decimal amount, and the credit is not figured.
+- **Chosen:** The first (tables/2025/dc_rate.yaml, the first band open below).
+- Reason: The owner's ruling. In this tool the readings cannot differ in the credit. Line 7 (adjusted gross income) of zero or less gives taxable income of zero and no tax on Form 1040 line 16, and Schedule 2 Part I (line 17) is zero here, the alternative minimum tax and the repayment of excess advance premium tax credit being refused (s2.amt and the Schedule 2 screen); so line 18 is zero, and the Credit Limit Worksheet's line 3 and line 10 are zero. A rate is still needed for line 8 to be known.
+- Status: Owner ruling, Stage 15 (T-048).
+- Cite: [f2441] Form 2441 (2025), line 8 (2025; created 2025-03-18; sha256 6c3c2d19)

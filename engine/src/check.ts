@@ -436,6 +436,25 @@ function checkLine(ctx: Ctx, doc: FormDoc, line: Line): void {
       } else compatible(ctx, declared, cell, where);
       break;
     }
+    case "rate_lookup": {
+      const table = ctx.tables.get(expr.table);
+      if (!table) { ctx.errors.push(`${where}: table '${expr.table}' does not exist`); break; }
+      if (table.kind !== "rate_bands") { ctx.errors.push(`${where}: '${expr.table}' is not a rate table`); break; }
+      const key = requireRef(ctx, doc, expr.key, where);
+      if (key && declaredTyOf(ctx, key.doc, key.line).kind !== "money") ctx.errors.push(`${where}: lookup key is not money`);
+      if (table.columns && table.columns.length > 0) {
+        if (expr.status === undefined) ctx.errors.push(`${where}: table '${expr.table}' has filing-status columns, the lookup gives no status`);
+        else {
+          const status = requireRef(ctx, doc, expr.status, where);
+          if (status) {
+            const ty = declaredTyOf(ctx, status.doc, status.line);
+            if (ty.kind !== "enum" || ty.name !== "filing_status") ctx.errors.push(`${where}: status operand is not Enum(filing_status)`);
+          }
+        }
+      } else if (expr.status !== undefined) ctx.errors.push(`${where}: table '${expr.table}' has one column, the lookup gives a status`);
+      if (declared.kind !== "rate") ctx.errors.push(`${where}: a rate lookup's line must be declared Rate`);
+      break;
+    }
     case "table_lookup": {
       const table = ctx.tables.get(expr.table);
       if (!table) ctx.errors.push(`${where}: table '${expr.table}' does not exist`);
@@ -628,6 +647,9 @@ function checkCycles(ctx: Ctx, data: CanonicalData): void {
         break;
       case "keyed_lookup":
         refs.push(...expr.keys);
+        break;
+      case "rate_lookup":
+        refs.push(expr.key, ...(expr.status ? [expr.status] : []));
         break;
       case "copy":
         if (typeof expr.from === "string") refs.push(expr.from);
@@ -1017,6 +1039,38 @@ function checkTable(ctx: Ctx, table: TableDoc): void {
         ctx.errors.push(`table ${table.id}: last band ends at ${last.less_than} but ordinary.table_boundary is ${boundary}`);
       }
     }
+  }
+  if (table.kind === "rate_bands") {
+    const bands = table.rate_bands ?? [];
+    const cols = table.columns ?? [];
+    if (bands.length === 0) { ctx.errors.push(`table ${table.id}: empty table`); return; }
+    if (cols.length > 0) {
+      const covered = new Map<string, number>();
+      cols.forEach((c) => c.statuses.forEach((s) => covered.set(s, (covered.get(s) ?? 0) + 1)));
+      for (const s of ctx.enumValues.get("filing_status") ?? []) {
+        if (covered.get(s) !== 1) ctx.errors.push(`table ${table.id}: status '${s}' is covered ${covered.get(s) ?? 0} times`);
+      }
+      for (const s of covered.keys()) {
+        if (!(ctx.enumValues.get("filing_status") ?? []).includes(s)) ctx.errors.push(`table ${table.id}: '${s}' is not a filing status`);
+      }
+    }
+    const width = Math.max(cols.length, 1);
+    if (bands[0]!.over !== null) ctx.errors.push(`table ${table.id}: the first band is not open below`);
+    if (bands[bands.length - 1]!.not_over !== null) ctx.errors.push(`table ${table.id}: the last band is not open above`);
+    bands.forEach((b, i) => {
+      const at = `table ${table.id} band ${i}`;
+      if (b.rates.length !== width) ctx.errors.push(`${at}: ${b.rates.length} rates for ${width} columns`);
+      for (const r of b.rates) {
+        if (!Number.isSafeInteger(r.num) || !Number.isSafeInteger(r.den) || r.den <= 0 || r.num < 0 || r.num > r.den) ctx.errors.push(`${at}: rate is not between 0 and 1`);
+      }
+      if (i > 0 && b.over === null) ctx.errors.push(`${at}: only the first band may be open below`);
+      if (i < bands.length - 1 && b.not_over === null) ctx.errors.push(`${at}: only the last band may be open above`);
+      if (b.over !== null && !Number.isSafeInteger(b.over)) ctx.errors.push(`${at}: 'over' is not an amount`);
+      if (b.not_over !== null && !Number.isSafeInteger(b.not_over)) ctx.errors.push(`${at}: 'not over' is not an amount`);
+      if (b.over !== null && b.not_over !== null && !(b.over < b.not_over)) ctx.errors.push(`${at}: 'over' is not below 'not over'`);
+      const next = bands[i + 1];
+      if (next && next.over !== b.not_over) ctx.errors.push(`${at}: bands are not contiguous`);
+    });
   }
   if (table.kind === "keyed") {
     const keys = table.keys ?? [];

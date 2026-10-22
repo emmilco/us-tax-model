@@ -108,6 +108,7 @@ function normalize(v: Value | Record<string, unknown>): string {
   if (val.kind === "refusal") { const r = v as Record<string, unknown>; return `refusal:${r.gate}:${r.form}:${r.remedy}:${JSON.stringify(Object.entries(r.cite as Record<string, unknown>).sort())}`; }
   if (val.kind === "unknown") return "unknown";
   if (val.kind === "money") return `money:${val.cents}`;
+  if (val.kind === "rate") { const r = v as { num?: number; den?: number }; return `rate:${r.num}/${r.den}`; }
   return `${val.kind}:${JSON.stringify(val.value)}`;
 }
 

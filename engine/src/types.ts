@@ -43,6 +43,7 @@ export type Expr =
   | { op: "bracket_schedule"; table: string; key: string; status: string }
   | { op: "sum_over"; collection: string; field: string; where?: TestExpr }
   | { op: "keyed_lookup"; table: string; keys: string[] }
+  | { op: "rate_lookup"; table: string; key: string; status?: string }
   | { op: "opaque"; name: string };
 
 export type ValueType =
@@ -110,7 +111,7 @@ export interface ParamsDoc {
 
 export interface TableDoc {
   id: string;
-  kind: "tax_table" | "bracket_schedule" | "keyed";
+  kind: "tax_table" | "bracket_schedule" | "keyed" | "rate_bands";
   title: string;
   tax_year: number;
   cite: CiteFilled;
@@ -126,6 +127,10 @@ export interface TableDoc {
   keys?: { name: string; type: string }[];
   cell?: string;
   rows?: { keys: (string | number)[]; value: number | string | Rate }[];
+  // rate_bands: printed "Over / But not over" bands of a money key, one rate per column
+  // (`columns` as for tax_table, or none when the table has a single column); null is
+  // an open end
+  rate_bands?: { over: Money | null; not_over: Money | null; rates: Rate[] }[];
 }
 
 export interface RegisterEntry {

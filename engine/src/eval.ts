@@ -477,6 +477,32 @@ function evalExpr(ctx: Ctx, frame: Frame, lineId: string, expr: Expr, cite: Cite
       if (cell === "Dollars" || cell === "NonNegDollars") return d({ kind: "money", cents: row.value as number }, "keyed_lookup", ops, [], note);
       return d({ kind: "enum", value: row.value as string }, "keyed_lookup", ops, [], note);
     }
+    case "rate_lookup": {
+      const table = ctx.data.tables.find((t) => t.id === expr.table);
+      if (!table || table.kind !== "rate_bands") return d({ kind: "unknown", reason: `table ${expr.table} missing` }, "rate_lookup", ops);
+      const key = evalOperand(ctx, frame, expr.key, ops);
+      if (key.kind === "unknown" || key.kind === "refusal") return d(key, "rate_lookup", ops);
+      if (key.kind !== "money") return d({ kind: "unknown", reason: "rate_lookup key is not money" }, "rate_lookup", ops);
+      let col = 0;
+      const note: string[] = [];
+      if (table.columns && table.columns.length > 0) {
+        if (expr.status === undefined) return d({ kind: "unknown", reason: "rate_lookup status missing" }, "rate_lookup", ops);
+        const status = evalOperand(ctx, frame, expr.status, ops);
+        if (status.kind === "unknown" || status.kind === "refusal") return d(status, "rate_lookup", ops);
+        if (status.kind !== "enum") return d({ kind: "unknown", reason: "rate_lookup status is not an enum" }, "rate_lookup", ops);
+        col = table.columns.findIndex((c) => c.statuses.includes(status.value));
+        if (col < 0) return d({ kind: "unknown", reason: `no column for ${status.value}` }, "rate_lookup", ops);
+        note.push(`column ${table.columns[col]!.key}`);
+      }
+      const bands = table.rate_bands ?? [];
+      const bi = bands.findIndex((b) => b.not_over === null || key.cents <= b.not_over);
+      if (bi < 0) return d({ kind: "unknown", reason: `no band for ${key.cents} cents` }, "rate_lookup", ops);
+      const band = bands[bi]!;
+      const r = band.rates[col];
+      if (!r) return d({ kind: "unknown", reason: `band ${bi} has no rate for column ${col}` }, "rate_lookup", ops);
+      note.unshift(`band over ${band.over ?? "-"} but not over ${band.not_over ?? "-"}`);
+      return d({ kind: "rate", num: r.num, den: r.den }, "rate_lookup", ops, [], note);
+    }
     case "table_lookup": {
       const key = evalOperand(ctx, frame, expr.key, ops);
       const status = evalOperand(ctx, frame, expr.status, ops);

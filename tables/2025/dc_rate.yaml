@@ -1,0 +1,29 @@
+# The child and dependent care credit rate (Form 2441, line 8) by line 7, as printed. Written by hand.
+# The table prints its first band "$0—15,000"; the band is open below here, so line 7 of zero or less takes
+# .35 (amb.2025.dc_rate_nonpositive_agi). The last band is printed "43,000—No limit".
+table:
+  id: dc_rate
+  kind: rate_bands
+  title: "Child and dependent care credit decimal amount (Form 2441, line 8)"
+  tax_year: 2025
+  cite:
+    doc: f2441
+    locator: "Form 2441 (2025), line 8"
+    quote: "Enter on line 8 the decimal amount shown below that applies to the amount on line 7."
+  rate_bands:
+    - { over: null, not_over: 1500000, rates: [{ num: 35, den: 100 }] }
+    - { over: 1500000, not_over: 1700000, rates: [{ num: 34, den: 100 }] }
+    - { over: 1700000, not_over: 1900000, rates: [{ num: 33, den: 100 }] }
+    - { over: 1900000, not_over: 2100000, rates: [{ num: 32, den: 100 }] }
+    - { over: 2100000, not_over: 2300000, rates: [{ num: 31, den: 100 }] }
+    - { over: 2300000, not_over: 2500000, rates: [{ num: 30, den: 100 }] }
+    - { over: 2500000, not_over: 2700000, rates: [{ num: 29, den: 100 }] }
+    - { over: 2700000, not_over: 2900000, rates: [{ num: 28, den: 100 }] }
+    - { over: 2900000, not_over: 3100000, rates: [{ num: 27, den: 100 }] }
+    - { over: 3100000, not_over: 3300000, rates: [{ num: 26, den: 100 }] }
+    - { over: 3300000, not_over: 3500000, rates: [{ num: 25, den: 100 }] }
+    - { over: 3500000, not_over: 3700000, rates: [{ num: 24, den: 100 }] }
+    - { over: 3700000, not_over: 3900000, rates: [{ num: 23, den: 100 }] }
+    - { over: 3900000, not_over: 4100000, rates: [{ num: 22, den: 100 }] }
+    - { over: 4100000, not_over: 4300000, rates: [{ num: 21, den: 100 }] }
+    - { over: 4300000, not_over: null, rates: [{ num: 20, den: 100 }] }

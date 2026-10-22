@@ -160,6 +160,11 @@ function exprText(expr: Expr, doc: FormDoc, ctx: RenderCtx): string {
       const how = expr.rule === "up" ? "up to the next multiple of" : expr.rule === "down" ? "down to a multiple of" : "to the nearest multiple of (half up)";
       return `Round ${refText(doc, expr.of, ctx)} ${how} ${fmtMoney(expr.unit)}.`;
     }
+    case "rate_lookup": {
+      const t = ctx.tables.find((x) => x.id === expr.table);
+      const col = expr.status === undefined ? "" : `, in the column for the filing status (${refText(doc, expr.status, ctx)})`;
+      return `Find the rate in ${t ? t.title : expr.table} for the band (over, but not over) that holds ${refText(doc, expr.key, ctx)}${col}.`;
+    }
     case "table_lookup": {
       const table = ctx.tables.find((t) => t.id === expr.table);
       return `Use ${table?.title ?? expr.table} at ${refText(doc, expr.key, ctx)} for the filing status (${refText(
@@ -258,6 +263,20 @@ function renderTable(table: CanonicalData["tables"][number], ctx: RenderCtx): st
     for (const band of table.bands) {
       out.push(
         `| ${fmtMoney(band.at_least)} | ${fmtMoney(band.less_than)} | ${band.tax.map((t) => fmtMoney(t)).join(" | ")} |`,
+      );
+    }
+    out.push("");
+  }
+  if (table.kind === "rate_bands" && table.rate_bands) {
+    const cols = table.columns && table.columns.length > 0 ? table.columns : [{ key: "rate", statuses: [] as string[] }];
+    out.push("");
+    out.push(`Bands: ${table.rate_bands.length}; columns: ${cols.map((c) => (c.statuses.length ? `${c.key} (${c.statuses.join(", ")})` : c.key)).join("; ")}`);
+    out.push("");
+    out.push(`| Over | But not over | ${cols.map((c) => c.key).join(" | ")} |`);
+    out.push(`| --- | --- |${cols.map(() => " --- |").join("")}`);
+    for (const band of table.rate_bands) {
+      out.push(
+        `| ${band.over === null ? "—" : fmtMoney(band.over)} | ${band.not_over === null ? "—" : fmtMoney(band.not_over)} | ${band.rates.map((r) => fmtRate(r)).join(" | ")} |`,
       );
     }
     out.push("");

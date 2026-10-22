@@ -729,6 +729,29 @@
               }
             }
           }
+        },
+        {
+          "type": "object",
+          "required": [
+            "op",
+            "table",
+            "key"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "op": {
+              "const": "rate_lookup"
+            },
+            "table": {
+              "type": "string"
+            },
+            "key": {
+              "type": "string"
+            },
+            "status": {
+              "type": "string"
+            }
+          }
         }
       ]
     },
@@ -1233,6 +1256,9 @@
             },
             {
               "$ref": "#/$defs/keyedTable"
+            },
+            {
+              "$ref": "#/$defs/rateBandsTable"
             }
           ]
         }
@@ -1399,6 +1425,99 @@
                     "$ref": "#/$defs/rate"
                   }
                 ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "rateBandsTable": {
+      "type": "object",
+      "required": [
+        "id",
+        "kind",
+        "title",
+        "tax_year",
+        "cite",
+        "rate_bands"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "kind": {
+          "const": "rate_bands"
+        },
+        "title": {
+          "type": "string"
+        },
+        "tax_year": {
+          "type": "integer"
+        },
+        "cite": {
+          "$ref": "#/$defs/cite"
+        },
+        "note": {
+          "type": "string"
+        },
+        "columns": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "key",
+              "statuses"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "key": {
+                "type": "string"
+              },
+              "statuses": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string"
+                }
+              },
+              "note": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "rate_bands": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "over",
+              "not_over",
+              "rates"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "over": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "not_over": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "rates": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "$ref": "#/$defs/rate"
+                }
               }
             }
           }

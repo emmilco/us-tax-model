@@ -319,6 +319,24 @@
       "revision_locator": "PDF page 1, Copy A, form year box"
     },
     {
+      "id": "f2441",
+      "url": "https://www.irs.gov/pub/irs-pdf/f2441.pdf",
+      "resolved_url": "https://www.irs.gov/pub/irs-pdf/f2441.pdf",
+      "fetched_at": "2026-10-22T03:17:31.327441+00:00",
+      "file": "f2441.pdf",
+      "sha256": "6c3c2d19163fa4c4de829abf9a89b43f08b4f4f3cb169740fc7da43e914269ce",
+      "revision": "2025; created 2025-03-18",
+      "revision_status": "Printed year/revision inspected in extracted text; content review is tracked separately in PREMISES.md",
+      "text_file": "f2441.txt",
+      "text_sha256": "f39ca34d11c156e1ac55f4e2b5f16ef03c919773245cd7e50836e4c1555339c7",
+      "cols_file": "f2441.cols.txt",
+      "cols_sha256": "0e24fa891992674b84736c78565752c4a7d6f411fca4e24e5bb1307f239f60d6",
+      "pages_file": "f2441.pages.json",
+      "pages_sha256": "a183bb4d1897a6c7408f6a34e5b63a1e904532641642f7aa07c87eecf03b811c",
+      "extract_tool_version": "0.10",
+      "revision_locator": "PDF page 1 footer, \"Form 2441 (2025)\", \"Created 3/18/25\""
+    },
+    {
       "id": "f4562",
       "url": "https://www.irs.gov/pub/irs-pdf/f4562.pdf",
       "resolved_url": "https://www.irs.gov/pub/irs-pdf/f4562.pdf",
@@ -355,6 +373,24 @@
       "extract_tool_version": "0.10"
     },
     {
+      "id": "f5695",
+      "url": "https://www.irs.gov/pub/irs-pdf/f5695.pdf",
+      "resolved_url": "https://www.irs.gov/pub/irs-pdf/f5695.pdf",
+      "fetched_at": "2026-10-22T03:17:35.947959+00:00",
+      "file": "f5695.pdf",
+      "sha256": "e2ac6a5c4b39e9032d3716827992fc0de46289a951e8b1ffaa3d5a969278baf2",
+      "revision": "2025; created 2025-03-20",
+      "revision_status": "Printed year/revision inspected in extracted text; content review is tracked separately in PREMISES.md",
+      "text_file": "f5695.txt",
+      "text_sha256": "1c89f7c11b231339ff7a89fa317bc09812a99ede918d596cece2556d410e1b44",
+      "cols_file": "f5695.cols.txt",
+      "cols_sha256": "652cc58075d848859a281cdad3e2bba9d640b7b05907a9e09bd386347fcd3edc",
+      "pages_file": "f5695.pages.json",
+      "pages_sha256": "4d113d6095c2aed32cbb499a3bc6c9f707cb9926d1d33db119a3a02737a57e33",
+      "extract_tool_version": "0.10",
+      "revision_locator": "PDF page 1 footer, \"Form 5695 (2025)\", \"Created 3/20/25\""
+    },
+    {
       "id": "f7206",
       "url": "https://www.irs.gov/pub/irs-pdf/f7206.pdf",
       "resolved_url": "https://www.irs.gov/pub/irs-pdf/f7206.pdf",
@@ -389,6 +425,24 @@
       "pages_file": "f8283.pages.json",
       "pages_sha256": "91a3a2149eb2ba180a0f03de802c4b0a89dc3ccc930bd196a0d83ebdcd697246",
       "extract_tool_version": "0.10"
+    },
+    {
+      "id": "f8880",
+      "url": "https://www.irs.gov/pub/irs-pdf/f8880.pdf",
+      "resolved_url": "https://www.irs.gov/pub/irs-pdf/f8880.pdf",
+      "fetched_at": "2026-10-22T03:17:29.937267+00:00",
+      "file": "f8880.pdf",
+      "sha256": "ba2b28770bc82d318ab0b884e56a572771030ce1a3ec80d85bafd2eea3a2778e",
+      "revision": "2025; created 2025-11-04",
+      "revision_status": "Printed year/revision inspected in extracted text; content review is tracked separately in PREMISES.md",
+      "text_file": "f8880.txt",
+      "text_sha256": "e8b37e5065850674d94eecd145d787e1789924b0c2b09bf3693992c45ba9dc94",
+      "cols_file": "f8880.cols.txt",
+      "cols_sha256": "e082ccb481b2d0e872449d7728c290669213b8d16d4c94f281c1bb70aeaed575",
+      "pages_file": "f8880.pages.json",
+      "pages_sha256": "0f5254ab741b50820c2d1e860dc70ed6d8e955e2356b54440740049dbef989f6",
+      "extract_tool_version": "0.10",
+      "revision_locator": "PDF page 1 footer, \"Form 8880 (2025)\", \"Created 11/4/25\""
     },
     {
       "id": "f8889",
@@ -515,6 +569,38 @@
       "pages_sha256": "a88ef6d899db2a73169f92371a9ace829c2504301b3ab1ff165519ca78892821",
       "extract_tool_version": "0.10",
       "revision_locator": "PDF page 1 header, \"Vol. 91, No. 1 ... Friday, January 2, 2026\"; preamble, \"REG-113515-25\""
+    },
+    {
+      "id": "fs-2025-01",
+      "url": "https://www.irs.gov/pub/taxpros/fs-2025-01.pdf",
+      "resolved_url": "https://www.irs.gov/pub/taxpros/fs-2025-01.pdf",
+      "fetched_at": "2026-10-22T03:41:09.223183+00:00",
+      "file": "fs-2025-01.pdf",
+      "sha256": "8565a0b8759d81f36eb12db48f6cb32ebdbb5963f6e821f5e9ad9ecf0d2741dc",
+      "revision": "FS-2025-01, January 2025",
+      "revision_status": "Printed year/revision inspected in extracted text; content review is tracked separately in PREMISES.md",
+      "text_file": "fs-2025-01.txt",
+      "text_sha256": "d756eeebafecde7e6c890e3535d2457fe2558840a297b51fb19f4412bba82458",
+      "cols_file": "fs-2025-01.cols.txt",
+      "cols_sha256": "07b360f96e1336830dee0cc87fc4c3c3a9ff8e15bdc2ae55eddc0fda4a05835e",
+      "pages_file": "fs-2025-01.pages.json",
+      "pages_sha256": "d8016d391d18308ac65244570cd752a9017f384c4bb0bd9713d824df6d96b0f4",
+      "extract_tool_version": "0.10",
+      "revision_locator": "PDF page 1 heading, \"FS-2025-01, January 2025\""
+    },
+    {
+      "id": "fs-2025-05",
+      "url": "https://www.irs.gov/EnergyCreditFAQs",
+      "format": "html",
+      "resolved_url": "https://www.irs.gov/newsroom/faqs-for-modification-of-sections-25c-25d-25e-30c-30d-45l-45w-and-179d-under-public-law-119-21-139-stat-72-july-4-2025-commonly-known-as-the-one-big-beautiful-bill-obbb",
+      "fetched_at": "2026-10-22T03:41:10.843106+00:00",
+      "file": "fs-2025-05.html",
+      "sha256": "ce80bfc465f1c9c472aee702ca86cbfb8dc3947ba769f2d98015b0585aaa5c51",
+      "revision": "FS-2025-05, Aug. 21, 2025",
+      "revision_status": "Printed year/revision inspected in extracted text; content review is tracked separately in PREMISES.md",
+      "text_file": "fs-2025-05.txt",
+      "text_sha256": "680a056034e18c93ba23321d5d065f3a1002944411ed23b1916bb0dd9d0af75a",
+      "revision_locator": "Page heading, \"FS-2025-05, Aug. 21, 2025\""
     },
     {
       "id": "fw2",
@@ -788,6 +874,24 @@
       "revision_locator": "Extracted text, line 1 title and 'Page Last Reviewed' footer line"
     },
     {
+      "id": "i2441",
+      "url": "https://www.irs.gov/pub/irs-pdf/i2441.pdf",
+      "resolved_url": "https://www.irs.gov/pub/irs-pdf/i2441.pdf",
+      "fetched_at": "2026-10-22T03:17:32.664715+00:00",
+      "file": "i2441.pdf",
+      "sha256": "86f0669e78b1dc00bfb99e956673d4fccee9e40d6c44d53623dd08e62567fd39",
+      "revision": "2025",
+      "revision_status": "Printed year/revision inspected in extracted text; content review is tracked separately in PREMISES.md",
+      "text_file": "i2441.txt",
+      "text_sha256": "361baee739cc7cb7b6a84c7412397cfba901c1a3e5f225a8077cb8716917887e",
+      "cols_file": "i2441.cols.txt",
+      "cols_sha256": "3046d96b0769e20213f700deb20a0de9edc6a4572eda61bd70f5c8c88bc912ee",
+      "pages_file": "i2441.pages.json",
+      "pages_sha256": "9a85a7c829d892382636c78f30bebc6123b1e690561cebb4993d86f1f039052d",
+      "extract_tool_version": "0.10",
+      "revision_locator": "PDF page 1 title, \"2025 Instructions for Form 2441\""
+    },
+    {
       "id": "i4562",
       "url": "https://www.irs.gov/pub/irs-pdf/i4562.pdf",
       "resolved_url": "https://www.irs.gov/pub/irs-pdf/i4562.pdf",
@@ -821,6 +925,24 @@
       "pages_file": "i4562-2024.pages.json",
       "pages_sha256": "1f3df1b7e29fd3899bce964025342938c9f3db7699d11d9874231d0e8b978c8f",
       "extract_tool_version": "0.10"
+    },
+    {
+      "id": "i5695",
+      "url": "https://www.irs.gov/pub/irs-pdf/i5695.pdf",
+      "resolved_url": "https://www.irs.gov/pub/irs-pdf/i5695.pdf",
+      "fetched_at": "2026-10-22T03:17:37.416575+00:00",
+      "file": "i5695.pdf",
+      "sha256": "55113467f9689346adc0faf8add25d7fa50a0c5a91765c67f5ff24682a68cb66",
+      "revision": "2025",
+      "revision_status": "Printed year/revision inspected in extracted text; content review is tracked separately in PREMISES.md",
+      "text_file": "i5695.txt",
+      "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+      "cols_file": "i5695.cols.txt",
+      "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53",
+      "pages_file": "i5695.pages.json",
+      "pages_sha256": "046819b04e90e39f718bd52f15bc42465197e380031f0f9acf224dbe64a3023d",
+      "extract_tool_version": "0.10",
+      "revision_locator": "PDF page 1 title, \"2025 Instructions for Form 5695\""
     },
     {
       "id": "i7206",
@@ -1275,6 +1397,24 @@
       "pages_sha256": "f804177ba2aebc7b7bf50fd7f4acf24c392215257b4bcb9a8e64e968e592446f",
       "extract_tool_version": "0.10",
       "revision_locator": "PDF page 1, printed heading; PDF metadata CreationDate"
+    },
+    {
+      "id": "p503",
+      "url": "https://www.irs.gov/pub/irs-pdf/p503.pdf",
+      "resolved_url": "https://www.irs.gov/pub/irs-pdf/p503.pdf",
+      "fetched_at": "2026-10-22T03:17:34.508140+00:00",
+      "file": "p503.pdf",
+      "sha256": "3a00d0c1a1d6d3a88afdf418b79873f95f6d2de584c330ec67647139c09c5532",
+      "revision": "For use in preparing 2025 returns",
+      "revision_status": "Printed year/revision inspected in extracted text; content review is tracked separately in PREMISES.md",
+      "text_file": "p503.txt",
+      "text_sha256": "a1ff9e2c3120455f6049fc50f0af8c5b8160302c198162dede66b2c8a5640607",
+      "cols_file": "p503.cols.txt",
+      "cols_sha256": "44d87f0ddfd4f953ea02cf5cc31e203e754c88aa74627dac5a551f46c6bf65b9",
+      "pages_file": "p503.pages.json",
+      "pages_sha256": "7bc09716fdaa675e919fe073d76b36fae4b881c7d77d2b452301eefdeabb02ea",
+      "extract_tool_version": "0.10",
+      "revision_locator": "PDF page 1, \"2025 Returns\""
     },
     {
       "id": "p505-2026",

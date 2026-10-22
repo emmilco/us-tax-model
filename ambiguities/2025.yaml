@@ -402,3 +402,19 @@ register:
         doc: p946
         locator: p. 62, Depreciation Worksheet for Passenger Automobiles, line 10; p. 20, Carryover of disallowed deduction
       status: Agent reading, after Stage 14 (scveh render review), for the owner's review (TASKS.md T-046).
+    - id: amb.2025.dc_rate_nonpositive_agi
+      text_at_issue: 'Form 2441, line 8: "Enter on line 8 the decimal amount shown below that applies to the amount on line 7", in a
+        table whose first band is "Over $0 But not over 15,000".'
+      readings:
+      - Line 7 of zero or less takes the first band's .35.
+      - Line 7 of zero or less has no decimal amount, and the credit is not figured.
+      chosen: The first (tables/2025/dc_rate.yaml, the first band open below).
+      reason: The owner's ruling. In this tool the readings cannot differ in the credit. Line 7 (adjusted gross income) of zero or
+        less gives taxable income of zero and no tax on Form 1040 line 16, and Schedule 2 Part I (line 17) is zero here, the
+        alternative minimum tax and the repayment of excess advance premium tax credit being refused (s2.amt and the Schedule 2
+        screen); so line 18 is zero, and the Credit Limit Worksheet's line 3 and line 10 are zero. A rate is still needed for line
+        8 to be known.
+      cite:
+        doc: f2441
+        locator: Form 2441 (2025), line 8
+      status: Owner ruling, Stage 15 (T-048).

@@ -7,11 +7,11 @@ the fixture test compares).
 
 | Metric | Value |
 | --- | --- |
-| Mutants | 1683 |
+| Mutants | 1733 |
 | Killed by the checker | 178 |
 | Killed by fixtures | 1363 |
-| Surviving | 142 (111 provably equivalent) |
-| Mutation score (raw) | 91.6% |
+| Surviving | 192 (161 provably equivalent) |
+| Mutation score (raw) | 88.9% |
 | Mutation score (equivalent mutants excluded) | 98.0% |
 
 ## Surviving — classified equivalent
@@ -127,6 +127,56 @@ the fixture test compares).
 - `param.eic.ws_threshold0.joint.$1` (shift a money parameter (+$1), eic.ws_threshold0.joint): Line 5 amount eic.ws_threshold0.joint: in eic_0 the bands covering [eic.ws_threshold0.joint, eic.ws_threshold0.joint + $1) print each table's maximum in the column used, so shifting the amount by $1 can only turn a lookup equal to the maximum into a blank line 5; line 6 is line 2 either way. (structural conditions re-checked this run.)
 - `param.eic.ws_threshold0.other.$1` (shift a money parameter (+$1), eic.ws_threshold0.other): Line 5 amount eic.ws_threshold0.other: in eic_0 the bands covering [eic.ws_threshold0.other, eic.ws_threshold0.other + $1) print each table's maximum in the column used, so shifting the amount by $1 can only turn a lookup equal to the maximum into a blank line 5; line 6 is line 2 either way. (structural conditions re-checked this run.)
 - `param.eic.ws_threshold1.joint.$1` (shift a money parameter (+$1), eic.ws_threshold1.joint): Line 5 amount eic.ws_threshold1.joint: in eic_1, eic_2, eic_3 the bands covering [eic.ws_threshold1.joint, eic.ws_threshold1.joint + $1) print each table's maximum in the column used, so shifting the amount by $1 can only turn a lookup equal to the maximum into a blank line 5; line 6 is line 2 either way. (structural conditions re-checked this run.)
+- `table.dc_rate.band0.$1` (shift a rate band bound (+$1), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
+- `table.dc_rate.band0.+1pt` (shift a rate band's rates (+1 point), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
+- `table.dc_rate.band1.$1` (shift a rate band bound (+$1), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
+- `table.dc_rate.band1.+1pt` (shift a rate band's rates (+1 point), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
+- `table.dc_rate.band2.$1` (shift a rate band bound (+$1), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
+- `table.dc_rate.band2.+1pt` (shift a rate band's rates (+1 point), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
+- `table.dc_rate.band3.$1` (shift a rate band bound (+$1), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
+- `table.dc_rate.band3.+1pt` (shift a rate band's rates (+1 point), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
+- `table.dc_rate.band4.$1` (shift a rate band bound (+$1), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
+- `table.dc_rate.band4.+1pt` (shift a rate band's rates (+1 point), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
+- `table.dc_rate.band5.$1` (shift a rate band bound (+$1), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
+- `table.dc_rate.band5.+1pt` (shift a rate band's rates (+1 point), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
+- `table.dc_rate.band6.$1` (shift a rate band bound (+$1), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
+- `table.dc_rate.band6.+1pt` (shift a rate band's rates (+1 point), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
+- `table.dc_rate.band7.$1` (shift a rate band bound (+$1), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
+- `table.dc_rate.band7.+1pt` (shift a rate band's rates (+1 point), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
+- `table.dc_rate.band8.$1` (shift a rate band bound (+$1), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
+- `table.dc_rate.band8.+1pt` (shift a rate band's rates (+1 point), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
+- `table.dc_rate.band9.$1` (shift a rate band bound (+$1), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
+- `table.dc_rate.band9.+1pt` (shift a rate band's rates (+1 point), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
+- `table.dc_rate.band10.$1` (shift a rate band bound (+$1), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
+- `table.dc_rate.band10.+1pt` (shift a rate band's rates (+1 point), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
+- `table.dc_rate.band11.$1` (shift a rate band bound (+$1), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
+- `table.dc_rate.band11.+1pt` (shift a rate band's rates (+1 point), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
+- `table.dc_rate.band12.$1` (shift a rate band bound (+$1), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
+- `table.dc_rate.band12.+1pt` (shift a rate band's rates (+1 point), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
+- `table.dc_rate.band13.$1` (shift a rate band bound (+$1), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
+- `table.dc_rate.band13.+1pt` (shift a rate band's rates (+1 point), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
+- `table.dc_rate.band14.$1` (shift a rate band bound (+$1), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
+- `table.dc_rate.band14.+1pt` (shift a rate band's rates (+1 point), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
+- `table.dc_rate.band15.+1pt` (shift a rate band's rates (+1 point), dc_rate): Unread table: no line of any form or definition looks up dc_rate, so changing it cannot change any value.
+- `table.savers_rate.band0.$1` (shift a rate band bound (+$1), savers_rate): Unread table: no line of any form or definition looks up savers_rate, so changing it cannot change any value.
+- `table.savers_rate.band0.+1pt` (shift a rate band's rates (+1 point), savers_rate): Unread table: no line of any form or definition looks up savers_rate, so changing it cannot change any value.
+- `table.savers_rate.band1.$1` (shift a rate band bound (+$1), savers_rate): Unread table: no line of any form or definition looks up savers_rate, so changing it cannot change any value.
+- `table.savers_rate.band1.+1pt` (shift a rate band's rates (+1 point), savers_rate): Unread table: no line of any form or definition looks up savers_rate, so changing it cannot change any value.
+- `table.savers_rate.band2.$1` (shift a rate band bound (+$1), savers_rate): Unread table: no line of any form or definition looks up savers_rate, so changing it cannot change any value.
+- `table.savers_rate.band2.+1pt` (shift a rate band's rates (+1 point), savers_rate): Unread table: no line of any form or definition looks up savers_rate, so changing it cannot change any value.
+- `table.savers_rate.band3.$1` (shift a rate band bound (+$1), savers_rate): Unread table: no line of any form or definition looks up savers_rate, so changing it cannot change any value.
+- `table.savers_rate.band3.+1pt` (shift a rate band's rates (+1 point), savers_rate): Unread table: no line of any form or definition looks up savers_rate, so changing it cannot change any value.
+- `table.savers_rate.band4.$1` (shift a rate band bound (+$1), savers_rate): Unread table: no line of any form or definition looks up savers_rate, so changing it cannot change any value.
+- `table.savers_rate.band4.+1pt` (shift a rate band's rates (+1 point), savers_rate): Unread table: no line of any form or definition looks up savers_rate, so changing it cannot change any value.
+- `table.savers_rate.band5.$1` (shift a rate band bound (+$1), savers_rate): Unread table: no line of any form or definition looks up savers_rate, so changing it cannot change any value.
+- `table.savers_rate.band5.+1pt` (shift a rate band's rates (+1 point), savers_rate): Unread table: no line of any form or definition looks up savers_rate, so changing it cannot change any value.
+- `table.savers_rate.band6.$1` (shift a rate band bound (+$1), savers_rate): Unread table: no line of any form or definition looks up savers_rate, so changing it cannot change any value.
+- `table.savers_rate.band6.+1pt` (shift a rate band's rates (+1 point), savers_rate): Unread table: no line of any form or definition looks up savers_rate, so changing it cannot change any value.
+- `table.savers_rate.band7.$1` (shift a rate band bound (+$1), savers_rate): Unread table: no line of any form or definition looks up savers_rate, so changing it cannot change any value.
+- `table.savers_rate.band7.+1pt` (shift a rate band's rates (+1 point), savers_rate): Unread table: no line of any form or definition looks up savers_rate, so changing it cannot change any value.
+- `table.savers_rate.band8.$1` (shift a rate band bound (+$1), savers_rate): Unread table: no line of any form or definition looks up savers_rate, so changing it cannot change any value.
+- `table.savers_rate.band8.+1pt` (shift a rate band's rates (+1 point), savers_rate): Unread table: no line of any form or definition looks up savers_rate, so changing it cannot change any value.
+- `table.savers_rate.band9.+1pt` (shift a rate band's rates (+1 point), savers_rate): Unread table: no line of any form or definition looks up savers_rate, so changing it cannot change any value.
 
 ## Surviving — not yet explained
 

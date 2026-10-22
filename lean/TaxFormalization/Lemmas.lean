@@ -387,4 +387,79 @@ theorem keyedLookup_rate_bounded {rows : List (List String × (Int × Int))} {ke
     (h : keyedLookup rows keys = some (n, d)) : 0 ≤ n ∧ n ≤ d :=
   hb _ (keyedLookup_mem h)
 
+
+/-! ### rate_lookup -/
+
+/-- A band that holds a key holds every smaller key. -/
+theorem bandHolds_mono {hi : Option Int} {k k' : Int} (hk : k ≤ k') (h : bandHolds hi k' = true) :
+    bandHolds hi k = true := by
+  cases hi with
+  | none => rfl
+  | some x => simp [bandHolds] at h ⊢; omega
+
+/-- A found rate is the rate of a band of the table that holds the key. -/
+theorem rateBand_mem {V : Type} {bands : List (Option Int × V)} {key : Int} {v : V}
+    (h : rateBand bands key = some v) : ∃ hi, (hi, v) ∈ bands ∧ bandHolds hi key = true := by
+  unfold rateBand at h
+  cases hf : bands.find? (fun b => bandHolds b.1 key) with
+  | none => simp [hf] at h
+  | some b =>
+    simp [hf] at h
+    subst h
+    have hp : bandHolds b.1 key = true := List.find?_some (p := fun c : Option Int × V => bandHolds c.1 key) hf
+    exact ⟨b.1, List.mem_of_find?_eq_some hf, hp⟩
+
+/-- Every band before the one found ends below the key: with contiguous bands, the
+found band is the one with over < key ≤ not over. -/
+theorem rateBand_first {V : Type} {bands : List (Option Int × V)} {key : Int} {v : V}
+    (h : rateBand bands key = some v) :
+    ∃ pre hi post, bands = pre ++ (hi, v) :: post ∧ bandHolds hi key = true ∧
+      ∀ b ∈ pre, ∃ x, b.1 = some x ∧ x < key := by
+  unfold rateBand at h
+  cases hf : bands.find? (fun b => bandHolds b.1 key) with
+  | none => simp [hf] at h
+  | some b =>
+    simp [hf] at h
+    subst h
+    obtain ⟨hb, pre, post, heq, hpre⟩ := List.find?_eq_some_iff_append.mp hf
+    refine ⟨pre, b.1, post, heq, hb, ?_⟩
+    intro c hc
+    have hn := hpre c hc
+    rcases c with ⟨hi, w⟩
+    cases hi with
+    | none => simp [bandHolds] at hn
+    | some x => exact ⟨x, rfl, by simp [bandHolds] at hn; omega⟩
+
+/-- A table with a band open above gives every key a rate. -/
+theorem rateBand_total {V : Type} {bands : List (Option Int × V)} {key : Int}
+    (h : ∃ v, (none, v) ∈ bands) : (rateBand bands key).isSome := by
+  obtain ⟨v, hv⟩ := h
+  unfold rateBand
+  rw [Option.isSome_map]
+  exact List.find?_isSome.mpr ⟨(none, v), hv, rfl⟩
+
+/-- A table of rates between 0 and 1 yields a rate between 0 and 1. -/
+theorem rateBand_rate_bounded {bands : List (Option Int × (Int × Int))} {key n d : Int}
+    (hb : ∀ b ∈ bands, 0 ≤ b.2.1 ∧ b.2.1 ≤ b.2.2) (h : rateBand bands key = some (n, d)) :
+    0 ≤ n ∧ n ≤ d := by
+  obtain ⟨_, hm, _⟩ := rateBand_mem h
+  exact hb _ hm
+
+/-- A larger key never reaches an earlier band: the band found is monotone in the key. -/
+theorem rateBand_index_mono {V : Type} (bands : List (Option Int × V)) {k k' : Int} (hk : k ≤ k') :
+    bands.findIdx (fun b => bandHolds b.1 k) ≤ bands.findIdx (fun b => bandHolds b.1 k') := by
+  induction bands with
+  | nil => simp
+  | cons b bs ih =>
+    rw [List.findIdx_cons, List.findIdx_cons]
+    cases h1 : bandHolds b.1 k with
+    | true => simp
+    | false =>
+      have h2 : bandHolds b.1 k' = false := by
+        cases h : bandHolds b.1 k' with
+        | false => rfl
+        | true => rw [bandHolds_mono hk h] at h1; exact absurd h1 (by decide)
+      simp only [h2, cond_false]
+      omega
+
 end TaxFormalization

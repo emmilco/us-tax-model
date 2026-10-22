@@ -54,6 +54,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | auto_limit.md | keyed | 0 rows |
 | auto_limit_first_nobonus.md | keyed | 0 rows |
 | class_lives.md | keyed | 0 rows |
+| dc_rate.md | rate_bands | 0 rows |
 | eic_0.md | tax_table | 1376 rows |
 | eic_1.md | tax_table | 1376 rows |
 | eic_2.md | tax_table | 1376 rows |
@@ -64,6 +65,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | quarter_convention.md | keyed | 0 rows |
 | rate_schedule.md | bracket_schedule | 4 rows |
 | recovery_year.md | keyed | 0 rows |
+| savers_rate.md | rate_bands | 0 rows |
 | simple_catchup.md | keyed | 0 rows |
 | tax_table.md | tax_table | 2062 rows |
 | params.md | parameters | |

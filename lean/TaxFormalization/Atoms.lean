@@ -54,6 +54,20 @@ count); the build-time checker requires a table's key tuples to be distinct. -/
 def keyedLookup {V : Type} (rows : List (List String × V)) (keys : List String) : Option V :=
   (rows.find? (fun r => r.1 == keys)).map Prod.snd
 
+/-- Whether a band whose upper bound ("but not over") is `hi` holds `key` once every
+earlier band has been passed over; `none` is an open upper end. -/
+def bandHolds (hi : Option Int) (key : Int) : Bool :=
+  match hi with
+  | none => true
+  | some h => decide (key ≤ h)
+
+/-- The `rate_lookup` atom: the rate of the first band, in order, whose upper bound is
+at least `key`, or none when there is none. The build-time checker requires the bands
+of a table to be contiguous with increasing bounds, the first open below and the last
+open above, so the first such band is the one with over < key ≤ not over. -/
+def rateBand {V : Type} (bands : List (Option Int × V)) (key : Int) : Option V :=
+  (bands.find? (fun b => bandHolds b.1 key)).map Prod.snd
+
 /-- Round to the nearest unit, half-up (the printed whole-dollar rule with
     unit = 100). -/
 def roundHalfUpToUnit (x unit : Int) : Int := ((2 * x + unit) / (2 * unit)) * unit
