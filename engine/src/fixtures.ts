@@ -41,7 +41,7 @@ export interface FixtureFile {
 export function loadCases(): FixtureFile {
   const dir = yearPath("fixtures");
   const params = loadCanonical().params;
-  const cases = readdirSync(dir).filter(f => /^(stage[0-9]+|classm)\.json$/.test(f)).sort().flatMap(f => (JSON.parse(readFileSync(join(dir,f),"utf8")) as FixtureFile).cases);
+  const cases = readdirSync(dir).filter(f => /^(stage[0-9]+|classm|classm\.[a-z]+)\.json$/.test(f)).sort().flatMap(f => (JSON.parse(readFileSync(join(dir,f),"utf8")) as FixtureFile).cases);
   return { tax_year: YEAR, cases: cases.map(c => ({ ...c, inputs: resolveInputs(c.inputs, params, c.id) })) };
 }
 

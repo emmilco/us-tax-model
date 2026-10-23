@@ -1,14 +1,14 @@
 # Evidence coverage per line
 
-**Scoreboard.** Share of computed lines with at least one outside-family assertion: 19 of 1510 (1.3%). B: 0, second-family M: 0, E: 19.
+**Scoreboard.** Share of computed lines with at least one outside-family assertion: 38 of 1510 (2.5%). B: 0, second-family M: 0, E: 38.
 
 A computed line is one whose atom is not `input`, `param` or `copy`. An outside-family assertion on a line is a class B fixture (human hand-work), a class M fixture whose recorded model is not a Claude model (second-family M), or an engine assertion (E) under the rule stated below; the three sub-counts are over the same computed lines, so a line with two kinds counts once in the share. Class A, Claude-family M, C and R assertions do not move the number: the first three are one model family reading the archived text, and R is the project's own evaluator.
 
 Fixtures that assert each line, by evidence class, as a count of cases (ids listed when two or fewer). A — official IRS worked example, cited. B — human hand-work recorded with the worker and the document revision; none yet. C — a named, versioned calculator or engine record in fixtures/2025/differential/ (spec 6.1); none yet. M — isolated model hand-work with the model, prompt hash and snapshot recorded (fixtures/2025/classm.json, reviews/2025/classm/); second-family M fixtures are those whose recorded model does not start with "claude". E — the engine differential (tools/engines; reports/2025/engine_differential.md and .json): PolicyEngine-US (PE) and Tax-Calculator (TC) run over 1700 generated returns. A line gets an E assertion only when, for at least one engine, the engine computes the line rather than taking it whole as an input, the project value was nonzero on at least 50 compared returns, and fewer than half of the nonzero returns the engine reached (compared plus excluded) were excluded under an engine limitation; the cell prints each engine's compared, nonzero and excluded counts, and an engine that falls short of the rule is marked "below rule" and asserts nothing. R — recorded regression from the project's own evaluator, no class claimed; agreement with the Lean reference evaluator (reports/2025/evaluator_agreement.md) is evaluator agreement over the same data, not an independent engine, and earns no class.
 
-An outside-family assertion (B, second-family M or E) on a line whose atom is `copy` also credits the first line along its copy chain whose atom is not `copy`, because a copy's value equals its source's exactly, so agreement on the copy is agreement on the source; the table marks each such credit "via <copy line>" (the chain walked, when longer than one copy), the copy line keeps its own cell, and the sub-counts above include credited lines. In this report 15 assertions are credited through copies (B cases: 0; second-family M cases: 0; engine-line assertions: 15); every asserted copy line resolved to a source.
+An outside-family assertion (B, second-family M or E) on a line whose atom is `copy` also credits the first line along its copy chain whose atom is not `copy`, because a copy's value equals its source's exactly, so agreement on the copy is agreement on the source; the table marks each such credit "via <copy line>" (the chain walked, when longer than one copy), the copy line keeps its own cell, and the sub-counts above include credited lines. In this report 16 assertions are credited through copies (B cases: 0; second-family M cases: 0; engine-line assertions: 16); every asserted copy line resolved to a source.
 
-Engine ids with no line of their own (never an E assertion): f1040.tax_before_credits (PE), f1040.tax_before_credits (TC). Mapped lines taken whole from the generator's facts: none. Components of compared lines that enter the engine as generator facts rather than the engine's own form arithmetic (the line still counts as engine-computed; the component does not): PolicyEngine-US f1040.line10: the HSA deduction (Form 8889 line 13) enters as the generator's health_savings_account_ald; the engine computes the educator, half-of-self-employment-tax and student loan interest components and the sum; Tax-Calculator f1040.line10: the HSA deduction (e03290) and the educator expenses deduction (e03220) enter as the generator's amounts; the engine computes the half-of-self-employment-tax component and the sum (returns with student loan interest are excluded); Tax-Calculator f1040.line20: the foreign tax paid (e07300) is a supplied amount; the engine computes the credit limit.
+Engine ids with no line of their own (never an E assertion): f1040.tax_before_credits (PE), f1040.tax_before_credits (TC). Mapped lines taken whole from the generator's facts: none. Components of compared lines that enter the engine as generator facts rather than the engine's own form arithmetic (the line still counts as engine-computed; the component does not): PolicyEngine-US f1040.line10: the HSA deduction (Form 8889 line 13) enters as the generator's health_savings_account_ald; the engine computes the educator, half-of-self-employment-tax, IRA and student loan interest components and the sum; Tax-Calculator f1040.line10: the HSA deduction (e03290), the educator expenses deduction (e03220) and the IRA contributions (e03150) enter as the generator's amounts; the engine computes the half-of-self-employment-tax component and the sum (returns with student loan interest, or an IRA deduction phased out by modified AGI, are excluded); Tax-Calculator f1040.line20: the foreign tax paid (e07300) is a supplied amount; the engine computes the credit limit; Tax-Calculator f1040.line19: the Form 5695 credits before their limits (e07260) enter as the generator's amounts figured from the costs; the engine subtracts them in Credit Limit Worksheet A; Tax-Calculator f1040.line24: the Form 5695 credits before their limits (e07260) enter as the generator's amounts figured from the costs; the engine applies the tax limit; returns with a saver's credit are excluded.
 
 ## Form 4562 — one item of depreciable property (other than a vehicle) of a business
 
@@ -270,7 +270,7 @@ Unasserted lines: div.box1a, div.box1b, div.box2a, div.box5, div.section1202, di
 | eic.step5_line2 | — | — | — | — | — | — |
 | eic.step5_line3 | — | — | — | — | — | — |
 | eic.step5_line4 | — | — | — | — | — | — |
-| eic.earned_income | — | — | — | — | — | — |
+| eic.earned_income | — | — | — | — | PE: 1400 compared (1400 nonzero), 300 excluded; TC: 1400 compared (1400 nonzero), 300 excluded | — |
 | eic.sc_count | — | — | — | — | — | — |
 | eic.self_employed | — | — | — | — | — | — |
 | eic.wsb_se | — | — | — | — | — | — |
@@ -279,7 +279,7 @@ Unasserted lines: div.box1a, div.box1b, div.box2a, div.box5, div.section1202, di
 | eic.earned_for_limit | — | — | — | — | — | — |
 | eic.step5_income | — | — | — | — | — | — |
 | eic.eligible | — | — | — | — | — | 20 |
-| eic.line1 | — | — | — | 6 | — | 5 |
+| eic.line1 | — | — | — | 6 | PE: 1700 compared (1699 nonzero), 0 excluded; TC: 1700 compared (1699 nonzero), 0 excluded | 5 |
 | eic.line1_in_table | — | — | — | — | — | — |
 | eic.line1_table0 | — | — | — | — | — | — |
 | eic.line1_table1 | — | — | — | — | — | — |
@@ -313,7 +313,7 @@ Unasserted lines: div.box1a, div.box1b, div.box2a, div.box5, div.section1202, di
 | eic.separated_box | — | — | — | — | — | — |
 | eic.clergy | — | — | — | — | — | — |
 
-Unasserted lines: eic.age_range_count, eic.zero, eic.qc_count, eic.married_rules, eic.top_limit, eic.below_top, eic.limit0_other, eic.limit1_other, eic.limit2_other, eic.limit3_other, eic.limit0_joint, eic.limit1_joint, eic.limit2_joint, eic.limit3_joint, eic.limit_other, eic.limit_joint, eic.limit, eic.step1_income, eic.step1_ssn, eic.step1_foreign, eic.step1_resident, eic.investment_income, eic.step2_other, eic.step3, eic.step34, eic.step5_line1, eic.step5_line2, eic.step5_line3, eic.step5_line4, eic.earned_income, eic.sc_count, eic.self_employed, eic.wsb_se, eic.earned_for_limit, eic.step5_income, eic.line1_in_table, eic.line1_table0, eic.line1_table1, eic.line1_table2, eic.line1_table3, eic.line1_table, eic.threshold_other, eic.threshold_joint, eic.line5_threshold, eic.threshold0_other, eic.threshold1_other, eic.threshold0_joint, eic.threshold1_joint, eic.line3_table0, eic.line3_table1, eic.line3_table2, eic.line3_table3, eic.smaller, eic.after_line4, eic.reached_step3, eic.wsb_4b_positive, eic.separated_box, eic.clergy
+Unasserted lines: eic.age_range_count, eic.zero, eic.qc_count, eic.married_rules, eic.top_limit, eic.below_top, eic.limit0_other, eic.limit1_other, eic.limit2_other, eic.limit3_other, eic.limit0_joint, eic.limit1_joint, eic.limit2_joint, eic.limit3_joint, eic.limit_other, eic.limit_joint, eic.limit, eic.step1_income, eic.step1_ssn, eic.step1_foreign, eic.step1_resident, eic.investment_income, eic.step2_other, eic.step3, eic.step34, eic.step5_line1, eic.step5_line2, eic.step5_line3, eic.step5_line4, eic.sc_count, eic.self_employed, eic.wsb_se, eic.earned_for_limit, eic.step5_income, eic.line1_in_table, eic.line1_table0, eic.line1_table1, eic.line1_table2, eic.line1_table3, eic.line1_table, eic.threshold_other, eic.threshold_joint, eic.line5_threshold, eic.threshold0_other, eic.threshold1_other, eic.threshold0_joint, eic.threshold1_joint, eic.line3_table0, eic.line3_table1, eic.line3_table2, eic.line3_table3, eic.smaller, eic.after_line4, eic.reached_step3, eic.wsb_4b_positive, eic.separated_box, eic.clergy
 
 ## Form 1040 — U.S. Individual Income Tax Return (the lines this tool computes)
 
@@ -337,42 +337,42 @@ Unasserted lines: eic.age_range_count, eic.zero, eic.qc_count, eic.married_rules
 | f1040.plan_rollovers | — | — | — | — | — | — |
 | f1040.line5c_rollover | — | — | — | 4 | — | 5 |
 | f1040.line6a | — | — | — | 4 | — | 2 (stage10.ss.top, stage16.ira.i10) |
-| f1040.line6b | — | — | — | 4 | PE: 1680 compared (488 nonzero), 20 excluded; TC: 1451 compared (428 nonzero), 249 excluded | 17 |
+| f1040.line6b | — | — | — | 4 | PE: 1668 compared (472 nonzero), 17 excluded; TC: 1370 compared (414 nonzero), 330 excluded | 17 |
 | f1040.line6c | — | — | — | 4 | — | 1 (stage10.refuse.lump_sum) |
 | f1040.line6d | — | — | — | 4 | — | 2 (stage10.ss.mfs_together, stage10.ss.mfs_apart) |
 | f1040.line7a | 1 (example.official) | — | — | 4 | — | 120 |
 | f1040.line8 | — | — | — | 4 | — | 51 |
 | f1040.line9 | — | — | — | 4 | — | 22 |
-| f1040.line10 | — | — | — | 4 | PE: 1680 compared (681 nonzero), 20 excluded; TC: 1451 compared (513 nonzero), 249 excluded | 41 |
+| f1040.line10 | — | — | — | 4 | PE: 1642 compared (977 nonzero), 17 excluded; TC: 1370 compared (771 nonzero), 330 excluded | 41 |
 | f1040.line11a | — | — | — | 4 | E via f1040.line11b (PE, TC) | 142 |
-| f1040.line11b | — | — | — | 4 | PE: 1680 compared (1680 nonzero), 20 excluded; TC: 1451 compared (1451 nonzero), 249 excluded | 36 |
+| f1040.line11b | — | — | — | 4 | PE: 1642 compared (1642 nonzero), 17 excluded; TC: 1370 compared (1370 nonzero), 330 excluded | 36 |
 | f1040.line12e | — | — | — | 4 | — | 46 |
-| f1040.line13a | — | — | — | 4 | PE: 1547 compared (397 nonzero), 121 excluded; TC below rule: 1111 compared (143 nonzero), 571 excluded | 7 |
-| f1040.line13b | — | — | — | 4 | PE: 1556 compared (530 nonzero), 144 excluded; TC: 1451 compared (530 nonzero), 249 excluded | 13 |
+| f1040.line13a | — | — | — | 4 | PE: 1511 compared (385 nonzero), 118 excluded; TC below rule: 1049 compared (134 nonzero), 633 excluded | 7 |
+| f1040.line13b | — | — | — | 4 | PE: 1539 compared (515 nonzero), 140 excluded; TC: 1370 compared (493 nonzero), 330 excluded | 13 |
 | f1040.line14 | — | — | — | 4 | — | 22 |
-| f1040.line15 | 1 (example.official) | — | — | 4 | PE: 1440 compared (1274 nonzero), 239 excluded; TC: 973 compared (973 nonzero), 727 excluded | 139 |
+| f1040.line15 | 1 (example.official) | — | — | 4 | PE: 1405 compared (1233 nonzero), 235 excluded; TC: 902 compared (902 nonzero), 798 excluded | 139 |
 | f1040.gate.qdcg_applies | 1 (example.official) | — | — | — | — | 65 |
 | f1040.gate.sdtw | — | — | — | — | — | 5 |
 | f1040.non_sdtw_tax | — | — | — | — | — | 2 (stage4.sdtw.special_rates, stage4.sdtw.skip22) |
-| f1040.line16 | 1 (example.official) | — | — | 4 | PE: 1415 compared (1233 nonzero), 264 excluded; TC: 973 compared (853 nonzero), 710 excluded | 142 |
+| f1040.line16 | 1 (example.official) | — | — | 4 | PE: 1380 compared (1189 nonzero), 260 excluded; TC: 918 compared (789 nonzero), 765 excluded | 142 |
 | f1040.line17 | — | — | — | 4 | — | 5 |
 | f1040.line18 | — | — | — | 4 | — | 133 |
-| f1040.line19 | — | — | — | 4 | PE: 1024 compared (486 nonzero), 661 excluded; TC: 824 compared (451 nonzero), 876 excluded | 53 |
-| f1040.line20 | — | — | — | 4 | TC: 986 compared (214 nonzero), 710 excluded | 3 |
+| f1040.line19 | — | — | — | 4 | PE: 973 compared (429 nonzero), 684 excluded; TC: 706 compared (370 nonzero), 994 excluded | 53 |
+| f1040.line20 | — | — | — | 4 | TC: 928 compared (426 nonzero), 765 excluded | 3 |
 | f1040.line21 | — | — | — | 4 | — | 4 |
 | f1040.line22 | — | — | — | 4 | — | 6 |
 | f1040.line23 | — | — | — | 4 | — | 15 |
-| f1040.line24 | — | — | — | 4 | TC: 943 compared (737 nonzero), 740 excluded | 6 |
+| f1040.line24 | — | — | — | 4 | TC: 849 compared (625 nonzero), 834 excluded | 6 |
 | f1040.line25a | — | — | — | 4 | — | 3 |
 | f1040.line25b | — | — | — | — | — | 3 |
 | f1040.line25c | — | — | — | — | — | 3 |
 | f1040.line25d | — | — | — | 4 | — | 3 |
 | f1040.line26 | — | — | — | — | — | 3 |
-| f1040.line27a | — | — | — | 4 | PE: 1680 compared (280 nonzero), 20 excluded; TC: 1451 compared (235 nonzero), 249 excluded | 71 |
+| f1040.line27a | — | — | — | 4 | PE: 1642 compared (283 nonzero), 17 excluded; TC: 1370 compared (239 nonzero), 330 excluded | 71 |
 | f1040.line27b | — | — | — | 4 | — | 2 (stage9.eic.no_child.4000, stage9.eic.refuse.clergy_schedule1) |
 | f1040.line27c | — | — | — | 4 | — | 10 |
 | f1040.separated_spouses | — | — | — | 4 | — | 4 |
-| f1040.line28 | — | — | — | 4 | PE: 1024 compared (206 nonzero), 661 excluded; TC below rule: 824 compared (109 nonzero), 876 excluded | 31 |
+| f1040.line28 | — | — | — | 4 | PE: 973 compared (223 nonzero), 684 excluded; TC below rule: 706 compared (89 nonzero), 994 excluded | 31 |
 | f1040.line29 | — | — | — | 4 | — | 4 |
 | f1040.line30 | — | — | — | 4 | — | 4 |
 | f1040.line31 | — | — | — | 4 | — | 24 |
@@ -433,12 +433,12 @@ Unasserted lines: f1040.ira_rollovers, f1040.plan_rollovers
 | f2441.line9a | — | — | — | 6 | — | 26 |
 | f2441.line9b | — | — | — | 6 | — | 1 (stage15.refuse.f2441.prior_year) |
 | f2441.prior_year | — | — | — | — | — | — |
-| f2441.line9c | — | — | — | 6 | — | 26 |
+| f2441.line9c | — | — | — | 6 | PE: 277 compared (262 nonzero), 17 excluded | 26 |
 | f2441.clw1 | — | — | — | 5 | — | 10 |
 | f2441.clw2 | — | — | — | 6 | — | 10 |
 | f2441.clw3 | — | — | — | 5 | — | 10 |
 | f2441.line10 | — | — | — | 5 | — | 26 |
-| f2441.line11 | — | — | — | 6 | — | 30 |
+| f2441.line11 | — | — | — | 6 | PE: 229 compared (181 nonzero), 260 excluded; TC: 165 compared (133 nonzero), 765 excluded | 30 |
 | f2441.line12 | — | — | — | 6 | — | 7 |
 | f2441.line13 | — | — | — | — | — | 7 |
 | f2441.line14 | — | — | — | — | — | 7 |
@@ -548,7 +548,7 @@ Unasserted lines: f4952.zero, f4952.bad_dividends, f4952.bad_election, f4952.exc
 | f5695.line7a | — | — | — | — | — | — |
 | f5695.line11 | — | — | — | 7 | — | 1 (stage15.refuse.f5695.fuel_cell) |
 | f5695.line12 | — | — | — | — | — | 1 (stage15.f5695.s5) |
-| f5695.line13 | — | — | — | 7 | — | 12 |
+| f5695.line13 | — | — | — | 7 | PE: 172 compared (172 nonzero), 17 excluded | 12 |
 | f5695.claiming_part1 | — | — | — | — | — | — |
 | f5695.rce_ws1 | — | — | — | — | — | 11 |
 | f5695.ctc_line19 | — | — | — | — | — | — |
@@ -556,7 +556,7 @@ Unasserted lines: f4952.zero, f4952.bad_dividends, f4952.bad_election, f4952.exc
 | f5695.rce_ws2 | — | — | — | — | — | 12 |
 | f5695.rce_ws3 | — | — | — | — | — | 11 |
 | f5695.line14 | — | — | — | 7 | — | 12 |
-| f5695.line15 | — | — | — | 7 | — | 12 |
+| f5695.line15 | — | — | — | 7 | PE: 139 compared (106 nonzero), 260 excluded | 12 |
 | f5695.line16 | — | — | — | 7 | — | 9 |
 | f5695.line17a | — | — | — | — | — | — |
 | f5695.line17b | — | — | — | — | — | — |
@@ -662,12 +662,12 @@ Unasserted lines: f4952.zero, f4952.bad_dividends, f4952.bad_election, f4952.exc
 | f5695.joint_occupancy | — | — | — | — | — | — |
 | f5695.separate_homes | — | — | — | — | — | — |
 | f5695.separate_homes_joint | — | — | — | — | — | — |
-| f5695.line30 | — | — | — | 7 | — | 27 |
+| f5695.line30 | — | — | — | 7 | PE: 146 compared (146 nonzero), 57 excluded | 27 |
 | f5695.eehi_ws1 | — | — | — | — | — | 20 |
 | f5695.eehi_ws2 | — | — | — | — | — | 21 |
 | f5695.eehi_ws3 | — | — | — | — | — | 20 |
 | f5695.line31 | — | — | — | 7 | — | 20 |
-| f5695.line32 | — | — | — | 7 | — | 22 |
+| f5695.line32 | — | — | — | 7 | PE: 123 compared (100 nonzero), 297 excluded | 22 |
 | f5695.line32a | — | — | — | 7 | — | — |
 | f5695.condo | — | — | — | — | — | — |
 | f5695.line32b | — | — | — | 7 | — | — |
@@ -721,7 +721,7 @@ Unasserted lines: f8606.dist
 | f8880.line7 | — | — | — | 4 | — | 33 |
 | f8880.line8 | — | — | — | 2 (classm.f8880.2, classm.f8880.3) | — | 32 |
 | f8880.line9 | — | — | — | 3 | — | 31 |
-| f8880.line10 | — | — | — | 4 | — | 27 |
+| f8880.line10 | — | — | — | 4 | PE: 1639 compared (154 nonzero), 20 excluded | 27 |
 | f8880.clw1 | — | — | — | — | — | 27 |
 | f8880.clw2 | — | — | — | — | — | 27 |
 | f8880.clw3 | — | — | — | — | — | 27 |
@@ -730,7 +730,7 @@ Unasserted lines: f8606.dist
 | f8880.line3_total | — | — | — | — | — | — |
 | f8880.can_take | — | — | — | — | — | 1 (stage15.regress.f8880.agi_limit) |
 | f8880.line12_figured | — | — | — | — | — | — |
-| f8880.line12 | — | — | — | 4 | — | 28 |
+| f8880.line12 | — | — | — | 4 | PE: 1398 compared (68 nonzero), 263 excluded | 28 |
 
 Unasserted lines: f8880.zero, f8880.joint, f8880.dist_2025, f8880.prior_joint_sum, f8880.prior_joint, f8880.line4b_joint, f8880.cap, f8880.inelig_a, f8880.inelig_b, f8880.elig_a, f8880.elig_b, f8880.line6a_figured, f8880.line6b_figured, f8880.line3_total, f8880.line12_figured
 
@@ -861,7 +861,7 @@ Unasserted lines: f8889.one, f8889.zero, f8889.twelve, f8889.self_under55, f8889
 | f8959.line15 | — | — | — | 1 (classm.f8959.2) | — | 1 (stage4.medicare.withholding) |
 | f8959.line16 | — | — | — | 2 (classm.f8959.1, classm.f8959.2) | — | 2 (stage16.cleanup.f8959_line16_se_refused, stage4.medicare.withholding) |
 | f8959.line17 | — | — | — | 2 (classm.f8959.1, classm.f8959.2) | — | 1 (stage4.medicare.withholding) |
-| f8959.line18 | — | — | — | 2 (classm.f8959.1, classm.f8959.2) | PE: 1680 compared (168 nonzero), 20 excluded; TC: 1451 compared (143 nonzero), 249 excluded | 20 |
+| f8959.line18 | — | — | — | 2 (classm.f8959.1, classm.f8959.2) | PE: 1683 compared (168 nonzero), 17 excluded; TC: 1370 compared (130 nonzero), 330 excluded | 20 |
 | f8959.line19 | — | — | — | 2 (classm.f8959.1, classm.f8959.2) | — | 2 (stage4.medicare.withholding, stage4.refuse.8959) |
 | f8959.line20 | — | — | — | 2 (classm.f8959.1, classm.f8959.2) | — | 1 (stage4.medicare.withholding) |
 | f8959.line21 | — | — | — | 2 (classm.f8959.1, classm.f8959.2) | — | 1 (stage4.medicare.withholding) |
@@ -902,7 +902,7 @@ Unasserted lines: f8959.zero
 | f8960.line14 | — | — | — | 2 (classm.f8960.1, classm.f8960.2) | — | — |
 | f8960.line15 | — | — | — | 2 (classm.f8960.1, classm.f8960.2) | — | — |
 | f8960.line16 | — | — | — | 2 (classm.f8960.1, classm.f8960.2) | — | 1 (stage16.small.s10) |
-| f8960.line17 | — | — | — | 2 (classm.f8960.1, classm.f8960.2) | PE: 1528 compared (181 nonzero), 172 excluded; TC: 1384 compared (154 nonzero), 316 excluded | 20 |
+| f8960.line17 | — | — | — | 2 (classm.f8960.1, classm.f8960.2) | PE: 1492 compared (172 nonzero), 169 excluded; TC: 1306 compared (137 nonzero), 394 excluded | 20 |
 | f8960.bad_allocation | — | — | — | — | — | — |
 
 Unasserted lines: f8960.zero, f8960.bad_allocation
@@ -1092,7 +1092,7 @@ Unasserted lines: household.persons, household.taxpayers, household.spouses, hou
 | ira.line11b | — | — | — | 2 (classm.ira.1, classm.ira.2) | — | 6 |
 | ira.line12a | — | — | — | 2 (classm.ira.1, classm.ira.2) | — | 17 |
 | ira.line12b | — | — | — | 2 (classm.ira.1, classm.ira.2) | — | 6 |
-| ira.total | — | — | — | — | — | 1 (stage16.refuse.ira.deduct_less) |
+| ira.total | — | — | — | — | E via s1.line20 → ira.line20 (PE) | 1 (stage16.refuse.ira.deduct_less) |
 | ira.deduct_less | — | — | — | — | — | — |
 | ira.less_gate | — | — | — | — | — | — |
 | ira.line20 | — | — | — | — | — | 10 |
@@ -1602,7 +1602,7 @@ Unasserted lines: retirement.zero, retirement.one
 | s1.line19a | — | — | — | 3 | — | 4 |
 | s1.line19b_notice | — | — | — | — | — | 2 (stage16.mut.ira_alimony_comp, stage16.mut.alimony_paid) |
 | s1.line19c_notice | — | — | — | — | — | 2 (stage16.mut.ira_alimony_comp, stage16.mut.alimony_paid) |
-| s1.line20 | — | — | — | 3 | — | 28 |
+| s1.line20 | — | — | — | 3 | PE: 1642 compared (504 nonzero), 17 excluded | 28 |
 | s1.line21 | — | — | — | 3 | — | 2 (stage11.sli.basic, stage11.refuse.sli_pub970) |
 | s1.jury_to_employer | — | — | — | — | — | — |
 | s1.jury_over | — | — | — | — | — | — |
@@ -1696,7 +1696,7 @@ Unasserted lines: s179.max, s179.line5_full, s179.separate, s179.line5_mfs, s179
 | s1a.line13_amount | — | — | — | — | — | — |
 | s1a.line13_ssn | — | — | — | — | — | — |
 | s1a.line13_claim | — | — | — | — | — | — |
-| s1a.line13 | — | — | — | 1 (classm.s1a.1) | — | 19 |
+| s1a.line13 | — | — | — | 1 (classm.s1a.1) | PE: 1557 compared (164 nonzero), 140 excluded; TC: 1370 compared (169 nonzero), 330 excluded | 19 |
 | s1a.overtime | — | — | — | — | — | — |
 | s1a.ot_ssn_count | — | — | — | — | — | — |
 | s1a.ot_ssn | — | — | — | — | — | — |
@@ -1727,7 +1727,7 @@ Unasserted lines: s179.max, s179.line5_full, s179.separate, s179.line5_mfs, s179
 | s1a.line21_amount | — | — | — | — | — | — |
 | s1a.line21_ssn | — | — | — | — | — | — |
 | s1a.line21_claim | — | — | — | — | — | — |
-| s1a.line21 | — | — | — | 1 (classm.s1a.1) | — | 17 |
+| s1a.line21 | — | — | — | 1 (classm.s1a.1) | PE: 1556 compared (143 nonzero), 140 excluded; TC: 1370 compared (139 nonzero), 330 excluded | 17 |
 | s1a.carloan | — | — | — | — | — | — |
 | s1a.line23_total | — | — | — | — | — | — |
 | s1a.line23 | — | — | — | 1 (classm.s1a.1) | — | 6 |
@@ -1750,7 +1750,7 @@ Unasserted lines: s179.max, s179.line5_full, s179.separate, s179.line5_mfs, s179
 | s1a.line29 | — | — | — | 1 (classm.s1a.1) | — | 4 |
 | s1a.line30_figured | — | — | — | — | — | — |
 | s1a.line30_amount | — | — | — | — | — | — |
-| s1a.line30 | — | — | — | 1 (classm.s1a.1) | — | 15 |
+| s1a.line30 | — | — | — | 1 (classm.s1a.1) | PE: 1555 compared (101 nonzero), 140 excluded; TC: 1370 compared (98 nonzero), 330 excluded | 15 |
 | s1a.senior_count | — | — | — | — | — | — |
 | s1a.senior_any | — | — | — | — | — | — |
 | s1a.part5 | — | — | — | — | — | — |
@@ -1783,7 +1783,7 @@ Unasserted lines: s179.max, s179.line5_full, s179.separate, s179.line5_mfs, s179
 | s1a.spouse_senior_decedent | — | — | — | — | — | — |
 | s1a.line36b_senior | — | — | — | — | — | — |
 | s1a.line36b | — | — | — | 1 (classm.s1a.1) | — | 8 |
-| s1a.line37 | — | — | — | 1 (classm.s1a.1) | — | 16 |
+| s1a.line37 | — | — | — | 1 (classm.s1a.1) | PE: 1670 compared (220 nonzero), 17 excluded; TC: 1370 compared (188 nonzero), 330 excluded | 16 |
 | s1a.line38 | — | — | — | 1 (classm.s1a.1) | E via f1040.line13b (PE, TC) | 7 |
 
 Unasserted lines: s1a.zero, s1a.tip_employers, s1a.tip_total, s1a.tip_reported, s1a.tip_multi, s1a.tip_ssn_count, s1a.tip_ssn, s1a.part2, s1a.line4a_calc, s1a.line4b_calc, s1a.line4c_one, s1a.line4c_calc, s1a.line6_calc, s1a.line7_calc, s1a.tips_max, s1a.base_other, s1a.base_joint, s1a.line8_calc, s1a.line9_calc, s1a.line10_calc, s1a.line10_over, s1a.line10_pos, s1a.line11_thousands, s1a.line12_calc, s1a.line13_figured, s1a.line13_amount, s1a.line13_ssn, s1a.line13_claim, s1a.ot_ssn_count, s1a.ot_ssn, s1a.part3, s1a.line14a_calc, s1a.line14c_calc, s1a.ot_max_other, s1a.ot_max_joint, s1a.ot_max, s1a.line15_calc, s1a.line16_calc, s1a.line17_calc, s1a.line18_calc, s1a.line18_over, s1a.line18_pos, s1a.line19_thousands, s1a.line20_calc, s1a.line21_figured, s1a.line21_amount, s1a.line21_ssn, s1a.line21_claim, s1a.line23_total, s1a.car_max, s1a.part4, s1a.line24_calc, s1a.car_base_other, s1a.car_base_joint, s1a.line25_calc, s1a.line26_calc, s1a.line27_calc, s1a.line27_over, s1a.line27_pos, s1a.line28_thousands, s1a.line29_calc, s1a.line30_figured, s1a.line30_amount, s1a.senior_count, s1a.senior_any, s1a.part5, s1a.line31_calc, s1a.senior_base_other, s1a.senior_base_joint, s1a.line32_calc, s1a.line33_calc, s1a.line33_over, s1a.line33_pos, s1a.line34_calc, s1a.senior_amount, s1a.line35_figured, s1a.line35_calc, s1a.died_before_65_count, s1a.died_before_65, s1a.senior_decedent, s1a.line36a_senior, s1a.line36a_claim, s1a.spouse_senior_count, s1a.spouse_senior, s1a.spouse_died_before_65_count, s1a.spouse_died_before_65, s1a.spouse_senior_decedent, s1a.line36b_senior
@@ -1811,11 +1811,11 @@ Unasserted lines: s2.zero
 | line | A | B | C | M | E | R |
 | --- | --- | --- | --- | --- | --- | --- |
 | s3.line1 | — | — | — | 2 (classm.s3.1, classm.s3.2) | — | — |
-| s3.line2 | — | — | — | 2 (classm.s3.1, classm.s3.2) | — | 31 |
+| s3.line2 | — | — | — | 2 (classm.s3.1, classm.s3.2) | PE: 1431 compared (181 nonzero), 260 excluded; TC: 934 compared (133 nonzero), 765 excluded | 31 |
 | s3.zero | — | — | — | — | — | — |
 | s3.line4 | — | — | — | 2 (classm.s3.1, classm.s3.2) | — | 33 |
-| s3.line5a | — | — | — | 2 (classm.s3.1, classm.s3.2) | — | 28 |
-| s3.line5b | — | — | — | 2 (classm.s3.1, classm.s3.2) | — | 28 |
+| s3.line5a | — | — | — | 2 (classm.s3.1, classm.s3.2) | PE: 1436 compared (106 nonzero), 260 excluded | 28 |
+| s3.line5b | — | — | — | 2 (classm.s3.1, classm.s3.2) | PE: 1400 compared (100 nonzero), 297 excluded | 28 |
 | s3.line8 | — | — | — | 2 (classm.s3.1, classm.s3.2) | E via f1040.line20 (TC) | 4 |
 | s3.mfs | — | — | — | — | — | — |
 | s3.line9 | — | — | — | — | — | — |
@@ -1847,7 +1847,7 @@ Unasserted lines: s3.zero, s3.mfs
 | s8812.excess | — | — | — | — | — | 24 |
 | s8812.line10 | — | — | — | 4 | — | 28 |
 | s8812.line11 | — | — | — | 4 | — | 28 |
-| s8812.line12 | — | — | — | 4 | — | 29 |
+| s8812.line12 | — | — | — | 4 | PE: 1642 compared (891 nonzero), 17 excluded | 29 |
 | s8812.clw_a1 | — | — | — | — | — | 30 |
 | s8812.clw_a2 | — | — | — | — | — | 30 |
 | s8812.clw_a3 | — | — | — | — | — | 30 |
@@ -1967,7 +1967,7 @@ Unasserted lines: s8812.zero, s8812.eiw_2b, s8812.eiw_7_figured, s8812.eiw_3_pos
 | sa.line12 | 1 (stage4.refuse.gift.sectionB) | — | — | 7 | — | 9 |
 | sa.form8283 | — | — | — | — | — | 3 |
 | sa.line14 | — | — | — | 7 | — | 1 (stage4.deductions.combined) |
-| sa.line17 | — | — | — | 7 | PE: 1571 compared (706 nonzero), 129 excluded; TC: 1269 compared (569 nonzero), 431 excluded | 8 |
+| sa.line17 | — | — | — | 7 | PE: 1532 compared (682 nonzero), 153 excluded; TC: 1195 compared (526 nonzero), 505 excluded | 8 |
 | sa.standardbase | — | — | — | — | — | — |
 | sa.extra | — | — | — | — | — | — |
 | sa.boxes_age65 | — | — | — | — | — | 1 (stage16.sa.decedent_spouse) |
@@ -1975,9 +1975,9 @@ Unasserted lines: s8812.zero, s8812.eiw_2b, s8812.eiw_7_figured, s8812.eiw_3_pos
 | sa.boxes_blind | — | — | — | — | — | — |
 | sa.extra_blind | — | — | — | — | — | — |
 | sa.standardraw | — | — | — | — | — | — |
-| sa.standard | — | — | — | — | PE: 1680 compared (1680 nonzero), 20 excluded | 12 |
+| sa.standard | — | — | — | — | PE: 1683 compared (1683 nonzero), 17 excluded | 12 |
 | sa.itemizes | — | — | — | — | — | 6 |
-| sa.deduction | — | — | — | — | PE: 1571 compared (1571 nonzero), 129 excluded; TC: 973 compared (973 nonzero), 727 excluded | 7 |
+| sa.deduction | — | — | — | — | PE: 1532 compared (1532 nonzero), 153 excluded; TC: 902 compared (902 nonzero), 798 excluded | 7 |
 | sa.mfs_spouse_itemizes | — | — | — | — | — | — |
 
 Unasserted lines: sa.mfs_spouse_extra, sa.age65_count, sa.age65, sa.agi, sa.zero, sa.saltbase, sa.saltfloor, sa.saltthreshold, sa.saltexcess, sa.saltreduction, sa.saltremaining, sa.saltfloor_applied, sa.mfs, sa.saltlimit, sa.line16_gambling, sa.standardbase, sa.extra, sa.extra_age65, sa.boxes_blind, sa.extra_blind, sa.standardraw, sa.mfs_spouse_itemizes
@@ -2763,5 +2763,5 @@ Unasserted lines: below_boundary, table_tax, worksheet_tax, tax
 
 Unasserted lines: single.row1.product, single.row1.tax, single.row2.product, single.row2.tax, single.row3.product, single.row3.tax, single.row4.product, single.row4.tax, single.row5.product, single.row5.tax, single.result, mfj.row1.product, mfj.row1.tax, mfj.row2.product, mfj.row2.tax, mfj.row3.product, mfj.row3.tax, mfj.row4.product, mfj.row4.tax, mfj.row5.product, mfj.row5.tax, mfj.result, mfs.row1.product, mfs.row1.tax, mfs.row2.product, mfs.row2.tax, mfs.row3.product, mfs.row3.tax, mfs.row4.product, mfs.row4.tax, mfs.row5.product, mfs.row5.tax, mfs.result, hoh.row1.product, hoh.row1.tax, hoh.row2.product, hoh.row2.tax, hoh.row3.product, hoh.row3.tax, hoh.row4.product, hoh.row4.tax, hoh.row5.product, hoh.row5.tax, hoh.result, tax
 
-Unasserted computed lines across all documents: 621. (Supplied input lines are excluded; their correctness rests on reading the source document. Intermediate lines listed as unasserted are still exercised transitively; their detectability is tracked in reports/2025/mutation.md.)
-Asserted keys not matching a line id: person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line3, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.positive, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line4a, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line4b, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.owes, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line4c, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line5b, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line6, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line7, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line8d, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line9, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line10, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line11, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line12, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line13, root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}.below_boundary, root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}.tax, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.below_boundary, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.tax, root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax, root|inst:tax_on_amount#{"amount":"qdcg.line1","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax, qdcg.f1040.line15, qdcg.f1040.line3a, qdcg.f1040.status, f1040.qdcg.line25, qdcg.sd.distributions
+Unasserted computed lines across all documents: 620. (Supplied input lines are excluded; their correctness rests on reading the source document. Intermediate lines listed as unasserted are still exercised transitively; their detectability is tracked in reports/2025/mutation.md.)
+Asserted keys not matching a line id: person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line3, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.positive, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line4a, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line4b, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.owes, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line4c, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line5b, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line6, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line7, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line8d, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line9, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line10, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line11, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line12, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line13, root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}.below_boundary, root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}.tax, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.below_boundary, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.tax, root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax, root|inst:tax_on_amount#{"amount":"qdcg.line1","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax, qdcg.f1040.line15, qdcg.f1040.line3a, qdcg.f1040.status, f1040.qdcg.line25, qdcg.sd.distributions, person[taxpayer].se_line12, person[taxpayer].se_line13

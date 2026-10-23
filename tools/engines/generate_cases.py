@@ -278,7 +278,110 @@ def gen_case(rng, i):
                        "carloan[v].vehicle": True, "carloan[v].mixed": False, "carloan[v].interest": car})
         features.add("car_loan_interest")
     facts.update(age=age, tips=tips, overtime=overtime, car_loan_interest=car)
+    add_form_features(random.Random(f"forms:{i}"), inputs, facts, features, ages, wages, age)
     return {"id": f"gen-{i:05d}", "inputs": inputs, "facts": facts, "features": sorted(features)}
+
+
+def add_form_features(r, inputs, facts, features, ages, wages, age):
+    """Form 2441 care expenses, IRA and Roth contributions (the IRA deduction and Form 8880) and
+    Form 5695 costs. A separate generator leaves every earlier draw unchanged."""
+    # Form 2441: care paid for the children under 13, one provider with a taxpayer identification
+    # number, no dependent care benefits. Every dependent answers the care questions once the
+    # form is filed; a 13-year-old was not under 13 when care was paid.
+    under13 = [k for k, a in enumerate(ages) if a < 13]
+    care_paid = {}
+    if under13 and r.random() < 0.45:
+        for k in under13:
+            if r.random() < 0.8:
+                care_paid[k] = r.randint(50_000, 900_000)
+    if care_paid:
+        inputs.update({"f2441.care": True, "f2441.student_disabled": False, "f2441.spouse_died": False,
+                       "f2441.nondependent": False, "f2441.prior_year": False, "f2441.paid_2026": 0,
+                       "f2441.line13": 0, "f2441.line14": 0, "f2441.plans_differ": False, "f2441.plan_max": 500_000,
+                       "$dcprov": ["p0"], "dcprov[p0].tin_kind": "tin", "dcprov[p0].household": False,
+                       "dcprov[p0].paid": sum(care_paid.values()), "dcprov[p0].related": False})
+        for k in range(len(ages)):
+            inputs.update({f"dependent[child_{k + 1}].dc_paid": care_paid.get(k, 0),
+                           f"dependent[child_{k + 1}].dc_incapable": False, f"dependent[child_{k + 1}].dc_under13": False})
+        features.add("dependent_care")
+    facts.update(care_expenses=sum(care_paid.values()), care_persons=len(under13) if care_paid else 0)
+
+    # Traditional IRA contributions within the limit and the wages, sometimes with a Roth
+    # contribution (Form 8880 line 1 counts both) and sometimes under an employer plan, which
+    # phases the deduction out by modified AGI (IRA Deduction Worksheet). Plan coverage together
+    # with social security benefits needs the Pub. 590-A Appendix B worksheets, which the project
+    # refuses, so a return with benefits has no plan.
+    trad = roth = 0; work_plan = False
+    if r.random() < 0.35:
+        trad = r.randint(50_000, min(700_000, wages))
+        roth = r.randint(0, 700_000 - trad) if r.random() < 0.3 else 0
+        work_plan = r.random() < 0.3 and not facts.get("ss_benefits")
+        inputs.update({f"{TAXPAYER}.sav_trad": True, f"{TAXPAYER}.ira_trad": trad, f"{TAXPAYER}.sav_roth": roth,
+                       f"{TAXPAYER}.ira_age50": age >= 50, f"{TAXPAYER}.ira_work_plan": work_plan})
+        features.add("ira_contribution")
+        if work_plan:
+            features.add("ira_work_plan")
+    facts.update(ira_contribution=trad, roth_contribution=roth, ira_work_plan=work_plan)
+
+    # Form 5695. Part I: solar electric property, sometimes solar water heating and battery storage
+    # of at least 3 kWh; no fuel cell, no carryforward. Part II: insulation, exterior doors (each under
+    # the $250 per-door cap), windows, central air conditioners, furnaces, home energy audits and
+    # heat pumps; no gas water heaters or enabling property, which the engines do not model.
+    part1 = {}
+    if r.random() < 0.1:
+        part1 = {"solar_electric": r.randint(500_000, 4_000_000),
+                 "solar_water": r.randint(200_000, 1_000_000) if r.random() < 0.3 else 0,
+                 "battery": r.randint(500_000, 2_000_000) if r.random() < 0.3 else 0}
+        inputs.update({"f5695.part1_any": True, "f5695.business_use": False, "f5695.construction_later": False,
+                       "f5695.line1": part1["solar_electric"], "f5695.line2": part1["solar_water"], "f5695.line3": 0,
+                       "f5695.line4": 0, "f5695.line5a": part1["battery"] > 0, "f5695.battery_cost": part1["battery"],
+                       "f5695.line7a": False, "f5695.line12": 0, "f5695.joint_occupancy": False,
+                       "f5695.separate_homes": False, "f5695.condo": False})
+        features.add("residential_clean_energy")
+    part2 = {}
+    if r.random() < 0.12:
+        heat_pump = r.randint(300_000, 1_200_000) if r.random() < 0.3 else 0
+        others = not heat_pump or r.random() < 0.3
+        pick = lambda p, lo, hi: r.randint(lo, hi) if others and r.random() < p else 0
+        part2 = {"insulation": pick(0.5, 50_000, 600_000), "door1": pick(0.4, 20_000, 83_000),
+                 "door2": pick(0.5, 20_000, 83_000), "windows": pick(0.5, 100_000, 400_000),
+                 "central_ac": pick(0.3, 300_000, 800_000), "furnace": pick(0.15, 200_000, 600_000),
+                 "audit": pick(0.3, 20_000, 80_000), "heat_pump": heat_pump}
+        if part2["door1"] == 0:
+            part2["door2"] = 0
+        if not any(part2.values()):
+            part2["insulation"] = r.randint(50_000, 600_000)
+        section_b = any(part2[k] for k in ("central_ac", "furnace", "heat_pump"))
+        inputs.update({"f5695.part2_any": True, "f5695.business_use": False, "f5695.joint_occupancy": False,
+                       "f5695.separate_homes": False, "f5695.condo": False,
+                       "f5695.line17a": True, "f5695.line17b": True, "f5695.line17c": True, "f5695.line17e": False,
+                       "f5695.line18a": part2["insulation"], "f5695.line19a": part2["door1"], "f5695.line19d_i": part2["door2"],
+                       "f5695.line19d_ii": 0, "f5695.line19e": 0, "f5695.qmid_doors": True,
+                       "f5695.line20a_i": part2["windows"], "f5695.line20a_ii": 0, "f5695.line20a_iii": 0, "f5695.line20a_iv": 0,
+                       "f5695.line20b": 0, "f5695.qmid_windows": True,
+                       "f5695.line21a": section_b, "f5695.line21b": section_b, "f5695.b_new_home": False,
+                       "f5695.line22a": part2["central_ac"], "f5695.line22b": 0, "f5695.qmid_ac": True,
+                       "f5695.line23a_i": 0, "f5695.line23a_ii": 0, "f5695.line23b": 0, "f5695.qmid_wh": True,
+                       "f5695.line24a": part2["furnace"], "f5695.line24b": 0, "f5695.qmid_furnace": True,
+                       "f5695.line25a": False, "f5695.line26a": part2["audit"] > 0, "f5695.line26b": part2["audit"],
+                       "f5695.line29a": heat_pump, "f5695.line29b": 0, "f5695.line29c": 0, "f5695.line29d": 0,
+                       "f5695.line29e": 0, "f5695.line29f": 0, "f5695.qmid_hp": True})
+        features.add("home_improvement")
+        if part2["furnace"]:
+            features.add("furnace")
+        if heat_pump and others and any(v for k, v in part2.items() if k != "heat_pump"):
+            features.add("heat_pump_with_improvements")
+    facts.update(energy_part1=part1, energy_part2=part2)
+    # The credits before the tax limit, figured from the costs alone (Form 5695 lines 6b, 28 and 29h).
+    pct = lambda c: rate(c, (30, 100))
+    part1_credit = pct(sum(part1.values())) if part1 else 0
+    part2_credit = 0
+    if part2:
+        doors = min(min(pct(part2["door1"]), 25_000) + pct(part2["door2"]), 50_000)
+        items = (min(pct(part2["insulation"]), 120_000) + doors + min(pct(part2["windows"]), 60_000)
+                 + min(pct(part2["central_ac"]), 60_000) + min(pct(part2["furnace"]), 60_000) + min(pct(part2["audit"]), 15_000))
+        part2_credit = min(items, 120_000) + min(pct(part2["heat_pump"]), 200_000)
+    facts["energy_credit"] = part1_credit + part2_credit
 
 
 SPOUSE = "person[spouse]"

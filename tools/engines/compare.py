@@ -24,8 +24,13 @@ gives, per engine and per mapped line, the counts the evidence report reads:
   excluded          cases set aside under an engine limitation
   excluded_nonzero  of those, cases where the project value was computed and not zero
   unexplained       compared cases whose difference has no cited cause
+  not_computed      cases where the project had no money value for the line
+  not_computed_allowed  of those, cases the allow-list covers (the form is not filed)
+  not_computed_share    the rest as a share of the engine's cases; over
+                    NOT_COMPUTED_FLOOR the run fails
 together with the category counts above, the engine's version and its
-pass-through declarations (run_engines.py).
+pass-through declarations (run_engines.py). The summary's not_computed_floor
+records the floor, the allow-list and any line over it.
 """
 import argparse, json, sys, os
 from fractions import Fraction
@@ -34,7 +39,20 @@ from collections import Counter, defaultdict
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, os.path.join(ROOT, "tools"))
 from taxyear import Y  # noqa: E402
-TAX_LINES = {"f1040.line16", "f1040.line19", "f1040.line20", "f1040.line24", "f1040.line28", "f1040.tax_before_credits"}
+TAX_LINES = {"f1040.line16", "f1040.line19", "f1040.line20", "f1040.line24", "f1040.line28", "f1040.tax_before_credits",
+             "f2441.line11", "s3.line2", "f8880.line12", "f5695.line15", "s3.line5a", "f5695.line32", "s3.line5b"}
+# The run fails when, on a mapped line, the project left more than this share of the engine's cases
+# without a value, unless the line is allow-listed below: the project value is unknown where the
+# named input is false (the form is not filed), and the share is measured on the other returns.
+NOT_COMPUTED_FLOOR = 0.05
+NOT_COMPUTED_ALLOW = {
+    "f2441.line9c": ("f2441.care", "Form 2441 is not filed without care expenses; Schedule 3 line 2 carries the zero and is compared on every return"),
+    "f2441.line11": ("f2441.care", "Form 2441 is not filed without care expenses; Schedule 3 line 2 carries the zero and is compared on every return"),
+    "f5695.line13": ("f5695.part1_any", "Form 5695 Part I is not filed without Part I costs; Schedule 3 line 5a carries the zero and is compared on every return"),
+    "f5695.line15": ("f5695.part1_any", "Form 5695 Part I is not filed without Part I costs; Schedule 3 line 5a carries the zero and is compared on every return"),
+    "f5695.line30": ("f5695.part2_any", "Form 5695 Part II is not filed without Part II costs; Schedule 3 line 5b carries the zero and is compared on every return"),
+    "f5695.line32": ("f5695.part2_any", "Form 5695 Part II is not filed without Part II costs; Schedule 3 line 5b carries the zero and is compared on every return"),
+}
 
 
 def half_up(n, d):
@@ -123,12 +141,27 @@ def schedule_mode_expectations(values, case, t):
         tax16 = m("f1040.line16") - d("f1040.line15")
     line17 = m("f1040.line17") or 0
     line23 = m("f1040.line23") or 0
+    tax18 = tax16 + line17
     ftc_taxes = case["inputs"].get("ftc.taxes", 0) if (m("f1040.line20") or 0) > 0 or case["inputs"].get("ftc.taxes", 0) > 0 else 0
     tax20 = min(ftc_taxes, tax16) if m("f1040.line20") is not None else 0
-    # Schedule 8812: line 13 is the tax after the foreign tax credit, so lines 19 and 28
-    # move with the table-versus-schedule difference through the credit limit.
+    # Schedule 3 lines 2, 4 and 5b: each credit is the smaller of its amount before the limit and the
+    # tax left after the credits before it (Form 2441 line 10, Form 8880 line 11, Form 5695 line 31).
+    remaining = max(0, tax18 - tax20)
+    cdcc = min(m("f2441.line9c") or 0, remaining) if case["inputs"].get("f2441.care") else 0
+    remaining = max(0, remaining - cdcc)
+    savers = min(m("f8880.line10") or 0, remaining)
+    remaining = max(0, remaining - savers)
+    eehic = min(m("f5695.line30") or 0, remaining) if case["inputs"].get("f5695.part2_any") else 0
+    # Schedule 8812: Credit Limit Worksheet A line 3 is the tax after those credits, so lines 19 and 28
+    # move with the table-versus-schedule difference through the credit limit. With Worksheet B (Form
+    # 5695 Part I and a qualifying child) the residential clean energy credit, limited after the Worksheet
+    # B child tax credit, is taken first through Worksheet A line 4; otherwise it follows line 19.
+    clw_a3 = tax18 - tax20 - cdcc - savers - eehic
     line12 = m("s8812.line12") or 0
-    tax19 = min(line12, max(0, tax16 + line17 - tax20))
+    worksheet_b = bool(b("s8812.clwb_complete"))
+    ctc_before_rce = (m("s8812.clwb_14") or 0) if worksheet_b else min(line12, clw_a3)
+    rce = min(m("f5695.line13") or 0, max(0, clw_a3 - ctc_before_rce)) if case["inputs"].get("f5695.part1_any") else 0
+    tax19 = min(line12, max(0, clw_a3 - (rce if worksheet_b else 0)))
     line16a = line12 - tax19
     line17_8812 = min(line16a, m("s8812.line16b") or 0)
     line20_8812 = m("s8812.line20") or 0
@@ -139,8 +172,10 @@ def schedule_mode_expectations(values, case, t):
     else:
         tax28 = min(line17_8812, m("s8812.line26") or 0)
     return {"f1040.line16": tax16, "f1040.line19": tax19, "f1040.line20": tax20, "f1040.line28": tax28,
-            "f1040.line24": max(0, tax16 + line17 - tax20 - tax19) + line23,
-            "f1040.tax_before_credits": tax16 + line17 + line23}
+            "f1040.line24": max(0, tax18 - tax20 - cdcc - savers - eehic - tax19 - rce) + line23,
+            "f1040.tax_before_credits": tax18 + line23,
+            "f2441.line11": cdcc, "s3.line2": cdcc, "f8880.line12": savers,
+            "f5695.line15": rce, "s3.line5a": rce, "f5695.line32": eehic, "s3.line5b": eehic}
 
 
 def float_bound_cents(precision, engine_cents, components=1):
@@ -180,6 +215,21 @@ def derived_features(case, values):
         feats.add("no_tax_either_way")
         if (m("f1040.line13b") or 0) > 0:
             feats.add("schedule1a_zero_tax")
+    if (m("s3.line4") or 0) > 0:
+        feats.add("savers_credit")
+    if (m("f1040.line11b") or 0) < 0:
+        feats.add("negative_agi")
+    # Schedule 8812 Credit Limit Worksheet A: an engine that subtracts the Form 5695 Part I credit, or
+    # omits the saver's credit, in line 2 changes line 14 only where the child tax credit does not fit
+    # under its own limit.
+    line12, clw_a3 = m("s8812.line12") or 0, m("s8812.clw_a3") or 0
+    if (m("f5695.line13") or 0) > 0 and line12 > clw_a3 - (m("f5695.line13") or 0):
+        feats.add("rce_displaces_ctc")
+    if (m("s3.line4") or 0) > 0 and line12 > clw_a3:
+        feats.add("savers_displaces_ctc")
+    # The IRA deduction is below the contributions: the worksheet's phase-out or compensation limit applied.
+    if (m("s1.line20") or 0) < (m("ira.line11a") or 0):
+        feats.add("ira_phaseout")
     # A part's phase-out lines are figured from modified AGI whether or not the part is claimed;
     # the step matters only where the part has an amount to reduce.
     if any((m(cut) or 0) > 0 and (m(amount) or 0) > 0
@@ -260,7 +310,11 @@ def main():
                         summary[(ename, line)]["excluded_nonzero"] += 1
                     continue
                 if pv is None:
-                    stats[(ename, line)]["project-" + kind] += 1; continue
+                    stats[(ename, line)]["project-" + kind] += 1
+                    allow = NOT_COMPUTED_ALLOW.get(line)
+                    if allow and not case["inputs"].get(allow[0]):
+                        summary[(ename, line)]["not_computed_allowed"] += 1
+                    continue
                 summary[(ename, line)]["compared"] += 1
                 if pv != 0:
                     summary[(ename, line)]["compared_nonzero"] += 1
@@ -289,16 +343,35 @@ def main():
                  "Engines run locally under .engines/venv (tools/engines/setup.sh); versions: "
                  + ", ".join(f"{n} {e['version']}" for n, e in engines.items()) + ".", "",
                  f"`table-adjusted` means the engine equals the project's tax lines recomputed with every Tax Table lookup replaced by the rate schedule (engines compute from the schedule where the form prescribes the table), keeping the worksheet path and re-taking its smaller-of; an identified cause, not a tolerance. For Form 1040 line 27a, `table-adjusted` means the engine is within $1 of the project's Worksheet A path recomputed with each EIC Table lookup replaced by the credit at the exact amount (the engines compute from the formula where the instructions prescribe the table built at each $50 band's midpoint); the $1 allows for the engines' statutory percentages, which the archive does not hold, against the rates the Rev. Proc. 2024-40 amounts imply (at most about $0.20 apart over the table's range). `float` means the difference is within two units in the last place of the engine's floating-point representation (PolicyEngine-US computes in float32, Tax-Calculator in float64), a bound derived from the engine's precision. `excluded` lines carry the engine limitation stated below. Every other difference must be explained in fixtures/{Y}/differential/engine_investigations.json or the run fails.", ""]
+    # The not-computed floor: the share of the engine's cases on which the project left the line without a
+    # value, outside the allow-list's unfiled-form cases.
+    shares, floor_failures = {}, []
+    for (ename, line), c in stats.items():
+        notc = sum(v for k, v in c.items() if k.startswith("project-"))
+        outside = notc - summary[(ename, line)]["not_computed_allowed"]
+        shares[(ename, line)] = outside / max(1, sum(c.values()))
+        if shares[(ename, line)] > NOT_COMPUTED_FLOOR:
+            floor_failures.append((ename, line, outside, sum(c.values())))
+    lines_out += [f"Not-computed floor: the run fails when the project left more than {NOT_COMPUTED_FLOOR:.0%} of an engine's cases without a value on a mapped line "
+                  "(a refusal, an unknown input, a non-money value), measured outside the allow-listed returns that do not file the form: "
+                  + "; ".join(f"{line} unknown where `{inp}` is false ({reason})" for line, (inp, reason) in sorted(NOT_COMPUTED_ALLOW.items())) + ".", ""]
     for ename in engines:
-        lines_out += [f"## {ename}", "", "| line | exact | table-adjusted | float | excluded | explained | UNEXPLAINED | not computed |", "| --- | --- | --- | --- | --- | --- | --- | --- |"]
+        lines_out += [f"## {ename}", "", "| line | exact | table-adjusted | float | excluded | explained | UNEXPLAINED | not computed | not computed outside the allow-list (share) |",
+                      "| --- | --- | --- | --- | --- | --- | --- | --- | --- |"]
         for (en, line), c in sorted(stats.items()):
             if en != ename: continue
             notc = sum(v for k, v in c.items() if k.startswith("project-"))
-            lines_out.append(f"| {line} | {c['exact']} | {c['table-adjusted']} | {c['float']} | {c['excluded']} | {c['explained']} | {c['UNEXPLAINED']} | {notc} |")
+            outside = notc - summary[(ename, line)]["not_computed_allowed"]
+            lines_out.append(f"| {line} | {c['exact']} | {c['table-adjusted']} | {c['float']} | {c['excluded']} | {c['explained']} | {c['UNEXPLAINED']} | {notc} | {outside} ({shares[(ename, line)]:.1%}) |")
         lines_out.append("")
         reasons = {r for (en, _), rc in excluded_reasons.items() if en == ename for r in rc}
         if reasons:
             lines_out += ["Exclusions:", ""] + [f"- {r}" for r in sorted(reasons)] + [""]
+        unmapped = engines[ename].get("pass_through", {}).get("unmapped", {})
+        if unmapped:
+            lines_out += ["Project result lines not mapped:", ""] + [f"- {line}: {why}" for line, why in unmapped.items()] + [""]
+    if floor_failures:
+        lines_out += ["## NOT-COMPUTED FLOOR EXCEEDED", ""] + [f"- {en} {line}: {n} of {total} cases without a project value" for en, line, n, total in floor_failures] + [""]
     if explained:
         lines_out += ["## Explained differences", ""] + [f"- {r['engine']} {r['case']} {r['line']}: project {r['project']} engine {r['engine_value']} — {r['cause']}" for r in explained[:200]] + [""]
     if unexplained:
@@ -318,15 +391,20 @@ def main():
                               "excluded": c["excluded"], "excluded_nonzero": sm["excluded_nonzero"],
                               "unexplained": c["UNEXPLAINED"], "exact": c["exact"], "table_adjusted": c["table-adjusted"],
                               "float": c["float"], "explained": c["explained"],
-                              "not_computed": sum(v for k, v in c.items() if k.startswith("project-"))}
+                              "not_computed": sum(v for k, v in c.items() if k.startswith("project-")),
+                              "not_computed_allowed": sm["not_computed_allowed"],
+                              "not_computed_share": round(shares[(ename, line)], 4)}
         summary_out["engines"][ename] = {"version": eng["version"], "pass_through": eng.get("pass_through", {"lines": [], "components": {}}),
                                          "lines": per_line}
+    summary_out["not_computed_floor"] = {"share": NOT_COMPUTED_FLOOR, "allow": {l: {"input": i, "reason": r} for l, (i, r) in NOT_COMPUTED_ALLOW.items()},
+                                         "exceeded": [{"engine": en, "line": line, "not_computed": n, "cases": total} for en, line, n, total in floor_failures]}
     summary_path = os.path.splitext(a.report)[0] + ".json"
     open(summary_path, "w").write(json.dumps(summary_out, indent=1) + "\n")
     total = sum(sum(c.values()) for c in stats.values())
-    print(f"engine differential: {len(cases)} cases, {total} line comparisons, {len(unexplained)} unexplained, {len(explained)} explained")
+    print(f"engine differential: {len(cases)} cases, {total} line comparisons, {len(unexplained)} unexplained, {len(explained)} explained, "
+          f"{len(floor_failures)} lines over the not-computed floor")
     print(f"report: {os.path.relpath(a.report, ROOT)}; summary: {os.path.relpath(summary_path, ROOT)}")
-    sys.exit(1 if unexplained else 0)
+    sys.exit(1 if unexplained or floor_failures else 0)
 
 
 if __name__ == "__main__":

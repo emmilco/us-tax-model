@@ -8,13 +8,16 @@ back the engine's federal lines in integer cents.
 
 Output: { "engines": { name: { "version", "precision", "lines": { case_id: { line: cents } },
           "limitations": [ { feature, lines, reason } ],
-          "pass_through": { "lines": [...], "components": { line: note } } } } }
+          "pass_through": { "lines": [...], "components": { line: note }, "unmapped": { line: reason } } } } }
 The comparison applies the limitations using the case's features, some of which
 are derived from the project's own values (for example whether Form 4952 limited
 the investment interest deduction). `pass_through.lines` names mapped lines the
 engine takes whole from the generator's facts instead of computing (none today);
 `pass_through.components` names the components of a computed line that enter as
-generator facts, so the evidence report can say what the engine did not compute.
+generator facts, so the evidence report can say what the engine did not compute;
+`pass_through.unmapped` names project result lines left unmapped, with the reason
+(an input the engine does not compute, a value it does not expose, or a line
+reached through a copy that is mapped).
 """
 import argparse, json, sys, warnings
 from pathlib import Path
@@ -70,20 +73,69 @@ PE_MAP = {
     "f1040.tax_before_credits": ["income_tax_before_credits", "net_investment_income_tax", "additional_medicare_tax", "self_employment_tax"],
     "s2.line4": ["self_employment_tax"],
     "s1.line15": ["self_employment_tax_ald"],
+    # Schedule SE lines 12 and 13 of the filer (the generated spouse has no self-employment income).
+    "person[taxpayer].se_line12": ["head:self_employment_tax"],
+    "person[taxpayer].se_line13": ["head:self_employment_tax_ald_person"],
+    # Form 2441: the credit before the tax limit (line 9b is zero: no prior-year expenses) and after it;
+    # Schedule 3 line 2 carries the credit, or zero when the form is not filed.
+    "f2441.line9c": ["cdcc_potential"],
+    "f2441.line11": ["cdcc"],
+    "s3.line2": ["cdcc"],
+    # Form 8880: the credit before the limit (line 10) and the credit (line 12, Schedule 3 line 4).
+    "f8880.line10": ["savers_credit_potential"],
+    "f8880.line12": ["savers_credit"],
+    # Form 5695 Part I (lines 13 and 15, Schedule 3 line 5a) and Part II (lines 30 and 32, Schedule 3 line 5b).
+    "f5695.line13": ["residential_clean_energy_credit_potential"],
+    "f5695.line15": ["residential_clean_energy_credit"],
+    "s3.line5a": ["residential_clean_energy_credit"],
+    "f5695.line30": ["energy_efficient_home_improvement_credit_potential"],
+    "f5695.line32": ["energy_efficient_home_improvement_credit"],
+    "s3.line5b": ["energy_efficient_home_improvement_credit"],
+    # Schedule 8812 line 12: the credit after the phase-out, before the tax limit.
+    "s8812.line12": ["ctc"],
+    # Earned income for the EIC: Step 5 (wages) and Worksheet A/B line 1 (Step 5 plus net earnings from
+    # self-employment less half the self-employment tax, not below zero).
+    "eic.earned_income": ["eitc_earned_income"],
+    "eic.line1": ["eitc_earned_income"],
+    # Schedule 1 line 20, the IRA deduction after the IRA Deduction Worksheet.
+    "s1.line20": ["traditional_ira_deduction"],
+    # Schedule 1-A parts: tips (line 13), overtime (line 21), car loan interest (line 30), seniors (line 37).
+    "s1a.line13": ["tip_income_deduction"],
+    "s1a.line21": ["overtime_income_deduction"],
+    "s1a.line30": ["auto_loan_interest_deduction"],
+    "s1a.line37": ["additional_senior_deduction"],
 }
 PE_PRECISION = "float32"
-# Lines the engine takes whole from the generator's facts (none), and components of computed
-# lines that enter as generator facts rather than the engine's own form arithmetic.
+# Lines the engine takes whole from the generator's facts (none), components of computed lines
+# that enter as generator facts rather than the engine's own form arithmetic, and project result
+# lines the engine has no computed variable for.
 PE_PASS_THROUGH = {"lines": [], "components": {
     "f1040.line10": "the HSA deduction (Form 8889 line 13) enters as the generator's health_savings_account_ald; "
-                    "the engine computes the educator, half-of-self-employment-tax and student loan interest "
+                    "the engine computes the educator, half-of-self-employment-tax, IRA and student loan interest "
                     "components and the sum",
+}, "unmapped": {
+    "person[taxpayer].f8889[hsa].line13": "health_savings_account_ald is an input with no formula; the engine does not compute Form 8889",
+    "ssb.line18": "reached through Form 1040 line 6b, a copy of it",
+    "s1a.line38": "reached through Form 1040 line 13b, a copy of it",
+    "s8812.line14": "reached through Form 1040 line 19, a copy of it",
+    "s8812.line27": "reached through Form 1040 line 28, a copy of it",
+    "eic.credit": "reached through Form 1040 line 27a, a copy of it",
 }}
+# Lines that move with adjusted gross income, for limitations on an engine's AGI.
+PE_AGI_LINES = [l for l in PE_MAP if l not in ("eic.earned_income", "eic.line1", "person[taxpayer].se_line12", "person[taxpayer].se_line13", "s2.line4", "s1.line15")]
 PE_LIMITATIONS = [
-    {"feature": "schedule1a_stepped_phaseout", "lines": ['f1040.line13b', 'f1040.line15', 'f1040.line16', 'f1040.tax_before_credits', 'f1040.line19', 'f1040.line28'],
+    {"feature": "schedule1a_stepped_phaseout", "lines": ['f1040.line13b', 'f1040.line15', 'f1040.line16', 'f1040.tax_before_credits', 'f1040.line19', 'f1040.line28', 's1a.line13', 's1a.line21', 's1a.line30'],
      "reason": "PolicyEngine-US reduces the tips, overtime and car loan interest deductions by the rate times the exact excess of modified AGI over the threshold; Schedule 1-A lines 11, 19 and 28 count whole $1,000 steps (rounded down, down and up) first"},
-    {"feature": "sli_phaseout", "lines": ['f1040.line10', 'f1040.line11b', 'f1040.line13a', 'f1040.line13b', 'f1040.line15', 'f1040.line16', 'f1040.line19', 'f1040.line28', 'f1040.line27a', 'f1040.line6b', 'sa.line17', 'sa.standard', 'sa.deduction', 'f8959.tax', 'f8960.tax', 'f1040.tax_before_credits'],
+    {"feature": "sli_phaseout", "lines": PE_AGI_LINES,
      "reason": "PolicyEngine-US phases the student loan interest deduction out with the exact ratio; the worksheet's line 7 ratio is rounded to three places in the project (amb.2025.sli_ratio_places), which moves the deduction by up to a few dollars"},
+    {"feature": "self_employed", "lines": ['eic.earned_income'],
+     "reason": "PolicyEngine-US's eitc_earned_income includes net earnings from self-employment less half the self-employment tax; Step 5 earned income (Form 1040 instructions, line 27) holds wages only and Worksheet B adds the self-employment amounts, so Worksheet B line 6 (eic.line1) is compared instead on self-employed returns"},
+    {"feature": "furnace", "lines": ['f5695.line30', 'f5695.line32', 's3.line5b', 'f1040.line19', 'f1040.line28'],
+     "reason": "PolicyEngine-US lists capped_qualified_furnace_or_hot_water_boiler_credit twice in gov.irs.credits.energy_efficient_home_improvement.qualified_expenditures.credits, so it counts the furnace credit twice in Form 5695 line 27"},
+    {"feature": "heat_pump_with_improvements", "lines": ['f5695.line30', 'f5695.line32', 's3.line5b', 'f1040.line19', 'f1040.line28'],
+     "reason": "PolicyEngine-US's energy_efficient_home_improvement_credit_potential takes the larger of the $1,200-capped total and the heat pump credit; Form 5695 line 30 adds line 28 and line 29h"},
+    {"feature": "negative_agi", "lines": ['f8880.line10', 'f8880.line12'],
+     "reason": "PolicyEngine-US's saver's credit rate (gov.irs.credits.retirement_saving.rate.joint, a bracket scale whose first threshold is $0) is zero for an adjusted gross income below zero; the Form 8880 line 9 table's first row has no lower bound (\"---\" to $23,750, $35,625 or $47,500: 0.5)"},
     {"feature": "excess_social_security", "lines": ['s3.line11'],
      "reason": "PolicyEngine-US takes excess payroll tax withheld as an input and does not compute it from per-employer withholding"},
     {"feature": "investment_interest_limited", "lines": ['sa.line17', 'sa.deduction', 'f1040.line13a', 'f1040.line15', 'f1040.line16', 'f1040.tax_before_credits', 'f8960.tax', 'f1040.line19', 'f1040.line28'],
@@ -120,18 +172,62 @@ TC_MAP = {
     "f1040.tax_before_credits": ["c05800", "niit", "ptax_amc", "setax"],
     "s2.line4": ["setax"],
     "s1.line15": ["c03260"],
+    # Schedule SE lines 12 and 13 (the unit's, which is the filer's: the generated spouse has no self-employment income).
+    "person[taxpayer].se_line12": ["setax"],
+    "person[taxpayer].se_line13": ["c03260"],
+    # Form 2441 line 11 (F2441 computes lines 2 to 11; line 9a is not exposed); Schedule 3 line 2.
+    "f2441.line11": ["c07180"],
+    "s3.line2": ["c07180"],
+    # Earned income for the EIC (`earned`: wages plus self-employment earnings less half the self-employment tax).
+    "eic.earned_income": ["earned"],
+    "eic.line1": ["earned"],
+    "s1a.line13": ["tip_income_deduction"],
+    "s1a.line21": ["overtime_income_deduction"],
+    "s1a.line30": ["auto_loan_interest_deduction"],
+    "s1a.line37": ["senior_deduction"],
 }
 TC_PRECISION = "float64"
 TC_PASS_THROUGH = {"lines": [], "components": {
-    "f1040.line10": "the HSA deduction (e03290) and the educator expenses deduction (e03220) enter as the generator's "
-                    "amounts; the engine computes the half-of-self-employment-tax component and the sum (returns "
-                    "with student loan interest are excluded)",
+    "f1040.line10": "the HSA deduction (e03290), the educator expenses deduction (e03220) and the IRA contributions (e03150) "
+                    "enter as the generator's amounts; the engine computes the half-of-self-employment-tax component and "
+                    "the sum (returns with student loan interest, or an IRA deduction phased out by modified AGI, are excluded)",
     "f1040.line20": "the foreign tax paid (e07300) is a supplied amount; the engine computes the credit limit",
+    "f1040.line19": "the Form 5695 credits before their limits (e07260) enter as the generator's amounts figured from the costs; "
+                    "the engine subtracts them in Credit Limit Worksheet A",
+    "f1040.line24": "the Form 5695 credits before their limits (e07260) enter as the generator's amounts figured from the costs; "
+                    "the engine applies the tax limit; returns with a saver's credit are excluded",
+}, "unmapped": {
+    "person[taxpayer].f8889[hsa].line13": "e03290 is an input; the engine does not compute Form 8889",
+    "s1.line20": "e03150 (deductible IRA contributions) is an input; the engine does not compute the IRA Deduction Worksheet",
+    "f8880.line10": "e07240 (the Form 8880 credit) is an input; the engine computes only its tax limit (c07240)",
+    "f8880.line12": "e07240 (the Form 8880 credit) is an input; the engine computes only its tax limit (c07240)",
+    "f5695.line13": "e07260 (the Form 5695 credits) is an input; the engine computes only its tax limit (c07260), after the child tax credit for both parts",
+    "f5695.line15": "e07260 (the Form 5695 credits) is an input; the engine computes only its tax limit (c07260), after the child tax credit for both parts",
+    "f5695.line30": "e07260 (the Form 5695 credits) is an input; the engine computes only its tax limit (c07260), after the child tax credit for both parts",
+    "f5695.line32": "e07260 (the Form 5695 credits) is an input; the engine computes only its tax limit (c07260), after the child tax credit for both parts",
+    "f2441.line9c": "F2441 computes line 9a but does not expose it; only c07180 (line 11) is an output",
+    "s8812.line12": "ChildDepTaxCredit computes line 12 but does not expose it; c07220 and odc are line 14 split",
+    "ssb.line18": "reached through Form 1040 line 6b, a copy of it",
+    "s1a.line38": "reached through Form 1040 line 13b, a copy of it",
+    "s8812.line14": "reached through Form 1040 line 19, a copy of it",
+    "s8812.line27": "reached through Form 1040 line 28, a copy of it",
+    "eic.credit": "reached through Form 1040 line 27a, a copy of it",
 }}
+TC_AGI_LINES = [l for l in TC_MAP if l not in ("eic.earned_income", "eic.line1", "person[taxpayer].se_line12", "person[taxpayer].se_line13", "s2.line4", "s1.line15")]
 TC_LIMITATIONS = [
+    {"feature": "ira_phaseout", "lines": TC_AGI_LINES,
+     "reason": "Tax-Calculator takes the deductible IRA contributions as a supplied amount (e03150) rather than computing the IRA Deduction Worksheet's phase-out by modified AGI, so returns whose deduction is less than the contributions are not compared"},
+    {"feature": "savers_credit", "lines": ['f1040.line24'],
+     "reason": "Tax-Calculator takes the Form 8880 credit as a supplied amount (e07240) and has no input for retirement contributions, so the total tax of a return with a saver's credit is not compared"},
+    {"feature": "savers_displaces_ctc", "lines": ['f1040.line19', 'f1040.line28'],
+     "reason": "Tax-Calculator has no saver's credit to subtract in Schedule 8812 Credit Limit Worksheet A line 2, which moves line 14 where the child tax credit does not fit under the worksheet's limit"},
+    {"feature": "rce_displaces_ctc", "lines": ['f1040.line19', 'f1040.line28'],
+     "reason": "Tax-Calculator subtracts the whole Form 5695 amount (e07260) in Credit Limit Worksheet A line 2, which lists Schedule 3 line 5b (Part II) but not line 5a; the residential clean energy credit (Part I) follows the child tax credit, through Credit Limit Worksheet B when there is a qualifying child, which moves line 14 where the child tax credit does not fit under the engine's limit"},
+    {"feature": "self_employed", "lines": ['eic.earned_income'],
+     "reason": "Tax-Calculator's earned includes self-employment earnings less half the self-employment tax; Step 5 earned income (Form 1040 instructions, line 27) holds wages only and Worksheet B adds the self-employment amounts, so Worksheet B line 6 (eic.line1) is compared instead on self-employed returns"},
     {"feature": "schedule1a_zero_tax", "lines": ['sa.line17'],
      "reason": "Tax-Calculator takes the standard deduction whenever the tax is the same either way; when the Schedule 1-A deductions leave no tax even with the standard deduction zeroed, its forced pass also takes the standard deduction, so the itemized total is not compared"},
-    {"feature": "student_loan_interest", "lines": ['f1040.line10', 'f1040.line11b', 'f1040.line13a', 'f1040.line13b', 'f1040.line15', 'f1040.line16', 'f1040.line19', 'f1040.line28', 'f1040.line27a', 'f1040.line6b', 'f1040.line20', 'sa.line17', 'sa.deduction', 'f8959.tax', 'f8960.tax', 'f1040.line24', 'f1040.tax_before_credits'],
+    {"feature": "student_loan_interest", "lines": TC_AGI_LINES,
      "reason": "Tax-Calculator takes the student loan interest deduction as a supplied amount (e03210) rather than computing the worksheet's phase-out, so returns with student loan interest are not compared"},
     {"feature": "excess_social_security", "lines": ['s3.line11'],
      "reason": "Tax-Calculator does not compute the excess Social Security withholding credit"},
@@ -146,6 +242,13 @@ TC_LIMITATIONS = [
     {"feature": "investment_interest_on_8960", "lines": ['f8960.tax', 'f1040.line24', 'f1040.tax_before_credits', 'f1040.line19', 'f1040.line28'],
      "reason": "Tax-Calculator does not deduct investment interest expense (Form 4952 line 8) on Form 8960 line 9a"},
 ]
+# The credits limited by the tax (Form 2441 line 10, Form 8880 line 11, Form 5695 lines 14 and 31) move with
+# Form 1040 line 16, so every limitation that sets line 16 aside sets them aside too.
+TAX_LIMITED_CREDIT_LINES = ["f2441.line11", "s3.line2", "f8880.line12", "f5695.line15", "s3.line5a", "f5695.line32", "s3.line5b"]
+for _mapping, _limitations in ((PE_MAP, PE_LIMITATIONS), (TC_MAP, TC_LIMITATIONS)):
+    for _lim in _limitations:
+        if "f1040.line16" in _lim["lines"]:
+            _lim["lines"] = list(_lim["lines"]) + [l for l in TAX_LIMITED_CREDIT_LINES if l in _mapping and l not in _lim["lines"]]
 
 
 def combine(get, spec):
@@ -200,10 +303,25 @@ def run_policyengine(cases):
             "unemployment_compensation": y(dollars(f.get("unemployment", 0))),
             "educator_expense": y(dollars(f.get("educator_expenses", 0))),
             "student_loan_interest": y(dollars(f.get("student_loan_interest", 0))),
+            # IRA contributions within the limit; an employer plan phases the deduction out.
+            "traditional_ira_contributions": y(dollars(f.get("ira_contribution", 0))),
+            "roth_ira_contributions": y(dollars(f.get("roth_contribution", 0))),
+            "ira_active_participant": y(bool(f.get("ira_work_plan", False))),
             # Roles are supplied so an adult child stays a dependent; by age ordering
             # the engine would make an adult child the filer's spouse.
             "tax_unit_role_input": y("HEAD"),
         }
+        p1, p2 = f.get("energy_part1") or {}, f.get("energy_part2") or {}
+        energy = {"solar_electric_property_expenditures": p1.get("solar_electric", 0),
+                  "solar_water_heating_property_expenditures": p1.get("solar_water", 0),
+                  "qualified_battery_storage_technology_expenditures": p1.get("battery", 0),
+                  "energy_efficient_insulation_expenditures": p2.get("insulation", 0),
+                  "energy_efficient_door_expenditures": p2.get("door1", 0) + p2.get("door2", 0),
+                  "energy_efficient_window_expenditures": p2.get("windows", 0),
+                  "energy_efficient_central_air_conditioner_expenditures": p2.get("central_ac", 0),
+                  "qualified_furnace_or_hot_water_boiler_expenditures": p2.get("furnace", 0),
+                  "home_energy_audit_expenditures": p2.get("audit", 0),
+                  "heat_pump_expenditures": p2.get("heat_pump", 0)}
         members = [pid]
         if f.get("joint"):
             sid = f"{pid}_s"
@@ -220,25 +338,36 @@ def run_policyengine(cases):
                       "state_and_local_sales_or_income_tax": y(dollars(f["salt_income_tax"])),
                       "unrecaptured_section_1250_gain": y(dollars(f["unrecaptured_1250"])),
                       "foreign_tax_credit": y(dollars(f["foreign_tax"])),
-                      "health_savings_account_ald": y(dollars(f.get("hsa_deduction", 0)))}
-        fams[pid] = {"members": members}; spms[pid] = {"members": members}
+                      "health_savings_account_ald": y(dollars(f.get("hsa_deduction", 0))),
+                      # Form 5695 takes costs net of subsidies and rebates, which the generated costs are; the
+                      # engine would otherwise net a modeled Department of Energy home electrification rebate
+                      # (by income against the area median) out of the insulation and heat pump costs.
+                      "high_efficiency_electric_home_rebate_percent_covered": y(0.0),
+                      **{k: y(dollars(v)) for k, v in energy.items()}}
+        fams[pid] = {"members": members}
+        # Care expenses are an SPM-unit input the engine prorates over the unit's children.
+        spms[pid] = {"members": members, "spm_unit_pre_subsidy_childcare_expenses": y(dollars(f.get("care_expenses", 0)))}
         hhs[pid] = {"members": members, "state_code": y("TX"),
                     "qualified_passenger_vehicle_loan_interest": y(dollars(f.get("car_loan_interest", 0)))}
     sim = Simulation(situation={"people": people, "tax_units": units, "families": fams, "spm_units": spms, "households": hhs})
-    # Tax-unit ids come back in situation order.
+    # Tax-unit ids come back in situation order, as do persons; the filer is the unit's first member.
     order = list(units.keys())
+    head_index = {pid: k for k, pid in enumerate(people)}
     cache = {}
     def var(name):
         if name not in cache:
             # A person-level variable (such as self_employment_tax) is summed into its tax unit,
-            # so that it is indexed like the tax-unit variables.
-            entity = sim.tax_benefit_system.variables[name].entity.key
-            cache[name] = sim.calculate(name, YEAR, map_to="tax_unit") if entity == "person" else sim.calculate(name, YEAR)
+            # so that it is indexed like the tax-unit variables; "head:" reads the filer's own value.
+            if name.startswith("head:"):
+                cache[name] = sim.calculate(name[5:], YEAR)
+            else:
+                entity = sim.tax_benefit_system.variables[name].entity.key
+                cache[name] = sim.calculate(name, YEAR, map_to="tax_unit") if entity == "person" else sim.calculate(name, YEAR)
         return cache[name]
     lines = {pid: {} for pid in order}
     for line, spec in PE_MAP.items():
         for i, pid in enumerate(order):
-            lines[pid][line] = cents(combine(lambda n: float(var(n)[i]), spec))
+            lines[pid][line] = cents(combine(lambda n: float(var(n)[head_index[pid] if n.startswith("head:") else i]), spec))
     return {"version": pkg_version("policyengine-us"), "precision": PE_PRECISION, "lines": lines, "limitations": PE_LIMITATIONS,
             "pass_through": PE_PASS_THROUGH, "components": {line: len(spec) for line, spec in PE_MAP.items()}}
 
@@ -265,9 +394,14 @@ def run_taxcalc(cases):
             e19800=dollars(f["cash_gifts"]), e20100=dollars(f["noncash_gifts"]), e07300=dollars(f["foreign_tax"]),
             e02300=dollars(f.get("unemployment", 0)), e03220=dollars(f.get("educator_deduction", 0)), e03290=dollars(f.get("hsa_deduction", 0)),
             tip_income=dollars(f.get("tips", 0)), overtime_income=dollars(f.get("overtime", 0)), auto_loan_interest=dollars(f.get("car_loan_interest", 0)),
+            # Form 2441: the care expenses and the count of qualifying persons (children under 13).
+            e32800=dollars(f.get("care_expenses", 0)), f2441=f.get("care_persons", 0), nu13=sum(1 for a in ages if a < 13),
+            # The IRA contributions enter as the deduction (the phase-out is not computed), and the Form 5695
+            # credits before their limits as one amount figured from the costs; the engine applies the tax limits.
+            e03150=dollars(f.get("ira_contribution", 0)), e07260=dollars(f.get("energy_credit", 0)),
         ))
     df = pd.DataFrame(rows).astype(float)
-    for col in ("RECID", "MARS", "FLPDYR", "XTOT", "n24", "nu18", "n1820", "n21", "EIC"):
+    for col in ("RECID", "MARS", "FLPDYR", "XTOT", "n24", "nu18", "n1820", "n21", "EIC", "f2441", "nu13"):
         df[col] = df[col].astype(int)
     def run(reform):
         # Exact calculations follow the printed phase-out steps (Schedule 1-A lines 11, 19 and 28,

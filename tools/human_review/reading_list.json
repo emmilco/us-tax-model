@@ -1,0 +1,124 @@
+{
+  "year": 2025,
+  "note": "The reading list of the integrity plan, item 1.1, as data. A line is `<form>.<id>` (a def's bare id after its form, e.g. `se.line2`); `tax_table.band_<at_least>` names one Tax Table cell. Pages are form-feed pages of the archived `.cols.txt`, which match the PDF pages.",
+  "items": [
+    {
+      "id": 1,
+      "title": "Tax on taxable income: the QDCG and SDTW gates, the $100,000 switch, one Tax Table cell",
+      "lines": ["f1040.gate.qdcg_applies", "f1040.gate.sdtw", "f1040.non_sdtw_tax",
+                "tax_on_amount.amount", "tax_on_amount.status", "tax_on_amount.below_boundary",
+                "tax_on_amount.table_tax", "tax_on_amount.worksheet_tax", "tax_on_amount.tax",
+                "tax_table.band_50000"],
+      "pages": [{"doc": "i1040gi", "pages": [33, 80, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79]}]
+    },
+    {
+      "id": 2,
+      "title": "Standard deduction: base, age and blindness boxes, the itemize choice",
+      "lines": ["sa.standardbase", "sa.boxes_age65", "sa.boxes_blind", "sa.standard", "sa.itemizes", "person.age65"],
+      "pages": [{"doc": "i1040gi", "pages": [33, 34, 35]}]
+    },
+    {
+      "id": 3,
+      "title": "Qualified Dividends and Capital Gain Tax Worksheet, lines 5 to 25",
+      "lines": ["qdcg.line5", "qdcg.line6", "qdcg.line7", "qdcg.line8", "qdcg.line9", "qdcg.line10", "qdcg.line11",
+                "qdcg.line12", "qdcg.line13", "qdcg.line14", "qdcg.line15", "qdcg.line16", "qdcg.line17", "qdcg.line18",
+                "qdcg.line19", "qdcg.line20", "qdcg.line21", "qdcg.line22", "qdcg.line23", "qdcg.line24", "qdcg.line25"],
+      "pages": [{"doc": "i1040gi", "pages": [38]}]
+    },
+    {
+      "id": 4,
+      "title": "EIC: Step 5 earned income, Worksheet A lines 1 to 6, the Step 1 limits",
+      "lines": ["eic.line1", "eic.line2", "eic.line3", "eic.line4", "eic.line5", "eic.line6", "eic.top_limit"],
+      "pages": [{"doc": "i1040gi", "pages": [40, 42, 43, 46]}]
+    },
+    {
+      "id": 5,
+      "title": "CTC qualifying child and the Schedule 8812 chain with Credit Limit Worksheet A",
+      "lines": ["dependent.ctc_child", "dependent.ctc_amount", "dependent.odc_person",
+                "s8812.line4", "s8812.line5", "s8812.line6", "s8812.line7", "s8812.line10", "s8812.line11", "s8812.line12",
+                "s8812.clw_a1", "s8812.clw_a2", "s8812.clw_a3", "s8812.clw_a4", "s8812.clw_a5", "s8812.line14"],
+      "pages": [{"doc": "f1040s8812", "pages": [1]}, {"doc": "i1040s8812", "pages": [3, 4, 5, 6]}]
+    },
+    {
+      "id": 6,
+      "title": "Self-employment chain: Schedule C line 31 to Schedule SE to Schedule 1 line 15",
+      "lines": ["sc.line31", "person.se_line2", "se.line2", "se.line12", "se.line13", "s1.line15", "person.se_rrta"],
+      "pages": [{"doc": "f1040sc", "pages": [1]}, {"doc": "f1040sse", "pages": [1]}, {"doc": "i1040sse", "pages": [2]}]
+    },
+    {
+      "id": 7,
+      "title": "Form 8889 line 3 chart and line 13",
+      "lines": ["f8889.months_eligible", "f8889.months_family", "f8889.bad_months", "f8889.age55", "f8889.age55_line3",
+                "f8889.age55_unmarried", "f8889.chart_self", "f8889.chart_family", "f8889.chart_total", "f8889.chart_limit",
+                "f8889.last_month", "f8889.use_last_month", "f8889.line3_changed", "f8889.line3_all_year",
+                "f8889.line3_last_month", "f8889.line3_part_year", "f8889.line3", "f8889.step1_line3",
+                "f8889.self_family_months", "f8889.line13_figured", "f8889.line13"],
+      "pages": [{"doc": "i8889", "pages": [4, 5, 6]}]
+    },
+    {
+      "id": 8,
+      "title": "IRA Deduction Worksheet lines 7 to 12 with the round-up to $10",
+      "lines": ["ira.line7a", "ira.line7b", "ira.line8", "ira.line9", "ira.line10", "ira.line11a", "ira.line11b",
+                "ira.line12a", "ira.line12b",
+                "person.ira_wide", "person.ira_full_narrow", "person.ira_full_joint", "person.ira_full", "person.ira_at_full",
+                "person.ira_p70", "person.ira_p80", "person.ira_p35", "person.ira_p40", "person.ira_prod_wide",
+                "person.ira_prod_joint", "person.ira_prod", "person.ira_rounded", "person.ira_min", "person.ira_floor",
+                "person.ira_below", "person.ira_line7_figured", "person.ira_line7", "person.ira_over_limit",
+                "person.ira_own_total", "person.ira_line11", "person.ira_7or10", "person.ira_line12",
+                "person.ira_deduction", "person.ira_10or11"],
+      "pages": [{"doc": "i1040gi", "pages": [97, 98]}]
+    },
+    {
+      "id": 9,
+      "title": "State and Local Income Tax Refund Worksheet lines 1 to 9",
+      "lines": ["refund.line1", "refund.line2_more", "refund.line2", "refund.line3_more", "refund.line3", "refund.line4",
+                "refund.line5", "refund.line6", "refund.line7", "refund.line8_figured", "refund.line8", "refund.line8_mfs",
+                "refund.line9_figured", "refund.line9"],
+      "pages": [{"doc": "i1040gi", "pages": [88, 89, 90]}]
+    },
+    {
+      "id": 10,
+      "title": "Schedule 1-A phase-outs: lines 9, 17, 26 and 32 and their steps",
+      "lines": ["s1a.base_other", "s1a.base_joint",
+                "s1a.line9_calc", "s1a.line9", "s1a.line10_calc", "s1a.line10", "s1a.line10_over", "s1a.line10_pos",
+                "s1a.line11_thousands", "s1a.line12_calc", "s1a.line12", "s1a.line13_figured",
+                "s1a.line17_calc", "s1a.line17", "s1a.line18_calc", "s1a.line18", "s1a.line18_over", "s1a.line18_pos",
+                "s1a.line19_thousands", "s1a.line20_calc", "s1a.line20", "s1a.line21_figured",
+                "s1a.car_base_other", "s1a.car_base_joint",
+                "s1a.line26_calc", "s1a.line26", "s1a.line27_calc", "s1a.line27", "s1a.line27_over", "s1a.line27_pos",
+                "s1a.line28_thousands", "s1a.line29_calc", "s1a.line29", "s1a.line30_figured",
+                "s1a.senior_base_other", "s1a.senior_base_joint",
+                "s1a.line32_calc", "s1a.line32", "s1a.line33_calc", "s1a.line33", "s1a.line33_over", "s1a.line33_pos",
+                "s1a.line34_calc", "s1a.line34", "s1a.senior_amount", "s1a.line35_figured"],
+      "pages": [{"doc": "i1040gi", "pages": [101, 102, 103, 104, 105, 106, 107, 108, 109]}]
+    },
+    {
+      "id": 11,
+      "title": "SALT limit chain: Schedule A lines 5d to 5e",
+      "lines": ["sa.line5d", "sa.saltbase", "sa.saltfloor", "sa.saltthreshold", "sa.saltexcess", "sa.saltreduction",
+                "sa.saltremaining", "sa.saltfloor_applied", "sa.salthalf", "sa.saltlimit", "sa.line5e"],
+      "pages": [{"doc": "i1040sca", "pages": [7]}]
+    },
+    {
+      "id": 12,
+      "title": "Social Security Benefits Worksheet lines 1 to 18",
+      "lines": ["ssb.line1", "ssb.has_benefits", "ssb.line2", "ssb.line3", "ssb.line4", "ssb.line5", "ssb.ira_line20",
+                "ssb.line6", "ssb.line7", "ssb.base_single", "ssb.base_joint", "ssb.zero", "ssb.mfs_base", "ssb.line8",
+                "ssb.line9", "ssb.adjust_single", "ssb.adjust_joint", "ssb.mfs_adjust", "ssb.line10", "ssb.line11",
+                "ssb.line12", "ssb.line13", "ssb.line14", "ssb.line15", "ssb.mfs_together", "ssb.line16_sum",
+                "ssb.line16_together", "ssb.line16", "ssb.line17", "ssb.line18_figured", "ssb.line18"],
+      "pages": [{"doc": "i1040gi", "pages": [31, 32]}]
+    },
+    {
+      "id": 13,
+      "title": "Simplified Method Worksheet (optional)",
+      "lines": ["retirement.smw1", "retirement.smw2", "retirement.smw4_t1_360", "retirement.smw4_t1_310",
+                "retirement.smw4_t1_260", "retirement.smw4_t1_210", "retirement.smw4_t1_160", "retirement.smw4_t2_410",
+                "retirement.smw4_t2_360", "retirement.smw4_t2_310", "retirement.smw4_t2_260", "retirement.smw4_t2_210",
+                "retirement.smw4_table1", "retirement.smw4_table2", "retirement.smw4_new", "retirement.smw4",
+                "retirement.smw5", "retirement.smw6", "retirement.smw7", "retirement.smw8", "retirement.smw9",
+                "retirement.smw10", "retirement.smw11"],
+      "pages": [{"doc": "i1040gi", "pages": [29, 30]}]
+    }
+  ]
+}

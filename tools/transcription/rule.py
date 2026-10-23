@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Write rulings into a transcription, render-comparison or class M log and its rulings sidecar.
 
-Usage: rule.py --form f1040 --rulings rulings.json [--kind transcription|render|classm]
+Usage: rule.py --form f1040 --rulings rulings.json [--kind transcription|render|classm] [--family deepseek]
 where rulings.json is {"<printed>": "Ruling: ...", ...}; a key "*" applies to every
-line still open. Only sections whose ruling is open are changed. In a class M log a
+line still open. --family names the model family whose log is ruled (families.py); the
+Claude log when omitted. Only sections whose ruling is open are changed. In a class M log a
 section is keyed "<case> — <printed>" and a ruling given as {"ruling": "...",
 "drop": true} also removes that line from the fixture (a model arithmetic error is not
 evidence); the ruling text is suffixed "[dropped]".
@@ -11,6 +12,7 @@ evidence); the ruling text is suffixed "[dropped]".
 import argparse, json, os, re, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import families  # noqa: E402
 import rulings as sidecar  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -19,14 +21,14 @@ from taxyear import Y  # noqa: E402
 REVIEWS = os.path.join(ROOT, "reviews", Y)
 
 
-def apply(form, rulings, kind="transcription"):
-    path = os.path.join(REVIEWS, kind, form + ".md")
+def apply(form, rulings, kind="transcription", family=families.DEFAULT):
+    path = sidecar.log_path(kind, form, family)
     text = open(path, encoding="utf-8").read()
     head, sep, rest = text.partition("\n## Lines\n")
     body, sep2, tail = rest.partition("\n## Raw ")
     parts = body.split("\n### ")
     applied = []
-    stored = sidecar.load(kind, form)
+    stored = sidecar.load(kind, form, family)
     for i in range(1, len(parts)):
         title, _, content = parts[i].partition("\n")
         printed = title.split(" — ")[0]
@@ -49,23 +51,24 @@ def apply(form, rulings, kind="transcription"):
             stored[found[0]] = {"ruling": ruling.rstrip(), "drop": bool(drop)}
             if drop:
                 ruling = ruling.rstrip() + " [dropped]"
-                drop_from_fixture(form, printed.split(" \u2014 ")[0], rest.split(" \u2014 ")[0])
+                drop_from_fixture(form, printed.split(" \u2014 ")[0], rest.split(" \u2014 ")[0], family)
             content = content.replace("Ruling: open", ruling, 1)
             applied.append(printed)
         parts[i] = title + "\n" + content
     body = "\n### ".join(parts)
     open(path, "w", encoding="utf-8").write(head + sep + body + sep2 + tail)
     if applied:
-        sidecar.save(kind, form, stored)
+        sidecar.save(kind, form, stored, family)
     return applied
 
 
-def drop_from_fixture(form, case_id, printed):
-    """Remove one line's expectation from a class M fixture case."""
-    fx_path = os.path.join(ROOT, "fixtures", Y, "classm.json")
+def drop_from_fixture(form, case_id, printed, family=families.DEFAULT):
+    """Remove one line's expectation from a class M fixture case of the family's fixture file."""
+    fx_path = os.path.join(ROOT, "fixtures", Y, families.fixture_name(family))
     fx = json.load(open(fx_path))
     jobs = json.load(open(os.path.join(ROOT, ".classm", "jobs.json")))["jobs"]
     job = next(j for j in jobs if j["id"] == case_id)
+    case_id = families.case_id(case_id, family)
     # The section is named by the line's handle (classm.handle): its printed number, or the
     # number and the line's id where two lines share the number.
     line_id = next(l["id"] for l in job["fill"] if printed in (l["printed"], f'{l["printed"]} ({l["id"]})'))
@@ -82,7 +85,8 @@ if __name__ == "__main__":
     ap.add_argument("--form", required=True)
     ap.add_argument("--rulings", required=True)
     ap.add_argument("--kind", default="transcription", choices=["transcription", "render", "classm"])
+    ap.add_argument("--family", default=families.DEFAULT, help="the model family whose log is ruled")
     a = ap.parse_args()
-    done = apply(a.form, json.load(open(a.rulings)), a.kind)
-    remaining = open(os.path.join(REVIEWS, a.kind, a.form + ".md"), encoding="utf-8").read().count("Ruling: open")
+    done = apply(a.form, json.load(open(a.rulings)), a.kind, a.family)
+    remaining = open(sidecar.log_path(a.kind, a.form, a.family), encoding="utf-8").read().count("Ruling: open")
     print(f"{a.form}: ruled {len(done)} line(s) {done}; open rulings remaining: {remaining}")

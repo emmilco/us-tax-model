@@ -14,6 +14,11 @@ before every run but --from-response, so a run never works from jobs of older da
 Logs go to reviews/<year>/classm/<doc>.md. Rulings persist in <doc>.rulings.json beside the log
 (rulings.py) and are reapplied on rerun. A ruling may drop a line from the fixture (a model
 arithmetic error is not evidence) by giving {"ruling": "...", "drop": true}.
+
+A model of another family (families.py) writes <doc>.<family>.md with <doc>.<family>.rulings.json,
+its fixtures to fixtures/<year>/classm.<family>.json with the family suffixed to each case id, and
+its raw prompts and responses under .classm/ with the same suffix; the Claude log and fixtures are
+untouched.
 """
 import argparse, datetime, hashlib, json, os, re, subprocess, sys
 from fractions import Fraction
@@ -22,13 +27,17 @@ import yaml
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from transcribe import ROOT, manifest, excerpt_for, call_model, load_form  # noqa: E402
 from taxyear import YEAR, Y, YEAR_ARGS  # noqa: E402
+import families  # noqa: E402
 import rulings  # noqa: E402
 import subjects  # noqa: E402
 
 JOBS = os.path.join(ROOT, ".classm", "jobs.json")
 RAW = os.path.join(ROOT, ".classm")
 LOGS = os.path.join(ROOT, "reviews", Y, "classm")
-FIXTURE = os.path.join(ROOT, "fixtures", Y, "classm.json")
+
+
+def fixture_path(family=families.DEFAULT):
+    return os.path.join(ROOT, "fixtures", Y, families.fixture_name(family))
 SYSTEM = ("You work IRS forms and worksheets by hand from the text given to you and the amounts you are "
           "given. You have no tools and no other sources. Output only the YAML requested.")
 STATUS_WORDS = {"single": "Single", "mfj": "Married filing jointly", "mfs": "Married filing separately",
@@ -276,11 +285,13 @@ def write_outputs(form_doc, model, jobs, runs, meta_all):
     """One log for the document and the fixture cases for it."""
     os.makedirs(LOGS, exist_ok=True)
     fid = form_doc["id"]
-    path = os.path.join(LOGS, fid + ".md")
-    kept = rulings.kept("classm", fid)
+    family = families.family_of(model)
+    path = rulings.log_path("classm", fid, family)
+    fixture = fixture_path(family)
+    kept = rulings.kept("classm", fid, family)
     counts = {"AGREE": 0, "DISAGREE": 0, "MISSING": 0}
     out = [f"# Class M hand-work — {fid}", "",
-           f"`{form_doc['title']}` worked by hand by an isolated model from its archived pages and the amounts flowing into it, for generated returns that together take every reachable branch (spec 6.1, class M; spec 6.5). Agreements are class M fixtures in `fixtures/{Y}/classm.json`; each disagreement carries a ruling.", "",
+           f"`{form_doc['title']}` worked by hand by an isolated model from its archived pages and the amounts flowing into it, for generated returns that together take every reachable branch (spec 6.1, class M; spec 6.5). Agreements are class M fixtures in `fixtures/{Y}/{families.fixture_name(family)}`; each disagreement carries a ruling.", "",
            "| field | value |", "| --- | --- |",
            f"| date | {datetime.date.today().isoformat()} |",
            f"| model requested | {model} |",
@@ -324,19 +335,19 @@ def write_outputs(form_doc, model, jobs, runs, meta_all):
                 out += ["", ruling, ""]
                 if model_v is not None and not ruling.endswith("[dropped]"):
                     expect[l["id"]] = model_v
-        fixture_cases.append({"id": job["id"], "covers": [fid], "evidence": "M",
+        fixture_cases.append({"id": families.case_id(job["id"], family), "covers": [fid], "evidence": "M",
                               "evidence_note": f"Class M: {model}; prompt sha256 {run['prompt_sha']}; pages " + "; ".join(f"{u['doc']} {','.join(map(str, u['pages']))} ({u['text_sha256'][:12]})" for u in used) + f"; branches {', '.join(job['branches'])}",
                               "inputs": job["inputs"], "expect": expect})
     out += ["## Raw responses", ""]
     for job in jobs:
         out += [f"### {job['id']}", "", "```yaml", runs[job["id"]]["raw"].strip(), "```", ""]
     open(path, "w", encoding="utf-8").write("\n".join(out))
-    # Merge this document's cases into the fixture file.
-    fx = json.load(open(FIXTURE)) if os.path.exists(FIXTURE) else {"tax_year": YEAR, "cases": []}
+    # Merge this document's cases into the family's fixture file.
+    fx = json.load(open(fixture)) if os.path.exists(fixture) else {"tax_year": YEAR, "cases": []}
     fx["cases"] = [c for c in fx["cases"] if not c["id"].startswith(f"classm.{fid}.")] + fixture_cases
     fx["cases"].sort(key=lambda c: c["id"])
-    json.dump(fx, open(FIXTURE, "w"), indent=1)
-    open(FIXTURE, "a").write("\n")
+    json.dump(fx, open(fixture, "w"), indent=1)
+    open(fixture, "a").write("\n")
     return path, counts
 
 
@@ -364,9 +375,10 @@ def main():
     form_doc = load_form(a.doc)
     excerpt, used = excerpt_for(form_doc, manifest())
     runs, meta_all = {}, {}
+    family = families.family_of(a.model)
     for job in jobs:
         prompt = build_entry_prompt(form_doc, excerpt, job) if job.get("kind") else build_prompt(form_doc, excerpt, job)
-        base = os.path.join(RAW, job["id"])
+        base = os.path.join(RAW, families.case_id(job["id"], family))
         open(base + ".prompt.txt", "w", encoding="utf-8").write(prompt)
         sha = hashlib.sha256(prompt.encode()).hexdigest()
         print(f"{job['id']}: prompt {len(prompt):,} chars, {len(job['fill'])} lines to fill, {len(job['given']) + len(job['own_inputs'])} amounts given")

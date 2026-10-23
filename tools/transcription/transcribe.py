@@ -10,11 +10,16 @@ disagreements are written into the log by a person reading the source page;
 nothing here writes to forms/.
 
 Usage: transcribe.py --form qdcg [--model claude-opus-5-5] [--dry-run]
+
+The log is reviews/<year>/transcription/<form>.md for a Claude model and <form>.<family>.md for
+another family (families.py), each with its own rulings sidecar; the raw prompt and response
+under .transcription/ take the same stem.
 """
 import argparse, datetime, hashlib, json, os, re, subprocess, sys
 import yaml
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import families  # noqa: E402
 import rulings  # noqa: E402
 import subjects  # noqa: E402
 
@@ -736,7 +741,28 @@ TRANSCRIBE_SYSTEM = ("You transcribe IRS worksheets into a formal data model fro
                      "You have no tools and no other sources. Output only the YAML requested.")
 
 
+DEEPSEEK_URL = "https://api.deepseek.com/chat/completions"
+DEEPSEEK_KEYCHAIN = ("deepseek-api", "elliotmilco")   # macOS keychain service and account
+DEEPSEEK_MAX_TOKENS = 65536
+DEEPSEEK_RETRIES = 3
+
+
+class MissingCredential(RuntimeError):
+    """The keychain holds no API key for the hosted transport."""
+
+
 def call_model(prompt, model, timeout=900, system=TRANSCRIBE_SYSTEM):
+    """One fixed-prompt call; returns (text, meta). The transport follows the model name:
+    `claude*` runs `claude -p` in print mode with no tools; `deepseek*` posts to DeepSeek's
+    hosted OpenAI-compatible endpoint. meta carries model_reported (a list), usage and cost_usd."""
+    if model.startswith("claude"):
+        return _call_claude(prompt, model, timeout, system)
+    if model.startswith("deepseek"):
+        return _call_deepseek(prompt, model, timeout, system)
+    raise ValueError(f"no transport for model {model!r}: a model name begins with 'claude' or 'deepseek'")
+
+
+def _call_claude(prompt, model, timeout, system):
     cmd = ["claude", "-p", "--no-session-persistence", "--setting-sources", "", "--tools", "",
            "--permission-prompts", "none", "--output-format", "json", "--model", model,
            "--system-prompt", system]
@@ -750,6 +776,52 @@ def call_model(prompt, model, timeout=900, system=TRANSCRIBE_SYSTEM):
         raise RuntimeError(f"no successful result: {json.dumps(events)[:400]}")
     usage = result.get("modelUsage") or {}
     return result.get("result", ""), {"model_reported": list(usage.keys()), "usage": usage, "cost_usd": result.get("total_cost_usd")}
+
+
+def _deepseek_key():
+    """The API key, read from the keychain at call time and held only in memory: never written,
+    logged, printed or exported. On failure the message names the entry and nothing else."""
+    service, account = DEEPSEEK_KEYCHAIN
+    try:
+        proc = subprocess.run(["security", "find-generic-password", "-s", service, "-a", account, "-w"],
+                              capture_output=True, text=True, timeout=30)
+    except (OSError, subprocess.TimeoutExpired):
+        proc = None
+    key = proc.stdout.strip() if proc and proc.returncode == 0 else ""
+    if not key:
+        raise MissingCredential(f"no DeepSeek API key in the macOS keychain (service {service!r}, account {account!r}); "
+                                f"add it with: security add-generic-password -s {service} -a {account} -w")
+    return key
+
+
+def _call_deepseek(prompt, model, timeout, system):
+    import time, urllib.error, urllib.request
+    body = json.dumps({"model": model, "stream": False, "temperature": 0, "max_tokens": DEEPSEEK_MAX_TOKENS,
+                       "messages": [{"role": "system", "content": system}, {"role": "user", "content": prompt}]}).encode()
+    headers = {"Content-Type": "application/json", "Authorization": "Bearer " + _deepseek_key()}
+    attempt = 0
+    while True:
+        try:
+            req = urllib.request.Request(DEEPSEEK_URL, data=body, headers=headers, method="POST")
+            with urllib.request.urlopen(req, timeout=timeout) as resp:
+                data = json.load(resp)
+            break
+        except urllib.error.HTTPError as ex:
+            detail = ex.read()[:400].decode("utf-8", "replace")
+            if not (ex.code == 429 or ex.code >= 500) or attempt >= DEEPSEEK_RETRIES:
+                raise RuntimeError(f"deepseek HTTP {ex.code}: {detail}") from None
+        except urllib.error.URLError as ex:
+            if isinstance(ex.reason, TimeoutError) or attempt >= DEEPSEEK_RETRIES:
+                raise RuntimeError(f"deepseek request failed: {ex.reason}") from None
+        attempt += 1
+        time.sleep(2 ** attempt)
+    choices = data.get("choices") or []
+    if not choices or choices[0].get("message", {}).get("content") is None:
+        raise RuntimeError(f"deepseek returned no message content: {json.dumps(data)[:400]}")
+    usage = data.get("usage") or {}
+    meta = {"model_reported": [data.get("model") or model], "usage": usage, "cost_usd": None,
+            "transport": "deepseek", "finish_reason": choices[0].get("finish_reason"), "attempts": attempt + 1}
+    return choices[0]["message"]["content"], meta
 
 
 def extract_yaml(text):
@@ -773,7 +845,8 @@ def extract_yaml(text):
 def write_log(form_doc, model, prompt, used, results, extra, raw_text, meta, dry_run=False):
     os.makedirs(LOGS, exist_ok=True)
     fid = form_doc["id"]
-    kept = rulings.kept("transcription", fid)
+    family = families.family_of(model)
+    kept = rulings.kept("transcription", fid, family)
     counts = {k: sum(1 for r in results if r["status"] == k) for k in ("AGREE", "DISAGREE", "MISSING")}
     out = [f"# Transcription agreement — {fid}", "",
            f"Second transcription of `{form_doc['title']}` by an isolated model (spec 6.5), compared line by line with `forms/{Y}/{fid}.yaml`.", "",
@@ -810,7 +883,7 @@ def write_log(form_doc, model, prompt, used, results, extra, raw_text, meta, dry
             out.append(f"| {r['printed']} | {', '.join(r['gates']['second'])} | {', '.join(r['gates']['not_in_project_line']) or '-'} |")
         out.append("")
     out += ["## Raw second transcription", "", "```yaml", raw_text.strip(), "```", ""]
-    path = os.path.join(LOGS, fid + ".md")
+    path = rulings.log_path("transcription", fid, family)
     if not dry_run:
         open(path, "w", encoding="utf-8").write("\n".join(out))
     return path, counts
@@ -840,18 +913,19 @@ def main():
                 other[l["id"]] = l["label"][:70] + tag
     prompt = build_prompt(form_doc, excerpt, params, other)
     os.makedirs(RAW, exist_ok=True)
-    open(os.path.join(RAW, a.form + ".prompt.txt"), "w", encoding="utf-8").write(prompt)
+    base = os.path.join(RAW, families.stem(a.form, families.family_of(a.model)))
+    open(base + ".prompt.txt", "w", encoding="utf-8").write(prompt)
     print(f"{a.form}: excerpt {len(excerpt):,} chars from " + "; ".join(f"{u['doc']} pages {u['pages']} ({u['how']})" for u in used))
-    print(f"prompt {len(prompt):,} chars -> .transcription/{a.form}.prompt.txt")
+    print(f"prompt {len(prompt):,} chars -> {os.path.relpath(base, ROOT)}.prompt.txt")
     if a.dry_run:
         return
     if a.from_response:
-        text = open(os.path.join(RAW, a.form + ".response.txt"), encoding="utf-8").read()
-        meta = json.load(open(os.path.join(RAW, a.form + ".meta.json"))) if os.path.exists(os.path.join(RAW, a.form + ".meta.json")) else {}
+        text = open(base + ".response.txt", encoding="utf-8").read()
+        meta = json.load(open(base + ".meta.json")) if os.path.exists(base + ".meta.json") else {}
     else:
         text, meta = call_model(prompt, a.model)
-        open(os.path.join(RAW, a.form + ".response.txt"), "w", encoding="utf-8").write(text)
-        json.dump(meta, open(os.path.join(RAW, a.form + ".meta.json"), "w"))
+        open(base + ".response.txt", "w", encoding="utf-8").write(text)
+        json.dump(meta, open(base + ".meta.json", "w"))
     second = extract_yaml(text)
     results, extra = compare(a.form, form_doc["lines"], second["lines"])
     path, counts = write_log(form_doc, a.model, prompt, used, results, extra, text, meta)

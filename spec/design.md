@@ -71,10 +71,11 @@ Rendered output is committed, so a change in the data shows as a readable diff i
 TypeScript, using `BigInt` for cents and rate components. No decimal library.
 
 - Evaluation is lazy and memoized over the line graph. There is no fixed-point iteration.
-- Each value carries a completeness state. An unknown operand makes the result unknown; a placeholder makes it a placeholder.
+- Each value carries a completeness state. An unknown operand makes the result unknown unless another operand is a refusal, which outranks it (`spec.md` section 4.7.4); a placeholder makes it a placeholder.
 - Evaluating a line returns its value and its derivation: atom, operands with values, citation, rounding applied, and for `choose` the guards examined and not taken.
 - Rounding is performed only by the `round` atom, where a cited instruction says so. Amounts are otherwise exact cents. The return-wide whole-dollar rounding setting of `spec.md` section 8 is deferred and not implemented; the output says so, and the register entries `amb.2025.multiplication_subcent` and `amb.2025.sales_rounding` in `ambiguities/2025.yaml` carry its status.
 - A refusal is a value, not an exception: evaluation reports which gate fired and its citation.
+- The order of evaluation is specified in `spec.md` section 4.7: refusal gates at line entry, in order, before the expression; `all`/`any` conjunct order and early stops; `choose` guards in order with untaken alternatives unevaluated; operand order and the one incompleteness rule (first refusal, else first unknown); `sum_over`'s lower bound for partial counts; memoization once per frame. Section 4.7 also lists the places where this evaluator and the Lean evaluator could differ (D1 to D7). The mutation tool's equivalence arguments (`engine/src/mutate.ts`) cite those rules, and `reports/2025/equivalence_review.md` maps each argument to them.
 
 The evaluator is small enough to read in one sitting. It contains no form-specific code. `opaque` functions live in one directory, each with its citation and tests.
 

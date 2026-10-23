@@ -12,12 +12,110 @@ entry.
 
 ## Isolation
 
-Fixed-prompt, curated input, unattended, non-secret, no credential beyond the
-CLI's own: `claude -p --setting-sources "" --tools "" --no-session-persistence
---permission-prompts none --model <pinned>`, system prompt task-only. The tool
-list in the init event is empty and a request to read a file is refused;
-verified before the first run. Output is parsed as YAML and compared; it drives
-no write path.
+Fixed-prompt, curated input, unattended, non-secret: the model's text is parsed
+as YAML, verdicts or worked values and compared; it drives no write path,
+command or execution (AISP Part I §2 classification by the apply code). What is
+sent is the archived public IRS text, the data model, and synthetic figures
+from generated returns; no personal data.
+
+## Transports
+
+`call_model` in `transcribe.py` chooses the transport by the model name, and
+every tool here (`transcribe.py`, `render_compare.py`, `classm.py`,
+`transcribe_tables.py`, `screen_review.py`, `rerun_all.py`) takes `--model`:
+
+- `claude*` — `claude -p --setting-sources "" --tools "" --no-session-persistence
+  --permission-prompts none --model <pinned>`, system prompt task-only. The tool
+  list in the init event is empty and a request to read a file is refused;
+  verified before the first run. No credential beyond the CLI's own.
+- `deepseek*` — DeepSeek's hosted OpenAI-compatible endpoint
+  (`https://api.deepseek.com/chat/completions`), standard library only: the
+  system and user prompts become the two messages, temperature 0, one
+  non-streaming request with a timeout, retried with backoff on 429 and 5xx
+  (at most three retries). The model ids the account sees are listed by
+  `GET https://api.deepseek.com/models` (`deepseek-flash`, `deepseek-v4-pro` at
+  the time of writing; check the pricing page before choosing). The API key is
+  read at call time from the macOS keychain, service `deepseek-api`, account
+  `elliotmilco` (`security find-generic-password -s deepseek-api -a elliotmilco
+  -w`), held in memory for the request only, and never written to a file,
+  printed, logged or exported to the environment (AISP Part II §5). A missing
+  entry fails with a message naming it. `cost_usd` in the meta is `None` for
+  this transport: DeepSeek prices depend on the hour (peak and off-peak) and
+  are not reproduced here; the token usage is recorded instead.
+
+Any other model name is refused; nothing routes to a transport by default.
+Every log records both the model requested and the model the service
+reported, whichever transport ran. `--dry-run` builds the prompt and excerpt
+and reaches neither transport nor the keychain.
+
+```
+python3 tools/transcription/transport_check.py [--model deepseek-flash]   # one tiny call; prints model and usage
+```
+
+## Model families
+
+A family is the first token of the model name (`families.py`: `claude-opus-5-5`
+is `claude`, `deepseek-v4-pro` is `deepseek`). Each family's review of a form
+is its own log beside the others, never a replacement: the Claude logs keep
+their plain names, and a run with another family writes
+
+```
+reviews/<year>/transcription/<form>.<family>.md   with <form>.<family>.rulings.json
+reviews/<year>/render/<form>.<family>.md          with <form>.<family>.rulings.json
+reviews/<year>/classm/<form>.<family>.md          with <form>.<family>.rulings.json
+fixtures/<year>/classm.<family>.json              that family's class M fixtures
+```
+
+`rulings.py`, `rule.py` (`--family deepseek`) and `check_logs.py` address a log
+by (kind, form, family); the Claude family is implied when none is named. The
+raw prompt and response under `.transcription/` and `.classm/` take the same
+stem, so `--from-response --model deepseek-v4-pro` re-reads that family's
+saved response. A second family's class M fixture cases carry the family as a
+suffix on the case id (`classm.qdcg.1.deepseek`) so no two families' cases
+share an id; their `evidence_note` records the model, which is how the
+evidence report counts second-family M assertions.
+
+`families.json` lists the families `check_logs.py` expects:
+
+```json
+{"required": ["claude"], "optional": ["deepseek"]}
+```
+
+Every required family must have a current log with no open ruling for every
+form (`check-all` fails otherwise). An optional family's logs may be missing;
+those present are held to the same snapshot and subject checks, and their
+open rulings are counted and printed without failing the run, so a second
+family's disagreements can stand open while the owner rules them. A log whose
+family is in neither list fails. Counts are printed per kind and family. The
+owner moves a family to `required` once every form has its log.
+
+### Agreement floor and independence yield
+
+```
+python3 tools/transcription/compare_families.py      # offline; writes reports/<year>/second_family.md
+```
+
+For every form with a Claude log and a second family's log of the same kind,
+the lines judged by both are compared and three things reported, per form and
+overall, in `reports/<year>/second_family.md`:
+
+- the **agreement floor**: the share of lines on which the two families'
+  verdicts agree and neither disputes the project (transcription and class M:
+  both AGREE; render: both MATCH), marked pass or below against the integrity
+  plan's provisional 90% floor (item 1.3). A run below the floor does not count
+  as a second-family assertion; the plan's answer is a stronger model, not a
+  lower floor. A denominator of a few lines is marked as such.
+- the **independence yield**: lines the second family disputed where the
+  Claude log agreed or matched, each with the second family's reason. Zero is
+  a visible result.
+- the lines **both** families disputed, and the lines only the Claude run
+  disputed.
+
+Lines one log judged and the other did not (MISSING, or absent from one log)
+are left out of the floor and counted; a log whose subject hash is no longer
+current is marked stale. `check_logs.py` prints the report's summary line when
+the report exists. `rerun_all.py --model <non-Claude>` runs every form that has
+a log of any family through that family, leaving the Claude logs as they are.
 
 ## Running
 
@@ -56,6 +154,7 @@ page whose heading starts a line. The log records which pages were used.
 
 ```
 python3 tools/transcription/rule.py --form sd --rulings rulings.json   # {"<printed or id>": "Ruling: ...", "*": "..."}
+python3 tools/transcription/rule.py --form sd --family deepseek --rulings rulings.json   # a second family's log
 ```
 
 A ruling is written into the log under the disagreement it answers, with the
@@ -104,9 +203,9 @@ and a glossary of the helper values it names, followed transitively) together
 with the same cited pages, and asks for a verdict per printed line: MATCH,
 MISMATCH (quoting the IRS words that differ) or UNCLEAR (what is missing).
 The model never sees the YAML or an expression tree; it judges whether the
-English says what the page says. Same isolation and the same `claude -p`
-invocation as the transcription, with its own task-only system prompt; about
-$0.10 per form.
+English says what the page says. Same isolation and the same `call_model`
+transports as the transcription, with its own task-only system prompt; about
+$0.10 per form on Claude.
 
 ```
 python3 tools/transcription/render_compare.py --form qdcg            # one model call
@@ -170,7 +269,9 @@ prompt hash per case, the branches each case takes, every line's agreement
 or disagreement with the model's own arithmetic shown, and a ruling under
 each disagreement. The agreements are fixture cases `classm.<doc>.<n>` in
 `fixtures/2025/classm.json`, evidence class M, run by `test-fixtures` like
-any other. A disagreement is written into the fixture as the model's value,
+any other. A model of another family writes `<doc>.<family>.md` and its
+cases, suffixed with the family, to `fixtures/2025/classm.<family>.json`
+(see Model families). A disagreement is written into the fixture as the model's value,
 so the build fails until it is ruled: a project defect gets a data fix and an
 inventory entry; a model arithmetic error is dropped from the fixture with
 `{"ruling": "...", "drop": true}` and stays in the log. Documents that are

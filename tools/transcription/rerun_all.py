@@ -8,20 +8,26 @@ rule on, not a failure of the run. Logs and fixtures are written by the tools
 themselves; this driver only schedules and summarises.
 
     rerun_all.py [--kinds transcription,render,classm] [--forms a,b] [--jobs 4] [--model M]
+
+The forms of a kind are those with a log of any model family; each tool writes the log of
+the family `--model` names (families.py), so a second family's run leaves the Claude logs as
+they are.
 """
 import argparse, json, os, subprocess, sys, time
 from concurrent.futures import ThreadPoolExecutor
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
+sys.path.insert(0, HERE)
 sys.path.insert(0, os.path.join(ROOT, "tools"))
 from taxyear import Y, YEAR_ARGS  # noqa: E402
+import families  # noqa: E402
 TOOLS = {"transcription": ("transcribe.py", "--form"), "render": ("render_compare.py", "--form"), "classm": ("classm.py", "--doc")}
 
 
 def forms_for(kind):
     d = os.path.join(ROOT, "reviews", Y, kind)
-    return sorted(f[:-3] for f in os.listdir(d) if f.endswith(".md"))
+    return sorted({families.split_stem(f[:-3])[0] for f in os.listdir(d) if f.endswith(".md")})
 
 
 def run(kind, form, model):

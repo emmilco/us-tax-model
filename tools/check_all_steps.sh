@@ -60,6 +60,7 @@ step check_extraction python3 tools/check_extraction.py "$@"
 step check_macrs_tables python3 tools/check_macrs_tables.py "$@"
 step check_auto_limits python3 tools/check_auto_limits.py "$@"
 step check_bug_inventory python3 tools/check_bug_inventory.py
+step compare_families python3 tools/transcription/compare_families.py "$@"
 step check_logs python3 tools/transcription/check_logs.py "$@"
 step check_table_logs python3 tools/transcription/check_table_logs.py "$@"
 # citations runs without --strict: the computed-line locators it lists under

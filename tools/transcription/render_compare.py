@@ -7,9 +7,10 @@ the YAML or its expression trees.
 
     python3 tools/transcription/render_compare.py --form qdcg [--model M] [--dry-run] [--from-response]
 
-Logs go to reviews/<year>/render/<form>.md; a MISMATCH or UNCLEAR line carries "Ruling:
-open" until ruled with rule.py --kind render. Raw prompts and responses are kept under
-the git-ignored .transcription/ as <form>.render.*.
+Logs go to reviews/<year>/render/<form>.md (<form>.<family>.md for a model family other than
+Claude: families.py); a MISMATCH or UNCLEAR line carries "Ruling: open" until ruled with
+rule.py --kind render. Raw prompts and responses are kept under the git-ignored .transcription/
+as <stem>.render.*.
 """
 import argparse, datetime, hashlib, json, os, re, sys
 import yaml
@@ -17,6 +18,7 @@ import yaml
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from transcribe import ROOT, RAW, manifest, excerpt_for, call_model, load_form  # noqa: E402
 from taxyear import Y  # noqa: E402
+import families  # noqa: E402
 import rulings  # noqa: E402
 import subjects  # noqa: E402
 
@@ -282,8 +284,9 @@ def extract(text):
 def write_log(form_doc, model, prompt, used, printed, verdicts, raw_text, meta):
     os.makedirs(LOGS, exist_ok=True)
     fid = form_doc["id"]
-    path = os.path.join(LOGS, fid + ".md")
-    kept = rulings.kept("render", fid)
+    family = families.family_of(model)
+    path = rulings.log_path("render", fid, family)
+    kept = rulings.kept("render", fid, family)
     results = []
     for e in printed:
         v = verdicts.get(e["key"])
@@ -330,10 +333,10 @@ def main():
     excerpt, used = excerpt_for(form_doc, manifest())
     prompt = build_prompt(form_doc, excerpt)
     os.makedirs(RAW, exist_ok=True)
-    base = os.path.join(RAW, a.form + ".render")
+    base = os.path.join(RAW, families.stem(a.form, families.family_of(a.model)) + ".render")
     open(base + ".prompt.txt", "w", encoding="utf-8").write(prompt)
     print(f"{a.form}: excerpt {len(excerpt):,} chars from " + "; ".join(f"{u['doc']} pages {u['pages']} ({u['how']})" for u in used))
-    print(f"prompt {len(prompt):,} chars -> .transcription/{a.form}.render.prompt.txt")
+    print(f"prompt {len(prompt):,} chars -> {os.path.relpath(base, ROOT)}.prompt.txt")
     if a.dry_run:
         return
     if a.from_response:

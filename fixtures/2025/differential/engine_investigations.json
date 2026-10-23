@@ -2,25 +2,43 @@
  {
   "engine": "PolicyEngine-US",
   "line": "f1040.line15",
-  "case": "gen-00053",
-  "cause": "Carried float32 error: PolicyEngine-US computes in float32. Its AGI (line 11b, $141,711.62) is 3 cents below the project's $141,711.65, within two units in the last place at that size (about 3.1 cents); line 10 and the standard deduction agree exactly, so line 15 (AGI less the deduction) carries the same 3 cents, which is more than two units in the last place at line 15's smaller size. Investigated 2026-10-18 when Schedule 1 items entered the generated cases."
- },
- {
-  "engine": "PolicyEngine-US",
-  "line": "f1040.line15",
   "case": "gen-00314",
   "cause": "Carried float32 error: PolicyEngine-US's AGI is 1 cent above the project's (within float32 precision at $79,136.84), line 10, the standard deduction and the QBI deduction agree exactly, and the float32 subtractions to line 15 add one more cent, for 2 cents. Investigated 2026-10-18 when Schedule 1 items entered the generated cases."
- },
- {
-  "engine": "PolicyEngine-US",
-  "line": "f1040.line15",
-  "case": "gen-00919",
-  "cause": "Carried float32 error: PolicyEngine-US's AGI is 1 cent above the project's ($87,942.70 against $87,942.69, within float32 precision at that size); the deduction (sa.deduction) and the Schedule 1-A deduction on line 13b (the enhanced deduction for seniors, $5,223.44) agree exactly, and the float32 subtractions to line 15 add one more cent, for 2 cents. Investigated 2026-10-18 when Schedule 1-A entered the generated cases."
  },
  {
   "engine": "Tax-Calculator",
   "line": "f1040.line15",
   "case": "se-00075",
   "cause": "Rounding of the half of self-employment tax: Schedule SE line 12 is $822.51 in all three, and line 13, half of it, is $411.255; the project rounds half-up to $411.26 (amb.2025.multiplication_subcent), both engines take $411.25, so AGI is 1 cent apart; Schedule A, the QBI deduction and line 13b agree exactly, and Tax-Calculator's own float64 subtractions to taxable income give one more cent. Investigated 2026-10-19 when self-employment entered the generated cases."
+ },
+ {
+  "engine": "PolicyEngine-US",
+  "line": "f1040.line15",
+  "case": "gen-00372",
+  "cause": "Carried float32 error: PolicyEngine-US's AGI ($261,861.22) is 4 cents above the project's ($261,861.18), within two units in the last place at that size (about 3.1 cents, rounded up to 4); line 10 (the IRA deduction, $1,823.63) and the itemized deduction ($28,991.35) agree exactly, and the float32 subtraction to line 15 adds one more cent, for 5 cents where the bound at line 15's size is 4 cents. Investigated 2026-10-22 when IRA contributions entered the generated cases."
+ },
+ {
+  "engine": "PolicyEngine-US",
+  "line": "f1040.line16",
+  "case": "gen-00372",
+  "cause": "Carried float32 error: PolicyEngine-US's taxable income is 5 cents above the project's (its line 15 difference, explained separately), and the rate schedule both use above $100,000 taxes the 5 cents at 32% (taxable income $232,869.83, single), 1.6 cents, which the engine's float32 arithmetic rounds to 2 cents; the bound at line 16's size is 1 cent. Investigated 2026-10-22 when IRA contributions entered the generated cases."
+ },
+ {
+  "engine": "PolicyEngine-US",
+  "line": "f1040.line15",
+  "case": "se-00293",
+  "cause": "Rounding of the half of self-employment tax plus float32: Schedule SE line 12 is $3,487.87 in both, and line 13, half of it, is $1,743.935; the project rounds half-up to $1,743.94 (amb.2025.multiplication_subcent), the engine takes $1,743.93, so line 10 is 1 cent apart; the engine's gross income is 1 cent above the project's (within float32 precision at $74,283.60), so AGI is 2 cents apart ($68,112.59 against $68,112.57); the standard deduction, the QBI deduction and line 13b agree exactly, and line 15 carries the 2 cents where the bound at its size is 1 cent. Investigated 2026-10-22 when IRA contributions entered the generated cases."
+ },
+ {
+  "engine": "PolicyEngine-US",
+  "line": "f1040.line15",
+  "case": "se-00203",
+  "cause": "Rounding of the half of self-employment tax plus float32: Schedule SE line 12 is $106.47 in both, and line 13, half of it, is $53.235; the project rounds half-up to $53.24 (amb.2025.multiplication_subcent), the engine takes $53.23, so line 10 and AGI are 1 cent apart ($61,802.82 against $61,802.81); the standard deduction and the QBI deduction ($140.06) agree exactly, and the engine's float32 subtraction to line 15 adds one more cent, for 2 cents where the bound at line 15's size is 1 cent. Investigated 2026-10-22 when IRA contributions entered the generated cases."
+ },
+ {
+  "engine": "Tax-Calculator",
+  "line": "sa.line17",
+  "case": "se-00255",
+  "cause": "Negative adjusted gross income (-$4,331.38) with no medical expenses: the project's Schedule A line 3 (7.5% of line 2) is -$324.85 and its line 4, line 1 ($0) less line 3, is $324.85, read literally from the form (\"Subtract line 3 from line 1. If line 3 is more than line 1, enter -0-\"); Tax-Calculator floors AGI at zero for line 3 (calcfunctions.ItemDed: posagi = max(c00100, 0.); c17750 = medical_frt * posagi; c17000 = max(0., e17500 - c17750)) and deducts nothing. The instructions allow \"only the part of your medical and dental expenses that exceeds 7.5% of the amount of your adjusted gross income\" (i1040sca, line 1), and no part of $0 of expenses is $324.85, so the engine's reading follows the instruction and the project's is a candidate defect referred to the owner. Investigated 2026-10-22 when IRA contributions entered the generated cases."
  }
 ]

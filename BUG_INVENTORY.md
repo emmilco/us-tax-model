@@ -1185,3 +1185,29 @@ later grouping.
   the run when "not computed" exceeds a stated share of cases on any mapped line, so a blind differential cannot pass
   (integrity plan item 1.4). Integrity plan item 0.1 commit.
 - **Tags:** tool-defect; generator; comparison-blind-spot; silent-degradation; caught-by-audit
+
+## BUG-0094 — Schedule A medical floor goes negative with a negative adjusted gross income
+
+- **Date:** 2026-10-22
+- **Caught by:** the engine differential after integrity plan item 1.4(a) extended the generated cases (case se-00255:
+  Tax-Calculator `sa.line17` $0.00 against the project's $324.85; PolicyEngine-US agreed with Tax-Calculator but its
+  comparison was excluded by the `salt_exceeds_agi` feature, which fires spuriously when AGI is negative).
+- **Symptom:** on a return with adjusted gross income below zero (a Schedule C loss larger than the other income) and no
+  medical expenses, Schedule A line 3 (7.5% of line 2) is negative, line 4 ("Subtract line 3 from line 1. If line 3 is
+  more than line 1, enter -0-") is the positive of that amount, and the itemized total carries a medical deduction
+  with nothing paid: $324.85 on AGI of −$4,331.38.
+- **Root cause:** `forms/2025/sa.yaml` computes line 3 as `multiply_rate` of line 2 (a copy of Form 1040 line 11b, typed
+  `Dollars`, signed) and line 4 as `subtract_floor0` of line 1 less line 3; neither floors AGI or line 3 at zero. The
+  instruction (i1040sca, line 1) allows "only the part of your medical and dental expenses that exceeds 7.5% of ...
+  adjusted gross income"; both engines floor AGI at zero before the percentage.
+- **Where:** `forms/2025/sa.yaml` (`sa.line3`, `sa.line4`); the derived feature `salt_exceeds_agi` in
+  `tools/engines/run_engines.py` (should require `sa.line5d > 0`).
+- **Why it survived:** no fixture has a negative AGI with Schedule A; the generated returns reached negative AGI only
+  once self-employment losses were drawn (Stage 14) and the Schedule A line was excluded for most of them by the
+  spurious feature; the render review read line 3 as a faithful rendering of "Multiply line 2 by 7.5%", which it is;
+  the Lean evaluator computes the same signed product.
+- **Fix:** open; the engine difference is recorded as explained with the deciding sentence in
+  `fixtures/2025/differential/engine_investigations.json`. Floor line 3 (or its AGI operand) at zero in `sa.yaml`
+  with a fixture at negative AGI; make `salt_exceeds_agi` require a positive line 5d. Counts toward the integrity
+  plan's Phase 1 stop rule (the third value error).
+- **Tags:** signed-operand; floor-missing; latent-until-new-input; caught-by-engine-differential; caught-by-audit
