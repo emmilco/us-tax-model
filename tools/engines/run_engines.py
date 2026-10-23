@@ -1,17 +1,22 @@
 #!/usr/bin/env python3
-"""Run generated cases through PolicyEngine-US and Tax-Calculator.
+"""Run generated cases through PolicyEngine-US, Tax-Calculator and OpenTaxSolver.
 
 Runs under the virtualenv created by tools/engines/setup.sh; nothing else in
 the repository imports these engines. Each adapter maps the case's economic
 facts (not the project's computed lines) onto the engine's inputs and reads
-back the engine's federal lines in integer cents.
+back the engine's federal lines in integer cents. OpenTaxSolver's adapter is
+the sibling module ots_adapter.py (text input files through the C programs
+built under .engines/opentaxsolver-src/); it is left out, visibly, when that
+package is not built.
 
 Output: { "engines": { name: { "version", "precision", "lines": { case_id: { line: cents } },
           "limitations": [ { feature, lines, reason } ],
+          "features": { case_id: [feature] } (optional: facts about the engine's own run),
           "pass_through": { "lines": [...], "components": { line: note }, "unmapped": { line: reason } } } } }
 The comparison applies the limitations using the case's features, some of which
 are derived from the project's own values (for example whether Form 4952 limited
-the investment interest deduction). `pass_through.lines` names mapped lines the
+the investment interest deduction) and some reported by the engine's adapter
+(for example that OpenTaxSolver computed an alternative minimum tax). `pass_through.lines` names mapped lines the
 engine takes whole from the generator's facts instead of computing (none today);
 `pass_through.components` names the components of a computed line that enter as
 generator facts, so the evidence report can say what the engine did not compute;
@@ -26,6 +31,9 @@ from pathlib import Path
 # otherwise be imported as the `coverage` module that numba (under Tax-Calculator) probes for.
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from taxyear import YEAR  # noqa: E402
+sys.path.pop(0)
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import ots_adapter  # noqa: E402
 sys.path.pop(0)
 warnings.filterwarnings("ignore")
 
@@ -436,6 +444,11 @@ def main():
     a = ap.parse_args()
     cases = json.load(open(a.cases))
     out = {"engines": {"PolicyEngine-US": run_policyengine(cases), "Tax-Calculator": run_taxcalc(cases)}}
+    ots = ots_adapter.run_ots(cases, YEAR, Path(a.out).resolve().parent / "ots")
+    if ots is None:
+        print("OpenTaxSolver: SKIPPED - package not built under .engines/opentaxsolver-src/ (see tools/engines/README.md)")
+    else:
+        out["engines"][ots_adapter.ENGINE_NAME] = ots
     json.dump(out, open(a.out, "w"))
     print(f"engines ran {len(cases)} cases -> {a.out}")
 

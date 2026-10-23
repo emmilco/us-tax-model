@@ -583,3 +583,12 @@
 - Reason: The owner's decision (Stage 16 decision 10). The line names traditional IRA contributions without limiting them to the deductible ones. Excess or recharacterized contributions, traditional or Roth, are refused by one screen per person (person.ira_excess), which also answers Stage 15 owner question 4.
 - Status: Owner decision, Stage 16 (T-053).
 - Cite: [f8880] Form 8880 (2025), line 1, "Traditional and Roth IRA contributions" (2025; created 2025-11-04; sha256 ba2b2877)
+
+## amb.2025.sa_medical_negative_agi
+
+- Text at issue: Schedule A line 2 says "Enter amount from Form 1040 or 1040-SR, line 11b", line 3 "Multiply line 2 by 7.5% (0.075)" and line 4 "Subtract line 3 from line 1. If line 3 is more than line 1, enter -0-". When line 11b is negative, the printed arithmetic makes line 3 negative and line 4 larger than line 1: a deduction with nothing paid when line 1 is zero. The instruction allows "only the part of your medical and dental expenses that exceeds 7.5% of the amount of your adjusted gross income on Form 1040 or 1040-SR, line 11b".
+- Candidate readings: Follow the printed arithmetic with the signed amount: line 3 negative, line 4 above line 1. | Enter line 11b on line 2 at no less than zero, so line 3 is never negative and line 4 never exceeds line 1.
+- **Chosen:** The second (sa.agi_floor, copied to line 2).
+- Reason: The instruction names a part of the expenses, and no part of the expenses exceeds the expenses themselves; the signed reading would deduct $324.85 of medical expenses on a return with none (engine differential case se-00255, BUG-0094). Tax-Calculator (calcfunctions.ItemDed, posagi = max(c00100, 0.)) and PolicyEngine-US both floor adjusted gross income at zero before taking the percentage. Equivalent to flooring line 3 at zero; the floor is placed on line 2's operand so that lines 3 and 4 keep their printed wording.
+- Status: Applied for BUG-0094; both engines agree; the owner's decision is not yet recorded.
+- Cite: [i1040sca] p. 1, Medical and Dental Expenses, "You can deduct only the part of your medical and dental expenses that exceeds 7.5% of the amount of your adjusted gross income on Form 1040 or 1040-SR, line 11b" (2025; printed date 2025-12-08; sha256 b0999b12)

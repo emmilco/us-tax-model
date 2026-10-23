@@ -119,6 +119,129 @@
                 "retirement.smw5", "retirement.smw6", "retirement.smw7", "retirement.smw8", "retirement.smw9",
                 "retirement.smw10", "retirement.smw11"],
       "pages": [{"doc": "i1040gi", "pages": [29, 30]}]
+    },
+    {
+      "id": 14,
+      "title": "Schedule C net profit chain and the simplified home office: lines 28 to 32 and the Simplified Method Worksheet",
+      "lines": ["sc.line28", "sc.line29", "sc.line28_pre179", "sc.line29_pre179", "sc.ho_sqft", "sc.ho_home_sqft",
+                "sc.ho_rate", "sc.ho_cap_sqft", "sc.ho_over", "sc.ho_line4_actual", "sc.ho_line4_cap", "sc.ho_line4",
+                "sc.ho_line1", "sc.ho_room", "sc.ho_unlimited", "sc.ho_s179_max", "sc.ho_no179", "sc.ho_limited",
+                "sc.ho_pre179_floor", "sc.ho_both", "sc.ho_line5_lim", "sc.ho_line5", "sc.line30", "sc.line31_pre179",
+                "sc.loss", "sc.at_risk", "sc.loss_allowed", "sc.result"],
+      "pages": [{"doc": "f1040sc", "pages": [1]}, {"doc": "i1040sc", "pages": [10, 11, 12, 14, 15]}, {"doc": "p946", "pages": [17, 18, 19]}, {"doc": "f4562", "pages": [1]}]
+    },
+    {
+      "id": 15,
+      "title": "Schedule C vehicle: the business-use ratio, the standard mileage rate, lines 9 and 20a (scveh.yaml)",
+      "lines": ["scveh.method", "scveh.miles_business", "scveh.miles_commuting", "scveh.miles_other", "scveh.bm_c",
+                "scveh.cm_c", "scveh.om_c", "scveh.nonbusiness_c", "scveh.total_c", "scveh.over_half", "scveh.low_use",
+                "scveh.parking", "scveh.smr_ok", "scveh.smr_bad", "scveh.rate", "scveh.smr_amount", "scveh.line9_standard",
+                "scveh.operating", "scveh.operating_business", "scveh.line9_actual", "scveh.line9", "scveh.is_actual_owned",
+                "scveh.is_actual_leased", "scveh.lease", "scveh.lease_business", "scveh.line20a", "scveh.bus_cost"],
+      "pages": [{"doc": "f1040sc", "pages": [2]}, {"doc": "i1040sc", "pages": [6, 7, 8, 15]}, {"doc": "i4562", "pages": [14]}, {"doc": "n-25-05", "pages": [2]}]
+    },
+    {
+      "id": 16,
+      "title": "MACRS on 2025 and earlier property: the mid-quarter test and convention, the table rates (asset.yaml, mq.yaml, the vehicle rates)",
+      "lines": ["asset.period", "asset.basis", "asset.is2025", "asset.year", "asset.last", "asset.done", "asset.quarter",
+                "asset.qconv", "asset.hy", "asset.after179", "asset.ub", "asset.col19c", "asset.mqbase", "asset.mq_q4_2025",
+                "asset.mq_q4", "asset.mq_total", "mq.q4", "mq.total", "mq.applies", "asset.rate_hy", "asset.rate_mq",
+                "asset.macrs_hy", "asset.macrs_mq", "asset.macrs2025", "asset.ub_prior_a", "asset.ub_prior",
+                "asset.rate_prior", "asset.macrs_prior_live", "asset.macrs_prior", "scveh.rate_hy", "scveh.rate_mq",
+                "scveh.rate_prior"],
+      "pages": [{"doc": "f4562", "pages": [1]}, {"doc": "i4562", "pages": [9, 11, 12]}, {"doc": "p946", "pages": [34, 37, 41, 70, 71, 72, 73]}]
+    },
+    {
+      "id": 17,
+      "title": "Section 179: Form 4562 Part I with the business income limit (s179.yaml), lines 12 and 22",
+      "lines": ["s179.line2", "s179.max", "s179.line1", "s179.line3", "s179.line4", "s179.line5_full", "s179.separate",
+                "s179.line5_mfs", "s179.line5", "s179.line6", "s179.line7", "s179.line8", "s179.line9", "s179.line10",
+                "s179.income_sc", "s179.income", "s179.income0", "s179.line11", "s179.line9_10", "s179.line12",
+                "s179.line13", "s179.differs", "f4562.line12", "f4562.line22", "sc.s179_allowed", "sc.dep_other"],
+      "pages": [{"doc": "f4562", "pages": [1]}, {"doc": "i4562", "pages": [4, 5]}, {"doc": "p946", "pages": [17, 18, 19]}]
+    },
+    {
+      "id": 18,
+      "title": "Form 2441 Part III: dependent care benefits, lines 12 to 31",
+      "lines": ["f2441.line12", "f2441.line13", "f2441.line14", "f2441.line15_sum", "f2441.line14_bad", "f2441.line15",
+                "f2441.paid_2026", "f2441.line16", "f2441.line17", "f2441.line18", "f2441.spouse_earned_b", "f2441.line19",
+                "f2441.line20_17_18", "f2441.line20_all", "f2441.line20", "f2441.plan_max", "f2441.exclusion_max",
+                "f2441.line21", "f2441.line22", "f2441.line23", "f2441.line24_20_21", "f2441.line24", "f2441.line25",
+                "f2441.line26", "f2441.line27", "f2441.line28", "f2441.line29", "f2441.line30", "f2441.line31"],
+      "pages": [{"doc": "f2441", "pages": [1, 2]}, {"doc": "i2441", "pages": [3, 4, 5, 6]}]
+    },
+    {
+      "id": 19,
+      "title": "Form 8880 lines 3 to 12: the distribution reduction, the $2,000 cap, the rate table and the Credit Limit Worksheet",
+      "lines": ["f8880.line3a", "f8880.line3b", "f8880.dist_2025", "f8880.prior_joint_sum", "f8880.prior_joint",
+                "f8880.prior_own_a", "f8880.prior_own_b", "f8880.line4a", "f8880.line4b_joint", "f8880.line4b",
+                "f8880.line5a", "f8880.line5b", "f8880.inelig_a", "f8880.inelig_b", "f8880.elig_a", "f8880.elig_b",
+                "f8880.line6a_figured", "f8880.line6b_figured", "f8880.line6a", "f8880.line6b", "f8880.line7",
+                "f8880.line8", "f8880.line9", "f8880.line10", "f8880.clw1", "f8880.clw2", "f8880.clw3", "f8880.line11",
+                "f8880.agi_limit", "f8880.line3_total", "f8880.can_take", "f8880.line12_figured", "f8880.line12"],
+      "pages": [{"doc": "f8880", "pages": [1, 2]}]
+    },
+    {
+      "id": 20,
+      "title": "Form 5695 Part II: the per-item caps, lines 17 to 32",
+      "lines": ["f5695.sec_a_claimed", "f5695.line18b", "f5695.line19c", "f5695.line19f", "f5695.line19g",
+                "f5695.doors_cost", "f5695.line19h", "f5695.line20c", "f5695.line20d", "f5695.sec_b_claimed",
+                "f5695.line22c", "f5695.line22d", "f5695.line23c", "f5695.line23d", "f5695.line24c", "f5695.line24d",
+                "f5695.enabling_claimed", "f5695.line25e", "f5695.line26c", "f5695.line27", "f5695.line28", "f5695.line29g",
+                "f5695.line29h", "f5695.line30", "f5695.eehi_ws1", "f5695.eehi_ws2", "f5695.eehi_ws3", "f5695.line31",
+                "f5695.line32"],
+      "pages": [{"doc": "f5695", "pages": [2, 3, 4]}, {"doc": "i5695", "pages": [5, 6, 7]}]
+    },
+    {
+      "id": 21,
+      "title": "Schedule D: the lines 1a and 8a aggregate path, the Part I and II totals, line 16 and the line 21 loss limit",
+      "lines": ["sd.filed", "sd.line1a.d", "sd.line1a.e", "sd.line1a.g", "sd.line1a.h", "sd.line1b.h", "sd.line2.h",
+                "sd.line3.h", "sd.line7", "sd.line8a.d", "sd.line8a.e", "sd.line8a.g", "sd.line8a.h", "sd.line8b.h",
+                "sd.line9.h", "sd.line10.h", "sd.line13", "sd.line15", "sd.line16", "sd.line17", "sd.line20",
+                "sd.loss_limit", "sd.limited_loss", "sd.has_loss", "sd.line21", "sd.line22", "sd.to1040", "sd.net_gain_raw",
+                "sd.net_gain"],
+      "pages": [{"doc": "f1040sd", "pages": [1, 2]}, {"doc": "i1040sd", "pages": [10, 11, 14]}, {"doc": "i1040gi", "pages": [38]}]
+    },
+    {
+      "id": 22,
+      "title": "Form 8949 columns (e) to (h): adjustment codes B and W and the aggregate route (sales.yaml)",
+      "lines": ["sales.box", "sales.route", "sales.aggregate_eligible", "sales.covered", "sales.has_b", "sales.has_w",
+                "sales.bad_code", "sales.bad_aggregate", "sales.e", "sales.b_difference", "sales.adjust_b", "sales.b",
+                "sales.w", "sales.g", "sales.before_adjustment", "sales.h"],
+      "pages": [{"doc": "f8949", "pages": [1, 2]}, {"doc": "i8949", "pages": [2, 6, 7, 8, 9, 10, 11]}, {"doc": "i1040sd", "pages": [10, 11]}]
+    },
+    {
+      "id": 23,
+      "title": "Schedule B: the Part I and II totals and Part III",
+      "lines": ["sb.unsupported", "sb.line2", "sb.line3", "sb.line4", "sb.ordinary_dividends", "sb.line6", "sb.partIII",
+                "sb.line7a", "sb.fbar_required", "sb.form8938", "sb.line8"],
+      "pages": [{"doc": "f1040sb", "pages": [1]}, {"doc": "i1040sb", "pages": [1, 2, 3]}]
+    },
+    {
+      "id": 24,
+      "title": "Form 8959 lines 1 to 24",
+      "lines": ["f8959.unsupported", "f8959.line1", "f8959.line4", "f8959.line5", "f8959.line6", "f8959.line7",
+                "f8959.line8", "f8959.line9", "f8959.line10", "f8959.line11", "f8959.line12", "f8959.line13",
+                "f8959.line15", "f8959.line16", "f8959.line17", "f8959.line18", "f8959.line19", "f8959.line20",
+                "f8959.line21", "f8959.line22", "f8959.line24"],
+      "pages": [{"doc": "f8959", "pages": [1]}, {"doc": "i8959", "pages": [2, 3, 4]}]
+    },
+    {
+      "id": 25,
+      "title": "Form 8960 lines 1 to 17",
+      "lines": ["f8960.unsupported", "f8960.allocated_taxes", "f8960.line1", "f8960.line2", "f8960.line4c", "f8960.line5a",
+                "f8960.line5d", "f8960.line8", "f8960.line9a", "f8960.line9b", "f8960.line9d", "f8960.line10",
+                "f8960.line11", "f8960.line12", "f8960.line13", "f8960.line14", "f8960.line15", "f8960.line16",
+                "f8960.line17", "f8960.bad_allocation"],
+      "pages": [{"doc": "f8960", "pages": [1]}, {"doc": "i8960", "pages": [13, 17, 18, 22, 23]}]
+    },
+    {
+      "id": 26,
+      "title": "Form 8995 lines 1 to 17 with Schedule C line 1(c)",
+      "lines": ["sc.qbi", "f8995.line2", "f8995.line3", "f8995.line4_sum", "f8995.line4", "f8995.line5", "f8995.line6",
+                "f8995.line7", "f8995.line8", "f8995.line9", "f8995.line10", "f8995.line11", "f8995.line12", "f8995.line13",
+                "f8995.line14", "f8995.line15", "f8995.loss", "f8995.line16", "f8995.line17"],
+      "pages": [{"doc": "f8995", "pages": [1]}, {"doc": "i8995", "pages": [2, 3, 4, 5]}]
     }
   ]
 }

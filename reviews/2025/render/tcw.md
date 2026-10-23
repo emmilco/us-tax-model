@@ -4,11 +4,11 @@ The rendered English of every printed line of `Tax Computation Worksheet—Line 
 
 | field | value |
 | --- | --- |
-| date | 2026-10-17 |
+| date | 2026-10-22 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | a3ca2faf380eef0217147c5dfd6f963ef880e7083d40a7a0f05e53cabbaec61e |
-| subject sha256 | c1a361001e6d9ce7e77b2893ef190e0970997d6c30121c865bd0fa21ff3af0f1 |
+| prompt sha256 | dd66e4a47546ba6e1cfb4bbf31460beace8ed80baf4b09c6ee116d3c8f12f74e |
+| subject sha256 | 7a487f24667a1368cced38ccd8258e98c3d8888dd2b54a39723175c9571c5b6f |
 | lines judged | 46 |
 | match / mismatch / unclear / missing | 46 / 0 / 0 / 0 |
 | verdicts for lines not in the form | none |
@@ -24,232 +24,232 @@ The rendered English of every printed line of `Tax Computation Worksheet—Line 
 ### (a) — Enter the amount from line 15
 Status: **MATCH**
 
-Model: Column (a) is 'Enter the amount from line 15'. The Note says to use the amount from another form or worksheet when this worksheet figures the tax on that amount, so binding (a) to the calling line's amount matches.
+Model: Column (a) says "Enter the amount from line 15." The Note allows entering an amount from another form or worksheet instead, which fits a value bound by the calling line.
 
 ### (c) (single.row1.product) — Multiply line (a) by 22% (0.22)
 Status: **MATCH**
 
-Model: Section A, first row: '(c) Multiply (a) by (b)', where (b) is '× 22% (0.22)'.
+Model: Section A row 1: "Multiply (a) by (b)" with (b) "× 22% (0.22)".
 
-### (d) (single.row1.tax) — Subtract (d) from (c)
+### Tax (single.row1.tax) — Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16.
 Status: **MATCH**
 
-Model: Section A, first row: 'Subtract (d) from (c)', where (d) is '$ 5,086.00'.
+Model: "Subtract (d) from (c)" with (d) $5,086.00.
 
 ### (c) (single.row2.product) — Multiply line (a) by 24% (0.24)
 Status: **MATCH**
 
-Model: Section A, second row: multiply (a) by '× 24% (0.24)'.
+Model: Section A row 2 multiplies (a) by 24% (0.24).
 
-### (d) (single.row2.tax) — Subtract (d) from (c)
+### Tax (single.row2.tax) — Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16.
 Status: **MATCH**
 
-Model: Section A, second row: subtraction amount '$ 7,153.00' is subtracted from (c).
+Model: Subtracts (d) $7,153.00 from (c).
 
 ### (c) (single.row3.product) — Multiply line (a) by 32% (0.32)
 Status: **MATCH**
 
-Model: Section A, third row: multiply (a) by '× 32% (0.32)'.
+Model: Section A row 3 multiplies (a) by 32% (0.32).
 
-### (d) (single.row3.tax) — Subtract (d) from (c)
+### Tax (single.row3.tax) — Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16.
 Status: **MATCH**
 
-Model: Section A, third row: subtraction amount '$ 22,937.00' is subtracted from (c).
+Model: Subtracts (d) $22,937.00 from (c).
 
 ### (c) (single.row4.product) — Multiply line (a) by 35% (0.35)
 Status: **MATCH**
 
-Model: Section A, fourth row: multiply (a) by '× 35% (0.35)'.
+Model: Section A row 4 multiplies (a) by 35% (0.35).
 
-### (d) (single.row4.tax) — Subtract (d) from (c)
+### Tax (single.row4.tax) — Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16.
 Status: **MATCH**
 
-Model: Section A, fourth row: subtraction amount '$ 30,452.75' is subtracted from (c).
+Model: Subtracts (d) $30,452.75 from (c).
 
 ### (c) (single.row5.product) — Multiply line (a) by 37% (0.37)
 Status: **MATCH**
 
-Model: Section A, fifth row: multiply (a) by '× 37% (0.37)'.
+Model: Section A row 5 multiplies (a) by 37% (0.37).
 
-### (d) (single.row5.tax) — Subtract (d) from (c)
+### Tax (single.row5.tax) — Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16.
 Status: **MATCH**
 
-Model: Section A, fifth row: subtraction amount '$ 42,979.75' is subtracted from (c).
+Model: Subtracts (d) $42,979.75 from (c).
 
 ### Tax (single.result) — Section A—Use if your filing status is Single. Tax. Subtract (d) from (c). Enter the resul
 Status: **MATCH**
 
-Model: The row conditions match Section A: 'At least $100,000 but not over $103,350', 'Over $103,350 but not over $197,300', 'Over $197,300 but not over $250,525', 'Over $250,525 but not over $626,350', 'Over $626,350'. The result is the chosen row's (c) minus (d).
+Model: Row selection matches Section A: "At least $100,000 but not over $103,350", then over $103,350 to $197,300, over $197,300 to $250,525, over $250,525 to $626,350, and "Over $626,350".
 
 ### (c) (mfj.row1.product) — Multiply line (a) by 22% (0.22)
 Status: **MATCH**
 
-Model: Section B, first row: multiply (a) by '× 22% (0.22)'.
+Model: Section B row 1 multiplies (a) by 22% (0.22).
 
-### (d) (mfj.row1.tax) — Subtract (d) from (c)
+### Tax (mfj.row1.tax) — Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16.
 Status: **MATCH**
 
-Model: Section B, first row: subtraction amount '$ 10,172.00' is subtracted from (c).
+Model: Subtracts (d) $10,172.00 from (c).
 
 ### (c) (mfj.row2.product) — Multiply line (a) by 24% (0.24)
 Status: **MATCH**
 
-Model: Section B, second row: multiply (a) by '× 24% (0.24)'.
+Model: Section B row 2 multiplies (a) by 24% (0.24).
 
-### (d) (mfj.row2.tax) — Subtract (d) from (c)
+### Tax (mfj.row2.tax) — Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16.
 Status: **MATCH**
 
-Model: Section B, second row: subtraction amount '$ 14,306.00' is subtracted from (c).
+Model: Subtracts (d) $14,306.00 from (c).
 
 ### (c) (mfj.row3.product) — Multiply line (a) by 32% (0.32)
 Status: **MATCH**
 
-Model: Section B, third row: multiply (a) by '× 32% (0.32)'.
+Model: Section B row 3 multiplies (a) by 32% (0.32).
 
-### (d) (mfj.row3.tax) — Subtract (d) from (c)
+### Tax (mfj.row3.tax) — Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16.
 Status: **MATCH**
 
-Model: Section B, third row: subtraction amount '$ 45,874.00' is subtracted from (c).
+Model: Subtracts (d) $45,874.00 from (c).
 
 ### (c) (mfj.row4.product) — Multiply line (a) by 35% (0.35)
 Status: **MATCH**
 
-Model: Section B, fourth row: multiply (a) by '× 35% (0.35)'.
+Model: Section B row 4 multiplies (a) by 35% (0.35).
 
-### (d) (mfj.row4.tax) — Subtract (d) from (c)
+### Tax (mfj.row4.tax) — Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16.
 Status: **MATCH**
 
-Model: Section B, fourth row: subtraction amount '$ 60,905.50' is subtracted from (c).
+Model: Subtracts (d) $60,905.50 from (c).
 
 ### (c) (mfj.row5.product) — Multiply line (a) by 37% (0.37)
 Status: **MATCH**
 
-Model: Section B, fifth row: multiply (a) by '× 37% (0.37)'.
+Model: Section B row 5 multiplies (a) by 37% (0.37).
 
-### (d) (mfj.row5.tax) — Subtract (d) from (c)
+### Tax (mfj.row5.tax) — Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16.
 Status: **MATCH**
 
-Model: Section B, fifth row: subtraction amount '$ 75,937.50' is subtracted from (c).
+Model: Subtracts (d) $75,937.50 from (c).
 
 ### Tax (mfj.result) — Section B—Use if your filing status is Married filing jointly or Qualifying surviving spou
 Status: **MATCH**
 
-Model: The row conditions match Section B: at least $100,000 but not over $206,700, then over $206,700 / $394,600 / $501,050 / $751,600, each with the matching upper limit.
+Model: Row selection matches Section B bounds: $100,000 to $206,700, then $394,600, $501,050, $751,600, and "Over $751,600".
 
 ### (c) (mfs.row1.product) — Multiply line (a) by 22% (0.22)
 Status: **MATCH**
 
-Model: Section C, first row: multiply (a) by '× 22% (0.22)'.
+Model: Section C row 1 multiplies (a) by 22% (0.22).
 
-### (d) (mfs.row1.tax) — Subtract (d) from (c)
+### Tax (mfs.row1.tax) — Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16.
 Status: **MATCH**
 
-Model: Section C, first row: subtraction amount '$ 5,086.00' is subtracted from (c).
+Model: Subtracts (d) $5,086.00 from (c).
 
 ### (c) (mfs.row2.product) — Multiply line (a) by 24% (0.24)
 Status: **MATCH**
 
-Model: Section C, second row: multiply (a) by '× 24% (0.24)'.
+Model: Section C row 2 multiplies (a) by 24% (0.24).
 
-### (d) (mfs.row2.tax) — Subtract (d) from (c)
+### Tax (mfs.row2.tax) — Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16.
 Status: **MATCH**
 
-Model: Section C, second row: subtraction amount '$ 7,153.00' is subtracted from (c).
+Model: Subtracts (d) $7,153.00 from (c).
 
 ### (c) (mfs.row3.product) — Multiply line (a) by 32% (0.32)
 Status: **MATCH**
 
-Model: Section C, third row: multiply (a) by '× 32% (0.32)'.
+Model: Section C row 3 multiplies (a) by 32% (0.32).
 
-### (d) (mfs.row3.tax) — Subtract (d) from (c)
+### Tax (mfs.row3.tax) — Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16.
 Status: **MATCH**
 
-Model: Section C, third row: subtraction amount '$ 22,937.00' is subtracted from (c).
+Model: Subtracts (d) $22,937.00 from (c).
 
 ### (c) (mfs.row4.product) — Multiply line (a) by 35% (0.35)
 Status: **MATCH**
 
-Model: Section C, fourth row: multiply (a) by '× 35% (0.35)'.
+Model: Section C row 4 multiplies (a) by 35% (0.35).
 
-### (d) (mfs.row4.tax) — Subtract (d) from (c)
+### Tax (mfs.row4.tax) — Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16.
 Status: **MATCH**
 
-Model: Section C, fourth row: subtraction amount '$ 30,452.75' is subtracted from (c).
+Model: Subtracts (d) $30,452.75 from (c).
 
 ### (c) (mfs.row5.product) — Multiply line (a) by 37% (0.37)
 Status: **MATCH**
 
-Model: Section C, fifth row: multiply (a) by '× 37% (0.37)'.
+Model: Section C row 5 multiplies (a) by 37% (0.37).
 
-### (d) (mfs.row5.tax) — Subtract (d) from (c)
+### Tax (mfs.row5.tax) — Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16.
 Status: **MATCH**
 
-Model: Section C, fifth row: subtraction amount '$ 37,968.75' is subtracted from (c).
+Model: Subtracts (d) $37,968.75 from (c).
 
 ### Tax (mfs.result) — Section C—Use if your filing status is Married filing separately. Tax. Subtract (d) from (
 Status: **MATCH**
 
-Model: The row conditions match Section C: at least $100,000 but not over $103,350, then over $103,350 / $197,300 / $250,525 / $375,800, each with the matching upper limit.
+Model: Row selection matches Section C bounds: $100,000 to $103,350, then $197,300, $250,525, $375,800, and "Over $375,800".
 
 ### (c) (hoh.row1.product) — Multiply line (a) by 22% (0.22)
 Status: **MATCH**
 
-Model: Section D, first row: multiply (a) by '× 22% (0.22)'.
+Model: Section D row 1 multiplies (a) by 22% (0.22).
 
-### (d) (hoh.row1.tax) — Subtract (d) from (c)
+### Tax (hoh.row1.tax) — Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16.
 Status: **MATCH**
 
-Model: Section D, first row: subtraction amount '$ 6,825.00' is subtracted from (c).
+Model: Subtracts (d) $6,825.00 from (c).
 
 ### (c) (hoh.row2.product) — Multiply line (a) by 24% (0.24)
 Status: **MATCH**
 
-Model: Section D, second row: multiply (a) by '× 24% (0.24)'.
+Model: Section D row 2 multiplies (a) by 24% (0.24).
 
-### (d) (hoh.row2.tax) — Subtract (d) from (c)
+### Tax (hoh.row2.tax) — Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16.
 Status: **MATCH**
 
-Model: Section D, second row: subtraction amount '$ 8,892.00' is subtracted from (c).
+Model: Subtracts (d) $8,892.00 from (c).
 
 ### (c) (hoh.row3.product) — Multiply line (a) by 32% (0.32)
 Status: **MATCH**
 
-Model: Section D, third row: multiply (a) by '× 32% (0.32)'.
+Model: Section D row 3 multiplies (a) by 32% (0.32).
 
-### (d) (hoh.row3.tax) — Subtract (d) from (c)
+### Tax (hoh.row3.tax) — Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16.
 Status: **MATCH**
 
-Model: Section D, third row: subtraction amount '$ 24,676.00' is subtracted from (c).
+Model: Subtracts (d) $24,676.00 from (c).
 
 ### (c) (hoh.row4.product) — Multiply line (a) by 35% (0.35)
 Status: **MATCH**
 
-Model: Section D, fourth row: multiply (a) by '× 35% (0.35)'.
+Model: Section D row 4 multiplies (a) by 35% (0.35).
 
-### (d) (hoh.row4.tax) — Subtract (d) from (c)
+### Tax (hoh.row4.tax) — Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16.
 Status: **MATCH**
 
-Model: Section D, fourth row: subtraction amount '$ 32,191.00' is subtracted from (c).
+Model: Subtracts (d) $32,191.00 from (c).
 
 ### (c) (hoh.row5.product) — Multiply line (a) by 37% (0.37)
 Status: **MATCH**
 
-Model: Section D, fifth row: multiply (a) by '× 37% (0.37)'.
+Model: Section D row 5 multiplies (a) by 37% (0.37).
 
-### (d) (hoh.row5.tax) — Subtract (d) from (c)
+### Tax (hoh.row5.tax) — Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16.
 Status: **MATCH**
 
-Model: Section D, fifth row: subtraction amount '$ 44,718.00' is subtracted from (c).
+Model: Subtracts (d) $44,718.00 from (c).
 
 ### Tax (hoh.result) — Section D—Use if your filing status is Head of household. Tax. Subtract (d) from (c). Ente
 Status: **MATCH**
 
-Model: The row conditions match Section D as printed: 'At least $100,000 but not over $103,350', 'Over $103,350 but not over $197,300', 'Over $197,300 but not over $250,500', 'Over $250,500 but not over $626,350', 'Over $626,350'.
+Model: Row selection matches the bounds printed in Section D: $100,000 to $103,350, then $197,300, $250,500, $626,350, and "Over $626,350".
 
 ### Tax (tax) — Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16.
 Status: **MATCH**
 
-Model: The section is picked by filing status: Section A for 'Single', Section B for 'Married filing jointly or Qualifying surviving spouse', Section C for 'Married filing separately', Section D for 'Head of household'. The restatement does the same, with qss going to the mfj result.
+Model: Sections A–D are chosen by filing status. Section B is "Married filing jointly or Qualifying surviving spouse", so mapping qss to the mfj result matches.
 
 ## Raw response
 
@@ -258,141 +258,141 @@ Model: The section is picked by filing status: Section A for 'Single', Section B
 lines:
   - key: "(a)"
     status: MATCH
-    reason: "Column (a) is 'Enter the amount from line 15'. The Note says to use the amount from another form or worksheet when this worksheet figures the tax on that amount, so binding (a) to the calling line's amount matches."
+    reason: "Column (a) says \"Enter the amount from line 15.\" The Note allows entering an amount from another form or worksheet instead, which fits a value bound by the calling line."
   - key: "(c) (single.row1.product)"
     status: MATCH
-    reason: "Section A, first row: '(c) Multiply (a) by (b)', where (b) is '× 22% (0.22)'."
-  - key: "(d) (single.row1.tax)"
+    reason: "Section A row 1: \"Multiply (a) by (b)\" with (b) \"× 22% (0.22)\"."
+  - key: "Tax (single.row1.tax)"
     status: MATCH
-    reason: "Section A, first row: 'Subtract (d) from (c)', where (d) is '$ 5,086.00'."
+    reason: "\"Subtract (d) from (c)\" with (d) $5,086.00."
   - key: "(c) (single.row2.product)"
     status: MATCH
-    reason: "Section A, second row: multiply (a) by '× 24% (0.24)'."
-  - key: "(d) (single.row2.tax)"
+    reason: "Section A row 2 multiplies (a) by 24% (0.24)."
+  - key: "Tax (single.row2.tax)"
     status: MATCH
-    reason: "Section A, second row: subtraction amount '$ 7,153.00' is subtracted from (c)."
+    reason: "Subtracts (d) $7,153.00 from (c)."
   - key: "(c) (single.row3.product)"
     status: MATCH
-    reason: "Section A, third row: multiply (a) by '× 32% (0.32)'."
-  - key: "(d) (single.row3.tax)"
+    reason: "Section A row 3 multiplies (a) by 32% (0.32)."
+  - key: "Tax (single.row3.tax)"
     status: MATCH
-    reason: "Section A, third row: subtraction amount '$ 22,937.00' is subtracted from (c)."
+    reason: "Subtracts (d) $22,937.00 from (c)."
   - key: "(c) (single.row4.product)"
     status: MATCH
-    reason: "Section A, fourth row: multiply (a) by '× 35% (0.35)'."
-  - key: "(d) (single.row4.tax)"
+    reason: "Section A row 4 multiplies (a) by 35% (0.35)."
+  - key: "Tax (single.row4.tax)"
     status: MATCH
-    reason: "Section A, fourth row: subtraction amount '$ 30,452.75' is subtracted from (c)."
+    reason: "Subtracts (d) $30,452.75 from (c)."
   - key: "(c) (single.row5.product)"
     status: MATCH
-    reason: "Section A, fifth row: multiply (a) by '× 37% (0.37)'."
-  - key: "(d) (single.row5.tax)"
+    reason: "Section A row 5 multiplies (a) by 37% (0.37)."
+  - key: "Tax (single.row5.tax)"
     status: MATCH
-    reason: "Section A, fifth row: subtraction amount '$ 42,979.75' is subtracted from (c)."
+    reason: "Subtracts (d) $42,979.75 from (c)."
   - key: "Tax (single.result)"
     status: MATCH
-    reason: "The row conditions match Section A: 'At least $100,000 but not over $103,350', 'Over $103,350 but not over $197,300', 'Over $197,300 but not over $250,525', 'Over $250,525 but not over $626,350', 'Over $626,350'. The result is the chosen row's (c) minus (d)."
+    reason: "Row selection matches Section A: \"At least $100,000 but not over $103,350\", then over $103,350 to $197,300, over $197,300 to $250,525, over $250,525 to $626,350, and \"Over $626,350\"."
   - key: "(c) (mfj.row1.product)"
     status: MATCH
-    reason: "Section B, first row: multiply (a) by '× 22% (0.22)'."
-  - key: "(d) (mfj.row1.tax)"
+    reason: "Section B row 1 multiplies (a) by 22% (0.22)."
+  - key: "Tax (mfj.row1.tax)"
     status: MATCH
-    reason: "Section B, first row: subtraction amount '$ 10,172.00' is subtracted from (c)."
+    reason: "Subtracts (d) $10,172.00 from (c)."
   - key: "(c) (mfj.row2.product)"
     status: MATCH
-    reason: "Section B, second row: multiply (a) by '× 24% (0.24)'."
-  - key: "(d) (mfj.row2.tax)"
+    reason: "Section B row 2 multiplies (a) by 24% (0.24)."
+  - key: "Tax (mfj.row2.tax)"
     status: MATCH
-    reason: "Section B, second row: subtraction amount '$ 14,306.00' is subtracted from (c)."
+    reason: "Subtracts (d) $14,306.00 from (c)."
   - key: "(c) (mfj.row3.product)"
     status: MATCH
-    reason: "Section B, third row: multiply (a) by '× 32% (0.32)'."
-  - key: "(d) (mfj.row3.tax)"
+    reason: "Section B row 3 multiplies (a) by 32% (0.32)."
+  - key: "Tax (mfj.row3.tax)"
     status: MATCH
-    reason: "Section B, third row: subtraction amount '$ 45,874.00' is subtracted from (c)."
+    reason: "Subtracts (d) $45,874.00 from (c)."
   - key: "(c) (mfj.row4.product)"
     status: MATCH
-    reason: "Section B, fourth row: multiply (a) by '× 35% (0.35)'."
-  - key: "(d) (mfj.row4.tax)"
+    reason: "Section B row 4 multiplies (a) by 35% (0.35)."
+  - key: "Tax (mfj.row4.tax)"
     status: MATCH
-    reason: "Section B, fourth row: subtraction amount '$ 60,905.50' is subtracted from (c)."
+    reason: "Subtracts (d) $60,905.50 from (c)."
   - key: "(c) (mfj.row5.product)"
     status: MATCH
-    reason: "Section B, fifth row: multiply (a) by '× 37% (0.37)'."
-  - key: "(d) (mfj.row5.tax)"
+    reason: "Section B row 5 multiplies (a) by 37% (0.37)."
+  - key: "Tax (mfj.row5.tax)"
     status: MATCH
-    reason: "Section B, fifth row: subtraction amount '$ 75,937.50' is subtracted from (c)."
+    reason: "Subtracts (d) $75,937.50 from (c)."
   - key: "Tax (mfj.result)"
     status: MATCH
-    reason: "The row conditions match Section B: at least $100,000 but not over $206,700, then over $206,700 / $394,600 / $501,050 / $751,600, each with the matching upper limit."
+    reason: "Row selection matches Section B bounds: $100,000 to $206,700, then $394,600, $501,050, $751,600, and \"Over $751,600\"."
   - key: "(c) (mfs.row1.product)"
     status: MATCH
-    reason: "Section C, first row: multiply (a) by '× 22% (0.22)'."
-  - key: "(d) (mfs.row1.tax)"
+    reason: "Section C row 1 multiplies (a) by 22% (0.22)."
+  - key: "Tax (mfs.row1.tax)"
     status: MATCH
-    reason: "Section C, first row: subtraction amount '$ 5,086.00' is subtracted from (c)."
+    reason: "Subtracts (d) $5,086.00 from (c)."
   - key: "(c) (mfs.row2.product)"
     status: MATCH
-    reason: "Section C, second row: multiply (a) by '× 24% (0.24)'."
-  - key: "(d) (mfs.row2.tax)"
+    reason: "Section C row 2 multiplies (a) by 24% (0.24)."
+  - key: "Tax (mfs.row2.tax)"
     status: MATCH
-    reason: "Section C, second row: subtraction amount '$ 7,153.00' is subtracted from (c)."
+    reason: "Subtracts (d) $7,153.00 from (c)."
   - key: "(c) (mfs.row3.product)"
     status: MATCH
-    reason: "Section C, third row: multiply (a) by '× 32% (0.32)'."
-  - key: "(d) (mfs.row3.tax)"
+    reason: "Section C row 3 multiplies (a) by 32% (0.32)."
+  - key: "Tax (mfs.row3.tax)"
     status: MATCH
-    reason: "Section C, third row: subtraction amount '$ 22,937.00' is subtracted from (c)."
+    reason: "Subtracts (d) $22,937.00 from (c)."
   - key: "(c) (mfs.row4.product)"
     status: MATCH
-    reason: "Section C, fourth row: multiply (a) by '× 35% (0.35)'."
-  - key: "(d) (mfs.row4.tax)"
+    reason: "Section C row 4 multiplies (a) by 35% (0.35)."
+  - key: "Tax (mfs.row4.tax)"
     status: MATCH
-    reason: "Section C, fourth row: subtraction amount '$ 30,452.75' is subtracted from (c)."
+    reason: "Subtracts (d) $30,452.75 from (c)."
   - key: "(c) (mfs.row5.product)"
     status: MATCH
-    reason: "Section C, fifth row: multiply (a) by '× 37% (0.37)'."
-  - key: "(d) (mfs.row5.tax)"
+    reason: "Section C row 5 multiplies (a) by 37% (0.37)."
+  - key: "Tax (mfs.row5.tax)"
     status: MATCH
-    reason: "Section C, fifth row: subtraction amount '$ 37,968.75' is subtracted from (c)."
+    reason: "Subtracts (d) $37,968.75 from (c)."
   - key: "Tax (mfs.result)"
     status: MATCH
-    reason: "The row conditions match Section C: at least $100,000 but not over $103,350, then over $103,350 / $197,300 / $250,525 / $375,800, each with the matching upper limit."
+    reason: "Row selection matches Section C bounds: $100,000 to $103,350, then $197,300, $250,525, $375,800, and \"Over $375,800\"."
   - key: "(c) (hoh.row1.product)"
     status: MATCH
-    reason: "Section D, first row: multiply (a) by '× 22% (0.22)'."
-  - key: "(d) (hoh.row1.tax)"
+    reason: "Section D row 1 multiplies (a) by 22% (0.22)."
+  - key: "Tax (hoh.row1.tax)"
     status: MATCH
-    reason: "Section D, first row: subtraction amount '$ 6,825.00' is subtracted from (c)."
+    reason: "Subtracts (d) $6,825.00 from (c)."
   - key: "(c) (hoh.row2.product)"
     status: MATCH
-    reason: "Section D, second row: multiply (a) by '× 24% (0.24)'."
-  - key: "(d) (hoh.row2.tax)"
+    reason: "Section D row 2 multiplies (a) by 24% (0.24)."
+  - key: "Tax (hoh.row2.tax)"
     status: MATCH
-    reason: "Section D, second row: subtraction amount '$ 8,892.00' is subtracted from (c)."
+    reason: "Subtracts (d) $8,892.00 from (c)."
   - key: "(c) (hoh.row3.product)"
     status: MATCH
-    reason: "Section D, third row: multiply (a) by '× 32% (0.32)'."
-  - key: "(d) (hoh.row3.tax)"
+    reason: "Section D row 3 multiplies (a) by 32% (0.32)."
+  - key: "Tax (hoh.row3.tax)"
     status: MATCH
-    reason: "Section D, third row: subtraction amount '$ 24,676.00' is subtracted from (c)."
+    reason: "Subtracts (d) $24,676.00 from (c)."
   - key: "(c) (hoh.row4.product)"
     status: MATCH
-    reason: "Section D, fourth row: multiply (a) by '× 35% (0.35)'."
-  - key: "(d) (hoh.row4.tax)"
+    reason: "Section D row 4 multiplies (a) by 35% (0.35)."
+  - key: "Tax (hoh.row4.tax)"
     status: MATCH
-    reason: "Section D, fourth row: subtraction amount '$ 32,191.00' is subtracted from (c)."
+    reason: "Subtracts (d) $32,191.00 from (c)."
   - key: "(c) (hoh.row5.product)"
     status: MATCH
-    reason: "Section D, fifth row: multiply (a) by '× 37% (0.37)'."
-  - key: "(d) (hoh.row5.tax)"
+    reason: "Section D row 5 multiplies (a) by 37% (0.37)."
+  - key: "Tax (hoh.row5.tax)"
     status: MATCH
-    reason: "Section D, fifth row: subtraction amount '$ 44,718.00' is subtracted from (c)."
+    reason: "Subtracts (d) $44,718.00 from (c)."
   - key: "Tax (hoh.result)"
     status: MATCH
-    reason: "The row conditions match Section D as printed: 'At least $100,000 but not over $103,350', 'Over $103,350 but not over $197,300', 'Over $197,300 but not over $250,500', 'Over $250,500 but not over $626,350', 'Over $626,350'."
+    reason: "Row selection matches the bounds printed in Section D: $100,000 to $103,350, then $197,300, $250,500, $626,350, and \"Over $626,350\"."
   - key: "Tax (tax)"
     status: MATCH
-    reason: "The section is picked by filing status: Section A for 'Single', Section B for 'Married filing jointly or Qualifying surviving spouse', Section C for 'Married filing separately', Section D for 'Head of household'. The restatement does the same, with qss going to the mfj result."
+    reason: "Sections A–D are chosen by filing status. Section B is \"Married filing jointly or Qualifying surviving spouse\", so mapping qss to the mfj result matches."
 ```
 ```

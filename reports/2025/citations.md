@@ -11,21 +11,21 @@ pages, a quote found in the document, or one printed line number of a form docum
 of the form's text beside three consecutive words of the label. The segments that do not are listed
 under "Locators to rewrite"; they fail the check only with `--strict`.
 
-- anchors: 2313
+- anchors: 2315
 - anchors ruled: 45
-- quotes: 1252
+- quotes: 1254
 - quotes ruled: 4
-- segments checked: 2398
+- segments checked: 2400
 - findings without a ruling: 0
 - rulings no anchor uses: 0
 
-- computed lines: 1510
-- computed-line segments: 1756
+- computed lines: 1511
+- computed-line segments: 1757
 - computed-line segments rejected: list: 13
 - computed-line segments rejected: none: 160
 - computed-line segments rejected: span: 54
 - computed-line segments with a quote and no page: 120
-- computed-line segments with pages: 1146
+- computed-line segments with pages: 1147
 - form-line locators: 263
 - form-line locators not placed: 21
 - form-line locators on a booklet: 40
@@ -288,24 +288,24 @@ the line, the segment as written and what the check needs instead.
 
 - `sa.age65_count` (`forms/2025/sa.yaml:103`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
 - `sa.age65` (`forms/2025/sa.yaml:116`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
-- `sa.line3` (`forms/2025/sa.yaml:242`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
-- `sa.line4` (`forms/2025/sa.yaml:254`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
-- `sa.line5d` (`forms/2025/sa.yaml:267`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
-- `sa.saltexcess` (`forms/2025/sa.yaml:308`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
-- `sa.saltreduction` (`forms/2025/sa.yaml:320`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
-- `sa.saltremaining` (`forms/2025/sa.yaml:332`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
-- `sa.salthalf` (`forms/2025/sa.yaml:356`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
-- `sa.mfs` (`forms/2025/sa.yaml:369`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
-- `sa.line5e` (`forms/2025/sa.yaml:403`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
-- `sa.line7` (`forms/2025/sa.yaml:635`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
-- `sa.line8e` (`forms/2025/sa.yaml:648`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
-- `sa.line10` (`forms/2025/sa.yaml:670`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
-- `sa.line12` (`forms/2025/sa.yaml:681`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
-- `sa.form8283` (`forms/2025/sa.yaml:714`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
-- `sa.line14` (`forms/2025/sa.yaml:727`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
-- `sa.line17` (`forms/2025/sa.yaml:743`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
-- `sa.standardraw` (`forms/2025/sa.yaml:865`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
-- `sa.itemizes` (`forms/2025/sa.yaml:923`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `sa.line3` (`forms/2025/sa.yaml:256`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `sa.line4` (`forms/2025/sa.yaml:268`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `sa.line5d` (`forms/2025/sa.yaml:281`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `sa.saltexcess` (`forms/2025/sa.yaml:322`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `sa.saltreduction` (`forms/2025/sa.yaml:334`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `sa.saltremaining` (`forms/2025/sa.yaml:346`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `sa.salthalf` (`forms/2025/sa.yaml:370`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `sa.mfs` (`forms/2025/sa.yaml:383`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `sa.line5e` (`forms/2025/sa.yaml:417`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `sa.line7` (`forms/2025/sa.yaml:649`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `sa.line8e` (`forms/2025/sa.yaml:662`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `sa.line10` (`forms/2025/sa.yaml:684`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `sa.line12` (`forms/2025/sa.yaml:695`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `sa.form8283` (`forms/2025/sa.yaml:728`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `sa.line14` (`forms/2025/sa.yaml:741`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `sa.line17` (`forms/2025/sa.yaml:757`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `sa.standardraw` (`forms/2025/sa.yaml:879`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `sa.itemizes` (`forms/2025/sa.yaml:937`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
 
 ### sales (1)
 
@@ -409,48 +409,48 @@ the line, the segment as written and what the check needs instead.
 
 ### tcw (45)
 
-- `single.row1.product` (`forms/2025/tcw.yaml:36`) — “TCW Section A, row 1” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `single.row1.tax` (`forms/2025/tcw.yaml:42`) — “TCW Section A, row 1” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `single.row2.product` (`forms/2025/tcw.yaml:48`) — “TCW Section A, row 2” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `single.row2.tax` (`forms/2025/tcw.yaml:54`) — “TCW Section A, row 2” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `single.row3.product` (`forms/2025/tcw.yaml:60`) — “TCW Section A, row 3” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `single.row3.tax` (`forms/2025/tcw.yaml:66`) — “TCW Section A, row 3” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `single.row4.product` (`forms/2025/tcw.yaml:72`) — “TCW Section A, row 4” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `single.row4.tax` (`forms/2025/tcw.yaml:78`) — “TCW Section A, row 4” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `single.row5.product` (`forms/2025/tcw.yaml:84`) — “TCW Section A, row 5” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `single.row5.tax` (`forms/2025/tcw.yaml:90`) — “TCW Section A, row 5” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `single.result` (`forms/2025/tcw.yaml:124`) — “TCW Section A” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `mfj.row1.product` (`forms/2025/tcw.yaml:132`) — “TCW Section B, row 1” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `mfj.row1.tax` (`forms/2025/tcw.yaml:138`) — “TCW Section B, row 1” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `mfj.row2.product` (`forms/2025/tcw.yaml:144`) — “TCW Section B, row 2” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `mfj.row2.tax` (`forms/2025/tcw.yaml:150`) — “TCW Section B, row 2” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `mfj.row3.product` (`forms/2025/tcw.yaml:156`) — “TCW Section B, row 3” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `mfj.row3.tax` (`forms/2025/tcw.yaml:162`) — “TCW Section B, row 3” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `mfj.row4.product` (`forms/2025/tcw.yaml:168`) — “TCW Section B, row 4” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `mfj.row4.tax` (`forms/2025/tcw.yaml:174`) — “TCW Section B, row 4” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `mfj.row5.product` (`forms/2025/tcw.yaml:180`) — “TCW Section B, row 5” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `mfj.row5.tax` (`forms/2025/tcw.yaml:186`) — “TCW Section B, row 5” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `mfj.result` (`forms/2025/tcw.yaml:220`) — “TCW Section B” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `mfs.row1.product` (`forms/2025/tcw.yaml:228`) — “TCW Section C, row 1” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `mfs.row1.tax` (`forms/2025/tcw.yaml:234`) — “TCW Section C, row 1” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `mfs.row2.product` (`forms/2025/tcw.yaml:240`) — “TCW Section C, row 2” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `mfs.row2.tax` (`forms/2025/tcw.yaml:246`) — “TCW Section C, row 2” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `mfs.row3.product` (`forms/2025/tcw.yaml:252`) — “TCW Section C, row 3” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `mfs.row3.tax` (`forms/2025/tcw.yaml:258`) — “TCW Section C, row 3” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `mfs.row4.product` (`forms/2025/tcw.yaml:264`) — “TCW Section C, row 4” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `mfs.row4.tax` (`forms/2025/tcw.yaml:270`) — “TCW Section C, row 4” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `mfs.row5.product` (`forms/2025/tcw.yaml:276`) — “TCW Section C, row 5” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `mfs.row5.tax` (`forms/2025/tcw.yaml:282`) — “TCW Section C, row 5” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `mfs.result` (`forms/2025/tcw.yaml:316`) — “TCW Section C” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `hoh.row1.product` (`forms/2025/tcw.yaml:324`) — “TCW Section D, row 1” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `hoh.row1.tax` (`forms/2025/tcw.yaml:330`) — “TCW Section D, row 1” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `hoh.row2.product` (`forms/2025/tcw.yaml:336`) — “TCW Section D, row 2” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `hoh.row2.tax` (`forms/2025/tcw.yaml:342`) — “TCW Section D, row 2” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `hoh.row3.product` (`forms/2025/tcw.yaml:348`) — “TCW Section D, row 3” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `hoh.row3.tax` (`forms/2025/tcw.yaml:354`) — “TCW Section D, row 3” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `hoh.row4.product` (`forms/2025/tcw.yaml:360`) — “TCW Section D, row 4” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `hoh.row4.tax` (`forms/2025/tcw.yaml:366`) — “TCW Section D, row 4” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `hoh.row5.product` (`forms/2025/tcw.yaml:372`) — “TCW Section D, row 5” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `hoh.row5.tax` (`forms/2025/tcw.yaml:378`) — “TCW Section D, row 5” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `hoh.result` (`forms/2025/tcw.yaml:412`) — “TCW Section D” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `tax` (`forms/2025/tcw.yaml:431`) — “TCW, sections A-D” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `single.row1.product` (`forms/2025/tcw.yaml:40`) — “TCW Section A, row 1” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `single.row1.tax` (`forms/2025/tcw.yaml:46`) — “TCW Section A, row 1” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `single.row2.product` (`forms/2025/tcw.yaml:52`) — “TCW Section A, row 2” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `single.row2.tax` (`forms/2025/tcw.yaml:58`) — “TCW Section A, row 2” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `single.row3.product` (`forms/2025/tcw.yaml:64`) — “TCW Section A, row 3” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `single.row3.tax` (`forms/2025/tcw.yaml:70`) — “TCW Section A, row 3” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `single.row4.product` (`forms/2025/tcw.yaml:76`) — “TCW Section A, row 4” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `single.row4.tax` (`forms/2025/tcw.yaml:82`) — “TCW Section A, row 4” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `single.row5.product` (`forms/2025/tcw.yaml:88`) — “TCW Section A, row 5” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `single.row5.tax` (`forms/2025/tcw.yaml:94`) — “TCW Section A, row 5” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `single.result` (`forms/2025/tcw.yaml:128`) — “TCW Section A” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `mfj.row1.product` (`forms/2025/tcw.yaml:136`) — “TCW Section B, row 1” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `mfj.row1.tax` (`forms/2025/tcw.yaml:142`) — “TCW Section B, row 1” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `mfj.row2.product` (`forms/2025/tcw.yaml:148`) — “TCW Section B, row 2” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `mfj.row2.tax` (`forms/2025/tcw.yaml:154`) — “TCW Section B, row 2” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `mfj.row3.product` (`forms/2025/tcw.yaml:160`) — “TCW Section B, row 3” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `mfj.row3.tax` (`forms/2025/tcw.yaml:166`) — “TCW Section B, row 3” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `mfj.row4.product` (`forms/2025/tcw.yaml:172`) — “TCW Section B, row 4” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `mfj.row4.tax` (`forms/2025/tcw.yaml:178`) — “TCW Section B, row 4” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `mfj.row5.product` (`forms/2025/tcw.yaml:184`) — “TCW Section B, row 5” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `mfj.row5.tax` (`forms/2025/tcw.yaml:190`) — “TCW Section B, row 5” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `mfj.result` (`forms/2025/tcw.yaml:224`) — “TCW Section B” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `mfs.row1.product` (`forms/2025/tcw.yaml:232`) — “TCW Section C, row 1” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `mfs.row1.tax` (`forms/2025/tcw.yaml:238`) — “TCW Section C, row 1” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `mfs.row2.product` (`forms/2025/tcw.yaml:244`) — “TCW Section C, row 2” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `mfs.row2.tax` (`forms/2025/tcw.yaml:250`) — “TCW Section C, row 2” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `mfs.row3.product` (`forms/2025/tcw.yaml:256`) — “TCW Section C, row 3” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `mfs.row3.tax` (`forms/2025/tcw.yaml:262`) — “TCW Section C, row 3” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `mfs.row4.product` (`forms/2025/tcw.yaml:268`) — “TCW Section C, row 4” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `mfs.row4.tax` (`forms/2025/tcw.yaml:274`) — “TCW Section C, row 4” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `mfs.row5.product` (`forms/2025/tcw.yaml:280`) — “TCW Section C, row 5” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `mfs.row5.tax` (`forms/2025/tcw.yaml:286`) — “TCW Section C, row 5” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `mfs.result` (`forms/2025/tcw.yaml:320`) — “TCW Section C” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `hoh.row1.product` (`forms/2025/tcw.yaml:328`) — “TCW Section D, row 1” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `hoh.row1.tax` (`forms/2025/tcw.yaml:334`) — “TCW Section D, row 1” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `hoh.row2.product` (`forms/2025/tcw.yaml:340`) — “TCW Section D, row 2” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `hoh.row2.tax` (`forms/2025/tcw.yaml:346`) — “TCW Section D, row 2” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `hoh.row3.product` (`forms/2025/tcw.yaml:352`) — “TCW Section D, row 3” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `hoh.row3.tax` (`forms/2025/tcw.yaml:358`) — “TCW Section D, row 3” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `hoh.row4.product` (`forms/2025/tcw.yaml:364`) — “TCW Section D, row 4” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `hoh.row4.tax` (`forms/2025/tcw.yaml:370`) — “TCW Section D, row 4” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `hoh.row5.product` (`forms/2025/tcw.yaml:376`) — “TCW Section D, row 5” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `hoh.row5.tax` (`forms/2025/tcw.yaml:382`) — “TCW Section D, row 5” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `hoh.result` (`forms/2025/tcw.yaml:416`) — “TCW Section D” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `tax` (`forms/2025/tcw.yaml:435`) — “TCW, sections A-D” — no line number, quote or page: a printed line number, a quote, or a page locator

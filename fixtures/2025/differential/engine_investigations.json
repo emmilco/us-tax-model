@@ -40,5 +40,19 @@
   "line": "sa.line17",
   "case": "se-00255",
   "cause": "Negative adjusted gross income (-$4,331.38) with no medical expenses: the project's Schedule A line 3 (7.5% of line 2) is -$324.85 and its line 4, line 1 ($0) less line 3, is $324.85, read literally from the form (\"Subtract line 3 from line 1. If line 3 is more than line 1, enter -0-\"); Tax-Calculator floors AGI at zero for line 3 (calcfunctions.ItemDed: posagi = max(c00100, 0.); c17750 = medical_frt * posagi; c17000 = max(0., e17500 - c17750)) and deducts nothing. The instructions allow \"only the part of your medical and dental expenses that exceeds 7.5% of the amount of your adjusted gross income\" (i1040sca, line 1), and no part of $0 of expenses is $324.85, so the engine's reading follows the instruction and the project's is a candidate defect referred to the owner. Investigated 2026-10-22 when IRA contributions entered the generated cases."
+ },
+ {
+  "engine": "OpenTaxSolver",
+  "line": "sdtw.line4",
+  "feature": "sdtw_line4_without_4952",
+  "cause": "The project's Schedule D Tax Worksheet line 4 copies f4952.line4e, which forms/2025/f4952.yaml figures (the smaller of line 4d and the net capital gain) whether or not a Form 4952 is filed; on these returns there is no investment interest (f4952.line1 is zero), so no Form 4952 exists and OpenTaxSolver's line 4 is zero (sched_D_tax_worksheet: `ws[4] = 0.0; /* Form 4952, line 4e. Usually 0.0. */`). The worksheet reads \"Enter the amount from Form 4952, line 4e\", and an unfiled form has no amount, so the engine's reading follows the text and the project's is a candidate defect; line 3 is zero on the same returns, so lines 5 (line 3 less line 4, not below zero) and 8 (the smaller of lines 3 and 4) are zero either way and the tax is unmoved.",
+  "cite": "i1040sd, Schedule D Tax Worksheet, line 4: \"Enter the amount from Form 4952, line 4e*\"; footnote: \"If applicable, enter instead the smaller amount you entered on the dotted line next to line 4e of Form 4952.\""
+ },
+ {
+  "engine": "OpenTaxSolver",
+  "line": "f8995.line11",
+  "feature": "taxable_before_qbi_negative",
+  "cause": "Form 8995 line 11 on a return whose deductions exceed adjusted gross income: the project floors qbi.taxable_before at zero (subtract_floor0), OpenTaxSolver prints the signed difference (taxsolve_f8995: `L[11] = f1040i.L11a - f1040i.L12 - f1040i.L13b`). The instructions define the line as an arithmetic difference with no floor, so the engine's reading follows the text and the project's sign is a candidate defect; line 13 (line 11 less line 12, not below zero) is zero on both sides, so the deduction is unmoved.",
+  "cite": "i8995, Line 11: \"Enter your taxable income figured before any QBI deduction, computed as follows. Form 1040 or 1040-SR filers: Form 1040 or 1040-SR, line 11a, minus lines 12e and 13b.\""
  }
 ]

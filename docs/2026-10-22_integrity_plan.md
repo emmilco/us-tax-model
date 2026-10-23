@@ -1,4 +1,4 @@
-# Integrity plan — 2026-10-22 (v5)
+# Integrity plan — 2026-10-22 (v6)
 
 A plan to bring the project to high integrity, meaningful validation and completeness, under the three pillars:
 completeness, correctness, and a sound evidentiary basis. Drafted jointly by two audit sessions (tax-audit1 and
@@ -186,8 +186,10 @@ items; a line the engine disagrees on goes to the top of the reading list. 1.1 w
 1.3 Second-family reader for transcription and render on all 55 forms, through 1.0b. Transport: DeepSeek
     over its hosted API (owner's decision 2026-10-22: ample DeepSeek credit). Rule the disagreements, every ruling that overrules the second family citing the
     source sentence (the existing regime).
-    Agreement floor: the second model must agree with the Claude reading on at least 90% of undisputed printed
-    lines (a provisional number); below it, choose a stronger model and do not count the run.
+    Agreement floor, as a noise rate (owner's decision 2026-10-22, replacing the raw 90% agreement, which one
+    correct systematic objection would fail): the second family's disputes that are ruled "model error", over the
+    lines it judged, must be at most 10% per form; above it, choose a stronger model and do not count the run.
+    A dispute ruled a finding or a representation difference is not noise.
     Done when: every log records a non-Claude run above the floor with no open ruling; the log states the
     independence yield (disagreements the second family raised that the Claude reading did not), zero being a
     visible result; the owner has sampled ten overruling rulings (item 1.1); defects found are BUG entries.
@@ -309,6 +311,18 @@ A gate's bucket is reviewed when its stage is reopened or its category is retire
    item 0.4 approved.
 8. Direct File's fact dictionary compared against the household predicates (item 1.7); its screen wording drawn
    on for item 2.5.
+9. Direct File findings F1 to F4 accepted with the recommended handling (BUG-0095 to BUG-0097; the foster-parent
+   gloss as a register entry).
+10. New refusals from Direct File's knockouts: a married filer in a community property state filing as head of
+    household; a filer or spouse under 16.
+11. The Tax Computation Worksheet row results re-keyed from column (d) to the Tax column (the first DeepSeek render
+    yield); value-neutral.
+12. The agreement floor measured as a noise rate (item 1.3).
+13. The reading list doubled now (items 14 onward chosen by the same rule); the owner reads the first twelve first.
+14. Log-check policy for an optional family: a stale log fails, an open ruling does not.
+
+Stop rule status: fired on 2026-10-22 with three value errors (BUG-0094, BUG-0096, BUG-0097). Coverage stays paused;
+the reading list doubles (decision 13).
 
 ## Open question for the owner
 

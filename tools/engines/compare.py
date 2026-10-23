@@ -11,14 +11,25 @@ Categories per (engine, case, line):
   float          engine differs by no more than two units in the last place of its
                  floating-point representation (float32 for PolicyEngine-US, float64
                  for Tax-Calculator), a bound derived from the engine's precision
-  excluded       the engine cannot model a feature of the case; reason recorded
-  explained      a disagreement with a cited cause in the investigation log
+  subcent        for an engine of precision "decimal2" (OpenTaxSolver: doubles printed
+                 to the cent, nothing rounded in between), the engine differs by no more
+                 than one cent per unrounded rate multiplication it carries into the
+                 line, the count declared per line by its adapter (`components`); the
+                 project rounds each product to the cent (amb.<year>.multiplication_subcent)
+  excluded       the engine cannot model a feature of the case; reason recorded. The
+                 features are the generator's, those derived here from the project's own
+                 values, and those the engine's adapter reports about its own run
+                 (engines.json `features`)
+  explained      a disagreement with a cited cause in the investigation log, matched by
+                 case id or by a feature (generator, derived or engine-reported)
   UNEXPLAINED    a disagreement with no cause; fails the run
 
 Beside the Markdown report, a JSON summary of the same run (same path, .json)
 gives, per engine and per mapped line, the counts the evidence report reads:
-  project_line      the project line the mapped id names, or null for a virtual
-                    sum of lines (f1040.tax_before_credits)
+  project_line      the project line the mapped id names, in the form's line-id
+                    form (an instance key such as person[taxpayer].se_line12 is
+                    reduced to person.se_line12, as the evidence report keys its
+                    lines), or null for a virtual sum of lines (f1040.tax_before_credits)
   compared          cases where both sides had a value and no limitation applied
   compared_nonzero  of those, cases where the project value was not zero
   excluded          cases set aside under an engine limitation
@@ -179,10 +190,14 @@ def schedule_mode_expectations(values, case, t):
 
 
 def float_bound_cents(precision, engine_cents, components=1):
-    """Cents of difference attributable to the engine's floating-point arithmetic:
-    two units in the last place of the engine value in dollars (float32 or float64)
-    per summed engine variable, never less than one cent."""
+    """Cents of difference attributable to the engine's arithmetic: for a floating-point
+    engine, two units in the last place of the engine value in dollars (float32 or
+    float64) per summed engine variable, never less than one cent; for a "decimal2"
+    engine (doubles printed to the cent, nothing rounded in between), one cent per
+    unrounded rate multiplication the adapter declares for the line."""
     import math
+    if precision == "decimal2":
+        return max(1, int(components))
     dollars = abs(engine_cents) / 100.0
     if dollars == 0:
         return 1
@@ -205,8 +220,11 @@ def derived_features(case, values):
     feats.add("itemizes" if it.get("kind") == "bool" and it["value"] else "does_not_itemize")
     if (m("div.box2b") or 0) > 0 and (m("sd.line19") or 0) < (m("div.box2b") or 0):
         feats.add("section_1250_netted")
-    if (m("sa.line5d") or 0) > (m("f1040.line11b") or 0):
+    # A negative AGI would otherwise fire this for every return with no state and local tax at all.
+    if (m("sa.line5d") or 0) > 0 and (m("sa.line5d") or 0) > (m("f1040.line11b") or 0):
         feats.add("salt_exceeds_agi")
+    if (m("f1040.line27a") or 0) > 0:
+        feats.add("eic")
     if (m("f8960.line9a") or 0) > 0:
         feats.add("investment_interest_on_8960")
     if 0 < (m("sli.line8") or 0) < (m("sli.line1") or 0):
@@ -219,6 +237,21 @@ def derived_features(case, values):
         feats.add("savers_credit")
     if (m("f1040.line11b") or 0) < 0:
         feats.add("negative_agi")
+    if (m("f1040.line11b") or 0) - (m("f1040.line12e") or 0) - (m("f1040.line13b") or 0) < 0:
+        feats.add("taxable_before_qbi_negative")
+    # A tax-line amount sitting exactly on a Tax Table band boundary ($5 bands under $25, $25 under $3,000, $50 under $100,000).
+    for amount_line in ("f1040.line15", "qdcg.line1", "qdcg.line5", "sdtw.line1", "sdtw.line21"):
+        amt = m(amount_line) or 0
+        band = 500 if amt < 2500 else 2500 if amt < 300000 else 5000
+        if 0 < amt < 10_000_000 and amt % band == 0:
+            feats.add("tax_table_band_edge")
+    # Taxable income before the QBI deduction above the Form 8995 threshold: Form 8995-A, which the project refuses.
+    use_a = values.get("qbi.use_8995a", {}).get("value", {})
+    if use_a.get("kind") == "bool" and use_a["value"]:
+        feats.add("qbi_above_threshold")
+    # Schedule D Tax Worksheet line 4 carries Form 4952 line 4e although no Form 4952 is filed (no investment interest).
+    if (m("f4952.line1") or 0) == 0 and (m("sdtw.line4") or 0) > 0:
+        feats.add("sdtw_line4_without_4952")
     # Schedule 8812 Credit Limit Worksheet A: an engine that subtracts the Form 5695 Part I credit, or
     # omits the saver's credit, in line 2 changes line 14 only where the child tax credit does not fit
     # under its own limit.
@@ -245,9 +278,19 @@ def money(v):
 VIRTUAL_LINES = {"f8959.tax": "f8959.line18", "f8960.tax": "f8960.line17", "f1040.tax_before_credits": None}
 
 
+def template_id(key):
+    """An instance key reduced to the form's line id, as the evidence report keys its lines:
+    person[taxpayer].sc[biz].line31 -> sc.line31, person[taxpayer].se_line12 -> person.se_line12."""
+    import re
+    if "[" not in key:
+        return key
+    return re.sub(r"(?:[a-zA-Z0-9_]+\[[^\]]+\]\.)+", lambda m: m.group(0).split(".")[-2].split("[")[0] + ".", key)
+
+
 def resolve_line(line):
-    """The project line a mapped id names; None for a virtual sum of several lines."""
-    return VIRTUAL_LINES.get(line, line)
+    """The project line a mapped id names, in line-id form; None for a virtual sum of several lines."""
+    line = VIRTUAL_LINES.get(line, line)
+    return None if line is None else template_id(line)
 
 
 def project_line(values, line):
@@ -285,6 +328,7 @@ def main():
     ap = argparse.ArgumentParser()
     for a in ("cases", "project", "engines", "investigations", "report"):
         ap.add_argument("--" + a, required=True)
+    ap.add_argument("--dump", help="write every unexplained and explained record to this JSON file (the report lists the first 300)")
     a = ap.parse_args()
     cases = {c["id"]: c for c in json.load(open(a.cases))}
     project = json.load(open(a.project))["cases"]
@@ -299,8 +343,11 @@ def main():
         for cid, elines in eng["lines"].items():
             case = cases[cid]; values = project[cid]["values"]
             status = case["inputs"]["f1040.status"]
-            feats = derived_features(case, values)
+            feats = derived_features(case, values) | set(eng.get("features", {}).get(cid, []))
             schedule_mode = schedule_mode_expectations(values, case, tables)
+            # An engine that uses the Tax Table itself (OpenTaxSolver) has no table-adjusted reading.
+            uses_table = bool(eng.get("tax_table"))
+            subcent = eng.get("precision") == "decimal2"
             for line, ev in elines.items():
                 pv, kind = project_line(values, line)
                 reason = next((l["reason"] for l in eng["limitations"] if l["feature"] in feats and line in l["lines"]), None)
@@ -322,15 +369,15 @@ def main():
                 bound = float_bound_cents(eng.get("precision", "float64"), ev, eng.get("components", {}).get(line, 1))
                 if diff == 0:
                     stats[(ename, line)]["exact"] += 1; continue
-                if line in TAX_LINES and schedule_mode[line] != pv and abs(ev - schedule_mode[line]) <= bound:
+                if not uses_table and line in TAX_LINES and schedule_mode[line] != pv and abs(ev - schedule_mode[line]) <= bound:
                     stats[(ename, line)]["table-adjusted"] += 1; continue
-                if line == "f1040.line27a" and (ef := eic_formula(values, tables)) is not None and abs(ev - ef) <= max(bound, 100):
+                if not uses_table and line == "f1040.line27a" and (ef := eic_formula(values, tables)) is not None and abs(ev - ef) <= max(bound, 100):
                     stats[(ename, line)]["table-adjusted"] += 1; continue
                 if abs(diff) <= bound:
-                    stats[(ename, line)]["float"] += 1; continue
+                    stats[(ename, line)]["subcent" if subcent else "float"] += 1; continue
                 cause = next((inv for inv in investigations
                               if inv["engine"] == ename and inv["line"] == line
-                              and (inv.get("case") == cid or (inv.get("feature") and inv["feature"] in case["features"]))), None)
+                              and (inv.get("case") == cid or (inv.get("feature") and inv["feature"] in feats))), None)
                 rec = {"engine": ename, "case": cid, "line": line, "project": pv, "engine_value": ev, "diff": diff,
                        "features": case["features"]}
                 if cause:
@@ -340,9 +387,9 @@ def main():
 
     lines_out = ["# Engine differential — generated returns vs independent engines", "",
                  f"Cases: {len(cases)} generated returns, single, head of household and married filing jointly (tools/engines/generate_cases.py). "
-                 "Engines run locally under .engines/venv (tools/engines/setup.sh); versions: "
+                 "Engines run locally under .engines/ (tools/engines/setup.sh); versions: "
                  + ", ".join(f"{n} {e['version']}" for n, e in engines.items()) + ".", "",
-                 f"`table-adjusted` means the engine equals the project's tax lines recomputed with every Tax Table lookup replaced by the rate schedule (engines compute from the schedule where the form prescribes the table), keeping the worksheet path and re-taking its smaller-of; an identified cause, not a tolerance. For Form 1040 line 27a, `table-adjusted` means the engine is within $1 of the project's Worksheet A path recomputed with each EIC Table lookup replaced by the credit at the exact amount (the engines compute from the formula where the instructions prescribe the table built at each $50 band's midpoint); the $1 allows for the engines' statutory percentages, which the archive does not hold, against the rates the Rev. Proc. 2024-40 amounts imply (at most about $0.20 apart over the table's range). `float` means the difference is within two units in the last place of the engine's floating-point representation (PolicyEngine-US computes in float32, Tax-Calculator in float64), a bound derived from the engine's precision. `excluded` lines carry the engine limitation stated below. Every other difference must be explained in fixtures/{Y}/differential/engine_investigations.json or the run fails.", ""]
+                 f"`table-adjusted` means the engine equals the project's tax lines recomputed with every Tax Table lookup replaced by the rate schedule (engines compute from the schedule where the form prescribes the table), keeping the worksheet path and re-taking its smaller-of; an identified cause, not a tolerance. For Form 1040 line 27a, `table-adjusted` means the engine is within $1 of the project's Worksheet A path recomputed with each EIC Table lookup replaced by the credit at the exact amount (the engines compute from the formula where the instructions prescribe the table built at each $50 band's midpoint); the $1 allows for the engines' statutory percentages, which the archive does not hold, against the rates the Rev. Proc. 2024-40 amounts imply (at most about $0.20 apart over the table's range). `float` means the difference is within two units in the last place of the engine's floating-point representation (PolicyEngine-US computes in float32, Tax-Calculator in float64), a bound derived from the engine's precision. `subcent` (OpenTaxSolver, which computes in doubles and prints to the cent without rounding in between) means the difference is within one cent per unrounded rate multiplication the adapter declares for the line, where the project rounds each product to the cent. OpenTaxSolver builds its tax from the Tax Table below $100,000 as the form does, so it has no `table-adjusted` reading. `excluded` lines carry the engine limitation stated below; the features that trigger them are the generator's, those read off the project's values, and those the engine's adapter reports about its own run. Every other difference must be explained in fixtures/{Y}/differential/engine_investigations.json or the run fails.", ""]
     # The not-computed floor: the share of the engine's cases on which the project left the line without a
     # value, outside the allow-list's unfiled-form cases.
     shares, floor_failures = {}, []
@@ -356,13 +403,13 @@ def main():
                   "(a refusal, an unknown input, a non-money value), measured outside the allow-listed returns that do not file the form: "
                   + "; ".join(f"{line} unknown where `{inp}` is false ({reason})" for line, (inp, reason) in sorted(NOT_COMPUTED_ALLOW.items())) + ".", ""]
     for ename in engines:
-        lines_out += [f"## {ename}", "", "| line | exact | table-adjusted | float | excluded | explained | UNEXPLAINED | not computed | not computed outside the allow-list (share) |",
-                      "| --- | --- | --- | --- | --- | --- | --- | --- | --- |"]
+        lines_out += [f"## {ename}", "", "| line | exact | table-adjusted | float | subcent | excluded | explained | UNEXPLAINED | not computed | not computed outside the allow-list (share) |",
+                      "| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |"]
         for (en, line), c in sorted(stats.items()):
             if en != ename: continue
             notc = sum(v for k, v in c.items() if k.startswith("project-"))
             outside = notc - summary[(ename, line)]["not_computed_allowed"]
-            lines_out.append(f"| {line} | {c['exact']} | {c['table-adjusted']} | {c['float']} | {c['excluded']} | {c['explained']} | {c['UNEXPLAINED']} | {notc} | {outside} ({shares[(ename, line)]:.1%}) |")
+            lines_out.append(f"| {line} | {c['exact']} | {c['table-adjusted']} | {c['float']} | {c['subcent']} | {c['excluded']} | {c['explained']} | {c['UNEXPLAINED']} | {notc} | {outside} ({shares[(ename, line)]:.1%}) |")
         lines_out.append("")
         reasons = {r for (en, _), rc in excluded_reasons.items() if en == ename for r in rc}
         if reasons:
@@ -370,6 +417,9 @@ def main():
         unmapped = engines[ename].get("pass_through", {}).get("unmapped", {})
         if unmapped:
             lines_out += ["Project result lines not mapped:", ""] + [f"- {line}: {why}" for line, why in unmapped.items()] + [""]
+        rejected = engines[ename].get("rejected", [])
+        if rejected:
+            lines_out += [f"Cases the engine's programs rejected (no lines compared): {len(rejected)}: {', '.join(rejected[:20])}", ""]
     if floor_failures:
         lines_out += ["## NOT-COMPUTED FLOOR EXCEEDED", ""] + [f"- {en} {line}: {n} of {total} cases without a project value" for en, line, n, total in floor_failures] + [""]
     if explained:
@@ -390,14 +440,16 @@ def main():
                               "compared": sm["compared"], "compared_nonzero": sm["compared_nonzero"],
                               "excluded": c["excluded"], "excluded_nonzero": sm["excluded_nonzero"],
                               "unexplained": c["UNEXPLAINED"], "exact": c["exact"], "table_adjusted": c["table-adjusted"],
-                              "float": c["float"], "explained": c["explained"],
+                              "float": c["float"], "subcent": c["subcent"], "explained": c["explained"],
                               "not_computed": sum(v for k, v in c.items() if k.startswith("project-")),
                               "not_computed_allowed": sm["not_computed_allowed"],
                               "not_computed_share": round(shares[(ename, line)], 4)}
         summary_out["engines"][ename] = {"version": eng["version"], "pass_through": eng.get("pass_through", {"lines": [], "components": {}}),
-                                         "lines": per_line}
+                                         "limitations": eng.get("limitations", []), "rejected": eng.get("rejected", []), "lines": per_line}
     summary_out["not_computed_floor"] = {"share": NOT_COMPUTED_FLOOR, "allow": {l: {"input": i, "reason": r} for l, (i, r) in NOT_COMPUTED_ALLOW.items()},
                                          "exceeded": [{"engine": en, "line": line, "not_computed": n, "cases": total} for en, line, n, total in floor_failures]}
+    if a.dump:
+        open(a.dump, "w").write(json.dumps({"unexplained": unexplained, "explained": explained}, indent=1) + "\n")
     summary_path = os.path.splitext(a.report)[0] + ".json"
     open(summary_path, "w").write(json.dumps(summary_out, indent=1) + "\n")
     total = sum(sum(c.values()) for c in stats.values())

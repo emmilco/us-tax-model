@@ -7,10 +7,10 @@ The rendered English of every printed line of `Tax Computation Worksheet—Line 
 | date | 2026-10-22 |
 | model requested | deepseek-v4-pro |
 | model reported | deepseek-v4-pro |
-| prompt sha256 | a3ca2faf380eef0217147c5dfd6f963ef880e7083d40a7a0f05e53cabbaec61e |
-| subject sha256 | c1a361001e6d9ce7e77b2893ef190e0970997d6c30121c865bd0fa21ff3af0f1 |
+| prompt sha256 | dd66e4a47546ba6e1cfb4bbf31460beace8ed80baf4b09c6ee116d3c8f12f74e |
+| subject sha256 | 7a487f24667a1368cced38ccd8258e98c3d8888dd2b54a39723175c9571c5b6f |
 | lines judged | 46 |
-| match / mismatch / unclear / missing | 26 / 20 / 0 / 0 |
+| match / mismatch / unclear / missing | 46 / 0 / 0 / 0 |
 | verdicts for lines not in the form | none |
 
 ## Source pages given to the model
@@ -24,312 +24,232 @@ The rendered English of every printed line of `Tax Computation Worksheet—Line 
 ### (a) — Enter the amount from line 15
 Status: **MATCH**
 
-Model: The IRS column (a) says to enter the amount from line 15 (or the other form/worksheet amount being computed); the restatement uses the amount whose tax is computed.
+Model: Column (a) is an entry blank for the amount from line 15, or for the other form/worksheet amount described in the note; binding it as the amount whose tax is computed matches the worksheet.
 
 ### (c) (single.row1.product) — Multiply line (a) by 22% (0.22)
 Status: **MATCH**
 
-Model: The IRS single row 1 column (c) says 'Multiply (a) by (b)' with (b) 22% (0.22); the restatement matches.
+Model: Matches Section A row 1: multiply column (a) by the 22% (0.22) multiplication amount.
 
-### (d) (single.row1.tax) — Subtract (d) from (c)
-Status: **MISMATCH**
+### Tax (single.row1.tax) — Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16.
+Status: **MATCH**
 
-Restated: Subtract $5,086 (tcw.single.b1.subtract) from column (c) (single.row1.product).
-
-Model: The IRS line (d) is the 'Subtraction amount' of $5,086.00, not the result of subtracting it from column (c); 'Subtract (d) from (c)' is the separate Tax-column instruction.
-
-Ruling: open
+Model: Matches Section A row 1: subtract the $5,086 subtraction amount from column (c).
 
 ### (c) (single.row2.product) — Multiply line (a) by 24% (0.24)
 Status: **MATCH**
 
-Model: The IRS single row 2 column (c) says 'Multiply (a) by (b)' with (b) 24% (0.24); the restatement matches.
+Model: Matches Section A row 2: multiply column (a) by the 24% (0.24) multiplication amount.
 
-### (d) (single.row2.tax) — Subtract (d) from (c)
-Status: **MISMATCH**
+### Tax (single.row2.tax) — Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16.
+Status: **MATCH**
 
-Restated: Subtract $7,153 (tcw.single.b2.subtract) from column (c) (single.row2.product).
-
-Model: The IRS line (d) is the 'Subtraction amount' of $7,153.00, not the result of subtracting it from column (c); 'Subtract (d) from (c)' is the separate Tax-column instruction.
-
-Ruling: open
+Model: Matches Section A row 2: subtract the $7,153 subtraction amount from column (c).
 
 ### (c) (single.row3.product) — Multiply line (a) by 32% (0.32)
 Status: **MATCH**
 
-Model: The IRS single row 3 column (c) says 'Multiply (a) by (b)' with (b) 32% (0.32); the restatement matches.
+Model: Matches Section A row 3: multiply column (a) by the 32% (0.32) multiplication amount.
 
-### (d) (single.row3.tax) — Subtract (d) from (c)
-Status: **MISMATCH**
+### Tax (single.row3.tax) — Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16.
+Status: **MATCH**
 
-Restated: Subtract $22,937 (tcw.single.b3.subtract) from column (c) (single.row3.product).
-
-Model: The IRS line (d) is the 'Subtraction amount' of $22,937.00, not the result of subtracting it from column (c); 'Subtract (d) from (c)' is the separate Tax-column instruction.
-
-Ruling: open
+Model: Matches Section A row 3: subtract the $22,937 subtraction amount from column (c).
 
 ### (c) (single.row4.product) — Multiply line (a) by 35% (0.35)
 Status: **MATCH**
 
-Model: The IRS single row 4 column (c) says 'Multiply (a) by (b)' with (b) 35% (0.35); the restatement matches.
+Model: Matches Section A row 4: multiply column (a) by the 35% (0.35) multiplication amount.
 
-### (d) (single.row4.tax) — Subtract (d) from (c)
-Status: **MISMATCH**
+### Tax (single.row4.tax) — Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16.
+Status: **MATCH**
 
-Restated: Subtract $30,452.75 (tcw.single.b4.subtract) from column (c) (single.row4.product).
-
-Model: The IRS line (d) is the 'Subtraction amount' of $30,452.75, not the result of subtracting it from column (c); 'Subtract (d) from (c)' is the separate Tax-column instruction.
-
-Ruling: open
+Model: Matches Section A row 4: subtract the $30,452.75 subtraction amount from column (c).
 
 ### (c) (single.row5.product) — Multiply line (a) by 37% (0.37)
 Status: **MATCH**
 
-Model: The IRS single row 5 column (c) says 'Multiply (a) by (b)' with (b) 37% (0.37); the restatement matches.
+Model: Matches Section A row 5: multiply column (a) by the 37% (0.37) multiplication amount.
 
-### (d) (single.row5.tax) — Subtract (d) from (c)
-Status: **MISMATCH**
+### Tax (single.row5.tax) — Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16.
+Status: **MATCH**
 
-Restated: Subtract $42,979.75 (tcw.single.b5.subtract) from column (c) (single.row5.product).
-
-Model: The IRS line (d) is the 'Subtraction amount' of $42,979.75, not the result of subtracting it from column (c); 'Subtract (d) from (c)' is the separate Tax-column instruction.
-
-Ruling: open
+Model: Matches Section A row 5: subtract the $42,979.75 subtraction amount from column (c).
 
 ### Tax (single.result) — Section A—Use if your filing status is Single. Tax. Subtract (d) from (c). Enter the resul
 Status: **MATCH**
 
-Model: The IRS Section A says to complete the row that applies and enter the result on line 16; the program chooses the row using the Single taxable-income thresholds and the corresponding tax amount.
+Model: The row selection thresholds match Section A: at least $100,000 through $103,350, then over each upper bound through the next upper bound, and over $626,350.
 
 ### (c) (mfj.row1.product) — Multiply line (a) by 22% (0.22)
 Status: **MATCH**
 
-Model: The IRS MFJ row 1 column (c) says 'Multiply (a) by (b)' with (b) 22% (0.22); the restatement matches.
+Model: Matches Section B row 1: multiply column (a) by the 22% (0.22) multiplication amount.
 
-### (d) (mfj.row1.tax) — Subtract (d) from (c)
-Status: **MISMATCH**
+### Tax (mfj.row1.tax) — Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16.
+Status: **MATCH**
 
-Restated: Subtract $10,172 (tcw.mfj.b1.subtract) from column (c) (mfj.row1.product).
-
-Model: The IRS line (d) is the 'Subtraction amount' of $10,172.00, not the result of subtracting it from column (c); 'Subtract (d) from (c)' is the separate Tax-column instruction.
-
-Ruling: open
+Model: Matches Section B row 1: subtract the $10,172 subtraction amount from column (c).
 
 ### (c) (mfj.row2.product) — Multiply line (a) by 24% (0.24)
 Status: **MATCH**
 
-Model: The IRS MFJ row 2 column (c) says 'Multiply (a) by (b)' with (b) 24% (0.24); the restatement matches.
+Model: Matches Section B row 2: multiply column (a) by the 24% (0.24) multiplication amount.
 
-### (d) (mfj.row2.tax) — Subtract (d) from (c)
-Status: **MISMATCH**
+### Tax (mfj.row2.tax) — Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16.
+Status: **MATCH**
 
-Restated: Subtract $14,306 (tcw.mfj.b2.subtract) from column (c) (mfj.row2.product).
-
-Model: The IRS line (d) is the 'Subtraction amount' of $14,306.00, not the result of subtracting it from column (c); 'Subtract (d) from (c)' is the separate Tax-column instruction.
-
-Ruling: open
+Model: Matches Section B row 2: subtract the $14,306 subtraction amount from column (c).
 
 ### (c) (mfj.row3.product) — Multiply line (a) by 32% (0.32)
 Status: **MATCH**
 
-Model: The IRS MFJ row 3 column (c) says 'Multiply (a) by (b)' with (b) 32% (0.32); the restatement matches.
+Model: Matches Section B row 3: multiply column (a) by the 32% (0.32) multiplication amount.
 
-### (d) (mfj.row3.tax) — Subtract (d) from (c)
-Status: **MISMATCH**
+### Tax (mfj.row3.tax) — Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16.
+Status: **MATCH**
 
-Restated: Subtract $45,874 (tcw.mfj.b3.subtract) from column (c) (mfj.row3.product).
-
-Model: The IRS line (d) is the 'Subtraction amount' of $45,874.00, not the result of subtracting it from column (c); 'Subtract (d) from (c)' is the separate Tax-column instruction.
-
-Ruling: open
+Model: Matches Section B row 3: subtract the $45,874 subtraction amount from column (c).
 
 ### (c) (mfj.row4.product) — Multiply line (a) by 35% (0.35)
 Status: **MATCH**
 
-Model: The IRS MFJ row 4 column (c) says 'Multiply (a) by (b)' with (b) 35% (0.35); the restatement matches.
+Model: Matches Section B row 4: multiply column (a) by the 35% (0.35) multiplication amount.
 
-### (d) (mfj.row4.tax) — Subtract (d) from (c)
-Status: **MISMATCH**
+### Tax (mfj.row4.tax) — Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16.
+Status: **MATCH**
 
-Restated: Subtract $60,905.50 (tcw.mfj.b4.subtract) from column (c) (mfj.row4.product).
-
-Model: The IRS line (d) is the 'Subtraction amount' of $60,905.50, not the result of subtracting it from column (c); 'Subtract (d) from (c)' is the separate Tax-column instruction.
-
-Ruling: open
+Model: Matches Section B row 4: subtract the $60,905.50 subtraction amount from column (c).
 
 ### (c) (mfj.row5.product) — Multiply line (a) by 37% (0.37)
 Status: **MATCH**
 
-Model: The IRS MFJ row 5 column (c) says 'Multiply (a) by (b)' with (b) 37% (0.37); the restatement matches.
+Model: Matches Section B row 5: multiply column (a) by the 37% (0.37) multiplication amount.
 
-### (d) (mfj.row5.tax) — Subtract (d) from (c)
-Status: **MISMATCH**
+### Tax (mfj.row5.tax) — Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16.
+Status: **MATCH**
 
-Restated: Subtract $75,937.50 (tcw.mfj.b5.subtract) from column (c) (mfj.row5.product).
-
-Model: The IRS line (d) is the 'Subtraction amount' of $75,937.50, not the result of subtracting it from column (c); 'Subtract (d) from (c)' is the separate Tax-column instruction.
-
-Ruling: open
+Model: Matches Section B row 5: subtract the $75,937.50 subtraction amount from column (c).
 
 ### Tax (mfj.result) — Section B—Use if your filing status is Married filing jointly or Qualifying surviving spou
 Status: **MATCH**
 
-Model: The IRS Section B says to complete the row that applies and enter the result on line 16; the program chooses the row using the MFJ/QSS taxable-income thresholds and the corresponding tax amount.
+Model: The row selection thresholds match Section B: at least $100,000 through $206,700, then over each upper bound through the next upper bound, and over $751,600.
 
 ### (c) (mfs.row1.product) — Multiply line (a) by 22% (0.22)
 Status: **MATCH**
 
-Model: The IRS MFS row 1 column (c) says 'Multiply (a) by (b)' with (b) 22% (0.22); the restatement matches.
+Model: Matches Section C row 1: multiply column (a) by the 22% (0.22) multiplication amount.
 
-### (d) (mfs.row1.tax) — Subtract (d) from (c)
-Status: **MISMATCH**
+### Tax (mfs.row1.tax) — Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16.
+Status: **MATCH**
 
-Restated: Subtract $5,086 (tcw.mfs.b1.subtract) from column (c) (mfs.row1.product).
-
-Model: The IRS line (d) is the 'Subtraction amount' of $5,086.00, not the result of subtracting it from column (c); 'Subtract (d) from (c)' is the separate Tax-column instruction.
-
-Ruling: open
+Model: Matches Section C row 1: subtract the $5,086 subtraction amount from column (c).
 
 ### (c) (mfs.row2.product) — Multiply line (a) by 24% (0.24)
 Status: **MATCH**
 
-Model: The IRS MFS row 2 column (c) says 'Multiply (a) by (b)' with (b) 24% (0.24); the restatement matches.
+Model: Matches Section C row 2: multiply column (a) by the 24% (0.24) multiplication amount.
 
-### (d) (mfs.row2.tax) — Subtract (d) from (c)
-Status: **MISMATCH**
+### Tax (mfs.row2.tax) — Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16.
+Status: **MATCH**
 
-Restated: Subtract $7,153 (tcw.mfs.b2.subtract) from column (c) (mfs.row2.product).
-
-Model: The IRS line (d) is the 'Subtraction amount' of $7,153.00, not the result of subtracting it from column (c); 'Subtract (d) from (c)' is the separate Tax-column instruction.
-
-Ruling: open
+Model: Matches Section C row 2: subtract the $7,153 subtraction amount from column (c).
 
 ### (c) (mfs.row3.product) — Multiply line (a) by 32% (0.32)
 Status: **MATCH**
 
-Model: The IRS MFS row 3 column (c) says 'Multiply (a) by (b)' with (b) 32% (0.32); the restatement matches.
+Model: Matches Section C row 3: multiply column (a) by the 32% (0.32) multiplication amount.
 
-### (d) (mfs.row3.tax) — Subtract (d) from (c)
-Status: **MISMATCH**
+### Tax (mfs.row3.tax) — Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16.
+Status: **MATCH**
 
-Restated: Subtract $22,937 (tcw.mfs.b3.subtract) from column (c) (mfs.row3.product).
-
-Model: The IRS line (d) is the 'Subtraction amount' of $22,937.00, not the result of subtracting it from column (c); 'Subtract (d) from (c)' is the separate Tax-column instruction.
-
-Ruling: open
+Model: Matches Section C row 3: subtract the $22,937 subtraction amount from column (c).
 
 ### (c) (mfs.row4.product) — Multiply line (a) by 35% (0.35)
 Status: **MATCH**
 
-Model: The IRS MFS row 4 column (c) says 'Multiply (a) by (b)' with (b) 35% (0.35); the restatement matches.
+Model: Matches Section C row 4: multiply column (a) by the 35% (0.35) multiplication amount.
 
-### (d) (mfs.row4.tax) — Subtract (d) from (c)
-Status: **MISMATCH**
+### Tax (mfs.row4.tax) — Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16.
+Status: **MATCH**
 
-Restated: Subtract $30,452.75 (tcw.mfs.b4.subtract) from column (c) (mfs.row4.product).
-
-Model: The IRS line (d) is the 'Subtraction amount' of $30,452.75, not the result of subtracting it from column (c); 'Subtract (d) from (c)' is the separate Tax-column instruction.
-
-Ruling: open
+Model: Matches Section C row 4: subtract the $30,452.75 subtraction amount from column (c).
 
 ### (c) (mfs.row5.product) — Multiply line (a) by 37% (0.37)
 Status: **MATCH**
 
-Model: The IRS MFS row 5 column (c) says 'Multiply (a) by (b)' with (b) 37% (0.37); the restatement matches.
+Model: Matches Section C row 5: multiply column (a) by the 37% (0.37) multiplication amount.
 
-### (d) (mfs.row5.tax) — Subtract (d) from (c)
-Status: **MISMATCH**
+### Tax (mfs.row5.tax) — Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16.
+Status: **MATCH**
 
-Restated: Subtract $37,968.75 (tcw.mfs.b5.subtract) from column (c) (mfs.row5.product).
-
-Model: The IRS line (d) is the 'Subtraction amount' of $37,968.75, not the result of subtracting it from column (c); 'Subtract (d) from (c)' is the separate Tax-column instruction.
-
-Ruling: open
+Model: Matches Section C row 5: subtract the $37,968.75 subtraction amount from column (c).
 
 ### Tax (mfs.result) — Section C—Use if your filing status is Married filing separately. Tax. Subtract (d) from (
 Status: **MATCH**
 
-Model: The IRS Section C says to complete the row that applies and enter the result on line 16; the program chooses the row using the MFS taxable-income thresholds and the corresponding tax amount.
+Model: The row selection thresholds match Section C: at least $100,000 through $103,350, then over each upper bound through the next upper bound, and over $375,800.
 
 ### (c) (hoh.row1.product) — Multiply line (a) by 22% (0.22)
 Status: **MATCH**
 
-Model: The IRS HOH row 1 column (c) says 'Multiply (a) by (b)' with (b) 22% (0.22); the restatement matches.
+Model: Matches Section D row 1: multiply column (a) by the 22% (0.22) multiplication amount.
 
-### (d) (hoh.row1.tax) — Subtract (d) from (c)
-Status: **MISMATCH**
+### Tax (hoh.row1.tax) — Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16.
+Status: **MATCH**
 
-Restated: Subtract $6,825 (tcw.hoh.b1.subtract) from column (c) (hoh.row1.product).
-
-Model: The IRS line (d) is the 'Subtraction amount' of $6,825.00, not the result of subtracting it from column (c); 'Subtract (d) from (c)' is the separate Tax-column instruction.
-
-Ruling: open
+Model: Matches Section D row 1: subtract the $6,825 subtraction amount from column (c).
 
 ### (c) (hoh.row2.product) — Multiply line (a) by 24% (0.24)
 Status: **MATCH**
 
-Model: The IRS HOH row 2 column (c) says 'Multiply (a) by (b)' with (b) 24% (0.24); the restatement matches.
+Model: Matches Section D row 2: multiply column (a) by the 24% (0.24) multiplication amount.
 
-### (d) (hoh.row2.tax) — Subtract (d) from (c)
-Status: **MISMATCH**
+### Tax (hoh.row2.tax) — Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16.
+Status: **MATCH**
 
-Restated: Subtract $8,892 (tcw.hoh.b2.subtract) from column (c) (hoh.row2.product).
-
-Model: The IRS line (d) is the 'Subtraction amount' of $8,892.00, not the result of subtracting it from column (c); 'Subtract (d) from (c)' is the separate Tax-column instruction.
-
-Ruling: open
+Model: Matches Section D row 2: subtract the $8,892 subtraction amount from column (c).
 
 ### (c) (hoh.row3.product) — Multiply line (a) by 32% (0.32)
 Status: **MATCH**
 
-Model: The IRS HOH row 3 column (c) says 'Multiply (a) by (b)' with (b) 32% (0.32); the restatement matches.
+Model: Matches Section D row 3: multiply column (a) by the 32% (0.32) multiplication amount.
 
-### (d) (hoh.row3.tax) — Subtract (d) from (c)
-Status: **MISMATCH**
+### Tax (hoh.row3.tax) — Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16.
+Status: **MATCH**
 
-Restated: Subtract $24,676 (tcw.hoh.b3.subtract) from column (c) (hoh.row3.product).
-
-Model: The IRS line (d) is the 'Subtraction amount' of $24,676.00, not the result of subtracting it from column (c); 'Subtract (d) from (c)' is the separate Tax-column instruction.
-
-Ruling: open
+Model: Matches Section D row 3: subtract the $24,676 subtraction amount from column (c).
 
 ### (c) (hoh.row4.product) — Multiply line (a) by 35% (0.35)
 Status: **MATCH**
 
-Model: The IRS HOH row 4 column (c) says 'Multiply (a) by (b)' with (b) 35% (0.35); the restatement matches.
+Model: Matches Section D row 4: multiply column (a) by the 35% (0.35) multiplication amount.
 
-### (d) (hoh.row4.tax) — Subtract (d) from (c)
-Status: **MISMATCH**
+### Tax (hoh.row4.tax) — Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16.
+Status: **MATCH**
 
-Restated: Subtract $32,191 (tcw.hoh.b4.subtract) from column (c) (hoh.row4.product).
-
-Model: The IRS line (d) is the 'Subtraction amount' of $32,191.00, not the result of subtracting it from column (c); 'Subtract (d) from (c)' is the separate Tax-column instruction.
-
-Ruling: open
+Model: Matches Section D row 4: subtract the $32,191 subtraction amount from column (c).
 
 ### (c) (hoh.row5.product) — Multiply line (a) by 37% (0.37)
 Status: **MATCH**
 
-Model: The IRS HOH row 5 column (c) says 'Multiply (a) by (b)' with (b) 37% (0.37); the restatement matches.
+Model: Matches Section D row 5: multiply column (a) by the 37% (0.37) multiplication amount.
 
-### (d) (hoh.row5.tax) — Subtract (d) from (c)
-Status: **MISMATCH**
+### Tax (hoh.row5.tax) — Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16.
+Status: **MATCH**
 
-Restated: Subtract $44,718 (tcw.hoh.b5.subtract) from column (c) (hoh.row5.product).
-
-Model: The IRS line (d) is the 'Subtraction amount' of $44,718.00, not the result of subtracting it from column (c); 'Subtract (d) from (c)' is the separate Tax-column instruction.
-
-Ruling: open
+Model: Matches Section D row 5: subtract the $44,718 subtraction amount from column (c).
 
 ### Tax (hoh.result) — Section D—Use if your filing status is Head of household. Tax. Subtract (d) from (c). Ente
 Status: **MATCH**
 
-Model: The IRS Section D says to complete the row that applies and enter the result on line 16; the program chooses the row using the HOH taxable-income thresholds and the corresponding tax amount.
+Model: The row selection thresholds match Section D: at least $100,000 through $103,350, then over each upper bound through the next upper bound, and over $626,350.
 
 ### Tax (tax) — Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16.
 Status: **MATCH**
 
-Model: The IRS provides Section A for Single, Section B for MFJ/QSS, Section C for MFS, and Section D for HOH; the program maps those filing statuses to the correct sections.
+Model: Matches the worksheet's filing-status instructions: single uses Section A, married filing jointly or qualifying surviving spouse uses Section B, married filing separately uses Section C, and head of household uses Section D.
 
 ## Raw response
 
@@ -337,140 +257,140 @@ Model: The IRS provides Section A for Single, Section B for MFJ/QSS, Section C f
 lines:
   - key: "(a)"
     status: MATCH
-    reason: "The IRS column (a) says to enter the amount from line 15 (or the other form/worksheet amount being computed); the restatement uses the amount whose tax is computed."
+    reason: "Column (a) is an entry blank for the amount from line 15, or for the other form/worksheet amount described in the note; binding it as the amount whose tax is computed matches the worksheet."
   - key: "(c) (single.row1.product)"
     status: MATCH
-    reason: "The IRS single row 1 column (c) says 'Multiply (a) by (b)' with (b) 22% (0.22); the restatement matches."
-  - key: "(d) (single.row1.tax)"
-    status: MISMATCH
-    reason: "The IRS line (d) is the 'Subtraction amount' of $5,086.00, not the result of subtracting it from column (c); 'Subtract (d) from (c)' is the separate Tax-column instruction."
+    reason: "Matches Section A row 1: multiply column (a) by the 22% (0.22) multiplication amount."
+  - key: "Tax (single.row1.tax)"
+    status: MATCH
+    reason: "Matches Section A row 1: subtract the $5,086 subtraction amount from column (c)."
   - key: "(c) (single.row2.product)"
     status: MATCH
-    reason: "The IRS single row 2 column (c) says 'Multiply (a) by (b)' with (b) 24% (0.24); the restatement matches."
-  - key: "(d) (single.row2.tax)"
-    status: MISMATCH
-    reason: "The IRS line (d) is the 'Subtraction amount' of $7,153.00, not the result of subtracting it from column (c); 'Subtract (d) from (c)' is the separate Tax-column instruction."
+    reason: "Matches Section A row 2: multiply column (a) by the 24% (0.24) multiplication amount."
+  - key: "Tax (single.row2.tax)"
+    status: MATCH
+    reason: "Matches Section A row 2: subtract the $7,153 subtraction amount from column (c)."
   - key: "(c) (single.row3.product)"
     status: MATCH
-    reason: "The IRS single row 3 column (c) says 'Multiply (a) by (b)' with (b) 32% (0.32); the restatement matches."
-  - key: "(d) (single.row3.tax)"
-    status: MISMATCH
-    reason: "The IRS line (d) is the 'Subtraction amount' of $22,937.00, not the result of subtracting it from column (c); 'Subtract (d) from (c)' is the separate Tax-column instruction."
+    reason: "Matches Section A row 3: multiply column (a) by the 32% (0.32) multiplication amount."
+  - key: "Tax (single.row3.tax)"
+    status: MATCH
+    reason: "Matches Section A row 3: subtract the $22,937 subtraction amount from column (c)."
   - key: "(c) (single.row4.product)"
     status: MATCH
-    reason: "The IRS single row 4 column (c) says 'Multiply (a) by (b)' with (b) 35% (0.35); the restatement matches."
-  - key: "(d) (single.row4.tax)"
-    status: MISMATCH
-    reason: "The IRS line (d) is the 'Subtraction amount' of $30,452.75, not the result of subtracting it from column (c); 'Subtract (d) from (c)' is the separate Tax-column instruction."
+    reason: "Matches Section A row 4: multiply column (a) by the 35% (0.35) multiplication amount."
+  - key: "Tax (single.row4.tax)"
+    status: MATCH
+    reason: "Matches Section A row 4: subtract the $30,452.75 subtraction amount from column (c)."
   - key: "(c) (single.row5.product)"
     status: MATCH
-    reason: "The IRS single row 5 column (c) says 'Multiply (a) by (b)' with (b) 37% (0.37); the restatement matches."
-  - key: "(d) (single.row5.tax)"
-    status: MISMATCH
-    reason: "The IRS line (d) is the 'Subtraction amount' of $42,979.75, not the result of subtracting it from column (c); 'Subtract (d) from (c)' is the separate Tax-column instruction."
+    reason: "Matches Section A row 5: multiply column (a) by the 37% (0.37) multiplication amount."
+  - key: "Tax (single.row5.tax)"
+    status: MATCH
+    reason: "Matches Section A row 5: subtract the $42,979.75 subtraction amount from column (c)."
   - key: "Tax (single.result)"
     status: MATCH
-    reason: "The IRS Section A says to complete the row that applies and enter the result on line 16; the program chooses the row using the Single taxable-income thresholds and the corresponding tax amount."
+    reason: "The row selection thresholds match Section A: at least $100,000 through $103,350, then over each upper bound through the next upper bound, and over $626,350."
   - key: "(c) (mfj.row1.product)"
     status: MATCH
-    reason: "The IRS MFJ row 1 column (c) says 'Multiply (a) by (b)' with (b) 22% (0.22); the restatement matches."
-  - key: "(d) (mfj.row1.tax)"
-    status: MISMATCH
-    reason: "The IRS line (d) is the 'Subtraction amount' of $10,172.00, not the result of subtracting it from column (c); 'Subtract (d) from (c)' is the separate Tax-column instruction."
+    reason: "Matches Section B row 1: multiply column (a) by the 22% (0.22) multiplication amount."
+  - key: "Tax (mfj.row1.tax)"
+    status: MATCH
+    reason: "Matches Section B row 1: subtract the $10,172 subtraction amount from column (c)."
   - key: "(c) (mfj.row2.product)"
     status: MATCH
-    reason: "The IRS MFJ row 2 column (c) says 'Multiply (a) by (b)' with (b) 24% (0.24); the restatement matches."
-  - key: "(d) (mfj.row2.tax)"
-    status: MISMATCH
-    reason: "The IRS line (d) is the 'Subtraction amount' of $14,306.00, not the result of subtracting it from column (c); 'Subtract (d) from (c)' is the separate Tax-column instruction."
+    reason: "Matches Section B row 2: multiply column (a) by the 24% (0.24) multiplication amount."
+  - key: "Tax (mfj.row2.tax)"
+    status: MATCH
+    reason: "Matches Section B row 2: subtract the $14,306 subtraction amount from column (c)."
   - key: "(c) (mfj.row3.product)"
     status: MATCH
-    reason: "The IRS MFJ row 3 column (c) says 'Multiply (a) by (b)' with (b) 32% (0.32); the restatement matches."
-  - key: "(d) (mfj.row3.tax)"
-    status: MISMATCH
-    reason: "The IRS line (d) is the 'Subtraction amount' of $45,874.00, not the result of subtracting it from column (c); 'Subtract (d) from (c)' is the separate Tax-column instruction."
+    reason: "Matches Section B row 3: multiply column (a) by the 32% (0.32) multiplication amount."
+  - key: "Tax (mfj.row3.tax)"
+    status: MATCH
+    reason: "Matches Section B row 3: subtract the $45,874 subtraction amount from column (c)."
   - key: "(c) (mfj.row4.product)"
     status: MATCH
-    reason: "The IRS MFJ row 4 column (c) says 'Multiply (a) by (b)' with (b) 35% (0.35); the restatement matches."
-  - key: "(d) (mfj.row4.tax)"
-    status: MISMATCH
-    reason: "The IRS line (d) is the 'Subtraction amount' of $60,905.50, not the result of subtracting it from column (c); 'Subtract (d) from (c)' is the separate Tax-column instruction."
+    reason: "Matches Section B row 4: multiply column (a) by the 35% (0.35) multiplication amount."
+  - key: "Tax (mfj.row4.tax)"
+    status: MATCH
+    reason: "Matches Section B row 4: subtract the $60,905.50 subtraction amount from column (c)."
   - key: "(c) (mfj.row5.product)"
     status: MATCH
-    reason: "The IRS MFJ row 5 column (c) says 'Multiply (a) by (b)' with (b) 37% (0.37); the restatement matches."
-  - key: "(d) (mfj.row5.tax)"
-    status: MISMATCH
-    reason: "The IRS line (d) is the 'Subtraction amount' of $75,937.50, not the result of subtracting it from column (c); 'Subtract (d) from (c)' is the separate Tax-column instruction."
+    reason: "Matches Section B row 5: multiply column (a) by the 37% (0.37) multiplication amount."
+  - key: "Tax (mfj.row5.tax)"
+    status: MATCH
+    reason: "Matches Section B row 5: subtract the $75,937.50 subtraction amount from column (c)."
   - key: "Tax (mfj.result)"
     status: MATCH
-    reason: "The IRS Section B says to complete the row that applies and enter the result on line 16; the program chooses the row using the MFJ/QSS taxable-income thresholds and the corresponding tax amount."
+    reason: "The row selection thresholds match Section B: at least $100,000 through $206,700, then over each upper bound through the next upper bound, and over $751,600."
   - key: "(c) (mfs.row1.product)"
     status: MATCH
-    reason: "The IRS MFS row 1 column (c) says 'Multiply (a) by (b)' with (b) 22% (0.22); the restatement matches."
-  - key: "(d) (mfs.row1.tax)"
-    status: MISMATCH
-    reason: "The IRS line (d) is the 'Subtraction amount' of $5,086.00, not the result of subtracting it from column (c); 'Subtract (d) from (c)' is the separate Tax-column instruction."
+    reason: "Matches Section C row 1: multiply column (a) by the 22% (0.22) multiplication amount."
+  - key: "Tax (mfs.row1.tax)"
+    status: MATCH
+    reason: "Matches Section C row 1: subtract the $5,086 subtraction amount from column (c)."
   - key: "(c) (mfs.row2.product)"
     status: MATCH
-    reason: "The IRS MFS row 2 column (c) says 'Multiply (a) by (b)' with (b) 24% (0.24); the restatement matches."
-  - key: "(d) (mfs.row2.tax)"
-    status: MISMATCH
-    reason: "The IRS line (d) is the 'Subtraction amount' of $7,153.00, not the result of subtracting it from column (c); 'Subtract (d) from (c)' is the separate Tax-column instruction."
+    reason: "Matches Section C row 2: multiply column (a) by the 24% (0.24) multiplication amount."
+  - key: "Tax (mfs.row2.tax)"
+    status: MATCH
+    reason: "Matches Section C row 2: subtract the $7,153 subtraction amount from column (c)."
   - key: "(c) (mfs.row3.product)"
     status: MATCH
-    reason: "The IRS MFS row 3 column (c) says 'Multiply (a) by (b)' with (b) 32% (0.32); the restatement matches."
-  - key: "(d) (mfs.row3.tax)"
-    status: MISMATCH
-    reason: "The IRS line (d) is the 'Subtraction amount' of $22,937.00, not the result of subtracting it from column (c); 'Subtract (d) from (c)' is the separate Tax-column instruction."
+    reason: "Matches Section C row 3: multiply column (a) by the 32% (0.32) multiplication amount."
+  - key: "Tax (mfs.row3.tax)"
+    status: MATCH
+    reason: "Matches Section C row 3: subtract the $22,937 subtraction amount from column (c)."
   - key: "(c) (mfs.row4.product)"
     status: MATCH
-    reason: "The IRS MFS row 4 column (c) says 'Multiply (a) by (b)' with (b) 35% (0.35); the restatement matches."
-  - key: "(d) (mfs.row4.tax)"
-    status: MISMATCH
-    reason: "The IRS line (d) is the 'Subtraction amount' of $30,452.75, not the result of subtracting it from column (c); 'Subtract (d) from (c)' is the separate Tax-column instruction."
+    reason: "Matches Section C row 4: multiply column (a) by the 35% (0.35) multiplication amount."
+  - key: "Tax (mfs.row4.tax)"
+    status: MATCH
+    reason: "Matches Section C row 4: subtract the $30,452.75 subtraction amount from column (c)."
   - key: "(c) (mfs.row5.product)"
     status: MATCH
-    reason: "The IRS MFS row 5 column (c) says 'Multiply (a) by (b)' with (b) 37% (0.37); the restatement matches."
-  - key: "(d) (mfs.row5.tax)"
-    status: MISMATCH
-    reason: "The IRS line (d) is the 'Subtraction amount' of $37,968.75, not the result of subtracting it from column (c); 'Subtract (d) from (c)' is the separate Tax-column instruction."
+    reason: "Matches Section C row 5: multiply column (a) by the 37% (0.37) multiplication amount."
+  - key: "Tax (mfs.row5.tax)"
+    status: MATCH
+    reason: "Matches Section C row 5: subtract the $37,968.75 subtraction amount from column (c)."
   - key: "Tax (mfs.result)"
     status: MATCH
-    reason: "The IRS Section C says to complete the row that applies and enter the result on line 16; the program chooses the row using the MFS taxable-income thresholds and the corresponding tax amount."
+    reason: "The row selection thresholds match Section C: at least $100,000 through $103,350, then over each upper bound through the next upper bound, and over $375,800."
   - key: "(c) (hoh.row1.product)"
     status: MATCH
-    reason: "The IRS HOH row 1 column (c) says 'Multiply (a) by (b)' with (b) 22% (0.22); the restatement matches."
-  - key: "(d) (hoh.row1.tax)"
-    status: MISMATCH
-    reason: "The IRS line (d) is the 'Subtraction amount' of $6,825.00, not the result of subtracting it from column (c); 'Subtract (d) from (c)' is the separate Tax-column instruction."
+    reason: "Matches Section D row 1: multiply column (a) by the 22% (0.22) multiplication amount."
+  - key: "Tax (hoh.row1.tax)"
+    status: MATCH
+    reason: "Matches Section D row 1: subtract the $6,825 subtraction amount from column (c)."
   - key: "(c) (hoh.row2.product)"
     status: MATCH
-    reason: "The IRS HOH row 2 column (c) says 'Multiply (a) by (b)' with (b) 24% (0.24); the restatement matches."
-  - key: "(d) (hoh.row2.tax)"
-    status: MISMATCH
-    reason: "The IRS line (d) is the 'Subtraction amount' of $8,892.00, not the result of subtracting it from column (c); 'Subtract (d) from (c)' is the separate Tax-column instruction."
+    reason: "Matches Section D row 2: multiply column (a) by the 24% (0.24) multiplication amount."
+  - key: "Tax (hoh.row2.tax)"
+    status: MATCH
+    reason: "Matches Section D row 2: subtract the $8,892 subtraction amount from column (c)."
   - key: "(c) (hoh.row3.product)"
     status: MATCH
-    reason: "The IRS HOH row 3 column (c) says 'Multiply (a) by (b)' with (b) 32% (0.32); the restatement matches."
-  - key: "(d) (hoh.row3.tax)"
-    status: MISMATCH
-    reason: "The IRS line (d) is the 'Subtraction amount' of $24,676.00, not the result of subtracting it from column (c); 'Subtract (d) from (c)' is the separate Tax-column instruction."
+    reason: "Matches Section D row 3: multiply column (a) by the 32% (0.32) multiplication amount."
+  - key: "Tax (hoh.row3.tax)"
+    status: MATCH
+    reason: "Matches Section D row 3: subtract the $24,676 subtraction amount from column (c)."
   - key: "(c) (hoh.row4.product)"
     status: MATCH
-    reason: "The IRS HOH row 4 column (c) says 'Multiply (a) by (b)' with (b) 35% (0.35); the restatement matches."
-  - key: "(d) (hoh.row4.tax)"
-    status: MISMATCH
-    reason: "The IRS line (d) is the 'Subtraction amount' of $32,191.00, not the result of subtracting it from column (c); 'Subtract (d) from (c)' is the separate Tax-column instruction."
+    reason: "Matches Section D row 4: multiply column (a) by the 35% (0.35) multiplication amount."
+  - key: "Tax (hoh.row4.tax)"
+    status: MATCH
+    reason: "Matches Section D row 4: subtract the $32,191 subtraction amount from column (c)."
   - key: "(c) (hoh.row5.product)"
     status: MATCH
-    reason: "The IRS HOH row 5 column (c) says 'Multiply (a) by (b)' with (b) 37% (0.37); the restatement matches."
-  - key: "(d) (hoh.row5.tax)"
-    status: MISMATCH
-    reason: "The IRS line (d) is the 'Subtraction amount' of $44,718.00, not the result of subtracting it from column (c); 'Subtract (d) from (c)' is the separate Tax-column instruction."
+    reason: "Matches Section D row 5: multiply column (a) by the 37% (0.37) multiplication amount."
+  - key: "Tax (hoh.row5.tax)"
+    status: MATCH
+    reason: "Matches Section D row 5: subtract the $44,718 subtraction amount from column (c)."
   - key: "Tax (hoh.result)"
     status: MATCH
-    reason: "The IRS Section D says to complete the row that applies and enter the result on line 16; the program chooses the row using the HOH taxable-income thresholds and the corresponding tax amount."
+    reason: "The row selection thresholds match Section D: at least $100,000 through $103,350, then over each upper bound through the next upper bound, and over $626,350."
   - key: "Tax (tax)"
     status: MATCH
-    reason: "The IRS provides Section A for Single, Section B for MFJ/QSS, Section C for MFS, and Section D for HOH; the program maps those filing statuses to the correct sections."
+    reason: "Matches the worksheet's filing-status instructions: single uses Section A, married filing jointly or qualifying surviving spouse uses Section B, married filing separately uses Section C, and head of household uses Section D."
 ```

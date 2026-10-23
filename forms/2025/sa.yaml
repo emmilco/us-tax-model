@@ -218,19 +218,33 @@ form:
       cite:
         doc: f1040sa
         locator: Schedule A (2025), lines 1–18
+    - id: sa.agi_floor
+      printed: (helper)
+      type: NonNegDollars
+      label: Form 1040 line 11b adjusted gross income, but not less than zero
+      expr:
+        op: subtract_floor0
+        from: sa.agi
+        take: sa.zero
+      cite:
+        doc: i1040sca
+        locator: 'p. 1, Medical and Dental Expenses, "You can deduct only the part of your medical and dental expenses that
+          exceeds 7.5% of the amount of your adjusted gross income on Form 1040 or 1040-SR, line 11b"'
+      ambiguity: amb.2025.sa_medical_negative_agi
     - id: sa.line2
       printed: "2"
-      type: Dollars
-      label: Amount from sa.agi
+      type: NonNegDollars
+      label: Amount from sa.agi_floor
       expr:
         op: copy
-        from: sa.agi
+        from: sa.agi_floor
       cite:
         doc: f1040sa
         locator: Schedule A (2025), lines 1–18
+      ambiguity: amb.2025.sa_medical_negative_agi
     - id: sa.line3
       printed: "3"
-      type: Dollars
+      type: NonNegDollars
       label: Multiply sa.line2 by sa.medical_rate
       expr:
         op: multiply_rate

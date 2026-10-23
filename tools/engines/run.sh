@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 # Engine differential (spec 6.5, class C): generated returns (single, head of household and
-# married filing jointly) through
-# the project and through PolicyEngine-US and Tax-Calculator, compared line by
-# line. Skips visibly when the engines are not installed (tools/engines/setup.sh).
+# married filing jointly) through the project and through PolicyEngine-US, Tax-Calculator and
+# OpenTaxSolver, compared line by line. Skips visibly when the Python engines are not
+# installed (tools/engines/setup.sh); run_engines.py leaves OpenTaxSolver out, visibly, when
+# its package is not built.
 set -euo pipefail
 # Arguments (--year N) are passed to every step; the paths below use the year they resolve to.
 ROOT="$(cd "$(dirname "$0")/../.." && pwd)"

@@ -3,7 +3,11 @@
 # Modeled from the printed worksheet (i1040gi p. 80): four sections by filing
 # status (A single, B married filing jointly or qualifying surviving spouse,
 # C married filing separately, D head of household), five rows per section.
-# Each row multiplies the amount by its rate and subtracts its amount.
+# Each row multiplies the amount by its rate and subtracts its amount. The
+# page's columns are (a) the amount, (b) the multiplication amount, (c) the
+# product, (d) the subtraction amount and an unlettered "Tax." column for the
+# result; (b) and (d) are year parameters named inline, (c) and Tax are lines
+# keyed to those column headings.
 
 def:
   id: tcw
@@ -35,8 +39,8 @@ def:
       expr: { op: multiply_rate, amount: "amount", rate: { param: "tcw.single.b1.rate" } }
       cite: { doc: i1040gi, locator: "TCW Section A, row 1" }
     - id: single.row1.tax
-      printed: "(d)"
-      label: "Subtract (d) from (c)"
+      printed: "Tax"
+      label: "Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
       type: Dollars
       expr: { op: subtract, from: "single.row1.product", take: { param: "tcw.single.b1.subtract" } }
       cite: { doc: i1040gi, locator: "TCW Section A, row 1" }
@@ -47,8 +51,8 @@ def:
       expr: { op: multiply_rate, amount: "amount", rate: { param: "tcw.single.b2.rate" } }
       cite: { doc: i1040gi, locator: "TCW Section A, row 2" }
     - id: single.row2.tax
-      printed: "(d)"
-      label: "Subtract (d) from (c)"
+      printed: "Tax"
+      label: "Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
       type: Dollars
       expr: { op: subtract, from: "single.row2.product", take: { param: "tcw.single.b2.subtract" } }
       cite: { doc: i1040gi, locator: "TCW Section A, row 2" }
@@ -59,8 +63,8 @@ def:
       expr: { op: multiply_rate, amount: "amount", rate: { param: "tcw.single.b3.rate" } }
       cite: { doc: i1040gi, locator: "TCW Section A, row 3" }
     - id: single.row3.tax
-      printed: "(d)"
-      label: "Subtract (d) from (c)"
+      printed: "Tax"
+      label: "Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
       type: Dollars
       expr: { op: subtract, from: "single.row3.product", take: { param: "tcw.single.b3.subtract" } }
       cite: { doc: i1040gi, locator: "TCW Section A, row 3" }
@@ -71,8 +75,8 @@ def:
       expr: { op: multiply_rate, amount: "amount", rate: { param: "tcw.single.b4.rate" } }
       cite: { doc: i1040gi, locator: "TCW Section A, row 4" }
     - id: single.row4.tax
-      printed: "(d)"
-      label: "Subtract (d) from (c)"
+      printed: "Tax"
+      label: "Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
       type: Dollars
       expr: { op: subtract, from: "single.row4.product", take: { param: "tcw.single.b4.subtract" } }
       cite: { doc: i1040gi, locator: "TCW Section A, row 4" }
@@ -83,8 +87,8 @@ def:
       expr: { op: multiply_rate, amount: "amount", rate: { param: "tcw.single.b5.rate" } }
       cite: { doc: i1040gi, locator: "TCW Section A, row 5" }
     - id: single.row5.tax
-      printed: "(d)"
-      label: "Subtract (d) from (c)"
+      printed: "Tax"
+      label: "Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
       type: Dollars
       expr: { op: subtract, from: "single.row5.product", take: { param: "tcw.single.b5.subtract" } }
       cite: { doc: i1040gi, locator: "TCW Section A, row 5" }
@@ -131,8 +135,8 @@ def:
       expr: { op: multiply_rate, amount: "amount", rate: { param: "tcw.mfj.b1.rate" } }
       cite: { doc: i1040gi, locator: "TCW Section B, row 1" }
     - id: mfj.row1.tax
-      printed: "(d)"
-      label: "Subtract (d) from (c)"
+      printed: "Tax"
+      label: "Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
       type: Dollars
       expr: { op: subtract, from: "mfj.row1.product", take: { param: "tcw.mfj.b1.subtract" } }
       cite: { doc: i1040gi, locator: "TCW Section B, row 1" }
@@ -143,8 +147,8 @@ def:
       expr: { op: multiply_rate, amount: "amount", rate: { param: "tcw.mfj.b2.rate" } }
       cite: { doc: i1040gi, locator: "TCW Section B, row 2" }
     - id: mfj.row2.tax
-      printed: "(d)"
-      label: "Subtract (d) from (c)"
+      printed: "Tax"
+      label: "Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
       type: Dollars
       expr: { op: subtract, from: "mfj.row2.product", take: { param: "tcw.mfj.b2.subtract" } }
       cite: { doc: i1040gi, locator: "TCW Section B, row 2" }
@@ -155,8 +159,8 @@ def:
       expr: { op: multiply_rate, amount: "amount", rate: { param: "tcw.mfj.b3.rate" } }
       cite: { doc: i1040gi, locator: "TCW Section B, row 3" }
     - id: mfj.row3.tax
-      printed: "(d)"
-      label: "Subtract (d) from (c)"
+      printed: "Tax"
+      label: "Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
       type: Dollars
       expr: { op: subtract, from: "mfj.row3.product", take: { param: "tcw.mfj.b3.subtract" } }
       cite: { doc: i1040gi, locator: "TCW Section B, row 3" }
@@ -167,8 +171,8 @@ def:
       expr: { op: multiply_rate, amount: "amount", rate: { param: "tcw.mfj.b4.rate" } }
       cite: { doc: i1040gi, locator: "TCW Section B, row 4" }
     - id: mfj.row4.tax
-      printed: "(d)"
-      label: "Subtract (d) from (c)"
+      printed: "Tax"
+      label: "Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
       type: Dollars
       expr: { op: subtract, from: "mfj.row4.product", take: { param: "tcw.mfj.b4.subtract" } }
       cite: { doc: i1040gi, locator: "TCW Section B, row 4" }
@@ -179,8 +183,8 @@ def:
       expr: { op: multiply_rate, amount: "amount", rate: { param: "tcw.mfj.b5.rate" } }
       cite: { doc: i1040gi, locator: "TCW Section B, row 5" }
     - id: mfj.row5.tax
-      printed: "(d)"
-      label: "Subtract (d) from (c)"
+      printed: "Tax"
+      label: "Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
       type: Dollars
       expr: { op: subtract, from: "mfj.row5.product", take: { param: "tcw.mfj.b5.subtract" } }
       cite: { doc: i1040gi, locator: "TCW Section B, row 5" }
@@ -227,8 +231,8 @@ def:
       expr: { op: multiply_rate, amount: "amount", rate: { param: "tcw.mfs.b1.rate" } }
       cite: { doc: i1040gi, locator: "TCW Section C, row 1" }
     - id: mfs.row1.tax
-      printed: "(d)"
-      label: "Subtract (d) from (c)"
+      printed: "Tax"
+      label: "Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
       type: Dollars
       expr: { op: subtract, from: "mfs.row1.product", take: { param: "tcw.mfs.b1.subtract" } }
       cite: { doc: i1040gi, locator: "TCW Section C, row 1" }
@@ -239,8 +243,8 @@ def:
       expr: { op: multiply_rate, amount: "amount", rate: { param: "tcw.mfs.b2.rate" } }
       cite: { doc: i1040gi, locator: "TCW Section C, row 2" }
     - id: mfs.row2.tax
-      printed: "(d)"
-      label: "Subtract (d) from (c)"
+      printed: "Tax"
+      label: "Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
       type: Dollars
       expr: { op: subtract, from: "mfs.row2.product", take: { param: "tcw.mfs.b2.subtract" } }
       cite: { doc: i1040gi, locator: "TCW Section C, row 2" }
@@ -251,8 +255,8 @@ def:
       expr: { op: multiply_rate, amount: "amount", rate: { param: "tcw.mfs.b3.rate" } }
       cite: { doc: i1040gi, locator: "TCW Section C, row 3" }
     - id: mfs.row3.tax
-      printed: "(d)"
-      label: "Subtract (d) from (c)"
+      printed: "Tax"
+      label: "Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
       type: Dollars
       expr: { op: subtract, from: "mfs.row3.product", take: { param: "tcw.mfs.b3.subtract" } }
       cite: { doc: i1040gi, locator: "TCW Section C, row 3" }
@@ -263,8 +267,8 @@ def:
       expr: { op: multiply_rate, amount: "amount", rate: { param: "tcw.mfs.b4.rate" } }
       cite: { doc: i1040gi, locator: "TCW Section C, row 4" }
     - id: mfs.row4.tax
-      printed: "(d)"
-      label: "Subtract (d) from (c)"
+      printed: "Tax"
+      label: "Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
       type: Dollars
       expr: { op: subtract, from: "mfs.row4.product", take: { param: "tcw.mfs.b4.subtract" } }
       cite: { doc: i1040gi, locator: "TCW Section C, row 4" }
@@ -275,8 +279,8 @@ def:
       expr: { op: multiply_rate, amount: "amount", rate: { param: "tcw.mfs.b5.rate" } }
       cite: { doc: i1040gi, locator: "TCW Section C, row 5" }
     - id: mfs.row5.tax
-      printed: "(d)"
-      label: "Subtract (d) from (c)"
+      printed: "Tax"
+      label: "Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
       type: Dollars
       expr: { op: subtract, from: "mfs.row5.product", take: { param: "tcw.mfs.b5.subtract" } }
       cite: { doc: i1040gi, locator: "TCW Section C, row 5" }
@@ -323,8 +327,8 @@ def:
       expr: { op: multiply_rate, amount: "amount", rate: { param: "tcw.hoh.b1.rate" } }
       cite: { doc: i1040gi, locator: "TCW Section D, row 1" }
     - id: hoh.row1.tax
-      printed: "(d)"
-      label: "Subtract (d) from (c)"
+      printed: "Tax"
+      label: "Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
       type: Dollars
       expr: { op: subtract, from: "hoh.row1.product", take: { param: "tcw.hoh.b1.subtract" } }
       cite: { doc: i1040gi, locator: "TCW Section D, row 1" }
@@ -335,8 +339,8 @@ def:
       expr: { op: multiply_rate, amount: "amount", rate: { param: "tcw.hoh.b2.rate" } }
       cite: { doc: i1040gi, locator: "TCW Section D, row 2" }
     - id: hoh.row2.tax
-      printed: "(d)"
-      label: "Subtract (d) from (c)"
+      printed: "Tax"
+      label: "Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
       type: Dollars
       expr: { op: subtract, from: "hoh.row2.product", take: { param: "tcw.hoh.b2.subtract" } }
       cite: { doc: i1040gi, locator: "TCW Section D, row 2" }
@@ -347,8 +351,8 @@ def:
       expr: { op: multiply_rate, amount: "amount", rate: { param: "tcw.hoh.b3.rate" } }
       cite: { doc: i1040gi, locator: "TCW Section D, row 3" }
     - id: hoh.row3.tax
-      printed: "(d)"
-      label: "Subtract (d) from (c)"
+      printed: "Tax"
+      label: "Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
       type: Dollars
       expr: { op: subtract, from: "hoh.row3.product", take: { param: "tcw.hoh.b3.subtract" } }
       cite: { doc: i1040gi, locator: "TCW Section D, row 3" }
@@ -359,8 +363,8 @@ def:
       expr: { op: multiply_rate, amount: "amount", rate: { param: "tcw.hoh.b4.rate" } }
       cite: { doc: i1040gi, locator: "TCW Section D, row 4" }
     - id: hoh.row4.tax
-      printed: "(d)"
-      label: "Subtract (d) from (c)"
+      printed: "Tax"
+      label: "Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
       type: Dollars
       expr: { op: subtract, from: "hoh.row4.product", take: { param: "tcw.hoh.b4.subtract" } }
       cite: { doc: i1040gi, locator: "TCW Section D, row 4" }
@@ -371,8 +375,8 @@ def:
       expr: { op: multiply_rate, amount: "amount", rate: { param: "tcw.hoh.b5.rate" } }
       cite: { doc: i1040gi, locator: "TCW Section D, row 5" }
     - id: hoh.row5.tax
-      printed: "(d)"
-      label: "Subtract (d) from (c)"
+      printed: "Tax"
+      label: "Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
       type: Dollars
       expr: { op: subtract, from: "hoh.row5.product", take: { param: "tcw.hoh.b5.subtract" } }
       cite: { doc: i1040gi, locator: "TCW Section D, row 5" }

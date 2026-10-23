@@ -129,17 +129,26 @@
 - Expr: `{"op":"param","ref":"sales.zero"}`
 - Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 
+## (helper) — `sa.agi_floor`
+
+- **Authored helper label:** Form 1040 line 11b adjusted gross income, but not less than zero
+- **Encoded (NonNegDollars):** Subtract helper "Year parameter sales.zero" from helper "Form 1040 line 11b adjusted gross income". If zero or less, enter -0-.
+- Interpretation: amb.2025.sa_medical_negative_agi
+- Expr: `{"from":"sa.agi","op":"subtract_floor0","take":"sa.zero"}`
+- Cite: [i1040sca] p. 1, Medical and Dental Expenses, "You can deduct only the part of your medical and dental expenses that exceeds 7.5% of the amount of your adjusted gross income on Form 1040 or 1040-SR, line 11b" (2025; printed date 2025-12-08; sha256 b0999b12)
+
 ## 2 — `sa.line2`
 
-- **IRS:** Amount from sa.agi
-- **Encoded (Dollars):** Enter the amount from helper "Form 1040 line 11b adjusted gross income".
-- Expr: `{"from":"sa.agi","op":"copy"}`
+- **IRS:** Amount from sa.agi_floor
+- **Encoded (NonNegDollars):** Enter the amount from helper "Form 1040 line 11b adjusted gross income, but not less than zero".
+- Interpretation: amb.2025.sa_medical_negative_agi
+- Expr: `{"from":"sa.agi_floor","op":"copy"}`
 - Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 
 ## 3 — `sa.line3`
 
 - **IRS:** Multiply sa.line2 by sa.medical_rate
-- **Encoded (Dollars):** Multiply line 2 by 75/1000 (sa.medical_rate).
+- **Encoded (NonNegDollars):** Multiply line 2 by 75/1000 (sa.medical_rate).
 - Interpretation: amb.2025.multiplication_subcent
 - Expr: `{"amount":"sa.line2","op":"multiply_rate","rate":{"param":"sa.medical_rate"}}`
 - Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)

@@ -1,7 +1,7 @@
 # Engine differential
 
 Class C evidence at scale (spec 6.5): generated returns (single, head of household and married filing jointly) are
-computed by the project and by two independent engines maintained by other
+computed by the project and by three independent engines maintained by other
 people, and compared line by line. Every difference must carry an identified
 cause or the run fails. This is the only check in the pipeline whose reading
 of the tax law does not come from a language model reading the archived text.
@@ -12,11 +12,114 @@ of the tax law does not come from a language model reading the archived text.
 |---|---|---|---|---|
 | PolicyEngine-US | `requirements.txt` | AGPL-3.0 | float32 | `.engines/venv`, git-ignored |
 | Tax-Calculator (PSL) | `requirements.txt` | CC0 | float64 | `.engines/venv`, git-ignored |
+| OpenTaxSolver (OTS) | the package in `.engines/opentaxsolver-src/` (its `0_README.txt`) | GPL-2.0 | decimal2: doubles, printed to the cent | `.engines/opentaxsolver-src/<package>/bin`, built by `setup.sh`, git-ignored |
 
-Nothing in the repository imports either engine. `setup.sh` is the one
-network step; it installs them into `.engines/venv`. `run.sh` skips, visibly,
-when that environment does not exist, so `check-all` still runs offline on a
-fresh clone; the check is only claimed where the engines are installed.
+Nothing in the repository imports any engine. `setup.sh` is the one network
+step for the Python engines; it installs them into `.engines/venv`. `run.sh`
+skips, visibly, when that environment does not exist, so `check-all` still
+runs offline on a fresh clone; the check is only claimed where the engines are
+installed. OpenTaxSolver's package cannot be fetched by a script (see below);
+`run_engines.py` leaves that engine out, visibly, when it is not built.
+
+### OpenTaxSolver: download, build, version swap
+
+OTS is a set of C programs, one per form, each reading one text file and
+writing `<input>_out.txt`; there is no API. The package is published on
+SourceForge, which answers every scripted download (curl, wget, urllib) with a
+browser challenge, so the download is manual:
+
+1. In a browser, open https://sourceforge.net/projects/opentaxsolver/files/ and
+   download the Linux package for the tax year, `OpenTaxSolver<year>_<version>_linux64.tgz`
+   (every platform package carries `src/`, `tax_form_files/` and prebuilt binaries;
+   the Linux one is chosen because its ELF binaries cannot run here by accident).
+2. Save it into `.engines/opentaxsolver-src/` and run `tools/engines/setup.sh`
+   again: it checks the SHA-256 against `KNOWN_SHA256` in the script (a hash not
+   listed is built with a warning and printed, to be added once checked),
+   extracts the tarball beside itself and builds every program with
+   `make -C src -B all`, replacing the shipped binaries with native ones.
+3. A new release is a new tarball and a rerun of `setup.sh`; no code changes. The
+   adapter (`ots_adapter.py`) uses the newest extracted package by name, reads the
+   version from its `0_README.txt` and records, beside it, the version the Form
+   1040 program prints about itself (23.06 ships a program that says v23.05).
+   Limitations that are defects of one release are declared under that version in
+   `limitations()` and drop away when another release is installed. Remove the
+   older package directory once the newer one is built.
+
+Package run so far: 23.06 (SHA-256 `0cc7e540...18e5e6b`, recorded in `setup.sh`),
+taken from the tenforty repository's verbatim vendoring of the release because
+SourceForge blocked the fetch.
+
+### OpenTaxSolver: what the adapter does
+
+`ots_adapter.run_ots` fills the shipped templates by key (the input grammar is
+positional, so an input is always the whole template with values substituted),
+runs the programs with the working directory outside the OTS tree and paths as
+arguments, in the order the results flow: Schedule C, Schedule SE, Form 8889,
+Form 8959, Form 1040 (pass 1), Form 8960, Form 8995 (which imports the pass-1
+output and the Schedule C output by file name), Form 1040 (pass 2, with the QBI
+deduction, the NIIT and the foreign tax credit), Form 2441 (imports the pass-2
+output), Schedule 8812, Form 1040 (pass 3, final). It parses `LABEL = value`
+lines and the three worksheet print formats; a few labels the program prints only
+when nonzero are read as zero when absent, and worksheet lines only when the
+engine ran the worksheet.
+
+Lines reached (project ids): Form 1040 lines 1z, 6b, 7a, 8, 9, 10, 11b, 12e, 13a,
+13b, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25d, 28, 32, 33, 34, 37 and the
+pre-credit total; Schedule 1 lines 9, 10, 21, 26; Schedule 1-A lines 13, 21, 30,
+37, 38; Schedule 2 line 21; Schedule 3 lines 2 and 8; Schedule A lines 3, 4, 5d,
+5e, 7, 8e, 10, 14, 17, the standard deduction and the deduction taken; Schedule D
+lines 1b, 2, 8b, 9 (all four columns), 7, 13, 15, 16, 18, 19, 21; the Qualified
+Dividends and Capital Gain Tax Worksheet lines 1 to 25; the Schedule D Tax
+Worksheet lines 1 to 47; the Social Security Benefits Worksheet lines 1 to 18;
+Schedule C lines 7, 28, 29, 31; Schedule SE lines 4c, 6, 12, 13 (the filer's);
+Form 8889 lines 12 and 13; Form 8959 lines 7, 13, 17, 18, 21, 22, 24; Form 8960
+lines 8, 11, 12, 15, 16, 17; Form 8995 lines 2, 4, 5, 8, 9, 10, 11, 13, 14, 15 and
+the QBI deduction; Form 2441 lines 3, 4, 6, 7, 9a, 9c, 10, 11; Schedule 8812 lines
+5, 7, 8, 10, 11, 12, 14, 16a, 16b, 17, 19, 20, 27.
+
+Pass-throughs (inputs the adapter supplies that the project computes; each is
+declared in `OTS_PASS_THROUGH["components"]` and is not an engine assertion for
+that component): Form 8889 line 3 (the limit, from the coverage facts) and line
+7; Schedule 1 lines 11 (educator, after the $300 limit) and 20 (the IRA
+contributions, no worksheet); Schedule 3 line 1 (the smaller of the foreign tax
+and the engine's own line 16); Form 8960 lines 5a and 13 (the engine's own Form
+1040 lines 7a and 11a) and 9a (the investment interest paid when the engine
+itemized); Form 8995 line 12 (net capital gain plus qualified dividends, from the
+facts); Schedule 8812 line 13 (Credit Limit Worksheet A from the engine's own
+lines) and line 18a (earned income from the engine's own lines 1z and Schedule
+SE); Form 2441 earned income (the engine's own line 1z and Schedule SE by file
+import); Schedule D line 19 (Form 1099-DIV box 2b, not the Unrecaptured Section
+1250 Gain Worksheet result).
+
+Not computed by OTS, so not mapped (`OTS_PASS_THROUGH["unmapped"]`): the EIC,
+Form 8880, Form 5695, the IRA Deduction Worksheet, the State and Local Income
+Tax Refund Worksheet, the Unrecaptured Section 1250 Gain Worksheet, the excess
+social security credit, Form 4952's limit (Schedule A line 9 is taken as
+entered; Schedule D Tax Worksheet lines 3 and 4 are zero), Form 8995-A. Every
+one is a limitation in `limitations()` on the lines it moves, keyed by a
+generator feature or one derived from the project's values (`eic`,
+`savers_credit`, `residential_clean_energy`, `home_improvement`, `ira_phaseout`,
+`sli_phaseout`, `section_1250_netted`, `investment_interest_limited`,
+`excess_social_security`, `negative_agi`, `three_or_more_children`), or by a fact
+the adapter reports about the engine's own run (`ots_amt`: the engine computed a
+Form 6251 tax, which the project excludes). Release 23.06 adds two
+version-keyed limitations the 23.07 revision history reports fixed: the Schedule
+D Tax Worksheet line 19 ceiling (197,390 for 197,300) and the lines 33 to 43
+condition (`special_gains`), and Schedule 1-A line 28's truncation and line
+29's $300 multiplier (`car_loan_interest`). Two more engine defects are worked
+around or declared without a version: the Form 8995 template's row iii name
+line carries a stray `;`, which the program reads as a business name and
+auto-calculates the Schedule C income twice (the adapter blanks the key); and
+Schedule 8812 takes the Part II-A route at exactly $5,100 on line 16b where the
+form sends three qualifying children to Part II-B (`three_or_more_children`).
+
+OTS uses the Tax Table below $100,000 as the form does (its `TaxRateFunction`
+quantizes to the table's bands and rounds; checked against every cell of the
+pinned table), so its tax lines are compared `exact`, never `table-adjusted`.
+It holds fractions of a cent through its arithmetic and prints to the cent; the
+project rounds each rate multiplication to the cent, so differences of a cent
+per such multiplication appear and are the `subcent` category, with the count
+of multiplications declared per line in `OTS_SUBCENT`.
 
 ## Pipeline
 
@@ -95,10 +198,16 @@ floor also bounds how much of the generated population the project refuses.
   project's own pinned table and schedule.
 - **float** — within two units in the last place of the engine's floating
   point representation, derived from its precision.
+- **subcent** — OpenTaxSolver only: within one cent per unrounded rate
+  multiplication the adapter declares for the line, where the project rounds
+  each product to the cent (amb.2025.multiplication_subcent).
 - **excluded** — the engine cannot model a feature of the case. Each rule
   names the feature, the lines and the reason (`run_engines.py`, the
-  `*_LIMITATIONS` lists). Some features are read off the project's own values,
-  for example whether Form 4952 limited the investment interest deduction.
+  `*_LIMITATIONS` lists; `ots_adapter.limitations()`). Some features are read
+  off the project's own values, for example whether Form 4952 limited the
+  investment interest deduction; `salt_exceeds_agi` requires a positive
+  Schedule A line 5d, so a negative AGI alone does not fire it; an engine's
+  adapter may report features of its own run (`features` in engines.json).
 - **explained** — a remaining difference with a cited cause recorded in
   `fixtures/2025/differential/engine_investigations.json`
   (`{engine, line, case|feature, cause, cite}`).

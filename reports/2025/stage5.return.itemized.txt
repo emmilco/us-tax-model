@@ -4517,9 +4517,14 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Year parameter sales.zero
       = $0
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
-  2   Amount from sa.agi
+  (helper) Form 1040 line 11b adjusted gross income, but not less than zero
+      = $102,500
+      cite: [i1040sca] p. 1, Medical and Dental Expenses, "You can deduct only the part of your medical and dental expenses that exceeds 7.5% of the amount of your adjusted gross income on Form 1040 or 1040-SR, line 11b" (2025; printed date 2025-12-08; b0999b12)
+      note: Interpretation amb.2025.sa_medical_negative_agi: The second (sa.agi_floor, copied to line 2). The instruction names a part of the expenses, and no part of the expenses exceeds the expenses themselves; the signed reading would deduct $324.85 of medical expenses on a return with none (engine differential case se-00255, BUG-0094). Tax-Calculator (calcfunctions.ItemDed, posagi = max(c00100, 0.)) and PolicyEngine-US both floor adjusted gross income at zero before taking the percentage. Equivalent to flooring line 3 at zero; the floor is placed on line 2's operand so that lines 3 and 4 keep their printed wording. (i1040sca, p. 1, Medical and Dental Expenses, "You can deduct only the part of your medical and dental expenses that exceeds 7.5% of the amount of your adjusted gross income on Form 1040 or 1040-SR, line 11b")
+  2   Amount from sa.agi_floor
       = $102,500
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+      note: Interpretation amb.2025.sa_medical_negative_agi: The second (sa.agi_floor, copied to line 2). The instruction names a part of the expenses, and no part of the expenses exceeds the expenses themselves; the signed reading would deduct $324.85 of medical expenses on a return with none (engine differential case se-00255, BUG-0094). Tax-Calculator (calcfunctions.ItemDed, posagi = max(c00100, 0.)) and PolicyEngine-US both floor adjusted gross income at zero before taking the percentage. Equivalent to flooring line 3 at zero; the floor is placed on line 2's operand so that lines 3 and 4 keep their printed wording. (i1040sca, p. 1, Medical and Dental Expenses, "You can deduct only the part of your medical and dental expenses that exceeds 7.5% of the amount of your adjusted gross income on Form 1040 or 1040-SR, line 11b")
   3   Multiply sa.line2 by sa.medical_rate
       = $7,687.50
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
@@ -6098,7 +6103,9 @@ Derivations:
   sa.mfs_spouse_itemizes: test(sa.mfs = false; true = true)
   sa.f1040.line11b: copy(f1040.line11a = $102,500)
   sa.agi: copy(f1040.line11b = $102,500)
-  sa.line2: copy(sa.agi = $102,500)
+  sa.zero: param(#sales.zero = $0)
+  sa.agi_floor: subtract_floor0(sa.agi = $102,500; sa.zero = $0)
+  sa.line2: copy(sa.agi_floor = $102,500)
   sa.line3: multiply_rate(sa.line2 = $102,500; #sa.medical_rate = 75/1000)
   sa.line4: subtract_floor0(sa.line1 = $3,000; sa.line3 = $7,687.50)
   sa.line5d: sum(sa.line5a = $10,000; sa.line5b = $0; sa.line5c = $0)
@@ -6111,7 +6118,6 @@ Derivations:
   sa.saltfloor_applied: larger_of(sa.saltremaining = $40,000; sa.saltfloor = $10,000)
   sa.saltlimit: choose(sa.mfs = false; true = true; sa.mfs = false; false = false; sa.saltfloor_applied = $40,000)
   sa.line5e: smaller_of(sa.line5d = $10,000; sa.saltlimit = $40,000)
-  sa.zero: param(#sales.zero = $0)
   sa.line6: copy(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false; sa.zero = $0)
   sa.line7: sum(sa.line5e = $10,000; sa.line6 = $0)
   sa.line8b: copy(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false; sa.zero = $0)
@@ -7410,6 +7416,7 @@ Interpretation amb.2025.alimony_screen: The first (s1.alimony, s1.alimony_unsupp
 Interpretation amb.2025.cod_fully_taxable: The first (s1.cod_amount, s1.cod_unsupported). Student loans are refused with the other exceptions. The owner's decision (Stage 16 decision batch, D2, "fully taxable canceled nonbusiness debt"). An excepted student loan discharge is nontaxable and usually comes with no Form 1099-C (p. 3, TIP), so a filer who reports one is refused rather than told how much of it to include; the conservative choice where D2 is silent. (p4681, p. 3, General Rules, "There are several exceptions and exclusions that may result in part or all of a canceled debt being nontaxable"; p. 4, Exceptions)
 Interpretation amb.2025.ewp_oid: The first (interest.penalty, totaled on s1.line18 and copied to Form 8960 line 10). The owner's decision (Stage 16 decision batch, D2, as corrected by the verification, E4) allows an input or a screen; the instruction treats the two forms alike, so an input loses nothing. Form 1099-OID is not archived, so its box number is not named. (i1040gi, p. 95, Line 18, "The Form 1099-INT or Form 1099-OID you received will show the amount of any penalty you were charged")
 Interpretation amb.2025.jury_24a_cap: The first (s1.jury_over refuses s1.line24a). The pay given to the employer is part of the pay received (p525 p. 34, "you can deduct the amount turned over to your employer"), so a larger amount is an entry error to correct, not a case to cap silently; as with w2.g_bad, the refusal fires only on an impossible entry. Premise map Q14, left open by D3. (i1040gi, p. 99, Line 24a, "Enter your jury duty pay if you gave the pay to your employer because your employer paid your salary while you served on the jury")
+Interpretation amb.2025.sa_medical_negative_agi: The second (sa.agi_floor, copied to line 2). The instruction names a part of the expenses, and no part of the expenses exceeds the expenses themselves; the signed reading would deduct $324.85 of medical expenses on a return with none (engine differential case se-00255, BUG-0094). Tax-Calculator (calcfunctions.ItemDed, posagi = max(c00100, 0.)) and PolicyEngine-US both floor adjusted gross income at zero before taking the percentage. Equivalent to flooring line 3 at zero; the floor is placed on line 2's operand so that lines 3 and 4 keep their printed wording. (i1040sca, p. 1, Medical and Dental Expenses, "You can deduct only the part of your medical and dental expenses that exceeds 7.5% of the amount of your adjusted gross income on Form 1040 or 1040-SR, line 11b")
 Interpretation amb.2025.multiplication_subcent: Round the product half-up to the nearest cent at the multiplication. Matches the half-up convention of the printed whole-dollar rounding rules. The whole-dollar default is unaffected: whole-dollar amounts multiplied by these rates produce exact cents, so the reading only matters when cents are turned on.
  (i1040gi, QDCGT worksheet, lines 18 and 21; Rounding Off to Whole Dollars, p. 23)
 Interpretation amb.2025.qbi_cooperative_patron: Refuse any patron of an agricultural or horticultural cooperative, specified or not (qbi.unsupported). The owner asked for the strictly accurate reading. Refusing every patron satisfies both texts: a filer the form excludes is never computed on it, and a filer the instructions exclude is a patron the form also excludes. The cost is a refusal for a patron of a cooperative that is not specified, which the instructions would allow.

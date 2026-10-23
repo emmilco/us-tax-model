@@ -3,6 +3,9 @@
 """Serve the reading packets of .human-review/ and save the verdicts a reader types in them to
 reviews/<year>/human/<form>.md, one log per form, merged by line id across items.
 
+A log entry is a printed line (what the packet judges); the helpers the packet folded into it
+are recorded on the entry under "Helpers folded", so every line of the log carries a verdict.
+
 Listens on 127.0.0.1 only (or a Unix socket with --uds, for lab-server). The reader's name is
 whatever the page sends; a name that looks like a model is refused, and nothing is defaulted.
 
@@ -10,7 +13,7 @@ whatever the page sends; a name that looks like a model is refused, and nothing 
 
     GET  /                       the index of packets (build them with packet.py first)
     GET  /<item>.html, /pages/…  the packets and page images
-    GET  /api/verdicts?item=N    the verdicts already logged for item N's lines
+    GET  /api/verdicts?item=N    the verdicts already logged for item N's printed lines
     POST /api/verdicts           {item, reader, date, lines:[{ref, verdict, reason}]}
 """
 import argparse
@@ -35,6 +38,7 @@ Y = packet.Y
 LOGS = packet.ROOT / "reviews" / Y / "human"
 MODEL_NAME = re.compile(r"claude|gpt|deepseek|model|agent", re.I)
 SUBJECT_KIND = "render"
+FIELDS = ("Label", "Reading", "Cite", "Pages", "Helpers folded", "Item")
 
 
 def log_path(fid):
@@ -47,14 +51,15 @@ def parse_log(text):
     lines = {}
     for m in re.finditer(r"^### (.*?) — `([^`]+)`\n(.*?)(?=^### |\Z)", text, flags=re.M | re.S):
         body = m.group(3)
-        fields = dict(re.findall(r"^([A-Z][a-z]+): (.*)$", body, flags=re.M))
+        fields = dict(re.findall(r"^([A-Z][a-z]+(?: [a-z]+)?): (.*)$", body, flags=re.M))
         reason = re.search(r"^Reason:\n(.*)\Z", body, flags=re.M | re.S)
         v = re.match(r"\*\*(\w+)\*\*", fields.get("Verdict", ""))
         reason = reason.group(1).strip() if reason else ""
-        lines[m.group(2)] = {"printed": m.group(1), "item": fields.get("Item", ""), "label": fields.get("Label", ""),
-                             "english": fields.get("Reading", ""), "cite": fields.get("Cite", ""),
-                             "verdict": v.group(1) if v and v.group(1) in packet.VERDICTS else "",
-                             "reason": "" if reason == "(empty)" else reason}
+        rec = {"printed": m.group(1), "verdict": v.group(1) if v and v.group(1) in packet.VERDICTS else "",
+               "reason": "" if reason == "(empty)" else reason}
+        for f in FIELDS:
+            rec[f] = fields.get(f, "")
+        lines[m.group(2)] = rec
     return header, lines
 
 
@@ -66,28 +71,46 @@ def source_pages(text):
     return out
 
 
+def line_pages(rec):
+    """doc -> set of pages the packet shows for one printed record (its citation and the folded ones)."""
+    import citations as C
+    out = {}
+    cites = [rec["cite"]] + [packet.canon().lines[h].get("cite", {}) for h in rec.get("folded_cites", [])]
+    arch = C.Archive()
+    for ct in cites:
+        if not ct.get("doc"):
+            continue
+        for seg_doc, pages, _, _, _ in C.segments(ct["doc"], ct.get("locator", "")):
+            if seg_doc in arch.docs:
+                out.setdefault(seg_doc, set()).update(pages)
+    return out
+
+
 def saved_for_item(n):
     it = packet.item(n)
+    recs, _ = packet.plan_item(it)
     out, reader = [], ""
-    for l in packet.item_lines(it):
-        p = log_path(l["form"])
+    for r in recs:
+        p = log_path(r["form"])
         if not p.exists():
             continue
         header, lines = parse_log(p.read_text(encoding="utf-8"))
         reader = reader or header.get("reader", "")
-        if l["id"] in lines and (lines[l["id"]]["verdict"] or lines[l["id"]]["reason"]):
-            out.append({"ref": l["ref"], **{k: lines[l["id"]][k] for k in ("verdict", "reason")}})
+        if r["id"] in lines and (lines[r["id"]]["verdict"] or lines[r["id"]]["reason"]):
+            out.append({"ref": r["ref"], **{k: lines[r["id"]][k] for k in ("verdict", "reason")}})
     return {"item": n, "reader": reader, "lines": out}
 
 
 def write_log(fid, title, reader, date, items, records, pages):
-    """records: id -> {printed, label, english, cite, item, verdict, reason}; pages: doc -> set of pages."""
+    """records: id -> {printed, Label, Reading, Cite, Pages, Helpers folded, Item, verdict, reason};
+    pages: doc -> set of pages."""
     docs = packet.manifest()
     counts = {v: sum(1 for r in records.values() if r["verdict"] == v) for v in packet.VERDICTS}
     empty = sum(1 for r in records.values() if not r["verdict"])
     out = [f"# Human reading — {fid}", "",
-           f"Lines of `{title}` (`rendered/{Y}/{fid}.md`) read against the archived IRS pages by a person, through the "
-           f"packets of `tools/human_review/` (integrity plan item 1.1). Every verdict and reason is the reader's own text.", "",
+           f"Printed lines of `{title}` (`rendered/{Y}/{fid}.md`) read against the archived IRS pages by a person, "
+           f"through the packets of `tools/human_review/` (integrity plan item 1.1), each with the helper lines the packet "
+           f"folded into it. Every verdict and reason is the reader's own text.", "",
            "| field | value |", "| --- | --- |",
            f"| date | {date} |", f"| reader | {reader} |",
            f"| items | {', '.join(str(i) for i in sorted(items))} |",
@@ -102,8 +125,7 @@ def write_log(fid, title, reader, date, items, records, pages):
         out.append(f"| {doc} | {d.get('revision') or ''} | {', '.join(map(str, sorted(pages[doc])))} | {d['text_sha256']} | {d.get('cols_sha256', '-')} |")
     out += ["", "## Lines", ""]
     for lid, r in records.items():
-        out += [f"### {r['printed']} — `{lid}`",
-                f"Label: {r['label']}", f"Reading: {r['english']}", f"Cite: {r['cite']}", f"Item: {r['item']}",
+        out += [f"### {r['printed']} — `{lid}`"] + [f"{f}: {r.get(f, '')}" for f in FIELDS] + [
                 f"Verdict: **{r['verdict']}**" if r["verdict"] else "Verdict: (empty)",
                 "Reason:", r["reason"] or "(empty)", ""]
     LOGS.mkdir(parents=True, exist_ok=True)
@@ -119,16 +141,22 @@ def save(body):
         raise ValueError(f"the reader field names a model ({reader!r}); a human log is signed by a person")
     date = body.get("date") or datetime.date.today().isoformat()
     it = packet.item(n)
+    recs, _ = packet.plan_item(it)
     posted = {l["ref"]: l for l in body.get("lines", [])}
-    by_form = {}
-    for l in packet.item_lines(it):
-        p = posted.get(l["ref"], {})
+    by_form, pages_of = {}, {}
+    for r in recs:
+        p = posted.get(r["ref"], {})
         v = (p.get("verdict") or "").strip().upper()
         if v and v not in packet.VERDICTS:
-            raise ValueError(f"{l['ref']}: verdict {v!r} is not one of {', '.join(packet.VERDICTS)}")
-        by_form.setdefault(l["form"], {})[l["id"]] = {"printed": l["printed"], "label": l["label"], "english": l["english"],
-                                                        "cite": l["cite"], "item": str(n), "verdict": v,
-                                                        "reason": (p.get("reason") or "").strip()}
+            raise ValueError(f"{r['ref']}: verdict {v!r} is not one of {', '.join(packet.VERDICTS)}")
+        pages = line_pages(r)
+        for doc, nums in pages.items():
+            pages_of.setdefault(r["form"], {}).setdefault(doc, set()).update(nums)
+        by_form.setdefault(r["form"], {})[r["id"]] = {
+            "printed": r["printed"], "Label": r["label"], "Reading": r["reading_text"].replace("\n", " "),
+            "Cite": r["cite_text"], "Pages": "; ".join(f"{d} {', '.join(map(str, sorted(s)))}" for d, s in sorted(pages.items())),
+            "Helpers folded": ", ".join(r["helpers"]) or "(none)", "Item": str(n), "verdict": v,
+            "reason": (p.get("reason") or "").strip()}
     written = []
     for fid, new in by_form.items():
         records, items, pages = {}, {n}, {}
@@ -141,10 +169,9 @@ def save(body):
             items |= {int(x) for x in re.findall(r"\d+", header.get("items", ""))}
             pages = source_pages(text)
         records.update(new)
-        for pg in it["pages"]:
-            pages.setdefault(pg["doc"], set()).update(pg["pages"])
-        title = packet.form_lines(fid)[0]["title"] if fid != "tax_table" else f"{Y} Tax Table"
-        write_log(fid, title, reader, date, items, records, pages)
+        for doc, nums in pages_of.get(fid, {}).items():
+            pages.setdefault(doc, set()).update(nums)
+        write_log(fid, packet.form_title(fid), reader, date, items, records, pages)
         written.append(str(p.relative_to(packet.ROOT)))
     return written
 

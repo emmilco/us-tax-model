@@ -1211,3 +1211,127 @@ later grouping.
   with a fixture at negative AGI; make `salt_exceeds_agi` require a positive line 5d. Counts toward the integrity
   plan's Phase 1 stop rule (the third value error).
 - **Tags:** signed-operand; floor-missing; latent-until-new-input; caught-by-engine-differential; caught-by-audit
+
+## BUG-0095 — A dependent without a taxpayer identification number is claimed and can qualify the filer for head of household
+
+- **Date:** 2026-10-22
+- **Caught by:** the Direct File fact-dictionary comparison of integrity plan item 1.7 (`reviews/2025/direct-file/predicates.md`,
+  finding F1): Direct File requires a TIN on every claimed dependent and knocks out a head-of-household qualifying person
+  without one; the project's `dependent.claimed`, `dependent.hoh_test1` and `dependent.hoh_test2` never read `dependent.tin`.
+- **Symptom:** a person entered with `dependent.tin = false` who passes Steps 1 to 2 or Step 4 is counted as a dependent on
+  Form 1040 and can satisfy a head-of-household test; the return is computed where the instructions require an SSN entry
+  the filer cannot make.
+- **Root cause:** the TIN input is read only by `dependent.ctc_child`, `dependent.odc_person` and the Form 2441 gate
+  `dependent.dc_no_tin`; the dependents section's "You must enter each dependent's social security number (SSN)" (i1040gi
+  2025 p. 22) was encoded nowhere, and its one exception (a child born and died in 2025, "Died" entered with a birth
+  certificate) was named as outside the tool only at `dependent.dc_count`.
+- **Where:** `forms/2025/dependent.yaml` (`dependent.claimed`, `dependent.qc_dependent`, `dependent.qr_dependent`, the
+  head-of-household tests).
+- **Why it survived:** the render and transcription reviews judge each line against the page it cites, and no line cites the
+  SSN-entry sentence; no fixture has a dependent without a TIN outside the credit lines; the engines take dependents as
+  given.
+- **Fix:** open (owner's decision 2026-10-22): a refusal on claiming a dependent with no TIN, naming the born-and-died case
+  in the remedy, with a fixture.
+- **Tags:** missing-gate; household-predicates; caught-by-direct-file-comparison; caught-by-audit
+
+## BUG-0096 — The filer's SSN test for the earned income credit uses the employment-validity definition
+
+- **Date:** 2026-10-22
+- **Caught by:** the Direct File fact-dictionary comparison of integrity plan item 1.7 (finding F3): Direct File tests the
+  filer's SSN for the EIC with the EIC definition (`filers/*/ssnValidForEitc`); the project's `eic.step1_ssn` reads
+  `household.all_work_ssn`, built from `person.work_ssn` ("valid for employment"), the child tax credit's definition.
+- **Symptom:** a filer whose card says "Not Valid for Employment" but was not issued solely to receive a federally funded
+  benefit has a valid SSN for the EIC (i1040gi 2025 p. 44: "a valid SSN is a number issued by the Social Security
+  Administration unless 'Not Valid for Employment' is printed on the social security card and the number was issued solely
+  to allow the recipient of the SSN to apply for or receive a federally funded benefit") and answers `person.work_ssn` No,
+  so the project gives no EIC where the text allows it. The project applies the right definition to the child
+  (`dependent.eic_ssn`) but not to the filer.
+- **Root cause:** one person-level SSN input serves two credits whose definitions differ.
+- **Where:** `forms/2025/eic.yaml` (`eic.step1_ssn`), `forms/2025/household.yaml` (`household.all_work_ssn`),
+  `forms/2025/person.yaml` (`person.work_ssn`).
+- **Why it survived:** the render review of `eic.step1_ssn` read "SSN valid for employment" as a faithful rendering of
+  "valid SSN"; no fixture has a filer with that card type; the engines take EIC eligibility from an SSN flag.
+- **Fix:** open (owner's decision 2026-10-22): a filer-level EIC SSN input mirroring `dependent.eic_ssn`, read by
+  `eic.step1_ssn`; the CTC keeps `person.work_ssn`. Counts toward the integrity plan's Phase 1 stop rule.
+- **Tags:** wrong-definition; shared-input-two-rules; household-predicates; caught-by-direct-file-comparison; caught-by-audit
+
+## BUG-0097 — No gate for a prior disallowance of the EIC or the child credits (Form 8862; two- and ten-year bans)
+
+- **Date:** 2026-10-22
+- **Caught by:** the Direct File fact-dictionary comparison of integrity plan item 1.7 (finding F4): Direct File asks about
+  improper-claim notices for the EIC and the CTC/ACTC/ODC and zeroes the credits under an active ban; `grep` of
+  `forms/2025/*.yaml` for 8862, disallowed or reckless finds nothing.
+- **Symptom:** a filer barred from the credit (i1040gi 2025 p. 43: "don't file Form 8862 or take the credit for the: 2 years
+  after the most recent tax year for which there was a final determination that your EIC claim was due to reckless or
+  intentional disregard of the EIC rules, or 10 years after ... fraud"; the same bans for the CTC, ACTC and ODC in the
+  Schedule 8812 instructions), or one who must attach Form 8862, has the credit computed with nothing asked.
+- **Root cause:** the eligibility steps were encoded from the Step 1 to 6 questions; the disallowance paragraph before them
+  carries no step number and was not encoded.
+- **Where:** `forms/2025/eic.yaml`, `forms/2025/s8812.yaml`.
+- **Why it survived:** no line cites the paragraph, so no review read it; no fixture has a banned filer; the engines have no
+  such input.
+- **Fix:** open (owner's decision 2026-10-22): one filer-level question (a reduction or disallowance of the EIC, CTC, ACTC or
+  ODC for a year after 1996 other than a math or clerical error) feeding a refusal on `eic.credit` and `s8812.line12`
+  ("Form 8862 and the disallowance period are outside this tool"), with fixtures. Counts toward the Phase 1 stop rule.
+- **Tags:** missing-gate; unnumbered-paragraph; household-predicates; caught-by-direct-file-comparison; caught-by-audit
+
+## BUG-0098 — Tax Computation Worksheet row results keyed to column (d)
+
+- **Date:** 2026-10-22
+- **Caught by:** render comparison by the second model family (spec 6.5; deepseek-v4-pro,
+  `reviews/2025/render/tcw.deepseek.md`): twenty MISMATCH verdicts, one per `<status>.rowN.tax` line, each reasoning
+  "The IRS line (d) is the 'Subtraction amount' of $N, not the result of subtracting it from column (c); 'Subtract (d)
+  from (c)' is the separate Tax-column instruction." The Claude render review of the same rendering had returned 46 of
+  46 MATCH. The first independence yield of the second family (integrity plan item 1.3).
+- **Symptom:** none in values. The 20 row result lines of `forms/2025/tcw.yaml` carried `printed: "(d)"` and
+  `label: "Subtract (d) from (c)"`, so the rendering presented each row's tax as column (d); on the page (i1040gi
+  p. 80) the heading "(d) Subtraction amount." names the fixed amount ($5,086.00 and so on), while the result belongs
+  under the unlettered column headed "Tax. Subtract (d) from (c). Enter the result here and on the entry space on
+  line 16." The expression (the product less the subtraction parameter) was correct.
+- **Root cause:** the transcription keyed each row's result to the letter in its instruction text rather than to the
+  heading of the column the result is entered in; the Tax column has no letter.
+- **Where:** `forms/2025/tcw.yaml`, the 20 `<status>.rowN.tax` lines.
+- **Why it survived:** value-neutral, so fixtures, the Tax Table conjecture, mutation and class M could not see it;
+  the transcription comparison expands `tax` and is marker-blind; the Claude render reviewer accepted "(d) — Subtract
+  (d) from (c)" as a match because the instruction fragment is on the page.
+- **Fix:** the 20 lines re-keyed to `printed: "Tax"` with the column heading as label; ids, expressions, types and
+  citations unchanged; `(b)` and `(d)` stay inline year parameters whose values the rendering prints. Fixtures,
+  conjecture and mutation unchanged; all four review logs rerun with no open ruling (DeepSeek render now 46 of 46).
+  Integrity plan second-batch commit.
+- **Tags:** transcription/marker-keying; value-neutral; caught-by-second-family-render-review; caught-by-audit
+
+## BUG-0099 — Schedule D Tax Worksheet line 4 copies a Form 4952 amount when no Form 4952 is filed
+
+- **Date:** 2026-10-22
+- **Caught by:** the OpenTaxSolver differential (integrity plan item 1.4(b); 85 generated cases, feature
+  `sdtw_line4_without_4952`): OTS enters zero on worksheet line 4 when no Form 4952 is filed; the project copies
+  `f4952.line4e`, which `forms/2025/f4952.yaml` figures whether or not the form is filed.
+- **Symptom:** none in values. Line 3 of the worksheet is zero on those returns, so lines 5 and 8 and the tax are
+  unmoved; the worksheet's line 4 shows an amount the filer would not have, and the derivation names a form the return
+  does not include.
+- **Root cause:** `sdtw.line4` copies the Form 4952 line unconditionally; the printed line reads "Enter the amount from
+  Form 4952, line 4e*" (i1040sd, Schedule D Tax Worksheet), which presupposes a filed form.
+- **Where:** `forms/2025/sdtw.yaml` (`sdtw.line4`), `forms/2025/f4952.yaml` (`f4952.line4e` computed without a filing
+  gate).
+- **Why it survived:** value-neutral on every fixture and generated return; the render review read "Enter the amount from
+  Form 4952 line 4e" as faithful; no engine before OTS computed the worksheet's lines.
+- **Fix:** open; a `choose` on whether Form 4952 is filed (zero otherwise), with the register consulted on the asterisk's
+  footnote. Explained in `fixtures/2025/differential/engine_investigations.json` meanwhile.
+- **Tags:** value-neutral; unconditional-copy; caught-by-engine-differential; caught-by-audit
+
+## BUG-0100 — Form 8995 line 11 floors taxable income before the QBI deduction at zero
+
+- **Date:** 2026-10-22
+- **Caught by:** the OpenTaxSolver differential (integrity plan item 1.4(b); 33 generated cases, feature
+  `taxable_before_qbi_negative`): OTS prints line 11 as Form 1040 line 11a less lines 12e and 13b, signed; the project's
+  `qbi.taxable_before` floors it at zero.
+- **Symptom:** sign only. Line 13 (20% of line 11) floors at zero on both sides and the deduction is unmoved; the printed
+  line 11 shows $0 where the instruction's arithmetic gives a negative amount.
+- **Root cause:** i8995, Line 11: "Enter your taxable income figured before any QBI deduction, computed as follows ...
+  line 11a, minus lines 12e and 13b" states a subtraction with no floor; the encoding typed the line NonNegDollars.
+- **Where:** `forms/2025/f8995.yaml` / `qbi.yaml` (`qbi.taxable_before`).
+- **Why it survived:** the deduction is unchanged, so no fixture, property or engine summary line could see it; the render
+  review did not object to the floor.
+- **Fix:** open; type the line `Dollars` and drop the floor, keeping the floor at line 13 where the form has it; fixture at
+  negative taxable income. Explained in `engine_investigations.json` meanwhile.
+- **Tags:** floor-added; sign-only; caught-by-engine-differential; caught-by-audit

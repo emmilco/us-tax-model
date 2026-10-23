@@ -43,7 +43,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | s2.md | form | 11 |
 | s3.md | form | 14 |
 | s8812.md | form | 81 |
-| sa.md | form | 60 |
+| sa.md | form | 61 |
 | sales.md | form | 25 |
 | sb.md | form | 12 |
 | sc.md | form | 152 |

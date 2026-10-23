@@ -25,6 +25,12 @@
    "restated": "Add gift.allowed over every confirmed gift entry, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "Line 12 is gifts 'Other than by cash or check.' The value gift.allowed and the gift entries it is summed over are not defined in the text given, so it cannot be confirmed that only noncash gifts are counted and that the cash gifts on line 11 are excluded.",
    "ruling": "Ruling: representation; project retained. The gift collection holds noncash gifts only (forms/2025/gift.yaml, cited to i8283), and `gift.allowed` is each entry's deductible amount after its Form 8283 screens; cash and check gifts are the line 11 input. No change to the data."
+  },
+  {
+   "printed": "2",
+   "restated": "Enter the amount from helper \"Form 1040 line 11b adjusted gross income, but not less than zero\".",
+   "model": "The form says 'Enter amount from Form 1040 or 1040-SR, line 11b' and gives no floor. The program enters zero when AGI is negative, so the printed line 2 differs whenever line 11b is below zero.",
+   "ruling": "Ruling: genuine ambiguity; project retained (amb.2025.sa_medical_negative_agi). The printed line 2 says \"Enter amount from Form 1040 or 1040-SR, line 11b\" and the form gives no floor, as the model says (f1040sa p. 1). With line 11b below zero the printed arithmetic makes line 3 (\"Multiply line 2 by 7.5% (0.075)\") negative and line 4 (\"Subtract line 3 from line 1. If line 3 is more than line 1, enter -0-\") larger than line 1: a deduction of medical expenses that were not paid. The instruction allows \"only the part of your medical and dental expenses that exceeds 7.5% of the amount of your adjusted gross income on Form 1040 or 1040-SR, line 11b\" (i1040sca p. 1, Medical and Dental Expenses), and no part of the expenses exceeds the expenses themselves; the project therefore enters line 11b on line 2 at no less than zero, which leaves lines 3 and 4 as printed. Tax-Calculator and PolicyEngine-US floor adjusted gross income at zero before the percentage (BUG-0094). The helper that floors it is named on line 2 and the glossary states the floor; the difference from the printed line is confined to a negative line 11b."
   }
  ]
 }
