@@ -20,10 +20,130 @@
   },
   {
    "case": "classm.person.1",
+   "printed": "person[taxpayer].ira_at_full",
+   "project": "yes",
+   "model": "no",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 1a of the IRA Deduction Worksheet is No for this person (not covered by a retirement plan), so the worksheet skips lines 2 through 6 and enters the applicable amount on line 7 (i1040gi p. 97, IRA Deduction Worksheet, line 1a); the project figures the skipped lines as helpers and person.ira_line7 chooses the not-covered branch, so the deduction is the same.",
+   "drop": true
+  },
+  {
+   "case": "classm.person.1",
+   "printed": "person[taxpayer].ira_below",
+   "project": "$11,110.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 1a of the IRA Deduction Worksheet is No for this person (not covered by a retirement plan), so the worksheet skips lines 2 through 6 and enters the applicable amount on line 7 (i1040gi p. 97, IRA Deduction Worksheet, line 1a); the project figures the skipped lines as helpers and person.ira_line7 chooses the not-covered branch, so the deduction is the same.",
+   "drop": true
+  },
+  {
+   "case": "classm.person.1",
    "printed": "person[taxpayer].ira_below",
    "project": "$33,400.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. person.ira_below is the amount line 7 takes when the line 6 result is under the threshold (i1040gi p. 97, IRA Deduction Worksheet, line 6, \"If the result is less than $10,000, go to line 7\"); the project figures it whenever line 6 is Yes (line 6 x 70%, $33,399.10, raised to $33,400.00) and reads it only when the result is under the threshold (person.ira_line7_figured). Here line 6 is $47,713.00, \"$10,000 or more\", so line 7 is the applicable amount, \"$7,000 if under age 50 at the end of 2025\", $7,000.00, on which the model agrees, as on line 12 and the deduction ($0.00, no contributions). The model gave the unread helper zero because the threshold was not crossed. No change to the data.",
+   "drop": true
+  },
+  {
+   "case": "classm.person.1",
+   "printed": "person[taxpayer].ira_floor",
+   "project": "$11,110.00",
+   "model": "$200.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 1a of the IRA Deduction Worksheet is No for this person (not covered by a retirement plan), so the worksheet skips lines 2 through 6 and enters the applicable amount on line 7 (i1040gi p. 97, IRA Deduction Worksheet, line 1a); the project figures the skipped lines as helpers and person.ira_line7 chooses the not-covered branch, so the deduction is the same.",
+   "drop": true
+  },
+  {
+   "case": "classm.person.1",
+   "printed": "person[taxpayer].ira_line2",
+   "project": "$89,000.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 1a of the IRA Deduction Worksheet is No for this person (not covered by a retirement plan), so the worksheet skips lines 2 through 6 and enters the applicable amount on line 7 (i1040gi p. 97, IRA Deduction Worksheet, line 1a); the project figures the skipped lines as helpers and person.ira_line7 chooses the not-covered branch, so the deduction is the same.",
+   "drop": true
+  },
+  {
+   "case": "classm.person.1",
+   "printed": "person[taxpayer].ira_line6",
+   "project": "$15,865.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 1a of the IRA Deduction Worksheet is No for this person (not covered by a retirement plan), so the worksheet skips lines 2 through 6 and enters the applicable amount on line 7 (i1040gi p. 97, IRA Deduction Worksheet, line 1a); the project figures the skipped lines as helpers and person.ira_line7 chooses the not-covered branch, so the deduction is the same.",
+   "drop": true
+  },
+  {
+   "case": "classm.person.1",
+   "printed": "person[taxpayer].ira_line6_yes",
+   "project": "yes",
+   "model": "no",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 1a of the IRA Deduction Worksheet is No for this person (not covered by a retirement plan), so the worksheet skips lines 2 through 6 and enters the applicable amount on line 7 (i1040gi p. 97, IRA Deduction Worksheet, line 1a); the project figures the skipped lines as helpers and person.ira_line7 chooses the not-covered branch, so the deduction is the same.",
+   "drop": true
+  },
+  {
+   "case": "classm.person.1",
+   "printed": "person[taxpayer].ira_line7_figured",
+   "project": "$7,000.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 1a of the IRA Deduction Worksheet is No for this person (not covered by a retirement plan), so the worksheet skips lines 2 through 6 and enters the applicable amount on line 7 (i1040gi p. 97, IRA Deduction Worksheet, line 1a); the project figures the skipped lines as helpers and person.ira_line7 chooses the not-covered branch, so the deduction is the same.",
+   "drop": true
+  },
+  {
+   "case": "classm.person.1",
+   "printed": "person[taxpayer].ira_p35",
+   "project": "$5,552.75",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 1a of the IRA Deduction Worksheet is No for this person (not covered by a retirement plan), so the worksheet skips lines 2 through 6 and enters the applicable amount on line 7 (i1040gi p. 97, IRA Deduction Worksheet, line 1a); the project figures the skipped lines as helpers and person.ira_line7 chooses the not-covered branch, so the deduction is the same.",
+   "drop": true
+  },
+  {
+   "case": "classm.person.1",
+   "printed": "person[taxpayer].ira_p40",
+   "project": "$6,346.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 1a of the IRA Deduction Worksheet is No for this person (not covered by a retirement plan), so the worksheet skips lines 2 through 6 and enters the applicable amount on line 7 (i1040gi p. 97, IRA Deduction Worksheet, line 1a); the project figures the skipped lines as helpers and person.ira_line7 chooses the not-covered branch, so the deduction is the same.",
+   "drop": true
+  },
+  {
+   "case": "classm.person.1",
+   "printed": "person[taxpayer].ira_p70",
+   "project": "$11,105.50",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 1a of the IRA Deduction Worksheet is No for this person (not covered by a retirement plan), so the worksheet skips lines 2 through 6 and enters the applicable amount on line 7 (i1040gi p. 97, IRA Deduction Worksheet, line 1a); the project figures the skipped lines as helpers and person.ira_line7 chooses the not-covered branch, so the deduction is the same.",
+   "drop": true
+  },
+  {
+   "case": "classm.person.1",
+   "printed": "person[taxpayer].ira_p80",
+   "project": "$12,692.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 1a of the IRA Deduction Worksheet is No for this person (not covered by a retirement plan), so the worksheet skips lines 2 through 6 and enters the applicable amount on line 7 (i1040gi p. 97, IRA Deduction Worksheet, line 1a); the project figures the skipped lines as helpers and person.ira_line7 chooses the not-covered branch, so the deduction is the same.",
+   "drop": true
+  },
+  {
+   "case": "classm.person.1",
+   "printed": "person[taxpayer].ira_prod",
+   "project": "$11,105.50",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 1a of the IRA Deduction Worksheet is No for this person (not covered by a retirement plan), so the worksheet skips lines 2 through 6 and enters the applicable amount on line 7 (i1040gi p. 97, IRA Deduction Worksheet, line 1a); the project figures the skipped lines as helpers and person.ira_line7 chooses the not-covered branch, so the deduction is the same.",
+   "drop": true
+  },
+  {
+   "case": "classm.person.1",
+   "printed": "person[taxpayer].ira_prod_joint",
+   "project": "$5,552.75",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 1a of the IRA Deduction Worksheet is No for this person (not covered by a retirement plan), so the worksheet skips lines 2 through 6 and enters the applicable amount on line 7 (i1040gi p. 97, IRA Deduction Worksheet, line 1a); the project figures the skipped lines as helpers and person.ira_line7 chooses the not-covered branch, so the deduction is the same.",
+   "drop": true
+  },
+  {
+   "case": "classm.person.1",
+   "printed": "person[taxpayer].ira_prod_wide",
+   "project": "$11,105.50",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 1a of the IRA Deduction Worksheet is No for this person (not covered by a retirement plan), so the worksheet skips lines 2 through 6 and enters the applicable amount on line 7 (i1040gi p. 97, IRA Deduction Worksheet, line 1a); the project figures the skipped lines as helpers and person.ira_line7 chooses the not-covered branch, so the deduction is the same.",
+   "drop": true
+  },
+  {
+   "case": "classm.person.1",
+   "printed": "person[taxpayer].ira_rounded",
+   "project": "$11,110.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 1a of the IRA Deduction Worksheet is No for this person (not covered by a retirement plan), so the worksheet skips lines 2 through 6 and enters the applicable amount on line 7 (i1040gi p. 97, IRA Deduction Worksheet, line 1a); the project figures the skipped lines as helpers and person.ira_line7 chooses the not-covered branch, so the deduction is the same.",
    "drop": true
   },
   {

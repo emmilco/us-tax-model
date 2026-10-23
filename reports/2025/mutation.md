@@ -7,18 +7,18 @@ the fixture test compares).
 
 | Metric | Value |
 | --- | --- |
-| Mutants | 2271 |
+| Mutants | 2278 |
 | Killed by the checker | 235 |
-| Killed by fixtures | 1907 |
-| Surviving | 129 (129 provably equivalent) |
-| Mutation score (raw) | 94.3% |
+| Killed by fixtures | 1915 |
+| Surviving | 128 (128 provably equivalent) |
+| Mutation score (raw) | 94.4% |
 | Mutation score (equivalent mutants excluded) | 100.0% |
 
 ## Surviving — classified equivalent
 
 - `operand.asset.asset.bonus_forty.after179` (replace an operand, asset.asset.bonus_forty): Copy-chain identity: asset.after179 and asset.bonus_full expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.asset.asset.macrs_hy.ub` (replace an operand, asset.asset.macrs_hy): Copy-chain identity: asset.ub and asset.col19c expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
-- `refusal.dependent.dependent.qualifying_relative.2` (remove refusal, dependent.dependent.qualifying_relative): The married gate on the qualifying-relative test duplicates, word for word, the married gate on the qualifying-child test. The qualifying-relative test is read only by qr_dependent, which is read only by claimed, whose any-test evaluates qc_dependent, and so qualifying_child, before qr_dependent; for a married person qualifying_child refuses first with the same refusal, so this gate never fires. (structural conditions re-checked this run.)
+- `refusal.dependent.dependent.qualifying_relative.2` (remove refusal, dependent.dependent.qualifying_relative): The married gate on the qualifying-relative test duplicates, word for word, the married gate on the qualifying-child test. The qualifying-relative test is read only by qr_dependent, which is read only by claimed and by the TIN gate claimed_no_tin; the any-test of each evaluates qc_dependent, and so qualifying_child, before qr_dependent; for a married person qualifying_child refuses first with the same refusal, so this gate never fires. (structural conditions re-checked this run.)
 - `refusal.eic.eic.step1_resident.0` (remove refusal, eic.eic.step1_resident): The gate scope.other_income also refuses a line that Form 1040 line 11b reads, and eic.eligible tests eic.below_top (which reads line 11b) first, so the return's EIC refuses through line 11b whenever scope.other_income is true; the copy of the gate on eic.step1_resident adds nothing to any Form 1040 line. (structural conditions re-checked this run.)
 - `refusal.eic.eic.step2_other.0` (remove refusal, eic.eic.step2_other): The gate scope.schedule1 also refuses a line that Form 1040 line 11b reads, and eic.eligible tests eic.below_top (which reads line 11b) first, so the return's EIC refuses through line 11b whenever scope.schedule1 is true; the copy of the gate on eic.step2_other adds nothing to any Form 1040 line. (structural conditions re-checked this run.)
 - `refusal.eic.eic.step5_line1.0` (remove refusal, eic.eic.step5_line1): The gate scope.schedule1 also refuses a line that Form 1040 line 11b reads, and eic.eligible tests eic.below_top (which reads line 11b) first, so the return's EIC refuses through line 11b whenever scope.schedule1 is true; the copy of the gate on eic.step5_line1 adds nothing to any Form 1040 line. (structural conditions re-checked this run.)
@@ -50,7 +50,6 @@ the fixture test compares).
 - `operand.f8960.f8960.line9d.line9c` (replace an operand, f8960.f8960.line9d): Line 9c and lines 4a and 4b (the operands of line 4c) are each $0 behind the same refusal entries, word for word; so line 4c, their sum, is $0 when no entry fires and otherwise carries the same refusal (or unknown) that line 9c does. (structural conditions re-checked this run.)
 - `operand.f8995.f8995.line9.line8` (replace an operand, f8995.f8995.line9): Copy-chain identity: f8995.line8 and f8995.line6 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.f8995a.f8995a.line31.line30` (replace an operand, f8995a.f8995a.line31): Copy-chain identity: f8995a.line30 and f8995a.line28 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
-- `filter.person.person.hsa_step1` (remove collection filter, person.person.hsa_step1): person.hsa_step1 keeps only a Form 8889 that uses the spouse rule of line 6. Its total household.hsa_step1_sum is read only by f8889.allocation_bad, which is reached only on a form that uses the rule and which already holds when exactly one form uses it (household.hsa_split_count is 1); when both forms use it the filter keeps every form. So dropping the filter changes no value that is read. (structural conditions re-checked this run.)
 - `operand.person.person.sep_s1.sc_total` (replace an operand, person.person.sep_s1): person.se_line2 copies person.sc_total, adding only the Schedule SE refusal; step 1 is read only by step 3, which also reads step 2 (person.se_line13), and step 2 refuses exactly when person.se_line2 does, so step 3 and everything after it are the same.
 - `operand.person.person.simple_catchup.simple_regular` (replace an operand, person.person.simple_catchup): person.simple_regular is the smaller of the deferral and the $16,500 limit, so the deferral less it, floored at zero, equals the deferral less $16,500 floored at zero at every input.
 - `operand.person.person.dc_earned.eic_se` (replace an operand, person.person.dc_earned): person.eic_se is person.eic_se_has when the person has a Schedule C and $0 otherwise. With no Schedule C every sum over the person's Schedule C entries is $0, so the Schedule SE railroad gate is false, line 4c is $0, files_se is false and eic_se_has is the empty Schedule C total, $0; with the roster unanswered both routes are unknown. The replacement changes no value. (structural conditions re-checked this run.)

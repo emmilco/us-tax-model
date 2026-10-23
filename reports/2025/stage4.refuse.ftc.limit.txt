@@ -453,6 +453,14 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (gate) The people entered do not match the filing status
       = false
       cite: [f1040] Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first name and middle initial"; Filing Status (2025; created 2025-09-05; 3d31c226)
+  (helper) Number of people on the return under age 16 at the end of 2025
+      = 0
+      cite: [i1040gi] p. 66, Self-Select PIN, "You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025" (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $person: taxpayer
+  (gate) You, or your spouse if filing jointly, were under age 16 at the end of 2025
+      = false
+      cite: [i1040gi] p. 66, Self-Select PIN, "You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025" (2025; printed date 2026-02-25; 482e9c48)
+      note: Interpretation amb.2025.filer_under_16: The second. The refusal cites the one sentence the text has about age 16 and names the register entry; it does not claim the text forbids the return. The owner's decision of 2026-10-22 (integrity plan decision 10). A return for a child under 16 is one the tool's slice does not model well (Form 8615 is refused through scope.other_line16 only when the filer knows to answer it); the refusal makes the age an explicit entry rather than a silent assumption. (i1040gi, p. 66, Self-Select PIN, "You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025")
   (gate) Head of household checked without meeting its tests
       = false
       cite: [i1040gi] p. 14, Head of Household (2025; printed date 2026-02-25; 482e9c48)
@@ -482,6 +490,10 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Are you blind under the standard-deduction instructions?
       = false
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Were you under age 16 at the end of 2025?
+      = false
+      cite: [i1040gi] p. 66, Self-Select PIN, "You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025" (2025; printed date 2026-02-25; 482e9c48)
+      note: Interpretation amb.2025.filer_under_16: The second. The refusal cites the one sentence the text has about age 16 and names the register entry; it does not claim the text forbids the return. The owner's decision of 2026-10-22 (integrity plan decision 10). A return for a child under 16 is one the tool's slice does not model well (Form 8615 is refused through scope.other_line16 only when the filer knows to answer it); the refusal makes the age an explicit entry rather than a silent assumption. (i1040gi, p. 66, Self-Select PIN, "You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025")
   (helper) Qualified educator expenses you paid in 2025
       = $0
       cite: [i1040gi] p. 93, Schedule 1, line 11, Qualified expenses and 'You must reduce your qualified expenses by the following amounts' (2025; printed date 2026-02-25; 482e9c48)
@@ -1366,10 +1378,12 @@ Derivations:
   sd.to1040: choose(sd.has_loss = false; true = true; sd.has_loss = false; false = false; sd.line16 = $0)
   f1040.sd.to1040: choose(sd.has_loss = false; true = true; sd.has_loss = false; false = false; sd.line16 = $0)
   f1040.line7a: copy(sd.to1040 = $0)
+  household.under16_count: sum_over(person[taxpayer].under16 = false; true = true)
+  household.filer_under16: test(household.under16_count = 0; 0 = 0)
   person[taxpayer].one: param(#person.one = 1)
   household.taxpayers: sum_over(person[taxpayer].role = taxpayer; "taxpayer" = taxpayer; person[taxpayer].one = 1)
   household.spouses: sum_over(person[taxpayer].role = taxpayer; "spouse" = spouse)
-  household.roster_ok: test(f1040.status = single; "mfj" = mfj; f1040.status = single; "mfj" = mfj; household.taxpayers = 1; 1 = 1; household.spouses = 0; 0 = 0)
+  household.roster_ok: test(household.filer_under16 = false; f1040.status = single; "mfj" = mfj; f1040.status = single; "mfj" = mfj; household.taxpayers = 1; 1 = 1; household.spouses = 0; 0 = 0)
   household.roster_bad: test(household.roster_ok = true; false = false)
   f1040.household.roster_bad: test(household.roster_ok = true; false = false)
   person[taxpayer].box1: sum_over(person[taxpayer].w2[a].box1 = $100,000)
@@ -1672,6 +1686,7 @@ Derivations:
   s3.ftc.credit: gate(ftc.needs1116 = true)
   s3.line1: copy(ftc.credit = REFUSED: Form 1116. The small-tax election is unavailable or not chosen. Form 1116 is deferred, not dropped; prepare it separately. (trigger: ftc.needs1116; i1116, pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular tax))
 Interpretation amb.2025.box2c_scope: Refuse nonzero box 2c; no exclusion or AMT amount is silently omitted. Archived Schedule D instructions require the exclusion on Form 8949 code Q and describe an AMT adjustment for 50/60/75-percent exclusions. The existing explicit exclusions are retained; the owner was notified and asked, then said continue without selecting an expansion. (i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
+Interpretation amb.2025.filer_under_16: The second. The refusal cites the one sentence the text has about age 16 and names the register entry; it does not claim the text forbids the return. The owner's decision of 2026-10-22 (integrity plan decision 10). A return for a child under 16 is one the tool's slice does not model well (Form 8615 is refused through scope.other_line16 only when the filer knows to answer it); the refusal makes the age an explicit entry rather than a silent assumption. (i1040gi, p. 66, Self-Select PIN, "You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025")
 Interpretation amb.2025.alimony_screen: The first (s1.alimony, s1.alimony_unsupported; amounts under an agreement entered into after 2018, or after a change that expressly excludes them, are not asked, as the questions say, and are neither income nor deductible). The owner's decision (Stage 16 decision batch, D2, with the screens of the premise map, R-ALI-1 and R-ALI-2). The statement listing the other agreements and recipients, and the recapture worksheet, are not prepared; a payment partly child support needs the Pub. 504 allocation rules. (p504, p. 12, Alimony, "If you paid alimony to more than one person, enter the SSN or ITIN of one of the recipients"; p. 16, Recapture of Alimony; p. 13, Underpayment)
 Interpretation amb.2025.cod_fully_taxable: The first (s1.cod_amount, s1.cod_unsupported). Student loans are refused with the other exceptions. The owner's decision (Stage 16 decision batch, D2, "fully taxable canceled nonbusiness debt"). An excepted student loan discharge is nontaxable and usually comes with no Form 1099-C (p. 3, TIP), so a filer who reports one is refused rather than told how much of it to include; the conservative choice where D2 is silent. (p4681, p. 3, General Rules, "There are several exceptions and exclusions that may result in part or all of a canceled debt being nontaxable"; p. 4, Exceptions)
 Interpretation amb.2025.ewp_oid: The first (interest.penalty, totaled on s1.line18 and copied to Form 8960 line 10). The owner's decision (Stage 16 decision batch, D2, as corrected by the verification, E4) allows an input or a screen; the instruction treats the two forms alike, so an input loses nothing. Form 1099-OID is not archived, so its box number is not named. (i1040gi, p. 95, Line 18, "The Form 1099-INT or Form 1099-OID you received will show the amount of any penalty you were charged")

@@ -16,6 +16,8 @@
           "taxpayer"
         ],
         "person[taxpayer].role": "taxpayer",
+        "person[taxpayer].eic_ssn": true,
+        "person[taxpayer].under16": false,
         "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
@@ -56,7 +58,10 @@
         "f2441.benefits": false,
         "f2441.employer_care": false,
         "person[taxpayer].sav_trad": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "household.married": false,
+        "household.credit_disallowed": false,
+        "household.community_property": false
       },
       "expect": {
         "s3.line11": {
@@ -88,6 +93,8 @@
           "taxpayer"
         ],
         "person[taxpayer].role": "taxpayer",
+        "person[taxpayer].eic_ssn": true,
+        "person[taxpayer].under16": false,
         "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
@@ -128,7 +135,10 @@
         "f2441.benefits": false,
         "f2441.employer_care": false,
         "person[taxpayer].sav_trad": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "household.married": false,
+        "household.credit_disallowed": false,
+        "household.community_property": false
       },
       "expect": {
         "s3.line11": {
@@ -160,6 +170,8 @@
           "taxpayer"
         ],
         "person[taxpayer].role": "taxpayer",
+        "person[taxpayer].eic_ssn": true,
+        "person[taxpayer].under16": false,
         "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
@@ -200,7 +212,10 @@
         "f2441.benefits": false,
         "f2441.employer_care": false,
         "person[taxpayer].sav_trad": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "household.married": false,
+        "household.credit_disallowed": false,
+        "household.community_property": false
       },
       "expect": {
         "s3.line11": {
@@ -232,6 +247,8 @@
           "taxpayer"
         ],
         "person[taxpayer].role": "taxpayer",
+        "person[taxpayer].eic_ssn": true,
+        "person[taxpayer].under16": false,
         "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
@@ -272,7 +289,10 @@
         "f2441.benefits": false,
         "f2441.employer_care": false,
         "person[taxpayer].sav_trad": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "household.married": false,
+        "household.credit_disallowed": false,
+        "household.community_property": false
       },
       "expect": {
         "s3.line11": {
@@ -304,6 +324,8 @@
           "taxpayer"
         ],
         "person[taxpayer].role": "taxpayer",
+        "person[taxpayer].eic_ssn": true,
+        "person[taxpayer].under16": false,
         "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
@@ -344,7 +366,10 @@
         "f2441.benefits": false,
         "f2441.employer_care": false,
         "person[taxpayer].sav_trad": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "household.married": false,
+        "household.credit_disallowed": false,
+        "household.community_property": false
       },
       "expect": {
         "s3.line11": {
@@ -376,6 +401,8 @@
           "taxpayer"
         ],
         "person[taxpayer].role": "taxpayer",
+        "person[taxpayer].eic_ssn": true,
+        "person[taxpayer].under16": false,
         "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
@@ -416,7 +443,10 @@
         "f2441.benefits": false,
         "f2441.employer_care": false,
         "person[taxpayer].sav_trad": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "household.married": false,
+        "household.credit_disallowed": false,
+        "household.community_property": false
       },
       "expect": {
         "s3.line11": {
@@ -448,6 +478,8 @@
           "taxpayer"
         ],
         "person[taxpayer].role": "taxpayer",
+        "person[taxpayer].eic_ssn": true,
+        "person[taxpayer].under16": false,
         "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
@@ -488,7 +520,10 @@
         "f2441.benefits": false,
         "f2441.employer_care": false,
         "person[taxpayer].sav_trad": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "household.married": false,
+        "household.credit_disallowed": false,
+        "household.community_property": false
       },
       "expect": {
         "s3.line11": {
@@ -520,6 +555,8 @@
           "taxpayer"
         ],
         "person[taxpayer].role": "taxpayer",
+        "person[taxpayer].eic_ssn": true,
+        "person[taxpayer].under16": false,
         "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
@@ -556,7 +593,10 @@
         "f2441.benefits": false,
         "f2441.employer_care": false,
         "person[taxpayer].sav_trad": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "household.married": false,
+        "household.credit_disallowed": false,
+        "household.community_property": false
       },
       "expect": {
         "s3.line11": {
@@ -588,6 +628,8 @@
           "taxpayer"
         ],
         "person[taxpayer].role": "taxpayer",
+        "person[taxpayer].eic_ssn": true,
+        "person[taxpayer].under16": false,
         "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
@@ -630,7 +672,10 @@
         "f2441.benefits": false,
         "f2441.employer_care": false,
         "person[taxpayer].sav_trad": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "household.married": false,
+        "household.credit_disallowed": false,
+        "household.community_property": false
       },
       "expect": {
         "s3.line11": {
@@ -662,6 +707,8 @@
           "taxpayer"
         ],
         "person[taxpayer].role": "taxpayer",
+        "person[taxpayer].eic_ssn": true,
+        "person[taxpayer].under16": false,
         "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
@@ -701,7 +748,10 @@
         "f2441.benefits": false,
         "f2441.employer_care": false,
         "person[taxpayer].sav_trad": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "household.married": false,
+        "household.credit_disallowed": false,
+        "household.community_property": false
       },
       "expect": {
         "s3.line11": {
@@ -760,6 +810,8 @@
           "taxpayer"
         ],
         "person[taxpayer].role": "taxpayer",
+        "person[taxpayer].eic_ssn": true,
+        "person[taxpayer].under16": false,
         "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
@@ -803,7 +855,10 @@
         "f2441.benefits": false,
         "f2441.employer_care": false,
         "person[taxpayer].sav_trad": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "household.married": false,
+        "household.credit_disallowed": false,
+        "household.community_property": false
       },
       "expect": {
         "s3.line11": {
@@ -862,6 +917,8 @@
           "taxpayer"
         ],
         "person[taxpayer].role": "taxpayer",
+        "person[taxpayer].eic_ssn": true,
+        "person[taxpayer].under16": false,
         "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
@@ -902,7 +959,10 @@
         "f2441.benefits": false,
         "f2441.employer_care": false,
         "person[taxpayer].sav_trad": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "household.married": false,
+        "household.credit_disallowed": false,
+        "household.community_property": false
       },
       "expect": {
         "s3.line11": {
@@ -934,6 +994,8 @@
           "taxpayer"
         ],
         "person[taxpayer].role": "taxpayer",
+        "person[taxpayer].eic_ssn": true,
+        "person[taxpayer].under16": false,
         "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [],
@@ -965,7 +1027,10 @@
         "f2441.benefits": false,
         "f2441.employer_care": false,
         "person[taxpayer].sav_trad": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "household.married": false,
+        "household.credit_disallowed": false,
+        "household.community_property": false
       },
       "expect": {
         "s3.line11": {
@@ -998,6 +1063,8 @@
           "spouse"
         ],
         "person[taxpayer].role": "taxpayer",
+        "person[taxpayer].eic_ssn": true,
+        "person[taxpayer].under16": false,
         "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [],
@@ -1023,6 +1090,8 @@
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "person[spouse].role": "spouse",
+        "person[spouse].eic_ssn": true,
+        "person[spouse].under16": false,
         "person[spouse].rrta": false,
         "person[spouse].educator_expenses": 0,
         "$w2@person[spouse]": [],
@@ -1036,7 +1105,10 @@
         "f2441.employer_care": false,
         "person[spouse].sav_trad": false,
         "person[taxpayer].sav_trad": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "household.married": true,
+        "household.credit_disallowed": false,
+        "household.community_property": false
       },
       "expect": {
         "s3.line11": {
@@ -1068,6 +1140,8 @@
           "taxpayer"
         ],
         "person[taxpayer].role": "taxpayer",
+        "person[taxpayer].eic_ssn": true,
+        "person[taxpayer].under16": false,
         "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [],
@@ -1099,7 +1173,10 @@
         "f2441.benefits": false,
         "f2441.employer_care": false,
         "person[taxpayer].sav_trad": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "household.married": true,
+        "household.credit_disallowed": false,
+        "household.community_property": false
       },
       "expect": {
         "s3.line11": {
@@ -1158,6 +1235,8 @@
           "taxpayer"
         ],
         "person[taxpayer].role": "taxpayer",
+        "person[taxpayer].eic_ssn": true,
+        "person[taxpayer].under16": false,
         "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": true,
         "$w2@person[taxpayer]": [],
@@ -1189,7 +1268,10 @@
         "f2441.benefits": false,
         "f2441.employer_care": false,
         "person[taxpayer].sav_trad": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "household.married": false,
+        "household.credit_disallowed": false,
+        "household.community_property": false
       },
       "expect": {
         "s3.line11": {
@@ -1248,6 +1330,8 @@
           "taxpayer"
         ],
         "person[taxpayer].role": "taxpayer",
+        "person[taxpayer].eic_ssn": true,
+        "person[taxpayer].under16": false,
         "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
@@ -1288,7 +1372,10 @@
         "f2441.benefits": false,
         "f2441.employer_care": false,
         "person[taxpayer].sav_trad": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "household.married": false,
+        "household.credit_disallowed": false,
+        "household.community_property": false
       },
       "expect": {
         "s3.line11": {
@@ -1320,6 +1407,8 @@
           "taxpayer"
         ],
         "person[taxpayer].role": "taxpayer",
+        "person[taxpayer].eic_ssn": true,
+        "person[taxpayer].under16": false,
         "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
@@ -1360,7 +1449,10 @@
         "f2441.benefits": false,
         "f2441.employer_care": false,
         "person[taxpayer].sav_trad": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "household.married": false,
+        "household.credit_disallowed": false,
+        "household.community_property": false
       },
       "expect": {
         "s3.line11": {
@@ -1392,6 +1484,8 @@
           "taxpayer"
         ],
         "person[taxpayer].role": "taxpayer",
+        "person[taxpayer].eic_ssn": true,
+        "person[taxpayer].under16": false,
         "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
@@ -1432,7 +1526,10 @@
         "f2441.benefits": false,
         "f2441.employer_care": false,
         "person[taxpayer].sav_trad": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "household.married": false,
+        "household.credit_disallowed": false,
+        "household.community_property": false
       },
       "expect": {
         "s3.line11": {
@@ -1465,6 +1562,8 @@
           "second"
         ],
         "person[taxpayer].role": "taxpayer",
+        "person[taxpayer].eic_ssn": true,
+        "person[taxpayer].under16": false,
         "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
@@ -1510,7 +1609,10 @@
         "f2441.employer_care": false,
         "person[second].sav_trad": false,
         "person[taxpayer].sav_trad": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "household.married": false,
+        "household.credit_disallowed": false,
+        "household.community_property": false
       },
       "expect": {
         "s3.line11": {
@@ -1542,6 +1644,8 @@
           "taxpayer"
         ],
         "person[taxpayer].role": "taxpayer",
+        "person[taxpayer].eic_ssn": true,
+        "person[taxpayer].under16": false,
         "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
@@ -1584,7 +1688,10 @@
         "f2441.benefits": false,
         "f2441.employer_care": false,
         "person[taxpayer].sav_trad": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "household.married": false,
+        "household.credit_disallowed": false,
+        "household.community_property": false
       },
       "expect": {
         "s3.line11": {

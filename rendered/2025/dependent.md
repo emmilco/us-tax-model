@@ -7,9 +7,10 @@
 ## (helper) — `dependent.relationship`
 
 - **Authored helper label:** Relationship to you
-- **Encoded (Enum(dependent_relationship)):** Input — Relationship to you: child (son, daughter, stepchild, foster child or their descendant), sibling (brother, sister, half brother, half sister, stepbrother or stepsister, or a son or daughter of a brother, sister, half brother or half sister), sibling_descendant (any other descendant of a sibling, such as a grandniece or a stepsibling's child), parent (father or mother), parent_relative (a grandparent, aunt or uncle: an ancestor or sibling of a parent), in_law (step-parent or in-law), household_member (any other person, other than your spouse, who lived with you all year as a member of your household, if your relationship did not violate local law), or other (any other relationship; such a person is a Step 4 relative only if they lived with you all year as a member of your household and the relationship did not violate local law)
-- Expr: `{"op":"input","source":"Relationship to you: child (son, daughter, stepchild, foster child or their descendant), sibling (brother, sister, half brother, half sister, stepbrother or stepsister, or a son or daughter of a brother, sister, half brother or half sister), sibling_descendant (any other descendant of a sibling, such as a grandniece or a stepsibling's child), parent (father or mother), parent_relative (a grandparent, aunt or uncle: an ancestor or sibling of a parent), in_law (step-parent or in-law), household_member (any other person, other than your spouse, who lived with you all year as a member of your household, if your relationship did not violate local law), or other (any other relationship; such a person is a Step 4 relative only if they lived with you all year as a member of your household and the relationship did not violate local law)"}`
-- Cite: [i1040gi] pp. 17 and 19, Steps 1 and 4, "A qualifying child is your..." and "A qualifying relative is your..." (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Encoded (Enum(dependent_relationship)):** Input — Relationship to you: child (son, daughter, stepchild, foster child or their descendant), sibling (brother, sister, half brother, half sister, stepbrother or stepsister, or a son or daughter of a brother, sister, half brother or half sister), sibling_descendant (any other descendant of a sibling, such as a grandniece or a stepsibling's child), parent (father or mother; not a foster parent, who is entered as other), parent_relative (a grandparent, aunt or uncle: an ancestor or sibling of a parent), in_law (step-parent or in-law), household_member (any other person, other than your spouse, who lived with you all year as a member of your household, if your relationship did not violate local law), or other (any other relationship; such a person is a Step 4 relative only if they lived with you all year as a member of your household and the relationship did not violate local law)
+- Interpretation: amb.2025.foster_parent_relationship
+- Expr: `{"op":"input","source":"Relationship to you: child (son, daughter, stepchild, foster child or their descendant), sibling (brother, sister, half brother, half sister, stepbrother or stepsister, or a son or daughter of a brother, sister, half brother or half sister), sibling_descendant (any other descendant of a sibling, such as a grandniece or a stepsibling's child), parent (father or mother; not a foster parent, who is entered as other), parent_relative (a grandparent, aunt or uncle: an ancestor or sibling of a parent), in_law (step-parent or in-law), household_member (any other person, other than your spouse, who lived with you all year as a member of your household, if your relationship did not violate local law), or other (any other relationship; such a person is a Step 4 relative only if they lived with you all year as a member of your household and the relationship did not violate local law)"}`
+- Cite: [i1040gi] pp. 17 and 19, Steps 1 and 4, "A qualifying child is your..." and "A qualifying relative is your..."; p501 p. 19, Relatives who don't have to live with you, "Your father, mother, grandparent, or other direct ancestor, but not foster parent" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `dependent.age`
 
@@ -248,10 +249,18 @@
 - Expr: `{"all":[{"eq":["dependent.qualifying_relative",{"const":true}],"op":"test"},{"eq":["dependent.resident",{"const":true}],"op":"test"},{"eq":["sa.dependent",{"const":false}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 19, Step 4, questions 2 and 5 (2025; printed date 2026-02-25; sha256 482e9c48)
 
+## (gate) — `dependent.claimed_no_tin`
+
+- **Authored helper label:** A person who meets the tests to be your dependent but has no SSN, ITIN or ATIN
+- **Encoded (Bool):** helper "SSN, ITIN or ATIN issued on or before the due date of your return?" = false and (helper "Qualifying child who is your dependent (Step 2)" = true or helper "Qualifying relative who is your dependent (Step 4, questions 2 and 5)" = true)
+- Expr: `{"all":[{"eq":["dependent.tin",{"const":false}],"op":"test"},{"any":[{"eq":["dependent.qc_dependent",{"const":true}],"op":"test"},{"eq":["dependent.qr_dependent",{"const":true}],"op":"test"}],"op":"test"}],"op":"test"}`
+- Cite: [i1040gi] p. 22, Social security number, "You must enter each dependent’s social security number (SSN)" (2025; printed date 2026-02-25; sha256 482e9c48)
+
 ## (helper) — `dependent.claimed`
 
 - **Authored helper label:** Your dependent
 - **Encoded (Bool):** (helper "Qualifying child who is your dependent (Step 2)" = true or helper "Qualifying relative who is your dependent (Step 4, questions 2 and 5)" = true)
+- **Refusal:** when dependent.claimed_no_tin is true, cannot complete Dependent without an SSN, ITIN or ATIN (Form 1040, Dependents, row (3)). Each dependent must be listed with an SSN (or ITIN or ATIN) issued on or before the due date of your return. A dependent child who was born and died in 2025 without an SSN, entered as "Died" on row (3) with a copy of the birth certificate, death certificate or hospital records, is outside this tool. Cite: [i1040gi] p. 22, Social security number, "You must enter each dependent’s social security number (SSN)" and "If your dependent child was born and died in 2025 and you do not have an SSN for the child, enter “Died” on row (3) of the Dependents section and include a copy of the child’s birth certificate, death certificate, or hospital records"; p. 14, Head of Household, "The dependents you claim are those you list by name and SSN ... in the Dependents section on Form 1040 or 1040-SR" (2025; printed date 2026-02-25; sha256 482e9c48)
 - Expr: `{"any":[{"eq":["dependent.qc_dependent",{"const":true}],"op":"test"},{"eq":["dependent.qr_dependent",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] pp. 17–19, Who Qualifies as Your Dependent (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -329,6 +338,7 @@
 
 - **Authored helper label:** Qualifies you for head of household under Test 1 through a parent who does not live with you (a parent who lives with you qualifies you through Test 2)
 - **Encoded (Bool):** helper "Relationship to you" = 'parent' and helper "Your dependent" = true and helper "For a parent not living with you, you paid over half the cost of their main home for all of 2025?" = true
+- **Refusal:** when dependent.claimed_no_tin is true, cannot complete Dependent without an SSN, ITIN or ATIN (Form 1040, Dependents, row (3)). Each dependent must be listed with an SSN (or ITIN or ATIN) issued on or before the due date of your return. A dependent child who was born and died in 2025 without an SSN, entered as "Died" on row (3) with a copy of the birth certificate, death certificate or hospital records, is outside this tool. Cite: [i1040gi] p. 22, Social security number, "You must enter each dependent’s social security number (SSN)" and "If your dependent child was born and died in 2025 and you do not have an SSN for the child, enter “Died” on row (3) of the Dependents section and include a copy of the child’s birth certificate, death certificate, or hospital records"; p. 14, Head of Household, "The dependents you claim are those you list by name and SSN ... in the Dependents section on Form 1040 or 1040-SR" (2025; printed date 2026-02-25; sha256 482e9c48)
 - Expr: `{"all":[{"eq":["dependent.relationship",{"const":"parent"}],"op":"test"},{"eq":["dependent.claimed",{"const":true}],"op":"test"},{"eq":["dependent.parent_home_paid",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 14, Head of Household, Test 1, "You paid over half the cost of keeping up a home that was the main home for all of 2025 of your parent whom you can claim as a dependent" (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -397,20 +407,12 @@
 - Expr: `{"all":[{"eq":["f2441.care",{"const":true}],"op":"test"},{"eq":["dependent.claimed",{"const":true}],"op":"test"},{"any":[{"eq":["dependent.dc_child_all_year",{"const":true}],"op":"test"},{"eq":["dependent.dc_disabled_qp",{"const":true}],"op":"test"},{"eq":["dependent.dc_child",{"const":true}],"op":"test"}],"op":"test"}],"op":"test"}`
 - Cite: [i2441] p. 1, Qualifying Person(s), "A qualifying child under age 13 whom you can claim as a dependent. If the child turned 13 during the year, the child is a qualifying person for the part of the year they were under age 13"; p. 1, Qualifying Person(s), "Any disabled person who wasn't physically or mentally able to care for themselves who lived with you for more than half the year and whom you can claim as a dependent"; p. 3, Line 2, "Don't list a person on line 2 unless they are listed as an eligible person under Qualifying Person(s), earlier" (2025; sha256 86f0669e)
 
-## (gate) — `dependent.dc_no_tin`
-
-- **Authored helper label:** A qualifying person with no SSN, ITIN or ATIN
-- **Encoded (Bool):** helper "A qualifying person for Form 2441 (you have care expenses, and this person is your dependent and either your qualifying child under 13 or not able to care for themselves and living with you for more than half the year)" = true and helper "SSN, ITIN or ATIN issued on or before the due date of your return?" = false
-- Expr: `{"all":[{"eq":["dependent.dc_qp",{"const":true}],"op":"test"},{"eq":["dependent.tin",{"const":false}],"op":"test"}],"op":"test"}`
-- Cite: [i2441] p. 3, Column (b), "You must enter the qualifying person's SSN" and "If the qualifying person has an ITIN or adoption taxpayer identification number (ATIN), see Taxpayer identification number in Pub. 503" (2025; sha256 86f0669e)
-
 ## (helper) — `dependent.dc_count`
 
 - **Authored helper label:** One qualifying person
 - **Encoded (Count):** Enter 1 (dependent.one).
-- **Refusal:** when dependent.dc_no_tin is true, cannot complete Qualifying person without an SSN, ITIN or ATIN (Form 2441, line 2, column (b)). A qualifying person must be listed with an SSN, ITIN or ATIN; the credit may otherwise be reduced or disallowed. A child born and died in 2025 without an SSN (entered as "Died" with records attached) is also outside this tool. Cite: [i2441] p. 3, Column (b), "Be sure the name and SSN entered agree with the person's social security card. Otherwise, at the time we process your return, we may reduce or disallow your credit" and "If the child was born and died in 2025 and didn't have an SSN, enter “Died” in column (b)" (2025; sha256 86f0669e)
 - Expr: `{"op":"param","ref":"dependent.one"}`
-- Cite: [i2441] p. 3, Line 2, "Complete columns (a) through (d) for each qualifying person" (2025; sha256 86f0669e)
+- Cite: [i2441] p. 3, Line 2, "Complete columns (a) through (d) for each qualifying person"; p. 3, Column (b), "You must enter the qualifying person's SSN" (a qualifying person is a dependent, and a dependent without an SSN, ITIN or ATIN is refused where the person is counted as a dependent) (2025; sha256 86f0669e)
 
 ## (helper) — `dependent.dc_paid`
 
@@ -424,7 +426,6 @@
 
 - **Authored helper label:** Qualified expenses you incurred and paid in 2025 for the person listed in column (a)
 - **Encoded (NonNegDollars):** Enter the amount from helper "Qualified expenses incurred and paid in 2025 for this person's care".
-- **Refusal:** when dependent.dc_no_tin is true, cannot complete Qualifying person without an SSN, ITIN or ATIN (Form 2441, line 2, column (b)). A qualifying person must be listed with an SSN, ITIN or ATIN; the credit may otherwise be reduced or disallowed. A child born and died in 2025 without an SSN (entered as "Died" with records attached) is also outside this tool. Cite: [i2441] p. 3, Column (b), "Be sure the name and SSN entered agree with the person's social security card. Otherwise, at the time we process your return, we may reduce or disallow your credit" and "If the child was born and died in 2025 and didn't have an SSN, enter “Died” in column (b)" (2025; sha256 86f0669e)
 - Interpretation: amb.2025.dc_line30
 - Expr: `{"from":"dependent.dc_paid","op":"copy"}`
 - Cite: [f2441] Form 2441 (2025), line 2, column (d) (2025; created 2025-03-18; sha256 6c3c2d19)

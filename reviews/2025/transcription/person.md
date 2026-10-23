@@ -7,10 +7,10 @@ Second transcription of `Each person on the return — per-person facts and tota
 | date | 2026-10-22 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | 119948b94537d09de0c09403ec5abaa505fc3a5676d18bef40ee701282ff1d28 |
-| subject sha256 | ec3cdaa630d99cb084d2214e3692b6a40447f3ccf931989bfa032f5423f04dc5 |
+| prompt sha256 | 8d596533fa018709267b5447bf68142fff504bf390acaaf5b89df7bdb9b7c951 |
+| subject sha256 | 581f806af1d6173b647f7819209ca510ff017e010e2aedeeda7f875a37e3fa56 |
 | printed lines compared | 74 |
-| agree / disagree / missing | 45 / 29 / 0 |
+| agree / disagree / missing | 46 / 28 / 0 |
 | extra printed lines in second | none |
 
 ## Source pages given to the model
@@ -19,7 +19,7 @@ Second transcription of `Each person on the return — per-person facts and tota
 | --- | --- | --- | --- | --- | --- | --- |
 | f1040 | 2025; created 2025-09-05 | 1, 2 | whole document | ac32f00aed489e0722d0b409c0eb12915801d66f3a2fab05bc8391af61426383 | - | 72926cc2b256a68592e6cf0f2aa384ef8371eec968a0c8c62e050edf5bfea76a |
 | f1040sa | 2025; created 2025-11-20 | 1 | whole document | 225b3ec4aa83600179f177807a26d8976343af5c2664b8eb6614fb6abcf8fadd | - | bfe55c01a948d1f96bacf363a8b5cbb1bf7273cbc8672598f1a66c31504a59fe |
-| i1040gi | 2025; printed date 2026-02-25 | 17, 18, 19, 31, 32, 41, 47, 93, 95, 96, 97, 98, 104, 108, 110, 117 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 | 17, 18, 19, 31, 41, 93, 95, 96, 98, 104, 110, 117 | af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420 |
+| i1040gi | 2025; printed date 2026-02-25 | 17, 18, 19, 31, 32, 40, 41, 44, 45, 47, 66, 93, 95, 96, 97, 98, 104, 108, 110, 117 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 | 17, 18, 19, 31, 40, 41, 44, 45, 66, 93, 95, 96, 98, 104, 110, 117 | af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420 |
 | i8889 | 2025 | 3, 4, 7 | cited pages | bfbdc8bbe0b85d088325243f176d4c8261b0ca2428f75f4f41e4a339ecb5495c | 3, 4, 7 | 533a42f870f12dc6c1984815eae1a4bf59d6fde28cbc909d9a4e76ff41c6eda7 |
 | f8889 | 2025; created 2025-03-28 | 1 | whole document | f1ae3589453f3dd1d5277a79409bd7d0bf4772715fa8bd11d58126e6f387c0cf | - | 85ba6183eb2c35cf7b6d63eb6fd515be7234f5f938da39d7d000a6a7f2359d4e |
 | iw2w3 | 2025; printed date 2025-02-19 | 12, 13, 18, 20 | cited pages | 27ad850a44d58d9186afcccb33b8a32f4747911e2b1b3138de515f44d4de33f3 | 12, 13, 18, 20 | 3876738db222e8abe6103f29d8a8654a3139b9896f97e325d50e80b87ed5b26a |
@@ -80,16 +80,16 @@ Status: **DISAGREE**
 Project:
 
 ```json
-{"collection": "f8889", "field": "f8889.share_raw", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "f8889.last_month"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "f8889.dec_coverage"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "family"}, {"input": "f8889.dec_coverage"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"args": [{"const": "none"}, {"input": "f8889.dec_coverage"}], "test": "eq"}, {"args": [{"const": true}, {"input": "f8889.last_month"}], "test": "ne"}], "test": "any"}, {"args": [{"const": 0}, {"input": "f8889.months_family"}], "test": "lt"}], "test": "all"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, {"args": [{"const": 2}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"const": 0}, {"collection": "f8889", "field": "f8889.one", "op": "sum_over", "where": null}], "test": "lt"}}], "test": "eq"}], "test": "all"}}
+{"collection": "f8889", "field": "f8889.share_raw", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "f8889.last_month"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "f8889.dec_coverage"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "family"}, {"input": "f8889.dec_coverage"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"args": [{"const": "none"}, {"input": "f8889.dec_coverage"}], "test": "eq"}, {"args": [{"const": true}, {"input": "f8889.last_month"}], "test": "ne"}], "test": "any"}, {"args": [{"const": 0}, {"input": "f8889.months_family"}], "test": "lt"}], "test": "all"}], "test": "any"}, {"args": [{"const": true}, {"ref": "household.married"}], "test": "eq"}], "test": "all"}, {"args": [{"const": 2}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"const": 0}, {"collection": "f8889", "field": "f8889.one", "op": "sum_over", "where": null}], "test": "lt"}}], "test": "eq"}], "test": "all"}}
 ```
 
 Second:
 
 ```json
-{"collection": "f8889", "field": "f8889.share", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "f8889.last_month"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "f8889.dec_coverage"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "family"}, {"input": "f8889.dec_coverage"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"args": [{"const": "none"}, {"input": "f8889.dec_coverage"}], "test": "eq"}, {"args": [{"const": true}, {"input": "f8889.last_month"}], "test": "ne"}], "test": "any"}, {"args": [{"const": 0}, {"input": "f8889.months_family"}], "test": "lt"}], "test": "all"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, {"args": [{"const": 2}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"const": 0}, {"collection": "f8889", "field": "f8889.one", "op": "sum_over", "where": null}], "test": "lt"}}], "test": "eq"}], "test": "all"}}
+{"collection": "f8889", "field": "f8889.share", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "f8889.last_month"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "f8889.dec_coverage"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "family"}, {"input": "f8889.dec_coverage"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"args": [{"const": "none"}, {"input": "f8889.dec_coverage"}], "test": "eq"}, {"args": [{"const": true}, {"input": "f8889.last_month"}], "test": "ne"}], "test": "any"}, {"args": [{"const": 0}, {"input": "f8889.months_family"}], "test": "lt"}], "test": "all"}], "test": "any"}, {"args": [{"const": true}, {"ref": "household.married"}], "test": "eq"}], "test": "all"}, {"args": [{"const": 2}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"const": 0}, {"collection": "f8889", "field": "f8889.one", "op": "sum_over", "where": null}], "test": "lt"}}], "test": "eq"}], "test": "all"}}
 ```
 
-Ruling: representation; project retained. The project sums f8889.share_raw, the second f8889.share, which copies it and carries the allocation refusal; the refusal's condition reads this total, so summing the copy would make the refusal depend on itself. The values are the same, and the refusal still applies on line 6 (i8889 p. 7, Steps 2 and 3).
+Ruling: representation; project retained. The project sums f8889.share_raw, the second f8889.share, which copies it and carries the allocation refusal; the refusal's condition reads this total, so summing the copy would make the refusal depend on itself. The values are the same (i8889 p. 7, Line 6, Steps 2 and 3).
 
 ### person.hsa_deduction — Form 8889 line 13 for this person
 Status: **AGREE**
@@ -166,12 +166,12 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}
 ```
 
-Second transcription's note: Lines 1a, 1b, 4b, 5a and 5b (farm, CRP, optional methods, church employee income) are zero in the cases this tool computes; the other cases fall under person.se_screen. When line 4c is under $400 the schedule stops, and that case is carried as zero.
+Second transcription's note: Line 4b (optional methods) and lines 5a/5b (church employee income) are screened. Line 6 is line 4c. If line 4c is less than $400, no self-employment tax is owed, so line 6 is zero.
 
-Ruling: representation; project retained. The project enters zero for a person with no Schedule C; the second applies the $400 floor of Schedule SE line 4c, which gives zero for the same person. Otherwise the same Schedule SE computation; church employee income, the optional methods and statutory employee income are refused (person.se_screen, sc.statutory).
+Ruling: representation; project retained. The project enters zero for a person with no Schedule C and otherwise the same Schedule SE computation; the second applies the $400 floor of Schedule SE line 4c (i1040sse p. 2, line 4c; 'If less than $400 ... you don't owe self-employment tax'), which gives zero for the same person. Church employee income, optional methods, statutory employees and notaries are refused on both sides (person.se_screen, sc.statutory).
 
 ### person.se_line12 — Schedule SE line 12 (self-employment tax) for this person
 Status: **DISAGREE**
@@ -185,12 +185,10 @@ Project:
 Second:
 
 ```json
-{"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"line": "wages"}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}
+{"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"line": "wages"}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}
 ```
 
-Second transcription's note: Line 8a includes railroad retirement (tier 1) compensation, which this tool does not take; RRTA is refused.
-
-Ruling: representation; project retained. The project enters zero for a person with no Schedule C; the second applies the $400 floor of Schedule SE line 4c, which gives zero for the same person. Otherwise the same Schedule SE computation; church employee income, the optional methods and statutory employee income are refused (person.se_screen, sc.statutory).
+Ruling: representation; project retained. The project enters zero for a person with no Schedule C and otherwise the same Schedule SE computation; the second applies the $400 floor of Schedule SE line 4c (i1040sse p. 2, line 4c; 'If less than $400 ... you don't owe self-employment tax'), which gives zero for the same person. Church employee income, optional methods, statutory employees and notaries are refused on both sides (person.se_screen, sc.statutory). Otherwise both are Schedule SE lines 10 and 11 added (Schedule SE (2025), line 12).
 
 ### person.se_line13 — Schedule SE line 13 (deduction for one-half of self-employment tax) for this person
 Status: **DISAGREE**
@@ -204,10 +202,10 @@ Project:
 Second:
 
 ```json
-{"amount": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"line": "wages"}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}
+{"amount": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"line": "wages"}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}
 ```
 
-Ruling: representation; project retained. The project enters zero for a person with no Schedule C; the second applies the $400 floor of Schedule SE line 4c, which gives zero for the same person. Otherwise the same Schedule SE computation; church employee income, the optional methods and statutory employee income are refused (person.se_screen, sc.statutory).
+Ruling: representation; project retained. The project enters zero for a person with no Schedule C and otherwise the same Schedule SE computation; the second applies the $400 floor of Schedule SE line 4c (i1040sse p. 2, line 4c; 'If less than $400 ... you don't owe self-employment tax'), which gives zero for the same person. Church employee income, optional methods, statutory employees and notaries are refused on both sides (person.se_screen, sc.statutory). Otherwise both are one-half of line 12 (Schedule SE (2025), line 13).
 
 ### person.s16 — Schedule 1 line 16 for this person
 Status: **DISAGREE**
@@ -221,27 +219,13 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "sep"}, {"input": "person.plan"}], "test": "eq"}, "then": {"of": [{"input": "person.sep_contrib"}, {"line": "Step 21"}], "op": "smaller_of"}}, {"guard": {"args": [{"const": "simple"}, {"input": "person.plan"}], "test": "eq"}, "then": {"of": [{"of": [{"input": "person.simple_deferral"}, {"param": "ret.simple_limit"}], "op": "smaller_of"}, {"of": [{"input": "person.simple_employer"}, {"alternatives": [{"guard": {"args": [{"const": "match"}, {"input": "person.simple_kind"}], "test": "eq"}, "then": {"of": [{"amount": {"of": [{"const": 0}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "op": "larger_of"}, "op": "multiply_rate", "rate": {"param": "ret.match_rate"}}, {"of": [{"input": "person.simple_deferral"}, {"param": "ret.simple_limit"}], "op": "smaller_of"}], "op": "smaller_of"}}, {"guard": {"args": [{"const": "nonelective"}, {"input": "person.simple_kind"}], "test": "eq"}, "then": {"amount": {"of": [{"of": [{"const": 0}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "op": "larger_of"}, {"param": "ret.comp_limit"}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "ret.nonelective_rate"}}}], "op": "choose"}], "op": "smaller_of"}], "op": "sum"}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "sep"}, {"input": "person.plan"}], "test": "eq"}, "then": {"of": [{"input": "person.sep_contrib"}, {"line": "Step 21"}], "op": "smaller_of"}}, {"guard": {"args": [{"const": "simple"}, {"input": "person.plan"}], "test": "eq"}, "then": {"of": [{"of": [{"input": "person.simple_deferral"}, {"of": [{"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}, {"param": "ret.simple_limit"}], "op": "smaller_of"}], "op": "smaller_of"}, {"of": [{"input": "person.simple_employer"}, {"alternatives": [{"guard": {"args": [{"const": "match"}, {"input": "person.simple_kind"}], "test": "eq"}, "then": {"of": [{"amount": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "ret.match_rate"}}, {"of": [{"input": "person.simple_deferral"}, {"of": [{"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}, {"param": "ret.simple_limit"}], "op": "smaller_of"}], "op": "smaller_of"}], "op": "smaller_of"}}, {"guard": {"args": [{"const": "nonelective"}, {"input": "person.simple_kind"}], "test": "eq"}, "then": {"amount": {"of": [{"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}, {"param": "ret.comp_limit"}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "ret.nonelective_rate"}}}], "op": "choose"}], "op": "smaller_of"}], "op": "sum"}}], "op": "choose"}
 ```
 
-Ruling: representation; project retained (as the prior rulings). The second caps the SEP contribution at Step 21 and the SIMPLE salary reductions at ret.simple_limit with no catch-up (it refuses catch-up contributions, its h_simple_catchup) and caps employer contributions; the project enters the contributions, figures catch-up as the deferral above $16,500, and refuses amounts above the limits (person.sep_excess, person.simple_excess, the plan screen), so the caps never bind on a return it completes. The project also enters zero for a person with no Schedule C (person.has_sc) and asks person.plan only then: i1040gi p. 93, Line 16, "If you were self-employed or a partner, you may be able to take this deduction".
+Ruling: representation; project retained. The second caps SEP and SIMPLE contributions at the Pub. 560 limits; the project refuses a contribution above the limits (person.sep_excess, person.simple_excess) and otherwise deducts it as entered, and enters zero for a person with no Schedule C (Schedule 1 (2025), line 16; Pub. 560 pp. 16-17 and chapter 5), so every return it computes agrees.
 
 ### person.positive_profits — Total of all net profits of this person's businesses (losses not included)
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"collection": "sc", "field": "sc.profit_pos", "op": "sum_over", "where": null}
-```
-
-Second:
-
-```json
-{"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": {"args": [{"const": 0}, {"ref": "sc.line31"}], "test": "lt"}}
-```
-
-Ruling: equivalent; project retained. sc.profit_pos is each business's Schedule C result floored at zero (sc.result is line 31 for a profit), so the sum over businesses is the second's sum of line 31 over the businesses with a profit; a loss adds nothing on either side. Form 7206 (2025), line 5, "Enter the total of all net profits* from Schedule C (Form 1040), line 31 ... Don’t include any net losses shown on these schedules".
+Status: **AGREE**
 
 ### person.sehi — Self-employed health insurance deduction, this person
 Status: **AGREE**
@@ -261,12 +245,12 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "subtract", "take": {"amount": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"line": "wages"}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract", "take": {"amount": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"line": "wages"}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}], "op": "choose"}
 ```
 
-Second transcription's note: Part 1: 1a is Schedule SE line 3, 1b is zero (4b and 5a are not used), and 1d is line 13. Part 2 is the Schedule C line 31 amount without statutory employee income. A person is taken to file Schedule SE when line 4c is $400 or more.
+Second transcription's note: Part 1 applies when the person files Schedule SE (line 4c is $400 or more). Otherwise Part 2 applies, which is the Schedule C line 31 profit or loss; farm and K-1 amounts are outside this tool.
 
-Ruling: representation; project retained. The project enters zero for a person with no Schedule C; the second applies the $400 floor of Schedule SE line 4c, which gives zero for the same person. Otherwise the same Schedule SE computation; church employee income, the optional methods and statutory employee income are refused (person.se_screen, sc.statutory). EIC Worksheet B Part 1 for a person filing Schedule SE and Part 2 otherwise on both sides (i1040gi p. 47); the second also excludes statutory employee income, which is refused.
+Ruling: representation; project retained. Part 1 applies when the person files Schedule SE and Part 2 (the Schedule C profit or loss) otherwise on both sides (i1040gi p. 47, Worksheet B, Parts 1 and 2); the project enters zero for a person with no Schedule C where the second applies the $400 floor, which gives zero for the same person.
 
 ### person.sc_1a — This person's Schedules C with Schedule 1-A tips or overtime
 Status: **AGREE**
@@ -289,12 +273,12 @@ Project:
 Second:
 
 ```json
-{"of": [{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"collection": "w2", "field": "w2.box10", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, {"args": [{"const": 1}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"param": "sales.zero"}, {"collection": "w2", "field": "w2.box10", "op": "sum_over", "where": null}], "test": "lt"}}], "test": "ne"}], "test": "any"}, {"args": [{"args": [{"const": 0}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"param": "sales.zero"}, {"collection": "w2", "field": "w2.box10", "op": "sum_over", "where": null}], "test": "lt"}}], "test": "lt"}, {"args": [{"const": "taxpayer"}, {"input": "person.role"}], "test": "ne"}], "test": "any"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"args": [{"const": "taxpayer"}, {"input": "person.role"}], "test": "eq"}, {"args": [{"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"param": "sales.zero"}, {"collection": "w2", "field": "w2.box10", "op": "sum_over", "where": null}], "test": "lt"}}, {"const": 0}], "test": "le"}], "test": "all"}, {"args": [{"args": [{"const": 1}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"param": "sales.zero"}, {"collection": "w2", "field": "w2.box10", "op": "sum_over", "where": null}], "test": "lt"}}], "test": "eq"}, {"args": [{"const": 0}, {"collection": "w2", "field": "w2.box10", "op": "sum_over", "where": null}], "test": "lt"}], "test": "all"}], "test": "any"}, "then": {"ref": "f1040.line1e"}}], "op": "choose"}, {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "subtract", "take": {"amount": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"line": "wages"}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}}, {"collection": "w2", "field": "w2.box1", "op": "sum_over", "where": null}], "op": "sum"}
+{"of": [{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": 1}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"param": "sales.zero"}, {"collection": "w2", "field": "w2.box10", "op": "sum_over", "where": null}], "test": "lt"}}], "test": "eq"}, {"args": [{"const": "taxpayer"}, {"input": "person.role"}], "test": "ne"}], "test": "any"}, {"args": [{"args": [{"collection": "w2", "field": "w2.box10", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, {"args": [{"const": 1}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"param": "sales.zero"}, {"collection": "w2", "field": "w2.box10", "op": "sum_over", "where": null}], "test": "lt"}}], "test": "ne"}], "test": "any"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"args": [{"const": "taxpayer"}, {"input": "person.role"}], "test": "eq"}, {"args": [{"const": 1}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"param": "sales.zero"}, {"collection": "w2", "field": "w2.box10", "op": "sum_over", "where": null}], "test": "lt"}}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": 1}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"param": "sales.zero"}, {"collection": "w2", "field": "w2.box10", "op": "sum_over", "where": null}], "test": "lt"}}], "test": "eq"}, {"args": [{"const": 0}, {"collection": "w2", "field": "w2.box10", "op": "sum_over", "where": null}], "test": "lt"}], "test": "all"}], "test": "any"}, "then": {"ref": "f1040.line1e"}}], "op": "choose"}, {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract", "take": {"amount": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"line": "wages"}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}], "op": "choose"}, {"collection": "w2", "field": "w2.box1", "op": "sum_over", "where": null}], "op": "sum"}
 ```
 
-Second transcription's note: Line 1e is one return-level amount. It is assigned to the only person whose Forms W-2 show box 10, or to the taxpayer when nobody's do. When both spouses have box 10 the split is open, so the tool refuses. Statutory employee Schedule C line 1 (item 3 of the instructions) is not added, following the label given.
+Second transcription's note: Line 1z is read as line 1a (box 1) plus line 1e in this tool's scope. Following p503, self-employment earnings are counted even under $400 and a net loss reduces earned income.
 
-Ruling: representation; project retained (as the prior ruling). Box 1 is the same on both sides. Line 1e goes to the only person whose Forms W-2 show box 10, or to the taxpayer when nobody's do, on both sides; when both spouses' do, the second now gives it to neither (and refuses, its h_dc_1e_split), where the project follows the binding reading amb.2025.dc_line1e_attribution (owner decision 6): shown in the taxpayer's line 4 and refused when a credit remains (f2441.attrib_gate). The self-employment part is the same on returns the tool completes: the second subtracts the Schedule SE deduction without a Schedule C guard (zero below the $400 floor, so the Schedule C result is used, as the project does when no Schedule SE is filed) and leaves out statutory employee income, which is refused on each Schedule C (sc.statutory). i2441 p. 4, Lines 4 and 5, "If filing jointly, figure your and your spouse's earned income separately".
+Ruling: representation; project retained. Box 1 is the same on both sides; line 1e goes to the only person whose Forms W-2 show box 10, or to the taxpayer when nobody's do, on both sides; the self-employment part differs only as person.eic_se does (i2441 p. 4, Lines 4 and 5, earned income).
 
 ### person.dc_earned_b — This person's earned income for Form 2441 lines 18 and 19: as for lines 4 and 5, without t
 Status: **DISAGREE**
@@ -308,10 +292,10 @@ Project:
 Second:
 
 ```json
-{"of": [{"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "subtract", "take": {"amount": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"line": "wages"}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}}, {"collection": "w2", "field": "w2.box1", "op": "sum_over", "where": null}], "op": "sum"}
+{"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract", "take": {"amount": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"line": "wages"}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}], "op": "choose"}, {"collection": "w2", "field": "w2.box1", "op": "sum_over", "where": null}], "op": "sum"}
 ```
 
-Ruling: representation; project retained (as the prior ruling). Both are W-2 box 1 plus the self-employment part, without line 1e (i2441 p. 5, Line 18, "for purposes of lines 18 and 19, earned income doesn't include any dependent care benefits shown on line 12"). The self-employment part differs only as on person.dc_earned: the second has no Schedule C guard and leaves out statutory employee income, refused by sc.statutory; below the $400 floor its Schedule SE deduction is zero, which gives the Schedule C result, as the project uses when no Schedule SE is filed.
+Ruling: representation; project retained. Both are W-2 box 1 plus the self-employment part without line 1e (i2441 p. 5, Line 18, 'for purposes of lines 18 and 19, earned income doesn't include any dependent care benefits shown on line 12'); the self-employment part differs only as person.eic_se does.
 
 ### person.sav_ineligible — Born after January 1, 2008, claimed as a dependent on someone else's 2025 return, or a stu
 Status: **DISAGREE**
@@ -359,10 +343,10 @@ Project:
 Second:
 
 ```json
-{"of": [{"input": "person.sav_voluntary"}, {"alternatives": [{"guard": {"args": [{"const": "simple"}, {"input": "person.plan"}], "test": "eq"}, "then": {"of": [{"input": "person.simple_deferral"}, {"param": "ret.simple_limit"}], "op": "smaller_of"}}, {"guard": {"args": [{"const": "simple"}, {"input": "person.plan"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}, {"collection": "w2", "field": "w2.sav_deferral", "op": "sum_over", "where": null}], "op": "sum"}
+{"of": [{"input": "person.sav_voluntary"}, {"alternatives": [{"guard": {"args": [{"const": "simple"}, {"input": "person.plan"}], "test": "eq"}, "then": {"of": [{"input": "person.simple_deferral"}, {"of": [{"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}, {"param": "ret.simple_limit"}], "op": "smaller_of"}], "op": "smaller_of"}}, {"guard": {"args": [{"const": "simple"}, {"input": "person.plan"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}, {"collection": "w2", "field": "w2.sav_deferral", "op": "sum_over", "where": null}], "op": "sum"}
 ```
 
-Ruling: representation; project retained (as the prior ruling). W-2 box 12 deferrals and voluntary contributions are the same on both sides. For the person's own SIMPLE salary reductions the project enters zero for a person with no Schedule C (person.plan is asked only then) and counts the whole deferral, catch-up included, refusing amounts above the limits (person.simple_excess); the second now caps the deferral at $16,500 (ret.simple_limit) because it refuses catch-up contributions rather than figuring them. A catch-up contribution is an elective deferral: f8880 p. 2, Line 2, "Elective deferrals ... to a 401(k), 403(b), governmental 457(b), SEP, SIMPLE, or the federal TSP".
+Ruling: representation; project retained. W-2 box 12 deferrals and voluntary contributions are the same on both sides; for the person's own SIMPLE salary reduction the project enters zero for a person with no Schedule C, where the second reads the plan directly, and a person with no Schedule C has no self-employed plan (Form 8880 (2025), line 2; Pub. 560 chapter 3).
 
 ### person.ira_contrib — This person's traditional IRA contributions for 2025 (zero if the traditional IRA question
 Status: **DISAGREE**
@@ -396,7 +380,7 @@ Second:
 {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}
 ```
 
-Second transcription's note: The rule that a married person filing separately is treated as covered when the spouse is covered (unless they lived apart) needs the spouse's facts, which are not on a separate return. That case is not encoded here.
+Second transcription's note: Coverage includes self-employment with a SEP or SIMPLE ('You are also covered by a plan if you were self-employed and had a SEP, SIMPLE, or qualified retirement plan'). The rule that treats a separate filer living with a covered spouse as covered is not encoded here.
 
 Ruling: representation; project retained. Both: covered by a plan at work (person.ira_work_plan) or by the person's own self-employed plan; the project reads person.plan, the self-employed person's own SEP or SIMPLE plan, only for a person with a Schedule C (person.ira_se_plan), where it is asked (amb.2025.ira_covered, owner decision 9(b)); the second reads it for everyone. i1040gi p. 96, Were You Covered by a Retirement Plan?, "You are also covered by a plan if you were self-employed and had a SEP, SIMPLE, or qualified retirement plan". The married-filing-separately rule in the second's note is not reached: A separate return is refused (scope.ready, s3.mfs).
 
@@ -415,7 +399,7 @@ Second:
 {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}
 ```
 
-Second transcription's note: The status-keyed parameter gives married filing separately $10,000 (lived with spouse). The $89,000 for a separate filer who lived apart all year is not separately encoded.
+Second transcription's note: A separate filer who lived apart from the spouse all year enters $89,000, and is not treated as covered through the spouse. No parameter gives $89,000 for that status, so this case is refused.
 
 Ruling: representation; project retained. The amounts are the same ($246,000 for the column of a person not covered on a joint return, otherwise the filing-status amount); the coverage test differs only as on person.ira_cov (the project reads person.plan, the self-employed person's own SEP or SIMPLE plan, only for a person with a Schedule C (person.ira_se_plan), where it is asked (amb.2025.ira_covered, owner decision 9(b)); the second reads it for everyone). i1040gi p. 97, line 2, "Married filing jointly, enter $146,000 in both columns. But if you checked “No” on either line 1a or 1b, enter $246,000 for the person who wasn’t covered by a plan". The $89,000 for a separate filer who lived apart, in the second's note, is not reached: A separate return is refused (scope.ready, s3.mfs).
 
@@ -450,8 +434,6 @@ Second:
 ```json
 {"alternatives": [{"guard": {"args": [{"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": 0}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}], "test": "any"}}, {"const": 0}], "test": "le"}, "then": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"param": "ira.limit"}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"param": "ira.limit_50"}}], "op": "choose"}}, {"guard": {"args": [{"const": 0}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": 0}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}], "test": "any"}}], "test": "lt"}, "then": {"alternatives": [{"guard": {"args": [{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}], "test": "all"}, "then": {"param": "ira.full_joint"}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, "then": {"param": "ira.full_narrow"}}], "op": "choose"}, {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}], "test": "le"}, "then": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"param": "ira.limit"}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"param": "ira.limit_50"}}], "op": "choose"}}, {"guard": {"args": [{"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}], "test": "all"}, "then": {"param": "ira.full_joint"}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, "then": {"param": "ira.full_narrow"}}], "op": "choose"}], "test": "lt"}, "then": {"alternatives": [{"guard": {"args": [{"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, {"const": 0}], "test": "le"}, "then": {"const": 0}}, {"guard": {"args": [{"const": 0}, {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}], "test": "lt"}, "then": {"of": [{"of": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}], "test": "all"}, "then": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_35"}}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_40"}}}], "op": "choose"}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_70"}}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_80"}}}], "op": "choose"}}], "op": "choose"}, "op": "round", "rule": "up", "unit": 1000}, {"param": "ira.min"}], "op": "larger_of"}}], "op": "choose"}}], "op": "choose"}}], "op": "choose"}
 ```
-
-Second transcription's note: When line 6 is No (line 5 not less than line 2), the worksheet stops: no contributions are deductible. Line 7 is then zero and the $200 minimum does not apply.
 
 Ruling: representation; project retained. The cases, thresholds, rates and rounding are the same; the coverage test differs only as on person.ira_cov (the project reads person.plan, the self-employed person's own SEP or SIMPLE plan, only for a person with a Schedule C (person.ira_se_plan), where it is asked (amb.2025.ira_covered, owner decision 9(b)); the second reads it for everyone), and the second's 70% test (not joint, or this person not covered on a joint return) and the project's (not joint type, or this person not covered) part only for a qualifying surviving spouse who is not covered, whose column is figured only when someone is covered, which on a one-person return is that person. Zero on line 6's No, as the second's note says, is the project's person.ira_below. i1040gi p. 97, line 6, "None of your IRA contributions are deductible"; p. 98, line 7.
 
@@ -555,6 +537,8 @@ Second:
 {"of": [{"alternatives": [{"guard": {"args": [{"from": {"of": [{"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.sav_trad"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": true}, {"input": "person.sav_trad"}], "test": "eq"}, "then": {"input": "person.ira_trad"}}], "op": "choose"}, {"ref": "ira.line10"}], "op": "smaller_of"}, "op": "subtract_floor0", "take": {"of": [{"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.sav_trad"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": true}, {"input": "person.sav_trad"}], "test": "eq"}, "then": {"input": "person.ira_trad"}}], "op": "choose"}, {"of": [{"alternatives": [{"guard": {"args": [{"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": 0}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}], "test": "any"}}, {"const": 0}], "test": "le"}, "then": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"param": "ira.limit"}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"param": "ira.limit_50"}}], "op": "choose"}}, {"guard": {"args": [{"const": 0}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": 0}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}], "test": "any"}}], "test": "lt"}, "then": {"alternatives": [{"guard": {"args": [{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}], "test": "all"}, "then": {"param": "ira.full_joint"}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, "then": {"param": "ira.full_narrow"}}], "op": "choose"}, {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}], "test": "le"}, "then": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"param": "ira.limit"}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"param": "ira.limit_50"}}], "op": "choose"}}, {"guard": {"args": [{"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}], "test": "all"}, "then": {"param": "ira.full_joint"}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, "then": {"param": "ira.full_narrow"}}], "op": "choose"}], "test": "lt"}, "then": {"alternatives": [{"guard": {"args": [{"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, {"const": 0}], "test": "le"}, "then": {"const": 0}}, {"guard": {"args": [{"const": 0}, {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}], "test": "lt"}, "then": {"of": [{"of": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}], "test": "all"}, "then": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_35"}}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_40"}}}], "op": "choose"}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_70"}}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_80"}}}], "op": "choose"}}], "op": "choose"}, "op": "round", "rule": "up", "unit": 1000}, {"param": "ira.min"}], "op": "larger_of"}}], "op": "choose"}}], "op": "choose"}}], "op": "choose"}, {"ref": "ira.line10"}], "op": "smaller_of"}], "op": "smaller_of"}}, {"const": 0}], "test": "le"}, "then": {"const": 0}}, {"guard": {"args": [{"const": 0}, {"from": {"of": [{"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.sav_trad"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": true}, {"input": "person.sav_trad"}], "test": "eq"}, "then": {"input": "person.ira_trad"}}], "op": "choose"}, {"ref": "ira.line10"}], "op": "smaller_of"}, "op": "subtract_floor0", "take": {"of": [{"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.sav_trad"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": true}, {"input": "person.sav_trad"}], "test": "eq"}, "then": {"input": "person.ira_trad"}}], "op": "choose"}, {"of": [{"alternatives": [{"guard": {"args": [{"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": 0}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}], "test": "any"}}, {"const": 0}], "test": "le"}, "then": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"param": "ira.limit"}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"param": "ira.limit_50"}}], "op": "choose"}}, {"guard": {"args": [{"const": 0}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": 0}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}], "test": "any"}}], "test": "lt"}, "then": {"alternatives": [{"guard": {"args": [{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}], "test": "all"}, "then": {"param": "ira.full_joint"}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, "then": {"param": "ira.full_narrow"}}], "op": "choose"}, {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}], "test": "le"}, "then": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"param": "ira.limit"}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"param": "ira.limit_50"}}], "op": "choose"}}, {"guard": {"args": [{"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}], "test": "all"}, "then": {"param": "ira.full_joint"}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, "then": {"param": "ira.full_narrow"}}], "op": "choose"}], "test": "lt"}, "then": {"alternatives": [{"guard": {"args": [{"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, {"const": 0}], "test": "le"}, "then": {"const": 0}}, {"guard": {"args": [{"const": 0}, {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}], "test": "lt"}, "then": {"of": [{"of": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}], "test": "all"}, "then": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_35"}}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_40"}}}], "op": "choose"}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_70"}}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_80"}}}], "op": "choose"}}], "op": "choose"}, "op": "round", "rule": "up", "unit": 1000}, {"param": "ira.min"}], "op": "larger_of"}}], "op": "choose"}}], "op": "choose"}}], "op": "choose"}, {"ref": "ira.line10"}], "op": "smaller_of"}], "op": "smaller_of"}}], "test": "lt"}, "then": {"input": "person.ira_basis"}}], "op": "choose"}, {"from": {"of": [{"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.sav_trad"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": true}, {"input": "person.sav_trad"}], "test": "eq"}, "then": {"input": "person.ira_trad"}}], "op": "choose"}, {"ref": "ira.line10"}], "op": "smaller_of"}, "op": "subtract_floor0", "take": {"of": [{"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.sav_trad"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": true}, {"input": "person.sav_trad"}], "test": "eq"}, "then": {"input": "person.ira_trad"}}], "op": "choose"}, {"of": [{"alternatives": [{"guard": {"args": [{"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": 0}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}], "test": "any"}}, {"const": 0}], "test": "le"}, "then": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"param": "ira.limit"}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"param": "ira.limit_50"}}], "op": "choose"}}, {"guard": {"args": [{"const": 0}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": 0}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}], "test": "any"}}], "test": "lt"}, "then": {"alternatives": [{"guard": {"args": [{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}], "test": "all"}, "then": {"param": "ira.full_joint"}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, "then": {"param": "ira.full_narrow"}}], "op": "choose"}, {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}], "test": "le"}, "then": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"param": "ira.limit"}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"param": "ira.limit_50"}}], "op": "choose"}}, {"guard": {"args": [{"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}], "test": "all"}, "then": {"param": "ira.full_joint"}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, "then": {"param": "ira.full_narrow"}}], "op": "choose"}], "test": "lt"}, "then": {"alternatives": [{"guard": {"args": [{"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, {"const": 0}], "test": "le"}, "then": {"const": 0}}, {"guard": {"args": [{"const": 0}, {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}], "test": "lt"}, "then": {"of": [{"of": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}], "test": "all"}, "then": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_35"}}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_40"}}}], "op": "choose"}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_70"}}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_80"}}}], "op": "choose"}}], "op": "choose"}, "op": "round", "rule": "up", "unit": 1000}, {"param": "ira.min"}], "op": "larger_of"}}], "op": "choose"}}], "op": "choose"}}], "op": "choose"}, {"ref": "ira.line10"}], "op": "smaller_of"}], "op": "smaller_of"}}], "op": "sum"}
 ```
 
+Second transcription's note: With no 2025 distribution or conversion, the form says to enter the amount from line 3 (line 1 plus line 2) on line 14. The distribution case is refused.
+
 Ruling: representation; project retained. The project reads line 14 of the person's own Form 8606 (the f8606 entry under the person), which is line 3, lines 1 plus 2, with no 2025 distribution (Form 8606 (2025), Part I, "Enter the amount from line 3 on line 14"); the second adds the same two amounts (person.ira_nondeductible and person.ira_8606_line2). A distribution is refused on both sides (f8606.dist; the second's person.ira_dist_gate).
 
 ### person.ira_ssb — This person's IRA deduction as the Social Security Benefits Worksheet reads it (zero with 
@@ -572,7 +556,7 @@ Second:
 {"of": [{"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.sav_trad"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": true}, {"input": "person.sav_trad"}], "test": "eq"}, "then": {"input": "person.ira_trad"}}], "op": "choose"}, {"of": [{"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"param": "ira.limit"}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"param": "ira.limit_50"}}], "op": "choose"}, {"ref": "ira.line10"}], "op": "smaller_of"}], "op": "smaller_of"}
 ```
 
-Second transcription's note: The Social Security Benefits Worksheet is used only when no one is covered by a retirement plan or there are no traditional IRA contributions; otherwise ssb.pub915 applies. In that case worksheet line 7 is the $7,000/$8,000 amount, so line 12 is the smallest of that amount, line 10 and line 11, and does not depend on AGI.
+Second transcription's note: The Social Security Benefits Worksheet applies only when no one is covered by a retirement plan; otherwise ssb.pub915 refuses and Pub. 590-A is required. With no one covered, line 7 is the applicable amount, so the deduction is the smallest of that amount, line 10 and line 11. This avoids depending on line 5, which depends on Form 1040 line 9 and so on taxable benefits.
 
 Ruling: representation; project retained. Both are the smallest of the applicable amount, line 10 and line 11, the no-coverage path of the IRA Deduction Worksheet (amb.2025.ira_ssb_copy, owner decision 7; i1040gi p. 97, "skip lines 2 through 6, enter the applicable amount below on line 7a"; p. 98, line 12), and the project refuses it when someone is covered (ira.cov_gate), as the second's note assumes; the project adds a zero branch for a person with no traditional contributions, where line 11 is zero and the smallest is zero too.
 
@@ -588,12 +572,12 @@ Project:
 Second:
 
 ```json
-{"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"of": [{"alternatives": [{"guard": {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "sep"}, {"input": "person.plan"}], "test": "eq"}, "then": {"of": [{"input": "person.sep_contrib"}, {"line": "Step 21"}], "op": "smaller_of"}}, {"guard": {"args": [{"const": "simple"}, {"input": "person.plan"}], "test": "eq"}, "then": {"of": [{"of": [{"input": "person.simple_deferral"}, {"param": "ret.simple_limit"}], "op": "smaller_of"}, {"of": [{"input": "person.simple_employer"}, {"alternatives": [{"guard": {"args": [{"const": "match"}, {"input": "person.simple_kind"}], "test": "eq"}, "then": {"of": [{"amount": {"of": [{"const": 0}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "op": "larger_of"}, "op": "multiply_rate", "rate": {"param": "ret.match_rate"}}, {"of": [{"input": "person.simple_deferral"}, {"param": "ret.simple_limit"}], "op": "smaller_of"}], "op": "smaller_of"}}, {"guard": {"args": [{"const": "nonelective"}, {"input": "person.simple_kind"}], "test": "eq"}, "then": {"amount": {"of": [{"of": [{"const": 0}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "op": "larger_of"}, {"param": "ret.comp_limit"}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "ret.nonelective_rate"}}}], "op": "choose"}], "op": "smaller_of"}], "op": "sum"}}], "op": "choose"}, {"amount": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"line": "wages"}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}], "op": "sum"}}
+{"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"of": [{"alternatives": [{"guard": {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "sep"}, {"input": "person.plan"}], "test": "eq"}, "then": {"of": [{"input": "person.sep_contrib"}, {"line": "Step 21"}], "op": "smaller_of"}}, {"guard": {"args": [{"const": "simple"}, {"input": "person.plan"}], "test": "eq"}, "then": {"of": [{"of": [{"input": "person.simple_deferral"}, {"of": [{"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}, {"param": "ret.simple_limit"}], "op": "smaller_of"}], "op": "smaller_of"}, {"of": [{"input": "person.simple_employer"}, {"alternatives": [{"guard": {"args": [{"const": "match"}, {"input": "person.simple_kind"}], "test": "eq"}, "then": {"of": [{"amount": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "ret.match_rate"}}, {"of": [{"input": "person.simple_deferral"}, {"of": [{"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}, {"param": "ret.simple_limit"}], "op": "smaller_of"}], "op": "smaller_of"}], "op": "smaller_of"}}, {"guard": {"args": [{"const": "nonelective"}, {"input": "person.simple_kind"}], "test": "eq"}, "then": {"amount": {"of": [{"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}, {"param": "ret.comp_limit"}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "ret.nonelective_rate"}}}], "op": "choose"}], "op": "smaller_of"}], "op": "sum"}}], "op": "choose"}, {"amount": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"line": "wages"}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}], "op": "sum"}}
 ```
 
-Second transcription's note: Net earnings from self-employment are read as the Schedule C net profit (line 31).
+Second transcription's note: 'Net earnings from self-employment' is read as the Schedule C net profit (gross income minus allowable business deductions, Pub. 560 definition), less the Schedule 1 line 15 and 16 deductions. If zero or less, enter -0-.
 
-Ruling: representation; project retained. Both take the Schedule C result less that person's Schedule 1 lines 15 and 16, floored at zero (amb.2025.ira_se_earned, amb.2025.ira_se_floor). The differences are those ruled on person.s16 (the second caps SEP and SIMPLE contributions and refuses SIMPLE catch-up, where the project figures catch-up and refuses amounts above the limits), its exclusion of statutory employee income, refused on each Schedule C (sc.statutory), and the project's zero for a person with no Schedule C. i1040gi p. 98, line 9, "minus any deductions on Schedule 1, lines 15 and 16. If zero or less, enter -0-".
+Ruling: representation; project retained. Both take the Schedule C result less that person's Schedule 1 lines 15 and 16, floored at zero (amb.2025.ira_se_earned, amb.2025.ira_se_floor; i1040gi p. 97, IRA Deduction Worksheet, line 9); the differences are those ruled on person.s16 and the project's zero for a person with no Schedule C.
 
 ### employers — Total w2.one for this person
 Status: **AGREE**
@@ -634,7 +618,7 @@ Second:
 {"alternatives": [{"guard": {"args": [{"args": [{"const": false}, {"line": "over"}], "test": "eq"}, {"args": [{"const": true}, {"line": "eligible"}], "test": "eq"}], "test": "all"}, "then": {"line": "excess"}}, {"guard": {"args": [{"args": [{"const": false}, {"line": "over"}], "test": "ne"}, {"args": [{"const": true}, {"line": "eligible"}], "test": "ne"}], "test": "any"}, "then": {"line": "zero"}}], "op": "choose"}
 ```
 
-Second transcription's note: The line covers excess tier 1 RRTA tax as well; the tool computes only social security tax from Forms W-2 boxes 3, 4 and 7 and refuses when railroad retirement compensation is present.
+Second transcription's note: The text also covers tier 1 RRTA tax, which this tool does not compute; RRTA is screened by person.rrta. If any one employer withheld more than $10,918.20, the excess cannot be claimed on the return, so the credit is zero.
 
 Ruling: refusal representation; project retained. The instruction says that if any one employer withheld more than $10,918.20 the excess cannot be claimed on the return and the employer should adjust it, otherwise Form 843 (i1040gi p. 117). The project refuses the return on that condition and on railroad (RRTA) compensation through the line's `refuses` entries; the second transcription returns a zero credit. The project's reading is the spec's refusal policy (spec 2.2, 2.5); within the non-refused scope the credit agrees (eligible: more than one employer and wages over the base; excess over the limit). Stage 13 re-run: the credit is figured separately for each spouse from that spouse's Forms W-2 (i1040gi p. 117), as both transcriptions do.
 
@@ -653,10 +637,10 @@ Project:
 Second:
 
 ```json
-{"amount": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "sc.statutory"}], "test": "eq"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"line": "wages"}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}
+{"amount": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"line": "wages"}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}
 ```
 
-Ruling: representation; project retained. The project enters zero for a person with no Schedule C; the second applies the $400 floor of Schedule SE line 4c, which gives zero for the same person. Otherwise the same Schedule SE computation; church employee income, the optional methods and statutory employee income are refused (person.se_screen, sc.statutory). Both use this person's own Schedule SE line 13 (Pub. 560 p. 39, Step 2).
+Ruling: representation; project retained. The project enters zero for a person with no Schedule C and otherwise the same Schedule SE computation; the second applies the $400 floor of Schedule SE line 4c (i1040sse p. 2, line 4c; 'If less than $400 ... you don't owe self-employment tax'), which gives zero for the same person. Church employee income, optional methods, statutory employees and notaries are refused on both sides (person.se_screen, sc.statutory). Both then take one-half of the self-employment tax (Pub. 560 chapter 5, Deduction Worksheet for Self-Employed, step 2).
 
 ### Step 3 — Net earnings from self-employment. Subtract step 2 from step 1
 Status: **AGREE**
@@ -679,8 +663,6 @@ Second:
 {"amount": {"param": "ret.comp_limit"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "person.sep_rate"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}
 ```
 
-Second transcription's note: A whole-percent plan rate is exact at two decimal places. Rates that are not whole percents, or that are above 25%, fall under person.plan_screen.
-
 Ruling: equivalent; project retained. person.sep_rate is a whole-number percentage, so the ratio rate/100 is exact at two places and the project's six places give the same value (Pub. 560 p. 39, Step 6).
 
 ### Step 7 — Enter the smaller of step 5 or step 6
@@ -698,27 +680,31 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 
 | line | gates listed | not read by the project's line |
 | --- | --- | --- |
-| person.se_line6 | person.se_screen | person.se_screen |
+| person.hsa_deduction | person.h_hsa_repeated | person.h_hsa_repeated |
+| person.se_line6 | person.rrta, person.se_screen | person.rrta, person.se_screen |
 | person.se_line12 | person.rrta, person.se_screen | person.rrta, person.se_screen |
 | person.se_line13 | person.rrta, person.se_screen | person.rrta, person.se_screen |
-| person.s16 | person.h_simple_catchup, person.plan_screen, person.rrta, person.se_screen | person.h_simple_catchup, person.plan_screen, person.rrta, person.se_screen |
+| person.s16 | person.h_simple_catchup_gate, person.plan_screen, person.rrta, person.se_screen | person.h_simple_catchup_gate, person.plan_screen, person.rrta, person.se_screen |
 | person.eic_se | person.rrta, person.se_screen | person.rrta, person.se_screen |
-| person.dc_earned | person.h_dc_1e_split, person.rrta, person.se_screen | person.h_dc_1e_split, person.rrta, person.se_screen |
+| person.dc_earned | f2441.attrib_gate, person.rrta, person.se_screen | f2441.attrib_gate, person.rrta, person.se_screen |
 | person.dc_earned_b | person.rrta, person.se_screen | person.rrta, person.se_screen |
 | person.sav_line1 | person.sav_able | - |
-| person.sav_line2 | person.sav_excess | person.sav_excess |
-| person.ira_deduction | person.ira_excess | person.ira_excess |
-| person.ira_nondeductible | person.ira_excess | person.ira_excess |
-| person.ira_files_8606 | person.ira_excess | person.ira_excess |
-| person.ira_8606_line2 | person.ira_excess | person.ira_excess |
-| person.ira_dist_gate | person.ira_excess | person.ira_excess |
-| person.ira_8606_line14 | person.ira_dist_gate, person.ira_excess | person.ira_dist_gate, person.ira_excess |
-| person.ira_se | person.h_simple_catchup, person.plan_screen, person.rrta, person.se_screen | person.h_simple_catchup, person.plan_screen, person.rrta, person.se_screen |
+| person.sav_line2 | person.rrta, person.sav_excess, person.se_screen | person.rrta, person.sav_excess, person.se_screen |
+| person.ira_line2 | person.h_ira_mfs_apart | person.h_ira_mfs_apart |
+| person.ira_line6 | person.h_ira_mfs_apart | person.h_ira_mfs_apart |
+| person.ira_line7 | person.h_ira_mfs_apart | person.h_ira_mfs_apart |
+| person.ira_deduction | ira.both_kinds, ira.kbh_short, person.h_ira_mfs_apart, person.ira_excess | person.h_ira_mfs_apart, person.ira_excess |
+| person.ira_nondeductible | ira.both_kinds, ira.kbh_short, person.h_ira_mfs_apart, person.ira_excess | person.h_ira_mfs_apart, person.ira_excess |
+| person.ira_files_8606 | ira.both_kinds, ira.kbh_short, person.h_ira_mfs_apart, person.ira_excess | person.h_ira_mfs_apart, person.ira_excess |
+| person.ira_8606_line2 | ira.both_kinds, ira.kbh_short, person.h_ira_basis_gate, person.h_ira_mfs_apart, person.ira_excess | person.h_ira_basis_gate, person.h_ira_mfs_apart, person.ira_excess |
+| person.ira_dist_gate | ira.both_kinds, ira.kbh_short, person.h_ira_mfs_apart, person.ira_excess | person.h_ira_mfs_apart, person.ira_excess |
+| person.ira_8606_line14 | ira.both_kinds, ira.kbh_short, person.h_ira_basis_gate, person.h_ira_mfs_apart, person.ira_dist_gate, person.ira_excess | ira.both_kinds, ira.kbh_short, person.h_ira_basis_gate, person.h_ira_mfs_apart, person.ira_dist_gate, person.ira_excess |
+| person.ira_se | person.h_simple_catchup_gate, person.plan_screen, person.rrta, person.se_screen | person.h_simple_catchup_gate, person.plan_screen, person.rrta, person.se_screen |
 | credit | person.rrta | - |
 | Step 2 | person.rrta, person.se_screen | person.rrta, person.se_screen |
 | Step 3 | person.rrta, person.se_screen | person.rrta, person.se_screen |
-| Step 5 | person.rrta, person.se_screen | person.rrta, person.se_screen |
-| Step 7 | person.rrta, person.se_screen | person.rrta, person.se_screen |
+| Step 5 | person.plan_screen, person.rrta, person.se_screen | person.plan_screen, person.rrta, person.se_screen |
+| Step 7 | person.plan_screen, person.rrta, person.se_screen | person.plan_screen, person.rrta, person.se_screen |
 | Step 21 | person.plan_screen, person.rrta, person.se_screen | person.plan_screen, person.rrta, person.se_screen |
 
 ## Raw second transcription
@@ -728,7 +714,7 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 lines:
   - id: person.lineemployers
     printed: "employers"
-    label: "Total w2.one for this person (number of employers)"
+    label: "Total w2.one for this person"
     type: Count
     expr: {op: sum_over, collection: w2, field: w2.one}
 
@@ -740,19 +726,19 @@ lines:
 
   - id: person.lineover
     printed: "over"
-    label: "Any employer withheld more than the limit (if any one employer withheld more than $10,918.20, you can't claim the excess on your return)"
+    label: "Any employer withheld more than the limit"
     type: Bool
     expr: {op: test, gt: [person.lineovercount, {const: 0}]}
 
   - id: person.linewages
     printed: "wages"
-    label: "Total w2.wages for this person (social security wages and tips, boxes 3 and 7)"
+    label: "Total w2.wages for this person"
     type: NonNegDollars
     expr: {op: sum_over, collection: w2, field: w2.wages}
 
   - id: person.linewithheld
     printed: "withheld"
-    label: "Total w2.box4 for this person (social security tax withheld)"
+    label: "Total w2.box4 for this person"
     type: NonNegDollars
     expr: {op: sum_over, collection: w2, field: w2.box4}
 
@@ -763,7 +749,7 @@ lines:
     expr:
       op: test
       all:
-        - {op: test, gt: [person.lineemployers, {param: ss.one}]}
+        - {op: test, gt: [person.lineemployers, {param: person.one}]}
         - {op: test, gt: [person.linewages, {param: ss.base}]}
 
   - id: person.lineexcess
@@ -780,17 +766,17 @@ lines:
 
   - id: person.linecredit
     printed: "credit"
-    label: "Excess social security tax withheld, figured separately for this person (you can take a credit for the amount withheld in excess of $10,918.20; but if any one employer withheld more than $10,918.20, you can't claim the excess on your return)"
+    label: "Excess social security tax withheld, figured separately for this person"
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
-        - guard: {op: test, eq: [person.h_credit_ok, {const: true}]}
+        - guard: {op: test, all: [{op: test, eq: [person.lineeligible, {const: true}]}, {op: test, eq: [person.lineover, {const: false}]}]}
           then: person.lineexcess
-        - guard: {op: test, eq: [person.h_credit_ok, {const: false}]}
+        - guard: {op: test, not: {op: test, all: [{op: test, eq: [person.lineeligible, {const: true}]}, {op: test, eq: [person.lineover, {const: false}]}]}}
           then: person.linezero
     refuses: [person.rrta]
-    note: "The line covers excess tier 1 RRTA tax as well; the tool computes only social security tax from Forms W-2 boxes 3, 4 and 7 and refuses when railroad retirement compensation is present."
+    note: "The text also covers tier 1 RRTA tax, which this tool does not compute; RRTA is screened by person.rrta. If any one employer withheld more than $10,918.20, the excess cannot be claimed on the return, so the credit is zero."
 
   - id: "person.lineStep 1"
     printed: "Step 1"
@@ -809,21 +795,21 @@ lines:
     label: "Net earnings from self-employment. Subtract step 2 from step 1"
     type: NonNegDollars
     expr: {op: subtract_floor0, from: "person.lineStep 1", take: "person.lineStep 2"}
-    note: "The worksheet says only 'Subtract step 2 from step 1'. When step 1 is a loss the result would be negative; I chose zero, because there are no net earnings to base a contribution on and a deduction cannot be negative."
+    note: "The worksheet says only 'subtract'. The line is declared NonNegDollars, so a result below zero is entered as zero; with a loss, no contribution is deductible."
 
   - id: "person.lineStep 5"
     printed: "Step 5"
     label: "Multiply step 3 by step 4 (the plan rate divided by the plan rate plus 1, to six decimal places)"
     type: NonNegDollars
     expr: {op: prorate, amount: "person.lineStep 3", part: person.h_sep_rate_c, whole: person.h_sep_rate_plus, places: 6}
-    note: "Step 4 is the Rate Table for Self-Employed (column B shown to six decimals, e.g. 10% gives 0.090909). The table equals plan rate ÷ (plan rate + 1), which is the Rate Worksheet formula. Here both rates are cents (rate% and rate% + 100%), and the ratio is rounded to 6 places as the table prints it."
+    refuses: [person.plan_screen]
+    note: "Step 4 comes from the Rate Table for Self-Employed (whole-percentage rates), which shows rate/(1+rate) to six decimals, for example 10% gives 0.090909. The tool computes that ratio rounded half-up to six places; this reproduces the table entries. Rates that are not whole percentages or above 25% are screened by person.plan_screen."
 
   - id: "person.lineStep 6"
     printed: "Step 6"
     label: "Multiply $350,000 by your plan contribution rate (not the reduced rate)"
     type: NonNegDollars
     expr: {op: prorate, amount: person.h_comp_limit, part: person.h_sep_rate_c, whole: person.h_hundred, places: 2}
-    note: "A whole-percent plan rate is exact at two decimal places. Rates that are not whole percents, or that are above 25%, fall under person.plan_screen."
 
   - id: "person.lineStep 7"
     printed: "Step 7"
@@ -833,7 +819,7 @@ lines:
 
   - id: "person.lineStep 8"
     printed: "Step 8"
-    label: "Contribution dollar limit ($70,000)"
+    label: "Contribution dollar limit"
     type: NonNegDollars
     expr: {op: param, ref: ret.sep_dollar_limit}
 
@@ -842,10 +828,14 @@ lines:
     label: "Maximum deductible contribution (the smaller of step 7 or step 8; no elective deferrals)"
     type: NonNegDollars
     expr: {op: smaller_of, of: ["person.lineStep 7", "person.lineStep 8"]}
-    refuses: [person.plan_screen]
-    note: "A SEP has no elective deferrals (SARSEPs are screened), so per step 8 steps 9 through 20 are skipped."
+    note: "A SEP has no elective deferrals, so steps 9 through 20 are skipped, as the worksheet directs."
 
-  # ---- Required intermediate values ----
+  # ---------- general helpers ----------
+  - id: person.h_zero
+    printed: "(helper)"
+    label: "Zero"
+    type: NonNegDollars
+    expr: {op: param, ref: sales.zero}
 
   - id: person.one
     printed: "(helper)"
@@ -853,9 +843,22 @@ lines:
     type: Count
     expr: {op: param, ref: person.one}
 
+  # ---------- educator expenses ----------
+  - id: person.h_educator_max
+    printed: "(helper)"
+    label: "Up to $300"
+    type: NonNegDollars
+    expr: {op: param, ref: s1.educator_max}
+
+  - id: person.h_educator_limited
+    printed: "(helper)"
+    label: "Qualified educator expenses, up to $300"
+    type: NonNegDollars
+    expr: {op: smaller_of, of: [person.educator_expenses, person.h_educator_max]}
+
   - id: person.educator_deduction
     printed: "(helper)"
-    label: "This person's educator expense deduction (up to $300 of qualified expenses if an eligible educator)"
+    label: "This person's educator expense deduction"
     type: NonNegDollars
     expr:
       op: choose
@@ -865,41 +868,44 @@ lines:
         - guard: {op: test, eq: [person.eligible_educator, {const: false}]}
           then: person.h_zero
 
+  # ---------- HSA ----------
   - id: person.hsa_forms
     printed: "(helper)"
     label: "Number of Forms 8889 entered for this person"
     type: Count
     expr: {op: sum_over, collection: f8889, field: f8889.one}
 
+  - id: person.h_hsa_repeated
+    printed: "(helper)"
+    label: "More than one Form 8889 entered for this person"
+    type: Bool
+    expr: {op: test, gt: [person.hsa_forms, {param: person.one}]}
+
   - id: person.hsa_split
     printed: "(helper)"
-    label: "This person's Form 8889 uses the spouse rule of line 6"
+    label: "This persons Form 8889 uses the spouse rule of line 6"
     type: Count
     expr: {op: sum_over, collection: f8889, field: f8889.one, where: {op: test, eq: [f8889.split, {const: true}]}}
 
   - id: person.hsa_agreed
     printed: "(helper)"
-    label: "This person's Form 8889 uses an agreed allocation under the spouse rule of line 6"
+    label: "This persons Form 8889 uses an agreed allocation under the spouse rule of line 6"
     type: Count
     expr:
       op: sum_over
       collection: f8889
       field: f8889.one
-      where:
-        op: test
-        all:
-          - {op: test, eq: [f8889.split, {const: true}]}
-          - {op: test, eq: [f8889.allocation, {const: "agreed"}]}
+      where: {op: test, all: [{op: test, eq: [f8889.split, {const: true}]}, {op: test, eq: [f8889.allocation, {const: "agreed"}]}]}
 
   - id: person.hsa_step1
     printed: "(helper)"
-    label: "This person's Step 1 limit under the spouse rule of line 6"
+    label: "This persons Step 1 limit under the spouse rule of line 6"
     type: NonNegDollars
     expr: {op: sum_over, collection: f8889, field: f8889.step1, where: {op: test, eq: [f8889.split, {const: true}]}}
 
   - id: person.hsa_share
     printed: "(helper)"
-    label: "This person's part of the Step 1 limit under the spouse rule of line 6"
+    label: "This persons part of the Step 1 limit under the spouse rule of line 6"
     type: NonNegDollars
     expr: {op: sum_over, collection: f8889, field: f8889.share, where: {op: test, eq: [f8889.split, {const: true}]}}
 
@@ -908,6 +914,8 @@ lines:
     label: "Form 8889 line 13 for this person"
     type: NonNegDollars
     expr: {op: sum_over, collection: f8889, field: f8889.line13}
+    refuses: [person.h_hsa_repeated]
+    note: "The instructions call for one Form 8889 per spouse (a controlling form when there are several HSAs). More than one entry for a person is refused rather than combined."
 
   - id: person.hsa_taxable
     printed: "(helper)"
@@ -921,6 +929,7 @@ lines:
     type: NonNegDollars
     expr: {op: sum_over, collection: f8889, field: f8889.line17b}
 
+  # ---------- tips and overtime ----------
   - id: person.tip_employers
     printed: "(helper)"
     label: "Number of employers that paid this person qualified tips"
@@ -951,6 +960,7 @@ lines:
     type: NonNegDollars
     expr: {op: sum_over, collection: otjob, field: otjob.col_b}
 
+  # ---------- W-2 totals ----------
   - id: person.box1
     printed: "(helper)"
     label: "Total W-2 box 1 for this person"
@@ -975,6 +985,7 @@ lines:
     type: NonNegDollars
     expr: {op: sum_over, collection: w2, field: w2.box6}
 
+  # ---------- Schedule C totals ----------
   - id: person.sc_count
     printed: "(helper)"
     label: "Number of Schedules C for this person"
@@ -1028,59 +1039,17 @@ lines:
     label: "This person's Schedule C net profit or loss (all businesses)"
     type: Dollars
     expr: {op: sum_over, collection: sc, field: sc.result}
-
-  - id: person.se_line6
-    printed: "(helper)"
-    label: "Schedule SE line 6 for this person (add lines 4c and 5b; line 5b is zero; if line 4c is less than $400, stop)"
-    type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - guard: {op: test, eq: [person.h_se_owes, {const: true}]}
-          then: person.h_se_line4a
-        - guard: {op: test, eq: [person.h_se_owes, {const: false}]}
-          then: person.h_zero
-    refuses: [person.se_screen]
-    note: "Lines 1a, 1b, 4b, 5a and 5b (farm, CRP, optional methods, church employee income) are zero in the cases this tool computes; the other cases fall under person.se_screen. When line 4c is under $400 the schedule stops, and that case is carried as zero."
-
-  - id: person.se_line12
-    printed: "(helper)"
-    label: "Schedule SE line 12 (self-employment tax) for this person. Add lines 10 and 11"
-    type: NonNegDollars
-    expr: {op: sum, of: [person.h_se_line10, person.h_se_line11]}
-    refuses: [person.rrta]
-    note: "Line 8a includes railroad retirement (tier 1) compensation, which this tool does not take; RRTA is refused."
-
-  - id: person.se_line13
-    printed: "(helper)"
-    label: "Schedule SE line 13 (deduction for one-half of self-employment tax). Multiply line 12 by 50% (0.50)"
-    type: NonNegDollars
-    expr: {op: multiply_rate, amount: person.se_line12, rate: {param: se.rate_50}}
-
-  - id: person.s16
-    printed: "(helper)"
-    label: "Schedule 1 line 16 for this person (self-employed SEP or SIMPLE contributions for yourself, not exceeding the maximum deductible contribution)"
-    type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - guard: {op: test, eq: [person.plan, {const: "none"}]}
-          then: person.h_zero
-        - guard: {op: test, eq: [person.plan, {const: "sep"}]}
-          then: person.h_sep_deduction
-        - guard: {op: test, eq: [person.plan, {const: "simple"}]}
-          then: person.h_simple_deduction
-    refuses: [person.plan_screen]
+    note: "Line 31 is entered after the at-risk rules (i1040sc line 31). sc.result is the amount carried to Schedule 1 line 3 and Schedule SE line 2, so it is used here."
 
   - id: person.positive_profits
     printed: "(helper)"
-    label: "Total of all net profits of this person's businesses (losses not included), Form 7206 line 5"
+    label: "Total of all net profits of this person's businesses (losses not included)"
     type: NonNegDollars
-    expr: {op: sum_over, collection: sc, field: sc.line31, where: {op: test, gt: [sc.line31, {const: 0}]}}
+    expr: {op: sum_over, collection: sc, field: sc.profit_pos}
 
   - id: person.sehi
     printed: "(helper)"
-    label: "Self-employed health insurance deduction, this person (Form 7206 line 14, one form per business)"
+    label: "Self-employed health insurance deduction, this person"
     type: NonNegDollars
     expr: {op: sum_over, collection: sc, field: sc.f7206_line14}
 
@@ -1090,30 +1059,140 @@ lines:
     type: Dollars
     expr: {op: sum_over, collection: sc, field: sc.qbi}
 
-  - id: person.eic_se
-    printed: "(helper)"
-    label: "Worksheet B, Parts 1 and 2, for this person (line 1e if filing Schedule SE; otherwise line 2c)"
-    type: Dollars
-    expr:
-      op: choose
-      alternatives:
-        - guard: {op: test, eq: [person.h_se_owes, {const: true}]}
-          then: person.h_se_net
-        - guard: {op: test, eq: [person.h_se_owes, {const: false}]}
-          then: person.h_se_line2
-    note: "Part 1: 1a is Schedule SE line 3, 1b is zero (4b and 5a are not used), and 1d is line 13. Part 2 is the Schedule C line 31 amount without statutory employee income. A person is taken to file Schedule SE when line 4c is $400 or more."
-
   - id: person.sc_1a
     printed: "(helper)"
     label: "This person's Schedules C with Schedule 1-A tips or overtime"
     type: Count
     expr: {op: sum_over, collection: sc, field: sc.one, where: {op: test, eq: [sc.tips_ot, {const: true}]}}
 
+  # ---------- Schedule SE ----------
+  - id: person.h_se_line3
+    printed: "(helper)"
+    label: "Schedule SE line 3: combine lines 1a, 1b and 2 (line 2 is Schedule C, line 31)"
+    type: Dollars
+    expr: {op: copy, from: person.sc_total}
+    refuses: [person.se_screen, person.rrta]
+    note: "Lines 1a and 1b (farm and CRP) are outside this tool and are covered by the screens, so line 3 is line 2."
+
+  - id: person.h_se_positive
+    printed: "(helper)"
+    label: "Line 3 is more than zero"
+    type: Bool
+    expr: {op: test, gt: [person.h_se_line3, {const: 0}]}
+
+  - id: person.h_se_line4a_pos
+    printed: "(helper)"
+    label: "Line 3 multiplied by 92.35% (0.9235)"
+    type: Dollars
+    expr: {op: multiply_rate, amount: person.h_se_line3, rate: {param: se.rate_9235}}
+
+  - id: person.h_se_line4a
+    printed: "(helper)"
+    label: "If line 3 is more than zero, multiply line 3 by 92.35% (0.9235). Otherwise, enter amount from line 3"
+    type: Dollars
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [person.h_se_positive, {const: true}]}
+          then: person.h_se_line4a_pos
+        - guard: {op: test, eq: [person.h_se_positive, {const: false}]}
+          then: person.h_se_line3
+
+  - id: person.h_se_owes
+    printed: "(helper)"
+    label: "Line 4c (line 4a; no optional methods) is $400 or more"
+    type: Bool
+    expr: {op: test, ge: [person.h_se_line4a, {param: se.floor}]}
+
+  - id: person.se_line6
+    printed: "(helper)"
+    label: "Schedule SE line 6 for this person"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [person.h_se_owes, {const: true}]}
+          then: person.h_se_line4a_pos
+        - guard: {op: test, eq: [person.h_se_owes, {const: false}]}
+          then: person.h_zero
+    refuses: [person.se_screen, person.rrta]
+    note: "Line 4b (optional methods) and lines 5a/5b (church employee income) are screened. Line 6 is line 4c. If line 4c is less than $400, no self-employment tax is owed, so line 6 is zero."
+
+  - id: person.h_se_line7
+    printed: "(helper)"
+    label: "Maximum amount of combined wages and self-employment earnings subject to social security tax ($176,100)"
+    type: NonNegDollars
+    expr: {op: param, ref: se.wage_base}
+
+  - id: person.h_se_line9
+    printed: "(helper)"
+    label: "Subtract line 8d (total social security wages and tips, boxes 3 and 7) from line 7. If zero or less, enter -0-"
+    type: NonNegDollars
+    expr: {op: subtract_floor0, from: person.h_se_line7, take: person.linewages}
+    note: "Lines 8b and 8c (Forms 4137 and 8919) are outside this tool, so line 8d is line 8a, which is this person's W-2 boxes 3 and 7."
+
+  - id: person.h_se_ss_base
+    printed: "(helper)"
+    label: "The smaller of line 6 or line 9"
+    type: NonNegDollars
+    expr: {op: smaller_of, of: [person.se_line6, person.h_se_line9]}
+
+  - id: person.h_se_line10
+    printed: "(helper)"
+    label: "Multiply the smaller of line 6 or line 9 by 12.4% (0.124)"
+    type: NonNegDollars
+    expr: {op: multiply_rate, amount: person.h_se_ss_base, rate: {param: se.rate_124}}
+
+  - id: person.h_se_line11
+    printed: "(helper)"
+    label: "Multiply line 6 by 2.9% (0.029)"
+    type: NonNegDollars
+    expr: {op: multiply_rate, amount: person.se_line6, rate: {param: se.rate_029}}
+
+  - id: person.se_line12
+    printed: "(helper)"
+    label: "Schedule SE line 12 (self-employment tax) for this person"
+    type: NonNegDollars
+    expr: {op: sum, of: [person.h_se_line10, person.h_se_line11]}
+
+  - id: person.se_line13
+    printed: "(helper)"
+    label: "Schedule SE line 13 (deduction for one-half of self-employment tax) for this person"
+    type: NonNegDollars
+    expr: {op: multiply_rate, amount: person.se_line12, rate: {param: se.rate_50}}
+
+  # ---------- EIC Worksheet B ----------
+  - id: person.h_eic_part1
+    printed: "(helper)"
+    label: "Worksheet B line 1e: Schedule SE line 3 (plus lines 4b and 5a, none here) less Schedule SE line 13"
+    type: Dollars
+    expr: {op: subtract, from: person.h_se_line3, take: person.se_line13}
+
+  - id: person.eic_se
+    printed: "(helper)"
+    label: "Worksheet B, Parts 1 and 2, for this person"
+    type: Dollars
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [person.h_se_owes, {const: true}]}
+          then: person.h_eic_part1
+        - guard: {op: test, eq: [person.h_se_owes, {const: false}]}
+          then: person.sc_total
+    note: "Part 1 applies when the person files Schedule SE (line 4c is $400 or more). Otherwise Part 2 applies, which is the Schedule C line 31 profit or loss; farm and K-1 amounts are outside this tool."
+
+  # ---------- dependent care ----------
   - id: person.dc_benefits
     printed: "(helper)"
     label: "This person's dependent care benefits from Forms W-2 box 10, less the part reported in box 1"
     type: NonNegDollars
     expr: {op: sum_over, collection: w2, field: w2.dc_benefits}
+
+  - id: person.h_dc_box10
+    printed: "(helper)"
+    label: "Total of box 10 of this person's Forms W-2"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: w2, field: w2.box10}
 
   - id: person.dc_has_box10
     printed: "(helper)"
@@ -1121,20 +1200,44 @@ lines:
     type: Bool
     expr: {op: test, gt: [person.h_dc_box10, {const: 0}]}
 
+  - id: person.h_dc_1e_mine
+    printed: "(helper)"
+    label: "Form 1040 line 1e is counted in this person's earned income"
+    type: Bool
+    expr:
+      op: test
+      any:
+        - {op: test, all: [{op: test, eq: [f2441.one_box10, {const: true}]}, {op: test, eq: [person.dc_has_box10, {const: true}]}]}
+        - {op: test, all: [{op: test, eq: [f2441.one_box10, {const: false}]}, {op: test, eq: [person.role, {const: "taxpayer"}]}]}
+    note: "The instructions do not say whose earned income line 1e belongs to on a joint return. Reading chosen: it belongs to the only person whose Forms W-2 show box 10; otherwise it is placed with the taxpayer. Joint-return cases the attribution cannot settle are refused through f2441.attrib_gate."
+
+  - id: person.h_dc_1e
+    printed: "(helper)"
+    label: "This person's share of Form 1040 line 1e (taxable dependent care benefits)"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [person.h_dc_1e_mine, {const: true}]}
+          then: f1040.line1e
+        - guard: {op: test, eq: [person.h_dc_1e_mine, {const: false}]}
+          then: person.h_zero
+    refuses: [f2441.attrib_gate]
+
   - id: person.dc_earned
     printed: "(helper)"
     label: "This person's earned income for Form 2441 lines 4 and 5: Form W-2 box 1, the person's share of line 1e, and Schedule SE line 3 less the deduction on Schedule 1 line 15 (or the Schedule C profit or loss when no Schedule SE is filed)"
     type: Dollars
-    expr: {op: sum, of: [person.box1, person.h_dc_1e, person.h_se_net]}
-    refuses: [person.h_dc_1e_split]
-    note: "Line 1e is one return-level amount. It is assigned to the only person whose Forms W-2 show box 10, or to the taxpayer when nobody's do. When both spouses have box 10 the split is open, so the tool refuses. Statutory employee Schedule C line 1 (item 3 of the instructions) is not added, following the label given."
+    expr: {op: sum, of: [person.box1, person.h_dc_1e, person.eic_se]}
+    note: "Line 1z is read as line 1a (box 1) plus line 1e in this tool's scope. Following p503, self-employment earnings are counted even under $400 and a net loss reduces earned income."
 
   - id: person.dc_earned_b
     printed: "(helper)"
     label: "This person's earned income for Form 2441 lines 18 and 19: as for lines 4 and 5, without the dependent care benefits of line 12 (so without line 1e)"
     type: Dollars
-    expr: {op: sum, of: [person.box1, person.h_se_net]}
+    expr: {op: sum, of: [person.box1, person.eic_se]}
 
+  # ---------- saver's credit ----------
   - id: person.sav_ineligible
     printed: "(helper)"
     label: "Born after January 1, 2008, claimed as a dependent on someone else's 2025 return, or a student"
@@ -1153,6 +1256,24 @@ lines:
     expr: {op: sum, of: [person.ira_contrib, person.sav_roth]}
     refuses: [person.sav_able]
 
+  - id: person.h_sav_w2
+    printed: "(helper)"
+    label: "Elective deferrals and designated Roth contributions for 2025 from Forms W-2, box 12"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: w2, field: w2.sav_deferral}
+
+  - id: person.h_sav_simple
+    printed: "(helper)"
+    label: "This self-employed person's own SIMPLE IRA salary reduction contributions"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [person.plan, {const: "simple"}]}
+          then: person.h_simple_deferral_allowed
+        - guard: {op: test, ne: [person.plan, {const: "simple"}]}
+          then: person.h_zero
+
   - id: person.sav_line2
     printed: "(helper)"
     label: "Form 8880 line 2 for this person (box 12 deferrals, voluntary contributions and own SIMPLE salary reduction contributions)"
@@ -1160,6 +1281,7 @@ lines:
     expr: {op: sum, of: [person.h_sav_w2, person.sav_voluntary, person.h_sav_simple]}
     refuses: [person.sav_excess]
 
+  # ---------- IRA deduction worksheet ----------
   - id: person.ira_contrib
     printed: "(helper)"
     label: "This person's traditional IRA contributions for 2025 (zero if the traditional IRA question was answered No)"
@@ -1174,37 +1296,76 @@ lines:
 
   - id: person.ira_cov
     printed: "(helper)"
-    label: "Covered by a retirement plan (worksheet line 1a or 1b for this person): at work, or self-employed with a SEP or SIMPLE"
+    label: "Covered by a retirement plan (worksheet line 1a or 1b for this person)"
     type: Bool
     expr:
       op: test
       any:
         - {op: test, eq: [person.ira_work_plan, {const: true}]}
         - {op: test, ne: [person.plan, {const: "none"}]}
-    note: "The rule that a married person filing separately is treated as covered when the spouse is covered (unless they lived apart) needs the spouse's facts, which are not on a separate return. That case is not encoded here."
+    note: "Coverage includes self-employment with a SEP or SIMPLE ('You are also covered by a plan if you were self-employed and had a SEP, SIMPLE, or qualified retirement plan'). The rule that treats a separate filer living with a covered spouse as covered is not encoded here."
 
-  - id: person.ira_line2
+  - id: person.h_ira_limit_u50
     printed: "(helper)"
-    label: "Worksheet line 2 for this person's column ($89,000; $146,000 if married filing jointly or qualifying surviving spouse, $246,000 for a joint filer not covered; $10,000 married filing separately)"
+    label: "$7,000 if under age 50 at the end of 2025"
+    type: NonNegDollars
+    expr: {op: param, ref: ira.limit}
+
+  - id: person.h_ira_limit_50
+    printed: "(helper)"
+    label: "$8,000 if age 50 or older at the end of 2025"
+    type: NonNegDollars
+    expr: {op: param, ref: ira.limit_50}
+
+  - id: person.h_ira_limit
+    printed: "(helper)"
+    label: "The applicable amount for this person"
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [ira.joint, {const: true}]}
-              - {op: test, eq: [person.ira_cov, {const: false}]}
+        - guard: {op: test, eq: [person.ira_age50, {const: true}]}
+          then: person.h_ira_limit_50
+        - guard: {op: test, eq: [person.ira_age50, {const: false}]}
+          then: person.h_ira_limit_u50
+
+  - id: person.h_ira_nc_joint
+    printed: "(helper)"
+    label: "Married filing jointly and this person was not covered by a retirement plan"
+    type: Bool
+    expr: {op: test, all: [{op: test, eq: [ira.joint, {const: true}]}, {op: test, eq: [person.ira_cov, {const: false}]}]}
+
+  - id: person.h_ira_line2_status
+    printed: "(helper)"
+    label: "Line 2 amount for the filing status ($89,000; $146,000 if married filing jointly or qualifying surviving spouse; $10,000 if married filing separately)"
+    type: NonNegDollars
+    expr: {op: param, ref: ira.line2}
+
+  - id: person.h_ira_line2_nc
+    printed: "(helper)"
+    label: "$246,000 for the person who wasn't covered by a plan"
+    type: NonNegDollars
+    expr: {op: param, ref: ira.line2_not_covered}
+
+  - id: person.h_ira_mfs_apart
+    printed: "(helper)"
+    label: "Married filing separately and lived apart from your spouse for all of 2025"
+    type: Bool
+    expr: {op: test, all: [{op: test, eq: [f1040.status, {const: "mfs"}]}, {op: test, eq: [ssb.lived_apart, {const: true}]}]}
+
+  - id: person.ira_line2
+    printed: "(helper)"
+    label: "Worksheet line 2 for this person's column"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [person.h_ira_nc_joint, {const: true}]}
           then: person.h_ira_line2_nc
-        - guard:
-            op: test
-            not:
-              op: test
-              all:
-                - {op: test, eq: [ira.joint, {const: true}]}
-                - {op: test, eq: [person.ira_cov, {const: false}]}
+        - guard: {op: test, eq: [person.h_ira_nc_joint, {const: false}]}
           then: person.h_ira_line2_status
-    note: "The status-keyed parameter gives married filing separately $10,000 (lived with spouse). The $89,000 for a separate filer who lived apart all year is not separately encoded."
+    refuses: [person.h_ira_mfs_apart]
+    note: "A separate filer who lived apart from the spouse all year enters $89,000, and is not treated as covered through the spouse. No parameter gives $89,000 for that status, so this case is refused."
 
   - id: person.ira_line6
     printed: "(helper)"
@@ -1212,411 +1373,21 @@ lines:
     type: NonNegDollars
     expr: {op: subtract_floor0, from: person.ira_line2, take: ira.line5}
 
-  - id: person.ira_line7
+  - id: person.h_ira_line6_yes
     printed: "(helper)"
-    label: "Worksheet line 7 for this person's column"
-    type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - guard: {op: test, eq: [ira.anyone_covered, {const: true}]}
-          then: person.h_ira_line7_figured
-        - guard: {op: test, eq: [ira.anyone_covered, {const: false}]}
-          then: person.h_ira_limit
-    note: "When line 6 is No (line 5 not less than line 2), the worksheet stops: no contributions are deductible. Line 7 is then zero and the $200 minimum does not apply."
-
-  - id: person.ira_deduction
-    printed: "(helper)"
-    label: "This person's IRA deduction (worksheet line 12: the smallest of line 7, 10, or 11; zero with no traditional IRA contributions)"
-    type: NonNegDollars
-    expr: {op: smaller_of, of: [person.h_ira_7or10, person.ira_contrib]}
-    refuses: [person.ira_excess]
-
-  - id: person.ira_nondeductible
-    printed: "(helper)"
-    label: "This person's nondeductible traditional IRA contributions for 2025 (Form 8606 line 1: the smaller of line 10 or 11 of the worksheet, less line 12)"
-    type: NonNegDollars
-    expr: {op: subtract_floor0, from: person.h_ira_10or11, take: person.ira_deduction}
-
-  - id: person.ira_files_8606
-    printed: "(helper)"
-    label: "This person files Form 8606 for nondeductible contributions to a traditional IRA for 2025"
+    label: "Line 5 is less than line 2 in this person's column"
     type: Bool
-    expr: {op: test, gt: [person.ira_nondeductible, {const: 0}]}
-
-  - id: person.ira_8606_line2
-    printed: "(helper)"
-    label: "Form 8606 line 2 for this person (asked only when the person files Form 8606)"
-    type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - guard: {op: test, eq: [person.ira_files_8606, {const: true}]}
-          then: person.ira_basis
-        - guard: {op: test, eq: [person.ira_files_8606, {const: false}]}
-          then: person.h_zero
-
-  - id: person.ira_dist_gate
-    printed: "(helper)"
-    label: "Nondeductible contributions for 2025 with a 2025 traditional IRA distribution or Roth conversion"
-    type: Bool
-    expr:
-      op: test
-      all:
-        - {op: test, eq: [person.ira_files_8606, {const: true}]}
-        - {op: test, eq: [person.ira_dist, {const: true}]}
-
-  - id: person.ira_8606_line14
-    printed: "(helper)"
-    label: "Form 8606 line 14 for this person (total basis in traditional IRAs for 2025 and earlier years); with no distribution, the amount from line 3"
-    type: NonNegDollars
-    expr: {op: copy, from: person.h_8606_line3}
-    refuses: [person.ira_dist_gate]
-
-  - id: person.ira_ssb
-    printed: "(helper)"
-    label: "This person's IRA deduction as the Social Security Benefits Worksheet reads it (zero with no traditional IRA contributions)"
-    type: NonNegDollars
-    expr: {op: smaller_of, of: [person.h_ira_ssb_lim, person.ira_contrib]}
-    note: "The Social Security Benefits Worksheet is used only when no one is covered by a retirement plan or there are no traditional IRA contributions; otherwise ssb.pub915 applies. In that case worksheet line 7 is the $7,000/$8,000 amount, so line 12 is the smallest of that amount, line 10 and line 11, and does not depend on AGI."
-
-  - id: person.ira_se
-    printed: "(helper)"
-    label: "This person's part of worksheet line 9: net earnings from self-employment minus deductions on Schedule 1, lines 15 and 16; if zero or less, zero (zero without a Schedule C)"
-    type: NonNegDollars
-    expr: {op: subtract_floor0, from: person.sc_total, take: person.h_ira_se_take}
-    note: "Net earnings from self-employment are read as the Schedule C net profit (line 31)."
-
-  # ---- Additional helpers ----
-
-  - id: person.h_zero
-    printed: "(helper)"
-    label: "Zero"
-    type: NonNegDollars
-    expr: {op: param, ref: sales.zero}
-
-  - id: person.h_credit_ok
-    printed: "(helper)"
-    label: "More than one employer, wages over $176,100, and no one employer withheld more than $10,918.20"
-    type: Bool
-    expr:
-      op: test
-      all:
-        - {op: test, eq: [person.lineeligible, {const: true}]}
-        - {op: test, eq: [person.lineover, {const: false}]}
-
-  - id: person.h_educator_max
-    printed: "(helper)"
-    label: "$300"
-    type: NonNegDollars
-    expr: {op: param, ref: s1.educator_max}
-
-  - id: person.h_educator_limited
-    printed: "(helper)"
-    label: "Qualified educator expenses, up to $300"
-    type: NonNegDollars
-    expr: {op: smaller_of, of: [person.educator_expenses, person.h_educator_max]}
-
-  - id: person.h_se_line2
-    printed: "(helper)"
-    label: "Schedule SE line 2 (and line 3): net profit or (loss) from Schedule C, line 31, not counting statutory employee Schedules C"
-    type: Dollars
-    expr: {op: sum_over, collection: sc, field: sc.result, where: {op: test, eq: [sc.statutory, {const: false}]}}
-
-  - id: person.h_se_positive
-    printed: "(helper)"
-    label: "Line 3 is more than zero"
-    type: Bool
-    expr: {op: test, gt: [person.h_se_line2, {const: 0}]}
-
-  - id: person.h_se_4a_pos
-    printed: "(helper)"
-    label: "Line 3 multiplied by 92.35% (0.9235)"
-    type: Dollars
-    expr: {op: multiply_rate, amount: person.h_se_line2, rate: {param: se.rate_9235}}
-
-  - id: person.h_se_line4a
-    printed: "(helper)"
-    label: "Schedule SE line 4a (and 4c): if line 3 is more than zero, multiply line 3 by 92.35%; otherwise, the amount from line 3"
-    type: Dollars
-    expr:
-      op: choose
-      alternatives:
-        - guard: {op: test, eq: [person.h_se_positive, {const: true}]}
-          then: person.h_se_4a_pos
-        - guard: {op: test, eq: [person.h_se_positive, {const: false}]}
-          then: person.h_se_line2
-
-  - id: person.h_se_owes
-    printed: "(helper)"
-    label: "Line 4c is $400 or more"
-    type: Bool
-    expr: {op: test, ge: [person.h_se_line4a, {param: se.floor}]}
-
-  - id: person.h_se_line9
-    printed: "(helper)"
-    label: "Schedule SE line 9: subtract line 8d (social security wages and tips) from line 7 ($176,100); if zero or less, zero"
-    type: NonNegDollars
-    expr: {op: subtract_floor0, from: person.h_se_line7, take: person.linewages}
-
-  - id: person.h_se_line7
-    printed: "(helper)"
-    label: "Schedule SE line 7: $176,100"
-    type: NonNegDollars
-    expr: {op: param, ref: se.wage_base}
-
-  - id: person.h_se_ssbase
-    printed: "(helper)"
-    label: "The smaller of line 6 or line 9"
-    type: NonNegDollars
-    expr: {op: smaller_of, of: [person.se_line6, person.h_se_line9]}
-
-  - id: person.h_se_line10
-    printed: "(helper)"
-    label: "Schedule SE line 10: multiply the smaller of line 6 or line 9 by 12.4% (0.124)"
-    type: NonNegDollars
-    expr: {op: multiply_rate, amount: person.h_se_ssbase, rate: {param: se.rate_124}}
-
-  - id: person.h_se_line11
-    printed: "(helper)"
-    label: "Schedule SE line 11: multiply line 6 by 2.9% (0.029)"
-    type: NonNegDollars
-    expr: {op: multiply_rate, amount: person.se_line6, rate: {param: se.rate_029}}
-
-  - id: person.h_se_net
-    printed: "(helper)"
-    label: "Schedule SE line 3 less the deduction on Schedule 1 line 15 (Worksheet B line 1e)"
-    type: Dollars
-    expr: {op: subtract, from: person.h_se_line2, take: person.se_line13}
-
-  - id: person.h_cent
-    printed: "(helper)"
-    label: "One cent"
-    type: NonNegDollars
-    expr: {op: param, ref: sc.one_cent}
-
-  - id: person.h_hundred
-    printed: "(helper)"
-    label: "100%, as cents"
-    type: NonNegDollars
-    expr: {op: param, ref: sc.hundred_cents}
-
-  - id: person.h_sep_rate_c
-    printed: "(helper)"
-    label: "The plan contribution rate, as cents"
-    type: NonNegDollars
-    expr: {op: multiply_count, amount: person.h_cent, count: person.sep_rate}
-
-  - id: person.h_sep_rate_plus
-    printed: "(helper)"
-    label: "The plan rate plus 1 (100%), as cents"
-    type: NonNegDollars
-    expr: {op: sum, of: [person.h_sep_rate_c, person.h_hundred]}
-
-  - id: person.h_comp_limit
-    printed: "(helper)"
-    label: "$350,000 annual compensation limit"
-    type: NonNegDollars
-    expr: {op: param, ref: ret.comp_limit}
-
-  - id: person.h_sep_deduction
-    printed: "(helper)"
-    label: "SEP deduction for yourself: your actual contribution, not to exceed your maximum deductible contribution"
-    type: NonNegDollars
-    expr: {op: smaller_of, of: [person.sep_contrib, "person.lineStep 21"]}
-    note: "Contributions above step 21 are not deducted this year. Their carryover to later years is not tracked."
-
-  - id: person.h_simple_comp
-    printed: "(helper)"
-    label: "SIMPLE compensation: net earnings from self-employment (Schedule SE line 4) before subtracting contributions for yourself, not less than zero"
-    type: NonNegDollars
-    expr: {op: larger_of, of: [person.h_se_line4a, person.h_zero]}
-
-  - id: person.h_simple_cap
-    printed: "(helper)"
-    label: "Salary reduction contribution limit ($16,500)"
-    type: NonNegDollars
-    expr: {op: param, ref: ret.simple_limit}
-
-  - id: person.h_simple_regular
-    printed: "(helper)"
-    label: "Salary reduction contributions that are not catch-up contributions (not more than $16,500)"
-    type: NonNegDollars
-    expr: {op: smaller_of, of: [person.simple_deferral, person.h_simple_cap]}
-
-  - id: person.h_simple_catchup
-    printed: "(helper)"
-    label: "Catch-up contributions to a SIMPLE IRA (age 50 or older, salary reduction contributions above $16,500)"
-    type: Bool
-    expr:
-      op: test
-      all:
-        - {op: test, eq: [person.plan, {const: "simple"}]}
-        - {op: test, ne: [person.simple_age, {const: "under50"}]}
-        - {op: test, gt: [person.simple_deferral, person.h_simple_cap]}
-    note: "The catch-up limits ($3,500; $5,250 for ages 60 to 63) have no year parameter in the register, so catch-up contributions are refused rather than computed."
-
-  - id: person.h_match_3pct
-    printed: "(helper)"
-    label: "3% of compensation"
-    type: NonNegDollars
-    expr: {op: multiply_rate, amount: person.h_simple_comp, rate: {param: ret.match_rate}}
-
-  - id: person.h_match_max
-    printed: "(helper)"
-    label: "Maximum matching contribution (salary reduction contributions matched dollar for dollar up to 3% of compensation)"
-    type: NonNegDollars
-    expr: {op: smaller_of, of: [person.h_simple_regular, person.h_match_3pct]}
-
-  - id: person.h_ne_comp
-    printed: "(helper)"
-    label: "Compensation taken into account (not more than $350,000)"
-    type: NonNegDollars
-    expr: {op: smaller_of, of: [person.h_simple_comp, person.h_comp_limit]}
-
-  - id: person.h_ne_max
-    printed: "(helper)"
-    label: "Nonelective contribution: 2% of compensation"
-    type: NonNegDollars
-    expr: {op: multiply_rate, amount: person.h_ne_comp, rate: {param: ret.nonelective_rate}}
-
-  - id: person.h_employer_max
-    printed: "(helper)"
-    label: "Maximum employer contribution for the plan's formula"
-    type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - guard: {op: test, eq: [person.simple_kind, {const: "match"}]}
-          then: person.h_match_max
-        - guard: {op: test, eq: [person.simple_kind, {const: "nonelective"}]}
-          then: person.h_ne_max
-
-  - id: person.h_employer_allowed
-    printed: "(helper)"
-    label: "Employer contributions for yourself, not more than the formula allows"
-    type: NonNegDollars
-    expr: {op: smaller_of, of: [person.simple_employer, person.h_employer_max]}
-
-  - id: person.h_simple_deduction
-    printed: "(helper)"
-    label: "SIMPLE deduction for yourself (salary reduction plus employer contributions)"
-    type: NonNegDollars
-    expr: {op: sum, of: [person.h_simple_regular, person.h_employer_allowed]}
-    refuses: [person.h_simple_catchup]
-    note: "Contributions above the limits are left out of the deduction rather than refused."
-
-  - id: person.h_dc_box10
-    printed: "(helper)"
-    label: "Total of box 10 of this person's Forms W-2"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: w2, field: w2.box10}
-
-  - id: person.h_dc_1e_mine
-    printed: "(helper)"
-    label: "Form 1040 line 1e is counted in this person's earned income"
-    type: Bool
-    expr:
-      op: test
-      any:
-        - op: test
-          all:
-            - {op: test, eq: [person.dc_has_box10, {const: true}]}
-            - {op: test, eq: [f2441.one_box10, {const: true}]}
-        - op: test
-          all:
-            - {op: test, eq: [person.role, {const: "taxpayer"}]}
-            - {op: test, eq: [f2441.box10_persons, {const: 0}]}
-
-  - id: person.h_dc_1e
-    printed: "(helper)"
-    label: "This person's share of Form 1040 line 1e (taxable dependent care benefits)"
-    type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - guard: {op: test, eq: [person.h_dc_1e_mine, {const: true}]}
-          then: f1040.line1e
-        - guard: {op: test, eq: [person.h_dc_1e_mine, {const: false}]}
-          then: person.h_zero
-
-  - id: person.h_dc_1e_split
-    printed: "(helper)"
-    label: "Both spouses have Forms W-2 with box 10 and line 1e is more than zero (the share of line 1e is open)"
-    type: Bool
-    expr:
-      op: test
-      all:
-        - {op: test, eq: [person.dc_has_box10, {const: true}]}
-        - {op: test, eq: [f2441.one_box10, {const: false}]}
-        - {op: test, gt: [f1040.line1e, {const: 0}]}
-
-  - id: person.h_sav_w2
-    printed: "(helper)"
-    label: "Elective deferrals and designated Roth contributions for 2025 from Forms W-2 box 12"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: w2, field: w2.sav_deferral}
-
-  - id: person.h_sav_simple
-    printed: "(helper)"
-    label: "This self-employed person's own SIMPLE IRA salary reduction contributions (elective deferrals)"
-    type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - guard: {op: test, eq: [person.plan, {const: "simple"}]}
-          then: person.h_simple_regular
-        - guard: {op: test, ne: [person.plan, {const: "simple"}]}
-          then: person.h_zero
-
-  - id: person.h_ira_lim_under50
-    printed: "(helper)"
-    label: "$7,000"
-    type: NonNegDollars
-    expr: {op: param, ref: ira.limit}
-
-  - id: person.h_ira_lim_50
-    printed: "(helper)"
-    label: "$8,000"
-    type: NonNegDollars
-    expr: {op: param, ref: ira.limit_50}
-
-  - id: person.h_ira_limit
-    printed: "(helper)"
-    label: "$7,000 if under age 50 at the end of 2025; $8,000 if age 50 or older"
-    type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - guard: {op: test, eq: [person.ira_age50, {const: true}]}
-          then: person.h_ira_lim_50
-        - guard: {op: test, eq: [person.ira_age50, {const: false}]}
-          then: person.h_ira_lim_under50
-
-  - id: person.h_ira_line2_status
-    printed: "(helper)"
-    label: "Line 2 amount for the filing status"
-    type: NonNegDollars
-    expr: {op: param, ref: ira.line2}
-
-  - id: person.h_ira_line2_nc
-    printed: "(helper)"
-    label: "$246,000 for the person who wasn't covered by a plan (married filing jointly)"
-    type: NonNegDollars
-    expr: {op: param, ref: ira.line2_not_covered}
+    expr: {op: test, gt: [person.ira_line6, {const: 0}]}
 
   - id: person.h_ira_wide
     printed: "(helper)"
-    label: "This column takes 70%/80% and the $10,000 threshold: single, head of household or married filing separately, or the column of a joint filer not covered by a plan"
+    label: "This column takes the single rule (70% or 80%, the $10,000 threshold)"
     type: Bool
     expr:
       op: test
       any:
         - {op: test, eq: [ira.joint_type, {const: false}]}
-        - op: test
-          all:
-            - {op: test, eq: [ira.joint, {const: true}]}
-            - {op: test, eq: [person.ira_cov, {const: false}]}
+        - {op: test, eq: [person.h_ira_nc_joint, {const: true}]}
 
   - id: person.h_ira_full_narrow
     printed: "(helper)"
@@ -1632,7 +1403,7 @@ lines:
 
   - id: person.h_ira_full
     printed: "(helper)"
-    label: "The line 6 result at or above which the applicable amount is entered on line 7"
+    label: "The line 6 result at or above which this column takes the applicable amount"
     type: NonNegDollars
     expr:
       op: choose
@@ -1647,12 +1418,6 @@ lines:
     label: "The line 6 result is at or above the threshold"
     type: Bool
     expr: {op: test, ge: [person.ira_line6, person.h_ira_full]}
-
-  - id: person.h_ira_yes
-    printed: "(helper)"
-    label: "Line 5 is less than line 2 in this column (line 6 is Yes)"
-    type: Bool
-    expr: {op: test, gt: [person.ira_line6, {const: 0}]}
 
   - id: person.h_ira_p70
     printed: "(helper)"
@@ -1680,7 +1445,7 @@ lines:
 
   - id: person.h_ira_prod_wide
     printed: "(helper)"
-    label: "Line 6 multiplied by 70%, or by 80% if age 50 or older"
+    label: "Line 6 multiplied by 70% (0.70), or by 80% (0.80) if age 50 or older"
     type: NonNegDollars
     expr:
       op: choose
@@ -1692,7 +1457,7 @@ lines:
 
   - id: person.h_ira_prod_joint
     printed: "(helper)"
-    label: "Line 6 multiplied by 35%, or by 40% if age 50 or older"
+    label: "Line 6 multiplied by 35% (0.35), or by 40% (0.40) if age 50 or older"
     type: NonNegDollars
     expr:
       op: choose
@@ -1728,25 +1493,26 @@ lines:
 
   - id: person.h_ira_floor
     printed: "(helper)"
-    label: "If the result is $200 or more, enter the result; but if it is less than $200, enter $200"
+    label: "If the result is $200 or more, enter the result. But if it is less than $200, enter $200"
     type: NonNegDollars
     expr: {op: larger_of, of: [person.h_ira_rounded, person.h_ira_min]}
 
   - id: person.h_ira_below
     printed: "(helper)"
-    label: "Line 7 when the line 6 result is under the threshold (zero when line 6 is No)"
+    label: "Line 7 when the line 6 result is under the threshold (zero when line 5 is not less than line 2)"
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
-        - guard: {op: test, eq: [person.h_ira_yes, {const: true}]}
+        - guard: {op: test, eq: [person.h_ira_line6_yes, {const: true}]}
           then: person.h_ira_floor
-        - guard: {op: test, eq: [person.h_ira_yes, {const: false}]}
+        - guard: {op: test, eq: [person.h_ira_line6_yes, {const: false}]}
           then: person.h_zero
+    note: "When line 6 is answered No, the worksheet stops: 'None of your IRA contributions are deductible.' The $200 minimum therefore applies only when line 6 has a positive result."
 
-  - id: person.h_ira_line7_figured
+  - id: person.h_ira_line7_cov
     printed: "(helper)"
-    label: "Line 7 when someone is covered by a retirement plan (lines 2 through 6 completed)"
+    label: "Line 7 when someone is covered by a retirement plan"
     type: NonNegDollars
     expr:
       op: choose
@@ -1756,11 +1522,30 @@ lines:
         - guard: {op: test, eq: [person.h_ira_at_full, {const: false}]}
           then: person.h_ira_below
 
+  - id: person.ira_line7
+    printed: "(helper)"
+    label: "Worksheet line 7 for this person's column"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [ira.anyone_covered, {const: true}]}
+          then: person.h_ira_line7_cov
+        - guard: {op: test, eq: [ira.anyone_covered, {const: false}]}
+          then: person.h_ira_limit
+
   - id: person.h_ira_7or10
     printed: "(helper)"
     label: "The smaller of line 7 for this column and line 10"
     type: NonNegDollars
     expr: {op: smaller_of, of: [person.ira_line7, ira.line10]}
+
+  - id: person.ira_deduction
+    printed: "(helper)"
+    label: "This person's IRA deduction (worksheet line 12; zero with no traditional IRA contributions)"
+    type: NonNegDollars
+    expr: {op: smaller_of, of: [person.h_ira_7or10, person.ira_contrib]}
+    refuses: [person.ira_excess, ira.kbh_short, ira.both_kinds]
 
   - id: person.h_ira_10or11
     printed: "(helper)"
@@ -1768,22 +1553,211 @@ lines:
     type: NonNegDollars
     expr: {op: smaller_of, of: [ira.line10, person.ira_contrib]}
 
-  - id: person.h_8606_line3
+  - id: person.ira_nondeductible
     printed: "(helper)"
-    label: "Form 8606 line 3: add lines 1 and 2"
+    label: "This person's nondeductible traditional IRA contributions for 2025 (Form 8606 line 1)"
+    type: NonNegDollars
+    expr: {op: subtract_floor0, from: person.h_ira_10or11, take: person.ira_deduction}
+
+  - id: person.ira_files_8606
+    printed: "(helper)"
+    label: "This person files Form 8606 for nondeductible contributions to a traditional IRA for 2025"
+    type: Bool
+    expr: {op: test, gt: [person.ira_nondeductible, {const: 0}]}
+
+  - id: person.h_ira_basis_gate
+    printed: "(helper)"
+    label: "A person who files Form 8606 and whose traditional IRA basis changed other than by nondeductible contributions"
+    type: Bool
+    expr: {op: test, all: [{op: test, eq: [person.ira_files_8606, {const: true}]}, {op: test, eq: [person.ira_basis_adjusted, {const: true}]}]}
+
+  - id: person.ira_8606_line2
+    printed: "(helper)"
+    label: "Form 8606 line 2 for this person (asked only when the person files Form 8606)"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [person.ira_files_8606, {const: true}]}
+          then: person.ira_basis
+        - guard: {op: test, eq: [person.ira_files_8606, {const: false}]}
+          then: person.h_zero
+    refuses: [person.h_ira_basis_gate]
+
+  - id: person.ira_dist_gate
+    printed: "(helper)"
+    label: "Nondeductible contributions for 2025 with a 2025 traditional IRA distribution or Roth conversion"
+    type: Bool
+    expr: {op: test, all: [{op: test, eq: [person.ira_files_8606, {const: true}]}, {op: test, eq: [person.ira_dist, {const: true}]}]}
+
+  - id: person.ira_8606_line14
+    printed: "(helper)"
+    label: "Form 8606 line 14 for this person (total basis in traditional IRAs for 2025 and earlier years)"
     type: NonNegDollars
     expr: {op: sum, of: [person.ira_nondeductible, person.ira_8606_line2]}
+    refuses: [person.ira_dist_gate]
+    note: "With no 2025 distribution or conversion, the form says to enter the amount from line 3 (line 1 plus line 2) on line 14. The distribution case is refused."
 
   - id: person.h_ira_ssb_lim
     printed: "(helper)"
-    label: "The smaller of the applicable amount ($7,000 or $8,000) and line 10"
+    label: "The smaller of the applicable amount and line 10"
     type: NonNegDollars
     expr: {op: smaller_of, of: [person.h_ira_limit, ira.line10]}
+
+  - id: person.ira_ssb
+    printed: "(helper)"
+    label: "This person's IRA deduction as the Social Security Benefits Worksheet reads it (zero with no traditional IRA contributions)"
+    type: NonNegDollars
+    expr: {op: smaller_of, of: [person.h_ira_ssb_lim, person.ira_contrib]}
+    note: "The Social Security Benefits Worksheet applies only when no one is covered by a retirement plan; otherwise ssb.pub915 refuses and Pub. 590-A is required. With no one covered, line 7 is the applicable amount, so the deduction is the smallest of that amount, line 10 and line 11. This avoids depending on line 5, which depends on Form 1040 line 9 and so on taxable benefits."
 
   - id: person.h_ira_se_take
     printed: "(helper)"
     label: "This person's deductions on Schedule 1, lines 15 and 16"
     type: NonNegDollars
     expr: {op: sum, of: [person.se_line13, person.s16]}
+
+  - id: person.ira_se
+    printed: "(helper)"
+    label: "This person's part of worksheet line 9 (zero without a Schedule C)"
+    type: NonNegDollars
+    expr: {op: subtract_floor0, from: person.sc_total, take: person.h_ira_se_take}
+    note: "'Net earnings from self-employment' is read as the Schedule C net profit (gross income minus allowable business deductions, Pub. 560 definition), less the Schedule 1 line 15 and 16 deductions. If zero or less, enter -0-."
+
+  # ---------- SEP / SIMPLE deduction ----------
+  - id: person.h_cent
+    printed: "(helper)"
+    label: "One cent"
+    type: NonNegDollars
+    expr: {op: param, ref: sc.one_cent}
+
+  - id: person.h_hundred
+    printed: "(helper)"
+    label: "100%, as cents"
+    type: NonNegDollars
+    expr: {op: param, ref: sc.hundred_cents}
+
+  - id: person.h_sep_rate_c
+    printed: "(helper)"
+    label: "The plan rate, as cents"
+    type: NonNegDollars
+    expr: {op: multiply_count, amount: person.h_cent, count: person.sep_rate}
+
+  - id: person.h_sep_rate_plus
+    printed: "(helper)"
+    label: "The plan rate plus 100%, as cents"
+    type: NonNegDollars
+    expr: {op: sum, of: [person.h_sep_rate_c, person.h_hundred]}
+
+  - id: person.h_comp_limit
+    printed: "(helper)"
+    label: "$350,000"
+    type: NonNegDollars
+    expr: {op: param, ref: ret.comp_limit}
+
+  - id: person.h_sep_deduction
+    printed: "(helper)"
+    label: "Enter your actual contribution, not to exceed your maximum deductible contribution"
+    type: NonNegDollars
+    expr: {op: smaller_of, of: [person.sep_contrib, "person.lineStep 21"]}
+
+  - id: person.h_simple_comp
+    printed: "(helper)"
+    label: "Compensation: net earnings from self-employment (Schedule SE line 4) before subtracting SIMPLE contributions"
+    type: NonNegDollars
+    expr: {op: subtract_floor0, from: person.h_se_line4a, take: {const: 0}}
+
+  - id: person.h_simple_cap
+    printed: "(helper)"
+    label: "Salary reduction limit ($16,500)"
+    type: NonNegDollars
+    expr: {op: param, ref: ret.simple_limit}
+
+  - id: person.h_simple_deferral_cap
+    printed: "(helper)"
+    label: "The smaller of the salary reduction limit or compensation"
+    type: NonNegDollars
+    expr: {op: smaller_of, of: [person.h_simple_cap, person.h_simple_comp]}
+
+  - id: person.h_simple_deferral_allowed
+    printed: "(helper)"
+    label: "Salary reduction contributions (allowed)"
+    type: NonNegDollars
+    expr: {op: smaller_of, of: [person.simple_deferral, person.h_simple_deferral_cap]}
+
+  - id: person.h_simple_catchup_gate
+    printed: "(helper)"
+    label: "Catch-up contributions claimed (age 50 or older with salary reduction contributions above $16,500)"
+    type: Bool
+    expr:
+      op: test
+      all:
+        - {op: test, ne: [person.simple_age, {const: "under50"}]}
+        - {op: test, gt: [person.simple_deferral, person.h_simple_cap]}
+
+  - id: person.h_simple_match3
+    printed: "(helper)"
+    label: "3% of compensation"
+    type: NonNegDollars
+    expr: {op: multiply_rate, amount: person.h_simple_comp, rate: {param: ret.match_rate}}
+
+  - id: person.h_simple_match_max
+    printed: "(helper)"
+    label: "Maximum matching contribution (dollar-for-dollar up to 3% of compensation)"
+    type: NonNegDollars
+    expr: {op: smaller_of, of: [person.h_simple_deferral_allowed, person.h_simple_match3]}
+
+  - id: person.h_simple_ne_comp
+    printed: "(helper)"
+    label: "Compensation taken into account (not more than $350,000)"
+    type: NonNegDollars
+    expr: {op: smaller_of, of: [person.h_simple_comp, person.h_comp_limit]}
+
+  - id: person.h_simple_ne_max
+    printed: "(helper)"
+    label: "Maximum nonelective contribution (2% of compensation)"
+    type: NonNegDollars
+    expr: {op: multiply_rate, amount: person.h_simple_ne_comp, rate: {param: ret.nonelective_rate}}
+
+  - id: person.h_simple_employer_max
+    printed: "(helper)"
+    label: "Maximum employer contribution for the plan's formula"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [person.simple_kind, {const: "match"}]}
+          then: person.h_simple_match_max
+        - guard: {op: test, eq: [person.simple_kind, {const: "nonelective"}]}
+          then: person.h_simple_ne_max
+
+  - id: person.h_simple_employer_allowed
+    printed: "(helper)"
+    label: "Employer contributions for yourself, not more than the maximum"
+    type: NonNegDollars
+    expr: {op: smaller_of, of: [person.simple_employer, person.h_simple_employer_max]}
+
+  - id: person.h_simple_deduction
+    printed: "(helper)"
+    label: "SIMPLE deduction for yourself"
+    type: NonNegDollars
+    expr: {op: sum, of: [person.h_simple_deferral_allowed, person.h_simple_employer_allowed]}
+    refuses: [person.h_simple_catchup_gate]
+    note: "Pub. 560 allows catch-up contributions ($3,500, or $5,250 at ages 60 to 63). No year parameter is provided for those amounts, so salary reduction above $16,500 by a person age 50 or older is refused. Contributions above the limits are not counted in the deduction."
+
+  - id: person.s16
+    printed: "(helper)"
+    label: "Schedule 1 line 16 for this person"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [person.plan, {const: "sep"}]}
+          then: person.h_sep_deduction
+        - guard: {op: test, eq: [person.plan, {const: "simple"}]}
+          then: person.h_simple_deduction
+        - guard: {op: test, eq: [person.plan, {const: "none"}]}
+          then: person.h_zero
+    refuses: [person.plan_screen]
 ```
 ```

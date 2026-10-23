@@ -17,7 +17,7 @@ form:
         source: "Relationship to you: child (son, daughter, stepchild, foster child or their descendant), sibling
           (brother, sister, half brother, half sister, stepbrother or stepsister, or a son or daughter of a brother,
           sister, half brother or half sister), sibling_descendant (any other descendant of a sibling, such as a
-          grandniece or a stepsibling's child), parent (father or mother), parent_relative (a grandparent, aunt or
+          grandniece or a stepsibling's child), parent (father or mother; not a foster parent, who is entered as other), parent_relative (a grandparent, aunt or
           uncle: an ancestor or sibling of a parent), in_law (step-parent or in-law), household_member (any other
           person, other than your spouse, who lived with you all year as a member of your household, if your
           relationship did not violate local law), or other (any other relationship; such a person is a Step 4 relative
@@ -25,7 +25,8 @@ form:
           local law)"
       cite:
         doc: i1040gi
-        locator: pp. 17 and 19, Steps 1 and 4, "A qualifying child is your..." and "A qualifying relative is your..."
+        locator: pp. 17 and 19, Steps 1 and 4, "A qualifying child is your..." and "A qualifying relative is your..."; p501 p. 19, Relatives who don't have to live with you, "Your father, mother, grandparent, or other direct ancestor, but not foster parent"
+      ambiguity: amb.2025.foster_parent_relationship
     - id: dependent.age
       printed: (helper)
       type: Count
@@ -578,6 +579,30 @@ form:
       cite:
         doc: i1040gi
         locator: p. 19, Step 4, questions 2 and 5
+    - id: dependent.claimed_no_tin
+      printed: (gate)
+      type: Bool
+      label: A person who meets the tests to be your dependent but has no SSN, ITIN or ATIN
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - dependent.tin
+              - const: false
+          - op: test
+            any:
+              - op: test
+                eq:
+                  - dependent.qc_dependent
+                  - const: true
+              - op: test
+                eq:
+                  - dependent.qr_dependent
+                  - const: true
+      cite:
+        doc: i1040gi
+        locator: 'p. 22, Social security number, "You must enter each dependent’s social security number (SSN)"'
     - id: dependent.claimed
       printed: (helper)
       type: Bool
@@ -596,6 +621,15 @@ form:
       cite:
         doc: i1040gi
         locator: pp. 17–19, Who Qualifies as Your Dependent
+      refuses: &claimed_no_tin
+        - when: dependent.claimed_no_tin
+          form: Dependent without an SSN, ITIN or ATIN (Form 1040, Dependents, row (3))
+          remedy: Each dependent must be listed with an SSN (or ITIN or ATIN) issued on or before the due date of your return.
+            A dependent child who was born and died in 2025 without an SSN, entered as "Died" on row (3) with a copy of the
+            birth certificate, death certificate or hospital records, is outside this tool.
+          cite:
+            doc: i1040gi
+            locator: 'p. 22, Social security number, "You must enter each dependent’s social security number (SSN)" and "If your dependent child was born and died in 2025 and you do not have an SSN for the child, enter “Died” on row (3) of the Dependents section and include a copy of the child’s birth certificate, death certificate, or hospital records"; p. 14, Head of Household, "The dependents you claim are those you list by name and SSN ... in the Dependents section on Form 1040 or 1040-SR"'
     - id: dependent.under_ctc_age
       printed: (helper)
       type: Bool
@@ -836,6 +870,7 @@ form:
       cite:
         doc: i1040gi
         locator: p. 14, Head of Household, Test 1, "You paid over half the cost of keeping up a home that was the main home for all of 2025 of your parent whom you can claim as a dependent"
+      refuses: *claimed_no_tin
     - id: dependent.eic_child
       printed: (helper)
       type: Bool
@@ -1023,24 +1058,6 @@ form:
       cite:
         doc: i2441
         locator: 'p. 1, Qualifying Person(s), "A qualifying child under age 13 whom you can claim as a dependent. If the child turned 13 during the year, the child is a qualifying person for the part of the year they were under age 13"; p. 1, Qualifying Person(s), "Any disabled person who wasn''t physically or mentally able to care for themselves who lived with you for more than half the year and whom you can claim as a dependent"; p. 3, Line 2, "Don''t list a person on line 2 unless they are listed as an eligible person under Qualifying Person(s), earlier"'
-    - id: dependent.dc_no_tin
-      printed: (gate)
-      type: Bool
-      label: A qualifying person with no SSN, ITIN or ATIN
-      expr:
-        op: test
-        all:
-          - op: test
-            eq:
-              - dependent.dc_qp
-              - const: true
-          - op: test
-            eq:
-              - dependent.tin
-              - const: false
-      cite:
-        doc: i2441
-        locator: 'p. 3, Column (b), "You must enter the qualifying person''s SSN" and "If the qualifying person has an ITIN or adoption taxpayer identification number (ATIN), see Taxpayer identification number in Pub. 503"'
     - id: dependent.dc_count
       printed: (helper)
       type: Count
@@ -1050,15 +1067,7 @@ form:
         ref: dependent.one
       cite:
         doc: i2441
-        locator: 'p. 3, Line 2, "Complete columns (a) through (d) for each qualifying person"'
-      refuses: &dc_no_tin
-        - when: dependent.dc_no_tin
-          form: Qualifying person without an SSN, ITIN or ATIN (Form 2441, line 2, column (b))
-          remedy: A qualifying person must be listed with an SSN, ITIN or ATIN; the credit may otherwise be reduced or disallowed.
-            A child born and died in 2025 without an SSN (entered as "Died" with records attached) is also outside this tool.
-          cite:
-            doc: i2441
-            locator: 'p. 3, Column (b), "Be sure the name and SSN entered agree with the person''s social security card. Otherwise, at the time we process your return, we may reduce or disallow your credit" and "If the child was born and died in 2025 and didn''t have an SSN, enter “Died” in column (b)"'
+        locator: 'p. 3, Line 2, "Complete columns (a) through (d) for each qualifying person"; p. 3, Column (b), "You must enter the qualifying person''s SSN" (a qualifying person is a dependent, and a dependent without an SSN, ITIN or ATIN is refused where the person is counted as a dependent)'
     - id: dependent.dc_paid
       printed: (helper)
       type: NonNegDollars
@@ -1088,7 +1097,6 @@ form:
         doc: f2441
         locator: Form 2441 (2025), line 2, column (d)
       ambiguity: amb.2025.dc_line30
-      refuses: *dc_no_tin
     - id: dependent.dc_line2c
       printed: 2(c)
       type: Bool

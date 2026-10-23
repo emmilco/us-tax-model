@@ -73,18 +73,6 @@ form:
       cite:
         doc: i1040gi
         locator: p. 42, Step 4, question 3; p. 44, Members of the military; p. 45, United States
-    - id: eic.married
-      printed: (helper)
-      type: Bool
-      label: Were you married at the end of 2025?
-      expr:
-        op: input
-        source: Were you married at the end of 2025 (including married but considered unmarried for head of household
-          status)?
-      cite:
-        doc: i1040gi
-        locator: p. 41, Step 3, question 3, and Step 4, question 1, "Are you a married taxpayer whose filing status is married
-          filing separately or head of household?"
     - id: eic.zero
       printed: (helper)
       type: NonNegDollars
@@ -162,11 +150,12 @@ form:
                   - const: hoh
               - op: test
                 eq:
-                  - eic.married
+                  - household.married
                   - const: true
       cite:
         doc: i1040gi
-        locator: p. 41, Step 3, question 3, and Step 4, question 1
+        locator: p. 41, Step 3, question 3, and Step 4, question 1, "Are you a married taxpayer whose filing status is married
+          filing separately or head of household?"
 
     # Step 1.
     - id: eic.top_limit
@@ -478,11 +467,13 @@ form:
       expr:
         op: test
         eq:
-          - household.all_work_ssn
+          - household.all_eic_ssn
           - const: true
       cite:
         doc: i1040gi
-        locator: p. 40, Step 1, question 2; pp. 44–45, Social security number (SSN)
+        locator: p. 40, Step 1, question 2; pp. 44–45, Social security number (SSN), "For the EIC, a valid SSN is a number issued
+          by the Social Security Administration unless “Not Valid for Employment” is printed on the social security card and
+          the number was issued solely to allow the recipient of the SSN to apply for or receive a federally funded benefit"
     - id: eic.step1_foreign
       printed: (helper)
       type: Bool
@@ -1479,6 +1470,15 @@ form:
         doc: i1040gi
         locator: pp. 40–46, each "STOP You can't take the credit"; Worksheet A, line 6, "Enter this amount on Form 1040 or
           1040-SR, line 27a"
+      refuses:
+        - when: household.credit_disallowed
+          form: Form 8862 and the EIC disallowance period (Form 8862, who must file)
+          remedy: Your EIC, child tax credit, additional child tax credit or credit for other dependents for an earlier year was
+            reduced or disallowed, or you are in a disallowance period; Form 8862 and the disallowance period are outside this
+            tool.
+          cite:
+            doc: i1040gi
+            locator: 'p. 43, Form 8862, who must file, "You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error" and "don’t file Form 8862 or take the credit for the ... 2 years after the most recent tax year for which there was a final determination that your EIC claim was due to reckless or intentional disregard of the EIC rules ... 10 years after the most recent tax year for which there was a final determination that your EIC claim was due to fraud"'
 
     # Boxes the instructions tell the filer to check (Form 1040 lines 27b and 27c, the Dependents section box).
     - id: eic.reached_step3

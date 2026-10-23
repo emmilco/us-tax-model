@@ -403,16 +403,19 @@ const EQUIVALENT_IF: Record<string, { reason: string; holds: (data: CanonicalDat
   "boundary.sli.sli.over": prorateSkip("The test 'line 4 more than line 5' made inclusive adds only the case line 4 = line 5"),
   "operand.sli.sli.line9.line8": prorateSkip("Reading the prorated line directly instead of line 8 differs only when line 4 is not more than line 5"),
   "refusal.dependent.dependent.qualifying_relative.2": {
-    reason: "The married gate on the qualifying-relative test duplicates, word for word, the married gate on the qualifying-child test. The qualifying-relative test is read only by qr_dependent, which is read only by claimed, whose any-test evaluates qc_dependent, and so qualifying_child, before qr_dependent; for a married person qualifying_child refuses first with the same refusal, so this gate never fires.",
+    reason: "The married gate on the qualifying-relative test duplicates, word for word, the married gate on the qualifying-child test. The qualifying-relative test is read only by qr_dependent, which is read only by claimed and by the TIN gate claimed_no_tin; the any-test of each evaluates qc_dependent, and so qualifying_child, before qr_dependent; for a married person qualifying_child refuses first with the same refusal, so this gate never fires.",
     holds: (d) => {
       const qr = findLine(d, "dependent.qualifying_relative"); const qc = findLine(d, "dependent.qualifying_child");
       const entry = qr?.refuses?.[2];
       if (!qr || !qc || !entry || entry.when !== "dependent.married") return false;
       if (!(qc.refuses ?? []).some((r) => stableStringify(r) === stableStringify(entry))) return false;
       if (stableStringify(readersOf(d, "dependent.qualifying_relative")) !== stableStringify(["dependent.qr_dependent"])) return false;
-      if (stableStringify(readersOf(d, "dependent.qr_dependent")) !== stableStringify(["dependent.claimed"])) return false;
-      const claimed = findLine(d, "dependent.claimed"); const qcd = findLine(d, "dependent.qc_dependent");
-      if (!claimed || !qcd || claimed.expr.op !== "test" || !("any" in claimed.expr) || qcd.expr.op !== "test" || !("all" in qcd.expr)) return false;
+      if (stableStringify([...readersOf(d, "dependent.qr_dependent")].sort()) !== stableStringify(["dependent.claimed", "dependent.claimed_no_tin"])) return false;
+      const claimed = findLine(d, "dependent.claimed"); const qcd = findLine(d, "dependent.qc_dependent"); const noTin = findLine(d, "dependent.claimed_no_tin");
+      if (!claimed || !qcd || !noTin || claimed.expr.op !== "test" || !("any" in claimed.expr) || qcd.expr.op !== "test" || !("all" in qcd.expr)) return false;
+      if (noTin.expr.op !== "test" || !("all" in noTin.expr)) return false;
+      const anyPart = (noTin.expr as { all: unknown[] }).all.find((t) => t !== null && typeof t === "object" && "any" in (t as object));
+      if (!anyPart || operandRefs(d, anyPart)[0] !== "dependent.qc_dependent") return false;
       return operandRefs(d, claimed.expr)[0] === "dependent.qc_dependent" && operandRefs(d, qcd.expr)[0] === "dependent.qualifying_child";
     },
   },

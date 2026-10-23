@@ -9,7 +9,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | dcprov.md | worksheet | 6 |
 | dependent.md | worksheet | 60 |
 | div.md | form | 22 |
-| eic.md | worksheet | 83 |
+| eic.md | worksheet | 82 |
 | f1040.md | form | 63 |
 | f2441.md | form | 82 |
 | f4562.md | form | 15 |
@@ -25,14 +25,14 @@ Review these renderings line by line against the archived IRS sources in `source
 | ftc.md | form | 11 |
 | g28.md | form | 8 |
 | gift.md | form | 5 |
-| household.md | form | 28 |
+| household.md | form | 35 |
 | interest.md | form | 2 |
 | ira.md | worksheet | 57 |
 | ltc.md | form | 4 |
 | mq.md | worksheet | 7 |
 | oi8z.md | worksheet | 6 |
 | otjob.md | form | 12 |
-| person.md | worksheet | 201 |
+| person.md | worksheet | 203 |
 | qbi.md | form | 13 |
 | qdcg.md | worksheet | 27 |
 | refund.md | form | 48 |

@@ -33,6 +33,12 @@
    "ruling": "Ruling: refusal located elsewhere; restatement accepted (as the prior ruling). The Earned Income Chart's row for a filer who has net earnings from self-employment and will \"use either optional method to figure those net earnings\" (i1040s8812 p. 7, \"the amount figured using the Earned Income Worksheet next (even if you are also taking the EIC)\") never applies: the optional methods are refused through person.se_screen ('electing an optional method (Schedule SE Part II)'). Otherwise the restatement is the chart, with the Earned Income Worksheet's stop at line 3 since BUG-0055. No change."
   },
   {
+   "printed": "18a",
+   "restated": "Choose — [helper \"Taking the EIC on Form 1040, line 27a\" = true → helper \"Earned Income Chart, taking the EIC: Worksheet B, line 4b, or the earned income from Step 5\"] [helper \"Taking the EIC on Form 1040, line 27a\" = false → helper \"Earned Income Worksheet, line 7, the amount for line 18a of Schedule 8812 (zero when line 3 is zero or less)\"]",
+   "model": "The Earned Income Chart's first row says that if you \"use either optional method to figure those net earnings\", enter \"the amount figured using the Earned Income Worksheet next (even if you are also taking the EIC)\". The restatement omits this row and has no refusal for it. On the EIC path it also omits the clergy subtraction for housing and meals.",
+   "ruling": "Ruling: refusal located elsewhere; restatement accepted (as the prior rulings). The Earned Income Chart's row for a filer who will 'use either optional method to figure those net earnings' (i1040s8812 p. 7) never applies: the optional methods are refused through person.se_screen ('electing an optional method (Schedule SE Part II)'), and the clergy housing and meals subtraction through the same screen ('being a minister, a member of a religious order')."
+  },
+  {
    "printed": "21",
    "restated": "Add helper \"Additional Medicare Tax and RRTA Tax Worksheet, line 6. Subtract line 5 (the Additional Medicare Tax withheld, Form 8959, line 22) from line 4\" and helper \"Additional Medicare Tax and RRTA Tax Worksheet, line 7. One-half of the Additional Medicare Tax on self-employment income (one-half of Form 8959, line 13)\".",
    "model": "The restatement adds only worksheet lines 6 and 7. The worksheet's line 16 says \"Add lines 6, 7, 11, and 15\", so the Tier 1 RRTA amounts on lines 11 and 15 are left out, and no refusal excludes RRTA filers.",
@@ -46,9 +52,21 @@
   },
   {
    "printed": "21",
+   "restated": "Add helper \"Additional Medicare Tax and RRTA Tax Worksheet, line 6. Subtract line 5 (the Additional Medicare Tax withheld, Form 8959, line 22) from line 4\" and helper \"Additional Medicare Tax and RRTA Tax Worksheet, line 7. One-half of the Additional Medicare Tax on self-employment income (one-half of Form 8959, line 13)\".",
+   "model": "The worksheet's line 21 amount is \"Add lines 6, 7, 11, and 15\". The restatement adds only lines 6 and 7, so it drops the Tier 1 RRTA amounts on lines 11 and 15, and no refusal names that case. The Puerto Rico boxes are covered by the line 27 refusal.",
+   "ruling": "Ruling: scope; project retained (as the prior rulings). The Tier 1 RRTA amounts on lines 11 and 15 of the Additional Medicare Tax and RRTA Tax Worksheet (i1040s8812 p. 9, line 16, 'Add lines 6, 7, 11, and 15. Enter here and on line 21 of Schedule 8812') are outside the slice: person.rrta refuses railroad retirement compensation, so lines 11 and 15 are zero on every return the project computes, and the citation says so."
+  },
+  {
+   "printed": "21",
    "restated": "Subtract f8959 line 22 from helper \"Additional Medicare Tax and RRTA Tax Worksheet, line 4. Add social security tax withheld, Medicare tax withheld (Form 8959, line 19) and Form 8959, line 7\".",
    "model": "The restatement uses worksheet line 4 minus Form 8959 line 22, which is only worksheet line 6. The worksheet says \"Add lines 6, 7, 11, and 15. Enter here and on line 21 of Schedule 8812.\" Line 7 is covered by the Schedule 1 refusal, but the Tier 1 RRTA amounts on lines 11 and 15 are left out and no refusal names them.",
    "ruling": "Ruling: scope; project retained. The Tier 1 RRTA amounts on lines 11 and 15 of the Additional Medicare Tax and RRTA Tax Worksheet are outside the slice: `person.rrta` refuses the per-person Medicare totals that Form 8959 line 19 sums, and this line reads that total, so a return with RRTA compensation refuses here. No change to the data."
+  },
+  {
+   "printed": "4",
+   "restated": "Add dependent.one over every confirmed dependent entry for which helper \"Qualifying child for the child tax credit (Step 3)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "The child-level tests match \"qualifying children under age 17 with the required social security number\". The restatement also requires that the filer or spouse has an SSN valid for employment and that everyone on the return has an SSN or ITIN. The pages given do not state that household condition.",
+   "ruling": "Ruling: scope; restatement accepted. The household condition (you, or your spouse if filing jointly, have an SSN valid for employment and the other spouse an SSN or ITIN) is the child tax credit's 'Before you begin' rule (i1040gi p. 17, 'If you want to claim the child tax credit, you must have a valid SSN ... If you are filing a joint return, only one spouse is required to have a valid SSN to be eligible for the CTC and ACTC. The other spouse must have either an SSN or ITIN'), on a page not given to the model; the per-child tests the model matched are Step 3 (p. 18)."
   },
   {
    "printed": "5",
@@ -67,6 +85,12 @@
    "restated": "Add dependent.ctc_amount over every confirmed dependent entry, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "The IRS text says \"Multiply line 4 by $2,200\". The restatement adds up dependent.ctc_amount, which is not defined in the glossary, so it cannot be confirmed as $2,200 for each child counted on line 4.",
    "ruling": "Ruling: representation; project retained. The count and the dollar lines are sums over the listed persons of a per-person amount ($2,200, $500 or $1,700 for a person who qualifies, else zero), defined on the dependent worksheet, which has its own transcription, render and class M logs; the per-person predicates are Steps 3 and 5 of the Form 1040 instructions. The count times the dollar figure and the sum of the per-person figures are the same number. No change to the data."
+  },
+  {
+   "printed": "6",
+   "restated": "Add dependent.one over every confirmed dependent entry for which helper \"Dependent for the credit for other dependents (Steps 3 and 5)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "The dependent-level tests match the line 6 caution and the ODC conditions: a dependent who is a citizen, national or resident alien, has a TIN, and is not counted on line 4. The added condition that the filer and spouse have an SSN or ITIN, or have applied for an ITIN, is not stated in the pages given.",
+   "ruling": "Ruling: scope; restatement accepted. The condition that you, and your spouse if filing jointly, have an SSN or ITIN or have applied for one is Step 5, question 1 (i1040gi p. 19, '(Answer \"Yes\" if you are applying for an ITIN on or before the return due date (including extensions).)') and 'Before you begin' (p. 17, 'If you want to claim the credit for other dependents, you, and your spouse if filing jointly, must have either an SSN or ITIN'), on pages not given to the model."
   },
   {
    "printed": "7",

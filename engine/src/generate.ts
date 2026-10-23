@@ -112,18 +112,23 @@ const MODELLED = new Set([
   "person[taxpayer].sav_roth",
 ]);
 
-// Inputs given their "no" or zero answer on every generated return and drawn from no arbitrary, so the random
-// stream is the same as without them: alimony, canceled debt and HSA distributions (Schedule 1 lines 2a, 8c, 8f, 19a).
+// Inputs given their "no" or zero answer on every generated return, or an answer derived from other draws, and drawn
+// from no arbitrary, so the random stream is the same as without them: alimony, canceled debt and HSA distributions
+// (Schedule 1 lines 2a, 8c, 8f, 19a); the marital answer (joint filers are married; a head of household is married on
+// the household draw); the EIC SSN (the same as the employment-valid SSN); the filer's age under 16; a prior credit
+// disallowance; a community property state.
 const FIXED = new Set([
   "s1.alimony", "s1.alimony_received", "s1.alimony_paid", "s1.alimony_unsupported", "s1.cod_any", "s1.cod_amount", "s1.cod_unsupported",
   `${HSA}.line14a`, `${HSA}.rollover`, `${HSA}.medical`, `${HSA}.line17a`, `${HSA}.subject_part`,
+  "household.married", "household.credit_disallowed", "household.community_property",
+  "person[taxpayer].eic_ssn", "person[taxpayer].under16",
 ]);
 
 interface Employer { box1: number; box2pct: number; box7: number; over: number; deferral: number }
 interface Sale { box: string; aggregate: boolean; code: string; special: boolean; aggregate_eligible: boolean; proceeds: number; reported_basis: number; correct_basis: number; wash_loss: number; invalid: boolean }
 interface Gift { deduction: number; public_securities: boolean; special: boolean }
 interface Dependent { relationship: string; age: number; younger: boolean; student: boolean; disabled: boolean; months: number; self_support: boolean; joint_return: boolean; citizen: boolean; canada_mexico: boolean; married: boolean; tin: boolean; work_ssn: boolean; gross_income: number; supported: boolean; other_claimant: boolean; divorced_rule: boolean; multiple_support: boolean; parent_home_paid: boolean; us_half: boolean; eic_ssn: boolean }
-interface Household { taxpayer_tin: boolean; taxpayer_work_ssn: boolean; home_cost: boolean; unmarried: boolean }
+interface Household { taxpayer_tin: boolean; taxpayer_work_ssn: boolean; home_cost: boolean; unmarried: boolean; married: boolean }
 interface Distribution { account: string; code: string; box1: number; box5: number; rollover: number; special: boolean; annuity: boolean; cost: number; used_last_year: boolean; last_line4: number; joint_life: boolean; age: number; combined_age: number; months: number; recovered: number; savExcluded: boolean }
 
 interface TipJob { qualified: boolean; amount: number }
@@ -320,7 +325,7 @@ export function returnArbitrary(data: CanonicalData): fc.Arbitrary<Inputs> {
   });
   const household = fc.record<Household>({
     taxpayer_tin: rareTrue(97), taxpayer_work_ssn: rareTrue(93),
-    home_cost: rareTrue(70), unmarried: rareTrue(90),
+    home_cost: rareTrue(70), unmarried: rareTrue(90), married: rareTrue(15),
   });
   const distribution = fc.record<Distribution>({
     account: fc.constantFrom("traditional_ira", "traditional_ira", "plan", "plan", "roth_ira"),
@@ -563,7 +568,13 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
   Object.assign(inputs, { "dcprov[prov_a].tin_kind": "tin", "dcprov[prov_a].household": false, "dcprov[prov_a].paid": 0, "dcprov[prov_a].related": false });
   const HOUSEHOLD_KEYS: Record<string, string> = { taxpayer_tin: "person[taxpayer].tin", taxpayer_work_ssn: "person[taxpayer].work_ssn" };
   for (const [k, v] of Object.entries(s.household)) inputs[HOUSEHOLD_KEYS[k] ?? `household.${k}`] = v;
+  // A joint filer is married; a head of household is married (considered unmarried) on the household draw; nobody else is.
+  inputs["household.married"] = s.status === "mfj" || (s.status === "hoh" && s.household.married);
+  inputs["household.credit_disallowed"] = false;
+  inputs["household.community_property"] = false;
   inputs["person[taxpayer].itin_applied"] = false;
+  inputs["person[taxpayer].eic_ssn"] = inputs["person[taxpayer].work_ssn"];
+  inputs["person[taxpayer].under16"] = false;
   // A retiree has Form 1099-R distributions and social security benefits; the other
   // profiles have neither. A Roth IRA is given code Q and a code that the
   // account does not allow is kept only on unclean returns, so the gates are exercised too.
@@ -627,7 +638,8 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
     inputs["$person"] = ["taxpayer", "spouse"];
     Object.assign(inputs, {
       [`${P}.role`]: "spouse", [`${P}.rrta`]: false, [`${P}.age65`]: sp.age65, [`${P}.blind`]: sp.blind, [`${P}.tin`]: sp.tin || sp.work_ssn,
-      [`${P}.work_ssn`]: sp.work_ssn, [`${P}.itin_applied`]: false, [`${P}.born_before_2001`]: sp.eicAge || sp.age65, [`${P}.born_after_1960`]: !sp.age65 && sp.eicAge,
+      [`${P}.work_ssn`]: sp.work_ssn, [`${P}.eic_ssn`]: sp.work_ssn, [`${P}.under16`]: false, [`${P}.itin_applied`]: false,
+      [`${P}.born_before_2001`]: sp.eicAge || sp.age65, [`${P}.born_after_1960`]: !sp.age65 && sp.eicAge,
       [`${P}.educator_expenses`]: sp.educator, [`${P}.eligible_educator`]: sp.eligible,
       [`${P}.sav_born`]: sp.born, [`${P}.sav_student`]: false, [`${P}.sav_claimed`]: false, [`${P}.sav_trad`]: false, [`${P}.sav_able`]: false,
       [`${P}.sav_roth`]: sp.roth, [`${P}.sav_excess`]: false, [`${P}.sav_voluntary`]: 0, [`${P}.sav_prior_joint`]: 0, [`${P}.sav_prior_other`]: 0,

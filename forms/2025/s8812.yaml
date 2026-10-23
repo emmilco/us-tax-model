@@ -229,6 +229,15 @@ form:
         doc: f1040s8812
         locator: Schedule 8812 (2025), line 12
       note: A line 8 not more than line 11 gives zero here, and zero on every line that reads it, which is the printed "Stop here".
+      refuses:
+        - when: household.credit_disallowed
+          form: Form 8862 and the CTC, ACTC and ODC disallowance period (Form 8862 may be required)
+          remedy: Your EIC, child tax credit, additional child tax credit or credit for other dependents for an earlier year was
+            reduced or disallowed, or you are in a disallowance period; Form 8862 and the disallowance period are outside this
+            tool.
+          cite:
+            doc: i1040s8812
+            locator: 'p. 2, Form 8862 may be required, "If your CTC, ACTC, or ODC for a year after 2015 was denied or reduced for any reason other than a math or clerical error, you must attach Form 8862 to your tax return to claim the CTC, ACTC, or ODC unless an exception applies" and "you will not be allowed to claim any of these credits for 2 years even if you are otherwise eligible to do so. If it is determined that your error was due to fraud, you will not be allowed to claim any of these credits for 10 years"'
     - id: s8812.clw_a1
       printed: (helper)
       type: Dollars

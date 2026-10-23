@@ -130,8 +130,13 @@ interview:
   - person.tin
   - person.itin_applied
   - person.work_ssn
+  - person.eic_ssn
+  - person.under16
   - household.home_cost
   - household.unmarried
+  - household.married
+  - household.community_property
+  - household.credit_disallowed
   - s8812.combat_pay
   - s8812.puerto_rico
   - $retirement

@@ -26,6 +26,14 @@
   },
   {
    "case": "classm.f8889.1",
+   "printed": "person[spouse].f8889[hsa].line3_all_year",
+   "project": "$6,412.50",
+   "model": "$8,550.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The spouse was eligible in nine months, so line 3 comes from the chart (i8889 p. 4, Line 3, rule 5, 'If you were not an eligible individual on the first day of the last month of your tax year, use the Line 3 Limitation Chart and Worksheet') and this all-year helper is a branch not taken; the project figures it from the chart total, the model as the flat $8,550.",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.1",
    "printed": "person[spouse].f8889[hsa].line6_split",
    "project": "$10,112.00",
    "model": "$4,300.00",
@@ -102,6 +110,14 @@
    "project": "$0.00",
    "model": "$4,300.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The taxpayer was an eligible individual in no month and not on December 1, so rules 3 and 4 (i8889 p. 4, Line 3, \"If you were, or were considered, an eligible individual for the entire year\") do not apply and line 3 comes from the Line 3 Limitation Chart and Worksheet (rule 5, \"If you were not an eligible individual on the first day of the last month of your tax year, use the Line 3 Limitation Chart and Worksheet\"), $0, on which the model agrees. The helper is the rule 3/4 branch not taken; the project evaluates the chart with the actual months ($0), the model wrote the self-only amount and noted \"not used\". No change to the data.",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.1",
+   "printed": "person[taxpayer].f8889[hsa].line3_last_month",
+   "project": "$5,362.50",
+   "model": "$4,300.00",
+   "ruling": "Ruling: owner's ruling (amb.2025.hsa_last_month_change, rule 4 kept); project retained; model value dropped from the fixture. The taxpayer does not use the last-month rule, so this helper is a branch not taken; where it applies, with a change of coverage type the project enters the greater of the chart and the December 1 amount (i8889 p. 4, Line 3, rule 4), the model the December 1 amount alone.",
    "drop": true
   },
   {
@@ -190,6 +206,14 @@
    "project": "$102,600.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is a helper of a branch not taken on this return (the spouse rule of line 6, which applies only to spouses who each have a Form 8889 and family coverage on a joint return, i8889 p. 7; or a line 3 rule for another case, pp. 4-6); the project figures it whatever the branch and the model enters zero or leaves it out. The printed lines 3 to 13 agree.",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.2",
+   "printed": "person[taxpayer].f8889[hsa].family_year",
+   "project": "$102,600.00",
+   "model": "$114,600.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The helper is the $8,550 family amount for twelve months used to refigure Step 1 of the spouse rule, whose allocation covers the family contribution only ('The $1,000 additional contribution amount is not allocable among spouses, unlike the $8,550 family contribution', i8889 p. 4, rule 6); the model used the $9,550 chart amount for an unmarried filer aged 55. This filer has one Form 8889 and no family coverage, so the helper is a branch not taken.",
    "drop": true
   },
   {
@@ -285,10 +309,34 @@
   },
   {
    "case": "classm.f8889.3",
+   "printed": "person[taxpayer].f8889[hsa].line3_last_month",
+   "project": "$7,487.50",
+   "model": "$4,300.00",
+   "ruling": "Ruling: owner's ruling (amb.2025.hsa_last_month_change, rule 4 kept); project retained; model value dropped from the fixture. Under the last-month rule with a change of coverage type the project enters the greater of the chart limitation ((9 x $8,550 + 3 x $4,300) / 12 = $7,487.50) and the December 1 amount ($4,300) (i8889 p. 4, Line 3, rule 4, 'the greater of: (a) the limitation shown on the last line of the Line 3 Limitation Chart and Worksheet, or (b) the maximum amount that can be contributed based on the type of coverage you had on the first day of the last month'); the model applied rule 2 alone.",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.3",
+   "printed": "person[taxpayer].f8889[hsa].line6_split",
+   "project": "$4,300.00",
+   "model": "$4,281.25",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. This filer uses the last-month rule with self-only coverage on December 1, so is 'treated as having the same HDHP coverage for the entire year as you had on the first day of the last month' (i8889 p. 4, Line 3, rule 2): not treated as having family coverage, so the spouse rule of line 6 (Steps 1 to 4) does not apply and line 6 is line 5; the model counted the nine family months instead. The Step and share helpers are a branch not taken.",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.3",
    "printed": "person[taxpayer].f8889[hsa].line6_split",
    "project": "$4,300.00",
    "model": "$4,291.67",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is a helper of a branch not taken on this return (the spouse rule of line 6, which applies only to spouses who each have a Form 8889 and family coverage on a joint return, i8889 p. 7; or a line 3 rule for another case, pp. 4-6); the project figures it whatever the branch and the model enters zero or leaves it out. The printed lines 3 to 13 agree.",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.3",
+   "printed": "person[taxpayer].f8889[hsa].married_family",
+   "project": "no",
+   "model": "yes",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The filer is married and had family coverage in nine months, but uses the last-month rule with self-only coverage on December 1, and is then 'treated as having the same HDHP coverage for the entire year as you had on the first day of the last month of your tax year' (i8889 p. 4, Line 3, rule 2): self-only, so not treated as having family coverage at any time.",
    "drop": true
   },
   {
@@ -309,10 +357,26 @@
   },
   {
    "case": "classm.f8889.3",
+   "printed": "person[taxpayer].f8889[hsa].self_in_family",
+   "project": "$0.00",
+   "model": "$38,700.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. This filer uses the last-month rule with self-only coverage on December 1, so is 'treated as having the same HDHP coverage for the entire year as you had on the first day of the last month' (i8889 p. 4, Line 3, rule 2): not treated as having family coverage, so the spouse rule of line 6 (Steps 1 to 4) does not apply and line 6 is line 5; the model counted the nine family months instead. The Step and share helpers are a branch not taken.",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.3",
    "printed": "person[taxpayer].f8889[hsa].share",
    "project": "$0.00",
    "model": "$1,425.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is a helper of a branch not taken on this return (the spouse rule of line 6, which applies only to spouses who each have a Form 8889 and family coverage on a joint return, i8889 p. 7; or a line 3 rule for another case, pp. 4-6); the project figures it whatever the branch and the model enters zero or leaves it out. The printed lines 3 to 13 agree.",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.3",
+   "printed": "person[taxpayer].f8889[hsa].share",
+   "project": "$0.00",
+   "model": "$3,206.25",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. This filer uses the last-month rule with self-only coverage on December 1, so is 'treated as having the same HDHP coverage for the entire year as you had on the first day of the last month' (i8889 p. 4, Line 3, rule 2): not treated as having family coverage, so the spouse rule of line 6 (Steps 1 to 4) does not apply and line 6 is line 5; the model counted the nine family months instead. The Step and share helpers are a branch not taken.",
    "drop": true
   },
   {
@@ -325,10 +389,26 @@
   },
   {
    "case": "classm.f8889.3",
+   "printed": "person[taxpayer].f8889[hsa].share_equal",
+   "project": "$0.00",
+   "model": "$3,206.25",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. This filer uses the last-month rule with self-only coverage on December 1, so is 'treated as having the same HDHP coverage for the entire year as you had on the first day of the last month' (i8889 p. 4, Line 3, rule 2): not treated as having family coverage, so the spouse rule of line 6 (Steps 1 to 4) does not apply and line 6 is line 5; the model counted the nine family months instead. The Step and share helpers are a branch not taken.",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.3",
    "printed": "person[taxpayer].f8889[hsa].share_raw",
    "project": "$0.00",
    "model": "$1,425.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is a helper of a branch not taken on this return (the spouse rule of line 6, which applies only to spouses who each have a Form 8889 and family coverage on a joint return, i8889 p. 7; or a line 3 rule for another case, pp. 4-6); the project figures it whatever the branch and the model enters zero or leaves it out. The printed lines 3 to 13 agree.",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.3",
+   "printed": "person[taxpayer].f8889[hsa].share_raw",
+   "project": "$0.00",
+   "model": "$3,206.25",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. This filer uses the last-month rule with self-only coverage on December 1, so is 'treated as having the same HDHP coverage for the entire year as you had on the first day of the last month' (i8889 p. 4, Line 3, rule 2): not treated as having family coverage, so the spouse rule of line 6 (Steps 1 to 4) does not apply and line 6 is line 5; the model counted the nine family months instead. The Step and share helpers are a branch not taken.",
    "drop": true
   },
   {
@@ -341,6 +421,14 @@
   },
   {
    "case": "classm.f8889.3",
+   "printed": "person[taxpayer].f8889[hsa].step1",
+   "project": "$0.00",
+   "model": "$6,412.50",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. This filer uses the last-month rule with self-only coverage on December 1, so is 'treated as having the same HDHP coverage for the entire year as you had on the first day of the last month' (i8889 p. 4, Line 3, rule 2): not treated as having family coverage, so the spouse rule of line 6 (Steps 1 to 4) does not apply and line 6 is line 5; the model counted the nine family months instead. The Step and share helpers are a branch not taken.",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.3",
    "printed": "person[taxpayer].f8889[hsa].step1_line3",
    "project": "$0.00",
    "model": "$2,850.00",
@@ -349,10 +437,34 @@
   },
   {
    "case": "classm.f8889.3",
+   "printed": "person[taxpayer].f8889[hsa].step1_line3",
+   "project": "$0.00",
+   "model": "$6,412.50",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. This filer uses the last-month rule with self-only coverage on December 1, so is 'treated as having the same HDHP coverage for the entire year as you had on the first day of the last month' (i8889 p. 4, Line 3, rule 2): not treated as having family coverage, so the spouse rule of line 6 (Steps 1 to 4) does not apply and line 6 is line 5; the model counted the nine family months instead. The Step and share helpers are a branch not taken.",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.3",
    "printed": "person[taxpayer].f8889[hsa].step1_total",
    "project": "$0.00",
    "model": "$34,200.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is a helper of a branch not taken on this return (the spouse rule of line 6, which applies only to spouses who each have a Form 8889 and family coverage on a joint return, i8889 p. 7; or a line 3 rule for another case, pp. 4-6); the project figures it whatever the branch and the model enters zero or leaves it out. The printed lines 3 to 13 agree.",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.3",
+   "printed": "person[taxpayer].f8889[hsa].step1_total",
+   "project": "$0.00",
+   "model": "$76,950.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. This filer uses the last-month rule with self-only coverage on December 1, so is 'treated as having the same HDHP coverage for the entire year as you had on the first day of the last month' (i8889 p. 4, Line 3, rule 2): not treated as having family coverage, so the spouse rule of line 6 (Steps 1 to 4) does not apply and line 6 is line 5; the model counted the nine family months instead. The Step and share helpers are a branch not taken.",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.3",
+   "printed": "person[taxpayer].f8889[hsa].step1_x2",
+   "project": "$0.00",
+   "model": "$12,825.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. This filer uses the last-month rule with self-only coverage on December 1, so is 'treated as having the same HDHP coverage for the entire year as you had on the first day of the last month' (i8889 p. 4, Line 3, rule 2): not treated as having family coverage, so the spouse rule of line 6 (Steps 1 to 4) does not apply and line 6 is line 5; the model counted the nine family months instead. The Step and share helpers are a branch not taken.",
    "drop": true
   },
   {
@@ -367,8 +479,24 @@
    "case": "classm.f8889.3",
    "printed": "person[taxpayer].f8889[hsa].step4",
    "project": "$4,300.00",
+   "model": "$1,075.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. This filer uses the last-month rule with self-only coverage on December 1, so is 'treated as having the same HDHP coverage for the entire year as you had on the first day of the last month' (i8889 p. 4, Line 3, rule 2): not treated as having family coverage, so the spouse rule of line 6 (Steps 1 to 4) does not apply and line 6 is line 5; the model counted the nine family months instead. The Step and share helpers are a branch not taken.",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.3",
+   "printed": "person[taxpayer].f8889[hsa].step4",
+   "project": "$4,300.00",
    "model": "$2,866.67",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is a helper of a branch not taken on this return (the spouse rule of line 6, which applies only to spouses who each have a Form 8889 and family coverage on a joint return, i8889 p. 7; or a line 3 rule for another case, pp. 4-6); the project figures it whatever the branch and the model enters zero or leaves it out. The printed lines 3 to 13 agree.",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.3",
+   "printed": "person[taxpayer].f8889[hsa].step4_total",
+   "project": "$51,600.00",
+   "model": "$12,900.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. This filer uses the last-month rule with self-only coverage on December 1, so is 'treated as having the same HDHP coverage for the entire year as you had on the first day of the last month' (i8889 p. 4, Line 3, rule 2): not treated as having family coverage, so the spouse rule of line 6 (Steps 1 to 4) does not apply and line 6 is line 5; the model counted the nine family months instead. The Step and share helpers are a branch not taken.",
    "drop": true
   },
   {
@@ -381,10 +509,58 @@
   },
   {
    "case": "classm.f8889.4",
+   "printed": "person[spouse].f8889[hsa].line6_split",
+   "project": "$10,112.00",
+   "model": "$4,300.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. A branch not taken: neither spouse had family coverage, so line 6 is line 5 (Form 8889 (2025), line 6, 'Enter the amount from line 5').",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.4",
+   "printed": "person[spouse].f8889[hsa].share",
+   "project": "$5,812.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. As share_raw: a branch not taken, since neither spouse had family coverage (Form 8889 (2025), line 6).",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.4",
+   "printed": "person[spouse].f8889[hsa].share_raw",
+   "project": "$5,812.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Neither spouse had family coverage, so the spouse rule of line 6 ('if you and your spouse each have separate HSAs and had family coverage under an HDHP at any time during 2025', Form 8889 (2025), line 6) does not apply and the share helpers are a branch not taken; the project carries the agreed part as entered, the model a zero Step 1.",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.4",
    "printed": "person[taxpayer].f8889[hsa].family_year",
    "project": "$102,600.00",
    "model": "$114,600.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The helper is read only through f8889.family_dec_year into Step 1 of the spouse rule of line 6, which reaches the return only for spouses on a joint return with family coverage (i8889 p. 7, Line 6, \"Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025, use the following rules to figure the amount on line 6\"). For every such filer the chart's family amount is $8,550 (i8889 p. 6, Line 3 Limitation Chart and Worksheet, \"Enter $8,550 on the line below for the month. If, at the end of 2025, you were unmarried and age 55 or older, enter $9,550 for the month\"), which is the project's $8,550 x 12 = $102,600. This filer files as head of household, is age 55 or older, was eligible in no month and not on December 1, so Step 1 gives no value here (step1_total $0 on both sides) and lines 3 to 13 agree; the model applied the unmarried filer's $9,550 to an unused helper. No change to the data.",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.4",
+   "printed": "person[taxpayer].f8889[hsa].line6_split",
+   "project": "$2,738.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. A branch not taken: line 6 is line 5 for this filer (Form 8889 (2025), line 6).",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.4",
+   "printed": "person[taxpayer].f8889[hsa].share",
+   "project": "$2,738.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. A branch not taken (Form 8889 (2025), line 6).",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.4",
+   "printed": "person[taxpayer].f8889[hsa].share_raw",
+   "project": "$2,738.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. As the spouse's share_raw: a branch not taken, since neither spouse had family coverage (Form 8889 (2025), line 6).",
    "drop": true
   },
   {

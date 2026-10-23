@@ -92,6 +92,15 @@ form:
       cite:
         doc: f1040
         locator: 'Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first name and middle initial"; Filing Status'
+      refuses:
+        - when: household.filer_under16
+          form: A filer under age 16 at the end of 2025
+          remedy: A return for a person under age 16 at the end of 2025 (you, or your spouse on a joint return) is outside this
+            tool. The archived instructions state no such rule; this is an entry check the owner decided on, recorded in the
+            ambiguity register (amb.2025.filer_under_16).
+          cite:
+            doc: i1040gi
+            locator: 'p. 66, Self-Select PIN, "You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025"'
     - id: household.roster_bad
       printed: (gate)
       type: Bool
@@ -207,18 +216,64 @@ form:
       cite:
         doc: i1040gi
         locator: 'p. 17, Before you begin, "If you are filing a joint return, only one spouse is required to have a valid SSN to be eligible for the CTC and ACTC"'
-    - id: household.all_work_ssn
+    - id: household.eic_ssn_count
+      printed: (helper)
+      type: Count
+      label: 'Number of people on the return with an SSN valid for the EIC'
+      expr:
+        op: sum_over
+        collection: person
+        field: person.one
+        where:
+          op: test
+          eq:
+          - person.eic_ssn
+          - const: true
+      cite:
+        doc: i1040gi
+        locator: 'p. 40, Step 1, question 2; p. 44, Social security number (SSN), "For the EIC, a valid SSN is a number issued by the Social Security Administration unless “Not Valid for Employment” is printed on the social security card and the number was issued solely to allow the recipient of the SSN to apply for or receive a federally funded benefit"'
+    - id: household.all_eic_ssn
       printed: (helper)
       type: Bool
-      label: 'You, and your spouse if filing jointly, have SSNs valid for employment'
+      label: 'You, and your spouse if filing jointly, have SSNs valid for the EIC'
       expr:
         op: test
         eq:
-        - household.work_ssn_count
+        - household.eic_ssn_count
         - household.persons
       cite:
         doc: i1040gi
-        locator: 'p. 40, Step 1, question 2, "Do you, and your spouse if filing a joint return, have a social security number ... that allows you to work and is valid for EIC purposes"'
+        locator: 'p. 40, Step 1, question 2, "Do you, and your spouse if filing a joint return, have a social security number ... that allows you to work and is valid for EIC purposes"; p. 44, Social security number (SSN), "For the EIC, a valid SSN is a number issued by the Social Security Administration unless “Not Valid for Employment” is printed on the social security card and the number was issued solely to allow the recipient of the SSN to apply for or receive a federally funded benefit"'
+    - id: household.under16_count
+      printed: (helper)
+      type: Count
+      label: 'Number of people on the return under age 16 at the end of 2025'
+      expr:
+        op: sum_over
+        collection: person
+        field: person.one
+        where:
+          op: test
+          eq:
+          - person.under16
+          - const: true
+      cite:
+        doc: i1040gi
+        locator: 'p. 66, Self-Select PIN, "You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025"'
+    - id: household.filer_under16
+      printed: (gate)
+      type: Bool
+      label: 'You, or your spouse if filing jointly, were under age 16 at the end of 2025'
+      expr:
+        op: test
+        gt:
+        - household.under16_count
+        - const: 0
+          type: Count
+      cite:
+        doc: i1040gi
+        locator: 'p. 66, Self-Select PIN, "You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025"'
+      ambiguity: amb.2025.filer_under_16
     - id: household.tin_count
       printed: (helper)
       type: Count
@@ -348,6 +403,64 @@ form:
       cite:
         doc: i1040gi
         locator: p. 14, Head of Household, "You are considered unmarried for this purpose if any of the following applies"
+    - id: household.married
+      printed: (helper)
+      type: Bool
+      label: Were you married at the end of 2025?
+      expr:
+        op: input
+        source: Were you married at the end of 2025 (including married but considered unmarried for head of household
+          status)?
+      cite:
+        doc: i1040gi
+        locator: 'p. 41, Step 3, question 3, and Step 4, question 1, "Are you a married taxpayer whose filing status is married filing separately or head of household?"; i8889 p. 4, Line 3, rule 6, "If, at the end of 2025, you were age 55 or older and unmarried or married with self-only HDHP coverage for the entire year"'
+    - id: household.community_property
+      printed: (helper)
+      type: Bool
+      label: Did you live in a community property state at any time in 2025?
+      expr:
+        op: input
+        source: Did you live in a community property state (Arizona, California, Idaho, Louisiana, Nevada, New Mexico,
+          Texas, Washington or Wisconsin) at any time in 2025?
+      cite:
+        doc: i1040gi
+        locator: 'p. 23, Community Property States, "Community property states include Arizona, California, Idaho, Louisiana, Nevada, New Mexico, Texas, Washington, and Wisconsin"'
+    - id: household.hoh_community_property
+      printed: (gate)
+      type: Bool
+      label: Married, filing as head of household, and living in a community property state
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - f1040.status
+              - const: hoh
+          - op: test
+            eq:
+              - household.married
+              - const: true
+          - op: test
+            eq:
+              - household.community_property
+              - const: true
+      cite:
+        doc: i1040gi
+        locator: 'p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income"'
+      ambiguity: amb.2025.hoh_community_property
+    - id: household.credit_disallowed
+      printed: (helper)
+      type: Bool
+      label: Was your EIC for a year after 1996, or your child tax credit, additional child tax credit or credit for other dependents for a year after 2015, reduced or disallowed other than for a math or clerical error, or are you in a 2- or 10-year disallowance period?
+      expr:
+        op: input
+        source: Was your earned income credit for any year after 1996, or your child tax credit, additional child tax credit
+          or credit for other dependents for any year after 2015, reduced or disallowed for any reason other than a math or
+          clerical error, or are you in a 2- or 10-year period during which you can't take one of these credits because an
+          earlier claim was found to be reckless, intentional or fraudulent?
+      cite:
+        doc: i1040gi
+        locator: 'p. 43, Form 8862, who must file, "You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error" and "don’t file Form 8862 or take the credit for the ... 2 years after the most recent tax year for which there was a final determination that your EIC claim was due to reckless or intentional disregard of the EIC rules ... 10 years after the most recent tax year for which there was a final determination that your EIC claim was due to fraud"; p. 39, Form 8862, who must file, "You must file Form 8862 to claim the child tax credit or credit for other dependents if your child tax credit (refundable or nonrefundable depending on the tax year), additional child tax credit, or credit for other dependents for a year after 2015 was denied or reduced for any reason other than a math or clerical error"; i1040s8812 p. 2, Form 8862 may be required, "If your CTC, ACTC, or ODC for a year after 2015 was denied or reduced for any reason other than a math or clerical error, you must attach Form 8862 to your tax return to claim the CTC, ACTC, or ODC unless an exception applies"'
     - id: household.test1_persons
       printed: (helper)
       type: Count
@@ -436,6 +549,14 @@ form:
       cite:
         doc: i1040gi
         locator: p. 14, Head of Household, "Check the 'Head of household' box only if you are unmarried (or considered unmarried) and either Test 1 or Test 2 applies"
+      refuses:
+        - when: household.hoh_community_property
+          form: Community income on a married head of household return in a community property state (Form 8958; Pub. 555)
+          remedy: A married person filing as head of household who lived in a community property state may have to report
+            community income under state law; Form 8958 and the community property rules of Pub. 555 are outside this tool.
+          cite:
+            doc: i1040gi
+            locator: 'p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555"'
     - id: household.hoh_fails
       printed: (gate)
       type: Bool

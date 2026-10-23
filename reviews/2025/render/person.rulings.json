@@ -21,6 +21,12 @@
    "ruling": "Ruling: model error; project retained. Statutory employee income and notary fees are refused on each Schedule C (sc.statutory), so every Schedule C that reaches this line is one whose net profit Schedule SE line 2 takes; the second's filter excludes nothing the tool admits. Railroad retirement compensation with a Schedule C is refused (person.se_rrta), so line 8a is the W-2 boxes 3 and 7 for every person who reaches it."
   },
   {
+   "printed": "(screen) (person.se_screen)",
+   "restated": "Input — Does any of these apply to this person: church employee income (wages from a church that elected exemption from social security and Medicare taxes); being a minister, a member of a religious order or a Christian Science practitioner, or having an approved Form 4361 or Form 4029; net earnings from self-employment from a partnership (Schedule K-1, box 14, code A) or other self-employment income not on a Schedule C (such as director's fees, fiduciary fees, or fees as a fee-basis state or local government employee); farm income (Schedule F) or Conservation Reserve Program payments; electing an optional method (Schedule SE Part II); a chapter 11 bankruptcy case; community income on a separate return; self-employment income exempt under an international social security agreement or earned as a U.S. citizen employed by a foreign government; or tips reported on Form 4137 or wages on Form 8919?",
+   "model": "The screen omits statutory employees and notaries public. Yet Schedule C line 31 flows to Schedule SE line 2 here, and the Schedule C instructions say 'Statutory employees... do not report this amount on Schedule SE (Form 1040), line 2' and 'Notary public. Do not enter your net profit from line 31 on Schedule SE (Form 1040), line 2'.",
+   "ruling": "Ruling: refusal located elsewhere; restatement accepted (as the prior rulings). Statutory employee income and notary fees are refused on each Schedule C (sc.statutory, 'income you received as a statutory employee ... or fees you received as a notary public'; i1040sc, line 31, 'Statutory employees' and 'Notary public'), so every Schedule C whose net profit reaches Schedule SE line 2 is one the instructions send there."
+  },
+  {
    "printed": "Step 1",
    "restated": "Enter the amount from helper \"This person's Schedule C net profit or loss (all businesses)\".",
    "model": "Step 1 adds Schedule C results across all of this person's businesses. Pub 560 says 'If you have more than one business, but only one has a retirement plan, only the earned income from that business is considered for that plan.' No refusal or screen excludes that case.",
@@ -49,6 +55,12 @@
    "restated": "Enter the amount from helper \"This person's Schedule C net profit or loss (all businesses)\".",
    "model": "This adds Schedule C results from all of the person's businesses. Pub 560 says 'If you have more than one business, but only one has a retirement plan, only the earned income from that business is considered for that plan', and nothing in the program refuses or limits that case.",
    "ruling": "Ruling: defect, fixed (BUG-0078). Pub. 560 p. 7: 'If you have more than one business, but only one has a retirement plan, only the earned income from that business is considered for that plan.' Owner ruling: a SEP or SIMPLE plan with more than one Schedule C is refused (person.plan_screened), so step 1, the profit of all the person's businesses, is the profit of the one business that has the plan for every return the tool completes. This review saw the rendering before that refusal."
+  },
+  {
+   "printed": "Step 1",
+   "restated": "Enter the amount from helper \"This person's Schedule C net profit or loss (all businesses)\".",
+   "model": "This line sums Schedule C results across all of the person's businesses. Pub. 560 says 'If you have more than one business, but only one has a retirement plan, only the earned income from that business is considered for that plan', and no screen excludes that case.",
+   "ruling": "Ruling: refusal located elsewhere; project retained (BUG-0078, as the prior rulings). Pub. 560 p. 7, Earned income, 'If you have more than one business, but only one has a retirement plan, only the earned income from that business is considered for that plan': a SEP or SIMPLE plan with more than one Schedule C is refused (person.plan_screen), so the sum over businesses reaches this line only for a person with one business."
   },
   {
    "printed": "Step 1",

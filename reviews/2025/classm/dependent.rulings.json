@@ -76,6 +76,14 @@
   },
   {
    "case": "classm.dependent.3",
+   "printed": "dependent[dep_b].dc_disabled_qp",
+   "project": "yes",
+   "model": "no",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The helper tests only the two conditions it names (lived with you more than half of 2025; not able to care for themselves); the dependent test is applied where the helper is read (dependent.dc_qp, 'this person is your dependent'), which the model's own working also makes No for this person (i2441 p. 1, Qualifying Person(s), 'Any disabled person who wasn't physically or mentally able to care for themselves who lived with you for more than half the year and whom you can claim as a dependent').",
+   "drop": true
+  },
+  {
+   "case": "classm.dependent.3",
    "printed": "dependent[dep_b].dc_line2d",
    "project": "$1,110.00",
    "model": "$0.00",
@@ -120,6 +128,14 @@
    "project": "no",
    "model": "yes",
    "ruling": "Ruling: second construction right about the label, project value retained; model value dropped from the fixture; proposed finding (label only). The person is a qualifying child aged 3 at the end of 2025, under 13 all year. `dependent.dc_child` is the turned-13 route only (`dependent.dc_age13`, 13 at the end of 2025, and `dependent.dc_under13`); the all-year route is `dependent.dc_child_all_year` (yes here), and `dependent.dc_qp` takes either, so the qualifying-person result is unchanged (i2441 p. 1, Qualifying Person(s), \"If the child turned 13 during the year, the child is a qualifying person for the part of the year they were under age 13\"). But the label given to the model, \"Your qualifying child who is your dependent and was under 13 for at least part of 2025 when the care was provided\", is true of this child, so the model's yes follows the label. Proposed fix: label it as the child who turned 13 in 2025, e.g. \"Your qualifying child who is your dependent, was 13 at the end of 2025 and was under 13 for part of 2025 when the care was provided\"; the value stays no. Fixed during integration (BUG-0080): the label of `dependent.dc_child` now says the child turned 13 during 2025.",
+   "drop": true
+  },
+  {
+   "case": "classm.dependent.5",
+   "printed": "dependent[dep_b].dc_line2d",
+   "project": "$250.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. This entry is not a qualifying person (dependent.dc_qp no, which the model agrees with); the model leaves it off line 2 (i2441 p. 3, Line 2, \"Don't list a person on line 2 unless they are listed as an eligible person\"), the project copies the person's expenses and applies the qualifying-person test where column (d) is summed (f2441.paid_total), so the Form 2441 total is the same.",
    "drop": true
   }
  ]

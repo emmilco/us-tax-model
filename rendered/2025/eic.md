@@ -31,13 +31,6 @@
 - Expr: `{"op":"input","source":"Was your main home in the United States (the 50 states and the District of Columbia) for more than half of 2025? If you were on extended active military duty outside the United States, that time counts as a main home in the United States."}`
 - Cite: [i1040gi] p. 42, Step 4, question 3; p. 44, Members of the military; p. 45, United States (2025; printed date 2026-02-25; sha256 482e9c48)
 
-## (helper) — `eic.married`
-
-- **Authored helper label:** Were you married at the end of 2025?
-- **Encoded (Bool):** Input — Were you married at the end of 2025 (including married but considered unmarried for head of household status)?
-- Expr: `{"op":"input","source":"Were you married at the end of 2025 (including married but considered unmarried for head of household status)?"}`
-- Cite: [i1040gi] p. 41, Step 3, question 3, and Step 4, question 1, "Are you a married taxpayer whose filing status is married filing separately or head of household?" (2025; printed date 2026-02-25; sha256 482e9c48)
-
 ## (helper) — `eic.zero`
 
 - **Authored helper label:** No amount
@@ -69,9 +62,9 @@
 ## (helper) — `eic.married_rules`
 
 - **Authored helper label:** A married filer whose filing status is married filing separately or head of household
-- **Encoded (Bool):** (f1040 line Filing Status = 'mfs' or f1040 line Filing Status = 'hoh' and helper "Were you married at the end of 2025?" = true)
-- Expr: `{"any":[{"eq":["f1040.status",{"const":"mfs"}],"op":"test"},{"all":[{"eq":["f1040.status",{"const":"hoh"}],"op":"test"},{"eq":["eic.married",{"const":true}],"op":"test"}],"op":"test"}],"op":"test"}`
-- Cite: [i1040gi] p. 41, Step 3, question 3, and Step 4, question 1 (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Encoded (Bool):** (f1040 line Filing Status = 'mfs' or f1040 line Filing Status = 'hoh' and household helper "Were you married at the end of 2025?" = true)
+- Expr: `{"any":[{"eq":["f1040.status",{"const":"mfs"}],"op":"test"},{"all":[{"eq":["f1040.status",{"const":"hoh"}],"op":"test"},{"eq":["household.married",{"const":true}],"op":"test"}],"op":"test"}],"op":"test"}`
+- Cite: [i1040gi] p. 41, Step 3, question 3, and Step 4, question 1, "Are you a married taxpayer whose filing status is married filing separately or head of household?" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `eic.top_limit`
 
@@ -174,9 +167,9 @@
 ## (helper) — `eic.step1_ssn`
 
 - **Authored helper label:** Step 1, question 2. Do you have a social security number issued on or before the due date of your return that allows you to work and is valid for EIC purposes?
-- **Encoded (Bool):** household helper "You, and your spouse if filing jointly, have SSNs valid for employment" = true
-- Expr: `{"eq":["household.all_work_ssn",{"const":true}],"op":"test"}`
-- Cite: [i1040gi] p. 40, Step 1, question 2; pp. 44–45, Social security number (SSN) (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Encoded (Bool):** household helper "You, and your spouse if filing jointly, have SSNs valid for the EIC" = true
+- Expr: `{"eq":["household.all_eic_ssn",{"const":true}],"op":"test"}`
+- Cite: [i1040gi] p. 40, Step 1, question 2; pp. 44–45, Social security number (SSN), "For the EIC, a valid SSN is a number issued by the Social Security Administration unless “Not Valid for Employment” is printed on the social security card and the number was issued solely to allow the recipient of the SSN to apply for or receive a federally funded benefit" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `eic.step1_foreign`
 
@@ -547,6 +540,7 @@
 
 - **Authored helper label:** Earned income credit for Form 1040, line 27a (Worksheet A, line 6 when Steps 1 to 5 are passed; zero otherwise)
 - **Encoded (NonNegDollars):** Choose — [helper "Steps 1 to 5 passed in order (Step 6, figure the credit on Worksheet A)" = true → line 6 (eic.line6)] [helper "Steps 1 to 5 passed in order (Step 6, figure the credit on Worksheet A)" = false → helper "No amount"]
+- **Refusal:** when household.credit_disallowed is true, cannot complete Form 8862 and the EIC disallowance period (Form 8862, who must file). Your EIC, child tax credit, additional child tax credit or credit for other dependents for an earlier year was reduced or disallowed, or you are in a disallowance period; Form 8862 and the disallowance period are outside this tool. Cite: [i1040gi] p. 43, Form 8862, who must file, "You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error" and "don’t file Form 8862 or take the credit for the ... 2 years after the most recent tax year for which there was a final determination that your EIC claim was due to reckless or intentional disregard of the EIC rules ... 10 years after the most recent tax year for which there was a final determination that your EIC claim was due to fraud" (2025; printed date 2026-02-25; sha256 482e9c48)
 - Expr: `{"alternatives":[{"guard":{"eq":["eic.eligible",{"const":true}],"op":"test"},"then":"eic.line6"},{"guard":{"eq":["eic.eligible",{"const":false}],"op":"test"},"then":"eic.zero"}],"op":"choose"}`
 - Cite: [i1040gi] pp. 40–46, each "STOP You can't take the credit"; Worksheet A, line 6, "Enter this amount on Form 1040 or 1040-SR, line 27a" (2025; printed date 2026-02-25; sha256 482e9c48)
 

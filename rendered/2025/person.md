@@ -53,6 +53,21 @@
 - Expr: `{"op":"input","source":"Do you have an SSN valid for employment, issued before the due date of your 2025 return (including extensions)?"}`
 - Cite: [i1040gi] p. 18, Step 3, question 4 (2025; printed date 2026-02-25; sha256 482e9c48)
 
+## (helper) — `person.eic_ssn`
+
+- **Authored helper label:** Do you have an SSN valid for the EIC, issued on or before the due date of your return?
+- **Encoded (Bool):** Input — Do you have a social security number issued on or before the due date of your 2025 return (including extensions) that is valid for the EIC? Any number issued by the Social Security Administration is valid unless the card says "Not Valid for Employment" and the number was issued solely to apply for or receive a federally funded benefit; a card that says "Valid for Work Only With DHS Authorization" is valid only while the authorization is valid.
+- Expr: `{"op":"input","source":"Do you have a social security number issued on or before the due date of your 2025 return (including extensions) that is valid for the EIC? Any number issued by the Social Security Administration is valid unless the card says \"Not Valid for Employment\" and the number was issued solely to apply for or receive a federally funded benefit; a card that says \"Valid for Work Only With DHS Authorization\" is valid only while the authorization is valid."}`
+- Cite: [i1040gi] p. 40, Step 1, question 2; pp. 44–45, Social security number (SSN), "For the EIC, a valid SSN is a number issued by the Social Security Administration unless “Not Valid for Employment” is printed on the social security card and the number was issued solely to allow the recipient of the SSN to apply for or receive a federally funded benefit" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.under16`
+
+- **Authored helper label:** Were you under age 16 at the end of 2025?
+- **Encoded (Bool):** Input — Were you under age 16 at the end of 2025?
+- Interpretation: amb.2025.filer_under_16
+- Expr: `{"op":"input","source":"Were you under age 16 at the end of 2025?"}`
+- Cite: [i1040gi] p. 66, Self-Select PIN, "You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
+
 ## (helper) — `person.educator_expenses`
 
 - **Authored helper label:** Qualified educator expenses you paid in 2025

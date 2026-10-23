@@ -11,21 +11,21 @@ pages, a quote found in the document, or one printed line number of a form docum
 of the form's text beside three consecutive words of the label. The segments that do not are listed
 under "Locators to rewrite"; they fail the check only with `--strict`.
 
-- anchors: 2315
+- anchors: 2340
 - anchors ruled: 45
-- quotes: 1254
+- quotes: 1281
 - quotes ruled: 4
-- segments checked: 2400
+- segments checked: 2425
 - findings without a ruling: 0
 - rulings no anchor uses: 0
 
-- computed lines: 1511
-- computed-line segments: 1757
+- computed lines: 1515
+- computed-line segments: 1763
 - computed-line segments rejected: list: 13
 - computed-line segments rejected: none: 160
 - computed-line segments rejected: span: 54
 - computed-line segments with a quote and no page: 120
-- computed-line segments with pages: 1147
+- computed-line segments with pages: 1153
 - form-line locators: 263
 - form-line locators not placed: 21
 - form-line locators on a booklet: 40
@@ -56,7 +56,7 @@ the line, the segment as written and what the check needs instead.
 
 ### dependent (1)
 
-- `dependent.actc_amount` (`forms/2025/dependent.yaml:770`) — “Schedule 8812 (2025), line 16b, “Number of qualifying children under age 17 with the required social security number x $1,700”” — the quote was not found in f1040s8812: quote the text as printed, on a page locator
+- `dependent.actc_amount` (`forms/2025/dependent.yaml:804`) — “Schedule 8812 (2025), line 16b, “Number of qualifying children under age 17 with the required social security number x $1,700”” — the quote was not found in f1040s8812: quote the text as printed, on a page locator
 
 ### div (6)
 
@@ -69,7 +69,7 @@ the line, the segment as written and what the check needs instead.
 
 ### eic (2)
 
-- `eic.wsb_4b` (`forms/2025/eic.yaml:860`) — “line 3, statutory employees, is refused)” — a line number on i1040gi, not a form: a page (`p. N, <heading>`) with a quote
+- `eic.wsb_4b` (`forms/2025/eic.yaml:851`) — “line 3, statutory employees, is refused)” — a line number on i1040gi, not a form: a page (`p. N, <heading>`) with a quote
 - `eic.wsb_line5_stop` (`forms/2025/eic.yaml:1700`) — “Step 5, question 3, has no such instruction, p. 42)” — no line number, quote or page: a printed line number, a quote, or a page locator
 
 ### f1040 (5)
@@ -159,12 +159,12 @@ the line, the segment as written and what the check needs instead.
 - `household.taxpayers` (`forms/2025/household.yaml:36`) — “Filing Status” — no line number, quote or page: a printed line number, a quote, or a page locator
 - `household.spouses` (`forms/2025/household.yaml:52`) — “Filing Status” — no line number, quote or page: a printed line number, a quote, or a page locator
 - `household.roster_ok` (`forms/2025/household.yaml:94`) — “Filing Status” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `household.roster_bad` (`forms/2025/household.yaml:106`) — “Filing Status” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `household.hsa_both` (`forms/2025/household.yaml:136`) — “Steps 1 to 3” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `household.hsa_split_count` (`forms/2025/household.yaml:147`) — “Steps 1 to 3” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `household.hsa_agreed_count` (`forms/2025/household.yaml:158`) — “Steps 1 to 3” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `household.hsa_step1_sum` (`forms/2025/household.yaml:169`) — “Steps 1 to 3” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `household.hsa_share_sum` (`forms/2025/household.yaml:180`) — “Steps 1 to 3” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `household.roster_bad` (`forms/2025/household.yaml:115`) — “Filing Status” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `household.hsa_both` (`forms/2025/household.yaml:145`) — “Steps 1 to 3” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `household.hsa_split_count` (`forms/2025/household.yaml:156`) — “Steps 1 to 3” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `household.hsa_agreed_count` (`forms/2025/household.yaml:167`) — “Steps 1 to 3” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `household.hsa_step1_sum` (`forms/2025/household.yaml:178`) — “Steps 1 to 3” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `household.hsa_share_sum` (`forms/2025/household.yaml:189`) — “Steps 1 to 3” — no line number, quote or page: a printed line number, a quote, or a page locator
 
 ### ltc (1)
 
@@ -172,23 +172,23 @@ the line, the segment as written and what the check needs instead.
 
 ### person (17)
 
-- `person.hsa_split` (`forms/2025/person.yaml:258`) — “Steps 1 to 3” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `person.hsa_agreed` (`forms/2025/person.yaml:280`) — “Steps 1 to 3” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `person.hsa_step1` (`forms/2025/person.yaml:296`) — “Steps 1 to 3” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `person.hsa_share` (`forms/2025/person.yaml:312`) — “Steps 1 to 3” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `person.hsa_taxable` (`forms/2025/person.yaml:344`) — “line 16” — line 16 of f8889 was not found on a row of its text beside words of the label “Form 8889 line 16 for this person”: cite the printed line whose text the label follows, or add a quote of the line as printed
-- `person.box2` (`forms/2025/person.yaml:538`) — “Form 1040 (2025), line 25a” — line 25a of f1040 was not found on a row of its text beside words of the label “Total W-2 box 2 for this person”: cite the printed line whose text the label follows, or add a quote of the line as printed
-- `person.medicare5` (`forms/2025/person.yaml:628`) — “Form 8959 (2025), lines 1–24” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
-- `person.medicare6` (`forms/2025/person.yaml:646`) — “Form 8959 (2025), lines 1–24” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
-- `person.se_line6` (`forms/2025/person.yaml:847`) — “Schedule SE (2025), line 6” — line 6 of f1040sse was not found on a row of its text beside words of the label “Schedule SE line 6 for this person”: cite the printed line whose text the label follows, or add a quote of the line as printed
-- `person.se_line6` (`forms/2025/person.yaml:847`) — “i8959 Line 8, “Schedule SE, line 6”” — the quote was not found in i8959: quote the text as printed, on a page locator
-- `person.se_line4c` (`forms/2025/person.yaml:952`) — “Schedule SE (2025), line 4c” — line 4c of f1040sse was not found on a row of its text beside words of the label “Schedule SE line 4c for this person”: cite the printed line whose text the label follows, or add a quote of the line as printed
-- `person.sep_s5` (`forms/2025/person.yaml:1130`) — “Rate Table for Self-Employed (for example 10% gives 0.090909) (amb.2025.sep_rate_places)” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `person.sep_excess` (`forms/2025/person.yaml:1201`) — “chapter 2, Excess contributions” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `person.plan_deduction` (`forms/2025/person.yaml:1523`) — “p560 chapter 5” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `person.positive_profits` (`forms/2025/person.yaml:1556`) — “Line 5, Form 7206 (2025), “Don't include any net losses”” — the quote was not found in i7206: quote the text as printed, on a page locator
-- `person.qbi` (`forms/2025/person.yaml:1578`) — “Line 1” — a line number on i8995, not a form: a page (`p. N, <heading>`) with a quote
-- `person.sav_line2` (`forms/2025/person.yaml:2065`) — “Form 8880 (2025), line 2” — line 2 of f8880 was not found on a row of its text beside words of the label “Form 8880 line 2 for this person (box 12 deferrals, volun…”: cite the printed line whose text the label follows, or add a quote of the line as printed
+- `person.hsa_split` (`forms/2025/person.yaml:283`) — “Steps 1 to 3” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `person.hsa_agreed` (`forms/2025/person.yaml:305`) — “Steps 1 to 3” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `person.hsa_step1` (`forms/2025/person.yaml:321`) — “Steps 1 to 3” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `person.hsa_share` (`forms/2025/person.yaml:337`) — “Steps 1 to 3” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `person.hsa_taxable` (`forms/2025/person.yaml:369`) — “line 16” — line 16 of f8889 was not found on a row of its text beside words of the label “Form 8889 line 16 for this person”: cite the printed line whose text the label follows, or add a quote of the line as printed
+- `person.box2` (`forms/2025/person.yaml:563`) — “Form 1040 (2025), line 25a” — line 25a of f1040 was not found on a row of its text beside words of the label “Total W-2 box 2 for this person”: cite the printed line whose text the label follows, or add a quote of the line as printed
+- `person.medicare5` (`forms/2025/person.yaml:653`) — “Form 8959 (2025), lines 1–24” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `person.medicare6` (`forms/2025/person.yaml:671`) — “Form 8959 (2025), lines 1–24” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `person.se_line6` (`forms/2025/person.yaml:872`) — “Schedule SE (2025), line 6” — line 6 of f1040sse was not found on a row of its text beside words of the label “Schedule SE line 6 for this person”: cite the printed line whose text the label follows, or add a quote of the line as printed
+- `person.se_line6` (`forms/2025/person.yaml:872`) — “i8959 Line 8, “Schedule SE, line 6”” — the quote was not found in i8959: quote the text as printed, on a page locator
+- `person.se_line4c` (`forms/2025/person.yaml:977`) — “Schedule SE (2025), line 4c” — line 4c of f1040sse was not found on a row of its text beside words of the label “Schedule SE line 4c for this person”: cite the printed line whose text the label follows, or add a quote of the line as printed
+- `person.sep_s5` (`forms/2025/person.yaml:1155`) — “Rate Table for Self-Employed (for example 10% gives 0.090909) (amb.2025.sep_rate_places)” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `person.sep_excess` (`forms/2025/person.yaml:1226`) — “chapter 2, Excess contributions” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `person.plan_deduction` (`forms/2025/person.yaml:1548`) — “p560 chapter 5” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `person.positive_profits` (`forms/2025/person.yaml:1581`) — “Line 5, Form 7206 (2025), “Don't include any net losses”” — the quote was not found in i7206: quote the text as printed, on a page locator
+- `person.qbi` (`forms/2025/person.yaml:1603`) — “Line 1” — a line number on i8995, not a form: a page (`p. N, <heading>`) with a quote
+- `person.sav_line2` (`forms/2025/person.yaml:2090`) — “Form 8880 (2025), line 2” — line 2 of f8880 was not found on a row of its text beside words of the label “Form 8880 line 2 for this person (box 12 deferrals, volun…”: cite the printed line whose text the label follows, or add a quote of the line as printed
 
 ### qbi (5)
 
@@ -280,9 +280,9 @@ the line, the segment as written and what the check needs instead.
 
 ### s8812 (3)
 
-- `s8812.line18a` (`forms/2025/s8812.yaml:601`) — “combat pay is refused” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `s8812.line18a` (`forms/2025/s8812.yaml:601`) — “not taking the EIC, the Earned Income Worksheet)” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `s8812.line27` (`forms/2025/s8812.yaml:854`) — “Schedule 8812 (2025), lines 20 (Next) through 27” — several lines place nothing: cite the one printed line this value comes from, or a page with a quote
+- `s8812.line18a` (`forms/2025/s8812.yaml:610`) — “combat pay is refused” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `s8812.line18a` (`forms/2025/s8812.yaml:610`) — “not taking the EIC, the Earned Income Worksheet)” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `s8812.line27` (`forms/2025/s8812.yaml:863`) — “Schedule 8812 (2025), lines 20 (Next) through 27” — several lines place nothing: cite the one printed line this value comes from, or a page with a quote
 
 ### sa (20)
 

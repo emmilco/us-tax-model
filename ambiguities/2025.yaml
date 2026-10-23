@@ -1147,3 +1147,55 @@ register:
         locator: 'p. 1, Medical and Dental Expenses, "You can deduct only the part of your medical and dental expenses that
           exceeds 7.5% of the amount of your adjusted gross income on Form 1040 or 1040-SR, line 11b"'
       status: Applied for BUG-0094; both engines agree; the owner's decision is not yet recorded.
+    - id: amb.2025.foster_parent_relationship
+      text_at_issue: 'Step 4 of "Who Qualifies as Your Dependent" lists "your father, mother, grandparent, or other direct
+        ancestor" among the relatives who need not live with you all year (i1040gi p. 19) without saying whether a foster
+        parent is a parent; Pub. 501 says "Your father, mother, grandparent, or other direct ancestor, but not foster parent"
+        (p501 p. 19). The input dependent.relationship has one value, parent, for "father or mother".'
+      readings:
+      - A foster parent is a parent for Step 4, so the all-year test does not apply.
+      - A foster parent is not a parent; a foster parent is a qualifying relative only as any other person who lived with you all year as a member of your household.
+      chosen: The second, as Pub. 501 states it; the gloss of the parent value says so and sends a foster parent to the other value, which carries the all-year test.
+      reason: 'The owner''s decision of 2026-10-22 (integrity plan decision 9, Direct File finding F2). The 1040 instructions
+        do not state the exclusion; Pub. 501 does, and the Direct File fact dictionary (TY2024) excludes a foster parent from
+        its qualifying relative relationship test. A gloss on the existing value was chosen over a new enumeration value because
+        no line computes on the distinction once the person is routed to the all-year test.'
+      cite:
+        doc: p501
+        locator: 'p. 19, Relatives who don''t have to live with you, "Your father, mother, grandparent, or other direct ancestor, but not foster parent"'
+      status: Owner decision, 2026-10-22 (docs/2026-10-22_integrity_plan.md, decision 9; reviews/2025/direct-file/predicates.md, finding F2).
+    - id: amb.2025.filer_under_16
+      text_at_issue: 'The archived instructions state no minimum age for a filer or a spouse on a joint return; the only sentence
+        naming age 16 concerns electronic signatures (i1040gi p. 66, "You can’t use the Self-Select PIN method if you are a
+        first-time filer under age 16 at the end of 2025"). Direct File (TY2024) knocks out a primary filer or a joint-return
+        spouse under 16.'
+      readings:
+      - Compute the return for a filer of any age (the text has no rule).
+      - Refuse a return on which you, or your spouse if filing jointly, were under age 16 at the end of 2025 (household.filer_under16), as an entry check.
+      chosen: The second. The refusal cites the one sentence the text has about age 16 and names the register entry; it does not claim the text forbids the return.
+      reason: 'The owner''s decision of 2026-10-22 (integrity plan decision 10). A return for a child under 16 is one the tool''s
+        slice does not model well (Form 8615 is refused through scope.other_line16 only when the filer knows to answer it); the
+        refusal makes the age an explicit entry rather than a silent assumption.'
+      cite:
+        doc: i1040gi
+        locator: 'p. 66, Self-Select PIN, "You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025"'
+      status: Owner decision, 2026-10-22 (docs/2026-10-22_integrity_plan.md, decision 10). The archived text states no such rule; this entry is the refusal's authority.
+    - id: amb.2025.hoh_community_property
+      text_at_issue: 'i1040gi p. 23, Community Property States: "If you and your spouse lived in a community property state, you
+        must usually follow state law to determine what is community income and what is separate income. For details, see Form
+        8958 and Pub. 555." The text names nine states (Arizona, California, Idaho, Louisiana, Nevada, New Mexico, Texas,
+        Washington, and Wisconsin). Pub. 555 and Form 8958 are not archived. A married person filing as head of household
+        (considered unmarried) reports their own income, which state law may define as half the community income.'
+      readings:
+      - Compute the return from the income entered, leaving community income allocation to the filer.
+      - Refuse a married filer who files as head of household and lived in a community property state (household.hoh_community_property), since the tool cannot apply Pub. 555.
+      chosen: The second, for the nine states the instructions list (Direct File''s knockout tests eight; Louisiana is in the text and so in the question).
+      reason: 'The owner''s decision of 2026-10-22 (integrity plan decision 10). The archived text states the community income
+        rule but not a prohibition on the filing status; the refusal rests on the rule being outside the tool, not on a
+        forbidden status. Married filing separately, the other case Direct File knocks out, is refused throughout the tool
+        already. A registered domestic partner in Nevada, Washington or California (same paragraph) is not asked and is
+        a gap to note.'
+      cite:
+        doc: i1040gi
+        locator: 'p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555"'
+      status: Owner decision, 2026-10-22 (docs/2026-10-22_integrity_plan.md, decision 10).

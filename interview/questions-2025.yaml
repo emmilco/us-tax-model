@@ -599,6 +599,14 @@ bank:
     order: 2
     help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
       do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: person.eic_ssn
+    order: 30
+    help: Answer true or false. This is the earned income credit's definition of a valid SSN, which differs from the child
+      tax credit's "valid for employment" question asked earlier. Unknown may be null; do not guess.
+  - input: person.under16
+    order: 2
+    help: Answer true or false. A return for a person under age 16 at the end of 2025 (you, or your spouse on a joint
+      return) is outside this tool. Unknown may be null; do not guess.
   - input: household.home_cost
     order: 2
     help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
@@ -619,10 +627,21 @@ bank:
     order: 30
     help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
       do not guess. Married filing separately and unsupported items are refused with citations.
-  - input: eic.married
-    order: 30
-    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
-      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: household.married
+    order: 2
+    help: Answer true or false. Married includes a married person who is considered unmarried for head of household
+      status; a person legally separated under a decree of divorce or separate maintenance at the end of 2025 is not
+      married. Unknown may be null; do not guess.
+  - input: household.community_property
+    order: 2
+    help: Answer true or false. Asked of a married filer who files as head of household; a married filer in one of the
+      nine community property states is refused, since community income under state law (Form 8958, Pub. 555) is outside
+      this tool. Unknown may be null; do not guess.
+  - input: household.credit_disallowed
+    order: 20
+    help: Answer true or false. A reduction or disallowance by an IRS notice for any year after 1996 counts, other than a
+      math or clerical error; a Yes refuses the earned income credit and Schedule 8812, since Form 8862 and the
+      disallowance periods are outside this tool. Unknown may be null; do not guess.
   - input: eic.same_home
     order: 30
     help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;

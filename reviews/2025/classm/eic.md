@@ -4,10 +4,10 @@
 
 | field | value |
 | --- | --- |
-| date | 2026-10-21 |
+| date | 2026-10-22 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| subject sha256 | cb83c4a7c13e4519c0bb5ff3cf26b9ae43c1b19b2e04d0ad6f490897983a7968 |
+| subject sha256 | 75f7a863f6829e8f510ff9dfeac80b0f549782d6d590d290de2105e98228ca1a |
 | cases | 8 |
 
 ## Source pages given to the model
@@ -18,66 +18,70 @@
 
 ## Lines
 
-### case classm.eic.1 — prompt sha256 73541683e7181aa17701f3bd9a2e76d9646fc6097a55ed519827a4e0dedbddec; branches: eic.qc_of_another:false, eic.age_range:true, eic.us_home:true, eic.married:false, eic.has_qc:true, eic.married_rules:false, eic.top_limit#3, eic.below_top:true, eic.limit_other#1, eic.limit_joint#1, eic.limit#3, eic.step1_income:true, eic.step1_ssn:true, eic.step1_foreign:true, eic.step1_resident:true, eic.gain_7a:floor, eic.step2_income:true, eic.step2_other:true, eic.same_home:false, eic.legally_separated:false, eic.step3_married:true, eic.step3:true, eic.step4:true, eic.step34:true, eic.self_employed:false, eic.wsb_6:positive, eic.earned_for_limit#0, eic.step5_income:true, eic.eligible:true, eic.line1#0, eic.line1_in_table:true, eic.line1_table#1, eic.line2#0, eic.line4:true, eic.threshold_other#1, eic.threshold_joint#1, eic.line5_threshold#3, eic.line5_blank:false, eic.line5#1, eic.smaller:left, eic.after_line4#1, eic.line6#0, eic.credit#0, eic.reached_step3:true, eic.check_27c:false, eic.wsb_4b_positive:true, eic.wsb_line5_stop:false, eic.separated_box:false, eic.clergy:false
+### case classm.eic.1 — prompt sha256 d16b0c37d4b6ed1dca2f2911cb129f1fcc03b89a6e1ebf0d037693f63522ceec; branches: eic.qc_of_another:false, eic.age_range:true, eic.us_home:true, eic.has_qc:true, eic.married_rules:false, eic.top_limit#4, eic.below_top:true, eic.limit_other#1, eic.limit_joint#1, eic.limit#4, eic.step1_income:true, eic.step1_ssn:true, eic.step1_foreign:true, eic.step1_resident:true, eic.gain_7a:floor, eic.step2_income:true, eic.step2_other:true, eic.same_home:true, eic.legally_separated:true, eic.step3_married:true, eic.step3:true, eic.step4:true, eic.step34:true, eic.self_employed:false, eic.wsb_6:positive, eic.earned_for_limit#0, eic.step5_income:true, eic.eligible:true, eic.line1#0, eic.line1_in_table:true, eic.line1_table#1, eic.line2#0, eic.line4:false, eic.threshold_other#1, eic.threshold_joint#1, eic.line5_threshold#4, eic.line5_blank:true, eic.line5#1, eic.smaller:left, eic.after_line4#0, eic.line6#1, eic.credit#0, eic.reached_step3:true, eic.check_27c:false, eic.wsb_4b_positive:true, eic.wsb_line5_stop:false, eic.separated_box:false, eic.clergy:false
 
 ### classm.eic.1 — 4b — Worksheet B, line 4b. Combine lines 1e, 2c, 3, and 4a. This is your total earned
 Status: **DISAGREE**
 
-Project: $32,936.00
+Project: $5,137.00
 Model: $0.00
-Work: Step 5 q2 = No (not self-employed, no Schedule SE or statutory employee), so Worksheet B is not used
+Work: Not self-employed, no Schedule SE and no statutory-employee Schedule C, so Step 5 Q2 is No. Use Worksheet A; Worksheet B is not used.
 
-Ruling: representation; project retained; model value dropped from the fixture. Worksheet B is used only when Step 5, question 2 is Yes (i1040gi p. 42: self-employment, church employee or statutory employee income); the project figures its lines for every return and nothing reads them when it is not used. The credit, Worksheet A line 6 (Form 1040 line 27a), agrees. [dropped]
+Ruling: representation; project retained; model value dropped from the fixture. Worksheet B is used only when Step 5, question 2 is Yes (i1040gi p. 42, 'Were you self-employed at any time in 2025'); the project figures its lines for every return and line 1 of Worksheet A reads them only for a return with a Schedule C (eic.self_employed), so the credit is the same. [dropped]
 
 ### classm.eic.1 — 6 (eic.wsb_6) — Worksheet B, line 6. Enter your total earned income from Part 4, line 4b (zero i
 Status: **DISAGREE**
 
-Project: $32,936.00
+Project: $5,137.00
 Model: $0.00
-Work: Worksheet B is not used; Worksheet A applies
+Work: Worksheet B is not used.
 
-Ruling: representation; project retained; model value dropped from the fixture. Worksheet B is used only when Step 5, question 2 is Yes (i1040gi p. 42: self-employment, church employee or statutory employee income); the project figures its lines for every return and nothing reads them when it is not used. The credit, Worksheet A line 6 (Form 1040 line 27a), agrees. [dropped]
+Ruling: representation; project retained; model value dropped from the fixture. Worksheet B is used only when Step 5, question 2 is Yes (i1040gi p. 42, 'Were you self-employed at any time in 2025'); the project figures its lines for every return and line 1 of Worksheet A reads them only for a return with a Schedule C (eic.self_employed), so the credit is the same. [dropped]
 
 ### classm.eic.1 — 1 — Enter your earned income from Step 5 (Worksheet A, line 1), or Worksheet B, line
 Status: **AGREE**
 
-Value: $32,936.00
+Value: $5,137.00
 
 ### classm.eic.1 — 2 — Look up the amount on line 1 in the EIC Table to find the credit, using the colu
 Status: **AGREE**
 
-Value: $2,798.00
+Value: $1,743.00
 
 ### classm.eic.1 — 3 — Enter the amount from Form 1040 or 1040-SR, line 11b
 Status: **AGREE**
 
-Value: $32,936.00
+Value: $2,137.00
 
 ### classm.eic.1 — 4 — Are the amounts on lines 3 and 1 the same?
 Status: **AGREE**
 
-Value: yes
+Value: no
 
 ### classm.eic.1 — 5 — Look up the amount on line 3 in the EIC Table to find the credit, using the colu
 Status: **DISAGREE**
 
-Project: $2,798.00
+Project: $723.00
 Model: $0.00
-Work: Skipped because line 4 = Yes
+Work: 1 qualifying child and line 3 of $2,137 is less than $23,350, so leave line 5 blank and enter line 2 on line 6.
 
-Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; where the model fills line 6 it agrees with the project, and where a step stops (for example Form 2555 at Step 1, question 3) the project's line 6 is figured but Form 1040 line 27a is zero or refused. [dropped]
+Ruling: representation; project retained; model value dropped from the fixture. The worksheet leaves line 5 blank when line 4 is Yes or line 3 is below the line 5 amount (i1040gi p. 46, Worksheet A, line 4, 'Yes. Skip line 5; enter the amount from line 2 on line 6', and line 5, 'Yes. Leave line 5 blank'); the project figures line 5 always and line 6 reads it only in the case the worksheet uses it, so line 6 is the same. [dropped]
 
 ### classm.eic.1 — 6 (eic.line6) — This is your earned income credit
 Status: **AGREE**
 
-Value: $2,798.00
+Value: $1,743.00
 
-### case classm.eic.2 — prompt sha256 750f92b5164385ec10002dcc43bfb897386dc2286110a4e3633c40d9515bd032; branches: eic.qc_of_another:false, eic.age_range:true, eic.us_home:true, eic.married:true, eic.has_qc:false, eic.married_rules:true, eic.top_limit#2, eic.below_top:true, eic.limit_other#0, eic.limit_joint#0, eic.limit#2, eic.step1_income:false, eic.step1_ssn:false, eic.step1_resident:true, eic.gain_7a:floor, eic.step2_income:true, eic.step2_other:true, eic.same_home:true, eic.legally_separated:false, eic.step3_married:false, eic.step3:false, eic.step4:false, eic.step34:false, eic.self_employed:false, eic.wsb_6:floor, eic.earned_for_limit#0, eic.step5_income:true, eic.eligible:false, eic.line1#0, eic.line1_in_table:false, eic.line1_table#0, eic.line2#1, eic.line4:false, eic.threshold_other#0, eic.threshold_joint#0, eic.line5_threshold#2, eic.line5_blank:false, eic.line5#0, eic.smaller:left, eic.after_line4#1, eic.line6#1, eic.credit#1, eic.reached_step3:false, eic.check_27c:false, eic.wsb_4b_positive:false, eic.wsb_line5_stop:false, eic.separated_box:false, eic.clergy:false
+### case classm.eic.2 — prompt sha256 d287a5d6fec1b74b695db23e0905d0a119958c2c1ca9969ecf953364c7675912; branches: eic.qc_of_another:false, eic.age_range:true, eic.us_home:true, eic.has_qc:false, eic.married_rules:true, eic.top_limit#2, eic.below_top:true, eic.limit_other#0, eic.limit_joint#0, eic.limit#2, eic.step1_income:false, eic.step1_ssn:true, eic.step1_foreign:true, eic.step1_resident:true, eic.gain_7a:positive, eic.step2_income:false, eic.step2_other:true, eic.same_home:false, eic.legally_separated:false, eic.step3_married:true, eic.step3:true, eic.step4:false, eic.step34:false, eic.self_employed:true, eic.wsb_6:floor, eic.earned_for_limit#1, eic.step5_income:true, eic.eligible:false, eic.line1#1, eic.line1_in_table:false, eic.line1_table#0, eic.line2#1, eic.line4:false, eic.threshold_other#0, eic.threshold_joint#0, eic.line5_threshold#2, eic.line5_blank:false, eic.line5#0, eic.smaller:left, eic.after_line4#1, eic.line6#1, eic.credit#1, eic.reached_step3:false, eic.check_27c:false, eic.wsb_4b_positive:false, eic.wsb_line5_stop:false, eic.separated_box:false, eic.clergy:false
 
 ### classm.eic.2 — 4b — Worksheet B, line 4b. Combine lines 1e, 2c, 3, and 4a. This is your total earned
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $0.00
+Project: $-74,959.00
+Model: $0.00
+Work: Not reached; Step 1 STOP: no qualifying children with valid SSNs and line 11b $22,732 is not less than $19,104
+
+Ruling: representation; project retained; model value dropped from the fixture. Worksheet B is used only when Step 5, question 2 is Yes (i1040gi p. 42, 'Were you self-employed at any time in 2025'); the project figures its lines for every return and line 1 of Worksheet A reads them only for a return with a Schedule C (eic.self_employed), so the credit is the same. [dropped]
 
 ### classm.eic.2 — 6 (eic.wsb_6) — Worksheet B, line 6. Enter your total earned income from Part 4, line 4b (zero i
 Status: **AGREE**
@@ -97,11 +101,11 @@ Value: $0.00
 ### classm.eic.2 — 3 — Enter the amount from Form 1040 or 1040-SR, line 11b
 Status: **DISAGREE**
 
-Project: $23,500.00
+Project: $22,732.00
 Model: $0.00
-Work: Not reached; taxpayer can't take the credit (Step 1 STOP)
+Work: Not reached; Step 1 STOP
 
-Ruling: representation; project retained; model value dropped from the fixture. The model leaves Worksheet A lines blank after a STOP (or line 5 when line 4 is Yes); the project figures each line always and the credit reads it only where the worksheet uses it, so line 6 and Form 1040 line 27a are the same (as ruled in Stage 9; i1040gi pp. 40-46). [dropped]
+Ruling: representation; project retained; model value dropped from the fixture. Step 1 ends the flow chart for this return (i1040gi p. 40, Step 1, question 1, 'No. STOP'); the project figures Worksheet A's lines for every return and eic.credit is zero when Steps 1 to 5 fail, so line 27a is zero on both sides. [dropped]
 
 ### classm.eic.2 — 4 — Are the amounts on lines 3 and 1 the same?
 Status: **AGREE**
@@ -118,53 +122,61 @@ Status: **AGREE**
 
 Value: $0.00
 
-### case classm.eic.3 — prompt sha256 d9b76729cf64f3c1006324e44a47b3e5ede51e26d4ab92b96dc1b1e47fa742ec; branches: eic.qc_of_another:false, eic.age_range:true, eic.us_home:true, eic.married:false, eic.has_qc:false, eic.married_rules:false, eic.top_limit#1, eic.below_top:true, eic.limit_other#0, eic.limit_joint#0, eic.limit#1, eic.step1_income:true, eic.step1_ssn:true, eic.step1_foreign:true, eic.step1_resident:true, eic.gain_7a:positive, eic.step2_income:false, eic.step2_other:true, eic.same_home:false, eic.legally_separated:false, eic.step3_married:true, eic.step3:true, eic.step4:true, eic.step34:true, eic.self_employed:true, eic.wsb_6:floor, eic.earned_for_limit#1, eic.step5_income:true, eic.eligible:false, eic.line1#1, eic.line1_in_table:false, eic.line1_table#0, eic.line2#1, eic.line4:false, eic.threshold_other#0, eic.threshold_joint#0, eic.line5_threshold#1, eic.line5_blank:true, eic.line5#0, eic.smaller:right, eic.after_line4#0, eic.line6#1, eic.credit#1, eic.reached_step3:false, eic.check_27c:false, eic.wsb_4b_positive:false, eic.wsb_line5_stop:false, eic.separated_box:false, eic.clergy:false
+### case classm.eic.3 — prompt sha256 f935455101879eed1b649264b83c6e064a3997f66371b137730485f04e9201ea; branches: eic.qc_of_another:false, eic.age_range:true, eic.us_home:true, eic.has_qc:true, eic.married_rules:false, eic.top_limit#0, eic.below_top:true, eic.limit_other#2, eic.limit_joint#2, eic.limit#0, eic.step1_income:true, eic.step1_ssn:true, eic.step1_foreign:true, eic.step1_resident:true, eic.gain_7a:floor, eic.step2_income:true, eic.step2_other:true, eic.same_home:false, eic.legally_separated:false, eic.step3_married:true, eic.step3:true, eic.step4:true, eic.step34:true, eic.self_employed:false, eic.wsb_6:positive, eic.earned_for_limit#0, eic.step5_income:true, eic.eligible:true, eic.line1#0, eic.line1_in_table:true, eic.line1_table#2, eic.line2#0, eic.line4:true, eic.threshold_other#1, eic.threshold_joint#1, eic.line5_threshold#0, eic.line5_blank:true, eic.line5#2, eic.smaller:left, eic.after_line4#0, eic.line6#0, eic.credit#0, eic.reached_step3:true, eic.check_27c:false, eic.wsb_4b_positive:true, eic.wsb_line5_stop:false, eic.separated_box:false, eic.clergy:false
 
 ### classm.eic.3 — 4b — Worksheet B, line 4b. Combine lines 1e, 2c, 3, and 4a. This is your total earned
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $-53,866.40
+Project: $13,709.00
+Model: $0.00
+Work: Not self-employed, no Schedule SE, not a statutory employee; Step 5 Q2 = No, so use Worksheet A, not B
+
+Ruling: representation; project retained; model value dropped from the fixture. Worksheet B is used only when Step 5, question 2 is Yes (i1040gi p. 42, 'Were you self-employed at any time in 2025'); the project figures its lines for every return and line 1 of Worksheet A reads them only for a return with a Schedule C (eic.self_employed), so the credit is the same. [dropped]
 
 ### classm.eic.3 — 6 (eic.wsb_6) — Worksheet B, line 6. Enter your total earned income from Part 4, line 4b (zero i
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $0.00
+Project: $13,709.00
+Model: $0.00
+Work: Worksheet B is not used (Step 5 Q2 = No)
+
+Ruling: representation; project retained; model value dropped from the fixture. Worksheet B is used only when Step 5, question 2 is Yes (i1040gi p. 42, 'Were you self-employed at any time in 2025'); the project figures its lines for every return and line 1 of Worksheet A reads them only for a return with a Schedule C (eic.self_employed), so the credit is the same. [dropped]
 
 ### classm.eic.3 — 1 — Enter your earned income from Step 5 (Worksheet A, line 1), or Worksheet B, line
 Status: **AGREE**
 
-Value: $0.00
+Value: $13,709.00
 
 ### classm.eic.3 — 2 — Look up the amount on line 1 in the EIC Table to find the credit, using the colu
 Status: **AGREE**
 
-Value: $0.00
+Value: $5,490.00
 
 ### classm.eic.3 — 3 — Enter the amount from Form 1040 or 1040-SR, line 11b
 Status: **AGREE**
 
-Value: $16,351.60
+Value: $13,709.00
 
 ### classm.eic.3 — 4 — Are the amounts on lines 3 and 1 the same?
 Status: **AGREE**
 
-Value: no
+Value: yes
 
 ### classm.eic.3 — 5 — Look up the amount on line 3 in the EIC Table to find the credit, using the colu
 Status: **DISAGREE**
 
-Project: $649.00
+Project: $5,490.00
 Model: $0.00
-Work: No children; line 3 (16,351.60) is less than 17,730 (MFJ), so leave line 5 blank and use line 2
+Work: Skipped because line 4 = Yes
 
-Ruling: representation; project retained; model value dropped from the fixture. Worksheet A says to leave line 5 blank when line 3 is less than the amount for the filing status and number of children ($17,730 married filing jointly with none) and to take line 2; the project looks line 5 up regardless and line 6 takes line 2. The credit, line 6, agrees at $0.00. [dropped]
+Ruling: representation; project retained; model value dropped from the fixture. The worksheet leaves line 5 blank when line 4 is Yes or line 3 is below the line 5 amount (i1040gi p. 46, Worksheet A, line 4, 'Yes. Skip line 5; enter the amount from line 2 on line 6', and line 5, 'Yes. Leave line 5 blank'); the project figures line 5 always and line 6 reads it only in the case the worksheet uses it, so line 6 is the same. [dropped]
 
 ### classm.eic.3 — 6 (eic.line6) — This is your earned income credit
 Status: **AGREE**
 
-Value: $0.00
+Value: $5,490.00
 
-### case classm.eic.4 — prompt sha256 3c42786d4f3073637704821585b719d7f8841c27746f8add54a8b43e1f544f50; branches: eic.qc_of_another:false, eic.age_range:true, eic.us_home:true, eic.married:false, eic.has_qc:true, eic.married_rules:false, eic.top_limit#0, eic.below_top:true, eic.limit_other#2, eic.limit_joint#2, eic.limit#0, eic.step1_income:true, eic.step1_ssn:true, eic.step1_foreign:true, eic.step1_resident:true, eic.gain_7a:floor, eic.step2_income:true, eic.step2_other:true, eic.same_home:false, eic.legally_separated:false, eic.step3_married:true, eic.step3:true, eic.step4:true, eic.step34:true, eic.self_employed:false, eic.wsb_6:floor, eic.earned_for_limit#0, eic.step5_income:true, eic.eligible:true, eic.line1#0, eic.line1_in_table:false, eic.line1_table#2, eic.line2#1, eic.line4:false, eic.threshold_other#1, eic.threshold_joint#1, eic.line5_threshold#0, eic.line5_blank:true, eic.line5#2, eic.smaller:right, eic.after_line4#0, eic.line6#1, eic.credit#0, eic.reached_step3:true, eic.check_27c:true, eic.wsb_4b_positive:false, eic.wsb_line5_stop:false, eic.separated_box:false, eic.clergy:false
+### case classm.eic.4 — prompt sha256 ac95d1592bd6da48a71a922224448c306d68a43209f1f03f0f53435b821cf9e4; branches: eic.qc_of_another:true, eic.age_range:true, eic.us_home:false, eic.has_qc:false, eic.married_rules:true, eic.top_limit#3, eic.below_top:true, eic.limit_other#0, eic.limit_joint#0, eic.limit#3, eic.step1_income:true, eic.step1_ssn:true, eic.step1_resident:true, eic.gain_7a:floor, eic.step2_income:true, eic.step2_other:true, eic.same_home:true, eic.legally_separated:false, eic.step3_married:false, eic.step3:false, eic.step4:false, eic.step34:false, eic.self_employed:false, eic.wsb_6:floor, eic.earned_for_limit#0, eic.step5_income:true, eic.line1#0, eic.line1_in_table:false, eic.line1_table#0, eic.line2#1, eic.line4:false, eic.threshold_other#0, eic.threshold_joint#0, eic.line5_threshold#3, eic.line5_blank:true, eic.line5#0, eic.smaller:right, eic.after_line4#0, eic.line6#1, eic.wsb_4b_positive:false, eic.clergy:false
 
 ### classm.eic.4 — 4b — Worksheet B, line 4b. Combine lines 1e, 2c, 3, and 4a. This is your total earned
 Status: **AGREE**
@@ -189,11 +201,11 @@ Value: $0.00
 ### classm.eic.4 — 3 — Enter the amount from Form 1040 or 1040-SR, line 11b
 Status: **DISAGREE**
 
-Project: $33.00
+Project: $9,719.00
 Model: $0.00
-Work: STOP at line 2 (credit zero); remaining lines not completed
+Work: Not reached; ineligible per the flowchart
 
-Ruling: representation; project retained; model value dropped from the fixture. Worksheet A line 2 is $0 (the EIC Table gives no credit for this earned income), so the worksheet stops there (amb.2025.eic_below_table); the project figures lines 3 and 5 anyway, and the credit, line 6, agrees at $0.00. [dropped]
+Ruling: representation; project retained; model value dropped from the fixture. Step 1 ends the flow chart for this return (i1040gi p. 40, Step 1, question 1, 'No. STOP'); the project figures Worksheet A's lines for every return and eic.credit is zero when Steps 1 to 5 fail, so line 27a is zero on both sides. [dropped]
 
 ### classm.eic.4 — 4 — Are the amounts on lines 3 and 1 the same?
 Status: **AGREE**
@@ -203,45 +215,33 @@ Value: no
 ### classm.eic.4 — 5 — Look up the amount on line 3 in the EIC Table to find the credit, using the colu
 Status: **DISAGREE**
 
-Project: $10.00
+Project: $649.00
 Model: $0.00
-Work: STOP at line 2
+Work: Not reached; ineligible per the flowchart
 
-Ruling: representation; project retained; model value dropped from the fixture. Worksheet A line 2 is $0 (the EIC Table gives no credit for this earned income), so the worksheet stops there (amb.2025.eic_below_table); the project figures lines 3 and 5 anyway, and the credit, line 6, agrees at $0.00. [dropped]
+Ruling: representation; project retained; model value dropped from the fixture. Step 1 ends the flow chart for this return (i1040gi p. 40, Step 1, question 1, 'No. STOP'); the project figures Worksheet A's lines for every return and eic.credit is zero when Steps 1 to 5 fail, so line 27a is zero on both sides. [dropped]
 
 ### classm.eic.4 — 6 (eic.line6) — This is your earned income credit
 Status: **AGREE**
 
 Value: $0.00
 
-### case classm.eic.5 — prompt sha256 7a69e3901cad1e187933963eb3df5fa0cbcb102e1cf08fe9eb37048d4d2cfb50; branches: eic.qc_of_another:true, eic.age_range:true, eic.us_home:true, eic.married:true, eic.has_qc:false, eic.married_rules:false, eic.top_limit#4, eic.below_top:false, eic.limit_other#0, eic.limit_joint#0, eic.limit#4, eic.step1_income:false, eic.step1_ssn:true, eic.step1_foreign:true, eic.step1_resident:true, eic.gain_7a:floor, eic.step2_income:true, eic.step2_other:true, eic.same_home:false, eic.legally_separated:false, eic.step3_married:true, eic.step3:false, eic.step4:false, eic.step34:false, eic.self_employed:false, eic.wsb_6:positive, eic.earned_for_limit#0, eic.step5_income:false, eic.eligible:false, eic.line1#0, eic.line1_in_table:true, eic.line1_table#0, eic.line2#0, eic.line4:false, eic.threshold_other#0, eic.threshold_joint#0, eic.line5_threshold#4, eic.line5_blank:false, eic.line5#0, eic.smaller:left, eic.after_line4#1, eic.line6#1, eic.credit#1, eic.reached_step3:false, eic.check_27c:false, eic.wsb_4b_positive:true, eic.wsb_line5_stop:false, eic.separated_box:false, eic.clergy:false
+### case classm.eic.5 — prompt sha256 5d3cc5003451f1536660ac4cad6a6bd5d085409afa1877569c0dacbbc86a1c88; branches: eic.qc_of_another:false, eic.age_range:true, eic.us_home:true, eic.has_qc:false, eic.married_rules:false, eic.top_limit#1, eic.below_top:true, eic.limit_other#0, eic.limit_joint#0, eic.limit#1, eic.step1_income:true, eic.step1_ssn:false, eic.step1_foreign:true, eic.step1_resident:true, eic.gain_7a:positive, eic.step2_income:false, eic.step2_other:true, eic.same_home:false, eic.legally_separated:false, eic.step3_married:true, eic.step3:true, eic.step4:true, eic.step34:true, eic.self_employed:true, eic.wsb_6:floor, eic.earned_for_limit#1, eic.step5_income:true, eic.eligible:false, eic.line1#1, eic.line1_in_table:false, eic.line1_table#0, eic.line2#1, eic.line4:false, eic.threshold_other#0, eic.threshold_joint#0, eic.line5_threshold#1, eic.line5_blank:true, eic.line5#0, eic.smaller:right, eic.after_line4#0, eic.line6#1, eic.credit#1, eic.reached_step3:false, eic.check_27c:true, eic.wsb_4b_positive:false, eic.wsb_line5_stop:false, eic.separated_box:false, eic.clergy:false
 
 ### classm.eic.5 — 4b — Worksheet B, line 4b. Combine lines 1e, 2c, 3, and 4a. This is your total earned
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $62,208.00
-Model: $0.00
-Work: Step 1 Q1: no qualifying children; line 11b $61,797 is not less than $19,104, so STOP and Worksheet B is not used
-
-Ruling: representation; project retained; model value dropped from the fixture. The flow chart stops at Step 1 (i1040gi p. 40: with no qualifying child, Form 1040 line 11b is not less than $19,104), so no worksheet line is reached; the project figures the lines anyway and its credit, Worksheet A line 6, is $0.00 as the model's. [dropped]
+Value: $-18,567.98
 
 ### classm.eic.5 — 6 (eic.wsb_6) — Worksheet B, line 6. Enter your total earned income from Part 4, line 4b (zero i
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $62,208.00
-Model: $0.00
-Work: Not reached; the Step 1 STOP means no worksheet is completed
-
-Ruling: representation; project retained; model value dropped from the fixture. The flow chart stops at Step 1 (i1040gi p. 40: with no qualifying child, Form 1040 line 11b is not less than $19,104), so no worksheet line is reached; the project figures the lines anyway and its credit, Worksheet A line 6, is $0.00 as the model's. [dropped]
+Value: $0.00
 
 ### classm.eic.5 — 1 — Enter your earned income from Step 5 (Worksheet A, line 1), or Worksheet B, line
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $62,208.00
-Model: $0.00
-Work: Not reached; Step 1 STOP (also Step 4 Q5: could be a qualifying child of another person, so STOP)
-
-Ruling: representation; project retained; model value dropped from the fixture. The flow chart stops at Step 1 (i1040gi p. 40: with no qualifying child, Form 1040 line 11b is not less than $19,104), so no worksheet line is reached; the project figures the lines anyway and its credit, Worksheet A line 6, is $0.00 as the model's. [dropped]
+Value: $0.00
 
 ### classm.eic.5 — 2 — Look up the amount on line 1 in the EIC Table to find the credit, using the colu
 Status: **AGREE**
@@ -249,13 +249,9 @@ Status: **AGREE**
 Value: $0.00
 
 ### classm.eic.5 — 3 — Enter the amount from Form 1040 or 1040-SR, line 11b
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $61,797.00
-Model: $0.00
-Work: Not reached; the credit cannot be taken
-
-Ruling: representation; project retained; model value dropped from the fixture. The flow chart stops at Step 1 (i1040gi p. 40: with no qualifying child, Form 1040 line 11b is not less than $19,104), so no worksheet line is reached; the project figures the lines anyway and its credit, Worksheet A line 6, is $0.00 as the model's. [dropped]
+Value: $16,111.02
 
 ### classm.eic.5 — 4 — Are the amounts on lines 3 and 1 the same?
 Status: **AGREE**
@@ -263,43 +259,47 @@ Status: **AGREE**
 Value: no
 
 ### classm.eic.5 — 5 — Look up the amount on line 3 in the EIC Table to find the credit, using the colu
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $0.00
+Project: $649.00
+Model: $0.00
+Work: No qualifying children; line 3 16,111.02 < 17,730 (MFJ), so leave blank and carry line 2 to line 6
+
+Ruling: representation; project retained; model value dropped from the fixture. The model leaves Worksheet A lines blank after a STOP (or line 5 when line 4 is Yes); the project figures each line always and the credit reads it only where the worksheet uses it, so line 6 and Form 1040 line 27a are the same (as ruled in Stage 9; i1040gi pp. 40-46). [dropped]
 
 ### classm.eic.5 — 6 (eic.line6) — This is your earned income credit
 Status: **AGREE**
 
 Value: $0.00
 
-### case classm.eic.6 — prompt sha256 3111ece1929b959f3396fa8b25784f4628b41a3d9e62a25210c006490389b25a; branches: eic.qc_of_another:false, eic.age_range:false, eic.us_home:false, eic.married:false, eic.has_qc:false, eic.married_rules:false, eic.top_limit#0, eic.below_top:true, eic.limit_other#0, eic.limit_joint#0, eic.limit#0, eic.step1_income:false, eic.step1_ssn:true, eic.step1_foreign:true, eic.step1_resident:true, eic.gain_7a:floor, eic.step2_income:true, eic.step2_other:true, eic.same_home:false, eic.legally_separated:false, eic.step3_married:true, eic.step3:true, eic.step4:false, eic.step34:false, eic.self_employed:false, eic.wsb_6:positive, eic.earned_for_limit#0, eic.step5_income:false, eic.eligible:false, eic.line1#0, eic.line1_in_table:true, eic.line1_table#0, eic.line2#0, eic.line4:true, eic.threshold_other#0, eic.threshold_joint#0, eic.line5_threshold#0, eic.line5_blank:false, eic.line5#0, eic.smaller:left, eic.after_line4#1, eic.line6#0, eic.credit#1, eic.reached_step3:false, eic.check_27c:false, eic.wsb_4b_positive:true, eic.wsb_line5_stop:false, eic.separated_box:false, eic.clergy:false
+### case classm.eic.6 — prompt sha256 d3ccca81282b2956d490f90ee3f6bc328b2098fb0f3f06bd96e3491bbb956b09; branches: eic.qc_of_another:false, eic.age_range:false, eic.us_home:true, eic.has_qc:false, eic.married_rules:false, eic.top_limit#0, eic.below_top:false, eic.limit_other#0, eic.limit_joint#0, eic.limit#0, eic.step1_income:false, eic.step1_ssn:true, eic.step1_foreign:true, eic.step1_resident:true, eic.gain_7a:floor, eic.step2_income:true, eic.same_home:false, eic.legally_separated:false, eic.step3_married:true, eic.step3:true, eic.step4:false, eic.step34:false, eic.self_employed:false, eic.wsb_6:positive, eic.earned_for_limit#0, eic.step5_income:false, eic.eligible:false, eic.line1#0, eic.line1_in_table:true, eic.line1_table#0, eic.line2#0, eic.line4:false, eic.threshold_other#0, eic.threshold_joint#0, eic.line5_threshold#0, eic.line5_blank:false, eic.line5#0, eic.smaller:left, eic.after_line4#1, eic.line6#1, eic.credit#1, eic.reached_step3:false, eic.check_27c:false, eic.wsb_4b_positive:true, eic.wsb_line5_stop:false, eic.separated_box:false, eic.clergy:false
 
 ### classm.eic.6 — 4b — Worksheet B, line 4b. Combine lines 1e, 2c, 3, and 4a. This is your total earned
 Status: **DISAGREE**
 
-Project: $51,610.00
+Project: $65,785.00
 Model: $0.00
-Work: Not self-employed, no clergy or church income and no statutory employee income, so Worksheet B isn't used; also Step 1 says STOP
+Work: Worksheet B is not used: no self-employment, clergy income or statutory-employee income (0 Schedules C). Step 1 also stops the credit.
 
-Ruling: representation; project retained; model value dropped from the fixture. Worksheet B is used only when Step 5, question 2 is Yes (i1040gi p. 42: self-employment, church employee or statutory employee income); the project figures its lines for every return and nothing reads them when it is not used. The credit, Worksheet A line 6 (Form 1040 line 27a), agrees. Step 1 also stops this return. [dropped]
+Ruling: representation; project retained; model value dropped from the fixture. Worksheet B is used only when Step 5, question 2 is Yes (i1040gi p. 42, 'Were you self-employed at any time in 2025'); the project figures its lines for every return and line 1 of Worksheet A reads them only for a return with a Schedule C (eic.self_employed), so the credit is the same. [dropped]
 
 ### classm.eic.6 — 6 (eic.wsb_6) — Worksheet B, line 6. Enter your total earned income from Part 4, line 4b (zero i
 Status: **DISAGREE**
 
-Project: $51,610.00
+Project: $65,785.00
 Model: $0.00
-Work: Worksheet B isn't used; Step 1 says STOP
+Work: Worksheet B is not used, and Step 1 stops the credit.
 
-Ruling: representation; project retained; model value dropped from the fixture. Worksheet B is used only when Step 5, question 2 is Yes (i1040gi p. 42: self-employment, church employee or statutory employee income); the project figures its lines for every return and nothing reads them when it is not used. The credit, Worksheet A line 6 (Form 1040 line 27a), agrees. Step 1 also stops this return. [dropped]
+Ruling: representation; project retained; model value dropped from the fixture. Worksheet B is used only when Step 5, question 2 is Yes (i1040gi p. 42, 'Were you self-employed at any time in 2025'); the project figures its lines for every return and line 1 of Worksheet A reads them only for a return with a Schedule C (eic.self_employed), so the credit is the same. [dropped]
 
 ### classm.eic.6 — 1 — Enter your earned income from Step 5 (Worksheet A, line 1), or Worksheet B, line
 Status: **DISAGREE**
 
-Project: $51,610.00
+Project: $65,785.00
 Model: $0.00
-Work: Step 1: no qualifying children with valid SSNs, and line 11b $51,610 is not less than $19,104, so STOP: you can't take the credit; worksheet not reached
+Work: Step 1 STOP: single with no children who have valid SSNs, and line 11b $66,664 is not less than $19,104. You can't take the credit.
 
-Ruling: representation; project retained; model value dropped from the fixture. The model leaves Worksheet A lines blank after a STOP (or line 5 when line 4 is Yes); the project figures each line always and the credit reads it only where the worksheet uses it, so line 6 and Form 1040 line 27a are the same (as ruled in Stage 9; i1040gi pp. 40-46). [dropped]
+Ruling: representation; project retained; model value dropped from the fixture. Step 1 ends the flow chart for this return (i1040gi p. 40, Step 1, question 1, 'No. STOP'); the project figures Worksheet A's lines for every return and eic.credit is zero when Steps 1 to 5 fail, so line 27a is zero on both sides. [dropped]
 
 ### classm.eic.6 — 2 — Look up the amount on line 1 in the EIC Table to find the credit, using the colu
 Status: **AGREE**
@@ -309,20 +309,16 @@ Value: $0.00
 ### classm.eic.6 — 3 — Enter the amount from Form 1040 or 1040-SR, line 11b
 Status: **DISAGREE**
 
-Project: $51,610.00
+Project: $66,664.00
 Model: $0.00
-Work: Not reached; Step 1 says STOP
+Work: Not reached because Step 1 says STOP.
 
-Ruling: representation; project retained; model value dropped from the fixture. The model leaves Worksheet A lines blank after a STOP (or line 5 when line 4 is Yes); the project figures each line always and the credit reads it only where the worksheet uses it, so line 6 and Form 1040 line 27a are the same (as ruled in Stage 9; i1040gi pp. 40-46). [dropped]
+Ruling: representation; project retained; model value dropped from the fixture. Step 1 ends the flow chart for this return (i1040gi p. 40, Step 1, question 1, 'No. STOP'); the project figures Worksheet A's lines for every return and eic.credit is zero when Steps 1 to 5 fail, so line 27a is zero on both sides. [dropped]
 
 ### classm.eic.6 — 4 — Are the amounts on lines 3 and 1 the same?
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: yes
-Model: no
-Work: Not reached; Step 1 says STOP
-
-Ruling: representation; project retained; model value dropped from the fixture. The model leaves Worksheet A lines blank after a STOP (or line 5 when line 4 is Yes); the project figures each line always and the credit reads it only where the worksheet uses it, so line 6 and Form 1040 line 27a are the same (as ruled in Stage 9; i1040gi pp. 40-46). [dropped]
+Value: no
 
 ### classm.eic.6 — 5 — Look up the amount on line 3 in the EIC Table to find the credit, using the colu
 Status: **AGREE**
@@ -334,40 +330,40 @@ Status: **AGREE**
 
 Value: $0.00
 
-### case classm.eic.7 — prompt sha256 9a294fc99a7b0dd634ac33c14d60665ee105a0191f1e7e16fb81535b9b98d45b; branches: eic.qc_of_another:false, eic.age_range:true, eic.us_home:true, eic.married:false, eic.has_qc:true, eic.married_rules:true, eic.top_limit#2, eic.below_top:true, eic.limit_other#2, eic.limit_joint#2, eic.limit#2, eic.step1_income:true, eic.step1_ssn:true, eic.step1_foreign:true, eic.step1_resident:true, eic.gain_7a:floor, eic.step2_income:true, eic.step2_other:true, eic.same_home:false, eic.legally_separated:false, eic.step3_married:true, eic.step3:true, eic.step4:false, eic.step34:true, eic.self_employed:false, eic.wsb_6:positive, eic.earned_for_limit#0, eic.step5_income:true, eic.eligible:true, eic.line1#0, eic.line1_in_table:true, eic.line1_table#2, eic.line2#0, eic.line4:true, eic.threshold_other#1, eic.threshold_joint#1, eic.line5_threshold#2, eic.line5_blank:false, eic.line5#2, eic.smaller:left, eic.after_line4#1, eic.line6#0, eic.credit#0, eic.reached_step3:true, eic.check_27c:false, eic.wsb_4b_positive:true, eic.wsb_line5_stop:false, eic.separated_box:true, eic.clergy:false
+### case classm.eic.7 — prompt sha256 121e22481e40ea9bbfd2dc16b5c1607cc6fe8e0d40c20e576b170cbba3cc8072; branches: eic.qc_of_another:false, eic.age_range:true, eic.us_home:true, eic.has_qc:true, eic.married_rules:true, eic.top_limit#2, eic.below_top:true, eic.limit_other#2, eic.limit_joint#2, eic.limit#2, eic.step1_income:true, eic.step1_ssn:true, eic.step1_foreign:true, eic.step1_resident:true, eic.gain_7a:floor, eic.step2_income:true, eic.step2_other:true, eic.same_home:false, eic.legally_separated:false, eic.step3_married:true, eic.step3:true, eic.step4:false, eic.step34:true, eic.self_employed:false, eic.wsb_6:positive, eic.earned_for_limit#0, eic.step5_income:true, eic.eligible:true, eic.line1#0, eic.line1_in_table:true, eic.line1_table#2, eic.line2#0, eic.line4:true, eic.threshold_other#1, eic.threshold_joint#1, eic.line5_threshold#2, eic.line5_blank:true, eic.line5#2, eic.smaller:left, eic.after_line4#0, eic.line6#0, eic.credit#0, eic.reached_step3:true, eic.check_27c:false, eic.wsb_4b_positive:true, eic.wsb_line5_stop:false, eic.separated_box:true, eic.clergy:false
 
 ### classm.eic.7 — 4b — Worksheet B, line 4b. Combine lines 1e, 2c, 3, and 4a. This is your total earned
 Status: **DISAGREE**
 
-Project: $44,084.00
+Project: $19,388.00
 Model: $0.00
-Work: Not self-employed (Step 5 Q2 = No), so Worksheet A is used and Worksheet B is not completed
+Work: Step 5 Q2 = No (not self-employed, no clergy or church income, no statutory employee), so Worksheet A applies and Worksheet B is not used
 
-Ruling: representation; project retained; model value dropped from the fixture. Worksheet B is used only when Step 5, question 2 is Yes (i1040gi p. 42: self-employment, church employee or statutory employee income); the project figures its lines for every return and nothing reads them when it is not used. The credit, Worksheet A line 6 (Form 1040 line 27a), agrees. [dropped]
+Ruling: representation; project retained; model value dropped from the fixture. Worksheet B is used only when Step 5, question 2 is Yes (i1040gi p. 42, 'Were you self-employed at any time in 2025'); the project figures its lines for every return and line 1 of Worksheet A reads them only for a return with a Schedule C (eic.self_employed), so the credit is the same. [dropped]
 
 ### classm.eic.7 — 6 (eic.wsb_6) — Worksheet B, line 6. Enter your total earned income from Part 4, line 4b (zero i
 Status: **DISAGREE**
 
-Project: $44,084.00
+Project: $19,388.00
 Model: $0.00
-Work: Worksheet B not used
+Work: Worksheet B is not used; Worksheet A applies
 
-Ruling: representation; project retained; model value dropped from the fixture. Worksheet B is used only when Step 5, question 2 is Yes (i1040gi p. 42: self-employment, church employee or statutory employee income); the project figures its lines for every return and nothing reads them when it is not used. The credit, Worksheet A line 6 (Form 1040 line 27a), agrees. [dropped]
+Ruling: representation; project retained; model value dropped from the fixture. Worksheet B is used only when Step 5, question 2 is Yes (i1040gi p. 42, 'Were you self-employed at any time in 2025'); the project figures its lines for every return and line 1 of Worksheet A reads them only for a return with a Schedule C (eic.self_employed), so the credit is the same. [dropped]
 
 ### classm.eic.7 — 1 — Enter your earned income from Step 5 (Worksheet A, line 1), or Worksheet B, line
 Status: **AGREE**
 
-Value: $44,084.00
+Value: $19,388.00
 
 ### classm.eic.7 — 2 — Look up the amount on line 1 in the EIC Table to find the credit, using the colu
 Status: **AGREE**
 
-Value: $2,787.00
+Value: $7,152.00
 
 ### classm.eic.7 — 3 — Enter the amount from Form 1040 or 1040-SR, line 11b
 Status: **AGREE**
 
-Value: $44,084.00
+Value: $19,388.00
 
 ### classm.eic.7 — 4 — Are the amounts on lines 3 and 1 the same?
 Status: **AGREE**
@@ -377,33 +373,33 @@ Value: yes
 ### classm.eic.7 — 5 — Look up the amount on line 3 in the EIC Table to find the credit, using the colu
 Status: **DISAGREE**
 
-Project: $2,787.00
+Project: $7,152.00
 Model: $0.00
 Work: Skipped because line 4 is Yes
 
-Ruling: representation; project retained; model value dropped from the fixture. The model leaves Worksheet A lines blank after a STOP (or line 5 when line 4 is Yes); the project figures each line always and the credit reads it only where the worksheet uses it, so line 6 and Form 1040 line 27a are the same (as ruled in Stage 9; i1040gi pp. 40-46). [dropped]
+Ruling: representation; project retained; model value dropped from the fixture. The worksheet leaves line 5 blank when line 4 is Yes or line 3 is below the line 5 amount (i1040gi p. 46, Worksheet A, line 4, 'Yes. Skip line 5; enter the amount from line 2 on line 6', and line 5, 'Yes. Leave line 5 blank'); the project figures line 5 always and line 6 reads it only in the case the worksheet uses it, so line 6 is the same. [dropped]
 
 ### classm.eic.7 — 6 (eic.line6) — This is your earned income credit
 Status: **AGREE**
 
-Value: $2,787.00
+Value: $7,152.00
 
-### case classm.eic.8 — prompt sha256 5d20ba1e9c2a8adc2d93b4f4b8677cd2bf5cc9f25adca7d5694c448d4636f196; branches: eic.qc_of_another:false, eic.age_range:true, eic.us_home:true, eic.married:false, eic.has_qc:true, eic.married_rules:false, eic.top_limit#0, eic.below_top:true, eic.limit_other#0, eic.limit_joint#0, eic.limit#0, eic.step1_income:true, eic.step1_ssn:true, eic.step1_foreign:true, eic.step1_resident:true, eic.gain_7a:floor, eic.step2_income:true, eic.step2_other:true, eic.same_home:false, eic.legally_separated:true, eic.step3_married:true, eic.step3:true, eic.step4:true, eic.step34:true, eic.self_employed:false, eic.wsb_6:floor, eic.earned_for_limit#0, eic.step5_income:true, eic.eligible:true, eic.line1#0, eic.line1_in_table:false, eic.line1_table#0, eic.line2#1, eic.line4:false, eic.threshold_other#0, eic.threshold_joint#0, eic.line5_threshold#0, eic.line5_blank:true, eic.line5#0, eic.smaller:right, eic.after_line4#0, eic.line6#1, eic.credit#0, eic.reached_step3:true, eic.check_27c:true, eic.wsb_4b_positive:false, eic.wsb_line5_stop:false, eic.separated_box:false, eic.clergy:false
+### case classm.eic.8 — prompt sha256 32472060332038f33c50c9388e3a4e58519bc574b41749a2457b77f3ebeff8ce; branches: eic.qc_of_another:false, eic.age_range:true, eic.us_home:true, eic.has_qc:true, eic.married_rules:false, eic.top_limit#0, eic.below_top:true, eic.limit_other#1, eic.limit_joint#1, eic.limit#0, eic.step1_income:true, eic.step1_ssn:true, eic.step1_foreign:true, eic.step1_resident:true, eic.gain_7a:floor, eic.step2_income:true, eic.step2_other:true, eic.same_home:false, eic.legally_separated:false, eic.step3_married:true, eic.step3:true, eic.step4:true, eic.step34:true, eic.self_employed:true, eic.wsb_6:positive, eic.earned_for_limit#1, eic.step5_income:false, eic.eligible:false, eic.line1#1, eic.line1_in_table:true, eic.line1_table#1, eic.line2#0, eic.line4:false, eic.threshold_other#1, eic.threshold_joint#1, eic.line5_threshold#0, eic.line5_blank:false, eic.line5#1, eic.smaller:right, eic.after_line4#1, eic.line6#1, eic.credit#1, eic.reached_step3:true, eic.check_27c:true, eic.wsb_4b_positive:true, eic.wsb_line5_stop:true, eic.separated_box:false, eic.clergy:false
 
 ### classm.eic.8 — 4b — Worksheet B, line 4b. Combine lines 1e, 2c, 3, and 4a. This is your total earned
 Status: **AGREE**
 
-Value: $0.00
+Value: $55,005.10
 
 ### classm.eic.8 — 6 (eic.wsb_6) — Worksheet B, line 6. Enter your total earned income from Part 4, line 4b (zero i
 Status: **AGREE**
 
-Value: $0.00
+Value: $55,005.10
 
 ### classm.eic.8 — 1 — Enter your earned income from Step 5 (Worksheet A, line 1), or Worksheet B, line
 Status: **AGREE**
 
-Value: $0.00
+Value: $55,005.10
 
 ### classm.eic.8 — 2 — Look up the amount on line 1 in the EIC Table to find the credit, using the colu
 Status: **AGREE**
@@ -411,13 +407,9 @@ Status: **AGREE**
 Value: $0.00
 
 ### classm.eic.8 — 3 — Enter the amount from Form 1040 or 1040-SR, line 11b
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $108.00
-Model: $0.00
-Work: STOP at line 2 (credit is zero); remaining lines not completed
-
-Ruling: representation; project retained; model value dropped from the fixture. The model leaves Worksheet A lines blank after a STOP (or line 5 when line 4 is Yes); the project figures each line always and the credit reads it only where the worksheet uses it, so line 6 and Form 1040 line 27a are the same (as ruled in Stage 9; i1040gi pp. 40-46). [dropped]
+Value: $48,693.10
 
 ### classm.eic.8 — 4 — Are the amounts on lines 3 and 1 the same?
 Status: **AGREE**
@@ -427,11 +419,11 @@ Value: no
 ### classm.eic.8 — 5 — Look up the amount on line 3 in the EIC Table to find the credit, using the colu
 Status: **DISAGREE**
 
-Project: $10.00
-Model: $0.00
-Work: STOP at line 2
+Project: $281.00
+Model: $1,819.00
+Work: 48,693.10 is not less than 23,350; table row 48,650-48,700, Single, 1 child = 1,819
 
-Ruling: representation; project retained; model value dropped from the fixture. The model leaves Worksheet A lines blank after a STOP (or line 5 when line 4 is Yes); the project figures each line always and the credit reads it only where the worksheet uses it, so line 6 and Form 1040 line 27a are the same (as ruled in Stage 9; i1040gi pp. 40-46). [dropped]
+Ruling: model table-reading error; project retained; model value dropped from the fixture. The 2025 EIC Table row 'At least 48,650 But less than 48,700', one qualifying child, in the column for single, head of household or qualifying surviving spouse, is $281 (i1040gi, the EIC Table page whose rows run 48,600 to 48,800; the printed row reads '289 281 273 265' for 48,600, 48,650, 48,700 and 48,750); the model's $1,819 appears in no column of that row. Line 3 ($48,693.10) is above the $23,350 line 5 amount, so line 5 is looked up, as both sides agree. [dropped]
 
 ### classm.eic.8 — 6 (eic.line6) — This is your earned income credit
 Status: **AGREE**
@@ -446,29 +438,29 @@ Value: $0.00
 ```yaml
 lines:
   - printed: "4b"
-    value: "blank"
-    work: "Step 5 q2 = No (not self-employed, no Schedule SE or statutory employee), so Worksheet B is not used"
+    value: ""
+    work: "Not self-employed, no Schedule SE and no statutory-employee Schedule C, so Step 5 Q2 is No. Use Worksheet A; Worksheet B is not used."
   - printed: "6 (eic.wsb_6)"
-    value: "blank"
-    work: "Worksheet B is not used; Worksheet A applies"
+    value: ""
+    work: "Worksheet B is not used."
   - printed: "1"
-    value: "32936.00"
-    work: "Step 5 worksheet: line 1z 32,936 - Medicaid waiver 0 + combat pay 0 = 32,936"
+    value: "5137.00"
+    work: "Step 5 earned income: Form 1040 line 1z $5,137 - $0 Medicaid waiver + $0 combat pay = $5,137."
   - printed: "2"
-    value: "2798.00"
-    work: "EIC Table row 32,900-32,950, head of household, 1 child with valid SSN (dep_c) = 2,798"
+    value: "1743.00"
+    work: "EIC Table row $5,100-$5,150, qualifying surviving spouse column, 1 child with a valid SSN (dep_a): $1,743."
   - printed: "3"
-    value: "32936.00"
-    work: "Form 1040 line 11b = 32,936"
+    value: "2137.00"
+    work: "Form 1040 line 11b."
   - printed: "4"
-    value: "yes"
-    work: "Line 3 32,936 = line 1 32,936, so skip line 5 and enter line 2 on line 6"
+    value: "no"
+    work: "$2,137 is not the same as $5,137, so go to line 5."
   - printed: "5"
-    value: "blank"
-    work: "Skipped because line 4 = Yes"
+    value: ""
+    work: "1 qualifying child and line 3 of $2,137 is less than $23,350, so leave line 5 blank and enter line 2 on line 6."
   - printed: "6 (eic.line6)"
-    value: "2798.00"
-    work: "Amount from line 2 = 2,798"
+    value: "1743.00"
+    work: "Line 2 amount: $1,743."
 ```
 ```
 
@@ -479,28 +471,28 @@ lines:
 lines:
   - printed: "4b"
     value: "blank"
-    work: "Worksheet B not used: no self-employment, Schedule SE, or statutory employee income, so Step 5 Q2 is No; eligibility also stopped at Step 1"
+    work: "Not reached; Step 1 STOP: no qualifying children with valid SSNs and line 11b $22,732 is not less than $19,104"
   - printed: "6 (eic.wsb_6)"
     value: "blank"
-    work: "Worksheet B not used; eligibility stopped at Step 1"
+    work: "Not reached; Step 1 STOP. Investment income $97,691 also exceeds $11,950 with no Form 4797, and MFS with no qualifying child also stops at Step 4 q1"
   - printed: "1"
     value: "blank"
-    work: "Step 1 Q1 STOP: no children, and line 11b of $23,500 is not less than $19,104; Step 1 Q2 STOP (no valid SSN); Step 1 Q3 STOP (Form 2555); worksheet not reached"
+    work: "Not reached; Step 1 STOP, so Worksheet A is not used"
   - printed: "2"
     value: "blank"
-    work: "Not reached; taxpayer can't take the credit (Step 1 STOP)"
+    work: "Not reached; Step 1 STOP"
   - printed: "3"
     value: "blank"
-    work: "Not reached; taxpayer can't take the credit (Step 1 STOP)"
+    work: "Not reached; Step 1 STOP"
   - printed: "4"
     value: "blank"
-    work: "Not reached; taxpayer can't take the credit (Step 1 STOP)"
+    work: "Not reached; Step 1 STOP"
   - printed: "5"
     value: "blank"
-    work: "Not reached; taxpayer can't take the credit (Step 1 STOP)"
+    work: "Not reached; Step 1 STOP"
   - printed: "6 (eic.line6)"
     value: "0.00"
-    work: "Not eligible (Step 1 STOP: AGI, SSN, and Form 2555 tests failed); EIC = 0"
+    work: "Not eligible, so no earned income credit; credit is $0"
 ```
 ```
 
@@ -510,29 +502,29 @@ lines:
 ```yaml
 lines:
   - printed: "4b"
-    value: "-53866.40"
-    work: "Line 1e + line 2c (Worksheet B Parts 1-2: -57,074.40 + 0) + line 3 (0) + line 4a (3,208.00) = -53,866.40; zero or less, so STOP, no credit"
+    value: "blank"
+    work: "Not self-employed, no Schedule SE, not a statutory employee; Step 5 Q2 = No, so use Worksheet A, not B"
   - printed: "6 (eic.wsb_6)"
-    value: "0.00"
-    work: "Line 4b is -53,866.40, which is zero or less, so enter 0"
+    value: "blank"
+    work: "Worksheet B is not used (Step 5 Q2 = No)"
   - printed: "1"
-    value: "0.00"
-    work: "Self-employed, so Worksheet B applies; Worksheet B line 6 = 0"
+    value: "13709.00"
+    work: "Step 5 earned income = 1z 13,709 - 0 Medicaid waiver + 0 combat pay = 13,709"
   - printed: "2"
-    value: "0.00"
-    work: "EIC Table, MFJ, 0 children: 0 is below the first row (1-50), so the credit is 0"
+    value: "5490.00"
+    work: "EIC Table row 13,700-13,750, Single, 2 qualifying children with valid SSNs (dep_a, dep_c) = 5,490"
   - printed: "3"
-    value: "16351.60"
-    work: "Form 1040 line 11b"
+    value: "13709.00"
+    work: "Form 1040 line 11b = 13,709"
   - printed: "4"
-    value: "no"
-    work: "16,351.60 differs from 0"
+    value: "yes"
+    work: "Line 3 13,709 = line 1 13,709; skip line 5, enter line 2 on line 6"
   - printed: "5"
-    value: ""
-    work: "No children; line 3 (16,351.60) is less than 17,730 (MFJ), so leave line 5 blank and use line 2"
+    value: "blank"
+    work: "Skipped because line 4 = Yes"
   - printed: "6 (eic.line6)"
-    value: "0.00"
-    work: "Line 2 = 0. Also, Step 2 investment income (0 + 11,303 + 0 + 58,915 = 70,218) is more than 11,950 and no Form 4797 is filed, so STOP, no credit"
+    value: "5490.00"
+    work: "Amount from line 2 = 5,490"
 ```
 ```
 
@@ -541,63 +533,61 @@ lines:
 ```yaml
 ```yaml
 lines:
-  - printed: "4b"
+  - printed: "line 4b"
     value: "blank"
-    work: "Not self-employed, no clergy or church income, no statutory employee (Step 5 Q2 = No), so Worksheet A is used and Worksheet B is not completed"
-  - printed: "6 (eic.wsb_6)"
+    work: "Worksheet B is not used: no self-employment, no Schedule C or SE (Step 5 Q2 = No); the flowchart stops earlier anyway"
+  - printed: "line 6 (eic.wsb_6)"
     value: "blank"
-    work: "Worksheet B is not used (Step 5 Q2 = No)"
-  - printed: "1"
+    work: "Worksheet B is not used"
+  - printed: "line 1"
+    value: "blank"
+    work: "STOP before Step 5: no EIC qualifying child; Step 4 Q1 married + head of household = can't take credit (also Step 1 Q3 Form 2555 = yes; Step 4 Q3 main home not in US)"
+  - printed: "line 2"
+    value: "blank"
+    work: "Not reached; ineligible per the flowchart"
+  - printed: "line 3"
+    value: "blank"
+    work: "Not reached; ineligible per the flowchart"
+  - printed: "line 4"
+    value: "blank"
+    work: "Not reached; ineligible per the flowchart"
+  - printed: "line 5"
+    value: "blank"
+    work: "Not reached; ineligible per the flowchart"
+  - printed: "line 6 (eic.line6)"
     value: "0.00"
-    work: "Step 5 earned income: line 1z 0.00 - 0 Medicaid waiver + 0 combat pay = 0.00"
-  - printed: "2"
-    value: "0.00"
-    work: "EIC Table, Single, 2 children with valid SSNs (dep_a and dep_c): amount 0 is below the first row (1-50), so credit is 0. Line 2 is zero: STOP, can't take the credit"
-  - printed: "3"
-    value: "blank"
-    work: "STOP at line 2 (credit zero); remaining lines not completed"
-  - printed: "4"
-    value: "blank"
-    work: "STOP at line 2"
-  - printed: "5"
-    value: "blank"
-    work: "STOP at line 2"
-  - printed: "6 (eic.line6)"
-    value: "blank"
-    work: "STOP at line 2; no credit; check box on line 27c"
+    work: "You can't take the credit; EIC = 0"
 ```
 ```
 
 ### classm.eic.5
 
 ```yaml
-```yaml
 lines:
   - printed: "4b"
-    value: "blank"
-    work: "Step 1 Q1: no qualifying children; line 11b $61,797 is not less than $19,104, so STOP and Worksheet B is not used"
+    value: "-18567.98"
+    work: "Parts 1–2: -64,231.98 + 0.00 = -64,231.98; Part 3 = 0; 4a = line 1z 45,664.00; total = -18,567.98. Zero or less, so STOP: no credit"
   - printed: "6 (eic.wsb_6)"
-    value: "blank"
-    work: "Not reached; the Step 1 STOP means no worksheet is completed"
+    value: "0.00"
+    work: "Line 4b (-18,567.98) is zero or less, so enter 0"
   - printed: "1"
-    value: "blank"
-    work: "Not reached; Step 1 STOP (also Step 4 Q5: could be a qualifying child of another person, so STOP)"
+    value: "0.00"
+    work: "From Worksheet B line 6 = 0.00"
   - printed: "2"
-    value: "blank"
-    work: "Not reached; the credit cannot be taken"
+    value: "0.00"
+    work: "EIC Table, MFJ, 0 children: 0 is below the first row (1–50), so credit 0. Line 2 is zero, so STOP: no credit"
   - printed: "3"
-    value: "blank"
-    work: "Not reached; the credit cannot be taken"
+    value: "16111.02"
+    work: "Form 1040 line 11b"
   - printed: "4"
-    value: "blank"
-    work: "Not reached; the credit cannot be taken"
+    value: "no"
+    work: "16,111.02 ≠ 0.00"
   - printed: "5"
     value: "blank"
-    work: "Not reached; the credit cannot be taken"
+    work: "No qualifying children; line 3 16,111.02 < 17,730 (MFJ), so leave blank and carry line 2 to line 6"
   - printed: "6 (eic.line6)"
-    value: "blank"
-    work: "You can't take the credit (Step 1 STOP); no EIC is entered"
-```
+    value: "0.00"
+    work: "Line 2 = 0. Also ineligible: Step 1 Q2 no valid SSNs (STOP), investment income 34,679 > 11,950 with no Form 4797 (STOP), line 4b ≤ 0"
 ```
 
 ### classm.eic.6
@@ -605,91 +595,91 @@ lines:
 ```yaml
 ```yaml
 lines:
-  - printed: "4b"
+  - printed: "line 4b"
     value: "blank"
-    work: "Not self-employed, no clergy or church income and no statutory employee income, so Worksheet B isn't used; also Step 1 says STOP"
+    work: "Worksheet B is not used: no self-employment, clergy income or statutory-employee income (0 Schedules C). Step 1 also stops the credit."
   - printed: "line 6 (eic.wsb_6)"
     value: "blank"
-    work: "Worksheet B isn't used; Step 1 says STOP"
-  - printed: "1"
+    work: "Worksheet B is not used, and Step 1 stops the credit."
+  - printed: "line 1"
     value: "blank"
-    work: "Step 1: no qualifying children with valid SSNs, and line 11b $51,610 is not less than $19,104, so STOP: you can't take the credit; worksheet not reached"
-  - printed: "2"
+    work: "Step 1 STOP: single with no children who have valid SSNs, and line 11b $66,664 is not less than $19,104. You can't take the credit."
+  - printed: "line 2"
     value: "blank"
-    work: "Not reached; Step 1 says STOP (Step 4 Q3 would also stop: main home not in the U.S.)"
-  - printed: "3"
+    work: "Not reached because Step 1 says STOP."
+  - printed: "line 3"
     value: "blank"
-    work: "Not reached; Step 1 says STOP"
-  - printed: "4"
+    work: "Not reached because Step 1 says STOP."
+  - printed: "line 4"
     value: "blank"
-    work: "Not reached; Step 1 says STOP"
-  - printed: "5"
+    work: "Not reached because Step 1 says STOP."
+  - printed: "line 5"
     value: "blank"
-    work: "Not reached; Step 1 says STOP"
+    work: "Not reached because Step 1 says STOP."
   - printed: "line 6 (eic.line6)"
     value: "0.00"
-    work: "Not eligible (Step 1: $51,610 is not less than $19,104 with 0 qualifying children), so EIC = 0"
+    work: "No credit is allowed: AGI $66,664 is not less than the $19,104 limit for single filers with no qualifying children."
 ```
 ```
 
 ### classm.eic.7
 
 ```yaml
+```yaml
 lines:
   - printed: "4b"
     value: "blank"
-    work: "Not self-employed (Step 5 Q2 = No), so Worksheet A is used and Worksheet B is not completed"
-  - printed: "6 (eic.wsb_6)"
+    work: "Step 5 Q2 = No (not self-employed, no clergy or church income, no statutory employee), so Worksheet A applies and Worksheet B is not used"
+  - printed: "line 6 (eic.wsb_6)"
     value: "blank"
-    work: "Worksheet B not used"
+    work: "Worksheet B is not used; Worksheet A applies"
   - printed: "1"
-    value: "44084.00"
-    work: "Step 5 earned income: 1040 line 1z 44,084 - 0 Medicaid waiver + 0 combat pay = 44,084"
+    value: "19388.00"
+    work: "Step 5 earned income: line 1z 19,388 - Medicaid waiver 0 + combat pay 0 = 19,388"
   - printed: "2"
-    value: "2787.00"
-    work: "EIC Table 44,050-44,100, Single/HOH/QSS (MFS) column, 2 children with valid SSNs = 2,787"
+    value: "7152.00"
+    work: "EIC Table row 19,350-19,400, Single/HOH/QSS column (★ used for MFS), 2 qualifying children with valid SSNs = 7,152"
   - printed: "3"
-    value: "44084.00"
+    value: "19388.00"
     work: "Form 1040 line 11b"
   - printed: "4"
     value: "yes"
-    work: "Line 3 44,084 = line 1 44,084, so skip line 5 and enter line 2 on line 6"
+    work: "Line 3 19,388 = line 1 19,388, so skip line 5 and enter line 2 on line 6"
   - printed: "5"
     value: "blank"
     work: "Skipped because line 4 is Yes"
-  - printed: "6 (eic.line6)"
-    value: "2787.00"
-    work: "Amount from line 2"
+  - printed: "line 6 (eic.line6)"
+    value: "7152.00"
+    work: "Amount from line 2; eligible under the MFS separated-spouse rule (Step 3 Q4 = No, Q6 = No)"
+```
 ```
 
 ### classm.eic.8
 
 ```yaml
-```yaml
 lines:
   - printed: "4b"
-    value: "blank"
-    work: "Step 5 Q2 = No (not self-employed, no Schedule C or SE), so Worksheet A applies; Worksheet B is not used"
+    value: "55005.10"
+    work: "Parts 1-3 (1e+2c+3) -18,573.90 + 4a 73,579.00 (Step 5 earned income from 1040 line 1z) = 55,005.10"
   - printed: "6 (eic.wsb_6)"
-    value: "blank"
-    work: "Worksheet B is not used because Step 5 Q2 = No"
+    value: "55005.10"
+    work: "From line 4b 55,005.10 (positive). Line 5 test: 1 child, 55,005.10 is not less than 50,434, so STOP, you can't take the credit"
   - printed: "1"
-    value: "0.00"
-    work: "Step 5 worksheet: line 1z $0 - Medicaid waiver $0 + combat pay $0 = $0 earned income"
+    value: "55005.10"
+    work: "Worksheet B line 6 = 55,005.10"
   - printed: "2"
     value: "0.00"
-    work: "EIC Table, Single, 0 children with valid SSNs (dep_a has no valid SSN); $0 is below the first $1-$50 row, so credit $0; line 2 is zero, STOP"
+    work: "55,005.10 is at least $50,434 with 1 qualifying child, so you can't take the credit; table gives 0"
   - printed: "3"
-    value: "blank"
-    work: "STOP at line 2 (credit is zero); remaining lines not completed"
+    value: "48693.10"
+    work: "Form 1040 line 11b"
   - printed: "4"
-    value: "blank"
-    work: "STOP at line 2"
+    value: "no"
+    work: "48,693.10 is not equal to 55,005.10"
   - printed: "5"
-    value: "blank"
-    work: "STOP at line 2"
+    value: "1819.00"
+    work: "48,693.10 is not less than 23,350; table row 48,650-48,700, Single, 1 child = 1,819"
   - printed: "6 (eic.line6)"
-    value: "blank"
-    work: "STOP at line 2: you can't take the credit; check the box on line 27c"
-```
+    value: "0.00"
+    work: "Smaller of line 5 (1,819) and line 2 (0) = 0; earned income fails the line 5 limit, so no credit"
 ```

@@ -217,15 +217,15 @@ form:
       locator: 'p. 4, Line 3, rule 2'
   - id: f8889.married_family
     printed: (helper)
-    label: 'Married filing jointly and treated as having family coverage at any time during 2025'
+    label: 'Married at the end of 2025 and treated as having family coverage at any time during 2025'
     type: Bool
     expr:
       op: test
       all:
       - op: test
         eq:
-        - f1040.status
-        - const: mfj
+        - household.married
+        - const: true
       - op: test
         any:
         - op: test
@@ -325,9 +325,9 @@ form:
         - f8889.age55
         - const: true
       - op: test
-        ne:
-        - f1040.status
-        - const: mfj
+        eq:
+        - household.married
+        - const: false
     cite:
       doc: i8889
       locator: p. 6, Line 3 Limitation Chart, 'If, at the end of 2025, you were unmarried and age 55 or older, enter $9,550

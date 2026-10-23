@@ -83,9 +83,6 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Was your main home in the United States for more than half of 2025?
       = UNKNOWN (no input supplied for eic.us_home)
       cite: [i1040gi] p. 42, Step 4, question 3; p. 44, Members of the military; p. 45, United States (2025; printed date 2026-02-25; 482e9c48)
-  (helper) Were you married at the end of 2025?
-      = UNKNOWN (no input supplied for eic.married)
-      cite: [i1040gi] p. 41, Step 3, question 3, and Step 4, question 1, "Are you a married taxpayer whose filing status is married filing separately or head of household?" (2025; printed date 2026-02-25; 482e9c48)
   (helper) No amount
       = $0
       cite: [i1040gi] p. 42, Step 5, worksheet lines 2 and 4 (zero in this tool) (2025; printed date 2026-02-25; 482e9c48)
@@ -102,7 +99,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [i1040gi] p. 41, Step 3, question 1 (2025; printed date 2026-02-25; 482e9c48)
   (helper) A married filer whose filing status is married filing separately or head of household
       = false
-      cite: [i1040gi] p. 41, Step 3, question 3, and Step 4, question 1 (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 41, Step 3, question 3, and Step 4, question 1, "Are you a married taxpayer whose filing status is married filing separately or head of household?" (2025; printed date 2026-02-25; 482e9c48)
   (helper) Largest Step 1 income limit for the filing status (three or more children)
       = $61,555
       cite: [i1040gi] p. 40, Step 1, question 1, "3 or more children ... less than $61,555 ($68,675 if married filing jointly)" (2025; printed date 2026-02-25; 482e9c48)
@@ -151,7 +148,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [i1040gi] p. 40, Step 1, question 1 (2025; printed date 2026-02-25; 482e9c48)
   (helper) Step 1, question 2. Do you have a social security number issued on or before the due date of your return that allows you to work and is valid for EIC purposes?
       = true
-      cite: [i1040gi] p. 40, Step 1, question 2; pp. 44–45, Social security number (SSN) (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 40, Step 1, question 2; pp. 44–45, Social security number (SSN), "For the EIC, a valid SSN is a number issued by the Social Security Administration unless “Not Valid for Employment” is printed on the social security card and the number was issued solely to allow the recipient of the SSN to apply for or receive a federally funded benefit" (2025; printed date 2026-02-25; 482e9c48)
   (helper) Step 1, question 3. Not filing Form 2555 (foreign earned income)
       = true
       cite: [i1040gi] p. 40, Step 1, question 3 (2025; printed date 2026-02-25; 482e9c48)
@@ -1922,9 +1919,21 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) You, or your spouse if filing jointly, have an SSN valid for employment
       = true
       cite: [i1040gi] p. 17, Before you begin, "If you are filing a joint return, only one spouse is required to have a valid SSN to be eligible for the CTC and ACTC" (2025; printed date 2026-02-25; 482e9c48)
-  (helper) You, and your spouse if filing jointly, have SSNs valid for employment
+  (helper) Number of people on the return with an SSN valid for the EIC
+      = 1
+      cite: [i1040gi] p. 40, Step 1, question 2; p. 44, Social security number (SSN), "For the EIC, a valid SSN is a number issued by the Social Security Administration unless “Not Valid for Employment” is printed on the social security card and the number was issued solely to allow the recipient of the SSN to apply for or receive a federally funded benefit" (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $person: taxpayer
+  (helper) You, and your spouse if filing jointly, have SSNs valid for the EIC
       = true
-      cite: [i1040gi] p. 40, Step 1, question 2, "Do you, and your spouse if filing a joint return, have a social security number ... that allows you to work and is valid for EIC purposes" (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 40, Step 1, question 2, "Do you, and your spouse if filing a joint return, have a social security number ... that allows you to work and is valid for EIC purposes"; p. 44, Social security number (SSN), "For the EIC, a valid SSN is a number issued by the Social Security Administration unless “Not Valid for Employment” is printed on the social security card and the number was issued solely to allow the recipient of the SSN to apply for or receive a federally funded benefit" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Number of people on the return under age 16 at the end of 2025
+      = 0
+      cite: [i1040gi] p. 66, Self-Select PIN, "You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025" (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $person: taxpayer
+  (gate) You, or your spouse if filing jointly, were under age 16 at the end of 2025
+      = false
+      cite: [i1040gi] p. 66, Self-Select PIN, "You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025" (2025; printed date 2026-02-25; 482e9c48)
+      note: Interpretation amb.2025.filer_under_16: The second. The refusal cites the one sentence the text has about age 16 and names the register entry; it does not claim the text forbids the return. The owner's decision of 2026-10-22 (integrity plan decision 10). A return for a child under 16 is one the tool's slice does not model well (Form 8615 is refused through scope.other_line16 only when the filer knows to answer it); the refusal makes the age an explicit entry rather than a silent assumption. (i1040gi, p. 66, Self-Select PIN, "You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025")
   (helper) Number of people on the return with an SSN or ITIN, or who have applied for an ITIN
       = 1
       cite: [i1040gi] p. 17, Before you begin, "If you want to claim the credit for other dependents, you, and your spouse if filing jointly, must have either an SSN or ITIN"; p. 19, Step 5, question 1, "(Answer 'Yes' if you are applying for an ITIN on or before the return due date (including extensions).)" (2025; printed date 2026-02-25; 482e9c48)
@@ -1952,6 +1961,19 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Were you unmarried, or considered unmarried under the head of household rules, at the end of 2025?
       = true
       cite: [i1040gi] p. 14, Head of Household, "You are considered unmarried for this purpose if any of the following applies" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Were you married at the end of 2025?
+      = false
+      cite: [i1040gi] p. 41, Step 3, question 3, and Step 4, question 1, "Are you a married taxpayer whose filing status is married filing separately or head of household?"; i8889 p. 4, Line 3, rule 6, "If, at the end of 2025, you were age 55 or older and unmarried or married with self-only HDHP coverage for the entire year" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Did you live in a community property state at any time in 2025?
+      = false
+      cite: [i1040gi] p. 23, Community Property States, "Community property states include Arizona, California, Idaho, Louisiana, Nevada, New Mexico, Texas, Washington, and Wisconsin" (2025; printed date 2026-02-25; 482e9c48)
+  (gate) Married, filing as head of household, and living in a community property state
+      = false
+      cite: [i1040gi] p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income" (2025; printed date 2026-02-25; 482e9c48)
+      note: Interpretation amb.2025.hoh_community_property: The second, for the nine states the instructions list (Direct File''s knockout tests eight; Louisiana is in the text and so in the question). The owner's decision of 2026-10-22 (integrity plan decision 10). The archived text states the community income rule but not a prohibition on the filing status; the refusal rests on the rule being outside the tool, not on a forbidden status. Married filing separately, the other case Direct File knocks out, is refused throughout the tool already. A registered domestic partner in Nevada, Washington or California (same paragraph) is not asked and is a gap to note. (i1040gi, p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555")
+  (helper) Was your EIC for a year after 1996, or your child tax credit, additional child tax credit or credit for other dependents for a year after 2015, reduced or disallowed other than for a math or clerical error, or are you in a 2- or 10-year disallowance period?
+      = false
+      cite: [i1040gi] p. 43, Form 8862, who must file, "You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error" and "don’t file Form 8862 or take the credit for the ... 2 years after the most recent tax year for which there was a final determination that your EIC claim was due to reckless or intentional disregard of the EIC rules ... 10 years after the most recent tax year for which there was a final determination that your EIC claim was due to fraud"; p. 39, Form 8862, who must file, "You must file Form 8862 to claim the child tax credit or credit for other dependents if your child tax credit (refundable or nonrefundable depending on the tax year), additional child tax credit, or credit for other dependents for a year after 2015 was denied or reduced for any reason other than a math or clerical error"; i1040s8812 p. 2, Form 8862 may be required, "If your CTC, ACTC, or ODC for a year after 2015 was denied or reduced for any reason other than a math or clerical error, you must attach Form 8862 to your tax return to claim the CTC, ACTC, or ODC unless an exception applies" (2025; printed date 2026-02-25; 482e9c48)
   (helper) Number of parents who qualify you under Test 1
       = 0
       cite: [i1040gi] p. 14, Head of Household, Test 1 (2025; printed date 2026-02-25; 482e9c48)
@@ -2232,6 +2254,13 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Do you have an SSN valid for employment issued before the due date of your return?
       = true
       cite: [i1040gi] p. 18, Step 3, question 4 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Do you have an SSN valid for the EIC, issued on or before the due date of your return?
+      = true
+      cite: [i1040gi] p. 40, Step 1, question 2; pp. 44–45, Social security number (SSN), "For the EIC, a valid SSN is a number issued by the Social Security Administration unless “Not Valid for Employment” is printed on the social security card and the number was issued solely to allow the recipient of the SSN to apply for or receive a federally funded benefit" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Were you under age 16 at the end of 2025?
+      = false
+      cite: [i1040gi] p. 66, Self-Select PIN, "You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025" (2025; printed date 2026-02-25; 482e9c48)
+      note: Interpretation amb.2025.filer_under_16: The second. The refusal cites the one sentence the text has about age 16 and names the register entry; it does not claim the text forbids the return. The owner's decision of 2026-10-22 (integrity plan decision 10). A return for a child under 16 is one the tool's slice does not model well (Form 8615 is refused through scope.other_line16 only when the filer knows to answer it); the refusal makes the age an explicit entry rather than a silent assumption. (i1040gi, p. 66, Self-Select PIN, "You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025")
   (helper) Qualified educator expenses you paid in 2025
       = $0
       cite: [i1040gi] p. 93, Schedule 1, line 11, Qualified expenses and 'You must reduce your qualified expenses by the following amounts' (2025; printed date 2026-02-25; 482e9c48)
@@ -5880,10 +5909,12 @@ Derivations:
   eic.married_rules: test(f1040.status = single; "mfs" = mfs; f1040.status = single; "hoh" = hoh)
   eic.limit3_other: param(#eic.limit3.other = $61,555)
   eic.top_limit: choose(f1040.status = single; "single" = single; eic.limit3_other = $61,555)
+  household.under16_count: sum_over(person[taxpayer].under16 = false; true = true)
+  household.filer_under16: test(household.under16_count = 0; 0 = 0)
   person[taxpayer].one: param(#person.one = 1)
   household.taxpayers: sum_over(person[taxpayer].role = taxpayer; "taxpayer" = taxpayer; person[taxpayer].one = 1)
   household.spouses: sum_over(person[taxpayer].role = taxpayer; "spouse" = spouse)
-  household.roster_ok: test(f1040.status = single; "mfj" = mfj; f1040.status = single; "mfj" = mfj; household.taxpayers = 1; 1 = 1; household.spouses = 0; 0 = 0)
+  household.roster_ok: test(household.filer_under16 = false; f1040.status = single; "mfj" = mfj; f1040.status = single; "mfj" = mfj; household.taxpayers = 1; 1 = 1; household.spouses = 0; 0 = 0)
   household.roster_bad: test(household.roster_ok = true; false = false)
   f1040.household.roster_bad: test(household.roster_ok = true; false = false)
   person[taxpayer].box1: sum_over(person[taxpayer].w2[emp_a].box1 = $90,000)
@@ -6022,11 +6053,11 @@ Derivations:
   eic.limit_joint: choose(eic.ssn_count = 0; 0 = 0; eic.ssn_count = 0; 1 = 1; eic.limit0_joint = $26,214)
   eic.limit: choose(f1040.status = single; "single" = single; eic.limit_other = $19,104)
   eic.step1_income: test(f1040.line11b = $102,500; eic.limit = $19,104)
-  household.work_ssn_count: sum_over(person[taxpayer].work_ssn = true; true = true; person[taxpayer].one = 1)
+  household.eic_ssn_count: sum_over(person[taxpayer].eic_ssn = true; true = true; person[taxpayer].one = 1)
   household.persons: sum_over(person[taxpayer].one = 1)
-  household.all_work_ssn: test(household.work_ssn_count = 1; household.persons = 1)
-  eic.household.all_work_ssn: test(household.work_ssn_count = 1; household.persons = 1)
-  eic.step1_ssn: test(household.all_work_ssn = true; true = true)
+  household.all_eic_ssn: test(household.eic_ssn_count = 1; household.persons = 1)
+  eic.household.all_eic_ssn: test(household.eic_ssn_count = 1; household.persons = 1)
+  eic.step1_ssn: test(household.all_eic_ssn = true; true = true)
   eic.step1_foreign: test(sa.excluded_income = false; sa.excluded_income = false; false = false)
   eic.step1_resident: test(scope.other_income = false; scope.other_income = false; false = false)
   eic.f1040.line7a: copy(sd.to1040 = $7,500)
@@ -6083,7 +6114,7 @@ Derivations:
   eic.smaller: smaller_of(eic.line5 = UNKNOWN (no band for 10250000 cents); eic.line2 = UNKNOWN (no band for 9000000 cents))
   eic.after_line4: choose(eic.line5_blank = false; true = true; eic.line5_blank = false; false = false; eic.smaller = UNKNOWN (no band for 10250000 cents))
   eic.line6: choose(eic.line4 = false; true = true; eic.line4 = false; false = false; eic.after_line4 = UNKNOWN (no band for 10250000 cents))
-  eic.credit: choose(eic.eligible = false; true = true; eic.eligible = false; false = false; eic.zero = $0)
+  eic.credit: choose(household.credit_disallowed = false; eic.eligible = false; true = true; eic.eligible = false; false = false; eic.zero = $0)
   eic.reached_step3: test(eic.below_top = false; true = true)
   eic.wsb_line5_stop: test(eic.below_top = false; true = true)
   eic.check_27c: test(eic.below_top = false; true = true; eic.reached_step3 = false; true = true; eic.reached_step3 = false; true = true; eic.reached_step3 = false; true = true; eic.eligible = false; true = true; eic.wsb_line5_stop = false; true = true)
@@ -6327,7 +6358,7 @@ Derivations:
   s8812.excess: subtract_floor0(s8812.line3 = $102,500; s8812.line9 = $200,000)
   s8812.line10: round(s8812.excess = $0)
   s8812.line11: multiply_rate(s8812.line10 = $0; #ctc.phaseout_rate = 5/100)
-  s8812.line12: subtract_floor0(s8812.line8 = $0; s8812.line11 = $0)
+  s8812.line12: subtract_floor0(household.credit_disallowed = false; s8812.line8 = $0; s8812.line11 = $0)
   s8812.f1040.line18: sum(f1040.line16 = $10,777; f1040.line17 = $0)
   s8812.clw_a1: copy(f1040.line18 = $10,777)
   ftc.has_tax: test(ftc.taxes = $120; 0 = $0)
@@ -6454,7 +6485,7 @@ Derivations:
   person[taxpayer].box2: sum_over(person[taxpayer].w2[emp_a].box2 = $10,000)
   f1040.line25a: sum_over(person[taxpayer].box2 = $10,000)
   f1040.line25d: sum(f1040.line25a = $10,000; f1040.line25b = $0; f1040.line25c = $0)
-  f1040.eic.credit: choose(eic.eligible = false; true = true; eic.eligible = false; false = false; eic.zero = $0)
+  f1040.eic.credit: choose(household.credit_disallowed = false; eic.eligible = false; true = true; eic.eligible = false; false = false; eic.zero = $0)
   f1040.line27a: copy(eic.credit = $0)
   f1040.eic.clergy: test(scope.schedule1 = false; scope.schedule1 = false; true = true)
   f1040.line27b: copy(eic.clergy = false)
@@ -6590,7 +6621,7 @@ Derivations:
   f5695.line13: sum(f5695.line6b = UNKNOWN (no input supplied for f5695.business_use); f5695.line11 = UNKNOWN (no input supplied for f5695.line7a); f5695.line12 = UNKNOWN (no input supplied for f5695.line12))
   f5695.f1040.line18: sum(f1040.line16 = $10,777; f1040.line17 = $0)
   f5695.rce_ws1: copy(f1040.line18 = $10,777)
-  f5695.s8812.line12: subtract_floor0(s8812.line8 = $0; s8812.line11 = $0)
+  f5695.s8812.line12: subtract_floor0(household.credit_disallowed = false; s8812.line8 = $0; s8812.line11 = $0)
   f5695.s8812.clw_a3: subtract(s8812.clw_a1 = $10,777; s8812.clw_a2 = $120)
   f5695.ctc_line19: smaller_of(s8812.line12 = $0; s8812.clw_a3 = $10,657)
   f5695.s8812.clwb_complete: test(f5695.claiming_part1 = false; true = true)
@@ -6745,6 +6776,7 @@ Derivations:
   household.hsa_agreed_count: sum_over(person[taxpayer].hsa_agreed = 0)
   household.hsa_step1_sum: sum_over(person[taxpayer].hsa_step1 = $0)
   household.hsa_share_sum: sum_over(person[taxpayer].hsa_share = $0)
+  household.work_ssn_count: sum_over(person[taxpayer].work_ssn = true; true = true; person[taxpayer].one = 1)
   household.any_work_ssn: test(household.work_ssn_count = 1; 0 = 0)
   household.tin_count: sum_over(person[taxpayer].tin = true; true = true; person[taxpayer].one = 1)
   household.all_tin: test(household.tin_count = 1; household.persons = 1)
@@ -6752,9 +6784,10 @@ Derivations:
   household.ctc_ssn: test(household.any_work_ssn = true; true = true; household.id_count = 1; household.persons = 1)
   household.taxpayer_work_ssn_count: sum_over(person[taxpayer].role = taxpayer; "taxpayer" = taxpayer; person[taxpayer].work_ssn = true; true = true; person[taxpayer].one = 1)
   household.taxpayer_work_ssn: test(household.taxpayer_work_ssn_count = 1; 0 = 0)
+  household.hoh_community_property: test(f1040.status = single; "hoh" = hoh)
   household.test1_met: test(household.test1_persons = 0; 0 = 0)
   household.test2_met: test(household.home_cost = false; true = true)
-  household.hoh_eligible: test(household.unmarried = true; true = true; household.test1_met = false; true = true; household.test2_met = false; true = true)
+  household.hoh_eligible: test(household.hoh_community_property = false; household.unmarried = true; true = true; household.test1_met = false; true = true; household.test2_met = false; true = true)
   ira.zero: param(#sales.zero = $0)
   ira.joint: test(f1040.status = single; "mfj" = mfj)
   ira.joint_type: test(f1040.status = single; "mfj" = mfj; f1040.status = single; "qss" = qss)
@@ -7411,6 +7444,7 @@ Derivations:
   person[taxpayer].w2[emp_a].code_h: test(person[taxpayer].w2[emp_a].box12_h = UNKNOWN (no input supplied for person[taxpayer].w2[emp_a].box12_h); #sales.zero = $0)
   person[taxpayer].w2[emp_a].sav_listed: gate(person[taxpayer].w2[emp_a].box12_userra = UNKNOWN (no input supplied for person[taxpayer].w2[emp_a].box12_userra))
 Interpretation amb.2025.box2c_scope: Refuse nonzero box 2c; no exclusion or AMT amount is silently omitted. Archived Schedule D instructions require the exclusion on Form 8949 code Q and describe an AMT adjustment for 50/60/75-percent exclusions. The existing explicit exclusions are retained; the owner was notified and asked, then said continue without selecting an expansion. (i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
+Interpretation amb.2025.filer_under_16: The second. The refusal cites the one sentence the text has about age 16 and names the register entry; it does not claim the text forbids the return. The owner's decision of 2026-10-22 (integrity plan decision 10). A return for a child under 16 is one the tool's slice does not model well (Form 8615 is refused through scope.other_line16 only when the filer knows to answer it); the refusal makes the age an explicit entry rather than a silent assumption. (i1040gi, p. 66, Self-Select PIN, "You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025")
 Interpretation amb.2025.sales_rounding: Preserve exact cents throughout Stage 3; whole-dollar mode remains deferred. Avoid choosing a reconciliation policy without explicit support; cents are expressly permitted. (i8949, p. 3, Rounding Off to Whole Dollars; compare i1040gi p. 23)
 Interpretation amb.2025.alimony_screen: The first (s1.alimony, s1.alimony_unsupported; amounts under an agreement entered into after 2018, or after a change that expressly excludes them, are not asked, as the questions say, and are neither income nor deductible). The owner's decision (Stage 16 decision batch, D2, with the screens of the premise map, R-ALI-1 and R-ALI-2). The statement listing the other agreements and recipients, and the recapture worksheet, are not prepared; a payment partly child support needs the Pub. 504 allocation rules. (p504, p. 12, Alimony, "If you paid alimony to more than one person, enter the SSN or ITIN of one of the recipients"; p. 16, Recapture of Alimony; p. 13, Underpayment)
 Interpretation amb.2025.cod_fully_taxable: The first (s1.cod_amount, s1.cod_unsupported). Student loans are refused with the other exceptions. The owner's decision (Stage 16 decision batch, D2, "fully taxable canceled nonbusiness debt"). An excepted student loan discharge is nontaxable and usually comes with no Form 1099-C (p. 3, TIP), so a filer who reports one is refused rather than told how much of it to include; the conservative choice where D2 is silent. (p4681, p. 3, General Rules, "There are several exceptions and exclusions that may result in part or all of a canceled debt being nontaxable"; p. 4, Exceptions)
@@ -7436,6 +7470,7 @@ Interpretation amb.2025.f5695_category_cap: The first (f5695.ac_capped, wh_cappe
 Interpretation amb.2025.savers_2026_joint: The first (person.sav_prior_joint includes 2026; f8880.prior_joint). The owner's decision (Stage 15 premise map, decision 4). The 2026 return cannot be known when the 2025 return is prepared, and the 2025 return's filing status is the one fact available. (f8880, p. 2, Line 4, "Exception. Don’t include your spouse’s distributions with yours when entering an amount on line 4 if you and your spouse didn’t file a joint return for the year the distribution was received")
 Interpretation amb.2025.savers_line4_gross: The first (retirement.sav_gross; f8880.line4a and f8880.line4b). The owner's decision (Stage 15 premise map, decision 4). The text says "total amount of distributions" and excludes only the kinds it lists; a rollover is excluded because it is "not taxable as the result of a rollover", and the other exclusions it lists either need a form this tool refuses (retirement.special, retirement.bad_code) or are asked for each Form 1099-R (retirement.sav_military, retirement.sav_404k, retirement.sav_inherited). (f8880, p. 2, Line 4, "Enter the total amount of distributions"; "Don’t include any of the following")
 Interpretation amb.2025.savers_ineligible_column: The first (f8880.line6a and f8880.line6b through f8880.elig_a and f8880.elig_b). The owner's decision (Stage 15 premise map, decision 4). The test is of "the person(s) who made the qualified contribution or elective deferral", so it reads as a test of each contributor, and the form keeps each spouse's contributions in their own column. Whether a person is claimed as a dependent is asked of each person (person.sav_claimed), not read from the return's "can claim" question; it is asked only when someone can claim you or your spouse (sa.dependent), since otherwise no one is claimed. (f8880, p. 2, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a) was born after January 1, 2008; (b) is claimed as a dependent on someone else’s 2025 tax return; or (c) was a student")
+Interpretation amb.2025.hoh_community_property: The second, for the nine states the instructions list (Direct File''s knockout tests eight; Louisiana is in the text and so in the question). The owner's decision of 2026-10-22 (integrity plan decision 10). The archived text states the community income rule but not a prohibition on the filing status; the refusal rests on the rule being outside the tool, not on a forbidden status. Married filing separately, the other case Direct File knocks out, is refused throughout the tool already. A registered domestic partner in Nevada, Washington or California (same paragraph) is not asked and is a gap to note. (i1040gi, p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555")
 Interpretation amb.2025.ira_covered: The first (person.ira_cov). The owner's decision (Stage 16 decision 9(b)). A self-employed person's own qualified plan other than a SEP or SIMPLE (such as a solo 401(k)) is refused by scope.schedule1, so person.plan covers the self-employed plans this tool computes. (i1040gi, p. 96, Were You Covered by a Retirement Plan?, "The “Retirement plan” box in box 13 of your Form W-2 should be checked if you were covered by a plan at work even if you weren’t vested in the plan")
 Interpretation amb.2025.ira_ssb_copy: The first (ssb.ira_line20, person.ira_ssb, ira.cov_gate). The owner's decision (Stage 16 decision 7). The IRA worksheet stays a literal transcription, and the special case sits where the instructions carve the exception, in the social security worksheet's own list. The copy's refusal fires only on a return that ssb.pub915 already refuses when answered as the instructions require. (i1040gi, p. 31, Lines 6a and 6b, Exception; p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, "If you checked “No” on line 1a (and “No” on line 1b if married filing jointly), skip lines 2 through 6")
 Interpretation amb.2025.ira_se_earned: The first. Pub. 590-A names the net earnings "from your trade or business" reduced by the two deductions, which is the net profit; the 92.35% figure would reduce the profit for the tax twice. A Schedule C business whose income comes mainly from capital rather than the owner's services is not screened (an open question for the owner). (p590a, p. 6, What Is Compensation?, "If you are self-employed (a sole proprietor or a partner), compensation is the net"; p. 7, "earnings from your trade or business (provided your personal services are a material income-producing factor) reduced by the total of")

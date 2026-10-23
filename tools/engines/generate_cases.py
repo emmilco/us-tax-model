@@ -80,7 +80,9 @@ def gen_case(rng, i):
         "f1040.line25b": 0, "f1040.line25c": 0, "f1040.line26": 0, "f1040.line35a": 0, "f1040.line36": 0,
         # Earned income credit questions: an adult aged 25 to 64 living in the United States who is
         # nobody's qualifying child, with no tax-exempt interest.
-        "f1040.tax_exempt_interest": 0, "div.box12": 0, "eic.qc_of_another": False, "person[taxpayer].born_before_2001": True, "person[taxpayer].born_after_1960": True, "eic.us_home": True, "eic.married": False,
+        "f1040.tax_exempt_interest": 0, "div.box12": 0, "eic.qc_of_another": False, "person[taxpayer].born_before_2001": True, "person[taxpayer].born_after_1960": True, "eic.us_home": True, "household.married": False,
+        "household.credit_disallowed": False, "household.community_property": False,
+        "person[taxpayer].eic_ssn": True, "person[taxpayer].under16": False,
         "$retirement": [],
         # Form 2441: no care expenses and no dependent care benefits.
         "f2441.care": False, "f2441.benefits": False, "f2441.employer_care": False,
@@ -395,8 +397,10 @@ def make_joint(case, j):
     inputs, facts, features = case["inputs"], case["facts"], set(case["features"]) - {"head_of_household"}
     inputs["f1040.status"] = "mfj"; inputs["$person"] = ["taxpayer", "spouse"]
     inputs["household.unmarried"] = False
+    inputs["household.married"] = True
     age = r.randint(66, 85) if r.random() < 0.15 else r.randint(25, 64)
     inputs.update({f"{SPOUSE}.role": "spouse", f"{SPOUSE}.rrta": False, f"{SPOUSE}.tin": True, f"{SPOUSE}.work_ssn": True,
+                   f"{SPOUSE}.eic_ssn": True, f"{SPOUSE}.under16": False,
                    f"{SPOUSE}.age65": age >= 66, f"{SPOUSE}.blind": False, f"{SPOUSE}.born_before_2001": True,
                    f"{SPOUSE}.born_after_1960": age < 66, f"{SPOUSE}.educator_expenses": 0,
                    f"$tipjob@{SPOUSE}": [], f"$otjob@{SPOUSE}": [], f"$f8889@{SPOUSE}": [], f"$sc@{SPOUSE}": []})
