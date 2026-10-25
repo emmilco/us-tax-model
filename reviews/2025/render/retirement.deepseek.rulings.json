@@ -1,0 +1,56 @@
+{
+ "kind": "render",
+ "form": "retirement",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "(SMW 10)",
+   "restated": "Add column (SMW 6) and column (SMW 8).",
+   "model": "IRS line 10 says 'Was your annuity starting date before 1987? Yes. STOP Do not complete the rest of this worksheet'; the restatement adds line 6 and line 8 even for a pre-1987 annuity.",
+   "ruling": "Ruling: scope; i1040gi (2025) p.29 worksheet lines5/10 give skip/STOP rules for annuities beginning before1987. retirement.special excludes every after-tax-cost annuity starting before November19,1996, and retirement.taxable/amount_a enforce that screen; the positive annuity interface also requires a later start. Hence no supported completed Simplified Method case reaches the pre1987 regime. Retain the later-start computation; this does not claim the standalone worksheet values match an excluded old annuity or that the IRS skip is absent.",
+   "context": "331a9db6f5f9be1f0129a77b9961cba4026f385622f8a88de30660aa08ad5eeb"
+  },
+  {
+   "printed": "(SMW 11)",
+   "restated": "Subtract column (SMW 10) from column (SMW 2).",
+   "model": "IRS line 10 says 'Do not complete the rest of this worksheet' when the annuity starting date was before 1987; the restatement still subtracts line 10 from line 2.",
+   "ruling": "Ruling: scope; i1040gi (2025) p.29 worksheet lines5/10 give skip/STOP rules for annuities beginning before1987. retirement.special excludes every after-tax-cost annuity starting before November19,1996, and retirement.taxable/amount_a enforce that screen; the positive annuity interface also requires a later start. Hence no supported completed Simplified Method case reaches the pre1987 regime. Retain the later-start computation; this does not claim the standalone worksheet values match an excluded old annuity or that the IRS skip is absent.",
+   "context": "331a9db6f5f9be1f0129a77b9961cba4026f385622f8a88de30660aa08ad5eeb"
+  },
+  {
+   "printed": "(SMW 2)",
+   "restated": "Enter the amount from helper \"Your cost in the plan at the annuity starting date (Simplified Method Worksheet, line 2)\".",
+   "model": "The worksheet's before-you-begin note says to 'include any death benefit exclusion that you are entitled to (up to $5,000) in the amount entered on line 2'; the restatement uses only the cost helper and omits that addition.",
+   "ruling": "Ruling: scope; i1040gi (2025) p.29 worksheet preamble includes any entitled death-benefit exclusion in line2. The retirement.special question expressly screens a death-benefit exclusion; retirement.taxable and retirement.amount_a refuse it, as does retirement.rolled. A supported completed distribution therefore has no such addition and uses after-tax cost. The broader source case is excluded, not model noise; no standalone correctness claim is made on an excluded distribution.",
+   "context": "331a9db6f5f9be1f0129a77b9961cba4026f385622f8a88de30660aa08ad5eeb"
+  },
+  {
+   "printed": "(SMW 4)",
+   "restated": "Choose — [helper \"Did you complete this worksheet for this annuity last year?\" = true → helper \"Line 4 of last year's Simplified Method Worksheet\"] [helper \"Did you complete this worksheet for this annuity last year?\" = false → helper \"Line 2 divided by the number on line 3 (Table 2 for a joint and survivor annuity starting after 1997, Table 1 otherwise)\"]",
+   "model": "The Table 1 helper uses only the after-November 18-1996 numbers; IRS Table 1 also has a before-November 19-1996 column, so a pre-November 19, 1996 annuity would use 300/260/240/170/120 rather than 360/310/260/210/160.",
+   "ruling": "Ruling: scope; i1040gi (2025) p.29 Table1 includes an older-annuity column. retirement.special expressly screens an after-tax-cost annuity starting before November19,1996, and retirement.annuity asks whether the start is after November18,1996; retirement.taxable/amount_a refuse the excluded case. Supported Simplified Method distributions therefore use the later column. The missing older column is a documented scope reduction, not an error in that IRS column.",
+   "context": "331a9db6f5f9be1f0129a77b9961cba4026f385622f8a88de30660aa08ad5eeb"
+  },
+  {
+   "printed": "(SMW 6)",
+   "restated": "Enter the amount from helper \"Amount recovered tax free in years after 1986 (line 10 of last year's worksheet)\".",
+   "model": "IRS line 5 says 'If your annuity starting date was before 1987, skip lines 6 and 7'; the restatement still computes line 6 from the recovered-tax-free helper.",
+   "ruling": "Ruling: scope; i1040gi (2025) p.29 worksheet lines5/10 give skip/STOP rules for annuities beginning before1987. retirement.special excludes every after-tax-cost annuity starting before November19,1996, and retirement.taxable/amount_a enforce that screen; the positive annuity interface also requires a later start. Hence no supported completed Simplified Method case reaches the pre1987 regime. Retain the later-start computation; this does not claim the standalone worksheet values match an excluded old annuity or that the IRS skip is absent.",
+   "context": "331a9db6f5f9be1f0129a77b9961cba4026f385622f8a88de30660aa08ad5eeb"
+  },
+  {
+   "printed": "(SMW 7)",
+   "restated": "Subtract column (SMW 6) from column (SMW 2).",
+   "model": "IRS line 5 says 'If your annuity starting date was before 1987, skip lines 6 and 7'; the restatement still subtracts line 6 from line 2.",
+   "ruling": "Ruling: scope; i1040gi (2025) p.29 worksheet lines5/10 give skip/STOP rules for annuities beginning before1987. retirement.special excludes every after-tax-cost annuity starting before November19,1996, and retirement.taxable/amount_a enforce that screen; the positive annuity interface also requires a later start. Hence no supported completed Simplified Method case reaches the pre1987 regime. Retain the later-start computation; this does not claim the standalone worksheet values match an excluded old annuity or that the IRS skip is absent.",
+   "context": "331a9db6f5f9be1f0129a77b9961cba4026f385622f8a88de30660aa08ad5eeb"
+  },
+  {
+   "printed": "(SMW 8)",
+   "restated": "Enter the smaller of column (SMW 5) or column (SMW 7).",
+   "model": "IRS line 5 says if the annuity starting date was before 1987, skip lines 6 and 7 and enter the line 5 amount on line 8; the restatement always takes the smaller of line 5 or line 7.",
+   "ruling": "Ruling: scope; i1040gi (2025) p.29 worksheet lines5/10 give skip/STOP rules for annuities beginning before1987. retirement.special excludes every after-tax-cost annuity starting before November19,1996, and retirement.taxable/amount_a enforce that screen; the positive annuity interface also requires a later start. Hence no supported completed Simplified Method case reaches the pre1987 regime. Retain the later-start computation; this does not claim the standalone worksheet values match an excluded old annuity or that the IRS skip is absent.",
+   "context": "331a9db6f5f9be1f0129a77b9961cba4026f385622f8a88de30660aa08ad5eeb"
+  }
+ ]
+}

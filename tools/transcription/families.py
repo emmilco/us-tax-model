@@ -19,10 +19,24 @@ DEFAULT = "claude"
 LIST = os.path.join(os.path.dirname(os.path.abspath(__file__)), "families.json")
 
 
-def load():
-    """{"required": [...], "optional": [...]} from families.json."""
+def load(kind=None):
+    """Family requirements and selected models, with optional per-kind overrides."""
     data = json.load(open(LIST, encoding="utf-8"))
-    return {"required": list(data.get("required", [])), "optional": list(data.get("optional", []))}
+    models = dict(data.get("models", {}))
+    if kind is not None:
+        data = data.get("by_kind", {}).get(kind, data)
+        models.update(data.get("models", {}))
+    return {"required": list(data.get("required", [])), "optional": list(data.get("optional", [])), "models": models}
+
+
+def selected_model(family, kind=None):
+    return load(kind)["models"].get(family)
+
+
+def require_selected_model(model):
+    selected = selected_model(family_of(model))
+    if selected and model != selected:
+        raise ValueError(f"selected model is {selected!r}, not {model!r}; see families.json")
 
 
 def family_of(model):

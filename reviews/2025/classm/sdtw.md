@@ -192,53 +192,85 @@ Status: **AGREE**
 Value: $0.00
 
 ### classm.sdtw.1 — 35 — Smaller of line 9 and Schedule D line 19
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: Sch D line 19 is zero; skip lines 35-40
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.sdtw.1 — 36 — Add lines 10 and 21
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: skipped
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.sdtw.1 — 37 — Amount from line 1
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: skipped
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.sdtw.1 — 38 — Subtract line 37 from line 36; floor at zero
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: skipped
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.sdtw.1 — 39 — Subtract line 38 from line 35; floor at zero
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: skipped
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.sdtw.1 — 40 — Multiply line 39 by 25 percent
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: skipped
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.sdtw.1 — 41 — Add lines 21, 22, 30, 33 and 39
-Status: **DISAGREE**
+Status: **SKIPPED**
 
-Project: $339,977.00
-Model: $0.00
+Model: blank
 Work: Sch D line 18 is zero; skip lines 41-43
 
-Ruling: representation; project retained; model value dropped from the fixture. With Schedule D line 19 zero the worksheet says "skip lines 35 through 40 and go to line 41" (i1040sd p. 16); the instruction to skip lines 41 through 43 when Schedule D line 18 is zero follows line 40 and is only reached through lines 35–40. The project follows the printed flow and computes line 41 (the sum of lines 21, 22, 30, 33 and 39, here all of taxable income), so line 42 is zero and line 43 is zero; the model applied the line-40 instruction from line 34 and left lines 41–43 blank. Lines 42–45 agree either way, and the data-level property `sdtw_skip_rule` checks that a skipped line 42 is zero when computed. No change to the data. [dropped]
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.sdtw.1 — 42 — Subtract line 41 from line 1
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: skipped
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.sdtw.1 — 43 — Multiply line 42 by 28 percent
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: skipped
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.sdtw.1 — 45 — Add lines 31, 34, 40, 43 and 44
 Status: **AGREE**
@@ -363,109 +395,193 @@ Status: **AGREE**
 Value: $27,569.00
 
 ### classm.sdtw.2 — 23 — Smaller of lines 1 and 13
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: lines 1 and 16 are the same; skip lines 23 through 43
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.sdtw.2 — 24 — Amount from line 22
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: skipped; lines 1 and 16 are the same
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.sdtw.2 — 25 — Subtract line 24 from line 23; floor at zero
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: skipped; lines 1 and 16 are the same
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.sdtw.2 — 26 — 15-percent ceiling by filing status
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: skipped; lines 1 and 16 are the same
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.sdtw.2 — 27 — Smaller of lines 1 and 26
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: skipped; lines 1 and 16 are the same
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.sdtw.2 — 28 — Add lines 21 and 22
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: skipped; lines 1 and 16 are the same
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.sdtw.2 — 29 — Subtract line 28 from line 27; floor at zero
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: skipped; lines 1 and 16 are the same
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.sdtw.2 — 30 — Smaller of lines 25 and 29
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: skipped; lines 1 and 16 are the same
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.sdtw.2 — 31 — Multiply line 30 by 15 percent
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: skipped; lines 1 and 16 are the same
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.sdtw.2 — 32 — Add lines 24 and 30
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: skipped; lines 1 and 16 are the same
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.sdtw.2 — 33 — Subtract line 32 from line 23
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: skipped; lines 1 and 16 are the same
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.sdtw.2 — 34 — Multiply line 33 by 20 percent
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: skipped; lines 1 and 16 are the same
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.sdtw.2 — 35 — Smaller of line 9 and Schedule D line 19
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: skipped; lines 1 and 16 are the same
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.sdtw.2 — 36 — Add lines 10 and 21
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: skipped; lines 1 and 16 are the same
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.sdtw.2 — 37 — Amount from line 1
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: skipped; lines 1 and 16 are the same
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.sdtw.2 — 38 — Subtract line 37 from line 36; floor at zero
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: skipped; lines 1 and 16 are the same
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.sdtw.2 — 39 — Subtract line 38 from line 35; floor at zero
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: skipped; lines 1 and 16 are the same
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.sdtw.2 — 40 — Multiply line 39 by 25 percent
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: skipped; lines 1 and 16 are the same
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.sdtw.2 — 41 — Add lines 21, 22, 30, 33 and 39
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: skipped; lines 1 and 16 are the same
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.sdtw.2 — 42 — Subtract line 41 from line 1
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: skipped; lines 1 and 16 are the same
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.sdtw.2 — 43 — Multiply line 42 by 28 percent
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: skipped; lines 1 and 16 are the same
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.sdtw.2 — 45 — Add lines 31, 34, 40, 43 and 44
 Status: **AGREE**

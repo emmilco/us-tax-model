@@ -46,13 +46,13 @@ Status: **AGREE**
 Value: $85,000.00
 
 ### classm.sli.1 — 6 — Subtract line 5 from line 4
-Status: **DISAGREE**
+Status: **SKIPPED**
 
-Project: $-52,064.00
-Model: $0.00
+Model: blank
 Work: Line 4 (32,936) is not more than line 5 (85,000), so line 6 is skipped
 
-Ruling: representation; project retained; model value dropped from the fixture. The project figures every worksheet line: line 6 (line 4 less line 5) also when line 4 is not more than line 5, where the worksheet skips it, and the worksheet lines for a married filer filing separately, who cannot take the deduction. Line 8 uses line 6 only when line 4 is more than line 5, and the deduction (sli.deduction, which Schedule 1 line 21 copies) is zero for a married filer filing separately; on every case the model and the project agree on the deduction. [dropped]
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.sli.1 — 8 — Multiply line 1 by line 7
 Status: **AGREE**
@@ -67,63 +67,67 @@ Value: $0.00
 ### case classm.sli.2 — prompt sha256 495a0862380dbf3b8cfa8cd409b389d294317d742df084d9166ffaeba08f4c1f; branches: sli.has:true, sli.claimed:true, sli.line1:right, sli.line5#4, sli.over:true, sli.divisor#4, sli.line8#0, sli.line9:positive, sli.eligible:false, sli.allowed#1, sli.deduction#0
 
 ### classm.sli.2 — 1 — Enter the total interest you paid in 2025 on qualified student loans (see the in
-Status: **DISAGREE**
+Status: **SKIPPED**
 
-Project: $2,500.00
-Model: $0.00
+Model: blank
 Work: Filer is claimed as a dependent on another's 2025 return, so not eligible for the deduction; worksheet not completed
 
-Ruling: representation; project retained; model value dropped from the fixture. The filer (qualifying surviving spouse) is claimed as a dependent on someone else's return and cannot take the deduction (i1040gi p. 98, Line 21, "You can take this deduction only if all of the following apply ... You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's (such as your parent's) 2025 tax return"); the model wrote the bar into the lines, and the project figures every worksheet line (line 1 is the interest $3,000.00 limited to $2,500.00, p. 99, line 1) and applies the bar in sli.eligible, so sli.deduction, which Schedule 1 line 21 copies, is $0.00, as the model's line 9. Dropped from the fixture as not evidence. [dropped]
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.sli.2 — 2 — Enter the amount from Form 1040 or 1040-SR, line 9
-Status: **DISAGREE**
+Status: **SKIPPED**
 
-Project: $87,733.00
-Model: $0.00
+Model: blank
 Work: Not eligible (claimed as a dependent); worksheet not completed
 
-Ruling: representation; project retained; model value dropped from the fixture. The filer (qualifying surviving spouse) is claimed as a dependent on someone else's return and cannot take the deduction (i1040gi p. 98, Line 21, "You can take this deduction only if all of the following apply ... You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's (such as your parent's) 2025 tax return"); the model left the worksheet blank, and the project figures every worksheet line (line 2 is Form 1040 line 9, $87,733.00) and applies the bar in sli.eligible, so sli.deduction, which Schedule 1 line 21 copies, is $0.00, as the model's line 9. A blank is not the number zero. Dropped from the fixture as not evidence. No change to the data. [dropped]
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.sli.2 — 3 — Enter the total of the amounts from Schedule 1, lines 11 through 20, and 23 and 
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: Not eligible (claimed as a dependent); worksheet not completed
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.sli.2 — 4 — Subtract line 3 from line 2
-Status: **DISAGREE**
+Status: **SKIPPED**
 
-Project: $87,733.00
-Model: $0.00
+Model: blank
 Work: Not eligible (claimed as a dependent); worksheet not completed
 
-Ruling: representation; project retained; model value dropped from the fixture. The filer (qualifying surviving spouse) is claimed as a dependent on someone else's return and cannot take the deduction (i1040gi p. 98, Line 21, "You can take this deduction only if all of the following apply ... You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's (such as your parent's) 2025 tax return"); the model left the worksheet blank, and the project figures every worksheet line (line 4 is line 2 less a $0.00 line 3, $87,733.00) and applies the bar in sli.eligible, so sli.deduction, which Schedule 1 line 21 copies, is $0.00, as the model's line 9. A blank is not the number zero. Dropped from the fixture as not evidence. No change to the data. [dropped]
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.sli.2 — 5 — Enter the amount shown below for your filing status. Single, head of household, 
-Status: **DISAGREE**
+Status: **SKIPPED**
 
-Project: $85,000.00
-Model: $0.00
+Model: blank
 Work: Not eligible (claimed as a dependent); worksheet not completed
 
-Ruling: representation; project retained; model value dropped from the fixture. The filer (qualifying surviving spouse) is claimed as a dependent on someone else's return and cannot take the deduction (i1040gi p. 98, Line 21, "You can take this deduction only if all of the following apply ... You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's (such as your parent's) 2025 tax return"); the model left the worksheet blank, and the project figures every worksheet line (line 5 is $85,000 for a qualifying surviving spouse, p. 99, line 5) and applies the bar in sli.eligible, so sli.deduction, which Schedule 1 line 21 copies, is $0.00, as the model's line 9. A blank is not the number zero. Dropped from the fixture as not evidence. No change to the data. [dropped]
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.sli.2 — 6 — Subtract line 5 from line 4
-Status: **DISAGREE**
+Status: **SKIPPED**
 
-Project: $2,733.00
-Model: $0.00
+Model: blank
 Work: Not eligible (claimed as a dependent); worksheet not completed
 
-Ruling: representation; project retained; model value dropped from the fixture. The filer (qualifying surviving spouse) is claimed as a dependent on someone else's return and cannot take the deduction (i1040gi p. 98, Line 21, "You can take this deduction only if all of the following apply ... You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's (such as your parent's) 2025 tax return"); the model left the worksheet blank, and the project figures every worksheet line (line 6 is $87,733.00 less $85,000.00 = $2,733.00) and applies the bar in sli.eligible, so sli.deduction, which Schedule 1 line 21 copies, is $0.00, as the model's line 9. A blank is not the number zero. Dropped from the fixture as not evidence. No change to the data. [dropped]
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.sli.2 — 8 — Multiply line 1 by line 7
-Status: **DISAGREE**
+Status: **SKIPPED**
 
-Project: $455.00
-Model: $0.00
+Model: blank
 Work: Not eligible (claimed as a dependent); worksheet not completed
 
-Ruling: representation; project retained; model value dropped from the fixture. The filer (qualifying surviving spouse) is claimed as a dependent on someone else's return and cannot take the deduction (i1040gi p. 98, Line 21, "You can take this deduction only if all of the following apply ... You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's (such as your parent's) 2025 tax return"); the model left the worksheet blank, and the project figures every worksheet line (line 8 is $2,500.00 x 0.182, $2,733.00 / $15,000.00 = 0.18220 to three places (amb.2025.sli_ratio_places), = $455.00) and applies the bar in sli.eligible, so sli.deduction, which Schedule 1 line 21 copies, is $0.00, as the model's line 9. A blank is not the number zero. Dropped from the fixture as not evidence. No change to the data. [dropped]
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.sli.2 — 9 — Student loan interest deduction. Subtract line 8 from line 1. Enter the result h
 Status: **DISAGREE**
@@ -162,13 +166,13 @@ Status: **AGREE**
 Value: $85,000.00
 
 ### classm.sli.3 — 6 — Subtract line 5 from line 4
-Status: **DISAGREE**
+Status: **SKIPPED**
 
-Project: $-68,954.00
-Model: $0.00
+Model: blank
 Work: Line 4 (16,046) is not more than line 5 (85,000), so answer No and skip lines 6 and 7
 
-Ruling: representation; project retained; model value dropped from the fixture. As in the earlier rulings on this line: the project figures line 6 (line 4 less line 5) also when line 4 is not more than line 5, where the worksheet skips it (i1040gi p. 99, Student Loan Interest Deduction Worksheet, line 6, "Is the amount on line 4 more than the amount on line 5? No. Skip lines 6 and 7, enter -0- on line 8, and go to line 9"); line 8 reads line 6 only when line 4 is more than line 5 (sli.over). Here line 4 is $16,046.00 and line 5 $85,000.00, so the project's line 6 is -$68,954.00; line 8 ($0.00) and line 9 ($0.00) agree. Dropped from the fixture as not evidence. No change to the data. [dropped]
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.sli.3 — 8 — Multiply line 1 by line 7
 Status: **AGREE**
@@ -208,13 +212,13 @@ Status: **AGREE**
 Value: $170,000.00
 
 ### classm.sli.4 — 6 — Subtract line 5 from line 4
-Status: **DISAGREE**
+Status: **SKIPPED**
 
-Project: $-273,568.92
-Model: $0.00
+Model: blank
 Work: Line 4 is not more than line 5, so No: skip lines 6 and 7
 
-Ruling: representation; project retained; model value dropped from the fixture. As in the earlier rulings on this line: the project figures line 6 (line 4 less line 5) also when line 4 is not more than line 5, where the worksheet skips it (i1040gi p. 99, Student Loan Interest Deduction Worksheet, line 6, "Is the amount on line 4 more than the amount on line 5? No. Skip lines 6 and 7, enter -0- on line 8, and go to line 9"); line 8 reads line 6 only when line 4 is more than line 5 (sli.over). Here line 4 is -$103,568.92 and line 5 $170,000.00, so the project's line 6 is -$273,568.92; line 8 ($0.00) and line 9 ($164.00) agree. Dropped from the fixture as not evidence. No change to the data. [dropped]
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.sli.4 — 8 — Multiply line 1 by line 7
 Status: **AGREE**
@@ -249,18 +253,22 @@ Status: **AGREE**
 Value: $21,750.13
 
 ### classm.sli.5 — 5 — Enter the amount shown below for your filing status. Single, head of household, 
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: The form prints no amount for married filing separately (that status is not eligible), so left blank.
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.sli.5 — 6 — Subtract line 5 from line 4
-Status: **DISAGREE**
+Status: **SKIPPED**
 
-Project: $21,750.13
-Model: $0.00
+Model: blank
 Work: Line 5 has no amount for married filing separately, so line 6 can't be figured. Skip lines 6-7 and go to line 8 as 0.
 
-Ruling: representation; project retained; model value dropped from the fixture. A married filer filing separately cannot take the deduction (i1040gi p. 98, Line 21, "Your filing status is any status except married filing separately") and does not use the worksheet; the project figures every worksheet line for such a filer and applies the bar in sli.eligible, so sli.deduction, which Schedule 1 line 21 copies, is $0.00, as the model's line 9. With no line 5 amount printed for this status (p. 99, line 5) the project's line 5 is $0.00, on which the model's blank agrees, so line 4 is more than line 5 and line 6 is $21,750.13 less $0.00 = $21,750.13; line 8 is $0.00 in both (line 1 is $0.00). As the earlier ruling on classm.sli.2 line 6. Dropped from the fixture as not evidence. No change to the data. [dropped]
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.sli.5 — 8 — Multiply line 1 by line 7
 Status: **AGREE**

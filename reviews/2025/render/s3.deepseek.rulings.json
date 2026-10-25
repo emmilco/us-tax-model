@@ -1,0 +1,28 @@
+{
+ "kind": "render",
+ "form": "s3",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "1",
+   "restated": "Enter the amount from ftc helper \"Credit is the smaller of creditable foreign tax and regular income tax; zero if no foreign tax\".",
+   "model": "The helper uses f1040 line 16 alone as regular tax, but the IRS says regular tax is the total of Form 1040 line 16 and Schedule 2 (Form 1040), Part I, line 1z, less any tax included on line 16 from Form 4972.",
+   "ruling": "Ruling: scope/representation on supported completed individual returns; i1116 (2025) pp.1–2 requires the smaller of foreign tax and regular tax, with p.25 Line20 defining regular tax as Form1040 line16 plus Schedule2 PartI line1z less Form4972 tax, with Form8978 adjustments. s2.other explicitly excludes advance-credit repayments and every other unsupported Schedule2 tax and is enforced at s2.line3/line21. scope.other_line16 excludes Forms4972/8978 and is enforced at f1040.line16. Thus the additional terms are zero on supported completed returns; Form1040 line16 is the regular-tax amount in this slice. Stand-alone excluded cases are not claimed equivalent. The reviewer correctly identifies the full IRS rule; its reduction here depends on those declared refusals, not model noise.",
+   "context": "1e647a16495198dafd67b5fdc7aa5541ee300b6baecd665a24a633720e7fceeb"
+  },
+  {
+   "printed": "14",
+   "restated": "Input — Total other payments or refundable credits (supplied subtotal; preparation outside Stage 2)",
+   "model": "IRS line 14 says 'Add lines 13a through 13z'; the restatement instead takes a supplied subtotal and does not compute that addition.",
+   "ruling": "Ruling: scope/input boundary; f1040s3 (2025) p.1 line14 totals lines13a–13z. This slice explicitly requests that already-prepared subtotal as an input, with preparation of its component credits outside Stage2. No independent computation or worked-value evidence for that subtotal is claimed. The objection correctly identifies the unimplemented preparation; it is an acknowledged input boundary, not model noise.",
+   "context": "1e647a16495198dafd67b5fdc7aa5541ee300b6baecd665a24a633720e7fceeb"
+  },
+  {
+   "printed": "14",
+   "restated": "Input — Total other payments or refundable credits (supplied subtotal; preparation outside Stage 2)",
+   "model": "The IRS line says 'Add lines 13a through 13z'; the restatement instead takes a supplied subtotal and does not add lines 13a-13z, omitting the line's computation.",
+   "ruling": "Ruling: scope/input boundary; f1040s3 (2025) p.1 line14 totals lines13a–13z. This slice explicitly requests that already-prepared subtotal as an input, with preparation of its component credits outside Stage2. No independent computation or worked-value evidence for that subtotal is claimed. The objection correctly identifies the unimplemented preparation; it is an acknowledged input boundary, not model noise.",
+   "context": "d56adaf2361f80629d271d4ce465a188e52863b8e7511f5e690dca569ca8344b"
+  }
+ ]
+}

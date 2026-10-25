@@ -1,4 +1,13 @@
-# Integrity plan — 2026-10-22 (v6)
+# Integrity plan — 2026-10-22 (v7, amended 2026-10-24)
+
+**Owner amendment, 2026-10-24:** remaining human packets, future stage source readings and the
+ten-ruling sample are optional. The owner completed item2; all original findings are preserved.
+Independent source/calculation checks carry the completion requirements. Confirmed defects require
+correction, regression cases and broader independent checks instead of automatically assigning more
+human packets. Online interpretation may supply separately recorded, non-authoritative soft evidence;
+it earns no worked-value, human or scoreboard credit. See `2026-10-24_validation_policy.md` for the
+controlling policy, provenance requirements and execution order. Earlier decisions below remain history
+where superseded by this amendment.
 
 A plan to bring the project to high integrity, meaningful validation and completeness, under the three pillars:
 completeness, correctness, and a sound evidentiary basis. Drafted jointly by two audit sessions (tax-audit1 and
@@ -9,7 +18,19 @@ below) were given in the tax-audit2 session and relayed to tax-audit1. The audit
 Items are ordered by integrity bought per unit of work. Each gives what changes, who does it, the effort, and a
 done-when that cannot be met without the integrity actually improving. "Elliot" marks work only a human can do.
 
-## The position today, stated plainly
+## Continuation: human-reading integration (2026-10-22)
+
+The first complete review path is being verified on item 2. Human source reading is **H** in the
+report, separate from **B**, which remains human-calculated expected values under spec 6.1. A
+reading earns H on its printed line and the helpers actually expanded in the packet, with the
+reader named. It requires MATCH, the reader's reason, a current per-line receipt across form
+boundaries, and the exact log committed with that reader as author. This corrects the original
+plan's use of B for source readings. After owner feedback that one verdict was overwhelming, item 2 is now fourteen separate questions
+shown one at a time, with credit restricted to the computation actually reviewed. The owner has not
+yet completed the packet; partial verdicts are saved. BUG-0104 records this change. BUG-0101 to BUG-0103
+record the integration, freshness and check-order gaps found while tracing this path.
+
+## The position at plan adoption, stated plainly
 
 Every construction to date (authoring, second transcription, render comparison, class M hand-work, the blind
 fixture predictions, and both audit sessions) is one model family. Evidence from outside it comes from three
@@ -31,7 +52,7 @@ Definitions, so the number cannot be inflated:
 - An engine assertion counts only when (a) the engine computes the value rather than receiving it as input;
   (b) the comparison ran on generated returns where the line is nonzero on at least 50 cases; (c) fewer than
   half of those returns were excluded for engine limitations.
-- A class B assertion counts only from a human log meeting item 1.1's rules.
+- An H assertion counts only from a human source-reading log meeting item 1.1's rules. Class B remains a human-worked expected value.
 - A second-family assertion counts only from a run meeting item 1.3's agreement floor, or a class M log under
   item 1.2 whose model is not a Claude model.
 - An assertion on a `copy` line credits the line it copies from, following the chain to the first non-copy line
@@ -88,8 +109,10 @@ Item 0.3 goes first: it touches nothing the suite reads.
 
 ## Phase 1 — days; evidence from outside the model family
 
-Order within the phase: 1.0 and 1.0b are prerequisites and run first. 1.4 runs beside them among the agent
-items; a line the engine disagrees on goes to the top of the reading list. 1.1 waits on 1.0 and the owner.
+Order within the phase: the implemented packet and transport tools (1.0/1.0b) support the remaining
+work. Engine comparisons, source adjudication and independent calculations proceed alongside each
+other. An engine disagreement gets priority investigation. Optional human reading (1.1) does not
+delay engineering or completion of the independent-evidence requirements.
 
 1.0 Human-reading packet tool (agent, hours; prerequisite to 1.1). The project already has
     `tools/extraction/page_review.py`, which renders each archived page to PNG and shows it beside the
@@ -136,7 +159,7 @@ items; a line the engine disagrees on goes to the top of the reading list. 1.1 w
     scoreboard's engine sub-count rises under its definition (computed, nonzero on 50+ cases, under half
     excluded), with OpenTaxSolver and UsTaxes columns counted separately.
 
-1.1 The owner reads the lines below against the IRS pages (class B, the project's first), through the packets
+1.1 Optional human source reading against the IRS pages through the packets
     of item 1.0. Owner's answer 2026-10-22: yes, provided the packet UI lets him match an image of the form to
     the lines asked. [Elliot, one sitting of 10 to 30 minutes per item]
     Rules: the agent prepares the packet with every verdict empty; the owner fills every verdict in his own
@@ -144,9 +167,10 @@ items; a line the engine disagrees on goes to the top of the reading list. 1.1 w
     subject hash from `tools/transcription/subjects.py`, so `check_logs.py` flags it stale when the line
     changes (the T-044 lesson); the commit's git author is the named reader; `check_logs.py` rejects a human
     log whose reader field names a model or whose last commit author (from `git log`) is not the named reader.
-    evidence.md's B column reads only such logs. As part of this item the owner also samples ten rulings from
+    evidence.md's H column reads only such logs; B is reserved for worked values. If offered, the owner may also sample ten rulings from
     items 1.2 and 1.3 that overruled a non-Claude model.
-    Done when: the log exists under those rules; evidence.md shows B on those lines with the owner named.
+    Credit when offered: the log meets those rules and evidence.md shows H with the owner named.
+    Neither the reading list nor the ruling sample is a required completion gate.
     Reading list (stakes × churn; pages are form-feed pages of the `.cols.txt` files; items 10 and 11 are new
     2025 law that no prior-year diff could catch):
      1. Tax on taxable income: f1040.gate.qdcg_applies, f1040.gate.sdtw, f1040.non_sdtw_tax, tax_on_amount
@@ -192,7 +216,13 @@ items; a line the engine disagrees on goes to the top of the reading list. 1.1 w
     A dispute ruled a finding or a representation difference is not noise.
     Done when: every log records a non-Claude run above the floor with no open ruling; the log states the
     independence yield (disagreements the second family raised that the Claude reading did not), zero being a
-    visible result; the owner has sampled ten overruling rulings (item 1.1); defects found are BUG entries.
+    visible result; defects found are BUG entries. The owner's ten-ruling sample is optional (item 1.1).
+
+    Execution update 2026-10-23: the noise gate and response provenance checks are implemented and
+    tested. All 55 DeepSeek render reviews have returned; the full transcription batch has returned
+    with final failed-job retries underway. Source adjudication, family promotion and the owner's
+    sample remain incomplete. See `docs/2026-10-23_independent_validation.md`; no milestone completion
+    or worked-value evidence is inferred from completed API calls.
 
 1.5 Class M made to bite: restrict jobs to printed lines, or present helper lines in the model's own terms.
     Today 2 corrections in 484 disagreements; 222 ruled "representation".
@@ -216,9 +246,19 @@ items; a line the engine disagrees on goes to the top of the reading list. 1.1 w
     Done when: a log in reviews/2025/direct-file/ lists every predicate compared, the reading on each side, and
     the ruling with its source sentence; findings are BUG entries or register entries.
 
-Stop rule for Phase 1: an error is any case where the IRS text supports one value and the evaluator gives
-another on a reachable return, whether or not a register entry follows. If items 1.1 to 1.4 and 1.7 together find three
-or more, coverage stays paused and the reading list doubles before item 2.6 reopens.
+Stop rule for Phase 1, revised 2026-10-24: an error is any case where the IRS text supports one value
+and the evaluator gives another on a reachable return, whether or not a register entry follows.
+Confirmed errors require correction, source-backed regressions and expanded independent checks of
+the affected regime. A cluster of errors pauses coverage until that investigation closes. No automatic
+increase in mandatory human reading remains. Unexplained differences and unmet independent-evidence
+requirements cannot be cleared by making human review optional.
+
+1.8 Secondary interpretation as soft evidence. Search professional explanations, software notes and
+    practitioner discussions for support, counterexamples and competing readings, especially at source
+    ambiguities. Record year, facts, author, URL, dates, a short captured passage/hash, primary references,
+    source lineage, opposing material and uncertainty under `research/secondary/`. This supplements
+    source adjudication, earns no assertion/scoreboard or noise-floor exception, and is kept out of the
+    existing blind source-only prompts. The first example covers standard-deduction dollar increments.
 
 ## Phase 2 — a week or more; completeness and a fileable year
 
@@ -246,7 +286,8 @@ or more, coverage stays paused and the reading list doubles before item 2.6 reop
     set changed.
 
 2.6 Coverage stages resume (Schedule E, the rest of Schedule 1, the premium tax credit) only after item 2.1
-    shows adoption works and the stop rule has not fired; each stage closes under the standing regime below.
+    shows adoption works and the defect investigations required by the revised stop rule close;
+    each stage closes under the standing regime, with human readings optional.
 
 ## Lawyer review
 
@@ -257,7 +298,7 @@ lawyer". A gate on distribution, not on building.
 
 - transcription and render reviews under two model families; class M on printed lines only
 - evidence report with M and engine columns and the scoreboard; citations check with 0 unchecked
-- the owner reads the form's highest-stakes line; one second-family whole-return working per stage
+- one second-family whole-return working per stage; human source readings and ruling samples optional
 - engine differential mapping extended wherever an engine models the new feature
 - every tax year adopted under the full check-all including the engine differential
 - a stage handoff reports the scoreboard and the per-form outside-family coverage first, fixture counts last
@@ -320,9 +361,17 @@ A gate's bucket is reviewed when its stage is reopened or its category is retire
 12. The agreement floor measured as a noise rate (item 1.3).
 13. The reading list doubled now (items 14 onward chosen by the same rule); the owner reads the first twelve first.
 14. Log-check policy for an optional family: a stale log fails, an open ruling does not.
+15. Amendment 2026-10-24: remaining human packets, future stage source readings and the ten-ruling
+    sample are optional. Preserve findings; incomplete/stale/negative readings earn no H and do not
+    block unrelated validation. Confirmed defects require correction, regression and broader independent
+    checks; automatic doubling of human reading is retired. Four-engine and blind-calculation work remain.
+16. Amendment 2026-10-24: online tax interpretation/commentary may support or challenge a recorded
+    reading as soft evidence, with year/facts, attribution, dates, captured passage/hash, lineage and
+    contrary material. No official-source substitution, blind-prompt contamination or scoreboard credit.
 
-Stop rule status: fired on 2026-10-22 with three value errors (BUG-0094, BUG-0096, BUG-0097). Coverage stays paused;
-the reading list doubles (decision 13).
+Stop rule status: fired on 2026-10-22 with three value errors (BUG-0094, BUG-0096, BUG-0097), subsequently
+fixed. Coverage stays paused for the unfinished independent-validation/year-rehearsal gates. Decision15
+retires the mandatory-reading consequence of decision13; the expanded list remains optional research UI.
 
 ## Open question for the owner
 

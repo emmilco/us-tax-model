@@ -6,19 +6,22 @@
    "printed": "2",
    "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"ref\": \"f2441.care\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"ref\": \"f2441.care\"}], \"test\": \"eq\"}, \"then\": {\"ref\": \"f2441.line11\"}}], \"op\": \"choose\"}",
    "second": "{\"ref\": \"f2441.line11\"}",
-   "ruling": "Ruling: representation; project retained. Both enter Form 2441 line 11; the project adds the Form 2441 question whether care for a qualifying person was paid for so the filer could work (f2441.care) and enters zero when it was not, where the second reads line 11 directly. With no such care there are no Part II expenses, so line 11 is zero either way: i2441 p. 1, Purpose of Form, \"If you paid someone to care for your child or other qualifying person so you (or your spouse if filing jointly) could work or look for work in 2025, you may be able to take the credit for child and dependent care expenses\"; f1040s3 p. 1, line 2, \"Credit for child and dependent care expenses from Form 2441, line 11\"."
+   "ruling": "Ruling: representation on supported completed returns; f1040s3 (2025) p.1 line2 carries Form2441 line11. The project short-circuits when the care-expense screen is No, for which qualifying care amounts and the credit are zero. With care Yes both use line11. MFS is outside completed-return scope at s3.line11. The guard also avoids evaluating an unused form and its unanswered screens; partial-input execution is deliberately not asserted equivalent.",
+   "context": "26bf5150d5374352dd45241346c2f11ee39d1f2db9564ff5502710229e4c7b24"
   },
   {
    "printed": "5a",
    "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"ref\": \"f5695.part1_any\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"ref\": \"f5695.part1_any\"}], \"test\": \"eq\"}, \"then\": {\"ref\": \"f5695.line15\"}}], \"op\": \"choose\"}",
    "second": "{\"ref\": \"f5695.line15\"}",
-   "ruling": "Ruling: representation; project retained. Both enter Form 5695 line 15; the project enters zero when the filer has no residential clean energy property paid for in 2025 and no 2024 carryforward (f5695.part1_any), Part I then not being completed, where the second reads line 15 directly. i5695 p. 1, Purpose of Form, \"Also use Form 5695 to take any residential clean energy credit carryforward from 2024\"; f5695 p. 1, line 15, \"Residential clean energy credit. Enter the smaller of line 13 or line 14. Also include this amount on Schedule 3 (Form 1040), line 5a\". With no Part I cost and no carryforward, line 15 is zero either way."
+   "ruling": "Ruling: representation on completed consistent returns; f1040s3 (2025) p.1 line5a carries Form5695 line15. f5695.part1_any asks whether there are eligible PartI costs or a carry-in; with neither the PartI credit is zero, and with Yes the two trees use the same line15. The project exit avoids questions on an unfiled PartI. This is a form-application distinction, not identity on inconsistent amounts or unanswered irrelevant screens.",
+   "context": "26bf5150d5374352dd45241346c2f11ee39d1f2db9564ff5502710229e4c7b24"
   },
   {
    "printed": "5b",
    "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"ref\": \"f5695.part2_any\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"ref\": \"f5695.part2_any\"}], \"test\": \"eq\"}, \"then\": {\"ref\": \"f5695.line32\"}}], \"op\": \"choose\"}",
    "second": "{\"ref\": \"f5695.line32\"}",
-   "ruling": "Ruling: representation; project retained. Both enter Form 5695 line 32; the project enters zero when the filer paid no energy efficient home improvement costs in 2025 (f5695.part2_any), Part II then not being completed, where the second reads line 32 directly. f5695 p. 4, line 32, \"Energy efficient home improvement credit. Enter the smaller of line 30 or line 31. Also include this amount on Schedule 3 (Form 1040), line 5b\"; the credit has no carryforward, so with no Part II cost line 32 is zero either way."
+   "ruling": "Ruling: representation on completed consistent returns; f1040s3 (2025) p.1 line5b carries Form5695 line32. With no PartII improvement or audit expenses its credit is zero; with the part active both use the same line32. The project early exit avoids evaluating an unused part. No identity is claimed for inconsistent screen/amount answers or partial-input order.",
+   "context": "26bf5150d5374352dd45241346c2f11ee39d1f2db9564ff5502710229e4c7b24"
   }
  ]
 }

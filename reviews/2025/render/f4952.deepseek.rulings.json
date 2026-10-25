@@ -1,0 +1,21 @@
+{
+ "kind": "render",
+ "form": "f4952",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "4d",
+   "restated": "Subtract $0 from sd line 16. If zero or less, enter -0-.",
+   "model": "The IRS line is 'Net gain from the disposition of property held for investment'; the restatement uses Schedule D line 16, which is not limited to property held for investment and can include other gains or losses.",
+   "ruling": "Ruling: scope; f4952 (2025) p.3 Lines4d/4e restrict disposition amounts to property held for investment. The supported ScheduleD stream is manually classified securities and fund capital-gain distributions; sales.special refuses special/nonsecurities property and sd.other_forms refuses Forms4797/6252/4684/6781/8824 and K-1 gains. f4952.unsupported at line2 screens other investment income/expenses beyond interest, dividends and securities sales. Within this declared completed-return slice the ScheduleD totals/net-capital-gain helper are the investment amounts. The broader IRS cases are excluded; the ruling does not assert that arbitrary ScheduleD amounts from an excluded return are investment-property amounts.",
+   "context": "a4d9d892f344de4921870980e203a48fd23b96694153a378f20eefba436b8b8d"
+  },
+  {
+   "printed": "4e",
+   "restated": "Enter the smaller of line 4d or sd helper \"Nonnegative net capital gain for QDCGT\".",
+   "model": "The IRS line uses 'your net capital gain from the disposition of property held for investment'; the restatement uses the QDCGT helper based on the smaller of Schedule D lines 15 and 16, which is not limited to property held for investment.",
+   "ruling": "Ruling: scope; f4952 (2025) p.3 Lines4d/4e restrict disposition amounts to property held for investment. The supported ScheduleD stream is manually classified securities and fund capital-gain distributions; sales.special refuses special/nonsecurities property and sd.other_forms refuses Forms4797/6252/4684/6781/8824 and K-1 gains. f4952.unsupported at line2 screens other investment income/expenses beyond interest, dividends and securities sales. Within this declared completed-return slice the ScheduleD totals/net-capital-gain helper are the investment amounts. The broader IRS cases are excluded; the ruling does not assert that arbitrary ScheduleD amounts from an excluded return are investment-property amounts.",
+   "context": "a4d9d892f344de4921870980e203a48fd23b96694153a378f20eefba436b8b8d"
+  }
+ ]
+}

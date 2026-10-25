@@ -4,11 +4,16 @@ Second transcription of `Form 2441, Part I — persons or organizations who prov
 
 | field | value |
 | --- | --- |
-| date | 2026-10-22 |
+| date | 2026-10-23 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | f59a0690db048169c009262534d7e5cceb6876a2715ecdd9ffe2ab045da74a50 |
-| subject sha256 | 4ae8fc63ec63b8b45f85aea7c89ad92d3effa06c866841479a4ad278593e831c |
+| prompt sha256 | 53ec64337d2122a977206f1cf743b323af63e12173c51b2fe870305c19764f1f |
+| prompt policy | source-only-computation-v2 |
+| system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
+| reasoning effort | provider default |
+| output token budget | transport default (65536 for DeepSeek) |
+| interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
+| subject sha256 | 85e99ab390d88927070f3b10975b790102a5300c78fc4c50d07c5b268cff11cb |
 | printed lines compared | 2 |
 | agree / disagree / missing | 2 / 0 / 0 |
 | extra printed lines in second | none |
@@ -31,19 +36,19 @@ Status: **AGREE**
 ## Raw second transcription
 
 ```yaml
-```yaml
 lines:
   - id: dcprov.one
     printed: "(helper)"
-    label: "One care provider"
+    label: "One care provider (this entry): counts toward the number of persons or organizations listed on line 1. If you have more than three care providers, check the box above line 1 and attach a statement."
     type: Count
     expr: {op: param, ref: dc.one}
-    note: "No printed line is listed for transcription. This helper counts each provider entry once so that other forms can total providers (i2441, Line 1: 'If you have more than three care providers, check the box above line 1'). It uses the year parameter dc.one (1)."
+    cite: "i2441 (2025), p. 2, Part I, Line 1: 'Complete columns (a) through (e) for each person or organization that provided the care ... If you have more than three care providers, check the box above line 1 and attach a statement to your return with the required information.'"
+    note: "The IRS text does not name this result. It is read as a per-entry count of one, so that totals across entries give the number of care providers. Other forms compare that number with three (the box above line 1) and use it to tell whether line 1 is complete. The value comes from the declared year parameter dc.one, which is 1. No new input is added."
   - id: dcprov.see_statement
     printed: "(helper)"
-    label: "Column (c) reads \"See Attached Statement\""
+    label: "Enter “See Attached Statement” in the columns for which you don't have the information. Then, attach a statement to your return explaining that the provider didn't give you the information you requested."
     type: Bool
     expr: {op: test, eq: [dcprov.tin_kind, {const: "see_statement"}]}
-    note: "Source: i2441, Due Diligence: 'Enter \"See Attached Statement\" in the columns for which you don't have the information. Then, attach a statement to your return explaining that the provider didn't give you the information you requested.' The text could also cover other columns, such as the address. Only column (c) is modelled, through the dcprov.tin_kind value \"see_statement\"."
-```
+    cite: "i2441 (2025), p. 3, Due Diligence: 'If the provider doesn't give you the information, complete the entries you can on line 1 ... Enter “See Attached Statement” in the columns for which you don't have the information. Then, attach a statement to your return explaining that the provider didn't give you the information you requested.'"
+    note: "The IRS text does not name this result. It is read as true when the filer enters “See Attached Statement” in column (c), the provider's identifying number. That happens because the provider did not give the information, and the filer must then attach a due-diligence statement. This uses only the existing input dcprov.tin_kind, value \"see_statement\". The instructions also allow “See Attached Statement” in other columns (for example the address). The closed interface has no input for those columns, so they are not covered."
 ```

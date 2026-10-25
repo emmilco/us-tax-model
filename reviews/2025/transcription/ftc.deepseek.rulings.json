@@ -1,0 +1,14 @@
+{
+ "kind": "transcription",
+ "form": "ftc",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "ftc.credit",
+   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"input\": \"ftc.taxes\"}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"input\": \"ftc.taxes\"}], \"test\": \"lt\"}, \"then\": {\"of\": [{\"input\": \"ftc.taxes\"}, {\"ref\": \"f1040.line16\"}], \"op\": \"smaller_of\"}}], \"op\": \"choose\"}",
+   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"ftc.all_passive\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"ftc.elect\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"ftc.eligible\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"ftc.statements\"}], \"test\": \"eq\"}, {\"args\": [{\"input\": \"ftc.taxes\"}, {\"param\": \"ftc.limit\"}], \"test\": \"le\"}], \"test\": \"all\"}, \"then\": {\"of\": [{\"input\": \"ftc.taxes\"}, {\"ref\": \"f1040.line16\"}], \"op\": \"smaller_of\"}}, {\"guard\": {\"args\": [{\"args\": [{\"param\": \"ftc.limit\"}, {\"input\": \"ftc.taxes\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": true}, {\"input\": \"ftc.all_passive\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"input\": \"ftc.elect\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"input\": \"ftc.eligible\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"input\": \"ftc.statements\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
+   "ruling": "Ruling: scope/representation on completed supported returns; i1116 (2025) pp.1-2 lists the conditions for the election without Form1116, which removes that form's limitation. The present disagreement concerns the condition guards, not the min expression shared by both transcriptions. With positive foreign tax the project ftc.needs1116 refuses a failed election condition; on an admitted case both select the same min(taxes,f1040.line16). With zero tax (NonNegDollars), the project returns zero directly and the second either returns zero or min(0,nonnegative regular tax)=0. Stand-alone excluded cases and partial-input order are not asserted equivalent. This ruling does not separately establish the shared min from the waived Form1116 limitation.",
+   "context": "dad555a40ed3f4a55b6e87493f028361d02efd26dbda52eb7e0d98bbf82181ff"
+  }
+ ]
+}

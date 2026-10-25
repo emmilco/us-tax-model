@@ -1,5 +1,11 @@
 # Handoff: begin the build
 
+**Historical Stage0 starter prompt.** This records the original setup and repository state, not the
+current execution instructions. Read `HANDOFF-INTEGRITY.md` and
+`docs/2026-10-24_validation_policy.md` for current policy and priorities. The owner has retired the
+mandatory packet/ruling-sample workload; Stage0 confirmation and the historical "start here" steps
+below must not restart completed work or supersede that amendment.
+
 You are starting the implementation phase of this project in a fresh session. A research-and-design phase is complete and committed. Your job is to build the proof of concept in the stages set out in `spec/design.md`, beginning with Stage 0, stopping for my review at the end of each stage.
 
 ## What this project is

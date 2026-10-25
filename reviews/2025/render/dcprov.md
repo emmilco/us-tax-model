@@ -4,11 +4,15 @@ The rendered English of every printed line of `Form 2441, Part I — persons or 
 
 | field | value |
 | --- | --- |
-| date | 2026-10-22 |
+| date | 2026-10-23 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | 0e7bf3057ba87b13a2085b564b7f106b152aa0dfc92f6718406535201c369c57 |
-| subject sha256 | 165adbf82466c6f756e68873229c20ef73f0691defe1ab56417900239ebdd87e |
+| prompt sha256 | 689f9b46fc314aac0f9f004bcae475e1c35ee09bf227bfec2e8f1930c8b9a336 |
+| prompt policy | render-source-comparison-v2 |
+| system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
+| reasoning effort | provider default |
+| output token budget | transport default (65536 for DeepSeek) |
+| subject sha256 | 43a6afe47ff5632c92d31c2f8cddd7a184c37adea366c4a0e00df00d0ca0f393 |
 | lines judged | 3 |
 | match / mismatch / unclear / missing | 3 / 0 / 0 / 0 |
 | verdicts for lines not in the form | none |
@@ -25,17 +29,17 @@ The rendered English of every printed line of `Form 2441, Part I — persons or 
 ### 1(c) — Identifying number (SSN or EIN)
 Status: **MATCH**
 
-Model: The column (c) instructions call for the provider's SSN, ITIN or EIN, "Tax-Exempt" for tax-exempt organizations, and "LAFCP" for foreign providers of filers living abroad. Due Diligence calls for "See Attached Statement" plus a statement when the provider gave no information. For employer-furnished care, columns (a) and (b) say to enter "See W-2" in column (b), leave column (c) blank and enter -0- in column (e).
+Model: The instructions give each choice: the SSN/ITIN or EIN, "Tax-Exempt" for a tax-exempt organization, "LAFCP" for a foreign provider abroad without a U.S. TIN, and "See Attached Statement" with an attached statement when the provider didn't give the information. For employer-furnished care they say to enter "See W-2" in column (b), "leave column (c) blank" and "enter -0- in column (e)".
 
 ### 1(d) — Was the care provider your household employee in 2025?
 Status: **MATCH**
 
-Model: This matches the column (d) instruction to check Yes or No for whether the provider "was your household employee during the year", including the control test and the nanny and daycare examples. For employer-furnished care, columns (a) and (b) say to "check the 'No' box in column (d)". The restatement does not mention this, but the filer would naturally answer no.
+Model: Column (d) asks "whether or not the care provider listed in column (a) was your household employee during the year." The restatement's guidance repeats the control test and the nanny/daycare example from the instructions.
 
 ### 1(e) — Amount paid
 Status: **MATCH**
 
-Model: This matches column (e): "Enter the total amount you actually paid in 2025 to the care provider. Also, include amounts your employer paid to a third party on your behalf. It doesn't matter when the expenses were incurred. Don't reduce this amount by any reimbursement." It also gives -0- for employer-furnished care, as columns (a) and (b) require.
+Model: Column (e) says "Enter the total amount you actually paid in 2025 to the care provider," to "include amounts your employer paid to a third party on your behalf," that "It doesn't matter when the expenses were incurred," and "Don't reduce this amount by any reimbursement." The Columns (a) and (b) instructions say to "enter -0- in column (e)" when the employer furnished the care.
 
 ## Raw response
 
@@ -44,12 +48,12 @@ Model: This matches column (e): "Enter the total amount you actually paid in 202
 lines:
   - key: "1(c)"
     status: MATCH
-    reason: "The column (c) instructions call for the provider's SSN, ITIN or EIN, \"Tax-Exempt\" for tax-exempt organizations, and \"LAFCP\" for foreign providers of filers living abroad. Due Diligence calls for \"See Attached Statement\" plus a statement when the provider gave no information. For employer-furnished care, columns (a) and (b) say to enter \"See W-2\" in column (b), leave column (c) blank and enter -0- in column (e)."
+    reason: "The instructions give each choice: the SSN/ITIN or EIN, \"Tax-Exempt\" for a tax-exempt organization, \"LAFCP\" for a foreign provider abroad without a U.S. TIN, and \"See Attached Statement\" with an attached statement when the provider didn't give the information. For employer-furnished care they say to enter \"See W-2\" in column (b), \"leave column (c) blank\" and \"enter -0- in column (e)\"."
   - key: "1(d)"
     status: MATCH
-    reason: "This matches the column (d) instruction to check Yes or No for whether the provider \"was your household employee during the year\", including the control test and the nanny and daycare examples. For employer-furnished care, columns (a) and (b) say to \"check the 'No' box in column (d)\". The restatement does not mention this, but the filer would naturally answer no."
+    reason: "Column (d) asks \"whether or not the care provider listed in column (a) was your household employee during the year.\" The restatement's guidance repeats the control test and the nanny/daycare example from the instructions."
   - key: "1(e)"
     status: MATCH
-    reason: "This matches column (e): \"Enter the total amount you actually paid in 2025 to the care provider. Also, include amounts your employer paid to a third party on your behalf. It doesn't matter when the expenses were incurred. Don't reduce this amount by any reimbursement.\" It also gives -0- for employer-furnished care, as columns (a) and (b) require."
+    reason: "Column (e) says \"Enter the total amount you actually paid in 2025 to the care provider,\" to \"include amounts your employer paid to a third party on your behalf,\" that \"It doesn't matter when the expenses were incurred,\" and \"Don't reduce this amount by any reimbursement.\" The Columns (a) and (b) instructions say to \"enter -0- in column (e)\" when the employer furnished the care."
 ```
 ```

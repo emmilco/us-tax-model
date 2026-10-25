@@ -300,19 +300,19 @@ Values sheet — tax year 2025 (not a complete return for all filers)
 == Foreign tax credit — election without Form 1116 ==
   (helper) Total creditable foreign taxes after required reductions; generally Form 1099-INT box 6 and Form 1099-DIV box 7
       = $0
-      cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular tax (2025; printed date 2025-12-23; 6998cf8c)
+      cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; 6998cf8c)
   (helper) Year parameter sales.zero
       = $0
-      cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular tax (2025; printed date 2025-12-23; 6998cf8c)
+      cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; 6998cf8c)
   (helper) Positive foreign taxes
       = false
-      cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular tax (2025; printed date 2025-12-23; 6998cf8c)
+      cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; 6998cf8c)
   (helper) Fails a condition of the election
       = false
-      cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular tax (2025; printed date 2025-12-23; 6998cf8c)
+      cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; 6998cf8c)
   (helper) Credit is the smaller of creditable foreign tax and regular income tax; zero if no foreign tax
       = $0
-      cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular tax (2025; printed date 2025-12-23; 6998cf8c)
+      cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; 6998cf8c)
       note: taken: {"eq":["ftc.has_tax",{"const":false}],"op":"test"}
 
 == Household facts for dependents and head of household ==

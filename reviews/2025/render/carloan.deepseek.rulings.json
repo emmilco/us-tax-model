@@ -1,0 +1,31 @@
+{
+ "kind": "render",
+ "form": "carloan",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "22(ii)",
+   "restated": "Input — The part of this loan's 2025 interest you deduct on Schedule C (the business use of the vehicle; zero if none)",
+   "model": "IRS column (ii) says 'the amount of the QPVLI, if any, that was deducted elsewhere on your return (for example, on Schedule C, Schedule E, or Schedule F)', but the restatement limits it to Schedule C.",
+   "ruling": "Ruling: scope; i1040gi (2025) p. 110 line 22 column (ii) includes QPVLI deducted elsewhere, naming Schedule C, E and F. Schedule E/K-1, farm and other unmodeled Schedule 1 income are explicitly refused by scope.schedule1 at f1040.line8/line10. Within a supported completed return Schedule C is the only modeled competing interest deduction, so the input is narrowed to that amount. The objection correctly describes the wider IRS form; no claim is made that this standalone input handles a return needing E or F, and it is not model error."
+  },
+  {
+   "printed": "22(ii)",
+   "restated": "Input — The part of this loan's 2025 interest you deduct on Schedule C (the business use of the vehicle; zero if none)",
+   "model": "The IRS text says column (ii) is the amount of QPVLI deducted elsewhere on the return, with Schedule C, Schedule E, or Schedule F as examples; the program limits it to the part deducted on Schedule C only.",
+   "ruling": "Ruling: scope; i1040gi (2025) p. 110 line 22 column (ii) includes QPVLI deducted elsewhere, naming Schedule C, E and F. Schedule E/K-1, farm and other unmodeled Schedule 1 income are explicitly refused by scope.schedule1 at f1040.line8/line10. Within a supported completed return Schedule C is the only modeled competing interest deduction, so the input is narrowed to that amount. The objection correctly describes the wider IRS form; no claim is made that this standalone input handles a return needing E or F, and it is not model error."
+  },
+  {
+   "printed": "22(iii)",
+   "restated": "Subtract helper \"Interest deducted on Schedule C (zero without a Schedule C)\" from helper \"Interest for this loan, Schedule 1-A\". If zero or less, enter -0-.",
+   "model": "IRS line 22(iii) says to subtract 'the amount on line 22, column (ii)', which can include Schedule E or Schedule F deductions; the restatement subtracts only a Schedule C helper (zero without a Schedule C), so it does not compute the IRS line.",
+   "ruling": "Ruling: scope; i1040gi (2025) p. 110 line 22 column (iii) subtracts column (ii) from QPVLI. The preceding column (ii) scope ruling applies: Schedule E/F and partnership income are refused through scope.schedule1 at Form 1040 lines 8/10, leaving Schedule C as the supported competing deduction. The subtraction matches within that completed-return slice. Do not count the objection as model noise or claim standalone support for the excluded cases."
+  },
+  {
+   "printed": "22(iii)",
+   "restated": "Subtract helper \"Interest deducted on Schedule C (zero without a Schedule C)\" from helper \"Interest for this loan, Schedule 1-A\". If zero or less, enter -0-.",
+   "model": "The IRS text says column (iii) is total QPVLI paid or accrued on the loan minus the amount on column (ii); the program subtracts only Schedule C-deducted interest, not the full column (ii) amount that may include Schedule E or Schedule F.",
+   "ruling": "Ruling: scope; i1040gi (2025) p. 110 line 22 column (iii) subtracts column (ii) from QPVLI. The preceding column (ii) scope ruling applies: Schedule E/F and partnership income are refused through scope.schedule1 at Form 1040 lines 8/10, leaving Schedule C as the supported competing deduction. The subtraction matches within that completed-return slice. Do not count the objection as model noise or claim standalone support for the excluded cases."
+  }
+ ]
+}

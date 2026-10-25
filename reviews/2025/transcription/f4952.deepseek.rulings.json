@@ -1,0 +1,28 @@
+{
+ "kind": "transcription",
+ "form": "f4952",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "4a",
+   "project": "{\"of\": [{\"ref\": \"sb.line2\"}, {\"ref\": \"sb.line6\"}], \"op\": \"sum\"}",
+   "second": "{\"of\": [{\"collection\": \"interest\", \"field\": \"interest.amount\", \"op\": \"sum_over\", \"where\": null}, {\"ref\": \"f1040.line3b\"}], \"op\": \"sum\"}",
+   "ruling": "Ruling: representation; in the supported slice, sb.line2 is exactly sum_over(interest,interest.amount), sb.line6 copies the supplied ordinary-dividend total and f1040.line3b copies sb.line6. Replacing only those exact aliases makes the income operands identical. f4952 (2025) p.3 Line4a includes taxable interest and ordinary dividends before removing qualified dividends on4b. No inference is made about the other income classes screened by f4952.unsupported.",
+   "context": "71b726ece0d96a183e2e16283e3dc87c37edbd0b652202f3ee17aa48db2ab549"
+  },
+  {
+   "printed": "4d",
+   "project": "{\"from\": {\"ref\": \"sd.line16\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}",
+   "second": "{\"from\": {\"of\": [{\"ref\": \"sd.line15\"}, {\"ref\": \"sd.line16\"}], \"op\": \"smaller_of\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}",
+   "ruling": "Ruling: model error; f4952 (2025) p.3 Line4d is excess total investment-property gains over total losses, including short-term gains; Line4e separately defines net capital gain (net long-term gain less net short-term loss). A $10000 short-term securities gain and no long-term gain gives sd.line16=$10000 and sd.line15=0: project4d=$10000, while the second min(line15,line16) followed by a zero floor gives zero. The second uses the net-capital-gain concept of4e in4d. This is a hand counterexample to the disputed formula, not an independent fixture or human worked-value assertion.",
+   "context": "71b726ece0d96a183e2e16283e3dc87c37edbd0b652202f3ee17aa48db2ab549"
+  },
+  {
+   "printed": "f4952.required",
+   "project": "{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"line\": \"4c\"}, {\"line\": \"1\"}], \"test\": \"le\"}, {\"args\": [{\"const\": 0}, {\"line\": \"5\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": false}, {\"input\": \"f4952.carryover\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"const\": 0}, {\"line\": \"1\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4g\"}], \"test\": \"lt\"}], \"test\": \"any\"}",
+   "second": "{\"args\": [{\"args\": [{\"line\": \"4c\"}, {\"line\": \"1\"}], \"test\": \"le\"}, {\"args\": [{\"const\": false}, {\"input\": \"f4952.carryover\"}], \"test\": \"ne\"}], \"test\": \"any\"}",
+   "ruling": "Ruling: model error; f4952 (2025) p.4 Line4g requires entering the elected amount on Form4952 to make the election. The second only tests the interest-deduction exception and carryover, omitting the election. With $20000 ordinary dividends ($10000 qualified), no investment interest and an election of $10000, the project requires the form and the second returns false. The saved evaluator witness is .transcription/f4952-election-required-witness.json. The interface explicitly asks about filing for an election as well as claiming interest.",
+   "context": "71b726ece0d96a183e2e16283e3dc87c37edbd0b652202f3ee17aa48db2ab549"
+  }
+ ]
+}

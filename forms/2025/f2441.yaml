@@ -894,12 +894,12 @@ form:
     - id: f2441.line14_bad
       printed: (gate)
       type: Bool
-      label: Line 14 is more than lines 12 and 13 together
+      label: Line 14 is more than line 12
       expr:
         op: test
         gt:
           - f2441.line14
-          - f2441.line15_sum
+          - f2441.line12
       cite:
         doc: i2441
         locator: 'p. 5, Line 14, "enter on line 14 the total of the following amounts included on line 12"'
@@ -918,18 +918,20 @@ form:
         - when: f2441.line14_bad
           form: Form 2441 line 14 amounts
           remedy: The amounts forfeited or carried forward on line 14 are amounts included on line 12, so line 14 cannot be more
-            than lines 12 and 13 together. Check the amounts with your employer.
+            than line 12. Check the amounts with your employer.
           cite:
             doc: i2441
             locator: 'p. 5, Line 14, "enter on line 14 the total of the following amounts included on line 12"'
+    # The legacy input id is retained; line 16 is not limited to a payment year.
     - id: f2441.paid_2026
       printed: (helper)
       type: NonNegDollars
-      label: Qualified expenses for care of the qualifying persons in 2025 that you paid, or will pay, in 2026
+      label: Qualified care expenses incurred in 2025 not already counted in the per-person care amounts
       expr:
         op: input
-        source: Qualified expenses for the care of your qualifying persons in 2025 that you paid, or will pay, in 2026 (not
-          included in the expenses you entered for each person); zero if none
+        source: Qualified expenses incurred in 2025 for the care of your qualifying persons that are not already included
+          in the care amounts you entered for each person. Include all such expenses, regardless of when they were
+          paid or will be paid, including expenses still unpaid. Do not count any expense twice; zero if none
       cite:
         doc: i2441
         locator: 'p. 5, Line 16, "Enter the total of all qualified expenses incurred in 2025 for the care of your qualifying person(s). It doesn''t matter when the expenses were paid"'

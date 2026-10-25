@@ -1,0 +1,31 @@
+{
+ "kind": "transcription",
+ "form": "qdcg",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "13",
+   "project": "{\"param\": \"qdcg.fifteen_rate_ceiling\"}",
+   "second": "{\"from\": {\"param\": \"qdcg.fifteen_rate_ceiling\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}",
+   "ruling": "Ruling: representation; i1040gi (2025) p. 38 QDCGT line 13 prints the five filing-status ceilings. The second tree is max(qdcg.fifteen_rate_ceiling,0), the project tree the ceiling itself. All five archived parameter values are positive (533400, 300000, 600050, 600050, 566700 dollars), so the extra floor is identity for every permitted filing status; no parameter or source formula changed."
+  },
+  {
+   "printed": "3",
+   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"line\": \"(question)\"}], \"test\": \"eq\"}, \"then\": {\"ref\": \"sd.distributions\"}}, {\"guard\": {\"args\": [{\"const\": true}, {\"line\": \"(question)\"}], \"test\": \"eq\"}, \"then\": {\"from\": {\"of\": [{\"ref\": \"sd.line15\"}, {\"ref\": \"sd.line16\"}], \"op\": \"smaller_of\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}}], \"op\": \"choose\"}",
+   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"line\": \"(question)\"}], \"test\": \"eq\"}, \"then\": {\"from\": {\"ref\": \"f1040.line7a\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}}, {\"guard\": {\"args\": [{\"const\": true}, {\"line\": \"(question)\"}], \"test\": \"eq\"}, \"then\": {\"of\": [{\"from\": {\"ref\": \"sd.line15\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}, {\"from\": {\"ref\": \"sd.line16\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}], \"op\": \"smaller_of\"}}], \"op\": \"choose\"}",
+   "ruling": "Ruling: representation; i1040gi (2025) p. 38 QDCGT line 3 requests the smaller Schedule D lines 15/16, zero for a loss, or Form 1040 line 7a when no Schedule D is filed. The two Schedule D branches are equal because max(min(a,b),0)=min(max(a,0),max(b,0)) for all signed amounts (order-preserving max); 40,401 signed pairs around zero also checked. In a supported complete return with sd.filed=false there are no sales or special-rate gains: sd.count, line18 and line19 are zero, carryovers and other non-modeled income are refused. Schedule D lines 7/15/16 reduce to 0/distributions/distributions, so f1040.line7a via sd.to1040 equals the NonNegDollars sd.distributions and its zero floor is identity. This is a completed-return arithmetic proof; no new assertion about unknown/blank partial entries is claimed."
+  },
+  {
+   "printed": "3",
+   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"line\": \"(question)\"}], \"test\": \"eq\"}, \"then\": {\"ref\": \"sd.distributions\"}}, {\"guard\": {\"args\": [{\"const\": true}, {\"line\": \"(question)\"}], \"test\": \"eq\"}, \"then\": {\"from\": {\"of\": [{\"ref\": \"sd.line15\"}, {\"ref\": \"sd.line16\"}], \"op\": \"smaller_of\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}}], \"op\": \"choose\"}",
+   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"line\": \"(question)\"}], \"test\": \"eq\"}, \"then\": {\"ref\": \"f1040.line7a\"}}, {\"guard\": {\"args\": [{\"const\": true}, {\"line\": \"(question)\"}], \"test\": \"eq\"}, \"then\": {\"of\": [{\"const\": 0}, {\"of\": [{\"ref\": \"sd.line15\"}, {\"ref\": \"sd.line16\"}], \"op\": \"smaller_of\"}], \"op\": \"larger_of\"}}], \"op\": \"choose\"}",
+   "ruling": "Ruling: representation; archived i1040gi (2025) p. 38 QDCGT line 3 takes the smaller Schedule D lines 15/16, zero for a loss, or Form 1040 line 7a when no Schedule D is filed. The filed-Schedule-D expressions are definitionally equal: subtract_floor0(min(a,b),0) = max(0,min(a,b)). For a supported complete return with sd.filed=false, sales and special-rate gains are absent, carryovers/unmodeled income are refused, and Schedule D lines 7/15/16 reduce to 0/distributions/distributions. Thus f1040.line7a via sd.to1040 equals the NonNegDollars sd.distributions. This is a completed-return arithmetic proof and does not assert equality of partial/unknown-entry evaluation."
+  },
+  {
+   "printed": "6",
+   "project": "{\"param\": \"qdcg.zero_rate_ceiling\"}",
+   "second": "{\"from\": {\"param\": \"qdcg.zero_rate_ceiling\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}",
+   "ruling": "Ruling: representation; i1040gi (2025) p. 38 QDCGT line 6 prints the five filing-status ceilings. The second tree is max(qdcg.zero_rate_ceiling,0), the project tree the ceiling itself. All five archived parameter values are positive (48350, 48350, 96700, 96700, 64750 dollars), so the extra floor is identity for every permitted filing status; no parameter or source formula changed."
+  }
+ ]
+}

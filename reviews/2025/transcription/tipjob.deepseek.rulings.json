@@ -1,0 +1,14 @@
+{
+ "kind": "transcription",
+ "form": "tipjob",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "1(c)",
+   "project": "{\"const\": 0}",
+   "second": "{\"param\": \"s1a.zero\"}",
+   "ruling": "Ruling: model error (invalid IR); the response names parameter s1a.zero, which is not declared in params/2025.yaml. s1a.zero is a computed helper on another form; it could be copied, but cannot be read as a year parameter. The supported zero for i1040gi (2025) p.104 worksheet column(c) follows the Form4137 refusal (s2.other) and the declared sales.zero parameter. The intended amount appears to be zero, but an undefined parameter is not an executable independent transcription and is not silently repaired.",
+   "context": "e87e3854fc4ab4e36e0ddef55d8dc0af7c239188abfec0cfbe87af322c959d01"
+  }
+ ]
+}

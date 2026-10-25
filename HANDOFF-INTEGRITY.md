@@ -1,10 +1,139 @@
 # Handoff: the integrity plan, Phase 0 done, Phase 1 in progress
 
-Read `HANDOFF.md` first, then `docs/2026-10-22_project_evaluation.md`, then `docs/2026-10-22_integrity_plan.md`
-(v6, the plan with the owner's decisions 1 to 14), then this file. The roadmap stages (spec 2.4) are paused under
-the plan's stop rule; nothing in `HANDOFF-STAGE-16.md` is to be continued until the plan says so.
+## Controlling owner revision — 2026-10-24
 
-## Where the plan stands
+The owner finished item2: fourteen saved/current answers, ten MATCH, three MISMATCH, one UNCLEAR.
+He then approved removing the remaining mandatory packets and the ten-ruling sample. Human readings
+are optional; stale/incomplete/negative readings earn no H and do not block unrelated validation or
+reporting. Malformed records and incorrect identity/authorship still fail. The former freeze while
+he read and automatic doubling of the reading list are superseded. Do not assign another sitting.
+Preserve his verdicts and never migrate old receipts into current H credit without a new reading.
+
+Read `docs/2026-10-24_validation_policy.md` and the amended plan before the historical continuation
+below. The new priority is independent source and whole-return checks, four engines, defect corrections
+with broader independent regression coverage, then citations/proofs and the year rehearsal. Coverage
+expansion stays paused until those gates close, not until a human packet list is exhausted.
+Online tax commentary is now allowed as separately recorded soft corroboration in `research/secondary/`.
+It cannot override explicit archived instructions, enter blind source-only prompts or earn scoreboard
+credit. The first example addresses standard-deduction increments. Engineering responses to the four
+saved presentation concerns are in `reviews/2025/human_findings.md`; they remain presentation tasks.
+
+BUG-0127 implements the optional-review gate. `check_logs.py` and the evidence generator now run
+successfully while preserving every original owner log byte. The regenerated scoreboard is 198/1515
+(13.1%): H0, B0, second-family M44, E163, with overlapping sub-counts. These are line assertions,
+not a claim that f2441's missing STOP outputs or form-level qualification are resolved. No new
+full-suite green marker is claimed. Historical stale-scoreboard notes below are superseded.
+
+## Historical execution record — superseded where noted above
+
+The following sections preserve earlier work, waiting conditions, source-review requirements and
+scoreboard snapshots. They are not current instructions to require owner packets, freeze the active
+definitions or keep the report blocked. For current execution use the controlling revision above,
+the amended v7 integrity plan and `docs/2026-10-24_validation_policy.md`. `HANDOFF.md` is historical
+Stage0 background. Coverage expansion still awaits the independent-validation and year-rehearsal gates.
+
+## Continuation: standard-deduction review path
+
+The human-reading milestone now has distinct H (source reading) and B (worked values) evidence.
+`logs.py` validates the same receipts for the log checker and evidence report. Receipts cover the
+printed reading and expanded helpers across forms; older browser submissions are rejected. H is
+credited only after a MATCH with a reason is committed with the named reader as author. Blank and
+partial saves preserve earlier completed entries. MISMATCH/UNCLEAR are saved but block the check.
+The owner has begun saving real reviews; they remain his work and are not a completion signal.
+Invented test verdicts stay in temporary repositories.
+
+After the owner found the single-verdict packet overwhelming, item 2 now presents fourteen short
+questions, one at a time, each beside its own source excerpt. A saved verdict credits only that
+computation; references to other amounts are named and checked separately. The owner can stop after
+any saved check. Full pages remain available. BUG-0104 records the usability finding. BUG-0105 adds visible validation beside Save & next,
+focuses missing required fields, and preserves draft notes across a packet update. The browser test
+now uses actual pointer clicks and exercises incomplete forms and rejected saves. The other packets should be
+regenerated after the owner judges this one. `test_review.py` checks the full path in an isolated
+repository in check-all; `test_browser.mjs` checks the browser and a separate temporary server.
+The evidence report runs after the engine differential so it uses the current run's summary.
+BUG-0101 to BUG-0103 record these findings. The owner is reading item 2 while independent work
+continues at his request; no human source reading or worked-value assertion has been supplied by an agent.
+
+## Continuation: independent validation, 2026-10-23
+
+**Owner correction, 2026-10-23:** use `deepseek-flash` for second-family work. The Pro selection
+in earlier handoffs was a mistake. Remaining Pro jobs were interrupted, then the owner resumed
+work with Flash. Pro artifacts remain accurately labeled and are preserved with hashes under
+`.transcription/archive/pro-before-flash-2026-10-23/`. The 110-job Flash run completed with no
+transport/parser failures; summary is `.transcription/deepseek-flash-full-summary.json`.
+`families.json` pins Flash and the transport and eligibility gate enforce it (BUG-0115).
+All 57 offline review-tool tests pass; BUG-0118
+accelerates local prompt preparation with identical parsed data and prompt bytes.
+
+As of 2026-10-24, BUG-0117/0119/0120 source corrections are applied and both families' affected
+render reruns accept them. BUG-0121 binds reused rulings to their actual review context. All
+fourteen item-2 receipts are unchanged. BUG-0122 strengthens worked-value sampling after its
+random corpus lost active Form 2441 cases. Fresh Claude/Flash value reviews completed six active
+cases: 138/151 numeric agreements respectively; skipped replies are excluded. BUG-0123 removed
+220 historical false M assertions that came from blanks; the raw/derived originals are archived.
+The current skip audit is clear. Flash M remains pending three
+skipped required line-29 results. The Flash f2441 transcription remains
+ineligible (five model-error lines out of 37, plus four open rulings); do not lower the noise floor.
+The evidence report could not refresh because the human validation gate correctly fails on the
+owner's unresolved findings. Its older snapshot is explicitly marked stale. Do not claim a new
+scoreboard, family promotion, human completion or a current full-suite green marker.
+
+Read `docs/2026-10-23_independent_validation.md` for the current work. The review tools now enforce
+the agreed model-error noise rule, omit computed labels from independent transcriptions, bind
+cached transcription/render/class M responses to their actual request, and normalize exact definition
+interface aliases (BUG-0106–0110). BUG-0112 also rejects malformed or duplicate raw judgments
+before they can disappear in lookup maps. BUG-0113 repairs direct connection-reset retries;
+BUG-0114 binds per-run output allowances and rejects truncated output. Thirty-four offline
+regression tests cover these changes.
+The earlier Pro batch and retries below are historical. Current transcription and render logs
+all request/report Flash. Affected-fix summaries are `.transcription/*-wording-fixes-summary.json`
+and `.transcription/*-line14-summary.json`; class M progress logs are under `/private/tmp/tax-classm-f2441-*-review.log`.
+Disagreements require cited
+rulings before qualification; DeepSeek remains optional and coverage remains paused.
+
+BUG-0111 has a tested staged fix in `docs/patches/BUG-0111.patch`: rebased after the new boundary
+fixtures, its isolated build, all 1066 CLI fixtures and six age/timing checks pass. It is not applied.
+Item 2's form dependencies exclude dependent,
+but registering the new interview question changes the bank hashed into every human receipt.
+Hold the patch while the owner reads, then refresh receipts deliberately when applying it.
+Current parsed Form 2441 class M counts and qualification blockers are saved in
+`.classm/f2441-current-summary.json`; use them and the derived review logs rather than older
+pre-blank-parser run summaries.
+Keep forms frozen during those batches so their subject hashes describe what was actually read.
+Do not change the human packet or its dependent forms while the owner is reading. His partial
+MISMATCH about the per-box deduction amounts is saved and unresolved; investigate presentation
+with him after he reports completion. It intentionally prevents a green log check. The earlier
+full-suite green marker predates these changes; no current full-suite pass is claimed.
+
+### Source adjudication continuation, 2026-10-24
+
+BUG-0124 adds the missing i1040gi p.117 citation for Schedule 3 excess withholding. Flash's
+refreshed maximum-reasoning transcription now agrees on line11; its four remaining differences
+are documented representation/application guards, with no open ruling. Initial wrong-worksheet
+answers remain archived with their original incomplete context. BUG-0125 repairs transitive render
+glossary definitions and includes the sources of exposed helpers. BUG-0126 supplies i1116 p.25's
+regular-tax definition. Both families' refreshed s3/ftc/f2441 render objections are adjudicated with
+explicit scope/input limits. Every required Claude transcription/render/class M log is current and
+has no open ruling. Flash W-2 and Additional Medicare render reviews match every line.
+
+Flash W-2 hand-work adds 39 matching numeric results across three W-2 entries in one return.
+Its focused transcription retry fixes the omitted EE deferral; a separate 1152-case comparison
+checks the remaining expression on supported complete inputs. The current second-family report
+has 112 form-kind pairs: 37 eligible, 73 pending, two with no judged lines. f4952 transcription
+still exceeds the noise ceiling; retirement transcription still has four open differences.
+The human gate remains unresolved and coverage expansion remains paused.
+
+The three Form2441 line29 gaps are a STOP presentation issue: Flash worked the differences
+(-2000, -500, -1300 dollars) but left the numeric outputs blank. They are not unworked arithmetic,
+nor are they numeric zero assertions. No owner decision on this convention is inferred. See
+`.classm/f2441-current-summary.json`. The fourteen active packet receipts remain unchanged.
+Default citation validation has zero findings; 301 strict locator segments remain to rewrite.
+Fixture verification covers all 1065 cases: the full run passed 1060 and found five refusal-citation
+metadata differences from BUG-0126. Only their expected locators were updated, and all five pass a
+targeted CLI rerun. No numeric expectations, inputs, gates or remedies changed in that update.
+The review server returns HTTP 200 on item 2.
+
+## Where the plan stands (prior batch)
 
 - **Phase 0 (honest reporting): done**, commit a946fae. Evidence report with M and E columns and the scoreboard;
   citation check on computed lines (305 locators to rewrite, `--strict` not yet in check-all); LICENSE,
@@ -35,13 +164,13 @@ doubled. Findings from 1.1 to 1.4 and 1.7 keep counting.
 
 - **Agents run on Opus 5.5** (owner's instruction 2026-10-22): pass `model: "opus"` on every Agent launch.
 - **DeepSeek**: the key is in the macOS keychain (service `deepseek-api`, account `elliotmilco`); `call_model` reads
-  it at call time; never print it. Models available: `deepseek-v4-pro` (use for reviews), `deepseek-flash`.
+  it at call time; never print it. Use `deepseek-flash` for reviews (owner correction 2026-10-23).
   Transport check: `python3 tools/transcription/transport_check.py`.
 - **Review logs per family**: `<form>.<family>.md` beside the Claude log; `tools/transcription/families.json`
   (claude required, deepseek optional until all 55 forms have logs). Policy (decision 14): a stale optional log
   fails check-all; an open ruling in an optional log does not. `compare_families.py` writes
-  `reports/2025/second_family.md`; the agreement floor is a noise rate (decision 12), not yet implemented as such in
-  `compare_families.py` (it still prints the raw 90% rule).
+  `reports/2025/second_family.md`; the agreement floor is now the implemented model-error noise rate
+  (decision 12), with raw agreement retained only as a diagnostic.
 - **OpenTaxSolver**: 23.06 built at `.engines/opentaxsolver-src/` (from tenforty's vendored tarball; SourceForge
   blocks scripted downloads). The owner is to download the 23.07 Linux package in a browser into that directory;
   the adapter reads the version so the swap is a rebuild. 23.06 has three known defects declared as limitations.
@@ -98,7 +227,7 @@ doubled. Findings from 1.1 to 1.4 and 1.7 keep counting.
 1. Merge the three worktrees, run check-all, commit the second batch (one commit, listing items).
 2. Owner judges the reworked item 2 packet; regenerate all 26 packets; owner reads items 1 to 13, then 14 to 26.
 3. UsTaxes adapter (engine 4), after OpenTaxSolver lands.
-4. Full DeepSeek run: `rerun_all.py --model deepseek-v4-pro` for transcription and render over all 55 forms; rule
+4. Full DeepSeek run: `rerun_all.py --model deepseek-flash` for transcription and render over all 55 forms; rule
    every disagreement with a source quote; implement the noise-rate floor in `compare_families.py`; move deepseek to
    required in `families.json` when every form has logs.
 5. 1.2: extend `classm.py` to work a fixture case as a job (every document the case reaches), run DeepSeek over the

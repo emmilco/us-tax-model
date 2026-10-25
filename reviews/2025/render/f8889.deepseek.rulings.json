@@ -1,0 +1,14 @@
+{
+ "kind": "render",
+ "form": "f8889",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "7",
+   "restated": "Choose — [helper \"Age 55 or older at the end of 2025, married, and treated as having family coverage at any time during 2025\" = true → helper \"Additional Contribution Amount Worksheet, line 2: divide line 1 by 12\"] [helper \"Age 55 or older at the end of 2025, married, and treated as having family coverage at any time during 2025\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "IRS line 7 worksheet counts only months when 'You or your spouse had family coverage under an HDHP and were, or were considered to be, an eligible individual on the first day of the month' and not Medicare; the program uses all months of eligible-individual status, overstating when family coverage did not exist all eligible months.",
+   "ruling": "Ruling: ambiguity; retain the already recorded owner choice amb.2025.hsa_line7_months (Owner accepted after Stage13). i8889 (2025) p.7 conditions mention family coverage, but p.5 Line3 Note removes the additional contribution amount from line3 for the entire year once a married filer has any family coverage. The register explicitly records both readings and chooses every eligible month, including self-only months, to avoid losing that part of the catch-up. The reviewer states the alternative literal reading; it is not classified as model error, newly human-approved, or an unrecorded change to the tax model.",
+   "context": "89bd32ff75a39b0eeb8ee0227eb8d648ecf727700b967cbb95e5f73f38927f42"
+  }
+ ]
+}

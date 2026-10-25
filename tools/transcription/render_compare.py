@@ -13,10 +13,11 @@ rule.py --kind render. Raw prompts and responses are kept under the git-ignored 
 as <stem>.render.*.
 """
 import argparse, datetime, hashlib, json, os, re, sys
+from functools import cache
 import yaml
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from transcribe import ROOT, RAW, manifest, excerpt_for, call_model, load_form  # noqa: E402
+from transcribe import ROOT, RAW, manifest, excerpt_for, call_model, load_form, review_response, project_yaml  # noqa: E402
 from taxyear import Y  # noqa: E402
 import families  # noqa: E402
 import rulings  # noqa: E402
@@ -28,6 +29,7 @@ HELPER_MARKERS = {"(helper)", "(gate)", "(computed helper)", "(question)", "(sta
 SYSTEM = ("You check whether plain-English restatements of IRS form and worksheet lines say what the IRS text "
           "says. You have no tools and no other sources. Output only the YAML requested.")
 STATUSES = ("MATCH", "MISMATCH", "UNCLEAR")
+PROMPT_POLICY = "render-source-comparison-v2"
 
 
 def parse_rendered(form_id):
@@ -58,6 +60,7 @@ def rendered(form_id):
     return _rendered_cache[form_id]
 
 
+@cache
 def form_ids():
     return {f[:-3] for f in os.listdir(RENDERED) if f.endswith(".md")}
 
@@ -73,6 +76,7 @@ def helper_refs(text, form_id):
     return out
 
 
+@cache
 def def_titles():
     """Shared definitions by title ({title: def id}); a restatement invokes one as
     '"<output>" of <title>'."""
@@ -80,7 +84,7 @@ def def_titles():
     forms_dir = os.path.join(ROOT, "forms", Y)
     for f in sorted(os.listdir(forms_dir)):
         if f.endswith(".yaml"):
-            d = yaml.safe_load(open(os.path.join(forms_dir, f), encoding="utf-8"))
+            d = project_yaml(os.path.join(forms_dir, f))
             if isinstance(d, dict) and "def" in d:
                 out[d["def"]["title"]] = d["def"]["id"]
     return out
@@ -102,15 +106,49 @@ def field_refs(text):
     return re.findall(r"\bAdd ([a-z0-9_]+\.[a-z0-9_]+) over every confirmed ", text)
 
 
+@cache
+def local_ref_pattern(marker):
+    word = "column" if marker.startswith("(") else "line"
+    return re.compile(rf'(?:(\b[a-z0-9_]+) )?\b{word} {re.escape(marker)}(?![a-zA-Z0-9_]|\.[0-9])')
+
+
+def local_printed_refs(text, form_id):
+    """Printed references within a glossary entry keep that entry's form scope.
+
+    Collection fields such as person.credit refer to 'line eligible' and
+    'line excess'; these are printed markers, not quoted helper labels.
+    Explicit references to another form remain incoming amounts.
+    """
+    out = []
+    known = form_ids()
+    for entry in rendered(form_id).values():
+        marker = entry["printed"]
+        if marker in HELPER_MARKERS:
+            continue
+        for match in local_ref_pattern(marker).finditer(text):
+            prefix = match.group(1)
+            if prefix in known and prefix != form_id:
+                continue
+            out.append(entry["id"])
+            break
+    return out
+
+
 def glossary(form_id, lines):
     """Helper values the judged lines refer to (by label within their form), the per-entry
     fields their collection sums add and the gate lines their refusals name (by id), followed
     transitively, each with its restatement."""
-    seen, order, queue = set(), [], []
+    seen, emitted, order, queue = set(), set(), [], []
     def refs_of(text, refusals, fid):
+        # References in a record question describe supplied facts (often last
+        # year's form), not dependencies of this year's computation.
+        if text.startswith("Input —"):
+            return ([("label", owner, lab) for owner, lab in helper_refs(" ".join(refusals), fid)]
+                    + [("id", gid.split(".")[0], gid) for gid in gate_refs(refusals)])
         return ([("label", fid, lab) for fid, lab in helper_refs(text + " " + " ".join(refusals), fid)]
                 + [("id", gid.split(".")[0], gid) for gid in gate_refs(refusals)]
                 + [("id", f.split(".")[0], f) for f in field_refs(text)]
+                + [("id", fid, ref) for ref in local_printed_refs(text, fid)]
                 + [("def", did, did) for did in def_refs(text)])
     for l in lines:
         queue += refs_of(l["encoded"], l["refusals"], form_id)
@@ -131,11 +169,27 @@ def glossary(form_id, lines):
         else:
             matches = [entries[key]] if key in entries else []
         for e in matches:
-            if (fid, e["id"]) in judged:
+            if (fid, e["id"]) in judged or (fid, e["id"]) in emitted:
                 continue
+            emitted.add((fid, e["id"]))
             order.append((fid, e))
             queue += refs_of(e["encoded"], e["refusals"], fid)
     return order
+
+
+def source_context(form_doc):
+    """Cite the calculations actually exposed in the rendered glossary as well.
+
+    Only their archived source text is supplied to the reviewer; source YAML
+    expressions are used here to select parameter citations, never as output.
+    Explicit incoming printed lines are not recursively expanded.
+    """
+    lines = list(form_doc["lines"])
+    for fid, entry in glossary(form_doc["id"], judged_lines(form_doc)):
+        if fid != form_doc["id"]:
+            source = next(l for l in load_form(fid)["lines"] if l["id"] == entry["id"])
+            lines.append(source)
+    return {**form_doc, "lines": lines}
 
 
 def referenced_lines(form_id, texts):
@@ -230,6 +284,7 @@ the glossary. "Input" means the filer supplies the amount from the named record.
 # Glossary of helper values and gates
 
 A gate named in a refusal ("when X is true") is listed by its id with its label and restatement.
+Within a glossary entry, an unqualified line name belongs to the form named on that entry.
 
 {chr(10).join(gl) if gl else '(none)'}
 
@@ -275,9 +330,18 @@ def extract(text):
         raise ValueError("response has no `lines`")
     out = {}
     for l in doc["lines"]:
+        if not isinstance(l, dict):
+            raise ValueError("verdict must be a mapping")
         status = str(l.get("status", "")).strip().upper()
         key = str(l.get("key", l.get("printed", "")))
-        out[key] = {"status": status if status in STATUSES else "UNCLEAR", "reason": str(l.get("reason", "")).strip()}
+        if not key or key in out:
+            raise ValueError(f"missing or duplicate verdict key: {key!r}")
+        if status not in STATUSES:
+            raise ValueError(f"invalid verdict for {key}: {status!r}")
+        reason = l.get("reason")
+        if not isinstance(reason, str) or not reason.strip():
+            raise ValueError(f"verdict {key} has no reason")
+        out[key] = {"status": status, "reason": reason.strip()}
     return out
 
 
@@ -286,7 +350,6 @@ def write_log(form_doc, model, prompt, used, printed, verdicts, raw_text, meta):
     fid = form_doc["id"]
     family = families.family_of(model)
     path = rulings.log_path("render", fid, family)
-    kept = rulings.kept("render", fid, family)
     results = []
     for e in printed:
         v = verdicts.get(e["key"])
@@ -301,6 +364,10 @@ def write_log(form_doc, model, prompt, used, printed, verdicts, raw_text, meta):
            f"| model requested | {model} |",
            f"| model reported | {', '.join(meta.get('model_reported', [])) or '-'} |",
            f"| prompt sha256 | {hashlib.sha256(prompt.encode()).hexdigest()} |",
+           f"| prompt policy | {meta.get('prompt_policy', 'legacy-unrecorded')} |",
+           f"| system sha256 | {meta.get('system_sha256', '-')} |",
+           f"| reasoning effort | {meta.get('reasoning_effort') or 'provider default'} |",
+           f"| output token budget | {meta.get('request_max_tokens') or 'transport default (65536 for DeepSeek)'} |",
            f"| subject sha256 | {subjects.current('render', fid, Y)} |",
            f"| lines judged | {len(results)} |",
            f"| match / mismatch / unclear / missing | {counts['MATCH']} / {counts['MISMATCH']} / {counts['UNCLEAR']} / {counts['MISSING']} |",
@@ -309,6 +376,7 @@ def write_log(form_doc, model, prompt, used, printed, verdicts, raw_text, meta):
     for u in used:
         out.append(f"| {u['doc']} | {u['revision']} | {', '.join(map(str, u['pages'])) or '-'} | {u['how']} | {u['text_sha256']} | {', '.join(map(str, u.get('cols_pages', []))) or '-'} | {u.get('cols_sha256', '-')} |")
     out += ["", "## Lines", ""]
+    kept = rulings.kept("render", fid, family, context=rulings.review_context("render", "\n".join(out)))
     for r in results:
         out.append(f"### {r['printed']} — {r['label'][:90]}")
         out.append(f"Status: **{r['status']}**")
@@ -326,26 +394,23 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--form", required=True)
     ap.add_argument("--model", default="claude-opus-5-5")
+    ap.add_argument("--reasoning-effort", choices=("low", "high", "max"))
+    ap.add_argument("--max-output-tokens", type=int)
     ap.add_argument("--dry-run", action="store_true", help="build the prompt and excerpt; call no model")
     ap.add_argument("--from-response", action="store_true", help="re-read the saved response; call no model")
     a = ap.parse_args()
     form_doc = load_form(a.form)
-    excerpt, used = excerpt_for(form_doc, manifest())
+    excerpt, used = excerpt_for(source_context(form_doc), manifest())
     prompt = build_prompt(form_doc, excerpt)
     os.makedirs(RAW, exist_ok=True)
     base = os.path.join(RAW, families.stem(a.form, families.family_of(a.model)) + ".render")
-    open(base + ".prompt.txt", "w", encoding="utf-8").write(prompt)
     print(f"{a.form}: excerpt {len(excerpt):,} chars from " + "; ".join(f"{u['doc']} pages {u['pages']} ({u['how']})" for u in used))
-    print(f"prompt {len(prompt):,} chars -> {os.path.relpath(base, ROOT)}.prompt.txt")
+    print(f"prompt {len(prompt):,} chars -> {os.path.relpath(base, ROOT)}{'.preview' if a.dry_run else ''}.prompt.txt")
     if a.dry_run:
+        with open(base + ".preview.prompt.txt", "w", encoding="utf-8") as f:
+            f.write(prompt)
         return
-    if a.from_response:
-        text = open(base + ".response.txt", encoding="utf-8").read()
-        meta = json.load(open(base + ".meta.json")) if os.path.exists(base + ".meta.json") else {}
-    else:
-        text, meta = call_model(prompt, a.model, system=SYSTEM)
-        open(base + ".response.txt", "w", encoding="utf-8").write(text)
-        json.dump(meta, open(base + ".meta.json", "w"))
+    text, meta = review_response(prompt, a.model, base, PROMPT_POLICY, a.from_response, SYSTEM, a.reasoning_effort, a.max_output_tokens)
     verdicts = extract(text)
     judged = judged_lines(form_doc)
     # A verdict keyed by a line's label or full id instead of its key is still that line's.

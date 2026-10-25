@@ -166,8 +166,8 @@ form:
         collection: person
         field: person.credit
       cite:
-        doc: f1040s3
-        locator: Schedule 3 (2025), line 11
+        doc: i1040gi
+        locator: 'p. 117, Line 11, Excess Social Security and Tier 1 RRTA Tax Withheld, "Figure this amount separately for you and your spouse"'
       refuses:
         - when: s3.mfs
           form: Married filing separately

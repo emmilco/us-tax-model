@@ -8,7 +8,7 @@ a ruling.
     python3 tools/transcription/classm.py --doc qdcg [--model M] [--dry-run] [--from-response]
 
 It builds the data and rebuilds the document's jobs (classm-jobs, .classm/jobs.json)
-before every run but --from-response, so a run never works from jobs of older data.
+before every run, including --from-response, so a run never works from jobs of older data.
     python3 tools/transcription/rule.py --kind classm --doc qdcg --rulings r.json
 
 Logs go to reviews/<year>/classm/<doc>.md. Rulings persist in <doc>.rulings.json beside the log
@@ -25,7 +25,7 @@ from fractions import Fraction
 import yaml
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from transcribe import ROOT, manifest, excerpt_for, call_model, load_form  # noqa: E402
+from transcribe import ROOT, manifest, excerpt_for, load_form, review_response  # noqa: E402
 from taxyear import YEAR, Y, YEAR_ARGS  # noqa: E402
 import families  # noqa: E402
 import rulings  # noqa: E402
@@ -34,6 +34,7 @@ import subjects  # noqa: E402
 JOBS = os.path.join(ROOT, ".classm", "jobs.json")
 RAW = os.path.join(ROOT, ".classm")
 LOGS = os.path.join(ROOT, "reviews", Y, "classm")
+PROMPT_POLICY = "worked-values-request-bound-v2"
 
 
 def fixture_path(family=families.DEFAULT):
@@ -235,19 +236,26 @@ No prose before or after the YAML.
 
 def parse_value(raw, vtype):
     s = str(raw).strip().strip("$").replace(",", "").lower()
+    if s in ("", "blank", "skip", "skipped", "none", "n/a"):
+        return {"kind": "blank"}
     if vtype.startswith("Enum("):
         return {"kind": "enum", "value": s}
     if vtype == "Rate":
-        if s in ("", "blank", "-0-", "none", "n/a"):
+        if s == "-0-":
             return {"kind": "rate", "num": 0, "den": 1}
         f = Fraction(s.rstrip("%")) / (100 if s.endswith("%") else 1)
         return {"kind": "rate", "num": f.numerator, "den": f.denominator}
-    if s in ("", "blank", "-0-", "skip", "skipped", "none", "n/a"):
+    if s == "-0-":
         return {"kind": "money", "cents": 0} if vtype not in ("Bool", "Count") else ({"kind": "bool", "value": False} if vtype == "Bool" else {"kind": "count", "value": 0})
     if vtype == "Bool":
-        return {"kind": "bool", "value": s in ("yes", "true", "y")}
+        if s not in ("yes", "true", "y", "1", "no", "false", "n", "0"):
+            raise ValueError(f"invalid Bool answer: {raw!r}")
+        return {"kind": "bool", "value": s in ("yes", "true", "y", "1")}
     if vtype == "Count":
-        return {"kind": "count", "value": int(round(float(s)))}
+        n = float(s)
+        if not n.is_integer():
+            raise ValueError(f"noninteger Count answer: {raw!r}")
+        return {"kind": "count", "value": int(n)}
     neg = s.startswith("(") and s.endswith(")")
     s = s.strip("()").strip("$")
     cents = int(round(float(s) * 100))
@@ -267,10 +275,16 @@ def extract(text):
     blocks = re.findall(r"```(?:yaml)?\s*\n(.*?)```", text, re.S)
     m = blocks[-1] if blocks else None
     doc = yaml.safe_load(m if m is not None else text)
+    if not isinstance(doc, dict) or not isinstance(doc.get("lines"), list):
+        raise ValueError("response has no `lines`")
     out = {}
     for l in doc["lines"]:
+        if not isinstance(l, dict):
+            raise ValueError("worked line must be a mapping")
         # The prompt lists "line 6"; an answer may repeat the word.
         key = re.sub(r"^line\s+", "", str(l.get("printed", "")).strip(), flags=re.I)
+        if not key or key in out:
+            raise ValueError(f"missing or duplicate worked-line key: {key!r}")
         out[key] = {"value": l.get("value", ""), "work": str(l.get("work", "")).strip()}
     return out
 
@@ -288,14 +302,17 @@ def write_outputs(form_doc, model, jobs, runs, meta_all):
     family = families.family_of(model)
     path = rulings.log_path("classm", fid, family)
     fixture = fixture_path(family)
-    kept = rulings.kept("classm", fid, family)
-    counts = {"AGREE": 0, "DISAGREE": 0, "MISSING": 0}
+    counts = {"AGREE": 0, "DISAGREE": 0, "SKIPPED": 0, "MISSING": 0}
     out = [f"# Class M hand-work — {fid}", "",
            f"`{form_doc['title']}` worked by hand by an isolated model from its archived pages and the amounts flowing into it, for generated returns that together take every reachable branch (spec 6.1, class M; spec 6.5). Agreements are class M fixtures in `fixtures/{Y}/{families.fixture_name(family)}`; each disagreement carries a ruling.", "",
            "| field | value |", "| --- | --- |",
            f"| date | {datetime.date.today().isoformat()} |",
            f"| model requested | {model} |",
            f"| model reported | {', '.join(sorted({m for meta in meta_all.values() for m in meta.get('model_reported', [])})) or '-'} |",
+           f"| prompt policy | {PROMPT_POLICY} |",
+           f"| system sha256 | {hashlib.sha256(SYSTEM.encode()).hexdigest()} |",
+           f"| reasoning effort | {next(iter(meta_all.values())).get('reasoning_effort') or 'provider default'} |",
+           f"| output token budget | {next(iter(meta_all.values())).get('request_max_tokens') or 'transport default (65536 for DeepSeek)'} |",
            f"| subject sha256 | {subjects.current('classm', fid, Y)} |",
            f"| cases | {len(jobs)} |"]
     used = runs[jobs[0]["id"]]["used"]
@@ -303,6 +320,8 @@ def write_outputs(form_doc, model, jobs, runs, meta_all):
     for u in used:
         out.append(f"| {u['doc']} | {u['revision']} | {', '.join(map(str, u['pages'])) or '-'} | {u['how']} | {u['text_sha256']} | {', '.join(map(str, u.get('cols_pages', []))) or '-'} | {u.get('cols_sha256', '-')} |")
     out += ["", "## Lines", ""]
+    context_text = "\n".join(out + [f"### case {job['id']} — prompt sha256 {runs[job['id']]['prompt_sha']};" for job in jobs])
+    kept = rulings.kept("classm", fid, family, context=rulings.review_context("classm", context_text))
     fixture_cases = []
     for job in jobs:
         run = runs[job["id"]]
@@ -319,13 +338,17 @@ def write_outputs(form_doc, model, jobs, runs, meta_all):
                     model_v = parse_value(v["value"], l["type"])
                 except (ValueError, TypeError):
                     model_v = None
-                status = "AGREE" if model_v is not None and same(model_v, proj) else "DISAGREE"
+                status = ("SKIPPED" if model_v is not None and model_v["kind"] == "blank" else
+                          "AGREE" if model_v is not None and same(model_v, proj) else "DISAGREE")
             counts[status] += 1
             out.append(f"### {job['id']} — {handle(job, l)} — {l['label'][:80]}")
             out.append(f"Status: **{status}**")
             if status == "AGREE":
                 out += ["", f"Value: {dollars(proj)}", ""]
                 expect[l["id"]] = proj
+            elif status == "SKIPPED":
+                out += ["", "Model: blank", f"Work: {v.get('work', '')}", "",
+                        "No numeric assertion or class M credit: the model left this line blank.", ""]
             else:
                 pv, mv = dollars(proj), (dollars(model_v) if model_v else str(v["value"] if v else "no answer"))
                 out += ["", f"Project: {pv}", f"Model: {mv}"]
@@ -344,9 +367,18 @@ def write_outputs(form_doc, model, jobs, runs, meta_all):
     open(path, "w", encoding="utf-8").write("\n".join(out))
     # Merge this document's cases into the family's fixture file.
     fx = json.load(open(fixture)) if os.path.exists(fixture) else {"tax_year": YEAR, "cases": []}
-    fx["cases"] = [c for c in fx["cases"] if not c["id"].startswith(f"classm.{fid}.")] + fixture_cases
-    fx["cases"].sort(key=lambda c: c["id"])
-    json.dump(fx, open(fixture, "w"), indent=1)
+    merged, inserted = [], False
+    for case in fx["cases"]:
+        if case["id"].startswith(f"classm.{fid}."):
+            if not inserted:
+                merged.extend(fixture_cases)
+                inserted = True
+        else:
+            merged.append(case)
+    if not inserted:
+        merged.extend(fixture_cases)
+    fx["cases"] = merged
+    json.dump(fx, open(fixture, "w"), indent=2)
     open(fixture, "a").write("\n")
     return path, counts
 
@@ -355,6 +387,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--doc", required=True)
     ap.add_argument("--model", default="claude-opus-5-5")
+    ap.add_argument("--reasoning-effort", choices=("low", "high", "max"))
+    ap.add_argument("--max-output-tokens", type=int)
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--from-response", action="store_true")
     a = ap.parse_args()
@@ -365,10 +399,9 @@ def main():
     os.makedirs(os.path.dirname(JOBS), exist_ok=True)
     with open(os.path.join(os.path.dirname(JOBS), "lock"), "w") as lock:
         fcntl.flock(lock, fcntl.LOCK_EX)
-        if not a.from_response:
-            main_js = os.path.join(ROOT, "engine", "dist", "main.js")
-            subprocess.run(["node", main_js, "build", *YEAR_ARGS], check=True, stdout=subprocess.DEVNULL)
-            subprocess.run(["node", main_js, "classm-jobs", "--docs", a.doc, *YEAR_ARGS], check=True, stdout=subprocess.DEVNULL)
+        main_js = os.path.join(ROOT, "engine", "dist", "main.js")
+        subprocess.run(["node", main_js, "build", *YEAR_ARGS], check=True, stdout=subprocess.DEVNULL)
+        subprocess.run(["node", "--max-old-space-size=8192", main_js, "classm-jobs", "--docs", a.doc, "--include-fixtures", *YEAR_ARGS], check=True, stdout=subprocess.DEVNULL)
         jobs = [j for j in json.load(open(JOBS))["jobs"] if j["doc"] == a.doc]
     if not jobs:
         sys.exit(f"{a.doc}: no jobs in {JOBS}; run classm-jobs")
@@ -379,25 +412,20 @@ def main():
     for job in jobs:
         prompt = build_entry_prompt(form_doc, excerpt, job) if job.get("kind") else build_prompt(form_doc, excerpt, job)
         base = os.path.join(RAW, families.case_id(job["id"], family))
-        open(base + ".prompt.txt", "w", encoding="utf-8").write(prompt)
         sha = hashlib.sha256(prompt.encode()).hexdigest()
         print(f"{job['id']}: prompt {len(prompt):,} chars, {len(job['fill'])} lines to fill, {len(job['given']) + len(job['own_inputs'])} amounts given")
         if a.dry_run:
+            with open(base + ".preview.prompt.txt", "w", encoding="utf-8") as f:
+                f.write(prompt)
             continue
-        if a.from_response:
-            text = open(base + ".response.txt", encoding="utf-8").read()
-            meta = json.load(open(base + ".meta.json")) if os.path.exists(base + ".meta.json") else {}
-        else:
-            text, meta = call_model(prompt, a.model, system=SYSTEM)
-            open(base + ".response.txt", "w", encoding="utf-8").write(text)
-            json.dump(meta, open(base + ".meta.json", "w"))
+        text, meta = review_response(prompt, a.model, base, PROMPT_POLICY, a.from_response, SYSTEM, a.reasoning_effort, a.max_output_tokens)
         runs[job["id"]] = {"verdicts": extract(text), "raw": text, "prompt_sha": sha, "used": used}
         meta_all[job["id"]] = meta
     if a.dry_run:
         return
     path, counts = write_outputs(form_doc, a.model, jobs, runs, meta_all)
     cost = sum((m.get("cost_usd") or 0) for m in meta_all.values())
-    print(f"{a.doc}: agree {counts['AGREE']}, disagree {counts['DISAGREE']}, missing {counts['MISSING']}; cost {cost:.2f} -> {os.path.relpath(path, ROOT)}")
+    print(f"{a.doc}: agree {counts['AGREE']}, disagree {counts['DISAGREE']}, skipped {counts['SKIPPED']}, missing {counts['MISSING']}; cost {cost:.2f} -> {os.path.relpath(path, ROOT)}")
     sys.exit(0 if counts["DISAGREE"] + counts["MISSING"] == 0 else 3)
 
 

@@ -1,0 +1,42 @@
+{
+ "kind": "render",
+ "form": "ftc",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "credit",
+   "restated": "Choose — [helper \"Positive foreign taxes\" = true → helper \"Smaller of ftc.taxes, f1040.line16\"] [helper \"Positive foreign taxes\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "The smaller-of computation is correct, but the refusal is keyed only to needs1116, which omits the estate/trust exclusion, so an estate or trust could receive the credit instead of being sent to Form 1116.",
+   "ruling": "Ruling: scope; i1116 (2025) p.1 expressly excludes estates and trusts from the no-Form1116 election. The project prepares resident individual Form1040 returns (spec sections1-2; archived f1040 p.1 individual filing statuses), not Form1041 estate/trust returns; there is no estate/trust entity in the supported input domain. Thus the objection identifies a broader IRS taxpayer class outside this tool, not a missing individual-filer condition. The Form1116 conditions remain enforced for supported individuals.",
+   "context": "751fdc2a5fff55122f14b2970347d7f1b0afb7ab0c926006c40970dcfe952a4f"
+  },
+  {
+   "printed": "credit",
+   "restated": "Choose — [helper \"Positive foreign taxes\" = true → helper \"Smaller of ftc.taxes, f1040.line16\"] [helper \"Positive foreign taxes\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "The smaller-of rule is right, but the computation uses limited, which omits the Schedule 2 Part I line 1z addition and Form 4972 subtraction required for regular tax.",
+   "ruling": "Ruling: scope/representation on supported completed individual returns; i1116 (2025) pp.1–2 requires the smaller of foreign tax and regular tax, with p.25 Line20 defining regular tax as Form1040 line16 plus Schedule2 PartI line1z less Form4972 tax, with Form8978 adjustments. s2.other explicitly excludes advance-credit repayments and every other unsupported Schedule2 tax and is enforced at s2.line3/line21. scope.other_line16 excludes Forms4972/8978 and is enforced at f1040.line16. Thus the additional terms are zero on supported completed returns; Form1040 line16 is the regular-tax amount in this slice. Stand-alone excluded cases are not claimed equivalent. The reviewer correctly identifies the full IRS rule; its reduction here depends on those declared refusals, not model noise.",
+   "context": "6a6f244373af557eca19fb3173d32efb79e8754c8aa633b459c224f77b85c93f"
+  },
+  {
+   "printed": "limited",
+   "restated": "Enter the smaller of helper \"Total creditable foreign taxes after required reductions; generally Form 1099-INT box 6 and Form 1099-DIV box 7\" or f1040 line 16.",
+   "model": "IRS line 20 regular tax is Form 1040 line 16 plus Schedule 2 (Form 1040), Part I, line 1z, less any tax included on line 16 from Form 4972; this uses only f1040 line 16.",
+   "ruling": "Ruling: scope/representation on supported completed individual returns; i1116 (2025) pp.1–2 requires the smaller of foreign tax and regular tax, with p.25 Line20 defining regular tax as Form1040 line16 plus Schedule2 PartI line1z less Form4972 tax, with Form8978 adjustments. s2.other explicitly excludes advance-credit repayments and every other unsupported Schedule2 tax and is enforced at s2.line3/line21. scope.other_line16 excludes Forms4972/8978 and is enforced at f1040.line16. Thus the additional terms are zero on supported completed returns; Form1040 line16 is the regular-tax amount in this slice. Stand-alone excluded cases are not claimed equivalent. The reviewer correctly identifies the full IRS rule; its reduction here depends on those declared refusals, not model noise.",
+   "context": "6a6f244373af557eca19fb3173d32efb79e8754c8aa633b459c224f77b85c93f"
+  },
+  {
+   "printed": "needs1116",
+   "restated": "helper \"Positive foreign taxes\" = true and (helper \"Total creditable foreign taxes after required reductions; generally Form 1099-INT box 6 and Form 1099-DIV box 7\" > helper \"Year parameter ftc.limit\" or helper \"Was all foreign-source gross income passive category income under the small-tax election rules?\" = false or helper \"Were all foreign income and taxes reported on qualified payee statements?\" = false or helper \"Have creditability, holding-period, related-payment and required foreign-tax reduction rules been satisfied?\" = false or helper \"Elect the credit without Form 1116, with no carryover to or from this election year?\" = false)",
+   "model": "The IRS says 'This election isn’t available to estates or trusts,' but the gate has no entity condition, so an estate or trust with otherwise qualifying amounts would not be sent to Form 1116.",
+   "ruling": "Ruling: scope; i1116 (2025) p.1 expressly excludes estates and trusts from the no-Form1116 election. The project prepares resident individual Form1040 returns (spec sections1-2; archived f1040 p.1 individual filing statuses), not Form1041 estate/trust returns; there is no estate/trust entity in the supported input domain. Thus the objection identifies a broader IRS taxpayer class outside this tool, not a missing individual-filer condition. The Form1116 conditions remain enforced for supported individuals.",
+   "context": "751fdc2a5fff55122f14b2970347d7f1b0afb7ab0c926006c40970dcfe952a4f"
+  },
+  {
+   "printed": "taxes",
+   "restated": "Input — Total creditable foreign taxes after required reductions; generally Form 1099-INT box 6 and Form 1099-DIV box 7",
+   "model": "The IRS text requires total creditable foreign taxes after reductions and lists Form 1099-INT and Form 1099-DIV as qualified payee statements, but it does not specify box 6 or box 7.",
+   "ruling": "Ruling: representation; source-context limitation; archived f1099int (2025) PDF p.2 box6 and f1099div (2025) PDF p.2 box7 are labeled Foreign tax paid. The input still asks for total creditable taxes after required reductions; the box hints do not replace creditability or reduction tests. i1116 pp.1–2 identifies those forms as qualified payee statements but the prompt omits their box layouts; this adjudication supplies those archived sources. No model-error credit or new arithmetic assertion is claimed.",
+   "context": "6a6f244373af557eca19fb3173d32efb79e8754c8aa633b459c224f77b85c93f"
+  }
+ ]
+}

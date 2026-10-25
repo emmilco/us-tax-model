@@ -18,8 +18,8 @@ form:
           Form 1099-DIV box 7
       cite:
         doc: i1116
-        locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular
-          tax
+        locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20,
+          regular tax
     - id: ftc.all_passive
       printed: (helper)
       type: Bool
@@ -31,8 +31,8 @@ form:
           rules?
       cite:
         doc: i1116
-        locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular
-          tax
+        locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20,
+          regular tax
     - id: ftc.statements
       printed: (helper)
       type: Bool
@@ -42,8 +42,8 @@ form:
         source: Were all foreign income and taxes reported on qualified payee statements?
       cite:
         doc: i1116
-        locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular
-          tax
+        locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20,
+          regular tax
     - id: ftc.eligible
       printed: (helper)
       type: Bool
@@ -55,8 +55,8 @@ form:
           been satisfied?
       cite:
         doc: i1116
-        locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular
-          tax
+        locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20,
+          regular tax
     - id: ftc.elect
       printed: (helper)
       type: Bool
@@ -66,8 +66,8 @@ form:
         source: Elect the credit without Form 1116, with no carryover to or from this election year?
       cite:
         doc: i1116
-        locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular
-          tax
+        locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20,
+          regular tax
     - id: ftc.limit
       printed: (helper)
       type: NonNegDollars
@@ -77,8 +77,8 @@ form:
         ref: ftc.limit
       cite:
         doc: i1116
-        locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular
-          tax
+        locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20,
+          regular tax
     - id: ftc.zero
       printed: (helper)
       type: NonNegDollars
@@ -88,8 +88,8 @@ form:
         ref: sales.zero
       cite:
         doc: i1116
-        locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular
-          tax
+        locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20,
+          regular tax
     - id: ftc.has_tax
       printed: (helper)
       type: Bool
@@ -101,8 +101,8 @@ form:
           - const: 0
       cite:
         doc: i1116
-        locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular
-          tax
+        locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20,
+          regular tax
     - id: ftc.needs1116
       printed: (helper)
       type: Bool
@@ -138,8 +138,8 @@ form:
                   - const: false
       cite:
         doc: i1116
-        locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular
-          tax
+        locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20,
+          regular tax
     - id: ftc.limited
       printed: (helper)
       type: Dollars
@@ -151,8 +151,8 @@ form:
           - f1040.line16
       cite:
         doc: i1116
-        locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular
-          tax
+        locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20,
+          regular tax
     - id: ftc.credit
       printed: (helper)
       type: Dollars
@@ -175,8 +175,8 @@ form:
             then: ftc.zero
       cite:
         doc: i1116
-        locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular
-          tax
+        locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20,
+          regular tax
       refuses:
         - when: ftc.needs1116
           form: Form 1116
@@ -184,5 +184,5 @@ form:
             prepare it separately.
           cite:
             doc: i1116
-            locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular
-              tax
+            locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20,
+              regular tax

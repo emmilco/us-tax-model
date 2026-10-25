@@ -1,0 +1,35 @@
+{
+ "kind": "transcription",
+ "form": "f8959",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "1",
+   "project": "{\"collection\": \"person\", \"field\": \"person.medicare5\", \"op\": \"sum_over\", \"where\": null}",
+   "second": "{\"collection\": \"w2\", \"field\": \"w2.box5\", \"op\": \"sum_over\", \"where\": null}",
+   "ruling": "Ruling: model error (nested collection interface); f8959 (2025) p.1 line1 totals W-2 box5 across filers/employers. W-2 is explicitly nested under person in the shared catalog. A root sum_over(w2) in the second looks for an undeclared root $w2 roster instead of the confirmed per-person rosters; it does not express that total. On stage13.excess_ss_you, the project produces the required numeric sum and the second is unknown for missing $w2. Proof: .transcription/f8959-flat-w2-witness.json. The project nests the sum through person.medicare5. This is not a source disagreement about the tax rate.",
+   "context": "6474c6c747d5af80183bd8f682b27e6cec23e0753e7cffba70aeb391895d6124"
+  },
+  {
+   "printed": "15",
+   "project": "{\"line\": \"5\"}",
+   "second": "{\"param\": \"medicare.threshold\"}",
+   "ruling": "Ruling: representation; f8959 (2025) p.1 lines5,9,15 print identical filing-status thresholds ($250000 joint, $125000 separate, $200000 other). Project line5 is exactly parameter medicare.threshold; copying that printed line and repeating the same status-keyed parameter return the same amount. No threshold, filing-status choice or unsupported-source screen changes.",
+   "context": "6474c6c747d5af80183bd8f682b27e6cec23e0753e7cffba70aeb391895d6124"
+  },
+  {
+   "printed": "19",
+   "project": "{\"collection\": \"person\", \"field\": \"person.medicare6\", \"op\": \"sum_over\", \"where\": null}",
+   "second": "{\"collection\": \"w2\", \"field\": \"w2.box6\", \"op\": \"sum_over\", \"where\": null}",
+   "ruling": "Ruling: model error (nested collection interface); f8959 (2025) p.1 line19 totals W-2 box6 across filers/employers. W-2 is explicitly nested under person in the shared catalog. A root sum_over(w2) in the second looks for an undeclared root $w2 roster instead of the confirmed per-person rosters; it does not express that total. On stage13.excess_ss_you, the project produces the required numeric sum and the second is unknown for missing $w2. Proof: .transcription/f8959-flat-w2-witness.json. The project nests the sum through person.medicare6. This is not a source disagreement about the tax rate.",
+   "context": "6474c6c747d5af80183bd8f682b27e6cec23e0753e7cffba70aeb391895d6124"
+  },
+  {
+   "printed": "9",
+   "project": "{\"line\": \"5\"}",
+   "second": "{\"param\": \"medicare.threshold\"}",
+   "ruling": "Ruling: representation; f8959 (2025) p.1 lines5,9,15 print identical filing-status thresholds ($250000 joint, $125000 separate, $200000 other). Project line5 is exactly parameter medicare.threshold; copying that printed line and repeating the same status-keyed parameter return the same amount. No threshold, filing-status choice or unsupported-source screen changes.",
+   "context": "6474c6c747d5af80183bd8f682b27e6cec23e0753e7cffba70aeb391895d6124"
+  }
+ ]
+}

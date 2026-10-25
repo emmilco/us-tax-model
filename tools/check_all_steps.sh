@@ -7,7 +7,7 @@
 # its output to its own log, printed in the order below when the wave ends. No
 # two steps of a wave write the same file, and none reads what another of its
 # wave writes: wave 1 checks the sources and logs while it builds and renders,
-# wave 2 runs everything that reads the build, wave 3 the review packets. A
+# wave 2 runs the checks that read the build, wave 3 writes the evidence report and review packets. A
 # failing step fails the run after its wave. Each step's wall time, in seconds,
 # goes to .git/check-all-times (not tracked).
 set -euo pipefail
@@ -60,6 +60,8 @@ step check_extraction python3 tools/check_extraction.py "$@"
 step check_macrs_tables python3 tools/check_macrs_tables.py "$@"
 step check_auto_limits python3 tools/check_auto_limits.py "$@"
 step check_bug_inventory python3 tools/check_bug_inventory.py
+step review_tools python3 tools/transcription/test_review_tools.py
+step classm_skipped python3 tools/transcription/audit_skipped.py
 step compare_families python3 tools/transcription/compare_families.py "$@"
 step check_logs python3 tools/transcription/check_logs.py "$@"
 step check_table_logs python3 tools/transcription/check_table_logs.py "$@"
@@ -75,8 +77,9 @@ wave
 step conjecture "${node[@]}" conjecture "$@"
 step test_fixtures "${node[@]}" test-fixtures "$@"
 step test_integration "${node[@]}" test-integration "$@"
+step human_review python3 tools/human_review/test_review.py
+step classm_job_seeds "${node[0]}" tools/transcription/test_classm_jobs.mjs
 step coverage "${node[@]}" coverage "$@"
-step evidence "${node[@]}" evidence "$@"
 step properties "${node[@]}" properties "$@"
 step differential "${node[@]}" differential "$@"
 step engine_differential tools/engines/run.sh "$@"
@@ -84,6 +87,7 @@ step mutate "${node[@]}" mutate "$@"
 step compare lean_compare "$@"
 wave
 
+step evidence "${node[@]}" evidence "$@"
 step review_stage2 "${node[@]}" review-stage2 "$@"
 step review_stage3 "${node[@]}" review-stage3 "$@"
 step review_stage4 "${node[@]}" review-stage4 "$@"

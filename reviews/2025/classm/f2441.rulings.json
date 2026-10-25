@@ -76,6 +76,15 @@
   },
   {
    "case": "classm.f2441.2",
+   "printed": "30",
+   "project": "$18,500.00",
+   "model": "$19,500.00",
+   "ruling": "Ruling: ambiguity; retain the explicit owner choice amb.2025.dc_line30 (Stage 15 decision 6/T-048). The project inputs are gross qualified care amounts before excluded benefits. Here their total is $19500, line28 is $1000, and the chosen aggregate subtraction gives line30 $18500. The model sums the column amounts as already net, matching the alternate literal reading of f2441 (2025) p.2 line30 / i2441 p.3 Column(d). This is the recorded allocation ambiguity, not a new model arithmetic error. Drop the disputed model number from the fixture: neither disagreement supplies an independent M assertion for the retained project amount.",
+   "drop": true,
+   "context": "610417a38395be568e524170cdacdaf29ea54f1861709474154eb88d878f8aef"
+  },
+  {
+   "case": "classm.f2441.2",
    "printed": "4",
    "project": "$37,824.00",
    "model": "$0.00",
@@ -249,6 +258,15 @@
    "model": "$4,570.00",
    "ruling": "Ruling: model reading error; project retained; model value dropped from the fixture. The filer answered No to paying for care (f2441.care) and each of the six dependents was given as not a qualifying person for Form 2441, yet the model added three dependents' column (d) amounts ($1,480, $1,850 and $1,240), treating them as qualifying under the filer's answer about a qualifying person who is not a dependent. Line 2 lists only qualifying persons (i2441 p. 3, Line 2, \"Don't list a person on line 2 unless they are listed as an eligible person under Qualifying Person(s), earlier\"), so column (d) is empty and line 3 is zero; that answer refuses the form (f2441.nondependent_gate) only when care was paid, which the filer denied. The model's own line 16 is zero, against its line 3, and line 6 and the credit are zero either way (line 4 is zero). No change to the data.",
    "drop": true
+  },
+  {
+   "case": "classm.f2441.5",
+   "printed": "30",
+   "project": "$4,000.00",
+   "model": "$6,000.00",
+   "ruling": "Ruling: ambiguity; retain the explicit owner choice amb.2025.dc_line30 (Stage 15 decision 6/T-048). The project inputs are gross qualified care amounts before excluded benefits. Here their total is $6000, line28 is $2000, and the chosen aggregate subtraction gives line30 $4000. The model sums the column amounts as already net, matching the alternate literal reading of f2441 (2025) p.2 line30 / i2441 p.3 Column(d). This is the recorded allocation ambiguity, not a new model arithmetic error. Drop the disputed model number from the fixture: neither disagreement supplies an independent M assertion for the retained project amount.",
+   "drop": true,
+   "context": "610417a38395be568e524170cdacdaf29ea54f1861709474154eb88d878f8aef"
   },
   {
    "case": "classm.f2441.6",

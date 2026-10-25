@@ -2,11 +2,15 @@
 
 Architecture, components and build order for the proof of concept defined in `spec.md`.
 
+Validation follows the owner's `docs/2026-10-24_validation_policy.md` amendment: human readings
+are optional, independent source/calculation checks remain completion gates, and secondary online
+interpretation is separately recorded soft evidence. It is not a runtime input or blind-review source.
+
 ## 1. Shape
 
 ```
 sources (archived IRS text, hashed)
-        │  read by a human and, as one of two transcribers, a language model
+        │  independently transcribed by models; optionally reviewed by a human
         ▼
 form data (YAML: lines, parameters, tables, gates, ambiguity register)
         │  build: schema validation + static checks → canonical JSON

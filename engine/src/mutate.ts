@@ -208,7 +208,6 @@ function mutations(data: CanonicalData): Mutation[] {
 // is reported raw and adjusted (equivalents excluded from the denominator).
 const EQUIVALENT: Record<string, string> = {
   "boundary.eic.eic.self_employed": "With no Schedule C (the only case the boundary changes, a count of zero), Worksheet B's line 4b is the Step 5 earned income plus zero, and line 6 is that amount floored at zero; the Step 5 earned income is line 1z of Form 1040 (Step 5 lines 2 and 4 are zero in this tool) and is never negative, so eic.line1, eic.earned_for_limit and the Schedule 8812 chart amount take the same value on either route.",
-  "boundary.person.person.files_se": "The boundary changes only the case where Schedule SE line 4c is zero; then lines 6, 12 and 13 are zero, so Part 1 of Worksheet B (person.sc_total less person.se_line13) equals Part 2 (person.sc_total).",
   "boundary.sc.sc.ho_over": "At exactly 300 square feet both branches give the same amount: $5 times the square feet used and $5 times 300.",
   "boundary.se.positive": "The boundary changes only the case where line 3 is zero, where 92.35% of line 3 and line 3 itself are both zero.",
   "operand.eic.eic.wsb_4b.earned_income": "eic.earned_income is Step 5 line 3 plus line 4, and line 4 (nontaxable combat pay) is zero in this tool (eic.zero, refused otherwise), so the two operands are equal at every input.",
@@ -217,28 +216,14 @@ const EQUIVALENT: Record<string, string> = {
   "operand.person.person.simple_catchup.simple_regular": "person.simple_regular is the smaller of the deferral and the $16,500 limit, so the deferral less it, floored at zero, equals the deferral less $16,500 floored at zero at every input.",
   "operand.s179.s179.line13.line12": "Line 12 is the smaller of lines 9 + 10 and line 11, so (lines 9 + 10) less line 12, floored at zero, equals (lines 9 + 10) less line 11, floored at zero, at every input.",
   "operand.s8812.s8812.eiw_3.zero": "Both operands are zero: Earned Income Worksheet line 1b (nontaxable combat pay) copies the zero line in this tool, refused otherwise.",
-  "operand.sc.sc.ho_both.zero": "sc.ho_both is reached only when sc.ho_both_limits holds, and then it is a refusal whatever its expression: its value is never read.",
-  "operand.sc.sc.ho_limited.ho_line4": "sc.ho_limited is reached only with no section 179 election and line 4 more than line 29 before section 179 (sc.ho_unlimited false); then the floored line 29 is below line 4, which is at most $1,500 (sc.ho_line4_cap), so the smaller of the floored line 29 and either amount is the floored line 29.",
   "operand.scveh.scveh.d5.l5": "For a 2019 vehicle (the only one whose year-5 deduction is read) the year-4 and year-5 limits are both $5,760 (tables/2025/auto_limit.yaml), and every 5-year column of the GDS tables has a year-4 rate at least its year-5 rate (hy, mq1, mq2 equal; mq3 12.24 and 11.30; mq4 13.68 and 10.94), so min(min(l4, t4), t5) = min(l5, t5).",
   "operand.scveh.scveh.d6.l6": "For a 2019 vehicle the year-5 and year-6 limits are both $5,760, and every 5-year column has a year-5 rate at least its year-6 rate, so min(min(l5, t5), t6) = min(l6, t6).",
   "operand.scveh.scveh.l5.k5": "The 2019 rows for years 4 and 5 of tables/2025/auto_limit.yaml hold the same limit, $5,760, and only a 2019 vehicle's year-5 limit is read.",
   "operand.scveh.scveh.l6.k6": "The 2019 rows for years 5 and 6 of tables/2025/auto_limit.yaml hold the same limit, $5,760, and only a 2019 vehicle's year-6 limit is read.",
   "operand.scveh.scveh.line17.line16": "scveh.bonus_allowed is the smaller of line 16 and line 11, so line 11 less it, floored at zero, equals line 11 less line 16, floored at zero, at every input.",
-  "operand.f8889.f8889.family_year.family_under55": "f8889.family_year is read only under the last-month rule with family coverage on December 1, where the filer is married with family coverage, so line 3 is the family amount without the additional contribution amount (f8889.age55_line3 is false), line 4 is zero (Archer MSAs are refused) and line 5 equals f8889.family_under55.",
-  "operand.f8889.f8889.self_year.self_amount": "f8889.self_year is read only under the last-month rule, by f8889.self_all and, with family coverage on December 1, by f8889.self_dec_year; the only reader of both is Step 4 (f8889.step4_total = self_all - self_in_family), where the two copies cancel, and with self-only coverage on December 1 the spouse rule does not apply, so Step 4 is not read.",
   "operand.qdcg.qdcg.line8.line7":
     "Provably equivalent: line 8 is min(line 5, line 7) and line 7 is min(line 1, line 6) with line 5 ≤ line 1; " +
     "min(line 5, min(line 1, line 6)) = min(line 5, line 6), so substituting line 6 for line 7 cannot change any value.",
-  "operand.qdcg.qdcg.line12.line11":
-    "Provably equivalent: line 11 is 'Enter the amount from line 9' (a copy), so the substituted operand is the same value at every input.",
-  "operand.sd.sd.line5.zero": "Both source lines are zero after identical unsupported-source/carryover gates. The destination checks the same gates before either source is evaluated.",
-  "operand.sd.sd.line6.zero": "Both source lines are zero after identical unsupported-source/carryover gates. The destination checks the same gates before either source is evaluated.",
-  "operand.sd.sd.line11.zero": "Both source lines are zero after identical unsupported-source/carryover gates. The destination checks the same gates before either source is evaluated.",
-  "operand.sd.sd.line12.zero": "Both source lines are zero after identical unsupported-source/carryover gates. The destination checks the same gates before either source is evaluated.",
-  "operand.sd.sd.line14.zero": "Both source lines are zero after identical unsupported-source/carryover gates. The destination checks the same gates before either source is evaluated.",
-  "operand.sd.sd.line7.line4": "Both source lines are identically zero with identical refusal gates; substitution preserves known, unknown and refused values.",
-  "operand.sd.sd.line7.line5": "Both source lines are identically zero with identical refusal gates; substitution preserves known, unknown and refused values.",
-  "operand.sd.sd.line7.line6": "Both source lines are identically zero with identical refusal gates; substitution preserves known, unknown and refused values.",
 };
 
 // The copy-chain normal form of a line: copies are followed to a parameter or a computed
@@ -345,19 +330,6 @@ const EQUIVALENT_IF: Record<string, { reason: string; holds: (data: CanonicalDat
   "param.eic.ws_threshold0.other.$1": thresholdAtPlateau("eic.ws_threshold0.other", ["eic_0"], 0),
   "param.eic.ws_threshold0.joint.$1": thresholdAtPlateau("eic.ws_threshold0.joint", ["eic_0"], 1),
   "param.eic.ws_threshold1.joint.$1": thresholdAtPlateau("eic.ws_threshold1.joint", ["eic_1", "eic_2", "eic_3"], 1),
-  "operand.s8812.s8812.line13.clw_a5": {
-    reason: "Credit Limit Worksheet A line 5 is line 3 less line 4, and line 4 is zero behind the same gate that line 2, an operand of line 3, carries. When the gate fires, line 3 already refuses and the subtraction returns its first operand's refusal; when it does not, line 4 is zero. Line 13 therefore reads the same value from line 5 as from line 3 on every input.",
-    holds: (d) => {
-      const a5 = findLine(d, "s8812.clw_a5"); const a3 = findLine(d, "s8812.clw_a3");
-      if (!a5 || !a3 || a5.expr.op !== "subtract" || a5.expr.from !== "s8812.clw_a3" || a5.expr.take !== "s8812.clw_a4" || a3.expr.op !== "subtract") return false;
-      const n4 = normalizeChain(d, "s8812.clw_a4");
-      const whens = gateWhens(n4);
-      const zero = stripGuards(n4) as { parameter?: unknown };
-      if (whens.length === 0 || zero.parameter !== 0) return false;
-      const carriers = [a3, findLine(d, a3.expr.from), typeof a3.expr.take === "string" ? findLine(d, a3.expr.take) : undefined];
-      return whens.every((w) => carriers.some((l) => (l?.refuses ?? []).some((r) => r.when === w)));
-    },
-  },
   "boundary.eic.eic.wsb_4b_positive": {
     reason: "The inclusive test differs only at Worksheet B line 4b = 0. wsb_4b_positive is read only by the line 5 stop, an all-test that requires self-employment before it and, after it, Step 5 question 3 to be No; for a self-employed filer question 3 compares line 4b with the EIC limit, so at line 4b = 0 it asks whether 0 < limit, which holds for every limit (all are positive). The stop is therefore false on both routes, and question 3 reads only lines the stop has already evaluated without refusal, so no refusal is newly reached.",
     holds: (d) => {
@@ -376,7 +348,6 @@ const EQUIVALENT_IF: Record<string, { reason: string; holds: (data: CanonicalDat
     },
   },
   "filter.person.person.hsa_step1": hsaSplitSum("person.hsa_step1", "household.hsa_step1_sum"),
-  "filter.person.person.hsa_share": hsaSplitSum("person.hsa_share", "household.hsa_share_sum"),
   "refusal.ssb.ssb.line6.0": firstReadCarries("ssb.line6", 0, ["ssb.line5", "ssb.line3", "f1040.line8"], "ssb.line7"),
   "boundary.s1a.s1a.line10_over": s1aStepSkip("s1a.line10_over", "s1a.line8", "s1a.line9", "s1a.line10_pos", "s1a.line12", "s1a.line13_figured", "s1a.line7", "s1a.line13_amount"),
   "boundary.s1a.s1a.line18_over": s1aStepSkip("s1a.line18_over", "s1a.line16", "s1a.line17", "s1a.line18_pos", "s1a.line20", "s1a.line21_figured", "s1a.line15", "s1a.line21_amount"),
@@ -398,7 +369,6 @@ const EQUIVALENT_IF: Record<string, { reason: string; holds: (data: CanonicalDat
   "operand.s1a.s1a.line33_pos.line32": s1aPartGate("s1a.line32", "s1a.part5"),
   "operand.s1a.s1a.line35_figured.line34": s1aPartGate("s1a.line34", "s1a.part5"),
   "operand.s1a.s1a.line24_calc.line23": s1aPartGate("s1a.line23", "s1a.part4", "s1a.line23_total"),
-  "operand.s1a.s1a.line4c_one.line4a": s1aOneEmployer("line 4a, read by the one-employer step, is itself the column (b) total there"),
   "operand.s1a.s1a.line4c_one.line4b": s1aOneEmployer("line 4b is zero (Form 4137 is refused), so the larger of line 4a and the column (b) total is the column (b) total, which line 4a is"),
   "boundary.sli.sli.over": prorateSkip("The test 'line 4 more than line 5' made inclusive adds only the case line 4 = line 5"),
   "operand.sli.sli.line9.line8": prorateSkip("Reading the prorated line directly instead of line 8 differs only when line 4 is not more than line 5"),

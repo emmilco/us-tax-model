@@ -99,7 +99,7 @@ Remaining, in the order of the estimate when this section was last revised (the 
 7. Married filing separately (97%, the target).
 8. Form 1116 and the remaining deferrals of 2.2, and the smaller situations the report lists.
 
-The integrity plan (`docs/2026-10-22_integrity_plan.md`) precedes the remaining stages. Its Phases 0 and 1 complete first. The tax-year-2026 rehearsal on the posted draft documents then decides whether work continues on the 2025 sources. Thereafter each stage closes under the plan's standing regime: the transcription and render reviews under two model families, the owner's reading of the stage's highest-stakes line, one second-family whole-return working, the engine mappings extended wherever an engine models the new feature, and the stage handoff reporting outside-family coverage before fixture counts. The plan's stop rule can pause coverage.
+The integrity plan (`docs/2026-10-22_integrity_plan.md`), as amended by the owner on 2026-10-24 (`docs/2026-10-24_validation_policy.md`), precedes the remaining stages. Its Phases 0 and 1 complete first. The tax-year-2026 rehearsal on the posted draft documents then decides whether work continues on the 2025 sources. Thereafter each stage closes under the plan's standing regime: transcription and render reviews under two model families, second-family whole-return working, engine mappings extended wherever an engine models the new feature, and a handoff reporting outside-family coverage and its gaps before fixture counts. Human source readings and ruling samples are optional. Confirmed defects require correction, a regression and expanded independent checks of the affected regime before coverage resumes.
 
 State returns are outside the federal goal. New York is the first state intended once federal coverage is met; it is a separate decision with its own sources, and nothing in the federal encoding assumes it.
 
@@ -117,7 +117,7 @@ These are the acceptance criteria for the formalization. Each is checkable by a 
 8. **Year and revision pinning.** Every definition, parameter, example and source snapshot is pinned to a tax year and a document revision.
 9. **Third-party reproducibility.** One documented command rebuilds everything and runs every check with no network access and no trust in the authors.
 10. **No floating point.** Money is integer cents; rates are integer pairs; rounding happens only where an explicit, cited rounding step says so.
-11. **Independent construction.** No human line-by-line reading of the encoding against the source is claimed. Transcription, expected values and whole-return results are each produced at least twice by constructions that share no artifact (section 6.5), and every disagreement is logged with its resolution. The published trust statement is: *no human has read this encoding against the IRS text; it is verified by agreement among independent constructions, and every disagreement is recorded.* Until the constructions include a reader outside the Claude model family, the statement means agreement within one family; the per-line evidence report states, line by line, which lines have an assertion from outside it.
+11. **Independent construction.** No comprehensive human line-by-line reading is claimed. The verification regime requires independent transcriptions, expected values and whole-return results, with every disagreement logged and resolved (section 6.5). Completion and gaps are reported rather than inferred from that requirement. The published trust statement is: *human source-reading coverage is limited to the per-line evidence records; independent constructions and their recorded disagreements provide the broader verification.* The per-line evidence report identifies qualifying outside-family assertions; model source readings and soft commentary remain separately reported.
 
 ## 4. Data model for forms
 
@@ -290,6 +290,32 @@ Research found official examples for single rules only: none for the Qualified D
 
 Class B is retained for human hand-work when it is offered; the project does not depend on it. Class M is its mechanical substitute. The classes differ in independence, and the evidence report keeps them distinct. Agreement between the TypeScript and Lean evaluators is not class C: both read the same data files, so their agreement shows the evaluators agree, not that the data is right. The engine differential of section 6.5 is class C for a line where an engine computes that line from its own rules and the line is mapped to it.
 
+The evidence report also records **H, human source reading**. H is not an expected-value class:
+it records a named person comparing the encoded rule with the archived IRS text. A guided question
+credits only its own computation; referenced amounts are checked separately. Other packets may include
+helpers actually expanded in the reading. A current MATCH verdict and the person's reason
+are required. A per-line receipt covers the reading, folded helpers, dependency forms, parameters,
+sources and reading tools; changed content requires a fresh reading. The exact log contents must
+be committed with the named reader as author before they earn H credit. H never fills the B
+column and does not satisfy the worked-value coverage requirement of section 6.2. Referenced
+printed lines that were not expanded earn no credit from that packet. An unresolved MISMATCH
+or UNCLEAR is saved for investigation and earns no credit. Optional incomplete, stale or negative
+readings do not block unrelated checks or evidence reporting. Malformed records, duplicate entries,
+invalid reader identity or incorrect committed authorship still fail record validation. Engineering
+responses are recorded separately and never replace the person's verdict or supply H credit.
+
+**Secondary interpretation (soft evidence).** Professional commentary, tax-software explanations,
+practitioner discussions and other online advice may support or challenge a specific reading. Record
+the claim, tax year, applicable facts, publisher/author, URL, retrieval date, short captured passage,
+primary references, dependency on other sources and contrary material. Prefer sources with explicit
+reasoning and traceable citations; copied or syndicated accounts are not independent votes. A
+secondary source may inform an explicitly recorded ambiguity choice when the official text is silent,
+but cannot silently override the archived forms/instructions. A conflict with higher authority is
+flagged for research rather than silently changing this forms-and-instructions formalization.
+These records live under `research/secondary/`; they earn no A/B/C/M/H/E assertion, no noise-floor
+exception and no scoreboard credit. Keep them out of the blind source-only transcription and M
+prompts; any commentary-informed review must be labeled separately. Runtime remains model-free.
+
 ### 6.2 Required coverage
 
 - Every official example found for a form in scope is a class A fixture.
@@ -346,7 +372,7 @@ Every language-model invocation in this section runs under the AI Security and I
 
 The shared blind spot of every model-driven check is that it reads the same English. The engine differential is the only check against a shared misreading, which is why it is required for every tax year supported.
 
-The checks also share a reader. As of 2026-10-22 every construction in this section (the authoring, the second transcription, the render comparison, class M hand-work and the blind fixture predictions) was produced by one model family, Claude. Agreement among readers of one family is weaker evidence than agreement among readers that differ, because they can share a misreading as well as a text. The engine differential is the only check outside that family. The integrity plan (`docs/2026-10-22_integrity_plan.md`) adds a second model family to the reviews and the hand-work, two line-level engines, and a human reading of the highest-stakes lines, and names the scoreboard: the share of computed lines with at least one assertion from outside the Claude family, with its sub-counts by source.
+The checks also shared a reader. As of 2026-10-22 every model construction in this section was produced by Claude. Flash now supplies second-family readings and hand-work, with qualification and remaining gaps recorded per review. Agreement between model families remains weaker than independent source and calculation evidence together. The integrity plan adds two line-level engines and retains optional human readings. Its scoreboard reports the share of computed lines with at least one qualifying outside-family assertion, with sub-counts by source. Secondary commentary is corroboration only and never enters that count.
 
 ### 6.6 Bug inventory
 

@@ -6,9 +6,15 @@ IRS pages the project's own citations name, plus the data model, and the two
 transcriptions are compared line by line. Agreement is evidence that the
 operand structure follows the text; a disagreement is adjudicated by the
 agent reading the source page, with the quote and page recorded in the
-ruling. No human reading is claimed (spec 3, requirement 11). Nothing here writes to
+ruling. These model reviews supply no human-reading credit (spec 3, requirement 11). Nothing here writes to
 `forms/`; a transcription defect becomes an ordinary fix with a bug inventory
 entry.
+
+The owner's 2026-10-24 amendment is in `docs/2026-10-24_validation_policy.md`. Human packets and
+ruling samples are optional. Engineering adjudicates routine source disagreements; only substantive
+scope choices or ambiguities requiring owner judgment need escalation. Online interpretation can
+corroborate a recorded reading under `research/secondary/`, with provenance and contrary material;
+it does not enter blind source-only prompts, qualify a noisy run or add scoreboard assertions.
 
 ## Isolation
 
@@ -54,6 +60,11 @@ python3 tools/transcription/transport_check.py [--model deepseek-flash]   # one 
 
 ## Model families
 
+The owner's selected second-family model is `deepseek-flash` (correction 2026-10-23).
+Use that id explicitly for new runs; earlier Pro artifacts retain their actual model labels.
+The `models` pin in `families.json` is enforced before network calls and when qualifying review
+logs, so another member of the same family cannot silently substitute for Flash.
+
 A family is the first token of the model name (`families.py`: `claude-opus-5-5`
 is `claude`, `deepseek-v4-pro` is `deepseek`). Each family's review of a form
 is its own log beside the others, never a replacement: the Claude logs keep
@@ -69,7 +80,7 @@ fixtures/<year>/classm.<family>.json              that family's class M fixtures
 `rulings.py`, `rule.py` (`--family deepseek`) and `check_logs.py` address a log
 by (kind, form, family); the Claude family is implied when none is named. The
 raw prompt and response under `.transcription/` and `.classm/` take the same
-stem, so `--from-response --model deepseek-v4-pro` re-reads that family's
+stem, so `--from-response --model deepseek-flash` re-reads that family's
 saved response. A second family's class M fixture cases carry the family as a
 suffix on the case id (`classm.qdcg.1.deepseek`) so no two families' cases
 share an id; their `evidence_note` records the model, which is how the
@@ -78,16 +89,19 @@ evidence report counts second-family M assertions.
 `families.json` lists the families `check_logs.py` expects:
 
 ```json
-{"required": ["claude"], "optional": ["deepseek"]}
+{"required": ["claude"], "optional": ["deepseek"], "models": {"deepseek": "deepseek-flash"}}
 ```
 
 Every required family must have a current log with no open ruling for every
 form (`check-all` fails otherwise). An optional family's logs may be missing;
 those present are held to the same snapshot and subject checks, and their
 open rulings are counted and printed without failing the run, so a second
-family's disagreements can stand open while the owner rules them. A log whose
+family's disagreements can stand open while they undergo source adjudication. A log whose
 family is in neither list fails. Counts are printed per kind and family. The
-owner moves a family to `required` once every form has its log.
+family can move to `required` only once every form has a qualifying log; an owner reading sample
+is no longer a prerequisite under the amended plan.
+Optional `by_kind` entries override the two lists for one review kind. This lets
+transcription/render become required while class M is still being qualified.
 
 ### Agreement floor and independence yield
 
@@ -99,20 +113,26 @@ For every form with a Claude log and a second family's log of the same kind,
 the lines judged by both are compared and three things reported, per form and
 overall, in `reports/<year>/second_family.md`:
 
-- the **agreement floor**: the share of lines on which the two families'
-  verdicts agree and neither disputes the project (transcription and class M:
-  both AGREE; render: both MATCH), marked pass or below against the integrity
-  plan's provisional 90% floor (item 1.3). A run below the floor does not count
-  as a second-family assertion; the plan's answer is a stronger model, not a
-  lower floor. A denominator of a few lines is marked as such.
+- the **noise rate** (owner's decision 12): second-family disputes explicitly
+  ruled `model error`, divided by that family's judged lines, at most 10% per
+  form-kind run. Findings, representation, scope and ambiguity rulings are not
+  noise. Integer arithmetic makes 1/10 pass and 1/9 fail. Above the limit,
+  choose a stronger model and do not count the run. Raw agreement remains a
+  diagnostic; a correct objection does not disqualify a reader.
+- **eligibility**: subjects and archived source hashes must be current, the
+  requested/reported models must belong to the named family, all expected
+  lines must be judged, verdicts must be valid and unique, and every dispute
+  must have a classified ruling. Transcription also requires the current
+  independence policy. Open/unclassified, missing, stale or empty reviews
+  earn no assertion. Optional pending reviews remain visible.
 - the **independence yield**: lines the second family disputed where the
   Claude log agreed or matched, each with the second family's reason. Zero is
   a visible result.
 - the lines **both** families disputed, and the lines only the Claude run
   disputed.
 
-Lines one log judged and the other did not (MISSING, or absent from one log)
-are left out of the floor and counted; a log whose subject hash is no longer
+MISSING lines are excluded from the noise denominator and block eligibility;
+they cannot improve a run's qualification. A log whose subject hash is no longer
 current is marked stale. `check_logs.py` prints the report's summary line when
 the report exists. `rerun_all.py --model <non-Claude>` runs every form that has
 a log of any family through that family, leaving the Claude logs as they are.
@@ -123,6 +143,7 @@ a log of any family through that family, leaving the Claude logs as they are.
 python3 tools/transcription/transcribe.py --form qdcg            # one model call
 python3 tools/transcription/transcribe.py --form qdcg --dry-run  # excerpt and prompt only
 python3 tools/transcription/transcribe.py --form qdcg --from-response   # re-compare the saved response
+python3 tools/transcription/rerun_all.py --kinds transcription,render --model deepseek-flash --resume
 ```
 
 This is a deliberate network step like the source fetcher; it is not run by
@@ -141,7 +162,20 @@ deliberately. `classm.py` builds the data and rebuilds its document's jobs
 before every run, so it never works from jobs of older data.
 
 Raw prompts and responses are kept under the git-ignored `.transcription/`;
-the committed artifact is the log.
+the committed artifact is the log. For transcription/render/class M, cached responses
+are bound to the exact prompt, system prompt, model, policy and explicit
+reasoning effort. A changed request requires a fresh call; it cannot relabel
+an old response. `--dry-run` writes a separate `.preview.prompt.txt`.
+`rerun_all.py --resume` reuses only matching receipts and saves progress after
+each completed job. `--reasoning-effort low|high|max` is supported for DeepSeek
+reviews; it is recorded and checked on reuse. Class M rebuilds current jobs
+even when reusing a response, so changed supplied amounts require fresh work.
+`--max-output-tokens N` raises the DeepSeek allowance for reasoning plus the
+final answer (default 65536; use 131072 for the largest documents); the request
+timeout grows proportionally. The effective allowance is bound in receipts and
+recorded in logs. A response ending because of length cannot be accepted, even
+if its partial content happens to parse. Original bound receipts predating this
+option retain their fixed 65536 allowance and cannot be relabeled as larger calls.
 
 ## Excerpt selection
 
@@ -161,8 +195,13 @@ A ruling is written into the log under the disagreement it answers, with the
 source quote and page it rests on, and one of three outcomes: project
 retained (representation or scope difference), second transcription right
 (a data fix follows, with a bug inventory entry), or genuine ambiguity (an
-ambiguity register entry). Re-comparing a saved response keeps every ruling
-whose disagreement is unchanged.
+ambiguity register entry). Re-comparing a saved response keeps a ruling only
+when both the disagreement and its recorded review context are unchanged.
+The context binds the reviewed subject, prompt, system, source excerpts and
+request settings. A question-wording change can therefore reopen a ruling even
+when its expression trees are identical (BUG-0121). Class M includes every case's
+prompt hash. Historical sidecars without a context remain readable but are
+never automatically reused; migration does not certify an old rationale in a new context.
 
 ## What is compared
 
@@ -171,10 +210,15 @@ that other forms read (for example `qbi.deduction`, `ftc.credit`, the
 per-person W-2 totals) and the result lines of the shared definitions
 (`tax_on_amount.tax`, `tcw.tax`) are listed in the prompt by id and compared
 by id after full expansion, since no printed line exposes their logic. The
-prompt also lists the collections with their entry fields, the enumerations
-with their permitted values, the year parameters, and every other form's
-lines including helpers, so the second transcriber can reference what exists
-instead of inventing it.
+prompt also lists the collections with their entry fields, enumerations,
+year parameters and every other form's ids, printed markers and types.
+Computed labels and expressions are omitted from every catalog, including
+exported helpers and collection fields (`source-only-computation-v2`). Input
+questions and refusal-screen interfaces remain explicit shared assumptions.
+The input interface is closed: a reviewer must encode the supported slice
+using those inputs and document excluded cases. Shared IR conventions explain
+parameter selection and result propagation after an IRS STOP without supplying
+the project's chosen operands or formula.
 
 ## Comparison
 
@@ -277,4 +321,18 @@ inventory entry; a model arithmetic error is dropped from the fixture with
 `{"ruling": "...", "drop": true}` and stays in the log. Documents that are
 collections (`person`, `w2`, `sales`, `gift`, `interest`) or definitions
 (`tcw`, `tax_on_amount`) have no class M cases yet.
+
+Worked-value runs seed the generated corpus with non-M regression facts for the
+requested document (`classm-jobs --include-fixtures`). The reviewer receives
+the facts and incoming amounts, never the fixture's expected values. A declared
+filing flag must be true, and positive examples of supplied money amounts are
+included when available. This prevents an unlucky random sample from silently
+losing an active regime after a validation fix. The coverage summary describes
+the sampled, buildable cases; it does not prove other branches unreachable.
+
+Blank/skip replies are recorded as SKIPPED and earn no numeric fixture assertion,
+including when the evaluator happens to produce zero. Explicit printed zero
+remains an assertion. `audit_skipped.py` checks old logs against their embedded
+raw replies; `--apply` removes only skipped expectations and archives originals
+with hashes. The audit is an offline check-all step (BUG-0123).
 

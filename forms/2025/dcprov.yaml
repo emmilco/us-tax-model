@@ -25,13 +25,14 @@ form:
         op: input
         source: 'What do you enter in column (c), the provider''s identifying number? tin (you have the provider''s SSN, ITIN
           or EIN and enter it), tax_exempt (a tax-exempt organization: enter "Tax-Exempt"), lafcp (you live abroad and
-          the foreign provider has no U.S. number: enter "LAFCP"), see_statement (the provider did not give you the
+          the foreign provider has no U.S. taxpayer identification number and is not required to get one: enter
+          "LAFCP"), see_statement (the provider did not give you the
           information: enter "See Attached Statement" and attach a statement saying so), or employer (your employer
           furnished the care under its dependent care plan: enter "See W-2" in column (b), leave column (c) blank and
           enter -0- in column (e))'
       cite:
         doc: i2441
-        locator: 'p. 3, Column (c), "If the care provider is an individual, enter their SSN or individual taxpayer identification number (ITIN). Otherwise, enter the provider''s employer identification number (EIN)"; p. 3, Due Diligence, "Enter “See Attached Statement” in the columns for which you don''t have the information. Then, attach a statement to your return explaining that the provider didn''t give you the information you requested"; p. 3, Columns (a) and (b), "enter “See W-2” in column (b), leave column (c) blank, check the “No” box in column (d), and enter -0- in column (e)"'
+        locator: 'p. 3, Column (c), "If the care provider is an individual, enter their SSN or individual taxpayer identification number (ITIN). Otherwise, enter the provider''s employer identification number (EIN)"; p. 3, Due Diligence, "Enter “See Attached Statement” in the columns for which you don''t have the information. Then, attach a statement to your return explaining that the provider didn''t give you the information you requested"; p. 3, Columns (a) and (b), "enter “See W-2” in column (b), leave column (c) blank, check the “No” box in column (d), and enter -0- in column (e)"; p. 3, U.S. citizens and resident aliens living abroad, "may not have, and may not be required to get, a U.S. taxpayer identification number"'
     - id: dcprov.household
       printed: 1(d)
       type: Bool

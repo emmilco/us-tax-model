@@ -1,0 +1,31 @@
+{
+ "kind": "render",
+ "form": "dependent",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "2(c)",
+   "restated": "helper \"A qualifying person for Form 2441 (you have care expenses, and this person is your dependent and either your qualifying child under 13 or not able to care for themselves and living with you for more than half the year)\" = true and helper \"Age at the end of 2025\" ≥ 13 (dc.child_age) and helper \"Physically or mentally not able to care for themselves?\" = true",
+   "model": "The IRS instructions for column (c) say to check if the qualifying person 'was over age 12 at the time the care was provided and was disabled.' The restatement instead uses 'Age at the end of 2025' ≥ 13 and does not require the care to have been provided when over age 12.",
+   "ruling": "Ruling: finding; BUG-0111 open. Archived i2441 (2025) p. 3 qualifying-person Column (c) tests age at the time of care, but dependent.dc_line2c tests age at year-end. Reproduced from stage15.f2441.s8 with age=13 and dc_under13=true: the checkbox is true although these same inputs can describe care entirely before the thirteenth birthday. No input distinguishes the two care timings. Displayed-checkbox defect, no tax amount change; form correction and paired regression fixtures remain pending, with no correctness assertion claimed."
+  },
+  {
+   "printed": "2(c)",
+   "restated": "helper \"A qualifying person for Form 2441 (you have care expenses, and this person is your dependent and either your qualifying child under 13 or not able to care for themselves and living with you for more than half the year)\" = true and helper \"Age at the end of 2025\" ≥ 13 (dc.child_age) and helper \"Physically or mentally not able to care for themselves?\" = true",
+   "model": "The IRS says to check column (c) if the qualifying person “was over age 12 at the time the care was provided and was disabled,” but the restatement tests “Age at the end of 2025” ≥ 13 instead of age at the time care was provided.",
+   "ruling": "Ruling: finding; BUG-0111 open. Archived i2441 (2025) p. 3 qualifying-person Column (c) tests age at the time of care, but dependent.dc_line2c tests age at year-end. Reproduced from stage15.f2441.s8 with age=13 and dc_under13=true: the checkbox is true although these same inputs can describe care entirely before the thirteenth birthday. No input distinguishes the two care timings. Displayed-checkbox defect, no tax amount change; form correction and paired regression fixtures remain pending, with no correctness assertion claimed."
+  },
+  {
+   "printed": "2(d)",
+   "restated": "Enter the amount from helper \"Qualified expenses incurred and paid in 2025 for this person's care\".",
+   "model": "The IRS column (d) instruction says “If you completed Part III, don't include in column (d) any benefits shown on line 28,” but the helper says to include expenses paid with dependent care benefits and only subtracts excluded benefits later.",
+   "ruling": "Ruling: ambiguity; existing owner ruling amb.2025.dc_line30, Stage 15 decision 6 (T-048). Archived f2441 (2025) p. 2 line 30 and i2441 p. 3 Column (d) request excluding benefits shown on line 28. The project deliberately presents each person's gross expenses and subtracts the excluded benefits once in the aggregate f2441.line30; the register records the owner's choice because the sources give no allocation rule among persons. This is an acknowledged departure in per-person display under that recorded ruling, not model error and not a claim that literal column (d) wording matches. Retain the ambiguity reference and the objection."
+  },
+  {
+   "printed": "2(d)",
+   "restated": "Enter the amount from helper \"Qualified expenses incurred and paid in 2025 for this person's care\".",
+   "model": "The IRS instructions for column (d) say: 'If you completed Part III, don't include in column (d) any benefits shown on line 28,' but the helper includes expenses paid with dependent care benefits and says Form 2441 subtracts them later, so the amount entered on line 2(d) can be too high.",
+   "ruling": "Ruling: ambiguity; existing owner ruling amb.2025.dc_line30, Stage 15 decision 6 (T-048). Archived f2441 (2025) p. 2 line 30 and i2441 p. 3 Column (d) request excluding benefits shown on line 28. The project deliberately presents each person's gross expenses and subtracts the excluded benefits once in the aggregate f2441.line30; the register records the owner's choice because the sources give no allocation rule among persons. This is an acknowledged departure in per-person display under that recorded ruling, not model error and not a claim that literal column (d) wording matches. Retain the ambiguity reference and the objection."
+  }
+ ]
+}

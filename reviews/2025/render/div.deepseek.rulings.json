@@ -1,0 +1,25 @@
+{
+ "kind": "render",
+ "form": "div",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "bad_components",
+   "restated": "(f1040 line 3a > sb helper \"Total ordinary dividends, Form 1099-DIV box 1a\" or qbi helper \"Qualified section 199A dividends from Form 1099-DIV box 5 after confirming holding-period and related-payment requirements\" > sb helper \"Total ordinary dividends, Form 1099-DIV box 1a\")",
+   "model": "IRS says Box 1b and Box 5 are portions of the amount in box 1a; the helper compares Form 1040 line 3a (total qualified dividends) to box 1a instead of comparing box 1b to box 1a.",
+   "ruling": "Ruling: scope; f1099div recipient instructions p. 5 says boxes 1b/5 are portions of box 1a. div.bad_components is a necessary consistency check on shared aggregate supplied totals (f1040.line3a, qbi.dividends and sb.ordinary_dividends); div is a values sheet rather than per-payer information-return preparation. This gate checks that supplied qualified/199A dividends do not exceed supplied ordinary dividends. It does not assert per-payer validation or equality between an adjusted Form 1040 subtotal and each raw box."
+  },
+  {
+   "printed": "box1b",
+   "restated": "Enter the amount from f1040 line 3a.",
+   "model": "IRS says 'Box 1b. Shows the portion of the amount in box 1a that may be eligible for reduced capital gains rates'; the helper instead takes Form 1040 line 3a, not the Form 1099-DIV box 1b portion.",
+   "ruling": "Ruling: scope; archived f1099div recipient instructions p. 5 describes each payer box 1b. div is expressly an aggregate values sheet, not a prepared information return: div.box1b displays the supplied Form 1040 line 3a subtotal after its qualification exceptions (i1040gi p. 26), not an individual payer box. The objection correctly distinguishes those quantities. Retain that disclosed aggregate-input scope; this does not validate raw per-payer box 1b amounts or claim the adjusted subtotal is always their unadjusted sum."
+  },
+  {
+   "printed": "unsupported",
+   "restated": "(helper \"Section 897 ordinary dividends, box 2e\" > $0 or helper \"Section 897 capital gain, box 2f\" > $0 or helper \"Cash liquidation distributions, box 9\" > $0 or helper \"Noncash liquidation distributions, box 10\" > $0 or helper \"Nondividend distributions/return of capital, box 3\" > $0 and helper \"For box 3, have basis reductions been applied to records with no distribution exceeding basis?\" = false)",
+   "model": "IRS says 'Any amount received in excess of your basis is taxable to you as capital gain'; the helper only tests box 3 > 0 with basis_reconciled false and omits an excess-distribution condition.",
+   "ruling": "Ruling: model error; archived f1099div recipient instructions p. 5 Box 3 taxes amounts exceeding basis. div.basis_reconciled explicitly asks whether basis reductions were applied WITH NO DISTRIBUTION EXCEEDING BASIS. For positive box 3, a false answer makes div.unsupported true and div.screen refuses, with a remedy naming basis reconciliation and excess gain. Thus the alleged omitted excess-distribution condition is present in the shared question and its enforcement. One model error among 22 judged lines is below the 10% limit; this does not turn the aggregate-display scope into per-payer verification."
+  }
+ ]
+}

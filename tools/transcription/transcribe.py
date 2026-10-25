@@ -32,6 +32,17 @@ LOGS = os.path.join(ROOT, "reviews", Y, "transcription")
 RAW = os.path.join(ROOT, ".transcription")
 WHOLE_DOC_MAX_PAGES = 6
 HELPER_PRINTED = {"(helper)", "(gate)", "(computed helper)"}
+PROMPT_POLICY = "source-only-computation-v2"
+PROJECT_YAML_LOADER = getattr(yaml, "CSafeLoader", yaml.SafeLoader)
+
+
+def project_yaml(path):
+    """Read local project data with the fast safe loader when LibYAML is installed.
+
+    Model response parsing remains on its existing validation path.
+    """
+    with open(path, encoding="utf-8") as stream:
+        return yaml.load(stream, Loader=PROJECT_YAML_LOADER)
 
 
 def marker_keys(lines):
@@ -134,7 +145,7 @@ def param_cites(form_doc):
         names.update(re.findall(r'"param": "([a-z0-9_.]+)"', text))
         if line.get("expr", {}).get("op") == "param":
             names.add(line["expr"]["ref"])
-    params_doc = yaml.safe_load(open(os.path.join(ROOT, "params", f"{Y}.yaml"), encoding="utf-8"))
+    params_doc = project_yaml(os.path.join(ROOT, "params", f"{Y}.yaml"))
     values = (params_doc.get("params") or params_doc)["values"]
     # Structural constants (a zero amount, a count of one) cite the pages that
     # justify their use, not a figure to check; they are left out.
@@ -289,15 +300,23 @@ def collection_notes():
     for f in sorted(os.listdir(FORMS)):
         if not f.endswith(".yaml"):
             continue
-        d = yaml.safe_load(open(os.path.join(FORMS, f), encoding="utf-8"))
+        d = project_yaml(os.path.join(FORMS, f))
         doc = d.get("form")
         if not doc or not doc.get("collection"):
             continue
         parent = doc["collection"].get("parent")
-        fields = "; ".join(f"{l['id']} ({l['type']}: {l['label'][:60]})" for l in doc["lines"])
+        fields = "; ".join(reference_note(doc, l) for l in doc["lines"])
         out.append(f"  - collection `{doc['id']}`" + (f" nested in each `{parent}` entry" if parent else "") +
                    f" — one entry per {doc['title'][:70]}; entry fields: {fields}")
     return "\n".join(out)
+
+
+def reference_note(doc, line):
+    """Shared interface metadata, without project-written computed labels or expressions."""
+    text = f"{line['id']} (form {doc['id']}; printed {str(line['printed'])!r}; type {line['type']})"
+    if line["expr"].get("op") == "input":
+        text += ": input " + " ".join(line["expr"].get("source", "").split())[:160]
+    return text
 
 
 def screen_notes():
@@ -339,7 +358,7 @@ def second_gates(line, by_id, seen=None):
 
 
 def enum_notes():
-    params_doc = yaml.safe_load(open(os.path.join(ROOT, "params", f"{Y}.yaml"), encoding="utf-8"))
+    params_doc = project_yaml(os.path.join(ROOT, "params", f"{Y}.yaml"))
     enums = (params_doc.get("params") or params_doc).get("enums", {})
     return "\n".join(f"  - Enum({name}): " + ", ".join(f'"{v}"' for v in e["values"]) for name, e in enums.items())
 
@@ -350,18 +369,17 @@ reference it from other lines by that id.
 """
 
 
-def build_prompt(form_doc, excerpt, params, other_lines):
+def build_prompt(form_doc, excerpt, params, other_lines, param_types=None):
     lines = form_doc["lines"]
     inputs = [l for l in lines if l["expr"].get("op") == "input"]
     targets = [l for l in lines if l["printed"] not in HELPER_PRINTED and l["expr"].get("op") != "input"]
     keys = marker_keys(lines)
     shared = any(keys[l["id"]] != str(l["printed"]) for l in lines)
-    tgt = "\n".join(f"  - printed {keys[l['id']]!r}: {l['label']}" if keys[l["id"]] == str(l["printed"])
-                    else f"  - printed {keys[l['id']]!r} (id {l['id']}): {l['label']}" for l in targets)
+    tgt = "\n".join(f"  - printed {keys[l['id']]!r} (id {l['id']}; type {l['type']})" for l in targets)
     exported = exported_lines(form_doc)
-    exp = "\n".join(f"  - id {l['id']} ({l['type']}): {l['label']}" for l in exported)
+    exp = "\n".join(f"  - id {l['id']} ({l['type']})" for l in exported)
     inp = "\n".join(f"  - {l['id']} (printed {keys[l['id']]!r}, type {l['type']}): {l['expr'].get('source','')[:160]}" for l in inputs)
-    prm = "\n".join(f"  - {k}: {v}" for k, v in params.items())
+    prm = "\n".join(f"  - {k} ({(param_types or {}).get(k, 'type supplied by the interface')}): {v}" for k, v in params.items())
     oth = "\n".join(f"  - {k}: {v}" for k, v in other_lines.items())
     spec = open(os.path.join(ROOT, "spec", "spec.md"), encoding="utf-8").read()
     atoms = spec[spec.index("### 4.1 Values and types"):spec.index("### 4.4 Collections")]
@@ -381,19 +399,42 @@ Form id: {form_doc['id']}
 Title: {form_doc['title']}
 Tax year: {form_doc['tax_year']}
 
-Transcribe these printed lines, each as one line record with id "{form_doc['id']}.line<printed>"
-(for example {form_doc['id']}.line{targets[0]['printed'] if targets else '1'}), in this order:
+Transcribe these printed lines in this order, using each exact id shown (shared definitions
+may use bare ids such as line13; do not add a form prefix to those ids):
 {tgt}
 {SHARED_NOTE if shared else ''}
-Also produce these intermediate values, which other forms depend on, each as a line with EXACTLY
-this id (printed "(helper)"); they may reference the printed lines above and the inputs below:
+The following result interfaces are required by other forms. If one is already a printed line
+listed above, supply it once with that exact id and its printed marker. Otherwise supply a helper
+with this exact id (printed "(helper)"). These names are not instructions for how to compute them.
+Infer their meaning from the IRS pages; if the pages do not determine it, say so in a note rather
+than guessing. Project-written labels and expressions are deliberately omitted:
 {exp if exp else '  (none)'}
 
 These input lines already exist and must be referenced by these exact ids (do not redefine them):
 {inp if inp else '  (none)'}
 
+This is a CLOSED input interface: do not introduce any new `op: input` line, even if the full IRS
+form has additional boxes. Sources excluded by the screening questions are outside this slice;
+their form lines must be represented within that declared scope, not by inventing extra inputs.
+If the supplied text/interface does not determine a requested result, record that limitation in
+a note rather than adding an unprovided input. Derive computed questions from the named interfaces.
+
 Year parameters you may reference with {{param: name}} (values shown for recognition; cents or integer pairs):
 {prm}
+
+Only names in that year-parameter list may be used with `op: param` or a parameter operand.
+An id listed below as a line or result interface is not a parameter; copy that line by its string id.
+
+A parameter whose value is a dictionary keyed by filing status automatically selects the current
+return's filing status and returns the amount of the declared type. Read it with `op: param` (or
+as a parameter operand); do not invent a table named after the parameter. For a constant-valued
+line use a declared parameter of the matching type (for example a zero-valued money parameter).
+`expr: {{const: 0}}` is an operand, not a line expression; every line expression needs an `op`.
+
+If the IRS says to STOP because no tax or credit applies, carry that condition to the requested
+tax/credit/deduction result as zero; do not continue the arithmetic past that STOP or leave its
+effect only in a note. If the instruction instead says to STOP and use an earlier amount, return
+that amount. Derive the stopping condition from the archived text; none is supplied by the project.
 
 Enumerations and their only permitted values (compare with {{const: "value"}}):
 {enum_notes()}
@@ -407,7 +448,7 @@ Screening inputs (answered yes, the tool refuses the lines that list them under 
 {screen_notes()}
 
 Lines on other forms you may reference by id (only where the IRS text says the value comes from
-there; "(helper)" lines are that form's intermediate values):
+there). The catalog gives ids, printed markers and types, not their project-written computations:
 {oth}
 
 # Output
@@ -436,7 +477,7 @@ or after the YAML. Where the IRS text leaves a point genuinely open, choose a re
 # ---------- comparison ----------
 
 def load_form(form_id):
-    d = yaml.safe_load(open(os.path.join(FORMS, form_id + ".yaml"), encoding="utf-8"))
+    d = project_yaml(os.path.join(FORMS, form_id + ".yaml"))
     return d.get("form") or d.get("def")
 
 
@@ -450,7 +491,7 @@ def load_defs():
     defs = {}
     for f in os.listdir(FORMS):
         if f.endswith(".yaml"):
-            d = yaml.safe_load(open(os.path.join(FORMS, f), encoding="utf-8"))
+            d = project_yaml(os.path.join(FORMS, f))
             if "def" in d:
                 defs[d["def"]["id"]] = d["def"]
     return defs
@@ -461,7 +502,7 @@ def load_all_lines():
     out = {}
     for f in os.listdir(FORMS):
         if f.endswith(".yaml"):
-            d = yaml.safe_load(open(os.path.join(FORMS, f), encoding="utf-8"))
+            d = project_yaml(os.path.join(FORMS, f))
             doc = d.get("form") or d.get("def")
             for l in doc["lines"]:
                 out[l["id"]] = (doc["id"], l)
@@ -694,7 +735,9 @@ def gate_check(result, project_id, second_line, second_by_id):
 
 def compare(form_id, project_lines, second_lines):
     defs = load_defs()
-    params_doc = yaml.safe_load(open(os.path.join(ROOT, "params", f"{Y}.yaml"), encoding="utf-8"))
+    if form_id in defs:
+        second_lines = normalize_definition_ids(form_id, project_lines, second_lines)
+    params_doc = project_yaml(os.path.join(ROOT, "params", f"{Y}.yaml"))
     pvals = {k: v["value"] for k, v in (params_doc.get("params") or params_doc)["values"].items()}
     inputs = {l["id"]: l for l in project_lines if l["expr"].get("op") == "input"}
     pkeys = marker_keys(project_lines)
@@ -735,6 +778,30 @@ def compare(form_id, project_lines, second_lines):
     return results, extra
 
 
+def normalize_definition_ids(form_id, project_lines, second_lines):
+    """A namespace prefix is not a computational disagreement.
+
+    Only exact published definition ids can be unqualified. New helpers keep the
+    model's own names, and conflicting definitions are rejected rather than merged.
+    The raw response is retained unchanged alongside the comparison log.
+    """
+    aliases = {f"{form_id}.{l['id']}": l["id"] for l in project_lines if not l["id"].startswith(form_id + ".")}
+    def refs(value):
+        if isinstance(value, str):
+            return aliases.get(value, value)
+        if isinstance(value, list):
+            return [refs(v) for v in value]
+        if isinstance(value, dict):
+            return {k: v if k in ("param", "source", "op", "table", "collection") else refs(v) for k, v in value.items()}
+        return value
+    out = [{**line, "id": aliases.get(line["id"], line["id"]), "expr": refs(line["expr"]),
+            **({"refuses": refs(line["refuses"])} if "refuses" in line else {})} for line in second_lines]
+    ids = [line["id"] for line in out]
+    if len(set(ids)) != len(ids):
+        raise ValueError("second transcription has conflicting ids after definition-namespace normalization")
+    return out
+
+
 # ---------- model call ----------
 
 TRANSCRIBE_SYSTEM = ("You transcribe IRS worksheets into a formal data model from the text given to you. "
@@ -751,14 +818,17 @@ class MissingCredential(RuntimeError):
     """The keychain holds no API key for the hosted transport."""
 
 
-def call_model(prompt, model, timeout=900, system=TRANSCRIBE_SYSTEM):
+def call_model(prompt, model, timeout=900, system=TRANSCRIBE_SYSTEM, reasoning_effort=None, max_output_tokens=None):
     """One fixed-prompt call; returns (text, meta). The transport follows the model name:
     `claude*` runs `claude -p` in print mode with no tools; `deepseek*` posts to DeepSeek's
     hosted OpenAI-compatible endpoint. meta carries model_reported (a list), usage and cost_usd."""
+    families.require_selected_model(model)
+    if not model.startswith("deepseek") and (reasoning_effort is not None or max_output_tokens is not None):
+        raise ValueError("reasoning/output-budget options are supported only by the DeepSeek transport")
     if model.startswith("claude"):
         return _call_claude(prompt, model, timeout, system)
     if model.startswith("deepseek"):
-        return _call_deepseek(prompt, model, timeout, system)
+        return _call_deepseek(prompt, model, timeout, system, reasoning_effort, max_output_tokens)
     raise ValueError(f"no transport for model {model!r}: a model name begins with 'claude' or 'deepseek'")
 
 
@@ -794,10 +864,18 @@ def _deepseek_key():
     return key
 
 
-def _call_deepseek(prompt, model, timeout, system):
+def _call_deepseek(prompt, model, timeout, system, reasoning_effort=None, max_output_tokens=None):
     import time, urllib.error, urllib.request
-    body = json.dumps({"model": model, "stream": False, "temperature": 0, "max_tokens": DEEPSEEK_MAX_TOKENS,
-                       "messages": [{"role": "system", "content": system}, {"role": "user", "content": prompt}]}).encode()
+    budget = DEEPSEEK_MAX_TOKENS if max_output_tokens is None else max_output_tokens
+    if not isinstance(budget, int) or not 1 <= budget <= 384000:
+        raise ValueError("DeepSeek output budget must be between 1 and 384000 tokens")
+    request = {"model": model, "stream": False, "temperature": 0, "max_tokens": budget,
+               "messages": [{"role": "system", "content": system}, {"role": "user", "content": prompt}]}
+    if reasoning_effort is not None:
+        if reasoning_effort not in ("low", "high", "max"):
+            raise ValueError("invalid DeepSeek reasoning effort")
+        request["reasoning_effort"] = reasoning_effort
+    body = json.dumps(request).encode()
     headers = {"Content-Type": "application/json", "Authorization": "Bearer " + _deepseek_key()}
     attempt = 0
     while True:
@@ -813,6 +891,11 @@ def _call_deepseek(prompt, model, timeout, system):
         except urllib.error.URLError as ex:
             if isinstance(ex.reason, TimeoutError) or attempt >= DEEPSEEK_RETRIES:
                 raise RuntimeError(f"deepseek request failed: {ex.reason}") from None
+        except ConnectionError as ex:
+            # A peer reset can surface directly while reading the response body,
+            # rather than being wrapped in URLError by urlopen.
+            if attempt >= DEEPSEEK_RETRIES:
+                raise RuntimeError(f"deepseek connection failed: {type(ex).__name__}") from None
         attempt += 1
         time.sleep(2 ** attempt)
     choices = data.get("choices") or []
@@ -821,7 +904,44 @@ def _call_deepseek(prompt, model, timeout, system):
     usage = data.get("usage") or {}
     meta = {"model_reported": [data.get("model") or model], "usage": usage, "cost_usd": None,
             "transport": "deepseek", "finish_reason": choices[0].get("finish_reason"), "attempts": attempt + 1}
+    if reasoning_effort is not None:
+        meta["reasoning_effort"] = reasoning_effort
     return choices[0]["message"]["content"], meta
+
+
+def review_response(prompt, model, base, policy, from_response=False, system=TRANSCRIBE_SYSTEM, reasoning_effort=None, max_output_tokens=None):
+    """Bind a raw response to its actual request; a dry run never overwrites this receipt."""
+    receipt = {"prompt_sha256": hashlib.sha256(prompt.encode()).hexdigest(),
+               "system_sha256": hashlib.sha256(system.encode()).hexdigest(),
+               "prompt_policy": policy, "model_requested": model, "reasoning_effort": reasoning_effort,
+               "request_max_tokens": (DEEPSEEK_MAX_TOKENS if max_output_tokens is None else max_output_tokens) if model.startswith("deepseek") else None}
+    if from_response:
+        with open(base + ".meta.json", encoding="utf-8") as f:
+            meta = json.load(f)
+        with open(base + ".prompt.txt", encoding="utf-8") as f:
+            saved_prompt = f.read()
+        recorded = dict(meta)
+        # Before this option existed every bound DeepSeek request used the fixed
+        # 65536-token limit. Preserve that actual receipt; never relabel it as a
+        # larger-budget call. Unbound legacy prompts still fail the other fields.
+        recorded.setdefault("request_max_tokens", 65536 if model.startswith("deepseek") else None)
+        if saved_prompt != prompt or any(recorded.get(k) != v for k, v in receipt.items()):
+            raise ValueError("saved response belongs to a different or unrecorded prompt/model/system; run a fresh review")
+        with open(base + ".response.txt", encoding="utf-8") as f:
+            text = f.read()
+        if meta.get("finish_reason") == "length":
+            raise ValueError("saved response exhausted its output budget; run a fresh review with a larger --max-output-tokens")
+        return text, meta
+    budget_scale = max(1, ((max_output_tokens or DEEPSEEK_MAX_TOKENS) + DEEPSEEK_MAX_TOKENS - 1) // DEEPSEEK_MAX_TOKENS)
+    text, meta = call_model(prompt, model, timeout=900 * budget_scale, system=system, reasoning_effort=reasoning_effort, max_output_tokens=max_output_tokens)
+    meta = {**meta, **receipt}
+    for suffix, value in ((".prompt.txt", prompt), (".response.txt", text),
+                          (".meta.json", json.dumps(meta, ensure_ascii=False))):
+        with open(base + suffix, "w", encoding="utf-8") as f:
+            f.write(value)
+    if meta.get("finish_reason") == "length":
+        raise ValueError("response exhausted its output budget; raw receipt saved; run a fresh review with a larger --max-output-tokens")
+    return text, meta
 
 
 def extract_yaml(text):
@@ -830,9 +950,15 @@ def extract_yaml(text):
     m = blocks[-1] if blocks else None
     body = m if m is not None else text
     doc = yaml.safe_load(body)
-    if not isinstance(doc, dict) or "lines" not in doc:
+    if not isinstance(doc, dict) or not isinstance(doc.get("lines"), list):
         raise ValueError("second transcription has no `lines`")
+    seen = set()
     for l in doc["lines"]:
+        if not isinstance(l, dict) or not isinstance(l.get("id"), str) or not l["id"]:
+            raise ValueError("transcribed line must have a nonempty id")
+        if l["id"] in seen:
+            raise ValueError(f"duplicate transcribed id: {l['id']}")
+        seen.add(l["id"])
         l["printed"] = str(l.get("printed", ""))
         l.setdefault("expr", {})
         if not isinstance(l.get("refuses", []), list):
@@ -846,7 +972,6 @@ def write_log(form_doc, model, prompt, used, results, extra, raw_text, meta, dry
     os.makedirs(LOGS, exist_ok=True)
     fid = form_doc["id"]
     family = families.family_of(model)
-    kept = rulings.kept("transcription", fid, family)
     counts = {k: sum(1 for r in results if r["status"] == k) for k in ("AGREE", "DISAGREE", "MISSING")}
     out = [f"# Transcription agreement — {fid}", "",
            f"Second transcription of `{form_doc['title']}` by an isolated model (spec 6.5), compared line by line with `forms/{Y}/{fid}.yaml`.", "",
@@ -855,6 +980,11 @@ def write_log(form_doc, model, prompt, used, results, extra, raw_text, meta, dry
            f"| model requested | {model} |",
            f"| model reported | {', '.join(meta.get('model_reported', [])) or '-'} |",
            f"| prompt sha256 | {hashlib.sha256(prompt.encode()).hexdigest()} |",
+           f"| prompt policy | {meta.get('prompt_policy', 'legacy-unrecorded')} |",
+           f"| system sha256 | {meta.get('system_sha256', '-')} |",
+           f"| reasoning effort | {meta.get('reasoning_effort') or 'provider default'} |",
+           f"| output token budget | {meta.get('request_max_tokens') or 'transport default (65536 for DeepSeek)'} |",
+           "| interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |",
            f"| subject sha256 | {subjects.current('transcription', fid, Y)} |",
            f"| printed lines compared | {len(results)} |",
            f"| agree / disagree / missing | {counts['AGREE']} / {counts['DISAGREE']} / {counts['MISSING']} |",
@@ -863,6 +993,7 @@ def write_log(form_doc, model, prompt, used, results, extra, raw_text, meta, dry
     for u in used:
         out.append(f"| {u['doc']} | {u['revision']} | {', '.join(map(str, u['pages'])) or '-'} | {u['how']} | {u['text_sha256']} | {', '.join(map(str, u.get('cols_pages', []))) or '-'} | {u.get('cols_sha256', '-')} |")
     out += ["", "## Lines", ""]
+    kept = rulings.kept("transcription", fid, family, context=rulings.review_context("transcription", "\n".join(out)))
     for r in results:
         out.append(f"### {r['printed']} — {r['label'][:90]}")
         out.append(f"Status: **{r['status']}**")
@@ -893,13 +1024,15 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--form", required=True)
     ap.add_argument("--model", default="claude-opus-5-5")
+    ap.add_argument("--reasoning-effort", choices=("low", "high", "max"))
+    ap.add_argument("--max-output-tokens", type=int, help="DeepSeek output budget, including reasoning (default 65536)")
     ap.add_argument("--dry-run", action="store_true", help="build the prompt and excerpt; call no model")
     ap.add_argument("--from-response", action="store_true", help="re-compare the saved response; call no model")
     a = ap.parse_args()
     mani = manifest()
     form_doc = load_form(a.form)
     excerpt, used = excerpt_for(form_doc, mani)
-    params_doc = yaml.safe_load(open(os.path.join(ROOT, "params", f"{Y}.yaml"), encoding="utf-8"))
+    params_doc = project_yaml(os.path.join(ROOT, "params", f"{Y}.yaml"))
     values = (params_doc.get("params") or params_doc)["values"]
     params = {k: v["value"] for k, v in values.items()}
     other = {}
@@ -909,23 +1042,17 @@ def main():
             if d.get("collection"):
                 continue   # listed with the collections instead
             for l in d["lines"]:
-                tag = "" if l["printed"] not in HELPER_PRINTED else " (helper)"
-                other[l["id"]] = l["label"][:70] + tag
-    prompt = build_prompt(form_doc, excerpt, params, other)
+                other[l["id"]] = reference_note(d, l)
+    prompt = build_prompt(form_doc, excerpt, params, other, {k: v["type"] for k, v in values.items()})
     os.makedirs(RAW, exist_ok=True)
     base = os.path.join(RAW, families.stem(a.form, families.family_of(a.model)))
-    open(base + ".prompt.txt", "w", encoding="utf-8").write(prompt)
     print(f"{a.form}: excerpt {len(excerpt):,} chars from " + "; ".join(f"{u['doc']} pages {u['pages']} ({u['how']})" for u in used))
-    print(f"prompt {len(prompt):,} chars -> {os.path.relpath(base, ROOT)}.prompt.txt")
+    print(f"prompt {len(prompt):,} chars -> {os.path.relpath(base, ROOT)}{'.preview' if a.dry_run else ''}.prompt.txt")
     if a.dry_run:
+        with open(base + ".preview.prompt.txt", "w", encoding="utf-8") as f:
+            f.write(prompt)
         return
-    if a.from_response:
-        text = open(base + ".response.txt", encoding="utf-8").read()
-        meta = json.load(open(base + ".meta.json")) if os.path.exists(base + ".meta.json") else {}
-    else:
-        text, meta = call_model(prompt, a.model)
-        open(base + ".response.txt", "w", encoding="utf-8").write(text)
-        json.dump(meta, open(base + ".meta.json", "w"))
+    text, meta = review_response(prompt, a.model, base, PROMPT_POLICY, a.from_response, reasoning_effort=a.reasoning_effort, max_output_tokens=a.max_output_tokens)
     second = extract_yaml(text)
     results, extra = compare(a.form, form_doc["lines"], second["lines"])
     path, counts = write_log(form_doc, a.model, prompt, used, results, extra, text, meta)

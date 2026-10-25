@@ -1,0 +1,42 @@
+{
+ "kind": "transcription",
+ "form": "s3",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "11",
+   "project": "{\"collection\": \"person\", \"field\": \"person.credit\", \"op\": \"sum_over\", \"where\": null}",
+   "second": "{\"ref\": \"g28.line7\"}",
+   "ruling": "Ruling: model error; g28.line7 is the 28% Rate Gain Worksheet result carried to ScheduleD line18 (i1040sd 2025 p.11), not excess Social Security withholding. f1040s3 (2025) p.1 line11 and i1040gi p.117 require figuring excess withholding separately for each spouse and combining their credits. On existing stage13.excess_ss_you the project credit is $1481.80 and g28.line7 is zero. The saved evaluator witness is .transcription/s3-flash-wrong-worksheet-witness.json.",
+   "context": "1ea91ad4dc1163423f06e4068b133544f8e6e43e274f21d88f4d33496621e282"
+  },
+  {
+   "printed": "2",
+   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"ref\": \"f2441.care\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"ref\": \"f2441.care\"}], \"test\": \"eq\"}, \"then\": {\"ref\": \"f2441.line11\"}}], \"op\": \"choose\"}",
+   "second": "{\"ref\": \"f2441.line11\"}",
+   "ruling": "Ruling: representation on supported completed returns; f1040s3 (2025) p.1 line2 carries Form2441 line11. The project short-circuits when the care-expense screen is No, for which qualifying care amounts and the credit are zero. With care Yes both use line11. MFS is outside completed-return scope at s3.line11. The guard also avoids evaluating an unused form and its unanswered screens; partial-input execution is deliberately not asserted equivalent.",
+   "context": "9aeca8dcefdcba749849f6710d7dba0ac30acab880f6beea56dde5bd5bc3aa5a"
+  },
+  {
+   "printed": "5a",
+   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"ref\": \"f5695.part1_any\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"ref\": \"f5695.part1_any\"}], \"test\": \"eq\"}, \"then\": {\"ref\": \"f5695.line15\"}}], \"op\": \"choose\"}",
+   "second": "{\"ref\": \"f5695.line15\"}",
+   "ruling": "Ruling: representation on completed consistent returns; f1040s3 (2025) p.1 line5a carries Form5695 line15. f5695.part1_any asks whether there are eligible PartI costs or a carry-in; with neither the PartI credit is zero, and with Yes the two trees use the same line15. The project exit avoids questions on an unfiled PartI. This is a form-application distinction, not identity on inconsistent amounts or unanswered irrelevant screens.",
+   "context": "9aeca8dcefdcba749849f6710d7dba0ac30acab880f6beea56dde5bd5bc3aa5a"
+  },
+  {
+   "printed": "5b",
+   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"ref\": \"f5695.part2_any\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"ref\": \"f5695.part2_any\"}], \"test\": \"eq\"}, \"then\": {\"ref\": \"f5695.line32\"}}], \"op\": \"choose\"}",
+   "second": "{\"ref\": \"f5695.line32\"}",
+   "ruling": "Ruling: representation on completed consistent returns; f1040s3 (2025) p.1 line5b carries Form5695 line32. With no PartII improvement or audit expenses its credit is zero; with the part active both use the same line32. The project early exit avoids evaluating an unused part. No identity is claimed for inconsistent screen/amount answers or partial-input order.",
+   "context": "9aeca8dcefdcba749849f6710d7dba0ac30acab880f6beea56dde5bd5bc3aa5a"
+  },
+  {
+   "printed": "8",
+   "project": "{\"of\": [{\"line\": \"1\"}, {\"line\": \"2\"}, {\"line\": \"4\"}, {\"line\": \"5a\"}, {\"line\": \"5b\"}], \"op\": \"sum\"}",
+   "second": "{\"from\": {\"of\": [{\"line\": \"1\"}, {\"line\": \"2\"}, {\"line\": \"4\"}, {\"line\": \"5a\"}, {\"line\": \"5b\"}], \"op\": \"sum\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}",
+   "ruling": "Ruling: representation; f1040s3 (2025) p.1 line8 adds the nonrefundable credits. The compared project operands are NonNegDollars inputs or nonnegative credit computations. Subtracting constant zero with a floor therefore preserves their sum on every supported completed return. The formerly undefined zero parameters are absent from the final expanded line8 tree; the raw response remains preserved.",
+   "context": "9aeca8dcefdcba749849f6710d7dba0ac30acab880f6beea56dde5bd5bc3aa5a"
+  }
+ ]
+}

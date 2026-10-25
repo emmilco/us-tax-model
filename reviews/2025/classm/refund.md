@@ -29,9 +29,13 @@ Status: **AGREE**
 Value: $0.00
 
 ### classm.refund.1 — 2 — Subtract the amount on your 2024 Schedule A, line 5e, from the amount of state a
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: Is 2024 line 5d ($0.00) more than line 5e ($0.00)? No, so skip line 2, enter line 1 on line 3, and go to line 4
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.refund.1 — 3 — Subtract line 2 from line 1
 Status: **AGREE**
@@ -59,14 +63,22 @@ Status: **AGREE**
 Value: $14,600.00
 
 ### classm.refund.1 — 8 — Subtract line 7 from line 4 (if your 2024 filing status was married filing separ
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: Is line 7 ($14,600) less than line 4 ($0)? No, so STOP: none of the refund is taxable
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.refund.1 — 9 — Taxable part of your refund. Enter the smaller of line 3 or line 8 here and on S
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: Not reached because the worksheet stopped at line 8; the taxable refund is zero
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ## Raw responses
 

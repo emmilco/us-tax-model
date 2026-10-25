@@ -102,9 +102,13 @@ Status: **AGREE**
 Value: $-33,237.00
 
 ### classm.s1a.1 — 12 — Multiply line 11 by $100
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: Skipped because line 10 is zero or less
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.s1a.1 — 13 — Qualified tips deduction. Subtract line 12 from line 7. If zero or less, enter -
 Status: **AGREE**
@@ -147,9 +151,13 @@ Status: **AGREE**
 Value: $-33,237.00
 
 ### classm.s1a.1 — 20 — Multiply line 19 by $100
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: Skipped because line 18 is zero or less
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.s1a.1 — 21 — Qualified overtime compensation deduction. Subtract line 20 from line 15. If zer
 Status: **AGREE**
@@ -157,39 +165,67 @@ Status: **AGREE**
 Value: $25,000.00
 
 ### classm.s1a.1 — 23 — Add lines 22a and 22b, column (iii)
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: No qualified car loan interest, so Part IV is not filled out
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.s1a.1 — 24 — Enter the smaller of the amount on line 23 or $10,000
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: Part IV is not filled out
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.s1a.1 — 25 — Enter the amount from line 3
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: Part IV is not filled out
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.s1a.1 — 26 — Enter $100,000 ($200,000 if married filing jointly)
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: Part IV is not filled out
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.s1a.1 — 27 — Subtract line 26 from line 25. If zero or less, enter the amount from line 24 on
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: Part IV is not filled out
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.s1a.1 — 29 — Multiply line 28 by $200
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: Part IV is not filled out
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.s1a.1 — 30 — Qualified passenger vehicle loan interest deduction. Subtract line 29 from line 
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: Part IV is not filled out
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.s1a.1 — 31 — Enter the amount from line 3
 Status: **AGREE**
@@ -217,9 +253,13 @@ Status: **AGREE**
 Value: $0.00
 
 ### classm.s1a.1 — 36a — If you have a valid social security number (see instructions) and were born befo
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: Taxpayer was not born before January 2, 1961
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.s1a.1 — 36b — If you are married filing jointly, your spouse has a valid social security numbe
 Status: **AGREE**

@@ -718,13 +718,13 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Add the amounts on lines 12 and 13
       = UNKNOWN (no input supplied for person[taxpayer].w2[emp_a].box10)
       cite: [i2441] p. 5, Line 15, "Add the amounts on lines 12 and 13 and subtract from that total the amount on line 14" (2025; 86f0669e)
-  (gate) Line 14 is more than lines 12 and 13 together
+  (gate) Line 14 is more than line 12
       = UNKNOWN (no input supplied for f2441.line14)
       cite: [i2441] p. 5, Line 14, "enter on line 14 the total of the following amounts included on line 12" (2025; 86f0669e)
   15  Combine lines 12 through 14
       = UNKNOWN (no input supplied for f2441.line14)
       cite: [i2441] p. 5, Line 15, "Add the amounts on lines 12 and 13 and subtract from that total the amount on line 14. Enter the result on line 15" (2025; 86f0669e)
-  (helper) Qualified expenses for care of the qualifying persons in 2025 that you paid, or will pay, in 2026
+  (helper) Qualified care expenses incurred in 2025 not already counted in the per-person care amounts
       = UNKNOWN (no input supplied for f2441.paid_2026)
       cite: [i2441] p. 5, Line 16, "Enter the total of all qualified expenses incurred in 2025 for the care of your qualifying person(s). It doesn't matter when the expenses were paid" (2025; 86f0669e)
   16  Enter the total amount of qualified expenses incurred in 2025 for the care of the qualifying person(s)
@@ -1794,37 +1794,37 @@ Values sheet — tax year 2025 (not a complete return for all filers)
 == Foreign tax credit — election without Form 1116 ==
   (helper) Total creditable foreign taxes after required reductions; generally Form 1099-INT box 6 and Form 1099-DIV box 7
       = $120
-      cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular tax (2025; printed date 2025-12-23; 6998cf8c)
+      cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; 6998cf8c)
   (helper) Was all foreign-source gross income passive category income under the small-tax election rules?
       = true
-      cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular tax (2025; printed date 2025-12-23; 6998cf8c)
+      cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; 6998cf8c)
   (helper) Were all foreign income and taxes reported on qualified payee statements?
       = true
-      cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular tax (2025; printed date 2025-12-23; 6998cf8c)
+      cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; 6998cf8c)
   (helper) Have creditability, holding-period, related-payment and required foreign-tax reduction rules been satisfied?
       = true
-      cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular tax (2025; printed date 2025-12-23; 6998cf8c)
+      cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; 6998cf8c)
   (helper) Elect the credit without Form 1116, with no carryover to or from this election year?
       = true
-      cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular tax (2025; printed date 2025-12-23; 6998cf8c)
+      cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; 6998cf8c)
   (helper) Year parameter ftc.limit
       = $300
-      cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular tax (2025; printed date 2025-12-23; 6998cf8c)
+      cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; 6998cf8c)
   (helper) Year parameter sales.zero
       = $0
-      cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular tax (2025; printed date 2025-12-23; 6998cf8c)
+      cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; 6998cf8c)
   (helper) Positive foreign taxes
       = true
-      cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular tax (2025; printed date 2025-12-23; 6998cf8c)
+      cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; 6998cf8c)
   (helper) Fails a condition of the election
       = false
-      cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular tax (2025; printed date 2025-12-23; 6998cf8c)
+      cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; 6998cf8c)
   (helper) Smaller of ftc.taxes, f1040.line16
       = $120
-      cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular tax (2025; printed date 2025-12-23; 6998cf8c)
+      cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; 6998cf8c)
   (helper) Credit is the smaller of creditable foreign tax and regular income tax; zero if no foreign tax
       = $120
-      cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular tax (2025; printed date 2025-12-23; 6998cf8c)
+      cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; 6998cf8c)
       note: taken: {"eq":["ftc.has_tax",{"const":true}],"op":"test"}
 
 == 28% Rate Gain Worksheet — distribution-only path ==
@@ -4212,7 +4212,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [f1040s3] Schedule 3 (2025), line 10 (2025; created 2025-11-17; 008cfd3f)
   11  Excess social security and tier 1 RRTA tax withheld
       = $0
-      cite: [f1040s3] Schedule 3 (2025), line 11 (2025; created 2025-11-17; 008cfd3f)
+      cite: [i1040gi] p. 117, Line 11, Excess Social Security and Tier 1 RRTA Tax Withheld, "Figure this amount separately for you and your spouse" (2025; printed date 2026-02-25; 482e9c48)
       note: confirmed roster $person: taxpayer
   12  Credit for federal tax on fuels. Attach Form 4136
       = $0
@@ -6587,7 +6587,7 @@ Derivations:
   person[taxpayer].dc_benefits: sum_over(person[taxpayer].w2[emp_a].dc_benefits = UNKNOWN (no input supplied for person[taxpayer].w2[emp_a].box10))
   f2441.line12: sum_over(person[taxpayer].dc_benefits = UNKNOWN (no input supplied for person[taxpayer].w2[emp_a].box10))
   f2441.line15_sum: sum(f2441.line12 = UNKNOWN (no input supplied for person[taxpayer].w2[emp_a].box10); f2441.line13 = UNKNOWN (no input supplied for f2441.line13))
-  f2441.line14_bad: test(f2441.line14 = UNKNOWN (no input supplied for f2441.line14); f2441.line15_sum = UNKNOWN (no input supplied for person[taxpayer].w2[emp_a].box10))
+  f2441.line14_bad: test(f2441.line14 = UNKNOWN (no input supplied for f2441.line14); f2441.line12 = UNKNOWN (no input supplied for person[taxpayer].w2[emp_a].box10))
   f2441.line15: gate(f2441.line14_bad = UNKNOWN (no input supplied for f2441.line14))
   f2441.line16: sum(f2441.paid_total = UNKNOWN (collection roster not confirmed); f2441.paid_2026 = UNKNOWN (no input supplied for f2441.paid_2026))
   f2441.line17: smaller_of(f2441.line15 = UNKNOWN (no input supplied for f2441.line14); f2441.line16 = UNKNOWN (collection roster not confirmed))

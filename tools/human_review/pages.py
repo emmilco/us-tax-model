@@ -150,6 +150,24 @@ def highlight(base_png, words, marks, slug):
     return out
 
 
+def excerpt(png, words, marks, window="around", extra_below=0):
+    """A faithful crop around the located text; the full page remains available."""
+    rects = [rect for _, _, found, boxes in marks if found for rect in boxes]
+    if not rects:
+        return png
+    with Image.open(png) as im:
+        sx, sy = im.width / words.width, im.height / words.height
+        if window == "below":
+            bounds = (0, max(0, min(r[1] for r in rects) - 12), words.width, words.height)
+        else:
+            bounds = (max(0, min(r[0] for r in rects) - 30), max(0, min(r[1] for r in rects) - 35),
+                      min(words.width, max(r[2] for r in rects) + 35),
+                      min(words.height, max(r[3] for r in rects) + max(75, extra_below)))
+        out = png.with_name(png.stem + "-excerpt.png")
+        im.crop(tuple(int(v * (sx if i % 2 == 0 else sy)) for i, v in enumerate(bounds))).save(out)
+    return out
+
+
 class Locator:
     """What one line's citation locates: pages with marks, and segments that locate nothing."""
 

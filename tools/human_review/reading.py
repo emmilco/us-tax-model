@@ -30,6 +30,16 @@ COMPARE = {"eq": "equals", "ne": "is not", "lt": "is less than", "le": "is at mo
            "gt": "is greater than", "ge": "is at least"}
 
 
+def without_snapshot(obj):
+    if isinstance(obj, dict):
+        return {k: ({ck: without_snapshot(cv) for ck, cv in v.items()
+                     if ck not in ("snapshot", "revision", "tax_year")} if k == "cite" else without_snapshot(v))
+                for k, v in obj.items()}
+    if isinstance(obj, list):
+        return [without_snapshot(x) for x in obj]
+    return obj
+
+
 def dollars(cents):
     neg = cents < 0
     s = f"${abs(cents) / 100:,.2f}"
@@ -70,6 +80,9 @@ class Canon:
             d = json.loads(p.read_text(encoding="utf-8"))
             top = d.get("form") or d.get("def")
             if top:
+                source = yaml.safe_load((ROOT / "forms" / Y / f"{top['id']}.yaml").read_text(encoding="utf-8"))
+                if without_snapshot(source) != without_snapshot(d):
+                    raise ValueError(f"canonical data for {top['id']} is stale; run npm run build before opening a packet")
                 self.docs[top["id"]] = top
                 for l in top["lines"]:
                     self.lines[l["id"]] = l
@@ -79,6 +92,9 @@ class Canon:
                     if q.get("prompt") and q["input"] not in self.prompts:
                         self.prompts[q["input"]] = q["prompt"]
         self.params = json.loads((CANON / "params.json").read_text(encoding="utf-8"))["params"]
+        source_params = yaml.safe_load((ROOT / "params" / f"{Y}.yaml").read_text(encoding="utf-8"))["params"]
+        if without_snapshot(source_params) != without_snapshot(self.params):
+            raise ValueError("canonical parameters are stale; run npm run build before opening a packet")
         bank = yaml.safe_load((ROOT / "interview" / f"questions-{Y}.yaml").read_text(encoding="utf-8"))
         self.frames = (bank.get("bank") or {}).get("frames", {})
         self.readers = {}
@@ -150,15 +166,15 @@ class Canon:
         v = p["value"]
         t = p.get("type", "")
         if isinstance(v, dict) and "num" in v:
-            return f"{rate_text(v)} (parameter {name})"
+            return rate_text(v)
         if isinstance(v, dict):
             groups = {}
             for status in list(STATUS_WORDS) + sorted(set(v) - set(STATUS_WORDS)):
                 if status in v:
                     groups.setdefault(v[status], []).append(STATUS_WORDS.get(status, status))
             parts = [f"{self.amount_text(a, t)} if {' or '.join(s)}" for a, s in groups.items()]
-            return "the amount for your filing status (" + ", ".join(parts) + f" — parameter {name})"
-        return f"{self.amount_text(v, t)} (parameter {name})"
+            return "the amount for your filing status (" + "; ".join(parts) + ")"
+        return self.amount_text(v, t)
 
     @staticmethod
     def amount_text(v, t):
@@ -216,9 +232,10 @@ def refs_in(expr):
 class Reading:
     """The reading of one printed line: the tree, the helpers folded, the leaves reached."""
 
-    def __init__(self, canon, lid, tag_style="a"):
+    def __init__(self, canon, lid, tag_style="a", stop_at=None):
         self.c = canon
         self.root = lid
+        self.stop_at = stop_at or {}
         self.tag_style = tag_style
         self.tags = {}        # helper id -> "(a)"
         self.defs = []        # (tag, helper id, Node), in tag order
@@ -230,7 +247,7 @@ class Reading:
         start = lid
         while self.c.lines[start]["expr"].get("op") == "copy":
             nxt = self.c.resolve(self.c.lines[start]["expr"]["from"], self.c.form_of[start])
-            if nxt is None or self.c.is_leaf(nxt):
+            if nxt is None or self.c.is_leaf(nxt) or nxt in self.stop_at:
                 break
             self._seen(nxt)
             start = nxt
@@ -251,6 +268,10 @@ class Reading:
         lid = self.c.resolve(r, within)
         if lid is None:
             return f"`{r}`"
+        if lid in self.stop_at and lid != self.root:
+            if lid not in self.leaves:
+                self.leaves.append(lid)
+            return self.stop_at[lid] + bound
         self._seen(lid)
         k = self.c.kind(lid)
         if k == "printed":
@@ -271,7 +292,7 @@ class Reading:
         self.tags[lid] = tag
         node = self.sentence(lid)
         hint = self.hint(lid)
-        node.text = f"{tag} {'— ' + hint + ' — ' if hint else ''}is {node.text}"
+        node.text = f"{tag} {hint + ': ' if hint else ''}{node.text}"
         self.defs.append((tag, lid, node))
         return tag + bound
 
@@ -303,11 +324,42 @@ class Reading:
         before = len(self.defs)
         l = self.c.lines[lid]
         within = self.c.form_of[lid]
-        text = self.atom(l["expr"], within, l)
+        expr = l["expr"]
+        branches = []
+        if expr.get("op") == "choose":
+            alts = expr["alternatives"]
+            if len(alts) == 2 and complementary(alts[0]["guard"], alts[1]["guard"]):
+                condition = self.condition_node(alts[0]["guard"], within)
+                branches = [Node(f"Use {self.ref(alts[0]['then'], within)} when:", [condition]),
+                            Node(f"Otherwise, use {self.ref(alts[1]['then'], within)}.")]
+            else:
+                branches = [Node(f"Use {self.ref(a['then'], within)} when:",
+                                 [self.condition_node(a["guard"], within)]) for a in alts]
+                branches.append(Node("If no condition applies, this line is unknown."))
+            text = "Choose the amount as follows:"
+        else:
+            text = self.atom(expr, within, l)
         kids = [n for _, _, n in self.defs[before:]]
         del self.defs[before:]
         self.stack.pop()
-        return Node(text, kids)
+        return Node(text, branches + kids)
+
+    def condition_node(self, test, within):
+        for key, text in (("all", "All of the following are true:"), ("any", "At least one of the following is true:")):
+            if key in test:
+                return Node(text, [self.condition_node(t, within) for t in test[key]])
+        if "not" in test:
+            return Node("The following is false:", [self.condition_node(test["not"], within)])
+        for key in ("eq", "ne"):
+            if key in test:
+                a, b = test[key]
+                if isinstance(b, dict) and isinstance(b.get("const"), bool) and isinstance(a, str):
+                    lid = self.c.resolve(a, within)
+                    if lid and lid not in self.stop_at and not self.c.is_leaf(lid) and self.c.lines[lid]["expr"].get("op") == "test":
+                        self._seen(lid)
+                        nested = self.condition_node(self.c.lines[lid]["expr"], self.c.form_of[lid])
+                        return nested if b["const"] == (key == "eq") else Node("The following is false:", [nested])
+        return Node(self.test(test, within))
 
     def atom(self, e, w, line=None):
         op = e.get("op")
@@ -409,6 +461,8 @@ class Reading:
     def condition(self, a, w, want):
         """A Bool operand asserted (want=True) or denied."""
         lid = self.c.resolve(a, w) if isinstance(a, str) else None
+        if lid in self.stop_at:
+            return f"{self.ref(a, w)} is {'yes' if want else 'no'}"
         if lid and self.c.is_input(lid):
             self._seen(lid)
             q = self.c.question(lid, bare=self.c.form_of[lid] == self.coll)

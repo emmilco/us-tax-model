@@ -1,0 +1,739 @@
+--- a/forms/2025/dependent.yaml
++++ b/forms/2025/dependent.yaml
+@@ -1097,6 +1097,18 @@
+         doc: f2441
+         locator: Form 2441 (2025), line 2, column (d)
+       ambiguity: amb.2025.dc_line30
++    - id: dependent.dc_over12_care
++      printed: (helper)
++      type: Bool
++      label: Care provided while this qualifying person was age 13 or older and disabled
++      expr:
++        op: input
++        source: Of the care expenses included for this person on Form 2441, line 2, was any care provided
++          when the person was age 13 or older and physically or mentally unable to care for themselves?
++          Answer only for the care included on this form, not their age at the end of the year.
++      cite:
++        doc: i2441
++        locator: 'p. 3, Column (c), "Check the box in column (c) if the qualifying person listed in column (a) was over age 12 at the time the care was provided and was disabled"'
+     - id: dependent.dc_line2c
+       printed: 2(c)
+       type: Bool
+@@ -1110,13 +1122,25 @@
+               - dependent.dc_qp
+               - const: true
+           - op: test
+-            ge:
+-              - dependent.age
+-              - param: dc.child_age
+-          - op: test
+             eq:
+               - dependent.dc_incapable
+               - const: true
++          - op: test
++            any:
++              - op: test
++                gt:
++                  - dependent.age
++                  - param: dc.child_age
++              - op: test
++                all:
++                  - op: test
++                    eq:
++                      - dependent.age
++                      - param: dc.child_age
++                  - op: test
++                    eq:
++                      - dependent.dc_over12_care
++                      - const: true
+       cite:
+         doc: i2441
+         locator: 'p. 3, Column (c), "Check the box in column (c) if the qualifying person listed in column (a) was over age 12 at the time the care was provided and was disabled"'
+--- a/interview/questions-2025.yaml
++++ b/interview/questions-2025.yaml
+@@ -533,6 +533,10 @@
+     order: 21
+     help: Money is integer cents. Answer true/false for questions. Unknown may be null; do not guess. Married filing
+       separately and unsupported items are refused with citations.
++  - input: dependent.dc_over12_care
++    order: 21
++    help: This question is only needed for a disabled qualifying person who turned 13 during 2025.
++      Count care provided at age 13 or older; a birthday later in the year does not change earlier care.
+   - input: dependent.dc_paid
+     order: 21
+     help: Money is integer cents. Answer true/false for questions. Unknown may be null; do not guess. Married filing
+--- a/fixtures/2025/stage15.json
++++ b/fixtures/2025/stage15.json
+@@ -35907,6 +35907,672 @@
+           }
+         }
+       }
++    },
++    {
++      "id": "stage15.BUG-0111.care_before_13",
++      "covers": [
++        "dependent",
++        "f2441"
++      ],
++      "evidence": "R",
++      "evidence_note": "BUG-0111 regression; archived i2441 (2025) p. 3 Column (c) tests age at care. Disabled qualifying child turned 13; expenses are for care entirely before the thirteenth birthday. Monetary expectations retained from stage15.f2441.s8; checkbox expected directly from the source.",
++      "inputs": {
++        "f1040.status": "mfj",
++        "$person": [
++          "taxpayer",
++          "spouse"
++        ],
++        "$interest": [],
++        "$sales": [],
++        "$gift": [],
++        "sb.ordinary_dividends": 0,
++        "sb.unsupported": false,
++        "sb.line7a": false,
++        "sb.fbar_required": false,
++        "sb.form8938": false,
++        "sb.line8": false,
++        "f1040.line3a": 0,
++        "div.box2b": 0,
++        "div.box2c": 0,
++        "div.box2d": 0,
++        "div.box2e": 0,
++        "div.box2f": 0,
++        "div.box3": 0,
++        "div.box9": 0,
++        "div.box10": 0,
++        "div.box13": 0,
++        "div.basis_reconciled": true,
++        "sd.other_forms": false,
++        "sd.carryover": false,
++        "sd.distributions": 0,
++        "qbi.dividends": 0,
++        "qbi.unsupported": false,
++        "f4952.line1": 0,
++        "f4952.line4g": 0,
++        "f4952.carryover": false,
++        "f4952.unsupported": false,
++        "f4952.alternative_allocation": false,
++        "f8959.unsupported": false,
++        "f8960.unsupported": false,
++        "f8960.refund": false,
++        "f8960.allocated_taxes": 0,
++        "ftc.taxes": 0,
++        "ftc.all_passive": true,
++        "ftc.statements": true,
++        "ftc.eligible": true,
++        "ftc.elect": true,
++        "s3.line9": 0,
++        "s3.line10": 0,
++        "s3.line12": 0,
++        "s3.line14": 0,
++        "sa.unsupported": false,
++        "sa.charity_limited": false,
++        "sa.excluded_income": false,
++        "sa.dependent": false,
++        "sa.spouse_extra": false,
++        "sa.spouse_itemizes": false,
++        "sa.elect_itemize": false,
++        "sa.line1": 0,
++        "sa.line5a": 0,
++        "sa.line5b": 0,
++        "sa.line5c": 0,
++        "sa.line8a": 0,
++        "sa.line11": 0,
++        "scope.schedule1": false,
++        "scope.credits": false,
++        "scope.other_income": false,
++        "scope.other_line16": false,
++        "s2.amt": false,
++        "s2.other": false,
++        "f1040.line25b": 0,
++        "f1040.line25c": 0,
++        "f1040.line26": 0,
++        "f1040.line35a": 0,
++        "f1040.line36": 0,
++        "$dependent": [
++          "a"
++        ],
++        "household.home_cost": false,
++        "household.unmarried": true,
++        "s8812.combat_pay": false,
++        "s8812.puerto_rico": false,
++        "eic.qc_of_another": false,
++        "eic.us_home": true,
++        "household.married": true,
++        "household.credit_disallowed": false,
++        "household.community_property": false,
++        "$retirement": [],
++        "ssb.benefits": 0,
++        "f1040.tax_exempt_interest": 0,
++        "div.box12": 0,
++        "s1.uc_paid": 0,
++        "refund.received": 0,
++        "sli.interest": 0,
++        "s1.uc_repaid": 0,
++        "s1.uc_unsupported": false,
++        "s1.alimony": false,
++        "s1.cod_amount": 0,
++        "s1.line8_other": false,
++        "s1.gambling_winnings": 0,
++        "s1.line8g": 0,
++        "s1.line8h": 0,
++        "s1.line8i": 0,
++        "s1.line8j": 0,
++        "s1.line8r": 0,
++        "$oi8z": [],
++        "s1.jury_to_employer": 0,
++        "s1a.tips": false,
++        "s1a.overtime": false,
++        "s1a.carloan": false,
++        "person[taxpayer].role": "taxpayer",
++        "person[taxpayer].rrta": false,
++        "person[taxpayer].age65": false,
++        "person[taxpayer].blind": false,
++        "person[taxpayer].tin": true,
++        "person[taxpayer].work_ssn": true,
++        "person[taxpayer].eic_ssn": true,
++        "person[taxpayer].under16": false,
++        "person[taxpayer].born_before_2001": true,
++        "person[taxpayer].born_after_1960": true,
++        "person[taxpayer].educator_expenses": 0,
++        "$w2@person[taxpayer]": [
++          "e0"
++        ],
++        "person[taxpayer].w2[e0].box1": 7000000,
++        "person[taxpayer].w2[e0].box2": 0,
++        "person[taxpayer].w2[e0].box3": 7000000,
++        "person[taxpayer].w2[e0].box4": 434000,
++        "person[taxpayer].w2[e0].box5": 7000000,
++        "person[taxpayer].w2[e0].box6": 101500,
++        "person[taxpayer].w2[e0].box7": 0,
++        "$tipjob@person[taxpayer]": [],
++        "$otjob@person[taxpayer]": [],
++        "$f8889@person[taxpayer]": [],
++        "person[spouse].role": "spouse",
++        "person[spouse].rrta": false,
++        "person[spouse].age65": false,
++        "person[spouse].blind": false,
++        "person[spouse].tin": true,
++        "person[spouse].work_ssn": true,
++        "person[spouse].eic_ssn": true,
++        "person[spouse].under16": false,
++        "person[spouse].born_before_2001": true,
++        "person[spouse].born_after_1960": true,
++        "person[spouse].educator_expenses": 0,
++        "$w2@person[spouse]": [
++          "e0"
++        ],
++        "person[spouse].w2[e0].box1": 4000000,
++        "person[spouse].w2[e0].box2": 0,
++        "person[spouse].w2[e0].box3": 4000000,
++        "person[spouse].w2[e0].box4": 248000,
++        "person[spouse].w2[e0].box5": 4000000,
++        "person[spouse].w2[e0].box6": 58000,
++        "person[spouse].w2[e0].box7": 0,
++        "$tipjob@person[spouse]": [],
++        "$otjob@person[spouse]": [],
++        "$f8889@person[spouse]": [],
++        "$sc@person[taxpayer]": [],
++        "$sc@person[spouse]": [],
++        "qbi.carryforward": 0,
++        "f5695.part1_any": false,
++        "f5695.part2_any": false,
++        "f2441.care": true,
++        "f2441.benefits": false,
++        "person[taxpayer].sav_born": true,
++        "person[taxpayer].sav_student": false,
++        "person[taxpayer].sav_claimed": false,
++        "person[taxpayer].sav_trad": false,
++        "person[taxpayer].sav_able": false,
++        "person[taxpayer].sav_roth": 0,
++        "person[taxpayer].sav_excess": false,
++        "person[taxpayer].sav_voluntary": 0,
++        "person[taxpayer].sav_prior_joint": 0,
++        "person[taxpayer].sav_prior_other": 0,
++        "person[taxpayer].w2[e0].box12_any": false,
++        "person[spouse].sav_born": true,
++        "person[spouse].sav_student": false,
++        "person[spouse].sav_claimed": false,
++        "person[spouse].sav_trad": false,
++        "person[spouse].sav_able": false,
++        "person[spouse].sav_roth": 0,
++        "person[spouse].sav_excess": false,
++        "person[spouse].sav_voluntary": 0,
++        "person[spouse].sav_prior_joint": 0,
++        "person[spouse].sav_prior_other": 0,
++        "person[spouse].w2[e0].box12_any": false,
++        "dependent[a].relationship": "child",
++        "dependent[a].age": 13,
++        "dependent[a].student": false,
++        "dependent[a].disabled": false,
++        "dependent[a].months": 12,
++        "dependent[a].self_support": false,
++        "dependent[a].joint_return": false,
++        "dependent[a].citizen": true,
++        "dependent[a].canada_mexico": false,
++        "dependent[a].married": false,
++        "dependent[a].tin": true,
++        "dependent[a].work_ssn": true,
++        "dependent[a].gross_income": 0,
++        "dependent[a].supported": true,
++        "dependent[a].other_claimant": false,
++        "dependent[a].divorced_rule": false,
++        "dependent[a].multiple_support": false,
++        "dependent[a].parent_home_paid": false,
++        "dependent[a].younger": true,
++        "dependent[a].us_half": true,
++        "dependent[a].eic_ssn": true,
++        "f2441.student_disabled": false,
++        "f2441.spouse_died": false,
++        "f2441.nondependent": false,
++        "f2441.prior_year": false,
++        "dependent[a].dc_paid": 400000,
++        "dependent[a].dc_incapable": true,
++        "$dcprov": [
++          "p0"
++        ],
++        "dcprov[p0].tin_kind": "tin",
++        "dcprov[p0].household": false,
++        "dcprov[p0].paid": 400000,
++        "dcprov[p0].related": false,
++        "f2441.paid_2026": 0,
++        "f2441.employer_care": false,
++        "s1.cod_any": false,
++        "dependent[a].dc_under13": true,
++        "dependent[a].dc_over12_care": false
++      },
++      "expect": {
++        "f2441.line3": {
++          "kind": "money",
++          "cents": 300000
++        },
++        "f2441.line4": {
++          "kind": "money",
++          "cents": 7000000
++        },
++        "f2441.line5": {
++          "kind": "money",
++          "cents": 4000000
++        },
++        "f2441.line6": {
++          "kind": "money",
++          "cents": 300000
++        },
++        "f2441.line7": {
++          "kind": "money",
++          "cents": 11000000
++        },
++        "f2441.line8": {
++          "kind": "rate",
++          "num": 20,
++          "den": 100
++        },
++        "f2441.line9a": {
++          "kind": "money",
++          "cents": 60000
++        },
++        "f2441.line9c": {
++          "kind": "money",
++          "cents": 60000
++        },
++        "f2441.line10": {
++          "kind": "money",
++          "cents": 894600
++        },
++        "f2441.clw1": {
++          "kind": "money",
++          "cents": 894600
++        },
++        "f2441.clw2": {
++          "kind": "money",
++          "cents": 0
++        },
++        "f2441.clw3": {
++          "kind": "money",
++          "cents": 894600
++        },
++        "f2441.line11": {
++          "kind": "money",
++          "cents": 60000
++        },
++        "s3.line2": {
++          "kind": "money",
++          "cents": 60000
++        },
++        "f1040.line1a": {
++          "kind": "money",
++          "cents": 11000000
++        },
++        "f1040.line1e": {
++          "kind": "money",
++          "cents": 0
++        },
++        "f1040.line1z": {
++          "kind": "money",
++          "cents": 11000000
++        },
++        "f1040.line11a": {
++          "kind": "money",
++          "cents": 11000000
++        },
++        "f1040.line18": {
++          "kind": "money",
++          "cents": 894600
++        },
++        "f1040.line19": {
++          "kind": "money",
++          "cents": 220000
++        },
++        "s8812.line14": {
++          "kind": "money",
++          "cents": 220000
++        },
++        "s8812.line27": {
++          "kind": "money",
++          "cents": 0
++        },
++        "f1040.line27a": {
++          "kind": "money",
++          "cents": 0
++        },
++        "dependent[a].dc_line2c": {
++          "kind": "bool",
++          "value": false
++        }
++      }
++    },
++    {
++      "id": "stage15.BUG-0111.care_after_13",
++      "covers": [
++        "dependent",
++        "f2441"
++      ],
++      "evidence": "R",
++      "evidence_note": "BUG-0111 regression; archived i2441 (2025) p. 3 Column (c) tests age at care. Disabled qualifying child turned 13; expenses are for care at age 13 or older. Monetary expectations retained from stage15.f2441.s8; checkbox expected directly from the source.",
++      "inputs": {
++        "f1040.status": "mfj",
++        "$person": [
++          "taxpayer",
++          "spouse"
++        ],
++        "$interest": [],
++        "$sales": [],
++        "$gift": [],
++        "sb.ordinary_dividends": 0,
++        "sb.unsupported": false,
++        "sb.line7a": false,
++        "sb.fbar_required": false,
++        "sb.form8938": false,
++        "sb.line8": false,
++        "f1040.line3a": 0,
++        "div.box2b": 0,
++        "div.box2c": 0,
++        "div.box2d": 0,
++        "div.box2e": 0,
++        "div.box2f": 0,
++        "div.box3": 0,
++        "div.box9": 0,
++        "div.box10": 0,
++        "div.box13": 0,
++        "div.basis_reconciled": true,
++        "sd.other_forms": false,
++        "sd.carryover": false,
++        "sd.distributions": 0,
++        "qbi.dividends": 0,
++        "qbi.unsupported": false,
++        "f4952.line1": 0,
++        "f4952.line4g": 0,
++        "f4952.carryover": false,
++        "f4952.unsupported": false,
++        "f4952.alternative_allocation": false,
++        "f8959.unsupported": false,
++        "f8960.unsupported": false,
++        "f8960.refund": false,
++        "f8960.allocated_taxes": 0,
++        "ftc.taxes": 0,
++        "ftc.all_passive": true,
++        "ftc.statements": true,
++        "ftc.eligible": true,
++        "ftc.elect": true,
++        "s3.line9": 0,
++        "s3.line10": 0,
++        "s3.line12": 0,
++        "s3.line14": 0,
++        "sa.unsupported": false,
++        "sa.charity_limited": false,
++        "sa.excluded_income": false,
++        "sa.dependent": false,
++        "sa.spouse_extra": false,
++        "sa.spouse_itemizes": false,
++        "sa.elect_itemize": false,
++        "sa.line1": 0,
++        "sa.line5a": 0,
++        "sa.line5b": 0,
++        "sa.line5c": 0,
++        "sa.line8a": 0,
++        "sa.line11": 0,
++        "scope.schedule1": false,
++        "scope.credits": false,
++        "scope.other_income": false,
++        "scope.other_line16": false,
++        "s2.amt": false,
++        "s2.other": false,
++        "f1040.line25b": 0,
++        "f1040.line25c": 0,
++        "f1040.line26": 0,
++        "f1040.line35a": 0,
++        "f1040.line36": 0,
++        "$dependent": [
++          "a"
++        ],
++        "household.home_cost": false,
++        "household.unmarried": true,
++        "s8812.combat_pay": false,
++        "s8812.puerto_rico": false,
++        "eic.qc_of_another": false,
++        "eic.us_home": true,
++        "household.married": true,
++        "household.credit_disallowed": false,
++        "household.community_property": false,
++        "$retirement": [],
++        "ssb.benefits": 0,
++        "f1040.tax_exempt_interest": 0,
++        "div.box12": 0,
++        "s1.uc_paid": 0,
++        "refund.received": 0,
++        "sli.interest": 0,
++        "s1.uc_repaid": 0,
++        "s1.uc_unsupported": false,
++        "s1.alimony": false,
++        "s1.cod_amount": 0,
++        "s1.line8_other": false,
++        "s1.gambling_winnings": 0,
++        "s1.line8g": 0,
++        "s1.line8h": 0,
++        "s1.line8i": 0,
++        "s1.line8j": 0,
++        "s1.line8r": 0,
++        "$oi8z": [],
++        "s1.jury_to_employer": 0,
++        "s1a.tips": false,
++        "s1a.overtime": false,
++        "s1a.carloan": false,
++        "person[taxpayer].role": "taxpayer",
++        "person[taxpayer].rrta": false,
++        "person[taxpayer].age65": false,
++        "person[taxpayer].blind": false,
++        "person[taxpayer].tin": true,
++        "person[taxpayer].work_ssn": true,
++        "person[taxpayer].eic_ssn": true,
++        "person[taxpayer].under16": false,
++        "person[taxpayer].born_before_2001": true,
++        "person[taxpayer].born_after_1960": true,
++        "person[taxpayer].educator_expenses": 0,
++        "$w2@person[taxpayer]": [
++          "e0"
++        ],
++        "person[taxpayer].w2[e0].box1": 7000000,
++        "person[taxpayer].w2[e0].box2": 0,
++        "person[taxpayer].w2[e0].box3": 7000000,
++        "person[taxpayer].w2[e0].box4": 434000,
++        "person[taxpayer].w2[e0].box5": 7000000,
++        "person[taxpayer].w2[e0].box6": 101500,
++        "person[taxpayer].w2[e0].box7": 0,
++        "$tipjob@person[taxpayer]": [],
++        "$otjob@person[taxpayer]": [],
++        "$f8889@person[taxpayer]": [],
++        "person[spouse].role": "spouse",
++        "person[spouse].rrta": false,
++        "person[spouse].age65": false,
++        "person[spouse].blind": false,
++        "person[spouse].tin": true,
++        "person[spouse].work_ssn": true,
++        "person[spouse].eic_ssn": true,
++        "person[spouse].under16": false,
++        "person[spouse].born_before_2001": true,
++        "person[spouse].born_after_1960": true,
++        "person[spouse].educator_expenses": 0,
++        "$w2@person[spouse]": [
++          "e0"
++        ],
++        "person[spouse].w2[e0].box1": 4000000,
++        "person[spouse].w2[e0].box2": 0,
++        "person[spouse].w2[e0].box3": 4000000,
++        "person[spouse].w2[e0].box4": 248000,
++        "person[spouse].w2[e0].box5": 4000000,
++        "person[spouse].w2[e0].box6": 58000,
++        "person[spouse].w2[e0].box7": 0,
++        "$tipjob@person[spouse]": [],
++        "$otjob@person[spouse]": [],
++        "$f8889@person[spouse]": [],
++        "$sc@person[taxpayer]": [],
++        "$sc@person[spouse]": [],
++        "qbi.carryforward": 0,
++        "f5695.part1_any": false,
++        "f5695.part2_any": false,
++        "f2441.care": true,
++        "f2441.benefits": false,
++        "person[taxpayer].sav_born": true,
++        "person[taxpayer].sav_student": false,
++        "person[taxpayer].sav_claimed": false,
++        "person[taxpayer].sav_trad": false,
++        "person[taxpayer].sav_able": false,
++        "person[taxpayer].sav_roth": 0,
++        "person[taxpayer].sav_excess": false,
++        "person[taxpayer].sav_voluntary": 0,
++        "person[taxpayer].sav_prior_joint": 0,
++        "person[taxpayer].sav_prior_other": 0,
++        "person[taxpayer].w2[e0].box12_any": false,
++        "person[spouse].sav_born": true,
++        "person[spouse].sav_student": false,
++        "person[spouse].sav_claimed": false,
++        "person[spouse].sav_trad": false,
++        "person[spouse].sav_able": false,
++        "person[spouse].sav_roth": 0,
++        "person[spouse].sav_excess": false,
++        "person[spouse].sav_voluntary": 0,
++        "person[spouse].sav_prior_joint": 0,
++        "person[spouse].sav_prior_other": 0,
++        "person[spouse].w2[e0].box12_any": false,
++        "dependent[a].relationship": "child",
++        "dependent[a].age": 13,
++        "dependent[a].student": false,
++        "dependent[a].disabled": false,
++        "dependent[a].months": 12,
++        "dependent[a].self_support": false,
++        "dependent[a].joint_return": false,
++        "dependent[a].citizen": true,
++        "dependent[a].canada_mexico": false,
++        "dependent[a].married": false,
++        "dependent[a].tin": true,
++        "dependent[a].work_ssn": true,
++        "dependent[a].gross_income": 0,
++        "dependent[a].supported": true,
++        "dependent[a].other_claimant": false,
++        "dependent[a].divorced_rule": false,
++        "dependent[a].multiple_support": false,
++        "dependent[a].parent_home_paid": false,
++        "dependent[a].younger": true,
++        "dependent[a].us_half": true,
++        "dependent[a].eic_ssn": true,
++        "f2441.student_disabled": false,
++        "f2441.spouse_died": false,
++        "f2441.nondependent": false,
++        "f2441.prior_year": false,
++        "dependent[a].dc_paid": 400000,
++        "dependent[a].dc_incapable": true,
++        "$dcprov": [
++          "p0"
++        ],
++        "dcprov[p0].tin_kind": "tin",
++        "dcprov[p0].household": false,
++        "dcprov[p0].paid": 400000,
++        "dcprov[p0].related": false,
++        "f2441.paid_2026": 0,
++        "f2441.employer_care": false,
++        "s1.cod_any": false,
++        "dependent[a].dc_under13": true,
++        "dependent[a].dc_over12_care": true
++      },
++      "expect": {
++        "f2441.line3": {
++          "kind": "money",
++          "cents": 300000
++        },
++        "f2441.line4": {
++          "kind": "money",
++          "cents": 7000000
++        },
++        "f2441.line5": {
++          "kind": "money",
++          "cents": 4000000
++        },
++        "f2441.line6": {
++          "kind": "money",
++          "cents": 300000
++        },
++        "f2441.line7": {
++          "kind": "money",
++          "cents": 11000000
++        },
++        "f2441.line8": {
++          "kind": "rate",
++          "num": 20,
++          "den": 100
++        },
++        "f2441.line9a": {
++          "kind": "money",
++          "cents": 60000
++        },
++        "f2441.line9c": {
++          "kind": "money",
++          "cents": 60000
++        },
++        "f2441.line10": {
++          "kind": "money",
++          "cents": 894600
++        },
++        "f2441.clw1": {
++          "kind": "money",
++          "cents": 894600
++        },
++        "f2441.clw2": {
++          "kind": "money",
++          "cents": 0
++        },
++        "f2441.clw3": {
++          "kind": "money",
++          "cents": 894600
++        },
++        "f2441.line11": {
++          "kind": "money",
++          "cents": 60000
++        },
++        "s3.line2": {
++          "kind": "money",
++          "cents": 60000
++        },
++        "f1040.line1a": {
++          "kind": "money",
++          "cents": 11000000
++        },
++        "f1040.line1e": {
++          "kind": "money",
++          "cents": 0
++        },
++        "f1040.line1z": {
++          "kind": "money",
++          "cents": 11000000
++        },
++        "f1040.line11a": {
++          "kind": "money",
++          "cents": 11000000
++        },
++        "f1040.line18": {
++          "kind": "money",
++          "cents": 894600
++        },
++        "f1040.line19": {
++          "kind": "money",
++          "cents": 220000
++        },
++        "s8812.line14": {
++          "kind": "money",
++          "cents": 220000
++        },
++        "s8812.line27": {
++          "kind": "money",
++          "cents": 0
++        },
++        "f1040.line27a": {
++          "kind": "money",
++          "cents": 0
++        },
++        "dependent[a].dc_line2c": {
++          "kind": "bool",
++          "value": true
++        }
++      }
+     }
+   ]
+ }

@@ -4,32 +4,36 @@ The rendered English of every printed line of `Foreign tax credit — election w
 
 | field | value |
 | --- | --- |
-| date | 2026-10-17 |
+| date | 2026-10-24 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | bc33c9c64dd7a2b0d9557552783b91f451dcff0159e52f4bd6c1f3eb8bb69170 |
+| prompt sha256 | bef79e64075d92093eba14ae0a4bffe7871cce47a5d27ee09d0a7de176090b77 |
+| prompt policy | render-source-comparison-v2 |
+| system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
+| reasoning effort | provider default |
+| output token budget | transport default (65536 for DeepSeek) |
 | subject sha256 | f2625c069fc948f264f0e0b8b8d13ccdb2d8070bade81d24bde08b944d0282e8 |
 | lines judged | 11 |
-| match / mismatch / unclear / missing | 9 / 0 / 2 / 0 |
+| match / mismatch / unclear / missing | 9 / 2 / 0 / 0 |
 | verdicts for lines not in the form | none |
 
 ## Source pages given to the model
 
 | document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
 | --- | --- | --- | --- | --- | --- | --- |
-| i1116 | 2025; printed date 2025-12-23 | 1, 2 | cited pages | ca3e843c3bead1e7991566852707530b6bb7c2fd6008c1dbda0ac0bbd40c48ff | 1, 2 | 4e9025bfc8a73bcfd687c7f45cb1a037cd39e7445319bbc71c748e12db68a46a |
+| i1116 | 2025; printed date 2025-12-23 | 1, 2, 25 | cited pages | ca3e843c3bead1e7991566852707530b6bb7c2fd6008c1dbda0ac0bbd40c48ff | 1, 2, 25 | 4e9025bfc8a73bcfd687c7f45cb1a037cd39e7445319bbc71c748e12db68a46a |
 
 ## Lines
 
 ### taxes — Total creditable foreign taxes after required reductions; generally Form 1099-INT box 6 an
 Status: **MATCH**
 
-Model: The text asks for 'your total creditable foreign taxes', reduced 'by any amount you would have entered on line 12 of Form 1116', and lists Forms 1099-INT and 1099-DIV as qualified payee statements. The specific box numbers (box 6, box 7) do not appear in the given text, but they are only guidance and do not change the input.
+Model: The text says the election requires that 'Your total creditable foreign taxes aren't more than $300', and that you must still 'reduce the taxes available for credit by any amount you would have entered on line 12'. The input asks for exactly that net amount. The box numbers are not in the text, but the label only offers them as a 'generally' hint, so they do not change the value.
 
 ### all_passive — Was all foreign-source gross income passive category income under the small-tax election r
 Status: **MATCH**
 
-Model: This matches the condition 'All of your foreign source gross income was "passive category income"', which for this purpose also includes high-taxed income and certain export financing interest.
+Model: This matches the condition 'All of your foreign source gross income was "passive category income"'. The phrase 'under the small-tax election rules' covers the text's widened definition, which adds high-taxed income and certain export financing interest.
 
 ### statements — Were all foreign income and taxes reported on qualified payee statements?
 Status: **MATCH**
@@ -39,50 +43,50 @@ Model: This matches the condition 'All the income and any foreign taxes paid on 
 ### eligible — Have creditability, holding-period, related-payment and required foreign-tax reduction rul
 Status: **MATCH**
 
-Model: The text says you must still apply 'the general rules for determining whether a tax is creditable' and 'reduce the taxes available for credit by any amount you would have entered on line 12'. Holding-period and related-payment rules are among the Foreign Taxes Not Eligible items the text cites.
+Model: The text says you are 'still required to take into account the general rules for determining whether a tax is creditable', which include the holding-period and related-payment items, and to 'reduce the taxes available for credit by any amount you would have entered on line 12'. The input covers all of these.
 
 ### elect — Elect the credit without Form 1116, with no carryover to or from this election year?
 Status: **MATCH**
 
-Model: The credit is described as an election, and with it you 'can't carry over to or from any other year any foreign taxes paid or accrued in a tax year to which the election applies'.
+Model: The text calls this an election and says 'You can't carry over to or from any other year any foreign taxes paid or accrued in a tax year to which the election applies'. The input asks for that choice and that consequence, and as a yes/no it does not change any computed amount.
 
 ### limit — Year parameter ftc.limit
 Status: **MATCH**
 
-Model: The text says 'aren't more than $300 ($600 if married filing a joint return)'. Only MFJ gets $600, so $300 for single, MFS, HOH and QSS is consistent.
+Model: The text sets the threshold at '$300 ($600 if married filing a joint return)'. Using $300 for every other filing status and $600 for married filing jointly matches.
 
 ### zero — Year parameter sales.zero
 Status: **MATCH**
 
-Model: This is a $0 constant used when there are no foreign taxes, so no credit arises. It is consistent with the text.
+Model: A $0 value used when there is no foreign tax is consistent with the text. With no foreign tax there is nothing to credit.
 
 ### has_tax — Positive foreign taxes
 Status: **MATCH**
 
-Model: This tests whether the foreign taxes exceed zero. It is a simple predicate on the input and does not conflict with the text.
+Model: This tests whether foreign taxes are positive, which is consistent with the text. The election and credit only matter when there is foreign tax.
 
 ### needs1116 — Fails a condition of the election
 Status: **MATCH**
 
-Model: The election 'is available only if you meet all of the following conditions': passive income, qualified payee statements, and taxes not over $300/$600. The creditability and reduction rules still apply, and the filer must actually elect. Failing any of these is correctly treated as needing Form 1116. The estate/trust exclusion is outside the individual scope.
+Model: Each condition is negated correctly. Taxes over the limit fail 'aren't more than $300 ($600...)'. Non-passive income, missing payee statements, failed creditability or line 12 reduction rules, or not choosing the election all mean Form 1116 is required.
 
 ### limited — Smaller of ftc.taxes, f1040.line16
-Status: **UNCLEAR**
+Status: **MISMATCH**
 
 Restated: Enter the smaller of helper "Total creditable foreign taxes after required reductions; generally Form 1099-INT box 6 and Form 1099-DIV box 7" or f1040 line 16.
 
-Model: The text says to enter 'the smaller of (a) your total foreign tax, or (b) your regular tax. See the instructions for line 20, later, for how to figure your regular tax.' Those line 20 instructions are not provided, so it cannot be confirmed that Form 1040 line 16 equals 'regular tax' for this purpose.
+Model: The text says to enter 'the smaller of (a) your total foreign tax, or (b) your regular tax' and to 'See the instructions for line 20... for how to figure your regular tax'. For individuals, line 20 means 'the total of Form 1040, 1040-SR, or 1040-NR, line 16, and Schedule 2 (Form 1040), Part I, line 1z, less any tax included on line 16 from Form 4972' (adjusted for Form 8978). The program uses Form 1040 line 16 alone: it leaves out Schedule 2 line 1z and does not subtract the Form 4972 tax.
 
-Ruling: representation; project retained. Regular tax for the election is "your total U.S. income tax against which the credit is allowed (regular tax liability, as defined in section 26(b)(1))", excluding the net investment income tax (i1116 p. 25, line 20), which on the return in this slice is Form 1040 line 16: the additional line-16 taxes are refused by `scope.other_line16` and the net investment income and additional Medicare taxes sit on Schedule 2, after line 16. No change to the data.
+Ruling: scope/representation on supported completed individual returns; i1116 (2025) pp.1–2 requires the smaller of foreign tax and regular tax, with p.25 Line20 defining regular tax as Form1040 line16 plus Schedule2 PartI line1z less Form4972 tax, with Form8978 adjustments. s2.other explicitly excludes advance-credit repayments and every other unsupported Schedule2 tax and is enforced at s2.line3/line21. scope.other_line16 excludes Forms4972/8978 and is enforced at f1040.line16. Thus the additional terms are zero on supported completed returns; Form1040 line16 is the regular-tax amount in this slice. Stand-alone excluded cases are not claimed equivalent. The reviewer correctly identifies the full IRS rule; its reduction here depends on those declared refusals, not model noise.
 
 ### credit — Credit is the smaller of creditable foreign tax and regular income tax; zero if no foreign
-Status: **UNCLEAR**
+Status: **MISMATCH**
 
 Restated: Choose — [helper "Positive foreign taxes" = true → helper "Smaller of ftc.taxes, f1040.line16"] [helper "Positive foreign taxes" = false → helper "Year parameter sales.zero"]
 
-Model: The structure (smaller of foreign tax or regular tax, zero if no foreign tax, refusal to Form 1116 when the election fails) is consistent with the text. However, it depends on the 'limited' operand, whose definition of regular tax is in line 20 instructions that are not provided.
+Model: The branching and the refusal are right. However, when foreign tax is positive the credit takes the 'limited' value, which measures regular tax as Form 1040 line 16 alone instead of 'the total of Form 1040... line 16, and Schedule 2 (Form 1040), Part I, line 1z, less any tax included on line 16 from Form 4972'. So the credit can differ from 'the smaller of (a) your total foreign tax, or (b) your regular tax.'
 
-Ruling: representation; project retained. Regular tax for the election is "your total U.S. income tax against which the credit is allowed (regular tax liability, as defined in section 26(b)(1))", excluding the net investment income tax (i1116 p. 25, line 20), which on the return in this slice is Form 1040 line 16: the additional line-16 taxes are refused by `scope.other_line16` and the net investment income and additional Medicare taxes sit on Schedule 2, after line 16. No change to the data.
+Ruling: scope/representation on supported completed individual returns; i1116 (2025) pp.1–2 requires the smaller of foreign tax and regular tax, with p.25 Line20 defining regular tax as Form1040 line16 plus Schedule2 PartI line1z less Form4972 tax, with Form8978 adjustments. s2.other explicitly excludes advance-credit repayments and every other unsupported Schedule2 tax and is enforced at s2.line3/line21. scope.other_line16 excludes Forms4972/8978 and is enforced at f1040.line16. Thus the additional terms are zero on supported completed returns; Form1040 line16 is the regular-tax amount in this slice. Stand-alone excluded cases are not claimed equivalent. The reviewer correctly identifies the full IRS rule; its reduction here depends on those declared refusals, not model noise.
 
 ## Raw response
 
@@ -91,36 +95,36 @@ Ruling: representation; project retained. Regular tax for the election is "your 
 lines:
   - key: "taxes"
     status: MATCH
-    reason: "The text asks for 'your total creditable foreign taxes', reduced 'by any amount you would have entered on line 12 of Form 1116', and lists Forms 1099-INT and 1099-DIV as qualified payee statements. The specific box numbers (box 6, box 7) do not appear in the given text, but they are only guidance and do not change the input."
+    reason: "The text says the election requires that 'Your total creditable foreign taxes aren't more than $300', and that you must still 'reduce the taxes available for credit by any amount you would have entered on line 12'. The input asks for exactly that net amount. The box numbers are not in the text, but the label only offers them as a 'generally' hint, so they do not change the value."
   - key: "all_passive"
     status: MATCH
-    reason: "This matches the condition 'All of your foreign source gross income was \"passive category income\"', which for this purpose also includes high-taxed income and certain export financing interest."
+    reason: "This matches the condition 'All of your foreign source gross income was \"passive category income\"'. The phrase 'under the small-tax election rules' covers the text's widened definition, which adds high-taxed income and certain export financing interest."
   - key: "statements"
     status: MATCH
     reason: "This matches the condition 'All the income and any foreign taxes paid on it were reported to you on a qualified payee statement.'"
   - key: "eligible"
     status: MATCH
-    reason: "The text says you must still apply 'the general rules for determining whether a tax is creditable' and 'reduce the taxes available for credit by any amount you would have entered on line 12'. Holding-period and related-payment rules are among the Foreign Taxes Not Eligible items the text cites."
+    reason: "The text says you are 'still required to take into account the general rules for determining whether a tax is creditable', which include the holding-period and related-payment items, and to 'reduce the taxes available for credit by any amount you would have entered on line 12'. The input covers all of these."
   - key: "elect"
     status: MATCH
-    reason: "The credit is described as an election, and with it you 'can't carry over to or from any other year any foreign taxes paid or accrued in a tax year to which the election applies'."
+    reason: "The text calls this an election and says 'You can't carry over to or from any other year any foreign taxes paid or accrued in a tax year to which the election applies'. The input asks for that choice and that consequence, and as a yes/no it does not change any computed amount."
   - key: "limit"
     status: MATCH
-    reason: "The text says 'aren't more than $300 ($600 if married filing a joint return)'. Only MFJ gets $600, so $300 for single, MFS, HOH and QSS is consistent."
+    reason: "The text sets the threshold at '$300 ($600 if married filing a joint return)'. Using $300 for every other filing status and $600 for married filing jointly matches."
   - key: "zero"
     status: MATCH
-    reason: "This is a $0 constant used when there are no foreign taxes, so no credit arises. It is consistent with the text."
+    reason: "A $0 value used when there is no foreign tax is consistent with the text. With no foreign tax there is nothing to credit."
   - key: "has_tax"
     status: MATCH
-    reason: "This tests whether the foreign taxes exceed zero. It is a simple predicate on the input and does not conflict with the text."
+    reason: "This tests whether foreign taxes are positive, which is consistent with the text. The election and credit only matter when there is foreign tax."
   - key: "needs1116"
     status: MATCH
-    reason: "The election 'is available only if you meet all of the following conditions': passive income, qualified payee statements, and taxes not over $300/$600. The creditability and reduction rules still apply, and the filer must actually elect. Failing any of these is correctly treated as needing Form 1116. The estate/trust exclusion is outside the individual scope."
+    reason: "Each condition is negated correctly. Taxes over the limit fail 'aren't more than $300 ($600...)'. Non-passive income, missing payee statements, failed creditability or line 12 reduction rules, or not choosing the election all mean Form 1116 is required."
   - key: "limited"
-    status: UNCLEAR
-    reason: "The text says to enter 'the smaller of (a) your total foreign tax, or (b) your regular tax. See the instructions for line 20, later, for how to figure your regular tax.' Those line 20 instructions are not provided, so it cannot be confirmed that Form 1040 line 16 equals 'regular tax' for this purpose."
+    status: MISMATCH
+    reason: "The text says to enter 'the smaller of (a) your total foreign tax, or (b) your regular tax' and to 'See the instructions for line 20... for how to figure your regular tax'. For individuals, line 20 means 'the total of Form 1040, 1040-SR, or 1040-NR, line 16, and Schedule 2 (Form 1040), Part I, line 1z, less any tax included on line 16 from Form 4972' (adjusted for Form 8978). The program uses Form 1040 line 16 alone: it leaves out Schedule 2 line 1z and does not subtract the Form 4972 tax."
   - key: "credit"
-    status: UNCLEAR
-    reason: "The structure (smaller of foreign tax or regular tax, zero if no foreign tax, refusal to Form 1116 when the election fails) is consistent with the text. However, it depends on the 'limited' operand, whose definition of regular tax is in line 20 instructions that are not provided."
+    status: MISMATCH
+    reason: "The branching and the refusal are right. However, when foreign tax is positive the credit takes the 'limited' value, which measures regular tax as Form 1040 line 16 alone instead of 'the total of Form 1040... line 16, and Schedule 2 (Form 1040), Part I, line 1z, less any tax included on line 16 from Form 4972'. So the credit can differ from 'the smaller of (a) your total foreign tax, or (b) your regular tax.'"
 ```
 ```

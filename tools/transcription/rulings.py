@@ -5,15 +5,16 @@ Each review log (`reviews/<year>/<kind>/<form>.md`, or `<form>.<family>.md` for 
 model family other than Claude: families.py) is rendered by its tool; the rulings a
 person wrote on its disagreements live in `<form>.rulings.json` (`<form>.<family>.rulings.json`) next
 to it, keyed by the disagreement they answer (the printed line and the two sides
-of the disagreement), so a rerun that reproduces the same disagreement keeps the
-same ruling without parsing the prose log. `rule.py` writes both files;
+of the disagreement), with a context hash covering the reviewed subject,
+prompts and source excerpts. Only an unchanged disagreement in the same
+recorded context can reuse a ruling. `rule.py` writes both files;
 `check_logs.py` fails when a log's rulings and its sidecar disagree.
 
     rulings.py --migrate     # build every sidecar from the rulings already in the logs
     rulings.py --check       # report log/sidecar disagreements (exit 1 on any)
     rulings.py --prune       # drop sidecar entries whose disagreement no longer occurs
 """
-import argparse, json, os, re, sys
+import argparse, hashlib, json, os, re, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import families  # noqa: E402
@@ -46,7 +47,9 @@ def load(kind, form, family=families.DEFAULT):
         return {}
     data = json.load(open(path, encoding="utf-8"))
     fields = KINDS[kind]
-    return {tuple(r[f] for f in fields): {"ruling": r["ruling"], "drop": bool(r.get("drop"))} for r in data["rulings"]}
+    return {tuple(r[f] for f in fields): {"ruling": r["ruling"], "drop": bool(r.get("drop")),
+                                        **({"context": r["context"]} if r.get("context") else {})}
+            for r in data["rulings"]}
 
 
 def save(kind, form, rulings, family=families.DEFAULT):
@@ -57,6 +60,8 @@ def save(kind, form, rulings, family=families.DEFAULT):
         row["ruling"] = rulings[key]["ruling"]
         if rulings[key].get("drop"):
             row["drop"] = True
+        if rulings[key].get("context"):
+            row["context"] = rulings[key]["context"]
         rows.append(row)
     path = sidecar_path(kind, form, family)
     head = {"kind": kind, "form": form}
@@ -68,9 +73,28 @@ def save(kind, form, rulings, family=families.DEFAULT):
     return path
 
 
-def kept(kind, form, family=families.DEFAULT):
-    """The rulings as a writer applies them: key -> the ruling line to print."""
-    return {k: v["ruling"] + (DROPPED if v["drop"] else "") for k, v in load(kind, form, family).items()}
+def review_context(kind, text):
+    """Bind a ruling to what was reviewed, including input wording carried by the prompt.
+
+    Exclude dates and outcome counts. Class M records its prompts on case headings;
+    the other writers record one prompt in the header. Legacy rulings without a
+    context remain historical records, but are never automatically reused.
+    """
+    head = text.partition("\n## Lines\n")[0]
+    names = ("subject sha256", "prompt sha256", "prompt policy", "system sha256",
+             "model requested", "reasoning effort", "output token budget")
+    fields = {name: (re.search(rf"^\| {re.escape(name)} \| (.*?) \|$", head, re.M) or [None, ""])[1]
+              for name in names}
+    sources = re.findall(r"^\| \S+ \| [^|]* \| [^|]* \| [^|]* \| [0-9a-f]{64} \|[^\n]*$", head, re.M)
+    cases = sorted(re.findall(r"^### case (\S+) — prompt sha256 ([0-9a-f]{64});", text, re.M)) if kind == "classm" else []
+    return hashlib.sha256(json.dumps({"kind": kind, "fields": fields, "sources": sorted(sources),
+                                     "case_prompts": cases}, sort_keys=True).encode()).hexdigest()
+
+
+def kept(kind, form, family=families.DEFAULT, *, context):
+    """Only reuse rulings explicitly made in this review context."""
+    return {k: v["ruling"] + (DROPPED if v["drop"] else "") for k, v in load(kind, form, family).items()
+            if v.get("context") == context}
 
 
 def split_ruling(text):
@@ -135,7 +159,10 @@ def migrate():
             for key, line in log_sections(kind, text):
                 if line != OPEN:
                     t, drop = split_ruling(line)
-                    rulings[key] = {"ruling": t, "drop": drop}
+                    # Migration copies historical rulings; it cannot establish that
+                    # their rationale was adjudicated in the current context.
+                    prior = rulings.get(key, {})
+                    rulings[key] = {**prior, "ruling": t, "drop": drop}
             if rulings:
                 save(kind, form, rulings, family); total += len(rulings)
     print(f"rulings: {total} written to sidecars")
@@ -179,6 +206,8 @@ def check():
                     problems.append(f"{kind}/{stem}: ruling on {key[:2]} is in the log but not in {stem}.rulings.json")
                 elif s["ruling"] != t or s["drop"] != drop:
                     problems.append(f"{kind}/{stem}: ruling on {key[:2]} differs between the log and {stem}.rulings.json")
+                elif s.get("context") and s["context"] != review_context(kind, text):
+                    problems.append(f"{kind}/{stem}: ruling on {key[:2]} belongs to a different review context")
             stale += sum(1 for k in side if k not in seen)
     for p in problems:
         print(p, file=sys.stderr)

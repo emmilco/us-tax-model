@@ -29,6 +29,7 @@ def apply(form, rulings, kind="transcription", family=families.DEFAULT):
     parts = body.split("\n### ")
     applied = []
     stored = sidecar.load(kind, form, family)
+    context = sidecar.review_context(kind, text)
     for i in range(1, len(parts)):
         title, _, content = parts[i].partition("\n")
         printed = title.split(" — ")[0]
@@ -48,7 +49,7 @@ def apply(form, rulings, kind="transcription", family=families.DEFAULT):
             found = sidecar.section_key(kind, title, content)
             if found is None:
                 raise SystemExit(f"{form}: cannot key the disagreement at {printed} for the sidecar")
-            stored[found[0]] = {"ruling": ruling.rstrip(), "drop": bool(drop)}
+            stored[found[0]] = {"ruling": ruling.rstrip(), "drop": bool(drop), "context": context}
             if drop:
                 ruling = ruling.rstrip() + " [dropped]"
                 drop_from_fixture(form, printed.split(" \u2014 ")[0], rest.split(" \u2014 ")[0], family)
@@ -76,7 +77,7 @@ def drop_from_fixture(form, case_id, printed, family=families.DEFAULT):
         if c["id"] == case_id:
             c["expect"].pop(line_id, None)
             c["evidence_note"] += f"; dropped after ruling: {line_id}"
-    json.dump(fx, open(fx_path, "w"), indent=1)
+    json.dump(fx, open(fx_path, "w"), indent=2)
     open(fx_path, "a").write("\n")
 
 

@@ -29,52 +29,76 @@ Status: **AGREE**
 Value: no
 
 ### classm.ira.1 — 1b — If married filing jointly, was your spouse covered by a retirement plan?
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: no
+Model: blank
+Work: Not married filing jointly (head of household); line does not apply
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.ira.1 — 2a — Enter the amount shown below that applies to you (your IRA)
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: Line 1a is No (and 1b does not apply), so skip lines 2 through 6
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.ira.1 — 2b — Enter the amount shown below that applies to you (your spouse's IRA)
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: Skipped per the instruction after line 1; no spouse column
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.ira.1 — 3 — Enter the amount from Form 1040 or 1040-SR, line 9
-Status: **DISAGREE**
+Status: **SKIPPED**
 
-Project: $32,936.00
-Model: $0.00
+Model: blank
 Work: Skipped: line 1a is No
 
-Ruling: representation; project retained; model value dropped from the fixture. The project figures line 3 (Form 1040 line 9, $32,936.00) on every return; the model left it blank because no one is covered by a retirement plan (i1040gi p. 97, IRA Deduction Worksheet, "If you checked 'No' on line 1a (and 'No' on line 1b if married filing jointly), skip lines 2 through 6, enter the applicable amount below on line 7a (and line 7b, if applicable), and go to line 8"). Line 6 reads line 5 only when lines 2 through 6 are completed (ira.lines2to6), so line 6a is $0.00 in both and the deduction (line 12a, $0.00) agrees. A blank is not the number zero. No change to the data. [dropped]
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.ira.1 — 4 — Enter the total of the amounts from Schedule 1, lines 11 through 19a, plus 23 an
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
-
-### classm.ira.1 — 5 — Subtract line 4 from line 3. If married filing jointly, enter the result in both
-Status: **DISAGREE**
-
-Project: $32,936.00
-Model: $0.00
+Model: blank
 Work: Skipped: line 1a is No
 
-Ruling: representation; project retained; model value dropped from the fixture. The project figures line 5 (line 3 less line 4, $32,936.00 less $0.00) on every return; the model left it blank because no one is covered by a retirement plan (i1040gi p. 97, IRA Deduction Worksheet, "If you checked 'No' on line 1a (and 'No' on line 1b if married filing jointly), skip lines 2 through 6, enter the applicable amount below on line 7a (and line 7b, if applicable), and go to line 8"). Line 6 reads line 5 only when lines 2 through 6 are completed (ira.lines2to6), so line 6a is $0.00 in both and the deduction (line 12a, $0.00) agrees. A blank is not the number zero. No change to the data. [dropped]
+No numeric assertion or class M credit: the model left this line blank.
+
+
+### classm.ira.1 — 5 — Subtract line 4 from line 3. If married filing jointly, enter the result in both
+Status: **SKIPPED**
+
+Model: blank
+Work: Skipped: line 1a is No
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.ira.1 — 6a — Is the amount on line 5 less than the amount on line 2? If yes, subtract line 5 
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: Skipped: line 1a is No
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.ira.1 — 6b — Is the amount on line 5 less than the amount on line 2? If yes, subtract line 5 
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: Skipped: line 1a is No
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.ira.1 — 7a — Multiply line 6a by the percentage that applies to you, increased to a multiple 
 Status: **DISAGREE**
@@ -86,9 +110,13 @@ Work: Lines 2-6 skipped; applicable amount for under age 50 is $7,000
 Ruling: representation; project retained; model value dropped from the fixture. The filer made no traditional IRA contributions for 2025 (line 11a $0.00, on which the model agrees), and the worksheet is for figuring the deduction for such contributions (i1040gi p. 95, Line 20, "If you made contributions to a traditional IRA for 2025, you may be able to take an IRA deduction ... Use the IRA Deduction Worksheet to figure the amount, if any, of your IRA deduction"); the project shows the printed lines 7a and 7b as $0.00 for a return without traditional contributions (ira.any_trad) and the applicable amount, $7,000, otherwise (person.ira_line7). The model entered the applicable amount by the line 1 instruction (p. 97, "enter the applicable amount below on line 7a ... $7,000 if under age 50 at the end of 2025"). Line 12a, the smallest of lines 7a, 10 and 11a, is $0.00 either way, and the model agrees on it. No change to the data. [dropped]
 
 ### classm.ira.1 — 7b — Multiply line 6b by the percentage that applies to you, increased to a multiple 
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: Not applicable; not filing jointly
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.ira.1 — 8 — Enter the total of your (and your spouse's if filing jointly): wages, salaries, 
 Status: **AGREE**
@@ -111,9 +139,13 @@ Status: **AGREE**
 Value: $0.00
 
 ### classm.ira.1 — 11b — Enter traditional IRA contributions made, or that will be made by the due date o
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: No spouse IRA; not filing jointly
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.ira.1 — 12a — Enter the smallest of line 7a, 10, or 11a. This is the most you can deduct (your
 Status: **AGREE**
@@ -121,9 +153,13 @@ Status: **AGREE**
 Value: $0.00
 
 ### classm.ira.1 — 12b — Enter the smallest of line 7b, 10, or 11b. This is the most you can deduct (your
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: Not applicable; not filing jointly
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### case classm.ira.2 — prompt sha256 968a3f457c3f412123c057f133abf0b9298f304d2137690657469faea6181cce; branches: ira.joint:true, ira.joint_type:true, ira.any_trad:false, ira.anyone_covered:true, ira.lines2to6:false, ira.cov_gate:false, ira.line1a:false, ira.line1b:false, ira.line2a#1, ira.line2b#1, ira.line6a#1, ira.line6b#1, ira.line7a#1, ira.line7b#1, ira.kbh_amount#0, ira.kbh_short:false, ira.both_kinds:false, ira.over_comp:false, ira.special:false, ira.se_capital:false, ira.se_capital_gate:false, ira.special_gate:false, ira.combat_gate:false, ira.excl_gate:false, ira.deduct_less:false, ira.less_gate:false
 

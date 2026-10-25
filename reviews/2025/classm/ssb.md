@@ -148,56 +148,76 @@ Status: **AGREE**
 Value: $199,809.00
 
 ### classm.ssb.2 — 8 — $32,000 if married filing jointly; $25,000 if single, head of household, qualify
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: Married filing separately and lived with spouse during 2025: skip lines 8-15
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.ssb.2 — 9 — Is the amount on line 8 less than the amount on line 7? If yes, subtract line 8 
-Status: **DISAGREE**
+Status: **SKIPPED**
 
-Project: $199,809.00
-Model: $0.00
+Model: blank
 Work: Skipped (MFS, lived with spouse)
 
-Ruling: representation; project retained; model value dropped from the fixture. The filer is married filing separately and lived with the spouse in 2025 (i1040gi p. 32, Social Security Benefits Worksheet, line 8, "Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16. Then, go to line 17"); the model left lines 8 to 15 blank, and the project figures every line (line 9 is line 7 less a $0.00 line 8, $199,809.00) but takes line 16 as line 7 x 85% for such a filer (ssb.mfs_together), $169,837.65, on which the model agrees, as on lines 17 ($39,287.00) and 18 ($39,287.00). A blank is not the number zero. No change to the data. [dropped]
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.ssb.2 — 10 — Enter $12,000 if married filing jointly; $9,000 if single, head of household, qu
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: Skipped (MFS, lived with spouse)
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.ssb.2 — 11 — Subtract line 10 from line 9. If zero or less, enter -0-
-Status: **DISAGREE**
+Status: **SKIPPED**
 
-Project: $199,809.00
-Model: $0.00
+Model: blank
 Work: Skipped (MFS, lived with spouse)
 
-Ruling: representation; project retained; model value dropped from the fixture. The filer is married filing separately and lived with the spouse in 2025 (i1040gi p. 32, Social Security Benefits Worksheet, line 8, "Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16. Then, go to line 17"); the model left lines 8 to 15 blank, and the project figures every line (line 11 is line 9 less a $0.00 line 10, $199,809.00) but takes line 16 as line 7 x 85% for such a filer (ssb.mfs_together), $169,837.65, on which the model agrees, as on lines 17 ($39,287.00) and 18 ($39,287.00). A blank is not the number zero. No change to the data. [dropped]
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.ssb.2 — 12 — Enter the smaller of line 9 or line 10
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
-
-### classm.ssb.2 — 13 — Enter one-half of line 12
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.ssb.2 — 14 — Enter the smaller of line 2 or line 13
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.ssb.2 — 15 — Multiply line 11 by 85% (0.85). If line 11 is zero, enter -0-
-Status: **DISAGREE**
-
-Project: $169,837.65
-Model: $0.00
+Model: blank
 Work: Skipped (MFS, lived with spouse)
 
-Ruling: representation; project retained; model value dropped from the fixture. The filer is married filing separately and lived with the spouse in 2025 (i1040gi p. 32, Social Security Benefits Worksheet, line 8, "Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16. Then, go to line 17"); the model left lines 8 to 15 blank, and the project figures every line (line 15 is line 11 x 85%, $169,837.65) but takes line 16 as line 7 x 85% for such a filer (ssb.mfs_together), $169,837.65, on which the model agrees, as on lines 17 ($39,287.00) and 18 ($39,287.00). A blank is not the number zero. No change to the data. [dropped]
+No numeric assertion or class M credit: the model left this line blank.
+
+
+### classm.ssb.2 — 13 — Enter one-half of line 12
+Status: **SKIPPED**
+
+Model: blank
+Work: Skipped (MFS, lived with spouse)
+
+No numeric assertion or class M credit: the model left this line blank.
+
+
+### classm.ssb.2 — 14 — Enter the smaller of line 2 or line 13
+Status: **SKIPPED**
+
+Model: blank
+Work: Skipped (MFS, lived with spouse)
+
+No numeric assertion or class M credit: the model left this line blank.
+
+
+### classm.ssb.2 — 15 — Multiply line 11 by 85% (0.85). If line 11 is zero, enter -0-
+Status: **SKIPPED**
+
+Model: blank
+Work: Skipped (MFS, lived with spouse)
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.ssb.2 — 16 — Add lines 14 and 15
 Status: **AGREE**
@@ -247,72 +267,112 @@ Status: **AGREE**
 Value: $0.00
 
 ### classm.ssb.3 — 7 — Is the amount on line 6 less than the amount on line 5? If yes, subtract line 6 
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: Line 6 (0.00) is not less than line 5 (0.00): No, so STOP. No benefits are taxable; enter -0- on 1040 line 6b
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.ssb.3 — 8 — $32,000 if married filing jointly; $25,000 if single, head of household, qualify
-Status: **DISAGREE**
+Status: **SKIPPED**
 
-Project: $25,000.00
-Model: $0.00
+Model: blank
 Work: Not reached; the worksheet stopped at line 7
 
-Ruling: representation; project retained; model value dropped from the fixture. Line 6 is not less than line 5 here (no benefits; line 1 $0.00), so the worksheet stops at line 7 (i1040gi p. 32, Social Security Benefits Worksheet, line 7, "Is the amount on line 6 less than the amount on line 5? No. None of your social security benefits are taxable. Enter -0- on Form 1040 or 1040-SR, line 6b. STOP") and the model left the later lines blank; the project figures every line, line 8 being the $25,000 base amount for a filer not married filing jointly (p. 32, line 8), and line 7 is $0.00, so lines 9, 11 and 15 to 18 are $0.00 in both, line 18 (Form 1040 line 6b) included. A blank is not the number zero; both blind predictors likewise leave the lines after a STOP blank (scenario I10, which stops at line 9). As the earlier ruling on classm.ssb.4 line 10. No change to the data. [dropped]
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.ssb.3 — 9 — Is the amount on line 8 less than the amount on line 7? If yes, subtract line 8 
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
-
-### classm.ssb.3 — 10 — Enter $12,000 if married filing jointly; $9,000 if single, head of household, qu
-Status: **DISAGREE**
-
-Project: $9,000.00
-Model: $0.00
+Model: blank
 Work: Not reached; the worksheet stopped at line 7
 
-Ruling: representation; project retained; model value dropped from the fixture. Line 6 is not less than line 5 here (no benefits; line 1 $0.00), so the worksheet stops at line 7 (i1040gi p. 32, Social Security Benefits Worksheet, line 7, "Is the amount on line 6 less than the amount on line 5? No. None of your social security benefits are taxable. Enter -0- on Form 1040 or 1040-SR, line 6b. STOP") and the model left the later lines blank; the project figures every line, line 10 being the $9,000 amount for a filer not married filing jointly (p. 32, line 10), and line 7 is $0.00, so lines 9, 11 and 15 to 18 are $0.00 in both, line 18 (Form 1040 line 6b) included. A blank is not the number zero; both blind predictors likewise leave the lines after a STOP blank (scenario I10, which stops at line 9). As the earlier ruling on classm.ssb.4 line 10. No change to the data. [dropped]
+No numeric assertion or class M credit: the model left this line blank.
+
+
+### classm.ssb.3 — 10 — Enter $12,000 if married filing jointly; $9,000 if single, head of household, qu
+Status: **SKIPPED**
+
+Model: blank
+Work: Not reached; the worksheet stopped at line 7
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.ssb.3 — 11 — Subtract line 10 from line 9. If zero or less, enter -0-
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: Not reached; the worksheet stopped at line 7
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.ssb.3 — 12 — Enter the smaller of line 9 or line 10
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: Not reached; the worksheet stopped at line 7
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.ssb.3 — 13 — Enter one-half of line 12
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: Not reached; the worksheet stopped at line 7
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.ssb.3 — 14 — Enter the smaller of line 2 or line 13
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: Not reached; the worksheet stopped at line 7
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.ssb.3 — 15 — Multiply line 11 by 85% (0.85). If line 11 is zero, enter -0-
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: Not reached; the worksheet stopped at line 7
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.ssb.3 — 16 — Add lines 14 and 15
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: Not reached; the worksheet stopped at line 7
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.ssb.3 — 17 — Multiply line 1 by 85% (0.85)
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: Not reached; the worksheet stopped at line 7
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.ssb.3 — 18 — Taxable social security benefits. Enter the smaller of line 16 or line 17
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: Not reached; the worksheet stopped at line 7 (1040 line 6b = -0-)
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### case classm.ssb.4 — prompt sha256 c7043c79e2a96ac39d87adc31a387d6e5e7c0ced6829795415eefe7de57ca6dc; branches: ssb.pub915:false, ssb.lump_sum:false, ssb.terror_disability:false, ssb.lived_apart:false, ssb.has_benefits:false, ssb.line7:floor, ssb.mfs_base#1, ssb.line8#1, ssb.line9:floor, ssb.mfs_adjust#1, ssb.line10#1, ssb.line11:floor, ssb.line12:left, ssb.line14:left, ssb.mfs_together:false, ssb.line16#1, ssb.line18_figured:left, ssb.line18#1
 
@@ -347,72 +407,112 @@ Status: **AGREE**
 Value: $0.00
 
 ### classm.ssb.4 — 7 — Is the amount on line 6 less than the amount on line 5? If yes, subtract line 6 
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: Line 6 (0.00) is not less than line 5 (-103568.92); answer No, STOP; enter 0 on Form 1040 line 6b
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.ssb.4 — 8 — $32,000 if married filing jointly; $25,000 if single, head of household, qualify
-Status: **DISAGREE**
+Status: **SKIPPED**
 
-Project: $32,000.00
-Model: $0.00
+Model: blank
 Work: Skipped: worksheet stopped at line 7
 
-Ruling: representation; project retained; model value dropped from the fixture. Line 6 is not less than line 5 here (no benefits; line 1 $0.00), so the worksheet stops at line 7 (i1040gi p. 32, Social Security Benefits Worksheet, line 7, "Is the amount on line 6 less than the amount on line 5? No. None of your social security benefits are taxable. Enter -0- on Form 1040 or 1040-SR, line 6b. STOP") and the model left the later lines blank; the project figures every line, line 8 being the $32,000 base amount for married filing jointly (p. 32, line 8), and line 7 is $0.00, so lines 9, 11 and 15 to 18 are $0.00 in both, line 18 (Form 1040 line 6b) included. A blank is not the number zero; both blind predictors likewise leave the lines after a STOP blank (scenario I10, which stops at line 9). As the earlier ruling on classm.ssb.4 line 10. No change to the data. [dropped]
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.ssb.4 — 9 — Is the amount on line 8 less than the amount on line 7? If yes, subtract line 8 
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
-
-### classm.ssb.4 — 10 — Enter $12,000 if married filing jointly; $9,000 if single, head of household, qu
-Status: **DISAGREE**
-
-Project: $12,000.00
-Model: $0.00
+Model: blank
 Work: Skipped: worksheet stopped at line 7
 
-Ruling: representation; project retained; model value dropped from the fixture. Line 6 is not less than line 5 here, so the worksheet stops at line 7 (i1040gi p. 32, Social Security Benefits Worksheet, line 7, "None of your social security benefits are taxable. Enter -0- on Form 1040 or 1040-SR, line 6b. STOP") and the model leaves the later lines blank; the project figures every line (line 10 is the $12,000 amount for married filing jointly) and line 18 is $0 either way, as the EIC worksheet ruling. [dropped]
+No numeric assertion or class M credit: the model left this line blank.
+
+
+### classm.ssb.4 — 10 — Enter $12,000 if married filing jointly; $9,000 if single, head of household, qu
+Status: **SKIPPED**
+
+Model: blank
+Work: Skipped: worksheet stopped at line 7
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.ssb.4 — 11 — Subtract line 10 from line 9. If zero or less, enter -0-
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: Skipped: worksheet stopped at line 7
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.ssb.4 — 12 — Enter the smaller of line 9 or line 10
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: Skipped: worksheet stopped at line 7
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.ssb.4 — 13 — Enter one-half of line 12
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: Skipped: worksheet stopped at line 7
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.ssb.4 — 14 — Enter the smaller of line 2 or line 13
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: Skipped: worksheet stopped at line 7
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.ssb.4 — 15 — Multiply line 11 by 85% (0.85). If line 11 is zero, enter -0-
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: Skipped: worksheet stopped at line 7
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.ssb.4 — 16 — Add lines 14 and 15
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: Skipped: worksheet stopped at line 7
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.ssb.4 — 17 — Multiply line 1 by 85% (0.85)
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: Skipped: worksheet stopped at line 7
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.ssb.4 — 18 — Taxable social security benefits. Enter the smaller of line 16 or line 17
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: Skipped: worksheet stopped at line 7; no benefits taxable, Form 1040 line 6b = 0
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### case classm.ssb.5 — prompt sha256 8ccccc835d139a5df5bb6c1facf461f62937668101d3c7db0f46625614cd33f9; branches: ssb.pub915:false, ssb.lump_sum:false, ssb.terror_disability:false, ssb.lived_apart:true, ssb.has_benefits:false, ssb.line7:positive, ssb.mfs_base#0, ssb.line8#4, ssb.line9:positive, ssb.mfs_adjust#0, ssb.line10#4, ssb.line11:positive, ssb.line12:right, ssb.line14:left, ssb.mfs_together:false, ssb.line16#1, ssb.line18_figured:right, ssb.line18#1
 

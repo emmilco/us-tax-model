@@ -27,6 +27,13 @@
    "ruling": "Ruling: representation; project retained (as the prior rulings). The helper is the election to claim the credit without Form 1116 (i1116 pp. 1–2, the election to claim the foreign tax credit without filing Form 1116: the credit is the smaller of the total foreign tax and the regular tax when all foreign income is passive, reported on payee statements and within the $300/$600 limit); every failed condition refuses through `ftc.needs1116`. The ftc worksheet has its own transcription and render logs, which hold those pages. No change to the data."
   },
   {
+   "printed": "1",
+   "restated": "Enter the amount from ftc helper \"Credit is the smaller of creditable foreign tax and regular income tax; zero if no foreign tax\".",
+   "model": "Under the election, the credit is the smaller of total foreign tax or regular tax, and the instructions define regular tax more broadly than line 16 alone: \"Enter the total of Form 1040, 1040-SR, or 1040-NR, line 16, and Schedule 2 (Form 1040), Part I, line 1z, less any tax included on line 16 from Form 4972.\" The restatement uses f1040 line 16 alone, so it leaves out Schedule 2 line 1z and does not subtract Form 4972 tax.",
+   "ruling": "Ruling: scope/representation on supported completed individual returns; i1116 (2025) pp.1–2 requires the smaller of foreign tax and regular tax, with p.25 Line20 defining regular tax as Form1040 line16 plus Schedule2 PartI line1z less Form4972 tax, with Form8978 adjustments. s2.other explicitly excludes advance-credit repayments and every other unsupported Schedule2 tax and is enforced at s2.line3/line21. scope.other_line16 excludes Forms4972/8978 and is enforced at f1040.line16. Thus the additional terms are zero on supported completed returns; Form1040 line16 is the regular-tax amount in this slice. Stand-alone excluded cases are not claimed equivalent. The reviewer correctly identifies the full IRS rule; its reduction here depends on those declared refusals, not model noise.",
+   "context": "8842d725f1658dbb523241ba79e09d2e89219ce9f3fb3b6ebc1b94eadcec20ba"
+  },
+  {
    "printed": "11",
    "restated": "Add person.credit over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "Line 11 is \"Excess social security and tier 1 RRTA tax withheld\". The restatement adds up person.credit for each person, but person.credit isn't defined in the glossary, and the text given has no instructions on how to work out the excess. The refusal for married filing separately is a valid narrowing, but the calculation itself can't be checked.",

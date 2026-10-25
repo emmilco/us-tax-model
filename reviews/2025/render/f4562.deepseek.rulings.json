@@ -1,0 +1,37 @@
+{
+ "kind": "render",
+ "form": "f4562",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "22",
+   "restated": "Add line 12, line 14, line 17, line 19a(g), line 19b(g), line 19c(g), line 19d(g), line 19e(g), line 19f(g), and line 21.",
+   "model": "The restatement omits lines 15 and 16, lines 19g through 19j, and line 20. IRS line 22 says: 'Add amounts from line 12, lines 14 through 17, lines 19 and 20 in column (g), and line 21.'",
+   "ruling": "Ruling: scope; f4562 (2025) p. 1 line 22 includes lines 15/16, 19g-19j and 20. asset.screened refuses non-table methods, ADS, real property and other excluded property at asset.cost; asset.outside rejects periods outside the supported 3-to-20-year classes. The vehicle screen also excludes other methods/ADS. These omitted rows have no amount in a supported completed return; lines 19a-19f cover the supported GDS classes. This ruling does not claim the standalone sum supports the omitted IRS cases."
+  },
+  {
+   "printed": "25",
+   "restated": "Enter the amount from sc helper \"Line 25 for this business\".",
+   "model": "The helper sums asset.bonus_2025 for listed property, but that asset helper uses line 14, which is expressly for property '(other than listed property)'; line 25 is the special allowance for qualified listed property used more than 50% in a qualified business use.",
+   "ruling": "Ruling: representation; f4562 (2025) pp. 1-2 separates the nonlisted line 14 and listed line 25 reporting slots. asset.bonus is the reusable allowance calculation; shown_when=asset.on_19 restricts its line-14 display, and asset.f25 copies the same calculation with shown_when=asset.on_26_2025. sc.f25_assets sums asset.bonus_2025 only where asset.listed=true, then combines vehicle allowances. Reusing that numeric calculation does not report listed property in the physical line-14 slot. The source calculation and caller filtering, not the helper printed marker alone, determine the amount."
+  },
+  {
+   "printed": "26(h)",
+   "restated": "Enter the amount from sc helper \"Column (h), line 26, for this business\".",
+   "model": "The helper uses asset.dep_listed, built from line 19(g) and line 17 MACRS; Part III says 'Don’t include listed property,' while line 26(h) is the Part V depreciation deduction for listed property used more than 50% in a qualified business use.",
+   "ruling": "Ruling: representation; archived i4562 (2025) p. 15 Column (h) expressly tells filers with property used more than 50% in qualified business use to figure column (h) by following the instructions for line 19, column (g). asset.dep_listed reuses those depreciation calculations; its own shown_when=asset.listed and sc.f26_assets filters listed entries. The prior/current-year branches are selected by asset.dep_prior/dep_2025. The underlying formulas can be shared while the Part III and Part V reporting slots stay separate."
+  },
+  {
+   "printed": "28",
+   "restated": "Enter the amount from sc helper \"Line 28 for this business\".",
+   "model": "The helper adds only line 25 and line 26(h). IRS line 28 says: 'Add amounts in column (h), lines 25 through 27,' so line 27 is omitted.",
+   "ruling": "Ruling: scope; f4562 (2025) p. 2 line 28 includes column (h) lines 25-27. Line 27 is the 50%-or-less business-use/ADS route, refused by asset.listed_low at asset.basis and the corresponding vehicle-use screen. Therefore line 27 has no amount in a supported completed return, and sc.f28 adds the supported lines 25 and 26(h). No assertion that the individual line handles excluded ADS returns is claimed."
+  },
+  {
+   "printed": "29",
+   "restated": "Enter the amount from sc helper \"Line 29 for this business\".",
+   "model": "The helper uses asset.s179_2025, which references line 6(c), but line 6 instructions say 'Do not include any listed property on line 6. Enter the elected section 179 cost of listed property in column (i) of line 26.' Line 29 is limited to column (i), line 26.",
+   "ruling": "Ruling: representation; f4562 (2025) p. 2 line 29 sums column (i), line 26. asset.s179 is the supplied elected-cost calculation, displayed at 6(c) only when asset.on_19; asset.f26i copies it with shown_when=asset.on_26_2025. sc.f29_assets reads asset.s179_2025 only for asset.listed=true and adds the separate vehicle amount. Thus listed property is reported through column 26(i), not also physically entered on line 6(c); the helper value is shared between reporting slots."
+  }
+ ]
+}

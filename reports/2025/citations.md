@@ -11,11 +11,11 @@ pages, a quote found in the document, or one printed line number of a form docum
 of the form's text beside three consecutive words of the label. The segments that do not are listed
 under "Locators to rewrite"; they fail the check only with `--strict`.
 
-- anchors: 2340
+- anchors: 2354
 - anchors ruled: 45
-- quotes: 1281
+- quotes: 1283
 - quotes ruled: 4
-- segments checked: 2425
+- segments checked: 2439
 - findings without a ruling: 0
 - rulings no anchor uses: 0
 
@@ -25,14 +25,14 @@ under "Locators to rewrite"; they fail the check only with `--strict`.
 - computed-line segments rejected: none: 160
 - computed-line segments rejected: span: 54
 - computed-line segments with a quote and no page: 120
-- computed-line segments with pages: 1153
-- form-line locators: 263
+- computed-line segments with pages: 1158
+- form-line locators: 258
 - form-line locators not placed: 21
-- form-line locators on a booklet: 40
-- form-line locators verified: 202
+- form-line locators on a booklet: 36
+- form-line locators verified: 201
 - quotes without a page found: 103
 - quotes without a page not found: 17
-- locators to rewrite: 305
+- locators to rewrite: 301
 
 ## Locators to rewrite
 
@@ -83,7 +83,7 @@ the line, the segment as written and what the check needs instead.
 ### f2441 (2)
 
 - `f2441.household_notice` (`forms/2025/f2441.yaml:269`) — “Form 2441 (2025), Part I, “Caution. If the care provider is your household employee, you may owe employment taxes. For details, see the Instructions for Schedule H (Form 1040).”” — the quote was not found in f2441: quote the text as printed, on a page locator
-- `f2441.line24_20_21` (`forms/2025/f2441.yaml:1220`) — “Form 2441 (2025), lines 24 and 25” — several lines place nothing: cite the one printed line this value comes from, or a page with a quote
+- `f2441.line24_20_21` (`forms/2025/f2441.yaml:1222`) — “Form 2441 (2025), lines 24 and 25” — several lines place nothing: cite the one printed line this value comes from, or a page with a quote
 
 ### f4562 (1)
 
@@ -141,13 +141,6 @@ the line, the segment as written and what the check needs instead.
 - `f8995.line13` (`forms/2025/f8995.yaml:194`) — “Form 8995 (2025), lines 1–17” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
 - `f8995.line14` (`forms/2025/f8995.yaml:206`) — “Form 8995 (2025), lines 1–17” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
 - `f8995.line15` (`forms/2025/f8995.yaml:219`) — “Form 8995 (2025), lines 1–17” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
-
-### ftc (4)
-
-- `ftc.has_tax` (`forms/2025/ftc.yaml:104`) — “line 20 regular tax” — a line number on i1116, not a form: a page (`p. N, <heading>`) with a quote
-- `ftc.needs1116` (`forms/2025/ftc.yaml:141`) — “line 20 regular tax” — a line number on i1116, not a form: a page (`p. N, <heading>`) with a quote
-- `ftc.limited` (`forms/2025/ftc.yaml:154`) — “line 20 regular tax” — a line number on i1116, not a form: a page (`p. N, <heading>`) with a quote
-- `ftc.credit` (`forms/2025/ftc.yaml:178`) — “line 20 regular tax” — a line number on i1116, not a form: a page (`p. N, <heading>`) with a quote
 
 ### gift (1)
 

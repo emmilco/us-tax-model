@@ -1,0 +1,19 @@
+{
+ "kind": "transcription",
+ "form": "mq",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "mq.applies",
+   "project": "{\"args\": [{\"amount\": {\"collection\": \"person\", \"field\": \"person.mq_total\", \"op\": \"sum_over\", \"where\": null}, \"count\": {\"param\": \"sc.count2\"}, \"op\": \"multiply_count\"}, {\"amount\": {\"collection\": \"person\", \"field\": \"person.mq_q4\", \"op\": \"sum_over\", \"where\": null}, \"count\": {\"param\": \"sc.count5\"}, \"op\": \"multiply_count\"}], \"test\": \"lt\"}",
+   "second": "{\"args\": [{\"amount\": {\"collection\": \"person\", \"field\": \"person.mq_total\", \"op\": \"sum_over\", \"where\": null}, \"op\": \"multiply_rate\", \"rate\": {\"param\": \"sc.bonus_rate_40\"}}, {\"collection\": \"person\", \"field\": \"person.mq_q4\", \"op\": \"sum_over\", \"where\": null}], \"test\": \"lt\"}",
+   "ruling": "Ruling: model error; archived p946 (2025) p. 34 requires fourth-quarter bases to be more than 40% of the annual bases. The returned multiply_rate rounds the 40% product to cents under the shared IR, which changes this strict comparison. Counterexample: annual basis $1000.02 and Q4 basis $400.01. Exact 40% is $400.008, so the source test is true (5*40001 > 2*100002); the returned rate multiplication rounds to $400.01 and its strict comparison is false. This arithmetic failure remains even if its collection aggregation is supplied correctly. One model error out of one judged line exceeds the noise limit; this run earns no assertion."
+  },
+  {
+   "printed": "mq.applies",
+   "project": "{\"args\": [{\"amount\": {\"collection\": \"person\", \"field\": \"person.mq_total\", \"op\": \"sum_over\", \"where\": null}, \"count\": {\"param\": \"sc.count2\"}, \"op\": \"multiply_count\"}, {\"amount\": {\"collection\": \"person\", \"field\": \"person.mq_q4\", \"op\": \"sum_over\", \"where\": null}, \"count\": {\"param\": \"sc.count5\"}, \"op\": \"multiply_count\"}], \"test\": \"lt\"}",
+   "second": "{\"args\": [{\"amount\": {\"of\": [{\"collection\": \"asset\", \"field\": \"asset.mq_total\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"scveh\", \"field\": \"scveh.mq_total\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"sum\"}, \"op\": \"multiply_rate\", \"rate\": {\"param\": \"sc.bonus_rate_40\"}}, {\"of\": [{\"collection\": \"asset\", \"field\": \"asset.mq_q4\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"scveh\", \"field\": \"scveh.mq_q4\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"sum\"}], \"test\": \"lt\"}",
+   "ruling": "Ruling: model error; archived p946 (2025) p. 34 requires fourth-quarter bases to be more than 40% of the annual bases. The returned multiply_rate rounds the 40% product to cents under the shared IR, which changes this strict comparison. Counterexample: annual basis $1000.02 and Q4 basis $400.01. Exact 40% is $400.008, so the source test is true (5*40001 > 2*100002); the returned rate multiplication rounds to $400.01 and its strict comparison is false. This arithmetic failure remains even if its collection aggregation is supplied correctly. One model error out of one judged line exceeds the noise limit; this run earns no assertion."
+  }
+ ]
+}

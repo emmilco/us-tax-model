@@ -73,7 +73,7 @@ caught it.
 
 ### 7. Independent constructions
 
-No human line-by-line reading is claimed, so the project stands in for one with constructions that share
+No comprehensive human line-by-line reading is claimed, so the project supplements optional readings with constructions that share
 nothing but the archived pages (`spec/spec.md` section 6.5): a second transcription of each worksheet by
 an isolated model given only the pages and the schema, compared atom by atom with the project's; a render
 comparison, in which an isolated model that has not seen the YAML reads each line's English against the
@@ -86,30 +86,38 @@ is on record with its ruling. Does not guarantee: independence of the readers.
 
 ### 8. Engines
 
-`tools/engines/` generates whole returns and runs them through two engines, PolicyEngine-US 2.49.4 and
-Tax-Calculator 6.8.5, comparing line for line where the engine computes a line;
+`tools/engines/` generates whole returns and runs them through three engines, PolicyEngine-US 2.49.4,
+Tax-Calculator 6.8.5 and OpenTaxSolver 23.06, comparing line for line where the engine computes a line;
 `reports/2025/engine_differential.md` covers 1,700 returns. Every difference must be explained to a cited
 cause or the run fails; a margin is never accepted, and the current report lists no unexplained
-difference. Two line-level engines, OpenTaxSolver and UsTaxes, are being added under
+difference. The line-level OpenTaxSolver adapter is in use; UsTaxes remains to be added under
 `docs/2026-10-22_integrity_plan.md`. Guarantees: the summary lines the engines reach agree with code
 written by other people from the rules. Does not guarantee: anything about worksheet lines the engines do
-not compute; both are totals-only.
+not compute; the first two primarily reach summary lines, while OpenTaxSolver also reaches worksheet lines.
 
 ### 9. The evidence report and the scoreboard
 
 `reports/2025/evidence.md` lists every line with the classes of evidence that assert it (A, an official
-IRS example; B, human hand-work; C, a named outside calculator; M, isolated model hand-work; E, an
+IRS example; B, human hand-work; C, a named outside calculator; M, isolated model hand-work; H, human source reading; E, an
 engine; R, the project's own regression; `spec/spec.md` section 6.1). Its first line is the scoreboard,
-the share of computed lines with at least one assertion from outside the Claude model family; today it
-reads 38 of 1,510 (2.5%); B: 0, second-family M: 0, E: 38. Guarantees: the evidence behind any line can
-be looked up, and the one number the project is moving is printed first. Does not guarantee: that a line
+the share of computed lines with at least one assertion from outside the Claude model family. The
+2026-10-24 regenerated report reads 198 of 1,515 (13.1%); H: 0, B: 0, second-family M: 44, E: 163
+(the sub-counts overlap). This reflects the recorded numeric assertions after the skipped-response
+audit; it does not establish complete form or whole-return coverage. Form2441's three missing STOP
+outputs remain uncredited and its form-level review remains pending. Optional human findings no
+longer prevent report generation. This report refresh is not a new full-suite pass. Guarantees: the evidence behind any line can
+be looked up, and the one number the project is moving is printed first. H credits a source reading
+with a current receipt and the exact log committed by its named reader; it supplies no worked values
+and never fills B. The owner completed the first packet; original findings are preserved and current
+H credit remains zero. Further human packets and ruling samples are optional under the
+[2026-10-24 policy amendment](docs/2026-10-24_validation_policy.md). Does not guarantee: that a line
 with only A, Claude-family M or R assertions has been checked by anyone but one model family.
 
 ### 10. Mutation testing, properties, interview checks
 
 The mutation tool applies single-atom mutations to the data (swap `smaller_of` for `larger_of`, drop a
 floor, change an operand) and asks whether the checker or a fixture notices; `reports/2025/mutation.md`
-reports 2,269 mutants, 129 surviving, each with a written proof of equivalence, so 94.3% raw and 100.0%
+reports 2,278 mutants, 128 surviving, each with a written proof of equivalence, so 94.4% raw and 100.0%
 with equivalents excluded. Property tests check the data-level properties of spec 6.3 over 400 generated
 returns; `reports/2025/properties.md` reports 8 properties, all holding. The interview's finite path
 checks (`engine/`, `spec/spec.md` section 6.4) enumerate answer combinations: every path ends in a
@@ -131,18 +139,21 @@ it does not test for; the "why it survived" field exists to turn each such miss 
 
 ## What this does not establish
 
-From `spec/spec.md` section 3, item 11: *no human has read this encoding against the IRS text; it is
-verified by agreement among independent constructions, and every disagreement is recorded.* Until the
-constructions include a reader outside the Claude model family, the statement means agreement within one
-family; the per-line evidence report states, line by line, which lines have an assertion from outside it.
+From `spec/spec.md` section 3, item 11: *human source-reading coverage is limited to the per-line
+evidence records; independent constructions and their recorded disagreements provide the broader
+verification.* The report identifies qualifying outside-family assertions and the source of each.
+Unfinished verification is reported as a gap; adopting the requirement does not establish its completion.
 
-Every construction to date in layer 7 (the authoring, the second transcription, the render comparison,
-class M hand-work and the blind predictions) is one model family, Claude, and readers of one family can
-share a misreading as well as a text. The only evidence from outside that family today is the engines' 38
-lines; a first second-family run (DeepSeek, one form, `reports/2025/second_family.md`) is below the
-agreement floor and counts for nothing yet. The plan that changes this, adding a human reading of the
-highest-stakes lines, a second model family across every form and two line-level engines, is
-`docs/2026-10-22_integrity_plan.md`.
+The original layer-7 constructions used one model family, Claude. Flash has now completed transcription
+and render calls over all 55 forms and worked six active Form 2441 cases and one W-2 return. Many
+source disagreements and three blank numeric outputs after a Form2441 STOP remain; the second
+family has not been promoted. The regenerated scoreboard credits 198 computed lines across the
+recorded engine and second-family worked-value assertions; complete-form coverage remains separate.
+Current source-reading eligibility is in `reports/2025/second_family.md`. Transcription/render readings are
+reported separately and are not yet wired into the scoreboard. The amended integrity plan strengthens
+second-family and engine checks, with human readings optional. Online tax interpretation is recorded
+as non-authoritative corroboration under `research/secondary/`; it earns no scoreboard credit and
+stays separate from blind source-only model requests.
 
 The IRS forms and instructions are not the law. They embed judgments about the Internal Revenue Code that
 are not announced, and this project encodes the published procedure, judgments included; where the text

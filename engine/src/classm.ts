@@ -14,6 +14,7 @@ import { evaluateAll } from "./eval.js";
 import type { EvalResult, Value } from "./eval.js";
 import { sampleReturns } from "./generate.js";
 import { branchKeys } from "./branches.js";
+import { loadCases } from "./fixtures.js";
 import type { CanonicalData, Expr, FormDoc, Inputs, Line, Operand, TestExpr } from "./types.js";
 
 const ROOT = resolve(import.meta.dirname, "../..");
@@ -279,13 +280,20 @@ function buildDefJob(def: FormDoc, inputs: Inputs, r: EvalResult, inst: DefInsta
 
 export function classmJobs(args: string[]): void {
   let only: string[] | null = null; let corpusSize = 2000; let out = join(ROOT, ".classm", "jobs.json");
+  let includeFixtures = false;
   for (let i = 0; i < args.length; i++) {
     if (args[i] === "--docs") only = (args[++i] ?? "").split(",").filter(Boolean);
     else if (args[i] === "--corpus") corpusSize = Number(args[++i]);
     else if (args[i] === "--out") out = args[++i]!;
+    else if (args[i] === "--include-fixtures") includeFixtures = true;
   }
   const data = loadCanonical();
-  const corpus = sampleReturns(data, corpusSize, SEED).map((c) => roundInputs(c, data));
+  // Narrow regimes can disappear from a random corpus after a validation fix.
+  // Seed with existing non-M facts as well; expected values never enter a job.
+  const seeds = includeFixtures ? loadCases().cases
+    .filter((c) => c.evidence !== "M" && (!only || c.covers.some((id) => only.includes(id))))
+    .map((c) => c.inputs) : [];
+  const corpus = [...sampleReturns(data, corpusSize, SEED), ...seeds].map((c) => roundInputs(c, data));
   const results = corpus.map((inputs) => evaluateAll(data, inputs));
   const keysPerCase = results.map((r) => { const s = new Set<string>(); for (const d of r.derivations.values()) { const b = branchKeys(d); for (const k of [...b.sides, ...b.guards]) s.add(k); } return s; });
   const jobs: Job[] = [];
@@ -298,6 +306,12 @@ export function classmJobs(args: string[]): void {
     // Candidate cases: the document's printed lines all computed; for a collection, at least one
     // entry, every entry's worked lines computed.
     const candidates = corpus.map((_, i) => i).filter((i) => {
+      // A declared filing flag means the form is actually used. Do not ask a
+      // source reader to fill an unfiled form and credit incidental zeroes.
+      if (doc.lines.some((l) => l.id === `${doc.id}.filing` && l.type === "Bool")) {
+        const filing = results[i]!.derivations.get(`${doc.id}.filing`)?.value;
+        if (filing?.kind !== "bool" || !filing.value) return false;
+      }
       if (!isCollection) return doc.lines.filter((l) => !isHelper(l)).every((l) => computed(results[i]!.derivations.get(l.id)?.value));
       const entries = entriesOf(doc.id, results[i]!);
       // Every value derived for an entry must be computed: a refusal anywhere in the entry (a
@@ -333,6 +347,20 @@ export function classmJobs(args: string[]): void {
       let best = candidates[0]!, bestCount = nonzero(best);
       for (const i of candidates) { const c = nonzero(i); if (c > bestCount) { best = i; bestCount = c; } }
       chosen.push(best);
+    }
+    // Adding and subtracting a supplied amount has no control-flow branch.
+    // Still work a positive example for each own money input when one exists;
+    // otherwise grace-period carry-ins and forfeitures can all stay zero.
+    if (!isCollection) for (const line of doc.lines.filter((l) => l.expr.op === "input" &&
+        (l.type === "Dollars" || l.type === "NonNegDollars"))) {
+      const positive = (i: number): boolean => {
+        const v = results[i]!.derivations.get(line.id)?.value;
+        return v?.kind === "money" && v.cents > 0;
+      };
+      if (!chosen.some(positive)) {
+        const extra = candidates.find(positive);
+        if (extra !== undefined) chosen.push(extra);
+      }
     }
     let n = 0;
     for (const i of chosen) {

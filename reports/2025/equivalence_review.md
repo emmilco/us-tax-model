@@ -6,6 +6,13 @@ and checked for whether its `holds` predicate verifies the structural premises i
 This review does not judge whether the arguments are true; that is the second reader's task under
 the plan. It judges only what is checked mechanically and what is left to prose.
 
+Maintenance update, 2026-10-23 (BUG-0116): removed the eight dead entries and nine prose fallbacks
+identified below. Each of the eight mutants was re-probed and killed by fixtures; the nine remaining
+survivors are still proved by the mechanical copy-chain check. A fresh mutation run retains 2,278
+mutants, 235 checker kills, 1,915 fixture kills and 128 equivalent survivors (94.4% raw, 100% adjusted).
+The registered tables now contain 15 prose entries and 57 conditional entries. The 89-row table
+below preserves the original audit baseline; independent review and further mechanization remain open.
+
 ## What was found before the rows
 
 - **The 89 are two tables, not one.** `EQUIVALENT_IF` has 60 keyed entries, each with `reason`

@@ -171,6 +171,16 @@ function classMModel(note: string | undefined): string | undefined {
 export function evidenceReport(): void {
   const data = loadCanonical();
   const file = loadCases();
+  // H is a source reading, not a human-computed expected value (class B).
+  // The same validator runs in check_logs.py; stale, unresolved or unsigned
+  // readings cannot silently acquire credit when this command runs alone.
+  interface HumanCredit { reader: string; log: string; via: string }
+  interface HumanReadings { lines: Record<string, HumanCredit[]>; pending: string[]; problems: string[] }
+  const humanRun = spawnSync("python3", [join(ROOT, "tools/human_review/logs.py"), ...YEAR_ARGS],
+    { encoding: "utf-8", maxBuffer: 16 * 1024 * 1024 });
+  if (humanRun.status !== 0) throw new Error(`human reading validation failed: ${humanRun.stderr}`);
+  const human = JSON.parse(humanRun.stdout) as HumanReadings;
+  if (human.problems.length) throw new Error(`human reading validation failed:\n${human.problems.join("\n")}`);
   const template = (key: string) => key.includes("[") ? key.replace(/(?:[a-zA-Z0-9_]+\[[^\]]+\]\.)+/g, m => m.split(".").filter(Boolean).at(-1)!.split("[")[0]+".") : key;
   interface Classes { A: Set<string>; B: Set<string>; C: Set<string>; M: Set<string>; R: Set<string> }
   const coverage = new Map<string, Classes>();
@@ -291,24 +301,28 @@ export function evidenceReport(): void {
   }
   const creditedOutside = (id: string) => creditB.has(id) || creditM2.has(id) || creditE.has(id);
   // Scoreboard: computed lines with at least one assertion from outside the Claude family.
-  let computedN = 0, outside = 0, bLines = 0, m2Lines = 0, eLines = 0;
+  let computedN = 0, outside = 0, bLines = 0, hLines = 0, m2Lines = 0, eLines = 0;
   for (const doc of docs) for (const l of doc.lines) {
     if (!isComputed.get(l.id)) continue;
     computedN++;
     const hasB = coverage.get(l.id)!.B.size > 0 || creditB.has(l.id), hasM2 = secondFamilyM.get(l.id)!.size > 0 || creditM2.has(l.id), hasE = engineAsserted.has(l.id) || creditE.has(l.id);
     if (hasB) bLines++;
+    const hasH = (human.lines[l.id]?.length ?? 0) > 0;
+    if (hasH) hLines++;
     if (hasM2) m2Lines++;
     if (hasE) eLines++;
-    if (hasB || hasM2 || hasE) outside++;
+    if (hasB || hasH || hasM2 || hasE) outside++;
   }
   const pct = computedN === 0 ? "0.0" : (100 * outside / computedN).toFixed(1);
   const linesWith = (cls: keyof Classes) => [...coverage.values()].filter(b => b[cls].size > 0).length;
   const noneYet = (n: number) => n === 0 ? "none yet" : `${n} lines`;
-  const scoreboard = `Share of computed lines with at least one outside-family assertion: ${outside} of ${computedN} (${pct}%). B: ${bLines}, second-family M: ${m2Lines}, E: ${eLines}.`;
+  const scoreboard = `Share of computed lines with at least one outside-family assertion: ${outside} of ${computedN} (${pct}%). H (human source reading): ${hLines}, B (human worked values): ${bLines}, second-family M: ${m2Lines}, E: ${eLines}.`;
   const out: string[] = [];
   out.push("# Evidence coverage per line", "");
   out.push(`**Scoreboard.** ${scoreboard}`, "");
-  out.push("A computed line is one whose atom is not `input`, `param` or `copy`. An outside-family assertion on a line is a class B fixture (human hand-work), a class M fixture whose recorded model is not a Claude model (second-family M), or an engine assertion (E) under the rule stated below; the three sub-counts are over the same computed lines, so a line with two kinds counts once in the share. Class A, Claude-family M, C and R assertions do not move the number: the first three are one model family reading the archived text, and R is the project's own evaluator.", "");
+  out.push("A computed line is one whose atom is not `input`, `param` or `copy`. An outside-family assertion is a signed human source reading (H), a class B fixture (human worked values), a class M fixture whose recorded model is not a Claude model (second-family M), or an engine assertion (E) under the rule below. The sub-counts overlap: a line with several kinds counts once in the share. H checks the encoded rule against IRS text; B and M check worked values. Second-family transcription and render readings are reported separately in second_family.md and do not yet enter this scoreboard. Class A, Claude-family M, C and R do not move it.", "");
+  out.push("H — a MATCH verdict and a reason in the reader's own words, with a current per-line receipt covering the displayed reading, folded helpers, dependencies and sources. The log's exact contents must have been committed by its named reader. A guided question credits only its own computation. Other packets credit their printed line and helpers actually expanded in the reading; referenced amounts do not receive credit. See the linked human logs for the scope of each reading. H supplies no hand-calculated expected value and never fills the B column.", "");
+  if (human.pending.length) out.push("Optional human readings pending or ineligible (no H credit; original findings retained): " + human.pending.join("; ") + ".", "");
   out.push(`Fixtures that assert each line, by evidence class, as a count of cases (ids listed when two or fewer). A — official IRS worked example, cited. B — human hand-work recorded with the worker and the document revision; ${noneYet(linesWith("B"))}. C — a named, versioned calculator or engine record in fixtures/${YEAR}/differential/ (spec 6.1); ${noneYet(linesWith("C"))}. M — isolated model hand-work with the model, prompt hash and snapshot recorded (fixtures/${YEAR}/classm.json, reviews/${YEAR}/classm/); second-family M fixtures are those whose recorded model does not start with "claude". E — the engine differential (tools/engines; reports/${YEAR}/engine_differential.md and .json): PolicyEngine-US (PE) and Tax-Calculator (TC) run over ${summary ? summary.cases : "no"} generated returns. A line gets an E assertion only when, for at least one engine, the engine computes the line rather than taking it whole as an input, the project value was nonzero on at least ${ENGINE_MIN_NONZERO} compared returns, and fewer than half of the nonzero returns the engine reached (compared plus excluded) were excluded under an engine limitation; the cell prints each engine's compared, nonzero and excluded counts, and an engine that falls short of the rule is marked "below rule" and asserts nothing. R — recorded regression from the project's own evaluator, no class claimed; agreement with the Lean reference evaluator (reports/${YEAR}/evaluator_agreement.md) is evaluator agreement over the same data, not an independent engine, and earns no class.`, "");
   out.push(`An outside-family assertion (B, second-family M or E) on a line whose atom is \`copy\` also credits the first line along its copy chain whose atom is not \`copy\`, because a copy's value equals its source's exactly, so agreement on the copy is agreement on the source; the table marks each such credit "via <copy line>" (the chain walked, when longer than one copy), the copy line keeps its own cell, and the sub-counts above include credited lines. In this report ${creditedB + creditedM2 + creditedE === 0 ? "no assertion is" : `${creditedB + creditedM2 + creditedE} assertions are`} credited through copies (B cases: ${creditedB}; second-family M cases: ${creditedM2}; engine-line assertions: ${creditedE}); ${unresolvedAssertions === 0 ? "every asserted copy line resolved to a source" : `${unresolvedAssertions} assertions on ${unresolvedCopies.length} copy lines could not be resolved statically and stay on the copy line only (${unresolvedCopies.join(", ")})`}.`, "");
   if (summary) {
@@ -327,14 +341,15 @@ export function evidenceReport(): void {
   for (const doc of [...data.forms, ...data.defs]) {
     if (doc.lines.length === 0 || !coverage.has(doc.lines[0]!.id)) continue;
     out.push(`## ${doc.title ?? doc.id}`, "");
-    out.push("| line | A | B | C | M | E | R |", "| --- | --- | --- | --- | --- | --- | --- |");
+    out.push("| line | A | B | C | M | H | E | R |", "| --- | --- | --- | --- | --- | --- | --- | --- |");
     const gaps: string[] = [];
     for (const l of doc.lines) {
       const b = coverage.get(l.id)!;
       const asserted = b.A.size + b.B.size + b.C.size + b.M.size + b.R.size > 0 || engineAsserted.has(l.id) || creditedOutside(l.id);
       if (!asserted && !isInput.get(l.id)) { gaps.push(l.id); allGaps.push(l.id); }
       const e = [...(engineCells.get(l.id) ?? []), ...[...(creditE.get(l.id) ?? [])].map(([via, engines]) => `E via ${via} (${engines.join(", ")})`)];
-      out.push(`| ${l.id} | ${fmt(b.A)} | ${fmtWith(b.B, creditB.get(l.id))} | ${fmt(b.C)} | ${fmtWith(b.M, creditM2.get(l.id))} | ${e.length ? e.join("; ") : "—"} | ${fmt(b.R)} |`);
+      const h = human.lines[l.id]?.map(c => `[${c.reader.replaceAll("|", "\\|")}](${c.log.replace(`reviews/${YEAR}/`, `../../reviews/${YEAR}/`)})${c.via === l.id ? "" : ` via ${c.via} (folded)`}`).join("; ") ?? "—";
+      out.push(`| ${l.id} | ${fmt(b.A)} | ${fmtWith(b.B, creditB.get(l.id))} | ${fmt(b.C)} | ${fmtWith(b.M, creditM2.get(l.id))} | ${h} | ${e.length ? e.join("; ") : "—"} | ${fmt(b.R)} |`);
     }
     if (gaps.length) out.push("", `Unasserted lines: ${gaps.join(", ")}`);
     out.push("");

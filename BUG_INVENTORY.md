@@ -1335,3 +1335,523 @@ later grouping.
 - **Fix:** open; type the line `Dollars` and drop the floor, keeping the floor at line 13 where the form has it; fixture at
   negative taxable income. Explained in `engine_investigations.json` meanwhile.
 - **Tags:** floor-added; sign-only; caught-by-engine-differential; caught-by-audit
+
+## BUG-0101 — Human source readings never enter the evidence report
+
+- **Date:** 2026-10-22
+- **Caught by:** continuation audit, tracing the standard-deduction packet through `serve.py`,
+  `check_logs.py` and `engine/src/fixtures.ts`.
+- **Symptom:** a person can save a reading log, but the evidence report reads only fixtures and engine
+  comparisons. The planned human-reading credit cannot appear. The plan also calls these readings class B,
+  although spec 6.1 reserves B for human-calculated expected values.
+- **Root cause:** the packet/log tools and evidence report were implemented separately, without a complete
+  reading-to-report check.
+- **Where:** `tools/human_review/`, `tools/transcription/check_logs.py`, `engine/src/fixtures.ts`.
+- **Why it survived:** no human log existed and no test supplied one through the whole path.
+- **Fix:** add H for human source readings, separate from worked-value class B; the log checker and report
+  share a validator. Only current MATCH records with a reason, committed by the named reader with those exact
+  contents, count. Expanded helpers are credited explicitly; referenced printed lines are not.
+- **Tags:** evidence-accounting; missing-integration; caught-by-audit
+
+## BUG-0102 — A human verdict can silently attest to content the reader did not see
+
+- **Date:** 2026-10-22
+- **Caught by:** continuation audit of packet freshness and partial saves.
+- **Symptom:** the standard-deduction packet judges Form 1040 line 12e with Schedule A and person helpers,
+  but its saved subject hashes only Form 1040's rendering. Changing a folded helper does not stale the log.
+  Saving an older browser page also stamps the current subject hash onto an old verdict. Blank entries are
+  written as log records; a partial save can erase an earlier verdict.
+- **Root cause:** the server recomputes the subject at save time without checking what the browser displayed,
+  and uses one form hash for a reading spanning several forms.
+- **Where:** `tools/human_review/packet.py`, `serve.py`, `reading.py`, `tools/transcription/check_logs.py`.
+- **Why it survived:** freshness checks were copied from form-local model reviews; neither cross-form helper
+  changes nor old browser submissions were exercised.
+- **Fix:** per-line receipts cover the displayed reading, folded helpers, dependency forms, parameters,
+  source snapshots and reading tools. Saves require the browser's receipt to match. Stale saved verdicts and
+  drafts are not restored into a new packet. Blank entries stay in the browser; saving requires both a verdict
+  and a reason, and preserves other completed entries. Refuse packets built from stale canonical data.
+- **Tags:** stale-evidence; review-subject; partial-save; caught-by-audit
+
+## BUG-0103 — Evidence report can use an earlier engine-differential run
+
+- **Date:** 2026-10-22
+- **Caught by:** continuation audit of the evidence report's ordering in `tools/check_all_steps.sh`.
+- **Symptom:** `evidence` runs in the same wave as `engine_differential`, reading the summary file before
+  that run has finished. The green tree can contain a scoreboard based on the previous engine summary.
+- **Root cause:** the report was treated as independent of the differential that supplies its E column.
+- **Where:** `tools/check_all_steps.sh`.
+- **Why it survived:** the summary is deterministic when the inputs are unchanged, hiding the dependency
+  until the engine mapping or generated cases change.
+- **Fix:** run `evidence` in the following wave, after every engine-differential step has succeeded.
+- **Tags:** evidence-accounting; check-order; caught-by-audit
+
+## BUG-0104 — Standard-deduction review asks for the whole calculation in one verdict
+
+- **Date:** 2026-10-22
+- **Caught by:** the owner's use of the standard-deduction packet: "i'm being asked to verify a huge
+  amount in this one item. it's overwhelming."
+- **Symptom:** one Form 1040 line expands ten intermediate computations, their citations, exceptions and
+  examples, asking the reader to approve the entire chain at once.
+- **Root cause:** the printed line was chosen as the unit of human attention as well as evidence storage.
+- **Where:** `tools/human_review/packet.py`, `reading.py`, `logs.py`.
+- **Why it survived:** automated checks verified images, saving and evidence integration, but did not
+  establish that the amount of material was manageable for a person.
+- **Fix:** item 2 becomes fourteen short questions, shown one at a time beside their own source excerpts.
+  The English still comes from the canonical expressions, with referenced amounts named instead of expanded.
+  Each saved verdict credits only its own computation. The reader can save and stop or skip ahead without
+  approving the other questions. Full pages and implementation detail remain available on demand.
+- **Tags:** review-usability; oversized-review-unit; owner-found
+
+## BUG-0105 — Save & next appears unresponsive when required fields are missing
+
+- **Date:** 2026-10-23
+- **Caught by:** the owner's use of the review packet: "save and next doesn't work"; the live server
+  received no POST from the attempts, locating the failure before the save endpoint.
+- **Symptom:** validation stops the button when a verdict, reason or reader name is absent, but explains
+  that only in the header, which can be out of view. Required fields are not labelled consistently.
+- **Root cause:** validation feedback was separated from the button and did not focus the missing field.
+- **Where:** `tools/human_review/packet.py`.
+- **Why it survived:** the browser test prefilled every field and triggered a programmatic click; it did
+  not exercise the missing-field paths a person encounters.
+- **Fix:** label required fields, show save feedback beside the navigation, focus the field that needs
+  attention, show pending saves, prevent duplicate submissions and keep failed saves on the same question.
+  Restoring an older draft preserves the reader's notes while requiring a fresh verdict. Browser tests now
+  use pointer clicks and cover missing fields, rejected receipts and draft recovery in a temporary repo.
+- **Tags:** silent-validation; review-usability; owner-found
+
+## BUG-0106 — Second-family report still applies the superseded raw-agreement floor
+
+- **Date:** 2026-10-23
+- **Caught by:** continuation audit of integrity-plan decision 12 against `compare_families.py`.
+- **Symptom:** a correct systematic objection can disqualify a reader, while disagreements later ruled
+  model errors are not measured under the agreed ten-percent noise limit.
+- **Root cause:** the owner's replacement rule was recorded in the plan but not implemented.
+- **Where:** `tools/transcription/compare_families.py`, `check_logs.py`.
+- **Why it survived:** the report itself described the older rule and had only one second-family pilot.
+- **Fix:** count model-error rulings over the second family's judged lines per form-kind run. Findings,
+  representation, scope and ambiguity are separate. Missing/invalid/duplicate verdicts, stale sources,
+  unclassified/open rulings and a wrong model keep evidence pending. Required families must qualify;
+  optional pending results remain visible. Raw agreement is diagnostic only; current yield is explicitly
+  distinguished from historical fixed findings in the bug inventory.
+- **Tags:** evidence-accounting; wrong-acceptance-rule; caught-by-audit
+
+## BUG-0107 — Independent transcription receives labels describing the project's computations
+
+- **Date:** 2026-10-23
+- **Caught by:** integrity handoff flag, confirmed by reading the prompt builders and a Schedule A dry run.
+- **Symptom:** printed targets, exported helpers, collection fields and cross-form references expose
+  project-written labels that can name operands or arithmetic, helping the second reader follow the encoding.
+- **Root cause:** descriptive interface catalogs reused the same labels as the project's own rendering.
+- **Where:** `tools/transcription/transcribe.py`.
+- **Why it survived:** isolation checked model file/tool access, not information included in the prompt.
+- **Fix:** computed catalogs contain ids, printed markers and types only. Input questions, parameter values
+  and collection schemas remain shared interfaces, explicitly acknowledged; computed labels and expressions
+  are absent. The new prompt policy is recorded and a pre-policy transcription cannot earn second-family
+  eligibility. Offline sentinel tests check that computed labels and operands do not leak.
+- **Tags:** independence; prompt-contamination; caught-by-audit
+
+## BUG-0108 — Reusing a saved review response can falsely attach a different prompt
+
+- **Date:** 2026-10-23
+- **Caught by:** continuation audit of `--from-response` and `--dry-run` in the review tools.
+- **Symptom:** the tool writes a newly built prompt before loading an older response, then records the
+  new prompt hash as though that request had produced it. A dry run can also overwrite the saved request.
+- **Root cause:** raw response metadata was not bound to its prompt, system instructions, requested model
+  and prompt policy.
+- **Where:** `tools/transcription/transcribe.py`, `render_compare.py`, `classm.py`, `rerun_all.py`.
+- **Why it survived:** response parsing and subject freshness were checked independently of request provenance.
+- **Fix:** transcription, render and class M response receipts bind all four fields and preserve the actual request;
+  reuse requires exact equality, including the saved prompt bytes. Legacy unbound responses require a fresh
+  call. Dry runs write a separate preview. The batch driver resumes only through this validation and writes
+  progress as each job completes. Class M also rebuilds current jobs on reuse: a changed supplied
+  amount requires fresh work, and dry runs cannot overwrite actual request receipts or fixtures.
+- **Tags:** stale-evidence; false-provenance; cached-response; caught-by-audit
+
+## BUG-0109 — Definition transcription reports a qualified interface id as missing
+
+- **Date:** 2026-10-23
+- **Caught by:** the first Schedule SE second-family pilot after the prompt-independence repair.
+- **Symptom:** the model returns Schedule SE line 13 as `se.line13`; the comparison expects the shared
+  definition's bare `line13` and reports it missing without comparing the supplied arithmetic.
+- **Root cause:** the prompt mixes form-prefixed id examples with exact bare definition interfaces, and
+  the comparator has no definition-namespace normalization.
+- **Where:** `tools/transcription/transcribe.py`.
+- **Why it survived:** the earlier reader followed the project's id convention; missing outputs were
+  treated as a review dispute rather than an interface mismatch.
+- **Fix:** request exact ids consistently, describe exported printed result interfaces separately from
+  helpers, and strip a definition's own namespace only from exact published ids and their references.
+  Unknown helper names are retained; conflicting aliases fail. Arithmetic is unchanged and is still
+  compared; normalizing the Schedule SE pilot exposes a real expression difference to rule on, not an
+  automatic agreement. The raw response and its actual prompt receipt remain unchanged.
+- **Tags:** review-interface; false-missing; caught-by-second-family-pilot
+
+## BUG-0110 — Unexpected review lines can dilute the second-family noise rate
+
+- **Date:** 2026-10-23
+- **Caught by:** adversarial audit of the repaired second-family eligibility gate.
+- **Symptom:** an expected line ruled model error plus ten extra MATCH lines can appear to pass
+  the ten-percent rule, although the only requested line was wrong.
+- **Root cause:** the denominator counted every parsed line without restricting it to the expected
+  interface, and unexpected line keys did not block qualification.
+- **Where:** `tools/transcription/compare_families.py`.
+- **Why it survived:** normal review writers emit only requested lines, so valid pilot logs did not
+  exercise a malformed or hand-edited log with extra keys.
+- **Fix:** count only expected judged lines and keep reviews with unexpected keys pending. An offline
+  regression verifies that ten extra agreements cannot dilute one error out of one requested line.
+- **Tags:** evidence-accounting; wrong-denominator; caught-by-adversarial-audit
+
+## BUG-0111 — Qualifying-person disability checkbox uses age at year-end
+
+- **Date:** 2026-10-23
+- **Caught by:** DeepSeek V4 Pro render comparison of `dependent`, independently confirmed against i2441 p. 3.
+- **Symptom:** Form 2441 line 2(c) is checked for a disabled qualifying child who turns 13 during the
+  year even when all reported care was provided before the thirteenth birthday. The instructions
+  require being over age 12 at the time of care. This changes a displayed checkbox, not the tax amount.
+- **Root cause:** `dependent.dc_line2c` tests year-end age >=13 and incapacity; the interface asks about
+  care before age 13 for eligibility but does not ask whether the disabled person's care also occurred
+  at age 13 or older.
+- **Where:** `forms/2025/dependent.yaml`, `dependent.dc_line2c`.
+- **Why it survived:** existing disabled-person cases use an older child; the age-13 case is not disabled.
+  Earlier source reading accepted the year-end-age proxy.
+- **Reproduction:** copy `stage15.f2441.s8` inputs, change `dependent[a].age` from 15 to 13 and set
+  `dependent[a].dc_under13=true`; `eval --target 'dependent[a].dc_line2c'` returns true. These inputs also
+  describe a disabled child whose care occurred entirely before the birthday, when the checkbox must
+  be false. The model cannot distinguish that case from care after the birthday.
+- **Source:** archived i2441 (2025), p. 3, qualifying-person Column (c): the test is age at care, not
+  year-end age (text hash 361baee739cc7cb7b6a84c7412397cfba901c1a3e5f225a8077cb8716917887e).
+- **Fix:** staged in `docs/patches/BUG-0111.patch`: a source-worded care-timing question for a disabled
+  qualifying person turning 13, automatic answers outside that boundary, and paired before/after
+  fixtures. After rebasing the staged fixture hunk on the BUG-0120 cases, an isolated build and all
+  1,066 CLI fixtures pass, plus six targeted age/timing checks. The main tree still has 1,064 cases.
+  Not applied to the active tree. Although item 2 does not depend on dependent.yaml, registering the
+  new question changes the year-wide question bank included in every human receipt. Keep the patch
+  staged while the owner completes the active reading; applying it requires a deliberate receipt refresh.
+- **Tags:** source-reading; age-boundary; displayed-checkbox; caught-by-second-family
+
+## BUG-0112 — Raw review parser can hide duplicate judgments before validation
+
+- **Date:** 2026-10-23
+- **Caught by:** adversarial audit following BUG-0110.
+- **Symptom:** a raw render response can give MISMATCH and then MATCH for one key; the parser silently
+  retains only the latter, so the log-level duplicate check never sees the conflict. Duplicate
+  transcription ids also collapse in lookup maps. Invalid render statuses are converted to UNCLEAR.
+- **Root cause:** response parsers overwrite duplicate dictionary keys before the eligibility gate
+  reads the generated log, and coerce invalid verdicts instead of rejecting malformed output.
+- **Where:** `tools/transcription/render_compare.py`, `transcribe.py`, `classm.py`.
+- **Why it survived:** the new gate tests duplicate log headings, but real writers consume raw responses
+  before producing those headings.
+- **Fix:** reject duplicate raw verdict/worked-line keys and transcription ids, malformed line lists or ids, invalid
+  render statuses and missing reasons before writing a review log. Preserve the raw response for
+  investigation. Offline tests exercise the parser-to-log boundary, including a disappearing objection.
+- **Tags:** evidence-accounting; parser-validation; lost-disagreement; caught-by-adversarial-audit
+
+## BUG-0113 — A peer reset bypasses the review transport's retry policy
+
+- **Date:** 2026-10-23
+- **Caught by:** the full DeepSeek render run (s1a), then the fresh dependent transcription retry.
+- **Symptom:** a connection reset while reading the response terminates the job immediately,
+  although transient URL/HTTP failures use bounded backoff.
+- **Root cause:** urllib can raise ConnectionResetError directly from response-body reads rather
+  than wrapping it in URLError, the exception handled by the retry loop.
+- **Where:** `tools/transcription/transcribe.py`, `_call_deepseek` (shared transport).
+- **Why it survived:** the connection check and early pilot calls did not hit a peer reset.
+- **Fix:** catch direct ConnectionError failures and retry the identical fixed request under the
+  existing retry limit/backoff. On exhaustion fail without producing review evidence. Offline
+  tests verify identical request bytes after a reset and the bounded number of attempts.
+- **Tags:** transport; retry-policy; caught-by-full-run
+
+## BUG-0114 — Reasoning can consume the entire fixed output budget
+
+- **Date:** 2026-10-23
+- **Caught by:** full DeepSeek transcription of sc/scveh at maximum reasoning effort.
+- **Symptom:** sc returns empty content with finish_reason=length: all 65,536 completion tokens were
+  reasoning tokens. The tool reports missing YAML instead of identifying output exhaustion.
+- **Root cause:** one fixed budget covered both reasoning and the final answer, with no per-run
+  override and no rejection based on a length finish reason before parsing/credit.
+- **Where:** the shared transport/response receipt in `tools/transcription/transcribe.py` and review CLIs.
+- **Why it survived:** smaller pilot documents finished within the fixed budget.
+- **Fix:** expose `--max-output-tokens`, bind the effective output budget in response receipts and logs,
+  and reject truncated responses on both fresh calls and reuse while preserving the raw receipt.
+  Earlier bound requests without the new field retain their actual fixed 65,536 budget; they cannot
+  be relabeled as larger-budget calls. Tests cover both directions, unchanged old receipts and
+  rejection even when truncated content happens to be valid YAML. Retry large documents with
+  131,072 tokens while retaining maximum reasoning effort.
+- **Tags:** transport; output-truncation; request-provenance; caught-by-full-run
+
+## BUG-0115 — Model-family checks do not enforce the owner's selected model
+
+- **Date:** 2026-10-23
+- **Caught by:** the owner's correction to use deepseek-flash, followed by an eligibility audit.
+- **Symptom:** the tools can call Pro and qualify its logs because Pro and Flash both belong to
+  the deepseek family, even after the documentation selects Flash.
+- **Root cause:** family requirements contain no model pin; call and review eligibility checks
+  distinguish families but not the specific model the owner selected.
+- **Where:** `tools/transcription/families.json`, `families.py`, `transcribe.py`, `compare_families.py`.
+- **Why it survived:** the earlier handoff directed Pro, and the correction was initially recorded
+  in prose only. The family-level gate cannot enforce that correction.
+- **Fix:** pin deepseek-flash in families.json, reject other DeepSeek models before a network/keychain
+  call, and keep a review pending unless its requested/reported model matches the pin. Preserve
+  Pro artifacts with hashes separately; never relabel them as Flash output. Offline tests cover
+  both accidental Pro calls and Pro results under a Flash request.
+- **Tags:** model-selection; evidence-provenance; caught-by-owner
+
+## BUG-0116 — Mutation exemptions retain dead entries and silent prose fallbacks
+
+- **Date:** 2026-10-23
+- **Caught by:** integrity-plan item 1.6, the existing equivalence audit, and continuation cleanup.
+- **Symptom:** eight entries describe mutants already killed by checks/fixtures. Nine more prose
+  entries are hidden behind mechanical copy-chain checks, but could become accepted fallbacks
+  if those checks stop proving equivalence after a data change.
+- **Root cause:** the exemption tables retain earlier arguments after fixtures or mechanical
+  checks supersede them; the prose table remains an unconditional fallback.
+- **Where:** `engine/src/mutate.ts`, EQUIVALENT and EQUIVALENT_IF.
+- **Why it survived:** an unchanged adjusted score does not reveal dormant exemption entries.
+- **Fix:** remove the eight dead entries and nine shadowed prose entries. The nine surviving
+  copy-chain cases now rely on the mechanical check. Retain the other 15 prose entries and 57
+  conditional entries for the remaining independent review/mechanization work; no new exemption
+  is added.
+- **Verification:** all eight removed dead entries were re-probed and killed by fixtures. A fresh
+  2,278-mutant run retains 235 checker kills, 1,915 fixture kills and 128 equivalent survivors;
+  all nine copy-chain cases still have mechanical proofs. Raw score 94.4%, adjusted score 100%.
+- **Tags:** stale-equivalence; silent-fallback; caught-by-integrity-audit
+
+## BUG-0117 — Foreign care-provider identification choice omits a required condition
+
+- **Date:** 2026-10-23
+- **Caught by:** deepseek-flash render comparison of dcprov line 1(c); confirmed against archived i2441 p. 3.
+- **Symptom:** the LAFCP choice requires only living abroad and the foreign provider lacking a U.S.
+  identification number. The IRS also requires the provider not to be required to obtain one.
+  A provider who should have obtained a number can therefore be assigned the wrong column (c) entry.
+- **Root cause:** the input wording compresses two conditions (does not have and is not required
+  to get a U.S. taxpayer identification number) into one missing-number condition.
+- **Where:** `forms/2025/dcprov.yaml`, dcprov.tin_kind input wording and citation.
+- **Why it survived:** Claude and the earlier Pro render review accepted the shortened wording;
+  amount-based fixtures do not distinguish the provider's obligation to obtain an identifier.
+- **Fix:** add the missing not-required-to-obtain condition and its archived source sentence.
+  Applied; both Flash and Claude transcription/render reruns agree on all dcprov lines.
+  No amount, enum value or arithmetic changes.
+- **Tags:** input-wording; omitted-condition; source-reading; caught-by-flash
+
+## BUG-0118 — Review prompt preparation repeatedly uses the slow YAML parser
+
+- **Date:** 2026-10-23
+- **Caught by:** profiling dcprov render prompt preparation during the Flash run.
+- **Symptom:** preparing a three-line review takes 13.0 seconds under profiling, with 167 local
+  YAML loads consuming 12.9 seconds before the model is called.
+- **Root cause:** project catalogs repeatedly use PyYAML's Python safe loader despite the installed
+  LibYAML safe loader being available.
+- **Where:** `tools/transcription/transcribe.py`, `render_compare.py`, local project YAML reads.
+- **Why it survived:** job timings combine local preparation with model latency, hiding this cost.
+- **Fix:** use the LibYAML safe loader for local project files when installed, with the Python safe
+  loader as fallback. Keep raw model-response parsing on its existing validation path. A regression
+  compares both loaders over every form and the year parameters. The same profiled dcprov request
+  now prepares in 1.25 seconds and its prompt SHA-256 is identical; all 37 review-tool tests pass.
+- **Tags:** performance; prompt-preparation; caught-by-profiling
+
+## BUG-0119 — Dependent-care benefit expenses are limited to a payment year
+
+- **Date:** 2026-10-23
+- **Caught by:** deepseek-flash render comparison of f2441 line 16; confirmed against archived i2441 p. 5.
+- **Symptom:** the extra-expense question asks only for 2025 care paid or to be paid in 2026. Qualified
+  care incurred in 2025 but paid later has no place to be entered, understating line 16 and potentially
+  overstating taxable dependent-care benefits on Form 1040 line 1e.
+- **Root cause:** the question uses a next-year payment example as a scope limit, although the source
+  says the payment date does not matter for the Part III expense total.
+- **Where:** `forms/2025/f2441.yaml`, f2441.paid_2026 label and source wording.
+- **Why it survived:** fixtures exercise 2025 and next-year payments; the arithmetic correctly sums
+  whatever amounts are supplied, so amount tests do not detect the missing question scope.
+- **Reproduction:** adapt stage15.f2441.s4 to $4000 benefits and $4000 qualifying care incurred in
+  2025, all payable after 2026, with no current-year paid care. Following the old questions leaves
+  line 16 at zero and line 26/Form 1040 line 1e at $4000. Including all incurred expenses gives
+  line 16 $4000, excluded benefits $4000 and taxable benefits zero. Numeric witness saved in
+  `.transcription/f2441-payment-year-witness.json`.
+- **Source:** i2441 (2025), p. 5, Line 16: total qualified expenses incurred in 2025; payment timing
+  does not matter (text hash 361baee739cc7cb7b6a84c7412397cfba901c1a3e5f225a8077cb8716917887e).
+- **Fix:** broaden the existing extra-expense question to all qualifying 2025 incurred expenses not
+  already counted per person, regardless of payment date, including still-unpaid expenses. Retain
+  the existing input id for fixture compatibility; no arithmetic or new interview-bank entry is needed.
+  Applied; both families' affected render reruns now mark line 16 MATCH. The main build,
+  all 1055 then-current CLI fixtures and citation checks pass. All 14 active item-2 receipts
+  remain unchanged. The older transcription ruling's incorrect payment-year premise was
+  explicitly corrected; the archived prior ruling remains available.
+- **Tags:** input-wording; omitted-expenses; taxable-benefits; caught-by-flash
+
+## BUG-0120 — Dependent-care forfeiture check includes prior-year benefits
+
+- **Date:** 2026-10-23
+- **Caught by:** deepseek-flash render comparison of f2441 line 15, confirmed against archived i2441 p. 5.
+- **Symptom:** line 14 can exceed the current-year benefits on line 12 as long as it does not
+  exceed lines 12 and 13 together. A prior-year grace-period amount used in 2025 incorrectly
+  enlarges the allowed current-year forfeiture/carryforward.
+- **Root cause:** the validation gate compares line 14 with the subtotal used in line 15's
+  subtraction, rather than the line 12 amount the IRS explicitly says contains line 14.
+- **Where:** `forms/2025/f2441.yaml`, f2441.line14_bad and line 15 refusal remedy.
+- **Why it survived:** the question already asks for amounts included on line 12, so consistent
+  answers produce correct arithmetic; fixtures did not test inconsistent entries between the
+  two possible limits. The transcription comparator omits refusal gates from printed-line trees.
+- **Reproduction:** line 12 $1000, line 13 $500, line 14 $1200 formerly yields line 15 $300.
+  Saved before/after evaluator witnesses are `.transcription/f2441-line14-{before,after}.json`.
+- **Source:** i2441 (2025), p. 5, Line 14 limits forfeited/carried-forward amounts to those included
+  on line 12. Line 13 is a separate prior-year amount already used in the grace period.
+- **Fix:** compare line 14 directly with line 12 and correct the refusal's remedy. Three synthetic
+  regressions test one cent below, at and above the $1000 limit with a $500 prior-year carry-in;
+  the first two retain the source arithmetic and the third refuses. No new input is introduced.
+- **Tags:** validation; incorrect-bound; dependent-care-benefits; caught-by-flash
+
+## BUG-0121 — Review rulings can retain an obsolete input-wording premise
+
+- **Date:** 2026-10-23
+- **Caught by:** source adjudication after fixing BUG-0119 and rerunning the affected transcription.
+- **Symptom:** the Form 2441 line 16 transcription inherits a prior ruling whose explanation
+  incorrectly equated a 2026-only payment question with all 2025 incurred expenses, even though
+  the new review's input wording and prompt changed.
+- **Root cause:** rulings are keyed by the printed line and canonical project/model expressions.
+  Input question text and the review prompt are outside that key, although a ruling can rely on them.
+- **Where:** `tools/transcription/rulings.py` and the three review writers' reuse of stored rulings.
+- **Why it survived:** repeated identical expression trees normally justify reuse; the tools do
+  not distinguish a structural identity from a source or input-meaning argument.
+- **Immediate correction:** the current line 16 log and sidecar now explicitly identify the old
+  false premise and ground the equivalence in the corrected question. Prior artifacts are archived.
+- **Fix:** bind automatically reused rulings to the subject, prompts, source excerpts, system and
+  request settings. Class M includes every case prompt. Historical unbound rulings remain readable
+  but cannot be automatically reused; migration does not certify them in a new context. Six new
+  tests cover wording-only changes with identical trees, all three writers, legacy records and
+  dropped-value provenance. All 43 offline review-tool tests pass.
+- **Tags:** stale-ruling; input-wording; evidence-provenance; caught-by-source-adjudication
+
+## BUG-0122 — Class M sampling loses active dependent-care returns
+
+- **Date:** 2026-10-24
+- **Caught by:** the worked-value rerun after BUG-0120: all four selected cases had both care and
+  benefits false, and 16 disputes said Part III was skipped.
+- **Symptom:** the refreshed hand-work misses the benefits regime whose validation changed.
+  Incidental values from unfiled forms can be counted as agreements while the relevant cases vanish.
+- **Root cause:** jobs use a fixed random corpus without known valid regression facts, accept
+  unfiled forms, and optimize control-flow coverage without ensuring positive values for own
+  money inputs. A tighter validation gate can remove the few random active cases.
+- **Where:** `engine/src/classm.ts`, `tools/transcription/classm.py`, `rerun_all.py`.
+- **Fix:** review runs add existing non-M fixture inputs to the candidate corpus, with no expected
+  values exposed to the reviewer. Restricted runs include only fixtures covering the requested
+  documents, keeping memory bounded. An explicit per-form filing Bool must be true. The selector
+  also includes a positive example for each own money input when one can be built, so carry-ins
+  and forfeitures do not silently stay zero. Generated branch coverage remains a sample, not a
+  proof that other logical branches are unreachable.
+- **Verification:** a regression with only one random draw still selects six active cases from
+  existing facts, including positive benefits and nonzero carry-in/forfeiture. The test runs in
+  check-all. Fresh Claude and Flash worked-value reviews completed six active cases and all 1064
+  CLI fixtures pass; the discarded four-case
+  sample and its raw responses are archived under `.classm/archive/f2441-before-fixture-seeds/`.
+- **Tags:** evidence-selection; random-coverage-gap; unfiled-form; caught-by-worked-value-rerun
+
+## BUG-0123 — Blank worked-value replies are credited as numeric zero
+
+- **Date:** 2026-10-24
+- **Caught by:** source adjudication of the active Form 2441 worked-value rerun, where the model
+  explicitly left lines blank after the line 29 stop.
+- **Symptom:** a blank or skipped reply becomes zero (or false/Count0/Rate0). If the project also
+  evaluates that line to zero, the fixture records an independent M assertion for unworked arithmetic.
+  Invalid Bool strings also become false, and fractional Counts are rounded to integers.
+- **Root cause:** parse_value collapses missing presentation values into numeric values before
+  comparison, and uses permissive conversions for Boolean/count answers.
+- **Where:** `tools/transcription/classm.py`, `compare_families.py`, archived class M logs/fixtures.
+- **Fix:** preserve blank as SKIPPED, write no fixture expectation for it and exclude it from
+  judged/noise counts. Explicit zero remains an assertion. Reject invalid Boolean/fractional Count
+  replies. The archived-response audit reclassifies skipped sections and removes their assertions
+  without changing raw answers, inputs or remaining expected values; check-all enforces the audit.
+- **Verification:** 52 offline review-tool tests pass, including parser, fixture-writing, noise and
+  archive-audit regressions. The first full archive audit found 220 numeric assertions to remove
+  across 298 historical log sections; raw responses and original derived files are preserved under
+  `.classm/archive/blank-assertions-2026-10-24/` with SHA-256 hashes. Independently of those removals,
+  the refreshed Claude f2441 sample has 138 numeric agreements, 64 skipped lines and two retained
+  owner-ambiguity disputes, whose proposed values are dropped rather than credited as M.
+  Flash has 151 numeric agreements and 53 skipped lines; its M form qualification remains pending
+  three skipped required line-29 results. Skips do not enter dispute/independence-yield diagnostics.
+- **Tags:** false-evidence; blank-as-zero; permissive-parser; caught-by-worked-value-adjudication
+
+## BUG-0124 — Schedule 3 review omits the governing withholding instructions
+
+- **Date:** 2026-10-24
+- **Caught by:** adjudicating the repeated Flash Schedule 3 line 11 error, followed by inspecting
+  the actual prompt and its recorded source-page table.
+- **Symptom:** both the initial and maximum-reasoning transcription requests supply Schedule 3,
+  Form 1040 and i1040gi p. 14, but not p. 117's per-person excess-withholding calculation. The
+  model chooses the unrelated g28.line7 interface; the initial ruling treated this solely as model
+  error without identifying the missing source context.
+- **Root cause:** s3.line11 cites only the printed Schedule 3 line. The excerpt selector follows
+  that citation, while computed helper labels/expressions are deliberately hidden for independence.
+  The IRS sentence explaining the per-person computation is therefore absent.
+- **Where:** `forms/2025/s3.yaml`, s3.line11 citation; derived transcription/render review excerpts.
+- **Fix:** cite archived i1040gi p. 117 Line 11, including its instruction to figure the amount
+  separately for each spouse. Preserve the prior requests, replies and rulings with hashes and
+  rerun both families' transcription/render reviews. No expression, parameter or input changes.
+- **Qualification:** the wrong reference remains demonstrably wrong ($0 instead of $1481.80 on
+  stage13.excess_ss_you), but the earlier context was incomplete. Do not treat that run as a clean
+  source-reading test or relabel its archived rationale as having considered p. 117.
+- **Verification:** both refreshed transcriptions agree on line 11. Flash's final maximum-reasoning
+  request has no open ruling; other differences are application guards and a redundant zero floor.
+  Both refreshed render reviews accept the per-person excess-withholding calculation.
+- **Tags:** missing-review-context; citation-selection; repeated-model-error; caught-by-source-adjudication
+
+## BUG-0125 — Render review loses scoped glossary dependencies and their sources
+
+- **Date:** 2026-10-24
+- **Caught by:** the refreshed Claude Schedule 3 render review after BUG-0124: line 11 remained
+  UNCLEAR because person.eligible and person.excess were not defined, despite their governing
+  IRS page now being present. Line 1 also lacked the Form 1116 election instructions.
+- **Symptom:** a collection field such as person.credit is included, but its unqualified references
+  to printed markers "line eligible" and "line excess" are not followed. Separately, the request
+  selects sources only from the main form while exposing foreign helper calculations in the glossary.
+- **Root cause:** glossary traversal recognizes quoted helper labels, sum fields and refusal gates,
+  but omits local printed references within a foreign entry. Source selection does not use the
+  glossary dependency set.
+- **Where:** `tools/transcription/render_compare.py`, glossary traversal and source-context selection.
+- **Fix:** follow local printed references in the entry's own form scope, deduplicate definitions,
+  and include citations/parameter citations for the exposed glossary calculations. Explicit foreign
+  printed references remain incoming amounts. Input questions remain supplied records: a question
+  about a prior-year line must not expand the current-year calculation. The prompt explains the
+  glossary's local scope. Cache immutable lookup tables/patterns during a review process.
+- **Verification:** five new regressions cover closure, marker boundaries, foreign scope, prior-year
+  inputs, source coverage and absence of raw YAML from the prompt. All 57 offline review-tool tests
+  pass. The S3 preview now contains the complete person credit chain and i1040gi p.117/i1116 pp.1-2;
+  avoiding false dependencies in input questions keeps it to about 101000 characters rather than
+  378000. Five focused Flash and two Claude render reruns completed without transport/parser
+  failures; objections are source-adjudicated with explicit scope/input limits. Prior requests are archived.
+- **Tags:** incomplete-review-glossary; missing-review-sources; scope-resolution; caught-by-render-review
+
+## BUG-0126 — Foreign-tax-credit citations omit the page defining regular tax
+
+- **Date:** 2026-10-24
+- **Caught by:** refreshed Schedule 3 and foreign-tax-credit render reviews after BUG-0125.
+- **Symptom:** the supplied election instructions refer the reader to Line 20 for regular tax,
+  but the prompt includes only i1116 pp. 1–2. Reviewers cannot verify the use of Form 1040 line 16.
+- **Root cause:** ftc citations mention Line 20 while their page range selects only the election.
+- **Where:** `forms/2025/ftc.yaml`, i1116 locators; five refusal citation expectations in stage4 fixtures.
+- **Fix:** add p. 25, Line 20 to the locators and refresh both families' affected render reviews.
+  Prior requests and results are preserved with hashes. No calculation or interview changes.
+- **Scope:** p. 25 includes Schedule 2 line 1z and Form 4972/8978 adjustments. Those cases are
+  screened by s2.other and scope.other_line16; their absence on supported completed returns is
+  necessary for reducing regular tax to Form 1040 line 16. This is not a general identity.
+- **Verification:** both families' ftc/s3 render reruns completed and the scope objections are
+  adjudicated. The full fixture run passed 1060 cases and identified five citation-only differences;
+  after updating just their expected locators, all five pass through the CLI. No input, amount,
+  refusal gate or remedy changed. Default citations have zero findings; all fourteen item-2 receipts
+  remain unchanged. The review server returns HTTP 200.
+- **Tags:** missing-review-context; citation-selection; caught-by-render-review
+
+## BUG-0127 — Optional human review still blocks unrelated validation
+
+- **Date:** 2026-10-24
+- **Caught by:** implementing the owner's revised integrity policy: remaining packets and the
+  ten-ruling sample are optional; independent source and calculation checks carry the completion gate.
+- **Symptom:** a saved MISMATCH, UNCLEAR, incomplete answer or stale receipt aborts the global log
+  check and evidence report even though it supplies no human credit and may concern only presentation.
+- **Root cause:** evidence eligibility and mandatory build validation share one problems list.
+- **Where:** `tools/human_review/logs.py`, `check_logs.py`, evidence-report pending text.
+- **Fix:** report ineligible optional readings as pending with no H credit; retain hard failures for
+  malformed records, duplicate entries, invalid reader identity and incorrect committed authorship.
+  Preserve the original owner verdicts and investigate their findings separately. A missing human
+  reading cannot stand in for missing independent calculation evidence or excuse a confirmed defect.
+- **Verification:** regression checks cover stale and negative verdicts producing a report without H,
+  and structural/authorship errors remaining failures. The former logs, tool versions and fourteen
+  current receipts are preserved with hashes before the policy change.
+- **Tags:** optional-evidence; inappropriate-global-gate; owner-policy-revision

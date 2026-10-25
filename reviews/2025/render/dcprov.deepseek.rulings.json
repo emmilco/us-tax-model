@@ -1,0 +1,13 @@
+{
+ "kind": "render",
+ "form": "dcprov",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "1(c)",
+   "restated": "Input — What do you enter in column (c), the provider's identifying number? tin (you have the provider's SSN, ITIN or EIN and enter it), tax_exempt (a tax-exempt organization: enter \"Tax-Exempt\"), lafcp (you live abroad and the foreign provider has no U.S. number: enter \"LAFCP\"), see_statement (the provider did not give you the information: enter \"See Attached Statement\" and attach a statement saying so), or employer (your employer furnished the care under its dependent care plan: enter \"See W-2\" in column (b), leave column (c) blank and enter -0- in column (e))",
+   "model": "The LAFCP option says to use LAFCP whenever the foreign provider has no U.S. number, but the IRS requires that the provider 'may not have, and may not be required to get, a U.S. taxpayer identification number.'",
+   "ruling": "Ruling: finding; BUG-0117. Archived i2441 (2025) p. 3, U.S. citizens and resident aliens living abroad, permits LAFCP when the provider does not have and is not required to get a U.S. taxpayer identification number. The dcprov.tin_kind wording includes the missing-number condition but omits the not-required-to-get condition. This is an actual input-wording omission, not model error. Add the condition and source citation after the current batch, then rerun the affected reviews. No tax amount or arithmetic change is claimed."
+  }
+ ]
+}

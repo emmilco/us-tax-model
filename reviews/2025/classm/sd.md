@@ -248,9 +248,13 @@ Status: **AGREE**
 Value: $0.00
 
 ### classm.sd.1 — 22 — Do you have qualified dividends?
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: no
+Model: blank
+Work: Line 20 says don't complete lines 21 and 22
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### case classm.sd.2 — prompt sha256 1d70dc3031058c65cdaa5a9b9d13f1d7c099f4db541cff3f1e7695db536b3537; branches: sd.other_forms:false, sd.carryover:false, sd.filing4952:false, sd.screen:false, sd.filed:true, sd.line17:false, sd.line20:true, sd.limited_loss:right, sd.has_loss:true, sd.line21#0, sd.line22:true, sd.to1040#0, sd.net_gain_raw:right, sd.net_gain:floor
 
@@ -465,18 +469,22 @@ Status: **AGREE**
 Value: $-63,044.00
 
 ### classm.sd.2 — 17 — Are lines 15 and 16 both gains?
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: no
-
-### classm.sd.2 — 20 — Are lines 18 and 19 zero and are you not filing Form 4952?
-Status: **DISAGREE**
-
-Project: yes
-Model: no
+Model: blank
 Work: Line 16 is a loss, so skip lines 17-20
 
-Ruling: representation; project retained; model value dropped from the fixture. Schedule D says "If line 16 is a loss, skip lines 17 through 20 below. Then, go to line 21" and, for zero, to skip lines 17 through 21 (f1040sd p. 2, line 16), so the question on line 20 is not answered on the page; the model wrote no for a skipped line. The project answers the question from lines 18, 19 and the Form 4952 flag regardless, and uses it only where the tax-method choice is reached with a gain. No change to the data. [dropped]
+No numeric assertion or class M credit: the model left this line blank.
+
+
+### classm.sd.2 — 20 — Are lines 18 and 19 zero and are you not filing Form 4952?
+Status: **SKIPPED**
+
+Model: blank
+Work: Line 16 is a loss, so skip lines 17-20
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.sd.2 — 21 — Deductible loss, signed; zero when line 21 is skipped
 Status: **AGREE**
@@ -701,18 +709,22 @@ Status: **AGREE**
 Value: $0.00
 
 ### classm.sd.3 — 17 — Are lines 15 and 16 both gains?
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: no
-
-### classm.sd.3 — 20 — Are lines 18 and 19 zero and are you not filing Form 4952?
-Status: **DISAGREE**
-
-Project: yes
-Model: no
+Model: blank
 Work: Line 16 is zero, so skip lines 17 through 21
 
-Ruling: representation; project retained; model value dropped from the fixture. Schedule D says "If line 16 is a loss, skip lines 17 through 20 below. Then, go to line 21" and, for zero, to skip lines 17 through 21 (f1040sd p. 2, line 16), so the question on line 20 is not answered on the page; the model wrote no for a skipped line. The project answers the question from lines 18, 19 and the Form 4952 flag regardless, and uses it only where the tax-method choice is reached with a gain. No change to the data. [dropped]
+No numeric assertion or class M credit: the model left this line blank.
+
+
+### classm.sd.3 — 20 — Are lines 18 and 19 zero and are you not filing Form 4952?
+Status: **SKIPPED**
+
+Model: blank
+Work: Line 16 is zero, so skip lines 17 through 21
+
+No numeric assertion or class M credit: the model left this line blank.
+
 
 ### classm.sd.3 — 21 — Deductible loss, signed; zero when line 21 is skipped
 Status: **AGREE**
