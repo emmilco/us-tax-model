@@ -3,7 +3,8 @@
 # than the default (the newest adopted year in years.json); every step receives
 # the same arguments. tools/check_all.sh runs this and guards it.
 #
-# Steps run in three waves; the steps of a wave run side by side, each writing
+# Compile first: review tools and every build consumer import engine/dist.
+# Other steps run in three waves; the steps of a wave run side by side, each writing
 # its output to its own log, printed in the order below when the wave ends. No
 # two steps of a wave write the same file, and none reads what another of its
 # wave writes: wave 1 checks the sources and logs while it builds and renders,
@@ -48,12 +49,15 @@ wave() {
 
 # Chained with && because set -e does not apply inside a command whose status is tested.
 build_and_render() {
-  npm run compile --silent && "${node[@]}" build "$@" && "${node[@]}" render "$@"
+  "${node[@]}" build "$@" && "${node[@]}" render "$@"
 }
 
 lean_compare() {
   (cd lean && lake build taxeval >/dev/null 2>&1) && "${node[@]}" compare "$@"
 }
+
+step compile npm run compile --silent
+wave
 
 step fetch_sources python3 tools/fetch_sources.py "$@"
 step check_extraction python3 tools/check_extraction.py "$@"

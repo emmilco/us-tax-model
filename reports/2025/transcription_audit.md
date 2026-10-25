@@ -1,5 +1,48 @@
 # Transcription expression audit — 2026-10-25
 
+## Current partial-input batch after acad366
+
+The corrected source-based bank supplies ten synthetic fact records to the dependent transcriber,
+with reference answers and rationale withheld. A separate fixed interpreter checks only validated
+declarative IR; it never runs model-generated code or commands. Logs bind the policy, full bank
+hash, actual request inclusion and observed outcomes. These are finite interface examples with no
+H/B/M/engine credit, not a whole-form correctness proof.
+
+The current Claude reply passes all ten corrected cases. Current Flash has an invalid root-collection
+sum inside a dependent entry, so no contract cases are evaluated. The earlier draft Flash four-case
+pass belongs to a different archived request. Two draft negative records inherited contradictory
+qualified-expense facts (BUG-0136); corrected requests set those no-care records to zero and care=false.
+The draft bank and actual artifacts are preserved, not relabeled. A diagnostic of the earlier
+acad366 Claude reply on the corrected bank passes five cases and records that its request did not
+include the cases.
+
+| Current audit | Count |
+| --- | ---: |
+| Verified replies | 91 |
+| Passing expression checks | 35 |
+| Complete current question wording | 23 |
+| Unverified Claude prompts | 19 |
+| Legacy-limited verified receipts | 23 |
+
+Four more unusable Claude records—div, ftc, gift and otjob—now have fresh, verified replacements,
+with matching Flash runs. Nine of the ten current replacement replies pass expression checks.
+The current JSON is `.transcription/partial-input-audit-current.json`. Its 210 lost old agreements
+remain a replay diagnostic rather than a count of tax bugs or a scoreboard change.
+
+Both dividend replies guess an internal adapter quantity that the IRS does not define. BUG-0135 /
+T-064 records that source-interface gap; the explicit ruling category blocks qualification without
+counting it as model-only noise. The tax-credit primary instruction confirms the shared minimum
+rule, while a separate bounded witness rejects Flash's unnecessary Form1116 refusal when foreign
+tax is zero and no election is made. Source rulings do not imply general partial-input equivalence
+outside the declared bank. The existing care-benefit presentation ambiguity remains unchanged.
+
+Pre-batch originals are hashed under `.transcription/archive/before-partial-input-cases-2026-10-25/`
+(45 files); draft-case originals are under
+`.transcription/archive/partial-input-draft-before-coherence-fix-2026-10-25/` (bank plus ten artifacts).
+The source-case implementation and blinding details are in
+`tools/transcription/input_contracts/README.md`. The global qualification hold remains; no human
+packet is required and no authored tax formula or numeric fixture changed.
+
 ## Current replacement batch after 45876d2
 
 Twelve fresh source-only requests covered dependent, se, tcw, tax_on_amount, sb and tipjob under both selected models. Eleven pass expression checks. All 30 disputed rows are adjudicated with explicit source/domain limits; passing types alone does not resolve the dependent care interface. A separate Flash asset probe uses seven valid declared table references but fails other syntax/type checks and retains 15 optional open disputes.

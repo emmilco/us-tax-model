@@ -1,0 +1,243 @@
+{
+  "policy": "source-partial-inputs-v1",
+  "form": "dependent",
+  "tax_year": 2025,
+  "sources": [
+    {
+      "doc": "i2441",
+      "text_sha256": "361baee739cc7cb7b6a84c7412397cfba901c1a3e5f225a8077cb8716917887e",
+      "pages": [
+        1,
+        3
+      ]
+    },
+    {
+      "doc": "p503",
+      "text_sha256": "a1ff9e2c3120455f6049fc50f0af8c5b8160302c198162dede66b2c8a5640607",
+      "pages": [
+        3
+      ]
+    }
+  ],
+  "base_inputs": {
+    "$dependent": [
+      "sample"
+    ],
+    "f1040.status": "single",
+    "sa.dependent": false,
+    "f2441.care": true,
+    "dependent[sample].relationship": "child",
+    "dependent[sample].student": false,
+    "dependent[sample].disabled": false,
+    "dependent[sample].months": 12,
+    "dependent[sample].younger": true,
+    "dependent[sample].self_support": false,
+    "dependent[sample].joint_return": false,
+    "dependent[sample].citizen": true,
+    "dependent[sample].canada_mexico": false,
+    "dependent[sample].married": false,
+    "dependent[sample].tin": true,
+    "dependent[sample].work_ssn": true,
+    "dependent[sample].eic_ssn": true,
+    "dependent[sample].other_claimant": false,
+    "dependent[sample].divorced_rule": false,
+    "dependent[sample].multiple_support": false,
+    "dependent[sample].supported": true,
+    "dependent[sample].gross_income": 0,
+    "dependent[sample].dc_paid": 100000
+  },
+  "cases": [
+    {
+      "id": "P01",
+      "inputs": {
+        "dependent[sample].age": 4,
+        "dependent[sample].dc_incapable": false
+      },
+      "expect": {
+        "dependent[sample].dc_qp": {
+          "kind": "bool",
+          "value": true
+        },
+        "dependent[sample].dc_line2c": {
+          "kind": "bool",
+          "value": false
+        }
+      },
+      "basis": "i2441 p.1 Qualifying Person(s); p.3 Column(c); p503 p.3 Person qualifying for part of year. Known facts are synthetic; withheld timing facts remain unknown when relevant."
+    },
+    {
+      "id": "P02",
+      "inputs": {
+        "dependent[sample].age": 12,
+        "dependent[sample].dc_incapable": true
+      },
+      "expect": {
+        "dependent[sample].dc_qp": {
+          "kind": "bool",
+          "value": true
+        },
+        "dependent[sample].dc_line2c": {
+          "kind": "bool",
+          "value": false
+        }
+      },
+      "basis": "i2441 p.1 Qualifying Person(s); p.3 Column(c); p503 p.3 Person qualifying for part of year. Known facts are synthetic; withheld timing facts remain unknown when relevant."
+    },
+    {
+      "id": "P03",
+      "inputs": {
+        "dependent[sample].age": 13,
+        "dependent[sample].dc_incapable": true,
+        "dependent[sample].dc_under13": true,
+        "dependent[sample].dc_over12_care": false
+      },
+      "expect": {
+        "dependent[sample].dc_qp": {
+          "kind": "bool",
+          "value": true
+        },
+        "dependent[sample].dc_line2c": {
+          "kind": "bool",
+          "value": false
+        }
+      },
+      "basis": "i2441 p.1 Qualifying Person(s); p.3 Column(c); p503 p.3 Person qualifying for part of year. Known facts are synthetic; withheld timing facts remain unknown when relevant."
+    },
+    {
+      "id": "P04",
+      "inputs": {
+        "dependent[sample].age": 13,
+        "dependent[sample].dc_incapable": true,
+        "dependent[sample].dc_under13": false,
+        "dependent[sample].dc_over12_care": true
+      },
+      "expect": {
+        "dependent[sample].dc_qp": {
+          "kind": "bool",
+          "value": true
+        },
+        "dependent[sample].dc_line2c": {
+          "kind": "bool",
+          "value": true
+        }
+      },
+      "basis": "i2441 p.1 Qualifying Person(s); p.3 Column(c); p503 p.3 Person qualifying for part of year. Known facts are synthetic; withheld timing facts remain unknown when relevant."
+    },
+    {
+      "id": "P05",
+      "inputs": {
+        "dependent[sample].age": 14,
+        "dependent[sample].dc_incapable": true
+      },
+      "expect": {
+        "dependent[sample].dc_qp": {
+          "kind": "bool",
+          "value": true
+        },
+        "dependent[sample].dc_line2c": {
+          "kind": "bool",
+          "value": true
+        }
+      },
+      "basis": "i2441 p.1 Qualifying Person(s); p.3 Column(c); p503 p.3 Person qualifying for part of year. Known facts are synthetic; withheld timing facts remain unknown when relevant."
+    },
+    {
+      "id": "P06",
+      "inputs": {
+        "dependent[sample].age": 14,
+        "dependent[sample].dc_incapable": false,
+        "dependent[sample].dc_paid": 0,
+        "f2441.care": false
+      },
+      "expect": {
+        "dependent[sample].dc_qp": {
+          "kind": "bool",
+          "value": false
+        },
+        "dependent[sample].dc_line2c": {
+          "kind": "bool",
+          "value": false
+        }
+      },
+      "basis": "i2441 p.1 Qualifying Person(s); p.3 Column(c); p503 p.3 Person qualifying for part of year. Known facts are synthetic; withheld timing facts remain unknown when relevant."
+    },
+    {
+      "id": "P07",
+      "inputs": {
+        "dependent[sample].age": 13,
+        "dependent[sample].dc_incapable": false,
+        "dependent[sample].dc_under13": true
+      },
+      "expect": {
+        "dependent[sample].dc_qp": {
+          "kind": "bool",
+          "value": true
+        },
+        "dependent[sample].dc_line2c": {
+          "kind": "bool",
+          "value": false
+        }
+      },
+      "basis": "i2441 p.1 Qualifying Person(s); p.3 Column(c); p503 p.3 Person qualifying for part of year. Known facts are synthetic; withheld timing facts remain unknown when relevant."
+    },
+    {
+      "id": "P08",
+      "inputs": {
+        "dependent[sample].age": 13,
+        "dependent[sample].dc_incapable": false,
+        "dependent[sample].dc_under13": false,
+        "dependent[sample].dc_paid": 0,
+        "f2441.care": false
+      },
+      "expect": {
+        "dependent[sample].dc_qp": {
+          "kind": "bool",
+          "value": false
+        },
+        "dependent[sample].dc_line2c": {
+          "kind": "bool",
+          "value": false
+        }
+      },
+      "basis": "i2441 p.1 Qualifying Person(s); p.3 Column(c); p503 p.3 Person qualifying for part of year. Known facts are synthetic; withheld timing facts remain unknown when relevant."
+    },
+    {
+      "id": "P09",
+      "inputs": {
+        "dependent[sample].age": 13,
+        "dependent[sample].dc_incapable": true,
+        "dependent[sample].dc_under13": true
+      },
+      "expect": {
+        "dependent[sample].dc_qp": {
+          "kind": "bool",
+          "value": true
+        },
+        "dependent[sample].dc_line2c": {
+          "kind": "unknown",
+          "input": "dependent[sample].dc_over12_care"
+        }
+      },
+      "basis": "i2441 p.1 Qualifying Person(s); p.3 Column(c); p503 p.3 Person qualifying for part of year. Known facts are synthetic; withheld timing facts remain unknown when relevant."
+    },
+    {
+      "id": "P10",
+      "inputs": {
+        "dependent[sample].age": 13,
+        "dependent[sample].dc_incapable": true,
+        "dependent[sample].dc_over12_care": true
+      },
+      "expect": {
+        "dependent[sample].dc_qp": {
+          "kind": "bool",
+          "value": true
+        },
+        "dependent[sample].dc_line2c": {
+          "kind": "bool",
+          "value": true
+        }
+      },
+      "basis": "i2441 p.1 Qualifying Person(s); p.3 Column(c); p503 p.3 Person qualifying for part of year. Known facts are synthetic; withheld timing facts remain unknown when relevant."
+    }
+  ]
+}

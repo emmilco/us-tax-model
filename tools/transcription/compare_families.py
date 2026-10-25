@@ -23,6 +23,7 @@ import families  # noqa: E402
 import rulings  # noqa: E402
 import subjects  # noqa: E402
 import transcribe  # noqa: E402
+import input_contracts  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, os.path.join(ROOT, "tools"))
@@ -74,12 +75,15 @@ def parse_log(kind, path):
             "comparison_policy": field("comparison policy"), "lines": lines, "duplicates": duplicates,
             "type_policy": field("type validation policy"), "model_types": field("model type validation"),
             "input_context_policy": field("input context policy"), "complete_inputs": field("complete input context"),
+            "partial_policy": field("partial-input policy"), "partial_bank": field("partial-input bank sha256"),
+            "partial_context": field("partial-input request context"), "partial_result": field("partial-input result"),
             "sources": re.findall(r"^\| (\S+) \| [^|]* \| [^|]* \| [^|]* \| ([0-9a-f]{64}) \|(?: [^|]* \| ([0-9a-f]{64}|-) \|)?$", text, flags=re.M)}
 
 
 def ruling_category(ruling):
     """Classify an explicit ruling prefix; unclassified prose cannot silently pass."""
     for category, pattern in (("model_error", r"model[ _-]error\b"),
+                              ("interface_gap", r"interface[ _-]gap\b"),
                               ("representation", r"representation\b|equivalent\b"),
                               ("finding", r"finding\b|project[ _-](?:error|corrected)\b|correction\b"),
                               ("scope", r"scope\b"),
@@ -110,7 +114,7 @@ def quality(kind, expected, second, stale=()):
     categories = {k: ruling_category(second["lines"][k].get("ruling", "")) for k in judged
                   if second["lines"][k]["status"] != agree}
     noisy = sorted(k for k, category in categories.items() if category == "model_error")
-    pending = sorted(k for k, category in categories.items() if category in ("open", "unclassified"))
+    pending = sorted(k for k, category in categories.items() if category in ("open", "unclassified", "interface_gap"))
     blockers = []
     if stale:
         blockers.append("stale subject: " + ", ".join(stale))
@@ -123,7 +127,7 @@ def quality(kind, expected, second, stale=()):
     if second.get("duplicates"):
         blockers.append("duplicate line keys")
     if pending:
-        blockers.append(f"{len(pending)} open or unclassified rulings")
+        blockers.append(f"{len(pending)} open, unclassified or interface-gap rulings")
     below = len(noisy) * 10 > len(judged)
     if below:
         blockers.append("model-error noise above 10%")
@@ -174,6 +178,14 @@ def compare(kind, form, family):
                       if record.get("input_context_policy") != transcribe.INPUT_CONTEXT_POLICY or record.get("complete_inputs") != "pass"]
         if incomplete:
             q["blockers"].append("no verified complete input context in the request: " + ", ".join(incomplete))
+        bank = input_contracts.load(form, Y)
+        if bank:
+            untested = [fam for fam, record in ((families.DEFAULT, a), (family, b))
+                        if record.get("partial_policy") != input_contracts.POLICY
+                        or record.get("partial_bank") != input_contracts.bank_sha(bank)
+                        or record.get("partial_context") != "included" or record.get("partial_result") != "pass"]
+            if untested:
+                q["blockers"].append("no passing current source-based partial-input checks: " + ", ".join(untested))
     if kind == "transcription" and b["policy"] != "source-only-computation-v2":
         q["blockers"].append("transcription predates the prompt-independence policy")
     q["blockers"].extend(model_blockers(kind, family, b))

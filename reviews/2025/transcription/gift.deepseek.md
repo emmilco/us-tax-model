@@ -4,11 +4,16 @@ Second transcription of `Form 8283 — groups of similar noncash property` by an
 
 | field | value |
 | --- | --- |
-| date | 2026-10-23 |
+| date | 2026-10-25 |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
-| prompt sha256 | 2a98f2c533db68e92c813ab4ca689459a838d854b7a7c5aa4991608a54b5d5ce |
+| prompt sha256 | 67fd8f1109db88c74be21e0e3a4540696e91ba058d2e3755fdec3a7cf88e4461 |
 | prompt policy | source-only-computation-v2 |
+| comparison policy | checked-expression-types-v2 |
+| input context policy | complete-input-context-v1 |
+| complete input context | pass |
+| type validation policy | project-expression-types-v1 |
+| model type validation | pass |
 | system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
 | reasoning effort | provider default |
 | output token budget | 65536 |
@@ -41,17 +46,13 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 
 ```yaml
 lines:
-  - id: gift.section_b
-    printed: "(helper)"
-    label: "Whether this group is reported in Section B because it needs a qualified appraisal or other special treatment."
-    type: Bool
-    expr: {op: copy, from: gift.special}
-    note: "The Form 8283 instructions place a group in Section B when the claimed deduction or property value requires a qualified appraisal or other special treatment; the supplied screening input gift.special records exactly that condition for this tool. Publicly traded securities and the other Section A categories are outside it."
   - id: gift.allowed
     printed: "(helper)"
-    label: "Deduction allowed for this group of similar noncash property."
+    label: "Allowed deduction for this item or group of similar noncash property"
     type: NonNegDollars
-    expr: {op: copy, from: gift.deduction}
+    expr:
+      op: copy
+      from: gift.deduction
     refuses: [gift.special]
-    note: "Form 8283 is a reporting form; its instructions say not to use it to figure the charitable contribution deduction. The amount carried forward is therefore the supplied deduction before income limits, after required valuation or basis reductions. Groups needing an appraisal or other special treatment are refused."
+    note: "Form 8283 does not figure the charitable contribution deduction; it reports noncash contributions, and the instructions direct filers to Pub. 526 for the deduction. The only supplied amount for the group after required valuation/basis reductions is gift.deduction, so this helper copies it. Groups needing appraisal or other special treatment are refused via gift.special."
 ```

@@ -20,6 +20,7 @@ import rulings
 import rule
 import audit_skipped as skipped
 import audit_transcription as transcription_audit
+import input_contracts as contracts
 
 
 def log(statuses, rulings=None):
@@ -218,6 +219,12 @@ class NoiseRule(unittest.TestCase):
         result = C.quality("render", expected, second)
         self.assertEqual(result["state"], "pass")
         self.assertEqual(result["model_errors"], 0)
+
+    def test_unprovided_interface_contract_stays_pending_without_counting_as_model_noise(self):
+        result = C.quality('transcription', log(['AGREE']), log(['DISAGREE'], {0: 'interface gap; the IRS does not define this adapter'}))
+        self.assertEqual(result['state'], 'pending')
+        self.assertEqual(result['model_errors'], 0)
+        self.assertEqual(result['categories']['0'], 'interface_gap')
 
     def test_one_in_ten_model_errors_passes_but_one_in_nine_does_not(self):
         for n, state in ((10, "pass"), (9, "pending")):
@@ -467,6 +474,99 @@ process.stdout.write(JSON.stringify(samples.map(sample=>validate(sample))));"""
         text = T.reference_note({"id": "x"}, line)
         self.assertIn("printed '2'", text)
         self.assertNotIn("PRIVATE", text)
+
+
+class PartialInputContracts(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.bank = contracts.load('dependent', T.Y)
+        cls.project = T.load_form('dependent')['lines']
+
+    def assess(self, lines, prompt=None):
+        return contracts.assess('dependent', T.Y, lines, T.model_type_context(),
+                                contracts.public_prompt(self.bank) if prompt is None else prompt)
+
+    def test_authored_cases_include_decidable_and_genuinely_missing_timing(self):
+        result = self.assess(self.project)
+        self.assertEqual((result['state'], len(result['cases']), result['request_context']), ('pass', 10, 'included'))
+        unknown = next(test for test in result['cases'] if test['id'] == 'P09')['outputs'][1]
+        self.assertEqual(unknown['actual']['kind'], 'unknown')
+        self.assertEqual(unknown['actual']['input'], 'dependent[sample].dc_over12_care')
+
+    def test_negative_care_facts_do_not_inherit_qualified_expenses(self):
+        for test in contracts.cases(self.bank):
+            facts = test['inputs']
+            age = facts['dependent[sample].age']
+            incapable = facts['dependent[sample].dc_incapable']
+            if not incapable and (age >= 14 or (age == 13 and facts.get('dependent[sample].dc_under13') is False)):
+                with self.subTest(case=test['id']):
+                    self.assertEqual(facts['dependent[sample].dc_paid'], 0)
+
+    def test_type_valid_unconditional_timing_dependency_fails_partial_cases(self):
+        changed = json.loads(json.dumps(self.project))
+        next(line for line in changed if line['id'] == 'dependent.dc_qp')['expr'] = {'op': 'copy', 'from': 'dependent.dc_under13'}
+        self.assertEqual(T.validate_model_types('dependent', changed), [])
+        result = self.assess(changed)
+        self.assertEqual(result['state'], 'fail')
+        output = result['cases'][0]['outputs'][0]
+        self.assertFalse(output['pass'])
+        self.assertEqual(output['actual']['kind'], 'unknown')
+
+    def test_false_default_cannot_pass_positive_or_undetermined_box_cases(self):
+        changed = json.loads(json.dumps(self.project))
+        next(line for line in changed if line['id'] == 'dependent.dc_line2c')['expr'] = {'op': 'test', 'ne': [{'const': True}, {'const': True}]}
+        result = self.assess(changed)
+        self.assertEqual(result['state'], 'fail')
+        self.assertFalse(next(test for test in result['cases'] if test['id'] == 'P09')['pass'])
+
+    def test_invalid_count_choose_is_never_evaluated(self):
+        changed = json.loads(json.dumps(self.project))
+        next(line for line in changed if line['id'] == 'dependent.dc_count')['expr'] = {'op': 'choose', 'alternatives': [{'guard': {'op': 'test', 'eq': [{'const': True}, {'const': True}]}, 'then': 'dependent.one'}]}
+        result = self.assess(changed)
+        self.assertEqual((result['state'], result['cases']), ('invalid', []))
+
+    def test_nonboolean_refusal_gate_is_rejected_before_evaluation(self):
+        changed = json.loads(json.dumps(self.project))
+        next(line for line in changed if line['id'] == 'dependent.dc_qp')['refuses'] = ['dependent.age']
+        result = self.assess(changed)
+        self.assertEqual((result['state'], result['cases']), ('invalid', []))
+
+    def test_public_projection_never_exposes_reference_answers_or_rationales(self):
+        bank = json.loads(json.dumps(self.bank))
+        bank['cases'][0]['expect']['dependent[sample].dc_qp']['value'] = 'PRIVATE_EXPECTED'
+        bank['cases'][0]['basis'] = 'PRIVATE_RATIONALE'
+        prompt = contracts.public_prompt(bank)
+        self.assertNotIn('PRIVATE_', prompt)
+        self.assertIn('dependent[sample].age', prompt)
+
+    def test_diagnostic_without_fact_cases_in_original_request_cannot_claim_inclusion(self):
+        result = self.assess(self.project, 'Earlier actual request')
+        self.assertEqual((result['state'], result['request_context']), ('pass', 'absent'))
+
+    def test_changed_host_case_bank_invalidates_ruling_context(self):
+        header = '| comparison policy | checked-expression-types-v2 |\n'
+        header += '| partial-input bank sha256 | ' + 'a' * 64 + ' |\n'
+        self.assertNotEqual(rulings.review_context('transcription', header),
+                            rulings.review_context('transcription', header.replace('a' * 64, 'b' * 64)))
+
+    def test_required_bank_cannot_silently_disappear(self):
+        with tempfile.TemporaryDirectory() as temp, patch.object(contracts, 'DIRECTORY', Path(temp)):
+            with self.assertRaises(FileNotFoundError):
+                contracts.load('dependent', T.Y)
+
+    def test_absent_stale_or_failing_partial_checks_block_either_family(self):
+        parse = C.parse_log
+        for field, value in [('partial_context', 'absent'), ('partial_bank', 'old'), ('partial_result', 'fail')]:
+            def record(kind, path):
+                result = parse(kind, path)
+                result.update(partial_policy=contracts.POLICY, partial_bank=contracts.bank_sha(self.bank),
+                              partial_context='included', partial_result='pass')
+                if families.split_stem(Path(path).stem)[1] == 'claude':
+                    result[field] = value
+                return result
+            with self.subTest(field=field), patch.object(C, 'parse_log', side_effect=record):
+                result = C.compare('transcription', 'dependent', 'deepseek')['quality']
+                self.assertTrue(any('source-based partial-input checks: claude' in blocker for blocker in result['blockers']))
 
 
 class CompleteInputContext(unittest.TestCase):

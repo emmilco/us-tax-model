@@ -15,6 +15,7 @@ from pathlib import Path
 import compare_families as comparison
 import families
 import transcribe as T
+import input_contracts
 
 
 def sha(text):
@@ -57,7 +58,9 @@ def audit(path):
     meta = json.loads(base.with_suffix(base.suffix + ".meta.json").read_text())
     receipt = verify_saved(log, prompt, response, meta, T.subjects.current("transcription", form, T.Y))
     before = comparison.parse_log("transcription", str(path))["lines"]
-    current, extra = T.compare(form, T.load_form(form)["lines"], T.extract_yaml(response)["lines"])
+    second = T.extract_yaml(response)["lines"]
+    current, extra = T.compare(form, T.load_form(form)["lines"], second)
+    partial = input_contracts.assess(form, T.Y, second, T.model_type_context(), prompt) if input_contracts.load(form, T.Y) else None
     changes = [{"line": row["printed"], "before": before.get(row["printed"], {}).get("status", "ABSENT"),
                 "after": row["status"], "project": row["project"], "second": row["second"]}
                for row in current if before.get(row["printed"], {}).get("status") != row["status"]]
@@ -65,6 +68,7 @@ def audit(path):
             "input_context_policy": T.INPUT_CONTEXT_POLICY, "missing_input_context": T.missing_input_context(prompt),
             "type_validation_policy": T.TYPE_VALIDATION_POLICY,
             "type_errors": current.validation_errors,
+            "partial_inputs": partial,
             "before_agree": sum(row["status"] == "AGREE" for row in before.values()),
             "after_agree": sum(row["status"] == "AGREE" for row in current),
             "new_disagreements": sum(row["before"] == "AGREE" and row["after"] == "DISAGREE" for row in changes),
@@ -87,7 +91,7 @@ def main():
             results.append(audit(path))
         except (ValueError, OSError, KeyError, TypeError) as exc:
             errors.append({"log": str(path), "error": str(exc)})
-    output = {"scope": "Read-only expression type validation and re-comparison, not qualification. Original requests, logs and rulings are unchanged.",
+    output = {"scope": "Read-only expression checks, re-comparison and bounded source-based partial-input checks, not qualification. Original requests, logs and rulings are unchanged.",
               "comparison_policy": T.COMPARISON_POLICY, "results": results, "errors": errors}
     report = Path(args.report)
     report.parent.mkdir(parents=True, exist_ok=True)

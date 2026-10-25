@@ -1,6 +1,6 @@
 # Second-family review comparison — 2025
 
-Summary: 112 form-kind pair(s) with logs from Claude and deepseek; ruled model-error noise 1.0% (22/2117 second-family lines judged; pending reviews are provisional); 23 eligible, 89 pending; raw agreement 67.8% (diagnostic only); current independence yield 190 line(s); both families disputed 410
+Summary: 112 form-kind pair(s) with logs from Claude and deepseek; ruled model-error noise 0.9% (20/2117 second-family lines judged; pending reviews are provisional); 23 eligible, 89 pending; raw agreement 67.9% (diagnostic only); current independence yield 186 line(s); both families disputed 414
 
 Written by `tools/transcription/compare_families.py` on 2026-10-25 from the review logs under `reviews/2025/`. For each form with a Claude log and a second model family's log of the same kind (`<form>.<family>.md`, families.py), the lines judged in both are compared.
 
@@ -19,8 +19,8 @@ Written by `tools/transcription/compare_families.py` on 2026-10-25 from the revi
 | asset | deepseek (deepseek-flash) | 16 | 0 | 0.0% | 0/16 (0.0%) | pending | 1 | 14 | 1 | 0 |
 | carloan | deepseek (deepseek-flash) | 1 | 0 | 0.0% | 0/1 (0.0%) | pending | 0 | 1 | 0 | 0 |
 | dcprov | deepseek (deepseek-flash) | 2 | 2 | 100.0% | 0/2 (0.0%) | pending | 0 | 0 | 0 | 0 |
-| dependent | deepseek (deepseek-flash) | 14 | 1 | 7.1% | 9/14 (64.3%) | pending | 3 | 9 | 1 | 0 |
-| div | deepseek (deepseek-flash) | 1 | 0 | 0.0% | 0/1 (0.0%) | pending | 1 | 0 | 0 | 0 |
+| dependent | deepseek (deepseek-flash) | 14 | 3 | 21.4% | 6/14 (42.9%) | pending | 1 | 10 | 0 | 0 |
+| div | deepseek (deepseek-flash) | 1 | 0 | 0.0% | 0/1 (0.0%) | pending | 0 | 1 | 0 | 0 |
 | eic | deepseek (deepseek-flash) | 18 | 7 | 38.9% | 0/18 (0.0%) | pending | 1 | 10 | 0 | 0 |
 | f1040 | deepseek (deepseek-flash) | 50 | 32 | 64.0% | 0/50 (0.0%) | pending | 13 | 4 | 1 | 0 |
 | f2441 | deepseek (deepseek-flash) | 37 | 21 | 56.8% | 5/37 (13.5%) | pending | 4 | 8 | 4 | 0 |
@@ -34,7 +34,7 @@ Written by `tools/transcription/compare_families.py` on 2026-10-25 from the revi
 | f8960 | deepseek (deepseek-flash) | 25 | 18 | 72.0% | 0/25 (0.0%) | pending | 7 | 0 | 0 | 0 |
 | f8995 | deepseek (deepseek-flash) | 16 | 7 | 43.8% | 0/16 (0.0%) | pending | 4 | 5 | 0 | 0 |
 | f8995a | deepseek (deepseek-flash) | 14 | 10 | 71.4% | 0/14 (0.0%) | pending | 4 | 0 | 0 | 0 |
-| ftc | deepseek (deepseek-flash) | 1 | 0 | 0.0% | 0/1 (0.0%) | pending | 1 | 0 | 0 | 0 |
+| ftc | deepseek (deepseek-flash) | 1 | 0 | 0.0% | 1/1 (100.0%) | pending | 0 | 1 | 0 | 0 |
 | g28 | deepseek (deepseek-flash) | 7 | 1 | 14.3% | 0/7 (0.0%) | pending | 4 | 2 | 0 | 0 |
 | gift | deepseek (deepseek-flash) | 1 | 1 | 100.0% | 0/1 (0.0%) | pending | 0 | 0 | 0 | 0 |
 | household | deepseek (deepseek-flash) | 9 | 4 | 44.4% | 0/9 (0.0%) | pending | 1 | 4 | 0 | 0 |
@@ -43,7 +43,7 @@ Written by `tools/transcription/compare_families.py` on 2026-10-25 from the revi
 | ltc | deepseek (deepseek-flash) | 2 | 1 | 50.0% | 0/2 (0.0%) | pending | 0 | 1 | 0 | 0 |
 | mq | deepseek (deepseek-flash) | 1 | 0 | 0.0% | 1/1 (100.0%) | pending | 1 | 0 | 0 | 0 |
 | oi8z | deepseek (deepseek-flash) | 1 | 1 | 100.0% | 0/1 (0.0%) | pending | 0 | 0 | 0 | 0 |
-| otjob | deepseek (deepseek-flash) | 2 | 2 | 100.0% | 0/2 (0.0%) | pending | 0 | 0 | 0 | 0 |
+| otjob | deepseek (deepseek-flash) | 2 | 1 | 50.0% | 0/2 (0.0%) | pending | 0 | 1 | 0 | 0 |
 | person | deepseek (deepseek-flash) | 74 | 31 | 41.9% | 0/74 (0.0%) | pending | 15 | 27 | 1 | 0 |
 | qbi | deepseek (deepseek-flash) | 5 | 1 | 20.0% | 0/5 (0.0%) | pending | 2 | 2 | 0 | 0 |
 | qdcg | deepseek (deepseek-flash) | 26 | 25 | 96.2% | 0/26 (0.0%) | pending | 0 | 1 | 0 | 0 |
@@ -71,62 +71,62 @@ Written by `tools/transcription/compare_families.py` on 2026-10-25 from the revi
 | tipjob | deepseek (deepseek-flash) | 3 | 2 | 66.7% | 0/3 (0.0%) | pending | 0 | 0 | 1 | 0 |
 | u1250 | deepseek (deepseek-flash) | 18 | 3 | 16.7% | 0/18 (0.0%) | pending | 1 | 14 | 0 | 0 |
 | w2 | deepseek (deepseek-flash) | 5 | 3 | 60.0% | 0/5 (0.0%) | pending | 0 | 1 | 1 | 0 |
-| **all** | | 894 | 417 | 46.6% | | | 132 | 326 | 19 | 7 |
+| **all** | | 894 | 418 | 46.8% | | | 128 | 330 | 18 | 7 |
 
-Pending asset [deepseek]: 15 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude.
+Pending asset [deepseek]: 15 open, unclassified or interface-gap rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude.
 Pending carloan [deepseek]: BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending dcprov [deepseek]: BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close.
-Pending dependent [deepseek]: model-error noise above 10%; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; no passing current expression type validation: deepseek.
-Pending div [deepseek]: 1 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
-Pending eic [deepseek]: 11 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
-Pending f1040 [deepseek]: 17 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
-Pending f2441 [deepseek]: 4 open or unclassified rulings; model-error noise above 10%; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
-Pending f4562 [deepseek]: 14 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
+Pending dependent [deepseek]: model-error noise above 10%; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; no passing current expression type validation: deepseek; no passing current source-based partial-input checks: deepseek.
+Pending div [deepseek]: 1 open, unclassified or interface-gap rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close.
+Pending eic [deepseek]: 11 open, unclassified or interface-gap rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
+Pending f1040 [deepseek]: 17 open, unclassified or interface-gap rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
+Pending f2441 [deepseek]: 4 open, unclassified or interface-gap rulings; model-error noise above 10%; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
+Pending f4562 [deepseek]: 14 open, unclassified or interface-gap rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending f4952 [deepseek]: model-error noise above 10%; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
-Pending f5695 [deepseek]: 20 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
-Pending f8606 [deepseek]: 3 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
-Pending f8880 [deepseek]: 6 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
-Pending f8889 [deepseek]: 11 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
+Pending f5695 [deepseek]: 20 open, unclassified or interface-gap rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
+Pending f8606 [deepseek]: 3 open, unclassified or interface-gap rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
+Pending f8880 [deepseek]: 6 open, unclassified or interface-gap rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
+Pending f8889 [deepseek]: 11 open, unclassified or interface-gap rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending f8959 [deepseek]: BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
-Pending f8960 [deepseek]: 7 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
-Pending f8995 [deepseek]: 9 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
-Pending f8995a [deepseek]: 4 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
-Pending ftc [deepseek]: BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
-Pending g28 [deepseek]: 6 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
-Pending gift [deepseek]: BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
-Pending household [deepseek]: 5 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
+Pending f8960 [deepseek]: 7 open, unclassified or interface-gap rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
+Pending f8995 [deepseek]: 9 open, unclassified or interface-gap rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
+Pending f8995a [deepseek]: 4 open, unclassified or interface-gap rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
+Pending ftc [deepseek]: model-error noise above 10%; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close.
+Pending g28 [deepseek]: 6 open, unclassified or interface-gap rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
+Pending gift [deepseek]: BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close.
+Pending household [deepseek]: 5 open, unclassified or interface-gap rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending interest [deepseek]: BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
-Pending ira [deepseek]: 16 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
-Pending ltc [deepseek]: 1 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
+Pending ira [deepseek]: 16 open, unclassified or interface-gap rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
+Pending ltc [deepseek]: 1 open, unclassified or interface-gap rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending mq [deepseek]: model-error noise above 10%; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending oi8z [deepseek]: BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
-Pending otjob [deepseek]: BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
-Pending person [deepseek]: 42 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
-Pending qbi [deepseek]: 4 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
+Pending otjob [deepseek]: BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close.
+Pending person [deepseek]: 42 open, unclassified or interface-gap rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
+Pending qbi [deepseek]: 4 open, unclassified or interface-gap rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending qdcg [deepseek]: BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
-Pending refund [deepseek]: 8 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
-Pending retirement [deepseek]: 4 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
-Pending s1 [deepseek]: 12 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
-Pending s179 [deepseek]: 7 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
-Pending s1a [deepseek]: 33 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
-Pending s2 [deepseek]: 2 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
+Pending refund [deepseek]: 8 open, unclassified or interface-gap rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
+Pending retirement [deepseek]: 4 open, unclassified or interface-gap rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
+Pending s1 [deepseek]: 12 open, unclassified or interface-gap rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
+Pending s179 [deepseek]: 7 open, unclassified or interface-gap rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
+Pending s1a [deepseek]: 33 open, unclassified or interface-gap rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
+Pending s2 [deepseek]: 2 open, unclassified or interface-gap rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending s3 [deepseek]: BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
-Pending s8812 [deepseek]: 10 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
-Pending sa [deepseek]: 4 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
-Pending sales [deepseek]: 2 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
+Pending s8812 [deepseek]: 10 open, unclassified or interface-gap rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
+Pending sa [deepseek]: 4 open, unclassified or interface-gap rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
+Pending sales [deepseek]: 2 open, unclassified or interface-gap rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending sb [deepseek]: BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close.
-Pending sc [deepseek]: 7 missing expected lines; 34 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
+Pending sc [deepseek]: 7 missing expected lines; 34 open, unclassified or interface-gap rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending scope [deepseek]: BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
-Pending scveh [deepseek]: 19 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
-Pending sd [deepseek]: 39 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
-Pending sdtw [deepseek]: 20 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
+Pending scveh [deepseek]: 19 open, unclassified or interface-gap rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
+Pending sd [deepseek]: 39 open, unclassified or interface-gap rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
+Pending sdtw [deepseek]: 20 open, unclassified or interface-gap rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending se [deepseek]: BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close.
-Pending sli [deepseek]: 5 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
-Pending ssb [deepseek]: 6 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
+Pending sli [deepseek]: 5 open, unclassified or interface-gap rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
+Pending ssb [deepseek]: 6 open, unclassified or interface-gap rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending tax_on_amount [deepseek]: BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close.
 Pending tcw [deepseek]: BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close.
 Pending tipjob [deepseek]: BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close.
-Pending u1250 [deepseek]: 15 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
+Pending u1250 [deepseek]: 15 open, unclassified or interface-gap rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending w2 [deepseek]: BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 
 ### Independence yield
@@ -135,9 +135,6 @@ Pending w2 [deepseek]: BUG-0129: transcription qualification held until model IR
 | --- | --- | --- | --- | --- |
 | asset | deepseek | asset.mq_total | DISAGREE | (no reason given) |
 | dependent | deepseek | dependent.dc_count | DISAGREE | (no reason given) |
-| dependent | deepseek | dependent.eic_child | DISAGREE | (no reason given) |
-| dependent | deepseek | dependent.eic_ssn_child | DISAGREE | (no reason given) |
-| div | deepseek | div.screen | DISAGREE | The IRS Form 1099-DIV pages do not define a 'screen' line. I read the project interface as the total of the supplied distribution components that require scope screening; box 3 is accepted only when div.basis_reconciled is true. |
 | eic | deepseek | 6 (eic.wsb_6) | DISAGREE | (no reason given) |
 | f1040 | deepseek | 1a | DISAGREE | (no reason given) |
 | f1040 | deepseek | 25a | DISAGREE | (no reason given) |
@@ -183,7 +180,6 @@ Pending w2 [deepseek]: BUG-0129: transcription qualification held until model IR
 | f8995a | deepseek | 30 | DISAGREE | (no reason given) |
 | f8995a | deepseek | 33 | DISAGREE | Computed as Form 1040 line 11a minus lines 12e and 13b, floored at zero to keep the NonNegDollars type. |
 | f8995a | deepseek | 34 | DISAGREE | (no reason given) |
-| ftc | deepseek | ftc.credit | DISAGREE | (no reason given) |
 | g28 | deepseek | 1 | DISAGREE | The IRS line can be a collectibles gain or loss, but the declared type is NonNegDollars. In this distribution-only path, Form 8949 collectibles items are outside the computed scope; any such item is refused via sales.special, and the computed value is zero. |
 | g28 | deepseek | 2 | DISAGREE | (no reason given) |
 | g28 | deepseek | 3 | DISAGREE | (no reason given) |
@@ -286,6 +282,7 @@ Pending w2 [deepseek]: BUG-0129: transcription qualification held until model IR
 | asset | deepseek | asset.s179_2025 | DISAGREE | DISAGREE | (no reason given) |
 | carloan | deepseek | 22(iii) | DISAGREE | DISAGREE | (no reason given) |
 | dependent | deepseek | 2(c) | DISAGREE | DISAGREE | (no reason given) |
+| dependent | deepseek | 2(d) | DISAGREE | DISAGREE | (no reason given) |
 | dependent | deepseek | dependent.actc_amount | DISAGREE | DISAGREE | (no reason given) |
 | dependent | deepseek | dependent.ctc_amount | DISAGREE | DISAGREE | (no reason given) |
 | dependent | deepseek | dependent.ctc_child | DISAGREE | DISAGREE | (no reason given) |
@@ -294,6 +291,7 @@ Pending w2 [deepseek]: BUG-0129: transcription qualification held until model IR
 | dependent | deepseek | dependent.hoh_test2 | DISAGREE | DISAGREE | (no reason given) |
 | dependent | deepseek | dependent.odc_amount | DISAGREE | DISAGREE | (no reason given) |
 | dependent | deepseek | dependent.odc_person | DISAGREE | DISAGREE | (no reason given) |
+| div | deepseek | div.screen | DISAGREE | DISAGREE | The IRS pages do not define a 'screen' line. I read div.screen as the total of the special distribution components that require treatment outside ordinary dividends and capital gain distributions. Box 3 is included only when the basis-reconciliation input says it has not been established that no distribution exceeds basis, because the instructions say a return of capital is not taxable to the exte… |
 | eic | deepseek | 1 | DISAGREE | DISAGREE | (no reason given) |
 | eic | deepseek | 2 | DISAGREE | DISAGREE | (no reason given) |
 | eic | deepseek | 4b | DISAGREE | DISAGREE | (no reason given) |
@@ -370,6 +368,7 @@ Pending w2 [deepseek]: BUG-0129: transcription qualification held until model IR
 | f8995 | deepseek | 3 | DISAGREE | DISAGREE | (no reason given) |
 | f8995 | deepseek | 4 | DISAGREE | DISAGREE | (no reason given) |
 | f8995 | deepseek | 8 | DISAGREE | DISAGREE | (no reason given) |
+| ftc | deepseek | ftc.credit | DISAGREE | DISAGREE | The election instructions say to enter the smaller of total foreign tax or regular tax. The election conditions are all_passive, statements, eligible, elect, and taxes not more than the $300/$600 limit; when any fails the filer needs Form 1116, so this line refuses. |
 | g28 | deepseek | 5 | DISAGREE | DISAGREE | (no reason given) |
 | g28 | deepseek | 7 | DISAGREE | DISAGREE | (no reason given) |
 | household | deepseek | household.all_eic_ssn | DISAGREE | DISAGREE | Compared the count of persons whose eic_ssn is false to zero. |
@@ -393,6 +392,7 @@ Pending w2 [deepseek]: BUG-0129: transcription qualification held until model IR
 | ira | deepseek | ira.anyone_covered | DISAGREE | DISAGREE | (no reason given) |
 | ira | deepseek | ira.line20 | DISAGREE | DISAGREE | (no reason given) |
 | ltc | deepseek | 2(b) | DISAGREE | DISAGREE | (no reason given) |
+| otjob | deepseek | 1(b) | DISAGREE | DISAGREE | (no reason given) |
 | person | deepseek | Step 2 | DISAGREE | DISAGREE | (no reason given) |
 | person | deepseek | Step 6 | DISAGREE | DISAGREE | (no reason given) |
 | person | deepseek | person.dc_earned | DISAGREE | DISAGREE | (no reason given) |
@@ -658,39 +658,39 @@ Pending w2 [deepseek]: BUG-0129: transcription qualification held until model IR
 | w2 | deepseek (deepseek-flash) | 17 | 17 | 100.0% | 0/17 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | **all** | | 1033 | 835 | 80.8% | | | 58 | 84 | 56 | 0 |
 
-Pending asset [deepseek]: 4 open or unclassified rulings.
-Pending f1040 [deepseek]: 2 open or unclassified rulings.
-Pending f8606 [deepseek]: 1 open or unclassified rulings.
-Pending f8880 [deepseek]: 3 open or unclassified rulings.
-Pending f8960 [deepseek]: 2 open or unclassified rulings.
-Pending f8995 [deepseek]: 2 open or unclassified rulings.
-Pending f8995a [deepseek]: 1 open or unclassified rulings.
-Pending g28 [deepseek]: 5 open or unclassified rulings.
-Pending gift [deepseek]: 1 open or unclassified rulings.
-Pending household [deepseek]: 4 open or unclassified rulings.
-Pending ira [deepseek]: 5 open or unclassified rulings.
-Pending ltc [deepseek]: 1 open or unclassified rulings.
-Pending mq [deepseek]: 2 open or unclassified rulings.
-Pending oi8z [deepseek]: 1 open or unclassified rulings.
-Pending person [deepseek]: 3 open or unclassified rulings.
-Pending qbi [deepseek]: 1 open or unclassified rulings.
-Pending qdcg [deepseek]: 2 open or unclassified rulings.
-Pending refund [deepseek]: 2 open or unclassified rulings.
-Pending s1 [deepseek]: 10 open or unclassified rulings.
-Pending s179 [deepseek]: 3 open or unclassified rulings.
-Pending s1a [deepseek]: 1 open or unclassified rulings.
-Pending s2 [deepseek]: 1 open or unclassified rulings.
-Pending s8812 [deepseek]: 4 open or unclassified rulings.
-Pending sa [deepseek]: 3 open or unclassified rulings.
-Pending sales [deepseek]: 2 open or unclassified rulings.
-Pending sb [deepseek]: 2 open or unclassified rulings.
-Pending sc [deepseek]: 4 open or unclassified rulings.
-Pending scope [deepseek]: 5 open or unclassified rulings.
-Pending scveh [deepseek]: 6 open or unclassified rulings.
-Pending sdtw [deepseek]: 5 open or unclassified rulings.
-Pending se [deepseek]: 5 open or unclassified rulings.
-Pending sli [deepseek]: 3 open or unclassified rulings.
-Pending u1250 [deepseek]: 13 open or unclassified rulings.
+Pending asset [deepseek]: 4 open, unclassified or interface-gap rulings.
+Pending f1040 [deepseek]: 2 open, unclassified or interface-gap rulings.
+Pending f8606 [deepseek]: 1 open, unclassified or interface-gap rulings.
+Pending f8880 [deepseek]: 3 open, unclassified or interface-gap rulings.
+Pending f8960 [deepseek]: 2 open, unclassified or interface-gap rulings.
+Pending f8995 [deepseek]: 2 open, unclassified or interface-gap rulings.
+Pending f8995a [deepseek]: 1 open, unclassified or interface-gap rulings.
+Pending g28 [deepseek]: 5 open, unclassified or interface-gap rulings.
+Pending gift [deepseek]: 1 open, unclassified or interface-gap rulings.
+Pending household [deepseek]: 4 open, unclassified or interface-gap rulings.
+Pending ira [deepseek]: 5 open, unclassified or interface-gap rulings.
+Pending ltc [deepseek]: 1 open, unclassified or interface-gap rulings.
+Pending mq [deepseek]: 2 open, unclassified or interface-gap rulings.
+Pending oi8z [deepseek]: 1 open, unclassified or interface-gap rulings.
+Pending person [deepseek]: 3 open, unclassified or interface-gap rulings.
+Pending qbi [deepseek]: 1 open, unclassified or interface-gap rulings.
+Pending qdcg [deepseek]: 2 open, unclassified or interface-gap rulings.
+Pending refund [deepseek]: 2 open, unclassified or interface-gap rulings.
+Pending s1 [deepseek]: 10 open, unclassified or interface-gap rulings.
+Pending s179 [deepseek]: 3 open, unclassified or interface-gap rulings.
+Pending s1a [deepseek]: 1 open, unclassified or interface-gap rulings.
+Pending s2 [deepseek]: 1 open, unclassified or interface-gap rulings.
+Pending s8812 [deepseek]: 4 open, unclassified or interface-gap rulings.
+Pending sa [deepseek]: 3 open, unclassified or interface-gap rulings.
+Pending sales [deepseek]: 2 open, unclassified or interface-gap rulings.
+Pending sb [deepseek]: 2 open, unclassified or interface-gap rulings.
+Pending sc [deepseek]: 4 open, unclassified or interface-gap rulings.
+Pending scope [deepseek]: 5 open, unclassified or interface-gap rulings.
+Pending scveh [deepseek]: 6 open, unclassified or interface-gap rulings.
+Pending sdtw [deepseek]: 5 open, unclassified or interface-gap rulings.
+Pending se [deepseek]: 5 open, unclassified or interface-gap rulings.
+Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
+Pending u1250 [deepseek]: 13 open, unclassified or interface-gap rulings.
 
 ### Independence yield
 

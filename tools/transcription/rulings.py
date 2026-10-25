@@ -88,7 +88,8 @@ def review_context(kind, text):
     comparison = re.search(r"^\| comparison policy \| (.*?) \|$", head, re.M)
     if kind == "transcription" and comparison:
         fields["comparison policy"] = comparison.group(1)
-        for name in ("type validation policy", "model type validation", "input context policy", "complete input context"):
+        for name in ("type validation policy", "model type validation", "input context policy", "complete input context",
+                     "partial-input policy", "partial-input bank sha256", "partial-input request context", "partial-input result"):
             match = re.search(rf"^\| {name} \| (.*?) \|$", head, re.M)
             if match:
                 fields[name] = match.group(1)

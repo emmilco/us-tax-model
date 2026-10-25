@@ -1,5 +1,60 @@
 # Handoff: the integrity plan, Phase 0 done, Phase 1 in progress
 
+## Current partial-input contract after acad366 — 2026-10-25
+
+acad366 committed the preceding schema-guided replacements after a full green suite. T-063 now
+uses source-based synthetic partial-input facts, not authored interview guards: the interview
+derives questions from the formulas, so copying its guards would disclose the implementation.
+Only facts and target ids enter the request; primary-source reference answers/rationale stay
+host-side in tools/transcription/input_contracts/2025/dependent.json. Ten cases cover younger,
+age13 and older care paths, including genuinely missing timing. No numeric evidence credit.
+
+check_model_types.mjs remains type-only. The separate check_input_contracts.mjs first validates
+schema/types and declared Bool refusals, then interprets fixed declarative IR on bounded synthetic
+facts in a separate process (32 cases, 5000 lines, 30-second timeout, 256-MiB V8 old-space setting).
+No model-generated code, command, tool or path runs; no candidate is installed in project forms.
+The shared candidate builder preserves published inputs and does not borrow missing authored
+computed helpers. Applicable bank hash, policy, actual request inclusion and result bind log
+qualification and ruling contexts. Missing/stale/failing checks remain gaps even without the
+blanket hold. 98 offline tests cover unknown propagation, invalid IR/refusals, privacy canaries,
+source-case coherence and required-bank/gate integrity.
+
+BUG-0136 corrected two draft negative records that inherited qualified expenses despite their
+nonqualifying facts. The draft bank and ten model artifacts are hashed in
+.transcription/archive/partial-input-draft-before-coherence-fix-2026-10-25/. Fresh corrected
+requests preserve their actual different prompt/bank hashes. Do not relabel draft outcomes.
+The current Claude reply passes all ten coherent cases and fixes its earlier QR categories;
+current Flash fails type validation (summing a root collection from an entry), so its cases are
+skipped. The draft Flash four-of-ten result is historical. On the corrected bank, the earlier
+acad366 Claude reply passes only five cases diagnostically and its request lacks the cases;
+.transcription/partial-input-coherent-prior-diagnostic.json records that distinction.
+
+Four additional unverified Claude records (div/ftc/gift/otjob) now have actual fresh replacements,
+with matching Flash runs. Nine of the ten current replacement replies pass expression checks.
+Current audit: 91 verified replies, 35 expression passes, 23 complete-question requests, 19 still
+unverified Claude prompts and 23 legacy-limited receipts. The 210 lost older agreements remain a
+snapshot diagnostic, not a tax-bug count. See reports/2025/transcription_audit.md and
+.transcription/partial-input-audit-current.json. Original pre-batch artifacts: 45 hashed files in
+.transcription/archive/before-partial-input-cases-2026-10-25/.
+
+BUG-0135/T-064 identifies div.screen as an unspecified internal adapter, not an IRS-defined
+quantity. Both replies explicitly guess its meaning. New interface-gap rulings block qualification
+without inflating model-error noise; they are not forced into equivalence. Other source rulings
+remain bounded: the foreign-credit election/min instruction is explicit in i1116 pp.1-2, but Flash
+still over-refuses zero-tax/no-election facts. Overtime differences are scoped to supported methods.
+The prior amb.2025.dc_line30 choice is retained with no new owner approval.
+
+BUG-0137 fixes a clean-output build race: compile completes before review tests/build consumers
+run. The full suite is to be checked with engine/dist initially absent, preserving the previous
+compiled tree in a reversible temporary backup. Its result is recorded by the next commit/green
+marker; targeted checks above are not themselves full-suite validation.
+
+T-062 remains in progress; keep Flash optional and the global transcription hold. T-063's fact-case
+mechanism is implemented, not a whole-form proof or a passing Flash replacement. T-064 adapter
+contracts, 19 unverified Claude records and other invalid/source-incomplete reviews remain.
+No authored tax rule, numeric fixture or original human verdict changed; further owner packets
+remain optional and are not a dependency of this engineering work.
+
 ## Current replacement batch after 45876d2 — 2026-10-25
 
 45876d2 committed the expression validator after a full green suite. This follow-up supplies the

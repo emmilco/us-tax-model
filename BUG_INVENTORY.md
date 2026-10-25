@@ -1987,3 +1987,54 @@ later grouping.
   contract. Do not count these care disagreements as clean model-only noise or clear the global
   transcription hold merely because the reply has valid expression types.
 - **Tags:** conditional-input-contract; incomplete-review-context; unknown-value-propagation
+
+## BUG-0135 — Source-only reviewers must guess the meaning of internal adapter helpers
+
+- **Date:** 2026-10-25
+- **Caught by:** both fresh dividend replies explicitly noting that the IRS text does not define div.screen.
+- **Symptom:** the required NonNegDollars export is an internal zero-after-scope-checks adapter,
+  used by other worksheets for excluded source amounts. The blind request gives its id and type,
+  but no source-defined meaning. Both reviewers invent a sum of special distributions and say
+  the interface is not defined in the IRS pages. Such a sum is not the project's adapter contract.
+- **Root cause:** the exported-helper target list treats an internal adapter as if it were an IRS
+  quantity whose meaning can be reconstructed independently from the pages.
+- **Where:** `tools/transcription/transcribe.py`, exported helper interfaces; div.screen.
+- **Status:** open, T-064. Separate source-defined quantities from implementation adapters and
+  define/check adapter contracts without counting supplied adapter behavior as blind tax evidence.
+  An explicit interface-gap adjudication now blocks qualification and earns no model-noise credit.
+- **Qualification:** this is a review-contract defect, not a newly established project tax-value
+  error. Do not force the reply into equivalence or count an unprovided contract as clean model-only
+  noise. The global transcription qualification hold remains.
+- **Tags:** opaque-helper-interface; blind-review-context; unsupported-evidence-claim
+
+## BUG-0136 — Draft partial-input negative cases inherit contradictory qualified expenses
+
+- **Date:** 2026-10-25
+- **Caught by:** checking the draft P06/P08 source facts after the first two model runs.
+- **Symptom:** the draft bank's common base assigns $1,000 of qualified expenses to all cases,
+  including a non-disabled age14 child and an age13 child with no pre-birthday care. The negative
+  cases cannot have current-year qualified care expenses under those stated facts.
+- **Root cause:** hand-constructed negative records override eligibility facts but inherit the
+  positive case's money amount and active-care answer.
+- **Where:** `tools/transcription/input_contracts/2025/dependent.json`, P06 and P08.
+- **Fix:** give those two no-care records zero qualified expenses and care=false, add a fact-only
+  coherence regression, archive the draft bank and actual model requests/replies/logs with hashes,
+  and issue fresh requests with the corrected facts. Do not relabel draft results as corrected runs.
+- **Qualification:** a benchmark-context defect, not a project tax-value finding. Expected Boolean
+  outputs are unchanged; the correction makes the supporting input facts coherent.
+- **Tags:** contradictory-test-facts; inherited-positive-input; draft-benchmark-context
+
+## BUG-0137 — Review tests race compilation in a clean-output full check
+
+- **Date:** 2026-10-25
+- **Caught by:** tracing the new review tools' imports of engine/dist during the full-check first wave.
+- **Symptom:** check-all starts review_tools in parallel with a build function that first compiles
+  the evaluator. The review tests require the compiled checker/atom catalog, so a checkout without
+  engine/dist can fail before compilation finishes. Existing compiled output masks the dependency.
+- **Root cause:** compilation is hidden inside the parallel build/render step rather than declared
+  as a prerequisite of all dist-dependent validation tools.
+- **Where:** `tools/check_all_steps.sh`, build_and_render and wave scheduling.
+- **Fix:** run compilation as a completed first step, then start the source/review/build wave;
+  remove redundant compilation from build_and_render. Validate with compiled output initially
+  absent, keeping the previous output as a reversible temporary backup.
+- **Tags:** build-order-race; clean-output-reproducibility; validation-tool-dependency

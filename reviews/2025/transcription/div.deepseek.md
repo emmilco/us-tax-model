@@ -4,11 +4,16 @@ Second transcription of `Form 1099-DIV — distribution components and scope scr
 
 | field | value |
 | --- | --- |
-| date | 2026-10-23 |
+| date | 2026-10-25 |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
-| prompt sha256 | 2a3735fb20954c22b57c2de1a518f4cc5accce904a25ba8aada58facb4f0d01e |
+| prompt sha256 | 4bd9b6b65b1a70f6d88bba25152777efc8b49b7cc665c961da2cf3016f850865 |
 | prompt policy | source-only-computation-v2 |
+| comparison policy | checked-expression-types-v2 |
+| input context policy | complete-input-context-v1 |
+| complete input context | pass |
+| type validation policy | project-expression-types-v1 |
+| model type validation | pass |
 | system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
 | reasoning effort | provider default |
 | output token budget | 65536 |
@@ -39,28 +44,41 @@ Project:
 Second:
 
 ```json
-{"of": [{"input": "div.box10"}, {"input": "div.box12"}, {"input": "div.box13"}, {"input": "div.box2b"}, {"input": "div.box2c"}, {"input": "div.box2d"}, {"input": "div.box2e"}, {"input": "div.box2f"}, {"input": "div.box3"}, {"input": "div.box9"}], "op": "sum"}
+{"of": [{"input": "div.box10"}, {"input": "div.box2b"}, {"input": "div.box2c"}, {"input": "div.box2d"}, {"input": "div.box2e"}, {"input": "div.box2f"}, {"input": "div.box9"}, {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "div.basis_reconciled"}], "test": "eq"}, "then": {"input": "div.box3"}}, {"guard": {"args": [{"const": true}, {"input": "div.basis_reconciled"}], "test": "eq"}, "then": {"const": 0}}], "op": "choose"}, {"of": [{"input": "div.box12"}, {"input": "div.box13"}], "op": "larger_of"}], "op": "sum"}
 ```
 
-Second transcription's note: The IRS Form 1099-DIV pages do not define a 'screen' line. I read the project interface as the total of the supplied distribution components that require scope screening; box 3 is accepted only when div.basis_reconciled is true.
+Second transcription's note: The IRS pages do not define a 'screen' line. I read div.screen as the total of the special distribution components that require treatment outside ordinary dividends and capital gain distributions. Box 3 is included only when the basis-reconciliation input says it has not been established that no distribution exceeds basis, because the instructions say a return of capital is not taxable to the extent of basis. Box 12 is used for exempt-interest dividends and box 13 is not added separately because box 12 already includes it; taking the larger of the two avoids double counting while still flagging box 13.
 
-Ruling: open
-
-## Refusal gates listed by the second transcription
-
-Reported, not judged: the project often refuses before a worksheet is used, on the line that chooses it, which a per-line comparison cannot see.
-
-| line | gates listed | not read by the project's line |
-| --- | --- | --- |
-| div.screen | div.h_basis_bad | div.h_basis_bad |
+Ruling: interface gap; f1099div (2025) Instructions for Recipient describes the dividend boxes, but defines no quantity named div.screen. The reply explicitly invents a total of special amounts because the required export has no supplied semantic contract. The project uses this internal adapter as zero after scope checks, including when unsupported Form4797/K-1 amounts are absent; that behavior was not independently inferable from the id/type alone. No whole-tree equivalence or clean model-only error is claimed. BUG-0135/T-064 keeps this source-interface review pending until adapter and source-defined quantities are separated.
 
 ## Raw second transcription
 
 ```yaml
 lines:
+  - id: div.h_zero
+    printed: "(helper)"
+    label: "Zero"
+    type: NonNegDollars
+    expr: {op: param, ref: sales.zero}
+  - id: div.h_box3_screened
+    printed: "(helper)"
+    label: "Box 3 amount included in the scope screen (zero if basis is reconciled)"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [div.basis_reconciled, {const: true}]}
+          then: div.h_zero
+        - guard: {op: test, eq: [div.basis_reconciled, {const: false}]}
+          then: div.box3
+  - id: div.h_exempt_screen
+    printed: "(helper)"
+    label: "Exempt-interest screen amount (box 12, which includes box 13)"
+    type: NonNegDollars
+    expr: {op: larger_of, of: [div.box12, div.box13]}
   - id: div.screen
     printed: "(helper)"
-    label: "Total of Form 1099-DIV distribution components in boxes 2b, 2c, 2d, 2e, 2f, 3, 9, 10, 12 and 13"
+    label: "Scope screening total of special distribution components"
     type: NonNegDollars
     expr:
       op: sum
@@ -70,17 +88,9 @@ lines:
         - div.box2d
         - div.box2e
         - div.box2f
-        - div.box3
+        - div.h_box3_screened
         - div.box9
         - div.box10
-        - div.box12
-        - div.box13
-    refuses:
-      - div.h_basis_bad
-    note: "The IRS Form 1099-DIV pages do not define a 'screen' line. I read the project interface as the total of the supplied distribution components that require scope screening; box 3 is accepted only when div.basis_reconciled is true."
-  - id: div.h_basis_bad
-    printed: "(helper)"
-    label: "Box 3 basis has not been reconciled with no distribution exceeding basis"
-    type: Bool
-    expr: {op: test, eq: [div.basis_reconciled, {const: false}]}
+        - div.h_exempt_screen
+    note: "The IRS pages do not define a 'screen' line. I read div.screen as the total of the special distribution components that require treatment outside ordinary dividends and capital gain distributions. Box 3 is included only when the basis-reconciliation input says it has not been established that no distribution exceeds basis, because the instructions say a return of capital is not taxable to the extent of basis. Box 12 is used for exempt-interest dividends and box 13 is not added separately because box 12 already includes it; taking the larger of the two avoids double counting while still flagging box 13."
 ```

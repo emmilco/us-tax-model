@@ -4,10 +4,20 @@ Second transcription of `Form 8283 — groups of similar noncash property` by an
 
 | field | value |
 | --- | --- |
-| date | 2026-10-17 |
+| date | 2026-10-25 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | ce0dc65622a81dad89d8ef3e99d136fcd9c683f67dc992802c39635e341678e7 |
+| prompt sha256 | 67fd8f1109db88c74be21e0e3a4540696e91ba058d2e3755fdec3a7cf88e4461 |
+| prompt policy | source-only-computation-v2 |
+| comparison policy | checked-expression-types-v2 |
+| input context policy | complete-input-context-v1 |
+| complete input context | pass |
+| type validation policy | project-expression-types-v1 |
+| model type validation | pass |
+| system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
+| reasoning effort | provider default |
+| output token budget | transport default (65536 for DeepSeek) |
+| interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
 | subject sha256 | 583ad7a6fa5b933fa0a0fffda31e2cc72eab6b74f021ea484f649729eb2516bb |
 | printed lines compared | 1 |
 | agree / disagree / missing | 1 / 0 / 0 |
@@ -39,10 +49,25 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 lines:
   - id: gift.allowed
     printed: "(helper)"
-    label: "Amount from gift.deduction"
+    label: "Deduction for this noncash item or group of similar items, before applying any income limits that could result in a carryover, after the required reductions to the amount of the contribution (Form 8283, Section A)"
     type: NonNegDollars
     expr: {op: copy, from: gift.deduction}
     refuses: [gift.special]
-    note: "The task lists no printed lines to transcribe, so this is the only line. The provided text says Form 8283 is not used to figure the deduction ('do not use Form 8283 to figure your charitable contribution deduction'). The amount therefore passes through unchanged from gift.deduction, which is already the deduction before income limits after required reductions. Section B items need a qualified appraisal and are outside what this tool computes. These include groups over $5,000 that are not publicly traded securities, partial interests, restricted-use property, and clothing or household items not in good used condition claimed over $500. Section A special items include vehicles, intellectual property and inventory. These cases are covered by the screening input gift.special, so this line refuses when it is true instead of computing them."
+    note: >-
+      The IRS pages say not to use Form 8283 to figure the charitable contribution deduction.
+      They define "amount of your deduction" as the deduction before any income limits that
+      could result in a carryover, after the required reductions to the amount of the
+      contribution (ordinary income property and capital gain property). The supplied input
+      gift.deduction already carries that amount, so this line copies it. Income limits and
+      carryovers are left to the Schedule A and Pub. 526 screening (sa.charity_limited).
+      The pages do not determine the income limits, so none is encoded here.
+      Section B cases need a qualified appraisal and separate treatment, so they are refused
+      through gift.special. These cover a deduction over $5,000 per item or group of similar
+      items across all donees, other than publicly traded securities. They also cover a
+      clothing or household item over $500 not in good used condition, partial interests,
+      restricted-use property and conservation contributions. Vehicles, intellectual property,
+      inventory and Schedule K-1 pass-through contributions are treated the same way.
+      Publicly traded securities stay in Section A even above $5,000, as the text says, so
+      gift.public_securities does not change the amount.
 ```
 ```

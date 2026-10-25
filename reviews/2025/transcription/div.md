@@ -4,13 +4,23 @@ Second transcription of `Form 1099-DIV — distribution components and scope scr
 
 | field | value |
 | --- | --- |
-| date | 2026-10-18 |
+| date | 2026-10-25 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | 5af084543fbe96e13bea5f4b81a8c545d4001fcf1d3c0cdd792330088007609d |
+| prompt sha256 | 4bd9b6b65b1a70f6d88bba25152777efc8b49b7cc665c961da2cf3016f850865 |
+| prompt policy | source-only-computation-v2 |
+| comparison policy | checked-expression-types-v2 |
+| input context policy | complete-input-context-v1 |
+| complete input context | pass |
+| type validation policy | project-expression-types-v1 |
+| model type validation | pass |
+| system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
+| reasoning effort | provider default |
+| output token budget | transport default (65536 for DeepSeek) |
+| interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
 | subject sha256 | 42b78e5376ee4a1dfb47c58ddb1d582b614f006924582ead17ed6327920c53fa |
 | printed lines compared | 1 |
-| agree / disagree / missing | 1 / 0 / 0 |
+| agree / disagree / missing | 0 / 1 / 0 |
 | extra printed lines in second | none |
 
 ## Source pages given to the model
@@ -23,55 +33,53 @@ Second transcription of `Form 1099-DIV — distribution components and scope scr
 ## Lines
 
 ### div.screen — Zero only after distribution scope checks
-Status: **AGREE**
+Status: **DISAGREE**
 
-## Refusal gates listed by the second transcription
+Project:
 
-Reported, not judged: the project often refuses before a worksheet is used, on the line that chooses it, which a per-line comparison cannot see.
+```json
+{"const": 0}
+```
 
-| line | gates listed | not read by the project's line |
-| --- | --- | --- |
-| div.screen | div.h_box13_exceeds_box12, div.h_box2c_present, div.h_box2ef_present, div.h_box3_unreconciled, div.h_liquidation_present | div.h_box13_exceeds_box12, div.h_box2c_present, div.h_box2ef_present, div.h_box3_unreconciled, div.h_liquidation_present |
+Second:
+
+```json
+{"of": [{"input": "div.box10"}, {"input": "div.box2c"}, {"input": "div.box2e"}, {"input": "div.box2f"}, {"input": "div.box9"}, {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "div.basis_reconciled"}], "test": "eq"}, "then": {"input": "div.box3"}}, {"guard": {"args": [{"const": true}, {"input": "div.basis_reconciled"}], "test": "eq"}, "then": {"const": 0}}], "op": "choose"}], "op": "sum"}
+```
+
+Second transcription's note: The IRS pages do not define this result. I read it as the total of the 1099-DIV amounts the tool does not compute; any amount above zero should send the filer elsewhere. The amounts included are: box 2c (the section 1202 exclusion needs a Form 8949 'Q' entry, i1040sd p.8); boxes 2e and 2f (for foreign persons, effectively connected income); boxes 9 and 10 (liquidation distributions, for which no reporting is given); and box 3 not reconciled to basis. Left out: boxes 2b and 2d, because the Unrecaptured Section 1250 Gain and 28% Rate Gain Worksheets (u1250, g28) exist in the catalog; and boxes 12 and 13, because exempt-interest dividends go on line 2a and AMT is screened separately by s2.amt. Box 13 is part of box 12. These choices are open.
+
+Ruling: interface gap; f1099div (2025) Instructions for Recipient describes the dividend boxes, but defines no quantity named div.screen. The reply explicitly invents a total of special amounts because the required export has no supplied semantic contract. The project uses this internal adapter as zero after scope checks, including when unsupported Form4797/K-1 amounts are absent; that behavior was not independently inferable from the id/type alone. No whole-tree equivalence or clean model-only error is claimed. BUG-0135/T-064 keeps this source-interface review pending until adapter and source-defined quantities are separated.
 
 ## Raw second transcription
 
 ```yaml
+```yaml
 lines:
-  - id: div.h_box2c_present
+  - id: div.h_zero
     printed: "(helper)"
-    label: "Box 2c. Shows the portion of the amount in box 2a that is section 1202 gain from certain small business stock that may be subject to an exclusion."
-    type: Bool
-    expr: {op: test, gt: [div.box2c, {const: 0}]}
-    note: "Open: the text says box 2c gain 'may be eligible' for the section 1202 exclusion. Claiming it means a Form 8949 Part II entry with code Q and the excluded gain in column (g), plus an entry on line 2 of the 28% Rate Gain Worksheet. The sales adjustment codes have no Q. Chosen reading: any positive box 2c amount is out of scope, and div.screen refuses it. The tool does not assume no exclusion."
-  - id: div.h_box2ef_present
+    label: "Zero (no unsupported nondividend distribution)"
+    type: NonNegDollars
+    expr: {op: param, ref: ss.zero}
+  - id: div.h_box3_unhandled
     printed: "(helper)"
-    label: "Boxes 2e and 2f apply only to foreign persons and entities whose income maintains its character when passed through or distributed to its direct or indirect foreign owners or beneficiaries."
-    type: Bool
-    expr: {op: test, any: [{op: test, gt: [div.box2e, {const: 0}]}, {op: test, gt: [div.box2f, {const: 0}]}]}
-    note: "The text says boxes 2e and 2f apply only to foreign persons and refers to the instructions for that return. Chosen reading: any positive amount in either box is out of scope."
-  - id: div.h_liquidation_present
-    printed: "(helper)"
-    label: "Boxes 9 and 10. Show cash and noncash liquidation distributions."
-    type: Bool
-    expr: {op: test, any: [{op: test, gt: [div.box9, {const: 0}]}, {op: test, gt: [div.box10, {const: 0}]}]}
-    note: "The text gives no reporting rule for liquidation distributions. Chosen reading: any positive amount in box 9 or box 10 is out of scope. The tool does not treat it as zero."
-  - id: div.h_box3_unreconciled
-    printed: "(helper)"
-    label: "Box 3. Shows a return of capital. To the extent of your cost (or other basis) in the stock, the distribution reduces your basis and is not taxable. Any amount received in excess of your basis is taxable to you as capital gain."
-    type: Bool
-    expr: {op: test, all: [{op: test, gt: [div.box3, {const: 0}]}, {op: test, eq: [div.basis_reconciled, {const: false}]}]}
-    note: "A box 3 amount is supported only when the filer confirms that the basis reductions have been applied and no distribution exceeded basis. That makes the distribution wholly nontaxable. Gain above basis is out of scope."
-  - id: div.h_box13_exceeds_box12
-    printed: "(helper)"
-    label: "Box 13. Shows exempt-interest dividends subject to the alternative minimum tax. This amount is included in box 12."
-    type: Bool
-    expr: {op: test, gt: [div.box13, div.box12]}
-    note: "Consistency check: the text says box 13 is included in box 12, so box 13 cannot be more than box 12. The text sends box 13 to the Form 6251 instructions; that is left to the s2.amt screen. A box 13 amount alone does not refuse here."
+    label: "Box 3. Shows a return of capital. To the extent of your cost (or other basis) in the stock, the distribution reduces your basis and is not taxable. Any amount received in excess of your basis is taxable to you as capital gain. See Pub. 550."
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [div.basis_reconciled, {const: true}]}
+          then: div.h_zero
+        - guard: {op: test, eq: [div.basis_reconciled, {const: false}]}
+          then: div.box3
+    note: "Box 3 is not taxable up to basis; any excess is capital gain (Pub. 550). The tool handles box 3 only when the filer confirms the basis reductions have been made and no distribution is more than basis. Otherwise the box 3 amount counts in the screen."
   - id: div.screen
     printed: "(helper)"
-    label: "Zero only after distribution scope checks"
+    label: "Form 1099-DIV amounts outside the computed scope (boxes 2c, 2e, 2f, 9, 10, and box 3 not reconciled to basis)"
     type: NonNegDollars
-    expr: {op: param, ref: sales.zero}
-    refuses: [div.h_box2c_present, div.h_box2ef_present, div.h_liquidation_present, div.h_box3_unreconciled, div.h_box13_exceeds_box12]
-    note: "No printed lines were listed for this form, so this is the only required line. It is zero once none of the refusing conditions holds. Boxes 2b and 2d need no refusal here because they feed the Unrecaptured Section 1250 Gain Worksheet and the 28% Rate Gain Worksheet."
+    expr:
+      op: sum
+      of: [div.box2c, div.box2e, div.box2f, div.box9, div.box10, div.h_box3_unhandled]
+    note: "The IRS pages do not define this result. I read it as the total of the 1099-DIV amounts the tool does not compute; any amount above zero should send the filer elsewhere. The amounts included are: box 2c (the section 1202 exclusion needs a Form 8949 'Q' entry, i1040sd p.8); boxes 2e and 2f (for foreign persons, effectively connected income); boxes 9 and 10 (liquidation distributions, for which no reporting is given); and box 3 not reconciled to basis. Left out: boxes 2b and 2d, because the Unrecaptured Section 1250 Gain and 28% Rate Gain Worksheets (u1250, g28) exist in the catalog; and boxes 12 and 13, because exempt-interest dividends go on line 2a and AMT is screened separately by s2.amt. Box 13 is part of box 12. These choices are open."
+```
 ```

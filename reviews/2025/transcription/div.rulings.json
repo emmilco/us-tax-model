@@ -1,0 +1,13 @@
+{
+ "kind": "transcription",
+ "form": "div",
+ "rulings": [
+  {
+   "printed": "div.screen",
+   "project": "{\"const\": 0}",
+   "second": "{\"of\": [{\"input\": \"div.box10\"}, {\"input\": \"div.box2c\"}, {\"input\": \"div.box2e\"}, {\"input\": \"div.box2f\"}, {\"input\": \"div.box9\"}, {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"div.basis_reconciled\"}], \"test\": \"eq\"}, \"then\": {\"input\": \"div.box3\"}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"div.basis_reconciled\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}], \"op\": \"sum\"}",
+   "ruling": "Ruling: interface gap; f1099div (2025) Instructions for Recipient describes the dividend boxes, but defines no quantity named div.screen. The reply explicitly invents a total of special amounts because the required export has no supplied semantic contract. The project uses this internal adapter as zero after scope checks, including when unsupported Form4797/K-1 amounts are absent; that behavior was not independently inferable from the id/type alone. No whole-tree equivalence or clean model-only error is claimed. BUG-0135/T-064 keeps this source-interface review pending until adapter and source-defined quantities are separated.",
+   "context": "c02ab66879a6dccaecfbf97eaf92d61dafceb5c0ae2e7d6890e7cdfb0cc5bb02"
+  }
+ ]
+}

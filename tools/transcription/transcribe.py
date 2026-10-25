@@ -23,6 +23,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import families  # noqa: E402
 import rulings  # noqa: E402
 import subjects  # noqa: E402
+import input_contracts  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, os.path.join(ROOT, "tools"))
@@ -466,6 +467,9 @@ def build_prompt(form_doc, excerpt, params, other_lines, param_types=None):
     oth = "\n".join(f"  - {k}: {v}" for k, v in other_lines.items())
     spec = open(os.path.join(ROOT, "spec", "spec.md"), encoding="utf-8").read()
     atoms = spec[spec.index("### 4.1 Values and types"):spec.index("### 4.4 Collections")]
+    contract_block = input_contracts.public_prompt(input_contracts.load(form_doc['id'], Y))
+    if contract_block:
+        contract_block += "\n\n"
     return f"""You are producing an independent transcription of the IRS worksheet or form below into a
 formal data model, working ONLY from the IRS text provided here. Do not rely on memory of the tax law
 or of any software; if the text does not say it, do not encode it.
@@ -543,7 +547,7 @@ Lines on other forms you may reference by id (only where the IRS text says the v
 there). The catalog gives ids, printed markers and types, not their project-written computations:
 {oth}
 
-# Output
+{contract_block}# Output
 
 Return ONLY a YAML document of the form
 
@@ -1142,6 +1146,9 @@ def write_log(form_doc, model, prompt, used, results, extra, raw_text, meta, dry
     counts = {k: sum(1 for r in results if r["status"] == k) for k in ("AGREE", "DISAGREE", "MISSING")}
     type_errors = getattr(results, "validation_errors", None)
     validation = "unrecorded" if type_errors is None else "fail" if type_errors else "pass"
+    contract = input_contracts.assess(fid, Y, extract_yaml(raw_text)["lines"], model_type_context(), prompt) if input_contracts.load(fid, Y) else None
+    if isinstance(results, ComparedLines):
+        results.contract_check = contract
     out = [f"# Transcription agreement — {fid}", "",
            f"Second transcription of `{form_doc['title']}` by an isolated model (spec 6.5), compared line by line with `forms/{Y}/{fid}.yaml`.", "",
            "| field | value |", "| --- | --- |",
@@ -1155,6 +1162,10 @@ def write_log(form_doc, model, prompt, used, results, extra, raw_text, meta, dry
            f"| complete input context | {'fail' if missing_input_context(prompt) else 'pass'} |",
            f"| type validation policy | {TYPE_VALIDATION_POLICY if type_errors is not None else 'unrecorded'} |",
            f"| model type validation | {validation} |",
+           *([f"| partial-input policy | {contract['policy']} |",
+              f"| partial-input bank sha256 | {contract['bank_sha256']} |",
+              f"| partial-input request context | {contract['request_context']} |",
+              f"| partial-input result | {contract['state']} |"] if contract else []),
            f"| system sha256 | {meta.get('system_sha256', '-')} |",
            f"| reasoning effort | {meta.get('reasoning_effort') or 'provider default'} |",
            f"| output token budget | {meta.get('request_max_tokens') or 'transport default (65536 for DeepSeek)'} |",
@@ -1170,6 +1181,17 @@ def write_log(form_doc, model, prompt, used, results, extra, raw_text, meta, dry
         out += ["", "## Host-side model expression type checks", "",
                 "The build's reference/type checker rejected these model expressions; none were executed."]
         out.extend("- " + error["message"].replace("\n", " ") for error in type_errors)
+    if contract:
+        out += ["", "## Source-based partial-input checks", "",
+                "A fixed interpreter evaluates validated declarative IR on synthetic facts; no model-generated code or commands run. These checks earn no numeric evidence credit.",
+                "", "| case | target | expected | observed | result |", "| --- | --- | --- | --- | --- |"]
+        for test in contract.get("cases", []):
+            for output in test["outputs"]:
+                expected = json.dumps(output["expected"], sort_keys=True).replace("|", "\\|")
+                actual = json.dumps(output["actual"], sort_keys=True).replace("|", "\\|")
+                out.append(f"| {test['id']} | {output['target']} | {expected} | {actual} | {'MATCH' if output['pass'] else 'MISMATCH'} |")
+        for error in contract.get("errors", []):
+            out += ["", "Not evaluated: " + error["message"].replace("\n", " ")]
     out += ["", "## Lines", ""]
     kept = rulings.kept("transcription", fid, family, context=rulings.review_context("transcription", "\n".join(out)))
     for r in results:
@@ -1235,7 +1257,8 @@ def main():
     results, extra = compare(a.form, form_doc["lines"], second["lines"])
     path, counts = write_log(form_doc, a.model, prompt, used, results, extra, text, meta)
     print(f"{a.form}: agree {counts['AGREE']}, disagree {counts['DISAGREE']}, missing {counts['MISSING']}, extra {len(extra)}; cost {meta.get('cost_usd')} -> {os.path.relpath(path, ROOT)}")
-    sys.exit(0 if counts["DISAGREE"] + counts["MISSING"] == 0 and not results.validation_errors else 3)
+    contract_ok = not results.contract_check or (results.contract_check["state"] == "pass" and results.contract_check["request_context"] == "included")
+    sys.exit(0 if counts["DISAGREE"] + counts["MISSING"] == 0 and not results.validation_errors and contract_ok else 3)
 
 
 if __name__ == "__main__":

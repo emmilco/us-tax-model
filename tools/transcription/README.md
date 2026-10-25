@@ -19,8 +19,9 @@ it does not enter blind source-only prompts, qualify a noisy run or add scoreboa
 ## Isolation
 
 Fixed-prompt, curated input, unattended, non-secret: the model's text is parsed
-as YAML, verdicts or worked values and compared; it drives no write path,
-command or execution (AISP Part I §2 classification by the apply code). What is
+as YAML, verdicts or worked values and compared; model-generated code, commands,
+tools and paths are never executed. The separate partial-input checker can interpret
+validated declarative IR using the fixed evaluator in a bounded process. What is
 sent is the archived public IRS text, the data model, and synthetic figures
 from generated returns; no personal data.
 
@@ -254,6 +255,24 @@ prompt-policy metadata. Both families need current comparison, passing types and
 context before the pair can qualify. These properties are bound into ruling contexts.
 This version verifies question wording only: it does not certify which answers the guided
 interview may leave unasked (BUG-0134/T-063). Availability-sensitive disagreements remain gaps.
+
+T-063 adds source-based partial-input cases under `input_contracts/<year>/`. The request
+receives synthetic input facts and target ids only; host reference answers and rationale are
+withheld. After expression checks pass, a separate fixed interpreter checks at most 32 cases
+under a 30-second timeout and 256-MiB V8 old-space setting. It maps model-declared refusal ids to the evaluator's
+object representation, validates that those gates are Bool, and imports no authored refusal
+placement for computed model lines. Invalid IR is not evaluated. No candidate is installed in
+the project forms or return runtime; no H/B/M/engine assertion or numeric fixture is created.
+
+Logs bind the case-bank hash, policy, actual request inclusion and observed results into ruling
+contexts. Both families must pass current applicable cases before qualification. An older reply
+can be checked diagnostically without pretending its request contained the cases. The current
+dependent bank covers ten source-derived age/timing records, including one genuinely unknown
+answer; passing it is not a proof of all relationship or credit cases. See the bank README.
+
+BUG-0135/T-064 distinguishes internal adapters from source-defined quantities. A ruling prefixed
+`interface gap` records an unresolved semantic contract, blocks qualification and contributes no
+model-error noise. It is not resolved by inventing a tax reading or forcing equivalence.
 
 BUG-0133 supplies declared table ids, ordered key types and result types without cells or authored
 formulas. Requests also include the generic expression JSON Schema, restricted to the engine's
