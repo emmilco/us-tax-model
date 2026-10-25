@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Recompare saved transcriptions without rewriting requests, logs or rulings.
 
-This is a diagnostic audit, not model IR validation or review qualification.
+This is a diagnostic expression-type/comparison audit, not review qualification.
 Original log subjects, prompt hashes and embedded replies must match the saved
 artifacts. Legacy incomplete request receipts stay explicitly legacy-limited.
 Only the requested JSON report is written; no network/model calls are made.
@@ -62,6 +62,9 @@ def audit(path):
                 "after": row["status"], "project": row["project"], "second": row["second"]}
                for row in current if before.get(row["printed"], {}).get("status") != row["status"]]
     return {"form": form, "family": family, **receipt, "comparison_policy": T.COMPARISON_POLICY,
+            "input_context_policy": T.INPUT_CONTEXT_POLICY, "missing_input_context": T.missing_input_context(prompt),
+            "type_validation_policy": T.TYPE_VALIDATION_POLICY,
+            "type_errors": current.validation_errors,
             "before_agree": sum(row["status"] == "AGREE" for row in before.values()),
             "after_agree": sum(row["status"] == "AGREE" for row in current),
             "new_disagreements": sum(row["before"] == "AGREE" and row["after"] == "DISAGREE" for row in changes),
@@ -72,7 +75,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--forms", help="comma-separated form ids")
     parser.add_argument("--family", choices=["claude", "deepseek"])
-    parser.add_argument("--report", default=str(Path(T.RAW) / "typed-literal-audit.json"))
+    parser.add_argument("--report", default=str(Path(T.RAW) / "expression-type-audit-current.json"))
     args = parser.parse_args()
     selected = set(args.forms.split(",")) if args.forms else None
     results, errors = [], []
@@ -84,7 +87,7 @@ def main():
             results.append(audit(path))
         except (ValueError, OSError, KeyError, TypeError) as exc:
             errors.append({"log": str(path), "error": str(exc)})
-    output = {"scope": "Read-only typed-literal re-comparison, not model IR validation or qualification. Original requests, logs and rulings are unchanged.",
+    output = {"scope": "Read-only expression type validation and re-comparison, not qualification. Original requests, logs and rulings are unchanged.",
               "comparison_policy": T.COMPARISON_POLICY, "results": results, "errors": errors}
     report = Path(args.report)
     report.parent.mkdir(parents=True, exist_ok=True)

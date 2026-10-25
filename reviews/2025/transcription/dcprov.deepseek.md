@@ -4,11 +4,16 @@ Second transcription of `Form 2441, Part I — persons or organizations who prov
 
 | field | value |
 | --- | --- |
-| date | 2026-10-23 |
+| date | 2026-10-25 |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
-| prompt sha256 | 53ec64337d2122a977206f1cf743b323af63e12173c51b2fe870305c19764f1f |
+| prompt sha256 | ad34a5c94d8464884d0d1ef7933c045cfae79684ff18f5810a89a9f9e5b85e8b |
 | prompt policy | source-only-computation-v2 |
+| comparison policy | checked-expression-types-v2 |
+| input context policy | complete-input-context-v1 |
+| complete input context | pass |
+| type validation policy | project-expression-types-v1 |
+| model type validation | pass |
 | system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
 | reasoning effort | provider default |
 | output token budget | 65536 |
@@ -39,12 +44,13 @@ Status: **AGREE**
 lines:
   - id: dcprov.one
     printed: "(helper)"
-    label: "One care provider (helper)"
+    label: "One care provider entry"
     type: Count
     expr: {op: param, ref: dc.one}
   - id: dcprov.see_statement
     printed: "(helper)"
-    label: 'Enter "See Attached Statement" in column (c) for this provider'
+    label: "Provider did not give the required information; column (c) is 'See Attached Statement'"
     type: Bool
-    expr: {op: test, eq: ["dcprov.tin_kind", {const: "see_statement"}]}
+    expr: {op: test, eq: [dcprov.tin_kind, {const: "see_statement"}]}
+    note: "Read as the per-provider column (c) entry 'See Attached Statement' for missing provider information, matching the dc_tin_kind value see_statement; not the box for more than three providers."
 ```

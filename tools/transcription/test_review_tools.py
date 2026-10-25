@@ -438,6 +438,32 @@ class IndependentPrompt(unittest.TestCase):
         self.assertNotIn("PRIVATE", text)
 
 
+class CompleteInputContext(unittest.TestCase):
+    def test_saved_request_must_contain_late_meaning_before_completeness_passes(self):
+        question = "Relationship. " + "Public context. " * 14 + "Grandnieces require the household test."
+        lines = {"fake.relationship": ("fake", {"expr": {"op": "input", "source": question}})}
+        with patch.object(T, "load_all_lines", return_value=lines):
+            self.assertEqual(T.missing_input_context(question[:160]), ["fake.relationship"])
+            self.assertEqual(T.missing_input_context(question.replace(" ", "\n")), [])
+
+    def test_late_enum_semantics_survive_own_and_foreign_input_catalogs(self):
+        question = "Relationship category. " + "Public interface description. " * 12 + "sibling_descendant excludes listed nieces and nephews."
+        line = {"id": "fake.relationship", "printed": "1", "type": "Enum(relationship)",
+                "expr": {"op": "input", "source": question}}
+        form = {"id": "fake", "title": "Fake worksheet", "tax_year": 2025, "lines": [line]}
+        with patch.object(T, "exported_lines", return_value=[]), patch.object(T, "collection_notes", return_value=""), patch.object(T, "screen_notes", return_value=""):
+            prompt = T.build_prompt(form, "PUBLIC ARCHIVED TEXT", {}, {})
+        self.assertIn(question, prompt)
+        self.assertIn(question, T.reference_note(form, line))
+
+    def test_late_scope_exception_survives_refusal_catalog(self):
+        question = "Outside scope? " + "Public screening detail. " * 14 + "Except the specifically included timing case."
+        gate = {"id": "fake.gate", "expr": {"op": "input", "source": question}}
+        target = {"id": "fake.result", "expr": {"op": "copy", "from": "fake.amount"}, "refuses": [{"when": "fake.gate"}]}
+        with patch.object(T, "load_all_lines", return_value={"fake.gate": ("fake", gate), "fake.result": ("fake", target)}):
+            self.assertIn(question, T.screen_notes())
+
+
 class LiteralUnits(unittest.TestCase):
     def test_count_threshold_cannot_agree_with_money_threshold(self):
         project = [
@@ -446,7 +472,8 @@ class LiteralUnits(unittest.TestCase):
         ]
         second = json.loads(json.dumps(project))
         second[1]["expr"]["gt"][1].pop("type")
-        results, _ = T.compare("probe", project, second)
+        with patch.object(T, "model_type_context", return_value=ModelExpressionTypes.context(project)):
+            results, _ = T.compare("probe", project, second)
         self.assertEqual(results[0]["status"], "DISAGREE")
 
     def test_zero_and_one_parameters_keep_their_units(self):
@@ -490,6 +517,119 @@ class LiteralUnits(unittest.TestCase):
         head = "| prompt sha256 | " + "a" * 64 + " |\n"
         typed = head + "| comparison policy | typed-literals-v1 |\n"
         self.assertNotEqual(rulings.review_context("transcription", head), rulings.review_context("transcription", typed))
+
+
+class ModelExpressionTypes(unittest.TestCase):
+    def test_validation_follows_count_proration_table_and_collection_operands(self):
+        expressions = [
+            {"op": "round", "of": "probe.bad", "unit": 100, "rule": "up"},
+            {"op": "multiply_count", "amount": "probe.amount", "count": "probe.bad"},
+            {"op": "prorate", "amount": "probe.amount", "part": "probe.bad", "whole": {"const": 12, "type": "Count"}},
+            {"op": "prorate", "amount": "probe.amount", "part": "probe.months", "whole": "probe.bad"},
+            {"op": "keyed_lookup", "table": "probe.table", "keys": ["probe.bad"]},
+            {"op": "sum_over", "collection": "probe.entries", "field": "probe.bad"},
+        ]
+        errors = [{"line": "probe.bad", "message": "invalid helper type"}]
+        for expression in expressions:
+            with self.subTest(expression=expression):
+                rows = {"probe.result": {"expr": expression}, "probe.bad": {"expr": {"op": "param", "ref": "not.a.line"}}}
+                checked = T.checked_second('{}', errors, "probe.result", rows)
+                self.assertIn("invalid_model_types", checked)
+                self.assertNotIn("not.a.line", T.validation_dependencies("probe.result", rows))
+
+    @staticmethod
+    def context(lines):
+        return {"forms": [{"id": "probe", "kind": "form", "lines": lines}], "defs": [],
+                "params": {"enums": {}, "values": {}}, "tables": [], "register": {"entries": []}}
+
+    def lines(self):
+        return [
+            {"id": "probe.months", "printed": "(helper)", "label": "Months", "type": "Count", "expr": {"op": "input", "source": "Months"}},
+            {"id": "probe.result", "printed": "1", "label": "Threshold", "type": "Bool", "expr": {"op": "test", "gt": ["probe.months", {"const": 6, "type": "Count"}]}},
+        ]
+
+    def test_build_checker_accepts_typed_candidate_with_published_inputs_omitted(self):
+        project = self.lines()
+        with patch.object(T, "model_type_context", return_value=self.context(project)):
+            self.assertEqual(T.validate_model_types("probe", project[1:]), [])
+
+    def test_same_expression_with_wrong_declared_type_cannot_agree(self):
+        project = self.lines()
+        second = json.loads(json.dumps(project[1:]))
+        second[0]["type"] = "Dollars"
+        with patch.object(T, "model_type_context", return_value=self.context(project)):
+            result, _ = T.compare("probe", project, second)
+        self.assertEqual(result[0]["status"], "DISAGREE")
+        self.assertIn("invalid_model_types", result[0]["second"])
+
+    def test_type_error_in_printed_dependency_blocks_its_caller(self):
+        project = self.lines()
+        project[1]["expr"] = {"op": "copy", "from": "probe.helper"}
+        project.append({"id": "probe.helper", "printed": "2", "label": "Helper", "type": "Bool",
+                        "expr": {"op": "test", "gt": ["probe.months", {"const": 6, "type": "Count"}]}})
+        second = json.loads(json.dumps(project[1:]))
+        second[1]["expr"] = {"op": "copy", "from": "probe.months"}
+        with patch.object(T, "model_type_context", return_value=self.context(project)):
+            result, _ = T.compare("probe", project, second)
+        self.assertEqual(result[0]["status"], "DISAGREE")
+        self.assertIn("probe.helper", result[0]["second"])
+
+    def test_closed_inputs_cannot_be_added_or_retyped(self):
+        project = self.lines()
+        changed = json.loads(json.dumps(project))
+        changed[0]["type"] = "Dollars"
+        added = {"id": "probe.extra", "type": "Count", "expr": {"op": "input", "source": "Invented"}}
+        with patch.object(T, "model_type_context", return_value=self.context(project)):
+            errors = T.validate_model_types("probe", changed + [added])
+        self.assertTrue(any("published input" in e["message"] for e in errors))
+        self.assertTrue(any("outside the closed interface" in e["message"] for e in errors))
+
+    def test_omitted_helpers_are_not_borrowed_from_project_computations(self):
+        project = self.lines()
+        project[1]["expr"] = {"op": "copy", "from": "probe.helper"}
+        project.append({"id": "probe.helper", "printed": "(helper)", "label": "Helper", "type": "Bool",
+                        "expr": {"op": "test", "gt": ["probe.months", {"const": 6, "type": "Count"}]}})
+        with patch.object(T, "model_type_context", return_value=self.context(project)):
+            errors = T.validate_model_types("probe", [project[1]])
+        self.assertTrue(any("does not resolve" in e["message"] for e in errors))
+
+    def test_malformed_expression_becomes_diagnostic_without_execution(self):
+        project = self.lines()
+        changed = {**project[1], "expr": {"op": "sum"}}
+        with patch.object(T, "model_type_context", return_value=self.context(project)):
+            errors = T.validate_model_types("probe", [changed])
+        self.assertTrue(any("malformed expression" in e["message"] for e in errors))
+
+    def test_unused_invalid_helper_still_prevents_form_type_pass(self):
+        project = self.lines()
+        extra = {"id": "probe.unused", "printed": "(helper)", "label": "Unused", "type": "Bool",
+                 "expr": {"op": "copy", "from": "probe.months"}}
+        with patch.object(T, "model_type_context", return_value=self.context(project)):
+            result, _ = T.compare("probe", project, project[1:] + [extra])
+        self.assertEqual(result[0]["status"], "AGREE")
+        self.assertTrue(result.validation_errors)
+        with tempfile.TemporaryDirectory() as temp, patch.object(T, "LOGS", temp), \
+                patch.object(rulings, "REVIEWS", temp), patch.object(T.subjects, "current", return_value="a" * 64):
+            Path(temp, "transcription").mkdir()
+            path, _ = T.write_log({"id": "probe", "title": "Probe"}, "deepseek-flash", "request", [], result, [], "raw", {})
+            text = Path(path).read_text()
+        self.assertIn("| model type validation | fail |", text)
+
+    def test_extra_comparison_cannot_hide_behind_a_valid_comparison(self):
+        project = self.lines()
+        changed = json.loads(json.dumps(project[1:]))
+        changed[0]["expr"]["eq"] = ["probe.months", {"const": 1, "type": "Count"}]
+        with patch.object(T, "model_type_context", return_value=self.context(project)):
+            errors = T.validate_model_types("probe", changed)
+        self.assertTrue(any("project schema" in e["message"] for e in errors))
+
+    def test_unknown_literal_annotation_cannot_be_silently_ignored(self):
+        project = self.lines()
+        changed = json.loads(json.dumps(project[1:]))
+        changed[0]["expr"]["gt"][1]["ignored_unit"] = "money"
+        with patch.object(T, "model_type_context", return_value=self.context(project)):
+            errors = T.validate_model_types("probe", changed)
+        self.assertTrue(any("project schema" in e["message"] for e in errors))
 
 
 class SavedTranscriptionAudit(unittest.TestCase):
@@ -537,13 +677,42 @@ class SavedTranscriptionAudit(unittest.TestCase):
 class DefinitionInterfaces(unittest.TestCase):
     def test_transcription_unit_audit_hold_does_not_block_render_qualification(self):
         # Both dcprov reviews agree; a known comparer defect must still prevent promotion.
-        transcription = C.compare("transcription", "dcprov", "deepseek")["quality"]
+        parse = C.parse_log
+        def legacy(kind, path):
+            result = parse(kind, path)
+            result["comparison_policy"] = "legacy-unversioned"
+            return result
+        with patch.object(C, "parse_log", side_effect=legacy):
+            transcription = C.compare("transcription", "dcprov", "deepseek")["quality"]
         self.assertEqual(transcription["state"], "pending")
         self.assertTrue(any("BUG-0129" in b for b in transcription["blockers"]))
         self.assertTrue(any("unit-preserving comparison" in b for b in transcription["blockers"]))
         rendering = C.compare("render", "dcprov", "deepseek")["quality"]
         self.assertEqual(rendering["state"], "pass")
         self.assertFalse(any("BUG-0129" in b for b in rendering["blockers"]))
+
+    def test_either_family_without_passing_types_blocks_transcription(self):
+        parse = C.parse_log
+        for family in ("claude", "deepseek"):
+            def checked(kind, path):
+                result = parse(kind, path)
+                result.update(comparison_policy=T.COMPARISON_POLICY, type_policy=T.TYPE_VALIDATION_POLICY,
+                              model_types="fail" if families.split_stem(Path(path).stem)[1] == family else "pass")
+                return result
+            with self.subTest(family=family), patch.object(C, "parse_log", side_effect=checked):
+                quality = C.compare("transcription", "dcprov", "deepseek")["quality"]
+                self.assertTrue(any("expression type validation: " + family in b for b in quality["blockers"]))
+
+    def test_legacy_prompt_cannot_qualify_merely_by_rechecking_expression_types(self):
+        parse = C.parse_log
+        def incomplete(kind, path):
+            result = parse(kind, path)
+            result.update(comparison_policy=T.COMPARISON_POLICY, type_policy=T.TYPE_VALIDATION_POLICY,
+                          model_types="pass", input_context_policy="unrecorded", complete_inputs="unrecorded")
+            return result
+        with patch.object(C, "parse_log", side_effect=incomplete):
+            quality = C.compare("transcription", "dcprov", "deepseek")["quality"]
+        self.assertTrue(any("complete input context" in b for b in quality["blockers"]))
 
     def test_namespace_change_preserves_computation(self):
         project = [{"id": "line2"}, {"id": "line13"}]

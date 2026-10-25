@@ -34,7 +34,7 @@ interface Ctx {
   enumValues: Map<string, string[]>;
 }
 
-export function runChecks(data: CanonicalData): { errors: string[]; stats: string[] } {
+function contextFor(data: CanonicalData): Ctx {
   const ctx: Ctx = {
     errors: [],
     byId: new Map(),
@@ -43,8 +43,6 @@ export function runChecks(data: CanonicalData): { errors: string[]; stats: strin
     tables: new Map(data.tables.map((t) => [t.id, t])),
     enumValues: new Map(Object.entries(data.params.enums).map(([k, v]) => [k, v.values])),
   };
-  const stats: string[] = [];
-
   for (const doc of [...data.forms, ...data.defs]) {
     if (ctx.byId.has(doc.id)) ctx.errors.push(`duplicate document id '${doc.id}'`);
     ctx.byId.set(doc.id, doc);
@@ -55,6 +53,30 @@ export function runChecks(data: CanonicalData): { errors: string[]; stats: strin
     });
     ctx.lineMaps.set(doc.id, lm);
   }
+  return ctx;
+}
+
+/** The same reference/type rules used by the build, without citation or guard analysis.
+ * A model candidate is data, never code; malformed expressions become diagnostics.
+ */
+export function checkExpressionTypes(data: CanonicalData, documentId: string): { line: string | null; message: string }[] {
+  const ctx = contextFor(data);
+  const result = ctx.errors.map(message => ({ line: null as string | null, message }));
+  ctx.errors = [];
+  const doc = ctx.byId.get(documentId);
+  if (!doc) return [...result, { line: null, message: `unknown document '${documentId}'` }];
+  for (const line of doc.lines) {
+    const start = ctx.errors.length;
+    try { checkLine(ctx, doc, line); }
+    catch { ctx.errors.push(`${documentId}.${line.id}: malformed expression`); }
+    result.push(...ctx.errors.slice(start).map(message => ({ line: line.id, message })));
+  }
+  return result;
+}
+
+export function runChecks(data: CanonicalData): { errors: string[]; stats: string[] } {
+  const ctx = contextFor(data);
+  const stats: string[] = [];
 
   for (const doc of [...data.forms, ...data.defs]) {
     for (const line of doc.lines) {

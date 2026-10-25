@@ -88,6 +88,10 @@ def review_context(kind, text):
     comparison = re.search(r"^\| comparison policy \| (.*?) \|$", head, re.M)
     if kind == "transcription" and comparison:
         fields["comparison policy"] = comparison.group(1)
+        for name in ("type validation policy", "model type validation", "input context policy", "complete input context"):
+            match = re.search(rf"^\| {name} \| (.*?) \|$", head, re.M)
+            if match:
+                fields[name] = match.group(1)
     sources = re.findall(r"^\| \S+ \| [^|]* \| [^|]* \| [^|]* \| [0-9a-f]{64} \|[^\n]*$", head, re.M)
     cases = sorted(re.findall(r"^### case (\S+) — prompt sha256 ([0-9a-f]{64});", text, re.M)) if kind == "classm" else []
     return hashlib.sha256(json.dumps({"kind": kind, "fields": fields, "sources": sorted(sources),

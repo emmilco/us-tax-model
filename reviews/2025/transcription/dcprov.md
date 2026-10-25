@@ -4,11 +4,16 @@ Second transcription of `Form 2441, Part I — persons or organizations who prov
 
 | field | value |
 | --- | --- |
-| date | 2026-10-23 |
+| date | 2026-10-25 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | 53ec64337d2122a977206f1cf743b323af63e12173c51b2fe870305c19764f1f |
+| prompt sha256 | ad34a5c94d8464884d0d1ef7933c045cfae79684ff18f5810a89a9f9e5b85e8b |
 | prompt policy | source-only-computation-v2 |
+| comparison policy | checked-expression-types-v2 |
+| input context policy | complete-input-context-v1 |
+| complete input context | pass |
+| type validation policy | project-expression-types-v1 |
+| model type validation | pass |
 | system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
 | reasoning effort | provider default |
 | output token budget | transport default (65536 for DeepSeek) |
@@ -36,19 +41,19 @@ Status: **AGREE**
 ## Raw second transcription
 
 ```yaml
+```yaml
 lines:
   - id: dcprov.one
     printed: "(helper)"
-    label: "One care provider (this entry): counts toward the number of persons or organizations listed on line 1. If you have more than three care providers, check the box above line 1 and attach a statement."
+    label: "One care provider (this entry), counted toward the number of care providers on line 1"
     type: Count
     expr: {op: param, ref: dc.one}
-    cite: "i2441 (2025), p. 2, Part I, Line 1: 'Complete columns (a) through (e) for each person or organization that provided the care ... If you have more than three care providers, check the box above line 1 and attach a statement to your return with the required information.'"
-    note: "The IRS text does not name this result. It is read as a per-entry count of one, so that totals across entries give the number of care providers. Other forms compare that number with three (the box above line 1) and use it to tell whether line 1 is complete. The value comes from the declared year parameter dc.one, which is 1. No new input is added."
+    note: "The IRS text does not name this value. It reads as the count of 1 for each provider entry, so that summing it gives the number of care providers. The total is compared with three for the 'more than three care providers' box above line 1 and the attached statement. Encoded as the year parameter dc.one (1). Whether to exclude 'employer' or related entries from the count is left to the reading form; the text says to complete columns (a) through (e) for each person or organization that provided the care."
   - id: dcprov.see_statement
     printed: "(helper)"
-    label: "Enter “See Attached Statement” in the columns for which you don't have the information. Then, attach a statement to your return explaining that the provider didn't give you the information you requested."
+    label: "If the provider doesn't give you the information ... Enter \"See Attached Statement\" in the columns for which you don't have the information. Then, attach a statement to your return explaining that the provider didn't give you the information you requested."
     type: Bool
     expr: {op: test, eq: [dcprov.tin_kind, {const: "see_statement"}]}
-    cite: "i2441 (2025), p. 3, Due Diligence: 'If the provider doesn't give you the information, complete the entries you can on line 1 ... Enter “See Attached Statement” in the columns for which you don't have the information. Then, attach a statement to your return explaining that the provider didn't give you the information you requested.'"
-    note: "The IRS text does not name this result. It is read as true when the filer enters “See Attached Statement” in column (c), the provider's identifying number. That happens because the provider did not give the information, and the filer must then attach a due-diligence statement. This uses only the existing input dcprov.tin_kind, value \"see_statement\". The instructions also allow “See Attached Statement” in other columns (for example the address). The closed interface has no input for those columns, so they are not covered."
+    note: "The IRS text does not name this value. Read as whether this provider's column (c) shows 'See Attached Statement' (Due Diligence, i2441 page 3). If so, a statement explaining that the provider didn't give the requested information must be attached. The closed interface records only column (c) through dcprov.tin_kind, so the flag covers a missing identifying number only, not other missing columns."
+```
 ```

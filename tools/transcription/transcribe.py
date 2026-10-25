@@ -16,6 +16,7 @@ another family (families.py), each with its own rulings sidecar; the raw prompt 
 under .transcription/ take the same stem.
 """
 import argparse, datetime, hashlib, json, os, re, subprocess, sys
+from functools import cache
 import yaml
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -210,11 +211,12 @@ def operand_refs(node):
     def walk(e):
         if not isinstance(e, dict):
             return
-        for k in ("from", "take", "amount", "key", "status", "then", "rate"):
+        for k in ("from", "take", "amount", "count", "part", "whole", "key", "status", "then", "rate", "field"):
             if k in e:
                 ref(e[k])
-        for k in ("of",):
-            for x in e.get(k, []):
+        for k in ("of", "keys"):
+            values = e.get(k, [])
+            for x in ([values] if isinstance(values, str) else values):
                 ref(x)
         for k in ("eq", "ne", "lt", "le", "gt", "ge"):
             if k in e:
@@ -262,6 +264,9 @@ GRAMMAR = """Expression grammar (YAML). Exactly one atom per line. Operands writ
 {const: n, type: Count} for a nonnegative whole-number count, {const: true}, {const: "single"}),
 or a parameter ({param: name}). An untyped numeric constant is money cents, never a Count.
 When comparing a Count line with a numeric threshold, mark the constant with type: Count.
+Constants belong only in operand positions. A copy source or choose branch must be a line id
+or a definition instance, not a constant/parameter object. Use op: param to define a constant helper
+from the supplied parameter catalog. choose returns money; it does not select Count, Bool or Enum values.
 
   {op: input, source: "<the box or question this value comes from>"}
   {op: copy, from: <ref>}                      # <ref> is a line id string, or for a parameterised
@@ -317,7 +322,7 @@ def reference_note(doc, line):
     """Shared interface metadata, without project-written computed labels or expressions."""
     text = f"{line['id']} (form {doc['id']}; printed {str(line['printed'])!r}; type {line['type']})"
     if line["expr"].get("op") == "input":
-        text += ": input " + " ".join(line["expr"].get("source", "").split())[:160]
+        text += ": input " + " ".join(line["expr"].get("source", "").split())
     return text
 
 
@@ -329,8 +334,24 @@ def screen_notes():
     for g in sorted(gates):
         hit = lines.get(g)
         if hit and hit[1]["expr"].get("op") == "input":
-            out.append(f"  - {g}: {' '.join(hit[1]['expr'].get('source', '').split())[:220]}")
+            out.append(f"  - {g}: {' '.join(hit[1]['expr'].get('source', '').split())}")
     return "\n".join(out)
+
+
+INPUT_CONTEXT_POLICY = "complete-input-context-v1"
+
+
+def missing_input_context(prompt):
+    """Check all filer questions in the actual request, without relabeling its policy.
+
+    Shared-definition inputs are caller bindings, not filer questions; their bare ids
+    may overlap between definitions and are not the catalog of interview inputs.
+    """
+    supplied = " ".join(prompt.split())
+    definitions = load_defs()
+    return sorted(line_id for line_id, (doc_id, line) in load_all_lines().items()
+                  if doc_id not in definitions and line["expr"].get("op") == "input"
+                  and " ".join(line["expr"].get("source", "").split()) not in supplied)
 
 
 def gate_closure(line_id, lines, seen=None):
@@ -380,7 +401,7 @@ def build_prompt(form_doc, excerpt, params, other_lines, param_types=None):
     tgt = "\n".join(f"  - printed {keys[l['id']]!r} (id {l['id']}; type {l['type']})" for l in targets)
     exported = exported_lines(form_doc)
     exp = "\n".join(f"  - id {l['id']} ({l['type']})" for l in exported)
-    inp = "\n".join(f"  - {l['id']} (printed {keys[l['id']]!r}, type {l['type']}): {l['expr'].get('source','')[:160]}" for l in inputs)
+    inp = "\n".join(f"  - {l['id']} (printed {keys[l['id']]!r}, type {l['type']}): {l['expr'].get('source','')}" for l in inputs)
     prm = "\n".join(f"  - {k} ({(param_types or {}).get(k, 'type supplied by the interface')}): {v}" for k, v in params.items())
     oth = "\n".join(f"  - {k}: {v}" for k, v in other_lines.items())
     spec = open(os.path.join(ROOT, "spec", "spec.md"), encoding="utf-8").read()
@@ -514,7 +535,67 @@ def load_all_lines():
 ALL_LINES = None
 
 
-COMPARISON_POLICY = "typed-literals-v1"
+COMPARISON_POLICY = "checked-expression-types-v2"
+TYPE_VALIDATION_POLICY = "project-expression-types-v1"
+
+
+@cache
+def model_type_context():
+    """Live authored interfaces for the host validator, never supplied to the model."""
+    docs = [load_form(path[:-5]) for path in sorted(os.listdir(FORMS)) if path.endswith(".yaml")]
+    tables_path = os.path.join(ROOT, "tables", str(Y))
+    tables = [project_yaml(os.path.join(tables_path, path))["table"]
+              for path in sorted(os.listdir(tables_path)) if path.endswith(".yaml")]
+    params = project_yaml(os.path.join(ROOT, "params", f"{Y}.yaml"))
+    return {"forms": [d for d in docs if d.get("kind") != "def"],
+            "defs": [d for d in docs if d.get("kind") == "def"],
+            "params": params.get("params", params), "tables": tables, "register": {"entries": []}}
+
+
+def validate_model_types(form_id, second_lines):
+    """Reuse the build's reference/type checker without executing candidate expressions."""
+    try:
+        payload = json.dumps({"context": model_type_context(), "form": form_id, "lines": second_lines}, allow_nan=False)
+    except ValueError:
+        return [{"line": None, "message": "model contains a non-finite numeric value"}]
+    result = subprocess.run(["node", os.path.join(ROOT, "tools", "transcription", "check_model_types.mjs")],
+                            input=payload, capture_output=True, text=True, check=False)
+    if result.returncode:
+        raise RuntimeError("model type validator failed to run: " + result.stderr[-500:])
+    answer = json.loads(result.stdout)
+    if answer.get("policy") != TYPE_VALIDATION_POLICY or not isinstance(answer.get("errors"), list):
+        raise RuntimeError("model type validator returned an invalid result")
+    return answer["errors"]
+
+
+def validation_dependencies(line_id, second_by_id):
+    seen, remaining = set(), [line_id]
+    while remaining:
+        current = remaining.pop()
+        if current in seen:
+            continue
+        seen.add(current)
+        if current in second_by_id:
+            remaining.extend(operand_refs(second_by_id[current]["expr"]) - seen)
+    return seen
+
+
+def checked_second(expression, errors, line_id, second_by_id):
+    dependencies = validation_dependencies(line_id, second_by_id)
+    relevant = [e for e in errors if e["line"] is None or e["line"] in dependencies]
+    if relevant:
+        try:
+            parsed = json.loads(expression)
+        except (ValueError, TypeError):
+            parsed = expression
+        return canonical({"invalid_model_types": relevant, "expression": parsed})
+    return expression
+
+
+class ComparedLines(list):
+    def __init__(self, errors):
+        super().__init__()
+        self.validation_errors = errors
 
 
 def money_zero(tree):
@@ -751,6 +832,7 @@ def compare(form_id, project_lines, second_lines):
     defs = load_defs()
     if form_id in defs:
         second_lines = normalize_definition_ids(form_id, project_lines, second_lines)
+    type_errors = validate_model_types(form_id, second_lines)
     params_doc = project_yaml(os.path.join(ROOT, "params", f"{Y}.yaml"))
     parameter_rows = (params_doc.get("params") or params_doc)["values"]
     pvals = {k: v["value"] for k, v in parameter_rows.items()}
@@ -760,7 +842,7 @@ def compare(form_id, project_lines, second_lines):
     skeys = {**{i: pkeys[i] for i in inputs}, **marker_keys(second_lines)}
     a = Expander(form_id, project_lines, defs, inputs=inputs, params=pvals, keys=pkeys, param_types=ptypes)
     b = Expander(form_id, second_lines, defs, inputs=inputs, params=pvals, keys=skeys, param_types=ptypes)
-    results = []
+    results = ComparedLines(type_errors)
     second_by_id = {l["id"]: l for l in second_lines}
     for l in exported_lines({"id": form_id, "lines": project_lines}):
         pa = canonical(a.expr(l["expr"]))
@@ -772,6 +854,7 @@ def compare(form_id, project_lines, second_lines):
             sb = canonical(b.expr(s["expr"]))
         except Exception as ex:
             sb = f"<unparseable: {ex}>"
+        sb = checked_second(sb, type_errors, s["id"], second_by_id)
         results.append(gate_check({"printed": l["id"], "label": l["label"], "status": "AGREE" if pa == sb else "DISAGREE",
                         "project": pa, "second": sb, "note": s.get("note")}, l["id"], s, second_by_id))
     second_by_printed = {skeys[l["id"]]: l for l in second_lines if l["printed"] not in HELPER_PRINTED}
@@ -788,6 +871,7 @@ def compare(form_id, project_lines, second_lines):
             sb = canonical(b.expr(s["expr"]))
         except Exception as ex:  # malformed second transcription
             sb = f"<unparseable: {ex}>"
+        sb = checked_second(sb, type_errors, s["id"], second_by_id)
         results.append(gate_check({"printed": pkeys[l["id"]], "label": l["label"], "status": "AGREE" if pa == sb else "DISAGREE",
                         "project": pa, "second": sb, "note": s.get("note")}, l["id"], s, second_by_id))
     extra = [p for p in second_by_printed if p not in set(pkeys.values())]
@@ -989,6 +1073,8 @@ def write_log(form_doc, model, prompt, used, results, extra, raw_text, meta, dry
     fid = form_doc["id"]
     family = families.family_of(model)
     counts = {k: sum(1 for r in results if r["status"] == k) for k in ("AGREE", "DISAGREE", "MISSING")}
+    type_errors = getattr(results, "validation_errors", None)
+    validation = "unrecorded" if type_errors is None else "fail" if type_errors else "pass"
     out = [f"# Transcription agreement — {fid}", "",
            f"Second transcription of `{form_doc['title']}` by an isolated model (spec 6.5), compared line by line with `forms/{Y}/{fid}.yaml`.", "",
            "| field | value |", "| --- | --- |",
@@ -998,6 +1084,10 @@ def write_log(form_doc, model, prompt, used, results, extra, raw_text, meta, dry
            f"| prompt sha256 | {hashlib.sha256(prompt.encode()).hexdigest()} |",
            f"| prompt policy | {meta.get('prompt_policy', 'legacy-unrecorded')} |",
            f"| comparison policy | {COMPARISON_POLICY} |",
+           f"| input context policy | {INPUT_CONTEXT_POLICY} |",
+           f"| complete input context | {'fail' if missing_input_context(prompt) else 'pass'} |",
+           f"| type validation policy | {TYPE_VALIDATION_POLICY if type_errors is not None else 'unrecorded'} |",
+           f"| model type validation | {validation} |",
            f"| system sha256 | {meta.get('system_sha256', '-')} |",
            f"| reasoning effort | {meta.get('reasoning_effort') or 'provider default'} |",
            f"| output token budget | {meta.get('request_max_tokens') or 'transport default (65536 for DeepSeek)'} |",
@@ -1009,6 +1099,10 @@ def write_log(form_doc, model, prompt, used, results, extra, raw_text, meta, dry
            "## Source pages given to the model", "", "| document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |", "| --- | --- | --- | --- | --- | --- | --- |"]
     for u in used:
         out.append(f"| {u['doc']} | {u['revision']} | {', '.join(map(str, u['pages'])) or '-'} | {u['how']} | {u['text_sha256']} | {', '.join(map(str, u.get('cols_pages', []))) or '-'} | {u.get('cols_sha256', '-')} |")
+    if type_errors:
+        out += ["", "## Host-side model expression type checks", "",
+                "The build's reference/type checker rejected these model expressions; none were executed."]
+        out.extend("- " + error["message"].replace("\n", " ") for error in type_errors)
     out += ["", "## Lines", ""]
     kept = rulings.kept("transcription", fid, family, context=rulings.review_context("transcription", "\n".join(out)))
     for r in results:
@@ -1074,7 +1168,7 @@ def main():
     results, extra = compare(a.form, form_doc["lines"], second["lines"])
     path, counts = write_log(form_doc, a.model, prompt, used, results, extra, text, meta)
     print(f"{a.form}: agree {counts['AGREE']}, disagree {counts['DISAGREE']}, missing {counts['MISSING']}, extra {len(extra)}; cost {meta.get('cost_usd')} -> {os.path.relpath(path, ROOT)}")
-    sys.exit(0 if counts["DISAGREE"] + counts["MISSING"] == 0 else 3)
+    sys.exit(0 if counts["DISAGREE"] + counts["MISSING"] == 0 and not results.validation_errors else 3)
 
 
 if __name__ == "__main__":

@@ -233,25 +233,38 @@ parameters compare as constants; zero terms are dropped from sums; `choose`
 alternatives that select the same target are merged under one `any` guard.
 Lines agree when the canonical trees are equal.
 
-**BUG-0129 repair (2026-10-24):** constant normalization now preserves Count annotations, including
-zero/one parameters expanded through foreign helpers and shared definitions. Boolean constants are
-distinguished from numeric zero/one. New logs record `typed-literals-v1` as their comparison policy;
-changing it invalidates automatic reuse of old rulings. BUG-0130 adds missing Count syntax to the
-generic prompt grammar. This is not a claim that every returned model IR type has been validated.
-Both logs in a comparison must record the current comparison policy before that pair can qualify;
-removing the global hold alone cannot promote legacy comparisons.
-All transcription qualification remains held until model type validation, prior-agreement audit,
-verified record migration/fresh requests and adjudication close (T-062). Historical AGREE is not a
-typed-model certification. Render, worked-value and engine evidence have separate rules.
+**BUG-0129 follow-up (2026-10-25):** constant normalization preserves Count annotations and
+parameter units, and distinguishes Boolean constants from numeric zero/one. Before comparison,
+`check_model_types.mjs` validates expressions with the project JSON schema and the build's
+reference/type rules. It keeps published input types, rejects added inputs/changed result types,
+and uses only the model's own computed helpers in the reviewed document. No candidate expression
+is executed. Citation and guard-exhaustiveness checks are outside this adapter's scope.
 
-`python3 tools/transcription/audit_transcription.py` recompares saved transcriptions offline and
-writes `.transcription/typed-literal-audit.json` without modifying prompts, replies, logs or rulings.
-It verifies the log's subject and original prompt hash, metadata consistency and the embedded reply.
-Legacy incomplete request receipts remain labeled legacy-limited; mismatches are reported rather
-than upgraded. `--forms`, `--family` and `--report` restrict/output the diagnostic audit. An exit 1
-means artifacts could not be verified, not that the tool has rewritten or resolved them. The first
-run verifies 82 replies and detects nine lost agreements; 27 saved Claude prompts fail their old
-hashes and one reply has conflicting definition ids. This diagnostic report alone never qualifies a reading.
+New logs record `checked-expression-types-v2`, `project-expression-types-v1` and a passing/failing
+validation result. A type error reaches every line that reads that helper; even an unused invalid
+helper fails the form's type check and gives tool exit 3. BUG-0132 extends dependency traversal to
+count, proration, keyed-table and collection-field operands. Invalid expressions cannot agree by
+canonicalization alone. Passing types does not establish source correctness or numeric evidence.
+
+BUG-0130 supplies Count-literal syntax; BUG-0131 preserves complete input/refusal questions instead
+of cutting off late meanings and exceptions. New logs separately check the actual prompt against
+all current filer-input questions (`complete-input-context-v1`; shared-definition caller bindings
+are excluded). This is a host-side completeness finding, not a change to the original request's
+prompt-policy metadata. Both families need current comparison, passing types and complete input
+context before the pair can qualify. These properties are bound into ruling contexts.
+
+All transcription qualification remains held until verified record migration/fresh requests and
+source adjudication close (T-062). Removing the global hold cannot promote unchecked legacy logs.
+Render, worked-value and engine evidence have separate rules.
+
+`python3 tools/transcription/audit_transcription.py` verifies saved subjects, prompt hashes,
+metadata consistency and embedded replies before checking types and comparing. It writes only
+`.transcription/expression-type-audit-current.json`; it never modifies requests, replies, logs or
+rulings. Legacy incomplete receipts remain legacy-limited. `--forms`, `--family` and `--report`
+restrict/output the diagnostic audit. Exit 1 means some records could not be verified/recompared.
+The initial literal audit is preserved at `.transcription/typed-literal-audit.json`; its nine lost
+agreements were an earlier, narrower result. Current totals and migration limits are in
+`reports/2025/transcription_audit.md`. An audit report alone never qualifies a reading.
 
 Representational differences the comparison cannot see through remain as
 disagreements and get a ruling: typically a value the project derives from

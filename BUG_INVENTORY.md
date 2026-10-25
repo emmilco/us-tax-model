@@ -1909,3 +1909,42 @@ later grouping.
   context defect too. Prior noise rulings must not be treated as clean model-only tests without this
   limitation. BUG-0129's qualification hold stays until typing and the prior-agreement audit close.
 - **Tags:** incomplete-review-grammar; missing-count-syntax; caught-by-request-audit
+
+## BUG-0131 — Transcription prompts truncate input meanings and scope conditions
+
+- **Date:** 2026-10-25
+- **Caught by:** tracing the refreshed dependent reviewers' shared relationship errors to the actual
+  saved prompts during the expression-type audit.
+- **Symptom:** the input question defines sibling_descendant as more distant relationships such as
+  grandnieces, with listed nieces/nephews already included in sibling. Both prompts cut that question
+  at 160 characters; neither contains grandniece or the later other/all-year-household explanation.
+  Reviewers then misinterpret the enum and produce wrong dependency/ODC predicates.
+- **Root cause:** three metadata emitters slice input descriptions at 160 characters and refusal
+  questions at 220, treating essential category meanings and late exceptions as expendable prose.
+- **Where:** `tools/transcription/transcribe.py`, build_prompt, reference_note and screen_notes.
+- **Fix:** retain full supplied-input and refusal wording. It is interface/scope metadata, not an
+  authored computation. Regression checks must show late enum meanings and scope conditions while
+  still excluding computed labels/expressions. New calls bind the changed prompt; old receipts and
+  rulings remain historical and are not relabeled as complete-context tests.
+- **Qualification:** old model IR errors are real, but these source-interpretation disagreements
+  also had incomplete project context. Do not treat the earlier rulings as clean model-only noise
+  evidence. The transcription hold stays while validated fresh/recompared records are adjudicated.
+- **Tags:** truncated-review-context; lost-enum-semantics; scope-omission; caught-by-request-audit
+
+## BUG-0132 — Review dependency traversal omits newer operand positions
+
+- **Date:** 2026-10-25
+- **Caught by:** checking expression-type diagnostics against the transcription dependency walker.
+- **Symptom:** the walker follows arithmetic amounts and comparison operands, but skips
+  multiply_count's count, prorate's part/whole, keyed_lookup's keys and sum_over's field;
+  round's scalar of reference is mistaken for an array and walked character by character.
+  A model helper's type rejection in these positions does not reach the consuming line's
+  comparison diagnostic. Refusal closure and shared-definition result discovery use the same walker.
+- **Root cause:** new atoms were added without extending the old operand-position list.
+- **Where:** `tools/transcription/transcribe.py`, operand_refs and its dependency/closure callers.
+- **Fix:** walk the missing reference/operand positions, without treating parameter names, enum
+  constants or definition result names as local line references. Regression checks cover every
+  omitted position. The whole-form type-failure gate remains a separate protection.
+- **Qualification:** this repairs diagnostic propagation, not source correctness. Prior comparisons
+  still require verified replay or new requests; BUG-0129's hold remains.
+- **Tags:** incomplete-dependency-walk; missed-type-diagnostic; refusal-closure

@@ -1,5 +1,42 @@
 # Handoff: the integrity plan, Phase 0 done, Phase 1 in progress
 
+## Current expression-validation repair after bdb2e12 — 2026-10-25
+
+bdb2e12 committed the literal-unit repair after a full green suite. The follow-up now validates
+returned expressions against the project schema and the build's reference/type checker, without
+executing them. It replaces only the reviewed document, preserves published input types, rejects
+new inputs and changed result types, and does not borrow omitted authored computed helpers.
+This is expression/reference/type validation, not citation, guard-exhaustiveness or tax correctness
+certification. All 55 authored definitions pass the same adapter; 84 offline review-tool tests pass.
+
+New logs use checked-expression-types-v2 and project-expression-types-v1. Invalid dependencies
+prevent line agreement; any invalid helper prevents a form type pass and a successful tool exit.
+BUG-0132 repairs missing count/proration/table-key/collection-field dependency traversal.
+Both families need passing current type and complete-input-context checks before qualification,
+even after the global hold is eventually removed. Request completeness checks the actual prompt;
+it does not relabel the original prompt policy or upgrade an incomplete request receipt.
+
+BUG-0131 removes 160/220-character cuts that omitted late enum meanings and scope exceptions.
+Four fresh source-only requests (dcprov/dependent, Claude/Flash) include the full questions. Both
+provider replies agree on two results and pass types. Claude's dependent reply passes types but
+still has source/interface omissions; Flash's fails on bare Bool tests and collection binding.
+The 24 disputed sample rows are adjudicated, retaining explicit limitations and pending status.
+No model output was repaired into an agreement. Originals (18 files) are hashed under
+.transcription/archive/before-expression-validation-2026-10-25/; raw fresh requests stay intact.
+
+The current read-only audit verifies/recompares 82 replies: 26 pass expression validation and
+211 former AGREE rows become disagreements under the stricter checker. Twenty-three receipts
+remain legacy-limited. The other 28 Claude records remain unverified/not re-comparable (27 prompt
+hash mismatches, one conflicting definition id). See reports/2025/transcription_audit.md and
+.transcription/expression-type-audit-current.json. The older nine-loss and 202-loss audit snapshots
+are historical intermediate diagnostics. No bulk review migration has happened.
+
+T-062 remains open: verify/replay qualifying original requests, issue fresh requests for incomplete
+or unverified records, obtain valid replacements for rejected IR and adjudicate remaining source
+issues. Keep the global transcription hold; do not promote Flash. No authored tax rule, numeric
+fixture or human verdict changes in this batch; the numeric scoreboard stays separate. Full-suite
+validation is recorded by the next commit/check marker, not inferred from these targeted checks.
+
 ## Current literal-unit repair after commit 2fdec33 — 2026-10-24
 
 2fdec33 commits the age-at-care correction, deduction presentation changes and transcription hold

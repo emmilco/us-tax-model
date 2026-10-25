@@ -72,6 +72,8 @@ def parse_log(kind, path):
     return {"model": field("model requested"), "reported": field("model reported"), "date": field("date"),
             "subject": field("subject sha256"), "policy": field("prompt policy"),
             "comparison_policy": field("comparison policy"), "lines": lines, "duplicates": duplicates,
+            "type_policy": field("type validation policy"), "model_types": field("model type validation"),
+            "input_context_policy": field("input context policy"), "complete_inputs": field("complete input context"),
             "sources": re.findall(r"^\| (\S+) \| [^|]* \| [^|]* \| [^|]* \| ([0-9a-f]{64}) \|(?: [^|]* \| ([0-9a-f]{64}|-) \|)?$", text, flags=re.M)}
 
 
@@ -164,6 +166,14 @@ def compare(kind, form, family):
                   if record.get("comparison_policy") != transcribe.COMPARISON_POLICY]
         if legacy:
             q["blockers"].append("transcription predates unit-preserving comparison; verified re-comparison required: " + ", ".join(legacy))
+        unchecked = [fam for fam, record in ((families.DEFAULT, a), (family, b))
+                     if record.get("type_policy") != transcribe.TYPE_VALIDATION_POLICY or record.get("model_types") != "pass"]
+        if unchecked:
+            q["blockers"].append("no passing current expression type validation: " + ", ".join(unchecked))
+        incomplete = [fam for fam, record in ((families.DEFAULT, a), (family, b))
+                      if record.get("input_context_policy") != transcribe.INPUT_CONTEXT_POLICY or record.get("complete_inputs") != "pass"]
+        if incomplete:
+            q["blockers"].append("no verified complete input context in the request: " + ", ".join(incomplete))
     if kind == "transcription" and b["policy"] != "source-only-computation-v2":
         q["blockers"].append("transcription predates the prompt-independence policy")
     q["blockers"].extend(model_blockers(kind, family, b))
