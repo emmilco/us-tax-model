@@ -4,11 +4,16 @@ Second transcription of `Tax Computation Worksheet—Line 16` by an isolated mod
 
 | field | value |
 | --- | --- |
-| date | 2026-10-23 |
+| date | 2026-10-25 |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
-| prompt sha256 | dcd3d46bd61b1006efa39f555d3b28c8ec91745dd0f64e0d67ca0a2f1bd09b73 |
+| prompt sha256 | 52a3cf35e599aaa95fa145f335ce4ac707a2194fc608917bd0167d66af27b914 |
 | prompt policy | source-only-computation-v2 |
+| comparison policy | checked-expression-types-v2 |
+| input context policy | complete-input-context-v1 |
+| complete input context | pass |
+| type validation policy | project-expression-types-v1 |
+| model type validation | pass |
 | system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
 | reasoning effort | provider default |
 | output token budget | 65536 |
@@ -38,12 +43,10 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"const": "mfj"}, {"input": "status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"input": "status"}], "test": "eq"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"input": "amount"}, {"param": "tcw.mfj.b2.upper"}], "test": "le"}, {"args": [{"param": "tcw.mfj.b1.upper"}, {"input": "amount"}], "test": "lt"}], "test": "all"}, "then": {"from": {"amount": {"input": "amount"}, "op": "multiply_rate", "rate": {"param": "tcw.mfj.b2.rate"}}, "op": "subtract", "take": {"param": "tcw.mfj.b2.subtract"}}}, {"guard": {"args": [{"args": [{"input": "amount"}, {"param": "tcw.mfj.b3.upper"}], "test": "le"}, {"args": [{"param": "tcw.mfj.b2.upper"}, {"input": "amount"}], "test": "lt"}], "test": "all"}, "then": {"from": {"amount": {"input": "amount"}, "op": "multiply_rate", "rate": {"param": "tcw.mfj.b3.rate"}}, "op": "subtract", "take": {"param": "tcw.mfj.b3.subtract"}}}, {"guard": {"args": [{"args": [{"input": "amount"}, {"param": "tcw.mfj.b4.upper"}], "test": "le"}, {"args": [{"param": "tcw.mfj.b3.upper"}, {"input": "amount"}], "test": "lt"}], "test": "all"}, "then": {"from": {"amount": {"input": "amount"}, "op": "multiply_rate", "rate": {"param": "tcw.mfj.b4.rate"}}, "op": "subtract", "take": {"param": "tcw.mfj.b4.subtract"}}}, {"guard": {"args": [{"input": "amount"}, {"param": "tcw.mfj.b1.upper"}], "test": "le"}, "then": {"from": {"amount": {"input": "amount"}, "op": "multiply_rate", "rate": {"param": "tcw.mfj.b1.rate"}}, "op": "subtract", "take": {"param": "tcw.mfj.b1.subtract"}}}, {"guard": {"args": [{"param": "tcw.mfj.b4.upper"}, {"input": "amount"}], "test": "lt"}, "then": {"from": {"amount": {"input": "amount"}, "op": "multiply_rate", "rate": {"param": "tcw.mfj.b5.rate"}}, "op": "subtract", "take": {"param": "tcw.mfj.b5.subtract"}}}], "op": "choose"}}, {"guard": {"args": [{"const": "hoh"}, {"input": "status"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"input": "amount"}, {"param": "tcw.hoh.b2.upper"}], "test": "le"}, {"args": [{"param": "tcw.hoh.b1.upper"}, {"input": "amount"}], "test": "lt"}], "test": "all"}, "then": {"from": {"amount": {"input": "amount"}, "op": "multiply_rate", "rate": {"param": "tcw.hoh.b2.rate"}}, "op": "subtract", "take": {"param": "tcw.hoh.b2.subtract"}}}, {"guard": {"args": [{"args": [{"input": "amount"}, {"param": "tcw.hoh.b3.upper"}], "test": "le"}, {"args": [{"param": "tcw.hoh.b2.upper"}, {"input": "amount"}], "test": "lt"}], "test": "all"}, "then": {"from": {"amount": {"input": "amount"}, "op": "multiply_rate", "rate": {"param": "tcw.hoh.b3.rate"}}, "op": "subtract", "take": {"param": "tcw.hoh.b3.subtract"}}}, {"guard": {"args": [{"args": [{"input": "amount"}, {"param": "tcw.hoh.b4.upper"}], "test": "le"}, {"args": [{"param": "tcw.hoh.b3.upper"}, {"input": "amount"}], "test": "lt"}], "test": "all"}, "then": {"from": {"amount": {"input": "amount"}, "op": "multiply_rate", "rate": {"param": "tcw.hoh.b4.rate"}}, "op": "subtract", "take": {"param": "tcw.hoh.b4.subtract"}}}, {"guard": {"args": [{"input": "amount"}, {"param": "tcw.hoh.b1.upper"}], "test": "le"}, "then": {"from": {"amount": {"input": "amount"}, "op": "multiply_rate", "rate": {"param": "tcw.hoh.b1.rate"}}, "op": "subtract", "take": {"param": "tcw.hoh.b1.subtract"}}}, {"guard": {"args": [{"param": "tcw.hoh.b4.upper"}, {"input": "amount"}], "test": "lt"}, "then": {"from": {"amount": {"input": "amount"}, "op": "multiply_rate", "rate": {"param": "tcw.hoh.b5.rate"}}, "op": "subtract", "take": {"param": "tcw.hoh.b5.subtract"}}}], "op": "choose"}}, {"guard": {"args": [{"const": "mfs"}, {"input": "status"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"input": "amount"}, {"param": "tcw.mfs.b2.upper"}], "test": "le"}, {"args": [{"param": "tcw.mfs.b1.upper"}, {"input": "amount"}], "test": "lt"}], "test": "all"}, "then": {"from": {"amount": {"input": "amount"}, "op": "multiply_rate", "rate": {"param": "tcw.mfs.b2.rate"}}, "op": "subtract", "take": {"param": "tcw.mfs.b2.subtract"}}}, {"guard": {"args": [{"args": [{"input": "amount"}, {"param": "tcw.mfs.b3.upper"}], "test": "le"}, {"args": [{"param": "tcw.mfs.b2.upper"}, {"input": "amount"}], "test": "lt"}], "test": "all"}, "then": {"from": {"amount": {"input": "amount"}, "op": "multiply_rate", "rate": {"param": "tcw.mfs.b3.rate"}}, "op": "subtract", "take": {"param": "tcw.mfs.b3.subtract"}}}, {"guard": {"args": [{"args": [{"input": "amount"}, {"param": "tcw.mfs.b4.upper"}], "test": "le"}, {"args": [{"param": "tcw.mfs.b3.upper"}, {"input": "amount"}], "test": "lt"}], "test": "all"}, "then": {"from": {"amount": {"input": "amount"}, "op": "multiply_rate", "rate": {"param": "tcw.mfs.b4.rate"}}, "op": "subtract", "take": {"param": "tcw.mfs.b4.subtract"}}}, {"guard": {"args": [{"input": "amount"}, {"param": "tcw.mfs.b1.upper"}], "test": "le"}, "then": {"from": {"amount": {"input": "amount"}, "op": "multiply_rate", "rate": {"param": "tcw.mfs.b1.rate"}}, "op": "subtract", "take": {"param": "tcw.mfs.b1.subtract"}}}, {"guard": {"args": [{"param": "tcw.mfs.b4.upper"}, {"input": "amount"}], "test": "lt"}, "then": {"from": {"amount": {"input": "amount"}, "op": "multiply_rate", "rate": {"param": "tcw.mfs.b5.rate"}}, "op": "subtract", "take": {"param": "tcw.mfs.b5.subtract"}}}], "op": "choose"}}, {"guard": {"args": [{"const": "single"}, {"input": "status"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"input": "amount"}, {"param": "tcw.single.b2.upper"}], "test": "le"}, {"args": [{"param": "tcw.single.b1.upper"}, {"input": "amount"}], "test": "lt"}], "test": "all"}, "then": {"from": {"amount": {"input": "amount"}, "op": "multiply_rate", "rate": {"param": "tcw.single.b2.rate"}}, "op": "subtract", "take": {"param": "tcw.single.b2.subtract"}}}, {"guard": {"args": [{"args": [{"input": "amount"}, {"param": "tcw.single.b3.upper"}], "test": "le"}, {"args": [{"param": "tcw.single.b2.upper"}, {"input": "amount"}], "test": "lt"}], "test": "all"}, "then": {"from": {"amount": {"input": "amount"}, "op": "multiply_rate", "rate": {"param": "tcw.single.b3.rate"}}, "op": "subtract", "take": {"param": "tcw.single.b3.subtract"}}}, {"guard": {"args": [{"args": [{"input": "amount"}, {"param": "tcw.single.b4.upper"}], "test": "le"}, {"args": [{"param": "tcw.single.b3.upper"}, {"input": "amount"}], "test": "lt"}], "test": "all"}, "then": {"from": {"amount": {"input": "amount"}, "op": "multiply_rate", "rate": {"param": "tcw.single.b4.rate"}}, "op": "subtract", "take": {"param": "tcw.single.b4.subtract"}}}, {"guard": {"args": [{"input": "amount"}, {"param": "tcw.single.b1.upper"}], "test": "le"}, "then": {"from": {"amount": {"input": "amount"}, "op": "multiply_rate", "rate": {"param": "tcw.single.b1.rate"}}, "op": "subtract", "take": {"param": "tcw.single.b1.subtract"}}}, {"guard": {"args": [{"param": "tcw.single.b4.upper"}, {"input": "amount"}], "test": "lt"}, "then": {"from": {"amount": {"input": "amount"}, "op": "multiply_rate", "rate": {"param": "tcw.single.b5.rate"}}, "op": "subtract", "take": {"param": "tcw.single.b5.subtract"}}}], "op": "choose"}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"args": [{"const": "mfj"}, {"input": "status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"input": "status"}], "test": "eq"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"input": "amount"}, {"param": "tcw.mfj.b1.upper"}], "test": "le"}, {"args": [{"param": "ordinary.table_boundary"}, {"input": "amount"}], "test": "le"}], "test": "all"}, "then": {"from": {"amount": {"input": "amount"}, "op": "multiply_rate", "rate": {"param": "tcw.mfj.b1.rate"}}, "op": "subtract", "take": {"param": "tcw.mfj.b1.subtract"}}}, {"guard": {"args": [{"args": [{"input": "amount"}, {"param": "tcw.mfj.b2.upper"}], "test": "le"}, {"args": [{"param": "tcw.mfj.b1.upper"}, {"input": "amount"}], "test": "lt"}], "test": "all"}, "then": {"from": {"amount": {"input": "amount"}, "op": "multiply_rate", "rate": {"param": "tcw.mfj.b2.rate"}}, "op": "subtract", "take": {"param": "tcw.mfj.b2.subtract"}}}, {"guard": {"args": [{"args": [{"input": "amount"}, {"param": "tcw.mfj.b3.upper"}], "test": "le"}, {"args": [{"param": "tcw.mfj.b2.upper"}, {"input": "amount"}], "test": "lt"}], "test": "all"}, "then": {"from": {"amount": {"input": "amount"}, "op": "multiply_rate", "rate": {"param": "tcw.mfj.b3.rate"}}, "op": "subtract", "take": {"param": "tcw.mfj.b3.subtract"}}}, {"guard": {"args": [{"args": [{"input": "amount"}, {"param": "tcw.mfj.b4.upper"}], "test": "le"}, {"args": [{"param": "tcw.mfj.b3.upper"}, {"input": "amount"}], "test": "lt"}], "test": "all"}, "then": {"from": {"amount": {"input": "amount"}, "op": "multiply_rate", "rate": {"param": "tcw.mfj.b4.rate"}}, "op": "subtract", "take": {"param": "tcw.mfj.b4.subtract"}}}, {"guard": {"args": [{"input": "amount"}, {"param": "ordinary.table_boundary"}], "test": "lt"}, "then": {"const": 0}}, {"guard": {"args": [{"param": "tcw.mfj.b4.upper"}, {"input": "amount"}], "test": "lt"}, "then": {"from": {"amount": {"input": "amount"}, "op": "multiply_rate", "rate": {"param": "tcw.mfj.b5.rate"}}, "op": "subtract", "take": {"param": "tcw.mfj.b5.subtract"}}}], "op": "choose"}}, {"guard": {"args": [{"const": "hoh"}, {"input": "status"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"input": "amount"}, {"param": "tcw.hoh.b1.upper"}], "test": "le"}, {"args": [{"param": "ordinary.table_boundary"}, {"input": "amount"}], "test": "le"}], "test": "all"}, "then": {"from": {"amount": {"input": "amount"}, "op": "multiply_rate", "rate": {"param": "tcw.hoh.b1.rate"}}, "op": "subtract", "take": {"param": "tcw.hoh.b1.subtract"}}}, {"guard": {"args": [{"args": [{"input": "amount"}, {"param": "tcw.hoh.b2.upper"}], "test": "le"}, {"args": [{"param": "tcw.hoh.b1.upper"}, {"input": "amount"}], "test": "lt"}], "test": "all"}, "then": {"from": {"amount": {"input": "amount"}, "op": "multiply_rate", "rate": {"param": "tcw.hoh.b2.rate"}}, "op": "subtract", "take": {"param": "tcw.hoh.b2.subtract"}}}, {"guard": {"args": [{"args": [{"input": "amount"}, {"param": "tcw.hoh.b3.upper"}], "test": "le"}, {"args": [{"param": "tcw.hoh.b2.upper"}, {"input": "amount"}], "test": "lt"}], "test": "all"}, "then": {"from": {"amount": {"input": "amount"}, "op": "multiply_rate", "rate": {"param": "tcw.hoh.b3.rate"}}, "op": "subtract", "take": {"param": "tcw.hoh.b3.subtract"}}}, {"guard": {"args": [{"args": [{"input": "amount"}, {"param": "tcw.hoh.b4.upper"}], "test": "le"}, {"args": [{"param": "tcw.hoh.b3.upper"}, {"input": "amount"}], "test": "lt"}], "test": "all"}, "then": {"from": {"amount": {"input": "amount"}, "op": "multiply_rate", "rate": {"param": "tcw.hoh.b4.rate"}}, "op": "subtract", "take": {"param": "tcw.hoh.b4.subtract"}}}, {"guard": {"args": [{"input": "amount"}, {"param": "ordinary.table_boundary"}], "test": "lt"}, "then": {"const": 0}}, {"guard": {"args": [{"param": "tcw.hoh.b4.upper"}, {"input": "amount"}], "test": "lt"}, "then": {"from": {"amount": {"input": "amount"}, "op": "multiply_rate", "rate": {"param": "tcw.hoh.b5.rate"}}, "op": "subtract", "take": {"param": "tcw.hoh.b5.subtract"}}}], "op": "choose"}}, {"guard": {"args": [{"const": "mfs"}, {"input": "status"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"input": "amount"}, {"param": "tcw.mfs.b1.upper"}], "test": "le"}, {"args": [{"param": "ordinary.table_boundary"}, {"input": "amount"}], "test": "le"}], "test": "all"}, "then": {"from": {"amount": {"input": "amount"}, "op": "multiply_rate", "rate": {"param": "tcw.mfs.b1.rate"}}, "op": "subtract", "take": {"param": "tcw.mfs.b1.subtract"}}}, {"guard": {"args": [{"args": [{"input": "amount"}, {"param": "tcw.mfs.b2.upper"}], "test": "le"}, {"args": [{"param": "tcw.mfs.b1.upper"}, {"input": "amount"}], "test": "lt"}], "test": "all"}, "then": {"from": {"amount": {"input": "amount"}, "op": "multiply_rate", "rate": {"param": "tcw.mfs.b2.rate"}}, "op": "subtract", "take": {"param": "tcw.mfs.b2.subtract"}}}, {"guard": {"args": [{"args": [{"input": "amount"}, {"param": "tcw.mfs.b3.upper"}], "test": "le"}, {"args": [{"param": "tcw.mfs.b2.upper"}, {"input": "amount"}], "test": "lt"}], "test": "all"}, "then": {"from": {"amount": {"input": "amount"}, "op": "multiply_rate", "rate": {"param": "tcw.mfs.b3.rate"}}, "op": "subtract", "take": {"param": "tcw.mfs.b3.subtract"}}}, {"guard": {"args": [{"args": [{"input": "amount"}, {"param": "tcw.mfs.b4.upper"}], "test": "le"}, {"args": [{"param": "tcw.mfs.b3.upper"}, {"input": "amount"}], "test": "lt"}], "test": "all"}, "then": {"from": {"amount": {"input": "amount"}, "op": "multiply_rate", "rate": {"param": "tcw.mfs.b4.rate"}}, "op": "subtract", "take": {"param": "tcw.mfs.b4.subtract"}}}, {"guard": {"args": [{"input": "amount"}, {"param": "ordinary.table_boundary"}], "test": "lt"}, "then": {"const": 0}}, {"guard": {"args": [{"param": "tcw.mfs.b4.upper"}, {"input": "amount"}], "test": "lt"}, "then": {"from": {"amount": {"input": "amount"}, "op": "multiply_rate", "rate": {"param": "tcw.mfs.b5.rate"}}, "op": "subtract", "take": {"param": "tcw.mfs.b5.subtract"}}}], "op": "choose"}}, {"guard": {"args": [{"const": "single"}, {"input": "status"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"input": "amount"}, {"param": "tcw.single.b1.upper"}], "test": "le"}, {"args": [{"param": "ordinary.table_boundary"}, {"input": "amount"}], "test": "le"}], "test": "all"}, "then": {"from": {"amount": {"input": "amount"}, "op": "multiply_rate", "rate": {"param": "tcw.single.b1.rate"}}, "op": "subtract", "take": {"param": "tcw.single.b1.subtract"}}}, {"guard": {"args": [{"args": [{"input": "amount"}, {"param": "tcw.single.b2.upper"}], "test": "le"}, {"args": [{"param": "tcw.single.b1.upper"}, {"input": "amount"}], "test": "lt"}], "test": "all"}, "then": {"from": {"amount": {"input": "amount"}, "op": "multiply_rate", "rate": {"param": "tcw.single.b2.rate"}}, "op": "subtract", "take": {"param": "tcw.single.b2.subtract"}}}, {"guard": {"args": [{"args": [{"input": "amount"}, {"param": "tcw.single.b3.upper"}], "test": "le"}, {"args": [{"param": "tcw.single.b2.upper"}, {"input": "amount"}], "test": "lt"}], "test": "all"}, "then": {"from": {"amount": {"input": "amount"}, "op": "multiply_rate", "rate": {"param": "tcw.single.b3.rate"}}, "op": "subtract", "take": {"param": "tcw.single.b3.subtract"}}}, {"guard": {"args": [{"args": [{"input": "amount"}, {"param": "tcw.single.b4.upper"}], "test": "le"}, {"args": [{"param": "tcw.single.b3.upper"}, {"input": "amount"}], "test": "lt"}], "test": "all"}, "then": {"from": {"amount": {"input": "amount"}, "op": "multiply_rate", "rate": {"param": "tcw.single.b4.rate"}}, "op": "subtract", "take": {"param": "tcw.single.b4.subtract"}}}, {"guard": {"args": [{"input": "amount"}, {"param": "ordinary.table_boundary"}], "test": "lt"}, "then": {"const": 0}}, {"guard": {"args": [{"param": "tcw.single.b4.upper"}, {"input": "amount"}], "test": "lt"}, "then": {"from": {"amount": {"input": "amount"}, "op": "multiply_rate", "rate": {"param": "tcw.single.b5.rate"}}, "op": "subtract", "take": {"param": "tcw.single.b5.subtract"}}}], "op": "choose"}}], "op": "choose"}
 ```
 
-Second transcription's note: Section B applies to married filing jointly or qualifying surviving spouse, so a qss filing status uses the mfj rows.
-
-Ruling: representation; project retained on the worksheet's printed domain. The only expression difference is the first-row lower bound of $100,000 in each filing-status section: the project includes it and the second transcription leaves it implicit. Removing only the test ordinary.table_boundary <= amount, collapsing singleton conjunctions and re-sorting the choose alternatives makes the two expanded trees identical. The archived i1040gi p. 80 Tax Computation Worksheet says 'At least $100,000 but not over' on every first row and directs the reader to the line 16 instructions; p. 33 line 16 says amounts below $100,000 must use the Tax Table. In the project the only tcw caller is tax_on_amount.worksheet_tax, selected by tax_on_amount.tax only when below_boundary is false (forms/2025/tax_on_amount.yaml). Thus both readings produce the same tax on every amount for which this worksheet is used; they intentionally differ outside that domain. This is a representation difference, not model-error noise. No data change.
+Ruling: representation within the worksheet domain; i1040gi (2025) Tax Computation Worksheet Sections A-D begin at $100,000. The fresh reply retains that first-row lower bound and adds an explicit zero branch below $100,000 to make each helper total; the project has no selected worksheet row there. The caller tax_on_amount selects the Tax Table instead in that range, so those added zero branches are never used by ordinary tax. All row products, subtractions and inclusive upper bounds match exactly, with qss/mfj in Section B. No equivalence of standalone worksheet evaluation below $100,000 is claimed.
 
 ## Raw second transcription
 
@@ -101,22 +104,39 @@ lines:
     expr: {op: subtract, from: single.row5.product, take: {param: tcw.single.b5.subtract}}
   - id: single.result
     printed: "Tax (single.result)"
-    label: "Section A result—Tax."
+    label: "Tax."
     type: Dollars
     expr:
       op: choose
       alternatives:
-        - guard: {op: test, le: [amount, {param: tcw.single.b1.upper}]}
+        - guard: {op: test, lt: [amount, {param: ordinary.table_boundary}]}
+          then: tcw.h_zero
+        - guard:
+            op: test
+            all:
+              - {op: test, ge: [amount, {param: ordinary.table_boundary}]}
+              - {op: test, le: [amount, {param: tcw.single.b1.upper}]}
           then: single.row1.tax
-        - guard: {op: test, all: [{op: test, gt: [amount, {param: tcw.single.b1.upper}]}, {op: test, le: [amount, {param: tcw.single.b2.upper}]}]}
+        - guard:
+            op: test
+            all:
+              - {op: test, gt: [amount, {param: tcw.single.b1.upper}]}
+              - {op: test, le: [amount, {param: tcw.single.b2.upper}]}
           then: single.row2.tax
-        - guard: {op: test, all: [{op: test, gt: [amount, {param: tcw.single.b2.upper}]}, {op: test, le: [amount, {param: tcw.single.b3.upper}]}]}
+        - guard:
+            op: test
+            all:
+              - {op: test, gt: [amount, {param: tcw.single.b2.upper}]}
+              - {op: test, le: [amount, {param: tcw.single.b3.upper}]}
           then: single.row3.tax
-        - guard: {op: test, all: [{op: test, gt: [amount, {param: tcw.single.b3.upper}]}, {op: test, le: [amount, {param: tcw.single.b4.upper}]}]}
+        - guard:
+            op: test
+            all:
+              - {op: test, gt: [amount, {param: tcw.single.b3.upper}]}
+              - {op: test, le: [amount, {param: tcw.single.b4.upper}]}
           then: single.row4.tax
         - guard: {op: test, gt: [amount, {param: tcw.single.b4.upper}]}
           then: single.row5.tax
-    note: "The worksheet's first row says 'At least $100,000'; the $100,000 gate is enforced by the calling line (ordinary.table_boundary). This choose leaves the first band open below to keep the guards exhaustive."
   - id: mfj.row1.product
     printed: "(c) (mfj.row1.product)"
     label: "Multiply (a) by (b)."
@@ -169,22 +189,39 @@ lines:
     expr: {op: subtract, from: mfj.row5.product, take: {param: tcw.mfj.b5.subtract}}
   - id: mfj.result
     printed: "Tax (mfj.result)"
-    label: "Section B result—Tax."
+    label: "Tax."
     type: Dollars
     expr:
       op: choose
       alternatives:
-        - guard: {op: test, le: [amount, {param: tcw.mfj.b1.upper}]}
+        - guard: {op: test, lt: [amount, {param: ordinary.table_boundary}]}
+          then: tcw.h_zero
+        - guard:
+            op: test
+            all:
+              - {op: test, ge: [amount, {param: ordinary.table_boundary}]}
+              - {op: test, le: [amount, {param: tcw.mfj.b1.upper}]}
           then: mfj.row1.tax
-        - guard: {op: test, all: [{op: test, gt: [amount, {param: tcw.mfj.b1.upper}]}, {op: test, le: [amount, {param: tcw.mfj.b2.upper}]}]}
+        - guard:
+            op: test
+            all:
+              - {op: test, gt: [amount, {param: tcw.mfj.b1.upper}]}
+              - {op: test, le: [amount, {param: tcw.mfj.b2.upper}]}
           then: mfj.row2.tax
-        - guard: {op: test, all: [{op: test, gt: [amount, {param: tcw.mfj.b2.upper}]}, {op: test, le: [amount, {param: tcw.mfj.b3.upper}]}]}
+        - guard:
+            op: test
+            all:
+              - {op: test, gt: [amount, {param: tcw.mfj.b2.upper}]}
+              - {op: test, le: [amount, {param: tcw.mfj.b3.upper}]}
           then: mfj.row3.tax
-        - guard: {op: test, all: [{op: test, gt: [amount, {param: tcw.mfj.b3.upper}]}, {op: test, le: [amount, {param: tcw.mfj.b4.upper}]}]}
+        - guard:
+            op: test
+            all:
+              - {op: test, gt: [amount, {param: tcw.mfj.b3.upper}]}
+              - {op: test, le: [amount, {param: tcw.mfj.b4.upper}]}
           then: mfj.row4.tax
         - guard: {op: test, gt: [amount, {param: tcw.mfj.b4.upper}]}
           then: mfj.row5.tax
-    note: "The worksheet's first row says 'At least $100,000'; the $100,000 gate is enforced by the calling line (ordinary.table_boundary). This choose leaves the first band open below to keep the guards exhaustive."
   - id: mfs.row1.product
     printed: "(c) (mfs.row1.product)"
     label: "Multiply (a) by (b)."
@@ -237,22 +274,39 @@ lines:
     expr: {op: subtract, from: mfs.row5.product, take: {param: tcw.mfs.b5.subtract}}
   - id: mfs.result
     printed: "Tax (mfs.result)"
-    label: "Section C result—Tax."
+    label: "Tax."
     type: Dollars
     expr:
       op: choose
       alternatives:
-        - guard: {op: test, le: [amount, {param: tcw.mfs.b1.upper}]}
+        - guard: {op: test, lt: [amount, {param: ordinary.table_boundary}]}
+          then: tcw.h_zero
+        - guard:
+            op: test
+            all:
+              - {op: test, ge: [amount, {param: ordinary.table_boundary}]}
+              - {op: test, le: [amount, {param: tcw.mfs.b1.upper}]}
           then: mfs.row1.tax
-        - guard: {op: test, all: [{op: test, gt: [amount, {param: tcw.mfs.b1.upper}]}, {op: test, le: [amount, {param: tcw.mfs.b2.upper}]}]}
+        - guard:
+            op: test
+            all:
+              - {op: test, gt: [amount, {param: tcw.mfs.b1.upper}]}
+              - {op: test, le: [amount, {param: tcw.mfs.b2.upper}]}
           then: mfs.row2.tax
-        - guard: {op: test, all: [{op: test, gt: [amount, {param: tcw.mfs.b2.upper}]}, {op: test, le: [amount, {param: tcw.mfs.b3.upper}]}]}
+        - guard:
+            op: test
+            all:
+              - {op: test, gt: [amount, {param: tcw.mfs.b2.upper}]}
+              - {op: test, le: [amount, {param: tcw.mfs.b3.upper}]}
           then: mfs.row3.tax
-        - guard: {op: test, all: [{op: test, gt: [amount, {param: tcw.mfs.b3.upper}]}, {op: test, le: [amount, {param: tcw.mfs.b4.upper}]}]}
+        - guard:
+            op: test
+            all:
+              - {op: test, gt: [amount, {param: tcw.mfs.b3.upper}]}
+              - {op: test, le: [amount, {param: tcw.mfs.b4.upper}]}
           then: mfs.row4.tax
         - guard: {op: test, gt: [amount, {param: tcw.mfs.b4.upper}]}
           then: mfs.row5.tax
-    note: "The worksheet's first row says 'At least $100,000'; the $100,000 gate is enforced by the calling line (ordinary.table_boundary). This choose leaves the first band open below to keep the guards exhaustive."
   - id: hoh.row1.product
     printed: "(c) (hoh.row1.product)"
     label: "Multiply (a) by (b)."
@@ -305,22 +359,39 @@ lines:
     expr: {op: subtract, from: hoh.row5.product, take: {param: tcw.hoh.b5.subtract}}
   - id: hoh.result
     printed: "Tax (hoh.result)"
-    label: "Section D result—Tax."
+    label: "Tax."
     type: Dollars
     expr:
       op: choose
       alternatives:
-        - guard: {op: test, le: [amount, {param: tcw.hoh.b1.upper}]}
+        - guard: {op: test, lt: [amount, {param: ordinary.table_boundary}]}
+          then: tcw.h_zero
+        - guard:
+            op: test
+            all:
+              - {op: test, ge: [amount, {param: ordinary.table_boundary}]}
+              - {op: test, le: [amount, {param: tcw.hoh.b1.upper}]}
           then: hoh.row1.tax
-        - guard: {op: test, all: [{op: test, gt: [amount, {param: tcw.hoh.b1.upper}]}, {op: test, le: [amount, {param: tcw.hoh.b2.upper}]}]}
+        - guard:
+            op: test
+            all:
+              - {op: test, gt: [amount, {param: tcw.hoh.b1.upper}]}
+              - {op: test, le: [amount, {param: tcw.hoh.b2.upper}]}
           then: hoh.row2.tax
-        - guard: {op: test, all: [{op: test, gt: [amount, {param: tcw.hoh.b2.upper}]}, {op: test, le: [amount, {param: tcw.hoh.b3.upper}]}]}
+        - guard:
+            op: test
+            all:
+              - {op: test, gt: [amount, {param: tcw.hoh.b2.upper}]}
+              - {op: test, le: [amount, {param: tcw.hoh.b3.upper}]}
           then: hoh.row3.tax
-        - guard: {op: test, all: [{op: test, gt: [amount, {param: tcw.hoh.b3.upper}]}, {op: test, le: [amount, {param: tcw.hoh.b4.upper}]}]}
+        - guard:
+            op: test
+            all:
+              - {op: test, gt: [amount, {param: tcw.hoh.b3.upper}]}
+              - {op: test, le: [amount, {param: tcw.hoh.b4.upper}]}
           then: hoh.row4.tax
         - guard: {op: test, gt: [amount, {param: tcw.hoh.b4.upper}]}
           then: hoh.row5.tax
-    note: "The worksheet's first row says 'At least $100,000'; the $100,000 gate is enforced by the calling line (ordinary.table_boundary). This choose leaves the first band open below to keep the guards exhaustive."
   - id: tax
     printed: "Tax (tax)"
     label: "Tax."
@@ -330,11 +401,18 @@ lines:
       alternatives:
         - guard: {op: test, eq: [status, {const: "single"}]}
           then: single.result
-        - guard: {op: test, any: [{op: test, eq: [status, {const: "mfj"}]}, {op: test, eq: [status, {const: "qss"}]}]}
+        - guard: {op: test, eq: [status, {const: "mfj"}]}
           then: mfj.result
         - guard: {op: test, eq: [status, {const: "mfs"}]}
           then: mfs.result
         - guard: {op: test, eq: [status, {const: "hoh"}]}
           then: hoh.result
-    note: "Section B applies to married filing jointly or qualifying surviving spouse, so a qss filing status uses the mfj rows."
+        - guard: {op: test, eq: [status, {const: "qss"}]}
+          then: mfj.result
+  - id: tcw.h_zero
+    printed: "(helper)"
+    label: "Zero used for a below-$100,000 amount."
+    type: NonNegDollars
+    expr: {op: param, ref: ss.zero}
+    note: "The worksheet rows begin at $100,000; amounts below that boundary are outside this worksheet. This zero is used only to make the status-result guards exhaustive; the calling tax_on_amount line selects the Tax Table below the boundary."
 ```

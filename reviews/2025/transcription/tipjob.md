@@ -4,13 +4,23 @@ Second transcription of `Qualified Tips From More Than One Employer Worksheet (S
 
 | field | value |
 | --- | --- |
-| date | 2026-10-19 |
+| date | 2026-10-25 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | 2473921fcdae3d7ab4b224755411a3be7c3dede9a3fef4e9e2f36f2adaac8297 |
+| prompt sha256 | d8ec4413d6c8b93df5480033150128189a2d89b533295b5c8c1491beaaf7039c |
+| prompt policy | source-only-computation-v2 |
+| comparison policy | checked-expression-types-v2 |
+| input context policy | complete-input-context-v1 |
+| complete input context | pass |
+| type validation policy | project-expression-types-v1 |
+| model type validation | pass |
+| system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
+| reasoning effort | provider default |
+| output token budget | transport default (65536 for DeepSeek) |
+| interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
 | subject sha256 | 2a7723b9953e4329f2d8ffa0fd83943ff543a87316e13e7101d7b84b8aa7ea1d |
 | printed lines compared | 3 |
-| agree / disagree / missing | 1 / 2 / 0 |
+| agree / disagree / missing | 2 / 1 / 0 |
 | extra printed lines in second | none |
 
 ## Source pages given to the model
@@ -25,21 +35,7 @@ Second transcription of `Qualified Tips From More Than One Employer Worksheet (S
 Status: **AGREE**
 
 ### 1(c) — Qualified tips reported on Form 4137, column 1(c), for this employer
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"const": 0}
-```
-
-Second:
-
-```json
-{"input": "Form 4137, column 1(c), the qualified tips included for this"}
-```
-
-Ruling: scope; project retained, with the refusal now on the line. Form 4137 is outside this tool (s2.other, which names Form 4137), so column (c) is zero within scope; the line now carries that refusal.
+Status: **AGREE**
 
 ### 1(d) — Enter the greater of column (b) or column (c)
 Status: **DISAGREE**
@@ -56,37 +52,38 @@ Second:
 {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "tipjob.qualified"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": true}, {"input": "tipjob.qualified"}], "test": "eq"}, "then": {"of": [{"line": "1(b)"}, {"line": "1(c)"}], "op": "larger_of"}}], "op": "choose"}
 ```
 
-Second transcription's note: The worksheet itself only says to enter the greater of column (b) or column (c). The instructions also say that only tips received in an occupation on the list of occupations that customarily and regularly received tips are qualified tips, and that tips from other occupations must not be included in line 4a, 4b or 4c. The input tipjob.qualified asks whether all of the counted tips from this employer were received in such an occupation. This transcription reads a 'no' answer as meaning the counted tips are not qualified tips, so column (d) is zero. It does not refuse the line or split the amount.
+Second transcription's note: The IRS text says 'Do not include tips received in occupations that are not included on this list in line 4a, 4b, or 4c.' It also requires tips to be cash, voluntary, not negotiated, customer-determined, and not for an unlawful service. When the filer answers that this employer's tips do not meet all of these conditions, this row is entered as zero. The text leaves partly qualifying amounts open. The reading chosen relies on column (b) being entered as qualified tips only, and treats a 'no' answer as no qualified tips from this employer.
 
-Ruling: owner's ruling; project retained. An employer whose counted tips are not all qualified tips is refused (tipjob.mixed, on column (b)): the owner chose refusal over dropping the employer or splitting its tips. The second reads such a row as contributing zero. Both keep nonqualified tips off line 4c; the project does not silently drop the employer's qualified tips.
+Ruling: scope; i1040gi (2025) p.104 column(d) takes the greater of columns(b)/(c), with Form4137 outside this tool. On the admitted qualified=true rows both choose that same greater amount. The reply instead returns zero for qualified=false; the project refuses mixed/unqualified employer rows through tipjob.mixed on the input amount, following the previously recorded owner scope choice. That existing refusal decision is retained, with no new owner approval or equivalence of the refused case claimed. The reply does not admit splitting or silently dropping an employer.
 
 ## Raw second transcription
 
 ```yaml
 ```yaml
 lines:
-  - id: tipjob.line1(c)
+  - id: tipjob.one
+    printed: "(helper)"
+    label: "One (this employer counts as one row of the Qualified Tips From More Than One Employer Worksheet, lines 1A through 1E)"
+    type: Count
+    expr: {op: param, ref: person.one}
+    note: "The IRS pages do not define this interface. The reading chosen is a per-row count of 1, so other forms can count the employers listed on the worksheet. That count tells line 4a (more than one employer: enter -0-) apart from line 4c. The value comes from the year parameter person.one (Count 1), because no tipjob-specific parameter exists."
+  - id: tipjob.h_zero
+    printed: "(helper)"
+    label: "Zero"
+    type: NonNegDollars
+    expr: {op: param, ref: ss.zero}
+  - id: tipjob.col_c
     printed: "1(c)"
     label: "Qualified tips reported on Form 4137, column 1(c), for this employer"
     type: NonNegDollars
-    expr: {op: input, source: "Form 4137, column 1(c), the qualified tips included for this employer (Qualified Tips From More Than One Employer Worksheet, column (c))"}
-    cite: "Instructions for Schedule 1-A (2025), Determining the amount of qualified tips received by an employee for 2025, paragraph 4; Qualified Tips From More Than One Employer Worksheet, column (c), i1040gi p. 103-104"
-
-  - id: tipjob.h_larger
+    expr: {op: copy, from: tipjob.h_zero}
+    note: "The closed input interface gives no input for Form 4137, column 1(c). Form 4137 (tips not reported to the employer) is outside the tool's scope, as the f8959.unsupported and s2.other screening questions show. The tool therefore computes only the case with no Form 4137 amount, so column (c) is zero. A filer with Form 4137 tips is stopped by those screening inputs."
+  - id: tipjob.h_greater
     printed: "(helper)"
     label: "The greater of column (b) or column (c)"
     type: NonNegDollars
-    expr: {op: larger_of, of: [tipjob.amount, tipjob.line1(c)]}
-    cite: "Qualified Tips From More Than One Employer Worksheet, column (d), i1040gi p. 104"
-
-  - id: tipjob.h_zero
-    printed: "(helper)"
-    label: "No qualified tips from this employer"
-    type: NonNegDollars
-    expr: {op: param, ref: sales.zero}
-    cite: "Instructions for Schedule 1-A (2025), Determining the amount of qualified tips received by an employee for 2025, i1040gi p. 103"
-
-  - id: tipjob.line1(d)
+    expr: {op: larger_of, of: [tipjob.amount, tipjob.col_c]}
+  - id: tipjob.col_d
     printed: "1(d)"
     label: "Enter the greater of column (b) or column (c)"
     type: NonNegDollars
@@ -94,18 +91,9 @@ lines:
       op: choose
       alternatives:
         - guard: {op: test, eq: [tipjob.qualified, {const: true}]}
-          then: tipjob.h_larger
+          then: tipjob.h_greater
         - guard: {op: test, eq: [tipjob.qualified, {const: false}]}
           then: tipjob.h_zero
-    cite: "Qualified Tips From More Than One Employer Worksheet, column (d), i1040gi p. 104; Determining the amount of qualified tips received by an employee for 2025, i1040gi p. 103"
-    note: "The worksheet itself only says to enter the greater of column (b) or column (c). The instructions also say that only tips received in an occupation on the list of occupations that customarily and regularly received tips are qualified tips, and that tips from other occupations must not be included in line 4a, 4b or 4c. The input tipjob.qualified asks whether all of the counted tips from this employer were received in such an occupation. This transcription reads a 'no' answer as meaning the counted tips are not qualified tips, so column (d) is zero. It does not refuse the line or split the amount."
-
-  - id: tipjob.one
-    printed: "(helper)"
-    label: "One employer"
-    type: Count
-    expr: {op: param, ref: sales.one}
-    cite: "Qualified Tips From More Than One Employer Worksheet, rows 1A through 1E (one row per employer), i1040gi p. 104"
-    note: "The text gives no year parameter specific to this worksheet for the count of one employer. This transcription uses the existing year parameter sales.one (value 1), in the same way the other collections use a shared parameter for their per-entry unit count."
+    note: "The IRS text says 'Do not include tips received in occupations that are not included on this list in line 4a, 4b, or 4c.' It also requires tips to be cash, voluntary, not negotiated, customer-determined, and not for an unlawful service. When the filer answers that this employer's tips do not meet all of these conditions, this row is entered as zero. The text leaves partly qualifying amounts open. The reading chosen relies on column (b) being entered as qualified tips only, and treats a 'no' answer as no qualified tips from this employer."
 ```
 ```

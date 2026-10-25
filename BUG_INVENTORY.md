@@ -1948,3 +1948,42 @@ later grouping.
 - **Qualification:** this repairs diagnostic propagation, not source correctness. Prior comparisons
   still require verified replay or new requests; BUG-0129's hold remains.
 - **Tags:** incomplete-dependency-walk; missed-type-diagnostic; refusal-closure
+
+## BUG-0133 — Transcription prompts omit the available table interfaces
+
+- **Date:** 2026-10-25
+- **Caught by:** tracing the expression audit's unresolved pub946/macrs table references to the prompt.
+- **Symptom:** the generic grammar offers keyed_lookup and rate_lookup, but the request supplies
+  no catalog of table ids, ordered key types or result types. Saved model replies invent table ids
+  that the host cannot resolve, including pub946.macrs variants instead of the declared interfaces.
+- **Root cause:** line and parameter interfaces were listed, while table interfaces were omitted.
+- **Where:** `tools/transcription/transcribe.py`, build_prompt and its interface catalog.
+- **Fix:** supply table ids, kinds, public titles, key types and result types, without table cells,
+  authored formulas or expected results. Supply the generic expression schema and clarify nested
+  Boolean tests and collection binding rules. New requests retain their exact changed prompt hashes;
+  old requests are not relabeled or treated as complete-context tests of the new grammar.
+- **Qualification:** invalid earlier model IR remains invalid, but a missing table interface is
+  also a project context defect. Do not use those records as clean model-only noise evidence.
+  BUG-0129's transcription qualification hold remains during replacement and adjudication.
+- **Tags:** missing-table-interface; incomplete-review-context; invalid-model-ir
+
+## BUG-0134 — Complete question wording does not declare conditional input availability
+
+- **Date:** 2026-10-25
+- **Caught by:** both fresh dependent reviewers requiring dc_under13 for every child, after syntax repair.
+- **Symptom:** the request supplies full typed input questions but does not say which answers the
+  guided path may omit because age already determines the fact. The returned care predicates read
+  dc_under13 for all ages and dc_over12_care for every disabled person. The real interface asks
+  those timing questions only at age13; stage15.f2441.s1 has a four-year-old with care expenses
+  and no dc_under13 answer. An unconditional reference cannot replace that guided computation.
+- **Root cause:** prompt completeness currently checks question text only, not input availability.
+  The source-only reviewer sees an input catalog without the guided path's availability contract.
+- **Where:** `tools/transcription/transcribe.py`, input metadata/completeness; dependent review contract.
+- **Status:** open, T-063. Establish a non-leading availability contract or source-only supplemental
+  fact cases, preserve request provenance, and verify younger/age13/older paths before replacing
+  the current care predicates. Do not expose authored formulas as hints or fix replies in place.
+- **Qualification:** this is a review-context gap, not a newly demonstrated project tax-value bug.
+  Current complete-input-context-v1 means complete question wording, not a complete availability
+  contract. Do not count these care disagreements as clean model-only noise or clear the global
+  transcription hold merely because the reply has valid expression types.
+- **Tags:** conditional-input-contract; incomplete-review-context; unknown-value-propagation

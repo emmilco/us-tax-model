@@ -1,0 +1,14 @@
+{
+ "kind": "transcription",
+ "form": "sb",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "4",
+   "project": "{\"from\": {\"line\": \"2\"}, \"op\": \"subtract\", \"take\": {\"line\": \"3\"}}",
+   "second": "{\"from\": {\"line\": \"2\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"3\"}}",
+   "ruling": "Ruling: representation; f1040sb (2025) p.1 line4 says to subtract line3 from line2. Within the admitted scope, savings-bond exclusion is refused and line3 is the zero-dollar parameter; line2 sums NonNegDollars interest entries. The returned subtract_floor0 therefore never binds, and equals the project subtraction on all admitted values. Both preserve the required Dollars result type. This does not admit the excluded bond-exclusion regime.",
+   "context": "ab3be194d0e78bc671119446bbc338a4eb2701c5461ebe30090901cfcc9f8412"
+  }
+ ]
+}

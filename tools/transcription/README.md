@@ -252,6 +252,17 @@ all current filer-input questions (`complete-input-context-v1`; shared-definitio
 are excluded). This is a host-side completeness finding, not a change to the original request's
 prompt-policy metadata. Both families need current comparison, passing types and complete input
 context before the pair can qualify. These properties are bound into ruling contexts.
+This version verifies question wording only: it does not certify which answers the guided
+interview may leave unasked (BUG-0134/T-063). Availability-sensitive disagreements remain gaps.
+
+BUG-0133 supplies declared table ids, ordered key types and result types without cells or authored
+formulas. Requests also include the generic expression JSON Schema, restricted to the engine's
+implemented atoms; reserved operations and unavailable table interfaces are omitted. Run
+`npm run compile` before building a prompt so the implemented-atom catalog and validator exist.
+Explicit syntax reminders address nested Boolean tests, collection binding, Count and money types.
+Exact saved request hashes remain the provenance: earlier replies are not relabeled as seeing a
+later schema or interface catalog. The first asset probe demonstrates valid table references but
+still has other invalid IR and unresolved source issues; a schema catalog is not tax certification.
 
 All transcription qualification remains held until verified record migration/fresh requests and
 source adjudication close (T-062). Removing the global hold cannot promote unchecked legacy logs.

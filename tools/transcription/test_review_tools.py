@@ -4,6 +4,7 @@ import json
 import io
 import sys
 import tempfile
+import subprocess
 import unittest
 from pathlib import Path
 from unittest.mock import patch
@@ -408,6 +409,36 @@ class DeepSeekTransport(unittest.TestCase):
 
 
 class IndependentPrompt(unittest.TestCase):
+    def test_prompt_schema_compiles_and_distinguishes_nested_tests_from_bare_bool_ids(self):
+        samples = [
+            {"op": "test", "all": [{"op": "test", "eq": ["example.flag", {"const": True}]}]},
+            {"op": "test", "all": ["example.flag"]},
+            {"op": "copy", "from": "example.amount"},
+            {"op": "copy", "from": {"const": 0}},
+            {"op": "bracket_schedule", "table": "rate_schedule", "key": "example.amount", "status": "example.status"},
+        ]
+        code = """import { readFileSync } from 'node:fs';
+import { Ajv2020 } from 'ajv/dist/2020.js';
+const {schema,samples}=JSON.parse(readFileSync(0,'utf8'));
+const validate=new Ajv2020({strict:false}).compile(schema);
+process.stdout.write(JSON.stringify(samples.map(sample=>validate(sample))));"""
+        result = subprocess.run(["node", "--input-type=module", "-e", code],
+                                input=json.dumps({"schema": T.expression_schema(), "samples": samples}),
+                                text=True, capture_output=True, check=True, cwd=T.ROOT)
+        self.assertEqual(json.loads(result.stdout), [True, False, True, False, False])
+
+    def test_table_interfaces_preserve_key_order_without_cells_or_rules(self):
+        table = {"id": "public_rates", "title": "Printed rate table", "kind": "keyed",
+                 "keys": [{"name": "period", "type": "Enum(period)"}, {"name": "year", "type": "Count"}],
+                 "cell": "Rate", "rows": [{"keys": ["first", 1], "value": "PRIVATE_CELL"}],
+                 "note": "PRIVATE_RULE"}
+        reserved = {"id": "rate_schedule", "title": "PRIVATE_RESERVED_TABLE", "kind": "bracket_schedule"}
+        text = T.table_notes([table, reserved])
+        self.assertIn("public_rates", text)
+        self.assertIn("[period: Enum(period), year: Count]", text)
+        self.assertIn("result Rate", text)
+        self.assertNotIn("PRIVATE", text)
+
     def test_fast_project_parser_preserves_the_entire_form_catalog(self):
         paths = [*Path(T.FORMS).glob("*.yaml"), Path(T.ROOT) / "params" / f"{T.Y}.yaml"]
         for path in paths:

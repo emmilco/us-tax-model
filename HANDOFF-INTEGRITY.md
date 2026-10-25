@@ -1,5 +1,47 @@
 # Handoff: the integrity plan, Phase 0 done, Phase 1 in progress
 
+## Current replacement batch after 45876d2 — 2026-10-25
+
+45876d2 committed the expression validator after a full green suite. This follow-up supplies the
+generic expression schema and typed table interfaces (BUG-0133), without table cells or authored
+formulas. Nested Boolean tests, collection binding, Count and nonnegative-result restrictions are
+explicit. The final prompt schema uses the engine's implemented-atom list and omits reserved
+operations/table interfaces. The 86 offline review-tool tests pass, including schema compilation,
+invalid bare-Boolean/copy-constant rejection, reserved-atom exclusion and table-data canaries.
+
+Twelve fresh source-only requests covered dependent, se, tcw, tax_on_amount, sb and tipjob under
+Claude/Flash. Eleven pass expression validation. All 30 disputes in those requests are adjudicated
+with source and domain limits. Five unusable Claude records now have verified fresh replacements
+(se's conflicting aliases, plus the saved-prompt mismatches for sb/tax_on_amount/tcw/tipjob).
+No old request was relabeled. Originals: 57 files hashed in
+.transcription/archive/before-schema-catalog-2026-10-25/. The 12-reply batch audit verifies all
+actual requests/replies with no incomplete receipts; its zero lost agreements means the fresh
+already-checked logs replay consistently, not that all source/model issues disappeared.
+
+One additional Flash asset probe now uses seven valid declared keyed-table references instead of
+invented ids. It still fails on malformed tests and an opaque prior-depreciation expression; its
+15 optional open disputes remain pending, not forced into equivalence. Its four originals are in
+.transcription/archive/before-schema-asset-probe-2026-10-25/. The batch and probe preceded the final
+reserved-atom filter; retain their actual schema/prompt hashes, not relabeled stricter requests.
+
+The refreshed read-only audit verifies/recompares 87 replies: 31 pass expression checks and 15
+have complete current filer-question text. Twenty-three Claude records remain unverified (prompt
+hash mismatches); 23 verified receipts remain legacy-limited. Current stricter replay flags 210
+old AGREE rows; earlier 211 was a different request/log snapshot, not a tax-bug count. Details:
+reports/2025/transcription_audit.md and .transcription/schema-catalog-audit-current.json.
+
+BUG-0134/T-063 records a remaining interface gap: complete-input-context-v1 checks full question
+wording, not conditional availability. Both dependent care replies require age13 timing inputs
+outside the paths that ask them (stage15.f2441.s1 has age4 care with no timing answer). Do not
+count those disagreements as clean model-only noise. Establish non-leading availability contracts
+or source-only supplemental fact cases before calling the care transcriptions replacements.
+Flash's Count choose also remains invalid; the type checker correctly rejects it.
+
+T-062 remains in progress; keep the global transcription hold and Flash optional. Continue the
+23 unverified Claude requests, invalid/incomplete remaining records, source adjudication and T-063.
+No authored tax rule, numeric fixture or original human verdict changed. Full validation of this
+batch is recorded by its next commit/check marker; the earlier full green applies to 45876d2.
+
 ## Current expression-validation repair after bdb2e12 — 2026-10-25
 
 bdb2e12 committed the literal-unit repair after a full green suite. The follow-up now validates

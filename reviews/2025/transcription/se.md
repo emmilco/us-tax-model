@@ -4,10 +4,20 @@ Second transcription of `Schedule SE (Form 1040) — Self-Employment Tax, one pe
 
 | field | value |
 | --- | --- |
-| date | 2026-10-21 |
+| date | 2026-10-25 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | 26f02e26b8410c2229524f98959a269c21c61b0e9a9a59444903a3105b5ec266 |
+| prompt sha256 | e002b9c98bbe7d31c192760197701a2e268dae128f7f2289fb13e224f23cc924 |
+| prompt policy | source-only-computation-v2 |
+| comparison policy | checked-expression-types-v2 |
+| input context policy | complete-input-context-v1 |
+| complete input context | pass |
+| type validation policy | project-expression-types-v1 |
+| model type validation | pass |
+| system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
+| reasoning effort | provider default |
+| output token budget | transport default (65536 for DeepSeek) |
+| interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
 | subject sha256 | 0c850519b95a0d9a45ff9abb2ddb129d2a5755507a6929f64bfcc1024f606a73 |
 | printed lines compared | 1 |
 | agree / disagree / missing | 0 / 1 / 0 |
@@ -34,151 +44,122 @@ Project:
 Second:
 
 ```json
-{"amount": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"input": "line2"}, {"const": 0}], "test": "le"}, "then": {"input": "line2"}}, {"guard": {"args": [{"const": 0}, {"input": "line2"}], "test": "lt"}, "then": {"amount": {"input": "line2"}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"alternatives": [{"guard": {"args": [{"input": "line2"}, {"const": 0}], "test": "le"}, "then": {"input": "line2"}}, {"guard": {"args": [{"const": 0}, {"input": "line2"}], "test": "lt"}, "then": {"amount": {"input": "line2"}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"input": "line2"}, {"const": 0}], "test": "le"}, "then": {"input": "line2"}}, {"guard": {"args": [{"const": 0}, {"input": "line2"}], "test": "lt"}, "then": {"amount": {"input": "line2"}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"input": "line2"}, {"const": 0}], "test": "le"}, "then": {"input": "line2"}}, {"guard": {"args": [{"const": 0}, {"input": "line2"}], "test": "lt"}, "then": {"amount": {"input": "line2"}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"alternatives": [{"guard": {"args": [{"input": "line2"}, {"const": 0}], "test": "le"}, "then": {"input": "line2"}}, {"guard": {"args": [{"const": 0}, {"input": "line2"}], "test": "lt"}, "then": {"amount": {"input": "line2"}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"input": "line2"}, {"const": 0}], "test": "le"}, "then": {"input": "line2"}}, {"guard": {"args": [{"const": 0}, {"input": "line2"}], "test": "lt"}, "then": {"amount": {"input": "line2"}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"input": "line8a"}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}
+{"amount": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"input": "line2"}, {"const": 0}], "test": "le"}, "then": {"input": "line2"}}, {"guard": {"args": [{"const": 0}, {"input": "line2"}], "test": "lt"}, "then": {"amount": {"input": "line2"}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"input": "line2"}, {"const": 0}], "test": "le"}, "then": {"input": "line2"}}, {"guard": {"args": [{"const": 0}, {"input": "line2"}], "test": "lt"}, "then": {"amount": {"input": "line2"}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"input": "line2"}, {"const": 0}], "test": "le"}, "then": {"input": "line2"}}, {"guard": {"args": [{"const": 0}, {"input": "line2"}], "test": "lt"}, "then": {"amount": {"input": "line2"}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"input": "line2"}, {"const": 0}], "test": "le"}, "then": {"input": "line2"}}, {"guard": {"args": [{"const": 0}, {"input": "line2"}], "test": "lt"}, "then": {"amount": {"input": "line2"}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"input": "line2"}, {"const": 0}], "test": "le"}, "then": {"input": "line2"}}, {"guard": {"args": [{"const": 0}, {"input": "line2"}], "test": "lt"}, "then": {"amount": {"input": "line2"}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"input": "line2"}, {"const": 0}], "test": "le"}, "then": {"input": "line2"}}, {"guard": {"args": [{"const": 0}, {"input": "line2"}], "test": "lt"}, "then": {"amount": {"input": "line2"}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"input": "line8a"}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}
 ```
 
-Ruling: equivalent; project retained. Both multiply line 12 by 50%. The project floors line 2 at zero inside the 92.35% branch and floors the $400-tested amount at zero, where the second does not; both floors sit in branches whose guards already require line 2 above zero or line 4c of $400 or more, so they never bind. The second's line 5b (church employee income) is zero, refused in the project through person.se_screen (i1040sse, Line 5a), and its line 8d is line 8a, Form 4137 tips and Form 8919 wages being refused (person.se_screen). The values agree for every amount on line 2.
-
-## Refusal gates listed by the second transcription
-
-Reported, not judged: the project often refuses before a worksheet is used, on the line that chooses it, which a per-line comparison cannot see.
-
-| line | gates listed | not read by the project's line |
-| --- | --- | --- |
-| line13 | f8959.unsupported | f8959.unsupported |
+Ruling: representation; f1040sse (2025) p.1 line4a multiplies line3 by92.35% only when line3 is positive, otherwise copying line3. The project floors line3 at zero inside that positive branch; the returned transcription multiplies the signed Dollars line directly in that branch. The floor cannot bind when the guard is true. Both retain the same $400 STOP on line4c, zero for the screened farm/optional/church/Form4137/Form8919 regimes, the wage-base floor on line9, the same line10/11 rates, and 50% of line12 on line13. This fresh reply passes the schema/reference/type checks; the archived conflicting-id reply is not repaired or reused.
 
 ## Raw second transcription
 
 ```yaml
 ```yaml
 lines:
-  - id: se.line3
+  - id: line3
     printed: "3"
     label: "Combine lines 1a, 1b, and 2"
     type: Dollars
     expr: {op: copy, from: line2}
-    note: "Lines 1a (farm profit or loss) and 1b (Conservation Reserve Program payments) have no input and no screening input in this tool; only line 2 (Schedule C) is bound. Line 3 is therefore line 2 alone. Farm income and CRP payments are outside the tool, but no refusal input was supplied to name for them."
-
-  - id: se.h_4a_product
+    note: "The form adds lines 1a (net farm profit), 1b (Conservation Reserve Program payments) and 2. This slice has no farm income or CRP payments: the person.se_screen screening question excludes farm income (Schedule F) and CRP payments, and line 1a/1b inputs are not part of the closed interface. Lines 1a and 1b are therefore not represented, and line 3 equals line 2. This slice also does not support the dotted-line adjustments next to line 3 (chapter 11 bankruptcy, community income, notary fees), which are screened out."
+  - id: se.h_line3_x9235
     printed: "(helper)"
     label: "Line 3 multiplied by 92.35% (0.9235)"
     type: Dollars
-    expr: {op: multiply_rate, amount: se.line3, rate: {param: se.rate_9235}}
-    note: "The form does not state a rounding rule. The multiply_rate atom rounds half-up to the cent."
-
-  - id: se.line4a
+    expr: {op: multiply_rate, amount: line3, rate: {param: se.rate_9235}}
+  - id: line4a
     printed: "4a"
     label: "If line 3 is more than zero, multiply line 3 by 92.35% (0.9235). Otherwise, enter amount from line 3"
     type: Dollars
     expr:
       op: choose
       alternatives:
-        - guard: {op: test, gt: [se.line3, {const: 0}]}
-          then: se.h_4a_product
-        - guard: {op: test, le: [se.line3, {const: 0}]}
-          then: se.line3
-
-  - id: se.line4b
+        - guard: {op: test, gt: [line3, {const: 0}]}
+          then: se.h_line3_x9235
+        - guard: {op: test, le: [line3, {const: 0}]}
+          then: line3
+  - id: line4b
     printed: "4b"
-    label: "If you elect one or both of the optional methods, enter the total of lines 15 and 17"
+    label: "If you elect one or both of the optional methods, enter the total of lines 15 and 17 here"
     type: NonNegDollars
-    expr: {op: param, ref: sales.zero}
-    note: "Part II (farm and nonfarm optional methods, lines 14-17) is not part of this transcription. No input or screening input exists for electing them, so line 4b is the case with no election, which is zero."
-
-  - id: se.line4c
-    printed: "4c"
-    label: "Combine lines 4a and 4b. If less than $400, stop; you don't owe self-employment tax"
+    expr: {op: param, ref: ss.zero}
+    note: "The person.se_screen screening question excludes electing an optional method (Part II), so lines 15 and 17 are never filled in and line 4b is zero in the cases this slice computes. The interface has no Bool screening line that can be cited here, so no refuses entry is added."
+  - id: se.h_line4c_sum
+    printed: "(helper)"
+    label: "Combine lines 4a and 4b"
     type: Dollars
-    expr: {op: sum, of: [se.line4a, se.line4b]}
-    note: "The church employee income exception ('enter -0- and continue') is not computed; church employee income is refused at line 5b. The stop rule is applied in helper se.h_4c_taxable."
-
+    expr: {op: sum, of: [line4a, line4b]}
+  - id: se.h_line4c_pos
+    printed: "(helper)"
+    label: "Combined lines 4a and 4b, not less than zero"
+    type: NonNegDollars
+    expr: {op: subtract_floor0, from: se.h_line4c_sum, take: {const: 0}}
   - id: se.h_zero
     printed: "(helper)"
-    label: "Zero"
+    label: "Zero (no self-employment tax owed)"
     type: NonNegDollars
-    expr: {op: param, ref: sales.zero}
-
-  - id: se.h_4c_taxable
-    printed: "(helper)"
-    label: "Line 4c when it is $400 or more; otherwise stop (no self-employment tax), zero"
+    expr: {op: param, ref: ss.zero}
+  - id: line4c
+    printed: "4c"
+    label: "Combine lines 4a and 4b. If less than $400, stop; you don't owe self-employment tax. Exception: If less than $400 and you had church employee income, enter -0- and continue"
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
-        - guard: {op: test, ge: [se.line4c, {param: se.floor}]}
-          then: se.line4c
-        - guard: {op: test, lt: [se.line4c, {param: se.floor}]}
+        - guard: {op: test, ge: [se.h_line4c_sum, {param: se.floor}]}
+          then: se.h_line4c_pos
+        - guard: {op: test, lt: [se.h_line4c_sum, {param: se.floor}]}
           then: se.h_zero
-    note: "'If less than $400, stop; you don't owe self-employment tax' is read as making lines 6 through 13 zero when line 4c is under $400."
-
-  - id: se.line5b
+    note: "The STOP when the total is under $400 is carried forward as zero. With line 4c at 0 and line 5b at 0, lines 6 and 10 to 13 all come out as zero. The church employee income exception is outside this slice: person.se_screen screens out church employee income. The CRP note under line 4a and the $434 rule in the line 4a–4c instructions also do not apply, because there are no CRP payments in this slice."
+  - id: line5b
     printed: "5b"
-    label: "Multiply line 5a by 92.35% (0.9235)"
+    label: "Multiply line 5a by 92.35% (0.9235). If less than $100, enter -0-"
     type: NonNegDollars
-    expr: {op: param, ref: sales.zero}
-    refuses: [f8959.unsupported]
-    note: "Line 5a (church employee income) has no input. Church employee income is covered by the screening input f8959.unsupported, so this line refuses on it and otherwise computes the case without church employee income, which is zero. The 'if less than $100, enter -0-' rule is moot in that case."
-
-  - id: se.line6
+    expr: {op: param, ref: ss.zero}
+    note: "Line 5a (church employee income) is screened out by person.se_screen, and the closed interface has no line 5a input. So line 5b is zero in the cases this slice computes."
+  - id: line6
     printed: "6"
     label: "Add lines 4c and 5b"
     type: NonNegDollars
-    expr: {op: sum, of: [se.h_4c_taxable, se.line5b]}
-
-  - id: se.line7
+    expr: {op: sum, of: [line4c, line5b]}
+  - id: line7
     printed: "7"
-    label: "Maximum amount of combined wages and self-employment earnings subject to social security tax for 2025"
+    label: "Maximum amount of combined wages and self-employment earnings subject to social security tax or the 6.2% portion of the 7.65% railroad retirement (tier 1) tax for 2025"
     type: NonNegDollars
     expr: {op: param, ref: se.wage_base}
-
-  - id: se.line8d
+  - id: line8d
     printed: "8d"
     label: "Add lines 8a, 8b, and 8c"
     type: NonNegDollars
     expr: {op: copy, from: line8a}
-    refuses: [f8959.unsupported]
-    note: "Line 8b (Form 4137 unreported tips) and line 8c (Form 8919 wages) have no inputs. The screening input f8959.unsupported covers Form 4137 tips and Form 8919 wages, so this line refuses on it and otherwise is line 8a alone. The 8a instruction to skip lines 8b-10 at $176,100 or more gives the same result, because line 9 floors at zero."
-
-  - id: se.line9
+    note: "Line 8b (unreported tips from Form 4137) and line 8c (wages from Form 8919) are screened out by person.se_screen, and neither is an input in the closed interface. So line 8d equals line 8a. The instruction to skip lines 8b to 10 when line 8a is $176,100 or more needs no separate encoding: line 9 floors at zero, which makes line 10 zero."
+  - id: line9
     printed: "9"
-    label: "Subtract line 8d from line 7. If zero or less, enter -0-"
+    label: "Subtract line 8d from line 7. If zero or less, enter -0- here and on line 10 and go to line 11"
     type: NonNegDollars
-    expr: {op: subtract_floor0, from: se.line7, take: se.line8d}
-
-  - id: se.h_10_base
+    expr: {op: subtract_floor0, from: line7, take: line8d}
+  - id: se.h_line10_smaller
     printed: "(helper)"
     label: "The smaller of line 6 or line 9"
     type: NonNegDollars
-    expr: {op: smaller_of, of: [se.line6, se.line9]}
-
-  - id: se.line10
+    expr: {op: smaller_of, of: [line6, line9]}
+  - id: line10
     printed: "10"
     label: "Multiply the smaller of line 6 or line 9 by 12.4% (0.124)"
     type: NonNegDollars
-    expr: {op: multiply_rate, amount: se.h_10_base, rate: {param: se.rate_124}}
-
-  - id: se.line11
+    expr: {op: multiply_rate, amount: se.h_line10_smaller, rate: {param: se.rate_124}}
+  - id: line11
     printed: "11"
     label: "Multiply line 6 by 2.9% (0.029)"
     type: NonNegDollars
-    expr: {op: multiply_rate, amount: se.line6, rate: {param: se.rate_029}}
-
-  - id: se.line12
+    expr: {op: multiply_rate, amount: line6, rate: {param: se.rate_029}}
+  - id: line12
     printed: "12"
-    label: "Self-employment tax. Add lines 10 and 11"
+    label: "Self-employment tax. Add lines 10 and 11. Enter here and on Schedule 2 (Form 1040), line 4, or Form 1040-SS, Part I, line 3"
     type: NonNegDollars
-    expr: {op: sum, of: [se.line10, se.line11]}
-
-  - id: se.line13
-    printed: "13"
-    label: "Deduction for one-half of self-employment tax. Multiply line 12 by 50% (0.50)"
-    type: NonNegDollars
-    expr: {op: multiply_rate, amount: se.line12, rate: {param: se.rate_50}}
-
+    expr: {op: sum, of: [line10, line11]}
   - id: line13
-    printed: "(helper)"
-    label: "Deduction for one-half of self-employment tax. Multiply line 12 by 50% (0.50)"
+    printed: "13"
+    label: "Deduction for one-half of self-employment tax. Multiply line 12 by 50% (0.50). Enter here and on Schedule 1 (Form 1040), line 15"
     type: NonNegDollars
-    expr: {op: copy, from: se.line13}
+    expr: {op: multiply_rate, amount: line12, rate: {param: se.rate_50}}
 ```
 ```

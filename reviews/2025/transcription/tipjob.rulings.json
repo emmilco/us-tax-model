@@ -12,7 +12,8 @@
    "printed": "1(d)",
    "project": "{\"of\": [{\"line\": \"1(b)\"}, {\"line\": \"1(c)\"}], \"op\": \"larger_of\"}",
    "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"tipjob.qualified\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"tipjob.qualified\"}], \"test\": \"eq\"}, \"then\": {\"of\": [{\"line\": \"1(b)\"}, {\"line\": \"1(c)\"}], \"op\": \"larger_of\"}}], \"op\": \"choose\"}",
-   "ruling": "Ruling: owner's ruling; project retained. An employer whose counted tips are not all qualified tips is refused (tipjob.mixed, on column (b)): the owner chose refusal over dropping the employer or splitting its tips. The second reads such a row as contributing zero. Both keep nonqualified tips off line 4c; the project does not silently drop the employer's qualified tips."
+   "ruling": "Ruling: scope; i1040gi (2025) p.104 column(d) takes the greater of columns(b)/(c), with Form4137 outside this tool. On the admitted qualified=true rows both choose that same greater amount. The reply instead returns zero for qualified=false; the project refuses mixed/unqualified employer rows through tipjob.mixed on the input amount, following the previously recorded owner scope choice. That existing refusal decision is retained, with no new owner approval or equivalence of the refused case claimed. The reply does not admit splitting or silently dropping an employer.",
+   "context": "0702ad98ee1b15287fc4fb3c966ed94cbe6e2376504a6d12630a7f807ef5c9b2"
   }
  ]
 }

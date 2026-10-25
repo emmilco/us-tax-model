@@ -267,6 +267,14 @@ When comparing a Count line with a numeric threshold, mark the constant with typ
 Constants belong only in operand positions. A copy source or choose branch must be a line id
 or a definition instance, not a constant/parameter object. Use op: param to define a constant helper
 from the supplied parameter catalog. choose returns money; it does not select Count, Bool or Enum values.
+Every test position (all/any entries, not, a choose guard or sum_over.where) requires a nested
+test object. A bare Bool line id is an operand, not a test: wrap it as
+{op: test, eq: [<Bool line id>, {const: true}]} (or compare with false).
+sum adds money lines only; use sum_over for Count entry fields. A sum_over at return level may
+read a root collection. Within a collection entry it may read only that entry's child collection;
+it cannot sum another root collection. Use a published return-level aggregate where the IRS calls
+for that aggregate. NonNegDollars declarations must be proved nonnegative by the expression types;
+copying a Dollars input does not prove that property. Do not silently change a required result type.
 
   {op: input, source: "<the box or question this value comes from>"}
   {op: copy, from: <ref>}                      # <ref> is a line id string, or for a parameterised
@@ -315,6 +323,58 @@ def collection_notes():
         fields = "; ".join(reference_note(doc, l) for l in doc["lines"])
         out.append(f"  - collection `{doc['id']}`" + (f" nested in each `{parent}` entry" if parent else "") +
                    f" — one entry per {doc['title'][:70]}; entry fields: {fields}")
+    return "\n".join(out)
+
+
+@cache
+def implemented_atoms():
+    """Use the same implemented vocabulary as the host checker, excluding reserved atoms."""
+    code = 'import { IMPLEMENTED } from "./engine/dist/atoms.js"; process.stdout.write(JSON.stringify([...IMPLEMENTED]));'
+    result = subprocess.run(["node", "--input-type=module", "-e", code], cwd=ROOT,
+                            capture_output=True, text=True, check=True)
+    return frozenset(json.loads(result.stdout))
+
+
+def expression_schema():
+    """Only generic syntax definitions, never authored computations or table cells."""
+    schema = json.loads(open(os.path.join(ROOT, "schema", "data.schema.json"), encoding="utf-8").read())
+    allowed = implemented_atoms()
+    schema["$defs"]["expr"]["oneOf"] = [variant for variant in schema["$defs"]["expr"]["oneOf"]
+        if variant.get("properties", {}).get("op", {}).get("const",
+            "test" if variant.get("$ref") == "#/$defs/test" else None) in allowed]
+    definitions = {}
+    pending = ["expr"]
+    while pending:
+        name = pending.pop()
+        if name in definitions:
+            continue
+        definitions[name] = schema["$defs"][name]
+        pending.extend(re.findall(r'"\$ref": "#\/\$defs\/([^"/]+)"', json.dumps(definitions[name])))
+    return {"$schema": schema["$schema"], "$defs": definitions, "$ref": "#/$defs/expr"}
+
+
+def load_tables():
+    path = os.path.join(ROOT, "tables", str(Y))
+    return [project_yaml(os.path.join(path, name))["table"] for name in sorted(os.listdir(path)) if name.endswith(".yaml")]
+
+
+def table_notes(tables=None):
+    """Names and types of available table interfaces; no row data or authored expressions."""
+    out = []
+    for table in load_tables() if tables is None else tables:
+        kind = table["kind"]
+        if kind == "bracket_schedule" and kind not in implemented_atoms():
+            continue  # A declared reference table does not imply an implemented lookup atom.
+        if kind == "keyed":
+            args = ", ".join(f"{key['name']}: {key['type']}" for key in table["keys"])
+            signature = f"keyed_lookup; keys in order [{args}]; result {table['cell']}"
+        elif kind == "rate_bands":
+            signature = "rate_lookup; key: money" + ("; status: Enum(filing_status)" if table.get("columns") else "; omit status") + "; result Rate"
+        elif kind in ("tax_table", "bracket_schedule"):
+            signature = f"{kind if kind == 'bracket_schedule' else 'table_lookup'}; key: money; status: Enum(filing_status); result NonNegDollars"
+        else:
+            raise ValueError(f"unknown table interface kind: {kind}")
+        out.append(f"  - {table['id']}: {signature}; title {table['title']!r}")
     return "\n".join(out)
 
 
@@ -416,6 +476,9 @@ or of any software; if the text does not say it, do not encode it.
 
 {GRAMMAR}
 
+Exact JSON Schema for one expression (YAML must parse to this structure):
+{json.dumps(expression_schema(), separators=(',', ':'))}
+
 # The worksheet to transcribe
 
 Form id: {form_doc['id']}
@@ -454,6 +517,12 @@ as a parameter operand); do not invent a table named after the parameter. For a 
 line use a declared parameter of the matching type (for example a zero-valued money parameter).
 `expr: {{const: 0}}` is an operand, not a line expression; every line expression needs an `op`.
 
+Available table interfaces (ids, ordered argument types and result types only; no table cells):
+{table_notes()}
+Use only these table ids. Infer which table applies from the IRS pages; the catalog does not
+tell you which result should use a lookup. If no supplied table supports an instruction, note
+that limitation instead of inventing a table or a new operation.
+
 If the IRS says to STOP because no tax or credit applies, carry that condition to the requested
 tax/credit/deduction result as zero; do not continue the arithmetic past that STOP or leave its
 effect only in a note. If the instruction instead says to STOP and use an earlier amount, return
@@ -479,7 +548,7 @@ there). The catalog gives ids, printed markers and types, not their project-writ
 Return ONLY a YAML document of the form
 
 lines:
-  - id: {form_doc['id']}.line<printed>
+  - id: <exact id from the required-line lists above>
     printed: "<printed>"
     label: "<the IRS wording>"
     type: <Dollars | NonNegDollars | Rate | Count | Bool | Enum(name)>
@@ -543,9 +612,7 @@ TYPE_VALIDATION_POLICY = "project-expression-types-v1"
 def model_type_context():
     """Live authored interfaces for the host validator, never supplied to the model."""
     docs = [load_form(path[:-5]) for path in sorted(os.listdir(FORMS)) if path.endswith(".yaml")]
-    tables_path = os.path.join(ROOT, "tables", str(Y))
-    tables = [project_yaml(os.path.join(tables_path, path))["table"]
-              for path in sorted(os.listdir(tables_path)) if path.endswith(".yaml")]
+    tables = load_tables()
     params = project_yaml(os.path.join(ROOT, "params", f"{Y}.yaml"))
     return {"forms": [d for d in docs if d.get("kind") != "def"],
             "defs": [d for d in docs if d.get("kind") == "def"],

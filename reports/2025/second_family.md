@@ -1,6 +1,6 @@
 # Second-family review comparison — 2025
 
-Summary: 112 form-kind pair(s) with logs from Claude and deepseek; ruled model-error noise 1.2% (25/2117 second-family lines judged; pending reviews are provisional); 23 eligible, 89 pending; raw agreement 67.9% (diagnostic only); current independence yield 186 line(s); both families disputed 412
+Summary: 112 form-kind pair(s) with logs from Claude and deepseek; ruled model-error noise 1.0% (22/2117 second-family lines judged; pending reviews are provisional); 23 eligible, 89 pending; raw agreement 67.8% (diagnostic only); current independence yield 190 line(s); both families disputed 410
 
 Written by `tools/transcription/compare_families.py` on 2026-10-25 from the review logs under `reviews/2025/`. For each form with a Claude log and a second model family's log of the same kind (`<form>.<family>.md`, families.py), the lines judged in both are compared.
 
@@ -16,10 +16,10 @@ Written by `tools/transcription/compare_families.py` on 2026-10-25 from the revi
 
 | form | second family (model) | lines judged by both | both agree | raw agreement | noise / judged | eligibility | current yield | both disputed | Claude only | not judged by both |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| asset | deepseek (deepseek-flash) | 16 | 1 | 6.2% | 0/16 (0.0%) | pending | 0 | 15 | 0 | 0 |
+| asset | deepseek (deepseek-flash) | 16 | 0 | 0.0% | 0/16 (0.0%) | pending | 1 | 14 | 1 | 0 |
 | carloan | deepseek (deepseek-flash) | 1 | 0 | 0.0% | 0/1 (0.0%) | pending | 0 | 1 | 0 | 0 |
 | dcprov | deepseek (deepseek-flash) | 2 | 2 | 100.0% | 0/2 (0.0%) | pending | 0 | 0 | 0 | 0 |
-| dependent | deepseek (deepseek-flash) | 14 | 1 | 7.1% | 12/14 (85.7%) | pending | 1 | 11 | 1 | 0 |
+| dependent | deepseek (deepseek-flash) | 14 | 1 | 7.1% | 9/14 (64.3%) | pending | 3 | 9 | 1 | 0 |
 | div | deepseek (deepseek-flash) | 1 | 0 | 0.0% | 0/1 (0.0%) | pending | 1 | 0 | 0 | 0 |
 | eic | deepseek (deepseek-flash) | 18 | 7 | 38.9% | 0/18 (0.0%) | pending | 1 | 10 | 0 | 0 |
 | f1040 | deepseek (deepseek-flash) | 50 | 32 | 64.0% | 0/50 (0.0%) | pending | 13 | 4 | 1 | 0 |
@@ -57,7 +57,7 @@ Written by `tools/transcription/compare_families.py` on 2026-10-25 from the revi
 | s8812 | deepseek (deepseek-flash) | 34 | 23 | 67.6% | 0/34 (0.0%) | pending | 3 | 7 | 1 | 0 |
 | sa | deepseek (deepseek-flash) | 22 | 17 | 77.3% | 0/22 (0.0%) | pending | 1 | 3 | 1 | 0 |
 | sales | deepseek (deepseek-flash) | 5 | 3 | 60.0% | 0/5 (0.0%) | pending | 0 | 2 | 0 | 0 |
-| sb | deepseek (deepseek-flash) | 4 | 4 | 100.0% | 0/4 (0.0%) | pending | 0 | 0 | 0 | 0 |
+| sb | deepseek (deepseek-flash) | 4 | 3 | 75.0% | 0/4 (0.0%) | pending | 1 | 0 | 0 | 0 |
 | sc | deepseek (deepseek-flash) | 48 | 13 | 27.1% | 0/48 (0.0%) | pending | 19 | 15 | 1 | 7 |
 | scope | deepseek (deepseek-flash) | 0 | 0 | n/a | 0/0 (n/a) | pending | 0 | 0 | 0 | 0 |
 | scveh | deepseek (deepseek-flash) | 21 | 2 | 9.5% | 0/21 (0.0%) | pending | 7 | 12 | 0 | 0 |
@@ -66,14 +66,14 @@ Written by `tools/transcription/compare_families.py` on 2026-10-25 from the revi
 | se | deepseek (deepseek-flash) | 1 | 0 | 0.0% | 0/1 (0.0%) | pending | 0 | 1 | 0 | 0 |
 | sli | deepseek (deepseek-flash) | 9 | 4 | 44.4% | 0/9 (0.0%) | pending | 0 | 5 | 0 | 0 |
 | ssb | deepseek (deepseek-flash) | 19 | 12 | 63.2% | 0/19 (0.0%) | pending | 2 | 4 | 1 | 0 |
-| tax_on_amount | deepseek (deepseek-flash) | 1 | 0 | 0.0% | 0/1 (0.0%) | pending | 0 | 0 | 1 | 0 |
+| tax_on_amount | deepseek (deepseek-flash) | 1 | 0 | 0.0% | 0/1 (0.0%) | pending | 0 | 1 | 0 | 0 |
 | tcw | deepseek (deepseek-flash) | 1 | 0 | 0.0% | 0/1 (0.0%) | pending | 0 | 1 | 0 | 0 |
-| tipjob | deepseek (deepseek-flash) | 3 | 1 | 33.3% | 0/3 (0.0%) | pending | 0 | 0 | 2 | 0 |
+| tipjob | deepseek (deepseek-flash) | 3 | 2 | 66.7% | 0/3 (0.0%) | pending | 0 | 0 | 1 | 0 |
 | u1250 | deepseek (deepseek-flash) | 18 | 3 | 16.7% | 0/18 (0.0%) | pending | 1 | 14 | 0 | 0 |
 | w2 | deepseek (deepseek-flash) | 5 | 3 | 60.0% | 0/5 (0.0%) | pending | 0 | 1 | 1 | 0 |
-| **all** | | 894 | 418 | 46.8% | | | 128 | 328 | 20 | 7 |
+| **all** | | 894 | 417 | 46.6% | | | 132 | 326 | 19 | 7 |
 
-Pending asset [deepseek]: 15 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
+Pending asset [deepseek]: 15 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude.
 Pending carloan [deepseek]: BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending dcprov [deepseek]: BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close.
 Pending dependent [deepseek]: model-error noise above 10%; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; no passing current expression type validation: deepseek.
@@ -114,18 +114,18 @@ Pending s3 [deepseek]: BUG-0129: transcription qualification held until model IR
 Pending s8812 [deepseek]: 10 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending sa [deepseek]: 4 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending sales [deepseek]: 2 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
-Pending sb [deepseek]: BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
+Pending sb [deepseek]: BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close.
 Pending sc [deepseek]: 7 missing expected lines; 34 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending scope [deepseek]: BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending scveh [deepseek]: 19 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending sd [deepseek]: 39 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending sdtw [deepseek]: 20 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
-Pending se [deepseek]: 1 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
+Pending se [deepseek]: BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close.
 Pending sli [deepseek]: 5 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending ssb [deepseek]: 6 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
-Pending tax_on_amount [deepseek]: BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
-Pending tcw [deepseek]: BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
-Pending tipjob [deepseek]: BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
+Pending tax_on_amount [deepseek]: BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close.
+Pending tcw [deepseek]: BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close.
+Pending tipjob [deepseek]: BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close.
 Pending u1250 [deepseek]: 15 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending w2 [deepseek]: BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 
@@ -133,7 +133,10 @@ Pending w2 [deepseek]: BUG-0129: transcription qualification held until model IR
 
 | form | second family | line | second family's verdict | second family's reason |
 | --- | --- | --- | --- | --- |
-| dependent | deepseek | dependent.dc_count | DISAGREE | This is the total number of dependent entries that are qualifying persons for Form 2441, computed as a sum over the dependent collection. |
+| asset | deepseek | asset.mq_total | DISAGREE | (no reason given) |
+| dependent | deepseek | dependent.dc_count | DISAGREE | (no reason given) |
+| dependent | deepseek | dependent.eic_child | DISAGREE | (no reason given) |
+| dependent | deepseek | dependent.eic_ssn_child | DISAGREE | (no reason given) |
 | div | deepseek | div.screen | DISAGREE | The IRS Form 1099-DIV pages do not define a 'screen' line. I read the project interface as the total of the supplied distribution components that require scope screening; box 3 is accepted only when div.basis_reconciled is true. |
 | eic | deepseek | 6 (eic.wsb_6) | DISAGREE | (no reason given) |
 | f1040 | deepseek | 1a | DISAGREE | (no reason given) |
@@ -229,6 +232,7 @@ Pending w2 [deepseek]: BUG-0129: transcription qualification held until model IR
 | s8812 | deepseek | 22 | DISAGREE | Schedule 2 lines 5, 6 and 13 are represented by Form 8959 line 24, Form 8960 line 17, and the person HSA additional tax. |
 | s8812 | deepseek | s8812.clwb_complete | DISAGREE | The printed condition also includes credits other than Form 5695 Part I; those are screened by scope.credits. The Form 2555 condition is approximated by sa.excluded_income, the only provided gate, which also covers Form 4563 and Puerto Rico. |
 | sa | deepseek | 2 | DISAGREE | (no reason given) |
+| sb | deepseek | 4 | DISAGREE | (no reason given) |
 | sc | deepseek | 14 (sc.f7206_line14) | DISAGREE | (no reason given) |
 | sc | deepseek | 28 | DISAGREE | (no reason given) |
 | sc | deepseek | 29 | DISAGREE | (no reason given) |
@@ -266,19 +270,18 @@ Pending w2 [deepseek]: BUG-0129: transcription qualification held until model IR
 
 | form | second family | line | Claude | second family | second family's reason |
 | --- | --- | --- | --- | --- | --- |
-| asset | deepseek | (c) | DISAGREE | DISAGREE | Business basis is cost times business-use percentage, rounded to the cent. |
-| asset | deepseek | (d) | DISAGREE | DISAGREE | The archived pages identify the recovery period through Pub. 946 Appendix B; the complete class-to-period table is not reproduced here, so the pinned table asset_class_period is used. |
+| asset | deepseek | (c) | DISAGREE | DISAGREE | (no reason given) |
 | asset | deepseek | 14 | DISAGREE | DISAGREE | (no reason given) |
 | asset | deepseek | 17 | DISAGREE | DISAGREE | (no reason given) |
 | asset | deepseek | 19(c) | DISAGREE | DISAGREE | (no reason given) |
 | asset | deepseek | 19(g) | DISAGREE | DISAGREE | (no reason given) |
 | asset | deepseek | 25 | DISAGREE | DISAGREE | (no reason given) |
-| asset | deepseek | 26(h) | DISAGREE | DISAGREE | Only line 26 (listed property used more than 50% in qualified business use) is computed; line 27 for 50% or less is outside this slice. |
+| asset | deepseek | 26(h) | DISAGREE | DISAGREE | (no reason given) |
 | asset | deepseek | 26(i) | DISAGREE | DISAGREE | (no reason given) |
 | asset | deepseek | asset.bonus_2025 | DISAGREE | DISAGREE | (no reason given) |
 | asset | deepseek | asset.cost179 | DISAGREE | DISAGREE | (no reason given) |
 | asset | deepseek | asset.dep_2025 | DISAGREE | DISAGREE | (no reason given) |
-| asset | deepseek | asset.dep_prior | DISAGREE | DISAGREE | The archived pages do not provide an accumulated prior-year depreciation figure for a single asset; this helper is the line 17 current-year amount for prior-year non-listed property. |
+| asset | deepseek | asset.dep_prior | DISAGREE | DISAGREE | The archived text does not give a single printed prior-years depreciation line. The amount is the sum of the MACRS table rates for the earlier recovery years applied to the property's unadjusted basis, together with any prior section 179 and special depreciation allowance; the model has no loop over prior years, so this is represented as an opaque helper. |
 | asset | deepseek | asset.mq_q4 | DISAGREE | DISAGREE | (no reason given) |
 | asset | deepseek | asset.s179_2025 | DISAGREE | DISAGREE | (no reason given) |
 | carloan | deepseek | 22(iii) | DISAGREE | DISAGREE | (no reason given) |
@@ -287,8 +290,6 @@ Pending w2 [deepseek]: BUG-0129: transcription qualification held until model IR
 | dependent | deepseek | dependent.ctc_amount | DISAGREE | DISAGREE | (no reason given) |
 | dependent | deepseek | dependent.ctc_child | DISAGREE | DISAGREE | (no reason given) |
 | dependent | deepseek | dependent.dc_qp | DISAGREE | DISAGREE | (no reason given) |
-| dependent | deepseek | dependent.eic_child | DISAGREE | DISAGREE | (no reason given) |
-| dependent | deepseek | dependent.eic_ssn_child | DISAGREE | DISAGREE | (no reason given) |
 | dependent | deepseek | dependent.hoh_test1 | DISAGREE | DISAGREE | (no reason given) |
 | dependent | deepseek | dependent.hoh_test2 | DISAGREE | DISAGREE | (no reason given) |
 | dependent | deepseek | dependent.odc_amount | DISAGREE | DISAGREE | (no reason given) |
@@ -578,7 +579,8 @@ Pending w2 [deepseek]: BUG-0129: transcription qualification held until model IR
 | ssb | deepseek | 18 | DISAGREE | DISAGREE | (no reason given) |
 | ssb | deepseek | 8 | DISAGREE | DISAGREE | For married filing separately who lived with their spouse at any time in 2025, lines 8 through 15 are skipped; line 8 is encoded as zero for that case. |
 | ssb | deepseek | ssb.has_benefits | DISAGREE | DISAGREE | (no reason given) |
-| tcw | deepseek | tax | DISAGREE | DISAGREE | Section B applies to married filing jointly or qualifying surviving spouse, so a qss filing status uses the mfj rows. |
+| tax_on_amount | deepseek | tax | DISAGREE | DISAGREE | The Tax Table is used below ordinary.table_boundary ($100,000) and the Tax Computation Worksheet at or above that boundary. |
+| tcw | deepseek | tax | DISAGREE | DISAGREE | (no reason given) |
 | u1250 | deepseek | 1 | DISAGREE | DISAGREE | (no reason given) |
 | u1250 | deepseek | 10 | DISAGREE | DISAGREE | (no reason given) |
 | u1250 | deepseek | 12 | DISAGREE | DISAGREE | (no reason given) |

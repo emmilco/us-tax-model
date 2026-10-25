@@ -4,13 +4,18 @@ Second transcription of `Qualified Tips From More Than One Employer Worksheet (S
 
 | field | value |
 | --- | --- |
-| date | 2026-10-24 |
+| date | 2026-10-25 |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
-| prompt sha256 | 93b2028b3e83c77828f35c6c7fe7f730af87de09ee62dc7cae45f54b87eac109 |
+| prompt sha256 | d8ec4413d6c8b93df5480033150128189a2d89b533295b5c8c1491beaaf7039c |
 | prompt policy | source-only-computation-v2 |
+| comparison policy | checked-expression-types-v2 |
+| input context policy | complete-input-context-v1 |
+| complete input context | pass |
+| type validation policy | project-expression-types-v1 |
+| model type validation | pass |
 | system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
-| reasoning effort | max |
+| reasoning effort | provider default |
 | output token budget | 65536 |
 | interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
 | subject sha256 | 2a7723b9953e4329f2d8ffa0fd83943ff543a87316e13e7101d7b84b8aa7ea1d |
@@ -41,8 +46,8 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 
 | line | gates listed | not read by the project's line |
 | --- | --- | --- |
-| 1(c) | f8959.unsupported | f8959.unsupported |
-| 1(d) | f8959.unsupported, tipjob.mixed | f8959.unsupported |
+| 1(c) | scope.other_income | scope.other_income |
+| 1(d) | scope.other_income, tipjob.mixed | scope.other_income |
 
 ## Raw second transcription
 
@@ -53,23 +58,17 @@ lines:
     label: "Qualified tips reported on Form 4137, column 1(c), for this employer"
     type: NonNegDollars
     expr: {op: param, ref: ss.zero}
-    refuses: [f8959.unsupported]
-    note: "The closed input interface has no Form 4137 column 1(c) amount. Form 4137 cases are outside the computed scope (f8959.unsupported), so for supported entries this line is zero."
+    refuses: [scope.other_income]
+    note: "Form 4137 column 1(c) amounts are not supplied by the closed input interface. Within the supported slice this line is read as zero; cases with tips not on a Form W-2 are excluded by the scope.other_income screen."
   - id: tipjob.col_d
     printed: "1(d)"
     label: "Enter the greater of column (b) or column (c)"
     type: NonNegDollars
     expr: {op: larger_of, of: [tipjob.amount, tipjob.col_c]}
-    refuses: [tipjob.mixed, f8959.unsupported]
+    refuses: [tipjob.mixed]
   - id: tipjob.one
     printed: "(helper)"
-    label: "One employer represented by this worksheet entry"
+    label: "One employer entry (count)"
     type: Count
-    expr: {op: param, ref: sc.one}
-    note: "The worksheet has one row per employer, so each row contributes one employer to the count."
-  - id: tipjob.mixed
-    printed: "(gate)"
-    label: "The tips counted from this employer are not all in an occupation on the IRS list"
-    type: Bool
-    expr: {op: test, eq: [tipjob.qualified, {const: false}]}
+    expr: {op: param, ref: person.one}
 ```

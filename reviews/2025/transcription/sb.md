@@ -4,10 +4,20 @@ Second transcription of `Schedule B — supported interest and ordinary dividend
 
 | field | value |
 | --- | --- |
-| date | 2026-10-17 |
+| date | 2026-10-25 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | b46d252cd9632774dcecb4036cd854fe763e44d16578f59df233d4a4b4406636 |
+| prompt sha256 | bfedbf7e5675dda81cdb01d0bf165e212af6a645e8896e39ae75e55f2792680c |
+| prompt policy | source-only-computation-v2 |
+| comparison policy | checked-expression-types-v2 |
+| input context policy | complete-input-context-v1 |
+| complete input context | pass |
+| type validation policy | project-expression-types-v1 |
+| model type validation | pass |
+| system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
+| reasoning effort | provider default |
+| output token budget | transport default (65536 for DeepSeek) |
+| interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
 | subject sha256 | 8cbf53cdc390adfc64adcee83de78308e2bfaf4ad1ed432d17ec6cdd93e463a5 |
 | printed lines compared | 4 |
 | agree / disagree / missing | 4 / 0 / 0 |
@@ -41,8 +51,8 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 | --- | --- | --- |
 | 2 | sb.unsupported | - |
 | 3 | sb.unsupported | - |
-| 4 | sb.fbar_required, sb.form8938, sb.line8, sb.unsupported | - |
-| 6 | sb.fbar_required, sb.form8938, sb.line8, sb.unsupported | - |
+| 4 | sb.unsupported | - |
+| 6 | sb.unsupported | - |
 
 ## Raw second transcription
 
@@ -53,33 +63,37 @@ lines:
     printed: "2"
     label: "Add the amounts on line 1"
     type: NonNegDollars
-    expr: {op: sum_over, collection: interest, field: interest.amount}
-    cite: "i1040sb (2025) p.1, Part I, Line 1: report all taxable interest; list each payer's name and the amount"
+    expr:
+      op: sum_over
+      collection: interest
+      field: interest.amount
     refuses: [sb.unsupported]
-    note: "The text has no instruction for line 2 itself. It is read as the total of the line 1 payer entries. The nominee, accrued interest, OID and bond premium subtractions that the text says go between line 1 and line 2 are not computed. sb.unsupported screens them out."
+    note: "Line 1 lists each payer's taxable interest. Line 2 is that total. The instructions also cover subtracting nominee distributions, accrued interest, OID adjustments and ABP adjustments from the line 1 subtotal before line 2. The tool does not compute those, so they are refused through sb.unsupported. In the case the tool computes, line 2 is the total of the per-payer taxable interest."
   - id: sb.line3
     printed: "3"
     label: "Excludable interest on series EE and I U.S. savings bonds issued after 1989. Attach Form 8815"
     type: NonNegDollars
-    expr: {op: param, ref: sales.zero}
-    cite: "i1040sb (2025) p.2, Line 3: savings-bond interest exclusion, see Form 8815"
+    expr:
+      op: param
+      ref: ss.zero
     refuses: [sb.unsupported]
-    note: "The task gives this line as 'Amount from sb.zero', but no line sb.zero is defined. It is written as the year parameter sales.zero (0) instead. The exclusion is computed only as zero. Filers with a savings-bond exclusion are screened out by sb.unsupported."
+    note: "Line 3 comes from Form 8815, which this tool does not prepare. A savings bond interest exclusion is refused through sb.unsupported. In the case the tool computes, there is no exclusion, so line 3 is zero. No zero parameter exists for Schedule B, so the zero comes from the money parameter ss.zero (value 0)."
   - id: sb.line4
     printed: "4"
     label: "Subtract line 3 from line 2. Enter the result here and on Form 1040 or 1040-SR, line 2b"
     type: Dollars
-    expr: {op: subtract, from: sb.line2, take: sb.line3}
-    cite: "Schedule B (Form 1040) 2025, Part I, line 4"
-    refuses: [sb.fbar_required, sb.form8938, sb.line8]
-    note: "The Part III screens (FBAR, Form 8938, foreign trust) go here because this line feeds Form 1040 line 2b. The text says nothing about where these screens should apply, so that choice is mine."
+    expr:
+      op: subtract
+      from: sb.line2
+      take: sb.line3
   - id: sb.line6
     printed: "6"
     label: "Add the amounts on line 5. Enter the total here and on Form 1040 or 1040-SR, line 3b"
     type: NonNegDollars
-    expr: {op: copy, from: sb.ordinary_dividends}
-    cite: "i1040sb (2025) p.2, Line 5: report all ordinary dividends, shown in box 1a of Forms 1099-DIV"
-    refuses: [sb.unsupported, sb.fbar_required, sb.form8938, sb.line8]
-    note: "Line 6 is read as the total of Form 1099-DIV box 1a. The nominee subtraction and foreign corporation (Form 5471) reporting are not computed. sb.unsupported screens them out."
+    expr:
+      op: copy
+      from: sb.ordinary_dividends
+    refuses: [sb.unsupported]
+    note: "Line 5 lists ordinary dividends (Form 1099-DIV box 1a) by payer. Line 6 is that total. The only input for this is the supplied total sb.ordinary_dividends, so line 6 copies it. Subtracting nominee dividends before line 6 is not computed and is refused through sb.unsupported."
 ```
 ```

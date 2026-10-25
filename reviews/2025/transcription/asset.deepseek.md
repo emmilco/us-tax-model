@@ -4,11 +4,16 @@ Second transcription of `Form 4562 — one item of depreciable property (other t
 
 | field | value |
 | --- | --- |
-| date | 2026-10-23 |
+| date | 2026-10-25 |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
-| prompt sha256 | 9dcec2c9530597d67760b96e15c55ec2a859d99914a5a2be51bd6cfd0acbcaad |
+| prompt sha256 | e1743bd11f13a326138990155b6fc9d394696336559999f620f6cba8c5161f90 |
 | prompt policy | source-only-computation-v2 |
+| comparison policy | checked-expression-types-v2 |
+| input context policy | complete-input-context-v1 |
+| complete input context | pass |
+| type validation policy | project-expression-types-v1 |
+| model type validation | fail |
 | system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
 | reasoning effort | provider default |
 | output token budget | 65536 |
@@ -25,6 +30,44 @@ Second transcription of `Form 4562 — one item of depreciable property (other t
 | i4562 | 2025 | 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 | cited pages | cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2 | 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 | 9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0 |
 | p946 | For use in preparing 2025 returns | 34, 37, 39, 41, 98 | cited pages | 18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2 | 34, 37, 39, 41 | da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7 |
 
+## Host-side model expression type checks
+
+The build's reference/type checker rejected these model expressions; none were executed.
+- malformed expression (project schema): data/alternatives/1/guard/not/all/2 must be object, data/alternatives/1/guard/not/all/2 must be object, data/alternatives/1/guard/not/all/2 must be object
+- malformed expression (project schema): data/alternatives/1/guard/not/all/2 must be object, data/alternatives/1/guard/not/all/2 must be object, data/alternatives/1/guard/not/all/2 must be object
+- malformed expression (project schema): data/alternatives/0/guard must be object, data/alternatives/0/guard must be object, data/alternatives/0/guard must be object
+- malformed expression (project schema): data/alternatives/0/guard must be object, data/alternatives/0/guard must be object, data/alternatives/0/guard must be object
+- malformed expression (project schema): data/alternatives/1/guard/not/all/0 must be object, data/alternatives/1/guard/not/all/0 must be object, data/alternatives/1/guard/not/all/0 must be object
+- malformed expression (project schema): data/alternatives/2/guard/all/1 must be object, data/alternatives/2/guard/all/1 must be object, data/alternatives/2/guard/all/1 must be object
+- malformed expression (project schema): data/alternatives/0/guard must be object, data/alternatives/0/guard must be object, data/alternatives/0/guard must be object
+- malformed expression (project schema): data/alternatives/1/guard/not/all/1 must be object, data/alternatives/1/guard/not/all/1 must be object, data/alternatives/1/guard/not/all/1 must be object
+- malformed expression (project schema): data/alternatives/0/guard must be object, data/alternatives/0/guard must be object, data/alternatives/0/guard must be object
+- malformed expression (project schema): data/all/0 must be object, data/all/0 must be object, data/all/0 must be object
+- malformed expression (project schema): data/all/0 must be object, data/all/0 must be object, data/all/0 must be object
+- malformed expression (project schema): data/all/0 must be object, data/all/0 must be object, data/all/0 must be object
+- malformed expression (project schema): data/all/0 must be object, data/all/0 must be object, data/all/0 must be object
+- malformed expression (project schema): data/alternatives/0/guard must be object, data/alternatives/0/guard must be object, data/alternatives/0/guard must be object
+- malformed expression (project schema): data/alternatives/0/guard must be object, data/alternatives/0/guard must be object, data/alternatives/0/guard must be object
+- malformed expression (project schema): data/alternatives/0/guard must be object, data/alternatives/0/guard must be object, data/alternatives/0/guard must be object
+- asset.asset.f25: malformed expression
+- asset.asset.f26i: malformed expression
+- asset.asset.col19c: malformed expression
+- asset.asset.macrs2025: malformed expression
+- asset.asset.macrs_prior: malformed expression
+- asset.asset.dep_listed: malformed expression
+- asset.asset.s179_2025: malformed expression
+- asset.asset.mq_q4: malformed expression
+- asset.asset.cost179: malformed expression
+- asset.asset.dep_prior: atom 'opaque' is not implemented in this stage
+- asset.asset.dep_prior: atom 'opaque' has no checker support in this stage
+- asset.asset.h_listed_low: malformed expression
+- asset.asset.h_179_ok: malformed expression
+- asset.asset.on_19: malformed expression
+- asset.asset.on_17: malformed expression
+- asset.asset.h_bonus_fullcase: malformed expression
+- asset.asset.mqbase: malformed expression
+- asset.asset.h_current_dep: malformed expression
+
 ## Lines
 
 ### asset.dep_2025 — MACRS on 2025 property
@@ -39,7 +82,7 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"input": "asset.listed"}, "then": {"line": "26(h)"}}, {"guard": {"args": [{"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": false}, {"input": "asset.listed"}], "test": "eq"}], "test": "all"}, "then": {"line": "19(g)"}}, {"guard": {"args": [{"args": [{"const": false}, {"input": "asset.listed"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "all"}, "then": {"line": "17"}}], "op": "choose"}
+{"expression": {"of": [{"line": "17"}, {"line": "19(g)"}, {"line": "26(h)"}], "op": "sum"}, "invalid_model_types": [{"line": "asset.f25", "message": "malformed expression (project schema): data/alternatives/1/guard/not/all/2 must be object, data/alternatives/1/guard/not/all/2 must be object, data/alternatives/1/guard/not/all/2 must be object"}, {"line": "asset.macrs2025", "message": "malformed expression (project schema): data/alternatives/0/guard must be object, data/alternatives/0/guard must be object, data/alternatives/0/guard must be object"}, {"line": "asset.macrs_prior", "message": "malformed expression (project schema): data/alternatives/1/guard/not/all/0 must be object, data/alternatives/1/guard/not/all/0 must be object, data/alternatives/1/guard/not/all/0 must be object"}, {"line": "asset.dep_listed", "message": "malformed expression (project schema): data/alternatives/2/guard/all/1 must be object, data/alternatives/2/guard/all/1 must be object, data/alternatives/2/guard/all/1 must be object"}, {"line": "asset.s179_2025", "message": "malformed expression (project schema): data/alternatives/0/guard must be object, data/alternatives/0/guard must be object, data/alternatives/0/guard must be object"}, {"line": "asset.h_179_ok", "message": "malformed expression (project schema): data/all/0 must be object, data/all/0 must be object, data/all/0 must be object"}, {"line": "asset.on_19", "message": "malformed expression (project schema): data/all/0 must be object, data/all/0 must be object, data/all/0 must be object"}, {"line": "asset.h_bonus_fullcase", "message": "malformed expression (project schema): data/alternatives/0/guard must be object, data/alternatives/0/guard must be object, data/alternatives/0/guard must be object"}, {"line": "asset.h_current_dep", "message": "malformed expression (project schema): data/alternatives/0/guard must be object, data/alternatives/0/guard must be object, data/alternatives/0/guard must be object"}, {"line": "asset.f25", "message": "asset.asset.f25: malformed expression"}, {"line": "asset.macrs2025", "message": "asset.asset.macrs2025: malformed expression"}, {"line": "asset.macrs_prior", "message": "asset.asset.macrs_prior: malformed expression"}, {"line": "asset.dep_listed", "message": "asset.asset.dep_listed: malformed expression"}, {"line": "asset.s179_2025", "message": "asset.asset.s179_2025: malformed expression"}, {"line": "asset.h_179_ok", "message": "asset.asset.h_179_ok: malformed expression"}, {"line": "asset.on_19", "message": "asset.asset.on_19: malformed expression"}, {"line": "asset.h_bonus_fullcase", "message": "asset.asset.h_bonus_fullcase: malformed expression"}, {"line": "asset.h_current_dep", "message": "asset.asset.h_current_dep: malformed expression"}]}
 ```
 
 Ruling: open
@@ -56,7 +99,7 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"input": "asset.listed"}, "then": {"line": "25"}}, {"guard": {"args": [{"const": false}, {"input": "asset.listed"}], "test": "eq"}, "then": {"line": "14"}}], "op": "choose"}
+{"expression": {"of": [{"line": "14"}, {"line": "25"}], "op": "sum"}, "invalid_model_types": [{"line": "asset.f25", "message": "malformed expression (project schema): data/alternatives/1/guard/not/all/2 must be object, data/alternatives/1/guard/not/all/2 must be object, data/alternatives/1/guard/not/all/2 must be object"}, {"line": "asset.s179_2025", "message": "malformed expression (project schema): data/alternatives/0/guard must be object, data/alternatives/0/guard must be object, data/alternatives/0/guard must be object"}, {"line": "asset.h_179_ok", "message": "malformed expression (project schema): data/all/0 must be object, data/all/0 must be object, data/all/0 must be object"}, {"line": "asset.h_bonus_fullcase", "message": "malformed expression (project schema): data/alternatives/0/guard must be object, data/alternatives/0/guard must be object, data/alternatives/0/guard must be object"}, {"line": "asset.f25", "message": "asset.asset.f25: malformed expression"}, {"line": "asset.s179_2025", "message": "asset.asset.s179_2025: malformed expression"}, {"line": "asset.h_179_ok", "message": "asset.asset.h_179_ok: malformed expression"}, {"line": "asset.h_bonus_fullcase", "message": "asset.asset.h_bonus_fullcase: malformed expression"}]}
 ```
 
 Ruling: open
@@ -73,7 +116,7 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"input": "asset.listed"}, "then": {"line": "26(i)"}}, {"guard": {"args": [{"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": false}, {"input": "asset.listed"}], "test": "eq"}], "test": "all"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"args": [{"const": false}, {"input": "asset.listed"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "all"}, "then": {"const": 0}}], "op": "choose"}
+{"expression": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": 50, "type": "Count"}, {"input": "asset.pct"}], "test": "lt"}, {"args": [{"const": true}, {"input": "asset.listed"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "all"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "asset.listed"}], "test": "eq"}, {"args": [{"input": "asset.pct"}, {"const": 50, "type": "Count"}], "test": "le"}], "test": "all"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}, "invalid_model_types": [{"line": "asset.s179_2025", "message": "malformed expression (project schema): data/alternatives/0/guard must be object, data/alternatives/0/guard must be object, data/alternatives/0/guard must be object"}, {"line": "asset.h_179_ok", "message": "malformed expression (project schema): data/all/0 must be object, data/all/0 must be object, data/all/0 must be object"}, {"line": "asset.s179_2025", "message": "asset.asset.s179_2025: malformed expression"}, {"line": "asset.h_179_ok", "message": "asset.asset.h_179_ok: malformed expression"}]}
 ```
 
 Ruling: open
@@ -90,13 +133,27 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"const": "q4"}, {"input": "asset.quarter"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "all"}, "then": {"from": {"line": "(c)"}, "op": "subtract_floor0", "take": {"line": "6(c)"}}}, {"guard": {"args": [{"args": [{"const": "q4"}, {"input": "asset.quarter"}], "test": "ne"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
+{"expression": {"alternatives": [{"guard": {"args": [{"args": [{"const": "q4"}, {"input": "asset.quarter"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "all"}, "then": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"from": {"line": "(c)"}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": 50, "type": "Count"}, {"input": "asset.pct"}], "test": "lt"}, {"args": [{"const": true}, {"input": "asset.listed"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "all"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "asset.listed"}], "test": "eq"}, {"args": [{"input": "asset.pct"}, {"const": 50, "type": "Count"}], "test": "le"}], "test": "all"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}, {"guard": {"args": [{"args": [{"const": "q4"}, {"input": "asset.quarter"}], "test": "ne"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}, "invalid_model_types": [{"line": "asset.s179_2025", "message": "malformed expression (project schema): data/alternatives/0/guard must be object, data/alternatives/0/guard must be object, data/alternatives/0/guard must be object"}, {"line": "asset.mq_q4", "message": "malformed expression (project schema): data/alternatives/1/guard/not/all/1 must be object, data/alternatives/1/guard/not/all/1 must be object, data/alternatives/1/guard/not/all/1 must be object"}, {"line": "asset.h_179_ok", "message": "malformed expression (project schema): data/all/0 must be object, data/all/0 must be object, data/all/0 must be object"}, {"line": "asset.mqbase", "message": "malformed expression (project schema): data/alternatives/0/guard must be object, data/alternatives/0/guard must be object, data/alternatives/0/guard must be object"}, {"line": "asset.s179_2025", "message": "asset.asset.s179_2025: malformed expression"}, {"line": "asset.mq_q4", "message": "asset.asset.mq_q4: malformed expression"}, {"line": "asset.h_179_ok", "message": "asset.asset.h_179_ok: malformed expression"}, {"line": "asset.mqbase", "message": "asset.asset.mqbase: malformed expression"}]}
 ```
 
 Ruling: open
 
 ### asset.mq_total — Mid-quarter test basis, all of 2025
-Status: **AGREE**
+Status: **DISAGREE**
+
+Project:
+
+```json
+{"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"from": {"line": "(c)"}, "op": "subtract_floor0", "take": {"line": "6(c)"}}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}
+```
+
+Second:
+
+```json
+{"expression": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"from": {"line": "(c)"}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": 50, "type": "Count"}, {"input": "asset.pct"}], "test": "lt"}, {"args": [{"const": true}, {"input": "asset.listed"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "all"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "asset.listed"}], "test": "eq"}, {"args": [{"input": "asset.pct"}, {"const": 50, "type": "Count"}], "test": "le"}], "test": "all"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}, "invalid_model_types": [{"line": "asset.s179_2025", "message": "malformed expression (project schema): data/alternatives/0/guard must be object, data/alternatives/0/guard must be object, data/alternatives/0/guard must be object"}, {"line": "asset.h_179_ok", "message": "malformed expression (project schema): data/all/0 must be object, data/all/0 must be object, data/all/0 must be object"}, {"line": "asset.mqbase", "message": "malformed expression (project schema): data/alternatives/0/guard must be object, data/alternatives/0/guard must be object, data/alternatives/0/guard must be object"}, {"line": "asset.s179_2025", "message": "asset.asset.s179_2025: malformed expression"}, {"line": "asset.h_179_ok", "message": "asset.asset.h_179_ok: malformed expression"}, {"line": "asset.mqbase", "message": "asset.asset.mqbase: malformed expression"}]}
+```
+
+Ruling: open
 
 ### asset.cost179 — Cost of section 179 property placed in service in 2025
 Status: **DISAGREE**
@@ -110,7 +167,7 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"args": [{"line": "(c)"}, {"amount": {"input": "asset.cost"}, "op": "multiply_rate", "rate": {"param": "sc.meals_rate"}}], "test": "le"}, {"args": [{"input": "asset.listed"}], "test": "not"}], "test": "any"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, {"args": [{"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, {"args": [{"const": false}, {"input": "asset.listed"}], "test": "ne"}], "test": "any"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"args": [{"input": "asset.listed"}, {"args": [{"amount": {"input": "asset.cost"}, "op": "multiply_rate", "rate": {"param": "sc.meals_rate"}}, {"line": "(c)"}], "test": "lt"}], "test": "all"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": false}, {"input": "asset.listed"}], "test": "eq"}], "test": "all"}], "test": "any"}, "then": {"line": "(c)"}}], "op": "choose"}
+{"expression": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": 50, "type": "Count"}, {"input": "asset.pct"}], "test": "lt"}, {"args": [{"const": true}, {"input": "asset.listed"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "all"}, "then": {"line": "(c)"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "asset.listed"}], "test": "eq"}, {"args": [{"input": "asset.pct"}, {"const": 50, "type": "Count"}], "test": "le"}], "test": "all"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}, "invalid_model_types": [{"line": "asset.cost179", "message": "malformed expression (project schema): data/alternatives/0/guard must be object, data/alternatives/0/guard must be object, data/alternatives/0/guard must be object"}, {"line": "asset.h_179_ok", "message": "malformed expression (project schema): data/all/0 must be object, data/all/0 must be object, data/all/0 must be object"}, {"line": "asset.cost179", "message": "asset.asset.cost179: malformed expression"}, {"line": "asset.h_179_ok", "message": "asset.asset.h_179_ok: malformed expression"}]}
 ```
 
 Ruling: open
@@ -127,31 +184,15 @@ Project:
 Second:
 
 ```json
-{"line": "17"}
+{"expression": {"unknown": "{\"name\": \"macrs_accumulated_depreciation_before_2025\", \"op\": \"opaque\"}"}, "invalid_model_types": [{"line": "asset.dep_prior", "message": "asset.asset.dep_prior: atom 'opaque' is not implemented in this stage"}, {"line": "asset.dep_prior", "message": "asset.asset.dep_prior: atom 'opaque' has no checker support in this stage"}]}
 ```
 
-Second transcription's note: The archived pages do not provide an accumulated prior-year depreciation figure for a single asset; this helper is the line 17 current-year amount for prior-year non-listed property.
+Second transcription's note: The archived text does not give a single printed prior-years depreciation line. The amount is the sum of the MACRS table rates for the earlier recovery years applied to the property's unadjusted basis, together with any prior section 179 and special depreciation allowance; the model has no loop over prior years, so this is represented as an opaque helper.
 
 Ruling: open
 
 ### (d) — Recovery period under GDS for the asset class
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"keys": [{"line": "(a)"}], "op": "keyed_lookup", "table": "class_lives"}
-```
-
-Second:
-
-```json
-{"keys": [{"line": "(a)"}], "op": "keyed_lookup", "table": "asset_class_period"}
-```
-
-Second transcription's note: The archived pages identify the recovery period through Pub. 946 Appendix B; the complete class-to-period table is not reproduced here, so the pinned table asset_class_period is used.
-
-Ruling: open
+Status: **AGREE**
 
 ### (c) — Basis for depreciation (business/investment use only), before section 179 and the special 
 Status: **DISAGREE**
@@ -165,10 +206,8 @@ Project:
 Second:
 
 ```json
-{"amount": {"amount": {"input": "asset.cost"}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "op": "prorate", "part": {"const": 1}, "places": 2, "whole": {"param": "sc.hundred_cents"}}
+{"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"const": 100}}
 ```
-
-Second transcription's note: Business basis is cost times business-use percentage, rounded to the cent.
 
 Ruling: open
 
@@ -184,7 +223,7 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": false}, {"input": "asset.listed"}], "test": "eq"}], "test": "all"}, "then": {"alternatives": [{"guard": {"args": [{"input": "asset.after_jan19"}, {"args": [{"const": "full"}, {"input": "asset.bonus_choice"}], "test": "eq"}], "test": "all"}, "then": {"from": {"line": "(c)"}, "op": "subtract_floor0", "take": {"line": "6(c)"}}}, {"guard": {"args": [{"args": [{"input": "asset.after_jan19"}, {"args": [{"const": "forty"}, {"input": "asset.bonus_choice"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"const": false}, {"input": "asset.after_jan19"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "asset.bonus_choice"}], "test": "ne"}], "test": "all"}], "test": "any"}, "then": {"amount": {"from": {"line": "(c)"}, "op": "subtract_floor0", "take": {"line": "6(c)"}}, "op": "multiply_rate", "rate": {"param": "sc.bonus_rate_40"}}}, {"guard": {"args": [{"const": "none"}, {"input": "asset.bonus_choice"}], "test": "eq"}, "then": {"const": 0}}], "op": "choose"}}, {"guard": {"args": [{"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, {"args": [{"const": false}, {"input": "asset.listed"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
+{"expression": {"alternatives": [{"guard": {"args": [{"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": false}, {"input": "asset.listed"}], "test": "eq"}], "test": "all"}, "then": {"alternatives": [{"guard": {"args": [{"const": "forty"}, {"input": "asset.bonus_choice"}], "test": "eq"}, "then": {"amount": {"from": {"line": "(c)"}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": 50, "type": "Count"}, {"input": "asset.pct"}], "test": "lt"}, {"args": [{"const": true}, {"input": "asset.listed"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "all"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "asset.listed"}], "test": "eq"}, {"args": [{"input": "asset.pct"}, {"const": 50, "type": "Count"}], "test": "le"}], "test": "all"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}}, "op": "multiply_rate", "rate": {"param": "sc.bonus_rate_40"}}}, {"guard": {"args": [{"const": "full"}, {"input": "asset.bonus_choice"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"input": "asset.after_jan19"}, "then": {"from": {"line": "(c)"}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": 50, "type": "Count"}, {"input": "asset.pct"}], "test": "lt"}, {"args": [{"const": true}, {"input": "asset.listed"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "all"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "asset.listed"}], "test": "eq"}, {"args": [{"input": "asset.pct"}, {"const": 50, "type": "Count"}], "test": "le"}], "test": "all"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}}}, {"guard": {"args": [{"const": false}, {"input": "asset.after_jan19"}], "test": "eq"}, "then": {"amount": {"from": {"line": "(c)"}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": 50, "type": "Count"}, {"input": "asset.pct"}], "test": "lt"}, {"args": [{"const": true}, {"input": "asset.listed"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "all"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "asset.listed"}], "test": "eq"}, {"args": [{"input": "asset.pct"}, {"const": 50, "type": "Count"}], "test": "le"}], "test": "all"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}}, "op": "multiply_rate", "rate": {"param": "sc.bonus_rate_40"}}}], "op": "choose"}}, {"guard": {"args": [{"const": "none"}, {"input": "asset.bonus_choice"}], "test": "eq"}, "then": {"const": 0}}], "op": "choose"}}, {"guard": {"args": [{"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, {"args": [{"const": false}, {"input": "asset.listed"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}, "invalid_model_types": [{"line": "asset.s179_2025", "message": "malformed expression (project schema): data/alternatives/0/guard must be object, data/alternatives/0/guard must be object, data/alternatives/0/guard must be object"}, {"line": "asset.h_179_ok", "message": "malformed expression (project schema): data/all/0 must be object, data/all/0 must be object, data/all/0 must be object"}, {"line": "asset.h_bonus_fullcase", "message": "malformed expression (project schema): data/alternatives/0/guard must be object, data/alternatives/0/guard must be object, data/alternatives/0/guard must be object"}, {"line": "asset.s179_2025", "message": "asset.asset.s179_2025: malformed expression"}, {"line": "asset.h_179_ok", "message": "asset.asset.h_179_ok: malformed expression"}, {"line": "asset.h_bonus_fullcase", "message": "asset.asset.h_bonus_fullcase: malformed expression"}]}
 ```
 
 Ruling: open
@@ -201,7 +240,7 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"input": "asset.listed"}, {"args": [{"amount": {"input": "asset.cost"}, "op": "multiply_rate", "rate": {"param": "sc.meals_rate"}}, {"line": "(c)"}], "test": "lt"}], "test": "all"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "all"}, "then": {"alternatives": [{"guard": {"args": [{"input": "asset.after_jan19"}, {"args": [{"const": "full"}, {"input": "asset.bonus_choice"}], "test": "eq"}], "test": "all"}, "then": {"from": {"line": "(c)"}, "op": "subtract_floor0", "take": {"line": "6(c)"}}}, {"guard": {"args": [{"args": [{"input": "asset.after_jan19"}, {"args": [{"const": "forty"}, {"input": "asset.bonus_choice"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"const": false}, {"input": "asset.after_jan19"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "asset.bonus_choice"}], "test": "ne"}], "test": "all"}], "test": "any"}, "then": {"amount": {"from": {"line": "(c)"}, "op": "subtract_floor0", "take": {"line": "6(c)"}}, "op": "multiply_rate", "rate": {"param": "sc.bonus_rate_40"}}}, {"guard": {"args": [{"const": "none"}, {"input": "asset.bonus_choice"}], "test": "eq"}, "then": {"const": 0}}], "op": "choose"}}, {"guard": {"args": [{"args": [{"args": [{"line": "(c)"}, {"amount": {"input": "asset.cost"}, "op": "multiply_rate", "rate": {"param": "sc.meals_rate"}}], "test": "le"}, {"args": [{"input": "asset.listed"}], "test": "not"}], "test": "any"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
+{"expression": {"alternatives": [{"guard": {"args": [{"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": true}, {"input": "asset.listed"}], "test": "eq"}, {"args": [{"const": 50, "type": "Count"}, {"input": "asset.pct"}], "test": "lt"}], "test": "all"}, "then": {"alternatives": [{"guard": {"args": [{"const": "forty"}, {"input": "asset.bonus_choice"}], "test": "eq"}, "then": {"amount": {"from": {"line": "(c)"}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": 50, "type": "Count"}, {"input": "asset.pct"}], "test": "lt"}, {"args": [{"const": true}, {"input": "asset.listed"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "all"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "asset.listed"}], "test": "eq"}, {"args": [{"input": "asset.pct"}, {"const": 50, "type": "Count"}], "test": "le"}], "test": "all"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}}, "op": "multiply_rate", "rate": {"param": "sc.bonus_rate_40"}}}, {"guard": {"args": [{"const": "full"}, {"input": "asset.bonus_choice"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"input": "asset.after_jan19"}, "then": {"from": {"line": "(c)"}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": 50, "type": "Count"}, {"input": "asset.pct"}], "test": "lt"}, {"args": [{"const": true}, {"input": "asset.listed"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "all"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "asset.listed"}], "test": "eq"}, {"args": [{"input": "asset.pct"}, {"const": 50, "type": "Count"}], "test": "le"}], "test": "all"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}}}, {"guard": {"args": [{"const": false}, {"input": "asset.after_jan19"}], "test": "eq"}, "then": {"amount": {"from": {"line": "(c)"}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": 50, "type": "Count"}, {"input": "asset.pct"}], "test": "lt"}, {"args": [{"const": true}, {"input": "asset.listed"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "all"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "asset.listed"}], "test": "eq"}, {"args": [{"input": "asset.pct"}, {"const": 50, "type": "Count"}], "test": "le"}], "test": "all"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}}, "op": "multiply_rate", "rate": {"param": "sc.bonus_rate_40"}}}], "op": "choose"}}, {"guard": {"args": [{"const": "none"}, {"input": "asset.bonus_choice"}], "test": "eq"}, "then": {"const": 0}}], "op": "choose"}}, {"guard": {"args": [{"args": [{"input": "asset.pct"}, {"const": 50, "type": "Count"}], "test": "le"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, {"args": [{"const": true}, {"input": "asset.listed"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}, "invalid_model_types": [{"line": "asset.f25", "message": "malformed expression (project schema): data/alternatives/1/guard/not/all/2 must be object, data/alternatives/1/guard/not/all/2 must be object, data/alternatives/1/guard/not/all/2 must be object"}, {"line": "asset.s179_2025", "message": "malformed expression (project schema): data/alternatives/0/guard must be object, data/alternatives/0/guard must be object, data/alternatives/0/guard must be object"}, {"line": "asset.h_179_ok", "message": "malformed expression (project schema): data/all/0 must be object, data/all/0 must be object, data/all/0 must be object"}, {"line": "asset.h_bonus_fullcase", "message": "malformed expression (project schema): data/alternatives/0/guard must be object, data/alternatives/0/guard must be object, data/alternatives/0/guard must be object"}, {"line": "asset.f25", "message": "asset.asset.f25: malformed expression"}, {"line": "asset.s179_2025", "message": "asset.asset.s179_2025: malformed expression"}, {"line": "asset.h_179_ok", "message": "asset.asset.h_179_ok: malformed expression"}, {"line": "asset.h_bonus_fullcase", "message": "asset.asset.h_bonus_fullcase: malformed expression"}]}
 ```
 
 Ruling: open
@@ -218,7 +257,7 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"input": "asset.listed"}, {"args": [{"amount": {"input": "asset.cost"}, "op": "multiply_rate", "rate": {"param": "sc.meals_rate"}}, {"line": "(c)"}], "test": "lt"}], "test": "all"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "all"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"args": [{"args": [{"line": "(c)"}, {"amount": {"input": "asset.cost"}, "op": "multiply_rate", "rate": {"param": "sc.meals_rate"}}], "test": "le"}, {"args": [{"input": "asset.listed"}], "test": "not"}], "test": "any"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
+{"expression": {"alternatives": [{"guard": {"args": [{"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": true}, {"input": "asset.listed"}], "test": "eq"}, {"args": [{"const": 50, "type": "Count"}, {"input": "asset.pct"}], "test": "lt"}], "test": "all"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"args": [{"input": "asset.pct"}, {"const": 50, "type": "Count"}], "test": "le"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, {"args": [{"const": true}, {"input": "asset.listed"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}, "invalid_model_types": [{"line": "asset.f26i", "message": "malformed expression (project schema): data/alternatives/1/guard/not/all/2 must be object, data/alternatives/1/guard/not/all/2 must be object, data/alternatives/1/guard/not/all/2 must be object"}, {"line": "asset.f26i", "message": "asset.asset.f26i: malformed expression"}]}
 ```
 
 Ruling: open
@@ -235,7 +274,7 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": false}, {"input": "asset.listed"}], "test": "eq"}], "test": "all"}, "then": {"from": {"from": {"line": "(c)"}, "op": "subtract_floor0", "take": {"line": "6(c)"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"input": "asset.after_jan19"}, {"args": [{"const": "full"}, {"input": "asset.bonus_choice"}], "test": "eq"}], "test": "all"}, "then": {"from": {"line": "(c)"}, "op": "subtract_floor0", "take": {"line": "6(c)"}}}, {"guard": {"args": [{"args": [{"input": "asset.after_jan19"}, {"args": [{"const": "forty"}, {"input": "asset.bonus_choice"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"const": false}, {"input": "asset.after_jan19"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "asset.bonus_choice"}], "test": "ne"}], "test": "all"}], "test": "any"}, "then": {"amount": {"from": {"line": "(c)"}, "op": "subtract_floor0", "take": {"line": "6(c)"}}, "op": "multiply_rate", "rate": {"param": "sc.bonus_rate_40"}}}, {"guard": {"args": [{"const": "none"}, {"input": "asset.bonus_choice"}], "test": "eq"}, "then": {"const": 0}}], "op": "choose"}}}, {"guard": {"args": [{"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, {"args": [{"const": false}, {"input": "asset.listed"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
+{"expression": {"alternatives": [{"guard": {"args": [{"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": false}, {"input": "asset.listed"}], "test": "eq"}], "test": "all"}, "then": {"from": {"from": {"line": "(c)"}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": 50, "type": "Count"}, {"input": "asset.pct"}], "test": "lt"}, {"args": [{"const": true}, {"input": "asset.listed"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "all"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "asset.listed"}], "test": "eq"}, {"args": [{"input": "asset.pct"}, {"const": 50, "type": "Count"}], "test": "le"}], "test": "all"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}}, "op": "subtract_floor0", "take": {"of": [{"line": "14"}, {"line": "25"}], "op": "sum"}}}, {"guard": {"args": [{"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, {"args": [{"const": false}, {"input": "asset.listed"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}, "invalid_model_types": [{"line": "asset.f25", "message": "malformed expression (project schema): data/alternatives/1/guard/not/all/2 must be object, data/alternatives/1/guard/not/all/2 must be object, data/alternatives/1/guard/not/all/2 must be object"}, {"line": "asset.col19c", "message": "malformed expression (project schema): data/alternatives/0/guard must be object, data/alternatives/0/guard must be object, data/alternatives/0/guard must be object"}, {"line": "asset.s179_2025", "message": "malformed expression (project schema): data/alternatives/0/guard must be object, data/alternatives/0/guard must be object, data/alternatives/0/guard must be object"}, {"line": "asset.h_179_ok", "message": "malformed expression (project schema): data/all/0 must be object, data/all/0 must be object, data/all/0 must be object"}, {"line": "asset.on_19", "message": "malformed expression (project schema): data/all/0 must be object, data/all/0 must be object, data/all/0 must be object"}, {"line": "asset.h_bonus_fullcase", "message": "malformed expression (project schema): data/alternatives/0/guard must be object, data/alternatives/0/guard must be object, data/alternatives/0/guard must be object"}, {"line": "asset.f25", "message": "asset.asset.f25: malformed expression"}, {"line": "asset.col19c", "message": "asset.asset.col19c: malformed expression"}, {"line": "asset.s179_2025", "message": "asset.asset.s179_2025: malformed expression"}, {"line": "asset.h_179_ok", "message": "asset.asset.h_179_ok: malformed expression"}, {"line": "asset.on_19", "message": "asset.asset.on_19: malformed expression"}, {"line": "asset.h_bonus_fullcase", "message": "asset.asset.h_bonus_fullcase: malformed expression"}]}
 ```
 
 Ruling: open
@@ -252,7 +291,7 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": false}, {"input": "asset.listed"}], "test": "eq"}], "test": "all"}, {"args": [{"collection": "asset", "field": "asset.mq_q4", "op": "sum_over", "where": null}, {"amount": {"collection": "asset", "field": "asset.mq_total", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "sc.bonus_rate_40"}}], "test": "le"}], "test": "all"}, "then": {"amount": {"line": "19(c)"}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"param": "sc.conv_hy"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "placed_year_count"}], "op": "keyed_lookup", "table": "macrs_rate"}}}, {"guard": {"args": [{"args": [{"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": false}, {"input": "asset.listed"}], "test": "eq"}], "test": "all"}, {"args": [{"amount": {"collection": "asset", "field": "asset.mq_total", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "sc.bonus_rate_40"}}, {"collection": "asset", "field": "asset.mq_q4", "op": "sum_over", "where": null}], "test": "lt"}], "test": "all"}, "then": {"amount": {"line": "19(c)"}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"keys": [{"input": "asset.quarter"}], "op": "keyed_lookup", "table": "quarter_convention"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "placed_year_count"}], "op": "keyed_lookup", "table": "macrs_rate"}}}, {"guard": {"args": [{"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, {"args": [{"const": false}, {"input": "asset.listed"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
+{"expression": {"alternatives": [{"guard": {"args": [{"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": false}, {"input": "asset.listed"}], "test": "eq"}], "test": "all"}, "then": {"alternatives": [{"guard": {"args": [{"of": [{"collection": "asset", "field": "asset.mq_q4", "op": "sum_over", "where": null}, {"collection": "scveh", "field": "scveh.mq_q4", "op": "sum_over", "where": null}], "op": "sum"}, {"amount": {"of": [{"collection": "asset", "field": "asset.mq_total", "op": "sum_over", "where": null}, {"collection": "scveh", "field": "scveh.mq_total", "op": "sum_over", "where": null}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "sc.bonus_rate_40"}}], "test": "le"}, "then": {"amount": {"from": {"from": {"line": "(c)"}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": 50, "type": "Count"}, {"input": "asset.pct"}], "test": "lt"}, {"args": [{"const": true}, {"input": "asset.listed"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "all"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "asset.listed"}], "test": "eq"}, {"args": [{"input": "asset.pct"}, {"const": 50, "type": "Count"}], "test": "le"}], "test": "all"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}}, "op": "subtract_floor0", "take": {"of": [{"line": "14"}, {"line": "25"}], "op": "sum"}}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"param": "sc.conv_hy"}, {"const": 1, "type": "Count"}], "op": "keyed_lookup", "table": "macrs_gds"}}}, {"guard": {"args": [{"amount": {"of": [{"collection": "asset", "field": "asset.mq_total", "op": "sum_over", "where": null}, {"collection": "scveh", "field": "scveh.mq_total", "op": "sum_over", "where": null}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "sc.bonus_rate_40"}}, {"of": [{"collection": "asset", "field": "asset.mq_q4", "op": "sum_over", "where": null}, {"collection": "scveh", "field": "scveh.mq_q4", "op": "sum_over", "where": null}], "op": "sum"}], "test": "lt"}, "then": {"amount": {"from": {"from": {"line": "(c)"}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": 50, "type": "Count"}, {"input": "asset.pct"}], "test": "lt"}, {"args": [{"const": true}, {"input": "asset.listed"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "all"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "asset.listed"}], "test": "eq"}, {"args": [{"input": "asset.pct"}, {"const": 50, "type": "Count"}], "test": "le"}], "test": "all"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}}, "op": "subtract_floor0", "take": {"of": [{"line": "14"}, {"line": "25"}], "op": "sum"}}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"keys": [{"input": "asset.quarter"}], "op": "keyed_lookup", "table": "quarter_convention"}, {"const": 1, "type": "Count"}], "op": "keyed_lookup", "table": "macrs_gds"}}}], "op": "choose"}}, {"guard": {"args": [{"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, {"args": [{"const": false}, {"input": "asset.listed"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}, "invalid_model_types": [{"line": "asset.f25", "message": "malformed expression (project schema): data/alternatives/1/guard/not/all/2 must be object, data/alternatives/1/guard/not/all/2 must be object, data/alternatives/1/guard/not/all/2 must be object"}, {"line": "asset.macrs2025", "message": "malformed expression (project schema): data/alternatives/0/guard must be object, data/alternatives/0/guard must be object, data/alternatives/0/guard must be object"}, {"line": "asset.s179_2025", "message": "malformed expression (project schema): data/alternatives/0/guard must be object, data/alternatives/0/guard must be object, data/alternatives/0/guard must be object"}, {"line": "asset.h_179_ok", "message": "malformed expression (project schema): data/all/0 must be object, data/all/0 must be object, data/all/0 must be object"}, {"line": "asset.on_19", "message": "malformed expression (project schema): data/all/0 must be object, data/all/0 must be object, data/all/0 must be object"}, {"line": "asset.h_bonus_fullcase", "message": "malformed expression (project schema): data/alternatives/0/guard must be object, data/alternatives/0/guard must be object, data/alternatives/0/guard must be object"}, {"line": "asset.h_current_dep", "message": "malformed expression (project schema): data/alternatives/0/guard must be object, data/alternatives/0/guard must be object, data/alternatives/0/guard must be object"}, {"line": "asset.f25", "message": "asset.asset.f25: malformed expression"}, {"line": "asset.macrs2025", "message": "asset.asset.macrs2025: malformed expression"}, {"line": "asset.s179_2025", "message": "asset.asset.s179_2025: malformed expression"}, {"line": "asset.h_179_ok", "message": "asset.asset.h_179_ok: malformed expression"}, {"line": "asset.on_19", "message": "asset.asset.on_19: malformed expression"}, {"line": "asset.h_bonus_fullcase", "message": "asset.asset.h_bonus_fullcase: malformed expression"}, {"line": "asset.h_current_dep", "message": "asset.asset.h_current_dep: malformed expression"}]}
 ```
 
 Ruling: open
@@ -269,7 +308,7 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": false}, {"input": "asset.listed"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "all"}, {"args": [{"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "placed_year_count"}, {"keys": [{"line": "(d)"}], "op": "keyed_lookup", "table": "macrs_life"}], "test": "le"}], "test": "all"}, "then": {"amount": {"from": {"from": {"line": "(c)"}, "op": "subtract_floor0", "take": {"input": "asset.prior_179"}}, "op": "subtract_floor0", "take": {"input": "asset.prior_bonus"}}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"line": "(e)"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "placed_year_count"}], "op": "keyed_lookup", "table": "macrs_rate"}}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": false}, {"input": "asset.listed"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "all"}, {"args": [{"keys": [{"line": "(d)"}], "op": "keyed_lookup", "table": "macrs_life"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "placed_year_count"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": false}, {"input": "asset.listed"}], "test": "ne"}], "test": "any"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
+{"expression": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": false}, {"input": "asset.listed"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "all"}, {"args": [{"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}, {"keys": [{"line": "(d)"}], "op": "keyed_lookup", "table": "macrs_last_year"}], "test": "le"}], "test": "all"}, "then": {"amount": {"from": {"from": {"line": "(c)"}, "op": "subtract_floor0", "take": {"input": "asset.prior_179"}}, "op": "subtract_floor0", "take": {"input": "asset.prior_bonus"}}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"line": "(e)"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "op": "keyed_lookup", "table": "macrs_gds"}}}, {"guard": {"args": [{"args": [{"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": false}, {"input": "asset.listed"}], "test": "ne"}], "test": "any"}, {"args": [{"keys": [{"line": "(d)"}], "op": "keyed_lookup", "table": "macrs_last_year"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "test": "lt"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}, "invalid_model_types": [{"line": "asset.macrs_prior", "message": "malformed expression (project schema): data/alternatives/1/guard/not/all/0 must be object, data/alternatives/1/guard/not/all/0 must be object, data/alternatives/1/guard/not/all/0 must be object"}, {"line": "asset.macrs_prior", "message": "asset.asset.macrs_prior: malformed expression"}]}
 ```
 
 Ruling: open
@@ -286,10 +325,8 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"input": "asset.listed"}, {"args": [{"amount": {"input": "asset.cost"}, "op": "multiply_rate", "rate": {"param": "sc.meals_rate"}}, {"line": "(c)"}], "test": "lt"}], "test": "all"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "all"}, {"args": [{"collection": "asset", "field": "asset.mq_q4", "op": "sum_over", "where": null}, {"amount": {"collection": "asset", "field": "asset.mq_total", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "sc.bonus_rate_40"}}], "test": "le"}], "test": "all"}, "then": {"amount": {"from": {"from": {"line": "(c)"}, "op": "subtract_floor0", "take": {"line": "6(c)"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"input": "asset.after_jan19"}, {"args": [{"const": "full"}, {"input": "asset.bonus_choice"}], "test": "eq"}], "test": "all"}, "then": {"from": {"line": "(c)"}, "op": "subtract_floor0", "take": {"line": "6(c)"}}}, {"guard": {"args": [{"args": [{"input": "asset.after_jan19"}, {"args": [{"const": "forty"}, {"input": "asset.bonus_choice"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"const": false}, {"input": "asset.after_jan19"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "asset.bonus_choice"}], "test": "ne"}], "test": "all"}], "test": "any"}, "then": {"amount": {"from": {"line": "(c)"}, "op": "subtract_floor0", "take": {"line": "6(c)"}}, "op": "multiply_rate", "rate": {"param": "sc.bonus_rate_40"}}}, {"guard": {"args": [{"const": "none"}, {"input": "asset.bonus_choice"}], "test": "eq"}, "then": {"const": 0}}], "op": "choose"}}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"param": "sc.conv_hy"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "placed_year_count"}], "op": "keyed_lookup", "table": "macrs_rate"}}}, {"guard": {"args": [{"args": [{"args": [{"input": "asset.listed"}, {"args": [{"amount": {"input": "asset.cost"}, "op": "multiply_rate", "rate": {"param": "sc.meals_rate"}}, {"line": "(c)"}], "test": "lt"}], "test": "all"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "all"}, {"args": [{"amount": {"collection": "asset", "field": "asset.mq_total", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "sc.bonus_rate_40"}}, {"collection": "asset", "field": "asset.mq_q4", "op": "sum_over", "where": null}], "test": "lt"}], "test": "all"}, "then": {"amount": {"from": {"from": {"line": "(c)"}, "op": "subtract_floor0", "take": {"line": "6(c)"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"input": "asset.after_jan19"}, {"args": [{"const": "full"}, {"input": "asset.bonus_choice"}], "test": "eq"}], "test": "all"}, "then": {"from": {"line": "(c)"}, "op": "subtract_floor0", "take": {"line": "6(c)"}}}, {"guard": {"args": [{"args": [{"input": "asset.after_jan19"}, {"args": [{"const": "forty"}, {"input": "asset.bonus_choice"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"const": false}, {"input": "asset.after_jan19"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "asset.bonus_choice"}], "test": "ne"}], "test": "all"}], "test": "any"}, "then": {"amount": {"from": {"line": "(c)"}, "op": "subtract_floor0", "take": {"line": "6(c)"}}, "op": "multiply_rate", "rate": {"param": "sc.bonus_rate_40"}}}, {"guard": {"args": [{"const": "none"}, {"input": "asset.bonus_choice"}], "test": "eq"}, "then": {"const": 0}}], "op": "choose"}}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"keys": [{"input": "asset.quarter"}], "op": "keyed_lookup", "table": "quarter_convention"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "placed_year_count"}], "op": "keyed_lookup", "table": "macrs_rate"}}}, {"guard": {"args": [{"args": [{"args": [{"input": "asset.listed"}, {"args": [{"amount": {"input": "asset.cost"}, "op": "multiply_rate", "rate": {"param": "sc.meals_rate"}}, {"line": "(c)"}], "test": "lt"}], "test": "all"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "all"}, {"args": [{"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "placed_year_count"}, {"keys": [{"line": "(d)"}], "op": "keyed_lookup", "table": "macrs_life"}], "test": "le"}], "test": "all"}, "then": {"amount": {"from": {"from": {"line": "(c)"}, "op": "subtract_floor0", "take": {"input": "asset.prior_179"}}, "op": "subtract_floor0", "take": {"input": "asset.prior_bonus"}}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"line": "(e)"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "placed_year_count"}], "op": "keyed_lookup", "table": "macrs_rate"}}}, {"guard": {"args": [{"args": [{"input": "asset.listed"}, {"args": [{"line": "(c)"}, {"amount": {"input": "asset.cost"}, "op": "multiply_rate", "rate": {"param": "sc.meals_rate"}}], "test": "le"}], "test": "all"}, {"args": [{"args": [{"args": [{"input": "asset.listed"}, {"args": [{"amount": {"input": "asset.cost"}, "op": "multiply_rate", "rate": {"param": "sc.meals_rate"}}, {"line": "(c)"}], "test": "lt"}], "test": "all"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "all"}, {"args": [{"keys": [{"line": "(d)"}], "op": "keyed_lookup", "table": "macrs_life"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "placed_year_count"}], "test": "lt"}], "test": "all"}, {"args": [{"const": false}, {"input": "asset.listed"}], "test": "eq"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
+{"expression": {"alternatives": [{"guard": {"args": [{"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": true}, {"input": "asset.listed"}], "test": "eq"}], "test": "all"}, "then": {"alternatives": [{"guard": {"args": [{"of": [{"collection": "asset", "field": "asset.mq_q4", "op": "sum_over", "where": null}, {"collection": "scveh", "field": "scveh.mq_q4", "op": "sum_over", "where": null}], "op": "sum"}, {"amount": {"of": [{"collection": "asset", "field": "asset.mq_total", "op": "sum_over", "where": null}, {"collection": "scveh", "field": "scveh.mq_total", "op": "sum_over", "where": null}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "sc.bonus_rate_40"}}], "test": "le"}, "then": {"amount": {"from": {"from": {"line": "(c)"}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": 50, "type": "Count"}, {"input": "asset.pct"}], "test": "lt"}, {"args": [{"const": true}, {"input": "asset.listed"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "all"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "asset.listed"}], "test": "eq"}, {"args": [{"input": "asset.pct"}, {"const": 50, "type": "Count"}], "test": "le"}], "test": "all"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}}, "op": "subtract_floor0", "take": {"of": [{"line": "14"}, {"line": "25"}], "op": "sum"}}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"param": "sc.conv_hy"}, {"const": 1, "type": "Count"}], "op": "keyed_lookup", "table": "macrs_gds"}}}, {"guard": {"args": [{"amount": {"of": [{"collection": "asset", "field": "asset.mq_total", "op": "sum_over", "where": null}, {"collection": "scveh", "field": "scveh.mq_total", "op": "sum_over", "where": null}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "sc.bonus_rate_40"}}, {"of": [{"collection": "asset", "field": "asset.mq_q4", "op": "sum_over", "where": null}, {"collection": "scveh", "field": "scveh.mq_q4", "op": "sum_over", "where": null}], "op": "sum"}], "test": "lt"}, "then": {"amount": {"from": {"from": {"line": "(c)"}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": 50, "type": "Count"}, {"input": "asset.pct"}], "test": "lt"}, {"args": [{"const": true}, {"input": "asset.listed"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "all"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "asset.listed"}], "test": "eq"}, {"args": [{"input": "asset.pct"}, {"const": 50, "type": "Count"}], "test": "le"}], "test": "all"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}}, "op": "subtract_floor0", "take": {"of": [{"line": "14"}, {"line": "25"}], "op": "sum"}}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"keys": [{"input": "asset.quarter"}], "op": "keyed_lookup", "table": "quarter_convention"}, {"const": 1, "type": "Count"}], "op": "keyed_lookup", "table": "macrs_gds"}}}], "op": "choose"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "asset.listed"}], "test": "eq"}, {"args": [{"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}, {"keys": [{"line": "(d)"}], "op": "keyed_lookup", "table": "macrs_last_year"}], "test": "le"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "all"}, "then": {"amount": {"from": {"from": {"line": "(c)"}, "op": "subtract_floor0", "take": {"input": "asset.prior_179"}}, "op": "subtract_floor0", "take": {"input": "asset.prior_bonus"}}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"line": "(e)"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "op": "keyed_lookup", "table": "macrs_gds"}}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "asset.listed"}], "test": "eq"}, {"args": [{"keys": [{"line": "(d)"}], "op": "keyed_lookup", "table": "macrs_last_year"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "test": "lt"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "all"}, {"args": [{"const": false}, {"input": "asset.listed"}], "test": "eq"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}, "invalid_model_types": [{"line": "asset.f25", "message": "malformed expression (project schema): data/alternatives/1/guard/not/all/2 must be object, data/alternatives/1/guard/not/all/2 must be object, data/alternatives/1/guard/not/all/2 must be object"}, {"line": "asset.dep_listed", "message": "malformed expression (project schema): data/alternatives/2/guard/all/1 must be object, data/alternatives/2/guard/all/1 must be object, data/alternatives/2/guard/all/1 must be object"}, {"line": "asset.s179_2025", "message": "malformed expression (project schema): data/alternatives/0/guard must be object, data/alternatives/0/guard must be object, data/alternatives/0/guard must be object"}, {"line": "asset.h_179_ok", "message": "malformed expression (project schema): data/all/0 must be object, data/all/0 must be object, data/all/0 must be object"}, {"line": "asset.h_bonus_fullcase", "message": "malformed expression (project schema): data/alternatives/0/guard must be object, data/alternatives/0/guard must be object, data/alternatives/0/guard must be object"}, {"line": "asset.h_current_dep", "message": "malformed expression (project schema): data/alternatives/0/guard must be object, data/alternatives/0/guard must be object, data/alternatives/0/guard must be object"}, {"line": "asset.f25", "message": "asset.asset.f25: malformed expression"}, {"line": "asset.dep_listed", "message": "asset.asset.dep_listed: malformed expression"}, {"line": "asset.s179_2025", "message": "asset.asset.s179_2025: malformed expression"}, {"line": "asset.h_179_ok", "message": "asset.asset.h_179_ok: malformed expression"}, {"line": "asset.h_bonus_fullcase", "message": "asset.asset.h_bonus_fullcase: malformed expression"}, {"line": "asset.h_current_dep", "message": "asset.asset.h_current_dep: malformed expression"}]}
 ```
-
-Second transcription's note: Only line 26 (listed property used more than 50% in qualified business use) is computed; line 27 for 50% or less is outside this slice.
 
 Ruling: open
 
@@ -299,22 +336,13 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 
 | line | gates listed | not read by the project's line |
 | --- | --- | --- |
-| asset.dep_2025 | asset.listed_low, asset.screen | asset.screen |
-| asset.bonus_2025 | asset.bonus_mixed, asset.screen | asset.screen |
-| asset.s179_2025 | asset.screen | asset.screen |
-| asset.mq_q4 | asset.screen | asset.screen |
-| asset.mq_total | asset.screen | asset.screen |
-| asset.cost179 | asset.screen | asset.screen |
-| asset.dep_prior | asset.screen | asset.screen |
-| (d) | asset.screen | asset.screen |
-| (c) | asset.screen | asset.screen |
-| 14 | asset.bonus_mixed, asset.screen | asset.screen |
-| 25 | asset.bonus_mixed, asset.screen | asset.screen |
-| 26(i) | asset.screen | asset.screen |
-| 19(c) | asset.screen | asset.screen |
-| 19(g) | asset.screen | asset.screen |
-| 17 | asset.screen | asset.screen |
-| 26(h) | asset.listed_low, asset.screen | asset.screen |
+| asset.dep_2025 | asset.h_bonus_mixed, asset.h_listed_low | asset.h_bonus_mixed, asset.h_listed_low |
+| asset.bonus_2025 | asset.h_bonus_mixed | asset.h_bonus_mixed |
+| 14 | asset.h_bonus_mixed | asset.h_bonus_mixed |
+| 25 | asset.h_bonus_mixed | asset.h_bonus_mixed |
+| 19(c) | asset.h_bonus_mixed | asset.h_bonus_mixed |
+| 19(g) | asset.h_bonus_mixed | asset.h_bonus_mixed |
+| 26(h) | asset.h_bonus_mixed, asset.h_listed_low | asset.h_bonus_mixed, asset.h_listed_low |
 
 ## Raw second transcription
 
@@ -324,387 +352,290 @@ lines:
     printed: "(d)"
     label: "Recovery period"
     type: Enum(macrs_period)
-    expr: {op: keyed_lookup, table: asset_class_period, keys: [asset.class]}
-    refuses: [asset.screen]
-    note: "The archived pages identify the recovery period through Pub. 946 Appendix B; the complete class-to-period table is not reproduced here, so the pinned table asset_class_period is used."
+    expr: {op: keyed_lookup, table: class_lives, keys: [asset.class]}
   - id: asset.basis
     printed: "(c)"
-    label: "Cost or other basis (business/investment use only)"
+    label: "Basis for depreciation (business/investment use only), before the section 179 expense deduction and special depreciation allowance"
     type: NonNegDollars
-    expr: {op: prorate, amount: asset.pct_c, part: asset.cent, whole: asset.hundred, places: 2}
-    refuses: [asset.screen]
-    note: "Business basis is cost times business-use percentage, rounded to the cent."
+    expr: {op: prorate, amount: asset.cost, part: asset.h_pct_cents, whole: {const: 100}, places: 2}
   - id: asset.bonus
     printed: "14"
-    label: "Special depreciation allowance"
+    label: "Special depreciation allowance for qualified property placed in service during the tax year"
     type: NonNegDollars
-    expr: {op: choose, alternatives: [{guard: asset.not_listed_2025, then: asset.bonus_fullcase}, {guard: {op: test, eq: [asset.not_listed_2025, {const: false}]}, then: asset.zero}]}
-    refuses: [asset.screen, asset.bonus_mixed]
+    expr: {op: choose, alternatives: [{guard: {op: test, all: [{op: test, eq: [asset.is2025, {const: true}]}, {op: test, eq: [asset.listed, {const: false}]}]}, then: asset.h_bonus_current}, {guard: {op: test, not: {op: test, all: [{op: test, eq: [asset.is2025, {const: true}]}, {op: test, eq: [asset.listed, {const: false}]}]}}, then: asset.h_zero}]}
+    refuses: [asset.h_bonus_mixed]
   - id: asset.f25
     printed: "25"
-    label: "Special depreciation allowance for listed property"
+    label: "Special depreciation allowance for qualified listed property placed in service during the tax year"
     type: NonNegDollars
-    expr: {op: choose, alternatives: [{guard: asset.listed_over_2025, then: asset.bonus_fullcase}, {guard: {op: test, eq: [asset.listed_over_2025, {const: false}]}, then: asset.zero}]}
-    refuses: [asset.screen, asset.bonus_mixed]
+    expr: {op: choose, alternatives: [{guard: {op: test, all: [{op: test, eq: [asset.is2025, {const: true}]}, {op: test, eq: [asset.listed, {const: true}]}, asset.h_over_half]}, then: asset.h_bonus_current}, {guard: {op: test, not: {op: test, all: [{op: test, eq: [asset.is2025, {const: true}]}, {op: test, eq: [asset.listed, {const: true}]}, asset.h_over_half]}}, then: asset.h_zero}]}
+    refuses: [asset.h_bonus_mixed]
   - id: asset.f26i
     printed: "26(i)"
     label: "Elected section 179 cost for listed property"
     type: NonNegDollars
-    expr: {op: choose, alternatives: [{guard: asset.listed_over_2025, then: asset.s179}, {guard: {op: test, eq: [asset.listed_over_2025, {const: false}]}, then: asset.zero}]}
-    refuses: [asset.screen]
+    expr: {op: choose, alternatives: [{guard: {op: test, all: [{op: test, eq: [asset.is2025, {const: true}]}, {op: test, eq: [asset.listed, {const: true}]}, asset.h_over_half]}, then: asset.s179}, {guard: {op: test, not: {op: test, all: [{op: test, eq: [asset.is2025, {const: true}]}, {op: test, eq: [asset.listed, {const: true}]}, asset.h_over_half]}}, then: asset.h_zero}]}
   - id: asset.col19c
     printed: "19(c)"
-    label: "Basis for depreciation"
+    label: "Basis for depreciation (business/investment use only)"
     type: NonNegDollars
-    expr: {op: choose, alternatives: [{guard: asset.on_19, then: asset.ub}, {guard: {op: test, eq: [asset.on_19, {const: false}]}, then: asset.zero}]}
-    refuses: [asset.screen]
+    expr: {op: choose, alternatives: [{guard: asset.on_19, then: asset.h_basis_after_bonus}, {guard: {op: test, eq: [asset.on_19, {const: false}]}, then: asset.h_zero}]}
   - id: asset.macrs2025
     printed: "19(g)"
-    label: "MACRS depreciation for 2025 property"
+    label: "Depreciation deduction for assets placed in service in 2025 under MACRS"
     type: NonNegDollars
-    expr: {op: choose, alternatives: [{guard: {op: test, all: [asset.on_19, asset.mq_applies]}, then: asset.macrs_mq}, {guard: {op: test, all: [asset.on_19, {op: test, eq: [asset.mq_applies, {const: false}]}]}, then: asset.macrs_hy}, {guard: {op: test, eq: [asset.on_19, {const: false}]}, then: asset.zero}]}
-    refuses: [asset.screen]
+    expr: {op: choose, alternatives: [{guard: asset.on_19, then: asset.h_current_dep}, {guard: {op: test, eq: [asset.on_19, {const: false}]}, then: asset.h_zero}]}
   - id: asset.macrs_prior
     printed: "17"
-    label: "MACRS depreciation for prior-year property"
+    label: "Depreciation for tangible property placed in service in prior years and depreciated under MACRS"
     type: NonNegDollars
-    expr: {op: choose, alternatives: [{guard: asset.on_17_live, then: asset.macrs_prior_live}, {guard: asset.on_17_done, then: asset.zero}, {guard: asset.not_on_17, then: asset.zero}]}
-    refuses: [asset.screen]
+    expr: {op: choose, alternatives: [{guard: {op: test, all: [asset.on_17, asset.h_done_false]}, then: asset.macrs_prior_live}, {guard: {op: test, not: {op: test, all: [asset.on_17, asset.h_done_false]}}, then: asset.h_zero}]}
   - id: asset.dep_listed
     printed: "26(h)"
-    label: "Depreciation for listed property"
+    label: "Depreciation deduction for listed property used more than 50% in a qualified business use"
     type: NonNegDollars
-    expr: {op: choose, alternatives: [{guard: asset.not_listed, then: asset.zero}, {guard: asset.listed_low, then: asset.zero}, {guard: asset.listed_over_2025_mq, then: asset.dep_listed_2025_mq}, {guard: asset.listed_over_2025_hy, then: asset.dep_listed_2025_hy}, {guard: asset.prior_done, then: asset.zero}, {guard: asset.prior_live, then: asset.dep_listed_prior_live}]}
-    refuses: [asset.screen, asset.listed_low]
-    note: "Only line 26 (listed property used more than 50% in qualified business use) is computed; line 27 for 50% or less is outside this slice."
-  - id: asset.zero
+    expr: {op: choose, alternatives: [{guard: {op: test, eq: [asset.listed, {const: false}]}, then: asset.h_zero}, {guard: {op: test, all: [{op: test, eq: [asset.listed, {const: true}]}, {op: test, eq: [asset.is2025, {const: true}]}]}, then: asset.h_current_dep}, {guard: {op: test, all: [{op: test, eq: [asset.listed, {const: true}]}, asset.h_not_2025, asset.h_done_false]}, then: asset.macrs_prior_live}, {guard: {op: test, all: [{op: test, eq: [asset.listed, {const: true}]}, asset.h_not_2025, {op: test, eq: [asset.done, {const: true}]}]}, then: asset.h_zero}]}
+    refuses: [asset.h_listed_low]
+  - id: asset.dep_2025
     printed: "(helper)"
-    label: "Zero"
+    label: "Total MACRS depreciation for 2025 on this property"
     type: NonNegDollars
-    expr: {op: param, ref: sales.zero}
-  - id: asset.cent
+    expr: {op: sum, of: [asset.macrs2025, asset.macrs_prior, asset.dep_listed]}
+  - id: asset.bonus_2025
+    printed: "(helper)"
+    label: "Total special depreciation allowance for 2025 on this property"
+    type: NonNegDollars
+    expr: {op: sum, of: [asset.bonus, asset.f25]}
+  - id: asset.s179_2025
+    printed: "(helper)"
+    label: "Section 179 expense deduction for 2025 on this property"
+    type: NonNegDollars
+    expr: {op: choose, alternatives: [{guard: asset.h_179_ok, then: asset.s179}, {guard: {op: test, eq: [asset.h_179_ok, {const: false}]}, then: asset.h_zero}]}
+  - id: asset.mq_q4
+    printed: "(helper)"
+    label: "Depreciable basis placed in service in the last 3 months of 2025 for the mid-quarter convention test"
+    type: NonNegDollars
+    expr: {op: choose, alternatives: [{guard: {op: test, all: [{op: test, eq: [asset.is2025, {const: true}]}, asset.h_quarter_q4]}, then: asset.mqbase}, {guard: {op: test, not: {op: test, all: [{op: test, eq: [asset.is2025, {const: true}]}, asset.h_quarter_q4]}}, then: asset.h_zero}]}
+  - id: asset.mq_total
+    printed: "(helper)"
+    label: "Total depreciable basis placed in service in 2025 for the mid-quarter convention test"
+    type: NonNegDollars
+    expr: {op: copy, from: asset.mqbase}
+  - id: asset.cost179
+    printed: "(helper)"
+    label: "Cost of section 179 property placed in service in 2025"
+    type: NonNegDollars
+    expr: {op: choose, alternatives: [{guard: asset.h_179_ok, then: asset.basis}, {guard: {op: test, eq: [asset.h_179_ok, {const: false}]}, then: asset.h_zero}]}
+  - id: asset.dep_prior
+    printed: "(helper)"
+    label: "Depreciation allowed or allowable for this property before 2025"
+    type: NonNegDollars
+    expr: {op: opaque, name: "macrs_accumulated_depreciation_before_2025"}
+    note: "The archived text does not give a single printed prior-years depreciation line. The amount is the sum of the MACRS table rates for the earlier recovery years applied to the property's unadjusted basis, together with any prior section 179 and special depreciation allowance; the model has no loop over prior years, so this is represented as an opaque helper."
+  - id: asset.h_one_cent
     printed: "(helper)"
     label: "One cent"
     type: NonNegDollars
     expr: {op: param, ref: sc.one_cent}
-  - id: asset.hundred
+  - id: asset.h_zero
     printed: "(helper)"
-    label: "One hundred cents"
+    label: "Zero"
     type: NonNegDollars
-    expr: {op: param, ref: sc.hundred_cents}
-  - id: asset.pct_c
+    expr: {op: param, ref: sales.zero}
+  - id: asset.h_pct_cents
     printed: "(helper)"
-    label: "Cost times business-use percentage"
+    label: "Business use percentage expressed in cents"
     type: NonNegDollars
-    expr: {op: multiply_count, amount: asset.cost, count: asset.pct}
-  - id: asset.pct_bad
+    expr: {op: multiply_count, amount: asset.h_one_cent, count: asset.pct}
+  - id: asset.is2025
     printed: "(helper)"
-    label: "Business-use percentage outside 1 to 100"
+    label: "Property placed in service in 2025"
     type: Bool
-    expr: {op: test, any: [{op: test, lt: [asset.pct, {const: 1}]}, {op: test, gt: [asset.pct, {const: 100}]}]}
-  - id: asset.half
+    expr: {op: test, eq: [asset.placed, {const: "y2025"}]}
+  - id: asset.h_not_2025
     printed: "(helper)"
-    label: "Half of cost"
-    type: NonNegDollars
-    expr: {op: multiply_rate, amount: asset.cost, rate: {param: sc.meals_rate}}
-  - id: asset.over_half
-    printed: "(helper)"
-    label: "Business use more than 50%"
+    label: "Property not placed in service in 2025"
     type: Bool
-    expr: {op: test, gt: [asset.basis, asset.half]}
-  - id: asset.listed_low
+    expr: {op: test, eq: [asset.is2025, {const: false}]}
+  - id: asset.h_listed_true
     printed: "(helper)"
-    label: "Listed property used 50% or less"
+    label: "Listed property"
     type: Bool
-    expr: {op: test, all: [asset.listed, {op: test, eq: [asset.over_half, {const: false}]}]}
-  - id: asset.not_listed
+    expr: {op: test, eq: [asset.listed, {const: true}]}
+  - id: asset.h_listed_false
     printed: "(helper)"
     label: "Not listed property"
     type: Bool
     expr: {op: test, eq: [asset.listed, {const: false}]}
-  - id: asset.is2025
+  - id: asset.h_over_half
     printed: "(helper)"
-    label: "Placed in service in 2025"
+    label: "Business use more than 50%"
     type: Bool
-    expr: {op: test, eq: [asset.placed, {const: "y2025"}]}
-  - id: asset.is_q4
+    expr: {op: test, gt: [asset.pct, {const: 50, type: Count}]}
+  - id: asset.h_listed_low
+    printed: "(helper)"
+    label: "Listed property used 50% or less in the business"
+    type: Bool
+    expr: {op: test, all: [asset.h_listed_true, {op: test, le: [asset.pct, {const: 50, type: Count}]}]}
+  - id: asset.h_not_listed_low
+    printed: "(helper)"
+    label: "Not listed property used 50% or less in the business"
+    type: Bool
+    expr: {op: test, eq: [asset.h_listed_low, {const: false}]}
+  - id: asset.h_179_ok
+    printed: "(helper)"
+    label: "Property eligible for the section 179 election in 2025"
+    type: Bool
+    expr: {op: test, all: [asset.is2025, asset.h_not_listed_low]}
+  - id: asset.h_bonus_mixed
+    printed: "(helper)"
+    label: "Special depreciation allowance choice is not the same for the recovery period class"
+    type: Bool
+    expr: {op: test, eq: [asset.bonus_same, {const: false}]}
+  - id: asset.on_19
+    printed: "(helper)"
+    label: "Property reported in line 19"
+    type: Bool
+    expr: {op: test, all: [asset.is2025, asset.h_listed_false]}
+  - id: asset.on_17
+    printed: "(helper)"
+    label: "Property reported in line 17"
+    type: Bool
+    expr: {op: test, all: [asset.h_not_2025, asset.h_listed_false]}
+  - id: asset.h_quarter_q4
     printed: "(helper)"
     label: "Placed in service in the fourth quarter"
     type: Bool
     expr: {op: test, eq: [asset.quarter, {const: "q4"}]}
-  - id: asset.on_19
-    printed: "(helper)"
-    label: "Line 19 applies"
-    type: Bool
-    expr: {op: test, all: [asset.is2025, asset.not_listed]}
-  - id: asset.on_17
-    printed: "(helper)"
-    label: "Line 17 applies"
-    type: Bool
-    expr: {op: test, all: [{op: test, eq: [asset.is2025, {const: false}]}, asset.not_listed]}
-  - id: asset.listed_over
-    printed: "(helper)"
-    label: "Listed property used more than 50%"
-    type: Bool
-    expr: {op: test, all: [asset.listed, asset.over_half]}
-  - id: asset.on_26_2025
-    printed: "(helper)"
-    label: "Line 26 applies for 2025 listed property"
-    type: Bool
-    expr: {op: test, all: [asset.is2025, asset.listed_over]}
-  - id: asset.year
-    printed: "(helper)"
-    label: "Current year in the recovery period"
-    type: Count
-    expr: {op: keyed_lookup, table: placed_year_count, keys: [asset.placed]}
-  - id: asset.last
-    printed: "(helper)"
-    label: "Recovery period in years"
-    type: Count
-    expr: {op: keyed_lookup, table: macrs_life, keys: [asset.period]}
-  - id: asset.done
-    printed: "(helper)"
-    label: "Recovery period has ended"
-    type: Bool
-    expr: {op: test, gt: [asset.year, asset.last]}
   - id: asset.qconv
     printed: "(helper)"
-    label: "Mid-quarter convention from quarter placed in service"
+    label: "Mid-quarter convention for the quarter placed in service"
     type: Enum(macrs_convention)
     expr: {op: keyed_lookup, table: quarter_convention, keys: [asset.quarter]}
-  - id: asset.s179_bad
-    printed: "(helper)"
-    label: "Section 179 election exceeds business basis"
-    type: Bool
-    expr: {op: test, gt: [asset.s179, asset.basis]}
-  - id: asset.after179
-    printed: "(helper)"
-    label: "Basis after section 179"
-    type: NonNegDollars
-    expr: {op: subtract_floor0, from: asset.basis, take: asset.s179}
-  - id: asset.bonus_mixed
-    printed: "(helper)"
-    label: "Mixed special allowance choices in the recovery-period class"
-    type: Bool
-    expr: {op: test, all: [{op: test, ne: [asset.bonus_choice, {const: "none"}]}, {op: test, eq: [asset.bonus_same, {const: false}]}]}
-  - id: asset.rate40
-    printed: "(helper)"
-    label: "40% special allowance rate"
-    type: Rate
-    expr: {op: param, ref: sc.bonus_rate_40}
-  - id: asset.bonus_full
-    printed: "(helper)"
-    label: "100% special allowance"
-    type: NonNegDollars
-    expr: {op: copy, from: asset.after179}
-  - id: asset.bonus_forty
-    printed: "(helper)"
-    label: "40% special allowance"
-    type: NonNegDollars
-    expr: {op: multiply_rate, amount: asset.after179, rate: asset.rate40}
-  - id: asset.bonus_fullcase
-    printed: "(helper)"
-    label: "Special allowance amount"
-    type: NonNegDollars
-    expr: {op: choose, alternatives: [{guard: {op: test, eq: [asset.bonus_choice, {const: "none"}]}, then: asset.zero}, {guard: {op: test, all: [asset.after_jan19, {op: test, eq: [asset.bonus_choice, {const: "full"}]}]}, then: asset.bonus_full}, {guard: {op: test, all: [asset.after_jan19, {op: test, eq: [asset.bonus_choice, {const: "forty"}]}]}, then: asset.bonus_forty}, {guard: {op: test, all: [{op: test, eq: [asset.after_jan19, {const: false}]}, {op: test, ne: [asset.bonus_choice, {const: "none"}]}]}, then: asset.bonus_forty}]}
-    note: "For property acquired before January 20, 2025, the archived text limits the allowance to 40% (or 60% for long-production/aircraft, which is outside this slice); this reads a 'full' choice before that date as the 40% allowance."
-  - id: asset.ub
-    printed: "(helper)"
-    label: "Unrecovered basis for regular depreciation"
-    type: NonNegDollars
-    expr: {op: subtract_floor0, from: asset.after179, take: asset.bonus_fullcase}
-  - id: asset.hy
+  - id: asset.h_hy
     printed: "(helper)"
     label: "Half-year convention"
     type: Enum(macrs_convention)
     expr: {op: param, ref: sc.conv_hy}
-  - id: asset.rate_hy
+  - id: asset.h_year1
     printed: "(helper)"
-    label: "Half-year MACRS rate"
-    type: Rate
-    expr: {op: keyed_lookup, table: macrs_rate, keys: [asset.period, asset.hy, asset.year]}
-  - id: asset.rate_mq
+    label: "First recovery year"
+    type: Count
+    expr: {op: param, ref: sc.year1}
+  - id: asset.h_after_s179
     printed: "(helper)"
-    label: "Mid-quarter MACRS rate"
-    type: Rate
-    expr: {op: keyed_lookup, table: macrs_rate, keys: [asset.period, asset.qconv, asset.year]}
-  - id: asset.macrs_hy
-    printed: "(helper)"
-    label: "MACRS depreciation using half-year convention"
+    label: "Basis after the 2025 section 179 expense deduction"
     type: NonNegDollars
-    expr: {op: multiply_rate, amount: asset.col19c, rate: asset.rate_hy}
-  - id: asset.macrs_mq
+    expr: {op: subtract_floor0, from: asset.basis, take: asset.s179_2025}
+  - id: asset.h_after_prior179
     printed: "(helper)"
-    label: "MACRS depreciation using mid-quarter convention"
+    label: "Basis after the prior-year section 179 expense deduction"
     type: NonNegDollars
-    expr: {op: multiply_rate, amount: asset.col19c, rate: asset.rate_mq}
+    expr: {op: subtract_floor0, from: asset.basis, take: asset.prior_179}
+  - id: asset.h_basis_prior
+    printed: "(helper)"
+    label: "Basis after prior-year section 179 and special depreciation allowance"
+    type: NonNegDollars
+    expr: {op: subtract_floor0, from: asset.h_after_prior179, take: asset.prior_bonus}
+  - id: asset.h_bonus_total
+    printed: "(helper)"
+    label: "Special depreciation allowance included in the current-year basis"
+    type: NonNegDollars
+    expr: {op: sum, of: [asset.bonus, asset.f25]}
+  - id: asset.h_basis_after_bonus
+    printed: "(helper)"
+    label: "Basis after the section 179 expense deduction and special depreciation allowance"
+    type: NonNegDollars
+    expr: {op: subtract_floor0, from: asset.h_after_s179, take: asset.h_bonus_total}
+  - id: asset.h_bonus_full
+    printed: "(helper)"
+    label: "Special depreciation allowance at 100%"
+    type: NonNegDollars
+    expr: {op: copy, from: asset.h_after_s179}
+  - id: asset.h_bonus_forty
+    printed: "(helper)"
+    label: "Special depreciation allowance at 40%"
+    type: NonNegDollars
+    expr: {op: multiply_rate, amount: asset.h_after_s179, rate: {param: sc.bonus_rate_40}}
+  - id: asset.h_bonus_fullcase
+    printed: "(helper)"
+    label: "Special depreciation allowance for a full election"
+    type: NonNegDollars
+    expr: {op: choose, alternatives: [{guard: asset.after_jan19, then: asset.h_bonus_full}, {guard: {op: test, eq: [asset.after_jan19, {const: false}]}, then: asset.h_bonus_forty}]}
+    note: "The archived text allows 100% only for property acquired after January 19, 2025; for an earlier acquisition in the applicable 2017-2025 window the allowance is 40%, so the full choice resolves to 40% when after_jan19 is false."
+  - id: asset.h_bonus_current
+    printed: "(helper)"
+    label: "Current-year special depreciation allowance before line placement"
+    type: NonNegDollars
+    expr: {op: choose, alternatives: [{guard: {op: test, eq: [asset.bonus_choice, {const: "full"}]}, then: asset.h_bonus_fullcase}, {guard: {op: test, eq: [asset.bonus_choice, {const: "forty"}]}, then: asset.h_bonus_forty}, {guard: {op: test, eq: [asset.bonus_choice, {const: "none"}]}, then: asset.h_zero}]}
   - id: asset.mqbase
     printed: "(helper)"
-    label: "Basis for mid-quarter test"
+    label: "Depreciable basis for the mid-quarter convention test"
     type: NonNegDollars
-    expr: {op: copy, from: asset.after179}
-  - id: asset.mq_q4_2025
+    expr: {op: choose, alternatives: [{guard: asset.is2025, then: asset.h_after_s179}, {guard: {op: test, eq: [asset.is2025, {const: false}]}, then: asset.h_zero}]}
+  - id: asset.h_mq_threshold
     printed: "(helper)"
-    label: "Fourth-quarter basis placed in service in 2025"
+    label: "40% of the total depreciable basis placed in service in 2025"
     type: NonNegDollars
-    expr: {op: choose, alternatives: [{guard: {op: test, all: [asset.is2025, asset.is_q4]}, then: asset.mqbase}, {guard: {op: test, not: {op: test, all: [asset.is2025, asset.is_q4]}}, then: asset.zero}]}
-  - id: asset.mq_total_2025
-    printed: "(helper)"
-    label: "Total basis placed in service in 2025"
-    type: NonNegDollars
-    expr: {op: choose, alternatives: [{guard: asset.is2025, then: asset.mqbase}, {guard: {op: test, eq: [asset.is2025, {const: false}]}, then: asset.zero}]}
-  - id: asset.mq_q4_all
-    printed: "(helper)"
-    label: "All fourth-quarter bases in this business"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: asset, field: asset.mq_q4}
-  - id: asset.mq_total_all
-    printed: "(helper)"
-    label: "All 2025 bases in this business"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: asset, field: asset.mq_total}
-  - id: asset.mq_threshold
-    printed: "(helper)"
-    label: "40% of all 2025 bases"
-    type: NonNegDollars
-    expr: {op: multiply_rate, amount: asset.mq_total_all, rate: {param: sc.bonus_rate_40}}
-  - id: asset.mq_applies
+    expr: {op: multiply_rate, amount: sc.mq_total, rate: {param: sc.bonus_rate_40}}
+  - id: asset.h_midquarter
     printed: "(helper)"
     label: "Mid-quarter convention applies"
     type: Bool
-    expr: {op: test, gt: [asset.mq_q4_all, asset.mq_threshold]}
-  - id: asset.ub_prior_a
+    expr: {op: test, gt: [sc.mq_q4, asset.h_mq_threshold]}
+  - id: asset.rate_hy
     printed: "(helper)"
-    label: "Prior-year basis after prior section 179"
-    type: NonNegDollars
-    expr: {op: subtract_floor0, from: asset.basis, take: asset.prior_179}
-  - id: asset.ub_prior
+    label: "MACRS rate using the half-year convention for the first recovery year"
+    type: Rate
+    expr: {op: keyed_lookup, table: macrs_gds, keys: [asset.period, asset.h_hy, asset.h_year1]}
+  - id: asset.rate_mq
     printed: "(helper)"
-    label: "Prior-year basis after prior section 179 and bonus"
+    label: "MACRS rate using the mid-quarter convention for the first recovery year"
+    type: Rate
+    expr: {op: keyed_lookup, table: macrs_gds, keys: [asset.period, asset.qconv, asset.h_year1]}
+  - id: asset.h_current_hy
+    printed: "(helper)"
+    label: "Current-year MACRS depreciation using the half-year convention"
     type: NonNegDollars
-    expr: {op: subtract_floor0, from: asset.ub_prior_a, take: asset.prior_bonus}
+    expr: {op: multiply_rate, amount: asset.h_basis_after_bonus, rate: asset.rate_hy}
+  - id: asset.h_current_mq
+    printed: "(helper)"
+    label: "Current-year MACRS depreciation using the mid-quarter convention"
+    type: NonNegDollars
+    expr: {op: multiply_rate, amount: asset.h_basis_after_bonus, rate: asset.rate_mq}
+  - id: asset.h_current_dep
+    printed: "(helper)"
+    label: "Current-year MACRS depreciation under the applicable convention"
+    type: NonNegDollars
+    expr: {op: choose, alternatives: [{guard: asset.h_midquarter, then: asset.h_current_mq}, {guard: {op: test, eq: [asset.h_midquarter, {const: false}]}, then: asset.h_current_hy}]}
+  - id: asset.year
+    printed: "(helper)"
+    label: "Recovery year in 2025"
+    type: Count
+    expr: {op: keyed_lookup, table: recovery_year, keys: [asset.placed]}
+  - id: asset.last
+    printed: "(helper)"
+    label: "Last year of recovery"
+    type: Count
+    expr: {op: keyed_lookup, table: macrs_last_year, keys: [asset.period]}
+  - id: asset.done
+    printed: "(helper)"
+    label: "Recovery period ended before 2025"
+    type: Bool
+    expr: {op: test, gt: [asset.year, asset.last]}
+  - id: asset.h_done_false
+    printed: "(helper)"
+    label: "Recovery period has not ended before 2025"
+    type: Bool
+    expr: {op: test, eq: [asset.done, {const: false}]}
   - id: asset.rate_prior
     printed: "(helper)"
-    label: "Prior-year property MACRS rate"
+    label: "MACRS rate for a prior-year asset in 2025"
     type: Rate
-    expr: {op: keyed_lookup, table: macrs_rate, keys: [asset.period, asset.prior_conv, asset.year]}
+    expr: {op: keyed_lookup, table: macrs_gds, keys: [asset.period, asset.prior_conv, asset.year]}
   - id: asset.macrs_prior_live
     printed: "(helper)"
-    label: "Live prior-year MACRS depreciation"
+    label: "Current-year MACRS depreciation for a prior-year asset"
     type: NonNegDollars
-    expr: {op: multiply_rate, amount: asset.ub_prior, rate: asset.rate_prior}
-  - id: asset.on_17_done
-    printed: "(helper)"
-    label: "Prior-year property and recovery period ended"
-    type: Bool
-    expr: {op: test, all: [asset.on_17, asset.done]}
-  - id: asset.on_17_live
-    printed: "(helper)"
-    label: "Prior-year property and recovery period not ended"
-    type: Bool
-    expr: {op: test, all: [asset.on_17, {op: test, eq: [asset.done, {const: false}]}]}
-  - id: asset.not_on_17
-    printed: "(helper)"
-    label: "Line 17 does not apply"
-    type: Bool
-    expr: {op: test, eq: [asset.on_17, {const: false}]}
-  - id: asset.dep_listed_2025_mq
-    printed: "(helper)"
-    label: "Listed property 2025 depreciation, mid-quarter"
-    type: NonNegDollars
-    expr: {op: multiply_rate, amount: asset.ub, rate: asset.rate_mq}
-  - id: asset.dep_listed_2025_hy
-    printed: "(helper)"
-    label: "Listed property 2025 depreciation, half-year"
-    type: NonNegDollars
-    expr: {op: multiply_rate, amount: asset.ub, rate: asset.rate_hy}
-  - id: asset.dep_listed_prior_live
-    printed: "(helper)"
-    label: "Listed property prior-year depreciation"
-    type: NonNegDollars
-    expr: {op: multiply_rate, amount: asset.ub_prior, rate: asset.rate_prior}
-  - id: asset.listed_over_2025
-    printed: "(helper)"
-    label: "Listed property used more than 50% and placed in 2025"
-    type: Bool
-    expr: {op: test, all: [asset.listed_over, asset.is2025]}
-  - id: asset.listed_over_prior
-    printed: "(helper)"
-    label: "Listed property used more than 50% and placed before 2025"
-    type: Bool
-    expr: {op: test, all: [asset.listed_over, {op: test, eq: [asset.is2025, {const: false}]}]}
-  - id: asset.listed_over_2025_mq
-    printed: "(helper)"
-    label: "Listed property 2025 and mid-quarter"
-    type: Bool
-    expr: {op: test, all: [asset.listed_over_2025, asset.mq_applies]}
-  - id: asset.listed_over_2025_hy
-    printed: "(helper)"
-    label: "Listed property 2025 and half-year"
-    type: Bool
-    expr: {op: test, all: [asset.listed_over_2025, {op: test, eq: [asset.mq_applies, {const: false}]}]}
-  - id: asset.prior_done
-    printed: "(helper)"
-    label: "Listed prior-year property with recovery period ended"
-    type: Bool
-    expr: {op: test, all: [asset.listed_over_prior, asset.done]}
-  - id: asset.prior_live
-    printed: "(helper)"
-    label: "Listed prior-year property with recovery period not ended"
-    type: Bool
-    expr: {op: test, all: [asset.listed_over_prior, {op: test, eq: [asset.done, {const: false}]}]}
-  - id: asset.not_listed_2025
-    printed: "(helper)"
-    label: "Not listed property placed in 2025"
-    type: Bool
-    expr: {op: test, all: [asset.not_listed, asset.is2025]}
-  - id: asset.not_listed_prior
-    printed: "(helper)"
-    label: "Not listed property placed before 2025"
-    type: Bool
-    expr: {op: test, all: [asset.not_listed, {op: test, eq: [asset.is2025, {const: false}]}]}
-  - id: asset.eligible179_2025
-    printed: "(helper)"
-    label: "Section 179 eligible cost for 2025"
-    type: Bool
-    expr: {op: test, any: [asset.listed_over_2025, asset.not_listed_2025]}
-  - id: asset.dep_2025
-    printed: "(helper)"
-    label: "Current-year depreciation for this property"
-    type: NonNegDollars
-    expr: {op: choose, alternatives: [{guard: asset.listed, then: asset.dep_listed}, {guard: asset.not_listed_2025, then: asset.macrs2025}, {guard: asset.not_listed_prior, then: asset.macrs_prior}]}
-    refuses: [asset.screen]
-  - id: asset.bonus_2025
-    printed: "(helper)"
-    label: "Special depreciation allowance for 2025"
-    type: NonNegDollars
-    expr: {op: choose, alternatives: [{guard: asset.listed, then: asset.f25}, {guard: asset.not_listed, then: asset.bonus}]}
-    refuses: [asset.screen, asset.bonus_mixed]
-  - id: asset.s179_2025
-    printed: "(helper)"
-    label: "Section 179 amount for 2025"
-    type: NonNegDollars
-    expr: {op: choose, alternatives: [{guard: asset.listed, then: asset.f26i}, {guard: asset.not_listed_2025, then: asset.s179}, {guard: asset.not_listed_prior, then: asset.zero}]}
-    refuses: [asset.screen]
-  - id: asset.mq_q4
-    printed: "(helper)"
-    label: "Fourth-quarter basis for mid-quarter test"
-    type: NonNegDollars
-    expr: {op: copy, from: asset.mq_q4_2025}
-  - id: asset.mq_total
-    printed: "(helper)"
-    label: "Total basis for mid-quarter test"
-    type: NonNegDollars
-    expr: {op: copy, from: asset.mq_total_2025}
-  - id: asset.cost179
-    printed: "(helper)"
-    label: "Section 179 eligible cost"
-    type: NonNegDollars
-    expr: {op: choose, alternatives: [{guard: asset.eligible179_2025, then: asset.basis}, {guard: {op: test, eq: [asset.eligible179_2025, {const: false}]}, then: asset.zero}]}
-  - id: asset.dep_prior
-    printed: "(helper)"
-    label: "Depreciation for prior-year property"
-    type: NonNegDollars
-    expr: {op: copy, from: asset.macrs_prior}
-    note: "The archived pages do not provide an accumulated prior-year depreciation figure for a single asset; this helper is the line 17 current-year amount for prior-year non-listed property."
+    expr: {op: multiply_rate, amount: asset.h_basis_prior, rate: asset.rate_prior}
 ```
