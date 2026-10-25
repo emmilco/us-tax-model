@@ -438,6 +438,15 @@ class IndependentPrompt(unittest.TestCase):
 
 
 class DefinitionInterfaces(unittest.TestCase):
+    def test_transcription_unit_audit_hold_does_not_block_render_qualification(self):
+        # Both dcprov reviews agree; a known comparer defect must still prevent promotion.
+        transcription = C.compare("transcription", "dcprov", "deepseek")["quality"]
+        self.assertEqual(transcription["state"], "pending")
+        self.assertTrue(any("BUG-0129" in b for b in transcription["blockers"]))
+        rendering = C.compare("render", "dcprov", "deepseek")["quality"]
+        self.assertEqual(rendering["state"], "pass")
+        self.assertFalse(any("BUG-0129" in b for b in rendering["blockers"]))
+
     def test_namespace_change_preserves_computation(self):
         project = [{"id": "line2"}, {"id": "line13"}]
         second = [{"id": "se.line13", "printed": "13", "expr": {"op": "multiply_rate", "amount": "se.line2", "rate": {"param": "se.half"}}}]

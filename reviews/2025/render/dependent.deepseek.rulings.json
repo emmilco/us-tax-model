@@ -26,6 +26,13 @@
    "restated": "Enter the amount from helper \"Qualified expenses incurred and paid in 2025 for this person's care\".",
    "model": "The IRS instructions for column (d) say: 'If you completed Part III, don't include in column (d) any benefits shown on line 28,' but the helper includes expenses paid with dependent care benefits and says Form 2441 subtracts them later, so the amount entered on line 2(d) can be too high.",
    "ruling": "Ruling: ambiguity; existing owner ruling amb.2025.dc_line30, Stage 15 decision 6 (T-048). Archived f2441 (2025) p. 2 line 30 and i2441 p. 3 Column (d) request excluding benefits shown on line 28. The project deliberately presents each person's gross expenses and subtracts the excluded benefits once in the aggregate f2441.line30; the register records the owner's choice because the sources give no allocation rule among persons. This is an acknowledged departure in per-person display under that recorded ruling, not model error and not a claim that literal column (d) wording matches. Retain the ambiguity reference and the objection."
+  },
+  {
+   "printed": "2(d)",
+   "restated": "Enter the amount from helper \"Qualified expenses incurred and paid in 2025 for this person's care\".",
+   "model": "The helper includes expenses paid with dependent care benefits and enters that gross helper amount on line 2(d), but the Form 2441 column (d) instruction says 'If you completed Part III, don't include in column (d) any benefits shown on line 28.'",
+   "ruling": "Ruling: ambiguity; existing owner ruling amb.2025.dc_line30 (Stage15 decision6), not a new approval. Archived f2441 (2025) p.2 Line30 directs exclusion of line28 benefits from column(d) and summation of the net expenses; the instructions do not prescribe their allocation among people. The recorded project choice keeps per-person expenses gross and subtracts total line28 once at f2441.line30, rather than allocating reimbursements to displayed columns. The reviewer correctly identifies the literal column difference. Retain the explicitly recorded interpretation and its limitation; do not claim identical column presentation or classify the objection as model error. The age-at-care change does not alter this separate choice.",
+   "context": "7250705aa9f9856f6371bf87d452015c3b13efe01f0e0594e1ea4775eb2d8633"
   }
  ]
 }

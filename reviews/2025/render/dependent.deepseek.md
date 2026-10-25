@@ -4,17 +4,17 @@ The rendered English of every printed line of `Dependents — qualifying child a
 
 | field | value |
 | --- | --- |
-| date | 2026-10-23 |
+| date | 2026-10-24 |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
-| prompt sha256 | 881d5b4d4da4ee2129872c38908fa9d761d8a0ca8e9103fb0e27648fd74109fb |
+| prompt sha256 | 3824410913eb56590766735aa44258e74a6d1c58b259b6643666d8d383bd9627 |
 | prompt policy | render-source-comparison-v2 |
 | system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
-| reasoning effort | provider default |
+| reasoning effort | max |
 | output token budget | 65536 |
-| subject sha256 | 72877d49a2fa507fbeec2880ebde04dba1b4b451d76aee7a6d6e29f0dc8b8ec8 |
+| subject sha256 | c9fec7dae93b06d524dc138567d4a43865a0fb97f675afaa569cd93bf12d1984 |
 | lines judged | 2 |
-| match / mismatch / unclear / missing | 0 / 2 / 0 / 0 |
+| match / mismatch / unclear / missing | 1 / 1 / 0 / 0 |
 | verdicts for lines not in the form | none |
 
 ## Source pages given to the model
@@ -26,6 +26,7 @@ The rendered English of every printed line of `Dependents — qualifying child a
 | i2441 | 2025 | 1, 3, 4 | cited pages | 361baee739cc7cb7b6a84c7412397cfba901c1a3e5f225a8077cb8716917887e | 1, 3, 4 | 3046d96b0769e20213f700deb20a0de9edc6a4572eda61bd70f5c8c88bc912ee |
 | p503 | For use in preparing 2025 returns | 3, 10 | cited pages | a1ff9e2c3120455f6049fc50f0af8c5b8160302c198162dede66b2c8a5640607 | 3, 10 | 44d87f0ddfd4f953ea02cf5cc31e203e754c88aa74627dac5a551f46c6bf65b9 |
 | f2441 | 2025; created 2025-03-18 | 1, 2 | whole document | f39ca34d11c156e1ac55f4e2b5f16ef03c919773245cd7e50836e4c1555339c7 | - | 0e24fa891992674b84736c78565752c4a7d6f411fca4e24e5bb1307f239f60d6 |
+| f1040sa | 2025; created 2025-11-20 | 1 | whole document | 225b3ec4aa83600179f177807a26d8976343af5c2664b8eb6614fb6abcf8fadd | - | bfe55c01a948d1f96bacf363a8b5cbb1bf7273cbc8672598f1a66c31504a59fe |
 | p501 | 2025 returns; PDF created 2026-02-04 | 13, 19 | pages named by another document's citation | 6aca9108a08fb6d4725c630023df5e17084d92135c6607cd7c536e8e0c67f19b | 13, 19 | 2e0a281a7d3f73f1334d5f59a39a9fe4c393fd10dd6e6c6b1b8639c5ef038671 |
 
 ## Lines
@@ -35,18 +36,14 @@ Status: **MISMATCH**
 
 Restated: Enter the amount from helper "Qualified expenses incurred and paid in 2025 for this person's care".
 
-Model: The IRS column (d) instruction says “If you completed Part III, don't include in column (d) any benefits shown on line 28,” but the helper says to include expenses paid with dependent care benefits and only subtracts excluded benefits later.
+Model: The helper includes expenses paid with dependent care benefits and enters that gross helper amount on line 2(d), but the Form 2441 column (d) instruction says 'If you completed Part III, don't include in column (d) any benefits shown on line 28.'
 
-Ruling: ambiguity; existing owner ruling amb.2025.dc_line30, Stage 15 decision 6 (T-048). Archived f2441 (2025) p. 2 line 30 and i2441 p. 3 Column (d) request excluding benefits shown on line 28. The project deliberately presents each person's gross expenses and subtracts the excluded benefits once in the aggregate f2441.line30; the register records the owner's choice because the sources give no allocation rule among persons. This is an acknowledged departure in per-person display under that recorded ruling, not model error and not a claim that literal column (d) wording matches. Retain the ambiguity reference and the objection.
+Ruling: ambiguity; existing owner ruling amb.2025.dc_line30 (Stage15 decision6), not a new approval. Archived f2441 (2025) p.2 Line30 directs exclusion of line28 benefits from column(d) and summation of the net expenses; the instructions do not prescribe their allocation among people. The recorded project choice keeps per-person expenses gross and subtracts total line28 once at f2441.line30, rather than allocating reimbursements to displayed columns. The reviewer correctly identifies the literal column difference. Retain the explicitly recorded interpretation and its limitation; do not claim identical column presentation or classify the objection as model error. The age-at-care change does not alter this separate choice.
 
 ### 2(c) — Check here if the qualifying person was over age 12 and was disabled
-Status: **MISMATCH**
+Status: **MATCH**
 
-Restated: helper "A qualifying person for Form 2441 (you have care expenses, and this person is your dependent and either your qualifying child under 13 or not able to care for themselves and living with you for more than half the year)" = true and helper "Age at the end of 2025" ≥ 13 (dc.child_age) and helper "Physically or mentally not able to care for themselves?" = true
-
-Model: The IRS says to check column (c) if the qualifying person “was over age 12 at the time the care was provided and was disabled,” but the restatement tests “Age at the end of 2025” ≥ 13 instead of age at the time care was provided.
-
-Ruling: finding; BUG-0111 open. Archived i2441 (2025) p. 3 qualifying-person Column (c) tests age at the time of care, but dependent.dc_line2c tests age at year-end. Reproduced from stage15.f2441.s8 with age=13 and dc_under13=true: the checkbox is true although these same inputs can describe care entirely before the thirteenth birthday. No input distinguishes the two care timings. Displayed-checkbox defect, no tax amount change; form correction and paired regression fixtures remain pending, with no correctness assertion claimed.
+Model: The restatement tracks Form 2441 column (c): the qualifying person must be disabled and over age 12 when the care was provided, handled as age over 13 at year-end or age 13 with care while age 13+ and disabled.
 
 ## Raw response
 
@@ -54,8 +51,8 @@ Ruling: finding; BUG-0111 open. Archived i2441 (2025) p. 3 qualifying-person Col
 lines:
   - key: "2(d)"
     status: MISMATCH
-    reason: "The IRS column (d) instruction says “If you completed Part III, don't include in column (d) any benefits shown on line 28,” but the helper says to include expenses paid with dependent care benefits and only subtracts excluded benefits later."
+    reason: "The helper includes expenses paid with dependent care benefits and enters that gross helper amount on line 2(d), but the Form 2441 column (d) instruction says 'If you completed Part III, don't include in column (d) any benefits shown on line 28.'"
   - key: "2(c)"
-    status: MISMATCH
-    reason: "The IRS says to check column (c) if the qualifying person “was over age 12 at the time the care was provided and was disabled,” but the restatement tests “Age at the end of 2025” ≥ 13 instead of age at the time care was provided."
+    status: MATCH
+    reason: "The restatement tracks Form 2441 column (c): the qualifying person must be disabled and over age 12 when the care was provided, handled as age over 13 at year-end or age 13 with care while age 13+ and disabled."
 ```

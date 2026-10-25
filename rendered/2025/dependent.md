@@ -430,9 +430,16 @@
 - Expr: `{"from":"dependent.dc_paid","op":"copy"}`
 - Cite: [f2441] Form 2441 (2025), line 2, column (d) (2025; created 2025-03-18; sha256 6c3c2d19)
 
+## (helper) — `dependent.dc_over12_care`
+
+- **Authored helper label:** Care provided while this qualifying person was age 13 or older and disabled
+- **Encoded (Bool):** Input — Of the care expenses included for this person on Form 2441, line 2, was any care provided when the person was age 13 or older and physically or mentally unable to care for themselves? Answer only for the care included on this form, not their age at the end of the year.
+- Expr: `{"op":"input","source":"Of the care expenses included for this person on Form 2441, line 2, was any care provided when the person was age 13 or older and physically or mentally unable to care for themselves? Answer only for the care included on this form, not their age at the end of the year."}`
+- Cite: [i2441] p. 3, Column (c), "Check the box in column (c) if the qualifying person listed in column (a) was over age 12 at the time the care was provided and was disabled" (2025; sha256 86f0669e)
+
 ## 2(c) — `dependent.dc_line2c`
 
 - **Authored helper label:** Check here if the qualifying person was over age 12 and was disabled
-- **Encoded (Bool):** helper "A qualifying person for Form 2441 (you have care expenses, and this person is your dependent and either your qualifying child under 13 or not able to care for themselves and living with you for more than half the year)" = true and helper "Age at the end of 2025" ≥ 13 (dc.child_age) and helper "Physically or mentally not able to care for themselves?" = true
-- Expr: `{"all":[{"eq":["dependent.dc_qp",{"const":true}],"op":"test"},{"ge":["dependent.age",{"param":"dc.child_age"}],"op":"test"},{"eq":["dependent.dc_incapable",{"const":true}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** helper "A qualifying person for Form 2441 (you have care expenses, and this person is your dependent and either your qualifying child under 13 or not able to care for themselves and living with you for more than half the year)" = true and helper "Physically or mentally not able to care for themselves?" = true and (helper "Age at the end of 2025" > 13 (dc.child_age) or helper "Age at the end of 2025" = 13 (dc.child_age) and helper "Care provided while this qualifying person was age 13 or older and disabled" = true)
+- Expr: `{"all":[{"eq":["dependent.dc_qp",{"const":true}],"op":"test"},{"eq":["dependent.dc_incapable",{"const":true}],"op":"test"},{"any":[{"gt":["dependent.age",{"param":"dc.child_age"}],"op":"test"},{"all":[{"eq":["dependent.age",{"param":"dc.child_age"}],"op":"test"},{"eq":["dependent.dc_over12_care",{"const":true}],"op":"test"}],"op":"test"}],"op":"test"}],"op":"test"}`
 - Cite: [i2441] p. 3, Column (c), "Check the box in column (c) if the qualifying person listed in column (a) was over age 12 at the time the care was provided and was disabled" (2025; sha256 86f0669e)

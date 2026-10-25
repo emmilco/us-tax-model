@@ -40,7 +40,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 
 ## Branch coverage of the generated corpus
 
-1954 of 2207 branches (choose guards, Bool lines both ways, floor and positive sides of subtract_floor0, left and right of smaller_of and larger_of) reached by the 400 generated returns. Unreached:
+1954 of 2209 branches (choose guards, Bool lines both ways, floor and positive sides of subtract_floor0, left and right of smaller_of and larger_of) reached by the 400 generated returns. Unreached:
 
 - asset.outside:true
 - asset.screen:true
@@ -55,6 +55,8 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - dcprov.related:true
 - dcprov.see_statement:true
 - dependent.dc_under13:false
+- dependent.dc_over12_care:false
+- dependent.dc_over12_care:true
 - dependent.dc_line2c:true
 - div.bad_special:true
 - eic.step1_foreign:false

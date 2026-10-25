@@ -11,11 +11,11 @@ pages, a quote found in the document, or one printed line number of a form docum
 of the form's text beside three consecutive words of the label. The segments that do not are listed
 under "Locators to rewrite"; they fail the check only with `--strict`.
 
-- anchors: 2354
+- anchors: 2355
 - anchors ruled: 45
-- quotes: 1283
+- quotes: 1284
 - quotes ruled: 4
-- segments checked: 2439
+- segments checked: 2440
 - findings without a ruling: 0
 - rulings no anchor uses: 0
 

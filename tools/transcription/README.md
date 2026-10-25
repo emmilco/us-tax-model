@@ -233,6 +233,12 @@ parameters compare as constants; zero terms are dropped from sums; `choose`
 alternatives that select the same target are merged under one `any` guard.
 Lines agree when the canonical trees are equal.
 
+**Known limitation, BUG-0129 (2026-10-24):** constant normalization currently erases unit annotations.
+A Count literal and an untyped money literal can compare equal despite different runtime behavior.
+All transcription qualification is held in `compare_families.py` until type preservation and a
+prior-agreement audit are complete (T-062). Historical AGREE is not a claim of valid model IR typing.
+Render, worked-value and external-engine records have separate qualification/evidence rules.
+
 Representational differences the comparison cannot see through remain as
 disagreements and get a ruling: typically a value the project derives from
 another form where the second transcriber asked a question, or a line the

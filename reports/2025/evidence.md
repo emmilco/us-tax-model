@@ -6,7 +6,7 @@ A computed line is one whose atom is not `input`, `param` or `copy`. An outside-
 
 H — a MATCH verdict and a reason in the reader's own words, with a current per-line receipt covering the displayed reading, folded helpers, dependencies and sources. The log's exact contents must have been committed by its named reader. A guided question credits only its own computation. Other packets credit their printed line and helpers actually expanded in the reading; referenced amounts do not receive credit. See the linked human logs for the scope of each reading. H supplies no hand-calculated expected value and never fills the B column.
 
-Optional human readings pending or ineligible (no H credit; original findings retained): f1040: f1040.line12e: the reading or a dependency changed; fresh reading required for H credit; person: person.age65: the reading or a dependency changed; fresh reading required for H credit; sa: sa.standardbase: the reading or a dependency changed; fresh reading required for H credit; sa: sa.extra: the reading or a dependency changed; fresh reading required for H credit; sa: sa.extra: MISMATCH; no H credit; finding retained for investigation; sa: sa.boxes_age65: the reading or a dependency changed; fresh reading required for H credit; sa: sa.boxes_blind: the reading or a dependency changed; fresh reading required for H credit; sa: sa.extra_age65: the reading or a dependency changed; fresh reading required for H credit; sa: sa.extra_age65: MISMATCH; no H credit; finding retained for investigation; sa: sa.extra_blind: the reading or a dependency changed; fresh reading required for H credit; sa: sa.extra_blind: MISMATCH; no H credit; finding retained for investigation; sa: sa.standardraw: the reading or a dependency changed; fresh reading required for H credit; sa: sa.standardraw: UNCLEAR; no H credit; finding retained for investigation; sa: sa.mfs: the reading or a dependency changed; fresh reading required for H credit; sa: sa.mfs_spouse_itemizes: the reading or a dependency changed; fresh reading required for H credit; sa: sa.standard: the reading or a dependency changed; fresh reading required for H credit; sa: sa.itemizes: the reading or a dependency changed; fresh reading required for H credit; sa: sa.deduction: the reading or a dependency changed; fresh reading required for H credit.
+Optional human readings pending or ineligible (no H credit; original findings retained): f1040: f1040.line12e: the reading or a dependency changed; fresh reading required for H credit; person: person.age65: the reading or a dependency changed; fresh reading required for H credit; sa: sa.standardbase: the reading or a dependency changed; fresh reading required for H credit; sa: sa.extra: the reading or a dependency changed; fresh reading required for H credit; sa: sa.extra: the recorded reading differs from the packet; sa: sa.extra: MISMATCH; no H credit; finding retained for investigation; sa: sa.boxes_age65: the reading or a dependency changed; fresh reading required for H credit; sa: sa.boxes_blind: the reading or a dependency changed; fresh reading required for H credit; sa: sa.extra_age65: the reading or a dependency changed; fresh reading required for H credit; sa: sa.extra_age65: the recorded reading differs from the packet; sa: sa.extra_age65: MISMATCH; no H credit; finding retained for investigation; sa: sa.extra_blind: the reading or a dependency changed; fresh reading required for H credit; sa: sa.extra_blind: the recorded reading differs from the packet; sa: sa.extra_blind: MISMATCH; no H credit; finding retained for investigation; sa: sa.standardraw: the reading or a dependency changed; fresh reading required for H credit; sa: sa.standardraw: the recorded reading differs from the packet; sa: sa.standardraw: UNCLEAR; no H credit; finding retained for investigation; sa: sa.mfs: the reading or a dependency changed; fresh reading required for H credit; sa: sa.mfs_spouse_itemizes: the reading or a dependency changed; fresh reading required for H credit; sa: sa.standard: the reading or a dependency changed; fresh reading required for H credit; sa: sa.itemizes: the reading or a dependency changed; fresh reading required for H credit; sa: sa.deduction: the reading or a dependency changed; fresh reading required for H credit.
 
 Fixtures that assert each line, by evidence class, as a count of cases (ids listed when two or fewer). A — official IRS worked example, cited. B — human hand-work recorded with the worker and the document revision; none yet. C — a named, versioned calculator or engine record in fixtures/2025/differential/ (spec 6.1); none yet. M — isolated model hand-work with the model, prompt hash and snapshot recorded (fixtures/2025/classm.json, reviews/2025/classm/); second-family M fixtures are those whose recorded model does not start with "claude". E — the engine differential (tools/engines; reports/2025/engine_differential.md and .json): PolicyEngine-US (PE) and Tax-Calculator (TC) run over 1700 generated returns. A line gets an E assertion only when, for at least one engine, the engine computes the line rather than taking it whole as an input, the project value was nonzero on at least 50 compared returns, and fewer than half of the nonzero returns the engine reached (compared plus excluded) were excluded under an engine limitation; the cell prints each engine's compared, nonzero and excluded counts, and an engine that falls short of the rule is marked "below rule" and asserts nothing. R — recorded regression from the project's own evaluator, no class claimed; agreement with the Lean reference evaluator (reports/2025/evaluator_agreement.md) is evaluator agreement over the same data, not an independent engine, and earns no class.
 
@@ -157,46 +157,47 @@ Unasserted lines: dcprov.one
 | dependent.parent_home_paid | — | — | — | — | — | — | — |
 | dependent.one | — | — | — | — | — | — | — |
 | dependent.zero | — | — | — | — | — | — | — |
-| dependent.qc_relationship | — | — | — | 5 | — | — | 21 |
+| dependent.qc_relationship | — | — | — | 6 | — | — | 21 |
 | dependent.younger | — | — | — | — | — | — | 18 |
 | dependent.us_half | — | — | — | — | — | — | — |
 | dependent.eic_ssn | — | — | — | — | — | — | — |
-| dependent.qc_age | — | — | — | 5 | — | — | 18 |
-| dependent.lived_half | — | — | — | 5 | — | — | 19 |
-| dependent.qualifying_child | — | — | — | 5 | — | — | 24 |
-| dependent.resident | — | — | — | 5 | — | — | 19 |
-| dependent.qc_dependent | — | — | — | 5 | — | — | 25 |
-| dependent.qr_relationship | — | — | — | 5 | — | — | 6 |
-| dependent.qr_income | — | — | — | 5 | — | — | 6 |
-| dependent.income_exception | — | — | — | 5 | — | — | 7 |
-| dependent.qualifying_relative | — | — | — | 5 | — | — | 8 |
-| dependent.qr_dependent | — | — | — | 5 | — | — | 9 |
-| dependent.claimed_no_tin | — | — | — | 5 | — | — | 3 |
-| dependent.claimed | — | — | — | 5 | — | — | 28 |
-| dependent.under_ctc_age | — | — | — | 5 | — | — | 15 |
-| dependent.ctc_child | — | — | — | 5 | — | — | 26 |
-| dependent.odc_person | — | — | — | 5 | — | — | 25 |
+| dependent.qc_age | — | — | — | 6 | — | — | 18 |
+| dependent.lived_half | — | — | — | 6 | — | — | 19 |
+| dependent.qualifying_child | — | — | — | 6 | — | — | 24 |
+| dependent.resident | — | — | — | 6 | — | — | 19 |
+| dependent.qc_dependent | — | — | — | 6 | — | — | 25 |
+| dependent.qr_relationship | — | — | — | 6 | — | — | 6 |
+| dependent.qr_income | — | — | — | 6 | — | — | 6 |
+| dependent.income_exception | — | — | — | 6 | — | — | 7 |
+| dependent.qualifying_relative | — | — | — | 6 | — | — | 8 |
+| dependent.qr_dependent | — | — | — | 6 | — | — | 9 |
+| dependent.claimed_no_tin | — | — | — | 6 | — | — | 3 |
+| dependent.claimed | — | — | — | 6 | — | — | 28 |
+| dependent.under_ctc_age | — | — | — | 6 | — | — | 15 |
+| dependent.ctc_child | — | — | — | 6 | — | — | 26 |
+| dependent.odc_person | — | — | — | 6 | — | — | 25 |
 | dependent.ctc_per_child | — | — | — | — | — | — | — |
-| dependent.ctc_amount | — | — | — | 5 | — | — | 24 |
+| dependent.ctc_amount | — | — | — | 6 | — | — | 24 |
 | dependent.odc_per_dependent | — | — | — | — | — | — | — |
-| dependent.odc_amount | — | — | — | 5 | — | — | 25 |
+| dependent.odc_amount | — | — | — | 6 | — | — | 25 |
 | dependent.actc_per_child | — | — | — | — | — | — | — |
-| dependent.actc_amount | — | — | — | 5 | — | — | 24 |
-| dependent.hoh_test2 | — | — | — | 5 | — | — | 25 |
-| dependent.hoh_test1 | — | — | — | 5 | — | — | 26 |
-| dependent.eic_child | — | — | — | 5 | — | — | — |
-| dependent.eic_ssn_child | — | — | — | 5 | — | — | — |
-| dependent.dc_child_all_year | — | — | — | 5 | — | — | — |
-| dependent.dc_age13 | — | — | — | 5 | — | — | — |
+| dependent.actc_amount | — | — | — | 6 | — | — | 24 |
+| dependent.hoh_test2 | — | — | — | 6 | — | — | 25 |
+| dependent.hoh_test1 | — | — | — | 6 | — | — | 26 |
+| dependent.eic_child | — | — | — | 6 | — | — | — |
+| dependent.eic_ssn_child | — | — | — | 6 | — | — | — |
+| dependent.dc_child_all_year | — | — | — | 6 | — | — | — |
+| dependent.dc_age13 | — | — | — | 6 | — | — | — |
 | dependent.dc_under13 | — | — | — | — | — | — | — |
-| dependent.dc_child | — | — | — | 5 | — | — | — |
+| dependent.dc_child | — | — | — | 6 | — | — | — |
 | dependent.dc_incapable | — | — | — | — | — | — | — |
-| dependent.dc_disabled_qp | — | — | — | 5 | — | — | — |
-| dependent.dc_qp | — | — | — | 5 | — | — | 1 (stage15.refuse.dependent.dc_no_tin) |
+| dependent.dc_disabled_qp | — | — | — | 6 | — | — | — |
+| dependent.dc_qp | — | — | — | 6 | — | — | 1 (stage15.refuse.dependent.dc_no_tin) |
 | dependent.dc_count | — | — | — | — | — | — | — |
 | dependent.dc_paid | — | — | — | — | — | — | — |
-| dependent.dc_line2d | — | — | — | 5 | — | — | — |
-| dependent.dc_line2c | — | — | — | 5 | — | — | — |
+| dependent.dc_line2d | — | — | — | 6 | — | — | — |
+| dependent.dc_over12_care | — | — | — | — | — | — | — |
+| dependent.dc_line2c | — | — | — | 6 | — | — | 2 (stage15.BUG-0111.care_before_13, stage15.BUG-0111.care_after_13) |
 
 Unasserted lines: dependent.one, dependent.zero, dependent.ctc_per_child, dependent.odc_per_dependent, dependent.actc_per_child, dependent.dc_count
 
@@ -323,9 +324,9 @@ Unasserted lines: eic.age_range_count, eic.zero, eic.qc_count, eic.married_rules
 | line | A | B | C | M | H | E | R |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | f1040.status | 1 (example.official) | — | — | — | — | — | 58 |
-| f1040.line1a | — | — | — | 5 | — | — | 23 |
-| f1040.line1e | — | — | — | 5 | — | — | 14 |
-| f1040.line1z | — | — | — | 5 | — | OpenTaxSolver: 1700 compared (1700 nonzero), 0 excluded | 29 |
+| f1040.line1a | — | — | — | 5 | — | — | 25 |
+| f1040.line1e | — | — | — | 5 | — | — | 16 |
+| f1040.line1z | — | — | — | 5 | — | OpenTaxSolver: 1700 compared (1700 nonzero), 0 excluded | 31 |
 | f1040.tax_exempt_interest | — | — | — | — | — | — | — |
 | f1040.line2a | — | — | — | 5 | — | — | 1 (stage10.ss.exempt_interest_dividends) |
 | f1040.line2b | — | — | — | 5 | — | — | 5 |
@@ -347,7 +348,7 @@ Unasserted lines: eic.age_range_count, eic.zero, eic.qc_count, eic.married_rules
 | f1040.line8 | — | — | — | 5 | — | OpenTaxSolver: 1700 compared (576 nonzero), 0 excluded | 51 |
 | f1040.line9 | — | — | — | 5 | — | OpenTaxSolver: 1591 compared (1591 nonzero), 109 excluded | 22 |
 | f1040.line10 | — | — | — | 5 | — | PE: 1642 compared (977 nonzero), 17 excluded; TC: 1370 compared (771 nonzero), 330 excluded; OpenTaxSolver: 1591 compared (957 nonzero), 109 excluded | 41 |
-| f1040.line11a | — | — | — | 5; via f2441.line7: 3 | — | E via f1040.line11b (PE, TC, OpenTaxSolver); E via f2441.line7 (OpenTaxSolver) | 142 |
+| f1040.line11a | — | — | — | 5; via f2441.line7: 3 | — | E via f1040.line11b (PE, TC, OpenTaxSolver); E via f2441.line7 (OpenTaxSolver) | 144 |
 | f1040.line11b | — | — | — | 5 | — | PE: 1642 compared (1642 nonzero), 17 excluded; TC: 1370 compared (1370 nonzero), 330 excluded; OpenTaxSolver: 1591 compared (1591 nonzero), 109 excluded | 38 |
 | f1040.line12e | — | — | — | 5 | — | OpenTaxSolver: 1496 compared (1496 nonzero), 204 excluded | 52 |
 | f1040.line13a | — | — | — | 5 | — | PE: 1511 compared (385 nonzero), 118 excluded; TC below rule: 1049 compared (134 nonzero), 633 excluded; OpenTaxSolver: 393 compared (333 nonzero), 124 excluded | 7 |
@@ -359,8 +360,8 @@ Unasserted lines: eic.age_range_count, eic.zero, eic.qc_count, eic.married_rules
 | f1040.non_sdtw_tax | — | — | — | — | — | — | 2 (stage4.sdtw.special_rates, stage4.sdtw.skip22) |
 | f1040.line16 | 1 (example.official) | — | — | 5 | — | PE: 1380 compared (1189 nonzero), 260 excluded; TC: 918 compared (789 nonzero), 765 excluded; OpenTaxSolver: 1091 compared (936 nonzero), 609 excluded | 142 |
 | f1040.line17 | — | — | — | 5 | — | OpenTaxSolver below rule: 1590 compared (0 nonzero), 110 excluded | 5 |
-| f1040.line18 | — | — | — | 5; via f2441.clw1: 3 | — | OpenTaxSolver: 1091 compared (936 nonzero), 609 excluded | 133 |
-| f1040.line19 | — | — | — | 5 | — | PE: 973 compared (429 nonzero), 684 excluded; TC: 706 compared (370 nonzero), 994 excluded; OpenTaxSolver: 463 compared (385 nonzero), 507 excluded | 60 |
+| f1040.line18 | — | — | — | 5; via f2441.clw1: 3 | — | OpenTaxSolver: 1091 compared (936 nonzero), 609 excluded | 135 |
+| f1040.line19 | — | — | — | 5 | — | PE: 973 compared (429 nonzero), 684 excluded; TC: 706 compared (370 nonzero), 994 excluded; OpenTaxSolver: 463 compared (385 nonzero), 507 excluded | 62 |
 | f1040.line20 | — | — | — | 5 | — | TC: 928 compared (426 nonzero), 765 excluded; OpenTaxSolver below rule: 826 compared (271 nonzero), 874 excluded | 3 |
 | f1040.line21 | — | — | — | 5 | — | OpenTaxSolver below rule: 826 compared (473 nonzero), 874 excluded | 4 |
 | f1040.line22 | — | — | — | 5 | — | OpenTaxSolver: 826 compared (600 nonzero), 874 excluded | 6 |
@@ -371,7 +372,7 @@ Unasserted lines: eic.age_range_count, eic.zero, eic.qc_count, eic.married_rules
 | f1040.line25c | — | — | — | — | — | — | 3 |
 | f1040.line25d | — | — | — | 5 | — | OpenTaxSolver: 1700 compared (1700 nonzero), 0 excluded | 3 |
 | f1040.line26 | — | — | — | — | — | — | 3 |
-| f1040.line27a | — | — | — | 5 | — | PE: 1642 compared (283 nonzero), 17 excluded; TC: 1370 compared (239 nonzero), 330 excluded | 75 |
+| f1040.line27a | — | — | — | 5 | — | PE: 1642 compared (283 nonzero), 17 excluded; TC: 1370 compared (239 nonzero), 330 excluded | 77 |
 | f1040.line27b | — | — | — | 5 | — | — | 2 (stage9.eic.no_child.4000, stage9.eic.refuse.clergy_schedule1) |
 | f1040.line27c | — | — | — | 5 | — | — | 12 |
 | f1040.separated_spouses | — | — | — | 5 | — | — | 4 |
@@ -419,29 +420,29 @@ Unasserted lines: f1040.ira_rollovers, f1040.plan_rollovers
 | f2441.two_or_more | — | — | — | — | — | — | — |
 | f2441.limit | — | — | — | via f2441.line27: 6 | — | — | 1 (stage15.regress.f2441.nonqualifying_dependent) |
 | f2441.line3_expenses | — | — | — | — | — | — | — |
-| f2441.line3 | — | — | — | 5 | — | OpenTaxSolver: 285 compared (285 nonzero), 0 excluded | 27 |
+| f2441.line3 | — | — | — | 5 | — | OpenTaxSolver: 285 compared (285 nonzero), 0 excluded | 29 |
 | f2441.has_1e | — | — | — | — | — | — | — |
 | f2441.box10_persons | — | — | — | — | — | — | — |
 | f2441.one_box10 | — | — | — | — | — | — | — |
 | f2441.attrib_gate | — | — | — | — | — | — | — |
-| f2441.line4 | — | — | — | 5 | — | OpenTaxSolver: 285 compared (285 nonzero), 0 excluded | 30 |
+| f2441.line4 | — | — | — | 5 | — | OpenTaxSolver: 285 compared (285 nonzero), 0 excluded | 32 |
 | f2441.spouse_earned | — | — | — | — | — | — | — |
-| f2441.line5 | — | — | — | 5 | — | — | 31 |
+| f2441.line5 | — | — | — | 5 | — | — | 33 |
 | f2441.joint | — | — | — | — | — | — | — |
 | f2441.line6_34 | — | — | — | — | — | — | — |
 | f2441.line6_345 | — | — | — | — | — | — | — |
-| f2441.line6 | — | — | — | 5 | — | OpenTaxSolver: 285 compared (270 nonzero), 0 excluded | 26 |
-| f2441.line7 | — | — | — | 5 | — | OpenTaxSolver: 268 compared (268 nonzero), 17 excluded | 26 |
-| f2441.line8 | — | — | — | 5 | — | — | 26 |
-| f2441.line9a | — | — | — | 5 | — | OpenTaxSolver: 267 compared (252 nonzero), 18 excluded | 26 |
+| f2441.line6 | — | — | — | 5 | — | OpenTaxSolver: 285 compared (270 nonzero), 0 excluded | 28 |
+| f2441.line7 | — | — | — | 5 | — | OpenTaxSolver: 268 compared (268 nonzero), 17 excluded | 28 |
+| f2441.line8 | — | — | — | 5 | — | — | 28 |
+| f2441.line9a | — | — | — | 5 | — | OpenTaxSolver: 267 compared (252 nonzero), 18 excluded | 28 |
 | f2441.line9b | — | — | — | 5 | — | — | 1 (stage15.refuse.f2441.prior_year) |
 | f2441.prior_year | — | — | — | — | — | — | — |
-| f2441.line9c | — | — | — | 5 | — | PE: 277 compared (262 nonzero), 17 excluded; OpenTaxSolver: 267 compared (252 nonzero), 18 excluded | 26 |
-| f2441.clw1 | — | — | — | 5 | — | — | 10 |
-| f2441.clw2 | — | — | — | 5 | — | — | 10 |
-| f2441.clw3 | — | — | — | 5; via f2441.line10: 3 | — | E via f2441.line10 (OpenTaxSolver) | 10 |
-| f2441.line10 | — | — | — | 5 | — | OpenTaxSolver: 175 compared (145 nonzero), 110 excluded | 26 |
-| f2441.line11 | — | — | — | 5 | — | PE: 229 compared (181 nonzero), 260 excluded; TC: 165 compared (133 nonzero), 765 excluded; OpenTaxSolver: 175 compared (137 nonzero), 110 excluded | 30 |
+| f2441.line9c | — | — | — | 5 | — | PE: 277 compared (262 nonzero), 17 excluded; OpenTaxSolver: 267 compared (252 nonzero), 18 excluded | 28 |
+| f2441.clw1 | — | — | — | 5 | — | — | 12 |
+| f2441.clw2 | — | — | — | 5 | — | — | 12 |
+| f2441.clw3 | — | — | — | 5; via f2441.line10: 3 | — | E via f2441.line10 (OpenTaxSolver) | 12 |
+| f2441.line10 | — | — | — | 5 | — | OpenTaxSolver: 175 compared (145 nonzero), 110 excluded | 28 |
+| f2441.line11 | — | — | — | 5 | — | PE: 229 compared (181 nonzero), 260 excluded; TC: 165 compared (133 nonzero), 765 excluded; OpenTaxSolver: 175 compared (137 nonzero), 110 excluded | 32 |
 | f2441.line12 | — | — | — | 12 | — | — | 10 |
 | f2441.line13 | — | — | — | — | — | — | 7 |
 | f2441.line14 | — | — | — | — | — | — | 7 |
@@ -1823,7 +1824,7 @@ Unasserted lines: s2.zero
 | line | A | B | C | M | H | E | R |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | s3.line1 | — | — | — | 2 (classm.s3.1, classm.s3.2) | — | — | — |
-| s3.line2 | — | — | — | 2 (classm.s3.1, classm.s3.2) | — | PE: 1431 compared (181 nonzero), 260 excluded; TC: 934 compared (133 nonzero), 765 excluded; OpenTaxSolver: 1091 compared (137 nonzero), 609 excluded | 31 |
+| s3.line2 | — | — | — | 2 (classm.s3.1, classm.s3.2) | — | PE: 1431 compared (181 nonzero), 260 excluded; TC: 934 compared (133 nonzero), 765 excluded; OpenTaxSolver: 1091 compared (137 nonzero), 609 excluded | 33 |
 | s3.zero | — | — | — | — | — | — | — |
 | s3.line4 | — | — | — | 2 (classm.s3.1, classm.s3.2) | — | — | 33 |
 | s3.line5a | — | — | — | 2 (classm.s3.1, classm.s3.2) | — | PE: 1436 compared (106 nonzero), 260 excluded | 28 |
@@ -1866,7 +1867,7 @@ Unasserted lines: s3.zero, s3.mfs
 | s8812.clw_a4 | — | — | — | — | — | — | 30 |
 | s8812.clw_a5 | — | — | — | — | — | — | 30 |
 | s8812.line13 | — | — | — | 3 | — | — | 31 |
-| s8812.line14 | — | — | — | 3 | — | OpenTaxSolver: 463 compared (385 nonzero), 507 excluded; E via f1040.line19 (PE, TC, OpenTaxSolver) | 51 |
+| s8812.line14 | — | — | — | 3 | — | OpenTaxSolver: 463 compared (385 nonzero), 507 excluded; E via f1040.line19 (PE, TC, OpenTaxSolver) | 53 |
 | s8812.line16a | — | — | — | 3 | — | OpenTaxSolver below rule: 463 compared (172 nonzero), 507 excluded | 28 |
 | s8812.line16b | — | — | — | 2 (classm.s8812.2, classm.s8812.4) | — | OpenTaxSolver: 317 compared (317 nonzero), 0 excluded | 28 |
 | s8812.line17 | — | — | — | 1 (classm.s8812.2) | — | OpenTaxSolver below rule: 463 compared (151 nonzero), 507 excluded | 28 |
@@ -1904,7 +1905,7 @@ Unasserted lines: s3.zero, s3.mfs
 | s8812.from_part_iia | — | — | — | — | — | — | 24 |
 | s8812.from_part_iib | — | — | — | — | — | — | 25 |
 | s8812.part_iib_result | — | — | — | — | — | — | 24 |
-| s8812.line27 | — | — | — | 1 (classm.s8812.2) | — | OpenTaxSolver below rule: 292 compared (49 nonzero), 678 excluded; E via f1040.line28 (PE) | 51 |
+| s8812.line27 | — | — | — | 1 (classm.s8812.2) | — | OpenTaxSolver below rule: 292 compared (49 nonzero), 678 excluded; E via f1040.line28 (PE) | 53 |
 | s8812.clwb_complete | — | — | — | — | — | — | — |
 | s8812.clwb_1 | — | — | — | — | — | — | 6 |
 | s8812.clwb_2 | — | — | — | — | — | — | 6 |

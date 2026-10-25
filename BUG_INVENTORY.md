@@ -1855,3 +1855,40 @@ later grouping.
   and structural/authorship errors remaining failures. The former logs, tool versions and fourteen
   current receipts are preserved with hashes before the policy change.
 - **Tags:** optional-evidence; inappropriate-global-gate; owner-policy-revision
+
+## BUG-0128 — Standard-deduction packet hides dollar units and chart derivation
+
+- **Date:** 2026-10-24
+- **Caught by:** the owner's completed item2 review: three MISMATCH verdicts and one UNCLEAR.
+- **Symptom:** the packet shows $2000/$1600 per box beside a chart that prints total deductions,
+  without explaining their derivation. The named "addition for one age or blindness box" can be
+  read as a count, making separate money-times-count expressions look like count-times-count.
+- **Root cause:** short reference labels omit units; the parameter question cites only the chart
+  rather than showing both the base deduction and chart, and the final sum omits their connection.
+- **Where:** `tools/human_review/steps.py`, the four standard-deduction presentation steps.
+- **Fix:** label dollar increments and dollar additions explicitly; provide both base and chart
+  excerpts for checking the increment; explain successive-row subtraction and the equivalence of
+  separate age/blindness additions to a combined box count. No tax expression or amount changes.
+- **Qualification:** the original verdicts remain unchanged. This is an engineering response to
+  presentation findings, not a new owner MATCH, H/B assertion or required follow-up assignment.
+- **Tags:** unclear-units; derived-value-presentation; source-alignment; caught-by-human-review
+
+## BUG-0129 — Transcription comparison erases literal units
+
+- **Date:** 2026-10-24
+- **Caught by:** evaluating the actual refreshed dependent transcription while checking BUG-0111.
+- **Symptom:** both reviewers omit `type: Count` from month-count constants. The project evaluator
+  treats an untyped numeric literal as money, so a months comparison becomes unknown. Expander.ref
+  removes the type annotation and can report AGREE for that invalid comparison.
+- **Root cause:** constant normalization preserves only the value, while type checks are run on
+  authored project data rather than the returned model IR. An abstract arithmetic match is mistaken
+  for a typed transcription match.
+- **Where:** `tools/transcription/transcribe.py`, Expander.ref and comparison normalization.
+- **Reproduction:** compare Count months > {const:6,type:Count} with months > {const:6}; the current
+  tool reports AGREE. `.transcription/constant-unit-erasure-witness.json` preserves the probe.
+  The refreshed reviewers' h_lived_half also contains the untyped constant.
+- **Status:** open. Preserve literal/parameter units consistently, validate model IR types, add a
+  generic schema clarification, and re-audit existing agreements before family promotion. Retain raw
+  responses and original comparison receipts; do not silently upgrade old judgments or treat this
+  as a project tax-value error. Transcription readings remain outside the numeric scoreboard.
+- **Tags:** false-agreement; unit-erasure; invalid-model-ir; caught-by-executable-review-witness

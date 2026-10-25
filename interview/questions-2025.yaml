@@ -533,6 +533,10 @@ bank:
     order: 21
     help: Money is integer cents. Answer true/false for questions. Unknown may be null; do not guess. Married filing
       separately and unsupported items are refused with citations.
+  - input: dependent.dc_over12_care
+    order: 21
+    help: This question is only needed for a disabled qualifying person who turned 13 during 2025.
+      Count care provided at age 13 or older; a birthday later in the year does not change earlier care.
   - input: dependent.dc_paid
     order: 21
     help: Money is integer cents. Answer true/false for questions. Unknown may be null; do not guess. Married filing

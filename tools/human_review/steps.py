@@ -9,12 +9,12 @@ import reading as R
 
 LABELS = {
     "sa.standardbase": "the base deduction for your filing status",
-    "sa.extra": "the addition for one age or blindness box",
+    "sa.extra": "the dollar amount added for each qualifying age or blindness box",
     "person.age65": "the answer to the birth-date question",
     "sa.boxes_age65": "the number of eligible age boxes",
     "sa.boxes_blind": "the number of blindness boxes",
-    "sa.extra_age65": "the age addition",
-    "sa.extra_blind": "the blindness addition",
+    "sa.extra_age65": "the age addition in dollars",
+    "sa.extra_blind": "the blindness addition in dollars",
     "sa.standardraw": "the base deduction plus the age and blindness additions",
     "sa.mfs": "the answer to 'Are you married filing separately?'",
     "sa.mfs_spouse_itemizes": "the answer to 'Are you married filing separately with a spouse who itemizes?'",
@@ -41,14 +41,14 @@ def plan(canon, make_record):
     definitions = [
         ("sa.standardbase", "Check the base amounts", "Do these amounts match the IRS sidebar? Age and blindness additions are checked separately.",
          [source("f1040", 2, "Standard deduction for")], "around"),
-        ("sa.extra", "Check the addition for one box", "Check the amount added for one age or blindness box. You can compare one-box and two-box rows in the chart.", [chart], "below"),
+        ("sa.extra", "Check the dollar amount for one box", "The IRS chart prints total deductions, not a separate per-box amount. Subtract the base deduction from the one-box total, or compare successive chart rows. Does that difference match the dollar amount below?", [source("f1040", 2, "Standard deduction for"), chart], "below"),
         ("person.age65", "Check the birth-date question", "Does the question use the same birth-date cutoff as the IRS checkbox?", [birth], "around"),
         ("sa.boxes_age65", "Which age boxes count?", "Check only who is counted here, including the exception for a person who died before reaching 65.",
          [age, death, canon.lines["person.died_before_65"]["cite"]], "around"),
         ("sa.boxes_blind", "Which blindness boxes count?", "Check only whose blindness boxes are counted. The medical definition of blindness is outside this question.", [age], "around"),
-        ("sa.extra_age65", "Calculate the age addition", "Check this multiplication. The per-box amount and box count have their own questions.", [chart], "below"),
-        ("sa.extra_blind", "Calculate the blindness addition", "Check this multiplication. The per-box amount and box count have their own questions.", [chart], "below"),
-        ("sa.standardraw", "Add the three amounts", "Check only that the base deduction and the two additions are added together.", [chart], "below"),
+        ("sa.extra_age65", "Calculate the age addition in dollars", "Multiply dollars per box by the number of age boxes. This gives a dollar amount; it does not multiply the age count by the blindness count. The dollar amount per box and the count are checked separately.", [chart], "below"),
+        ("sa.extra_blind", "Calculate the blindness addition in dollars", "Multiply dollars per box by the number of blindness boxes. This gives a separate dollar amount to add to the age addition. The dollar amount per box and the count are checked separately.", [chart], "below"),
+        ("sa.standardraw", "Add the three dollar amounts", "Add the base deduction, age addition and blindness addition. This is equivalent to adding the age and blindness box counts first, multiplying that total by the dollars per box, then adding the base deduction. Compare that result with the IRS chart.", [chart], "below"),
         ("sa.mfs", "Identify a separate return", "Check that this condition means married filing separately.", [source("f1040", 1, "Married filing separately")], "around"),
         ("sa.mfs_spouse_itemizes", "Identify the spouse-itemizes exception", "Check the two conditions for this exception. Its effect on the amount is the next question.", [exception], "around"),
         ("sa.standard", "Apply the spouse-itemizes exception", "Check the zero-or-calculated-amount choice and the listed situations where this computation stops.", [exception, chart], "around"),
@@ -70,6 +70,8 @@ def plan(canon, make_record):
                     groups.setdefault(value[status], []).append(R.STATUS_WORDS[status])
             rec["reading"] = R.Node("For your filing status:", [
                 R.Node(f"{' or '.join(statuses).capitalize()}: {R.dollars(amount)}.") for amount, statuses in groups.items()])
+            if lid == "sa.extra":
+                rec["reading"].text = "Dollar amount added for each qualifying box, by filing status:"
             rec["reading_text"] = rec["reading"].flat()
         elif canon.lines[lid]["expr"]["op"] == "input":
             rec["reading"] = R.Node(canon.question(lid))

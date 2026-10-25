@@ -1,6 +1,6 @@
 # Second-family review comparison — 2025
 
-Summary: 112 form-kind pair(s) with logs from Claude and deepseek; ruled model-error noise 0.6% (13/2117 second-family lines judged; pending reviews are provisional); 37 eligible, 73 pending; raw agreement 67.9% (diagnostic only); current independence yield 187 line(s); both families disputed 413
+Summary: 112 form-kind pair(s) with logs from Claude and deepseek; ruled model-error noise 0.9% (20/2117 second-family lines judged; pending reviews are provisional); 23 eligible, 89 pending; raw agreement 68.0% (diagnostic only); current independence yield 185 line(s); both families disputed 411
 
 Written by `tools/transcription/compare_families.py` on 2026-10-24 from the review logs under `reviews/2025/`. For each form with a Claude log and a second model family's log of the same kind (`<form>.<family>.md`, families.py), the lines judged in both are compared.
 
@@ -17,9 +17,9 @@ Written by `tools/transcription/compare_families.py` on 2026-10-24 from the revi
 | form | second family (model) | lines judged by both | both agree | raw agreement | noise / judged | eligibility | current yield | both disputed | Claude only | not judged by both |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | asset | deepseek (deepseek-flash) | 16 | 1 | 6.2% | 0/16 (0.0%) | pending | 0 | 15 | 0 | 0 |
-| carloan | deepseek (deepseek-flash) | 1 | 0 | 0.0% | 0/1 (0.0%) | pass | 0 | 1 | 0 | 0 |
-| dcprov | deepseek (deepseek-flash) | 2 | 2 | 100.0% | 0/2 (0.0%) | pass | 0 | 0 | 0 | 0 |
-| dependent | deepseek (deepseek-flash) | 14 | 1 | 7.1% | 0/14 (0.0%) | pending | 2 | 11 | 0 | 0 |
+| carloan | deepseek (deepseek-flash) | 1 | 0 | 0.0% | 0/1 (0.0%) | pending | 0 | 1 | 0 | 0 |
+| dcprov | deepseek (deepseek-flash) | 2 | 2 | 100.0% | 0/2 (0.0%) | pending | 0 | 0 | 0 | 0 |
+| dependent | deepseek (deepseek-flash) | 14 | 3 | 21.4% | 7/14 (50.0%) | pending | 0 | 10 | 1 | 0 |
 | div | deepseek (deepseek-flash) | 1 | 0 | 0.0% | 0/1 (0.0%) | pending | 1 | 0 | 0 | 0 |
 | eic | deepseek (deepseek-flash) | 18 | 7 | 38.9% | 0/18 (0.0%) | pending | 1 | 10 | 0 | 0 |
 | f1040 | deepseek (deepseek-flash) | 50 | 32 | 64.0% | 0/50 (0.0%) | pending | 13 | 4 | 1 | 0 |
@@ -30,95 +30,109 @@ Written by `tools/transcription/compare_families.py` on 2026-10-24 from the revi
 | f8606 | deepseek (deepseek-flash) | 5 | 2 | 40.0% | 0/5 (0.0%) | pending | 0 | 3 | 0 | 0 |
 | f8880 | deepseek (deepseek-flash) | 21 | 15 | 71.4% | 0/21 (0.0%) | pending | 0 | 6 | 0 | 0 |
 | f8889 | deepseek (deepseek-flash) | 19 | 7 | 36.8% | 0/19 (0.0%) | pending | 0 | 11 | 1 | 0 |
-| f8959 | deepseek (deepseek-flash) | 24 | 20 | 83.3% | 2/24 (8.3%) | pass | 4 | 0 | 0 | 0 |
+| f8959 | deepseek (deepseek-flash) | 24 | 20 | 83.3% | 2/24 (8.3%) | pending | 4 | 0 | 0 | 0 |
 | f8960 | deepseek (deepseek-flash) | 25 | 18 | 72.0% | 0/25 (0.0%) | pending | 7 | 0 | 0 | 0 |
 | f8995 | deepseek (deepseek-flash) | 16 | 7 | 43.8% | 0/16 (0.0%) | pending | 4 | 5 | 0 | 0 |
 | f8995a | deepseek (deepseek-flash) | 14 | 10 | 71.4% | 0/14 (0.0%) | pending | 4 | 0 | 0 | 0 |
-| ftc | deepseek (deepseek-flash) | 1 | 0 | 0.0% | 0/1 (0.0%) | pass | 1 | 0 | 0 | 0 |
+| ftc | deepseek (deepseek-flash) | 1 | 0 | 0.0% | 0/1 (0.0%) | pending | 1 | 0 | 0 | 0 |
 | g28 | deepseek (deepseek-flash) | 7 | 1 | 14.3% | 0/7 (0.0%) | pending | 4 | 2 | 0 | 0 |
-| gift | deepseek (deepseek-flash) | 1 | 1 | 100.0% | 0/1 (0.0%) | pass | 0 | 0 | 0 | 0 |
+| gift | deepseek (deepseek-flash) | 1 | 1 | 100.0% | 0/1 (0.0%) | pending | 0 | 0 | 0 | 0 |
 | household | deepseek (deepseek-flash) | 9 | 4 | 44.4% | 0/9 (0.0%) | pending | 1 | 4 | 0 | 0 |
-| interest | deepseek (deepseek-flash) | 0 | 0 | n/a | 0/0 (n/a) | no lines | 0 | 0 | 0 | 0 |
+| interest | deepseek (deepseek-flash) | 0 | 0 | n/a | 0/0 (n/a) | pending | 0 | 0 | 0 | 0 |
 | ira | deepseek (deepseek-flash) | 22 | 6 | 27.3% | 0/22 (0.0%) | pending | 0 | 16 | 0 | 0 |
 | ltc | deepseek (deepseek-flash) | 2 | 1 | 50.0% | 0/2 (0.0%) | pending | 0 | 1 | 0 | 0 |
 | mq | deepseek (deepseek-flash) | 1 | 0 | 0.0% | 1/1 (100.0%) | pending | 1 | 0 | 0 | 0 |
-| oi8z | deepseek (deepseek-flash) | 1 | 1 | 100.0% | 0/1 (0.0%) | pass | 0 | 0 | 0 | 0 |
-| otjob | deepseek (deepseek-flash) | 2 | 2 | 100.0% | 0/2 (0.0%) | pass | 0 | 0 | 0 | 0 |
+| oi8z | deepseek (deepseek-flash) | 1 | 1 | 100.0% | 0/1 (0.0%) | pending | 0 | 0 | 0 | 0 |
+| otjob | deepseek (deepseek-flash) | 2 | 2 | 100.0% | 0/2 (0.0%) | pending | 0 | 0 | 0 | 0 |
 | person | deepseek (deepseek-flash) | 74 | 31 | 41.9% | 0/74 (0.0%) | pending | 15 | 27 | 1 | 0 |
 | qbi | deepseek (deepseek-flash) | 5 | 1 | 20.0% | 0/5 (0.0%) | pending | 2 | 2 | 0 | 0 |
-| qdcg | deepseek (deepseek-flash) | 26 | 25 | 96.2% | 0/26 (0.0%) | pass | 0 | 1 | 0 | 0 |
+| qdcg | deepseek (deepseek-flash) | 26 | 25 | 96.2% | 0/26 (0.0%) | pending | 0 | 1 | 0 | 0 |
 | refund | deepseek (deepseek-flash) | 11 | 3 | 27.3% | 0/11 (0.0%) | pending | 5 | 3 | 0 | 0 |
 | retirement | deepseek (deepseek-flash) | 16 | 10 | 62.5% | 0/16 (0.0%) | pending | 2 | 4 | 0 | 0 |
 | s1 | deepseek (deepseek-flash) | 26 | 14 | 53.8% | 0/26 (0.0%) | pending | 8 | 4 | 0 | 0 |
 | s179 | deepseek (deepseek-flash) | 13 | 6 | 46.2% | 0/13 (0.0%) | pending | 4 | 3 | 0 | 0 |
 | s1a | deepseek (deepseek-flash) | 43 | 10 | 23.3% | 0/43 (0.0%) | pending | 0 | 33 | 0 | 0 |
 | s2 | deepseek (deepseek-flash) | 8 | 6 | 75.0% | 0/8 (0.0%) | pending | 1 | 1 | 0 | 0 |
-| s3 | deepseek (deepseek-flash) | 8 | 4 | 50.0% | 0/8 (0.0%) | pass | 1 | 3 | 0 | 0 |
+| s3 | deepseek (deepseek-flash) | 8 | 4 | 50.0% | 0/8 (0.0%) | pending | 1 | 3 | 0 | 0 |
 | s8812 | deepseek (deepseek-flash) | 34 | 23 | 67.6% | 0/34 (0.0%) | pending | 3 | 7 | 1 | 0 |
 | sa | deepseek (deepseek-flash) | 22 | 17 | 77.3% | 0/22 (0.0%) | pending | 1 | 3 | 1 | 0 |
 | sales | deepseek (deepseek-flash) | 5 | 3 | 60.0% | 0/5 (0.0%) | pending | 0 | 2 | 0 | 0 |
-| sb | deepseek (deepseek-flash) | 4 | 4 | 100.0% | 0/4 (0.0%) | pass | 0 | 0 | 0 | 0 |
+| sb | deepseek (deepseek-flash) | 4 | 4 | 100.0% | 0/4 (0.0%) | pending | 0 | 0 | 0 | 0 |
 | sc | deepseek (deepseek-flash) | 48 | 13 | 27.1% | 0/48 (0.0%) | pending | 19 | 15 | 1 | 7 |
-| scope | deepseek (deepseek-flash) | 0 | 0 | n/a | 0/0 (n/a) | no lines | 0 | 0 | 0 | 0 |
+| scope | deepseek (deepseek-flash) | 0 | 0 | n/a | 0/0 (n/a) | pending | 0 | 0 | 0 | 0 |
 | scveh | deepseek (deepseek-flash) | 21 | 2 | 9.5% | 0/21 (0.0%) | pending | 7 | 12 | 0 | 0 |
 | sd | deepseek (deepseek-flash) | 54 | 13 | 24.1% | 0/54 (0.0%) | pending | 0 | 39 | 2 | 0 |
 | sdtw | deepseek (deepseek-flash) | 47 | 26 | 55.3% | 0/47 (0.0%) | pending | 3 | 17 | 1 | 0 |
 | se | deepseek (deepseek-flash) | 1 | 0 | 0.0% | 0/1 (0.0%) | pending | 0 | 1 | 0 | 0 |
 | sli | deepseek (deepseek-flash) | 9 | 4 | 44.4% | 0/9 (0.0%) | pending | 0 | 5 | 0 | 0 |
 | ssb | deepseek (deepseek-flash) | 19 | 12 | 63.2% | 0/19 (0.0%) | pending | 2 | 4 | 1 | 0 |
-| tax_on_amount | deepseek (deepseek-flash) | 1 | 0 | 0.0% | 0/1 (0.0%) | pass | 0 | 0 | 1 | 0 |
-| tcw | deepseek (deepseek-flash) | 1 | 0 | 0.0% | 0/1 (0.0%) | pass | 0 | 1 | 0 | 0 |
-| tipjob | deepseek (deepseek-flash) | 3 | 1 | 33.3% | 0/3 (0.0%) | pass | 0 | 0 | 2 | 0 |
+| tax_on_amount | deepseek (deepseek-flash) | 1 | 0 | 0.0% | 0/1 (0.0%) | pending | 0 | 0 | 1 | 0 |
+| tcw | deepseek (deepseek-flash) | 1 | 0 | 0.0% | 0/1 (0.0%) | pending | 0 | 1 | 0 | 0 |
+| tipjob | deepseek (deepseek-flash) | 3 | 1 | 33.3% | 0/3 (0.0%) | pending | 0 | 0 | 2 | 0 |
 | u1250 | deepseek (deepseek-flash) | 18 | 3 | 16.7% | 0/18 (0.0%) | pending | 1 | 14 | 0 | 0 |
-| w2 | deepseek (deepseek-flash) | 5 | 3 | 60.0% | 0/5 (0.0%) | pass | 0 | 1 | 1 | 0 |
-| **all** | | 894 | 418 | 46.8% | | | 129 | 328 | 19 | 7 |
+| w2 | deepseek (deepseek-flash) | 5 | 3 | 60.0% | 0/5 (0.0%) | pending | 0 | 1 | 1 | 0 |
+| **all** | | 894 | 420 | 47.0% | | | 127 | 327 | 20 | 7 |
 
-Pending asset [deepseek]: 15 open or unclassified rulings.
-Pending dependent [deepseek]: 13 open or unclassified rulings.
-Pending div [deepseek]: 1 open or unclassified rulings.
-Pending eic [deepseek]: 11 open or unclassified rulings.
-Pending f1040 [deepseek]: 17 open or unclassified rulings.
-Pending f2441 [deepseek]: 4 open or unclassified rulings; model-error noise above 10%.
-Pending f4562 [deepseek]: 14 open or unclassified rulings.
-Pending f4952 [deepseek]: model-error noise above 10%.
-Pending f5695 [deepseek]: 20 open or unclassified rulings.
-Pending f8606 [deepseek]: 3 open or unclassified rulings.
-Pending f8880 [deepseek]: 6 open or unclassified rulings.
-Pending f8889 [deepseek]: 11 open or unclassified rulings.
-Pending f8960 [deepseek]: 7 open or unclassified rulings.
-Pending f8995 [deepseek]: 9 open or unclassified rulings.
-Pending f8995a [deepseek]: 4 open or unclassified rulings.
-Pending g28 [deepseek]: 6 open or unclassified rulings.
-Pending household [deepseek]: 5 open or unclassified rulings.
-Pending ira [deepseek]: 16 open or unclassified rulings.
-Pending ltc [deepseek]: 1 open or unclassified rulings.
-Pending mq [deepseek]: model-error noise above 10%.
-Pending person [deepseek]: 42 open or unclassified rulings.
-Pending qbi [deepseek]: 4 open or unclassified rulings.
-Pending refund [deepseek]: 8 open or unclassified rulings.
-Pending retirement [deepseek]: 4 open or unclassified rulings.
-Pending s1 [deepseek]: 12 open or unclassified rulings.
-Pending s179 [deepseek]: 7 open or unclassified rulings.
-Pending s1a [deepseek]: 33 open or unclassified rulings.
-Pending s2 [deepseek]: 2 open or unclassified rulings.
-Pending s8812 [deepseek]: 10 open or unclassified rulings.
-Pending sa [deepseek]: 4 open or unclassified rulings.
-Pending sales [deepseek]: 2 open or unclassified rulings.
-Pending sc [deepseek]: 7 missing expected lines; 34 open or unclassified rulings.
-Pending scveh [deepseek]: 19 open or unclassified rulings.
-Pending sd [deepseek]: 39 open or unclassified rulings.
-Pending sdtw [deepseek]: 20 open or unclassified rulings.
-Pending se [deepseek]: 1 open or unclassified rulings.
-Pending sli [deepseek]: 5 open or unclassified rulings.
-Pending ssb [deepseek]: 6 open or unclassified rulings.
-Pending u1250 [deepseek]: 15 open or unclassified rulings.
+Pending asset [deepseek]: 15 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending carloan [deepseek]: BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending dcprov [deepseek]: BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending dependent [deepseek]: model-error noise above 10%; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending div [deepseek]: 1 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending eic [deepseek]: 11 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending f1040 [deepseek]: 17 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending f2441 [deepseek]: 4 open or unclassified rulings; model-error noise above 10%; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending f4562 [deepseek]: 14 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending f4952 [deepseek]: model-error noise above 10%; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending f5695 [deepseek]: 20 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending f8606 [deepseek]: 3 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending f8880 [deepseek]: 6 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending f8889 [deepseek]: 11 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending f8959 [deepseek]: BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending f8960 [deepseek]: 7 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending f8995 [deepseek]: 9 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending f8995a [deepseek]: 4 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending ftc [deepseek]: BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending g28 [deepseek]: 6 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending gift [deepseek]: BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending household [deepseek]: 5 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending interest [deepseek]: BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending ira [deepseek]: 16 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending ltc [deepseek]: 1 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending mq [deepseek]: model-error noise above 10%; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending oi8z [deepseek]: BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending otjob [deepseek]: BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending person [deepseek]: 42 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending qbi [deepseek]: 4 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending qdcg [deepseek]: BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending refund [deepseek]: 8 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending retirement [deepseek]: 4 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending s1 [deepseek]: 12 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending s179 [deepseek]: 7 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending s1a [deepseek]: 33 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending s2 [deepseek]: 2 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending s3 [deepseek]: BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending s8812 [deepseek]: 10 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending sa [deepseek]: 4 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending sales [deepseek]: 2 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending sb [deepseek]: BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending sc [deepseek]: 7 missing expected lines; 34 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending scope [deepseek]: BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending scveh [deepseek]: 19 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending sd [deepseek]: 39 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending sdtw [deepseek]: 20 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending se [deepseek]: 1 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending sli [deepseek]: 5 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending ssb [deepseek]: 6 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending tax_on_amount [deepseek]: BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending tcw [deepseek]: BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending tipjob [deepseek]: BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending u1250 [deepseek]: 15 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending w2 [deepseek]: BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
 
 ### Independence yield
 
 | form | second family | line | second family's verdict | second family's reason |
 | --- | --- | --- | --- | --- |
-| dependent | deepseek | dependent.eic_child | DISAGREE | (no reason given) |
-| dependent | deepseek | dependent.eic_ssn_child | DISAGREE | (no reason given) |
 | div | deepseek | div.screen | DISAGREE | The IRS Form 1099-DIV pages do not define a 'screen' line. I read the project interface as the total of the supplied distribution components that require scope screening; box 3 is accepted only when div.basis_reconciled is true. |
 | eic | deepseek | 6 (eic.wsb_6) | DISAGREE | (no reason given) |
 | f1040 | deepseek | 1a | DISAGREE | (no reason given) |
@@ -267,15 +281,14 @@ Pending u1250 [deepseek]: 15 open or unclassified rulings.
 | asset | deepseek | asset.mq_q4 | DISAGREE | DISAGREE | (no reason given) |
 | asset | deepseek | asset.s179_2025 | DISAGREE | DISAGREE | (no reason given) |
 | carloan | deepseek | 22(iii) | DISAGREE | DISAGREE | (no reason given) |
-| dependent | deepseek | 2(c) | DISAGREE | DISAGREE | The form checks over age 12 at the time care was provided; the interface gives age at the end of 2025 and a flag for being under age 13 for part of the year, so this line uses age over 12 at year end. |
-| dependent | deepseek | 2(d) | DISAGREE | DISAGREE | (no reason given) |
+| dependent | deepseek | 2(c) | DISAGREE | DISAGREE | (no reason given) |
 | dependent | deepseek | dependent.actc_amount | DISAGREE | DISAGREE | (no reason given) |
 | dependent | deepseek | dependent.ctc_amount | DISAGREE | DISAGREE | (no reason given) |
 | dependent | deepseek | dependent.ctc_child | DISAGREE | DISAGREE | (no reason given) |
 | dependent | deepseek | dependent.dc_count | DISAGREE | DISAGREE | (no reason given) |
 | dependent | deepseek | dependent.dc_qp | DISAGREE | DISAGREE | (no reason given) |
 | dependent | deepseek | dependent.hoh_test1 | DISAGREE | DISAGREE | (no reason given) |
-| dependent | deepseek | dependent.hoh_test2 | DISAGREE | DISAGREE | (no reason given) |
+| dependent | deepseek | dependent.hoh_test2 | DISAGREE | DISAGREE | The tool refuses the divorced or separated parents rule and married-person rules, so Test 2 categories 3 and 4 are not computed here. |
 | dependent | deepseek | dependent.odc_amount | DISAGREE | DISAGREE | (no reason given) |
 | dependent | deepseek | dependent.odc_person | DISAGREE | DISAGREE | (no reason given) |
 | eic | deepseek | 1 | DISAGREE | DISAGREE | (no reason given) |
@@ -587,7 +600,7 @@ Pending u1250 [deepseek]: 15 open or unclassified rulings.
 | asset | deepseek (deepseek-flash) | 15 | 11 | 73.3% | 0/15 (0.0%) | pending | 4 | 0 | 0 | 0 |
 | carloan | deepseek (deepseek-flash) | 2 | 0 | 0.0% | 0/2 (0.0%) | pass | 0 | 2 | 0 | 0 |
 | dcprov | deepseek (deepseek-flash) | 3 | 3 | 100.0% | 0/3 (0.0%) | pass | 0 | 0 | 0 | 0 |
-| dependent | deepseek (deepseek-flash) | 2 | 0 | 0.0% | 0/2 (0.0%) | pass | 0 | 2 | 0 | 0 |
+| dependent | deepseek (deepseek-flash) | 2 | 0 | 0.0% | 0/2 (0.0%) | pass | 0 | 1 | 1 | 0 |
 | div | deepseek (deepseek-flash) | 22 | 19 | 86.4% | 1/22 (4.5%) | pass | 3 | 0 | 0 | 0 |
 | eic | deepseek (deepseek-flash) | 13 | 13 | 100.0% | 0/13 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | f1040 | deepseek (deepseek-flash) | 57 | 49 | 86.0% | 0/57 (0.0%) | pending | 1 | 1 | 6 | 0 |
@@ -639,7 +652,7 @@ Pending u1250 [deepseek]: 15 open or unclassified rulings.
 | tipjob | deepseek (deepseek-flash) | 3 | 3 | 100.0% | 0/3 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | u1250 | deepseek (deepseek-flash) | 18 | 5 | 27.8% | 0/18 (0.0%) | pending | 0 | 13 | 0 | 0 |
 | w2 | deepseek (deepseek-flash) | 17 | 17 | 100.0% | 0/17 (0.0%) | pass | 0 | 0 | 0 | 0 |
-| **all** | | 1033 | 835 | 80.8% | | | 58 | 85 | 55 | 0 |
+| **all** | | 1033 | 835 | 80.8% | | | 58 | 84 | 56 | 0 |
 
 Pending asset [deepseek]: 4 open or unclassified rulings.
 Pending f1040 [deepseek]: 2 open or unclassified rulings.
@@ -744,8 +757,7 @@ Pending u1250 [deepseek]: 13 open or unclassified rulings.
 | --- | --- | --- | --- | --- | --- |
 | carloan | deepseek | 22(ii) | MISMATCH | MISMATCH | IRS column (ii) says 'the amount of the QPVLI, if any, that was deducted elsewhere on your return (for example, on Schedule C, Schedule E, or Schedule F)', but the restatement limits it to Schedule C. |
 | carloan | deepseek | 22(iii) | MISMATCH | MISMATCH | IRS line 22(iii) says to subtract 'the amount on line 22, column (ii)', which can include Schedule E or Schedule F deductions; the restatement subtracts only a Schedule C helper (zero without a Schedule C), so it does not compute the IRS line. |
-| dependent | deepseek | 2(c) | MISMATCH | MISMATCH | The IRS says to check column (c) if the qualifying person “was over age 12 at the time the care was provided and was disabled,” but the restatement tests “Age at the end of 2025” ≥ 13 instead of age at the time care was provided. |
-| dependent | deepseek | 2(d) | MISMATCH | MISMATCH | The IRS column (d) instruction says “If you completed Part III, don't include in column (d) any benefits shown on line 28,” but the helper says to include expenses paid with dependent care benefits and only subtracts excluded benefits later. |
+| dependent | deepseek | 2(d) | MISMATCH | MISMATCH | The helper includes expenses paid with dependent care benefits and enters that gross helper amount on line 2(d), but the Form 2441 column (d) instruction says 'If you completed Part III, don't include in column (d) any benefits shown on line 28.' |
 | f1040 | deepseek | 27c | MISMATCH | MISMATCH | IRS says check the box on line 27c if you do not want to claim the earned income credit or if you have been instructed to check the box; the restatement expressly does not ask the filer's own choice not to claim the EIC. |
 | f2441 | deepseek | 18 | MISMATCH | MISMATCH | The IRS says earned income for lines 18 and 19 is determined as for lines 4 and 5 but does not include dependent care benefits shown on line 12; the restatement's person.dc_earned_b instead removes line 1e, not line 12 benefits. |
 | f2441 | deepseek | 19 | MISMATCH | MISMATCH | The spouse's line 19 helper uses person.dc_earned_b, which removes line 1e rather than the line 12 dependent care benefits the IRS says to exclude for lines 18 and 19. |

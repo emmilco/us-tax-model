@@ -59,7 +59,8 @@ network dependency to tax-return runtime. Records and the first worked research 
 
 ## Next work
 
-Resolve the saved presentation findings without requiring another owner sitting; integrate the held
-age-at-care correction with its receipt consequences recorded. Continue the 73 pending family
-comparisons, broader calculations and engine work. No human approval, current full-suite pass or
-completion of those outstanding milestones is inferred from this policy change.
+The presentation changes and held age-at-care correction are implemented in the follow-up to
+735e644, with original verdicts preserved. Repair BUG-0129's literal-unit comparison and audit
+previous agreements before transcription qualification resumes; all transcription comparisons
+are currently held. Continue the other pending comparisons, broader calculations and engine work.
+No human approval or completion of outstanding evidence milestones is inferred from this policy change.

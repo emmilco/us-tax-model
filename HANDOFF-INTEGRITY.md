@@ -1,5 +1,30 @@
 # Handoff: the integrity plan, Phase 0 done, Phase 1 in progress
 
+## Current follow-up after commit 735e644 — 2026-10-24
+
+735e644 commits the accumulated integrity work and optional-human/secondary-evidence policy.
+Its full check-all passed: 1065 CLI fixtures, 1700 external-engine cases / 320581 line comparisons
+with zero unexplained differences, and 2278 mutants with all survivors accounted for as equivalent
+(94.4% raw, 100% adjusted). That result applies to the committed baseline.
+
+The held BUG-0111 patch is now integrated: the new timing question is needed at the disabled child's
+age 13 boundary; six targeted checks pass without changing the existing monetary results. Both
+families' T/R reviews and the required Claude M run were refreshed and adjudicated. The six M cases
+include both sides of the new timing question, with 388 agreements and two fragment-interpretation
+values dropped. BUG-0128/T-059 clarifies the four standard-deduction presentation findings; all 16
+isolated human-path tests pass and item2 regenerates. The owner's original logs remain unchanged;
+new tool/bank receipts earn no H without a new reading, which is optional.
+
+The review audit found BUG-0129: transcription normalization erases literal units. Missing Count
+annotations in both new model replies can compare equal to typed project constants while evaluating
+to unknown. This is a model/comparer defect, not a newly established project tax-value error. All
+transcription qualification is now held until type preservation and a prior-agreement audit are done
+(T-062). The report now has 23 eligible and 89 pending comparisons; the numeric scoreboard is separate.
+58 offline review-tool tests pass, including the hold regression. Do not remove the hold merely to
+restore the former eligible count. Repair it before additional transcription qualification/promotion.
+Full-suite validation of this follow-up is recorded by its subsequent commit and check marker;
+targeted checks above are not themselves a new full-suite claim.
+
 ## Controlling owner revision — 2026-10-24
 
 The owner finished item2: fourteen saved/current answers, ten MATCH, three MISMATCH, one UNCLEAR.

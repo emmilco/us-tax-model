@@ -66577,7 +66577,362 @@
         "dependent"
       ],
       "evidence": "M",
-      "evidence_note": "Class M: claude-opus-5-5; prompt sha256 c4fd097cf01121f1dfd34e83acfe72381a81bce774b2b30ac162deec23e25d94; pages i1040gi 14,17,18,19,20,21,22,41,43,44,45,46 (6024dc94dd1f); f1040s8812 1,2 (9b38295071c4); i2441 1,3,4 (361baee739cc); p503 3,10 (a1ff9e2c3120); f2441 1,2 (f39ca34d11c1); p501 13,19 (6aca9108a08f); branches dependent.student:false, dependent.disabled:false, dependent.self_support:false, dependent.self_support:true, dependent.joint_return:false, dependent.citizen:true, dependent.canada_mexico:false, dependent.canada_mexico:true, dependent.married:false, dependent.tin:true, dependent.work_ssn:true, dependent.supported:true, dependent.other_claimant:false, dependent.divorced_rule:false, dependent.multiple_support:false, dependent.parent_home_paid:false, dependent.parent_home_paid:true, dependent.qc_relationship:false, dependent.younger:true, dependent.us_half:true, dependent.eic_ssn:false, dependent.eic_ssn:true, dependent.qc_age:true, dependent.lived_half:true, dependent.qualifying_child:false, dependent.resident:true, dependent.qc_dependent:false, dependent.qr_relationship:true, dependent.qr_income:true, dependent.income_exception:false, dependent.qualifying_relative:true, dependent.qr_dependent:true, dependent.claimed_no_tin:false, dependent.claimed:true, dependent.under_ctc_age:true, dependent.ctc_child:false, dependent.odc_person:true, dependent.ctc_amount#1, dependent.odc_amount#0, dependent.actc_amount#1, dependent.hoh_test2:true, dependent.hoh_test1:false, dependent.hoh_test1:true, dependent.eic_child:false, dependent.eic_ssn_child:false, dependent.dc_child_all_year:false, dependent.dc_age13:false, dependent.dc_under13:true, dependent.dc_child:false, dependent.dc_incapable:false, dependent.dc_disabled_qp:false, dependent.dc_qp:false, dependent.dc_line2c:false",
+      "evidence_note": "Class M: claude-opus-5-5; prompt sha256 f16aef57624e99336472e1d81617c8e650586de430cd38eb75d2fed228fb71c6; pages i1040gi 14,17,18,19,20,21,22,41,43,44,45,46 (6024dc94dd1f); f1040s8812 1,2 (9b38295071c4); i2441 1,3,4 (361baee739cc); p503 3,10 (a1ff9e2c3120); f2441 1,2 (f39ca34d11c1); p501 13,19 (6aca9108a08f); branches dependent.student:false, dependent.disabled:false, dependent.self_support:false, dependent.joint_return:false, dependent.citizen:true, dependent.canada_mexico:false, dependent.married:false, dependent.tin:true, dependent.work_ssn:true, dependent.supported:true, dependent.other_claimant:false, dependent.divorced_rule:false, dependent.multiple_support:false, dependent.parent_home_paid:false, dependent.qc_relationship:true, dependent.younger:true, dependent.us_half:true, dependent.eic_ssn:true, dependent.qc_age:true, dependent.lived_half:true, dependent.qualifying_child:true, dependent.resident:true, dependent.qc_dependent:true, dependent.qr_relationship:true, dependent.qr_income:true, dependent.income_exception:false, dependent.qualifying_relative:false, dependent.qr_dependent:false, dependent.claimed_no_tin:false, dependent.claimed:true, dependent.under_ctc_age:true, dependent.ctc_child:true, dependent.odc_person:false, dependent.ctc_amount#0, dependent.odc_amount#1, dependent.actc_amount#0, dependent.hoh_test2:true, dependent.hoh_test1:false, dependent.eic_child:true, dependent.eic_ssn_child:true, dependent.dc_child_all_year:false, dependent.dc_age13:true, dependent.dc_under13:true, dependent.dc_child:true, dependent.dc_incapable:true, dependent.dc_disabled_qp:true, dependent.dc_qp:true, dependent.dc_over12_care:true, dependent.dc_line2c:true",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "$interest": [],
+        "$sales": [],
+        "$gift": [],
+        "sb.ordinary_dividends": 0,
+        "sb.unsupported": false,
+        "sb.line7a": false,
+        "sb.fbar_required": false,
+        "sb.form8938": false,
+        "sb.line8": false,
+        "f1040.line3a": 0,
+        "div.box2b": 0,
+        "div.box2c": 0,
+        "div.box2d": 0,
+        "div.box2e": 0,
+        "div.box2f": 0,
+        "div.box3": 0,
+        "div.box9": 0,
+        "div.box10": 0,
+        "div.box13": 0,
+        "div.basis_reconciled": true,
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "qbi.dividends": 0,
+        "qbi.unsupported": false,
+        "f4952.line1": 0,
+        "f4952.line4g": 0,
+        "f4952.carryover": false,
+        "f4952.unsupported": false,
+        "f4952.alternative_allocation": false,
+        "f8959.unsupported": false,
+        "f8960.unsupported": false,
+        "f8960.refund": false,
+        "f8960.allocated_taxes": 0,
+        "ftc.taxes": 0,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "ftc.elect": true,
+        "s3.line9": 0,
+        "s3.line10": 0,
+        "s3.line12": 0,
+        "s3.line14": 0,
+        "sa.unsupported": false,
+        "sa.charity_limited": false,
+        "sa.excluded_income": false,
+        "sa.dependent": false,
+        "sa.spouse_extra": false,
+        "sa.spouse_itemizes": false,
+        "sa.elect_itemize": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "scope.schedule1": false,
+        "scope.credits": false,
+        "scope.other_income": false,
+        "scope.other_line16": false,
+        "s2.amt": false,
+        "s2.other": false,
+        "f1040.line25b": 0,
+        "f1040.line25c": 0,
+        "f1040.line26": 0,
+        "f1040.line35a": 0,
+        "f1040.line36": 0,
+        "$dependent": [
+          "a"
+        ],
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false,
+        "eic.qc_of_another": false,
+        "eic.us_home": true,
+        "household.married": true,
+        "household.credit_disallowed": false,
+        "household.community_property": false,
+        "$retirement": [],
+        "ssb.benefits": 0,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "refund.received": 0,
+        "sli.interest": 0,
+        "s1.uc_repaid": 0,
+        "s1.uc_unsupported": false,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false,
+        "person[taxpayer].role": "taxpayer",
+        "person[taxpayer].rrta": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
+        "person[taxpayer].eic_ssn": true,
+        "person[taxpayer].under16": false,
+        "person[taxpayer].born_before_2001": true,
+        "person[taxpayer].born_after_1960": true,
+        "person[taxpayer].educator_expenses": 0,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 7000000,
+        "person[taxpayer].w2[e0].box2": 0,
+        "person[taxpayer].w2[e0].box3": 7000000,
+        "person[taxpayer].w2[e0].box4": 434000,
+        "person[taxpayer].w2[e0].box5": 7000000,
+        "person[taxpayer].w2[e0].box6": 101500,
+        "person[taxpayer].w2[e0].box7": 0,
+        "$tipjob@person[taxpayer]": [],
+        "$otjob@person[taxpayer]": [],
+        "$f8889@person[taxpayer]": [],
+        "person[spouse].role": "spouse",
+        "person[spouse].rrta": false,
+        "person[spouse].age65": false,
+        "person[spouse].blind": false,
+        "person[spouse].tin": true,
+        "person[spouse].work_ssn": true,
+        "person[spouse].eic_ssn": true,
+        "person[spouse].under16": false,
+        "person[spouse].born_before_2001": true,
+        "person[spouse].born_after_1960": true,
+        "person[spouse].educator_expenses": 0,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 4000000,
+        "person[spouse].w2[e0].box2": 0,
+        "person[spouse].w2[e0].box3": 4000000,
+        "person[spouse].w2[e0].box4": 248000,
+        "person[spouse].w2[e0].box5": 4000000,
+        "person[spouse].w2[e0].box6": 58000,
+        "person[spouse].w2[e0].box7": 0,
+        "$tipjob@person[spouse]": [],
+        "$otjob@person[spouse]": [],
+        "$f8889@person[spouse]": [],
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": true,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[e0].box12_any": false,
+        "person[spouse].sav_born": true,
+        "person[spouse].sav_student": false,
+        "person[spouse].sav_claimed": false,
+        "person[spouse].sav_trad": false,
+        "person[spouse].sav_able": false,
+        "person[spouse].sav_roth": 0,
+        "person[spouse].sav_excess": false,
+        "person[spouse].sav_voluntary": 0,
+        "person[spouse].sav_prior_joint": 0,
+        "person[spouse].sav_prior_other": 0,
+        "person[spouse].w2[e0].box12_any": false,
+        "dependent[a].relationship": "child",
+        "dependent[a].age": 13,
+        "dependent[a].student": false,
+        "dependent[a].disabled": false,
+        "dependent[a].months": 12,
+        "dependent[a].self_support": false,
+        "dependent[a].joint_return": false,
+        "dependent[a].citizen": true,
+        "dependent[a].canada_mexico": false,
+        "dependent[a].married": false,
+        "dependent[a].tin": true,
+        "dependent[a].work_ssn": true,
+        "dependent[a].gross_income": 0,
+        "dependent[a].supported": true,
+        "dependent[a].other_claimant": false,
+        "dependent[a].divorced_rule": false,
+        "dependent[a].multiple_support": false,
+        "dependent[a].parent_home_paid": false,
+        "dependent[a].younger": true,
+        "dependent[a].us_half": true,
+        "dependent[a].eic_ssn": true,
+        "f2441.student_disabled": false,
+        "f2441.spouse_died": false,
+        "f2441.nondependent": false,
+        "f2441.prior_year": false,
+        "dependent[a].dc_paid": 400000,
+        "dependent[a].dc_incapable": true,
+        "$dcprov": [
+          "p0"
+        ],
+        "dcprov[p0].tin_kind": "tin",
+        "dcprov[p0].household": false,
+        "dcprov[p0].paid": 400000,
+        "dcprov[p0].related": false,
+        "f2441.paid_2026": 0,
+        "f2441.employer_care": false,
+        "s1.cod_any": false,
+        "dependent[a].dc_under13": true,
+        "dependent[a].dc_over12_care": true
+      },
+      "expect": {
+        "dependent[a].qc_relationship": {
+          "kind": "bool",
+          "value": true
+        },
+        "dependent[a].qc_age": {
+          "kind": "bool",
+          "value": true
+        },
+        "dependent[a].lived_half": {
+          "kind": "bool",
+          "value": true
+        },
+        "dependent[a].qualifying_child": {
+          "kind": "bool",
+          "value": true
+        },
+        "dependent[a].resident": {
+          "kind": "bool",
+          "value": true
+        },
+        "dependent[a].qc_dependent": {
+          "kind": "bool",
+          "value": true
+        },
+        "dependent[a].qr_relationship": {
+          "kind": "bool",
+          "value": true
+        },
+        "dependent[a].qr_income": {
+          "kind": "bool",
+          "value": true
+        },
+        "dependent[a].income_exception": {
+          "kind": "bool",
+          "value": false
+        },
+        "dependent[a].qualifying_relative": {
+          "kind": "bool",
+          "value": false
+        },
+        "dependent[a].qr_dependent": {
+          "kind": "bool",
+          "value": false
+        },
+        "dependent[a].claimed_no_tin": {
+          "kind": "bool",
+          "value": false
+        },
+        "dependent[a].claimed": {
+          "kind": "bool",
+          "value": true
+        },
+        "dependent[a].under_ctc_age": {
+          "kind": "bool",
+          "value": true
+        },
+        "dependent[a].ctc_child": {
+          "kind": "bool",
+          "value": true
+        },
+        "dependent[a].odc_person": {
+          "kind": "bool",
+          "value": false
+        },
+        "dependent[a].ctc_amount": {
+          "kind": "money",
+          "cents": 220000
+        },
+        "dependent[a].odc_amount": {
+          "kind": "money",
+          "cents": 0
+        },
+        "dependent[a].actc_amount": {
+          "kind": "money",
+          "cents": 170000
+        },
+        "dependent[a].hoh_test2": {
+          "kind": "bool",
+          "value": true
+        },
+        "dependent[a].hoh_test1": {
+          "kind": "bool",
+          "value": false
+        },
+        "dependent[a].eic_child": {
+          "kind": "bool",
+          "value": true
+        },
+        "dependent[a].eic_ssn_child": {
+          "kind": "bool",
+          "value": true
+        },
+        "dependent[a].dc_child_all_year": {
+          "kind": "bool",
+          "value": false
+        },
+        "dependent[a].dc_age13": {
+          "kind": "bool",
+          "value": true
+        },
+        "dependent[a].dc_child": {
+          "kind": "bool",
+          "value": true
+        },
+        "dependent[a].dc_disabled_qp": {
+          "kind": "bool",
+          "value": true
+        },
+        "dependent[a].dc_qp": {
+          "kind": "bool",
+          "value": true
+        },
+        "dependent[a].dc_line2d": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "dependent[a].dc_line2c": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "classm.dependent.5",
+      "covers": [
+        "dependent"
+      ],
+      "evidence": "M",
+      "evidence_note": "Class M: claude-opus-5-5; prompt sha256 c4fd097cf01121f1dfd34e83acfe72381a81bce774b2b30ac162deec23e25d94; pages i1040gi 14,17,18,19,20,21,22,41,43,44,45,46 (6024dc94dd1f); f1040s8812 1,2 (9b38295071c4); i2441 1,3,4 (361baee739cc); p503 3,10 (a1ff9e2c3120); f2441 1,2 (f39ca34d11c1); p501 13,19 (6aca9108a08f); branches dependent.student:false, dependent.disabled:false, dependent.self_support:false, dependent.self_support:true, dependent.joint_return:false, dependent.citizen:true, dependent.canada_mexico:false, dependent.canada_mexico:true, dependent.married:false, dependent.tin:true, dependent.work_ssn:true, dependent.supported:true, dependent.other_claimant:false, dependent.divorced_rule:false, dependent.multiple_support:false, dependent.parent_home_paid:false, dependent.parent_home_paid:true, dependent.qc_relationship:false, dependent.younger:true, dependent.us_half:true, dependent.eic_ssn:false, dependent.eic_ssn:true, dependent.qc_age:true, dependent.lived_half:true, dependent.qualifying_child:false, dependent.resident:true, dependent.qc_dependent:false, dependent.qr_relationship:true, dependent.qr_income:true, dependent.income_exception:false, dependent.qualifying_relative:true, dependent.qr_dependent:true, dependent.claimed_no_tin:false, dependent.claimed:true, dependent.under_ctc_age:true, dependent.ctc_child:false, dependent.odc_person:true, dependent.ctc_amount#1, dependent.odc_amount#0, dependent.actc_amount#1, dependent.hoh_test2:true, dependent.hoh_test1:false, dependent.hoh_test1:true, dependent.eic_child:false, dependent.eic_ssn_child:false, dependent.dc_child_all_year:false, dependent.dc_age13:false, dependent.dc_under13:true, dependent.dc_child:false, dependent.dc_incapable:false, dependent.dc_disabled_qp:false, dependent.dc_qp:false, dependent.dc_line2c:false; dropped after ruling: dependent[dep_a].hoh_test1",
       "inputs": {
         "div.box2b": 0,
         "div.box2c": 0,
@@ -67269,13 +67624,28 @@
       }
     },
     {
-      "id": "classm.dependent.5",
+      "id": "classm.dependent.6",
       "covers": [
         "dependent"
       ],
       "evidence": "M",
-      "evidence_note": "Class M: claude-opus-5-5; prompt sha256 db2e4058e584b698960386b10f7cd5afca1c9f6dd9b46e903c79e1ebbd6fadcd; pages i1040gi 14,17,18,19,20,21,22,41,43,44,45,46 (6024dc94dd1f); f1040s8812 1,2 (9b38295071c4); i2441 1,3,4 (361baee739cc); p503 3,10 (a1ff9e2c3120); f2441 1,2 (f39ca34d11c1); p501 13,19 (6aca9108a08f); branches dependent.student:false, dependent.student:true, dependent.disabled:false, dependent.self_support:false, dependent.joint_return:false, dependent.joint_return:true, dependent.citizen:true, dependent.canada_mexico:false, dependent.married:false, dependent.tin:true, dependent.work_ssn:true, dependent.supported:true, dependent.other_claimant:false, dependent.divorced_rule:false, dependent.multiple_support:false, dependent.parent_home_paid:false, dependent.parent_home_paid:true, dependent.qc_relationship:true, dependent.younger:true, dependent.us_half:true, dependent.eic_ssn:true, dependent.qc_age:false, dependent.qc_age:true, dependent.lived_half:true, dependent.qualifying_child:false, dependent.qualifying_child:true, dependent.resident:true, dependent.qc_dependent:false, dependent.qc_dependent:true, dependent.qr_relationship:true, dependent.qr_income:true, dependent.income_exception:false, dependent.qualifying_relative:false, dependent.qualifying_relative:true, dependent.qr_dependent:false, dependent.qr_dependent:true, dependent.claimed_no_tin:false, dependent.claimed:true, dependent.under_ctc_age:false, dependent.under_ctc_age:true, dependent.ctc_child:false, dependent.ctc_child:true, dependent.odc_person:false, dependent.odc_person:true, dependent.ctc_amount#0, dependent.ctc_amount#1, dependent.odc_amount#0, dependent.odc_amount#1, dependent.actc_amount#0, dependent.actc_amount#1, dependent.hoh_test2:true, dependent.hoh_test1:false, dependent.eic_child:false, dependent.eic_child:true, dependent.eic_ssn_child:false, dependent.eic_ssn_child:true, dependent.dc_child_all_year:false, dependent.dc_child_all_year:true, dependent.dc_age13:false, dependent.dc_under13:true, dependent.dc_child:false, dependent.dc_incapable:false, dependent.dc_disabled_qp:false, dependent.dc_qp:false, dependent.dc_qp:true, dependent.dc_line2c:false; dropped after ruling: dependent[dep_b].dc_line2d",
+      "evidence_note": "Class M: claude-opus-5-5; prompt sha256 ee5d461b8d16cc9f38739c90df27d976d427fff0a10f1497967e0acdf9b943eb; pages i1040gi 14,17,18,19,20,21,22,41,43,44,45,46 (6024dc94dd1f); f1040s8812 1,2 (9b38295071c4); i2441 1,3,4 (361baee739cc); p503 3,10 (a1ff9e2c3120); f2441 1,2 (f39ca34d11c1); p501 13,19 (6aca9108a08f); branches dependent.student:false, dependent.disabled:false, dependent.self_support:false, dependent.joint_return:false, dependent.citizen:true, dependent.canada_mexico:false, dependent.married:false, dependent.tin:true, dependent.work_ssn:true, dependent.supported:true, dependent.other_claimant:false, dependent.divorced_rule:false, dependent.multiple_support:false, dependent.parent_home_paid:false, dependent.qc_relationship:true, dependent.younger:true, dependent.us_half:true, dependent.eic_ssn:true, dependent.qc_age:true, dependent.lived_half:true, dependent.qualifying_child:true, dependent.resident:true, dependent.qc_dependent:true, dependent.qr_relationship:true, dependent.qr_income:true, dependent.income_exception:false, dependent.qualifying_relative:false, dependent.qr_dependent:false, dependent.claimed_no_tin:false, dependent.claimed:true, dependent.under_ctc_age:true, dependent.ctc_child:true, dependent.odc_person:false, dependent.ctc_amount#0, dependent.odc_amount#1, dependent.actc_amount#0, dependent.hoh_test2:true, dependent.hoh_test1:false, dependent.eic_child:true, dependent.eic_ssn_child:true, dependent.dc_child_all_year:false, dependent.dc_age13:true, dependent.dc_under13:true, dependent.dc_child:true, dependent.dc_incapable:true, dependent.dc_disabled_qp:true, dependent.dc_qp:true, dependent.dc_over12_care:false, dependent.dc_line2c:false",
       "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "$interest": [],
+        "$sales": [],
+        "$gift": [],
+        "sb.ordinary_dividends": 0,
+        "sb.unsupported": false,
+        "sb.line7a": false,
+        "sb.fbar_required": false,
+        "sb.form8938": false,
+        "sb.line8": false,
+        "f1040.line3a": 0,
         "div.box2b": 0,
         "div.box2c": 0,
         "div.box2d": 0,
@@ -67284,220 +67654,147 @@
         "div.box3": 0,
         "div.box9": 0,
         "div.box10": 0,
-        "div.box12": 0,
         "div.box13": 0,
         "div.basis_reconciled": true,
-        "eic.qc_of_another": false,
-        "eic.us_home": true,
-        "eic.same_home": false,
-        "eic.legally_separated": false,
-        "f1040.status": "single",
-        "f1040.tax_exempt_interest": 0,
-        "f1040.line3a": 719200,
-        "f1040.line25b": 0,
-        "f1040.line25c": 0,
-        "f1040.line26": 0,
-        "f1040.line35a": 0,
-        "f1040.line36": 0,
-        "f2441.benefits": false,
-        "f2441.care": true,
-        "f2441.student_disabled": false,
-        "f2441.spouse_died": false,
-        "f2441.nondependent": false,
-        "f2441.prior_year": false,
-        "f2441.line13": 0,
-        "f2441.line14": 0,
-        "f2441.paid_2026": 0,
-        "f2441.plans_differ": false,
-        "f2441.employer_care": false,
-        "f2441.plan_max": 0,
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "qbi.dividends": 0,
+        "qbi.unsupported": false,
         "f4952.line1": 0,
-        "f4952.carryover": true,
+        "f4952.line4g": 0,
+        "f4952.carryover": false,
         "f4952.unsupported": false,
         "f4952.alternative_allocation": false,
-        "f4952.line4g": 0,
-        "f5695.part1_any": false,
-        "f5695.part2_any": false,
-        "f5695.business_use": false,
-        "f5695.construction_later": false,
-        "f5695.line1": 0,
-        "f5695.line2": 0,
-        "f5695.line3": 0,
-        "f5695.line4": 0,
-        "f5695.line5a": false,
-        "f5695.battery_cost": 0,
-        "f5695.line7a": false,
-        "f5695.line12": 0,
-        "f5695.line17a": true,
-        "f5695.line17b": true,
-        "f5695.line17c": true,
-        "f5695.line17e": false,
-        "f5695.line18a": 0,
-        "f5695.line19a": 0,
-        "f5695.line19d_i": 0,
-        "f5695.line19d_ii": 0,
-        "f5695.line19e": 0,
-        "f5695.qmid_doors": true,
-        "f5695.line20a_i": 0,
-        "f5695.line20a_ii": 0,
-        "f5695.line20a_iii": 0,
-        "f5695.line20a_iv": 0,
-        "f5695.line20b": 0,
-        "f5695.qmid_windows": true,
-        "f5695.line21a": true,
-        "f5695.line21b": true,
-        "f5695.b_new_home": false,
-        "f5695.line22a": 0,
-        "f5695.line22b": 0,
-        "f5695.qmid_ac": true,
-        "f5695.line23a_i": 0,
-        "f5695.line23a_ii": 0,
-        "f5695.line23b": 0,
-        "f5695.qmid_wh": true,
-        "f5695.line24a": 0,
-        "f5695.line24b": 0,
-        "f5695.qmid_furnace": true,
-        "f5695.line25a": false,
-        "f5695.line25c": 0,
-        "f5695.qmid_enabling": true,
-        "f5695.line26a": false,
-        "f5695.line26b": 0,
-        "f5695.line29a": 0,
-        "f5695.line29b": 0,
-        "f5695.line29c": 0,
-        "f5695.line29d": 0,
-        "f5695.line29e": 0,
-        "f5695.line29f": 0,
-        "f5695.qmid_hp": true,
-        "f5695.joint_occupancy": false,
-        "f5695.separate_homes": false,
-        "f5695.condo": false,
         "f8959.unsupported": false,
         "f8960.unsupported": false,
         "f8960.refund": false,
         "f8960.allocated_taxes": 0,
-        "ftc.taxes": 11700,
+        "ftc.taxes": 0,
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "household.home_cost": true,
-        "household.unmarried": true,
-        "household.married": false,
-        "household.community_property": false,
-        "household.credit_disallowed": false,
-        "ira.special": false,
-        "ira.se_capital": false,
-        "ira.deduct_less": false,
-        "qbi.dividends": 958900,
-        "qbi.unsupported": false,
-        "qbi.carryforward": 0,
-        "refund.received": 0,
-        "refund.box8": false,
-        "refund.not_2024": false,
-        "refund.itemized": false,
-        "refund.sales": false,
-        "refund.exc_tax": false,
-        "refund.exc_who": false,
-        "refund.line5d_2024": 0,
-        "refund.line5e_2024": 0,
-        "refund.line17_2024": 0,
-        "refund.status": "single",
-        "refund.mfs_spouse_itemized": false,
-        "refund.you_born": false,
-        "refund.you_blind": false,
-        "refund.spouse_born": false,
-        "refund.spouse_blind": false,
-        "s1.uc_paid": 0,
-        "s1.uc_repaid": 0,
-        "s1.uc_unsupported": false,
-        "s1.line8_other": false,
-        "s1.gambling_winnings": 0,
-        "s1.gambling_pro": false,
-        "s1.line8g": 0,
-        "s1.line8h": 0,
-        "s1.line8i": 0,
-        "s1.line8j": 0,
-        "s1.line8r": 0,
-        "s1.alimony": false,
-        "s1.alimony_received": 0,
-        "s1.alimony_paid": 0,
-        "s1.alimony_unsupported": false,
-        "s1.cod_any": false,
-        "s1.cod_amount": 0,
-        "s1.cod_unsupported": false,
-        "s1.jury_to_employer": 0,
-        "s179.line10": 0,
-        "s1a.tips": false,
-        "s1a.overtime": false,
-        "s1a.carloan": false,
-        "s2.amt": false,
-        "s2.other": false,
         "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
-        "s8812.combat_pay": false,
-        "s8812.puerto_rico": false,
         "sa.unsupported": false,
-        "sa.charity_limited": true,
-        "sa.excluded_income": true,
+        "sa.charity_limited": false,
+        "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
-        "sa.line5a": 308700,
+        "sa.line5a": 0,
         "sa.line5b": 0,
         "sa.line5c": 0,
-        "sa.line8a": 96700,
-        "sa.line11": 1500200,
-        "sa.gambling_losses": 0,
-        "sb.unsupported": false,
-        "sb.ordinary_dividends": 5993000,
-        "sb.line7a": true,
-        "sb.fbar_required": false,
-        "sb.form8938": false,
-        "sb.line8": false,
+        "sa.line8a": 0,
+        "sa.line11": 0,
         "scope.schedule1": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
-        "sd.other_forms": false,
-        "sd.carryover": false,
-        "sd.distributions": 625400,
-        "sli.interest": 0,
-        "sli.claimed": false,
+        "s2.amt": false,
+        "s2.other": false,
+        "f1040.line25b": 0,
+        "f1040.line25c": 0,
+        "f1040.line26": 0,
+        "f1040.line35a": 0,
+        "f1040.line36": 0,
+        "$dependent": [
+          "a"
+        ],
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false,
+        "eic.qc_of_another": false,
+        "eic.us_home": true,
+        "household.married": true,
+        "household.credit_disallowed": false,
+        "household.community_property": false,
+        "$retirement": [],
         "ssb.benefits": 0,
-        "ssb.pub915": false,
-        "ssb.lump_sum": false,
-        "ssb.terror_disability": true,
-        "ssb.lived_apart": false,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "refund.received": 0,
+        "sli.interest": 0,
+        "s1.uc_repaid": 0,
+        "s1.uc_unsupported": false,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false,
         "person[taxpayer].role": "taxpayer",
+        "person[taxpayer].rrta": false,
         "person[taxpayer].age65": false,
         "person[taxpayer].blind": false,
         "person[taxpayer].tin": true,
-        "person[taxpayer].itin_applied": false,
         "person[taxpayer].work_ssn": true,
         "person[taxpayer].eic_ssn": true,
         "person[taxpayer].under16": false,
-        "person[taxpayer].educator_expenses": 0,
-        "person[taxpayer].eligible_educator": false,
         "person[taxpayer].born_before_2001": true,
         "person[taxpayer].born_after_1960": true,
-        "person[taxpayer].died_before_65": false,
-        "person[taxpayer].rrta": false,
-        "person[taxpayer].se_screen": false,
-        "person[taxpayer].plan": "none",
-        "person[taxpayer].plan_screen": false,
-        "person[taxpayer].sep_rate": 22,
-        "person[taxpayer].sep_contrib": 0,
-        "person[taxpayer].simple_deferral": 0,
-        "person[taxpayer].simple_age": "under50",
-        "person[taxpayer].simple_kind": "nonelective",
-        "person[taxpayer].simple_employer": 0,
+        "person[taxpayer].educator_expenses": 0,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 7000000,
+        "person[taxpayer].w2[e0].box2": 0,
+        "person[taxpayer].w2[e0].box3": 7000000,
+        "person[taxpayer].w2[e0].box4": 434000,
+        "person[taxpayer].w2[e0].box5": 7000000,
+        "person[taxpayer].w2[e0].box6": 101500,
+        "person[taxpayer].w2[e0].box7": 0,
+        "$tipjob@person[taxpayer]": [],
+        "$otjob@person[taxpayer]": [],
+        "$f8889@person[taxpayer]": [],
+        "person[spouse].role": "spouse",
+        "person[spouse].rrta": false,
+        "person[spouse].age65": false,
+        "person[spouse].blind": false,
+        "person[spouse].tin": true,
+        "person[spouse].work_ssn": true,
+        "person[spouse].eic_ssn": true,
+        "person[spouse].under16": false,
+        "person[spouse].born_before_2001": true,
+        "person[spouse].born_after_1960": true,
+        "person[spouse].educator_expenses": 0,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 4000000,
+        "person[spouse].w2[e0].box2": 0,
+        "person[spouse].w2[e0].box3": 4000000,
+        "person[spouse].w2[e0].box4": 248000,
+        "person[spouse].w2[e0].box5": 4000000,
+        "person[spouse].w2[e0].box6": 58000,
+        "person[spouse].w2[e0].box7": 0,
+        "$tipjob@person[spouse]": [],
+        "$otjob@person[spouse]": [],
+        "$f8889@person[spouse]": [],
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": true,
+        "f2441.benefits": false,
         "person[taxpayer].sav_born": true,
-        "person[taxpayer].sav_student": true,
+        "person[taxpayer].sav_student": false,
         "person[taxpayer].sav_claimed": false,
         "person[taxpayer].sav_trad": false,
         "person[taxpayer].sav_able": false,
@@ -67506,524 +67803,176 @@
         "person[taxpayer].sav_voluntary": 0,
         "person[taxpayer].sav_prior_joint": 0,
         "person[taxpayer].sav_prior_other": 0,
-        "person[taxpayer].ira_trad": 0,
-        "person[taxpayer].ira_excess": false,
-        "person[taxpayer].ira_age50": false,
-        "person[taxpayer].ira_work_plan": false,
-        "person[taxpayer].ira_basis": 0,
-        "person[taxpayer].ira_basis_adjusted": false,
-        "person[taxpayer].ira_dist": false,
-        "person[taxpayer].f8889[hsa].line2": 0,
-        "person[taxpayer].f8889[hsa].line9": 0,
-        "person[taxpayer].f8889[hsa].unsupported": false,
-        "person[taxpayer].f8889[hsa].months_eligible": 0,
-        "person[taxpayer].f8889[hsa].months_family": 0,
-        "person[taxpayer].f8889[hsa].age55": false,
-        "person[taxpayer].f8889[hsa].dec_coverage": "none",
-        "person[taxpayer].f8889[hsa].last_month": false,
-        "person[taxpayer].f8889[hsa].allocation": "equal",
-        "person[taxpayer].f8889[hsa].allocated": 0,
-        "person[taxpayer].f8889[hsa].line14a": 0,
-        "person[taxpayer].f8889[hsa].rollover": 0,
-        "person[taxpayer].f8889[hsa].medical": 0,
-        "person[taxpayer].f8889[hsa].line17a": false,
-        "person[taxpayer].f8889[hsa].subject_part": 0,
-        "$person": [
-          "taxpayer"
-        ],
-        "$f8889@person[taxpayer]": [
-          "hsa"
-        ],
-        "$sc@person[taxpayer]": [
-          "biz_a"
-        ],
-        "person[taxpayer].sc[biz_a].statutory": false,
-        "person[taxpayer].sc[biz_a].passive": true,
-        "person[taxpayer].sc[biz_a].spouse_owned": false,
-        "person[taxpayer].sc[biz_a].method_other": false,
-        "person[taxpayer].sc[biz_a].special": false,
-        "person[taxpayer].sc[biz_a].at_risk": true,
-        "person[taxpayer].sc[biz_a].inventory_other": false,
-        "person[taxpayer].sc[biz_a].tips_ot": false,
-        "person[taxpayer].sc[biz_a].line1": 0,
-        "person[taxpayer].sc[biz_a].line2": 0,
-        "person[taxpayer].sc[biz_a].line6": 0,
-        "person[taxpayer].sc[biz_a].line35": 0,
-        "person[taxpayer].sc[biz_a].line36": 0,
-        "person[taxpayer].sc[biz_a].line37": 0,
-        "person[taxpayer].sc[biz_a].line38": 0,
-        "person[taxpayer].sc[biz_a].line39": 0,
-        "person[taxpayer].sc[biz_a].line41": 0,
-        "person[taxpayer].sc[biz_a].ho_uses": false,
-        "person[taxpayer].sc[biz_a].hi_uses": false,
-        "person[taxpayer].sc[biz_a].line8": 0,
-        "person[taxpayer].sc[biz_a].line10": 0,
-        "person[taxpayer].sc[biz_a].line11": 744200,
-        "person[taxpayer].sc[biz_a].line14": 0,
-        "person[taxpayer].sc[biz_a].line15": 1594600,
-        "person[taxpayer].sc[biz_a].line16a": 0,
-        "person[taxpayer].sc[biz_a].line16b": 0,
-        "person[taxpayer].sc[biz_a].line17": 0,
-        "person[taxpayer].sc[biz_a].line18": 0,
-        "person[taxpayer].sc[biz_a].line19": 2636400,
-        "person[taxpayer].sc[biz_a].rent_equipment": 0,
-        "person[taxpayer].sc[biz_a].line20b": 0,
-        "person[taxpayer].sc[biz_a].line21": 0,
-        "person[taxpayer].sc[biz_a].line22": 0,
-        "person[taxpayer].sc[biz_a].line23": 0,
-        "person[taxpayer].sc[biz_a].line24a": 2381900,
-        "person[taxpayer].sc[biz_a].meals_50": 0,
-        "person[taxpayer].sc[biz_a].meals_80": 2197300,
-        "person[taxpayer].sc[biz_a].meals_100": 0,
-        "person[taxpayer].sc[biz_a].line25": 3000000,
-        "person[taxpayer].sc[biz_a].line26": 0,
-        "person[taxpayer].sc[biz_a].line48": 0,
-        "person[taxpayer].sc[biz_a].ho_other": false,
-        "person[taxpayer].sc[biz_a].ho_sqft": 0,
-        "person[taxpayer].sc[biz_a].ho_home_sqft": 0,
-        "person[taxpayer].sc[biz_a].hi_screen": false,
-        "person[taxpayer].sc[biz_a].f7206_line1": 0,
-        "$ltc@person[taxpayer].sc[biz_a]": [],
-        "$scveh@person[taxpayer].sc[biz_a]": [
-          "car_1",
-          "car_2"
-        ],
-        "person[taxpayer].sc[biz_a].scveh[car_1].method": "standard",
-        "person[taxpayer].sc[biz_a].scveh[car_1].owned": false,
-        "person[taxpayer].sc[biz_a].scveh[car_1].placed_date": 2024,
-        "person[taxpayer].sc[biz_a].scveh[car_1].miles_business": 9103,
-        "person[taxpayer].sc[biz_a].scveh[car_1].miles_commuting": 0,
-        "person[taxpayer].sc[biz_a].scveh[car_1].miles_other": 8931,
-        "person[taxpayer].sc[biz_a].scveh[car_1].parking": 0,
-        "person[taxpayer].sc[biz_a].scveh[car_1].smr_ok": true,
-        "person[taxpayer].sc[biz_a].scveh[car_1].operating": 567100,
-        "person[taxpayer].sc[biz_a].scveh[car_1].lease": 156400,
-        "person[taxpayer].sc[biz_a].scveh[car_1].placed": "y2024",
-        "person[taxpayer].sc[biz_a].scveh[car_1].screen": false,
-        "person[taxpayer].sc[biz_a].scveh[car_1].cost": 0,
-        "person[taxpayer].sc[biz_a].scveh[car_1].passenger": true,
-        "person[taxpayer].sc[biz_a].scveh[car_1].suv": false,
-        "person[taxpayer].sc[biz_a].scveh[car_1].s179_elect": 0,
-        "person[taxpayer].sc[biz_a].scveh[car_1].after_jan19": true,
-        "person[taxpayer].sc[biz_a].scveh[car_1].bonus_choice": "none",
-        "person[taxpayer].sc[biz_a].scveh[car_1].bonus_same": true,
-        "person[taxpayer].sc[biz_a].scveh[car_1].prior_179": 0,
-        "person[taxpayer].sc[biz_a].scveh[car_1].quarter": "q4",
-        "person[taxpayer].sc[biz_a].scveh[car_1].prior_conv": "hy",
-        "person[taxpayer].sc[biz_a].scveh[car_2].method": "standard",
-        "person[taxpayer].sc[biz_a].scveh[car_2].owned": true,
-        "person[taxpayer].sc[biz_a].scveh[car_2].placed_date": 2020,
-        "person[taxpayer].sc[biz_a].scveh[car_2].miles_business": 16299,
-        "person[taxpayer].sc[biz_a].scveh[car_2].miles_commuting": 3470,
-        "person[taxpayer].sc[biz_a].scveh[car_2].miles_other": 763,
-        "person[taxpayer].sc[biz_a].scveh[car_2].parking": 95500,
-        "person[taxpayer].sc[biz_a].scveh[car_2].smr_ok": true,
-        "person[taxpayer].sc[biz_a].scveh[car_2].operating": 0,
-        "person[taxpayer].sc[biz_a].scveh[car_2].lease": 590800,
-        "person[taxpayer].sc[biz_a].scveh[car_2].placed": "y2020",
-        "person[taxpayer].sc[biz_a].scveh[car_2].screen": false,
-        "person[taxpayer].sc[biz_a].scveh[car_2].cost": 7329500,
-        "person[taxpayer].sc[biz_a].scveh[car_2].passenger": true,
-        "person[taxpayer].sc[biz_a].scveh[car_2].suv": false,
-        "person[taxpayer].sc[biz_a].scveh[car_2].s179_elect": 0,
-        "person[taxpayer].sc[biz_a].scveh[car_2].after_jan19": true,
-        "person[taxpayer].sc[biz_a].scveh[car_2].bonus_choice": "none",
-        "person[taxpayer].sc[biz_a].scveh[car_2].bonus_same": true,
-        "person[taxpayer].sc[biz_a].scveh[car_2].prior_179": 0,
-        "person[taxpayer].sc[biz_a].scveh[car_2].quarter": "q2",
-        "person[taxpayer].sc[biz_a].scveh[car_2].prior_conv": "hy",
-        "$asset@person[taxpayer].sc[biz_a]": [
-          "item_1",
-          "item_2"
-        ],
-        "person[taxpayer].sc[biz_a].asset[item_1].class": "c33_4",
-        "person[taxpayer].sc[biz_a].asset[item_1].screen": false,
-        "person[taxpayer].sc[biz_a].asset[item_1].placed": "y2025",
-        "person[taxpayer].sc[biz_a].asset[item_1].cost": 4807500,
-        "person[taxpayer].sc[biz_a].asset[item_1].pct": 100,
-        "person[taxpayer].sc[biz_a].asset[item_1].listed": false,
-        "person[taxpayer].sc[biz_a].asset[item_1].quarter": "q4",
-        "person[taxpayer].sc[biz_a].asset[item_1].s179": 0,
-        "person[taxpayer].sc[biz_a].asset[item_1].after_jan19": true,
-        "person[taxpayer].sc[biz_a].asset[item_1].bonus_choice": "forty",
-        "person[taxpayer].sc[biz_a].asset[item_1].bonus_same": true,
-        "person[taxpayer].sc[biz_a].asset[item_1].prior_conv": "hy",
-        "person[taxpayer].sc[biz_a].asset[item_1].prior_179": 0,
-        "person[taxpayer].sc[biz_a].asset[item_1].prior_bonus": 0,
-        "person[taxpayer].sc[biz_a].asset[item_2].class": "c20_1",
-        "person[taxpayer].sc[biz_a].asset[item_2].screen": false,
-        "person[taxpayer].sc[biz_a].asset[item_2].placed": "y2025",
-        "person[taxpayer].sc[biz_a].asset[item_2].cost": 1998900,
-        "person[taxpayer].sc[biz_a].asset[item_2].pct": 16,
-        "person[taxpayer].sc[biz_a].asset[item_2].listed": false,
-        "person[taxpayer].sc[biz_a].asset[item_2].quarter": "q3",
-        "person[taxpayer].sc[biz_a].asset[item_2].s179": 0,
-        "person[taxpayer].sc[biz_a].asset[item_2].after_jan19": false,
-        "person[taxpayer].sc[biz_a].asset[item_2].bonus_choice": "none",
-        "person[taxpayer].sc[biz_a].asset[item_2].bonus_same": true,
-        "person[taxpayer].sc[biz_a].asset[item_2].prior_conv": "mq1",
-        "person[taxpayer].sc[biz_a].asset[item_2].prior_179": 0,
-        "person[taxpayer].sc[biz_a].asset[item_2].prior_bonus": 0,
-        "$w2@person[taxpayer]": [
-          "emp_a",
-          "emp_b"
-        ],
-        "person[taxpayer].w2[emp_a].box1": 13543100,
-        "person[taxpayer].w2[emp_a].box2": 1354300,
-        "person[taxpayer].w2[emp_a].box3": 13543100,
-        "person[taxpayer].w2[emp_a].box7": 0,
-        "person[taxpayer].w2[emp_a].box4": 839700,
-        "person[taxpayer].w2[emp_a].box5": 13543100,
-        "person[taxpayer].w2[emp_a].box6": 196400,
-        "person[taxpayer].w2[emp_a].box10": 0,
-        "person[taxpayer].w2[emp_a].box10_wages": 0,
-        "person[taxpayer].w2[emp_a].box12_any": true,
-        "person[taxpayer].w2[emp_a].box12_userra": false,
-        "person[taxpayer].w2[emp_a].box12_d": 438400,
-        "person[taxpayer].w2[emp_a].box12_e": 0,
-        "person[taxpayer].w2[emp_a].box12_f": 0,
-        "person[taxpayer].w2[emp_a].box12_g": 0,
-        "person[taxpayer].w2[emp_a].box12_h": 0,
-        "person[taxpayer].w2[emp_a].box12_s": 0,
-        "person[taxpayer].w2[emp_a].box12_aa": 0,
-        "person[taxpayer].w2[emp_a].box12_bb": 0,
-        "person[taxpayer].w2[emp_a].box12_ee": 0,
-        "person[taxpayer].w2[emp_a].g_governmental": false,
-        "person[taxpayer].w2[emp_a].g_elective": 0,
-        "person[taxpayer].w2[emp_b].box1": 28820600,
-        "person[taxpayer].w2[emp_b].box2": 2882100,
-        "person[taxpayer].w2[emp_b].box3": 17610000,
-        "person[taxpayer].w2[emp_b].box7": 0,
-        "person[taxpayer].w2[emp_b].box4": 1091800,
-        "person[taxpayer].w2[emp_b].box5": 28820600,
-        "person[taxpayer].w2[emp_b].box6": 497300,
-        "person[taxpayer].w2[emp_b].box10": 0,
-        "person[taxpayer].w2[emp_b].box10_wages": 0,
-        "person[taxpayer].w2[emp_b].box12_any": false,
-        "person[taxpayer].w2[emp_b].box12_userra": false,
-        "person[taxpayer].w2[emp_b].box12_d": 0,
-        "person[taxpayer].w2[emp_b].box12_e": 0,
-        "person[taxpayer].w2[emp_b].box12_f": 0,
-        "person[taxpayer].w2[emp_b].box12_g": 0,
-        "person[taxpayer].w2[emp_b].box12_h": 0,
-        "person[taxpayer].w2[emp_b].box12_s": 0,
-        "person[taxpayer].w2[emp_b].box12_aa": 0,
-        "person[taxpayer].w2[emp_b].box12_bb": 0,
-        "person[taxpayer].w2[emp_b].box12_ee": 0,
-        "person[taxpayer].w2[emp_b].g_governmental": false,
-        "person[taxpayer].w2[emp_b].g_elective": 0,
-        "$interest": [
-          "bank_a"
-        ],
-        "interest[bank_a].amount": 0,
-        "interest[bank_a].penalty": 0,
-        "$sales": [],
-        "$gift": [
-          "item_a",
-          "item_b"
-        ],
-        "gift[item_a].deduction": 0,
-        "gift[item_a].public_securities": true,
-        "gift[item_a].special": false,
-        "gift[item_b].deduction": 463000,
-        "gift[item_b].public_securities": false,
-        "gift[item_b].special": false,
-        "$dependent": [
-          "dep_a",
-          "dep_b"
-        ],
-        "dependent[dep_a].relationship": "sibling",
-        "dependent[dep_a].age": 4,
-        "dependent[dep_a].younger": true,
-        "dependent[dep_a].student": true,
-        "dependent[dep_a].disabled": false,
-        "dependent[dep_a].months": 12,
-        "dependent[dep_a].self_support": false,
-        "dependent[dep_a].joint_return": false,
-        "dependent[dep_a].citizen": true,
-        "dependent[dep_a].canada_mexico": false,
-        "dependent[dep_a].married": false,
-        "dependent[dep_a].tin": true,
-        "dependent[dep_a].work_ssn": true,
-        "dependent[dep_a].gross_income": 0,
-        "dependent[dep_a].supported": true,
-        "dependent[dep_a].other_claimant": false,
-        "dependent[dep_a].divorced_rule": false,
-        "dependent[dep_a].multiple_support": false,
-        "dependent[dep_a].parent_home_paid": false,
-        "dependent[dep_a].us_half": true,
-        "dependent[dep_a].eic_ssn": true,
-        "dependent[dep_b].relationship": "child",
-        "dependent[dep_b].age": 25,
-        "dependent[dep_b].younger": true,
-        "dependent[dep_b].student": false,
-        "dependent[dep_b].disabled": false,
-        "dependent[dep_b].months": 12,
-        "dependent[dep_b].self_support": false,
-        "dependent[dep_b].joint_return": true,
-        "dependent[dep_b].citizen": true,
-        "dependent[dep_b].canada_mexico": false,
-        "dependent[dep_b].married": false,
-        "dependent[dep_b].tin": true,
-        "dependent[dep_b].work_ssn": true,
-        "dependent[dep_b].gross_income": 0,
-        "dependent[dep_b].supported": true,
-        "dependent[dep_b].other_claimant": false,
-        "dependent[dep_b].divorced_rule": false,
-        "dependent[dep_b].multiple_support": false,
-        "dependent[dep_b].parent_home_paid": true,
-        "dependent[dep_b].us_half": true,
-        "dependent[dep_b].eic_ssn": true,
-        "dependent[dep_a].dc_under13": true,
-        "dependent[dep_a].dc_incapable": false,
-        "dependent[dep_a].dc_paid": 148000,
-        "dependent[dep_b].dc_under13": true,
-        "dependent[dep_b].dc_incapable": false,
-        "dependent[dep_b].dc_paid": 25000,
+        "person[taxpayer].w2[e0].box12_any": false,
+        "person[spouse].sav_born": true,
+        "person[spouse].sav_student": false,
+        "person[spouse].sav_claimed": false,
+        "person[spouse].sav_trad": false,
+        "person[spouse].sav_able": false,
+        "person[spouse].sav_roth": 0,
+        "person[spouse].sav_excess": false,
+        "person[spouse].sav_voluntary": 0,
+        "person[spouse].sav_prior_joint": 0,
+        "person[spouse].sav_prior_other": 0,
+        "person[spouse].w2[e0].box12_any": false,
+        "dependent[a].relationship": "child",
+        "dependent[a].age": 13,
+        "dependent[a].student": false,
+        "dependent[a].disabled": false,
+        "dependent[a].months": 12,
+        "dependent[a].self_support": false,
+        "dependent[a].joint_return": false,
+        "dependent[a].citizen": true,
+        "dependent[a].canada_mexico": false,
+        "dependent[a].married": false,
+        "dependent[a].tin": true,
+        "dependent[a].work_ssn": true,
+        "dependent[a].gross_income": 0,
+        "dependent[a].supported": true,
+        "dependent[a].other_claimant": false,
+        "dependent[a].divorced_rule": false,
+        "dependent[a].multiple_support": false,
+        "dependent[a].parent_home_paid": false,
+        "dependent[a].younger": true,
+        "dependent[a].us_half": true,
+        "dependent[a].eic_ssn": true,
+        "f2441.student_disabled": false,
+        "f2441.spouse_died": false,
+        "f2441.nondependent": false,
+        "f2441.prior_year": false,
+        "dependent[a].dc_paid": 400000,
+        "dependent[a].dc_incapable": true,
         "$dcprov": [
-          "prov_a"
+          "p0"
         ],
-        "$oi8z": [],
-        "dcprov[prov_a].tin_kind": "tin",
-        "dcprov[prov_a].household": false,
-        "dcprov[prov_a].paid": 0,
-        "dcprov[prov_a].related": false,
-        "$retirement": []
+        "dcprov[p0].tin_kind": "tin",
+        "dcprov[p0].household": false,
+        "dcprov[p0].paid": 400000,
+        "dcprov[p0].related": false,
+        "f2441.paid_2026": 0,
+        "f2441.employer_care": false,
+        "s1.cod_any": false,
+        "dependent[a].dc_under13": true,
+        "dependent[a].dc_over12_care": false
       },
       "expect": {
-        "dependent[dep_a].qc_relationship": {
+        "dependent[a].qc_relationship": {
           "kind": "bool",
           "value": true
         },
-        "dependent[dep_a].qc_age": {
+        "dependent[a].qc_age": {
           "kind": "bool",
           "value": true
         },
-        "dependent[dep_a].lived_half": {
+        "dependent[a].lived_half": {
           "kind": "bool",
           "value": true
         },
-        "dependent[dep_a].qualifying_child": {
+        "dependent[a].qualifying_child": {
           "kind": "bool",
           "value": true
         },
-        "dependent[dep_a].resident": {
+        "dependent[a].resident": {
           "kind": "bool",
           "value": true
         },
-        "dependent[dep_a].qc_dependent": {
+        "dependent[a].qc_dependent": {
           "kind": "bool",
           "value": true
         },
-        "dependent[dep_a].qr_relationship": {
+        "dependent[a].qr_relationship": {
           "kind": "bool",
           "value": true
         },
-        "dependent[dep_a].qr_income": {
+        "dependent[a].qr_income": {
           "kind": "bool",
           "value": true
         },
-        "dependent[dep_a].income_exception": {
+        "dependent[a].income_exception": {
           "kind": "bool",
           "value": false
         },
-        "dependent[dep_a].qualifying_relative": {
+        "dependent[a].qualifying_relative": {
           "kind": "bool",
           "value": false
         },
-        "dependent[dep_a].qr_dependent": {
+        "dependent[a].qr_dependent": {
           "kind": "bool",
           "value": false
         },
-        "dependent[dep_a].claimed_no_tin": {
+        "dependent[a].claimed_no_tin": {
           "kind": "bool",
           "value": false
         },
-        "dependent[dep_a].claimed": {
+        "dependent[a].claimed": {
           "kind": "bool",
           "value": true
         },
-        "dependent[dep_a].under_ctc_age": {
+        "dependent[a].under_ctc_age": {
           "kind": "bool",
           "value": true
         },
-        "dependent[dep_a].ctc_child": {
+        "dependent[a].ctc_child": {
           "kind": "bool",
           "value": true
         },
-        "dependent[dep_a].odc_person": {
+        "dependent[a].odc_person": {
           "kind": "bool",
           "value": false
         },
-        "dependent[dep_a].ctc_amount": {
+        "dependent[a].ctc_amount": {
           "kind": "money",
           "cents": 220000
         },
-        "dependent[dep_a].odc_amount": {
+        "dependent[a].odc_amount": {
           "kind": "money",
           "cents": 0
         },
-        "dependent[dep_a].actc_amount": {
+        "dependent[a].actc_amount": {
           "kind": "money",
           "cents": 170000
         },
-        "dependent[dep_a].hoh_test2": {
+        "dependent[a].hoh_test2": {
           "kind": "bool",
           "value": true
         },
-        "dependent[dep_a].hoh_test1": {
+        "dependent[a].hoh_test1": {
           "kind": "bool",
           "value": false
         },
-        "dependent[dep_a].eic_child": {
+        "dependent[a].eic_child": {
           "kind": "bool",
           "value": true
         },
-        "dependent[dep_a].eic_ssn_child": {
+        "dependent[a].eic_ssn_child": {
           "kind": "bool",
           "value": true
         },
-        "dependent[dep_a].dc_child_all_year": {
-          "kind": "bool",
-          "value": true
-        },
-        "dependent[dep_a].dc_age13": {
+        "dependent[a].dc_child_all_year": {
           "kind": "bool",
           "value": false
         },
-        "dependent[dep_a].dc_child": {
-          "kind": "bool",
-          "value": false
-        },
-        "dependent[dep_a].dc_disabled_qp": {
-          "kind": "bool",
-          "value": false
-        },
-        "dependent[dep_a].dc_qp": {
+        "dependent[a].dc_age13": {
           "kind": "bool",
           "value": true
         },
-        "dependent[dep_a].dc_line2d": {
+        "dependent[a].dc_child": {
+          "kind": "bool",
+          "value": true
+        },
+        "dependent[a].dc_disabled_qp": {
+          "kind": "bool",
+          "value": true
+        },
+        "dependent[a].dc_qp": {
+          "kind": "bool",
+          "value": true
+        },
+        "dependent[a].dc_line2d": {
           "kind": "money",
-          "cents": 148000
+          "cents": 400000
         },
-        "dependent[dep_a].dc_line2c": {
-          "kind": "bool",
-          "value": false
-        },
-        "dependent[dep_b].qc_relationship": {
-          "kind": "bool",
-          "value": true
-        },
-        "dependent[dep_b].qc_age": {
-          "kind": "bool",
-          "value": false
-        },
-        "dependent[dep_b].lived_half": {
-          "kind": "bool",
-          "value": true
-        },
-        "dependent[dep_b].qualifying_child": {
-          "kind": "bool",
-          "value": false
-        },
-        "dependent[dep_b].resident": {
-          "kind": "bool",
-          "value": true
-        },
-        "dependent[dep_b].qc_dependent": {
-          "kind": "bool",
-          "value": false
-        },
-        "dependent[dep_b].qr_relationship": {
-          "kind": "bool",
-          "value": true
-        },
-        "dependent[dep_b].qr_income": {
-          "kind": "bool",
-          "value": true
-        },
-        "dependent[dep_b].income_exception": {
-          "kind": "bool",
-          "value": false
-        },
-        "dependent[dep_b].qualifying_relative": {
-          "kind": "bool",
-          "value": true
-        },
-        "dependent[dep_b].qr_dependent": {
-          "kind": "bool",
-          "value": true
-        },
-        "dependent[dep_b].claimed_no_tin": {
-          "kind": "bool",
-          "value": false
-        },
-        "dependent[dep_b].claimed": {
-          "kind": "bool",
-          "value": true
-        },
-        "dependent[dep_b].under_ctc_age": {
-          "kind": "bool",
-          "value": false
-        },
-        "dependent[dep_b].ctc_child": {
-          "kind": "bool",
-          "value": false
-        },
-        "dependent[dep_b].odc_person": {
-          "kind": "bool",
-          "value": true
-        },
-        "dependent[dep_b].ctc_amount": {
-          "kind": "money",
-          "cents": 0
-        },
-        "dependent[dep_b].odc_amount": {
-          "kind": "money",
-          "cents": 50000
-        },
-        "dependent[dep_b].actc_amount": {
-          "kind": "money",
-          "cents": 0
-        },
-        "dependent[dep_b].hoh_test2": {
-          "kind": "bool",
-          "value": true
-        },
-        "dependent[dep_b].hoh_test1": {
-          "kind": "bool",
-          "value": false
-        },
-        "dependent[dep_b].eic_child": {
-          "kind": "bool",
-          "value": false
-        },
-        "dependent[dep_b].eic_ssn_child": {
-          "kind": "bool",
-          "value": false
-        },
-        "dependent[dep_b].dc_child_all_year": {
-          "kind": "bool",
-          "value": false
-        },
-        "dependent[dep_b].dc_age13": {
-          "kind": "bool",
-          "value": false
-        },
-        "dependent[dep_b].dc_child": {
-          "kind": "bool",
-          "value": false
-        },
-        "dependent[dep_b].dc_disabled_qp": {
-          "kind": "bool",
-          "value": false
-        },
-        "dependent[dep_b].dc_qp": {
-          "kind": "bool",
-          "value": false
-        },
-        "dependent[dep_b].dc_line2c": {
+        "dependent[a].dc_line2c": {
           "kind": "bool",
           "value": false
         }

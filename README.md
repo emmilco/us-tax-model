@@ -150,6 +150,9 @@ source disagreements and three blank numeric outputs after a Form2441 STOP remai
 family has not been promoted. The regenerated scoreboard credits 198 computed lines across the
 recorded engine and second-family worked-value assertions; complete-form coverage remains separate.
 Current source-reading eligibility is in `reports/2025/second_family.md`. Transcription/render readings are
+subject to their individual gates. BUG-0129 exposed unit erasure in the transcription comparer;
+transcription qualification is held until that defect and prior agreements are audited. Model worked
+values and external-engine assertions are separate from this hold. Source readings are
 reported separately and are not yet wired into the scoreboard. The amended integrity plan strengthens
 second-family and engine checks, with human readings optional. Online tax interpretation is recorded
 as non-authoritative corroboration under `research/secondary/`; it earns no scoreboard credit and

@@ -156,6 +156,8 @@ def compare(kind, form, family):
         current = None
     stale = [fam for fam, log in ((families.DEFAULT, a), (family, b)) if current is None or log["subject"] != current]
     q = quality(kind, a, b, stale)
+    if kind == "transcription":
+        q["blockers"].append("BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited")
     if kind == "transcription" and b["policy"] != "source-only-computation-v2":
         q["blockers"].append("transcription predates the prompt-independence policy")
     q["blockers"].extend(model_blockers(kind, family, b))

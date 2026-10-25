@@ -7,7 +7,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | asset.md | form | 68 |
 | carloan.md | form | 24 |
 | dcprov.md | worksheet | 6 |
-| dependent.md | worksheet | 60 |
+| dependent.md | worksheet | 61 |
 | div.md | form | 22 |
 | eic.md | worksheet | 82 |
 | f1040.md | form | 63 |

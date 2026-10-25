@@ -1097,6 +1097,18 @@ form:
         doc: f2441
         locator: Form 2441 (2025), line 2, column (d)
       ambiguity: amb.2025.dc_line30
+    - id: dependent.dc_over12_care
+      printed: (helper)
+      type: Bool
+      label: Care provided while this qualifying person was age 13 or older and disabled
+      expr:
+        op: input
+        source: Of the care expenses included for this person on Form 2441, line 2, was any care provided
+          when the person was age 13 or older and physically or mentally unable to care for themselves?
+          Answer only for the care included on this form, not their age at the end of the year.
+      cite:
+        doc: i2441
+        locator: 'p. 3, Column (c), "Check the box in column (c) if the qualifying person listed in column (a) was over age 12 at the time the care was provided and was disabled"'
     - id: dependent.dc_line2c
       printed: 2(c)
       type: Bool
@@ -1110,13 +1122,25 @@ form:
               - dependent.dc_qp
               - const: true
           - op: test
-            ge:
-              - dependent.age
-              - param: dc.child_age
-          - op: test
             eq:
               - dependent.dc_incapable
               - const: true
+          - op: test
+            any:
+              - op: test
+                gt:
+                  - dependent.age
+                  - param: dc.child_age
+              - op: test
+                all:
+                  - op: test
+                    eq:
+                      - dependent.age
+                      - param: dc.child_age
+                  - op: test
+                    eq:
+                      - dependent.dc_over12_care
+                      - const: true
       cite:
         doc: i2441
         locator: 'p. 3, Column (c), "Check the box in column (c) if the qualifying person listed in column (a) was over age 12 at the time the care was provided and was disabled"'

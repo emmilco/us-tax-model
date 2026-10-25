@@ -79,8 +79,9 @@
    "printed": "dependent[dep_b].dc_disabled_qp",
    "project": "yes",
    "model": "no",
-   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The helper tests only the two conditions it names (lived with you more than half of 2025; not able to care for themselves); the dependent test is applied where the helper is read (dependent.dc_qp, 'this person is your dependent'), which the model's own working also makes No for this person (i2441 p. 1, Qualifying Person(s), 'Any disabled person who wasn't physically or mentally able to care for themselves who lived with you for more than half the year and whom you can claim as a dependent').",
-   "drop": true
+   "ruling": "Ruling: representation of a helper fragment; i2441 (2025) p.1 requires dependency, disability and residence for the full supported qualifying-person test. This helper supplies only disability plus residence; dependent.dc_qp separately tests dependent.claimed. The model answered the complete dependency question rather than that fragment. Drop its proposed helper value; do not count it as independent evidence or a model arithmetic error. The final qualifying-person calculation remains separately reviewed.",
+   "drop": true,
+   "context": "c0590ce217428f5b623c72beabb3a46195087e8851d5450402a3830688aeac15"
   },
   {
    "case": "classm.dependent.3",
@@ -121,6 +122,15 @@
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. This entry is not a qualifying person (`dependent.dc_qp` no, which the model agrees with: a household member aged 28 who is able to care for themselves); the model leaves it off line 2. The project shows the entry's expenses in its column (d) line, and the line 3 total `f2441.paid_total` sums column (d) only over entries with `dependent.dc_qp` true, so no amount on Form 2441 differs (i2441 p. 3, Line 2, \"Don't list a person on line 2 unless they are listed as an eligible person under Qualifying Person(s), earlier\").",
    "drop": true
+  },
+  {
+   "case": "classm.dependent.5",
+   "printed": "dependent[dep_a].hoh_test1",
+   "project": "yes",
+   "model": "no",
+   "ruling": "Ruling: representation of the parent-home predicate; i1040gi (2025) p.14 Test1 asks whether you maintained your dependent parent's main home for all2025 and says the parent need not live with you. The helper tests those facts; it does not require the parent to live elsewhere, and may overlap Test2. The model classified which printed route it would use rather than that helper predicate. Drop its proposed helper value instead of treating it as worked evidence.",
+   "drop": true,
+   "context": "c0590ce217428f5b623c72beabb3a46195087e8851d5450402a3830688aeac15"
   },
   {
    "case": "classm.dependent.5",

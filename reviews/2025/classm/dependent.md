@@ -4,11 +4,15 @@
 
 | field | value |
 | --- | --- |
-| date | 2026-10-22 |
+| date | 2026-10-24 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| subject sha256 | 2e539f030409f4e8088f99dfa951b5e4ac22fdf01a53bf7244ba65a39504388b |
-| cases | 5 |
+| prompt policy | worked-values-request-bound-v2 |
+| system sha256 | 18ff9cfe094eedd0548bba02012b0ebf2a58d0606e834e3633432585b4192cb7 |
+| reasoning effort | provider default |
+| output token budget | transport default (65536 for DeepSeek) |
+| subject sha256 | 9e572b7f858f275b4ff0ec697ee5252d4378730f1f4d3d5c4eaab6c2644aa26d |
+| cases | 6 |
 
 ## Source pages given to the model
 
@@ -1214,9 +1218,9 @@ Status: **DISAGREE**
 
 Project: yes
 Model: no
-Work: Not your dependent, and no listed exception (income, joint return, you claimable) applies
+Work: Not your dependent, and none of the listed exceptions applies
 
-Ruling: representation; project retained; model value dropped from the fixture. The helper tests only the two conditions it names (lived with you more than half of 2025; not able to care for themselves); the dependent test is applied where the helper is read (dependent.dc_qp, 'this person is your dependent'), which the model's own working also makes No for this person (i2441 p. 1, Qualifying Person(s), 'Any disabled person who wasn't physically or mentally able to care for themselves who lived with you for more than half the year and whom you can claim as a dependent'). [dropped]
+Ruling: representation of a helper fragment; i2441 (2025) p.1 requires dependency, disability and residence for the full supported qualifying-person test. This helper supplies only disability plus residence; dependent.dc_qp separately tests dependent.claimed. The model answered the complete dependency question rather than that fragment. Drop its proposed helper value; do not count it as independent evidence or a model arithmetic error. The final qualifying-person calculation remains separately reviewed. [dropped]
 
 ### classm.dependent.3 — dependent[dep_b].dc_qp — A qualifying person for Form 2441 (you have care expenses, and this person is yo
 Status: **AGREE**
@@ -1383,318 +1387,164 @@ Status: **AGREE**
 
 Value: no
 
-### case classm.dependent.4 — prompt sha256 c4fd097cf01121f1dfd34e83acfe72381a81bce774b2b30ac162deec23e25d94; branches: dependent.student:false, dependent.disabled:false, dependent.self_support:false, dependent.self_support:true, dependent.joint_return:false, dependent.citizen:true, dependent.canada_mexico:false, dependent.canada_mexico:true, dependent.married:false, dependent.tin:true, dependent.work_ssn:true, dependent.supported:true, dependent.other_claimant:false, dependent.divorced_rule:false, dependent.multiple_support:false, dependent.parent_home_paid:false, dependent.parent_home_paid:true, dependent.qc_relationship:false, dependent.younger:true, dependent.us_half:true, dependent.eic_ssn:false, dependent.eic_ssn:true, dependent.qc_age:true, dependent.lived_half:true, dependent.qualifying_child:false, dependent.resident:true, dependent.qc_dependent:false, dependent.qr_relationship:true, dependent.qr_income:true, dependent.income_exception:false, dependent.qualifying_relative:true, dependent.qr_dependent:true, dependent.claimed_no_tin:false, dependent.claimed:true, dependent.under_ctc_age:true, dependent.ctc_child:false, dependent.odc_person:true, dependent.ctc_amount#1, dependent.odc_amount#0, dependent.actc_amount#1, dependent.hoh_test2:true, dependent.hoh_test1:false, dependent.hoh_test1:true, dependent.eic_child:false, dependent.eic_ssn_child:false, dependent.dc_child_all_year:false, dependent.dc_age13:false, dependent.dc_under13:true, dependent.dc_child:false, dependent.dc_incapable:false, dependent.dc_disabled_qp:false, dependent.dc_qp:false, dependent.dc_line2c:false
+### case classm.dependent.4 — prompt sha256 f16aef57624e99336472e1d81617c8e650586de430cd38eb75d2fed228fb71c6; branches: dependent.student:false, dependent.disabled:false, dependent.self_support:false, dependent.joint_return:false, dependent.citizen:true, dependent.canada_mexico:false, dependent.married:false, dependent.tin:true, dependent.work_ssn:true, dependent.supported:true, dependent.other_claimant:false, dependent.divorced_rule:false, dependent.multiple_support:false, dependent.parent_home_paid:false, dependent.qc_relationship:true, dependent.younger:true, dependent.us_half:true, dependent.eic_ssn:true, dependent.qc_age:true, dependent.lived_half:true, dependent.qualifying_child:true, dependent.resident:true, dependent.qc_dependent:true, dependent.qr_relationship:true, dependent.qr_income:true, dependent.income_exception:false, dependent.qualifying_relative:false, dependent.qr_dependent:false, dependent.claimed_no_tin:false, dependent.claimed:true, dependent.under_ctc_age:true, dependent.ctc_child:true, dependent.odc_person:false, dependent.ctc_amount#0, dependent.odc_amount#1, dependent.actc_amount#0, dependent.hoh_test2:true, dependent.hoh_test1:false, dependent.eic_child:true, dependent.eic_ssn_child:true, dependent.dc_child_all_year:false, dependent.dc_age13:true, dependent.dc_under13:true, dependent.dc_child:true, dependent.dc_incapable:true, dependent.dc_disabled_qp:true, dependent.dc_qp:true, dependent.dc_over12_care:true, dependent.dc_line2c:true
 
-### classm.dependent.4 — dependent[dep_a].qc_relationship — A child, sibling, or a descendant of either
+### classm.dependent.4 — dependent[a].qc_relationship — A child, sibling, or a descendant of either
+Status: **AGREE**
+
+Value: yes
+
+### classm.dependent.4 — dependent[a].qc_age — Under 19 and younger than you, under 24 a full-time student and younger than you
+Status: **AGREE**
+
+Value: yes
+
+### classm.dependent.4 — dependent[a].lived_half — Lived with you for more than half of 2025
+Status: **AGREE**
+
+Value: yes
+
+### classm.dependent.4 — dependent[a].qualifying_child — Qualifying child (Step 1)
+Status: **AGREE**
+
+Value: yes
+
+### classm.dependent.4 — dependent[a].resident — U.S. citizen, national or resident alien, or a resident of Canada or Mexico
+Status: **AGREE**
+
+Value: yes
+
+### classm.dependent.4 — dependent[a].qc_dependent — Qualifying child who is your dependent (Step 2)
+Status: **AGREE**
+
+Value: yes
+
+### classm.dependent.4 — dependent[a].qr_relationship — A relative listed in Step 4, or any other person who lived with you all year
+Status: **AGREE**
+
+Value: yes
+
+### classm.dependent.4 — dependent[a].qr_income — Gross income under $5,200
+Status: **AGREE**
+
+Value: yes
+
+### classm.dependent.4 — dependent[a].income_exception — Permanently and totally disabled with gross income at or over the limit
 Status: **AGREE**
 
 Value: no
 
-### classm.dependent.4 — dependent[dep_a].qc_age — Under 19 and younger than you, under 24 a full-time student and younger than you
-Status: **AGREE**
-
-Value: yes
-
-### classm.dependent.4 — dependent[dep_a].lived_half — Lived with you for more than half of 2025
-Status: **AGREE**
-
-Value: yes
-
-### classm.dependent.4 — dependent[dep_a].qualifying_child — Qualifying child (Step 1)
+### classm.dependent.4 — dependent[a].qualifying_relative — Qualifying relative (Step 4)
 Status: **AGREE**
 
 Value: no
 
-### classm.dependent.4 — dependent[dep_a].resident — U.S. citizen, national or resident alien, or a resident of Canada or Mexico
-Status: **AGREE**
-
-Value: yes
-
-### classm.dependent.4 — dependent[dep_a].qc_dependent — Qualifying child who is your dependent (Step 2)
+### classm.dependent.4 — dependent[a].qr_dependent — Qualifying relative who is your dependent (Step 4, questions 2 and 5)
 Status: **AGREE**
 
 Value: no
 
-### classm.dependent.4 — dependent[dep_a].qr_relationship — A relative listed in Step 4, or any other person who lived with you all year
-Status: **AGREE**
-
-Value: yes
-
-### classm.dependent.4 — dependent[dep_a].qr_income — Gross income under $5,200
-Status: **AGREE**
-
-Value: yes
-
-### classm.dependent.4 — dependent[dep_a].income_exception — Permanently and totally disabled with gross income at or over the limit
+### classm.dependent.4 — dependent[a].claimed_no_tin — A person who meets the tests to be your dependent but has no SSN, ITIN or ATIN
 Status: **AGREE**
 
 Value: no
 
-### classm.dependent.4 — dependent[dep_a].qualifying_relative — Qualifying relative (Step 4)
+### classm.dependent.4 — dependent[a].claimed — Your dependent
 Status: **AGREE**
 
 Value: yes
 
-### classm.dependent.4 — dependent[dep_a].qr_dependent — Qualifying relative who is your dependent (Step 4, questions 2 and 5)
+### classm.dependent.4 — dependent[a].under_ctc_age — Under age 17 at the end of 2025
 Status: **AGREE**
 
 Value: yes
 
-### classm.dependent.4 — dependent[dep_a].claimed_no_tin — A person who meets the tests to be your dependent but has no SSN, ITIN or ATIN
+### classm.dependent.4 — dependent[a].ctc_child — Qualifying child for the child tax credit (Step 3)
+Status: **AGREE**
+
+Value: yes
+
+### classm.dependent.4 — dependent[a].odc_person — Dependent for the credit for other dependents (Steps 3 and 5)
 Status: **AGREE**
 
 Value: no
 
-### classm.dependent.4 — dependent[dep_a].claimed — Your dependent
+### classm.dependent.4 — dependent[a].ctc_amount — Child tax credit amount for this person before limits ($2,200 for a qualifying c
 Status: **AGREE**
 
-Value: yes
+Value: $2,200.00
 
-### classm.dependent.4 — dependent[dep_a].under_ctc_age — Under age 17 at the end of 2025
-Status: **AGREE**
-
-Value: yes
-
-### classm.dependent.4 — dependent[dep_a].ctc_child — Qualifying child for the child tax credit (Step 3)
-Status: **AGREE**
-
-Value: no
-
-### classm.dependent.4 — dependent[dep_a].odc_person — Dependent for the credit for other dependents (Steps 3 and 5)
-Status: **AGREE**
-
-Value: yes
-
-### classm.dependent.4 — dependent[dep_a].ctc_amount — Child tax credit amount for this person before limits ($2,200 for a qualifying c
+### classm.dependent.4 — dependent[a].odc_amount — Credit for other dependents amount for this person before limits ($500 for an ot
 Status: **AGREE**
 
 Value: $0.00
 
-### classm.dependent.4 — dependent[dep_a].odc_amount — Credit for other dependents amount for this person before limits ($500 for an ot
+### classm.dependent.4 — dependent[a].actc_amount — Additional child tax credit ceiling for this person ($1,700 for a qualifying chi
 Status: **AGREE**
 
-Value: $500.00
+Value: $1,700.00
 
-### classm.dependent.4 — dependent[dep_a].actc_amount — Additional child tax credit ceiling for this person ($1,700 for a qualifying chi
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.dependent.4 — dependent[dep_a].hoh_test2 — A Test 2 person who lived with you more than half the year (the home-cost condit
+### classm.dependent.4 — dependent[a].hoh_test2 — A Test 2 person who lived with you more than half the year (the home-cost condit
 Status: **AGREE**
 
 Value: yes
 
-### classm.dependent.4 — dependent[dep_a].hoh_test1 — Qualifies you for head of household under Test 1 through a parent who does not l
-Status: **DISAGREE**
-
-Project: yes
-Model: no
-Work: Parent lived with you, so this parent qualifies you through Test 2, not Test 1
-
-Ruling: representation; project retained; model value dropped from the fixture. Test 1 (i1040gi p. 14) covers a parent whose main home you kept up for all of 2025, with or without the parent living with you; the project's hoh_test1 encodes only the parent who does not live with you (the question asks 'For a parent not living with you'), and a dependent parent who lived with you all year in the home you kept up qualifies you through Test 2, item 1, so head of household eligibility is the same either way. [dropped]
-
-### classm.dependent.4 — dependent[dep_a].eic_child — Qualifying child for the EIC (relationship, age, not filing a joint return, live
+### classm.dependent.4 — dependent[a].hoh_test1 — Qualifies you for head of household under Test 1 through a parent who does not l
 Status: **AGREE**
 
 Value: no
 
-### classm.dependent.4 — dependent[dep_a].eic_ssn_child — Qualifying child for the EIC who has a valid SSN
-Status: **AGREE**
-
-Value: no
-
-### classm.dependent.4 — dependent[dep_a].dc_child_all_year — Your qualifying child who is your dependent and was under age 13 for all of 2025
-Status: **AGREE**
-
-Value: no
-
-### classm.dependent.4 — dependent[dep_a].dc_age13 — Your qualifying child who is your dependent and was 13 at the end of 2025 (who m
-Status: **AGREE**
-
-Value: no
-
-### classm.dependent.4 — dependent[dep_a].dc_child — Your qualifying child who is your dependent, turned 13 during 2025 and was under
-Status: **AGREE**
-
-Value: no
-
-### classm.dependent.4 — dependent[dep_a].dc_disabled_qp — Your dependent who lived with you for more than half of 2025 and was not able to
-Status: **AGREE**
-
-Value: no
-
-### classm.dependent.4 — dependent[dep_a].dc_qp — A qualifying person for Form 2441 (you have care expenses, and this person is yo
-Status: **AGREE**
-
-Value: no
-
-### classm.dependent.4 — dependent[dep_a].dc_line2d — Qualified expenses you incurred and paid in 2025 for the person listed in column
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.dependent.4 — dependent[dep_a].dc_line2c — Check here if the qualifying person was over age 12 and was disabled
-Status: **AGREE**
-
-Value: no
-
-### classm.dependent.4 — dependent[dep_b].qc_relationship — A child, sibling, or a descendant of either
-Status: **AGREE**
-
-Value: no
-
-### classm.dependent.4 — dependent[dep_b].qc_age — Under 19 and younger than you, under 24 a full-time student and younger than you
+### classm.dependent.4 — dependent[a].eic_child — Qualifying child for the EIC (relationship, age, not filing a joint return, live
 Status: **AGREE**
 
 Value: yes
 
-### classm.dependent.4 — dependent[dep_b].lived_half — Lived with you for more than half of 2025
+### classm.dependent.4 — dependent[a].eic_ssn_child — Qualifying child for the EIC who has a valid SSN
 Status: **AGREE**
 
 Value: yes
 
-### classm.dependent.4 — dependent[dep_b].qualifying_child — Qualifying child (Step 1)
+### classm.dependent.4 — dependent[a].dc_child_all_year — Your qualifying child who is your dependent and was under age 13 for all of 2025
 Status: **AGREE**
 
 Value: no
 
-### classm.dependent.4 — dependent[dep_b].resident — U.S. citizen, national or resident alien, or a resident of Canada or Mexico
+### classm.dependent.4 — dependent[a].dc_age13 — Your qualifying child who is your dependent and was 13 at the end of 2025 (who m
 Status: **AGREE**
 
 Value: yes
 
-### classm.dependent.4 — dependent[dep_b].qc_dependent — Qualifying child who is your dependent (Step 2)
-Status: **AGREE**
-
-Value: no
-
-### classm.dependent.4 — dependent[dep_b].qr_relationship — A relative listed in Step 4, or any other person who lived with you all year
+### classm.dependent.4 — dependent[a].dc_child — Your qualifying child who is your dependent, turned 13 during 2025 and was under
 Status: **AGREE**
 
 Value: yes
 
-### classm.dependent.4 — dependent[dep_b].qr_income — Gross income under $5,200
+### classm.dependent.4 — dependent[a].dc_disabled_qp — Your dependent who lived with you for more than half of 2025 and was not able to
 Status: **AGREE**
 
 Value: yes
 
-### classm.dependent.4 — dependent[dep_b].income_exception — Permanently and totally disabled with gross income at or over the limit
-Status: **AGREE**
-
-Value: no
-
-### classm.dependent.4 — dependent[dep_b].qualifying_relative — Qualifying relative (Step 4)
+### classm.dependent.4 — dependent[a].dc_qp — A qualifying person for Form 2441 (you have care expenses, and this person is yo
 Status: **AGREE**
 
 Value: yes
 
-### classm.dependent.4 — dependent[dep_b].qr_dependent — Qualifying relative who is your dependent (Step 4, questions 2 and 5)
+### classm.dependent.4 — dependent[a].dc_line2d — Qualified expenses you incurred and paid in 2025 for the person listed in column
+Status: **AGREE**
+
+Value: $4,000.00
+
+### classm.dependent.4 — dependent[a].dc_line2c — Check here if the qualifying person was over age 12 and was disabled
 Status: **AGREE**
 
 Value: yes
 
-### classm.dependent.4 — dependent[dep_b].claimed_no_tin — A person who meets the tests to be your dependent but has no SSN, ITIN or ATIN
-Status: **AGREE**
-
-Value: no
-
-### classm.dependent.4 — dependent[dep_b].claimed — Your dependent
-Status: **AGREE**
-
-Value: yes
-
-### classm.dependent.4 — dependent[dep_b].under_ctc_age — Under age 17 at the end of 2025
-Status: **AGREE**
-
-Value: yes
-
-### classm.dependent.4 — dependent[dep_b].ctc_child — Qualifying child for the child tax credit (Step 3)
-Status: **AGREE**
-
-Value: no
-
-### classm.dependent.4 — dependent[dep_b].odc_person — Dependent for the credit for other dependents (Steps 3 and 5)
-Status: **AGREE**
-
-Value: yes
-
-### classm.dependent.4 — dependent[dep_b].ctc_amount — Child tax credit amount for this person before limits ($2,200 for a qualifying c
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.dependent.4 — dependent[dep_b].odc_amount — Credit for other dependents amount for this person before limits ($500 for an ot
-Status: **AGREE**
-
-Value: $500.00
-
-### classm.dependent.4 — dependent[dep_b].actc_amount — Additional child tax credit ceiling for this person ($1,700 for a qualifying chi
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.dependent.4 — dependent[dep_b].hoh_test2 — A Test 2 person who lived with you more than half the year (the home-cost condit
-Status: **AGREE**
-
-Value: yes
-
-### classm.dependent.4 — dependent[dep_b].hoh_test1 — Qualifies you for head of household under Test 1 through a parent who does not l
-Status: **AGREE**
-
-Value: no
-
-### classm.dependent.4 — dependent[dep_b].eic_child — Qualifying child for the EIC (relationship, age, not filing a joint return, live
-Status: **AGREE**
-
-Value: no
-
-### classm.dependent.4 — dependent[dep_b].eic_ssn_child — Qualifying child for the EIC who has a valid SSN
-Status: **AGREE**
-
-Value: no
-
-### classm.dependent.4 — dependent[dep_b].dc_child_all_year — Your qualifying child who is your dependent and was under age 13 for all of 2025
-Status: **AGREE**
-
-Value: no
-
-### classm.dependent.4 — dependent[dep_b].dc_age13 — Your qualifying child who is your dependent and was 13 at the end of 2025 (who m
-Status: **AGREE**
-
-Value: no
-
-### classm.dependent.4 — dependent[dep_b].dc_child — Your qualifying child who is your dependent, turned 13 during 2025 and was under
-Status: **AGREE**
-
-Value: no
-
-### classm.dependent.4 — dependent[dep_b].dc_disabled_qp — Your dependent who lived with you for more than half of 2025 and was not able to
-Status: **AGREE**
-
-Value: no
-
-### classm.dependent.4 — dependent[dep_b].dc_qp — A qualifying person for Form 2441 (you have care expenses, and this person is yo
-Status: **AGREE**
-
-Value: no
-
-### classm.dependent.4 — dependent[dep_b].dc_line2d — Qualified expenses you incurred and paid in 2025 for the person listed in column
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.dependent.4 — dependent[dep_b].dc_line2c — Check here if the qualifying person was over age 12 and was disabled
-Status: **AGREE**
-
-Value: no
-
-### case classm.dependent.5 — prompt sha256 db2e4058e584b698960386b10f7cd5afca1c9f6dd9b46e903c79e1ebbd6fadcd; branches: dependent.student:false, dependent.student:true, dependent.disabled:false, dependent.self_support:false, dependent.joint_return:false, dependent.joint_return:true, dependent.citizen:true, dependent.canada_mexico:false, dependent.married:false, dependent.tin:true, dependent.work_ssn:true, dependent.supported:true, dependent.other_claimant:false, dependent.divorced_rule:false, dependent.multiple_support:false, dependent.parent_home_paid:false, dependent.parent_home_paid:true, dependent.qc_relationship:true, dependent.younger:true, dependent.us_half:true, dependent.eic_ssn:true, dependent.qc_age:false, dependent.qc_age:true, dependent.lived_half:true, dependent.qualifying_child:false, dependent.qualifying_child:true, dependent.resident:true, dependent.qc_dependent:false, dependent.qc_dependent:true, dependent.qr_relationship:true, dependent.qr_income:true, dependent.income_exception:false, dependent.qualifying_relative:false, dependent.qualifying_relative:true, dependent.qr_dependent:false, dependent.qr_dependent:true, dependent.claimed_no_tin:false, dependent.claimed:true, dependent.under_ctc_age:false, dependent.under_ctc_age:true, dependent.ctc_child:false, dependent.ctc_child:true, dependent.odc_person:false, dependent.odc_person:true, dependent.ctc_amount#0, dependent.ctc_amount#1, dependent.odc_amount#0, dependent.odc_amount#1, dependent.actc_amount#0, dependent.actc_amount#1, dependent.hoh_test2:true, dependent.hoh_test1:false, dependent.eic_child:false, dependent.eic_child:true, dependent.eic_ssn_child:false, dependent.eic_ssn_child:true, dependent.dc_child_all_year:false, dependent.dc_child_all_year:true, dependent.dc_age13:false, dependent.dc_under13:true, dependent.dc_child:false, dependent.dc_incapable:false, dependent.dc_disabled_qp:false, dependent.dc_qp:false, dependent.dc_qp:true, dependent.dc_line2c:false
+### case classm.dependent.5 — prompt sha256 c4fd097cf01121f1dfd34e83acfe72381a81bce774b2b30ac162deec23e25d94; branches: dependent.student:false, dependent.disabled:false, dependent.self_support:false, dependent.self_support:true, dependent.joint_return:false, dependent.citizen:true, dependent.canada_mexico:false, dependent.canada_mexico:true, dependent.married:false, dependent.tin:true, dependent.work_ssn:true, dependent.supported:true, dependent.other_claimant:false, dependent.divorced_rule:false, dependent.multiple_support:false, dependent.parent_home_paid:false, dependent.parent_home_paid:true, dependent.qc_relationship:false, dependent.younger:true, dependent.us_half:true, dependent.eic_ssn:false, dependent.eic_ssn:true, dependent.qc_age:true, dependent.lived_half:true, dependent.qualifying_child:false, dependent.resident:true, dependent.qc_dependent:false, dependent.qr_relationship:true, dependent.qr_income:true, dependent.income_exception:false, dependent.qualifying_relative:true, dependent.qr_dependent:true, dependent.claimed_no_tin:false, dependent.claimed:true, dependent.under_ctc_age:true, dependent.ctc_child:false, dependent.odc_person:true, dependent.ctc_amount#1, dependent.odc_amount#0, dependent.actc_amount#1, dependent.hoh_test2:true, dependent.hoh_test1:false, dependent.hoh_test1:true, dependent.eic_child:false, dependent.eic_ssn_child:false, dependent.dc_child_all_year:false, dependent.dc_age13:false, dependent.dc_under13:true, dependent.dc_child:false, dependent.dc_incapable:false, dependent.dc_disabled_qp:false, dependent.dc_qp:false, dependent.dc_line2c:false
 
 ### classm.dependent.5 — dependent[dep_a].qc_relationship — A child, sibling, or a descendant of either
 Status: **AGREE**
 
-Value: yes
+Value: no
 
 ### classm.dependent.5 — dependent[dep_a].qc_age — Under 19 and younger than you, under 24 a full-time student and younger than you
 Status: **AGREE**
@@ -1709,7 +1559,7 @@ Value: yes
 ### classm.dependent.5 — dependent[dep_a].qualifying_child — Qualifying child (Step 1)
 Status: **AGREE**
 
-Value: yes
+Value: no
 
 ### classm.dependent.5 — dependent[dep_a].resident — U.S. citizen, national or resident alien, or a resident of Canada or Mexico
 Status: **AGREE**
@@ -1719,7 +1569,7 @@ Value: yes
 ### classm.dependent.5 — dependent[dep_a].qc_dependent — Qualifying child who is your dependent (Step 2)
 Status: **AGREE**
 
-Value: yes
+Value: no
 
 ### classm.dependent.5 — dependent[dep_a].qr_relationship — A relative listed in Step 4, or any other person who lived with you all year
 Status: **AGREE**
@@ -1739,12 +1589,12 @@ Value: no
 ### classm.dependent.5 — dependent[dep_a].qualifying_relative — Qualifying relative (Step 4)
 Status: **AGREE**
 
-Value: no
+Value: yes
 
 ### classm.dependent.5 — dependent[dep_a].qr_dependent — Qualifying relative who is your dependent (Step 4, questions 2 and 5)
 Status: **AGREE**
 
-Value: no
+Value: yes
 
 ### classm.dependent.5 — dependent[dep_a].claimed_no_tin — A person who meets the tests to be your dependent but has no SSN, ITIN or ATIN
 Status: **AGREE**
@@ -1764,27 +1614,27 @@ Value: yes
 ### classm.dependent.5 — dependent[dep_a].ctc_child — Qualifying child for the child tax credit (Step 3)
 Status: **AGREE**
 
-Value: yes
+Value: no
 
 ### classm.dependent.5 — dependent[dep_a].odc_person — Dependent for the credit for other dependents (Steps 3 and 5)
 Status: **AGREE**
 
-Value: no
+Value: yes
 
 ### classm.dependent.5 — dependent[dep_a].ctc_amount — Child tax credit amount for this person before limits ($2,200 for a qualifying c
 Status: **AGREE**
 
-Value: $2,200.00
+Value: $0.00
 
 ### classm.dependent.5 — dependent[dep_a].odc_amount — Credit for other dependents amount for this person before limits ($500 for an ot
 Status: **AGREE**
 
-Value: $0.00
+Value: $500.00
 
 ### classm.dependent.5 — dependent[dep_a].actc_amount — Additional child tax credit ceiling for this person ($1,700 for a qualifying chi
 Status: **AGREE**
 
-Value: $1,700.00
+Value: $0.00
 
 ### classm.dependent.5 — dependent[dep_a].hoh_test2 — A Test 2 person who lived with you more than half the year (the home-cost condit
 Status: **AGREE**
@@ -1792,24 +1642,28 @@ Status: **AGREE**
 Value: yes
 
 ### classm.dependent.5 — dependent[dep_a].hoh_test1 — Qualifies you for head of household under Test 1 through a parent who does not l
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: no
+Project: yes
+Model: no
+Work: Parent lives with you, so Test 2 applies, not Test 1
+
+Ruling: representation of the parent-home predicate; i1040gi (2025) p.14 Test1 asks whether you maintained your dependent parent's main home for all2025 and says the parent need not live with you. The helper tests those facts; it does not require the parent to live elsewhere, and may overlap Test2. The model classified which printed route it would use rather than that helper predicate. Drop its proposed helper value instead of treating it as worked evidence. [dropped]
 
 ### classm.dependent.5 — dependent[dep_a].eic_child — Qualifying child for the EIC (relationship, age, not filing a joint return, live
 Status: **AGREE**
 
-Value: yes
+Value: no
 
 ### classm.dependent.5 — dependent[dep_a].eic_ssn_child — Qualifying child for the EIC who has a valid SSN
 Status: **AGREE**
 
-Value: yes
+Value: no
 
 ### classm.dependent.5 — dependent[dep_a].dc_child_all_year — Your qualifying child who is your dependent and was under age 13 for all of 2025
 Status: **AGREE**
 
-Value: yes
+Value: no
 
 ### classm.dependent.5 — dependent[dep_a].dc_age13 — Your qualifying child who is your dependent and was 13 at the end of 2025 (who m
 Status: **AGREE**
@@ -1829,12 +1683,12 @@ Value: no
 ### classm.dependent.5 — dependent[dep_a].dc_qp — A qualifying person for Form 2441 (you have care expenses, and this person is yo
 Status: **AGREE**
 
-Value: yes
+Value: no
 
 ### classm.dependent.5 — dependent[dep_a].dc_line2d — Qualified expenses you incurred and paid in 2025 for the person listed in column
 Status: **AGREE**
 
-Value: $1,480.00
+Value: $0.00
 
 ### classm.dependent.5 — dependent[dep_a].dc_line2c — Check here if the qualifying person was over age 12 and was disabled
 Status: **AGREE**
@@ -1844,12 +1698,12 @@ Value: no
 ### classm.dependent.5 — dependent[dep_b].qc_relationship — A child, sibling, or a descendant of either
 Status: **AGREE**
 
-Value: yes
+Value: no
 
 ### classm.dependent.5 — dependent[dep_b].qc_age — Under 19 and younger than you, under 24 a full-time student and younger than you
 Status: **AGREE**
 
-Value: no
+Value: yes
 
 ### classm.dependent.5 — dependent[dep_b].lived_half — Lived with you for more than half of 2025
 Status: **AGREE**
@@ -1909,7 +1763,7 @@ Value: yes
 ### classm.dependent.5 — dependent[dep_b].under_ctc_age — Under age 17 at the end of 2025
 Status: **AGREE**
 
-Value: no
+Value: yes
 
 ### classm.dependent.5 — dependent[dep_b].ctc_child — Qualifying child for the child tax credit (Step 3)
 Status: **AGREE**
@@ -1982,15 +1836,163 @@ Status: **AGREE**
 Value: no
 
 ### classm.dependent.5 — dependent[dep_b].dc_line2d — Qualified expenses you incurred and paid in 2025 for the person listed in column
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $250.00
-Model: $0.00
-Work: Not a qualifying person; not listed on line 2
-
-Ruling: representation; project retained; model value dropped from the fixture. This entry is not a qualifying person (dependent.dc_qp no, which the model agrees with); the model leaves it off line 2 (i2441 p. 3, Line 2, "Don't list a person on line 2 unless they are listed as an eligible person"), the project copies the person's expenses and applies the qualifying-person test where column (d) is summed (f2441.paid_total), so the Form 2441 total is the same. [dropped]
+Value: $0.00
 
 ### classm.dependent.5 — dependent[dep_b].dc_line2c — Check here if the qualifying person was over age 12 and was disabled
+Status: **AGREE**
+
+Value: no
+
+### case classm.dependent.6 — prompt sha256 ee5d461b8d16cc9f38739c90df27d976d427fff0a10f1497967e0acdf9b943eb; branches: dependent.student:false, dependent.disabled:false, dependent.self_support:false, dependent.joint_return:false, dependent.citizen:true, dependent.canada_mexico:false, dependent.married:false, dependent.tin:true, dependent.work_ssn:true, dependent.supported:true, dependent.other_claimant:false, dependent.divorced_rule:false, dependent.multiple_support:false, dependent.parent_home_paid:false, dependent.qc_relationship:true, dependent.younger:true, dependent.us_half:true, dependent.eic_ssn:true, dependent.qc_age:true, dependent.lived_half:true, dependent.qualifying_child:true, dependent.resident:true, dependent.qc_dependent:true, dependent.qr_relationship:true, dependent.qr_income:true, dependent.income_exception:false, dependent.qualifying_relative:false, dependent.qr_dependent:false, dependent.claimed_no_tin:false, dependent.claimed:true, dependent.under_ctc_age:true, dependent.ctc_child:true, dependent.odc_person:false, dependent.ctc_amount#0, dependent.odc_amount#1, dependent.actc_amount#0, dependent.hoh_test2:true, dependent.hoh_test1:false, dependent.eic_child:true, dependent.eic_ssn_child:true, dependent.dc_child_all_year:false, dependent.dc_age13:true, dependent.dc_under13:true, dependent.dc_child:true, dependent.dc_incapable:true, dependent.dc_disabled_qp:true, dependent.dc_qp:true, dependent.dc_over12_care:false, dependent.dc_line2c:false
+
+### classm.dependent.6 — dependent[a].qc_relationship — A child, sibling, or a descendant of either
+Status: **AGREE**
+
+Value: yes
+
+### classm.dependent.6 — dependent[a].qc_age — Under 19 and younger than you, under 24 a full-time student and younger than you
+Status: **AGREE**
+
+Value: yes
+
+### classm.dependent.6 — dependent[a].lived_half — Lived with you for more than half of 2025
+Status: **AGREE**
+
+Value: yes
+
+### classm.dependent.6 — dependent[a].qualifying_child — Qualifying child (Step 1)
+Status: **AGREE**
+
+Value: yes
+
+### classm.dependent.6 — dependent[a].resident — U.S. citizen, national or resident alien, or a resident of Canada or Mexico
+Status: **AGREE**
+
+Value: yes
+
+### classm.dependent.6 — dependent[a].qc_dependent — Qualifying child who is your dependent (Step 2)
+Status: **AGREE**
+
+Value: yes
+
+### classm.dependent.6 — dependent[a].qr_relationship — A relative listed in Step 4, or any other person who lived with you all year
+Status: **AGREE**
+
+Value: yes
+
+### classm.dependent.6 — dependent[a].qr_income — Gross income under $5,200
+Status: **AGREE**
+
+Value: yes
+
+### classm.dependent.6 — dependent[a].income_exception — Permanently and totally disabled with gross income at or over the limit
+Status: **AGREE**
+
+Value: no
+
+### classm.dependent.6 — dependent[a].qualifying_relative — Qualifying relative (Step 4)
+Status: **AGREE**
+
+Value: no
+
+### classm.dependent.6 — dependent[a].qr_dependent — Qualifying relative who is your dependent (Step 4, questions 2 and 5)
+Status: **AGREE**
+
+Value: no
+
+### classm.dependent.6 — dependent[a].claimed_no_tin — A person who meets the tests to be your dependent but has no SSN, ITIN or ATIN
+Status: **AGREE**
+
+Value: no
+
+### classm.dependent.6 — dependent[a].claimed — Your dependent
+Status: **AGREE**
+
+Value: yes
+
+### classm.dependent.6 — dependent[a].under_ctc_age — Under age 17 at the end of 2025
+Status: **AGREE**
+
+Value: yes
+
+### classm.dependent.6 — dependent[a].ctc_child — Qualifying child for the child tax credit (Step 3)
+Status: **AGREE**
+
+Value: yes
+
+### classm.dependent.6 — dependent[a].odc_person — Dependent for the credit for other dependents (Steps 3 and 5)
+Status: **AGREE**
+
+Value: no
+
+### classm.dependent.6 — dependent[a].ctc_amount — Child tax credit amount for this person before limits ($2,200 for a qualifying c
+Status: **AGREE**
+
+Value: $2,200.00
+
+### classm.dependent.6 — dependent[a].odc_amount — Credit for other dependents amount for this person before limits ($500 for an ot
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.dependent.6 — dependent[a].actc_amount — Additional child tax credit ceiling for this person ($1,700 for a qualifying chi
+Status: **AGREE**
+
+Value: $1,700.00
+
+### classm.dependent.6 — dependent[a].hoh_test2 — A Test 2 person who lived with you more than half the year (the home-cost condit
+Status: **AGREE**
+
+Value: yes
+
+### classm.dependent.6 — dependent[a].hoh_test1 — Qualifies you for head of household under Test 1 through a parent who does not l
+Status: **AGREE**
+
+Value: no
+
+### classm.dependent.6 — dependent[a].eic_child — Qualifying child for the EIC (relationship, age, not filing a joint return, live
+Status: **AGREE**
+
+Value: yes
+
+### classm.dependent.6 — dependent[a].eic_ssn_child — Qualifying child for the EIC who has a valid SSN
+Status: **AGREE**
+
+Value: yes
+
+### classm.dependent.6 — dependent[a].dc_child_all_year — Your qualifying child who is your dependent and was under age 13 for all of 2025
+Status: **AGREE**
+
+Value: no
+
+### classm.dependent.6 — dependent[a].dc_age13 — Your qualifying child who is your dependent and was 13 at the end of 2025 (who m
+Status: **AGREE**
+
+Value: yes
+
+### classm.dependent.6 — dependent[a].dc_child — Your qualifying child who is your dependent, turned 13 during 2025 and was under
+Status: **AGREE**
+
+Value: yes
+
+### classm.dependent.6 — dependent[a].dc_disabled_qp — Your dependent who lived with you for more than half of 2025 and was not able to
+Status: **AGREE**
+
+Value: yes
+
+### classm.dependent.6 — dependent[a].dc_qp — A qualifying person for Form 2441 (you have care expenses, and this person is yo
+Status: **AGREE**
+
+Value: yes
+
+### classm.dependent.6 — dependent[a].dc_line2d — Qualified expenses you incurred and paid in 2025 for the person listed in column
+Status: **AGREE**
+
+Value: $4,000.00
+
+### classm.dependent.6 — dependent[a].dc_line2c — Check here if the qualifying person was over age 12 and was disabled
 Status: **AGREE**
 
 Value: no
@@ -2004,100 +2006,100 @@ Value: no
 lines:
   - printed: "dependent[dep_a].qc_relationship"
     value: "yes"
-    work: "Step 1: the relationship is child, so the relationship test is met"
+    work: "Step 1: relationship is child"
   - printed: "dependent[dep_a].qc_age"
     value: "yes"
-    work: "Step 1: age 11 is under 19, and the child is younger than you"
+    work: "Age 11, under 19 and younger than you"
   - printed: "dependent[dep_a].lived_half"
     value: "yes"
-    work: "Step 1: 8 months is more than half of 2025"
+    work: "8 months is more than half of 2025"
   - printed: "dependent[dep_a].qualifying_child"
     value: "yes"
-    work: "Step 1: meets relationship, age and residency; did not provide over half of own support; no joint return; not another person's QC"
+    work: "Step 1: relationship, age, support, no joint return and residency tests all met; not the qualifying child of another person"
   - printed: "dependent[dep_a].resident"
     value: "yes"
-    work: "Step 2 Q1: U.S. citizen, national or resident alien"
+    work: "U.S. citizen, national or resident alien"
   - printed: "dependent[dep_a].qc_dependent"
     value: "yes"
-    work: "Step 2: resident; not married; not filing jointly; you cannot be claimed by another, so the child is your dependent"
+    work: "Step 2: resident, unmarried, no joint return, you cannot be claimed as a dependent"
   - printed: "dependent[dep_a].qr_relationship"
     value: "yes"
-    work: "Step 4: a child is a listed relative"
+    work: "Child is a relative listed in Step 4"
   - printed: "dependent[dep_a].qr_income"
     value: "yes"
-    work: "Step 4: $0 is less than $5,200"
+    work: "$0.00 is less than $5,200"
   - printed: "dependent[dep_a].income_exception"
     value: "no"
     work: "Not permanently and totally disabled"
   - printed: "dependent[dep_a].qualifying_relative"
     value: "no"
-    work: "Step 4: fails because the child is a qualifying child of a taxpayer (you)"
+    work: "Step 4: is your qualifying child, so cannot be a qualifying relative"
   - printed: "dependent[dep_a].qr_dependent"
     value: "no"
     work: "Not a qualifying relative"
   - printed: "dependent[dep_a].claimed_no_tin"
     value: "no"
-    work: "An SSN, ITIN or ATIN was issued on time"
+    work: "Has an SSN, ITIN or ATIN"
   - printed: "dependent[dep_a].claimed"
     value: "yes"
-    work: "Your dependent as a qualifying child under Step 2"
+    work: "Qualifying child who is your dependent"
   - printed: "dependent[dep_a].under_ctc_age"
     value: "yes"
     work: "Age 11 is under 17"
   - printed: "dependent[dep_a].ctc_child"
     value: "yes"
-    work: "Step 3: TIN yes; citizen yes; under 17 yes; you and the child have SSNs valid for employment"
+    work: "Step 3: has TIN, is a citizen, under 17, and you and the child have valid SSNs"
   - printed: "dependent[dep_a].odc_person"
     value: "no"
-    work: "Already counted as a child tax credit child"
+    work: "Qualifies for the child tax credit instead"
   - printed: "dependent[dep_a].ctc_amount"
     value: "2200.00"
-    work: "Qualifying child for the CTC: $2,200"
+    work: "Qualifying child for the child tax credit: $2,200"
   - printed: "dependent[dep_a].odc_amount"
     value: "0.00"
     work: "Not an other dependent"
   - printed: "dependent[dep_a].actc_amount"
     value: "1700.00"
-    work: "Qualifying child for the CTC: $1,700"
+    work: "Qualifying child for the child tax credit: $1,700"
   - printed: "dependent[dep_a].hoh_test2"
     value: "yes"
-    work: "Test 2(1): dependent who lived with you more than half the year; none of exclusions a-c apply"
+    work: "Dependent who lived with you more than half the year; none of the exclusions apply"
   - printed: "dependent[dep_a].hoh_test1"
     value: "no"
-    work: "Not your parent"
+    work: "Not a parent"
   - printed: "dependent[dep_a].eic_child"
     value: "yes"
-    work: "EIC Step 3: child; under 19 and younger; no joint return; lived with you in the U.S. more than half of 2025"
+    work: "Relationship, age and no-joint-return tests met; lived with you in the U.S. more than half of 2025"
   - printed: "dependent[dep_a].eic_ssn_child"
     value: "yes"
-    work: "Has an SSN valid for the EIC"
+    work: "EIC qualifying child with a valid SSN"
   - printed: "dependent[dep_a].dc_child_all_year"
     value: "yes"
-    work: "Qualifying child and dependent; age 11 at the end of 2025"
+    work: "Qualifying child who is your dependent, age 11 (12 or younger)"
   - printed: "dependent[dep_a].dc_age13"
     value: "no"
-    work: "Age is 11, not 13"
+    work: "Age 11, not 13"
   - printed: "dependent[dep_a].dc_child"
     value: "no"
     work: "Did not turn 13 in 2025"
   - printed: "dependent[dep_a].dc_disabled_qp"
     value: "no"
-    work: "Is able to care for self"
+    work: "Able to care for themselves"
   - printed: "dependent[dep_a].dc_qp"
     value: "no"
     work: "You paid no care expenses so you could work"
   - printed: "dependent[dep_a].dc_line2d"
     value: "0.00"
-    work: "Qualified expenses are $0"
+    work: "Qualified expenses are $0.00"
   - printed: "dependent[dep_a].dc_line2c"
     value: "no"
     work: "Not over age 12 and not disabled"
   - printed: "dependent[dep_b].qc_relationship"
     value: "no"
-    work: "A household member is not a child, sibling or descendant"
+    work: "Household member is not a child, sibling or descendant"
   - printed: "dependent[dep_b].qc_age"
     value: "yes"
-    work: "Permanently and totally disabled, which meets the age test at any age"
+    work: "Permanently and totally disabled, any age"
   - printed: "dependent[dep_b].lived_half"
     value: "yes"
     work: "12 months"
@@ -2112,52 +2114,52 @@ lines:
     work: "Not a qualifying child"
   - printed: "dependent[dep_b].qr_relationship"
     value: "yes"
-    work: "Step 4: other person who lived with you all year as a household member"
+    work: "Other person who lived with you all year as a household member"
   - printed: "dependent[dep_b].qr_income"
     value: "yes"
-    work: "$4,588 is less than $5,200"
+    work: "$4,588.00 is less than $5,200"
   - printed: "dependent[dep_b].income_exception"
     value: "no"
     work: "Disabled, but gross income is under the limit"
   - printed: "dependent[dep_b].qualifying_relative"
     value: "yes"
-    work: "Step 4: relationship met; not anyone's QC; income under $5,200; you provided over half of support"
+    work: "Step 4: household member, not anyone's qualifying child, income under $5,200, you provided over half of support"
   - printed: "dependent[dep_b].qr_dependent"
     value: "yes"
-    work: "Step 4 Q2: resident; Q3: not married; Q4: no joint return; Q5: you cannot be claimed by another"
+    work: "Step 4 Q2: resident; Q5: you cannot be claimed as a dependent; also unmarried and no joint return"
   - printed: "dependent[dep_b].claimed_no_tin"
     value: "no"
-    work: "Has a TIN"
+    work: "Has an SSN, ITIN or ATIN"
   - printed: "dependent[dep_b].claimed"
     value: "yes"
-    work: "Your dependent as a qualifying relative"
+    work: "Qualifying relative who is your dependent"
   - printed: "dependent[dep_b].under_ctc_age"
     value: "no"
     work: "Age 71"
   - printed: "dependent[dep_b].ctc_child"
     value: "no"
-    work: "Not a qualifying child"
+    work: "Not a qualifying child and not under 17"
   - printed: "dependent[dep_b].odc_person"
     value: "yes"
-    work: "Step 5: you have an SSN/ITIN; the relative has a TIN; the relative is a U.S. citizen, national or resident alien"
+    work: "Step 5: you have an SSN/ITIN, the relative has a TIN, and the relative is a U.S. citizen"
   - printed: "dependent[dep_b].ctc_amount"
     value: "0.00"
-    work: "Not a CTC child"
+    work: "Not a child tax credit child"
   - printed: "dependent[dep_b].odc_amount"
     value: "500.00"
     work: "Other dependent: $500"
   - printed: "dependent[dep_b].actc_amount"
     value: "0.00"
-    work: "Not a CTC child"
+    work: "Not a child tax credit child"
   - printed: "dependent[dep_b].hoh_test2"
     value: "no"
-    work: "Test 2(1)(b): excluded because a dependent only by living with you all year"
+    work: "Test 2 1(b): your dependent only because the person lived with you all year"
   - printed: "dependent[dep_b].hoh_test1"
     value: "no"
-    work: "Not your parent"
+    work: "Not a parent"
   - printed: "dependent[dep_b].eic_child"
     value: "no"
-    work: "Fails the EIC relationship test"
+    work: "Fails the relationship test"
   - printed: "dependent[dep_b].eic_ssn_child"
     value: "no"
     work: "Not an EIC qualifying child"
@@ -2172,25 +2174,25 @@ lines:
     work: "Not a qualifying child"
   - printed: "dependent[dep_b].dc_disabled_qp"
     value: "yes"
-    work: "Dependent; lived with you more than half the year; not able to care for self"
+    work: "Dependent who lived with you more than half the year and is not able to care for themselves"
   - printed: "dependent[dep_b].dc_qp"
     value: "no"
     work: "You paid no care expenses so you could work"
   - printed: "dependent[dep_b].dc_line2d"
     value: "0.00"
-    work: "Qualified expenses are $0"
+    work: "Qualified expenses are $0.00"
   - printed: "dependent[dep_b].dc_line2c"
     value: "no"
-    work: "Not listed on line 2 because there are no care expenses"
+    work: "Not a qualifying person listed on line 2"
   - printed: "dependent[dep_c].qc_relationship"
     value: "yes"
-    work: "The relationship is child"
+    work: "Relationship is child"
   - printed: "dependent[dep_c].qc_age"
     value: "no"
     work: "Not younger than you and not disabled"
   - printed: "dependent[dep_c].lived_half"
     value: "yes"
-    work: "12 months, counting temporary absences"
+    work: "12 months"
   - printed: "dependent[dep_c].qualifying_child"
     value: "no"
     work: "Fails the age test"
@@ -2202,10 +2204,10 @@ lines:
     work: "Not a qualifying child"
   - printed: "dependent[dep_c].qr_relationship"
     value: "yes"
-    work: "A child is a listed relative"
+    work: "Child is a relative listed in Step 4"
   - printed: "dependent[dep_c].qr_income"
     value: "no"
-    work: "$7,156 is not less than $5,200"
+    work: "$7,156.00 is not less than $5,200"
   - printed: "dependent[dep_c].income_exception"
     value: "no"
     work: "Not permanently and totally disabled"
@@ -2217,7 +2219,7 @@ lines:
     work: "Not a qualifying relative"
   - printed: "dependent[dep_c].claimed_no_tin"
     value: "no"
-    work: "Does not meet the dependent tests"
+    work: "Does not meet the dependent tests; has a TIN"
   - printed: "dependent[dep_c].claimed"
     value: "no"
     work: "Neither a qualifying child nor a qualifying relative"
@@ -2226,52 +2228,52 @@ lines:
     work: "Age 9 is under 17"
   - printed: "dependent[dep_c].ctc_child"
     value: "no"
-    work: "Not your dependent"
+    work: "Not your dependent qualifying child"
   - printed: "dependent[dep_c].odc_person"
     value: "no"
     work: "Not your dependent"
   - printed: "dependent[dep_c].ctc_amount"
     value: "0.00"
-    work: "Not a CTC child"
+    work: "Not a child tax credit child"
   - printed: "dependent[dep_c].odc_amount"
     value: "0.00"
     work: "Not an other dependent"
   - printed: "dependent[dep_c].actc_amount"
     value: "0.00"
-    work: "Not a CTC child"
+    work: "Not a child tax credit child"
   - printed: "dependent[dep_c].hoh_test2"
     value: "no"
     work: "Neither a dependent nor a qualifying child"
   - printed: "dependent[dep_c].hoh_test1"
     value: "no"
-    work: "Not your parent"
+    work: "Not a parent"
   - printed: "dependent[dep_c].eic_child"
     value: "no"
-    work: "Fails the age test; did not live with you in the U.S. more than half of 2025"
+    work: "Fails the age test and did not live with you in the U.S. more than half of 2025"
   - printed: "dependent[dep_c].eic_ssn_child"
     value: "no"
     work: "Not an EIC qualifying child"
   - printed: "dependent[dep_c].dc_child_all_year"
     value: "no"
-    work: "Not a qualifying child or dependent"
+    work: "Not your dependent qualifying child"
   - printed: "dependent[dep_c].dc_age13"
     value: "no"
-    work: "Not a qualifying child or dependent"
+    work: "Not your dependent qualifying child"
   - printed: "dependent[dep_c].dc_child"
     value: "no"
-    work: "Not a qualifying child or dependent"
+    work: "Not your dependent qualifying child"
   - printed: "dependent[dep_c].dc_disabled_qp"
     value: "no"
-    work: "Not your dependent and is able to care for self"
+    work: "Able to care for themselves and not your dependent"
   - printed: "dependent[dep_c].dc_qp"
     value: "no"
-    work: "No care expenses; not a qualifying person"
+    work: "No care expenses and not a qualifying person"
   - printed: "dependent[dep_c].dc_line2d"
     value: "0.00"
-    work: "Qualified expenses are $0"
+    work: "Qualified expenses are $0.00"
   - printed: "dependent[dep_c].dc_line2c"
     value: "no"
-    work: "Not a qualifying person"
+    work: "Not over age 12 and not disabled"
 ```
 ```
 
@@ -2282,115 +2284,115 @@ lines:
 lines:
   - printed: "dependent[dep_a].qc_relationship"
     value: "yes"
-    work: "Step 1: son/daughter meets the relationship test"
+    work: "Relationship = child; Step 1 relationship test met"
   - printed: "dependent[dep_a].qc_age"
     value: "yes"
-    work: "Age 13 at end of 2025 is under 19, and the child is younger than you"
+    work: "Age 13 is under 19 and younger than you"
   - printed: "dependent[dep_a].lived_half"
     value: "yes"
     work: "Lived with you 12 months, which is more than half of 2025"
   - printed: "dependent[dep_a].qualifying_child"
     value: "yes"
-    work: "Step 1: relationship, age and residency met; not self-supporting; no joint return"
+    work: "Meets relationship, age, support (not over half own), not joint, and residency tests; not a QC of another person"
   - printed: "dependent[dep_a].resident"
     value: "yes"
-    work: "U.S. citizen, national or resident alien"
+    work: "U.S. citizen/national/resident alien"
   - printed: "dependent[dep_a].qc_dependent"
     value: "yes"
-    work: "Step 2: resident yes; not married; not joint; you can't be claimed as a dependent"
+    work: "Step 2: resident yes; not married; not joint; you can't be claimed by someone else, so you can claim"
   - printed: "dependent[dep_a].qr_relationship"
     value: "yes"
-    work: "Step 4: a child is a listed relative"
+    work: "A child is a relative listed in Step 4"
   - printed: "dependent[dep_a].qr_income"
     value: "yes"
-    work: "Gross income $0 is under $5,200"
+    work: "Gross income $0 < $5,200"
   - printed: "dependent[dep_a].income_exception"
     value: "no"
     work: "Not permanently and totally disabled"
   - printed: "dependent[dep_a].qualifying_relative"
     value: "no"
-    work: "Is your qualifying child, so fails the 'wasn't a qualifying child of any taxpayer' test"
+    work: "Is your qualifying child, so fails the 'not a qualifying child of any taxpayer' test"
   - printed: "dependent[dep_a].qr_dependent"
     value: "no"
     work: "Not a qualifying relative"
   - printed: "dependent[dep_a].claimed_no_tin"
     value: "no"
-    work: "Has an SSN, ITIN or ATIN"
+    work: "Has an SSN/ITIN/ATIN issued by the due date"
   - printed: "dependent[dep_a].claimed"
     value: "yes"
-    work: "Qualifying child who is your dependent (Step 2)"
+    work: "Dependent as a qualifying child (Step 2)"
   - printed: "dependent[dep_a].under_ctc_age"
     value: "yes"
-    work: "Age 13 is under 17"
+    work: "Age 13 < 17"
   - printed: "dependent[dep_a].ctc_child"
     value: "no"
-    work: "Step 3 Q4: child's SSN is not valid for employment, so go to Step 5"
+    work: "Step 3 Q4: child has no SSN valid for employment, so go to Step 5"
   - printed: "dependent[dep_a].odc_person"
     value: "yes"
-    work: "Step 5: you have SSN/ITIN; child has a TIN; child is a U.S. citizen"
+    work: "Step 5: you have an SSN/ITIN; child has a TIN; child is a U.S. citizen, so ODC applies"
   - printed: "dependent[dep_a].ctc_amount"
     value: "0.00"
     work: "Not a CTC qualifying child"
   - printed: "dependent[dep_a].odc_amount"
     value: "500.00"
-    work: "Other dependent counts $500"
+    work: "Other dependent: $500"
   - printed: "dependent[dep_a].actc_amount"
     value: "0.00"
     work: "Not a CTC qualifying child"
   - printed: "dependent[dep_a].hoh_test2"
     value: "yes"
-    work: "Your dependent who lived with you more than half the year; no Test 2 exclusion applies"
+    work: "Your dependent, lived with you more than half the year, no exclusion applies"
   - printed: "dependent[dep_a].hoh_test1"
     value: "no"
     work: "Not a parent"
   - printed: "dependent[dep_a].eic_child"
     value: "yes"
-    work: "Relationship, age 13 under 19 and younger, no joint return, lived in U.S. more than half the year"
+    work: "Child, age 13 < 19 and younger, not joint, lived in the U.S. more than half of 2025"
   - printed: "dependent[dep_a].eic_ssn_child"
     value: "yes"
-    work: "SSN valid for EIC"
+    work: "Has an SSN valid for the EIC"
   - printed: "dependent[dep_a].dc_child_all_year"
     value: "no"
-    work: "Age 13 at end of 2025"
+    work: "Age 13 at end of 2025, so not under 13 all year"
   - printed: "dependent[dep_a].dc_age13"
     value: "yes"
-    work: "Qualifying child dependent who was age 13 at end of 2025"
+    work: "QC dependent, age 13 at end of 2025"
   - printed: "dependent[dep_a].dc_child"
     value: "yes"
-    work: "Turned 13 during 2025 and was under 13 for part of 2025 when the care was provided"
+    work: "Turned 13 in 2025 and was under 13 for part of the year when care was provided"
   - printed: "dependent[dep_a].dc_disabled_qp"
     value: "no"
-    work: "Able to care for themselves"
+    work: "Able to care for self"
   - printed: "dependent[dep_a].dc_qp"
     value: "no"
-    work: "You did not pay for care so you could work (Form 2441 answer no)"
+    work: "No care paid so you could work, so there are no care expenses"
   - printed: "dependent[dep_a].dc_line2d"
     value: "0.00"
-    work: "Qualified expenses $0.00"
+    work: "Qualified expenses given as $0"
   - printed: "dependent[dep_a].dc_line2c"
     value: "no"
     work: "Not disabled"
   - printed: "dependent[dep_b].qc_relationship"
     value: "no"
-    work: "Relationship 'other' is not a child, sibling or descendant"
+    work: "Relationship = other, not a child/sibling/descendant"
   - printed: "dependent[dep_b].qc_age"
     value: "yes"
-    work: "Age 3 is under 19, and the person is younger than you"
+    work: "Age 3 is under 19 and younger than you"
   - printed: "dependent[dep_b].lived_half"
     value: "yes"
-    work: "Lived with you 12 months"
+    work: "12 months with you"
   - printed: "dependent[dep_b].qualifying_child"
     value: "no"
-    work: "Fails the relationship test"
+    work: "Fails relationship test"
   - printed: "dependent[dep_b].resident"
     value: "no"
-    work: "Not a U.S. citizen, national or resident alien; not a resident of Canada or Mexico"
+    work: "Not a U.S. citizen/national/resident alien and not a resident of Canada/Mexico"
   - printed: "dependent[dep_b].qc_dependent"
     value: "no"
     work: "Not a qualifying child"
   - printed: "dependent[dep_b].qr_relationship"
     value: "yes"
-    work: "Other person who lived with you all year"
+    work: "Other person who lived with you all year (12 months)"
   - printed: "dependent[dep_b].qr_income"
     value: "no"
     work: "Gross income $5,617 is not under $5,200"
@@ -2399,19 +2401,19 @@ lines:
     work: "Not permanently and totally disabled"
   - printed: "dependent[dep_b].qualifying_relative"
     value: "no"
-    work: "Fails the gross income test and the support test"
+    work: "Fails gross income test; you also did not provide over half of support"
   - printed: "dependent[dep_b].qr_dependent"
     value: "no"
-    work: "Not a qualifying relative; also fails the residency test"
+    work: "Not a qualifying relative; also fails the residency question"
   - printed: "dependent[dep_b].claimed_no_tin"
     value: "no"
     work: "Does not meet the dependent tests"
   - printed: "dependent[dep_b].claimed"
     value: "no"
-    work: "Neither a qualifying child nor a qualifying relative"
+    work: "Neither a QC nor a QR dependent"
   - printed: "dependent[dep_b].under_ctc_age"
     value: "yes"
-    work: "Age 3 is under 17"
+    work: "Age 3 < 17"
   - printed: "dependent[dep_b].ctc_child"
     value: "no"
     work: "Not your dependent"
@@ -2435,97 +2437,97 @@ lines:
     work: "Not a parent and not your dependent"
   - printed: "dependent[dep_b].eic_child"
     value: "no"
-    work: "Fails the relationship test"
+    work: "Fails EIC relationship test"
   - printed: "dependent[dep_b].eic_ssn_child"
     value: "no"
     work: "Not an EIC qualifying child"
   - printed: "dependent[dep_b].dc_child_all_year"
     value: "no"
-    work: "Not a qualifying child dependent"
+    work: "Not a QC who is your dependent"
   - printed: "dependent[dep_b].dc_age13"
     value: "no"
-    work: "Not a qualifying child dependent"
+    work: "Not a QC who is your dependent"
   - printed: "dependent[dep_b].dc_child"
     value: "no"
-    work: "Not a qualifying child dependent"
+    work: "Not a QC who is your dependent"
   - printed: "dependent[dep_b].dc_disabled_qp"
     value: "no"
-    work: "Able to care for themselves and not your dependent"
+    work: "Not your dependent; able to care for self"
   - printed: "dependent[dep_b].dc_qp"
     value: "no"
-    work: "No care expenses and not your dependent"
+    work: "No care expenses; not your dependent"
   - printed: "dependent[dep_b].dc_line2d"
     value: "0.00"
-    work: "Qualified expenses $0.00"
+    work: "Qualified expenses given as $0"
   - printed: "dependent[dep_b].dc_line2c"
     value: "no"
-    work: "Not over age 12 and not disabled"
+    work: "Not disabled"
   - printed: "dependent[dep_c].qc_relationship"
     value: "yes"
-    work: "Son/daughter meets the relationship test"
+    work: "Relationship = child"
   - printed: "dependent[dep_c].qc_age"
     value: "no"
-    work: "Not younger than you and not permanently and totally disabled"
+    work: "Not younger than you and not disabled, so all three age options fail"
   - printed: "dependent[dep_c].lived_half"
     value: "yes"
-    work: "Lived with you 12 months"
+    work: "12 months with you"
   - printed: "dependent[dep_c].qualifying_child"
     value: "no"
-    work: "Fails the age test (not younger than you)"
+    work: "Fails age test"
   - printed: "dependent[dep_c].resident"
     value: "yes"
-    work: "U.S. citizen"
+    work: "U.S. citizen/national/resident alien"
   - printed: "dependent[dep_c].qc_dependent"
     value: "no"
     work: "Not a qualifying child"
   - printed: "dependent[dep_c].qr_relationship"
     value: "yes"
-    work: "A child is a listed relative"
+    work: "A child is a relative listed in Step 4"
   - printed: "dependent[dep_c].qr_income"
     value: "yes"
-    work: "Gross income $0 is under $5,200"
+    work: "Gross income $0 < $5,200"
   - printed: "dependent[dep_c].income_exception"
     value: "no"
     work: "Not permanently and totally disabled"
   - printed: "dependent[dep_c].qualifying_relative"
     value: "yes"
-    work: "Relative; not a qualifying child of any taxpayer; income under $5,200; you provided over half the support"
+    work: "Relative, not a QC of any taxpayer, income < $5,200, you provided over half of support"
   - printed: "dependent[dep_c].qr_dependent"
     value: "yes"
-    work: "Step 4 Q2 citizen yes; not married; not joint; Q5 you can't be claimed"
+    work: "Step 4 Q2 resident yes; not married; Q5: you can't be claimed by someone else, so you can claim"
   - printed: "dependent[dep_c].claimed_no_tin"
     value: "no"
-    work: "Has an SSN"
+    work: "Has an SSN/ITIN/ATIN"
   - printed: "dependent[dep_c].claimed"
     value: "yes"
-    work: "Qualifying relative who is your dependent"
+    work: "Dependent as a qualifying relative"
   - printed: "dependent[dep_c].under_ctc_age"
     value: "yes"
-    work: "Age 11 is under 17"
+    work: "Age 11 < 17"
   - printed: "dependent[dep_c].ctc_child"
     value: "no"
-    work: "Step 3 applies only to a qualifying child; a qualifying relative goes to Step 5"
+    work: "Not a qualifying child; a qualifying relative goes to Step 5 only"
   - printed: "dependent[dep_c].odc_person"
     value: "yes"
-    work: "Step 5: you have SSN/ITIN; person has a TIN; person is a U.S. citizen"
+    work: "Step 5: you have an SSN/ITIN; QR has a TIN; QR is a U.S. citizen"
   - printed: "dependent[dep_c].ctc_amount"
     value: "0.00"
     work: "Not a CTC qualifying child"
   - printed: "dependent[dep_c].odc_amount"
     value: "500.00"
-    work: "Other dependent counts $500"
+    work: "Other dependent: $500"
   - printed: "dependent[dep_c].actc_amount"
     value: "0.00"
     work: "Not a CTC qualifying child"
   - printed: "dependent[dep_c].hoh_test2"
     value: "yes"
-    work: "Dependent who lived with you more than half the year, not a dependent only because of living with you all year"
+    work: "Your dependent (as a relative, not only through living with you all year), lived with you more than half the year, no exclusion applies"
   - printed: "dependent[dep_c].hoh_test1"
     value: "no"
     work: "Not a parent"
   - printed: "dependent[dep_c].eic_child"
     value: "no"
-    work: "Fails the EIC age test (not younger than you)"
+    work: "Fails EIC age test (not younger than you, not disabled)"
   - printed: "dependent[dep_c].eic_ssn_child"
     value: "no"
     work: "Not an EIC qualifying child"
@@ -2537,19 +2539,19 @@ lines:
     work: "Not your qualifying child; age 11"
   - printed: "dependent[dep_c].dc_child"
     value: "no"
-    work: "Not your qualifying child"
+    work: "Not your qualifying child; did not turn 13"
   - printed: "dependent[dep_c].dc_disabled_qp"
     value: "no"
-    work: "Able to care for themselves"
+    work: "Able to care for self"
   - printed: "dependent[dep_c].dc_qp"
     value: "no"
-    work: "No care expenses; not a qualifying child; not disabled"
+    work: "No care expenses; not a QC under 13 or disabled"
   - printed: "dependent[dep_c].dc_line2d"
     value: "0.00"
-    work: "Qualified expenses $0.00"
+    work: "Qualified expenses given as $0"
   - printed: "dependent[dep_c].dc_line2c"
     value: "no"
-    work: "Not over age 12 and not disabled"
+    work: "Not disabled"
 ```
 ```
 
@@ -2560,16 +2562,16 @@ lines:
 lines:
   - printed: "dependent[dep_a].qc_relationship"
     value: "no"
-    work: "Household member is not a child, sibling, or descendant of either (Step 1)"
+    work: "Household member is not a child, sibling or descendant (Step 1)"
   - printed: "dependent[dep_a].qc_age"
     value: "yes"
-    work: "Age 6 is under 19 and younger than you"
+    work: "Age 6, under 19 and younger than you"
   - printed: "dependent[dep_a].lived_half"
     value: "no"
-    work: "Lived with you 3 months, which is not more than half of 2025"
+    work: "3 months is not more than half of 2025"
   - printed: "dependent[dep_a].qualifying_child"
     value: "no"
-    work: "Fails the relationship and residency tests; also files a joint return (not only for a refund)"
+    work: "Fails the relationship and residency tests"
   - printed: "dependent[dep_a].resident"
     value: "yes"
     work: "U.S. citizen, national or resident alien"
@@ -2578,25 +2580,25 @@ lines:
     work: "Not a qualifying child"
   - printed: "dependent[dep_a].qr_relationship"
     value: "no"
-    work: "Not a listed relative, and lived with you only 3 months, not all year"
+    work: "Not a listed relative, and did not live with you all year (3 months)"
   - printed: "dependent[dep_a].qr_income"
     value: "yes"
-    work: "$0.00 is under $5,200"
+    work: "$0 is less than $5,200"
   - printed: "dependent[dep_a].income_exception"
     value: "no"
     work: "Not disabled, and income is under the limit"
   - printed: "dependent[dep_a].qualifying_relative"
     value: "no"
-    work: "Fails the member-of-household or relationship test"
+    work: "Fails the relationship / member-of-household test"
   - printed: "dependent[dep_a].qr_dependent"
     value: "no"
     work: "Not a qualifying relative"
   - printed: "dependent[dep_a].claimed_no_tin"
     value: "no"
-    work: "Does not meet the dependent tests"
+    work: "Does not meet the dependent tests; also has a TIN"
   - printed: "dependent[dep_a].claimed"
     value: "no"
-    work: "Neither a qualifying child dependent nor a qualifying relative dependent"
+    work: "Neither a qualifying child nor a qualifying relative"
   - printed: "dependent[dep_a].under_ctc_age"
     value: "yes"
     work: "Age 6 is under 17"
@@ -2608,22 +2610,22 @@ lines:
     work: "Not your dependent"
   - printed: "dependent[dep_a].ctc_amount"
     value: "0.00"
-    work: "Not a child tax credit child"
+    work: "Not a CTC child"
   - printed: "dependent[dep_a].odc_amount"
     value: "0.00"
-    work: "Not an other dependent"
+    work: "Not an ODC person"
   - printed: "dependent[dep_a].actc_amount"
     value: "0.00"
-    work: "Not a child tax credit child"
+    work: "Not a CTC child"
   - printed: "dependent[dep_a].hoh_test2"
     value: "no"
-    work: "Not a dependent or qualifying child, and did not live with you more than half the year"
+    work: "Not a dependent or qualifying child, and did not live with you over half the year"
   - printed: "dependent[dep_a].hoh_test1"
     value: "no"
     work: "Not a parent"
   - printed: "dependent[dep_a].eic_child"
     value: "no"
-    work: "Fails the relationship test; also files a joint return and lived in the U.S. with you 6 months or less"
+    work: "Fails EIC relationship test, joint-return test and residency test"
   - printed: "dependent[dep_a].eic_ssn_child"
     value: "no"
     work: "Not an EIC qualifying child"
@@ -2638,22 +2640,22 @@ lines:
     work: "Not your qualifying child; did not turn 13"
   - printed: "dependent[dep_a].dc_disabled_qp"
     value: "no"
-    work: "Not your dependent; able to care for themselves"
+    work: "Not your dependent; able to care for self"
   - printed: "dependent[dep_a].dc_qp"
     value: "no"
-    work: "No care expenses paid; not your dependent"
+    work: "No care expenses; not your dependent"
   - printed: "dependent[dep_a].dc_line2d"
     value: "0.00"
-    work: "Qualified expenses given as $0.00"
+    work: "Not a qualifying person; $0 expenses"
   - printed: "dependent[dep_a].dc_line2c"
     value: "no"
-    work: "Not a qualifying person; not over 12 and disabled"
+    work: "Not a qualifying person; age 6 and not disabled"
   - printed: "dependent[dep_b].qc_relationship"
     value: "no"
-    work: "Relationship 'other' is not a child, sibling, or descendant of either"
+    work: "Relationship 'other' is not a child, sibling or descendant"
   - printed: "dependent[dep_b].qc_age"
     value: "yes"
-    work: "Permanently and totally disabled, so any age qualifies"
+    work: "Permanently and totally disabled, which meets the test at any age"
   - printed: "dependent[dep_b].lived_half"
     value: "yes"
     work: "8 months is more than half of 2025"
@@ -2671,13 +2673,13 @@ lines:
     work: "Not a listed relative, and lived with you 8 months, not all year"
   - printed: "dependent[dep_b].qr_income"
     value: "yes"
-    work: "$0.00 is under $5,200"
+    work: "$0 is less than $5,200"
   - printed: "dependent[dep_b].income_exception"
     value: "no"
-    work: "Disabled, but $0.00 is not at or over the limit"
+    work: "Disabled, but gross income $0 is not at or over the limit"
   - printed: "dependent[dep_b].qualifying_relative"
     value: "no"
-    work: "Fails the member-of-household or relationship test"
+    work: "Fails the relationship / member-of-household test"
   - printed: "dependent[dep_b].qr_dependent"
     value: "no"
     work: "Not a qualifying relative"
@@ -2692,28 +2694,28 @@ lines:
     work: "Age 30"
   - printed: "dependent[dep_b].ctc_child"
     value: "no"
-    work: "Not your dependent"
+    work: "Not your dependent; age 30"
   - printed: "dependent[dep_b].odc_person"
     value: "no"
-    work: "Not your dependent"
+    work: "Not your dependent; no TIN"
   - printed: "dependent[dep_b].ctc_amount"
     value: "0.00"
-    work: "Not a child tax credit child"
+    work: "Not a CTC child"
   - printed: "dependent[dep_b].odc_amount"
     value: "0.00"
-    work: "Not an other dependent"
+    work: "Not an ODC person"
   - printed: "dependent[dep_b].actc_amount"
     value: "0.00"
-    work: "Not a child tax credit child"
+    work: "Not a CTC child"
   - printed: "dependent[dep_b].hoh_test2"
     value: "no"
-    work: "Neither a dependent nor a qualifying child"
+    work: "Neither your dependent nor your qualifying child"
   - printed: "dependent[dep_b].hoh_test1"
     value: "no"
     work: "Not a parent"
   - printed: "dependent[dep_b].eic_child"
     value: "no"
-    work: "Fails the relationship test"
+    work: "Fails the EIC relationship test"
   - printed: "dependent[dep_b].eic_ssn_child"
     value: "no"
     work: "Not an EIC qualifying child"
@@ -2728,52 +2730,52 @@ lines:
     work: "Not your qualifying child; age 30"
   - printed: "dependent[dep_b].dc_disabled_qp"
     value: "no"
-    work: "Not your dependent, and no listed exception (income, joint return, you claimable) applies"
+    work: "Not your dependent, and none of the listed exceptions applies"
   - printed: "dependent[dep_b].dc_qp"
     value: "no"
-    work: "No care expenses paid; not your dependent"
+    work: "No care expenses; not your dependent"
   - printed: "dependent[dep_b].dc_line2d"
     value: "0.00"
-    work: "Qualified expenses given as $0.00"
+    work: "Not a qualifying person; $0 expenses"
   - printed: "dependent[dep_b].dc_line2c"
     value: "no"
-    work: "Not a qualifying person to list on line 2"
+    work: "Not a qualifying person, so not listed on line 2"
   - printed: "dependent[dep_c].qc_relationship"
     value: "yes"
     work: "Your child"
   - printed: "dependent[dep_c].qc_age"
     value: "yes"
-    work: "Age 1 is under 19 and younger than you"
+    work: "Age 1, under 19 and younger than you"
   - printed: "dependent[dep_c].lived_half"
     value: "yes"
     work: "Lived with you 12 months"
   - printed: "dependent[dep_c].qualifying_child"
     value: "yes"
-    work: "Meets relationship, age, support, joint-return and residency tests; not the qualifying child of another person"
+    work: "Meets all tests: relationship, age, support, no joint return, residency; not a qualifying child of another person"
   - printed: "dependent[dep_c].resident"
     value: "yes"
     work: "U.S. citizen, national or resident alien"
   - printed: "dependent[dep_c].qc_dependent"
     value: "yes"
-    work: "Step 2: resident yes, not married, not filing jointly, you cannot be claimed as a dependent"
+    work: "Step 2: resident, not married, and you cannot be claimed as a dependent"
   - printed: "dependent[dep_c].qr_relationship"
     value: "yes"
-    work: "Your child is a relative listed in Step 4"
+    work: "Your child is a listed relative"
   - printed: "dependent[dep_c].qr_income"
     value: "yes"
-    work: "$0.00 is under $5,200"
+    work: "$0 is less than $5,200"
   - printed: "dependent[dep_c].income_exception"
     value: "no"
     work: "Not disabled"
   - printed: "dependent[dep_c].qualifying_relative"
     value: "no"
-    work: "Is a qualifying child (yours), so cannot be a qualifying relative"
+    work: "Is a qualifying child (of you), so cannot be a qualifying relative"
   - printed: "dependent[dep_c].qr_dependent"
     value: "no"
     work: "Not a qualifying relative"
   - printed: "dependent[dep_c].claimed_no_tin"
     value: "no"
-    work: "Has an SSN, ITIN or ATIN"
+    work: "Has an SSN/ITIN/ATIN"
   - printed: "dependent[dep_c].claimed"
     value: "yes"
     work: "Qualifying child who is your dependent"
@@ -2782,19 +2784,19 @@ lines:
     work: "Age 1 is under 17"
   - printed: "dependent[dep_c].ctc_child"
     value: "yes"
-    work: "Step 3: has a TIN, is a citizen, is under 17, and both you and the child have SSNs valid for employment"
+    work: "Step 3: has TIN, citizen, under 17, and both you and the child have valid SSNs"
   - printed: "dependent[dep_c].odc_person"
     value: "no"
-    work: "Qualifies as a child tax credit child instead"
+    work: "Claimed for the CTC instead"
   - printed: "dependent[dep_c].ctc_amount"
     value: "2200.00"
-    work: "Qualifying child for the CTC: $2,200"
+    work: "Qualifying child for CTC: $2,200"
   - printed: "dependent[dep_c].odc_amount"
     value: "0.00"
     work: "Not an other dependent"
   - printed: "dependent[dep_c].actc_amount"
     value: "1700.00"
-    work: "Qualifying child for the CTC: $1,700"
+    work: "Qualifying child: $1,700"
   - printed: "dependent[dep_c].hoh_test2"
     value: "yes"
     work: "Your dependent who lived with you more than half the year; no exclusion applies"
@@ -2803,10 +2805,10 @@ lines:
     work: "Not a parent"
   - printed: "dependent[dep_c].eic_child"
     value: "yes"
-    work: "Your child, age 1, not filing jointly, lived with you in the U.S. 12 months"
+    work: "Child, age 1, no joint return, lived in the U.S. with you more than half the year"
   - printed: "dependent[dep_c].eic_ssn_child"
     value: "yes"
-    work: "Valid SSN for the EIC"
+    work: "Has a valid SSN for the EIC"
   - printed: "dependent[dep_c].dc_child_all_year"
     value: "yes"
     work: "Qualifying child dependent, age 1 at the end of 2025"
@@ -2815,208 +2817,116 @@ lines:
     work: "Age 1, not 13"
   - printed: "dependent[dep_c].dc_child"
     value: "no"
-    work: "Did not turn 13 during 2025"
+    work: "Did not turn 13 in 2025"
   - printed: "dependent[dep_c].dc_disabled_qp"
     value: "no"
-    work: "Able to care for themselves"
+    work: "Able to care for self"
   - printed: "dependent[dep_c].dc_qp"
     value: "no"
-    work: "You paid no care expenses so you could work (Form 2441 answer: no)"
+    work: "No care expenses paid so you could work (Form 2441 question is no)"
   - printed: "dependent[dep_c].dc_line2d"
     value: "0.00"
-    work: "Qualified expenses given as $0.00"
+    work: "Not listed on line 2; $0 expenses"
   - printed: "dependent[dep_c].dc_line2c"
     value: "no"
-    work: "Age 1, not over 12, and not disabled"
+    work: "Age 1 and not disabled"
 ```
 ```
 
 ### classm.dependent.4
 
 ```yaml
-```yaml
 lines:
-  - printed: "dependent[dep_a].qc_relationship"
-    value: "no"
-    work: "Step 1: a parent is not a child, sibling, or a descendant of either"
-  - printed: "dependent[dep_a].qc_age"
+  - printed: "dependent[a].qc_relationship"
     value: "yes"
-    work: "Age 1 at the end of 2025: under 19 and younger than you"
-  - printed: "dependent[dep_a].lived_half"
+    work: "Step 1: the person is your child"
+  - printed: "dependent[a].qc_age"
     value: "yes"
-    work: "Lived with you 12 months, which is more than half of 2025"
-  - printed: "dependent[dep_a].qualifying_child"
-    value: "no"
-    work: "Step 1: fails the relationship test"
-  - printed: "dependent[dep_a].resident"
-    value: "yes"
-    work: "U.S. citizen, U.S. national or U.S. resident alien"
-  - printed: "dependent[dep_a].qc_dependent"
-    value: "no"
-    work: "Not a qualifying child, so Step 2 does not apply"
-  - printed: "dependent[dep_a].qr_relationship"
-    value: "yes"
-    work: "Step 4: father or mother is a listed relative"
-  - printed: "dependent[dep_a].qr_income"
-    value: "yes"
-    work: "Gross income $0.00 is less than $5,200"
-  - printed: "dependent[dep_a].income_exception"
-    value: "no"
-    work: "Not permanently and totally disabled"
-  - printed: "dependent[dep_a].qualifying_relative"
-    value: "yes"
-    work: "Step 4: listed relative, not a qualifying child of another taxpayer, income under $5,200, you provided over half of support"
-  - printed: "dependent[dep_a].qr_dependent"
-    value: "yes"
-    work: "Step 4: Q2 citizen yes; Q3 not married; Q4 filing jointly, so you can claim"
-  - printed: "dependent[dep_a].claimed_no_tin"
-    value: "no"
-    work: "Has an SSN issued on or before the due date"
-  - printed: "dependent[dep_a].claimed"
-    value: "yes"
-    work: "Dependent as a qualifying relative"
-  - printed: "dependent[dep_a].under_ctc_age"
-    value: "yes"
-    work: "Age 1 is under 17"
-  - printed: "dependent[dep_a].ctc_child"
-    value: "no"
-    work: "Step 3 applies only to a qualifying child"
-  - printed: "dependent[dep_a].odc_person"
-    value: "yes"
-    work: "Step 5: filers have an SSN/ITIN; relative has an SSN; relative is a U.S. citizen"
-  - printed: "dependent[dep_a].ctc_amount"
-    value: "0.00"
-    work: "Not a CTC qualifying child"
-  - printed: "dependent[dep_a].odc_amount"
-    value: "500.00"
-    work: "Other dependent: $500"
-  - printed: "dependent[dep_a].actc_amount"
-    value: "0.00"
-    work: "Not a CTC qualifying child"
-  - printed: "dependent[dep_a].hoh_test2"
-    value: "yes"
-    work: "Test 2 item 1: dependent not excluded (no multiple support, no divorced-parent rule, not dependent only by living with you all year); lived with you more than half the year"
-  - printed: "dependent[dep_a].hoh_test1"
-    value: "no"
-    work: "Parent lived with you, so this parent qualifies you through Test 2, not Test 1"
-  - printed: "dependent[dep_a].eic_child"
-    value: "no"
-    work: "EIC Step 3: fails the relationship test"
-  - printed: "dependent[dep_a].eic_ssn_child"
-    value: "no"
-    work: "Not an EIC qualifying child"
-  - printed: "dependent[dep_a].dc_child_all_year"
-    value: "no"
-    work: "Not your qualifying child"
-  - printed: "dependent[dep_a].dc_age13"
-    value: "no"
-    work: "Not your qualifying child"
-  - printed: "dependent[dep_a].dc_child"
-    value: "no"
-    work: "Not your qualifying child"
-  - printed: "dependent[dep_a].dc_disabled_qp"
-    value: "no"
-    work: "Able to care for themselves"
-  - printed: "dependent[dep_a].dc_qp"
-    value: "no"
-    work: "No care expenses paid; not a qualifying child; not disabled"
-  - printed: "dependent[dep_a].dc_line2d"
-    value: "0.00"
-    work: "Not a qualifying person; expenses $0.00"
-  - printed: "dependent[dep_a].dc_line2c"
-    value: "no"
-    work: "Not over age 12 and disabled"
-  - printed: "dependent[dep_b].qc_relationship"
-    value: "no"
-    work: "Step 1: a parent is not a child, sibling, or a descendant of either"
-  - printed: "dependent[dep_b].qc_age"
-    value: "yes"
-    work: "Age 3 at the end of 2025: under 19 and younger than you"
-  - printed: "dependent[dep_b].lived_half"
+    work: "Age 13 at the end of 2025 is under 19, and the child is younger than you"
+  - printed: "dependent[a].lived_half"
     value: "yes"
     work: "Lived with you 12 months, which is more than half of 2025"
-  - printed: "dependent[dep_b].qualifying_child"
-    value: "no"
-    work: "Step 1: fails the relationship test (also provided over half of own support)"
-  - printed: "dependent[dep_b].resident"
+  - printed: "dependent[a].qualifying_child"
     value: "yes"
-    work: "U.S. citizen, U.S. national or U.S. resident alien"
-  - printed: "dependent[dep_b].qc_dependent"
-    value: "no"
-    work: "Not a qualifying child"
-  - printed: "dependent[dep_b].qr_relationship"
+    work: "Passes relationship, age and residency; did not provide over half of own support; no joint return; not the qualifying child of another person"
+  - printed: "dependent[a].resident"
     value: "yes"
-    work: "Step 4: father or mother is a listed relative"
-  - printed: "dependent[dep_b].qr_income"
+    work: "U.S. citizen, national or resident alien"
+  - printed: "dependent[a].qc_dependent"
     value: "yes"
-    work: "Gross income $0.00 is less than $5,200"
-  - printed: "dependent[dep_b].income_exception"
+    work: "Step 2: resident yes, not married, you file a joint return, so you can claim the child"
+  - printed: "dependent[a].qr_relationship"
+    value: "yes"
+    work: "A child is a relative listed in Step 4"
+  - printed: "dependent[a].qr_income"
+    value: "yes"
+    work: "Gross income $0 is under $5,200"
+  - printed: "dependent[a].income_exception"
     value: "no"
     work: "Not permanently and totally disabled"
-  - printed: "dependent[dep_b].qualifying_relative"
-    value: "yes"
-    work: "Step 4: listed relative, not a qualifying child of another taxpayer, income under $5,200, you provided over half of support (as given)"
-  - printed: "dependent[dep_b].qr_dependent"
-    value: "yes"
-    work: "Step 4: Q2 citizen yes; Q3 not married; Q4 filing jointly, so you can claim"
-  - printed: "dependent[dep_b].claimed_no_tin"
+  - printed: "dependent[a].qualifying_relative"
     value: "no"
-    work: "Has an SSN issued on or before the due date"
-  - printed: "dependent[dep_b].claimed"
-    value: "yes"
-    work: "Dependent as a qualifying relative"
-  - printed: "dependent[dep_b].under_ctc_age"
-    value: "yes"
-    work: "Age 3 is under 17"
-  - printed: "dependent[dep_b].ctc_child"
+    work: "Step 4 requires the person was not anyone's qualifying child; this person is your qualifying child"
+  - printed: "dependent[a].qr_dependent"
     value: "no"
-    work: "Step 3 applies only to a qualifying child"
-  - printed: "dependent[dep_b].odc_person"
+    work: "Not a qualifying relative"
+  - printed: "dependent[a].claimed_no_tin"
+    value: "no"
+    work: "Has an SSN"
+  - printed: "dependent[a].claimed"
     value: "yes"
-    work: "Step 5: filers have an SSN/ITIN; relative has an SSN; relative is a U.S. citizen"
-  - printed: "dependent[dep_b].ctc_amount"
+    work: "Qualifying child who is your dependent (Step 2)"
+  - printed: "dependent[a].under_ctc_age"
+    value: "yes"
+    work: "Age 13 is under 17"
+  - printed: "dependent[a].ctc_child"
+    value: "yes"
+    work: "Step 3: has SSN, U.S. citizen, under 17, and you and the child have SSNs valid for employment"
+  - printed: "dependent[a].odc_person"
+    value: "no"
+    work: "Qualifies for the child tax credit, so not counted for the credit for other dependents"
+  - printed: "dependent[a].ctc_amount"
+    value: "2200.00"
+    work: "1 × $2,200 (Schedule 8812 line 5)"
+  - printed: "dependent[a].odc_amount"
     value: "0.00"
-    work: "Not a CTC qualifying child"
-  - printed: "dependent[dep_b].odc_amount"
-    value: "500.00"
-    work: "Other dependent: $500"
-  - printed: "dependent[dep_b].actc_amount"
-    value: "0.00"
-    work: "Not a CTC qualifying child"
-  - printed: "dependent[dep_b].hoh_test2"
+    work: "Not an other dependent"
+  - printed: "dependent[a].actc_amount"
+    value: "1700.00"
+    work: "1 × $1,700 (Schedule 8812 line 16b)"
+  - printed: "dependent[a].hoh_test2"
     value: "yes"
-    work: "Test 2 item 1: dependent not excluded; lived with you more than half the year"
-  - printed: "dependent[dep_b].hoh_test1"
+    work: "Your dependent, not claimed under the divorced-parents rule or a multiple support agreement, lived with you more than half the year"
+  - printed: "dependent[a].hoh_test1"
     value: "no"
-    work: "Parent lived with you, and you did not pay over half of the cost of their home"
-  - printed: "dependent[dep_b].eic_child"
+    work: "Not a parent"
+  - printed: "dependent[a].eic_child"
+    value: "yes"
+    work: "Child, age 13 under 19 and younger than you, no joint return, lived with you in the U.S. more than half of 2025"
+  - printed: "dependent[a].eic_ssn_child"
+    value: "yes"
+    work: "EIC qualifying child with an SSN valid for the EIC"
+  - printed: "dependent[a].dc_child_all_year"
     value: "no"
-    work: "EIC Step 3: fails the relationship test"
-  - printed: "dependent[dep_b].eic_ssn_child"
-    value: "no"
-    work: "Not an EIC qualifying child"
-  - printed: "dependent[dep_b].dc_child_all_year"
-    value: "no"
-    work: "Not your qualifying child"
-  - printed: "dependent[dep_b].dc_age13"
-    value: "no"
-    work: "Not your qualifying child"
-  - printed: "dependent[dep_b].dc_child"
-    value: "no"
-    work: "Not your qualifying child"
-  - printed: "dependent[dep_b].dc_disabled_qp"
-    value: "no"
-    work: "Able to care for themselves"
-  - printed: "dependent[dep_b].dc_qp"
-    value: "no"
-    work: "No care expenses paid; not a qualifying child; not disabled"
-  - printed: "dependent[dep_b].dc_line2d"
-    value: "0.00"
-    work: "Not a qualifying person; expenses $0.00"
-  - printed: "dependent[dep_b].dc_line2c"
-    value: "no"
-    work: "Not over age 12 and disabled"
-```
+    work: "Age 13 at the end of 2025, not 12 or younger"
+  - printed: "dependent[a].dc_age13"
+    value: "yes"
+    work: "Qualifying child who is your dependent, age 13 at the end of 2025"
+  - printed: "dependent[a].dc_child"
+    value: "yes"
+    work: "Turned 13 in 2025 and was under 13 for part of the year when care was provided"
+  - printed: "dependent[a].dc_disabled_qp"
+    value: "yes"
+    work: "Your dependent, lived with you more than half the year, not able to care for themselves"
+  - printed: "dependent[a].dc_qp"
+    value: "yes"
+    work: "You paid for care, and the person is your dependent and both a qualifying child under 13 for part of the year and disabled"
+  - printed: "dependent[a].dc_line2d"
+    value: "4000.00"
+    work: "Qualified expenses incurred and paid in 2025 as given"
+  - printed: "dependent[a].dc_line2c"
+    value: "yes"
+    work: "Care was provided while the person was over age 12 and disabled"
 ```
 
 ### classm.dependent.5
@@ -3025,184 +2935,282 @@ lines:
 ```yaml
 lines:
   - printed: "dependent[dep_a].qc_relationship"
-    value: "yes"
-    work: "Sibling (brother/sister) is a Step 1 relationship"
+    value: "no"
+    work: "A parent is not a child, sibling, or descendant of either (Step 1)"
   - printed: "dependent[dep_a].qc_age"
     value: "yes"
-    work: "Age 4, so under 19 at end of 2025, and younger than you"
+    work: "Age 1 at the end of 2025: under 19 and younger than you"
   - printed: "dependent[dep_a].lived_half"
     value: "yes"
-    work: "Lived with you 12 months, which is more than half of 2025"
+    work: "12 months, which is more than half of 2025"
   - printed: "dependent[dep_a].qualifying_child"
-    value: "yes"
-    work: "Step 1: relationship, age and residency met; not over half own support; no joint return; not QC of another"
+    value: "no"
+    work: "Fails the Step 1 relationship test"
   - printed: "dependent[dep_a].resident"
     value: "yes"
-    work: "U.S. citizen, national or resident alien"
+    work: "U.S. citizen, national or resident alien = yes"
   - printed: "dependent[dep_a].qc_dependent"
-    value: "yes"
-    work: "Step 2: resident yes; not married; not filing jointly; you can't be claimed as a dependent"
+    value: "no"
+    work: "Not a qualifying child"
   - printed: "dependent[dep_a].qr_relationship"
     value: "yes"
-    work: "Sibling is a relative listed in Step 4"
+    work: "Father or mother is a relative listed in Step 4"
   - printed: "dependent[dep_a].qr_income"
     value: "yes"
-    work: "Gross income $0.00 < $5,200"
+    work: "Gross income $0.00 is less than $5,200"
   - printed: "dependent[dep_a].income_exception"
     value: "no"
-    work: "Not permanently and totally disabled; income under limit"
+    work: "Not permanently and totally disabled"
   - printed: "dependent[dep_a].qualifying_relative"
-    value: "no"
-    work: "Step 4 requires not a qualifying child of any taxpayer; this person is your qualifying child"
+    value: "yes"
+    work: "Relationship yes; not anyone's qualifying child; income under $5,200; you provided over half of support"
   - printed: "dependent[dep_a].qr_dependent"
-    value: "no"
-    work: "Not a qualifying relative"
+    value: "yes"
+    work: "Step 4 Q2 resident yes; Q3 not married; Q4 joint return, so you can claim"
   - printed: "dependent[dep_a].claimed_no_tin"
     value: "no"
-    work: "Has SSN/ITIN/ATIN issued by due date"
+    work: "Has an SSN/ITIN/ATIN issued by the due date"
   - printed: "dependent[dep_a].claimed"
     value: "yes"
-    work: "Qualifying child who is your dependent (Step 2)"
+    work: "Qualifying relative who is your dependent"
   - printed: "dependent[dep_a].under_ctc_age"
     value: "yes"
-    work: "Age 4 < 17"
+    work: "Age 1 is under 17"
   - printed: "dependent[dep_a].ctc_child"
-    value: "yes"
-    work: "Step 3: has TIN; citizen; under 17; you and child have SSNs valid for employment"
-  - printed: "dependent[dep_a].odc_person"
     value: "no"
-    work: "Qualifies for CTC instead (Step 3 Q4 yes)"
+    work: "Not a qualifying child, so Step 3 does not apply"
+  - printed: "dependent[dep_a].odc_person"
+    value: "yes"
+    work: "Step 5: filers have SSN/ITIN; person has TIN; U.S. citizen/resident"
   - printed: "dependent[dep_a].ctc_amount"
-    value: "2200.00"
-    work: "Qualifying child for CTC: $2,200"
-  - printed: "dependent[dep_a].odc_amount"
     value: "0.00"
-    work: "Not an other dependent"
+    work: "Not a child tax credit child"
+  - printed: "dependent[dep_a].odc_amount"
+    value: "500.00"
+    work: "Other dependent: $500"
   - printed: "dependent[dep_a].actc_amount"
-    value: "1700.00"
-    work: "Qualifying child for CTC: $1,700"
+    value: "0.00"
+    work: "Not a child tax credit child"
   - printed: "dependent[dep_a].hoh_test2"
     value: "yes"
-    work: "Test 2 item 1: dependent who lived with you more than half the year; no exclusion (a)-(c) applies"
+    work: "Dependent who lived with you more than half the year; not a dependent only because of all-year residence; no multiple support agreement"
   - printed: "dependent[dep_a].hoh_test1"
     value: "no"
-    work: "Not a parent"
+    work: "Parent lives with you, so Test 2 applies, not Test 1"
   - printed: "dependent[dep_a].eic_child"
-    value: "yes"
-    work: "Sibling, under 19 and younger, no joint return, lived with you in U.S. more than half of 2025"
+    value: "no"
+    work: "Fails the EIC relationship test"
   - printed: "dependent[dep_a].eic_ssn_child"
-    value: "yes"
-    work: "EIC qualifying child with valid SSN"
+    value: "no"
+    work: "Not an EIC qualifying child"
   - printed: "dependent[dep_a].dc_child_all_year"
-    value: "yes"
-    work: "Qualifying child dependent, age 4 at end of 2025"
+    value: "no"
+    work: "Not your qualifying child"
   - printed: "dependent[dep_a].dc_age13"
     value: "no"
-    work: "Age 4, not 13"
+    work: "Not your qualifying child; age 1"
   - printed: "dependent[dep_a].dc_child"
     value: "no"
-    work: "Did not turn 13 during 2025"
+    work: "Not your qualifying child"
   - printed: "dependent[dep_a].dc_disabled_qp"
     value: "no"
-    work: "Able to care for self"
+    work: "Able to care for themselves"
   - printed: "dependent[dep_a].dc_qp"
-    value: "yes"
-    work: "Care expenses paid; qualifying child dependent under 13"
+    value: "no"
+    work: "No care expenses paid; not a qualifying child under 13; not disabled"
   - printed: "dependent[dep_a].dc_line2d"
-    value: "1480.00"
-    work: "Qualified expenses incurred and paid in 2025"
+    value: "0.00"
+    work: "Not a qualifying person; expenses $0.00"
   - printed: "dependent[dep_a].dc_line2c"
     value: "no"
-    work: "Not over age 12 and not disabled"
+    work: "Not over 12 and not disabled"
   - printed: "dependent[dep_b].qc_relationship"
-    value: "yes"
-    work: "Child is a Step 1 relationship"
-  - printed: "dependent[dep_b].qc_age"
     value: "no"
-    work: "Age 25: not under 19, not a student under 24, not disabled"
+    work: "A parent is not a child, sibling, or descendant of either (Step 1)"
+  - printed: "dependent[dep_b].qc_age"
+    value: "yes"
+    work: "Age 3 at the end of 2025: under 19 and younger than you"
   - printed: "dependent[dep_b].lived_half"
     value: "yes"
-    work: "Lived with you 12 months"
+    work: "12 months, which is more than half of 2025"
   - printed: "dependent[dep_b].qualifying_child"
     value: "no"
-    work: "Fails age test"
+    work: "Fails the relationship test (and provided over half of own support)"
   - printed: "dependent[dep_b].resident"
     value: "yes"
-    work: "U.S. citizen, national or resident alien"
+    work: "U.S. citizen, national or resident alien = yes"
   - printed: "dependent[dep_b].qc_dependent"
     value: "no"
     work: "Not a qualifying child"
   - printed: "dependent[dep_b].qr_relationship"
     value: "yes"
-    work: "Child is a relative listed in Step 4"
+    work: "Father or mother is a relative listed in Step 4"
   - printed: "dependent[dep_b].qr_income"
     value: "yes"
-    work: "Gross income $0.00 < $5,200"
+    work: "Gross income $0.00 is less than $5,200"
   - printed: "dependent[dep_b].income_exception"
     value: "no"
-    work: "Not permanently and totally disabled; income under limit"
+    work: "Not permanently and totally disabled"
   - printed: "dependent[dep_b].qualifying_relative"
     value: "yes"
-    work: "Relationship met; not QC of any taxpayer; income < $5,200; you provided over half of support"
+    work: "Relationship yes; not anyone's qualifying child; income under $5,200; you provided over half of support = yes, as given"
   - printed: "dependent[dep_b].qr_dependent"
     value: "yes"
-    work: "Step 4 Q2 resident yes; Q3 not married; Q4 not joint; Q5 you can't be claimed"
+    work: "Step 4 Q2 resident yes; Q3 not married; Q4 joint return, so you can claim"
   - printed: "dependent[dep_b].claimed_no_tin"
     value: "no"
-    work: "Has SSN/ITIN/ATIN issued by due date"
+    work: "Has an SSN/ITIN/ATIN issued by the due date"
   - printed: "dependent[dep_b].claimed"
     value: "yes"
     work: "Qualifying relative who is your dependent"
   - printed: "dependent[dep_b].under_ctc_age"
-    value: "no"
-    work: "Age 25, not under 17"
+    value: "yes"
+    work: "Age 3 is under 17"
   - printed: "dependent[dep_b].ctc_child"
     value: "no"
-    work: "Not a qualifying child; not under 17"
+    work: "Not a qualifying child, so Step 3 does not apply"
   - printed: "dependent[dep_b].odc_person"
     value: "yes"
-    work: "Step 5: you have SSN/ITIN; relative has TIN; U.S. citizen/national/resident"
+    work: "Step 5: filers have SSN/ITIN; person has TIN; U.S. citizen/resident"
   - printed: "dependent[dep_b].ctc_amount"
     value: "0.00"
-    work: "Not a CTC qualifying child"
+    work: "Not a child tax credit child"
   - printed: "dependent[dep_b].odc_amount"
     value: "500.00"
     work: "Other dependent: $500"
   - printed: "dependent[dep_b].actc_amount"
     value: "0.00"
-    work: "Not a CTC qualifying child"
+    work: "Not a child tax credit child"
   - printed: "dependent[dep_b].hoh_test2"
     value: "yes"
-    work: "Test 2 item 1: dependent (a relative) who lived with you more than half the year; no exclusion applies"
+    work: "Dependent who lived with you more than half the year; not a dependent only because of all-year residence; no multiple support agreement"
   - printed: "dependent[dep_b].hoh_test1"
     value: "no"
-    work: "Not a parent"
+    work: "Parent lives with you, and you did not pay over half of a separate main home"
   - printed: "dependent[dep_b].eic_child"
     value: "no"
-    work: "Fails EIC age test (25, not student, not disabled)"
+    work: "Fails the EIC relationship test"
   - printed: "dependent[dep_b].eic_ssn_child"
     value: "no"
     work: "Not an EIC qualifying child"
   - printed: "dependent[dep_b].dc_child_all_year"
     value: "no"
-    work: "Not a qualifying child; age 25"
+    work: "Not your qualifying child"
   - printed: "dependent[dep_b].dc_age13"
     value: "no"
-    work: "Not a qualifying child; age 25"
+    work: "Not your qualifying child; age 3"
   - printed: "dependent[dep_b].dc_child"
     value: "no"
-    work: "Not a qualifying child; did not turn 13"
+    work: "Not your qualifying child"
   - printed: "dependent[dep_b].dc_disabled_qp"
     value: "no"
-    work: "Able to care for self"
+    work: "Able to care for themselves"
   - printed: "dependent[dep_b].dc_qp"
     value: "no"
-    work: "Neither qualifying child under 13 nor unable to care for self"
+    work: "No care expenses paid; not a qualifying child under 13; not disabled"
   - printed: "dependent[dep_b].dc_line2d"
     value: "0.00"
-    work: "Not a qualifying person; not listed on line 2"
+    work: "Not a qualifying person; expenses $0.00"
   - printed: "dependent[dep_b].dc_line2c"
     value: "no"
-    work: "Not disabled; not a qualifying person"
+    work: "Not over 12 and not disabled"
+```
+```
+
+### classm.dependent.6
+
+```yaml
+```yaml
+lines:
+  - printed: "dependent[a].qc_relationship"
+    value: "yes"
+    work: "Relationship = child; Step 1 relationship test met"
+  - printed: "dependent[a].qc_age"
+    value: "yes"
+    work: "Age 13 is under 19 and younger than you or your spouse"
+  - printed: "dependent[a].lived_half"
+    value: "yes"
+    work: "Lived with you 12 months, more than half of 2025"
+  - printed: "dependent[a].qualifying_child"
+    value: "yes"
+    work: "Step 1: relationship, age and residency met; not over half self-support; no joint return"
+  - printed: "dependent[a].resident"
+    value: "yes"
+    work: "U.S. citizen, national or resident alien = yes"
+  - printed: "dependent[a].qc_dependent"
+    value: "yes"
+    work: "Step 2: resident yes, not married, filing jointly so you can claim the child"
+  - printed: "dependent[a].qr_relationship"
+    value: "yes"
+    work: "A child is a listed Step 4 relative"
+  - printed: "dependent[a].qr_income"
+    value: "yes"
+    work: "Gross income $0.00 is under $5,200"
+  - printed: "dependent[a].income_exception"
+    value: "no"
+    work: "Not permanently and totally disabled"
+  - printed: "dependent[a].qualifying_relative"
+    value: "no"
+    work: "Step 4 fails: the person is your qualifying child for 2025"
+  - printed: "dependent[a].qr_dependent"
+    value: "no"
+    work: "Not a qualifying relative"
+  - printed: "dependent[a].claimed_no_tin"
+    value: "no"
+    work: "Has an SSN issued by the due date"
+  - printed: "dependent[a].claimed"
+    value: "yes"
+    work: "Dependent as a qualifying child under Step 2"
+  - printed: "dependent[a].under_ctc_age"
+    value: "yes"
+    work: "Age 13 is under 17"
+  - printed: "dependent[a].ctc_child"
+    value: "yes"
+    work: "Step 3: has TIN, is a citizen/resident, under 17, and child and filer have SSNs valid for employment"
+  - printed: "dependent[a].odc_person"
+    value: "no"
+    work: "Qualifies for the child tax credit instead"
+  - printed: "dependent[a].ctc_amount"
+    value: "2200.00"
+    work: "Qualifying child for CTC: $2,200"
+  - printed: "dependent[a].odc_amount"
+    value: "0.00"
+    work: "Not an other dependent"
+  - printed: "dependent[a].actc_amount"
+    value: "1700.00"
+    work: "Qualifying child for CTC: $1,700"
+  - printed: "dependent[a].hoh_test2"
+    value: "yes"
+    work: "Your dependent who lived with you over half the year; no exclusion (a)-(c) applies"
+  - printed: "dependent[a].hoh_test1"
+    value: "no"
+    work: "Not a parent"
+  - printed: "dependent[a].eic_child"
+    value: "yes"
+    work: "Child, under 19 and younger, no joint return, lived with you in U.S. over half of 2025"
+  - printed: "dependent[a].eic_ssn_child"
+    value: "yes"
+    work: "SSN valid for the EIC = yes"
+  - printed: "dependent[a].dc_child_all_year"
+    value: "no"
+    work: "Age 13 at end of 2025, not 12 or younger"
+  - printed: "dependent[a].dc_age13"
+    value: "yes"
+    work: "Qualifying child dependent, age 13 at end of 2025"
+  - printed: "dependent[a].dc_child"
+    value: "yes"
+    work: "Turned 13 in 2025 and was under 13 for part of the year when care was provided"
+  - printed: "dependent[a].dc_disabled_qp"
+    value: "yes"
+    work: "Dependent, lived with you over half the year, not able to care for self = yes"
+  - printed: "dependent[a].dc_qp"
+    value: "yes"
+    work: "Care expenses paid; dependent qualifying child under 13 for part of year (also disabled)"
+  - printed: "dependent[a].dc_line2d"
+    value: "4000.00"
+    work: "Qualified expenses incurred and paid in 2025 = $4,000.00"
+  - printed: "dependent[a].dc_line2c"
+    value: "no"
+    work: "No care was provided while age 13 or older and disabled"
 ```
 ```
