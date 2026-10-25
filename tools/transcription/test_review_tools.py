@@ -18,6 +18,7 @@ import families
 import rulings
 import rule
 import audit_skipped as skipped
+import audit_transcription as transcription_audit
 
 
 def log(statuses, rulings=None):
@@ -437,12 +438,109 @@ class IndependentPrompt(unittest.TestCase):
         self.assertNotIn("PRIVATE", text)
 
 
+class LiteralUnits(unittest.TestCase):
+    def test_count_threshold_cannot_agree_with_money_threshold(self):
+        project = [
+            {"id": "probe.months", "printed": "(helper)", "label": "Months", "type": "Count", "expr": {"op": "input", "source": "Months"}},
+            {"id": "probe.result", "printed": "1", "label": "Threshold", "type": "Bool", "expr": {"op": "test", "gt": ["probe.months", {"const": 6, "type": "Count"}]}},
+        ]
+        second = json.loads(json.dumps(project))
+        second[1]["expr"]["gt"][1].pop("type")
+        results, _ = T.compare("probe", project, second)
+        self.assertEqual(results[0]["status"], "DISAGREE")
+
+    def test_zero_and_one_parameters_keep_their_units(self):
+        expander = T.Expander("probe", [], defs={}, params={"count.zero": 0, "count.one": 1, "money.zero": 0},
+                              param_types={"count.zero": "Count", "count.one": "Count", "money.zero": "Dollars"})
+        for value, name in [(0, "count.zero"), (1, "count.one")]:
+            self.assertEqual(expander.param(name), {"const": value, "type": "Count"})
+        self.assertEqual(expander.param("money.zero"), {"const": 0})
+
+    def test_definition_and_foreign_helper_expansion_keep_parameter_units(self):
+        line = {"id": "result", "printed": "1", "type": "Count", "expr": {"op": "param", "ref": "count.zero"}}
+        defs = {"inner": {"id": "inner", "lines": [line]}}
+        expander = T.Expander("probe", [], defs=defs, params={"count.zero": 0}, param_types={"count.zero": "Count"})
+        self.assertEqual(expander.ref({"def": "inner", "line": "result", "bind": {}}, 0), {"const": 0, "type": "Count"})
+        foreign = {**line, "id": "other.zero", "printed": "(helper)"}
+        with patch.object(T, "ALL_LINES", {"other.zero": ("other", foreign)}):
+            self.assertEqual(expander.ref("other.zero", 0), {"const": 0, "type": "Count"})
+
+    def test_only_money_zero_is_elided_from_sum(self):
+        expander = T.Expander("probe", [], defs={})
+        money = {"op": "sum", "of": [{"const": 0}, {"const": 5}]}
+        self.assertEqual(expander.expr(money), {"const": 5})
+        for zero in ({"const": False}, {"const": 0, "type": "Count"}):
+            self.assertFalse(T.money_zero(zero))
+            self.assertEqual(expander.expr({"op": "sum", "of": [zero, {"const": 5}]})["op"], "sum")
+
+    def test_money_one_does_not_become_boolean_true(self):
+        condition = {"id": "probe.condition", "printed": "(helper)", "type": "Bool", "expr": {"op": "test", "eq": ["probe.flag", {"const": True}]}}
+        expander = T.Expander("probe", [condition], defs={})
+        boolean = expander.expr({"op": "test", "eq": ["probe.condition", {"const": True}]})
+        money = expander.expr({"op": "test", "eq": ["probe.condition", {"const": 1}]})
+        self.assertNotEqual(T.canonical(boolean), T.canonical(money))
+        self.assertEqual(money["test"], "eq")
+
+    def test_bare_number_is_not_a_valid_operand(self):
+        expander = T.Expander("probe", [], defs={})
+        self.assertIn("unknown", expander.ref(6, 0))
+        self.assertEqual(expander.ref({"const": 6}, 0), {"const": 6})
+
+    def test_comparison_policy_changes_ruling_context_without_changing_request(self):
+        head = "| prompt sha256 | " + "a" * 64 + " |\n"
+        typed = head + "| comparison policy | typed-literals-v1 |\n"
+        self.assertNotEqual(rulings.review_context("transcription", head), rulings.review_context("transcription", typed))
+
+
+class SavedTranscriptionAudit(unittest.TestCase):
+    def artifacts(self):
+        prompt, response, subject = "Original source-only request", "lines: []\n", "a" * 64
+        meta = {"prompt_sha256": transcription_audit.sha(prompt), "system_sha256": "b" * 64,
+                "prompt_policy": "source-only-computation-v2", "model_requested": "deepseek-flash"}
+        fields = {"subject sha256": subject, "prompt sha256": meta["prompt_sha256"],
+                  "system sha256": meta["system_sha256"], "prompt policy": meta["prompt_policy"],
+                  "model requested": meta["model_requested"]}
+        log_text = "\n".join(f"| {k} | {v} |" for k, v in fields.items())
+        log_text += "\n## Lines\n\n## Raw second transcription\n\n```yaml\n" + response + "\n```\n"
+        return log_text, prompt, response, meta, subject
+
+    def test_saved_request_identity_is_checked_without_upgrading_legacy_receipts(self):
+        args = self.artifacts()
+        receipt = transcription_audit.verify_saved(*args)
+        self.assertEqual(receipt["request_provenance"], "bound")
+        self.assertEqual(receipt["original_comparison_policy"], "legacy-unversioned")
+        legacy = (*args[:3], {}, args[4])
+        self.assertEqual(transcription_audit.verify_saved(*legacy)["request_provenance"], "legacy-limited")
+
+    def test_changed_subject_prompt_reply_or_request_metadata_is_rejected(self):
+        args = list(self.artifacts())
+        for index, replacement in [(1, "different prompt"), (2, "lines: [different]\n"),
+                                   (4, "c" * 64), (3, {**args[3], "model_requested": "deepseek-v4-pro"})]:
+            changed = list(args)
+            changed[index] = replacement
+            with self.assertRaises(ValueError):
+                transcription_audit.verify_saved(*changed)
+
+    def test_truncated_saved_response_cannot_be_audited_as_complete(self):
+        args = list(self.artifacts())
+        args[3] = {**args[3], "finish_reason": "length"}
+        with self.assertRaisesRegex(ValueError, "output budget"):
+            transcription_audit.verify_saved(*args)
+
+    def test_current_log_writer_strips_only_response_edge_whitespace(self):
+        args = list(self.artifacts())
+        args[0] = args[0].replace("```yaml\n" + args[2] + "\n```", "```yaml\n" + args[2].strip() + "\n```")
+        receipt = transcription_audit.verify_saved(*args)
+        self.assertEqual(receipt["response_sha256"], transcription_audit.sha(args[2]))
+
+
 class DefinitionInterfaces(unittest.TestCase):
     def test_transcription_unit_audit_hold_does_not_block_render_qualification(self):
         # Both dcprov reviews agree; a known comparer defect must still prevent promotion.
         transcription = C.compare("transcription", "dcprov", "deepseek")["quality"]
         self.assertEqual(transcription["state"], "pending")
         self.assertTrue(any("BUG-0129" in b for b in transcription["blockers"]))
+        self.assertTrue(any("unit-preserving comparison" in b for b in transcription["blockers"]))
         rendering = C.compare("render", "dcprov", "deepseek")["quality"]
         self.assertEqual(rendering["state"], "pass")
         self.assertFalse(any("BUG-0129" in b for b in rendering["blockers"]))

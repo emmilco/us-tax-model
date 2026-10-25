@@ -22,6 +22,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import families  # noqa: E402
 import rulings  # noqa: E402
 import subjects  # noqa: E402
+import transcribe  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, os.path.join(ROOT, "tools"))
@@ -69,7 +70,8 @@ def parse_log(kind, path):
         lines[key] = {"status": m.group(1), "reason": reason.strip(),
                       "ruling": ruling.group(1).strip() if ruling else ""}
     return {"model": field("model requested"), "reported": field("model reported"), "date": field("date"),
-            "subject": field("subject sha256"), "policy": field("prompt policy"), "lines": lines, "duplicates": duplicates,
+            "subject": field("subject sha256"), "policy": field("prompt policy"),
+            "comparison_policy": field("comparison policy"), "lines": lines, "duplicates": duplicates,
             "sources": re.findall(r"^\| (\S+) \| [^|]* \| [^|]* \| [^|]* \| ([0-9a-f]{64}) \|(?: [^|]* \| ([0-9a-f]{64}|-) \|)?$", text, flags=re.M)}
 
 
@@ -157,7 +159,11 @@ def compare(kind, form, family):
     stale = [fam for fam, log in ((families.DEFAULT, a), (family, b)) if current is None or log["subject"] != current]
     q = quality(kind, a, b, stale)
     if kind == "transcription":
-        q["blockers"].append("BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited")
+        q["blockers"].append("BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close")
+        legacy = [fam for fam, record in ((families.DEFAULT, a), (family, b))
+                  if record.get("comparison_policy") != transcribe.COMPARISON_POLICY]
+        if legacy:
+            q["blockers"].append("transcription predates unit-preserving comparison; verified re-comparison required: " + ", ".join(legacy))
     if kind == "transcription" and b["policy"] != "source-only-computation-v2":
         q["blockers"].append("transcription predates the prompt-independence policy")
     q["blockers"].extend(model_blockers(kind, family, b))

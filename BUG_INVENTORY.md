@@ -1892,3 +1892,20 @@ later grouping.
   responses and original comparison receipts; do not silently upgrade old judgments or treat this
   as a project tax-value error. Transcription readings remain outside the numeric scoreboard.
 - **Tags:** false-agreement; unit-erasure; invalid-model-ir; caught-by-executable-review-witness
+
+## BUG-0130 — Transcription grammar omits the Count-literal operand syntax
+
+- **Date:** 2026-10-24
+- **Caught by:** tracing BUG-0129's repeated untyped month-count constants back to the exact prompt.
+- **Symptom:** the operand grammar lists money, Boolean and string constants, but never shows
+  `{const: n, type: Count}`. Reviewers return untyped count thresholds; the runtime reads those
+  numbers as money. The specification excerpt names Count, but the concise grammar omits its syntax.
+- **Root cause:** the model-facing grammar was not extended alongside typed Count operands.
+- **Where:** `tools/transcription/transcribe.py`, GRAMMAR.
+- **Fix:** state the Count-literal syntax and that untyped numbers mean money cents. Keep this a
+  generic schema clarification with no target computation, expected value or authored helper exposed.
+  Bind future requests to the actual changed prompt; do not relabel old requests as having seen it.
+- **Qualification:** invalid old model IR remains invalid, but the incomplete prompt is a project
+  context defect too. Prior noise rulings must not be treated as clean model-only tests without this
+  limitation. BUG-0129's qualification hold stays until typing and the prior-agreement audit close.
+- **Tags:** incomplete-review-grammar; missing-count-syntax; caught-by-request-audit

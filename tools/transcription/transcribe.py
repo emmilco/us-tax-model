@@ -259,7 +259,9 @@ def exported_lines(form_doc):
 
 GRAMMAR = """Expression grammar (YAML). Exactly one atom per line. Operands written as a line reference
 (a string id of a line in this worksheet or another form), a constant ({const: 0} for money cents,
-{const: true}, {const: "single"}), or a parameter ({param: name}).
+{const: n, type: Count} for a nonnegative whole-number count, {const: true}, {const: "single"}),
+or a parameter ({param: name}). An untyped numeric constant is money cents, never a Count.
+When comparing a Count line with a numeric threshold, mark the constant with type: Count.
 
   {op: input, source: "<the box or question this value comes from>"}
   {op: copy, from: <ref>}                      # <ref> is a line id string, or for a parameterised
@@ -512,13 +514,23 @@ def load_all_lines():
 ALL_LINES = None
 
 
+COMPARISON_POLICY = "typed-literals-v1"
+
+
+def money_zero(tree):
+    """Only an untyped numeric zero; Bool false and Count zero have different units."""
+    return (isinstance(tree, dict) and set(tree) == {"const"}
+            and isinstance(tree["const"], (int, float)) and not isinstance(tree["const"], bool)
+            and tree["const"] == 0)
+
+
 class Expander:
     """Expands a line's expression into a tree over inputs, params, constants and
     references outside the form, so helper naming on either side does not matter.
     Shared parameterised definitions are inlined with their bindings substituted,
     and Boolean guards are normalised (eq-to-true, not-of-comparison)."""
 
-    def __init__(self, form_id, lines, defs=None, bound=None, foreign=False, inputs=None, params=None, keys=None):
+    def __init__(self, form_id, lines, defs=None, bound=None, foreign=False, inputs=None, params=None, keys=None, param_types=None):
         self.form_id = form_id
         self.keys = keys or marker_keys(lines)   # line id -> the marker a reference to a printed line compares as
         self.by_id = {l["id"]: l for l in lines}
@@ -528,13 +540,14 @@ class Expander:
         self.foreign = foreign   # expanding another form's helper: its printed lines stay qualified references
         self.inputs = inputs or {}   # the project's input lines of this form, shared by both sides
         self.params = params or {}   # parameter values, so literal-valued parameters compare as constants
+        self.param_types = param_types or {}
 
     def inline_def(self, r, depth):
         d = self.defs.get(r["def"])
         if d is None or depth > 40:
             return {"def": r["def"], "line": r["line"], "bind": {k: self.operand(v, depth) for k, v in r["bind"].items()}}
         bound = {k: self.operand(v, depth) for k, v in r["bind"].items()}
-        sub = Expander(d["id"], d["lines"], self.defs, bound)
+        sub = Expander(d["id"], d["lines"], self.defs, bound, params=self.params, param_types=self.param_types)
         target = sub.by_id.get(r["line"]) or sub.by_id.get(d["id"] + "." + str(r["line"]))
         if target is None:
             return {"unknown": f"def line {r['line']}"}
@@ -546,7 +559,7 @@ class Expander:
             if "def" in r:
                 return self.inline_def(r, depth)
             if "const" in r:
-                return {"const": r["const"]}
+                return {"const": r["const"], **({"type": r["type"]} if "type" in r else {})}
             if "param" in r:
                 return self.param(r["param"])
             return {"unknown": json.dumps(r, sort_keys=True)}
@@ -580,16 +593,17 @@ class Expander:
                 ALL_LINES = load_all_lines()
             other = ALL_LINES.get(r)
             if other and other[1]["printed"] in HELPER_PRINTED and other[1]["expr"].get("op") != "input" and depth <= 40:
-                sub = Expander(other[0], [l for (fid, l) in ALL_LINES.values() if fid == other[0]], self.defs, foreign=True)
+                sub = Expander(other[0], [l for (fid, l) in ALL_LINES.values() if fid == other[0]], self.defs,
+                               foreign=True, params=self.params, param_types=self.param_types)
                 return sub.expr(other[1]["expr"], depth + 1)
             return {"ref": r}
-        return {"const": r}
+        return {"unknown": json.dumps(r, sort_keys=True)}
 
     def param(self, name):
         """A parameter whose value is the literal 0 or 1 compares as that constant."""
         v = self.params.get(name)
         if v in (0, 1) and not isinstance(v, bool):
-            return {"const": v}
+            return {"const": v, **({"type": "Count"} if self.param_types.get(name) == "Count" else {})}
         return {"param": name}
 
     def operand(self, o, depth):
@@ -604,7 +618,7 @@ class Expander:
         zero = {"const": 0}
         if k in ("eq", "ne"):
             for a_, b_ in ((x, y), (y, x)):
-                if a_ == zero and self.nonneg(b_):
+                if money_zero(a_) and self.nonneg(b_):
                     return {"test": "le", "args": [b_, zero]} if k == "eq" else {"test": "lt", "args": [zero, b_]}
             return {"test": k, "args": sorted([x, y], key=json.dumps)}
         return {"test": k, "args": [x, y]}
@@ -646,7 +660,7 @@ class Expander:
                 x, y = self.operand(t[k][0], depth), self.operand(t[k][1], depth)
                 # `X == true` is X; `X == false` is not X, when X is itself a test.
                 for a_, b_ in ((x, y), (y, x)):
-                    if isinstance(b_, dict) and b_.get("const") in (True, False) and isinstance(a_, dict) and "test" in a_:
+                    if isinstance(b_, dict) and isinstance(b_.get("const"), bool) and isinstance(a_, dict) and "test" in a_:
                         if k == "eq":
                             return a_ if b_["const"] else self.negate(a_)
                         if k == "ne":
@@ -671,7 +685,7 @@ class Expander:
         if op in ("sum", "smaller_of", "larger_of"):
             parts = [self.ref(x, depth) for x in e["of"]]
             if op == "sum":   # zero terms carry nothing: scope placeholders and screens
-                parts = [t for t in parts if t != {"const": 0}] or [{"const": 0}]
+                parts = [t for t in parts if not money_zero(t)] or [{"const": 0}]
                 if len(parts) == 1:
                     return parts[0]
             return {"op": op, "of": sorted(parts, key=json.dumps)}
@@ -738,12 +752,14 @@ def compare(form_id, project_lines, second_lines):
     if form_id in defs:
         second_lines = normalize_definition_ids(form_id, project_lines, second_lines)
     params_doc = project_yaml(os.path.join(ROOT, "params", f"{Y}.yaml"))
-    pvals = {k: v["value"] for k, v in (params_doc.get("params") or params_doc)["values"].items()}
+    parameter_rows = (params_doc.get("params") or params_doc)["values"]
+    pvals = {k: v["value"] for k, v in parameter_rows.items()}
+    ptypes = {k: v["type"] for k, v in parameter_rows.items()}
     inputs = {l["id"]: l for l in project_lines if l["expr"].get("op") == "input"}
     pkeys = marker_keys(project_lines)
     skeys = {**{i: pkeys[i] for i in inputs}, **marker_keys(second_lines)}
-    a = Expander(form_id, project_lines, defs, inputs=inputs, params=pvals, keys=pkeys)
-    b = Expander(form_id, second_lines, defs, inputs=inputs, params=pvals, keys=skeys)
+    a = Expander(form_id, project_lines, defs, inputs=inputs, params=pvals, keys=pkeys, param_types=ptypes)
+    b = Expander(form_id, second_lines, defs, inputs=inputs, params=pvals, keys=skeys, param_types=ptypes)
     results = []
     second_by_id = {l["id"]: l for l in second_lines}
     for l in exported_lines({"id": form_id, "lines": project_lines}):
@@ -981,6 +997,7 @@ def write_log(form_doc, model, prompt, used, results, extra, raw_text, meta, dry
            f"| model reported | {', '.join(meta.get('model_reported', [])) or '-'} |",
            f"| prompt sha256 | {hashlib.sha256(prompt.encode()).hexdigest()} |",
            f"| prompt policy | {meta.get('prompt_policy', 'legacy-unrecorded')} |",
+           f"| comparison policy | {COMPARISON_POLICY} |",
            f"| system sha256 | {meta.get('system_sha256', '-')} |",
            f"| reasoning effort | {meta.get('reasoning_effort') or 'provider default'} |",
            f"| output token budget | {meta.get('request_max_tokens') or 'transport default (65536 for DeepSeek)'} |",

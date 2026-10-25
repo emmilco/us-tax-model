@@ -233,11 +233,25 @@ parameters compare as constants; zero terms are dropped from sums; `choose`
 alternatives that select the same target are merged under one `any` guard.
 Lines agree when the canonical trees are equal.
 
-**Known limitation, BUG-0129 (2026-10-24):** constant normalization currently erases unit annotations.
-A Count literal and an untyped money literal can compare equal despite different runtime behavior.
-All transcription qualification is held in `compare_families.py` until type preservation and a
-prior-agreement audit are complete (T-062). Historical AGREE is not a claim of valid model IR typing.
-Render, worked-value and external-engine records have separate qualification/evidence rules.
+**BUG-0129 repair (2026-10-24):** constant normalization now preserves Count annotations, including
+zero/one parameters expanded through foreign helpers and shared definitions. Boolean constants are
+distinguished from numeric zero/one. New logs record `typed-literals-v1` as their comparison policy;
+changing it invalidates automatic reuse of old rulings. BUG-0130 adds missing Count syntax to the
+generic prompt grammar. This is not a claim that every returned model IR type has been validated.
+Both logs in a comparison must record the current comparison policy before that pair can qualify;
+removing the global hold alone cannot promote legacy comparisons.
+All transcription qualification remains held until model type validation, prior-agreement audit,
+verified record migration/fresh requests and adjudication close (T-062). Historical AGREE is not a
+typed-model certification. Render, worked-value and engine evidence have separate rules.
+
+`python3 tools/transcription/audit_transcription.py` recompares saved transcriptions offline and
+writes `.transcription/typed-literal-audit.json` without modifying prompts, replies, logs or rulings.
+It verifies the log's subject and original prompt hash, metadata consistency and the embedded reply.
+Legacy incomplete request receipts remain labeled legacy-limited; mismatches are reported rather
+than upgraded. `--forms`, `--family` and `--report` restrict/output the diagnostic audit. An exit 1
+means artifacts could not be verified, not that the tool has rewritten or resolved them. The first
+run verifies 82 replies and detects nine lost agreements; 27 saved Claude prompts fail their old
+hashes and one reply has conflicting definition ids. This diagnostic report alone never qualifies a reading.
 
 Representational differences the comparison cannot see through remain as
 disagreements and get a ruling: typically a value the project derives from

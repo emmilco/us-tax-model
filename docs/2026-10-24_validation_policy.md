@@ -62,5 +62,7 @@ network dependency to tax-return runtime. Records and the first worked research 
 The presentation changes and held age-at-care correction are implemented in the follow-up to
 735e644, with original verdicts preserved. Repair BUG-0129's literal-unit comparison and audit
 previous agreements before transcription qualification resumes; all transcription comparisons
-are currently held. Continue the other pending comparisons, broader calculations and engine work.
+are currently held. Literal-unit preservation and a read-only saved-reply comparison audit are now
+implemented; returned-model type validation and qualified record migration remain. Continue the
+other pending comparisons, broader calculations and engine work.
 No human approval or completion of outstanding evidence milestones is inferred from this policy change.

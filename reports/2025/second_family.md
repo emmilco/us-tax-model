@@ -2,7 +2,7 @@
 
 Summary: 112 form-kind pair(s) with logs from Claude and deepseek; ruled model-error noise 0.9% (20/2117 second-family lines judged; pending reviews are provisional); 23 eligible, 89 pending; raw agreement 68.0% (diagnostic only); current independence yield 185 line(s); both families disputed 411
 
-Written by `tools/transcription/compare_families.py` on 2026-10-24 from the review logs under `reviews/2025/`. For each form with a Claude log and a second model family's log of the same kind (`<form>.<family>.md`, families.py), the lines judged in both are compared.
+Written by `tools/transcription/compare_families.py` on 2026-10-25 from the review logs under `reviews/2025/`. For each form with a Claude log and a second model family's log of the same kind (`<form>.<family>.md`, families.py), the lines judged in both are compared.
 
 - **Noise rule** (owner's decision 12, integrity plan item 1.3): second-family disputes ruled **model error**, divided by the lines that family judged, must be at most 10% for each form-kind run. Findings, representation differences, scope differences and ambiguities are not model noise. The threshold uses integer arithmetic; 1/10 passes and 1/9 does not. Rates for pending reviews are provisional: an unresolved objection has not yet been classified, and zero ruled model errors does not mean every objection was correct.
 - **Eligibility** also requires current subjects/sources, the named second-family model, no missing or invalid verdicts, and no open or unclassified ruling. Empty reviews earn no assertion. Optional-family results can remain pending without becoming evidence.
@@ -73,61 +73,61 @@ Written by `tools/transcription/compare_families.py` on 2026-10-24 from the revi
 | w2 | deepseek (deepseek-flash) | 5 | 3 | 60.0% | 0/5 (0.0%) | pending | 0 | 1 | 1 | 0 |
 | **all** | | 894 | 420 | 47.0% | | | 127 | 327 | 20 | 7 |
 
-Pending asset [deepseek]: 15 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending carloan [deepseek]: BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending dcprov [deepseek]: BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending dependent [deepseek]: model-error noise above 10%; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending div [deepseek]: 1 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending eic [deepseek]: 11 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending f1040 [deepseek]: 17 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending f2441 [deepseek]: 4 open or unclassified rulings; model-error noise above 10%; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending f4562 [deepseek]: 14 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending f4952 [deepseek]: model-error noise above 10%; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending f5695 [deepseek]: 20 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending f8606 [deepseek]: 3 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending f8880 [deepseek]: 6 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending f8889 [deepseek]: 11 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending f8959 [deepseek]: BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending f8960 [deepseek]: 7 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending f8995 [deepseek]: 9 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending f8995a [deepseek]: 4 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending ftc [deepseek]: BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending g28 [deepseek]: 6 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending gift [deepseek]: BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending household [deepseek]: 5 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending interest [deepseek]: BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending ira [deepseek]: 16 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending ltc [deepseek]: 1 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending mq [deepseek]: model-error noise above 10%; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending oi8z [deepseek]: BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending otjob [deepseek]: BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending person [deepseek]: 42 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending qbi [deepseek]: 4 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending qdcg [deepseek]: BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending refund [deepseek]: 8 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending retirement [deepseek]: 4 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending s1 [deepseek]: 12 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending s179 [deepseek]: 7 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending s1a [deepseek]: 33 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending s2 [deepseek]: 2 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending s3 [deepseek]: BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending s8812 [deepseek]: 10 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending sa [deepseek]: 4 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending sales [deepseek]: 2 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending sb [deepseek]: BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending sc [deepseek]: 7 missing expected lines; 34 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending scope [deepseek]: BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending scveh [deepseek]: 19 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending sd [deepseek]: 39 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending sdtw [deepseek]: 20 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending se [deepseek]: 1 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending sli [deepseek]: 5 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending ssb [deepseek]: 6 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending tax_on_amount [deepseek]: BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending tcw [deepseek]: BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending tipjob [deepseek]: BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending u1250 [deepseek]: 15 open or unclassified rulings; BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
-Pending w2 [deepseek]: BUG-0129: transcription qualification held until literal units are preserved and prior agreements re-audited.
+Pending asset [deepseek]: 15 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending carloan [deepseek]: BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending dcprov [deepseek]: BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending dependent [deepseek]: model-error noise above 10%; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending div [deepseek]: 1 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending eic [deepseek]: 11 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending f1040 [deepseek]: 17 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending f2441 [deepseek]: 4 open or unclassified rulings; model-error noise above 10%; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending f4562 [deepseek]: 14 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending f4952 [deepseek]: model-error noise above 10%; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending f5695 [deepseek]: 20 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending f8606 [deepseek]: 3 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending f8880 [deepseek]: 6 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending f8889 [deepseek]: 11 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending f8959 [deepseek]: BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending f8960 [deepseek]: 7 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending f8995 [deepseek]: 9 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending f8995a [deepseek]: 4 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending ftc [deepseek]: BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending g28 [deepseek]: 6 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending gift [deepseek]: BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending household [deepseek]: 5 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending interest [deepseek]: BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending ira [deepseek]: 16 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending ltc [deepseek]: 1 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending mq [deepseek]: model-error noise above 10%; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending oi8z [deepseek]: BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending otjob [deepseek]: BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending person [deepseek]: 42 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending qbi [deepseek]: 4 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending qdcg [deepseek]: BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending refund [deepseek]: 8 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending retirement [deepseek]: 4 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending s1 [deepseek]: 12 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending s179 [deepseek]: 7 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending s1a [deepseek]: 33 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending s2 [deepseek]: 2 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending s3 [deepseek]: BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending s8812 [deepseek]: 10 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending sa [deepseek]: 4 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending sales [deepseek]: 2 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending sb [deepseek]: BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending sc [deepseek]: 7 missing expected lines; 34 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending scope [deepseek]: BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending scveh [deepseek]: 19 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending sd [deepseek]: 39 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending sdtw [deepseek]: 20 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending se [deepseek]: 1 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending sli [deepseek]: 5 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending ssb [deepseek]: 6 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending tax_on_amount [deepseek]: BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending tcw [deepseek]: BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending tipjob [deepseek]: BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending u1250 [deepseek]: 15 open or unclassified rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
+Pending w2 [deepseek]: BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek.
 
 ### Independence yield
 

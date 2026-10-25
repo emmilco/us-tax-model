@@ -1,5 +1,29 @@
 # Handoff: the integrity plan, Phase 0 done, Phase 1 in progress
 
+## Current literal-unit repair after commit 2fdec33 — 2026-10-24
+
+2fdec33 commits the age-at-care correction, deduction presentation changes and transcription hold
+after a full green suite: all 1068 CLI fixtures, 1700 engine cases with zero unexplained differences,
+and the unchanged 2278-mutant report (94.4% raw, 100% adjusted).
+
+The next repair preserves literal Count annotations and zero/one parameter units, propagates parameter
+types into foreign helpers/shared definitions, and stops treating numeric zero/one as Boolean values.
+New transcription logs record comparison policy typed-literals-v1, included in ruling context hashes.
+BUG-0130 repairs the missing Count-literal syntax in the generic prompt grammar. Old prompts/replies
+are not relabeled as having seen that syntax. All 69 offline review-tool tests pass.
+
+`audit_transcription.py` is a read-only comparison audit. It checks current subjects, saved prompt
+hashes, metadata and the reply embedded in the original log, then writes a diagnostic report only.
+It verified/recompared 82 replies (all 55 Flash and 27 Claude), including 23 explicitly legacy-limited
+receipts; nine former agreements now disagree (Claude f1040:2, s1:1; Flash person:5, sa:1). Of the other
+28 Claude records, 27 saved prompts fail their recorded hashes and one reply has conflicting definition
+ids. They are reported as unverified/not re-comparable rather than silently repaired or reused.
+Details: `.transcription/typed-literal-audit.json`; no existing log, ruling, fixture or raw reply changed.
+
+This repairs unit preservation, not all returned-model IR typing. T-062 still requires type validation,
+verified migration/fresh requests and adjudication. Keep the global transcription qualification hold
+until those close. The numeric scoreboard and render/model-worked evidence remain separate.
+
 ## Current follow-up after commit 735e644 — 2026-10-24
 
 735e644 commits the accumulated integrity work and optional-human/secondary-evidence policy.
