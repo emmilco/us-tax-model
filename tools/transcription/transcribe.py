@@ -24,6 +24,7 @@ import families  # noqa: E402
 import rulings  # noqa: E402
 import subjects  # noqa: E402
 import input_contracts  # noqa: E402
+import adapter_contracts  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, os.path.join(ROOT, "tools"))
@@ -245,7 +246,8 @@ def exported_lines(form_doc):
         ALL_LINES = load_all_lines()
     fid = form_doc["id"]
     computed = [l for l in form_doc["lines"] if l["expr"].get("op") != "input"]
-    helpers = [l for l in computed if l["printed"] in HELPER_PRINTED]
+    excluded = adapter_contracts.excluded_ids(fid, Y)
+    helpers = [l for l in computed if l["printed"] in HELPER_PRINTED and l["id"] not in excluded]
     if fid in load_defs():
         referenced = set()
         for l in form_doc["lines"]:
@@ -1244,6 +1246,11 @@ def main():
             for l in d["lines"]:
                 other[l["id"]] = reference_note(d, l)
     prompt = build_prompt(form_doc, excerpt, params, other, {k: v["type"] for k, v in values.items()})
+    source_targets = exported_lines(form_doc) + [line for line in form_doc["lines"]
+        if line["printed"] not in HELPER_PRINTED and line["expr"].get("op") != "input"]
+    if not source_targets and adapter_contracts.excluded_ids(a.form, Y):
+        print(f"{a.form}: no source-defined computed targets; adapter contract is checked separately; no model call or review assertion")
+        return
     os.makedirs(RAW, exist_ok=True)
     base = os.path.join(RAW, families.stem(a.form, families.family_of(a.model)))
     print(f"{a.form}: excerpt {len(excerpt):,} chars from " + "; ".join(f"{u['doc']} pages {u['pages']} ({u['how']})" for u in used))

@@ -21,6 +21,7 @@ import rule
 import audit_skipped as skipped
 import audit_transcription as transcription_audit
 import input_contracts as contracts
+import adapter_contracts as adapters
 
 
 def log(statuses, rulings=None):
@@ -761,6 +762,83 @@ class ModelExpressionTypes(unittest.TestCase):
         with patch.object(T, "model_type_context", return_value=self.context(project)):
             errors = T.validate_model_types("probe", changed)
         self.assertTrue(any("project schema" in e["message"] for e in errors))
+
+
+class InternalAdapterContracts(unittest.TestCase):
+    def test_authored_adapter_and_all_consumer_copies_pass(self):
+        result = adapters.assess("div", T.Y, T.model_type_context())
+        self.assertEqual(result["state"], "pass")
+        self.assertEqual(len(result["cases"]), 21)
+        self.assertFalse(result["evidence_credit"])
+        self.assertTrue(all(len(test["outputs"]) == 17 for test in result["cases"]))
+
+    def test_refusal_removal_is_caught_by_engineering_cases(self):
+        context = json.loads(json.dumps(T.model_type_context()))
+        screen = next(line for doc in context["forms"] if doc["id"] == "div" for line in doc["lines"] if line["id"] == "div.screen")
+        screen["refuses"] = []
+        result = adapters.assess("div", T.Y, context)
+        self.assertEqual(result["state"], "fail")
+        self.assertFalse(next(test for test in result["cases"] if test["id"] == "section1202")["pass"])
+        self.assertFalse(next(test for test in result["cases"] if test["id"] == "missing-section1202-answer")["pass"])
+
+    def test_changed_adapter_amount_is_caught(self):
+        context = json.loads(json.dumps(T.model_type_context()))
+        screen = next(line for doc in context["forms"] if doc["id"] == "div" for line in doc["lines"] if line["id"] == "div.screen")
+        screen["expr"] = {"op": "copy", "from": "div.box2b"}
+        result = adapters.assess("div", T.Y, context)
+        self.assertEqual(result["state"], "fail")
+        self.assertFalse(next(test for test in result["cases"] if test["id"] == "accepted-positive-components")["pass"])
+
+    def test_changed_consumer_wiring_cannot_silently_drop_coverage(self):
+        context = json.loads(json.dumps(T.model_type_context()))
+        line = next(line for doc in context["forms"] if doc["id"] == "g28" for line in doc["lines"] if line["id"] == "g28.line1")
+        line["expr"] = {"op": "param", "ref": "sales.zero"}
+        with self.assertRaisesRegex(ValueError, "consumer inventory"):
+            adapters.assess("div", T.Y, context)
+
+    def test_required_registry_cannot_disappear(self):
+        with tempfile.TemporaryDirectory() as temp, patch.object(adapters, "DIRECTORY", Path(temp)):
+            with self.assertRaises(FileNotFoundError):
+                adapters.load("div", T.Y)
+
+    def test_empty_reference_answer_cannot_make_all_outputs_pass(self):
+        bank = json.loads(json.dumps(adapters.load("div", T.Y)))
+        bank["cases"][0]["expect"] = {}
+        with tempfile.TemporaryDirectory() as temp, patch.object(adapters, "DIRECTORY", Path(temp)):
+            folder = Path(temp, str(T.Y))
+            folder.mkdir()
+            (folder / "div.json").write_text(json.dumps(bank))
+            with self.assertRaisesRegex(ValueError, "reference answer"):
+                adapters.load("div", T.Y)
+
+    def test_blind_target_list_contains_no_internal_adapter(self):
+        self.assertEqual(T.exported_lines(T.load_form("div")), [])
+        with patch.object(T, "review_response", side_effect=AssertionError("empty source review must make no request")), \
+                patch.object(sys, "argv", ["transcribe.py", "--form", "div"]):
+            with patch("sys.stdout", new_callable=io.StringIO) as out:
+                T.main()
+        self.assertIn("no model call or review assertion", out.getvalue())
+
+    def test_historical_adapter_agreement_cannot_earn_source_credit(self):
+        record = {"lines": {"div.screen": {"status": "AGREE"}}}
+        projected = adapters.source_record("div", T.Y, record)
+        self.assertFalse(projected["lines"])
+        self.assertIn("div.screen", record["lines"])
+        quality = C.quality("transcription", projected, projected)
+        self.assertEqual(quality["state"], "no lines")
+        result = C.compare("transcription", "div", "deepseek")
+        self.assertEqual(result["judged"], [])
+        self.assertEqual(result["excluded_adapters"], ["div.screen"])
+        self.assertTrue(any("no tax-evidence credit" in text for text in result["quality"]["blockers"]))
+
+    def test_adapter_behavior_and_reference_answers_stay_host_only(self):
+        bank = json.loads(json.dumps(adapters.load("div", T.Y)))
+        bank["adapters"]["div.screen"]["behavior"] = "PRIVATE_ADAPTER_BEHAVIOR_CANARY"
+        bank["cases"][0]["expect"] = {"kind": "PRIVATE_ADAPTER_ANSWER_CANARY"}
+        with patch.object(adapters, "load", return_value=bank):
+            prompt = T.build_prompt(T.load_form("div"), "ARCHIVED SOURCE", {}, {})
+        self.assertNotIn("PRIVATE_ADAPTER_", prompt)
+        self.assertNotIn("id div.screen", prompt)
 
 
 class SavedTranscriptionAudit(unittest.TestCase):

@@ -4,18 +4,23 @@ Second transcription of `Mid-quarter convention test for property placed in serv
 
 | field | value |
 | --- | --- |
-| date | 2026-10-23 |
+| date | 2026-10-25 |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
-| prompt sha256 | b09049415da39682518ec5285559be2812d54b63fbbc0d6ba097cb7b523bd792 |
+| prompt sha256 | 5c25ab081eb597a4d768001c50076f3e338d4b19d0e6e24e7df6077a9bfddde3 |
 | prompt policy | source-only-computation-v2 |
+| comparison policy | checked-expression-types-v2 |
+| input context policy | complete-input-context-v1 |
+| complete input context | pass |
+| type validation policy | project-expression-types-v1 |
+| model type validation | pass |
 | system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
-| reasoning effort | max |
+| reasoning effort | provider default |
 | output token budget | 65536 |
 | interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
 | subject sha256 | 7a635868298039249c562405cd29bd2de3cef651b51f0bf258cd0dd44a40e55b |
 | printed lines compared | 1 |
-| agree / disagree / missing | 0 / 1 / 0 |
+| agree / disagree / missing | 1 / 0 / 0 |
 | extra printed lines in second | none |
 
 ## Source pages given to the model
@@ -27,48 +32,46 @@ Second transcription of `Mid-quarter convention test for property placed in serv
 ## Lines
 
 ### mq.applies — The mid-quarter convention applies: the October to December bases are more than 40% of all
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"args": [{"amount": {"collection": "person", "field": "person.mq_total", "op": "sum_over", "where": null}, "count": {"param": "sc.count2"}, "op": "multiply_count"}, {"amount": {"collection": "person", "field": "person.mq_q4", "op": "sum_over", "where": null}, "count": {"param": "sc.count5"}, "op": "multiply_count"}], "test": "lt"}
-```
-
-Second:
-
-```json
-{"args": [{"amount": {"collection": "person", "field": "person.mq_total", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "sc.bonus_rate_40"}}, {"collection": "person", "field": "person.mq_q4", "op": "sum_over", "where": null}], "test": "lt"}
-```
-
-Second transcription's note: The archived text does not say whether separate Schedule C businesses or spouses on a joint return are tested separately; this line aggregates the person entries on the return for one test.
-
-Ruling: model error; archived p946 (2025) p. 34 requires fourth-quarter bases to be more than 40% of the annual bases. The returned multiply_rate rounds the 40% product to cents under the shared IR, which changes this strict comparison. Counterexample: annual basis $1000.02 and Q4 basis $400.01. Exact 40% is $400.008, so the source test is true (5*40001 > 2*100002); the returned rate multiplication rounds to $400.01 and its strict comparison is false. This arithmetic failure remains even if its collection aggregation is supplied correctly. One model error out of one judged line exceeds the noise limit; this run earns no assertion.
+Status: **AGREE**
 
 ## Raw second transcription
 
 ```yaml
 lines:
-  - id: mq.h_q4
+  - id: mq.h_count5
     printed: "(helper)"
-    label: "Total depreciable bases of MACRS property placed in service during the last 3 months of 2025"
+    label: "Count of five"
+    type: Count
+    expr: {op: param, ref: sc.count5}
+  - id: mq.h_count2
+    printed: "(helper)"
+    label: "Count of two"
+    type: Count
+    expr: {op: param, ref: sc.count2}
+  - id: mq.h_q4_total
+    printed: "(helper)"
+    label: "Total depreciable bases placed in service during the last 3 months of 2025"
     type: NonNegDollars
     expr: {op: sum_over, collection: person, field: person.mq_q4}
-  - id: mq.h_total
+  - id: mq.h_total_bases
     printed: "(helper)"
     label: "Total depreciable bases of all MACRS property placed in service during 2025"
     type: NonNegDollars
     expr: {op: sum_over, collection: person, field: person.mq_total}
-  - id: mq.h_threshold
+  - id: mq.h_q4_times5
     printed: "(helper)"
-    label: "40% of total depreciable bases of all MACRS property placed in service during 2025"
+    label: "Five times the last-3-month depreciable bases"
     type: NonNegDollars
-    expr: {op: multiply_rate, amount: mq.h_total, rate: {param: sc.bonus_rate_40}}
-    note: "The archived text states a 40% test; no dedicated mid-quarter rate parameter is provided, so this line uses sc.bonus_rate_40, the pinned 40% rate."
+    expr: {op: multiply_count, amount: mq.h_q4_total, count: mq.h_count5}
+  - id: mq.h_total_times2
+    printed: "(helper)"
+    label: "Two times the total depreciable bases"
+    type: NonNegDollars
+    expr: {op: multiply_count, amount: mq.h_total_bases, count: mq.h_count2}
   - id: mq.applies
     printed: "(helper)"
     label: "Mid-quarter convention applies"
     type: Bool
-    expr: {op: test, gt: [mq.h_q4, mq.h_threshold]}
-    note: "The archived text does not say whether separate Schedule C businesses or spouses on a joint return are tested separately; this line aggregates the person entries on the return for one test."
+    expr: {op: test, gt: [mq.h_q4_times5, mq.h_total_times2]}
+    note: "The supplied interface has no printed lines. I derived the result from the existing person-level mq_q4 and mq_total totals. The test is that last-3-month bases exceed 40% of total bases, written as 5 times last-3-month bases greater than 2 times total bases to avoid rounding."
 ```

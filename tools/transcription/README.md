@@ -274,6 +274,15 @@ BUG-0135/T-064 distinguishes internal adapters from source-defined quantities. A
 `interface gap` records an unresolved semantic contract, blocks qualification and contributes no
 model-error noise. It is not resolved by inventing a tax reading or forcing equivalence.
 
+The first resolved adapter, `div.screen`, now has a separate host-only engineering
+contract under `adapter_contracts/2025/`. Twenty-one cases check its zero/refusal/unknown
+behavior and all sixteen worksheet copies. It is omitted from blind targets and explicitly
+excluded from source agreement/noise counts, without modifying historical replies/rulings.
+An adapter-only form makes no new model request and earns no empty passing source review.
+Run `python3 tools/transcription/adapter_contracts.py`; check-all includes it. Its behavior
+and answers stay out of source prompts and it earns no tax-evidence credit. Other opaque
+helpers still require explicit classification; see `adapter_contracts/README.md`.
+
 BUG-0133 supplies declared table ids, ordered key types and result types without cells or authored
 formulas. Requests also include the generic expression JSON Schema, restricted to the engine's
 implemented atoms; reserved operations and unavailable table interfaces are omitted. Run

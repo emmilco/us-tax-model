@@ -14,8 +14,8 @@
    "printed": "15",
    "project": "{\"line\": \"5\"}",
    "second": "{\"param\": \"medicare.threshold\"}",
-   "ruling": "Ruling: representation; f8959 (2025) p.1 lines5,9,15 print identical filing-status thresholds ($250000 joint, $125000 separate, $200000 other). Project line5 is exactly parameter medicare.threshold; copying that printed line and repeating the same status-keyed parameter return the same amount. No threshold, filing-status choice or unsupported-source screen changes.",
-   "context": "6474c6c747d5af80183bd8f682b27e6cec23e0753e7cffba70aeb391895d6124"
+   "ruling": "Ruling: representation; f8959 p.1 lines5/9/15 print the identical filing-status threshold table. Copying line5 and reading medicare.threshold directly have the same published type and filing-status amounts. No tax-value difference.",
+   "context": "d3c894c21305fe726710abd3a4eec332387de598a68103b241260dc3217e5bc9"
   },
   {
    "printed": "19",
@@ -28,8 +28,8 @@
    "printed": "9",
    "project": "{\"line\": \"5\"}",
    "second": "{\"param\": \"medicare.threshold\"}",
-   "ruling": "Ruling: representation; f8959 (2025) p.1 lines5,9,15 print identical filing-status thresholds ($250000 joint, $125000 separate, $200000 other). Project line5 is exactly parameter medicare.threshold; copying that printed line and repeating the same status-keyed parameter return the same amount. No threshold, filing-status choice or unsupported-source screen changes.",
-   "context": "6474c6c747d5af80183bd8f682b27e6cec23e0753e7cffba70aeb391895d6124"
+   "ruling": "Ruling: representation; f8959 p.1 lines5/9/15 print the identical filing-status threshold table. The project copies line5, whose expression is medicare.threshold; the reply reads that same status-keyed parameter directly. No tax-value difference.",
+   "context": "d3c894c21305fe726710abd3a4eec332387de598a68103b241260dc3217e5bc9"
   }
  ]
 }

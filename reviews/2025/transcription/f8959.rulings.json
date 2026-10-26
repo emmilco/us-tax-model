@@ -1,0 +1,20 @@
+{
+ "kind": "transcription",
+ "form": "f8959",
+ "rulings": [
+  {
+   "printed": "15",
+   "project": "{\"line\": \"5\"}",
+   "second": "{\"param\": \"medicare.threshold\"}",
+   "ruling": "Ruling: representation; f8959 p.1 lines5/9/15 print the identical filing-status threshold table. Copying line5 and reading medicare.threshold directly have the same published type and filing-status amounts. No tax-value difference.",
+   "context": "888149479c2e498bea4bb948c3cd5620f3f956471f9be2e7691160cd522fde42"
+  },
+  {
+   "printed": "9",
+   "project": "{\"line\": \"5\"}",
+   "second": "{\"param\": \"medicare.threshold\"}",
+   "ruling": "Ruling: representation; f8959 p.1 lines5/9/15 print the identical filing-status threshold table. The project copies line5, whose expression is medicare.threshold; the reply reads that same status-keyed parameter directly. No tax-value difference.",
+   "context": "888149479c2e498bea4bb948c3cd5620f3f956471f9be2e7691160cd522fde42"
+  }
+ ]
+}

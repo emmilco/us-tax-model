@@ -5,8 +5,22 @@
   {
    "printed": "4a",
    "project": "{\"of\": [{\"ref\": \"sb.line2\"}, {\"ref\": \"sb.line6\"}], \"op\": \"sum\"}",
+   "second": "{\"of\": [{\"collection\": \"interest\", \"field\": \"interest.amount\", \"op\": \"sum_over\", \"where\": null}, {\"ref\": \"f1040.line3b\"}], \"op\": \"sum\"}",
+   "ruling": "Ruling: representation; f4952 p.3 line4a includes supported taxable interest and ordinary dividends, excluding Alaska Permanent Fund dividends. sb.line2 is the interest-entry sum and f1040.line3b copies sb.line6. The expressions use the same admitted subtotals; inherited refusal placement differs and this does not certify missing-input paths.",
+   "context": "41731cf1c012733ac014f69b0e1db12115dd06c2f7ca96c5b412642113ea1bab"
+  },
+  {
+   "printed": "4a",
+   "project": "{\"of\": [{\"ref\": \"sb.line2\"}, {\"ref\": \"sb.line6\"}], \"op\": \"sum\"}",
    "second": "{\"of\": [{\"ref\": \"f1040.line2b\"}, {\"ref\": \"f1040.line3b\"}], \"op\": \"sum\"}",
    "ruling": "Ruling: equivalent within scope; project retained. The project sums Schedule B line 2 (total interest before the excludable savings-bond interest on line 3, which is refused and zero) and Schedule B line 6 (ordinary dividends); the second sums Form 1040 lines 2b and 3b, which are those Schedule B totals carried to Form 1040. Same values within scope (Form 4952 instructions pp. 3–4, line 4a)."
+  },
+  {
+   "printed": "4d",
+   "project": "{\"from\": {\"ref\": \"sd.line16\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}",
+   "second": "{\"from\": {\"ref\": \"f1040.line7a\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}",
+   "ruling": "Ruling: representation; f4952 p.3 line4d requires positive net investment-property gains including capital gain distributions. In the supported securities slice, Form1040 line7a carries ScheduleD net gains or the distributions-only result. Flooring at zero removes the loss-limit distinction. Scope screens exclude other property and carryovers; no claim beyond admitted complete facts.",
+   "context": "41731cf1c012733ac014f69b0e1db12115dd06c2f7ca96c5b412642113ea1bab"
   },
   {
    "printed": "4d",
@@ -15,10 +29,24 @@
    "ruling": "Ruling: equivalent representation; project retained. Line 16 floored at zero equals the larger of zero and line 16."
   },
   {
+   "printed": "4e",
+   "project": "{\"of\": [{\"line\": \"4d\"}, {\"from\": {\"of\": [{\"ref\": \"sd.line15\"}, {\"ref\": \"sd.line16\"}], \"op\": \"smaller_of\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}], \"op\": \"smaller_of\"}",
+   "second": "{\"of\": [{\"line\": \"4d\"}, {\"from\": {\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"collection\": \"sales\", \"field\": \"sales.one\", \"op\": \"sum_over\", \"where\": null}, {\"const\": 0, \"type\": \"Count\"}], \"test\": \"le\"}, {\"args\": [{\"ref\": \"g28.line7\"}, {\"const\": 0}], \"test\": \"le\"}, {\"args\": [{\"ref\": \"u1250.line18\"}, {\"const\": 0}], \"test\": \"le\"}], \"test\": \"all\"}, \"then\": {\"ref\": \"f1040.line7a\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"sales\", \"field\": \"sales.one\", \"op\": \"sum_over\", \"where\": null}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"ref\": \"g28.line7\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"ref\": \"u1250.line18\"}], \"test\": \"lt\"}], \"test\": \"any\"}, \"then\": {\"of\": [{\"ref\": \"sd.line15\"}, {\"ref\": \"sd.line16\"}], \"op\": \"smaller_of\"}}], \"op\": \"choose\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}], \"op\": \"smaller_of\"}",
+   "ruling": "Ruling: representation; f4952 p.3 line4e defines positive net long-term gain less net short-term loss, with distributions treated as long-term. On the supported completed ScheduleD path this is the positive smaller of lines15/16. The reply separately selects Form1040 line7a when ScheduleD is not required, where supported gains are distributions only. This is a bounded source/representation ruling, not a partial-input proof.",
+   "context": "41731cf1c012733ac014f69b0e1db12115dd06c2f7ca96c5b412642113ea1bab"
+  },
+  {
    "printed": "f4952.required",
    "project": "{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"line\": \"4c\"}, {\"line\": \"1\"}], \"test\": \"le\"}, {\"args\": [{\"const\": 0}, {\"line\": \"5\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": false}, {\"input\": \"f4952.carryover\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"const\": 0}, {\"line\": \"1\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4g\"}], \"test\": \"lt\"}], \"test\": \"any\"}",
    "second": "{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"line\": \"4c\"}, {\"line\": \"1\"}], \"test\": \"le\"}, {\"args\": [{\"const\": 0}, {\"line\": \"2\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"line\": \"5\"}], \"test\": \"lt\"}], \"test\": \"any\"}, {\"args\": [{\"const\": 0}, {\"line\": \"1\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4g\"}], \"test\": \"lt\"}], \"test\": \"any\"}",
    "ruling": "Ruling: equivalent in scope; project retained. The second tests line 2 (the carryover) where the project tests the carryover answer; line 2 is nonzero only with a carryover, which is refused (f4952.carryover)."
+  },
+  {
+   "printed": "f4952.required",
+   "project": "{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"line\": \"4c\"}, {\"line\": \"1\"}], \"test\": \"le\"}, {\"args\": [{\"const\": 0}, {\"line\": \"5\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": false}, {\"input\": \"f4952.carryover\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"const\": 0}, {\"line\": \"1\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4g\"}], \"test\": \"lt\"}], \"test\": \"any\"}",
+   "second": "{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"line\": \"4c\"}, {\"line\": \"1\"}], \"test\": \"le\"}, {\"args\": [{\"const\": false}, {\"input\": \"f4952.carryover\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": false}, {\"input\": \"f4952.unsupported\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"const\": 0}, {\"line\": \"1\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4g\"}], \"test\": \"lt\"}], \"test\": \"any\"}",
+   "ruling": "Ruling: representation; f4952 p.3 Who Must File gives interest/dividends less qualified dividends, no other deductible expenses and no carryover as the exception. The project line5 is zero on its admitted slice and refuses unsupported expenses; the reply tests that screen directly. Both require filing for a positive line4g election under pp.3-4. This ruling is limited to completed supported facts, not missing-screen equivalence.",
+   "context": "41731cf1c012733ac014f69b0e1db12115dd06c2f7ca96c5b412642113ea1bab"
   }
  ]
 }

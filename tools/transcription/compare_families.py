@@ -24,6 +24,7 @@ import rulings  # noqa: E402
 import subjects  # noqa: E402
 import transcribe  # noqa: E402
 import input_contracts  # noqa: E402
+import adapter_contracts  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, os.path.join(ROOT, "tools"))
@@ -150,6 +151,10 @@ def model_blockers(kind, family, log):
 def compare(kind, form, family):
     a = parse_log(kind, rulings.log_path(kind, form, families.DEFAULT))
     b = parse_log(kind, rulings.log_path(kind, form, family))
+    excluded = adapter_contracts.excluded_ids(form, Y) if kind == "transcription" else set()
+    if excluded:
+        a = adapter_contracts.source_record(form, Y, a)
+        b = adapter_contracts.source_record(form, Y, b)
     agree = AGREE[kind]
     shared = sorted(set(a["lines"]) & set(b["lines"]))
     judged = [k for k in shared if a["lines"][k]["status"] not in ("MISSING", "SKIPPED")
@@ -164,6 +169,8 @@ def compare(kind, form, family):
         current = None
     stale = [fam for fam, log in ((families.DEFAULT, a), (family, b)) if current is None or log["subject"] != current]
     q = quality(kind, a, b, stale)
+    if excluded and not judged:
+        q["blockers"].append("no source-defined computed targets; internal adapter checks earn no tax-evidence credit")
     if kind == "transcription":
         q["blockers"].append("BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close")
         legacy = [fam for fam, record in ((families.DEFAULT, a), (family, b))
@@ -203,7 +210,7 @@ def compare(kind, form, family):
     return {"kind": kind, "form": form, "family": family, "a": a, "b": b, "shared": shared, "judged": judged,
             "both_agree": both_agree, "yield": yield_, "both_disputed": both_disputed, "claude_only": claude_only,
             "unjudged": len(set(a["lines"]) ^ set(b["lines"])) + len(shared) - len(judged),
-            "stale": stale, "quality": q}
+            "stale": stale, "quality": q, "excluded_adapters": sorted(excluded)}
 
 
 def pct(n, d):
@@ -270,6 +277,8 @@ def main():
         out.append(f"| **all** | | {kj} | {ka} | {pct(ka, kj)} | | | {sum(len(r['yield']) for r in rs)} | {sum(len(r['both_disputed']) for r in rs)} | {sum(len(r['claude_only']) for r in rs)} | {sum(r['unjudged'] for r in rs)} |")
         out.append("")
         for r in rs:
+            if r["excluded_adapters"]:
+                out.append(f"Excluded internal adapters for {r['form']}: " + ", ".join(r["excluded_adapters"]) + ". Original logs/rulings are preserved; separate engineering checks earn no independent tax-evidence credit.")
             if r["quality"]["blockers"]:
                 out.append(f"Pending {r['form']} [{r['family']}]: " + "; ".join(r["quality"]["blockers"]) + ".")
         out.append("")

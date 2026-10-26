@@ -4,10 +4,20 @@ Second transcription of `Mid-quarter convention test for property placed in serv
 
 | field | value |
 | --- | --- |
-| date | 2026-10-19 |
+| date | 2026-10-25 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | eac391d4193d23a7e6d221377ff4cb7743d4d8e874e8cbb07b333a49963869cc |
+| prompt sha256 | 5c25ab081eb597a4d768001c50076f3e338d4b19d0e6e24e7df6077a9bfddde3 |
+| prompt policy | source-only-computation-v2 |
+| comparison policy | checked-expression-types-v2 |
+| input context policy | complete-input-context-v1 |
+| complete input context | pass |
+| type validation policy | project-expression-types-v1 |
+| model type validation | pass |
+| system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
+| reasoning effort | provider default |
+| output token budget | transport default (65536 for DeepSeek) |
+| interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
 | subject sha256 | 7a635868298039249c562405cd29bd2de3cef651b51f0bf258cd0dd44a40e55b |
 | printed lines compared | 1 |
 | agree / disagree / missing | 1 / 0 / 0 |
@@ -27,44 +37,50 @@ Status: **AGREE**
 ## Raw second transcription
 
 ```yaml
-```yaml
 lines:
   - id: mq.h_q4
     printed: "(helper)"
-    label: "Total depreciable bases of MACRS property placed in service during the last 3 months of the tax year"
+    label: "Total depreciable bases of MACRS property you placed in service during the last 3 months of the tax year"
     type: NonNegDollars
     expr: {op: sum_over, collection: person, field: person.mq_q4}
-    note: "Pub. 946 compares bases over all MACRS property placed in service in the year. The text does not say whether the test is per business or per return. Chosen reading: total across every person's Schedules C, using the per-person mq_q4 totals, which already roll up assets and vehicles. The Caution says the basis reflects the section 179 reduction and excludes personal-use basis but not the special allowance. The exclusions (real property, railroad grading or tunnel bore, property disposed of in the same year, non-MACRS property) are taken as already reflected in the per-entry mq_q4 basis."
+    cite: "Pub. 946 (2025), ch. 4, Which Convention Applies?, The mid-quarter convention"
+    note: "The text speaks of property 'you placed in service'. It does not say whether a joint return combines both spouses' property. I chose to total every person on the return, treating the joint return as one taxpayer. Some items are excluded from the total: nonresidential real property, residential rental property, railroad grading or tunnel bore, property placed in service and disposed of in the same year, and property depreciated under a method other than MACRS. The section 179 and personal-use reductions apply, and no reduction is made for any special depreciation allowance. All of this is taken as already reflected in the per-person aggregate person.mq_q4 and the asset screens. It is not recomputed here."
   - id: mq.h_total
     printed: "(helper)"
-    label: "Total depreciable bases of all MACRS property placed in service during the entire year"
+    label: "Total depreciable bases of all MACRS property you placed in service during the entire year"
     type: NonNegDollars
     expr: {op: sum_over, collection: person, field: person.mq_total}
+    cite: "Pub. 946 (2025), ch. 4, Which Convention Applies?, The mid-quarter convention"
+    note: "Same reading as mq.h_q4: totals every person on the return and relies on the per-person aggregate person.mq_total for the exclusions and the basis reductions in the Caution paragraph."
   - id: mq.h_five
     printed: "(helper)"
-    label: "Five"
+    label: "The number 5 (to test more than 40% exactly, as 5 × last-quarter bases > 2 × total bases)"
     type: Count
     expr: {op: param, ref: sc.count5}
+    cite: "Pub. 946 (2025), ch. 4, The mid-quarter convention ('more than 40%')"
   - id: mq.h_two
     printed: "(helper)"
-    label: "Two"
+    label: "The number 2 (to test more than 40% exactly, as 5 × last-quarter bases > 2 × total bases)"
     type: Count
     expr: {op: param, ref: sc.count2}
-  - id: mq.h_q4x5
+    cite: "Pub. 946 (2025), ch. 4, The mid-quarter convention ('more than 40%')"
+  - id: mq.h_q4_x5
     printed: "(helper)"
-    label: "Fourth-quarter bases times 5"
+    label: "Last-quarter depreciable bases times 5"
     type: NonNegDollars
     expr: {op: multiply_count, amount: mq.h_q4, count: mq.h_five}
-  - id: mq.h_totalx2
+    cite: "Pub. 946 (2025), ch. 4, The mid-quarter convention"
+  - id: mq.h_total_x2
     printed: "(helper)"
-    label: "All-year bases times 2"
+    label: "Total-year depreciable bases times 2"
     type: NonNegDollars
     expr: {op: multiply_count, amount: mq.h_total, count: mq.h_two}
+    cite: "Pub. 946 (2025), ch. 4, The mid-quarter convention"
   - id: mq.applies
     printed: "(helper)"
-    label: "Use the mid-quarter convention if the total depreciable bases of MACRS property placed in service during the last 3 months of the tax year are more than 40% of the total depreciable bases of all MACRS property placed in service during the entire year"
+    label: "The mid-quarter convention applies: the total depreciable bases of MACRS property placed in service during the last 3 months of the tax year are more than 40% of the total depreciable bases of all MACRS property placed in service during the entire year"
     type: Bool
-    expr: {op: test, gt: [mq.h_q4x5, mq.h_totalx2]}
-    note: "'More than 40%' is written as Q4 × 5 > total × 2. This is the same comparison done exactly in cents, with no rounding of a 40% product. 'More than' is read as strict, so exactly 40% does not trigger the convention. With no 2025 property, both sides are zero and the test is false, so the half-year convention applies."
-```
+    expr: {op: test, gt: [mq.h_q4_x5, mq.h_total_x2]}
+    cite: "Pub. 946 (2025), ch. 4, Which Convention Applies?, The mid-quarter convention"
+    note: "'More than 40%' is tested exactly as 5 × last-quarter bases > 2 × total bases. Multiplying by a 40% rate would round to the cent and could give the wrong answer at the boundary. When no property was placed in service, both sides are zero and the test is false, so the half-year convention applies. The condition 'if the mid-month convention does not apply' needs no separate test: property using the mid-month convention (real property) is screened out of this tool by asset.screen."
 ```

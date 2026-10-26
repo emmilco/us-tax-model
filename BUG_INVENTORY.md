@@ -2038,3 +2038,37 @@ later grouping.
   remove redundant compilation from build_and_render. Validate with compiled output initially
   absent, keeping the previous output as a reversible temporary backup.
 - **Tags:** build-order-race; clean-output-reproducibility; validation-tool-dependency
+
+### BUG-0135 engineering resolution — 2026-10-25
+
+The identified div.screen adapter now has a host-only engineering contract with 21 cases,
+checking zero/refusal/unknown behavior and all 16 direct worksheet copies. It is omitted from
+blind targets and explicitly excluded from source agreement/noise denominators. An adapter-only
+document produces no new model request or source assertion. Original dividend replies and
+interface-gap rulings are preserved; no forced equivalence or evidence credit. See T-064 and
+`tools/transcription/adapter_contracts/README.md`. The fresh f4952 reply identifies another target
+meaning gap (the full line4g election versus its net-capital-gain share); that remains unresolved.
+
+## BUG-0138 — HSA zero-distribution rollover line demands an inapplicable follow-up
+
+- **Date:** 2026-10-25
+- **Caught by:** a source-fact diagnostic of the fresh f8889 transcriptions, also run against the project.
+- **Symptom:** with total HSA distributions zero and no rollover answer, f8889.line14b is unknown
+  rather than zero. Its expression has a zero branch, but the rollover_bad refusal gate first
+  demands the absent rollover answer. Downstream lines15/16/17b independently return zero; this
+  witness does not establish an incorrect final tax liability.
+- **Source:** i8889 p.8 lines14b/15 and f8889 p.1 Part II describe only amounts included in actual
+  distributions; none can be rolled over when total distributions are zero.
+- **Witness:** one confirmed person/HSA entry, status=single, f8889.unsupported=false,
+  f8889.line14a=0, with rollover/medical/line17a unanswered. The fixed interpreter observes
+  unknown(input=rollover) on project line14b, and zero on project lines15/16/17b. Fresh Claude
+  demands missing follow-ups on all four; Flash has invalid IR and is not evaluated. Saved
+  diagnostic: `.transcription/hsa-zero-distribution-source-witness.json`; current audit report
+  records the minimal keyed inputs and result. This case was not in either actual model request.
+- **Root cause:** the consistency refusal is evaluated before a branch that makes its question
+  unnecessary. Complete question wording does not specify conditional answer availability.
+- **Where:** `forms/2025/f8889.yaml`, f8889.rollover_bad and line14b.
+- **Status:** open, T-065. Correct the conditional consistency check while retaining rejection of
+  contradictory supplied values; add source-based regressions and refresh affected T/R/M receipts.
+  No authored HSA rule or numeric fixture is changed in this batch. Keep source qualification held.
+- **Tags:** unconditional-consistency-gate; inapplicable-followup; unknown-value-propagation

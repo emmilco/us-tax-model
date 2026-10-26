@@ -16,6 +16,7 @@ import compare_families as comparison
 import families
 import transcribe as T
 import input_contracts
+import adapter_contracts
 
 
 def sha(text):
@@ -69,6 +70,7 @@ def audit(path):
             "type_validation_policy": T.TYPE_VALIDATION_POLICY,
             "type_errors": current.validation_errors,
             "partial_inputs": partial,
+            "excluded_adapters": sorted(adapter_contracts.excluded_ids(form, T.Y)),
             "before_agree": sum(row["status"] == "AGREE" for row in before.values()),
             "after_agree": sum(row["status"] == "AGREE" for row in current),
             "new_disagreements": sum(row["before"] == "AGREE" and row["after"] == "DISAGREE" for row in changes),

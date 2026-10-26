@@ -1,5 +1,68 @@
 # Transcription expression audit — 2026-10-25
 
+## Current adapter separation and replacements after 0ef4912
+
+Internal div.screen is now checked as project plumbing, not a blind IRS quantity. Twenty-one
+host-only engineering cases cover accepted zero/nonzero inputs, scope/component refusals,
+missing answers and propagation through sixteen direct worksheet copies. It is explicitly
+excluded from source agreement/noise counts; the original dividend replies/rulings remain
+unchanged. An adapter-only document earns no source assertion and makes no new model request.
+The registry does not exempt other helpers or supply adapter behavior to source prompts.
+
+| Current audit | Count |
+| --- | ---: |
+| Verified replies | 95 |
+| Passing expression checks | 39 |
+| Complete current question wording | 31 |
+| Unverified Claude prompts | 15 |
+| Legacy-limited verified receipts | 23 |
+
+Eight fresh source-only requests cover f4952/f8889/f8959/mq under both selected families.
+All four Claude replies pass types; Flash passes f8959/mq and fails f4952/f8889. Both mq replies
+agree; the Medicare differences use the same printed filing-status threshold table. HSA rulings
+preserve the owner's existing last-month/catchup choices and keep partial-input handling pending.
+Flash's f4952 line4d omits positive short-term gains; its interpretation of f4952.election also
+shows that the target must distinguish the full line4g amount from its allocated gain portion.
+That meaning gap is not clean model-only tax noise. No candidate is repaired into agreement.
+
+The current JSON is `.transcription/adapter-audit-current.json`; 195 older AGREE rows become
+DISAGREE under replay. Counts vary with replaced requests and are not tax-bug totals. All 37
+pre-batch artifacts are hashed under `.transcription/archive/before-adapter-contracts-2026-10-25/`.
+Actual requests/replies remain bound to their own hashes. No authored form or numeric fixture
+changes in this batch; no additional human review is required. The global hold remains.
+
+### Confirmed project gap: zero HSA distributions (BUG-0138 / T-065)
+
+The diagnostic source facts are deliberately minimal, not copied from project outputs:
+
+```json
+{
+  "$person": ["sample"],
+  "$f8889@person[sample]": ["hsa"],
+  "f1040.status": "single",
+  "person[sample].f8889[hsa].unsupported": false,
+  "person[sample].f8889[hsa].line14a": 0
+}
+```
+
+No rollover, medical-use, exception or taxable-part answer is supplied. i8889 p.8 lines14b/15
+include only distributed dollars; p.9 taxes only taxable distributions. With zero distributions,
+all these amounts are zero. The fixed interpreter observes:
+
+| Candidate | line14b | line15 | line16 | line17b |
+| --- | --- | --- | --- | --- |
+| Current project | unknown: rollover | zero | zero | zero |
+| Fresh Claude | unknown: rollover | unknown: medical | unknown: rollover | unknown: line17a |
+| Fresh Flash | not evaluated: invalid IR | not evaluated | not evaluated | not evaluated |
+
+The project consistency gate is evaluated before line14b's zero branch and asks for an answer
+that the branch does not need. This is an actual project partial-output defect, alongside model
+availability gaps; the witness establishes no incorrect final tax liability. T-065 must retain
+rejection of contradictory supplied amounts when correcting the unnecessary dependency.
+The saved diagnostic is `.transcription/hsa-zero-distribution-source-witness.json`. Neither
+actual model request contained this case; it is diagnostic only, not a passing case receipt or
+numeric evidence. Correct the project gate, add source regressions and refresh affected reviews.
+
 ## Current partial-input batch after acad366
 
 The corrected source-based bank supplies ten synthetic fact records to the dependent transcriber,

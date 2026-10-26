@@ -1,0 +1,282 @@
+{
+  "policy": "internal-adapters-v1",
+  "form": "div",
+  "tax_year": 2025,
+  "authority": "Project engineering contract; no independent IRS reading or scoreboard credit.",
+  "adapters": {
+    "div.screen": {
+      "type": "NonNegDollars",
+      "behavior": "Zero after distribution scope and component consistency checks; propagate refusals and missing answers through all listed worksheet copies. This is not a distribution total.",
+      "copy_consumers": [
+        "g28.line1",
+        "g28.line2",
+        "g28.line3",
+        "g28.line5",
+        "u1250.line1",
+        "u1250.line2",
+        "u1250.line3",
+        "u1250.line4",
+        "u1250.line5",
+        "u1250.line6",
+        "u1250.line7",
+        "u1250.line8",
+        "u1250.line9",
+        "u1250.line10",
+        "u1250.line12",
+        "u1250.line16"
+      ]
+    }
+  },
+  "base_inputs": {
+    "div.box2b": 0,
+    "div.box2c": 0,
+    "div.box2d": 0,
+    "div.box2e": 0,
+    "div.box2f": 0,
+    "div.box3": 0,
+    "div.box9": 0,
+    "div.box10": 0,
+    "div.box13": 0,
+    "div.basis_reconciled": false,
+    "sd.distributions": 10000,
+    "f1040.line3a": 2000,
+    "sb.ordinary_dividends": 10000,
+    "qbi.dividends": 1000
+  },
+  "cases": [
+    {
+      "id": "accepted-empty-components",
+      "inputs": {},
+      "expect": {
+        "kind": "money",
+        "cents": 0
+      },
+      "adapter": "div.screen"
+    },
+    {
+      "id": "accepted-positive-components",
+      "inputs": {
+        "div.box2b": 3000,
+        "div.box2d": 2000
+      },
+      "expect": {
+        "kind": "money",
+        "cents": 0
+      },
+      "adapter": "div.screen"
+    },
+    {
+      "id": "accepted-total-boundary",
+      "inputs": {
+        "div.box2b": 6000,
+        "div.box2d": 4000
+      },
+      "expect": {
+        "kind": "money",
+        "cents": 0
+      },
+      "adapter": "div.screen"
+    },
+    {
+      "id": "accepted-reconciled-basis",
+      "inputs": {
+        "div.box3": 2000,
+        "div.basis_reconciled": true
+      },
+      "expect": {
+        "kind": "money",
+        "cents": 0
+      },
+      "adapter": "div.screen"
+    },
+    {
+      "id": "section1202",
+      "inputs": {
+        "div.box2c": 100
+      },
+      "expect": {
+        "kind": "refusal",
+        "gate": "div.section1202"
+      },
+      "adapter": "div.screen"
+    },
+    {
+      "id": "private-activity-bond",
+      "inputs": {
+        "div.box13": 100
+      },
+      "expect": {
+        "kind": "refusal",
+        "gate": "div.amt"
+      },
+      "adapter": "div.screen"
+    },
+    {
+      "id": "section897-ordinary",
+      "inputs": {
+        "div.box2e": 100
+      },
+      "expect": {
+        "kind": "refusal",
+        "gate": "div.unsupported"
+      },
+      "adapter": "div.screen"
+    },
+    {
+      "id": "section897-capital",
+      "inputs": {
+        "div.box2f": 100
+      },
+      "expect": {
+        "kind": "refusal",
+        "gate": "div.unsupported"
+      },
+      "adapter": "div.screen"
+    },
+    {
+      "id": "cash-liquidation",
+      "inputs": {
+        "div.box9": 100
+      },
+      "expect": {
+        "kind": "refusal",
+        "gate": "div.unsupported"
+      },
+      "adapter": "div.screen"
+    },
+    {
+      "id": "noncash-liquidation",
+      "inputs": {
+        "div.box10": 100
+      },
+      "expect": {
+        "kind": "refusal",
+        "gate": "div.unsupported"
+      },
+      "adapter": "div.screen"
+    },
+    {
+      "id": "unreconciled-basis",
+      "inputs": {
+        "div.box3": 100
+      },
+      "expect": {
+        "kind": "refusal",
+        "gate": "div.unsupported"
+      },
+      "adapter": "div.screen"
+    },
+    {
+      "id": "1250-component-exceeds-total",
+      "inputs": {
+        "div.box2b": 10001
+      },
+      "expect": {
+        "kind": "refusal",
+        "gate": "div.bad_special"
+      },
+      "adapter": "div.screen"
+    },
+    {
+      "id": "collectibles-component-exceeds-total",
+      "inputs": {
+        "div.box2d": 10001
+      },
+      "expect": {
+        "kind": "refusal",
+        "gate": "div.bad_special"
+      },
+      "adapter": "div.screen"
+    },
+    {
+      "id": "combined-components-exceed-total",
+      "inputs": {
+        "div.box2b": 6000,
+        "div.box2d": 4001
+      },
+      "expect": {
+        "kind": "refusal",
+        "gate": "div.bad_special"
+      },
+      "adapter": "div.screen"
+    },
+    {
+      "id": "qualified-exceeds-ordinary",
+      "inputs": {
+        "f1040.line3a": 10001
+      },
+      "expect": {
+        "kind": "refusal",
+        "gate": "div.bad_components"
+      },
+      "adapter": "div.screen"
+    },
+    {
+      "id": "199a-exceeds-ordinary",
+      "inputs": {
+        "qbi.dividends": 10001
+      },
+      "expect": {
+        "kind": "refusal",
+        "gate": "div.bad_components"
+      },
+      "adapter": "div.screen"
+    },
+    {
+      "id": "missing-section1202-answer",
+      "inputs": {
+        "div.box2c": null
+      },
+      "expect": {
+        "kind": "unknown",
+        "input": "div.box2c"
+      },
+      "adapter": "div.screen"
+    },
+    {
+      "id": "missing-private-activity-answer",
+      "inputs": {
+        "div.box13": null
+      },
+      "expect": {
+        "kind": "unknown",
+        "input": "div.box13"
+      },
+      "adapter": "div.screen"
+    },
+    {
+      "id": "missing-total-distribution",
+      "inputs": {
+        "sd.distributions": null
+      },
+      "expect": {
+        "kind": "unknown",
+        "input": "sd.distributions"
+      },
+      "adapter": "div.screen"
+    },
+    {
+      "id": "missing-ordinary-dividend-total",
+      "inputs": {
+        "sb.ordinary_dividends": null
+      },
+      "expect": {
+        "kind": "unknown",
+        "input": "sb.ordinary_dividends"
+      },
+      "adapter": "div.screen"
+    },
+    {
+      "id": "missing-basis-when-required",
+      "inputs": {
+        "div.box3": 100,
+        "div.basis_reconciled": null
+      },
+      "expect": {
+        "kind": "unknown",
+        "input": "div.basis_reconciled"
+      },
+      "adapter": "div.screen"
+    }
+  ]
+}

@@ -1,5 +1,47 @@
 # Handoff: the integrity plan, Phase 0 done, Phase 1 in progress
 
+## Current adapter separation and review batch after 0ef4912 — 2026-10-25
+
+0ef4912 committed the partial-input checker after a full green suite (1068 CLI fixtures,
+1700 engine cases, zero unexplained differences), with compiled output initially absent.
+This batch separates the first internal adapter from IRS-defined transcription targets.
+`tools/transcription/adapter_contracts/2025/div.json` supplies a host-only engineering contract
+for div.screen. Twenty-one cases check zero/refusal/unknown behavior and all sixteen direct
+worksheet copies; mismatched consumer wiring fails. It earns no H/B/M/engine or source-review
+credit. The blind target list omits the adapter, comparison reports explicitly exclude its rows
+from source agreement/noise denominators, and an adapter-only document makes no new model request
+or empty passing assertion. Original dividend logs and interface-gap rulings are unmodified.
+107 offline tests cover gate/amount/wiring regressions, empty-reference rejection and privacy.
+
+Eight fresh requests cover f4952, f8889, f8959 and mq under Claude Opus5.5 / deepseek-flash.
+All four Claude replies and Flash f8959/mq pass expression checks; Flash f4952/f8889 remain
+rejected. Four unverifiable Claude records are replaced, leaving fifteen. Current audit:
+95 verified replies, 39 type passes, 31 complete-question requests, 23 legacy-limited receipts;
+195 older AGREE rows fail current replay. These are snapshot diagnostics, not tax-bug counts.
+Actual prompts/replies remain intact; the 37 pre-batch artifacts are hashed under
+`.transcription/archive/before-adapter-contracts-2026-10-25/`. Current audit JSON:
+`.transcription/adapter-audit-current.json`.
+
+Source adjudication preserves the existing HSA last-month/catchup ambiguities rather than
+approving new choices. Both Medicare replies read the same printed threshold directly instead
+of copying line5. Both mq replies agree. Flash f4952 drops positive short-term gain from line4d
+and guesses a different meaning for the opaque f4952.election target; the latter is an interface
+gap, not clean model-only noise (T-064). Invalid IR is retained and not executed or repaired.
+
+A minimal source-based HSA diagnostic also finds a project defect, BUG-0138/T-065: when total
+distributions are zero and rollover is unanswered, line14b's unconditional rollover_bad gate
+returns unknown before its zero branch. Project lines15/16/17b still return zero, so no final-tax
+error is established by this witness. Claude requires missing follow-ups on all four; Flash is
+invalid and skipped. The diagnostic was not in either model request and earns no qualification.
+See reports/2025/transcription_audit.md for exact facts, and the saved diagnostic under
+`.transcription/hsa-zero-distribution-source-witness.json`.
+
+Next: fix T-065 with meaningful regressions and refreshed affected T/R/M receipts, clarify the
+f4952 source result contract, then continue the fifteen unverifiable Claude records and remaining
+source/IR gaps. T-062 remains open; keep Flash optional and all transcription qualification held.
+This batch changes no authored tax formula, numeric fixture or original human verdict. No owner
+packet is required. Full-suite validation of this batch is recorded by its next commit/green marker.
+
 ## Current partial-input contract after acad366 — 2026-10-25
 
 acad366 committed the preceding schema-guided replacements after a full green suite. T-063 now
