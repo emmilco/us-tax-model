@@ -101,6 +101,7 @@ export function runChecks(data: CanonicalData): { errors: string[]; stats: strin
     }
     for (const line of doc.lines) {
       for (const r of line.refuses ?? []) {
+        if (r.when_known !== undefined && r.when_known !== true) ctx.errors.push(`${line.id}: when_known must be true or omitted`);
         const hit = requireRef(ctx, doc, r.when, line.id);
         if (hit && hit.line.type !== "Bool") ctx.errors.push(`${line.id}: refusal gate must be Bool`);
         checkCite(ctx, r.cite, `${line.id} refusal`);

@@ -937,10 +937,6 @@ bank:
     order: 10
     help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
       do not guess. Married filing separately and unsupported items are refused with citations.
-    prompt: 'For this person (you, or your spouse on a joint return) — Of those months, the number in which your
-      high-deductible health plan provided family coverage on the first day of the month (on a joint return, also
-      count a month in which your spouse had family coverage while you were both eligible individuals: you are then
-      both treated as having family coverage); 0 to the number of eligible months'
   - input: f8889.age55
     order: 10
     help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;

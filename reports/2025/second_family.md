@@ -1,8 +1,8 @@
 # Second-family review comparison — 2025
 
-Summary: 112 form-kind pair(s) with logs from Claude and deepseek; ruled model-error noise 1.8% (39/2116 second-family lines judged; pending reviews are provisional); 23 eligible, 89 pending; raw agreement 67.4% (diagnostic only); current independence yield 194 line(s); both families disputed 416
+Summary: 113 form-kind pair(s) with logs from Claude and deepseek; ruled model-error noise 1.4% (32/2221 second-family lines judged; pending reviews are provisional); 24 eligible, 89 pending; raw agreement 69.0% (diagnostic only); current independence yield 196 line(s); both families disputed 412
 
-Written by `tools/transcription/compare_families.py` on 2026-10-25 from the review logs under `reviews/2025/`. For each form with a Claude log and a second model family's log of the same kind (`<form>.<family>.md`, families.py), the lines judged in both are compared.
+Written by `tools/transcription/compare_families.py` on 2026-10-26 from the review logs under `reviews/2025/`. For each form with a Claude log and a second model family's log of the same kind (`<form>.<family>.md`, families.py), the lines judged in both are compared.
 
 - **Noise rule** (owner's decision 12, integrity plan item 1.3): second-family disputes ruled **model error**, divided by the lines that family judged, must be at most 10% for each form-kind run. Findings, representation differences, scope differences and ambiguities are not model noise. The threshold uses integer arithmetic; 1/10 passes and 1/9 does not. Rates for pending reviews are provisional: an unresolved objection has not yet been classified, and zero ruled model errors does not mean every objection was correct.
 - **Eligibility** also requires current subjects/sources, the named second-family model, no missing or invalid verdicts, and no open or unclassified ruling. Empty reviews earn no assertion. Optional-family results can remain pending without becoming evidence.
@@ -29,7 +29,7 @@ Written by `tools/transcription/compare_families.py` on 2026-10-25 from the revi
 | f5695 | deepseek (deepseek-flash) | 33 | 12 | 36.4% | 0/33 (0.0%) | pending | 8 | 12 | 1 | 0 |
 | f8606 | deepseek (deepseek-flash) | 5 | 2 | 40.0% | 0/5 (0.0%) | pending | 0 | 3 | 0 | 0 |
 | f8880 | deepseek (deepseek-flash) | 21 | 15 | 71.4% | 0/21 (0.0%) | pending | 0 | 6 | 0 | 0 |
-| f8889 | deepseek (deepseek-flash) | 19 | 2 | 10.5% | 14/19 (73.7%) | pending | 6 | 11 | 0 | 0 |
+| f8889 | deepseek (deepseek-flash) | 19 | 10 | 52.6% | 0/19 (0.0%) | pending | 1 | 8 | 0 | 0 |
 | f8959 | deepseek (deepseek-flash) | 24 | 22 | 91.7% | 0/24 (0.0%) | pending | 0 | 2 | 0 | 0 |
 | f8960 | deepseek (deepseek-flash) | 25 | 18 | 72.0% | 0/25 (0.0%) | pending | 7 | 0 | 0 | 0 |
 | f8995 | deepseek (deepseek-flash) | 16 | 7 | 43.8% | 0/16 (0.0%) | pending | 4 | 5 | 0 | 0 |
@@ -71,7 +71,7 @@ Written by `tools/transcription/compare_families.py` on 2026-10-25 from the revi
 | tipjob | deepseek (deepseek-flash) | 3 | 2 | 66.7% | 0/3 (0.0%) | pending | 0 | 0 | 1 | 0 |
 | u1250 | deepseek (deepseek-flash) | 18 | 3 | 16.7% | 0/18 (0.0%) | pending | 1 | 14 | 0 | 0 |
 | w2 | deepseek (deepseek-flash) | 5 | 3 | 60.0% | 0/5 (0.0%) | pending | 0 | 1 | 1 | 0 |
-| **all** | | 893 | 408 | 45.7% | | | 136 | 332 | 17 | 7 |
+| **all** | | 893 | 416 | 46.6% | | | 131 | 329 | 17 | 7 |
 
 Pending asset [deepseek]: 15 open, unclassified or interface-gap rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude.
 Pending carloan [deepseek]: BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
@@ -87,7 +87,7 @@ Pending f4952 [deepseek]: 1 open, unclassified or interface-gap rulings; model-e
 Pending f5695 [deepseek]: 20 open, unclassified or interface-gap rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending f8606 [deepseek]: 3 open, unclassified or interface-gap rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending f8880 [deepseek]: 6 open, unclassified or interface-gap rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
-Pending f8889 [deepseek]: 3 open, unclassified or interface-gap rulings; model-error noise above 10%; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; no passing current expression type validation: deepseek.
+Pending f8889 [deepseek]: BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close.
 Pending f8959 [deepseek]: BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close.
 Pending f8960 [deepseek]: 7 open, unclassified or interface-gap rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending f8995 [deepseek]: 9 open, unclassified or interface-gap rulings; BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
@@ -169,12 +169,7 @@ Pending w2 [deepseek]: BUG-0129: transcription qualification held until model IR
 | f5695 | deepseek | 29g | DISAGREE | (no reason given) |
 | f5695 | deepseek | 5b | DISAGREE | (no reason given) |
 | f5695 | deepseek | 6a | DISAGREE | (no reason given) |
-| f8889 | deepseek | 10 | DISAGREE | (no reason given) |
-| f8889 | deepseek | 11 | DISAGREE | (no reason given) |
-| f8889 | deepseek | 12 | DISAGREE | (no reason given) |
-| f8889 | deepseek | 4 | DISAGREE | (no reason given) |
-| f8889 | deepseek | 5 | DISAGREE | (no reason given) |
-| f8889 | deepseek | 8 | DISAGREE | (no reason given) |
+| f8889 | deepseek | 17b | DISAGREE | Uses subject_part when line 17a is true; otherwise uses all of line 16 when line 17a is false. If line 16 is zero, the tax is zero regardless of line 17a. |
 | f8960 | deepseek | 1 | DISAGREE | (no reason given) |
 | f8960 | deepseek | 10 | DISAGREE | (no reason given) |
 | f8960 | deepseek | 2 | DISAGREE | (no reason given) |
@@ -361,16 +356,13 @@ Pending w2 [deepseek]: BUG-0129: transcription qualification held until model IR
 | f8880 | deepseek | 6(a) | DISAGREE | DISAGREE | (no reason given) |
 | f8880 | deepseek | 6(b) | DISAGREE | DISAGREE | (no reason given) |
 | f8880 | deepseek | 9 | DISAGREE | DISAGREE | The printed over/but not over rate table is keyed by Form 1040 line 11a and filing status, as shown on the form. |
-| f8889 | deepseek | 13 | DISAGREE | DISAGREE | (no reason given) |
-| f8889 | deepseek | 14b | DISAGREE | DISAGREE | (no reason given) |
-| f8889 | deepseek | 15 | DISAGREE | DISAGREE | (no reason given) |
+| f8889 | deepseek | 13 | DISAGREE | DISAGREE | Smaller of line 2 and line 12; zero is forced when line 2 is zero without needing line 12. |
 | f8889 | deepseek | 16 | DISAGREE | DISAGREE | (no reason given) |
-| f8889 | deepseek | 17b | DISAGREE | DISAGREE | (no reason given) |
-| f8889 | deepseek | 3 | DISAGREE | DISAGREE | (no reason given) |
-| f8889 | deepseek | 6 | DISAGREE | DISAGREE | (no reason given) |
+| f8889 | deepseek | 3 | DISAGREE | DISAGREE | Computes the line 3 limitation from the Line 3 Limitation Chart: monthly amounts by family/self-only coverage, with the last-month rule replacing the actual months with 12 months of December coverage, and the age-55 additional amount included on line 3 only when not married with family coverage (otherwise line 7). |
+| f8889 | deepseek | 6 | DISAGREE | DISAGREE | Uses the Line 6 steps: share of the family-month limit plus the self-only-month limit when both spouses have HSAs and family coverage; otherwise line 5. |
 | f8889 | deepseek | 7 | DISAGREE | DISAGREE | (no reason given) |
 | f8889 | deepseek | f8889.share_raw | DISAGREE | DISAGREE | (no reason given) |
-| f8889 | deepseek | f8889.split | DISAGREE | DISAGREE | The supplied pages do not separately ask whether both spouses have separate HSAs; the split condition is taken from the married-with-family-coverage helper. |
+| f8889 | deepseek | f8889.split | DISAGREE | DISAGREE | (no reason given) |
 | f8889 | deepseek | f8889.step1 | DISAGREE | DISAGREE | (no reason given) |
 | f8959 | deepseek | 15 | DISAGREE | DISAGREE | (no reason given) |
 | f8959 | deepseek | 9 | DISAGREE | DISAGREE | (no reason given) |
@@ -625,7 +617,7 @@ Pending w2 [deepseek]: BUG-0129: transcription qualification held until model IR
 | f5695 | deepseek (deepseek-flash) | 72 | 71 | 98.6% | 0/72 (0.0%) | pass | 0 | 0 | 1 | 0 |
 | f8606 | deepseek (deepseek-flash) | 5 | 3 | 60.0% | 0/5 (0.0%) | pending | 1 | 0 | 1 | 0 |
 | f8880 | deepseek (deepseek-flash) | 21 | 18 | 85.7% | 0/21 (0.0%) | pending | 2 | 1 | 0 | 0 |
-| f8889 | deepseek (deepseek-flash) | 19 | 18 | 94.7% | 0/19 (0.0%) | pass | 0 | 1 | 0 | 0 |
+| f8889 | deepseek (deepseek-flash) | 19 | 18 | 94.7% | 0/19 (0.0%) | pass | 0 | 0 | 1 | 0 |
 | f8959 | deepseek (deepseek-flash) | 24 | 23 | 95.8% | 0/24 (0.0%) | pass | 0 | 0 | 1 | 0 |
 | f8960 | deepseek (deepseek-flash) | 25 | 23 | 92.0% | 0/25 (0.0%) | pending | 0 | 2 | 0 | 0 |
 | f8995 | deepseek (deepseek-flash) | 16 | 13 | 81.2% | 0/16 (0.0%) | pending | 1 | 1 | 1 | 0 |
@@ -667,7 +659,7 @@ Pending w2 [deepseek]: BUG-0129: transcription qualification held until model IR
 | tipjob | deepseek (deepseek-flash) | 3 | 3 | 100.0% | 0/3 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | u1250 | deepseek (deepseek-flash) | 18 | 5 | 27.8% | 0/18 (0.0%) | pending | 0 | 13 | 0 | 0 |
 | w2 | deepseek (deepseek-flash) | 17 | 17 | 100.0% | 0/17 (0.0%) | pass | 0 | 0 | 0 | 0 |
-| **all** | | 1033 | 835 | 80.8% | | | 58 | 84 | 56 | 0 |
+| **all** | | 1033 | 835 | 80.8% | | | 58 | 83 | 57 | 0 |
 
 Pending asset [deepseek]: 4 open, unclassified or interface-gap rulings.
 Pending f1040 [deepseek]: 2 open, unclassified or interface-gap rulings.
@@ -784,7 +776,6 @@ Pending u1250 [deepseek]: 13 open, unclassified or interface-gap rulings.
 | f4952 | deepseek | 4d | UNCLEAR | MISMATCH | The IRS line is 'Net gain from the disposition of property held for investment'; the restatement uses Schedule D line 16, which is not limited to property held for investment and can include other gains or losses. |
 | f4952 | deepseek | 4e | UNCLEAR | MISMATCH | The IRS line uses 'your net capital gain from the disposition of property held for investment'; the restatement uses the QDCGT helper based on the smaller of Schedule D lines 15 and 16, which is not limited to property held for investment. |
 | f8880 | deepseek | (CLW 2) | MISMATCH | MISMATCH | The IRS Credit Limit Worksheet line 2 says 'Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l,' but the restatement adds only Schedule 3 lines 1 and 2, omitting line 3, 6d, and 6l. |
-| f8889 | deepseek | 7 | MISMATCH | MISMATCH | IRS line 7 worksheet counts only months when 'You or your spouse had family coverage under an HDHP and were, or were considered to be, an eligible individual on the first day of the month' and not Medicare; the program uses all months of eligible-individual status, overstating when family coverage did not exist all eligible months. |
 | f8960 | deepseek | 5a | UNCLEAR | MISMATCH | IRS line 5a is 'Net gain or loss from disposition of property'; taking only f1040 line 7a's 'Capital gain or (loss)' omits other disposition gains or losses. |
 | f8960 | deepseek | 9b | MISMATCH | MISMATCH | IRS line 9b is 'State, local, and foreign income tax' and the instructions require including foreign income and foreign real property taxes attributable to NII unless a credit is claimed; the restatement covers only state/local income and property taxes. |
 | f8995 | deepseek | 12 | MISMATCH | MISMATCH | IRS line 12 instructions say if you're not required to file Schedule D, your net capital gain is the amount on Form 1040 line 7a; the restatement uses only the smaller of Schedule D lines 15 and 16. |
@@ -860,14 +851,23 @@ Pending u1250 [deepseek]: 13 open, unclassified or interface-gap rulings.
 | form | second family (model) | lines judged by both | both agree | raw agreement | noise / judged | eligibility | current yield | both disputed | Claude only | not judged by both |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | f2441 | deepseek (deepseek-flash) | 137 | 135 | 98.5% | 0/151 (0.0%) | pending | 0 | 0 | 2 | 67 |
+| f8889 | deepseek (deepseek-flash) | 105 | 98 | 93.3% | 7/105 (6.7%) | pass | 7 | 0 | 0 | 0 |
 | w2 | deepseek (deepseek-flash) | 39 | 39 | 100.0% | 0/39 (0.0%) | pass | 0 | 0 | 0 | 0 |
-| **all** | | 176 | 174 | 98.9% | | | 0 | 0 | 2 | 67 |
+| **all** | | 281 | 272 | 96.8% | | | 7 | 0 | 2 | 67 |
 
 Pending f2441 [deepseek]: 3 missing expected lines.
 
 ### Independence yield
 
-None: every line the second family disputed, the Claude run disputed too.
+| form | second family | line | second family's verdict | second family's reason |
+| --- | --- | --- | --- | --- |
+| f8889 | deepseek | classm.f8889.2 — person[spouse].f8889[hsa].line12 | DISAGREE | model gave $1,844.00; work: line 8 $1,844.00 - line 11 $0 = $1,844.00 |
+| f8889 | deepseek | classm.f8889.2 — person[spouse].f8889[hsa].line13 | DISAGREE | model gave $1,844.00; work: Smaller of line 2 $3,637.00 or line 12 $1,844.00 = $1,844.00 |
+| f8889 | deepseek | classm.f8889.2 — person[spouse].f8889[hsa].line6 | DISAGREE | model gave $1,094.00; work: Allocated part of Step 1 family limit = $1,094.00 |
+| f8889 | deepseek | classm.f8889.2 — person[spouse].f8889[hsa].line8 | DISAGREE | model gave $1,844.00; work: line 6 $1,094.00 + line 7 $750.00 = $1,844.00 |
+| f8889 | deepseek | classm.f8889.2 — person[taxpayer].f8889[hsa].line12 | DISAGREE | model gave $7,456.00; work: line 8 $7,456.00 - line 11 $0 = $7,456.00 |
+| f8889 | deepseek | classm.f8889.2 — person[taxpayer].f8889[hsa].line6 | DISAGREE | model gave $7,456.00; work: Allocated part of Step 1 family limit = $7,456.00 |
+| f8889 | deepseek | classm.f8889.2 — person[taxpayer].f8889[hsa].line8 | DISAGREE | model gave $7,456.00; work: line 6 $7,456.00 + line 7 $0 = $7,456.00 |
 
 ### Lines both families disputed
 

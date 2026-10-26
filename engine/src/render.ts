@@ -216,7 +216,7 @@ function renderDoc(doc: FormDoc, ctx: RenderCtx): string {
     out.push("");
     out.push(`- **${doc.collection && doc.kind === "worksheet" || line.printed.startsWith("(") ? "Authored helper label" : "IRS"}:** ${line.label}`);
     out.push(`- **Encoded (${line.type}):** ${exprText(line.expr as Expr, doc, ctx)}`);
-    for (const r of line.refuses ?? []) out.push(`- **Refusal:** when ${r.when} is true, cannot complete ${r.form}. ${r.remedy} Cite: ${citeLine(r.cite)}`);
+    for (const r of line.refuses ?? []) out.push(`- **Refusal:** when ${r.when} is true, cannot complete ${r.form}. ${r.remedy}${r.when_known ? " Check supplied figures only; an unanswered check does not block an independently determined amount or assume an answer." : ""} Cite: ${citeLine(r.cite)}`);
     if (line.shown_when) out.push(`- **Shown on the values sheet only when:** ${doc.lines.find((l) => l.id === line.shown_when)?.label ?? line.shown_when} (\`${line.shown_when}\`)`);
     if (line.ambiguity) out.push(`- Interpretation: ${line.ambiguity}`);
     if (line.note) out.push(`- Note: ${line.note}`);

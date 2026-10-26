@@ -378,7 +378,7 @@ def write_log(form_doc, model, prompt, used, printed, verdicts, raw_text, meta):
     out += ["", "## Lines", ""]
     kept = rulings.kept("render", fid, family, context=rulings.review_context("render", "\n".join(out)))
     for r in results:
-        out.append(f"### {r['printed']} — {r['label'][:90]}")
+        out.append(f"### {r['printed']} — {r['label'][:90].rstrip()}")
         out.append(f"Status: **{r['status']}**")
         if r["status"] != "MATCH":
             out += ["", f"Restated: {r['encoded']}", "", f"Model: {r['reason']}", "",

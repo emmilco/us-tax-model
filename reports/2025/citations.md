@@ -11,11 +11,11 @@ pages, a quote found in the document, or one printed line number of a form docum
 of the form's text beside three consecutive words of the label. The segments that do not are listed
 under "Locators to rewrite"; they fail the check only with `--strict`.
 
-- anchors: 2355
+- anchors: 2356
 - anchors ruled: 45
-- quotes: 1284
+- quotes: 1282
 - quotes ruled: 4
-- segments checked: 2440
+- segments checked: 2441
 - findings without a ruling: 0
 - rulings no anchor uses: 0
 
@@ -99,8 +99,8 @@ the line, the segment as written and what the check needs instead.
 
 ### f8889 (2)
 
-- `f8889.line3_last_month` (`forms/2025/f8889.yaml:599`) — “amb.2025.hsa_last_month_change)” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `f8889.has_dist` (`forms/2025/f8889.yaml:1335`) — “Form 8889 (2025), line 14a” — line 14a of f8889 was not found on a row of its text beside words of the label “Any HSA distributions in 2025”: cite the printed line whose text the label follows, or add a quote of the line as printed
+- `f8889.line3_last_month` (`forms/2025/f8889.yaml:604`) — “amb.2025.hsa_last_month_change)” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `f8889.has_dist` (`forms/2025/f8889.yaml:1340`) — “Form 8889 (2025), line 14a” — line 14a of f8889 was not found on a row of its text beside words of the label “Any HSA distributions in 2025”: cite the printed line whose text the label follows, or add a quote of the line as printed
 
 ### f8959 (14)
 

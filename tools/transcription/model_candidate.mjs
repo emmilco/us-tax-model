@@ -44,5 +44,33 @@ const candidate = { ...original, lines: [...inputs, ...computed] };
 const replace = docs => docs.map(doc => doc.id === form ? candidate : doc);
 const data = { ...context, forms: replace(context.forms), defs: replace(context.defs) };
 errors.push(...checkExpressionTypes(data, form));
+// Refusal syntax is outside the expression schema, but is still executable IR.
+// Validate every declared gate, including unused helpers, without evaluating it.
+const gateOwners = new Map(), checks = [];
+for (const line of candidate.lines) {
+  if (line.refuses !== undefined && !Array.isArray(line.refuses)) {
+    errors.push({ line: line.id, message: 'invalid refusal list' });
+    continue;
+  }
+  for (const refusal of line.refuses ?? []) {
+    const when = typeof refusal === 'string' ? refusal : refusal?.when;
+    if (typeof when !== 'string' || !when || (typeof refusal === 'object' && (
+      Object.keys(refusal).some(key => !['when', 'when_known', 'form', 'remedy', 'cite'].includes(key)) ||
+      ('when_known' in refusal && refusal.when_known !== true)))) {
+      errors.push({ line: line.id, message: 'invalid refusal or consistency-check declaration' });
+      continue;
+    }
+    let id = `${form}.__type_gate_${checks.length}`;
+    while (seen.has(id) || published.has(id)) id += '_';
+    gateOwners.set(id, line.id);
+    checks.push({ id, type: 'Bool', expr: { op: 'test', eq: [when, { const: true }] } });
+  }
+}
+if (checks.length) {
+  const checked = { ...candidate, lines: [...candidate.lines, ...checks] };
+  const replacing = docs => docs.map(doc => doc.id === form ? checked : doc);
+  errors.push(...checkExpressionTypes({ ...data, forms: replacing(data.forms), defs: replacing(data.defs) }, form)
+    .filter(error => gateOwners.has(error.line)).map(error => ({ ...error, line: gateOwners.get(error.line) })));
+}
 return { data, candidate, errors };
 }

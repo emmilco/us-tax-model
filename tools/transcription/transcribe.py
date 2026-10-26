@@ -278,6 +278,10 @@ read a root collection. Within a collection entry it may read only that entry's 
 it cannot sum another root collection. Use a published return-level aggregate where the IRS calls
 for that aggregate. NonNegDollars declarations must be proved nonnegative by the expression types;
 copying a Dollars input does not prove that property. Do not silently change a required result type.
+subtract accepts money and always produces Dollars; it cannot subtract Counts. To work with
+month counts, multiply the money amount by each count separately and subtract those money lines.
+larger_of proves NonNegDollars only when every operand is already nonnegative in this checker;
+use subtract_floor0 against zero when an IRS zero floor must establish a nonnegative result.
 
   {op: input, source: "<the box or question this value comes from>"}
   {op: copy, from: <ref>}                      # <ref> is a line id string, or for a parameterised
@@ -306,6 +310,15 @@ supports only part of what some lines cover; the screening inputs listed below s
 situations it does not compute. Where the IRS text of a line covers such a situation, encode only the
 case the tool computes and list the screening input under `refuses`, instead of adding inputs for the
 unsupported amounts or writing the unsupported case as a zero.
+
+For a consistency check on supplied figures, a refusal entry may instead be
+{when: <Bool line id>, when_known: true}. A known true check still refuses, a refused gate
+still propagates its refusal, and a known false check permits the expression. An unknown
+consistency check is recorded as unperformed and does not block an independently determined
+amount or request its missing figures. The expression must still determine its value;
+this never fills an absent input with zero or false. Use ordinary refusal ids for eligibility
+and scope questions that must be answered. Infer any consistency check from the source;
+the project supplies no placement or formula.
 
 Money is integer cents. Rates are parameters. There are no loops, strings, functions or arithmetic
 beyond these atoms; a line that needs more than one atom is written as several lines, the extra ones
@@ -436,7 +449,8 @@ def second_gates(line, by_id, seen=None):
     if line["id"] in seen:
         return set()
     seen.add(line["id"])
-    out = set(line.get("refuses") or [])
+    out = {r if isinstance(r, str) else r["when"] for r in (line.get("refuses") or [])
+           if isinstance(r, str) or isinstance(r, dict) and isinstance(r.get("when"), str)}
     for ref in operand_refs(line.get("expr", {})):
         if ref in by_id:
             out |= second_gates(by_id[ref], by_id, seen)
@@ -1197,7 +1211,7 @@ def write_log(form_doc, model, prompt, used, results, extra, raw_text, meta, dry
     out += ["", "## Lines", ""]
     kept = rulings.kept("transcription", fid, family, context=rulings.review_context("transcription", "\n".join(out)))
     for r in results:
-        out.append(f"### {r['printed']} — {r['label'][:90]}")
+        out.append(f"### {r['printed']} — {r['label'][:90].rstrip()}")
         out.append(f"Status: **{r['status']}**")
         if r["status"] != "AGREE":
             out += ["", "Project:", "", "```json", r["project"], "```", "", "Second:", "", "```json", str(r["second"]), "```"]

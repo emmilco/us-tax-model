@@ -30,13 +30,15 @@ def forms_for(kind):
     return sorted({families.split_stem(f[:-3])[0] for f in os.listdir(d) if f.endswith(".md")})
 
 
-def run(kind, form, model, resume=False, reasoning_effort=None, max_output_tokens=None):
+def run(kind, form, model, resume=False, reasoning_effort=None, max_output_tokens=None, case_jobs=1):
     script, flag = TOOLS[kind]
     cmd = [sys.executable, os.path.join(HERE, script), flag, form, *YEAR_ARGS] + (["--model", model] if model else [])
     if reasoning_effort:
         cmd += ["--reasoning-effort", reasoning_effort]
     if max_output_tokens is not None:
         cmd += ["--max-output-tokens", str(max_output_tokens)]
+    if kind == 'classm' and case_jobs != 1:
+        cmd += ['--case-jobs', str(case_jobs)]
     t0 = time.time()
     reused = False
     if resume:
@@ -57,6 +59,7 @@ def main():
     ap.add_argument("--model")
     ap.add_argument("--reasoning-effort", choices=("low", "high", "max"))
     ap.add_argument("--max-output-tokens", type=int)
+    ap.add_argument("--case-jobs", type=int, default=1)
     ap.add_argument("--resume", action="store_true", help="reuse only responses whose recorded request exactly matches the current prompt/model/system/policy")
     ap.add_argument("--summary", default=os.path.join(ROOT, ".transcription", "rerun_summary.json"))
     a = ap.parse_args()
@@ -76,7 +79,7 @@ def main():
     results = []
     os.makedirs(os.path.dirname(a.summary), exist_ok=True)
     with ThreadPoolExecutor(max_workers=a.jobs) as ex:
-        pending = [ex.submit(run, kind, form, a.model, a.resume, a.reasoning_effort, a.max_output_tokens) for kind, form in jobs]
+        pending = [ex.submit(run, kind, form, a.model, a.resume, a.reasoning_effort, a.max_output_tokens, a.case_jobs) for kind, form in jobs]
         for future in as_completed(pending):
             res = future.result()
             results.append(res)

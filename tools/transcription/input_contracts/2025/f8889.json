@@ -1,0 +1,499 @@
+{
+  "policy": "source-partial-inputs-v1",
+  "form": "f8889",
+  "tax_year": 2025,
+  "sources": [
+    {
+      "doc": "i8889",
+      "text_sha256": "bfbdc8bbe0b85d088325243f176d4c8261b0ca2428f75f4f41e4a339ecb5495c",
+      "pages": [
+        4,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "doc": "f8889",
+      "text_sha256": "f1ae3589453f3dd1d5277a79409bd7d0bf4772715fa8bd11d58126e6f387c0cf",
+      "pages": [
+        1
+      ]
+    }
+  ],
+  "base_inputs": {
+    "$person": [
+      "sample"
+    ],
+    "$f8889@person[sample]": [
+      "hsa"
+    ],
+    "f1040.status": "single",
+    "person[sample].role": "taxpayer",
+    "person[sample].f8889[hsa].unsupported": false
+  },
+  "cases": [
+    {
+      "id": "H01",
+      "inputs": {
+        "person[sample].f8889[hsa].line14a": 0
+      },
+      "expect": {
+        "person[sample].f8889[hsa].line14b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[sample].f8889[hsa].line14c": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[sample].f8889[hsa].line15": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[sample].f8889[hsa].line16": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[sample].f8889[hsa].line17b": {
+          "kind": "money",
+          "cents": 0
+        }
+      },
+      "basis": "i8889 p.8 lines14b/15 count only actual distributions; p.9 taxes only taxable distributions. Zero distributed dollars needs no rollover, medical or exception figures."
+    },
+    {
+      "id": "H02",
+      "inputs": {
+        "person[sample].f8889[hsa].line14a": 0,
+        "person[sample].f8889[hsa].rollover": 0
+      },
+      "expect": {
+        "person[sample].f8889[hsa].line14b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[sample].f8889[hsa].line14c": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[sample].f8889[hsa].line15": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[sample].f8889[hsa].line16": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[sample].f8889[hsa].line17b": {
+          "kind": "money",
+          "cents": 0
+        }
+      },
+      "basis": "An explicit zero rollover leaves the same zero-distribution amounts; no medical or exception answer is needed."
+    },
+    {
+      "id": "H03",
+      "inputs": {
+        "person[sample].f8889[hsa].line14a": 0,
+        "person[sample].f8889[hsa].rollover": 100
+      },
+      "expect": {
+        "person[sample].f8889[hsa].line14b": {
+          "kind": "refusal"
+        },
+        "person[sample].f8889[hsa].line14c": {
+          "kind": "refusal"
+        }
+      },
+      "basis": "Intentional contradictory supplied figures: line14b is part of line14a and cannot exceed it, even when line14a is zero. Retain consistency refusal."
+    },
+    {
+      "id": "H04",
+      "inputs": {
+        "person[sample].f8889[hsa].line14a": 100000
+      },
+      "expect": {
+        "person[sample].f8889[hsa].line14b": {
+          "kind": "unknown"
+        },
+        "person[sample].f8889[hsa].line14c": {
+          "kind": "unknown"
+        },
+        "person[sample].f8889[hsa].line15": {
+          "kind": "unknown"
+        },
+        "person[sample].f8889[hsa].line16": {
+          "kind": "unknown"
+        },
+        "person[sample].f8889[hsa].line17b": {
+          "kind": "unknown"
+        }
+      },
+      "basis": "Positive distributions with unspecified rollover, medical use and exception facts genuinely leave their amounts undetermined."
+    },
+    {
+      "id": "H05",
+      "inputs": {
+        "person[sample].f8889[hsa].line14a": 100000,
+        "person[sample].f8889[hsa].rollover": 0,
+        "person[sample].f8889[hsa].medical": 100000
+      },
+      "expect": {
+        "person[sample].f8889[hsa].line14b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[sample].f8889[hsa].line14c": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[sample].f8889[hsa].line15": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[sample].f8889[hsa].line16": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[sample].f8889[hsa].line17b": {
+          "kind": "money",
+          "cents": 0
+        }
+      },
+      "basis": "All $1000 distributed dollars pay qualifying expenses; no taxable amount remains and no exception answer is needed. i8889 pp.8-9."
+    },
+    {
+      "id": "H06",
+      "inputs": {
+        "person[sample].f8889[hsa].line14a": 100000,
+        "person[sample].f8889[hsa].rollover": 100000,
+        "person[sample].f8889[hsa].medical": 0
+      },
+      "expect": {
+        "person[sample].f8889[hsa].line14b": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[sample].f8889[hsa].line14c": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[sample].f8889[hsa].line15": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[sample].f8889[hsa].line16": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[sample].f8889[hsa].line17b": {
+          "kind": "money",
+          "cents": 0
+        }
+      },
+      "basis": "All $1000 distributed dollars are rolled over, with no medical-use amount; the remainder and taxable amount are zero. i8889 p.8."
+    },
+    {
+      "id": "H07",
+      "inputs": {
+        "person[sample].f8889[hsa].line14a": 100000,
+        "person[sample].f8889[hsa].rollover": 25000,
+        "person[sample].f8889[hsa].medical": 25000,
+        "person[sample].f8889[hsa].line17a": false
+      },
+      "expect": {
+        "person[sample].f8889[hsa].line14b": {
+          "kind": "money",
+          "cents": 25000
+        },
+        "person[sample].f8889[hsa].line14c": {
+          "kind": "money",
+          "cents": 75000
+        },
+        "person[sample].f8889[hsa].line15": {
+          "kind": "money",
+          "cents": 25000
+        },
+        "person[sample].f8889[hsa].line16": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "person[sample].f8889[hsa].line17b": {
+          "kind": "money",
+          "cents": 10000
+        }
+      },
+      "basis": "i8889 pp.8-9: $1000 minus $250 rollover minus $250 qualified expenses is $500 taxable; with no exception, 20% is $100."
+    },
+    {
+      "id": "H08",
+      "inputs": {
+        "person[sample].f8889[hsa].line14a": 100000,
+        "person[sample].f8889[hsa].rollover": 25000,
+        "person[sample].f8889[hsa].medical": 25000,
+        "person[sample].f8889[hsa].line17a": true,
+        "person[sample].f8889[hsa].subject_part": 10000
+      },
+      "expect": {
+        "person[sample].f8889[hsa].line14b": {
+          "kind": "money",
+          "cents": 25000
+        },
+        "person[sample].f8889[hsa].line14c": {
+          "kind": "money",
+          "cents": 75000
+        },
+        "person[sample].f8889[hsa].line15": {
+          "kind": "money",
+          "cents": 25000
+        },
+        "person[sample].f8889[hsa].line16": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "person[sample].f8889[hsa].line17b": {
+          "kind": "money",
+          "cents": 2000
+        }
+      },
+      "basis": "i8889 p.9 limits 20% tax to the nonexcepted part: $100 nonexcepted out of $500 taxable produces $20."
+    },
+    {
+      "id": "H09",
+      "inputs": {
+        "person[sample].f8889[hsa].line14a": 100000,
+        "person[sample].f8889[hsa].rollover": 100001,
+        "person[sample].f8889[hsa].medical": 0
+      },
+      "expect": {
+        "person[sample].f8889[hsa].line14b": {
+          "kind": "refusal"
+        },
+        "person[sample].f8889[hsa].line14c": {
+          "kind": "refusal"
+        },
+        "person[sample].f8889[hsa].line16": {
+          "kind": "refusal"
+        },
+        "person[sample].f8889[hsa].line17b": {
+          "kind": "refusal"
+        }
+      },
+      "basis": "Intentional contradictory figures: $1000.01 rollover exceeds $1000 total distributions. The consistency refusal must propagate through the active distribution path."
+    },
+    {
+      "id": "H10",
+      "inputs": {
+        "person[sample].f8889[hsa].line14a": 100000,
+        "person[sample].f8889[hsa].rollover": 0,
+        "person[sample].f8889[hsa].medical": 0
+      },
+      "expect": {
+        "person[sample].f8889[hsa].line14b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[sample].f8889[hsa].line14c": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[sample].f8889[hsa].line15": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[sample].f8889[hsa].line16": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[sample].f8889[hsa].line17b": {
+          "kind": "unknown"
+        }
+      },
+      "basis": "Taxable $1000 is known, but whether any of it meets an additional-tax exception remains unanswered. Do not assume false."
+    },
+    {
+      "id": "H11",
+      "inputs": {
+        "person[sample].f8889[hsa].line14a": 100000,
+        "person[sample].f8889[hsa].rollover": 0,
+        "person[sample].f8889[hsa].medical": 0,
+        "person[sample].f8889[hsa].line17a": true
+      },
+      "expect": {
+        "person[sample].f8889[hsa].line16": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[sample].f8889[hsa].line17b": {
+          "kind": "unknown"
+        }
+      },
+      "basis": "An exception is known to apply, but its taxable/nonexcepted allocation is not known. Preserve the missing subject_part."
+    },
+    {
+      "id": "H12",
+      "inputs": {
+        "person[sample].f8889[hsa].line14a": 0,
+        "person[sample].f8889[hsa].unsupported": null
+      },
+      "expect": {
+        "person[sample].f8889[hsa].line16": {
+          "kind": "unknown"
+        },
+        "person[sample].f8889[hsa].line17b": {
+          "kind": "unknown"
+        }
+      },
+      "basis": "The mandatory supported-scope question is deliberately unanswered. The final taxable-distribution and additional-tax outputs must remain unknown. Do not prescribe whether a reviewer checks that screen before intermediate amounts: the archived source does not determine the placement of project scope screens."
+    },
+    {
+      "id": "H13",
+      "inputs": {
+        "person[sample].f8889[hsa].line14a": 0,
+        "person[sample].f8889[hsa].unsupported": true
+      },
+      "expect": {
+        "person[sample].f8889[hsa].line16": {
+          "kind": "refusal"
+        },
+        "person[sample].f8889[hsa].line17b": {
+          "kind": "refusal"
+        }
+      },
+      "basis": "A true published out-of-scope screen must continue to refuse even with zero distributed dollars."
+    },
+    {
+      "id": "H14",
+      "inputs": {
+        "person[sample].f8889[hsa].line2": 0,
+        "person[sample].f8889[hsa].line9": 0
+      },
+      "expect": {
+        "person[sample].f8889[hsa].line13": {
+          "kind": "money",
+          "cents": 0
+        }
+      },
+      "basis": "i8889 p.8 line13 takes the smaller of personal contributions and remaining limit: zero personal/employer contributions determine no deduction without coverage-limit followups."
+    },
+    {
+      "id": "H15",
+      "inputs": {
+        "person[sample].f8889[hsa].line2": 100000,
+        "person[sample].f8889[hsa].line9": 0
+      },
+      "expect": {
+        "person[sample].f8889[hsa].line13": {
+          "kind": "unknown"
+        }
+      },
+      "basis": "Positive personal contributions need eligibility/coverage facts to determine their allowable deduction; zero employer contributions do not supply them."
+    },
+    {
+      "id": "H16",
+      "inputs": {
+        "$person": [
+          "sample",
+          "spouse"
+        ],
+        "$f8889@person[sample]": [
+          "hsa"
+        ],
+        "$f8889@person[spouse]": [
+          "hsa"
+        ],
+        "f1040.status": "mfj",
+        "person[sample].role": "taxpayer",
+        "person[spouse].role": "spouse",
+        "person[sample].f8889[hsa].unsupported": false,
+        "person[sample].f8889[hsa].months_eligible": 12,
+        "person[sample].f8889[hsa].months_family": 12,
+        "person[sample].f8889[hsa].dec_coverage": "family",
+        "person[sample].f8889[hsa].last_month": false,
+        "person[sample].f8889[hsa].age55": false,
+        "person[sample].f8889[hsa].allocation": "equal",
+        "person[sample].f8889[hsa].line2": 200000,
+        "person[sample].f8889[hsa].line9": 0,
+        "person[spouse].f8889[hsa].unsupported": false,
+        "person[spouse].f8889[hsa].months_eligible": 12,
+        "person[spouse].f8889[hsa].months_family": 12,
+        "person[spouse].f8889[hsa].dec_coverage": "family",
+        "person[spouse].f8889[hsa].last_month": false,
+        "person[spouse].f8889[hsa].age55": false,
+        "person[spouse].f8889[hsa].allocation": "equal",
+        "person[spouse].f8889[hsa].line2": 200000,
+        "person[spouse].f8889[hsa].line9": 0,
+        "household.married": true
+      },
+      "expect": {
+        "person[sample].f8889[hsa].line3": {
+          "kind": "money",
+          "cents": 855000
+        },
+        "person[sample].f8889[hsa].line6": {
+          "kind": "money",
+          "cents": 427500
+        },
+        "person[sample].f8889[hsa].line13": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "person[spouse].f8889[hsa].line3": {
+          "kind": "money",
+          "cents": 855000
+        },
+        "person[spouse].f8889[hsa].line6": {
+          "kind": "money",
+          "cents": 427500
+        },
+        "person[spouse].f8889[hsa].line13": {
+          "kind": "money",
+          "cents": 200000
+        }
+      },
+      "basis": "i8889 p.4 How To Complete Part I and rule1: both eligible spouses are treated as family-covered if either has a family HDHP, disregarding self-only coverage. These supplied counts are already spouse-attributed. With two separate HSAs, p.7 line6 divides $8550 equally into $4275 per spouse. Each $2000 personal contribution is below its limit."
+    },
+    {
+      "id": "H17",
+      "inputs": {
+        "$person": [
+          "sample",
+          "spouse"
+        ],
+        "$f8889@person[sample]": [
+          "hsa"
+        ],
+        "$f8889@person[spouse]": [],
+        "f1040.status": "mfj",
+        "person[sample].role": "taxpayer",
+        "person[spouse].role": "spouse",
+        "person[sample].f8889[hsa].unsupported": false,
+        "person[sample].f8889[hsa].months_eligible": 12,
+        "person[sample].f8889[hsa].months_family": 12,
+        "person[sample].f8889[hsa].dec_coverage": "family",
+        "person[sample].f8889[hsa].last_month": false,
+        "person[sample].f8889[hsa].age55": false,
+        "person[sample].f8889[hsa].allocation": "equal",
+        "person[sample].f8889[hsa].line2": 200000,
+        "person[sample].f8889[hsa].line9": 0,
+        "household.married": true
+      },
+      "expect": {
+        "person[sample].f8889[hsa].line3": {
+          "kind": "money",
+          "cents": 855000
+        },
+        "person[sample].f8889[hsa].line6": {
+          "kind": "money",
+          "cents": 855000
+        },
+        "person[sample].f8889[hsa].line13": {
+          "kind": "money",
+          "cents": 200000
+        }
+      },
+      "basis": "i8889 p.4 How To Complete Part I and rule1: both eligible spouses are treated as family-covered if either has a family HDHP, disregarding self-only coverage. These supplied counts are already spouse-attributed. Only one spouse has an HSA; no separate-HSA division applies and the full $8550 limit remains. Each $2000 personal contribution is below its limit."
+    }
+  ]
+}

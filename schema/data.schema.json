@@ -845,6 +845,10 @@
               "when": {
                 "type": "string"
               },
+              "when_known": {
+                "const": true,
+                "description": "Consistency check on supplied figures only: an unknown gate does not supply an answer or block an independently determined expression. A true gate or refused gate still blocks."
+              },
               "form": {
                 "type": "string"
               },

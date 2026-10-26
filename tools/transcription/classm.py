@@ -201,6 +201,8 @@ Filing status: {STATUS_WORDS.get(job['status'], job['status'])}
 
 {what}
 
+{('Only printed IRS output lines are requested. Work any intermediate steps you need from the source, but do not report unrequested implementation helpers.' if job.get('worked_scope') == 'printed-irs-lines' else '')}
+
 # Amounts given
 
 Use them as they are; they are already correct. Amounts are dollars and cents.
@@ -315,6 +317,8 @@ def write_outputs(form_doc, model, jobs, runs, meta_all):
            f"| output token budget | {next(iter(meta_all.values())).get('request_max_tokens') or 'transport default (65536 for DeepSeek)'} |",
            f"| subject sha256 | {subjects.current('classm', fid, Y)} |",
            f"| cases | {len(jobs)} |"]
+    if all(job.get('worked_scope') == 'printed-irs-lines' for job in jobs):
+        out.append('| worked target scope | printed IRS lines |')
     used = runs[jobs[0]["id"]]["used"]
     out += ["", "## Source pages given to the model", "", "| document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |", "| --- | --- | --- | --- | --- | --- | --- |"]
     for u in used:
@@ -341,7 +345,7 @@ def write_outputs(form_doc, model, jobs, runs, meta_all):
                 status = ("SKIPPED" if model_v is not None and model_v["kind"] == "blank" else
                           "AGREE" if model_v is not None and same(model_v, proj) else "DISAGREE")
             counts[status] += 1
-            out.append(f"### {job['id']} — {handle(job, l)} — {l['label'][:80]}")
+            out.append(f"### {job['id']} — {handle(job, l)} — {l['label'][:80].rstrip()}")
             out.append(f"Status: **{status}**")
             if status == "AGREE":
                 out += ["", f"Value: {dollars(proj)}", ""]
@@ -391,7 +395,10 @@ def main():
     ap.add_argument("--max-output-tokens", type=int)
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--from-response", action="store_true")
+    ap.add_argument("--case-jobs", type=int, default=1, help="concurrent isolated case requests (default 1)")
     a = ap.parse_args()
+    if not 1 <= a.case_jobs <= 8:
+        ap.error('--case-jobs must be between 1 and 8')
     # The jobs are built from the canonical data, so build it and rebuild this document's jobs
     # first: a run on jobs from older data would compare the model with old values. A lock keeps
     # runs side by side (rerun_all.py) from building at once.
@@ -409,7 +416,7 @@ def main():
     excerpt, used = excerpt_for(form_doc, manifest())
     runs, meta_all = {}, {}
     family = families.family_of(a.model)
-    for job in jobs:
+    def work(job):
         prompt = build_entry_prompt(form_doc, excerpt, job) if job.get("kind") else build_prompt(form_doc, excerpt, job)
         base = os.path.join(RAW, families.case_id(job["id"], family))
         sha = hashlib.sha256(prompt.encode()).hexdigest()
@@ -417,10 +424,22 @@ def main():
         if a.dry_run:
             with open(base + ".preview.prompt.txt", "w", encoding="utf-8") as f:
                 f.write(prompt)
-            continue
+            return job['id'], None, None
         text, meta = review_response(prompt, a.model, base, PROMPT_POLICY, a.from_response, SYSTEM, a.reasoning_effort, a.max_output_tokens)
-        runs[job["id"]] = {"verdicts": extract(text), "raw": text, "prompt_sha": sha, "used": used}
-        meta_all[job["id"]] = meta
+        return job['id'], {"verdicts": extract(text), "raw": text, "prompt_sha": sha, "used": used}, meta
+    if a.case_jobs == 1:
+        worked = map(work, jobs)
+        for ident, run, meta in worked:
+            if run is not None:
+                runs[ident] = run
+                meta_all[ident] = meta
+    else:
+        from concurrent.futures import ThreadPoolExecutor
+        with ThreadPoolExecutor(max_workers=a.case_jobs) as pool:
+            for ident, run, meta in pool.map(work, jobs):
+                if run is not None:
+                    runs[ident] = run
+                    meta_all[ident] = meta
     if a.dry_run:
         return
     path, counts = write_outputs(form_doc, a.model, jobs, runs, meta_all)

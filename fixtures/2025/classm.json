@@ -71510,7 +71510,603 @@
         "f8889"
       ],
       "evidence": "M",
-      "evidence_note": "Class M: claude-opus-5-5; prompt sha256 3ee93438dde4963fc9466ddddf13517218e2530acacca2bc1143e40ef8b6c268; pages i8889 1,2,3,4,5,6,7,8,9 (bfbdc8bbe0b8); f8889 1 (f1ae3589453f); i1040gi 14 (6024dc94dd1f); branches f8889.any:true, f8889.unsupported:false, f8889.mfs:false, f8889.bad_months:false, f8889.age55:false, f8889.age55:true, f8889.married_family:true, f8889.age55_line3:false, f8889.self_amount#1, f8889.age55_unmarried:false, f8889.family_amount#1, f8889.all_year:false, f8889.all_year:true, f8889.changed:false, f8889.changed:true, f8889.dec_amount#0, f8889.dec_amount#1, f8889.last_month:false, f8889.use_last_month:false, f8889.line3_changed:left, f8889.line3_changed:right, f8889.line3_all_year#0, f8889.line3_all_year#1, f8889.line3_last_month#0, f8889.line3_last_month#1, f8889.line3_part_year#1, f8889.line3#0, f8889.line3#1, f8889.line5:positive, f8889.family_dec_year#0, f8889.family_dec_year#1, f8889.step1_total#1, f8889.step1:positive, f8889.share_raw#0, f8889.allocation_bad:false, f8889.self_all#1, f8889.self_dec_year#0, f8889.self_dec_year#1, f8889.self_in_family#1, f8889.step4_total:floor, f8889.step4_total:positive, f8889.split:true, f8889.line6#0, f8889.line7_total#1, f8889.line7_applies:false, f8889.line7_applies:true, f8889.line7#0, f8889.line7#1, f8889.line12:positive, f8889.excess:false, f8889.line13_figured:left, f8889.line13#0, f8889.has_dist:false, f8889.rollover_bad:false, f8889.line14b#1, f8889.line14c:floor, f8889.line15#1, f8889.line16_figured:floor, f8889.line16#1, f8889.has_taxable:false, f8889.line17a:false, f8889.subject_bad:false, f8889.subject#0, f8889.line17b#1; dropped after ruling: person[spouse].f8889[hsa].line3_all_year; dropped after ruling: person[taxpayer].f8889[hsa].line3_last_month",
+      "evidence_note": "Class M: claude-opus-5-5; prompt sha256 459dcc1e880d8c373ad6019f1fa93fa03399e660fc15f0a8f2d5a10ce4229084; pages i8889 1,2,3,4,5,6,7,8,9 (bfbdc8bbe0b8); f8889 1 (f1ae3589453f); i1040gi 14 (6024dc94dd1f); branches f8889.any:false, f8889.unsupported:false, f8889.mfs:false, f8889.bad_months:false, f8889.age55:false, f8889.age55:true, f8889.married_family:false, f8889.age55_line3:false, f8889.age55_line3:true, f8889.self_amount#0, f8889.self_amount#1, f8889.age55_unmarried:false, f8889.family_amount#1, f8889.all_year:false, f8889.all_year:true, f8889.changed:false, f8889.dec_amount#0, f8889.dec_amount#2, f8889.last_month:false, f8889.use_last_month:false, f8889.line3_changed:left, f8889.line3_all_year#1, f8889.line3_last_month#1, f8889.line3_part_year#1, f8889.line3#0, f8889.line3#1, f8889.line5:floor, f8889.line5:positive, f8889.family_dec_year#1, f8889.family_dec_year#2, f8889.step1_total#1, f8889.step1:floor, f8889.share_raw#1, f8889.allocation_bad:false, f8889.self_all#1, f8889.self_dec_year#1, f8889.self_dec_year#2, f8889.self_in_family#1, f8889.step4_total:floor, f8889.step4_total:positive, f8889.split:false, f8889.line6#1, f8889.line7_total#1, f8889.line7_applies:false, f8889.line7#1, f8889.line12:floor, f8889.line12:positive, f8889.excess:false, f8889.line13_figured:left, f8889.line13#1, f8889.has_dist:false, f8889.rollover_bad:false, f8889.line14b#1, f8889.line14c:floor, f8889.line15#1, f8889.line16_figured:floor, f8889.line16#1, f8889.has_taxable:false, f8889.line17a:false, f8889.subject_bad:false, f8889.subject#0, f8889.line17b#1",
+      "inputs": {
+        "div.box2b": 18200,
+        "div.box2c": 0,
+        "div.box2d": 82300,
+        "div.box2e": 0,
+        "div.box2f": 0,
+        "div.box3": 0,
+        "div.box9": 0,
+        "div.box10": 0,
+        "div.box12": 0,
+        "div.box13": 0,
+        "div.basis_reconciled": true,
+        "eic.qc_of_another": false,
+        "eic.us_home": true,
+        "eic.same_home": false,
+        "eic.legally_separated": false,
+        "f1040.status": "mfj",
+        "f1040.tax_exempt_interest": 0,
+        "f1040.line3a": 17350700,
+        "f1040.line25b": 0,
+        "f1040.line25c": 0,
+        "f1040.line26": 0,
+        "f1040.line35a": 0,
+        "f1040.line36": 0,
+        "f2441.benefits": false,
+        "f2441.care": false,
+        "f2441.student_disabled": false,
+        "f2441.spouse_died": false,
+        "f2441.nondependent": false,
+        "f2441.prior_year": false,
+        "f2441.line13": 0,
+        "f2441.line14": 0,
+        "f2441.paid_2026": 0,
+        "f2441.plans_differ": false,
+        "f2441.employer_care": false,
+        "f2441.plan_max": 0,
+        "f4952.line1": 0,
+        "f4952.carryover": false,
+        "f4952.unsupported": false,
+        "f4952.alternative_allocation": false,
+        "f4952.line4g": 384600,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f5695.business_use": false,
+        "f5695.construction_later": false,
+        "f5695.line1": 0,
+        "f5695.line2": 0,
+        "f5695.line3": 0,
+        "f5695.line4": 0,
+        "f5695.line5a": false,
+        "f5695.battery_cost": 0,
+        "f5695.line7a": false,
+        "f5695.line12": 0,
+        "f5695.line17a": true,
+        "f5695.line17b": true,
+        "f5695.line17c": true,
+        "f5695.line17e": false,
+        "f5695.line18a": 0,
+        "f5695.line19a": 0,
+        "f5695.line19d_i": 0,
+        "f5695.line19d_ii": 0,
+        "f5695.line19e": 0,
+        "f5695.qmid_doors": true,
+        "f5695.line20a_i": 0,
+        "f5695.line20a_ii": 0,
+        "f5695.line20a_iii": 0,
+        "f5695.line20a_iv": 0,
+        "f5695.line20b": 0,
+        "f5695.qmid_windows": true,
+        "f5695.line21a": true,
+        "f5695.line21b": true,
+        "f5695.b_new_home": false,
+        "f5695.line22a": 0,
+        "f5695.line22b": 0,
+        "f5695.qmid_ac": true,
+        "f5695.line23a_i": 0,
+        "f5695.line23a_ii": 0,
+        "f5695.line23b": 0,
+        "f5695.qmid_wh": true,
+        "f5695.line24a": 0,
+        "f5695.line24b": 0,
+        "f5695.qmid_furnace": true,
+        "f5695.line25a": false,
+        "f5695.line25c": 0,
+        "f5695.qmid_enabling": true,
+        "f5695.line26a": false,
+        "f5695.line26b": 0,
+        "f5695.line29a": 0,
+        "f5695.line29b": 0,
+        "f5695.line29c": 0,
+        "f5695.line29d": 0,
+        "f5695.line29e": 0,
+        "f5695.line29f": 0,
+        "f5695.qmid_hp": true,
+        "f5695.joint_occupancy": false,
+        "f5695.separate_homes": false,
+        "f5695.condo": false,
+        "f8959.unsupported": false,
+        "f8960.unsupported": false,
+        "f8960.refund": false,
+        "f8960.allocated_taxes": 0,
+        "ftc.taxes": 0,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "ftc.elect": true,
+        "household.home_cost": true,
+        "household.unmarried": true,
+        "household.married": true,
+        "household.community_property": false,
+        "household.credit_disallowed": false,
+        "ira.special": false,
+        "ira.se_capital": false,
+        "ira.deduct_less": false,
+        "qbi.dividends": 347000,
+        "qbi.unsupported": false,
+        "qbi.carryforward": 0,
+        "refund.received": 0,
+        "refund.box8": false,
+        "refund.not_2024": false,
+        "refund.itemized": false,
+        "refund.sales": false,
+        "refund.exc_tax": false,
+        "refund.exc_who": false,
+        "refund.line5d_2024": 0,
+        "refund.line5e_2024": 0,
+        "refund.line17_2024": 0,
+        "refund.status": "single",
+        "refund.mfs_spouse_itemized": false,
+        "refund.you_born": false,
+        "refund.you_blind": false,
+        "refund.spouse_born": false,
+        "refund.spouse_blind": false,
+        "s1.uc_paid": 0,
+        "s1.uc_repaid": 0,
+        "s1.uc_unsupported": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.gambling_pro": false,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "s1.alimony": false,
+        "s1.alimony_received": 0,
+        "s1.alimony_paid": 0,
+        "s1.alimony_unsupported": false,
+        "s1.cod_any": false,
+        "s1.cod_amount": 0,
+        "s1.cod_unsupported": false,
+        "s1.jury_to_employer": 0,
+        "s179.line10": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false,
+        "s2.amt": false,
+        "s2.other": false,
+        "s3.line9": 0,
+        "s3.line10": 0,
+        "s3.line12": 0,
+        "s3.line14": 0,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false,
+        "sa.unsupported": false,
+        "sa.charity_limited": false,
+        "sa.excluded_income": false,
+        "sa.dependent": false,
+        "sa.spouse_extra": false,
+        "sa.spouse_itemizes": false,
+        "sa.elect_itemize": false,
+        "sa.line1": 2353500,
+        "sa.line5a": 4008100,
+        "sa.line5b": 1398700,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 50600,
+        "sa.gambling_losses": 0,
+        "sb.unsupported": false,
+        "sb.ordinary_dividends": 17350700,
+        "sb.line7a": false,
+        "sb.fbar_required": false,
+        "sb.form8938": false,
+        "sb.line8": false,
+        "scope.schedule1": false,
+        "scope.credits": false,
+        "scope.other_income": false,
+        "scope.other_line16": false,
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 606200,
+        "sli.interest": 0,
+        "sli.claimed": false,
+        "ssb.benefits": 0,
+        "ssb.pub915": false,
+        "ssb.lump_sum": false,
+        "ssb.terror_disability": false,
+        "ssb.lived_apart": false,
+        "person[taxpayer].role": "taxpayer",
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].itin_applied": false,
+        "person[taxpayer].work_ssn": true,
+        "person[taxpayer].eic_ssn": true,
+        "person[taxpayer].under16": false,
+        "person[taxpayer].educator_expenses": 0,
+        "person[taxpayer].eligible_educator": false,
+        "person[taxpayer].born_before_2001": true,
+        "person[taxpayer].born_after_1960": true,
+        "person[taxpayer].died_before_65": false,
+        "person[taxpayer].rrta": false,
+        "person[taxpayer].se_screen": false,
+        "person[taxpayer].plan": "none",
+        "person[taxpayer].plan_screen": false,
+        "person[taxpayer].sep_rate": 12,
+        "person[taxpayer].sep_contrib": 0,
+        "person[taxpayer].simple_deferral": 0,
+        "person[taxpayer].simple_age": "under50",
+        "person[taxpayer].simple_kind": "match",
+        "person[taxpayer].simple_employer": 0,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].ira_trad": 0,
+        "person[taxpayer].ira_excess": false,
+        "person[taxpayer].ira_age50": false,
+        "person[taxpayer].ira_work_plan": false,
+        "person[taxpayer].ira_basis": 0,
+        "person[taxpayer].ira_basis_adjusted": false,
+        "person[taxpayer].ira_dist": false,
+        "person[taxpayer].f8889[hsa].line2": 0,
+        "person[taxpayer].f8889[hsa].line9": 0,
+        "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].months_eligible": 0,
+        "person[taxpayer].f8889[hsa].months_family": 0,
+        "person[taxpayer].f8889[hsa].age55": false,
+        "person[taxpayer].f8889[hsa].dec_coverage": "none",
+        "person[taxpayer].f8889[hsa].last_month": false,
+        "person[taxpayer].f8889[hsa].allocation": "agreed",
+        "person[taxpayer].f8889[hsa].allocated": 855000,
+        "person[taxpayer].f8889[hsa].line14a": 0,
+        "person[taxpayer].f8889[hsa].rollover": 0,
+        "person[taxpayer].f8889[hsa].medical": 0,
+        "person[taxpayer].f8889[hsa].line17a": false,
+        "person[taxpayer].f8889[hsa].subject_part": 0,
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$sc@person[taxpayer]": [],
+        "$w2@person[taxpayer]": [
+          "emp_a",
+          "emp_b"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 0,
+        "person[taxpayer].w2[emp_a].box2": 0,
+        "person[taxpayer].w2[emp_a].box3": 0,
+        "person[taxpayer].w2[emp_a].box7": 0,
+        "person[taxpayer].w2[emp_a].box4": 0,
+        "person[taxpayer].w2[emp_a].box5": 0,
+        "person[taxpayer].w2[emp_a].box6": 0,
+        "person[taxpayer].w2[emp_a].box10": 0,
+        "person[taxpayer].w2[emp_a].box10_wages": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false,
+        "person[taxpayer].w2[emp_a].box12_userra": false,
+        "person[taxpayer].w2[emp_a].box12_d": 0,
+        "person[taxpayer].w2[emp_a].box12_e": 0,
+        "person[taxpayer].w2[emp_a].box12_f": 0,
+        "person[taxpayer].w2[emp_a].box12_g": 0,
+        "person[taxpayer].w2[emp_a].box12_h": 0,
+        "person[taxpayer].w2[emp_a].box12_s": 0,
+        "person[taxpayer].w2[emp_a].box12_aa": 0,
+        "person[taxpayer].w2[emp_a].box12_bb": 0,
+        "person[taxpayer].w2[emp_a].box12_ee": 0,
+        "person[taxpayer].w2[emp_a].g_governmental": false,
+        "person[taxpayer].w2[emp_a].g_elective": 0,
+        "person[taxpayer].w2[emp_b].box1": 0,
+        "person[taxpayer].w2[emp_b].box2": 0,
+        "person[taxpayer].w2[emp_b].box3": 0,
+        "person[taxpayer].w2[emp_b].box7": 0,
+        "person[taxpayer].w2[emp_b].box4": 0,
+        "person[taxpayer].w2[emp_b].box5": 0,
+        "person[taxpayer].w2[emp_b].box6": 0,
+        "person[taxpayer].w2[emp_b].box10": 0,
+        "person[taxpayer].w2[emp_b].box10_wages": 0,
+        "person[taxpayer].w2[emp_b].box12_any": false,
+        "person[taxpayer].w2[emp_b].box12_userra": false,
+        "person[taxpayer].w2[emp_b].box12_d": 0,
+        "person[taxpayer].w2[emp_b].box12_e": 0,
+        "person[taxpayer].w2[emp_b].box12_f": 0,
+        "person[taxpayer].w2[emp_b].box12_g": 0,
+        "person[taxpayer].w2[emp_b].box12_h": 0,
+        "person[taxpayer].w2[emp_b].box12_s": 0,
+        "person[taxpayer].w2[emp_b].box12_aa": 0,
+        "person[taxpayer].w2[emp_b].box12_bb": 0,
+        "person[taxpayer].w2[emp_b].box12_ee": 0,
+        "person[taxpayer].w2[emp_b].g_governmental": false,
+        "person[taxpayer].w2[emp_b].g_elective": 0,
+        "$interest": [],
+        "$sales": [],
+        "$gift": [
+          "item_a",
+          "item_b"
+        ],
+        "gift[item_a].deduction": 0,
+        "gift[item_a].public_securities": true,
+        "gift[item_a].special": false,
+        "gift[item_b].deduction": 145400,
+        "gift[item_b].public_securities": false,
+        "gift[item_b].special": false,
+        "$dependent": [
+          "dep_a"
+        ],
+        "dependent[dep_a].relationship": "sibling",
+        "dependent[dep_a].age": 22,
+        "dependent[dep_a].younger": true,
+        "dependent[dep_a].student": false,
+        "dependent[dep_a].disabled": false,
+        "dependent[dep_a].months": 12,
+        "dependent[dep_a].self_support": false,
+        "dependent[dep_a].joint_return": false,
+        "dependent[dep_a].citizen": true,
+        "dependent[dep_a].canada_mexico": true,
+        "dependent[dep_a].married": false,
+        "dependent[dep_a].tin": true,
+        "dependent[dep_a].work_ssn": true,
+        "dependent[dep_a].gross_income": 0,
+        "dependent[dep_a].supported": true,
+        "dependent[dep_a].other_claimant": false,
+        "dependent[dep_a].divorced_rule": false,
+        "dependent[dep_a].multiple_support": false,
+        "dependent[dep_a].parent_home_paid": false,
+        "dependent[dep_a].us_half": true,
+        "dependent[dep_a].eic_ssn": true,
+        "dependent[dep_a].dc_under13": true,
+        "dependent[dep_a].dc_incapable": false,
+        "dependent[dep_a].dc_paid": 0,
+        "$dcprov": [
+          "prov_a"
+        ],
+        "$oi8z": [],
+        "dcprov[prov_a].tin_kind": "tin",
+        "dcprov[prov_a].household": false,
+        "dcprov[prov_a].paid": 0,
+        "dcprov[prov_a].related": false,
+        "$retirement": [],
+        "person[spouse].role": "spouse",
+        "person[spouse].rrta": false,
+        "person[spouse].age65": false,
+        "person[spouse].blind": false,
+        "person[spouse].tin": true,
+        "person[spouse].work_ssn": true,
+        "person[spouse].eic_ssn": true,
+        "person[spouse].under16": false,
+        "person[spouse].itin_applied": false,
+        "person[spouse].born_before_2001": true,
+        "person[spouse].born_after_1960": true,
+        "person[spouse].educator_expenses": 0,
+        "person[spouse].eligible_educator": true,
+        "person[spouse].sav_born": true,
+        "person[spouse].sav_student": false,
+        "person[spouse].sav_claimed": false,
+        "person[spouse].sav_trad": false,
+        "person[spouse].sav_able": false,
+        "person[spouse].sav_roth": 0,
+        "person[spouse].sav_excess": false,
+        "person[spouse].sav_voluntary": 0,
+        "person[spouse].sav_prior_joint": 0,
+        "person[spouse].sav_prior_other": 0,
+        "person[spouse].ira_trad": 0,
+        "person[spouse].ira_excess": false,
+        "person[spouse].ira_age50": false,
+        "person[spouse].ira_work_plan": false,
+        "person[spouse].ira_basis": 0,
+        "person[spouse].ira_basis_adjusted": false,
+        "person[spouse].ira_dist": false,
+        "$w2@person[spouse]": [
+          "emp_a",
+          "emp_b"
+        ],
+        "person[spouse].w2[emp_a].box1": 4435900,
+        "person[spouse].w2[emp_a].box2": 399200,
+        "person[spouse].w2[emp_a].box3": 4435900,
+        "person[spouse].w2[emp_a].box7": 0,
+        "person[spouse].w2[emp_a].box4": 275000,
+        "person[spouse].w2[emp_a].box5": 4435900,
+        "person[spouse].w2[emp_a].box6": 64300,
+        "person[spouse].w2[emp_a].box10": 0,
+        "person[spouse].w2[emp_a].box10_wages": 0,
+        "person[spouse].w2[emp_a].box12_any": true,
+        "person[spouse].w2[emp_a].box12_userra": false,
+        "person[spouse].w2[emp_a].box12_d": 1155100,
+        "person[spouse].w2[emp_a].box12_e": 0,
+        "person[spouse].w2[emp_a].box12_f": 0,
+        "person[spouse].w2[emp_a].box12_g": 0,
+        "person[spouse].w2[emp_a].box12_h": 0,
+        "person[spouse].w2[emp_a].box12_s": 0,
+        "person[spouse].w2[emp_a].box12_aa": 0,
+        "person[spouse].w2[emp_a].box12_bb": 0,
+        "person[spouse].w2[emp_a].box12_ee": 0,
+        "person[spouse].w2[emp_a].g_governmental": false,
+        "person[spouse].w2[emp_a].g_elective": 0,
+        "person[spouse].w2[emp_b].box1": 0,
+        "person[spouse].w2[emp_b].box2": 0,
+        "person[spouse].w2[emp_b].box3": 0,
+        "person[spouse].w2[emp_b].box7": 0,
+        "person[spouse].w2[emp_b].box4": 0,
+        "person[spouse].w2[emp_b].box5": 0,
+        "person[spouse].w2[emp_b].box6": 0,
+        "person[spouse].w2[emp_b].box10": 0,
+        "person[spouse].w2[emp_b].box10_wages": 0,
+        "person[spouse].w2[emp_b].box12_any": false,
+        "person[spouse].w2[emp_b].box12_userra": false,
+        "person[spouse].w2[emp_b].box12_d": 0,
+        "person[spouse].w2[emp_b].box12_e": 0,
+        "person[spouse].w2[emp_b].box12_f": 0,
+        "person[spouse].w2[emp_b].box12_g": 0,
+        "person[spouse].w2[emp_b].box12_h": 0,
+        "person[spouse].w2[emp_b].box12_s": 0,
+        "person[spouse].w2[emp_b].box12_aa": 0,
+        "person[spouse].w2[emp_b].box12_bb": 0,
+        "person[spouse].w2[emp_b].box12_ee": 0,
+        "person[spouse].w2[emp_b].g_governmental": false,
+        "person[spouse].w2[emp_b].g_elective": 0,
+        "$tipjob@person[spouse]": [],
+        "$otjob@person[spouse]": [],
+        "$f8889@person[spouse]": [
+          "hsa"
+        ],
+        "$sc@person[spouse]": [],
+        "person[spouse].se_screen": false,
+        "person[spouse].plan": "none",
+        "person[spouse].plan_screen": false,
+        "person[spouse].sep_rate": 10,
+        "person[spouse].sep_contrib": 0,
+        "person[spouse].simple_deferral": 0,
+        "person[spouse].simple_age": "age60_63",
+        "person[spouse].simple_kind": "nonelective",
+        "person[spouse].simple_employer": 0,
+        "person[spouse].f8889[hsa].line2": 0,
+        "person[spouse].f8889[hsa].line9": 0,
+        "person[spouse].f8889[hsa].unsupported": false,
+        "person[spouse].f8889[hsa].months_eligible": 12,
+        "person[spouse].f8889[hsa].months_family": 0,
+        "person[spouse].f8889[hsa].age55": true,
+        "person[spouse].f8889[hsa].last_month": false,
+        "person[spouse].f8889[hsa].dec_coverage": "self_only",
+        "person[spouse].f8889[hsa].allocation": "agreed",
+        "person[spouse].f8889[hsa].allocated": 0,
+        "person[spouse].f8889[hsa].line14a": 0,
+        "person[spouse].f8889[hsa].rollover": 0,
+        "person[spouse].f8889[hsa].medical": 0,
+        "person[spouse].f8889[hsa].line17a": false,
+        "person[spouse].f8889[hsa].subject_part": 0
+      },
+      "expect": {
+        "person[spouse].f8889[hsa].line3": {
+          "kind": "money",
+          "cents": 530000
+        },
+        "person[spouse].f8889[hsa].line4": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[spouse].f8889[hsa].line5": {
+          "kind": "money",
+          "cents": 530000
+        },
+        "person[spouse].f8889[hsa].line6": {
+          "kind": "money",
+          "cents": 530000
+        },
+        "person[spouse].f8889[hsa].line7": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[spouse].f8889[hsa].line8": {
+          "kind": "money",
+          "cents": 530000
+        },
+        "person[spouse].f8889[hsa].line10": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[spouse].f8889[hsa].line11": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[spouse].f8889[hsa].line12": {
+          "kind": "money",
+          "cents": 530000
+        },
+        "person[spouse].f8889[hsa].line13": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[spouse].f8889[hsa].line14b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[spouse].f8889[hsa].line14c": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[spouse].f8889[hsa].line15": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[spouse].f8889[hsa].line16": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[spouse].f8889[hsa].line17b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].f8889[hsa].line3": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].f8889[hsa].line4": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].f8889[hsa].line5": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].f8889[hsa].line6": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].f8889[hsa].line7": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].f8889[hsa].line8": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].f8889[hsa].line10": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].f8889[hsa].line11": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].f8889[hsa].line12": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].f8889[hsa].line14b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].f8889[hsa].line14c": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].f8889[hsa].line15": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].f8889[hsa].line16": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].f8889[hsa].line17b": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "classm.f8889.2",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "M",
+      "evidence_note": "Class M: claude-opus-5-5; prompt sha256 13eb58296ff37ee873a9c527cbda2085f8daefcb8c9f25975e4dac67e2713ea8; pages i8889 1,2,3,4,5,6,7,8,9 (bfbdc8bbe0b8); f8889 1 (f1ae3589453f); i1040gi 14 (6024dc94dd1f); branches f8889.any:true, f8889.unsupported:false, f8889.mfs:false, f8889.bad_months:false, f8889.age55:false, f8889.age55:true, f8889.married_family:true, f8889.age55_line3:false, f8889.self_amount#1, f8889.age55_unmarried:false, f8889.family_amount#1, f8889.all_year:false, f8889.all_year:true, f8889.changed:false, f8889.changed:true, f8889.dec_amount#1, f8889.last_month:false, f8889.use_last_month:false, f8889.line3_changed:right, f8889.line3_all_year#0, f8889.line3_all_year#1, f8889.line3_last_month#0, f8889.line3_last_month#1, f8889.line3_part_year#1, f8889.line3#0, f8889.line3#1, f8889.line5:positive, f8889.family_dec_year#0, f8889.step1_total#1, f8889.step1:positive, f8889.share_raw#0, f8889.allocation_bad:false, f8889.self_all#1, f8889.self_dec_year#0, f8889.self_in_family#1, f8889.step4_total:floor, f8889.step4_total:positive, f8889.split:true, f8889.line6#0, f8889.line7_total#1, f8889.line7_applies:false, f8889.line7_applies:true, f8889.line7#0, f8889.line7#1, f8889.line12:positive, f8889.excess:false, f8889.line13_figured:left, f8889.line13#0, f8889.has_dist:false, f8889.rollover_bad:false, f8889.line14b#1, f8889.line14c:floor, f8889.line15#1, f8889.line16_figured:floor, f8889.line16#1, f8889.has_taxable:false, f8889.line17a:false, f8889.subject_bad:false, f8889.subject#0, f8889.line17b#1",
       "inputs": {
         "div.box2b": 0,
         "div.box2c": 0,
@@ -71753,9 +72349,9 @@
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
         "person[taxpayer].f8889[hsa].months_eligible": 12,
-        "person[taxpayer].f8889[hsa].months_family": 3,
+        "person[taxpayer].f8889[hsa].months_family": 9,
         "person[taxpayer].f8889[hsa].age55": false,
-        "person[taxpayer].f8889[hsa].dec_coverage": "self_only",
+        "person[taxpayer].f8889[hsa].dec_coverage": "family",
         "person[taxpayer].f8889[hsa].last_month": false,
         "person[taxpayer].f8889[hsa].allocation": "equal",
         "person[taxpayer].f8889[hsa].allocated": 745600,
@@ -72065,86 +72661,6 @@
         "person[spouse].f8889[hsa].subject_part": 0
       },
       "expect": {
-        "person[spouse].f8889[hsa].any": {
-          "kind": "bool",
-          "value": true
-        },
-        "person[spouse].f8889[hsa].mfs": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[spouse].f8889[hsa].bad_months": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[spouse].f8889[hsa].married_family": {
-          "kind": "bool",
-          "value": true
-        },
-        "person[spouse].f8889[hsa].age55_line3": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[spouse].f8889[hsa].self_amount": {
-          "kind": "money",
-          "cents": 430000
-        },
-        "person[spouse].f8889[hsa].age55_unmarried": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[spouse].f8889[hsa].family_amount": {
-          "kind": "money",
-          "cents": 855000
-        },
-        "person[spouse].f8889[hsa].family_extra": {
-          "kind": "money",
-          "cents": 425000
-        },
-        "person[spouse].f8889[hsa].chart_self": {
-          "kind": "money",
-          "cents": 3870000
-        },
-        "person[spouse].f8889[hsa].chart_family": {
-          "kind": "money",
-          "cents": 3825000
-        },
-        "person[spouse].f8889[hsa].chart_total": {
-          "kind": "money",
-          "cents": 7695000
-        },
-        "person[spouse].f8889[hsa].chart_limit": {
-          "kind": "money",
-          "cents": 641250
-        },
-        "person[spouse].f8889[hsa].all_year": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[spouse].f8889[hsa].changed": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[spouse].f8889[hsa].dec_amount": {
-          "kind": "money",
-          "cents": 855000
-        },
-        "person[spouse].f8889[hsa].use_last_month": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[spouse].f8889[hsa].line3_changed": {
-          "kind": "money",
-          "cents": 855000
-        },
-        "person[spouse].f8889[hsa].line3_last_month": {
-          "kind": "money",
-          "cents": 855000
-        },
-        "person[spouse].f8889[hsa].line3_part_year": {
-          "kind": "money",
-          "cents": 641250
-        },
         "person[spouse].f8889[hsa].line3": {
           "kind": "money",
           "cents": 641250
@@ -72157,113 +72673,9 @@
           "kind": "money",
           "cents": 641250
         },
-        "person[spouse].f8889[hsa].family_year": {
-          "kind": "money",
-          "cents": 10260000
-        },
-        "person[spouse].f8889[hsa].family_dec_year": {
-          "kind": "money",
-          "cents": 10260000
-        },
-        "person[spouse].f8889[hsa].family_counted": {
-          "kind": "money",
-          "cents": 7695000
-        },
-        "person[spouse].f8889[hsa].step1_total": {
-          "kind": "money",
-          "cents": 7695000
-        },
-        "person[spouse].f8889[hsa].step1_line3": {
-          "kind": "money",
-          "cents": 641250
-        },
-        "person[spouse].f8889[hsa].step1": {
-          "kind": "money",
-          "cents": 641250
-        },
-        "person[spouse].f8889[hsa].step1_x2": {
-          "kind": "money",
-          "cents": 1282500
-        },
-        "person[spouse].f8889[hsa].share_equal": {
-          "kind": "money",
-          "cents": 320625
-        },
-        "person[spouse].f8889[hsa].share_raw": {
-          "kind": "money",
-          "cents": 320625
-        },
-        "person[spouse].f8889[hsa].allocation_bad": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[spouse].f8889[hsa].share": {
-          "kind": "money",
-          "cents": 320625
-        },
-        "person[spouse].f8889[hsa].self_year": {
-          "kind": "money",
-          "cents": 5160000
-        },
-        "person[spouse].f8889[hsa].self_counted": {
-          "kind": "money",
-          "cents": 3870000
-        },
-        "person[spouse].f8889[hsa].self_all": {
-          "kind": "money",
-          "cents": 3870000
-        },
-        "person[spouse].f8889[hsa].self_family_months": {
-          "kind": "money",
-          "cents": 3870000
-        },
-        "person[spouse].f8889[hsa].self_dec_year": {
-          "kind": "money",
-          "cents": 5160000
-        },
-        "person[spouse].f8889[hsa].self_in_family": {
-          "kind": "money",
-          "cents": 3870000
-        },
-        "person[spouse].f8889[hsa].step4_total": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[spouse].f8889[hsa].step4": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[spouse].f8889[hsa].line6_split": {
-          "kind": "money",
-          "cents": 320625
-        },
-        "person[spouse].f8889[hsa].split": {
-          "kind": "bool",
-          "value": true
-        },
         "person[spouse].f8889[hsa].line6": {
           "kind": "money",
           "cents": 320625
-        },
-        "person[spouse].f8889[hsa].line7_year": {
-          "kind": "money",
-          "cents": 1200000
-        },
-        "person[spouse].f8889[hsa].line7_counted": {
-          "kind": "money",
-          "cents": 900000
-        },
-        "person[spouse].f8889[hsa].line7_total": {
-          "kind": "money",
-          "cents": 900000
-        },
-        "person[spouse].f8889[hsa].line7_worksheet": {
-          "kind": "money",
-          "cents": 75000
-        },
-        "person[spouse].f8889[hsa].line7_applies": {
-          "kind": "bool",
-          "value": true
         },
         "person[spouse].f8889[hsa].line7": {
           "kind": "money",
@@ -72285,25 +72697,9 @@
           "kind": "money",
           "cents": 395625
         },
-        "person[spouse].f8889[hsa].excess": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[spouse].f8889[hsa].line13_figured": {
-          "kind": "money",
-          "cents": 363700
-        },
         "person[spouse].f8889[hsa].line13": {
           "kind": "money",
           "cents": 363700
-        },
-        "person[spouse].f8889[hsa].has_dist": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[spouse].f8889[hsa].rollover_bad": {
-          "kind": "bool",
-          "value": false
         },
         "person[spouse].f8889[hsa].line14b": {
           "kind": "money",
@@ -72317,31 +72713,7 @@
           "kind": "money",
           "cents": 0
         },
-        "person[spouse].f8889[hsa].line16_figured": {
-          "kind": "money",
-          "cents": 0
-        },
         "person[spouse].f8889[hsa].line16": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[spouse].f8889[hsa].has_taxable": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[spouse].f8889[hsa].subject_bad": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[spouse].f8889[hsa].subject_excepted": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[spouse].f8889[hsa].subject": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[spouse].f8889[hsa].line17b_figured": {
           "kind": "money",
           "cents": 0
         },
@@ -72349,205 +72721,21 @@
           "kind": "money",
           "cents": 0
         },
-        "person[taxpayer].f8889[hsa].any": {
-          "kind": "bool",
-          "value": true
-        },
-        "person[taxpayer].f8889[hsa].mfs": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[taxpayer].f8889[hsa].bad_months": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[taxpayer].f8889[hsa].married_family": {
-          "kind": "bool",
-          "value": true
-        },
-        "person[taxpayer].f8889[hsa].age55_line3": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[taxpayer].f8889[hsa].self_amount": {
-          "kind": "money",
-          "cents": 430000
-        },
-        "person[taxpayer].f8889[hsa].age55_unmarried": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[taxpayer].f8889[hsa].family_amount": {
+        "person[taxpayer].f8889[hsa].line3": {
           "kind": "money",
           "cents": 855000
         },
-        "person[taxpayer].f8889[hsa].family_extra": {
-          "kind": "money",
-          "cents": 425000
-        },
-        "person[taxpayer].f8889[hsa].chart_self": {
-          "kind": "money",
-          "cents": 5160000
-        },
-        "person[taxpayer].f8889[hsa].chart_family": {
-          "kind": "money",
-          "cents": 1275000
-        },
-        "person[taxpayer].f8889[hsa].chart_total": {
-          "kind": "money",
-          "cents": 6435000
-        },
-        "person[taxpayer].f8889[hsa].chart_limit": {
-          "kind": "money",
-          "cents": 536250
-        },
-        "person[taxpayer].f8889[hsa].all_year": {
-          "kind": "bool",
-          "value": true
-        },
-        "person[taxpayer].f8889[hsa].changed": {
-          "kind": "bool",
-          "value": true
-        },
-        "person[taxpayer].f8889[hsa].dec_amount": {
-          "kind": "money",
-          "cents": 430000
-        },
-        "person[taxpayer].f8889[hsa].use_last_month": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[taxpayer].f8889[hsa].line3_changed": {
-          "kind": "money",
-          "cents": 536250
-        },
-        "person[taxpayer].f8889[hsa].line3_all_year": {
-          "kind": "money",
-          "cents": 536250
-        },
-        "person[taxpayer].f8889[hsa].line3_part_year": {
-          "kind": "money",
-          "cents": 536250
-        },
-        "person[taxpayer].f8889[hsa].line3": {
-          "kind": "money",
-          "cents": 536250
-        },
         "person[taxpayer].f8889[hsa].line4": {
           "kind": "money",
           "cents": 0
         },
         "person[taxpayer].f8889[hsa].line5": {
           "kind": "money",
-          "cents": 536250
-        },
-        "person[taxpayer].f8889[hsa].family_year": {
-          "kind": "money",
-          "cents": 10260000
-        },
-        "person[taxpayer].f8889[hsa].family_dec_year": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].family_counted": {
-          "kind": "money",
-          "cents": 2565000
-        },
-        "person[taxpayer].f8889[hsa].step1_total": {
-          "kind": "money",
-          "cents": 2565000
-        },
-        "person[taxpayer].f8889[hsa].step1_line3": {
-          "kind": "money",
-          "cents": 213750
-        },
-        "person[taxpayer].f8889[hsa].step1": {
-          "kind": "money",
-          "cents": 213750
-        },
-        "person[taxpayer].f8889[hsa].step1_x2": {
-          "kind": "money",
-          "cents": 427500
-        },
-        "person[taxpayer].f8889[hsa].share_equal": {
-          "kind": "money",
-          "cents": 106875
-        },
-        "person[taxpayer].f8889[hsa].share_raw": {
-          "kind": "money",
-          "cents": 106875
-        },
-        "person[taxpayer].f8889[hsa].allocation_bad": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[taxpayer].f8889[hsa].share": {
-          "kind": "money",
-          "cents": 106875
-        },
-        "person[taxpayer].f8889[hsa].self_year": {
-          "kind": "money",
-          "cents": 5160000
-        },
-        "person[taxpayer].f8889[hsa].self_counted": {
-          "kind": "money",
-          "cents": 5160000
-        },
-        "person[taxpayer].f8889[hsa].self_all": {
-          "kind": "money",
-          "cents": 5160000
-        },
-        "person[taxpayer].f8889[hsa].self_family_months": {
-          "kind": "money",
-          "cents": 1290000
-        },
-        "person[taxpayer].f8889[hsa].self_dec_year": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].self_in_family": {
-          "kind": "money",
-          "cents": 1290000
-        },
-        "person[taxpayer].f8889[hsa].step4_total": {
-          "kind": "money",
-          "cents": 3870000
-        },
-        "person[taxpayer].f8889[hsa].step4": {
-          "kind": "money",
-          "cents": 322500
-        },
-        "person[taxpayer].f8889[hsa].line6_split": {
-          "kind": "money",
-          "cents": 429375
-        },
-        "person[taxpayer].f8889[hsa].split": {
-          "kind": "bool",
-          "value": true
+          "cents": 855000
         },
         "person[taxpayer].f8889[hsa].line6": {
           "kind": "money",
-          "cents": 429375
-        },
-        "person[taxpayer].f8889[hsa].line7_year": {
-          "kind": "money",
-          "cents": 1200000
-        },
-        "person[taxpayer].f8889[hsa].line7_counted": {
-          "kind": "money",
-          "cents": 1200000
-        },
-        "person[taxpayer].f8889[hsa].line7_total": {
-          "kind": "money",
-          "cents": 1200000
-        },
-        "person[taxpayer].f8889[hsa].line7_worksheet": {
-          "kind": "money",
-          "cents": 100000
-        },
-        "person[taxpayer].f8889[hsa].line7_applies": {
-          "kind": "bool",
-          "value": false
+          "cents": 428125
         },
         "person[taxpayer].f8889[hsa].line7": {
           "kind": "money",
@@ -72555,7 +72743,7 @@
         },
         "person[taxpayer].f8889[hsa].line8": {
           "kind": "money",
-          "cents": 429375
+          "cents": 428125
         },
         "person[taxpayer].f8889[hsa].line10": {
           "kind": "money",
@@ -72567,27 +72755,11 @@
         },
         "person[taxpayer].f8889[hsa].line12": {
           "kind": "money",
-          "cents": 429375
-        },
-        "person[taxpayer].f8889[hsa].excess": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[taxpayer].f8889[hsa].line13_figured": {
-          "kind": "money",
-          "cents": 311500
+          "cents": 428125
         },
         "person[taxpayer].f8889[hsa].line13": {
           "kind": "money",
           "cents": 311500
-        },
-        "person[taxpayer].f8889[hsa].has_dist": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[taxpayer].f8889[hsa].rollover_bad": {
-          "kind": "bool",
-          "value": false
         },
         "person[taxpayer].f8889[hsa].line14b": {
           "kind": "money",
@@ -72601,767 +72773,7 @@
           "kind": "money",
           "cents": 0
         },
-        "person[taxpayer].f8889[hsa].line16_figured": {
-          "kind": "money",
-          "cents": 0
-        },
         "person[taxpayer].f8889[hsa].line16": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].has_taxable": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[taxpayer].f8889[hsa].subject_bad": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[taxpayer].f8889[hsa].subject_excepted": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].subject": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].line17b_figured": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].line17b": {
-          "kind": "money",
-          "cents": 0
-        }
-      }
-    },
-    {
-      "id": "classm.f8889.2",
-      "covers": [
-        "f8889"
-      ],
-      "evidence": "M",
-      "evidence_note": "Class M: claude-opus-5-5; prompt sha256 b7443d0e173498cbf00013d1378e98d593fed70f4fb3b27d82b35baef769c79b; pages i8889 1,2,3,4,5,6,7,8,9 (bfbdc8bbe0b8); f8889 1 (f1ae3589453f); i1040gi 14 (6024dc94dd1f); branches f8889.any:false, f8889.unsupported:false, f8889.mfs:false, f8889.bad_months:false, f8889.age55:true, f8889.married_family:false, f8889.age55_line3:true, f8889.self_amount#0, f8889.age55_unmarried:true, f8889.family_amount#0, f8889.all_year:false, f8889.changed:false, f8889.dec_amount#2, f8889.last_month:true, f8889.use_last_month:false, f8889.line3_changed:left, f8889.line3_all_year#1, f8889.line3_last_month#1, f8889.line3_part_year#1, f8889.line3#1, f8889.line5:floor, f8889.family_dec_year#2, f8889.step1_total#1, f8889.step1:floor, f8889.share_raw#0, f8889.allocation_bad:false, f8889.self_all#1, f8889.self_dec_year#2, f8889.self_in_family#1, f8889.step4_total:floor, f8889.split:false, f8889.line6#1, f8889.line7_total#1, f8889.line7_applies:false, f8889.line7#1, f8889.line12:floor, f8889.excess:false, f8889.line13_figured:left, f8889.line13#1, f8889.has_dist:false, f8889.rollover_bad:false, f8889.line14b#1, f8889.line14c:floor, f8889.line15#1, f8889.line16_figured:floor, f8889.line16#1, f8889.has_taxable:false, f8889.line17a:false, f8889.subject_bad:false, f8889.subject#0, f8889.line17b#1; dropped after ruling: person[taxpayer].f8889[hsa].family_year",
-      "inputs": {
-        "div.box2b": 0,
-        "div.box2c": 0,
-        "div.box2d": 284000,
-        "div.box2e": 0,
-        "div.box2f": 0,
-        "div.box3": 0,
-        "div.box9": 0,
-        "div.box10": 0,
-        "div.box12": 0,
-        "div.box13": 0,
-        "div.basis_reconciled": true,
-        "eic.qc_of_another": true,
-        "eic.us_home": true,
-        "eic.same_home": false,
-        "eic.legally_separated": false,
-        "f1040.status": "qss",
-        "f1040.tax_exempt_interest": 0,
-        "f1040.line3a": 4450000,
-        "f1040.line25b": 0,
-        "f1040.line25c": 0,
-        "f1040.line26": 0,
-        "f1040.line35a": 0,
-        "f1040.line36": 0,
-        "f2441.benefits": true,
-        "f2441.care": false,
-        "f2441.student_disabled": false,
-        "f2441.spouse_died": false,
-        "f2441.nondependent": false,
-        "f2441.prior_year": false,
-        "f2441.line13": 0,
-        "f2441.line14": 0,
-        "f2441.paid_2026": 0,
-        "f2441.plans_differ": false,
-        "f2441.employer_care": false,
-        "f2441.plan_max": 0,
-        "f4952.line1": 0,
-        "f4952.carryover": true,
-        "f4952.unsupported": false,
-        "f4952.alternative_allocation": false,
-        "f4952.line4g": 0,
-        "f5695.part1_any": false,
-        "f5695.part2_any": false,
-        "f5695.business_use": false,
-        "f5695.construction_later": false,
-        "f5695.line1": 0,
-        "f5695.line2": 0,
-        "f5695.line3": 0,
-        "f5695.line4": 0,
-        "f5695.line5a": true,
-        "f5695.battery_cost": 0,
-        "f5695.line7a": false,
-        "f5695.line12": 0,
-        "f5695.line17a": true,
-        "f5695.line17b": true,
-        "f5695.line17c": true,
-        "f5695.line17e": false,
-        "f5695.line18a": 0,
-        "f5695.line19a": 0,
-        "f5695.line19d_i": 0,
-        "f5695.line19d_ii": 0,
-        "f5695.line19e": 0,
-        "f5695.qmid_doors": true,
-        "f5695.line20a_i": 0,
-        "f5695.line20a_ii": 0,
-        "f5695.line20a_iii": 0,
-        "f5695.line20a_iv": 0,
-        "f5695.line20b": 0,
-        "f5695.qmid_windows": true,
-        "f5695.line21a": true,
-        "f5695.line21b": true,
-        "f5695.b_new_home": false,
-        "f5695.line22a": 0,
-        "f5695.line22b": 0,
-        "f5695.qmid_ac": true,
-        "f5695.line23a_i": 0,
-        "f5695.line23a_ii": 0,
-        "f5695.line23b": 0,
-        "f5695.qmid_wh": true,
-        "f5695.line24a": 0,
-        "f5695.line24b": 0,
-        "f5695.qmid_furnace": true,
-        "f5695.line25a": false,
-        "f5695.line25c": 0,
-        "f5695.qmid_enabling": true,
-        "f5695.line26a": false,
-        "f5695.line26b": 0,
-        "f5695.line29a": 0,
-        "f5695.line29b": 0,
-        "f5695.line29c": 0,
-        "f5695.line29d": 0,
-        "f5695.line29e": 0,
-        "f5695.line29f": 0,
-        "f5695.qmid_hp": true,
-        "f5695.joint_occupancy": false,
-        "f5695.separate_homes": false,
-        "f5695.condo": false,
-        "f8959.unsupported": false,
-        "f8960.unsupported": false,
-        "f8960.refund": false,
-        "f8960.allocated_taxes": 0,
-        "ftc.taxes": 13300,
-        "ftc.all_passive": true,
-        "ftc.statements": false,
-        "ftc.eligible": true,
-        "ftc.elect": true,
-        "household.home_cost": true,
-        "household.unmarried": false,
-        "household.married": false,
-        "household.community_property": false,
-        "household.credit_disallowed": false,
-        "ira.special": false,
-        "ira.se_capital": false,
-        "ira.deduct_less": false,
-        "qbi.dividends": 150000,
-        "qbi.unsupported": true,
-        "qbi.carryforward": 0,
-        "refund.received": 0,
-        "refund.box8": false,
-        "refund.not_2024": false,
-        "refund.itemized": false,
-        "refund.sales": false,
-        "refund.exc_tax": false,
-        "refund.exc_who": false,
-        "refund.line5d_2024": 0,
-        "refund.line5e_2024": 0,
-        "refund.line17_2024": 0,
-        "refund.status": "single",
-        "refund.mfs_spouse_itemized": false,
-        "refund.you_born": false,
-        "refund.you_blind": false,
-        "refund.spouse_born": false,
-        "refund.spouse_blind": false,
-        "s1.uc_paid": 0,
-        "s1.uc_repaid": 0,
-        "s1.uc_unsupported": false,
-        "s1.line8_other": false,
-        "s1.gambling_winnings": 0,
-        "s1.gambling_pro": false,
-        "s1.line8g": 0,
-        "s1.line8h": 0,
-        "s1.line8i": 0,
-        "s1.line8j": 0,
-        "s1.line8r": 0,
-        "s1.alimony": false,
-        "s1.alimony_received": 0,
-        "s1.alimony_paid": 0,
-        "s1.alimony_unsupported": false,
-        "s1.cod_any": false,
-        "s1.cod_amount": 0,
-        "s1.cod_unsupported": false,
-        "s1.jury_to_employer": 0,
-        "s179.line10": 0,
-        "s1a.tips": false,
-        "s1a.overtime": false,
-        "s1a.carloan": false,
-        "s2.amt": false,
-        "s2.other": false,
-        "s3.line9": 0,
-        "s3.line10": 0,
-        "s3.line12": 0,
-        "s3.line14": 0,
-        "s8812.combat_pay": false,
-        "s8812.puerto_rico": true,
-        "sa.unsupported": false,
-        "sa.charity_limited": false,
-        "sa.excluded_income": false,
-        "sa.dependent": false,
-        "sa.spouse_extra": false,
-        "sa.spouse_itemizes": false,
-        "sa.elect_itemize": false,
-        "sa.line1": 0,
-        "sa.line5a": 1550700,
-        "sa.line5b": 0,
-        "sa.line5c": 0,
-        "sa.line8a": 4000000,
-        "sa.line11": 1254700,
-        "sa.gambling_losses": 0,
-        "sb.unsupported": false,
-        "sb.ordinary_dividends": 5000000,
-        "sb.line7a": false,
-        "sb.fbar_required": false,
-        "sb.form8938": false,
-        "sb.line8": false,
-        "scope.schedule1": true,
-        "scope.credits": false,
-        "scope.other_income": false,
-        "scope.other_line16": false,
-        "sd.other_forms": false,
-        "sd.carryover": false,
-        "sd.distributions": 710000,
-        "sli.interest": 0,
-        "sli.claimed": false,
-        "ssb.benefits": 3355100,
-        "ssb.pub915": false,
-        "ssb.lump_sum": false,
-        "ssb.terror_disability": false,
-        "ssb.lived_apart": true,
-        "person[taxpayer].role": "taxpayer",
-        "person[taxpayer].age65": false,
-        "person[taxpayer].blind": true,
-        "person[taxpayer].tin": true,
-        "person[taxpayer].itin_applied": false,
-        "person[taxpayer].work_ssn": true,
-        "person[taxpayer].eic_ssn": true,
-        "person[taxpayer].under16": false,
-        "person[taxpayer].educator_expenses": 0,
-        "person[taxpayer].eligible_educator": false,
-        "person[taxpayer].born_before_2001": true,
-        "person[taxpayer].born_after_1960": true,
-        "person[taxpayer].died_before_65": false,
-        "person[taxpayer].rrta": false,
-        "person[taxpayer].se_screen": false,
-        "person[taxpayer].plan": "sep",
-        "person[taxpayer].plan_screen": false,
-        "person[taxpayer].sep_rate": 1,
-        "person[taxpayer].sep_contrib": 93300,
-        "person[taxpayer].simple_deferral": 0,
-        "person[taxpayer].simple_age": "age50",
-        "person[taxpayer].simple_kind": "match",
-        "person[taxpayer].simple_employer": 0,
-        "person[taxpayer].sav_born": true,
-        "person[taxpayer].sav_student": false,
-        "person[taxpayer].sav_claimed": false,
-        "person[taxpayer].sav_trad": false,
-        "person[taxpayer].sav_able": false,
-        "person[taxpayer].sav_roth": 0,
-        "person[taxpayer].sav_excess": false,
-        "person[taxpayer].sav_voluntary": 0,
-        "person[taxpayer].sav_prior_joint": 0,
-        "person[taxpayer].sav_prior_other": 0,
-        "person[taxpayer].ira_trad": 0,
-        "person[taxpayer].ira_excess": false,
-        "person[taxpayer].ira_age50": false,
-        "person[taxpayer].ira_work_plan": false,
-        "person[taxpayer].ira_basis": 0,
-        "person[taxpayer].ira_basis_adjusted": false,
-        "person[taxpayer].ira_dist": false,
-        "person[taxpayer].f8889[hsa].line2": 0,
-        "person[taxpayer].f8889[hsa].line9": 0,
-        "person[taxpayer].f8889[hsa].unsupported": false,
-        "person[taxpayer].f8889[hsa].months_eligible": 0,
-        "person[taxpayer].f8889[hsa].months_family": 0,
-        "person[taxpayer].f8889[hsa].age55": true,
-        "person[taxpayer].f8889[hsa].dec_coverage": "none",
-        "person[taxpayer].f8889[hsa].last_month": true,
-        "person[taxpayer].f8889[hsa].allocation": "equal",
-        "person[taxpayer].f8889[hsa].allocated": 0,
-        "person[taxpayer].f8889[hsa].line14a": 0,
-        "person[taxpayer].f8889[hsa].rollover": 0,
-        "person[taxpayer].f8889[hsa].medical": 0,
-        "person[taxpayer].f8889[hsa].line17a": false,
-        "person[taxpayer].f8889[hsa].subject_part": 0,
-        "$person": [
-          "taxpayer"
-        ],
-        "$f8889@person[taxpayer]": [
-          "hsa"
-        ],
-        "$sc@person[taxpayer]": [],
-        "$w2@person[taxpayer]": [
-          "emp_a",
-          "emp_b"
-        ],
-        "person[taxpayer].w2[emp_a].box1": 65900,
-        "person[taxpayer].w2[emp_a].box2": 4600,
-        "person[taxpayer].w2[emp_a].box3": 65900,
-        "person[taxpayer].w2[emp_a].box7": 0,
-        "person[taxpayer].w2[emp_a].box4": 4100,
-        "person[taxpayer].w2[emp_a].box5": 65900,
-        "person[taxpayer].w2[emp_a].box6": 1000,
-        "person[taxpayer].w2[emp_a].box10": 65900,
-        "person[taxpayer].w2[emp_a].box10_wages": 0,
-        "person[taxpayer].w2[emp_a].box12_any": true,
-        "person[taxpayer].w2[emp_a].box12_userra": false,
-        "person[taxpayer].w2[emp_a].box12_d": 65900,
-        "person[taxpayer].w2[emp_a].box12_e": 0,
-        "person[taxpayer].w2[emp_a].box12_f": 0,
-        "person[taxpayer].w2[emp_a].box12_g": 0,
-        "person[taxpayer].w2[emp_a].box12_h": 0,
-        "person[taxpayer].w2[emp_a].box12_s": 0,
-        "person[taxpayer].w2[emp_a].box12_aa": 0,
-        "person[taxpayer].w2[emp_a].box12_bb": 0,
-        "person[taxpayer].w2[emp_a].box12_ee": 0,
-        "person[taxpayer].w2[emp_a].g_governmental": false,
-        "person[taxpayer].w2[emp_a].g_elective": 0,
-        "person[taxpayer].w2[emp_b].box1": 6711000,
-        "person[taxpayer].w2[emp_b].box2": 268400,
-        "person[taxpayer].w2[emp_b].box3": 6711000,
-        "person[taxpayer].w2[emp_b].box7": 0,
-        "person[taxpayer].w2[emp_b].box4": 416100,
-        "person[taxpayer].w2[emp_b].box5": 6711000,
-        "person[taxpayer].w2[emp_b].box6": 97300,
-        "person[taxpayer].w2[emp_b].box10": 0,
-        "person[taxpayer].w2[emp_b].box10_wages": 0,
-        "person[taxpayer].w2[emp_b].box12_any": false,
-        "person[taxpayer].w2[emp_b].box12_userra": false,
-        "person[taxpayer].w2[emp_b].box12_d": 0,
-        "person[taxpayer].w2[emp_b].box12_e": 0,
-        "person[taxpayer].w2[emp_b].box12_f": 0,
-        "person[taxpayer].w2[emp_b].box12_g": 0,
-        "person[taxpayer].w2[emp_b].box12_h": 0,
-        "person[taxpayer].w2[emp_b].box12_s": 0,
-        "person[taxpayer].w2[emp_b].box12_aa": 0,
-        "person[taxpayer].w2[emp_b].box12_bb": 0,
-        "person[taxpayer].w2[emp_b].box12_ee": 0,
-        "person[taxpayer].w2[emp_b].g_governmental": false,
-        "person[taxpayer].w2[emp_b].g_elective": 0,
-        "$interest": [],
-        "$sales": [],
-        "$gift": [
-          "item_a"
-        ],
-        "gift[item_a].deduction": 0,
-        "gift[item_a].public_securities": false,
-        "gift[item_a].special": false,
-        "$dependent": [
-          "dep_a",
-          "dep_b",
-          "dep_c"
-        ],
-        "dependent[dep_a].relationship": "in_law",
-        "dependent[dep_a].age": 11,
-        "dependent[dep_a].younger": true,
-        "dependent[dep_a].student": false,
-        "dependent[dep_a].disabled": false,
-        "dependent[dep_a].months": 12,
-        "dependent[dep_a].self_support": true,
-        "dependent[dep_a].joint_return": false,
-        "dependent[dep_a].citizen": true,
-        "dependent[dep_a].canada_mexico": false,
-        "dependent[dep_a].married": false,
-        "dependent[dep_a].tin": true,
-        "dependent[dep_a].work_ssn": true,
-        "dependent[dep_a].gross_income": 0,
-        "dependent[dep_a].supported": true,
-        "dependent[dep_a].other_claimant": false,
-        "dependent[dep_a].divorced_rule": false,
-        "dependent[dep_a].multiple_support": false,
-        "dependent[dep_a].parent_home_paid": false,
-        "dependent[dep_a].us_half": true,
-        "dependent[dep_a].eic_ssn": false,
-        "dependent[dep_b].relationship": "in_law",
-        "dependent[dep_b].age": 15,
-        "dependent[dep_b].younger": true,
-        "dependent[dep_b].student": false,
-        "dependent[dep_b].disabled": false,
-        "dependent[dep_b].months": 8,
-        "dependent[dep_b].self_support": false,
-        "dependent[dep_b].joint_return": false,
-        "dependent[dep_b].citizen": true,
-        "dependent[dep_b].canada_mexico": false,
-        "dependent[dep_b].married": false,
-        "dependent[dep_b].tin": true,
-        "dependent[dep_b].work_ssn": true,
-        "dependent[dep_b].gross_income": 0,
-        "dependent[dep_b].supported": true,
-        "dependent[dep_b].other_claimant": false,
-        "dependent[dep_b].divorced_rule": false,
-        "dependent[dep_b].multiple_support": false,
-        "dependent[dep_b].parent_home_paid": false,
-        "dependent[dep_b].us_half": true,
-        "dependent[dep_b].eic_ssn": true,
-        "dependent[dep_c].relationship": "sibling",
-        "dependent[dep_c].age": 25,
-        "dependent[dep_c].younger": true,
-        "dependent[dep_c].student": false,
-        "dependent[dep_c].disabled": false,
-        "dependent[dep_c].months": 12,
-        "dependent[dep_c].self_support": false,
-        "dependent[dep_c].joint_return": false,
-        "dependent[dep_c].citizen": true,
-        "dependent[dep_c].canada_mexico": false,
-        "dependent[dep_c].married": false,
-        "dependent[dep_c].tin": true,
-        "dependent[dep_c].work_ssn": true,
-        "dependent[dep_c].gross_income": 287600,
-        "dependent[dep_c].supported": true,
-        "dependent[dep_c].other_claimant": false,
-        "dependent[dep_c].divorced_rule": false,
-        "dependent[dep_c].multiple_support": false,
-        "dependent[dep_c].parent_home_paid": false,
-        "dependent[dep_c].us_half": true,
-        "dependent[dep_c].eic_ssn": true,
-        "dependent[dep_a].dc_under13": true,
-        "dependent[dep_a].dc_incapable": false,
-        "dependent[dep_a].dc_paid": 0,
-        "dependent[dep_b].dc_under13": true,
-        "dependent[dep_b].dc_incapable": false,
-        "dependent[dep_b].dc_paid": 0,
-        "dependent[dep_c].dc_under13": true,
-        "dependent[dep_c].dc_incapable": false,
-        "dependent[dep_c].dc_paid": 0,
-        "$dcprov": [
-          "prov_a"
-        ],
-        "$oi8z": [],
-        "dcprov[prov_a].tin_kind": "tin",
-        "dcprov[prov_a].household": false,
-        "dcprov[prov_a].paid": 0,
-        "dcprov[prov_a].related": false,
-        "$retirement": [
-          "r1",
-          "r2"
-        ],
-        "retirement[r1].account": "traditional_ira",
-        "retirement[r1].code": "early_exception_2",
-        "retirement[r1].box1": 844700,
-        "retirement[r1].box5": 0,
-        "retirement[r1].rollover": 0,
-        "retirement[r1].special": false,
-        "retirement[r1].annuity": false,
-        "retirement[r1].cost": 0,
-        "retirement[r1].used_last_year": false,
-        "retirement[r1].last_line4": 0,
-        "retirement[r1].joint_life": false,
-        "retirement[r1].age": 71,
-        "retirement[r1].combined_age": 152,
-        "retirement[r1].months": 6,
-        "retirement[r1].recovered": 0,
-        "retirement[r1].sav_military": false,
-        "retirement[r1].sav_404k": false,
-        "retirement[r1].sav_inherited": false,
-        "retirement[r2].account": "plan",
-        "retirement[r2].code": "death_4",
-        "retirement[r2].box1": 5855400,
-        "retirement[r2].box5": 0,
-        "retirement[r2].rollover": 0,
-        "retirement[r2].special": false,
-        "retirement[r2].annuity": true,
-        "retirement[r2].cost": 0,
-        "retirement[r2].used_last_year": true,
-        "retirement[r2].last_line4": 0,
-        "retirement[r2].joint_life": false,
-        "retirement[r2].age": 72,
-        "retirement[r2].combined_age": 149,
-        "retirement[r2].months": 12,
-        "retirement[r2].recovered": 4928300,
-        "retirement[r2].sav_military": false,
-        "retirement[r2].sav_404k": false,
-        "retirement[r2].sav_inherited": false
-      },
-      "expect": {
-        "person[taxpayer].f8889[hsa].any": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[taxpayer].f8889[hsa].mfs": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[taxpayer].f8889[hsa].bad_months": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[taxpayer].f8889[hsa].married_family": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[taxpayer].f8889[hsa].age55_line3": {
-          "kind": "bool",
-          "value": true
-        },
-        "person[taxpayer].f8889[hsa].self_amount": {
-          "kind": "money",
-          "cents": 530000
-        },
-        "person[taxpayer].f8889[hsa].age55_unmarried": {
-          "kind": "bool",
-          "value": true
-        },
-        "person[taxpayer].f8889[hsa].family_amount": {
-          "kind": "money",
-          "cents": 955000
-        },
-        "person[taxpayer].f8889[hsa].family_extra": {
-          "kind": "money",
-          "cents": 425000
-        },
-        "person[taxpayer].f8889[hsa].chart_self": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].chart_family": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].chart_total": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].chart_limit": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].all_year": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[taxpayer].f8889[hsa].changed": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[taxpayer].f8889[hsa].dec_amount": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].use_last_month": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[taxpayer].f8889[hsa].line3_changed": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].line3_all_year": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].line3_last_month": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].line3_part_year": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].line3": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].line4": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].line5": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].family_dec_year": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].family_counted": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].step1_total": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].step1_line3": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].step1": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].step1_x2": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].share_equal": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].share_raw": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].allocation_bad": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[taxpayer].f8889[hsa].share": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].self_year": {
-          "kind": "money",
-          "cents": 6360000
-        },
-        "person[taxpayer].f8889[hsa].self_counted": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].self_all": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].self_family_months": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].self_dec_year": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].self_in_family": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].step4_total": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].step4": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].line6_split": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].split": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[taxpayer].f8889[hsa].line6": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].line7_year": {
-          "kind": "money",
-          "cents": 1200000
-        },
-        "person[taxpayer].f8889[hsa].line7_counted": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].line7_total": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].line7_worksheet": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].line7_applies": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[taxpayer].f8889[hsa].line7": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].line8": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].line10": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].line11": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].line12": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].excess": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[taxpayer].f8889[hsa].line13_figured": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].line13": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].has_dist": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[taxpayer].f8889[hsa].rollover_bad": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[taxpayer].f8889[hsa].line14b": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].line14c": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].line15": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].line16_figured": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].line16": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].has_taxable": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[taxpayer].f8889[hsa].subject_bad": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[taxpayer].f8889[hsa].subject_excepted": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].subject": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].line17b_figured": {
           "kind": "money",
           "cents": 0
         },
@@ -73377,7 +72789,103 @@
         "f8889"
       ],
       "evidence": "M",
-      "evidence_note": "Class M: claude-opus-5-5; prompt sha256 8c5fc564994c66f30e2a8e48fe3173b8ee2b01779ed50e4fcb7668e4bde41a31; pages i8889 1,2,3,4,5,6,7,8,9 (bfbdc8bbe0b8); f8889 1 (f1ae3589453f); i1040gi 14 (6024dc94dd1f); branches f8889.any:true, f8889.unsupported:false, f8889.mfs:false, f8889.bad_months:false, f8889.age55:false, f8889.married_family:false, f8889.age55_line3:false, f8889.self_amount#1, f8889.age55_unmarried:false, f8889.family_amount#1, f8889.all_year:true, f8889.changed:true, f8889.dec_amount#0, f8889.last_month:true, f8889.use_last_month:true, f8889.line3_changed:left, f8889.line3_all_year#0, f8889.line3_last_month#0, f8889.line3_part_year#0, f8889.line3#0, f8889.line5:positive, f8889.family_dec_year#1, f8889.step1_total#0, f8889.step1:floor, f8889.share_raw#0, f8889.allocation_bad:false, f8889.self_all#0, f8889.self_dec_year#1, f8889.self_in_family#0, f8889.step4_total:positive, f8889.split:false, f8889.line6#1, f8889.line7_total#0, f8889.line7_applies:false, f8889.line7#1, f8889.line12:positive, f8889.excess:false, f8889.line13_figured:left, f8889.line13#0, f8889.has_dist:false, f8889.rollover_bad:false, f8889.line14b#1, f8889.line14c:floor, f8889.line15#1, f8889.line16_figured:floor, f8889.line16#1, f8889.has_taxable:false, f8889.line17a:false, f8889.subject_bad:false, f8889.subject#0, f8889.line17b#1; dropped after ruling: person[taxpayer].f8889[hsa].married_family; dropped after ruling: person[taxpayer].f8889[hsa].line3_last_month; dropped after ruling: person[taxpayer].f8889[hsa].step1_total; dropped after ruling: person[taxpayer].f8889[hsa].step1_line3; dropped after ruling: person[taxpayer].f8889[hsa].step1; dropped after ruling: person[taxpayer].f8889[hsa].step1_x2; dropped after ruling: person[taxpayer].f8889[hsa].share_equal; dropped after ruling: person[taxpayer].f8889[hsa].share_raw; dropped after ruling: person[taxpayer].f8889[hsa].share; dropped after ruling: person[taxpayer].f8889[hsa].self_in_family; dropped after ruling: person[taxpayer].f8889[hsa].step4_total; dropped after ruling: person[taxpayer].f8889[hsa].step4; dropped after ruling: person[taxpayer].f8889[hsa].line6_split",
+      "evidence_note": "Class M: claude-opus-5-5; prompt sha256 72693dab34fc685c569f60eb978fa440c37fec2fddd3e4093c5a321fadcc4518; pages i8889 1,2,3,4,5,6,7,8,9 (bfbdc8bbe0b8); f8889 1 (f1ae3589453f); i1040gi 14 (6024dc94dd1f); branches f8889.any:false, f8889.unsupported:false, f8889.mfs:false, f8889.bad_months:false, f8889.age55:false, f8889.married_family:false, f8889.age55_line3:false, f8889.self_amount#1, f8889.age55_unmarried:false, f8889.family_amount#1, f8889.all_year:true, f8889.changed:false, f8889.dec_amount#0, f8889.last_month:false, f8889.use_last_month:false, f8889.line3_changed:left, f8889.line3_all_year#1, f8889.line3_last_month#1, f8889.line3_part_year#1, f8889.line3#0, f8889.line5:positive, f8889.family_dec_year#1, f8889.step1_total#1, f8889.step1:floor, f8889.share_raw#0, f8889.allocation_bad:false, f8889.self_all#1, f8889.self_dec_year#1, f8889.self_in_family#1, f8889.step4_total:positive, f8889.split:false, f8889.line6#1, f8889.line7_total#1, f8889.line7_applies:false, f8889.line7#1, f8889.line12:positive, f8889.excess:false, f8889.line13_figured:left, f8889.line13#1, f8889.has_dist:true, f8889.rollover_bad:false, f8889.line14b#0, f8889.line14c:positive, f8889.line15#0, f8889.line16_figured:positive, f8889.line16#0, f8889.has_taxable:true, f8889.line17a:true, f8889.subject_bad:false, f8889.subject#1, f8889.line17b#0",
+      "inputs": {
+        "$person": [
+          "sample"
+        ],
+        "$f8889@person[sample]": [
+          "hsa"
+        ],
+        "f1040.status": "single",
+        "person[sample].role": "taxpayer",
+        "person[sample].f8889[hsa].unsupported": false,
+        "person[sample].f8889[hsa].line14a": 100000,
+        "person[sample].f8889[hsa].rollover": 25000,
+        "person[sample].f8889[hsa].medical": 25000,
+        "person[sample].f8889[hsa].line17a": true,
+        "person[sample].f8889[hsa].subject_part": 10000,
+        "person[sample].f8889[hsa].line2": 0,
+        "person[sample].f8889[hsa].line9": 0,
+        "person[sample].f8889[hsa].months_eligible": 12,
+        "person[sample].f8889[hsa].months_family": 0,
+        "person[sample].f8889[hsa].dec_coverage": "self_only",
+        "person[sample].f8889[hsa].last_month": false,
+        "person[sample].f8889[hsa].age55": false,
+        "person[sample].f8889[hsa].allocation": "equal",
+        "person[sample].f8889[hsa].allocated": 0,
+        "household.married": false
+      },
+      "expect": {
+        "person[sample].f8889[hsa].line3": {
+          "kind": "money",
+          "cents": 430000
+        },
+        "person[sample].f8889[hsa].line4": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[sample].f8889[hsa].line5": {
+          "kind": "money",
+          "cents": 430000
+        },
+        "person[sample].f8889[hsa].line6": {
+          "kind": "money",
+          "cents": 430000
+        },
+        "person[sample].f8889[hsa].line7": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[sample].f8889[hsa].line8": {
+          "kind": "money",
+          "cents": 430000
+        },
+        "person[sample].f8889[hsa].line10": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[sample].f8889[hsa].line11": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[sample].f8889[hsa].line12": {
+          "kind": "money",
+          "cents": 430000
+        },
+        "person[sample].f8889[hsa].line13": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[sample].f8889[hsa].line14b": {
+          "kind": "money",
+          "cents": 25000
+        },
+        "person[sample].f8889[hsa].line14c": {
+          "kind": "money",
+          "cents": 75000
+        },
+        "person[sample].f8889[hsa].line15": {
+          "kind": "money",
+          "cents": 25000
+        },
+        "person[sample].f8889[hsa].line16": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "person[sample].f8889[hsa].line17b": {
+          "kind": "money",
+          "cents": 2000
+        }
+      }
+    },
+    {
+      "id": "classm.f8889.4",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "M",
+      "evidence_note": "Class M: claude-opus-5-5; prompt sha256 be9a795d70543bc1c0c3a99bd343ea50af3ee6ee443e9e80454c62c1356f9c02; pages i8889 1,2,3,4,5,6,7,8,9 (bfbdc8bbe0b8); f8889 1 (f1ae3589453f); i1040gi 14 (6024dc94dd1f); branches f8889.any:true, f8889.unsupported:false, f8889.mfs:false, f8889.bad_months:false, f8889.age55:false, f8889.married_family:false, f8889.age55_line3:false, f8889.self_amount#1, f8889.age55_unmarried:false, f8889.family_amount#1, f8889.all_year:true, f8889.changed:true, f8889.dec_amount#0, f8889.last_month:true, f8889.use_last_month:true, f8889.line3_changed:left, f8889.line3_all_year#0, f8889.line3_last_month#0, f8889.line3_part_year#0, f8889.line3#0, f8889.line5:positive, f8889.family_dec_year#1, f8889.step1_total#0, f8889.step1:floor, f8889.share_raw#0, f8889.allocation_bad:false, f8889.self_all#0, f8889.self_dec_year#1, f8889.self_in_family#0, f8889.step4_total:positive, f8889.split:false, f8889.line6#1, f8889.line7_total#0, f8889.line7_applies:false, f8889.line7#1, f8889.line12:positive, f8889.excess:false, f8889.line13_figured:left, f8889.line13#0, f8889.has_dist:false, f8889.rollover_bad:false, f8889.line14b#1, f8889.line14c:floor, f8889.line15#1, f8889.line16_figured:floor, f8889.line16#1, f8889.has_taxable:false, f8889.line17a:false, f8889.subject_bad:false, f8889.subject#0, f8889.line17b#1",
       "inputs": {
         "div.box2b": 0,
         "div.box2c": 0,
@@ -73911,82 +73419,6 @@
         "person[spouse].simple_employer": 10500
       },
       "expect": {
-        "person[taxpayer].f8889[hsa].any": {
-          "kind": "bool",
-          "value": true
-        },
-        "person[taxpayer].f8889[hsa].mfs": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[taxpayer].f8889[hsa].bad_months": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[taxpayer].f8889[hsa].age55_line3": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[taxpayer].f8889[hsa].self_amount": {
-          "kind": "money",
-          "cents": 430000
-        },
-        "person[taxpayer].f8889[hsa].age55_unmarried": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[taxpayer].f8889[hsa].family_amount": {
-          "kind": "money",
-          "cents": 855000
-        },
-        "person[taxpayer].f8889[hsa].family_extra": {
-          "kind": "money",
-          "cents": 425000
-        },
-        "person[taxpayer].f8889[hsa].chart_self": {
-          "kind": "money",
-          "cents": 5160000
-        },
-        "person[taxpayer].f8889[hsa].chart_family": {
-          "kind": "money",
-          "cents": 3825000
-        },
-        "person[taxpayer].f8889[hsa].chart_total": {
-          "kind": "money",
-          "cents": 8985000
-        },
-        "person[taxpayer].f8889[hsa].chart_limit": {
-          "kind": "money",
-          "cents": 748750
-        },
-        "person[taxpayer].f8889[hsa].all_year": {
-          "kind": "bool",
-          "value": true
-        },
-        "person[taxpayer].f8889[hsa].changed": {
-          "kind": "bool",
-          "value": true
-        },
-        "person[taxpayer].f8889[hsa].dec_amount": {
-          "kind": "money",
-          "cents": 430000
-        },
-        "person[taxpayer].f8889[hsa].use_last_month": {
-          "kind": "bool",
-          "value": true
-        },
-        "person[taxpayer].f8889[hsa].line3_changed": {
-          "kind": "money",
-          "cents": 748750
-        },
-        "person[taxpayer].f8889[hsa].line3_all_year": {
-          "kind": "money",
-          "cents": 748750
-        },
-        "person[taxpayer].f8889[hsa].line3_part_year": {
-          "kind": "money",
-          "cents": 748750
-        },
         "person[taxpayer].f8889[hsa].line3": {
           "kind": "money",
           "cents": 748750
@@ -73999,69 +73431,9 @@
           "kind": "money",
           "cents": 748750
         },
-        "person[taxpayer].f8889[hsa].family_year": {
-          "kind": "money",
-          "cents": 10260000
-        },
-        "person[taxpayer].f8889[hsa].family_dec_year": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].family_counted": {
-          "kind": "money",
-          "cents": 7695000
-        },
-        "person[taxpayer].f8889[hsa].allocation_bad": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[taxpayer].f8889[hsa].self_year": {
-          "kind": "money",
-          "cents": 5160000
-        },
-        "person[taxpayer].f8889[hsa].self_counted": {
-          "kind": "money",
-          "cents": 5160000
-        },
-        "person[taxpayer].f8889[hsa].self_all": {
-          "kind": "money",
-          "cents": 5160000
-        },
-        "person[taxpayer].f8889[hsa].self_family_months": {
-          "kind": "money",
-          "cents": 3870000
-        },
-        "person[taxpayer].f8889[hsa].self_dec_year": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].split": {
-          "kind": "bool",
-          "value": false
-        },
         "person[taxpayer].f8889[hsa].line6": {
           "kind": "money",
           "cents": 748750
-        },
-        "person[taxpayer].f8889[hsa].line7_year": {
-          "kind": "money",
-          "cents": 1200000
-        },
-        "person[taxpayer].f8889[hsa].line7_counted": {
-          "kind": "money",
-          "cents": 1200000
-        },
-        "person[taxpayer].f8889[hsa].line7_total": {
-          "kind": "money",
-          "cents": 1200000
-        },
-        "person[taxpayer].f8889[hsa].line7_worksheet": {
-          "kind": "money",
-          "cents": 100000
-        },
-        "person[taxpayer].f8889[hsa].line7_applies": {
-          "kind": "bool",
-          "value": false
         },
         "person[taxpayer].f8889[hsa].line7": {
           "kind": "money",
@@ -74083,25 +73455,9 @@
           "kind": "money",
           "cents": 748750
         },
-        "person[taxpayer].f8889[hsa].excess": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[taxpayer].f8889[hsa].line13_figured": {
-          "kind": "money",
-          "cents": 310900
-        },
         "person[taxpayer].f8889[hsa].line13": {
           "kind": "money",
           "cents": 310900
-        },
-        "person[taxpayer].f8889[hsa].has_dist": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[taxpayer].f8889[hsa].rollover_bad": {
-          "kind": "bool",
-          "value": false
         },
         "person[taxpayer].f8889[hsa].line14b": {
           "kind": "money",
@@ -74115,31 +73471,7 @@
           "kind": "money",
           "cents": 0
         },
-        "person[taxpayer].f8889[hsa].line16_figured": {
-          "kind": "money",
-          "cents": 0
-        },
         "person[taxpayer].f8889[hsa].line16": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].has_taxable": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[taxpayer].f8889[hsa].subject_bad": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[taxpayer].f8889[hsa].subject_excepted": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].subject": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].line17b_figured": {
           "kind": "money",
           "cents": 0
         },
@@ -74150,12 +73482,12 @@
       }
     },
     {
-      "id": "classm.f8889.4",
+      "id": "classm.f8889.5",
       "covers": [
         "f8889"
       ],
       "evidence": "M",
-      "evidence_note": "Class M: claude-opus-5-5; prompt sha256 6dc16a4a90fb6cdc45b0fa9289d16b9a902917971e643453b3cd2ac140dc63e8; pages i8889 1,2,3,4,5,6,7,8,9 (bfbdc8bbe0b8); f8889 1 (f1ae3589453f); i1040gi 14 (6024dc94dd1f); branches f8889.any:false, f8889.any:true, f8889.unsupported:false, f8889.mfs:false, f8889.bad_months:false, f8889.age55:false, f8889.married_family:false, f8889.age55_line3:false, f8889.self_amount#1, f8889.age55_unmarried:false, f8889.family_amount#1, f8889.all_year:false, f8889.all_year:true, f8889.changed:false, f8889.dec_amount#0, f8889.dec_amount#2, f8889.last_month:false, f8889.use_last_month:false, f8889.line3_changed:left, f8889.line3_all_year#1, f8889.line3_last_month#1, f8889.line3_part_year#1, f8889.line3#0, f8889.line3#1, f8889.line5:floor, f8889.line5:positive, f8889.family_dec_year#1, f8889.family_dec_year#2, f8889.step1_total#1, f8889.step1:floor, f8889.share_raw#1, f8889.allocation_bad:false, f8889.self_all#1, f8889.self_dec_year#1, f8889.self_dec_year#2, f8889.self_in_family#1, f8889.step4_total:floor, f8889.step4_total:positive, f8889.split:false, f8889.line6#1, f8889.line7_total#1, f8889.line7_applies:false, f8889.line7#1, f8889.line12:floor, f8889.line12:positive, f8889.excess:false, f8889.line13_figured:left, f8889.line13#0, f8889.line13#1, f8889.has_dist:false, f8889.rollover_bad:false, f8889.line14b#1, f8889.line14c:floor, f8889.line15#1, f8889.line16_figured:floor, f8889.line16#1, f8889.has_taxable:false, f8889.line17a:false, f8889.subject_bad:false, f8889.subject#0, f8889.line17b#1; dropped after ruling: person[spouse].f8889[hsa].share_raw; dropped after ruling: person[spouse].f8889[hsa].share; dropped after ruling: person[spouse].f8889[hsa].line6_split; dropped after ruling: person[taxpayer].f8889[hsa].share_raw; dropped after ruling: person[taxpayer].f8889[hsa].share; dropped after ruling: person[taxpayer].f8889[hsa].line6_split",
+      "evidence_note": "Class M: claude-opus-5-5; prompt sha256 9fd8899cb2e17234e903f610d1b671607b109fdb6652abfee2d098d768ea5f18; pages i8889 1,2,3,4,5,6,7,8,9 (bfbdc8bbe0b8); f8889 1 (f1ae3589453f); i1040gi 14 (6024dc94dd1f); branches f8889.any:false, f8889.unsupported:false, f8889.mfs:false, f8889.bad_months:false, f8889.age55:true, f8889.married_family:false, f8889.age55_line3:true, f8889.self_amount#0, f8889.age55_unmarried:true, f8889.family_amount#0, f8889.all_year:false, f8889.changed:false, f8889.dec_amount#2, f8889.last_month:false, f8889.use_last_month:false, f8889.line3_changed:left, f8889.line3_all_year#1, f8889.line3_last_month#1, f8889.line3_part_year#1, f8889.line3#1, f8889.line5:floor, f8889.family_dec_year#2, f8889.step1_total#1, f8889.step1:floor, f8889.share_raw#0, f8889.allocation_bad:false, f8889.self_all#1, f8889.self_dec_year#2, f8889.self_in_family#1, f8889.step4_total:floor, f8889.split:false, f8889.line6#1, f8889.line7_total#1, f8889.line7_applies:false, f8889.line7#1, f8889.line12:floor, f8889.excess:false, f8889.line13_figured:left, f8889.line13#1, f8889.has_dist:false, f8889.rollover_bad:false, f8889.line14b#1, f8889.line14c:floor, f8889.line15#1, f8889.line16_figured:floor, f8889.line16#1, f8889.has_taxable:false, f8889.line17a:false, f8889.subject_bad:false, f8889.subject#0, f8889.line17b#1",
       "inputs": {
         "div.box2b": 0,
         "div.box2c": 0,
@@ -74172,7 +73504,7 @@
         "eic.us_home": true,
         "eic.same_home": false,
         "eic.legally_separated": false,
-        "f1040.status": "mfj",
+        "f1040.status": "single",
         "f1040.tax_exempt_interest": 0,
         "f1040.line3a": 0,
         "f1040.line25b": 0,
@@ -74181,7 +73513,7 @@
         "f1040.line35a": 0,
         "f1040.line36": 0,
         "f2441.benefits": false,
-        "f2441.care": false,
+        "f2441.care": true,
         "f2441.student_disabled": false,
         "f2441.spouse_died": false,
         "f2441.nondependent": false,
@@ -74192,22 +73524,22 @@
         "f2441.plans_differ": false,
         "f2441.employer_care": false,
         "f2441.plan_max": 0,
-        "f4952.line1": 475200,
+        "f4952.line1": 692000,
         "f4952.carryover": false,
-        "f4952.unsupported": false,
+        "f4952.unsupported": true,
         "f4952.alternative_allocation": false,
-        "f4952.line4g": 0,
-        "f5695.part1_any": false,
+        "f4952.line4g": 302400,
+        "f5695.part1_any": true,
         "f5695.part2_any": false,
         "f5695.business_use": false,
         "f5695.construction_later": false,
         "f5695.line1": 0,
-        "f5695.line2": 0,
-        "f5695.line3": 0,
+        "f5695.line2": 294500,
+        "f5695.line3": 500000,
         "f5695.line4": 0,
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
-        "f5695.line7a": false,
+        "f5695.line7a": true,
         "f5695.line12": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
@@ -74225,7 +73557,7 @@
         "f5695.line20a_iv": 0,
         "f5695.line20b": 0,
         "f5695.qmid_windows": true,
-        "f5695.line21a": true,
+        "f5695.line21a": false,
         "f5695.line21b": true,
         "f5695.b_new_home": false,
         "f5695.line22a": 0,
@@ -74262,15 +73594,15 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "household.home_cost": true,
+        "household.home_cost": false,
         "household.unmarried": true,
-        "household.married": true,
+        "household.married": false,
         "household.community_property": false,
         "household.credit_disallowed": false,
         "ira.special": false,
         "ira.se_capital": false,
         "ira.deduct_less": false,
-        "qbi.dividends": 97400,
+        "qbi.dividends": 0,
         "qbi.unsupported": false,
         "qbi.carryforward": 0,
         "refund.received": 0,
@@ -74309,7 +73641,7 @@
         "s1.cod_unsupported": false,
         "s1.jury_to_employer": 0,
         "s179.line10": 0,
-        "s1a.tips": false,
+        "s1a.tips": true,
         "s1a.overtime": false,
         "s1a.carloan": false,
         "s2.amt": false,
@@ -74327,27 +73659,27 @@
         "sa.spouse_extra": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
-        "sa.line1": 0,
-        "sa.line5a": 3749000,
+        "sa.line1": 132300,
+        "sa.line5a": 0,
         "sa.line5b": 0,
         "sa.line5c": 0,
-        "sa.line8a": 3466300,
-        "sa.line11": 951300,
+        "sa.line8a": 1528100,
+        "sa.line11": 111400,
         "sa.gambling_losses": 0,
         "sb.unsupported": false,
-        "sb.ordinary_dividends": 4870200,
+        "sb.ordinary_dividends": 0,
         "sb.line7a": false,
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
-        "scope.schedule1": false,
+        "scope.schedule1": true,
         "scope.credits": false,
-        "scope.other_income": false,
+        "scope.other_income": true,
         "scope.other_line16": false,
         "sd.other_forms": false,
-        "sd.carryover": false,
+        "sd.carryover": true,
         "sd.distributions": 0,
-        "sli.interest": 126300,
+        "sli.interest": 0,
         "sli.claimed": false,
         "ssb.benefits": 0,
         "ssb.pub915": false,
@@ -74371,11 +73703,11 @@
         "person[taxpayer].se_screen": false,
         "person[taxpayer].plan": "none",
         "person[taxpayer].plan_screen": false,
-        "person[taxpayer].sep_rate": 25,
+        "person[taxpayer].sep_rate": 24,
         "person[taxpayer].sep_contrib": 0,
         "person[taxpayer].simple_deferral": 0,
-        "person[taxpayer].simple_age": "age50",
-        "person[taxpayer].simple_kind": "nonelective",
+        "person[taxpayer].simple_age": "under50",
+        "person[taxpayer].simple_kind": "match",
         "person[taxpayer].simple_employer": 0,
         "person[taxpayer].sav_born": true,
         "person[taxpayer].sav_student": false,
@@ -74399,145 +73731,38 @@
         "person[taxpayer].f8889[hsa].unsupported": false,
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
-        "person[taxpayer].f8889[hsa].age55": false,
+        "person[taxpayer].f8889[hsa].age55": true,
         "person[taxpayer].f8889[hsa].dec_coverage": "none",
         "person[taxpayer].f8889[hsa].last_month": false,
-        "person[taxpayer].f8889[hsa].allocation": "agreed",
-        "person[taxpayer].f8889[hsa].allocated": 273800,
+        "person[taxpayer].f8889[hsa].allocation": "equal",
+        "person[taxpayer].f8889[hsa].allocated": 0,
         "person[taxpayer].f8889[hsa].line14a": 0,
         "person[taxpayer].f8889[hsa].rollover": 0,
         "person[taxpayer].f8889[hsa].medical": 0,
         "person[taxpayer].f8889[hsa].line17a": false,
         "person[taxpayer].f8889[hsa].subject_part": 0,
         "$person": [
-          "taxpayer",
-          "spouse"
+          "taxpayer"
         ],
         "$f8889@person[taxpayer]": [
           "hsa"
         ],
-        "$sc@person[taxpayer]": [
-          "biz_a"
-        ],
-        "person[taxpayer].sc[biz_a].statutory": false,
-        "person[taxpayer].sc[biz_a].passive": true,
-        "person[taxpayer].sc[biz_a].spouse_owned": false,
-        "person[taxpayer].sc[biz_a].method_other": false,
-        "person[taxpayer].sc[biz_a].special": false,
-        "person[taxpayer].sc[biz_a].at_risk": true,
-        "person[taxpayer].sc[biz_a].inventory_other": false,
-        "person[taxpayer].sc[biz_a].tips_ot": false,
-        "person[taxpayer].sc[biz_a].line1": 0,
-        "person[taxpayer].sc[biz_a].line2": 0,
-        "person[taxpayer].sc[biz_a].line6": 0,
-        "person[taxpayer].sc[biz_a].line35": 0,
-        "person[taxpayer].sc[biz_a].line36": 0,
-        "person[taxpayer].sc[biz_a].line37": 0,
-        "person[taxpayer].sc[biz_a].line38": 0,
-        "person[taxpayer].sc[biz_a].line39": 0,
-        "person[taxpayer].sc[biz_a].line41": 0,
-        "person[taxpayer].sc[biz_a].ho_uses": false,
-        "person[taxpayer].sc[biz_a].hi_uses": false,
-        "person[taxpayer].sc[biz_a].line8": 0,
-        "person[taxpayer].sc[biz_a].line10": 0,
-        "person[taxpayer].sc[biz_a].line11": 0,
-        "person[taxpayer].sc[biz_a].line14": 0,
-        "person[taxpayer].sc[biz_a].line15": 0,
-        "person[taxpayer].sc[biz_a].line16a": 0,
-        "person[taxpayer].sc[biz_a].line16b": 0,
-        "person[taxpayer].sc[biz_a].line17": 0,
-        "person[taxpayer].sc[biz_a].line18": 0,
-        "person[taxpayer].sc[biz_a].line19": 1951500,
-        "person[taxpayer].sc[biz_a].rent_equipment": 0,
-        "person[taxpayer].sc[biz_a].line20b": 71700,
-        "person[taxpayer].sc[biz_a].line21": 0,
-        "person[taxpayer].sc[biz_a].line22": 0,
-        "person[taxpayer].sc[biz_a].line23": 0,
-        "person[taxpayer].sc[biz_a].line24a": 0,
-        "person[taxpayer].sc[biz_a].meals_50": 0,
-        "person[taxpayer].sc[biz_a].meals_80": 0,
-        "person[taxpayer].sc[biz_a].meals_100": 2314500,
-        "person[taxpayer].sc[biz_a].line25": 0,
-        "person[taxpayer].sc[biz_a].line26": 0,
-        "person[taxpayer].sc[biz_a].line48": 0,
-        "person[taxpayer].sc[biz_a].ho_other": false,
-        "person[taxpayer].sc[biz_a].ho_sqft": 0,
-        "person[taxpayer].sc[biz_a].ho_home_sqft": 0,
-        "person[taxpayer].sc[biz_a].hi_screen": false,
-        "person[taxpayer].sc[biz_a].f7206_line1": 0,
-        "$ltc@person[taxpayer].sc[biz_a]": [],
-        "$scveh@person[taxpayer].sc[biz_a]": [
-          "car_1"
-        ],
-        "person[taxpayer].sc[biz_a].scveh[car_1].method": "actual",
-        "person[taxpayer].sc[biz_a].scveh[car_1].owned": true,
-        "person[taxpayer].sc[biz_a].scveh[car_1].placed_date": 2019,
-        "person[taxpayer].sc[biz_a].scveh[car_1].miles_business": 14636,
-        "person[taxpayer].sc[biz_a].scveh[car_1].miles_commuting": 0,
-        "person[taxpayer].sc[biz_a].scveh[car_1].miles_other": 3173,
-        "person[taxpayer].sc[biz_a].scveh[car_1].parking": 0,
-        "person[taxpayer].sc[biz_a].scveh[car_1].smr_ok": true,
-        "person[taxpayer].sc[biz_a].scveh[car_1].operating": 0,
-        "person[taxpayer].sc[biz_a].scveh[car_1].lease": 614900,
-        "person[taxpayer].sc[biz_a].scveh[car_1].placed": "y2019",
-        "person[taxpayer].sc[biz_a].scveh[car_1].screen": false,
-        "person[taxpayer].sc[biz_a].scveh[car_1].cost": 2145600,
-        "person[taxpayer].sc[biz_a].scveh[car_1].passenger": false,
-        "person[taxpayer].sc[biz_a].scveh[car_1].suv": false,
-        "person[taxpayer].sc[biz_a].scveh[car_1].s179_elect": 0,
-        "person[taxpayer].sc[biz_a].scveh[car_1].after_jan19": true,
-        "person[taxpayer].sc[biz_a].scveh[car_1].bonus_choice": "none",
-        "person[taxpayer].sc[biz_a].scveh[car_1].bonus_same": true,
-        "person[taxpayer].sc[biz_a].scveh[car_1].prior_179": 0,
-        "person[taxpayer].sc[biz_a].scveh[car_1].quarter": "q3",
-        "person[taxpayer].sc[biz_a].scveh[car_1].prior_conv": "mq3",
-        "$asset@person[taxpayer].sc[biz_a]": [
-          "item_1",
-          "item_2"
-        ],
-        "person[taxpayer].sc[biz_a].asset[item_1].class": "c26_1",
-        "person[taxpayer].sc[biz_a].asset[item_1].screen": false,
-        "person[taxpayer].sc[biz_a].asset[item_1].placed": "y2025",
-        "person[taxpayer].sc[biz_a].asset[item_1].cost": 3719600,
-        "person[taxpayer].sc[biz_a].asset[item_1].pct": 100,
-        "person[taxpayer].sc[biz_a].asset[item_1].listed": false,
-        "person[taxpayer].sc[biz_a].asset[item_1].quarter": "q1",
-        "person[taxpayer].sc[biz_a].asset[item_1].s179": 0,
-        "person[taxpayer].sc[biz_a].asset[item_1].after_jan19": true,
-        "person[taxpayer].sc[biz_a].asset[item_1].bonus_choice": "full",
-        "person[taxpayer].sc[biz_a].asset[item_1].bonus_same": true,
-        "person[taxpayer].sc[biz_a].asset[item_1].prior_conv": "mq3",
-        "person[taxpayer].sc[biz_a].asset[item_1].prior_179": 0,
-        "person[taxpayer].sc[biz_a].asset[item_1].prior_bonus": 0,
-        "person[taxpayer].sc[biz_a].asset[item_2].class": "c33_4",
-        "person[taxpayer].sc[biz_a].asset[item_2].screen": false,
-        "person[taxpayer].sc[biz_a].asset[item_2].placed": "y2009",
-        "person[taxpayer].sc[biz_a].asset[item_2].cost": 2208500,
-        "person[taxpayer].sc[biz_a].asset[item_2].pct": 100,
-        "person[taxpayer].sc[biz_a].asset[item_2].listed": false,
-        "person[taxpayer].sc[biz_a].asset[item_2].quarter": "q4",
-        "person[taxpayer].sc[biz_a].asset[item_2].s179": 0,
-        "person[taxpayer].sc[biz_a].asset[item_2].after_jan19": true,
-        "person[taxpayer].sc[biz_a].asset[item_2].bonus_choice": "none",
-        "person[taxpayer].sc[biz_a].asset[item_2].bonus_same": true,
-        "person[taxpayer].sc[biz_a].asset[item_2].prior_conv": "mq1",
-        "person[taxpayer].sc[biz_a].asset[item_2].prior_179": 0,
-        "person[taxpayer].sc[biz_a].asset[item_2].prior_bonus": 0,
+        "$sc@person[taxpayer]": [],
         "$w2@person[taxpayer]": [
           "emp_a"
         ],
-        "person[taxpayer].w2[emp_a].box1": 1025100,
-        "person[taxpayer].w2[emp_a].box2": 297300,
-        "person[taxpayer].w2[emp_a].box3": 1025100,
-        "person[taxpayer].w2[emp_a].box7": 857300,
-        "person[taxpayer].w2[emp_a].box4": 116700,
-        "person[taxpayer].w2[emp_a].box5": 1882400,
-        "person[taxpayer].w2[emp_a].box6": 27300,
+        "person[taxpayer].w2[emp_a].box1": 2298600,
+        "person[taxpayer].w2[emp_a].box2": 459700,
+        "person[taxpayer].w2[emp_a].box3": 2298600,
+        "person[taxpayer].w2[emp_a].box7": 0,
+        "person[taxpayer].w2[emp_a].box4": 322400,
+        "person[taxpayer].w2[emp_a].box5": 2298600,
+        "person[taxpayer].w2[emp_a].box6": 33300,
         "person[taxpayer].w2[emp_a].box10": 0,
         "person[taxpayer].w2[emp_a].box10_wages": 0,
-        "person[taxpayer].w2[emp_a].box12_any": false,
+        "person[taxpayer].w2[emp_a].box12_any": true,
         "person[taxpayer].w2[emp_a].box12_userra": false,
-        "person[taxpayer].w2[emp_a].box12_d": 0,
+        "person[taxpayer].w2[emp_a].box12_d": 1500000,
         "person[taxpayer].w2[emp_a].box12_e": 0,
         "person[taxpayer].w2[emp_a].box12_f": 0,
         "person[taxpayer].w2[emp_a].box12_g": 0,
@@ -74548,23 +73773,14 @@
         "person[taxpayer].w2[emp_a].box12_ee": 0,
         "person[taxpayer].w2[emp_a].g_governmental": false,
         "person[taxpayer].w2[emp_a].g_elective": 0,
-        "$interest": [
-          "bank_a"
-        ],
-        "interest[bank_a].amount": 4311500,
-        "interest[bank_a].penalty": 0,
+        "$interest": [],
         "$sales": [],
-        "$gift": [
-          "item_a"
-        ],
-        "gift[item_a].deduction": 1603500,
-        "gift[item_a].public_securities": false,
-        "gift[item_a].special": false,
+        "$gift": [],
         "$dependent": [
           "dep_a"
         ],
-        "dependent[dep_a].relationship": "in_law",
-        "dependent[dep_a].age": 15,
+        "dependent[dep_a].relationship": "other",
+        "dependent[dep_a].age": 12,
         "dependent[dep_a].younger": true,
         "dependent[dep_a].student": false,
         "dependent[dep_a].disabled": false,
@@ -74578,15 +73794,15 @@
         "dependent[dep_a].work_ssn": true,
         "dependent[dep_a].gross_income": 0,
         "dependent[dep_a].supported": true,
-        "dependent[dep_a].other_claimant": false,
+        "dependent[dep_a].other_claimant": true,
         "dependent[dep_a].divorced_rule": false,
         "dependent[dep_a].multiple_support": false,
         "dependent[dep_a].parent_home_paid": false,
-        "dependent[dep_a].us_half": false,
+        "dependent[dep_a].us_half": true,
         "dependent[dep_a].eic_ssn": true,
         "dependent[dep_a].dc_under13": true,
         "dependent[dep_a].dc_incapable": false,
-        "dependent[dep_a].dc_paid": 0,
+        "dependent[dep_a].dc_paid": 444000,
         "$dcprov": [
           "prov_a"
         ],
@@ -74596,476 +73812,19 @@
         "dcprov[prov_a].paid": 0,
         "dcprov[prov_a].related": false,
         "$retirement": [],
-        "person[spouse].role": "spouse",
-        "person[spouse].rrta": false,
-        "person[spouse].age65": false,
-        "person[spouse].blind": false,
-        "person[spouse].tin": true,
-        "person[spouse].work_ssn": true,
-        "person[spouse].eic_ssn": true,
-        "person[spouse].under16": false,
-        "person[spouse].itin_applied": false,
-        "person[spouse].born_before_2001": true,
-        "person[spouse].born_after_1960": true,
-        "person[spouse].educator_expenses": 0,
-        "person[spouse].eligible_educator": true,
-        "person[spouse].sav_born": true,
-        "person[spouse].sav_student": false,
-        "person[spouse].sav_claimed": false,
-        "person[spouse].sav_trad": false,
-        "person[spouse].sav_able": false,
-        "person[spouse].sav_roth": 0,
-        "person[spouse].sav_excess": false,
-        "person[spouse].sav_voluntary": 0,
-        "person[spouse].sav_prior_joint": 0,
-        "person[spouse].sav_prior_other": 0,
-        "person[spouse].ira_trad": 0,
-        "person[spouse].ira_excess": false,
-        "person[spouse].ira_age50": false,
-        "person[spouse].ira_work_plan": false,
-        "person[spouse].ira_basis": 0,
-        "person[spouse].ira_basis_adjusted": false,
-        "person[spouse].ira_dist": false,
-        "$w2@person[spouse]": [
-          "emp_a",
-          "emp_b"
+        "$tipjob@person[taxpayer]": [
+          "tip_1",
+          "tip_2",
+          "tip_3"
         ],
-        "person[spouse].w2[emp_a].box1": 0,
-        "person[spouse].w2[emp_a].box2": 0,
-        "person[spouse].w2[emp_a].box3": 0,
-        "person[spouse].w2[emp_a].box7": 0,
-        "person[spouse].w2[emp_a].box4": 0,
-        "person[spouse].w2[emp_a].box5": 0,
-        "person[spouse].w2[emp_a].box6": 0,
-        "person[spouse].w2[emp_a].box10": 0,
-        "person[spouse].w2[emp_a].box10_wages": 0,
-        "person[spouse].w2[emp_a].box12_any": false,
-        "person[spouse].w2[emp_a].box12_userra": false,
-        "person[spouse].w2[emp_a].box12_d": 0,
-        "person[spouse].w2[emp_a].box12_e": 0,
-        "person[spouse].w2[emp_a].box12_f": 0,
-        "person[spouse].w2[emp_a].box12_g": 0,
-        "person[spouse].w2[emp_a].box12_h": 0,
-        "person[spouse].w2[emp_a].box12_s": 0,
-        "person[spouse].w2[emp_a].box12_aa": 0,
-        "person[spouse].w2[emp_a].box12_bb": 0,
-        "person[spouse].w2[emp_a].box12_ee": 0,
-        "person[spouse].w2[emp_a].g_governmental": false,
-        "person[spouse].w2[emp_a].g_elective": 0,
-        "person[spouse].w2[emp_b].box1": 0,
-        "person[spouse].w2[emp_b].box2": 0,
-        "person[spouse].w2[emp_b].box3": 0,
-        "person[spouse].w2[emp_b].box7": 0,
-        "person[spouse].w2[emp_b].box4": 0,
-        "person[spouse].w2[emp_b].box5": 0,
-        "person[spouse].w2[emp_b].box6": 0,
-        "person[spouse].w2[emp_b].box10": 0,
-        "person[spouse].w2[emp_b].box10_wages": 0,
-        "person[spouse].w2[emp_b].box12_any": false,
-        "person[spouse].w2[emp_b].box12_userra": false,
-        "person[spouse].w2[emp_b].box12_d": 0,
-        "person[spouse].w2[emp_b].box12_e": 0,
-        "person[spouse].w2[emp_b].box12_f": 0,
-        "person[spouse].w2[emp_b].box12_g": 0,
-        "person[spouse].w2[emp_b].box12_h": 0,
-        "person[spouse].w2[emp_b].box12_s": 0,
-        "person[spouse].w2[emp_b].box12_aa": 0,
-        "person[spouse].w2[emp_b].box12_bb": 0,
-        "person[spouse].w2[emp_b].box12_ee": 0,
-        "person[spouse].w2[emp_b].g_governmental": false,
-        "person[spouse].w2[emp_b].g_elective": 0,
-        "$tipjob@person[spouse]": [],
-        "$otjob@person[spouse]": [],
-        "$f8889@person[spouse]": [
-          "hsa"
-        ],
-        "$sc@person[spouse]": [],
-        "person[spouse].se_screen": false,
-        "person[spouse].plan": "none",
-        "person[spouse].plan_screen": false,
-        "person[spouse].sep_rate": 1,
-        "person[spouse].sep_contrib": 0,
-        "person[spouse].simple_deferral": 0,
-        "person[spouse].simple_age": "under50",
-        "person[spouse].simple_kind": "match",
-        "person[spouse].simple_employer": 0,
-        "person[spouse].f8889[hsa].line2": 88600,
-        "person[spouse].f8889[hsa].line9": 0,
-        "person[spouse].f8889[hsa].unsupported": false,
-        "person[spouse].f8889[hsa].months_eligible": 12,
-        "person[spouse].f8889[hsa].months_family": 0,
-        "person[spouse].f8889[hsa].age55": false,
-        "person[spouse].f8889[hsa].last_month": false,
-        "person[spouse].f8889[hsa].dec_coverage": "self_only",
-        "person[spouse].f8889[hsa].allocation": "agreed",
-        "person[spouse].f8889[hsa].allocated": 581200,
-        "person[spouse].f8889[hsa].line14a": 0,
-        "person[spouse].f8889[hsa].rollover": 0,
-        "person[spouse].f8889[hsa].medical": 0,
-        "person[spouse].f8889[hsa].line17a": false,
-        "person[spouse].f8889[hsa].subject_part": 0
+        "person[taxpayer].tipjob[tip_1].qualified": true,
+        "person[taxpayer].tipjob[tip_1].amount": 324600,
+        "person[taxpayer].tipjob[tip_2].qualified": true,
+        "person[taxpayer].tipjob[tip_2].amount": 0,
+        "person[taxpayer].tipjob[tip_3].qualified": false,
+        "person[taxpayer].tipjob[tip_3].amount": 410400
       },
       "expect": {
-        "person[spouse].f8889[hsa].any": {
-          "kind": "bool",
-          "value": true
-        },
-        "person[spouse].f8889[hsa].mfs": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[spouse].f8889[hsa].bad_months": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[spouse].f8889[hsa].married_family": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[spouse].f8889[hsa].age55_line3": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[spouse].f8889[hsa].self_amount": {
-          "kind": "money",
-          "cents": 430000
-        },
-        "person[spouse].f8889[hsa].age55_unmarried": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[spouse].f8889[hsa].family_amount": {
-          "kind": "money",
-          "cents": 855000
-        },
-        "person[spouse].f8889[hsa].family_extra": {
-          "kind": "money",
-          "cents": 425000
-        },
-        "person[spouse].f8889[hsa].chart_self": {
-          "kind": "money",
-          "cents": 5160000
-        },
-        "person[spouse].f8889[hsa].chart_family": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[spouse].f8889[hsa].chart_total": {
-          "kind": "money",
-          "cents": 5160000
-        },
-        "person[spouse].f8889[hsa].chart_limit": {
-          "kind": "money",
-          "cents": 430000
-        },
-        "person[spouse].f8889[hsa].all_year": {
-          "kind": "bool",
-          "value": true
-        },
-        "person[spouse].f8889[hsa].changed": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[spouse].f8889[hsa].dec_amount": {
-          "kind": "money",
-          "cents": 430000
-        },
-        "person[spouse].f8889[hsa].use_last_month": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[spouse].f8889[hsa].line3_changed": {
-          "kind": "money",
-          "cents": 430000
-        },
-        "person[spouse].f8889[hsa].line3_all_year": {
-          "kind": "money",
-          "cents": 430000
-        },
-        "person[spouse].f8889[hsa].line3_last_month": {
-          "kind": "money",
-          "cents": 430000
-        },
-        "person[spouse].f8889[hsa].line3_part_year": {
-          "kind": "money",
-          "cents": 430000
-        },
-        "person[spouse].f8889[hsa].line3": {
-          "kind": "money",
-          "cents": 430000
-        },
-        "person[spouse].f8889[hsa].line4": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[spouse].f8889[hsa].line5": {
-          "kind": "money",
-          "cents": 430000
-        },
-        "person[spouse].f8889[hsa].family_year": {
-          "kind": "money",
-          "cents": 10260000
-        },
-        "person[spouse].f8889[hsa].family_dec_year": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[spouse].f8889[hsa].family_counted": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[spouse].f8889[hsa].step1_total": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[spouse].f8889[hsa].step1_line3": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[spouse].f8889[hsa].step1": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[spouse].f8889[hsa].step1_x2": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[spouse].f8889[hsa].share_equal": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[spouse].f8889[hsa].allocation_bad": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[spouse].f8889[hsa].self_year": {
-          "kind": "money",
-          "cents": 5160000
-        },
-        "person[spouse].f8889[hsa].self_counted": {
-          "kind": "money",
-          "cents": 5160000
-        },
-        "person[spouse].f8889[hsa].self_all": {
-          "kind": "money",
-          "cents": 5160000
-        },
-        "person[spouse].f8889[hsa].self_family_months": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[spouse].f8889[hsa].self_dec_year": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[spouse].f8889[hsa].self_in_family": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[spouse].f8889[hsa].step4_total": {
-          "kind": "money",
-          "cents": 5160000
-        },
-        "person[spouse].f8889[hsa].step4": {
-          "kind": "money",
-          "cents": 430000
-        },
-        "person[spouse].f8889[hsa].split": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[spouse].f8889[hsa].line6": {
-          "kind": "money",
-          "cents": 430000
-        },
-        "person[spouse].f8889[hsa].line7_year": {
-          "kind": "money",
-          "cents": 1200000
-        },
-        "person[spouse].f8889[hsa].line7_counted": {
-          "kind": "money",
-          "cents": 1200000
-        },
-        "person[spouse].f8889[hsa].line7_total": {
-          "kind": "money",
-          "cents": 1200000
-        },
-        "person[spouse].f8889[hsa].line7_worksheet": {
-          "kind": "money",
-          "cents": 100000
-        },
-        "person[spouse].f8889[hsa].line7_applies": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[spouse].f8889[hsa].line7": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[spouse].f8889[hsa].line8": {
-          "kind": "money",
-          "cents": 430000
-        },
-        "person[spouse].f8889[hsa].line10": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[spouse].f8889[hsa].line11": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[spouse].f8889[hsa].line12": {
-          "kind": "money",
-          "cents": 430000
-        },
-        "person[spouse].f8889[hsa].excess": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[spouse].f8889[hsa].line13_figured": {
-          "kind": "money",
-          "cents": 88600
-        },
-        "person[spouse].f8889[hsa].line13": {
-          "kind": "money",
-          "cents": 88600
-        },
-        "person[spouse].f8889[hsa].has_dist": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[spouse].f8889[hsa].rollover_bad": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[spouse].f8889[hsa].line14b": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[spouse].f8889[hsa].line14c": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[spouse].f8889[hsa].line15": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[spouse].f8889[hsa].line16_figured": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[spouse].f8889[hsa].line16": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[spouse].f8889[hsa].has_taxable": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[spouse].f8889[hsa].subject_bad": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[spouse].f8889[hsa].subject_excepted": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[spouse].f8889[hsa].subject": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[spouse].f8889[hsa].line17b_figured": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[spouse].f8889[hsa].line17b": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].any": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[taxpayer].f8889[hsa].mfs": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[taxpayer].f8889[hsa].bad_months": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[taxpayer].f8889[hsa].married_family": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[taxpayer].f8889[hsa].age55_line3": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[taxpayer].f8889[hsa].self_amount": {
-          "kind": "money",
-          "cents": 430000
-        },
-        "person[taxpayer].f8889[hsa].age55_unmarried": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[taxpayer].f8889[hsa].family_amount": {
-          "kind": "money",
-          "cents": 855000
-        },
-        "person[taxpayer].f8889[hsa].family_extra": {
-          "kind": "money",
-          "cents": 425000
-        },
-        "person[taxpayer].f8889[hsa].chart_self": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].chart_family": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].chart_total": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].chart_limit": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].all_year": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[taxpayer].f8889[hsa].changed": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[taxpayer].f8889[hsa].dec_amount": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].use_last_month": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[taxpayer].f8889[hsa].line3_changed": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].line3_all_year": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].line3_last_month": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].line3_part_year": {
-          "kind": "money",
-          "cents": 0
-        },
         "person[taxpayer].f8889[hsa].line3": {
           "kind": "money",
           "cents": 0
@@ -75078,101 +73837,9 @@
           "kind": "money",
           "cents": 0
         },
-        "person[taxpayer].f8889[hsa].family_year": {
-          "kind": "money",
-          "cents": 10260000
-        },
-        "person[taxpayer].f8889[hsa].family_dec_year": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].family_counted": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].step1_total": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].step1_line3": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].step1": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].step1_x2": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].share_equal": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].allocation_bad": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[taxpayer].f8889[hsa].self_year": {
-          "kind": "money",
-          "cents": 5160000
-        },
-        "person[taxpayer].f8889[hsa].self_counted": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].self_all": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].self_family_months": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].self_dec_year": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].self_in_family": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].step4_total": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].step4": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].split": {
-          "kind": "bool",
-          "value": false
-        },
         "person[taxpayer].f8889[hsa].line6": {
           "kind": "money",
           "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].line7_year": {
-          "kind": "money",
-          "cents": 1200000
-        },
-        "person[taxpayer].f8889[hsa].line7_counted": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].line7_total": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].line7_worksheet": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].line7_applies": {
-          "kind": "bool",
-          "value": false
         },
         "person[taxpayer].f8889[hsa].line7": {
           "kind": "money",
@@ -75194,25 +73861,9 @@
           "kind": "money",
           "cents": 0
         },
-        "person[taxpayer].f8889[hsa].excess": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[taxpayer].f8889[hsa].line13_figured": {
-          "kind": "money",
-          "cents": 0
-        },
         "person[taxpayer].f8889[hsa].line13": {
           "kind": "money",
           "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].has_dist": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[taxpayer].f8889[hsa].rollover_bad": {
-          "kind": "bool",
-          "value": false
         },
         "person[taxpayer].f8889[hsa].line14b": {
           "kind": "money",
@@ -75226,31 +73877,7 @@
           "kind": "money",
           "cents": 0
         },
-        "person[taxpayer].f8889[hsa].line16_figured": {
-          "kind": "money",
-          "cents": 0
-        },
         "person[taxpayer].f8889[hsa].line16": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].has_taxable": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[taxpayer].f8889[hsa].subject_bad": {
-          "kind": "bool",
-          "value": false
-        },
-        "person[taxpayer].f8889[hsa].subject_excepted": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].subject": {
-          "kind": "money",
-          "cents": 0
-        },
-        "person[taxpayer].f8889[hsa].line17b_figured": {
           "kind": "money",
           "cents": 0
         },

@@ -1,0 +1,70 @@
+{
+ "kind": "classm",
+ "form": "f8889",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "case": "classm.f8889.2",
+   "printed": "person[spouse].f8889[hsa].line12",
+   "project": "$3,956.25",
+   "model": "$1,844.00",
+   "ruling": "Ruling: model error; i8889 p.7 line6 Steps1-4 require equal division when allocation=equal. The nine family months give $8550*9/12=$6412.50, whose equal share is $3206.25. The spouse has no self-only months and a $750 catchup, giving line8/12 $3956.25 and deduction min($3637,$3956.25)=$3637. The taxpayer adds $4300*3/12=$1075 of self-only limit, giving line6/8/12 $4281.25. The reply instead uses the inactive agreed-allocation amounts $1094/$7456 and carries that mistake through the named lines. Drop the seven wrong numeric assertions; retain the actual reply and work. No model value is repaired into an agreement.",
+   "drop": true,
+   "context": "70b9db7be17d12874111770ed175ad8d4a5fab70b5dda69994602fba9fc6e69e"
+  },
+  {
+   "case": "classm.f8889.2",
+   "printed": "person[spouse].f8889[hsa].line13",
+   "project": "$3,637.00",
+   "model": "$1,844.00",
+   "ruling": "Ruling: model error; i8889 p.7 line6 Steps1-4 require equal division when allocation=equal. The nine family months give $8550*9/12=$6412.50, whose equal share is $3206.25. The spouse has no self-only months and a $750 catchup, giving line8/12 $3956.25 and deduction min($3637,$3956.25)=$3637. The taxpayer adds $4300*3/12=$1075 of self-only limit, giving line6/8/12 $4281.25. The reply instead uses the inactive agreed-allocation amounts $1094/$7456 and carries that mistake through the named lines. Drop the seven wrong numeric assertions; retain the actual reply and work. No model value is repaired into an agreement.",
+   "drop": true,
+   "context": "70b9db7be17d12874111770ed175ad8d4a5fab70b5dda69994602fba9fc6e69e"
+  },
+  {
+   "case": "classm.f8889.2",
+   "printed": "person[spouse].f8889[hsa].line6",
+   "project": "$3,206.25",
+   "model": "$1,094.00",
+   "ruling": "Ruling: model error; i8889 p.7 line6 Steps1-4 require equal division when allocation=equal. The nine family months give $8550*9/12=$6412.50, whose equal share is $3206.25. The spouse has no self-only months and a $750 catchup, giving line8/12 $3956.25 and deduction min($3637,$3956.25)=$3637. The taxpayer adds $4300*3/12=$1075 of self-only limit, giving line6/8/12 $4281.25. The reply instead uses the inactive agreed-allocation amounts $1094/$7456 and carries that mistake through the named lines. Drop the seven wrong numeric assertions; retain the actual reply and work. No model value is repaired into an agreement.",
+   "drop": true,
+   "context": "70b9db7be17d12874111770ed175ad8d4a5fab70b5dda69994602fba9fc6e69e"
+  },
+  {
+   "case": "classm.f8889.2",
+   "printed": "person[spouse].f8889[hsa].line8",
+   "project": "$3,956.25",
+   "model": "$1,844.00",
+   "ruling": "Ruling: model error; i8889 p.7 line6 Steps1-4 require equal division when allocation=equal. The nine family months give $8550*9/12=$6412.50, whose equal share is $3206.25. The spouse has no self-only months and a $750 catchup, giving line8/12 $3956.25 and deduction min($3637,$3956.25)=$3637. The taxpayer adds $4300*3/12=$1075 of self-only limit, giving line6/8/12 $4281.25. The reply instead uses the inactive agreed-allocation amounts $1094/$7456 and carries that mistake through the named lines. Drop the seven wrong numeric assertions; retain the actual reply and work. No model value is repaired into an agreement.",
+   "drop": true,
+   "context": "70b9db7be17d12874111770ed175ad8d4a5fab70b5dda69994602fba9fc6e69e"
+  },
+  {
+   "case": "classm.f8889.2",
+   "printed": "person[taxpayer].f8889[hsa].line12",
+   "project": "$4,281.25",
+   "model": "$7,456.00",
+   "ruling": "Ruling: model error; i8889 p.7 line6 Steps1-4 require equal division when allocation=equal. The nine family months give $8550*9/12=$6412.50, whose equal share is $3206.25. The spouse has no self-only months and a $750 catchup, giving line8/12 $3956.25 and deduction min($3637,$3956.25)=$3637. The taxpayer adds $4300*3/12=$1075 of self-only limit, giving line6/8/12 $4281.25. The reply instead uses the inactive agreed-allocation amounts $1094/$7456 and carries that mistake through the named lines. Drop the seven wrong numeric assertions; retain the actual reply and work. No model value is repaired into an agreement.",
+   "drop": true,
+   "context": "70b9db7be17d12874111770ed175ad8d4a5fab70b5dda69994602fba9fc6e69e"
+  },
+  {
+   "case": "classm.f8889.2",
+   "printed": "person[taxpayer].f8889[hsa].line6",
+   "project": "$4,281.25",
+   "model": "$7,456.00",
+   "ruling": "Ruling: model error; i8889 p.7 line6 Steps1-4 require equal division when allocation=equal. The nine family months give $8550*9/12=$6412.50, whose equal share is $3206.25. The spouse has no self-only months and a $750 catchup, giving line8/12 $3956.25 and deduction min($3637,$3956.25)=$3637. The taxpayer adds $4300*3/12=$1075 of self-only limit, giving line6/8/12 $4281.25. The reply instead uses the inactive agreed-allocation amounts $1094/$7456 and carries that mistake through the named lines. Drop the seven wrong numeric assertions; retain the actual reply and work. No model value is repaired into an agreement.",
+   "drop": true,
+   "context": "70b9db7be17d12874111770ed175ad8d4a5fab70b5dda69994602fba9fc6e69e"
+  },
+  {
+   "case": "classm.f8889.2",
+   "printed": "person[taxpayer].f8889[hsa].line8",
+   "project": "$4,281.25",
+   "model": "$7,456.00",
+   "ruling": "Ruling: model error; i8889 p.7 line6 Steps1-4 require equal division when allocation=equal. The nine family months give $8550*9/12=$6412.50, whose equal share is $3206.25. The spouse has no self-only months and a $750 catchup, giving line8/12 $3956.25 and deduction min($3637,$3956.25)=$3637. The taxpayer adds $4300*3/12=$1075 of self-only limit, giving line6/8/12 $4281.25. The reply instead uses the inactive agreed-allocation amounts $1094/$7456 and carries that mistake through the named lines. Drop the seven wrong numeric assertions; retain the actual reply and work. No model value is repaired into an agreement.",
+   "drop": true,
+   "context": "70b9db7be17d12874111770ed175ad8d4a5fab70b5dda69994602fba9fc6e69e"
+  }
+ ]
+}

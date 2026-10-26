@@ -402,9 +402,24 @@ included when available. This prevents an unlucky random sample from silently
 losing an active regime after a validation fix. The coverage summary describes
 the sampled, buildable cases; it does not prove other branches unreachable.
 
+For collection forms with printed IRS outputs, fresh jobs request those outputs only
+(`worked target scope: printed IRS lines`). The full candidate rules and helper-branch selection remain intact. Incoming values are
+limited to the printed calculation and its local-expression dependencies; validation-only
+derived totals are withheld rather than feeding the reviewed calculation back into its request. An HSA before/after
+check preserves the same four cases, facts, incoming context and branches while reducing
+requested values from 432 implementation fields to 90 printed outputs. Adding positive-distribution seeds
+then expands to five cases/97 branches/105 printed outputs with no lost branch. Helpers remain
+available to the evaluator and branch report, but their unrequested values earn no M
+assertion. Helper-only records still need their semantic interfaces reviewed; this is
+not a blanket exemption or a claim that roadmap item1.5 is finished for all old reviews.
+
 Blank/skip replies are recorded as SKIPPED and earn no numeric fixture assertion,
 including when the evaluator happens to produce zero. Explicit printed zero
 remains an assertion. `audit_skipped.py` checks old logs against their embedded
 raw replies; `--apply` removes only skipped expectations and archives originals
 with hashes. The audit is an offline check-all step (BUG-0123).
 
+
+`classm.py --case-jobs 4` issues independent case requests concurrently; the default is1.
+`rerun_all.py` passes that option only to class M. Each case keeps its own prompt/response
+receipt and the final log retains case order. Concurrency does not repair model values.

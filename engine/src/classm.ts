@@ -36,9 +36,10 @@ interface Job {
   /** "collection": the document is worked once per entry; "def": one instance of a shared definition. */
   kind?: "collection" | "def";
   entries?: Record<string, EntryField[]>;
+  worked_scope?: "printed-irs-lines";
 }
 
-function isHelper(line: Line): boolean { return line.printed.startsWith("("); }
+function isHelper(line: Line): boolean { return ["(helper)", "(gate)", "(computed helper)", "(question)", "(status)", "(screen)"].includes(line.printed); }
 
 /** Every operand string in an expression, with the def references and collection sums seen. */
 function walk(expr: Expr | TestExpr, out: { refs: Set<string>; defs: boolean; sums: { collection: string; field: string; where: Set<string> }[] }): void {
@@ -173,8 +174,29 @@ function collectionFill(doc: FormDoc): Line[] { return doc.lines.filter((l) => l
 
 /** A collection document worked once per entry, for one generated return. */
 function buildCollectionJob(data: CanonicalData, doc: FormDoc, inputs: Inputs, r: EvalResult, n: number, branches: string[]): Job | null {
+  // Keep the full dependency scan and candidate/branch rules. Only the requested
+  // outputs change: an IRS form's printed values do not require guessing what
+  // inactive implementation helpers or pre-division totals mean.
+  const printedOnly = collectionFill(doc).some(line => !isHelper(line));
   const base = buildJob(data, { ...doc, lines: collectionFill(doc).concat(doc.lines.filter((l) => l.expr.op === "input")) }, inputs, r, n, branches, true);
   if (!base) return null;
+  if (printedOnly) {
+    // Supply incoming values needed by the printed calculation, including its
+    // local helper expressions, but not totals used only by validation helpers.
+    // Those totals can feed the document's own calculations back into its review.
+    const needed = new Set<string>(), seen = new Set<string>();
+    const visit = (id: string): void => {
+      if (seen.has(id)) return;
+      seen.add(id);
+      const line = doc.lines.find(line => line.id === id);
+      if (!line) { needed.add(id); return; }
+      const refs = { refs: new Set<string>(), defs: false, sums: [] as { collection: string; field: string; where: Set<string> }[] };
+      walk(line.expr as Expr, refs);
+      for (const ref of refs.refs) visit(ref);
+    };
+    for (const line of collectionFill(doc).filter(line => !isHelper(line))) visit(line.id);
+    base.given = base.given.filter(given => needed.has(given.ref));
+  }
   const entries: Record<string, EntryField[]> = {};
   const fill: Job["fill"] = []; const project: Record<string, Value> = {};
   const inputLines = doc.lines.filter((l) => l.expr.op === "input");
@@ -218,6 +240,7 @@ function buildCollectionJob(data: CanonicalData, doc: FormDoc, inputs: Inputs, r
     // The lines the evaluation reached for this entry: a test settled early leaves the rest
     // underived, as a STOP in the printed flow chart ends the hand-work.
     for (const l of collectionFill(doc)) {
+      if (printedOnly && isHelper(l)) continue;
       if (defIds.has(l.id)) continue;
       const key = fields.get(l.id); const v = key ? r.derivations.get(key)?.value : undefined;
       if (!key || !v) continue;
@@ -233,7 +256,8 @@ function buildCollectionJob(data: CanonicalData, doc: FormDoc, inputs: Inputs, r
     }
   }
   if (fill.length === 0) return null;
-  return { ...base, kind: "collection", own_inputs: [], entries, fill, project };
+  return { ...base, kind: "collection", own_inputs: [], entries, fill, project,
+    ...(printedOnly ? { worked_scope: "printed-irs-lines" as const } : {}) };
 }
 
 /** Gate tests and the result of a shared definition: the lines a hand calculation decides. */

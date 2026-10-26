@@ -45,3 +45,22 @@ BUG-0136 corrects those records to no current qualified expenses and care=false;
 a fact-only regression checks that the same inconsistency cannot recur. The draft
 bank and its actual requests/replies remain archived. Corrected requests have a
 new bank/prompt hash; draft results are not relabeled as corrected results.
+
+The 2025 HSA bank adds seventeen source cases from i8889 pp.4/7/8/9 and f8889 p.1.
+They cover zero/positive distributions, genuine missing follow-ups, supplied excessive
+rollovers, mandatory scope screens, a zero contribution and one/two spouse HSAs with
+family coverage. Reference amounts are derived directly from those pages. Eight known
+money cases also seed ordinary numeric regressions; those fixtures are explicitly
+synthetic and earn no independent evidence credit.
+
+`when_known: true` is a generic consistency-check declaration, not a supplied tax rule.
+A true gate still refuses and a refused gate propagates. An unanswered check may be
+left unperformed only while the expression determines its own value without assumed
+answers; the derivation records that distinction and its unused question dependencies
+are discarded. Ordinary eligibility/scope gates remain mandatory. Model-declared flags
+are syntax/type-checked and preserved, never imported from authored computed lines.
+
+Draft H12 prescribed where the project scope screen should run on intermediate lines.
+It now checks only the unknown final results, which the source supports. Twelve draft
+artifacts are hashed under the scope-case correction archive; fresh corrected requests
+retain their actual hashes and are not relabeled as seeing the later spouse cases.

@@ -56,6 +56,7 @@ function mutations(data: CanonicalData): Mutation[] {
 
       if (expr.op === "sum_over" && expr.where) out.push({id:`filter.${where}`,kind:"remove collection filter",where,apply:d=>{const e=findLine(d,line.id)!.expr; if(e.op==="sum_over") delete e.where;}});
       for (let i=0;i<(line.refuses?.length??0);i++) out.push({id:`refusal.${where}.${i}`,kind:"remove refusal",where,apply:d=>{findLine(d,line.id)!.refuses!.splice(i,1);}});
+      for (let i=0;i<(line.refuses?.length??0);i++) if (line.refuses![i]!.when_known) out.push({id:`consistency.${where}.${i}`,kind:"require unanswered consistency check",where,apply:d=>{delete findLine(d,line.id)!.refuses![i]!.when_known;}});
       if (expr.op === "test" && "gt" in expr && expr.gt) out.push({id:`boundary.${where}`,kind:"replace strict greater-than with inclusive",where,apply:d=>{const e=findLine(d,line.id)!.expr as {op:"test";gt?:unknown;ge?:unknown};e.ge=e.gt;delete e.gt;}});
       if (expr.op === "smaller_of" || expr.op === "larger_of") {
         out.push({
@@ -233,7 +234,7 @@ function normalizeChain(data: CanonicalData, id: string, falseGates: Set<string>
   const l = findLine(data, id); if (!l) return { unresolved: id };
   const next = new Set(seen); next.add(id);
   const guards = (l.refuses ?? []).filter((r) => !falseGates.has(r.when));
-  const context = new Set([...falseGates, ...guards.map((r) => r.when)]);
+  const context = new Set([...falseGates, ...guards.filter(r => !r.when_known).map((r) => r.when)]);
   const expr = l.expr;
   const value = expr.op === "copy" && typeof expr.from === "string" ? normalizeChain(data, expr.from, context, next)
     : expr.op === "param" ? { parameter: data.params.values[expr.ref]?.value, type: l.type }
@@ -282,7 +283,7 @@ function aliasEquivalence(data: CanonicalData, mutation: Mutation): string | und
   if(!match)return undefined;
   const parent=findLine(data,lineOf(mutation));
   if(!parent)return undefined;
-  const known=new Set((parent.refuses??[]).map(r=>r.when));
+  const known=new Set((parent.refuses??[]).filter(r=>!r.when_known).map(r=>r.when));
   if(stableStringify(normalizeChain(data,match[1]!,known))!==stableStringify(normalizeChain(data,match[2]!,known)))return undefined;
   return `Copy-chain identity: ${match[1]} and ${match[2]} expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.`;
 }
@@ -298,7 +299,7 @@ function sharedGateEquivalence(data: CanonicalData, mutation: Mutation): string 
   const [, x, y] = match as unknown as [string, string, string];
   const parent = findLine(data, lineOf(mutation));
   if (!parent || parent.expr.op !== "sum") return undefined;
-  const known = new Set((parent.refuses ?? []).map((r) => r.when));
+  const known = new Set((parent.refuses ?? []).filter(r=>!r.when_known).map((r) => r.when));
   const nx = normalizeChain(data, x, known); const ny = normalizeChain(data, y, known);
   if (stableStringify(nx) === stableStringify(ny)) return undefined; // an alias, not this rule
   if (stableStringify(stripGuards(nx)) !== stableStringify(ny)) return undefined;

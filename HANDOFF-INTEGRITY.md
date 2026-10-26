@@ -1,5 +1,80 @@
 # Handoff: the integrity plan, Phase 0 done, Phase 1 in progress
 
+## Current HSA correction and native worked targets after 1b75a3b — 2026-10-26
+
+Active owner goal: keep going until the integrity roadmap is clear to resume coverage extension.
+Do not stop at this batch or require more human packets. The controlling validation policy and
+existing ambiguity choices remain in force; Flash means deepseek-flash, never Pro. No agents are
+spawned under the current developer instruction.
+
+1b75a3b committed the adapter separation with a full green suite. This uncommitted batch repairs
+BUG-0138/T-065. The authored rollover consistency entry now declares when_known=true: true still
+refuses, a refused gate propagates, and an unknown consistency check may remain unperformed only
+while the actual expression determines its value without assumed answers. TypeScript and Lean
+mirror the rule, and ordinary eligibility/scope gates keep their original ordered behavior
+(including BUG-0083). Discarding only the unperformed check's new memo entries keeps its unused
+follow-up out of the interview; a derivation note records the unperformed check. A dedicated
+mutation removes the mode. Mutation-equivalence logic must not treat an unperformed check as a
+known-false gate. The same change is reflected in rendering and spec4.7.1.
+
+BUG-0139 expands type-only validation to every model refusal declaration and Bool gate, including
+unused helpers; no interpretation is added to that checker. The bounded interpreter preserves
+candidate when_known flags instead of borrowing authored placement. The worked-review subject
+hash binds explicit when_known modes while other old subject hashes remain unchanged.
+
+Seventeen hand-derived HSA cases pin i8889/f8889 snapshots, with private reference answers and
+only synthetic facts in source requests. Both current Claude/Flash transcriptions pass all
+seventeen and expression checks. Both evaluators pass the authored bank. Eight source-derived
+numeric cases are ordinary regressions, not new M/B/engine evidence. H12 originally dictated
+intermediate scope-check placement; BUG-0140 corrects it to unknown final values, preserves the
+twelve draft artifacts and issues fresh requests. Do not relabel either earlier fifteen-case
+request as seeing the current seventeen-case bank.
+
+BUG-0141 aligns spouse-attributed coverage in form metadata and the December question. The live
+month-count question already had the clarification through an override; that duplicate override
+is removed in favor of the shared definition. Both eligible spouses count family coverage when
+either has it; actual monthly counts remain separate from the last-month election. Existing
+last-month and catchup owner rulings are retained. BUG-0142 constructs real month calendars before
+deriving generated spouses' counts/December answers; independently drawn 9-versus-3 family counts
+were impossible when one spouse was eligible all year. This sampler includes December in nonempty
+eligible periods; that is a sampling limitation, not a limitation of authored forms.
+
+Roadmap1.5 now has a default printed-output mode for collections that have IRS output lines.
+Candidate validation, full dependency context and helper-branch selection remain. The first
+HSA comparison retained identical four cases/facts/branches while reducing 432 implementation
+fields to 90 printed outputs; both families matched those 90, but their zero-only PartII facts
+and redundant validation givens were insufficient to call the regime independently checked.
+BUG-0143 removes incoming quantities used only by internal validation (HSA Step1/share sums and
+split count) from the printed calculation's request. Complete ordinary PartI facts on positive
+source regressions make them buildable worked seeds. Current selection has five cases, 97
+branches versus 87, no lost branch, and 105 printed outputs; only marital/two-HSA incoming facts
+remain. Fresh worked requests use --case-jobs 4, with independently bound receipts and deterministic
+output order. Claude matches all105; Flash matches98 and incorrectly uses inactive agreed amounts
+despite allocation=equal in one case. Seven downstream wrong assertions are explicitly dropped,
+never repaired. Its model-error rate is7/105 (6.7%), within the existing10% limit. No representation
+ruling is needed in this native run. Full-suite validation still must finish before commit; do not
+use earlier90-output runs as current ones.
+Other legacy collection/helper-only worked reviews still need roadmap1.5 migration.
+
+113 offline review tests, generic consistency/calendar tests, seeded native-job tests and both
+evaluators' seventeen source cases pass. The raw source, worked and rendering reviews are current
+and adjudicated. The first full suite passes 1082 CLI fixtures and 1700 engine cases with zero unexplained differences, but reports three newly exposed mutation gaps after helper-heavy M retirement. An ordinary, non-independent engineering case pins the two twelve-month numerators and the zero-equality consistency boundary; targeted verification and a fresh full suite/commit remain. Then continue the active roadmap goal.
+
+Current read-only source audit: .transcription/hsa-final-audit.json, 95 verified, 36 type passes,
+23 legacy-limited, 15 unverifiable Claude prompts, 231 older agreements fail current replay.
+Four prior type passes fail newly checked gates (Flash g28/s2, both tipjob replies). Only two
+requests include all current global question wording after the HSA wording change; that is
+context staleness, not 93 tax errors. T-062 needs verified migration/fresh requests and a precise
+context-validity contract, not silent provenance upgrades. Global T qualification stays held.
+
+Archives are hashed under .transcription/archive/: before-hsa-consistency-fix-2026-10-25 (43 files),
+hsa-before-scope-case-correction-2026-10-25 (12), hsa-before-spouse-wording-2026-10-25 (22),
+hsa-before-monthly-calendars-2026-10-25 (33), hsa-before-printed-worked-targets-2026-10-25 (33),
+and hsa-before-positive-printed-cases-2026-10-25 (34). Earlier requests/results remain historical.
+No original human verdict is changed. Remaining roadmap work includes source-context/adapter
+contracts and review migration, native M migration/broader blind returns, UsTaxes integration,
+mutation mechanization, DirectFile predicate comparison, citation precision and the year rehearsal.
+
 ## Current adapter separation and review batch after 0ef4912 — 2026-10-25
 
 0ef4912 committed the partial-input checker after a full green suite (1068 CLI fixtures,

@@ -306,7 +306,12 @@ def eval (ctx : Ctx) : Nat → Frame → Cmd → EvalM Json
       | some (.arr rs) =>
         for r in rs do
           let gate := (strGet r "when").getD ""
+          let before ← get
           let gv ← eval ctx fuel frame (.line gate)
+          if gv == budgetExhausted then return gv
+          if kindOf gv == some "unknown" && objGet r "when_known" == some (Json.bool true) then
+            set before
+            continue
           if isUnknown gv then return gv
           if objGet gv "value" == some (Json.bool true) then
             return Json.mkObj [("kind", Json.str "refusal"), ("gate", Json.str (if (findLine frame.doc gate).isSome then keyOf frame gate else gate)),

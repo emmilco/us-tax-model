@@ -2072,3 +2072,106 @@ meaning gap (the full line4g election versus its net-capital-gain share); that r
   contradictory supplied values; add source-based regressions and refresh affected T/R/M receipts.
   No authored HSA rule or numeric fixture is changed in this batch. Keep source qualification held.
 - **Tags:** unconditional-consistency-gate; inapplicable-followup; unknown-value-propagation
+
+### BUG-0138 resolution — 2026-10-25
+
+The rollover refusal now explicitly checks supplied figures with when_known=true. A true check
+still refuses, a refused gate still propagates, and a missing actual amount stays unknown; only
+an unanswered consistency check can be left unperformed when the expression independently knows
+the result. TypeScript and Lean share the rule, and a derivation note records it. Its temporary
+question dependencies are discarded, so another unanswered question cannot resurrect an irrelevant
+rollover prompt. Seventeen source cases include zero/positive distributions, contradictory amounts,
+genuine unknowns, mandatory screens and spouse-attributed coverage. Eight source-derived numeric
+fixtures and a dedicated mutation protect the regression. This is not a false/zero input default.
+
+## BUG-0139 — Model refusal declarations were outside the type-only validation boundary
+
+- **Date:** 2026-10-25
+- **Caught by:** adding the supplied-figure consistency mode to the model IR boundary.
+- **Symptom:** ordinary expression validation checked expr but did not validate every refusal
+  declaration or prove every declared gate Bool. The earlier finite-case runner checked its own
+  gates, but a form without a case bank could report a type pass with malformed or non-Bool gates.
+- **Root cause:** refusal lists live outside the expression JSON schema and the public expression
+  checker only walks expressions.
+- **Where:** tools/transcription/model_candidate.mjs, check_model_types.mjs and check_input_contracts.mjs.
+- **Fix:** validate list/object syntax and when_known=true, then check synthetic Bool comparisons
+  for every declared gate, including unused helpers, using the same host type checker. No gate is
+  executed by the type-only checker. Candidate gate flags are preserved by the bounded interpreter.
+- **Qualification:** old type passes are not upgraded or retained blindly; the read-only audit
+  rechecks actual saved replies, and the global source-qualification hold remains.
+- **Tags:** unchecked-refusal-ir; schema-boundary; incomplete-type-validation
+
+## BUG-0140 — A draft source case prescribes placement of the project scope screen
+
+- **Date:** 2026-10-25
+- **Caught by:** the first new Claude reply passing fourteen HSA cases and conservatively requiring
+  the unanswered scope screen before intermediate rollover amounts in H12.
+- **Symptom:** H12 demanded zero intermediate lines14b/14c despite an unanswered project scope
+  screen. The IRS pages do not dictate where a client must apply that screen; this tested the
+  project's placement rather than an independently determined source quantity.
+- **Root cause:** a benchmark case mixed a real final-output availability requirement with an
+  implementation-specific intermediate requirement.
+- **Where:** tools/transcription/input_contracts/2025/f8889.json, draft H12.
+- **Fix:** require unknown final lines16/17b only. Preserve the draft bank, requests, replies,
+  logs and diagnostic (12 files) under .transcription/archive/hsa-before-scope-case-correction-2026-10-25/.
+  Issue actual fresh requests. Later spouse cases extend the bank to seventeen; neither earlier
+  fifteen-case request is relabeled as having seen the current bank.
+- **Tags:** benchmark-overconstraint; scope-placement; source-independence
+
+## BUG-0141 — HSA review metadata and December question omit spouse-attributed coverage
+
+- **Date:** 2026-10-25
+- **Caught by:** the new Claude rendering review of Form8889 line3.
+- **Symptom:** form input metadata asks only about the person's own family HDHP. The live month-count
+  question already clarifies spouse coverage through a bank override, but independent reviewers see
+  the narrower form metadata. The derived December question also lacks the spouse-attribution rule.
+- **Source:** i8889 p.4 How To Complete Part I and Line3 rule1: when both spouses are eligible and
+  either has a family HDHP, both are treated as family-covered and self-only plans are disregarded.
+- **Root cause:** a correct interview-only clarification was not propagated to the shared input
+  contract, and the December variant had no equivalent clarification.
+- **Fix:** align the form metadata and December input, derive the interview wording from them and
+  remove the duplicate override. Clarify actual monthly counts versus the separate last-month
+  election. Two source cases check common-family coverage with one or two HSAs; refresh T/R/M
+  receipts without changing the existing owner-approved last-month/catchup interpretations.
+- **Tags:** divergent-input-wording; spouse-attributed-coverage; review-context-gap
+
+## BUG-0142 — Generated spouse HSA coverage counts need not share a possible calendar
+
+- **Date:** 2026-10-25
+- **Caught by:** reviewing the regenerated worked-case facts after the spouse-coverage finding.
+- **Symptom:** a spouse eligible nine months has nine family months while the spouse eligible all
+  twelve months has only three family months. With both eligible during those nine months, both
+  must receive family-coverage treatment; the supplied aggregate counts cannot describe that return.
+- **Root cause:** each spouse's counts are individually valid but drawn independently without
+  constructing the monthly joint coverage facts.
+- **Where:** engine/src/generate.ts; generated HSA cases used by properties/Lean/class-M selection.
+- **Fix:** construct eligible and family-coverage month calendars, attribute a family-covered month
+  to each eligible spouse, then derive the counts and December answers. Tests cover all count pairs
+  and the nine-versus-three witness. The sampler uses eligible periods that include December;
+  this is a sampling limitation, not a restriction on authored forms or source cases.
+- **Provenance:** pre-calendar worked requests/logs/fixtures and job facts (33 files) are hashed in
+  .transcription/archive/hsa-before-monthly-calendars-2026-10-25/. New reviews use new calendar-derived
+  facts and their actual requests; no inconsistent old result is migrated into a new assertion.
+- **Tags:** impossible-generated-facts; coupled-spouse-coverage; benchmark-coherence
+
+## BUG-0143 — Worked-case context includes redundant calculations from the reviewed form
+
+- **Date:** 2026-10-26
+- **Caught by:** inspecting the HSA printed-output request after removing ambiguous helper targets.
+- **Symptom:** the incoming-value catalog tells the reviewer the household's Step1 sum, share sum
+  and split count as authoritative givens. These come from the HSA calculation itself and are
+  used by implementation validation, not needed by the printed IRS calculation.
+- **Root cause:** the job context scans every computed helper instead of following the requested
+  printed calculation through its local expression dependencies.
+- **Where:** engine/src/classm.ts, buildCollectionJob and the incoming-value catalog.
+- **Fix:** preserve full candidate/branch validation, but filter incoming givens to the dependency
+  closure of printed output expressions and their local helpers. Raw marital/roster facts remain;
+  validation-only derived totals are withheld. Add a request-content regression. This is not a
+  claim that every feedback or pass-through boundary in legacy worked reviews has been audited.
+- **Related gap:** the first printed HSA set has only zero distributions. Strengthen four source
+  fixtures with complete, ordinary PartI facts so positive PartII calculations can seed worked
+  cases. Selection grows from four cases/87 branches to five/97 with no lost branch. Regenerate
+  both families' actual requests; prior 90-output replies are historical, not relabeled.
+- **Provenance:** 34 prior files are hashed under
+  .transcription/archive/hsa-before-positive-printed-cases-2026-10-25/.
+- **Tags:** worked-context-feedback; validation-only-givens; zero-only-regime

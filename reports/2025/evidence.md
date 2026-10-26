@@ -1,6 +1,6 @@
 # Evidence coverage per line
 
-**Scoreboard.** Share of computed lines with at least one outside-family assertion: 198 of 1515 (13.1%). H (human source reading): 0, B (human worked values): 0, second-family M: 44, E: 163.
+**Scoreboard.** Share of computed lines with at least one outside-family assertion: 209 of 1515 (13.8%). H (human source reading): 0, B (human worked values): 0, second-family M: 57, E: 163.
 
 A computed line is one whose atom is not `input`, `param` or `copy`. An outside-family assertion is a signed human source reading (H), a class B fixture (human worked values), a class M fixture whose recorded model is not a Claude model (second-family M), or an engine assertion (E) under the rule below. The sub-counts overlap: a line with several kinds counts once in the share. H checks the encoded rule against IRS text; B and M check worked values. Second-family transcription and render readings are reported separately in second_family.md and do not yet enter this scoreboard. Class A, Claude-family M, C and R do not move it.
 
@@ -10,7 +10,7 @@ Optional human readings pending or ineligible (no H credit; original findings re
 
 Fixtures that assert each line, by evidence class, as a count of cases (ids listed when two or fewer). A — official IRS worked example, cited. B — human hand-work recorded with the worker and the document revision; none yet. C — a named, versioned calculator or engine record in fixtures/2025/differential/ (spec 6.1); none yet. M — isolated model hand-work with the model, prompt hash and snapshot recorded (fixtures/2025/classm.json, reviews/2025/classm/); second-family M fixtures are those whose recorded model does not start with "claude". E — the engine differential (tools/engines; reports/2025/engine_differential.md and .json): PolicyEngine-US (PE) and Tax-Calculator (TC) run over 1700 generated returns. A line gets an E assertion only when, for at least one engine, the engine computes the line rather than taking it whole as an input, the project value was nonzero on at least 50 compared returns, and fewer than half of the nonzero returns the engine reached (compared plus excluded) were excluded under an engine limitation; the cell prints each engine's compared, nonzero and excluded counts, and an engine that falls short of the rule is marked "below rule" and asserts nothing. R — recorded regression from the project's own evaluator, no class claimed; agreement with the Lean reference evaluator (reports/2025/evaluator_agreement.md) is evaluator agreement over the same data, not an independent engine, and earns no class.
 
-An outside-family assertion (B, second-family M or E) on a line whose atom is `copy` also credits the first line along its copy chain whose atom is not `copy`, because a copy's value equals its source's exactly, so agreement on the copy is agreement on the source; the table marks each such credit "via <copy line>" (the chain walked, when longer than one copy), the copy line keeps its own cell, and the sub-counts above include credited lines. In this report 67 assertions are credited through copies (B cases: 0; second-family M cases: 27; engine-line assertions: 40); 2 assertions on 2 copy lines could not be resolved statically and stay on the copy line only (qdcg.line22, qdcg.line24).
+An outside-family assertion (B, second-family M or E) on a line whose atom is `copy` also credits the first line along its copy chain whose atom is not `copy`, because a copy's value equals its source's exactly, so agreement on the copy is agreement on the source; the table marks each such credit "via <copy line>" (the chain walked, when longer than one copy), the copy line keeps its own cell, and the sub-counts above include credited lines. In this report 77 assertions are credited through copies (B cases: 0; second-family M cases: 37; engine-line assertions: 40); 2 assertions on 2 copy lines could not be resolved statically and stay on the copy line only (qdcg.line22, qdcg.line24).
 
 Engine ids with no line of their own (never an E assertion): f1040.tax_before_credits (PE), f1040.tax_before_credits (TC), f1040.tax_before_credits (OpenTaxSolver). Mapped lines taken whole from the generator's facts: none. Components of compared lines that enter the engine as generator facts rather than the engine's own form arithmetic (the line still counts as engine-computed; the component does not): PolicyEngine-US f1040.line10: the HSA deduction (Form 8889 line 13) enters as the generator's health_savings_account_ald; the engine computes the educator, half-of-self-employment-tax, IRA and student loan interest components and the sum; Tax-Calculator f1040.line10: the HSA deduction (e03290), the educator expenses deduction (e03220) and the IRA contributions (e03150) enter as the generator's amounts; the engine computes the half-of-self-employment-tax component and the sum (returns with student loan interest, or an IRA deduction phased out by modified AGI, are excluded); Tax-Calculator f1040.line20: the foreign tax paid (e07300) is a supplied amount; the engine computes the credit limit; Tax-Calculator f1040.line19: the Form 5695 credits before their limits (e07260) enter as the generator's amounts figured from the costs; the engine subtracts them in Credit Limit Worksheet A; Tax-Calculator f1040.line24: the Form 5695 credits before their limits (e07260) enter as the generator's amounts figured from the costs; the engine applies the tax limit; returns with a saver's credit are excluded; OpenTaxSolver person[taxpayer].f8889[hsa].line12: Form 8889 line 3 (the contribution limit) is supplied as $4,300 or $8,550 from the coverage facts and line 7 as $1,000 for age 55; the program does not compute the line 3 limitation chart; it computes lines 5 to 13; OpenTaxSolver person[taxpayer].f8889[hsa].line13: Form 8889 line 3 (the contribution limit) is supplied as $4,300 or $8,550 from the coverage facts and line 7 as $1,000 for age 55; the program computes lines 5 to 13; OpenTaxSolver f1040.line10: Schedule 1 line 11 (educator expenses after the $300 limit) and line 20 (the IRA deduction) enter as the generator's amounts; lines 13 and 15 come from the engine's own Form 8889 and Schedule SE runs; line 21 is the engine's student loan worksheet; OpenTaxSolver f1040.line20: Schedule 3 line 1 (the foreign tax credit) is the smaller of the creditable foreign tax and the engine's own line 16, figured by the adapter; OpenTaxSolver f8960.line17: Form 8960 line 13 (modified AGI) and line 5a (net gain) are the engine's own Form 1040 lines 11a and 7a; line 9a is the investment interest when the engine itemized; lines 8, 11, 12 and 15 to 17 are the program's; OpenTaxSolver f8995.line15: Form 8995 line 12 (net capital gain plus qualified dividends) is figured from the facts; line 1 column (c) is the program's own Schedule C line 31 less Schedule 1 lines 15 to 17 from its Form 1040 output; line 11 is its Form 1040 lines 11a less 12 less 13b; OpenTaxSolver s8812.line14: Schedule 8812 line 13 (Credit Limit Worksheet A) is the engine's own Form 1040 line 18 less Schedule 3 lines 1 and 2, figured by the adapter; OpenTaxSolver s8812.line27: Schedule 8812 line 18a (earned income) is the engine's own Form 1040 line 1z plus Schedule SE line 3 (profit or loss) less line 13, not below zero, and line 13 the adapter's Credit Limit Worksheet A; lines 21 (boxes 4 and 6), 22 (Schedule 1 line 15) and 24 (zero: no EIC, no excess social security) are supplied; OpenTaxSolver f2441.line11: Form 2441 line 4 (earned income) is the engine's own Form 1040 line 1z less the spouse's wages, plus its Schedule SE lines 3 less 13 by file import; line 10 is its own Form 1040 line 18 less Schedule 3 line 1; OpenTaxSolver sd.line19: Schedule D line 19 is supplied as Form 1099-DIV box 2b; the program takes the Unrecaptured Section 1250 Gain Worksheet result as an input; OpenTaxSolver f8959.line18: Form 8959 line 8 (self-employment income) is the engine's own Schedule SE line 6.
 
@@ -743,103 +743,103 @@ Unasserted lines: f8880.zero, f8880.joint, f8880.dist_2025, f8880.prior_joint_su
 | line | A | B | C | M | H | E | R |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | f8889.one | — | — | — | — | — | — | — |
-| f8889.zero | — | — | — | — | — | — | — |
+| f8889.zero | — | — | — | via f8889.line4: 5; via f8889.line10: 5 | — | — | — |
 | f8889.line2 | — | — | — | — | — | — | 1 (stage16.mut.hsa_contrib_and_dist) |
 | f8889.line9 | — | — | — | — | — | — | — |
-| f8889.any | — | — | — | 4 | — | — | — |
+| f8889.any | — | — | — | — | — | — | — |
 | f8889.unsupported | — | — | — | — | — | — | — |
-| f8889.mfs | — | — | — | 4 | — | — | — |
+| f8889.mfs | — | — | — | — | — | — | — |
 | f8889.months_eligible | — | — | — | — | — | — | — |
 | f8889.months_family | — | — | — | — | — | — | — |
-| f8889.bad_months | — | — | — | 4 | — | — | 4 |
+| f8889.bad_months | — | — | — | — | — | — | 4 |
 | f8889.age55 | — | — | — | — | — | — | — |
 | f8889.twelve | — | — | — | — | — | — | — |
-| f8889.married_family | — | — | — | 3 | — | — | 2 (audit.f8889.married_hoh_family_age55, audit.f8889.unmarried_hoh_family_age55) |
-| f8889.age55_line3 | — | — | — | 4 | — | — | — |
-| f8889.self_amount | — | — | — | 4 | — | — | — |
+| f8889.married_family | — | — | — | — | — | — | 2 (audit.f8889.married_hoh_family_age55, audit.f8889.unmarried_hoh_family_age55) |
+| f8889.age55_line3 | — | — | — | — | — | — | — |
+| f8889.self_amount | — | — | — | — | — | — | — |
 | f8889.self_under55 | — | — | — | — | — | — | — |
 | f8889.self_55 | — | — | — | — | — | — | — |
-| f8889.age55_unmarried | — | — | — | 4 | — | — | 2 (audit.f8889.married_hoh_family_age55, audit.f8889.unmarried_hoh_family_age55) |
-| f8889.family_amount | — | — | — | 4 | — | — | — |
+| f8889.age55_unmarried | — | — | — | — | — | — | 2 (audit.f8889.married_hoh_family_age55, audit.f8889.unmarried_hoh_family_age55) |
+| f8889.family_amount | — | — | — | — | — | — | — |
 | f8889.family_under55 | — | — | — | — | — | — | — |
 | f8889.family_55 | — | — | — | — | — | — | — |
-| f8889.family_extra | — | — | — | 4 | — | — | — |
-| f8889.chart_self | — | — | — | 4 | — | — | — |
-| f8889.chart_family | — | — | — | 4 | — | — | — |
-| f8889.chart_total | — | — | — | 4 | — | — | — |
-| f8889.chart_limit | — | — | — | 4 | — | — | — |
-| f8889.all_year | — | — | — | 4 | — | — | — |
-| f8889.changed | — | — | — | 4 | — | — | — |
+| f8889.family_extra | — | — | — | — | — | — | — |
+| f8889.chart_self | — | — | — | — | — | — | — |
+| f8889.chart_family | — | — | — | — | — | — | — |
+| f8889.chart_total | — | — | — | — | — | — | — |
+| f8889.chart_limit | — | — | — | — | — | — | — |
+| f8889.all_year | — | — | — | — | — | — | — |
+| f8889.changed | — | — | — | — | — | — | — |
 | f8889.dec_coverage | — | — | — | — | — | — | — |
-| f8889.dec_amount | — | — | — | 4 | — | — | — |
+| f8889.dec_amount | — | — | — | — | — | — | — |
 | f8889.last_month | — | — | — | — | — | — | — |
-| f8889.use_last_month | — | — | — | 4 | — | — | — |
-| f8889.line3_changed | — | — | — | 4 | — | — | — |
-| f8889.line3_all_year | — | — | — | 4 | — | — | — |
-| f8889.line3_last_month | — | — | — | 3 | — | — | — |
-| f8889.line3_part_year | — | — | — | 4 | — | — | — |
-| f8889.line3 | — | — | — | 4 | — | — | 13 |
-| f8889.line4 | — | — | — | 4 | — | — | — |
-| f8889.line5 | — | — | — | 4 | — | — | — |
-| f8889.family_year | — | — | — | 3 | — | — | — |
-| f8889.family_dec_year | — | — | — | 4 | — | — | — |
-| f8889.family_counted | — | — | — | 4 | — | — | — |
-| f8889.step1_total | — | — | — | 3 | — | — | — |
-| f8889.step1_line3 | — | — | — | 3 | — | — | — |
-| f8889.step1 | — | — | — | 3 | — | — | 3 |
-| f8889.step1_x2 | — | — | — | 3 | — | — | — |
+| f8889.use_last_month | — | — | — | — | — | — | — |
+| f8889.line3_changed | — | — | — | — | — | — | — |
+| f8889.line3_all_year | — | — | — | — | — | — | — |
+| f8889.line3_last_month | — | — | — | — | — | — | — |
+| f8889.line3_part_year | — | — | — | — | — | — | — |
+| f8889.line3 | — | — | — | 10 | — | — | 15 |
+| f8889.line4 | — | — | — | 10 | — | — | — |
+| f8889.line5 | — | — | — | 10 | — | — | — |
+| f8889.family_year | — | — | — | — | — | — | 1 (stage16.hsa.engineering.helper_arithmetic_and_boundary) |
+| f8889.family_dec_year | — | — | — | — | — | — | — |
+| f8889.family_counted | — | — | — | — | — | — | — |
+| f8889.step1_total | — | — | — | — | — | — | — |
+| f8889.step1_line3 | — | — | — | — | — | — | — |
+| f8889.step1 | — | — | — | — | — | — | 3 |
+| f8889.step1_x2 | — | — | — | — | — | — | — |
 | f8889.two | — | — | — | — | — | — | — |
-| f8889.share_equal | — | — | — | 3 | — | — | — |
+| f8889.share_equal | — | — | — | — | — | — | — |
 | f8889.allocation | — | — | — | — | — | — | — |
 | f8889.allocated | — | — | — | — | — | — | — |
-| f8889.share_raw | — | — | — | 2 (classm.f8889.1, classm.f8889.2) | — | — | — |
-| f8889.allocation_bad | — | — | — | 4 | — | — | — |
-| f8889.share | — | — | — | 2 (classm.f8889.1, classm.f8889.2) | — | — | 2 (stage13.hsa_part_year_family, stage13.hsa_last_month_spouses) |
-| f8889.self_year | — | — | — | 4 | — | — | — |
-| f8889.self_counted | — | — | — | 4 | — | — | — |
-| f8889.self_all | — | — | — | 4 | — | — | — |
-| f8889.self_family_months | — | — | — | 4 | — | — | — |
-| f8889.self_dec_year | — | — | — | 4 | — | — | — |
-| f8889.self_in_family | — | — | — | 3 | — | — | — |
-| f8889.step4_total | — | — | — | 3 | — | — | — |
-| f8889.step4 | — | — | — | 3 | — | — | 2 (stage13.hsa_part_year_family, stage13.hsa_last_month_spouses) |
-| f8889.line6_split | — | — | — | 2 (classm.f8889.1, classm.f8889.2) | — | — | — |
-| f8889.split | — | — | — | 4 | — | — | — |
-| f8889.line6 | — | — | — | 4 | — | — | 8 |
+| f8889.share_raw | — | — | — | — | — | — | — |
+| f8889.allocation_bad | — | — | — | — | — | — | — |
+| f8889.share | — | — | — | — | — | — | 2 (stage13.hsa_part_year_family, stage13.hsa_last_month_spouses) |
+| f8889.self_year | — | — | — | — | — | — | 1 (stage16.hsa.engineering.helper_arithmetic_and_boundary) |
+| f8889.self_counted | — | — | — | — | — | — | — |
+| f8889.self_all | — | — | — | — | — | — | — |
+| f8889.self_family_months | — | — | — | — | — | — | — |
+| f8889.self_dec_year | — | — | — | — | — | — | — |
+| f8889.self_in_family | — | — | — | — | — | — | — |
+| f8889.step4_total | — | — | — | — | — | — | — |
+| f8889.step4 | — | — | — | — | — | — | 2 (stage13.hsa_part_year_family, stage13.hsa_last_month_spouses) |
+| f8889.line6_split | — | — | — | — | — | — | — |
+| f8889.split | — | — | — | — | — | — | — |
+| f8889.line6 | — | — | — | 9 | — | — | 10 |
 | f8889.additional | — | — | — | — | — | — | — |
-| f8889.line7_year | — | — | — | 4 | — | — | — |
-| f8889.line7_counted | — | — | — | 4 | — | — | — |
-| f8889.line7_total | — | — | — | 4 | — | — | — |
-| f8889.line7_worksheet | — | — | — | 4 | — | — | — |
-| f8889.line7_applies | — | — | — | 4 | — | — | — |
-| f8889.line7 | — | — | — | 4 | — | — | 5 |
-| f8889.line8 | — | — | — | 4 | — | — | 4 |
-| f8889.line10 | — | — | — | 4 | — | — | — |
-| f8889.line11 | — | — | — | 4 | — | — | — |
-| f8889.line12 | — | — | — | 4 | — | OpenTaxSolver: 257 compared (257 nonzero), 0 excluded | 2 (stage11.hsa.self_full_year, stage11.hsa.employer) |
-| f8889.excess | — | — | — | 4 | — | — | — |
-| f8889.line13_figured | — | — | — | 4 | — | — | — |
-| f8889.line13 | — | — | — | 4 | — | OpenTaxSolver: 257 compared (257 nonzero), 0 excluded | 21 |
+| f8889.line7_year | — | — | — | — | — | — | — |
+| f8889.line7_counted | — | — | — | — | — | — | — |
+| f8889.line7_total | — | — | — | — | — | — | — |
+| f8889.line7_worksheet | — | — | — | — | — | — | — |
+| f8889.line7_applies | — | — | — | — | — | — | — |
+| f8889.line7 | — | — | — | 10 | — | — | 5 |
+| f8889.line8 | — | — | — | 9 | — | — | 4 |
+| f8889.line10 | — | — | — | 10 | — | — | — |
+| f8889.line11 | — | — | — | 10 | — | — | — |
+| f8889.line12 | — | — | — | 9 | — | OpenTaxSolver: 257 compared (257 nonzero), 0 excluded | 2 (stage11.hsa.self_full_year, stage11.hsa.employer) |
+| f8889.excess | — | — | — | — | — | — | — |
+| f8889.line13_figured | — | — | — | — | — | — | — |
+| f8889.line13 | — | — | — | 10 | — | OpenTaxSolver: 257 compared (257 nonzero), 0 excluded | 23 |
 | f8889.line14a | — | — | — | — | — | — | 6 |
-| f8889.has_dist | — | — | — | 4 | — | — | — |
+| f8889.has_dist | — | — | — | — | — | — | — |
 | f8889.rollover | — | — | — | — | — | — | — |
-| f8889.rollover_bad | — | — | — | 4 | — | — | — |
-| f8889.line14b | — | — | — | 4 | — | — | 6 |
-| f8889.line14c | — | — | — | 4 | — | — | 7 |
+| f8889.rollover_bad | — | — | — | — | — | — | — |
+| f8889.line14b | — | — | — | 10 | — | — | 12 |
+| f8889.line14c | — | — | — | 10 | — | — | 13 |
 | f8889.medical | — | — | — | — | — | — | — |
-| f8889.line15 | — | — | — | 4 | — | — | 6 |
-| f8889.line16_figured | — | — | — | 4 | — | — | 1 (stage16.refuse.f8889.unsupported_part2) |
-| f8889.line16 | — | — | — | 4 | — | — | 9 |
-| f8889.has_taxable | — | — | — | 4 | — | — | — |
+| f8889.line15 | — | — | — | 10 | — | — | 12 |
+| f8889.line16_figured | — | — | — | — | — | — | 1 (stage16.refuse.f8889.unsupported_part2) |
+| f8889.line16 | — | — | — | 10 | — | — | 15 |
+| f8889.has_taxable | — | — | — | — | — | — | — |
 | f8889.line17a | — | — | — | — | — | — | 4 |
 | f8889.subject_part | — | — | — | — | — | — | — |
-| f8889.subject_bad | — | — | — | 4 | — | — | — |
-| f8889.subject_excepted | — | — | — | 4 | — | — | 1 (stage16.refuse.f8889.subject_over) |
-| f8889.subject | — | — | — | 4 | — | — | 1 (stage16.refuse.f8889.subject_over) |
-| f8889.line17b_figured | — | — | — | 4 | — | — | — |
-| f8889.line17b | — | — | — | 4 | — | — | 6 |
+| f8889.subject_bad | — | — | — | — | — | — | 1 (stage16.hsa.engineering.helper_arithmetic_and_boundary) |
+| f8889.subject_excepted | — | — | — | — | — | — | 1 (stage16.refuse.f8889.subject_over) |
+| f8889.subject | — | — | — | — | — | — | 1 (stage16.refuse.f8889.subject_over) |
+| f8889.line17b_figured | — | — | — | — | — | — | — |
+| f8889.line17b | — | — | — | 10 | — | — | 12 |
 
-Unasserted lines: f8889.one, f8889.zero, f8889.twelve, f8889.self_under55, f8889.self_55, f8889.family_under55, f8889.family_55, f8889.two, f8889.additional
+Unasserted lines: f8889.one, f8889.any, f8889.mfs, f8889.twelve, f8889.age55_line3, f8889.self_amount, f8889.self_under55, f8889.self_55, f8889.family_amount, f8889.family_under55, f8889.family_55, f8889.family_extra, f8889.chart_self, f8889.chart_family, f8889.chart_total, f8889.chart_limit, f8889.all_year, f8889.changed, f8889.dec_amount, f8889.use_last_month, f8889.line3_changed, f8889.line3_all_year, f8889.line3_last_month, f8889.line3_part_year, f8889.family_dec_year, f8889.family_counted, f8889.step1_total, f8889.step1_line3, f8889.step1_x2, f8889.two, f8889.share_equal, f8889.share_raw, f8889.allocation_bad, f8889.self_counted, f8889.self_all, f8889.self_family_months, f8889.self_dec_year, f8889.self_in_family, f8889.step4_total, f8889.line6_split, f8889.split, f8889.additional, f8889.line7_year, f8889.line7_counted, f8889.line7_total, f8889.line7_worksheet, f8889.line7_applies, f8889.excess, f8889.line13_figured, f8889.has_dist, f8889.rollover_bad, f8889.has_taxable, f8889.line17b_figured
 
 ## Form 8959 — Additional Medicare Tax on wages and self-employment income
 
@@ -2777,5 +2777,5 @@ Unasserted lines: below_boundary, table_tax, worksheet_tax, tax
 
 Unasserted lines: single.row1.product, single.row1.tax, single.row2.product, single.row2.tax, single.row3.product, single.row3.tax, single.row4.product, single.row4.tax, single.row5.product, single.row5.tax, single.result, mfj.row1.product, mfj.row1.tax, mfj.row2.product, mfj.row2.tax, mfj.row3.product, mfj.row3.tax, mfj.row4.product, mfj.row4.tax, mfj.row5.product, mfj.row5.tax, mfj.result, mfs.row1.product, mfs.row1.tax, mfs.row2.product, mfs.row2.tax, mfs.row3.product, mfs.row3.tax, mfs.row4.product, mfs.row4.tax, mfs.row5.product, mfs.row5.tax, mfs.result, hoh.row1.product, hoh.row1.tax, hoh.row2.product, hoh.row2.tax, hoh.row3.product, hoh.row3.tax, hoh.row4.product, hoh.row4.tax, hoh.row5.product, hoh.row5.tax, hoh.result, tax
 
-Unasserted computed lines across all documents: 625. (Supplied input lines are excluded; their correctness rests on reading the source document. Intermediate lines listed as unasserted are still exercised transitively; their detectability is tracked in reports/2025/mutation.md.)
+Unasserted computed lines across all documents: 669. (Supplied input lines are excluded; their correctness rests on reading the source document. Intermediate lines listed as unasserted are still exercised transitively; their detectability is tracked in reports/2025/mutation.md.)
 Asserted keys not matching a line id: person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line3, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.positive, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line4a, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line4b, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.owes, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line4c, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line5b, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line6, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line7, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line8d, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line9, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line10, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line11, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line12, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line13, root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}.below_boundary, root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}.tax, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.below_boundary, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.tax, root|inst:tax_on_amount#{"amount":"qdcg.line1","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax, root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax, qdcg.f1040.line15, qdcg.f1040.line3a, qdcg.f1040.status, f1040.qdcg.line25, qdcg.sd.distributions

@@ -1,5 +1,56 @@
 # Transcription expression audit — 2026-10-25
 
+## Current HSA source/availability correction after 1b75a3b — 2026-10-26
+
+BUG-0138 is repaired with an explicit supplied-figure consistency check, shared by TypeScript
+and Lean. An unanswered consistency check may be unperformed, with a derivation note, while
+its expression independently determines the amount. It cannot default an input, suppress a
+refused gate, or replace mandatory eligibility/scope answers. Source input wording and generated
+monthly calendars now account for spouse-attributed family coverage. Existing owner decisions
+about last-month and catchup treatment are retained.
+
+Both current source transcriptions pass expression/refusal validation and all seventeen pinned
+source cases. The authored implementation and Lean also pass. The cases include zero/positive
+distributions, genuinely missing answers, supplied rollover contradictions, mandatory screens,
+and one/two spouse HSAs. Reference answers stay host-side. Eight source-derived numeric
+regressions are ordinary engineering tests and earn no M/B/engine credit.
+
+A draft case dictated intermediate scope-screen placement (BUG-0140). Its twelve artifacts are
+archived and actual corrected requests were issued. The old fourteen-of-fifteen Claude result
+and invalid Flash reply are historical, not current seventeen-case results. All intermediate
+wording, calendar and worked-target requests likewise retain their actual request hashes.
+
+| Current read-only audit | Count |
+| --- | ---: |
+| Verified saved source replies | 95 |
+| Passing current expression/refusal checks | 36 |
+| Requests with every current global question | 2 |
+| Unverified Claude prompts | 15 |
+| Legacy-limited verified receipts | 23 |
+
+The stricter refusal boundary (BUG-0139) rejects four former type passes: Flash g28/s2 and both
+tipjob replies. The global HSA wording change makes other older full-question contexts stale;
+that is not a count of new tax errors. The replay diagnostic flags231 earlier agreements under
+the current checker. The JSON is `.transcription/hsa-final-audit.json`. All source qualification
+remains held pending verified migration/fresh requests and source/interface adjudication.
+
+The worked-review repair requests printed IRS outputs while retaining helper-branch selection.
+The first change kept identical four cases/facts/branches and reduced432 helper-heavy fields to90
+printed outputs. Both families matched90, but those facts had only zero distributions and the
+request included unnecessary internal validation totals. Those earlier runs are archived.
+The strengthened five-case selection reaches97 branches versus87, with none lost, includes a
+positive-distribution/tax case, and withholds derived HSA Step1/share totals and split counts
+(BUG-0143). Current requests ask for105 printed values. Claude matches105; Flash matches98 and
+uses inactive agreed-allocation figures despite allocation=equal in one case. The seven wrong
+values are dropped explicitly, with source-derived arithmetic in their rulings. They remain
+visible as7/105=6.7% model noise, within the existing10% per-run limit. There are no representation
+rulings in the new native run. This does not complete roadmap1.5 for other legacy/helper-only
+records, and the finite HSA source bank is not a whole-form proof.
+
+113 offline review tests and the separate consistency/calendar and seeded-job checks pass.
+The original owner readings are unchanged; no new human packet is required. The numeric
+scoreboard is regenerated separately by check-all; these source-bank checks create no credit.
+
 ## Current adapter separation and replacements after 0ef4912
 
 Internal div.screen is now checked as project plumbing, not a blind IRS quantity. Twenty-one

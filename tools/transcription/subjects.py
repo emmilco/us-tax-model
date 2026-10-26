@@ -4,7 +4,7 @@ records, so that check_logs.py can tell when a log no longer describes the data.
   transcription  the form's definition, citations left out (tools/citations.py checks them)
   render         the rendered English (rendered/<year>/<form>.md), citations left out
   classm         what the hand-work computes: each line's id, type and expression,
-                 without an input's question wording
+                 without an input's question wording, plus explicit when_known consistency modes
 
 A change to the review tool's prompt or to the pages a citation names does not
 change a subject: those are deliberate and rerun deliberately.
@@ -44,7 +44,10 @@ def of_computation(yaml_text):
     raw = yaml.safe_load(yaml_text)
     doc = raw.get("form") or raw.get("def")
     rows = [{"id": l.get("id"), "type": l.get("type"),
-             "expr": {k: v for k, v in (l.get("expr") or {}).items() if k != "source"}} for l in doc.get("lines", [])]
+             "expr": {k: v for k, v in (l.get("expr") or {}).items() if k != "source"},
+             **({"when_known": [r["when"] for r in l.get("refuses", []) if r.get("when_known")]}
+                if any(r.get("when_known") for r in l.get("refuses", [])) else {})}
+            for l in doc.get("lines", [])]
     return _sha(rows)
 
 

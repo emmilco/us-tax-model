@@ -12,7 +12,7 @@ import subprocess
 ROOT = Path(__file__).resolve().parents[2]
 DIRECTORY = Path(__file__).resolve().parent / "input_contracts"
 POLICY = "source-partial-inputs-v1"
-REQUIRED = {"2025": {"dependent"}}
+REQUIRED = {"2025": {"dependent", "f8889"}}
 
 
 def encoded(value):

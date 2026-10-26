@@ -209,6 +209,21 @@ This subsection states the order in which the evaluators compute, as rules a rea
 
 **4.7.1 Refusal gates are evaluated at line entry, in order, before the expression.** (`eval.ts` `evalLine` 206–218; `Eval.lean` `eval` case `.fresh`, 305–314.) When a line is evaluated for the first time in a frame, its `refuses` entries are read in list order; each gate is evaluated as a line of the same frame. The first gate whose value is `true` ends the list: the line's value is a refusal carrying that gate's key and the entry's form, remedy and cite, and neither the later gates nor the expression is evaluated. A gate whose value is unknown, or is itself a refusal, also ends the list: the line's value is that gate's value, unchanged (an unknown stays an unknown; a refused gate passes its refusal through), and neither the later gates nor the expression is evaluated. A gate that is `false` passes to the next gate; when every gate is false the expression is evaluated. This is BUG-0083, open by the owner's decision: with gate 1 unknown and gate 2 true the line is unknown, not refused, in both evaluators. Consequences the equivalence arguments use: a line's own gates always precede anything its expression reads; a gate the containing line has already found false is, inside the expression, a memoized `false` (4.7.6), so an identical gate on an operand is redundant there; the refusal a line's own list produces is in a different position from a refusal its expression would pass through, and removing an entry that is not the last lets the next entry's gate decide first.
 
+
+An explicitly declared consistency entry may carry `when_known: true`. It checks supplied
+figures: a known true gate still refuses, a refused gate still propagates its refusal, and a
+known false gate passes. An unknown consistency gate is left unperformed and evaluation
+continues to the expression. No input is assigned zero or false: the expression must determine
+the amount independently, or remain unknown itself. Dependencies reached only by an unperformed
+check are discarded from that evaluation's memo so they do not become interview questions; an
+unknown independently requested by another target remains. A derivation note records the
+unperformed check. Lean mirrors this rule and never suppresses step-budget exhaustion.
+Ordinary eligibility/scope entries retain the ordered unknown-blocking behavior above, including
+BUG-0083. Only an ordinary entry that passed establishes a false gate for copy-chain equivalence;
+passing an unanswered consistency entry does not establish falsehood. The first use is the
+Form8889 rollover consistency check, whose absent amount cannot affect a zero-distribution result
+but whose supplied amount must still be checked against total distributions.
+
 *Divergence D1.* A gate whose value is neither `bool` nor incomplete (for example a money value) ends the list in TypeScript with that value (line 215) but is skipped in Lean (310–311 test only `isUnknown` and `true`). Unreachable: the checker rejects a gate that is not a `Bool` line (`check.ts`, "refusal gate must be Bool").
 
 *Divergence D2.* A def parameter line evaluated inside an instance is resolved to its bound operand before its gates in TypeScript (`evalLine` 192–204 precede 206) and after its gates in Lean (`.fresh` 305–314 precede 317–323). No parameter line in the 2025 data has a `refuses` list, so the two agree on the current data; no checker rule forbids one.

@@ -121,16 +121,19 @@ form:
         ... on the first day of the month?')
   - id: f8889.months_family
     printed: (helper)
-    label: Of those months, the number in which your HDHP provided family coverage on the first day of the month
+    label: Of those eligible months, the number in which you had or were treated as having family HDHP coverage
     type: Count
     expr:
       op: input
-      source: Of those months, the number in which your high-deductible health plan provided family coverage on the first
-        day of the month; 0 to the number of eligible months
+      source: Of those eligible months, the number in which you had or were treated as having family high-deductible health
+        plan coverage on the first day of the month; 0 to the number of eligible months. If you and your spouse were both
+        eligible individuals for a month and either of you had family HDHP coverage, count that month as family coverage
+        for both of you and disregard either spouse's self-only plan. Count the actual eligible months here; the separate
+        last-month-rule question determines whether December 1 coverage is treated as applying throughout the year.
     cite:
       doc: i8889
-      locator: p. 6, Line 3 Limitation Chart and Worksheet, 'What type of coverage did your HDHP provide on the first day
-        of the month?'
+      locator: p. 4, How To Complete Part I and Line 3 rule 1 (both eligible spouses are treated as having family coverage
+        if either has a family HDHP); p. 6, Line 3 Limitation Chart and Worksheet, monthly coverage
   - id: f8889.bad_months
     printed: (helper)
     label: The month counts or the December 1 coverage are impossible (more than 12 eligible months, more family months
@@ -468,16 +471,18 @@ form:
       locator: p. 4, Line 3, rule 4, 'you changed your type of coverage during the year'
   - id: f8889.dec_coverage
     printed: (helper)
-    label: 'Your HDHP coverage on December 1, 2025, as an eligible individual: none, self_only or family'
+    label: 'HDHP coverage you had or were treated as having on December 1, 2025: none, self_only or family'
     type: Enum(hsa_coverage)
     expr:
       op: input
-      source: 'Your high-deductible health plan coverage on December 1, 2025, if you were an eligible individual that day:
-        none (not an eligible individual on December 1), self_only, or family'
+      source: 'The high-deductible health plan coverage you had or were treated as having on December 1, 2025: none
+        (you were not an eligible individual that day), self_only, or family. If you and your spouse were both eligible
+        individuals that day and either of you had family HDHP coverage, answer family for both spouses and disregard
+        either spouse''s self-only plan.'
     cite:
       doc: i8889
-      locator: p. 4, Line 3, rules 2 and 4(b), 'the type of HDHP coverage you had on the first day of the last month of your
-        tax year'
+      locator: p. 4, How To Complete Part I and Line 3 rules 1, 2 and 4(b), spouse-attributed family coverage and the
+        coverage on the first day of the last month
   - id: f8889.dec_amount
     printed: (helper)
     label: The maximum amount for the HDHP coverage you had on December 1 (the full-year amount of that coverage type)
@@ -1382,6 +1387,7 @@ form:
       locator: Form 8889 (2025), line 14b (withdrawals of excess contributions are refused by f8889.unsupported)
     refuses:
     - when: f8889.rollover_bad
+      when_known: true
       form: Form 8889 line 14b
       remedy: The distributions rolled over are part of the total distributions on line 14a and cannot be more than it.
       cite:

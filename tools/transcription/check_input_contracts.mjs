@@ -23,11 +23,15 @@ if (errors.length) {
         errors.push({ line: line.id, message: 'invalid refusal gate id' });
         return null;
       }
+      if (typeof refusal === 'object' && (Object.keys(refusal).some(key => !['when', 'when_known', 'form', 'remedy', 'cite'].includes(key)) || ('when_known' in refusal && refusal.when_known !== true))) {
+        errors.push({ line: line.id, message: 'invalid consistency-check declaration' });
+        return null;
+      }
       let id = `${form}.__contract_gate_${gateChecks.length}`;
       while (ids.has(id)) id += '_';
       ids.add(id);
       gateChecks.push({ id, type: 'Bool', expr: { op: 'test', eq: [when, { const: true }] } });
-      return { when, form: 'model-declared refusal', remedy: 'Outside candidate scope', cite: null };
+      return { when, ...(refusal?.when_known ? { when_known: true } : {}), form: 'model-declared refusal', remedy: 'Outside candidate scope', cite: null };
     }).filter(Boolean);
     return { id: line.id, type: line.type, expr: line.expr, refuses, cite: null };
   });

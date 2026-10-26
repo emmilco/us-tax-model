@@ -65,6 +65,7 @@ step check_macrs_tables python3 tools/check_macrs_tables.py "$@"
 step check_auto_limits python3 tools/check_auto_limits.py "$@"
 step check_bug_inventory python3 tools/check_bug_inventory.py
 step review_tools python3 tools/transcription/test_review_tools.py
+step consistency_checks node tools/test_consistency_checks.mjs
 step adapter_contracts python3 tools/transcription/adapter_contracts.py "$@"
 step classm_skipped python3 tools/transcription/audit_skipped.py
 step compare_families python3 tools/transcription/compare_families.py "$@"

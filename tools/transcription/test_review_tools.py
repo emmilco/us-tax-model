@@ -5,6 +5,7 @@ import io
 import sys
 import tempfile
 import subprocess
+import threading
 import unittest
 from pathlib import Path
 from unittest.mock import patch
@@ -651,6 +652,60 @@ class LiteralUnits(unittest.TestCase):
         self.assertNotEqual(rulings.review_context("transcription", head), rulings.review_context("transcription", typed))
 
 
+class ConcurrentWorkedReceipts(unittest.TestCase):
+    def test_concurrent_cases_keep_their_own_prompt_response_and_identity(self):
+        with tempfile.TemporaryDirectory() as temp:
+            path = Path(temp, 'jobs.json')
+            jobs = [{'id': f'classm.fake.{i}', 'doc': 'fake', 'fill': [], 'given': [], 'own_inputs': []} for i in (1, 2)]
+            path.write_text(json.dumps({'jobs': jobs}))
+            barrier = threading.Barrier(2)
+            def reply(prompt, model, base, *args):
+                barrier.wait(timeout=5)
+                return 'lines: []\n# ' + prompt, {'cost_usd': 0}
+            with patch.object(M, 'JOBS', str(path)), patch.object(M, 'RAW', temp), \
+                    patch.object(M.subprocess, 'run'), patch.object(M, 'load_form', return_value={'id': 'fake'}), \
+                    patch.object(M, 'manifest', return_value={}), patch.object(M, 'excerpt_for', return_value=('SOURCE', [])), \
+                    patch.object(M, 'build_prompt', side_effect=lambda form, excerpt, job: job['id']), \
+                    patch.object(M, 'review_response', side_effect=reply), \
+                    patch.object(M, 'write_outputs', return_value=('LOG', {'AGREE': 0, 'DISAGREE': 0, 'SKIPPED': 0, 'MISSING': 0})) as write, \
+                    patch.object(sys, 'argv', ['classm.py', '--doc', 'fake', '--model', 'deepseek-flash', '--case-jobs', '2']):
+                with self.assertRaises(SystemExit) as done:
+                    M.main()
+                self.assertEqual(done.exception.code, 0)
+            runs = write.call_args.args[3]
+            self.assertEqual(list(runs), [job['id'] for job in jobs])
+            for job in jobs:
+                self.assertEqual(runs[job['id']]['raw'], 'lines: []\n# ' + job['id'])
+                self.assertEqual(runs[job['id']]['prompt_sha'], transcription_audit.sha(job['id']))
+
+
+class HsaPartialInputs(unittest.TestCase):
+    def assess(self, lines):
+        bank = contracts.load('f8889', T.Y)
+        return contracts.assess('f8889', T.Y, lines, T.model_type_context(), contracts.public_prompt(bank))
+
+    def test_source_facts_cover_zero_positive_missing_and_contradictory_figures(self):
+        result = self.assess(T.load_form('f8889')['lines'])
+        self.assertEqual((result['state'], len(result['cases'])), ('pass', 17))
+
+    def test_consistency_mode_changes_the_worked_review_subject(self):
+        text = Path(T.FORMS, 'f8889.yaml').read_text()
+        self.assertNotEqual(T.subjects.of_computation(text), T.subjects.of_computation(text.replace('      when_known: true\n', '')))
+
+    def test_original_required_rollover_gate_fails_zero_distribution_case(self):
+        changed = json.loads(json.dumps(T.load_form('f8889')['lines']))
+        next(line for line in changed if line['id'] == 'f8889.line14b')['refuses'][0].pop('when_known')
+        result = self.assess(changed)
+        self.assertFalse(next(case for case in result['cases'] if case['id'] == 'H01')['pass'])
+
+    def test_skipping_the_consistency_gate_cannot_pass_supplied_contradictions(self):
+        changed = json.loads(json.dumps(T.load_form('f8889')['lines']))
+        next(line for line in changed if line['id'] == 'f8889.line14b')['refuses'] = []
+        result = self.assess(changed)
+        self.assertFalse(next(case for case in result['cases'] if case['id'] == 'H03')['pass'])
+        self.assertFalse(next(case for case in result['cases'] if case['id'] == 'H09')['pass'])
+
+
 class ModelExpressionTypes(unittest.TestCase):
     def test_validation_follows_count_proration_table_and_collection_operands(self):
         expressions = [
@@ -684,6 +739,13 @@ class ModelExpressionTypes(unittest.TestCase):
         project = self.lines()
         with patch.object(T, "model_type_context", return_value=self.context(project)):
             self.assertEqual(T.validate_model_types("probe", project[1:]), [])
+
+    def test_nonboolean_or_malformed_refusal_is_rejected_without_execution(self):
+        project = self.lines()
+        for refusal in ['probe.months', {'when': 'probe.result', 'when_known': 'true'}, {'when': 'probe.result', 'invented': True}]:
+            candidate = [{**project[1], 'refuses': [refusal]}]
+            with self.subTest(refusal=refusal), patch.object(T, 'model_type_context', return_value=self.context(project)):
+                self.assertTrue(T.validate_model_types('probe', candidate))
 
     def test_same_expression_with_wrong_declared_type_cannot_agree(self):
         project = self.lines()

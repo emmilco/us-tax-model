@@ -204,9 +204,18 @@ function evalLine(ctx: Ctx, frame: Frame, lineId: string): Derivation {
     };
   } else {
     const gateOps: { ref: string; value: Value }[] = [];
+    const gateNotes: string[] = [];
     let blocked: Value | null = null;
     for (const refusal of line.refuses ?? []) {
+      const before = refusal.when_known ? new Map(ctx.memo) : null;
       const gate = evalLine(ctx, frame, refusal.when);
+      if (before && gate.value.kind === "unknown") {
+        // An unanswered consistency check does not create an interview dependency.
+        // Its expression must still determine the amount without assumed answers.
+        ctx.memo = before;
+        gateNotes.push(`Check for ${refusal.form} awaits supplied figures; no answer was assumed.`);
+        continue;
+      }
       gateOps.push({ ref: gate.line, value: gate.value });
       if (gate.value.kind === "bool" && gate.value.value) {
         blocked = { kind: "refusal", gate: gate.line, form: refusal.form, remedy: refusal.remedy, cite: refusal.cite };
@@ -229,6 +238,7 @@ function evalLine(ctx: Ctx, frame: Frame, lineId: string): Derivation {
       result = evalExpr(ctx, frame, lineId, line.expr as Expr, line.cite);
     }
     result.operands.unshift(...gateOps);
+    result.notes.push(...gateNotes);
   }
   if (line?.ambiguity) {
     const entry=ctx.data.register.entries.find(e=>e.id===line.ambiguity);

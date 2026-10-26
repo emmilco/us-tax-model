@@ -9,6 +9,7 @@
 import fc from "fast-check";
 import type { CanonicalData, FormDoc, Inputs, Line } from "./types.js";
 import { YEAR } from "./year.js";
+import { cohereSpouseHsa } from "./hsa-calendar.js";
 
 const WAGE_BASE = 17_610_000; // Social Security wage base, cents
 const ADDL_MEDICARE_START = 20_000_000;
@@ -679,6 +680,7 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
       inputs[`${HSA}.allocated`] = Math.max(0, 855_000 - h.allocated);
     }
   }
+  cohereSpouseHsa(inputs);
   applyScreens(inputs);
   return inputs;
 }
