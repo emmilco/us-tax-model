@@ -1,0 +1,5152 @@
+[
+ [
+  "forms/2026/asset.yaml",
+  6,
+  "note: 'One entry per item of property other than a vehicle (vehicles are scveh entries), placed in service 2005 to 2025"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  65,
+  "source: 'Does any of these apply to this property: you disposed of it or converted it to personal use in 2025; you acquired"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  102,
+  "source: The year you placed this property in service in the business (2005 to 2025)"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  259,
+  "- id: asset.is2025"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  261,
+  "label: Placed in service in 2025"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  267,
+  "- const: y2025"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  271,
+  "beginning in 2025\"; Line 17"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  274,
+  "label: Reported on lines 6, 14 and 19 (property placed in service in 2025 that is not listed property)"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  281,
+  "- asset.is2025"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  290,
+  "only for assets placed in service during the tax year beginning in 2025\""
+ ],
+ [
+  "forms/2026/asset.yaml",
+  293,
+  "label: Reported on line 17 (property placed in service before 2025 that is not listed property)"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  300,
+  "- asset.is2025"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  309,
+  "- id: asset.on_26_2025"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  311,
+  "label: Reported on lines 25 and 26 column (i) (listed property placed in service in 2025)"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  318,
+  "- asset.is2025"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  329,
+  "label: Year of recovery in 2025"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  353,
+  "label: The recovery period ended before 2025"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  365,
+  "label: Quarter of 2025 in which the property was placed in service"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  369,
+  "source: 'The quarter of 2025 in which you placed this property in service: January to March, April to June, July to"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  445,
+  "label: Acquired after January 19, 2025"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  449,
+  "source: Did you acquire this property after January 19, 2025?"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  453,
+  "after September 27, 2017, and before January 20, 2025"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  461,
+  "(full), elect the 40% allowance instead of 100% for property acquired after January 19, 2025 (forty), or elect not"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  469,
+  "label: Is the choice the same for all property of this class placed in service in 2025?"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  474,
+  "return) placed in service in 2025?"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  539,
+  "label: 'The allowance when it is claimed: 100% if acquired after January 19, 2025, otherwise 40%'"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  559,
+  "after September 27, 2017, and before January 20, 2025"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  592,
+  "shown_when: asset.on_26_2025"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  603,
+  "shown_when: asset.on_26_2025"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  696,
+  "- id: asset.macrs2025"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  698,
+  "label: MACRS depreciation for 2025 property"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  732,
+  "- id: asset.mq_q4_2025"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  824,
+  "label: MACRS rate for the 2025 year of recovery"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  838,
+  "label: MACRS depreciation for 2025"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  849,
+  "label: MACRS deduction for 2025 on property placed in service before 2025"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  871,
+  "- id: asset.dep_2025"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  873,
+  "label: MACRS on 2025 property"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  881,
+  "- asset.is2025"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  883,
+  "then: asset.macrs2025"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  887,
+  "- asset.is2025"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  893,
+  "- id: asset.bonus_2025"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  895,
+  "label: Special allowance on 2025 property"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  903,
+  "- asset.is2025"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  909,
+  "- asset.is2025"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  915,
+  "- id: asset.s179_2025"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  917,
+  "label: Section 179 elected on 2025 property"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  925,
+  "- asset.is2025"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  931,
+  "- asset.is2025"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  947,
+  "- asset.is2025"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  949,
+  "then: asset.mq_q4_2025"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  953,
+  "- asset.is2025"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  961,
+  "label: Mid-quarter test basis, all of 2025"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  969,
+  "- asset.is2025"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  975,
+  "- asset.is2025"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  983,
+  "label: Cost of section 179 property placed in service in 2025"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  991,
+  "- asset.is2025"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  993,
+  "then: asset.cost179_2025"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  997,
+  "- asset.is2025"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  1003,
+  "- id: asset.cost179_2025"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  1029,
+  "label: MACRS on property placed in service before 2025"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  1037,
+  "- asset.is2025"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  1043,
+  "- asset.is2025"
+ ],
+ [
+  "forms/2026/asset.yaml",
+  1057,
+  "- asset.dep_2025"
+ ],
+ [
+  "forms/2026/carloan.yaml",
+  6,
+  "note: One entry per loan; name each entry by the vehicle's VIN (a vehicle with a loan refinanced during 2025 has one"
+ ],
+ [
+  "forms/2026/carloan.yaml",
+  10,
+  "proposed \u00a7 1.163-16(d)(2)(iii) and (d)(4); the ratio is rounded to six places (amb.2025.carloan_ratio_places)."
+ ],
+ [
+  "forms/2026/carloan.yaml",
+  33,
+  "doc: fr-2025-24154"
+ ],
+ [
+  "forms/2026/carloan.yaml",
+  51,
+  "fr-2025-24154 proposed \u00a7 1.163-16(d)(3) (related party indebtedness)"
+ ],
+ [
+  "forms/2026/carloan.yaml",
+  87,
+  "label: Interest you paid or accrued on this loan in 2025"
+ ],
+ [
+  "forms/2026/carloan.yaml",
+  91,
+  "source: Total interest you paid or accrued on this loan in 2025 (generally from the lender's statement), including any"
+ ],
+ [
+  "forms/2026/carloan.yaml",
+  108,
+  "doc: fr-2025-24154"
+ ],
+ [
+  "forms/2026/carloan.yaml",
+  119,
+  "doc: fr-2025-24154"
+ ],
+ [
+  "forms/2026/carloan.yaml",
+  130,
+  "doc: fr-2025-24154"
+ ],
+ [
+  "forms/2026/carloan.yaml",
+  140,
+  "doc: fr-2025-24154"
+ ],
+ [
+  "forms/2026/carloan.yaml",
+  152,
+  "doc: fr-2025-24154"
+ ],
+ [
+  "forms/2026/carloan.yaml",
+  163,
+  "doc: fr-2025-24154"
+ ],
+ [
+  "forms/2026/carloan.yaml",
+  174,
+  "doc: fr-2025-24154"
+ ],
+ [
+  "forms/2026/carloan.yaml",
+  186,
+  "doc: fr-2025-24154"
+ ],
+ [
+  "forms/2026/carloan.yaml",
+  198,
+  "doc: fr-2025-24154"
+ ],
+ [
+  "forms/2026/carloan.yaml",
+  205,
+  "doc: fr-2025-24154"
+ ],
+ [
+  "forms/2026/carloan.yaml",
+  217,
+  "doc: fr-2025-24154"
+ ],
+ [
+  "forms/2026/carloan.yaml",
+  245,
+  "doc: fr-2025-24154"
+ ],
+ [
+  "forms/2026/carloan.yaml",
+  259,
+  "doc: fr-2025-24154"
+ ],
+ [
+  "forms/2026/carloan.yaml",
+  262,
+  "ambiguity: amb.2025.carloan_ratio_places"
+ ],
+ [
+  "forms/2026/carloan.yaml",
+  283,
+  "doc: fr-2025-24154"
+ ],
+ [
+  "forms/2026/carloan.yaml",
+  296,
+  "doc: fr-2025-24154"
+ ],
+ [
+  "forms/2026/carloan.yaml",
+  300,
+  "ambiguity: amb.2025.carloan_ratio_places"
+ ],
+ [
+  "forms/2026/carloan.yaml",
+  330,
+  "source: The part of this loan's 2025 interest you deduct on Schedule C (the business use of the vehicle; zero if none)"
+ ],
+ [
+  "forms/2026/dcprov.yaml",
+  39,
+  "label: Was the care provider your household employee in 2025?"
+ ],
+ [
+  "forms/2026/dcprov.yaml",
+  42,
+  "source: Was this care provider your household employee in 2025? (Someone you pay to care for your dependent or spouse"
+ ],
+ [
+  "forms/2026/dcprov.yaml",
+  54,
+  "source: The total amount you actually paid this provider in 2025, including amounts your employer paid to the provider"
+ ],
+ [
+  "forms/2026/dcprov.yaml",
+  64,
+  "your child under 19 at the end of 2025, a person who was your spouse at any time in 2025, or the parent of your qualifying"
+ ],
+ [
+  "forms/2026/dcprov.yaml",
+  69,
+  "your child (including a stepchild or foster child) who was under age 19 at the end of 2025, even if not your dependent;"
+ ],
+ [
+  "forms/2026/dcprov.yaml",
+  70,
+  "a person who was your spouse at any time during 2025; or the parent of your qualifying person, if that person"
+ ],
+ [
+  "forms/2026/dcprov.yaml",
+  75,
+  "ambiguity: amb.2025.dc_ineligible_providers"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  29,
+  "ambiguity: amb.2025.foster_parent_relationship"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  33,
+  "label: Age at the end of 2025"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  36,
+  "source: Age at the end of 2025 (whole years)"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  43,
+  "label: Full-time student in 2025?"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  46,
+  "source: Was this person a full-time student in 2025?"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  56,
+  "source: Was this person permanently and totally disabled at any time in 2025?"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  63,
+  "label: Months lived with you in 2025, counting temporary absences"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  66,
+  "source: Months this person lived with you in 2025, counting temporary absences for school, vacation, business,"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  68,
+  "the person lived with you for more than half of 2025 but fewer than 7 full months. For a person born, died, adopted"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  69,
+  "or placed with you in 2025 who meets the other conditions to be your qualifying child, enter 12 if your home"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  71,
+  "born or who died in 2025, or adopted, lawfully placed with you for legal adoption, or placed with you as an eligible"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  72,
+  "foster child in 2025, enter 12 only if your home was their home for the entire time they were alive or since"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  83,
+  "source: Did this person provide over half of their own support for 2025?"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  93,
+  "source: Is this person filing a joint return for 2025, other than only to claim a refund of withheld or estimated tax?"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  124,
+  "source: 'Was this person married at the end of 2025 (a person legally separated under a decree of divorce or separate maintenance is not married), or is this person filing a joint return for 2025 (for example with a spouse who died during 2025)?'"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  134,
+  "source: Did this person have an SSN, ITIN or ATIN issued on or before the due date of your 2025 return (including"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  145,
+  "source: Did this person have an SSN valid for employment, issued before the due date of your 2025 return (including"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  153,
+  "label: Gross income for 2025"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  156,
+  "source: This person's gross income for 2025"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  166,
+  "source: Did you provide over half of this person's support in 2025?"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  176,
+  "source: 'Does this person meet the conditions to be the qualifying child of any other person for 2025, under the dependent rules or under the EIC rules (which have no support test)?'"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  196,
+  "source: 'Did you and others together provide over half of this person''s support for 2025, with no one person providing over half (a multiple support situation), whether you or another contributor claims the person?'"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  203,
+  "label: For a parent not living with you, you paid over half the cost of their main home for all of 2025 (or the part of"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  204,
+  "2025 they were alive)?"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  208,
+  "home for all of 2025 (or, if your parent died in 2025, for the entire part of 2025 your parent was alive)?"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  217,
+  "label: Born or died in 2025?"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  220,
+  "source: Was this person born in 2025, or did this person die in 2025?"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  228,
+  "label: Adopted, placed for adoption or placed as a foster child in 2025?"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  231,
+  "source: Did you adopt this person in 2025, or was this person lawfully placed with you for legal adoption by you, or"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  232,
+  "placed with you as an eligible foster child, during 2025?"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  236,
+  "placed with you for legal adoption by you in 2025, or the person was an eligible foster child placed with you"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  237,
+  "during 2025\""
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  241,
+  "label: Lived with you more than half the part of 2025 they were alive, or since the adoption or placement?"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  244,
+  "source: Was your home this person's home for more than half of the part of 2025 they were alive (or, for a person"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  245,
+  "adopted or placed with you in 2025, more than half of the time since the adoption or placement), counting"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  252,
+  "with you in 2025\"; i1040gi pp. 14-15, temporary absences, \"or detention in a juvenile facility\""
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  256,
+  "label: Lived with you more than half of 2025, or, for a relative other than a qualifying child (whose months already count"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  257,
+  "the part of the year), more than half of the part of 2025 they were alive or since their adoption or placement"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  289,
+  "than half of 2025 if your main home was this person's main home for more than half the time since the person was"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  290,
+  "adopted or placed with you in 2025\""
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  294,
+  "label: Lived with you more than half of 2025, or, for a person other than a qualifying child born or who died in 2025, more"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  295,
+  "than half of the part of 2025 they were alive"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  320,
+  "having lived with you for more than half of 2025 if your home was the person's home more than half the time they"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  321,
+  "were alive in 2025\""
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  377,
+  "label: Lived with you in the United States for more than half of 2025?"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  381,
+  "than half of 2025? If you were on extended active military duty outside the United States, your main home is"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  383,
+  "juvenile detention count as time lived with you. A child born or who died in 2025 counts if your home was"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  385,
+  "placed with you for legal adoption, or who was placed with you as an eligible foster child in 2025 counts if"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  397,
+  "source: Did this person have a social security number issued on or before the due date of your 2025 return"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  446,
+  "label: Lived with you for more than half of 2025"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  739,
+  "A dependent child who was born and died in 2025 without an SSN, entered as \"Died\" on row (3) with a copy of the"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  747,
+  "label: Under age 17 at the end of 2025"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  988,
+  "label: Qualifying child for the EIC (relationship, age, not filing a joint return, lived with you in the United States for more than half of 2025)"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  1011,
+  "return AND lived with you in the United States for more than half of 2025)"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  1048,
+  "label: Your qualifying child who is your dependent and was under age 13 for all of 2025 (age 12 or younger at the end of 2025)"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  1066,
+  "label: Your qualifying child who is your dependent and was 13 at the end of 2025 (who may have been under 13 for part of the year)"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  1084,
+  "label: Under age 13 for part of 2025 when the care was provided?"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  1087,
+  "source: Was this child under age 13 for part of 2025, when you paid for their care? (A child who turned 13 in 2025"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  1095,
+  "label: Your qualifying child who is your dependent, turned 13 during 2025 and was under 13 for part of 2025 when the care was provided"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  1116,
+  "source: In 2025, was this person physically or mentally not able to care for themselves (unable to dress, clean or feed"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  1125,
+  "label: Your dependent who lived with you for more than half of 2025 and was not able to care for themselves"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  1185,
+  "label: Qualified expenses incurred and paid in 2025 for this person's care"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  1188,
+  "source: Qualified expenses you incurred and paid in 2025 for this person's care while they were a qualifying person"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  1190,
+  "or look for work. Include care you prepaid in 2024 for 2025, your share of employment taxes on a care provider's"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  1192,
+  "employer to the provider); Form 2441 subtracts the benefits you exclude. Do not include 2024 care paid in 2025,"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  1193,
+  "2025 care paid in 2026, payments for care in 2026, amounts reimbursed by a state social services agency, payments"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  1199,
+  "ambiguity: amb.2025.dc_line30"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  1203,
+  "label: Qualified expenses you incurred and paid in 2025 for the person listed in column (a)"
+ ],
+ [
+  "forms/2026/dependent.yaml",
+  1210,
+  "ambiguity: amb.2025.dc_line30"
+ ],
+ [
+  "forms/2026/div.yaml",
+  300,
+  "ambiguity: amb.2025.box2c_scope"
+ ],
+ [
+  "forms/2026/eic.yaml",
+  17,
+  "label: Could you be a qualifying child of another person for 2025?"
+ ],
+ [
+  "forms/2026/eic.yaml",
+  20,
+  "source: Could you be a qualifying child of another person for 2025? Answer no if the other person isn't required"
+ ],
+ [
+  "forms/2026/eic.yaml",
+  21,
+  "to file, and isn't filing, a 2025 tax return or is filing a 2025 return only to claim a refund of withheld income"
+ ],
+ [
+  "forms/2026/eic.yaml",
+  48,
+  "age 65 at the end of 2025? (Check 'Yes' if you, or your spouse if filing a joint return, were born after December"
+ ],
+ [
+  "forms/2026/eic.yaml",
+  53,
+  "label: You, or your spouse if filing a joint return, were at least age 25 but under age 65 at the end of 2025"
+ ],
+ [
+  "forms/2026/eic.yaml",
+  63,
+  "age 65 at the end of 2025?\""
+ ],
+ [
+  "forms/2026/eic.yaml",
+  67,
+  "label: Was your main home in the United States for more than half of 2025?"
+ ],
+ [
+  "forms/2026/eic.yaml",
+  71,
+  "2025? If you were on extended active military duty outside the United States, that time counts as a main home in"
+ ],
+ [
+  "forms/2026/eic.yaml",
+  499,
+  "label: Step 1, question 4. Not a nonresident alien for any part of 2025"
+ ],
+ [
+  "forms/2026/eic.yaml",
+  590,
+  "label: Did you and your spouse have the same principal residence for the last 6 months of 2025?"
+ ],
+ [
+  "forms/2026/eic.yaml",
+  593,
+  "source: Did you and your spouse have the same principal residence for the last 6 months of 2025?"
+ ],
+ [
+  "forms/2026/eic.yaml",
+  600,
+  "label: Are you legally separated under a written separation agreement or a decree of separate maintenance, and did you live apart from your spouse at the end of 2025?"
+ ],
+ [
+  "forms/2026/eic.yaml",
+  604,
+  "separate maintenance, and did you live apart from your spouse at the end of 2025?"
+ ],
+ [
+  "forms/2026/eic.yaml",
+  611,
+  "label: 'Step 3, questions 3 to 5: not a married filer filing separately or as head of household, or one who lived apart from the spouse for the last 6 months of 2025 or is legally separated and lived apart at the end of 2025'"
+ ],
+ [
+  "forms/2026/f1040.yaml",
+  79,
+  "source: 'Total tax-exempt interest and tax-exempt OID for 2025 (Form 1099-INT box 8; Form 1099-OID boxes 2 and 11), net of amortized bond premium and acquisition premium; do not include exempt-interest dividends (Form 1099-DIV box 12) or interest earned in an IRA, HSA, Archer or Medicare Advantage MSA, or Coverdell education savings account'"
+ ],
+ [
+  "forms/2026/f1040.yaml",
+  548,
+  "ambiguity: amb.2025.sd4952_selection"
+ ],
+ [
+  "forms/2026/f1040.yaml",
+  739,
+  "label: 2025 estimated tax payments and amount applied from 2024 return"
+ ],
+ [
+  "forms/2026/f1040.yaml",
+  743,
+  "source: 2025 estimated tax payments and amount applied from your 2024 return (supplied total)"
+ ],
+ [
+  "forms/2026/f1040.yaml",
+  780,
+  "label: Check if your filing status is MFS or HOH and you lived apart from your spouse for the last 6 months of 2025, or you are legally separated according to your state law under a written separation agreement or a decree of separate maintenance and you did not live in the same household as your spouse at the end of 2025."
+ ],
+ [
+  "forms/2026/f2441.yaml",
+  9,
+  "line 9b (2024 expenses paid in 2025), deemed income for a student or disabled spouse or filer (and with it a disabled"
+ ],
+ [
+  "forms/2026/f2441.yaml",
+  10,
+  "spouse as a qualifying person), a qualifying person who is not your dependent, a spouse who died in 2025, a qualifying"
+ ],
+ [
+  "forms/2026/f2441.yaml",
+  31,
+  "source: Did you (or your spouse, if filing jointly) receive dependent care benefits for 2025 \u2014 amounts shown in box"
+ ],
+ [
+  "forms/2026/f2441.yaml",
+  32,
+  "10 of a Form W-2, or an amount from your 2024 dependent care plan that you used in 2025 during a grace period?"
+ ],
+ [
+  "forms/2026/f2441.yaml",
+  43,
+  "source: In 2025, did you (or your spouse, if filing jointly) pay for, or incur expenses for, the care of a qualifying"
+ ],
+ [
+  "forms/2026/f2441.yaml",
+  45,
+  "(and your spouse) could work or look for work? Include 2024 care you paid for in 2025 and 2025 care you will pay"
+ ],
+ [
+  "forms/2026/f2441.yaml",
+  71,
+  "label: Were you or your spouse a full-time student or not able to care for yourselves in 2025?"
+ ],
+ [
+  "forms/2026/f2441.yaml",
+  74,
+  "source: In 2025, were you (or your spouse, if filing jointly) a full-time student at a school for some part of each"
+ ],
+ [
+  "forms/2026/f2441.yaml",
+  83,
+  "label: Did your spouse die in 2025?"
+ ],
+ [
+  "forms/2026/f2441.yaml",
+  86,
+  "source: Did your spouse die in 2025?"
+ ],
+ [
+  "forms/2026/f2441.yaml",
+  93,
+  "label: Married filing jointly with a spouse who died in 2025"
+ ],
+ [
+  "forms/2026/f2441.yaml",
+  115,
+  "half of 2025 and would be your dependent except that they had gross income of $5,200 or more, they filed a joint"
+ ],
+ [
+  "forms/2026/f2441.yaml",
+  116,
+  "return, or you (or your spouse) could be claimed as a dependent on someone else''s 2025 return; or of your child"
+ ],
+ [
+  "forms/2026/f2441.yaml",
+  167,
+  "ambiguity: amb.2025.dc_ineligible_providers"
+ ],
+ [
+  "forms/2026/f2441.yaml",
+  181,
+  "ambiguity: amb.2025.dc_ineligible_providers"
+ ],
+ [
+  "forms/2026/f2441.yaml",
+  345,
+  "label: Total of the qualified expenses incurred and paid in 2025 for the qualifying persons (line 2, column (d), before"
+ ],
+ [
+  "forms/2026/f2441.yaml",
+  359,
+  "ambiguity: amb.2025.dc_line30"
+ ],
+ [
+  "forms/2026/f2441.yaml",
+  372,
+  "spouse during 2025, or the parent of your qualifying child under 13 do not count, and such a provider may not be"
+ ],
+ [
+  "forms/2026/f2441.yaml",
+  480,
+  "ambiguity: amb.2025.dc_line1e_attribution"
+ ],
+ [
+  "forms/2026/f2441.yaml",
+  497,
+  "ambiguity: amb.2025.dc_line1e_attribution"
+ ],
+ [
+  "forms/2026/f2441.yaml",
+  511,
+  "ambiguity: amb.2025.dc_line1e_attribution"
+ ],
+ [
+  "forms/2026/f2441.yaml",
+  539,
+  "ambiguity: amb.2025.dc_line1e_attribution"
+ ],
+ [
+  "forms/2026/f2441.yaml",
+  556,
+  "ambiguity: amb.2025.dc_line1e_attribution"
+ ],
+ [
+  "forms/2026/f2441.yaml",
+  601,
+  "ambiguity: amb.2025.dc_line1e_attribution"
+ ],
+ [
+  "forms/2026/f2441.yaml",
+  646,
+  "form: Earned income of a spouse who died in 2025 (Form 2441, lines 5 and 19)"
+ ],
+ [
+  "forms/2026/f2441.yaml",
+  647,
+  "remedy: The surviving spouse's choice whether to take into account the earned income of a spouse who died in 2025 is"
+ ],
+ [
+  "forms/2026/f2441.yaml",
+  728,
+  "ambiguity: amb.2025.dc_rate_nonpositive_agi"
+ ],
+ [
+  "forms/2026/f2441.yaml",
+  743,
+  "label: If you paid 2024 expenses in 2025, complete Worksheet A in the instructions. Enter the amount from line 13 of the"
+ ],
+ [
+  "forms/2026/f2441.yaml",
+  753,
+  "form: Form 2441 line 9b (Worksheet A, 2024 expenses paid in 2025)"
+ ],
+ [
+  "forms/2026/f2441.yaml",
+  754,
+  "remedy: The credit for 2024 care expenses paid in 2025 is figured on Worksheet A from your 2024 return, which is outside"
+ ],
+ [
+  "forms/2026/f2441.yaml",
+  762,
+  "label: Did you pay in 2025 for care provided in 2024?"
+ ],
+ [
+  "forms/2026/f2441.yaml",
+  765,
+  "source: Did you pay in 2025 any qualified expenses for care provided in 2024?"
+ ],
+ [
+  "forms/2026/f2441.yaml",
+  848,
+  "label: Enter the total amount of dependent care benefits you received in 2025. Amounts you received as an employee should"
+ ],
+ [
+  "forms/2026/f2441.yaml",
+  862,
+  "label: Enter the amount, if any, you carried over from 2024 and used in 2025 during the grace period"
+ ],
+ [
+  "forms/2026/f2441.yaml",
+  865,
+  "source: The amount, if any, your employer's dependent care plan let you carry forward from 2024 that you used in 2025"
+ ],
+ [
+  "forms/2026/f2441.yaml",
+  929,
+  "label: Qualified care expenses incurred in 2025 not already counted in the per-person care amounts"
+ ],
+ [
+  "forms/2026/f2441.yaml",
+  932,
+  "source: Qualified expenses incurred in 2025 for the care of your qualifying persons that are not already included"
+ ],
+ [
+  "forms/2026/f2441.yaml",
+  941,
+  "label: Enter the total amount of qualified expenses incurred in 2025 for the care of the qualifying person(s)"
+ ],
+ [
+  "forms/2026/f2441.yaml",
+  1059,
+  "form: Earned income of a spouse who died in 2025 (Form 2441, lines 5 and 19)"
+ ],
+ [
+  "forms/2026/f2441.yaml",
+  1060,
+  "remedy: The surviving spouse's choice whether to take into account the earned income of a spouse who died in 2025 is"
+ ],
+ [
+  "forms/2026/f2441.yaml",
+  1107,
+  "source: Were you (or your spouse, if filing jointly) covered in 2025 by two or more dependent care plans that allow different"
+ ],
+ [
+  "forms/2026/f2441.yaml",
+  1112,
+  "ambiguity: amb.2025.dc_plan_maximum"
+ ],
+ [
+  "forms/2026/f2441.yaml",
+  1146,
+  "label: The maximum amount your dependent care plan allows to be excluded for 2025"
+ ],
+ [
+  "forms/2026/f2441.yaml",
+  1150,
+  "for 2025; enter $5,000 if the plan allows $5,000 or more, or if you do not know of a lower plan maximum"
+ ],
+ [
+  "forms/2026/f2441.yaml",
+  1154,
+  "ambiguity: amb.2025.dc_plan_maximum"
+ ],
+ [
+  "forms/2026/f2441.yaml",
+  1178,
+  "ambiguity: amb.2025.dc_plan_maximum"
+ ],
+ [
+  "forms/2026/f2441.yaml",
+  1289,
+  "in 2025, see the instructions for line 9b"
+ ],
+ [
+  "forms/2026/f2441.yaml",
+  1297,
+  "note: The exception (2024 expenses paid in 2025) is refused at line 9b; a zero here gives a zero line 3 and no credit."
+ ],
+ [
+  "forms/2026/f2441.yaml",
+  1320,
+  "ambiguity: amb.2025.dc_line30"
+ ],
+ [
+  "forms/2026/f4562.yaml",
+  33,
+  "label: MACRS deductions for assets placed in service in tax years beginning before 2025"
+ ],
+ [
+  "forms/2026/f4952.yaml",
+  13,
+  "label: Investment interest paid or accrued in 2025"
+ ],
+ [
+  "forms/2026/f4952.yaml",
+  16,
+  "source: Investment interest paid or accrued in 2025"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  26,
+  "label: Any residential clean energy property paid for in 2025, or a carryforward from 2024"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  30,
+  "source: Did you pay in 2025 for solar electric, solar water heating, small wind energy, geothermal heat pump, battery"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  41,
+  "label: Any energy efficient home improvement costs paid in 2025"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  45,
+  "source: Did you pay in 2025 for insulation or air sealing, exterior doors, exterior windows or skylights, central air"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  68,
+  "2025?"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  73,
+  "reconstruction of a home whose original use by you did not begin in 2025 (for example, a home built in 2025 that"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  79,
+  "construction of a home are treated as being paid when your original use of the constructed home begins\"; fs-2025-05"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  81,
+  "begins after December 31, 2025, the expenditure will be treated as made after December 31, 2025\""
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  97,
+  "share of any costs of such association or corporation\"; fs-2025-01 p. 16, Residential Clean Energy Property Credit"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  101,
+  "qualifies as a rebate under federal income tax law\"; fs-2025-01 p. 16, Residential Clean Energy Property Credit -"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  152,
+  "source: Did you pay in 2025 for battery storage technology installed in connection with your home in the United States"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  160,
+  "ambiguity: amb.2025.f5695_battery_second_home"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  219,
+  "form: Form 5695 Part I for a constructed or reconstructed home whose original use did not begin in 2025"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  247,
+  "ambiguity: amb.2025.multiplication_subcent"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  256,
+  "States in 2025? (Answer No if you had none.)"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  326,
+  "ambiguity: amb.2025.clwb_claiming_part1"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  397,
+  "credit(s)/adjustment(s) if you are taking the credit(s)/adjustment(s) on your 2025 income tax return\""
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  462,
+  "skylights) installed in or on your main home located in the United States, a home you owned during 2025? (Answer"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  468,
+  "Efficiency Improvements, \"installed on or in your main home that you owned during 2025 located in the United States\""
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  514,
+  "ambiguity: amb.2025.f5695_17abc_section_a"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  573,
+  "home improvement credit\"; fs-2025-01 p. 11, Energy Efficient Home Improvement Credit - General questions, \"Rebates"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  576,
+  "purchase or install qualifying property\"; fs-2025-01 p. 12, Energy Efficient Home Improvement Credit - General"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  589,
+  "ambiguity: amb.2025.multiplication_subcent"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  658,
+  "ambiguity: amb.2025.multiplication_subcent"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  693,
+  "expensive qualifying exterior doors in 2025\""
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  706,
+  "expensive qualifying exterior doors in 2025\""
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  718,
+  "2025\""
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  743,
+  "ambiguity: amb.2025.multiplication_subcent"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  789,
+  "installed in 2025, a valid QMID must be reported on the applicable line(s)\""
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  824,
+  "remedy: An exterior door installed in 2025 qualifies only with a valid QMID reported for it; obtain the QMID from the"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  941,
+  "ambiguity: amb.2025.multiplication_subcent"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  963,
+  "installed in 2025, a valid QMID must be reported on the applicable line(s)\""
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  998,
+  "remedy: An exterior window or skylight installed in 2025 qualifies only with a valid QMID reported for it; obtain the"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  1041,
+  "qualified energy property that is installed on or in connection with a home that you used during 2025 located in the"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  1042,
+  "United States\"; fs-2025-01 p. 5, Energy Efficient Home Improvement Credit - Qualifying residence, \"such property may"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  1044,
+  "ambiguity: amb.2025.f5695_section_b_residence"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  1087,
+  "fs-2025-01 p. 5, Energy Efficient Home Improvement Credit - Qualifying residence, \"A taxpayer can claim the credit"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  1125,
+  "by the Consortium for Energy Efficiency (CEE) in effect at the beginning of 2025, including labor (net of subsidies"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  1165,
+  "ambiguity: amb.2025.multiplication_subcent"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  1209,
+  "ambiguity: amb.2025.f5695_category_cap"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  1213,
+  "remedy: Qualified energy property installed in 2025 qualifies only with a valid QMID reported for it; obtain the QMID"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  1248,
+  "tier established by the CEE in effect at the beginning of 2025, including labor (net of subsidies and rebates; see"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  1303,
+  "ambiguity: amb.2025.multiplication_subcent"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  1347,
+  "ambiguity: amb.2025.f5695_category_cap"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  1351,
+  "remedy: Qualified energy property installed in 2025 qualifies only with a valid QMID reported for it; obtain the QMID"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  1386,
+  "efficiency tier established by the CEE in effect at the beginning of 2025 (an oil furnace or boiler must also meet"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  1428,
+  "ambiguity: amb.2025.multiplication_subcent"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  1472,
+  "ambiguity: amb.2025.f5695_category_cap"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  1476,
+  "remedy: Qualified energy property installed in 2025 qualifies only with a valid QMID reported for it; obtain the QMID"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  1507,
+  "property (enabled property), and were both the enabling property and the enabled property installed in 2025?"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  1515,
+  "installed in 2025? (If one was installed in 2024 and the other in 2025, you may choose to treat both as installed in"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  1516,
+  "2025. Answer No if you have none.)"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  1567,
+  "ambiguity: amb.2025.multiplication_subcent"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  1579,
+  "energy property installed in 2025, a valid QMID must be reported on the applicable line(s)\""
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  1611,
+  "ambiguity: amb.2025.f5695_category_cap"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  1615,
+  "remedy: Qualified energy property installed in 2025 qualifies only with a valid QMID reported for it; obtain the QMID"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  1649,
+  "source: Did you incur costs in 2025 for a home energy audit that included an inspection of your main home located in"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  1664,
+  "source: The cost of the home energy audits you paid in 2025 (net of subsidies and rebates; see help)"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  1679,
+  "ambiguity: amb.2025.multiplication_subcent"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  1773,
+  "established by the CEE in effect at the beginning of 2025, including labor (net of subsidies and rebates; see help;"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  1798,
+  "efficiency tier established by the CEE in effect at the beginning of 2025, including labor (net of subsidies and"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  1868,
+  "ambiguity: amb.2025.multiplication_subcent"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  1926,
+  "remedy: Qualified energy property installed in 2025 qualifies only with a valid QMID reported for it; obtain the QMID"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  1972,
+  "source: Did you and your spouse both own and live apart in separate main homes in 2025?"
+ ],
+ [
+  "forms/2026/f5695.yaml",
+  2073,
+  "following credit(s)/adjustment(s) if you are taking the credit(s)/adjustment(s) on your 2025 income tax return\""
+ ],
+ [
+  "forms/2026/f8606.yaml",
+  4,
+  "title: Form 8606 \u2014 Nondeductible IRAs, Part I (nondeductible contributions with no 2025 distribution), one per person"
+ ],
+ [
+  "forms/2026/f8606.yaml",
+  7,
+  "when the person made nondeductible contributions for 2025. A 2025 distribution from a traditional IRA or a Roth conversion"
+ ],
+ [
+  "forms/2026/f8606.yaml",
+  12,
+  "label: This person files Form 8606 (nondeductible contributions to a traditional IRA for 2025)"
+ ],
+ [
+  "forms/2026/f8606.yaml",
+  24,
+  "label: Enter your nondeductible contributions to traditional IRAs for 2025, including those made for 2025 from January 1,"
+ ],
+ [
+  "forms/2026/f8606.yaml",
+  62,
+  "label: In 2025, did you take a distribution from a traditional IRA, or make a Roth IRA conversion?"
+ ],
+ [
+  "forms/2026/f8606.yaml",
+  75,
+  "label: Subtract line 13 from line 3. This is your total basis in traditional IRAs for 2025 and earlier years (with no 2025"
+ ],
+ [
+  "forms/2026/f8606.yaml",
+  88,
+  "form: Form 8606 lines 4 to 13 (a 2025 traditional IRA distribution or Roth conversion with nondeductible contributions)"
+ ],
+ [
+  "forms/2026/f8606.yaml",
+  89,
+  "remedy: With nondeductible contributions and a 2025 distribution from a traditional IRA or a Roth IRA conversion, the"
+ ],
+ [
+  "forms/2026/f8606.yaml",
+  101,
+  "a separate 2025 Form 8606 for each of you\"'"
+ ],
+ [
+  "forms/2026/f8880.yaml",
+  7,
+  "Worksheet. Each column's contributions and eligibility are this person's (person.sav_*); line 4 takes the 2025"
+ ],
+ [
+  "forms/2026/f8880.yaml",
+  9,
+  "of the testing period. Line 1 counts traditional IRA contributions for 2025, deductible or not (person.ira_contrib),"
+ ],
+ [
+  "forms/2026/f8880.yaml",
+  38,
+  "2025. Do not include rollover contributions (you)"
+ ],
+ [
+  "forms/2026/f8880.yaml",
+  55,
+  "2025. Do not include rollover contributions (your spouse)"
+ ],
+ [
+  "forms/2026/f8880.yaml",
+  73,
+  "plan contributions for 2025 (you)"
+ ],
+ [
+  "forms/2026/f8880.yaml",
+  90,
+  "plan contributions for 2025 (your spouse)"
+ ],
+ [
+  "forms/2026/f8880.yaml",
+  129,
+  "- id: f8880.dist_2025"
+ ],
+ [
+  "forms/2026/f8880.yaml",
+  131,
+  "label: Distributions received in 2025 that line 4 counts (the Forms 1099-R of the return, less rollovers and the"
+ ],
+ [
+  "forms/2026/f8880.yaml",
+  141,
+  "2022 and before the due date of your 2025 return (including extensions)\"; \"If you\u2019re filing a joint return, include"
+ ],
+ [
+  "forms/2026/f8880.yaml",
+  157,
+  "ambiguity: amb.2025.savers_2026_joint"
+ ],
+ [
+  "forms/2026/f8880.yaml",
+  218,
+  "label: Certain distributions received after 2022 and before the due date (including extensions) of your 2025 tax return"
+ ],
+ [
+  "forms/2026/f8880.yaml",
+  225,
+  "- f8880.dist_2025"
+ ],
+ [
+  "forms/2026/f8880.yaml",
+  233,
+  "ambiguity: amb.2025.savers_line4_gross"
+ ],
+ [
+  "forms/2026/f8880.yaml",
+  241,
+  "- f8880.dist_2025"
+ ],
+ [
+  "forms/2026/f8880.yaml",
+  247,
+  "spouse received a distribution of $2,000 from a Roth IRA in 2023. You and your spouse file a joint return in 2025,"
+ ],
+ [
+  "forms/2026/f8880.yaml",
+  251,
+  "label: Certain distributions received after 2022 and before the due date (including extensions) of your 2025 tax return"
+ ],
+ [
+  "forms/2026/f8880.yaml",
+  308,
+  "label: Your entry, if you were born after January 1, 2008, are claimed as a dependent on someone else's 2025 return,"
+ ],
+ [
+  "forms/2026/f8880.yaml",
+  329,
+  "was born after January 1, 2008; (b) is claimed as a dependent on someone else\u2019s 2025 tax return; or (c) was a student\"'"
+ ],
+ [
+  "forms/2026/f8880.yaml",
+  330,
+  "ambiguity: amb.2025.savers_ineligible_column"
+ ],
+ [
+  "forms/2026/f8880.yaml",
+  334,
+  "2025 return, or was a student"
+ ],
+ [
+  "forms/2026/f8880.yaml",
+  354,
+  "was born after January 1, 2008; (b) is claimed as a dependent on someone else\u2019s 2025 tax return; or (c) was a student\"'"
+ ],
+ [
+  "forms/2026/f8880.yaml",
+  355,
+  "ambiguity: amb.2025.savers_ineligible_column"
+ ],
+ [
+  "forms/2026/f8880.yaml",
+  369,
+  "was born after January 1, 2008; (b) is claimed as a dependent on someone else\u2019s 2025 tax return; or (c) was a student\"'"
+ ],
+ [
+  "forms/2026/f8880.yaml",
+  370,
+  "ambiguity: amb.2025.savers_ineligible_column"
+ ],
+ [
+  "forms/2026/f8880.yaml",
+  384,
+  "was born after January 1, 2008; (b) is claimed as a dependent on someone else\u2019s 2025 tax return; or (c) was a student\"'"
+ ],
+ [
+  "forms/2026/f8880.yaml",
+  385,
+  "ambiguity: amb.2025.savers_ineligible_column"
+ ],
+ [
+  "forms/2026/f8880.yaml",
+  433,
+  "ambiguity: amb.2025.savers_ineligible_column"
+ ],
+ [
+  "forms/2026/f8880.yaml",
+  457,
+  "ambiguity: amb.2025.savers_ineligible_column"
+ ],
+ [
+  "forms/2026/f8889.yaml",
+  32,
+  "label: HSA contributions you made for 2025 (or those made on your behalf), including those made by the unextended due"
+ ],
+ [
+  "forms/2026/f8889.yaml",
+  33,
+  "date of your tax return that were for 2025. Do not include employer contributions, contributions through a cafeteria"
+ ],
+ [
+  "forms/2026/f8889.yaml",
+  38,
+  "source: HSA contributions you made for 2025 (or those made on your behalf), including those made by April 15, 2026 that"
+ ],
+ [
+  "forms/2026/f8889.yaml",
+  39,
+  "were for 2025; do not include employer contributions, payroll contributions through a cafeteria plan, rollovers, or"
+ ],
+ [
+  "forms/2026/f8889.yaml",
+  46,
+  "label: Employer contributions made to your HSAs for 2025"
+ ],
+ [
+  "forms/2026/f8889.yaml",
+  50,
+  "source: Employer contributions to your HSAs for 2025, including payroll contributions through a cafeteria plan (Form"
+ ],
+ [
+  "forms/2026/f8889.yaml",
+  51,
+  "W-2 box 12, code W, less employer contributions for 2024 included there, plus employer contributions for 2025 made"
+ ],
+ [
+  "forms/2026/f8889.yaml",
+  58,
+  "label: Any HSA contributions for 2025 (yours or your employer's)"
+ ],
+ [
+  "forms/2026/f8889.yaml",
+  76,
+  "label: 'Any of these: a qualified HSA funding distribution from an IRA in 2025; contributions to an Archer MSA for 2025 (Form 8853), or, if you or your spouse had family coverage at any time during 2025, to your spouse''s Archer MSA; excess"
+ ],
+ [
+  "forms/2026/f8889.yaml",
+  78,
+  "period that began in an earlier year; an HSA you acquired because of the account beneficiary''s death; the HSA of a person who died in 2025 whose"
+ ],
+ [
+  "forms/2026/f8889.yaml",
+  85,
+  "source: 'Any of these: a qualified HSA funding distribution from an IRA in 2025; contributions by you or your employer to"
+ ],
+ [
+  "forms/2026/f8889.yaml",
+  86,
+  "an Archer MSA for 2025 (Form 8853), or, if you or your spouse had family coverage under an HDHP at any time during 2025, to your spouse''s Archer MSA; excess HSA contributions from an earlier year that remain in your HSA; failing"
+ ],
+ [
+  "forms/2026/f8889.yaml",
+  89,
+  "died in 2025 whose estate is the beneficiary (its value at death is included on the final return); a deemed distribution"
+ ],
+ [
+  "forms/2026/f8889.yaml",
+  90,
+  "from an HSA in 2025 (a prohibited transaction, or any part of an HSA used as security for a loan); a 2025 distribution"
+ ],
+ [
+  "forms/2026/f8889.yaml",
+  111,
+  "label: Number of months of 2025 on the first day of which you were an eligible individual"
+ ],
+ [
+  "forms/2026/f8889.yaml",
+  115,
+  "source: Number of months of 2025 on the first day of which you were an eligible individual (covered by a high-deductible"
+ ],
+ [
+  "forms/2026/f8889.yaml",
+  117,
+  "a dependent on someone else's 2025 return); 0 to 12"
+ ],
+ [
+  "forms/2026/f8889.yaml",
+  203,
+  "label: Were you age 55 or older at the end of 2025?"
+ ],
+ [
+  "forms/2026/f8889.yaml",
+  207,
+  "source: Were you age 55 or older at the end of 2025?"
+ ],
+ [
+  "forms/2026/f8889.yaml",
+  223,
+  "label: 'Married at the end of 2025 and treated as having family coverage at any time during 2025'"
+ ],
+ [
+  "forms/2026/f8889.yaml",
+  278,
+  "label: Line 3 chart amount for a month of self-only coverage ($4,300; $5,300 if age 55 or older at the end of 2025)"
+ ],
+ [
+  "forms/2026/f8889.yaml",
+  298,
+  "the end of 2025, enter $5,300 for the month'"
+ ],
+ [
+  "forms/2026/f8889.yaml",
+  321,
+  "label: Unmarried and age 55 or older at the end of 2025"
+ ],
+ [
+  "forms/2026/f8889.yaml",
+  341,
+  "of 2025)"
+ ],
+ [
+  "forms/2026/f8889.yaml",
+  442,
+  "label: Eligible individual on the first day of every month of 2025"
+ ],
+ [
+  "forms/2026/f8889.yaml",
+  474,
+  "label: 'HDHP coverage you had or were treated as having on December 1, 2025: none, self_only or family'"
+ ],
+ [
+  "forms/2026/f8889.yaml",
+  478,
+  "source: 'The high-deductible health plan coverage you had or were treated as having on December 1, 2025: none"
+ ],
+ [
+  "forms/2026/f8889.yaml",
+  516,
+  "label: Do you use the last-month rule (treating yourself as an eligible individual for all of 2025 with your December"
+ ],
+ [
+  "forms/2026/f8889.yaml",
+  521,
+  "source: 'Do you use the last-month rule: treat yourself as an eligible individual for all of 2025 with the coverage"
+ ],
+ [
+  "forms/2026/f8889.yaml",
+  522,
+  "you had on December 1, 2025, which requires you to remain an eligible individual from December 1, 2025 through December"
+ ],
+ [
+  "forms/2026/f8889.yaml",
+  545,
+  "ambiguity: amb.2025.hsa_last_month_all_year"
+ ],
+ [
+  "forms/2026/f8889.yaml",
+  605,
+  "for the entire year' and changed type; amb.2025.hsa_last_month_change)"
+ ],
+ [
+  "forms/2026/f8889.yaml",
+  606,
+  "ambiguity: amb.2025.hsa_last_month_change"
+ ],
+ [
+  "forms/2026/f8889.yaml",
+  631,
+  "label: If you were under age 55 at the end of 2025 and, on the first day of every month during 2025, you were, or were"
+ ],
+ [
+  "forms/2026/f8889.yaml",
+  655,
+  "label: Enter the amount you and your employer contributed to your Archer MSAs for 2025 from Form 8853, lines 1 and 2"
+ ],
+ [
+  "forms/2026/f8889.yaml",
+  1042,
+  "label: 'Spouses with separate HSAs, treated as having family coverage at any time during 2025'"
+ ],
+ [
+  "forms/2026/f8889.yaml",
+  1061,
+  "an HDHP at any time during 2025, see the instructions for the amount to enter"
+ ],
+ [
+  "forms/2026/f8889.yaml",
+  1135,
+  "ambiguity: amb.2025.hsa_line7_months"
+ ],
+ [
+  "forms/2026/f8889.yaml",
+  1150,
+  "label: 'Age 55 or older at the end of 2025, married, and treated as having family coverage at any time during 2025'"
+ ],
+ [
+  "forms/2026/f8889.yaml",
+  1168,
+  "label: If you were age 55 or older at the end of 2025, married, and you or your spouse had family coverage under an HDHP"
+ ],
+ [
+  "forms/2026/f8889.yaml",
+  1169,
+  "at any time during 2025, enter your additional contribution amount"
+ ],
+ [
+  "forms/2026/f8889.yaml",
+  1319,
+  "label: Total distributions you received in 2025 from all HSAs (see instructions)"
+ ],
+ [
+  "forms/2026/f8889.yaml",
+  1323,
+  "source: Total distributions you received in 2025 from all of your own HSAs (box 1 of your Forms 1099-SA, including"
+ ],
+ [
+  "forms/2026/f8889.yaml",
+  1331,
+  "label: Any HSA distributions in 2025"
+ ],
+ [
+  "forms/2026/f8889.yaml",
+  1413,
+  "source: The part of your 2025 HSA distributions used to pay qualified medical expenses (not reimbursed by insurance"
+ ],
+ [
+  "forms/2026/f8889.yaml",
+  1549,
+  "ambiguity: amb.2025.hsa_partial_exception"
+ ],
+ [
+  "forms/2026/f8889.yaml",
+  1593,
+  "ambiguity: amb.2025.multiplication_subcent"
+ ],
+ [
+  "forms/2026/f8959.yaml",
+  179,
+  "ambiguity: amb.2025.multiplication_subcent"
+ ],
+ [
+  "forms/2026/f8959.yaml",
+  234,
+  "ambiguity: amb.2025.multiplication_subcent"
+ ],
+ [
+  "forms/2026/f8959.yaml",
+  268,
+  "ambiguity: amb.2025.multiplication_subcent"
+ ],
+ [
+  "forms/2026/f8959.yaml",
+  322,
+  "ambiguity: amb.2025.multiplication_subcent"
+ ],
+ [
+  "forms/2026/f8960.yaml",
+  23,
+  "label: 'Any recovery or refund in 2025 of an amount deducted on an earlier Form 8960 (for example a state or local income tax refund, or a refund of foreign income tax), even if none of it is taxable on Form 1040?'"
+ ],
+ [
+  "forms/2026/f8960.yaml",
+  26,
+  "source: 'Any recovery or refund in 2025 of an amount deducted on an earlier Form 8960 (for example a state or local income tax refund, or a refund of foreign income tax), even if none of it is taxable on Form 1040?'"
+ ],
+ [
+  "forms/2026/f8960.yaml",
+  526,
+  "ambiguity: amb.2025.multiplication_subcent"
+ ],
+ [
+  "forms/2026/f8995.yaml",
+  151,
+  "ambiguity: amb.2025.multiplication_subcent"
+ ],
+ [
+  "forms/2026/f8995.yaml",
+  207,
+  "ambiguity: amb.2025.multiplication_subcent"
+ ],
+ [
+  "forms/2026/f8995a.yaml",
+  81,
+  "ambiguity: amb.2025.multiplication_subcent"
+ ],
+ [
+  "forms/2026/f8995a.yaml",
+  137,
+  "ambiguity: amb.2025.multiplication_subcent"
+ ],
+ [
+  "forms/2026/household.yaml",
+  8,
+  "at the end of 2025."
+ ],
+ [
+  "forms/2026/household.yaml",
+  97,
+  "form: A filer under age 16 at the end of 2025"
+ ],
+ [
+  "forms/2026/household.yaml",
+  98,
+  "remedy: A return for a person under age 16 at the end of 2025 (you, or your spouse on a joint return) is outside this"
+ ],
+ [
+  "forms/2026/household.yaml",
+  100,
+  "ambiguity register (amb.2025.filer_under_16)."
+ ],
+ [
+  "forms/2026/household.yaml",
+  250,
+  "label: 'Number of people on the return under age 16 at the end of 2025'"
+ ],
+ [
+  "forms/2026/household.yaml",
+  266,
+  "label: 'You, or your spouse if filing jointly, were under age 16 at the end of 2025'"
+ ],
+ [
+  "forms/2026/household.yaml",
+  276,
+  "ambiguity: amb.2025.filer_under_16"
+ ],
+ [
+  "forms/2026/household.yaml",
+  389,
+  "label: Did you pay over half the cost of keeping up your home for 2025?"
+ ],
+ [
+  "forms/2026/household.yaml",
+  392,
+  "source: Did you pay over half the cost of keeping up your home for 2025?"
+ ],
+ [
+  "forms/2026/household.yaml",
+  399,
+  "label: Were you unmarried, or considered unmarried under the head of household rules, at the end of 2025?"
+ ],
+ [
+  "forms/2026/household.yaml",
+  402,
+  "source: Were you unmarried, or considered unmarried under the head of household rules, at the end of 2025?"
+ ],
+ [
+  "forms/2026/household.yaml",
+  409,
+  "label: Were you married at the end of 2025?"
+ ],
+ [
+  "forms/2026/household.yaml",
+  412,
+  "source: Were you married at the end of 2025 (including married but considered unmarried for head of household"
+ ],
+ [
+  "forms/2026/household.yaml",
+  420,
+  "label: Did you live in a community property state at any time in 2025?"
+ ],
+ [
+  "forms/2026/household.yaml",
+  424,
+  "Texas, Washington or Wisconsin) at any time in 2025?"
+ ],
+ [
+  "forms/2026/household.yaml",
+  450,
+  "ambiguity: amb.2025.hoh_community_property"
+ ],
+ [
+  "forms/2026/ira.yaml",
+  10,
+  "nontaxable combat pay, nondeductible contributions with a 2025 distribution or conversion, and the election to deduct less"
+ ],
+ [
+  "forms/2026/ira.yaml",
+  58,
+  "label: Traditional IRA contributions for 2025 on this return (you and your spouse)"
+ ],
+ [
+  "forms/2026/ira.yaml",
+  69,
+  "label: Roth IRA contributions for 2025 on this return (you and your spouse)"
+ ],
+ [
+  "forms/2026/ira.yaml",
+  80,
+  "label: Anyone on the return made traditional IRA contributions for 2025"
+ ],
+ [
+  "forms/2026/ira.yaml",
+  106,
+  "ambiguity: amb.2025.ira_covered"
+ ],
+ [
+  "forms/2026/ira.yaml",
+  141,
+  "label: Social security benefits, traditional IRA contributions for 2025, and you or your spouse covered by a retirement"
+ ],
+ [
+  "forms/2026/ira.yaml",
+  162,
+  "ambiguity: amb.2025.ira_ssb_copy"
+ ],
+ [
+  "forms/2026/ira.yaml",
+  575,
+  "ambiguity: amb.2025.ira_se_floor"
+ ],
+ [
+  "forms/2026/ira.yaml",
+  599,
+  "label: Number of spouses age 50 or older at the end of 2025"
+ ],
+ [
+  "forms/2026/ira.yaml",
+  613,
+  "2025; $16,000 if both spouses are age 50 or older at the end of 2025)\"'"
+ ],
+ [
+  "forms/2026/ira.yaml",
+  634,
+  "2025\"'"
+ ],
+ [
+  "forms/2026/ira.yaml",
+  645,
+  "2025)\"'"
+ ],
+ [
+  "forms/2026/ira.yaml",
+  691,
+  "($15,000 if one spouse is age 50 or older at the end of 2025; $16,000 if both spouses are age 50 or older at the end"
+ ],
+ [
+  "forms/2026/ira.yaml",
+  692,
+  "of 2025)\"'"
+ ],
+ [
+  "forms/2026/ira.yaml",
+  718,
+  "label: A joint return on which you or your spouse made contributions to both a traditional IRA and a Roth IRA for 2025"
+ ],
+ [
+  "forms/2026/ira.yaml",
+  738,
+  "IRA and a Roth IRA for 2025, don\u2019t use the IRA Deduction Worksheet in these instructions\"'"
+ ],
+ [
+  "forms/2026/ira.yaml",
+  739,
+  "ambiguity: amb.2025.ira_both_kinds"
+ ],
+ [
+  "forms/2026/ira.yaml",
+  742,
+  "label: Traditional and Roth IRA contributions for 2025 on this return"
+ ],
+ [
+  "forms/2026/ira.yaml",
+  752,
+  "and Roth IRAs is generally the smaller of $7,000 ($8,000 if age 50 or older at the end of 2025) or your taxable compensation\"'"
+ ],
+ [
+  "forms/2026/ira.yaml",
+  755,
+  "label: Traditional and Roth IRA contributions for 2025 more than the compensation on line 10"
+ ],
+ [
+  "forms/2026/ira.yaml",
+  790,
+  "ambiguity: amb.2025.ira_fellowship"
+ ],
+ [
+  "forms/2026/ira.yaml",
+  890,
+  "label: Enter traditional IRA contributions made, or that will be made by the due date of your 2025 return not counting"
+ ],
+ [
+  "forms/2026/ira.yaml",
+  891,
+  "extensions, for 2025 to your IRA"
+ ],
+ [
+  "forms/2026/ira.yaml",
+  906,
+  "made by the due date of your 2025 return not counting extensions (April 15, 2026, for most people), for 2025 to your"
+ ],
+ [
+  "forms/2026/ira.yaml",
+  910,
+  "label: Enter traditional IRA contributions made, or that will be made by the due date of your 2025 return not counting"
+ ],
+ [
+  "forms/2026/ira.yaml",
+  911,
+  "extensions, for 2025 to your spouse's IRA"
+ ],
+ [
+  "forms/2026/ira.yaml",
+  986,
+  "ambiguity: amb.2025.ira_deduct_less"
+ ],
+ [
+  "forms/2026/ltc.yaml",
+  14,
+  "source: The qualified long-term care insurance premiums paid in 2025 for this person under a policy established under"
+ ],
+ [
+  "forms/2026/ltc.yaml",
+  21,
+  "label: That person's age at the end of 2025"
+ ],
+ [
+  "forms/2026/ltc.yaml",
+  25,
+  "source: 'This person''s age at the end of 2025: 40 or younger (to40), 41 to 50 (to50), 51 to 60 (to60), 61 to 70 (to70),"
+ ],
+ [
+  "forms/2026/mq.yaml",
+  4,
+  "title: Mid-quarter convention test for property placed in service in 2025"
+ ],
+ [
+  "forms/2026/mq.yaml",
+  6,
+  "note: The 40% test of Pub. 946, figured once for the return (both spouses together on a joint return, amb.2025.mq_joint)"
+ ],
+ [
+  "forms/2026/mq.yaml",
+  12,
+  "label: Depreciable bases of property placed in service October to December 2025"
+ ],
+ [
+  "forms/2026/mq.yaml",
+  23,
+  "label: Depreciable bases of all property placed in service in 2025"
+ ],
+ [
+  "forms/2026/mq.yaml",
+  65,
+  "label: Two times all 2025 bases"
+ ],
+ [
+  "forms/2026/mq.yaml",
+  76,
+  "label: 'The mid-quarter convention applies: the October to December bases are more than 40% of all 2025 bases'"
+ ],
+ [
+  "forms/2026/oi8z.yaml",
+  38,
+  "source: The amount of this item to include in income for 2025"
+ ],
+ [
+  "forms/2026/oi8z.yaml",
+  105,
+  "ambiguity: amb.2025.line8z_kinds"
+ ],
+ [
+  "forms/2026/otjob.yaml",
+  8,
+  "time-and-a-half), figured by one of the methods the instructions and Notice 2025-69 give for 2025. Methods that"
+ ],
+ [
+  "forms/2026/otjob.yaml",
+  90,
+  "covering the entire 2025 tax year\""
+ ],
+ [
+  "forms/2026/otjob.yaml",
+  162,
+  "ambiguity: amb.2025.multiplication_subcent"
+ ],
+ [
+  "forms/2026/otjob.yaml",
+  184,
+  "ambiguity: amb.2025.multiplication_subcent"
+ ],
+ [
+  "forms/2026/otjob.yaml",
+  198,
+  "ambiguity: amb.2025.multiplication_subcent"
+ ],
+ [
+  "forms/2026/otjob.yaml",
+  212,
+  "ambiguity: amb.2025.multiplication_subcent"
+ ],
+ [
+  "forms/2026/otjob.yaml",
+  242,
+  "(one row per employer); n-25-69 Section III.B.2, \"Individuals who had multiple employers during 2025 may use"
+ ],
+ [
+  "forms/2026/person.yaml",
+  53,
+  "source: Do you have an SSN or ITIN issued on or before the due date of your 2025 return (including extensions)?"
+ ],
+ [
+  "forms/2026/person.yaml",
+  64,
+  "source: If you have neither, have you applied for an ITIN on or before the due date of your 2025 return (including"
+ ],
+ [
+  "forms/2026/person.yaml",
+  76,
+  "source: Do you have an SSN valid for employment, issued before the due date of your 2025 return (including extensions)?"
+ ],
+ [
+  "forms/2026/person.yaml",
+  86,
+  "source: Do you have a social security number issued on or before the due date of your 2025 return (including"
+ ],
+ [
+  "forms/2026/person.yaml",
+  97,
+  "label: Were you under age 16 at the end of 2025?"
+ ],
+ [
+  "forms/2026/person.yaml",
+  100,
+  "source: Were you under age 16 at the end of 2025?"
+ ],
+ [
+  "forms/2026/person.yaml",
+  104,
+  "ambiguity: amb.2025.filer_under_16"
+ ],
+ [
+  "forms/2026/person.yaml",
+  107,
+  "label: Qualified educator expenses you paid in 2025"
+ ],
+ [
+  "forms/2026/person.yaml",
+  111,
+  "source: Qualified educator expenses you paid in 2025 (professional development courses, and books, supplies, equipment"
+ ],
+ [
+  "forms/2026/person.yaml",
+  121,
+  "label: Were you an eligible educator in 2025 (a kindergarten through grade 12 teacher, instructor, counselor, principal,"
+ ],
+ [
+  "forms/2026/person.yaml",
+  126,
+  "source: Were you an eligible educator in 2025 (a kindergarten through grade 12 teacher, instructor, counselor, principal,"
+ ],
+ [
+  "forms/2026/person.yaml",
+  156,
+  "label: Is this the final return of a person born between January 2, 1960, and January 1, 1961, who died in 2025 before"
+ ],
+ [
+  "forms/2026/person.yaml",
+  161,
+  "source: Is this the final return of a person born between January 2, 1960, and January 1, 1961, who died in 2025 before"
+ ],
+ [
+  "forms/2026/person.yaml",
+  530,
+  "ambiguity: amb.2025.ss_wages"
+ ],
+ [
+  "forms/2026/person.yaml",
+  720,
+  "label: Mid-quarter test basis, 2025, this person"
+ ],
+ [
+  "forms/2026/person.yaml",
+  993,
+  "for 2025, or to neither (none)?"
+ ],
+ [
+  "forms/2026/person.yaml",
+  1006,
+  "or elective deferrals to any other plan in 2025 (such as a 401(k) or 403(b) through an employer); Roth SEP or Roth SIMPLE"
+ ],
+ [
+  "forms/2026/person.yaml",
+  1072,
+  "label: Contributions to your own SEP IRA for 2025"
+ ],
+ [
+  "forms/2026/person.yaml",
+  1076,
+  "source: The contributions you made for yourself to your SEP IRA for 2025 (by the due date of the return, including extensions)"
+ ],
+ [
+  "forms/2026/person.yaml",
+  1156,
+  "gives 0.090909) (amb.2025.sep_rate_places)"
+ ],
+ [
+  "forms/2026/person.yaml",
+  1252,
+  "source: The salary reduction contributions you made for yourself to your SIMPLE IRA for 2025, including any catch-up contributions"
+ ],
+ [
+  "forms/2026/person.yaml",
+  1269,
+  "source: 'Your age at the end of 2025 for SIMPLE catch-up contributions: under 50 (under50), 50 to 59 or 64 and over (age50),"
+ ],
+ [
+  "forms/2026/person.yaml",
+  1281,
+  "source: 'The employer contribution formula of your SIMPLE IRA plan for 2025: matching contributions (match) or 2% nonelective"
+ ],
+ [
+  "forms/2026/person.yaml",
+  1292,
+  "source: The employer matching or nonelective contributions you made for yourself to your SIMPLE IRA for 2025"
+ ],
+ [
+  "forms/2026/person.yaml",
+  1329,
+  "they exceed $16,500 for 2025\""
+ ],
+ [
+  "forms/2026/person.yaml",
+  1710,
+  "ambiguity: amb.2025.dc_line1e_attribution"
+ ],
+ [
+  "forms/2026/person.yaml",
+  1723,
+  "ambiguity: amb.2025.dc_line1e_attribution"
+ ],
+ [
+  "forms/2026/person.yaml",
+  1754,
+  "ambiguity: amb.2025.dc_line1e_attribution"
+ ],
+ [
+  "forms/2026/person.yaml",
+  1773,
+  "ambiguity: amb.2025.dc_line1e_attribution"
+ ],
+ [
+  "forms/2026/person.yaml",
+  1806,
+  "ambiguity: amb.2025.dc_line1e_attribution"
+ ],
+ [
+  "forms/2026/person.yaml",
+  1820,
+  "ambiguity: amb.2025.dc_line1e_attribution"
+ ],
+ [
+  "forms/2026/person.yaml",
+  1846,
+  "label: Were you a student in 2025 (during any part of 5 calendar months, enrolled as a full-time student at a school, or"
+ ],
+ [
+  "forms/2026/person.yaml",
+  1851,
+  "source: 'Were you a student in 2025: during any part of 5 calendar months of 2025, were you enrolled as a full-time student"
+ ],
+ [
+  "forms/2026/person.yaml",
+  1862,
+  "label: Are you claimed as a dependent on someone else's 2025 tax return?"
+ ],
+ [
+  "forms/2026/person.yaml",
+  1866,
+  "source: Are you claimed as a dependent on someone else's 2025 tax return?"
+ ],
+ [
+  "forms/2026/person.yaml",
+  1872,
+  "label: Born after January 1, 2008, claimed as a dependent on someone else's 2025 return, or a student (the dependent question"
+ ],
+ [
+  "forms/2026/person.yaml",
+  1899,
+  "born after January 1, 2008; (b) is claimed as a dependent on someone else\u2019s 2025 tax return; or (c) was a student\"'"
+ ],
+ [
+  "forms/2026/person.yaml",
+  1902,
+  "label: Did you make contributions (other than rollover contributions) to a traditional IRA for 2025?"
+ ],
+ [
+  "forms/2026/person.yaml",
+  1906,
+  "source: Did you make contributions (other than rollover contributions) to a traditional IRA for 2025, deductible or"
+ ],
+ [
+  "forms/2026/person.yaml",
+  1907,
+  "not, including contributions made by the due date of your 2025 return for 2025?"
+ ],
+ [
+  "forms/2026/person.yaml",
+  1914,
+  "label: As the designated beneficiary of an ABLE account, did you contribute to it for 2025, or did you receive a distribution"
+ ],
+ [
+  "forms/2026/person.yaml",
+  1915,
+  "from an ABLE account after 2022 (through the due date of your 2025 return)?"
+ ],
+ [
+  "forms/2026/person.yaml",
+  1919,
+  "source: As the designated beneficiary of an ABLE account, did you contribute to it for 2025, or did you receive any distribution"
+ ],
+ [
+  "forms/2026/person.yaml",
+  1920,
+  "from an ABLE account after 2022 and before the due date of your 2025 return (including extensions)?"
+ ],
+ [
+  "forms/2026/person.yaml",
+  1927,
+  "label: Your contributions to a Roth IRA for 2025 (not rollovers or conversions)"
+ ],
+ [
+  "forms/2026/person.yaml",
+  1931,
+  "source: Your contributions to a Roth IRA for 2025, including contributions made by the due date of your 2025 return that"
+ ],
+ [
+  "forms/2026/person.yaml",
+  1932,
+  "are for 2025; do not include rollover contributions or conversions; zero if none"
+ ],
+ [
+  "forms/2026/person.yaml",
+  1939,
+  "label: Form 8880 line 1 for this person (traditional IRA contributions for 2025, deductible or not, and Roth IRA"
+ ],
+ [
+  "forms/2026/person.yaml",
+  1940,
+  "contributions for 2025)"
+ ],
+ [
+  "forms/2026/person.yaml",
+  1951,
+  "ambiguity: amb.2025.savers_traditional"
+ ],
+ [
+  "forms/2026/person.yaml",
+  1955,
+  "remedy: Traditional or Roth IRA contributions for 2025 that are more than allowed or were recharacterized, and an"
+ ],
+ [
+  "forms/2026/person.yaml",
+  1971,
+  "label: Elective deferrals and designated Roth contributions for 2025 from this person's Forms W-2, box 12"
+ ],
+ [
+  "forms/2026/person.yaml",
+  1982,
+  "label: Were your elective deferrals and designated Roth contributions for 2025 more than the limit for your plans?"
+ ],
+ [
+  "forms/2026/person.yaml",
+  1986,
+  "source: Is the total of your elective deferrals and designated Roth contributions for 2025 (Form W-2 box 12, from all"
+ ],
+ [
+  "forms/2026/person.yaml",
+  1995,
+  "label: Elective deferrals in box 12 over the limit for 2025"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2014,
+  "label: Voluntary employee contributions for 2025 to a qualified retirement plan (after-tax, not designated Roth)"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2018,
+  "source: Voluntary after-tax employee contributions you made for 2025 to a qualified retirement plan (including the federal"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2054,
+  "ambiguity: amb.2025.savers_sep_contrib"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2102,
+  "before the due date of your 2025 return (a joint return only)"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2107,
+  "a joint return, plus those you receive in 2026 before the due date of your 2025 return (including extensions), from"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2118,
+  "ambiguity: amb.2025.savers_2026_joint"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2137,
+  "before the due date of your 2025 return, including extensions), from a traditional or Roth IRA; a 401(k), 403(b), governmental"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2146,
+  "2022 and before the due date of your 2025 return (including extensions)\"; \"Exception. Don\u2019t include your spouse\u2019s distributions"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2160,
+  "label: Your traditional IRA contributions for 2025 (not rollovers)"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2164,
+  "source: 'Your contributions to your traditional IRAs for 2025, made in 2025 or made by April 15, 2026, and designated for"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2165,
+  "2025; do not include rollover contributions, contributions made in 2025 that you deducted for 2024, contributions withdrawn"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2171,
+  "made by the due date of your 2025 return not counting extensions (April 15, 2026, for most people), for 2025\"; p."
+ ],
+ [
+  "forms/2026/person.yaml",
+  2172,
+  "95, Line 20, \"If you made contributions to your IRA in 2025 that you deducted for 2024, don\u2019t include them in the"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2177,
+  "label: This person's traditional IRA contributions for 2025 (zero if the traditional IRA question was answered No)"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2197,
+  "made by the due date of your 2025 return not counting extensions (April 15, 2026, for most people), for 2025\"'"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2200,
+  "label: This person made traditional IRA contributions for 2025"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2212,
+  "label: This person made traditional or Roth IRA contributions for 2025"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2230,
+  "label: Were your 2025 IRA contributions more than allowed, recharacterized, or is an earlier excess contribution still in"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2235,
+  "source: 'Does any of these apply to you: your contributions for 2025 to traditional and Roth IRAs together were more than"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2236,
+  "you were allowed to contribute (more than $7,000, or $8,000 if age 50 or older at the end of 2025, or more than your"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2238,
+  "its earnings by the due date of your return; you recharacterized a 2025 contribution (moved it from a traditional to"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2245,
+  "shown on Form 8606 is less than your total traditional IRA contributions for 2025, see Pub. 590-A for special rules\"'"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2248,
+  "label: This person's IRA contributions for 2025 are excess or recharacterized, or an earlier excess remains (screen)"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2267,
+  "label: Were you age 50 or older at the end of 2025?"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2271,
+  "source: Were you age 50 or older at the end of 2025?"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2275,
+  "ambiguity: amb.2025.ira_age50"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2278,
+  "label: Were you covered by a retirement plan at work in 2025?"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2282,
+  "source: Were you covered by a retirement plan at work for 2025 (a qualified pension, profit-sharing or 401(k), annuity,"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2289,
+  "ambiguity: amb.2025.ira_covered"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2311,
+  "ambiguity: amb.2025.ira_covered"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2331,
+  "ambiguity: amb.2025.ira_covered"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2354,
+  "label: The applicable amount for this person ($7,000 if under age 50 at the end of 2025; $8,000 if age 50 or older)"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2374,
+  "if age 50 or older at the end of 2025\"'"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2594,
+  "label: Line 6 multiplied by 70% (0.70), or by 80% (0.80) for a person age 50 or older at the end of 2025"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2615,
+  "2025)\"'"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2618,
+  "label: Line 6 multiplied by 35% (0.35), or by 40% (0.40) for a person age 50 or older at the end of 2025"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2638,
+  "by 35% (0.35) (or by 40% (0.40) in the column for the IRA of a person who is age 50 or older at the end of 2025)\"'"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2662,
+  "ambiguity: amb.2025.ira_line7_cents"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2771,
+  "label: This person's traditional and Roth IRA contributions for 2025 together are more than the applicable amount"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2791,
+  "label: This person's traditional and Roth IRA contributions for 2025"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2801,
+  "and Roth IRAs is generally the smaller of $7,000 ($8,000 if age 50 or older at the end of 2025) or your taxable compensation\"'"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2804,
+  "label: Worksheet line 11 for this person's column (traditional IRA contributions for 2025)"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2812,
+  "made by the due date of your 2025 return not counting extensions (April 15, 2026, for most people), for 2025 to your"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2817,
+  "remedy: On a joint return where you or your spouse made contributions to both a traditional IRA and a Roth IRA for 2025,"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2822,
+  "IRA and a Roth IRA for 2025, don\u2019t use the IRA Deduction Worksheet in these instructions\"'"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2833,
+  "remedy: Traditional or Roth IRA contributions for 2025 that are more than allowed or were recharacterized, and an"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2838,
+  "traditional IRAs shown on Form 8606 is less than your total traditional IRA contributions for 2025, see Pub. 590-A"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2842,
+  "remedy: Your traditional and Roth IRA contributions for 2025 are together more than $7,000 ($8,000 if age 50 or older),"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2850,
+  "remedy: The traditional and Roth IRA contributions for 2025 on this return are more than the compensation on line 10"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2906,
+  "ambiguity: amb.2025.ira_deduct_less"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2932,
+  "form: Nondeductible IRA contributions with a 2025 distribution or conversion (Form 8606 lines 4 to 13, Pub. 590-B)"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2933,
+  "remedy: With nondeductible traditional IRA contributions for 2025 and a 2025 traditional IRA distribution or Roth"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2967,
+  "label: This person's nondeductible traditional IRA contributions for 2025 (Form 8606 line 1)"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2987,
+  "made for 2025 from January 1, 2026, through April 15, 2026\"'"
+ ],
+ [
+  "forms/2026/person.yaml",
+  2990,
+  "label: This person files Form 8606 for nondeductible contributions to a traditional IRA for 2025"
+ ],
+ [
+  "forms/2026/person.yaml",
+  3002,
+  "label: Your total basis in traditional IRAs before 2025 (Form 8606 line 2)"
+ ],
+ [
+  "forms/2026/person.yaml",
+  3080,
+  "label: In 2025, did you take a distribution from a traditional IRA, or make a Roth IRA conversion?"
+ ],
+ [
+  "forms/2026/person.yaml",
+  3084,
+  "source: In 2025, did you take a distribution from a traditional IRA (including a SEP or SIMPLE IRA), or make a Roth"
+ ],
+ [
+  "forms/2026/person.yaml",
+  3093,
+  "label: Nondeductible contributions for 2025 with a 2025 traditional IRA distribution or Roth conversion"
+ ],
+ [
+  "forms/2026/person.yaml",
+  3116,
+  "label: Form 8606 line 14 for this person (total basis in traditional IRAs for 2025 and earlier years)"
+ ],
+ [
+  "forms/2026/person.yaml",
+  3138,
+  "ambiguity: amb.2025.ira_ssb_copy"
+ ],
+ [
+  "forms/2026/person.yaml",
+  3152,
+  "ambiguity: amb.2025.ira_ssb_copy"
+ ],
+ [
+  "forms/2026/person.yaml",
+  3156,
+  "remedy: With social security benefits, traditional IRA contributions for 2025 and you or your spouse covered by a retirement"
+ ],
+ [
+  "forms/2026/person.yaml",
+  3184,
+  "ambiguity: amb.2025.ira_ssb_copy"
+ ],
+ [
+  "forms/2026/person.yaml",
+  3209,
+  "ambiguity: amb.2025.ira_se_floor"
+ ],
+ [
+  "forms/2026/person.yaml",
+  3233,
+  "ambiguity: amb.2025.ira_se_earned"
+ ],
+ [
+  "forms/2026/person.yaml",
+  3238,
+  "note: Helper worksheet. Wages means boxes 3 plus 7 under approved interpretation amb.2025.ss_wages."
+ ],
+ [
+  "forms/2026/qbi.yaml",
+  32,
+  "ambiguity: amb.2025.qbi_cooperative_patron"
+ ],
+ [
+  "forms/2026/refund.yaml",
+  6,
+  "note: The worksheet in the Form 1040 instructions, for a 2025 refund of 2024 state or local income tax deducted on the"
+ ],
+ [
+  "forms/2026/refund.yaml",
+  23,
+  "label: State or local income tax refunds, credits or offsets you received in 2025"
+ ],
+ [
+  "forms/2026/refund.yaml",
+  27,
+  "source: 'State or local income tax refunds, credits or offsets you received in 2025: the total of box 2 of your Forms"
+ ],
+ [
+  "forms/2026/refund.yaml",
+  28,
+  "1099-G (or a similar statement), including any part you chose to apply to your 2025 estimated state or local income"
+ ],
+ [
+  "forms/2026/refund.yaml",
+  34,
+  "and \"If you chose to apply part or all of the refund to your 2025 estimated state or local income tax, the amount"
+ ],
+ [
+  "forms/2026/refund.yaml",
+  35,
+  "applied is treated as received in 2025\"; f1099g p. 5, Instructions for Recipient, \"Box 2. Shows refunds, credits,"
+ ],
+ [
+  "forms/2026/refund.yaml",
+  39,
+  "label: Any state or local income tax refund received in 2025"
+ ],
+ [
+  "forms/2026/refund.yaml",
+  64,
+  "of 2024 estimated state or local income tax in 2025?"
+ ],
+ [
+  "forms/2026/refund.yaml",
+  69,
+  "of 2024 estimated state or local income tax in 2025?"
+ ],
+ [
+  "forms/2026/refund.yaml",
+  73,
+  "your last payment of 2024 estimated state or local income tax in 2025\"; f1099g p. 5, Instructions for Recipient,"
+ ],
+ [
+  "forms/2026/refund.yaml",
+  75,
+  "ambiguity: amb.2025.refund_exceptions"
+ ],
+ [
+  "forms/2026/refund.yaml",
+  122,
+  "ambiguity: amb.2025.refund_not_itemized"
+ ],
+ [
+  "forms/2026/refund.yaml",
+  149,
+  "are not filing a joint 2025 Form 1040 or 1040-SR with the same person?"
+ ],
+ [
+  "forms/2026/refund.yaml",
+  155,
+  "you are not filing a joint 2025 Form 1040 or 1040-SR with the same person?"
+ ],
+ [
+  "forms/2026/refund.yaml",
+  159,
+  "because of a jointly filed state or local income tax return, but you aren\u2019t filing a joint 2025 Form 1040 or 1040-SR"
+ ],
+ [
+  "forms/2026/refund.yaml",
+  162,
+  "ambiguity: amb.2025.refund_exceptions"
+ ],
+ [
+  "forms/2026/refund.yaml",
+  176,
+  "ambiguity: amb.2025.refund_paid_5d"
+ ],
+ [
+  "forms/2026/refund.yaml",
+  215,
+  "ambiguity: amb.2025.refund_cap_5d"
+ ],
+ [
+  "forms/2026/refund.yaml",
+  229,
+  "or local return with someone you are not filing jointly with for 2025 is figured with Pub. 525 instead of the Form"
+ ],
+ [
+  "forms/2026/refund.yaml",
+  489,
+  "ambiguity: amb.2025.refund_boxes_2024"
+ ],
+ [
+  "forms/2026/refund.yaml",
+  500,
+  "ambiguity: amb.2025.refund_boxes_2024"
+ ],
+ [
+  "forms/2026/refund.yaml",
+  517,
+  "ambiguity: amb.2025.refund_boxes_2024"
+ ],
+ [
+  "forms/2026/refund.yaml",
+  534,
+  "ambiguity: amb.2025.refund_boxes_2024"
+ ],
+ [
+  "forms/2026/refund.yaml",
+  556,
+  "ambiguity: amb.2025.refund_boxes_2024"
+ ],
+ [
+  "forms/2026/refund.yaml",
+  627,
+  "ambiguity: amb.2025.refund_boxes_2024"
+ ],
+ [
+  "forms/2026/refund.yaml",
+  675,
+  "ambiguity: amb.2025.refund_boxes_2024"
+ ],
+ [
+  "forms/2026/refund.yaml",
+  867,
+  "ambiguity: amb.2025.refund_not_itemized"
+ ],
+ [
+  "forms/2026/refund.yaml",
+  880,
+  "was made in 2025, is figured with Pub. 525 (and may reduce your 2025 deduction for taxes); that is outside this tool."
+ ],
+ [
+  "forms/2026/retirement.yaml",
+  69,
+  "contributions to any traditional IRA; a conversion or recharacterization (Form 8606); a 2024 or 2025 IRA contribution returned to you, or excess contributions for an earlier year returned to you in 2025;"
+ ],
+ [
+  "forms/2026/retirement.yaml",
+  78,
+  "contributions to any traditional IRA; a conversion or recharacterization (Form 8606); a 2024 or 2025 IRA contribution returned to you, or excess contributions for an earlier year returned to you in 2025;"
+ ],
+ [
+  "forms/2026/retirement.yaml",
+  171,
+  "source: Number of months in 2025 for which payments were made"
+ ],
+ [
+  "forms/2026/retirement.yaml",
+  722,
+  "label: Add lines 6 and 8. This is the amount you have recovered tax free through 2025"
+ ],
+ [
+  "forms/2026/retirement.yaml",
+  732,
+  "free through 2025\" (the worksheet is used here only for an annuity starting date after November 18, 1996, so line"
+ ],
+ [
+  "forms/2026/retirement.yaml",
+  1046,
+  "ambiguity: amb.2025.savers_inherited_plans"
+ ],
+ [
+  "forms/2026/retirement.yaml",
+  1090,
+  "ambiguity: amb.2025.savers_inherited_plans"
+ ],
+ [
+  "forms/2026/retirement.yaml",
+  1103,
+  "ambiguity: amb.2025.savers_line4_gross"
+ ],
+ [
+  "forms/2026/retirement.yaml",
+  1126,
+  "2022 and before the due date of your 2025 return (including extensions) from any of the following types of plans\"'"
+ ],
+ [
+  "forms/2026/s1.yaml",
+  45,
+  "label: Unemployment compensation paid to you in 2025"
+ ],
+ [
+  "forms/2026/s1.yaml",
+  49,
+  "source: 'Unemployment compensation paid to you in 2025: the total of box 1 of your Forms 1099-G (if box 1 is wrong,"
+ ],
+ [
+  "forms/2026/s1.yaml",
+  54,
+  "paid to you in 2025' and 'If the amount reported in box 1 of your Form(s) 1099-G is incorrect, report on line 7 only"
+ ],
+ [
+  "forms/2026/s1.yaml",
+  70,
+  "label: Amount of a 2025 overpayment of unemployment compensation you repaid in 2025"
+ ],
+ [
+  "forms/2026/s1.yaml",
+  74,
+  "source: Amount you repaid in 2025 of an overpayment of unemployment compensation you received in 2025 (zero if none)"
+ ],
+ [
+  "forms/2026/s1.yaml",
+  82,
+  "or disability insurance contributions), or repay in 2025 any unemployment compensation you included in income in an"
+ ],
+ [
+  "forms/2026/s1.yaml",
+  88,
+  "or disability insurance contributions), or repay in 2025 any unemployment compensation you included in income in an"
+ ],
+ [
+  "forms/2026/s1.yaml",
+  96,
+  "label: Unemployment compensation less the amount of a 2025 overpayment repaid"
+ ],
+ [
+  "forms/2026/s1.yaml",
+  138,
+  "label: If you repaid a 2025 overpayment (see instructions), check here"
+ ],
+ [
+  "forms/2026/s1.yaml",
+  307,
+  "source: 'Your gambling winnings for 2025 not attributable to a trade or business: box 1 of every Form W-2G plus"
+ ],
+ [
+  "forms/2026/s1.yaml",
+  339,
+  "tax years 2018 through 2025, professional gambling losses and expenses are limited to the amount of your winnings\"'"
+ ],
+ [
+  "forms/2026/s1.yaml",
+  384,
+  "source: 'Alaska Permanent Fund dividends paid to you (and, on a joint return, your spouse) in 2025, as shown on the"
+ ],
+ [
+  "forms/2026/s1.yaml",
+  397,
+  "source: Jury duty pay you (and, on a joint return, your spouse) received in 2025, including any you gave to your"
+ ],
+ [
+  "forms/2026/s1.yaml",
+  409,
+  "source: 'Prizes and awards you (and, on a joint return, your spouse) received in 2025 that are not gambling winnings,"
+ ],
+ [
+  "forms/2026/s1.yaml",
+  424,
+  "source: Income you (and, on a joint return, your spouse) received in 2025 from an activity not engaged in for profit,"
+ ],
+ [
+  "forms/2026/s1.yaml",
+  437,
+  "source: 'Scholarship and fellowship grants you (and, on a joint return, your spouse) received in 2025 that are not"
+ ],
+ [
+  "forms/2026/s1.yaml",
+  459,
+  "label: Did you receive or pay alimony or separate maintenance in 2025 under a divorce or separation agreement entered"
+ ],
+ [
+  "forms/2026/s1.yaml",
+  464,
+  "source: Did you receive or pay alimony or separate maintenance in 2025 under a divorce or separation agreement entered"
+ ],
+ [
+  "forms/2026/s1.yaml",
+  476,
+  "label: Alimony or separate maintenance received in 2025 under an agreement entered into on or before December 31, 2018"
+ ],
+ [
+  "forms/2026/s1.yaml",
+  480,
+  "source: Alimony or separate maintenance you received in 2025 under a divorce or separation agreement entered into on"
+ ],
+ [
+  "forms/2026/s1.yaml",
+  490,
+  "label: Alimony or separate maintenance paid in 2025 under an agreement entered into on or before December 31, 2018"
+ ],
+ [
+  "forms/2026/s1.yaml",
+  494,
+  "source: Alimony or separate maintenance you paid in 2025 to or for a spouse or former spouse under a divorce or separation"
+ ],
+ [
+  "forms/2026/s1.yaml",
+  559,
+  "ambiguity: amb.2025.alimony_screen"
+ ],
+ [
+  "forms/2026/s1.yaml",
+  575,
+  "ambiguity: amb.2025.s1_unnumbered_lines"
+ ],
+ [
+  "forms/2026/s1.yaml",
+  578,
+  "label: Was any of your debt canceled or forgiven in 2025?"
+ ],
+ [
+  "forms/2026/s1.yaml",
+  582,
+  "source: Was any of your debt canceled or forgiven in 2025 (for example, you received a Form 1099-C, or a lender forgave"
+ ],
+ [
+  "forms/2026/s1.yaml",
+  699,
+  "ambiguity: amb.2025.cod_fully_taxable"
+ ],
+ [
+  "forms/2026/s1.yaml",
+  826,
+  "ambiguity: amb.2025.ewp_oid"
+ ],
+ [
+  "forms/2026/s1.yaml",
+  867,
+  "ambiguity: amb.2025.alimony_screen"
+ ],
+ [
+  "forms/2026/s1.yaml",
+  882,
+  "ambiguity: amb.2025.s1_unnumbered_lines"
+ ],
+ [
+  "forms/2026/s1.yaml",
+  898,
+  "ambiguity: amb.2025.s1_unnumbered_lines"
+ ],
+ [
+  "forms/2026/s1.yaml",
+  945,
+  "ambiguity: amb.2025.jury_24a_cap"
+ ],
+ [
+  "forms/2026/s179.yaml",
+  7,
+  "the amounts elected for 2025 each business deducts its own elections; otherwise the whole of line 12 goes to the return's"
+ ],
+ [
+  "forms/2026/s179.yaml",
+  23,
+  "label: The maximum section 179 deduction limitation for 2025"
+ ],
+ [
+  "forms/2026/s179.yaml",
+  41,
+  "... placed in service during the tax year beginning in 2025\""
+ ],
+ [
+  "forms/2026/s179.yaml",
+  42,
+  "ambiguity: amb.2025.s179_carryover_no_property"
+ ],
+ [
+  "forms/2026/s179.yaml",
+  376,
+  "label: The deduction differs from the amounts elected for 2025"
+ ],
+ [
+  "forms/2026/s1a.yaml",
+  7,
+  "only, by the methods the instructions give for 2025; tips or overtime in a trade or business, Form 4137, and excluded"
+ ],
+ [
+  "forms/2026/s1a.yaml",
+  107,
+  "label: Did you receive qualified tips as an employee in 2025 that you want to deduct?"
+ ],
+ [
+  "forms/2026/s1a.yaml",
+  111,
+  "source: Did you receive tips as an employee in 2025 in an occupation on the IRS list of occupations that customarily"
+ ],
+ [
+  "forms/2026/s1a.yaml",
+  879,
+  "label: Did you receive qualified overtime compensation in 2025 that you want to deduct?"
+ ],
+ [
+  "forms/2026/s1a.yaml",
+  883,
+  "source: Did you receive overtime pay as an employee in 2025 that you want to deduct on Schedule 1-A, Part III (the FLSA"
+ ],
+ [
+  "forms/2026/s1a.yaml",
+  1505,
+  "label: Did you pay or accrue interest in 2025 on a loan to buy a new passenger vehicle that you want to deduct?"
+ ],
+ [
+  "forms/2026/s1a.yaml",
+  1509,
+  "source: Did you pay or accrue interest in 2025 on a loan taken out after 2024 to buy a new car, minivan, van, SUV, pickup"
+ ],
+ [
+  "forms/2026/s1a.yaml",
+  2200,
+  "label: Your entry, if you were born between January 2, 1960, and January 1, 1961, and died in 2025 before reaching age 65"
+ ],
+ [
+  "forms/2026/s1a.yaml",
+  2222,
+  "label: 'You were born between January 2, 1960, and January 1, 1961, and died in 2025 before reaching age 65'"
+ ],
+ [
+  "forms/2026/s1a.yaml",
+  2235,
+  "label: A filer who died in 2025 before reaching age 65"
+ ],
+ [
+  "forms/2026/s1a.yaml",
+  2269,
+  "form: Enhanced deduction for seniors on the final return of a person who died in 2025 before reaching age 65"
+ ],
+ [
+  "forms/2026/s1a.yaml",
+  2270,
+  "remedy: A person born before January 2, 1961, who died in 2025 before reaching age 65 does not qualify; this case is"
+ ],
+ [
+  "forms/2026/s1a.yaml",
+  2379,
+  "label: 'Your spouse''s entry, if your spouse was born between January 2, 1960, and January 1, 1961, and died in 2025 before reaching age 65'"
+ ],
+ [
+  "forms/2026/s1a.yaml",
+  2401,
+  "label: 'Your spouse was born between January 2, 1960, and January 1, 1961, and died in 2025 before reaching age 65'"
+ ],
+ [
+  "forms/2026/s1a.yaml",
+  2414,
+  "label: A spouse who died in 2025 before reaching age 65"
+ ],
+ [
+  "forms/2026/s1a.yaml",
+  2436,
+  "form: Enhanced deduction for seniors on the final return of a person who died in 2025 before reaching age 65"
+ ],
+ [
+  "forms/2026/s1a.yaml",
+  2437,
+  "remedy: A person born before January 2, 1961, who died in 2025 before reaching age 65 does not qualify; this case is"
+ ],
+ [
+  "forms/2026/s8812.yaml",
+  439,
+  "source: 'Did you receive any nontaxable combat pay in 2025 (it is generally shown in Form W-2, box 12, code Q)?'"
+ ],
+ [
+  "forms/2026/s8812.yaml",
+  449,
+  "source: Were you a bona fide resident of Puerto Rico in 2025?"
+ ],
+ [
+  "forms/2026/s8812.yaml",
+  702,
+  "ambiguity: amb.2025.multiplication_subcent"
+ ],
+ [
+  "forms/2026/s8812.yaml",
+  1037,
+  "ambiguity: amb.2025.multiplication_subcent"
+ ],
+ [
+  "forms/2026/sa.yaml",
+  8,
+  "refused. The SALT formula follows the printed 2025 worksheet, including its MFS halving step."
+ ],
+ [
+  "forms/2026/sa.yaml",
+  45,
+  "label: 'Can someone claim you or your spouse as a dependent for 2025, or are you a dual-status alien? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)'"
+ ],
+ [
+  "forms/2026/sa.yaml",
+  48,
+  "source: 'Can someone claim you or your spouse as a dependent for 2025, or are you a dual-status alien? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)'"
+ ],
+ [
+  "forms/2026/sa.yaml",
+  80,
+  "January 2, 1961, or was blind at the end of 2025, you can check the appropriate box(es) on line 12d if your"
+ ],
+ [
+  "forms/2026/sa.yaml",
+  233,
+  "ambiguity: amb.2025.sa_medical_negative_agi"
+ ],
+ [
+  "forms/2026/sa.yaml",
+  244,
+  "ambiguity: amb.2025.sa_medical_negative_agi"
+ ],
+ [
+  "forms/2026/sa.yaml",
+  257,
+  "ambiguity: amb.2025.multiplication_subcent"
+ ],
+ [
+  "forms/2026/sa.yaml",
+  335,
+  "ambiguity: amb.2025.multiplication_subcent"
+ ],
+ [
+  "forms/2026/sa.yaml",
+  371,
+  "ambiguity: amb.2025.multiplication_subcent"
+ ],
+ [
+  "forms/2026/sa.yaml",
+  571,
+  "label: Gambling losses you had during 2025"
+ ],
+ [
+  "forms/2026/sa.yaml",
+  574,
+  "source: 'Your gambling losses during 2025 (you and, on a joint return, your spouse), including the cost of"
+ ],
+ [
+  "forms/2026/sa.yaml",
+  594,
+  "ambiguity: amb.2025.gambling_losses"
+ ],
+ [
+  "forms/2026/sa.yaml",
+  802,
+  "person who died in 2025 before reaching 65"
+ ],
+ [
+  "forms/2026/sa.yaml",
+  821,
+  "January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)\"; pp. 34\u201335, Standard Deduction"
+ ],
+ [
+  "forms/2026/sa.yaml",
+  834,
+  "January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)\"; pp. 34\u201335, Standard Deduction"
+ ],
+ [
+  "forms/2026/sa.yaml",
+  852,
+  "January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)\"; pp. 34\u201335, Standard Deduction"
+ ],
+ [
+  "forms/2026/sa.yaml",
+  865,
+  "January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)\"; pp. 34\u201335, Standard Deduction"
+ ],
+ [
+  "forms/2026/sales.yaml",
+  440,
+  "ambiguity: amb.2025.sales_rounding"
+ ],
+ [
+  "forms/2026/sb.yaml",
+  34,
+  "2025?"
+ ],
+ [
+  "forms/2026/sb.yaml",
+  38,
+  "2025?"
+ ],
+ [
+  "forms/2026/sb.yaml",
+  68,
+  "2025?"
+ ],
+ [
+  "forms/2026/sb.yaml",
+  72,
+  "2025?"
+ ],
+ [
+  "forms/2026/sc.yaml",
+  55,
+  "label: Did you \"materially participate\" in the operation of this business during 2025, and is the business something other"
+ ],
+ [
+  "forms/2026/sc.yaml",
+  60,
+  "source: Did you \"materially participate\" in the operation of this business during 2025 (for example, you worked in it"
+ ],
+ [
+  "forms/2026/sc.yaml",
+  82,
+  "label: Do you use an accounting method other than cash or accrual, or did you change your accounting method for 2025 (Form"
+ ],
+ [
+  "forms/2026/sc.yaml",
+  88,
+  "source: Do you use an accounting method other than cash or accrual, or did you change your accounting method for 2025"
+ ],
+ [
+  "forms/2026/sc.yaml",
+  152,
+  "source: Gross receipts or sales of this business for 2025, including amounts properly shown on Forms 1099-NEC and any"
+ ],
+ [
+  "forms/2026/sc.yaml",
+  326,
+  "source: Interest you paid for 2025 on a mortgage on real property used in the business, to banks or other financial"
+ ],
+ [
+  "forms/2026/sc.yaml",
+  416,
+  "source: Materials and supplies actually consumed and used in the business during 2025 (or incidental supplies purchased"
+ ],
+ [
+  "forms/2026/sc.yaml",
+  417,
+  "during 2025 if you keep no inventory or records of use); zero if none"
+ ],
+ [
+  "forms/2026/sc.yaml",
+  488,
+  "ambiguity: amb.2025.meals_full_exceptions"
+ ],
+ [
+  "forms/2026/sc.yaml",
+  543,
+  "source: Salaries and wages you paid your employees in 2025 (not amounts paid to yourself, and not wages deducted elsewhere);"
+ ],
+ [
+  "forms/2026/sc.yaml",
+  689,
+  "someone else''s business; you used the area for only part of 2025 or it changed during the year; some of this business''s"
+ ],
+ [
+  "forms/2026/sc.yaml",
+  742,
+  "or product samples) throughout 2025"
+ ],
+ [
+  "forms/2026/sc.yaml",
+  884,
+  "label: The most section 179 deduction this business could take, its 2025 elections plus the carryover from 2024 (Form 4562"
+ ],
+ [
+  "forms/2026/sc.yaml",
+  897,
+  "label: No section 179 deduction is possible for this business (no 2025 election and no carryover)"
+ ],
+ [
+  "forms/2026/sc.yaml",
+  1153,
+  "source: Inventory at the beginning of 2025 (the same as your closing inventory for 2024); zero if none"
+ ],
+ [
+  "forms/2026/sc.yaml",
+  1227,
+  "source: Inventory at the end of 2025; zero if none"
+ ],
+ [
+  "forms/2026/sc.yaml",
+  1249,
+  "field: asset.s179_2025"
+ ],
+ [
+  "forms/2026/sc.yaml",
+  1265,
+  "field: asset.bonus_2025"
+ ],
+ [
+  "forms/2026/sc.yaml",
+  1284,
+  "label: MACRS on 2025 property of period y3 other than listed property"
+ ],
+ [
+  "forms/2026/sc.yaml",
+  1289,
+  "field: asset.dep_2025"
+ ],
+ [
+  "forms/2026/sc.yaml",
+  1303,
+  "label: MACRS on 2025 property of period y5 other than listed property"
+ ],
+ [
+  "forms/2026/sc.yaml",
+  1308,
+  "field: asset.dep_2025"
+ ],
+ [
+  "forms/2026/sc.yaml",
+  1322,
+  "label: MACRS on 2025 property of period y7 other than listed property"
+ ],
+ [
+  "forms/2026/sc.yaml",
+  1327,
+  "field: asset.dep_2025"
+ ],
+ [
+  "forms/2026/sc.yaml",
+  1341,
+  "label: MACRS on 2025 property of period y10 other than listed property"
+ ],
+ [
+  "forms/2026/sc.yaml",
+  1346,
+  "field: asset.dep_2025"
+ ],
+ [
+  "forms/2026/sc.yaml",
+  1360,
+  "label: MACRS on 2025 property of period y15 other than listed property"
+ ],
+ [
+  "forms/2026/sc.yaml",
+  1365,
+  "field: asset.dep_2025"
+ ],
+ [
+  "forms/2026/sc.yaml",
+  1379,
+  "label: MACRS on 2025 property of period y20 other than listed property"
+ ],
+ [
+  "forms/2026/sc.yaml",
+  1384,
+  "field: asset.dep_2025"
+ ],
+ [
+  "forms/2026/sc.yaml",
+  1398,
+  "label: MACRS on 2025 property of period y15sl other than listed property"
+ ],
+ [
+  "forms/2026/sc.yaml",
+  1403,
+  "field: asset.dep_2025"
+ ],
+ [
+  "forms/2026/sc.yaml",
+  1422,
+  "field: asset.bonus_2025"
+ ],
+ [
+  "forms/2026/sc.yaml",
+  1508,
+  "field: asset.s179_2025"
+ ],
+ [
+  "forms/2026/sc.yaml",
+  1520,
+  "field: scveh.s179_2025"
+ ],
+ [
+  "forms/2026/sc.yaml",
+  1538,
+  "label: Section 179 elected for this business's 2025 property"
+ ],
+ [
+  "forms/2026/sc.yaml",
+  1748,
+  "source: 'Did you pay for health insurance for 2025 (for you, your spouse, your dependents, or your child under age 27"
+ ],
+ [
+  "forms/2026/sc.yaml",
+  1749,
+  "at the end of 2025) that is established under this business: a policy in the name of the business or in your own name?'"
+ ],
+ [
+  "forms/2026/sc.yaml",
+  1789,
+  "source: The total you paid in 2025 for health insurance coverage (medical, dental and vision; including Medicare premiums"
+ ],
+ [
+  "forms/2026/sc.yaml",
+  1791,
+  "age 27 at the end of 2025; but not amounts for any month you were eligible to participate in a health plan subsidized"
+ ],
+ [
+  "forms/2026/sc.yaml",
+  2023,
+  "plans\" (amb.2025.qbi_attribution)"
+ ],
+ [
+  "forms/2026/scope.yaml",
+  32,
+  "label: 'Any nonresident alien status (you or your spouse, for any part of 2025) or other income or return treatment outside wages, interest, dividends, supported securities sales, Form 1099-R distributions and social security benefits, including wages or tips not on a Form W-2, Medicaid waiver payments (whether or not in Form W-2 box 1), adoption benefits, dependent care benefits other than those shown in box 10 of a Form W-2 (or a grace-period amount from such a plan), other earned income (Form 1040 lines 1b to 1d and 1f to 1h), or income or loss from a passive activity (including gain on selling an interest in one)?'"
+ ],
+ [
+  "forms/2026/scope.yaml",
+  35,
+  "source: 'Any nonresident alien status (you or your spouse, for any part of 2025) or other income or return treatment outside wages, interest, dividends, supported securities sales, Form 1099-R distributions and social security benefits, including wages or tips not on a Form W-2, Medicaid waiver payments (whether or not in Form W-2 box 1), adoption benefits, dependent care benefits other than those shown in box 10 of a Form W-2 (or a grace-period amount from such a plan), other earned income (Form 1040 lines 1b to 1d and 1f to 1h), or income or loss from a passive activity (including gain on selling an interest in one)?'"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  8,
+  "Worksheet for Passenger Automobiles (Form 4562 Part V): placed in service 2019 to 2025, a 2019 vehicle''s first year after"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  59,
+  "source: The miles you drove this vehicle in 2025 for this business (not commuting)"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  69,
+  "source: The commuting miles you drove this vehicle in 2025 (travel between your home and a work location, as defined"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  80,
+  "source: The other (personal) miles you drove this vehicle in 2025"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  155,
+  "so it cannot be figured for a vehicle with no miles in 2025. Enter the vehicle's miles, or leave out a vehicle"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  207,
+  "source: Parking fees and tolls for this vehicle's business use in 2025 (zero if none)"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  223,
+  "take the standard mileage rate for 2025 only if you\""
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  284,
+  "source: 'The total 2025 operating expenses of this vehicle: gasoline, oil, repairs, insurance, license plates and similar"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  379,
+  "source: Your 2025 lease payments for this vehicle"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  436,
+  "source: The year you placed this vehicle in service in the business (2019 to 2025; a vehicle placed in service earlier"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  456,
+  "it in 2025; you acquired it in a trade-in or from a related person; its business use was 50% or less in any earlier"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  457,
+  "year; it is an electric vehicle placed in service before 2007; you reduced its basis by a clean-fuel deduction or a vehicle credit; you converted it from personal use to business use during 2025; or you use it in your business of transporting persons or property for hire, or it is an ambulance"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  531,
+  "label: Year of recovery in 2025"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  541,
+  "- id: scveh.is2025"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  543,
+  "label: Placed in service in 2025"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  549,
+  "- const: y2025"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  555,
+  "label: Placed in service in 2019 (2025 is after the recovery period)"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  640,
+  "label: Acquired after January 19, 2025"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  644,
+  "source: Did you acquire this vehicle after January 19, 2025?"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  654,
+  "source: For 5-year property placed in service in 2025, did you claim the special depreciation allowance (full), elect"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  655,
+  "the 40% allowance instead of 100% for property acquired after January 19, 2025 (forty), or elect not to claim any"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  662,
+  "label: Is the choice the same for all 5-year property placed in service in 2025?"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  667,
+  "your spouse, on a joint return) placed in service in 2025?"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  730,
+  "- id: scveh.lim_2025"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  732,
+  "label: Limit for a 2025 vehicle"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  755,
+  "label: Limit for the vehicle's 2025 year of recovery"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  776,
+  "- scveh.is2025"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  778,
+  "then: scveh.lim_2025"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  782,
+  "- scveh.is2025"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  802,
+  "- id: scveh.s179_2025_ok"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  804,
+  "label: Section 179 elected for a 2025 vehicle"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  829,
+  "- scveh.is2025"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  831,
+  "then: scveh.line10_2025"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  835,
+  "- scveh.is2025"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  842,
+  "ambiguity: amb.2025.vehicle_s179_claimed"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  843,
+  "- id: scveh.line10_2025"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  845,
+  "label: 'Section 179 for a 2025 vehicle: not more than line 9 for a passenger automobile'"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  861,
+  "then: scveh.s179_2025_ok"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  872,
+  "- scveh.s179_2025_ok"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  908,
+  "- scveh.is2025"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  914,
+  "- scveh.is2025"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  968,
+  "label: 'The allowance when it is claimed: 100% if acquired after January 19, 2025, otherwise 40%'"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  988,
+  "- id: scveh.bonus_2025"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  990,
+  "label: Special allowance for a 2025 vehicle"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  1026,
+  "- scveh.is2025"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  1028,
+  "then: scveh.bonus_2025"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  1032,
+  "- scveh.is2025"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  1077,
+  "label: Quarter of 2025 in which the vehicle was placed in service"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  1081,
+  "source: 'The quarter of 2025 in which you placed this vehicle in service: January to March, April to June, July to September,"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  1149,
+  "label: MACRS rate for the 2025 year of recovery"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  1185,
+  "label: Line 18 times the rate for the 2025 year of recovery"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  1204,
+  "- scveh.is2025"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  1206,
+  "then: scveh.line19_2025"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  1210,
+  "- scveh.is2025"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  1218,
+  "label: Line 19 for a vehicle placed in service before 2025 (zero after the recovery period, when the worksheet is not used)"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  1239,
+  "- id: scveh.line19_2025"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  1241,
+  "label: Line 19 for a 2025 vehicle, half-year or mid-quarter"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  1681,
+  "\u2212 $16,935)\" (amb.2025.auto_unrecovered_basis)"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  1697,
+  "label: 2025 deduction after the recovery period (times the business use percentage)"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  1855,
+  "- id: scveh.s179_2025"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  1867,
+  "then: scveh.s179_2025_o"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  1901,
+  "label: Mid-quarter test basis, 2025 of this vehicle"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  1923,
+  "label: Cost of section 179 property placed in service in 2025 of this vehicle"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  1963,
+  "- id: scveh.s179_2025_o"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  2017,
+  "- scveh.is2025"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  2023,
+  "- scveh.is2025"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  2031,
+  "label: mq_q4 of a 2025 vehicle"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  2049,
+  "- scveh.is2025"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  2055,
+  "- scveh.is2025"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  2063,
+  "label: mq_total of a 2025 vehicle"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  2081,
+  "- scveh.is2025"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  2087,
+  "- scveh.is2025"
+ ],
+ [
+  "forms/2026/scveh.yaml",
+  2095,
+  "label: cost179 of a 2025 vehicle"
+ ],
+ [
+  "forms/2026/sd.yaml",
+  22,
+  "label: 'Is there a capital loss carried into 2025 from any earlier year?'"
+ ],
+ [
+  "forms/2026/sd.yaml",
+  26,
+  "source: 'Is there a capital loss carried into 2025 from any earlier year?'"
+ ],
+ [
+  "forms/2026/sdtw.yaml",
+  639,
+  "ambiguity: amb.2025.multiplication_subcent"
+ ],
+ [
+  "forms/2026/sdtw.yaml",
+  741,
+  "ambiguity: amb.2025.multiplication_subcent"
+ ],
+ [
+  "forms/2026/sdtw.yaml",
+  942,
+  "ambiguity: amb.2025.multiplication_subcent"
+ ],
+ [
+  "forms/2026/sdtw.yaml",
+  1061,
+  "ambiguity: amb.2025.multiplication_subcent"
+ ],
+ [
+  "forms/2026/se.yaml",
+  223,
+  "label: Maximum amount of combined wages and self-employment earnings subject to social security tax for 2025"
+ ],
+ [
+  "forms/2026/sli.yaml",
+  21,
+  "label: Total interest you paid in 2025 on qualified student loans"
+ ],
+ [
+  "forms/2026/sli.yaml",
+  25,
+  "source: Total interest you paid in 2025 on qualified student loans (generally Form 1098-E box 1), not counting any amount"
+ ],
+ [
+  "forms/2026/sli.yaml",
+  45,
+  "label: Are you, or your spouse if filing jointly, claimed as a dependent on someone else's (such as your parent's) 2025 tax return?"
+ ],
+ [
+  "forms/2026/sli.yaml",
+  49,
+  "source: Are you, or your spouse if filing jointly, claimed as a dependent on someone else's (such as your parent's) 2025 tax return?"
+ ],
+ [
+  "forms/2026/sli.yaml",
+  53,
+  "else's (such as your parent's) 2025 tax return'"
+ ],
+ [
+  "forms/2026/sli.yaml",
+  66,
+  "label: Enter the total interest you paid in 2025 on qualified student loans (see the instructions for line 21). Don't"
+ ],
+ [
+  "forms/2026/sli.yaml",
+  285,
+  "7'; three places, amb.2025.sli_ratio_places)"
+ ],
+ [
+  "forms/2026/sli.yaml",
+  286,
+  "ambiguity: amb.2025.sli_ratio_places"
+ ],
+ [
+  "forms/2026/ssb.yaml",
+  15,
+  "source: Total of box 5 (net benefits) of all your Forms SSA-1099 and RRB-1099 for 2025"
+ ],
+ [
+  "forms/2026/ssb.yaml",
+  21,
+  "label: 'Does any of these apply: you made contributions to a traditional IRA for 2025 and you or your spouse"
+ ],
+ [
+  "forms/2026/ssb.yaml",
+  22,
+  "were covered by a retirement plan at work or through self-employment; your social security repayments in 2025"
+ ],
+ [
+  "forms/2026/ssb.yaml",
+  28,
+  "source: 'Does any of these apply: you made contributions to a traditional IRA for 2025 and you or your spouse"
+ ],
+ [
+  "forms/2026/ssb.yaml",
+  30,
+  "2025 (box 4) were more than your benefits (box 3); you file Form 2555, 4563 or 8815; or you exclude employer-provided"
+ ],
+ [
+  "forms/2026/ssb.yaml",
+  59,
+  "label: 'If you are married filing separately: did you live apart from your spouse for all of 2025?'"
+ ],
+ [
+  "forms/2026/ssb.yaml",
+  63,
+  "source: 'If you are married filing separately: did you live apart from your spouse for all of 2025?'"
+ ],
+ [
+  "forms/2026/ssb.yaml",
+  173,
+  "ambiguity: amb.2025.ira_ssb_copy"
+ ],
+ [
+  "forms/2026/ssb.yaml",
+  462,
+  "label: Married filing separately and lived with your spouse at any time in 2025"
+ ],
+ [
+  "forms/2026/w2.yaml",
+  486,
+  "your Form(s) W-2 for 2025\"'"
+ ],
+ [
+  "forms/2026/w2.yaml",
+  490,
+  "remedy: Form 8880 line 2 counts contributions for 2025; box 12 amounts designated for an earlier year are outside this"
+ ],
+ [
+  "forms/2026/w2.yaml",
+  505,
+  "label: Elective deferrals and designated Roth contributions for 2025 from this Form W-2 counted on Form 8880 line 2"
+ ],
+ [
+  "tables/2026/auto_limit.yaml",
+  2,
+  "# after September 27, 2017, placed in service 2019 to 2025, by year of the recovery period (\"4th & later\" repeated for"
+ ],
+ [
+  "tables/2026/auto_limit.yaml",
+  3,
+  "# each later year a 2025 return can reach). Year 1 is the limit with the special depreciation allowance; the limit"
+ ],
+ [
+  "tables/2026/auto_limit.yaml",
+  9,
+  "title: \"Maximum depreciation deduction for passenger automobiles placed in service 2019 to 2025 (Pub. 946)\""
+ ],
+ [
+  "tables/2026/auto_limit.yaml",
+  20,
+  "- { keys: [y2025, 1], value: 2020000 }"
+ ],
+ [
+  "tables/2026/auto_limit_first_nobonus.yaml",
+  1,
+  "# The first-year limit for a passenger automobile placed in service in 2025, and in 2019 (for its unrecovered basis),"
+ ],
+ [
+  "tables/2026/auto_limit_first_nobonus.yaml",
+  2,
+  "# when no special depreciation allowance is claimed (the footnotes of the table in Pub. 946); no 2025 computation uses"
+ ],
+ [
+  "tables/2026/auto_limit_first_nobonus.yaml",
+  17,
+  "- { keys: [y2025], value: 1220000 }"
+ ],
+ [
+  "tables/2026/class_lives.yaml",
+  4,
+  "# Source: sources/2025/p946.pdf sha256 07fadfb2a6ee34767d77b9a2d3a28413c4afa2d0bd2f0488fd6a4b1b9b5904c4"
+ ],
+ [
+  "tables/2026/dc_rate.yaml",
+  3,
+  "# .35 (amb.2025.dc_rate_nonpositive_agi). The last band is printed \"43,000\u2014No limit\"."
+ ],
+ [
+  "tables/2026/eic_0.yaml",
+  1,
+  "# 2025 Earned Income Credit (EIC) Table, no qualifying children who have valid SSNs, extracted from the archived IRS PDF."
+ ],
+ [
+  "tables/2026/eic_0.yaml",
+  2,
+  "# Source: sources/2025/i1040gi.pdf sha256 482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a"
+ ],
+ [
+  "tables/2026/eic_0.yaml",
+  10,
+  "title: \"2025 Earned Income Credit (EIC) Table \u2014 no qualifying children\""
+ ],
+ [
+  "tables/2026/eic_1.yaml",
+  1,
+  "# 2025 Earned Income Credit (EIC) Table, one qualifying child who have valid SSNs, extracted from the archived IRS PDF."
+ ],
+ [
+  "tables/2026/eic_1.yaml",
+  2,
+  "# Source: sources/2025/i1040gi.pdf sha256 482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a"
+ ],
+ [
+  "tables/2026/eic_1.yaml",
+  10,
+  "title: \"2025 Earned Income Credit (EIC) Table \u2014 one qualifying child\""
+ ],
+ [
+  "tables/2026/eic_2.yaml",
+  1,
+  "# 2025 Earned Income Credit (EIC) Table, two qualifying children who have valid SSNs, extracted from the archived IRS PDF."
+ ],
+ [
+  "tables/2026/eic_2.yaml",
+  2,
+  "# Source: sources/2025/i1040gi.pdf sha256 482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a"
+ ],
+ [
+  "tables/2026/eic_2.yaml",
+  10,
+  "title: \"2025 Earned Income Credit (EIC) Table \u2014 two qualifying children\""
+ ],
+ [
+  "tables/2026/eic_3.yaml",
+  1,
+  "# 2025 Earned Income Credit (EIC) Table, three or more qualifying children who have valid SSNs, extracted from the archived IRS PDF."
+ ],
+ [
+  "tables/2026/eic_3.yaml",
+  2,
+  "# Source: sources/2025/i1040gi.pdf sha256 482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a"
+ ],
+ [
+  "tables/2026/eic_3.yaml",
+  10,
+  "title: \"2025 Earned Income Credit (EIC) Table \u2014 three or more qualifying children\""
+ ],
+ [
+  "tables/2026/ltc_limit.yaml",
+  1,
+  "# The limit on qualified long-term care premiums for each person covered, by age at the end of 2025. Written by hand."
+ ],
+ [
+  "tables/2026/macrs_gds.yaml",
+  2,
+  "# Source: sources/2025/p946.pdf sha256 07fadfb2a6ee34767d77b9a2d3a28413c4afa2d0bd2f0488fd6a4b1b9b5904c4"
+ ],
+ [
+  "tables/2026/macrs_last_year.yaml",
+  2,
+  "# years each column of Pub. 946 Tables A-1 to A-5 and A-8 to A-12 runs (checked against tables/2025/macrs_gds.yaml"
+ ],
+ [
+  "tables/2026/quarter_convention.yaml",
+  1,
+  "# The mid-quarter convention for each quarter of 2025 in which property is placed in service. Written by hand."
+ ],
+ [
+  "tables/2026/rate_schedule.yaml",
+  1,
+  "# 2025 tax rate schedules (section 1(j)(2)) from Rev. Proc. 2024-40."
+ ],
+ [
+  "tables/2026/rate_schedule.yaml",
+  11,
+  "title: \"2025 Tax Rate Schedules (section 1(j)(2))\""
+ ],
+ [
+  "tables/2026/recovery_year.yaml",
+  1,
+  "# The 2025 year of recovery of property placed in service in each earlier calendar year, for a calendar-year filer"
+ ],
+ [
+  "tables/2026/recovery_year.yaml",
+  2,
+  "# (year 1 is the year placed in service). Written by hand; each row is 2025 less the year placed in service, plus 1."
+ ],
+ [
+  "tables/2026/recovery_year.yaml",
+  6,
+  "title: \"Year of recovery in 2025, by year placed in service\""
+ ],
+ [
+  "tables/2026/recovery_year.yaml",
+  16,
+  "- { keys: [y2025], value: 1 }"
+ ],
+ [
+  "tables/2026/simple_catchup.yaml",
+  1,
+  "# The SIMPLE IRA catch-up contribution limit for 2025 by age at the end of the year. Written by hand."
+ ],
+ [
+  "tables/2026/simple_catchup.yaml",
+  5,
+  "title: \"SIMPLE IRA catch-up contribution limit, 2025 (Pub. 560, chapter 3)\""
+ ],
+ [
+  "tables/2026/tax_table.yaml",
+  1,
+  "# 2025 Tax Table, extracted from the archived IRS PDF."
+ ],
+ [
+  "tables/2026/tax_table.yaml",
+  2,
+  "# Source: sources/2025/i1040gi.pdf sha256 482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a"
+ ],
+ [
+  "tables/2026/tax_table.yaml",
+  9,
+  "title: \"2025 Tax Table\""
+ ],
+ [
+  "params/2026.yaml",
+  153,
+  "doc: fr-2025-24154"
+ ],
+ [
+  "params/2026.yaml",
+  166,
+  "values: [y2005, y2006, y2007, y2008, y2009, y2010, y2011, y2012, y2013, y2014, y2015, y2016, y2017, y2018, y2019, y2020, y2021, y2022, y2023, y2024, y2025]"
+ ],
+ [
+  "params/2026.yaml",
+  1865,
+  "separately and you lived apart from your spouse for all of 2025, enter $89,000\", \"Qualifying surviving spouse, enter"
+ ],
+ [
+  "params/2026.yaml",
+  1867,
+  "your spouse at any time in 2025, enter $10,000\" (a separate return is refused, scope.ready)'"
+ ],
+ [
+  "params/2026.yaml",
+  1939,
+  "2025\"'"
+ ],
+ [
+  "params/2026.yaml",
+  1946,
+  "2025)\"'"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  4,
+  "- id: amb.2025.multiplication_subcent"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  20,
+  "- id: amb.2025.ss_wages"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  32,
+  "- id: amb.2025.sales_rounding"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  46,
+  "- id: amb.2025.sd4952_selection"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  59,
+  "- id: amb.2025.box2c_scope"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  74,
+  "- id: amb.2025.eic_below_table"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  93,
+  "- id: amb.2025.hsa_last_month_change"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  113,
+  "- id: amb.2025.hsa_last_month_all_year"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  137,
+  "- id: amb.2025.sli_ratio_places"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  152,
+  "- id: amb.2025.qbi_cooperative_patron"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  168,
+  "- id: amb.2025.eic_valid_ssn"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  185,
+  "- id: amb.2025.carloan_ratio_places"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  198,
+  "doc: fr-2025-24154"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  201,
+  "- id: amb.2025.hsa_line7_months"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  216,
+  "and (2) apply to all months during 2025, enter $1,000\". Both readings agree when every eligible month has family"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  222,
+  "- id: amb.2025.auto_later_year_basis"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  241,
+  "- id: amb.2025.auto_unrecovered_basis"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  264,
+  "- id: amb.2025.mq_joint"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  279,
+  "- id: amb.2025.vehicle_business_pct"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  294,
+  "- id: amb.2025.sep_rate_places"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  306,
+  "- id: amb.2025.f7206_line15_person"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  321,
+  "- id: amb.2025.f7206_ratio_places"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  332,
+  "- id: amb.2025.f7206_plan_attribution"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  350,
+  "- id: amb.2025.qbi_attribution"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  367,
+  "- id: amb.2025.s179_carryover_no_property"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  369,
+  "during the tax year beginning in 2025 ... 3. Enter the smaller of line 1 or line 2 here ... 4. Enter the amount from line"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  374,
+  "- 'As printed: with no section 179 property placed in service in 2025, line 1 and line 5 are zero and a 2024 carryover is"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  379,
+  "carryover is deducted up to the dollar limitation less the 2025 election and up to the business income limit (line 11)."
+ ],
+ [
+  "ambiguities/2026.yaml",
+  381,
+  "reason: Research for the owner (ambiguities/research/amb.2025.s179_carryover_no_property.md) quotes the archived 26 U.S.C."
+ ],
+ [
+  "ambiguities/2026.yaml",
+  383,
+  "limitation of paragraphs (1) and (2)\", the dollar amount, which the cost of 2025 property reduces only above $4,000,000."
+ ],
+ [
+  "ambiguities/2026.yaml",
+  385,
+  "Worksheet 1 instead takes the smaller of that and the cost of 2025 property, a cap that changes no return without a"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  391,
+  "- id: amb.2025.meals_full_exceptions"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  413,
+  "- id: amb.2025.vehicle_s179_claimed"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  429,
+  "- id: amb.2025.dc_ineligible_providers"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  432,
+  "must have been age 19 or older by the end of 2025 and they can''t be your dependent\"; p503 p. 8, Payments to Relatives or"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  447,
+  "- id: amb.2025.dc_line1e_attribution"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  468,
+  "- id: amb.2025.dc_line30"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  473,
+  "- Line 30 is the total of the qualified expenses incurred and paid in 2025 for all qualifying persons less line 28, and not"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  485,
+  "- id: amb.2025.separated_spouses_box"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  487,
+  "your spouse for the last 6 months of 2025, or you are legally separated according to your state law under a written"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  489,
+  "the end of 2025\"; the instructions mention the box only for the earned income credit (i1040gi p. 41, Step 3, question 6;"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  502,
+  "- id: amb.2025.dc_plan_maximum"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  518,
+  "- id: amb.2025.dc_rate_nonpositive_agi"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  524,
+  "chosen: The first (tables/2025/dc_rate.yaml, the first band open below)."
+ ],
+ [
+  "ambiguities/2026.yaml",
+  534,
+  "- id: amb.2025.f5695_17abc_section_a"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  552,
+  "- id: amb.2025.f5695_category_cap"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  569,
+  "- id: amb.2025.f5695_battery_second_home"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  586,
+  "- id: amb.2025.f5695_section_b_residence"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  588,
+  "Section B: \"a home that you used during 2025\"; but the Schedule 3 line 5b instructions describe the credit as for"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  597,
+  "and Fact Sheet 2025-01 says \"such property may be installed in the taxpayer\u2019s second home\" and that \"the taxpayer may"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  601,
+  "doc: fs-2025-01"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  605,
+  "- id: amb.2025.clwb_claiming_part1"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  625,
+  "- id: amb.2025.savers_ineligible_column"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  628,
+  "(b) is claimed as a dependent on someone else\u2019s 2025 tax return; or (c) was a student\".'"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  642,
+  "born after January 1, 2008; (b) is claimed as a dependent on someone else\u2019s 2025 tax return; or (c) was a student\"'"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  644,
+  "- id: amb.2025.savers_line4_gross"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  646,
+  "after 2022 and before the due date of your 2025 return (including extensions) from any of the following types of plans\","
+ ],
+ [
+  "ambiguities/2026.yaml",
+  661,
+  "- id: amb.2025.savers_2026_joint"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  664,
+  "received in 2026, before the due date of the 2025 return, is received in a year whose return is not yet filed.'"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  666,
+  "- A 2026 distribution counts as from a year filed jointly when the 2025 return is joint (both columns)."
+ ],
+ [
+  "ambiguities/2026.yaml",
+  670,
+  "reason: The owner's decision (Stage 15 premise map, decision 4). The 2026 return cannot be known when the 2025 return is"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  671,
+  "prepared, and the 2025 return's filing status is the one fact available."
+ ],
+ [
+  "ambiguities/2026.yaml",
+  677,
+  "- id: amb.2025.savers_inherited_plans"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  690,
+  "- id: amb.2025.savers_sep_contrib"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  708,
+  "- id: amb.2025.dc_born_died_half_year"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  709,
+  "text_at_issue: 'Pub. 503, Who Is a Qualifying Person?, \"treated as having lived with you for more than half of 2025 if your"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  710,
+  "home was the person''s home more than half the time they were alive in 2025\"; the dependent tests ask whether a person"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  713,
+  "- A person over 12 unable to care for themselves who was born or died in 2025 qualifies on the time they were alive, as"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  724,
+  "- id: amb.2025.line8z_kinds"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  748,
+  "- id: amb.2025.gambling_losses"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  767,
+  "- id: amb.2025.jury_24a_cap"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  783,
+  "- id: amb.2025.refund_not_itemized"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  804,
+  "- id: amb.2025.refund_exceptions"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  810,
+  "- Ask items 1 and 5 (a refund for another year, a last 2024 estimated payment made in 2025) and Form 1099-G box 8 of"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  818,
+  "a 2025 payment changes the 2025 deduction for taxes (Pub. 525 p. 24, Example 28). Items 3, 4, 6, 7, 8 and 9 and the"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  828,
+  "- id: amb.2025.refund_cap_5d"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  844,
+  "- id: amb.2025.refund_paid_5d"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  861,
+  "- id: amb.2025.refund_boxes_2024"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  866,
+  "boxes are those of the 2024 standard deduction; the 2024 spouse may not be the 2025 spouse, and the worksheet does"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  874,
+  "- Derive the boxes from the 2025 person records."
+ ],
+ [
+  "ambiguities/2026.yaml",
+  876,
+  "reason: The owner's decision D6(c) (four yes/no questions, since a 2024 spouse may not be the 2025 one). Blindness at"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  878,
+  "(i1040gi p. 33, Line 12d, for 2025, \"If you or your spouse (if you are married and filing a joint return) were born"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  879,
+  "before January 2, 1961, or were blind at the end of 2025\" and \"Don\u2019t check any boxes for your spouse if your filing"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  889,
+  "- id: amb.2025.alimony_screen"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  910,
+  "- id: amb.2025.s1_unnumbered_lines"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  924,
+  "- id: amb.2025.ewp_oid"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  941,
+  "- id: amb.2025.cod_fully_taxable"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  960,
+  "- id: amb.2025.hsa_partial_exception"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  976,
+  "- id: amb.2025.ira_both_kinds"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  978,
+  "to both a traditional IRA and a Roth IRA for 2025, don\u2019t use the IRA Deduction Worksheet in these instructions.\"'"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  980,
+  "- Refuse a joint return with any traditional and any Roth contribution for 2025 between the spouses (you traditional and"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  990,
+  "IRA and a Roth IRA for 2025, don\u2019t use the IRA Deduction Worksheet in these instructions\"'"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  992,
+  "- id: amb.2025.ira_age50"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  993,
+  "text_at_issue: 'The IRA Deduction Worksheet uses \"age 50 or older at the end of 2025\" for the applicable amount, the line"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  996,
+  "- Ask each person directly whether they were age 50 or older at the end of 2025 (person.ira_age50)."
+ ],
+ [
+  "ambiguities/2026.yaml",
+  1001,
+  "the standard deduction; asking the age at the end of 2025 is the worksheet's own wording, as person.simple_age is for"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  1007,
+  "- id: amb.2025.ira_covered"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  1026,
+  "- id: amb.2025.ira_se_floor"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  1042,
+  "- id: amb.2025.ira_se_earned"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  1063,
+  "- id: amb.2025.ira_ssb_copy"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  1085,
+  "- id: amb.2025.ira_line7_cents"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  1090,
+  "- Round the product half-up to the cent (multiply_rate, amb.2025.multiplication_subcent), then increase it to the next"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  1094,
+  "reason: The project's rule for products (amb.2025.multiplication_subcent). The readings differ only when the exact product"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  1101,
+  "- id: amb.2025.ira_deduct_less"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  1115,
+  "- id: amb.2025.ira_fellowship"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  1132,
+  "- id: amb.2025.savers_traditional"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  1134,
+  "beneficiary for 2025. Do not include rollover contributions.\"'"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  1136,
+  "- Count every traditional IRA contribution for 2025, deductible or not (IRA Deduction Worksheet line 11), with the Roth"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  1147,
+  "- id: amb.2025.sa_medical_negative_agi"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  1167,
+  "- id: amb.2025.foster_parent_relationship"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  1183,
+  "status: Owner decision, 2026-10-22 (docs/2026-10-22_integrity_plan.md, decision 9; reviews/2025/direct-file/predicates.md, finding F2)."
+ ],
+ [
+  "ambiguities/2026.yaml",
+  1184,
+  "- id: amb.2025.filer_under_16"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  1187,
+  "first-time filer under age 16 at the end of 2025\"). Direct File (TY2024) knocks out a primary filer or a joint-return"
+ ],
+ [
+  "ambiguities/2026.yaml",
+  1191,
+  "- Refuse a return on which you, or your spouse if filing jointly, were under age 16 at the end of 2025 (household.filer_under16), as an entry check."
+ ],
+ [
+  "ambiguities/2026.yaml",
+  1200,
+  "- id: amb.2025.hoh_community_property"
+ ],
+ [
+  "interview/questions-2026.yaml",
+  1,
+  "# The interview's question bank for tax year 2025. Each question names its input and gives"
+ ],
+ [
+  "interview/questions-2026.yaml",
+  5,
+  "# The profiles (2025, sales, stage4, full) list the inputs they ask."
+ ],
+ [
+  "interview/questions-2026.yaml",
+  550,
+  "help: This question is only needed for a disabled qualifying person who turned 13 during 2025."
+ ],
+ [
+  "interview/questions-2026.yaml",
+  605,
+  "prompt: List a stable key for each person or organization that provided care for your qualifying persons in 2025"
+ ],
+ [
+  "interview/questions-2026.yaml",
+  624,
+  "help: Answer true or false. A return for a person under age 16 at the end of 2025 (you, or your spouse on a joint"
+ ],
+ [
+  "interview/questions-2026.yaml",
+  649,
+  "status; a person legally separated under a decree of divorce or separate maintenance at the end of 2025 is not"
+ ],
+ [
+  "interview/questions-2026.yaml",
+  838,
+  "help: 'Answer true or false. Box 3 of Form 1099-G shows the tax year the refund is for. A refund for another year, or for 2024 tax when your last 2024 estimated payment was made in January 2025, is figured with Pub. 525 and is outside this tool.'"
+ ],
+ [
+  "interview/questions-2026.yaml",
+  862,
+  "help: 'One of single, mfj (married filing jointly), mfs (married filing separately), hoh (head of household) or qss (qualifying surviving spouse): the status on the return you filed for 2024, which may differ from your 2025 status.'"
+ ],
+ [
+  "interview/questions-2026.yaml",
+  874,
+  "help: 'Answer true or false. Asked only when your 2024 filing status was married filing jointly or married filing separately; the spouse is the one on your 2024 return, who may not be your spouse in 2025.'"
+ ],
+ [
+  "interview/questions-2026.yaml",
+  877,
+  "help: 'Answer true or false. Asked only when your 2024 filing status was married filing jointly or married filing separately; the spouse is the one on your 2024 return, who may not be your spouse in 2025.'"
+ ],
+ [
+  "interview/questions-2026.yaml",
+  923,
+  "contribute to a health savings account (HSA) for you for 2025 (including a qualified HSA funding distribution,"
+ ],
+ [
+  "interview/questions-2026.yaml",
+  924,
+  "a direct transfer from your IRA to your HSA), did your HSA make a distribution in 2025 (Form 1099-SA), did you"
+ ],
+ [
+  "interview/questions-2026.yaml",
+  1046,
+  "adding a suffix if a vehicle had a loan refinanced during 2025). Use [] if none."
+ ],
+ [
+  "interview/questions-2026.yaml",
+  1091,
+  "or expense under section 179 for 2025 (placed in service from 2005 to 2025), or [] if none. Items with a cost"
+ ],
+ [
+  "interview/questions-2026.yaml",
+  1096,
+  "prompt: For this business \u2014 List one stable key for each car, truck or van you used in the business in 2025"
+ ],
+ [
+  "interview/questions-2026.yaml",
+  1102,
+  "as a sole proprietor in 2025 (income reported to you on Forms 1099-NEC, 1099-K or 1099-MISC for your own work"
+ ],
+ [
+  "interview/questions-2026.yaml",
+  1412,
+  "help: 'Answer true or false. For the residential clean energy credit, costs of constructing or reconstructing a home are treated as paid when your original use of the home begins; such costs for a home you first use after 2025 cannot be claimed.'"
+ ],
+ [
+  "interview/questions-2026.yaml",
+  1415,
+  "help: 'Money is integer cents; zero if none. A cost counts in 2025 when the original installation is completed. Include labor for onsite preparation, assembly or original installation and for piping or wiring to connect the property to the home. Reduce the cost by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you), and by any rebate: a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs such as interest, origination fees or an extended warranty. If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation. Costs for more than one home go on the same line.'"
+ ],
+ [
+  "interview/questions-2026.yaml",
+  1418,
+  "help: 'Money is integer cents; zero if none. A cost counts in 2025 when the original installation is completed. Include labor for onsite preparation, assembly or original installation and for piping or wiring to connect the property to the home. Reduce the cost by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you), and by any rebate: a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs such as interest, origination fees or an extended warranty. If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation. Costs for more than one home go on the same line.'"
+ ],
+ [
+  "interview/questions-2026.yaml",
+  1421,
+  "help: 'Money is integer cents; zero if none. A cost counts in 2025 when the original installation is completed. Include labor for onsite preparation, assembly or original installation and for piping or wiring to connect the property to the home. Reduce the cost by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you), and by any rebate: a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs such as interest, origination fees or an extended warranty. If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation. Costs for more than one home go on the same line.'"
+ ],
+ [
+  "interview/questions-2026.yaml",
+  1424,
+  "help: 'Money is integer cents; zero if none. A cost counts in 2025 when the original installation is completed. Include labor for onsite preparation, assembly or original installation and for piping or wiring to connect the property to the home. Reduce the cost by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you), and by any rebate: a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs such as interest, origination fees or an extended warranty. If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation. Costs for more than one home go on the same line.'"
+ ],
+ [
+  "interview/questions-2026.yaml",
+  1430,
+  "help: 'Money is integer cents; zero if none. A cost counts in 2025 when the original installation is completed. Include labor for onsite preparation, assembly or original installation and for piping or wiring to connect the property to the home. Reduce the cost by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you), and by any rebate: a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs such as interest, origination fees or an extended warranty. If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation. Costs for more than one home go on the same line.'"
+ ],
+ [
+  "interview/questions-2026.yaml",
+  1466,
+  "help: 'Answer true or false. The QMID is the four-character alphanumeric qualified manufacturer identification number the manufacturer gives for the item; each item installed in 2025 needs a valid one. If you answer false, the return is refused: obtain the QMID, or do not enter that item''s cost.'"
+ ],
+ [
+  "interview/questions-2026.yaml",
+  1484,
+  "help: 'Answer true or false. The QMID is the four-character alphanumeric qualified manufacturer identification number the manufacturer gives for the item; each item installed in 2025 needs a valid one. If you answer false, the return is refused: obtain the QMID, or do not enter that item''s cost.'"
+ ],
+ [
+  "interview/questions-2026.yaml",
+  1502,
+  "help: 'Answer true or false. The QMID is the four-character alphanumeric qualified manufacturer identification number the manufacturer gives for the item; each item installed in 2025 needs a valid one. If you answer false, the return is refused: obtain the QMID, or do not enter that item''s cost.'"
+ ],
+ [
+  "interview/questions-2026.yaml",
+  1514,
+  "help: 'Answer true or false. The QMID is the four-character alphanumeric qualified manufacturer identification number the manufacturer gives for the item; each item installed in 2025 needs a valid one. If you answer false, the return is refused: obtain the QMID, or do not enter that item''s cost.'"
+ ],
+ [
+  "interview/questions-2026.yaml",
+  1523,
+  "help: 'Answer true or false. The QMID is the four-character alphanumeric qualified manufacturer identification number the manufacturer gives for the item; each item installed in 2025 needs a valid one. If you answer false, the return is refused: obtain the QMID, or do not enter that item''s cost.'"
+ ],
+ [
+  "interview/questions-2026.yaml",
+  1532,
+  "help: 'Answer true or false. The QMID is the four-character alphanumeric qualified manufacturer identification number the manufacturer gives for the item; each item installed in 2025 needs a valid one. If you answer false, the return is refused: obtain the QMID, or do not enter that item''s cost.'"
+ ],
+ [
+  "interview/questions-2026.yaml",
+  1559,
+  "help: 'Answer true or false. The QMID is the four-character alphanumeric qualified manufacturer identification number the manufacturer gives for the item; each item installed in 2025 needs a valid one. If you answer false, the return is refused: obtain the QMID, or do not enter that item''s cost.'"
+ ],
+ [
+  "interview/questions-2026.yaml",
+  1579,
+  "claimed on someone else's 2025 return. Answer true or false."
+ ],
+ [
+  "interview/questions-2026.yaml",
+  1583,
+  "to a SEP or SIMPLE IRA) for 2025, which may be made until April 15, 2026. They count for the IRA deduction (Schedule"
+ ],
+ [
+  "interview/questions-2026.yaml",
+  1588,
+  "to your traditional IRA for 2025."
+ ],
+ [
+  "interview/questions-2026.yaml",
+  1595,
+  "help: Answer true or false. Age 50 or older at the end of 2025 raises the contribution limit to $8,000 and changes the"
+ ],
+ [
+  "interview/questions-2026.yaml",
+  1630,
+  "help: Money is integer cents. Contributions for 2025 may be made up to the due date of your 2025 return. A contribution"
+ ]
+]

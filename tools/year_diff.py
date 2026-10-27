@@ -77,7 +77,7 @@ def sentences(arch, doc, shift=0):
     `shift` (the text as printed is kept in .printed[(page, sentence)])."""
     out = []
     d = arch.docs[doc]
-    pages = (arch.sources / d.get("cols_file", d["text_file"])).read_text(encoding="utf-8").split("\f")
+    pages = arch.read(doc, "cols_file" if "cols_file" in d else "text_file").split("\f")
     for n, page in enumerate(pages, 1):
         for s in re.split(r"(?<=[.!?:;])\s+(?=\S)", C.norm(page)):
             printed = s.strip()
@@ -216,9 +216,10 @@ def counterparts(from_year, to_year):
 
 # ---------- the diff ----------
 
-def run(from_year, to_year, data_year, archives=None, only=None):
-    """The findings; `archives` replaces the archived years ({year: Archive}) and `only`
-    keeps the citations of one document (both for the self-test)."""
+def run(from_year, to_year, data_year, archives=None, only=None, definitions=None):
+    """The findings; `archives` replaces the archived years ({year: Archive}), `only`
+    keeps the citations of one document and `definitions` reads another year's
+    definitions as the data year's (all for the self-test)."""
     other_year = to_year if data_year == from_year else from_year
     arch = archives or {y: C.Archive(y) for y in (from_year, to_year)}
     A, B = arch[data_year], arch[other_year]
@@ -249,9 +250,9 @@ def run(from_year, to_year, data_year, archives=None, only=None):
                               + (f" (compared with {other})" if other != doc else ""))
         return alignments[doc]
 
-    values = param_values(data_year)
+    values = param_values(definitions or data_year)
     items = collections.OrderedDict()
-    for kind, ident, path, doc, locator in carriers(data_year):
+    for kind, ident, path, doc, locator in carriers(definitions or data_year):
         for seg_doc, pages, anchor, quotes in all_segments(doc, locator):
             if only and seg_doc != only:
                 continue
@@ -273,7 +274,10 @@ def run(from_year, to_year, data_year, archives=None, only=None):
                 parts = C.parts_of(q)
                 if not parts:
                     continue
-                here, there = (all(p in t for p in parts) for t in (al.text_a, al.text_b))
+                # The quote as written and with its years moved to the data year's (after
+                # --adopt a quote such as "at the end of 2025" was written for the other year).
+                variants = (parts, [year_shifted(p, data_year - other_year) for p in parts])
+                here, there = (any(all(p in t for p in v) for v in variants) for t in (al.text_a, al.text_b))
                 if here != there:
                     entry["findings"].append({"strength": "quote", "doc": seg_doc, "pages": shown,
                                               "what": f"quote printed in {data_year if here else other_year} only: \u201c{q}\u201d",
@@ -299,6 +303,17 @@ def run(from_year, to_year, data_year, archives=None, only=None):
                         entry["findings"].append({"strength": "value", "doc": seg_doc, "pages": shown,
                                                   "what": f"the value {text} is printed in a sentence that differs in {other_year}",
                                                   "pairs": [pair(al, i) for i in hits[:3]]})
+                        continue
+                    # After --adopt the value is the other year's: printed on the other year's
+                    # pages that hold the cited sentences' counterparts, and nowhere on this
+                    # year's cited pages.
+                    other_pages = {al.b[al.partner[i]][0] for i in cited if al.partner[i] is not None}
+                    there = [j for j, (p, s) in enumerate(al.b) if p in other_pages and printed(text, s)]
+                    if there and not any(printed(text, al.a[i][1]) for i in cited):
+                        entry["findings"].append({"strength": "value", "doc": seg_doc, "pages": shown,
+                                                  "what": f"the value {text} is printed in {other_year} and not on the cited {data_year} pages",
+                                                  "pairs": [{"page": min(pages), "this": "(the value is not printed on the cited pages)",
+                                                             "other": al.printed_b(j), "other_page": al.b[j][0]} for j in there[:3]]})
     flagged = [e for e in items.values() if e["findings"]]
     return {"from": from_year, "to": to_year, "data": data_year, "other": other_year,
             "docs": doc_state, "items": list(items.values()), "flagged": flagged}
@@ -486,12 +501,15 @@ def self_test(year):
     """Build an earlier year from this year's text of one document and diff against it:
     with only its years moved there must be no finding on the worklist; with a cited
     amount changed, a cited quote removed and a cited heading renamed, each must be
+    found; nor may the IRS draft watermarks make a finding. Then the other way round,
+    as after --adopt: this year's definitions read against a later year built the
+    same way, where a changed amount and a removed quote that names the year must be
     found. Exits 1 otherwise."""
     import tempfile
     A = C.Archive(year)
     doc = SELF_TEST_DOC
     d = A.docs[doc]
-    pages = [C.norm(p) for p in (A.sources / d.get("cols_file", d["text_file"])).read_text(encoding="utf-8").split("\f")]
+    pages = [C.norm(p) for p in A.read(doc, "cols_file" if "cols_file" in d else "text_file").split("\f")]
     values = param_values(year)
     cited = [(kind, ident, seg) for kind, ident, _, cdoc, loc in carriers(year) for seg in all_segments(cdoc, loc) if seg[0] == doc and seg[1]]
     text = "\f".join(pages)
@@ -504,12 +522,21 @@ def self_test(year):
     if not (value and quote and heading):
         sys.exit(f"year-diff self-test: {doc} lacks a cited amount, quote or heading to plant")
 
-    def diff(edit):
+    year_quote = next(((kind, ident, C.parts_of(qs[0])[0]) for kind, ident, (_, _, _, qs) in cited if qs and C.parts_of(qs[0])
+                       and C.parts_of(qs[0])[0] in text and str(year) in C.parts_of(qs[0])[0]), None)
+
+    def diff(edit, draft=False, adopted=False):
         with tempfile.TemporaryDirectory() as tmp:
-            body = year_shifted("\f".join(edit(p) for p in pages), -1)
+            body = year_shifted("\f".join(edit(p) for p in pages), 1 if adopted else -1)
+            if draft:  # the IRS draft watermarks, inside sentences, on every page
+                body = "\f".join(p.replace(". ", ". DRAFT \u2014 DO NOT FILE ", 3) + " TREASURY/IRS AND OMB USE ONLY DRAFT"
+                                 for p in body.split("\f"))
             (Path(tmp) / f"{doc}.cols.txt").write_text(body, encoding="utf-8")
-            (Path(tmp) / "manifest.json").write_text(json.dumps({"documents": [{**d, "cols_file": f"{doc}.cols.txt"}]}))
-            r = run(year - 1, year, year, archives={year: A, year - 1: C.Archive(sources=tmp)}, only=doc)
+            (Path(tmp) / "manifest.json").write_text(json.dumps({"documents": [{**d, "cols_file": f"{doc}.cols.txt", "draft": draft}]}))
+            if adopted:
+                r = run(year, year + 1, year + 1, archives={year: A, year + 1: C.Archive(sources=tmp)}, only=doc, definitions=year)
+            else:
+                r = run(year - 1, year, year, archives={year: A, year - 1: C.Archive(sources=tmp)}, only=doc)
         return {(e["kind"], e["id"]): {f["strength"] for f in e["findings"]} & REVIEW for e in r["items"]}
 
     status = 0
@@ -527,6 +554,24 @@ def self_test(year):
         print(f"year-diff self-test: {strength} planted for {key[0]} {key[1]}: {'found' if ok else 'MISSED'}")
     if not baseline:
         print(f"year-diff self-test: {doc} with only its years moved: nothing on the worklist")
+    watermarked = {k: v for k, v in diff(lambda p: p, draft=True).items() if v}
+    if watermarked:
+        status = 1
+        print(f"year-diff self-test: as an IRS draft with watermarks, {len(watermarked)} item(s) were flagged: {sorted(watermarked)[:5]}")
+    else:
+        print(f"year-diff self-test: {doc} as an IRS draft with watermarks: nothing on the worklist")
+    carried = {k: v for k, v in diff(lambda p: p, adopted=True).items() if v}
+    if carried:
+        status = 1
+        print(f"year-diff self-test: as after --adopt, with only the years moved, {len(carried)} item(s) were flagged: {sorted(carried)[:5]}")
+    if not year_quote:  # a carried year's quotes name the earlier year and are not printed in its text
+        print(f"year-diff self-test: as after --adopt, no cited quote of {doc} names {year} and is printed; quote not planted")
+    planted = diff(lambda p: p.replace(value[1], bumped).replace(year_quote[2] if year_quote else "\0", ""), adopted=True)
+    expect = [(("parameter", value[0]), "value")] + ([((year_quote[0], year_quote[1]), "quote")] if year_quote else [])
+    for key, strength in expect:
+        ok = strength in planted.get(key, set())
+        status = status or (0 if ok else 1)
+        print(f"year-diff self-test: as after --adopt, {strength} planted for {key[0]} {key[1]}: {'found' if ok else 'MISSED'}")
     return status
 
 

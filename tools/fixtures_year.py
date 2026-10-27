@@ -24,6 +24,15 @@ Copies fixtures/<from>/ to fixtures/<to>/ (refusing to overwrite) and re-derives
     documents with a line on the worklist, unless --no-hand-work.
 
 Writes reports/<to>/fixtures_from_<from>.md.
+
+    fixtures_year.py --from 2025 --to 2026 --plan
+
+writes the same report without carrying anything, for a year whose definitions do
+not build yet (a rehearsal on draft documents, where some cited documents have no
+edition): each case is evaluated on the from-year's data and listed as re-recorded
+when its derivation rests on the to-year's worklist; whether a value changes is not
+known until the to-year builds, so a case listed as kept may still be re-recorded.
+fixtures/<to>/ is not written.
 """
 
 import argparse
@@ -109,23 +118,32 @@ def evaluate(cases, year):
     return {cid: r.get("values", r) for cid, r in results.items()}
 
 
+def build(year, plan_hint):
+    """Build the year's data; on failure, exit with the build's error count and first errors."""
+    r = subprocess.run(NODE + ["build", "--year", str(year)], capture_output=True, text=True)
+    if r.returncode:
+        errors = [line for line in (r.stdout + r.stderr).splitlines() if line.startswith("  - ")]
+        sys.exit(f"the {year} definitions do not build ({len(errors)} errors; node engine/dist/main.js build --year {year}):\n"
+                 + "\n".join(e[:200] for e in errors[:8]) + (f"\n{plan_hint}" if plan_hint else ""))
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--from", dest="from_year", type=int, required=True)
     ap.add_argument("--to", dest="to_year", type=int, required=True)
     ap.add_argument("--no-hand-work", action="store_true")
+    ap.add_argument("--plan", action="store_true", help="report on the from-year's data only; write no fixtures (see above)")
     a = ap.parse_args()
     f, t = a.from_year, a.to_year
     src, dst = ROOT / "fixtures" / str(f), ROOT / "fixtures" / str(t)
+    if a.plan:
+        return plan(f, t, src)
     if dst.exists():
         sys.exit(f"refusing to overwrite fixtures/{t}/")
-    subprocess.run(NODE + ["build", "--year", str(t)], check=True, stdout=subprocess.DEVNULL)
+    build(t, f"--plan reports what would be re-recorded without the {t} build.")
     params = json.loads((ROOT / "canonical" / str(t) / "params.json").read_text())["params"]["values"]
 
-    diff = year_diff.run(f, t, t)
-    work = [e for e in diff["items"] if year_diff.on_worklist(e)] if diff["flagged"] else []
-    work_lines = {e["id"] for e in work if e["kind"] in ("line", "refusal")}
-    work_params = {e["id"] for e in work if e["kind"] == "parameter"}
+    work_lines, work_params = worklist(f, t)
 
     files = {}
     for path in sorted(src.glob("*.json")):
@@ -225,6 +243,80 @@ def main():
     report.write_text("\n".join(out) + "\n", encoding="utf-8")
     print(f"fixtures {f} -> {t}: {kept} kept, {rerecorded} re-recorded, {len(failed)} not evaluated, {len(dropped)} official examples dropped; "
           f"hand-work: {'skipped' if a.no_hand_work else len(hand)} document(s); report: {report.relative_to(ROOT)}")
+
+
+def worklist(f, t, doc_only=None):
+    """The to-year's worklist lines and parameters (the to-year's citations against both years);
+    `doc_only`, if given, collects the ids ("#" before a parameter) whose only worklist
+    finding is a cited document with no edition in one of the years."""
+    diff = year_diff.run(f, t, t)
+    work = [e for e in diff["items"] if year_diff.on_worklist(e)] if diff["flagged"] else []
+    if doc_only is not None:
+        for e in work:
+            if {x["strength"] for x in e["findings"]} & year_diff.REVIEW == {"document"}:
+                doc_only.add(("#" if e["kind"] == "parameter" else "") + e["id"])
+    return ({e["id"] for e in work if e["kind"] in ("line", "refusal")},
+            {e["id"] for e in work if e["kind"] == "parameter"})
+
+
+def plan(f, t, src):
+    """The --plan report: which carried cases rest on the to-year's worklist, by their
+    derivations on the from-year's data."""
+    if not (ROOT / "forms" / str(t)).is_dir():
+        sys.exit(f"--plan reads the {t} definitions' citations: adopt first (tools/year_diff.py --from {f} --to {t} --adopt)")
+    build(f, "")
+    params = json.loads((ROOT / "canonical" / str(f) / "params.json").read_text())["params"]["values"]
+    doc_only = set()
+    work_lines, work_params = worklist(f, t, doc_only)
+    dropped, cases = [], []
+    for path in sorted(src.glob("*.json")):
+        data = json.loads(path.read_text(encoding="utf-8"))
+        for c in data.get("cases", []):
+            if str(c.get("evidence", "")).startswith("A"):
+                dropped.append((path.name, c["id"]))
+                continue
+            c["resolved"] = resolve(c["inputs"], params)
+            c["file"] = path.name
+            cases.append(c)
+    results = evaluate(cases, f)
+    rest, kept, failed = [], [], []
+    for c in cases:
+        derivations = results[c["id"]]
+        if "error" in derivations:
+            failed.append((c["id"], derivations["error"]))
+            continue
+        resting = set()
+        for key in (c.get("expect") or {}):
+            lines, ps = rests_on(derivations, key)
+            resting |= (lines & work_lines) | {"#" + p for p in ps & work_params}
+        (rest if resting else kept).append((c, resting))
+    by_item = collections.Counter(r for _, resting in rest for r in resting)
+    only_missing = sum(1 for _, resting in rest if resting <= doc_only)
+    out = [f"# Fixtures carried from {f} to {t} (plan)", "",
+           f"Generated by `tools/fixtures_year.py --plan`: the {t} definitions do not build yet, so no case was evaluated on "
+           f"{t} data and fixtures/{t}/ was not written. Each case's derivation on the {f} data was read against the {t} "
+           f"year-diff worklist. Of {len(cases)} cases that would be carried, {len(rest)} would be re-recorded (they rest on a "
+           f"worklist line or parameter) and {len(kept)} would keep their evidence unless a value changes, which is known "
+           f"only once {t} builds; {len(dropped)} official examples would be dropped; {len(failed)} could not be evaluated. "
+           f"{only_missing} of the {len(rest)} rest only on items whose sole worklist finding is a cited document with no "
+           f"{t} edition archived (marked * below).", "",
+           "## Worklist items the most cases rest on", "", "| Item | Cases |", "| --- | --- |"]
+    out += [f"| `{k}`{' *' if k in doc_only else ''} | {v} |" for k, v in by_item.most_common(25)]
+    out += ["", f"## Cases that would be re-recorded ({len(rest)})", ""]
+    out += [f"- `{c['file']}` `{c['id']}`: rests on " + ", ".join(f"`{r}`" for r in sorted(resting)[:5])
+            + (f" and {len(resting) - 5} more" if len(resting) > 5 else "") for c, resting in rest]
+    out += ["", f"## Cases that would keep their evidence unless a value changes ({len(kept)})", ""]
+    out += [f"- `{c['file']}` `{c['id']}`" for c, _ in kept]
+    if dropped:
+        out += ["", "## Official examples to find for the new year", ""] + [f"- `{n}`: `{cid}`" for n, cid in dropped]
+    if failed:
+        out += ["", f"## Cases the {f} data rejects ({len(failed)})", ""] + [f"- `{cid}`: {err}" for cid, err in failed]
+    out += ["", "## Class M hand-work", "", "Not run in a plan."]
+    report = ROOT / "reports" / str(t) / f"fixtures_from_{f}.md"
+    report.parent.mkdir(parents=True, exist_ok=True)
+    report.write_text("\n".join(out) + "\n", encoding="utf-8")
+    print(f"fixtures {f} -> {t} (plan): {len(rest)} would be re-recorded, {len(kept)} kept unless a value changes, "
+          f"{len(dropped)} official examples dropped, {len(failed)} not evaluated; report: {report.relative_to(ROOT)}")
 
 
 if __name__ == "__main__":

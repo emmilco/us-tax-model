@@ -48,7 +48,9 @@ segment that names pages of an archived PDF:
       move every page number of this year's (checked) locators by +2, then by
       -1, relocate, and report how many come back to the authored pages; exits
       1 if any is placed on a page other than its authored one (a segment left
-      for review is not a failure). Then plant locators on a computed line: a
+      for review is not a failure). Rewrite two page lists folded into one locator, the
+      second's old number the first's new one; exits 1 unless each is rewritten in
+      its own place. Then plant locators on a computed line: a
       span of lines must be reported and a correct form-line locator must
       verify; exits 1 otherwise.
 """
@@ -98,7 +100,30 @@ def parts_of(quote):
     return [p for p in pieces if p]
 
 
+# An IRS draft (manifest "draft": true) prints a cover notice as its first page and
+# watermarks on every page; both are removed from its text, the cover page left empty
+# so that page numbers stay those of the PDF.
+DRAFT_COVER = "The draft you are looking for begins on the next page"
+DRAFT_MARKS = re.compile(r"TREASURY/IRS AND OMB USE ONLY DRAFT|DRAFT\s*[\u2014\u2013-]\s*DO NOT FILE|\bDRAFT\b")
+
+
+def drop_draft_marks(text, entry):
+    """A draft's extracted text without the IRS cover notice and watermarks."""
+    if not entry.get("draft"):
+        return text
+    pages = text.split("\f")
+    if pages and DRAFT_COVER in pages[0]:
+        pages[0] = ""
+    return "\f".join(DRAFT_MARKS.sub(" ", p) for p in pages)
+
+
 class Archive:
+    def read(self, doc, key):
+        """One archived text layer of a document (`cols_file` or `text_file`), a draft's
+        cover and watermarks removed."""
+        d = self.docs[doc]
+        return drop_draft_marks((self.sources / d[key]).read_text(encoding="utf-8"), d)
+
     def __init__(self, year=Y, sources=None):
         self.sources = Path(sources) if sources else ROOT / "sources" / str(year)
         docs = json.loads((self.sources / "manifest.json").read_text())["documents"]
@@ -113,7 +138,7 @@ class Archive:
             if d and d["file"].endswith(".pdf"):
                 for key in ("cols_file", "text_file"):
                     if key in d:
-                        pages = (self.sources / d[key]).read_text(encoding="utf-8").split("\f")
+                        pages = self.read(doc, key).split("\f")
                         layers.append([norm(p) for p in pages])
             self.cache[doc] = layers or None
         return self.cache[doc]
@@ -121,15 +146,14 @@ class Archive:
     def raw_page(self, doc, page):
         """One page of a PDF's reading-order text, as extracted."""
         d = self.docs[doc]
-        pages = (self.sources / d.get("cols_file", d["text_file"])).read_text(encoding="utf-8").split("\f")
+        pages = self.read(doc, "cols_file" if "cols_file" in d else "text_file").split("\f")
         return pages[page - 1] if 0 < page <= len(pages) else ""
 
     def _raw_layers(self, doc):
         d = self.docs.get(doc)
         if not d:
             return []
-        return [(self.sources / d[key]).read_text(encoding="utf-8")
-                for key in ("cols_file", "text_file") if key in d]
+        return [self.read(doc, key) for key in ("cols_file", "text_file") if key in d]
 
     def whole(self, doc):
         """The normalized text of each layer of any archived document, or None."""
@@ -753,7 +777,8 @@ def self_test():
         for (path, line, _, (d, pages, anchor, _, _)), old, new in wrong:
             print(f"  WRONG {rel(path)}:{line} {d} authored p. {_pages_text(pages)}, relocated p. {_pages_text(new)} ({anchor})")
         status = status or (1 if wrong else 0)
-    return status or self_test_computed(arch)
+    computed, rewrite = self_test_computed(arch), self_test_rewrite()
+    return status or computed or rewrite
 
 
 def self_test_computed(arch):
@@ -800,25 +825,101 @@ def relocate():
     return 0
 
 
+def _scalar_offsets(raw, value, style):
+    """Positions in `raw` (a locator scalar as written in the file, quotes included)
+    of each character offset of its parsed `value` (one more for the end), or None
+    when the two cannot be walked together (an escape sequence, say)."""
+    j = 1 if style in ("'", '"') else 0
+    pos, i = [], 0
+    while i < len(value):
+        c = value[i]
+        if c.isspace():
+            if j >= len(raw) or not raw[j].isspace():
+                return None
+            while i < len(value) and value[i].isspace():
+                pos.append(j)
+                i += 1
+            while j < len(raw) and raw[j].isspace():
+                j += 1
+            continue
+        if style == '"' and raw[j:j + 1] == "\\":
+            return None
+        if style == "'" and c == "'":
+            if raw[j:j + 2] != "''":
+                return None
+            pos.append(j)
+            i, j = i + 1, j + 2
+            continue
+        if raw[j:j + 1] != c:
+            return None
+        pos.append(j)
+        i, j = i + 1, j + 1
+    return pos + [j]
+
+
 def _rewrite(path, changes):
-    """Replace each segment's page list in the file, keeping its separator style."""
-    lines = open(path, encoding="utf-8").read().split("\n")
-    for line, locator, (a, b), new in changes:
-        old_text = locator[a:b]
-        dash = next((c for c in "\u2013\u2014-" if c in old_text), "\u2013")
-        new_text = _pages_text(new).replace("\u2013", dash)
-        tail = locator[max(0, a - 20):a]
-        # the locator may be folded over several rows of the file; find the row holding this page list
-        for row_no in range(line - 1, min(len(lines), line + 6)):
-            row = lines[row_no]
-            idx = row.find(tail + old_text) if row_no == line - 1 else row.find(old_text)
-            if idx >= 0:
-                k = idx + (len(tail) if row_no == line - 1 else 0)
-                lines[row_no] = row[:k] + new_text + row[k + len(old_text):]
-                break
-        else:
+    """Replace each segment's page list in the file, keeping its separator style. The
+    locator scalar is found by its line, its parsed text walked against the text as
+    written (folded over rows, quotes doubled) so that each page list is replaced at
+    its own offset; the edits of one locator are applied last to first."""
+    text = open(path, encoding="utf-8").read()
+    scalars = {}
+    def walk(node):
+        if isinstance(node, yaml.MappingNode):
+            for k, v in node.value:
+                if isinstance(k, yaml.ScalarNode) and k.value == "locator" and isinstance(v, yaml.ScalarNode):
+                    scalars[v.start_mark.line + 1] = v
+                walk(v)
+        elif isinstance(node, yaml.SequenceNode):
+            for v in node.value:
+                walk(v)
+    walk(yaml.compose(text))
+    by_line = collections.defaultdict(list)
+    for line, locator, span, new in changes:
+        by_line[line].append((locator, span, new))
+    edits = []
+    for line, group in by_line.items():
+        node = scalars.get(line)
+        pos = None
+        if node is not None and node.value == group[0][0]:
+            raw = text[node.start_mark.index:node.end_mark.index]
+            pos = _scalar_offsets(raw, node.value, node.style)
+        if pos is None:
             print(f"  could not rewrite {rel(path)}:{line}; edit by hand", file=sys.stderr)
-    open(path, "w", encoding="utf-8").write("\n".join(lines))
+            continue
+        for locator, (a, b), new in group:
+            old_text = locator[a:b]
+            dash = next((c for c in "\u2013\u2014-" if c in old_text), "\u2013")
+            edits.append((node.start_mark.index + pos[a], node.start_mark.index + pos[b],
+                          _pages_text(new).replace("\u2013", dash)))
+    for i, j, new_text in sorted(edits, reverse=True):
+        text = text[:i] + new_text + text[j:]
+    open(path, "w", encoding="utf-8").write(text)
+
+
+def self_test_rewrite():
+    """Two page lists of one locator folded over rows, each moved by one, the second
+    old number equal to the first new one; and a quote doubled in a single-quoted
+    scalar before the page list. Both must be rewritten at their own places."""
+    import tempfile
+    body = ("a:\n  cite:\n    doc: x\n    locator: 'Form X (2026), line 7, \"stop\"; p. 1, Caution; p. 2, Credit Limit\n"
+            "      Worksheet, \"you can\u2019t\"; p. 3\u20134, Line\n      7'\n"
+            "b:\n  cite:\n    doc: x\n    locator: 'p. 5, Who''s Eligible; p. 6, Lines 1 and 2'\n")
+    want = ("a:\n  cite:\n    doc: x\n    locator: 'Form X (2026), line 7, \"stop\"; p. 2, Caution; p. 3, Credit Limit\n"
+            "      Worksheet, \"you can\u2019t\"; p. 4\u20135, Line\n      7'\n"
+            "b:\n  cite:\n    doc: x\n    locator: 'p. 6, Who''s Eligible; p. 8, Lines 1 and 2'\n")
+    with tempfile.TemporaryDirectory() as tmp:
+        path = Path(tmp) / "t.yaml"
+        path.write_text(body, encoding="utf-8")
+        changes = []
+        for _, locator, line in citations(path):
+            for _, pages, _, _, span in segments("x", locator):
+                changes.append((line, locator, span, [p + (2 if p == 6 else 1) for p in pages]))
+        _rewrite(path, changes)
+        got = path.read_text(encoding="utf-8")
+    ok = got == want
+    print("self-test, rewriting folded multi-segment locators: " + ("correct" if ok else "WRONG:\n" + got))
+    return 0 if ok else 1
 
 
 def main():

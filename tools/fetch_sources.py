@@ -13,6 +13,12 @@ tools/extract_text.py) and `<id>.pages.json` (that tool's per-page classificatio
 The manifest records a hash for every file; `--derive` (re)builds the reading-order
 pair for every archived PDF and records the hashes; with no flag the archive is
 verified offline, every hash included.
+
+An IRS draft (an address under /pub/irs-dft/) is catalogued with `"draft": true`,
+its edition and posted date (`draft_edition`, `draft_posted`, from
+irs.gov/draft-tax-forms); the flag is carried into the manifest. Drafts cannot
+back a release (spec 7): verification fails for an adopted year (years.json)
+whose archive holds a draft, and a draft address without the flag is refused.
 """
 import argparse
 import datetime
@@ -81,6 +87,40 @@ def verify(entry):
             raise ValueError(f"hash mismatch: {entry[file_key]}")
 
 
+def is_draft_url(url):
+    return urlparse(url).path.startswith("/pub/irs-dft/")
+
+
+def check_draft_marking(item):
+    """A draft address must carry the draft flag, edition and posted date; the flag
+    only on a draft address."""
+    if is_draft_url(item["url"]) != bool(item.get("draft")):
+        raise ValueError(f"{item['id']}: a draft address (/pub/irs-dft/) and \"draft\": true go together")
+    if item.get("draft") and not (item.get("draft_edition") and item.get("draft_posted")):
+        raise ValueError(f"{item['id']}: a draft needs draft_edition and draft_posted")
+
+
+def adopted_years():
+    return json.loads((ROOT / "years.json").read_text())["adopted"]
+
+
+def self_test():
+    """The draft marking rules on made-up catalog rows."""
+    good = {"id": "x", "url": "https://www.irs.gov/pub/irs-dft/f1040--dft.pdf", "draft": True,
+            "draft_edition": "2026", "draft_posted": "2026-09-17"}
+    check_draft_marking(good)
+    check_draft_marking({"id": "y", "url": "https://www.irs.gov/pub/irs-pdf/f1040.pdf"})
+    for bad in ({**good, "draft": False}, {"id": "z", "url": good["url"]},
+                {"id": "w", "url": "https://www.irs.gov/pub/irs-pdf/f1040.pdf", "draft": True},
+                {k: v for k, v in good.items() if k != "draft_posted"}):
+        try:
+            check_draft_marking(bad)
+        except ValueError:
+            continue
+        raise SystemExit(f"fetch_sources self-test: accepted a mis-marked row {bad}")
+    print("fetch_sources self-test: draft marking checks pass")
+
+
 def write_manifest(manifest_path, manifest, existing):
     manifest["documents"] = sorted(existing.values(), key=lambda row: row["id"])
     temporary_manifest = manifest_path.with_suffix(".json.tmp")
@@ -93,8 +133,14 @@ def main():
     parser.add_argument("--fetch", action="store_true", help="explicitly allow network retrieval")
     parser.add_argument("--only", nargs="+", help="catalog IDs to fetch")
     parser.add_argument("--derive", action="store_true", help="(re)build the reading-order text and page classification of every archived PDF and record their hashes")
+    parser.add_argument("--self-test", action="store_true", help="check the draft-marking rules and exit")
     args = parser.parse_args()
+    if args.self_test:
+        self_test()
+        return
     catalog = json.loads(CATALOG.read_text())
+    for item in catalog:
+        check_draft_marking(item)
     manifest_path = ARCHIVE / "manifest.json"
     manifest = json.loads(manifest_path.read_text()) if manifest_path.exists() else {"tax_year": YEAR, "documents": []}
     existing = {entry["id"]: entry for entry in manifest["documents"]}
@@ -126,7 +172,12 @@ def main():
             if entry.get("format", "pdf") == "pdf" and "cols_file" not in entry:
                 underived.append(entry["id"])
         missing = sorted({item["id"] for item in catalog} - set(existing))
-        print(f"Verified {len(existing)} archived documents offline.")
+        drafts = sorted(e["id"] for e in existing.values() if e.get("draft"))
+        print(f"Verified {len(existing)} archived documents offline"
+              + (f" ({len(drafts)} IRS drafts)." if drafts else "."))
+        if drafts and YEAR in adopted_years():
+            raise SystemExit(f"{YEAR} is adopted (years.json) but its archive holds IRS drafts, which cannot back a release "
+                             "(spec 7): " + ", ".join(drafts))
         if underived:
             raise SystemExit("No reading-order text yet (run --derive): " + ", ".join(underived))
         if missing:
@@ -179,6 +230,9 @@ def main():
                 "revision": None,
                 "revision_status": "Pending inspection of archived document; not cleared for encoding",
             })
+            if item.get("draft"):
+                entry["revision_status"] = (f"IRS draft ({item['draft_edition']} edition, posted {item['draft_posted']}); "
+                                            "cannot back a release (spec 7). " + entry["revision_status"])
             targets = [(source, ARCHIVE / entry["file"])]
             if kind != "xls":
                 entry.update({"text_file": item["id"] + ".txt", "text_sha256": digest(txt)})

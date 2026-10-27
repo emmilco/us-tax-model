@@ -60,6 +60,7 @@ step compile npm run compile --silent
 wave
 
 step fetch_sources python3 tools/fetch_sources.py "$@"
+step fetch_sources_self_test python3 tools/fetch_sources.py --self-test
 step check_extraction python3 tools/check_extraction.py "$@"
 step check_macrs_tables python3 tools/check_macrs_tables.py "$@"
 step check_auto_limits python3 tools/check_auto_limits.py "$@"
