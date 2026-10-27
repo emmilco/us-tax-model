@@ -65,6 +65,7 @@ step check_macrs_tables python3 tools/check_macrs_tables.py "$@"
 step check_auto_limits python3 tools/check_auto_limits.py "$@"
 step check_bug_inventory python3 tools/check_bug_inventory.py
 step review_tools python3 tools/transcription/test_review_tools.py
+step input_context python3 tools/transcription/test_input_context.py
 step consistency_checks node tools/test_consistency_checks.mjs
 step adapter_contracts python3 tools/transcription/adapter_contracts.py "$@"
 step classm_skipped python3 tools/transcription/audit_skipped.py
@@ -82,6 +83,7 @@ wave
 
 step conjecture "${node[@]}" conjecture "$@"
 step test_fixtures "${node[@]}" test-fixtures "$@"
+step refusal_reach "${node[0]}" tools/check_refusal_reach.mjs
 step test_integration "${node[@]}" test-integration "$@"
 step human_review python3 tools/human_review/test_review.py
 step classm_job_seeds "${node[0]}" tools/transcription/test_classm_jobs.mjs

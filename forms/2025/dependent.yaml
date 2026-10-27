@@ -200,14 +200,125 @@ form:
     - id: dependent.parent_home_paid
       printed: (helper)
       type: Bool
-      label: For a parent not living with you, you paid over half the cost of their main home for all of 2025?
+      label: For a parent not living with you, you paid over half the cost of their main home for all of 2025 (or the part of
+        2025 they were alive)?
       expr:
         op: input
         source: If this person is your parent, did you pay over half the cost of keeping up a home that was their main
-          home for all of 2025?
+          home for all of 2025 (or, if your parent died in 2025, for the entire part of 2025 your parent was alive)?
       cite:
         doc: i1040gi
-        locator: p. 14, Head of Household, Test 1
+        locator: p. 14, Head of Household, Test 1; p. 15, "If the person is anyone else, see Pub. 501"; p501 p. 9, Death or
+          birth, "Your parent for whom you paid, for the entire part of the year your parent was alive, more than half the
+          cost of keeping up the home your parent lived in"
+    - id: dependent.born_died
+      printed: (helper)
+      type: Bool
+      label: Born or died in 2025?
+      expr:
+        op: input
+        source: Was this person born in 2025, or did this person die in 2025?
+      cite:
+        doc: i1040gi
+        locator: p. 15, "If the person for whom you kept up a home was born or died in 2025, you still may be able to file as
+          head of household"
+    - id: dependent.placed
+      printed: (helper)
+      type: Bool
+      label: Adopted, placed for adoption or placed as a foster child in 2025?
+      expr:
+        op: input
+        source: Did you adopt this person in 2025, or was this person lawfully placed with you for legal adoption by you, or
+          placed with you as an eligible foster child, during 2025?
+      cite:
+        doc: i1040gi
+        locator: p. 15, "Similarly, if you adopted the person for whom you kept up a home in 2025, the person was lawfully
+          placed with you for legal adoption by you in 2025, or the person was an eligible foster child placed with you
+          during 2025"
+    - id: dependent.part_year_home
+      printed: (helper)
+      type: Bool
+      label: Lived with you more than half the part of 2025 they were alive, or since the adoption or placement?
+      expr:
+        op: input
+        source: Was your home this person's home for more than half of the part of 2025 they were alive (or, for a person
+          adopted or placed with you in 2025, more than half of the time since the adoption or placement), counting
+          temporary absences for school, vacation, business, medical care, military service or detention in a juvenile
+          facility as time lived with you?
+      cite:
+        doc: p501
+        locator: p. 9, Death or birth, "Your qualifying child or qualifying relative who lived with you for more than half the
+          part of the year they were alive"; i1040gi p. 15, "more than half the time since the person was adopted or placed
+          with you in 2025"; i1040gi pp. 14-15, temporary absences, "or detention in a juvenile facility"
+    - id: dependent.hoh_lived_half
+      printed: (helper)
+      type: Bool
+      label: Lived with you more than half of 2025, or, for a relative other than a qualifying child (whose months already count
+        the part of the year), more than half of the part of 2025 they were alive or since their adoption or placement
+      expr:
+        op: test
+        any:
+          - op: test
+            eq:
+              - dependent.lived_half
+              - const: true
+          - op: test
+            all:
+              - op: test
+                eq:
+                  - dependent.qualifying_child
+                  - const: false
+              - op: test
+                any:
+                  - op: test
+                    eq:
+                      - dependent.born_died
+                      - const: true
+                  - op: test
+                    eq:
+                      - dependent.placed
+                      - const: true
+              - op: test
+                eq:
+                  - dependent.part_year_home
+                  - const: true
+      cite:
+        doc: p501
+        locator: p. 9, Death or birth, "To qualify you for head of household filing status, the qualifying person (as defined
+          in Table 4) must be one of the following"; i1040gi p. 15, "the person is considered to have lived with you for more
+          than half of 2025 if your main home was this person's main home for more than half the time since the person was
+          adopted or placed with you in 2025"
+    - id: dependent.dc_lived_half
+      printed: (helper)
+      type: Bool
+      label: Lived with you more than half of 2025, or, for a person other than a qualifying child born or who died in 2025, more
+        than half of the part of 2025 they were alive
+      expr:
+        op: test
+        any:
+          - op: test
+            eq:
+              - dependent.lived_half
+              - const: true
+          - op: test
+            all:
+              - op: test
+                eq:
+                  - dependent.qualifying_child
+                  - const: false
+              - op: test
+                eq:
+                  - dependent.born_died
+                  - const: true
+              - op: test
+                eq:
+                  - dependent.part_year_home
+                  - const: true
+      cite:
+        doc: p503
+        locator: p. 3, Birth or death of otherwise qualifying person, "a person who was born or died in 2025 is treated as
+          having lived with you for more than half of 2025 if your home was the person's home more than half the time they
+          were alive in 2025"
     - id: dependent.one
       printed: (helper)
       type: Count
@@ -805,7 +916,7 @@ form:
     - id: dependent.hoh_test2
       printed: (helper)
       type: Bool
-      label: A Test 2 person who lived with you more than half the year (the home-cost condition of Test 2 is tested on the household form)
+      label: A Test 2 person who lived with you more than half the year, or of the part of the year a relative was alive (the home-cost condition of Test 2 is tested on the household form)
       expr:
         op: test
         any:
@@ -814,10 +925,6 @@ form:
               - op: test
                 eq:
                   - dependent.claimed
-                  - const: true
-              - op: test
-                eq:
-                  - dependent.lived_half
                   - const: true
               - op: test
                 ne:
@@ -831,6 +938,10 @@ form:
                 ne:
                   - dependent.relationship
                   - const: other
+              - op: test
+                eq:
+                  - dependent.hoh_lived_half
+                  - const: true
           - op: test
             all:
               - op: test
@@ -1017,15 +1128,15 @@ form:
         all:
           - op: test
             eq:
-              - dependent.lived_half
+              - dependent.dc_incapable
               - const: true
           - op: test
             eq:
-              - dependent.dc_incapable
+              - dependent.dc_lived_half
               - const: true
       cite:
         doc: i2441
-        locator: 'p. 1, Qualifying Person(s), "Any disabled person who wasn''t physically or mentally able to care for themselves who lived with you for more than half the year and whom you can claim as a dependent"'
+        locator: 'p. 1, Qualifying Person(s), "Any disabled person who wasn''t physically or mentally able to care for themselves who lived with you for more than half the year and whom you can claim as a dependent"; p503 p. 3, Birth or death of otherwise qualifying person'
     - id: dependent.dc_qp
       printed: (helper)
       type: Bool

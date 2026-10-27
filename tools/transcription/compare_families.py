@@ -76,6 +76,7 @@ def parse_log(kind, path):
             "comparison_policy": field("comparison policy"), "lines": lines, "duplicates": duplicates,
             "type_policy": field("type validation policy"), "model_types": field("model type validation"),
             "input_context_policy": field("input context policy"), "complete_inputs": field("complete input context"),
+            "input_context_sha256": field("required input context sha256"),
             "partial_policy": field("partial-input policy"), "partial_bank": field("partial-input bank sha256"),
             "partial_context": field("partial-input request context"), "partial_result": field("partial-input result"),
             "sources": re.findall(r"^\| (\S+) \| [^|]* \| [^|]* \| [^|]* \| ([0-9a-f]{64}) \|(?: [^|]* \| ([0-9a-f]{64}|-) \|)?$", text, flags=re.M)}
@@ -173,6 +174,11 @@ def compare(kind, form, family):
         q["blockers"].append("no source-defined computed targets; internal adapter checks earn no tax-evidence credit")
     if kind == "transcription":
         q["blockers"].append("BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close")
+        required_targets=transcribe.required_target_keys(transcribe.load_form(form))
+        for fam, record in ((families.DEFAULT,a),(family,b)):
+            absent=sorted(required_targets-set(record['lines']))
+            if absent:
+                q['blockers'].append(f"current source targets not judged by {fam}: "+', '.join(absent))
         legacy = [fam for fam, record in ((families.DEFAULT, a), (family, b))
                   if record.get("comparison_policy") != transcribe.COMPARISON_POLICY]
         if legacy:
@@ -185,6 +191,26 @@ def compare(kind, form, family):
                       if record.get("input_context_policy") != transcribe.INPUT_CONTEXT_POLICY or record.get("complete_inputs") != "pass"]
         if incomplete:
             q["blockers"].append("no verified complete input context in the request: " + ", ".join(incomplete))
+        # A recorded pass cannot stay current merely because this form's own
+        # subject is unchanged: a foreign input/interface may have changed.
+        # Recheck the actual bound request/reply, including current types.
+        import audit_transcription
+        from pathlib import Path
+        for fam, record in ((families.DEFAULT, a), (family, b)):
+            if record.get("input_context_policy") != transcribe.INPUT_CONTEXT_POLICY or record.get("complete_inputs") != "pass":
+                continue
+            try:
+                replay = audit_transcription.audit(Path(rulings.log_path(kind, form, fam)))
+                if replay["request_provenance"] != "bound":
+                    raise ValueError("request metadata is legacy-limited")
+                if replay["type_errors"]:
+                    raise ValueError("current expression/refusal validation fails")
+                if replay["input_context"]["state"] != "pass":
+                    raise ValueError("required input/interface wording is missing or stale")
+                if record.get("input_context_sha256") != replay["input_context"]["required_sha256"]:
+                    raise ValueError("required input/interface hash differs")
+            except (ValueError, OSError, KeyError, TypeError, RuntimeError) as exc:
+                q["blockers"].append(f"no verified current request context for {fam}: {exc}")
         bank = input_contracts.load(form, Y)
         if bank:
             untested = [fam for fam, record in ((families.DEFAULT, a), (family, b))

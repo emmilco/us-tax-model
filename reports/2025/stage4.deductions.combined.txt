@@ -466,32 +466,6 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; 6998cf8c)
       note: taken: {"eq":["ftc.has_tax",{"const":false}],"op":"test"}
 
-== 28% Rate Gain Worksheet — distribution-only path ==
-  1   Enter the total of all collectibles gain or (loss) from items you reported on Form 8949, Part II
-      = $0
-      cite: [i1040sd] p. 11, 28% Rate Gain Worksheet, lines 1–7 (2025; printed date 2025-12-11; 650643a6)
-  2   Enter as a positive number the total of: any section 1202 exclusion you reported in column (g) of Form 8949, Part II, with code “Q” in column (f), that is 50% of the gain; 2/3 of any such exclusion that is 60% of the gain; and 1/3 of any such exclusion that is 75% of the gain. Don’t make an entry for any section 1202 exclusion that is 100% of the gain
-      = $0
-      cite: [i1040sd] p. 11, 28% Rate Gain Worksheet, lines 1–7 (2025; printed date 2025-12-11; 650643a6)
-  3   Enter the total of all collectibles gain or (loss) from Form 4684, line 4 (but only if Form 4684, line 15, is more than zero); Form 6252; Form 6781, Part II; and Form 8824
-      = $0
-      cite: [i1040sd] p. 11, 28% Rate Gain Worksheet, lines 1–7 (2025; printed date 2025-12-11; 650643a6)
-  5   Enter your long-term capital loss carryovers from Schedule D, line 14; and Schedule K-1 (Form 1041), box 11, code D
-      = $0
-      cite: [i1040sd] p. 11, 28% Rate Gain Worksheet, lines 1–7 (2025; printed date 2025-12-11; 650643a6)
-  4   Enter the total of any collectibles gain reported to you on: Form 1099-DIV, box 2d; Form 2439, box 1d; and Schedule K-1 from a partnership, S corporation, estate, or trust
-      = $0
-      cite: [i1040sd] p. 11, 28% Rate Gain Worksheet, lines 1–7 (2025; printed date 2025-12-11; 650643a6)
-  6   If Schedule D, line 7, is a (loss), enter that (loss) here. Otherwise, enter -0-
-      = $0
-      cite: [i1040sd] p. 11, 28% Rate Gain Worksheet, lines 1–7 (2025; printed date 2025-12-11; 650643a6)
-  (helper) Add g28.line1, g28.line2, g28.line3, g28.line4, g28.line5, g28.line6
-      = $0
-      cite: [i1040sd] p. 11, 28% Rate Gain Worksheet, lines 1–7 (2025; printed date 2025-12-11; 650643a6)
-  7   Combine lines 1 through 6. If zero or less, enter -0-. If more than zero, also enter this amount on Schedule D, line 18
-      = $0
-      cite: [i1040sd] p. 11, 28% Rate Gain Worksheet, lines 1–7 (2025; printed date 2025-12-11; 650643a6)
-
 == Form 8283 — groups of similar noncash property — gift[books] ==
   (helper) Deduction before income limits for this item or group of similar items across all donees, after required valuation/basis reductions
       = $200
@@ -662,6 +636,10 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = $0
       cite: [i8995] pp. 2, 4, Determining Your Qualified Business Income; Line 1 (2025; printed date 2026-01-26; 875843ba)
       note: confirmed roster $sc@person[taxpayer]:
+  (helper) This person's Schedules C with Schedule 1-A tips or overtime
+      = 0
+      cite: [i1040gi] p. 104, Schedule 1-A, line 5 (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $sc@person[taxpayer]:
   (helper) Did you make contributions (other than rollover contributions) to a traditional IRA for 2025?
       = false
       cite: [f8880] Form 8880 (2025), line 1, "Traditional and Roth IRA contributions"; i1040gi p. 95, Line 20, "If you made any nondeductible contributions to a traditional" (2025; created 2025-11-04; ba2b2877)
@@ -771,6 +749,13 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (gate) The Schedule C losses are more than the excess business loss threshold
       = false
       cite: [i1040sc] p. 1, Reminders, "If you report a loss on line 31 ... you may be subject to a business loss limitation ... use Form 461" (2025; b5536db9)
+  (helper) Number of Schedules C with tips or overtime for Schedule 1-A
+      = 0
+      cite: [i1040gi] p. 104, Schedule 1-A, line 5; p. 108, line 14b (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $person: taxpayer
+  (gate) A business received tips or overtime to be deducted on Schedule 1-A
+      = false
+      cite: [i1040gi] p. 104, Schedule 1-A, line 5, and the Multiple Trades or Businesses Worksheet; p. 108, line 14b (2025; printed date 2026-02-25; 482e9c48)
   3   Business income or (loss). Attach Schedule C
       = $0
       cite: [f1040s1] Schedule 1 (2025), line 3; i1040sc p. 14, Line 31, "include it on Schedule 1 (Form 1040), line 3" (2025; created 2025-07-25; 8dafec71)
@@ -1208,12 +1193,14 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Capital gain distributions, generally Form 1099-DIV box 2a
       = $0
       cite: [i1040sd] p. 11, line 13 (2025; printed date 2025-12-11; 650643a6)
-  (helper) 28% Rate Gain Worksheet result (supplied subtotal; worksheet deferred to Stage 4)
+  (helper) Line 18. 28% Rate Gain Worksheet result, or zero when line 17 is No (lines 18 through 21 skipped)
       = $0
-      cite: [i1040sd] p. 11, line 18 (2025; printed date 2025-12-11; 650643a6)
-  (helper) Unrecaptured Section 1250 Gain Worksheet result (supplied subtotal; worksheet deferred to Stage 4)
+      cite: [i1040sd] p. 11, Line 18, "If you checked “Yes” on line 17, complete the 28% Rate Gain Worksheet"; f1040sd p. 2, line 17, "No. Skip lines 18 through 21, and go to line 22" (2025; printed date 2025-12-11; 650643a6)
+      note: taken: {"eq":["sd.line17",{"const":false}],"op":"test"}
+  (helper) Line 19. Unrecaptured Section 1250 Gain Worksheet result, or zero when line 17 is No (lines 18 through 21 skipped)
       = $0
-      cite: [i1040sd] pp. 11–12, line 19 (2025; printed date 2025-12-11; 650643a6)
+      cite: [i1040sd] pp. 11–12, Line 19, "If you checked “Yes” on line 17, complete the Unrecaptured Section 1250 Gain Worksheet"; f1040sd p. 2, line 17, "No. Skip lines 18 through 21, and go to line 22" (2025; printed date 2025-12-11; 650643a6)
+      note: taken: {"eq":["sd.line17",{"const":false}],"op":"test"}
   (helper) Count screened transactions
       = 0
       cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
@@ -1339,41 +1326,6 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 18 (with no benefits, none are taxable) (2025; printed date 2026-02-25; 482e9c48)
       note: taken: {"eq":["ssb.has_benefits",{"const":false}],"op":"test"}
 
-== Unrecaptured Section 1250 Gain Worksheet — distribution-only path ==
-  9   Subtract line 8 from line 7. If zero or less, enter -0-
-      = $0
-      cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  10  Enter the amount of any gain from the sale or exchange of an interest in a partnership attributable to unrecaptured section 1250 gain
-      = $0
-      cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  12  Enter the total of any unrecaptured section 1250 gain from sales (including installment sales) or other dispositions of section 1250 property held more than 1 year for which you didn’t make an entry in Part I of Form 4797 for the year of sale
-      = $0
-      cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  16  Enter your long-term capital loss carryovers from Schedule D, line 14; and Schedule K-1 (Form 1041), box 11, code D
-      = $0
-      cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  11  Enter the total of any amounts reported to you as “unrecaptured section 1250 gain” on a Schedule K-1, Form 1099-DIV, or Form 2439 from an estate, a trust, a real estate investment trust, or a mutual fund (or other regulated investment company) or in connection with a Form 1099-R
-      = $0
-      cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  13  Add lines 9 through 12
-      = $0
-      cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  14  If you had any section 1202 gain or collectibles gain or (loss), enter the total of lines 1 through 4 of the 28% Rate Gain Worksheet. Otherwise, enter -0-
-      = $0
-      cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  15  Enter the (loss), if any, from Schedule D, line 7. If Schedule D, line 7, is zero or a gain, enter -0-
-      = $0
-      cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  (helper) Add u1250.line14, u1250.line15, u1250.line16
-      = $0
-      cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  17  Combine lines 14 through 16. If the result is a (loss), enter it as a positive amount. If the result is zero or a gain, enter -0-
-      = $0
-      cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  18  Unrecaptured section 1250 gain. Subtract line 17 from line 13. If zero or less, enter -0-. If more than zero, enter the result here and on Schedule D, line 19
-      = $0
-      cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-
 Path choices (guard wording per the rendered worksheets in rendered/2025/):
   sd.to1040: chose $0 (guard 1)
       not taken: guard 0 = false
@@ -1425,6 +1377,10 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   qbi.deduction: chose $0 (guard 1)
       not taken: guard 0 = false
   f1040.qbi.deduction: chose $0 (guard 1)
+      not taken: guard 0 = false
+  sd.line18: chose $0 (guard 1)
+      not taken: guard 0 = false
+  sd.line19: chose $0 (guard 1)
       not taken: guard 0 = false
   root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.tax: chose $10,826 (guard 0)
   f1040.non_sdtw_tax: chose $10,826 (guard 1)
@@ -1645,9 +1601,12 @@ Derivations:
   f1040.line12e: copy(household.hoh_fails = false; sa.deduction = $27,700)
   qbi.sa.agi: copy(f1040.line11b = $100,000)
   qbi.sa.deduction: choose(sa.itemizes = true; true = true; sa.line17 = $27,700)
+  s1.sc_1a_count: sum_over(person[taxpayer].sc_1a = 0)
+  s1.sc_1a: test(s1.sc_1a_count = 0; 0 = 0)
+  s1a.s1.sc_1a: test(s1.sc_1a_count = 0; 0 = 0)
   s1a.zero: param(#sales.zero = $0)
-  s1a.line13: choose(s1a.tips = false; false = false; s1a.zero = $0)
-  s1a.line21: choose(s1a.overtime = false; false = false; s1a.zero = $0)
+  s1a.line13: choose(s1.sc_1a = false; s1a.tips = false; false = false; s1a.zero = $0)
+  s1a.line21: choose(s1.sc_1a = false; s1a.overtime = false; false = false; s1a.zero = $0)
   s1a.line30: choose(s1a.carloan = false; false = false; s1a.zero = $0)
   sa.age65_count: sum_over(person[taxpayer].role = taxpayer; "taxpayer" = taxpayer; person[taxpayer].age65 = false; true = true)
   sa.age65: test(sa.age65_count = 0; 0 = 0)
@@ -1693,42 +1652,11 @@ Derivations:
   f1040.line13a: copy(qbi.deduction = $0)
   f1040.line14: sum(f1040.line12e = $27,700; f1040.line13a = $0; f1040.line13b = $0)
   f1040.line15: subtract_floor0(f1040.line11b = $100,000; f1040.line14 = $27,700)
-  g28.div.screen: param(div.section1202 = false; div.amt = false; div.unsupported = false; div.bad_special = false; div.bad_components = false; #sales.zero = $0)
-  g28.line1: copy(div.screen = $0)
-  g28.line2: copy(div.screen = $0)
-  g28.line3: copy(div.screen = $0)
-  g28.line4: copy(div.box2d = $0)
-  g28.line5: copy(div.screen = $0)
-  g28.sd.line7: sum(sd.line1a.h = $0; sd.line1b.h = $0; sd.line2.h = $0; sd.line3.h = $0; sd.line4 = $0; sd.line5 = $0; sd.line6 = $0)
-  g28.sd.zero: param(#sales.zero = $0)
-  g28.line6: smaller_of(sd.line7 = $0; sd.zero = $0)
-  g28.combined: sum(g28.line1 = $0; g28.line2 = $0; g28.line3 = $0; g28.line4 = $0; g28.line5 = $0; g28.line6 = $0)
-  g28.line7: subtract_floor0(g28.combined = $0; sd.zero = $0)
-  sd.g28.line7: subtract_floor0(g28.combined = $0; sd.zero = $0)
-  sd.line18: copy(g28.line7 = $0)
-  u1250.div.screen: param(div.section1202 = false; div.amt = false; div.unsupported = false; div.bad_special = false; div.bad_components = false; #sales.zero = $0)
-  u1250.line9: copy(div.screen = $0)
-  u1250.line10: copy(div.screen = $0)
-  u1250.line11: copy(div.box2b = $0)
-  u1250.line12: copy(div.screen = $0)
-  u1250.line13: sum(u1250.line9 = $0; u1250.line10 = $0; u1250.line11 = $0; u1250.line12 = $0)
-  u1250.sd.zero: param(#sales.zero = $0)
-  u1250.g28.line1: copy(div.screen = $0)
-  u1250.g28.line2: copy(div.screen = $0)
-  u1250.g28.line3: copy(div.screen = $0)
-  u1250.g28.line4: copy(div.box2d = $0)
-  u1250.line14: sum(g28.line1 = $0; g28.line2 = $0; g28.line3 = $0; g28.line4 = $0)
-  u1250.g28.line6: smaller_of(sd.line7 = $0; sd.zero = $0)
-  u1250.line15: copy(g28.line6 = $0)
-  u1250.line16: copy(div.screen = $0)
-  u1250.combined: sum(u1250.line14 = $0; u1250.line15 = $0; u1250.line16 = $0)
-  u1250.line17: subtract_floor0(sd.zero = $0; u1250.combined = $0)
-  u1250.line18: subtract_floor0(u1250.line13 = $0; u1250.line17 = $0)
-  sd.u1250.line18: subtract_floor0(u1250.line13 = $0; u1250.line17 = $0)
-  sd.line19: copy(u1250.line18 = $0)
+  sd.line17: test(sd.line15 = $0; 0 = $0)
+  sd.line18: choose(sd.line17 = false; true = true; sd.line17 = false; false = false; sd.zero = $0)
+  sd.line19: choose(sd.line17 = false; true = true; sd.line17 = false; false = false; sd.zero = $0)
   sd.filed: test(sd.count = 0; 0 = 0; sd.line18 = $0; 0 = $0; sd.line19 = $0; 0 = $0)
   f1040.sd.filed: test(sd.count = 0; 0 = 0; sd.line18 = $0; 0 = $0; sd.line19 = $0; 0 = $0)
-  sd.line17: test(sd.line15 = $0; 0 = $0)
   f1040.sd.line17: test(sd.line15 = $0; 0 = $0)
   f1040.gate.qdcg_applies: test(f1040.line15 = $72,300; 0 = $0; f1040.line3a = $0; 0 = $0; sd.filed = false; false = false; sd.distributions = $0; 0 = $0; sd.line17 = false; true = true)
   f1040.gate.sdtw: test(f1040.gate.qdcg_applies = false; true = true)

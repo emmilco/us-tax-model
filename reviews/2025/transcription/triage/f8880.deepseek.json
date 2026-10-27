@@ -1,0 +1,140 @@
+{
+ "bank": null,
+ "errors": [
+  {
+   "line": "f8880.line6a",
+   "message": "malformed expression (project schema): data/of/1 must be string, data/of/1 must be string, data/of/1 must be string"
+  },
+  {
+   "line": "f8880.line6b",
+   "message": "malformed expression (project schema): data/of/1 must be string, data/of/1 must be string, data/of/1 must be string"
+  },
+  {
+   "line": "f8880.line6a",
+   "message": "f8880.f8880.line6a: malformed expression"
+  },
+  {
+   "line": "f8880.line6b",
+   "message": "f8880.f8880.line6b: malformed expression"
+  },
+  {
+   "line": "f8880.line9",
+   "message": "f8880.f8880.line9: table 'f8880.line9' does not exist"
+  },
+  {
+   "line": "f8880.line12",
+   "message": "f8880.f8880.line12: comparison operands have incompatible types"
+  },
+  {
+   "line": "f8880.line12",
+   "message": "f8880.f8880.line12: comparison operands have incompatible types"
+  },
+  {
+   "line": "f8880.line1a",
+   "message": "f8880.f8880.__type_gate_0: collection reference requires sum_over"
+  },
+  {
+   "line": "f8880.line1a",
+   "message": "f8880.f8880.__type_gate_0: comparison operands have incompatible types"
+  },
+  {
+   "line": "f8880.line1b",
+   "message": "f8880.f8880.__type_gate_1: collection reference requires sum_over"
+  },
+  {
+   "line": "f8880.line1b",
+   "message": "f8880.f8880.__type_gate_1: comparison operands have incompatible types"
+  },
+  {
+   "line": "f8880.line2a",
+   "message": "f8880.f8880.__type_gate_2: collection reference requires sum_over"
+  },
+  {
+   "line": "f8880.line2a",
+   "message": "f8880.f8880.__type_gate_2: comparison operands have incompatible types"
+  },
+  {
+   "line": "f8880.line2b",
+   "message": "f8880.f8880.__type_gate_3: collection reference requires sum_over"
+  },
+  {
+   "line": "f8880.line2b",
+   "message": "f8880.f8880.__type_gate_3: comparison operands have incompatible types"
+  },
+  {
+   "line": "f8880.line4a",
+   "message": "f8880.f8880.__type_gate_4: collection reference requires sum_over"
+  },
+  {
+   "line": "f8880.line4a",
+   "message": "f8880.f8880.__type_gate_4: comparison operands have incompatible types"
+  },
+  {
+   "line": "f8880.line4b",
+   "message": "f8880.f8880.__type_gate_5: collection reference requires sum_over"
+  },
+  {
+   "line": "f8880.line4b",
+   "message": "f8880.f8880.__type_gate_5: comparison operands have incompatible types"
+  }
+ ],
+ "failures": [],
+ "family": "deepseek",
+ "form": "f8880",
+ "lines": [
+  {
+   "candidate": "f8880.line4a",
+   "handle": "4(a)",
+   "open_at_triage": true,
+   "project": "f8880.line4a",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8880.line4b",
+   "handle": "4(b)",
+   "open_at_triage": true,
+   "project": "f8880.line4b",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8880.line6a",
+   "handle": "6(a)",
+   "open_at_triage": true,
+   "project": "f8880.line6a",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8880.line6b",
+   "handle": "6(b)",
+   "open_at_triage": true,
+   "project": "f8880.line6b",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8880.line9",
+   "handle": "9",
+   "open_at_triage": true,
+   "project": "f8880.line9",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8880.line12",
+   "handle": "12",
+   "open_at_triage": true,
+   "project": "f8880.line12",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  }
+ ],
+ "log_sha256_at_triage": "487e08cd3892823ac871d033ed848c0dfcdc1bdd0988a8b02aef198fd22d86e9",
+ "policy": "executable-triage-v1",
+ "response_sha256": "6a03d5105b601c899e632cf7e072a1cac73a72211787b838aeaba15151c4370b",
+ "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
+ "state": "invalid",
+ "subject_sha256": "e072d64a1f57ba4b7b9ff4357a47e8f77b605d32fd4e87591e41d73b151e2fb9"
+}

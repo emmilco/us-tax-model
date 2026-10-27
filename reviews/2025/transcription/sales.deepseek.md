@@ -4,11 +4,23 @@ Second transcription of `Form 8949 and Schedule D — manually classified securi
 
 | field | value |
 | --- | --- |
-| date | 2026-10-23 |
+| date | 2026-10-26 |
+| review provenance | verified saved-response replay; no model call |
+| parent review log sha256 | a29074b7e104e677767b88822a3a3cc330750b819d984fb389361da2393e272f |
+| original review date | 2026-10-26 |
+| original comparison policy | checked-expression-types-v2 |
+| original type validation policy | project-expression-types-v2 |
+| original input context policy | required-review-interfaces-v2 |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
-| prompt sha256 | ffc8b2b0f2ee5db755f7cb620059f054ebfc470afa0ae9ec580c18babc0a6999 |
+| prompt sha256 | de2230e55acae1e3544d228f231a9d1f4e23e6bc23be1d46df0c4c2e2891211f |
 | prompt policy | source-only-computation-v2 |
+| comparison policy | checked-expression-types-v2 |
+| input context policy | required-review-interfaces-v2 |
+| complete input context | pass |
+| required input context sha256 | 5a423f712d7f1e182d4571e370c26c68211a654977d387a8e97b0b39184a8c98 |
+| type validation policy | project-expression-types-v3 |
+| model type validation | pass |
 | system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
 | reasoning effort | provider default |
 | output token budget | 65536 |
@@ -49,7 +61,7 @@ Second:
 {"alternatives": [{"guard": {"args": [{"args": [{"const": "A"}, {"input": "sales.box"}], "test": "ne"}, {"args": [{"const": "D"}, {"input": "sales.box"}], "test": "ne"}, {"args": [{"const": "G"}, {"input": "sales.box"}], "test": "ne"}, {"args": [{"const": "J"}, {"input": "sales.box"}], "test": "ne"}], "test": "all"}, "then": {"input": "sales.correct_basis"}}, {"guard": {"args": [{"args": [{"const": "A"}, {"input": "sales.box"}], "test": "eq"}, {"args": [{"const": "D"}, {"input": "sales.box"}], "test": "eq"}, {"args": [{"const": "G"}, {"input": "sales.box"}], "test": "eq"}, {"args": [{"const": "J"}, {"input": "sales.box"}], "test": "eq"}], "test": "any"}, "then": {"input": "sales.reported_basis"}}], "op": "choose"}
 ```
 
-Ruling: open
+Ruling: scope; f8949 pp.1-2 explicitly extends the reported-basis treatment to digital-asset boxes G/J. Those boxes are outside the supported slice: sales.one refuses sales.digital before transaction aggregation (forms/2025/sales.yaml); other special digital paths stay refused. On supported A-F transactions the two basis/adjustment formulas agree. This does not certify the ungated intermediate quantities for refused digital transactions, and does not expand project scope.
 
 ### (g) — Column (g): net adjustments
 Status: **DISAGREE**
@@ -66,7 +78,7 @@ Second:
 {"of": [{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "A"}, {"input": "sales.box"}], "test": "eq"}, {"args": [{"const": "D"}, {"input": "sales.box"}], "test": "eq"}, {"args": [{"const": "G"}, {"input": "sales.box"}], "test": "eq"}, {"args": [{"const": "J"}, {"input": "sales.box"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "B"}, {"input": "sales.code"}], "test": "eq"}, {"args": [{"const": "BW"}, {"input": "sales.code"}], "test": "eq"}], "test": "any"}], "test": "all"}, "then": {"from": {"input": "sales.reported_basis"}, "op": "subtract", "take": {"input": "sales.correct_basis"}}}, {"guard": {"args": [{"args": [{"args": [{"const": "A"}, {"input": "sales.box"}], "test": "ne"}, {"args": [{"const": "D"}, {"input": "sales.box"}], "test": "ne"}, {"args": [{"const": "G"}, {"input": "sales.box"}], "test": "ne"}, {"args": [{"const": "J"}, {"input": "sales.box"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "B"}, {"input": "sales.code"}], "test": "ne"}, {"args": [{"const": "BW"}, {"input": "sales.code"}], "test": "ne"}], "test": "all"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}, {"alternatives": [{"guard": {"args": [{"args": [{"const": "BW"}, {"input": "sales.code"}], "test": "ne"}, {"args": [{"const": "W"}, {"input": "sales.code"}], "test": "ne"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "BW"}, {"input": "sales.code"}], "test": "eq"}, {"args": [{"const": "W"}, {"input": "sales.code"}], "test": "eq"}], "test": "any"}, "then": {"input": "sales.wash_loss"}}], "op": "choose"}], "op": "sum"}
 ```
 
-Ruling: open
+Ruling: scope; f8949 pp.1-2 explicitly extends the reported-basis treatment to digital-asset boxes G/J. Those boxes are outside the supported slice: sales.one refuses sales.digital before transaction aggregation (forms/2025/sales.yaml); other special digital paths stay refused. On supported A-F transactions the two basis/adjustment formulas agree. This does not certify the ungated intermediate quantities for refused digital transactions, and does not expand project scope.
 
 ### (h) — Column (h): proceeds less basis plus adjustments
 Status: **AGREE**
@@ -77,8 +89,8 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 
 | line | gates listed | not read by the project's line |
 | --- | --- | --- |
-| (g) | sales.bad_aggregate, sales.bad_code, sales.special | sales.bad_aggregate, sales.bad_code, sales.special |
-| (h) | sales.bad_aggregate, sales.bad_code, sales.special | sales.bad_aggregate, sales.bad_code, sales.special |
+| (g) | sales.bad_code, sales.special | sales.bad_code, sales.special |
+| (h) | sales.bad_code, sales.special | sales.bad_code, sales.special |
 
 ## Raw second transcription
 
@@ -91,20 +103,22 @@ lines:
     expr:
       op: choose
       alternatives:
-        - guard: sales.covered
+        - guard:
+            op: test
+            eq: [sales.covered, {const: true}]
           then: sales.reported_basis
         - guard:
             op: test
-            not: sales.covered
+            eq: [sales.covered, {const: false}]
           then: sales.correct_basis
   - id: sales.g
     printed: "(g)"
     label: "Amount of adjustment"
     type: Dollars
-    refuses: [sales.bad_code, sales.bad_aggregate, sales.special]
     expr:
       op: sum
       of: [sales.b, sales.w]
+    refuses: [sales.special, sales.bad_code]
   - id: sales.h
     printed: "(h)"
     label: "Gain (or loss)"
@@ -116,16 +130,12 @@ lines:
     printed: "(helper)"
     label: "One"
     type: Count
-    expr:
-      op: param
-      ref: sales.one
+    expr: {op: param, ref: sales.one}
   - id: sales.zero
     printed: "(helper)"
     label: "Zero"
     type: NonNegDollars
-    expr:
-      op: param
-      ref: sales.zero
+    expr: {op: param, ref: sales.zero}
   - id: sales.covered
     printed: "(helper)"
     label: "Basis was reported to the IRS"
@@ -133,14 +143,10 @@ lines:
     expr:
       op: test
       any:
-        - op: test
-          eq: [sales.box, {const: "A"}]
-        - op: test
-          eq: [sales.box, {const: "D"}]
-        - op: test
-          eq: [sales.box, {const: "G"}]
-        - op: test
-          eq: [sales.box, {const: "J"}]
+        - {op: test, eq: [sales.box, {const: "A"}]}
+        - {op: test, eq: [sales.box, {const: "D"}]}
+        - {op: test, eq: [sales.box, {const: "G"}]}
+        - {op: test, eq: [sales.box, {const: "J"}]}
   - id: sales.has_b
     printed: "(helper)"
     label: "Adjustment code includes B"
@@ -148,10 +154,8 @@ lines:
     expr:
       op: test
       any:
-        - op: test
-          eq: [sales.code, {const: "B"}]
-        - op: test
-          eq: [sales.code, {const: "BW"}]
+        - {op: test, eq: [sales.code, {const: "B"}]}
+        - {op: test, eq: [sales.code, {const: "BW"}]}
   - id: sales.has_w
     printed: "(helper)"
     label: "Adjustment code includes W"
@@ -159,77 +163,53 @@ lines:
     expr:
       op: test
       any:
-        - op: test
-          eq: [sales.code, {const: "W"}]
-        - op: test
-          eq: [sales.code, {const: "BW"}]
+        - {op: test, eq: [sales.code, {const: "W"}]}
+        - {op: test, eq: [sales.code, {const: "BW"}]}
   - id: sales.bad_code
     printed: "(helper)"
     label: "Adjustment code is other"
     type: Bool
-    expr:
-      op: test
-      eq: [sales.code, {const: "other"}]
-  - id: sales.bad_aggregate
-    printed: "(helper)"
-    label: "Aggregate route chosen without all aggregate conditions"
-    type: Bool
-    expr:
-      op: test
-      all:
-        - op: test
-          eq: [sales.route, {const: "aggregate"}]
-        - op: test
-          not: sales.aggregate_eligible
+    expr: {op: test, eq: [sales.code, {const: "other"}]}
   - id: sales.b_difference
     printed: "(helper)"
     label: "Reported basis minus correct basis"
     type: Dollars
-    expr:
-      op: subtract
-      from: sales.reported_basis
-      take: sales.correct_basis
+    expr: {op: subtract, from: sales.reported_basis, take: sales.correct_basis}
   - id: sales.adjust_b
     printed: "(helper)"
-    label: "Basis adjustment applies"
+    label: "Apply basis correction adjustment"
     type: Bool
     expr:
       op: test
       all:
-        - sales.covered
-        - sales.has_b
+        - {op: test, eq: [sales.has_b, {const: true}]}
+        - {op: test, eq: [sales.covered, {const: true}]}
+    note: "A code B adjustment is applied only when the broker reported basis to the IRS; when basis was not reported, column (e) uses the correct basis and column (g) has no basis adjustment."
   - id: sales.b
     printed: "(helper)"
-    label: "Basis adjustment amount"
+    label: "Basis adjustment"
     type: Dollars
     expr:
       op: choose
       alternatives:
-        - guard: sales.adjust_b
+        - guard: {op: test, eq: [sales.adjust_b, {const: true}]}
           then: sales.b_difference
-        - guard:
-            op: test
-            not: sales.adjust_b
+        - guard: {op: test, eq: [sales.adjust_b, {const: false}]}
           then: sales.zero
   - id: sales.w
     printed: "(helper)"
-    label: "Wash sale adjustment amount"
+    label: "Wash sale adjustment"
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
-        - guard: sales.has_w
+        - guard: {op: test, eq: [sales.has_w, {const: true}]}
           then: sales.wash_loss
-        - guard:
-            op: test
-            not: sales.has_w
+        - guard: {op: test, eq: [sales.has_w, {const: false}]}
           then: sales.zero
   - id: sales.before_adjustment
     printed: "(helper)"
-    label: "Proceeds minus basis"
+    label: "Proceeds minus basis before adjustment"
     type: Dollars
-    expr:
-      op: subtract
-      from: sales.proceeds
-      take: sales.e
+    expr: {op: subtract, from: sales.proceeds, take: sales.e}
 ```

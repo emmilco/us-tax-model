@@ -1,0 +1,132 @@
+{
+ "bank": null,
+ "errors": [
+  {
+   "line": "f8995.line3",
+   "message": "malformed expression (project schema): data/from must be string, data/from must have required property 'def', data/from must have required property 'bind'"
+  },
+  {
+   "line": "f8995.line4",
+   "message": "malformed expression (project schema): data/of/1 must be string, data/of/1 must be string, data/of/1 must be string"
+  },
+  {
+   "line": "f8995.line16",
+   "message": "malformed expression (project schema): data/of/1 must be string, data/of/1 must be string, data/of/1 must be string"
+  },
+  {
+   "line": "f8995.h_no_sd_cg",
+   "message": "malformed expression (project schema): data/of/1 must be string, data/of/1 must be string, data/of/1 must be string"
+  },
+  {
+   "line": "f8995.h_sd_cg",
+   "message": "malformed expression (project schema): data/of/1 must be string, data/of/1 must be string, data/of/1 must be string"
+  },
+  {
+   "line": "f8995.line2",
+   "message": "f8995.f8995.line2: collection parent binding mismatch"
+  },
+  {
+   "line": "f8995.line3",
+   "message": "f8995.f8995.line3: malformed expression"
+  },
+  {
+   "line": "f8995.line4",
+   "message": "f8995.f8995.line4: malformed expression"
+  },
+  {
+   "line": "f8995.line16",
+   "message": "f8995.f8995.line16: malformed expression"
+  },
+  {
+   "line": "f8995.h_no_sd_cg",
+   "message": "f8995.f8995.h_no_sd_cg: malformed expression"
+  },
+  {
+   "line": "f8995.h_sd_cg",
+   "message": "f8995.f8995.h_sd_cg: malformed expression"
+  }
+ ],
+ "failures": [],
+ "family": "deepseek",
+ "form": "f8995",
+ "lines": [
+  {
+   "candidate": "f8995.line2",
+   "handle": "2",
+   "open_at_triage": true,
+   "project": "f8995.line2",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8995.line3",
+   "handle": "3",
+   "open_at_triage": true,
+   "project": "f8995.line3",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8995.line4",
+   "handle": "4",
+   "open_at_triage": true,
+   "project": "f8995.line4",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8995.line16",
+   "handle": "16",
+   "open_at_triage": true,
+   "project": "f8995.line16",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8995.line17",
+   "handle": "17",
+   "open_at_triage": true,
+   "project": "f8995.line17",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8995.line6",
+   "handle": "6",
+   "open_at_triage": true,
+   "project": "f8995.line6",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8995.line8",
+   "handle": "8",
+   "open_at_triage": true,
+   "project": "f8995.line8",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8995.line11",
+   "handle": "11",
+   "open_at_triage": true,
+   "project": "f8995.line11",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8995.line12",
+   "handle": "12",
+   "open_at_triage": true,
+   "project": "f8995.line12",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  }
+ ],
+ "log_sha256_at_triage": "56b0540af4d9c6609aa5e0bd32c4550d0841484338d3e79426382c54cfc4fa9f",
+ "policy": "executable-triage-v1",
+ "response_sha256": "2a406c659f659435494b58e294ce75c0d74b1e432b6d8b3a8a71a3544ce38c11",
+ "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
+ "state": "invalid",
+ "subject_sha256": "b22842d7307828a9bd29faf21430726885ebae909c13eb392a73f1683e1899b7"
+}

@@ -1,0 +1,14 @@
+{
+ "kind": "render",
+ "form": "household",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "test2_persons",
+   "restated": "Add dependent.one over every confirmed dependent entry for which helper \"A Test 2 person who lived with you more than half the year, or of the part of the year a relative was alive (the home-cost condition of Test 2 is tested on the household form)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "The restatement counts only confirmed dependent entries, but IRS Test 2 expressly includes 'Your unmarried qualifying child who isn’t your dependent' and other qualifying children who are not dependents.",
+   "ruling": "Ruling: model error; the model read \"every confirmed dependent entry\" as every person who is your dependent. It is the renderer's wording for every entry of the dependent collection (every person listed, as the round-1 ruling on the same text found), and the helper dependent.hoh_test2 it sums has a second branch for \"Your unmarried qualifying child who isn't your dependent\" (i1040gi p. 14, Test 2, item 2): qualifying_child, not married, lived with you more than half the year, with no dependency condition. Items 3 and 4 (a married child not your dependent only because you can be claimed, and the custodial parent's released child) are refused through dependent.married and dependent.divorced_rule.",
+   "context": "55b35b4588335d4d9a70be93ca26c04b5b019e766b44060c41ed50a8c47870c1"
+  }
+ ]
+}

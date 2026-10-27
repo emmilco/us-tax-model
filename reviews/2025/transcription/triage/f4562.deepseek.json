@@ -1,0 +1,184 @@
+{
+ "bank": null,
+ "errors": [
+  {
+   "line": "f4562.line14",
+   "message": "f4562.f4562.line14: collection parent binding mismatch"
+  },
+  {
+   "line": "f4562.line17",
+   "message": "f4562.f4562.line17: collection parent binding mismatch"
+  },
+  {
+   "line": "f4562.line19a",
+   "message": "f4562.f4562.line19a: collection parent binding mismatch"
+  },
+  {
+   "line": "f4562.line19b",
+   "message": "f4562.f4562.line19b: collection parent binding mismatch"
+  },
+  {
+   "line": "f4562.line19c",
+   "message": "f4562.f4562.line19c: collection parent binding mismatch"
+  },
+  {
+   "line": "f4562.line19d",
+   "message": "f4562.f4562.line19d: collection parent binding mismatch"
+  },
+  {
+   "line": "f4562.line19f",
+   "message": "f4562.f4562.line19f: collection parent binding mismatch"
+  },
+  {
+   "line": "f4562.line19e",
+   "message": "f4562.f4562.line19e: collection parent binding mismatch"
+  },
+  {
+   "line": "f4562.h_line25_assets",
+   "message": "f4562.f4562.h_line25_assets: collection parent binding mismatch"
+  },
+  {
+   "line": "f4562.h_line25_veh",
+   "message": "f4562.f4562.h_line25_veh: collection parent binding mismatch"
+  },
+  {
+   "line": "f4562.h_line26_assets",
+   "message": "f4562.f4562.h_line26_assets: collection parent binding mismatch"
+  },
+  {
+   "line": "f4562.h_line26_veh",
+   "message": "f4562.f4562.h_line26_veh: collection parent binding mismatch"
+  },
+  {
+   "line": "f4562.h_line29_assets",
+   "message": "f4562.f4562.h_line29_assets: collection parent binding mismatch"
+  },
+  {
+   "line": "f4562.h_line29_veh",
+   "message": "f4562.f4562.h_line29_veh: collection parent binding mismatch"
+  }
+ ],
+ "failures": [],
+ "family": "deepseek",
+ "form": "f4562",
+ "lines": [
+  {
+   "candidate": "f4562.line12",
+   "handle": "12",
+   "open_at_triage": true,
+   "project": "f4562.line12",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f4562.line14",
+   "handle": "14",
+   "open_at_triage": true,
+   "project": "f4562.line14",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f4562.line17",
+   "handle": "17",
+   "open_at_triage": true,
+   "project": "f4562.line17",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f4562.line19a",
+   "handle": "19a(g)",
+   "open_at_triage": true,
+   "project": "f4562.line19a",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f4562.line19b",
+   "handle": "19b(g)",
+   "open_at_triage": true,
+   "project": "f4562.line19b",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f4562.line19c",
+   "handle": "19c(g)",
+   "open_at_triage": true,
+   "project": "f4562.line19c",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f4562.line19d",
+   "handle": "19d(g)",
+   "open_at_triage": true,
+   "project": "f4562.line19d",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f4562.line19f",
+   "handle": "19f(g)",
+   "open_at_triage": true,
+   "project": "f4562.line19f",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f4562.line19e",
+   "handle": "19e(g)",
+   "open_at_triage": true,
+   "project": "f4562.line19e",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f4562.line21",
+   "handle": "21",
+   "open_at_triage": true,
+   "project": "f4562.line21",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f4562.line25",
+   "handle": "25",
+   "open_at_triage": true,
+   "project": "f4562.line25",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f4562.line26h",
+   "handle": "26(h)",
+   "open_at_triage": true,
+   "project": "f4562.line26h",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f4562.line28",
+   "handle": "28",
+   "open_at_triage": true,
+   "project": "f4562.line28",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f4562.line29",
+   "handle": "29",
+   "open_at_triage": true,
+   "project": "f4562.line29",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  }
+ ],
+ "log_sha256_at_triage": "3a5d5424be4aefe45c884d970c34e159adc89481c6a573653d11f87c5218532b",
+ "policy": "executable-triage-v1",
+ "response_sha256": "320f61f239264fb9453850d76efe8f87537fb4b0e0d0cf82c122818beb622085",
+ "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
+ "state": "invalid",
+ "subject_sha256": "2886f437c337eb47cfa0526cfea2eefbc4ac18c9764e2af06dd4fab4a253ebba"
+}

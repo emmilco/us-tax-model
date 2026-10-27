@@ -26,17 +26,17 @@
 
 ## (helper) — `sd.line18`
 
-- **Authored helper label:** 28% Rate Gain Worksheet result (supplied subtotal; worksheet deferred to Stage 4)
-- **Encoded (NonNegDollars):** Enter the amount from g28 line 7.
-- Expr: `{"from":"g28.line7","op":"copy"}`
-- Cite: [i1040sd] p. 11, line 18 (2025; printed date 2025-12-11; sha256 650643a6)
+- **Authored helper label:** Line 18. 28% Rate Gain Worksheet result, or zero when line 17 is No (lines 18 through 21 skipped)
+- **Encoded (NonNegDollars):** Choose — [line 17 = true → g28 line 7] [line 17 = false → helper "No amount on an inapplicable line"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sd.line17",{"const":true}],"op":"test"},"then":"g28.line7"},{"guard":{"eq":["sd.line17",{"const":false}],"op":"test"},"then":"sd.zero"}],"op":"choose"}`
+- Cite: [i1040sd] p. 11, Line 18, "If you checked “Yes” on line 17, complete the 28% Rate Gain Worksheet"; f1040sd p. 2, line 17, "No. Skip lines 18 through 21, and go to line 22" (2025; printed date 2025-12-11; sha256 650643a6)
 
 ## (helper) — `sd.line19`
 
-- **Authored helper label:** Unrecaptured Section 1250 Gain Worksheet result (supplied subtotal; worksheet deferred to Stage 4)
-- **Encoded (NonNegDollars):** Enter the amount from u1250 line 18.
-- Expr: `{"from":"u1250.line18","op":"copy"}`
-- Cite: [i1040sd] pp. 11–12, line 19 (2025; printed date 2025-12-11; sha256 650643a6)
+- **Authored helper label:** Line 19. Unrecaptured Section 1250 Gain Worksheet result, or zero when line 17 is No (lines 18 through 21 skipped)
+- **Encoded (NonNegDollars):** Choose — [line 17 = true → u1250 line 18] [line 17 = false → helper "No amount on an inapplicable line"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sd.line17",{"const":true}],"op":"test"},"then":"u1250.line18"},{"guard":{"eq":["sd.line17",{"const":false}],"op":"test"},"then":"sd.zero"}],"op":"choose"}`
+- Cite: [i1040sd] pp. 11–12, Line 19, "If you checked “Yes” on line 17, complete the Unrecaptured Section 1250 Gain Worksheet"; f1040sd p. 2, line 17, "No. Skip lines 18 through 21, and go to line 22" (2025; printed date 2025-12-11; sha256 650643a6)
 
 ## (helper) — `sd.filing4952`
 
@@ -72,7 +72,7 @@
 ## (helper) — `sd.filed`
 
 - **Authored helper label:** Schedule D required for entered sales or special distribution gains
-- **Encoded (Bool):** (helper "Count screened transactions" > 0 (a count) or helper "28% Rate Gain Worksheet result (supplied subtotal; worksheet deferred to Stage 4)" > $0 or helper "Unrecaptured Section 1250 Gain Worksheet result (supplied subtotal; worksheet deferred to Stage 4)" > $0)
+- **Encoded (Bool):** (helper "Count screened transactions" > 0 (a count) or helper "Line 18. 28% Rate Gain Worksheet result, or zero when line 17 is No (lines 18 through 21 skipped)" > $0 or helper "Line 19. Unrecaptured Section 1250 Gain Worksheet result, or zero when line 17 is No (lines 18 through 21 skipped)" > $0)
 - Expr: `{"any":[{"gt":["sd.count",{"const":0,"type":"Count"}],"op":"test"},{"gt":["sd.line18",{"const":0}],"op":"test"},{"gt":["sd.line19",{"const":0}],"op":"test"}],"op":"test"}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 
@@ -431,7 +431,7 @@
 ## 20 — `sd.line20`
 
 - **IRS:** Are lines 18 and 19 zero and are you not filing Form 4952?
-- **Encoded (Bool):** helper "28% Rate Gain Worksheet result (supplied subtotal; worksheet deferred to Stage 4)" = $0 and helper "Unrecaptured Section 1250 Gain Worksheet result (supplied subtotal; worksheet deferred to Stage 4)" = $0 and helper "Are you filing Form 4952?" = false
+- **Encoded (Bool):** helper "Line 18. 28% Rate Gain Worksheet result, or zero when line 17 is No (lines 18 through 21 skipped)" = $0 and helper "Line 19. Unrecaptured Section 1250 Gain Worksheet result, or zero when line 17 is No (lines 18 through 21 skipped)" = $0 and helper "Are you filing Form 4952?" = false
 - Expr: `{"all":[{"eq":["sd.line18",{"const":0}],"op":"test"},{"eq":["sd.line19",{"const":0}],"op":"test"},{"eq":["sd.filing4952",{"const":false}],"op":"test"}],"op":"test"}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 

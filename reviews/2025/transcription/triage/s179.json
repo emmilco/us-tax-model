@@ -1,0 +1,2747 @@
+{
+ "bank": {
+  "evaluation_failures": 0,
+  "fixtures": 1099,
+  "generated": 500,
+  "partial_bases": 40,
+  "partial_records": 28,
+  "seed": 20261026
+ },
+ "errors": [],
+ "failures": [],
+ "family": "claude",
+ "form": "s179",
+ "lines": [
+  {
+   "absent": 0,
+   "agree": 1533,
+   "candidate": "s179.multi",
+   "compared": 1627,
+   "differ": 94,
+   "handle": "s179.multi",
+   "in_scope": 1574,
+   "in_scope_agree": 1533,
+   "kinds": {
+    "project-refuses": 53,
+    "project-unknown": 3,
+    "value": 38
+   },
+   "kinds_by_return": {
+    "completed": {
+     "value": 10
+    },
+    "incomplete": {
+     "project-unknown": 2
+    },
+    "refused": {
+     "project-refuses": 53,
+     "project-unknown": 1,
+     "value": 28
+    }
+   },
+   "open_at_triage": true,
+   "project": "s179.multi",
+   "shown_when": null,
+   "sources": {
+    "fixture": 1099,
+    "generated": 500,
+    "partial": 28
+   },
+   "status": "DISAGREE",
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": true
+     },
+     "candidate_operands": [
+      {
+       "ref": "s179.h_sc_count",
+       "value": {
+        "kind": "count",
+        "value": 2
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      }
+     ],
+     "instance": "s179",
+     "kind": "value",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "s179.differs",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.asset.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": true
+     },
+     "candidate_operands": [
+      {
+       "ref": "s179.h_sc_count",
+       "value": {
+        "kind": "count",
+        "value": 2
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      }
+     ],
+     "instance": "s179",
+     "kind": "value",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "s179.differs",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.asset.4",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": true
+     },
+     "candidate_operands": [
+      {
+       "ref": "s179.h_sc_count",
+       "value": {
+        "kind": "count",
+        "value": 2
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      }
+     ],
+     "instance": "s179",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i4562",
+       "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
+      },
+      "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+      "gate": "person[taxpayer].sc[biz_a].scveh[car_1].low_use",
+      "kind": "refusal",
+      "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "s179.differs",
+       "value": {
+        "cite": {
+         "doc": "i4562",
+         "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
+        },
+        "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+        "gate": "person[taxpayer].sc[biz_a].scveh[car_1].low_use",
+        "kind": "refusal",
+        "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.carloan.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": true
+     },
+     "candidate_operands": [
+      {
+       "ref": "s179.h_sc_count",
+       "value": {
+        "kind": "count",
+        "value": 2
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      }
+     ],
+     "instance": "s179",
+     "kind": "value",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "s179.differs",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f4562.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": true
+     },
+     "candidate_operands": [
+      {
+       "ref": "s179.h_sc_count",
+       "value": {
+        "kind": "count",
+        "value": 2
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      }
+     ],
+     "instance": "s179",
+     "kind": "value",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "s179.differs",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8995.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": true
+     },
+     "candidate_operands": [
+      {
+       "ref": "s179.h_sc_count",
+       "value": {
+        "kind": "count",
+        "value": 2
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      }
+     ],
+     "instance": "s179",
+     "kind": "value",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "s179.differs",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.ltc.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": true
+     },
+     "candidate_operands": [
+      {
+       "ref": "s179.h_sc_count",
+       "value": {
+        "kind": "count",
+        "value": 2
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      }
+     ],
+     "instance": "s179",
+     "kind": "value",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "s179.differs",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.sc.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": true
+     },
+     "candidate_operands": [
+      {
+       "ref": "s179.h_sc_count",
+       "value": {
+        "kind": "count",
+        "value": 2
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      }
+     ],
+     "instance": "s179",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "p946",
+       "locator": "p. 19, Business Income Limit, Two different taxable income limits, Steps 1 to 8"
+      },
+      "form": "Section 179 deduction with a home office deduction limited by gross income (Pub. 946, two different taxable income limits)",
+      "gate": "person[taxpayer].sc[biz_a].ho_both_limits",
+      "kind": "refusal",
+      "remedy": "Figuring two income-based limits in the order of Pub. 946 is outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "s179.differs",
+       "value": {
+        "cite": {
+         "doc": "p946",
+         "locator": "p. 19, Business Income Limit, Two different taxable income limits, Steps 1 to 8"
+        },
+        "form": "Section 179 deduction with a home office deduction limited by gross income (Pub. 946, two different taxable income limits)",
+        "gate": "person[taxpayer].sc[biz_a].ho_both_limits",
+        "kind": "refusal",
+        "remedy": "Figuring two income-based limits in the order of Pub. 946 is outside this tool."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.scveh.5",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "s179.h_sc_count",
+       "value": {
+        "kind": "count",
+        "value": 0
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      }
+     ],
+     "instance": "s179",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "f1040",
+       "locator": "Form 1040 (2025), page 1, \"Your first name and middle initial\" and \"If joint return, spouse\u2019s first name and middle initial\"; Filing Status"
+      },
+      "form": "The people on the return",
+      "gate": "household.roster_bad",
+      "kind": "refusal",
+      "remedy": "Enter one person with the role taxpayer, and, only when married filing jointly, one person with the role spouse."
+     },
+     "project_operands": [
+      {
+       "ref": "s179.differs",
+       "value": {
+        "cite": {
+         "doc": "f1040",
+         "locator": "Form 1040 (2025), page 1, \"Your first name and middle initial\" and \"If joint return, spouse\u2019s first name and middle initial\"; Filing Status"
+        },
+        "form": "The people on the return",
+        "gate": "household.roster_bad",
+        "kind": "refusal",
+        "remedy": "Enter one person with the role taxpayer, and, only when married filing jointly, one person with the role spouse."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage13.refuse.joint_without_spouse",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "s179.h_sc_count",
+       "value": {
+        "kind": "count",
+        "value": 0
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      }
+     ],
+     "instance": "s179",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "f1040",
+       "locator": "Form 1040 (2025), page 1, \"Your first name and middle initial\" and \"If joint return, spouse\u2019s first name and middle initial\"; Filing Status"
+      },
+      "form": "The people on the return",
+      "gate": "household.roster_bad",
+      "kind": "refusal",
+      "remedy": "Enter one person with the role taxpayer, and, only when married filing jointly, one person with the role spouse."
+     },
+     "project_operands": [
+      {
+       "ref": "s179.differs",
+       "value": {
+        "cite": {
+         "doc": "f1040",
+         "locator": "Form 1040 (2025), page 1, \"Your first name and middle initial\" and \"If joint return, spouse\u2019s first name and middle initial\"; Filing Status"
+        },
+        "form": "The people on the return",
+        "gate": "household.roster_bad",
+        "kind": "refusal",
+        "remedy": "Enter one person with the role taxpayer, and, only when married filing jointly, one person with the role spouse."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage13.refuse.single_with_spouse",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": true
+     },
+     "candidate_operands": [
+      {
+       "ref": "s179.h_sc_count",
+       "value": {
+        "kind": "count",
+        "value": 2
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      }
+     ],
+     "instance": "s179",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040sc",
+       "locator": "p. 10, Simplified method, \"You are limited to a maximum of 300 square feet for all of the businesses you conduct in your home ... Allocate the actual square footage used (up to the maximum 300 square feet) among your qualified business uses\""
+      },
+      "form": "The simplified method for more than one of your businesses in your home (300 square feet allocated among them)",
+      "gate": "person[taxpayer].sc[home].ho_multi",
+      "kind": "refusal",
+      "remedy": "The 300 square feet apply to all the businesses you conduct in your home together and must be allocated among them; that is outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "s179.differs",
+       "value": {
+        "cite": {
+         "doc": "i1040sc",
+         "locator": "p. 10, Simplified method, \"You are limited to a maximum of 300 square feet for all of the businesses you conduct in your home ... Allocate the actual square footage used (up to the maximum 300 square feet) among your qualified business uses\""
+        },
+        "form": "The simplified method for more than one of your businesses in your home (300 square feet allocated among them)",
+        "gate": "person[taxpayer].sc[home].ho_multi",
+        "kind": "refusal",
+        "remedy": "The 300 square feet apply to all the businesses you conduct in your home together and must be allocated among them; that is outside this tool."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage14.ho.refuse_two_businesses",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "s179.h_sc_count",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      }
+     ],
+     "instance": "s179",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040sc",
+       "locator": "pp. 10-13, Line 30, the Simplified Method Worksheet and its instructions"
+      },
+      "form": "Form 8829, or the simplified method with daycare, shared, part-year or multiple homes",
+      "gate": "person[taxpayer].sc[home].ho_screened",
+      "kind": "refusal",
+      "remedy": "The actual-expense method (Form 8829) and the special simplified-method cases are outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "s179.differs",
+       "value": {
+        "cite": {
+         "doc": "i1040sc",
+         "locator": "pp. 10-13, Line 30, the Simplified Method Worksheet and its instructions"
+        },
+        "form": "Form 8829, or the simplified method with daycare, shared, part-year or multiple homes",
+        "gate": "person[taxpayer].sc[home].ho_screened",
+        "kind": "refusal",
+        "remedy": "The actual-expense method (Form 8829) and the special simplified-method cases are outside this tool."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage14.ho.refuse_8829",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": true
+     },
+     "candidate_operands": [
+      {
+       "ref": "s179.h_sc_count",
+       "value": {
+        "kind": "count",
+        "value": 2
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      }
+     ],
+     "instance": "s179",
+     "kind": "project-unknown",
+     "project": {
+      "input": "s179.line10",
+      "kind": "unknown",
+      "reason": "no input supplied for s179.line10"
+     },
+     "project_operands": [
+      {
+       "ref": "s179.differs",
+       "value": {
+        "input": "s179.line10",
+        "kind": "unknown",
+        "reason": "no input supplied for s179.line10"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "s179.sc_count",
+       "value": {
+        "kind": "count",
+        "value": 2
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.asset.1",
+      "kind": "partial",
+      "withheld": "s179.line10"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": true
+     },
+     "candidate_operands": [
+      {
+       "ref": "s179.h_sc_count",
+       "value": {
+        "kind": "count",
+        "value": 2
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      }
+     ],
+     "instance": "s179",
+     "kind": "project-unknown",
+     "project": {
+      "input": "s179.line10",
+      "kind": "unknown",
+      "reason": "no input supplied for s179.line10"
+     },
+     "project_operands": [
+      {
+       "ref": "s179.differs",
+       "value": {
+        "input": "s179.line10",
+        "kind": "unknown",
+        "reason": "no input supplied for s179.line10"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "s179.sc_count",
+       "value": {
+        "kind": "count",
+        "value": 2
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "base": "classm.sc.4",
+      "kind": "partial",
+      "withheld": "s179.line10"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": true
+     },
+     "candidate_operands": [
+      {
+       "ref": "s179.h_sc_count",
+       "value": {
+        "kind": "count",
+        "value": 2
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      }
+     ],
+     "instance": "s179",
+     "kind": "project-unknown",
+     "project": {
+      "input": "s179.line10",
+      "kind": "unknown",
+      "reason": "no input supplied for s179.line10"
+     },
+     "project_operands": [
+      {
+       "ref": "s179.differs",
+       "value": {
+        "input": "s179.line10",
+        "kind": "unknown",
+        "reason": "no input supplied for s179.line10"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "s179.sc_count",
+       "value": {
+        "kind": "count",
+        "value": 2
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "base": "classm.se.2",
+      "kind": "partial",
+      "withheld": "s179.line10"
+     }
+    }
+   ]
+  },
+  {
+   "absent": 0,
+   "agree": 8,
+   "candidate": "s179.line1",
+   "compared": 1627,
+   "differ": 1619,
+   "handle": "1",
+   "in_scope": 1609,
+   "in_scope_agree": 8,
+   "kinds": {
+    "candidate-refuses": 18,
+    "candidate-unknown": 17,
+    "value": 1584
+   },
+   "kinds_by_return": {
+    "completed": {
+     "value": 528
+    },
+    "incomplete": {
+     "candidate-unknown": 11,
+     "value": 277
+    },
+    "refused": {
+     "candidate-refuses": 18,
+     "candidate-unknown": 6,
+     "value": 779
+    }
+   },
+   "open_at_triage": true,
+   "project": "s179.line1",
+   "shown_when": null,
+   "sources": {
+    "fixture": 1099,
+    "generated": 500,
+    "partial": 28
+   },
+   "status": "DISAGREE",
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "s179.line2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s179.h_max",
+       "value": {
+        "cents": 250000000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "s179",
+     "kind": "value",
+     "project": {
+      "cents": 250000000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "s179.max",
+       "value": {
+        "cents": 250000000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "s179.line2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s179.h_max",
+       "value": {
+        "cents": 250000000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "s179",
+     "kind": "value",
+     "project": {
+      "cents": 250000000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "s179.max",
+       "value": {
+        "cents": 250000000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "s179.line2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s179.h_max",
+       "value": {
+        "cents": 250000000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "s179",
+     "kind": "value",
+     "project": {
+      "cents": 250000000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "s179.max",
+       "value": {
+        "cents": 250000000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "s179.line2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s179.h_max",
+       "value": {
+        "cents": 250000000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "s179",
+     "kind": "value",
+     "project": {
+      "cents": 250000000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "s179.max",
+       "value": {
+        "cents": 250000000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.4.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "s179.line2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s179.h_max",
+       "value": {
+        "cents": 250000000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "s179",
+     "kind": "value",
+     "project": {
+      "cents": 250000000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "s179.max",
+       "value": {
+        "cents": 250000000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.5.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "s179.line2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s179.h_max",
+       "value": {
+        "cents": 250000000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "s179",
+     "kind": "value",
+     "project": {
+      "cents": 250000000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "s179.max",
+       "value": {
+        "cents": 250000000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.6.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "$sc@person[sample]",
+      "kind": "unknown",
+      "reason": "collection roster not confirmed"
+     },
+     "candidate_operands": [
+      {
+       "ref": "s179.line2",
+       "value": {
+        "input": "$sc@person[sample]",
+        "kind": "unknown",
+        "reason": "collection roster not confirmed"
+       }
+      },
+      {
+       "ref": "s179.h_max",
+       "value": {
+        "cents": 250000000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "s179",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 250000000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "s179.max",
+       "value": {
+        "cents": 250000000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "classm.f8889.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i4562",
+       "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
+      },
+      "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+      "gate": "person[taxpayer].sc[biz_a].scveh[car_1].low_use",
+      "kind": "refusal",
+      "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "s179.line2",
+       "value": {
+        "cite": {
+         "doc": "i4562",
+         "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
+        },
+        "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+        "gate": "person[taxpayer].sc[biz_a].scveh[car_1].low_use",
+        "kind": "refusal",
+        "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
+       }
+      }
+     ],
+     "instance": "s179",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 250000000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "s179.max",
+       "value": {
+        "cents": 250000000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.carloan.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "$sc@person[sample]",
+      "kind": "unknown",
+      "reason": "collection roster not confirmed"
+     },
+     "candidate_operands": [
+      {
+       "ref": "s179.line2",
+       "value": {
+        "input": "$sc@person[sample]",
+        "kind": "unknown",
+        "reason": "collection roster not confirmed"
+       }
+      },
+      {
+       "ref": "s179.h_max",
+       "value": {
+        "cents": 250000000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "s179",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 250000000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "s179.max",
+       "value": {
+        "cents": 250000000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "classm.f8889.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i4562",
+       "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
+      },
+      "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+      "gate": "person[taxpayer].sc[rides].scveh[car].low_use",
+      "kind": "refusal",
+      "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "s179.line2",
+       "value": {
+        "cite": {
+         "doc": "i4562",
+         "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
+        },
+        "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+        "gate": "person[taxpayer].sc[rides].scveh[car].low_use",
+        "kind": "refusal",
+        "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
+       }
+      }
+     ],
+     "instance": "s179",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 250000000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "s179.max",
+       "value": {
+        "cents": 250000000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage14.veh.refuse_low_use",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i4562",
+       "locator": "pp. 8-12, Part III, and Pub. 946 Appendix B"
+      },
+      "form": "Form 4562 property outside this tool (Pub. 946 Appendix B class, disposition, exchange, real property, ADS, other methods, basis adjustment, amortization and the other items of the screen)",
+      "gate": "person[taxpayer].sc[desk].asset[cows].screened",
+      "kind": "refusal",
+      "remedy": "This property is outside the depreciation this tool covers."
+     },
+     "candidate_operands": [
+      {
+       "ref": "s179.line2",
+       "value": {
+        "cite": {
+         "doc": "i4562",
+         "locator": "pp. 8-12, Part III, and Pub. 946 Appendix B"
+        },
+        "form": "Form 4562 property outside this tool (Pub. 946 Appendix B class, disposition, exchange, real property, ADS, other methods, basis adjustment, amortization and the other items of the screen)",
+        "gate": "person[taxpayer].sc[desk].asset[cows].screened",
+        "kind": "refusal",
+        "remedy": "This property is outside the depreciation this tool covers."
+       }
+      }
+     ],
+     "instance": "s179",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 250000000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "s179.max",
+       "value": {
+        "cents": 250000000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage14.asset.refuse_class",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i4562",
+       "locator": "pp. 13-15, Part V"
+      },
+      "form": "Vehicle depreciation outside this tool (placed in service before 2019, an earlier special allowance, an earlier standard mileage rate, a disposition, a trade-in, earlier business use of 50% or less, and the other items of the screen)",
+      "gate": "person[taxpayer].sc[r].scveh[car].screened",
+      "kind": "refusal",
+      "remedy": "This vehicle's depreciation is outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "s179.line2",
+       "value": {
+        "cite": {
+         "doc": "i4562",
+         "locator": "pp. 13-15, Part V"
+        },
+        "form": "Vehicle depreciation outside this tool (placed in service before 2019, an earlier special allowance, an earlier standard mileage rate, a disposition, a trade-in, earlier business use of 50% or less, and the other items of the screen)",
+        "gate": "person[taxpayer].sc[r].scveh[car].screened",
+        "kind": "refusal",
+        "remedy": "This vehicle's depreciation is outside this tool."
+       }
+      }
+     ],
+     "instance": "s179",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 250000000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "s179.max",
+       "value": {
+        "cents": 250000000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage14.veh.refuse_screen",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i4562",
+       "locator": "p. 14, Lines 26 and 27; p. 15, Column (f), \"used 50% or less ... straight line method over its ADS recovery period\""
+      },
+      "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27), or a business use over 100%",
+      "gate": "person[taxpayer].sc[d].asset[pc].listed_low",
+      "kind": "refusal",
+      "remedy": "Listed property used 50% or less for business is depreciated under ADS and is outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "s179.line2",
+       "value": {
+        "cite": {
+         "doc": "i4562",
+         "locator": "p. 14, Lines 26 and 27; p. 15, Column (f), \"used 50% or less ... straight line method over its ADS recovery period\""
+        },
+        "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27), or a business use over 100%",
+        "gate": "person[taxpayer].sc[d].asset[pc].listed_low",
+        "kind": "refusal",
+        "remedy": "Listed property used 50% or less for business is depreciated under ADS and is outside this tool."
+       }
+      }
+     ],
+     "instance": "s179",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 250000000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "s179.max",
+       "value": {
+        "cents": 250000000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage14.asset.refuse_pct",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i4562",
+       "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
+      },
+      "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+      "gate": "person[taxpayer].sc[r].scveh[car].low_use",
+      "kind": "refusal",
+      "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "s179.line2",
+       "value": {
+        "cite": {
+         "doc": "i4562",
+         "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
+        },
+        "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+        "gate": "person[taxpayer].sc[r].scveh[car].low_use",
+        "kind": "refusal",
+        "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
+       }
+      }
+     ],
+     "instance": "s179",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 250000000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "s179.max",
+       "value": {
+        "cents": 250000000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage14.veh.refuse_half_use",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "$sc@person[taxpayer]",
+      "kind": "unknown",
+      "reason": "collection roster not confirmed"
+     },
+     "candidate_operands": [
+      {
+       "ref": "s179.line2",
+       "value": {
+        "input": "$sc@person[taxpayer]",
+        "kind": "unknown",
+        "reason": "collection roster not confirmed"
+       }
+      },
+      {
+       "ref": "s179.h_max",
+       "value": {
+        "cents": 250000000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "s179",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 250000000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "s179.max",
+       "value": {
+        "cents": 250000000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage16.cleanup.refuse.f1040_line16",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "$sc@person[taxpayer]",
+      "kind": "unknown",
+      "reason": "collection roster not confirmed"
+     },
+     "candidate_operands": [
+      {
+       "ref": "s179.line2",
+       "value": {
+        "input": "$sc@person[taxpayer]",
+        "kind": "unknown",
+        "reason": "collection roster not confirmed"
+       }
+      },
+      {
+       "ref": "s179.h_max",
+       "value": {
+        "cents": 250000000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "s179",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 250000000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "s179.max",
+       "value": {
+        "cents": 250000000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage16.cleanup.refuse.scope_credits",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "$sc@person[taxpayer]",
+      "kind": "unknown",
+      "reason": "collection roster not confirmed"
+     },
+     "candidate_operands": [
+      {
+       "ref": "s179.line2",
+       "value": {
+        "input": "$sc@person[taxpayer]",
+        "kind": "unknown",
+        "reason": "collection roster not confirmed"
+       }
+      },
+      {
+       "ref": "s179.h_max",
+       "value": {
+        "cents": 250000000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "s179",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 250000000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "s179.max",
+       "value": {
+        "cents": 250000000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage16.cleanup.refuse.rrta_medicare",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "$sc@person[taxpayer]",
+      "kind": "unknown",
+      "reason": "collection roster not confirmed"
+     },
+     "candidate_operands": [
+      {
+       "ref": "s179.line2",
+       "value": {
+        "input": "$sc@person[taxpayer]",
+        "kind": "unknown",
+        "reason": "collection roster not confirmed"
+       }
+      },
+      {
+       "ref": "s179.h_max",
+       "value": {
+        "cents": 250000000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "s179",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 250000000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "s179.max",
+       "value": {
+        "cents": 250000000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage16.cleanup.refuse.f4952_unsupported",
+      "kind": "fixture"
+     }
+    }
+   ]
+  },
+  {
+   "absent": 0,
+   "agree": 339,
+   "candidate": "s179.line11",
+   "compared": 1627,
+   "differ": 1288,
+   "handle": "11",
+   "in_scope": 1576,
+   "in_scope_agree": 294,
+   "kinds": {
+    "project-refuses": 6,
+    "project-unknown": 67,
+    "value": 1215
+   },
+   "kinds_by_return": {
+    "completed": {
+     "value": 484
+    },
+    "incomplete": {
+     "project-unknown": 14,
+     "value": 215
+    },
+    "refused": {
+     "project-refuses": 6,
+     "project-unknown": 53,
+     "value": 516
+    }
+   },
+   "open_at_triage": true,
+   "project": "s179.line11",
+   "shown_when": null,
+   "sources": {
+    "fixture": 1099,
+    "generated": 500,
+    "partial": 28
+   },
+   "status": "DISAGREE",
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "s179.h_income_pos",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s179.line5",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "s179",
+     "kind": "value",
+     "project": {
+      "cents": 5000000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "s179.income0",
+       "value": {
+        "cents": 5000000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s179.line5",
+       "value": {
+        "cents": 250000000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "s179.h_income_pos",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s179.line5",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "s179",
+     "kind": "value",
+     "project": {
+      "cents": 8500000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "s179.income0",
+       "value": {
+        "cents": 8500000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s179.line5",
+       "value": {
+        "cents": 250000000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "s179.h_income_pos",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s179.line5",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "s179",
+     "kind": "value",
+     "project": {
+      "cents": 4000000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "s179.income0",
+       "value": {
+        "cents": 4000000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s179.line5",
+       "value": {
+        "cents": 250000000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "s179.h_income_pos",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s179.line5",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "s179",
+     "kind": "value",
+     "project": {
+      "cents": 300000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "s179.income0",
+       "value": {
+        "cents": 300000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s179.line5",
+       "value": {
+        "cents": 250000000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.4.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "s179.h_income_pos",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s179.line5",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "s179",
+     "kind": "value",
+     "project": {
+      "cents": 2800000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "s179.income0",
+       "value": {
+        "cents": 2800000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s179.line5",
+       "value": {
+        "cents": 250000000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.5.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "s179.h_income_pos",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s179.line5",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "s179",
+     "kind": "value",
+     "project": {
+      "cents": 4500000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "s179.income0",
+       "value": {
+        "cents": 4500000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s179.line5",
+       "value": {
+        "cents": 250000000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.6.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "s179.h_income_pos",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s179.line5",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "s179",
+     "kind": "project-unknown",
+     "project": {
+      "input": "s179.line10",
+      "kind": "unknown",
+      "reason": "no input supplied for s179.line10"
+     },
+     "project_operands": [
+      {
+       "ref": "s179.income0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s179.line5",
+       "value": {
+        "input": "s179.line10",
+        "kind": "unknown",
+        "reason": "no input supplied for s179.line10"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f4952.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "s179.h_income_pos",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s179.line5",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "s179",
+     "kind": "project-unknown",
+     "project": {
+      "input": "s179.line10",
+      "kind": "unknown",
+      "reason": "no input supplied for s179.line10"
+     },
+     "project_operands": [
+      {
+       "ref": "s179.income0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s179.line5",
+       "value": {
+        "input": "s179.line10",
+        "kind": "unknown",
+        "reason": "no input supplied for s179.line10"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.g28.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "s179.h_income_pos",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s179.line5",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "s179",
+     "kind": "project-unknown",
+     "project": {
+      "input": "s179.line10",
+      "kind": "unknown",
+      "reason": "no input supplied for s179.line10"
+     },
+     "project_operands": [
+      {
+       "ref": "s179.income0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s179.line5",
+       "value": {
+        "input": "s179.line10",
+        "kind": "unknown",
+        "reason": "no input supplied for s179.line10"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.qdcg.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "s179.h_income_pos",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s179.line5",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "s179",
+     "kind": "project-unknown",
+     "project": {
+      "input": "s179.line10",
+      "kind": "unknown",
+      "reason": "no input supplied for s179.line10"
+     },
+     "project_operands": [
+      {
+       "ref": "s179.income0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s179.line5",
+       "value": {
+        "input": "s179.line10",
+        "kind": "unknown",
+        "reason": "no input supplied for s179.line10"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.tax_on_amount.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "s179.h_income_pos",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s179.line5",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "s179",
+     "kind": "project-unknown",
+     "project": {
+      "input": "s179.line10",
+      "kind": "unknown",
+      "reason": "no input supplied for s179.line10"
+     },
+     "project_operands": [
+      {
+       "ref": "s179.income0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s179.line5",
+       "value": {
+        "input": "s179.line10",
+        "kind": "unknown",
+        "reason": "no input supplied for s179.line10"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.tipjob.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "s179.h_income_pos",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s179.line5",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "s179",
+     "kind": "project-unknown",
+     "project": {
+      "input": "s179.line10",
+      "kind": "unknown",
+      "reason": "no input supplied for s179.line10"
+     },
+     "project_operands": [
+      {
+       "ref": "s179.income0",
+       "value": {
+        "cents": 11742500,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s179.line5",
+       "value": {
+        "input": "s179.line10",
+        "kind": "unknown",
+        "reason": "no input supplied for s179.line10"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "tcw.mfs.b1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "s179.h_income_pos",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s179.line5",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "s179",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "f1040",
+       "locator": "Form 1040 (2025), page 1, \"Your first name and middle initial\" and \"If joint return, spouse\u2019s first name and middle initial\"; Filing Status"
+      },
+      "form": "The people on the return",
+      "gate": "household.roster_bad",
+      "kind": "refusal",
+      "remedy": "Enter one person with the role taxpayer, and, only when married filing jointly, one person with the role spouse."
+     },
+     "project_operands": [
+      {
+       "ref": "s179.income0",
+       "value": {
+        "cite": {
+         "doc": "f1040",
+         "locator": "Form 1040 (2025), page 1, \"Your first name and middle initial\" and \"If joint return, spouse\u2019s first name and middle initial\"; Filing Status"
+        },
+        "form": "The people on the return",
+        "gate": "household.roster_bad",
+        "kind": "refusal",
+        "remedy": "Enter one person with the role taxpayer, and, only when married filing jointly, one person with the role spouse."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage13.refuse.joint_without_spouse",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "s179.h_income_pos",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s179.line5",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "s179",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "f1040",
+       "locator": "Form 1040 (2025), page 1, \"Your first name and middle initial\" and \"If joint return, spouse\u2019s first name and middle initial\"; Filing Status"
+      },
+      "form": "The people on the return",
+      "gate": "household.roster_bad",
+      "kind": "refusal",
+      "remedy": "Enter one person with the role taxpayer, and, only when married filing jointly, one person with the role spouse."
+     },
+     "project_operands": [
+      {
+       "ref": "s179.income0",
+       "value": {
+        "cite": {
+         "doc": "f1040",
+         "locator": "Form 1040 (2025), page 1, \"Your first name and middle initial\" and \"If joint return, spouse\u2019s first name and middle initial\"; Filing Status"
+        },
+        "form": "The people on the return",
+        "gate": "household.roster_bad",
+        "kind": "refusal",
+        "remedy": "Enter one person with the role taxpayer, and, only when married filing jointly, one person with the role spouse."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage13.refuse.single_with_spouse",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 50000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "s179.h_income_pos",
+       "value": {
+        "cents": 5000000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s179.line5",
+       "value": {
+        "cents": 50000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "s179",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i4562",
+       "locator": "p. 5, Line 5, \"If you are married filing separately, you and your spouse must allocate the dollar limitation for the tax year\"; p. 4, Line 2, \"Any property placed in service by your spouse, even if you are filing a separate return\""
+      },
+      "form": "Section 179 deduction on a separate return (the spouses' property and the allocation of the dollar limitation)",
+      "gate": "s179.mfs",
+      "kind": "refusal",
+      "remedy": "On a separate return the dollar limitation is shared with your spouse and figured with your spouse's property; that is outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "s179.income0",
+       "value": {
+        "cents": 5000000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s179.line5",
+       "value": {
+        "cite": {
+         "doc": "i4562",
+         "locator": "p. 5, Line 5, \"If you are married filing separately, you and your spouse must allocate the dollar limitation for the tax year\"; p. 4, Line 2, \"Any property placed in service by your spouse, even if you are filing a separate return\""
+        },
+        "form": "Section 179 deduction on a separate return (the spouses' property and the allocation of the dollar limitation)",
+        "gate": "s179.mfs",
+        "kind": "refusal",
+        "remedy": "On a separate return the dollar limitation is shared with your spouse and figured with your spouse's property; that is outside this tool."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage14.s179.refuse_mfs",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "s179.h_income_pos",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s179.line5",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "s179",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 66, Self-Select PIN, \"You can\u2019t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025\""
+      },
+      "form": "A filer under age 16 at the end of 2025",
+      "gate": "household.filer_under16",
+      "kind": "refusal",
+      "remedy": "A return for a person under age 16 at the end of 2025 (you, or your spouse on a joint return) is outside this tool. The archived instructions state no such rule; this is an entry check the owner decided on, recorded in the ambiguity register (amb.2025.filer_under_16)."
+     },
+     "project_operands": [
+      {
+       "ref": "s179.income0",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 66, Self-Select PIN, \"You can\u2019t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025\""
+        },
+        "form": "A filer under age 16 at the end of 2025",
+        "gate": "household.filer_under16",
+        "kind": "refusal",
+        "remedy": "A return for a person under age 16 at the end of 2025 (you, or your spouse on a joint return) is outside this tool. The archived instructions state no such rule; this is an entry check the owner decided on, recorded in the ambiguity register (amb.2025.filer_under_16)."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "audit.household.filer_under16",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "s179.h_income_pos",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s179.line5",
+       "value": {
+        "cents": 760455,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "s179",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i4562",
+       "locator": "p. 5, Line 5, \"If you are married filing separately, you and your spouse must allocate the dollar limitation for the tax year\"; p. 4, Line 2, \"Any property placed in service by your spouse, even if you are filing a separate return\""
+      },
+      "form": "Section 179 deduction on a separate return (the spouses' property and the allocation of the dollar limitation)",
+      "gate": "s179.mfs",
+      "kind": "refusal",
+      "remedy": "On a separate return the dollar limitation is shared with your spouse and figured with your spouse's property; that is outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "s179.income0",
+       "value": {
+        "cents": 280558,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s179.line5",
+       "value": {
+        "cite": {
+         "doc": "i4562",
+         "locator": "p. 5, Line 5, \"If you are married filing separately, you and your spouse must allocate the dollar limitation for the tax year\"; p. 4, Line 2, \"Any property placed in service by your spouse, even if you are filing a separate return\""
+        },
+        "form": "Section 179 deduction on a separate return (the spouses' property and the allocation of the dollar limitation)",
+        "gate": "s179.mfs",
+        "kind": "refusal",
+        "remedy": "On a separate return the dollar limitation is shared with your spouse and figured with your spouse's property; that is outside this tool."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 6,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "s179.h_income_pos",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s179.line5",
+       "value": {
+        "cents": 1754679,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "s179",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i4562",
+       "locator": "p. 5, Line 5, \"If you are married filing separately, you and your spouse must allocate the dollar limitation for the tax year\"; p. 4, Line 2, \"Any property placed in service by your spouse, even if you are filing a separate return\""
+      },
+      "form": "Section 179 deduction on a separate return (the spouses' property and the allocation of the dollar limitation)",
+      "gate": "s179.mfs",
+      "kind": "refusal",
+      "remedy": "On a separate return the dollar limitation is shared with your spouse and figured with your spouse's property; that is outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "s179.income0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s179.line5",
+       "value": {
+        "cite": {
+         "doc": "i4562",
+         "locator": "p. 5, Line 5, \"If you are married filing separately, you and your spouse must allocate the dollar limitation for the tax year\"; p. 4, Line 2, \"Any property placed in service by your spouse, even if you are filing a separate return\""
+        },
+        "form": "Section 179 deduction on a separate return (the spouses' property and the allocation of the dollar limitation)",
+        "gate": "s179.mfs",
+        "kind": "refusal",
+        "remedy": "On a separate return the dollar limitation is shared with your spouse and figured with your spouse's property; that is outside this tool."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 62,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    }
+   ]
+  }
+ ],
+ "log_sha256_at_triage": "ec3cc00373e92c91b4bfad25dede39381f78c6477326d65cbb46e9d5eeb2ef72",
+ "policy": "executable-triage-v2",
+ "response_sha256": "e49c47837410b8ab4b55e85654ec65143f723cb88a13f34901c0e33ed31478ea",
+ "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
+ "state": "evaluated",
+ "subject_sha256": "9c8dfcab2ce71ab6fcc7435a660fd0ad1f4b474b37287df671a014958de9e7c8"
+}

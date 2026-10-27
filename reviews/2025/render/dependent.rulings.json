@@ -28,6 +28,13 @@
    "context": "0288bb00bec9fc6d0814949cb5b890476640dc02998515d5a2c060819f4c2d17"
   },
   {
+   "printed": "2(c)",
+   "restated": "helper \"A qualifying person for Form 2441 (you have care expenses, and this person is your dependent and either your qualifying child under 13 or not able to care for themselves and living with you for more than half the year)\" = true and helper \"Physically or mentally not able to care for themselves?\" = true and (helper \"Age at the end of 2025\" > 13 (dc.child_age) or helper \"Age at the end of 2025\" = 13 (dc.child_age) and helper \"Care provided while this qualifying person was age 13 or older and disabled\" = true)",
+   "model": "The age test matches \"over age 12 at the time the care was provided and was disabled.\" But the gating helper requires the person to be \"Your dependent,\" with no refusal for the excluded cases. The IRS qualifying-person rule also covers a disabled person \"whom you can claim as a dependent or could claim as a dependent except: a. The disabled person had gross income of $5,200 or more, b. The disabled person filed a joint return, or c. You (or your spouse if filing jointly) could be claimed as a dependent on another taxpayer's 2025 tax return.\"",
+   "ruling": "Ruling: model error; the model says the gating helper requires \"Your dependent\" \"with no refusal for the excluded cases\". The excluded cases are refused: f2441.nondependent_gate refuses Form 2441's qualifying-person count and column (d) total (f2441.qp_count, f2441.paid_total) when care was paid for \"a qualifying person you cannot claim as a dependent (a person who would be your dependent but for their gross income, their joint return or your being claimable as a dependent ...)\", citing i2441 p. 1, Qualifying Person(s), \"or could claim as a dependent except: a. The disabled person had gross income of $5,200 or more, b. The disabled person filed a joint return, or c. You (or your spouse if filing jointly) could be claimed as a dependent\". The column (c) test itself the model accepts (i2441 p. 3, Column (c)). Separately, scrutiny of BUG-0157 against this sentence found that the screen's question omits the p503 p. 3 death-year rule (finding F1 in dependent.findings.md, form f2441).",
+   "context": "d0770124019b8370d2fafd9d01dc85be4078f442d6906ce5a9e182dd5f0dfa26"
+  },
+  {
    "printed": "2(d)",
    "restated": "Enter the amount from helper \"Qualified expenses incurred and paid in 2025 for this person's care\".",
    "model": "The helper counts expenses paid with dependent care benefits and leaves it to Form 2441 to subtract them later. The instructions say to leave those benefits out of column (d) itself: \"If you completed Part III, don't include in column (d) any benefits shown on line 28\" (and line 30 says \"Don't include in column (d) any benefits shown on line 28 above\"), so the amount on this line comes out too high.",
@@ -51,6 +58,13 @@
    "restated": "Enter the amount from helper \"Qualified expenses incurred and paid in 2025 for this person's care\".",
    "model": "The restatement includes expenses paid with dependent care benefits and says Form 2441 subtracts them later. The instructions instead say to leave them out of column (d): \"If you completed Part III, don't include in column (d) any benefits shown on line 28,\" and line 30 says \"Don't include in column (d) any benefits shown on line 28 above.\"",
    "ruling": "Ruling: interpretation; project retained. Column (d) shows each person's qualified expenses before excluding dependent care benefits, and line 30 subtracts line 28 from their total; this is the binding register reading amb.2025.dc_line30 (owner, Stage 15), recorded on this line. The restatement says what the project does."
+  },
+  {
+   "printed": "2(d)",
+   "restated": "Enter the amount from helper \"Qualified expenses incurred and paid in 2025 for this person's care\".",
+   "model": "The restatement tells the filer to include expenses paid with dependent care benefits and leaves the subtraction to Form 2441. The i2441 Column (d) instruction says \"If you completed Part III, don't include in column (d) any benefits shown on line 28,\" and line 30 repeats \"Don't include in column (d) any benefits shown on line 28 above.\"",
+   "ruling": "Ruling: ambiguity; amb.2025.dc_line30 (owner ruling, Stage 15, T-048). The model reads the register's rejected reading, that column (d) is entered net of benefits. The chosen reading shows each person's expenses including those paid with dependent care benefits and subtracts line 28 once at line 30: f2441.line30 is f2441.paid_total less f2441.line28 (lines 24 plus 25), which is Form 2441 line 30, \"Don't include in column (d) any benefits shown on line 28 above. Then, add the amounts in column (d)\"; i2441 pp. 3-4, Column (d).",
+   "context": "d0770124019b8370d2fafd9d01dc85be4078f442d6906ce5a9e182dd5f0dfa26"
   },
   {
    "printed": "ctc_child",

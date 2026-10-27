@@ -1,5 +1,41 @@
 # Handoff: the integrity plan, Phase 0 done, Phase 1 in progress
 
+## Paused for a fresh session — 2026-10-26
+
+The owner requested a clean stop and handoff. All in-flight requests finished; work is paused.
+**Read [HANDOFF-NEXT-SESSION.md](HANDOFF-NEXT-SESSION.md) and `docs/2026-10-26_plan_revision.md` first.** It records the final verified
+snapshot, uncommitted changes, passing targeted checks and remaining source rulings. Last commit
+is9bb8205; the new source batch is not ready to commit. The active-goal language in earlier
+sections below is historical and does not override this pause.
+
+Final read-only audit:110 verified,zero unverifiable,67 current type passes,68 context passes,
+59 bound/type/context passes,21 legacy-limited. Source rulings remain open (Claude207,Flash415);
+source qualification remains held.130 review tests,11 context tests and40 adapter cases pass.
+BUG-0146 includes12 newly discovered foreign-gate targets; both-family actual requests finished.
+Fifty actual requests finished in this source batch, plus32 explicitly labelled no-call host replays.
+All233 batch artifacts and32 replay-parent archives were hash-verified. See the dedicated handoff
+for caveats, commands and the still-incomplete pre-coverage roadmap.
+
+## Current source-context and provenance batch after 9bb8205 — 2026-10-26
+
+Active goal remains: continue until the roadmap is clear to resume coverage extension; no further human packets required. Do not mark the goal complete at this batch. Use deepseek-flash only and preserve original owner ambiguity choices. No sub-agents under the current developer instruction.
+
+9bb8205 committed the HSA correction after the final full green suite: 1083 CLI fixtures, 1700 engine cases/320581 comparisons/zero unexplained, 2279 mutations with128 equivalent survivors and zero unexplained survivors, 1683 TypeScript/Lean cases with zero differences. Numeric outside-family coverage is209/1515 (13.8%), second-family M57 and engine163 with overlap; no H/B credit.
+
+This uncommitted batch adds required-review-interfaces-v2: every own input plus direct foreign boundaries referenced by either the authored form or any returned model helper/refusal. Question text, id, type and printed marker bind the fingerprint. The model cannot shrink required context by omitting a dependency. Unrelated foreign questions do not stale the assessment; foreign authored arithmetic is not imported as context. Global catalog diagnostics remain separately visible. Qualification rechecks actual bound artifacts, current expression/refusal checks and the live fingerprint; recorded passing headers alone are insufficient. Source qualification remains globally held.
+
+BUG-0144 versions the strengthened type contract rather than accepting old v1 passes blindly. BUG-0145 then finds a checker defect: preserved published input records were importing authored computed refusal gates and requiring hidden local helpers (asset.screened, person.plan_screened). Published stubs now retain identity/type/question metadata only; explicitly model-returned input gates are preserved and validated. Current type policy is project-expression-types-v3. v2 checks on this batch's actual requests remain historical; explicit verified host replays record their parent log hashes and original policies. No raw model response is repaired. 126 offline review-tool tests plus11 focused context tests pass.
+
+Thirty actual fresh source requests replace the fifteen unverifiable Claude records and refresh matching Flash records: asset,carloan,eic,f8995a,household,ltc,person,qdcg,s179,s1a,s8812,sa,sales,sd,sdtw. Both fifteen-job drivers finished without transport failures. Two further actual f4952 requests follow the adapter separation. Source disagreements are NOT yet adjudicated; required Claude logs now contain open rulings and the next full suite cannot pass until these are handled honestly. Invalid replies remain gaps, not repaired IR.
+
+The read-only current-v3 audit is .transcription/source-replacements-audit-v3-2026-10-26.json: 110 verified, zero unverifiable, 56 type passes, 62 required-context passes, 47 bound/type/context passes, 23 legacy-limited, 172 earlier agreements differ under replay. These diagnostics do not confer source qualification. asset both and person Claude pass current v3; several original v2 errors were the host defect, while remaining malformed/undeclared replies stay rejected.
+
+T-064 now has a second explicit engineering adapter, f4952.election: the FULL supplied line4g amount with scope/limit gates, not only its gain portion. Nineteen host-only cases check the adapter and sd.investment_election. Four declared foreign Schedule B/D subtotal inputs are isolated engineering boundaries; their arithmetic is not independently tested by this contract. Cannot stub the reviewed form or collection entries. div's21 full-input cases remain. Both adapters earn no source/M/B/engine assertion and their source rows are excluded without rewriting older receipts. Printed f4952 tax quantities still receive independent transcription.
+
+The original 136 artifacts for the fifteen pairs are hashed in .transcription/archive/before-unverified-source-replacements-2026-10-26/. Ten older election artifacts are in before-election-adapter-2026-10-26/. Each verified host replay additionally archives its exact parent under archive/verified-replays/<stem>/<parent-log-sha>/ before writing the derived log; requests/replies/meta are unchanged. The current no-network replay driver is .transcription/replay_current_source.py and its progress is .transcription/source-replays-v3-2026-10-26.json; it invokes --from-response only and NEVER falls back to network. f4952 Claude was replayed separately. Any exact-current-prompt or original receipt mismatch must reject replay, not re-sign it.
+
+Next: finish/reap the current host replays, verify archives/raw identities; adjudicate valid source disputes against pinned primary pages and preserve existing ambiguity rulings; replace genuinely invalid IR with actual fresh generic-source requests where necessary. Complete the source migration and adapter meaning gaps, native M migration/broader blind returns, UsTaxes integration, mutation mechanization, DirectFile predicate comparison, citation precision and year rehearsal before coverage extension. Optional human work does not block this.
+
 ## Current HSA correction and native worked targets after 1b75a3b — 2026-10-26
 
 Active owner goal: keep going until the integrity roadmap is clear to resume coverage extension.

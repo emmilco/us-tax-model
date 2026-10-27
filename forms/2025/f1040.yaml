@@ -706,10 +706,11 @@ form:
       type: NonNegDollars
       expr:
         op: input
-        source: Federal income tax withheld from Form(s) 1099 (supplied total; read box 4 on each 1099)
+        source: Federal income tax withheld shown on your Forms 1099 (supplied total of box 4 of Forms 1099-R, 1099-INT,
+          1099-DIV, 1099-G and other Forms 1099, box 6 of Form SSA-1099 and box 10 of Form RRB-1099)
       cite:
-        doc: f1040
-        locator: Form 1040 (2025), line 25b
+        doc: i1040gi
+        locator: p. 39, Line 25b, "This should be shown in box 4 of Form 1099, box 6, of Form SSA-1099, or box 10 of Form RRB-1099"
     - id: f1040.line25c
       printed: 25c
       label: Federal income tax withheld from other forms (see instructions)

@@ -1,0 +1,248 @@
+{
+  "policy": "internal-adapters-v1",
+  "form": "f4952",
+  "tax_year": 2025,
+  "authority": "Project engineering contract; no independent IRS reading or scoreboard credit. Foreign Schedule B and D subtotals are isolated engineering boundary facts, not independently tested tax calculations.",
+  "adapters": {
+    "f4952.election": {
+      "type": "NonNegDollars",
+      "behavior": "The entire supplied line4g election after the ordered carryover, unsupported-source, alternative-allocation and election-limit gates; not merely its capital-gain portion. Independent source reviews still transcribe every printed computed tax quantity.",
+      "copy_consumers": [
+        "sd.investment_election"
+      ]
+    }
+  },
+  "base_inputs": {
+    "f4952.carryover": false,
+    "f4952.unsupported": false,
+    "f4952.alternative_allocation": false,
+    "f4952.line4g": 70000,
+    "sb.line2": 100000,
+    "sb.line6": 200000,
+    "f1040.line3a": 50000,
+    "sd.line16": 200000,
+    "sd.net_gain": 100000
+  },
+  "cases": [
+    {
+      "id": "full-election-not-capital-only",
+      "adapter": "f4952.election",
+      "inputs": {},
+      "expect": {
+        "kind": "money",
+        "cents": 70000
+      }
+    },
+    {
+      "id": "zero-election",
+      "adapter": "f4952.election",
+      "inputs": {
+        "f4952.line4g": 0
+      },
+      "expect": {
+        "kind": "money",
+        "cents": 0
+      }
+    },
+    {
+      "id": "maximum-election-boundary",
+      "adapter": "f4952.election",
+      "inputs": {
+        "f4952.line4g": 150000
+      },
+      "expect": {
+        "kind": "money",
+        "cents": 150000
+      }
+    },
+    {
+      "id": "qualified-dividends-only",
+      "adapter": "f4952.election",
+      "inputs": {
+        "sd.line16": 0,
+        "sd.net_gain": 0,
+        "f4952.line4g": 50000
+      },
+      "expect": {
+        "kind": "money",
+        "cents": 50000
+      }
+    },
+    {
+      "id": "capital-gain-only",
+      "adapter": "f4952.election",
+      "inputs": {
+        "f1040.line3a": 0,
+        "f4952.line4g": 100000
+      },
+      "expect": {
+        "kind": "money",
+        "cents": 100000
+      }
+    },
+    {
+      "id": "net-loss-qualified-dividends",
+      "adapter": "f4952.election",
+      "inputs": {
+        "sd.line16": -10000,
+        "sd.net_gain": 0,
+        "f4952.line4g": 50000
+      },
+      "expect": {
+        "kind": "money",
+        "cents": 50000
+      }
+    },
+    {
+      "id": "above-election-limit",
+      "adapter": "f4952.election",
+      "inputs": {
+        "f4952.line4g": 150001
+      },
+      "expect": {
+        "kind": "refusal",
+        "gate": "f4952.bad_election"
+      }
+    },
+    {
+      "id": "carryover",
+      "adapter": "f4952.election",
+      "inputs": {
+        "f4952.carryover": true
+      },
+      "expect": {
+        "kind": "refusal",
+        "gate": "f4952.carryover"
+      }
+    },
+    {
+      "id": "missing-carryover",
+      "adapter": "f4952.election",
+      "inputs": {
+        "f4952.carryover": null
+      },
+      "expect": {
+        "kind": "unknown",
+        "input": "f4952.carryover"
+      }
+    },
+    {
+      "id": "unsupported",
+      "adapter": "f4952.election",
+      "inputs": {
+        "f4952.unsupported": true
+      },
+      "expect": {
+        "kind": "refusal",
+        "gate": "f4952.unsupported"
+      }
+    },
+    {
+      "id": "missing-unsupported",
+      "adapter": "f4952.election",
+      "inputs": {
+        "f4952.unsupported": null
+      },
+      "expect": {
+        "kind": "unknown",
+        "input": "f4952.unsupported"
+      }
+    },
+    {
+      "id": "alternative_allocation",
+      "adapter": "f4952.election",
+      "inputs": {
+        "f4952.alternative_allocation": true
+      },
+      "expect": {
+        "kind": "refusal",
+        "gate": "f4952.alternative_allocation"
+      }
+    },
+    {
+      "id": "missing-alternative_allocation",
+      "adapter": "f4952.election",
+      "inputs": {
+        "f4952.alternative_allocation": null
+      },
+      "expect": {
+        "kind": "unknown",
+        "input": "f4952.alternative_allocation"
+      }
+    },
+    {
+      "id": "ordered-refusal",
+      "adapter": "f4952.election",
+      "inputs": {
+        "f4952.carryover": true,
+        "f4952.unsupported": true
+      },
+      "expect": {
+        "kind": "refusal",
+        "gate": "f4952.carryover"
+      }
+    },
+    {
+      "id": "ordered-missing-screen",
+      "adapter": "f4952.election",
+      "inputs": {
+        "f4952.carryover": null,
+        "f4952.unsupported": true
+      },
+      "expect": {
+        "kind": "unknown",
+        "input": "f4952.carryover"
+      }
+    },
+    {
+      "id": "missing-f4952-line4g",
+      "adapter": "f4952.election",
+      "inputs": {
+        "f4952.line4g": null
+      },
+      "expect": {
+        "kind": "unknown",
+        "input": "f4952.line4g"
+      }
+    },
+    {
+      "id": "missing-f1040-line3a",
+      "adapter": "f4952.election",
+      "inputs": {
+        "f1040.line3a": null
+      },
+      "expect": {
+        "kind": "unknown",
+        "input": "f1040.line3a"
+      }
+    },
+    {
+      "id": "missing-sd-net_gain",
+      "adapter": "f4952.election",
+      "inputs": {
+        "sd.net_gain": null
+      },
+      "expect": {
+        "kind": "unknown",
+        "input": "sd.net_gain"
+      }
+    },
+    {
+      "id": "missing-sd-line16",
+      "adapter": "f4952.election",
+      "inputs": {
+        "sd.line16": null
+      },
+      "expect": {
+        "kind": "unknown",
+        "input": "sd.line16"
+      }
+    }
+  ],
+  "boundary_inputs": [
+    "sb.line2",
+    "sb.line6",
+    "sd.line16",
+    "sd.net_gain"
+  ]
+}

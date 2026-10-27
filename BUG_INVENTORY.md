@@ -2175,3 +2175,346 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
 - **Provenance:** 34 prior files are hashed under
   .transcription/archive/hsa-before-positive-printed-cases-2026-10-25/.
 - **Tags:** worked-context-feedback; validation-only-givens; zero-only-regime
+
+## BUG-0144 — Expanded refusal validation kept the old type-policy identifier
+
+- **Date:** 2026-10-26
+- **Caught by:** tracing the saved-review freshness boundary during T-062 migration.
+- **Symptom:** BUG-0139 added refusal syntax and Bool-gate validation, but new and old logs
+  both used project-expression-types-v1. The identifier alone could not distinguish a pass
+  that included refusal checks from one that did not. Four older passes fail those checks.
+- **Root cause:** the host validator changed without versioning its recorded contract.
+- **Where:** tools/transcription/check_model_types.mjs and transcribe.py.
+- **Fix:** use project-expression-types-v2, preserve original policy identifiers in read-only
+  audits, and recheck actual bound requests/replies when assessing new interface-context records.
+  Historical headers and raw replies are not rewritten or silently promoted.
+- **Impact:** the global BUG-0129 source-qualification hold already prevented these old
+  records from earning source qualification. That hold remains until migration closes.
+- **Tags:** unversioned-validation-contract; stale-type-pass; review-provenance
+
+## BUG-0145 — Published input stubs import authored computed refusal gates into model validation
+
+- **Date:** 2026-10-26
+- **Caught by:** both fresh asset transcriptions rejected for missing asset.screened, and the
+  fresh person transcription rejected for missing person.plan_screened, during T-062 replacement.
+- **Symptom:** these errors come from original input declarations, not the returned model IR.
+  The model was required to reproduce an undisclosed authored helper to pass the new gate checks.
+  An authored collection-valued input gate similarly rejected the new Schedule 8812 replies.
+- **Root cause:** prepareCandidate reused whole authored input records, including their computed
+  refuses metadata, while replacing the authored computed lines with independently supplied ones.
+- **Where:** tools/transcription/model_candidate.mjs, also consumed by the bounded case interpreter.
+- **Fix:** retain only published input identity/type/question metadata. Input refusal declarations,
+  if the model explicitly returns any, come from that reply and are validated with the model's
+  own computed gates. Never borrow an authored refusal placement or helper. Version this checker
+  contract separately; preserve earlier logs and actual requests as checked at the time.
+- **Validation:** source-interface-only candidates must not require an absent authored helper;
+  a malformed or non-Bool gate explicitly returned on an input must still fail. Passing types
+  remains distinct from source correctness and partial-input behavior; the global hold remains.
+- **Tags:** authored-logic-contamination; false-type-rejection; hidden-helper-dependency
+
+## BUG-0146 — Transcription targets omit computed helpers used only as foreign refusal gates
+
+- **Date:** 2026-10-26
+- **Caught by:** checking the household candidate's published interface against existing head-of-household fixtures.
+- **Symptom:** household.hoh_fails controls the Form1040 deduction refusal but was not a required
+  source-transcription target. exported_lines scanned only other lines' expressions, ignoring
+  their refusal declarations. The same gap affects twelve helpers across household, ira, s1,
+  s179 and s3, including some project scope bridges that need explicit semantic classification.
+- **Root cause:** dependency discovery treated arithmetic operands as the entire cross-form interface.
+- **Where:** tools/transcription/transcribe.py exported_lines and compare_families.py target coverage.
+- **Fix:** include direct foreign refusal and visibility references. Compare both logs against the
+  live required-target inventory, not only each other's rows: a changed review target list must
+  not qualify old logs merely because their authored-form subjects are unchanged. Preserve old
+  requests; newly required targets need actual source requests or explicit verified assessment,
+  not fabricated historical coverage. Internal adapters remain separately declared and tested.
+- **Impact:** this is an independent source-review coverage gap, not proof the household result
+  itself is wrong. The global transcription hold prevents source promotion while it is repaired.
+- **Tags:** missing-refusal-dependency; unreviewed-household-predicate; incomplete-source-targets
+
+## BUG-0147 — Schedule 1-A business-tips screen is unreachable without employee tips
+
+- **Date:** 2026-10-26
+- **Caught by:** source adjudication of the Claude Schedule 1-A transcription (plan revision item A,
+  `reviews/2025/transcription/adjudication/s1a.md`): the candidate refused at `s1.sc_1a` where the
+  project completed the return; reproduced on generated return 20261026/369 with
+  `sc[biz_a].tips_ot` true under the full interview's targets.
+- **Symptom:** a filer whose only qualified tips (or qualified overtime on Form 1099-NEC/MISC) come
+  from a Schedule C business was never asked `sc.tips_ot`; Schedule 1-A lines 5, 13, 14b and 21 and
+  Form 1040 line 13b were $0 and the return completed, instead of being refused.
+- **Root cause:** the `s1.sc_1a` refusal sat only on the helpers `s1a.line5_calc` and
+  `s1a.line14b_calc`, evaluated only under `s1a.part2`/`s1a.part3`, which require the employee-only
+  questions `s1a.tips`/`s1a.overtime`. i1040gi p. 101 makes Parts II and III apply to anyone who
+  received qualified tips or overtime, including in a trade or business (p. 104, line 5; p. 108,
+  line 14b). The regression `stage14.refuse.sch1a_tips` asserted the refusal on the helper, which
+  fixture checks evaluate but the interview does not.
+- **Where:** `forms/2025/s1a.yaml`, lines `s1a.line13` and `s1a.line21`.
+- **Fix:** the `s1.sc_1a` refusal is also declared on lines 13 and 21, which every return reaches
+  through Form 1040 line 13b, so the screen is asked of every Schedule C. Regression
+  `stage14.refuse.sch1a_tips_business_only` asserts the refusal on lines 13 and 21 and Form 1040
+  line 37; `stage16.cleanup.mut.clwb_three_figured` now answers the screen it had never been asked.
+  New check-all step `refusal_reach` (`tools/check_refusal_reach.mjs`) requires every refusal
+  fixture's return to be refused under the full interview, so this class is caught mechanically.
+- **Tags:** unreachable-refusal; helper-only-gate; fixture-evaluates-helpers; caught-by-source-adjudication
+
+## BUG-0148 — A section 179 election above the dollar limitation was accepted and lost from basis
+
+- **Date:** 2026-10-26
+- **Caught by:** source adjudication of the Form 4562 Part I transcriptions (plan revision item A,
+  `reviews/2025/transcription/adjudication/s179.md`), on witnesses built from
+  `stage14.s179.dollar_limit` and evaluated under the full interview's targets.
+- **Symptom:** an election above line 5 was accepted. Line 9 limited the deduction, but
+  `asset.after179` reduced the asset's basis by the whole election, so the excess was neither
+  deducted, carried over nor depreciated ($3,000,000 elected against $2,500,000 lost $71,450 of 2025
+  MACRS). With line 5 zero, lines 6(c) and 8 printed the election and depreciation was $142,900 short.
+- **Root cause:** the project bounded each asset's election by its business cost only. i4562 p. 4,
+  Line 3: "The amount of section 179 property for which you can make the election is limited to the
+  maximum dollar amount on line 1"; p. 5, Line 5: "If line 5 is zero, you cannot elect to expense any
+  section 179 property".
+- **Where:** `forms/2025/s179.yaml`.
+- **Fix:** new gate `s179.over_limit` (line 8 more than line 5) refuses on line 9, asking the filer
+  to elect no more than the limitation; the basis arithmetic is then correct on every computed
+  return. Capping and allocating the election instead would need an allocation the text leaves to
+  the taxpayer. `stage14.s179.dollar_limit` and `stage14.s179.phase_down` now elect exactly the
+  limitation; regressions `stage14.s179.refuse_over_limit` and `stage14.s179.refuse_zero_limit`.
+- **Tags:** missing-limit-gate; basis-reduced-by-unallowed-amount; fixture-asserted-limited-line-only; caught-by-source-adjudication
+
+## BUG-0149 — Schedule D lines 18 and 19 kept worksheet results when line 17 is No
+
+- **Date:** 2026-10-26
+- **Caught by:** source adjudication of the Claude Schedule D transcription (plan revision item A,
+  `reviews/2025/transcription/adjudication/sd.md`); triage witnesses generated 20261026/76 ($4,391.65)
+  and `classm.sli.2` ($145).
+- **Symptom:** `sd.line18` and `sd.line19` copied the 28% and section 1250 worksheet results whatever
+  line 17 said. On the Form 4952 branch of `f1040.gate.sdtw`, which does not test line 17, the
+  Schedule D Tax Worksheet read them: line 11 showed $500 where the source gives zero, and lines it
+  skips showed amounts. No tax change was found (worksheet line 9 is zero when line 17 is No).
+- **Root cause:** f1040sd p. 2, line 17: "No. Skip lines 18 through 21, and go to line 22";
+  i1040sd p. 11 completes the worksheets for lines 18 and 19 only "If you checked “Yes” on line 17".
+  Both lines were plain copies; their labels still described the worksheets as deferred.
+- **Where:** `forms/2025/sd.yaml`.
+- **Fix:** both lines choose zero when line 17 is No. Regressions `stage16.sd.line17_no_skips_18`
+  and `stage16.sd.line17_no_skips_19`.
+- **Tags:** missing-skip-guard; unguarded-copy; stale-label; caught-by-source-adjudication
+
+## BUG-0150 — Schedule D Tax Worksheet lines 41 to 43 were shown when Schedule D line 18 is zero
+
+- **Date:** 2026-10-26
+- **Caught by:** source adjudication of the Schedule D Tax Worksheet transcriptions (`adjudication/sdtw.md`);
+  309 triage witnesses, 12 on returns that use the worksheet (`sales.select.sdtw.election`, $50,000).
+- **Symptom:** with Schedule D lines 18 and 19 both zero, `sdtw.use28` completed line 41 (equal to
+  line 1) on the values sheet; lines 42 and 43 were zero and line 47 unchanged.
+- **Root cause:** the "go to line 41" after line 34 was read as passing the instruction printed before
+  line 41, i1040sd p. 16: "If Schedule D, line 18, is zero or blank, skip lines 41 through 43".
+- **Where:** `forms/2025/sdtw.yaml`.
+- **Fix:** under the owner's decision of 2026-10-26 (skipped lines are hidden, values unchanged),
+  lines 41 to 43 carry `shown_when: sdtw.show41_43` (Schedule D line 18 more than zero). Regression:
+  `sales.select.sdtw.election` asserts the condition false.
+- **Tags:** skipped-line-shown; flow-instruction-misread; caught-by-source-adjudication
+
+## BUG-0151 — Schedule 8812 lines after a stop, and Part II-B when skipped, were shown
+
+- **Date:** 2026-10-26
+- **Caught by:** source adjudication of the Schedule 8812 transcriptions (`adjudication/s8812.md`).
+- **Symptom:** every line was shown whatever the stops said: line 13 after the line 12 stop
+  (`stage8.single.taxpayer_without_tin`, $17,867); lines 16b to 21 after line 16a was zero
+  (`stage8.hoh.child.ctc`: 16b $1,700, 18a $120,000, 19 $117,500, 21 $9,180); Part II-B when the
+  instruction after line 20 skips it. Schedule 8812 is attached to the return, so these amounts
+  reached a filed form. Lines 14, 17 and 27 were right.
+- **Root cause:** f1040s8812 stops ("No. Stop here", line 12; "If zero, stop here", lines 16a and
+  16b) and the "Next" routing after line 20 were applied only where line 27 chooses its source.
+- **Where:** `forms/2025/s8812.yaml`.
+- **Fix:** printed lines 13, 16b, 17 to 20 and 21 to 26 carry `shown_when` on new conditions
+  `s8812.show13`, `show16b`, `show_iia` and `show_iib` (owner's decision of 2026-10-26; values
+  unchanged). Regressions on `stage8.hoh.child.ctc`, `stage8.single.taxpayer_without_tin` and
+  `stage8.hoh.actc.one_child.low_wages`. Credit Limit Worksheets A and B, also evaluated when not to be
+  completed (i1040s8812 p. 4), are helper lines, which `shown_when` cannot hide; that part is T-067.
+- **Tags:** skipped-line-shown; stop-instruction-ignored; filed-form-presentation; caught-by-source-adjudication
+
+## BUG-0152 — EIC Worksheet A was shown after a STOP, and line 5 when skipped or left blank
+
+- **Date:** 2026-10-26
+- **Caught by:** source adjudication of the EIC transcriptions (`adjudication/eic.md`).
+- **Symptom:** Worksheet A lines appeared on returns the flowchart had already stopped (generated
+  20261026/439: line 6 $3,545 with `eic.credit` $0), and line 5 showed a table lookup when line 4 is
+  Yes or line 5 is to be left blank (`classm.f2441.4`, $1,709). Form 1040 line 27a was right.
+- **Root cause:** i1040gi p. 43 reaches Worksheet A only after Steps 1 to 5, each "STOP You can't take
+  the credit" ending the flowchart; p. 46, line 4: "Yes. Skip line 5"; line 5: "Yes. Leave line 5
+  blank". Only `eic.credit` and `eic.line6` respected them.
+- **Where:** `forms/2025/eic.yaml`.
+- **Fix:** printed lines 1, 2, 3 and 6 are shown when `eic.eligible`; line 5 when the new
+  `eic.show5` holds (owner's decisions of 2026-10-26: hidden, values unchanged, and a worksheet after
+  a STOP counts as skipped). Regressions: `stage16.cleanup.mut.clwb_three_figured` asserts
+  `eic.eligible` false; `stage9.eic.line5_skipped` asserts line 4 Yes and `eic.show5` false.
+- **Tags:** skipped-line-shown; stop-instruction-ignored; caught-by-source-adjudication
+
+## BUG-0153 — Head of household refused when a relative qualifying person was born or died in 2025
+
+- **Date:** 2026-10-26
+- **Caught by:** source adjudication of the household transcriptions (`adjudication/household.md`),
+  reading `dependent.hoh_test1`/`hoh_test2` (never source-reviewed, BUG-0146) against p501; witness
+  built from `stage8.hoh.parent.test1`.
+- **Symptom:** a filer whose dependent parent or other relative (not a qualifying child) died or was
+  born in 2025 and lived with them more than half of the part of the year they were alive was
+  refused head of household, because the months question tells them to enter 0 unless the person
+  lived with them the whole time; and the Test 1 question asked about the parent's home "for all of
+  2025". Line 12e was refused where the source gives $23,625.
+- **Root cause:** i1040gi p. 15 sends this case to Pub. 501; p501 p. 9, Death or birth: "Your
+  qualifying child or qualifying relative who lived with you for more than half the part of the year
+  they were alive" and "Your parent for whom you paid, for the entire part of the year your parent
+  was alive, more than half the cost of keeping up the home your parent lived in". The months answer
+  encodes the all-year rule a household member needs (i1040gi p. 21), which also feeds the dependent
+  care residency test, so it could not carry the part-year rule.
+- **Where:** `forms/2025/dependent.yaml`; interview question lists.
+- **Fix:** owner's choice (2026-10-26): new questions `dependent.born_died` and
+  `dependent.hoh_part_year`, read only by head of household Test 2 through `dependent.hoh_lived_half`
+  for a relative who is not a qualifying child (whose months already count the part of the year
+  alive); `dependent.parent_home_paid` now asks about the part of 2025 a parent who died was alive.
+  Test 2 checks relationship before residency so excluded household members are not asked. Three
+  fixtures answer the new question (no birth or death); regressions
+  `stage8.hoh.parent.died_lived_part_year` and `stage8.hoh.parent.died_not_half`.
+- **Tags:** part-year-rule-missing; question-encodes-wrong-test; unreviewed-household-predicate; caught-by-source-adjudication
+
+## BUG-0154 — The BUG-0147 refusal named business tips for a filer with only Form 1099 overtime
+
+- **Date:** 2026-10-26
+- **Caught by:** round 2 source adjudication of Schedule 1-A (`adjudication/s1a.md`), on
+  `stage14.sch1a.refuse_overtime_1099`.
+- **Symptom:** a filer whose only screened item was qualified overtime on Form 1099-NEC or 1099-MISC was
+  refused with the line 13 message about qualified tips received in a trade or business; the return was
+  correctly refused.
+- **Root cause:** BUG-0147 put the shared gate `s1.sc_1a` on lines 13 and 21 with each line's own text;
+  line 13 is evaluated first, so its tips wording reached every refused filer.
+- **Where:** `forms/2025/s1a.yaml`, the `s1.sc_1a` refusals on `s1a.line13` and `s1a.line21`.
+- **Fix:** both refusals carry one text naming qualified tips received in a trade or business and
+  qualified overtime on Form 1099-NEC or 1099-MISC. `stage14.refuse.sch1a_tips_business_only`
+  re-recorded with that text.
+- **Tags:** refusal-message-wrong; introduced-by-fix; caught-by-source-adjudication
+
+## BUG-0155 — Form 4562 line 10 was shown when line 5 is zero
+
+- **Date:** 2026-10-26
+- **Caught by:** round 2 source adjudication of Form 4562 Part I (`adjudication/s179.md`).
+- **Symptom:** with line 5 zero, the 2024 carryover appeared on line 10, which the instructions skip;
+  lines 12 and 13 were right.
+- **Root cause:** i4562 p. 5, Line 5: "If line 5 is zero, you cannot elect to expense any section 179
+  property. In this case, skip lines 6 through 11, enter zero on line 12, and enter the carryover ... on
+  line 13"; line 10 is the filer's input and had no condition.
+- **Where:** `forms/2025/s179.yaml`.
+- **Fix:** line 10 carries `shown_when: s179.show10` (line 5 more than zero), values unchanged (owner's
+  decision of 2026-10-26). Regression `stage14.s179.zero_limit_carryover`.
+- **Tags:** skipped-line-shown; caught-by-source-adjudication
+
+## BUG-0156 — EIC worksheet lines were shown after later STOPs and on unreached worksheets
+
+- **Date:** 2026-10-26
+- **Caught by:** round 2 source adjudication of the EIC (`adjudication/eic.md`), gaps left by BUG-0152.
+- **Symptom:** Worksheet A lines 3 and 5 appeared after "If line 2 is zero, STOP" (and the Worksheet B
+  STOPs that make line 2 zero) (`stage9.eic.no_earned_income`, line 3 $1,000); Worksheet B lines 4b and 6
+  appeared for filers who never reach Step 5 or after the Worksheet B line 5 STOP
+  (`classm.f2441.2.deepseek`, $85,000; `stage14.eic.wsb_line5_stop_27c`, $19,516.40). The `eic.credit`
+  label named only Worksheet A. Form 1040 lines 27a and 27c were right.
+- **Root cause:** i1040gi p. 46, line 2: "If line 2 is zero, You can’t take the credit" (a STOP); p. 47:
+  "Use this worksheet if you answered “Yes” to Step 5, question 2" and line 5, "No. You can’t take the credit". BUG-0152 tested
+  only `eic.eligible`.
+- **Where:** `forms/2025/eic.yaml`.
+- **Fix:** line 3 is shown on `eic.show3` (eligible and line 2 more than zero), and `eic.show5` also
+  requires line 2 more than zero; Worksheet B line 4b on `eic.show_wsb4b` (Step 5 reached, new
+  `eic.reached_step5`, and self-employed) and line 6 on `eic.show_wsb6`. `eic.credit` relabelled. The
+  Step 5 earned-income lines are helpers, which `shown_when` cannot hide (T-067). Regressions on
+  `stage9.eic.no_earned_income`, `stage14.eic.wsb_line5_stop_27c` and `stage9.eic.wsb_not_reached`.
+- **Tags:** skipped-line-shown; stop-instruction-ignored; incomplete-fix; caught-by-source-adjudication
+
+## BUG-0157 — Form 2441 refused the death-year rule for a disabled qualifying person
+
+- **Date:** 2026-10-26
+- **Caught by:** round 2 source adjudication of the dependents collection (`adjudication/dependent.md`),
+  checking BUG-0153's reach.
+- **Symptom:** a disabled dependent who died in 2025 and lived with the filer more than half of the part
+  of the year they were alive was not a qualifying person, because the months question encodes the
+  all-year rule; the credit was $0 where the source gives $600 on the regression's facts.
+- **Root cause:** p503 p. 3: "a person who was born or died in 2025 is treated as having lived with you
+  for more than half of 2025 if your home was the person's home more than half the time they were alive
+  in 2025"; `dependent.dc_disabled_qp` read `dependent.lived_half`.
+- **Where:** `forms/2025/dependent.yaml`.
+- **Fix:** `dependent.dc_disabled_qp` reads the new `dependent.dc_lived_half` (lived half the year, or a
+  person other than a qualifying child born or who died in 2025 whose home was the filer's for more than
+  half the part of the year alive), after the inability-to-care test so others are not asked. The
+  qualifying-child route already counts part years through months. Regression
+  `stage15.f2441.parent_died_part_year`.
+- **Tags:** part-year-rule-missing; question-encodes-wrong-test; caught-by-source-adjudication
+
+## BUG-0158 — Head of household refused the adoption and placement part-year rule
+
+- **Date:** 2026-10-26
+- **Caught by:** round 2 source adjudication of the dependents collection, checking BUG-0153.
+- **Symptom:** a relative other than a qualifying child adopted by, or placed with, the filer in 2025 who
+  lived with them more than half of the time since was not a Test 2 person, so head of household was
+  refused. BUG-0153's new question also left juvenile detention out of the temporary absences.
+- **Root cause:** i1040gi p. 15: "the person is considered to have lived with you for more than half of
+  2025 if your main home was this person's main home for more than half the time since the person was
+  adopted or placed with you in 2025"; pp. 14–15 list "detention in a juvenile facility" among temporary
+  absences. BUG-0153 covered only birth and death.
+- **Where:** `forms/2025/dependent.yaml`; interview question lists.
+- **Fix:** new question `dependent.placed`; `dependent.hoh_part_year` becomes `dependent.part_year_home`,
+  worded for the part of the year alive or since the adoption or placement, with juvenile detention
+  among the absences; `dependent.hoh_lived_half` accepts birth, death or placement. Form 2441 uses birth
+  or death only (p503 p. 3 states no placement rule). Three fixtures answer `placed`; regression
+  `stage8.hoh.adopted_part_year`.
+- **Tags:** part-year-rule-missing; incomplete-fix; caught-by-source-adjudication
+
+## BUG-0159 — Form 1040 line 25b sent Form SSA-1099 and RRB-1099 withholding to box 4
+
+- **Date:** 2026-10-26
+- **Caught by:** round 2 source adjudication of the Form 1040 render comparison (`adjudication/f1040.md`).
+- **Symptom:** the line 25b question and help said to read box 4 on each Form 1099. On Form SSA-1099 box 4
+  is benefits repaid; a filer following the question would enter the wrong amount and line 25d, line 33
+  and the refund or amount owed would be wrong by the withholding.
+- **Root cause:** i1040gi p. 39, Line 25b: "This should be shown in box 4 of Form 1099, box 6, of Form
+  SSA-1099, or box 10 of Form RRB-1099."
+- **Where:** `forms/2025/f1040.yaml` (`f1040.line25b`), `interview/questions-2025.yaml`.
+- **Fix:** the question and help name box 4 of Forms 1099, box 6 of Form SSA-1099 and box 10 of Form
+  RRB-1099, citing p. 39. The line is a supplied total, so no computed value changes.
+- **Tags:** question-wording-wrong-box; amount-affecting-input; caught-by-render-adjudication
+
+## BUG-0160 — Schedule D Tax Worksheet line 4 copied Form 4952 line 4e with no Form 4952 (closes BUG-0099)
+
+- **Date:** 2026-10-26
+- **Caught by:** recorded as BUG-0099 (OpenTaxSolver differential); found again by round 2 source
+  adjudication of the worksheet (`adjudication/sdtw.md`, `classm.tcw.1`: $16,981 against $0).
+- **Symptom and root cause:** as BUG-0099: `sdtw.line4` copied `f4952.line4e`, figured whether or not
+  the form is filed; i1040sd pp. 15–16, line 4, "Enter the amount from Form 4952, line 4e".
+- **Where:** `forms/2025/sdtw.yaml`.
+- **Fix:** line 4 is the Form 4952 amount when `sd.filing4952`, zero otherwise; lines 5 and 47 are
+  unchanged (line 3 is zero on those returns). `stage4.sdtw.special_rates` had recorded the defect and is
+  re-recorded to zero.
+- **Tags:** unguarded-copy; recorded-expectation-laundering; closes-earlier-entry; caught-by-source-adjudication
+
+## BUG-0161 — Form 2441's non-dependent screen omits the death-year residency rule (open)
+
+- **Date:** 2026-10-26
+- **Caught by:** round 3 source adjudication of the dependents collection (`adjudication/dependent.md`),
+  checking BUG-0157.
+- **Symptom:** the `f2441.nondependent` screen asks whether a disabled person who is not your dependent
+  "lived with you for more than half of 2025", without p503 p. 3's rule for a person who died in 2025 (more
+  than half the time they were alive). Such a person, who would be a qualifying person, is answered No
+  and the credit is understated on that rare return.
+- **Root cause:** BUG-0157 applied p503 p. 3 to dependents only; the screen's question text keeps the
+  calendar-year wording.
+- **Where:** `forms/2025/f2441.yaml`, `f2441.nondependent`.
+- **Fix:** open; to be fixed in the next batch (owner's decision of 2026-10-26: round-3 findings are
+  recorded and fixed after the commit). Proposed: add the death-year rule to the screen question, citing
+  p503 p. 3.
+- **Tags:** part-year-rule-missing; incomplete-fix; amount-affecting; open; caught-by-source-adjudication
+
+## BUG-0162 — Form 1040 line 28's box for not claiming the ACTC is neither encoded nor recorded (open)
+
+- **Date:** 2026-10-26
+- **Caught by:** round 3 source adjudication of the Form 1040 render comparison (`adjudication/f1040.md`).
+- **Symptom:** Form 1040 (2025) line 28 prints "If you do not want to claim the ACTC, check here"; i1040gi
+  p. 61: "If you do not want to claim the additional child tax credit, check the box on line 28." The
+  project always claims the credit and no line, question, scope screen or task records the limit (line
+  27c's equivalent is recorded in T-027). Amounts differ only for a filer who would opt out.
+- **Where:** `forms/2025/f1040.yaml`, `f1040.line28`.
+- **Fix:** open; next batch. The choice between recording a design limit (a Bool line, always false,
+  beside T-027) and asking the choice is the owner's.
+- **Tags:** printed-choice-not-encoded; unrecorded-scope-limit; open; caught-by-render-adjudication

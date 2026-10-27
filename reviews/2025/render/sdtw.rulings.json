@@ -5,6 +5,13 @@
   {
    "printed": "1",
    "restated": "Enter the amount from f1040 line 15.",
+   "model": "The restatement always takes Form 1040 line 15. The IRS text adds: \"However, if you are filing Form 2555 (relating to foreign earned income), enter instead the amount from line 3 of the Foreign Earned Income Tax Worksheet\". No refusal names Form 2555 as excluded.",
+   "ruling": "Ruling: scope; project retained. i1040sd p. 15, line 1: \"Enter your taxable income from Form 1040, 1040-SR, or 1040-NR, line 15. (However, if you are filing Form 2555 (relating to foreign earned income), enter instead the amount from line 3 of the Foreign Earned Income Tax Worksheet in the instructions for Form 1040, line 16.)\". The Form 2555 alternative is never reached on a return the tool computes: the exclusion is reported on Schedule 1, line 8d (i1040gi p. 91: \"Foreign earned income exclusion and housing exclusion from Form 2555\"), refused by s1.line8_other (forms/2025/s1.yaml: \"lines 8a, 8d, 8e, 8k to 8q and 8s to 8v are refused by s1.line8_other\"); the housing deduction (Schedule 1, line 24j) is refused at Form 1040 line 10 (\"lines 24b to 24z are outside this tool\"); and a filer who answers that Form 2555 is filed is refused at Schedule 1-A line 2a (forms/2025/s1a.yaml, gate sa.excluded_income, i1040gi p. 101). The worksheet note records Form 2555 as outside scope. The restatement says what the page says for every return the tool computes; as round 2. No change.",
+   "context": "f3615734256d5ed9793a4bab4f229805fd05efeb99feceea0c66e5f3b77d034f"
+  },
+  {
+   "printed": "1",
+   "restated": "Enter the amount from f1040 line 15.",
    "model": "The restatement always uses f1040 line 15 and names no refusal for the Form 2555 case. The IRS text says \"if you are filing Form 2555 (relating to foreign earned income), enter instead the amount from line 3 of the Foreign Earned Income Tax Worksheet.\"",
    "ruling": "Ruling: scope; project retained. The Foreign Earned Income Tax Worksheet alternative applies only to a filer who claimed the exclusion or housing deduction on Form 2555 (i1040gi p. 36, line 16: \"If you claimed the foreign earned income exclusion, housing exclusion, or housing deduction on Form 2555, you must use the Foreign Earned Income Tax Worksheet\"). That filer reports the exclusion on Schedule 1, line 8d (i1040gi p. 91: \"Foreign earned income exclusion and housing exclusion from Form 2555\"), and the return refuses any Schedule 1 income at Form 1040 line 8 (`scope.schedule1`, forms/2025/f1040.yaml) before line 16 is reached. The alternative is recorded as not encoded in the worksheet note. No change to the data."
   },

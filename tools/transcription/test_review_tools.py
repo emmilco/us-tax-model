@@ -572,6 +572,43 @@ class PartialInputContracts(unittest.TestCase):
 
 
 class CompleteInputContext(unittest.TestCase):
+    def test_foreign_refusal_and_visibility_dependencies_are_source_targets(self):
+        gate={'id':'probe.gate','printed':'(gate)','type':'Bool','expr':{'op':'test','eq':['probe.answer',{'const':True}]}}
+        doc={'id':'probe','lines':[gate]}
+        other={'id':'other.value','expr':{'op':'param','ref':'zero'}}
+        for use in [{'refuses':[{'when':'probe.gate'}]}, {'shown_when':'probe.gate'}]:
+            with self.subTest(use=use), patch.object(T,'ALL_LINES',{'other.value':('other',{**other,**use})}), \
+                    patch.object(T,'load_defs',return_value={}), patch.object(adapters,'excluded_ids',return_value=set()):
+                self.assertEqual(T.exported_lines(doc),[gate])
+
+    def test_question_words_cannot_create_a_false_foreign_dependency(self):
+        gate={'id':'probe.gate','printed':'(gate)','type':'Bool','expr':{'op':'test','eq':['probe.answer',{'const':True}]}}
+        other={'expr':{'op':'input','source':'A description mentions "probe.gate" but does not read it.'}}
+        with patch.object(T,'ALL_LINES',{'other.answer':('other',other)}), \
+                patch.object(T,'load_defs',return_value={}), patch.object(adapters,'excluded_ids',return_value=set()):
+            self.assertEqual(T.exported_lines({'id':'probe','lines':[gate]}),[])
+
+    def test_old_household_logs_do_not_cover_newly_discovered_hoh_target(self):
+        targets=T.required_target_keys(T.load_form('household'))
+        self.assertIn('household.hoh_fails',targets)
+        parse=C.parse_log
+        def old_inventory(kind,path):
+            record=parse(kind,path)
+            record['lines'].pop('household.hoh_fails',None)
+            record['input_context_policy']='legacy-unrecorded'
+            return record
+        with patch.object(C,'parse_log',side_effect=old_inventory):
+            quality=C.compare('transcription','household','deepseek')['quality']
+        self.assertTrue(any('current source targets not judged' in b and 'household.hoh_fails' in b for b in quality['blockers']))
+
+    def test_own_collection_catalog_does_not_offer_hidden_computed_helpers(self):
+        own=T.collection_notes('carloan')
+        others=T.collection_notes()
+        self.assertNotIn('carloan.qpvli (',own)
+        self.assertIn('carloan.interest (',own)
+        self.assertIn('carloan.qpvli (',others)
+        self.assertIn('person.income179 (',own)
+
     def test_saved_request_must_contain_late_meaning_before_completeness_passes(self):
         question = "Relationship. " + "Public context. " * 14 + "Grandnieces require the household test."
         lines = {"fake.relationship": ("fake", {"expr": {"op": "input", "source": question}})}
@@ -740,6 +777,24 @@ class ModelExpressionTypes(unittest.TestCase):
         with patch.object(T, "model_type_context", return_value=self.context(project)):
             self.assertEqual(T.validate_model_types("probe", project[1:]), [])
 
+    def test_published_input_does_not_import_hidden_authored_gate(self):
+        project = self.lines()
+        project[0]['refuses'] = [{'when':'probe.authored_gate'}]
+        project.append({'id':'probe.authored_gate','printed':'(gate)','type':'Bool',
+                        'expr':{'op':'test','gt':['probe.months',{'const':12,'type':'Count'}]}})
+        with patch.object(T,'model_type_context',return_value=self.context(project)):
+            self.assertEqual(T.validate_model_types('probe',[project[1]]),[])
+
+    def test_refusals_explicitly_returned_on_input_are_still_checked(self):
+        project=self.lines()
+        second=json.loads(json.dumps(project))
+        second[0]['refuses']=[{'when':'probe.months'}]
+        with patch.object(T,'model_type_context',return_value=self.context(project)):
+            self.assertTrue(T.validate_model_types('probe',second))
+        second[0]['refuses']=[{'when':'probe.result','when_known':True}]
+        with patch.object(T,'model_type_context',return_value=self.context(project)):
+            self.assertEqual(T.validate_model_types('probe',second),[])
+
     def test_nonboolean_or_malformed_refusal_is_rejected_without_execution(self):
         project = self.lines()
         for refusal in ['probe.months', {'when': 'probe.result', 'when_known': 'true'}, {'when': 'probe.result', 'invented': True}]:
@@ -805,7 +860,7 @@ class ModelExpressionTypes(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp, patch.object(T, "LOGS", temp), \
                 patch.object(rulings, "REVIEWS", temp), patch.object(T.subjects, "current", return_value="a" * 64):
             Path(temp, "transcription").mkdir()
-            path, _ = T.write_log({"id": "probe", "title": "Probe"}, "deepseek-flash", "request", [], result, [], "raw", {})
+            path, _ = T.write_log({"id": "probe", "title": "Probe"}, "deepseek-flash", "request", [], result, [], "lines: []", {})
             text = Path(path).read_text()
         self.assertIn("| model type validation | fail |", text)
 
@@ -827,6 +882,42 @@ class ModelExpressionTypes(unittest.TestCase):
 
 
 class InternalAdapterContracts(unittest.TestCase):
+    def test_election_adapter_copies_full_amount_and_preserves_scope_and_limit_gates(self):
+        context = T.model_type_context()
+        original = json.loads(json.dumps(context))
+        result = adapters.assess("f4952", T.Y, context)
+        self.assertEqual(result["state"], "pass")
+        self.assertEqual(len(result["cases"]), 19)
+        self.assertTrue(all(len(test["outputs"]) == 2 for test in result["cases"]))
+        self.assertFalse(result["evidence_credit"])
+        self.assertEqual(context, original)
+        self.assertEqual(result['boundary_inputs'], ['sb.line2','sb.line6','sd.line16','sd.net_gain'])
+
+    def test_election_gain_portion_substitution_and_gate_removal_are_caught(self):
+        for change in ['gain-portion','remove-limit']:
+            context=json.loads(json.dumps(T.model_type_context()))
+            target=next(l for d in context['forms'] if d['id']=='f4952' for l in d['lines'] if l['id']=='f4952.election')
+            if change=='gain-portion':
+                target['expr']={'op':'copy','from':'f4952.line4e'}
+            else:
+                target['refuses']=[r for r in target['refuses'] if r['when']!='f4952.bad_election']
+            with self.subTest(change=change):
+                self.assertEqual(adapters.assess('f4952',T.Y,context)['state'],'fail')
+
+    def test_engineering_boundaries_cannot_replace_reviewed_form_arithmetic(self):
+        bank=json.loads(json.dumps(adapters.load('f4952',T.Y)))
+        bank['boundary_inputs']=['f4952.line4e']
+        with patch.object(adapters,'load',return_value=bank):
+            with self.assertRaisesRegex(ValueError,'foreign return subtotal'):
+                adapters.assess('f4952',T.Y,T.model_type_context())
+
+    def test_election_adapter_is_excluded_but_printed_tax_results_remain_blind_targets(self):
+        doc=T.load_form('f4952')
+        self.assertNotIn('f4952.election',{line['id'] for line in T.exported_lines(doc)})
+        prompt=T.build_prompt(doc,'ARCHIVED SOURCE',{}, {})
+        self.assertIn('id f4952.line4h;',prompt)
+        self.assertNotIn('id f4952.election (',prompt)
+
     def test_authored_adapter_and_all_consumer_copies_pass(self):
         result = adapters.assess("div", T.Y, T.model_type_context())
         self.assertEqual(result["state"], "pass")
@@ -943,6 +1034,91 @@ class SavedTranscriptionAudit(unittest.TestCase):
         args[0] = args[0].replace("```yaml\n" + args[2] + "\n```", "```yaml\n" + args[2].strip() + "\n```")
         receipt = transcription_audit.verify_saved(*args)
         self.assertEqual(receipt["response_sha256"], transcription_audit.sha(args[2]))
+
+    def test_original_validation_policies_stay_historical(self):
+        args = list(self.artifacts())
+        args[0] = ("| type validation policy | project-expression-types-v1 |\n"
+                   "| input context policy | complete-input-context-v1 |\n" + args[0])
+        receipt = transcription_audit.verify_saved(*args)
+        self.assertEqual(receipt["original_type_policy"], "project-expression-types-v1")
+        self.assertEqual(receipt["original_input_context_policy"], "complete-input-context-v1")
+
+    def test_verified_replay_archives_originals_without_editing_raw_artifacts(self):
+        log_text,prompt,response,meta,subject=self.artifacts()
+        with tempfile.TemporaryDirectory() as temp, patch.object(T,'RAW',str(Path(temp,'raw'))):
+            raw=Path(T.RAW);raw.mkdir()
+            path=Path(temp,'probe.md');path.write_text(log_text)
+            for suffix,value in [('.prompt.txt',prompt),('.response.txt',response),('.meta.json',json.dumps(meta))]:
+                (raw/('probe'+suffix)).write_text(value)
+            before={p.name:p.read_bytes() for p in raw.iterdir()}
+            receipt=transcription_audit.prepare_replay(path,prompt,response,meta,subject)
+            folder=raw/'archive/verified-replays/probe'/receipt['parent_sha256']
+            self.assertEqual((folder/'probe.md').read_text(),log_text)
+            self.assertEqual(path.read_text(),log_text)
+            derived=('| review provenance | verified saved-response replay; no model call |\n'
+                     '| parent review log sha256 | '+receipt['parent_sha256']+' |\n'+log_text)
+            transcription_audit.verify_replay_archive(path,derived,prompt,response,meta,subject)
+            archived_response=folder/'probe.response.txt'
+            archived_response.write_text('corrupted parent')
+            with self.assertRaisesRegex(ValueError,'archive hash mismatch'):
+                transcription_audit.verify_replay_archive(path,derived,prompt,response,meta,subject)
+            archived_response.write_text(response)
+            for name,data in before.items():
+                self.assertEqual((raw/name).read_bytes(),data)
+            (raw/'probe.response.txt').write_text('different')
+            with self.assertRaisesRegex(ValueError,'artifacts changed'):
+                transcription_audit.prepare_replay(path,prompt,response,meta,subject)
+
+    def test_unbound_legacy_receipt_cannot_be_replayed_into_new_headers(self):
+        log_text,prompt,response,_,subject=self.artifacts()
+        with tempfile.TemporaryDirectory() as temp:
+            path=Path(temp,'probe.md');path.write_text(log_text)
+            with self.assertRaisesRegex(ValueError,'unbound or legacy-limited'):
+                transcription_audit.prepare_replay(path,prompt,response,{},subject,Path(temp,'archive'))
+            self.assertFalse(Path(temp,'archive').exists())
+
+
+class CurrentRequestContext(unittest.TestCase):
+    def checked_record(self, kind, path):
+        result = self.parse(kind, path)
+        result.update(input_context_policy=T.INPUT_CONTEXT_POLICY, complete_inputs="pass",
+                      input_context_sha256="a" * 64, type_policy=T.TYPE_VALIDATION_POLICY, model_types="pass")
+        return result
+
+    def setUp(self):
+        self.parse = C.parse_log
+        self.replay = {"request_provenance":"bound", "type_errors":[],
+                       "input_context":{"state":"pass", "required_sha256":"a" * 64}}
+
+    def quality(self, replay=None, error=None):
+        with patch.object(C, "parse_log", side_effect=self.checked_record), \
+                patch.object(transcription_audit, "audit", return_value=replay or self.replay, side_effect=error):
+            return C.compare("transcription", "dcprov", "deepseek")["quality"]
+
+    def test_live_bound_request_check_does_not_lift_the_global_hold(self):
+        quality=self.quality()
+        self.assertFalse(any("verified current request context" in b for b in quality['blockers']))
+        self.assertTrue(any("BUG-0129" in b for b in quality['blockers']))
+
+    def test_stale_interface_hash_or_wording_cannot_pass_on_recorded_header(self):
+        for context in [{"state":"pass", "required_sha256":"b" * 64},
+                        {"state":"fail", "required_sha256":"a" * 64}]:
+            with self.subTest(context=context):
+                quality=self.quality({**self.replay,"input_context":context})
+                self.assertTrue(any("verified current request context" in b for b in quality['blockers']))
+
+    def test_changed_receipts_unbound_metadata_and_new_type_errors_fail_closed(self):
+        for changes in [{"request_provenance":"legacy-limited"}, {"type_errors":[{"message":"bad gate"}]}]:
+            with self.subTest(changes=changes):
+                quality=self.quality({**self.replay,**changes})
+                self.assertTrue(any("verified current request context" in b for b in quality['blockers']))
+        quality=self.quality(error=ValueError("saved prompt differs from original receipt"))
+        self.assertTrue(any("saved prompt differs" in b for b in quality['blockers']))
+
+    def test_interface_fingerprint_is_bound_into_ruling_context(self):
+        header='| required input context sha256 | '+ 'a' * 64 +' |\n| comparison policy | checked-expression-types-v2 |\n'
+        self.assertNotEqual(rulings.review_context('transcription',header),
+                            rulings.review_context('transcription',header.replace('a' * 64,'b' * 64)))
 
 
 class DefinitionInterfaces(unittest.TestCase):

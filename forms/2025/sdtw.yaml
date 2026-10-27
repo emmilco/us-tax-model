@@ -132,13 +132,25 @@ form:
     - id: sdtw.line4
       printed: "4"
       type: NonNegDollars
-      label: Form 4952 line 4e, default capital-gain-first allocation
+      label: Form 4952 line 4e (default capital-gain-first allocation), or zero when no Form 4952 is filed
       expr:
-        op: copy
-        from: f4952.line4e
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sd.filing4952
+                - const: true
+            then: f4952.line4e
+          - guard:
+              op: test
+              eq:
+                - sd.filing4952
+                - const: false
+            then: sdtw.zero
       cite:
         doc: i1040sd
-        locator: pp. 15–16, Schedule D Tax Worksheet
+        locator: pp. 15–16, Schedule D Tax Worksheet, line 4, "Enter the amount from Form 4952, line 4e"
     - id: sdtw.line5
       printed: "5"
       type: NonNegDollars
@@ -965,8 +977,21 @@ form:
       cite:
         doc: i1040sd
         locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.show41_43
+      printed: (helper)
+      label: Schedule D, line 18, is more than zero (lines 41 through 43 are completed)
+      type: Bool
+      expr:
+        op: test
+        gt:
+        - sd.line18
+        - param: sales.zero
+      cite:
+        doc: i1040sd
+        locator: p. 16, Schedule D Tax Worksheet, "If Schedule D, line 18, is zero or blank, skip lines 41 through 43 and go to line 44"
     - id: sdtw.line41
       printed: "41"
+      shown_when: sdtw.show41_43
       type: Dollars
       label: Add lines 21, 22, 30, 33 and 39
       expr:
@@ -1000,6 +1025,7 @@ form:
         locator: pp. 15–16, Schedule D Tax Worksheet
     - id: sdtw.line42
       printed: "42"
+      shown_when: sdtw.show41_43
       type: Dollars
       label: Subtract line 41 from line 1
       expr:
@@ -1035,6 +1061,7 @@ form:
       ambiguity: amb.2025.multiplication_subcent
     - id: sdtw.line43
       printed: "43"
+      shown_when: sdtw.show41_43
       type: Dollars
       label: Multiply line 42 by 28 percent
       expr:

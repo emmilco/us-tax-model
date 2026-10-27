@@ -1,4 +1,8 @@
-# Integrity plan — 2026-10-22 (v7, amended 2026-10-24)
+# Integrity plan — 2026-10-22 (v7, amended 2026-10-24 and 2026-10-26)
+
+**Owner amendment, 2026-10-26:** the remaining work is re-sequenced and the gate for resuming
+coverage (item 2.6) is fixed in `2026-10-26_plan_revision.md`, which controls the execution order.
+TY2026 is the target year.
 
 **Owner amendment, 2026-10-24:** remaining human packets, future stage source readings and the
 ten-ruling sample are optional. The owner completed item2; all original findings are preserved.

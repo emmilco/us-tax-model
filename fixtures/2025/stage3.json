@@ -14556,9 +14556,13 @@
         "sd.line22": {
           "kind": "bool",
           "value": false
+        },
+        "sdtw.show41_43": {
+          "kind": "bool",
+          "value": false
         }
       },
-      "evidence_note": "Stage 4 now computes SDTW. Synthetic hand calculation: ordinary-income Tax Table amount $5,285 plus preferential-rate tax $247.50 = $5,532.50; the one-cent special gain/election does not change the rounded total."
+      "evidence_note": "Stage 4 now computes SDTW. Synthetic hand calculation: ordinary-income Tax Table amount $5,285 plus preferential-rate tax $247.50 = $5,532.50; the one-cent special gain/election does not change the rounded total.  Shown-line regression (owner decision 2026-10-26: skipped lines are hidden): Schedule D line 18 is zero, so i1040sd p. 16 \"skip lines 41 through 43\" hides them."
     },
     {
       "id": "sales.select.zero_taxable",

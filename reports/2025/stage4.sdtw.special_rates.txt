@@ -206,6 +206,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   8   Investment interest deduction: smaller of lines 3 and 6
       = $0
       cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
+  (helper) File for an election, or to claim interest when the exception does not apply
+      = false
+      cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
 
 == Form 8959 — Additional Medicare Tax on wages and self-employment income ==
   (helper) Any church employee income or other self-employment income outside Schedule SE as this tool prepares it, RRTA compensation, tips not reported to your employer or allocated tips in Form W-2 box 8 (Form 4137), Form 8919 wages, uncollected Medicare tax in Form W-2 box 12 (codes B or N), or Medicare wages on a wage statement from a U.S. territory (such as Form 499R-2/W-2PR)?
@@ -628,6 +631,10 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = $0
       cite: [i8995] pp. 2, 4, Determining Your Qualified Business Income; Line 1 (2025; printed date 2026-01-26; 875843ba)
       note: confirmed roster $sc@person[taxpayer]:
+  (helper) This person's Schedules C with Schedule 1-A tips or overtime
+      = 0
+      cite: [i1040gi] p. 104, Schedule 1-A, line 5 (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $sc@person[taxpayer]:
   (helper) Did you make contributions (other than rollover contributions) to a traditional IRA for 2025?
       = false
       cite: [f8880] Form 8880 (2025), line 1, "Traditional and Roth IRA contributions"; i1040gi p. 95, Line 20, "If you made any nondeductible contributions to a traditional" (2025; created 2025-11-04; ba2b2877)
@@ -743,6 +750,13 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (gate) The Schedule C losses are more than the excess business loss threshold
       = false
       cite: [i1040sc] p. 1, Reminders, "If you report a loss on line 31 ... you may be subject to a business loss limitation ... use Form 461" (2025; b5536db9)
+  (helper) Number of Schedules C with tips or overtime for Schedule 1-A
+      = 0
+      cite: [i1040gi] p. 104, Schedule 1-A, line 5; p. 108, line 14b (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $person: taxpayer
+  (gate) A business received tips or overtime to be deducted on Schedule 1-A
+      = false
+      cite: [i1040gi] p. 104, Schedule 1-A, line 5, and the Multiple Trades or Businesses Worksheet; p. 108, line 14b (2025; printed date 2026-02-25; 482e9c48)
   3   Business income or (loss). Attach Schedule C
       = $0
       cite: [f1040s1] Schedule 1 (2025), line 3; i1040sc p. 14, Line 31, "include it on Schedule 1 (Form 1040), line 3" (2025; created 2025-07-25; 8dafec71)
@@ -1180,12 +1194,17 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Capital gain distributions, generally Form 1099-DIV box 2a
       = $100,000
       cite: [i1040sd] p. 11, line 13 (2025; printed date 2025-12-11; 650643a6)
-  (helper) 28% Rate Gain Worksheet result (supplied subtotal; worksheet deferred to Stage 4)
+  (helper) Line 18. 28% Rate Gain Worksheet result, or zero when line 17 is No (lines 18 through 21 skipped)
       = $20,000
-      cite: [i1040sd] p. 11, line 18 (2025; printed date 2025-12-11; 650643a6)
-  (helper) Unrecaptured Section 1250 Gain Worksheet result (supplied subtotal; worksheet deferred to Stage 4)
+      cite: [i1040sd] p. 11, Line 18, "If you checked “Yes” on line 17, complete the 28% Rate Gain Worksheet"; f1040sd p. 2, line 17, "No. Skip lines 18 through 21, and go to line 22" (2025; printed date 2025-12-11; 650643a6)
+      note: taken: {"eq":["sd.line17",{"const":true}],"op":"test"}
+  (helper) Line 19. Unrecaptured Section 1250 Gain Worksheet result, or zero when line 17 is No (lines 18 through 21 skipped)
       = $30,000
-      cite: [i1040sd] pp. 11–12, line 19 (2025; printed date 2025-12-11; 650643a6)
+      cite: [i1040sd] pp. 11–12, Line 19, "If you checked “Yes” on line 17, complete the Unrecaptured Section 1250 Gain Worksheet"; f1040sd p. 2, line 17, "No. Skip lines 18 through 21, and go to line 22" (2025; printed date 2025-12-11; 650643a6)
+      note: taken: {"eq":["sd.line17",{"const":true}],"op":"test"}
+  (helper) Are you filing Form 4952?
+      = false
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
   (helper) Form 4952 line 4g (supplied subtotal; Form 4952 deferred to Stage 4)
       = $0
       cite: [i1040sd] p. 15, Schedule D Tax Worksheet, applicability (2025; printed date 2025-12-11; 650643a6)
@@ -1282,6 +1301,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [i1040gi] QDCGT worksheet, line 3 (2025; printed date 2026-02-25; 482e9c48)
 
 == Schedule D Tax Worksheet ==
+  (helper) Zero for skipped worksheet lines
+      = $0
+      cite: [i1040sd] pp. 15–16, Schedule D Tax Worksheet (2025; printed date 2025-12-11; 650643a6)
   (helper) Ordinary-income ceiling for line 19
       = $197,300
       cite: [i1040sd] pp. 15–16, Schedule D Tax Worksheet (2025; printed date 2025-12-11; 650643a6)
@@ -1306,9 +1328,10 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   3   Form 4952 line 4g election
       = $0
       cite: [i1040sd] pp. 15–16, Schedule D Tax Worksheet (2025; printed date 2025-12-11; 650643a6)
-  4   Form 4952 line 4e, default capital-gain-first allocation
-      = $100,000
-      cite: [i1040sd] pp. 15–16, Schedule D Tax Worksheet (2025; printed date 2025-12-11; 650643a6)
+  4   Form 4952 line 4e (default capital-gain-first allocation), or zero when no Form 4952 is filed
+      = $0
+      cite: [i1040sd] pp. 15–16, Schedule D Tax Worksheet, line 4, "Enter the amount from Form 4952, line 4e" (2025; printed date 2025-12-11; 650643a6)
+      note: taken: {"eq":["sd.filing4952",{"const":false}],"op":"test"}
   5   Subtract line 4 from line 3; floor at zero
       = $0
       cite: [i1040sd] pp. 15–16, Schedule D Tax Worksheet (2025; printed date 2025-12-11; 650643a6)
@@ -1654,6 +1677,13 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   s1a.line36b: chose $0 (guard 0)
   qbi.deduction: chose $0 (guard 0)
   f1040.qbi.deduction: chose $0 (guard 0)
+  sd.line18: chose $20,000 (guard 0)
+  f1040.sd.line18: chose $20,000 (guard 0)
+  sdtw.line4: chose $0 (guard 1)
+      not taken: guard 0 = false
+  sdtw.sd.line18: chose $20,000 (guard 0)
+  sd.line19: chose $30,000 (guard 0)
+  sdtw.sd.line19: chose $30,000 (guard 0)
   sdtw.line23: chose $50,000 (guard 0)
   sdtw.line24: chose $0 (guard 0)
   sdtw.line25: chose $50,000 (guard 0)
@@ -1902,9 +1932,12 @@ Derivations:
   f1040.line12e: copy(household.hoh_fails = false; sa.deduction = $15,750)
   qbi.sa.agi: copy(f1040.line11b = $315,750)
   qbi.sa.deduction: choose(sa.itemizes = false; true = true; sa.itemizes = false; false = false; sa.standard = $15,750)
+  s1.sc_1a_count: sum_over(person[taxpayer].sc_1a = 0)
+  s1.sc_1a: test(s1.sc_1a_count = 0; 0 = 0)
+  s1a.s1.sc_1a: test(s1.sc_1a_count = 0; 0 = 0)
   s1a.zero: param(#sales.zero = $0)
-  s1a.line13: choose(s1a.tips = false; false = false; s1a.zero = $0)
-  s1a.line21: choose(s1a.overtime = false; false = false; s1a.zero = $0)
+  s1a.line13: choose(s1.sc_1a = false; s1a.tips = false; false = false; s1a.zero = $0)
+  s1a.line21: choose(s1.sc_1a = false; s1a.overtime = false; false = false; s1a.zero = $0)
   s1a.line30: choose(s1a.carloan = false; false = false; s1a.zero = $0)
   sa.age65_count: sum_over(person[taxpayer].role = taxpayer; "taxpayer" = taxpayer; person[taxpayer].age65 = false; true = true)
   sa.age65: test(sa.age65_count = 0; 0 = 0)
@@ -1952,6 +1985,7 @@ Derivations:
   f1040.line13a: copy(qbi.deduction = $0)
   f1040.line14: sum(f1040.line12e = $15,750; f1040.line13a = $0; f1040.line13b = $0)
   f1040.line15: subtract_floor0(f1040.line11b = $315,750; f1040.line14 = $15,750)
+  sd.line17: test(sd.line15 = $100,000; 0 = $0; sd.line16 = $100,000; 0 = $0)
   g28.div.screen: param(div.section1202 = false; div.amt = false; div.unsupported = false; div.bad_special = false; div.bad_components = false; #sales.zero = $0)
   g28.line1: copy(div.screen = $0)
   g28.line2: copy(div.screen = $0)
@@ -1964,13 +1998,12 @@ Derivations:
   g28.combined: sum(g28.line1 = $0; g28.line2 = $0; g28.line3 = $0; g28.line4 = $20,000; g28.line5 = $0; g28.line6 = $0)
   g28.line7: subtract_floor0(g28.combined = $20,000; sd.zero = $0)
   sd.g28.line7: subtract_floor0(g28.combined = $20,000; sd.zero = $0)
-  sd.line18: copy(g28.line7 = $20,000)
+  sd.line18: choose(sd.line17 = true; true = true; g28.line7 = $20,000)
   sd.filed: test(sd.count = 0; 0 = 0; sd.line18 = $20,000; 0 = $0)
   f1040.sd.filed: test(sd.count = 0; 0 = 0; sd.line18 = $20,000; 0 = $0)
-  sd.line17: test(sd.line15 = $100,000; 0 = $0; sd.line16 = $100,000; 0 = $0)
   f1040.sd.line17: test(sd.line15 = $100,000; 0 = $0; sd.line16 = $100,000; 0 = $0)
   f1040.gate.qdcg_applies: test(f1040.line15 = $300,000; 0 = $0; f1040.line3a = $0; 0 = $0; sd.filed = true; false = false; sd.line17 = true; true = true)
-  f1040.sd.line18: copy(g28.line7 = $20,000)
+  f1040.sd.line18: choose(sd.line17 = true; true = true; g28.line7 = $20,000)
   f1040.gate.sdtw: test(f1040.gate.qdcg_applies = true; true = true; sd.line17 = true; true = true; sd.line18 = $20,000; 0 = $0)
   sdtw.f1040.line15: subtract_floor0(f1040.line11b = $315,750; f1040.line14 = $15,750)
   sdtw.line1: copy(f1040.line15 = $300,000)
@@ -1982,17 +2015,21 @@ Derivations:
   sd.investment_election: copy(f4952.election = $0)
   sdtw.sd.investment_election: copy(f4952.election = $0)
   sdtw.line3: copy(sd.investment_election = $0)
-  sdtw.f4952.line4e: smaller_of(f4952.line4d = $100,000; sd.net_gain = $100,000)
-  sdtw.line4: copy(f4952.line4e = $100,000)
-  sdtw.line5: subtract_floor0(sdtw.line3 = $0; sdtw.line4 = $100,000)
+  f4952.required: test(f4952.carryover = false; f4952.unsupported = false; f4952.alternative_allocation = false; f4952.election = $0; 0 = $0; f4952.line1 = $0; 0 = $0)
+  sd.f4952.required: test(f4952.carryover = false; f4952.unsupported = false; f4952.alternative_allocation = false; f4952.election = $0; 0 = $0; f4952.line1 = $0; 0 = $0)
+  sd.filing4952: copy(f4952.required = false)
+  sdtw.sd.filing4952: copy(f4952.required = false)
+  sdtw.zero: param(#sales.zero = $0)
+  sdtw.line4: choose(sd.filing4952 = false; true = true; sd.filing4952 = false; false = false; sdtw.zero = $0)
+  sdtw.line5: subtract_floor0(sdtw.line3 = $0; sdtw.line4 = $0)
   sdtw.line6: subtract_floor0(sdtw.line2 = $0; sdtw.line5 = $0)
   sdtw.sd.line15: sum(sd.line8a.h = $0; sd.line8b.h = $0; sd.line9.h = $0; sd.line10.h = $0; sd.line11 = $0; sd.line12 = $0; sd.line13 = $100,000; sd.line14 = $0)
   sdtw.sd.line16: sum(sd.line7 = $0; sd.line15 = $100,000)
   sdtw.line7: smaller_of(sd.line15 = $100,000; sd.line16 = $100,000)
-  sdtw.line8: smaller_of(sdtw.line3 = $0; sdtw.line4 = $100,000)
+  sdtw.line8: smaller_of(sdtw.line3 = $0; sdtw.line4 = $0)
   sdtw.line9: subtract_floor0(sdtw.line7 = $100,000; sdtw.line8 = $0)
   sdtw.line10: sum(sdtw.line6 = $0; sdtw.line9 = $100,000)
-  sdtw.sd.line18: copy(g28.line7 = $20,000)
+  sdtw.sd.line18: choose(sd.line17 = true; true = true; g28.line7 = $20,000)
   u1250.div.screen: param(div.section1202 = false; div.amt = false; div.unsupported = false; div.bad_special = false; div.bad_components = false; #sales.zero = $0)
   u1250.line9: copy(div.screen = $0)
   u1250.line10: copy(div.screen = $0)
@@ -2012,8 +2049,8 @@ Derivations:
   u1250.line17: subtract_floor0(sd.zero = $0; u1250.combined = $20,000)
   u1250.line18: subtract_floor0(u1250.line13 = $30,000; u1250.line17 = $0)
   sd.u1250.line18: subtract_floor0(u1250.line13 = $30,000; u1250.line17 = $0)
-  sd.line19: copy(u1250.line18 = $30,000)
-  sdtw.sd.line19: copy(u1250.line18 = $30,000)
+  sd.line19: choose(sd.line17 = true; true = true; u1250.line18 = $30,000)
+  sdtw.sd.line19: choose(sd.line17 = true; true = true; u1250.line18 = $30,000)
   sdtw.line11: sum(sd.line18 = $20,000; sd.line19 = $30,000)
   sdtw.line12: smaller_of(sdtw.line9 = $100,000; sdtw.line11 = $50,000)
   sdtw.line13: subtract(sdtw.line10 = $100,000; sdtw.line12 = $50,000)

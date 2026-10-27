@@ -25,6 +25,7 @@ import rulings  # noqa: E402
 import subjects  # noqa: E402
 import input_contracts  # noqa: E402
 import adapter_contracts  # noqa: E402
+import input_context  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, os.path.join(ROOT, "tools"))
@@ -256,8 +257,21 @@ def exported_lines(form_doc):
     refs = set()
     for other_id, (other_fid, line) in ALL_LINES.items():
         if other_fid != fid:
-            refs.update(re.findall(r'"(' + re.escape(fid) + r'\.[a-z0-9_.]+)"', json.dumps(line["expr"])))
+            refs.update(operand_refs(line['expr']))
+            refs.update(r if isinstance(r,str) else r['when'] for r in line.get('refuses',[]))
+            if line.get('shown_when'):
+                refs.add(line['shown_when'])
     return [l for l in helpers if l["id"] in refs]
+
+
+def required_target_keys(form_doc):
+    """Current log keys, including gates that older target discovery omitted."""
+    keys={line['id'] for line in exported_lines(form_doc)}
+    if form_doc['id'] not in load_defs():
+        markers=marker_keys(form_doc['lines'])
+        keys.update(markers[line['id']] for line in form_doc['lines']
+                    if line['printed'] not in HELPER_PRINTED and line['expr'].get('op')!='input')
+    return keys
 
 
 # ---------- prompt ----------
@@ -325,8 +339,8 @@ beyond these atoms; a line that needs more than one atom is written as several l
 being helper lines (printed: "(helper)") with ids of your own choosing."""
 
 
-def collection_notes():
-    """Collections (keyed entry forms) and their entry fields, for cross-form references."""
+def collection_notes(reviewed=None):
+    """Published collection interfaces; own computed fields are not supplied facts."""
     out = []
     for f in sorted(os.listdir(FORMS)):
         if not f.endswith(".yaml"):
@@ -336,7 +350,8 @@ def collection_notes():
         if not doc or not doc.get("collection"):
             continue
         parent = doc["collection"].get("parent")
-        fields = "; ".join(reference_note(doc, l) for l in doc["lines"])
+        fields = "; ".join(reference_note(doc, l) for l in doc["lines"]
+                           if doc['id'] != reviewed or l['expr'].get('op') == 'input')
         out.append(f"  - collection `{doc['id']}`" + (f" nested in each `{parent}` entry" if parent else "") +
                    f" — one entry per {doc['title'][:70]}; entry fields: {fields}")
     return "\n".join(out)
@@ -414,11 +429,12 @@ def screen_notes():
     return "\n".join(out)
 
 
-INPUT_CONTEXT_POLICY = "complete-input-context-v1"
+INPUT_CONTEXT_POLICY = input_context.POLICY
+LEGACY_INPUT_CONTEXT_POLICY = "complete-input-context-v1"
 
 
 def missing_input_context(prompt):
-    """Check all filer questions in the actual request, without relabeling its policy.
+    """Legacy global-catalog diagnostic, kept separate from required-interface freshness.
 
     Shared-definition inputs are caller bindings, not filer questions; their bare ids
     may overlap between definitions and are not the catalog of interview inputs.
@@ -554,7 +570,12 @@ Enumerations and their only permitted values (compare with {{const: "value"}}):
 Keyed collections (Form W-2s, payers, sales, gifts): a total over entries is written
 {{op: sum_over, collection: <id>, field: <entry field id>, where: <test over entry fields>}}; a nested
 collection is summed within each parent entry, and the parent's per-entry totals summed again:
-{collection_notes()}
+{collection_notes(form_doc['id'])}
+
+The reviewed collection's computed fields are not supplied facts. Define every local computed
+helper you reference in your own reply, even if a familiar name occurs elsewhere in the catalog.
+Only the listed input lines are already provided locally. A foreign collection field cannot be
+used as a return-level refusal gate without an explicitly defined, correctly bound aggregate.
 
 Screening inputs (answered yes, the tool refuses the lines that list them under `refuses`):
 {screen_notes()}
@@ -564,6 +585,11 @@ there). The catalog gives ids, printed markers and types, not their project-writ
 {oth}
 
 {contract_block}# Output
+
+Keep the exact declared type on every requested result id. A mathematically nonnegative result
+may still have a published Dollars interface; do not replace it with NonNegDollars. Before
+returning, check that each local computed reference is defined in this reply and each foreign
+reference is in the supplied catalog. These are syntax/interface requirements, not tax formulas.
 
 Return ONLY a YAML document of the form
 
@@ -625,7 +651,7 @@ ALL_LINES = None
 
 
 COMPARISON_POLICY = "checked-expression-types-v2"
-TYPE_VALIDATION_POLICY = "project-expression-types-v1"
+TYPE_VALIDATION_POLICY = "project-expression-types-v3"
 
 
 @cache
@@ -1155,27 +1181,37 @@ def extract_yaml(text):
 
 # ---------- log ----------
 
-def write_log(form_doc, model, prompt, used, results, extra, raw_text, meta, dry_run=False):
+def write_log(form_doc, model, prompt, used, results, extra, raw_text, meta, dry_run=False, replay_receipt=None):
     os.makedirs(LOGS, exist_ok=True)
     fid = form_doc["id"]
     family = families.family_of(model)
     counts = {k: sum(1 for r in results if r["status"] == k) for k in ("AGREE", "DISAGREE", "MISSING")}
     type_errors = getattr(results, "validation_errors", None)
     validation = "unrecorded" if type_errors is None else "fail" if type_errors else "pass"
-    contract = input_contracts.assess(fid, Y, extract_yaml(raw_text)["lines"], model_type_context(), prompt) if input_contracts.load(fid, Y) else None
+    second = extract_yaml(raw_text)["lines"]
+    interfaces = input_context.assess(form_doc, second, model_type_context(), prompt) if "lines" in form_doc else None
+    contract = input_contracts.assess(fid, Y, second, model_type_context(), prompt) if input_contracts.load(fid, Y) else None
     if isinstance(results, ComparedLines):
         results.contract_check = contract
+        results.interface_check = interfaces
     out = [f"# Transcription agreement — {fid}", "",
            f"Second transcription of `{form_doc['title']}` by an isolated model (spec 6.5), compared line by line with `forms/{Y}/{fid}.yaml`.", "",
            "| field | value |", "| --- | --- |",
            f"| date | {datetime.date.today().isoformat()} |",
+           *(["| review provenance | verified saved-response replay; no model call |",
+              f"| parent review log sha256 | {replay_receipt['parent_sha256']} |",
+              f"| original review date | {replay_receipt['original_date']} |",
+              f"| original comparison policy | {replay_receipt['original_comparison_policy']} |",
+              f"| original type validation policy | {replay_receipt['original_type_policy']} |",
+              f"| original input context policy | {replay_receipt['original_input_context_policy']} |"] if replay_receipt else []),
            f"| model requested | {model} |",
            f"| model reported | {', '.join(meta.get('model_reported', [])) or '-'} |",
            f"| prompt sha256 | {hashlib.sha256(prompt.encode()).hexdigest()} |",
            f"| prompt policy | {meta.get('prompt_policy', 'legacy-unrecorded')} |",
            f"| comparison policy | {COMPARISON_POLICY} |",
-           f"| input context policy | {INPUT_CONTEXT_POLICY} |",
-           f"| complete input context | {'fail' if missing_input_context(prompt) else 'pass'} |",
+           f"| input context policy | {INPUT_CONTEXT_POLICY if interfaces else 'unrecorded'} |",
+           f"| complete input context | {interfaces['state'] if interfaces else 'unrecorded'} |",
+           f"| required input context sha256 | {interfaces['required_sha256'] if interfaces else '-'} |",
            f"| type validation policy | {TYPE_VALIDATION_POLICY if type_errors is not None else 'unrecorded'} |",
            f"| model type validation | {validation} |",
            *([f"| partial-input policy | {contract['policy']} |",
@@ -1274,12 +1310,20 @@ def main():
             f.write(prompt)
         return
     text, meta = review_response(prompt, a.model, base, PROMPT_POLICY, a.from_response, reasoning_effort=a.reasoning_effort, max_output_tokens=a.max_output_tokens)
+    replay_receipt = None
+    if a.from_response:
+        import audit_transcription
+        from pathlib import Path
+        replay_receipt = audit_transcription.prepare_replay(
+            Path(rulings.log_path('transcription', a.form, families.family_of(a.model))),
+            prompt, text, meta, subjects.current('transcription', a.form, Y))
     second = extract_yaml(text)
     results, extra = compare(a.form, form_doc["lines"], second["lines"])
-    path, counts = write_log(form_doc, a.model, prompt, used, results, extra, text, meta)
+    path, counts = write_log(form_doc, a.model, prompt, used, results, extra, text, meta, replay_receipt=replay_receipt)
     print(f"{a.form}: agree {counts['AGREE']}, disagree {counts['DISAGREE']}, missing {counts['MISSING']}, extra {len(extra)}; cost {meta.get('cost_usd')} -> {os.path.relpath(path, ROOT)}")
     contract_ok = not results.contract_check or (results.contract_check["state"] == "pass" and results.contract_check["request_context"] == "included")
-    sys.exit(0 if counts["DISAGREE"] + counts["MISSING"] == 0 and not results.validation_errors and contract_ok else 3)
+    interfaces_ok = bool(results.interface_check and results.interface_check["state"] == "pass")
+    sys.exit(0 if counts["DISAGREE"] + counts["MISSING"] == 0 and not results.validation_errors and contract_ok and interfaces_ok else 3)
 
 
 if __name__ == "__main__":

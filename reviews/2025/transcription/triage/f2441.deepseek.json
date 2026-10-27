@@ -1,0 +1,116 @@
+{
+ "bank": null,
+ "errors": [
+  {
+   "line": "f2441.line8",
+   "message": "f2441.f2441.line8: table 'f2441.credit_rate_table' does not exist"
+  }
+ ],
+ "failures": [],
+ "family": "deepseek",
+ "form": "f2441",
+ "lines": [
+  {
+   "candidate": "f2441.has_1e",
+   "handle": "f2441.has_1e",
+   "open_at_triage": false,
+   "project": "f2441.has_1e",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f2441.one_box10",
+   "handle": "f2441.one_box10",
+   "open_at_triage": false,
+   "project": "f2441.one_box10",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f2441.line1_box",
+   "handle": "1 (box)",
+   "open_at_triage": false,
+   "project": "f2441.line1_box",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f2441.line2_box",
+   "handle": "2 (box)",
+   "open_at_triage": false,
+   "project": "f2441.line2_box",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f2441.line3",
+   "handle": "3",
+   "open_at_triage": false,
+   "project": "f2441.line3",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f2441.line8",
+   "handle": "8",
+   "open_at_triage": true,
+   "project": "f2441.line8",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f2441.line12",
+   "handle": "12",
+   "open_at_triage": true,
+   "project": "f2441.line12",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f2441.line16",
+   "handle": "16",
+   "open_at_triage": true,
+   "project": "f2441.line16",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f2441.line21",
+   "handle": "21",
+   "open_at_triage": false,
+   "project": "f2441.line21",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f2441.line25",
+   "handle": "25",
+   "open_at_triage": false,
+   "project": "f2441.line25",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f2441.line27",
+   "handle": "27",
+   "open_at_triage": false,
+   "project": "f2441.line27",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f2441.line30",
+   "handle": "30",
+   "open_at_triage": true,
+   "project": "f2441.line30",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  }
+ ],
+ "log_sha256_at_triage": "b0c32f0f845f0ecaede9f4825187df39a244e9e9ea006c6ff588a241ed3fa12f",
+ "policy": "executable-triage-v1",
+ "response_sha256": "9fd6ca6c07f9cda20507c67d472361f0ad77609e468acc2e3bd3780956ce34cb",
+ "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
+ "state": "invalid",
+ "subject_sha256": "8ffaf2ac429f1556739ca0fc847943af85de93663b75fce3bff25f9532f9d6a2"
+}

@@ -1,5 +1,59 @@
 # Transcription expression audit — 2026-10-25
 
+## Final paused-session snapshot — 2026-10-26
+
+The owner requested a handoff; see `HANDOFF-NEXT-SESSION.md`. All in-flight batches finished.
+The final read-only audit (`.transcription/handoff-audit-2026-10-26.json`) verifies110 replies,
+with zero receipt mismatches,67 current v3 type passes,68 required-interface context passes,
+59 bound/type/context passes and21 legacy-limited receipts.160 earlier agreements change under
+current replay; these are diagnostics, not tax-bug counts or qualification.
+
+BUG-0146 adds twelve targets read through foreign refusal gates across household,ira,s1,s179,s3.
+Both-family actual requests now include them; ruling adjudication remains. Across this batch,
+50 actual requests completed without transport failure and32 host replays made no model calls.
+Source rulings remain open: Claude207,Flash415. The global T hold remains; the new uncommitted
+batch has not passed the full suite.130 review-tool tests,11 context tests,40 adapter cases and
+the146-entry append-only inventory pass. Current archives were hash-verified at handoff.
+Earlier sections below are historical snapshots, including their smaller diagnostic counts.
+
+## Current request-context and checked-input boundary after 9bb8205 — 2026-10-26
+
+The fifteen unverifiable Claude records have actual replacement requests, with matching
+Flash requests. Both fifteen-job drivers finished without transport failures. Two more actual
+requests refresh Form4952 after its internal election adapter is separated. Their source
+rulings are still being adjudicated; completed requests are not qualification.
+
+The read-only v3 audit verifies all110 saved replies with zero receipt mismatches. It finds56
+current type passes,62 current required-interface contexts,47 bound/type/context passes and23
+legacy-limited receipts.172 previous agreements differ under current comparison. This is a
+diagnostic snapshot, not a tax-bug count or source-evidence credit. The JSON is
+`.transcription/source-replacements-audit-v3-2026-10-26.json`.
+
+Required-interface freshness binds every own input and direct foreign boundary referenced by
+either the authored form or the entire returned candidate. It includes ids, printed markers,
+types and complete question wording. A model cannot shrink context by omitting a dependency;
+unrelated foreign wording does not invalidate this assessment. Old global-catalog diagnostics
+remain separate. Live qualification checks the actual bound artifacts and current fingerprint.
+The global BUG-0129 qualification hold remains.
+
+BUG-0144 versions the strengthened validation contract. BUG-0145 finds that preserved input
+records imported authored computed gates, falsely requiring hidden project helpers from independent
+replies. Current v3 input stubs retain only identity/type/question metadata; model-returned input
+gates are validated separately as model IR. The asset replies and Claude person reply now pass;
+remaining malformed or missing model helpers stay rejected. Earlier v2 results remain historical.
+Explicit host replays verify and archive their parent records, preserve actual raw requests/replies,
+and label the derived check with its parent hash and original policies. No fresh call is claimed.
+
+The Form4952 election adapter has19 engineering cases and no independent source/numeric credit.
+It copies the full line4g amount and preserves its validation gates. Its four foreign subtotal
+boundaries are explicitly isolated plumbing tests; printed tax quantities remain independently
+reviewed. Original artifacts are hashed under `before-unverified-source-replacements-2026-10-26`
+(136 files), `before-election-adapter-2026-10-26` (10), and per-parent `verified-replays/`.
+
+126 offline review-tool tests and11 context tests pass. The HSA batch itself is committed with
+1083 passing fixtures, zero unexplained engine differences and zero unexplained mutation survivors.
+Remaining review adjudication and validation are required before committing this new batch.
+
 ## Current HSA source/availability correction after 1b75a3b — 2026-10-26
 
 BUG-0138 is repaired with an explicit supplied-figure consistency check, shared by TypeScript

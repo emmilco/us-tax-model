@@ -9280,7 +9280,7 @@
         "sdtw.special_rates"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Synthetic explicitly calculated regression; independent human review pending. Lines 16, 17 and 18 and the non-worksheet tax are asserted so that line 18 is pinned on the Schedule D Tax Worksheet path.",
+      "evidence_note": "Synthetic explicitly calculated regression; independent human review pending. Lines 16, 17 and 18 and the non-worksheet tax are asserted so that line 18 is pinned on the Schedule D Tax Worksheet path. BUG-0160 (closing BUG-0099): no Form 4952 is filed, so worksheet line 4 (\"Enter the amount from Form 4952, line 4e\", i1040sd pp. 15-16) is zero; it had recorded Form 4952 line 4e figured for an unfiled form. Lines 5 and 47 are unchanged.",
       "inputs": {
         "div.box2b": 3000000,
         "div.box2c": 0,
@@ -9449,7 +9449,7 @@
         },
         "sdtw.line4": {
           "kind": "money",
-          "cents": 10000000
+          "cents": 0
         },
         "sdtw.line5": {
           "kind": "money",

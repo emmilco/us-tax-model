@@ -4,13 +4,30 @@ Second transcription of `Form 7206, line 2 — qualified long-term care insuranc
 
 | field | value |
 | --- | --- |
-| date | 2026-10-20 |
+| date | 2026-10-26 |
+| review provenance | verified saved-response replay; no model call |
+| parent review log sha256 | dee8257a2ddc623925c5fc4567f1478b831e8f7cfbe540e4e66f67b2bed113ed |
+| original review date | 2026-10-26 |
+| original comparison policy | checked-expression-types-v2 |
+| original type validation policy | project-expression-types-v2 |
+| original input context policy | required-review-interfaces-v2 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | d37a9ecba7a2ba3a2d394c831302ca7bfe8be4102a07492c53f109cb02c9ed81 |
+| prompt sha256 | 0218f8f68548456e1b5fdab5bef66d9cfb6e0896357f6f4f4b3bc91ded87c5a4 |
+| prompt policy | source-only-computation-v2 |
+| comparison policy | checked-expression-types-v2 |
+| input context policy | required-review-interfaces-v2 |
+| complete input context | pass |
+| required input context sha256 | 0b1eb00f49c949648ce90a2b057d2c9b2da5a14cc7627c6c7f0ee46a60966134 |
+| type validation policy | project-expression-types-v3 |
+| model type validation | pass |
+| system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
+| reasoning effort | provider default |
+| output token budget | transport default (65536 for DeepSeek) |
+| interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
 | subject sha256 | 7725642cb923e811f4d5df5cade9656856609c785f5d22f318800bdb04234fe8 |
 | printed lines compared | 2 |
-| agree / disagree / missing | 1 / 1 / 0 |
+| agree / disagree / missing | 2 / 0 / 0 |
 | extra printed lines in second | none |
 
 ## Source pages given to the model
@@ -26,47 +43,21 @@ Second transcription of `Form 7206, line 2 — qualified long-term care insuranc
 Status: **AGREE**
 
 ### 2(b) — The amount for that person's age
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"keys": [{"input": "ltc.age"}], "op": "keyed_lookup", "table": "ltc_limit"}
-```
-
-Second:
-
-```json
-{"keys": [{"input": "ltc.age"}], "op": "keyed_lookup", "table": "ltc.age_limit"}
-```
-
-Second transcription's note: Open point: the year-parameter list has no parameters for the five age amounts. Choice: look them up in a pinned printed table, ltc.age_limit, keyed by Enum(ltc_age). Its rows, in cents, are: to40 -> 48000; to50 -> 90000; to60 -> 180000; to70 -> 481000; over70 -> 602000. These match the printed amounts on Form 7206 line 2(b) and in the i7206 list.
-
-Ruling: representation; project retained. The same lookup of the age-band amount by ltc.age; the second names its own table (ltc.age_limit) and lists its rows ($480, $900, $1,800, $4,810, $6,020), which are the project's ltc_limit rows (f7206 line 2(b); i7206 pp. 1–2).
+Status: **AGREE**
 
 ## Raw second transcription
 
 ```yaml
-```yaml
 lines:
-  - id: ltc.line2(b)
+  - id: ltc.limit
     printed: "2(b)"
-    label: "The amount shown below. Use the person's age at the end of the tax year. $480— if that person is age 40 or younger; $900— if age 41 to 50; $1,800— if age 51 to 60; $4,810— if age 61 to 70; $6,020— if age 71 or older"
+    label: "(b) The amount shown below. Use the person's age at the end of the tax year. $480— if that person is age 40 or younger; $900— if age 41 to 50; $1,800— if age 51 to 60; $4,810— if age 61 to 70; $6,020— if age 71 or older"
     type: NonNegDollars
-    expr:
-      op: keyed_lookup
-      table: ltc.age_limit
-      keys: [ltc.age]
-    cite: "Form 7206 (2025), line 2(b); Instructions for Form 7206 (2025), Qualified long-term care insurance, item 2"
-    note: "Open point: the year-parameter list has no parameters for the five age amounts. Choice: look them up in a pinned printed table, ltc.age_limit, keyed by Enum(ltc_age). Its rows, in cents, are: to40 -> 48000; to50 -> 90000; to60 -> 180000; to70 -> 481000; over70 -> 602000. These match the printed amounts on Form 7206 line 2(b) and in the i7206 list."
+    expr: {op: keyed_lookup, table: ltc_limit, keys: [ltc.age]}
   - id: ltc.amount
     printed: "(helper)"
-    label: "For coverage under a qualified long-term care insurance contract, enter for each person covered the smaller of (a) or (b)."
+    label: "For coverage under a qualified long-term care insurance contract, enter for each person covered the smaller of (a) or (b). If more than one person is covered, figure separately the amount to enter for each person."
     type: NonNegDollars
-    expr:
-      op: smaller_of
-      of: [ltc.payments, ltc.line2(b)]
-    cite: "Form 7206 (2025), line 2; Instructions for Form 7206 (2025), Qualified long-term care insurance"
-    note: "Open point: the i7206 says that when a person's long-term care premiums are spread over plans under more than one business, the total entered on line 2 of all Forms 7206 for that person can't be more than the line 2 limit. This line only applies the limit within one Form 7206, so it does not combine entries across businesses. Choice: per-entry smaller of (a) or (b), as line 2 prints it. Line 2 itself (the total over persons) is the sum over this collection on the Schedule C entry (sc.f7206_line2)."
-```
+    expr: {op: smaller_of, of: [ltc.payments, ltc.limit]}
+    note: "Line 2 itself is the total of these per-person amounts over all persons covered; that total belongs to the Form 7206 line 2 of the business entry, which is outside this per-person slice. Two points in the IRS text are not computed here. First, the i7206 rule that the line 2 amounts for one person, added across all Forms 7206, can't be more than that person's limit. Second, the exclusion of months in which the person was eligible for an employer-subsidized long-term care plan. The first is left to the business-level screen (sc.hi_screen, which covers long-term care insurance entered for more than one business). The second is already excluded by the definition of the ltc.payments input."
 ```

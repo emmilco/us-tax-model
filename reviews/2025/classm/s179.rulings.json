@@ -7,16 +7,18 @@
    "printed": "1",
    "project": "$2,500,000.00",
    "model": "$0.00",
-   "ruling": "Ruling: project retained (owner, T-043; amb.2025.s179_carryover_no_property). The model followed the optional Worksheet 1 (i4562 p. 4), whose line 3 takes the smaller of the cost of 2025 property and $2,500,000; the project follows the line 1 instruction on the same page, $2,500,000, which with lines 5 to 12 computes 26 U.S.C. 179(b)(3)(B) (ambiguities/research/amb.2025.s179_carryover_no_property.md). Lines 9 and 12 agree in every case. Dropped from the fixture; lines 1 and 5 are asserted by the hand-predicted stage14.s179 cases.",
-   "drop": true
+   "ruling": "Ruling: ambiguity; i4562 p. 4, Line 1: \"Generally, the maximum section 179 expense deduction is $2,500,000 for section 179 property (including qualified section 179 real property) placed in service during the tax year beginning in 2025.\"; \"Tip: You can use Worksheet 1 to assist you in determining the amount to enter on line 1.\"; Worksheet 1: \"3. Enter the smaller of line 1 or line 2 here ... 4. Enter the amount from line 3 here and on Form 4562, line 1\". Project $2,500,000.00, model $0.00 (\"Worksheet 1: smaller of cost 0.00 or 2,500,000 = 0.00\"). The model followed Worksheet 1, whose line 3 takes the smaller of the cost of 2025 section 179 property and $2,500,000; that is the alternative reading recorded in amb.2025.s179_carryover_no_property, and the owner adopted line 1 as the $2,500,000 the line 1 instruction states (TASKS T-043; ambiguities/research/amb.2025.s179_carryover_no_property.md). Lines 12 and 13 agree in this case (the model left lines 6 to 11 blank because its line 5 is zero; there is no 2025 property and no carryover). The model's value is the non-chosen reading, so it is dropped from the fixture; lines 1 and 5 stay asserted by the hand-predicted stage14.s179 cases.",
+   "drop": true,
+   "context": "3bb29cc7663d73ecf58c0443390d9ffbcb5507af06c1e1fcb9938379e4d2b2f0"
   },
   {
    "case": "classm.s179.1",
    "printed": "5",
    "project": "$2,500,000.00",
    "model": "$0.00",
-   "ruling": "Ruling: project retained (owner, T-043; amb.2025.s179_carryover_no_property). The model followed the optional Worksheet 1 (i4562 p. 4), whose line 3 takes the smaller of the cost of 2025 property and $2,500,000; the project follows the line 1 instruction on the same page, $2,500,000, which with lines 5 to 12 computes 26 U.S.C. 179(b)(3)(B) (ambiguities/research/amb.2025.s179_carryover_no_property.md). Lines 9 and 12 agree in every case. Dropped from the fixture; lines 1 and 5 are asserted by the hand-predicted stage14.s179 cases.",
-   "drop": true
+   "ruling": "Ruling: ambiguity; i4562 p. 4, Line 1: \"Generally, the maximum section 179 expense deduction is $2,500,000 for section 179 property (including qualified section 179 real property) placed in service during the tax year beginning in 2025.\"; \"Tip: You can use Worksheet 1 to assist you in determining the amount to enter on line 1.\"; Worksheet 1: \"3. Enter the smaller of line 1 or line 2 here ... 4. Enter the amount from line 3 here and on Form 4562, line 1\". Project $2,500,000.00, model $0.00 (\"0.00 - 0.00 = 0.00 (not MFS, so no 50% share)\"). The model followed Worksheet 1, whose line 3 takes the smaller of the cost of 2025 section 179 property and $2,500,000; that is the alternative reading recorded in amb.2025.s179_carryover_no_property, and the owner adopted line 1 as the $2,500,000 the line 1 instruction states (TASKS T-043; ambiguities/research/amb.2025.s179_carryover_no_property.md). Line 5 follows line 1 by the same reading. Lines 12 and 13 agree in this case (the model left lines 6 to 11 blank because its line 5 is zero; there is no 2025 property and no carryover). The model's value is the non-chosen reading, so it is dropped from the fixture; lines 1 and 5 stay asserted by the hand-predicted stage14.s179 cases.",
+   "drop": true,
+   "context": "3bb29cc7663d73ecf58c0443390d9ffbcb5507af06c1e1fcb9938379e4d2b2f0"
   },
   {
    "case": "classm.s179.2",
@@ -39,16 +41,36 @@
    "printed": "1",
    "project": "$2,500,000.00",
    "model": "$0.00",
-   "ruling": "Ruling: project retained (owner, T-043; amb.2025.s179_carryover_no_property). The model followed the optional Worksheet 1 (i4562 p. 4), whose line 3 takes the smaller of the cost of 2025 property and $2,500,000; the project follows the line 1 instruction on the same page, $2,500,000, which with lines 5 to 12 computes 26 U.S.C. 179(b)(3)(B) (ambiguities/research/amb.2025.s179_carryover_no_property.md). Lines 9 and 12 agree in every case. Dropped from the fixture; lines 1 and 5 are asserted by the hand-predicted stage14.s179 cases.",
-   "drop": true
+   "ruling": "Ruling: ambiguity; i4562 p. 4, Line 1: \"Generally, the maximum section 179 expense deduction is $2,500,000 for section 179 property (including qualified section 179 real property) placed in service during the tax year beginning in 2025.\"; \"Tip: You can use Worksheet 1 to assist you in determining the amount to enter on line 1.\"; Worksheet 1: \"3. Enter the smaller of line 1 or line 2 here ... 4. Enter the amount from line 3 here and on Form 4562, line 1\". Project $2,500,000.00, model $0.00 (\"Worksheet 1: smaller of cost 0.00 or 2,500,000 = 0.00\"). The model followed Worksheet 1, whose line 3 takes the smaller of the cost of 2025 section 179 property and $2,500,000; that is the alternative reading recorded in amb.2025.s179_carryover_no_property, and the owner adopted line 1 as the $2,500,000 the line 1 instruction states (TASKS T-043; ambiguities/research/amb.2025.s179_carryover_no_property.md). Lines 12 and 13 agree in this case (the model left lines 6 to 11 blank because its line 5 is zero; there is no 2025 property and no carryover). The model's value is the non-chosen reading, so it is dropped from the fixture; lines 1 and 5 stay asserted by the hand-predicted stage14.s179 cases.",
+   "drop": true,
+   "context": "3bb29cc7663d73ecf58c0443390d9ffbcb5507af06c1e1fcb9938379e4d2b2f0"
   },
   {
    "case": "classm.s179.3",
    "printed": "5",
    "project": "$1,250,000.00",
    "model": "$0.00",
-   "ruling": "Ruling: project retained (owner, T-043; amb.2025.s179_carryover_no_property). The model followed the optional Worksheet 1 (i4562 p. 4), whose line 3 takes the smaller of the cost of 2025 property and $2,500,000; the project follows the line 1 instruction on the same page, $2,500,000, which with lines 5 to 12 computes 26 U.S.C. 179(b)(3)(B) (ambiguities/research/amb.2025.s179_carryover_no_property.md). Lines 9 and 12 agree in every case. Dropped from the fixture; lines 1 and 5 are asserted by the hand-predicted stage14.s179 cases.",
-   "drop": true
+   "ruling": "Ruling: ambiguity; i4562 p. 4, Line 1: \"Generally, the maximum section 179 expense deduction is $2,500,000 for section 179 property (including qualified section 179 real property) placed in service during the tax year beginning in 2025.\"; \"Tip: You can use Worksheet 1 to assist you in determining the amount to enter on line 1.\"; Worksheet 1: \"3. Enter the smaller of line 1 or line 2 here ... 4. Enter the amount from line 3 here and on Form 4562, line 1\". Project $1,250,000.00, model $0.00 (\"0.00 - 0.00 = 0.00; MFS 50% share = 0.00\"). The model followed Worksheet 1, whose line 3 takes the smaller of the cost of 2025 section 179 property and $2,500,000; that is the alternative reading recorded in amb.2025.s179_carryover_no_property, and the owner adopted line 1 as the $2,500,000 the line 1 instruction states (TASKS T-043; ambiguities/research/amb.2025.s179_carryover_no_property.md). On a separate return the project's line 5 is the 50% share of that limitation (i4562 p. 5, Line 5, \"multiply the total limitation that you would otherwise enter on line 5 by 50% (0.50)\"), which the model also applied, to its own line 1. Line 5 follows line 1 by the same reading. Lines 12 and 13 agree in this case (the model left lines 6 to 11 blank because its line 5 is zero; there is no 2025 property and no carryover). The model's value is the non-chosen reading, so it is dropped from the fixture; lines 1 and 5 stay asserted by the hand-predicted stage14.s179 cases.",
+   "drop": true,
+   "context": "3bb29cc7663d73ecf58c0443390d9ffbcb5507af06c1e1fcb9938379e4d2b2f0"
+  },
+  {
+   "case": "classm.s179.4",
+   "printed": "1",
+   "project": "$2,500,000.00",
+   "model": "$43,067.00",
+   "ruling": "Ruling: ambiguity; i4562 p. 4, Line 1: \"Generally, the maximum section 179 expense deduction is $2,500,000 for section 179 property (including qualified section 179 real property) placed in service during the tax year beginning in 2025.\"; \"Tip: You can use Worksheet 1 to assist you in determining the amount to enter on line 1.\"; Worksheet 1: \"3. Enter the smaller of line 1 or line 2 here ... 4. Enter the amount from line 3 here and on Form 4562, line 1\". Project $2,500,000.00, model $43,067.00 (\"Worksheet 1: smaller of 43,067.00 or 2,500,000 = 43,067.00\"). The model followed Worksheet 1, whose line 3 takes the smaller of the cost of 2025 section 179 property and $2,500,000; that is the alternative reading recorded in amb.2025.s179_carryover_no_property, and the owner adopted line 1 as the $2,500,000 the line 1 instruction states (TASKS T-043; ambiguities/research/amb.2025.s179_carryover_no_property.md). Lines 6(c) to 9, 11, 12 and 13 agree in this case. The model's value is the non-chosen reading, so it is dropped from the fixture; lines 1 and 5 stay asserted by the hand-predicted stage14.s179 cases.",
+   "drop": true,
+   "context": "3bb29cc7663d73ecf58c0443390d9ffbcb5507af06c1e1fcb9938379e4d2b2f0"
+  },
+  {
+   "case": "classm.s179.4",
+   "printed": "5",
+   "project": "$2,500,000.00",
+   "model": "$43,067.00",
+   "ruling": "Ruling: ambiguity; i4562 p. 4, Line 1: \"Generally, the maximum section 179 expense deduction is $2,500,000 for section 179 property (including qualified section 179 real property) placed in service during the tax year beginning in 2025.\"; \"Tip: You can use Worksheet 1 to assist you in determining the amount to enter on line 1.\"; Worksheet 1: \"3. Enter the smaller of line 1 or line 2 here ... 4. Enter the amount from line 3 here and on Form 4562, line 1\". Project $2,500,000.00, model $43,067.00 (\"43,067.00 - 0 = 43,067.00 (not MFS)\"). The model followed Worksheet 1, whose line 3 takes the smaller of the cost of 2025 section 179 property and $2,500,000; that is the alternative reading recorded in amb.2025.s179_carryover_no_property, and the owner adopted line 1 as the $2,500,000 the line 1 instruction states (TASKS T-043; ambiguities/research/amb.2025.s179_carryover_no_property.md). Line 5 follows line 1 by the same reading. Lines 6(c) to 9, 11, 12 and 13 agree in this case. The model's value is the non-chosen reading, so it is dropped from the fixture; lines 1 and 5 stay asserted by the hand-predicted stage14.s179 cases.",
+   "drop": true,
+   "context": "3bb29cc7663d73ecf58c0443390d9ffbcb5507af06c1e1fcb9938379e4d2b2f0"
   }
  ]
 }

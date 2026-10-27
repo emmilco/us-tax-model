@@ -260,6 +260,13 @@
 - Expr: `{"any":[{"all":[{"eq":["eic.has_qc",{"const":true}],"op":"test"},{"eq":["eic.step3",{"const":true}],"op":"test"}],"op":"test"},{"all":[{"eq":["eic.has_qc",{"const":false}],"op":"test"},{"eq":["eic.step4",{"const":true}],"op":"test"}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 41, Step 3, question 1, "No. Skip questions 2 through 6; go to Step 4" (2025; printed date 2026-02-25; sha256 482e9c48)
 
+## (helper) — `eic.reached_step5`
+
+- **Authored helper label:** Step 5 is reached (Steps 1 and 2 passed and Step 3 or 4 sends you to Step 5)
+- **Encoded (Bool):** helper "Steps 1 and 2 passed, so Step 3 or Step 4 is asked" = true and helper "Step 3 for a filer with a qualifying child, Step 4 otherwise" = true
+- Expr: `{"all":[{"eq":["eic.reached_step3",{"const":true}],"op":"test"},{"eq":["eic.step34",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [i1040gi] p. 42, Step 4, "Go to Step 5"; each earlier "STOP You can't take the credit" ends the flowchart (pp. 40-42) (2025; printed date 2026-02-25; sha256 482e9c48)
+
 ## (Step 5, 1) — `eic.step5_line1`
 
 - **Authored helper label:** Enter the amount from Form 1040 or 1040-SR, line 1z
@@ -319,17 +326,33 @@
 - Expr: `{"collection":"person","field":"person.eic_se","op":"sum_over"}`
 - Cite: [i1040gi] p. 47, Worksheet B, Parts 1 and 2 (2025; printed date 2026-02-25; sha256 482e9c48)
 
+## (helper) — `eic.show_wsb4b`
+
+- **Authored helper label:** Worksheet B is used (Step 5 reached and Step 5 question 2 is Yes)
+- **Encoded (Bool):** helper "Step 5 is reached (Steps 1 and 2 passed and Step 3 or 4 sends you to Step 5)" = true and helper "Step 5, question 2: self-employed (Worksheet B)" = true
+- Expr: `{"all":[{"eq":["eic.reached_step5",{"const":true}],"op":"test"},{"eq":["eic.self_employed",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [i1040gi] p. 47, Worksheet B, "Use this worksheet if you answered “Yes” to Step 5, question 2" (2025; printed date 2026-02-25; sha256 482e9c48)
+
 ## 4b — `eic.wsb_4b`
 
 - **IRS:** Worksheet B, line 4b. Combine lines 1e, 2c, 3, and 4a. This is your total earned income
 - **Encoded (Dollars):** Add column (Step 5, 5) and helper "Worksheet B, lines 1e and 2c (both spouses on a joint return)".
+- **Shown on the values sheet only when:** Worksheet B is used (Step 5 reached and Step 5 question 2 is Yes) (`eic.show_wsb4b`)
 - Expr: `{"of":["eic.earned_income","eic.wsb_se"],"op":"sum"}`
 - Cite: [i1040gi] p. 47, Worksheet B, Part 4, line 4b (line 4a is your earned income from Step 5; line 3, statutory employees, is refused) (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `eic.show_wsb6`
+
+- **Authored helper label:** Worksheet B line 6 is completed (the credit is reached and Worksheet B is used)
+- **Encoded (Bool):** helper "Steps 1 to 5 passed in order (Step 6, figure the credit on Worksheet A)" = true and helper "Step 5, question 2: self-employed (Worksheet B)" = true
+- Expr: `{"all":[{"eq":["eic.eligible",{"const":true}],"op":"test"},{"eq":["eic.self_employed",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [i1040gi] p. 47, Worksheet B, line 5, "No. You can’t take the credit" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## 6 — `eic.wsb_6`
 
 - **IRS:** Worksheet B, line 6. Enter your total earned income from Part 4, line 4b (zero if line 4b is zero or less)
 - **Encoded (NonNegDollars):** Subtract helper "No amount" from line 4b. If zero or less, enter -0-.
+- **Shown on the values sheet only when:** Worksheet B line 6 is completed (the credit is reached and Worksheet B is used) (`eic.show_wsb6`)
 - Expr: `{"from":"eic.wsb_4b","op":"subtract_floor0","take":"eic.zero"}`
 - Cite: [i1040gi] p. 47, Worksheet B, Part 4, "STOP If line 4b is zero or less, you can't take the credit", and Part 5, line 6 (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -358,6 +381,7 @@
 
 - **IRS:** Enter your earned income from Step 5 (Worksheet A, line 1), or Worksheet B, line 6
 - **Encoded (Dollars):** Choose — [helper "Step 5, question 2: self-employed (Worksheet B)" = false → column (Step 5, 5)] [helper "Step 5, question 2: self-employed (Worksheet B)" = true → line 6 (eic.wsb_6)]
+- **Shown on the values sheet only when:** Steps 1 to 5 passed in order (Step 6, figure the credit on Worksheet A) (`eic.eligible`)
 - Expr: `{"alternatives":[{"guard":{"eq":["eic.self_employed",{"const":false}],"op":"test"},"then":"eic.earned_income"},{"guard":{"eq":["eic.self_employed",{"const":true}],"op":"test"},"then":"eic.wsb_6"}],"op":"choose"}`
 - Cite: [i1040gi] p. 46, Worksheet A, line 1; p. 48, Worksheet B, Part 5, line 6 (Worksheet A lines 2 to 6 are Worksheet B lines 7 to 11) (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -407,13 +431,22 @@
 
 - **IRS:** Look up the amount on line 1 in the EIC Table to find the credit, using the column for your filing status and the number of qualifying children who have valid SSNs
 - **Encoded (NonNegDollars):** Choose — [helper "Line 1 is at least $1, the first amount the EIC Table lists" = true → helper "EIC Table credit for line 1 in the column for the number of qualifying children with valid SSNs"] [helper "Line 1 is at least $1, the first amount the EIC Table lists" = false → helper "No amount"]
+- **Shown on the values sheet only when:** Steps 1 to 5 passed in order (Step 6, figure the credit on Worksheet A) (`eic.eligible`)
 - Expr: `{"alternatives":[{"guard":{"eq":["eic.line1_in_table",{"const":true}],"op":"test"},"then":"eic.line1_table"},{"guard":{"eq":["eic.line1_in_table",{"const":false}],"op":"test"},"then":"eic.zero"}],"op":"choose"}`
 - Cite: [i1040gi] p. 46, Worksheet A, line 2 (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `eic.show3`
+
+- **Authored helper label:** Worksheet A line 3 is completed (the credit is reached and line 2 is more than zero)
+- **Encoded (Bool):** helper "Steps 1 to 5 passed in order (Step 6, figure the credit on Worksheet A)" = true and line 2 > $0 (sales.zero)
+- Expr: `{"all":[{"eq":["eic.eligible",{"const":true}],"op":"test"},{"gt":["eic.line2",{"param":"sales.zero"}],"op":"test"}],"op":"test"}`
+- Cite: [i1040gi] p. 46, Worksheet A, line 2, "If line 2 is zero, You can’t take the credit" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## 3 — `eic.line3`
 
 - **IRS:** Enter the amount from Form 1040 or 1040-SR, line 11b
 - **Encoded (Dollars):** Enter the amount from f1040 line 11b.
+- **Shown on the values sheet only when:** Worksheet A line 3 is completed (the credit is reached and line 2 is more than zero) (`eic.show3`)
 - Expr: `{"from":"f1040.line11b","op":"copy"}`
 - Cite: [i1040gi] p. 46, Worksheet A, line 3 (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -508,10 +541,18 @@
 - Expr: `{"key":"eic.line3","op":"table_lookup","status":"f1040.status","table":"eic_3"}`
 - Cite: [i1040gi] pp. 49–60, EIC Table, column 3 (2025; printed date 2026-02-25; sha256 482e9c48)
 
+## (helper) — `eic.show5`
+
+- **Authored helper label:** Worksheet A line 5 is completed (the credit is reached, line 2 is more than zero, line 4 is No and line 5 is not left blank)
+- **Encoded (Bool):** helper "Steps 1 to 5 passed in order (Step 6, figure the credit on Worksheet A)" = true and line 4 = false and helper "Line 5. Is the amount on line 3 less than the line 5 amount? (Yes leaves line 5 blank)" = false and line 2 > $0 (sales.zero)
+- Expr: `{"all":[{"eq":["eic.eligible",{"const":true}],"op":"test"},{"eq":["eic.line4",{"const":false}],"op":"test"},{"eq":["eic.line5_blank",{"const":false}],"op":"test"},{"gt":["eic.line2",{"param":"sales.zero"}],"op":"test"}],"op":"test"}`
+- Cite: [i1040gi] p. 46, Worksheet A, line 2, "If line 2 is zero, You can’t take the credit"; line 4, "Yes. Skip line 5; enter the amount from line 2 on line 6"; line 5, "Yes. Leave line 5 blank" (2025; printed date 2026-02-25; sha256 482e9c48)
+
 ## 5 — `eic.line5`
 
 - **IRS:** Look up the amount on line 3 in the EIC Table to find the credit, using the column for your filing status and the number of qualifying children who have valid SSNs
 - **Encoded (NonNegDollars):** Choose — [helper "Number of qualifying children for the EIC who have valid SSNs" ≥ 0 (a count) and helper "Number of qualifying children for the EIC who have valid SSNs" < 1 (a count) → helper "EIC Table credit for line 3, no qualifying children with valid SSNs"] [helper "Number of qualifying children for the EIC who have valid SSNs" ≥ 1 (a count) and helper "Number of qualifying children for the EIC who have valid SSNs" < 2 (a count) → helper "EIC Table credit for line 3, one qualifying child with a valid SSN"] [helper "Number of qualifying children for the EIC who have valid SSNs" ≥ 2 (a count) and helper "Number of qualifying children for the EIC who have valid SSNs" < 3 (a count) → helper "EIC Table credit for line 3, two qualifying children with valid SSNs"] [helper "Number of qualifying children for the EIC who have valid SSNs" ≥ 3 (a count) → helper "EIC Table credit for line 3, three or more qualifying children with valid SSNs"]
+- **Shown on the values sheet only when:** Worksheet A line 5 is completed (the credit is reached, line 2 is more than zero, line 4 is No and line 5 is not left blank) (`eic.show5`)
 - Expr: `{"alternatives":[{"guard":{"all":[{"ge":["eic.ssn_count",{"const":0,"type":"Count"}],"op":"test"},{"lt":["eic.ssn_count",{"const":1,"type":"Count"}],"op":"test"}],"op":"test"},"then":"eic.line3_table0"},{"guard":{"all":[{"ge":["eic.ssn_count",{"const":1,"type":"Count"}],"op":"test"},{"lt":["eic.ssn_count",{"const":2,"type":"Count"}],"op":"test"}],"op":"test"},"then":"eic.line3_table1"},{"guard":{"all":[{"ge":["eic.ssn_count",{"const":2,"type":"Count"}],"op":"test"},{"lt":["eic.ssn_count",{"const":3,"type":"Count"}],"op":"test"}],"op":"test"},"then":"eic.line3_table2"},{"guard":{"ge":["eic.ssn_count",{"const":3,"type":"Count"}],"op":"test"},"then":"eic.line3_table3"}],"op":"choose"}`
 - Cite: [i1040gi] p. 46, Worksheet A, line 5, "No. Look up the amount on line 3 in the EIC Table to find the credit" (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -533,12 +574,13 @@
 
 - **IRS:** This is your earned income credit
 - **Encoded (NonNegDollars):** Choose — [line 4 = true → line 2] [line 4 = false → helper "When line 4 is No, line 2 if line 5 is left blank and otherwise the smaller of lines 5 and 2"]
+- **Shown on the values sheet only when:** Steps 1 to 5 passed in order (Step 6, figure the credit on Worksheet A) (`eic.eligible`)
 - Expr: `{"alternatives":[{"guard":{"eq":["eic.line4",{"const":true}],"op":"test"},"then":"eic.line2"},{"guard":{"eq":["eic.line4",{"const":false}],"op":"test"},"then":"eic.after_line4"}],"op":"choose"}`
 - Cite: [i1040gi] p. 46, Worksheet A, line 4, "Yes. Skip line 5; enter the amount from line 2 on line 6", and line 6 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `eic.credit`
 
-- **Authored helper label:** Earned income credit for Form 1040, line 27a (Worksheet A, line 6 when Steps 1 to 5 are passed; zero otherwise)
+- **Authored helper label:** Earned income credit for Form 1040, line 27a (Worksheet A, line 6, or Worksheet B, line 11 for a filer who answered Yes to Step 5, question 2, when Steps 1 to 5 are passed; zero otherwise)
 - **Encoded (NonNegDollars):** Choose — [helper "Steps 1 to 5 passed in order (Step 6, figure the credit on Worksheet A)" = true → line 6 (eic.line6)] [helper "Steps 1 to 5 passed in order (Step 6, figure the credit on Worksheet A)" = false → helper "No amount"]
 - **Refusal:** when household.credit_disallowed is true, cannot complete Form 8862 and the EIC disallowance period (Form 8862, who must file). Your EIC, child tax credit, additional child tax credit or credit for other dependents for an earlier year was reduced or disallowed, or you are in a disallowance period; Form 8862 and the disallowance period are outside this tool. Cite: [i1040gi] p. 43, Form 8862, who must file, "You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error" and "don’t file Form 8862 or take the credit for the ... 2 years after the most recent tax year for which there was a final determination that your EIC claim was due to reckless or intentional disregard of the EIC rules ... 10 years after the most recent tax year for which there was a final determination that your EIC claim was due to fraud" (2025; printed date 2026-02-25; sha256 482e9c48)
 - Expr: `{"alternatives":[{"guard":{"eq":["eic.eligible",{"const":true}],"op":"test"},"then":"eic.line6"},{"guard":{"eq":["eic.eligible",{"const":false}],"op":"test"},"then":"eic.zero"}],"op":"choose"}`

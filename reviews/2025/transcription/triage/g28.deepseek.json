@@ -1,0 +1,80 @@
+{
+ "bank": null,
+ "errors": [
+  {
+   "line": "g28.line1",
+   "message": "g28.g28.__type_gate_0: collection reference requires sum_over"
+  },
+  {
+   "line": "g28.line1",
+   "message": "g28.g28.__type_gate_0: comparison operands have incompatible types"
+  },
+  {
+   "line": "g28.line2",
+   "message": "g28.g28.__type_gate_1: collection reference requires sum_over"
+  },
+  {
+   "line": "g28.line2",
+   "message": "g28.g28.__type_gate_1: comparison operands have incompatible types"
+  }
+ ],
+ "failures": [],
+ "family": "deepseek",
+ "form": "g28",
+ "lines": [
+  {
+   "candidate": "g28.line1",
+   "handle": "1",
+   "open_at_triage": true,
+   "project": "g28.line1",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "g28.line2",
+   "handle": "2",
+   "open_at_triage": true,
+   "project": "g28.line2",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "g28.line3",
+   "handle": "3",
+   "open_at_triage": true,
+   "project": "g28.line3",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "g28.line5",
+   "handle": "5",
+   "open_at_triage": true,
+   "project": "g28.line5",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "g28.line6",
+   "handle": "6",
+   "open_at_triage": true,
+   "project": "g28.line6",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "g28.line7",
+   "handle": "7",
+   "open_at_triage": true,
+   "project": "g28.line7",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  }
+ ],
+ "log_sha256_at_triage": "0344c87a5785e906f062ff6772865b5f0b6e443a148db5481da201182463f0e9",
+ "policy": "executable-triage-v1",
+ "response_sha256": "c283c119b41e1b13032746182e62c056f735f0f0a0cc9e8bb6e26328422fc16b",
+ "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
+ "state": "invalid",
+ "subject_sha256": "d3675d564369686983bc99fcd9853dd427c67e24295a10e7e22f5845ed5876d5"
+}

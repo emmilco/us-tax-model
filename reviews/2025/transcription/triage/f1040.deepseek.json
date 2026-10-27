@@ -1,0 +1,222 @@
+{
+ "bank": null,
+ "errors": [
+  {
+   "line": "f1040.line2b",
+   "message": "model changed a published result type"
+  },
+  {
+   "line": "f1040.line19",
+   "message": "model changed a published result type"
+  }
+ ],
+ "failures": [],
+ "family": "deepseek",
+ "form": "f1040",
+ "lines": [
+  {
+   "candidate": "f1040.line1a",
+   "handle": "1a",
+   "open_at_triage": true,
+   "project": "f1040.line1a",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f1040.line1e",
+   "handle": "1e",
+   "open_at_triage": true,
+   "project": "f1040.line1e",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f1040.line2b",
+   "handle": "2b",
+   "open_at_triage": true,
+   "project": "f1040.line2b",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f1040.line3b",
+   "handle": "3b",
+   "open_at_triage": true,
+   "project": "f1040.line3b",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f1040.line4b",
+   "handle": "4b",
+   "open_at_triage": true,
+   "project": "f1040.line4b",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f1040.line5b",
+   "handle": "5b",
+   "open_at_triage": true,
+   "project": "f1040.line5b",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f1040.line6a",
+   "handle": "6a",
+   "open_at_triage": true,
+   "project": "f1040.line6a",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f1040.line6c",
+   "handle": "6c",
+   "open_at_triage": true,
+   "project": "f1040.line6c",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f1040.line6d",
+   "handle": "6d",
+   "open_at_triage": true,
+   "project": "f1040.line6d",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f1040.line9",
+   "handle": "9",
+   "open_at_triage": true,
+   "project": "f1040.line9",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f1040.line11a",
+   "handle": "11a",
+   "open_at_triage": true,
+   "project": "f1040.line11a",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f1040.line11b",
+   "handle": "11b",
+   "open_at_triage": true,
+   "project": "f1040.line11b",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f1040.line15",
+   "handle": "15",
+   "open_at_triage": true,
+   "project": "f1040.line15",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f1040.line16",
+   "handle": "16",
+   "open_at_triage": true,
+   "project": "f1040.line16",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f1040.line19",
+   "handle": "19",
+   "open_at_triage": true,
+   "project": "f1040.line19",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f1040.line21",
+   "handle": "21",
+   "open_at_triage": true,
+   "project": "f1040.line21",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f1040.line22",
+   "handle": "22",
+   "open_at_triage": true,
+   "project": "f1040.line22",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f1040.line24",
+   "handle": "24",
+   "open_at_triage": true,
+   "project": "f1040.line24",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f1040.line25a",
+   "handle": "25a",
+   "open_at_triage": true,
+   "project": "f1040.line25a",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f1040.line27c",
+   "handle": "27c",
+   "open_at_triage": true,
+   "project": "f1040.line27c",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f1040.line34",
+   "handle": "34",
+   "open_at_triage": true,
+   "project": "f1040.line34",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f1040.line37",
+   "handle": "37",
+   "open_at_triage": true,
+   "project": "f1040.line37",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  }
+ ],
+ "log_sha256_at_triage": "b1df30166278e149d91d1160677e29da482b486be6564e7d98b99cff15a15c9b",
+ "policy": "executable-triage-v2",
+ "response_sha256": "d942c4e128ecb712b4cdc6adbce8b96cc87949ff19a113b59a6d630467b1ce28",
+ "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
+ "state": "invalid",
+ "subject_sha256": "bf0aa1cb87024fab06d373f7e7dddcfef506741bb427f3f333bddb5e08c575db"
+}

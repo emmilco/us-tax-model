@@ -40,6 +40,9 @@ interview:
   - dependent.divorced_rule
   - dependent.multiple_support
   - dependent.parent_home_paid
+  - dependent.born_died
+  - dependent.placed
+  - dependent.part_year_home
   - person.tin
   - person.itin_applied
   - person.work_ssn

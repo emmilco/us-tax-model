@@ -126,10 +126,45 @@
 
 ## (helper) — `dependent.parent_home_paid`
 
-- **Authored helper label:** For a parent not living with you, you paid over half the cost of their main home for all of 2025?
-- **Encoded (Bool):** Input — If this person is your parent, did you pay over half the cost of keeping up a home that was their main home for all of 2025?
-- Expr: `{"op":"input","source":"If this person is your parent, did you pay over half the cost of keeping up a home that was their main home for all of 2025?"}`
-- Cite: [i1040gi] p. 14, Head of Household, Test 1 (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Authored helper label:** For a parent not living with you, you paid over half the cost of their main home for all of 2025 (or the part of 2025 they were alive)?
+- **Encoded (Bool):** Input — If this person is your parent, did you pay over half the cost of keeping up a home that was their main home for all of 2025 (or, if your parent died in 2025, for the entire part of 2025 your parent was alive)?
+- Expr: `{"op":"input","source":"If this person is your parent, did you pay over half the cost of keeping up a home that was their main home for all of 2025 (or, if your parent died in 2025, for the entire part of 2025 your parent was alive)?"}`
+- Cite: [i1040gi] p. 14, Head of Household, Test 1; p. 15, "If the person is anyone else, see Pub. 501"; p501 p. 9, Death or birth, "Your parent for whom you paid, for the entire part of the year your parent was alive, more than half the cost of keeping up the home your parent lived in" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `dependent.born_died`
+
+- **Authored helper label:** Born or died in 2025?
+- **Encoded (Bool):** Input — Was this person born in 2025, or did this person die in 2025?
+- Expr: `{"op":"input","source":"Was this person born in 2025, or did this person die in 2025?"}`
+- Cite: [i1040gi] p. 15, "If the person for whom you kept up a home was born or died in 2025, you still may be able to file as head of household" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `dependent.placed`
+
+- **Authored helper label:** Adopted, placed for adoption or placed as a foster child in 2025?
+- **Encoded (Bool):** Input — Did you adopt this person in 2025, or was this person lawfully placed with you for legal adoption by you, or placed with you as an eligible foster child, during 2025?
+- Expr: `{"op":"input","source":"Did you adopt this person in 2025, or was this person lawfully placed with you for legal adoption by you, or placed with you as an eligible foster child, during 2025?"}`
+- Cite: [i1040gi] p. 15, "Similarly, if you adopted the person for whom you kept up a home in 2025, the person was lawfully placed with you for legal adoption by you in 2025, or the person was an eligible foster child placed with you during 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `dependent.part_year_home`
+
+- **Authored helper label:** Lived with you more than half the part of 2025 they were alive, or since the adoption or placement?
+- **Encoded (Bool):** Input — Was your home this person's home for more than half of the part of 2025 they were alive (or, for a person adopted or placed with you in 2025, more than half of the time since the adoption or placement), counting temporary absences for school, vacation, business, medical care, military service or detention in a juvenile facility as time lived with you?
+- Expr: `{"op":"input","source":"Was your home this person's home for more than half of the part of 2025 they were alive (or, for a person adopted or placed with you in 2025, more than half of the time since the adoption or placement), counting temporary absences for school, vacation, business, medical care, military service or detention in a juvenile facility as time lived with you?"}`
+- Cite: [p501] p. 9, Death or birth, "Your qualifying child or qualifying relative who lived with you for more than half the part of the year they were alive"; i1040gi p. 15, "more than half the time since the person was adopted or placed with you in 2025"; i1040gi pp. 14-15, temporary absences, "or detention in a juvenile facility" (2025 returns; PDF created 2026-02-04; sha256 288b62a4)
+
+## (helper) — `dependent.hoh_lived_half`
+
+- **Authored helper label:** Lived with you more than half of 2025, or, for a relative other than a qualifying child (whose months already count the part of the year), more than half of the part of 2025 they were alive or since their adoption or placement
+- **Encoded (Bool):** (helper "Lived with you for more than half of 2025" = true or helper "Qualifying child (Step 1)" = false and (helper "Born or died in 2025?" = true or helper "Adopted, placed for adoption or placed as a foster child in 2025?" = true) and helper "Lived with you more than half the part of 2025 they were alive, or since the adoption or placement?" = true)
+- Expr: `{"any":[{"eq":["dependent.lived_half",{"const":true}],"op":"test"},{"all":[{"eq":["dependent.qualifying_child",{"const":false}],"op":"test"},{"any":[{"eq":["dependent.born_died",{"const":true}],"op":"test"},{"eq":["dependent.placed",{"const":true}],"op":"test"}],"op":"test"},{"eq":["dependent.part_year_home",{"const":true}],"op":"test"}],"op":"test"}],"op":"test"}`
+- Cite: [p501] p. 9, Death or birth, "To qualify you for head of household filing status, the qualifying person (as defined in Table 4) must be one of the following"; i1040gi p. 15, "the person is considered to have lived with you for more than half of 2025 if your main home was this person's main home for more than half the time since the person was adopted or placed with you in 2025" (2025 returns; PDF created 2026-02-04; sha256 288b62a4)
+
+## (helper) — `dependent.dc_lived_half`
+
+- **Authored helper label:** Lived with you more than half of 2025, or, for a person other than a qualifying child born or who died in 2025, more than half of the part of 2025 they were alive
+- **Encoded (Bool):** (helper "Lived with you for more than half of 2025" = true or helper "Qualifying child (Step 1)" = false and helper "Born or died in 2025?" = true and helper "Lived with you more than half the part of 2025 they were alive, or since the adoption or placement?" = true)
+- Expr: `{"any":[{"eq":["dependent.lived_half",{"const":true}],"op":"test"},{"all":[{"eq":["dependent.qualifying_child",{"const":false}],"op":"test"},{"eq":["dependent.born_died",{"const":true}],"op":"test"},{"eq":["dependent.part_year_home",{"const":true}],"op":"test"}],"op":"test"}],"op":"test"}`
+- Cite: [p503] p. 3, Birth or death of otherwise qualifying person, "a person who was born or died in 2025 is treated as having lived with you for more than half of 2025 if your home was the person's home more than half the time they were alive in 2025" (For use in preparing 2025 returns; sha256 3a00d0c1)
 
 ## (helper) — `dependent.one`
 
@@ -329,15 +364,15 @@
 
 ## (helper) — `dependent.hoh_test2`
 
-- **Authored helper label:** A Test 2 person who lived with you more than half the year (the home-cost condition of Test 2 is tested on the household form)
-- **Encoded (Bool):** (helper "Your dependent" = true and helper "Lived with you for more than half of 2025" = true and helper "Relationship to you" ≠ 'household_member' and helper "Relationship to you" ≠ 'sibling_descendant' and helper "Relationship to you" ≠ 'other' or helper "Qualifying child (Step 1)" = true and helper "Married?" = false and helper "Lived with you for more than half of 2025" = true)
-- Expr: `{"any":[{"all":[{"eq":["dependent.claimed",{"const":true}],"op":"test"},{"eq":["dependent.lived_half",{"const":true}],"op":"test"},{"ne":["dependent.relationship",{"const":"household_member"}],"op":"test"},{"ne":["dependent.relationship",{"const":"sibling_descendant"}],"op":"test"},{"ne":["dependent.relationship",{"const":"other"}],"op":"test"}],"op":"test"},{"all":[{"eq":["dependent.qualifying_child",{"const":true}],"op":"test"},{"eq":["dependent.married",{"const":false}],"op":"test"},{"eq":["dependent.lived_half",{"const":true}],"op":"test"}],"op":"test"}],"op":"test"}`
+- **Authored helper label:** A Test 2 person who lived with you more than half the year, or of the part of the year a relative was alive (the home-cost condition of Test 2 is tested on the household form)
+- **Encoded (Bool):** (helper "Your dependent" = true and helper "Relationship to you" ≠ 'household_member' and helper "Relationship to you" ≠ 'sibling_descendant' and helper "Relationship to you" ≠ 'other' and helper "Lived with you more than half of 2025, or, for a relative other than a qualifying child (whose months already count the part of the year), more than half of the part of 2025 they were alive or since their adoption or placement" = true or helper "Qualifying child (Step 1)" = true and helper "Married?" = false and helper "Lived with you for more than half of 2025" = true)
+- Expr: `{"any":[{"all":[{"eq":["dependent.claimed",{"const":true}],"op":"test"},{"ne":["dependent.relationship",{"const":"household_member"}],"op":"test"},{"ne":["dependent.relationship",{"const":"sibling_descendant"}],"op":"test"},{"ne":["dependent.relationship",{"const":"other"}],"op":"test"},{"eq":["dependent.hoh_lived_half",{"const":true}],"op":"test"}],"op":"test"},{"all":[{"eq":["dependent.qualifying_child",{"const":true}],"op":"test"},{"eq":["dependent.married",{"const":false}],"op":"test"},{"eq":["dependent.lived_half",{"const":true}],"op":"test"}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 14, Head of Household, Test 2 (a dependent, other than one who is your dependent only because they lived with you all year, which is any person claimed through the last Step 4 bullet, or your unmarried qualifying child, who lived with you more than half the year) (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `dependent.hoh_test1`
 
 - **Authored helper label:** Qualifies you for head of household under Test 1 through a parent who does not live with you (a parent who lives with you qualifies you through Test 2)
-- **Encoded (Bool):** helper "Relationship to you" = 'parent' and helper "Your dependent" = true and helper "For a parent not living with you, you paid over half the cost of their main home for all of 2025?" = true
+- **Encoded (Bool):** helper "Relationship to you" = 'parent' and helper "Your dependent" = true and helper "For a parent not living with you, you paid over half the cost of their main home for all of 2025 (or the part of 2025 they were alive)?" = true
 - **Refusal:** when dependent.claimed_no_tin is true, cannot complete Dependent without an SSN, ITIN or ATIN (Form 1040, Dependents, row (3)). Each dependent must be listed with an SSN (or ITIN or ATIN) issued on or before the due date of your return. A dependent child who was born and died in 2025 without an SSN, entered as "Died" on row (3) with a copy of the birth certificate, death certificate or hospital records, is outside this tool. Cite: [i1040gi] p. 22, Social security number, "You must enter each dependent’s social security number (SSN)" and "If your dependent child was born and died in 2025 and you do not have an SSN for the child, enter “Died” on row (3) of the Dependents section and include a copy of the child’s birth certificate, death certificate, or hospital records"; p. 14, Head of Household, "The dependents you claim are those you list by name and SSN ... in the Dependents section on Form 1040 or 1040-SR" (2025; printed date 2026-02-25; sha256 482e9c48)
 - Expr: `{"all":[{"eq":["dependent.relationship",{"const":"parent"}],"op":"test"},{"eq":["dependent.claimed",{"const":true}],"op":"test"},{"eq":["dependent.parent_home_paid",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 14, Head of Household, Test 1, "You paid over half the cost of keeping up a home that was the main home for all of 2025 of your parent whom you can claim as a dependent" (2025; printed date 2026-02-25; sha256 482e9c48)
@@ -396,9 +431,9 @@
 ## (helper) — `dependent.dc_disabled_qp`
 
 - **Authored helper label:** Your dependent who lived with you for more than half of 2025 and was not able to care for themselves
-- **Encoded (Bool):** helper "Lived with you for more than half of 2025" = true and helper "Physically or mentally not able to care for themselves?" = true
-- Expr: `{"all":[{"eq":["dependent.lived_half",{"const":true}],"op":"test"},{"eq":["dependent.dc_incapable",{"const":true}],"op":"test"}],"op":"test"}`
-- Cite: [i2441] p. 1, Qualifying Person(s), "Any disabled person who wasn't physically or mentally able to care for themselves who lived with you for more than half the year and whom you can claim as a dependent" (2025; sha256 86f0669e)
+- **Encoded (Bool):** helper "Physically or mentally not able to care for themselves?" = true and helper "Lived with you more than half of 2025, or, for a person other than a qualifying child born or who died in 2025, more than half of the part of 2025 they were alive" = true
+- Expr: `{"all":[{"eq":["dependent.dc_incapable",{"const":true}],"op":"test"},{"eq":["dependent.dc_lived_half",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [i2441] p. 1, Qualifying Person(s), "Any disabled person who wasn't physically or mentally able to care for themselves who lived with you for more than half the year and whom you can claim as a dependent"; p503 p. 3, Birth or death of otherwise qualifying person (2025; sha256 86f0669e)
 
 ## (helper) — `dependent.dc_qp`
 

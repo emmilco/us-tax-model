@@ -1,0 +1,100 @@
+{
+ "bank": null,
+ "errors": [
+  {
+   "line": "f4952.line4h",
+   "message": "model changed a published result type"
+  }
+ ],
+ "failures": [],
+ "family": "deepseek",
+ "form": "f4952",
+ "lines": [
+  {
+   "candidate": "f4952.required",
+   "handle": "f4952.required",
+   "open_at_triage": true,
+   "project": "f4952.required",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f4952.line4a",
+   "handle": "4a",
+   "open_at_triage": true,
+   "project": "f4952.line4a",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f4952.line4b",
+   "handle": "4b",
+   "open_at_triage": true,
+   "project": "f4952.line4b",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f4952.line4c",
+   "handle": "4c",
+   "open_at_triage": true,
+   "project": "f4952.line4c",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f4952.line4d",
+   "handle": "4d",
+   "open_at_triage": true,
+   "project": "f4952.line4d",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f4952.line4f",
+   "handle": "4f",
+   "open_at_triage": true,
+   "project": "f4952.line4f",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f4952.line4h",
+   "handle": "4h",
+   "open_at_triage": true,
+   "project": "f4952.line4h",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f4952.line6",
+   "handle": "6",
+   "open_at_triage": true,
+   "project": "f4952.line6",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f4952.line7",
+   "handle": "7",
+   "open_at_triage": true,
+   "project": "f4952.line7",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f4952.line8",
+   "handle": "8",
+   "open_at_triage": true,
+   "project": "f4952.line8",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  }
+ ],
+ "log_sha256_at_triage": "7f924fa87824ce6fc4bb69ba15c1fd74907f50441bf313d3148bc9272a0451b6",
+ "policy": "executable-triage-v1",
+ "response_sha256": "7f8c66443d9f0fd13457ad4bbf3ce165211cdc98524d9d5d6777cc44776cf7b3",
+ "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
+ "state": "invalid",
+ "subject_sha256": "2806a8f4c8d2b1c83b57ce6a1284df190e76d2a250debabd02fa69bcec13c95c"
+}

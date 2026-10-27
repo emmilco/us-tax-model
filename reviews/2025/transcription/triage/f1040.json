@@ -1,0 +1,3919 @@
+{
+ "bank": {
+  "evaluation_failures": 0,
+  "fixtures": 1099,
+  "generated": 500,
+  "partial_bases": 40,
+  "partial_records": 315,
+  "seed": 20261026
+ },
+ "errors": [],
+ "failures": [],
+ "family": "claude",
+ "form": "f1040",
+ "lines": [
+  {
+   "absent": 0,
+   "agree": 617,
+   "candidate": "f1040.line1e",
+   "compared": 1914,
+   "differ": 1297,
+   "handle": "1e",
+   "in_scope": 1602,
+   "in_scope_agree": 608,
+   "kinds": {
+    "candidate-refuses": 303,
+    "candidate-unknown": 994
+   },
+   "kinds_by_return": {
+    "completed": {
+     "candidate-refuses": 5,
+     "candidate-unknown": 349
+    },
+    "incomplete": {
+     "candidate-refuses": 4,
+     "candidate-unknown": 310
+    },
+    "refused": {
+     "candidate-refuses": 294,
+     "candidate-unknown": 335
+    }
+   },
+   "open_at_triage": true,
+   "project": "f1040.line1e",
+   "shown_when": null,
+   "sources": {
+    "fixture": 1099,
+    "generated": 500,
+    "partial": 315
+   },
+   "status": "DISAGREE",
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i2441",
+       "locator": "p. 4, Lines 4 and 5, \"Excluded as foreign earned income (including any housing exclusion) on Form 2555, line 43\""
+      },
+      "form": "Earned income less excluded foreign earned income (Form 2441, lines 4, 5, 18 and 19; Forms 2555 and 4563)",
+      "gate": "sa.excluded_income",
+      "kind": "refusal",
+      "remedy": "Excluded foreign earned income, foreign housing and possessions income are outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f2441.line26",
+       "value": {
+        "cite": {
+         "doc": "i2441",
+         "locator": "p. 4, Lines 4 and 5, \"Excluded as foreign earned income (including any housing exclusion) on Form 2555, line 43\""
+        },
+        "form": "Earned income less excluded foreign earned income (Form 2441, lines 4, 5, 18 and 19; Forms 2555 and 4563)",
+        "gate": "sa.excluded_income",
+        "kind": "refusal",
+        "remedy": "Excluded foreign earned income, foreign housing and possessions income are outside this tool."
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f2441.benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f2441.benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f2441.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8889.4.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 21, Qualifying child of more than one person"
+      },
+      "form": "Qualifying child of more than one person (tie-breaker rules)",
+      "gate": "dependent[dep_a].other_claimant",
+      "kind": "refusal",
+      "remedy": "This person may be the qualifying child of another person. The tie-breaker rules are outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f2441.line26",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 21, Qualifying child of more than one person"
+        },
+        "form": "Qualifying child of more than one person (tie-breaker rules)",
+        "gate": "dependent[dep_a].other_claimant",
+        "kind": "refusal",
+        "remedy": "This person may be the qualifying child of another person. The tie-breaker rules are outside this tool."
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f2441.benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f2441.benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f2441.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8889.5.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f2441.line14",
+      "kind": "unknown",
+      "reason": "no input supplied for f2441.line14"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f2441.line26",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f2441.benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f2441.benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f2441.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.asset.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f2441.line14",
+      "kind": "unknown",
+      "reason": "no input supplied for f2441.line14"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f2441.line26",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f2441.benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f2441.benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f2441.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.asset.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f2441.line14",
+      "kind": "unknown",
+      "reason": "no input supplied for f2441.line14"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f2441.line26",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f2441.benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f2441.benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f2441.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.asset.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f2441.line14",
+      "kind": "unknown",
+      "reason": "no input supplied for f2441.line14"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f2441.line26",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f2441.benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f2441.benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f2441.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.asset.4",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f2441.line14",
+      "kind": "unknown",
+      "reason": "no input supplied for f2441.line14"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f2441.line26",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f2441.benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f2441.benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f2441.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.carloan.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f2441.line14",
+      "kind": "unknown",
+      "reason": "no input supplied for f2441.line14"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f2441.line26",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f2441.benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f2441.benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f2441.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.carloan.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i2441",
+       "locator": "p. 2, Married Persons Filing Separately, \"Generally, married persons must file a joint return to claim the credit\""
+      },
+      "form": "Form 2441 for married filing separately (line A; lines 19 and 21)",
+      "gate": "s3.mfs",
+      "kind": "refusal",
+      "remedy": "A married filing separately return (the credit only when considered unmarried, the exclusion at $2,500) is outside this tool. Married filing jointly is supported."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f2441.line26",
+       "value": {
+        "cite": {
+         "doc": "i2441",
+         "locator": "p. 2, Married Persons Filing Separately, \"Generally, married persons must file a joint return to claim the credit\""
+        },
+        "form": "Form 2441 for married filing separately (line A; lines 19 and 21)",
+        "gate": "s3.mfs",
+        "kind": "refusal",
+        "remedy": "A married filing separately return (the credit only when considered unmarried, the exclusion at $2,500) is outside this tool. Married filing jointly is supported."
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f2441.benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f2441.benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f2441.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.carloan.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i2441",
+       "locator": "p. 2, Married Persons Filing Separately, \"Generally, married persons must file a joint return to claim the credit\""
+      },
+      "form": "Form 2441 for married filing separately (line A; lines 19 and 21)",
+      "gate": "s3.mfs",
+      "kind": "refusal",
+      "remedy": "A married filing separately return (the credit only when considered unmarried, the exclusion at $2,500) is outside this tool. Married filing jointly is supported."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f2441.line26",
+       "value": {
+        "cite": {
+         "doc": "i2441",
+         "locator": "p. 2, Married Persons Filing Separately, \"Generally, married persons must file a joint return to claim the credit\""
+        },
+        "form": "Form 2441 for married filing separately (line A; lines 19 and 21)",
+        "gate": "s3.mfs",
+        "kind": "refusal",
+        "remedy": "A married filing separately return (the credit only when considered unmarried, the exclusion at $2,500) is outside this tool. Married filing jointly is supported."
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f2441.benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f2441.benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f2441.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.carloan.4",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i2441",
+       "locator": "p. 4, If You or Your Spouse Was a Student or Disabled, \"Their earned income for each month is considered to be at least $250 ($500 if you had two or more qualifying persons at any time during 2025)\""
+      },
+      "form": "Deemed earned income for a student or disabled spouse or filer (Form 2441, line B and lines 4, 5, 18 and 19)",
+      "gate": "f2441.student_disabled",
+      "kind": "refusal",
+      "remedy": "The deemed earned income of $250 or $500 a month for a full-time student or a person not able to care for themselves, and a disabled spouse as a qualifying person, are outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f2441.line26",
+       "value": {
+        "cite": {
+         "doc": "i2441",
+         "locator": "p. 4, If You or Your Spouse Was a Student or Disabled, \"Their earned income for each month is considered to be at least $250 ($500 if you had two or more qualifying persons at any time during 2025)\""
+        },
+        "form": "Deemed earned income for a student or disabled spouse or filer (Form 2441, line B and lines 4, 5, 18 and 19)",
+        "gate": "f2441.student_disabled",
+        "kind": "refusal",
+        "remedy": "The deemed earned income of $250 or $500 a month for a full-time student or a person not able to care for themselves, and a disabled spouse as a qualifying person, are outside this tool."
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f2441.benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f2441.benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f2441.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dcprov.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i2441",
+       "locator": "p. 2, Married Persons Filing Separately, \"Generally, married persons must file a joint return to claim the credit\""
+      },
+      "form": "Form 2441 for married filing separately (line A; lines 19 and 21)",
+      "gate": "s3.mfs",
+      "kind": "refusal",
+      "remedy": "A married filing separately return (the credit only when considered unmarried, the exclusion at $2,500) is outside this tool. Married filing jointly is supported."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f2441.line26",
+       "value": {
+        "cite": {
+         "doc": "i2441",
+         "locator": "p. 2, Married Persons Filing Separately, \"Generally, married persons must file a joint return to claim the credit\""
+        },
+        "form": "Form 2441 for married filing separately (line A; lines 19 and 21)",
+        "gate": "s3.mfs",
+        "kind": "refusal",
+        "remedy": "A married filing separately return (the credit only when considered unmarried, the exclusion at $2,500) is outside this tool. Married filing jointly is supported."
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f2441.benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f2441.benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f2441.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f4952.3",
+      "kind": "fixture"
+     }
+    }
+   ]
+  },
+  {
+   "absent": 0,
+   "agree": 1914,
+   "candidate": "f1040.line4a",
+   "compared": 1914,
+   "differ": 0,
+   "handle": "4a",
+   "in_scope": 1890,
+   "in_scope_agree": 1890,
+   "kinds": {},
+   "kinds_by_return": {},
+   "open_at_triage": true,
+   "project": "f1040.line4a",
+   "shown_when": null,
+   "sources": {
+    "fixture": 1099,
+    "generated": 500,
+    "partial": 315
+   },
+   "status": "DISAGREE",
+   "triage": "agrees on sample",
+   "witnesses": []
+  },
+  {
+   "absent": 0,
+   "agree": 1914,
+   "candidate": "f1040.line5a",
+   "compared": 1914,
+   "differ": 0,
+   "handle": "5a",
+   "in_scope": 1901,
+   "in_scope_agree": 1901,
+   "kinds": {},
+   "kinds_by_return": {},
+   "open_at_triage": true,
+   "project": "f1040.line5a",
+   "shown_when": null,
+   "sources": {
+    "fixture": 1099,
+    "generated": 500,
+    "partial": 315
+   },
+   "status": "DISAGREE",
+   "triage": "agrees on sample",
+   "witnesses": []
+  },
+  {
+   "absent": 0,
+   "agree": 910,
+   "candidate": "f1040.line6c",
+   "compared": 1914,
+   "differ": 1004,
+   "handle": "6c",
+   "in_scope": 1899,
+   "in_scope_agree": 910,
+   "kinds": {
+    "candidate-refuses": 15,
+    "candidate-unknown": 989
+   },
+   "kinds_by_return": {
+    "completed": {
+     "candidate-unknown": 367
+    },
+    "incomplete": {
+     "candidate-unknown": 300
+    },
+    "refused": {
+     "candidate-refuses": 15,
+     "candidate-unknown": 322
+    }
+   },
+   "open_at_triage": true,
+   "project": "f1040.line6c",
+   "shown_when": null,
+   "sources": {
+    "fixture": 1099,
+    "generated": 500,
+    "partial": 315
+   },
+   "status": "DISAGREE",
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "input": "ssb.lump_sum",
+      "kind": "unknown",
+      "reason": "no input supplied for ssb.lump_sum"
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.lump_sum",
+       "value": {
+        "input": "ssb.lump_sum",
+        "kind": "unknown",
+        "reason": "no input supplied for ssb.lump_sum"
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.has_benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "ssb.lump_sum",
+      "kind": "unknown",
+      "reason": "no input supplied for ssb.lump_sum"
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.lump_sum",
+       "value": {
+        "input": "ssb.lump_sum",
+        "kind": "unknown",
+        "reason": "no input supplied for ssb.lump_sum"
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.has_benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "ssb.lump_sum",
+      "kind": "unknown",
+      "reason": "no input supplied for ssb.lump_sum"
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.lump_sum",
+       "value": {
+        "input": "ssb.lump_sum",
+        "kind": "unknown",
+        "reason": "no input supplied for ssb.lump_sum"
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.has_benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "ssb.lump_sum",
+      "kind": "unknown",
+      "reason": "no input supplied for ssb.lump_sum"
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.lump_sum",
+       "value": {
+        "input": "ssb.lump_sum",
+        "kind": "unknown",
+        "reason": "no input supplied for ssb.lump_sum"
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.has_benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.4.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "ssb.lump_sum",
+      "kind": "unknown",
+      "reason": "no input supplied for ssb.lump_sum"
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.lump_sum",
+       "value": {
+        "input": "ssb.lump_sum",
+        "kind": "unknown",
+        "reason": "no input supplied for ssb.lump_sum"
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.has_benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.5.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "ssb.lump_sum",
+      "kind": "unknown",
+      "reason": "no input supplied for ssb.lump_sum"
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.lump_sum",
+       "value": {
+        "input": "ssb.lump_sum",
+        "kind": "unknown",
+        "reason": "no input supplied for ssb.lump_sum"
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.has_benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.6.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "ssb.lump_sum",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.lump_sum",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-refuses",
+     "project": {
+      "kind": "bool",
+      "value": true
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.has_benefits",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "ssb.lump_sum",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.w2.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "ssb.lump_sum",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.lump_sum",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-refuses",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.has_benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.eic.7",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "ssb.lump_sum",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.lump_sum",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-refuses",
+     "project": {
+      "kind": "bool",
+      "value": true
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.has_benefits",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "ssb.lump_sum",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage10.refuse.lump_sum",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "ssb.lump_sum",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.lump_sum",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-refuses",
+     "project": {
+      "kind": "bool",
+      "value": true
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.has_benefits",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "ssb.lump_sum",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 8,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "ssb.lump_sum",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.lump_sum",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-refuses",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.has_benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 46,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "ssb.lump_sum",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.lump_sum",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-refuses",
+     "project": {
+      "kind": "bool",
+      "value": true
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.has_benefits",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "ssb.lump_sum",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 91,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    }
+   ]
+  },
+  {
+   "absent": 0,
+   "agree": 1121,
+   "candidate": "f1040.line16",
+   "compared": 1914,
+   "differ": 793,
+   "handle": "16",
+   "in_scope": 1100,
+   "in_scope_agree": 515,
+   "kinds": {
+    "candidate-refuses": 137,
+    "candidate-unknown": 585,
+    "project-refuses": 71
+   },
+   "kinds_by_return": {
+    "completed": {
+     "candidate-refuses": 5,
+     "candidate-unknown": 349
+    },
+    "incomplete": {
+     "candidate-refuses": 4,
+     "candidate-unknown": 184
+    },
+    "refused": {
+     "candidate-refuses": 128,
+     "candidate-unknown": 52,
+     "project-refuses": 71
+    }
+   },
+   "open_at_triage": true,
+   "project": "f1040.line16",
+   "shown_when": null,
+   "sources": {
+    "fixture": 1099,
+    "generated": 500,
+    "partial": 315
+   },
+   "status": "DISAGREE",
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "input": "f2441.line14",
+      "kind": "unknown",
+      "reason": "no input supplied for f2441.line14"
+     },
+     "candidate_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.h_taxable_positive",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_preferential",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_taxable_positive",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_preferential",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_taxable_positive",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.h_preferential",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 1456860,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.non_sdtw_tax",
+       "value": {
+        "cents": 1456860,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.asset.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f2441.line14",
+      "kind": "unknown",
+      "reason": "no input supplied for f2441.line14"
+     },
+     "candidate_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.h_taxable_positive",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_preferential",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_taxable_positive",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_preferential",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_taxable_positive",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.h_preferential",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.non_sdtw_tax",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.asset.4",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f2441.line14",
+      "kind": "unknown",
+      "reason": "no input supplied for f2441.line14"
+     },
+     "candidate_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.h_taxable_positive",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_preferential",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_sdtw_required",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_taxable_positive",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_preferential",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_sdtw_required",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i8995a",
+       "locator": "p. 1, Who Can Take the Deduction"
+      },
+      "form": "Form 8995-A with qualified business income (taxable income above the threshold)",
+      "gate": "qbi.business_any",
+      "kind": "refusal",
+      "remedy": "The qualified business income deduction above the Form 8995 threshold is outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "cite": {
+         "doc": "i8995a",
+         "locator": "p. 1, Who Can Take the Deduction"
+        },
+        "form": "Form 8995-A with qualified business income (taxable income above the threshold)",
+        "gate": "qbi.business_any",
+        "kind": "refusal",
+        "remedy": "The qualified business income deduction above the Form 8995 threshold is outside this tool."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f4562.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i2441",
+       "locator": "p. 2, Married Persons Filing Separately, \"Generally, married persons must file a joint return to claim the credit\""
+      },
+      "form": "Form 2441 for married filing separately (line A; lines 19 and 21)",
+      "gate": "s3.mfs",
+      "kind": "refusal",
+      "remedy": "A married filing separately return (the credit only when considered unmarried, the exclusion at $2,500) is outside this tool. Married filing jointly is supported."
+     },
+     "candidate_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.h_taxable_positive",
+       "value": {
+        "cite": {
+         "doc": "i2441",
+         "locator": "p. 2, Married Persons Filing Separately, \"Generally, married persons must file a joint return to claim the credit\""
+        },
+        "form": "Form 2441 for married filing separately (line A; lines 19 and 21)",
+        "gate": "s3.mfs",
+        "kind": "refusal",
+        "remedy": "A married filing separately return (the credit only when considered unmarried, the exclusion at $2,500) is outside this tool. Married filing jointly is supported."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-refuses",
+     "project": {
+      "input": "s1a.tips",
+      "kind": "unknown",
+      "reason": "no input supplied for s1a.tips"
+     },
+     "project_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.non_sdtw_tax",
+       "value": {
+        "input": "s1a.tips",
+        "kind": "unknown",
+        "reason": "no input supplied for s1a.tips"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f4952.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "p503",
+       "locator": "p. 11, Surviving spouse, \"you may, but aren't required to, take into account the earned income of your spouse who died during the year\""
+      },
+      "form": "Earned income of a spouse who died in 2025 (Form 2441, lines 5 and 19)",
+      "gate": "f2441.spouse_died_gate",
+      "kind": "refusal",
+      "remedy": "The surviving spouse's choice whether to take into account the earned income of a spouse who died in 2025 is outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.h_taxable_positive",
+       "value": {
+        "cite": {
+         "doc": "p503",
+         "locator": "p. 11, Surviving spouse, \"you may, but aren't required to, take into account the earned income of your spouse who died during the year\""
+        },
+        "form": "Earned income of a spouse who died in 2025 (Form 2441, lines 5 and 19)",
+        "gate": "f2441.spouse_died_gate",
+        "kind": "refusal",
+        "remedy": "The surviving spouse's choice whether to take into account the earned income of a spouse who died in 2025 is outside this tool."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 1601684,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.non_sdtw_tax",
+       "value": {
+        "cents": 1601684,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f5695.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "p503",
+       "locator": "p. 11, Surviving spouse, \"you may, but aren't required to, take into account the earned income of your spouse who died during the year\""
+      },
+      "form": "Earned income of a spouse who died in 2025 (Form 2441, lines 5 and 19)",
+      "gate": "f2441.spouse_died_gate",
+      "kind": "refusal",
+      "remedy": "The surviving spouse's choice whether to take into account the earned income of a spouse who died in 2025 is outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.h_taxable_positive",
+       "value": {
+        "cite": {
+         "doc": "p503",
+         "locator": "p. 11, Surviving spouse, \"you may, but aren't required to, take into account the earned income of your spouse who died during the year\""
+        },
+        "form": "Earned income of a spouse who died in 2025 (Form 2441, lines 5 and 19)",
+        "gate": "f2441.spouse_died_gate",
+        "kind": "refusal",
+        "remedy": "The surviving spouse's choice whether to take into account the earned income of a spouse who died in 2025 is outside this tool."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 3816218,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.non_sdtw_tax",
+       "value": {
+        "cents": 3816218,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f5695.5",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f2441.line14",
+      "kind": "unknown",
+      "reason": "no input supplied for f2441.line14"
+     },
+     "candidate_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.h_taxable_positive",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_preferential",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_taxable_positive",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_preferential",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_taxable_positive",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.h_preferential",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 14, Head of Household"
+      },
+      "form": "Head of household filing status",
+      "gate": "household.hoh_fails",
+      "kind": "refusal",
+      "remedy": "Head of household is checked but the tests are not met; you must be unmarried or considered unmarried, have paid over half the cost of keeping up your home, and have a qualifying person."
+     },
+     "project_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 14, Head of Household"
+        },
+        "form": "Head of household filing status",
+        "gate": "household.hoh_fails",
+        "kind": "refusal",
+        "remedy": "Head of household is checked but the tests are not met; you must be unmarried or considered unmarried, have paid over half the cost of keeping up your home, and have a qualifying person."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8995.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f2441.line14",
+      "kind": "unknown",
+      "reason": "no input supplied for f2441.line14"
+     },
+     "candidate_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.h_taxable_positive",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_preferential",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_sdtw_required",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_taxable_positive",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_preferential",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_sdtw_required",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 3450517,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.non_sdtw_tax",
+       "value": {
+        "cents": 3450517,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8995.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f2441.line14",
+      "kind": "unknown",
+      "reason": "no input supplied for f2441.line14"
+     },
+     "candidate_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.h_taxable_positive",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_preferential",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_taxable_positive",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_preferential",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_taxable_positive",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.h_preferential",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 10400,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.non_sdtw_tax",
+       "value": {
+        "cents": 10400,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8995.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f2441.line14",
+      "kind": "unknown",
+      "reason": "no input supplied for f2441.line14"
+     },
+     "candidate_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.h_taxable_positive",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_preferential",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_sdtw_required",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_taxable_positive",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_preferential",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_sdtw_required",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 8564695,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.non_sdtw_tax",
+       "value": {
+        "cents": 8564695,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8995a.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f2441.line14",
+      "kind": "unknown",
+      "reason": "no input supplied for f2441.line14"
+     },
+     "candidate_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.h_taxable_positive",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_preferential",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_sdtw_required",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_taxable_positive",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_preferential",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_sdtw_required",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.non_sdtw_tax",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "classm.f8995a.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i2441",
+       "locator": "p. 2, Married Persons Filing Separately, \"Generally, married persons must file a joint return to claim the credit\""
+      },
+      "form": "Form 2441 for married filing separately (line A; lines 19 and 21)",
+      "gate": "s3.mfs",
+      "kind": "refusal",
+      "remedy": "A married filing separately return (the credit only when considered unmarried, the exclusion at $2,500) is outside this tool. Married filing jointly is supported."
+     },
+     "candidate_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.h_taxable_positive",
+       "value": {
+        "cite": {
+         "doc": "i2441",
+         "locator": "p. 2, Married Persons Filing Separately, \"Generally, married persons must file a joint return to claim the credit\""
+        },
+        "form": "Form 2441 for married filing separately (line A; lines 19 and 21)",
+        "gate": "s3.mfs",
+        "kind": "refusal",
+        "remedy": "A married filing separately return (the credit only when considered unmarried, the exclusion at $2,500) is outside this tool. Married filing jointly is supported."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-refuses",
+     "project": {
+      "input": "s1a.tips",
+      "kind": "unknown",
+      "reason": "no input supplied for s1a.tips"
+     },
+     "project_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "input": "s1a.tips",
+        "kind": "unknown",
+        "reason": "no input supplied for s1a.tips"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.g28.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i2441",
+       "locator": "p. 2, Married Persons Filing Separately, \"Generally, married persons must file a joint return to claim the credit\""
+      },
+      "form": "Form 2441 for married filing separately (line A; lines 19 and 21)",
+      "gate": "s3.mfs",
+      "kind": "refusal",
+      "remedy": "A married filing separately return (the credit only when considered unmarried, the exclusion at $2,500) is outside this tool. Married filing jointly is supported."
+     },
+     "candidate_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.h_taxable_positive",
+       "value": {
+        "cite": {
+         "doc": "i2441",
+         "locator": "p. 2, Married Persons Filing Separately, \"Generally, married persons must file a joint return to claim the credit\""
+        },
+        "form": "Form 2441 for married filing separately (line A; lines 19 and 21)",
+        "gate": "s3.mfs",
+        "kind": "refusal",
+        "remedy": "A married filing separately return (the credit only when considered unmarried, the exclusion at $2,500) is outside this tool. Married filing jointly is supported."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 5884560,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sdtw.line47",
+       "value": {
+        "cents": 5884560,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.qdcg.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f2441.line14",
+      "kind": "unknown",
+      "reason": "no input supplied for f2441.line14"
+     },
+     "candidate_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.h_taxable_positive",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_preferential",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_sdtw_required",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_taxable_positive",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_preferential",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_sdtw_required",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 14, Head of Household"
+      },
+      "form": "Head of household filing status",
+      "gate": "household.hoh_fails",
+      "kind": "refusal",
+      "remedy": "Head of household is checked but the tests are not met; you must be unmarried or considered unmarried, have paid over half the cost of keeping up your home, and have a qualifying person."
+     },
+     "project_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 14, Head of Household"
+        },
+        "form": "Head of household filing status",
+        "gate": "household.hoh_fails",
+        "kind": "refusal",
+        "remedy": "Head of household is checked but the tests are not met; you must be unmarried or considered unmarried, have paid over half the cost of keeping up your home, and have a qualifying person."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.sales.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i2441",
+       "locator": "p. 2, Married Persons Filing Separately, \"Generally, married persons must file a joint return to claim the credit\""
+      },
+      "form": "Form 2441 for married filing separately (line A; lines 19 and 21)",
+      "gate": "s3.mfs",
+      "kind": "refusal",
+      "remedy": "A married filing separately return (the credit only when considered unmarried, the exclusion at $2,500) is outside this tool. Married filing jointly is supported."
+     },
+     "candidate_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.h_taxable_positive",
+       "value": {
+        "cite": {
+         "doc": "i2441",
+         "locator": "p. 2, Married Persons Filing Separately, \"Generally, married persons must file a joint return to claim the credit\""
+        },
+        "form": "Form 2441 for married filing separately (line A; lines 19 and 21)",
+        "gate": "s3.mfs",
+        "kind": "refusal",
+        "remedy": "A married filing separately return (the credit only when considered unmarried, the exclusion at $2,500) is outside this tool. Married filing jointly is supported."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 176300,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.non_sdtw_tax",
+       "value": {
+        "cents": 176300,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.scveh.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f2441.line14",
+      "kind": "unknown",
+      "reason": "no input supplied for f2441.line14"
+     },
+     "candidate_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.h_taxable_positive",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_preferential",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_taxable_positive",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_preferential",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_taxable_positive",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.h_preferential",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 103, \"If you received tips as an employee in more than one occupation for the same employer, only those tips that were received in an occupation on the list ... are considered qualified tips. Do not include tips received in occupations that are not included on this list in line 4a, 4b, or 4c\""
+      },
+      "form": "Qualified tips from an employer where some tips were not qualified tips",
+      "gate": "person[taxpayer].tipjob[emp0].mixed",
+      "kind": "refusal",
+      "remedy": "Splitting one employer's reported tips between qualified and nonqualified tips is outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 103, \"If you received tips as an employee in more than one occupation for the same employer, only those tips that were received in an occupation on the list ... are considered qualified tips. Do not include tips received in occupations that are not included on this list in line 4a, 4b, or 4c\""
+        },
+        "form": "Qualified tips from an employer where some tips were not qualified tips",
+        "gate": "person[taxpayer].tipjob[emp0].mixed",
+        "kind": "refusal",
+        "remedy": "Splitting one employer's reported tips between qualified and nonqualified tips is outside this tool."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage12.refuse.tips_mixed",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f2441.line14",
+      "kind": "unknown",
+      "reason": "no input supplied for f2441.line14"
+     },
+     "candidate_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.h_taxable_positive",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_preferential",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_taxable_positive",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_preferential",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_taxable_positive",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.h_preferential",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "n-25-69",
+       "locator": "pp. 22\u201325, Section III.B.2, methods (E), (F) and (G)"
+      },
+      "form": "Qualified overtime compensation by a reasonable-method estimate, at an overtime rate other than one and one-half or two times the regular rate, or under a special FLSA overtime rule",
+      "gate": "person[taxpayer].otjob[ot0].refused",
+      "kind": "refusal",
+      "remedy": "Figure the amount by the method that applies to you; this tool covers the employer-reported amount and methods 1 to 4 at time-and-a-half or double time."
+     },
+     "project_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "cite": {
+         "doc": "n-25-69",
+         "locator": "pp. 22\u201325, Section III.B.2, methods (E), (F) and (G)"
+        },
+        "form": "Qualified overtime compensation by a reasonable-method estimate, at an overtime rate other than one and one-half or two times the regular rate, or under a special FLSA overtime rule",
+        "gate": "person[taxpayer].otjob[ot0].refused",
+        "kind": "refusal",
+        "remedy": "Figure the amount by the method that applies to you; this tool covers the employer-reported amount and methods 1 to 4 at time-and-a-half or double time."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage12.refuse.ot_other_method",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f2441.line14",
+      "kind": "unknown",
+      "reason": "no input supplied for f2441.line14"
+     },
+     "candidate_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.h_taxable_positive",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_preferential",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_taxable_positive",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_preferential",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_taxable_positive",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.h_preferential",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "n-25-69",
+       "locator": "pp. 22\u201325, Section III.B.2, methods (E), (F) and (G)"
+      },
+      "form": "Qualified overtime compensation by a reasonable-method estimate, at an overtime rate other than one and one-half or two times the regular rate, or under a special FLSA overtime rule",
+      "gate": "person[taxpayer].otjob[ot0].refused",
+      "kind": "refusal",
+      "remedy": "Figure the amount by the method that applies to you; this tool covers the employer-reported amount and methods 1 to 4 at time-and-a-half or double time."
+     },
+     "project_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "cite": {
+         "doc": "n-25-69",
+         "locator": "pp. 22\u201325, Section III.B.2, methods (E), (F) and (G)"
+        },
+        "form": "Qualified overtime compensation by a reasonable-method estimate, at an overtime rate other than one and one-half or two times the regular rate, or under a special FLSA overtime rule",
+        "gate": "person[taxpayer].otjob[ot0].refused",
+        "kind": "refusal",
+        "remedy": "Figure the amount by the method that applies to you; this tool covers the employer-reported amount and methods 1 to 4 at time-and-a-half or double time."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage12.refuse.ot_special_rule",
+      "kind": "fixture"
+     }
+    }
+   ]
+  }
+ ],
+ "log_sha256_at_triage": "4096bfe5e4709ae5fe5de383dffcef9080f1425ffbec3931941141218ace7414",
+ "policy": "executable-triage-v2",
+ "response_sha256": "afd86ab5d93823cc9670d3d78d738411cdc7e1be3520262a76d0ab58aafc8181",
+ "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
+ "state": "evaluated",
+ "subject_sha256": "bf0aa1cb87024fab06d373f7e7dddcfef506741bb427f3f333bddb5e08c575db"
+}

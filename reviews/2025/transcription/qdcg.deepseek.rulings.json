@@ -7,7 +7,71 @@
    "printed": "13",
    "project": "{\"param\": \"qdcg.fifteen_rate_ceiling\"}",
    "second": "{\"from\": {\"param\": \"qdcg.fifteen_rate_ceiling\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}",
-   "ruling": "Ruling: representation; i1040gi (2025) p. 38 QDCGT line 13 prints the five filing-status ceilings. The second tree is max(qdcg.fifteen_rate_ceiling,0), the project tree the ceiling itself. All five archived parameter values are positive (533400, 300000, 600050, 600050, 566700 dollars), so the extra floor is identity for every permitted filing status; no parameter or source formula changed."
+   "ruling": "Ruling: representation; i1040gi p. 38, worksheet line 13: \"Enter: $533,400 if single, $300,000 if married filing separately, $600,050 if married filing jointly or qualifying surviving spouse, $566,700 if head of household.\" Both enter qdcg.fifteen_rate_ceiling; the candidate's floor at zero is a type wrapper over positive parameters (params/2025.yaml). Triage executable-triage-v1 (triage/qdcg.deepseek.json; 1,083 fixtures, 500 generated returns; no partial records, qdcg has no own inputs): all 1,583 comparisons agree. Identical value by reading.",
+   "context": "a74e3f4ed764f439f1fd83da01f1c060f7141118256a84fc09d22a36d955e1d6"
+  },
+  {
+   "printed": "17",
+   "project": "{\"of\": [{\"line\": \"12\"}, {\"line\": \"16\"}], \"op\": \"smaller_of\"}",
+   "second": "{\"expression\": {\"from\": {\"of\": [{\"line\": \"12\"}, {\"line\": \"16\"}], \"op\": \"smaller_of\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}, \"invalid_model_types\": [{\"line\": \"qdcg.line17\", \"message\": \"model changed a published result type\"}]}",
+   "ruling": "Ruling: model error; the returned IR violates the explicitly supplied closed schema/type/reference interface: model changed a published result type. The candidate is rejected and not executed or repaired. This adjudicates the unusable declaration, not the underlying tax reading; source qualification still requires a valid replacement.",
+   "context": "1f1798f1a85e18ec29c0e5589a235833de1fbf86f38709afad35ed7ba482601b"
+  },
+  {
+   "printed": "18",
+   "project": "{\"amount\": {\"line\": \"17\"}, \"op\": \"multiply_rate\", \"rate\": {\"param\": \"qdcg.rate_15\"}}",
+   "second": "{\"expression\": {\"amount\": {\"line\": \"17\"}, \"op\": \"multiply_rate\", \"rate\": {\"param\": \"qdcg.rate_15\"}}, \"invalid_model_types\": [{\"line\": \"qdcg.line17\", \"message\": \"model changed a published result type\"}]}",
+   "ruling": "Ruling: model error; the returned IR violates the explicitly supplied closed schema/type/reference interface: model changed a published result type. The candidate is rejected and not executed or repaired. This adjudicates the unusable declaration, not the underlying tax reading; source qualification still requires a valid replacement.",
+   "context": "1f1798f1a85e18ec29c0e5589a235833de1fbf86f38709afad35ed7ba482601b"
+  },
+  {
+   "printed": "19",
+   "project": "{\"of\": [{\"line\": \"17\"}, {\"line\": \"9\"}], \"op\": \"sum\"}",
+   "second": "{\"expression\": {\"of\": [{\"line\": \"17\"}, {\"line\": \"9\"}], \"op\": \"sum\"}, \"invalid_model_types\": [{\"line\": \"qdcg.line17\", \"message\": \"model changed a published result type\"}]}",
+   "ruling": "Ruling: model error; the returned IR violates the explicitly supplied closed schema/type/reference interface: model changed a published result type. The candidate is rejected and not executed or repaired. This adjudicates the unusable declaration, not the underlying tax reading; source qualification still requires a valid replacement.",
+   "context": "1f1798f1a85e18ec29c0e5589a235833de1fbf86f38709afad35ed7ba482601b"
+  },
+  {
+   "printed": "20",
+   "project": "{\"from\": {\"line\": \"10\"}, \"op\": \"subtract\", \"take\": {\"line\": \"19\"}}",
+   "second": "{\"expression\": {\"from\": {\"line\": \"10\"}, \"op\": \"subtract\", \"take\": {\"line\": \"19\"}}, \"invalid_model_types\": [{\"line\": \"qdcg.line17\", \"message\": \"model changed a published result type\"}]}",
+   "ruling": "Ruling: model error; the returned IR violates the explicitly supplied closed schema/type/reference interface: model changed a published result type. The candidate is rejected and not executed or repaired. This adjudicates the unusable declaration, not the underlying tax reading; source qualification still requires a valid replacement.",
+   "context": "1f1798f1a85e18ec29c0e5589a235833de1fbf86f38709afad35ed7ba482601b"
+  },
+  {
+   "printed": "21",
+   "project": "{\"amount\": {\"line\": \"20\"}, \"op\": \"multiply_rate\", \"rate\": {\"param\": \"qdcg.rate_20\"}}",
+   "second": "{\"expression\": {\"amount\": {\"line\": \"20\"}, \"op\": \"multiply_rate\", \"rate\": {\"param\": \"qdcg.rate_20\"}}, \"invalid_model_types\": [{\"line\": \"qdcg.line17\", \"message\": \"model changed a published result type\"}]}",
+   "ruling": "Ruling: model error; the returned IR violates the explicitly supplied closed schema/type/reference interface: model changed a published result type. The candidate is rejected and not executed or repaired. This adjudicates the unusable declaration, not the underlying tax reading; source qualification still requires a valid replacement.",
+   "context": "1f1798f1a85e18ec29c0e5589a235833de1fbf86f38709afad35ed7ba482601b"
+  },
+  {
+   "printed": "23",
+   "project": "{\"of\": [{\"line\": \"18\"}, {\"line\": \"21\"}, {\"line\": \"22\"}], \"op\": \"sum\"}",
+   "second": "{\"expression\": {\"of\": [{\"line\": \"18\"}, {\"line\": \"21\"}, {\"line\": \"22\"}], \"op\": \"sum\"}, \"invalid_model_types\": [{\"line\": \"qdcg.line17\", \"message\": \"model changed a published result type\"}]}",
+   "ruling": "Ruling: model error; the returned IR violates the explicitly supplied closed schema/type/reference interface: model changed a published result type. The candidate is rejected and not executed or repaired. This adjudicates the unusable declaration, not the underlying tax reading; source qualification still requires a valid replacement.",
+   "context": "1f1798f1a85e18ec29c0e5589a235833de1fbf86f38709afad35ed7ba482601b"
+  },
+  {
+   "printed": "25",
+   "project": "{\"of\": [{\"line\": \"23\"}, {\"line\": \"24\"}], \"op\": \"smaller_of\"}",
+   "second": "{\"expression\": {\"of\": [{\"line\": \"23\"}, {\"line\": \"24\"}], \"op\": \"smaller_of\"}, \"invalid_model_types\": [{\"line\": \"qdcg.line17\", \"message\": \"model changed a published result type\"}]}",
+   "ruling": "Ruling: model error; the returned IR violates the explicitly supplied closed schema/type/reference interface: model changed a published result type. The candidate is rejected and not executed or repaired. This adjudicates the unusable declaration, not the underlying tax reading; source qualification still requires a valid replacement.",
+   "context": "1f1798f1a85e18ec29c0e5589a235833de1fbf86f38709afad35ed7ba482601b"
+  },
+  {
+   "printed": "3",
+   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"line\": \"(question)\"}], \"test\": \"eq\"}, \"then\": {\"ref\": \"sd.distributions\"}}, {\"guard\": {\"args\": [{\"const\": true}, {\"line\": \"(question)\"}], \"test\": \"eq\"}, \"then\": {\"from\": {\"of\": [{\"ref\": \"sd.line15\"}, {\"ref\": \"sd.line16\"}], \"op\": \"smaller_of\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}}], \"op\": \"choose\"}",
+   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"args\": [{\"const\": 0}, {\"ref\": \"sd.line15\"}], \"test\": \"le\"}, {\"args\": [{\"const\": 0}, {\"ref\": \"sd.line16\"}], \"test\": \"le\"}], \"test\": \"all\"}, {\"args\": [{\"const\": true}, {\"line\": \"(question)\"}], \"test\": \"eq\"}], \"test\": \"all\"}, \"then\": {\"from\": {\"of\": [{\"ref\": \"sd.line15\"}, {\"ref\": \"sd.line16\"}], \"op\": \"smaller_of\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}}, {\"guard\": {\"args\": [{\"args\": [{\"args\": [{\"ref\": \"sd.line15\"}, {\"const\": 0}], \"test\": \"lt\"}, {\"args\": [{\"ref\": \"sd.line16\"}, {\"const\": 0}], \"test\": \"lt\"}], \"test\": \"any\"}, {\"args\": [{\"const\": true}, {\"line\": \"(question)\"}], \"test\": \"eq\"}], \"test\": \"all\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": false}, {\"line\": \"(question)\"}], \"test\": \"eq\"}, \"then\": {\"from\": {\"ref\": \"f1040.line7a\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}}], \"op\": \"choose\"}",
+   "ruling": "Ruling: representation; i1040gi p. 38, worksheet line 3: \"Are you filing Schedule D? Yes. Enter the smaller of line 15 or line 16 of Schedule D. If either line 15 or line 16 is blank or a loss, enter -0-. No. Enter the amount from Form 1040 or 1040-SR, line 7a.\" With Schedule D the candidate enters the smaller of lines 15 and 16 when both are nonnegative and zero when either is a loss, which is the project's floored smaller. Without Schedule D the candidate enters line 7a floored and the project enters sd.distributions; when sd.filed is false (no sales, no 28% or section 1250 gain) sd.line16 = sd.line15 = sd.distributions and f1040.line7a = sd.to1040 = sd.line16, so the two are equal. Triage executable-triage-v1 (triage/qdcg.deepseek.json; 1,083 fixtures, 500 generated returns; no partial records, qdcg has no own inputs): all 1,583 comparisons agree (1,469 non-refusing). Project stands.",
+   "context": "a74e3f4ed764f439f1fd83da01f1c060f7141118256a84fc09d22a36d955e1d6"
+  },
+  {
+   "printed": "3",
+   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"line\": \"(question)\"}], \"test\": \"eq\"}, \"then\": {\"ref\": \"sd.distributions\"}}, {\"guard\": {\"args\": [{\"const\": true}, {\"line\": \"(question)\"}], \"test\": \"eq\"}, \"then\": {\"from\": {\"of\": [{\"ref\": \"sd.line15\"}, {\"ref\": \"sd.line16\"}], \"op\": \"smaller_of\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}}], \"op\": \"choose\"}",
+   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"line\": \"(question)\"}], \"test\": \"eq\"}, \"then\": {\"from\": {\"ref\": \"f1040.line7a\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}}, {\"guard\": {\"args\": [{\"const\": true}, {\"line\": \"(question)\"}], \"test\": \"eq\"}, \"then\": {\"from\": {\"of\": [{\"ref\": \"sd.line15\"}, {\"ref\": \"sd.line16\"}], \"op\": \"smaller_of\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}}], \"op\": \"choose\"}",
+   "ruling": "Ruling: representation; i1040gi p.38 QDCG worksheet line3 uses Form1040 line7a when ScheduleD is not filed; in the supported distribution-only route that amount is sd.distributions, while all direct sales/loss routes require ScheduleD. On the filed route, max(min(SD15,SD16),0) equals min(max(SD15,0),max(SD16,0)), the printed loss-to-zero rule. This compares the prepared, supported-return quantities; it does not claim arbitrary inconsistent supplied cross-form subtotals or all partial-input paths are equivalent.",
+   "context": "1f1798f1a85e18ec29c0e5589a235833de1fbf86f38709afad35ed7ba482601b"
   },
   {
    "printed": "3",
@@ -25,7 +89,8 @@
    "printed": "6",
    "project": "{\"param\": \"qdcg.zero_rate_ceiling\"}",
    "second": "{\"from\": {\"param\": \"qdcg.zero_rate_ceiling\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}",
-   "ruling": "Ruling: representation; i1040gi (2025) p. 38 QDCGT line 6 prints the five filing-status ceilings. The second tree is max(qdcg.zero_rate_ceiling,0), the project tree the ceiling itself. All five archived parameter values are positive (48350, 48350, 96700, 96700, 64750 dollars), so the extra floor is identity for every permitted filing status; no parameter or source formula changed."
+   "ruling": "Ruling: representation; i1040gi p. 38, worksheet line 6: \"Enter: $48,350 if single or married filing separately, $96,700 if married filing jointly or qualifying surviving spouse, $64,750 if head of household.\" Both enter qdcg.zero_rate_ceiling; the candidate floors it at zero only to meet the NonNegDollars type, and every value in params/2025.yaml is positive. Triage executable-triage-v1 (triage/qdcg.deepseek.json; 1,083 fixtures, 500 generated returns; no partial records, qdcg has no own inputs): all 1,583 comparisons agree. Identical value by reading.",
+   "context": "a74e3f4ed764f439f1fd83da01f1c060f7141118256a84fc09d22a36d955e1d6"
   }
  ]
 }

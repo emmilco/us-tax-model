@@ -1,0 +1,21 @@
+{
+ "kind": "render",
+ "form": "s1a",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "23",
+   "restated": "Choose — [helper \"Did you pay or accrue interest in 2025 on a loan to buy a new passenger vehicle that you want to deduct?\" = false → helper \"Year parameter sales.zero\"] [helper \"Did you pay or accrue interest in 2025 on a loan to buy a new passenger vehicle that you want to deduct?\" = true → helper \"Add lines 22a and 22b, column (iii), and any further loans on the attached statement\"]",
+   "model": "Line 23 adds column (iii), but the program's column (iii) subtracts only Schedule C interest; IRS column (ii) is 'Deducted on Schedule C, Schedule E, or Schedule F.'",
+   "ruling": "Ruling: scope; i1040gi p. 110, Part IV, before Line 22: \"if you deducted some or all of the interest that you paid or accrued on your loan as interest on Schedule C, Schedule E, or Schedule F, then you can’t deduct that same interest as QPVLI on Schedule 1-A.\" Column (ii) asks only for interest deducted on Schedule C (carloan.col_ii_input, zero without a Schedule C) because Schedule E and Schedule F are outside the tool: the Schedule 1 screen scope.schedule1 refuses rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1) and farm income (Schedule F) (forms/2025/scope.yaml). No return in scope can have the interest deducted on Schedule E or F, so line 23 is not overstated on any computed return.",
+   "context": "24950387d5efd7e1802129a5057b7113ab540c90cc984c5879d7abec51479dda"
+  },
+  {
+   "printed": "36b",
+   "restated": "Choose — [helper \"Your spouse was born before January 2, 1961, and has a valid SSN\" = false → helper \"Year parameter sales.zero\"] [helper \"Your spouse was born before January 2, 1961, and has a valid SSN\" = true → helper \"Line 36b for a spouse born before January 2, 1961, with a valid SSN\"]",
+   "model": "IRS line 36b applies only 'If you are married filing jointly'; the restatement checks only that the spouse was born before January 2, 1961 and has a valid SSN.",
+   "ruling": "Ruling: scope; project retained. Schedule 1-A line 36b: \"If you are married filing jointly, your spouse has a valid social security number (see instructions), and your spouse was born before January 2, 1961, enter the amount from line 35\"; i1040gi p. 110: \"If you are married, you must file a joint return with your spouse to claim this deduction.\" The English gates line 36b on the spouse entry, and a spouse entry exists only on a joint return: household.roster_ok requires one entry for the spouse exactly when filing jointly and any other roster is refused at household.roster_bad (Form 1040 page 1, \"If joint return, spouse’s first name\"; fixtures stage13.refuse.single_with_spouse and stage13.refuse.joint_without_spouse, both refused at household.roster_bad, witnesses in triage/s179.json). A head of household or other non-joint return with a spouse entry is therefore refused, never given line 35; married filing separately is refused for the whole return at s3.mfs. The model read the line 36b English without the roster refusal located elsewhere.",
+   "context": "24950387d5efd7e1802129a5057b7113ab540c90cc984c5879d7abec51479dda"
+  }
+ ]
+}

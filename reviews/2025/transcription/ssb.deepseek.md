@@ -41,7 +41,7 @@ Second:
 {"args": [{"const": 0}, {"input": "ssb.benefits"}], "test": "lt"}
 ```
 
-Ruling: open
+Ruling: representation; i1040gi p. 31, Lines 6a and 6b: "Use the Social Security Benefits Worksheet in these instructions to see if any of your benefits are taxable." Both test whether the box 5 total is positive: the project reads ssb.line1, which copies ssb.benefits; the candidate reads ssb.benefits. Triage executable-triage-v1 (triage/ssb.deepseek.json; 1,083 fixtures, 500 generated returns, 168 partial records): all 1,751 comparisons agree, including the partial records withholding ssb.benefits. Identical by reading.
 
 ### 1 — Enter the total amount from box 5 of all your Forms SSA-1099 and RRB-1099
 Status: **AGREE**
@@ -75,7 +75,7 @@ Second:
 
 Second transcription's note: The worksheet lists Schedule 1 lines 11 through 20, 23 and 25; unsupported Schedule 1 items are refused through scope.schedule1, so this sum uses the supported adjustment lines.
 
-Ruling: open
+Ruling: ambiguity; amb.2025.ira_ssb_copy. i1040gi p. 32, worksheet line 6: "Enter the total of the amounts from Schedule 1, lines 11 through 20, and 23 and 25"; p. 31, Exception: "You made contributions to a traditional IRA for 2025 and you or your spouse were covered by a retirement plan at work or through self-employment. Instead, use the worksheets in Pub. 590-A". The candidate reads s1.line20 literally, the text at issue in the register; the owner's chosen reading reads the worksheet's own copy figured on the no-coverage path (ssb.ira_line20, person.ira_ssb), because line 20 depends on Form 1040 line 9 and so on the taxable benefits. The other operands are the same (lines 12, 14 and 23 refused by scope.schedule1). Triage executable-triage-v1 (triage/ssb.deepseek.json; 1,083 fixtures, 500 generated returns, 168 partial records): 1,738 of 1,751 agree. The 11 candidate-unknown records (stage16.ira.i1, $14,000.00; i2-i5, i8) show the cycle: the explained witness runs s1.line20 -> ira.line20 -> person.ira_line12 back into the candidate's line 18, which needs ssb.lump_sum on a return without benefits. Project-refuses 1 (stage16.refuse.ira.ssb_covered, ira.cov_gate: the copy's refusal for the p. 31 exception) and candidate-refuses 1 (stage16.refuse.ira.deduct_less, project $5,000.00: ira.less_gate on s1.line20, which the project also refuses) are refusals of returns the project refuses. Project stands under the register.
 
 ### 7 — Is the amount on line 6 less than the amount on line 5? If yes, subtract line 6 from line 
 Status: **AGREE**
@@ -97,7 +97,7 @@ Second:
 
 Second transcription's note: For married filing separately who lived with their spouse at any time in 2025, lines 8 through 15 are skipped; line 8 is encoded as zero for that case.
 
-Ruling: open
+Ruling: representation; i1040gi p. 32, worksheet line 8: "Married filing jointly, enter $32,000; Single, head of household, qualifying surviving spouse, or married filing separately and you lived apart from your spouse for all of 2025, enter $25,000; Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15". Both give $32,000 joint, $25,000 single, head of household, qualifying surviving spouse or separate-and-apart, and zero (the skipped line) for separate-and-together; the guards are only grouped differently. Triage executable-triage-v1 (triage/ssb.deepseek.json; 1,083 fixtures, 500 generated returns, 168 partial records): all 1,751 comparisons agree, including partial records withholding ssb.lived_apart. Equivalent by reading and on the sample.
 
 ### 9 — Is the amount on line 8 less than the amount on line 7? If yes, subtract line 8 from line 
 Status: **AGREE**
@@ -119,7 +119,7 @@ Second:
 
 Second transcription's note: For married filing separately who lived with their spouse at any time in 2025, lines 8 through 15 are skipped; line 10 is encoded as zero for that case.
 
-Ruling: open
+Ruling: representation; i1040gi p. 32, worksheet line 10: "Enter $12,000 if married filing jointly; $9,000 if single, head of household, qualifying surviving spouse, or married filing separately and you lived apart from your spouse for all of 2025". Same status mapping as the project, with zero for the skipped separate-and-together case; guards grouped differently. Triage executable-triage-v1 (triage/ssb.deepseek.json; 1,083 fixtures, 500 generated returns, 168 partial records): all 1,751 comparisons agree. Equivalent by reading and on the sample.
 
 ### 11 — Subtract line 10 from line 9. If zero or less, enter -0-
 Status: **AGREE**
@@ -153,7 +153,7 @@ Second:
 
 Second transcription's note: When married filing separately and the taxpayer lived with their spouse at any time in 2025, the line 8 instruction says to skip lines 8 through 15, multiply line 7 by 85%, and enter that on line 16.
 
-Ruling: open
+Ruling: scope; i1040gi p. 32, line 8: "Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16", and p. 31, Line 6c: "If any of your benefits are taxable for 2025 and they include a lump-sum benefit payment that was for an earlier year, you may be able to reduce the taxable amount with the lump-sum election". Both sides choose line 7 times 85% for separate-and-together and lines 14 plus 15 otherwise (equivalent guards). The differences are where the lump-sum refusal sits: the project refuses on line 2 (ssb.lump_sum, cited p. 31 Line 6c), the candidate only on line 18. Triage executable-triage-v1 (triage/ssb.deepseek.json; 1,083 fixtures, 500 generated returns, 168 partial records): 1,722 of 1,751 agree. Project-refuses 5 (classm.eic.6, stage10.refuse.lump_sum, generated 131 and 302: lump-sum election, candidate $27,764.40 etc.; stage16.refuse.ira.ssb_covered: ira.cov_gate); the candidate refuses line 18 (6b) on the same lump-sum returns, so no printed amount differs. Project-unknown 23 withhold ssb.lump_sum, which the candidate's line 18 also needs. Candidate-refuses 1 (stage16.refuse.ira.deduct_less) comes from line 6 (ambiguity ruled there). Project stands.
 
 ### 17 — Multiply line 1 by 85% (0.85)
 Status: **AGREE**
@@ -173,7 +173,7 @@ Second:
 {"of": [{"line": "16"}, {"line": "17"}], "op": "smaller_of"}
 ```
 
-Ruling: open
+Ruling: model error; i1040gi p. 31, Line 6c: "If any of your benefits are taxable for 2025 and they include a lump-sum benefit payment that was for an earlier year, you may be able to reduce the taxable amount with the lump-sum election", and p. 31, Lines 6a and 6b: the worksheet is used "to see if any of your benefits are taxable". The candidate has no guard for a return without benefits and declares its ssb.lump_sum refusal on line 18 unconditionally, so it asks the lump-sum election of every return, an answer the text needs only when there are benefits; the project enters zero without benefits (ssb.has_benefits). Triage executable-triage-v1 (triage/ssb.deepseek.json; 1,083 fixtures, 500 generated returns, 168 partial records): 529 of 1,751 agree. 986 candidate-unknown records are returns without benefits needing ssb.lump_sum (classm.f2441.1.deepseek, project $0.00). 232 candidate-refuses records are returns without benefits where the candidate reads the Form 1040 income lines through line 3 and meets gates the project refuses elsewhere (classm.w2.1.deepseek f2441.line14_bad, classm.f8889.4.deepseek sd.other_forms, classm.asset.3 sb.unsupported, classm.carloan.1 sb.form8938), scope. Project-refuses 4 (stage16.refuse.ira.ssb_covered ira.cov_gate; partial classm.dcprov.1, classm.otjob.1, classm.w2.1 on other cited gates where the candidate is unknown) are refusals, scope. Project stands.
 
 ## Refusal gates listed by the second transcription
 

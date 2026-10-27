@@ -1,0 +1,68 @@
+{
+ "bank": null,
+ "errors": [
+  {
+   "line": "sli.line1",
+   "message": "malformed expression (project schema): data/of/1 must be string, data/of/1 must be string, data/of/1 must be string"
+  },
+  {
+   "line": "sli.line1",
+   "message": "sli.sli.line1: malformed expression"
+  },
+  {
+   "line": "sli.line9",
+   "message": "sli.sli.line9: declared NonNegDollars but the expression does not prove non-negativity"
+  }
+ ],
+ "failures": [],
+ "family": "deepseek",
+ "form": "sli",
+ "lines": [
+  {
+   "candidate": "sli.deduction",
+   "handle": "sli.deduction",
+   "open_at_triage": true,
+   "project": "sli.deduction",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sli.line5",
+   "handle": "5",
+   "open_at_triage": true,
+   "project": "sli.line5",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sli.line6",
+   "handle": "6",
+   "open_at_triage": true,
+   "project": "sli.line6",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sli.line8",
+   "handle": "8",
+   "open_at_triage": true,
+   "project": "sli.line8",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sli.line9",
+   "handle": "9",
+   "open_at_triage": true,
+   "project": "sli.line9",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  }
+ ],
+ "log_sha256_at_triage": "02b377725b6ef45867266774b8eb588ab560b1f7d0df30efc34ba3aff2fdf069",
+ "policy": "executable-triage-v1",
+ "response_sha256": "ec920ec944ad9e61a1c303792a3a613b187c4d2177c6eb3277a1e903d1034c3f",
+ "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
+ "state": "invalid",
+ "subject_sha256": "ff76da6d126a9abdc6f51becc98940ac3a40b516122237f06b10ea1df0276faf"
+}

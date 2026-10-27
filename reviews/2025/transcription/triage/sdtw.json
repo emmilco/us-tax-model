@@ -1,0 +1,249 @@
+{
+ "bank": null,
+ "errors": [
+  {
+   "line": "sdtw.line44",
+   "message": "model changed a published result type"
+  },
+  {
+   "line": "sdtw.line46",
+   "message": "model changed a published result type"
+  }
+ ],
+ "failures": [],
+ "family": "claude",
+ "form": "sdtw",
+ "lines": [
+  {
+   "candidate": "sdtw.line4",
+   "handle": "4",
+   "open_at_triage": true,
+   "project": "sdtw.line4",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sdtw.line15",
+   "handle": "15",
+   "open_at_triage": true,
+   "project": "sdtw.line15",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sdtw.line23",
+   "handle": "23",
+   "open_at_triage": true,
+   "project": "sdtw.line23",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sdtw.line24",
+   "handle": "24",
+   "open_at_triage": true,
+   "project": "sdtw.line24",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sdtw.line25",
+   "handle": "25",
+   "open_at_triage": true,
+   "project": "sdtw.line25",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sdtw.line26",
+   "handle": "26",
+   "open_at_triage": true,
+   "project": "sdtw.line26",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sdtw.line27",
+   "handle": "27",
+   "open_at_triage": true,
+   "project": "sdtw.line27",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sdtw.line28",
+   "handle": "28",
+   "open_at_triage": true,
+   "project": "sdtw.line28",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sdtw.line29",
+   "handle": "29",
+   "open_at_triage": true,
+   "project": "sdtw.line29",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sdtw.line31",
+   "handle": "31",
+   "open_at_triage": true,
+   "project": "sdtw.line31",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sdtw.line32",
+   "handle": "32",
+   "open_at_triage": true,
+   "project": "sdtw.line32",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sdtw.line34",
+   "handle": "34",
+   "open_at_triage": true,
+   "project": "sdtw.line34",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sdtw.line35",
+   "handle": "35",
+   "open_at_triage": true,
+   "project": "sdtw.line35",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sdtw.line36",
+   "handle": "36",
+   "open_at_triage": true,
+   "project": "sdtw.line36",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sdtw.line37",
+   "handle": "37",
+   "open_at_triage": true,
+   "project": "sdtw.line37",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sdtw.line38",
+   "handle": "38",
+   "open_at_triage": true,
+   "project": "sdtw.line38",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sdtw.line39",
+   "handle": "39",
+   "open_at_triage": true,
+   "project": "sdtw.line39",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sdtw.line40",
+   "handle": "40",
+   "open_at_triage": true,
+   "project": "sdtw.line40",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sdtw.line41",
+   "handle": "41",
+   "open_at_triage": true,
+   "project": "sdtw.line41",
+   "shown_when": "sdtw.show41_43",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sdtw.line42",
+   "handle": "42",
+   "open_at_triage": true,
+   "project": "sdtw.line42",
+   "shown_when": "sdtw.show41_43",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sdtw.line43",
+   "handle": "43",
+   "open_at_triage": true,
+   "project": "sdtw.line43",
+   "shown_when": "sdtw.show41_43",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sdtw.line44",
+   "handle": "44",
+   "open_at_triage": true,
+   "project": "sdtw.line44",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sdtw.line45",
+   "handle": "45",
+   "open_at_triage": true,
+   "project": "sdtw.line45",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sdtw.line46",
+   "handle": "46",
+   "open_at_triage": true,
+   "project": "sdtw.line46",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sdtw.line47",
+   "handle": "47",
+   "open_at_triage": true,
+   "project": "sdtw.line47",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  }
+ ],
+ "log_sha256_at_triage": "0611c397984c4cd2f64829ff97e0a50e0e74a595f0214710f4e566f265f2b93d",
+ "policy": "executable-triage-v2",
+ "response_sha256": "a0b067e48c418564474b939ce08aee3e24ad9112d4d30ce344eed6206841756f",
+ "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
+ "state": "invalid",
+ "subject_sha256": "cb0e91b7d153d0a32b27a4d832d94568504fe02e5a5484bc8f24319203eb5fed"
+}

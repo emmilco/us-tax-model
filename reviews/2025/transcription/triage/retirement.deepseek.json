@@ -1,0 +1,164 @@
+{
+ "bank": null,
+ "errors": [
+  {
+   "line": "retirement.roth_bad",
+   "message": "malformed expression (project schema): data/all/1/not must be object, data/all/1/not must be object, data/all/1/not must be object"
+  },
+  {
+   "line": "retirement.annuity_with_cost",
+   "message": "malformed expression (project schema): data/all/0 must be object, data/all/0 must be object, data/all/0 must be object"
+  },
+  {
+   "line": "retirement.annuity_rollover",
+   "message": "model changed a published result type"
+  },
+  {
+   "line": "retirement.ira_taxable",
+   "message": "malformed expression (project schema): data/alternatives/1/guard/all/0/not must be object, data/alternatives/1/guard/all/0/not must be object, data/alternatives/1/guard/all/0/not must be object"
+  },
+  {
+   "line": "retirement.sav_excluded",
+   "message": "malformed expression (project schema): data/any/0 must be object, data/any/0 must be object, data/any/0 must be object"
+  },
+  {
+   "line": "retirement.roth_bad",
+   "message": "retirement.retirement.roth_bad: malformed expression"
+  },
+  {
+   "line": "retirement.annuity_with_cost",
+   "message": "retirement.retirement.annuity_with_cost: malformed expression"
+  },
+  {
+   "line": "retirement.ira_taxable",
+   "message": "retirement.retirement.ira_taxable: malformed expression"
+  },
+  {
+   "line": "retirement.sav_excluded",
+   "message": "retirement.retirement.sav_excluded: malformed expression"
+  },
+  {
+   "line": "retirement.smw4_table1",
+   "message": "retirement.retirement.smw4_table1: comparison operands have incompatible types"
+  },
+  {
+   "line": "retirement.smw4_table1",
+   "message": "retirement.retirement.smw4_table1: comparison operands have incompatible types"
+  },
+  {
+   "line": "retirement.smw4_table1",
+   "message": "retirement.retirement.smw4_table1: comparison operands have incompatible types"
+  },
+  {
+   "line": "retirement.smw4_table1",
+   "message": "retirement.retirement.smw4_table1: comparison operands have incompatible types"
+  },
+  {
+   "line": "retirement.smw4_table1",
+   "message": "retirement.retirement.smw4_table1: comparison operands have incompatible types"
+  },
+  {
+   "line": "retirement.smw4_table1",
+   "message": "retirement.retirement.smw4_table1: comparison operands have incompatible types"
+  },
+  {
+   "line": "retirement.smw4_table1",
+   "message": "retirement.retirement.smw4_table1: comparison operands have incompatible types"
+  },
+  {
+   "line": "retirement.smw4_table1",
+   "message": "retirement.retirement.smw4_table1: comparison operands have incompatible types"
+  },
+  {
+   "line": "retirement.smw4_table2",
+   "message": "retirement.retirement.smw4_table2: comparison operands have incompatible types"
+  },
+  {
+   "line": "retirement.smw4_table2",
+   "message": "retirement.retirement.smw4_table2: comparison operands have incompatible types"
+  },
+  {
+   "line": "retirement.smw4_table2",
+   "message": "retirement.retirement.smw4_table2: comparison operands have incompatible types"
+  },
+  {
+   "line": "retirement.smw4_table2",
+   "message": "retirement.retirement.smw4_table2: comparison operands have incompatible types"
+  },
+  {
+   "line": "retirement.smw4_table2",
+   "message": "retirement.retirement.smw4_table2: comparison operands have incompatible types"
+  },
+  {
+   "line": "retirement.smw4_table2",
+   "message": "retirement.retirement.smw4_table2: comparison operands have incompatible types"
+  },
+  {
+   "line": "retirement.smw4_table2",
+   "message": "retirement.retirement.smw4_table2: comparison operands have incompatible types"
+  },
+  {
+   "line": "retirement.smw4_table2",
+   "message": "retirement.retirement.smw4_table2: comparison operands have incompatible types"
+  }
+ ],
+ "failures": [],
+ "family": "deepseek",
+ "form": "retirement",
+ "lines": [
+  {
+   "candidate": "retirement.is_ira",
+   "handle": "retirement.is_ira",
+   "open_at_triage": false,
+   "project": "retirement.is_ira",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "retirement.has_rollover",
+   "handle": "retirement.has_rollover",
+   "open_at_triage": true,
+   "project": "retirement.has_rollover",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "retirement.taxable",
+   "handle": "retirement.taxable",
+   "open_at_triage": true,
+   "project": "retirement.taxable",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "retirement.amount_a",
+   "handle": "retirement.amount_a",
+   "open_at_triage": true,
+   "project": "retirement.amount_a",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "retirement.sav_amount",
+   "handle": "retirement.sav_amount",
+   "open_at_triage": true,
+   "project": "retirement.sav_amount",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "retirement.smw4",
+   "handle": "(SMW 4)",
+   "open_at_triage": false,
+   "project": "retirement.smw4",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  }
+ ],
+ "log_sha256_at_triage": "c6fc4497690d311b10858e15b9a6dacb4b48da179d0408112fefd9e8b5f7d9fc",
+ "policy": "executable-triage-v1",
+ "response_sha256": "da3f1d37e43a7a3699cd44f620bb81b9aebb9ec86663661d3f53a31035756ed8",
+ "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
+ "state": "invalid",
+ "subject_sha256": "077c16edad21104b88f065fbd2cf4fbbd3cf53d86ebb73906d8a5a5d89fd0d82"
+}

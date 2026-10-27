@@ -398,8 +398,8 @@ bank:
       if you are not sure. Unknown may be null; do not guess.
   - input: f1040.line25b
     order: 10
-    help: Total box 4 withholding shown on your 1099s. Enter cents for money. Enter null if you do not know; it
-      never becomes zero.
+    help: Total withholding shown in box 4 of your Forms 1099 (1099-R, 1099-INT, 1099-DIV, 1099-G and others), box 6 of
+      Form SSA-1099 and box 10 of Form RRB-1099. Enter cents for money. Enter null if you do not know; it never becomes zero.
   - input: f1040.line25c
     order: 10
     help: See the line 25c instructions if any other form reports income tax withheld. Enter cents for money; enter
@@ -503,6 +503,18 @@ bank:
       do not guess. Married filing separately and unsupported items are refused with citations.
   - input: dependent.parent_home_paid
     order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: dependent.born_died
+    order: 3
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: dependent.placed
+    order: 3
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: dependent.part_year_home
+    order: 3
     help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
       do not guess. Married filing separately and unsupported items are refused with citations.
   - input: f2441.care

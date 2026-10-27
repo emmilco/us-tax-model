@@ -1,0 +1,91 @@
+{
+ "kind": "transcription",
+ "form": "f8995a",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "27",
+   "project": "{\"const\": 0}",
+   "second": "{\"expression\": {\"param\": \"qbi.zero\"}, \"invalid_model_types\": [{\"line\": \"f8995a.line27\", \"message\": \"f8995a.f8995a.line27: parameter 'qbi.zero' does not exist\"}]}",
+   "ruling": "Ruling: model error; the returned IR violates the explicitly supplied closed schema/type/reference interface: f8995a.f8995a.line27: parameter 'qbi.zero' does not exist. The candidate is rejected and not executed or repaired. This adjudicates the unusable declaration, not the underlying tax reading; source qualification still requires a valid replacement.",
+   "context": "3234fe3e29e0ef377d46e0db48637d18f7fde4dd09cec21b1fffb9dbb4081653"
+  },
+  {
+   "printed": "28",
+   "project": "{\"input\": \"qbi.dividends\"}",
+   "second": "{\"ref\": \"qbi.dividends\"}",
+   "ruling": "Ruling: representation; i8995 p. 3: qualified REIT dividends are \"reported to you on Form 1099-DIV, line 5.\" The candidate copies qbi.dividends and refuses on qbi.unsupported, exactly the project's qbi.eligible (copy of qbi.dividends with the qbi.unsupported refusal); the log shows only the input-versus-reference form of the same id. The DeepSeek reply fails validation only on lines 27, 29 and 38 (\"parameter 'qbi.zero' does not exist\": the reply wrote {op: param, ref: qbi.zero} for a published line; qbi.zero is listed in the prompt as a qbi line, params/2025.yaml has no such parameter, and the Claude reply used copy), none of which is in this line's dependency closure; triage could not execute the reply (triage/f8995a.deepseek.json, state invalid, executable-triage-v1), so this ruling is on reading. The identical Claude candidate agreed on all 1,583 comparisons (triage/f8995a.json). Project stands.",
+   "context": "3234fe3e29e0ef377d46e0db48637d18f7fde4dd09cec21b1fffb9dbb4081653"
+  },
+  {
+   "printed": "29",
+   "project": "{\"const\": 0}",
+   "second": "{\"expression\": {\"param\": \"qbi.zero\"}, \"invalid_model_types\": [{\"line\": \"f8995a.line29\", \"message\": \"f8995a.f8995a.line29: parameter 'qbi.zero' does not exist\"}]}",
+   "ruling": "Ruling: model error; the returned IR violates the explicitly supplied closed schema/type/reference interface: f8995a.f8995a.line29: parameter 'qbi.zero' does not exist. The candidate is rejected and not executed or repaired. This adjudicates the unusable declaration, not the underlying tax reading; source qualification still requires a valid replacement.",
+   "context": "3234fe3e29e0ef377d46e0db48637d18f7fde4dd09cec21b1fffb9dbb4081653"
+  },
+  {
+   "printed": "30",
+   "project": "{\"line\": \"28\"}",
+   "second": "{\"expression\": {\"from\": {\"line\": \"28\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"29\"}}, \"invalid_model_types\": [{\"line\": \"f8995a.line29\", \"message\": \"f8995a.f8995a.line29: parameter 'qbi.zero' does not exist\"}]}",
+   "ruling": "Ruling: model error; the returned IR violates the explicitly supplied closed schema/type/reference interface: f8995a.f8995a.line29: parameter 'qbi.zero' does not exist. The candidate is rejected and not executed or repaired. This adjudicates the unusable declaration, not the underlying tax reading; source qualification still requires a valid replacement.",
+   "context": "3234fe3e29e0ef377d46e0db48637d18f7fde4dd09cec21b1fffb9dbb4081653"
+  },
+  {
+   "printed": "31",
+   "project": "{\"amount\": {\"line\": \"30\"}, \"op\": \"multiply_rate\", \"rate\": {\"param\": \"qbi.rate\"}}",
+   "second": "{\"expression\": {\"amount\": {\"line\": \"30\"}, \"op\": \"multiply_rate\", \"rate\": {\"param\": \"qbi.rate\"}}, \"invalid_model_types\": [{\"line\": \"f8995a.line29\", \"message\": \"f8995a.f8995a.line29: parameter 'qbi.zero' does not exist\"}]}",
+   "ruling": "Ruling: model error; the returned IR violates the explicitly supplied closed schema/type/reference interface: f8995a.f8995a.line29: parameter 'qbi.zero' does not exist. The candidate is rejected and not executed or repaired. This adjudicates the unusable declaration, not the underlying tax reading; source qualification still requires a valid replacement.",
+   "context": "3234fe3e29e0ef377d46e0db48637d18f7fde4dd09cec21b1fffb9dbb4081653"
+  },
+  {
+   "printed": "32",
+   "project": "{\"of\": [{\"line\": \"27\"}, {\"line\": \"31\"}], \"op\": \"sum\"}",
+   "second": "{\"expression\": {\"of\": [{\"line\": \"27\"}, {\"line\": \"31\"}], \"op\": \"sum\"}, \"invalid_model_types\": [{\"line\": \"f8995a.line27\", \"message\": \"f8995a.f8995a.line27: parameter 'qbi.zero' does not exist\"}, {\"line\": \"f8995a.line29\", \"message\": \"f8995a.f8995a.line29: parameter 'qbi.zero' does not exist\"}]}",
+   "ruling": "Ruling: model error; the returned IR violates the explicitly supplied closed schema/type/reference interface: f8995a.f8995a.line27: parameter 'qbi.zero' does not exist / f8995a.f8995a.line29: parameter 'qbi.zero' does not exist. The candidate is rejected and not executed or repaired. This adjudicates the unusable declaration, not the underlying tax reading; source qualification still requires a valid replacement.",
+   "context": "3234fe3e29e0ef377d46e0db48637d18f7fde4dd09cec21b1fffb9dbb4081653"
+  },
+  {
+   "printed": "33",
+   "project": "{\"from\": {\"ref\": \"f1040.line11b\"}, \"op\": \"subtract_floor0\", \"take\": {\"of\": [{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"input\": \"sa.spouse_itemizes\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"ref\": \"sa.line17\"}, {\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"sa.spouse_itemizes\"}], \"test\": \"eq\"}], \"test\": \"all\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"input\": \"sa.spouse_itemizes\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"of\": [{\"amount\": {\"param\": \"sa.standard_extra\"}, \"count\": {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"args\": [{\"const\": false}, {\"ref\": \"person.died_before_65\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"ref\": \"person.age65\"}], \"test\": \"eq\"}], \"test\": \"all\"}}, \"op\": \"multiply_count\"}, {\"amount\": {\"param\": \"sa.standard_extra\"}, \"count\": {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.blind\"}], \"test\": \"eq\"}}, \"op\": \"multiply_count\"}, {\"param\": \"sa.standard_base\"}], \"op\": \"sum\"}}], \"op\": \"choose\"}], \"test\": \"le\"}, {\"args\": [{\"const\": true}, {\"input\": \"sa.elect_itemize\"}], \"test\": \"ne\"}], \"test\": \"all\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"sa.spouse_itemizes\"}], \"test\": \"eq\"}], \"test\": \"all\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"input\": \"sa.spouse_itemizes\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"of\": [{\"amount\": {\"param\": \"sa.standard_extra\"}, \"count\": {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"args\": [{\"const\": false}, {\"ref\": \"person.died_before_65\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"ref\": \"person.age65\"}], \"test\": \"eq\"}], \"test\": \"all\"}}, \"op\": \"multiply_count\"}, {\"amount\": {\"param\": \"sa.standard_extra\"}, \"count\": {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.blind\"}], \"test\": \"eq\"}}, \"op\": \"multiply_count\"}, {\"param\": \"sa.standard_base\"}], \"op\": \"sum\"}}], \"op\": \"choose\"}}, {\"guard\": {\"args\": [{\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"sa.spouse_itemizes\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": true}, {\"input\": \"sa.elect_itemize\"}], \"test\": \"eq\"}, {\"args\": [{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"sa.spouse_itemizes\"}], \"test\": \"eq\"}], \"test\": \"all\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"input\": \"sa.spouse_itemizes\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"of\": [{\"amount\": {\"param\": \"sa.standard_extra\"}, \"count\": {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"args\": [{\"const\": false}, {\"ref\": \"person.died_before_65\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"ref\": \"person.age65\"}], \"test\": \"eq\"}], \"test\": \"all\"}}, \"op\": \"multiply_count\"}, {\"amount\": {\"param\": \"sa.standard_extra\"}, \"count\": {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.blind\"}], \"test\": \"eq\"}}, \"op\": \"multiply_count\"}, {\"param\": \"sa.standard_base\"}], \"op\": \"sum\"}}], \"op\": \"choose\"}, {\"ref\": \"sa.line17\"}], \"test\": \"lt\"}], \"test\": \"any\"}, \"then\": {\"ref\": \"sa.line17\"}}], \"op\": \"choose\"}, {\"ref\": \"f1040.line13b\"}], \"op\": \"sum\"}}",
+   "second": "{\"from\": {\"ref\": \"f1040.line11a\"}, \"op\": \"subtract_floor0\", \"take\": {\"of\": [{\"ref\": \"f1040.line12e\"}, {\"ref\": \"f1040.line13b\"}], \"op\": \"sum\"}}",
+   "ruling": "Ruling: scope; i8995a p. 5, Taxable income before QBI deduction (i8995 p. 4, Line 11): \"Form 1040 or 1040-SR, line 11a, minus lines 12e and 13b.\" The candidate takes line 11a minus the sum of lines 12e and 13b, floored at zero, which is the same arithmetic as the project (sa.agi = f1040.line11b = line 11a, less sa.deduction and line 13b, floored); the only possible difference is the cited household.hoh_fails refusal that f1040.line12e carries and the project's line does not read, on returns the project refuses at line 12e. The DeepSeek reply fails validation only on lines 27, 29 and 38 (\"parameter 'qbi.zero' does not exist\": the reply wrote {op: param, ref: qbi.zero} for a published line; qbi.zero is listed in the prompt as a qbi line, params/2025.yaml has no such parameter, and the Claude reply used copy), none of which is in this line's dependency closure; triage could not execute the reply (triage/f8995a.deepseek.json, state invalid, executable-triage-v1), so this ruling is on reading. The arithmetically identical Claude candidate (11a - 12e - 13b, floored) differed only by 43 candidate refusals on household.hoh_fails returns (triage/f8995a.json). Project stands.",
+   "context": "3234fe3e29e0ef377d46e0db48637d18f7fde4dd09cec21b1fffb9dbb4081653"
+  },
+  {
+   "printed": "34",
+   "project": "{\"of\": [{\"from\": {\"of\": [{\"ref\": \"sd.line15\"}, {\"ref\": \"sd.line16\"}], \"op\": \"smaller_of\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}, {\"ref\": \"f1040.line3a\"}], \"op\": \"sum\"}",
+   "second": "{\"of\": [{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"ref\": \"qdcg.schedule_d_filed\"}], \"test\": \"eq\"}, \"then\": {\"from\": {\"ref\": \"f1040.line7a\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}}, {\"guard\": {\"args\": [{\"const\": true}, {\"ref\": \"qdcg.schedule_d_filed\"}], \"test\": \"eq\"}, \"then\": {\"from\": {\"of\": [{\"ref\": \"sd.line15\"}, {\"ref\": \"sd.line16\"}], \"op\": \"smaller_of\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}}], \"op\": \"choose\"}, {\"ref\": \"f1040.line3a\"}], \"op\": \"sum\"}",
+   "ruling": "Ruling: representation; i8995a p. 7, Line 34 (i8995 p. 4, Line 12): \"If you're not required to file Schedule D (Form 1040), your net capital gain is the amount reported on Form 1040 ... line 7a. If you file Schedule D (Form 1040), your net capital gain is the smaller of Schedule D (Form 1040), line 15 or 16, unless line 15 or 16 is zero or less\". The candidate chooses on qdcg.schedule_d_filed (a copy of sd.filed) between line 7a floored and qdcg.schedule_d_net_gain (sd.net_gain, the floored smaller of lines 15 and 16), plus line 3a; without Schedule D the project's smaller of sd.line15 and sd.line16 equals sd.distributions, which is also f1040.line7a (sd.to1040 = sd.line16), so both give the same amount. The DeepSeek reply fails validation only on lines 27, 29 and 38 (\"parameter 'qbi.zero' does not exist\": the reply wrote {op: param, ref: qbi.zero} for a published line; qbi.zero is listed in the prompt as a qbi line, params/2025.yaml has no such parameter, and the Claude reply used copy), none of which is in this line's dependency closure; triage could not execute the reply (triage/f8995a.deepseek.json, state invalid, executable-triage-v1), so this ruling is on reading. The Claude candidate with the same branch structure agreed on all 1,583 comparisons (triage/f8995a.json). Project stands.",
+   "context": "3234fe3e29e0ef377d46e0db48637d18f7fde4dd09cec21b1fffb9dbb4081653"
+  },
+  {
+   "printed": "37",
+   "project": "{\"of\": [{\"line\": \"32\"}, {\"line\": \"36\"}], \"op\": \"smaller_of\"}",
+   "second": "{\"expression\": {\"of\": [{\"line\": \"32\"}, {\"line\": \"36\"}], \"op\": \"smaller_of\"}, \"invalid_model_types\": [{\"line\": \"f8995a.line27\", \"message\": \"f8995a.f8995a.line27: parameter 'qbi.zero' does not exist\"}, {\"line\": \"f8995a.line29\", \"message\": \"f8995a.f8995a.line29: parameter 'qbi.zero' does not exist\"}]}",
+   "ruling": "Ruling: model error; the returned IR violates the explicitly supplied closed schema/type/reference interface: f8995a.f8995a.line27: parameter 'qbi.zero' does not exist / f8995a.f8995a.line29: parameter 'qbi.zero' does not exist. The candidate is rejected and not executed or repaired. This adjudicates the unusable declaration, not the underlying tax reading; source qualification still requires a valid replacement.",
+   "context": "3234fe3e29e0ef377d46e0db48637d18f7fde4dd09cec21b1fffb9dbb4081653"
+  },
+  {
+   "printed": "38",
+   "project": "{\"const\": 0}",
+   "second": "{\"expression\": {\"param\": \"qbi.zero\"}, \"invalid_model_types\": [{\"line\": \"f8995a.line38\", \"message\": \"f8995a.f8995a.line38: parameter 'qbi.zero' does not exist\"}]}",
+   "ruling": "Ruling: model error; the returned IR violates the explicitly supplied closed schema/type/reference interface: f8995a.f8995a.line38: parameter 'qbi.zero' does not exist. The candidate is rejected and not executed or repaired. This adjudicates the unusable declaration, not the underlying tax reading; source qualification still requires a valid replacement.",
+   "context": "3234fe3e29e0ef377d46e0db48637d18f7fde4dd09cec21b1fffb9dbb4081653"
+  },
+  {
+   "printed": "39",
+   "project": "{\"of\": [{\"line\": \"37\"}, {\"line\": \"38\"}], \"op\": \"sum\"}",
+   "second": "{\"expression\": {\"of\": [{\"line\": \"37\"}, {\"line\": \"38\"}], \"op\": \"sum\"}, \"invalid_model_types\": [{\"line\": \"f8995a.line27\", \"message\": \"f8995a.f8995a.line27: parameter 'qbi.zero' does not exist\"}, {\"line\": \"f8995a.line29\", \"message\": \"f8995a.f8995a.line29: parameter 'qbi.zero' does not exist\"}, {\"line\": \"f8995a.line38\", \"message\": \"f8995a.f8995a.line38: parameter 'qbi.zero' does not exist\"}]}",
+   "ruling": "Ruling: model error; the returned IR violates the explicitly supplied closed schema/type/reference interface: f8995a.f8995a.line27: parameter 'qbi.zero' does not exist / f8995a.f8995a.line29: parameter 'qbi.zero' does not exist / f8995a.f8995a.line38: parameter 'qbi.zero' does not exist. The candidate is rejected and not executed or repaired. This adjudicates the unusable declaration, not the underlying tax reading; source qualification still requires a valid replacement.",
+   "context": "3234fe3e29e0ef377d46e0db48637d18f7fde4dd09cec21b1fffb9dbb4081653"
+  },
+  {
+   "printed": "40",
+   "project": "{\"const\": 0}",
+   "second": "{\"expression\": {\"from\": {\"line\": \"29\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"28\"}}, \"invalid_model_types\": [{\"line\": \"f8995a.line29\", \"message\": \"f8995a.f8995a.line29: parameter 'qbi.zero' does not exist\"}]}",
+   "ruling": "Ruling: model error; the returned IR violates the explicitly supplied closed schema/type/reference interface: f8995a.f8995a.line29: parameter 'qbi.zero' does not exist. The candidate is rejected and not executed or repaired. This adjudicates the unusable declaration, not the underlying tax reading; source qualification still requires a valid replacement.",
+   "context": "3234fe3e29e0ef377d46e0db48637d18f7fde4dd09cec21b1fffb9dbb4081653"
+  }
+ ]
+}

@@ -1,0 +1,21 @@
+{
+ "kind": "render",
+ "form": "s179",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "1",
+   "restated": "Enter the amount from helper \"The maximum section 179 deduction limitation for 2025\".",
+   "model": "Worksheet 1 says to \"Enter the smaller of line 1 or line 2 here\" and then \"Enter the amount from line 3 here and on Form 4562, line 1\"; the restatement enters only the $2,500,000 maximum.",
+   "ruling": "Ruling: ambiguity; i4562 p. 4, Line 1: \"Generally, the maximum section 179 expense deduction is $2,500,000 for section 179 property (including qualified section 179 real property) placed in service during the tax year beginning in 2025.\"; \"Tip: You can use Worksheet 1 to assist you in determining the amount to enter on line 1.\"; Worksheet 1: \"3. Enter the smaller of line 1 or line 2 here ... 4. Enter the amount from line 3 here and on Form 4562, line 1\". The model reads Worksheet 1 as fixing line 1 at the smaller of the cost and $2,500,000; the project follows the line 1 instruction on the same page, which states the maximum as $2,500,000 and offers the worksheet as an aid. amb.2025.s179_carryover_no_property records the model's reading as the alternative and the owner adopted the project's (TASKS T-043; ambiguities/research/amb.2025.s179_carryover_no_property.md). The English says what the project computes and names the register entry (\"Interpretation: amb.2025.s179_carryover_no_property\"); lines 5, 11 and 13 change with line 1 as the model says, by design.",
+   "context": "db08cc4517ad4dffc77fe35403986b77a3c040c9d1726559de19bf574f661615"
+  },
+  {
+   "printed": "13",
+   "restated": "Subtract line 12 from helper \"Add lines 9 and 10\". If zero or less, enter -0-.",
+   "model": "The line 5 instructions say: \"If line 5 is zero... enter the carryover of any disallowed deduction from 2024 ... on line 13.\" The restatement leaves line 10 out when line 5 is zero and then computes line 13 from lines 9 and 10 only, so it drops that carryover.",
+   "ruling": "Ruling: model error; i4562 p. 5, Line 5: \"If line 5 is zero, you cannot elect to expense any section 179 property. In this case, skip lines 6 through 11, enter zero on line 12, and enter the carryover of any disallowed deduction from 2024 (which does not include amounts attributable to qualified section 179 real property) on line 13.\" The rendered line 10 says \"Shown on the values sheet only when: Line 5 is more than zero\" (BUG-0155): that is a display condition; the line's value is still the filer's 2024 carryover, and the rendered helper \"Add lines 9 and 10\" adds it. With line 5 zero, line 9 is zero (the smaller of line 5 and line 8) and line 12 is zero (line 11 is the smaller of income and line 5), so line 13 is the carryover, as the source directs. Checked: classm.s179.2 (line 5 $0, line 10 hidden, $3,000 carryover): project line 13 $3,000.00, which the class M model worked by hand from the pages to the same $3,000.00 (AGREE); the BUG-0155 regression stage14.s179.zero_limit_carryover asserts line 13 $3,000 with line 10 hidden. The model read the display condition as removing line 10 from line 13; the English does not say that, and the project does not drop the carryover.",
+   "context": "db08cc4517ad4dffc77fe35403986b77a3c040c9d1726559de19bf574f661615"
+  }
+ ]
+}

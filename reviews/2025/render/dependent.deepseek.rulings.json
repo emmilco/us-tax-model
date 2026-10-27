@@ -16,6 +16,20 @@
    "ruling": "Ruling: finding; BUG-0111 open. Archived i2441 (2025) p. 3 qualifying-person Column (c) tests age at the time of care, but dependent.dc_line2c tests age at year-end. Reproduced from stage15.f2441.s8 with age=13 and dc_under13=true: the checkbox is true although these same inputs can describe care entirely before the thirteenth birthday. No input distinguishes the two care timings. Displayed-checkbox defect, no tax amount change; form correction and paired regression fixtures remain pending, with no correctness assertion claimed."
   },
   {
+   "printed": "2(c)",
+   "restated": "helper \"A qualifying person for Form 2441 (you have care expenses, and this person is your dependent and either your qualifying child under 13 or not able to care for themselves and living with you for more than half the year)\" = true and helper \"Physically or mentally not able to care for themselves?\" = true and (helper \"Age at the end of 2025\" > 13 (dc.child_age) or helper \"Age at the end of 2025\" = 13 (dc.child_age) and helper \"Care provided while this qualifying person was age 13 or older and disabled\" = true)",
+   "model": "The IRS instruction says to check column (c) if the person 'was over age 12 at the time the care was provided and was disabled.' For a person over 13 at year-end the restatement does not use the care-time disabled helper; it only requires the separate 2025 incapacity input, so it can check the box even if the disability did not exist when the care was provided.",
+   "ruling": "Ruling: model error; the model says that for a person over 13 at the end of 2025 the box can be checked \"even if the disability did not exist when the care was provided\". i2441 p. 3, Column (c): \"Check the box in column (c) if the qualifying person listed in column (a) was over age 12 at the time the care was provided and was disabled\". A person over 13 at year end was over 12 throughout 2025, and the expenses on line 2 are only those \"for this person's care while they were a qualifying person (under age 13, or not able to care for themselves)\" (dependent.dc_paid; p503 p. 3, \"You determine a person's qualifying status each day\"), so every included expense was for care while the person was over 12 and disabled. The box is right whenever the line has an entry.",
+   "context": "efff77743429ec21de072102d7fb29a91ff9ec6f4549acb8c7fd1170fec33505"
+  },
+  {
+   "printed": "2(d)",
+   "restated": "Enter the amount from helper \"Qualified expenses incurred and paid in 2025 for this person's care\".",
+   "model": "Form 2441 column (d) says 'If you completed Part III, don't include in column (d) any benefits shown on line 28'; line 28 is lines 24 plus 25. The restatement instead says to include expenses paid with dependent care benefits and subtract only 'benefits you exclude,' so it can leave deductible benefits (line 24) in column (d).",
+   "ruling": "Ruling: ambiguity; amb.2025.dc_line30 (owner ruling, Stage 15, T-048). The model reads the rejected reading (column (d) net of benefits). Its further claim that deductible benefits (line 24) can stay in the computation is a misreading: f2441.line30 subtracts f2441.line28, \"Add lines 24 and 25\", from the column (d) total, which is Form 2441 line 30, \"Don't include in column (d) any benefits shown on line 28 above\". The dc_paid help sentence \"Form 2441 subtracts the benefits you exclude\" names only excluded benefits, but nothing the filer enters depends on it (both kinds are included in the expenses asked), so no amount or answer changes.",
+   "context": "efff77743429ec21de072102d7fb29a91ff9ec6f4549acb8c7fd1170fec33505"
+  },
+  {
    "printed": "2(d)",
    "restated": "Enter the amount from helper \"Qualified expenses incurred and paid in 2025 for this person's care\".",
    "model": "The IRS column (d) instruction says “If you completed Part III, don't include in column (d) any benefits shown on line 28,” but the helper says to include expenses paid with dependent care benefits and only subtracts excluded benefits later.",

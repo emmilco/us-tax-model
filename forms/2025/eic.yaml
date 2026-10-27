@@ -728,6 +728,24 @@ form:
       cite:
         doc: i1040gi
         locator: p. 41, Step 3, question 1, "No. Skip questions 2 through 6; go to Step 4"
+    - id: eic.reached_step5
+      printed: (helper)
+      label: Step 5 is reached (Steps 1 and 2 passed and Step 3 or 4 sends you to Step 5)
+      type: Bool
+      expr:
+        op: test
+        all:
+        - op: test
+          eq:
+          - eic.reached_step3
+          - const: true
+        - op: test
+          eq:
+          - eic.step34
+          - const: true
+      cite:
+        doc: i1040gi
+        locator: p. 42, Step 4, "Go to Step 5"; each earlier "STOP You can't take the credit" ends the flowchart (pp. 40-42)
     - id: eic.step5_line1
       printed: (Step 5, 1)
       type: NonNegDollars
@@ -837,8 +855,27 @@ form:
       cite:
         doc: i1040gi
         locator: p. 47, Worksheet B, Parts 1 and 2
+    - id: eic.show_wsb4b
+      printed: (helper)
+      label: Worksheet B is used (Step 5 reached and Step 5 question 2 is Yes)
+      type: Bool
+      expr:
+        op: test
+        all:
+        - op: test
+          eq:
+          - eic.reached_step5
+          - const: true
+        - op: test
+          eq:
+          - eic.self_employed
+          - const: true
+      cite:
+        doc: i1040gi
+        locator: p. 47, Worksheet B, "Use this worksheet if you answered “Yes” to Step 5, question 2"
     - id: eic.wsb_4b
       printed: 4b
+      shown_when: eic.show_wsb4b
       label: Worksheet B, line 4b. Combine lines 1e, 2c, 3, and 4a. This is your total earned income
       type: Dollars
       expr:
@@ -850,8 +887,27 @@ form:
         doc: i1040gi
         locator: p. 47, Worksheet B, Part 4, line 4b (line 4a is your earned income from Step 5; line 3, statutory employees,
           is refused)
+    - id: eic.show_wsb6
+      printed: (helper)
+      label: Worksheet B line 6 is completed (the credit is reached and Worksheet B is used)
+      type: Bool
+      expr:
+        op: test
+        all:
+        - op: test
+          eq:
+          - eic.eligible
+          - const: true
+        - op: test
+          eq:
+          - eic.self_employed
+          - const: true
+      cite:
+        doc: i1040gi
+        locator: p. 47, Worksheet B, line 5, "No. You can’t take the credit"
     - id: eic.wsb_6
       printed: '6'
+      shown_when: eic.show_wsb6
       label: Worksheet B, line 6. Enter your total earned income from Part 4, line 4b (zero if line 4b is zero or less)
       type: NonNegDollars
       expr:
@@ -946,6 +1002,7 @@ form:
     # Worksheet A.
     - id: eic.line1
       printed: '1'
+      shown_when: eic.eligible
       label: Enter your earned income from Step 5 (Worksheet A, line 1), or Worksheet B, line 6
       type: Dollars
       expr:
@@ -1088,6 +1145,7 @@ form:
         locator: p. 46, Worksheet A, line 2, "the number of qualifying children you have who have valid SSNs"
     - id: eic.line2
       printed: "2"
+      shown_when: eic.eligible
       type: NonNegDollars
       label: Look up the amount on line 1 in the EIC Table to find the credit, using the column for your filing status and the number of qualifying children who have valid SSNs
       expr:
@@ -1108,8 +1166,27 @@ form:
       cite:
         doc: i1040gi
         locator: p. 46, Worksheet A, line 2
+    - id: eic.show3
+      printed: (helper)
+      label: Worksheet A line 3 is completed (the credit is reached and line 2 is more than zero)
+      type: Bool
+      expr:
+        op: test
+        all:
+        - op: test
+          eq:
+          - eic.eligible
+          - const: true
+        - op: test
+          gt:
+          - eic.line2
+          - param: sales.zero
+      cite:
+        doc: i1040gi
+        locator: p. 46, Worksheet A, line 2, "If line 2 is zero, You can’t take the credit"
     - id: eic.line3
       printed: "3"
+      shown_when: eic.show3
       type: Dollars
       label: Enter the amount from Form 1040 or 1040-SR, line 11b
       expr:
@@ -1332,8 +1409,36 @@ form:
       cite:
         doc: i1040gi
         locator: pp. 49–60, EIC Table, column 3
+    - id: eic.show5
+      printed: (helper)
+      label: Worksheet A line 5 is completed (the credit is reached, line 2 is more than zero, line 4 is No and line 5 is not left
+        blank)
+      type: Bool
+      expr:
+        op: test
+        all:
+        - op: test
+          eq:
+          - eic.eligible
+          - const: true
+        - op: test
+          eq:
+          - eic.line4
+          - const: false
+        - op: test
+          eq:
+          - eic.line5_blank
+          - const: false
+        - op: test
+          gt:
+          - eic.line2
+          - param: sales.zero
+      cite:
+        doc: i1040gi
+        locator: p. 46, Worksheet A, line 2, "If line 2 is zero, You can’t take the credit"; line 4, "Yes. Skip line 5; enter the amount from line 2 on line 6"; line 5, "Yes. Leave line 5 blank"
     - id: eic.line5
       printed: "5"
+      shown_when: eic.show5
       type: NonNegDollars
       label: Look up the amount on line 3 in the EIC Table to find the credit, using the column for your filing status and the number of qualifying children who have valid SSNs
       expr:
@@ -1427,6 +1532,7 @@ form:
         locator: p. 46, Worksheet A, line 5
     - id: eic.line6
       printed: "6"
+      shown_when: eic.eligible
       type: NonNegDollars
       label: This is your earned income credit
       expr:
@@ -1450,7 +1556,8 @@ form:
     - id: eic.credit
       printed: (helper)
       type: NonNegDollars
-      label: Earned income credit for Form 1040, line 27a (Worksheet A, line 6 when Steps 1 to 5 are passed; zero otherwise)
+      label: Earned income credit for Form 1040, line 27a (Worksheet A, line 6, or Worksheet B, line 11 for a filer who answered Yes
+        to Step 5, question 2, when Steps 1 to 5 are passed; zero otherwise)
       expr:
         op: choose
         alternatives:

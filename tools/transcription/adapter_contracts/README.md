@@ -27,7 +27,15 @@ explicitly exclude those adapter rows from source agreement/noise denominators;
 an adapter-only document earns no source assertion even if an old log says AGREE.
 The read-only audit records the excluded ids without upgrading any receipt.
 
-The registry is deliberately narrow: it currently identifies only `div.screen`.
+`2025/f4952.json` identifies `f4952.election`, the full supplied line4g election after
+scope/allocation/limit gates. It is not merely the part allocated to capital gains. Nineteen
+engineering cases check the amount, ordered refusals, missing answers, the maximum boundary and
+its Schedule D copy. Four explicitly declared foreign Schedule B/D subtotals are isolated
+boundary inputs; this does not test those tax calculations. The runner rejects a boundary
+that replaces the reviewed form's own arithmetic or any collection entry, and never mutates the
+original context. Independent reviews still transcribe all printed Form4952 tax quantities.
+
+The registry is deliberately narrow: it identifies `div.screen` and `f4952.election`.
 It does not exempt all helpers, supply adapter formulas to other source requests,
 or replace independent review of actual tax quantities. Newly identified opaque
 helpers remain interface gaps until their role is resolved explicitly.

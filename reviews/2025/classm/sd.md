@@ -4,10 +4,14 @@
 
 | field | value |
 | --- | --- |
-| date | 2026-10-17 |
+| date | 2026-10-26 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| subject sha256 | 1e4b2c686346eb7347b233d67463f7a417e0b05c988d02b9b3766b763f50d8ad |
+| prompt policy | worked-values-request-bound-v2 |
+| system sha256 | 18ff9cfe094eedd0548bba02012b0ebf2a58d0606e834e3633432585b4192cb7 |
+| reasoning effort | provider default |
+| output token budget | transport default (65536 for DeepSeek) |
+| subject sha256 | cd55faee91d3c973c13c2c8fa640f06c9f95ceac0c0cb55457c6f358728889c6 |
 | cases | 3 |
 
 ## Source pages given to the model
@@ -20,7 +24,7 @@
 
 ## Lines
 
-### case classm.sd.1 — prompt sha256 48547eb2c210e0b9845eb73ffe8edf80de74e57442c40b27ac19fc09bd0a2157; branches: sd.other_forms:false, sd.carryover:false, sd.filing4952:true, sd.screen:false, sd.filed:true, sd.line17:true, sd.line20:false, sd.limited_loss:left, sd.has_loss:false, sd.line21#1, sd.line22:false, sd.to1040#1, sd.net_gain_raw:left, sd.net_gain:positive
+### case classm.sd.1 — prompt sha256 3b383b74d1d6240accbff17b995ee9494cf2077d132e2285609671651e1b0b33; branches: sd.other_forms:false, sd.carryover:false, sd.line18#1, sd.line19#1, sd.filing4952:true, sd.screen:false, sd.filed:false, sd.line17:false, sd.line20:false, sd.limited_loss:left, sd.has_loss:false, sd.line21#1, sd.line22:false, sd.to1040#1, sd.net_gain_raw:left, sd.net_gain:floor
 
 ### classm.sd.1 — 1a(d) — Line 1a, column (d) totals
 Status: **AGREE**
@@ -125,12 +129,12 @@ Value: $0.00
 ### classm.sd.1 — 8b(d) — Line 8b, column (d) totals
 Status: **AGREE**
 
-Value: $8,209.00
+Value: $0.00
 
 ### classm.sd.1 — 8b(e) — Line 8b, column (e) totals
 Status: **AGREE**
 
-Value: $2,439.00
+Value: $0.00
 
 ### classm.sd.1 — 8b(g) — Line 8b, column (g) totals
 Status: **AGREE**
@@ -140,7 +144,7 @@ Value: $0.00
 ### classm.sd.1 — 8b(h) — Line 8b, column (h) totals
 Status: **AGREE**
 
-Value: $5,770.00
+Value: $0.00
 
 ### classm.sd.1 — 9(d) — Line 9, column (d) totals
 Status: **AGREE**
@@ -225,22 +229,28 @@ Value: $0.00
 ### classm.sd.1 — 15 — Combine the amounts for Schedule D line 15
 Status: **AGREE**
 
-Value: $5,770.00
+Value: $0.00
 
 ### classm.sd.1 — 16 — Combine the amounts for Schedule D line 16
 Status: **AGREE**
 
-Value: $5,770.00
+Value: $0.00
 
 ### classm.sd.1 — 17 — Are lines 15 and 16 both gains?
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: yes
+Model: blank
+Work: Line 16 is zero, so skip lines 17 through 21
+
+No numeric assertion or class M credit: the model left this line blank.
 
 ### classm.sd.1 — 20 — Are lines 18 and 19 zero and are you not filing Form 4952?
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: no
+Model: blank
+Work: Line 16 is zero, so skip lines 17 through 21
+
+No numeric assertion or class M credit: the model left this line blank.
 
 ### classm.sd.1 — 21 — Deductible loss, signed; zero when line 21 is skipped
 Status: **AGREE**
@@ -248,15 +258,11 @@ Status: **AGREE**
 Value: $0.00
 
 ### classm.sd.1 — 22 — Do you have qualified dividends?
-Status: **SKIPPED**
+Status: **AGREE**
 
-Model: blank
-Work: Line 20 says don't complete lines 21 and 22
+Value: no
 
-No numeric assertion or class M credit: the model left this line blank.
-
-
-### case classm.sd.2 — prompt sha256 1d70dc3031058c65cdaa5a9b9d13f1d7c099f4db541cff3f1e7695db536b3537; branches: sd.other_forms:false, sd.carryover:false, sd.filing4952:false, sd.screen:false, sd.filed:true, sd.line17:false, sd.line20:true, sd.limited_loss:right, sd.has_loss:true, sd.line21#0, sd.line22:true, sd.to1040#0, sd.net_gain_raw:right, sd.net_gain:floor
+### case classm.sd.2 — prompt sha256 5ffd76e589a3098631c32253fc3b809d00fefb6c5211f9903ecae7bf34385284; branches: sd.other_forms:false, sd.carryover:false, sd.line18#1, sd.line19#1, sd.filing4952:false, sd.screen:false, sd.filed:true, sd.line17:false, sd.line20:true, sd.limited_loss:right, sd.has_loss:true, sd.line21#0, sd.line22:true, sd.to1040#0, sd.net_gain_raw:right, sd.net_gain:floor
 
 ### classm.sd.2 — 1a(d) — Line 1a, column (d) totals
 Status: **AGREE**
@@ -266,7 +272,7 @@ Value: $0.00
 ### classm.sd.2 — 1a(e) — Line 1a, column (e) totals
 Status: **AGREE**
 
-Value: $6,687.00
+Value: $0.00
 
 ### classm.sd.2 — 1a(g) — Line 1a, column (g) totals
 Status: **AGREE**
@@ -276,7 +282,7 @@ Value: $0.00
 ### classm.sd.2 — 1a(h) — Line 1a, column (h) totals
 Status: **AGREE**
 
-Value: $-6,687.00
+Value: $0.00
 
 ### classm.sd.2 — 1b(d) — Line 1b, column (d) totals
 Status: **AGREE**
@@ -306,7 +312,7 @@ Value: $0.00
 ### classm.sd.2 — 2(e) — Line 2, column (e) totals
 Status: **AGREE**
 
-Value: $56,357.00
+Value: $0.00
 
 ### classm.sd.2 — 2(g) — Line 2, column (g) totals
 Status: **AGREE**
@@ -316,17 +322,17 @@ Value: $0.00
 ### classm.sd.2 — 2(h) — Line 2, column (h) totals
 Status: **AGREE**
 
-Value: $-56,357.00
+Value: $0.00
 
 ### classm.sd.2 — 3(d) — Line 3, column (d) totals
 Status: **AGREE**
 
-Value: $0.00
+Value: $8,077.00
 
 ### classm.sd.2 — 3(e) — Line 3, column (e) totals
 Status: **AGREE**
 
-Value: $0.00
+Value: $127,726.00
 
 ### classm.sd.2 — 3(g) — Line 3, column (g) totals
 Status: **AGREE**
@@ -336,7 +342,7 @@ Value: $0.00
 ### classm.sd.2 — 3(h) — Line 3, column (h) totals
 Status: **AGREE**
 
-Value: $0.00
+Value: $-119,649.00
 
 ### classm.sd.2 — 8a(d) — Line 8a, column (d) totals
 Status: **AGREE**
@@ -361,22 +367,22 @@ Value: $0.00
 ### classm.sd.2 — 8b(d) — Line 8b, column (d) totals
 Status: **AGREE**
 
-Value: $0.00
+Value: $35,020.00
 
 ### classm.sd.2 — 8b(e) — Line 8b, column (e) totals
 Status: **AGREE**
 
-Value: $0.00
+Value: $73,679.00
 
 ### classm.sd.2 — 8b(g) — Line 8b, column (g) totals
 Status: **AGREE**
 
-Value: $0.00
+Value: $48,266.00
 
 ### classm.sd.2 — 8b(h) — Line 8b, column (h) totals
 Status: **AGREE**
 
-Value: $0.00
+Value: $9,607.00
 
 ### classm.sd.2 — 9(d) — Line 9, column (d) totals
 Status: **AGREE**
@@ -451,22 +457,22 @@ Value: $0.00
 ### classm.sd.2 — 13 — Capital gain distributions
 Status: **AGREE**
 
-Value: $0.00
+Value: $805.00
 
 ### classm.sd.2 — 7 — Combine the amounts for Schedule D line 7
 Status: **AGREE**
 
-Value: $-63,044.00
+Value: $-119,649.00
 
 ### classm.sd.2 — 15 — Combine the amounts for Schedule D line 15
 Status: **AGREE**
 
-Value: $0.00
+Value: $10,412.00
 
 ### classm.sd.2 — 16 — Combine the amounts for Schedule D line 16
 Status: **AGREE**
 
-Value: $-63,044.00
+Value: $-109,237.00
 
 ### classm.sd.2 — 17 — Are lines 15 and 16 both gains?
 Status: **SKIPPED**
@@ -476,7 +482,6 @@ Work: Line 16 is a loss, so skip lines 17-20
 
 No numeric assertion or class M credit: the model left this line blank.
 
-
 ### classm.sd.2 — 20 — Are lines 18 and 19 zero and are you not filing Form 4952?
 Status: **SKIPPED**
 
@@ -484,7 +489,6 @@ Model: blank
 Work: Line 16 is a loss, so skip lines 17-20
 
 No numeric assertion or class M credit: the model left this line blank.
-
 
 ### classm.sd.2 — 21 — Deductible loss, signed; zero when line 21 is skipped
 Status: **AGREE**
@@ -496,7 +500,7 @@ Status: **AGREE**
 
 Value: yes
 
-### case classm.sd.3 — prompt sha256 cf49a007b10b603ae1bdcbb03b752a0c04f3a83702d370e1d8eb29a5bc2a079e; branches: sd.other_forms:false, sd.carryover:false, sd.filing4952:false, sd.screen:false, sd.filed:false, sd.line17:false, sd.line20:true, sd.limited_loss:left, sd.has_loss:false, sd.line21#1, sd.line22:false, sd.to1040#1, sd.net_gain_raw:left, sd.net_gain:floor
+### case classm.sd.3 — prompt sha256 b4eecdfa10b8671b618176ab06ece8d9108750fb9124c373327641a911edfafc; branches: sd.other_forms:false, sd.carryover:false, sd.line18#0, sd.line19#0, sd.filing4952:false, sd.screen:false, sd.filed:true, sd.line17:true, sd.line20:true, sd.limited_loss:left, sd.has_loss:false, sd.line21#1, sd.line22:false, sd.to1040#1, sd.net_gain_raw:left, sd.net_gain:positive
 
 ### classm.sd.3 — 1a(d) — Line 1a, column (d) totals
 Status: **AGREE**
@@ -521,12 +525,12 @@ Value: $0.00
 ### classm.sd.3 — 1b(d) — Line 1b, column (d) totals
 Status: **AGREE**
 
-Value: $0.00
+Value: $48,790.00
 
 ### classm.sd.3 — 1b(e) — Line 1b, column (e) totals
 Status: **AGREE**
 
-Value: $0.00
+Value: $14,140.00
 
 ### classm.sd.3 — 1b(g) — Line 1b, column (g) totals
 Status: **AGREE**
@@ -536,7 +540,7 @@ Value: $0.00
 ### classm.sd.3 — 1b(h) — Line 1b, column (h) totals
 Status: **AGREE**
 
-Value: $0.00
+Value: $34,650.00
 
 ### classm.sd.3 — 2(d) — Line 2, column (d) totals
 Status: **AGREE**
@@ -691,40 +695,32 @@ Value: $0.00
 ### classm.sd.3 — 13 — Capital gain distributions
 Status: **AGREE**
 
-Value: $0.00
+Value: $17,081.00
 
 ### classm.sd.3 — 7 — Combine the amounts for Schedule D line 7
 Status: **AGREE**
 
-Value: $0.00
+Value: $34,650.00
 
 ### classm.sd.3 — 15 — Combine the amounts for Schedule D line 15
 Status: **AGREE**
 
-Value: $0.00
+Value: $17,081.00
 
 ### classm.sd.3 — 16 — Combine the amounts for Schedule D line 16
 Status: **AGREE**
 
-Value: $0.00
+Value: $51,731.00
 
 ### classm.sd.3 — 17 — Are lines 15 and 16 both gains?
-Status: **SKIPPED**
+Status: **AGREE**
 
-Model: blank
-Work: Line 16 is zero, so skip lines 17 through 21
-
-No numeric assertion or class M credit: the model left this line blank.
-
+Value: yes
 
 ### classm.sd.3 — 20 — Are lines 18 and 19 zero and are you not filing Form 4952?
-Status: **SKIPPED**
+Status: **AGREE**
 
-Model: blank
-Work: Line 16 is zero, so skip lines 17 through 21
-
-No numeric assertion or class M credit: the model left this line blank.
-
+Value: yes
 
 ### classm.sd.3 — 21 — Deductible loss, signed; zero when line 21 is skipped
 Status: **AGREE**
@@ -732,9 +728,12 @@ Status: **AGREE**
 Value: $0.00
 
 ### classm.sd.3 — 22 — Do you have qualified dividends?
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: no
+Model: blank
+Work: Line 20 is Yes, which says don't complete line 22
+
+No numeric assertion or class M credit: the model left this line blank.
 
 ## Raw responses
 
@@ -745,412 +744,121 @@ Value: no
 lines:
   - printed: "1a(d)"
     value: "0.00"
-    work: "No short-term transactions on line 1a"
+    work: "No short-term 1099-B/1099-DA basis-reported transactions supplied"
   - printed: "1a(e)"
     value: "0.00"
-    work: "No short-term transactions on line 1a"
+    work: "No transactions supplied"
   - printed: "1a(g)"
     value: "0.00"
-    work: "No short-term transactions on line 1a"
-  - printed: "1a(h)"
-    value: "0.00"
-    work: "No short-term transactions on line 1a"
-  - printed: "1b(d)"
-    value: "0.00"
-    work: "No Box A/G transactions"
-  - printed: "1b(e)"
-    value: "0.00"
-    work: "No Box A/G transactions"
-  - printed: "1b(g)"
-    value: "0.00"
-    work: "No Box A/G transactions"
-  - printed: "1b(h)"
-    value: "0.00"
-    work: "No Box A/G transactions"
-  - printed: "2(d)"
-    value: "0.00"
-    work: "No Box B/H transactions"
-  - printed: "2(e)"
-    value: "0.00"
-    work: "No Box B/H transactions"
-  - printed: "2(g)"
-    value: "0.00"
-    work: "No Box B/H transactions"
-  - printed: "2(h)"
-    value: "0.00"
-    work: "No Box B/H transactions"
-  - printed: "3(d)"
-    value: "0.00"
-    work: "No Box C/I transactions"
-  - printed: "3(e)"
-    value: "0.00"
-    work: "No Box C/I transactions"
-  - printed: "3(g)"
-    value: "0.00"
-    work: "No Box C/I transactions"
-  - printed: "3(h)"
-    value: "0.00"
-    work: "No Box C/I transactions"
-  - printed: "8a(d)"
-    value: "0.00"
-    work: "s1 is reported in detail on Form 8949, not on line 8a"
-  - printed: "8a(e)"
-    value: "0.00"
-    work: "s1 is reported in detail on Form 8949, not on line 8a"
-  - printed: "8a(g)"
-    value: "0.00"
-    work: "s1 is reported in detail on Form 8949, not on line 8a"
-  - printed: "8a(h)"
-    value: "0.00"
-    work: "s1 is reported in detail on Form 8949, not on line 8a"
-  - printed: "8b(d)"
-    value: "8209.00"
-    work: "s1 (Box D, detail) proceeds 8,209.00"
-  - printed: "8b(e)"
-    value: "2439.00"
-    work: "s1 basis 2,439.00"
-  - printed: "8b(g)"
-    value: "0.00"
-    work: "s1 adjustments 0.00"
-  - printed: "8b(h)"
-    value: "5770.00"
-    work: "8,209.00 - 2,439.00 + 0.00 = 5,770.00"
-  - printed: "9(d)"
-    value: "0.00"
-    work: "No Box E/K transactions"
-  - printed: "9(e)"
-    value: "0.00"
-    work: "No Box E/K transactions"
-  - printed: "9(g)"
-    value: "0.00"
-    work: "No Box E/K transactions"
-  - printed: "9(h)"
-    value: "0.00"
-    work: "No Box E/K transactions"
-  - printed: "10(d)"
-    value: "0.00"
-    work: "No Box F/L transactions"
-  - printed: "10(e)"
-    value: "0.00"
-    work: "No Box F/L transactions"
-  - printed: "10(g)"
-    value: "0.00"
-    work: "No Box F/L transactions"
-  - printed: "10(h)"
-    value: "0.00"
-    work: "No Box F/L transactions"
-  - printed: "4"
-    value: "0.00"
-    work: "No gains or losses from 6252/4684/6781/8824"
-  - printed: "5"
-    value: "0.00"
-    work: "No Schedule K-1"
-  - printed: "6"
-    value: "0.00"
-    work: "No prior-year capital loss carryover"
-  - printed: "11"
-    value: "0.00"
-    work: "No gains or losses from 4797/2439/6252/4684/6781/8824"
-  - printed: "12"
-    value: "0.00"
-    work: "No Schedule K-1"
-  - printed: "14"
-    value: "0.00"
-    work: "No prior-year capital loss carryover"
-  - printed: "13"
-    value: "0.00"
-    work: "Capital gain distributions supplied as 0.00"
-  - printed: "7"
-    value: "0.00"
-    work: "Lines 1a through 6, column (h): 0 + 0 + 0 + 0 + 0 + 0 + 0 = 0.00"
-  - printed: "15"
-    value: "5770.00"
-    work: "Lines 8a through 14, column (h): 0 + 5,770 + 0 + 0 + 0 + 0 + 0 - 0 = 5,770.00"
-  - printed: "16"
-    value: "5770.00"
-    work: "Line 7 + line 15: 0.00 + 5,770.00 = 5,770.00 (gain)"
-  - printed: "17"
-    value: "yes"
-    work: "Lines 15 and 16 are both gains; go to line 18"
-  - printed: "20"
-    value: "no"
-    work: "Lines 18 and 19 are both 0, but Form 4952 is filed, so answer No"
-  - printed: "21"
-    value: "0.00"
-    work: "Skipped: line 16 is not a loss, and line 20 says don't complete 21"
-  - printed: "22"
-    value: "blank"
-    work: "Line 20 says don't complete lines 21 and 22"
-```
-```
-
-### classm.sd.2
-
-```yaml
-```yaml
-lines:
-  - printed: "1a(d)"
-    value: "0.00"
-    work: "s2 (Box A, aggregate) proceeds $0.00"
-  - printed: "1a(e)"
-    value: "6687.00"
-    work: "s2 (Box A, aggregate) basis $6,687.00"
-  - printed: "1a(g)"
-    value: "0.00"
-    work: "s2 adjustments $0.00"
-  - printed: "1a(h)"
-    value: "-6687.00"
-    work: "0.00 - 6,687.00 + 0.00 = -6,687.00"
-  - printed: "1b(d)"
-    value: "0.00"
-    work: "No Box A/G transactions reported in detail on Form 8949"
-  - printed: "1b(e)"
-    value: "0.00"
-    work: "No Box A/G transactions reported in detail on Form 8949"
-  - printed: "1b(g)"
-    value: "0.00"
-    work: "No Box A/G transactions reported in detail on Form 8949"
-  - printed: "1b(h)"
-    value: "0.00"
-    work: "No Box A/G transactions reported in detail on Form 8949"
-  - printed: "2(d)"
-    value: "0.00"
-    work: "s1 (Box B, detail) proceeds $0.00"
-  - printed: "2(e)"
-    value: "56357.00"
-    work: "s1 (Box B, detail) basis $56,357.00"
-  - printed: "2(g)"
-    value: "0.00"
-    work: "s1 adjustments $0.00"
-  - printed: "2(h)"
-    value: "-56357.00"
-    work: "0.00 - 56,357.00 + 0.00 = -56,357.00"
-  - printed: "3(d)"
-    value: "0.00"
-    work: "No Box C/I transactions"
-  - printed: "3(e)"
-    value: "0.00"
-    work: "No Box C/I transactions"
-  - printed: "3(g)"
-    value: "0.00"
-    work: "No Box C/I transactions"
-  - printed: "3(h)"
-    value: "0.00"
-    work: "No Box C/I transactions"
-  - printed: "8a(d)"
-    value: "0.00"
-    work: "No long-term aggregate transactions"
-  - printed: "8a(e)"
-    value: "0.00"
-    work: "No long-term aggregate transactions"
-  - printed: "8a(g)"
-    value: "0.00"
-    work: "No long-term aggregate transactions"
-  - printed: "8a(h)"
-    value: "0.00"
-    work: "No long-term aggregate transactions"
-  - printed: "8b(d)"
-    value: "0.00"
-    work: "No Box D/J transactions"
-  - printed: "8b(e)"
-    value: "0.00"
-    work: "No Box D/J transactions"
-  - printed: "8b(g)"
-    value: "0.00"
-    work: "No Box D/J transactions"
-  - printed: "8b(h)"
-    value: "0.00"
-    work: "No Box D/J transactions"
-  - printed: "9(d)"
-    value: "0.00"
-    work: "No Box E/K transactions"
-  - printed: "9(e)"
-    value: "0.00"
-    work: "No Box E/K transactions"
-  - printed: "9(g)"
-    value: "0.00"
-    work: "No Box E/K transactions"
-  - printed: "9(h)"
-    value: "0.00"
-    work: "No Box E/K transactions"
-  - printed: "10(d)"
-    value: "0.00"
-    work: "No Box F/L transactions"
-  - printed: "10(e)"
-    value: "0.00"
-    work: "No Box F/L transactions"
-  - printed: "10(g)"
-    value: "0.00"
-    work: "No Box F/L transactions"
-  - printed: "10(h)"
-    value: "0.00"
-    work: "No Box F/L transactions"
-  - printed: "4"
-    value: "0.00"
-    work: "Filer reports no Forms 6252/4684/6781/8824 amounts"
-  - printed: "5"
-    value: "0.00"
-    work: "Filer reports no Schedule K-1 amounts"
-  - printed: "6"
-    value: "0.00"
-    work: "Filer reports no prior-year capital loss carryover"
-  - printed: "11"
-    value: "0.00"
-    work: "Filer reports no Forms 4797/2439/6252/4684/6781/8824 amounts"
-  - printed: "12"
-    value: "0.00"
-    work: "Filer reports no Schedule K-1 amounts"
-  - printed: "14"
-    value: "0.00"
-    work: "Filer reports no prior-year capital loss carryover"
-  - printed: "13"
-    value: "0.00"
-    work: "Capital gain distributions (1099-DIV box 2a) = $0.00"
-  - printed: "7"
-    value: "-63044.00"
-    work: "-6,687 + 0 - 56,357 + 0 + 0 + 0 - 0 = -63,044"
-  - printed: "15"
-    value: "0.00"
-    work: "Lines 8a through 14, column (h), all 0 = 0"
-  - printed: "16"
-    value: "-63044.00"
-    work: "Line 7 + line 15 = -63,044 + 0 = -63,044"
-  - printed: "17"
-    value: "blank"
-    work: "Line 16 is a loss, so skip lines 17-20"
-  - printed: "20"
-    value: "blank"
-    work: "Line 16 is a loss, so skip lines 17-20"
-  - printed: "21"
-    value: "-3000.00"
-    work: "Smaller of |63,044| or 3,000 (Single) = (3,000)"
-  - printed: "22"
-    value: "yes"
-    work: "Form 1040 line 3a qualified dividends $26,053 > 0"
-```
-```
-
-### classm.sd.3
-
-```yaml
-lines:
-  - printed: "1a(d)"
-    value: "0.00"
-    work: "No short-term 1099-B/1099-DA transactions with basis reported and no adjustments were given"
-  - printed: "1a(e)"
-    value: "0.00"
-    work: "No line 1a transactions"
-  - printed: "1a(g)"
-    value: "0.00"
-    work: "No line 1a transactions"
+    work: "No transactions supplied"
   - printed: "1a(h)"
     value: "0.00"
     work: "0.00 - 0.00 + 0.00 = 0.00"
   - printed: "1b(d)"
     value: "0.00"
-    work: "No Form 8949 Box A/G transactions"
+    work: "No Form 8949 Box A/G transactions supplied"
   - printed: "1b(e)"
     value: "0.00"
-    work: "No Form 8949 Box A/G transactions"
+    work: "No transactions supplied"
   - printed: "1b(g)"
     value: "0.00"
-    work: "No Form 8949 Box A/G transactions"
+    work: "No transactions supplied"
   - printed: "1b(h)"
     value: "0.00"
     work: "0.00 - 0.00 + 0.00 = 0.00"
   - printed: "2(d)"
     value: "0.00"
-    work: "No Form 8949 Box B/H transactions"
+    work: "No Form 8949 Box B/H transactions supplied"
   - printed: "2(e)"
     value: "0.00"
-    work: "No Form 8949 Box B/H transactions"
+    work: "No transactions supplied"
   - printed: "2(g)"
     value: "0.00"
-    work: "No Form 8949 Box B/H transactions"
+    work: "No transactions supplied"
   - printed: "2(h)"
     value: "0.00"
     work: "0.00 - 0.00 + 0.00 = 0.00"
   - printed: "3(d)"
     value: "0.00"
-    work: "No Form 8949 Box C/I transactions"
+    work: "No Form 8949 Box C/I transactions supplied"
   - printed: "3(e)"
     value: "0.00"
-    work: "No Form 8949 Box C/I transactions"
+    work: "No transactions supplied"
   - printed: "3(g)"
     value: "0.00"
-    work: "No Form 8949 Box C/I transactions"
+    work: "No transactions supplied"
   - printed: "3(h)"
     value: "0.00"
     work: "0.00 - 0.00 + 0.00 = 0.00"
   - printed: "8a(d)"
     value: "0.00"
-    work: "No long-term 1099-B/1099-DA transactions with basis reported and no adjustments were given"
+    work: "No long-term 1099-B/1099-DA basis-reported transactions supplied"
   - printed: "8a(e)"
     value: "0.00"
-    work: "No line 8a transactions"
+    work: "No transactions supplied"
   - printed: "8a(g)"
     value: "0.00"
-    work: "No line 8a transactions"
+    work: "No transactions supplied"
   - printed: "8a(h)"
     value: "0.00"
     work: "0.00 - 0.00 + 0.00 = 0.00"
   - printed: "8b(d)"
     value: "0.00"
-    work: "No Form 8949 Box D/J transactions"
+    work: "No Form 8949 Box D/J transactions supplied"
   - printed: "8b(e)"
     value: "0.00"
-    work: "No Form 8949 Box D/J transactions"
+    work: "No transactions supplied"
   - printed: "8b(g)"
     value: "0.00"
-    work: "No Form 8949 Box D/J transactions"
+    work: "No transactions supplied"
   - printed: "8b(h)"
     value: "0.00"
     work: "0.00 - 0.00 + 0.00 = 0.00"
   - printed: "9(d)"
     value: "0.00"
-    work: "No Form 8949 Box E/K transactions"
+    work: "No Form 8949 Box E/K transactions supplied"
   - printed: "9(e)"
     value: "0.00"
-    work: "No Form 8949 Box E/K transactions"
+    work: "No transactions supplied"
   - printed: "9(g)"
     value: "0.00"
-    work: "No Form 8949 Box E/K transactions"
+    work: "No transactions supplied"
   - printed: "9(h)"
     value: "0.00"
     work: "0.00 - 0.00 + 0.00 = 0.00"
   - printed: "10(d)"
     value: "0.00"
-    work: "No Form 8949 Box F/L transactions"
+    work: "No Form 8949 Box F/L transactions supplied"
   - printed: "10(e)"
     value: "0.00"
-    work: "No Form 8949 Box F/L transactions"
+    work: "No transactions supplied"
   - printed: "10(g)"
     value: "0.00"
-    work: "No Form 8949 Box F/L transactions"
+    work: "No transactions supplied"
   - printed: "10(h)"
     value: "0.00"
     work: "0.00 - 0.00 + 0.00 = 0.00"
   - printed: "4"
     value: "0.00"
-    work: "Filer says there are no Form 6252/4684/6781/8824 gains or losses, so 0.00"
+    work: "Filer answered no to 4797/2439/6252/4684/6781/8824/K-1 sources"
   - printed: "5"
     value: "0.00"
-    work: "Filer says there is no Schedule K-1, so 0.00"
+    work: "Filer answered no to K-1 capital gains or losses"
   - printed: "6"
     value: "0.00"
-    work: "Filer says there is no prior-year capital loss carryover, so 0.00"
+    work: "Filer answered no to a capital loss carryover"
   - printed: "11"
     value: "0.00"
-    work: "Filer says there are no Form 4797/2439/6252/4684/6781/8824 gains or losses, so 0.00"
+    work: "Filer answered no to 4797/2439/6252/4684/6781/8824 sources"
   - printed: "12"
     value: "0.00"
-    work: "Filer says there is no Schedule K-1, so 0.00"
+    work: "Filer answered no to K-1 capital gains or losses"
   - printed: "14"
     value: "0.00"
-    work: "Filer says there is no prior-year capital loss carryover, so 0.00"
+    work: "Filer answered no to a capital loss carryover"
   - printed: "13"
     value: "0.00"
-    work: "Capital gain distributions (1099-DIV box 2a) are 0.00"
+    work: "Capital gain distributions, 1099-DIV box 2a = 0.00"
   - printed: "7"
     value: "0.00"
     work: "Lines 1a through 6, column (h): 0+0+0+0+0+0-0 = 0.00"
@@ -1168,8 +876,301 @@ lines:
     work: "Line 16 is zero, so skip lines 17 through 21"
   - printed: "21"
     value: "0.00"
-    work: "Line 16 is zero, so line 21 is skipped and entered as zero"
+    work: "Line 16 is zero, so line 21 is skipped; enter 0"
   - printed: "22"
     value: "no"
-    work: "Form 1040 line 3a qualified dividends are 0.00, so No"
+    work: "Form 1040 line 3a qualified dividends = 0.00"
+```
+```
+
+### classm.sd.2
+
+```yaml
+```yaml
+lines:
+  - printed: "line 1a(d)"
+    value: "0.00"
+    work: "No short-term transactions reported directly on line 1a"
+  - printed: "line 1a(e)"
+    value: "0.00"
+    work: "No short-term transactions reported directly on line 1a"
+  - printed: "line 1a(g)"
+    value: "0.00"
+    work: "No short-term transactions reported directly on line 1a"
+  - printed: "line 1a(h)"
+    value: "0.00"
+    work: "No short-term transactions reported directly on line 1a"
+  - printed: "line 1b(d)"
+    value: "0.00"
+    work: "No Box A/G transactions"
+  - printed: "line 1b(e)"
+    value: "0.00"
+    work: "No Box A/G transactions"
+  - printed: "line 1b(g)"
+    value: "0.00"
+    work: "No Box A/G transactions"
+  - printed: "line 1b(h)"
+    value: "0.00"
+    work: "No Box A/G transactions"
+  - printed: "line 2(d)"
+    value: "0.00"
+    work: "No Box B/H transactions"
+  - printed: "line 2(e)"
+    value: "0.00"
+    work: "No Box B/H transactions"
+  - printed: "line 2(g)"
+    value: "0.00"
+    work: "No Box B/H transactions"
+  - printed: "line 2(h)"
+    value: "0.00"
+    work: "No Box B/H transactions"
+  - printed: "line 3(d)"
+    value: "8077.00"
+    work: "Box C sales s2 + s3: 8,077 + 0"
+  - printed: "line 3(e)"
+    value: "127726.00"
+    work: "86,943 + 40,783"
+  - printed: "line 3(g)"
+    value: "0.00"
+    work: "0 + 0"
+  - printed: "line 3(h)"
+    value: "-119649.00"
+    work: "-78,866 + -40,783"
+  - printed: "line 8a(d)"
+    value: "0.00"
+    work: "No long-term transactions reported directly on line 8a"
+  - printed: "line 8a(e)"
+    value: "0.00"
+    work: "No long-term transactions reported directly on line 8a"
+  - printed: "line 8a(g)"
+    value: "0.00"
+    work: "No long-term transactions reported directly on line 8a"
+  - printed: "line 8a(h)"
+    value: "0.00"
+    work: "No long-term transactions reported directly on line 8a"
+  - printed: "line 8b(d)"
+    value: "35020.00"
+    work: "Box D sale s1"
+  - printed: "line 8b(e)"
+    value: "73679.00"
+    work: "Box D sale s1"
+  - printed: "line 8b(g)"
+    value: "48266.00"
+    work: "Box D sale s1"
+  - printed: "line 8b(h)"
+    value: "9607.00"
+    work: "35,020 - 73,679 + 48,266"
+  - printed: "line 9(d)"
+    value: "0.00"
+    work: "No Box E/K transactions"
+  - printed: "line 9(e)"
+    value: "0.00"
+    work: "No Box E/K transactions"
+  - printed: "line 9(g)"
+    value: "0.00"
+    work: "No Box E/K transactions"
+  - printed: "line 9(h)"
+    value: "0.00"
+    work: "No Box E/K transactions"
+  - printed: "line 10(d)"
+    value: "0.00"
+    work: "No Box F/L transactions"
+  - printed: "line 10(e)"
+    value: "0.00"
+    work: "No Box F/L transactions"
+  - printed: "line 10(g)"
+    value: "0.00"
+    work: "No Box F/L transactions"
+  - printed: "line 10(h)"
+    value: "0.00"
+    work: "No Box F/L transactions"
+  - printed: "line 4"
+    value: "0.00"
+    work: "No 6252/4684/6781/8824 items"
+  - printed: "line 5"
+    value: "0.00"
+    work: "No K-1 capital items"
+  - printed: "line 6"
+    value: "0.00"
+    work: "No capital loss carryover"
+  - printed: "line 11"
+    value: "0.00"
+    work: "No 4797/2439/6252/4684/6781/8824 items"
+  - printed: "line 12"
+    value: "0.00"
+    work: "No K-1 capital items"
+  - printed: "line 14"
+    value: "0.00"
+    work: "No capital loss carryover"
+  - printed: "line 13"
+    value: "805.00"
+    work: "Capital gain distributions, 1099-DIV box 2a"
+  - printed: "line 7"
+    value: "-119649.00"
+    work: "0 + 0 + 0 + -119,649 + 0 + 0 + 0"
+  - printed: "line 15"
+    value: "10412.00"
+    work: "9,607 + 805"
+  - printed: "line 16"
+    value: "-109237.00"
+    work: "-119,649 + 10,412"
+  - printed: "line 17"
+    value: "blank"
+    work: "Line 16 is a loss, so skip lines 17-20"
+  - printed: "line 20"
+    value: "blank"
+    work: "Line 16 is a loss, so skip lines 17-20"
+  - printed: "line 21"
+    value: "-3000.00"
+    work: "Smaller of 109,237 or 3,000 (MFJ), so (3,000)"
+  - printed: "line 22"
+    value: "yes"
+    work: "Form 1040 line 3a = 21,999 > 0"
+```
+```
+
+### classm.sd.3
+
+```yaml
+```yaml
+lines:
+  - printed: "line 1a(d)"
+    value: "0.00"
+    work: "s1 is Box A reported in detail on Form 8949, so it goes on line 1b; nothing on line 1a"
+  - printed: "line 1a(e)"
+    value: "0.00"
+    work: "No transactions on line 1a"
+  - printed: "line 1a(g)"
+    value: "0.00"
+    work: "No transactions on line 1a"
+  - printed: "line 1a(h)"
+    value: "0.00"
+    work: "No transactions on line 1a"
+  - printed: "line 1b(d)"
+    value: "48790.00"
+    work: "s1 (Box A, detail) proceeds 48,790.00"
+  - printed: "line 1b(e)"
+    value: "14140.00"
+    work: "s1 basis 14,140.00"
+  - printed: "line 1b(g)"
+    value: "0.00"
+    work: "s1 adjustments 0.00"
+  - printed: "line 1b(h)"
+    value: "34650.00"
+    work: "48,790 - 14,140 + 0 = 34,650"
+  - printed: "line 2(d)"
+    value: "0.00"
+    work: "No Box B or H transactions"
+  - printed: "line 2(e)"
+    value: "0.00"
+    work: "No Box B or H transactions"
+  - printed: "line 2(g)"
+    value: "0.00"
+    work: "No Box B or H transactions"
+  - printed: "line 2(h)"
+    value: "0.00"
+    work: "No Box B or H transactions"
+  - printed: "line 3(d)"
+    value: "0.00"
+    work: "No Box C or I transactions"
+  - printed: "line 3(e)"
+    value: "0.00"
+    work: "No Box C or I transactions"
+  - printed: "line 3(g)"
+    value: "0.00"
+    work: "No Box C or I transactions"
+  - printed: "line 3(h)"
+    value: "0.00"
+    work: "No Box C or I transactions"
+  - printed: "line 8a(d)"
+    value: "0.00"
+    work: "No long-term transactions"
+  - printed: "line 8a(e)"
+    value: "0.00"
+    work: "No long-term transactions"
+  - printed: "line 8a(g)"
+    value: "0.00"
+    work: "No long-term transactions"
+  - printed: "line 8a(h)"
+    value: "0.00"
+    work: "No long-term transactions"
+  - printed: "line 8b(d)"
+    value: "0.00"
+    work: "No Box D or J transactions"
+  - printed: "line 8b(e)"
+    value: "0.00"
+    work: "No Box D or J transactions"
+  - printed: "line 8b(g)"
+    value: "0.00"
+    work: "No Box D or J transactions"
+  - printed: "line 8b(h)"
+    value: "0.00"
+    work: "No Box D or J transactions"
+  - printed: "line 9(d)"
+    value: "0.00"
+    work: "No Box E or K transactions"
+  - printed: "line 9(e)"
+    value: "0.00"
+    work: "No Box E or K transactions"
+  - printed: "line 9(g)"
+    value: "0.00"
+    work: "No Box E or K transactions"
+  - printed: "line 9(h)"
+    value: "0.00"
+    work: "No Box E or K transactions"
+  - printed: "line 10(d)"
+    value: "0.00"
+    work: "No Box F or L transactions"
+  - printed: "line 10(e)"
+    value: "0.00"
+    work: "No Box F or L transactions"
+  - printed: "line 10(g)"
+    value: "0.00"
+    work: "No Box F or L transactions"
+  - printed: "line 10(h)"
+    value: "0.00"
+    work: "No Box F or L transactions"
+  - printed: "line 4"
+    value: "0.00"
+    work: "No Form 6252/4684/6781/8824 items (screened no)"
+  - printed: "line 5"
+    value: "0.00"
+    work: "No Schedule K-1 items (screened no)"
+  - printed: "line 6"
+    value: "0.00"
+    work: "No capital loss carryover (screened no)"
+  - printed: "line 11"
+    value: "0.00"
+    work: "No Form 4797/2439/6252/4684/6781/8824 items (screened no)"
+  - printed: "line 12"
+    value: "0.00"
+    work: "No Schedule K-1 items (screened no)"
+  - printed: "line 14"
+    value: "0.00"
+    work: "No capital loss carryover (screened no)"
+  - printed: "line 13"
+    value: "17081.00"
+    work: "Capital gain distributions, Form 1099-DIV box 2a"
+  - printed: "line 7"
+    value: "34650.00"
+    work: "Lines 1a through 6, column (h): 0 + 34,650 + 0 + 0 + 0 + 0 - 0"
+  - printed: "line 15"
+    value: "17081.00"
+    work: "Lines 8a through 14, column (h): 0 + 0 + 0 + 0 + 0 + 0 + 17,081 - 0"
+  - printed: "line 16"
+    value: "51731.00"
+    work: "Line 7 + line 15: 34,650 + 17,081"
+  - printed: "line 17"
+    value: "yes"
+    work: "Line 15 (17,081) and line 16 (51,731) are both gains"
+  - printed: "line 20"
+    value: "yes"
+    work: "Line 18 = 0 and line 19 = 0, and no Form 4952 is filed; use the QDCGT Worksheet"
+  - printed: "line 21"
+    value: "0.00"
+    work: "Skipped: line 16 is a gain, and line 20 says don't complete line 21"
+  - printed: "line 22"
+    value: "blank"
+    work: "Line 20 is Yes, which says don't complete line 22"
+```
 ```

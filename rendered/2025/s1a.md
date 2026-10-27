@@ -340,6 +340,7 @@
 
 - **IRS:** Qualified tips deduction. Subtract line 12 from line 7. If zero or less, enter -0-
 - **Encoded (NonNegDollars):** Choose — [helper "Did you receive qualified tips as an employee in 2025 that you want to deduct?" = false → helper "Year parameter sales.zero"] [helper "Did you receive qualified tips as an employee in 2025 that you want to deduct?" = true → helper "Line 13 with qualified tips: zero for married filing separately"]
+- **Refusal:** when s1.sc_1a is true, cannot complete Schedule 1-A, lines 5 and 14b (qualified tips received in a trade or business, or qualified overtime reported on Form 1099-NEC or 1099-MISC, with Schedule C). Qualified tips received in a trade or business and qualified overtime reported on Form 1099-NEC or 1099-MISC are outside this tool. Cite: [i1040gi] p. 104, Schedule 1-A, line 5, "Include the qualified tips you and/or your spouse received in the course of a trade or business"; p. 101, "Fill out Schedule 1-A, Part II, only if" (2025; printed date 2026-02-25; sha256 482e9c48)
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.tips",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.tips",{"const":true}],"op":"test"},"then":"s1a.line13_claim"}],"op":"choose"}`
 - Cite: [f1040s1a] Schedule 1-A (2025), line 13; i1040gi p. 101, "Fill out Schedule 1-A, Part II, only if" (2025; created 2025-11-04; sha256 64f97b38)
 
@@ -559,6 +560,7 @@
 
 - **IRS:** Qualified overtime compensation deduction. Subtract line 20 from line 15. If zero or less, enter -0-
 - **Encoded (NonNegDollars):** Choose — [helper "Did you receive qualified overtime compensation in 2025 that you want to deduct?" = false → helper "Year parameter sales.zero"] [helper "Did you receive qualified overtime compensation in 2025 that you want to deduct?" = true → helper "Line 21 with qualified overtime: zero for married filing separately"]
+- **Refusal:** when s1.sc_1a is true, cannot complete Schedule 1-A, lines 5 and 14b (qualified tips received in a trade or business, or qualified overtime reported on Form 1099-NEC or 1099-MISC, with Schedule C). Qualified tips received in a trade or business and qualified overtime reported on Form 1099-NEC or 1099-MISC are outside this tool. Cite: [i1040gi] p. 108, Schedule 1-A, line 14b, "Enter on Line 14b only the qualified overtime compensation amount that is included in Form 1099-NEC, box 1, or Form 1099-MISC, box 3"; p. 106, "Fill out Schedule 1-A, Part III, only if" (2025; printed date 2026-02-25; sha256 482e9c48)
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.overtime",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.overtime",{"const":true}],"op":"test"},"then":"s1a.line21_claim"}],"op":"choose"}`
 - Cite: [f1040s1a] Schedule 1-A (2025), line 21; i1040gi p. 106, "Fill out Schedule 1-A, Part III, only if" (2025; created 2025-11-04; sha256 64f97b38)
 

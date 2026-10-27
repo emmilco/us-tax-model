@@ -20,6 +20,15 @@
   },
   {
    "case": "classm.dependent.1",
+   "printed": "dependent[dep_b].dc_line2c",
+   "project": "no",
+   "model": "yes",
+   "ruling": "Ruling: model error; project retained (no). The model checks column (c) for dep_b, age 71, a qualifying relative not able to care for themselves, but on this return no care was provided or paid (inputs f2441.care no, f2441.benefits no; every entry's column (d), including the model's own, is $0.00). i2441 p. 3, Column (c): \"Check the box in column (c) if the qualifying person listed in column (a) was over age 12 at the time the care was provided and was disabled\"; with no care provided there is no line 2 entry and no Form 2441 (i2441 p. 1, Purpose of Form: the form is filed to claim the credit or exclude benefits). Same reading and ruling as round 2; the transcription candidates' 2(c) carry the same omission of f2441.care.",
+   "drop": true,
+   "context": "ad57a1c8e5703a407ff06d24217894af11faafd0df7b44ca2d926e93518bae9c"
+  },
+  {
+   "case": "classm.dependent.1",
    "printed": "dependent[dep_b].dc_line2d",
    "project": "$8,270.00",
    "model": "$0.00",

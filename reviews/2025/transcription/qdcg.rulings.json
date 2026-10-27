@@ -3,10 +3,31 @@
  "form": "qdcg",
  "rulings": [
   {
+   "printed": "13",
+   "project": "{\"param\": \"qdcg.fifteen_rate_ceiling\"}",
+   "second": "{\"from\": {\"param\": \"qdcg.fifteen_rate_ceiling\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}",
+   "ruling": "Ruling: representation; i1040gi p.38 line13 prints positive filing-status ceilings. The matching year parameter is always positive in every declared status; subtract_floor0(parameter,0) leaves that amount unchanged and adds no missing filer input. The extra floor does not change the printed quantity.",
+   "context": "2d4ef7c2e2b5325b4556772a1b38343d1d9d62888f427f9612709dadc44b8b8e"
+  },
+  {
+   "printed": "3",
+   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"line\": \"(question)\"}], \"test\": \"eq\"}, \"then\": {\"ref\": \"sd.distributions\"}}, {\"guard\": {\"args\": [{\"const\": true}, {\"line\": \"(question)\"}], \"test\": \"eq\"}, \"then\": {\"from\": {\"of\": [{\"ref\": \"sd.line15\"}, {\"ref\": \"sd.line16\"}], \"op\": \"smaller_of\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}}], \"op\": \"choose\"}",
+   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"line\": \"(question)\"}], \"test\": \"eq\"}, \"then\": {\"from\": {\"ref\": \"f1040.line7a\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}}, {\"guard\": {\"args\": [{\"const\": true}, {\"line\": \"(question)\"}], \"test\": \"eq\"}, \"then\": {\"of\": [{\"from\": {\"ref\": \"sd.line15\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}, {\"from\": {\"ref\": \"sd.line16\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}], \"op\": \"smaller_of\"}}], \"op\": \"choose\"}",
+   "ruling": "Ruling: representation; i1040gi p.38 QDCG worksheet line3 uses Form1040 line7a when ScheduleD is not filed; in the supported distribution-only route that amount is sd.distributions, while all direct sales/loss routes require ScheduleD. On the filed route, max(min(SD15,SD16),0) equals min(max(SD15,0),max(SD16,0)), the printed loss-to-zero rule. This compares the prepared, supported-return quantities; it does not claim arbitrary inconsistent supplied cross-form subtotals or all partial-input paths are equivalent.",
+   "context": "2d4ef7c2e2b5325b4556772a1b38343d1d9d62888f427f9612709dadc44b8b8e"
+  },
+  {
    "printed": "3",
    "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"line\": \"(question)\"}], \"test\": \"eq\"}, \"then\": {\"ref\": \"sd.distributions\"}}, {\"guard\": {\"args\": [{\"const\": true}, {\"line\": \"(question)\"}], \"test\": \"eq\"}, \"then\": {\"from\": {\"of\": [{\"ref\": \"sd.line15\"}, {\"ref\": \"sd.line16\"}], \"op\": \"smaller_of\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}}], \"op\": \"choose\"}",
    "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"line\": \"(question)\"}], \"test\": \"eq\"}, \"then\": {\"ref\": \"f1040.line7a\"}}, {\"guard\": {\"args\": [{\"const\": true}, {\"line\": \"(question)\"}], \"test\": \"eq\"}, \"then\": {\"from\": {\"of\": [{\"ref\": \"sd.line15\"}, {\"ref\": \"sd.line16\"}], \"op\": \"smaller_of\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}}], \"op\": \"choose\"}",
    "ruling": "Ruling: equivalent representation; project retained. The No branch reads “Enter the amount from Form 1040 or 1040-SR, line 7a” (i1040gi p. 38). When Schedule D is not required, line 7a carries the total capital gain distributions from Form 1099-DIV box 2a (i1040gi p. 33, line 7a, Exception 1), which is the value the project references directly (`sd.distributions`); the second transcription references line 7a literally. No change to the data."
+  },
+  {
+   "printed": "6",
+   "project": "{\"param\": \"qdcg.zero_rate_ceiling\"}",
+   "second": "{\"from\": {\"param\": \"qdcg.zero_rate_ceiling\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}",
+   "ruling": "Ruling: representation; i1040gi p.38 line6 prints positive filing-status ceilings. The matching year parameter is always positive in every declared status; subtract_floor0(parameter,0) leaves that amount unchanged and adds no missing filer input. The extra floor does not change the printed quantity.",
+   "context": "2d4ef7c2e2b5325b4556772a1b38343d1d9d62888f427f9612709dadc44b8b8e"
   }
  ]
 }

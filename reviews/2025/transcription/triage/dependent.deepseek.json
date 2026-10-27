@@ -1,0 +1,110 @@
+{
+ "bank": null,
+ "errors": [
+  {
+   "line": "dependent.dc_count",
+   "message": "dependent.dependent.dc_count: collection parent binding mismatch"
+  }
+ ],
+ "failures": [],
+ "family": "deepseek",
+ "form": "dependent",
+ "lines": [
+  {
+   "candidate": "dependent.ctc_child",
+   "handle": "dependent.ctc_child",
+   "open_at_triage": true,
+   "project": "dependent.ctc_child",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "dependent.odc_person",
+   "handle": "dependent.odc_person",
+   "open_at_triage": true,
+   "project": "dependent.odc_person",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "dependent.ctc_amount",
+   "handle": "dependent.ctc_amount",
+   "open_at_triage": true,
+   "project": "dependent.ctc_amount",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "dependent.odc_amount",
+   "handle": "dependent.odc_amount",
+   "open_at_triage": true,
+   "project": "dependent.odc_amount",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "dependent.actc_amount",
+   "handle": "dependent.actc_amount",
+   "open_at_triage": true,
+   "project": "dependent.actc_amount",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "dependent.hoh_test2",
+   "handle": "dependent.hoh_test2",
+   "open_at_triage": true,
+   "project": "dependent.hoh_test2",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "dependent.hoh_test1",
+   "handle": "dependent.hoh_test1",
+   "open_at_triage": true,
+   "project": "dependent.hoh_test1",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "dependent.dc_qp",
+   "handle": "dependent.dc_qp",
+   "open_at_triage": true,
+   "project": "dependent.dc_qp",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "dependent.dc_count",
+   "handle": "dependent.dc_count",
+   "open_at_triage": true,
+   "project": "dependent.dc_count",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "dependent.dc_line2c",
+   "handle": "2(c)",
+   "open_at_triage": true,
+   "project": "dependent.dc_line2c",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  }
+ ],
+ "log_sha256_at_triage": "925a549e159801acaac2dc4207d13be32477481b7a6f2c7d0bf6136889d460d0",
+ "policy": "executable-triage-v2",
+ "response_sha256": "8d52bcf56b44f277cb9896063ff1ff312b1f790fa53b74eaab3b1a70e6328514",
+ "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
+ "state": "invalid",
+ "subject_sha256": "5d197e3d33a761a8cd7b3d5f2705a33ac9da0cbf6a108ef861b5e54cfdcbcf82"
+}

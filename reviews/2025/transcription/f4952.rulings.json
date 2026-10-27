@@ -6,8 +6,8 @@
    "printed": "4a",
    "project": "{\"of\": [{\"ref\": \"sb.line2\"}, {\"ref\": \"sb.line6\"}], \"op\": \"sum\"}",
    "second": "{\"of\": [{\"collection\": \"interest\", \"field\": \"interest.amount\", \"op\": \"sum_over\", \"where\": null}, {\"ref\": \"f1040.line3b\"}], \"op\": \"sum\"}",
-   "ruling": "Ruling: representation; f4952 p.3 line4a includes supported taxable interest and ordinary dividends, excluding Alaska Permanent Fund dividends. sb.line2 is the interest-entry sum and f1040.line3b copies sb.line6. The expressions use the same admitted subtotals; inherited refusal placement differs and this does not certify missing-input paths.",
-   "context": "41731cf1c012733ac014f69b0e1db12115dd06c2f7ca96c5b412642113ea1bab"
+   "ruling": "Ruling: representation; f4952 p.3 Line4a includes taxable interest and ordinary dividends in this screened slice. ScheduleB line2 is the sum of interest.amount entries; Form1040 line2b copies that subtotal. ScheduleB line6 supplies the same ordinary-dividend total carried to Form1040 line3b. The alternative references identify the same prepared-return amounts; this does not assert equivalence for independently inconsistent boundary overrides or every unknown/refusal ordering.",
+   "context": "b1a6f3f01276270e9e90818a898a05b08219673e7ade16f2c26a0878d7467f6c"
   },
   {
    "printed": "4a",
@@ -47,6 +47,13 @@
    "second": "{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"line\": \"4c\"}, {\"line\": \"1\"}], \"test\": \"le\"}, {\"args\": [{\"const\": false}, {\"input\": \"f4952.carryover\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": false}, {\"input\": \"f4952.unsupported\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"const\": 0}, {\"line\": \"1\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4g\"}], \"test\": \"lt\"}], \"test\": \"any\"}",
    "ruling": "Ruling: representation; f4952 p.3 Who Must File gives interest/dividends less qualified dividends, no other deductible expenses and no carryover as the exception. The project line5 is zero on its admitted slice and refuses unsupported expenses; the reply tests that screen directly. Both require filing for a positive line4g election under pp.3-4. This ruling is limited to completed supported facts, not missing-screen equivalence.",
    "context": "41731cf1c012733ac014f69b0e1db12115dd06c2f7ca96c5b412642113ea1bab"
+  },
+  {
+   "printed": "f4952.required",
+   "project": "{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"line\": \"4c\"}, {\"line\": \"1\"}], \"test\": \"le\"}, {\"args\": [{\"const\": 0}, {\"line\": \"5\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": false}, {\"input\": \"f4952.carryover\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"const\": 0}, {\"line\": \"1\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4g\"}], \"test\": \"lt\"}], \"test\": \"any\"}",
+   "second": "{\"args\": [{\"args\": [{\"args\": [{\"line\": \"4c\"}, {\"line\": \"1\"}], \"test\": \"le\"}, {\"args\": [{\"const\": 0}, {\"line\": \"1\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": true}, {\"input\": \"f4952.carryover\"}], \"test\": \"eq\"}], \"test\": \"any\"}",
+   "ruling": "Ruling: model error; f4952 p.4 Line4g says to make the election by entering the elected amount on line4g. A positive declared election therefore needs this form even if the interest-expense deduction otherwise meets the p.3 filing exception. Both returned predicates omit the positive-line4g condition. For investment interest $100, ordinary nonqualified investment income $200 and declared elected dividends $50, the exception can hold while the election still requires Form4952. The project asks whether the form is needed for the deduction or declared election; no new owner scope choice is made.",
+   "context": "b1a6f3f01276270e9e90818a898a05b08219673e7ade16f2c26a0878d7467f6c"
   }
  ]
 }

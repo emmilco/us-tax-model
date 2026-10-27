@@ -187,7 +187,16 @@ page whose heading starts a line. The log records which pages were used.
 
 ## Rulings
 
+Before ruling, `triage.py` executes both sides of every open disagreement on the same
+inputs (every fixture, generated returns and partial records withholding one answer of
+the reviewed document) and writes `reviews/2025/transcription/triage/<stem>.json` with
+comparison counts, difference kinds and witnesses. `--explain` rebuilds one witness and
+prints both derivation trees. The method and ruling classes are in
+`reviews/2025/transcription/adjudication/README.md`.
+
 ```
+python3 tools/transcription/triage.py --form sd [--family deepseek]
+python3 tools/transcription/triage.py --form sd --explain '<handle>' --witness 0
 python3 tools/transcription/rule.py --form sd --rulings rulings.json   # {"<printed or id>": "Ruling: ...", "*": "..."}
 python3 tools/transcription/rule.py --form sd --family deepseek --rulings rulings.json   # a second family's log
 ```
@@ -241,20 +250,41 @@ reference/type rules. It keeps published input types, rejects added inputs/chang
 and uses only the model's own computed helpers in the reviewed document. No candidate expression
 is executed. Citation and guard-exhaustiveness checks are outside this adapter's scope.
 
-New logs record `checked-expression-types-v2`, `project-expression-types-v1` and a passing/failing
+New logs record `checked-expression-types-v2`, `project-expression-types-v3` and a passing/failing
 validation result. A type error reaches every line that reads that helper; even an unused invalid
 helper fails the form's type check and gives tool exit 3. BUG-0132 extends dependency traversal to
 count, proration, keyed-table and collection-field operands. Invalid expressions cannot agree by
 canonicalization alone. Passing types does not establish source correctness or numeric evidence.
 
 BUG-0130 supplies Count-literal syntax; BUG-0131 preserves complete input/refusal questions instead
-of cutting off late meanings and exceptions. New logs separately check the actual prompt against
-all current filer-input questions (`complete-input-context-v1`; shared-definition caller bindings
-are excluded). This is a host-side completeness finding, not a change to the original request's
-prompt-policy metadata. Both families need current comparison, passing types and complete input
-context before the pair can qualify. These properties are bound into ruling contexts.
-This version verifies question wording only: it does not certify which answers the guided
-interview may leave unasked (BUG-0134/T-063). Availability-sensitive disagreements remain gaps.
+of cutting off late meanings and exceptions. `required-review-interfaces-v2` checks the actual
+request against every own input and direct foreign boundaries referenced by either the authored
+form or the returned candidate (including helpers, collection fields, bindings and gates). The
+fingerprint binds ids, printed markers, types and complete input wording. Unrelated foreign
+questions do not invalidate it; omitting a dependency cannot shrink the required context. This
+host-only assessment imports no foreign authored arithmetic and confers no numeric evidence.
+The older global question diagnostic remains separately reported, with its original policy.
+Neither check certifies which questions the interview may leave unasked; source-based availability
+cases remain necessary for those regimes (BUG-0134/T-063).
+
+Qualification rechecks the actual bound request/reply and live interface hash, including current
+types. A recorded passing header alone cannot qualify a changed foreign interface. Original
+policies remain visible in audits; no audit silently upgrades old request provenance. The global
+BUG-0129 hold remains while migration and adjudication continue.
+
+BUG-0144 versions the refusal checks. BUG-0145 removes authored input refusal gates from published
+input stubs: only identity, type and question metadata are retained. Gates explicitly returned on
+an input by the model are validated/interpreted as that model's declarations. Hidden authored
+computed helpers cannot become prerequisites of an independent candidate. v1/v2 results remain
+historical; current checking is v3.
+
+`--from-response` now verifies the original log/request/reply/meta identity in addition to the
+transport's exact current prompt/model/system match, and rejects unbound receipts. It archives
+the parent log, sidecar and raw artifacts under `.transcription/archive/verified-replays/` with
+hashes, then labels the derived log as a verified host replay with its parent hash and original
+policies. No new model call or repaired response is claimed. A request with changed wording or a
+mismatched receipt requires an actual fresh request. `rerun_all.py --resume` can fall back to a
+fresh request; direct `transcribe.py --from-response` never does.
 
 T-063 adds source-based partial-input cases under `input_contracts/<year>/`. The request
 receives synthetic input facts and target ids only; host reference answers and rationale are

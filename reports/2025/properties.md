@@ -24,7 +24,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 
 ## refusal_outranks_unknown
 
-- Cases with a refused operand somewhere: 318; cases with a line that has both a refused and an unknown operand (the order this property guards): 234.
+- Cases with a refused operand somewhere: 318; cases with a line that has both a refused and an unknown operand (the order this property guards): 236.
 
 ## tax_monotone
 
@@ -40,7 +40,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 
 ## Branch coverage of the generated corpus
 
-1954 of 2209 branches (choose guards, Bool lines both ways, floor and positive sides of subtract_floor0, left and right of smaller_of and larger_of) reached by the 400 generated returns. Unreached:
+1983 of 2249 branches (choose guards, Bool lines both ways, floor and positive sides of subtract_floor0, left and right of smaller_of and larger_of) reached by the 400 generated returns. Unreached:
 
 - asset.outside:true
 - asset.screen:true
@@ -54,6 +54,14 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - dcprov.household:true
 - dcprov.related:true
 - dcprov.see_statement:true
+- dependent.born_died:false
+- dependent.born_died:true
+- dependent.placed:false
+- dependent.placed:true
+- dependent.part_year_home:false
+- dependent.part_year_home:true
+- dependent.hoh_lived_half:false
+- dependent.dc_lived_half:false
 - dependent.dc_under13:false
 - dependent.dc_over12_care:false
 - dependent.dc_over12_care:true
@@ -242,7 +250,9 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - s1.jury_over:true
 - s179.line4:positive
 - s179.line5_full:floor
+- s179.over_limit:true
 - s179.line9:left
+- s179.show10:false
 - s179.line11:right
 - s1a.line4c_one:right
 - s1a.line27_over:true
@@ -250,6 +260,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - s1a.line30_amount#1
 - s1a.died_before_65:true
 - s1a.senior_decedent:true
+- s8812.show_iib:true
 - s8812.few_children:false
 - s8812.line27#1
 - s8812.clwb_three:true

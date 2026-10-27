@@ -4,13 +4,14 @@ The registry is host-only. Blind requests omit these targets and their behavior.
 Historical review logs and rulings remain intact, with excluded rows visible in
 comparison reports. Empty source reviews cannot become passing assertions.
 """
+import copy
 import json
 from pathlib import Path
 import subprocess
 
 DIRECTORY = Path(__file__).resolve().parent / "adapter_contracts"
 POLICY = "internal-adapters-v1"
-REQUIRED = {"2025": {"div"}}
+REQUIRED = {"2025": {"div", "f4952"}}
 
 
 def load(form, year):
@@ -69,6 +70,23 @@ def assess(form, year, context):
         consumers = {key for key, value in lines.items() if value["expr"] == {"op": "copy", "from": target}}
         if consumers != set(contract["copy_consumers"]):
             raise ValueError("adapter copy-consumer inventory changed")
+    # Isolated engineering tests may provide an explicitly listed foreign
+    # subtotal as a boundary fact. Never replace this form's arithmetic, an
+    # adapter, a definition, or any collection entry with a supplied answer.
+    boundaries = bank.get("boundary_inputs", [])
+    if len(set(boundaries)) != len(boundaries):
+        raise ValueError("duplicate adapter boundary")
+    for name in boundaries:
+        owner = next((doc for doc in context["forms"] if any(line["id"] == name for line in doc["lines"])), None)
+        if not owner or owner["id"] == form or owner.get("collection") or lines[name]["expr"]["op"] == "input":
+            raise ValueError("adapter boundary must be a computed foreign return subtotal")
+    if boundaries:
+        context = copy.deepcopy(context)
+        for doc in context["forms"]:
+            for line in doc["lines"]:
+                if line["id"] in boundaries:
+                    line["expr"] = {"op": "input", "source": "Explicit engineering boundary; no tax-evidence credit"}
+                    line.pop("refuses", None)
     cases = [{"id": test["id"], "inputs": {**bank["base_inputs"], **test.get("inputs", {})},
               "expect": {target: test["expect"] for target in
                          [test["adapter"], *bank["adapters"][test["adapter"]]["copy_consumers"]]}}
@@ -78,7 +96,8 @@ def assess(form, year, context):
                             input=json.dumps(payload, allow_nan=False), text=True, capture_output=True, timeout=30)
     if result.returncode:
         raise RuntimeError("adapter checker failed: " + result.stderr[-500:])
-    return {**json.loads(result.stdout), "policy": POLICY, "evidence_credit": False}
+    return {**json.loads(result.stdout), "policy": POLICY, "evidence_credit": False,
+            "boundary_inputs": boundaries}
 
 
 def main():

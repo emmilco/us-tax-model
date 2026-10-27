@@ -1,0 +1,943 @@
+{
+ "bank": {
+  "evaluation_failures": 0,
+  "fixtures": 1083,
+  "generated": 500,
+  "partial_bases": 40,
+  "partial_records": 0,
+  "seed": 20261026
+ },
+ "errors": [],
+ "failures": [],
+ "family": "claude",
+ "form": "f8995a",
+ "lines": [
+  {
+   "absent": 0,
+   "agree": 1512,
+   "candidate": "f8995a.line40",
+   "compared": 1583,
+   "differ": 71,
+   "handle": "40",
+   "in_scope": 1566,
+   "in_scope_agree": 1512,
+   "kinds": {
+    "candidate-refuses": 17,
+    "candidate-unknown": 54
+   },
+   "kinds_by_return": {
+    "incomplete": {
+     "candidate-unknown": 27
+    },
+    "refused": {
+     "candidate-refuses": 17,
+     "candidate-unknown": 27
+    }
+   },
+   "open_at_triage": false,
+   "project": "f8995a.line40",
+   "sources": {
+    "fixture": 1083,
+    "generated": 500
+   },
+   "status": "DISAGREE",
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "input": "qbi.unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for qbi.unsupported"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8995a.h_line40_mag",
+       "value": {
+        "input": "qbi.unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for qbi.unsupported"
+       }
+      }
+     ],
+     "instance": "f8995a",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "qbi.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "classm.f8889.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "qbi.unsupported",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8995a.h_line40_mag",
+       "value": {
+        "cite": null,
+        "form": "model-declared refusal",
+        "gate": "qbi.unsupported",
+        "kind": "refusal",
+        "remedy": "Outside candidate scope"
+       }
+      }
+     ],
+     "instance": "f8995a",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "qbi.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dcprov.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "qbi.unsupported",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8995a.h_line40_mag",
+       "value": {
+        "cite": null,
+        "form": "model-declared refusal",
+        "gate": "qbi.unsupported",
+        "kind": "refusal",
+        "remedy": "Outside candidate scope"
+       }
+      }
+     ],
+     "instance": "f8995a",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "qbi.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.s179.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "qbi.unsupported",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8995a.h_line40_mag",
+       "value": {
+        "cite": null,
+        "form": "model-declared refusal",
+        "gate": "qbi.unsupported",
+        "kind": "refusal",
+        "remedy": "Outside candidate scope"
+       }
+      }
+     ],
+     "instance": "f8995a",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "qbi.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.tipjob.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "qbi.unsupported",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8995a.h_line40_mag",
+       "value": {
+        "cite": null,
+        "form": "model-declared refusal",
+        "gate": "qbi.unsupported",
+        "kind": "refusal",
+        "remedy": "Outside candidate scope"
+       }
+      }
+     ],
+     "instance": "f8995a",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "qbi.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.sa.6",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "qbi.unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for qbi.unsupported"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8995a.h_line40_mag",
+       "value": {
+        "input": "qbi.unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for qbi.unsupported"
+       }
+      }
+     ],
+     "instance": "f8995a",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "qbi.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "classm.f8889.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "qbi.unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for qbi.unsupported"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8995a.h_line40_mag",
+       "value": {
+        "input": "qbi.unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for qbi.unsupported"
+       }
+      }
+     ],
+     "instance": "f8995a",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "qbi.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage16.cleanup.refuse.f1040_line16",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "qbi.unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for qbi.unsupported"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8995a.h_line40_mag",
+       "value": {
+        "input": "qbi.unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for qbi.unsupported"
+       }
+      }
+     ],
+     "instance": "f8995a",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "qbi.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage16.cleanup.refuse.scope_credits",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "qbi.unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for qbi.unsupported"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8995a.h_line40_mag",
+       "value": {
+        "input": "qbi.unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for qbi.unsupported"
+       }
+      }
+     ],
+     "instance": "f8995a",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "qbi.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage16.cleanup.refuse.rrta_medicare",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "qbi.unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for qbi.unsupported"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8995a.h_line40_mag",
+       "value": {
+        "input": "qbi.unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for qbi.unsupported"
+       }
+      }
+     ],
+     "instance": "f8995a",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "qbi.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage16.cleanup.refuse.f4952_unsupported",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "qbi.unsupported",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8995a.h_line40_mag",
+       "value": {
+        "cite": null,
+        "form": "model-declared refusal",
+        "gate": "qbi.unsupported",
+        "kind": "refusal",
+        "remedy": "Outside candidate scope"
+       }
+      }
+     ],
+     "instance": "f8995a",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "qbi.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage4.refuse.qbi",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "qbi.unsupported",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8995a.h_line40_mag",
+       "value": {
+        "cite": null,
+        "form": "model-declared refusal",
+        "gate": "qbi.unsupported",
+        "kind": "refusal",
+        "remedy": "Outside candidate scope"
+       }
+      }
+     ],
+     "instance": "f8995a",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "qbi.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 31,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    }
+   ]
+  },
+  {
+   "absent": 0,
+   "agree": 1583,
+   "candidate": "f8995a.line28",
+   "compared": 1583,
+   "differ": 0,
+   "handle": "28",
+   "in_scope": 1566,
+   "in_scope_agree": 1566,
+   "kinds": {},
+   "kinds_by_return": {},
+   "open_at_triage": false,
+   "project": "f8995a.line28",
+   "sources": {
+    "fixture": 1083,
+    "generated": 500
+   },
+   "status": "DISAGREE",
+   "triage": "agrees on sample",
+   "witnesses": []
+  },
+  {
+   "absent": 0,
+   "agree": 1583,
+   "candidate": "f8995a.line30",
+   "compared": 1583,
+   "differ": 0,
+   "handle": "30",
+   "in_scope": 1566,
+   "in_scope_agree": 1566,
+   "kinds": {},
+   "kinds_by_return": {},
+   "open_at_triage": false,
+   "project": "f8995a.line30",
+   "sources": {
+    "fixture": 1083,
+    "generated": 500
+   },
+   "status": "DISAGREE",
+   "triage": "agrees on sample",
+   "witnesses": []
+  },
+  {
+   "absent": 0,
+   "agree": 1540,
+   "candidate": "f8995a.line33",
+   "compared": 1583,
+   "differ": 43,
+   "handle": "33",
+   "in_scope": 1037,
+   "in_scope_agree": 1037,
+   "kinds": {
+    "candidate-refuses": 43
+   },
+   "kinds_by_return": {
+    "refused": {
+     "candidate-refuses": 43
+    }
+   },
+   "open_at_triage": false,
+   "project": "f8995a.line33",
+   "sources": {
+    "fixture": 1083,
+    "generated": 500
+   },
+   "status": "DISAGREE",
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 14, Head of Household"
+      },
+      "form": "Head of household filing status",
+      "gate": "household.hoh_fails",
+      "kind": "refusal",
+      "remedy": "Head of household is checked but the tests are not met; you must be unmarried or considered unmarried, have paid over half the cost of keeping up your home, and have a qualifying person."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8995a.h_ti_raw",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 14, Head of Household"
+        },
+        "form": "Head of household filing status",
+        "gate": "household.hoh_fails",
+        "kind": "refusal",
+        "remedy": "Head of household is checked but the tests are not met; you must be unmarried or considered unmarried, have paid over half the cost of keeping up your home, and have a qualifying person."
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8995a",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "qbi.taxable_before",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8995.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 14, Head of Household"
+      },
+      "form": "Head of household filing status",
+      "gate": "household.hoh_fails",
+      "kind": "refusal",
+      "remedy": "Head of household is checked but the tests are not met; you must be unmarried or considered unmarried, have paid over half the cost of keeping up your home, and have a qualifying person."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8995a.h_ti_raw",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 14, Head of Household"
+        },
+        "form": "Head of household filing status",
+        "gate": "household.hoh_fails",
+        "kind": "refusal",
+        "remedy": "Head of household is checked but the tests are not met; you must be unmarried or considered unmarried, have paid over half the cost of keeping up your home, and have a qualifying person."
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8995a",
+     "kind": "candidate-refuses",
+     "project": {
+      "input": "s1a.tips",
+      "kind": "unknown",
+      "reason": "no input supplied for s1a.tips"
+     },
+     "project_operands": [
+      {
+       "ref": "qbi.taxable_before",
+       "value": {
+        "input": "s1a.tips",
+        "kind": "unknown",
+        "reason": "no input supplied for s1a.tips"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.sales.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 14, Head of Household"
+      },
+      "form": "Head of household filing status",
+      "gate": "household.hoh_fails",
+      "kind": "refusal",
+      "remedy": "Head of household is checked but the tests are not met; you must be unmarried or considered unmarried, have paid over half the cost of keeping up your home, and have a qualifying person."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8995a.h_ti_raw",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 14, Head of Household"
+        },
+        "form": "Head of household filing status",
+        "gate": "household.hoh_fails",
+        "kind": "refusal",
+        "remedy": "Head of household is checked but the tests are not met; you must be unmarried or considered unmarried, have paid over half the cost of keeping up your home, and have a qualifying person."
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8995a",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "qbi.taxable_before",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.sa.6",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 22, Social security number, \"You must enter each dependent\u2019s social security number (SSN)\" and \"If your dependent child was born and died in 2025 and you do not have an SSN for the child, enter \u201cDied\u201d on row (3) of the Dependents section and include a copy of the child\u2019s birth certificate, death certificate, or hospital records\"; p. 14, Head of Household, \"The dependents you claim are those you list by name and SSN ... in the Dependents section on Form 1040 or 1040-SR\""
+      },
+      "form": "Dependent without an SSN, ITIN or ATIN (Form 1040, Dependents, row (3))",
+      "gate": "dependent[a].claimed_no_tin",
+      "kind": "refusal",
+      "remedy": "Each dependent must be listed with an SSN (or ITIN or ATIN) issued on or before the due date of your return. A dependent child who was born and died in 2025 without an SSN, entered as \"Died\" on row (3) with a copy of the birth certificate, death certificate or hospital records, is outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8995a.h_ti_raw",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 22, Social security number, \"You must enter each dependent\u2019s social security number (SSN)\" and \"If your dependent child was born and died in 2025 and you do not have an SSN for the child, enter \u201cDied\u201d on row (3) of the Dependents section and include a copy of the child\u2019s birth certificate, death certificate, or hospital records\"; p. 14, Head of Household, \"The dependents you claim are those you list by name and SSN ... in the Dependents section on Form 1040 or 1040-SR\""
+        },
+        "form": "Dependent without an SSN, ITIN or ATIN (Form 1040, Dependents, row (3))",
+        "gate": "dependent[a].claimed_no_tin",
+        "kind": "refusal",
+        "remedy": "Each dependent must be listed with an SSN (or ITIN or ATIN) issued on or before the due date of your return. A dependent child who was born and died in 2025 without an SSN, entered as \"Died\" on row (3) with a copy of the birth certificate, death certificate or hospital records, is outside this tool."
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8995a",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 637500,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "qbi.taxable_before",
+       "value": {
+        "cents": 637500,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage15.refuse.dependent.dc_no_tin",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 14, Head of Household"
+      },
+      "form": "Head of household filing status",
+      "gate": "household.hoh_fails",
+      "kind": "refusal",
+      "remedy": "Head of household is checked but the tests are not met; you must be unmarried or considered unmarried, have paid over half the cost of keeping up your home, and have a qualifying person."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8995a.h_ti_raw",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 14, Head of Household"
+        },
+        "form": "Head of household filing status",
+        "gate": "household.hoh_fails",
+        "kind": "refusal",
+        "remedy": "Head of household is checked but the tests are not met; you must be unmarried or considered unmarried, have paid over half the cost of keeping up your home, and have a qualifying person."
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8995a",
+     "kind": "candidate-refuses",
+     "project": {
+      "input": "s1a.tips",
+      "kind": "unknown",
+      "reason": "no input supplied for s1a.tips"
+     },
+     "project_operands": [
+      {
+       "ref": "qbi.taxable_before",
+       "value": {
+        "input": "s1a.tips",
+        "kind": "unknown",
+        "reason": "no input supplied for s1a.tips"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage8.hoh.fails.child_half_year",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 22, Social security number, \"You must enter each dependent\u2019s social security number (SSN)\" and \"If your dependent child was born and died in 2025 and you do not have an SSN for the child, enter \u201cDied\u201d on row (3) of the Dependents section and include a copy of the child\u2019s birth certificate, death certificate, or hospital records\"; p. 14, Head of Household, \"The dependents you claim are those you list by name and SSN ... in the Dependents section on Form 1040 or 1040-SR\""
+      },
+      "form": "Dependent without an SSN, ITIN or ATIN (Form 1040, Dependents, row (3))",
+      "gate": "dependent[child].claimed_no_tin",
+      "kind": "refusal",
+      "remedy": "Each dependent must be listed with an SSN (or ITIN or ATIN) issued on or before the due date of your return. A dependent child who was born and died in 2025 without an SSN, entered as \"Died\" on row (3) with a copy of the birth certificate, death certificate or hospital records, is outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8995a.h_ti_raw",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 22, Social security number, \"You must enter each dependent\u2019s social security number (SSN)\" and \"If your dependent child was born and died in 2025 and you do not have an SSN for the child, enter \u201cDied\u201d on row (3) of the Dependents section and include a copy of the child\u2019s birth certificate, death certificate, or hospital records\"; p. 14, Head of Household, \"The dependents you claim are those you list by name and SSN ... in the Dependents section on Form 1040 or 1040-SR\""
+        },
+        "form": "Dependent without an SSN, ITIN or ATIN (Form 1040, Dependents, row (3))",
+        "gate": "dependent[child].claimed_no_tin",
+        "kind": "refusal",
+        "remedy": "Each dependent must be listed with an SSN (or ITIN or ATIN) issued on or before the due date of your return. A dependent child who was born and died in 2025 without an SSN, entered as \"Died\" on row (3) with a copy of the birth certificate, death certificate or hospital records, is outside this tool."
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8995a",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 9637500,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "qbi.taxable_before",
+       "value": {
+        "cents": 9637500,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "audit.dependent.claimed_no_tin",
+      "kind": "fixture"
+     }
+    }
+   ]
+  },
+  {
+   "absent": 0,
+   "agree": 1583,
+   "candidate": "f8995a.line34",
+   "compared": 1583,
+   "differ": 0,
+   "handle": "34",
+   "in_scope": 1469,
+   "in_scope_agree": 1469,
+   "kinds": {},
+   "kinds_by_return": {},
+   "open_at_triage": false,
+   "project": "f8995a.line34",
+   "sources": {
+    "fixture": 1083,
+    "generated": 500
+   },
+   "status": "DISAGREE",
+   "triage": "agrees on sample",
+   "witnesses": []
+  }
+ ],
+ "log_sha256_at_triage": "aa1e990a13dac7d6c4edbfe750880086843e6d5b11437f0fb75811e3c7d2759a",
+ "policy": "executable-triage-v1",
+ "response_sha256": "9da4d0eb62ff754e3b0946e8c7b73b8911c54eb4eae571f9bb57e5643fd49d75",
+ "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
+ "state": "evaluated",
+ "subject_sha256": "4730a3db4556a736a5d427207d3028d10af84740c7238465ebd341ef86281419"
+}

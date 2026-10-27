@@ -261,6 +261,15 @@
 - Status: Owner ruling, Stage 15 (T-048).
 - Cite: [f2441] Form 2441 (2025), line 30 (2025; created 2025-03-18; sha256 6c3c2d19)
 
+## amb.2025.separated_spouses_box
+
+- Text at issue: Form 1040 (2025), Dependents section: "Check if your filing status is MFS or HOH and you lived apart from your spouse for the last 6 months of 2025, or you are legally separated according to your state law under a written separation agreement or a decree of separate maintenance and you did not live in the same household as your spouse at the end of 2025"; the instructions mention the box only for the earned income credit (i1040gi p. 41, Step 3, question 6; p. 44, "If you meet these requirements, make sure you check the box").
+- Candidate readings: The box is checked when the earned income credit's special rule for separated spouses is used (Step 3, question 6). | The box is checked whenever its printed condition holds, whether or not the earned income credit is claimed.
+- **Chosen:** The first (eic.separated_box, copied to f1040.separated_spouses).
+- Reason: The owner's decision (2026-10-26, source adjudication). The only instructions for the box are the earned income credit's, and no amount depends on it; the alternative would add questions for the separation-agreement branch on returns that do not claim the credit.
+- Status: Owner ruling, 2026-10-26.
+- Cite: [f1040] Form 1040 (2025), Dependents section, the box for the special rule for separated spouses (2025; created 2025-09-05; sha256 3d31c226)
+
 ## amb.2025.dc_plan_maximum
 
 - Text at issue: Form 2441 line 21: "However, don't enter more than the maximum amount allowed under your dependent care plan"; i2441 p. 5, Line 21: "if your dependent care plan only allows a maximum of $4,000 to be excluded, substitute $4,000". The text speaks of one plan; spouses, or one person with two employers, may have more than one.

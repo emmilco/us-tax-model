@@ -189,6 +189,19 @@ form:
     cite:
       doc: f4562
       locator: Form 4562 (2025), line 8
+  - id: s179.over_limit
+    printed: (gate)
+    label: Section 179 elections above the dollar limitation for the year
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - s179.line8
+      - s179.line5
+    cite:
+      doc: i4562
+      locator: p. 4, Line 3, "The amount of section 179 property for which you can make the election is limited to the maximum
+        dollar amount on line 1"; p. 5, Line 5, "If line 5 is zero, you cannot elect to expense any section 179 property"
   - id: s179.line9
     printed: '9'
     label: Tentative deduction. Enter the smaller of line 5 or line 8
@@ -201,8 +214,30 @@ form:
     cite:
       doc: f4562
       locator: Form 4562 (2025), line 9
+    refuses:
+    - when: s179.over_limit
+      form: A section 179 election above the dollar limitation (Form 4562 lines 6 and 7, column (c), more than line 5)
+      remedy: Elect no more than the dollar limitation on line 5; the rest of the cost is depreciated.
+      cite:
+        doc: i4562
+        locator: p. 4, Line 3, "The amount of section 179 property for which you can make the election is limited to the
+          maximum dollar amount on line 1"; p. 5, Line 5, "If line 5 is zero, you cannot elect to expense any section 179
+          property"
+  - id: s179.show10
+    printed: (helper)
+    label: Line 5 is more than zero (lines 6 through 11 are completed)
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - s179.line5
+      - param: sales.zero
+    cite:
+      doc: i4562
+      locator: p. 5, Line 5, "If line 5 is zero, you cannot elect to expense any section 179 property. In this case, skip lines 6 through 11"
   - id: s179.line10
     printed: '10'
+    shown_when: s179.show10
     label: Carryover of disallowed deduction from line 13 of your 2024 Form 4562
     type: NonNegDollars
     expr:

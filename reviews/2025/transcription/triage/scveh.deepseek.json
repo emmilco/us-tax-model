@@ -1,0 +1,244 @@
+{
+ "bank": null,
+ "errors": [
+  {
+   "line": "scveh.line7",
+   "message": "scveh.scveh.line7: table 'f4562.table2' does not exist"
+  },
+  {
+   "line": "scveh.line11",
+   "message": "scveh.scveh.line11: declared NonNegDollars but the expression does not prove non-negativity"
+  },
+  {
+   "line": "scveh.line15",
+   "message": "scveh.scveh.line15: declared NonNegDollars but the expression does not prove non-negativity"
+  },
+  {
+   "line": "scveh.line17",
+   "message": "scveh.scveh.line17: declared NonNegDollars but the expression does not prove non-negativity"
+  },
+  {
+   "line": "scveh.line18",
+   "message": "scveh.scveh.line18: declared NonNegDollars but the expression does not prove non-negativity"
+  },
+  {
+   "line": "scveh.h_year",
+   "message": "scveh.scveh.h_year: choose branch 'scveh.h_y1' is not money"
+  },
+  {
+   "line": "scveh.h_year",
+   "message": "scveh.scveh.h_year: choose branch 'scveh.h_y2' is not money"
+  },
+  {
+   "line": "scveh.h_year",
+   "message": "scveh.scveh.h_year: choose branch 'scveh.h_y3' is not money"
+  },
+  {
+   "line": "scveh.h_year",
+   "message": "scveh.scveh.h_year: choose branch 'scveh.h_y4' is not money"
+  },
+  {
+   "line": "scveh.h_year",
+   "message": "scveh.scveh.h_year: choose branch 'scveh.h_y5' is not money"
+  },
+  {
+   "line": "scveh.h_year",
+   "message": "scveh.scveh.h_year: choose branch 'scveh.h_y6' is not money"
+  },
+  {
+   "line": "scveh.h_year",
+   "message": "scveh.scveh.h_year: choose branch 'scveh.h_y6' is not money"
+  },
+  {
+   "line": "scveh.h_year",
+   "message": "scveh.scveh.h_year: declared count but the expression produces money"
+  },
+  {
+   "line": "scveh.h_year_key",
+   "message": "scveh.scveh.h_year_key: operand 'scveh.h_year' is not money"
+  },
+  {
+   "line": "scveh.h_year_key",
+   "message": "scveh.scveh.h_year_key: operand 'scveh.h_y4' is not money"
+  },
+  {
+   "line": "scveh.h_year_key",
+   "message": "scveh.scveh.h_year_key: declared count but the expression produces money"
+  },
+  {
+   "line": "scveh.h_rate_hy",
+   "message": "scveh.scveh.h_rate_hy: table 'f4562.macrs_5_hy' does not exist"
+  },
+  {
+   "line": "scveh.h_rate_mq",
+   "message": "scveh.scveh.h_rate_mq: table 'f4562.macrs_5_mq' does not exist"
+  },
+  {
+   "line": "scveh.h_rate_prior",
+   "message": "scveh.scveh.h_rate_prior: table 'f4562.macrs_5_prior' does not exist"
+  }
+ ],
+ "failures": [],
+ "family": "deepseek",
+ "form": "scveh",
+ "lines": [
+  {
+   "candidate": "scveh.bonus",
+   "handle": "scveh.bonus",
+   "open_at_triage": true,
+   "project": "scveh.bonus",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "scveh.macrs",
+   "handle": "scveh.macrs",
+   "open_at_triage": true,
+   "project": "scveh.macrs",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "scveh.s179_2025",
+   "handle": "scveh.s179_2025",
+   "open_at_triage": true,
+   "project": "scveh.s179_2025",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "scveh.mq_q4",
+   "handle": "scveh.mq_q4",
+   "open_at_triage": true,
+   "project": "scveh.mq_q4",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "scveh.mq_total",
+   "handle": "scveh.mq_total",
+   "open_at_triage": true,
+   "project": "scveh.mq_total",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "scveh.cost179",
+   "handle": "scveh.cost179",
+   "open_at_triage": true,
+   "project": "scveh.cost179",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "scveh.line9",
+   "handle": "9 (scveh.line9)",
+   "open_at_triage": true,
+   "project": "scveh.line9",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "scveh.line20a",
+   "handle": "20a",
+   "open_at_triage": true,
+   "project": "scveh.line20a",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "scveh.bus_cost",
+   "handle": "13",
+   "open_at_triage": true,
+   "project": "scveh.bus_cost",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "scveh.line7",
+   "handle": "7",
+   "open_at_triage": true,
+   "project": "scveh.line7",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "scveh.line9w",
+   "handle": "9 (scveh.line9w)",
+   "open_at_triage": true,
+   "project": "scveh.line9w",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "scveh.line10",
+   "handle": "10",
+   "open_at_triage": true,
+   "project": "scveh.line10",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "scveh.line11",
+   "handle": "11",
+   "open_at_triage": true,
+   "project": "scveh.line11",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "scveh.line15",
+   "handle": "15",
+   "open_at_triage": true,
+   "project": "scveh.line15",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "scveh.line16",
+   "handle": "16",
+   "open_at_triage": true,
+   "project": "scveh.line16",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "scveh.bonus_allowed",
+   "handle": "25",
+   "open_at_triage": true,
+   "project": "scveh.bonus_allowed",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "scveh.line17",
+   "handle": "17",
+   "open_at_triage": true,
+   "project": "scveh.line17",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "scveh.line18",
+   "handle": "18",
+   "open_at_triage": true,
+   "project": "scveh.line18",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "scveh.line19",
+   "handle": "19",
+   "open_at_triage": true,
+   "project": "scveh.line19",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  }
+ ],
+ "log_sha256_at_triage": "a5d6e54b922018c2725fea3d0caceb158e7d838a21ef641ed8a956997048014d",
+ "policy": "executable-triage-v1",
+ "response_sha256": "8d28cbfdfff7b5c2b5b366fc62964128ba8bb69a97f3234311d1786cd8ae36b2",
+ "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
+ "state": "invalid",
+ "subject_sha256": "25b8001143dac766acd7f514d3f53d4894bfd1ece58090817f608708a9ad2267"
+}

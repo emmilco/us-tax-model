@@ -7,9 +7,9 @@ Review these renderings line by line against the archived IRS sources in `source
 | asset.md | form | 68 |
 | carloan.md | form | 24 |
 | dcprov.md | worksheet | 6 |
-| dependent.md | worksheet | 61 |
+| dependent.md | worksheet | 66 |
 | div.md | form | 22 |
-| eic.md | worksheet | 82 |
+| eic.md | worksheet | 87 |
 | f1040.md | form | 63 |
 | f2441.md | form | 82 |
 | f4562.md | form | 15 |
@@ -38,11 +38,11 @@ Review these renderings line by line against the archived IRS sources in `source
 | refund.md | form | 48 |
 | retirement.md | form | 64 |
 | s1.md | form | 66 |
-| s179.md | form | 26 |
+| s179.md | form | 28 |
 | s1a.md | form | 136 |
 | s2.md | form | 11 |
 | s3.md | form | 14 |
-| s8812.md | form | 81 |
+| s8812.md | form | 85 |
 | sa.md | form | 61 |
 | sales.md | form | 25 |
 | sb.md | form | 12 |
@@ -50,7 +50,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | scope.md | form | 5 |
 | scveh.md | form | 144 |
 | sd.md | form | 63 |
-| sdtw.md | worksheet | 74 |
+| sdtw.md | worksheet | 75 |
 | se.md | def | 28 |
 | sli.md | form | 23 |
 | ssb.md | worksheet | 36 |

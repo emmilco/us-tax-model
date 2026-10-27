@@ -1,0 +1,72 @@
+{
+ "bank": null,
+ "errors": [
+  {
+   "line": "s2.line4",
+   "message": "s2.s2.__type_gate_3: collection reference requires sum_over"
+  },
+  {
+   "line": "s2.line4",
+   "message": "s2.s2.__type_gate_3: comparison operands have incompatible types"
+  },
+  {
+   "line": "s2.line17c",
+   "message": "s2.s2.__type_gate_7: collection reference requires sum_over"
+  },
+  {
+   "line": "s2.line17c",
+   "message": "s2.s2.__type_gate_7: comparison operands have incompatible types"
+  },
+  {
+   "line": "s2.line18",
+   "message": "s2.s2.__type_gate_9: collection reference requires sum_over"
+  },
+  {
+   "line": "s2.line18",
+   "message": "s2.s2.__type_gate_9: comparison operands have incompatible types"
+  },
+  {
+   "line": "s2.line21",
+   "message": "s2.s2.__type_gate_14: collection reference requires sum_over"
+  },
+  {
+   "line": "s2.line21",
+   "message": "s2.s2.__type_gate_14: comparison operands have incompatible types"
+  },
+  {
+   "line": "s2.line21",
+   "message": "s2.s2.__type_gate_15: collection reference requires sum_over"
+  },
+  {
+   "line": "s2.line21",
+   "message": "s2.s2.__type_gate_15: comparison operands have incompatible types"
+  }
+ ],
+ "failures": [],
+ "family": "deepseek",
+ "form": "s2",
+ "lines": [
+  {
+   "candidate": "s2.line3",
+   "handle": "3",
+   "open_at_triage": true,
+   "project": "s2.line3",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "s2.line11",
+   "handle": "11",
+   "open_at_triage": true,
+   "project": "s2.line11",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  }
+ ],
+ "log_sha256_at_triage": "ec98ce23aa894c7aaf8aab2159a88d6b1da4808e1eff9aa28e65d81199fb2135",
+ "policy": "executable-triage-v1",
+ "response_sha256": "6314a4d12e4a287f47c2f3eab1b48723a68ef9ff6f703e88294d5b2ebb2e3da7",
+ "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
+ "state": "invalid",
+ "subject_sha256": "07afb3972d0e8db4b18cab4224dc4903cda7affc55c3769c0e98239416158309"
+}

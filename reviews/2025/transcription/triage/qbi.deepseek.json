@@ -1,0 +1,52 @@
+{
+ "bank": null,
+ "errors": [
+  {
+   "line": "qbi.line2",
+   "message": "qbi.qbi.line2: collection parent binding mismatch"
+  }
+ ],
+ "failures": [],
+ "family": "deepseek",
+ "form": "qbi",
+ "lines": [
+  {
+   "candidate": "qbi.eligible",
+   "handle": "qbi.eligible",
+   "open_at_triage": true,
+   "project": "qbi.eligible",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "qbi.taxable_before",
+   "handle": "qbi.taxable_before",
+   "open_at_triage": true,
+   "project": "qbi.taxable_before",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "qbi.net_capital_gain",
+   "handle": "qbi.net_capital_gain",
+   "open_at_triage": true,
+   "project": "qbi.net_capital_gain",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "qbi.deduction",
+   "handle": "qbi.deduction",
+   "open_at_triage": true,
+   "project": "qbi.deduction",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  }
+ ],
+ "log_sha256_at_triage": "3d9fc958006c3da79b60320ac66559be138e2c1c02e889ba32d358f5cbb95bb7",
+ "policy": "executable-triage-v1",
+ "response_sha256": "993a382b3f67f47523684a0e1a2d4403d6c80c91c3ceb25c056aa13acfb2fdb3",
+ "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
+ "state": "invalid",
+ "subject_sha256": "36aa33266cb50e80371e8f00f5728e2e75f9c427ce3ec58b5e6171f44216bbb6"
+}

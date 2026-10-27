@@ -185,6 +185,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Step 3 for a filer with a qualifying child, Step 4 otherwise
       = UNKNOWN (no input supplied for person[taxpayer].born_before_2001)
       cite: [i1040gi] p. 41, Step 3, question 1, "No. Skip questions 2 through 6; go to Step 4" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Step 5 is reached (Steps 1 and 2 passed and Step 3 or 4 sends you to Step 5)
+      = false
+      cite: [i1040gi] p. 42, Step 4, "Go to Step 5"; each earlier "STOP You can't take the credit" ends the flowchart (pp. 40-42) (2025; printed date 2026-02-25; 482e9c48)
   (Step 5, 1) Enter the amount from Form 1040 or 1040-SR, line 1z
       = $120,000
       cite: [i1040gi] p. 42, Step 5, worksheet line 1 (2025; printed date 2026-02-25; 482e9c48)
@@ -211,12 +214,12 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = $0
       cite: [i1040gi] p. 47, Worksheet B, Parts 1 and 2 (2025; printed date 2026-02-25; 482e9c48)
       note: confirmed roster $person: taxpayer
-  4b  Worksheet B, line 4b. Combine lines 1e, 2c, 3, and 4a. This is your total earned income
-      = $120,000
-      cite: [i1040gi] p. 47, Worksheet B, Part 4, line 4b (line 4a is your earned income from Step 5; line 3, statutory employees, is refused) (2025; printed date 2026-02-25; 482e9c48)
-  6   Worksheet B, line 6. Enter your total earned income from Part 4, line 4b (zero if line 4b is zero or less)
-      = $120,000
-      cite: [i1040gi] p. 47, Worksheet B, Part 4, "STOP If line 4b is zero or less, you can't take the credit", and Part 5, line 6 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Worksheet B is used (Step 5 reached and Step 5 question 2 is Yes)
+      = false
+      cite: [i1040gi] p. 47, Worksheet B, "Use this worksheet if you answered “Yes” to Step 5, question 2" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Worksheet B line 6 is completed (the credit is reached and Worksheet B is used)
+      = false
+      cite: [i1040gi] p. 47, Worksheet B, line 5, "No. You can’t take the credit" (2025; printed date 2026-02-25; 482e9c48)
   (helper) Earned income compared with the limit (Step 5, question 3, or Worksheet B, line 5)
       = $120,000
       cite: [i1040gi] p. 42, Step 5, question 3; p. 47, Worksheet B, Part 4, line 5 (2025; printed date 2026-02-25; 482e9c48)
@@ -227,10 +230,6 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Steps 1 to 5 passed in order (Step 6, figure the credit on Worksheet A)
       = false
       cite: [i1040gi] pp. 40–43, Steps 1 to 6 (each "No. STOP You can't take the credit" ends the flow chart; Step 6, question 1, "No. Go to Worksheet A") (2025; printed date 2026-02-25; 482e9c48)
-  1   Enter your earned income from Step 5 (Worksheet A, line 1), or Worksheet B, line 6
-      = $120,000
-      cite: [i1040gi] p. 46, Worksheet A, line 1; p. 48, Worksheet B, Part 5, line 6 (Worksheet A lines 2 to 6 are Worksheet B lines 7 to 11) (2025; printed date 2026-02-25; 482e9c48)
-      note: taken: {"eq":["eic.self_employed",{"const":false}],"op":"test"}
   (helper) Line 1 is at least $1, the first amount the EIC Table lists
       = true
       cite: [i1040gi] p. 49, EIC Table, first row "At least 1" (see the ambiguity register, amb.2025.eic_below_table) (2025; printed date 2026-02-25; 482e9c48)
@@ -250,13 +249,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = UNKNOWN (no band for 12000000 cents)
       cite: [i1040gi] p. 46, Worksheet A, line 2, "the number of qualifying children you have who have valid SSNs" (2025; printed date 2026-02-25; 482e9c48)
       note: taken: {"all":[{"ge":["eic.ssn_count",{"const":0,"type":"Count"}],"op":"test"},{"lt":["eic.ssn_count",{"const":1,"type":"Count"}],"op":"test"}],"op":"test"}
-  2   Look up the amount on line 1 in the EIC Table to find the credit, using the column for your filing status and the number of qualifying children who have valid SSNs
-      = UNKNOWN (no band for 12000000 cents)
-      cite: [i1040gi] p. 46, Worksheet A, line 2 (2025; printed date 2026-02-25; 482e9c48)
-      note: taken: {"eq":["eic.line1_in_table",{"const":true}],"op":"test"}
-  3   Enter the amount from Form 1040 or 1040-SR, line 11b
-      = $123,200
-      cite: [i1040gi] p. 46, Worksheet A, line 3 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Worksheet A line 3 is completed (the credit is reached and line 2 is more than zero)
+      = false
+      cite: [i1040gi] p. 46, Worksheet A, line 2, "If line 2 is zero, You can’t take the credit" (2025; printed date 2026-02-25; 482e9c48)
   4   Are the amounts on lines 3 and 1 the same?
       = false
       cite: [i1040gi] p. 46, Worksheet A, line 4 (2025; printed date 2026-02-25; 482e9c48)
@@ -299,10 +294,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) EIC Table credit for line 3, three or more qualifying children with valid SSNs
       = UNKNOWN (no band for 12320000 cents)
       cite: [i1040gi] pp. 49–60, EIC Table, column 3 (2025; printed date 2026-02-25; 482e9c48)
-  5   Look up the amount on line 3 in the EIC Table to find the credit, using the column for your filing status and the number of qualifying children who have valid SSNs
-      = UNKNOWN (no band for 12320000 cents)
-      cite: [i1040gi] p. 46, Worksheet A, line 5, "No. Look up the amount on line 3 in the EIC Table to find the credit" (2025; printed date 2026-02-25; 482e9c48)
-      note: taken: {"all":[{"ge":["eic.ssn_count",{"const":0,"type":"Count"}],"op":"test"},{"lt":["eic.ssn_count",{"const":1,"type":"Count"}],"op":"test"}],"op":"test"}
+  (helper) Worksheet A line 5 is completed (the credit is reached, line 2 is more than zero, line 4 is No and line 5 is not left blank)
+      = false
+      cite: [i1040gi] p. 46, Worksheet A, line 2, "If line 2 is zero, You can’t take the credit"; line 4, "Yes. Skip line 5; enter the amount from line 2 on line 6"; line 5, "Yes. Leave line 5 blank" (2025; printed date 2026-02-25; 482e9c48)
   (helper) The smaller of lines 5 and 2
       = UNKNOWN (no band for 12320000 cents)
       cite: [i1040gi] p. 46, Worksheet A, line 5, "Look at the amounts on lines 5 and 2. Then, enter the smaller amount on line 6" (2025; printed date 2026-02-25; 482e9c48)
@@ -310,11 +304,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = UNKNOWN (no band for 12320000 cents)
       cite: [i1040gi] p. 46, Worksheet A, line 5 (2025; printed date 2026-02-25; 482e9c48)
       note: taken: {"eq":["eic.line5_blank",{"const":false}],"op":"test"}
-  6   This is your earned income credit
-      = UNKNOWN (no band for 12320000 cents)
-      cite: [i1040gi] p. 46, Worksheet A, line 4, "Yes. Skip line 5; enter the amount from line 2 on line 6", and line 6 (2025; printed date 2026-02-25; 482e9c48)
-      note: taken: {"eq":["eic.line4",{"const":false}],"op":"test"}
-  (helper) Earned income credit for Form 1040, line 27a (Worksheet A, line 6 when Steps 1 to 5 are passed; zero otherwise)
+  (helper) Earned income credit for Form 1040, line 27a (Worksheet A, line 6, or Worksheet B, line 11 for a filer who answered Yes to Step 5, question 2, when Steps 1 to 5 are passed; zero otherwise)
       = $0
       cite: [i1040gi] pp. 40–46, each "STOP You can't take the credit"; Worksheet A, line 6, "Enter this amount on Form 1040 or 1040-SR, line 27a" (2025; printed date 2026-02-25; 482e9c48)
       note: taken: {"eq":["eic.eligible",{"const":false}],"op":"test"}
@@ -487,7 +477,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       note: confirmed roster $person: taxpayer
   25b Federal income tax withheld from Form(s) 1099
       = $0
-      cite: [f1040] Form 1040 (2025), line 25b (2025; created 2025-09-05; 3d31c226)
+      cite: [i1040gi] p. 39, Line 25b, "This should be shown in box 4 of Form 1099, box 6, of Form SSA-1099, or box 10 of Form RRB-1099" (2025; printed date 2026-02-25; 482e9c48)
   25c Federal income tax withheld from other forms (see instructions)
       = $0
       cite: [f1040] Form 1040 (2025), line 25c (2025; created 2025-09-05; 3d31c226)
@@ -3722,9 +3712,15 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   8   Total elected cost of section 179 property. Add amounts in column (c), lines 6 and 7
       = $0
       cite: [f4562] Form 4562 (2025), line 8 (2025; created 2025-10-09; c05f9d1f)
+  (gate) Section 179 elections above the dollar limitation for the year
+      = false
+      cite: [i4562] p. 4, Line 3, "The amount of section 179 property for which you can make the election is limited to the maximum dollar amount on line 1"; p. 5, Line 5, "If line 5 is zero, you cannot elect to expense any section 179 property" (2025; 5c1c95b7)
   9   Tentative deduction. Enter the smaller of line 5 or line 8
       = $0
       cite: [f4562] Form 4562 (2025), line 9 (2025; created 2025-10-09; c05f9d1f)
+  (helper) Line 5 is more than zero (lines 6 through 11 are completed)
+      = true
+      cite: [i4562] p. 5, Line 5, "If line 5 is zero, you cannot elect to expense any section 179 property. In this case, skip lines 6 through 11" (2025; 5c1c95b7)
   10  Carryover of disallowed deduction from line 13 of your 2024 Form 4562
       = UNKNOWN (no input supplied for s179.line10)
       cite: [i4562] p. 5, Line 10, "If you filed Form 4562 for 2024, enter the amount from line 13 of your 2024 Form 4562" (owner: the printed amount) (2025; 5c1c95b7)
@@ -4400,22 +4396,21 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Credit Limit Worksheet A, line 5. Subtract line 4 from line 3. Enter here and on Schedule 8812, line 13
       = $18,500
       cite: [i1040s8812] p. 4, Credit Limit Worksheet A, line 5 (2025; printed date 2026-01-23; bb9788cd)
-  13  Enter the amount from Credit Limit Worksheet A
-      = $18,500
-      cite: [f1040s8812] Schedule 8812 (2025), line 13 (2025; created 2025-07-30; 6936462d)
+  (helper) Line 12 is more than zero (no stop at line 12)
+      = false
+      cite: [f1040s8812] Schedule 8812 (2025), line 12, "No. Stop here. You cannot take the child tax credit, credit for other dependents, or additional child tax credit" (2025; created 2025-07-30; 6936462d)
   14  Enter the smaller of line 12 or line 13. This is your child tax credit and credit for other dependents
       = $0
       cite: [f1040s8812] Schedule 8812 (2025), line 14 (2025; created 2025-07-30; 6936462d)
   16a Subtract line 14 from line 12. If zero, stop here; you cannot take the additional child tax credit
       = $0
       cite: [f1040s8812] Schedule 8812 (2025), line 16a (2025; created 2025-07-30; 6936462d)
-  16b Number of qualifying children under age 17 with the required social security number x $1,700. If zero, stop here
-      = $0
-      cite: [f1040s8812] Schedule 8812 (2025), line 16b (2025; created 2025-07-30; 6936462d)
-      note: confirmed roster $dependent:
-  17  Enter the smaller of line 16a or line 16b
-      = $0
-      cite: [f1040s8812] Schedule 8812 (2025), line 17 (2025; created 2025-07-30; 6936462d)
+  (helper) No stop at line 12 or line 16a
+      = false
+      cite: [f1040s8812] Schedule 8812 (2025), line 16a, "If zero, stop here; you cannot take the additional child tax credit" (2025; created 2025-07-30; 6936462d)
+  (helper) No stop at line 12, 16a or 16b (Part II-A is completed)
+      = false
+      cite: [f1040s8812] Schedule 8812 (2025), line 16b, "If zero, stop here; you cannot claim the additional child tax credit" (2025; created 2025-07-30; 6936462d)
   (helper) Any nontaxable combat pay (Form W-2, box 12, code Q)?
       = false
       cite: [i1040s8812] p. 8, Earned Income Worksheet, line 1b (2025; printed date 2026-01-23; bb9788cd)
@@ -4463,21 +4458,6 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = $120,000
       cite: [i1040s8812] p. 7, Earned Income Chart—Line 18a, "completed Worksheet B ... your earned income from Worksheet B ..., line 4b" and "did not complete Worksheet B ... your earned income from Step 5" (2025; printed date 2026-01-23; bb9788cd)
       note: taken: {"eq":["eic.self_employed",{"const":false}],"op":"test"}
-  18a Earned income (see instructions)
-      = $120,000
-      cite: [i1040s8812] p. 7, Earned Income Chart—Line 18a (taking the EIC without Worksheet B, "your earned income from Step 5 of the EIC instructions ... plus all of your nontaxable combat pay if you did not elect to include it"; combat pay is refused; not taking the EIC, the Earned Income Worksheet) (2025; printed date 2026-01-23; bb9788cd)
-      note: taken: {"eq":["s8812.taking_eic",{"const":false}],"op":"test"}
-  18b Nontaxable combat pay (see instructions)
-      = $0
-      cite: [f1040s8812] Schedule 8812 (2025), line 18b (2025; created 2025-07-30; 6936462d)
-  19  Is the amount on line 18a more than $2,500? No. Leave line 19 blank and enter -0- on line 20. Yes. Subtract $2,500 from the amount on line 18a
-      = $117,500
-      cite: [f1040s8812] Schedule 8812 (2025), line 19 (2025; created 2025-07-30; 6936462d)
-  20  Multiply the amount on line 19 by 15% (0.15) and enter the result
-      = $17,625
-      cite: [f1040s8812] Schedule 8812 (2025), line 20 (2025; created 2025-07-30; 6936462d)
-      note: half-up to the cent per the ambiguity register; Interpretation amb.2025.multiplication_subcent: Round the product half-up to the nearest cent at the multiplication. Matches the half-up convention of the printed whole-dollar rounding rules. The whole-dollar default is unaffected: whole-dollar amounts multiplied by these rates produce exact cents, so the reading only matters when cents are turned on.
- (i1040gi, QDCGT worksheet, lines 18 and 21; Rounding Off to Whole Dollars, p. 23)
   (helper) Social security tax withheld, Form(s) W-2 box 4, all persons
       = $7,440
       cite: [i1040s8812] p. 9, Additional Medicare Tax and RRTA Tax Worksheet, line 1 (2025; printed date 2026-01-23; bb9788cd)
@@ -4492,24 +4472,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = $0
       cite: [i1040s8812] p. 9, Additional Medicare Tax and RRTA Tax Worksheet, line 7, "Enter one-half of the Additional Medicare Tax, if any, on self-employment income (one-half of Form 8959, line 13)" (2025; printed date 2026-01-23; bb9788cd)
       note: half-up to the cent per the ambiguity register
-  21  Withheld social security, Medicare, and Additional Medicare taxes from Form(s) W-2, boxes 4 and 6; with Additional Medicare Tax, the worksheet amount (lines 6 and 7 of the Additional Medicare Tax and RRTA Tax Worksheet)
-      = $9,180
-      cite: [i1040s8812] p. 9, Additional Medicare Tax and RRTA Tax Worksheet, line 16, "Add lines 6, 7, 11, and 15. Enter here and on line 21 of Schedule 8812" (lines 11 and 15, Tier 1 RRTA taxes, are refused) (2025; printed date 2026-01-23; bb9788cd)
-  22  Enter the total of the amounts from Schedule 1, line 15; Schedule 2, line 5; Schedule 2, line 6; and Schedule 2, line 13
-      = $0
-      cite: [f1040s8812] Schedule 8812 (2025), line 22 (Schedule 2 lines 5, 6 and 13 are refused by s2.other) (2025; created 2025-07-30; 6936462d)
-  23  Add lines 21 and 22
-      = $9,180
-      cite: [f1040s8812] Schedule 8812 (2025), line 23 (2025; created 2025-07-30; 6936462d)
-  24  1040 and 1040-SR filers. Enter the total of the amounts from Form 1040, line 27a, and Schedule 3, line 11
-      = $0
-      cite: [f1040s8812] Schedule 8812 (2025), line 24 (2025; created 2025-07-30; 6936462d)
-  25  Subtract line 24 from line 23. If zero or less, enter -0-
-      = $9,180
-      cite: [f1040s8812] Schedule 8812 (2025), line 25 (2025; created 2025-07-30; 6936462d)
-  26  Enter the larger of line 20 or line 25
-      = $17,625
-      cite: [f1040s8812] Schedule 8812 (2025), line 26 (2025; created 2025-07-30; 6936462d)
+  (helper) Part II-B is completed (line 16b is $5,100 or more and line 20 is less than line 17)
+      = false
+      cite: [f1040s8812] Schedule 8812 (2025), after line 20, "Next. On line 16b, is the amount $5,100 or more? No. ... skip Part II-B ... Yes. If line 20 is equal to or more than line 17, skip Part II-B" (2025; created 2025-07-30; 6936462d)
   (helper) On line 16b, is the amount less than $5,100 (fewer than three qualifying children)?
       = true
       cite: [f1040s8812] Schedule 8812 (2025), after line 20, "On line 16b, is the amount $5,100 or more?" (2025; created 2025-07-30; 6936462d)
@@ -4860,12 +4825,14 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Capital gain distributions, generally Form 1099-DIV box 2a
       = $0
       cite: [i1040sd] p. 11, line 13 (2025; printed date 2025-12-11; 650643a6)
-  (helper) 28% Rate Gain Worksheet result (supplied subtotal; worksheet deferred to Stage 4)
+  (helper) Line 18. 28% Rate Gain Worksheet result, or zero when line 17 is No (lines 18 through 21 skipped)
       = $0
-      cite: [i1040sd] p. 11, line 18 (2025; printed date 2025-12-11; 650643a6)
-  (helper) Unrecaptured Section 1250 Gain Worksheet result (supplied subtotal; worksheet deferred to Stage 4)
+      cite: [i1040sd] p. 11, Line 18, "If you checked “Yes” on line 17, complete the 28% Rate Gain Worksheet"; f1040sd p. 2, line 17, "No. Skip lines 18 through 21, and go to line 22" (2025; printed date 2025-12-11; 650643a6)
+      note: taken: {"eq":["sd.line17",{"const":false}],"op":"test"}
+  (helper) Line 19. Unrecaptured Section 1250 Gain Worksheet result, or zero when line 17 is No (lines 18 through 21 skipped)
       = $0
-      cite: [i1040sd] pp. 11–12, line 19 (2025; printed date 2025-12-11; 650643a6)
+      cite: [i1040sd] pp. 11–12, Line 19, "If you checked “Yes” on line 17, complete the Unrecaptured Section 1250 Gain Worksheet"; f1040sd p. 2, line 17, "No. Skip lines 18 through 21, and go to line 22" (2025; printed date 2025-12-11; 650643a6)
+      note: taken: {"eq":["sd.line17",{"const":false}],"op":"test"}
   (helper) Are you filing Form 4952?
       = false
       cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
@@ -5104,9 +5071,10 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   3   Form 4952 line 4g election
       = $0
       cite: [i1040sd] pp. 15–16, Schedule D Tax Worksheet (2025; printed date 2025-12-11; 650643a6)
-  4   Form 4952 line 4e, default capital-gain-first allocation
+  4   Form 4952 line 4e (default capital-gain-first allocation), or zero when no Form 4952 is filed
       = $0
-      cite: [i1040sd] pp. 15–16, Schedule D Tax Worksheet (2025; printed date 2025-12-11; 650643a6)
+      cite: [i1040sd] pp. 15–16, Schedule D Tax Worksheet, line 4, "Enter the amount from Form 4952, line 4e" (2025; printed date 2025-12-11; 650643a6)
+      note: taken: {"eq":["sd.filing4952",{"const":false}],"op":"test"}
   5   Subtract line 4 from line 3; floor at zero
       = $0
       cite: [i1040sd] pp. 15–16, Schedule D Tax Worksheet (2025; printed date 2025-12-11; 650643a6)
@@ -5296,26 +5264,17 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Add lines 21, 22, 30, 33 and 39 before skip rule
       = $107,450
       cite: [i1040sd] pp. 15–16, Schedule D Tax Worksheet (2025; printed date 2025-12-11; 650643a6)
-  41  Add lines 21, 22, 30, 33 and 39
-      = $107,450
-      cite: [i1040sd] pp. 15–16, Schedule D Tax Worksheet (2025; printed date 2025-12-11; 650643a6)
-      note: taken: {"eq":["sdtw.use28",{"const":true}],"op":"test"}
+  (helper) Schedule D, line 18, is more than zero (lines 41 through 43 are completed)
+      = false
+      cite: [i1040sd] p. 16, Schedule D Tax Worksheet, "If Schedule D, line 18, is zero or blank, skip lines 41 through 43 and go to line 44" (2025; printed date 2025-12-11; 650643a6)
   (helper) Subtract line 41 from line 1 before skip rule
       = $0
       cite: [i1040sd] pp. 15–16, Schedule D Tax Worksheet (2025; printed date 2025-12-11; 650643a6)
-  42  Subtract line 41 from line 1
-      = $0
-      cite: [i1040sd] pp. 15–16, Schedule D Tax Worksheet (2025; printed date 2025-12-11; 650643a6)
-      note: taken: {"eq":["sdtw.use28",{"const":true}],"op":"test"}
   (helper) Multiply line 42 by 28 percent before skip rule
       = $0
       cite: [i1040sd] pp. 15–16, Schedule D Tax Worksheet (2025; printed date 2025-12-11; 650643a6)
       note: half-up to the cent per the ambiguity register; Interpretation amb.2025.multiplication_subcent: Round the product half-up to the nearest cent at the multiplication. Matches the half-up convention of the printed whole-dollar rounding rules. The whole-dollar default is unaffected: whole-dollar amounts multiplied by these rates produce exact cents, so the reading only matters when cents are turned on.
  (i1040gi, QDCGT worksheet, lines 18 and 21; Rounding Off to Whole Dollars, p. 23)
-  43  Multiply line 42 by 28 percent
-      = $0
-      cite: [i1040sd] pp. 15–16, Schedule D Tax Worksheet (2025; printed date 2025-12-11; 650643a6)
-      note: taken: {"eq":["sdtw.use28",{"const":true}],"op":"test"}
   44  Tax on line 21 using Tax Table or Tax Computation Worksheet
       = $18,275
       cite: [i1040sd] pp. 15–16, Schedule D Tax Worksheet (2025; printed date 2025-12-11; 650643a6)
@@ -5661,6 +5620,10 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   f1040.qbi.deduction: chose $0 (guard 1)
       not taken: guard 0 = false
+  sd.line18: chose $0 (guard 1)
+      not taken: guard 0 = false
+  sd.line19: chose $0 (guard 1)
+      not taken: guard 0 = false
   qdcg.line3: chose $0 (guard 1)
       not taken: guard 0 = false
   root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.single.result: chose $18,275 (guard 1)
@@ -5858,6 +5821,12 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   s8812.s3.line5a: chose $0 (guard 1)
       not taken: guard 0 = false
   sd.line21: chose $0 (guard 1)
+      not taken: guard 0 = false
+  sdtw.line4: chose $0 (guard 1)
+      not taken: guard 0 = false
+  sdtw.sd.line18: chose $0 (guard 1)
+      not taken: guard 0 = false
+  sdtw.sd.line19: chose $0 (guard 1)
       not taken: guard 0 = false
   sdtw.line24: chose $0 (guard 0)
   sdtw.line23: chose $1,500 (guard 0)
@@ -6102,6 +6071,8 @@ Derivations:
   eic.step3: test(f1040.status = single; "mfj" = mfj; eic.step3_married = true; true = true; eic.qc_of_another = UNKNOWN (no input supplied for eic.qc_of_another); false = false)
   eic.step4: test(sa.dependent = false; eic.married_rules = false; false = false; eic.age_range = UNKNOWN (no input supplied for person[taxpayer].born_before_2001); true = true; eic.us_home = UNKNOWN (no input supplied for eic.us_home); true = true; f1040.status = single; "mfj" = mfj; eic.qc_of_another = UNKNOWN (no input supplied for eic.qc_of_another); false = false; sa.dependent = false; false = false)
   eic.step34: test(eic.has_qc = false; true = true; eic.has_qc = false; false = false; eic.step4 = UNKNOWN (no input supplied for person[taxpayer].born_before_2001); true = true)
+  eic.reached_step3: test(eic.below_top = false; true = true)
+  eic.reached_step5: test(eic.reached_step3 = false; true = true)
   eic.f1040.line1z: sum(f1040.line1a = $120,000; f1040.line1e = $0)
   eic.step5_line1: copy(scope.schedule1 = false; f1040.line1z = $120,000)
   eic.step5_line2: copy(scope.other_income = false; eic.zero = $0)
@@ -6112,11 +6083,13 @@ Derivations:
   eic.self_employed: test(eic.sc_count = 0; 0 = 0)
   person[taxpayer].eic_se: choose(person[taxpayer].has_sc = false; true = true; person[taxpayer].has_sc = false; false = false; person[taxpayer].zero = $0)
   eic.wsb_se: sum_over(person[taxpayer].eic_se = $0)
+  eic.show_wsb4b: test(eic.reached_step5 = false; true = true)
   eic.wsb_4b: sum(eic.earned_income = $120,000; eic.wsb_se = $0)
+  eic.eligible: test(eic.below_top = false; true = true)
+  eic.show_wsb6: test(eic.eligible = false; true = true)
   eic.wsb_6: subtract_floor0(eic.wsb_4b = $120,000; eic.zero = $0)
   eic.earned_for_limit: choose(eic.self_employed = false; false = false; eic.earned_income = $120,000)
   eic.step5_income: test(eic.earned_for_limit = $120,000; eic.limit = $19,104)
-  eic.eligible: test(eic.below_top = false; true = true)
   eic.line1: choose(eic.self_employed = false; false = false; eic.earned_income = $120,000)
   eic.line1_in_table: test(eic.line1 = $120,000; #eic.table_start = $1)
   eic.line1_table0: table_lookup(eic.line1 = $120,000; f1040.status = single)
@@ -6125,6 +6098,7 @@ Derivations:
   eic.line1_table3: table_lookup(eic.line1 = $120,000; f1040.status = single)
   eic.line1_table: choose(eic.ssn_count = 0; 0 = 0; eic.ssn_count = 0; 1 = 1; eic.line1_table0 = UNKNOWN (no band for 12000000 cents))
   eic.line2: choose(eic.line1_in_table = true; true = true; eic.line1_table = UNKNOWN (no band for 12000000 cents))
+  eic.show3: test(eic.eligible = false; true = true)
   eic.line3: copy(f1040.line11b = $123,200)
   eic.line4: test(eic.line3 = $123,200; eic.line1 = $120,000)
   eic.threshold0_other: param(#eic.ws_threshold0.other = $10,620)
@@ -6139,12 +6113,12 @@ Derivations:
   eic.line3_table1: table_lookup(eic.line3 = $123,200; f1040.status = single)
   eic.line3_table2: table_lookup(eic.line3 = $123,200; f1040.status = single)
   eic.line3_table3: table_lookup(eic.line3 = $123,200; f1040.status = single)
+  eic.show5: test(eic.eligible = false; true = true)
   eic.line5: choose(eic.ssn_count = 0; 0 = 0; eic.ssn_count = 0; 1 = 1; eic.line3_table0 = UNKNOWN (no band for 12320000 cents))
   eic.smaller: smaller_of(eic.line5 = UNKNOWN (no band for 12320000 cents); eic.line2 = UNKNOWN (no band for 12000000 cents))
   eic.after_line4: choose(eic.line5_blank = false; true = true; eic.line5_blank = false; false = false; eic.smaller = UNKNOWN (no band for 12320000 cents))
   eic.line6: choose(eic.line4 = false; true = true; eic.line4 = false; false = false; eic.after_line4 = UNKNOWN (no band for 12320000 cents))
   eic.credit: choose(household.credit_disallowed = false; eic.eligible = false; true = true; eic.eligible = false; false = false; eic.zero = $0)
-  eic.reached_step3: test(eic.below_top = false; true = true)
   eic.wsb_line5_stop: test(eic.below_top = false; true = true)
   eic.check_27c: test(eic.below_top = false; true = true; eic.reached_step3 = false; true = true; eic.reached_step3 = false; true = true; eic.reached_step3 = false; true = true; eic.eligible = false; true = true; eic.wsb_line5_stop = false; true = true)
   eic.wsb_4b_positive: test(eic.wsb_4b = $120,000; #sales.zero = $0)
@@ -6231,9 +6205,12 @@ Derivations:
   f1040.line12e: copy(household.hoh_fails = false; sa.deduction = $15,750)
   qbi.sa.agi: copy(f1040.line11b = $123,200)
   qbi.sa.deduction: choose(sa.itemizes = false; true = true; sa.itemizes = false; false = false; sa.standard = $15,750)
+  s1.sc_1a_count: sum_over(person[taxpayer].sc_1a = 0)
+  s1.sc_1a: test(s1.sc_1a_count = 0; 0 = 0)
+  s1a.s1.sc_1a: test(s1.sc_1a_count = 0; 0 = 0)
   s1a.zero: param(#sales.zero = $0)
-  s1a.line13: choose(s1a.tips = false; false = false; s1a.zero = $0)
-  s1a.line21: choose(s1a.overtime = false; false = false; s1a.zero = $0)
+  s1a.line13: choose(s1.sc_1a = false; s1a.tips = false; false = false; s1a.zero = $0)
+  s1a.line21: choose(s1.sc_1a = false; s1a.overtime = false; false = false; s1a.zero = $0)
   s1a.line30: choose(s1a.carloan = false; false = false; s1a.zero = $0)
   sa.age65_count: sum_over(person[taxpayer].role = taxpayer; "taxpayer" = taxpayer; person[taxpayer].age65 = false; true = true)
   sa.age65: test(sa.age65_count = 0; 0 = 0)
@@ -6290,39 +6267,8 @@ Derivations:
   qdcg.f1040.line15: subtract_floor0(f1040.line11b = $123,200; f1040.line14 = $15,750)
   qdcg.line1: copy(f1040.line15 = $107,450)
   qdcg.line2: copy(f1040.line3a = $1,500)
-  g28.div.screen: param(div.section1202 = false; div.amt = false; div.unsupported = false; div.bad_special = false; div.bad_components = false; #sales.zero = $0)
-  g28.line1: copy(div.screen = $0)
-  g28.line2: copy(div.screen = $0)
-  g28.line3: copy(div.screen = $0)
-  g28.line4: copy(div.box2d = $0)
-  g28.line5: copy(div.screen = $0)
-  g28.sd.line7: sum(sd.line1a.h = $0; sd.line1b.h = $0; sd.line2.h = $0; sd.line3.h = $0; sd.line4 = $0; sd.line5 = $0; sd.line6 = $0)
-  g28.sd.zero: param(#sales.zero = $0)
-  g28.line6: smaller_of(sd.line7 = $0; sd.zero = $0)
-  g28.combined: sum(g28.line1 = $0; g28.line2 = $0; g28.line3 = $0; g28.line4 = $0; g28.line5 = $0; g28.line6 = $0)
-  g28.line7: subtract_floor0(g28.combined = $0; sd.zero = $0)
-  sd.g28.line7: subtract_floor0(g28.combined = $0; sd.zero = $0)
-  sd.line18: copy(g28.line7 = $0)
-  u1250.div.screen: param(div.section1202 = false; div.amt = false; div.unsupported = false; div.bad_special = false; div.bad_components = false; #sales.zero = $0)
-  u1250.line9: copy(div.screen = $0)
-  u1250.line10: copy(div.screen = $0)
-  u1250.line11: copy(div.box2b = $0)
-  u1250.line12: copy(div.screen = $0)
-  u1250.line13: sum(u1250.line9 = $0; u1250.line10 = $0; u1250.line11 = $0; u1250.line12 = $0)
-  u1250.sd.zero: param(#sales.zero = $0)
-  u1250.g28.line1: copy(div.screen = $0)
-  u1250.g28.line2: copy(div.screen = $0)
-  u1250.g28.line3: copy(div.screen = $0)
-  u1250.g28.line4: copy(div.box2d = $0)
-  u1250.line14: sum(g28.line1 = $0; g28.line2 = $0; g28.line3 = $0; g28.line4 = $0)
-  u1250.g28.line6: smaller_of(sd.line7 = $0; sd.zero = $0)
-  u1250.line15: copy(g28.line6 = $0)
-  u1250.line16: copy(div.screen = $0)
-  u1250.combined: sum(u1250.line14 = $0; u1250.line15 = $0; u1250.line16 = $0)
-  u1250.line17: subtract_floor0(sd.zero = $0; u1250.combined = $0)
-  u1250.line18: subtract_floor0(u1250.line13 = $0; u1250.line17 = $0)
-  sd.u1250.line18: subtract_floor0(u1250.line13 = $0; u1250.line17 = $0)
-  sd.line19: copy(u1250.line18 = $0)
+  sd.line18: choose(sd.line17 = false; true = true; sd.line17 = false; false = false; sd.zero = $0)
+  sd.line19: choose(sd.line17 = false; true = true; sd.line17 = false; false = false; sd.zero = $0)
   sd.filed: test(sd.count = 0; 0 = 0; sd.line18 = $0; 0 = $0; sd.line19 = $0; 0 = $0)
   qdcg.sd.filed: test(sd.count = 0; 0 = 0; sd.line18 = $0; 0 = $0; sd.line19 = $0; 0 = $0)
   qdcg.schedule_d_filed: copy(sd.filed = false)
@@ -6812,6 +6758,17 @@ Derivations:
   ftc.limit: param(#ftc.limit = $300)
   ftc.f1040.line16: choose(scope.other_line16 = false; f1040.gate.sdtw = false; true = true; f1040.gate.sdtw = false; false = false; f1040.non_sdtw_tax = $18,500)
   ftc.limited: smaller_of(ftc.taxes = $0; f1040.line16 = $18,500)
+  g28.div.screen: param(div.section1202 = false; div.amt = false; div.unsupported = false; div.bad_special = false; div.bad_components = false; #sales.zero = $0)
+  g28.line1: copy(div.screen = $0)
+  g28.line2: copy(div.screen = $0)
+  g28.line3: copy(div.screen = $0)
+  g28.line5: copy(div.screen = $0)
+  g28.line4: copy(div.box2d = $0)
+  g28.sd.line7: sum(sd.line1a.h = $0; sd.line1b.h = $0; sd.line2.h = $0; sd.line3.h = $0; sd.line4 = $0; sd.line5 = $0; sd.line6 = $0)
+  g28.sd.zero: param(#sales.zero = $0)
+  g28.line6: smaller_of(sd.line7 = $0; sd.zero = $0)
+  g28.combined: sum(g28.line1 = $0; g28.line2 = $0; g28.line3 = $0; g28.line4 = $0; g28.line5 = $0; g28.line6 = $0)
+  g28.line7: subtract_floor0(g28.combined = $0; sd.zero = $0)
   household.hsa_people: sum_over(person[taxpayer].hsa_forms = 0; 0 = 0)
   household.hsa_both: test(household.hsa_people = 0; 2 = 2)
   household.hsa_split_count: sum_over(person[taxpayer].hsa_split = 0)
@@ -6965,8 +6922,6 @@ Derivations:
   s1.line7_repaid: copy(s1.uc_repaid = UNKNOWN (no input supplied for s1.uc_repaid))
   s1.sc_count: sum_over(person[taxpayer].sc_count = 0)
   s1.has_sc: test(s1.sc_count = 0; 0 = 0)
-  s1.sc_1a_count: sum_over(person[taxpayer].sc_1a = 0)
-  s1.sc_1a: test(s1.sc_1a_count = 0; 0 = 0)
   s1.alimony_refused: gate(s1.alimony_unsupported = UNKNOWN (no input supplied for s1.alimony_unsupported))
   s1.line2b_notice: test(s1.line2a = $0; #sales.zero = $0)
   s1.has_cod: test(s1.cod_amount = $0; #sales.zero = $0)
@@ -6988,7 +6943,9 @@ Derivations:
   s179.line6: sum_over(person[taxpayer].s179_nonlisted = $0)
   s179.line7: sum_over(person[taxpayer].s179_listed = $0)
   s179.line8: sum(s179.line6 = $0; s179.line7 = $0)
-  s179.line9: smaller_of(s179.line5 = $2,500,000; s179.line8 = $0)
+  s179.over_limit: test(s179.line8 = $0; s179.line5 = $2,500,000)
+  s179.line9: smaller_of(s179.over_limit = false; s179.line5 = $2,500,000; s179.line8 = $0)
+  s179.show10: test(s179.line5 = $2,500,000; #sales.zero = $0)
   s179.income_sc: sum_over(person[taxpayer].income179 = $0)
   s179.f1040.line1a: sum_over(household.roster_bad = false; person[taxpayer].box1 = $120,000)
   s179.income: sum(s179.income_sc = $0; f1040.line1a = $120,000)
@@ -7024,7 +6981,6 @@ Derivations:
   s1a.line4c_one: larger_of(s1a.line4a = $0; s1a.line4b = $0)
   s1a.line4c_calc: choose(s1a.tip_multi = UNKNOWN (collection roster not confirmed); true = true)
   s1a.line4c: choose(s1a.part2 = false; false = false; s1a.zero = $0)
-  s1a.s1.sc_1a: test(s1.sc_1a_count = 0; 0 = 0)
   s1a.line5_calc: param(scope.schedule1 = false; s1.sc_1a = false; #sales.zero = $0)
   s1a.line5: choose(s1a.part2 = false; false = false; s1a.zero = $0)
   s1a.line6_calc: sum(s1a.line4c = $0; s1a.line5 = $0)
@@ -7127,6 +7083,9 @@ Derivations:
   s1a.spouse_senior_decedent: test(s1a.spouse_died_before_65 = false; true = true)
   s1a.line36b_senior: copy(s1a.spouse_senior_decedent = false; s1a.line35 = $0)
   s2.line2: copy(s2.amt = false; s2.other = false; s2.zero = $0)
+  s8812.show13: test(s8812.line12 = $0; #sales.zero = $0)
+  s8812.show16b: test(s8812.show13 = false; true = true)
+  s8812.show_iia: test(s8812.show16b = false; true = true)
   s8812.eic.self_employed: test(eic.sc_count = 0; 0 = 0)
   s8812.eic.earned_income: sum(eic.step5_line3 = $120,000; eic.step5_line4 = $0)
   s8812.chart_eic: choose(eic.self_employed = false; true = true; eic.self_employed = false; false = false; eic.earned_income = $120,000)
@@ -7140,6 +7099,7 @@ Derivations:
   s8812.amt_ws6: subtract(s8812.amt_ws4 = $9,180; f8959.line22 = $0)
   s8812.f8959.line13: multiply_rate(f8959.line12 = $0; #medicare.additional_rate = 9/1000)
   s8812.amt_ws7: multiply_rate(f8959.line13 = $0; #se.rate_50 = 50/100)
+  s8812.show_iib: test(s8812.show_iia = false; true = true)
   s8812.line21: sum(s8812.amt_ws6 = $9,180; s8812.amt_ws7 = $0)
   s8812.line22: copy(s2.other = false; s1.line15 = $0)
   s8812.line23: sum(s8812.line21 = $9,180; s8812.line22 = $0)
@@ -7217,8 +7177,8 @@ Derivations:
   sdtw.line2: copy(f1040.line3a = $1,500)
   sdtw.sd.investment_election: copy(f4952.election = $0)
   sdtw.line3: copy(sd.investment_election = $0)
-  sdtw.f4952.line4e: smaller_of(f4952.line4d = $0; sd.net_gain = $0)
-  sdtw.line4: copy(f4952.line4e = $0)
+  sdtw.sd.filing4952: copy(f4952.required = false)
+  sdtw.line4: choose(sd.filing4952 = false; true = true; sd.filing4952 = false; false = false; sdtw.zero = $0)
   sdtw.line5: subtract_floor0(sdtw.line3 = $0; sdtw.line4 = $0)
   sdtw.line6: subtract_floor0(sdtw.line2 = $1,500; sdtw.line5 = $0)
   sdtw.sd.line15: sum(sd.line8a.h = $0; sd.line8b.h = $0; sd.line9.h = $0; sd.line10.h = $0; sd.line11 = $0; sd.line12 = $0; sd.line13 = $0; sd.line14 = $0)
@@ -7227,8 +7187,8 @@ Derivations:
   sdtw.line8: smaller_of(sdtw.line3 = $0; sdtw.line4 = $0)
   sdtw.line9: subtract_floor0(sdtw.line7 = $0; sdtw.line8 = $0)
   sdtw.line10: sum(sdtw.line6 = $1,500; sdtw.line9 = $0)
-  sdtw.sd.line18: copy(g28.line7 = $0)
-  sdtw.sd.line19: copy(u1250.line18 = $0)
+  sdtw.sd.line18: choose(sd.line17 = false; true = true; sd.line17 = false; false = false; sd.zero = $0)
+  sdtw.sd.line19: choose(sd.line17 = false; true = true; sd.line17 = false; false = false; sd.zero = $0)
   sdtw.line11: sum(sd.line18 = $0; sd.line19 = $0)
   sdtw.line12: smaller_of(sdtw.line9 = $0; sdtw.line11 = $0)
   sdtw.line13: subtract(sdtw.line10 = $1,500; sdtw.line12 = $0)
@@ -7279,6 +7239,7 @@ Derivations:
   sdtw.raw40: multiply_rate(sdtw.line39 = $0; #sdtw.rate25 = 25/100)
   sdtw.line40: choose(sdtw.use1250 = false; true = true; sdtw.use1250 = false; false = false; sdtw.zero = $0)
   sdtw.raw41: sum(sdtw.line21 = $105,950; sdtw.line22 = $0; sdtw.line30 = $1,500; sdtw.line33 = $0; sdtw.line39 = $0)
+  sdtw.show41_43: test(sd.line18 = $0; #sales.zero = $0)
   sdtw.line41: choose(sdtw.use28 = true; true = true; sdtw.raw41 = $107,450)
   sdtw.raw42: subtract(sdtw.line1 = $107,450; sdtw.line41 = $107,450)
   sdtw.line42: choose(sdtw.use28 = true; true = true; sdtw.raw42 = $0)
@@ -7380,6 +7341,7 @@ Derivations:
   ssb.line16: choose(ssb.mfs_together = false; true = true; ssb.mfs_together = false; false = false; ssb.line16_sum = UNKNOWN (no input supplied for ssb.pub915))
   ssb.line17: multiply_rate(ssb.line1 = $0; #ssb.rate85 = 85/100)
   ssb.line18_figured: smaller_of(ssb.line16 = UNKNOWN (no input supplied for ssb.pub915); ssb.line17 = $0)
+  u1250.div.screen: param(div.section1202 = false; div.amt = false; div.unsupported = false; div.bad_special = false; div.bad_components = false; #sales.zero = $0)
   u1250.line1: copy(div.screen = $0)
   u1250.line2: copy(div.screen = $0)
   u1250.line3: copy(div.screen = $0)
@@ -7388,6 +7350,23 @@ Derivations:
   u1250.line6: copy(div.screen = $0)
   u1250.line7: copy(div.screen = $0)
   u1250.line8: copy(div.screen = $0)
+  u1250.line9: copy(div.screen = $0)
+  u1250.line10: copy(div.screen = $0)
+  u1250.line12: copy(div.screen = $0)
+  u1250.line16: copy(div.screen = $0)
+  u1250.line11: copy(div.box2b = $0)
+  u1250.line13: sum(u1250.line9 = $0; u1250.line10 = $0; u1250.line11 = $0; u1250.line12 = $0)
+  u1250.g28.line1: copy(div.screen = $0)
+  u1250.g28.line2: copy(div.screen = $0)
+  u1250.g28.line3: copy(div.screen = $0)
+  u1250.g28.line4: copy(div.box2d = $0)
+  u1250.line14: sum(g28.line1 = $0; g28.line2 = $0; g28.line3 = $0; g28.line4 = $0)
+  u1250.g28.line6: smaller_of(sd.line7 = $0; sd.zero = $0)
+  u1250.line15: copy(g28.line6 = $0)
+  u1250.combined: sum(u1250.line14 = $0; u1250.line15 = $0; u1250.line16 = $0)
+  u1250.sd.zero: param(#sales.zero = $0)
+  u1250.line17: subtract_floor0(sd.zero = $0; u1250.combined = $0)
+  u1250.line18: subtract_floor0(u1250.line13 = $0; u1250.line17 = $0)
   person[taxpayer].f8606[form].person.ira_files_8606: test(person[taxpayer].ira_nondeductible = $0; #sales.zero = $0)
   person[taxpayer].f8606[form].files: test(person[taxpayer].ira_files_8606 = false; true = true)
   person[taxpayer].educator_max: param(#s1.educator_max = $300)

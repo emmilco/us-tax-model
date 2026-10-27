@@ -866,6 +866,14 @@ form:
     cite:
       doc: f1040s1a
       locator: Schedule 1-A (2025), line 13; i1040gi p. 101, "Fill out Schedule 1-A, Part II, only if"
+    refuses:
+    - when: s1.sc_1a
+      form: Schedule 1-A, lines 5 and 14b (qualified tips received in a trade or business, or qualified overtime reported on Form 1099-NEC or 1099-MISC, with Schedule C)
+      remedy: Qualified tips received in a trade or business and qualified overtime reported on Form 1099-NEC or 1099-MISC are outside this tool.
+      cite:
+        doc: i1040gi
+        locator: p. 104, Schedule 1-A, line 5, "Include the qualified tips you and/or your spouse received in the course
+          of a trade or business"; p. 101, "Fill out Schedule 1-A, Part II, only if"
   - id: s1a.overtime
     printed: (helper)
     label: Did you receive qualified overtime compensation in 2025 that you want to deduct?
@@ -1484,6 +1492,14 @@ form:
     cite:
       doc: f1040s1a
       locator: Schedule 1-A (2025), line 21; i1040gi p. 106, "Fill out Schedule 1-A, Part III, only if"
+    refuses:
+    - when: s1.sc_1a
+      form: Schedule 1-A, lines 5 and 14b (qualified tips received in a trade or business, or qualified overtime reported on Form 1099-NEC or 1099-MISC, with Schedule C)
+      remedy: Qualified tips received in a trade or business and qualified overtime reported on Form 1099-NEC or 1099-MISC are outside this tool.
+      cite:
+        doc: i1040gi
+        locator: p. 108, Schedule 1-A, line 14b, "Enter on Line 14b only the qualified overtime compensation amount that
+          is included in Form 1099-NEC, box 1, or Form 1099-MISC, box 3"; p. 106, "Fill out Schedule 1-A, Part III, only if"
   - id: s1a.carloan
     printed: (helper)
     label: Did you pay or accrue interest in 2025 on a loan to buy a new passenger vehicle that you want to deduct?

@@ -383,6 +383,10 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = $0
       cite: [i8995] pp. 2, 4, Determining Your Qualified Business Income; Line 1 (2025; printed date 2026-01-26; 875843ba)
       note: confirmed roster $sc@person[taxpayer]:
+  (helper) This person's Schedules C with Schedule 1-A tips or overtime
+      = 0
+      cite: [i1040gi] p. 104, Schedule 1-A, line 5 (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $sc@person[taxpayer]:
   (helper) Did you make contributions (other than rollover contributions) to a traditional IRA for 2025?
       = false
       cite: [f8880] Form 8880 (2025), line 1, "Traditional and Roth IRA contributions"; i1040gi p. 95, Line 20, "If you made any nondeductible contributions to a traditional" (2025; created 2025-11-04; ba2b2877)
@@ -481,6 +485,13 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (gate) The Schedule C losses are more than the excess business loss threshold
       = false
       cite: [i1040sc] p. 1, Reminders, "If you report a loss on line 31 ... you may be subject to a business loss limitation ... use Form 461" (2025; b5536db9)
+  (helper) Number of Schedules C with tips or overtime for Schedule 1-A
+      = 0
+      cite: [i1040gi] p. 104, Schedule 1-A, line 5; p. 108, line 14b (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $person: taxpayer
+  (gate) A business received tips or overtime to be deducted on Schedule 1-A
+      = false
+      cite: [i1040gi] p. 104, Schedule 1-A, line 5, and the Multiple Trades or Businesses Worksheet; p. 108, line 14b (2025; printed date 2026-02-25; 482e9c48)
   3   Business income or (loss). Attach Schedule C
       = $0
       cite: [f1040s1] Schedule 1 (2025), line 3; i1040sc p. 14, Line 31, "include it on Schedule 1 (Form 1040), line 3" (2025; created 2025-07-25; 8dafec71)
@@ -1347,9 +1358,12 @@ Derivations:
   f1040.line12e: copy(household.hoh_fails = false; sa.deduction = $15,750)
   qbi.sa.agi: copy(f1040.line11b = $900)
   qbi.sa.deduction: choose(sa.itemizes = false; true = true; sa.itemizes = false; false = false; sa.standard = $15,750)
+  s1.sc_1a_count: sum_over(person[taxpayer].sc_1a = 0)
+  s1.sc_1a: test(s1.sc_1a_count = 0; 0 = 0)
+  s1a.s1.sc_1a: test(s1.sc_1a_count = 0; 0 = 0)
   s1a.zero: param(#sales.zero = $0)
-  s1a.line13: choose(s1a.tips = false; false = false; s1a.zero = $0)
-  s1a.line21: choose(s1a.overtime = false; false = false; s1a.zero = $0)
+  s1a.line13: choose(s1.sc_1a = false; s1a.tips = false; false = false; s1a.zero = $0)
+  s1a.line21: choose(s1.sc_1a = false; s1a.overtime = false; false = false; s1a.zero = $0)
   s1a.line30: choose(s1a.carloan = false; false = false; s1a.zero = $0)
   sa.age65_count: sum_over(person[taxpayer].role = taxpayer; "taxpayer" = taxpayer; person[taxpayer].age65 = false; true = true)
   sa.age65: test(sa.age65_count = 0; 0 = 0)

@@ -18,6 +18,13 @@
    "context": "71b726ece0d96a183e2e16283e3dc87c37edbd0b652202f3ee17aa48db2ab549"
   },
   {
+   "printed": "4a",
+   "project": "{\"of\": [{\"ref\": \"sb.line2\"}, {\"ref\": \"sb.line6\"}], \"op\": \"sum\"}",
+   "second": "{\"of\": [{\"from\": {\"ref\": \"f1040.line2b\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}, {\"ref\": \"f1040.line3b\"}], \"op\": \"sum\"}",
+   "ruling": "Ruling: representation; f4952 p.3 Line4a includes taxable interest and ordinary dividends in this screened slice. ScheduleB line2 is the sum of interest.amount entries; Form1040 line2b copies that subtotal. ScheduleB line6 supplies the same ordinary-dividend total carried to Form1040 line3b. The alternative references identify the same prepared-return amounts; this does not assert equivalence for independently inconsistent boundary overrides or every unknown/refusal ordering.",
+   "context": "0dacbcbf7e835d6d81779de8d6d537ab0bada18ce0b2bf87b5987ec2050a784b"
+  },
+  {
    "printed": "4c",
    "project": "{\"from\": {\"line\": \"4a\"}, \"op\": \"subtract\", \"take\": {\"line\": \"4b\"}}",
    "second": "{\"expression\": {\"from\": {\"line\": \"4a\"}, \"op\": \"subtract\", \"take\": {\"line\": \"4b\"}}, \"invalid_model_types\": [{\"line\": \"f4952.h_taxable_interest\", \"message\": \"f4952.f4952.h_taxable_interest: declared NonNegDollars but the expression does not prove non-negativity\"}]}",
@@ -28,8 +35,8 @@
    "printed": "4d",
    "project": "{\"from\": {\"ref\": \"sd.line16\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}",
    "second": "{\"from\": {\"of\": [{\"ref\": \"sd.line15\"}, {\"ref\": \"sd.line16\"}], \"op\": \"smaller_of\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}",
-   "ruling": "Ruling: model error; f4952 p.3 line4d counts total investment-property gains over losses, including short-term gains. The reply uses the positive smaller of ScheduleD lines15/16, dropping a positive net short-term gain when long-term gain is zero. This confuses line4d with the line4e net-capital-gain restriction. The candidate has additional type errors and is not executed.",
-   "context": "11f1618ccebbff695a2e772d39c1ef541b19017960f944ed648dd76ebb0fec98"
+   "ruling": "Ruling: model error; f4952 p.3 Line4d defines net gain as total gains over total losses and expressly includes capital gain distributions and loss carryovers. Line4e separately limits net capital gain. The returned min(ScheduleD15,ScheduleD16) incorrectly excludes positive net short-term gains from line4d. With $1000 short-term gain and $500 long-term gain, line4d is $1500; the returned $500 is the separate net-capital-gain quantity. No raw or numeric model answer is replaced.",
+   "context": "0dacbcbf7e835d6d81779de8d6d537ab0bada18ce0b2bf87b5987ec2050a784b"
   },
   {
    "printed": "4e",
@@ -53,11 +60,25 @@
    "context": "11f1618ccebbff695a2e772d39c1ef541b19017960f944ed648dd76ebb0fec98"
   },
   {
+   "printed": "4h",
+   "project": "{\"of\": [{\"line\": \"4c\"}, {\"line\": \"4f\"}, {\"line\": \"4g\"}], \"op\": \"sum\"}",
+   "second": "{\"expression\": {\"of\": [{\"line\": \"4g\"}, {\"from\": {\"line\": \"4a\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"4b\"}}, {\"from\": {\"line\": \"4d\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"4e\"}}], \"op\": \"sum\"}, \"invalid_model_types\": [{\"line\": \"f4952.line4h\", \"message\": \"model changed a published result type\"}]}",
+   "ruling": "Ruling: model error; the returned IR violates the explicitly supplied closed schema/type/reference interface: model changed a published result type. The candidate is rejected and not executed or repaired. This adjudicates the unusable declaration, not the underlying tax reading; source qualification still requires a valid replacement.",
+   "context": "0dacbcbf7e835d6d81779de8d6d537ab0bada18ce0b2bf87b5987ec2050a784b"
+  },
+  {
    "printed": "6",
    "project": "{\"from\": {\"line\": \"4h\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"5\"}}",
    "second": "{\"expression\": {\"from\": {\"line\": \"4h\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"5\"}}, \"invalid_model_types\": [{\"line\": \"f4952.line4h\", \"message\": \"model changed a published result type\"}, {\"line\": \"f4952.line4h\", \"message\": \"f4952.f4952.line4h: declared NonNegDollars but the expression does not prove non-negativity\"}, {\"line\": \"f4952.h_taxable_interest\", \"message\": \"f4952.f4952.h_taxable_interest: declared NonNegDollars but the expression does not prove non-negativity\"}, {\"line\": \"f4952.h_net_cap_gain\", \"message\": \"f4952.f4952.h_net_cap_gain: declared NonNegDollars but the expression does not prove non-negativity\"}]}",
    "ruling": "Ruling: model error; expression validation rejects this result or its model-defined dependencies (f4952.h_net_cap_gain, f4952.h_taxable_interest, f4952.line4h). The raw IR is retained, not repaired or executed. This ruling concerns unresolved/retyped/nonnegative expression contracts only; it does not certify the candidate tax interpretation.",
    "context": "11f1618ccebbff695a2e772d39c1ef541b19017960f944ed648dd76ebb0fec98"
+  },
+  {
+   "printed": "6",
+   "project": "{\"from\": {\"line\": \"4h\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"5\"}}",
+   "second": "{\"expression\": {\"from\": {\"line\": \"4h\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"5\"}}, \"invalid_model_types\": [{\"line\": \"f4952.line4h\", \"message\": \"model changed a published result type\"}]}",
+   "ruling": "Ruling: model error; the returned IR violates the explicitly supplied closed schema/type/reference interface: model changed a published result type. The candidate is rejected and not executed or repaired. This adjudicates the unusable declaration, not the underlying tax reading; source qualification still requires a valid replacement.",
+   "context": "0dacbcbf7e835d6d81779de8d6d537ab0bada18ce0b2bf87b5987ec2050a784b"
   },
   {
    "printed": "7",
@@ -67,6 +88,13 @@
    "context": "11f1618ccebbff695a2e772d39c1ef541b19017960f944ed648dd76ebb0fec98"
   },
   {
+   "printed": "7",
+   "project": "{\"from\": {\"line\": \"3\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"6\"}}",
+   "second": "{\"expression\": {\"from\": {\"line\": \"3\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"6\"}}, \"invalid_model_types\": [{\"line\": \"f4952.line4h\", \"message\": \"model changed a published result type\"}]}",
+   "ruling": "Ruling: model error; the returned IR violates the explicitly supplied closed schema/type/reference interface: model changed a published result type. The candidate is rejected and not executed or repaired. This adjudicates the unusable declaration, not the underlying tax reading; source qualification still requires a valid replacement.",
+   "context": "0dacbcbf7e835d6d81779de8d6d537ab0bada18ce0b2bf87b5987ec2050a784b"
+  },
+  {
    "printed": "8",
    "project": "{\"of\": [{\"line\": \"3\"}, {\"line\": \"6\"}], \"op\": \"smaller_of\"}",
    "second": "{\"expression\": {\"of\": [{\"line\": \"3\"}, {\"line\": \"6\"}], \"op\": \"smaller_of\"}, \"invalid_model_types\": [{\"line\": \"f4952.line4h\", \"message\": \"model changed a published result type\"}, {\"line\": \"f4952.line4h\", \"message\": \"f4952.f4952.line4h: declared NonNegDollars but the expression does not prove non-negativity\"}, {\"line\": \"f4952.h_taxable_interest\", \"message\": \"f4952.f4952.h_taxable_interest: declared NonNegDollars but the expression does not prove non-negativity\"}, {\"line\": \"f4952.h_net_cap_gain\", \"message\": \"f4952.f4952.h_net_cap_gain: declared NonNegDollars but the expression does not prove non-negativity\"}]}",
@@ -74,11 +102,25 @@
    "context": "11f1618ccebbff695a2e772d39c1ef541b19017960f944ed648dd76ebb0fec98"
   },
   {
+   "printed": "8",
+   "project": "{\"of\": [{\"line\": \"3\"}, {\"line\": \"6\"}], \"op\": \"smaller_of\"}",
+   "second": "{\"expression\": {\"of\": [{\"line\": \"3\"}, {\"line\": \"6\"}], \"op\": \"smaller_of\"}, \"invalid_model_types\": [{\"line\": \"f4952.line4h\", \"message\": \"model changed a published result type\"}]}",
+   "ruling": "Ruling: model error; the returned IR violates the explicitly supplied closed schema/type/reference interface: model changed a published result type. The candidate is rejected and not executed or repaired. This adjudicates the unusable declaration, not the underlying tax reading; source qualification still requires a valid replacement.",
+   "context": "0dacbcbf7e835d6d81779de8d6d537ab0bada18ce0b2bf87b5987ec2050a784b"
+  },
+  {
    "printed": "f4952.election",
    "project": "{\"line\": \"4g\"}",
    "second": "{\"expression\": {\"of\": [{\"line\": \"4e\"}, {\"line\": \"4g\"}], \"op\": \"smaller_of\"}, \"invalid_model_types\": [{\"line\": \"f4952.h_net_cap_gain\", \"message\": \"f4952.f4952.h_net_cap_gain: declared NonNegDollars but the expression does not prove non-negativity\"}]}",
    "ruling": "Ruling: interface gap; the reply explicitly interprets this opaque result id as the net-capital-gain share attributed to line4g, while the project export means the full line4g amount. f4952 p.4 discusses both quantities. The blind interface names only an id/type, so the target meaning is underdetermined; clarify the source-defined quantity rather than call this clean model-only tax noise. The candidate also fails expression checks and remains rejected.",
    "context": "11f1618ccebbff695a2e772d39c1ef541b19017960f944ed648dd76ebb0fec98"
+  },
+  {
+   "printed": "f4952.required",
+   "project": "{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"line\": \"4c\"}, {\"line\": \"1\"}], \"test\": \"le\"}, {\"args\": [{\"const\": 0}, {\"line\": \"5\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": false}, {\"input\": \"f4952.carryover\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"const\": 0}, {\"line\": \"1\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4g\"}], \"test\": \"lt\"}], \"test\": \"any\"}",
+   "second": "{\"args\": [{\"args\": [{\"line\": \"4c\"}, {\"line\": \"1\"}], \"test\": \"le\"}, {\"args\": [{\"const\": 0}, {\"line\": \"5\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": false}, {\"input\": \"f4952.carryover\"}], \"test\": \"ne\"}], \"test\": \"any\"}",
+   "ruling": "Ruling: model error; f4952 p.4 Line4g says to make the election by entering the elected amount on line4g. A positive declared election therefore needs this form even if the interest-expense deduction otherwise meets the p.3 filing exception. Both returned predicates omit the positive-line4g condition. For investment interest $100, ordinary nonqualified investment income $200 and declared elected dividends $50, the exception can hold while the election still requires Form4952. The project asks whether the form is needed for the deduction or declared election; no new owner scope choice is made.",
+   "context": "0dacbcbf7e835d6d81779de8d6d537ab0bada18ce0b2bf87b5987ec2050a784b"
   },
   {
    "printed": "f4952.required",

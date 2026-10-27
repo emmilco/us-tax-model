@@ -1,0 +1,264 @@
+{
+ "bank": null,
+ "errors": [
+  {
+   "line": "f5695.line19h",
+   "message": "malformed expression (project schema): data/of/1 must be string, data/of/1 must be string, data/of/1 must be string"
+  },
+  {
+   "line": "f5695.line20d",
+   "message": "malformed expression (project schema): data/of/1 must be string, data/of/1 must be string, data/of/1 must be string"
+  },
+  {
+   "line": "f5695.line22d",
+   "message": "malformed expression (project schema): data/of/1 must be string, data/of/1 must be string, data/of/1 must be string"
+  },
+  {
+   "line": "f5695.line23d",
+   "message": "malformed expression (project schema): data/of/1 must be string, data/of/1 must be string, data/of/1 must be string"
+  },
+  {
+   "line": "f5695.line24d",
+   "message": "malformed expression (project schema): data/of/1 must be string, data/of/1 must be string, data/of/1 must be string"
+  },
+  {
+   "line": "f5695.line28",
+   "message": "malformed expression (project schema): data/of/1 must be string, data/of/1 must be string, data/of/1 must be string"
+  },
+  {
+   "line": "f5695.line29h",
+   "message": "malformed expression (project schema): data/of/1 must be string, data/of/1 must be string, data/of/1 must be string"
+  },
+  {
+   "line": "f5695.h18b_cap",
+   "message": "malformed expression (project schema): data/of/1 must be string, data/of/1 must be string, data/of/1 must be string"
+  },
+  {
+   "line": "f5695.h19c_cap",
+   "message": "malformed expression (project schema): data/of/1 must be string, data/of/1 must be string, data/of/1 must be string"
+  },
+  {
+   "line": "f5695.h25e_cap",
+   "message": "malformed expression (project schema): data/of/1 must be string, data/of/1 must be string, data/of/1 must be string"
+  },
+  {
+   "line": "f5695.h26c_cap",
+   "message": "malformed expression (project schema): data/of/1 must be string, data/of/1 must be string, data/of/1 must be string"
+  },
+  {
+   "line": "f5695.line19h",
+   "message": "f5695.f5695.line19h: malformed expression"
+  },
+  {
+   "line": "f5695.line20d",
+   "message": "f5695.f5695.line20d: malformed expression"
+  },
+  {
+   "line": "f5695.line22d",
+   "message": "f5695.f5695.line22d: malformed expression"
+  },
+  {
+   "line": "f5695.line23d",
+   "message": "f5695.f5695.line23d: malformed expression"
+  },
+  {
+   "line": "f5695.line24d",
+   "message": "f5695.f5695.line24d: malformed expression"
+  },
+  {
+   "line": "f5695.line28",
+   "message": "f5695.f5695.line28: malformed expression"
+  },
+  {
+   "line": "f5695.line29h",
+   "message": "f5695.f5695.line29h: malformed expression"
+  },
+  {
+   "line": "f5695.h18b_cap",
+   "message": "f5695.f5695.h18b_cap: malformed expression"
+  },
+  {
+   "line": "f5695.h19c_cap",
+   "message": "f5695.f5695.h19c_cap: malformed expression"
+  },
+  {
+   "line": "f5695.h25e_cap",
+   "message": "f5695.f5695.h25e_cap: malformed expression"
+  },
+  {
+   "line": "f5695.h26c_cap",
+   "message": "f5695.f5695.h26c_cap: malformed expression"
+  }
+ ],
+ "failures": [],
+ "family": "deepseek",
+ "form": "f5695",
+ "lines": [
+  {
+   "candidate": "f5695.claiming_part1",
+   "handle": "f5695.claiming_part1",
+   "open_at_triage": true,
+   "project": "f5695.claiming_part1",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f5695.line5b",
+   "handle": "5b",
+   "open_at_triage": true,
+   "project": "f5695.line5b",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f5695.line6a",
+   "handle": "6a",
+   "open_at_triage": true,
+   "project": "f5695.line6a",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f5695.line14",
+   "handle": "14",
+   "open_at_triage": true,
+   "project": "f5695.line14",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f5695.line19c",
+   "handle": "19c",
+   "open_at_triage": true,
+   "project": "f5695.line19c",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f5695.line19f",
+   "handle": "19f",
+   "open_at_triage": true,
+   "project": "f5695.line19f",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f5695.line19h",
+   "handle": "19h",
+   "open_at_triage": true,
+   "project": "f5695.line19h",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f5695.line20c",
+   "handle": "20c",
+   "open_at_triage": true,
+   "project": "f5695.line20c",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f5695.line20d",
+   "handle": "20d",
+   "open_at_triage": true,
+   "project": "f5695.line20d",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f5695.line22c",
+   "handle": "22c",
+   "open_at_triage": true,
+   "project": "f5695.line22c",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f5695.line22d",
+   "handle": "22d",
+   "open_at_triage": true,
+   "project": "f5695.line22d",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f5695.line23c",
+   "handle": "23c",
+   "open_at_triage": true,
+   "project": "f5695.line23c",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f5695.line23d",
+   "handle": "23d",
+   "open_at_triage": true,
+   "project": "f5695.line23d",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f5695.line24c",
+   "handle": "24c",
+   "open_at_triage": true,
+   "project": "f5695.line24c",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f5695.line24d",
+   "handle": "24d",
+   "open_at_triage": true,
+   "project": "f5695.line24d",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f5695.line25e",
+   "handle": "25e",
+   "open_at_triage": true,
+   "project": "f5695.line25e",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f5695.line29g",
+   "handle": "29g",
+   "open_at_triage": true,
+   "project": "f5695.line29g",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f5695.line29h",
+   "handle": "29h",
+   "open_at_triage": true,
+   "project": "f5695.line29h",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f5695.line32a",
+   "handle": "32a",
+   "open_at_triage": true,
+   "project": "f5695.line32a",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f5695.line32b",
+   "handle": "32b",
+   "open_at_triage": true,
+   "project": "f5695.line32b",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  }
+ ],
+ "log_sha256_at_triage": "5d5ef7478fc5114d424b18f0c7064d5d65c78318e617b2b251a2c0c1c71a5268",
+ "policy": "executable-triage-v1",
+ "response_sha256": "a05dc4425953f20b520b7239efe482beb77b68db51a2732b66444c072fb2c85f",
+ "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
+ "state": "invalid",
+ "subject_sha256": "273b48d27e00bcc34db097623cba68ebc97a6c19abaad5c1034e20b01572cac2"
+}

@@ -11,26 +11,26 @@ pages, a quote found in the document, or one printed line number of a form docum
 of the form's text beside three consecutive words of the label. The segments that do not are listed
 under "Locators to rewrite"; they fail the check only with `--strict`.
 
-- anchors: 2356
+- anchors: 2378
 - anchors ruled: 45
-- quotes: 1282
+- quotes: 1313
 - quotes ruled: 4
-- segments checked: 2441
+- segments checked: 2470
 - findings without a ruling: 0
 - rulings no anchor uses: 0
 
-- computed lines: 1515
-- computed-line segments: 1763
+- computed lines: 1532
+- computed-line segments: 1788
 - computed-line segments rejected: list: 13
 - computed-line segments rejected: none: 160
 - computed-line segments rejected: span: 54
-- computed-line segments with a quote and no page: 120
-- computed-line segments with pages: 1158
+- computed-line segments with a quote and no page: 127
+- computed-line segments with pages: 1176
 - form-line locators: 258
 - form-line locators not placed: 21
 - form-line locators on a booklet: 36
 - form-line locators verified: 201
-- quotes without a page found: 103
+- quotes without a page found: 110
 - quotes without a page not found: 17
 - locators to rewrite: 301
 
@@ -56,7 +56,7 @@ the line, the segment as written and what the check needs instead.
 
 ### dependent (1)
 
-- `dependent.actc_amount` (`forms/2025/dependent.yaml:804`) — “Schedule 8812 (2025), line 16b, “Number of qualifying children under age 17 with the required social security number x $1,700”” — the quote was not found in f1040s8812: quote the text as printed, on a page locator
+- `dependent.actc_amount` (`forms/2025/dependent.yaml:915`) — “Schedule 8812 (2025), line 16b, “Number of qualifying children under age 17 with the required social security number x $1,700”” — the quote was not found in f1040s8812: quote the text as printed, on a page locator
 
 ### div (6)
 
@@ -69,8 +69,8 @@ the line, the segment as written and what the check needs instead.
 
 ### eic (2)
 
-- `eic.wsb_4b` (`forms/2025/eic.yaml:851`) — “line 3, statutory employees, is refused)” — a line number on i1040gi, not a form: a page (`p. N, <heading>`) with a quote
-- `eic.wsb_line5_stop` (`forms/2025/eic.yaml:1700`) — “Step 5, question 3, has no such instruction, p. 42)” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `eic.wsb_4b` (`forms/2025/eic.yaml:888`) — “line 3, statutory employees, is refused)” — a line number on i1040gi, not a form: a page (`p. N, <heading>`) with a quote
+- `eic.wsb_line5_stop` (`forms/2025/eic.yaml:1807`) — “Step 5, question 3, has no such instruction, p. 42)” — no line number, quote or page: a printed line number, a quote, or a page locator
 
 ### f1040 (5)
 
@@ -245,27 +245,27 @@ the line, the segment as written and what the check needs instead.
 - `s1a.line10_pos` (`forms/2025/s1a.yaml:701`) — “Schedule 1-A (2025), line 10” — line 10 of f1040s1a was not found on a row of its text beside words of the label “Line 10 if more than zero, otherwise zero”: cite the printed line whose text the label follows, or add a quote of the line as printed
 - `s1a.line12_calc` (`forms/2025/s1a.yaml:726`) — “Schedule 1-A (2025), lines 11 and 12” — several lines place nothing: cite the one printed line this value comes from, or a page with a quote
 - `s1a.line12` (`forms/2025/s1a.yaml:748`) — “Part II caution, “If married, you must file jointly”” — the quote was not found in i1040gi: quote the text as printed, on a page locator
-- `s1a.part3` (`forms/2025/s1a.yaml:956`) — “Part III caution” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `s1a.line14a` (`forms/2025/s1a.yaml:997`) — “Part III caution” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `s1a.line14b` (`forms/2025/s1a.yaml:1042`) — “Part III caution” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `s1a.line14c` (`forms/2025/s1a.yaml:1076`) — “Part III caution” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `s1a.line15` (`forms/2025/s1a.yaml:1170`) — “Part III caution” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `s1a.line16` (`forms/2025/s1a.yaml:1202`) — “Part III caution” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `s1a.line17` (`forms/2025/s1a.yaml:1264`) — “Part III caution” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `s1a.line18` (`forms/2025/s1a.yaml:1297`) — “Part III caution” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `s1a.line18_pos` (`forms/2025/s1a.yaml:1320`) — “Schedule 1-A (2025), line 18” — line 18 of f1040s1a was not found on a row of its text beside words of the label “Line 18 if more than zero, otherwise zero”: cite the printed line whose text the label follows, or add a quote of the line as printed
-- `s1a.line20_calc` (`forms/2025/s1a.yaml:1345`) — “Schedule 1-A (2025), lines 19 and 20” — several lines place nothing: cite the one printed line this value comes from, or a page with a quote
-- `s1a.line20` (`forms/2025/s1a.yaml:1367`) — “Part III caution” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `s1a.line27_pos` (`forms/2025/s1a.yaml:1756`) — “Schedule 1-A (2025), line 27” — line 27 of f1040s1a was not found on a row of its text beside words of the label “Line 27 if more than zero, otherwise zero”: cite the printed line whose text the label follows, or add a quote of the line as printed
-- `s1a.line29_calc` (`forms/2025/s1a.yaml:1781`) — “Schedule 1-A (2025), lines 28 and 29” — several lines place nothing: cite the one printed line this value comes from, or a page with a quote
-- `s1a.part5` (`forms/2025/s1a.yaml:1912`) — “Part V caution” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `s1a.line31` (`forms/2025/s1a.yaml:1944`) — “Part V caution” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `s1a.line32` (`forms/2025/s1a.yaml:2026`) — “Part V caution” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `s1a.line33` (`forms/2025/s1a.yaml:2059`) — “Part V caution” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `s1a.line33_pos` (`forms/2025/s1a.yaml:2082`) — “Schedule 1-A (2025), line 33” — line 33 of f1040s1a was not found on a row of its text beside words of the label “Line 33 if more than zero, otherwise zero”: cite the printed line whose text the label follows, or add a quote of the line as printed
-- `s1a.line34` (`forms/2025/s1a.yaml:2116`) — “Part V caution” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `s1a.line35_calc` (`forms/2025/s1a.yaml:2159`) — “Schedule 1-A (2025), lines 33 and 35” — several lines place nothing: cite the one printed line this value comes from, or a page with a quote
-- `s1a.line35` (`forms/2025/s1a.yaml:2181`) — “Part V caution” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `s1a.part3` (`forms/2025/s1a.yaml:964`) — “Part III caution” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `s1a.line14a` (`forms/2025/s1a.yaml:1005`) — “Part III caution” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `s1a.line14b` (`forms/2025/s1a.yaml:1050`) — “Part III caution” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `s1a.line14c` (`forms/2025/s1a.yaml:1084`) — “Part III caution” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `s1a.line15` (`forms/2025/s1a.yaml:1178`) — “Part III caution” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `s1a.line16` (`forms/2025/s1a.yaml:1210`) — “Part III caution” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `s1a.line17` (`forms/2025/s1a.yaml:1272`) — “Part III caution” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `s1a.line18` (`forms/2025/s1a.yaml:1305`) — “Part III caution” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `s1a.line18_pos` (`forms/2025/s1a.yaml:1328`) — “Schedule 1-A (2025), line 18” — line 18 of f1040s1a was not found on a row of its text beside words of the label “Line 18 if more than zero, otherwise zero”: cite the printed line whose text the label follows, or add a quote of the line as printed
+- `s1a.line20_calc` (`forms/2025/s1a.yaml:1353`) — “Schedule 1-A (2025), lines 19 and 20” — several lines place nothing: cite the one printed line this value comes from, or a page with a quote
+- `s1a.line20` (`forms/2025/s1a.yaml:1375`) — “Part III caution” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `s1a.line27_pos` (`forms/2025/s1a.yaml:1772`) — “Schedule 1-A (2025), line 27” — line 27 of f1040s1a was not found on a row of its text beside words of the label “Line 27 if more than zero, otherwise zero”: cite the printed line whose text the label follows, or add a quote of the line as printed
+- `s1a.line29_calc` (`forms/2025/s1a.yaml:1797`) — “Schedule 1-A (2025), lines 28 and 29” — several lines place nothing: cite the one printed line this value comes from, or a page with a quote
+- `s1a.part5` (`forms/2025/s1a.yaml:1928`) — “Part V caution” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `s1a.line31` (`forms/2025/s1a.yaml:1960`) — “Part V caution” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `s1a.line32` (`forms/2025/s1a.yaml:2042`) — “Part V caution” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `s1a.line33` (`forms/2025/s1a.yaml:2075`) — “Part V caution” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `s1a.line33_pos` (`forms/2025/s1a.yaml:2098`) — “Schedule 1-A (2025), line 33” — line 33 of f1040s1a was not found on a row of its text beside words of the label “Line 33 if more than zero, otherwise zero”: cite the printed line whose text the label follows, or add a quote of the line as printed
+- `s1a.line34` (`forms/2025/s1a.yaml:2132`) — “Part V caution” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `s1a.line35_calc` (`forms/2025/s1a.yaml:2175`) — “Schedule 1-A (2025), lines 33 and 35” — several lines place nothing: cite the one printed line this value comes from, or a page with a quote
+- `s1a.line35` (`forms/2025/s1a.yaml:2197`) — “Part V caution” — no line number, quote or page: a printed line number, a quote, or a page locator
 
 ### s2 (1)
 
@@ -273,9 +273,9 @@ the line, the segment as written and what the check needs instead.
 
 ### s8812 (3)
 
-- `s8812.line18a` (`forms/2025/s8812.yaml:610`) — “combat pay is refused” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `s8812.line18a` (`forms/2025/s8812.yaml:610`) — “not taking the EIC, the Earned Income Worksheet)” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `s8812.line27` (`forms/2025/s8812.yaml:863`) — “Schedule 8812 (2025), lines 20 (Next) through 27” — several lines place nothing: cite the one printed line this value comes from, or a page with a quote
+- `s8812.line18a` (`forms/2025/s8812.yaml:662`) — “combat pay is refused” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `s8812.line18a` (`forms/2025/s8812.yaml:662`) — “not taking the EIC, the Earned Income Worksheet)” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `s8812.line27` (`forms/2025/s8812.yaml:946`) — “Schedule 8812 (2025), lines 20 (Next) through 27” — several lines place nothing: cite the one printed line this value comes from, or a page with a quote
 
 ### sa (20)
 
@@ -336,54 +336,54 @@ the line, the segment as written and what the check needs instead.
 
 ### sd (48)
 
-- `sd.count` (`forms/2025/sd.yaml:91`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `sd.screen` (`forms/2025/sd.yaml:118`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `sd.filed` (`forms/2025/sd.yaml:144`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `sd.line1a.d` (`forms/2025/sd.yaml:176`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `sd.line1a.e` (`forms/2025/sd.yaml:205`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `sd.line1a.g` (`forms/2025/sd.yaml:234`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `sd.line1a.h` (`forms/2025/sd.yaml:263`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `sd.line1b.d` (`forms/2025/sd.yaml:292`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `sd.line1b.e` (`forms/2025/sd.yaml:321`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `sd.line1b.g` (`forms/2025/sd.yaml:350`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `sd.line1b.h` (`forms/2025/sd.yaml:379`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `sd.line2.d` (`forms/2025/sd.yaml:408`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `sd.line2.e` (`forms/2025/sd.yaml:437`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `sd.line2.g` (`forms/2025/sd.yaml:466`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `sd.line2.h` (`forms/2025/sd.yaml:495`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `sd.line3.d` (`forms/2025/sd.yaml:524`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `sd.line3.e` (`forms/2025/sd.yaml:553`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `sd.line3.g` (`forms/2025/sd.yaml:582`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `sd.line3.h` (`forms/2025/sd.yaml:611`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `sd.line8a.d` (`forms/2025/sd.yaml:640`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `sd.line8a.e` (`forms/2025/sd.yaml:669`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `sd.line8a.g` (`forms/2025/sd.yaml:698`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `sd.line8a.h` (`forms/2025/sd.yaml:727`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `sd.line8b.d` (`forms/2025/sd.yaml:756`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `sd.line8b.e` (`forms/2025/sd.yaml:785`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `sd.line8b.g` (`forms/2025/sd.yaml:814`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `sd.line8b.h` (`forms/2025/sd.yaml:843`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `sd.line9.d` (`forms/2025/sd.yaml:872`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `sd.line9.e` (`forms/2025/sd.yaml:901`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `sd.line9.g` (`forms/2025/sd.yaml:930`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `sd.line9.h` (`forms/2025/sd.yaml:959`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `sd.line10.d` (`forms/2025/sd.yaml:988`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `sd.line10.e` (`forms/2025/sd.yaml:1017`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `sd.line10.g` (`forms/2025/sd.yaml:1046`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `sd.line10.h` (`forms/2025/sd.yaml:1075`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `sd.line13` (`forms/2025/sd.yaml:1238`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `sd.line7` (`forms/2025/sd.yaml:1255`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `sd.line15` (`forms/2025/sd.yaml:1273`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `sd.line16` (`forms/2025/sd.yaml:1285`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `sd.line17` (`forms/2025/sd.yaml:1303`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `sd.line20` (`forms/2025/sd.yaml:1325`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `sd.limited_loss` (`forms/2025/sd.yaml:1347`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `sd.has_loss` (`forms/2025/sd.yaml:1359`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `sd.line21` (`forms/2025/sd.yaml:1381`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `sd.line22` (`forms/2025/sd.yaml:1393`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `sd.to1040` (`forms/2025/sd.yaml:1415`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
-- `sd.net_gain_raw` (`forms/2025/sd.yaml:1427`) — “QDCGT worksheet, line 3” — a line number on i1040gi, not a form: a page (`p. N, <heading>`) with a quote
-- `sd.net_gain` (`forms/2025/sd.yaml:1439`) — “QDCGT worksheet, line 3” — a line number on i1040gi, not a form: a page (`p. N, <heading>`) with a quote
+- `sd.count` (`forms/2025/sd.yaml:114`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.screen` (`forms/2025/sd.yaml:141`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.filed` (`forms/2025/sd.yaml:167`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line1a.d` (`forms/2025/sd.yaml:199`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line1a.e` (`forms/2025/sd.yaml:228`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line1a.g` (`forms/2025/sd.yaml:257`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line1a.h` (`forms/2025/sd.yaml:286`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line1b.d` (`forms/2025/sd.yaml:315`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line1b.e` (`forms/2025/sd.yaml:344`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line1b.g` (`forms/2025/sd.yaml:373`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line1b.h` (`forms/2025/sd.yaml:402`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line2.d` (`forms/2025/sd.yaml:431`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line2.e` (`forms/2025/sd.yaml:460`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line2.g` (`forms/2025/sd.yaml:489`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line2.h` (`forms/2025/sd.yaml:518`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line3.d` (`forms/2025/sd.yaml:547`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line3.e` (`forms/2025/sd.yaml:576`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line3.g` (`forms/2025/sd.yaml:605`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line3.h` (`forms/2025/sd.yaml:634`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line8a.d` (`forms/2025/sd.yaml:663`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line8a.e` (`forms/2025/sd.yaml:692`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line8a.g` (`forms/2025/sd.yaml:721`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line8a.h` (`forms/2025/sd.yaml:750`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line8b.d` (`forms/2025/sd.yaml:779`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line8b.e` (`forms/2025/sd.yaml:808`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line8b.g` (`forms/2025/sd.yaml:837`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line8b.h` (`forms/2025/sd.yaml:866`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line9.d` (`forms/2025/sd.yaml:895`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line9.e` (`forms/2025/sd.yaml:924`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line9.g` (`forms/2025/sd.yaml:953`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line9.h` (`forms/2025/sd.yaml:982`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line10.d` (`forms/2025/sd.yaml:1011`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line10.e` (`forms/2025/sd.yaml:1040`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line10.g` (`forms/2025/sd.yaml:1069`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line10.h` (`forms/2025/sd.yaml:1098`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line13` (`forms/2025/sd.yaml:1261`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line7` (`forms/2025/sd.yaml:1278`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line15` (`forms/2025/sd.yaml:1296`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line16` (`forms/2025/sd.yaml:1308`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line17` (`forms/2025/sd.yaml:1326`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line20` (`forms/2025/sd.yaml:1348`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.limited_loss` (`forms/2025/sd.yaml:1370`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.has_loss` (`forms/2025/sd.yaml:1382`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line21` (`forms/2025/sd.yaml:1404`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line22` (`forms/2025/sd.yaml:1416`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.to1040` (`forms/2025/sd.yaml:1438`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.net_gain_raw` (`forms/2025/sd.yaml:1450`) — “QDCGT worksheet, line 3” — a line number on i1040gi, not a form: a page (`p. N, <heading>`) with a quote
+- `sd.net_gain` (`forms/2025/sd.yaml:1462`) — “QDCGT worksheet, line 3” — a line number on i1040gi, not a form: a page (`p. N, <heading>`) with a quote
 
 ### se (1)
 

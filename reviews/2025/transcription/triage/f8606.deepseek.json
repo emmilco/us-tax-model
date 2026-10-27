@@ -1,0 +1,52 @@
+{
+ "bank": null,
+ "errors": [
+  {
+   "line": "f8606.line1",
+   "message": "model introduced an input outside the closed interface"
+  },
+  {
+   "line": "f8606.line2",
+   "message": "model introduced an input outside the closed interface"
+  },
+  {
+   "line": "f8606.dist",
+   "message": "model introduced an input outside the closed interface"
+  }
+ ],
+ "failures": [],
+ "family": "deepseek",
+ "form": "f8606",
+ "lines": [
+  {
+   "candidate": "f8606.line1",
+   "handle": "1",
+   "open_at_triage": true,
+   "project": "f8606.line1",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8606.line2",
+   "handle": "2",
+   "open_at_triage": true,
+   "project": "f8606.line2",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8606.dist",
+   "handle": "3 (question)",
+   "open_at_triage": true,
+   "project": "f8606.dist",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  }
+ ],
+ "log_sha256_at_triage": "18d25365a8fa258de29873a7548f5ddfe526bbfe2f2d3402e10009642f42cc68",
+ "policy": "executable-triage-v1",
+ "response_sha256": "7f0e7faeb495611f1df32fd4f80fafa0ee53adabadf5bc97bf67643c33c6f61d",
+ "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
+ "state": "invalid",
+ "subject_sha256": "e5bfeed8f2e9d8848e7d870baaf2b89f487e528af4a621df3ebd277b81db1c53"
+}

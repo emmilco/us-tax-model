@@ -1,0 +1,85 @@
+{
+ "bank": {
+  "evaluation_failures": 0,
+  "fixtures": 1083,
+  "generated": 500,
+  "partial_bases": 40,
+  "partial_records": 0,
+  "seed": 20261026
+ },
+ "errors": [],
+ "failures": [],
+ "family": "deepseek",
+ "form": "qdcg",
+ "lines": [
+  {
+   "absent": 0,
+   "agree": 1583,
+   "candidate": "qdcg.line3",
+   "compared": 1583,
+   "differ": 0,
+   "handle": "3",
+   "in_scope": 1469,
+   "in_scope_agree": 1469,
+   "kinds": {},
+   "kinds_by_return": {},
+   "open_at_triage": false,
+   "project": "qdcg.line3",
+   "sources": {
+    "fixture": 1083,
+    "generated": 500
+   },
+   "status": "DISAGREE",
+   "triage": "agrees on sample",
+   "witnesses": []
+  },
+  {
+   "absent": 0,
+   "agree": 1583,
+   "candidate": "qdcg.line6",
+   "compared": 1583,
+   "differ": 0,
+   "handle": "6",
+   "in_scope": 1583,
+   "in_scope_agree": 1583,
+   "kinds": {},
+   "kinds_by_return": {},
+   "open_at_triage": false,
+   "project": "qdcg.line6",
+   "sources": {
+    "fixture": 1083,
+    "generated": 500
+   },
+   "status": "DISAGREE",
+   "triage": "agrees on sample",
+   "witnesses": []
+  },
+  {
+   "absent": 0,
+   "agree": 1583,
+   "candidate": "qdcg.line13",
+   "compared": 1583,
+   "differ": 0,
+   "handle": "13",
+   "in_scope": 1583,
+   "in_scope_agree": 1583,
+   "kinds": {},
+   "kinds_by_return": {},
+   "open_at_triage": false,
+   "project": "qdcg.line13",
+   "sources": {
+    "fixture": 1083,
+    "generated": 500
+   },
+   "status": "DISAGREE",
+   "triage": "agrees on sample",
+   "witnesses": []
+  }
+ ],
+ "log_sha256_at_triage": "80c27762e8d4bbb496492a371bf2b7a4f60f4a11aa4f69758f3959ae0ab26eb3",
+ "policy": "executable-triage-v1",
+ "response_sha256": "bab4c68daff64496538694294215b1ac9381561d2f52fcce487f8356f5541b86",
+ "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
+ "state": "evaluated",
+ "subject_sha256": "0ec80da435463402c2d8e70745618a3a4b8e2d8949ed1b76192d41f26ba57324"
+}

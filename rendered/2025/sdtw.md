@@ -34,14 +34,14 @@
 ## (helper) — `sdtw.use1250`
 
 - **Authored helper label:** Compute lines 35–40 when Schedule D line 19 is positive
-- **Encoded (Bool):** helper "Continue after line 32 when lines 1 and 32 differ" = true and sd helper "Unrecaptured Section 1250 Gain Worksheet result (supplied subtotal; worksheet deferred to Stage 4)" > $0
+- **Encoded (Bool):** helper "Continue after line 32 when lines 1 and 32 differ" = true and sd helper "Line 19. Unrecaptured Section 1250 Gain Worksheet result, or zero when line 17 is No (lines 18 through 21 skipped)" > $0
 - Expr: `{"all":[{"eq":["sdtw.after32",{"const":true}],"op":"test"},{"gt":["sd.line19",{"const":0}],"op":"test"}],"op":"test"}`
 - Cite: [i1040sd] pp. 15–16, Schedule D Tax Worksheet (2025; printed date 2025-12-11; sha256 650643a6)
 
 ## (helper) — `sdtw.use28`
 
 - **Authored helper label:** Follow printed flow to lines 41–43
-- **Encoded (Bool):** helper "Continue after line 32 when lines 1 and 32 differ" = true and (sd helper "Unrecaptured Section 1250 Gain Worksheet result (supplied subtotal; worksheet deferred to Stage 4)" = $0 or sd helper "28% Rate Gain Worksheet result (supplied subtotal; worksheet deferred to Stage 4)" > $0)
+- **Encoded (Bool):** helper "Continue after line 32 when lines 1 and 32 differ" = true and (sd helper "Line 19. Unrecaptured Section 1250 Gain Worksheet result, or zero when line 17 is No (lines 18 through 21 skipped)" = $0 or sd helper "Line 18. 28% Rate Gain Worksheet result, or zero when line 17 is No (lines 18 through 21 skipped)" > $0)
 - Expr: `{"all":[{"eq":["sdtw.after32",{"const":true}],"op":"test"},{"any":[{"eq":["sd.line19",{"const":0}],"op":"test"},{"gt":["sd.line18",{"const":0}],"op":"test"}],"op":"test"}],"op":"test"}`
 - Cite: [i1040sd] pp. 15–16, Schedule D Tax Worksheet (2025; printed date 2025-12-11; sha256 650643a6)
 
@@ -68,10 +68,10 @@
 
 ## 4 — `sdtw.line4`
 
-- **IRS:** Form 4952 line 4e, default capital-gain-first allocation
-- **Encoded (NonNegDollars):** Enter the amount from f4952 line 4e.
-- Expr: `{"from":"f4952.line4e","op":"copy"}`
-- Cite: [i1040sd] pp. 15–16, Schedule D Tax Worksheet (2025; printed date 2025-12-11; sha256 650643a6)
+- **IRS:** Form 4952 line 4e (default capital-gain-first allocation), or zero when no Form 4952 is filed
+- **Encoded (NonNegDollars):** Choose — [sd helper "Are you filing Form 4952?" = true → f4952 line 4e] [sd helper "Are you filing Form 4952?" = false → helper "Zero for skipped worksheet lines"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sd.filing4952",{"const":true}],"op":"test"},"then":"f4952.line4e"},{"guard":{"eq":["sd.filing4952",{"const":false}],"op":"test"},"then":"sdtw.zero"}],"op":"choose"}`
+- Cite: [i1040sd] pp. 15–16, Schedule D Tax Worksheet, line 4, "Enter the amount from Form 4952, line 4e" (2025; printed date 2025-12-11; sha256 650643a6)
 
 ## 5 — `sdtw.line5`
 
@@ -118,7 +118,7 @@
 ## 11 — `sdtw.line11`
 
 - **IRS:** Add Schedule D lines 18 and 19
-- **Encoded (NonNegDollars):** Add sd helper "28% Rate Gain Worksheet result (supplied subtotal; worksheet deferred to Stage 4)" and sd helper "Unrecaptured Section 1250 Gain Worksheet result (supplied subtotal; worksheet deferred to Stage 4)".
+- **Encoded (NonNegDollars):** Add sd helper "Line 18. 28% Rate Gain Worksheet result, or zero when line 17 is No (lines 18 through 21 skipped)" and sd helper "Line 19. Unrecaptured Section 1250 Gain Worksheet result, or zero when line 17 is No (lines 18 through 21 skipped)".
 - Expr: `{"of":["sd.line18","sd.line19"],"op":"sum"}`
 - Cite: [i1040sd] pp. 15–16, Schedule D Tax Worksheet (2025; printed date 2025-12-11; sha256 650643a6)
 
@@ -372,7 +372,7 @@
 ## (helper) — `sdtw.raw35`
 
 - **Authored helper label:** Smaller of line 9 and Schedule D line 19 before skip rule
-- **Encoded (NonNegDollars):** Enter the smaller of line 9 or sd helper "Unrecaptured Section 1250 Gain Worksheet result (supplied subtotal; worksheet deferred to Stage 4)".
+- **Encoded (NonNegDollars):** Enter the smaller of line 9 or sd helper "Line 19. Unrecaptured Section 1250 Gain Worksheet result, or zero when line 17 is No (lines 18 through 21 skipped)".
 - Expr: `{"of":["sdtw.line9","sd.line19"],"op":"smaller_of"}`
 - Cite: [i1040sd] pp. 15–16, Schedule D Tax Worksheet (2025; printed date 2025-12-11; sha256 650643a6)
 
@@ -461,10 +461,18 @@
 - Expr: `{"of":["sdtw.line21","sdtw.line22","sdtw.line30","sdtw.line33","sdtw.line39"],"op":"sum"}`
 - Cite: [i1040sd] pp. 15–16, Schedule D Tax Worksheet (2025; printed date 2025-12-11; sha256 650643a6)
 
+## (helper) — `sdtw.show41_43`
+
+- **Authored helper label:** Schedule D, line 18, is more than zero (lines 41 through 43 are completed)
+- **Encoded (Bool):** sd helper "Line 18. 28% Rate Gain Worksheet result, or zero when line 17 is No (lines 18 through 21 skipped)" > $0 (sales.zero)
+- Expr: `{"gt":["sd.line18",{"param":"sales.zero"}],"op":"test"}`
+- Cite: [i1040sd] p. 16, Schedule D Tax Worksheet, "If Schedule D, line 18, is zero or blank, skip lines 41 through 43 and go to line 44" (2025; printed date 2025-12-11; sha256 650643a6)
+
 ## 41 — `sdtw.line41`
 
 - **IRS:** Add lines 21, 22, 30, 33 and 39
 - **Encoded (Dollars):** Choose — [helper "Follow printed flow to lines 41–43" = true → helper "Add lines 21, 22, 30, 33 and 39 before skip rule"] [helper "Follow printed flow to lines 41–43" = false → helper "Zero for skipped worksheet lines"]
+- **Shown on the values sheet only when:** Schedule D, line 18, is more than zero (lines 41 through 43 are completed) (`sdtw.show41_43`)
 - Expr: `{"alternatives":[{"guard":{"eq":["sdtw.use28",{"const":true}],"op":"test"},"then":"sdtw.raw41"},{"guard":{"eq":["sdtw.use28",{"const":false}],"op":"test"},"then":"sdtw.zero"}],"op":"choose"}`
 - Cite: [i1040sd] pp. 15–16, Schedule D Tax Worksheet (2025; printed date 2025-12-11; sha256 650643a6)
 
@@ -479,6 +487,7 @@
 
 - **IRS:** Subtract line 41 from line 1
 - **Encoded (Dollars):** Choose — [helper "Follow printed flow to lines 41–43" = true → helper "Subtract line 41 from line 1 before skip rule"] [helper "Follow printed flow to lines 41–43" = false → helper "Zero for skipped worksheet lines"]
+- **Shown on the values sheet only when:** Schedule D, line 18, is more than zero (lines 41 through 43 are completed) (`sdtw.show41_43`)
 - Expr: `{"alternatives":[{"guard":{"eq":["sdtw.use28",{"const":true}],"op":"test"},"then":"sdtw.raw42"},{"guard":{"eq":["sdtw.use28",{"const":false}],"op":"test"},"then":"sdtw.zero"}],"op":"choose"}`
 - Cite: [i1040sd] pp. 15–16, Schedule D Tax Worksheet (2025; printed date 2025-12-11; sha256 650643a6)
 
@@ -494,6 +503,7 @@
 
 - **IRS:** Multiply line 42 by 28 percent
 - **Encoded (Dollars):** Choose — [helper "Follow printed flow to lines 41–43" = true → helper "Multiply line 42 by 28 percent before skip rule"] [helper "Follow printed flow to lines 41–43" = false → helper "Zero for skipped worksheet lines"]
+- **Shown on the values sheet only when:** Schedule D, line 18, is more than zero (lines 41 through 43 are completed) (`sdtw.show41_43`)
 - Expr: `{"alternatives":[{"guard":{"eq":["sdtw.use28",{"const":true}],"op":"test"},"then":"sdtw.raw43"},{"guard":{"eq":["sdtw.use28",{"const":false}],"op":"test"},"then":"sdtw.zero"}],"op":"choose"}`
 - Cite: [i1040sd] pp. 15–16, Schedule D Tax Worksheet (2025; printed date 2025-12-11; sha256 650643a6)
 

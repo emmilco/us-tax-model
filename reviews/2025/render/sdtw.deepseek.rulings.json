@@ -1,0 +1,14 @@
+{
+ "kind": "render",
+ "form": "sdtw",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "1",
+   "restated": "Enter the amount from f1040 line 15.",
+   "model": "IRS line 1 says to enter line 3 of the Foreign Earned Income Tax Worksheet instead when filing Form 2555; the restatement always uses Form 1040 line 15.",
+   "ruling": "Ruling: scope; project retained. i1040sd p. 15, line 1: \"Enter your taxable income from Form 1040, 1040-SR, or 1040-NR, line 15. (However, if you are filing Form 2555 (relating to foreign earned income), enter instead the amount from line 3 of the Foreign Earned Income Tax Worksheet in the instructions for Form 1040, line 16.)\". The Form 2555 alternative is never reached on a return the tool computes: the exclusion is reported on Schedule 1, line 8d (i1040gi p. 91: \"Foreign earned income exclusion and housing exclusion from Form 2555\"), refused by s1.line8_other (forms/2025/s1.yaml: \"lines 8a, 8d, 8e, 8k to 8q and 8s to 8v are refused by s1.line8_other\"); the housing deduction (Schedule 1, line 24j) is refused at Form 1040 line 10 (\"lines 24b to 24z are outside this tool\"); and a filer who answers that Form 2555 is filed is refused at Schedule 1-A line 2a (forms/2025/s1a.yaml, gate sa.excluded_income, i1040gi p. 101). The worksheet note records Form 2555 as outside scope. The restatement says what the page says for every return the tool computes; as round 2. No change.",
+   "context": "ea190af24d4e684c23d36466c51389f0bdae4d18910bd39c27c3f101d261d355"
+  }
+ ]
+}

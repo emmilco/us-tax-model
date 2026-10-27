@@ -1,0 +1,14 @@
+{
+ "kind": "render",
+ "form": "eic",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "1",
+   "restated": "Choose — [helper \"Step 5, question 2: self-employed (Worksheet B)\" = false → column (Step 5, 5)] [helper \"Step 5, question 2: self-employed (Worksheet B)\" = true → line 6 (eic.wsb_6)]",
+   "model": "IRS Worksheet A says \"Use this worksheet only if you answered “No” to Step 5, question 2. Otherwise, use Worksheet B.\" and its line 1 says \"Enter your earned income from Step 5\"; the restatement instead uses Worksheet B line 6 when the self-employed helper is true.",
+   "ruling": "Ruling: representation; project retained. i1040gi p. 46, Worksheet A: \"Use this worksheet only if you answered “No” to Step 5, question 2. Otherwise, use Worksheet B.\" and line 1: \"Enter your earned income from Step 5.\"; p. 48, Worksheet B, line 6: \"Enter your total earned income from Part 4, line 4b.\", and lines 7 to 11 repeat Worksheet A lines 2 to 6 (\"Look up the amount on line 6 above in the EIC Table\", \"Enter the amount from Form 1040 or 1040-SR, line 11b\", \"Are the amounts on lines 8 and 6 the same?\"). The project carries both worksheets on one set of printed lines and its English says so: \"Enter your earned income from Step 5 (Worksheet A, line 1), or Worksheet B, line 6\", taking the Step 5 amount when Step 5, question 2 is No and Worksheet B line 6 when it is Yes, with the citation \"Worksheet A lines 2 to 6 are Worksheet B lines 7 to 11\". For a Worksheet A filer the line is the source's line 1; for a Worksheet B filer it is the source's Worksheet B line 6, labelled as such. The model read the merged label as a misstatement of Worksheet A alone. No change.",
+   "context": "c3dc2a236a218b01fae8bc74ee50de4b9e19a40853f57469cf73b1171edfbdf2"
+  }
+ ]
+}

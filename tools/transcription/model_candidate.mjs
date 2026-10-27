@@ -12,7 +12,13 @@ const all = [...context.forms, ...context.defs];
 const original = all.find(doc => doc.id === form);
 if (!original) throw new Error(`unknown review document ${form}`);
 const published = new Map(original.lines.map(line => [line.id, line]));
-const inputs = original.lines.filter(line => line.expr.op === 'input');
+// Published input interfaces are facts, not the authored computation around
+// them. Importing their computed refusal gates forces an independent candidate
+// to reproduce hidden project helpers and can execute authored gate placement.
+const inputs = original.lines.filter(line => line.expr.op === 'input').map(line => ({
+  id: line.id, printed: line.printed, type: line.type, label: line.label,
+  expr: { op: 'input', source: line.expr.source },
+}));
 const errors = [], computed = [];
 const seen = new Set();
 for (const line of lines) {
@@ -35,6 +41,9 @@ for (const line of lines) {
   if (existing?.expr.op === 'input') {
     if (line.expr.op !== 'input' || line.type !== existing.type)
       errors.push({ line: line.id, message: 'model changed a published input interface' });
+    // Keep any gate the reply itself declares, so it is checked and interpreted
+    // as model IR. Absence never imports the authored gate as a default.
+    if (line.refuses !== undefined) inputs.find(input => input.id === line.id).refuses = line.refuses;
     continue; // Use the published input's type, never let the model redefine it.
   }
   if (line.expr.op === 'input') errors.push({ line: line.id, message: 'model introduced an input outside the closed interface' });

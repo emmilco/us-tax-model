@@ -39,25 +39,48 @@ form:
         locator: p. 11, line 13
     - id: sd.line18
       printed: (helper)
-      label: 28% Rate Gain Worksheet result (supplied subtotal; worksheet deferred to Stage 4)
+      label: Line 18. 28% Rate Gain Worksheet result, or zero when line 17 is No (lines 18 through 21 skipped)
       type: NonNegDollars
       expr:
-        op: copy
-        from: g28.line7
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sd.line17
+                - const: true
+            then: g28.line7
+          - guard:
+              op: test
+              eq:
+                - sd.line17
+                - const: false
+            then: sd.zero
       cite:
         doc: i1040sd
-        locator: p. 11, line 18
+        locator: p. 11, Line 18, "If you checked “Yes” on line 17, complete the 28% Rate Gain Worksheet"; f1040sd p. 2, line 17, "No. Skip lines 18 through 21, and go to line 22"
     - id: sd.line19
       printed: (helper)
-      label: Unrecaptured Section 1250 Gain Worksheet result (supplied subtotal; worksheet deferred to
-        Stage 4)
+      label: Line 19. Unrecaptured Section 1250 Gain Worksheet result, or zero when line 17 is No (lines 18 through 21 skipped)
       type: NonNegDollars
       expr:
-        op: copy
-        from: u1250.line18
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sd.line17
+                - const: true
+            then: u1250.line18
+          - guard:
+              op: test
+              eq:
+                - sd.line17
+                - const: false
+            then: sd.zero
       cite:
         doc: i1040sd
-        locator: pp. 11–12, line 19
+        locator: pp. 11–12, Line 19, "If you checked “Yes” on line 17, complete the Unrecaptured Section 1250 Gain Worksheet"; f1040sd p. 2, line 17, "No. Skip lines 18 through 21, and go to line 22"
     - id: sd.filing4952
       printed: (helper)
       label: Are you filing Form 4952?

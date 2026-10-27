@@ -1,0 +1,420 @@
+{
+ "bank": null,
+ "errors": [
+  {
+   "line": "sc.line30",
+   "message": "malformed expression (project schema): data/alternatives/0/guard must be object, data/alternatives/0/guard must be object, data/alternatives/0/guard must be object"
+  },
+  {
+   "line": "sc.f7206_line14",
+   "message": "malformed expression (project schema): data/alternatives/0/guard must be object, data/alternatives/0/guard must be object, data/alternatives/0/guard must be object"
+  },
+  {
+   "line": "sc.ho_cap_sqft",
+   "message": "malformed expression (project schema): data/of/1 must be string, data/of/1 must be string, data/of/1 must be string"
+  },
+  {
+   "line": "sc.ho_screened",
+   "message": "malformed expression (project schema): data/all/0 must be object, data/all/0 must be object, data/all/0 must be object"
+  },
+  {
+   "line": "sc.loss_not_at_risk",
+   "message": "malformed expression (project schema): data/all/0 must be object, data/all/0 must be object, data/all/0 must be object"
+  },
+  {
+   "line": "sc.hi_screened",
+   "message": "malformed expression (project schema): data/all/0 must be object, data/all/0 must be object, data/all/0 must be object"
+  },
+  {
+   "line": "sc.ho_line5",
+   "message": "sc.sc.ho_line5: declared NonNegDollars but the expression does not prove non-negativity"
+  },
+  {
+   "line": "sc.line30",
+   "message": "sc.sc.line30: malformed expression"
+  },
+  {
+   "line": "sc.f7206_line4",
+   "message": "sc.sc.f7206_line4: declared NonNegDollars but the expression does not prove non-negativity"
+  },
+  {
+   "line": "sc.f7206_line8",
+   "message": "sc.sc.f7206_line8: declared NonNegDollars but the expression does not prove non-negativity"
+  },
+  {
+   "line": "sc.f7206_line10",
+   "message": "sc.sc.f7206_line10: declared NonNegDollars but the expression does not prove non-negativity"
+  },
+  {
+   "line": "sc.f7206_line14",
+   "message": "sc.sc.f7206_line14: malformed expression"
+  },
+  {
+   "line": "sc.ho_cap_sqft",
+   "message": "sc.sc.ho_cap_sqft: operand 'sc.ho_sqft' is not money"
+  },
+  {
+   "line": "sc.ho_cap_sqft",
+   "message": "sc.sc.ho_cap_sqft: malformed expression"
+  },
+  {
+   "line": "sc.ho_screened",
+   "message": "sc.sc.ho_screened: malformed expression"
+  },
+  {
+   "line": "sc.line28_pre179",
+   "message": "sc.sc.line28_pre179: declared NonNegDollars but the expression does not prove non-negativity"
+  },
+  {
+   "line": "sc.loss_not_at_risk",
+   "message": "sc.sc.loss_not_at_risk: malformed expression"
+  },
+  {
+   "line": "sc.profit_pos",
+   "message": "sc.sc.profit_pos: declared NonNegDollars but the expression does not prove non-negativity"
+  },
+  {
+   "line": "sc.hi_screened",
+   "message": "sc.sc.hi_screened: malformed expression"
+  }
+ ],
+ "failures": [],
+ "family": "deepseek",
+ "form": "sc",
+ "lines": [
+  {
+   "candidate": "sc.rrta",
+   "handle": "sc.rrta",
+   "open_at_triage": true,
+   "project": "sc.rrta",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sc.line31_pre179",
+   "handle": "sc.line31_pre179",
+   "open_at_triage": true,
+   "project": "sc.line31_pre179",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sc.result",
+   "handle": "sc.result",
+   "open_at_triage": true,
+   "project": "sc.result",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sc.f6",
+   "handle": "sc.f6",
+   "open_at_triage": true,
+   "project": "sc.f6",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sc.f14",
+   "handle": "sc.f14",
+   "open_at_triage": true,
+   "project": "sc.f14",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sc.f17",
+   "handle": "sc.f17",
+   "open_at_triage": true,
+   "project": "sc.f17",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sc.f19_y3",
+   "handle": "sc.f19_y3",
+   "open_at_triage": true,
+   "project": "sc.f19_y3",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sc.f19_y5",
+   "handle": "sc.f19_y5",
+   "open_at_triage": true,
+   "project": "sc.f19_y5",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sc.f19_y7",
+   "handle": "sc.f19_y7",
+   "open_at_triage": true,
+   "project": "sc.f19_y7",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sc.f19_y10",
+   "handle": "sc.f19_y10",
+   "open_at_triage": true,
+   "project": "sc.f19_y10",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sc.f19_y15",
+   "handle": "sc.f19_y15",
+   "open_at_triage": true,
+   "project": "sc.f19_y15",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sc.f19_y20",
+   "handle": "sc.f19_y20",
+   "open_at_triage": true,
+   "project": "sc.f19_y20",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sc.f19_y15sl",
+   "handle": "sc.f19_y15sl",
+   "open_at_triage": true,
+   "project": "sc.f19_y15sl",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sc.f25",
+   "handle": "sc.f25",
+   "open_at_triage": true,
+   "project": "sc.f25",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sc.f26h",
+   "handle": "sc.f26h",
+   "open_at_triage": true,
+   "project": "sc.f26h",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sc.f28",
+   "handle": "sc.f28",
+   "open_at_triage": true,
+   "project": "sc.f28",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sc.f29",
+   "handle": "sc.f29",
+   "open_at_triage": true,
+   "project": "sc.f29",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sc.mq_q4",
+   "handle": "sc.mq_q4",
+   "open_at_triage": true,
+   "project": "sc.mq_q4",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sc.mq_total",
+   "handle": "sc.mq_total",
+   "open_at_triage": true,
+   "project": "sc.mq_total",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sc.cost179",
+   "handle": "sc.cost179",
+   "open_at_triage": true,
+   "project": "sc.cost179",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sc.profit_pos",
+   "handle": "sc.profit_pos",
+   "open_at_triage": true,
+   "project": "sc.profit_pos",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": null,
+   "handle": "3 (sc.line3)",
+   "open_at_triage": true,
+   "project": "sc.line3",
+   "status": "MISSING",
+   "triage": "missing"
+  },
+  {
+   "candidate": null,
+   "handle": "4 (sc.line4)",
+   "open_at_triage": true,
+   "project": "sc.line4",
+   "status": "MISSING",
+   "triage": "missing"
+  },
+  {
+   "candidate": null,
+   "handle": "5 (sc.line5)",
+   "open_at_triage": true,
+   "project": "sc.line5",
+   "status": "MISSING",
+   "triage": "missing"
+  },
+  {
+   "candidate": null,
+   "handle": "7 (sc.line7)",
+   "open_at_triage": true,
+   "project": "sc.line7",
+   "status": "MISSING",
+   "triage": "missing"
+  },
+  {
+   "candidate": null,
+   "handle": "9 (sc.line9)",
+   "open_at_triage": true,
+   "project": "sc.line9",
+   "status": "MISSING",
+   "triage": "missing"
+  },
+  {
+   "candidate": null,
+   "handle": "12 (sc.line12)",
+   "open_at_triage": true,
+   "project": "sc.line12",
+   "status": "MISSING",
+   "triage": "missing"
+  },
+  {
+   "candidate": null,
+   "handle": "13 (sc.line13)",
+   "open_at_triage": true,
+   "project": "sc.line13",
+   "status": "MISSING",
+   "triage": "missing"
+  },
+  {
+   "candidate": "sc.line28",
+   "handle": "28",
+   "open_at_triage": true,
+   "project": "sc.line28",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sc.line29",
+   "handle": "29",
+   "open_at_triage": true,
+   "project": "sc.line29",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sc.ho_line4",
+   "handle": "4 (sc.ho_line4)",
+   "open_at_triage": true,
+   "project": "sc.ho_line4",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sc.ho_line5",
+   "handle": "5 (sc.ho_line5)",
+   "open_at_triage": true,
+   "project": "sc.ho_line5",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sc.line30",
+   "handle": "30",
+   "open_at_triage": true,
+   "project": "sc.line30",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sc.s179_allowed",
+   "handle": "12 (sc.s179_allowed)",
+   "open_at_triage": true,
+   "project": "sc.s179_allowed",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sc.f7206_line4",
+   "handle": "4 (sc.f7206_line4)",
+   "open_at_triage": true,
+   "project": "sc.f7206_line4",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sc.f7206_line7",
+   "handle": "7 (sc.f7206_line7)",
+   "open_at_triage": true,
+   "project": "sc.f7206_line7",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sc.f7206_line8",
+   "handle": "8 (sc.f7206_line8)",
+   "open_at_triage": true,
+   "project": "sc.f7206_line8",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sc.f7206_line9",
+   "handle": "9 (sc.f7206_line9)",
+   "open_at_triage": true,
+   "project": "sc.f7206_line9",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sc.f7206_line10",
+   "handle": "10 (sc.f7206_line10)",
+   "open_at_triage": true,
+   "project": "sc.f7206_line10",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sc.f7206_line14",
+   "handle": "14 (sc.f7206_line14)",
+   "open_at_triage": true,
+   "project": "sc.f7206_line14",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "sc.qbi",
+   "handle": "1(c)",
+   "open_at_triage": true,
+   "project": "sc.qbi",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  }
+ ],
+ "log_sha256_at_triage": "c3d9960659f496cafdc3024308e7d9a22af2aa6cf0aae7b53ac83a62ac4852c3",
+ "policy": "executable-triage-v1",
+ "response_sha256": "ceca77bee1c37ab8d80b69c96411e9ea3839c6607d8ea7ec7cca80e20cb9a895",
+ "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
+ "state": "invalid",
+ "subject_sha256": "f2becc16c3eeae8f68992cc2f01efbff5b42801963cbe3b20f870db4d59276b6"
+}
