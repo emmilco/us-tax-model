@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
-"""Run generated cases through PolicyEngine-US, Tax-Calculator and OpenTaxSolver.
+"""Run generated cases through PolicyEngine-US, Tax-Calculator, OpenTaxSolver and UsTaxes.
 
 Runs under the virtualenv created by tools/engines/setup.sh; nothing else in
 the repository imports these engines. Each adapter maps the case's economic
 facts (not the project's computed lines) onto the engine's inputs and reads
 back the engine's federal lines in integer cents. OpenTaxSolver's adapter is
 the sibling module ots_adapter.py (text input files through the C programs
-built under .engines/opentaxsolver-src/); it is left out, visibly, when that
-package is not built.
+built under .engines/opentaxsolver-src/); UsTaxes' is ustaxes_adapter.py (one Node
+process over the TypeScript clone in .engines/ustaxes-src/). Each is left out,
+visibly, when its package is not installed.
 
 Output: { "engines": { name: { "version", "precision", "lines": { case_id: { line: cents } },
           "limitations": [ { feature, lines, reason } ],
@@ -39,6 +40,7 @@ from taxyear import YEAR  # noqa: E402
 sys.path.pop(0)
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import ots_adapter  # noqa: E402
+import ustaxes_adapter  # noqa: E402
 sys.path.pop(0)
 warnings.filterwarnings("ignore")
 
@@ -454,6 +456,11 @@ def main():
         print("OpenTaxSolver: SKIPPED - package not built under .engines/opentaxsolver-src/ (see tools/engines/README.md)")
     else:
         out["engines"][ots_adapter.ENGINE_NAME] = ots
+    ust = ustaxes_adapter.run_ustaxes(cases, YEAR, Path(a.out).resolve().parent / "ustaxes")
+    if ust is None:
+        print("UsTaxes: SKIPPED - clone or runtime packages missing under .engines/ustaxes-src, .engines/ustaxes-deps (see tools/engines/README.md)")
+    else:
+        out["engines"][ustaxes_adapter.ENGINE_NAME] = ust
     json.dump(out, open(a.out, "w"))
     print(f"engines ran {len(cases)} cases -> {a.out}")
 

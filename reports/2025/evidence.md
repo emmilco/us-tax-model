@@ -1,6 +1,6 @@
 # Evidence coverage per line
 
-**Scoreboard.** Share of computed lines with at least one outside-family assertion: 208 of 1532 (13.6%). H (human source reading): 0, B (human worked values): 0, second-family M: 57, E: 162.
+**Scoreboard.** Share of computed lines with at least one outside-family assertion: 243 of 1532 (15.9%). H (human source reading): 0, B (human worked values): 0, second-family M: 57, E: 201.
 
 A computed line is one whose atom is not `input`, `param` or `copy`. An outside-family assertion is a signed human source reading (H), a class B fixture (human worked values), a class M fixture whose recorded model is not a Claude model (second-family M), or an engine assertion (E) under the rule below. The sub-counts overlap: a line with several kinds counts once in the share. H checks the encoded rule against IRS text; B and M check worked values. Second-family transcription and render readings are reported separately in second_family.md and do not yet enter this scoreboard. Class A, Claude-family M, C and R do not move it.
 
@@ -8,11 +8,11 @@ H — a MATCH verdict and a reason in the reader's own words, with a current per
 
 Optional human readings pending or ineligible (no H credit; original findings retained): f1040: f1040.line12e: the reading or a dependency changed; fresh reading required for H credit; person: person.age65: the reading or a dependency changed; fresh reading required for H credit; sa: sa.standardbase: the reading or a dependency changed; fresh reading required for H credit; sa: sa.extra: the reading or a dependency changed; fresh reading required for H credit; sa: sa.extra: the recorded reading differs from the packet; sa: sa.extra: MISMATCH; no H credit; finding retained for investigation; sa: sa.boxes_age65: the reading or a dependency changed; fresh reading required for H credit; sa: sa.boxes_blind: the reading or a dependency changed; fresh reading required for H credit; sa: sa.extra_age65: the reading or a dependency changed; fresh reading required for H credit; sa: sa.extra_age65: the recorded reading differs from the packet; sa: sa.extra_age65: MISMATCH; no H credit; finding retained for investigation; sa: sa.extra_blind: the reading or a dependency changed; fresh reading required for H credit; sa: sa.extra_blind: the recorded reading differs from the packet; sa: sa.extra_blind: MISMATCH; no H credit; finding retained for investigation; sa: sa.standardraw: the reading or a dependency changed; fresh reading required for H credit; sa: sa.standardraw: the recorded reading differs from the packet; sa: sa.standardraw: UNCLEAR; no H credit; finding retained for investigation; sa: sa.mfs: the reading or a dependency changed; fresh reading required for H credit; sa: sa.mfs_spouse_itemizes: the reading or a dependency changed; fresh reading required for H credit; sa: sa.standard: the reading or a dependency changed; fresh reading required for H credit; sa: sa.itemizes: the reading or a dependency changed; fresh reading required for H credit; sa: sa.deduction: the reading or a dependency changed; fresh reading required for H credit.
 
-Fixtures that assert each line, by evidence class, as a count of cases (ids listed when two or fewer). A — official IRS worked example, cited. B — human hand-work recorded with the worker and the document revision; none yet. C — a named, versioned calculator or engine record in fixtures/2025/differential/ (spec 6.1); none yet. M — isolated model hand-work with the model, prompt hash and snapshot recorded (fixtures/2025/classm.json, reviews/2025/classm/); second-family M fixtures are those whose recorded model does not start with "claude". E — the engine differential (tools/engines; reports/2025/engine_differential.md and .json): PolicyEngine-US (PE) and Tax-Calculator (TC) run over 1700 generated returns. A line gets an E assertion only when, for at least one engine, the engine computes the line rather than taking it whole as an input, the project value was nonzero on at least 50 compared returns, and fewer than half of the nonzero returns the engine reached (compared plus excluded) were excluded under an engine limitation; the cell prints each engine's compared, nonzero and excluded counts, and an engine that falls short of the rule is marked "below rule" and asserts nothing. R — recorded regression from the project's own evaluator, no class claimed; agreement with the Lean reference evaluator (reports/2025/evaluator_agreement.md) is evaluator agreement over the same data, not an independent engine, and earns no class.
+Fixtures that assert each line, by evidence class, as a count of cases (ids listed when two or fewer). A — official IRS worked example, cited. B — human hand-work recorded with the worker and the document revision; none yet. C — a named, versioned calculator or engine record in fixtures/2025/differential/ (spec 6.1); none yet. M — isolated model hand-work with the model, prompt hash and snapshot recorded (fixtures/2025/classm.json, reviews/2025/classm/); second-family M fixtures are those whose recorded model does not start with "claude". E — the engine differential (tools/engines; reports/2025/engine_differential.md and .json): PolicyEngine-US (PE), Tax-Calculator (TC), OpenTaxSolver, UsTaxes run over 1700 generated returns. A line gets an E assertion only when, for at least one engine, the engine computes the line rather than taking it whole as an input, the project value was nonzero on at least 50 compared returns, and fewer than half of the nonzero returns the engine reached (compared plus excluded) were excluded under an engine limitation; the cell prints each engine's compared, nonzero and excluded counts, and an engine that falls short of the rule is marked "below rule" and asserts nothing. R — recorded regression from the project's own evaluator, no class claimed; agreement with the Lean reference evaluator (reports/2025/evaluator_agreement.md) is evaluator agreement over the same data, not an independent engine, and earns no class.
 
-An outside-family assertion (B, second-family M or E) on a line whose atom is `copy` also credits the first line along its copy chain whose atom is not `copy`, because a copy's value equals its source's exactly, so agreement on the copy is agreement on the source; the table marks each such credit "via <copy line>" (the chain walked, when longer than one copy), the copy line keeps its own cell, and the sub-counts above include credited lines. In this report 74 assertions are credited through copies (B cases: 0; second-family M cases: 37; engine-line assertions: 37); 2 assertions on 2 copy lines could not be resolved statically and stay on the copy line only (qdcg.line22, qdcg.line24).
+An outside-family assertion (B, second-family M or E) on a line whose atom is `copy` also credits the first line along its copy chain whose atom is not `copy`, because a copy's value equals its source's exactly, so agreement on the copy is agreement on the source; the table marks each such credit "via <copy line>" (the chain walked, when longer than one copy), the copy line keeps its own cell, and the sub-counts above include credited lines. In this report 83 assertions are credited through copies (B cases: 0; second-family M cases: 37; engine-line assertions: 46); 4 assertions on 2 copy lines could not be resolved statically and stay on the copy line only (qdcg.line22, qdcg.line24).
 
-Engine ids with no line of their own (never an E assertion): f1040.tax_before_credits (PE), f1040.tax_before_credits (TC), f1040.tax_before_credits (OpenTaxSolver). Mapped lines taken whole from the generator's facts: none. Components of compared lines that enter the engine as generator facts rather than the engine's own form arithmetic (the line still counts as engine-computed; the component does not): PolicyEngine-US f1040.line10: the HSA deduction (Form 8889 line 13) enters as the generator's health_savings_account_ald; the engine computes the educator, half-of-self-employment-tax, IRA and student loan interest components and the sum; Tax-Calculator f1040.line10: the HSA deduction (e03290), the educator expenses deduction (e03220) and the IRA contributions (e03150) enter as the generator's amounts; the engine computes the half-of-self-employment-tax component and the sum (returns with student loan interest, or an IRA deduction phased out by modified AGI, are excluded); Tax-Calculator f1040.line20: the foreign tax paid (e07300) is a supplied amount; the engine computes the credit limit; Tax-Calculator f1040.line19: the Form 5695 credits before their limits (e07260) enter as the generator's amounts figured from the costs; the engine subtracts them in Credit Limit Worksheet A; Tax-Calculator f1040.line24: the Form 5695 credits before their limits (e07260) enter as the generator's amounts figured from the costs; the engine applies the tax limit; returns with a saver's credit are excluded; OpenTaxSolver person[taxpayer].f8889[hsa].line12: Form 8889 line 3 (the contribution limit) is supplied as $4,300 or $8,550 from the coverage facts and line 7 as $1,000 for age 55; the program does not compute the line 3 limitation chart; it computes lines 5 to 13; OpenTaxSolver person[taxpayer].f8889[hsa].line13: Form 8889 line 3 (the contribution limit) is supplied as $4,300 or $8,550 from the coverage facts and line 7 as $1,000 for age 55; the program computes lines 5 to 13; OpenTaxSolver f1040.line10: Schedule 1 line 11 (educator expenses after the $300 limit) and line 20 (the IRA deduction) enter as the generator's amounts; lines 13 and 15 come from the engine's own Form 8889 and Schedule SE runs; line 21 is the engine's student loan worksheet; OpenTaxSolver f1040.line20: Schedule 3 line 1 (the foreign tax credit) is the smaller of the creditable foreign tax and the engine's own line 16, figured by the adapter; OpenTaxSolver f8960.line17: Form 8960 line 13 (modified AGI) and line 5a (net gain) are the engine's own Form 1040 lines 11a and 7a; line 9a is the investment interest when the engine itemized; lines 8, 11, 12 and 15 to 17 are the program's; OpenTaxSolver f8995.line15: Form 8995 line 12 (net capital gain plus qualified dividends) is figured from the facts; line 1 column (c) is the program's own Schedule C line 31 less Schedule 1 lines 15 to 17 from its Form 1040 output; line 11 is its Form 1040 lines 11a less 12 less 13b; OpenTaxSolver s8812.line14: Schedule 8812 line 13 (Credit Limit Worksheet A) is the engine's own Form 1040 line 18 less Schedule 3 lines 1 and 2, figured by the adapter; OpenTaxSolver s8812.line27: Schedule 8812 line 18a (earned income) is the engine's own Form 1040 line 1z plus Schedule SE line 3 (profit or loss) less line 13, not below zero, and line 13 the adapter's Credit Limit Worksheet A; lines 21 (boxes 4 and 6), 22 (Schedule 1 line 15) and 24 (zero: no EIC, no excess social security) are supplied; OpenTaxSolver f2441.line11: Form 2441 line 4 (earned income) is the engine's own Form 1040 line 1z less the spouse's wages, plus its Schedule SE lines 3 less 13 by file import; line 10 is its own Form 1040 line 18 less Schedule 3 line 1; OpenTaxSolver sd.line19: Schedule D line 19 is supplied as Form 1099-DIV box 2b; the program takes the Unrecaptured Section 1250 Gain Worksheet result as an input; OpenTaxSolver f8959.line18: Form 8959 line 8 (self-employment income) is the engine's own Schedule SE line 6.
+Engine ids with no line of their own (never an E assertion): f1040.tax_before_credits (PE), f1040.tax_before_credits (TC), f1040.tax_before_credits (OpenTaxSolver), f1040.tax_before_credits (UsTaxes). Mapped lines taken whole from the generator's facts: none. Components of compared lines that enter the engine as generator facts rather than the engine's own form arithmetic (the line still counts as engine-computed; the component does not): PolicyEngine-US f1040.line10: the HSA deduction (Form 8889 line 13) enters as the generator's health_savings_account_ald; the engine computes the educator, half-of-self-employment-tax, IRA and student loan interest components and the sum; Tax-Calculator f1040.line10: the HSA deduction (e03290), the educator expenses deduction (e03220) and the IRA contributions (e03150) enter as the generator's amounts; the engine computes the half-of-self-employment-tax component and the sum (returns with student loan interest, or an IRA deduction phased out by modified AGI, are excluded); Tax-Calculator f1040.line20: the foreign tax paid (e07300) is a supplied amount; the engine computes the credit limit; Tax-Calculator f1040.line19: the Form 5695 credits before their limits (e07260) enter as the generator's amounts figured from the costs; the engine subtracts them in Credit Limit Worksheet A; Tax-Calculator f1040.line24: the Form 5695 credits before their limits (e07260) enter as the generator's amounts figured from the costs; the engine applies the tax limit; returns with a saver's credit are excluded; OpenTaxSolver person[taxpayer].f8889[hsa].line12: Form 8889 line 3 (the contribution limit) is supplied as $4,300 or $8,550 from the coverage facts and line 7 as $1,000 for age 55; the program does not compute the line 3 limitation chart; it computes lines 5 to 13; OpenTaxSolver person[taxpayer].f8889[hsa].line13: Form 8889 line 3 (the contribution limit) is supplied as $4,300 or $8,550 from the coverage facts and line 7 as $1,000 for age 55; the program computes lines 5 to 13; OpenTaxSolver f1040.line10: Schedule 1 line 11 (educator expenses after the $300 limit) and line 20 (the IRA deduction) enter as the generator's amounts; lines 13 and 15 come from the engine's own Form 8889 and Schedule SE runs; line 21 is the engine's student loan worksheet; OpenTaxSolver f1040.line20: Schedule 3 line 1 (the foreign tax credit) is the smaller of the creditable foreign tax and the engine's own line 16, figured by the adapter; OpenTaxSolver f8960.line17: Form 8960 line 13 (modified AGI) and line 5a (net gain) are the engine's own Form 1040 lines 11a and 7a; line 9a is the investment interest when the engine itemized; lines 8, 11, 12 and 15 to 17 are the program's; OpenTaxSolver f8995.line15: Form 8995 line 12 (net capital gain plus qualified dividends) is figured from the facts; line 1 column (c) is the program's own Schedule C line 31 less Schedule 1 lines 15 to 17 from its Form 1040 output; line 11 is its Form 1040 lines 11a less 12 less 13b; OpenTaxSolver s8812.line14: Schedule 8812 line 13 (Credit Limit Worksheet A) is the engine's own Form 1040 line 18 less Schedule 3 lines 1 and 2, figured by the adapter; OpenTaxSolver s8812.line27: Schedule 8812 line 18a (earned income) is the engine's own Form 1040 line 1z plus Schedule SE line 3 (profit or loss) less line 13, not below zero, and line 13 the adapter's Credit Limit Worksheet A; lines 21 (boxes 4 and 6), 22 (Schedule 1 line 15) and 24 (zero: no EIC, no excess social security) are supplied; OpenTaxSolver f2441.line11: Form 2441 line 4 (earned income) is the engine's own Form 1040 line 1z less the spouse's wages, plus its Schedule SE lines 3 less 13 by file import; line 10 is its own Form 1040 line 18 less Schedule 3 line 1; OpenTaxSolver sd.line19: Schedule D line 19 is supplied as Form 1099-DIV box 2b; the program takes the Unrecaptured Section 1250 Gain Worksheet result as an input; OpenTaxSolver f8959.line18: Form 8959 line 8 (self-employment income) is the engine's own Schedule SE line 6; UsTaxes f1040.line10: Schedule 1 line 19a (UsTaxes' slot for the IRA deduction, `otherIncome.iraDeduction`) enters as the generator's contributions and the educator expenses as paid (the engine applies the $300 limit); lines 13 and 21 are the engine's own Form 8889 and student loan interest worksheet; UsTaxes s1.line26: Schedule 1 line 19a (the IRA deduction) enters as the generator's contributions; the engine computes the other adjustments and the sum; UsTaxes f1040.line20: Schedule 3 line 1 (the foreign tax credit) enters as the foreign tax paid; returns where the tax limits it are excluded; UsTaxes f1040.line24: Schedule 3 line 1 (the foreign tax credit) enters as the foreign tax paid, and Form 5695 Part II as the generator's credit; returns with either limited, or with any Schedule 3 credit, are excluded after the credits; UsTaxes sd.line16: the sales enter as Form 8949 rows (UsTaxes' Asset list, all on boxes C and F); the engine computes the gains, the wash-sale adjustments and Schedule D's totals.
 
 ## Form 4562 — one item of depreciable property (other than a vehicle) of a business
 
@@ -334,9 +334,9 @@ Unasserted lines: eic.age_range_count, eic.zero, eic.qc_count, eic.married_rules
 | line | A | B | C | M | H | E | R |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | f1040.status | 1 (example.official) | — | — | — | — | — | 58 |
-| f1040.line1a | — | — | — | 5 | — | — | 25 |
+| f1040.line1a | — | — | — | 5 | — | UsTaxes: 1400 compared (1400 nonzero), 300 excluded | 25 |
 | f1040.line1e | — | — | — | 5 | — | — | 16 |
-| f1040.line1z | — | — | — | 5 | — | OpenTaxSolver: 1700 compared (1700 nonzero), 0 excluded | 31 |
+| f1040.line1z | — | — | — | 5 | — | OpenTaxSolver: 1700 compared (1700 nonzero), 0 excluded; UsTaxes: 1400 compared (1400 nonzero), 300 excluded | 31 |
 | f1040.tax_exempt_interest | — | — | — | — | — | — | — |
 | f1040.line2a | — | — | — | 5 | — | — | 1 (stage10.ss.exempt_interest_dividends) |
 | f1040.line2b | — | — | — | 5 | — | — | 5 |
@@ -351,51 +351,51 @@ Unasserted lines: eic.age_range_count, eic.zero, eic.qc_count, eic.married_rules
 | f1040.plan_rollovers | — | — | — | — | — | — | — |
 | f1040.line5c_rollover | — | — | — | 5 | — | — | 5 |
 | f1040.line6a | — | — | — | 5 | — | — | 2 (stage10.ss.top, stage16.ira.i10) |
-| f1040.line6b | — | — | — | 5 | — | PE: 1668 compared (472 nonzero), 17 excluded; TC: 1370 compared (414 nonzero), 330 excluded; OpenTaxSolver: 1591 compared (472 nonzero), 109 excluded | 17 |
+| f1040.line6b | — | — | — | 5 | — | PE: 1668 compared (472 nonzero), 17 excluded; TC: 1370 compared (414 nonzero), 330 excluded; OpenTaxSolver: 1591 compared (472 nonzero), 109 excluded; UsTaxes: 1154 compared (297 nonzero), 546 excluded | 17 |
 | f1040.line6c | — | — | — | 5 | — | — | 1 (stage10.refuse.lump_sum) |
 | f1040.line6d | — | — | — | 5 | — | — | 2 (stage10.ss.mfs_together, stage10.ss.mfs_apart) |
-| f1040.line7a | 1 (example.official) | — | — | 5 | — | OpenTaxSolver: 1700 compared (1354 nonzero), 0 excluded | 120 |
-| f1040.line8 | — | — | — | 5 | — | OpenTaxSolver: 1700 compared (576 nonzero), 0 excluded | 51 |
-| f1040.line9 | — | — | — | 5 | — | OpenTaxSolver: 1591 compared (1591 nonzero), 109 excluded | 22 |
-| f1040.line10 | — | — | — | 5 | — | PE: 1642 compared (977 nonzero), 17 excluded; TC: 1370 compared (771 nonzero), 330 excluded; OpenTaxSolver: 1591 compared (957 nonzero), 109 excluded | 41 |
-| f1040.line11a | — | — | — | 5; via f2441.line7: 3 | — | E via f1040.line11b (PE, TC, OpenTaxSolver); E via f2441.line7 (OpenTaxSolver) | 144 |
-| f1040.line11b | — | — | — | 5 | — | PE: 1642 compared (1642 nonzero), 17 excluded; TC: 1370 compared (1370 nonzero), 330 excluded; OpenTaxSolver: 1591 compared (1591 nonzero), 109 excluded | 38 |
-| f1040.line12e | — | — | — | 5 | — | OpenTaxSolver: 1496 compared (1496 nonzero), 204 excluded | 55 |
-| f1040.line13a | — | — | — | 5 | — | PE: 1511 compared (385 nonzero), 118 excluded; TC below rule: 1049 compared (134 nonzero), 633 excluded; OpenTaxSolver: 393 compared (333 nonzero), 124 excluded | 7 |
-| f1040.line13b | — | — | — | 5 | — | PE: 1539 compared (515 nonzero), 140 excluded; TC: 1370 compared (493 nonzero), 330 excluded; OpenTaxSolver: 1439 compared (448 nonzero), 261 excluded | 13 |
-| f1040.line14 | — | — | — | 5 | — | OpenTaxSolver: 1252 compared (1252 nonzero), 448 excluded | 22 |
-| f1040.line15 | 1 (example.official) | — | — | 5 | — | PE: 1405 compared (1233 nonzero), 235 excluded; TC: 902 compared (902 nonzero), 798 excluded; OpenTaxSolver: 1252 compared (1100 nonzero), 448 excluded; E via qdcg.line1 (OpenTaxSolver); E via sdtw.line1 (OpenTaxSolver) | 139 |
+| f1040.line7a | 1 (example.official) | — | — | 5 | — | OpenTaxSolver: 1700 compared (1354 nonzero), 0 excluded; UsTaxes: 1400 compared (1108 nonzero), 300 excluded | 120 |
+| f1040.line8 | — | — | — | 5 | — | OpenTaxSolver: 1700 compared (576 nonzero), 0 excluded; UsTaxes below rule: 1400 compared (280 nonzero), 300 excluded | 51 |
+| f1040.line9 | — | — | — | 5 | — | OpenTaxSolver: 1591 compared (1591 nonzero), 109 excluded; UsTaxes: 1154 compared (1154 nonzero), 546 excluded; E via sli.line2 (UsTaxes) | 22 |
+| f1040.line10 | — | — | — | 5 | — | PE: 1642 compared (977 nonzero), 17 excluded; TC: 1370 compared (771 nonzero), 330 excluded; OpenTaxSolver: 1591 compared (957 nonzero), 109 excluded; UsTaxes: 1154 compared (588 nonzero), 546 excluded | 41 |
+| f1040.line11a | — | — | — | 5; via f2441.line7: 3 | — | UsTaxes: 1154 compared (1154 nonzero), 546 excluded; E via f1040.line11b (PE, TC, OpenTaxSolver, UsTaxes); E via f2441.line7 (OpenTaxSolver) | 144 |
+| f1040.line11b | — | — | — | 5 | — | PE: 1642 compared (1642 nonzero), 17 excluded; TC: 1370 compared (1370 nonzero), 330 excluded; OpenTaxSolver: 1591 compared (1591 nonzero), 109 excluded; UsTaxes: 1154 compared (1154 nonzero), 546 excluded | 38 |
+| f1040.line12e | — | — | — | 5 | — | OpenTaxSolver: 1496 compared (1496 nonzero), 204 excluded; UsTaxes: 1072 compared (1072 nonzero), 628 excluded | 55 |
+| f1040.line13a | — | — | — | 5 | — | PE: 1511 compared (385 nonzero), 118 excluded; TC below rule: 1049 compared (134 nonzero), 633 excluded; OpenTaxSolver: 393 compared (333 nonzero), 124 excluded; UsTaxes below rule: 830 compared (0 nonzero), 870 excluded | 7 |
+| f1040.line13b | — | — | — | 5 | — | PE: 1539 compared (515 nonzero), 140 excluded; TC: 1370 compared (493 nonzero), 330 excluded; OpenTaxSolver: 1439 compared (448 nonzero), 261 excluded; UsTaxes below rule: 830 compared (245 nonzero), 870 excluded | 13 |
+| f1040.line14 | — | — | — | 5 | — | OpenTaxSolver: 1252 compared (1252 nonzero), 448 excluded; UsTaxes: 830 compared (830 nonzero), 870 excluded | 22 |
+| f1040.line15 | 1 (example.official) | — | — | 5 | — | PE: 1405 compared (1233 nonzero), 235 excluded; TC: 902 compared (902 nonzero), 798 excluded; OpenTaxSolver: 1252 compared (1100 nonzero), 448 excluded; UsTaxes: 830 compared (729 nonzero), 870 excluded; E via qdcg.line1 (OpenTaxSolver, UsTaxes); E via sdtw.line1 (OpenTaxSolver) | 139 |
 | f1040.gate.qdcg_applies | 1 (example.official) | — | — | — | — | — | 65 |
 | f1040.gate.sdtw | — | — | — | — | — | — | 5 |
 | f1040.non_sdtw_tax | — | — | — | — | — | — | 2 (stage4.sdtw.special_rates, stage4.sdtw.skip22) |
-| f1040.line16 | 1 (example.official) | — | — | 5 | — | PE: 1372 compared (1183 nonzero), 268 excluded; TC: 918 compared (789 nonzero), 765 excluded; OpenTaxSolver: 1091 compared (936 nonzero), 609 excluded | 142 |
-| f1040.line17 | — | — | — | 5 | — | OpenTaxSolver below rule: 1590 compared (0 nonzero), 110 excluded | 5 |
-| f1040.line18 | — | — | — | 5; via f2441.clw1: 3 | — | OpenTaxSolver: 1091 compared (936 nonzero), 609 excluded | 135 |
-| f1040.line19 | — | — | — | 5 | — | PE: 966 compared (426 nonzero), 691 excluded; TC: 706 compared (370 nonzero), 994 excluded; OpenTaxSolver: 463 compared (385 nonzero), 507 excluded | 62 |
-| f1040.line20 | — | — | — | 5 | — | TC: 928 compared (426 nonzero), 765 excluded; OpenTaxSolver below rule: 826 compared (271 nonzero), 874 excluded | 3 |
-| f1040.line21 | — | — | — | 5 | — | OpenTaxSolver below rule: 826 compared (473 nonzero), 874 excluded | 4 |
-| f1040.line22 | — | — | — | 5 | — | OpenTaxSolver: 826 compared (600 nonzero), 874 excluded | 6 |
-| f1040.line23 | — | — | — | 5 | — | OpenTaxSolver: 1499 compared (380 nonzero), 201 excluded | 15 |
-| f1040.line24 | — | — | — | 5 | — | TC: 849 compared (625 nonzero), 834 excluded; OpenTaxSolver: 826 compared (629 nonzero), 874 excluded | 6 |
-| f1040.line25a | — | — | — | 5 | — | — | 3 |
+| f1040.line16 | 1 (example.official) | — | — | 5 | — | PE: 1372 compared (1183 nonzero), 268 excluded; TC: 918 compared (789 nonzero), 765 excluded; OpenTaxSolver: 1091 compared (936 nonzero), 609 excluded; UsTaxes below rule: 725 compared (625 nonzero), 975 excluded | 142 |
+| f1040.line17 | — | — | — | 5 | — | OpenTaxSolver below rule: 1590 compared (0 nonzero), 110 excluded; UsTaxes below rule: 725 compared (0 nonzero), 975 excluded | 5 |
+| f1040.line18 | — | — | — | 5; via f2441.clw1: 3 | — | OpenTaxSolver: 1091 compared (936 nonzero), 609 excluded; UsTaxes below rule: 725 compared (625 nonzero), 975 excluded | 135 |
+| f1040.line19 | — | — | — | 5 | — | PE: 966 compared (426 nonzero), 691 excluded; TC: 706 compared (370 nonzero), 994 excluded; OpenTaxSolver: 463 compared (385 nonzero), 507 excluded; UsTaxes below rule: 444 compared (172 nonzero), 1256 excluded | 62 |
+| f1040.line20 | — | — | — | 5 | — | TC: 928 compared (426 nonzero), 765 excluded; OpenTaxSolver below rule: 826 compared (271 nonzero), 874 excluded; UsTaxes below rule: 444 compared (95 nonzero), 1256 excluded | 3 |
+| f1040.line21 | — | — | — | 5 | — | OpenTaxSolver below rule: 826 compared (473 nonzero), 874 excluded; UsTaxes below rule: 444 compared (224 nonzero), 1256 excluded | 4 |
+| f1040.line22 | — | — | — | 5 | — | OpenTaxSolver: 826 compared (600 nonzero), 874 excluded; UsTaxes below rule: 444 compared (360 nonzero), 1256 excluded | 6 |
+| f1040.line23 | — | — | — | 5 | — | OpenTaxSolver: 1499 compared (380 nonzero), 201 excluded; UsTaxes below rule: 1046 compared (112 nonzero), 654 excluded | 15 |
+| f1040.line24 | — | — | — | 5 | — | TC: 849 compared (625 nonzero), 834 excluded; OpenTaxSolver: 826 compared (629 nonzero), 874 excluded; UsTaxes below rule: 433 compared (349 nonzero), 1267 excluded | 6 |
+| f1040.line25a | — | — | — | 5 | — | UsTaxes: 1400 compared (1400 nonzero), 300 excluded | 3 |
 | f1040.line25b | — | — | — | — | — | — | 3 |
 | f1040.line25c | — | — | — | — | — | — | 3 |
-| f1040.line25d | — | — | — | 5 | — | OpenTaxSolver: 1700 compared (1700 nonzero), 0 excluded | 3 |
+| f1040.line25d | — | — | — | 5 | — | OpenTaxSolver: 1700 compared (1700 nonzero), 0 excluded; UsTaxes: 1198 compared (1198 nonzero), 502 excluded | 3 |
 | f1040.line26 | — | — | — | — | — | — | 3 |
-| f1040.line27a | — | — | — | 5 | — | PE: 1642 compared (283 nonzero), 17 excluded; TC: 1370 compared (239 nonzero), 330 excluded | 77 |
+| f1040.line27a | — | — | — | 5 | — | PE: 1642 compared (283 nonzero), 17 excluded; TC: 1370 compared (239 nonzero), 330 excluded; UsTaxes below rule: 899 compared (0 nonzero), 801 excluded | 77 |
 | f1040.line27b | — | — | — | 5 | — | — | 2 (stage9.eic.no_child.4000, stage9.eic.refuse.clergy_schedule1) |
 | f1040.line27c | — | — | — | 5 | — | — | 12 |
 | f1040.separated_spouses | — | — | — | 5 | — | — | 4 |
-| f1040.line28 | — | — | — | 5 | — | PE: 966 compared (222 nonzero), 691 excluded; TC below rule: 706 compared (89 nonzero), 994 excluded; OpenTaxSolver below rule: 292 compared (49 nonzero), 678 excluded | 31 |
+| f1040.line28 | — | — | — | 5 | — | PE: 966 compared (222 nonzero), 691 excluded; TC below rule: 706 compared (89 nonzero), 994 excluded; OpenTaxSolver below rule: 292 compared (49 nonzero), 678 excluded; UsTaxes below rule: 286 compared (11 nonzero), 1414 excluded | 31 |
 | f1040.line29 | — | — | — | 5 | — | — | 4 |
 | f1040.line30 | — | — | — | 5 | — | — | 4 |
 | f1040.line31 | — | — | — | 5 | — | — | 24 |
-| f1040.line32 | — | — | — | 5 | — | OpenTaxSolver below rule: 612 compared (49 nonzero), 1088 excluded | 4 |
-| f1040.line33 | — | — | — | 5 | — | OpenTaxSolver below rule: 612 compared (612 nonzero), 1088 excluded | 19 |
-| f1040.line34 | — | — | — | 4 | — | OpenTaxSolver below rule: 612 compared (428 nonzero), 1088 excluded | 42 |
+| f1040.line32 | — | — | — | 5 | — | OpenTaxSolver below rule: 612 compared (49 nonzero), 1088 excluded; UsTaxes below rule: 286 compared (25 nonzero), 1414 excluded | 4 |
+| f1040.line33 | — | — | — | 5 | — | OpenTaxSolver below rule: 612 compared (612 nonzero), 1088 excluded; UsTaxes below rule: 284 compared (284 nonzero), 1416 excluded | 19 |
+| f1040.line34 | — | — | — | 4 | — | OpenTaxSolver below rule: 612 compared (428 nonzero), 1088 excluded; UsTaxes below rule: 284 compared (203 nonzero), 1416 excluded | 42 |
 | f1040.line35a | — | — | — | — | — | — | 3 |
 | f1040.line36 | — | — | — | — | — | — | 3 |
-| f1040.line37 | — | — | — | 4 | — | OpenTaxSolver below rule: 612 compared (184 nonzero), 1088 excluded | 56 |
+| f1040.line37 | — | — | — | 4 | — | OpenTaxSolver below rule: 612 compared (184 nonzero), 1088 excluded; UsTaxes below rule: 284 compared (81 nonzero), 1416 excluded | 56 |
 
 Unasserted lines: f1040.ira_rollovers, f1040.plan_rollovers
 
@@ -788,9 +788,9 @@ Unasserted lines: f8880.zero, f8880.joint, f8880.dist_2025, f8880.prior_joint_su
 | f8889.line3_all_year | — | — | — | — | — | — | — |
 | f8889.line3_last_month | — | — | — | — | — | — | — |
 | f8889.line3_part_year | — | — | — | — | — | — | — |
-| f8889.line3 | — | — | — | 10 | — | — | 15 |
+| f8889.line3 | — | — | — | 10 | — | UsTaxes: 188 compared (188 nonzero), 33 excluded | 15 |
 | f8889.line4 | — | — | — | 10 | — | — | — |
-| f8889.line5 | — | — | — | 10 | — | — | — |
+| f8889.line5 | — | — | — | 10 | — | UsTaxes: 188 compared (188 nonzero), 33 excluded | — |
 | f8889.family_year | — | — | — | — | — | — | 1 (stage16.hsa.engineering.helper_arithmetic_and_boundary) |
 | f8889.family_dec_year | — | — | — | — | — | — | — |
 | f8889.family_counted | — | — | — | — | — | — | — |
@@ -815,7 +815,7 @@ Unasserted lines: f8880.zero, f8880.joint, f8880.dist_2025, f8880.prior_joint_su
 | f8889.step4 | — | — | — | — | — | — | 2 (stage13.hsa_part_year_family, stage13.hsa_last_month_spouses) |
 | f8889.line6_split | — | — | — | — | — | — | — |
 | f8889.split | — | — | — | — | — | — | — |
-| f8889.line6 | — | — | — | 9 | — | — | 10 |
+| f8889.line6 | — | — | — | 9 | — | UsTaxes below rule: 106 compared (106 nonzero), 115 excluded | 10 |
 | f8889.additional | — | — | — | — | — | — | — |
 | f8889.line7_year | — | — | — | — | — | — | — |
 | f8889.line7_counted | — | — | — | — | — | — | — |
@@ -823,13 +823,13 @@ Unasserted lines: f8880.zero, f8880.joint, f8880.dist_2025, f8880.prior_joint_su
 | f8889.line7_worksheet | — | — | — | — | — | — | — |
 | f8889.line7_applies | — | — | — | — | — | — | — |
 | f8889.line7 | — | — | — | 10 | — | — | 5 |
-| f8889.line8 | — | — | — | 9 | — | — | 4 |
+| f8889.line8 | — | — | — | 9 | — | UsTaxes: 113 compared (113 nonzero), 108 excluded | 4 |
 | f8889.line10 | — | — | — | 10 | — | — | — |
-| f8889.line11 | — | — | — | 10 | — | — | — |
-| f8889.line12 | — | — | — | 9 | — | OpenTaxSolver: 257 compared (257 nonzero), 0 excluded | 2 (stage11.hsa.self_full_year, stage11.hsa.employer) |
+| f8889.line11 | — | — | — | 10 | — | UsTaxes: 221 compared (104 nonzero), 0 excluded | — |
+| f8889.line12 | — | — | — | 9 | — | OpenTaxSolver: 257 compared (257 nonzero), 0 excluded; UsTaxes: 113 compared (113 nonzero), 108 excluded | 2 (stage11.hsa.self_full_year, stage11.hsa.employer) |
 | f8889.excess | — | — | — | — | — | — | — |
 | f8889.line13_figured | — | — | — | — | — | — | — |
-| f8889.line13 | — | — | — | 10 | — | OpenTaxSolver: 257 compared (257 nonzero), 0 excluded | 23 |
+| f8889.line13 | — | — | — | 10 | — | OpenTaxSolver: 257 compared (257 nonzero), 0 excluded; UsTaxes: 1316 compared (137 nonzero), 384 excluded | 23 |
 | f8889.line14a | — | — | — | — | — | — | 6 |
 | f8889.has_dist | — | — | — | — | — | — | — |
 | f8889.rollover | — | — | — | — | — | — | — |
@@ -857,16 +857,16 @@ Unasserted lines: f8889.one, f8889.any, f8889.mfs, f8889.twelve, f8889.age55_lin
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | f8959.unsupported | — | — | — | — | — | — | — |
 | f8959.zero | — | — | — | — | — | — | — |
-| f8959.line1 | — | — | — | 1 (classm.f8959.2) | — | — | 3 |
+| f8959.line1 | — | — | — | 1 (classm.f8959.2) | — | UsTaxes: 1400 compared (1400 nonzero), 300 excluded | 3 |
 | f8959.line2 | — | — | — | 1 (classm.f8959.2) | — | — | 2 (stage4.medicare.withholding, stage4.refuse.8959) |
 | f8959.line3 | — | — | — | 1 (classm.f8959.2) | — | — | 2 (stage4.medicare.withholding, stage4.refuse.8959) |
 | f8959.line8 | — | — | — | 1 (classm.f8959.2) | — | — | 5 |
 | f8959.line14 | — | — | — | 1 (classm.f8959.2) | — | — | 2 (stage4.medicare.withholding, stage4.refuse.8959) |
 | f8959.line23 | — | — | — | 1 (classm.f8959.2) | — | — | 2 (stage4.medicare.withholding, stage4.refuse.8959) |
-| f8959.line4 | — | — | — | 1 (classm.f8959.2) | — | — | 1 (stage4.medicare.withholding) |
+| f8959.line4 | — | — | — | 1 (classm.f8959.2) | — | UsTaxes: 1400 compared (1400 nonzero), 300 excluded | 1 (stage4.medicare.withholding) |
 | f8959.line5 | — | — | — | 1 (classm.f8959.2) | — | — | 2 (stage13.additional_medicare_joint, stage4.medicare.withholding) |
-| f8959.line6 | 1 (stage4.official.medicare_example5) | — | — | 1 (classm.f8959.2) | — | — | 17 |
-| f8959.line7 | — | — | — | 1 (classm.f8959.2) | — | OpenTaxSolver: 1700 compared (157 nonzero), 0 excluded | 4 |
+| f8959.line6 | 1 (stage4.official.medicare_example5) | — | — | 1 (classm.f8959.2) | — | UsTaxes: 1400 compared (138 nonzero), 300 excluded | 17 |
+| f8959.line7 | — | — | — | 1 (classm.f8959.2) | — | OpenTaxSolver: 1700 compared (157 nonzero), 0 excluded; UsTaxes: 1400 compared (138 nonzero), 300 excluded | 4 |
 | f8959.line9 | — | — | — | 1 (classm.f8959.2) | — | — | 1 (stage4.medicare.withholding) |
 | f8959.line10 | — | — | — | 1 (classm.f8959.2) | — | — | 1 (stage4.medicare.withholding) |
 | f8959.line11 | — | — | — | 1 (classm.f8959.2) | — | — | 1 (stage4.medicare.withholding) |
@@ -875,12 +875,12 @@ Unasserted lines: f8889.one, f8889.any, f8889.mfs, f8889.twelve, f8889.age55_lin
 | f8959.line15 | — | — | — | 1 (classm.f8959.2) | — | — | 1 (stage4.medicare.withholding) |
 | f8959.line16 | — | — | — | 1 (classm.f8959.2) | — | — | 2 (stage16.cleanup.f8959_line16_se_refused, stage4.medicare.withholding) |
 | f8959.line17 | — | — | — | 1 (classm.f8959.2) | — | OpenTaxSolver below rule: 1700 compared (0 nonzero), 0 excluded | 1 (stage4.medicare.withholding) |
-| f8959.line18 | — | — | — | 2 (classm.f8959.1, classm.f8959.2) | — | PE: 1683 compared (168 nonzero), 17 excluded; TC: 1370 compared (130 nonzero), 330 excluded; OpenTaxSolver: 1700 compared (168 nonzero), 0 excluded; OpenTaxSolver: 1700 compared (168 nonzero), 0 excluded | 20 |
-| f8959.line19 | — | — | — | 1 (classm.f8959.2) | — | — | 2 (stage4.medicare.withholding, stage4.refuse.8959) |
+| f8959.line18 | — | — | — | 2 (classm.f8959.1, classm.f8959.2) | — | PE: 1683 compared (168 nonzero), 17 excluded; TC: 1370 compared (130 nonzero), 330 excluded; OpenTaxSolver: 1700 compared (168 nonzero), 0 excluded; OpenTaxSolver: 1700 compared (168 nonzero), 0 excluded; UsTaxes: 1400 compared (138 nonzero), 300 excluded; UsTaxes: 1400 compared (138 nonzero), 300 excluded | 20 |
+| f8959.line19 | — | — | — | 1 (classm.f8959.2) | — | UsTaxes: 1400 compared (1400 nonzero), 300 excluded | 2 (stage4.medicare.withholding, stage4.refuse.8959) |
 | f8959.line20 | — | — | — | 1 (classm.f8959.2) | — | — | 1 (stage4.medicare.withholding) |
-| f8959.line21 | — | — | — | 1 (classm.f8959.2) | — | OpenTaxSolver: 1700 compared (1700 nonzero), 0 excluded | 1 (stage4.medicare.withholding) |
-| f8959.line22 | — | — | — | 1 (classm.f8959.2) | — | OpenTaxSolver: 1700 compared (231 nonzero), 0 excluded | 1 (stage4.medicare.withholding) |
-| f8959.line24 | — | — | — | 1 (classm.f8959.2) | — | OpenTaxSolver: 1700 compared (231 nonzero), 0 excluded | 4 |
+| f8959.line21 | — | — | — | 1 (classm.f8959.2) | — | OpenTaxSolver: 1700 compared (1700 nonzero), 0 excluded; UsTaxes: 1400 compared (1400 nonzero), 300 excluded | 1 (stage4.medicare.withholding) |
+| f8959.line22 | — | — | — | 1 (classm.f8959.2) | — | OpenTaxSolver: 1700 compared (231 nonzero), 0 excluded; UsTaxes: 1400 compared (202 nonzero), 300 excluded | 1 (stage4.medicare.withholding) |
+| f8959.line24 | — | — | — | 1 (classm.f8959.2) | — | OpenTaxSolver: 1700 compared (231 nonzero), 0 excluded; UsTaxes: 1400 compared (202 nonzero), 300 excluded | 4 |
 
 Unasserted lines: f8959.zero
 
@@ -906,17 +906,17 @@ Unasserted lines: f8959.zero
 | f8960.line4c | — | — | — | 2 (classm.f8960.1, classm.f8960.2) | — | — | — |
 | f8960.line5a | — | — | — | 2 (classm.f8960.1, classm.f8960.2) | — | — | 1 (stage4.niit.loss_floor) |
 | f8960.line5d | — | — | — | 2 (classm.f8960.1, classm.f8960.2) | — | — | — |
-| f8960.line8 | — | — | — | 2 (classm.f8960.1, classm.f8960.2) | — | OpenTaxSolver: 1700 compared (1668 nonzero), 0 excluded | 2 (stage4.niit.allocated, stage4.additional_taxes.combined) |
-| f8960.line9a | — | — | — | 2 (classm.f8960.1, classm.f8960.2) | — | — | 3 |
-| f8960.line9b | — | — | — | 2 (classm.f8960.1, classm.f8960.2) | — | — | 3 |
-| f8960.line9d | — | — | — | 2 (classm.f8960.1, classm.f8960.2) | — | — | 1 (stage4.additional_taxes.combined) |
-| f8960.line11 | — | — | — | 2 (classm.f8960.1, classm.f8960.2) | — | OpenTaxSolver: 1559 compared (52 nonzero), 102 excluded | 2 (stage16.small.s10, stage4.additional_taxes.combined) |
-| f8960.line12 | — | — | — | 2 (classm.f8960.1, classm.f8960.2) | — | OpenTaxSolver: 1559 compared (1359 nonzero), 102 excluded | 4 |
+| f8960.line8 | — | — | — | 2 (classm.f8960.1, classm.f8960.2) | — | OpenTaxSolver: 1700 compared (1668 nonzero), 0 excluded; UsTaxes: 1400 compared (1372 nonzero), 300 excluded | 2 (stage4.niit.allocated, stage4.additional_taxes.combined) |
+| f8960.line9a | — | — | — | 2 (classm.f8960.1, classm.f8960.2) | — | UsTaxes below rule: 1072 compared (29 nonzero), 628 excluded | 3 |
+| f8960.line9b | — | — | — | 2 (classm.f8960.1, classm.f8960.2) | — | UsTaxes below rule: 962 compared (0 nonzero), 738 excluded | 3 |
+| f8960.line9d | — | — | — | 2 (classm.f8960.1, classm.f8960.2) | — | UsTaxes below rule: 906 compared (0 nonzero), 794 excluded | 1 (stage4.additional_taxes.combined) |
+| f8960.line11 | — | — | — | 2 (classm.f8960.1, classm.f8960.2) | — | OpenTaxSolver: 1559 compared (52 nonzero), 102 excluded; UsTaxes below rule: 906 compared (0 nonzero), 794 excluded | 2 (stage16.small.s10, stage4.additional_taxes.combined) |
+| f8960.line12 | — | — | — | 2 (classm.f8960.1, classm.f8960.2) | — | OpenTaxSolver: 1559 compared (1359 nonzero), 102 excluded; UsTaxes: 906 compared (787 nonzero), 794 excluded | 4 |
 | f8960.line13 | — | — | — | 2 (classm.f8960.1, classm.f8960.2) | — | — | 4 |
 | f8960.line14 | — | — | — | 2 (classm.f8960.1, classm.f8960.2) | — | — | — |
-| f8960.line15 | — | — | — | 2 (classm.f8960.1, classm.f8960.2) | — | OpenTaxSolver: 1591 compared (198 nonzero), 109 excluded | — |
-| f8960.line16 | — | — | — | 2 (classm.f8960.1, classm.f8960.2) | — | OpenTaxSolver: 1499 compared (176 nonzero), 201 excluded | 1 (stage16.small.s10) |
-| f8960.line17 | — | — | — | 2 (classm.f8960.1, classm.f8960.2) | — | PE: 1492 compared (172 nonzero), 169 excluded; TC: 1306 compared (137 nonzero), 394 excluded; OpenTaxSolver: 1499 compared (176 nonzero), 201 excluded; OpenTaxSolver: 1499 compared (176 nonzero), 201 excluded | 20 |
+| f8960.line15 | — | — | — | 2 (classm.f8960.1, classm.f8960.2) | — | OpenTaxSolver: 1591 compared (198 nonzero), 109 excluded; UsTaxes: 1154 compared (140 nonzero), 546 excluded | — |
+| f8960.line16 | — | — | — | 2 (classm.f8960.1, classm.f8960.2) | — | OpenTaxSolver: 1499 compared (176 nonzero), 201 excluded; UsTaxes: 1046 compared (99 nonzero), 654 excluded | 1 (stage16.small.s10) |
+| f8960.line17 | — | — | — | 2 (classm.f8960.1, classm.f8960.2) | — | PE: 1492 compared (172 nonzero), 169 excluded; TC: 1306 compared (137 nonzero), 394 excluded; OpenTaxSolver: 1499 compared (176 nonzero), 201 excluded; OpenTaxSolver: 1499 compared (176 nonzero), 201 excluded; UsTaxes: 1046 compared (99 nonzero), 654 excluded; UsTaxes: 1046 compared (99 nonzero), 654 excluded | 20 |
 | f8960.bad_allocation | — | — | — | — | — | — | — |
 
 Unasserted lines: f8960.zero, f8960.bad_allocation
@@ -1410,31 +1410,31 @@ Unasserted lines: qbi.zero, qbi.eligible, qbi.business_any, qbi.deductions_befor
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | qdcg.schedule_d_filed | — | — | — | — | — | — | 12 |
 | qdcg.schedule_d_net_gain | — | — | — | — | — | — | 1 (qdcg.sd.side) |
-| qdcg.line1 | 1 (example.official) | — | — | 3 | — | OpenTaxSolver: 805 compared (805 nonzero), 305 excluded | 58 |
-| qdcg.line2 | 1 (example.official) | — | — | 3 | — | OpenTaxSolver: 805 compared (607 nonzero), 305 excluded | 58 |
-| qdcg.line3 | — | — | — | 3 | — | OpenTaxSolver: 805 compared (429 nonzero), 305 excluded | 15 |
-| qdcg.line4 | — | — | — | 3 | — | OpenTaxSolver: 805 compared (772 nonzero), 305 excluded | 12 |
-| qdcg.line5 | — | — | — | 3 | — | OpenTaxSolver: 805 compared (783 nonzero), 305 excluded | 12 |
-| qdcg.line6 | 1 (example.official) | — | — | 3 | — | OpenTaxSolver: 805 compared (805 nonzero), 305 excluded | 58 |
-| qdcg.line7 | 1 (example.official) | — | — | 3 | — | OpenTaxSolver: 805 compared (805 nonzero), 305 excluded | 58 |
-| qdcg.line8 | — | — | — | 3 | — | OpenTaxSolver: 805 compared (783 nonzero), 305 excluded | 12 |
-| qdcg.line9 | — | — | — | 3 | — | OpenTaxSolver: 805 compared (385 nonzero), 305 excluded; E via qdcg.line11 (OpenTaxSolver) | 12 |
-| qdcg.line10 | — | — | — | 3 | — | OpenTaxSolver: 805 compared (772 nonzero), 305 excluded | 12 |
-| qdcg.line11 | — | — | — | 3 | — | OpenTaxSolver: 805 compared (385 nonzero), 305 excluded | 12 |
-| qdcg.line12 | — | — | — | 3 | — | OpenTaxSolver: 805 compared (418 nonzero), 305 excluded | 12 |
-| qdcg.line13 | 1 (example.official) | — | — | 3 | — | OpenTaxSolver: 805 compared (805 nonzero), 305 excluded | 58 |
-| qdcg.line14 | 1 (example.official) | — | — | 3 | — | OpenTaxSolver: 805 compared (805 nonzero), 305 excluded | 58 |
-| qdcg.line15 | — | — | — | 3 | — | OpenTaxSolver: 805 compared (805 nonzero), 305 excluded | 12 |
-| qdcg.line16 | — | — | — | 3 | — | OpenTaxSolver: 805 compared (418 nonzero), 305 excluded | 12 |
-| qdcg.line17 | — | — | — | 3 | — | OpenTaxSolver: 805 compared (418 nonzero), 305 excluded | 12 |
-| qdcg.line18 | — | — | — | 3 | — | OpenTaxSolver: 805 compared (418 nonzero), 305 excluded | 12 |
-| qdcg.line19 | — | — | — | 3 | — | OpenTaxSolver: 805 compared (772 nonzero), 305 excluded | 12 |
-| qdcg.line20 | — | — | — | 3 | — | OpenTaxSolver below rule: 805 compared (0 nonzero), 305 excluded | 12 |
-| qdcg.line21 | — | — | — | 3 | — | OpenTaxSolver below rule: 805 compared (0 nonzero), 305 excluded | 12 |
-| qdcg.line22 | — | — | — | — | — | OpenTaxSolver: 805 compared (783 nonzero), 305 excluded | 13 |
-| qdcg.line23 | — | — | — | 3 | — | OpenTaxSolver: 805 compared (783 nonzero), 305 excluded | 13 |
-| qdcg.line24 | 1 (example.official) | — | — | — | — | OpenTaxSolver: 805 compared (805 nonzero), 305 excluded | 59 |
-| qdcg.line25 | — | — | — | 3 | — | OpenTaxSolver: 805 compared (783 nonzero), 305 excluded | 13 |
+| qdcg.line1 | 1 (example.official) | — | — | 3 | — | OpenTaxSolver: 805 compared (805 nonzero), 305 excluded; UsTaxes: 533 compared (481 nonzero), 560 excluded | 58 |
+| qdcg.line2 | 1 (example.official) | — | — | 3 | — | OpenTaxSolver: 805 compared (607 nonzero), 305 excluded; UsTaxes below rule: 533 compared (378 nonzero), 560 excluded | 58 |
+| qdcg.line3 | — | — | — | 3 | — | OpenTaxSolver: 805 compared (429 nonzero), 305 excluded; UsTaxes below rule: 533 compared (325 nonzero), 560 excluded | 15 |
+| qdcg.line4 | — | — | — | 3 | — | OpenTaxSolver: 805 compared (772 nonzero), 305 excluded; UsTaxes below rule: 533 compared (533 nonzero), 560 excluded | 12 |
+| qdcg.line5 | — | — | — | 3 | — | OpenTaxSolver: 805 compared (783 nonzero), 305 excluded; UsTaxes: 533 compared (467 nonzero), 560 excluded | 12 |
+| qdcg.line6 | 1 (example.official) | — | — | 3 | — | OpenTaxSolver: 805 compared (805 nonzero), 305 excluded; UsTaxes below rule: 533 compared (533 nonzero), 560 excluded | 58 |
+| qdcg.line7 | 1 (example.official) | — | — | 3 | — | OpenTaxSolver: 805 compared (805 nonzero), 305 excluded; UsTaxes: 533 compared (481 nonzero), 560 excluded | 58 |
+| qdcg.line8 | — | — | — | 3 | — | OpenTaxSolver: 805 compared (783 nonzero), 305 excluded; UsTaxes: 533 compared (467 nonzero), 560 excluded | 12 |
+| qdcg.line9 | — | — | — | 3 | — | OpenTaxSolver: 805 compared (385 nonzero), 305 excluded; UsTaxes below rule: 533 compared (206 nonzero), 560 excluded; E via qdcg.line11 (OpenTaxSolver) | 12 |
+| qdcg.line10 | — | — | — | 3 | — | OpenTaxSolver: 805 compared (772 nonzero), 305 excluded; UsTaxes: 533 compared (481 nonzero), 560 excluded | 12 |
+| qdcg.line11 | — | — | — | 3 | — | OpenTaxSolver: 805 compared (385 nonzero), 305 excluded; UsTaxes below rule: 533 compared (206 nonzero), 560 excluded | 12 |
+| qdcg.line12 | — | — | — | 3 | — | OpenTaxSolver: 805 compared (418 nonzero), 305 excluded; UsTaxes: 533 compared (290 nonzero), 560 excluded | 12 |
+| qdcg.line13 | 1 (example.official) | — | — | 3 | — | OpenTaxSolver: 805 compared (805 nonzero), 305 excluded; UsTaxes below rule: 533 compared (533 nonzero), 560 excluded | 58 |
+| qdcg.line14 | 1 (example.official) | — | — | 3 | — | OpenTaxSolver: 805 compared (805 nonzero), 305 excluded; UsTaxes: 533 compared (481 nonzero), 560 excluded | 58 |
+| qdcg.line15 | — | — | — | 3 | — | OpenTaxSolver: 805 compared (805 nonzero), 305 excluded; UsTaxes: 533 compared (481 nonzero), 560 excluded | 12 |
+| qdcg.line16 | — | — | — | 3 | — | OpenTaxSolver: 805 compared (418 nonzero), 305 excluded; UsTaxes: 533 compared (290 nonzero), 560 excluded | 12 |
+| qdcg.line17 | — | — | — | 3 | — | OpenTaxSolver: 805 compared (418 nonzero), 305 excluded; UsTaxes: 533 compared (290 nonzero), 560 excluded | 12 |
+| qdcg.line18 | — | — | — | 3 | — | OpenTaxSolver: 805 compared (418 nonzero), 305 excluded; UsTaxes: 533 compared (290 nonzero), 560 excluded | 12 |
+| qdcg.line19 | — | — | — | 3 | — | OpenTaxSolver: 805 compared (772 nonzero), 305 excluded; UsTaxes: 533 compared (481 nonzero), 560 excluded | 12 |
+| qdcg.line20 | — | — | — | 3 | — | OpenTaxSolver below rule: 805 compared (0 nonzero), 305 excluded; UsTaxes below rule: 533 compared (0 nonzero), 560 excluded | 12 |
+| qdcg.line21 | — | — | — | 3 | — | OpenTaxSolver below rule: 805 compared (0 nonzero), 305 excluded; UsTaxes below rule: 533 compared (0 nonzero), 560 excluded | 12 |
+| qdcg.line22 | — | — | — | — | — | OpenTaxSolver: 805 compared (783 nonzero), 305 excluded; UsTaxes: 533 compared (467 nonzero), 560 excluded | 13 |
+| qdcg.line23 | — | — | — | 3 | — | OpenTaxSolver: 805 compared (783 nonzero), 305 excluded; UsTaxes: 533 compared (467 nonzero), 560 excluded | 13 |
+| qdcg.line24 | 1 (example.official) | — | — | — | — | OpenTaxSolver: 805 compared (805 nonzero), 305 excluded; UsTaxes: 533 compared (481 nonzero), 560 excluded | 59 |
+| qdcg.line25 | — | — | — | 3 | — | OpenTaxSolver: 805 compared (783 nonzero), 305 excluded; UsTaxes: 533 compared (467 nonzero), 560 excluded | 13 |
 
 ## State and Local Income Tax Refund Worksheet—Schedule 1, Line 1
 
@@ -1614,9 +1614,9 @@ Unasserted lines: retirement.zero, retirement.one
 | s1.line8c | — | — | — | 3 | — | — | 5 |
 | s1.line8f | — | — | — | 3 | — | — | 8 |
 | s1.line9 | — | — | — | 3 | — | OpenTaxSolver below rule: 1700 compared (0 nonzero), 0 excluded | 24 |
-| s1.line10 | — | — | — | 3 | — | OpenTaxSolver: 1700 compared (576 nonzero), 0 excluded; E via f1040.line8 (OpenTaxSolver) | 44 |
-| s1.line11 | — | — | — | 3 | — | — | 5 |
-| s1.line13 | — | — | — | 3 | — | — | 20 |
+| s1.line10 | — | — | — | 3 | — | OpenTaxSolver: 1700 compared (576 nonzero), 0 excluded; UsTaxes below rule: 1400 compared (280 nonzero), 300 excluded; E via f1040.line8 (OpenTaxSolver) | 44 |
+| s1.line11 | — | — | — | 3 | — | UsTaxes: 1400 compared (146 nonzero), 300 excluded | 5 |
+| s1.line13 | — | — | — | 3 | — | UsTaxes: 1316 compared (137 nonzero), 384 excluded | 20 |
 | s1.line15 | — | — | — | 3 | — | PE: 1700 compared (238 nonzero), 0 excluded; TC: 1700 compared (238 nonzero), 0 excluded | 9 |
 | s1.line16 | — | — | — | 3 | — | — | 9 |
 | s1.line17 | — | — | — | 3 | — | — | 3 |
@@ -1626,12 +1626,12 @@ Unasserted lines: retirement.zero, retirement.one
 | s1.line19b_notice | — | — | — | — | — | — | 2 (stage16.mut.ira_alimony_comp, stage16.mut.alimony_paid) |
 | s1.line19c_notice | — | — | — | — | — | — | 2 (stage16.mut.ira_alimony_comp, stage16.mut.alimony_paid) |
 | s1.line20 | — | — | — | 3 | — | PE: 1642 compared (504 nonzero), 17 excluded | 30 |
-| s1.line21 | — | — | — | 3 | — | OpenTaxSolver: 1677 compared (128 nonzero), 17 excluded | 2 (stage11.sli.basic, stage11.refuse.sli_pub970) |
+| s1.line21 | — | — | — | 3 | — | OpenTaxSolver: 1677 compared (128 nonzero), 17 excluded; UsTaxes: 1154 compared (94 nonzero), 546 excluded | 2 (stage11.sli.basic, stage11.refuse.sli_pub970) |
 | s1.jury_to_employer | — | — | — | — | — | — | — |
 | s1.jury_over | — | — | — | — | — | — | — |
 | s1.line24a | — | — | — | 3 | — | — | 2 (stage16.other.o5, stage16.refuse.s1.jury_over) |
 | s1.line25 | — | — | — | 3 | — | — | 2 (stage16.other.o5, stage16.refuse.s1.jury_over) |
-| s1.line26 | — | — | — | 3 | — | OpenTaxSolver: 1591 compared (957 nonzero), 109 excluded; E via f1040.line10 (PE, TC, OpenTaxSolver) | 19 |
+| s1.line26 | — | — | — | 3 | — | OpenTaxSolver: 1591 compared (957 nonzero), 109 excluded; UsTaxes: 1154 compared (588 nonzero), 546 excluded; E via f1040.line10 (PE, TC, OpenTaxSolver, UsTaxes) | 19 |
 
 Unasserted lines: s1.zero, s1.has_uc, s1.line7_figured, s1.ebl_loss, s1.ebl_total, s1.zero_ebl, s1.ebl_threshold, s1.ebl, s1.sc_count, s1.has_sc, s1.sc_1a_count, s1.sc_1a, s1.has_gambling, s1.gambling_business, s1.has_cod, s1.cod_figured, s1.jury_over
 
@@ -1681,7 +1681,7 @@ Unasserted lines: s179.max, s179.line5_full, s179.separate, s179.line5_mfs, s179
 | s1a.line2c | — | — | — | 1 (classm.s1a.1) | — | — | — |
 | s1a.line2d | — | — | — | 1 (classm.s1a.1) | — | — | — |
 | s1a.line2e | — | — | — | 1 (classm.s1a.1) | — | — | — |
-| s1a.line3 | — | — | — | 1 (classm.s1a.1) | — | — | 1 (stage12.tips.one_employer) |
+| s1a.line3 | — | — | — | 1 (classm.s1a.1) | — | UsTaxes: 1154 compared (1154 nonzero), 546 excluded | 1 (stage12.tips.one_employer) |
 | s1a.tips | — | — | — | — | — | — | — |
 | s1a.tip_employers | — | — | — | — | — | — | — |
 | s1a.tip_total | — | — | — | — | — | — | — |
@@ -1696,18 +1696,18 @@ Unasserted lines: s179.max, s179.line5_full, s179.separate, s179.line5_mfs, s179
 | s1a.line4b | — | — | — | 1 (classm.s1a.1) | — | — | 1 (stage12.tips.one_employer) |
 | s1a.line4c_one | — | — | — | — | — | — | — |
 | s1a.line4c_calc | — | — | — | — | — | — | — |
-| s1a.line4c | — | — | — | 1 (classm.s1a.1) | — | — | 7 |
+| s1a.line4c | — | — | — | 1 (classm.s1a.1) | — | UsTaxes: 1400 compared (159 nonzero), 300 excluded | 7 |
 | s1a.line5_calc | — | — | — | — | — | — | 2 (stage14.refuse.sch1a_tips, stage14.sch1a.tips_with_sc) |
 | s1a.line5 | — | — | — | 1 (classm.s1a.1) | — | — | — |
 | s1a.line6_calc | — | — | — | — | — | — | — |
-| s1a.line6 | — | — | — | 1 (classm.s1a.1) | — | — | 2 (stage12.tips.cap, stage12.refuse.tips_trade_or_business) |
+| s1a.line6 | — | — | — | 1 (classm.s1a.1) | — | UsTaxes: 1400 compared (159 nonzero), 300 excluded | 2 (stage12.tips.cap, stage12.refuse.tips_trade_or_business) |
 | s1a.line7_calc | — | — | — | — | — | — | — |
-| s1a.line7 | — | — | — | 1 (classm.s1a.1) | — | — | 4 |
+| s1a.line7 | — | — | — | 1 (classm.s1a.1) | — | UsTaxes: 1400 compared (159 nonzero), 300 excluded | 4 |
 | s1a.tips_max | — | — | — | — | — | — | — |
 | s1a.base_other | — | — | — | — | — | — | — |
 | s1a.base_joint | — | — | — | — | — | — | — |
 | s1a.line8_calc | — | — | — | — | — | — | — |
-| s1a.line8 | — | — | — | 1 (classm.s1a.1) | — | — | 1 (stage13.tips_only_spouse_no_ssn) |
+| s1a.line8 | — | — | — | 1 (classm.s1a.1) | — | UsTaxes: 135 compared (135 nonzero), 24 excluded | 1 (stage13.tips_only_spouse_no_ssn) |
 | s1a.line9_calc | — | — | — | — | — | — | — |
 | s1a.line9 | — | — | — | 1 (classm.s1a.1) | — | — | 1 (stage12.mfj.tips_overtime) |
 | s1a.line10_calc | — | — | — | — | — | — | — |
@@ -1716,12 +1716,12 @@ Unasserted lines: s179.max, s179.line5_full, s179.separate, s179.line5_mfs, s179
 | s1a.line10_pos | — | — | — | — | — | — | — |
 | s1a.line11_thousands | — | — | — | — | — | — | — |
 | s1a.line12_calc | — | — | — | — | — | — | — |
-| s1a.line12 | — | — | — | — | — | — | 5 |
+| s1a.line12 | — | — | — | — | — | UsTaxes below rule: 135 compared (19 nonzero), 24 excluded | 5 |
 | s1a.line13_figured | — | — | — | — | — | — | — |
 | s1a.line13_amount | — | — | — | — | — | — | — |
 | s1a.line13_ssn | — | — | — | — | — | — | — |
 | s1a.line13_claim | — | — | — | — | — | — | — |
-| s1a.line13 | — | — | — | 1 (classm.s1a.1) | — | PE: 1557 compared (164 nonzero), 140 excluded; TC: 1370 compared (169 nonzero), 330 excluded; OpenTaxSolver: 1591 compared (191 nonzero), 109 excluded | 20 |
+| s1a.line13 | — | — | — | 1 (classm.s1a.1) | — | PE: 1557 compared (164 nonzero), 140 excluded; TC: 1370 compared (169 nonzero), 330 excluded; OpenTaxSolver: 1591 compared (191 nonzero), 109 excluded; UsTaxes: 1154 compared (132 nonzero), 546 excluded | 20 |
 | s1a.overtime | — | — | — | — | — | — | — |
 | s1a.ot_ssn_count | — | — | — | — | — | — | — |
 | s1a.ot_ssn | — | — | — | — | — | — | — |
@@ -1731,14 +1731,14 @@ Unasserted lines: s179.max, s179.line5_full, s179.separate, s179.line5_mfs, s179
 | s1a.line14b_calc | — | — | — | — | — | — | 1 (stage14.sch1a.refuse_overtime_1099) |
 | s1a.line14b | — | — | — | 1 (classm.s1a.1) | — | — | — |
 | s1a.line14c_calc | — | — | — | — | — | — | — |
-| s1a.line14c | — | — | — | 1 (classm.s1a.1) | — | — | 2 (stage12.ot.premium, stage12.refuse.overtime_nonemployee) |
+| s1a.line14c | — | — | — | 1 (classm.s1a.1) | — | UsTaxes: 1400 compared (160 nonzero), 300 excluded | 2 (stage12.ot.premium, stage12.refuse.overtime_nonemployee) |
 | s1a.ot_max_other | — | — | — | — | — | — | — |
 | s1a.ot_max_joint | — | — | — | — | — | — | — |
 | s1a.ot_max | — | — | — | — | — | — | — |
 | s1a.line15_calc | — | — | — | — | — | — | — |
-| s1a.line15 | — | — | — | 1 (classm.s1a.1) | — | — | 4 |
+| s1a.line15 | — | — | — | 1 (classm.s1a.1) | — | UsTaxes: 1400 compared (160 nonzero), 300 excluded | 4 |
 | s1a.line16_calc | — | — | — | — | — | — | — |
-| s1a.line16 | — | — | — | 1 (classm.s1a.1) | — | — | 1 (stage13.overtime_only_spouse_no_ssn) |
+| s1a.line16 | — | — | — | 1 (classm.s1a.1) | — | UsTaxes: 125 compared (125 nonzero), 35 excluded | 1 (stage13.overtime_only_spouse_no_ssn) |
 | s1a.line17_calc | — | — | — | — | — | — | — |
 | s1a.line17 | — | — | — | 1 (classm.s1a.1) | — | — | — |
 | s1a.line18_calc | — | — | — | — | — | — | — |
@@ -1747,23 +1747,23 @@ Unasserted lines: s179.max, s179.line5_full, s179.separate, s179.line5_mfs, s179
 | s1a.line18_pos | — | — | — | — | — | — | — |
 | s1a.line19_thousands | — | — | — | — | — | — | — |
 | s1a.line20_calc | — | — | — | — | — | — | — |
-| s1a.line20 | — | — | — | — | — | — | 2 (stage12.ot.phaseout, stage12.mfj.tips_overtime) |
+| s1a.line20 | — | — | — | — | — | UsTaxes below rule: 125 compared (27 nonzero), 35 excluded | 2 (stage12.ot.phaseout, stage12.mfj.tips_overtime) |
 | s1a.line21_figured | — | — | — | — | — | — | — |
 | s1a.line21_amount | — | — | — | — | — | — | — |
 | s1a.line21_ssn | — | — | — | — | — | — | — |
 | s1a.line21_claim | — | — | — | — | — | — | — |
-| s1a.line21 | — | — | — | 1 (classm.s1a.1) | — | PE: 1556 compared (143 nonzero), 140 excluded; TC: 1370 compared (139 nonzero), 330 excluded; OpenTaxSolver: 1591 compared (163 nonzero), 109 excluded | 18 |
+| s1a.line21 | — | — | — | 1 (classm.s1a.1) | — | PE: 1556 compared (143 nonzero), 140 excluded; TC: 1370 compared (139 nonzero), 330 excluded; OpenTaxSolver: 1591 compared (163 nonzero), 109 excluded; UsTaxes: 1154 compared (115 nonzero), 546 excluded | 18 |
 | s1a.carloan | — | — | — | — | — | — | — |
 | s1a.line23_total | — | — | — | — | — | — | — |
-| s1a.line23 | — | — | — | — | — | — | 6 |
+| s1a.line23 | — | — | — | — | — | UsTaxes below rule: 1266 compared (0 nonzero), 434 excluded | 6 |
 | s1a.car_max | — | — | — | — | — | — | — |
 | s1a.part4 | — | — | — | — | — | — | — |
 | s1a.line24_calc | — | — | — | — | — | — | — |
-| s1a.line24 | — | — | — | — | — | — | 3 |
+| s1a.line24 | — | — | — | — | — | UsTaxes below rule: 1266 compared (0 nonzero), 434 excluded | 3 |
 | s1a.car_base_other | — | — | — | — | — | — | — |
 | s1a.car_base_joint | — | — | — | — | — | — | — |
 | s1a.line25_calc | — | — | — | — | — | — | — |
-| s1a.line25 | — | — | — | — | — | — | — |
+| s1a.line25 | — | — | — | — | — | UsTaxes: 114 compared (114 nonzero), 20 excluded | — |
 | s1a.line26_calc | — | — | — | — | — | — | — |
 | s1a.line26 | — | — | — | — | — | — | 1 (stage12.mfj.car) |
 | s1a.line27_calc | — | — | — | — | — | — | — |
@@ -1772,15 +1772,15 @@ Unasserted lines: s179.max, s179.line5_full, s179.separate, s179.line5_mfs, s179
 | s1a.line27_pos | — | — | — | — | — | — | — |
 | s1a.line28_thousands | — | — | — | — | — | — | — |
 | s1a.line29_calc | — | — | — | — | — | — | — |
-| s1a.line29 | — | — | — | — | — | — | 4 |
+| s1a.line29 | — | — | — | — | — | UsTaxes below rule: 114 compared (36 nonzero), 20 excluded | 4 |
 | s1a.line30_figured | — | — | — | — | — | — | — |
 | s1a.line30_amount | — | — | — | — | — | — | — |
-| s1a.line30 | — | — | — | — | — | PE: 1555 compared (101 nonzero), 140 excluded; TC: 1370 compared (98 nonzero), 330 excluded; OpenTaxSolver below rule: 1439 compared (0 nonzero), 261 excluded | 15 |
+| s1a.line30 | — | — | — | — | — | PE: 1555 compared (101 nonzero), 140 excluded; TC: 1370 compared (98 nonzero), 330 excluded; OpenTaxSolver below rule: 1439 compared (0 nonzero), 261 excluded; UsTaxes below rule: 1040 compared (0 nonzero), 660 excluded | 15 |
 | s1a.senior_count | — | — | — | — | — | — | — |
 | s1a.senior_any | — | — | — | — | — | — | — |
 | s1a.part5 | — | — | — | — | — | — | — |
 | s1a.line31_calc | — | — | — | — | — | — | — |
-| s1a.line31 | — | — | — | 1 (classm.s1a.1) | — | — | 1 (stage13.seniors_none) |
+| s1a.line31 | — | — | — | 1 (classm.s1a.1) | — | UsTaxes: 174 compared (174 nonzero), 62 excluded | 1 (stage13.seniors_none) |
 | s1a.senior_base_other | — | — | — | — | — | — | — |
 | s1a.senior_base_joint | — | — | — | — | — | — | — |
 | s1a.line32_calc | — | — | — | — | — | — | — |
@@ -1790,28 +1790,28 @@ Unasserted lines: s179.max, s179.line5_full, s179.separate, s179.line5_mfs, s179
 | s1a.line33_over | — | — | — | — | — | — | — |
 | s1a.line33_pos | — | — | — | — | — | — | — |
 | s1a.line34_calc | — | — | — | — | — | — | — |
-| s1a.line34 | — | — | — | 1 (classm.s1a.1) | — | — | 4 |
+| s1a.line34 | — | — | — | 1 (classm.s1a.1) | — | UsTaxes: 174 compared (86 nonzero), 62 excluded | 4 |
 | s1a.senior_amount | — | — | — | — | — | — | — |
 | s1a.line35_figured | — | — | — | — | — | — | — |
 | s1a.line35_calc | — | — | — | — | — | — | — |
-| s1a.line35 | — | — | — | 1 (classm.s1a.1) | — | — | 8 |
+| s1a.line35 | — | — | — | 1 (classm.s1a.1) | — | UsTaxes: 174 compared (146 nonzero), 62 excluded | 8 |
 | s1a.died_before_65_count | — | — | — | — | — | — | — |
 | s1a.died_before_65 | — | — | — | — | — | — | — |
 | s1a.senior_decedent | — | — | — | — | — | — | — |
 | s1a.line36a_senior | — | — | — | — | — | — | — |
 | s1a.line36a_claim | — | — | — | — | — | — | — |
-| s1a.line36a | — | — | — | — | — | — | 11 |
+| s1a.line36a | — | — | — | — | — | UsTaxes: 1154 compared (129 nonzero), 546 excluded | 11 |
 | s1a.spouse_senior_count | — | — | — | — | — | — | — |
 | s1a.spouse_senior | — | — | — | — | — | — | — |
 | s1a.spouse_died_before_65_count | — | — | — | — | — | — | — |
 | s1a.spouse_died_before_65 | — | — | — | — | — | — | — |
 | s1a.spouse_senior_decedent | — | — | — | — | — | — | — |
 | s1a.line36b_senior | — | — | — | — | — | — | — |
-| s1a.line36b | — | — | — | 1 (classm.s1a.1) | — | — | 8 |
-| s1a.line37 | — | — | — | 1 (classm.s1a.1) | — | PE: 1670 compared (220 nonzero), 17 excluded; TC: 1370 compared (188 nonzero), 330 excluded; OpenTaxSolver: 1591 compared (214 nonzero), 109 excluded | 16 |
-| s1a.line38 | — | — | — | 1 (classm.s1a.1) | — | OpenTaxSolver: 1439 compared (448 nonzero), 261 excluded; E via f1040.line13b (PE, TC, OpenTaxSolver) | 7 |
+| s1a.line36b | — | — | — | 1 (classm.s1a.1) | — | UsTaxes below rule: 1154 compared (20 nonzero), 546 excluded | 8 |
+| s1a.line37 | — | — | — | 1 (classm.s1a.1) | — | PE: 1670 compared (220 nonzero), 17 excluded; TC: 1370 compared (188 nonzero), 330 excluded; OpenTaxSolver: 1591 compared (214 nonzero), 109 excluded; UsTaxes: 1154 compared (146 nonzero), 546 excluded | 16 |
+| s1a.line38 | — | — | — | 1 (classm.s1a.1) | — | OpenTaxSolver: 1439 compared (448 nonzero), 261 excluded; UsTaxes: 1065 compared (314 nonzero), 635 excluded; E via f1040.line13b (PE, TC, OpenTaxSolver) | 7 |
 
-Unasserted lines: s1a.zero, s1a.tip_employers, s1a.tip_total, s1a.tip_reported, s1a.tip_multi, s1a.tip_ssn_count, s1a.tip_ssn, s1a.part2, s1a.line4a_calc, s1a.line4b_calc, s1a.line4c_one, s1a.line4c_calc, s1a.line6_calc, s1a.line7_calc, s1a.tips_max, s1a.base_other, s1a.base_joint, s1a.line8_calc, s1a.line9_calc, s1a.line10_calc, s1a.line10_over, s1a.line10_pos, s1a.line11_thousands, s1a.line12_calc, s1a.line13_figured, s1a.line13_amount, s1a.line13_ssn, s1a.line13_claim, s1a.ot_ssn_count, s1a.ot_ssn, s1a.part3, s1a.line14a_calc, s1a.line14c_calc, s1a.ot_max_other, s1a.ot_max_joint, s1a.ot_max, s1a.line15_calc, s1a.line16_calc, s1a.line17_calc, s1a.line18_calc, s1a.line18_over, s1a.line18_pos, s1a.line19_thousands, s1a.line20_calc, s1a.line21_figured, s1a.line21_amount, s1a.line21_ssn, s1a.line21_claim, s1a.line23_total, s1a.car_max, s1a.part4, s1a.line24_calc, s1a.car_base_other, s1a.car_base_joint, s1a.line25_calc, s1a.line25, s1a.line26_calc, s1a.line27_calc, s1a.line27_over, s1a.line27_pos, s1a.line28_thousands, s1a.line29_calc, s1a.line30_figured, s1a.line30_amount, s1a.senior_count, s1a.senior_any, s1a.part5, s1a.line31_calc, s1a.senior_base_other, s1a.senior_base_joint, s1a.line32_calc, s1a.line33_calc, s1a.line33_over, s1a.line33_pos, s1a.line34_calc, s1a.senior_amount, s1a.line35_figured, s1a.line35_calc, s1a.died_before_65_count, s1a.died_before_65, s1a.senior_decedent, s1a.line36a_senior, s1a.line36a_claim, s1a.spouse_senior_count, s1a.spouse_senior, s1a.spouse_died_before_65_count, s1a.spouse_died_before_65, s1a.spouse_senior_decedent, s1a.line36b_senior
+Unasserted lines: s1a.zero, s1a.tip_employers, s1a.tip_total, s1a.tip_reported, s1a.tip_multi, s1a.tip_ssn_count, s1a.tip_ssn, s1a.part2, s1a.line4a_calc, s1a.line4b_calc, s1a.line4c_one, s1a.line4c_calc, s1a.line6_calc, s1a.line7_calc, s1a.tips_max, s1a.base_other, s1a.base_joint, s1a.line8_calc, s1a.line9_calc, s1a.line10_calc, s1a.line10_over, s1a.line10_pos, s1a.line11_thousands, s1a.line12_calc, s1a.line13_figured, s1a.line13_amount, s1a.line13_ssn, s1a.line13_claim, s1a.ot_ssn_count, s1a.ot_ssn, s1a.part3, s1a.line14a_calc, s1a.line14c_calc, s1a.ot_max_other, s1a.ot_max_joint, s1a.ot_max, s1a.line15_calc, s1a.line16_calc, s1a.line17_calc, s1a.line18_calc, s1a.line18_over, s1a.line18_pos, s1a.line19_thousands, s1a.line20_calc, s1a.line21_figured, s1a.line21_amount, s1a.line21_ssn, s1a.line21_claim, s1a.line23_total, s1a.car_max, s1a.part4, s1a.line24_calc, s1a.car_base_other, s1a.car_base_joint, s1a.line25_calc, s1a.line26_calc, s1a.line27_calc, s1a.line27_over, s1a.line27_pos, s1a.line28_thousands, s1a.line29_calc, s1a.line30_figured, s1a.line30_amount, s1a.senior_count, s1a.senior_any, s1a.part5, s1a.line31_calc, s1a.senior_base_other, s1a.senior_base_joint, s1a.line32_calc, s1a.line33_calc, s1a.line33_over, s1a.line33_pos, s1a.line34_calc, s1a.senior_amount, s1a.line35_figured, s1a.line35_calc, s1a.died_before_65_count, s1a.died_before_65, s1a.senior_decedent, s1a.line36a_senior, s1a.line36a_claim, s1a.spouse_senior_count, s1a.spouse_senior, s1a.spouse_died_before_65_count, s1a.spouse_died_before_65, s1a.spouse_senior_decedent, s1a.line36b_senior
 
 ## Schedule 2 — Additional Taxes (the lines this tool computes)
 
@@ -1827,7 +1827,7 @@ Unasserted lines: s1a.zero, s1a.tip_employers, s1a.tip_total, s1a.tip_reported, 
 | s2.line12 | — | — | — | 1 (classm.s2.1) | — | — | 2 (stage16.small.s10, stage4.additional_taxes.combined) |
 | s2.line17c | — | — | — | 1 (classm.s2.1) | — | — | 6 |
 | s2.line18 | — | — | — | 1 (classm.s2.1) | — | — | 5 |
-| s2.line21 | — | — | — | 1 (classm.s2.1) | — | OpenTaxSolver: 1499 compared (380 nonzero), 201 excluded; E via f1040.line23 (OpenTaxSolver) | 11 |
+| s2.line21 | — | — | — | 1 (classm.s2.1) | — | OpenTaxSolver: 1499 compared (380 nonzero), 201 excluded; UsTaxes below rule: 1046 compared (112 nonzero), 654 excluded; E via f1040.line23 (OpenTaxSolver) | 11 |
 
 Unasserted lines: s2.zero
 
@@ -1841,14 +1841,14 @@ Unasserted lines: s2.zero
 | s3.line4 | — | — | — | 2 (classm.s3.1, classm.s3.2) | — | — | 33 |
 | s3.line5a | — | — | — | 2 (classm.s3.1, classm.s3.2) | — | PE: 1428 compared (104 nonzero), 268 excluded | 28 |
 | s3.line5b | — | — | — | 2 (classm.s3.1, classm.s3.2) | — | PE: 1392 compared (100 nonzero), 305 excluded | 28 |
-| s3.line8 | — | — | — | 2 (classm.s3.1, classm.s3.2) | — | OpenTaxSolver below rule: 826 compared (271 nonzero), 874 excluded; E via f1040.line20 (TC) | 4 |
+| s3.line8 | — | — | — | 2 (classm.s3.1, classm.s3.2) | — | OpenTaxSolver below rule: 826 compared (271 nonzero), 874 excluded; UsTaxes below rule: 444 compared (95 nonzero), 1256 excluded; E via f1040.line20 (TC) | 4 |
 | s3.mfs | — | — | — | — | — | — | — |
 | s3.line9 | — | — | — | — | — | — | — |
 | s3.line10 | — | — | — | — | — | — | — |
-| s3.line11 | — | — | — | 2 (classm.s3.1, classm.s3.2) | — | — | 24 |
+| s3.line11 | — | — | — | 2 (classm.s3.1, classm.s3.2) | — | UsTaxes: 1400 compared (141 nonzero), 300 excluded | 24 |
 | s3.line12 | — | — | — | — | — | — | — |
 | s3.line14 | — | — | — | — | — | — | — |
-| s3.line15 | — | — | — | 2 (classm.s3.1, classm.s3.2) | — | — | 21 |
+| s3.line15 | — | — | — | 2 (classm.s3.1, classm.s3.2) | — | UsTaxes: 1400 compared (141 nonzero), 300 excluded | 21 |
 
 Unasserted lines: s3.zero, s3.mfs
 
@@ -1862,17 +1862,17 @@ Unasserted lines: s3.zero, s3.mfs
 | s8812.line2b | — | — | — | 5 | — | — | 24 |
 | s8812.line2c | — | — | — | 5 | — | — | 24 |
 | s8812.line2d | — | — | — | 5 | — | — | 24 |
-| s8812.line3 | — | — | — | 5 | — | — | 28 |
+| s8812.line3 | — | — | — | 5 | — | UsTaxes: 654 compared (654 nonzero), 133 excluded | 28 |
 | s8812.line4 | — | — | — | 5 | — | — | 29 |
-| s8812.line5 | — | — | — | 5 | — | OpenTaxSolver: 970 compared (848 nonzero), 0 excluded | 31 |
+| s8812.line5 | — | — | — | 5 | — | OpenTaxSolver: 970 compared (848 nonzero), 0 excluded; UsTaxes: 787 compared (685 nonzero), 0 excluded | 31 |
 | s8812.line6 | — | — | — | 5 | — | — | 25 |
-| s8812.line7 | — | — | — | 5 | — | OpenTaxSolver: 970 compared (344 nonzero), 0 excluded | 27 |
-| s8812.line8 | — | — | — | 5 | — | OpenTaxSolver: 970 compared (970 nonzero), 0 excluded | 31 |
+| s8812.line7 | — | — | — | 5 | — | OpenTaxSolver: 970 compared (344 nonzero), 0 excluded; UsTaxes: 787 compared (272 nonzero), 0 excluded | 27 |
+| s8812.line8 | — | — | — | 5 | — | OpenTaxSolver: 970 compared (970 nonzero), 0 excluded; UsTaxes: 787 compared (787 nonzero), 0 excluded | 31 |
 | s8812.line9 | — | — | — | 5 | — | — | 2 (stage15.f5695-3.g2, stage16.other.o10) |
 | s8812.excess | — | — | — | — | — | — | 24 |
-| s8812.line10 | — | — | — | 5 | — | OpenTaxSolver: 908 compared (89 nonzero), 62 excluded | 28 |
-| s8812.line11 | — | — | — | 5 | — | OpenTaxSolver: 908 compared (89 nonzero), 62 excluded | 28 |
-| s8812.line12 | — | — | — | 5 | — | PE: 1642 compared (891 nonzero), 17 excluded; OpenTaxSolver: 908 compared (868 nonzero), 62 excluded | 31 |
+| s8812.line10 | — | — | — | 5 | — | OpenTaxSolver: 908 compared (89 nonzero), 62 excluded; UsTaxes: 654 compared (56 nonzero), 133 excluded | 28 |
+| s8812.line11 | — | — | — | 5 | — | OpenTaxSolver: 908 compared (89 nonzero), 62 excluded; UsTaxes: 654 compared (56 nonzero), 133 excluded | 28 |
+| s8812.line12 | — | — | — | 5 | — | PE: 1642 compared (891 nonzero), 17 excluded; OpenTaxSolver: 908 compared (868 nonzero), 62 excluded; UsTaxes: 654 compared (632 nonzero), 133 excluded | 31 |
 | s8812.clw_a1 | — | — | — | — | — | — | 30 |
 | s8812.clw_a2 | — | — | — | — | — | — | 30 |
 | s8812.clw_a3 | — | — | — | — | — | — | 30 |
@@ -1880,12 +1880,12 @@ Unasserted lines: s3.zero, s3.mfs
 | s8812.clw_a5 | — | — | — | — | — | — | 30 |
 | s8812.show13 | — | — | — | — | — | — | 1 (stage8.single.taxpayer_without_tin) |
 | s8812.line13 | — | — | — | 3 | — | — | 31 |
-| s8812.line14 | — | — | — | 3 | — | OpenTaxSolver: 463 compared (385 nonzero), 507 excluded; E via f1040.line19 (PE, TC, OpenTaxSolver) | 53 |
-| s8812.line16a | — | — | — | 3 | — | OpenTaxSolver below rule: 463 compared (172 nonzero), 507 excluded | 28 |
+| s8812.line14 | — | — | — | 3 | — | OpenTaxSolver: 463 compared (385 nonzero), 507 excluded; UsTaxes below rule: 209 compared (172 nonzero), 578 excluded; E via f1040.line19 (PE, TC, OpenTaxSolver) | 53 |
+| s8812.line16a | — | — | — | 3 | — | OpenTaxSolver below rule: 463 compared (172 nonzero), 507 excluded; UsTaxes below rule: 209 compared (58 nonzero), 578 excluded | 28 |
 | s8812.show16b | — | — | — | — | — | — | 1 (stage8.hoh.child.ctc) |
-| s8812.line16b | — | — | — | 2 (classm.s8812.2, classm.s8812.4) | — | OpenTaxSolver: 317 compared (317 nonzero), 0 excluded | 28 |
+| s8812.line16b | — | — | — | 2 (classm.s8812.2, classm.s8812.4) | — | OpenTaxSolver: 317 compared (317 nonzero), 0 excluded; UsTaxes: 787 compared (685 nonzero), 0 excluded | 28 |
 | s8812.show_iia | — | — | — | — | — | — | 2 (stage8.hoh.child.ctc, stage8.hoh.actc.one_child.low_wages) |
-| s8812.line17 | — | — | — | 2 (classm.s8812.2, classm.s8812.4) | — | OpenTaxSolver below rule: 463 compared (151 nonzero), 507 excluded | 28 |
+| s8812.line17 | — | — | — | 2 (classm.s8812.2, classm.s8812.4) | — | OpenTaxSolver below rule: 463 compared (151 nonzero), 507 excluded; UsTaxes below rule: 209 compared (49 nonzero), 578 excluded | 28 |
 | s8812.combat_pay | — | — | — | — | — | — | — |
 | s8812.puerto_rico | — | — | — | — | — | — | — |
 | s8812.eiw_1a | — | — | — | — | — | — | 24 |
@@ -1901,27 +1901,27 @@ Unasserted lines: s3.zero, s3.mfs
 | s8812.eiw_7 | — | — | — | — | — | — | 26 |
 | s8812.taking_eic | — | — | — | — | — | — | 4 |
 | s8812.chart_eic | — | — | — | — | — | — | — |
-| s8812.line18a | — | — | — | 2 (classm.s8812.2, classm.s8812.4) | — | — | 32 |
+| s8812.line18a | — | — | — | 2 (classm.s8812.2, classm.s8812.4) | — | UsTaxes: 761 compared (761 nonzero), 0 excluded | 32 |
 | s8812.line18b | — | — | — | 2 (classm.s8812.2, classm.s8812.4) | — | — | 24 |
-| s8812.line19 | — | — | — | 1 (classm.s8812.4) | — | OpenTaxSolver: 308 compared (308 nonzero), 7 excluded | 31 |
-| s8812.line20 | — | — | — | 2 (classm.s8812.2, classm.s8812.4) | — | OpenTaxSolver: 310 compared (308 nonzero), 7 excluded | 29 |
+| s8812.line19 | — | — | — | 1 (classm.s8812.4) | — | OpenTaxSolver: 308 compared (308 nonzero), 7 excluded; UsTaxes: 761 compared (761 nonzero), 0 excluded | 31 |
+| s8812.line20 | — | — | — | 2 (classm.s8812.2, classm.s8812.4) | — | OpenTaxSolver: 310 compared (308 nonzero), 7 excluded; UsTaxes: 761 compared (761 nonzero), 0 excluded | 29 |
 | s8812.ss_withheld | — | — | — | — | — | — | 24 |
 | s8812.amt_ws4 | — | — | — | — | — | — | 24 |
 | s8812.amt_ws6 | — | — | — | — | — | — | — |
 | s8812.amt_ws7 | — | — | — | — | — | — | 1 (stage14.f8959.se_above_threshold) |
 | s8812.show_iib | — | — | — | — | — | — | 2 (stage8.hoh.child.ctc, stage8.hoh.actc.one_child.low_wages) |
-| s8812.line21 | — | — | — | 2 (classm.s8812.2, classm.s8812.4) | — | — | 26 |
+| s8812.line21 | — | — | — | 2 (classm.s8812.2, classm.s8812.4) | — | UsTaxes: 654 compared (654 nonzero), 133 excluded | 26 |
 | s8812.line22 | — | — | — | 2 (classm.s8812.2, classm.s8812.4) | — | — | 26 |
-| s8812.line23 | — | — | — | 2 (classm.s8812.2, classm.s8812.4) | — | — | 26 |
-| s8812.line24 | — | — | — | 2 (classm.s8812.2, classm.s8812.4) | — | — | 25 |
-| s8812.line25 | — | — | — | 2 (classm.s8812.2, classm.s8812.4) | — | — | 26 |
-| s8812.line26 | — | — | — | 2 (classm.s8812.2, classm.s8812.4) | — | — | 25 |
+| s8812.line23 | — | — | — | 2 (classm.s8812.2, classm.s8812.4) | — | UsTaxes: 654 compared (654 nonzero), 133 excluded | 26 |
+| s8812.line24 | — | — | — | 2 (classm.s8812.2, classm.s8812.4) | — | UsTaxes below rule: 449 compared (66 nonzero), 338 excluded | 25 |
+| s8812.line25 | — | — | — | 2 (classm.s8812.2, classm.s8812.4) | — | UsTaxes: 350 compared (350 nonzero), 437 excluded | 26 |
+| s8812.line26 | — | — | — | 2 (classm.s8812.2, classm.s8812.4) | — | UsTaxes below rule: 350 compared (350 nonzero), 437 excluded | 25 |
 | s8812.few_children | — | — | — | — | — | — | 24 |
 | s8812.earned_covers | — | — | — | — | — | — | 24 |
 | s8812.from_part_iia | — | — | — | — | — | — | 24 |
 | s8812.from_part_iib | — | — | — | — | — | — | 25 |
 | s8812.part_iib_result | — | — | — | — | — | — | 24 |
-| s8812.line27 | — | — | — | 2 (classm.s8812.2, classm.s8812.4) | — | OpenTaxSolver below rule: 292 compared (49 nonzero), 678 excluded; E via f1040.line28 (PE) | 53 |
+| s8812.line27 | — | — | — | 2 (classm.s8812.2, classm.s8812.4) | — | OpenTaxSolver below rule: 292 compared (49 nonzero), 678 excluded; UsTaxes below rule: 114 compared (11 nonzero), 673 excluded; E via f1040.line28 (PE) | 53 |
 | s8812.clwb_complete | — | — | — | — | — | — | — |
 | s8812.clwb_1 | — | — | — | — | — | — | 6 |
 | s8812.clwb_2 | — | — | — | — | — | — | 6 |
@@ -1968,9 +1968,9 @@ Unasserted lines: s8812.zero, s8812.eiw_2b, s8812.eiw_7_figured, s8812.eiw_3_pos
 | sa.zero | — | — | — | — | — | — | — |
 | sa.agi_floor | — | — | — | — | — | — | — |
 | sa.line2 | — | — | — | 6 | — | — | 2 (audit.sa.negative_agi_medical, audit.sa.negative_agi_medical_paid) |
-| sa.line3 | — | — | — | 6 | — | OpenTaxSolver: 1588 compared (1588 nonzero), 109 excluded | 3 |
-| sa.line4 | — | — | — | 6 | — | OpenTaxSolver: 1588 compared (99 nonzero), 112 excluded | 5 |
-| sa.line5d | — | — | — | 6 | — | OpenTaxSolver: 1700 compared (826 nonzero), 0 excluded | 3 |
+| sa.line3 | — | — | — | 6 | — | OpenTaxSolver: 1588 compared (1588 nonzero), 109 excluded; UsTaxes: 1154 compared (1154 nonzero), 546 excluded | 3 |
+| sa.line4 | — | — | — | 6 | — | OpenTaxSolver: 1588 compared (99 nonzero), 112 excluded; UsTaxes: 1154 compared (73 nonzero), 546 excluded | 5 |
+| sa.line5d | — | — | — | 6 | — | OpenTaxSolver: 1700 compared (826 nonzero), 0 excluded; UsTaxes: 1400 compared (682 nonzero), 300 excluded | 3 |
 | sa.saltbase | — | — | — | — | — | — | — |
 | sa.saltfloor | — | — | — | — | — | — | — |
 | sa.saltthreshold | — | — | — | — | — | — | — |
@@ -1981,7 +1981,7 @@ Unasserted lines: s8812.zero, s8812.eiw_2b, s8812.eiw_7_figured, s8812.eiw_3_pos
 | sa.salthalf | — | — | — | — | — | — | 1 (stage4.salt.mfs_floor) |
 | sa.mfs | — | — | — | — | — | — | — |
 | sa.saltlimit | — | — | — | — | — | — | — |
-| sa.line5e | — | — | — | 6 | — | OpenTaxSolver: 1659 compared (800 nonzero), 0 excluded | 12 |
+| sa.line5e | — | — | — | 6 | — | OpenTaxSolver: 1659 compared (800 nonzero), 0 excluded; UsTaxes: 1154 compared (566 nonzero), 546 excluded | 12 |
 | sa.line6 | — | — | — | 6 | — | — | 5 |
 | sa.line8b | — | — | — | 6 | — | — | 4 |
 | sa.line8c | — | — | — | 6 | — | — | 4 |
@@ -1990,14 +1990,14 @@ Unasserted lines: s8812.zero, s8812.eiw_2b, s8812.eiw_7_figured, s8812.eiw_3_pos
 | sa.gambling_losses | — | — | — | — | — | — | — |
 | sa.line16_gambling | — | — | — | — | — | — | — |
 | sa.line16 | — | — | — | 6 | — | — | 5 |
-| sa.line7 | — | — | — | 6 | — | OpenTaxSolver: 1659 compared (800 nonzero), 0 excluded | 2 (stage16.other.o1, stage4.deductions.combined) |
-| sa.line8e | — | — | — | 6 | — | OpenTaxSolver: 1700 compared (505 nonzero), 0 excluded | 2 (stage16.other.o1, stage4.deductions.combined) |
+| sa.line7 | — | — | — | 6 | — | OpenTaxSolver: 1659 compared (800 nonzero), 0 excluded; UsTaxes: 1154 compared (566 nonzero), 546 excluded | 2 (stage16.other.o1, stage4.deductions.combined) |
+| sa.line8e | — | — | — | 6 | — | OpenTaxSolver: 1700 compared (505 nonzero), 0 excluded; UsTaxes: 1400 compared (404 nonzero), 300 excluded | 2 (stage16.other.o1, stage4.deductions.combined) |
 | sa.line9 | — | — | — | 6 | — | — | 1 (stage4.deductions.combined) |
-| sa.line10 | — | — | — | 6 | — | OpenTaxSolver: 1598 compared (498 nonzero), 102 excluded | 2 (stage16.other.o1, stage4.deductions.combined) |
+| sa.line10 | — | — | — | 6 | — | OpenTaxSolver: 1598 compared (498 nonzero), 102 excluded; UsTaxes: 1072 compared (317 nonzero), 628 excluded | 2 (stage16.other.o1, stage4.deductions.combined) |
 | sa.line12 | 1 (stage4.refuse.gift.sectionB) | — | — | 6 | — | — | 9 |
 | sa.form8283 | — | — | — | — | — | — | 3 |
-| sa.line14 | — | — | — | 6 | — | OpenTaxSolver: 1697 compared (602 nonzero), 3 excluded | 1 (stage4.deductions.combined) |
-| sa.line17 | — | — | — | 6 | — | PE: 1533 compared (682 nonzero), 152 excluded; TC: 1195 compared (525 nonzero), 505 excluded; OpenTaxSolver: 1496 compared (667 nonzero), 204 excluded | 10 |
+| sa.line14 | — | — | — | 6 | — | OpenTaxSolver: 1697 compared (602 nonzero), 3 excluded; UsTaxes: 1400 compared (496 nonzero), 300 excluded | 1 (stage4.deductions.combined) |
+| sa.line17 | — | — | — | 6 | — | PE: 1533 compared (682 nonzero), 152 excluded; TC: 1195 compared (525 nonzero), 505 excluded; OpenTaxSolver: 1496 compared (667 nonzero), 204 excluded; UsTaxes: 1072 compared (484 nonzero), 628 excluded | 10 |
 | sa.standardbase | — | — | — | — | — | — | — |
 | sa.extra | — | — | — | — | — | — | — |
 | sa.boxes_age65 | — | — | — | — | — | — | 1 (stage16.sa.decedent_spouse) |
@@ -2005,9 +2005,9 @@ Unasserted lines: s8812.zero, s8812.eiw_2b, s8812.eiw_7_figured, s8812.eiw_3_pos
 | sa.boxes_blind | — | — | — | — | — | — | — |
 | sa.extra_blind | — | — | — | — | — | — | — |
 | sa.standardraw | — | — | — | — | — | — | — |
-| sa.standard | — | — | — | — | — | PE: 1683 compared (1683 nonzero), 17 excluded; OpenTaxSolver: 1700 compared (1700 nonzero), 0 excluded | 12 |
+| sa.standard | — | — | — | — | — | PE: 1683 compared (1683 nonzero), 17 excluded; OpenTaxSolver: 1700 compared (1700 nonzero), 0 excluded; UsTaxes: 1400 compared (1400 nonzero), 300 excluded | 12 |
 | sa.itemizes | — | — | — | — | — | — | 6 |
-| sa.deduction | — | — | — | — | — | PE: 1533 compared (1533 nonzero), 152 excluded; TC: 902 compared (902 nonzero), 798 excluded; OpenTaxSolver: 1496 compared (1496 nonzero), 204 excluded; E via f1040.line12e (OpenTaxSolver) | 7 |
+| sa.deduction | — | — | — | — | — | PE: 1533 compared (1533 nonzero), 152 excluded; TC: 902 compared (902 nonzero), 798 excluded; OpenTaxSolver: 1496 compared (1496 nonzero), 204 excluded; UsTaxes: 1072 compared (1072 nonzero), 628 excluded; E via f1040.line12e (OpenTaxSolver, UsTaxes) | 7 |
 | sa.mfs_spouse_itemizes | — | — | — | — | — | — | — |
 
 Unasserted lines: sa.mfs_spouse_extra, sa.age65_count, sa.age65, sa.agi, sa.zero, sa.agi_floor, sa.saltbase, sa.saltfloor, sa.saltthreshold, sa.saltexcess, sa.saltreduction, sa.saltremaining, sa.saltfloor_applied, sa.mfs, sa.saltlimit, sa.line16_gambling, sa.standardbase, sa.extra, sa.extra_age65, sa.boxes_blind, sa.extra_blind, sa.standardraw, sa.mfs_spouse_itemizes
@@ -2055,9 +2055,9 @@ Unasserted lines: sales.one, sales.zero
 | sb.form8938 | — | — | — | — | — | — | — |
 | sb.line8 | — | — | — | — | — | — | — |
 | sb.zero | — | — | — | — | — | — | — |
-| sb.line2 | — | — | — | 2 (classm.sb.1, classm.sb.2) | — | — | 6 |
+| sb.line2 | — | — | — | 2 (classm.sb.1, classm.sb.2) | — | UsTaxes: 1400 compared (1059 nonzero), 300 excluded | 6 |
 | sb.line3 | — | — | — | 2 (classm.sb.1, classm.sb.2) | — | — | 6 |
-| sb.line4 | — | — | — | 2 (classm.sb.1, classm.sb.2) | — | — | 6 |
+| sb.line4 | — | — | — | 2 (classm.sb.1, classm.sb.2) | — | UsTaxes: 1400 compared (1059 nonzero), 300 excluded | 6 |
 | sb.line6 | — | — | — | 2 (classm.sb.1, classm.sb.2) | — | — | 5 |
 | sb.partIII | — | — | — | — | — | — | 1 (stage4.sb.foreign_no_filing) |
 
@@ -2437,17 +2437,17 @@ Unasserted lines: scveh.zero, scveh.cent, scveh.bm_c, scveh.om_c, scveh.nonbusin
 | sd.line12 | — | — | — | 3 | — | — | 2 (sales.refuse.carryover, sales.refuse.forms) |
 | sd.line14 | — | — | — | 3 | — | — | 2 (sales.refuse.carryover, sales.refuse.forms) |
 | sd.line13 | — | — | — | 3 | — | OpenTaxSolver: 1354 compared (847 nonzero), 0 excluded | — |
-| sd.line7 | — | — | — | 3 | — | OpenTaxSolver: 1354 compared (710 nonzero), 0 excluded | 2 (sales.netting, sales.mixed_columns) |
-| sd.line15 | — | — | — | 3 | — | OpenTaxSolver: 1354 compared (1228 nonzero), 0 excluded | 3 |
-| sd.line16 | — | — | — | 3 | — | OpenTaxSolver: 1354 compared (1354 nonzero), 0 excluded | 21 |
+| sd.line7 | — | — | — | 3 | — | OpenTaxSolver: 1354 compared (710 nonzero), 0 excluded; UsTaxes: 1400 compared (571 nonzero), 300 excluded | 2 (sales.netting, sales.mixed_columns) |
+| sd.line15 | — | — | — | 3 | — | OpenTaxSolver: 1354 compared (1228 nonzero), 0 excluded; UsTaxes: 1400 compared (1006 nonzero), 300 excluded | 3 |
+| sd.line16 | — | — | — | 3 | — | OpenTaxSolver: 1354 compared (1354 nonzero), 0 excluded; UsTaxes: 1400 compared (1108 nonzero), 300 excluded | 21 |
 | sd.line17 | — | — | — | 1 (classm.sd.3) | — | — | 2 (stage16.sd.line17_no_skips_18, stage16.sd.line17_no_skips_19) |
 | sd.line20 | — | — | — | 1 (classm.sd.3) | — | — | — |
 | sd.loss_limit | — | — | — | — | — | — | — |
 | sd.limited_loss | — | — | — | — | — | — | — |
 | sd.has_loss | — | — | — | — | — | — | — |
-| sd.line21 | — | — | — | 3 | — | OpenTaxSolver: 1354 compared (435 nonzero), 0 excluded | 18 |
+| sd.line21 | — | — | — | 3 | — | OpenTaxSolver: 1354 compared (435 nonzero), 0 excluded; UsTaxes: 1400 compared (351 nonzero), 300 excluded | 18 |
 | sd.line22 | — | — | — | 2 (classm.sd.1, classm.sd.2) | — | — | 49 |
-| sd.to1040 | — | — | — | — | — | E via f1040.line7a (OpenTaxSolver) | — |
+| sd.to1040 | — | — | — | — | — | E via f1040.line7a (OpenTaxSolver, UsTaxes) | — |
 | sd.net_gain_raw | — | — | — | — | — | — | 1 (sales.loss.single.700000) |
 | sd.net_gain | — | — | — | — | — | — | — |
 
@@ -2544,10 +2544,10 @@ Unasserted lines: sdtw.zero, sdtw.ordinary_ceiling, sdtw.use1250, sdtw.use28, sd
 | sli.has | — | — | — | — | — | — | — |
 | sli.claimed | — | — | — | — | — | — | — |
 | sli.max | — | — | — | — | — | — | — |
-| sli.line1 | — | — | — | 4 | — | — | 1 (stage11.sli.cap) |
-| sli.line2 | — | — | — | 4 | — | — | — |
-| sli.line3 | — | — | — | 4 | — | — | 1 (stage11.sli.with_adjustments) |
-| sli.line4 | — | — | — | 4 | — | — | — |
+| sli.line1 | — | — | — | 4 | — | UsTaxes: 206 compared (206 nonzero), 0 excluded | 1 (stage11.sli.cap) |
+| sli.line2 | — | — | — | 4 | — | UsTaxes: 160 compared (160 nonzero), 46 excluded | — |
+| sli.line3 | — | — | — | 4 | — | UsTaxes: 160 compared (73 nonzero), 46 excluded | 1 (stage11.sli.with_adjustments) |
+| sli.line4 | — | — | — | 4 | — | UsTaxes: 160 compared (160 nonzero), 46 excluded | — |
 | sli.base_other | — | — | — | — | — | — | — |
 | sli.base_joint | — | — | — | — | — | — | — |
 | sli.line5 | — | — | — | 3 | — | — | 1 (stage11.sli.boundary_joint) |
@@ -2557,11 +2557,11 @@ Unasserted lines: sdtw.zero, sdtw.ordinary_ceiling, sdtw.use1250, sdtw.use28, sd
 | sli.divisor_joint | — | — | — | — | — | — | — |
 | sli.divisor | — | — | — | — | — | — | — |
 | sli.line8_figured | — | — | — | — | — | — | — |
-| sli.line8 | — | — | — | 4 | — | — | 7 |
-| sli.line9 | — | — | — | 4 | — | — | — |
+| sli.line8 | — | — | — | 4 | — | UsTaxes: 160 compared (66 nonzero), 46 excluded | 7 |
+| sli.line9 | — | — | — | 4 | — | UsTaxes: 160 compared (94 nonzero), 46 excluded | — |
 | sli.eligible | — | — | — | — | — | — | — |
 | sli.allowed | — | — | — | — | — | — | — |
-| sli.deduction | — | — | — | — | — | E via s1.line21 (OpenTaxSolver) | 11 |
+| sli.deduction | — | — | — | — | — | E via s1.line21 (OpenTaxSolver, UsTaxes) | 11 |
 
 Unasserted lines: sli.zero, sli.has, sli.max, sli.base_other, sli.base_joint, sli.over, sli.divisor_other, sli.divisor_joint, sli.divisor, sli.line8_figured, sli.eligible, sli.allowed
 
@@ -2569,42 +2569,42 @@ Unasserted lines: sli.zero, sli.has, sli.max, sli.base_other, sli.base_joint, sl
 
 | line | A | B | C | M | H | E | R |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| ssb.benefits | — | — | — | — | — | E via ssb.line1 (OpenTaxSolver) | — |
+| ssb.benefits | — | — | — | — | — | E via ssb.line1 (OpenTaxSolver, UsTaxes) | — |
 | ssb.pub915 | — | — | — | — | — | — | — |
 | ssb.lump_sum | — | — | — | — | — | — | — |
 | ssb.terror_disability | — | — | — | — | — | — | — |
 | ssb.lived_apart | — | — | — | — | — | — | — |
-| ssb.line1 | — | — | — | 5 | — | OpenTaxSolver: 529 compared (529 nonzero), 21 excluded | 1 (stage16.ira.i10) |
+| ssb.line1 | — | — | — | 5 | — | OpenTaxSolver: 529 compared (529 nonzero), 21 excluded; UsTaxes: 463 compared (463 nonzero), 0 excluded | 1 (stage16.ira.i10) |
 | ssb.has_benefits | — | — | — | — | — | — | — |
-| ssb.line2 | — | — | — | 5 | — | OpenTaxSolver: 529 compared (529 nonzero), 21 excluded | 1 (stage16.ira.i10) |
-| ssb.line3 | — | — | — | 5 | — | OpenTaxSolver: 529 compared (529 nonzero), 21 excluded | 2 (stage11.ss.unemployment, stage16.ira.i10) |
-| ssb.line4 | — | — | — | 5 | — | OpenTaxSolver below rule: 529 compared (0 nonzero), 21 excluded | 1 (stage16.ira.i10) |
-| ssb.line5 | — | — | — | 5 | — | OpenTaxSolver: 529 compared (529 nonzero), 21 excluded | 1 (stage16.ira.i10) |
+| ssb.line2 | — | — | — | 5 | — | OpenTaxSolver: 529 compared (529 nonzero), 21 excluded; UsTaxes: 463 compared (463 nonzero), 0 excluded | 1 (stage16.ira.i10) |
+| ssb.line3 | — | — | — | 5 | — | OpenTaxSolver: 529 compared (529 nonzero), 21 excluded; UsTaxes: 463 compared (463 nonzero), 0 excluded | 2 (stage11.ss.unemployment, stage16.ira.i10) |
+| ssb.line4 | — | — | — | 5 | — | OpenTaxSolver below rule: 529 compared (0 nonzero), 21 excluded; UsTaxes below rule: 463 compared (0 nonzero), 0 excluded | 1 (stage16.ira.i10) |
+| ssb.line5 | — | — | — | 5 | — | OpenTaxSolver: 529 compared (529 nonzero), 21 excluded; UsTaxes: 463 compared (463 nonzero), 0 excluded | 1 (stage16.ira.i10) |
 | ssb.ira_line20 | — | — | — | — | — | — | — |
-| ssb.line6 | — | — | — | 5 | — | OpenTaxSolver: 529 compared (299 nonzero), 21 excluded | 2 (stage11.ss.educator, stage16.ira.i10) |
-| ssb.line7 | — | — | — | 3 | — | OpenTaxSolver: 529 compared (529 nonzero), 21 excluded | 3 |
+| ssb.line6 | — | — | — | 5 | — | OpenTaxSolver: 529 compared (299 nonzero), 21 excluded; UsTaxes: 337 compared (154 nonzero), 126 excluded | 2 (stage11.ss.educator, stage16.ira.i10) |
+| ssb.line7 | — | — | — | 3 | — | OpenTaxSolver: 529 compared (529 nonzero), 21 excluded; UsTaxes: 337 compared (337 nonzero), 126 excluded | 3 |
 | ssb.base_single | — | — | — | — | — | — | — |
 | ssb.base_joint | — | — | — | — | — | — | — |
 | ssb.zero | — | — | — | — | — | — | — |
 | ssb.mfs_base | — | — | — | — | — | — | — |
-| ssb.line8 | — | — | — | 2 (classm.ssb.1, classm.ssb.5) | — | OpenTaxSolver: 529 compared (529 nonzero), 21 excluded | 2 (stage13.ssb_joint_base, stage16.ira.i10) |
-| ssb.line9 | — | — | — | 2 (classm.ssb.1, classm.ssb.5) | — | OpenTaxSolver: 529 compared (472 nonzero), 21 excluded | 2 (stage10.ss.none, stage13.ssb_joint_base) |
+| ssb.line8 | — | — | — | 2 (classm.ssb.1, classm.ssb.5) | — | OpenTaxSolver: 529 compared (529 nonzero), 21 excluded; UsTaxes: 337 compared (337 nonzero), 126 excluded | 2 (stage13.ssb_joint_base, stage16.ira.i10) |
+| ssb.line9 | — | — | — | 2 (classm.ssb.1, classm.ssb.5) | — | OpenTaxSolver: 529 compared (472 nonzero), 21 excluded; UsTaxes: 337 compared (297 nonzero), 126 excluded | 2 (stage10.ss.none, stage13.ssb_joint_base) |
 | ssb.adjust_single | — | — | — | — | — | — | — |
 | ssb.adjust_joint | — | — | — | — | — | — | — |
 | ssb.mfs_adjust | — | — | — | — | — | — | — |
-| ssb.line10 | — | — | — | 2 (classm.ssb.1, classm.ssb.5) | — | OpenTaxSolver: 472 compared (472 nonzero), 18 excluded | — |
-| ssb.line11 | — | — | — | 2 (classm.ssb.1, classm.ssb.5) | — | OpenTaxSolver: 529 compared (447 nonzero), 21 excluded | — |
-| ssb.line12 | — | — | — | 2 (classm.ssb.1, classm.ssb.5) | — | OpenTaxSolver: 529 compared (472 nonzero), 21 excluded | — |
-| ssb.line13 | — | — | — | 2 (classm.ssb.1, classm.ssb.5) | — | OpenTaxSolver: 529 compared (472 nonzero), 21 excluded | 1 (stage10.ss.middle) |
-| ssb.line14 | — | — | — | 2 (classm.ssb.1, classm.ssb.5) | — | OpenTaxSolver: 529 compared (472 nonzero), 21 excluded | 1 (stage10.ss.small_benefits) |
-| ssb.line15 | — | — | — | 2 (classm.ssb.1, classm.ssb.5) | — | OpenTaxSolver: 529 compared (447 nonzero), 21 excluded | 1 (stage10.ss.middle) |
+| ssb.line10 | — | — | — | 2 (classm.ssb.1, classm.ssb.5) | — | OpenTaxSolver: 472 compared (472 nonzero), 18 excluded; UsTaxes: 337 compared (337 nonzero), 126 excluded | — |
+| ssb.line11 | — | — | — | 2 (classm.ssb.1, classm.ssb.5) | — | OpenTaxSolver: 529 compared (447 nonzero), 21 excluded; UsTaxes: 337 compared (278 nonzero), 126 excluded | — |
+| ssb.line12 | — | — | — | 2 (classm.ssb.1, classm.ssb.5) | — | OpenTaxSolver: 529 compared (472 nonzero), 21 excluded; UsTaxes: 337 compared (297 nonzero), 126 excluded | — |
+| ssb.line13 | — | — | — | 2 (classm.ssb.1, classm.ssb.5) | — | OpenTaxSolver: 529 compared (472 nonzero), 21 excluded; UsTaxes: 337 compared (297 nonzero), 126 excluded | 1 (stage10.ss.middle) |
+| ssb.line14 | — | — | — | 2 (classm.ssb.1, classm.ssb.5) | — | OpenTaxSolver: 529 compared (472 nonzero), 21 excluded; UsTaxes: 337 compared (297 nonzero), 126 excluded | 1 (stage10.ss.small_benefits) |
+| ssb.line15 | — | — | — | 2 (classm.ssb.1, classm.ssb.5) | — | OpenTaxSolver: 529 compared (447 nonzero), 21 excluded; UsTaxes: 337 compared (278 nonzero), 126 excluded | 1 (stage10.ss.middle) |
 | ssb.mfs_together | — | — | — | — | — | — | — |
 | ssb.line16_sum | — | — | — | — | — | — | — |
 | ssb.line16_together | — | — | — | — | — | — | — |
-| ssb.line16 | — | — | — | 3 | — | OpenTaxSolver: 529 compared (472 nonzero), 21 excluded | 2 (stage10.ss.top, stage10.ss.small_benefits) |
-| ssb.line17 | — | — | — | 3 | — | OpenTaxSolver: 472 compared (472 nonzero), 18 excluded | — |
+| ssb.line16 | — | — | — | 3 | — | OpenTaxSolver: 529 compared (472 nonzero), 21 excluded; UsTaxes: 337 compared (297 nonzero), 126 excluded | 2 (stage10.ss.top, stage10.ss.small_benefits) |
+| ssb.line17 | — | — | — | 3 | — | OpenTaxSolver: 472 compared (472 nonzero), 18 excluded; UsTaxes: 337 compared (337 nonzero), 126 excluded | — |
 | ssb.line18_figured | — | — | — | — | — | — | — |
-| ssb.line18 | — | — | — | 3 | — | OpenTaxSolver: 529 compared (472 nonzero), 21 excluded; E via f1040.line6b (PE, TC, OpenTaxSolver) | 1 (stage16.ira.i10) |
+| ssb.line18 | — | — | — | 3 | — | OpenTaxSolver: 529 compared (472 nonzero), 21 excluded; UsTaxes: 337 compared (297 nonzero), 126 excluded; E via f1040.line6b (PE, TC, OpenTaxSolver, UsTaxes) | 1 (stage16.ira.i10) |
 
 Unasserted lines: ssb.has_benefits, ssb.ira_line20, ssb.base_single, ssb.base_joint, ssb.zero, ssb.mfs_base, ssb.adjust_single, ssb.adjust_joint, ssb.mfs_adjust, ssb.mfs_together, ssb.line16_sum, ssb.line16_together, ssb.line18_figured
 
@@ -2794,5 +2794,5 @@ Unasserted lines: below_boundary, table_tax, worksheet_tax, tax
 
 Unasserted lines: single.row1.product, single.row1.tax, single.row2.product, single.row2.tax, single.row3.product, single.row3.tax, single.row4.product, single.row4.tax, single.row5.product, single.row5.tax, single.result, mfj.row1.product, mfj.row1.tax, mfj.row2.product, mfj.row2.tax, mfj.row3.product, mfj.row3.tax, mfj.row4.product, mfj.row4.tax, mfj.row5.product, mfj.row5.tax, mfj.result, mfs.row1.product, mfs.row1.tax, mfs.row2.product, mfs.row2.tax, mfs.row3.product, mfs.row3.tax, mfs.row4.product, mfs.row4.tax, mfs.row5.product, mfs.row5.tax, mfs.result, hoh.row1.product, hoh.row1.tax, hoh.row2.product, hoh.row2.tax, hoh.row3.product, hoh.row3.tax, hoh.row4.product, hoh.row4.tax, hoh.row5.product, hoh.row5.tax, hoh.result, tax
 
-Unasserted computed lines across all documents: 674. (Supplied input lines are excluded; their correctness rests on reading the source document. Intermediate lines listed as unasserted are still exercised transitively; their detectability is tracked in reports/2025/mutation.md.)
+Unasserted computed lines across all documents: 673. (Supplied input lines are excluded; their correctness rests on reading the source document. Intermediate lines listed as unasserted are still exercised transitively; their detectability is tracked in reports/2025/mutation.md.)
 Asserted keys not matching a line id: person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line3, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.positive, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line4a, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line4b, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.owes, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line4c, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line5b, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line6, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line7, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line8d, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line9, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line10, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line11, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line12, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line13, root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}.below_boundary, root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}.tax, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.below_boundary, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.tax, root|inst:tax_on_amount#{"amount":"qdcg.line1","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax, root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax, qdcg.f1040.line15, qdcg.f1040.line3a, qdcg.f1040.status, f1040.qdcg.line25, qdcg.sd.distributions

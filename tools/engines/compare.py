@@ -8,7 +8,12 @@ Categories per (engine, case, line):
                  schedule where the form uses the table); the recomputation keeps
                  the worksheet path and re-takes its smaller-of, so it is an
                  identified cause, not a tolerance
-  float          engine differs by no more than two units in the last place of its
+  table-midpoint for an engine whose record declares "tax_table": "midpoint-unrounded"
+                 (UsTaxes), the engine equals the project's lines recomputed by its
+                 methods: each Tax Table lookup replaced by the schedule at the band
+                 midpoint without rounding (midpoint_tax), Form 8960 line 17 rounded to
+                 whole dollars (niit_whole_dollar), and the lines that follow re-taken
+  float         engine differs by no more than two units in the last place of its
                  floating-point representation (float32 for PolicyEngine-US, float64
                  for Tax-Calculator), a bound derived from the engine's precision
   unrounded      for an engine of precision "decimal2" (OpenTaxSolver: doubles, nothing
@@ -123,18 +128,43 @@ def table_tax(t, status, amount):
     raise ValueError("amount outside the Tax Table")
 
 
-def table_minus_schedule(t, status, amount):
-    """How much the project's Tax Table value exceeds the rate-schedule value for an
-    amount; zero at or above the boundary where the form itself uses the schedule."""
+def table_minus_schedule(t, status, amount, engine_tax=None):
+    """How much the project's Tax Table value exceeds the engine's value for an amount (the
+    rate-schedule value, or `engine_tax(t, status, amount)` for an engine with another table
+    method); zero at or above the boundary where the form itself uses the schedule."""
     if amount is None or amount >= t["boundary"]:
         return 0
-    return table_tax(t, status, amount) - schedule_tax(t, status, amount)
+    return table_tax(t, status, amount) - (engine_tax or schedule_tax)(t, status, amount)
 
 
-def schedule_mode_expectations(values, case, t):
+def midpoint_tax(t, status, amount):
+    """The Tax Table emulated as UsTaxes does (irsForms/TaxTable.ts `computeTax`): the rate schedule
+    applied at the midpoint of the table band holding the whole-dollar part of the amount ($5 bands
+    from $5 to $25, $25 bands to $3,000, $50 bands to $100,000; nothing under $5), without the
+    table's rounding to whole dollars. Every midpoint is a multiple of $2.50 and the schedule's
+    rates are whole percents, so the value is a whole number of cents."""
+    dollars = amount // 100
+    if dollars < 5:
+        return 0
+    band = 5 if dollars < 25 else 25 if dollars < 3000 else 50
+    return schedule_tax(t, status, (dollars - dollars % band) * 100 + band * 50)
+
+
+def niit_whole_dollar(line16):
+    """Form 8960 line 17 as UsTaxes figures it (irsForms/F8960.ts line 126, `Math.round(l16 * 0.038)`):
+    3.8% of line 16 rounded to whole dollars, half up, in cents."""
+    return (line16 * 38 + 50_000) // 100_000 * 100
+
+
+def schedule_mode_expectations(values, case, t, engine_tax=None, niit=None):
     """The project's tax lines recomputed as an engine that uses the rate schedule in
     place of the Tax Table would compute them: the same worksheet path, each table
-    lookup replaced by the schedule value, and the worksheet's smaller-of re-taken."""
+    lookup replaced by the schedule value, and the worksheet's smaller-of re-taken.
+    With `engine_tax`, each lookup is replaced by that function's value instead (an engine
+    with another table method), and with `niit` Form 8960 line 17 is recomputed from line
+    16 by that function; the dict then also carries the lines that follow (Form 1040 lines
+    18 and 21 to 37, Schedule 3 line 8, Schedule 8812 lines 14 to 27, the worksheet's tax
+    lines and Schedule 2 line 21)."""
     status = case["inputs"]["f1040.status"]
     def m(line):
         v = values.get(line, {}).get("value", {})
@@ -142,7 +172,7 @@ def schedule_mode_expectations(values, case, t):
     def b(line):
         v = values.get(line, {}).get("value", {})
         return v.get("value") if v.get("kind") == "bool" else None
-    d = lambda line: table_minus_schedule(t, status, m(line))
+    d = lambda line: table_minus_schedule(t, status, m(line), engine_tax)
     if m("f1040.line15") is None or m("f1040.line16") is None:
         # A return the project refuses or leaves incomplete has no schedule-mode expectations.
         return {line: None for line in TAX_LINES}
@@ -153,7 +183,8 @@ def schedule_mode_expectations(values, case, t):
     else:
         tax16 = m("f1040.line16") - d("f1040.line15")
     line17 = m("f1040.line17") or 0
-    line23 = m("f1040.line23") or 0
+    niit17 = niit(m("f8960.line16")) if niit and m("f8960.line16") is not None else (m("f8960.line17") or 0)
+    line23 = (m("f1040.line23") or 0) - (m("f8960.line17") or 0) + niit17
     tax18 = tax16 + line17
     ftc_taxes = case["inputs"].get("ftc.taxes", 0) if (m("f1040.line20") or 0) > 0 or case["inputs"].get("ftc.taxes", 0) > 0 else 0
     tax20 = min(ftc_taxes, tax16) if m("f1040.line20") is not None else 0
@@ -184,11 +215,33 @@ def schedule_mode_expectations(values, case, t):
         tax28 = line17_8812
     else:
         tax28 = min(line17_8812, m("s8812.line26") or 0)
-    return {"f1040.line16": tax16, "f1040.line19": tax19, "f1040.line20": tax20, "f1040.line28": tax28,
-            "f1040.line24": max(0, tax18 - tax20 - cdcc - savers - eehic - tax19 - rce) + line23,
-            "f1040.tax_before_credits": tax18 + line23,
-            "f2441.line11": cdcc, "s3.line2": cdcc, "f8880.line12": savers,
-            "f5695.line15": rce, "s3.line5a": rce, "f5695.line32": eehic, "s3.line5b": eehic}
+    line22 = max(0, tax18 - tax20 - cdcc - savers - eehic - tax19 - rce)
+    out = {"f1040.line16": tax16, "f1040.line19": tax19, "f1040.line20": tax20, "f1040.line28": tax28,
+           "f1040.line24": line22 + line23,
+           "f1040.tax_before_credits": tax18 + line23,
+           "f2441.line11": cdcc, "s3.line2": cdcc, "f8880.line12": savers,
+           "f5695.line15": rce, "s3.line5a": rce, "f5695.line32": eehic, "s3.line5b": eehic}
+    if engine_tax is None and niit is None:
+        return out
+    line33 = (m("f1040.line33") or 0) - (m("f1040.line28") or 0) + tax28
+    out.update({"f1040.line18": tax18, "f1040.line21": tax19 + tax20 + cdcc + savers + eehic + rce, "f1040.line22": line22,
+                "f1040.line23": line23, "s2.line21": (m("s2.line21") or 0) - (m("f8960.line17") or 0) + niit17,
+                "f8960.line17": niit17, "f8960.tax": niit17, "s3.line8": tax20 + cdcc + savers + eehic + rce,
+                "f1040.line32": (m("f1040.line32") or 0) - (m("f1040.line28") or 0) + tax28, "f1040.line33": line33,
+                "f1040.line34": max(0, line33 - (line22 + line23)), "f1040.line37": max(0, line22 + line23 - line33),
+                "s8812.line14": tax19, "s8812.line16a": line16a, "s8812.line17": line17_8812, "s8812.line27": tax28})
+    if m("qdcg.line22") is not None:
+        q22, q23, q24 = m("qdcg.line22") - d("qdcg.line5"), m("qdcg.line23") - d("qdcg.line5"), m("qdcg.line24") - d("qdcg.line1")
+        out.update({"qdcg.line22": q22, "qdcg.line23": q23, "qdcg.line24": q24, "qdcg.line25": min(q23, q24)})
+    return out
+
+
+def midpoint_mode_expectations(values, case, t):
+    """The project's tax lines recomputed by the methods of an engine whose record declares
+    "tax_table": "midpoint-unrounded" (UsTaxes): every Tax Table lookup replaced by the schedule at
+    the band midpoint without rounding (midpoint_tax) and Form 8960 line 17 rounded to whole dollars
+    (niit_whole_dollar), along the project's own worksheet path."""
+    return schedule_mode_expectations(values, case, t, engine_tax=midpoint_tax, niit=niit_whole_dollar)
 
 
 def float_bound_cents(precision, engine_cents, components=1):
@@ -607,6 +660,30 @@ def derived_features(case, values):
     if any((m(cut) or 0) > 0 and (m(amount) or 0) > 0
            for cut, amount in (("s1a.line12", "s1a.line7"), ("s1a.line20", "s1a.line15"), ("s1a.line29", "s1a.line24"))):
         feats.add("schedule1a_stepped_phaseout")
+    # Schedule 8812 line 20 (15% of earned income over $2,500) below line 17: the form's line 20 question decides line 27.
+    if m("s8812.line20") is not None and m("s8812.line17") is not None and m("s8812.line20") < m("s8812.line17"):
+        feats.add("s8812_line20_below_line17")
+    # Form 8959 line 24 (Additional Medicare Tax withheld) is positive, where the generator enters Form 1040 line 25c as zero.
+    if (m("f8959.line24") or 0) > 0:
+        feats.add("additional_medicare_withholding")
+    # Additional Medicare Tax owed or withheld: Schedule 8812 line 21 comes from the Additional Medicare Tax and RRTA Tax Worksheet.
+    if (m("f8959.line18") or 0) > 0 or (m("f8959.line24") or 0) > 0:
+        feats.add("additional_medicare_tax")
+    # Social security benefits with Schedule 1 additional income (unemployment compensation): Social Security Benefits Worksheet line 6.
+    if (m("ssb.line1") or 0) > 0 and (m("s1.line10") or 0) != 0:
+        feats.add("ssb_with_schedule1_income")
+    # An itemizer with a state and local tax deduction: Form 8960 line 9b may allocate part of it to investment income.
+    if feats & {"itemizes"} and (m("sa.line5e") or 0) > 0:
+        feats.add("itemized_state_tax")
+        # ... and modified AGI over the net investment income tax threshold (Form 8960 line 15), so line 9b reaches the tax.
+        if (m("f8960.line15") or 0) > 0:
+            feats.add("itemized_state_tax_niit")
+    # A car loan interest deduction remains after the phase-out (Schedule 1-A line 30).
+    if (m("s1a.line30") or 0) > 0:
+        feats.add("car_loan_deduction")
+    # The foreign tax credit is less than the foreign tax paid: the tax on line 16 limited it.
+    if case["inputs"].get("ftc.taxes", 0) > (m("ftc.credit") or 0):
+        feats.add("foreign_tax_limited")
     return feats
 
 
@@ -691,6 +768,9 @@ def main():
             # built only when a difference needs it.
             unrounded = eng.get("precision") == "decimal2"
             model = None
+            # An engine that emulates the Tax Table at the band midpoint without rounding (UsTaxes) is read against the
+            # project's lines recomputed by that method.
+            midpoint = midpoint_mode_expectations(values, case, tables) if eng.get("tax_table") == "midpoint-unrounded" else {}
             for line, ev in elines.items():
                 pv, kind = project_line(values, line)
                 reason = next((l["reason"] for l in eng["limitations"] if l["feature"] in feats and line in l["lines"]), None)
@@ -718,6 +798,8 @@ def main():
                     if ev in (model.predicted(line) or ()):
                         stats[(ename, line)]["unrounded"] += 1; continue
                 bound = 0 if unrounded else float_bound_cents(eng.get("precision", "float64"), ev, eng.get("components", {}).get(line, 1))
+                if midpoint.get(line) is not None and midpoint[line] != pv and abs(ev - midpoint[line]) <= bound:
+                    stats[(ename, line)]["table-midpoint"] += 1; continue
                 if not uses_table and line in TAX_LINES and schedule_mode[line] != pv and abs(ev - schedule_mode[line]) <= bound:
                     stats[(ename, line)]["table-adjusted"] += 1; continue
                 if not uses_table and line == "f1040.line27a" and (ef := eic_formula(values, tables)) is not None and abs(ev - ef) <= max(bound, 100):
@@ -738,7 +820,7 @@ def main():
                  f"Cases: {len(cases)} generated returns, single, head of household and married filing jointly (tools/engines/generate_cases.py). "
                  "Engines run locally under .engines/ (tools/engines/setup.sh); versions: "
                  + ", ".join(f"{n} {e['version']}" for n, e in engines.items()) + ".", "",
-                 f"`table-adjusted` means the engine equals the project's tax lines recomputed with every Tax Table lookup replaced by the rate schedule (engines compute from the schedule where the form prescribes the table), keeping the worksheet path and re-taking its smaller-of; an identified cause, not a tolerance. For Form 1040 line 27a, `table-adjusted` means the engine is within $1 of the project's Worksheet A path recomputed with each EIC Table lookup replaced by the credit at the exact amount (the engines compute from the formula where the instructions prescribe the table built at each $50 band's midpoint); the $1 allows for the engines' statutory percentages, which the archive does not hold, against the rates the Rev. Proc. 2024-40 amounts imply (at most about $0.20 apart over the table's range). `float` means the difference is within two units in the last place of the engine's floating-point representation (PolicyEngine-US computes in float32, Tax-Calculator in float64), a bound derived from the engine's precision. `unrounded` (OpenTaxSolver, which computes in doubles, rounds nothing and prints each program's lines to the cent) means the engine equals the project's own derivation of the line re-evaluated in exact arithmetic without the project's half-up cent rounding of products and ratios (amb.{Y}.multiplication_subcent), with each amount that passes between the engine's programs taken at the cent it prints and the result printed to the cent; where the exact value is within 1/1000 cent of a half cent either neighbouring cent is the print (an engine double stays within 1/10,000 cent of the exact value at these amounts). No difference is allowed beyond what that recomputation gives; a line the adapter supplies as an amount is recomputed only where the project's value is that amount, and a case whose exact values take another branch, test or table band than the project's is not recomputed. An identified cause, not a tolerance. OpenTaxSolver builds its tax from the Tax Table below $100,000 as the form does, so it has no `table-adjusted` reading. `excluded` lines carry the engine limitation stated below; the features that trigger them are the generator's, those read off the project's values, and those the engine's adapter reports about its own run. Every other difference must be explained in fixtures/{Y}/differential/engine_investigations.json or the run fails.", ""]
+                 f"`table-adjusted` means the engine equals the project's tax lines recomputed with every Tax Table lookup replaced by the rate schedule (engines compute from the schedule where the form prescribes the table), keeping the worksheet path and re-taking its smaller-of; an identified cause, not a tolerance. For Form 1040 line 27a, `table-adjusted` means the engine is within $1 of the project's Worksheet A path recomputed with each EIC Table lookup replaced by the credit at the exact amount (the engines compute from the formula where the instructions prescribe the table built at each $50 band's midpoint); the $1 allows for the engines' statutory percentages, which the archive does not hold, against the rates the Rev. Proc. 2024-40 amounts imply (at most about $0.20 apart over the table's range). `float` means the difference is within two units in the last place of the engine's floating-point representation (PolicyEngine-US computes in float32, Tax-Calculator in float64), a bound derived from the engine's precision. `unrounded` (OpenTaxSolver, which computes in doubles, rounds nothing and prints each program's lines to the cent) means the engine equals the project's own derivation of the line re-evaluated in exact arithmetic without the project's half-up cent rounding of products and ratios (amb.{Y}.multiplication_subcent), with each amount that passes between the engine's programs taken at the cent it prints and the result printed to the cent; where the exact value is within 1/1000 cent of a half cent either neighbouring cent is the print (an engine double stays within 1/10,000 cent of the exact value at these amounts). No difference is allowed beyond what that recomputation gives; a line the adapter supplies as an amount is recomputed only where the project's value is that amount, and a case whose exact values take another branch, test or table band than the project's is not recomputed. An identified cause, not a tolerance. OpenTaxSolver builds its tax from the Tax Table below $100,000 as the form does, so it has no `table-adjusted` reading. `table-midpoint` (UsTaxes, which emulates the Tax Table by applying the rate schedule at the midpoint of the band holding the whole-dollar amount, without the table's rounding to whole dollars, and rounds Form 8960 line 17 to whole dollars) means the engine equals the project's lines recomputed by those two methods along the project's own worksheet path: each Tax Table lookup replaced by the schedule at the band midpoint, Form 8960 line 17 by 3.8% of line 16 rounded half up to whole dollars, and the lines that follow (the worksheet's tax lines, Form 1040 lines 16 to 37, Schedule 8812 lines 14 to 27) re-taken; within the engine's `float` bound, it is an identified cause, not a tolerance. `excluded` lines carry the engine limitation stated below; the features that trigger them are the generator's, those read off the project's values, and those the engine's adapter reports about its own run. Every other difference must be explained in fixtures/{Y}/differential/engine_investigations.json or the run fails.", ""]
     # The not-computed floor: the share of the engine's cases on which the project left the line without a
     # value, outside the allow-list's unfiled-form cases.
     shares, floor_failures = {}, []
@@ -752,13 +834,13 @@ def main():
                   "(a refusal, an unknown input, a non-money value), measured outside the allow-listed returns that do not file the form: "
                   + "; ".join(f"{line} unknown where `{inp}` is false ({reason})" for line, (inp, reason) in sorted(NOT_COMPUTED_ALLOW.items())) + ".", ""]
     for ename in engines:
-        lines_out += [f"## {ename}", "", "| line | exact | table-adjusted | float | unrounded | excluded | explained | UNEXPLAINED | not computed | not computed outside the allow-list (share) |",
-                      "| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |"]
+        lines_out += [f"## {ename}", "", "| line | exact | table-adjusted | table-midpoint | float | unrounded | excluded | explained | UNEXPLAINED | not computed | not computed outside the allow-list (share) |",
+                      "| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |"]
         for (en, line), c in sorted(stats.items()):
             if en != ename: continue
             notc = sum(v for k, v in c.items() if k.startswith("project-"))
             outside = notc - summary[(ename, line)]["not_computed_allowed"]
-            lines_out.append(f"| {line} | {c['exact']} | {c['table-adjusted']} | {c['float']} | {c['unrounded']} | {c['excluded']} | {c['explained']} | {c['UNEXPLAINED']} | {notc} | {outside} ({shares[(ename, line)]:.1%}) |")
+            lines_out.append(f"| {line} | {c['exact']} | {c['table-adjusted']} | {c['table-midpoint']} | {c['float']} | {c['unrounded']} | {c['excluded']} | {c['explained']} | {c['UNEXPLAINED']} | {notc} | {outside} ({shares[(ename, line)]:.1%}) |")
         lines_out.append("")
         reasons = {r for (en, _), rc in excluded_reasons.items() if en == ename for r in rc}
         if reasons:
@@ -788,7 +870,7 @@ def main():
             per_line[line] = {"project_line": resolve_line(line),
                               "compared": sm["compared"], "compared_nonzero": sm["compared_nonzero"],
                               "excluded": c["excluded"], "excluded_nonzero": sm["excluded_nonzero"],
-                              "unexplained": c["UNEXPLAINED"], "exact": c["exact"], "table_adjusted": c["table-adjusted"],
+                              "unexplained": c["UNEXPLAINED"], "exact": c["exact"], "table_adjusted": c["table-adjusted"], "table_midpoint": c["table-midpoint"],
                               "float": c["float"], "unrounded": c["unrounded"], "explained": c["explained"],
                               "not_computed": sum(v for k, v in c.items() if k.startswith("project-")),
                               "not_computed_allowed": sm["not_computed_allowed"],

@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # Engine differential (spec 6.5, class C): generated returns (single, head of household and
-# married filing jointly) through the project and through PolicyEngine-US, Tax-Calculator and
-# OpenTaxSolver, compared line by line. Skips visibly when the Python engines are not
-# installed (tools/engines/setup.sh); run_engines.py leaves OpenTaxSolver out, visibly, when
-# its package is not built.
+# married filing jointly) through the project and through PolicyEngine-US, Tax-Calculator,
+# OpenTaxSolver and UsTaxes, compared line by line. Skips visibly when the Python engines are not
+# installed (tools/engines/setup.sh); run_engines.py leaves OpenTaxSolver and UsTaxes out, visibly,
+# when their packages are not installed.
 set -euo pipefail
 # Arguments (--year N) are passed to every step; the paths below use the year they resolve to.
 ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
@@ -21,6 +21,7 @@ fi
 mkdir -p "$WORK"
 python3 -I "$ROOT/tools/engines/generate_cases.py" "$@" --count "$N" --joint "$J" --se "$S" --seed "$SEED" --out "$WORK/cases.json"
 node "$ROOT/engine/dist/main.js" eval "$@" --batch "$WORK/cases.json" > "$WORK/project.json"
+python3 -I "$ROOT/tools/engines/ustaxes_adapter.py" --self-test "$@" --cases "$WORK/cases.json" --work "$WORK/ustaxes"
 "$VENV/bin/python" -I "$ROOT/tools/engines/run_engines.py" "$@" --cases "$WORK/cases.json" --out "$WORK/engines.json"
 python3 -I "$ROOT/tools/engines/compare.py" "$@" --cases "$WORK/cases.json" --project "$WORK/project.json" --engines "$WORK/engines.json" \
   --investigations "$ROOT/fixtures/$Y/differential/engine_investigations.json" --report "$ROOT/reports/$Y/engine_differential.md"

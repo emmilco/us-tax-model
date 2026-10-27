@@ -20,6 +20,22 @@ python3 -m venv "$VENV"
 "$VENV/bin/pip" show policyengine-us taxcalc | grep -E '^(Name|Version)'
 echo "engines installed in $VENV"
 
+# UsTaxes: the TypeScript sources at a pinned commit, used as shipped (never built or edited), and
+# the three runtime packages its tax code imports, at the versions UsTaxes' package-lock pins, in
+# a separate directory (a full `npm install` in the clone would fetch its React/Tauri tree).
+# A newer commit is a change to USTAXES_COMMIT here and a rerun; the adapter reads the version and
+# commit from the clone.
+USTAXES_COMMIT=d276c7241dc85654758c7097e295d4d50a7fb435
+UST="$ROOT/.engines/ustaxes-src"
+if [ ! -d "$UST/.git" ]; then
+  git clone --quiet https://github.com/ustaxes/UsTaxes "$UST"
+fi
+if [ "$(git -C "$UST" rev-parse HEAD)" != "$USTAXES_COMMIT" ]; then
+  git -C "$UST" fetch --quiet origin "$USTAXES_COMMIT" && git -C "$UST" checkout --quiet "$USTAXES_COMMIT"
+fi
+npm install --silent --no-audit --no-fund --prefix "$ROOT/.engines/ustaxes-deps" lodash@4.18.1 loglevel@1.9.2 typescript@4.9.5
+echo "UsTaxes: $(git -C "$UST" rev-parse --short=12 HEAD) in $UST, runtime packages in $ROOT/.engines/ustaxes-deps"
+
 # SHA-256 of the packages this project has run; a tarball not listed here is built with a warning
 # and its hash printed, to be added once the owner has checked the download.
 KNOWN_SHA256="

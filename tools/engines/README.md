@@ -1,7 +1,7 @@
 # Engine differential
 
 Class C evidence at scale (spec 6.5): generated returns (single, head of household and married filing jointly) are
-computed by the project and by three independent engines maintained by other
+computed by the project and by four independent engines maintained by other
 people, and compared line by line. Every difference must carry an identified
 cause or the run fails. This is the only check in the pipeline whose reading
 of the tax law does not come from a language model reading the archived text.
@@ -13,6 +13,7 @@ of the tax law does not come from a language model reading the archived text.
 | PolicyEngine-US | `requirements.txt` | AGPL-3.0 | float32 | `.engines/venv`, git-ignored |
 | Tax-Calculator (PSL) | `requirements.txt` | CC0 | float64 | `.engines/venv`, git-ignored |
 | OpenTaxSolver (OTS) | the package in `.engines/opentaxsolver-src/` (its `0_README.txt`) | GPL-2.0 | decimal2: doubles, printed to the cent | `.engines/opentaxsolver-src/<package>/bin`, built by `setup.sh`, git-ignored |
+| UsTaxes | `USTAXES_COMMIT` in `setup.sh` (the clone's package.json version and HEAD are recorded) | AGPL-3.0 | float64 dollars, never rounded | `.engines/ustaxes-src` (sources as shipped) and `.engines/ustaxes-deps` (lodash, loglevel, typescript), git-ignored |
 
 Nothing in the repository imports any engine. `setup.sh` is the one network
 step for the Python engines; it installs them into `.engines/venv`. `run.sh`
@@ -133,6 +134,94 @@ allowance in cents; the only latitude is at an exact value within 1/1000 cent
 of a half cent, where the engine's double (within 1/10,000 cent of the exact
 value at these amounts) can print either neighbour.
 
+### UsTaxes: how it runs
+
+UsTaxes (https://github.com/ustaxes/UsTaxes) is a browser application whose tax
+logic is TypeScript under `src/forms/Y<year>/irsForms/`, one class per form and
+one method per line, recomputed on every call. `setup.sh` clones it at
+`USTAXES_COMMIT` and installs the three runtime packages its tax code imports,
+at the versions its package-lock pins, into `.engines/ustaxes-deps/`; nothing
+in the clone is built or edited. `ustaxes/run.mjs` runs every case in one Node
+process: `ustaxes/hooks.mjs` resolves UsTaxes' `ustaxes/*` and extensionless
+imports and transpiles its `.ts` files with the pinned TypeScript compiler
+(Node's own type stripping cannot load them: types are imported without
+`import type`); each return is built by the year's entry point
+`create1040(info, assets)` (`Main.ts`) and its lines read by accessor name.
+Because no line is stored, the runner caches each line method's first result per
+return (about 0.1 s a return instead of 1 s); `ustaxes_adapter.py --self-test`,
+run by `run.sh`, reads 20 returns with and without the cache and fails on any
+difference. Returns with self-employment income are not run: UsTaxes never
+constructs Schedule C (`F1040.ts` declares `scheduleC?` and nothing assigns it),
+and the adapter does not attach one (the `self_employed` limitation excludes them
+on every line).
+
+Inputs (`ustaxes_adapter.build_info`): filing status; dates of birth from the
+generated ages (a filer who answered the HSA age-55 question yes but is younger
+is 56); every W-2 (boxes 1 to 6; the employer HSA contribution as box 12 code
+W); one Form 1099-INT per account, one Form 1099-DIV, one SSA-1099; the sales as
+Form 8949 assets (short- or long-term by dates, code W with the disallowed loss);
+unemployment, educator expenses, the IRA contributions as the IRA deduction and
+the foreign tax as the foreign tax credit (`otherIncome`); an HSA with full-year
+coverage; Form 1098-E; Schedule A items; care expenses with the count of
+qualifying persons; tips, overtime and the car loan as `obbbDeductions`; the IRA
+and Roth contributions for Form 8880; Form 5695 Part I costs and the Part II
+credit (UsTaxes takes Part II as an amount).
+
+Lines reached (project ids): Form 1040 lines 1a, 1z, 6b, 7a, 8, 9, 10, 11a,
+11b, 12e, 13a, 13b, 14 to 24, 25a, 25d, 27a, 28, 32, 33, 34, 37 and the
+pre-credit total; Schedule 1 lines 10, 11, 13, 21, 26; Schedule 1-A lines 3, 4c,
+6, 7, 13, 14c, 15, 21, 23, 24, 30, 36a, 36b, 37, 38, and each part's working lines
+(8, 12; 16, 20; 25, 29; 31, 34, 35) where the part is filled in; Schedule 2 line
+21; Schedule 3 lines 8, 11, 15; Schedule A lines 3, 4, 5d, 5e, 7, 8e, 10, 14, 17,
+the standard deduction and the deduction taken; Schedule B lines 2 and 4;
+Schedule D lines 7, 15, 16, 21; the Qualified Dividends and Capital Gain Tax
+Worksheet lines 1 to 25; the Social Security Benefits Worksheet lines 1 to 18;
+the student loan interest worksheet lines 1 to 4, 8, 9; Schedule 8812 lines 3,
+5, 7, 8, 10 to 12, 14, 16a to 21, 23 to 27; Form 8889 lines 3, 5, 6, 8, 11, 12, 13;
+Form 8959 lines 1, 4, 6, 7, 18, 19, 21, 22, 24; Form 8960 lines 8, 9a, 9b, 9d, 11,
+12, 15, 16, 17. Pass-throughs and the result lines left unmapped, with the
+reason, are in `USTAXES_PASS_THROUGH`.
+
+UsTaxes emulates the Tax Table by the rate schedule at the midpoint of the band
+holding the whole-dollar amount, without the table's rounding (`TaxTable.ts`),
+and rounds Form 8960 line 17 to whole dollars. Its record declares
+`"tax_table": "midpoint-unrounded"`, and `compare.py` reads its tax lines against
+the project's lines recomputed by exactly those two methods (`table-midpoint`).
+
+Declared limitations (`ustaxes_adapter.limitations()`, each with the UsTaxes
+source location), by the feature that triggers them: `self_employed` (no
+Schedule C); `car_loan_interest` and `car_loan_deduction` (Schedule 1-A line 23
+reads accessors hard-coded to undefined, so line 30 is always zero);
+`special_gains` (28% and section 1250 worksheets are stubs, no 1099-DIV boxes 2b
+and 2d); `qbi_dividends` (QBI only from Schedule K-1); `negative_agi` (AGI
+floored at zero); `dependent_care`, `savers_credit`, `residential_clean_energy`,
+`home_improvement` (credits rounded to dollars, not limited by the tax, applied
+only when Schedule 3 is needed for another reason; Credit Limit Worksheet A
+subtracts Form 5695 line 30 twice when it is); `eic` and `ustaxes_eic` (formula at
+a misrounded income, smaller of the two amounts always);
+`s8812_line20_below_line17` (line 20 test inverted, $4,800); `ira_phaseout` (the
+IRA deduction is an input); `sli_phaseout` (unrounded ratio) and
+`ustaxes_sli_phaseout` (2024 phase-out amounts); `hsa_family` and
+`hsa_family_limited` (line 6 halves the family limit; the spouse's Form 8889
+counts a family account again); `hsa_age55` (the $1,000 on line 7, not line 3)
+and `hsa_senior_without_age55` (catch-up from the date of birth); `ustaxes_amt`
+(Form 6251 computed); `additional_medicare_withholding` (line 25c from Form
+8959; the generator enters it as zero) and `additional_medicare_tax` (Schedule
+8812 line 21 without the Additional Medicare Tax worksheet);
+`ssb_with_schedule1_income` (benefits worksheet line 6 adds Schedule 1 line 10);
+`itemized_state_tax` and `itemized_state_tax_niit` (Form 8960 line 9b
+allocation); `investment_interest_limited` and
+`ustaxes_investment_interest_limited` (Form 4952 counts only interest and
+nonqualified dividends); `tax_table_band_edge` (a double just below a band
+boundary); `foreign_tax_limited` (the credit is not limited by the tax). The
+features are the generator's, read off the project's values (`compare.py`
+`derived_features`), or reported by the adapter about the engine's run or the
+case's inputs (`run_features`). Two defects found in the source move no mapped
+line on the generated returns and need no limitation: the swapped student and
+non-student age limits in `QualifyingDependents.qualifiesOther` (it decides only
+whether Schedule 8812 is listed; line 6 counts every non-CTC dependent), and
+Form 8995 line 11 omitting line 13b (no generated return builds Form 8995).
+
 ## Pipeline
 
 ```
@@ -215,6 +304,11 @@ floor also bounds how much of the generated population the project refuses.
   products and ratios (amb.2025.multiplication_subcent), values passed between
   the engine's programs at their printed cents, printed to the cent (above). An
   identified cause, not a tolerance.
+- **table-midpoint** — UsTaxes only: equal (within the `float` bound) to the
+  project's lines recomputed with every Tax Table lookup replaced by the rate
+  schedule at the band's midpoint, unrounded, and Form 8960 line 17 rounded to
+  whole dollars, along the project's own worksheet path (`midpoint_tax`,
+  `niit_whole_dollar`, `midpoint_mode_expectations` in `compare.py`).
 - **excluded** — the engine cannot model a feature of the case. Each rule
   names the feature, the lines and the reason (`run_engines.py`, the
   `*_LIMITATIONS` lists; `ots_adapter.limitations()`). Some features are read
