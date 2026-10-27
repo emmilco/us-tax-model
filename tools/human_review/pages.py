@@ -185,7 +185,7 @@ class Locator:
         d = self.arch.docs.get(doc)
         if not d or "text_file" not in d:
             return 0
-        return len((ARCHIVE / d["text_file"]).read_text(encoding="utf-8").rstrip("\f").split("\f"))
+        return len(self.arch.read(doc, "text_file").rstrip("\f").split("\f"))
 
     def locate(self, doc, locator, label="", printed=""):
         """[(doc, page, [(kind, text, found, rects)])] for the pages the locator names, and
@@ -294,7 +294,7 @@ class Locator:
         d = self.arch.docs.get(doc)
         if not d or "text_file" not in d:
             return None
-        raw = (ARCHIVE / d.get("cols_file", d["text_file"])).read_text(encoding="utf-8").split("\f")
+        raw = self.arch.read(doc, "cols_file" if "cols_file" in d else "text_file").split("\f")
         for i, page in enumerate(raw):
             rows = [C.norm(r) for r in page.split("\n")]
             if C.line_beside_label([rows], number, label):

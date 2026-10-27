@@ -150,7 +150,7 @@ Offline checks that the archived IRS text is a faithful reading of the archived 
 - **i4562-2024** layout vs reading order: 22 pages, identical characters (2 page(s) differ only in word spacing)
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 795 words poppler reads that PDFKit skips; PDFKit blind on page(s) [19, 20, 21])
 - **i5329** layout vs reading order: 10 pages, identical characters (4 page(s) differ only in word spacing)
-    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (1 such occurrences; 10 words poppler reads that PDFKit skips)
+    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 10 words poppler reads that PDFKit skips)
 - **i5695** layout vs reading order: 7 pages, identical characters
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
 - **i6198** layout vs reading order: 9 pages, identical characters
@@ -236,7 +236,7 @@ Offline checks that the archived IRS text is a faithful reading of the archived 
 - **p560** layout vs reading order: 48 pages, identical characters (13 page(s) differ only in word spacing)
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 1059 words poppler reads that PDFKit skips; PDFKit blind on page(s) [42])
 - **p561** layout vs reading order: 16 pages, identical characters
-    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (3 such occurrences; 9 words poppler reads that PDFKit skips)
+    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 9 words poppler reads that PDFKit skips)
 - **p587** layout vs reading order: 35 pages, identical characters (1 page(s) differ only in word spacing)
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 120 words poppler reads that PDFKit skips)
 - **p590a** layout vs reading order: 62 pages, identical characters (8 page(s) differ only in word spacing)

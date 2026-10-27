@@ -1,3 +1,22 @@
+# Handoff — updated 2026-10-27 (Claude Opus 5.5)
+
+## State on 2026-10-27
+
+Plan revision items A, B and C (except C2) are done, each committed behind a green check-all:
+citations verifiable with `--strict` (63c0d98); TY2026 rehearsal (713a566) and its seven tool
+defects fixed (BUG-0177 to 0179); OpenTaxSolver modelled exactly (f7d89e3); UsTaxes as the fourth engine
+(a782c87; scoreboard 243/1,532, 15.9%); mutation-equivalence second reading, prose-only 0, and the
+mutation step can fail check-all (7ef41bc); the transcription hold lifted per form (73b1ebe). The
+next batch fixed BUG-0165 (line 25c omitted Additional Medicare Tax withheld; all four engines now agree),
+BUG-0161, 0163 (car loan column (ii) prorated), 0169, T-071, and recorded BUG-0162 as a design limit
+(entries BUG-0172 to 0176), with a fourth review round adjudicated.
+
+**Coverage gate (plan revision D):** A, B, the rehearsal and UsTaxes are done, and every confirmed
+amount-affecting defect is fixed. Open entries are display-level (BUG-0180) or tasks (T-067, T-068,
+T-069(2), T-070, T-072, T-073). The rehearsal cannot build 2026 data until the final i1040gi posts
+(expected early 2027). Remaining plan items run alongside coverage: C2 blind whole returns, 1.5/T-066,
+2.2, 2.3, 2.5, and the 21 older Claude transcription logs, migrated when their forms change.
+
 # Handoff — updated 2026-10-26 (evening session, Claude Opus 5.5)
 
 **Read `docs/2026-10-26_plan_revision.md` first: it controls the execution order and the gate for

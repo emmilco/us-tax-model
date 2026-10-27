@@ -30,6 +30,7 @@ import yaml
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "tools"))
 from taxyear import Y, YEAR_ARGS  # noqa: E402
+import archive_text  # noqa: E402
 sys.path.insert(0, str(ROOT / "tools" / "transcription"))
 from transcribe import call_model  # noqa: E402
 
@@ -84,7 +85,7 @@ def sha(path):
 
 
 def excerpt(job):
-    pages = (ARCHIVE / f"{job['doc']}.txt").read_text(encoding="utf-8").split("\f")
+    pages = archive_text.read_file(ARCHIVE / f"{job['doc']}.txt").split("\f")
     return "\n".join(f"=== page {n} ===\n{pages[n - 1]}" for n in job["pages"])
 
 

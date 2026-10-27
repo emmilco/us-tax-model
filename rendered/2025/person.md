@@ -547,6 +547,7 @@
 
 - **Authored helper label:** Net profit from Schedule C, line 31
 - **Encoded (Dollars):** Enter the amount from helper "This person's Schedule C net profit or loss (all businesses)".
+- **Refusal:** when person.se_screened is true, cannot complete SEP Deduction Worksheet Step 1 with self-employment income not on a Schedule C (Schedule F, Schedule K-1 box 14 code A and the other items of the self-employment screen). These self-employment items are outside this tool. Cite: [p560] p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 1, "Enter your net profit from" (For use in preparing 2025 returns; sha256 1f1f7abe)
 - Expr: `{"from":"person.sc_total","op":"copy"}`
 - Cite: [p560] p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 1 (For use in preparing 2025 returns; sha256 1f1f7abe)
 

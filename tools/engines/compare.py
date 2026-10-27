@@ -663,9 +663,6 @@ def derived_features(case, values):
     # Schedule 8812 line 20 (15% of earned income over $2,500) below line 17: the form's line 20 question decides line 27.
     if m("s8812.line20") is not None and m("s8812.line17") is not None and m("s8812.line20") < m("s8812.line17"):
         feats.add("s8812_line20_below_line17")
-    # Form 8959 line 24 (Additional Medicare Tax withheld) is positive, where the generator enters Form 1040 line 25c as zero.
-    if (m("f8959.line24") or 0) > 0:
-        feats.add("additional_medicare_withholding")
     # Additional Medicare Tax owed or withheld: Schedule 8812 line 21 comes from the Additional Medicare Tax and RRTA Tax Worksheet.
     if (m("f8959.line18") or 0) > 0 or (m("f8959.line24") or 0) > 0:
         feats.add("additional_medicare_tax")

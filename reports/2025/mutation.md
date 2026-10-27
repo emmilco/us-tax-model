@@ -7,10 +7,10 @@ the fixture test compares).
 
 | Metric | Value |
 | --- | --- |
-| Mutants | 2286 |
+| Mutants | 2292 |
 | Killed by the checker | 235 |
-| Killed by fixtures | 1934 |
-| Surviving | 117 (116 provably equivalent) |
+| Killed by fixtures | 1940 |
+| Surviving | 117 (117 provably equivalent) |
 | Mutation score (raw) | 94.9% |
 | Mutation score (equivalent mutants excluded) | 100.0% |
 
@@ -41,6 +41,7 @@ the fixture test compares).
 - `operand.f8960.f8960.line9d.line9c` (replace an operand, f8960.f8960.line9d): Line 9c and lines 4a and 4b (the operands of line 4c) are each $0 behind the same refusal entries, word for word; so line 4c, their sum, is $0 when no entry fires and otherwise carries the same refusal (or unknown) that line 9c does. (structural conditions re-checked this run.)
 - `operand.f8995.f8995.line9.line8` (replace an operand, f8995.f8995.line9): Copy-chain identity: f8995.line8 and f8995.line6 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.f8995a.f8995a.line31.line30` (replace an operand, f8995a.f8995a.line31): Copy-chain identity: f8995a.line30 and f8995a.line28 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
+- `operand.person.person.sep_s1.sc_total` (replace an operand, person.person.sep_s1): Copy-chain identity: person.sc_total and person.se_line2 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.person.person.simple_catchup.simple_regular` (replace an operand, person.person.simple_catchup): Floor-minus-min identity: person.simple_catchup is person.simple_deferral less person.simple_regular, floored at zero, and one of person.simple_regular and person.simple_cap is the ungated smaller of person.simple_deferral and the other, so person.simple_deferral less either, floored at zero, is the same at every input; person.simple_deferral is read first on both routes and the other operand second, so the same refusal or unknown wins.
 - `operand.person.person.dc_earned.eic_se` (replace an operand, person.person.dc_earned): person.eic_se is person.eic_se_has when the person has a Schedule C and $0 otherwise. With no Schedule C every sum over the person's Schedule C entries is $0, so the Schedule SE railroad gate is false, line 4c is $0, files_se is false and eic_se_has is the empty Schedule C total, $0; with the roster unanswered both routes are unknown. The replacement changes no value. (structural conditions re-checked this run.)
 - `operand.qdcg.qdcg.line8.line7` (replace an operand, qdcg.qdcg.line8): qdcg.line8 is min(qdcg.line5, qdcg.line7) and qdcg.line7 is the ungated min(qdcg.line1, qdcg.line6); qdcg.line5 is qdcg.line1 less a non-negative amount, floored at zero, with qdcg.line1 not negative, so qdcg.line5 <= qdcg.line1 and min(qdcg.line5, min(qdcg.line1, qdcg.line6)) = min(qdcg.line5, qdcg.line6) at every input; qdcg.line5 is read first on both routes. (structural conditions re-checked this run.)
@@ -132,7 +133,3 @@ the fixture test compares).
 - `param.eic.ws_threshold0.joint.$1` (shift a money parameter (+$1), eic.ws_threshold0.joint): Line 5 amount eic.ws_threshold0.joint: in eic_0 the bands covering [eic.ws_threshold0.joint, eic.ws_threshold0.joint + $1) print each table's maximum in the column used, so shifting the amount by $1 can only turn a lookup equal to the maximum into a blank line 5; line 6 is line 2 either way (only whether line 5 is shown can differ). (structural conditions re-checked this run.)
 - `param.eic.ws_threshold0.other.$1` (shift a money parameter (+$1), eic.ws_threshold0.other): Line 5 amount eic.ws_threshold0.other: in eic_0 the bands covering [eic.ws_threshold0.other, eic.ws_threshold0.other + $1) print each table's maximum in the column used, so shifting the amount by $1 can only turn a lookup equal to the maximum into a blank line 5; line 6 is line 2 either way (only whether line 5 is shown can differ). (structural conditions re-checked this run.)
 - `param.eic.ws_threshold1.joint.$1` (shift a money parameter (+$1), eic.ws_threshold1.joint): Line 5 amount eic.ws_threshold1.joint: in eic_1, eic_2, eic_3 the bands covering [eic.ws_threshold1.joint, eic.ws_threshold1.joint + $1) print each table's maximum in the column used, so shifting the amount by $1 can only turn a lookup equal to the maximum into a blank line 5; line 6 is line 2 either way (only whether line 5 is shown can differ). (structural conditions re-checked this run.)
-
-## Surviving — explained by an open defect
-
-- `operand.person.person.sep_s1.sc_total` (replace an operand, person.person.sep_s1): BUG-0169

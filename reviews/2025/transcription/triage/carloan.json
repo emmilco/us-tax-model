@@ -1,10 +1,10 @@
 {
  "bank": {
   "evaluation_failures": 0,
-  "fixtures": 1083,
+  "fixtures": 1111,
   "generated": 500,
   "partial_bases": 40,
-  "partial_records": 77,
+  "partial_records": 74,
   "seed": 20261026
  },
  "errors": [],
@@ -14,76 +14,119 @@
  "lines": [
   {
    "absent": 0,
-   "agree": 111,
-   "candidate": "carloan.col_iii",
-   "compared": 141,
-   "differ": 30,
-   "handle": "22(iii)",
-   "in_scope": 140,
-   "in_scope_agree": 110,
+   "agree": 128,
+   "candidate": "carloan.col_ii",
+   "compared": 151,
+   "differ": 23,
+   "handle": "22(ii)",
+   "in_scope": 150,
+   "in_scope_agree": 127,
    "kinds": {
-    "candidate-unknown": 28,
+    "candidate-unknown": 21,
     "value": 2
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-unknown": 14
+     "candidate-unknown": 13
     },
     "incomplete": {
-     "candidate-unknown": 10
+     "candidate-unknown": 3
     },
     "refused": {
-     "candidate-unknown": 4,
+     "candidate-unknown": 5,
      "value": 2
     }
    },
-   "open_at_triage": false,
-   "project": "carloan.col_iii",
+   "open_at_triage": true,
+   "project": "carloan.col_ii",
+   "shown_when": null,
    "sources": {
-    "fixture": 28,
+    "fixture": 29,
     "generated": 4,
-    "partial": 109
+    "partial": 118
    },
    "status": "DISAGREE",
    "triage": "differs",
    "witnesses": [
     {
      "candidate": {
-      "cents": 331000,
+      "cents": 126800,
       "kind": "money"
      },
      "candidate_operands": [
       {
-       "ref": "carloan[vin_2].h_qpvli",
+       "ref": "carloan[vin_1].h_refi_partial",
        "value": {
-        "cents": 441300,
-        "kind": "money"
+        "kind": "bool",
+        "value": false
        }
       },
       {
-       "ref": "carloan[vin_2].h_col_ii",
+       "ref": "carloan[vin_1].h_bus_over",
        "value": {
-        "cents": 110300,
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "carloan[vin_1].h_eligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "carloan[vin_1].h_bus_qual",
+       "value": {
+        "cents": 126800,
         "kind": "money"
        }
       }
      ],
-     "instance": "carloan[vin_2]",
+     "instance": "carloan[vin_1]",
      "kind": "value",
      "project": {
-      "cents": 441300,
+      "cents": 0,
       "kind": "money"
      },
      "project_operands": [
       {
-       "ref": "carloan[vin_2].qpvli",
+       "ref": "carloan[vin_1].eligible",
        "value": {
-        "cents": 441300,
-        "kind": "money"
+        "kind": "bool",
+        "value": true
        }
       },
       {
-       "ref": "carloan[vin_2].col_ii",
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "carloan[vin_1].eligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "carloan[vin_1].sc_allocated",
        "value": {
         "cents": 0,
         "kind": "money"
@@ -92,27 +135,48 @@
      ],
      "project_return": "refused",
      "source": {
-      "id": "classm.carloan.4",
+      "id": "classm.carloan.2",
       "kind": "fixture"
      }
     },
     {
      "candidate": {
-      "cents": 467200,
+      "cents": 55151,
       "kind": "money"
      },
      "candidate_operands": [
       {
-       "ref": "carloan[vin_1].h_qpvli",
+       "ref": "carloan[vin_1].h_refi_partial",
        "value": {
-        "cents": 623000,
-        "kind": "money"
+        "kind": "bool",
+        "value": false
        }
       },
       {
-       "ref": "carloan[vin_1].h_col_ii",
+       "ref": "carloan[vin_1].h_bus_over",
        "value": {
-        "cents": 155800,
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "carloan[vin_1].h_eligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "carloan[vin_1].h_bus_qual",
+       "value": {
+        "cents": 55151,
         "kind": "money"
        }
       }
@@ -120,14 +184,649 @@
      "instance": "carloan[vin_1]",
      "kind": "value",
      "project": {
-      "cents": 623000,
+      "cents": 55152,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "carloan[vin_1].eligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "carloan[vin_1].eligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "carloan[vin_1].sc_allocated",
+       "value": {
+        "cents": 55152,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.carloan.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "carloan[vin_1].col_ii_input",
+      "kind": "unknown",
+      "reason": "no input supplied for carloan[vin_1].col_ii_input"
+     },
+     "candidate_operands": [
+      {
+       "ref": "carloan[vin_1].h_refi_partial",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "carloan[vin_1].h_eligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "carloan[vin_1].h_bus_qual",
+       "value": {
+        "input": "carloan[vin_1].col_ii_input",
+        "kind": "unknown",
+        "reason": "no input supplied for carloan[vin_1].col_ii_input"
+       }
+      }
+     ],
+     "instance": "carloan[vin_1]",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "carloan[vin_1].eligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "carloan[vin_1].eligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "carloan[vin_1].sc_allocated",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.tipjob.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "carloan[VIN0].col_ii_input",
+      "kind": "unknown",
+      "reason": "no input supplied for carloan[VIN0].col_ii_input"
+     },
+     "candidate_operands": [
+      {
+       "ref": "carloan[VIN0].h_refi_partial",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "carloan[VIN0].h_eligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "carloan[VIN0].h_bus_qual",
+       "value": {
+        "input": "carloan[VIN0].col_ii_input",
+        "kind": "unknown",
+        "reason": "no input supplied for carloan[VIN0].col_ii_input"
+       }
+      }
+     ],
+     "instance": "carloan[VIN0]",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "carloan[VIN0].eligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "carloan[VIN0].eligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "carloan[VIN0].sc_allocated",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "stage12.car.basic",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "carloan[VIN0].col_ii_input",
+      "kind": "unknown",
+      "reason": "no input supplied for carloan[VIN0].col_ii_input"
+     },
+     "candidate_operands": [
+      {
+       "ref": "carloan[VIN0].h_refi_partial",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "carloan[VIN0].h_eligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "carloan[VIN0].h_bus_qual",
+       "value": {
+        "input": "carloan[VIN0].col_ii_input",
+        "kind": "unknown",
+        "reason": "no input supplied for carloan[VIN0].col_ii_input"
+       }
+      }
+     ],
+     "instance": "carloan[VIN0]",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "carloan[VIN0].eligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "carloan[VIN0].eligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "carloan[VIN0].sc_allocated",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "stage12.car.phaseout",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "carloan[VIN0].col_ii_input",
+      "kind": "unknown",
+      "reason": "no input supplied for carloan[VIN0].col_ii_input"
+     },
+     "candidate_operands": [
+      {
+       "ref": "carloan[VIN0].h_refi_partial",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "carloan[VIN0].h_eligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "carloan[VIN0].h_bus_qual",
+       "value": {
+        "input": "carloan[VIN0].col_ii_input",
+        "kind": "unknown",
+        "reason": "no input supplied for carloan[VIN0].col_ii_input"
+       }
+      }
+     ],
+     "instance": "carloan[VIN0]",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "carloan[VIN0].eligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "carloan[VIN0].eligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "carloan[VIN0].sc_allocated",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "stage12.car.phaseout_round_up",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "carloan[VIN0].col_ii_input",
+      "kind": "unknown",
+      "reason": "no input supplied for carloan[VIN0].col_ii_input"
+     },
+     "candidate_operands": [
+      {
+       "ref": "carloan[VIN0].h_refi_partial",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "carloan[VIN0].h_eligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "carloan[VIN0].h_bus_qual",
+       "value": {
+        "input": "carloan[VIN0].col_ii_input",
+        "kind": "unknown",
+        "reason": "no input supplied for carloan[VIN0].col_ii_input"
+       }
+      }
+     ],
+     "instance": "carloan[VIN0]",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "carloan[VIN0].eligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "carloan[VIN0].eligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "carloan[VIN0].sc_allocated",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "stage12.car.two_loans_cap",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "carloan[VIN1].col_ii_input",
+      "kind": "unknown",
+      "reason": "no input supplied for carloan[VIN1].col_ii_input"
+     },
+     "candidate_operands": [
+      {
+       "ref": "carloan[VIN1].h_refi_partial",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "carloan[VIN1].h_eligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "carloan[VIN1].h_bus_qual",
+       "value": {
+        "input": "carloan[VIN1].col_ii_input",
+        "kind": "unknown",
+        "reason": "no input supplied for carloan[VIN1].col_ii_input"
+       }
+      }
+     ],
+     "instance": "carloan[VIN1]",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "carloan[VIN1].eligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "carloan[VIN1].eligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "carloan[VIN1].sc_allocated",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "stage12.car.two_loans_cap",
+      "kind": "fixture"
+     }
+    }
+   ]
+  },
+  {
+   "absent": 0,
+   "agree": 131,
+   "candidate": "carloan.col_iii",
+   "compared": 151,
+   "differ": 20,
+   "handle": "22(iii)",
+   "in_scope": 150,
+   "in_scope_agree": 130,
+   "kinds": {
+    "candidate-unknown": 18,
+    "value": 2
+   },
+   "kinds_by_return": {
+    "completed": {
+     "candidate-unknown": 13
+    },
+    "refused": {
+     "candidate-unknown": 5,
+     "value": 2
+    }
+   },
+   "open_at_triage": true,
+   "project": "carloan.col_iii",
+   "shown_when": null,
+   "sources": {
+    "fixture": 29,
+    "generated": 4,
+    "partial": 118
+   },
+   "status": "DISAGREE",
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "cents": 380500,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "carloan[vin_1].h_refi_partial",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "carloan[vin_1].h_bus_over",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "carloan[vin_1].h_qpvli",
+       "value": {
+        "cents": 507300,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "carloan[vin_1].col_ii",
+       "value": {
+        "cents": 126800,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "carloan[vin_1]",
+     "kind": "value",
+     "project": {
+      "cents": 507300,
       "kind": "money"
      },
      "project_operands": [
       {
        "ref": "carloan[vin_1].qpvli",
        "value": {
-        "cents": 623000,
+        "cents": 507300,
         "kind": "money"
        }
       },
@@ -141,7 +840,70 @@
      ],
      "project_return": "refused",
      "source": {
-      "id": "classm.s179.3",
+      "id": "classm.carloan.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 165455,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "carloan[vin_1].h_refi_partial",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "carloan[vin_1].h_bus_over",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "carloan[vin_1].h_qpvli",
+       "value": {
+        "cents": 220606,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "carloan[vin_1].col_ii",
+       "value": {
+        "cents": 55151,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "carloan[vin_1]",
+     "kind": "value",
+     "project": {
+      "cents": 165454,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "carloan[vin_1].qpvli",
+       "value": {
+        "cents": 220606,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "carloan[vin_1].col_ii",
+       "value": {
+        "cents": 55152,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.carloan.3",
       "kind": "fixture"
      }
     },
@@ -153,6 +915,13 @@
      },
      "candidate_operands": [
       {
+       "ref": "carloan[vin_1].h_refi_partial",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
        "ref": "carloan[vin_1].h_qpvli",
        "value": {
         "cents": 623000,
@@ -160,7 +929,7 @@
        }
       },
       {
-       "ref": "carloan[vin_1].h_col_ii",
+       "ref": "carloan[vin_1].col_ii",
        "value": {
         "input": "carloan[vin_1].col_ii_input",
         "kind": "unknown",
@@ -204,6 +973,13 @@
      },
      "candidate_operands": [
       {
+       "ref": "carloan[VIN0].h_refi_partial",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
        "ref": "carloan[VIN0].h_qpvli",
        "value": {
         "cents": 320000,
@@ -211,7 +987,7 @@
        }
       },
       {
-       "ref": "carloan[VIN0].h_col_ii",
+       "ref": "carloan[VIN0].col_ii",
        "value": {
         "input": "carloan[VIN0].col_ii_input",
         "kind": "unknown",
@@ -255,6 +1031,13 @@
      },
      "candidate_operands": [
       {
+       "ref": "carloan[VIN0].h_refi_partial",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
        "ref": "carloan[VIN0].h_qpvli",
        "value": {
         "cents": 500000,
@@ -262,7 +1045,7 @@
        }
       },
       {
-       "ref": "carloan[VIN0].h_col_ii",
+       "ref": "carloan[VIN0].col_ii",
        "value": {
         "input": "carloan[VIN0].col_ii_input",
         "kind": "unknown",
@@ -306,6 +1089,13 @@
      },
      "candidate_operands": [
       {
+       "ref": "carloan[VIN0].h_refi_partial",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
        "ref": "carloan[VIN0].h_qpvli",
        "value": {
         "cents": 500000,
@@ -313,7 +1103,7 @@
        }
       },
       {
-       "ref": "carloan[VIN0].h_col_ii",
+       "ref": "carloan[VIN0].col_ii",
        "value": {
         "input": "carloan[VIN0].col_ii_input",
         "kind": "unknown",
@@ -357,6 +1147,13 @@
      },
      "candidate_operands": [
       {
+       "ref": "carloan[VIN0].h_refi_partial",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
        "ref": "carloan[VIN0].h_qpvli",
        "value": {
         "cents": 700000,
@@ -364,7 +1161,7 @@
        }
       },
       {
-       "ref": "carloan[VIN0].h_col_ii",
+       "ref": "carloan[VIN0].col_ii",
        "value": {
         "input": "carloan[VIN0].col_ii_input",
         "kind": "unknown",
@@ -408,6 +1205,13 @@
      },
      "candidate_operands": [
       {
+       "ref": "carloan[VIN1].h_refi_partial",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
        "ref": "carloan[VIN1].h_qpvli",
        "value": {
         "cents": 600000,
@@ -415,7 +1219,7 @@
        }
       },
       {
-       "ref": "carloan[VIN1].h_col_ii",
+       "ref": "carloan[VIN1].col_ii",
        "value": {
         "input": "carloan[VIN1].col_ii_input",
         "kind": "unknown",
@@ -454,10 +1258,10 @@
    ]
   }
  ],
- "log_sha256_at_triage": "568ba444c57ea9c14cffe029db4d76c01682b0cbd21a377b7fcbdb867efa723b",
- "policy": "executable-triage-v1",
- "response_sha256": "fd1cbf6e655a24a722cb538dfd592d16fd3350b532d5e2f330eca5a86bc74a4f",
+ "log_sha256_at_triage": "bc243093e3f03471a6ff45d670449a93a71936fc2e5a7813ab955705b038d23d",
+ "policy": "executable-triage-v2",
+ "response_sha256": "ff3d25dedf68fb9b7de80df28c8cace7b9db40ac8e07bf8b76bed398e09c1ee0",
  "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
  "state": "evaluated",
- "subject_sha256": "242f7244bf2433fd7b9d62a477efcd1831165cee975a648155aba2c673a2494a"
+ "subject_sha256": "cd458f24d1c949329c6a326dc5b045e301aaf00c64812cc29091f29995c51206"
 }

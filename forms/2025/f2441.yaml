@@ -112,13 +112,14 @@ form:
       expr:
         op: input
         source: 'Did you pay for the care of a person who was not able to care for themselves, lived with you for more than
-          half of 2025 and would be your dependent except that they had gross income of $5,200 or more, they filed a joint
+          half of 2025 (or, for a person born or who died in 2025, for more than half of the time they were alive in 2025)
+          and would be your dependent except that they had gross income of $5,200 or more, they filed a joint
           return, or you (or your spouse) could be claimed as a dependent on someone else''s 2025 return; or of your child
           under 13 (or not able to care for themselves) whom you treat as your qualifying person as the custodial parent
           although you cannot claim the child as your dependent?'
       cite:
         doc: i2441
-        locator: 'p. 1, Qualifying Person(s), "or could claim as a dependent except: a. The disabled person had gross income of $5,200 or more, b. The disabled person filed a joint return, or c. You (or your spouse if filing jointly) could be claimed as a dependent on another taxpayer''s 2025 tax return"; p. 1, Special rule for children of divorced or separated parents or parents who live apart, "Even if you can''t claim your child as a dependent, they are treated as your qualifying person if"'
+        locator: 'p. 1, Qualifying Person(s), "or could claim as a dependent except: a. The disabled person had gross income of $5,200 or more, b. The disabled person filed a joint return, or c. You (or your spouse if filing jointly) could be claimed as a dependent on another taxpayer''s 2025 tax return"; p. 1, Special rule for children of divorced or separated parents or parents who live apart, "Even if you can''t claim your child as a dependent, they are treated as your qualifying person if"; p503 p. 3, Birth or death of otherwise qualifying person, "a person who was born or died in 2025 is treated as having lived with you for more than half of 2025 if your home was the person''s home more than half the time they were alive in 2025"'
     - id: f2441.nondependent_gate
       printed: (gate)
       type: Bool

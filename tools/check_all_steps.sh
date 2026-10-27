@@ -61,9 +61,13 @@ wave
 
 step fetch_sources python3 tools/fetch_sources.py "$@"
 step fetch_sources_self_test python3 tools/fetch_sources.py --self-test
+step archive_text_self_test python3 tools/archive_text.py --self-test
 step check_extraction python3 tools/check_extraction.py "$@"
+step check_extraction_self_test python3 tools/check_extraction.py --self-test
 step check_macrs_tables python3 tools/check_macrs_tables.py "$@"
+step check_macrs_tables_self_test python3 tools/check_macrs_tables.py --self-test "$@"
 step check_auto_limits python3 tools/check_auto_limits.py "$@"
+step check_auto_limits_self_test python3 tools/check_auto_limits.py --self-test "$@"
 step check_bug_inventory python3 tools/check_bug_inventory.py
 step review_tools python3 tools/transcription/test_review_tools.py
 step input_context python3 tools/transcription/test_input_context.py

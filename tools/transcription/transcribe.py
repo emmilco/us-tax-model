@@ -30,6 +30,7 @@ import input_context  # noqa: E402
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, os.path.join(ROOT, "tools"))
 from taxyear import Y  # noqa: E402
+import archive_text  # noqa: E402
 SOURCES = os.path.join(ROOT, "sources", Y)
 FORMS = os.path.join(ROOT, "forms", Y)
 LOGS = os.path.join(ROOT, "reviews", Y, "transcription")
@@ -68,7 +69,7 @@ def manifest():
 
 
 def doc_pages(doc, key="text_file"):
-    text = open(os.path.join(SOURCES, doc[key]), encoding="utf-8").read()
+    text = archive_text.read(SOURCES, doc, key)
     pages = text.split("\f")
     if pages and not pages[-1].strip():
         pages = pages[:-1]

@@ -1,0 +1,28 @@
+{
+ "kind": "render",
+ "form": "person",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "(screen) (person.ira_excess)",
+   "restated": "Input — Does any of these apply to you: your contributions for 2025 to traditional and Roth IRAs together were more than you were allowed to contribute (more than $7,000, or $8,000 if age 50 or older at the end of 2025, or more than your taxable compensation, or a Roth contribution above the limit for your income), and the excess was not withdrawn with its earnings by the due date of your return; you recharacterized a 2025 contribution (moved it from a traditional to a Roth IRA or the reverse); or an excess contribution from an earlier year is still in your traditional or Roth IRA?",
+   "model": "Pub. 590-A defines an excess contribution by the $7,000/$8,000 or compensation limits and by failure to withdraw it; it does not make recharacterizing a 2025 contribution an excess contribution by itself.",
+   "ruling": "Ruling: model error; project retained. The model reads the screen as a definition of an excess contribution. The English lists three separate cases joined by \"; ... ; or\": contributions above the limit \"and the excess was not withdrawn with its earnings by the due date of your return\" (p590a p. 35, \"Generally, an excess contribution is the amount contributed to your traditional IRAs for the year that is more than the smaller of\" the limit or compensation), \"you recharacterized a 2025 contribution\", and an earlier excess still in the IRA. It does not say a recharacterization is an excess contribution; it screens recharacterized contributions as their own case, as amb.2025.savers_traditional records (\"Excess or recharacterized contributions, traditional or Roth, are refused by one screen per person (person.ira_excess)\").",
+   "context": "da345ebe6576e309df5502390571b2a6348576fa182cf72216b7f513bb5e51c6"
+  },
+  {
+   "printed": "(screen) (person.sav_able)",
+   "restated": "Input — As the designated beneficiary of an ABLE account, did you contribute to it for 2025, or did you receive any distribution from an ABLE account after 2022 and before the due date of your 2025 return (including extensions)?",
+   "model": "IRS Form 8880 line 4 includes only 'Certain distributions received after 2022 and before the due date' rather than any ABLE distribution; the restatement also combines that with the separate line 1 ABLE contribution question.",
+   "ruling": "Ruling: scope; f8880 p. 2, Line 4: \"Enter the total amount of distributions you, and your spouse if filing jointly, received after 2022 and before the due date of your 2025 return (including extensions) from any of the following types of plans. • Traditional or Roth IRAs, or ABLE accounts.\" followed by \"Don't include any of the following\" (rollovers and other excluded distributions); Who Can Take This Credit, \"(e) contributions, as a designated beneficiary of an ABLE account, to the ABLE account\". The English says what the project asks: one screen that refuses the credit for ABLE contributions and for any ABLE distribution in the line 4 period (person.sav_able refuses person.sav_line1 and the line 4 distributions). The model is right that line 4 counts only some ABLE distributions; the screen is wider, so a return with only an excluded ABLE distribution is refused rather than figured. A broader refusal never misfigures a credit; refusal scope, not a misstatement.",
+   "context": "da345ebe6576e309df5502390571b2a6348576fa182cf72216b7f513bb5e51c6"
+  },
+  {
+   "printed": "Step 3",
+   "restated": "Subtract line Step 2 from line Step 1. If zero or less, enter -0-.",
+   "model": "Pub. 560 Step 3 says only 'Net earnings from self-employment. Subtract step 2 from step 1'; it does not provide the added 'If zero or less, enter -0-' floor.",
+   "ruling": "Ruling: finding; the project's line, not its English, departs from the page. p560 p. 39, Deduction Worksheet for Self-Employed: \"Step 3 Net earnings from self-employment. Subtract step 2 from step 1\" (no floor; the page prints no \"-0-\" instruction for Steps 3 to 21). person.sep_s3 is NonNegDollars by subtract_floor0, and the English states that faithfully (\"If zero or less, enter -0-\"), so the model read the English correctly. On a reachable return the printed step differs: a SEP participant (person.plan sep, contribution $0) whose Schedule C shows a $5,000 loss has Step 1 -$5,000.00 and Step 2 $0.00; the page's arithmetic gives Step 3 -$5,000.00 (and negative Steps 5, 7 and 21), the project prints $0.00 (constructed, not executed). No Form 1040 amount changes: any contribution above zero is refused at person.sep_excess on both readings, and a zero contribution deducts zero. The floor is a reasonable reading (a maximum deductible contribution below zero has no meaning), but it is an unprinted rule with no ambiguity-register entry, as amb.2025.sa_medical_negative_agi records for the like case on Schedule A. Severity: low (printed worksheet steps only). Proposed: record the reading in ambiguities/2025.yaml and cite it on person.sep_s3; see .transcription/proposed/round4/person.findings.md.",
+   "context": "da345ebe6576e309df5502390571b2a6348576fa182cf72216b7f513bb5e51c6"
+  }
+ ]
+}

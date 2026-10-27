@@ -26,8 +26,10 @@ For each citation segment:
 
 Findings are grouped by what carries the citation: form line, refusal, collection,
 parameter, table, ambiguity register entry, interview question. A parameter whose
-value is printed in a changed sentence near its citation is flagged as a probable
-value change. Tables are reported by their pages; their cells need re-extraction.
+value is printed in a changed sentence near its citation, and not in that sentence's
+counterpart, is flagged as a probable value change (an amount under $1,000 is looked
+for with its dollar sign only). Tables are reported by their pages; their cells need
+re-extraction.
 Nothing is changed: the report points, a person decides.
 
 --adopt lists every line of the copied definitions that still names the from-year
@@ -36,7 +38,9 @@ the from-year's definitions (forms, tables, parameters, register,
 interview, and the citation rulings, marked "carried" for review) to the to-year
 with tax_year and the year in file names and in
 "(<year>)" form citations replaced, relocates their page numbers against the
-to-year's archive (tools/citations.py --relocate), and then reports with the
+to-year's archive (tools/citations.py --relocate --from <from-year>, which lists
+the segments left for review in reports/<to-year>/relocation_from_<from-year>.md),
+and then reports with the
 to-year as the data year. It refuses to overwrite an existing year.
 """
 
@@ -186,8 +190,11 @@ def money_texts(value):
 
 
 def printed(amount, sentence):
-    """Whether an amount ("22,937") is printed in a sentence as itself or with zero cents."""
-    return re.search(rf"(?<![\d,.]){re.escape(amount)}(?:\.00)?(?![\d]|[.,]\d)", sentence) is not None
+    """Whether an amount ("22,937") is printed in a sentence as itself or with zero cents. An
+    amount under $1,000 ("5", "400") must carry its dollar sign: as a bare number it is as
+    likely a line, page or count."""
+    dollar = r"\$\s?" if float(amount.replace(",", "")) < 1000 else ""
+    return re.search(rf"(?<![\d,.]){dollar}{re.escape(amount)}(?:\.00)?(?![\d]|[.,]\d)", sentence) is not None
 
 
 def all_segments(doc, locator):
@@ -298,7 +305,10 @@ def run(from_year, to_year, data_year, archives=None, only=None, definitions=Non
             if kind == "parameter":
                 cited = [i for i, (p, _) in enumerate(al.a) if p in pages]
                 for text in money_texts(values.get(ident)):
-                    hits = [i for i in cited if printed(text, al.a[i][1]) and al.changed(i)]
+                    # printed in a sentence that differs, and not printed in its counterpart: a
+                    # sentence reworded around an unchanged amount is not a value change
+                    hits = [i for i in cited if printed(text, al.a[i][1]) and al.changed(i)
+                            and not (al.partner[i] is not None and printed(text, al.b[al.partner[i]][1]))]
                     if hits:
                         entry["findings"].append({"strength": "value", "doc": seg_doc, "pages": shown,
                                                   "what": f"the value {text} is printed in a sentence that differs in {other_year}",
@@ -489,7 +499,7 @@ def adopt(from_year, to_year):
           f"(reports/{t}/year_literals_from_{f}.json); each is on the worklist")
     print(f"adopt: copied the {f} definitions (and citation rulings, to be reviewed again) to {t}; "
           f"relocating page numbers against the {t} archive")
-    subprocess.run([sys.executable, str(ROOT / "tools" / "citations.py"), "--relocate", "--year", t], check=True)
+    subprocess.run([sys.executable, str(ROOT / "tools" / "citations.py"), "--relocate", "--from", f, "--year", t], check=True)
 
 
 # ---------- self-test ----------
@@ -554,6 +564,20 @@ def self_test(year):
         print(f"year-diff self-test: {strength} planted for {key[0]} {key[1]}: {'found' if ok else 'MISSED'}")
     if not baseline:
         print(f"year-diff self-test: {doc} with only its years moved: nothing on the worklist")
+    # The sentence printing the cited amount reworded, the amount kept: not a value change.
+    reworded = diff(lambda p: p.replace(value[1], value[1] + " (reworded)"))
+    ok = "value" not in reworded.get(("parameter", value[0]), set())
+    status = status or (0 if ok else 1)
+    print(f"year-diff self-test: the sentence printing {value[0]}'s amount reworded, the amount kept: "
+          + ("no value finding" if ok else "WRONG, a value finding"))
+    # A small amount is looked for with its dollar sign, not as a bare number.
+    small = [("5", "enter the amount from line 5", False), ("5", "multiply line 3 by $5", True),
+             ("400", "see page 400 of pub. 17", False), ("400", "less than $400", True),
+             ("15,750", "15,750", True)]
+    bad = [(a, s) for a, s, want in small if printed(a, s) != want]
+    status = status or (1 if bad else 0)
+    print("year-diff self-test: small amounts read only with their dollar sign: "
+          + ("as expected" if not bad else f"WRONG for {bad}"))
     watermarked = {k: v for k, v in diff(lambda p: p, draft=True).items() if v}
     if watermarked:
         status = 1

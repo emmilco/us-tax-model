@@ -142,6 +142,24 @@ def check_layout_vs_order(entry, layout, lines):
     return 1 if diff_pages else 0
 
 
+def soft_hyphen_joins(poppler_page, only_pk, only_pop):
+    """A word broken at a line end with a soft hyphen (U+00AD, which the drafts print), which
+    poppler reads as two tokens ("abandon­", "ments") and PDFKit as one ("abandonments"),
+    is the same text: each such PDFKit word is matched with a head poppler prints before a soft
+    hyphen and a tail, both unmatched on the page. Returns the two counters without them."""
+    heads = Counter(tokens(h)[-1] for h in re.findall(r"[\w’']+(?=­)", poppler_page) if tokens(h))
+    only_pk, only_pop = Counter(only_pk), Counter(only_pop)
+    for word, n in list(only_pk.items()):
+        for _ in range(n):
+            split = next((i for i in range(1, len(word)) if heads[word[:i]] > 0 and only_pop[word[:i]] > 0
+                          and only_pop[word[i:]] > 0), None)
+            if split is None:
+                break
+            for c, k in ((only_pk, word), (only_pop, word[:split]), (only_pop, word[split:]), (heads, word[:split])):
+                c[k] -= 1
+    return +only_pk, +only_pop
+
+
 def check_pdfkit(entry, layout, lines):
     pk = pdfkit_pages(ARCHIVE / entry["file"])
     if len(pk) != len(layout):
@@ -167,6 +185,7 @@ def check_pdfkit(entry, layout, lines):
                 if number.isdigit() and marker.isdigit() and only_pop[number] > 0 and only_pop[marker] > 0:
                     only_pop[number] -= 1; only_pop[marker] -= 1; only_pk[token] -= 1
         only_pk = +only_pk
+        only_pk, only_pop = soft_hyphen_joins(a, only_pk, only_pop)
         extra += sum(only_pk.values()); skipped += sum((ca - cb).values())
         if sum(cb.values()) < PDFKIT_BLIND_SHARE * sum(ca.values()):
             blind.append(i)
@@ -218,10 +237,26 @@ def check_html(entry, twin, lines):
     return 1 if missing_pages else 0
 
 
+def self_test():
+    """A word poppler breaks at a soft hyphen and PDFKit reads whole is the same text; a
+    word PDFKit alone reads, with no such break, is still found."""
+    poppler = "the debt is can­   other column\n celed and abandon­ words\n ments"
+    pk = "the debt is canceled and abandonments other column words lost"
+    ca, cb = Counter(tokens(poppler)), Counter(tokens(pk))
+    only_pk, _ = soft_hyphen_joins(poppler, +(cb - ca), ca - cb)
+    ok = dict(only_pk) == {"lost": 1}
+    print("extraction self-test, words broken at a soft hyphen: "
+          + ("joined, and a word only PDFKit reads still found" if ok else f"WRONG, only PDFKit {dict(only_pk)}"))
+    return 0 if ok else 1
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--no-pdfkit", action="store_true", help="skip the PDFKit cross-reading")
+    ap.add_argument("--self-test", action="store_true", help="the synthetic check of the token matching (in check-all)")
     a = ap.parse_args()
+    if a.self_test:
+        sys.exit(self_test())
     docs = json.loads((ARCHIVE / "manifest.json").read_text())["documents"]
     html_docs = {d["id"][: -len("-html")]: d for d in docs if d["id"].endswith("-html")}
     body, fails, counts = [], Counter(), Counter()

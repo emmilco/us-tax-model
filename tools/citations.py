@@ -37,18 +37,32 @@ segment that names pages of an archived PDF:
       finding. The computed-line findings are counted and listed but fail the
       check only with --strict, which check-all passes.
 
-  --relocate
-      for a year whose locators were carried over from an earlier year, find
-      each segment's quotes (or else its anchor) in this year's archived text
-      and rewrite the segment's page numbers in place where they moved; a
-      segment that cannot be placed on one page range is listed for review.
-      The rewrite is an ordinary diff to read before committing.
+  --relocate --from <year>
+      for a year whose locators were just copied from <year> (year_diff.py
+      --adopt), find each segment's quotes (or else its anchor) in this year's
+      archived text and rewrite the segment's page numbers in place where they
+      moved. Shifts are learnt from nearby quotes printed on one page; a move
+      must keep the anchor as it stood on the <year> page (printed there, so
+      printed on the new page, not only in force from a page before), and a
+      segment that more than one nearby shift places, or none, is listed for
+      review. Segments left over are tried again with the shifts of the other
+      left-over segments. A draft with a cover page and no quote evidence moves
+      by the cover. Writes reports/<year>/relocation_from_<from>.md, marking the
+      segments left for review that the check passes unmoved. The rewrite is an
+      ordinary diff to read before committing.
+      Without --from (run again): a segment the check passes stays where it is;
+      the rest are relocated with the shifts of the segments that do not pass.
+      Relocating the result of a relocation changes nothing.
 
   --self-test (in check-all)
       move every page number of this year's (checked) locators by +2, then by
-      -1, relocate, and report how many come back to the authored pages; exits
-      1 if any is placed on a page other than its authored one (a segment left
-      for review is not a failure). Rewrite two page lists folded into one locator, the
+      -1, then by +1 before each document's middle and +2 from it (an inserted
+      page), relocate, and report how many come back to the authored pages; then
+      relocate again with half the quote evidence a page early and the rest in
+      place; exits 1 if any is placed on a page other than its authored one (a
+      segment left for review is not a failure). Archive one document without
+      quote evidence again as a draft with a cover page: each segment must move
+      by one page. Rewrite two page lists folded into one locator, the
       second's old number the first's new one; exits 1 unless each is rewritten in
       its own place. Then plant locators on a computed line: a
       span of lines must be reported and a correct form-line locator must
@@ -71,6 +85,8 @@ import yaml
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 from taxyear import Y  # noqa: E402
+import archive_text  # noqa: E402
+from archive_text import DRAFT_COVER  # noqa: E402
 
 RULINGS = ROOT / "reviews" / Y / "citations.json"
 REPORT = ROOT / "reports" / Y / "citations.md"
@@ -83,7 +99,8 @@ SEGMENT_RE = re.compile(r"^(?:(?P<doc>[a-z][a-z0-9-]*)\s+)?(?P<pp>pp?\.)\s*" + P
 # ---------- text ----------
 
 def norm(text):
-    text = unicodedata.normalize("NFKC", text).replace("­", "")
+    # a soft hyphen is printed only where a word breaks at a line end: join the word across it
+    text = re.sub("­\\s*", "", unicodedata.normalize("NFKC", text))
     text = re.sub(r"(\w)-\s*\n\s*(\w)", r"\1\2", text)
     # one quotation mark for all (a locator may nest single quotes where the page prints
     # double), dashes as hyphens, list bullets and the flow-chart arrow glyph dropped
@@ -100,34 +117,20 @@ def parts_of(quote):
     return [p for p in pieces if p]
 
 
-# An IRS draft (manifest "draft": true) prints a cover notice as its first page and
-# watermarks on every page; both are removed from its text, the cover page left empty
-# so that page numbers stay those of the PDF.
-DRAFT_COVER = "The draft you are looking for begins on the next page"
-DRAFT_MARKS = re.compile(r"TREASURY/IRS AND OMB USE ONLY DRAFT|DRAFT\s*[\u2014\u2013-]\s*DO NOT FILE|\bDRAFT\b")
-
-
-def drop_draft_marks(text, entry):
-    """A draft's extracted text without the IRS cover notice and watermarks."""
-    if not entry.get("draft"):
-        return text
-    pages = text.split("\f")
-    if pages and DRAFT_COVER in pages[0]:
-        pages[0] = ""
-    return "\f".join(DRAFT_MARKS.sub(" ", p) for p in pages)
-
-
 class Archive:
     def read(self, doc, key):
         """One archived text layer of a document (`cols_file` or `text_file`), a draft's
-        cover and watermarks removed."""
-        d = self.docs[doc]
-        return drop_draft_marks((self.sources / d[key]).read_text(encoding="utf-8"), d)
+        cover and watermarks removed (tools/archive_text.py)."""
+        return archive_text.read(self.sources, self.docs[doc], key)
+
+    def has_cover(self, doc):
+        """Whether the document is a draft whose first page is the IRS cover notice."""
+        d = self.docs.get(doc)
+        return bool(d) and archive_text.has_cover(self.sources, d)
 
     def __init__(self, year=Y, sources=None):
         self.sources = Path(sources) if sources else ROOT / "sources" / str(year)
-        docs = json.loads((self.sources / "manifest.json").read_text())["documents"]
-        self.docs = {d["id"]: d for d in docs}
+        self.docs = archive_text.manifest(self.sources)
         self.cache = {}
 
     def pages(self, doc):
@@ -694,36 +697,81 @@ def lead_key(layers, anchor, quotes):
     return next((k for k in anchor_keys(anchor) if pages_with(layers, k)), None)
 
 
-def place(layers, pages, anchor, quotes, shift):
-    """The pages a segment belongs on this year, or None to leave it for review:
-    the old pages moved by the local shift, if every quote and the anchor fit
-    there; otherwise, for a segment citing one page, the page that alone prints
-    its first quote, if the rest fits. A heading alone does not say how far past
-    it the cited text lies, one quote does not say where a range of pages starts,
-    and a segment with neither quote nor anchor has nothing to find: none of these
-    is placed without the shift (the last not at all)."""
+FIRST, PRINTED, IN_FORCE_ONLY, ABSENT = 3, 2, 1, 0  # how an anchor stands on cited pages, strongest first
+
+
+def anchor_level(layers, pages, anchor):
+    """How the anchor stands on the pages: printed on the first, printed on another
+    of them, only a heading in force (printed up to IN_FORCE pages before), absent."""
+    def printed_on(p):
+        return any(on_pages(layers, [p], k, spill=False) for k in anchor_keys(anchor))
+    if printed_on(min(pages)):
+        return FIRST
+    if any(printed_on(p) for p in pages):
+        return PRINTED
+    return IN_FORCE_ONLY if anchor_on(layers, pages, anchor) else ABSENT
+
+
+def passes(layers, pages, anchor, quotes):
+    """Whether the check passes a segment's quotes and anchor on its pages (rulings
+    aside); a segment with neither has nothing to pass."""
+    keys = [parts_of(q) for q in quotes if parts_of(q)]
+    if not keys and not anchor_keys(anchor):
+        return False
+    return all(on_pages(layers, pages, k, spill=True) for k in keys) and \
+        (not anchor_keys(anchor) or anchor_on(layers, pages, anchor))
+
+
+def place(layers, pages, anchor, quotes, shifts, level=PRINTED):
+    """The pages a segment belongs on this year, or None to leave it for review.
+
+    Each candidate shift (`shifts`, the
+    shifts nearby evidence suggests) moves the old pages, and a move fits if every
+    quote is on the moved pages and the anchor stands on them at least as strongly
+    as it did on the authored pages (`level`, see anchor_level). A relocation may
+    not weaken the evidence of the authored page: a heading printed on it must be
+    printed on the new one, not only in force from a page before (nor, of a range,
+    only on a later page of it). Exactly one distinct fitting placement is
+    accepted; several (the heading printed on two candidate pages) are left for
+    review. Without one, a segment citing one page goes to the page that alone
+    prints its first quote, if the rest fits. A heading alone does not say how far
+    past it the cited text lies, one quote does not say where a range of pages
+    starts, and a segment with neither quote nor anchor has nothing to find: none
+    of these is placed without a shift (the last not at all)."""
     keys = [parts_of(q) for q in quotes if parts_of(q)]
     has_anchor = bool(anchor_keys(anchor))
     if not keys and not has_anchor:
         return None
 
-    def fits(moved):
-        return min(moved) >= 1 and all(on_pages(layers, moved, k, spill=True) for k in keys) and \
-            (not has_anchor or anchor_on(layers, moved, anchor))
+    def fits(moved, need=level):
+        if min(moved) < 1 or not all(on_pages(layers, moved, k, spill=True) for k in keys):
+            return False
+        return not has_anchor or anchor_level(layers, moved, anchor) >= need
 
-    if shift is not None and fits([p + shift for p in pages]):
-        return [p + shift for p in pages]
+    found = []
+    for s in shifts:
+        moved = [p + s for p in pages]
+        if moved not in found and fits(moved):
+            found.append(moved)
+    if found:
+        return found[0] if len(found) == 1 else None
     hits = pages_with(layers, keys[0]) if keys and len(pages) == 1 else []
     return hits if len(hits) == 1 and fits(hits) else None
 
 
-def local_shift(evidence, page):
-    """The shift most common among the (up to) five pieces of evidence nearest
-    `page`, or None without evidence."""
-    if not evidence:
-        return None
+def local_shifts(evidence, page):
+    """Candidate shifts for `page`: those among the (up to) five pieces of evidence
+    nearest it, most common first (nearest first among equals), then those of the
+    nearest evidence at or before it and at or after it, which bracket it when a
+    page was inserted or removed in between; empty without evidence."""
     near = sorted(evidence, key=lambda e: (abs(e[0] - page), e[0]))[:5]
-    return collections.Counter(s for _, s in near).most_common(1)[0][0]
+    out = [s for s, _ in collections.Counter(s for _, s in near).most_common()]
+    before = [e for e in evidence if e[0] <= page]
+    after = [e for e in evidence if e[0] >= page]
+    for side in (max(before, default=None, key=lambda e: e[0]), min(after, default=None, key=lambda e: e[0])):
+        if side is not None and side[1] not in out:
+            out.append(side[1])
+    return out
 
 
 def collect():
@@ -735,50 +783,168 @@ def collect():
     return items
 
 
-def plan(arch, items, offset=0):
-    """(item, old pages, new pages or None) for every segment on a PDF; `offset`
-    moves every old page first (the self-test). Shifts are learnt from segments
-    citing one page whose first quote is printed on exactly one page: the old
-    page held it, so the difference is the shift. (An anchor proves less: the
-    heading in force may be printed a page or two before the cited one.)"""
-    evidence = collections.defaultdict(list)
-    rows = []
+def plan(arch, items, offset=0, source=None, keep=False):
+    """(item, old pages, new pages or None) for every segment on a PDF.
+
+    `source` is the archive the locators were written against (the from-year's,
+    after copying a year's definitions); None means `arch` itself, a year's own
+    locators relocated again, which is done with `keep`: a segment the check passes
+    stays, and shifts are learnt only from the segments that do not. `offset` (a
+    number, or a function of the item) moves the old pages first, for the self-test.
+
+    Shifts are learnt from segments citing one page whose first quote is printed
+    on exactly one page: the old page held it, so the difference is the shift.
+    (An anchor proves less: the heading in force may be printed a page or two
+    before the cited one.) A document with no such evidence takes the shift of
+    the draft cover page, when one of the two archives prints it and the other
+    does not. How each anchor stood on its authored pages (anchor_level) is read
+    from `source`; when that is unknown (with `keep`, or the anchor not found) the
+    anchor must be printed on the new pages."""
+    source = source or arch
+    move = offset if callable(offset) else (lambda _item: offset)
+    rows, result = [], {}
     for item in items:
         _, _, _, (d, pages, anchor, quotes, span) = item
         layers = arch.pages(d)
         if layers is None or span is None:
             continue
-        old = [p + offset for p in pages]
+        old = [p + move(item) for p in pages]
         if min(old) < 1:
             continue
-        rows.append((item, old, layers))
+        i = len(rows)
         lead = parts_of(quotes[0]) if quotes and len(old) == 1 else None
-        if lead:
-            hits = pages_with(layers, lead)
-            if len(hits) == 1:
-                evidence[d].append((old[0], hits[0] - old[0]))
-    out = []
-    for item, old, layers in rows:
-        d, _, anchor, quotes, _ = item[3]
-        out.append((item, old, place(layers, old, anchor, quotes, local_shift(evidence[d], min(old)))))
-    return out
+        hits = pages_with(layers, lead) if lead else []
+        rows.append((item, old, layers, (old[0], hits[0] - old[0]) if len(hits) == 1 else None))
+        if keep and passes(layers, old, anchor, quotes):
+            result[i] = old  # passes the check where it is
+    had_evidence = {r[0][3][0] for i, r in enumerate(rows) if r[3] and i not in result}
+
+    # Segments the nearby evidence cannot place are tried again with the shifts of the
+    # other segments still unplaced (a block of pages that moved by its own amount),
+    # until a round places nothing more; so relocating the result again changes nothing.
+    while True:
+        pending = [i for i in range(len(rows)) if i not in result]
+        evidence = collections.defaultdict(list)
+        for i in pending:
+            if rows[i][3]:
+                evidence[rows[i][0][3][0]].append(rows[i][3])
+        placed = {}
+        for i in pending:
+            item, old, layers, _ = rows[i]
+            d, authored, anchor, quotes, _ = item[3]
+            shifts = local_shifts(evidence[d], min(old))
+            if d not in had_evidence and source is not arch and arch.has_cover(d) != source.has_cover(d):
+                shifts = [int(arch.has_cover(d)) - int(source.has_cover(d))]
+            elif shifts and not any(parts_of(q) for q in quotes) and not (
+                    any(p <= min(old) for p, _ in evidence[d]) and any(p >= min(old) for p, _ in evidence[d])):
+                # Only a heading, beyond the evidence on one side: a page may have been added
+                # or removed between, so a heading printed on the neighbouring pages too
+                # places nothing.
+                shifts = shifts + [s + k for s in shifts[:1] for k in (-1, 1) if s + k not in shifts]
+            level = PRINTED
+            src_layers = source.pages(d)
+            if not keep and src_layers is not None and anchor_keys(anchor):
+                level = anchor_level(src_layers, authored, anchor) or PRINTED
+            new = place(layers, old, anchor, quotes, shifts, level)
+            if new is not None:
+                placed[i] = new
+        if not placed:
+            break
+        result.update(placed)
+    return [(item, old, result.get(i)) for i, (item, old, _, _) in enumerate(rows)]
+
+
+def _report_plan(name, planned):
+    """Print how many planned segments came back to their authored pages; 1 if any went elsewhere."""
+    back = [p for p in planned if p[2] == p[0][3][1]]
+    wrong = [p for p in planned if p[2] is not None and p[2] != p[0][3][1]]
+    none = [p for p in planned if p[2] is None]
+    print(f"self-test, {name}: {len(back)} of {len(planned)} segments relocated to their "
+          f"authored pages, {len(wrong)} elsewhere, {len(none)} not placed")
+    for (path, line, _, (d, pages, anchor, _, _)), old, new in wrong:
+        print(f"  WRONG {rel(path)}:{line} {d} authored p. {_pages_text(pages)}, relocated p. {_pages_text(new)} ({anchor})")
+    return 1 if wrong else 0
+
+
+def _unique_lead(arch, item):
+    """Whether a segment cites one page and its first quote is printed on exactly one page (shift evidence)."""
+    d, pages, _, quotes, _ = item[3]
+    layers = arch.pages(d)
+    lead = parts_of(quotes[0]) if quotes and len(pages) == 1 else None
+    return bool(layers and lead and len(pages_with(layers, lead)) == 1)
 
 
 def self_test():
     arch, items = Archive(), collect()
+    # The authored pages are the answer only where the check passes them (all of them in an
+    # adopted year; a year just copied holds segments left for review on old pages).
+    passing = [it for it in items if arch.pages(it[3][0]) is not None and it[3][4] is not None
+               and passes(arch.pages(it[3][0]), *it[3][1:4])]
+    if len(passing) < len(items):
+        print(f"self-test: {len(passing)} segments the check passes where they stand are relocated")
+    items = passing
     status = 0
     for offset in (2, -1):
-        planned = plan(arch, items, offset)
-        back = [(it, old, new) for it, old, new in planned if new == it[3][1]]
-        wrong = [(it, old, new) for it, old, new in planned if new is not None and new != it[3][1]]
-        none = [(it, old, new) for it, old, new in planned if new is None]
-        print(f"self-test, every page moved by {offset:+d}: {len(back)} of {len(planned)} segments relocated to their "
-              f"authored pages, {len(wrong)} elsewhere, {len(none)} not placed")
-        for (path, line, _, (d, pages, anchor, _, _)), old, new in wrong:
-            print(f"  WRONG {rel(path)}:{line} {d} authored p. {_pages_text(pages)}, relocated p. {_pages_text(new)} ({anchor})")
-        status = status or (1 if wrong else 0)
-    computed, rewrite = self_test_computed(arch), self_test_rewrite()
-    return status or computed or rewrite
+        status = _report_plan(f"every page moved by {offset:+d}", plan(arch, items, offset)) or status
+
+    # A page inserted mid-document (with the draft cover, as in the TY2026 Schedule C
+    # instructions): pages before the middle moved by 1, from the middle on by 2. The
+    # evidence near the middle mixes the two shifts; a segment whose heading is printed
+    # on its authored page must not be put on the next page, where it is only in force.
+    def inserted(item):
+        d, pages = item[3][0], item[3][1]
+        return 1 if min(pages) <= len(arch.pages(d)[0]) // 2 else 2
+    status = _report_plan("a page inserted mid-document (+1, then +2)", plan(arch, items, inserted)) or status
+
+    # Relocating again (--relocate without --from): half of the segments that teach a
+    # shift are stale, a page early, as segments left for review after a first run are;
+    # the rest, already right, must stay where they are.
+    stale = {id(it) for it in [it for it in items if _unique_lead(arch, it) and min(it[3][1]) > 1][::2]}
+    planned = plan(arch, items, lambda it: -1 if id(it) in stale else 0, keep=True)
+    status = _report_plan("relocated again, half the evidence a page early", planned) or status
+
+    computed, rewrite, cover = self_test_computed(arch), self_test_rewrite(), self_test_cover(arch, items)
+    return status or computed or rewrite or cover
+
+
+COVER_TEST_DOC = "f4952"  # cited on several pages at once, by no single-page quote: no shift evidence
+
+
+def self_test_cover(arch, items):
+    """A document with no shift evidence, archived again as an IRS draft with its
+    cover page added: every segment the check passes must move by one page."""
+    import tempfile
+    doc = COVER_TEST_DOC
+    mine = [it for it in items if it[3][0] == doc]
+    d = arch.docs.get(doc)
+    if not mine or not d or any(_unique_lead(arch, it) for it in mine):
+        print(f"self-test, a draft cover page added: {doc} is not cited without shift evidence this year; skipped")
+        return 0
+    layers = arch.pages(doc)
+    passing = [it for it in mine if anchor_on(layers, it[3][1], it[3][2])
+               and all(on_pages(layers, it[3][1], parts_of(q), spill=True) for q in it[3][3] if parts_of(q))]
+    with tempfile.TemporaryDirectory() as tmp:
+        entries = {}
+        for name, draft in (("old", False), ("new", True)):
+            (Path(tmp) / name).mkdir()
+            entry = {**d, "draft": draft}
+            for key in ("cols_file", "text_file"):
+                if key in d:
+                    raw = (arch.sources / d[key]).read_text(encoding="utf-8")
+                    if draft:
+                        raw = f"Caution: DRAFT—NOT FOR FILING\n{DRAFT_COVER}.\f" + raw
+                    (Path(tmp) / name / d[key]).write_text(raw, encoding="utf-8")
+            entries[name] = entry
+            (Path(tmp) / name / "manifest.json").write_text(json.dumps({"documents": [entry]}))
+        old, new = Archive(sources=Path(tmp) / "old"), Archive(sources=Path(tmp) / "new")
+        planned = plan(new, passing, source=old)
+    moved = [p for p in planned if p[2] == [q + 1 for q in p[0][3][1]]]
+    print(f"self-test, a draft cover page added to {doc}: {len(moved)} of {len(planned)} passing segments moved by one page")
+    for (path, line, _, (_, pages, anchor, _, _)), _, new in planned:
+        if new != [q + 1 for q in pages]:
+            print(f"  WRONG {rel(path)}:{line} {doc} authored p. {_pages_text(pages)}, relocated "
+                  f"{'nowhere' if new is None else 'p. ' + _pages_text(new)} ({anchor})")
+    return 0 if planned and len(moved) == len(planned) else 1
 
 
 def self_test_computed(arch):
@@ -802,14 +968,21 @@ def self_test_computed(arch):
     return 1 if bad else 0
 
 
-def relocate():
+def relocate(from_year=None):
+    """Relocate the year's locators: written for `from_year`'s archive (just copied
+    from that year), or else for this year's own (run again: a segment the check
+    passes is kept)."""
     arch, items = Archive(), collect()
-    planned = plan(arch, items)
+    if from_year is not None and str(from_year) != str(Y):
+        planned = plan(arch, items, source=Archive(from_year))
+    else:
+        planned = plan(arch, items, keep=True)
     edits = collections.defaultdict(list)
     kept, moved, unplaced = 0, [], []
-    for (path, line, locator, (d, pages, anchor, _, span)), old, new in planned:
+    for (path, line, locator, (d, pages, anchor, quotes, span)), old, new in planned:
         if new is None:
-            unplaced.append((rel(path), line, d, pages, anchor))
+            # one left for review whose unchanged pages the check passes will not be reported by the check
+            unplaced.append((rel(path), line, d, pages, anchor, passes(arch.pages(d), pages, anchor, quotes)))
         elif new == pages:
             kept += 1
         else:
@@ -817,11 +990,23 @@ def relocate():
             edits[path].append((line, locator, span, new))
     for path, changes in edits.items():
         _rewrite(path, changes)
-    print(f"relocate {Y}: {len(planned)} segments; {kept} in place, {len(moved)} moved, {len(unplaced)} not placed")
-    for path, line, d, pages, new, anchor in moved:
-        print(f"  moved {path}:{line} {d} p. {_pages_text(pages)} -> p. {_pages_text(new)}: {anchor}")
-    for path, line, d, pages, anchor in unplaced:
-        print(f"  REVIEW {path}:{line} {d} p. {_pages_text(pages)}: {anchor}")
+    summary = f"relocate {Y}: {len(planned)} segments; {kept} in place, {len(moved)} moved, {len(unplaced)} not placed"
+    out = [summary] + [f"  moved {path}:{line} {d} p. {_pages_text(pages)} -> p. {_pages_text(new)}: {anchor}"
+                       for path, line, d, pages, new, anchor in moved]
+    out += [f"  REVIEW {path}:{line} {d} p. {_pages_text(pages)}: {anchor}"
+            + (" (the check passes it unmoved)" if unmoved_ok else "")
+            for path, line, d, pages, anchor, unmoved_ok in unplaced]
+    print("\n".join(out))
+    if from_year is not None and str(from_year) != str(Y):
+        report = ROOT / "reports" / Y / f"relocation_from_{from_year}.md"
+        report.parent.mkdir(parents=True, exist_ok=True)
+        report.write_text("\n".join([
+            f"# Citation pages relocated from {from_year} to {Y}", "",
+            f"Generated by `tools/citations.py --relocate --from {from_year}` when the {from_year} definitions were "
+            f"copied to {Y}. Each segment left for review still names its {from_year} pages. Those marked “the "
+            "check passes it unmoved” also pass the citation check as they stand, so only this list shows them.",
+            "", "```"] + out + ["```", ""]), encoding="utf-8")
+        print(f"report: {report.relative_to(ROOT)}")
     return 0
 
 
@@ -925,13 +1110,15 @@ def self_test_rewrite():
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--relocate", action="store_true")
+    ap.add_argument("--from", dest="from_year", type=int,
+                    help="with --relocate: the year whose archive the locators were written for (default: this year's)")
     ap.add_argument("--self-test", action="store_true")
     ap.add_argument("--strict", action="store_true", help="fail on computed-line locators to rewrite, not only report them")
     a = ap.parse_args()
     if a.self_test:
         return self_test()
     if a.relocate:
-        return relocate()
+        return relocate(a.from_year)
     return check(strict=a.strict)
 
 

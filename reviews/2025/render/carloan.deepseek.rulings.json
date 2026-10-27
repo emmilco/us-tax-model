@@ -5,6 +5,13 @@
  "rulings": [
   {
    "printed": "22(ii)",
+   "restated": "Choose — [helper \"The loan and the vehicle qualify\" = false → helper \"Year parameter sales.zero\"] [helper \"The loan and the vehicle qualify\" = true → helper \"The QPVLI part of the Schedule C interest, by how you came to owe the loan\"]",
+   "model": "The IRS text says 'enter the amount of the QPVLI, if any, that was deducted elsewhere on your return (for example, on Schedule C, Schedule E, or Schedule F),' but the restatement computes only the QPVLI part of Schedule C interest and omits other elsewhere-deducted QPVLI such as Schedule E or Schedule F.",
+   "ruling": "Ruling: scope; i1040gi p. 110, Schedule 1-A, Line 22: \"On line 22, column (ii), enter the amount of the QPVLI, if any, that was deducted elsewhere on your return (for example, on Schedule C, Schedule E, or Schedule F).\" As in the Claude render log: Schedules E and F are refused by the cited scope.schedule1 screen at Form 1040 lines 8 and 10, so within a completed return the QPVLI part of the Schedule C interest is all the QPVLI deducted elsewhere; the model correctly describes the wider IRS line, but no supported return is misstated. The restatement of the BUG-0175 proration matches fr-2025-24154 p. 23, proposed § 1.163-16(g)(1): \"Independently deductible interest is limited to interest that is QPVLI ... and that is otherwise deductible by the taxpayer as a different type of interest\"; (g)(2): the QPVLI \"is reduced to the extent that the taxpayer deducts that independently deductible interest as non-QPVLI\".",
+   "context": "5fcf4467e90eaa1b0d6c38a85bce862146038139245ba035b8cb0a212caa4226"
+  },
+  {
+   "printed": "22(ii)",
    "restated": "Input — The part of this loan's 2025 interest you deduct on Schedule C (the business use of the vehicle; zero if none)",
    "model": "IRS column (ii) says 'the amount of the QPVLI, if any, that was deducted elsewhere on your return (for example, on Schedule C, Schedule E, or Schedule F)', but the restatement limits it to Schedule C.",
    "ruling": "Ruling: scope; i1040gi (2025) p. 110 line 22 column (ii) includes QPVLI deducted elsewhere, naming Schedule C, E and F. Schedule E/K-1, farm and other unmodeled Schedule 1 income are explicitly refused by scope.schedule1 at f1040.line8/line10. Within a supported completed return Schedule C is the only modeled competing interest deduction, so the input is narrowed to that amount. The objection correctly describes the wider IRS form; no claim is made that this standalone input handles a return needing E or F, and it is not model error."

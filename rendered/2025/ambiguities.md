@@ -110,7 +110,7 @@
 
 - Text at issue: Proposed § 1.163-16(d)(2)(iii)(A) and (d)(4) allocate a loan's interest "on a pro rata basis" between the part that is a specified passenger vehicle loan and the rest, without saying how the ratio is figured or rounded.
 - Candidate readings: Round the ratio (qualifying debt divided by the loan) half-up to six decimal places, then the interest to the cent. | Keep the ratio exact and round only the allocated interest to the cent. | Round the ratio to three places, as the Student Loan Interest Deduction Worksheet does.
-- **Chosen:** Round the ratio half-up to six decimal places (the prorate atom with places 6 on carloan.mixed_prorated and carloan.refi_interest), the product half-up to the cent.
+- **Chosen:** Round the ratio half-up to six decimal places (the prorate atom with places 6 on carloan.mixed_prorated and carloan.refi_interest, and on carloan.sc_mixed_prorated and carloan.sc_refi for the QPVLI part of the Schedule C interest in column (ii)), the product half-up to the cent.
 - Reason: The owner's ruling. Six places keeps the existing prorate atom unchanged; at the $10,000 cap on line 24 the result differs from an exact ratio by less than one cent, while three places could differ by about $5.
 
 - Status: Owner ruling, Stage 12.

@@ -965,9 +965,7 @@ async function outcomesOf(baseline: CanonicalData, cases: ReturnType<typeof load
 // A survivor that a recorded, still-open defect explains: it is not equivalent and is not excluded from
 // the adjusted score, but it does not fail the run while the bug entry is open. The run fails if a listed
 // mutant is killed (the entry is stale) or the bug entry is missing.
-const OPEN_DEFECT_SURVIVORS: Record<string, string> = {
-  "operand.person.person.sep_s1.sc_total": "BUG-0169",
-};
+const OPEN_DEFECT_SURVIVORS: Record<string, string> = {};
 
 export async function runMutation(): Promise<number> {
   const baseline = loadCanonical();

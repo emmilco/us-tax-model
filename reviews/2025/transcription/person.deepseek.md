@@ -4,24 +4,24 @@ Second transcription of `Each person on the return — per-person facts and tota
 
 | field | value |
 | --- | --- |
-| date | 2026-10-26 |
+| date | 2026-10-27 |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
-| prompt sha256 | 76dd7b69bfde85af617e14b41bc3b66f809c5e67d880fdddcb1a5c21fc637fbd |
+| prompt sha256 | 8fba401627488b840d14f3be82cea3a8fe65caaa3232ccef27f6759251b28248 |
 | prompt policy | source-only-computation-v2 |
 | comparison policy | checked-expression-types-v2 |
 | input context policy | required-review-interfaces-v2 |
 | complete input context | pass |
-| required input context sha256 | d24d5221553dc354ee430d3d5532693999311ad0266f2d454fc9a8dc0c38420c |
+| required input context sha256 | 2ebaa02bfea6520c29ef3fb2968fd10fa6298672cfdb226fe0d0ce960da6150a |
 | type validation policy | project-expression-types-v3 |
-| model type validation | pass |
+| model type validation | fail |
 | system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
 | reasoning effort | provider default |
 | output token budget | 65536 |
 | interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
-| subject sha256 | 581f806af1d6173b647f7819209ca510ff017e010e2aedeeda7f875a37e3fa56 |
+| subject sha256 | cedbc126a7e2ebef2c444cd8498bbcb81ef95101c5c1b375434ffbd9b3a57064 |
 | printed lines compared | 74 |
-| agree / disagree / missing | 35 / 39 / 0 |
+| agree / disagree / missing | 28 / 46 / 0 |
 | extra printed lines in second | none |
 
 ## Source pages given to the model
@@ -51,6 +51,21 @@ Second transcription of `Each person on the return — per-person facts and tota
 | i8959 | 2025; printed date 2025-08-07 | 1, 2, 3, 4 | whole document | 0ec9603864196115a05c89675c3cf1ea20ce0384fb59e2195b2dbd8c65d3e85d | 1, 2, 3, 4 | 926d666edb486650f74da8863ef35ce5a9fe82c240719196138fdc8d40bf40df |
 | p503 | For use in preparing 2025 returns | 11 | pages named by another document's citation | a1ff9e2c3120455f6049fc50f0af8c5b8160302c198162dede66b2c8a5640607 | 11 | 44d87f0ddfd4f953ea02cf5cc31e203e754c88aa74627dac5a551f46c6bf65b9 |
 
+## Host-side model expression type checks
+
+The build's reference/type checker rejected these model expressions; none were executed.
+- person.person.excess: reference 'person.h_excess_raw' does not resolve
+- person.person.__type_gate_5: collection reference requires sum_over
+- person.person.__type_gate_5: comparison operands have incompatible types
+- person.person.__type_gate_6: collection reference requires sum_over
+- person.person.__type_gate_6: comparison operands have incompatible types
+- person.person.__type_gate_7: collection reference requires sum_over
+- person.person.__type_gate_7: comparison operands have incompatible types
+- person.person.__type_gate_8: collection reference requires sum_over
+- person.person.__type_gate_8: comparison operands have incompatible types
+- person.person.__type_gate_9: collection reference requires sum_over
+- person.person.__type_gate_9: comparison operands have incompatible types
+
 ## Lines
 
 ### person.one — One entry for this person
@@ -68,10 +83,10 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.eligible_educator"}], "test": "eq"}, "then": {"line": "zero"}}, {"guard": {"args": [{"const": true}, {"input": "person.eligible_educator"}], "test": "eq"}, "then": {"of": [{"input": "person.educator_expenses"}, {"param": "s1.educator_max"}], "op": "smaller_of"}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"const": true}, {"input": "person.eligible_educator"}], "test": "eq"}, "then": {"of": [{"input": "person.educator_expenses"}, {"param": "s1.educator_max"}], "op": "smaller_of"}}, {"guard": {"args": [{"const": true}, {"input": "person.eligible_educator"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}
 ```
 
-Ruling: representation; i1040gi p. 93, Line 11: "If you were an eligible educator in 2025, you can deduct on line 11 up to $300 of qualified expenses you paid in 2025." Both lines give the smaller of the expenses and $300 for an eligible educator and zero otherwise; they differ only in which of the two dispositive questions is asked first. The project asks person.eligible_educator only when person.educator_expenses is more than zero, so the candidate-unknown records (classm.f2441.1.deepseek, classm.f2441.2.deepseek) are interview records with zero expenses and no eligibility answer, where the candidate needs eligibility the text does not need but also permits asking; the project-unknown records are partial records withholding the expenses with eligibility false (partial classm.f8889.2.deepseek, classm.asset.1, classm.carloan.1 -educator_expenses), where the candidate's zero is right and the project asks expenses first. No value differs on any record where both are supplied. Triage executable-triage-v1 (triage/person.deepseek.json): 3,363 of 4,647 comparisons agree; 1249 candidate-unknown, 35 project-unknown.
+Ruling: representation; Not executable: the reply fails validation (person.excess: reference 'person.h_excess_raw' does not resolve; the f8889.unsupported refusal declarations of person.hsa_step1, hsa_share, hsa_deduction, hsa_taxable and hsa_addtax: "collection reference requires sum_over" and "comparison operands have incompatible types"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. i1040gi p. 93, Line 11: "If you were an eligible educator in 2025, you can deduct on line 11 up to $300 of qualified expenses you paid in 2025." The candidate gives the smaller of the expenses and $300 (s1.educator_max) for an eligible educator and zero otherwise, as the project does; it reads eligibility first, where the project returns zero without asking it when the expenses are zero. The same reading as the Claude reply this round (representation: 2,656 of 4,117 agree, only unknown kinds).
 
 ### person.hsa_forms — Number of Forms 8889 entered for this person
 Status: **AGREE**
@@ -94,7 +109,7 @@ Second:
 {"collection": "f8889", "field": "f8889.one", "op": "sum_over", "where": {"args": [{"const": "agreed"}, {"ref": "f8889.allocation"}], "test": "eq"}}
 ```
 
-Ruling: representation; i8889 p. 7, Line 6, Step 2: "Divide the refigured contribution limit from Step 1 equally between you and your spouse, unless you both agree on a different allocation (such as allocating nothing to one spouse)." The candidate counts forms with f8889.allocation agreed; the project counts them only on forms using the spouse rule (f8889.split). f8889.allocation is asked only within the spouse rule (through f8889.share_raw under f8889.line6_split), so the value differences (classm.f8889.1, classm.f8889.1.deepseek, classm.f5695.2: count 1 against 0) supply an allocation on a non-split form, a record the interview cannot produce, and the 35 candidate-unknown records (stage11.hsa.self_full_year, stage11.hsa.family_55, stage11.hsa.last_month) are interview records where the allocation was rightly not asked. household.hsa_agreed_count is read only by f8889.allocation_bad on a split form, where both counts agree. Triage executable-triage-v1 (triage/person.deepseek.json): 4,445 of 4,647 comparisons agree; 35 candidate-unknown, 167 value.
+Ruling: representation; Not executable: the reply fails validation (person.excess: reference 'person.h_excess_raw' does not resolve; the f8889.unsupported refusal declarations of person.hsa_step1, hsa_share, hsa_deduction, hsa_taxable and hsa_addtax: "collection reference requires sum_over" and "comparison operands have incompatible types"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. i8889 p. 7, Line 6, Step 2: "Divide the refigured contribution limit from Step 1 equally between you and your spouse, unless you both agree on a different allocation". The earlier deepseek reply had the identical expression; its triage (executable-triage-v1, archived in .transcription/archive/before-round4-2026-10-27/) recorded 4,445 of 4,647 agree; 35 candidate-unknown, 167 value (classm.f8889.1.deepseek: 0 against 1 on a non-split form). The candidate counts forms with f8889.allocation agreed without the spouse-rule filter; the allocation is asked only within the spouse rule and household.hsa_agreed_count is read only by f8889.allocation_bad on a split form, so no printed amount differs (as the Claude reply's identical expression this round).
 
 ### person.hsa_step1 — This persons Step 1 limit under the spouse rule of line 6
 Status: **DISAGREE**
@@ -108,10 +123,10 @@ Project:
 Second:
 
 ```json
-{"collection": "f8889", "field": "f8889.step1", "op": "sum_over", "where": null}
+{"expression": {"collection": "f8889", "field": "f8889.step1", "op": "sum_over", "where": null}, "invalid_model_types": [{"line": "person.hsa_step1", "message": "person.person.__type_gate_5: collection reference requires sum_over"}, {"line": "person.hsa_step1", "message": "person.person.__type_gate_5: comparison operands have incompatible types"}]}
 ```
 
-Ruling: scope; i8889 p. 7, Line 6, Step 2: "Divide the refigured contribution limit from Step 1 equally between you and your spouse, unless you both agree on a different allocation (such as allocating nothing to one spouse)." Value kind: representation, as in the Claude log; the candidate's unfiltered sum differs only on non-split forms (classm.asset.1 $712.50 against $0.00, classm.f5695.7, classm.sc.1 spouse), and person.hsa_step1 and person.hsa_share feed only household.hsa_step1_sum and household.hsa_share_sum, which are read only in the third disjunct of f8889.allocation_bad (agreed allocation with different Step 1 limits or more than Step 1 allocated). That gate is reached only through f8889.share on a form with f8889.split true; if only one spouse's form is split, household.hsa_split_count is 1 and the gate is already true; if both are split, the project's split filter keeps both forms and the unfiltered sum is the same (one form per person, more than one refused by person.hsa_repeated). So the filtered and unfiltered sums cannot give a different printed amount. Refusal kind: the candidate refuses on person.h_hsa_unsupported_any (f8889.unsupported) where the project's helper is zero (classm.carloan.1, classm.f8959.1, stage11.refuse.hsa_screen, stage16.refuse.f8889.unsupported_part2); the project refuses the same answer at f8889.line13 and f8889.line16 ("Form 8889 Part III, Form 8853, or other HSA situations", cited i8889 Parts II and III), which every return with a Form 8889 evaluates for Schedule 1 line 13. The 2 candidate-unknown records (stage16.hsa.partial.H01/H02) lack dec_coverage. Triage executable-triage-v1 (triage/person.deepseek.json): 4,172 of 4,647 comparisons agree; 86 candidate-refuses, 2 candidate-unknown, 387 value.
+Ruling: model error; adjudicates the declaration, not the tax reading. The line's refusal declaration "refuses: [f8889.unsupported]" reads a per-form field at the person level: "person.person.__type_gate_5: collection reference requires sum_over" and "comparison operands have incompatible types". The reply fails validation, and the host-side type check rejected it before execution (triage/person.deepseek.json, state invalid), so no value of this line was computed; the tax reading is not ruled.
 
 ### person.hsa_share — This persons part of the Step 1 limit under the spouse rule of line 6
 Status: **DISAGREE**
@@ -125,28 +140,98 @@ Project:
 Second:
 
 ```json
-{"collection": "f8889", "field": "f8889.share", "op": "sum_over", "where": null}
+{"expression": {"collection": "f8889", "field": "f8889.share", "op": "sum_over", "where": null}, "invalid_model_types": [{"line": "person.hsa_share", "message": "person.person.__type_gate_6: collection reference requires sum_over"}, {"line": "person.hsa_share", "message": "person.person.__type_gate_6: comparison operands have incompatible types"}]}
 ```
 
-Ruling: interface gap; i8889 p. 7, Line 6, Step 2: "Divide the refigured contribution limit from Step 1 equally between you and your spouse, unless you both agree on a different allocation (such as allocating nothing to one spouse)." i8889 p. 7, Step 3: "Subtract the part of the contribution limit allocated to your spouse in Step 2 from the amount determined in Step 1." Unknown kind: as in the Claude log, The candidate sums f8889.share, the published field that carries the f8889.allocation_bad refusal; that gate reads household.hsa_share_sum, which sums person.hsa_share, so the candidate's line depends on itself ("cycle at person[spouse].hsa_share", "cycle at household.hsa_share_sum"; classm.f8889.1, classm.f8889.1.deepseek, classm.f5695.2) whenever the gate evaluates its agreed-allocation test. The published interface listed f8889.share_raw and f8889.share by id, form and type only, with no label or dependency, so the candidate could not tell the pre-check share from the checked one; the source reading (each spouse's part under Steps 2 and 3) is the one the project encodes with share_raw. Value kind: representation (classm.asset.1 $356.25 against $0.00, classm.f5695.7, classm.sc.1; non-split forms), because person.hsa_step1 and person.hsa_share feed only household.hsa_step1_sum and household.hsa_share_sum, which are read only in the third disjunct of f8889.allocation_bad (agreed allocation with different Step 1 limits or more than Step 1 allocated). That gate is reached only through f8889.share on a form with f8889.split true; if only one spouse's form is split, household.hsa_split_count is 1 and the gate is already true; if both are split, the project's split filter keeps both forms and the unfiltered sum is the same (one form per person, more than one refused by person.hsa_repeated). So the filtered and unfiltered sums cannot give a different printed amount. Refusal kind: scope; h_hsa_unsupported_any refusals (classm.carloan.1, classm.f8959.1, stage11.refuse.hsa_screen) match the project's f8889.unsupported refusal at f8889.line13 and line16, and allocation_bad refusals (stage13.refuse.hsa_family_one_spouse) are returns the project refuses at f8889.share. kinds_by_return places 2 candidate refusals on returns the full interview completes (not among the recorded witnesses); they follow from the same field choice, the candidate reaching f8889.allocation_bad through f8889.share on a form the project never reads it for, and are covered by the interface-gap ruling. Triage executable-triage-v1 (triage/person.deepseek.json): 3,953 of 4,647 comparisons agree; 116 candidate-refuses, 201 candidate-unknown, 377 value.
+Ruling: model error; adjudicates the declaration, not the tax reading. The line's refusal declaration "refuses: [f8889.unsupported]" reads a per-form field at the person level (__type_gate_6: "collection reference requires sum_over", "comparison operands have incompatible types"); it also sums f8889.share, whose allocation_bad test reads household.hsa_step1_sum built from the invalid person.hsa_step1 (and is the cycle ruled interface gap on the Claude reply). The reply fails validation, and the host-side type check rejected it before execution (triage/person.deepseek.json, state invalid), so no value of this line was computed; the tax reading is not ruled.
 
 ### person.hsa_deduction — Form 8889 line 13 for this person
-Status: **AGREE**
+Status: **DISAGREE**
+
+Project:
+
+```json
+{"collection": "f8889", "field": "f8889.line13", "op": "sum_over", "where": null}
+```
+
+Second:
+
+```json
+{"expression": {"collection": "f8889", "field": "f8889.line13", "op": "sum_over", "where": null}, "invalid_model_types": [{"line": "person.hsa_deduction", "message": "person.person.__type_gate_7: collection reference requires sum_over"}, {"line": "person.hsa_deduction", "message": "person.person.__type_gate_7: comparison operands have incompatible types"}]}
+```
+
+Ruling: model error; adjudicates the declaration, not the tax reading. The line's refusal declaration "refuses: [f8889.unsupported]" reads a per-form field at the person level (__type_gate_7: "collection reference requires sum_over", "comparison operands have incompatible types"). The reply fails validation, and the host-side type check rejected it before execution (triage/person.deepseek.json, state invalid), so no value of this line was computed; the tax reading is not ruled.
 
 ### person.hsa_taxable — Form 8889 line 16 for this person
-Status: **AGREE**
+Status: **DISAGREE**
+
+Project:
+
+```json
+{"collection": "f8889", "field": "f8889.line16", "op": "sum_over", "where": null}
+```
+
+Second:
+
+```json
+{"expression": {"collection": "f8889", "field": "f8889.line16", "op": "sum_over", "where": null}, "invalid_model_types": [{"line": "person.hsa_taxable", "message": "person.person.__type_gate_8: collection reference requires sum_over"}, {"line": "person.hsa_taxable", "message": "person.person.__type_gate_8: comparison operands have incompatible types"}]}
+```
+
+Ruling: model error; adjudicates the declaration, not the tax reading. The line's refusal declaration "refuses: [f8889.unsupported]" reads a per-form field at the person level (__type_gate_8: "collection reference requires sum_over", "comparison operands have incompatible types"). The reply fails validation, and the host-side type check rejected it before execution (triage/person.deepseek.json, state invalid), so no value of this line was computed; the tax reading is not ruled.
 
 ### person.hsa_addtax — Form 8889 line 17b for this person
-Status: **AGREE**
+Status: **DISAGREE**
+
+Project:
+
+```json
+{"collection": "f8889", "field": "f8889.line17b", "op": "sum_over", "where": null}
+```
+
+Second:
+
+```json
+{"expression": {"collection": "f8889", "field": "f8889.line17b", "op": "sum_over", "where": null}, "invalid_model_types": [{"line": "person.hsa_addtax", "message": "person.person.__type_gate_9: collection reference requires sum_over"}, {"line": "person.hsa_addtax", "message": "person.person.__type_gate_9: comparison operands have incompatible types"}]}
+```
+
+Ruling: model error; adjudicates the declaration, not the tax reading. The line's refusal declaration "refuses: [f8889.unsupported]" reads a per-form field at the person level (__type_gate_9: "collection reference requires sum_over", "comparison operands have incompatible types"). The reply fails validation, and the host-side type check rejected it before execution (triage/person.deepseek.json, state invalid), so no value of this line was computed; the tax reading is not ruled.
 
 ### person.tip_employers — Number of employers that paid this person qualified tips
-Status: **AGREE**
+Status: **DISAGREE**
+
+Project:
+
+```json
+{"collection": "tipjob", "field": "tipjob.one", "op": "sum_over", "where": null}
+```
+
+Second:
+
+```json
+{"collection": "tipjob", "field": "tipjob.one", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "tipjob.qualified"}], "test": "eq"}}
+```
+
+Ruling: scope; Not executable: the reply fails validation (person.excess: reference 'person.h_excess_raw' does not resolve; the f8889.unsupported refusal declarations of person.hsa_step1, hsa_share, hsa_deduction, hsa_taxable and hsa_addtax: "collection reference requires sum_over" and "comparison operands have incompatible types"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. i1040gi p. 104, Line 4c: "If you and/or your spouse received qualified tips as employees with respect to employment with more than one employer, complete the Qualified Tips From More Than One Employer Worksheet." The candidate counts only employers with tipjob.qualified true; the project counts every tip employer, and an employer with tipjob.qualified false is refused on that employer's column (b) (tipjob.amount refuses on tipjob.mixed, cited i1040gi p. 103, "Do not include tips received in occupations that are not included on this list in line 4a, 4b, or 4c"), which s1a.tip_total reads through person.tip_total. The two counts differ only on returns the project refuses; refusal placement.
 
 ### person.tip_total — This person's worksheet column (d) total
 Status: **AGREE**
 
 ### person.tip_reported — This person's worksheet column (b) total
-Status: **AGREE**
+Status: **DISAGREE**
+
+Project:
+
+```json
+{"collection": "tipjob", "field": "tipjob.amount", "op": "sum_over", "where": null}
+```
+
+Second:
+
+```json
+{"collection": "tipjob", "field": "tipjob.col_c", "op": "sum_over", "where": null}
+```
+
+Ruling: model error; Not executable: the reply fails validation (person.excess: reference 'person.h_excess_raw' does not resolve; the f8889.unsupported refusal declarations of person.hsa_step1, hsa_share, hsa_deduction, hsa_taxable and hsa_addtax: "collection reference requires sum_over" and "comparison operands have incompatible types"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. i1040gi p. 104, Qualified Tips From More Than One Employer Worksheet: "(b) Amount of qualified tips reported by this employer on Form W-2, or reported by you to this employer on Form(s) 4070" and "(c) Qualified tips reported on Form 4137, column 1(c), for this employer"; p. 103: "You can use the amount reported to you on your Form W-2 in box 7. Enter this amount on line 4a. If you had more than one employer, see the instructions for line 4c and enter this amount in column 1(b)". The line is the column (b) total; the candidate sums tipjob.col_c, column (c) (Form 4137 tips, zero in this tool and refused with Form 4137 at s2.other), instead of tipjob.amount, column (b). For one employer reporting $5,000 of qualified tips in W-2 box 7 the project gives $5,000.00 and the candidate $0.00 (derived from the expressions, not executed).
 
 ### person.ot_employers — Number of employers that paid this person qualified overtime compensation
 Status: **AGREE**
@@ -196,7 +281,7 @@ Second:
 {"collection": "sc", "field": "sc.cost179_a", "op": "sum_over", "where": null}
 ```
 
-Ruling: model error; i4562 p. 5, Line 6, "Column (c)—Elected cost. Enter the amount you elect to expense." The project sums sc.f6, the section 179 elected on property other than listed property; the candidate sums sc.cost179_a, the cost of the business's section 179 property, which is the line 2 cost, not the election: classm.asset.2 gives $55,439.00 against $3,189.00, classm.asset.3 $28,333.00 against $13,545.00, classm.f8889.2.deepseek $47,567.00 against $0.00. The 2 candidate refusals (stage14.asset.refuse_class, stage14.asset.refuse_pct) are asset screens the project applies to the same returns elsewhere. Triage executable-triage-v1 (triage/person.deepseek.json): 4,172 of 4,647 comparisons agree; 2 candidate-refuses, 473 value.
+Ruling: model error; Not executable: the reply fails validation (person.excess: reference 'person.h_excess_raw' does not resolve; the f8889.unsupported refusal declarations of person.hsa_step1, hsa_share, hsa_deduction, hsa_taxable and hsa_addtax: "collection reference requires sum_over" and "comparison operands have incompatible types"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. i4562 p. 5, Line 6, Column (c)—Elected cost: enter the amount you elect to expense, not the property's cost. The candidate sums sc.cost179_a (the business's asset.cost179, cost) instead of the elected section 179 amount on non-listed property (sc.f6, asset.s179_2025). The earlier deepseek reply had the identical expression; its triage (executable-triage-v1, archived in .transcription/archive/before-round4-2026-10-27/) recorded 4,172 of 4,647 agree; 473 value (classm.f8889.2.deepseek: $0.00 against $47,567.00, no election; classm.f8889.4.deepseek $0.00 against $79,743.00).
 
 ### person.s179_listed — Section 179 elected on listed property, this person
 Status: **DISAGREE**
@@ -213,7 +298,7 @@ Second:
 {"collection": "sc", "field": "sc.cost179_v", "op": "sum_over", "where": null}
 ```
 
-Ruling: model error; i4562 p. 5, Line 7: "Enter the amount that you elected to expense for listed property (defined earlier) on line 29 here." The project sums sc.f29; the candidate sums sc.cost179_v, the vehicles' cost: classm.scveh.5 gives $41,575.39 against $11,266.04, stage14.veh.2025_bonus $32,000.00 against $0.00, classm.f8880.1 $45,500.87 against $0.00. The 2 project refusals (stage14.veh.refuse_suv_cap, stage14.veh.refuse_suv_cap_by_1; candidate $70,000.00) are the cited SUV limit refusal on the elected amount, which the candidate's cost bypasses. Triage executable-triage-v1 (triage/person.deepseek.json): 4,524 of 4,647 comparisons agree; 2 project-refuses, 121 value.
+Ruling: model error; Not executable: the reply fails validation (person.excess: reference 'person.h_excess_raw' does not resolve; the f8889.unsupported refusal declarations of person.hsa_step1, hsa_share, hsa_deduction, hsa_taxable and hsa_addtax: "collection reference requires sum_over" and "comparison operands have incompatible types"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. i4562 p. 5, Line 7: enter the amount you elect to expense for listed property (from Part V, line 29). The candidate sums sc.cost179_v (vehicle cost) instead of the elected amount. The earlier deepseek reply had the identical expression; its triage (executable-triage-v1, archived in .transcription/archive/before-round4-2026-10-27/) recorded 4,524 of 4,647 agree; 2 project-refuses, 121 value (classm.f8880.1: $0.00 against $45,500.87; classm.scveh.1 $0.00 against $47,144.27).
 
 ### person.income179 — Business net profit or loss without section 179, this person
 Status: **DISAGREE**
@@ -227,10 +312,10 @@ Project:
 Second:
 
 ```json
-{"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}
+{"from": {"collection": "sc", "field": "sc.profit_pos", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}
 ```
 
-Ruling: model error; i4562 p. 5, Line 11: the business income limit is "the total taxable income from any trade or business you actively conducted, computed without regard to any section 179 expense deduction, the deduction for one-half of self-employment taxes under section 164(f), or any net operating loss deduction." The candidate copies person.sc_total (Schedule C line 31 after the section 179 deduction); the project sums sc.line31_pre179. Besides being the wrong amount, it makes the candidate graph circular: sc.line31 reads the section 179 deduction, limited by s179.income, which reads person.income179 ("cycle at person[taxpayer].sc_total" on classm.asset.2, classm.asset.3, classm.f8889.2.deepseek, where the project gives -$146,829.84, $107,211.44, -$27,941.80). The candidate's s179.mfs refusals (classm.f8959.2, stage14.s179.refuse_mfs) are on married-filing-separately returns the project refuses at scope.ready; the project refusals (stage14.ho.refuse_8829, stage14.refuse.statutory, classm.scveh.5) are cited Schedule C screens. Triage executable-triage-v1 (triage/person.deepseek.json): 3,576 of 4,647 comparisons agree; 53 candidate-refuses, 939 candidate-unknown, 79 project-refuses.
+Ruling: model error; Not executable: the reply fails validation (person.excess: reference 'person.h_excess_raw' does not resolve; the f8889.unsupported refusal declarations of person.hsa_step1, hsa_share, hsa_deduction, hsa_taxable and hsa_addtax: "collection reference requires sum_over" and "comparison operands have incompatible types"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. i4562 p. 5, Line 11: "Individuals. Enter the smaller of line 5 or the total taxable income from any trade or business you actively conducted, computed without regard to any section 179 expense deduction, the deduction for one-half of self-employment taxes under section 164(f), or any net operating loss deduction." The candidate takes person.positive_profits (sum of sc.profit_pos, each Schedule C result after its section 179 deduction, with losses dropped) less zero. The project sums sc.line31_pre179, line 31 without the section 179 deduction, netting losses. A business with $40,000 of profit before a $10,000 section 179 election gives $40,000 in the project and $30,000 in the candidate; a second business with a $5,000 loss lowers the project's total to $35,000 and leaves the candidate's unchanged (derived from the expressions, not executed).
 
 ### person.sc_total — This person's Schedule C net profit or loss (all businesses)
 Status: **DISAGREE**
@@ -247,7 +332,7 @@ Second:
 {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}
 ```
 
-Ruling: scope; i1040sc p. 15, Line 32: "If you checked box 32b ... the at-risk rules apply to your loss. Be sure to attach Form 6198 to your return." The candidate sums sc.line31; the project sums sc.result, which is sc.line31 except that a loss with some investment not at risk is refused (sc.loss_allowed, Form 6198). The line itself is the Claude candidate's and differs only by that cited refusal (stage14.refuse.at_risk). In the deepseek-flash candidate graph every return with a Schedule C is unevaluable: its person.income179 reads person.sc_total, which reads sc.line31, which reads the section 179 deduction limited by s179.income, which reads person.income179 ("cycle at person[...].sc_total"; classm.asset.1, classm.asset.3, classm.f8889.2.deepseek). That cycle is ruled a model error at person.income179; here it only masks evaluation. The candidate also reaches s179.mfs on married-filing-separately returns (classm.f8959.2, classm.scveh.2, gen#71), which the project refuses for every married filing separately return at scope.ready (s3.mfs), and the project's s179.multi refusals (classm.s179.2, gen#94; i4562 p. 5, Line 12) are cited scope refusals. Triage executable-triage-v1 (triage/person.deepseek.json): 3,698 of 4,647 comparisons agree; 49 candidate-refuses, 892 candidate-unknown, 8 project-refuses.
+Ruling: scope; Not executable: the reply fails validation (person.excess: reference 'person.h_excess_raw' does not resolve; the f8889.unsupported refusal declarations of person.hsa_step1, hsa_share, hsa_deduction, hsa_taxable and hsa_addtax: "collection reference requires sum_over" and "comparison operands have incompatible types"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. i1040sc p. 15, Line 32: "If you checked box 32b ... the at-risk rules apply to your loss. Be sure to attach Form 6198 to your return." The candidate sums sc.line31; the project sums sc.result, which is line 31 except that a loss with an investment not at risk is refused (sc.not_at_risk). The earlier deepseek reply had the identical expression; its triage (executable-triage-v1, archived in .transcription/archive/before-round4-2026-10-27/) recorded no value difference (3,698 of 4,647 agree; the other kinds came from the earlier reply's income179 cycle).
 
 ### person.se_line6 — Schedule SE line 6 for this person
 Status: **DISAGREE**
@@ -261,10 +346,10 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}], "test": "le"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}, {"guard": {"args": [{"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}, {"param": "se.floor"}], "test": "lt"}, "then": {"line": "zero"}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}
 ```
 
-Ruling: scope; i1040sse p. 1, Who Must File Schedule SE: "You must file Schedule SE if: The amount on line 4c of Schedule SE is $400 or more, or You had church employee income of $108.28 or more." The project (sc.result inside person.se_line2, has_sc gate) and the candidate (sum of sc.line31) give the same line; sc.result equals sc.line31 except that a loss with some investment not at risk is refused at sc.loss_allowed (i1040sc p. The at-risk refusal (stage14.refuse.at_risk; i1040sc p. 15, Line 32, "Be sure to attach Form 6198 to your return") is a cited scope refusal. The candidate declares refusals on person.se_screen and person.rrta for every person; the project asks se_screen only of a person with a Schedule C and refuses railroad compensation only together with a business (person.se_rrta). For a person with no Schedule C the Schedule SE conditions the screen lists that can arise without one (church employee income, clergy income, partnership self-employment income, farm income) are refused by scope.schedule1 and other earned income by scope.other_income, and railroad compensation alone gives no self-employment tax (the project refuses it at person.credit through Schedule 3 line 11 on every return). The candidate refusals (classm.f5695.2, classm.f5695.7, classm.f8959.1, classm.s179.1, classm.ssb.5 with se_screen supplied true and no Schedule C; classm.w2.1.deepseek with rrta true) and candidate-unknown records (classm.f2441.1.deepseek to .5, se_screen not asked without a Schedule C) are refusal placement, not a different tax reading; no value differs. The deepseek-flash line rebuilds Schedule SE from helpers (line 4c, line 10 on the smaller of line 6 or the wage base less wages, line 11, half of line 12) and agrees with the project's se definition wherever both evaluate. In the deepseek-flash candidate graph every return with a Schedule C is unevaluable: its person.income179 reads person.sc_total, which reads sc.line31, which reads the section 179 deduction limited by s179.income, which reads person.income179 ("cycle at person[...].sc_total"; classm.asset.1, classm.asset.3, classm.f8889.2.deepseek). That cycle is ruled a model error at person.income179; here it only masks evaluation. The candidate also reaches s179.mfs on married-filing-separately returns (classm.f8959.2, classm.scveh.2, gen#71), which the project refuses for every married filing separately return at scope.ready (s3.mfs), and the project's s179.multi refusals (classm.s179.2, gen#94; i4562 p. 5, Line 12) are cited scope refusals. Triage executable-triage-v1 (triage/person.deepseek.json): 2,317 of 4,647 comparisons agree; 220 candidate-refuses, 2103 candidate-unknown, 7 project-refuses.
+Ruling: scope; Not executable: the reply fails validation (person.excess: reference 'person.h_excess_raw' does not resolve; the f8889.unsupported refusal declarations of person.hsa_step1, hsa_share, hsa_deduction, hsa_taxable and hsa_addtax: "collection reference requires sum_over" and "comparison operands have incompatible types"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. i1040sse p. 1, Who Must File Schedule SE: "You must file Schedule SE if: The amount on line 4c of Schedule SE is $400 or more"; f1040sse lines 4a ("If line 3 is more than zero, multiply line 3 by 92.35% (0.9235). Otherwise, enter amount from line 3"), 4c, 6, 8a to 13. The candidate figures its own Schedule SE from the sum of sc.line31: line 4a at 92.35% when positive, line 4c floored at zero, line 6 zero below $400, line 9 the wage base less W-2 boxes 3 and 7, line 10 12.4% of the smaller of line 6 or line 9, line 11 2.9% of line 6, line 12 their sum, line 13 one-half. That is the project's computation (person.se_line2 to se_line13), which also enters zero for a person with no Schedule C, as the candidate's $400 floor gives. The differences are refusal placement: the candidate refuses person.se_screen and person.rrta for every person, where the project asks se_screen only with a Schedule C and refuses railroad compensation with a business (person.se_rrta); other self-employment without a Schedule C is refused by scope.schedule1 and scope.other_income; and the at-risk refusal of sc.result (i1040sc p. 15, Line 32) is the project's.
 
 ### person.se_line12 — Schedule SE line 12 (self-employment tax) for this person
 Status: **DISAGREE**
@@ -278,10 +363,10 @@ Project:
 Second:
 
 ```json
-{"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}], "test": "le"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}, {"guard": {"args": [{"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}, {"param": "se.floor"}], "test": "lt"}, "then": {"line": "zero"}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}], "test": "le"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}, {"guard": {"args": [{"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}, {"param": "se.floor"}], "test": "lt"}, "then": {"line": "zero"}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"line": "wages"}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}
+{"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"collection": "w2", "field": "w2.wages", "op": "sum_over", "where": null}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}
 ```
 
-Ruling: scope; i1040sse p. 1, Who Must File Schedule SE: "You must file Schedule SE if: The amount on line 4c of Schedule SE is $400 or more, or You had church employee income of $108.28 or more." The project (sc.result inside person.se_line2, has_sc gate) and the candidate (sum of sc.line31) give the same line; sc.result equals sc.line31 except that a loss with some investment not at risk is refused at sc.loss_allowed (i1040sc p. The at-risk refusal (stage14.refuse.at_risk; i1040sc p. 15, Line 32, "Be sure to attach Form 6198 to your return") is a cited scope refusal. The candidate declares refusals on person.se_screen and person.rrta for every person; the project asks se_screen only of a person with a Schedule C and refuses railroad compensation only together with a business (person.se_rrta). For a person with no Schedule C the Schedule SE conditions the screen lists that can arise without one (church employee income, clergy income, partnership self-employment income, farm income) are refused by scope.schedule1 and other earned income by scope.other_income, and railroad compensation alone gives no self-employment tax (the project refuses it at person.credit through Schedule 3 line 11 on every return). The candidate refusals (classm.f5695.2, classm.f5695.7, classm.f8959.1, classm.s179.1, classm.ssb.5 with se_screen supplied true and no Schedule C; classm.w2.1.deepseek with rrta true) and candidate-unknown records (classm.f2441.1.deepseek to .5, se_screen not asked without a Schedule C) are refusal placement, not a different tax reading; no value differs. The deepseek-flash line rebuilds Schedule SE from helpers (line 4c, line 10 on the smaller of line 6 or the wage base less wages, line 11, half of line 12) and agrees with the project's se definition wherever both evaluate. In the deepseek-flash candidate graph every return with a Schedule C is unevaluable: its person.income179 reads person.sc_total, which reads sc.line31, which reads the section 179 deduction limited by s179.income, which reads person.income179 ("cycle at person[...].sc_total"; classm.asset.1, classm.asset.3, classm.f8889.2.deepseek). That cycle is ruled a model error at person.income179; here it only masks evaluation. The candidate also reaches s179.mfs on married-filing-separately returns (classm.f8959.2, classm.scveh.2, gen#71), which the project refuses for every married filing separately return at scope.ready (s3.mfs), and the project's s179.multi refusals (classm.s179.2, gen#94; i4562 p. 5, Line 12) are cited scope refusals. Triage executable-triage-v1 (triage/person.deepseek.json): 2,317 of 4,647 comparisons agree; 220 candidate-refuses, 2103 candidate-unknown, 7 project-refuses.
+Ruling: scope; Not executable: the reply fails validation (person.excess: reference 'person.h_excess_raw' does not resolve; the f8889.unsupported refusal declarations of person.hsa_step1, hsa_share, hsa_deduction, hsa_taxable and hsa_addtax: "collection reference requires sum_over" and "comparison operands have incompatible types"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. i1040sse p. 1, Who Must File Schedule SE: "You must file Schedule SE if: The amount on line 4c of Schedule SE is $400 or more"; f1040sse lines 4a ("If line 3 is more than zero, multiply line 3 by 92.35% (0.9235). Otherwise, enter amount from line 3"), 4c, 6, 8a to 13. The candidate figures its own Schedule SE from the sum of sc.line31: line 4a at 92.35% when positive, line 4c floored at zero, line 6 zero below $400, line 9 the wage base less W-2 boxes 3 and 7, line 10 12.4% of the smaller of line 6 or line 9, line 11 2.9% of line 6, line 12 their sum, line 13 one-half. That is the project's computation (person.se_line2 to se_line13), which also enters zero for a person with no Schedule C, as the candidate's $400 floor gives. The differences are refusal placement: the candidate refuses person.se_screen and person.rrta for every person, where the project asks se_screen only with a Schedule C and refuses railroad compensation with a business (person.se_rrta); other self-employment without a Schedule C is refused by scope.schedule1 and scope.other_income; and the at-risk refusal of sc.result (i1040sc p. 15, Line 32) is the project's.
 
 ### person.se_line13 — Schedule SE line 13 (deduction for one-half of self-employment tax) for this person
 Status: **DISAGREE**
@@ -295,10 +380,10 @@ Project:
 Second:
 
 ```json
-{"amount": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}], "test": "le"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}, {"guard": {"args": [{"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}, {"param": "se.floor"}], "test": "lt"}, "then": {"line": "zero"}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}], "test": "le"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}, {"guard": {"args": [{"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}, {"param": "se.floor"}], "test": "lt"}, "then": {"line": "zero"}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"line": "wages"}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}
+{"amount": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"collection": "w2", "field": "w2.wages", "op": "sum_over", "where": null}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}
 ```
 
-Ruling: scope; i1040sse p. 1, Who Must File Schedule SE: "You must file Schedule SE if: The amount on line 4c of Schedule SE is $400 or more, or You had church employee income of $108.28 or more." The project (sc.result inside person.se_line2, has_sc gate) and the candidate (sum of sc.line31) give the same line; sc.result equals sc.line31 except that a loss with some investment not at risk is refused at sc.loss_allowed (i1040sc p. The at-risk refusal (stage14.refuse.at_risk; i1040sc p. 15, Line 32, "Be sure to attach Form 6198 to your return") is a cited scope refusal. The candidate declares refusals on person.se_screen and person.rrta for every person; the project asks se_screen only of a person with a Schedule C and refuses railroad compensation only together with a business (person.se_rrta). For a person with no Schedule C the Schedule SE conditions the screen lists that can arise without one (church employee income, clergy income, partnership self-employment income, farm income) are refused by scope.schedule1 and other earned income by scope.other_income, and railroad compensation alone gives no self-employment tax (the project refuses it at person.credit through Schedule 3 line 11 on every return). The candidate refusals (classm.f5695.2, classm.f5695.7, classm.f8959.1, classm.s179.1, classm.ssb.5 with se_screen supplied true and no Schedule C; classm.w2.1.deepseek with rrta true) and candidate-unknown records (classm.f2441.1.deepseek to .5, se_screen not asked without a Schedule C) are refusal placement, not a different tax reading; no value differs. The deepseek-flash line rebuilds Schedule SE from helpers (line 4c, line 10 on the smaller of line 6 or the wage base less wages, line 11, half of line 12) and agrees with the project's se definition wherever both evaluate. In the deepseek-flash candidate graph every return with a Schedule C is unevaluable: its person.income179 reads person.sc_total, which reads sc.line31, which reads the section 179 deduction limited by s179.income, which reads person.income179 ("cycle at person[...].sc_total"; classm.asset.1, classm.asset.3, classm.f8889.2.deepseek). That cycle is ruled a model error at person.income179; here it only masks evaluation. The candidate also reaches s179.mfs on married-filing-separately returns (classm.f8959.2, classm.scveh.2, gen#71), which the project refuses for every married filing separately return at scope.ready (s3.mfs), and the project's s179.multi refusals (classm.s179.2, gen#94; i4562 p. 5, Line 12) are cited scope refusals. Triage executable-triage-v1 (triage/person.deepseek.json): 2,317 of 4,647 comparisons agree; 220 candidate-refuses, 2103 candidate-unknown, 7 project-refuses.
+Ruling: scope; Not executable: the reply fails validation (person.excess: reference 'person.h_excess_raw' does not resolve; the f8889.unsupported refusal declarations of person.hsa_step1, hsa_share, hsa_deduction, hsa_taxable and hsa_addtax: "collection reference requires sum_over" and "comparison operands have incompatible types"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. i1040sse p. 1, Who Must File Schedule SE: "You must file Schedule SE if: The amount on line 4c of Schedule SE is $400 or more"; f1040sse lines 4a ("If line 3 is more than zero, multiply line 3 by 92.35% (0.9235). Otherwise, enter amount from line 3"), 4c, 6, 8a to 13. The candidate figures its own Schedule SE from the sum of sc.line31: line 4a at 92.35% when positive, line 4c floored at zero, line 6 zero below $400, line 9 the wage base less W-2 boxes 3 and 7, line 10 12.4% of the smaller of line 6 or line 9, line 11 2.9% of line 6, line 12 their sum, line 13 one-half. That is the project's computation (person.se_line2 to se_line13), which also enters zero for a person with no Schedule C, as the candidate's $400 floor gives. The differences are refusal placement: the candidate refuses person.se_screen and person.rrta for every person, where the project asks se_screen only with a Schedule C and refuses railroad compensation with a business (person.se_rrta); other self-employment without a Schedule C is refused by scope.schedule1 and scope.other_income; and the at-risk refusal of sc.result (i1040sc p. 15, Line 32) is the project's.
 
 ### person.s16 — Schedule 1 line 16 for this person
 Status: **DISAGREE**
@@ -312,10 +397,10 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, "then": {"line": "zero"}}, {"guard": {"args": [{"const": "sep"}, {"input": "person.plan"}], "test": "eq"}, "then": {"of": [{"input": "person.sep_contrib"}, {"line": "Step 21"}], "op": "smaller_of"}}, {"guard": {"args": [{"const": "simple"}, {"input": "person.plan"}], "test": "eq"}, "then": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}], "test": "le"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}, {"guard": {"args": [{"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}, {"param": "se.floor"}], "test": "lt"}, "then": {"line": "zero"}}], "op": "choose"}, {"of": [{"input": "person.simple_deferral"}, {"input": "person.simple_employer"}], "op": "sum"}], "op": "smaller_of"}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "sep"}, {"input": "person.plan"}], "test": "eq"}, "then": {"line": "Step 21"}}, {"guard": {"args": [{"const": "simple"}, {"input": "person.plan"}], "test": "eq"}, "then": {"of": [{"input": "person.simple_deferral"}, {"input": "person.simple_employer"}], "op": "sum"}}], "op": "choose"}
 ```
 
-Ruling: model error; p560 p. 16, Employer matching contributions: "You are generally required to match each employee's salary reduction contribution(s) on a dollar-for-dollar basis up to 3% of the employee's compensation", and catch-up contributions are limited to the excess of compensation over regular contributions. The candidate caps the SIMPLE total (deferral plus employer contribution) only at Schedule SE line 4c, so an employer contribution above 3% or 2% of compensation, or catch-up contributions above their limits, are deducted rather than limited or refused; its SEP branch uses Step 21 built on its Step 5, ruled model error. The returns that would show it are unevaluable in this graph (stage14.simple.refuse_employer, stage14.simple.refuse_catchup, stage14.simple.refuse_catchup_comp, stage14.sep.refuse_excess: project refuses at person.simple_excess or person.sep_excess, candidate cycle at sc_total), so this is ruled on the derivation. Other kinds: the project's person.plan_screened refusals (classm.s179.2) are cited scope screens; the candidate's plan_screen and rrta refusals for persons without a Schedule C (classm.w2.1.deepseek, classm.f5695.2, classm.tcw.6) are refusal placement. In the deepseek-flash candidate graph every return with a Schedule C is unevaluable: its person.income179 reads person.sc_total, which reads sc.line31, which reads the section 179 deduction limited by s179.income, which reads person.income179 ("cycle at person[...].sc_total"; classm.asset.1, classm.asset.3, classm.f8889.2.deepseek). That cycle is ruled a model error at person.income179; here it only masks evaluation. The candidate also reaches s179.mfs on married-filing-separately returns (classm.f8959.2, classm.scveh.2, gen#71), which the project refuses for every married filing separately return at scope.ready (s3.mfs), and the project's s179.multi refusals (classm.s179.2, gen#94; i4562 p. 5, Line 12) are cited scope refusals. Triage executable-triage-v1 (triage/person.deepseek.json): 2,964 of 4,647 comparisons agree; 179 candidate-refuses, 1479 candidate-unknown, 25 project-refuses.
+Ruling: model error; Not executable: the reply fails validation (person.excess: reference 'person.h_excess_raw' does not resolve; the f8889.unsupported refusal declarations of person.hsa_step1, hsa_share, hsa_deduction, hsa_taxable and hsa_addtax: "collection reference requires sum_over" and "comparison operands have incompatible types"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. p560 p. 39, after Step 21: "Next: Enter your actual contribution, not to exceed your maximum deductible contribution, on Schedule 1 (Form 1040), line 16." For a SEP the candidate deducts Step 21, the maximum deductible contribution, whatever was contributed; the project deducts person.sep_contrib and refuses a contribution above Step 21 (person.sep_excess). A SEP contribution below the maximum is over-deducted: a sole proprietor with $50,000 of Schedule C profit, a 10% plan and a $2,000 contribution deducts about $4,200 (Step 21) in the candidate and $2,000 in the project (derived from the expressions, not executed). The SIMPLE branch (deferral plus employer contributions) is the project's, which refuses amounts above the limits (person.simple_excess); the candidate also lacks the Schedule C gate (i1040gi p. 93, Line 16, "If you were self-employed or a partner") and refuses plan_screen for everyone (placement).
 
 ### person.positive_profits — Total of all net profits of this person's businesses (losses not included)
 Status: **AGREE**
@@ -324,7 +409,21 @@ Status: **AGREE**
 Status: **AGREE**
 
 ### person.qbi — Qualified business income or loss of this person's businesses
-Status: **AGREE**
+Status: **DISAGREE**
+
+Project:
+
+```json
+{"collection": "sc", "field": "sc.qbi", "op": "sum_over", "where": null}
+```
+
+Second:
+
+```json
+{"from": {"alternatives": [{"guard": {"args": [{"from": {"ref": "f1040.line11b"}, "op": "subtract_floor0", "take": {"of": [{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "ne"}], "test": "any"}, {"args": [{"ref": "sa.line17"}, {"alternatives": [{"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "eq"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "ne"}], "test": "any"}, "then": {"of": [{"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"const": false}, {"ref": "person.died_before_65"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.age65"}], "test": "eq"}], "test": "all"}}, "op": "multiply_count"}, {"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "person.blind"}], "test": "eq"}}, "op": "multiply_count"}, {"param": "sa.standard_base"}], "op": "sum"}}], "op": "choose"}], "test": "le"}, {"args": [{"const": true}, {"input": "sa.elect_itemize"}], "test": "ne"}], "test": "all"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "eq"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "ne"}], "test": "any"}, "then": {"of": [{"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"const": false}, {"ref": "person.died_before_65"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.age65"}], "test": "eq"}], "test": "all"}}, "op": "multiply_count"}, {"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "person.blind"}], "test": "eq"}}, "op": "multiply_count"}, {"param": "sa.standard_base"}], "op": "sum"}}], "op": "choose"}}, {"guard": {"args": [{"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "eq"}], "test": "all"}, {"args": [{"const": true}, {"input": "sa.elect_itemize"}], "test": "eq"}, {"args": [{"alternatives": [{"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "eq"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "ne"}], "test": "any"}, "then": {"of": [{"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"const": false}, {"ref": "person.died_before_65"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.age65"}], "test": "eq"}], "test": "all"}}, "op": "multiply_count"}, {"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "person.blind"}], "test": "eq"}}, "op": "multiply_count"}, {"param": "sa.standard_base"}], "op": "sum"}}], "op": "choose"}, {"ref": "sa.line17"}], "test": "lt"}], "test": "any"}, "then": {"ref": "sa.line17"}}], "op": "choose"}, {"ref": "f1040.line13b"}], "op": "sum"}}, {"param": "qbi.threshold"}], "test": "le"}, "then": {"ref": "f8995.line15"}}, {"guard": {"args": [{"param": "qbi.threshold"}, {"from": {"ref": "f1040.line11b"}, "op": "subtract_floor0", "take": {"of": [{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "ne"}], "test": "any"}, {"args": [{"ref": "sa.line17"}, {"alternatives": [{"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "eq"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "ne"}], "test": "any"}, "then": {"of": [{"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"const": false}, {"ref": "person.died_before_65"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.age65"}], "test": "eq"}], "test": "all"}}, "op": "multiply_count"}, {"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "person.blind"}], "test": "eq"}}, "op": "multiply_count"}, {"param": "sa.standard_base"}], "op": "sum"}}], "op": "choose"}], "test": "le"}, {"args": [{"const": true}, {"input": "sa.elect_itemize"}], "test": "ne"}], "test": "all"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "eq"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "ne"}], "test": "any"}, "then": {"of": [{"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"const": false}, {"ref": "person.died_before_65"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.age65"}], "test": "eq"}], "test": "all"}}, "op": "multiply_count"}, {"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "person.blind"}], "test": "eq"}}, "op": "multiply_count"}, {"param": "sa.standard_base"}], "op": "sum"}}], "op": "choose"}}, {"guard": {"args": [{"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "eq"}], "test": "all"}, {"args": [{"const": true}, {"input": "sa.elect_itemize"}], "test": "eq"}, {"args": [{"alternatives": [{"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "eq"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "ne"}], "test": "any"}, "then": {"of": [{"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"const": false}, {"ref": "person.died_before_65"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.age65"}], "test": "eq"}], "test": "all"}}, "op": "multiply_count"}, {"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "person.blind"}], "test": "eq"}}, "op": "multiply_count"}, {"param": "sa.standard_base"}], "op": "sum"}}], "op": "choose"}, {"ref": "sa.line17"}], "test": "lt"}], "test": "any"}, "then": {"ref": "sa.line17"}}], "op": "choose"}, {"ref": "f1040.line13b"}], "op": "sum"}}], "test": "lt"}, "then": {"ref": "f8995a.line39"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}
+```
+
+Ruling: model error; on the validation failure and on the reading. Its dependency closure reaches an invalid line: qbi.deduction, f8995.line15 and the taxable income before the deduction (f1040.line11b, ssb.line18, s1.line13) read person.hsa_deduction, whose refusal declaration fails the type check, so triage cannot evaluate it (triage/person.deepseek.json, state invalid). On the reading: i8995 p. 4, Line 1: "Enter on line 1(c) the net QBI or (loss) for the trade, business, or aggregation reported in the corresponding row". The line is this person's qualified business income (sum of sc.qbi); the candidate copies qbi.deduction, the return's QBI deduction, which is the sum of this line (a cycle) and is a deduction, not income.
 
 ### person.eic_se — Worksheet B, Parts 1 and 2, for this person
 Status: **DISAGREE**
@@ -338,10 +437,10 @@ Project:
 Second:
 
 ```json
-{"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract", "take": {"amount": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}], "test": "le"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}, {"guard": {"args": [{"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}, {"param": "se.floor"}], "test": "lt"}, "then": {"line": "zero"}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}], "test": "le"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}, {"guard": {"args": [{"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}, {"param": "se.floor"}], "test": "lt"}, "then": {"line": "zero"}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"line": "wages"}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}}
+{"collection": "person", "field": "person.eic_se", "op": "sum_over", "where": null}
 ```
 
-Ruling: scope; i1040gi EIC Worksheet B, Part 1 and Part 2 (Schedule SE line 3 less line 13 if you file Schedule SE, otherwise Schedule C line 31), with i1040sse p. 1, Who Must File Schedule SE: "You must file Schedule SE if: The amount on line 4c of Schedule SE is $400 or more, or You had church employee income of $108.28 or more." The candidate always takes line 3 less line 13; below the $400 threshold line 13 is zero and line 3 is the Schedule C total, so the value equals the project's choice. The at-risk refusal (stage14.refuse.at_risk; i1040sc p. 15, Line 32, "Be sure to attach Form 6198 to your return") is a cited scope refusal. The candidate declares refusals on person.se_screen and person.rrta for every person; the project asks se_screen only of a person with a Schedule C and refuses railroad compensation only together with a business (person.se_rrta). For a person with no Schedule C the Schedule SE conditions the screen lists that can arise without one (church employee income, clergy income, partnership self-employment income, farm income) are refused by scope.schedule1 and other earned income by scope.other_income, and railroad compensation alone gives no self-employment tax (the project refuses it at person.credit through Schedule 3 line 11 on every return). The candidate refusals (classm.f5695.2, classm.f5695.7, classm.f8959.1, classm.s179.1, classm.ssb.5 with se_screen supplied true and no Schedule C; classm.w2.1.deepseek with rrta true) and candidate-unknown records (classm.f2441.1.deepseek to .5, se_screen not asked without a Schedule C) are refusal placement, not a different tax reading; no value differs. In the deepseek-flash candidate graph every return with a Schedule C is unevaluable: its person.income179 reads person.sc_total, which reads sc.line31, which reads the section 179 deduction limited by s179.income, which reads person.income179 ("cycle at person[...].sc_total"; classm.asset.1, classm.asset.3, classm.f8889.2.deepseek). That cycle is ruled a model error at person.income179; here it only masks evaluation. The candidate also reaches s179.mfs on married-filing-separately returns (classm.f8959.2, classm.scveh.2, gen#71), which the project refuses for every married filing separately return at scope.ready (s3.mfs), and the project's s179.multi refusals (classm.s179.2, gen#94; i4562 p. 5, Line 12) are cited scope refusals. Triage executable-triage-v1 (triage/person.deepseek.json): 2,317 of 4,647 comparisons agree; 220 candidate-refuses, 2103 candidate-unknown, 7 project-refuses.
+Ruling: model error; Not executable: the reply fails validation (person.excess: reference 'person.h_excess_raw' does not resolve; the f8889.unsupported refusal declarations of person.hsa_step1, hsa_share, hsa_deduction, hsa_taxable and hsa_addtax: "collection reference requires sum_over" and "comparison operands have incompatible types"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. i1040gi EIC Worksheet B, Part 1 (Schedule SE line 3 less line 13) and Part 2 (Schedule C line 31), figured for each spouse (lines 1a to 1e for you, 2a to 2c for your spouse). The candidate copies eic.wsb_se, the return-level total that sums person.eic_se over both spouses: the line depends on itself (a cycle) and would give each spouse the joint total. No per-person amount is figured.
 
 ### person.sc_1a — This person's Schedules C with Schedule 1-A tips or overtime
 Status: **DISAGREE**
@@ -358,7 +457,7 @@ Second:
 {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "sc.statutory"}], "test": "eq"}}
 ```
 
-Ruling: model error; i1040gi p. 104, Schedule 1-A Line 5: "Include the qualified tips you and/or your spouse received in the course of a trade or business, but only to the extent the trade or business in which you received the qualified tips has net income." The project counts the person's Schedules C with Schedule 1-A tips or overtime (sc.tips_ot); the candidate counts statutory-employee businesses (sc.statutory), a different question: stage14.refuse.sch1a_tips and stage14.sch1a.refuse_overtime_1099 give 0 against 1, stage14.refuse.statutory 1 against 0. The 2 project-unknown records (stage16.cleanup.f8959_line16_se_refused, stage16.cleanup.mut.clwb_three_figured) lack sc.tips_ot, which the candidate does not read. Triage executable-triage-v1 (triage/person.deepseek.json): 4,642 of 4,647 comparisons agree; 2 project-unknown, 3 value.
+Ruling: model error; Not executable: the reply fails validation (person.excess: reference 'person.h_excess_raw' does not resolve; the f8889.unsupported refusal declarations of person.hsa_step1, hsa_share, hsa_deduction, hsa_taxable and hsa_addtax: "collection reference requires sum_over" and "comparison operands have incompatible types"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. i1040gi p. 104, Schedule 1-A Line 5: "Include the qualified tips you and/or your spouse received in the course of a trade or business". The line counts this person's Schedules C with Schedule 1-A tips or overtime (sc.tips_ot); the candidate counts statutory-employee Schedules C (sc.statutory). The earlier deepseek reply had the identical expression; its triage (executable-triage-v1, archived in .transcription/archive/before-round4-2026-10-27/) recorded 4,642 of 4,647 agree; 2 project-unknown, 3 value (stage14.refuse.sch1a_tips: 1 against 0; stage14.refuse.statutory: 0 against 1).
 
 ### person.dc_benefits — This person's dependent care benefits from Forms W-2 box 10, less the part reported in box
 Status: **AGREE**
@@ -378,7 +477,7 @@ Second:
 {"args": [{"const": 0, "type": "Count"}, {"collection": "w2", "field": "w2.one", "op": "sum_over", "where": {"args": [{"const": 0}, {"ref": "w2.box10"}], "test": "lt"}}], "test": "lt"}
 ```
 
-Ruling: representation; iw2w3 box 10 (dependent care benefits) and i2441 Part III. The candidate counts Forms W-2 with w2.has_box10, the project tests the box 10 total; triage executable-triage-v1 (triage/person.deepseek.json): 4,647 of 4,647 comparisons agree (observed on that sample, not proved). No source disagreement.
+Ruling: representation; Not executable: the reply fails validation (person.excess: reference 'person.h_excess_raw' does not resolve; the f8889.unsupported refusal declarations of person.hsa_step1, hsa_share, hsa_deduction, hsa_taxable and hsa_addtax: "collection reference requires sum_over" and "comparison operands have incompatible types"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. i2441 p. 5, Line 12: "Amounts you received as an employee should be shown in box 10 of your Form(s) W-2." The candidate counts Forms W-2 with w2.has_box10 (box 10 above zero); the project tests the box 10 total above zero; the same test. The earlier deepseek reply had the identical expression; its triage (executable-triage-v1, archived in .transcription/archive/before-round4-2026-10-27/) recorded 4,647 of 4,647 agree.
 
 ### person.dc_earned — This person's earned income for Form 2441 lines 4 and 5: Form W-2 box 1, the person's shar
 Status: **DISAGREE**
@@ -392,10 +491,10 @@ Project:
 Second:
 
 ```json
-{"of": [{"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract", "take": {"amount": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}], "test": "le"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}, {"guard": {"args": [{"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}, {"param": "se.floor"}], "test": "lt"}, "then": {"line": "zero"}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}], "test": "le"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}, {"guard": {"args": [{"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}, {"param": "se.floor"}], "test": "lt"}, "then": {"line": "zero"}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"line": "wages"}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}}, {"collection": "w2", "field": "w2.box1", "op": "sum_over", "where": null}], "op": "sum"}
+{"ref": "f2441.line4"}
 ```
 
-Ruling: model error; i2441 p. 4: "Earned income for figuring the credit generally includes the following amounts. 1. The amount shown on Form 1040, 1040-SR, or 1040-NR, line 1z", and line 1z includes line 1e taxable dependent care benefits. The candidate adds only W-2 box 1 and its self-employment amount and omits line 1e: classm.f5695.4 (also classm.s3.2, classm.f1040.5) gives $36,412.00 against the project's $37,824.00, the $1,412.00 of f1040.line1e (f2441.line26). These are interview-produced returns. Refusal and unknown kinds are the se_screen/rrta placement ruled scope at person.se_line6 and the project's cited Form 2441 refusals (classm.w2.1.deepseek, stage15.refuse.f2441.plans_differ). In the deepseek-flash candidate graph every return with a Schedule C is unevaluable: its person.income179 reads person.sc_total, which reads sc.line31, which reads the section 179 deduction limited by s179.income, which reads person.income179 ("cycle at person[...].sc_total"; classm.asset.1, classm.asset.3, classm.f8889.2.deepseek). That cycle is ruled a model error at person.income179; here it only masks evaluation. The candidate also reaches s179.mfs on married-filing-separately returns (classm.f8959.2, classm.scveh.2, gen#71), which the project refuses for every married filing separately return at scope.ready (s3.mfs), and the project's s179.multi refusals (classm.s179.2, gen#94; i4562 p. 5, Line 12) are cited scope refusals. Triage executable-triage-v1 (triage/person.deepseek.json): 2,297 of 4,647 comparisons agree; 218 candidate-refuses, 2075 candidate-unknown, 16 project-refuses, 1 project-unknown, 40 value.
+Ruling: model error; Not executable: the reply fails validation (person.excess: reference 'person.h_excess_raw' does not resolve; the f8889.unsupported refusal declarations of person.hsa_step1, hsa_share, hsa_deduction, hsa_taxable and hsa_addtax: "collection reference requires sum_over" and "comparison operands have incompatible types"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. i2441 p. 4: "Earned income for figuring the credit generally includes the following amounts. 1. The amount shown on Form 1040 ... line 1z" plus net self-employment earnings, and Lines 4 and 5: figure your and your spouse's earned income separately. The candidate copies f2441.line4, which is the sum of person.dc_earned over the taxpayer: the line depends on itself (a cycle), and the spouse would receive the taxpayer's earned income. No per-person amount is figured.
 
 ### person.dc_earned_b — This person's earned income for Form 2441 lines 18 and 19: as for lines 4 and 5, without t
 Status: **DISAGREE**
@@ -409,12 +508,10 @@ Project:
 Second:
 
 ```json
-{"of": [{"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract", "take": {"amount": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}], "test": "le"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}, {"guard": {"args": [{"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}, {"param": "se.floor"}], "test": "lt"}, "then": {"line": "zero"}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}], "test": "le"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}, {"guard": {"args": [{"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}, {"param": "se.floor"}], "test": "lt"}, "then": {"line": "zero"}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"line": "wages"}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}}, {"collection": "w2", "field": "w2.box1", "op": "sum_over", "where": null}], "op": "sum"}
+{"ref": "f2441.line5"}
 ```
 
-Second transcription's note: A single person entry cannot see the other spouse's entry; this repeats this person's earned income. The Form 2441 assembly should use the other person entry for the spouse column.
-
-Ruling: scope; i2441 p. 4, earned income (line 1z, here without line 1e, plus net self-employment earnings). The candidate copies its person.dc_earned (box 1 plus line 3 less line 13), which without line 1e is exactly lines 18/19 earned income; no value differs. The at-risk refusal (stage14.refuse.at_risk; i1040sc p. 15, Line 32, "Be sure to attach Form 6198 to your return") is a cited scope refusal. The candidate declares refusals on person.se_screen and person.rrta for every person; the project asks se_screen only of a person with a Schedule C and refuses railroad compensation only together with a business (person.se_rrta). For a person with no Schedule C the Schedule SE conditions the screen lists that can arise without one (church employee income, clergy income, partnership self-employment income, farm income) are refused by scope.schedule1 and other earned income by scope.other_income, and railroad compensation alone gives no self-employment tax (the project refuses it at person.credit through Schedule 3 line 11 on every return). The candidate refusals (classm.f5695.2, classm.f5695.7, classm.f8959.1, classm.s179.1, classm.ssb.5 with se_screen supplied true and no Schedule C; classm.w2.1.deepseek with rrta true) and candidate-unknown records (classm.f2441.1.deepseek to .5, se_screen not asked without a Schedule C) are refusal placement, not a different tax reading; no value differs. In the deepseek-flash candidate graph every return with a Schedule C is unevaluable: its person.income179 reads person.sc_total, which reads sc.line31, which reads the section 179 deduction limited by s179.income, which reads person.income179 ("cycle at person[...].sc_total"; classm.asset.1, classm.asset.3, classm.f8889.2.deepseek). That cycle is ruled a model error at person.income179; here it only masks evaluation. The candidate also reaches s179.mfs on married-filing-separately returns (classm.f8959.2, classm.scveh.2, gen#71), which the project refuses for every married filing separately return at scope.ready (s3.mfs), and the project's s179.multi refusals (classm.s179.2, gen#94; i4562 p. 5, Line 12) are cited scope refusals. Triage executable-triage-v1 (triage/person.deepseek.json): 2,335 of 4,647 comparisons agree; 220 candidate-refuses, 2085 candidate-unknown, 7 project-refuses.
+Ruling: model error; Not executable: the reply fails validation (person.excess: reference 'person.h_excess_raw' does not resolve; the f8889.unsupported refusal declarations of person.hsa_step1, hsa_share, hsa_deduction, hsa_taxable and hsa_addtax: "collection reference requires sum_over" and "comparison operands have incompatible types"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. i2441 p. 5, Line 18: for lines 18 and 19 "earned income doesn't include any dependent care benefits shown on line 12". The candidate copies f2441.line5, the return's line 5 (the spouse's earned income on a joint return, otherwise line 4), for every person: it gives each person the spouse's amount, and it includes line 1e, which lines 18 and 19 exclude.
 
 ### person.sav_ineligible — Born after January 1, 2008, claimed as a dependent on someone else's 2025 return, or a stu
 Status: **DISAGREE**
@@ -431,7 +528,7 @@ Second:
 {"args": [{"args": [{"const": true}, {"input": "person.sav_claimed"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.sav_student"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.sav_born"}], "test": "ne"}], "test": "any"}
 ```
 
-Ruling: ambiguity; f8880 p. 2, Who Can Take This Credit: "The person(s) who made the qualified contribution or elective deferral (a) was born after January 1, 2008; (b) is claimed as a dependent on someone else's 2025 tax return; or (c) was a student." The project asks person.sav_claimed only when sa.dependent (someone can claim you or your spouse) is yes, the recorded owner decision amb.2025.savers_ineligible_column ("it is asked only when someone can claim you or your spouse (sa.dependent), since otherwise no one is claimed"). The value differences supply sav_claimed true with sa.dependent false (classm.tcw.13, classm.sa.5, gen#32, gen#102), a record that decision's interview does not produce; candidate-unknown records lack sav_claimed where it was not asked (stage16.cleanup.f5695_small_wind; partial classm.f2441.1.deepseek -sav_claimed); the 2 project-unknown records withhold sav_born or sav_student while sav_claimed is true (partial classm.tcw.13), an evaluation-order difference. Triage executable-triage-v1 (triage/person.deepseek.json): 4,542 of 4,647 comparisons agree; 54 candidate-unknown, 2 project-unknown, 49 value.
+Ruling: ambiguity; amb.2025.savers_ineligible_column (owner decision). Not executable: the reply fails validation (person.excess: reference 'person.h_excess_raw' does not resolve; the f8889.unsupported refusal declarations of person.hsa_step1, hsa_share, hsa_deduction, hsa_taxable and hsa_addtax: "collection reference requires sum_over" and "comparison operands have incompatible types"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. f8880 p. 2, Who Can Take This Credit: "The person(s) who made the qualified contribution or elective deferral (a) was born after January 1, 2008; (b) is claimed as a dependent on someone else's 2025 tax return; or (c) was a student." The candidate reads person.sav_claimed for everyone; the project asks it only when sa.dependent is yes. The earlier deepseek reply had the identical expression; its triage (executable-triage-v1, archived in .transcription/archive/before-round4-2026-10-27/) recorded 4,542 of 4,647 agree; 54 candidate-unknown, 2 project-unknown, 49 value (classm.tcw.13, classm.sa.5: sav_claimed true with sa.dependent false, a record the chosen interview does not produce).
 
 ### person.sav_line1 — Form 8880 line 1 for this person (traditional IRA contributions for 2025, deductible or no
 Status: **DISAGREE**
@@ -448,7 +545,7 @@ Second:
 {"of": [{"input": "person.ira_trad"}, {"input": "person.sav_roth"}], "op": "sum"}
 ```
 
-Ruling: scope; f8880 p. 2: you may take the credit for "(a) contributions (other than rollover contributions) to a traditional or Roth IRA"; p590a p. 35: "Generally, an excess contribution is the amount contributed to your traditional IRAs for the year that is more than the smaller of" the limit or compensation. Both add traditional and Roth IRA contributions for 2025; the candidate reads person.ira_trad directly, the project through person.sav_trad (the amount is asked only after Yes), an evaluation-order difference (project-unknown partial classm.f8889.2.deepseek, classm.f5695.2 -sav_trad). The project refuses excess or recharacterized contributions at person.ira_excess_gate (stage16.refuse.person.ira_excess; candidate $5,000.00), a cited Pub. 590-A refusal; the candidate's sav_able refusal (partial classm.dcprov.1) is the ABLE screen the project applies at person.sav_prior_joint and person.sav_prior_other. Candidate-unknown records lack ira_trad where sav_trad is No. Triage executable-triage-v1 (triage/person.deepseek.json): 2,550 of 4,647 comparisons agree; 1 candidate-refuses, 2065 candidate-unknown, 1 project-refuses, 30 project-unknown.
+Ruling: scope; Not executable: the reply fails validation (person.excess: reference 'person.h_excess_raw' does not resolve; the f8889.unsupported refusal declarations of person.hsa_step1, hsa_share, hsa_deduction, hsa_taxable and hsa_addtax: "collection reference requires sum_over" and "comparison operands have incompatible types"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. f8880 line 1: "Traditional and Roth IRA contributions" (amb.2025.savers_traditional). The candidate adds ira_trad and sav_roth and refuses person.sav_able; the project gates ira_trad on person.sav_trad, refuses excess contributions at person.ira_excess_gate (p590a p. 35) and refuses sav_able at the same line. The earlier deepseek reply had the identical expression; its triage (executable-triage-v1, archived in .transcription/archive/before-round4-2026-10-27/) recorded no value difference (2,550 of 4,647 agree; 1 candidate-refuses, 2,065 candidate-unknown, 1 project-refuses, 30 project-unknown).
 
 ### person.sav_line2 — Form 8880 line 2 for this person (box 12 deferrals, voluntary contributions and own SIMPLE
 Status: **DISAGREE**
@@ -465,7 +562,7 @@ Second:
 {"of": [{"input": "person.sav_voluntary"}, {"collection": "w2", "field": "w2.sav_deferral", "op": "sum_over", "where": null}], "op": "sum"}
 ```
 
-Ruling: model error; f8880 p. 2, Line 2: "Elective deferrals (including designated Roth contributions under section 402A, if applicable) to a 401(k), 403(b), governmental 457(b), SEP, SIMPLE, or the federal TSP". The candidate adds only W-2 box 12 deferrals and voluntary contributions and omits the self-employed person's own SIMPLE IRA salary reduction contributions: stage14.simple.at_limit gives $0.00 against $16,500.00, stage14.simple.match_age50 $0.00 against $18,000.00, classm.se.2 spouse $0.00 against $7,815.00, all returns with a Schedule C and plan simple. Refusals: the project's person.plan_screened refusals (stage14.plan.refuse_screen_simple, gen#94) are cited scope screens; the candidate's sav_excess refusals with zero deferrals (classm.ssb.3, gen#106) are refusal placement as in the Claude log. Unknown kinds: the candidate asks sav_excess unconditionally; the project-unknown partial records withhold person.plan (partial classm.f8880.2 -plan). Triage executable-triage-v1 (triage/person.deepseek.json): 4,455 of 4,647 comparisons agree; 48 candidate-refuses, 41 candidate-unknown, 69 project-refuses, 14 project-unknown, 20 value.
+Ruling: model error; Not executable: the reply fails validation (person.excess: reference 'person.h_excess_raw' does not resolve; the f8889.unsupported refusal declarations of person.hsa_step1, hsa_share, hsa_deduction, hsa_taxable and hsa_addtax: "collection reference requires sum_over" and "comparison operands have incompatible types"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. f8880 p. 2, Line 2: "Elective deferrals (including designated Roth contributions under section 402A, if applicable) to a 401(k), 403(b), governmental 457(b), SEP, SIMPLE, or the federal TSP". The candidate adds W-2 deferrals and voluntary contributions but omits the person's own SIMPLE salary reduction contributions as a self-employed person (person.simple_deferral, plan simple with a Schedule C). The earlier deepseek reply had the identical expression; its triage (executable-triage-v1, archived in .transcription/archive/before-round4-2026-10-27/) recorded 4,455 of 4,647 agree; 20 value (stage14.simple.match_age50: $18,000.00 against $0.00; classm.se.2 spouse $7,815.00 against $0.00).
 
 ### person.ira_contrib — This person's traditional IRA contributions for 2025 (zero if the traditional IRA question
 Status: **DISAGREE**
@@ -482,7 +579,7 @@ Second:
 {"input": "person.ira_trad"}
 ```
 
-Ruling: scope; i1040gi p. 98, line 11, "Enter traditional IRA contributions made, or that will be made by the due date of your 2025 return ... for 2025"; p590a p. 35: "Generally, an excess contribution is the amount contributed to your traditional IRAs for the year that is more than the smaller of" the limit or compensation. Both give this person's traditional IRA contributions. The candidate refuses on person.ira_excess for everyone; the project asks it only with contributions (person.ira_excess_gate) and refuses there (stage16.refuse.person.ira_excess: project computes the line, $5,000.00, and refuses the return at person.ira_line11 and person.sav_line1). The candidate-unknown records are interview records with no contributions where ira_excess was not asked (classm.f2441.1.deepseek); the project-unknown records withhold person.sav_trad, which the project asks before the amount (partial classm.f5695.2 -sav_trad). No value differs. Triage executable-triage-v1 (triage/person.deepseek.json): 2,269 of 4,647 comparisons agree; 1 candidate-refuses, 2351 candidate-unknown, 26 project-unknown.
+Ruling: scope; Not executable: the reply fails validation (person.excess: reference 'person.h_excess_raw' does not resolve; the f8889.unsupported refusal declarations of person.hsa_step1, hsa_share, hsa_deduction, hsa_taxable and hsa_addtax: "collection reference requires sum_over" and "comparison operands have incompatible types"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. i1040gi p. 98, line 11: "Enter traditional IRA contributions made, or that will be made by the due date of your 2025 return ... for 2025". The candidate copies person.ira_trad for everyone; the project asks the amount after a Yes to person.sav_trad and refuses excess contributions (person.ira_excess_gate, p590a p. 35). The earlier deepseek reply had the identical expression; its triage (executable-triage-v1, archived in .transcription/archive/before-round4-2026-10-27/) recorded no value difference (2,269 of 4,647 agree; 1 candidate-refuses, 2,351 candidate-unknown, 26 project-unknown).
 
 ### person.ira_cov — Covered by a retirement plan (worksheet line 1a or 1b for this person)
 Status: **DISAGREE**
@@ -499,7 +596,7 @@ Second:
 {"input": "person.ira_work_plan"}
 ```
 
-Ruling: model error; i1040gi p. 96, Were You Covered by a Retirement Plan?: "You are also covered by a plan if you were self-employed and had a SEP, SIMPLE, or qualified retirement plan." The candidate copies person.ira_work_plan only and drops the self-employed person's own SEP or SIMPLE plan: classm.f5695.5, classm.ira.2 spouse, gen#34, gen#39, gen#62, gen#76 give False against the project's True, returns with a Schedule C and person.plan sep or simple. The candidate-unknown records (classm.f8880.1, stage14.sep.basic) lack ira_work_plan where the project's plan answer settles coverage; project-unknown records withhold person.plan (partial classm.ira.2 -plan). Triage executable-triage-v1 (triage/person.deepseek.json): 4,446 of 4,647 comparisons agree; 89 candidate-unknown, 5 project-unknown, 107 value.
+Ruling: model error; Not executable: the reply fails validation (person.excess: reference 'person.h_excess_raw' does not resolve; the f8889.unsupported refusal declarations of person.hsa_step1, hsa_share, hsa_deduction, hsa_taxable and hsa_addtax: "collection reference requires sum_over" and "comparison operands have incompatible types"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. i1040gi p. 96, Were You Covered by a Retirement Plan?: "You are also covered by a plan if you were self-employed and had a SEP, SIMPLE, or qualified retirement plan." The candidate copies person.ira_work_plan and drops the person's own SEP or SIMPLE plan (person.plan with a Schedule C, amb.2025.ira_covered). The earlier deepseek reply had the identical expression; its triage (executable-triage-v1, archived in .transcription/archive/before-round4-2026-10-27/) recorded 4,446 of 4,647 agree; 107 value (classm.f5695.5: True against False; classm.ira.2 spouse).
 
 ### person.ira_line2 — Worksheet line 2 for this person's column
 Status: **DISAGREE**
@@ -513,10 +610,10 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2"}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2"}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}, "then": {"param": "ira.line2_not_covered"}}], "op": "choose"}
 ```
 
-Ruling: representation; i1040gi p. 97, line 2: "Married filing jointly, enter $146,000 in both columns. But if you checked “No” on either line 1a or 1b, enter $246,000 for the person who wasn't covered by a plan." The candidate enters $246,000 for any person not covered and the status amount otherwise. For a person not covered on a return that is not joint (classm.f8889.5.deepseek, classm.f5695.1, classm.f5695.4: $246,000.00 against $89,000.00) nobody is covered, and the worksheet says to skip lines 2 through 6 (ira.anyone_covered false gives line 7 the applicable amount), so line 2 cannot reach a printed amount. Under the skipped-line rule this is not a defect of either side: person.ira_line2 is an unprinted per-person helper, and the printed worksheet lines ira.line2a and ira.line2b are zero whenever ira.lines2to6 is false, whichever helper value feeds them. The joint-return differences (classm.f5695.5, classm.f5695.7, classm.f8606.1: $246,000.00 against $146,000.00) follow person.ira_cov, ruled model error in this log. The candidate's ira_excess refusal and unknowns (stage16.refuse.person.ira_excess; classm.f2441.6.deepseek) are the placement ruled scope at person.ira_contrib; project-unknown partials withhold person.plan. Triage executable-triage-v1 (triage/person.deepseek.json): 2,298 of 4,647 comparisons agree; 1 candidate-refuses, 1291 candidate-unknown, 3 project-unknown, 1054 value.
+Ruling: representation; Not executable: the reply fails validation (person.excess: reference 'person.h_excess_raw' does not resolve; the f8889.unsupported refusal declarations of person.hsa_step1, hsa_share, hsa_deduction, hsa_taxable and hsa_addtax: "collection reference requires sum_over" and "comparison operands have incompatible types"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. i1040gi p. 97, line 2: "Married filing jointly, enter $146,000 in both columns. But if you checked “No” on either line 1a or 1b, enter $246,000 for the person who wasn't covered by a plan." The candidate enters the filing-status amount (ira.line2: $89,000, $146,000, $10,000 by status) for a covered person and $246,000 (ira.line2_not_covered) for a person not covered. On a joint return that is the source rule; on any other return a person not covered means no one is covered, lines 2 through 6 are skipped and the unprinted helper is not read (the printed ira.line2a is zero). Differences in coverage come from person.ira_cov, ruled model error there.
 
 ### person.ira_line6 — Worksheet line 6 for this person's column: is line 5 less than line 2? If yes, subtract li
 Status: **DISAGREE**
@@ -530,10 +627,10 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"const": "spouse"}, {"input": "person.role"}], "test": "eq"}, "then": {"ref": "ira.line6b"}}, {"guard": {"args": [{"const": "taxpayer"}, {"input": "person.role"}], "test": "eq"}, "then": {"ref": "ira.line6a"}}], "op": "choose"}
+{"ref": "ira.line6a"}
 ```
 
-Ruling: model error; i1040gi p. 97, line 6: "Subtract line 5 from line 2 in each column". The candidate copies the return-level worksheet column (ira.line6a for the taxpayer, ira.line6b for the spouse) instead of figuring this person's line; those columns are built from person.ira_line6 (ira.line6a_sum), so the line is circular wherever lines 2 through 6 apply ("cycle at person[...].ira_line6") and zero where they are skipped. The source computation is not encoded. Value differences are returns where nobody contributed and ira.lines2to6 is false (classm.f8889.1.deepseek, classm.f5695.1, classm.f5695.3: $0.00 against $22,072.00 to $72,349.00); the project's per-person line 6 there is an unprinted helper and the printed ira.line6a/6b are zero when skipped, so the skipped-line rule finds no defect on either side; the error is that the candidate gives no line 6 where the worksheet needs one. Other kinds: the candidate's ira_excess refusal and unknowns (stage16.refuse.person.ira_excess; classm.asset.4) are placement as at person.ira_contrib; the 1,053 project refusals are cited screens reached through MAGI (f2441.line14_bad on classm.w2.1.deepseek, sd.other_forms on classm.f8889.4.deepseek, sales digital assets on classm.asset.2), where the candidate's zero skips MAGI; project-unknown partials withhold answers MAGI needs (partial classm.f8889.2.deepseek -educator_expenses). Triage executable-triage-v1 (triage/person.deepseek.json): 1,897 of 4,647 comparisons agree; 1 candidate-refuses, 924 candidate-unknown, 1053 project-refuses, 140 project-unknown, 632 value.
+Ruling: model error; Not executable: the reply fails validation (person.excess: reference 'person.h_excess_raw' does not resolve; the f8889.unsupported refusal declarations of person.hsa_step1, hsa_share, hsa_deduction, hsa_taxable and hsa_addtax: "collection reference requires sum_over" and "comparison operands have incompatible types"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. i1040gi p. 97, line 6: "Is the amount on line 5 less than the amount on line 2? If yes, subtract line 5 from line 2". The candidate copies ira.line6a, the return-level column built from this line (ira.line6a_sum sums person.ira_line6 for the taxpayer): a cycle, and the spouse would receive the taxpayer's column. No line 6 is figured.
 
 ### person.ira_line7 — Worksheet line 7 for this person's column
 Status: **DISAGREE**
@@ -547,10 +644,10 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"const": "spouse"}, {"input": "person.role"}], "test": "eq"}, "then": {"ref": "ira.line7b"}}, {"guard": {"args": [{"const": "taxpayer"}, {"input": "person.role"}], "test": "eq"}, "then": {"ref": "ira.line7a"}}], "op": "choose"}
+{"ref": "ira.line7a"}
 ```
 
-Ruling: model error; i1040gi p. 98, line 7: if no one is covered, enter the applicable amount ($7,000 or $8,000); otherwise multiply line 6 by the percentage that applies. The candidate copies the return-level worksheet column (ira.line7a for the taxpayer, ira.line7b for the spouse) instead of figuring this person's line; those columns are built from person.ira_line7 (ira.line7a_sum), so the line is circular wherever lines 2 through 6 apply ("cycle at person[...].ira_line7") and zero where they are skipped. The source computation is not encoded. Value differences: classm.w2.1.deepseek, classm.f8889.1.deepseek, classm.f8889.2.deepseek give $0.00 against $7,000.00 (no contributions, so the display column is zero); stage16.ira.i1 spouse is the cycle. Other kinds: ira_excess placement (stage14.sep.dollar_limit, stage16.refuse.person.ira_excess) and the project's cited refusals (classm.s179.2 s179.multi, stage14.sep.refuse_excess, stage14.simple.refuse_catchup) as at person.ira_line6. Triage executable-triage-v1 (triage/person.deepseek.json): 2,337 of 4,647 comparisons agree; 1 candidate-refuses, 149 candidate-unknown, 175 project-refuses, 89 project-unknown, 1896 value.
+Ruling: model error; Not executable: the reply fails validation (person.excess: reference 'person.h_excess_raw' does not resolve; the f8889.unsupported refusal declarations of person.hsa_step1, hsa_share, hsa_deduction, hsa_taxable and hsa_addtax: "collection reference requires sum_over" and "comparison operands have incompatible types"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. i1040gi pp. 97-98, line 7: multiply line 6 by the percentage that applies, or enter the applicable amount when lines 2 through 6 are skipped. The candidate copies ira.line7a, the return-level column built from this line: a cycle, and the spouse would receive the taxpayer's column. No line 7 is figured.
 
 ### person.ira_deduction — This person's IRA deduction (worksheet line 12; zero with no traditional IRA contributions
 Status: **DISAGREE**
@@ -564,10 +661,10 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"const": "spouse"}, {"input": "person.role"}], "test": "eq"}, "then": {"ref": "ira.line12b"}}, {"guard": {"args": [{"const": "taxpayer"}, {"input": "person.role"}], "test": "eq"}, "then": {"ref": "ira.line12a"}}], "op": "choose"}
+{"collection": "person", "field": "person.ira_deduction", "op": "sum_over", "where": null}
 ```
 
-Ruling: model error; i1040gi p. 98: "On line 12a, enter the smallest of line 7a, 10, or 11a. On line 12b, enter the smallest of line 7b, 10, or 11b. This is the most you can deduct." The candidate copies the return-level worksheet column (ira.line12a for the taxpayer, ira.line12b for the spouse) instead of figuring this person's line; those columns are built from person.ira_deduction (ira.line12a_sum), so the line is circular wherever lines 2 through 6 apply ("cycle at person[...].ira_deduction") and zero where they are skipped. The source computation is not encoded. Here ira.line12a reads person.ira_deduction on every return, so the candidate is unknown on 4,556 records ("cycle at person[...].ira_deduction"; classm.f2441.1.deepseek); the 12 project refusals are the cited Pub. 590-A refusals (stage16.refuse.ira.both_kinds, stage16.refuse.ira.kbh_short, stage16.refuse.person.ira_over_limit, stage16.refuse.ira.over_comp). Triage executable-triage-v1 (triage/person.deepseek.json): 79 of 4,647 comparisons agree; 4556 candidate-unknown, 12 project-refuses.
+Ruling: model error; Not executable: the reply fails validation (person.excess: reference 'person.h_excess_raw' does not resolve; the f8889.unsupported refusal declarations of person.hsa_step1, hsa_share, hsa_deduction, hsa_taxable and hsa_addtax: "collection reference requires sum_over" and "comparison operands have incompatible types"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. i1040gi p. 98, line 12: "On line 12a, enter the smallest of line 7a, 10, or 11a" for you and line 12b for your spouse, then "Add the amounts on lines 12a and 12b". The candidate copies ira.total, the sum of person.ira_deduction over both spouses: a cycle, and each spouse would receive the joint total. No line 12 is figured.
 
 ### person.ira_nondeductible — This person's nondeductible traditional IRA contributions for 2025 (Form 8606 line 1)
 Status: **DISAGREE**
@@ -581,10 +678,10 @@ Project:
 Second:
 
 ```json
-{"from": {"input": "person.ira_trad"}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "spouse"}, {"input": "person.role"}], "test": "eq"}, "then": {"ref": "ira.line12b"}}, {"guard": {"args": [{"const": "taxpayer"}, {"input": "person.role"}], "test": "eq"}, "then": {"ref": "ira.line12a"}}], "op": "choose"}}
+{"from": {"input": "person.ira_trad"}, "op": "subtract_floor0", "take": {"collection": "person", "field": "person.ira_deduction", "op": "sum_over", "where": null}}
 ```
 
-Ruling: scope; i8606 p. 9, Line 1: subtract worksheet line 12 "from the smaller of line 10 or line 11 of the worksheet". The candidate subtracts its deduction from the contributions (line 11) and drops line 10 (compensation); the two agree whenever contributions do not exceed compensation, and the project refuses that excess at person.ira_line11 (ira.over_comp), so no reachable value differs. Triage cannot evaluate the line: its 4,557 candidate-unknown records are the cycle inherited from person.ira_deduction (ruled model error). The 11 or 12 project refusals are the cited Pub. 590-A refusals (stage16.refuse.ira.both_kinds, stage16.refuse.ira.kbh_short, stage16.refuse.person.ira_over_limit, stage16.refuse.ira.over_comp). Triage executable-triage-v1 (triage/person.deepseek.json): 79 of 4,647 comparisons agree; 4557 candidate-unknown, 11 project-refuses.
+Ruling: scope; Not executable: the reply fails validation (person.excess: reference 'person.h_excess_raw' does not resolve; the f8889.unsupported refusal declarations of person.hsa_step1, hsa_share, hsa_deduction, hsa_taxable and hsa_addtax: "collection reference requires sum_over" and "comparison operands have incompatible types"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. i8606 p. 9, Line 1: subtract worksheet line 12 "from the smaller of line 10 or line 11 of the worksheet". The candidate subtracts its IRA deduction from line 11 (the contributions), leaving out line 10 (compensation); the two differ only when contributions exceed compensation, an excess contribution the project refuses (person.ira_excess_gate; p590a p. 35, "more than the smaller of" the limit or compensation). Its own formula is otherwise the project's; it inherits the error of person.ira_deduction (ruled model error).
 
 ### person.ira_files_8606 — This person files Form 8606 for nondeductible contributions to a traditional IRA for 2025
 Status: **DISAGREE**
@@ -598,10 +695,10 @@ Project:
 Second:
 
 ```json
-{"args": [{"args": [{"const": true}, {"input": "person.ira_basis_adjusted"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_dist"}], "test": "eq"}, {"args": [{"const": 0}, {"from": {"input": "person.ira_trad"}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "spouse"}, {"input": "person.role"}], "test": "eq"}, "then": {"ref": "ira.line12b"}}, {"guard": {"args": [{"const": "taxpayer"}, {"input": "person.role"}], "test": "eq"}, "then": {"ref": "ira.line12a"}}], "op": "choose"}}], "test": "lt"}], "test": "any"}
+{"args": [{"args": [{"const": true}, {"input": "person.ira_basis_adjusted"}], "test": "eq"}, {"args": [{"const": 0}, {"from": {"input": "person.ira_trad"}, "op": "subtract_floor0", "take": {"collection": "person", "field": "person.ira_deduction", "op": "sum_over", "where": null}}], "test": "lt"}], "test": "any"}
 ```
 
-Ruling: model error; i8606 p. 2, Who Must File: "You made nondeductible contributions to a traditional IRA for 2025" and "You received distributions from a traditional IRA in 2025 and your basis in these IRAs is more than zero." The candidate files Form 8606 on any traditional IRA distribution, without basis, or whenever the basis changed other than by nondeductible contributions (person.ira_basis_adjusted), neither of which the text makes a filing condition; with f8606.dist that would send a return with any IRA distribution to the refused lines 4 to 13. Triage cannot show it: 4,555 candidate-unknown records are the cycle inherited from person.ira_deduction. The 11 or 12 project refusals are the cited Pub. 590-A refusals (stage16.refuse.ira.both_kinds, stage16.refuse.ira.kbh_short, stage16.refuse.person.ira_over_limit, stage16.refuse.ira.over_comp). Triage executable-triage-v1 (triage/person.deepseek.json): 81 of 4,647 comparisons agree; 4555 candidate-unknown, 11 project-refuses.
+Ruling: scope; Not executable: the reply fails validation (person.excess: reference 'person.h_excess_raw' does not resolve; the f8889.unsupported refusal declarations of person.hsa_step1, hsa_share, hsa_deduction, hsa_taxable and hsa_addtax: "collection reference requires sum_over" and "comparison operands have incompatible types"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. i8606 p. 2, Who Must File: "You made nondeductible contributions to a traditional IRA for 2025", and among other cases "You or your spouse transferred all or part of their traditional IRA in 2025 to the other spouse under a divorce or separation agreement". The candidate files Form 8606 on nondeductible contributions or on person.ira_basis_adjusted (a basis change other than by nondeductible contributions, including a transfer incident to divorce). The project's line is the filing for nondeductible contributions that Part I serves; person.ira_basis_adjusted is asked of a filer and refused there (person.ira_basis_gate), and distributions with basis are screened at retirement.special. The extra disjunct reads an answer the project screens; refusal placement, not a different tax reading. It inherits person.ira_deduction's error through line 1.
 
 ### person.ira_8606_line2 — Form 8606 line 2 for this person (asked only when the person files Form 8606)
 Status: **DISAGREE**
@@ -618,7 +715,7 @@ Second:
 {"input": "person.ira_basis"}
 ```
 
-Ruling: scope; i8606 p. 9, Line 2: "Generally, if this is the first year you are required to file Form 8606, enter -0-" and otherwise the Total Basis Chart amount. The candidate copies person.ira_basis for everyone and refuses person.ira_excess; the project asks the basis only of a Form 8606 filer and refuses the adjusted basis there (person.ira_basis_gate); f8606.line2 is shown only when the person files. Candidate-unknown records lack ira_basis where Form 8606 is not filed (classm.f2441.1.deepseek); project refusals are the cited Pub. 590-A refusals (stage16.refuse.ira.both_kinds, stage16.refuse.person.ira_excess, stage16.refuse.person.ira_over_limit); project-unknown partials withhold person.sav_trad. No value differs. Triage executable-triage-v1 (triage/person.deepseek.json): 2,260 of 4,647 comparisons agree; 2349 candidate-unknown, 12 project-refuses, 26 project-unknown.
+Ruling: scope; Not executable: the reply fails validation (person.excess: reference 'person.h_excess_raw' does not resolve; the f8889.unsupported refusal declarations of person.hsa_step1, hsa_share, hsa_deduction, hsa_taxable and hsa_addtax: "collection reference requires sum_over" and "comparison operands have incompatible types"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. i8606 p. 9, Line 2: "Generally, if this is the first year you are required to file Form 8606, enter -0-" and otherwise the Total Basis Chart amount. The candidate copies person.ira_basis for everyone; the project asks it only of a Form 8606 filer and refuses an adjusted basis (person.ira_basis_gate). The earlier deepseek reply had the identical expression; its triage (executable-triage-v1, archived in .transcription/archive/before-round4-2026-10-27/) recorded no value difference (2,260 of 4,647 agree; 2,349 candidate-unknown, 12 project-refuses, 26 project-unknown).
 
 ### person.ira_dist_gate — Nondeductible contributions for 2025 with a 2025 traditional IRA distribution or Roth conv
 Status: **DISAGREE**
@@ -635,24 +732,10 @@ Second:
 {"input": "person.ira_dist"}
 ```
 
-Ruling: scope; f8606 (2025) Part I: "In 2025, did you take a distribution from a traditional IRA, or make a Roth IRA conversion?" The candidate copies the answer; the project conjoins it with contributions and filing Form 8606, and asks person.ira_dist only then, so the answer is the same on every record where it is asked. The 2,323 candidate-unknown records lack ira_dist where it is not asked (classm.f2441.1.deepseek); the project refusals are the cited Pub. 590-A refusals (stage16.refuse.ira.both_kinds, stage16.refuse.person.ira_excess, stage16.refuse.person.ira_over_limit). Triage executable-triage-v1 (triage/person.deepseek.json): 2,312 of 4,647 comparisons agree; 2323 candidate-unknown, 12 project-refuses.
+Ruling: scope; Not executable: the reply fails validation (person.excess: reference 'person.h_excess_raw' does not resolve; the f8889.unsupported refusal declarations of person.hsa_step1, hsa_share, hsa_deduction, hsa_taxable and hsa_addtax: "collection reference requires sum_over" and "comparison operands have incompatible types"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. f8606 (2025) Part I: "In 2025, did you take a distribution from a traditional IRA, or make a Roth IRA conversion?" The candidate copies person.ira_dist for everyone; the project asks it only of a person with nondeductible contributions. The earlier deepseek reply had the identical expression; its triage (executable-triage-v1, archived in .transcription/archive/before-round4-2026-10-27/) recorded no value difference (2,312 of 4,647 agree; 2,323 candidate-unknown, 12 project-refuses).
 
 ### person.ira_8606_line14 — Form 8606 line 14 for this person (total basis in traditional IRAs for 2025 and earlier ye
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"collection": "f8606", "field": "f8606.line14", "op": "sum_over", "where": null}
-```
-
-Second:
-
-```json
-{"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_dist"}], "test": "eq"}, "then": {"of": [{"input": "person.ira_basis"}, {"from": {"input": "person.ira_trad"}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "spouse"}, {"input": "person.role"}], "test": "eq"}, "then": {"ref": "ira.line12b"}}, {"guard": {"args": [{"const": "taxpayer"}, {"input": "person.role"}], "test": "eq"}, "then": {"ref": "ira.line12a"}}], "op": "choose"}}], "op": "sum"}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_dist"}], "test": "eq"}, "then": {"collection": "f8606", "field": "f8606.line14", "op": "sum_over", "where": null}}], "op": "choose"}
-```
-
-Ruling: scope; f8606 (2025) Part I: "Enter the amount from line 3 on line 14. Do not complete the rest of Part I" when there is no distribution. The candidate takes line 3 without a distribution and the f8606.line14 total otherwise, the project the f8606.line14 total (line 3, refused on a distribution); same value. Triage cannot evaluate it: the 4,555 candidate-unknown records are the cycle inherited from person.ira_deduction. The 11 or 12 project refusals are the cited Pub. 590-A refusals (stage16.refuse.ira.both_kinds, stage16.refuse.ira.kbh_short, stage16.refuse.person.ira_over_limit, stage16.refuse.ira.over_comp). Triage executable-triage-v1 (triage/person.deepseek.json): 80 of 4,647 comparisons agree; 4555 candidate-unknown, 12 project-refuses.
+Status: **AGREE**
 
 ### person.ira_ssb — This person's IRA deduction as the Social Security Benefits Worksheet reads it (zero with
 Status: **DISAGREE**
@@ -666,10 +749,10 @@ Project:
 Second:
 
 ```json
-{"ref": "ssb.line18"}
+{"collection": "person", "field": "person.ira_ssb", "op": "sum_over", "where": null}
 ```
 
-Ruling: model error; i1040gi p. 98, line 12 ("enter the smallest of line 7a, 10, or 11a"), which the Social Security Benefits Worksheet reads as the IRA deduction when no one is covered (amb.2025.ira_ssb_copy). The candidate copies ssb.line18, the taxable social security benefits, a different quantity: stage16.ira.i1 through stage16.ira.i5 give $0.00 against $7,000.00 or $8,000.00, and the copy is circular where the benefits worksheet reads it ("cycle at person[taxpayer].ira_ssb", classm.retirement.2, classm.ssb.2). Its refusals come from the benefits graph (classm.f8606.1 retirement.special, classm.dcprov.1 sb.fbar_required). The project's refusals are the cited Pub. 590-A refusals (stage16.refuse.ira.both_kinds, stage16.refuse.person.ira_excess); project-unknown records withhold person.sav_trad. Triage executable-triage-v1 (triage/person.deepseek.json): 4,035 of 4,647 comparisons agree; 310 candidate-refuses, 214 candidate-unknown, 12 project-refuses, 49 project-unknown, 27 value.
+Ruling: model error; Not executable: the reply fails validation (person.excess: reference 'person.h_excess_raw' does not resolve; the f8889.unsupported refusal declarations of person.hsa_step1, hsa_share, hsa_deduction, hsa_taxable and hsa_addtax: "collection reference requires sum_over" and "comparison operands have incompatible types"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. i1040gi p. 98, line 12, with line 7 the applicable amount when no one is covered (i1040gi p. 97, "skip lines 2 through 6"; amb.2025.ira_ssb_copy). The candidate copies ssb.ira_line20, the return-level total that sums person.ira_ssb: a cycle, and each spouse would receive the joint total. No per-person amount is figured.
 
 ### person.ira_se — This person's part of worksheet line 9 (zero without a Schedule C)
 Status: **DISAGREE**
@@ -683,10 +766,10 @@ Project:
 Second:
 
 ```json
-{"from": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract", "take": {"amount": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}], "test": "le"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}, {"guard": {"args": [{"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}, {"param": "se.floor"}], "test": "lt"}, "then": {"line": "zero"}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}], "test": "le"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}, {"guard": {"args": [{"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}, {"param": "se.floor"}], "test": "lt"}, "then": {"line": "zero"}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"line": "wages"}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, "then": {"line": "zero"}}, {"guard": {"args": [{"const": "sep"}, {"input": "person.plan"}], "test": "eq"}, "then": {"of": [{"input": "person.sep_contrib"}, {"line": "Step 21"}], "op": "smaller_of"}}, {"guard": {"args": [{"const": "simple"}, {"input": "person.plan"}], "test": "eq"}, "then": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}], "test": "le"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}, {"guard": {"args": [{"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}, {"param": "se.floor"}], "test": "lt"}, "then": {"line": "zero"}}], "op": "choose"}, {"of": [{"input": "person.simple_deferral"}, {"input": "person.simple_employer"}], "op": "sum"}], "op": "smaller_of"}}], "op": "choose"}}
+{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}
 ```
 
-Ruling: scope; i1040gi p. 97, line 9: self-employed earned income "minus any deductions on Schedule 1, lines 15 and 16. If zero or less, enter -0-." The candidate's person.eic_se (line 3 less line 13) less line 16, floored at zero, is the project's Schedule C total less lines 15 and 16; no value differs. The candidate's se_screen, plan_screen and rrta refusals (classm.f5695.2, classm.f5695.4, classm.w2.1.deepseek) are placement as at person.se_line6; the project refusals are cited Schedule C and plan screens (stage14.ho.refuse_8829, stage14.ho.refuse_two_businesses, classm.scveh.6 sep_excess). In the deepseek-flash candidate graph every return with a Schedule C is unevaluable: its person.income179 reads person.sc_total, which reads sc.line31, which reads the section 179 deduction limited by s179.income, which reads person.income179 ("cycle at person[...].sc_total"; classm.asset.1, classm.asset.3, classm.f8889.2.deepseek). That cycle is ruled a model error at person.income179; here it only masks evaluation. The candidate also reaches s179.mfs on married-filing-separately returns (classm.f8959.2, classm.scveh.2, gen#71), which the project refuses for every married filing separately return at scope.ready (s3.mfs), and the project's s179.multi refusals (classm.s179.2, gen#94; i4562 p. 5, Line 12) are cited scope refusals. Triage executable-triage-v1 (triage/person.deepseek.json): 2,149 of 4,647 comparisons agree; 307 candidate-refuses, 2129 candidate-unknown, 62 project-refuses.
+Ruling: model error; Not executable: the reply fails validation (person.excess: reference 'person.h_excess_raw' does not resolve; the f8889.unsupported refusal declarations of person.hsa_step1, hsa_share, hsa_deduction, hsa_taxable and hsa_addtax: "collection reference requires sum_over" and "comparison operands have incompatible types"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. i1040gi p. 98, line 9: "Generally, this is your (and your spouse's if filing jointly) net earnings from self-employment if your personal services were a material income-producing factor, minus any deductions on Schedule 1, lines 15 and 16. If zero or less, enter -0-." The candidate copies person.se_line6, Schedule SE line 6 (92.35% of profit, zero below $400), and subtracts neither Schedule 1 line 15 nor line 16. For $50,000 of Schedule C profit with no plan the project gives about $46,467.61 ($50,000 less a Schedule 1 line 15 of about $3,532.39) and the candidate $46,175.00 (derived from the expressions, not executed).
 
 ### employers — Total w2.one for this person
 Status: **AGREE**
@@ -695,24 +778,24 @@ Status: **AGREE**
 Status: **AGREE**
 
 ### over — Any employer withheld more than the limit
-Status: **AGREE**
-
-### wages — Total w2.wages for this person
 Status: **DISAGREE**
 
 Project:
 
 ```json
-{"collection": "w2", "field": "w2.wages", "op": "sum_over", "where": null}
+{"args": [{"const": 0, "type": "Count"}, {"line": "overcount"}], "test": "lt"}
 ```
 
 Second:
 
 ```json
-{"of": [{"collection": "w2", "field": "w2.box3", "op": "sum_over", "where": null}, {"collection": "w2", "field": "w2.box7", "op": "sum_over", "where": null}], "op": "sum"}
+{"args": [{"args": [{"const": 1, "type": "Count"}, {"line": "employers"}], "test": "lt"}, {"args": [{"param": "ss.base"}, {"line": "wages"}], "test": "lt"}], "test": "all"}
 ```
 
-Ruling: representation; iw2w3 p. 18, boxes 3 and 7 (amb.2025.ss_wages). Both sum W-2 boxes 3 and 7; triage executable-triage-v1 (triage/person.deepseek.json): 4,647 of 4,647 comparisons agree (observed on that sample, not proved).
+Ruling: representation; Not executable: the reply fails validation (person.excess: reference 'person.h_excess_raw' does not resolve; the f8889.unsupported refusal declarations of person.hsa_step1, hsa_share, hsa_deduction, hsa_taxable and hsa_addtax: "collection reference requires sum_over" and "comparison operands have incompatible types"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. i1040gi p. 117, Line 11: "If you, or your spouse if filing a joint return, had more than one employer for 2025 and total wages of more than $176,100 ... But if any one employer withheld more than $10,918.20, you can't claim the excess on your return." The project's helper 'over' is "Any employer withheld more than the limit" (overcount above zero); the candidate puts the other condition under that key (more than one employer and wages above $176,100) and carries the one-employer test as its overcount, then joins both in its eligible. Both are conditions of the same sentence; the key is a project helper, not a printed IRS line, so the difference is decomposition, not a tax reading. The candidate gives zero where an employer over-withheld, where the project refuses (Form 843); that is ruled on 'eligible'.
+
+### wages — Total w2.wages for this person
+Status: **AGREE**
 
 ### withheld — Total w2.box4 for this person
 Status: **AGREE**
@@ -729,19 +812,47 @@ Project:
 Second:
 
 ```json
-{"args": [{"args": [{"const": 1, "type": "Count"}, {"line": "employers"}], "test": "lt"}, {"args": [{"param": "ss.limit"}, {"line": "wages"}], "test": "lt"}, {"args": [{"const": true}, {"line": "over"}], "test": "ne"}], "test": "all"}
+{"args": [{"args": [{"const": 0, "type": "Count"}, {"line": "overcount"}], "test": "eq"}, {"args": [{"const": true}, {"line": "over"}], "test": "eq"}], "test": "all"}
 ```
 
-Ruling: model error; i1040gi p. 117, Line 11: excess social security tax applies if you had more than one employer and "total wages of more than $176,100". The candidate compares wages with ss.limit ($10,918.20, the tax limit) instead of the $176,100 wage base: classm.f8889.1.deepseek spouse, classm.f8889.4.deepseek, classm.asset.4, classm.f5695.3 give True against the project's False, persons with two employers and wages between $10,918.20 and $176,100. The person.over conjunct is representation as in the Claude log (classm.w2.1.deepseek: over true, project refuses the credit); the project-unknown record ss.early.refusal withholds box 3. Triage executable-triage-v1 (triage/person.deepseek.json): 3,820 of 4,647 comparisons agree; 1 project-unknown, 826 value.
+Ruling: representation; Not executable: the reply fails validation (person.excess: reference 'person.h_excess_raw' does not resolve; the f8889.unsupported refusal declarations of person.hsa_step1, hsa_share, hsa_deduction, hsa_taxable and hsa_addtax: "collection reference requires sum_over" and "comparison operands have incompatible types"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. i1040gi p. 117, Line 11: "But if any one employer withheld more than $10,918.20, you can't claim the excess on your return. The employer should adjust the tax for you. If the employer doesn't adjust the overcollection, you can file a claim for refund using Form 843." The candidate's eligible is more than one employer, wages above $176,100 and no employer over the limit; the project's is the first two, with person.credit refused when person.over. They differ only when an employer withheld more than the limit, where the project refuses the credit (as the Claude reply's identical test this round: 4,109 of 4,117 agree, every value difference on a refused return).
 
 ### excess — Withholding above $10,918.20, if any
-Status: **AGREE**
+Status: **DISAGREE**
+
+Project:
+
+```json
+{"from": {"line": "withheld"}, "op": "subtract_floor0", "take": {"param": "ss.limit"}}
+```
+
+Second:
+
+```json
+{"expression": {"alternatives": [{"guard": {"args": [{"const": true}, {"line": "eligible"}], "test": "eq"}, "then": {"ref": "person.h_excess_raw"}}, {"guard": {"args": [{"const": true}, {"line": "eligible"}], "test": "ne"}, "then": {"line": "zero"}}], "op": "choose"}, "invalid_model_types": [{"line": "person.excess", "message": "person.person.excess: reference 'person.h_excess_raw' does not resolve"}]}
+```
+
+Ruling: model error; adjudicates the declaration, not the tax reading. "person.person.excess: reference 'person.h_excess_raw' does not resolve": the candidate's excess reads a helper it never defines. The reply fails validation (triage/person.deepseek.json, state invalid), so no value was computed; the tax reading (i1040gi p. 117, "the amount withheld in excess of $10,918.20") is not ruled.
 
 ### zero — No excess credit
 Status: **AGREE**
 
 ### credit — Excess social security tax withheld, figured separately for this person
-Status: **AGREE**
+Status: **DISAGREE**
+
+Project:
+
+```json
+{"alternatives": [{"guard": {"args": [{"const": false}, {"line": "eligible"}], "test": "eq"}, "then": {"line": "zero"}}, {"guard": {"args": [{"const": true}, {"line": "eligible"}], "test": "eq"}, "then": {"line": "excess"}}], "op": "choose"}
+```
+
+Second:
+
+```json
+{"expression": {"line": "excess"}, "invalid_model_types": [{"line": "person.excess", "message": "person.person.excess: reference 'person.h_excess_raw' does not resolve"}]}
+```
+
+Ruling: model error; adjudicates the declaration, not the tax reading. The candidate's credit copies person.excess, whose expression reads the undefined person.h_excess_raw ("reference 'person.h_excess_raw' does not resolve"), so the line's dependency closure fails validation (triage/person.deepseek.json, state invalid). Not ruled on the tax reading; note only that it has no railroad (RRTA) or Form 843 refusal, which the project takes from i1040gi p. 117.
 
 ### Step 1 — Net profit from Schedule C, line 31
 Status: **DISAGREE**
@@ -758,7 +869,7 @@ Second:
 {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}
 ```
 
-Ruling: scope; i1040sc p. 15, Line 32: "If you checked box 32b ... the at-risk rules apply to your loss. Be sure to attach Form 6198 to your return." Step 1 of the Deduction Worksheet for Self-Employed (p560 p. 39) copies the Schedule C net profit; the candidate sums sc.line31; the project sums sc.result, which is sc.line31 except that a loss with some investment not at risk is refused (sc.loss_allowed, Form 6198). The line itself is the Claude candidate's and differs only by that cited refusal (stage14.refuse.at_risk). In the deepseek-flash candidate graph every return with a Schedule C is unevaluable: its person.income179 reads person.sc_total, which reads sc.line31, which reads the section 179 deduction limited by s179.income, which reads person.income179 ("cycle at person[...].sc_total"; classm.asset.1, classm.asset.3, classm.f8889.2.deepseek). That cycle is ruled a model error at person.income179; here it only masks evaluation. The candidate also reaches s179.mfs on married-filing-separately returns (classm.f8959.2, classm.scveh.2, gen#71), which the project refuses for every married filing separately return at scope.ready (s3.mfs), and the project's s179.multi refusals (classm.s179.2, gen#94; i4562 p. 5, Line 12) are cited scope refusals. Triage executable-triage-v1 (triage/person.deepseek.json): 3,698 of 4,647 comparisons agree; 49 candidate-refuses, 892 candidate-unknown, 8 project-refuses.
+Ruling: scope; Not executable: the reply fails validation (person.excess: reference 'person.h_excess_raw' does not resolve; the f8889.unsupported refusal declarations of person.hsa_step1, hsa_share, hsa_deduction, hsa_taxable and hsa_addtax: "collection reference requires sum_over" and "comparison operands have incompatible types"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. p560 p. 39, Step 1: "Enter your net profit from Schedule C (Form 1040), line 31; Schedule F (Form 1040), line 34;* or Schedule K-1 (Form 1065),* box 14, code A." The candidate copies its sum of sc.line31. The project copies sc.result (refusing the at-risk loss, i1040sc p. 15, Line 32) and, since BUG-0176, refuses with person.se_screened, as Step 2 already does (person.se_line2). Both refusals are cited screens; with no other self-employment and no at-risk loss the values are equal.
 
 ### Step 2 — Deduction for self-employment tax from Schedule 1, line 15
 Status: **DISAGREE**
@@ -772,10 +883,10 @@ Project:
 Second:
 
 ```json
-{"amount": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}], "test": "le"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}, {"guard": {"args": [{"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}, {"param": "se.floor"}], "test": "lt"}, "then": {"line": "zero"}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}], "test": "le"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}, {"guard": {"args": [{"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}, {"param": "se.floor"}], "test": "lt"}, "then": {"line": "zero"}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"line": "wages"}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}
+{"amount": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"collection": "w2", "field": "w2.wages", "op": "sum_over", "where": null}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}
 ```
 
-Ruling: scope; i1040sse p. 1, Who Must File Schedule SE: "You must file Schedule SE if: The amount on line 4c of Schedule SE is $400 or more, or You had church employee income of $108.28 or more." The project (sc.result inside person.se_line2, has_sc gate) and the candidate (sum of sc.line31) give the same Schedule SE line 13 (Step 2 copies it); sc.result equals sc.line31 except that a loss with some investment not at risk is refused at sc.loss_allowed (i1040sc p. The at-risk refusal (stage14.refuse.at_risk; i1040sc p. 15, Line 32, "Be sure to attach Form 6198 to your return") is a cited scope refusal. The candidate declares refusals on person.se_screen and person.rrta for every person; the project asks se_screen only of a person with a Schedule C and refuses railroad compensation only together with a business (person.se_rrta). For a person with no Schedule C the Schedule SE conditions the screen lists that can arise without one (church employee income, clergy income, partnership self-employment income, farm income) are refused by scope.schedule1 and other earned income by scope.other_income, and railroad compensation alone gives no self-employment tax (the project refuses it at person.credit through Schedule 3 line 11 on every return). The candidate refusals (classm.f5695.2, classm.f5695.7, classm.f8959.1, classm.s179.1, classm.ssb.5 with se_screen supplied true and no Schedule C; classm.w2.1.deepseek with rrta true) and candidate-unknown records (classm.f2441.1.deepseek to .5, se_screen not asked without a Schedule C) are refusal placement, not a different tax reading; no value differs. The deepseek-flash line rebuilds Schedule SE from helpers (line 4c, line 10 on the smaller of line 6 or the wage base less wages, line 11, half of line 12) and agrees with the project's se definition wherever both evaluate. In the deepseek-flash candidate graph every return with a Schedule C is unevaluable: its person.income179 reads person.sc_total, which reads sc.line31, which reads the section 179 deduction limited by s179.income, which reads person.income179 ("cycle at person[...].sc_total"; classm.asset.1, classm.asset.3, classm.f8889.2.deepseek). That cycle is ruled a model error at person.income179; here it only masks evaluation. The candidate also reaches s179.mfs on married-filing-separately returns (classm.f8959.2, classm.scveh.2, gen#71), which the project refuses for every married filing separately return at scope.ready (s3.mfs), and the project's s179.multi refusals (classm.s179.2, gen#94; i4562 p. 5, Line 12) are cited scope refusals. Triage executable-triage-v1 (triage/person.deepseek.json): 2,317 of 4,647 comparisons agree; 220 candidate-refuses, 2103 candidate-unknown, 7 project-refuses.
+Ruling: scope; Not executable: the reply fails validation (person.excess: reference 'person.h_excess_raw' does not resolve; the f8889.unsupported refusal declarations of person.hsa_step1, hsa_share, hsa_deduction, hsa_taxable and hsa_addtax: "collection reference requires sum_over" and "comparison operands have incompatible types"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. p560 p. 39, Step 2: "Enter your deduction for self-employment tax from Schedule 1 (Form 1040), line 15". Both copy this person's Schedule SE line 13; the candidate's line 13 is the project's computation with its se_screen and rrta refusals placed for every person (ruled scope at person.se_line13).
 
 ### Step 3 — Net earnings from self-employment. Subtract step 2 from step 1
 Status: **AGREE**
@@ -792,12 +903,10 @@ Project:
 Second:
 
 ```json
-{"amount": {"line": "Step 3"}, "op": "prorate", "part": {"amount": {"param": "sc.hundred_cents"}, "count": {"input": "person.sep_rate"}, "op": "multiply_count"}, "places": 6, "whole": {"const": 10000}}
+{"amount": {"line": "Step 3"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "person.sep_rate"}, "op": "multiply_count"}, "places": 3, "whole": {"of": [{"amount": {"const": 1}, "count": {"input": "person.sep_rate"}, "op": "multiply_count"}, {"param": "sc.hundred_cents"}], "op": "sum"}}
 ```
 
-Second transcription's note: The reduced self-employed rate is rate divided by rate plus 100; the available atoms cannot add a Count to 100, so this uses the plan percentage directly. Step 21 is capped by Steps 6 and 8.
-
-Ruling: model error; p560 p. 38, Rate Worksheet for Self-Employed: "1) Plan contribution rate as a decimal ... 2) Rate in line 1 plus 1 (for example, 0.105 + 1 = 1.105) ... 3) Self-employed rate as a decimal" (line 1 divided by line 2), and the Rate Table gives 0.090909 for 10%. The candidate multiplies Step 3 by the plan rate itself (rate as cents over 10,000), with a note that it could not add the rate to 100%; for a 10% plan that is 0.10 instead of 0.090909, overstating the maximum deductible contribution. Triage shows no value difference only because every Schedule C return is unevaluable in this candidate graph (the person.income179 cycle) or refused: candidate-unknown classm.asset.1 (project $4,662.91), classm.f4562.1; the refusal kinds are the se_screen/rrta placement (classm.f5695.2, classm.w2.1.deepseek) and the project's cited s179.multi and at-risk refusals (classm.asset.2, stage14.refuse.at_risk). Ruled on the derivation, not on an observed witness. In the deepseek-flash candidate graph every return with a Schedule C is unevaluable: its person.income179 reads person.sc_total, which reads sc.line31, which reads the section 179 deduction limited by s179.income, which reads person.income179 ("cycle at person[...].sc_total"; classm.asset.1, classm.asset.3, classm.f8889.2.deepseek). That cycle is ruled a model error at person.income179; here it only masks evaluation. The candidate also reaches s179.mfs on married-filing-separately returns (classm.f8959.2, classm.scveh.2, gen#71), which the project refuses for every married filing separately return at scope.ready (s3.mfs), and the project's s179.multi refusals (classm.s179.2, gen#94; i4562 p. 5, Line 12) are cited scope refusals. Triage executable-triage-v1 (triage/person.deepseek.json): 3,611 of 4,647 comparisons agree; 222 candidate-refuses, 807 candidate-unknown, 7 project-refuses.
+Ruling: model error; Not executable: the reply fails validation (person.excess: reference 'person.h_excess_raw' does not resolve; the f8889.unsupported refusal declarations of person.hsa_step1, hsa_share, hsa_deduction, hsa_taxable and hsa_addtax: "collection reference requires sum_over" and "comparison operands have incompatible types"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. p560 p. 38, Rate Table for Self-Employed: "If your plan's contribution rate is 10% of a participant's compensation, your rate is 0.090909. Enter this rate on step 4 of the Deduction Worksheet for Self-Employed." The candidate's rate is the plan rate over the plan rate plus 1 rounded to 3 places (0.091 for 10%); the source's is to six places (0.090909, amb.2025.sep_rate_places), which the project uses. On $50,000 of Step 3, a 10% plan gives $4,545.45 in the project and $4,550.00 in the candidate (derived from the expressions, not executed); the difference reaches Step 21, the maximum deductible contribution. The plan_screen refusal for every person is placement.
 
 ### Step 6 — Multiply $350,000 by your plan contribution rate (not the reduced rate)
 Status: **DISAGREE**
@@ -811,10 +920,10 @@ Project:
 Second:
 
 ```json
-{"amount": {"param": "ret.comp_limit"}, "op": "prorate", "part": {"amount": {"param": "sc.hundred_cents"}, "count": {"input": "person.sep_rate"}, "op": "multiply_count"}, "places": 6, "whole": {"const": 10000}}
+{"amount": {"param": "ret.comp_limit"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "person.sep_rate"}, "op": "multiply_count"}, "places": 3, "whole": {"param": "sc.hundred_cents"}}
 ```
 
-Ruling: representation; p560 p. 39, Step 6: "Multiply $350,000 by your plan contribution rate (not the reduced rate)". The candidate's rate as cents over 10,000 is the plan rate; triage executable-triage-v1 (triage/person.deepseek.json): 4,647 of 4,647 comparisons agree (observed on that sample, not proved).
+Ruling: scope; Not executable: the reply fails validation (person.excess: reference 'person.h_excess_raw' does not resolve; the f8889.unsupported refusal declarations of person.hsa_step1, hsa_share, hsa_deduction, hsa_taxable and hsa_addtax: "collection reference requires sum_over" and "comparison operands have incompatible types"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. p560 p. 39, Step 6: "Multiply $350,000 by your plan contribution rate (not the reduced rate)". The candidate prorates $350,000 by the whole-percent rate over 100 to 3 places, exact for a whole percent, so the amount equals the project's. It refuses person.plan_screen at Step 6 for every person; the project screens the same answer at person.sep_contrib (person.plan_screened, cited p560 chapters 2, 3 and 5): placement.
 
 ### Step 7 — Enter the smaller of step 5 or step 6
 Status: **AGREE**
@@ -831,37 +940,29 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 
 | line | gates listed | not read by the project's line |
 | --- | --- | --- |
-| person.hsa_step1 | person.h_hsa_unsupported_any | person.h_hsa_unsupported_any |
-| person.hsa_share | person.h_hsa_unsupported_any | person.h_hsa_unsupported_any |
-| person.hsa_deduction | person.h_hsa_unsupported_any | person.h_hsa_unsupported_any |
-| person.hsa_taxable | person.h_hsa_unsupported_any | person.h_hsa_unsupported_any |
-| person.hsa_addtax | person.h_hsa_unsupported_any | person.h_hsa_unsupported_any |
+| person.hsa_step1 | f8889.unsupported | f8889.unsupported |
+| person.hsa_share | f8889.unsupported | f8889.unsupported |
+| person.hsa_deduction | f8889.unsupported | - |
+| person.hsa_taxable | f8889.unsupported | - |
+| person.hsa_addtax | f8889.unsupported | - |
 | person.se_line6 | person.rrta, person.se_screen | person.rrta, person.se_screen |
 | person.se_line12 | person.rrta, person.se_screen | person.rrta, person.se_screen |
 | person.se_line13 | person.rrta, person.se_screen | person.rrta, person.se_screen |
 | person.s16 | person.plan_screen, person.rrta, person.se_screen | person.plan_screen, person.rrta, person.se_screen |
 | person.qbi | qbi.unsupported | qbi.unsupported |
-| person.eic_se | person.rrta, person.se_screen | person.rrta, person.se_screen |
-| person.dc_earned | person.rrta, person.se_screen | person.rrta, person.se_screen |
-| person.dc_earned_b | person.rrta, person.se_screen | person.rrta, person.se_screen |
 | person.sav_line1 | person.sav_able | - |
-| person.sav_line2 | person.sav_excess | person.sav_excess |
-| person.ira_contrib | person.ira_excess | person.ira_excess |
-| person.ira_line2 | person.ira_excess | person.ira_excess |
-| person.ira_line6 | person.ira_excess | person.ira_excess |
-| person.ira_line7 | person.ira_excess | person.ira_excess |
 | person.ira_deduction | person.ira_excess | person.ira_excess |
 | person.ira_nondeductible | person.ira_excess | person.ira_excess |
 | person.ira_files_8606 | person.ira_excess | person.ira_excess |
-| person.ira_8606_line2 | person.ira_excess | person.ira_excess |
 | person.ira_8606_line14 | person.ira_excess | person.ira_excess |
-| person.ira_se | person.plan_screen, person.rrta, person.se_screen | person.plan_screen, person.rrta, person.se_screen |
-| credit | person.rrta | - |
+| person.ira_se | person.rrta, person.se_screen | person.rrta, person.se_screen |
 | Step 2 | person.rrta, person.se_screen | person.rrta, person.se_screen |
 | Step 3 | person.rrta, person.se_screen | person.rrta, person.se_screen |
-| Step 5 | person.rrta, person.se_screen | person.rrta, person.se_screen |
-| Step 7 | person.rrta, person.se_screen | person.rrta, person.se_screen |
-| Step 21 | person.rrta, person.se_screen | person.rrta, person.se_screen |
+| Step 5 | person.plan_screen, person.rrta, person.se_screen | person.plan_screen, person.rrta, person.se_screen |
+| Step 6 | person.plan_screen | person.plan_screen |
+| Step 7 | person.plan_screen, person.rrta, person.se_screen | person.plan_screen, person.rrta, person.se_screen |
+| Step 8 | person.plan_screen | person.plan_screen |
+| Step 21 | person.plan_screen, person.rrta, person.se_screen | person.plan_screen, person.rrta, person.se_screen |
 
 ## Raw second transcription
 
@@ -869,44 +970,45 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 lines:
   - id: person.employers
     printed: "employers"
-    label: "Number of employers for this person"
+    label: "Number of employers"
     type: Count
     expr: {op: sum_over, collection: w2, field: w2.one}
   - id: person.overcount
     printed: "overcount"
-    label: "Number of employers that withheld more than the social security tax limit"
+    label: "Number of employers that withheld more than the Social Security tax limit"
     type: Count
-    expr: {op: sum_over, collection: w2, field: w2.one, where: {op: test, eq: [w2.over, {const: true}]}}
+    expr: {op: sum_over, collection: w2, field: w2.one, where: {op: test, gt: [w2.box4, {param: ss.limit}]}}
   - id: person.over
     printed: "over"
-    label: "Any one employer withheld more than the social security tax limit"
+    label: "Total Social Security wages more than the wage base and more than one employer"
     type: Bool
-    expr: {op: test, gt: [person.overcount, {const: 0, type: Count}]}
+    expr: {op: test, all: [{op: test, gt: [person.employers, {const: 1, type: Count}]}, {op: test, gt: [person.wages, {param: ss.base}]}]}
   - id: person.wages
     printed: "wages"
-    label: "Total social security wages and tips"
+    label: "Total Social Security wages and tips"
     type: NonNegDollars
-    expr: {op: sum, of: [person.h_ss_box3, person.h_ss_box7]}
+    expr: {op: sum_over, collection: w2, field: w2.wages}
   - id: person.withheld
     printed: "withheld"
-    label: "Total social security tax withheld"
+    label: "Total Social Security tax withheld"
     type: NonNegDollars
     expr: {op: sum_over, collection: w2, field: w2.box4}
   - id: person.eligible
     printed: "eligible"
-    label: "Eligible to claim excess social security tax"
+    label: "Eligible for the excess Social Security credit"
     type: Bool
-    expr:
-      op: test
-      all:
-        - {op: test, gt: [person.employers, {const: 1, type: Count}]}
-        - {op: test, gt: [person.wages, {param: ss.limit}]}
-        - {op: test, not: {op: test, eq: [person.over, {const: true}]}}
+    expr: {op: test, all: [{op: test, eq: [person.over, {const: true}]}, {op: test, eq: [person.overcount, {const: 0, type: Count}]}]}
   - id: person.excess
     printed: "excess"
-    label: "Social security tax withheld in excess of the limit"
+    label: "Excess Social Security tax"
     type: NonNegDollars
-    expr: {op: subtract_floor0, from: person.withheld, take: {param: ss.limit}}
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [person.eligible, {const: true}]}
+          then: person.h_excess_raw
+        - guard: {op: test, not: {op: test, eq: [person.eligible, {const: true}]}}
+          then: person.zero
   - id: person.zero
     printed: "zero"
     label: "Zero"
@@ -914,62 +1016,94 @@ lines:
     expr: {op: param, ref: ss.zero}
   - id: person.credit
     printed: "credit"
-    label: "Excess social security tax credit"
+    label: "Credit for excess Social Security tax"
     type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - {guard: {op: test, eq: [person.eligible, {const: true}]}, then: person.excess}
-        - {guard: {op: test, eq: [person.eligible, {const: false}]}, then: person.zero}
-    refuses: [person.rrta]
+    expr: {op: copy, from: person.excess}
   - id: person.sep_s1
     printed: "Step 1"
-    label: "Net profit from Schedule C"
+    label: "Step 1"
     type: Dollars
     expr: {op: copy, from: person.sc_total}
   - id: person.sep_s2
     printed: "Step 2"
-    label: "Deduction for self-employment tax"
+    label: "Step 2"
     type: NonNegDollars
     expr: {op: copy, from: person.se_line13}
   - id: person.sep_s3
     printed: "Step 3"
-    label: "Net earnings from self-employment"
+    label: "Step 3"
     type: NonNegDollars
     expr: {op: subtract_floor0, from: person.sep_s1, take: person.sep_s2}
-    note: "The worksheet does not require a floor, but the declared result is NonNegDollars; a zero floor is used."
   - id: person.sep_s5
     printed: "Step 5"
-    label: "Step 3 multiplied by the self-employed rate"
+    label: "Step 5"
     type: NonNegDollars
-    expr: {op: prorate, amount: person.sep_s3, part: person.h_sep_rate_cents, whole: {const: 10000}, places: 6}
-    note: "The reduced self-employed rate is rate divided by rate plus 100; the available atoms cannot add a Count to 100, so this uses the plan percentage directly. Step 21 is capped by Steps 6 and 8."
+    expr: {op: prorate, amount: person.sep_s3, part: person.h_sep_rate_cents, whole: person.h_sep_whole, places: 3}
+    refuses: [person.plan_screen]
   - id: person.sep_s6
     printed: "Step 6"
-    label: "Compensation limit multiplied by the plan contribution rate"
+    label: "Step 6"
     type: NonNegDollars
-    expr: {op: prorate, amount: person.h_ret_comp_limit, part: person.h_sep_rate_cents, whole: {const: 10000}, places: 6}
+    expr: {op: prorate, amount: person.h_ret_comp_limit, part: person.h_sep_rate_cents, whole: person.h_hundred_cents, places: 3}
+    refuses: [person.plan_screen]
   - id: person.sep_s7
     printed: "Step 7"
-    label: "Smaller of Step 5 or Step 6"
+    label: "Step 7"
     type: NonNegDollars
     expr: {op: smaller_of, of: [person.sep_s5, person.sep_s6]}
+    refuses: [person.plan_screen]
   - id: person.sep_s8
     printed: "Step 8"
-    label: "Contribution dollar limit"
+    label: "Step 8"
     type: NonNegDollars
     expr: {op: param, ref: ret.sep_dollar_limit}
+    refuses: [person.plan_screen]
   - id: person.sep_s21
     printed: "Step 21"
-    label: "Maximum deductible contribution"
+    label: "Step 21"
     type: NonNegDollars
     expr: {op: smaller_of, of: [person.sep_s7, person.sep_s8]}
-    note: "No elective deferrals, catch-up contributions or designated Roth contributions are supported at this line; plan_screen refuses those cases."
+    refuses: [person.plan_screen]
   - id: person.one
     printed: "(helper)"
-    label: "Count of one"
+    label: "(helper)"
     type: Count
     expr: {op: param, ref: person.one}
+  - id: person.h_zero
+    printed: "(helper)"
+    label: "(helper)"
+    type: NonNegDollars
+    expr: {op: param, ref: ss.zero}
+  - id: person.h_one_cent
+    printed: "(helper)"
+    label: "(helper)"
+    type: NonNegDollars
+    expr: {op: param, ref: sc.one_cent}
+  - id: person.h_hundred_cents
+    printed: "(helper)"
+    label: "(helper)"
+    type: NonNegDollars
+    expr: {op: param, ref: sc.hundred_cents}
+  - id: person.h_ret_comp_limit
+    printed: "(helper)"
+    label: "(helper)"
+    type: NonNegDollars
+    expr: {op: param, ref: ret.comp_limit}
+  - id: person.h_wage_base
+    printed: "(helper)"
+    label: "(helper)"
+    type: NonNegDollars
+    expr: {op: param, ref: se.wage_base}
+  - id: person.h_educator_max
+    printed: "(helper)"
+    label: "(helper)"
+    type: NonNegDollars
+    expr: {op: param, ref: s1.educator_max}
+  - id: person.h_educator_capped
+    printed: "(helper)"
+    label: "(helper)"
+    type: NonNegDollars
+    expr: {op: smaller_of, of: [person.educator_expenses, person.h_educator_max]}
   - id: person.educator_deduction
     printed: "(helper)"
     label: "Educator expense deduction"
@@ -977,16 +1111,18 @@ lines:
     expr:
       op: choose
       alternatives:
-        - {guard: {op: test, eq: [person.eligible_educator, {const: true}]}, then: person.h_educator_cap}
-        - {guard: {op: test, eq: [person.eligible_educator, {const: false}]}, then: person.zero}
+        - guard: {op: test, eq: [person.eligible_educator, {const: true}]}
+          then: person.h_educator_capped
+        - guard: {op: test, not: {op: test, eq: [person.eligible_educator, {const: true}]}}
+          then: person.h_zero
   - id: person.hsa_forms
     printed: "(helper)"
-    label: "Number of HSA forms for this person"
+    label: "Number of HSA forms"
     type: Count
     expr: {op: sum_over, collection: f8889, field: f8889.one}
   - id: person.hsa_split
     printed: "(helper)"
-    label: "Number of HSA forms with a spousal allocation"
+    label: "Number of HSA forms with a spouse allocation"
     type: Count
     expr: {op: sum_over, collection: f8889, field: f8889.one, where: {op: test, eq: [f8889.split, {const: true}]}}
   - id: person.hsa_agreed
@@ -996,39 +1132,39 @@ lines:
     expr: {op: sum_over, collection: f8889, field: f8889.one, where: {op: test, eq: [f8889.allocation, {const: "agreed"}]}}
   - id: person.hsa_step1
     printed: "(helper)"
-    label: "HSA Step 1 total"
+    label: "HSA family contribution limit before allocation"
     type: NonNegDollars
     expr: {op: sum_over, collection: f8889, field: f8889.step1}
-    refuses: [person.h_hsa_unsupported_any]
+    refuses: [f8889.unsupported]
   - id: person.hsa_share
     printed: "(helper)"
-    label: "HSA allocable share total"
+    label: "Allocated HSA contribution limit"
     type: NonNegDollars
     expr: {op: sum_over, collection: f8889, field: f8889.share}
-    refuses: [person.h_hsa_unsupported_any]
+    refuses: [f8889.unsupported]
   - id: person.hsa_deduction
     printed: "(helper)"
     label: "HSA deduction"
     type: NonNegDollars
     expr: {op: sum_over, collection: f8889, field: f8889.line13}
-    refuses: [person.h_hsa_unsupported_any]
+    refuses: [f8889.unsupported]
   - id: person.hsa_taxable
     printed: "(helper)"
     label: "Taxable HSA distributions"
     type: NonNegDollars
     expr: {op: sum_over, collection: f8889, field: f8889.line16}
-    refuses: [person.h_hsa_unsupported_any]
+    refuses: [f8889.unsupported]
   - id: person.hsa_addtax
     printed: "(helper)"
-    label: "Additional 20 percent tax on HSA distributions"
+    label: "Additional 20% tax on HSA distributions"
     type: NonNegDollars
     expr: {op: sum_over, collection: f8889, field: f8889.line17b}
-    refuses: [person.h_hsa_unsupported_any]
+    refuses: [f8889.unsupported]
   - id: person.tip_employers
     printed: "(helper)"
     label: "Number of employers with qualified tips"
     type: Count
-    expr: {op: sum_over, collection: tipjob, field: tipjob.one}
+    expr: {op: sum_over, collection: tipjob, field: tipjob.one, where: {op: test, eq: [tipjob.qualified, {const: true}]}}
   - id: person.tip_total
     printed: "(helper)"
     label: "Total qualified tips"
@@ -1036,9 +1172,9 @@ lines:
     expr: {op: sum_over, collection: tipjob, field: tipjob.col_d}
   - id: person.tip_reported
     printed: "(helper)"
-    label: "Qualified tips reported by employers"
+    label: "Qualified tips reported on Form 4137"
     type: NonNegDollars
-    expr: {op: sum_over, collection: tipjob, field: tipjob.amount}
+    expr: {op: sum_over, collection: tipjob, field: tipjob.col_c}
   - id: person.ot_employers
     printed: "(helper)"
     label: "Number of employers with qualified overtime"
@@ -1051,22 +1187,22 @@ lines:
     expr: {op: sum_over, collection: otjob, field: otjob.col_b}
   - id: person.box1
     printed: "(helper)"
-    label: "Total Form W-2 box 1 wages"
+    label: "Form W-2 box 1 total"
     type: NonNegDollars
     expr: {op: sum_over, collection: w2, field: w2.box1}
   - id: person.box2
     printed: "(helper)"
-    label: "Total Form W-2 box 2 federal income tax withheld"
+    label: "Form W-2 box 2 total"
     type: NonNegDollars
     expr: {op: sum_over, collection: w2, field: w2.box2}
   - id: person.medicare5
     printed: "(helper)"
-    label: "Total Form W-2 box 5 Medicare wages"
+    label: "Form W-2 box 5 total"
     type: NonNegDollars
     expr: {op: sum_over, collection: w2, field: w2.box5}
   - id: person.medicare6
     printed: "(helper)"
-    label: "Total Form W-2 box 6 Medicare tax withheld"
+    label: "Form W-2 box 6 total"
     type: NonNegDollars
     expr: {op: sum_over, collection: w2, field: w2.box6}
   - id: person.sc_count
@@ -1081,7 +1217,7 @@ lines:
     expr: {op: sum_over, collection: sc, field: sc.one, where: {op: test, eq: [sc.ho_uses, {const: true}]}}
   - id: person.mq_q4
     printed: "(helper)"
-    label: "Total fourth-quarter mid-quarter depreciation"
+    label: "Total mid-quarter fourth-quarter depreciation"
     type: NonNegDollars
     expr: {op: sum_over, collection: sc, field: sc.mq_q4}
   - id: person.mq_total
@@ -1091,34 +1227,106 @@ lines:
     expr: {op: sum_over, collection: sc, field: sc.mq_total}
   - id: person.cost179
     printed: "(helper)"
-    label: "Total section 179 cost"
+    label: "Total cost of section 179 property"
     type: NonNegDollars
     expr: {op: sum_over, collection: sc, field: sc.cost179}
   - id: person.s179_nonlisted
     printed: "(helper)"
-    label: "Section 179 cost of nonvehicle property"
+    label: "Section 179 cost of nonlisted property"
     type: NonNegDollars
     expr: {op: sum_over, collection: sc, field: sc.cost179_a}
   - id: person.s179_listed
     printed: "(helper)"
-    label: "Section 179 cost of vehicle property"
+    label: "Section 179 cost of listed property"
     type: NonNegDollars
     expr: {op: sum_over, collection: sc, field: sc.cost179_v}
   - id: person.income179
     printed: "(helper)"
-    label: "Business income for section 179 limit"
+    label: "Business income for the section 179 limitation"
     type: Dollars
-    expr: {op: copy, from: person.sc_total}
+    expr: {op: subtract_floor0, from: person.positive_profits, take: person.h_zero}
   - id: person.sc_total
     printed: "(helper)"
     label: "Total Schedule C net profit or loss"
     type: Dollars
     expr: {op: sum_over, collection: sc, field: sc.line31}
+  - id: person.h_sc_positive
+    printed: "(helper)"
+    label: "(helper)"
+    type: Bool
+    expr: {op: test, gt: [person.sc_total, {const: 0}]}
+  - id: person.h_se_line4a_pos
+    printed: "(helper)"
+    label: "(helper)"
+    type: Dollars
+    expr: {op: multiply_rate, amount: person.sc_total, rate: {param: se.rate_9235}}
+  - id: person.h_se_line4a
+    printed: "(helper)"
+    label: "(helper)"
+    type: Dollars
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [person.h_sc_positive, {const: true}]}
+          then: person.h_se_line4a_pos
+        - guard: {op: test, not: {op: test, eq: [person.h_sc_positive, {const: true}]}}
+          then: person.sc_total
+  - id: person.h_se_line4c_pos
+    printed: "(helper)"
+    label: "(helper)"
+    type: NonNegDollars
+    expr: {op: subtract_floor0, from: person.h_se_line4a, take: person.h_zero}
+  - id: person.h_se_line4c_ge400
+    printed: "(helper)"
+    label: "(helper)"
+    type: Bool
+    expr: {op: test, ge: [person.h_se_line4c_pos, {param: se.floor}]}
+  - id: person.h_se_line6
+    printed: "(helper)"
+    label: "(helper)"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [person.h_se_line4c_ge400, {const: true}]}
+          then: person.h_se_line4c_pos
+        - guard: {op: test, not: {op: test, eq: [person.h_se_line4c_ge400, {const: true}]}}
+          then: person.h_zero
+  - id: person.h_se_line8a
+    printed: "(helper)"
+    label: "(helper)"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: w2, field: w2.wages}
+  - id: person.h_se_line8d
+    printed: "(helper)"
+    label: "(helper)"
+    type: NonNegDollars
+    expr: {op: copy, from: person.h_se_line8a}
+  - id: person.h_se_line9
+    printed: "(helper)"
+    label: "(helper)"
+    type: NonNegDollars
+    expr: {op: subtract_floor0, from: person.h_wage_base, take: person.h_se_line8d}
+  - id: person.h_se_smaller
+    printed: "(helper)"
+    label: "(helper)"
+    type: NonNegDollars
+    expr: {op: smaller_of, of: [person.se_line6, person.h_se_line9]}
+  - id: person.h_se_line10
+    printed: "(helper)"
+    label: "(helper)"
+    type: NonNegDollars
+    expr: {op: multiply_rate, amount: person.h_se_smaller, rate: {param: se.rate_124}}
+  - id: person.h_se_line11
+    printed: "(helper)"
+    label: "(helper)"
+    type: NonNegDollars
+    expr: {op: multiply_rate, amount: person.se_line6, rate: {param: se.rate_029}}
   - id: person.se_line6
     printed: "(helper)"
     label: "Schedule SE line 6"
     type: NonNegDollars
-    expr: {op: copy, from: person.h_se_line4c}
+    expr: {op: copy, from: person.h_se_line6}
     refuses: [person.se_screen, person.rrta]
   - id: person.se_line12
     printed: "(helper)"
@@ -1128,10 +1336,25 @@ lines:
     refuses: [person.se_screen, person.rrta]
   - id: person.se_line13
     printed: "(helper)"
-    label: "Deduction for one-half of self-employment tax"
+    label: "Schedule SE line 13"
     type: NonNegDollars
     expr: {op: multiply_rate, amount: person.se_line12, rate: {param: se.rate_50}}
     refuses: [person.se_screen, person.rrta]
+  - id: person.h_sep_rate_cents
+    printed: "(helper)"
+    label: "(helper)"
+    type: NonNegDollars
+    expr: {op: multiply_count, amount: person.h_one_cent, count: person.sep_rate}
+  - id: person.h_sep_whole
+    printed: "(helper)"
+    label: "(helper)"
+    type: NonNegDollars
+    expr: {op: sum, of: [person.h_sep_rate_cents, person.h_hundred_cents]}
+  - id: person.h_simple_total
+    printed: "(helper)"
+    label: "(helper)"
+    type: NonNegDollars
+    expr: {op: sum, of: [person.simple_deferral, person.simple_employer]}
   - id: person.s16
     printed: "(helper)"
     label: "Self-employed SEP, SIMPLE, and qualified plans deduction"
@@ -1139,9 +1362,12 @@ lines:
     expr:
       op: choose
       alternatives:
-        - {guard: {op: test, eq: [person.plan, {const: "sep"}]}, then: person.h_sep_deduction}
-        - {guard: {op: test, eq: [person.plan, {const: "simple"}]}, then: person.h_simple_deduction}
-        - {guard: {op: test, eq: [person.plan, {const: "none"}]}, then: person.zero}
+        - guard: {op: test, eq: [person.plan, {const: "sep"}]}
+          then: person.sep_s21
+        - guard: {op: test, eq: [person.plan, {const: "simple"}]}
+          then: person.h_simple_total
+        - guard: {op: test, eq: [person.plan, {const: "none"}]}
+          then: person.h_zero
     refuses: [person.plan_screen]
   - id: person.positive_profits
     printed: "(helper)"
@@ -1155,16 +1381,15 @@ lines:
     expr: {op: sum_over, collection: sc, field: sc.f7206_line14}
   - id: person.qbi
     printed: "(helper)"
-    label: "Qualified business income from Schedule C"
+    label: "Qualified business income deduction"
     type: Dollars
-    expr: {op: sum_over, collection: sc, field: sc.qbi}
+    expr: {op: subtract_floor0, from: qbi.deduction, take: qbi.zero}
     refuses: [qbi.unsupported]
   - id: person.eic_se
     printed: "(helper)"
-    label: "Self-employment earned income for the earned income credit"
+    label: "Self-employment earned income for the EIC"
     type: Dollars
-    expr: {op: subtract, from: person.h_se_line3, take: person.se_line13}
-    refuses: [person.se_screen, person.rrta]
+    expr: {op: copy, from: eic.wsb_se}
   - id: person.sc_1a
     printed: "(helper)"
     label: "Number of statutory employee Schedule C businesses"
@@ -1175,25 +1400,29 @@ lines:
     label: "Dependent care benefits"
     type: NonNegDollars
     expr: {op: sum_over, collection: w2, field: w2.dc_benefits}
+  - id: person.h_dc_box10_count
+    printed: "(helper)"
+    label: "(helper)"
+    type: Count
+    expr: {op: sum_over, collection: w2, field: w2.one, where: {op: test, eq: [w2.has_box10, {const: true}]}}
   - id: person.dc_has_box10
     printed: "(helper)"
-    label: "Any Form W-2 box 10 dependent care benefits"
+    label: "Any Form W-2 has box 10"
     type: Bool
     expr: {op: test, gt: [person.h_dc_box10_count, {const: 0, type: Count}]}
   - id: person.dc_earned
     printed: "(helper)"
-    label: "Earned income for the child and dependent care credit"
+    label: "Earned income for dependent care benefits"
     type: Dollars
-    expr: {op: sum, of: [person.box1, person.eic_se]}
+    expr: {op: copy, from: f2441.line4}
   - id: person.dc_earned_b
     printed: "(helper)"
-    label: "Other spouse earned income for the child and dependent care credit"
+    label: "Spouse's earned income for dependent care benefits"
     type: Dollars
-    expr: {op: copy, from: person.dc_earned}
-    note: "A single person entry cannot see the other spouse's entry; this repeats this person's earned income. The Form 2441 assembly should use the other person entry for the spouse column."
+    expr: {op: copy, from: f2441.line5}
   - id: person.sav_ineligible
     printed: "(helper)"
-    label: "Ineligible for the retirement savings contributions credit"
+    label: "Ineligible for the saver's credit"
     type: Bool
     expr:
       op: test
@@ -1203,255 +1432,103 @@ lines:
         - {op: test, eq: [person.sav_student, {const: true}]}
   - id: person.sav_line1
     printed: "(helper)"
-    label: "Retirement savings contributions credit line 1"
+    label: "Traditional and Roth IRA contributions for the saver's credit"
     type: NonNegDollars
     expr: {op: sum, of: [person.ira_trad, person.sav_roth]}
     refuses: [person.sav_able]
+  - id: person.h_sav_deferral_w2
+    printed: "(helper)"
+    label: "(helper)"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: w2, field: w2.sav_deferral}
   - id: person.sav_line2
     printed: "(helper)"
-    label: "Retirement savings contributions credit line 2"
+    label: "Elective deferrals and voluntary contributions for the saver's credit"
     type: NonNegDollars
-    expr: {op: sum, of: [person.h_sav_deferral_total, person.sav_voluntary]}
-    refuses: [person.sav_excess]
+    expr: {op: sum, of: [person.h_sav_deferral_w2, person.sav_voluntary]}
   - id: person.ira_contrib
     printed: "(helper)"
-    label: "Traditional IRA contributions for the deduction"
+    label: "Traditional IRA contributions"
     type: NonNegDollars
     expr: {op: copy, from: person.ira_trad}
-    refuses: [person.ira_excess]
   - id: person.ira_cov
     printed: "(helper)"
     label: "Covered by a retirement plan at work"
     type: Bool
     expr: {op: copy, from: person.ira_work_plan}
+  - id: person.h_ira_line2_cov
+    printed: "(helper)"
+    label: "(helper)"
+    type: NonNegDollars
+    expr: {op: param, ref: ira.line2}
+  - id: person.h_ira_line2_not
+    printed: "(helper)"
+    label: "(helper)"
+    type: NonNegDollars
+    expr: {op: param, ref: ira.line2_not_covered}
   - id: person.ira_line2
     printed: "(helper)"
-    label: "IRA deduction worksheet line 2 amount"
+    label: "IRA deduction worksheet line 2"
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
-        - {guard: {op: test, eq: [person.ira_cov, {const: true}]}, then: person.h_ira_line2_covered}
-        - {guard: {op: test, eq: [person.ira_cov, {const: false}]}, then: person.h_ira_line2_not}
-    refuses: [person.ira_excess]
+        - guard: {op: test, eq: [person.ira_cov, {const: true}]}
+          then: person.h_ira_line2_cov
+        - guard: {op: test, not: {op: test, eq: [person.ira_cov, {const: true}]}}
+          then: person.h_ira_line2_not
   - id: person.ira_line6
     printed: "(helper)"
-    label: "IRA deduction worksheet line 6 amount"
+    label: "IRA deduction worksheet line 6"
     type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - {guard: {op: test, eq: [person.role, {const: "taxpayer"}]}, then: ira.line6a}
-        - {guard: {op: test, eq: [person.role, {const: "spouse"}]}, then: ira.line6b}
-    refuses: [person.ira_excess]
+    expr: {op: copy, from: ira.line6a}
   - id: person.ira_line7
     printed: "(helper)"
-    label: "IRA deduction worksheet line 7 amount"
+    label: "IRA deduction worksheet line 7"
     type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - {guard: {op: test, eq: [person.role, {const: "taxpayer"}]}, then: ira.line7a}
-        - {guard: {op: test, eq: [person.role, {const: "spouse"}]}, then: ira.line7b}
-    refuses: [person.ira_excess]
+    expr: {op: copy, from: ira.line7a}
   - id: person.ira_deduction
     printed: "(helper)"
     label: "IRA deduction"
     type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - {guard: {op: test, eq: [person.role, {const: "taxpayer"}]}, then: ira.line12a}
-        - {guard: {op: test, eq: [person.role, {const: "spouse"}]}, then: ira.line12b}
+    expr: {op: copy, from: ira.total}
     refuses: [person.ira_excess]
   - id: person.ira_nondeductible
     printed: "(helper)"
     label: "Nondeductible traditional IRA contributions"
     type: NonNegDollars
-    expr: {op: subtract_floor0, from: person.ira_contrib, take: person.ira_deduction}
+    expr: {op: subtract_floor0, from: person.ira_trad, take: person.ira_deduction}
     refuses: [person.ira_excess]
   - id: person.ira_files_8606
     printed: "(helper)"
     label: "Must file Form 8606"
     type: Bool
-    expr:
-      op: test
-      any:
-        - {op: test, gt: [person.ira_nondeductible, {const: 0}]}
-        - {op: test, eq: [person.ira_dist, {const: true}]}
-        - {op: test, eq: [person.ira_basis_adjusted, {const: true}]}
+    expr: {op: test, any: [{op: test, gt: [person.ira_nondeductible, person.h_zero]}, {op: test, eq: [person.ira_basis_adjusted, {const: true}]}]}
     refuses: [person.ira_excess]
   - id: person.ira_8606_line2
     printed: "(helper)"
     label: "Form 8606 line 2 total basis"
     type: NonNegDollars
     expr: {op: copy, from: person.ira_basis}
-    refuses: [person.ira_excess]
   - id: person.ira_dist_gate
     printed: "(helper)"
-    label: "Form 8606 distribution or conversion question"
+    label: "Traditional IRA distribution or Roth conversion"
     type: Bool
     expr: {op: copy, from: person.ira_dist}
   - id: person.ira_8606_line14
     printed: "(helper)"
-    label: "Form 8606 line 14 total basis after distributions"
+    label: "Form 8606 line 14 total basis"
     type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - {guard: {op: test, eq: [person.ira_dist_gate, {const: true}]}, then: person.h_f8606_line14_total}
-        - {guard: {op: test, eq: [person.ira_dist_gate, {const: false}]}, then: person.h_8606_line3}
+    expr: {op: sum_over, collection: f8606, field: f8606.line14}
     refuses: [person.ira_excess]
   - id: person.ira_ssb
     printed: "(helper)"
-    label: "Taxable social security benefits used in the IRA modified AGI"
+    label: "IRA deduction add-back for social security benefits"
     type: NonNegDollars
-    expr: {op: copy, from: ssb.line18}
+    expr: {op: copy, from: ssb.ira_line20}
   - id: person.ira_se
     printed: "(helper)"
-    label: "Self-employment earned income for the IRA deduction worksheet"
+    label: "Self-employment income for the IRA deduction"
     type: NonNegDollars
-    expr: {op: subtract_floor0, from: person.eic_se, take: person.s16}
-    refuses: [person.se_screen, person.rrta, person.plan_screen]
-  - id: person.h_ss_box3
-    printed: "(helper)"
-    label: "Total Form W-2 box 3 social security wages"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: w2, field: w2.box3}
-  - id: person.h_ss_box7
-    printed: "(helper)"
-    label: "Total Form W-2 box 7 social security tips"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: w2, field: w2.box7}
-  - id: person.h_educator_max
-    printed: "(helper)"
-    label: "Educator expense maximum"
-    type: NonNegDollars
-    expr: {op: param, ref: s1.educator_max}
-  - id: person.h_educator_cap
-    printed: "(helper)"
-    label: "Educator expenses limited to the maximum"
-    type: NonNegDollars
-    expr: {op: smaller_of, of: [person.educator_expenses, person.h_educator_max]}
-  - id: person.h_hsa_unsupported_count
-    printed: "(helper)"
-    label: "Number of HSA forms with unsupported items"
-    type: Count
-    expr: {op: sum_over, collection: f8889, field: f8889.one, where: {op: test, eq: [f8889.unsupported, {const: true}]}}
-  - id: person.h_hsa_unsupported_any
-    printed: "(helper)"
-    label: "Any HSA form with unsupported items"
-    type: Bool
-    expr: {op: test, gt: [person.h_hsa_unsupported_count, {const: 0, type: Count}]}
-  - id: person.h_dc_box10_count
-    printed: "(helper)"
-    label: "Number of Forms W-2 with box 10 dependent care benefits"
-    type: Count
-    expr: {op: sum_over, collection: w2, field: w2.one, where: {op: test, eq: [w2.has_box10, {const: true}]}}
-  - id: person.h_sav_deferral_total
-    printed: "(helper)"
-    label: "Total elective deferrals for the retirement savings contributions credit"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: w2, field: w2.sav_deferral}
-  - id: person.h_ira_line2_covered
-    printed: "(helper)"
-    label: "IRA deduction worksheet line 2 for a covered person"
-    type: NonNegDollars
-    expr: {op: param, ref: ira.line2}
-  - id: person.h_ira_line2_not
-    printed: "(helper)"
-    label: "IRA deduction worksheet line 2 for a person not covered"
-    type: NonNegDollars
-    expr: {op: param, ref: ira.line2_not_covered}
-  - id: person.h_f8606_line14_total
-    printed: "(helper)"
-    label: "Total Form 8606 line 14 basis"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: f8606, field: f8606.line14}
-  - id: person.h_8606_line3
-    printed: "(helper)"
-    label: "Form 8606 line 3 basis before distributions"
-    type: NonNegDollars
-    expr: {op: sum, of: [person.ira_nondeductible, person.ira_8606_line2]}
-  - id: person.h_hundred_cents
-    printed: "(helper)"
-    label: "One hundred cents"
-    type: NonNegDollars
-    expr: {op: param, ref: sc.hundred_cents}
-  - id: person.h_sep_rate_cents
-    printed: "(helper)"
-    label: "SEP plan percentage expressed in cents"
-    type: NonNegDollars
-    expr: {op: multiply_count, amount: person.h_hundred_cents, count: person.sep_rate}
-  - id: person.h_ret_comp_limit
-    printed: "(helper)"
-    label: "Compensation limit for retirement plan contributions"
-    type: NonNegDollars
-    expr: {op: param, ref: ret.comp_limit}
-  - id: person.h_se_wage_base
-    printed: "(helper)"
-    label: "Social security wage base"
-    type: NonNegDollars
-    expr: {op: param, ref: se.wage_base}
-  - id: person.h_se_line3
-    printed: "(helper)"
-    label: "Schedule SE line 3"
-    type: Dollars
-    expr: {op: copy, from: person.sc_total}
-  - id: person.h_se_line3_pos
-    printed: "(helper)"
-    label: "Schedule SE line 3 floored at zero"
-    type: NonNegDollars
-    expr: {op: subtract_floor0, from: person.h_se_line3, take: person.zero}
-  - id: person.h_se_line4a
-    printed: "(helper)"
-    label: "Schedule SE line 4a"
-    type: NonNegDollars
-    expr: {op: multiply_rate, amount: person.h_se_line3_pos, rate: {param: se.rate_9235}}
-  - id: person.h_se_line4c
-    printed: "(helper)"
-    label: "Schedule SE line 4c"
-    type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - {guard: {op: test, ge: [person.h_se_line4a, {param: se.floor}]}, then: person.h_se_line4a}
-        - {guard: {op: test, lt: [person.h_se_line4a, {param: se.floor}]}, then: person.zero}
-    note: "No church employee income or optional method is supported; those cases are refused at person.se_screen."
-  - id: person.h_se_line9
-    printed: "(helper)"
-    label: "Schedule SE line 9"
-    type: NonNegDollars
-    expr: {op: subtract_floor0, from: person.h_se_wage_base, take: person.wages}
-  - id: person.h_se_line10_base
-    printed: "(helper)"
-    label: "Smaller of Schedule SE line 6 or line 9"
-    type: NonNegDollars
-    expr: {op: smaller_of, of: [person.se_line6, person.h_se_line9]}
-  - id: person.h_se_line10
-    printed: "(helper)"
-    label: "Schedule SE line 10"
-    type: NonNegDollars
-    expr: {op: multiply_rate, amount: person.h_se_line10_base, rate: {param: se.rate_124}}
-  - id: person.h_se_line11
-    printed: "(helper)"
-    label: "Schedule SE line 11"
-    type: NonNegDollars
-    expr: {op: multiply_rate, amount: person.se_line6, rate: {param: se.rate_029}}
-  - id: person.h_sep_deduction
-    printed: "(helper)"
-    label: "SEP contribution deduction limited by the worksheet maximum"
-    type: NonNegDollars
-    expr: {op: smaller_of, of: [person.sep_contrib, person.sep_s21]}
-  - id: person.h_simple_total
-    printed: "(helper)"
-    label: "SIMPLE IRA salary reduction and employer contributions"
-    type: NonNegDollars
-    expr: {op: sum, of: [person.simple_deferral, person.simple_employer]}
-  - id: person.h_simple_deduction
-    printed: "(helper)"
-    label: "SIMPLE IRA deduction limited by net earnings"
-    type: NonNegDollars
-    expr: {op: smaller_of, of: [person.h_simple_total, person.h_se_line4c]}
-    note: "The SCHEDULE SE line 4c net earnings are used as the compensation limit; any SIMPLE plan higher-limit or multiple-plan case is refused at person.plan_screen."
+    expr: {op: copy, from: person.se_line6}
 ```

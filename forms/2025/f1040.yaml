@@ -723,16 +723,31 @@ form:
       cite:
         doc: i1040gi
         locator: p. 39, Line 25b, "This should be shown in box 4 of Form 1099, box 6, of Form SSA-1099, or box 10 of Form RRB-1099"
+    - id: f1040.line25c_other
+      printed: (helper)
+      label: Federal income tax withheld on Forms W-2G, Schedules K-1 and Forms 1042-S, 8805 and 8288-A
+      type: NonNegDollars
+      expr:
+        op: input
+        source: Federal income tax withheld shown on your Forms W-2G (box 4), Schedules K-1, and Forms 1042-S, 8805 and 8288-A
+          (supplied total; not Additional Medicare Tax, which Form 8959 figures)
+      cite:
+        doc: i1040gi
+        locator: p. 39, Line 25c—Other Forms, "Federal income tax withheld on your Form(s) W-2G"; "Federal income tax withheld
+          that is shown on a Schedule K-1"; "Tax withheld that is shown on Form 1042-S, Form 8805, or Form 8288-A"
     - id: f1040.line25c
       printed: 25c
       label: Federal income tax withheld from other forms (see instructions)
       type: NonNegDollars
       expr:
-        op: input
-        source: Federal income tax withheld from other forms (supplied total)
+        op: sum
+        of:
+          - f1040.line25c_other
+          - f8959.line24
       cite:
-        doc: f1040
-        locator: Form 1040 (2025), line 25c
+        doc: i1040gi
+        locator: p. 39, Line 25c—Other Forms, "Additional Medicare Tax you had withheld. Include the amount shown on Form 8959,
+          line 24, in the total on line 25c"
     - id: f1040.line25d
       printed: 25d
       label: Add lines 25a through 25c
@@ -807,6 +822,18 @@ form:
       cite:
         doc: f1040
         locator: Form 1040 (2025), line 28
+    - id: f1040.line28_box
+      printed: 28 (box)
+      label: If you do not want to claim the ACTC, check here (not asked; this tool always claims the credit)
+      type: Bool
+      expr:
+        op: test
+        eq:
+          - const: true
+          - const: false
+      cite:
+        doc: i1040gi
+        locator: p. 61, Line 28, "If you do not want to claim the additional child tax credit, check the box on line 28"
     - id: f1040.line29
       printed: "29"
       label: American opportunity credit from Form 8863, line 8

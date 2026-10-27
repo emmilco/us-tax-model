@@ -77,7 +77,7 @@ def gen_case(rng, i):
         # Schedule 1 lines 2a, 8c and 19a: no alimony and no canceled debt.
         "s1.alimony": False, "s1.cod_any": False, "s1.cod_amount": 0,
         "scope.other_line16": False, "s2.amt": False, "s2.other": False,
-        "f1040.line25b": 0, "f1040.line25c": 0, "f1040.line26": 0, "f1040.line35a": 0, "f1040.line36": 0,
+        "f1040.line25b": 0, "f1040.line25c_other": 0, "f1040.line26": 0, "f1040.line35a": 0, "f1040.line36": 0,
         # Earned income credit questions: an adult aged 25 to 64 living in the United States who is
         # nobody's qualifying child, with no tax-exempt interest.
         "f1040.tax_exempt_interest": 0, "div.box12": 0, "eic.qc_of_another": False, "person[taxpayer].born_before_2001": True, "person[taxpayer].born_after_1960": True, "eic.us_home": True, "household.married": False,

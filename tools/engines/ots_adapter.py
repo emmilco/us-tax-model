@@ -321,7 +321,7 @@ def run_case(pkg, case, workdir):
             "L2b": [money(inputs[f"interest[{k}].amount"]) for k in inputs.get("$interest", [])],
             "L3a": [money(f["qualified_dividends"])], "L3b": [money(f["ordinary_dividends"])],
             "L6a": money(f.get("ss_benefits", 0)),
-            "L13a": money(l13a), "L19": money(l19), "L25a": money(f["withheld"]), "L28": money(l28),
+            "L13a": money(l13a), "L19": money(l19), "L25a": money(f["withheld"]), "L25c": money(m_vals["L24"]), "L28": money(l28),
             "CapGains-A/D": sales_entries(inputs, ("A", "D")), "CapGains-B/E": sales_entries(inputs, ("B", "E")),
             "D13": money(f["capital_gain_distributions"]), "D19": money(f["unrecaptured_1250"]), "Collectibles": money(f["gain_28pct"]),
             "S1_3": money(se_income), "S1_7": money(f.get("unemployment", 0)),

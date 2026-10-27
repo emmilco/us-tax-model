@@ -551,9 +551,6 @@ def limitations():
         {"feature": "ustaxes_amt", "lines": srt({"f1040.line17", "f1040.line18", "f1040.tax_before_credits"} | AFTER_CREDIT_LINES),
          "reason": "UsTaxes computed an alternative minimum tax (Form 6251, irsForms/F6251.ts `l11`) on this return; Form 6251 is "
                    "outside the project's scope (the s2.amt screen)"},
-        {"feature": "additional_medicare_withholding", "lines": ["f1040.line25d", "f1040.line33", "f1040.line34", "f1040.line37"],
-         "reason": "UsTaxes fills Form 1040 line 25c from Form 8959 line 24 (irsForms/F1040.ts `l25c`); the generator enters line "
-                   "25c as zero (f1040.line25c), so the payment lines differ where the W-2s carry Additional Medicare Tax withholding"},
         {"feature": "ssb_with_schedule1_income", "lines": srt({f"ssb.line{n}" for n in range(6, 19)} | {"f1040.line6b"} | set(AGI_LINES)),
          "reason": "UsTaxes' Social Security Benefits Worksheet line 6 adds Schedule 1 line 10 (the additional income total) to the "
                    "adjustments (irsForms/worksheets/SocialSecurityBenefits.ts `l6`, first term `schedule1.l10()`), where the "

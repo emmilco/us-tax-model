@@ -400,7 +400,7 @@ bank:
     order: 10
     help: Total withholding shown in box 4 of your Forms 1099 (1099-R, 1099-INT, 1099-DIV, 1099-G and others), box 6 of
       Form SSA-1099 and box 10 of Form RRB-1099. Enter cents for money. Enter null if you do not know; it never becomes zero.
-  - input: f1040.line25c
+  - input: f1040.line25c_other
     order: 10
     help: See the line 25c instructions if any other form reports income tax withheld. Enter cents for money; enter
       zero if none. Unknown may be null; it never becomes zero.

@@ -1152,6 +1152,14 @@ form:
       cite:
         doc: p560
         locator: p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 1
+      refuses:
+      - when: person.se_screened
+        form: SEP Deduction Worksheet Step 1 with self-employment income not on a Schedule C (Schedule F, Schedule K-1 box 14 code
+          A and the other items of the self-employment screen)
+        remedy: These self-employment items are outside this tool.
+        cite:
+          doc: p560
+          locator: p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 1, "Enter your net profit from"
     - id: person.sep_s2
       printed: Step 2
       label: Deduction for self-employment tax from Schedule 1, line 15

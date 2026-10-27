@@ -2,7 +2,45 @@
 
 Method: `README.md` in this directory.
 
-## Round 3
+## Round 4
+
+Fresh reviews of 2026-10-27 (Claude claude-opus-5-5 and deepseek-flash). The only eic change since round 3 is T-071:
+`eic.separated_box` now links `amb.2025.separated_spouses_box`, which changes no value. The batch also changed person and
+f1040 inputs upstream. Triage records `../triage/eic.json` (1,747 comparisons, 136 partial records) and
+`../triage/eic.deepseek.json` (1,739 comparisons, 128 partial records), both executable-triage-v2 with 1,111 fixtures and
+500 generated returns seed 20261026. The full ruling text is in `.transcription/proposed/round4/transcription.eic[.deepseek].json`.
+Both reviewers were given i1040gi pp. 40–60, so there is no page gap. The round 3 rulings were reused as prior reasoning
+and re-checked against the new replies and witnesses. Value differences on refused returns, where `shown_when` itself
+refuses, are ruled scope, as in round 3.
+
+T-071 check: the link matches the expression (the box only on the Step 3, question 6 "No" path) and the register's chosen
+reading. Worksheet B check: the project checks 27c on the line 4b STOP ("If line 4b is zero or less, STOP ... Check the box
+on Form 1040 or 1040-SR, line 27c", p. 47; the column text misplaces "27c") through eligibility with line 2 of zero
+(stage14.eic.wsb_stop_27c).
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | eic.credit | model error | 1,630/1,747; 0 value; 40 candidate-unknown (8 completed), 65 candidate-refuses, 9 project-unknown, 3 project-refuses | i1040gi p. 40, Step 1 q1 | Child count needed above every Step 1 limit (classm.f4952.1); refusals scope; project unknowns withhold tax-exempt interest (representation). |
+| claude | transcription | eic.check_27c | model error | 1,653/1,747; 5 value, 50 candidate-unknown (13 completed), 35 candidate-refuses, 4 project-refuses | i1040gi p. 43, Line 27c; p. 41, Step 4 q1 | Same unknowns; MFS read through household.married (generated 71, refused). |
+| claude | transcription | eic.separated_box | model error | 1,702/1,747; 3 value, 3 candidate-unknown (1 completed), 35 candidate-refuses, 4 project-refuses | i1040gi p. 41, Step 3 q6; p. 44 | Same unknowns (audit.household.hoh_married_no_community_property); MFS reading (classm.eic.6, refused). |
+| claude | transcription | eic.clergy | representation | 1,747/1,747 | i1040gi p. 43, Line 27b | Constant no behind scope.schedule1. |
+| claude | transcription | 4b | model error | 639/1,747; 1,080 candidate-shows-skipped (510 completed), 21 candidate-unknown, 7 candidate-refuses | i1040gi p. 47, Worksheet B use; p. 42, Step 5 q2 | Shown for filers who never use Worksheet B (classm.f2441.2.deepseek $85,000). |
+| claude | transcription | 2 | model error | 1,126/1,747; 537 candidate-unknown (220 completed), 53 candidate-shows-skipped, 31 candidate-refuses | i1040gi p. 40, Step 1 q1; p. 46 | Table lookups above the table after STOPs; shown after STOPs (classm.dependent.5 $649). |
+| claude | transcription | 5 | model error | 1,321/1,747; 362 candidate-unknown, 15 candidate-shows-skipped (7 completed), 41 candidate-refuses, 4 value, 4 project-refuses | i1040gi p. 46, lines 4–5; p. 47, line 5 | Shown after STOPs (stage14.eic.wsb_line5_stop_27c $83); values are refused returns (scope). |
+| claude | transcription | 6 (eic.line6) | model error | 1,038/1,747; 648 candidate-unknown, 22 candidate-shows-skipped (10 completed), 39 candidate-refuses | i1040gi pp. 40, 46 | Shown after STOPs (stage13.eic_spouse_no_ssn $649). |
+| deepseek | transcription | eic.self_employed | model error | 696/1,739; 150 value (42 completed), 820 candidate-unknown, 73 candidate-refuses | i1040gi p. 42, Step 5 q2 | Schedule SE filers only, plus Schedule 1-A tip counts and any se_screen answer; misses Schedule C losses. |
+| deepseek | transcription | eic.credit | model error | 1,518/1,739; 13 value (10 completed), 161 candidate-unknown, 30 candidate-refuses, 15 project-refuses, 2 project-unknown | i1040gi p. 42 Step 5 q2; p. 47 | Worksheet A on wages for Schedule C filers (classm.f8880.1 $0 / $2,798; classm.s8812.3 $300 / $0). |
+| deepseek | transcription | eic.check_27c | model error | 596/1,739; 933 value (441 completed) | i1040gi p. 43, Line 27c; p. 40, Step 1 q1 | Checks 27c whenever the credit is zero (classm.f2441.2.deepseek). |
+| deepseek | transcription | eic.separated_box | model error | 1,300/1,739; 430 project-refuses, 4 value, 3 candidate-unknown | i1040gi p. 41, Step 3 q6; p. 40, Step 1 | Box without Steps 1 and 2 (generated 72, line 11b $274,465). |
+| deepseek | transcription | eic.clergy | model error | 901/1,739; 795 candidate-unknown, 26 value (8 completed), 17 project-refuses | i1040gi p. 43, Line 27b | Any se_screen answer read as clergy (classm.f5695.2). |
+| deepseek | transcription | 1 | model error | 451/1,739; 773 candidate-unknown, 306 candidate-shows-skipped, 101 value, 87 project-refuses, 21 candidate-refuses | i1040gi pp. 40, 42, 46 | Shown after STOPs; Worksheet B values on the merged line interface gap. |
+| deepseek | transcription | 2 | model error | 361/1,739; 1,153 candidate-unknown, 46 candidate-shows-skipped, 24 value, 57 candidate-refuses, 82 project-refuses, 16 project-unknown | i1040gi p. 46 | Shown after STOPs (classm.sd.1 $2,798); stage14.eic.wsb_loss $614 / $649 merged line and routing. |
+| deepseek | transcription | 5 | model error | 945/1,739; 654 candidate-unknown, 102 candidate-shows-skipped (74 completed), 32 candidate-refuses, 6 value | i1040gi p. 46, lines 4–5 | Looks up line 5 on every return (classm.f2441.1.deepseek $65). |
+| deepseek | transcription | 6 (eic.line6) | model error | 558/1,739; 1,115 candidate-unknown, 43 candidate-refuses, 15 value, 6 candidate-shows-skipped, 2 project-refuses | i1040gi pp. 40, 46 | As lines 2 and 5; refuses completed returns on its se_screen clergy gate. |
+
+Findings: none. Every disputed project line stands, and the T-071 change is correct.
+
+## Round 3 (superseded subject)
 
 Fresh reviews of 2026-10-26 (Claude claude-opus-5-5 and deepseek-flash) against the subject after BUG-0156. That fix
 hides Worksheet A lines 3 and 5 after the line 2 STOP (`eic.show3`, `eic.show5`) and Worksheet B lines 4b and 6 unless

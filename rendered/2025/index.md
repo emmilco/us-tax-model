@@ -5,12 +5,12 @@ Review these renderings line by line against the archived IRS sources in `source
 | File | Kind | Lines |
 | --- | --- | --- |
 | asset.md | form | 68 |
-| carloan.md | form | 24 |
+| carloan.md | form | 29 |
 | dcprov.md | worksheet | 6 |
 | dependent.md | worksheet | 66 |
 | div.md | form | 22 |
 | eic.md | worksheet | 87 |
-| f1040.md | form | 63 |
+| f1040.md | form | 65 |
 | f2441.md | form | 82 |
 | f4562.md | form | 15 |
 | f4952.md | form | 25 |

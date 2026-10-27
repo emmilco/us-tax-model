@@ -22,6 +22,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 from taxyear import Y  # noqa: E402
+import archive_text  # noqa: E402
 ARCHIVE = ROOT / "sources" / Y
 OUT = ROOT / "tables" / Y / "class_lives.yaml"
 VERSION = "0.1"
@@ -132,7 +133,7 @@ def main():
     entry = manifest["p946"]
     if hashlib.sha256((ARCHIVE / entry["file"]).read_bytes()).hexdigest() != entry["sha256"]:
         raise SystemExit("p946.pdf does not match its manifest hash")
-    pages = (ARCHIVE / entry["text_file"]).read_text(encoding="utf-8").split("\f")
+    pages = archive_text.read(ARCHIVE, entry).split("\f")
     rows = parse(pages)
     if "--json" in sys.argv:
         print(json.dumps(rows, indent=1))

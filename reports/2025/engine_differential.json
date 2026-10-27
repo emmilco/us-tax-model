@@ -7618,16 +7618,6 @@
      "reason": "UsTaxes computed an alternative minimum tax (Form 6251, irsForms/F6251.ts `l11`) on this return; Form 6251 is outside the project's scope (the s2.amt screen)"
     },
     {
-     "feature": "additional_medicare_withholding",
-     "lines": [
-      "f1040.line25d",
-      "f1040.line33",
-      "f1040.line34",
-      "f1040.line37"
-     ],
-     "reason": "UsTaxes fills Form 1040 line 25c from Form 8959 line 24 (irsForms/F1040.ts `l25c`); the generator enters line 25c as zero (f1040.line25c), so the payment lines differ where the W-2s carry Additional Medicare Tax withholding"
-    },
-    {
      "feature": "ssb_with_schedule1_income",
      "lines": [
       "f1040.line10",
@@ -8448,12 +8438,12 @@
     },
     "f1040.line25d": {
      "project_line": "f1040.line25d",
-     "compared": 1198,
-     "compared_nonzero": 1198,
-     "excluded": 502,
-     "excluded_nonzero": 502,
+     "compared": 1400,
+     "compared_nonzero": 1400,
+     "excluded": 300,
+     "excluded_nonzero": 300,
      "unexplained": 0,
-     "exact": 1198,
+     "exact": 1400,
      "table_adjusted": 0,
      "table_midpoint": 0,
      "float": 0,

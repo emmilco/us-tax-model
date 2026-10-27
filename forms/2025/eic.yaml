@@ -1839,6 +1839,7 @@ form:
         doc: i1040gi
         locator: p. 41, Step 3, question 6, "No. Check the box in the Dependents section that discusses the special rule for
           separated spouses"; p. 44, Special rule for separated spouses
+      ambiguity: amb.2025.separated_spouses_box
     - id: eic.clergy
       printed: (helper)
       type: Bool

@@ -84,6 +84,24 @@
   },
   {
    "case": "classm.carloan.3",
+   "printed": "carloan[vin_1].col_ii",
+   "project": "$551.52",
+   "model": "$551.51",
+   "ruling": "Ruling: ambiguity; amb.2025.carloan_ratio_places (chosen: ratio rounded half-up to six places; recorded alternatives: exact ratio, three places); model value dropped from the fixture. fr-2025-24154 p. 21, proposed § 1.163-16(d)(2)(iii)(A): \"payments of interest and principal are allocated to the portion of the indebtedness described in paragraph (d)(2)(i) ... and the portion ... described in paragraph (d)(2)(ii) ... on a pro rata basis\", and (d)(4): \"A taxpayer allocates principal and interest between the amount of the new loan that is an SPVL and the remaining portion of the indebtedness on a pro rata basis\" -- no rounding of the ratio is given. The model worked 2,149 x 3,151/12,278 with the exact ratio (551.5148, $551.51), the register's second reading; the project rounds the ratio to 0.256638 (2,149 x 0.256638 = 551.5151, $551.52). The proration itself (column (ii) is the QPVLI part of the Schedule C interest, fr-2025-24154 p. 23, proposed § 1.163-16(g)(1): \"Independently deductible interest is limited to interest that is QPVLI ... and that is otherwise deductible by the taxpayer as a different type of interest\"; (g)(2): the QPVLI \"is reduced to the extent that the taxpayer deducts that independently deductible interest as non-QPVLI\") agrees, so the BUG-0175 reading is confirmed on this refinanced loan. Dropped as the non-chosen reading.",
+   "drop": true,
+   "context": "98ff418b5c67882fbf045fbad28483c38baf493c711814182b0eacd91baa9d79"
+  },
+  {
+   "case": "classm.carloan.3",
+   "printed": "carloan[vin_1].col_iii",
+   "project": "$1,654.54",
+   "model": "$1,654.55",
+   "ruling": "Ruling: ambiguity; amb.2025.carloan_ratio_places (chosen: ratio rounded half-up to six places; recorded alternatives: exact ratio, three places); model value dropped from the fixture. i1040gi p. 110, Line 22: \"On line 22, column (iii), enter the total amount of the QPVLI paid or accrued on the loan during the taxable year minus the amount on line 22, column (ii).\" The model's QPVLI $2,206.06 equals the project's (8,596 x 0.256638 = 2,206.0602; exact 2,206.0593); the one-cent difference is column (ii) under the exact ratio ($551.51 against $551.52), so $1,654.55 is the register's exact-ratio reading and the project's $1,654.54 the chosen one. Dropped as the non-chosen reading.",
+   "drop": true,
+   "context": "98ff418b5c67882fbf045fbad28483c38baf493c711814182b0eacd91baa9d79"
+  },
+  {
+   "case": "classm.carloan.3",
    "printed": "carloan[vin_1].refi_interest",
    "project": "$12,004.00",
    "model": "$0.00",

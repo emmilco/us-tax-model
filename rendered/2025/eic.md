@@ -618,6 +618,7 @@
 
 - **Authored helper label:** A married filer filing separately or as head of household who passes Step 3, questions 4 and 5, and answers No to question 6 (the special rule for separated spouses)
 - **Encoded (Bool):** helper "Steps 1 and 2 passed, so Step 3 or Step 4 is asked" = true and helper "At least one qualifying child for the EIC" = true and helper "A married filer whose filing status is married filing separately or head of household" = true and helper "Step 3, questions 3 to 5: not a married filer filing separately or as head of household, or one who lived apart from the spouse for the last 6 months of 2025 or is legally separated and lived apart at the end of 2025" = true and helper "Could you be a qualifying child of another person for 2025?" = false
+- Interpretation: amb.2025.separated_spouses_box
 - Expr: `{"all":[{"eq":["eic.reached_step3",{"const":true}],"op":"test"},{"eq":["eic.has_qc",{"const":true}],"op":"test"},{"eq":["eic.married_rules",{"const":true}],"op":"test"},{"eq":["eic.step3_married",{"const":true}],"op":"test"},{"eq":["eic.qc_of_another",{"const":false}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 41, Step 3, question 6, "No. Check the box in the Dependents section that discusses the special rule for separated spouses"; p. 44, Special rule for separated spouses (2025; printed date 2026-02-25; sha256 482e9c48)
 

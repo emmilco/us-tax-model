@@ -429,7 +429,7 @@ Project result lines not mapped:
 | f1040.line23 | 948 | 0 | 98 | 0 | 0 | 654 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line24 | 220 | 0 | 195 | 18 | 0 | 1267 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line25a | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line25d | 1198 | 0 | 0 | 0 | 0 | 502 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line25d | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line27a | 899 | 0 | 0 | 0 | 0 | 801 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line28 | 279 | 0 | 7 | 0 | 0 | 1414 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line32 | 279 | 0 | 7 | 0 | 0 | 1414 | 0 | 0 | 0 | 0 (0.0%) |
@@ -598,7 +598,6 @@ Exclusions:
 - UsTaxes enters the $1,000 additional contribution for age 55 on Form 8889 line 7 in every case (irsForms/F8889.ts `l7`) and $4,300 on line 3, where the project's Line 3 Limitation Chart includes it on line 3 for an unmarried filer; line 8 is the same either way
 - UsTaxes figures the Form 8889 line 7 additional contribution from the date of birth (irsForms/F8889.ts `l7`: $1,000 when the filer is 55 by December 31), the same date that gives the senior deduction; the generator answers the age-55 question (f8889 age55) independently of the age it gives a senior, so a filer 66 or older who answered no cannot be expressed to UsTaxes
 - UsTaxes figures the earned income credit from Rev. Proc. formulas at a rounded income (irsForms/ScheduleEIC.ts `roundIncome`: `Math.round(Math.round(income) / 50) * 50 + 25`, which for the upper half of each $50 band reads the next band's midpoint), not from the EIC Table, keeps the unrounded formula value, and always takes the smaller of the amounts at earned income and at AGI (`credit`), where Worksheet A uses the earned income amount alone when AGI is below the phase-out threshold
-- UsTaxes fills Form 1040 line 25c from Form 8959 line 24 (irsForms/F1040.ts `l25c`); the generator enters line 25c as zero (f1040.line25c), so the payment lines differ where the W-2s carry Additional Medicare Tax withholding
 - UsTaxes floors adjusted gross income at zero (irsForms/F1040.ts line 472, `l11a = Math.max(0, l9 - l10)`), where Form 1040 line 11 is line 9 minus line 10 and may be negative
 - UsTaxes never builds Schedule C: irsForms/F1040.ts declares `scheduleC?: ScheduleC` and no code assigns it, so `selfEmployedIncome` reaches no form (Schedule 1 line 3, Schedule SE, the QBI deduction and earned income are all zero); returns with self-employment income are not run
 - UsTaxes takes qualified business income only from Schedule K-1 (Form 1065) box 20 code Z (irsForms/F1040.ts `totalQbi`); its Form 1099-DIV has no box 5, so section 199A dividends give no Form 8995 and no line 13a deduction

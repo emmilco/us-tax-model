@@ -320,9 +320,9 @@ form:
         then: carloan.allocated
     cite:
       doc: i1040gi
-      locator: 'p. 110, Schedule 1-A, line 22, column (iii), "On line 22, column (iii), enter the total amount of the QPVLI paid or accrued on the loan during the taxable year minus the amount on line 22, column (ii)" (column (ii), interest deducted on Schedule C, E or F, is outside this tool: scope.schedule1)'
+      locator: 'p. 110, Schedule 1-A, line 22, column (iii), "On line 22, column (iii), enter the total amount of the QPVLI paid or accrued on the loan during the taxable year minus the amount on line 22, column (ii)" (column (ii) is the QPVLI part of the interest deducted on Schedule C, and Schedules E and F are refused by scope.schedule1)'
   - id: carloan.col_ii_input
-    printed: 22(ii)
+    printed: (helper)
     label: Interest on this loan deducted on Schedule C
     type: NonNegDollars
     expr:
@@ -331,7 +331,7 @@ form:
     cite:
       doc: i1040gi
       locator: p. 110, Schedule 1-A, line 22, column (ii), "enter the amount of the QPVLI, if any, that was deducted elsewhere on your return (for example, on Schedule C, Schedule E, or Schedule F)"; i1040sc p. 6, Line 9, Caution
-  - id: carloan.col_ii
+  - id: carloan.sc_interest
     printed: (helper)
     label: Interest deducted on Schedule C (zero without a Schedule C)
     type: NonNegDollars
@@ -353,6 +353,110 @@ form:
     cite:
       doc: i1040gi
       locator: p. 110, Schedule 1-A, line 22, column (ii)
+  - id: carloan.sc_mixed_prorated
+    printed: (helper)
+    label: Schedule C interest times the qualifying part of the loan divided by the loan, the ratio rounded to six places
+    type: NonNegDollars
+    expr:
+      op: prorate
+      amount: carloan.sc_interest
+      part: carloan.mixed_qualifying
+      whole: carloan.financed
+      places: 6
+    cite:
+      doc: fr-2025-24154
+      locator: p. 23, Proposed § 1.163-16(g)(1), "Independently deductible interest is limited to interest that is QPVLI"; pp. 20–22, Proposed § 1.163-16(d)(2)(iii)(A), "payments of interest and principal are allocated to the
+        portion of the indebtedness described in paragraph (d)(2)(i) ... and the portion ... described in paragraph
+        (d)(2)(ii) ... on a pro rata basis"
+    ambiguity: amb.2025.carloan_ratio_places
+  - id: carloan.sc_mixed
+    printed: (helper)
+    label: The QPVLI part of the Schedule C interest on an original or inherited loan
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - carloan.mixed
+          - const: false
+        then: carloan.sc_interest
+      - guard:
+          op: test
+          eq:
+          - carloan.mixed
+          - const: true
+        then: carloan.sc_mixed_prorated
+    cite:
+      doc: fr-2025-24154
+      locator: p. 23, Proposed § 1.163-16(g)(1), "Independently deductible interest is limited to interest that is QPVLI"
+  - id: carloan.sc_refi
+    printed: (helper)
+    label: Schedule C interest times the qualifying part of the new loan divided by the new loan, the ratio rounded to six places
+    type: NonNegDollars
+    expr:
+      op: prorate
+      amount: carloan.sc_interest
+      part: carloan.refi_qualifying
+      whole: carloan.financed
+      places: 6
+    cite:
+      doc: fr-2025-24154
+      locator: p. 23, Proposed § 1.163-16(g)(1), "Independently deductible interest is limited to interest that is QPVLI"; pp. 20–22, Proposed § 1.163-16(d)(4), "A taxpayer allocates principal and interest between the amount
+        of the new loan that is an SPVL and the remaining portion of the indebtedness on a pro rata basis"
+    ambiguity: amb.2025.carloan_ratio_places
+  - id: carloan.sc_allocated
+    printed: (helper)
+    label: The QPVLI part of the Schedule C interest, by how you came to owe the loan
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - carloan.kind
+          - const: original
+        then: carloan.sc_mixed
+      - guard:
+          op: test
+          eq:
+          - carloan.kind
+          - const: refinanced
+        then: carloan.sc_refi
+      - guard:
+          op: test
+          eq:
+          - carloan.kind
+          - const: death
+        then: carloan.sc_mixed
+    cite:
+      doc: fr-2025-24154
+      locator: p. 23, Proposed § 1.163-16(g)(1), "Independently deductible interest is limited to interest that is QPVLI"
+  - id: carloan.col_ii
+    printed: 22(ii)
+    label: QPVLI deducted elsewhere on your return (the qualifying part of the interest deducted on Schedule C)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - carloan.eligible
+          - const: false
+        then: carloan.zero
+      - guard:
+          op: test
+          eq:
+          - carloan.eligible
+          - const: true
+        then: carloan.sc_allocated
+    cite:
+      doc: i1040gi
+      locator: p. 110, Schedule 1-A, line 22, "On line 22, column (ii), enter the amount of the QPVLI, if any, that was deducted
+        elsewhere on your return"; fr-2025-24154 p. 23, Proposed § 1.163-16(g)(1), "Independently deductible interest is limited to interest that is QPVLI"
   - id: carloan.col_iii
     printed: 22(iii)
     label: Qualified passenger vehicle loan interest less the amount in column (ii)

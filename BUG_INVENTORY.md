@@ -2634,3 +2634,105 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
 - **Fix:** the nine gaps and P1/P2 are killed by new fixtures (stage4, stage8, stage9, stage10,
   stage14); the prose-only table is removed and recurring shapes are checked by structural rules.
 - **Tags:** false-equivalence-argument; prose-trusted; caught-by-second-reader
+
+## BUG-0172 — Fix for BUG-0165: Form 1040 line 25c now includes Form 8959 line 24
+
+- **Date:** 2026-10-27
+- **Closes:** BUG-0165.
+- **Fix:** new input `f1040.line25c_other` (W-2G, Schedules K-1, Forms 1042-S, 8805 and 8288-A, i1040gi p. 39);
+  `f1040.line25c` is its sum with `f8959.line24`. 822 fixture inputs renamed; two stage-8 cases
+  re-recorded ($137.70 of Additional Medicare Tax withheld now reaches line 25c; line 37 falls by it). The
+  OpenTaxSolver adapter now passes OTS's own Form 8959 line 24 into its line 25c, and UsTaxes'
+  `additional_medicare_withholding` exclusion is removed; all four engines agree (0 unexplained).
+- **Tags:** closes-earlier-entry; cross-form-amount-carried; confirmed-by-external-engines
+
+## BUG-0173 — Fix for BUG-0161: Form 2441's non-dependent screen states the death-year rule
+
+- **Date:** 2026-10-27
+- **Closes:** BUG-0161.
+- **Fix:** the `f2441.nondependent` question counts, for a person born or who died in 2025, more than half
+  of the time they were alive (p503 p. 3); citation added. Question wording only; no computed value changes.
+- **Tags:** closes-earlier-entry; question-wording
+
+## BUG-0174 — Disposition of BUG-0162: line 28's ACTC box recorded as a design limit
+
+- **Date:** 2026-10-27
+- **Closes:** BUG-0162 (owner's decision, 2026-10-27).
+- **Fix:** `f1040.line28_box` (printed "28 (box)") is always unchecked, labelled that the choice not to
+  claim the ACTC is not asked, citing i1040gi p. 61, Line 28, as line 27c's choice is handled (T-027).
+- **Tags:** closes-earlier-entry; recorded-design-limit
+
+## BUG-0175 — Fix for BUG-0163: car loan column (ii) is the QPVLI part of the Schedule C interest
+
+- **Date:** 2026-10-27
+- **Closes:** BUG-0163 (owner's decision, 2026-10-27).
+- **Fix:** `carloan.col_ii` (printed 22(ii)) is the Schedule C interest (`carloan.sc_interest`, the former
+  column (ii) logic) prorated by the loan's qualifying ratio, as the interest is, and zero for a loan that
+  does not qualify; proposed § 1.163-16(g)(1), fr-2025-24154 p. 23: "Independently deductible interest is
+  limited to interest that is QPVLI". The raw input `carloan.col_ii_input` is now a helper. Regression
+  `stage12.car.mixed_sc_interest_prorated` (column (iii) $254.40, previously $233.20).
+- **Tags:** closes-earlier-entry; proration-of-subtraction; amount-affecting
+
+## BUG-0176 — Fix for BUG-0169: SEP worksheet Step 1 refuses with other self-employment income
+
+- **Date:** 2026-10-27
+- **Closes:** BUG-0169.
+- **Fix:** `person.sep_s1` carries the `person.se_screened` refusal, as Schedule SE line 2 (which Step 2
+  reads) does, citing p560 p. 39, Step 1. Regression `stage14.sep.step1_other_se_income`. The mutant is
+  removed from `OPEN_DEFECT_SURVIVORS`.
+- **Tags:** closes-earlier-entry; availability-overclaim-fixed
+
+## BUG-0177 — Citation relocation placed segments a page late while the check passed them
+
+- **Date:** 2026-10-27
+- **Caught by:** the TY2026 adoption rehearsal (`reports/2026/rehearsal_defects.md`, O1–O3; recorded open in
+  BUG-0167).
+- **Symptom:** `citations.py --relocate` accepted moves that weakened an anchor (its heading printed on the
+  old page, only in force on the new), placing 15 TY2026 segments one page late (e.g. `sc.yaml:113` p. 10
+  to 12, should be 11) though the citation check passed them; a second run moved f8880 "Caution" again;
+  quote-less documents behind a new draft cover learnt no page shift (f4952).
+- **Where:** `tools/citations.py`, `tools/year_diff.py` (`--adopt`).
+- **Fix:** relocation compares against the source year's page (`--relocate --from`, passed by `--adopt`): a
+  move may not weaken the anchor, and a segment that fits two pages is left for review and listed in
+  `reports/<year>/relocation_from_<from>.md`; re-runs keep segments the check passes (idempotent); a
+  quote-less document behind a draft cover takes the cover's shift. Self-tests added; 15 weakened
+  placements to 0. Fourteen segments that pass on their 2025 pages are listed for review.
+- **Tags:** silent-wrong-page; non-idempotent-tool; year-adoption-tooling; caught-by-rehearsal
+
+## BUG-0178 — Soft-hyphen line breaks read as two words
+
+- **Date:** 2026-10-27
+- **Caught by:** the TY2026 rehearsal (O7): the PDFKit text check failed on the p4681 and i1120ssk drafts.
+- **Symptom:** words broken at a line end with a soft hyphen were read as two words by the PDFKit
+  comparison and by `citations.norm`; two 2025 final documents also use soft hyphens.
+- **Where:** `tools/check_extraction.py`, `tools/citations.py`; archive reading now shared in
+  `tools/archive_text.py` (which also strips draft marks for seven readers, rehearsal O5).
+- **Fix:** soft hyphens are rejoined before comparing; self-tests in `archive_text.py` and
+  `check_extraction.py`.
+- **Tags:** text-normalization; caught-by-rehearsal
+
+## BUG-0179 — Year diff reported false value changes and two checkers crashed on a missing source
+
+- **Date:** 2026-10-27
+- **Caught by:** the TY2026 rehearsal (O4, O6).
+- **Symptom:** amounts under $1,000 matched bare numbers in unrelated text, and a value change was
+  reported where the other year's sentence printed the same amount (17 parameters flagged, 13 falsely);
+  `check_macrs_tables.py` and `check_auto_limits.py` crashed with a traceback when a source was missing.
+- **Where:** `tools/year_diff.py`, `tools/check_macrs_tables.py`, `tools/check_auto_limits.py`.
+- **Fix:** small amounts match only with their "$" and a value finding requires the other year's sentence
+  not to print the same amount (17 to 4); the checkers fail naming the missing edition and skip a year
+  with no table. Self-tests added.
+- **Tags:** false-change-report; crash-on-missing-input; year-adoption-tooling; caught-by-rehearsal
+
+## BUG-0180 — SEP worksheet Step 3 floored at zero where Pub. 560 prints no floor (open)
+
+- **Date:** 2026-10-27
+- **Caught by:** round 4 source adjudication of the person render review (`adjudication/person.md`).
+- **Symptom:** `person.sep_s3` subtracts Step 2 from Step 1 and floors the result at zero; p560 p. 39,
+  Deduction Worksheet for Self-Employed, Step 3 prints "Subtract step 2 from step 1" with no floor. On a
+  Schedule C loss with a SEP plan the printed Steps 3, 5, 7 and 21 show $0.00 instead of negative amounts.
+  No Form 1040 amount changes (the deduction is zero either way). Witness constructed, not executed.
+- **Where:** `forms/2025/person.yaml`, `person.sep_s3`.
+- **Fix:** open; next batch (proposed: an ambiguity-register entry for the floor and a regression; no
+  computed deduction changes).
+- **Tags:** printed-step-floored; open; caught-by-render-adjudication

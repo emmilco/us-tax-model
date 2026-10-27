@@ -23,6 +23,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 from taxyear import Y  # noqa: E402
+import archive_text  # noqa: E402
 ARCHIVE = ROOT / "sources" / Y
 OUT = ROOT / "tables" / Y / "macrs_gds.yaml"
 VERSION = "0.1"
@@ -87,7 +88,7 @@ def main():
     pdf = ARCHIVE / entry["file"]
     if hashlib.sha256(pdf.read_bytes()).hexdigest() != entry["sha256"]:
         raise SystemExit("p946.pdf does not match its manifest hash")
-    pages = (ARCHIVE / entry["text_file"]).read_text(encoding="utf-8").split("\f")
+    pages = archive_text.read(ARCHIVE, entry).split("\f")
     table = []
     for tag, conv in DB.items():
         for seg in segments(pages, tag):

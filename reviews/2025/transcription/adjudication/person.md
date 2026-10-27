@@ -10,6 +10,8 @@ expression matches the project can still differ through a candidate line it read
 line's ruling. In the deepseek-flash graph every return with a Schedule C is unevaluable because of the person.income179 cycle,
 so Schedule C-dependent deepseek lines are ruled on the derivation as well as the witnesses.
 
+Round 1 table (superseded subject):
+
 | family | line | class | triage | deciding source | reason |
 | --- | --- | --- | --- | --- | --- |
 | claude | person.educator_deduction | representation | 3,363/4,647 agree; 1249 candidate-unknown, 35 project-unknown | i1040gi p. 93, line 11 | Same deduction; only the order of the two dispositive questions differs. |
@@ -88,3 +90,99 @@ none is on a completed or incomplete return. The skipped-line rule finds no defe
 unprinted helpers, and the printed ira.line2a/2b and 6a/6b are zero whenever lines 2 through 6 are skipped.
 
 Findings: none. No project line contradicts the archived source on a reachable return; project lines unchanged.
+
+## Round 4 (2026-10-27)
+
+Fresh replies after BUG-0172 to BUG-0176. Full ruling text: `.transcription/proposed/round4/transcription.person.json`, `transcription.person.deepseek.json`, `render.person.deepseek.json`. Claude triage: `../triage/person.json`, executable-triage-v2 (1,111 fixtures, 500 generated returns seed 20261026, 1,616 partial records). The deepseek-flash reply fails validation (person.excess reads the undefined person.h_excess_raw; the f8889.unsupported refusal declarations of the five HSA lines fail the type check), so `../triage/person.deepseek.json` is `invalid` and no deepseek line was executed: lines whose own expression or dependency closure carries an error are model error on that failure (the five HSA lines, excess, credit, and qbi through qbi.deduction); every other line is ruled by reading the expressions against the source, citing the earlier reply's triage where the expression is identical. The render log for Claude has no open line.
+
+Counts — claude transcription: ambiguity 3, interface gap 1, model error 2, representation 9, scope 19; deepseek transcription: ambiguity 1, model error 25, representation 6, scope 14; deepseek render: finding 1, model error 1, scope 1.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | person.educator_deduction | representation | 2,656/4,117 agree; 1,433 candidate-unknown, 28 project-unknown | i1040gi p. 93, line 11 | Same deduction; only the order of the two dispositive questions differs. |
+| claude | transcription | person.hsa_agreed | representation | 4,073/4,117 agree; 35 candidate-unknown, 9 value | i8889 p. 7, line 6 Step 2 | Allocation is asked only under the spouse rule; non-split differences are unreachable and unprinted. |
+| claude | transcription | person.hsa_step1 | representation | 3,621/4,117 agree; 3 candidate-unknown, 493 value | i8889 p. 7, line 6 Step 2 | Unfiltered sum differs only on non-split forms, read only where both forms are split. |
+| claude | transcription | person.hsa_share | interface gap | 3,556/4,117 agree; 32 candidate-refuses, 46 candidate-unknown, 483 value | i8889 p. 7, line 6 Steps 2-3 | f8889.share cycles through its own refusal; interface listed share and share_raw unlabelled. |
+| claude | transcription | person.sc_total | scope | 4,116/4,117 agree; 1 project-refuses | i1040sc p. 15, line 32 | Only difference is the cited Form 6198 at-risk refusal. |
+| claude | transcription | person.se_line6 | scope | 2,698/4,117 agree; 69 candidate-refuses, 1,349 candidate-unknown, 1 project-refuses | i1040sse p. 1, Who Must File | Same Schedule SE; se_screen/rrta refusal placement only. |
+| claude | transcription | person.se_line12 | scope | 2,698/4,117 agree; 69 candidate-refuses, 1,349 candidate-unknown, 1 project-refuses | i1040sse p. 1, Who Must File | Same Schedule SE; refusal placement only. |
+| claude | transcription | person.se_line13 | scope | 2,698/4,117 agree; 69 candidate-refuses, 1,349 candidate-unknown, 1 project-refuses | i1040sse p. 1, Who Must File | Same Schedule SE; refusal placement only. |
+| claude | transcription | Step 2 | scope | 2,698/4,117 agree; 69 candidate-refuses, 1,349 candidate-unknown, 1 project-refuses | p560 p. 39, Step 2; i1040sse p. 1 | Same Schedule SE line 13; placement only. |
+| claude | transcription | person.eic_se | scope | 2,698/4,117 agree; 69 candidate-refuses, 1,349 candidate-unknown, 1 project-refuses | i1040gi EIC Worksheet B; i1040sse p. 1 | Line 31 less line 13 equals Part 1/Part 2 within scope; placement only. |
+| claude | transcription | person.s16 | model error | 2,349/4,117 agree; 157 candidate-refuses, 1,517 candidate-unknown, 19 project-refuses, 75 value | p560 p. 16; i1040gi p. 93, line 16 | Deducts SIMPLE deferrals with no compensation (stage16.sd.line17_no_skips_18: $5,686.54 against a refusal). |
+| claude | transcription | person.dc_has_box10 | representation | 4,117/4,117 agree | i2441 p. 5, line 12 | Agrees on every compared record. |
+| claude | transcription | person.dc_earned | model error | 2,640/4,117 agree; 67 candidate-refuses, 1,320 candidate-unknown, 10 project-refuses, 2 project-unknown, 78 value | i2441 p. 4, earned income item 1 | Omits line 1e (classm.f5695.4: $36,412.00 against $37,824.00). |
+| claude | transcription | person.dc_earned_b | scope | 2,716/4,117 agree; 69 candidate-refuses, 1,331 candidate-unknown, 1 project-refuses | i2441 p. 5, line 18 | Same earned income without line 1e; placement only. |
+| claude | transcription | person.sav_ineligible | ambiguity | 4,020/4,117 agree; 46 candidate-unknown, 2 project-unknown, 49 value | f8880 p. 2, Who Can Take This Credit | Asking the dependent question only when someone can claim you is the owner decision. |
+| claude | transcription | person.sav_line1 | scope | 2,085/4,117 agree; 2,007 candidate-unknown, 1 project-refuses, 24 project-unknown | f8880 line 1; p590a p. 35 | Same amount; project asks the traditional question first and refuses excess contributions. |
+| claude | transcription | person.sav_line2 | scope | 2,690/4,117 agree; 89 candidate-refuses, 1,157 candidate-unknown, 69 project-refuses, 112 value | f8880 p. 2, line 2 | Value differences need person.plan without a Schedule C (not asked); refusals are cited screens or placement. |
+| claude | transcription | person.ira_contrib | scope | 1,830/4,117 agree; 1 candidate-refuses, 2,264 candidate-unknown, 22 project-unknown | i1040gi p. 98, line 11; p590a p. 35 | Same amount; excess screen placed differently. |
+| claude | transcription | person.ira_cov | ambiguity | 3,513/4,117 agree; 44 candidate-unknown, 238 project-unknown, 322 value | i1040gi p. 96, Were You Covered | Self-employed plan read only with a Schedule C is the owner decision. |
+| claude | transcription | person.ira_line2 | ambiguity | 3,792/4,117 agree; 18 candidate-unknown, 200 project-unknown, 107 value | i1040gi p. 97, line 2 | Follows ira_cov (amb.2025.ira_covered). |
+| claude | transcription | person.ira_line6 | representation | 2,878/4,117 agree; 171 candidate-refuses, 964 candidate-unknown, 24 project-refuses, 72 project-unknown, 8 value | i1040gi p. 97, line 6 | Own formula is the project's; differences inherited (s16, ira_cov, placements). |
+| claude | transcription | person.ira_line7 | representation | 3,427/4,117 agree; 360 candidate-refuses, 121 candidate-unknown, 17 project-refuses, 9 project-unknown, 183 value | i1040gi pp. 97-98, line 7 | Reordered tree, same branches; differences inherited from ira_cov and s16. |
+| claude | transcription | person.ira_deduction | scope | 1,305/4,117 agree; 322 candidate-refuses, 2,461 candidate-unknown, 11 project-refuses, 18 project-unknown | i1040gi p. 98, line 12 | Same smallest-of; refusal placement and cited Pub. 590-A refusals. |
+| claude | transcription | person.ira_nondeductible | scope | 1,305/4,117 agree; 330 candidate-refuses, 2,454 candidate-unknown, 10 project-refuses, 18 project-unknown | i8606 p. 9, line 1 | Same formula; inherited placements. |
+| claude | transcription | person.ira_files_8606 | scope | 1,305/4,117 agree; 330 candidate-refuses, 2,454 candidate-unknown, 10 project-refuses, 18 project-unknown | i8606 p. 2, Who Must File | Extra distribution-with-basis condition is screened at retirement.special. |
+| claude | transcription | person.ira_8606_line2 | scope | 1,821/4,117 agree; 2,262 candidate-unknown, 12 project-refuses, 22 project-unknown | i8606 p. 9, line 2 | Same basis where Form 8606 is filed; placement only. |
+| claude | transcription | person.ira_dist_gate | scope | 1,563/4,117 agree; 330 candidate-refuses, 2,214 candidate-unknown, 10 project-refuses | f8606 Part I question | Same answer wherever asked; placement only. |
+| claude | transcription | person.ira_8606_line14 | scope | 1,270/4,117 agree; 330 candidate-refuses, 2,488 candidate-unknown, 11 project-refuses, 18 project-unknown | f8606 Part I, line 14 | Same line 14; inherited placements. |
+| claude | transcription | person.ira_ssb | scope | 1,381/4,117 agree; 302 candidate-refuses, 2,406 candidate-unknown, 10 project-refuses, 18 project-unknown | i1040gi p. 98, line 12 | Same no-coverage copy; placement and cited refusals. |
+| claude | transcription | person.ira_se | scope | 2,370/4,117 agree; 215 candidate-refuses, 1,516 candidate-unknown, 16 project-refuses | i1040gi p. 98, line 9 | Same line 9 part; cited plan, excess and at-risk refusals. |
+| claude | transcription | wages | representation | 4,117/4,117 agree | iw2w3 p. 18; amb.2025.ss_wages | Agrees on every compared record. |
+| claude | transcription | eligible | representation | 4,109/4,117 agree; 1 project-unknown, 7 value | i1040gi p. 117, line 11 | Extra over-limit conjunct is where the project refuses the credit. |
+| claude | transcription | Step 1 | scope | 2,719/4,117 agree; 2 candidate-refuses, 62 project-refuses, 1,334 project-unknown | p560 p. 39, Step 1 | BUG-0176 refusal fires only where Step 2 already refuses; unknowns are persons without a Schedule C, where Step 1 is not read. |
+| claude | transcription | Step 6 | representation | 4,117/4,117 agree | p560 p. 39, Step 6 | Agrees on every compared record. |
+| deepseek | transcription | person.educator_deduction | representation | not executable (reply invalid) | i1040gi p. 93, line 11 | Same deduction; question order only. |
+| deepseek | transcription | person.hsa_agreed | representation | not executable (reply invalid) | i8889 p. 7, line 6 Step 2 | Allocation asked only under the spouse rule (earlier identical expression: 4,445/4,647 agree). |
+| deepseek | transcription | person.hsa_step1 | model error | not executable (reply invalid); validation error | host type check | Refusal declaration reads f8889.unsupported at person level (__type_gate_5). |
+| deepseek | transcription | person.hsa_share | model error | not executable (reply invalid); validation error | host type check | Refusal declaration invalid (__type_gate_6). |
+| deepseek | transcription | person.hsa_deduction | model error | not executable (reply invalid); validation error | host type check | Refusal declaration invalid (__type_gate_7). |
+| deepseek | transcription | person.hsa_taxable | model error | not executable (reply invalid); validation error | host type check | Refusal declaration invalid (__type_gate_8). |
+| deepseek | transcription | person.hsa_addtax | model error | not executable (reply invalid); validation error | host type check | Refusal declaration invalid (__type_gate_9). |
+| deepseek | transcription | person.tip_employers | scope | not executable (reply invalid) | i1040gi p. 104, line 4c; p. 103 | Excludes only employers the project refuses (tipjob.mixed). |
+| deepseek | transcription | person.tip_reported | model error | not executable (reply invalid) | i1040gi p. 104, worksheet columns (b), (c) | Sums column (c) (Form 4137) instead of column (b). |
+| deepseek | transcription | person.s179_nonlisted | model error | not executable (reply invalid) | i4562 p. 5, line 6 column (c) | Sums cost, not the elected amount. |
+| deepseek | transcription | person.s179_listed | model error | not executable (reply invalid) | i4562 p. 5, line 7 | Sums vehicle cost, not the elected amount. |
+| deepseek | transcription | person.income179 | model error | not executable (reply invalid) | i4562 p. 5, line 11 | Uses profits after section 179 and drops losses. |
+| deepseek | transcription | person.sc_total | scope | not executable (reply invalid) | i1040sc p. 15, line 32 | Only the cited at-risk refusal. |
+| deepseek | transcription | person.se_line6 | scope | not executable (reply invalid) | i1040sse p. 1; f1040sse lines 4a-13 | Same Schedule SE; refusal placement. |
+| deepseek | transcription | person.se_line12 | scope | not executable (reply invalid) | i1040sse p. 1; f1040sse lines 4a-13 | Same Schedule SE; refusal placement. |
+| deepseek | transcription | person.se_line13 | scope | not executable (reply invalid) | i1040sse p. 1; f1040sse lines 4a-13 | Same Schedule SE; refusal placement. |
+| deepseek | transcription | person.s16 | model error | not executable (reply invalid) | p560 p. 39, after Step 21 | Deducts Step 21 instead of the actual SEP contribution. |
+| deepseek | transcription | person.qbi | model error | not executable (reply invalid) | i8995 p. 4, line 1; closure | Copies the return QBI deduction (cycle); closure reaches invalid hsa_deduction. |
+| deepseek | transcription | person.eic_se | model error | not executable (reply invalid) | i1040gi EIC Worksheet B | Copies the return total built from this line (cycle). |
+| deepseek | transcription | person.sc_1a | model error | not executable (reply invalid) | i1040gi p. 104, Schedule 1-A line 5 | Counts statutory-employee businesses, not tips/overtime businesses. |
+| deepseek | transcription | person.dc_has_box10 | representation | not executable (reply invalid) | i2441 p. 5, line 12 | Same test (earlier identical expression: 4,647/4,647 agree). |
+| deepseek | transcription | person.dc_earned | model error | not executable (reply invalid) | i2441 p. 4, lines 4 and 5 | Copies f2441.line4 built from this line (cycle). |
+| deepseek | transcription | person.dc_earned_b | model error | not executable (reply invalid) | i2441 p. 5, line 18 | Copies the return's line 5 (spouse's, with line 1e) for every person. |
+| deepseek | transcription | person.sav_ineligible | ambiguity | not executable (reply invalid) | f8880 p. 2, Who Can Take This Credit | amb.2025.savers_ineligible_column. |
+| deepseek | transcription | person.sav_line1 | scope | not executable (reply invalid) | f8880 line 1; p590a p. 35 | Same amount; cited excess and ABLE refusals placed differently. |
+| deepseek | transcription | person.sav_line2 | model error | not executable (reply invalid) | f8880 p. 2, line 2 | Omits self-employed SIMPLE deferrals. |
+| deepseek | transcription | person.ira_contrib | scope | not executable (reply invalid) | i1040gi p. 98, line 11 | Same amount; screen placement. |
+| deepseek | transcription | person.ira_cov | model error | not executable (reply invalid) | i1040gi p. 96, Were You Covered | Drops self-employed SEP/SIMPLE coverage. |
+| deepseek | transcription | person.ira_line2 | representation | not executable (reply invalid) | i1040gi p. 97, line 2 | $246,000 for a person not covered is reached only on a joint return. |
+| deepseek | transcription | person.ira_line6 | model error | not executable (reply invalid) | i1040gi p. 97, line 6 | Copies ira.line6a built from this line (cycle). |
+| deepseek | transcription | person.ira_line7 | model error | not executable (reply invalid) | i1040gi pp. 97-98, line 7 | Copies ira.line7a built from this line (cycle). |
+| deepseek | transcription | person.ira_deduction | model error | not executable (reply invalid) | i1040gi p. 98, line 12 | Copies ira.total built from this line (cycle). |
+| deepseek | transcription | person.ira_nondeductible | scope | not executable (reply invalid) | i8606 p. 9, line 1 | Drops line 10, equal unless contributions exceed compensation (refused). |
+| deepseek | transcription | person.ira_files_8606 | scope | not executable (reply invalid) | i8606 p. 2, Who Must File | Extra basis-change disjunct is an answer the project screens. |
+| deepseek | transcription | person.ira_8606_line2 | scope | not executable (reply invalid) | i8606 p. 9, line 2 | Same basis where filed; placement. |
+| deepseek | transcription | person.ira_dist_gate | scope | not executable (reply invalid) | f8606 Part I question | Same answer wherever asked. |
+| deepseek | transcription | person.ira_ssb | model error | not executable (reply invalid) | i1040gi p. 98, line 12 | Copies ssb.ira_line20 built from this line (cycle). |
+| deepseek | transcription | person.ira_se | model error | not executable (reply invalid) | i1040gi p. 98, line 9 | Copies Schedule SE line 6; no Schedule 1 lines 15 and 16. |
+| deepseek | transcription | over | representation | not executable (reply invalid) | i1040gi p. 117, line 11 | Same sentence's conditions under different helper keys. |
+| deepseek | transcription | eligible | representation | not executable (reply invalid) | i1040gi p. 117, line 11 | Over-limit conjunct is where the project refuses. |
+| deepseek | transcription | excess | model error | not executable (reply invalid); validation error | host reference check | Reads undefined person.h_excess_raw. |
+| deepseek | transcription | credit | model error | not executable (reply invalid); validation error | host reference check | Copies the invalid person.excess. |
+| deepseek | transcription | Step 1 | scope | not executable (reply invalid) | p560 p. 39, Step 1 | At-risk and se_screened (BUG-0176) refusals are cited screens. |
+| deepseek | transcription | Step 2 | scope | not executable (reply invalid) | p560 p. 39, Step 2 | Same line 13; placement. |
+| deepseek | transcription | Step 5 | model error | not executable (reply invalid) | p560 p. 38, Rate Table | Rate rounded to 3 places, not 0.090909. |
+| deepseek | transcription | Step 6 | scope | not executable (reply invalid) | p560 p. 39, Step 6 | Same amount; plan_screen placement. |
+| deepseek | render | Step 3 | finding | render MISMATCH | p560 p. 39, Step 3 | Project floors Step 3 at zero; page prints no floor (F1, low). |
+| deepseek | render | (screen) (person.sav_able) | scope | render MISMATCH | f8880 p. 2, line 4 | Screen refuses more ABLE distributions than line 4 counts; refusal only. |
+| deepseek | render | (screen) (person.ira_excess) | model error | render MISMATCH | p590a p. 35; amb.2025.savers_traditional | English lists recharacterization as its own case, not as an excess. |
+
+BUG-0176 check: person.sep_s1's se_screened refusal fires only where Step 2 (person.se_line2) already refuses; its project-unknown and project-refuses records on completed returns are persons without a Schedule C, where Step 1 is not read. No finding.
+
+Findings: one, low severity — F1, person.sep_s3 (Step 3) floors at zero where p560 p. 39 prints no floor; printed worksheet steps only, no Form 1040 amount (`.transcription/proposed/round4/person.findings.md`). Project lines unchanged.

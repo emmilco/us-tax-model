@@ -152,25 +152,62 @@
 - **Authored helper label:** Interest for this loan, Schedule 1-A
 - **Encoded (NonNegDollars):** Choose — [helper "The loan and the vehicle qualify" = false → helper "Year parameter sales.zero"] [helper "The loan and the vehicle qualify" = true → helper "Interest allocated pro rata to the qualifying part of the loan"]
 - Expr: `{"alternatives":[{"guard":{"eq":["carloan.eligible",{"const":false}],"op":"test"},"then":"carloan.zero"},{"guard":{"eq":["carloan.eligible",{"const":true}],"op":"test"},"then":"carloan.allocated"}],"op":"choose"}`
-- Cite: [i1040gi] p. 110, Schedule 1-A, line 22, column (iii), "On line 22, column (iii), enter the total amount of the QPVLI paid or accrued on the loan during the taxable year minus the amount on line 22, column (ii)" (column (ii), interest deducted on Schedule C, E or F, is outside this tool: scope.schedule1) (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 110, Schedule 1-A, line 22, column (iii), "On line 22, column (iii), enter the total amount of the QPVLI paid or accrued on the loan during the taxable year minus the amount on line 22, column (ii)" (column (ii) is the QPVLI part of the interest deducted on Schedule C, and Schedules E and F are refused by scope.schedule1) (2025; printed date 2026-02-25; sha256 482e9c48)
 
-## 22(ii) — `carloan.col_ii_input`
+## (helper) — `carloan.col_ii_input`
 
-- **IRS:** Interest on this loan deducted on Schedule C
+- **Authored helper label:** Interest on this loan deducted on Schedule C
 - **Encoded (NonNegDollars):** Input — The part of this loan's 2025 interest you deduct on Schedule C (the business use of the vehicle; zero if none)
 - Expr: `{"op":"input","source":"The part of this loan's 2025 interest you deduct on Schedule C (the business use of the vehicle; zero if none)"}`
 - Cite: [i1040gi] p. 110, Schedule 1-A, line 22, column (ii), "enter the amount of the QPVLI, if any, that was deducted elsewhere on your return (for example, on Schedule C, Schedule E, or Schedule F)"; i1040sc p. 6, Line 9, Caution (2025; printed date 2026-02-25; sha256 482e9c48)
 
-## (helper) — `carloan.col_ii`
+## (helper) — `carloan.sc_interest`
 
 - **Authored helper label:** Interest deducted on Schedule C (zero without a Schedule C)
-- **Encoded (NonNegDollars):** Choose — [s1 helper "The return has a Schedule C" = true → line 22(ii)] [s1 helper "The return has a Schedule C" = false → helper "Year parameter sales.zero"]
+- **Encoded (NonNegDollars):** Choose — [s1 helper "The return has a Schedule C" = true → helper "Interest on this loan deducted on Schedule C"] [s1 helper "The return has a Schedule C" = false → helper "Year parameter sales.zero"]
 - Expr: `{"alternatives":[{"guard":{"eq":["s1.has_sc",{"const":true}],"op":"test"},"then":"carloan.col_ii_input"},{"guard":{"eq":["s1.has_sc",{"const":false}],"op":"test"},"then":"carloan.zero"}],"op":"choose"}`
 - Cite: [i1040gi] p. 110, Schedule 1-A, line 22, column (ii) (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `carloan.sc_mixed_prorated`
+
+- **Authored helper label:** Schedule C interest times the qualifying part of the loan divided by the loan, the ratio rounded to six places
+- **Encoded (NonNegDollars):** Divide helper "Part of the loan that is a specified passenger vehicle loan" by helper "Total amount of this loan when it was taken out", rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply helper "Interest deducted on Schedule C (zero without a Schedule C)" by the result.
+- Interpretation: amb.2025.carloan_ratio_places
+- Expr: `{"amount":"carloan.sc_interest","op":"prorate","part":"carloan.mixed_qualifying","places":6,"whole":"carloan.financed"}`
+- Cite: [fr-2025-24154] p. 23, Proposed § 1.163-16(g)(1), "Independently deductible interest is limited to interest that is QPVLI"; pp. 20–22, Proposed § 1.163-16(d)(2)(iii)(A), "payments of interest and principal are allocated to the portion of the indebtedness described in paragraph (d)(2)(i) ... and the portion ... described in paragraph (d)(2)(ii) ... on a pro rata basis" (Federal Register Vol. 91, No. 1 (2026-01-02), proposed rules REG-113515-25 (Car Loan Interest Deduction), FR Doc. 2025-24154; sha256 4d243f55)
+
+## (helper) — `carloan.sc_mixed`
+
+- **Authored helper label:** The QPVLI part of the Schedule C interest on an original or inherited loan
+- **Encoded (NonNegDollars):** Choose — [helper "Did this loan also finance amounts that do not qualify?" = false → helper "Interest deducted on Schedule C (zero without a Schedule C)"] [helper "Did this loan also finance amounts that do not qualify?" = true → helper "Schedule C interest times the qualifying part of the loan divided by the loan, the ratio rounded to six places"]
+- Expr: `{"alternatives":[{"guard":{"eq":["carloan.mixed",{"const":false}],"op":"test"},"then":"carloan.sc_interest"},{"guard":{"eq":["carloan.mixed",{"const":true}],"op":"test"},"then":"carloan.sc_mixed_prorated"}],"op":"choose"}`
+- Cite: [fr-2025-24154] p. 23, Proposed § 1.163-16(g)(1), "Independently deductible interest is limited to interest that is QPVLI" (Federal Register Vol. 91, No. 1 (2026-01-02), proposed rules REG-113515-25 (Car Loan Interest Deduction), FR Doc. 2025-24154; sha256 4d243f55)
+
+## (helper) — `carloan.sc_refi`
+
+- **Authored helper label:** Schedule C interest times the qualifying part of the new loan divided by the new loan, the ratio rounded to six places
+- **Encoded (NonNegDollars):** Divide helper "Part of the new loan that is a specified passenger vehicle loan" by helper "Total amount of this loan when it was taken out", rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply helper "Interest deducted on Schedule C (zero without a Schedule C)" by the result.
+- Interpretation: amb.2025.carloan_ratio_places
+- Expr: `{"amount":"carloan.sc_interest","op":"prorate","part":"carloan.refi_qualifying","places":6,"whole":"carloan.financed"}`
+- Cite: [fr-2025-24154] p. 23, Proposed § 1.163-16(g)(1), "Independently deductible interest is limited to interest that is QPVLI"; pp. 20–22, Proposed § 1.163-16(d)(4), "A taxpayer allocates principal and interest between the amount of the new loan that is an SPVL and the remaining portion of the indebtedness on a pro rata basis" (Federal Register Vol. 91, No. 1 (2026-01-02), proposed rules REG-113515-25 (Car Loan Interest Deduction), FR Doc. 2025-24154; sha256 4d243f55)
+
+## (helper) — `carloan.sc_allocated`
+
+- **Authored helper label:** The QPVLI part of the Schedule C interest, by how you came to owe the loan
+- **Encoded (NonNegDollars):** Choose — [helper "How you came to owe this loan" = 'original' → helper "The QPVLI part of the Schedule C interest on an original or inherited loan"] [helper "How you came to owe this loan" = 'refinanced' → helper "Schedule C interest times the qualifying part of the new loan divided by the new loan, the ratio rounded to six places"] [helper "How you came to owe this loan" = 'death' → helper "The QPVLI part of the Schedule C interest on an original or inherited loan"]
+- Expr: `{"alternatives":[{"guard":{"eq":["carloan.kind",{"const":"original"}],"op":"test"},"then":"carloan.sc_mixed"},{"guard":{"eq":["carloan.kind",{"const":"refinanced"}],"op":"test"},"then":"carloan.sc_refi"},{"guard":{"eq":["carloan.kind",{"const":"death"}],"op":"test"},"then":"carloan.sc_mixed"}],"op":"choose"}`
+- Cite: [fr-2025-24154] p. 23, Proposed § 1.163-16(g)(1), "Independently deductible interest is limited to interest that is QPVLI" (Federal Register Vol. 91, No. 1 (2026-01-02), proposed rules REG-113515-25 (Car Loan Interest Deduction), FR Doc. 2025-24154; sha256 4d243f55)
+
+## 22(ii) — `carloan.col_ii`
+
+- **IRS:** QPVLI deducted elsewhere on your return (the qualifying part of the interest deducted on Schedule C)
+- **Encoded (NonNegDollars):** Choose — [helper "The loan and the vehicle qualify" = false → helper "Year parameter sales.zero"] [helper "The loan and the vehicle qualify" = true → helper "The QPVLI part of the Schedule C interest, by how you came to owe the loan"]
+- Expr: `{"alternatives":[{"guard":{"eq":["carloan.eligible",{"const":false}],"op":"test"},"then":"carloan.zero"},{"guard":{"eq":["carloan.eligible",{"const":true}],"op":"test"},"then":"carloan.sc_allocated"}],"op":"choose"}`
+- Cite: [i1040gi] p. 110, Schedule 1-A, line 22, "On line 22, column (ii), enter the amount of the QPVLI, if any, that was deducted elsewhere on your return"; fr-2025-24154 p. 23, Proposed § 1.163-16(g)(1), "Independently deductible interest is limited to interest that is QPVLI" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## 22(iii) — `carloan.col_iii`
 
 - **IRS:** Qualified passenger vehicle loan interest less the amount in column (ii)
-- **Encoded (NonNegDollars):** Subtract helper "Interest deducted on Schedule C (zero without a Schedule C)" from helper "Interest for this loan, Schedule 1-A". If zero or less, enter -0-.
+- **Encoded (NonNegDollars):** Subtract line 22(ii) from helper "Interest for this loan, Schedule 1-A". If zero or less, enter -0-.
 - Expr: `{"from":"carloan.qpvli","op":"subtract_floor0","take":"carloan.col_ii"}`
 - Cite: [i1040gi] p. 110, Schedule 1-A, line 22, column (iii), "the total amount of the QPVLI paid or accrued on the loan during the taxable year minus the amount on line 22, column (ii)" (2025; printed date 2026-02-25; sha256 482e9c48)

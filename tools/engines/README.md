@@ -205,8 +205,7 @@ IRA deduction is an input); `sli_phaseout` (unrounded ratio) and
 `hsa_family_limited` (line 6 halves the family limit; the spouse's Form 8889
 counts a family account again); `hsa_age55` (the $1,000 on line 7, not line 3)
 and `hsa_senior_without_age55` (catch-up from the date of birth); `ustaxes_amt`
-(Form 6251 computed); `additional_medicare_withholding` (line 25c from Form
-8959; the generator enters it as zero) and `additional_medicare_tax` (Schedule
+(Form 6251 computed); `additional_medicare_tax` (Schedule
 8812 line 21 without the Additional Medicare Tax worksheet);
 `ssb_with_schedule1_income` (benefits worksheet line 6 adds Schedule 1 line 10);
 `itemized_state_tax` and `itemized_state_tax_niit` (Form 8960 line 9b
