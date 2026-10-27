@@ -50,6 +50,13 @@ case where the current tooling yields a wrong tax value or a wrong ruling. BUG-0
 transcription qualification (T-062) lifts when A is committed and the read-only audit shows every
 ruled row bound to its current request, reply and context.
 
+Owner's decision, 2026-10-27: after the commit of A the audit showed every log ruled under the current
+comparison bound and unchanged, while 21 older Claude logs predate it (130 of their agreements change
+when re-compared). The global hold is therefore replaced by per-form conditions already in
+`compare_families.py`: a transcription pair qualifies only when both logs use the unit-preserving
+comparison, pass current type validation and complete input context, and their bound requests verify
+live. The older logs stay pending and are migrated when their forms next change.
+
 DeepSeek review pairs on forms that have not changed stay pending; they are refreshed when their
 form changes, not re-swept.
 

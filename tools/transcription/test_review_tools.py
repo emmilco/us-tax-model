@@ -1095,10 +1095,10 @@ class CurrentRequestContext(unittest.TestCase):
                 patch.object(transcription_audit, "audit", return_value=replay or self.replay, side_effect=error):
             return C.compare("transcription", "dcprov", "deepseek")["quality"]
 
-    def test_live_bound_request_check_does_not_lift_the_global_hold(self):
+    def test_live_bound_request_check_passes_without_a_global_hold(self):
         quality=self.quality()
         self.assertFalse(any("verified current request context" in b for b in quality['blockers']))
-        self.assertTrue(any("BUG-0129" in b for b in quality['blockers']))
+        self.assertFalse(any("BUG-0129" in b for b in quality['blockers']))
 
     def test_stale_interface_hash_or_wording_cannot_pass_on_recorded_header(self):
         for context in [{"state":"pass", "required_sha256":"b" * 64},
@@ -1122,8 +1122,8 @@ class CurrentRequestContext(unittest.TestCase):
 
 
 class DefinitionInterfaces(unittest.TestCase):
-    def test_transcription_unit_audit_hold_does_not_block_render_qualification(self):
-        # Both dcprov reviews agree; a known comparer defect must still prevent promotion.
+    def test_legacy_comparison_blocks_transcription_but_not_render(self):
+        # Both dcprov reviews agree; a log compared before unit preservation must still not qualify.
         parse = C.parse_log
         def legacy(kind, path):
             result = parse(kind, path)
@@ -1132,7 +1132,7 @@ class DefinitionInterfaces(unittest.TestCase):
         with patch.object(C, "parse_log", side_effect=legacy):
             transcription = C.compare("transcription", "dcprov", "deepseek")["quality"]
         self.assertEqual(transcription["state"], "pending")
-        self.assertTrue(any("BUG-0129" in b for b in transcription["blockers"]))
+        self.assertFalse(any("BUG-0129" in b for b in transcription["blockers"]))
         self.assertTrue(any("unit-preserving comparison" in b for b in transcription["blockers"]))
         rendering = C.compare("render", "dcprov", "deepseek")["quality"]
         self.assertEqual(rendering["state"], "pass")

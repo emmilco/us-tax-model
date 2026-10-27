@@ -173,7 +173,9 @@ def compare(kind, form, family):
     if excluded and not judged:
         q["blockers"].append("no source-defined computed targets; internal adapter checks earn no tax-evidence credit")
     if kind == "transcription":
-        q["blockers"].append("BUG-0129: transcription qualification held until model IR type validation and prior-agreement audit close")
+        # BUG-0129's global hold is replaced by the per-form conditions below (owner's decision,
+        # 2026-10-27): a log qualifies only under the unit-preserving comparison, passing current
+        # type validation, complete input context and a live check of its bound request.
         required_targets=transcribe.required_target_keys(transcribe.load_form(form))
         for fam, record in ((families.DEFAULT,a),(family,b)):
             absent=sorted(required_targets-set(record['lines']))
