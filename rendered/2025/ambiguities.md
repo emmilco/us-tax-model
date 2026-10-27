@@ -628,3 +628,12 @@
 - Reason: The owner's decision of 2026-10-22 (integrity plan decision 10). The archived text states the community income rule but not a prohibition on the filing status; the refusal rests on the rule being outside the tool, not on a forbidden status. Married filing separately, the other case Direct File knocks out, is refused throughout the tool already. A registered domestic partner in Nevada, Washington or California (same paragraph) is not asked and is a gap to note.
 - Status: Owner decision, 2026-10-22 (docs/2026-10-22_integrity_plan.md, decision 10).
 - Cite: [i1040gi] p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## amb.2025.sep_loss_floor
+
+- Text at issue: Pub. 560 p. 39, Deduction Worksheet for Self-Employed, Step 3: "Net earnings from self-employment. Subtract step 2 from step 1", with no "-0-" instruction on Step 3 or any later step. With a Schedule C loss, Step 1 is negative, and the printed arithmetic carries a negative amount through Steps 5 and 7 to Step 21, "This is your maximum deductible contribution". The worksheet then says to enter "your actual contribution, not to exceed your maximum deductible contribution", which no contribution of zero or more can satisfy.
+- Candidate readings: Follow the printed arithmetic: Steps 3, 5, 7 and 21 negative on a loss. | Floor Step 3 at zero (person.sep_s3), so Steps 5, 7 and 21 are zero on a loss.
+- **Chosen:** The second.
+- Reason: A maximum deductible contribution below zero has no meaning, and the first reading would make a zero contribution exceed it, refusing every return with a SEP plan and a Schedule C loss at person.sep_excess. On the second, a zero contribution deducts zero and any contribution above zero is refused as excess, which is the deduction the first reading gives wherever it gives one. Where both readings complete the return, no Form 1040 or Schedule 1 amount differs; only the printed worksheet steps do (BUG-0180, regression stage14.sep.loss_floor).
+- Status: Applied for BUG-0180; the owner's decision is not yet recorded.
+- Cite: [p560] p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 3, "Subtract step 2 from step 1", and Step 21, "This is your maximum deductible contribution" (For use in preparing 2025 returns; sha256 1f1f7abe)

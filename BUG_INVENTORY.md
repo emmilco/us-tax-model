@@ -2736,3 +2736,16 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
 - **Fix:** open; next batch (proposed: an ambiguity-register entry for the floor and a regression; no
   computed deduction changes).
 - **Tags:** printed-step-floored; open; caught-by-render-adjudication
+
+## BUG-0181 — Disposition of BUG-0180: the SEP worksheet Step 3 floor recorded as a registered reading
+
+- **Date:** 2026-10-27
+- **Closes:** BUG-0180 (owner's decision of 2026-10-27 to close it before coverage resumes).
+- **Witness executed:** Schedule C loss $5,000, SEP plan rate 10%, contribution $0. Step 1 -$5,000.00, Steps 3, 5,
+  7 and 21 $0.00, `person.sep_excess` false, Schedule 1 line 16 $0.00, as BUG-0180 predicted.
+- **Fix:** `amb.2025.sep_loss_floor` records both readings and chooses the floor, naming `person.sep_s3`.
+  The line-level link waits for the next change to `person` (T-074; owner's decision of 2026-10-27), since the
+  key is part of the transcription subject and alone would stale the person review logs. The round-4 finding's claim that a zero contribution deducts zero on both readings is not
+  right: under the printed arithmetic Step 21 is negative and `person.sep_excess` refuses the return. New
+  regression `stage14.sep.loss_floor`. No computed value changes.
+- **Tags:** closes-earlier-entry; registered-reading

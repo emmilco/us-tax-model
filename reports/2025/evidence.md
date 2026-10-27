@@ -1260,16 +1260,16 @@ Unasserted lines: otjob.one, otjob.zero
 | person.sep_contrib | — | — | — | — | — | — | 1 (stage14.plan.refuse_screen) |
 | person.sep_rate_c | — | — | — | 1 (classm.person.1) | — | — | — |
 | person.sep_rate_plus | — | — | — | 1 (classm.person.1) | — | — | — |
-| person.sep_s1 | — | — | — | 1 (classm.person.1) | — | — | 1 (stage14.sep.step1_other_se_income) |
+| person.sep_s1 | — | — | — | 1 (classm.person.1) | — | — | 2 (stage14.sep.step1_other_se_income, stage14.sep.loss_floor) |
 | person.sep_s2 | — | — | — | 1 (classm.person.1) | — | — | — |
-| person.sep_s3 | — | — | — | 1 (classm.person.1) | — | — | — |
-| person.sep_s5 | — | — | — | 1 (classm.person.1) | — | — | 2 (stage14.sep.basic, stage14.sep.rate_5) |
+| person.sep_s3 | — | — | — | 1 (classm.person.1) | — | — | 1 (stage14.sep.loss_floor) |
+| person.sep_s5 | — | — | — | 1 (classm.person.1) | — | — | 3 |
 | person.comp_limit | — | — | — | — | — | — | — |
 | person.sep_s6 | — | — | — | 1 (classm.person.1) | — | — | 1 (stage14.sep.dollar_limit) |
-| person.sep_s7 | — | — | — | 1 (classm.person.1) | — | — | 1 (stage14.sep.rate_5) |
+| person.sep_s7 | — | — | — | 1 (classm.person.1) | — | — | 2 (stage14.sep.rate_5, stage14.sep.loss_floor) |
 | person.sep_s8 | — | — | — | — | — | — | — |
-| person.sep_s21 | — | — | — | 1 (classm.person.1) | — | — | 3 |
-| person.sep_excess | — | — | — | 1 (classm.person.1) | — | — | — |
+| person.sep_s21 | — | — | — | 1 (classm.person.1) | — | — | 4 |
+| person.sep_excess | — | — | — | 1 (classm.person.1) | — | — | 1 (stage14.sep.loss_floor) |
 | person.sep_deduction | — | — | — | 1 (classm.person.1) | — | — | 2 (stage14.sep.refuse_excess, stage14.plan.refuse_two_businesses) |
 | person.simple_deferral | — | — | — | — | — | — | 1 (stage14.plan.refuse_screen_simple) |
 | person.simple_age | — | — | — | — | — | — | — |
@@ -1625,7 +1625,7 @@ Unasserted lines: retirement.zero, retirement.one
 | s1.line11 | — | — | — | 3 | — | UsTaxes: 1400 compared (146 nonzero), 300 excluded | 5 |
 | s1.line13 | — | — | — | 3 | — | UsTaxes: 1316 compared (137 nonzero), 384 excluded | 20 |
 | s1.line15 | — | — | — | 3 | — | PE: 1700 compared (238 nonzero), 0 excluded; TC: 1700 compared (238 nonzero), 0 excluded | 9 |
-| s1.line16 | — | — | — | 3 | — | — | 9 |
+| s1.line16 | — | — | — | 3 | — | — | 10 |
 | s1.line17 | — | — | — | 3 | — | — | 3 |
 | s1.line18 | — | — | — | 3 | — | — | 2 (stage16.small.s1, stage16.small.s10) |
 | s1.paid_refused | — | — | — | — | — | — | 1 (stage16.refuse.s1.alimony_paid) |
