@@ -2543,3 +2543,50 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
 - **Where:** `forms/2025/qbi.yaml`.
 - **Fix:** the locator quotes i8995 p. 4, Line 3 and p. 5, Line 16, keeping the owner's note; citation only.
 - **Tags:** misquoted-citation; unchecked-input-citation; caught-by-render-adjudication
+
+## BUG-0165 — Form 1040 line 25c omits Additional Medicare Tax withheld from Form 8959 line 24 (open)
+
+- **Date:** 2026-10-27
+- **Caught by:** the UsTaxes engine differential (plan revision item C1), generated case gen-00010:
+  `f8959.line24` $1,618.39, `f1040.line25c` $0, line 25d $62,472.94 against UsTaxes' $64,091.33.
+- **Symptom:** Additional Medicare Tax withheld is computed on Form 8959 line 24 but never reaches Form
+  1040 line 25c, so total withholding (line 25d), total payments and the refund are understated for
+  every filer with Medicare wages over the threshold.
+- **Root cause:** `f1040.line25c` is a supplied total; i1040gi p. 39, Line 25c—Other Forms: "Include the
+  amount shown on Form 8959, line 24, in the total on line 25c."
+- **Where:** `forms/2025/f1040.yaml`, `f1040.line25c`.
+- **Fix:** open; next batch. The UsTaxes adapter excludes the affected cases as
+  `additional_medicare_withholding` until then.
+- **Tags:** cross-form-amount-not-carried; amount-affecting; open; caught-by-external-engine
+
+## BUG-0166 — Draft cover and watermark text was read as IRS text in the year diff
+
+- **Date:** 2026-10-27
+- **Caught by:** the TY2026 adoption rehearsal (`reports/2026/rehearsal_defects.md`, F2).
+- **Symptom:** about 500 sentences were reported changed because the draft cover page and "DRAFT"
+  watermarks were part of the compared text.
+- **Where:** `tools/year_diff.py` (`Archive.read`). **Fix:** draft marks are stripped before comparing,
+  with a self-test; other archive readers still do not strip them (rehearsal O5).
+- **Tags:** draft-artifact-as-text; year-adoption-tooling; caught-by-rehearsal
+
+## BUG-0167 — Locator relocation rewrote the wrong page list in folded locators
+
+- **Date:** 2026-10-27
+- **Caught by:** the TY2026 rehearsal (F3).
+- **Symptom:** `--relocate` swapped the page lists of a two-page locator (f8880 "p. 2 / p. 3") and changed
+  a number inside an anchor's quoted text; the citation check would not see it.
+- **Where:** `tools/citations.py` (`--relocate`). **Fix:** relocation addresses each page list by its
+  segment, with a self-test. Open in the same tool: about 15 segments are moved one page too far and
+  still pass the check (rehearsal O1), and a second relocation moves f8880 "Caution" again (O2).
+- **Tags:** silent-wrong-page; year-adoption-tooling; caught-by-rehearsal
+
+## BUG-0168 — After adoption, changed values and year-named quotes fell off the year worklist
+
+- **Date:** 2026-10-27
+- **Caught by:** the TY2026 rehearsal (F4, F5).
+- **Symptom:** after `year_diff.py --adopt`, parameters whose dollar values changed (`dc.exclusion_max`,
+  `qbi.threshold`, `hsa.*_55`) and quotes naming "2025" no longer appeared on the worklist, so a reviewer
+  following it could miss real changes.
+- **Where:** `tools/year_diff.py`. **Fix:** the worklist compares adopted values and year-substituted
+  quotes against the prior year, with self-tests.
+- **Tags:** worklist-misses-change; year-adoption-tooling; caught-by-rehearsal

@@ -502,25 +502,53 @@ SD_LABELS = {
 SSB_ZERO_AFTER_STOP = {7, 9, 11, 12, 13, 14, 15, 16, 18}
 
 OTS_PRECISION = "decimal2"
-# Per line, the number of unrounded rate multiplications the engine carries into it (the
-# project rounds each such product to the cent, amb.<year>.multiplication_subcent). The
-# comparison allows that many cents as the `subcent` category; the default is one.
-OTS_SUBCENT = {
-    "f1040.line6b": 2, "ssb.line16": 2, "ssb.line18": 2,
-    f"{TAXPAYER}.se_line6": 1, f"{TAXPAYER}.se_line12": 3, f"{TAXPAYER}.se_line13": 4,
-    "f8959.line18": 3, "f8959.tax": 3, "f8959.line24": 2,
-    "f1040.line9": 2, "f1040.line10": 4, "f1040.line11b": 6, "s1.line26": 4,
-    "f8960.line17": 1, "f8960.tax": 1, "f8995.line10": 2, "f8995.line15": 7, "qbi.deduction": 7, "f1040.line13a": 7,
-    "sa.line17": 1, "sa.deduction": 1, "f1040.line14": 4, "f1040.line15": 10, "f1040.line16": 13, "f1040.line18": 13,
-    "f1040.line21": 13, "f1040.line22": 13, "f1040.line24": 16, "f1040.tax_before_credits": 16,
-    **{f"qdcg.line{n}": 10 for n in range(1, 22)}, "qdcg.line22": 13, "qdcg.line23": 13, "qdcg.line24": 13, "qdcg.line25": 13,
-    **{f"sdtw.line{n}": 10 for n in range(1, 44)}, "sdtw.line44": 13, "sdtw.line45": 13, "sdtw.line46": 13, "sdtw.line47": 13,
-    "f8995.line11": 6, "f8995.line13": 6, "f8995.line14": 7,
-    "f2441.line9a": 1, "f2441.line9c": 1, "f2441.line11": 1, "s3.line2": 1, "s3.line8": 1, "f1040.line20": 1,
-    "s8812.line11": 1, "s8812.line12": 1, "s8812.line14": 1, "s8812.line16a": 1, "s8812.line17": 1, "s8812.line20": 1,
-    "s8812.line26": 1, "s8812.line27": 1, "f1040.line19": 1, "f1040.line28": 1,
-    "f1040.line32": 1, "f1040.line33": 1, "f1040.line34": 17, "f1040.line37": 17,
+# How OpenTaxSolver's arithmetic differs from the project's, for the comparison's `unrounded`
+# reading (compare.py). Each program computes in doubles and never rounds in cents mode
+# (taxsolve_routines.c: Conditional_Round returns its argument unless whole-dollar rounding is
+# set), so products and ratios carry their fractions of a cent (the project rounds each to the
+# cent, amb.<year>.multiplication_subcent; the Student Loan Interest Deduction Worksheet ratio,
+# for one, is ws[6] / 15000.0 unrounded in taxsolve_US_1040_<year>.c). A program prints each line
+# with "%6.2f" (showline), and every amount that passes from one program to another (Schedule SE
+# lines 6, 12 and 13 into Forms 8959 and 1040, Form 1040 lines 11a, 12, 13b, 16 and 18 into Forms
+# 8960, 8995, 2441 and Schedule 8812, their results back into Form 1040) is that printed value,
+# read back by the next program or by this adapter.
+#   programs  which program computes a project line: the first pattern that matches the line's
+#             key; any other line is Form 1040's. A value crossing from one program to another
+#             is the printed value.
+#   engine_line  where a printed value's tie is resolved, the engine line that shows it.
+#   first_pass  a line the adapter figures from the first Form 1040 pass (before the QBI
+#             deduction): it is modelled only when the named line is zero (the passes agree)
+#             or the line's smaller-of takes its other operand, which is then not above the
+#             final pass's value and so not above the first's.
+# The amounts the adapter supplies in place of a computation are recorded per case (`supplied`).
+OTS_UNROUNDED = {
+    "programs": [
+        [r"\|inst:se#|^person\[[^\]]+\]\.se_", "Schedule SE"],
+        [r"^person\[[^\]]+\]\.sc\[", "Schedule C"],
+        [r"^person\[[^\]]+\]\.f8889\[", "Form 8889"],
+        [r"^f8959\.", "Form 8959"],
+        [r"^f8960\.", "Form 8960"],
+        [r"^(f8995|qbi)\.", "Form 8995"],
+        [r"^f2441\.", "Form 2441"],
+        [r"^s8812\.", "Schedule 8812"],
+        [r"^ftc\.", "adapter"],
+    ],
+    "engine_line": {"f1040.line11a": "f1040.line11b"},
+    "first_pass": {"ftc.limited": "f1040.line13a"},
 }
+
+
+def supplied_amounts(case):
+    """The amounts the adapter gives the programs in place of a computation the project makes,
+    keyed by project line: the comparison models such a line only where the project's value is
+    the amount supplied."""
+    f = case["facts"]
+    out = {"s1.line20": f.get("ira_contribution", 0), "s1.line11": f.get("educator_deduction", 0),
+           "sd.line19": f["unrecaptured_1250"], "s3.line4": 0, "s3.line5a": 0, "s3.line5b": 0, "s3.line11": 0,
+           "f1040.line27a": 0}
+    if f.get("self_employment_income") or f["section_199a_dividends"]:
+        out["f8995.line12"] = net_capital_gain(f)
+    return out
 
 OTS_PASS_THROUGH = {"lines": [], "components": {
     f"{HSA}.line12": "Form 8889 line 3 (the contribution limit) is supplied as $4,300 or $8,550 from the coverage facts and line 7 as $1,000 for age 55; "
@@ -665,12 +693,13 @@ def run_ots(cases, year, work_root):
     if pkg is None or not is_available():
         return None
     pkg_version, bin_version = package_version(pkg)
-    lines, feats, failures = {}, {}, []
+    lines, feats, supplied, failures = {}, {}, {}, []
     for c in cases:
         workdir = Path(work_root) / c["id"]
         workdir.mkdir(parents=True, exist_ok=True)
         try:
             lines[c["id"]], fs = run_case(pkg, c, workdir)
+            supplied[c["id"]] = supplied_amounts(c)
             if fs:
                 feats[c["id"]] = sorted(fs)
         except (OtsError, KeyError) as e:
@@ -679,5 +708,5 @@ def run_ots(cases, year, work_root):
         print(f"OpenTaxSolver: {len(failures)} cases rejected by a program, e.g. {failures[:3]}")
     return {"version": f"{pkg_version} (package 0_README.txt; the Form 1040 program reports v{bin_version})", "package_version": pkg_version,
             "precision": OTS_PRECISION, "tax_table": True, "lines": lines, "features": feats,
-            "limitations": limitations(pkg_version), "pass_through": OTS_PASS_THROUGH, "components": OTS_SUBCENT,
-            "rejected": [cid for cid, _ in failures]}
+            "limitations": limitations(pkg_version), "pass_through": OTS_PASS_THROUGH, "unrounded": OTS_UNROUNDED,
+            "supplied": supplied, "rejected": [cid for cid, _ in failures]}

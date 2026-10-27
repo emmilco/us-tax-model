@@ -22,7 +22,12 @@ engine takes whole from the generator's facts instead of computing (none today);
 generator facts, so the evidence report can say what the engine did not compute;
 `pass_through.unmapped` names project result lines left unmapped, with the reason
 (an input the engine does not compute, a value it does not expose, or a line
-reached through a copy that is mapped).
+reached through a copy that is mapped). A floating-point engine also gives
+"components" (per line, the engine variables summed into it, for the float
+bound); OpenTaxSolver gives "unrounded" (which of its programs computes which
+project line) and "supplied" ({ case_id: { line: cents } }, the amounts the
+adapter gives it in place of a computation), for the comparison's model of its
+unrounded arithmetic.
 """
 import argparse, json, sys, warnings
 from pathlib import Path

@@ -544,9 +544,9 @@ doubled. Findings from 1.1 to 1.4 and 1.7 keep counting.
   `fixtures/2025/classm.json` and the git-ignored `.classm/jobs.json`. If the former sa cases' evidence is wanted
   back, merge the old jobs (HANDOFF-STAGE-16, "Class M jobs").
 - **Flags for the owner's judgment:**
-  - The OpenTaxSolver adapter allows up to 13–17 cents of difference on some tax lines (`OTS_SUBCENT`), set from
-    the count of unrounded multiplications and the observed spread. Spec 6.2 forbids tolerance by margin; the
-    allowance needs a derived per-line bound like the float categories, or must go.
+  - Resolved 2026-10-27: the OpenTaxSolver cents allowance (`OTS_SUBCENT`) is replaced by the exact `unrounded`
+    category in `tools/engines/compare.py` (OTS keeps fractions of a cent; values crossing its programs are printed
+    cents); no tolerance by margin remains (spec 6.2).
   - The second-transcription prompt shows the project's own labels for printed lines, including authored helper
     labels (the Schedule A agent saw "Amount from sa.agi_floor" in the prompt), so a second transcriber can follow
     the project's structure rather than the page's. A TASKS row is warranted.

@@ -11,11 +11,13 @@ Categories per (engine, case, line):
   float          engine differs by no more than two units in the last place of its
                  floating-point representation (float32 for PolicyEngine-US, float64
                  for Tax-Calculator), a bound derived from the engine's precision
-  subcent        for an engine of precision "decimal2" (OpenTaxSolver: doubles printed
-                 to the cent, nothing rounded in between), the engine differs by no more
-                 than one cent per unrounded rate multiplication it carries into the
-                 line, the count declared per line by its adapter (`components`); the
-                 project rounds each product to the cent (amb.<year>.multiplication_subcent)
+  unrounded      for an engine of precision "decimal2" (OpenTaxSolver: doubles, nothing
+                 rounded, each program's lines printed to the cent), the engine equals
+                 the project's own derivation of the line re-evaluated in exact
+                 arithmetic without the project's cent rounding of products and ratios
+                 (amb.<year>.multiplication_subcent), each value that passes between the
+                 engine's programs taken at its printed cent, and the result printed to
+                 the cent (UnroundedModel); an identified cause, not a tolerance
   excluded       the engine cannot model a feature of the case; reason recorded. The
                  features are the generator's, those derived here from the project's own
                  values, and those the engine's adapter reports about its own run
@@ -43,7 +45,7 @@ together with the category counts above, the engine's version and its
 pass-through declarations (run_engines.py). The summary's not_computed_floor
 records the floor, the allow-list and any line over it.
 """
-import argparse, json, sys, os
+import argparse, glob, json, math, re, sys, os
 from fractions import Fraction
 from collections import Counter, defaultdict
 
@@ -190,20 +192,357 @@ def schedule_mode_expectations(values, case, t):
 
 
 def float_bound_cents(precision, engine_cents, components=1):
-    """Cents of difference attributable to the engine's arithmetic: for a floating-point
-    engine, two units in the last place of the engine value in dollars (float32 or
-    float64) per summed engine variable, never less than one cent; for a "decimal2"
-    engine (doubles printed to the cent, nothing rounded in between), one cent per
-    unrounded rate multiplication the adapter declares for the line."""
-    import math
-    if precision == "decimal2":
-        return max(1, int(components))
+    """Cents of difference attributable to a floating-point engine's arithmetic: two units in
+    the last place of the engine value in dollars (float32 or float64) per summed engine
+    variable, never less than one cent."""
     dollars = abs(engine_cents) / 100.0
     if dollars == 0:
         return 1
     mantissa_bits = 23 if precision == "float32" else 52
     ulp = 2.0 ** (math.floor(math.log2(dollars)) - mantissa_bits)
     return max(1, math.ceil(2 * ulp * 100 * components))
+
+
+# ---------------------------------------------------------------------------------------------
+# The `unrounded` reading: an engine that holds fractions of a cent (OpenTaxSolver) modelled exactly
+
+# How far the double an engine holds can be from the exact value. For amounts under 2^30 cents
+# (about $10.7 million; larger lines are not modelled) a double's unit in the last place is
+# under 2.4e-7 cent; a line's
+# chain of at most a few hundred operations, each rounding to half a unit, and the decimal
+# inputs and rates, each read to half a unit, stay under 1e-4 cent. Only an exact value nearer
+# than this to a half cent can print either way, and only a comparison or a table edge nearer
+# than this can go either way in the engine.
+DOUBLE_SLACK = Fraction(1, 1000)
+MODELLED_LIMIT = 2 ** 30
+# Lines the project reports as one value that the engine prints as the parts the adapter adds.
+VIRTUAL_PARTS = {"f8959.tax": ["f8959.line18"], "f8960.tax": ["f8960.line17"],
+                 "f1040.tax_before_credits": ["f1040.line18", "f1040.line23"]}
+
+
+def load_lines():
+    """Every canonical line by id (definition lines as <def>.<line>) and every table by id."""
+    lines, tables = {}, {}
+    for path in glob.glob(os.path.join(ROOT, "canonical", Y, "*.json")):
+        doc = json.load(open(path))
+        if isinstance(doc, dict) and isinstance(doc.get("form"), dict):
+            for l in doc["form"]["lines"]:
+                lines[l["id"]] = l
+        if isinstance(doc, dict) and isinstance(doc.get("def"), dict):
+            for l in doc["def"]["lines"]:
+                lines[f"{doc['def']['id']}.{l['id']}"] = l
+    for path in glob.glob(os.path.join(ROOT, "canonical", Y, "tables", "*.json")):
+        t = json.load(open(path))["table"]
+        tables[t["id"]] = t
+    return lines, tables
+
+
+def prints(x):
+    """The cents a double near exact value x (cents) prints as with "%.2f": the nearer cent,
+    or both neighbours when x is within the engine's slack of a half cent."""
+    lo = math.floor(x)
+    if abs(x - lo - Fraction(1, 2)) < DOUBLE_SLACK:
+        return {lo, lo + 1}
+    return {lo if x - lo < Fraction(1, 2) else lo + 1}
+
+
+class UnroundedModel:
+    """The project's derivation of one case re-evaluated as an engine that does not round
+    computes it.
+
+    Each derivation records its atom and its operands in evaluation order; this walks the
+    same graph in exact rational arithmetic: a product or a prorated amount keeps its fraction
+    (the project rounds it half-up to the cent), every other atom does what the project's does.
+    A value that crosses from one of the engine's programs to another (`programs` in the
+    adapter's `unrounded` declaration) is taken at the cent it prints; at an exact tie the
+    engine's own printed line, where it shows one, says which cent it was. A line the adapter
+    supplies as an amount (`supplied`) is that amount, and is modelled only where it equals the
+    project's value, so a difference of substance is never absorbed. Where the exact values
+    send a choice, a test or a table lookup another way than the project's, the model follows
+    only when every alternative is a line the project evaluated and all agree; otherwise the
+    line is not modelled (None) and its difference must be explained like any other."""
+
+    def __init__(self, values, spec, supplied, engine_values, lines, tables):
+        self.V, self.lines, self.tables = values, lines, tables
+        self.supplied, self.ev = supplied, engine_values
+        self.programs = [(re.compile(p), name) for p, name in spec.get("programs", [])]
+        self.engine_line = spec.get("engine_line", {})
+        self.first_pass = spec.get("first_pass", {})
+        self.memo, self.program_memo = {}, {}
+
+    # -- the engine's structure
+    def program(self, key):
+        if key not in self.program_memo:
+            self.program_memo[key] = next((name for p, name in self.programs if p.search(key)), "Form 1040")
+        return self.program_memo[key]
+
+    def printed(self, key):
+        """The cent the engine prints for a line and the next program reads, or None."""
+        x = self.value(key)
+        if not isinstance(x, Fraction):
+            return None
+        s = prints(x)
+        if len(s) == 1:
+            return Fraction(s.pop())
+        at = key
+        for _ in range(20):        # follow copies to the engine line that shows the value
+            e = self.ev.get(self.engine_line.get(at, at))
+            if e is not None:
+                return Fraction(e) if e in s else None
+            d = self.V.get(at)
+            if d is None or d["op"] != "copy" or not d["operands"]:
+                return None
+            at = d["operands"][-1]["ref"]
+        return None
+
+    def predicted(self, line):
+        """The set of cents the engine can print for a compared line, or None if not modelled."""
+        parts = VIRTUAL_PARTS.get(line, [line])
+        sets = []
+        for p in parts:
+            x = self.value(p)
+            if not isinstance(x, Fraction) or abs(x) >= MODELLED_LIMIT:
+                return None
+            sets.append(prints(x))
+        out = {0}
+        for s in sets:
+            out = {a + b for a in out for b in s}
+        return out
+
+    # -- reading derivations
+    @staticmethod
+    def plain(v):
+        k = v.get("kind")
+        if k == "money":
+            return Fraction(v["cents"])
+        if k == "rate":
+            return Fraction(v["num"], v["den"])
+        if k in ("bool", "enum", "count"):
+            return v["value"]
+        return None
+
+    @staticmethod
+    def is_constant(ref):
+        return ref.startswith("#") or ref in ("true", "false") or ref.startswith('"') or re.fullmatch(r"-?\d+(\.\d+)?", ref) is not None
+
+    def line_of(self, key):
+        """The canonical line a derivation key evaluates, and the key of its frame."""
+        if "|inst:" in key:
+            cut = key.rfind("}.")
+            frame = key[:cut + 1]
+            seg = frame[frame.rfind("|inst:") + 6:]
+            return self.lines.get(f"{seg[:seg.find('#')]}.{key[cut + 2:]}"), frame
+        if "]" in key:
+            cut = key.rfind("]")
+            frame = key[:cut + 1]
+            seg = frame[frame.rfind(".") + 1:]
+            return self.lines.get(f"{seg[:seg.find('[')]}.{key[cut + 2:]}"), frame
+        return self.lines.get(key), None
+
+    @staticmethod
+    def canonical(frame, line_id, raw):
+        if frame is None:
+            return raw
+        if "|inst:" in frame:
+            return f"{frame}.{raw}"
+        doc = line_id.split(".")[0]
+        return f"{frame}.{raw[len(doc) + 1:]}" if raw.startswith(doc + ".") else raw
+
+    @staticmethod
+    def instance_key(frame, sub):
+        bind = json.dumps(sub["bind"], separators=(",", ":"), ensure_ascii=False)
+        local = sub["line"][len(sub["def"]) + 1:] if sub["line"].startswith(sub["def"] + ".") else sub["line"]
+        return f"{frame or 'root'}|inst:{sub['def']}#{bind}.{local}"
+
+    def operand(self, o, consumer):
+        r = o["ref"]
+        if r in self.V:
+            if o["value"].get("kind") == "money" and self.program(r) != self.program(consumer):
+                return self.printed(r)
+            return self.value(r)
+        if self.is_constant(r):
+            return self.plain(o["value"])
+        return None
+
+    def test(self, t, it, consumer):
+        """Consume the operands the project's evaluator pushed for test t, in its order; return
+        the project's outcome and the model's (None when the model cannot say)."""
+        if "all" in t or "any" in t:
+            is_all = "all" in t
+            for sub in t["all" if is_all else "any"]:
+                p, x = self.test(sub, it, consumer)
+                if p != is_all:
+                    return (not is_all), ((not is_all) if x == p else None)
+                if x != p:
+                    return is_all, None
+            return is_all, is_all
+        if "not" in t:
+            p, x = self.test(t["not"], it, consumer)
+            return (not p), (None if x is None else not x)
+        key = next(k for k in ("eq", "ne", "lt", "le", "gt", "ge") if k in t)
+        a, b = next(it), next(it)
+        pa, pb = self.plain(a["value"]), self.plain(b["value"])
+        xa, xb = self.operand(a, consumer), self.operand(b, consumer)
+        rel = {"eq": lambda u, w: u == w, "ne": lambda u, w: u != w, "lt": lambda u, w: u < w,
+               "le": lambda u, w: u <= w, "gt": lambda u, w: u > w, "ge": lambda u, w: u >= w}[key]
+        p = rel(pa, pb)
+        if xa is None or xb is None:
+            return p, None
+        if isinstance(xa, Fraction) and isinstance(xb, Fraction) and (xa, xb) != (pa, pb) and abs(xa - xb) < DOUBLE_SLACK:
+            return p, None
+        return p, rel(xa, xb)
+
+    def value(self, key):
+        if key not in self.memo:
+            self.memo[key] = None          # a cycle is not modelled
+            self.memo[key] = self._value(key)
+        return self.memo[key]
+
+    def _value(self, k):
+        d = self.V[k]
+        op, val, ops = d["op"], d["value"], list(d["operands"])
+        if k in self.supplied:
+            return Fraction(val["cents"]) if val.get("kind") == "money" and val["cents"] == self.supplied[k] else None
+        if op in ("input", "param"):
+            return self.plain(val)
+        if op == "gate":
+            return None
+        line, frame = self.line_of(k)
+        if op == "bound":
+            if not ops:
+                return self.plain(val)
+            r = ops[0]["ref"]
+            if r not in self.V and not self.is_constant(r):
+                caller = k[:k.rfind("|inst:")]
+                for cand in (f"{caller}.{r}", f"{caller}.{r.split('.', 1)[-1]}"):
+                    if cand in self.V:
+                        return self.value(cand)
+                return None
+            return self.operand(ops[0], k)
+        if line is None:
+            return None
+        expr = line["expr"]
+        gates = len(line.get("refuses") or [])
+        if any(self.operand(g, k) is not False for g in ops[:gates]):
+            return None
+        it = iter(ops[gates:])
+        if op == "test":
+            return self.test(expr, it, k)[1]
+        if op == "choose":
+            taken = next((json.loads(n[len("taken: "):]) for n in d["notes"] if n.startswith("taken: ")), None)
+            alts = expr["alternatives"]
+            gi = next((i for i, a in enumerate(alts) if a["guard"] == taken), None)
+            if gi is None:
+                return None
+            for alt in alts[:gi + 1]:
+                p, x = self.test(alt["guard"], it, k)
+                if x != p:
+                    refs = [self.canonical(frame, line["id"], a["then"]) if isinstance(a["then"], str) else None for a in alts]
+                    if all(r in self.V for r in refs):
+                        vals = {self.value(r) for r in refs}
+                        if len(vals) == 1 and None not in vals:
+                            return vals.pop()
+                    return None
+            then = alts[gi]["then"]
+            if isinstance(then, str):
+                return self.operand(next(it), k)
+            inner = self.instance_key(frame, then)
+            return self.value(inner) if inner in self.V else None
+        if op == "copy(instance)":
+            inner = self.instance_key(frame, expr["from"])
+            return self.value(inner) if inner in self.V else None
+        if op == "sum_over":
+            where, total = expr.get("where"), Fraction(0)
+            while True:
+                try:
+                    if where:
+                        p, x = self.test(where, it, k)
+                        if x != p:
+                            return None
+                        if not p:
+                            continue
+                    o = next(it)
+                except StopIteration:
+                    break
+                x = self.operand(o, k)
+                if x is None:
+                    return None
+                total += x
+            return total if val.get("kind") in ("money", "count") else None
+        xs = []
+        for o in it:
+            x = self.operand(o, k)
+            if x is None:
+                return None
+            xs.append((o["ref"], o["value"].get("kind"), x))
+        money = [x for _, kind, x in xs if kind == "money"]
+        # Where the exact operand is the project's own, a band or step edge is the project's
+        # decision; where it moved, an edge within the engine's slack is not modelled.
+        moved = bool(money) and money[0] != self.plain(next(o["value"] for o in ops[gates:] if o["value"].get("kind") == "money"))
+        slack = DOUBLE_SLACK if moved else 0
+        if k in self.first_pass:
+            between = self.value(self.first_pass[k])
+            if not isinstance(between, Fraction):
+                return None
+            if between != 0:
+                # The adapter read the other operand from the first Form 1040 pass, before the
+                # named deduction: not below the final pass's value, so only the smaller-of's
+                # other operand, at or under the final value, is the same either way.
+                return money[0] if op == "smaller_of" and money[0] <= money[1] else None
+        if op == "copy":
+            return xs[-1][2] if xs else None
+        if op == "sum":
+            return sum(money, Fraction(0))
+        if op in ("subtract", "subtract_floor0"):
+            r = money[0] - money[1]
+            return max(Fraction(0), r) if op == "subtract_floor0" else r
+        if op == "smaller_of":
+            return min(money)
+        if op == "larger_of":
+            return max(money)
+        if op == "multiply_count":
+            return next(x for _, kind, x in xs if kind == "count") * money[0]
+        if op == "multiply_rate":
+            return next(x for _, kind, x in xs if kind == "rate") * money[0]
+        if op == "prorate":
+            # The ratio unrounded (OpenTaxSolver divides; the project rounds it to the places the
+            # instruction names), not above one, times the amount, unrounded.
+            def named(field):
+                r = expr[field]
+                return next(x for ref, _, x in xs if ref == r or ref.endswith("." + r.split(".", 1)[-1]))
+            amount, part, whole = named("amount"), named("part"), named("whole")
+            if whole <= 0:
+                return None
+            return amount * min(Fraction(1), max(Fraction(0), part / whole))
+        if op == "round":
+            u, x = expr["unit"], money[0]
+            cell = {"up": lambda v: math.ceil(v / u), "down": lambda v: math.floor(v / u),
+                    "half_up": lambda v: math.floor(v / u + Fraction(1, 2))}.get(expr["rule"])
+            if cell is None or cell(x - slack) != cell(x + slack):
+                return None
+            return Fraction(cell(x) * u)
+        if op == "keyed_lookup":
+            return self.plain(val)
+        if op == "rate_lookup":
+            x = money[0]
+            m = re.match(r"band over (\S+) but not over (\S+)", d["notes"][0])
+            lo = None if m.group(1) == "-" else int(m.group(1))
+            hi = None if m.group(2) == "-" else int(m.group(2))
+            if (lo is None or x - slack > lo) and (hi is None or x + slack <= hi):
+                return self.plain(val)
+            return None
+        if op == "table_lookup":
+            x = money[0]
+            status = next(x for _, kind, x in xs if kind == "enum")
+            t = self.tables.get(expr["table"])
+            if t is None:
+                return None
+            col = next((i for i, c in enumerate(t["columns"]) if status in c["statuses"]), None)
+            band = next((b for b in t["bands"] if b["at_least"] <= x < b["less_than"]), None)
+            if col is None or band is None or x - slack < band["at_least"] or x + slack >= band["less_than"]:
+                return None
+            return Fraction(band["tax"][col])
+        return None
 
 
 def derived_features(case, values):
@@ -335,6 +674,7 @@ def main():
     engines = json.load(open(a.engines))["engines"]
     investigations = json.load(open(a.investigations))
     tables = load_tables()
+    canonical_lines, canonical_tables = load_lines()
 
     stats = defaultdict(Counter)          # (engine, line) -> category counts
     summary = defaultdict(Counter)        # (engine, line) -> compared / nonzero counts for the JSON summary
@@ -347,7 +687,10 @@ def main():
             schedule_mode = schedule_mode_expectations(values, case, tables)
             # An engine that uses the Tax Table itself (OpenTaxSolver) has no table-adjusted reading.
             uses_table = bool(eng.get("tax_table"))
-            subcent = eng.get("precision") == "decimal2"
+            # An engine that holds fractions of a cent is read through the model of its arithmetic,
+            # built only when a difference needs it.
+            unrounded = eng.get("precision") == "decimal2"
+            model = None
             for line, ev in elines.items():
                 pv, kind = project_line(values, line)
                 reason = next((l["reason"] for l in eng["limitations"] if l["feature"] in feats and line in l["lines"]), None)
@@ -366,15 +709,21 @@ def main():
                 if pv != 0:
                     summary[(ename, line)]["compared_nonzero"] += 1
                 diff = ev - pv
-                bound = float_bound_cents(eng.get("precision", "float64"), ev, eng.get("components", {}).get(line, 1))
                 if diff == 0:
                     stats[(ename, line)]["exact"] += 1; continue
+                if unrounded:
+                    if model is None:
+                        model = UnroundedModel(values, eng.get("unrounded", {}), eng.get("supplied", {}).get(cid, {}), elines,
+                                               canonical_lines, canonical_tables)
+                    if ev in (model.predicted(line) or ()):
+                        stats[(ename, line)]["unrounded"] += 1; continue
+                bound = 0 if unrounded else float_bound_cents(eng.get("precision", "float64"), ev, eng.get("components", {}).get(line, 1))
                 if not uses_table and line in TAX_LINES and schedule_mode[line] != pv and abs(ev - schedule_mode[line]) <= bound:
                     stats[(ename, line)]["table-adjusted"] += 1; continue
                 if not uses_table and line == "f1040.line27a" and (ef := eic_formula(values, tables)) is not None and abs(ev - ef) <= max(bound, 100):
                     stats[(ename, line)]["table-adjusted"] += 1; continue
-                if abs(diff) <= bound:
-                    stats[(ename, line)]["subcent" if subcent else "float"] += 1; continue
+                if not unrounded and abs(diff) <= bound:
+                    stats[(ename, line)]["float"] += 1; continue
                 cause = next((inv for inv in investigations
                               if inv["engine"] == ename and inv["line"] == line
                               and (inv.get("case") == cid or (inv.get("feature") and inv["feature"] in feats))), None)
@@ -389,7 +738,7 @@ def main():
                  f"Cases: {len(cases)} generated returns, single, head of household and married filing jointly (tools/engines/generate_cases.py). "
                  "Engines run locally under .engines/ (tools/engines/setup.sh); versions: "
                  + ", ".join(f"{n} {e['version']}" for n, e in engines.items()) + ".", "",
-                 f"`table-adjusted` means the engine equals the project's tax lines recomputed with every Tax Table lookup replaced by the rate schedule (engines compute from the schedule where the form prescribes the table), keeping the worksheet path and re-taking its smaller-of; an identified cause, not a tolerance. For Form 1040 line 27a, `table-adjusted` means the engine is within $1 of the project's Worksheet A path recomputed with each EIC Table lookup replaced by the credit at the exact amount (the engines compute from the formula where the instructions prescribe the table built at each $50 band's midpoint); the $1 allows for the engines' statutory percentages, which the archive does not hold, against the rates the Rev. Proc. 2024-40 amounts imply (at most about $0.20 apart over the table's range). `float` means the difference is within two units in the last place of the engine's floating-point representation (PolicyEngine-US computes in float32, Tax-Calculator in float64), a bound derived from the engine's precision. `subcent` (OpenTaxSolver, which computes in doubles and prints to the cent without rounding in between) means the difference is within one cent per unrounded rate multiplication the adapter declares for the line, where the project rounds each product to the cent. OpenTaxSolver builds its tax from the Tax Table below $100,000 as the form does, so it has no `table-adjusted` reading. `excluded` lines carry the engine limitation stated below; the features that trigger them are the generator's, those read off the project's values, and those the engine's adapter reports about its own run. Every other difference must be explained in fixtures/{Y}/differential/engine_investigations.json or the run fails.", ""]
+                 f"`table-adjusted` means the engine equals the project's tax lines recomputed with every Tax Table lookup replaced by the rate schedule (engines compute from the schedule where the form prescribes the table), keeping the worksheet path and re-taking its smaller-of; an identified cause, not a tolerance. For Form 1040 line 27a, `table-adjusted` means the engine is within $1 of the project's Worksheet A path recomputed with each EIC Table lookup replaced by the credit at the exact amount (the engines compute from the formula where the instructions prescribe the table built at each $50 band's midpoint); the $1 allows for the engines' statutory percentages, which the archive does not hold, against the rates the Rev. Proc. 2024-40 amounts imply (at most about $0.20 apart over the table's range). `float` means the difference is within two units in the last place of the engine's floating-point representation (PolicyEngine-US computes in float32, Tax-Calculator in float64), a bound derived from the engine's precision. `unrounded` (OpenTaxSolver, which computes in doubles, rounds nothing and prints each program's lines to the cent) means the engine equals the project's own derivation of the line re-evaluated in exact arithmetic without the project's half-up cent rounding of products and ratios (amb.{Y}.multiplication_subcent), with each amount that passes between the engine's programs taken at the cent it prints and the result printed to the cent; where the exact value is within 1/1000 cent of a half cent either neighbouring cent is the print (an engine double stays within 1/10,000 cent of the exact value at these amounts). No difference is allowed beyond what that recomputation gives; a line the adapter supplies as an amount is recomputed only where the project's value is that amount, and a case whose exact values take another branch, test or table band than the project's is not recomputed. An identified cause, not a tolerance. OpenTaxSolver builds its tax from the Tax Table below $100,000 as the form does, so it has no `table-adjusted` reading. `excluded` lines carry the engine limitation stated below; the features that trigger them are the generator's, those read off the project's values, and those the engine's adapter reports about its own run. Every other difference must be explained in fixtures/{Y}/differential/engine_investigations.json or the run fails.", ""]
     # The not-computed floor: the share of the engine's cases on which the project left the line without a
     # value, outside the allow-list's unfiled-form cases.
     shares, floor_failures = {}, []
@@ -403,13 +752,13 @@ def main():
                   "(a refusal, an unknown input, a non-money value), measured outside the allow-listed returns that do not file the form: "
                   + "; ".join(f"{line} unknown where `{inp}` is false ({reason})" for line, (inp, reason) in sorted(NOT_COMPUTED_ALLOW.items())) + ".", ""]
     for ename in engines:
-        lines_out += [f"## {ename}", "", "| line | exact | table-adjusted | float | subcent | excluded | explained | UNEXPLAINED | not computed | not computed outside the allow-list (share) |",
+        lines_out += [f"## {ename}", "", "| line | exact | table-adjusted | float | unrounded | excluded | explained | UNEXPLAINED | not computed | not computed outside the allow-list (share) |",
                       "| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |"]
         for (en, line), c in sorted(stats.items()):
             if en != ename: continue
             notc = sum(v for k, v in c.items() if k.startswith("project-"))
             outside = notc - summary[(ename, line)]["not_computed_allowed"]
-            lines_out.append(f"| {line} | {c['exact']} | {c['table-adjusted']} | {c['float']} | {c['subcent']} | {c['excluded']} | {c['explained']} | {c['UNEXPLAINED']} | {notc} | {outside} ({shares[(ename, line)]:.1%}) |")
+            lines_out.append(f"| {line} | {c['exact']} | {c['table-adjusted']} | {c['float']} | {c['unrounded']} | {c['excluded']} | {c['explained']} | {c['UNEXPLAINED']} | {notc} | {outside} ({shares[(ename, line)]:.1%}) |")
         lines_out.append("")
         reasons = {r for (en, _), rc in excluded_reasons.items() if en == ename for r in rc}
         if reasons:
@@ -440,7 +789,7 @@ def main():
                               "compared": sm["compared"], "compared_nonzero": sm["compared_nonzero"],
                               "excluded": c["excluded"], "excluded_nonzero": sm["excluded_nonzero"],
                               "unexplained": c["UNEXPLAINED"], "exact": c["exact"], "table_adjusted": c["table-adjusted"],
-                              "float": c["float"], "subcent": c["subcent"], "explained": c["explained"],
+                              "float": c["float"], "unrounded": c["unrounded"], "explained": c["explained"],
                               "not_computed": sum(v for k, v in c.items() if k.startswith("project-")),
                               "not_computed_allowed": sm["not_computed_allowed"],
                               "not_computed_share": round(shares[(ename, line)], 4)}

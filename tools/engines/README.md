@@ -116,10 +116,22 @@ form sends three qualifying children to Part II-B (`three_or_more_children`).
 OTS uses the Tax Table below $100,000 as the form does (its `TaxRateFunction`
 quantizes to the table's bands and rounds; checked against every cell of the
 pinned table), so its tax lines are compared `exact`, never `table-adjusted`.
-It holds fractions of a cent through its arithmetic and prints to the cent; the
-project rounds each rate multiplication to the cent, so differences of a cent
-per such multiplication appear and are the `subcent` category, with the count
-of multiplications declared per line in `OTS_SUBCENT`.
+It holds fractions of a cent through its arithmetic (no program rounds in cents
+mode: `Conditional_Round` returns its argument) and prints each line to the
+cent, and every amount one program passes to another is that printed cent; the
+project rounds each product and ratio half-up to the cent. A difference this
+causes is the `unrounded` category, and only where `compare.py`'s
+`UnroundedModel` reproduces it exactly: the project's own derivation of the
+case re-evaluated in rational arithmetic with no product or ratio rounded, each
+value crossing between programs taken at its printed cent, and the line printed
+to the cent. The adapter declares which program computes which project line and
+the amounts it supplies in place of a computation (`OTS_UNROUNDED`,
+`supplied_amounts`); a supplied line is reproduced only where the project's
+value is the amount supplied, and a case whose exact values take another
+branch, test or table band than the project's is not reproduced. There is no
+allowance in cents; the only latitude is at an exact value within 1/1000 cent
+of a half cent, where the engine's double (within 1/10,000 cent of the exact
+value at these amounts) can print either neighbour.
 
 ## Pipeline
 
@@ -198,9 +210,11 @@ floor also bounds how much of the generated population the project refuses.
   project's own pinned table and schedule.
 - **float** — within two units in the last place of the engine's floating
   point representation, derived from its precision.
-- **subcent** — OpenTaxSolver only: within one cent per unrounded rate
-  multiplication the adapter declares for the line, where the project rounds
-  each product to the cent (amb.2025.multiplication_subcent).
+- **unrounded** — OpenTaxSolver only: the engine equals the project's
+  derivation of the line recomputed without the project's cent rounding of
+  products and ratios (amb.2025.multiplication_subcent), values passed between
+  the engine's programs at their printed cents, printed to the cent (above). An
+  identified cause, not a tolerance.
 - **excluded** — the engine cannot model a feature of the case. Each rule
   names the feature, the lines and the reason (`run_engines.py`, the
   `*_LIMITATIONS` lists; `ots_adapter.limitations()`). Some features are read
