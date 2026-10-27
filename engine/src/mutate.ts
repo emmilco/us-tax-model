@@ -46,7 +46,7 @@ function lineType(data: CanonicalData, doc: FormDoc, id: string): string | undef
   return doc.lines.find((l) => l.id === id)?.type;
 }
 
-function mutations(data: CanonicalData): Mutation[] {
+export function mutations(data: CanonicalData): Mutation[] {
   const out: Mutation[] = [];
 
   for (const doc of allDocs(data)) {
@@ -205,27 +205,11 @@ function mutations(data: CanonicalData): Mutation[] {
   return out;
 }
 
-// Survivors that are provably equivalent mutants, with the reason. The score
+// Survivors classified equivalent, with the reason, filled at run time by the structural rules and
+// by the conditional table below. There is no table of prose-only arguments: an equivalence is either
+// checked against the current data on every run or the survivor is killed by a fixture. The score
 // is reported raw and adjusted (equivalents excluded from the denominator).
-const EQUIVALENT: Record<string, string> = {
-  "boundary.eic.eic.self_employed": "With no Schedule C (the only case the boundary changes, a count of zero), Worksheet B's line 4b is the Step 5 earned income plus zero, and line 6 is that amount floored at zero; the Step 5 earned income is line 1z of Form 1040 (Step 5 lines 2 and 4 are zero in this tool) and is never negative, so eic.line1, eic.earned_for_limit and the Schedule 8812 chart amount take the same value on either route.",
-  "boundary.sc.sc.ho_over": "At exactly 300 square feet both branches give the same amount: $5 times the square feet used and $5 times 300.",
-  "boundary.se.positive": "The boundary changes only the case where line 3 is zero, where 92.35% of line 3 and line 3 itself are both zero.",
-  "operand.eic.eic.wsb_4b.earned_income": "eic.earned_income is Step 5 line 3 plus line 4, and line 4 (nontaxable combat pay) is zero in this tool (eic.zero, refused otherwise), so the two operands are equal at every input.",
-  "operand.eic.eic.wsb_6.zero": "Both operands are the zero line: Step 5 line 4 copies eic.zero (combat pay is refused).",
-  "operand.person.person.sep_s1.sc_total": "person.se_line2 copies person.sc_total, adding only the Schedule SE refusal; step 1 is read only by step 3, which also reads step 2 (person.se_line13), and step 2 refuses exactly when person.se_line2 does, so step 3 and everything after it are the same.",
-  "operand.person.person.simple_catchup.simple_regular": "person.simple_regular is the smaller of the deferral and the $16,500 limit, so the deferral less it, floored at zero, equals the deferral less $16,500 floored at zero at every input.",
-  "operand.s179.s179.line13.line12": "Line 12 is the smaller of lines 9 + 10 and line 11, so (lines 9 + 10) less line 12, floored at zero, equals (lines 9 + 10) less line 11, floored at zero, at every input.",
-  "operand.s8812.s8812.eiw_3.zero": "Both operands are zero: Earned Income Worksheet line 1b (nontaxable combat pay) copies the zero line in this tool, refused otherwise.",
-  "operand.scveh.scveh.d5.l5": "For a 2019 vehicle (the only one whose year-5 deduction is read) the year-4 and year-5 limits are both $5,760 (tables/2025/auto_limit.yaml), and every 5-year column of the GDS tables has a year-4 rate at least its year-5 rate (hy, mq1, mq2 equal; mq3 12.24 and 11.30; mq4 13.68 and 10.94), so min(min(l4, t4), t5) = min(l5, t5).",
-  "operand.scveh.scveh.d6.l6": "For a 2019 vehicle the year-5 and year-6 limits are both $5,760, and every 5-year column has a year-5 rate at least its year-6 rate, so min(min(l5, t5), t6) = min(l6, t6).",
-  "operand.scveh.scveh.l5.k5": "The 2019 rows for years 4 and 5 of tables/2025/auto_limit.yaml hold the same limit, $5,760, and only a 2019 vehicle's year-5 limit is read.",
-  "operand.scveh.scveh.l6.k6": "The 2019 rows for years 5 and 6 of tables/2025/auto_limit.yaml hold the same limit, $5,760, and only a 2019 vehicle's year-6 limit is read.",
-  "operand.scveh.scveh.line17.line16": "scveh.bonus_allowed is the smaller of line 16 and line 11, so line 11 less it, floored at zero, equals line 11 less line 16, floored at zero, at every input.",
-  "operand.qdcg.qdcg.line8.line7":
-    "Provably equivalent: line 8 is min(line 5, line 7) and line 7 is min(line 1, line 6) with line 5 ≤ line 1; " +
-    "min(line 5, min(line 1, line 6)) = min(line 5, line 6), so substituting line 6 for line 7 cannot change any value.",
-};
+const EQUIVALENT: Record<string, string> = {};
 
 // The copy-chain normal form of a line: copies are followed to a parameter or a computed
 // line, and each refusal gate met on the way is kept unless it is already known false.
@@ -258,8 +242,11 @@ function lineOf(mutation: Mutation): string {
 
 // Every line id an expression reads, in evaluation order (parameter references,
 // collection names and constants are not lines).
+const lineIdSets = new WeakMap<CanonicalData, Set<string>>();
+
 function operandRefs(data: CanonicalData, expr: unknown): string[] {
-  const ids = new Set(allDocs(data).flatMap((doc) => doc.lines.map((l) => l.id)));
+  let ids = lineIdSets.get(data);
+  if (!ids) { ids = new Set(allDocs(data).flatMap((doc) => doc.lines.map((l) => l.id))); lineIdSets.set(data, ids); }
   const out: string[] = [];
   const skip = new Set(["ref", "collection", "const", "cite", "type", "op", "unit", "rule", "source", "label"]);
   const walk = (node: unknown): void => {
@@ -310,24 +297,221 @@ function sharedGateEquivalence(data: CanonicalData, mutation: Mutation): string 
   return `Shared-gate identity: ${x} and ${gated.join(", ")} are the same value behind the same refusal gates (${[...new Set(gateWhens(nx))].join(", ")}) with identical refusal text, and ${y} is that value ungated; whichever operand refuses, the sum carries the same refusal, and when none does the operands are equal.`;
 }
 
+// The replaced operand and its replacement, from an operand mutation's note.
+function replacedPair(mutation: Mutation): [string, string] | undefined {
+  if (mutation.kind !== "replace an operand" || !mutation.note) return undefined;
+  const match = /^(\S+) -> (\S+) /.exec(mutation.note);
+  return match ? [match[1]!, match[2]!] : undefined;
+}
+
+function docOfLine(data: CanonicalData, id: string): FormDoc | undefined {
+  return allDocs(data).find((doc) => doc.lines.some((l) => l.id === id));
+}
+
+// Whether line `id` reads `target`, directly or through its operands or refusal gates. A rule that
+// compares the two operands of a mutated line is sound only when neither depends on that line.
+function dependsOn(data: CanonicalData, id: string, target: string, seen: Set<string> = new Set()): boolean {
+  if (id === target) return true;
+  if (seen.has(id)) return false;
+  seen.add(id);
+  const l = findLine(data, id);
+  if (!l) return false;
+  return [...operandRefs(data, l.expr), ...(l.refuses ?? []).map((r) => r.when)].some((r) => dependsOn(data, r, target, seen));
+}
+
+function independentOperands(data: CanonicalData, mutation: Mutation, pair: [string, string]): boolean {
+  const line = lineOf(mutation);
+  return !dependsOn(data, pair[0], line) && !dependsOn(data, pair[1], line);
+}
+
+// A line no value sheet prints: its own value may change under a mutation without being observed.
+function isHelper(data: CanonicalData, id: string): boolean {
+  return findLine(data, id)?.printed === "(helper)";
+}
+
+// Floor-minus-min: subtract_floor0{from: A, take: M} with M an ungated smaller_of of A and B (either
+// order) has the same value as subtract_floor0{from: A, take: B}: max(0, A - min(A, B)) = max(0, A - B)
+// for known amounts, and both read A first and then B (directly or through M, which stops at a refused
+// A), so the same refusal, or an unknown, wins (spec 4.7.4). Accepted in either direction.
+function floorMinusMin(data: CanonicalData, mutation: Mutation): string | undefined {
+  const pair = replacedPair(mutation); if (!pair || !independentOperands(data, mutation, pair)) return undefined;
+  const [x, y] = pair;
+  const e = findLine(data, lineOf(mutation))?.expr;
+  if (e?.op !== "subtract_floor0" || typeof e.from !== "string" || e.take !== x) return undefined;
+  const a = e.from;
+  const minOf = (m: string, b: string): boolean => {
+    const l = findLine(data, m);
+    if (!l || (l.refuses ?? []).length || l.expr.op !== "smaller_of") return false;
+    const of = l.expr.of as unknown[];
+    return of.length === 2 && a !== b && of.includes(a) && of.includes(b);
+  };
+  if (!minOf(x, y) && !minOf(y, x)) return undefined;
+  return `Floor-minus-min identity: ${lineOf(mutation)} is ${a} less ${x}, floored at zero, and one of ${x} and ${y} is the ungated smaller of ${a} and the other, so ${a} less either, floored at zero, is the same at every input; ${a} is read first on both routes and the other operand second, so the same refusal or unknown wins.`;
+}
+
+// The facts a reader adds to a path: when a choose takes the line only as the value of some
+// alternatives (never in a guard), the disjunction of those alternatives' guards holds wherever it
+// reads the line. Readers through a refusal gate or a display condition add nothing.
+type ReaderStep = { reader: Line; doc: FormDoc; fact: unknown[] | undefined };
+const readerIndexes = new WeakMap<CanonicalData, Map<string, ReaderStep[]>>();
+
+function readerSteps(data: CanonicalData, id: string): ReaderStep[] {
+  let index = readerIndexes.get(data);
+  if (!index) {
+    index = new Map();
+    for (const doc of allDocs(data)) for (const l of doc.lines) {
+      const expr = new Set(operandRefs(data, l.expr));
+      const gates = new Set([...(l.refuses ?? []).map((r) => r.when), ...(l.shown_when ? [l.shown_when] : [])]);
+      const alts = l.expr.op === "choose" ? (l.expr.alternatives as { guard: unknown; then: unknown }[]).map((a) => ({ guard: a.guard, inGuard: new Set(operandRefs(data, a.guard)), inThen: new Set(operandRefs(data, a.then)) })) : undefined;
+      for (const read of new Set([...expr, ...gates])) {
+        let fact: unknown[] | undefined;
+        if (!gates.has(read) && alts) {
+          const taking = alts.filter((a) => a.inThen.has(read));
+          if (!alts.some((a) => a.inGuard.has(read)) && taking.length) fact = taking.map((a) => a.guard);
+        }
+        const list = index.get(read) ?? [];
+        list.push({ reader: l, doc, fact });
+        index.set(read, list);
+      }
+    }
+    readerIndexes.set(data, index);
+  }
+  return index.get(id) ?? [];
+}
+
+// Whether test g, known true, makes test c true: the same test; eq(x, v) against ne(x, w) with
+// constants v and w different; a conjunct of an all-test; or eq(G, true) for an ungated test line G
+// whose own test does.
+function testImplies(data: CanonicalData, g: unknown, c: unknown, depth = 0): boolean {
+  if (depth > 8) return false;
+  if (stableStringify(g) === stableStringify(c)) return true;
+  const gt = g as { eq?: unknown[]; all?: unknown[] }, ct = c as { ne?: unknown[] };
+  const isConst = (v: unknown): boolean => v !== null && typeof v === "object" && "const" in v;
+  if (Array.isArray(gt.eq) && Array.isArray(ct.ne) && gt.eq[0] === ct.ne[0] && typeof gt.eq[0] === "string"
+    && isConst(gt.eq[1]) && isConst(ct.ne[1]) && stableStringify(gt.eq[1]) !== stableStringify(ct.ne[1])) return true;
+  if (Array.isArray(gt.all)) return gt.all.some((x) => testImplies(data, x, c, depth + 1));
+  if (Array.isArray(gt.eq) && typeof gt.eq[0] === "string" && stableStringify(gt.eq[1]) === stableStringify({ const: true })) {
+    const line = findLine(data, gt.eq[0]);
+    if (line && !(line.refuses ?? []).length && line.expr.op === "test") return testImplies(data, line.expr, c, depth + 1);
+  }
+  return false;
+}
+
+// Whether the facts on a path make the Bool line `flag` true: some fact implies flag == true, or
+// flag is an ungated all-test (or single comparison) each of whose conjuncts some fact implies.
+function flagHolds(data: CanonicalData, facts: unknown[][], flag: string): boolean {
+  const implied = (c: unknown): boolean => facts.some((fact) => fact.every((g) => testImplies(data, g, c)));
+  if (implied({ op: "test", eq: [flag, { const: true }] })) return true;
+  const f = findLine(data, flag);
+  if (!f || (f.refuses ?? []).length || f.expr.op !== "test") return false;
+  const conjuncts = Array.isArray((f.expr as { all?: unknown[] }).all) ? (f.expr as { all: unknown[] }).all : [f.expr];
+  return conjuncts.length > 0 && conjuncts.every(implied);
+}
+
+// Path dominance: every chain of readers from `start` to a printed line (or to a refusal gate or
+// display condition) passes through choose alternatives whose guards, taken together, make `flag`
+// true. Guards count only on readers in start's own document (one frame); readers elsewhere carry
+// the facts already gathered. Then a value read from start by any printed line is read only where
+// flag holds (spec 4.7.3: a choose does not evaluate an alternative it does not take).
+function dominatedBy(data: CanonicalData, start: string, flag: string): boolean {
+  const home = docOfLine(data, start);
+  if (!home || home.kind === "def") return false;
+  const seen = new Set<string>();
+  const stack: { id: string; facts: unknown[][] }[] = [{ id: start, facts: [] }];
+  let steps = 0;
+  while (stack.length) {
+    const { id, facts } = stack.pop()!;
+    for (const { reader, doc, fact } of readerSteps(data, id)) {
+      const next = fact && doc.id === home.id ? [...facts, fact] : facts;
+      if (flagHolds(data, next, flag)) continue;
+      if (reader.printed !== "(helper)") return false;
+      const key = `${reader.id}|${stableStringify(next)}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      if (++steps > 5000) return false;
+      stack.push({ id: reader.id, facts: next });
+    }
+  }
+  return true;
+}
+
+// A two-way choose on Bool line F (guards F == true and F == false, in either order) with no refusal
+// gates of its own: where F holds, its value is its true branch's.
+function flagGate(data: CanonicalData, id: string): { flag: string; then: string } | undefined {
+  const l = findLine(data, id);
+  if (!l || (l.refuses ?? []).length || l.expr.op !== "choose" || l.expr.alternatives.length !== 2) return undefined;
+  const on = (g: unknown, v: boolean): string | undefined => {
+    const eq = (g as { eq?: unknown[] }).eq;
+    return Array.isArray(eq) && typeof eq[0] === "string" && stableStringify(eq[1]) === stableStringify({ const: v }) ? eq[0] : undefined;
+  };
+  const [a, b] = l.expr.alternatives as { guard: unknown; then: unknown }[];
+  const trueAlt = on(a!.guard, true) ? a! : b!, falseAlt = trueAlt === a ? b! : a!;
+  const flag = on(trueAlt.guard, true);
+  if (!flag || on(falseAlt.guard, false) !== flag || typeof trueAlt.then !== "string") return undefined;
+  return { flag, then: trueAlt.then };
+}
+
+// Guarded figure: the replaced operand is a gated line, "its figure when F holds", and the replacement
+// is that figure (or the reverse); the mutated line is a helper, and every printed line reads it only
+// where F holds (path dominance). Where F holds the two operands are the same value, so no printed value
+// changes; where F does not hold only the helper's own value can.
+function guardedFigure(data: CanonicalData, mutation: Mutation): string | undefined {
+  const pair = replacedPair(mutation); if (!pair || !independentOperands(data, mutation, pair)) return undefined;
+  const line = lineOf(mutation);
+  if (!isHelper(data, line)) return undefined;
+  for (const [gated, figure] of [pair, [pair[1], pair[0]] as [string, string]]) {
+    const g = flagGate(data, gated);
+    if (!g || stableStringify(normalizeChain(data, g.then)) !== stableStringify(normalizeChain(data, figure))) continue;
+    if (!dominatedBy(data, line, g.flag)) continue;
+    return `Guarded figure: ${gated} is ${figure} wherever ${g.flag} holds, and every printed line reads ${line} (a helper) only through choices whose guards make ${g.flag} true, so the replacement changes no printed value; where ${g.flag} does not hold only ${line}'s own, unprinted value can differ.`;
+  }
+  return undefined;
+}
+
+// Arithmetic atoms that evaluate every operand they reach and return a refusal or an unknown when an
+// operand has one (spec 4.7.4); a line of one of these with no refusal gates of its own is incomplete
+// whenever an operand is, and refused whenever an operand is refused.
+const CARRY_OPS = new Set(["sum", "subtract", "subtract_floor0", "smaller_of", "larger_of", "multiply_rate", "multiply_count", "round", "prorate", "copy"]);
+
+function carries(data: CanonicalData, from: string, target: string, depth = 0): boolean {
+  if (from === target) return true;
+  const l = findLine(data, from);
+  if (depth > 12 || !l || (l.refuses ?? []).length || !CARRY_OPS.has(l.expr.op)) return false;
+  if (l.expr.op === "copy" && typeof l.expr.from !== "string") return false;
+  return operandRefs(data, l.expr).some((r) => carries(data, r, target, depth + 1));
+}
+
+// Gated zero carried earlier: an ungated zero operand is replaced by a zero behind refusal gates, and
+// an operand evaluated before it reaches the gated zero through ungated arithmetic. When the gated zero
+// refuses (or is unknown) that earlier operand already does, and is returned first; otherwise the two
+// operands are both zero. The mutated line's own value is the same at every input.
+function carriedZero(data: CanonicalData, mutation: Mutation): string | undefined {
+  const pair = replacedPair(mutation); if (!pair || !independentOperands(data, mutation, pair)) return undefined;
+  const [x, y] = pair;
+  const e = findLine(data, lineOf(mutation))?.expr;
+  if (!e) return undefined;
+  const order = e.op === "sum" || e.op === "smaller_of" || e.op === "larger_of" ? (e.of as unknown[])
+    : e.op === "subtract" || e.op === "subtract_floor0" ? [e.from, e.take] : undefined;
+  if (!order) return undefined;
+  const nx = normalizeChain(data, x), ny = normalizeChain(data, y);
+  if (!zeroBehindGates(data, x) || gateWhens(nx).length || !zeroBehindGates(data, y) || !gateWhens(ny).length) return undefined;
+  const i = order.indexOf(x);
+  const carrier = order.slice(0, Math.max(0, i)).find((o): o is string => typeof o === "string" && carries(data, o, y));
+  if (i < 0 || !carrier) return undefined;
+  return `Gated zero carried earlier: ${x} is an ungated zero and ${y} the same zero behind refusal gates (${[...new Set(gateWhens(ny))].join(", ")}); ${carrier}, read first, reaches ${y} through ungated arithmetic, so whenever ${y} refuses or is unknown ${carrier} already is, and is returned first, and otherwise both operands are zero.`;
+}
+
+// The structural rules, checked against the current data for every survivor: the first that accepts
+// it gives the reason.
+export function structuralReason(data: CanonicalData, mutation: Mutation): string | undefined {
+  return aliasEquivalence(data, mutation) ?? sharedGateEquivalence(data, mutation) ?? floorMinusMin(data, mutation)
+    ?? carriedZero(data, mutation) ?? guardedFigure(data, mutation) ?? unreadParameter(data, mutation) ?? unreadTable(data, mutation);
+}
+
 // Equivalences that need an argument about evaluation order or reachability. Each is
 // accepted only while the structural facts it rests on hold in the current data; when
 // they lapse, the mutant is reported as unexplained again.
 const EQUIVALENT_IF: Record<string, { reason: string; holds: (data: CanonicalData) => boolean }> = {
-  "operand.eic.eic.step5_line4.zero": {
-    reason: "Step 5 line 4 keeps its own combat-pay refusal whatever it reads; the substituted line 2 is the same zero (a copy of eic.zero) carrying only the gate scope.other_income, and earned income adds line 3 (line 1 less line 2) before line 4, so when that gate is true line 3 has already refused with the same refusal. No value can change.",
-    holds: (d) => {
-      const l4 = findLine(d, "eic.step5_line4"), l2 = findLine(d, "eic.step5_line2"), l3 = findLine(d, "eic.step5_line3"), ei = findLine(d, "eic.earned_income");
-      if (!l4 || !l2 || !l3 || !ei || l4.expr.op !== "copy" || l2.expr.op !== "copy" || l4.expr.from !== "eic.zero" || l2.expr.from !== "eic.zero") return false;
-      if (l3.expr.op !== "subtract" || l3.expr.take !== "eic.step5_line2" || ei.expr.op !== "sum") return false;
-      const of = ei.expr.of as string[];
-      return of[0] === "eic.step5_line3" && of[1] === "eic.step5_line4" && (l2.refuses ?? []).every((r) => r.when === "scope.other_income");
-    },
-  },
-  "refusal.eic.eic.step1_resident.0": agiFirst("scope.other_income", "eic.step1_resident", 0),
-  "refusal.eic.eic.step5_line2.0": agiFirst("scope.other_income", "eic.step5_line2", 0),
-  "refusal.eic.eic.step2_other.0": agiFirst("scope.schedule1", "eic.step2_other", 0),
-  "refusal.eic.eic.step5_line1.0": agiFirst("scope.schedule1", "eic.step5_line1", 0),
   "param.eic.ws_threshold0.other.$1": thresholdAtPlateau("eic.ws_threshold0.other", ["eic_0"], 0),
   "param.eic.ws_threshold0.joint.$1": thresholdAtPlateau("eic.ws_threshold0.joint", ["eic_0"], 1),
   "param.eic.ws_threshold1.joint.$1": thresholdAtPlateau("eic.ws_threshold1.joint", ["eic_1", "eic_2", "eic_3"], 1),
@@ -348,65 +532,18 @@ const EQUIVALENT_IF: Record<string, { reason: string; holds: (data: CanonicalDat
       return stop.expr.op === "test" && "all" in stop.expr && i >= 0 && i < j && j < k;
     },
   },
-  "filter.person.person.hsa_step1": hsaSplitSum("person.hsa_step1", "household.hsa_step1_sum"),
-  "refusal.ssb.ssb.line6.0": firstReadCarries("ssb.line6", 0, ["ssb.line5", "ssb.line3", "f1040.line8"], "ssb.line7"),
   "boundary.s1a.s1a.line10_over": s1aStepSkip("s1a.line10_over", "s1a.line8", "s1a.line9", "s1a.line10_pos", "s1a.line12", "s1a.line13_figured", "s1a.line7", "s1a.line13_amount"),
   "boundary.s1a.s1a.line18_over": s1aStepSkip("s1a.line18_over", "s1a.line16", "s1a.line17", "s1a.line18_pos", "s1a.line20", "s1a.line21_figured", "s1a.line15", "s1a.line21_amount"),
   "boundary.s1a.s1a.line27_over": s1aStepSkip("s1a.line27_over", "s1a.line25", "s1a.line26", "s1a.line27_pos", "s1a.line29", "s1a.line30_figured", "s1a.line24", "s1a.line30_amount"),
   "boundary.s1a.s1a.line33_over": s1aStepSkip("s1a.line33_over", "s1a.line31", "s1a.line32", "s1a.line33_pos", "s1a.line34", "s1a.line35_figured", "s1a.senior_amount", "s1a.line35_calc"),
-  "operand.s1a.s1a.line6_calc.line5": s1aPartGate("s1a.line5", "s1a.part2"),
-  "operand.s1a.s1a.line7_calc.line6": s1aPartGate("s1a.line6", "s1a.part2"),
-  "operand.s1a.s1a.line10_calc.line8": s1aPartGate("s1a.line8", "s1a.part2"),
-  "operand.s1a.s1a.line10_pos.line9": s1aPartGate("s1a.line9", "s1a.part2"),
-  "operand.s1a.s1a.line13_figured.line12": s1aPartGate("s1a.line12", "s1a.part2"),
-  "operand.s1a.s1a.line14c_calc.line14b": s1aPartGate("s1a.line14b", "s1a.part3"),
-  "operand.s1a.s1a.line18_calc.line16": s1aPartGate("s1a.line16", "s1a.part3"),
-  "operand.s1a.s1a.line18_pos.line17": s1aPartGate("s1a.line17", "s1a.part3"),
-  "operand.s1a.s1a.line21_figured.line20": s1aPartGate("s1a.line20", "s1a.part3"),
-  "operand.s1a.s1a.line27_calc.line25": s1aPartGate("s1a.line25", "s1a.part4"),
-  "operand.s1a.s1a.line27_pos.line26": s1aPartGate("s1a.line26", "s1a.part4"),
-  "operand.s1a.s1a.line30_figured.line29": s1aPartGate("s1a.line29", "s1a.part4"),
-  "operand.s1a.s1a.line33_calc.line31": s1aPartGate("s1a.line31", "s1a.part5"),
-  "operand.s1a.s1a.line33_pos.line32": s1aPartGate("s1a.line32", "s1a.part5"),
-  "operand.s1a.s1a.line35_figured.line34": s1aPartGate("s1a.line34", "s1a.part5"),
-  "operand.s1a.s1a.line24_calc.line23": s1aPartGate("s1a.line23", "s1a.part4", "s1a.line23_total"),
-  "operand.s1a.s1a.line4c_one.line4b": s1aOneEmployer("line 4b is zero (Form 4137 is refused), so the larger of line 4a and the column (b) total is the column (b) total, which line 4a is"),
   "boundary.sli.sli.over": prorateSkip("The test 'line 4 more than line 5' made inclusive adds only the case line 4 = line 5"),
   "operand.sli.sli.line9.line8": prorateSkip("Reading the prorated line directly instead of line 8 differs only when line 4 is not more than line 5"),
-  "refusal.dependent.dependent.qualifying_relative.2": {
-    reason: "The married gate on the qualifying-relative test duplicates, word for word, the married gate on the qualifying-child test. The qualifying-relative test is read only by qr_dependent, which is read only by claimed and by the TIN gate claimed_no_tin; the any-test of each evaluates qc_dependent, and so qualifying_child, before qr_dependent; for a married person qualifying_child refuses first with the same refusal, so this gate never fires.",
-    holds: (d) => {
-      const qr = findLine(d, "dependent.qualifying_relative"); const qc = findLine(d, "dependent.qualifying_child");
-      const entry = qr?.refuses?.[2];
-      if (!qr || !qc || !entry || entry.when !== "dependent.married") return false;
-      if (!(qc.refuses ?? []).some((r) => stableStringify(r) === stableStringify(entry))) return false;
-      if (stableStringify(readersOf(d, "dependent.qualifying_relative")) !== stableStringify(["dependent.qr_dependent"])) return false;
-      if (stableStringify([...readersOf(d, "dependent.qr_dependent")].sort()) !== stableStringify(["dependent.claimed", "dependent.claimed_no_tin"])) return false;
-      const claimed = findLine(d, "dependent.claimed"); const qcd = findLine(d, "dependent.qc_dependent"); const noTin = findLine(d, "dependent.claimed_no_tin");
-      if (!claimed || !qcd || !noTin || claimed.expr.op !== "test" || !("any" in claimed.expr) || qcd.expr.op !== "test" || !("all" in qcd.expr)) return false;
-      if (noTin.expr.op !== "test" || !("all" in noTin.expr)) return false;
-      const anyPart = (noTin.expr as { all: unknown[] }).all.find((t) => t !== null && typeof t === "object" && "any" in (t as object));
-      if (!anyPart || operandRefs(d, anyPart)[0] !== "dependent.qc_dependent") return false;
-      return operandRefs(d, claimed.expr)[0] === "dependent.qc_dependent" && operandRefs(d, qcd.expr)[0] === "dependent.qualifying_child";
-    },
-  },
-  "operand.sdtw.sdtw.raw27.line26": skipGated("sdtw.raw27", "sdtw.line26", "sdtw.raw26"),
-  "operand.sdtw.sdtw.raw28.line22": skipGated("sdtw.raw28", "sdtw.line22", "sdtw.line24"),
-  "operand.sdtw.sdtw.raw29.line27": skipGated("sdtw.raw29", "sdtw.line27", "sdtw.raw27"),
-  "operand.sdtw.sdtw.raw30.line29": skipGated("sdtw.raw30", "sdtw.line29", "sdtw.raw29"),
-  "operand.sdtw.sdtw.raw31.line30": skipGated("sdtw.raw31", "sdtw.line30", "sdtw.raw30"),
-  "operand.sdtw.sdtw.raw33.line32": skipGated("sdtw.raw33", "sdtw.line32", "sdtw.raw32"),
-  "operand.sdtw.sdtw.raw34.line33": skipGated("sdtw.raw34", "sdtw.line33", "sdtw.raw33"),
-  "operand.sdtw.sdtw.raw38.line37": skipGated("sdtw.raw38", "sdtw.line37", "sdtw.raw37"),
-  "operand.sdtw.sdtw.raw39.line38": skipGated("sdtw.raw39", "sdtw.line38", "sdtw.raw38"),
-  "operand.sdtw.sdtw.raw40.line39": skipGated("sdtw.raw40", "sdtw.line39", "sdtw.raw39"),
-  "operand.sdtw.sdtw.raw42.line41": skipGated("sdtw.raw42", "sdtw.line41", "sdtw.raw41"),
-  "operand.sdtw.sdtw.raw43.line42": skipGated("sdtw.raw43", "sdtw.line42", "sdtw.raw42"),
   "operand.sdtw.sdtw.line45.line43": {
     reason: "Line 43 is its helper (28% of line 42) when sdtw.use28 holds and $0 otherwise, and line 42 is $0 under the same gate; so when the gate is false the helper is 28% of $0, and when it is unknown or refused line 42 and line 43 return the gate's value, which the rate passes through. Line 45 reads the same value either way.",
     holds: (d) => {
       const g43 = gateOf(d, "sdtw.line43"), g42 = gateOf(d, "sdtw.line42"), raw = exprOf(d, "sdtw.raw43");
-      return !!g43 && !!g42 && g43.then === "sdtw.raw43" && g42.gate === g43.gate && raw?.op === "multiply_rate" && raw.amount === "sdtw.line42";
+      return !!g43 && !!g42 && g43.then === "sdtw.raw43" && g42.gate === g43.gate && raw?.op === "multiply_rate" && raw.amount === "sdtw.line42"
+        && knownRate(d, raw.rate) && ungated(d, "sdtw.raw43", "sdtw.line43", "sdtw.line42");
     },
   },
   "operand.sdtw.sdtw.line17.line16": {
@@ -448,30 +585,6 @@ const EQUIVALENT_IF: Record<string, { reason: string; holds: (data: CanonicalDat
         && ["f8960.line4a", "f8960.line4b"].every((id) => stableStringify(normalizeChain(d, id)) === n9c);
     },
   },
-  "refusal.f4952.f4952.required.2": firstReadCarries("f4952.required", 2, ["f4952.election"]),
-  "operand.f2441.f2441.line25.line24": {
-    reason: "Line 22 is an ungated copy of the zero parameter, so line 24, min(line 24's first operand A, line 22), is $0 whenever A is known, and line 25 (A less line 24, floored) is A on both routes; when A refuses or is unknown, line 25 reads A first and returns it on both routes.",
-    holds: (d) => {
-      const l25 = exprOf(d, "f2441.line25"), l24 = exprOf(d, "f2441.line24"), l22 = findLine(d, "f2441.line22");
-      return l25?.op === "subtract_floor0" && l25.from === "f2441.line24_20_21" && l25.take === "f2441.line24"
-        && l24?.op === "smaller_of" && stableStringify(l24.of) === stableStringify(["f2441.line24_20_21", "f2441.line22"])
-        && !!l22 && !(l22.refuses ?? []).length && zeroBehindGates(d, "f2441.line22");
-    },
-  },
-  "refusal.retirement.retirement.amount_a.1": {
-    reason: "Without the bad-code entry, the next entry's gate (annuity_rollover: not an IRA, an annuity, and a rollover) is evaluated in its place. Its last conjunct reads has_rollover, whose first operand is retirement.rolled, which carries the special and bad-code entries word for word; so the gate either returns that same refusal (a refusal ends an all-test even after an unknown conjunct) or is false, and then line 1's expression reaches rolled through show_a and has_rollover and returns the same refusal.",
-    holds: (d) => {
-      const a = findLine(d, "retirement.amount_a"), rolled = findLine(d, "retirement.rolled");
-      const ar = exprOf(d, "retirement.annuity_rollover"), hr = exprOf(d, "retirement.has_rollover");
-      if (!a || !rolled || stableStringify((a.refuses ?? []).map((r) => r.when)) !== stableStringify(["retirement.special", "retirement.bad_code", "retirement.annuity_rollover"])) return false;
-      if (stableStringify(a.refuses!.slice(0, 2)) !== stableStringify(rolled.refuses)) return false;
-      const all = ar?.op === "test" ? (ar.all as unknown[] | undefined) : undefined;
-      if (!all || !stableStringify(all[all.length - 1]).includes('"retirement.has_rollover"')) return false;
-      if (hr?.op !== "test" || operandRefs(d, hr)[0] !== "retirement.rolled") return false;
-      const firstRead = (from: string, to: string) => operandRefs(d, findLine(d, from)?.expr)[0] === to;
-      return firstRead("retirement.amount_a", "retirement.show_a") && firstRead("retirement.show_a", "retirement.has_rollover") && firstRead("retirement.has_rollover", "retirement.rolled");
-    },
-  },
   "operand.person.person.dc_earned.eic_se": {
     reason: "person.eic_se is person.eic_se_has when the person has a Schedule C and $0 otherwise. With no Schedule C every sum over the person's Schedule C entries is $0, so the Schedule SE railroad gate is false, line 4c is $0, files_se is false and eic_se_has is the empty Schedule C total, $0; with the roster unanswered both routes are unknown. The replacement changes no value.",
     holds: (d) => {
@@ -490,15 +603,57 @@ const EQUIVALENT_IF: Record<string, { reason: string; holds: (data: CanonicalDat
         && rrta?.op === "test" && (rrta.gt as unknown[])?.[0] === "person.sc_rrta_count" && overSc("person.sc_rrta_count");
     },
   },
-  "operand.f5695.f5695.line16.line15": {
-    reason: "Line 15 is min(line 13, line 14), so line 13 less line 15, floored at zero, equals line 13 less line 14, floored at zero, at every input; both routes read line 13 first and then line 14 (directly or through line 15), so the same refusal or unknown wins.",
-    holds: (d) => {
-      const l16 = exprOf(d, "f5695.line16"), l15 = exprOf(d, "f5695.line15");
-      return l16?.op === "subtract_floor0" && l16.from === "f5695.line13" && l16.take === "f5695.line15"
-        && l15?.op === "smaller_of" && stableStringify(l15.of) === stableStringify(["f5695.line13", "f5695.line14"]) && !(findLine(d, "f5695.line15")?.refuses ?? []).length;
-    },
-  },
+  "boundary.sc.sc.ho_over": boundaryAgrees("sc.ho_over", "sc.ho_line4", "sc.ho_line4_actual", "sc.ho_line4_cap",
+    "The home office test 'square feet more than the cap' made inclusive adds only square feet equal to the cap, where the rate times the square feet and the rate times the cap are the same amount. The test is read only by line 4.",
+    (line) => {
+      const o = line("sc.ho_over")?.expr as { gt?: unknown[] }, a = line("sc.ho_line4_actual"), c = line("sc.ho_line4_cap");
+      return stableStringify(o.gt) === stableStringify(["sc.ho_sqft", "sc.ho_cap_sqft"]) && !!a && !!c && !(a.refuses ?? []).length && !(c.refuses ?? []).length
+        && a.expr.op === "multiply_count" && c.expr.op === "multiply_count" && a.expr.amount === c.expr.amount
+        && a.expr.count === "sc.ho_sqft" && c.expr.count === "sc.ho_cap_sqft";
+    }),
+  "boundary.se.positive": boundaryAgrees("positive", "line4a", "line3", "line4a_pos",
+    "The test 'line 3 more than zero' made inclusive adds only line 3 = $0, where line 4a's two branches agree: line 3 itself, and 92.35% of line 3 floored at zero, both $0. The test is read only by line 4a.",
+    (line) => {
+      const o = line("positive")?.expr as { gt?: unknown[] }, pos = line("line4a_pos"), floor = line("line3pos"), zero = line("zero"), rate = line("rate9235");
+      if (stableStringify(o.gt) !== stableStringify(["line3", { param: "sales.zero" }]) || !pos || !floor || !zero || !rate) return false;
+      return pos.expr.op === "multiply_rate" && pos.expr.amount === "line3pos" && pos.expr.rate === "rate9235" && rate.expr.op === "param"
+        && floor.expr.op === "subtract_floor0" && floor.expr.from === "line3" && floor.expr.take === "zero"
+        && zero.expr.op === "param" && zero.expr.ref === "sales.zero" && [pos, floor, zero, rate].every((l) => !(l.refuses ?? []).length);
+    }, "se"),
+  "operand.qdcg.qdcg.line8.line7": minNesting("qdcg.line8", "qdcg.line5", "qdcg.line7", "qdcg.line1", "qdcg.line6"),
+  "operand.scveh.scveh.l5.k5": vehicle2019("scveh.l5", "scveh.l5 looks up the vehicle's year-5 limit; the mutant looks up year 4.",
+    (d) => vehicleLimit(d, "scveh.l5", "scveh.k5") && vehicleLimit(d, "scveh.l4", "scveh.k4")),
+  "operand.scveh.scveh.l6.k6": vehicle2019("scveh.l6", "scveh.l6 looks up the vehicle's year-6 limit; the mutant looks up year 5.",
+    (d) => vehicleLimit(d, "scveh.l6", "scveh.k6") && vehicleLimit(d, "scveh.l5", "scveh.k5")),
+  "operand.scveh.scveh.d5.l5": vehicle2019("scveh.d5", "scveh.d5 is min(l5, t5); the mutant reads d4 = min(l4, t4) in place of l5, and min(min(l4, t4), t5) = min(l5, t5) when l4 = l5 and t4 >= t5.",
+    (d) => vehicleYear(d, 4) && vehicleYear(d, 5)),
+  "operand.scveh.scveh.d6.l6": vehicle2019("scveh.d6", "scveh.d6 is min(l6, t6); the mutant reads d5 = min(l5, t5) in place of l6, and min(min(l5, t5), t6) = min(l6, t6) when l5 = l6 and t5 >= t6.",
+    (d) => vehicleYear(d, 5) && vehicleYear(d, 6)),
 };
+
+// Why a surviving mutant is equivalent, checked against the current data: the keyed conditional
+// argument when its structural conditions hold, else the first structural rule that accepts it.
+export function equivalenceReason(data: CanonicalData, mutation: Mutation): string | undefined {
+  const conditional = EQUIVALENT_IF[mutation.id];
+  if (conditional?.holds(data)) return conditional.reason + " (structural conditions re-checked this run.)";
+  return structuralReason(data, mutation);
+}
+
+// scveh.lN looks up the auto_limit table on the vehicle's placed year and the year-N parameter line.
+function vehicleLimit(d: CanonicalData, l: string, k: string): boolean {
+  const e = exprOf(d, l);
+  return e?.op === "keyed_lookup" && e.table === "auto_limit" && stableStringify(e.keys) === stableStringify(["scveh.placed", k]) && ungated(d, l);
+}
+
+// Year N of the vehicle: dN = min(lN, tN), tN = rN of the depreciable basis (not negative), rN the GDS rate
+// for the vehicle's period, convention and year N.
+function vehicleYear(d: CanonicalData, n: number): boolean {
+  const dn = exprOf(d, `scveh.d${n}`), tn = exprOf(d, `scveh.t${n}`), rn = exprOf(d, `scveh.r${n}`);
+  return dn?.op === "smaller_of" && stableStringify(dn.of) === stableStringify([`scveh.l${n}`, `scveh.t${n}`])
+    && tn?.op === "multiply_rate" && tn.amount === "scveh.b100" && tn.rate === `scveh.r${n}` && findLine(d, "scveh.b100")?.type === "NonNegDollars"
+    && rn?.op === "keyed_lookup" && rn.table === "macrs_gds" && stableStringify(rn.keys) === stableStringify(["scveh.y5", "scveh.prior_conv", `scveh.k${n}`])
+    && exprOf(d, "scveh.y5")?.op === "param" && vehicleLimit(d, `scveh.l${n}`, `scveh.k${n}`) && ungated(d, `scveh.d${n}`, `scveh.t${n}`, `scveh.r${n}`);
+}
 
 function exprOf(d: CanonicalData, id: string): Record<string, unknown> | undefined {
   return findLine(d, id)?.expr as unknown as Record<string, unknown> | undefined;
@@ -523,36 +678,6 @@ function gateOf(d: CanonicalData, id: string): { gate: string; then: string } | 
   const gate = on(alts[0]!.guard, true);
   if (!gate || on(alts[1]!.guard, false) !== gate || !zeroBehindGates(d, alts[1]!.then as string)) return undefined;
   return { gate, then: alts[0]!.then as string };
-}
-
-// Gate G implies gate H when they are the same line or G is an all-test whose first conjunct is H == true.
-function gateImplies(d: CanonicalData, g: string, h: string): boolean {
-  if (g === h) return true;
-  const all = (exprOf(d, g) as { all?: unknown[] } | undefined)?.all;
-  if (exprOf(d, g)?.op !== "test" || !Array.isArray(all)) return false;
-  const eq = (all[0] as { eq?: unknown[] }).eq;
-  return Array.isArray(eq) && eq[0] === h && stableStringify(eq[1]) === stableStringify({ const: true });
-}
-
-// A skip-rule helper read only by its gated line, whose operand is replaced by the figure that
-// operand wraps (or the reverse). `choose` evaluates only the branch it takes, so the helper is
-// read only when its gate holds; that gate implies the wrapped operand's gate, under which the
-// operand is its figure, so the two are the same value wherever the helper is read.
-function skipGated(raw: string, from: string, to: string) {
-  return {
-    reason: `${raw} is read only by the line that takes it when its skip gate holds (and is $0 otherwise); that gate implies the gate under which ${from} and ${to} are the same value, one being the other's figure behind the skip rule, so the replacement changes no value that is read.`,
-    holds: (d: CanonicalData): boolean => {
-      const readers = readersOf(d, raw);
-      if (readers.length !== 1) return false;
-      const outer = gateOf(d, readers[0]!);
-      if (!outer || outer.then !== raw) return false;
-      const wraps = (w: string, other: string): boolean => {
-        const inner = gateOf(d, w);
-        return !!inner && gateImplies(d, outer.gate, inner.gate) && stableStringify(normalizeChain(d, inner.then)) === stableStringify(normalizeChain(d, other));
-      };
-      return wraps(from, to) || wraps(to, from);
-    },
-  };
 }
 
 // A shifted parameter that no line of any form or definition reads cannot change a value;
@@ -580,44 +705,6 @@ function unreadTable(data: CanonicalData, mutation: Mutation): string | undefine
   return `Unread table: no line of any form or definition looks up ${name}, so changing it cannot change any value.`;
 }
 
-// A refusal entry that cannot change any value because another line carrying the same gate
-// refuses first or identically. Without a reader: the line's expression reads chain[0] first
-// and each chain line reads the next first, and the last carries the identical entry (gate,
-// form, remedy and cite), so removing the entry turns the line's own refusal into the same
-// refusal arriving through the chain; the entry must be the line's last, since removing an
-// earlier one lets a later entry's gate (unanswered, or true with another refusal) decide
-// first. With a reader: the line is read only by that reader,
-// the reader reads chain[0] first, chain[i] reads chain[i+1] (first operand, or any operand of
-// a sum, which evaluates every operand and returns a refusal ahead of an unknown), and the last
-// carries the same gate; the reader then returns that refusal before the line's own could reach it.
-function firstReadCarries(line: string, index: number, chain: string[], reader?: string) {
-  return {
-    reason: reader
-      ? `${line} is read only by ${reader}, which reads ${chain.join(" -> ")} first; ${chain[chain.length - 1]} refuses on the same gate, so whenever it is true ${reader} returns a refusal from that chain (or an earlier one) and the entry on ${line} never decides a value.`
-      : `${line} reads ${chain.join(" -> ")} first, and ${chain[chain.length - 1]} carries the identical refusal entry, so without the entry on ${line} the same refusal arrives through the chain.`,
-    holds: (d: CanonicalData): boolean => {
-      const l = findLine(d, line); const entry = l?.refuses?.[index];
-      const last = findLine(d, chain[chain.length - 1]!);
-      const same = (r: { when: string }): boolean => reader ? r.when === entry!.when : stableStringify(r) === stableStringify(entry);
-      if (!l || !entry || !last || !(last.refuses ?? []).some(same)) return false;
-      const reads = (from: string, to: string, anySumOperand: boolean): boolean => {
-        const x = findLine(d, from); if (!x) return false;
-        const refs = operandRefs(d, x.expr);
-        return refs[0] === to || (anySumOperand && x.expr.op === "sum" && refs.includes(to));
-      };
-      if (reader) {
-        if (stableStringify(readersOf(d, line)) !== stableStringify([reader]) || !reads(reader, chain[0]!, false)) return false;
-      } else if (index !== l.refuses!.length - 1 || !reads(line, chain[0]!, false)) return false;
-      for (let i = 0; i + 1 < chain.length; i++) if (!reads(chain[i]!, chain[i + 1]!, !!reader)) return false;
-      return true;
-    },
-  };
-}
-
-// The Student Loan Interest Deduction Worksheet skips lines 6 and 7 (line 8 is zero) when line 4 is
-// not more than line 5. The prorated line's part is line 6 = line 4 - line 5, which is then zero or
-// negative, and `prorate` keeps its ratio at 0 or more, so the prorated line is zero there too: the
-// skip and the formula agree, and a mutant that crosses between them changes no value.
 // A Schedule 1-A printed line inside a part is a gate: $0 when the part does not apply, otherwise
 // its "_calc" helper. Equivalences about the figure look through the gate.
 function s1aFigure(d: CanonicalData, id: string): Line | undefined {
@@ -627,109 +714,77 @@ function s1aFigure(d: CanonicalData, id: string): Line | undefined {
   return thens.length === 2 && thens.includes("s1a.zero") && thens.includes(id + "_calc") ? findLine(d, id + "_calc") : l;
 }
 
-// Inside a Schedule 1-A part, a helper reads a gated printed line or the figure behind the gate.
-// They differ only when the part does not apply; then every reader of the part's chain is a
-// printed line of the part (itself $0) or the part's result line (13, 21, 30, 36a), which is $0
-// under the same conditions before it reads the chain.
-function hsaSplitSum(perPerson: string, total: string) {
-  return {
-    reason: `${perPerson} keeps only a Form 8889 that uses the spouse rule of line 6. Its total ${total} is read only by f8889.allocation_bad, which is reached only on a form that uses the rule and which already holds when exactly one form uses it (household.hsa_split_count is 1); when both forms use it the filter keeps every form. So dropping the filter changes no value that is read.`,
-    holds: (d: CanonicalData): boolean => {
-      const bad = findLine(d, "f8889.allocation_bad");
-      const share = findLine(d, "f8889.share");
-      return readersOf(d, total).join() === "f8889.allocation_bad" && readersOf(d, perPerson).join() === total
-        && !!bad && JSON.stringify(bad.expr).includes('"household.hsa_split_count",{"const":1')
-        && !!share && (share.refuses ?? []).some((r) => r.when === "f8889.allocation_bad")
-        && readersOf(d, "f8889.share").join() === "f8889.line6_split";
-    },
-  };
+// Every line that reads `id` in any way (an operand, a refusal gate, a display condition).
+function allReaders(d: CanonicalData, id: string): string[] {
+  return readerSteps(d, id).map((r) => r.reader.id);
 }
 
-function s1aPartGate(gated: string, flag: string, figure = gated + "_calc") {
-  return {
-    reason: `${gated} is ${figure} when ${flag} holds and $0 otherwise; the chain that reads it is reached only through the part's result line, which is $0 when the part does not apply, so reading ${figure} instead changes no value.`,
-    holds: (d: CanonicalData): boolean => {
-      const g = findLine(d, gated), f = findLine(d, flag);
-      if (!g || !f || g.expr.op !== "choose" || f.expr.op !== "test") return false;
-      const thens = g.expr.alternatives.map((a) => a.then);
-      const viaFlag = g.expr.alternatives.every((a) => stableStringify(a.guard).includes(`"${flag}"`));
-      const direct = thens.length === 2 && thens.includes("s1a.zero") && thens.includes(figure) && viaFlag;
-      // line 23 is gated by the car loan question itself, which Part IV's flag is.
-      const byClaim = thens.length === 2 && thens.includes("s1a.zero") && thens.includes(figure) && stableStringify(f.expr) === stableStringify({ op: "test", eq: ["s1a.carloan", { const: true }] })
-        && g.expr.alternatives.every((a) => stableStringify(a.guard).includes('"s1a.carloan"'));
-      return direct || byClaim;
-    },
-  };
+// A choose of two alternatives that takes `onFalse` when `test` is false and `onTrue` when it is true.
+function bindsBranches(d: CanonicalData, chooser: string, test: string, onFalse: string, onTrue: string): boolean {
+  const e = exprOf(d, chooser);
+  if (e?.op !== "choose") return false;
+  const alts = e.alternatives as { guard: unknown; then: unknown }[];
+  const g = (v: boolean): string => stableStringify({ op: "test", eq: [test, { const: v }] });
+  return alts.length === 2 && alts.some((a) => stableStringify(a.guard) === g(false) && a.then === onFalse)
+    && alts.some((a) => stableStringify(a.guard) === g(true) && a.then === onTrue);
+}
+
+function ungated(d: CanonicalData, ...ids: string[]): boolean {
+  return ids.every((id) => { const l = findLine(d, id); return !!l && !(l.refuses ?? []).length; });
+}
+
+function knownRate(d: CanonicalData, r: unknown): boolean {
+  const ref = (r as { param?: string } | undefined)?.param;
+  const v = ref === undefined ? undefined : d.params.values[ref];
+  return v?.type === "Rate" && typeof (v.value as { num?: unknown }).num === "number";
 }
 
 // Schedule 1-A phase-outs: 'line A more than line B' chooses between the capped amount and the
 // figured amount (the cap less a reduction of the excess). Made inclusive, the test adds only
 // A = B, where the excess is zero, so the reduction and the figured amount's subtraction are zero.
+// The test is read only by the chooser, so no other value sees the changed Boolean.
 function s1aStepSkip(over: string, magi: string, base: string, pos: string, cut: string, figured: string, cap: string, chooser: string) {
   return {
-    reason: `The test '${magi} more than ${base}' made inclusive adds only ${magi} = ${base}; there ${pos} is zero, the reduction ${cut} is zero (zero in whole $1,000 steps, or 6% of zero), and ${figured} (${cap} less ${cut}) equals ${cap}, the value the other branch gives.`,
+    reason: `The test '${magi} more than ${base}' made inclusive adds only ${magi} = ${base}; there ${pos} is zero, the reduction ${cut} is zero (zero in whole $1,000 steps, or 6% of zero), and ${figured} (${cap} less ${cut}) equals ${cap}, the value the other branch gives. The test is read only by ${chooser}.`,
     holds: (d: CanonicalData): boolean => {
       const o = findLine(d, over), p = findLine(d, pos), c = s1aFigure(d, cut), f = findLine(d, figured), ch = findLine(d, chooser);
       if (!o || !p || !c || !f || !ch) return false;
       if (o.expr.op !== "test" || !("gt" in o.expr) || stableStringify(o.expr.gt) !== stableStringify([magi, base])) return false;
+      if (stableStringify(allReaders(d, over)) !== stableStringify([chooser]) || !bindsBranches(d, chooser, over, cap, figured)) return false;
       if (p.expr.op !== "subtract_floor0" || p.expr.from !== magi || p.expr.take !== base) return false;
-      if (c.expr.op !== "multiply_rate") return false;
+      if (c.expr.op !== "multiply_rate" || !knownRate(d, c.expr.rate)) return false;
       const amt = typeof c.expr.amount === "string" ? findLine(d, c.expr.amount) : undefined;
       const fromPos = c.expr.amount === pos || (amt?.expr.op === "round" && amt.expr.of === pos);
       if (!fromPos || f.expr.op !== "subtract_floor0" || f.expr.from !== cap || f.expr.take !== cut) return false;
-      if (ch.expr.op !== "choose") return false;
-      const thens = ch.expr.alternatives.map((a) => a.then);
-      return thens.length === 2 && thens.includes(cap) && thens.includes(figured);
+      return ungated(d, pos, cut, c.id, figured) && (typeof c.expr.amount !== "string" || ungated(d, c.expr.amount));
     },
   };
 }
 
-// Schedule 1-A line 4c with one employer is the larger of lines 4a and 4b, where line 4a is the
-// worksheet column (b) total and line 4b is zero.
-function s1aOneEmployer(what: string) {
-  return {
-    reason: `Read only when there is one employer (line 4c's choice): ${what}. No value can change.`,
-    holds: (d: CanonicalData): boolean => {
-      const one = findLine(d, "s1a.line4c_one"), a = s1aFigure(d, "s1a.line4a"), b = s1aFigure(d, "s1a.line4b"), c = s1aFigure(d, "s1a.line4c");
-      if (!one || !a || !b || !c || one.expr.op !== "larger_of" || stableStringify(one.expr.of) !== stableStringify(["s1a.line4a", "s1a.line4b"])) return false;
-      if (b.expr.op !== "param" || d.params.values[b.expr.ref]?.value !== 0) return false;
-      if (a.expr.op !== "choose" || c.expr.op !== "choose") return false;
-      const aOne = a.expr.alternatives.find((x) => stableStringify(x.guard).includes('"s1a.tip_multi"') && stableStringify(x.guard).includes("false"));
-      const cOne = c.expr.alternatives.find((x) => x.then === "s1a.line4c_one");
-      return aOne?.then === "s1a.tip_reported" && !!cOne && stableStringify(cOne.guard) === stableStringify(aOne.guard);
-    },
-  };
-}
-
+// The Student Loan Interest Deduction Worksheet skips lines 6 and 7 (line 8 is zero) when line 4 is
+// not more than line 5. The prorated line's part is line 6 = line 4 - line 5, which is then zero or
+// negative, and `prorate` keeps its ratio at 0 or more, so the prorated line is zero there too (its
+// whole, the divisor, is a positive parameter for every filing status): the skip and the formula agree,
+// and a mutant that crosses between them changes no value. The test is read only by line 8.
 function prorateSkip(what: string) {
   return {
-    reason: `${what}; there line 6 (line 4 less line 5) is zero or negative, the prorate ratio is kept at 0, and the prorated amount equals the skip branch's zero.`,
+    reason: `${what}; there line 6 (line 4 less line 5) is zero or negative, the prorate ratio is kept at 0, and the prorated amount equals the skip branch's zero. The test is read only by line 8.`,
     holds: (d: CanonicalData): boolean => {
       const l8 = findLine(d, "sli.line8"), fig = findLine(d, "sli.line8_figured"), l6 = findLine(d, "sli.line6"), over = findLine(d, "sli.over"), zero = findLine(d, "sli.zero");
       if (!l8 || !fig || !l6 || !over || !zero) return false;
-      if (fig.expr.op !== "prorate" || fig.expr.part !== "sli.line6") return false;
+      if (fig.expr.op !== "prorate" || fig.expr.part !== "sli.line6" || fig.expr.amount !== "sli.line1" || fig.expr.whole !== "sli.divisor") return false;
       if (l6.expr.op !== "subtract" || l6.expr.from !== "sli.line4" || l6.expr.take !== "sli.line5") return false;
       if (over.expr.op !== "test" || !("gt" in over.expr) || stableStringify(over.expr.gt) !== stableStringify(["sli.line4", "sli.line5"])) return false;
       if (zero.expr.op !== "param" || d.params.values[zero.expr.ref]?.value !== 0) return false;
-      if (l8.expr.op !== "choose") return false;
-      const thens = l8.expr.alternatives.map((a) => a.then);
-      return thens.length === 2 && thens.includes("sli.line8_figured") && thens.includes("sli.zero");
-    },
-  };
-}
-
-// The EIC's first test reads Form 1040 line 11b. A refusal gate that already refuses a line
-// line 11b reads ends the EIC with that refusal before any EIC line carrying the same gate is
-// reached from Form 1040, so removing the EIC copy of the gate changes no Form 1040 line.
-function agiFirst(gate: string, line: string, index: number) {
-  return {
-    reason: `The gate ${gate} also refuses a line that Form 1040 line 11b reads, and eic.eligible tests eic.below_top (which reads line 11b) first, so the return's EIC refuses through line 11b whenever ${gate} is true; the copy of the gate on ${line} adds nothing to any Form 1040 line.`,
-    holds: (d: CanonicalData): boolean => {
-      const l = findLine(d, line); if (!l || l.refuses?.[index]?.when !== gate) return false;
-      const seen = new Set<string>(); const stack = ["f1040.line11b"]; let found = false;
-      while (stack.length) { const id = stack.pop()!; if (seen.has(id)) continue; seen.add(id); const x = findLine(d, id); if (!x) continue; if ((x.refuses ?? []).some((r) => r.when === gate)) found = true; stack.push(...operandRefs(d, x.expr)); }
-      const el = findLine(d, "eic.eligible"); const bt = findLine(d, "eic.below_top");
-      return found && !!el && !!bt && operandRefs(d, el.expr)[0] === "eic.below_top" && operandRefs(d, bt.expr)[0] === "f1040.line11b";
+      if (stableStringify(allReaders(d, "sli.over")) !== stableStringify(["sli.line8"]) || !bindsBranches(d, "sli.line8", "sli.over", "sli.zero", "sli.line8_figured")) return false;
+      const positive = (id: unknown): boolean => {
+        const e = typeof id === "string" ? exprOf(d, id) : undefined;
+        const v = e?.op === "param" ? d.params.values[e.ref as string]?.value : undefined;
+        return typeof v === "number" && v > 0;
+      };
+      const div = exprOf(d, "sli.divisor");
+      if (div?.op !== "choose" || !(div.alternatives as { then: unknown }[]).every((a) => positive(a.then))) return false;
+      return findLine(d, "sli.line1")?.type === "NonNegDollars" && ungated(d, "sli.line6", "sli.line8_figured", "sli.divisor");
     },
   };
 }
@@ -737,17 +792,110 @@ function agiFirst(gate: string, line: string, index: number) {
 // A Worksheet A line 5 amount whose EIC Table band prints the maximum credit in every column
 // that uses it: with line 3 inside [amount, amount + $1) the lookup returns the maximum, line 6
 // takes the smaller of it and line 2 (never above the maximum), so blank or not, line 6 is line 2.
+// Checked: the plateau in the tables, and the worksheet lines that make "blank or not" equal
+// (line 5 blank when line 3 is below the amount; otherwise the smaller of line 5 and line 2).
 function thresholdAtPlateau(param: string, tables: string[], col: number) {
   return {
-    reason: `Line 5 amount ${param}: in ${tables.join(", ")} the bands covering [${param}, ${param} + $1) print each table's maximum in the column used, so shifting the amount by $1 can only turn a lookup equal to the maximum into a blank line 5; line 6 is line 2 either way.`,
+    reason: `Line 5 amount ${param}: in ${tables.join(", ")} the bands covering [${param}, ${param} + $1) print each table's maximum in the column used, so shifting the amount by $1 can only turn a lookup equal to the maximum into a blank line 5; line 6 is line 2 either way (only whether line 5 is shown can differ).`,
     holds: (d: CanonicalData): boolean => {
       const v = d.params.values[param]?.value; if (typeof v !== "number") return false;
-      return tables.every((t) => {
+      const plateau = tables.every((t) => {
         const tb = d.tables.find((x) => x.id === t); if (!tb?.bands) return false;
         const max = Math.max(...tb.bands.map((b) => b.tax[col]!));
         const cover = tb.bands.filter((b) => b.at_least < v + 100 && b.less_than > v);
         return cover.length > 0 && cover.every((b) => b.tax[col] === max);
       });
+      const blank = exprOf(d, "eic.line5_blank"), smaller = exprOf(d, "eic.smaller");
+      return plateau && blank?.op === "test" && stableStringify(blank.lt) === stableStringify(["eic.line3", "eic.line5_threshold"])
+        && bindsBranches(d, "eic.after_line4", "eic.line5_blank", "eic.smaller", "eic.line2")
+        && smaller?.op === "smaller_of" && stableStringify(smaller.of) === stableStringify(["eic.line5", "eic.line2"])
+        && ungated(d, "eic.line5_blank", "eic.after_line4", "eic.smaller");
+    },
+  };
+}
+
+// A boundary test 'A more than B' made inclusive adds only A = B. The test is read only by a choose
+// that takes `atOrBelow` when it is false and `above` when it is true, and `same` checks that the two
+// branches give the same value when A = B; both routes evaluate the same operands, so an incomplete A
+// or B is the same value on both. `doc` names the def when the lines are a def's (local ids).
+function boundaryAgrees(over: string, chooser: string, atOrBelow: string, above: string, reason: string, same: (line: (id: string) => Line | undefined) => boolean, doc?: string) {
+  return {
+    reason,
+    holds: (d: CanonicalData): boolean => {
+      const own = doc ? d.defs.find((x) => x.id === doc)?.lines : undefined;
+      if (doc && !own) return false;
+      const line = (id: string): Line | undefined => (own ? own.find((l) => l.id === id) : findLine(d, id));
+      const o = line(over), ch = line(chooser);
+      if (!o || o.expr.op !== "test" || !("gt" in o.expr) || !ch || ch.expr.op !== "choose") return false;
+      const readers = own
+        ? own.filter((l) => operandRefsLocal(l.expr).includes(over) || (l.refuses ?? []).some((r) => r.when === over) || l.shown_when === over).map((l) => l.id)
+        : allReaders(d, over);
+      const g = (v: boolean): string => stableStringify({ op: "test", eq: [over, { const: v }] });
+      const alts = ch.expr.alternatives as { guard: unknown; then: unknown }[];
+      const bound = alts.length === 2 && alts.some((a) => stableStringify(a.guard) === g(false) && a.then === atOrBelow)
+        && alts.some((a) => stableStringify(a.guard) === g(true) && a.then === above);
+      return stableStringify(readers) === stableStringify([chooser]) && bound && same(line);
+    },
+  };
+}
+
+// The local line ids a def line's expression names (every string value outside the non-reference keys).
+function operandRefsLocal(expr: unknown): string[] {
+  const out: string[] = [];
+  const skip = new Set(["ref", "collection", "const", "cite", "type", "op", "unit", "rule", "source", "label", "param"]);
+  const walk = (n: unknown): void => {
+    if (typeof n === "string") { out.push(n); return; }
+    if (Array.isArray(n)) { for (const x of n) walk(x); return; }
+    if (n !== null && typeof n === "object") for (const [k, v] of Object.entries(n)) if (!skip.has(k)) walk(v);
+  };
+  walk(expr);
+  return out;
+}
+
+// min(X, min(Y, Z)) = min(X, Z) when X <= Y: X is Y less a non-negative W, floored at zero, and Y is
+// not negative (both by the checker's NonNegDollars proof). The inner smaller_of is ungated. A refused X
+// stops both; an unknown X with a refused Y is impossible (X reads Y); otherwise the incomplete
+// operand that wins is the same on both routes.
+function minNesting(line: string, x: string, m: string, y: string, z: string) {
+  return {
+    reason: `${line} is min(${x}, ${m}) and ${m} is the ungated min(${y}, ${z}); ${x} is ${y} less a non-negative amount, floored at zero, with ${y} not negative, so ${x} <= ${y} and min(${x}, min(${y}, ${z})) = min(${x}, ${z}) at every input; ${x} is read first on both routes.`,
+    holds: (d: CanonicalData): boolean => {
+      const l = exprOf(d, line), mm = exprOf(d, m), xx = exprOf(d, x);
+      if (l?.op !== "smaller_of" || stableStringify(l.of) !== stableStringify([x, m])) return false;
+      if (mm?.op !== "smaller_of" || stableStringify(mm.of) !== stableStringify([y, z]) || !ungated(d, m, x)) return false;
+      if (xx?.op !== "subtract_floor0" || xx.from !== y || typeof xx.take !== "string") return false;
+      return findLine(d, xx.take)?.type === "NonNegDollars" && findLine(d, y)?.type === "NonNegDollars";
+    },
+  };
+}
+
+// A vehicle placed in service in 2019 is in its seventh recovery year in 2025, and only then are its
+// year 4 to 6 deductions read (through the unrecovered basis, which macrs_pass reads only for a 2019
+// vehicle: path dominance). For it the year 4, 5 and 6 limits are one value, and every 5-year GDS
+// column has non-increasing rates over years 4 to 6, so min(min(l(n-1), t(n-1)), t(n)) = min(l(n), t(n)).
+function vehicle2019(line: string, what: string, check: (d: CanonicalData) => boolean) {
+  return {
+    reason: `${what} Only a 2019 vehicle's ${line} reaches a printed line (every reader path passes a choice taken only for a 2019 vehicle), and for it the auto_limit rows for years 4, 5 and 6 hold one limit and every 5-year GDS column's rates do not increase from year 4 to year 6.`,
+    holds: (d: CanonicalData): boolean => {
+      const is2019 = exprOf(d, "scveh.is2019");
+      if (is2019?.op !== "test" || stableStringify(is2019.eq) !== stableStringify(["scveh.placed", { const: "y2019" }])) return false;
+      const limits = d.tables.find((t) => t.id === "auto_limit")?.rows as { keys: unknown[]; value: unknown }[] | undefined;
+      const lim = (n: number): unknown => limits?.find((r) => stableStringify(r.keys) === stableStringify(["y2019", n]))?.value;
+      if (typeof lim(4) !== "number" || lim(4) !== lim(5) || lim(5) !== lim(6)) return false;
+      const gds = d.tables.find((t) => t.id === "macrs_gds")?.rows as { keys: unknown[]; value: { num: number; den: number } }[] | undefined;
+      const period = d.params.values["sc.period_y5"]?.value;
+      const convs = [...new Set((gds ?? []).filter((r) => r.keys[0] === period).map((r) => r.keys[1]))];
+      const rate = (c: unknown, n: number): number | undefined => {
+        const r = gds?.find((x) => x.keys[0] === period && x.keys[1] === c && x.keys[2] === n)?.value;
+        return r ? r.num / r.den : undefined;
+      };
+      const falling = (c: unknown): boolean => {
+        const [a, b, e] = [rate(c, 4), rate(c, 5), rate(c, 6)];
+        return a !== undefined && b !== undefined && e !== undefined && a >= b && b >= e;
+      };
+      if (!convs.length || !convs.every(falling)) return false;
+      const year = (n: number): unknown => d.params.values[`sc.year${n}`]?.value;
+      return year(4) === 4 && year(5) === 5 && year(6) === 6 && dominatedBy(d, line, "scveh.is2019") && check(d);
     },
   };
 }
@@ -814,6 +962,13 @@ async function outcomesOf(baseline: CanonicalData, cases: ReturnType<typeof load
   return all;
 }
 
+// A survivor that a recorded, still-open defect explains: it is not equivalent and is not excluded from
+// the adjusted score, but it does not fail the run while the bug entry is open. The run fails if a listed
+// mutant is killed (the entry is stale) or the bug entry is missing.
+const OPEN_DEFECT_SURVIVORS: Record<string, string> = {
+  "operand.person.person.sep_s1.sc_total": "BUG-0169",
+};
+
 export async function runMutation(): Promise<number> {
   const baseline = loadCanonical();
   const fixtureFile = loadCases();
@@ -842,13 +997,17 @@ export async function runMutation(): Promise<number> {
   const killed = killedByCheck + killedByFixtures;
   const score = total === 0 ? 0 : killed / total;
   for(const survivor of survivors) {
-    const reason=aliasEquivalence(baseline,survivor) ?? sharedGateEquivalence(baseline,survivor) ?? unreadParameter(baseline,survivor) ?? unreadTable(baseline,survivor);
+    const reason=equivalenceReason(baseline,survivor);
     if(reason)EQUIVALENT[survivor.id]=reason;
-    const conditional=EQUIVALENT_IF[survivor.id];
-    if(conditional && conditional.holds(baseline))EQUIVALENT[survivor.id]=conditional.reason+" (structural conditions re-checked this run.)";
   }
   const equivalentSurvivors = survivors.filter((s) => s.id in EQUIVALENT);
-  const unexplained = survivors.filter((s) => !(s.id in EQUIVALENT));
+  const openDefect = survivors.filter((s) => !(s.id in EQUIVALENT) && s.id in OPEN_DEFECT_SURVIVORS);
+  const unexplained = survivors.filter((s) => !(s.id in EQUIVALENT) && !(s.id in OPEN_DEFECT_SURVIVORS));
+  const inventory = readFileSync(join(ROOT, "BUG_INVENTORY.md"), "utf8");
+  const openDefectProblems = Object.entries(OPEN_DEFECT_SURVIVORS).flatMap(([id, bug]) => [
+    ...(survivors.some((s) => s.id === id) ? [] : [`${id}: listed for ${bug} but no longer survives; remove the entry`]),
+    ...(new RegExp(`^## ${bug} — .*\\(open\\)$`, "m").test(inventory) ? [] : [`${id}: ${bug} is not an open entry in BUG_INVENTORY.md`]),
+  ]);
   const adjusted = total - equivalentSurvivors.length === 0 ? 1 : killed / (total - equivalentSurvivors.length);
 
   const report: string[] = [];
@@ -876,6 +1035,13 @@ export async function runMutation(): Promise<number> {
     }
     report.push("");
   }
+  if (openDefect.length > 0 || openDefectProblems.length > 0) {
+    report.push("## Surviving — explained by an open defect");
+    report.push("");
+    for (const s of openDefect) report.push(`- \`${s.id}\` (${s.kind}, ${s.where}): ${OPEN_DEFECT_SURVIVORS[s.id]}`);
+    for (const p of openDefectProblems) report.push(`- PROBLEM: ${p}`);
+    report.push("");
+  }
   if (unexplained.length > 0) {
     report.push("## Surviving — not yet explained");
     report.push("");
@@ -891,5 +1057,6 @@ export async function runMutation(): Promise<number> {
   writeFileSync(join(outDir, "mutation.md"), report.join("\n"));
   console.log(`mutation: ${total} mutants, killed by checker ${killedByCheck}, by fixtures ${killedByFixtures}, surviving ${survivors.length} (${equivalentSurvivors.length} equivalent; score ${(score * 100).toFixed(1)}%, adjusted ${(adjusted * 100).toFixed(1)}%)`);
   console.log(`report: reports/${YEAR}/mutation.md`);
-  return unexplained.length === 0 ? 0 : 1;
+  for (const p of openDefectProblems) console.log(`mutation: ${p}`);
+  return unexplained.length === 0 && openDefectProblems.length === 0 ? 0 : 1;
 }

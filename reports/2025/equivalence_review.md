@@ -236,3 +236,184 @@ Inferred (unverified): the shape assigned to each entry is a reading of its pros
 its truth; the "candidate" judgments estimate what a structural rule could accept and were not
 prototyped; the claim that D1, D3 and D4 are unreachable rests on the checker's type rules as
 read, not on a proof; the Lean line numbers were not re-verified by compiling Lean.
+
+## Second reading — Claude Opus 5.5 (second reader, 2026-10-27)
+
+Integrity plan item 1.6, part two (plan revision item C5). Reviewer for every verdict below:
+**Claude Opus 5.5 (second reader, 2026-10-27)**. The first reading above classified the arguments and
+said what their `holds` predicates check; this reading asks whether each argument is *true*: is the
+mutant equivalent on every reachable input, where reachable includes partial answers (the question
+bank says "Unknown may be null; do not guess", and the interview stops at the first refusal).
+
+### Method
+
+- **Differential search.** Each of the 72 entries that were live at the start of this reading (56
+  `EQUIVALENT_IF`, 15 prose, and `filter.person.person.hsa_step1`, which turned out dead) was applied to
+  the current data and evaluated, with every line a target, against the base data on an input bank:
+  the 1,099 fixture cases, 1,500 generated returns (`engine/src/generate.ts`, seed 7) and, for each
+  generated return, a partial variant with each scalar answer withheld with probability 0.15. Every
+  line whose value differs on both sides (refusals compared whole, unknowns as one token, spec 4.7)
+  was recorded with a witness, split into printed lines and `(helper)` lines.
+- **Reading.** Each argument was then read against the YAML and the evaluator (`engine/src/eval.ts`),
+  case by case on the incomplete values (spec 4.7.1 to 4.7.4), whether or not the search found a
+  difference; a $1 parameter window or an equality boundary is not hit by random returns, so those
+  verdicts rest on the reading.
+- **Observation standard.** An argument holds when no printed line (any line not printed `(helper)`)
+  can change; a change in a helper's own value is allowed and is said so. "Read only by X" bounds only
+  values read through X: when the mutated line is itself printed, its own value is observed (spec 4.7.7).
+- **Counterexamples.** A witness was reduced to a realistic case (an existing fixture's inputs with
+  one or two answers changed or left unanswered in interview order), the side the archived IRS text
+  supports was decided from the quoted sentence, and when the project's side is right a fixture case
+  was added (below). When the deciding difference is only an unknown against a known value (fixtures
+  never assert an unknown, and an asserted key counts as evidence in `reports/2025/evidence.md`), or
+  when the reading is doubtful, the case is listed as a proposed finding instead.
+
+### Verdicts
+
+**72 entries: 59 hold, 12 fail with a counterexample, 1 dead, 0 undecided.** Of the 12 failures, 9 are
+fixture gaps now closed by 8 new fixture cases; 3 are proposed findings and remain survivors, listed as
+"not yet explained" in `reports/2025/mutation.md`.
+
+Row numbers are those of the 89-row table above. *Disposition* says how the mutant is now accounted
+for: a structural rule (applied to every survivor, below), a keyed `holds` predicate, a killing fixture,
+or an open finding.
+
+| # | Mutant | Was | Verdict | Reasoning or counterexample | Disposition |
+| --- | --- | --- | --- | --- | --- |
+| 1 | `operand.eic.eic.step5_line4.zero` | IF | **fails** | The mutated line is printed (Step 5, line 4). Other-income screen Yes, combat pay No: base $0, mutant the Medicaid-waiver refusal of line 2. Full input. | killed: `stage9.eic.refuse.other_income` |
+| 2 | `refusal.eic.eic.step1_resident.0` | IF | **fails** | The carrier (Form 1040 line 8's other-income entry) is not on every path: with the Schedule 1 screen unanswered, line 8's first gate is unknown, line 11b is unknown, and `eic.eligible` (`[unknown, …, refusal]`) refuses only through this entry. Base: line 27a refuses (Step 1, question 4); mutant: line 27a $0, line 27c unchecked. Interview-order partial input. | killed: `stage9.eic.refuse.other_income.schedule1_unanswered` |
+| 3 | `refusal.eic.eic.step5_line2.0` | IF | **fails** | Printed Step 5 line 2 is decided by its own entry: other-income screen Yes, base refusal (Medicaid waiver), mutant $0. Full input. Also differs on line 27a in partial inputs. | killed: `stage9.eic.refuse.other_income` |
+| 4 | `refusal.eic.eic.step2_other.0` | IF | **fails** | Removing the first entry lets the second (`scope.other_line16`) decide while the Schedule 1 screen is unanswered (BUG-0083 ordering): on the inputs of `stage16.cleanup.refuse.f1040_line16`, the single filer's separated-spouses box goes from false to an EIC Step 2 refusal, and line 34's refusal record changes. | killed: `stage9.eic.refuse.f1040_line16.separated_spouses` |
+| 5 | `refusal.eic.eic.step5_line1.0` | IF | **fails** | Printed Step 5 line 1 is decided by its own entry: Schedule 1 screen Yes, base refusal (clergy), mutant $4,000 (line 1z). Full input. | killed: `stage9.eic.refuse.clergy_schedule1.step5` |
+| 6–8 | `param.eic.ws_threshold*.$1` | IF | holds | Line 3 in [T, T + $1): base line 5 is the plateau maximum and line 6 is min(maximum, line 2) = line 2; mutant leaves line 5 blank and line 6 = line 2. All operands known in the window. Only the helpers `eic.line5_blank` and `eic.show5` (whether line 5 is shown) differ; probed at AGI $10,620. | IF; `holds` now also checks the blank test, the after-line-4 binding and the smaller-of |
+| 10 | `boundary.eic.eic.wsb_4b_positive` | IF | holds | At line 4b = $0 both routes make the line-5 stop false when the status is known. Prose overstated: with the status unanswered the stop is false in the base (`[unknown, …, false]`) and unknown in the mutant, but line 27c's first disjunct is then unknown too, so no printed line changes. | IF, unchanged |
+| 11 | `filter.person.person.hsa_step1` | IF | dead | The mutant is killed by the current fixtures; the entry was never consulted. | removed |
+| 13 | `refusal.ssb.ssb.line6.0` | IF | **fails** | Line 7 is unaffected, but printed worksheet line 6 is decided by its own entry: Schedule 1 screen Yes, base refusal, mutant $0. Full input. | killed: `stage10.ss.refuse.schedule1` |
+| 14–17 | `boundary.s1a.s1a.line{10,18,27,33}_over` | IF | holds | At A = B the excess, the reduction and the subtraction are zero; the test is read only by its chooser. | IF; `holds` now also checks the sole reader, the guard-to-branch binding, a known rate and an ungated chain |
+| 18–33 | `operand.s1a.s1a.*` (16) | IF | holds | Every printed reader of the mutated helper is reached only through choices whose guards imply the part's flag, where the gated line equals its figure. The search found helper-only differences. | structural rule *guarded figure* (keyed entries removed) |
+| 35 | `operand.s1a.s1a.line4c_one.line4b` | IF | holds | As 18–33 (line 4c takes `line4c_one` only under Part II). | structural rule *guarded figure* |
+| 36–37 | `boundary.sli.sli.over`, `operand.sli.sli.line9.line8` | IF | holds | At line 4 ≤ line 5 the prorated amount is $0 (ratio clamped at 0; the divisor is a positive parameter for every status), equal to the skip's zero; incomplete operands propagate identically. | IF; `holds` now also checks the sole reader, the binding, the divisor and an ungated chain |
+| 38 | `refusal.dependent.dependent.qualifying_relative.2` | IF | **fails** | The qualifying-child test refuses first only when its earlier gates are answered. With the tie-breaker question unanswered (interview order), the qualifying-child test is unknown and only this entry refuses: base `claimed` and line 19 refuse (Married person rules), mutant unknown. | killed: `stage8.refuse.dependent.married.other_claimant_unanswered` |
+| 39–50 | `operand.sdtw.sdtw.raw*` (12) | IF | holds | Skip-gated: the helper is read only where its gate holds, and there the operands are equal. | structural rule *guarded figure* (keyed entries removed) |
+| 51 | `operand.sdtw.sdtw.line45.line43` | IF | holds | 28% of $0 is $0; incomplete values pass through the rate. | IF; `holds` now also checks the known rate and ungated lines |
+| 52 | `operand.sdtw.sdtw.line17.line16` | IF | holds | As argued (line 14 ≤ line 1). | IF, unchanged |
+| 53 | `operand.f8959.f8959.line18.line17` | IF | holds | As argued. | IF, unchanged |
+| 54–55 | `operand.f8960.f8960.line8.line5d`, `…line9d.line9c` | IF | holds | As argued. | IF, unchanged |
+| 56 | `refusal.f4952.f4952.required.2` | IF | **fails** | With the alternative-allocation question unanswered, the base is unknown (its last gate). The mutant evaluates the expression: the election copy is unknown on the identical gate, but the `any`-test goes on, so line 1 decides it true or refuses ahead of the unknown (spec 4.7.2). Witnesses differ only as unknown against a known value or refusal, or as one refusal record against another. | **open finding P2**; entry removed |
+| 57 | `operand.f2441.f2441.line25.line24` | IF | holds | Floor-minus-min with B the ungated zero. | structural rule *floor-minus-min* |
+| 58 | `refusal.retirement.retirement.amount_a.1` | IF | **fails** | The case the first reading flagged: a Roth IRA with the 1099-R code unanswered. Base: the bad-code gate is unknown, so amount A and Form 1040 line 4a are unknown. Mutant: the annuity-rollover gate is false, and `show_a`'s `any`-test remembers the unknown rollover disjunct and is decided true by `roth`, so line 4a is box 1. Only an unknown distinguishes the two. | **open finding P1**; entry removed |
+| 59 | `operand.person.person.dc_earned.eic_se` | IF | holds | As argued (no difference on the bank; each clause re-read). | IF, unchanged |
+| 60 | `operand.f5695.f5695.line16.line15` | IF | holds | Floor-minus-min. | structural rule *floor-minus-min* |
+| 61 | `boundary.eic.eic.self_employed` | prose | **fails** | The prose missed the Worksheet B line 5 stop. With no Schedule C, earned income not under the limit and AGI under it, the mutant treats the filer as self-employed and checks line 27c. Full input (generated return 828; fixture uses wages $20,000 and student loan interest $2,500). | killed: `stage9.eic.no_schedule_c.earned_over_limit` |
+| 63 | `boundary.sc.sc.ho_over` | prose | holds | At the cap, rate × square feet = rate × cap; the test is read only by line 4. | new keyed `holds` (`boundaryAgrees`) |
+| 64 | `boundary.se.positive` | prose | holds | At line 3 = $0 both branches are $0; the test is read only by line 4a. | new keyed `holds` (`boundaryAgrees`) |
+| 65 | `operand.eic.eic.wsb_4b.earned_income` | prose | **fails** | "Line 4 is zero, refused otherwise": when it is refused the two operands differ. A self-employed filer with combat pay: base Worksheet B line 4b, Worksheet A line 1 and Form 1040 line 27a refuse; mutant $12,081.58 and a $538 credit. Full input. | killed: `stage14.eic.wsb_combat_pay` |
+| 66 | `operand.eic.eic.wsb_6.zero` | prose | holds | Line 4b (read first) reaches Step 5 line 4 through ungated sums, so when line 4 refuses or is unknown, line 4b already is. | structural rule *gated zero carried earlier* |
+| 67 | `operand.person.person.sep_s1.sc_total` | prose | **fails** | Step 2 does not "refuse exactly when" Step 1's replacement does: printed SEP Step 1 is $100,000 in the base and a refusal in the mutant (Schedule C, SE screen Yes). For people without a Schedule C, Steps 1–21 go from $0 to a refusal or unknown. Which side is right is a reading question. | **open finding P3**; entry removed |
+| 68 | `operand.person.person.simple_catchup.simple_regular` | prose | holds | Floor-minus-min. | structural rule *floor-minus-min* |
+| 69 | `operand.s179.s179.line13.line12` | prose | holds | Floor-minus-min (A is the helper for lines 9 + 10). | structural rule *floor-minus-min* |
+| 70 | `operand.s8812.s8812.eiw_3.zero` | prose | holds | Line 3's first operand (the line 1a + 1b + 2b sum) reaches line 1b through an ungated sum. | structural rule *gated zero carried earlier* |
+| 73–76 | `operand.scveh.scveh.{d5.l5,d6.l6,l5.k5,l6.k6}` | prose | holds | Only a 2019 vehicle's lines reach a printed line (through `macrs_pass`'s 2019 branch). For it the year 4–6 limits are $5,760 and every 5-year GDS column's rates do not increase over years 4–6. Helper-only differences for other vehicles. | new keyed `holds` (`vehicle2019`: path dominance, table rows, rates, structure) |
+| 77 | `operand.scveh.scveh.line17.line16` | prose | holds | Floor-minus-min (min operands in the other order). | structural rule *floor-minus-min* |
+| 80 | `operand.qdcg.qdcg.line8.line7` | prose | holds | Line 5 ≤ line 1 (line 5 is line 1 less a non-negative line 4, floored; line 1 is non-negative). | new keyed `holds` (`minNesting`) |
+
+**What the failures have in common.** Eight of the twelve rest on "read only by X" (or "refuses
+first") while the mutated line is itself printed, or while the carrier sits behind an earlier gate
+that can be unknown. The first-read-carries shape is sound only when every gate on the carrier's path is
+answered. Spec 4.7.1 (an unknown gate ends the list, BUG-0083) and 4.7.2 (a later deciding conjunct, or a
+refusal, outranks an unknown) are exactly the rules these arguments skipped.
+
+### Fixture cases added
+
+Each kills the mutants named, is predicted from the quoted source sentence in its `evidence_note`, and
+asserts only known values and refusals.
+
+| Case | File | Kills |
+| --- | --- | --- |
+| `stage9.eic.no_schedule_c.earned_over_limit` | `fixtures/2025/stage9.json` | `boundary.eic.eic.self_employed` |
+| `stage14.eic.wsb_combat_pay` | `fixtures/2025/stage14.json` | `operand.eic.eic.wsb_4b.earned_income` |
+| `stage9.eic.refuse.other_income` | `fixtures/2025/stage9.json` | `refusal.eic.eic.step5_line2.0`, `operand.eic.eic.step5_line4.zero` |
+| `stage9.eic.refuse.other_income.schedule1_unanswered` | `fixtures/2025/stage9.json` | `refusal.eic.eic.step1_resident.0` |
+| `stage9.eic.refuse.clergy_schedule1.step5` | `fixtures/2025/stage9.json` | `refusal.eic.eic.step5_line1.0` |
+| `stage9.eic.refuse.f1040_line16.separated_spouses` | `fixtures/2025/stage9.json` | `refusal.eic.eic.step2_other.0` |
+| `stage10.ss.refuse.schedule1` | `fixtures/2025/stage10.json` | `refusal.ssb.ssb.line6.0` |
+| `stage8.refuse.dependent.married.other_claimant_unanswered` | `fixtures/2025/stage8.json` | `refusal.dependent.dependent.qualifying_relative.2` |
+
+### Mechanization
+
+Three structural rules in `engine/src/mutate.ts` are now applied to every survivor, after copy-chain and
+shared-gate. Each is checked against the current data on every run, and each first requires that
+neither operand depends on the mutated line. Without that guard, a probe over all 2,286 mutants found
+the guarded-figure rule accepting three scveh mutants the fixtures kill, because the replacement reads
+the mutated line.
+
+- **Floor-minus-min**: `subtract_floor0{from A, take M}` with M an ungated `smaller_of` of A and B, in
+  either order and either direction of replacement. Covers 57, 60, 68, 69, 77.
+- **Guarded figure** (path dominance): the replaced operand is a two-way choice "its figure when F", the
+  replacement is that figure, and every reader path from the mutated helper to a printed line, a refusal
+  gate or a display condition passes choices whose guards together imply F. The rule reasons about
+  conjuncts, `eq` against `ne`, and flags defined as all-tests. Covers 18–33, 35 and 39–50; it supersedes
+  the keyed `s1aPartGate`, `s1aOneEmployer` and `skipGated` entries.
+- **Gated zero carried earlier**: an ungated zero operand replaced by the same zero behind gates, when an
+  earlier operand reaches the gated zero through ungated arithmetic. Covers 66 and 70.
+
+Soundness probe: the structural rules accept 93 of the 2,286 mutants, every one a survivor of the
+fixtures. The new keyed predicates are `boundaryAgrees` (63, 64), `minNesting` (80) and `vehicle2019`
+(73–76; it uses the same path-dominance walk). The weak predicates of 6–8, 14–17, 36–37 and 51 were
+strengthened as listed in the table.
+
+**Prose-only entries: 15 before, 0 after.** The `EQUIVALENT` prose table is gone. The run's map of
+reasons is filled only by the structural rules and by `EQUIVALENT_IF` entries whose `holds` passes, so
+there is no place left to add a prose-only argument. Equivalent survivors are now 116: 93 by structural
+rules (46 copy-chain, 3 shared-gate, 8 unread-parameter, 5 floor-minus-min, 29 guarded-figure, 2
+carried-zero) and 23 by keyed `holds`. The plan's done-when (at most 20 prose-only, each with its
+reviewer; no new prose-only entry) is met with 0.
+
+### Proposed findings (not fixed here)
+
+- **P1 — `refusal.retirement.retirement.amount_a.1` survives and is not equivalent.** Only an unknown
+  (Form 1040 line 4a before the 1099-R code is answered) tells the routes apart. The project's unknown
+  is right under spec 4.7.1, since an answer of code "other" would refuse. Options for the owner: an
+  expectation form for unknowns that the evidence report does not count, or a property over partial
+  answers.
+- **P2 — `refusal.f4952.f4952.required.2` survives and is not equivalent.** Same situation, with the
+  Form 4952 alternative-allocation question unanswered. The only witnesses with a known base differ by
+  which of two true refusals is shown.
+- **P3 — `operand.person.person.sep_s1.sc_total`: possible project defect.** The SEP Deduction Worksheet's
+  Step 1 (`person.sep_s1`) copies the Schedule C total even when the Schedule SE screen is Yes or
+  unanswered. Pub. 560 (2025), Deduction Worksheet for Self-Employed, Step 1 reads: "Enter your net profit
+  from Schedule C (Form 1040), line 31; Schedule F (Form 1040), line 34;* or Schedule K-1 (Form 1065),*
+  box 14, code A." The screen covers exactly such non-Schedule-C self-employment income, so the printed
+  Step 1 may be understated where the mutant refuses. The worksheet's later steps already refuse through
+  Step 2, so no deduction changes. Needs the owner's reading of whose earned income a SEP covers before
+  a fixture is chosen.
+- **P4 — the mutation step cannot fail check-all.** `runMutation` returns 1 when a survivor is
+  unexplained, but `engine/src/main.ts` calls `await runMutation()` and discards the status. P1–P3 are
+  listed under "Surviving — not yet explained" and the step still passes. Proposed:
+  `process.exit(await runMutation())`, once P1–P3 are dispositioned.
+
+### Provenance (second reading)
+
+Inspected: `engine/src/mutate.ts` in full (before and after this change); `engine/src/eval.ts` lines
+40–135 and 380–475 (targets, sum, subtract, min/max, multiply, prorate, round); `engine/src/check.ts`
+lines 160–300 (the NonNegDollars proof); `engine/src/fixtures.ts` lines 20–117 and 230–262;
+`engine/src/fixture-inputs.ts`; `engine/src/main.ts` lines 120–135; spec 4.7; the canonical expression
+of every line named in the table (printed by a script from `canonical/2025`); `interview/questions-2025.yaml`
+(order of the scope and dependent questions) and `interview/README.md` line 51; the archived sentences
+quoted in the fixture notes (`sources/2025/i1040gi-html.txt`, `f1040.txt`, `p560.txt`). Run against the
+current build: the differential search described above (72 mutants × 4,099 inputs); the killing check of
+the 12 failing mutants against all fixtures after the 8 cases were added (9 killed, 3 surviving, every
+baseline expectation unchanged); the structural-rule soundness probe (93 accepted, none killed); the
+classification of the 128 former survivors under the new tables (116 equivalent, 12 not: the 9 now killed
+and P1–P3); a probe of entry 6 in its $1 window (no_child.4000 with wages $10,000 and interest $620, AGI
+exactly $10,620: line 6 and line 27a $649 on both routes, only `eic.line5_blank` and `eic.show5` differ);
+`npm run mutate` (2,286 mutants: 235 killed by the checker, 1,932 by fixtures, 119 surviving, of which 116
+equivalent and 3, P1–P3, not yet explained; adjusted score 99.9%); `npm run check-all` (green;
+fixtures 1,107/1,107; refusal reach 262 refusal fixtures).
+
+Inferred (unverified): the holds verdicts for 7, 8, 14–17, 36–37, 63 and 64 rest on reading the boundary
+or $1 window, which the random bank does not hit (6 was probed once in its window); the bank is a sample, so "no printed difference found" for
+the other holds verdicts is evidence alongside the reading, not proof; the path-dominance rule is argued
+from spec 4.7.3 and tested by the probe and the bank, not proved; the interview-order claims for the two
+partial cases rest on the bank's `order` values and README line 51 ("asked in bank order, then by key"), not
+on driving the interview tool.

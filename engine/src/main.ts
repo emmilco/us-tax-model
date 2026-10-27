@@ -125,7 +125,7 @@ if (command === "review-stage5") {
 } else if (command === "compare") {
   process.exit(compareEvaluators());
 } else if (command === "mutate") {
-  await runMutation();
+  process.exit(await runMutation());
 } else if (command === "properties") {
   process.exit(runProperties());
 } else if (command === "classm-jobs") {

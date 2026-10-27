@@ -2590,3 +2590,47 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
 - **Where:** `tools/year_diff.py`. **Fix:** the worklist compares adopted values and year-substituted
   quotes against the prior year, with self-tests.
 - **Tags:** worklist-misses-change; year-adoption-tooling; caught-by-rehearsal
+
+## BUG-0169 — SEP worksheet Step 1 shows only Schedule C profit when other self-employment income exists (open)
+
+- **Date:** 2026-10-27
+- **Caught by:** the mutation-equivalence second reader (plan revision item C5; P3 in
+  `reports/2025/equivalence_review.md`): mutant `operand.person.person.sep_s1.sc_total` survives and is
+  not equivalent.
+- **Symptom:** `person.sep_s1` copies the Schedule C total even when the self-employment screen is Yes or
+  unanswered. Pub. 560 (2025), Deduction Worksheet for Self-Employed, Step 1: "Enter your net profit from
+  Schedule C (Form 1040), line 31; Schedule F (Form 1040), line 34;* or Schedule K-1 (Form 1065),* box 14,
+  code A." With other self-employment income the printed Step 1 is understated, and with the screen
+  unanswered it is shown as known. Step 2 refuses on those returns, so no deduction is wrong.
+- **Where:** `forms/2025/person.yaml`, `person.sep_s1`.
+- **Fix:** open; next batch (gate Step 1 on the screen as Step 2 is). The mutant is listed in
+  `OPEN_DEFECT_SURVIVORS` in `engine/src/mutate.ts` until then.
+- **Tags:** printed-step-understated; availability-overclaim; open; caught-by-mutation-review
+
+## BUG-0170 — The mutation step could not fail check-all
+
+- **Date:** 2026-10-27
+- **Caught by:** the mutation-equivalence second reader (P4).
+- **Symptom:** `runMutation` returned 1 when a survivor was unexplained, but `engine/src/main.ts` awaited
+  it and discarded the status, so `check-all` passed with unexplained survivors listed in
+  `reports/2025/mutation.md`.
+- **Where:** `engine/src/main.ts`.
+- **Fix:** `process.exit(await runMutation())`. Survivors explained by an open bug entry are listed
+  separately (`OPEN_DEFECT_SURVIVORS`); a listed mutant that is killed, or whose entry is not open, fails
+  the run.
+- **Tags:** discarded-exit-status; silent-check; caught-by-mutation-review
+
+## BUG-0171 — Twelve mutation-equivalence arguments were false
+
+- **Date:** 2026-10-27
+- **Caught by:** the independent second reading of every equivalence argument (integrity plan 1.6),
+  by differential search over fixtures, generated returns and partial records.
+- **Symptom:** 12 survivors were accepted as equivalent with arguments that fail on a counterexample:
+  nine were fixture gaps (the project is right per the source; two visible on Form 1040 with complete
+  inputs: the self-employed EIC boundary and combat pay), two differ only as unknown against known (P1,
+  P2), one is BUG-0169. The shared flaws: ignoring the mutated line's own printed value, and assuming a
+  refusal arrives first when an earlier gate can be unanswered.
+- **Where:** `engine/src/mutate.ts` (`EQUIVALENT_IF`, `EQUIVALENT`).
+- **Fix:** the nine gaps and P1/P2 are killed by new fixtures (stage4, stage8, stage9, stage10,
+  stage14); the prose-only table is removed and recurring shapes are checked by structural rules.
+- **Tags:** false-equivalence-argument; prose-trusted; caught-by-second-reader
