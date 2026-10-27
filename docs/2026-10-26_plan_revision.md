@@ -89,3 +89,37 @@ Coverage extension resumes, targeting TY2026, when all of the following hold:
 The remaining items continue alongside coverage work rather than ahead of it: 1.2 and the other
 items in C not yet finished, 1.5/T-066 (class M on printed lines), 2.2 ("complete" in the spec),
 2.3 (prevalence buckets), 2.4 if still open, and 2.5 (product surface).
+
+## E. Coverage route to the first goal (owner amendment, 2026-10-27)
+
+Gate D was met on 2026-10-27 (BUG-0180 closed by BUG-0181, commit 671826a). The owner set the aim of
+the resumed coverage work as reaching the first goal of spec 2.4, 80% of returns, with results that can
+be shown stage by stage.
+
+The order in item 2.6 (Schedule E, the rest of Schedule 1, the premium tax credit) and in spec 2.4 is
+the estimator's greedy order over whole groups. Run over single categories with the same raking and
+data (`tools/coverage/estimate.py`, `covered()` with chosen categories removed), the gains if covered
+alone from 68.6% are: premium tax credit +4.4, education credits +3.3, rental and royalty +3.2, capital
+loss carryover +2.5, other income +2.4, Form 5329 +2.2, married filing separately +2.1, partnership and
+S corporation +1.4. The cheapest set that includes Schedule E and reaches 80% is the premium tax credit,
+rentals and education credits (80.2%). Four stages without Schedule E reach 82.2%: the premium tax
+credit, education credits, the capital loss carryover and Form 5329.
+
+The owner approved that route. Stages run in this order:
+
+1. Stage 20, the capital loss carryover (premise map `research/premises/stage20-capital-loss-carryover.md`).
+2. Stage 18, the premium tax credit (Form 8962).
+3. Stage 19, the education credits (Form 8863).
+4. Stage 21, Form 5329.
+
+Schedule E (Stage 17) and the rest of Schedule 1 follow the first goal. Each stage starts from a
+decision batch for the owner, written from its premise map and verification and checked against the
+current tree, and closes under the standing regime.
+
+Limits recorded with the decision. The capital loss carryover and Form 5329 are IRS-only categories,
+combined as independent of everything else; their gains are the least certain, and without Form 5329
+the route reaches 79.6%. The 80% is the estimator's figure for measured situations, and each stage adds
+refusal gates it cannot measure. Stages are built on the final TY2025 sources and carried to TY2026 by
+year adoption when the final 2026 instructions post; P.L. 119-21 sec. 71305 removes the excess advance
+credit repayment limitation for tax years after 2025, so the premium tax credit's year diff will be
+substantive.
