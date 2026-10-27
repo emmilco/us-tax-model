@@ -912,7 +912,8 @@ form:
             then: dependent.zero
       cite:
         doc: f1040s8812
-        locator: Schedule 8812 (2025), line 16b, "Number of qualifying children under age 17 with the required social security number x $1,700"
+        locator: p. 2, Part II-A Additional Child Tax Credit for All Filers, line 16b, "b Number of qualifying
+          children under age 17 with the required social security number", "x $1,700. Enter the result"
     - id: dependent.hoh_test2
       printed: (helper)
       type: Bool

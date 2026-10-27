@@ -251,8 +251,8 @@ form:
         - const: true
     cite:
       doc: i1040gi
-      locator: p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; Part II caution, "If married, you
-        must file jointly"
+      locator: p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; p. 101, Part II No Tax on
+        Tips, "If you are married, you must file a joint return with your spouse to claim this deduction"
   - id: s1a.line4a_calc
     printed: (helper)
     label: 'Figured: Enter qualified tips included on Form W-2, box 7, but see the instructions if Form W-2, box 5 is more
@@ -298,8 +298,8 @@ form:
         then: s1a.line4a_calc
     cite:
       doc: i1040gi
-      locator: p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; Part II caution, "If married, you
-        must file jointly"
+      locator: p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; p. 101, Part II No Tax on
+        Tips, "If you are married, you must file a joint return with your spouse to claim this deduction"
   - id: s1a.line4b_calc
     printed: (helper)
     label: 'Figured: Qualified tips included on Form 4137, line 1, row A, column (c). If Form 4137 is not filed, enter -0-'
@@ -339,8 +339,8 @@ form:
         then: s1a.line4b_calc
     cite:
       doc: i1040gi
-      locator: p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; Part II caution, "If married, you
-        must file jointly"
+      locator: p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; p. 101, Part II No Tax on
+        Tips, "If you are married, you must file a joint return with your spouse to claim this deduction"
   - id: s1a.line4c_one
     printed: (helper)
     label: 'Line 4c with one employer: the larger of line 4a or line 4b'
@@ -352,7 +352,8 @@ form:
       - s1a.line4b
     cite:
       doc: f1040s1a
-      locator: Schedule 1-A (2025), line 4c
+      locator: Schedule 1-A (2025), line 4c, "If you only received qualified tips as an employee with respect to
+        employment with one employer, enter the larger of line 4a or line 4b"
   - id: s1a.line4c_calc
     printed: (helper)
     label: 'Figured: If you only received qualified tips as an employee with respect to employment with one employer, enter
@@ -398,8 +399,8 @@ form:
         then: s1a.line4c_calc
     cite:
       doc: i1040gi
-      locator: p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; Part II caution, "If married, you
-        must file jointly"
+      locator: p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; p. 101, Part II No Tax on
+        Tips, "If you are married, you must file a joint return with your spouse to claim this deduction"
   - id: s1a.line5_calc
     printed: (helper)
     label: 'Figured: Qualified tips received in the course of a trade or business'
@@ -444,8 +445,8 @@ form:
         then: s1a.line5_calc
     cite:
       doc: i1040gi
-      locator: p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; Part II caution, "If married, you
-        must file jointly"
+      locator: p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; p. 101, Part II No Tax on
+        Tips, "If you are married, you must file a joint return with your spouse to claim this deduction"
   - id: s1a.line6_calc
     printed: (helper)
     label: 'Figured: Add lines 4c and 5'
@@ -479,8 +480,8 @@ form:
         then: s1a.line6_calc
     cite:
       doc: i1040gi
-      locator: p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; Part II caution, "If married, you
-        must file jointly"
+      locator: p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; p. 101, Part II No Tax on
+        Tips, "If you are married, you must file a joint return with your spouse to claim this deduction"
   - id: s1a.line7_calc
     printed: (helper)
     label: 'Figured: Enter the smaller of the amount on line 6 or $25,000'
@@ -514,8 +515,8 @@ form:
         then: s1a.line7_calc
     cite:
       doc: i1040gi
-      locator: p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; Part II caution, "If married, you
-        must file jointly"
+      locator: p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; p. 101, Part II No Tax on
+        Tips, "If you are married, you must file a joint return with your spouse to claim this deduction"
   - id: s1a.tips_max
     printed: (helper)
     label: Year parameter s1a.tips_max ($25,000)
@@ -577,8 +578,8 @@ form:
         then: s1a.line8_calc
     cite:
       doc: i1040gi
-      locator: p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; Part II caution, "If married, you
-        must file jointly"
+      locator: p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; p. 101, Part II No Tax on
+        Tips, "If you are married, you must file a joint return with your spouse to claim this deduction"
   - id: s1a.line9_calc
     printed: (helper)
     label: 'Figured: Enter $150,000 ($300,000 if married filing jointly)'
@@ -640,8 +641,8 @@ form:
         then: s1a.line9_calc
     cite:
       doc: i1040gi
-      locator: p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; Part II caution, "If married, you
-        must file jointly"
+      locator: p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; p. 101, Part II No Tax on
+        Tips, "If you are married, you must file a joint return with your spouse to claim this deduction"
   - id: s1a.line10_calc
     printed: (helper)
     label: 'Figured: Subtract line 9 from line 8. If zero or less, enter the amount from line 7 on line 13'
@@ -674,8 +675,8 @@ form:
         then: s1a.line10_calc
     cite:
       doc: i1040gi
-      locator: p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; Part II caution, "If married, you
-        must file jointly"
+      locator: p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; p. 101, Part II No Tax on
+        Tips, "If you are married, you must file a joint return with your spouse to claim this deduction"
   - id: s1a.line10_over
     printed: (helper)
     label: Is the amount on line 8 more than the amount on line 9?
@@ -698,7 +699,8 @@ form:
       take: s1a.line9
     cite:
       doc: f1040s1a
-      locator: Schedule 1-A (2025), line 10
+      locator: Schedule 1-A (2025), line 10, "Subtract line 9 from line 8. If zero or less, enter the amount from line
+        7 on line 13"
   - id: s1a.line11_thousands
     printed: (helper)
     label: Line 11. Divide line 10 by $1,000, decreasing the result to the next lower whole number (kept as that many thousands
@@ -723,7 +725,7 @@ form:
         param: s1a.hundred_per_thousand
     cite:
       doc: f1040s1a
-      locator: Schedule 1-A (2025), lines 11 and 12
+      locator: Schedule 1-A (2025), line 12, "Multiply line 11 by $100"
   - id: s1a.line12
     printed: '12'
     label: Multiply line 11 by $100
@@ -745,8 +747,8 @@ form:
         then: s1a.line12_calc
     cite:
       doc: i1040gi
-      locator: p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; Part II caution, "If married, you
-        must file jointly"
+      locator: p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; p. 101, Part II No Tax on
+        Tips, "If you are married, you must file a joint return with your spouse to claim this deduction"
   - id: s1a.line13_figured
     printed: (helper)
     label: Subtract line 12 from line 7. If zero or less, enter -0-
@@ -961,7 +963,8 @@ form:
         - const: true
     cite:
       doc: i1040gi
-      locator: p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; Part III caution
+      locator: p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; p. 106, Part III No Tax on
+        Overtime, "If you are married, you must file a joint return with your spouse to claim this deduction"
   - id: s1a.line14a_calc
     printed: (helper)
     label: 'Figured: Qualified overtime compensation included in Form W-2, box 1. If you received qualified overtime compensation
@@ -1002,7 +1005,8 @@ form:
         then: s1a.line14a_calc
     cite:
       doc: i1040gi
-      locator: p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; Part III caution
+      locator: p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; p. 106, Part III No Tax on
+        Overtime, "If you are married, you must file a joint return with your spouse to claim this deduction"
   - id: s1a.line14b_calc
     printed: (helper)
     label: 'Figured: Qualified overtime compensation included in Form 1099-NEC, box 1, or Form 1099-MISC, box 3'
@@ -1047,7 +1051,8 @@ form:
         then: s1a.line14b_calc
     cite:
       doc: i1040gi
-      locator: p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; Part III caution
+      locator: p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; p. 106, Part III No Tax on
+        Overtime, "If you are married, you must file a joint return with your spouse to claim this deduction"
   - id: s1a.line14c_calc
     printed: (helper)
     label: 'Figured: Add lines 14a and 14b'
@@ -1081,7 +1086,8 @@ form:
         then: s1a.line14c_calc
     cite:
       doc: i1040gi
-      locator: p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; Part III caution
+      locator: p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; p. 106, Part III No Tax on
+        Overtime, "If you are married, you must file a joint return with your spouse to claim this deduction"
   - id: s1a.ot_max_other
     printed: (helper)
     label: Year parameter s1a.ot_max_other ($12,500)
@@ -1175,7 +1181,8 @@ form:
         then: s1a.line15_calc
     cite:
       doc: i1040gi
-      locator: p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; Part III caution
+      locator: p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; p. 106, Part III No Tax on
+        Overtime, "If you are married, you must file a joint return with your spouse to claim this deduction"
   - id: s1a.line16_calc
     printed: (helper)
     label: 'Figured: Enter the amount from line 3'
@@ -1207,7 +1214,8 @@ form:
         then: s1a.line16_calc
     cite:
       doc: i1040gi
-      locator: p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; Part III caution
+      locator: p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; p. 106, Part III No Tax on
+        Overtime, "If you are married, you must file a joint return with your spouse to claim this deduction"
   - id: s1a.line17_calc
     printed: (helper)
     label: 'Figured: Enter $150,000 ($300,000 if married filing jointly)'
@@ -1269,7 +1277,8 @@ form:
         then: s1a.line17_calc
     cite:
       doc: i1040gi
-      locator: p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; Part III caution
+      locator: p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; p. 106, Part III No Tax on
+        Overtime, "If you are married, you must file a joint return with your spouse to claim this deduction"
   - id: s1a.line18_calc
     printed: (helper)
     label: 'Figured: Subtract line 17 from line 16. If zero or less, enter the amount from line 15 on line 21'
@@ -1302,7 +1311,8 @@ form:
         then: s1a.line18_calc
     cite:
       doc: i1040gi
-      locator: p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; Part III caution
+      locator: p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; p. 106, Part III No Tax on
+        Overtime, "If you are married, you must file a joint return with your spouse to claim this deduction"
   - id: s1a.line18_over
     printed: (helper)
     label: Is the amount on line 16 more than the amount on line 17?
@@ -1325,7 +1335,8 @@ form:
       take: s1a.line17
     cite:
       doc: f1040s1a
-      locator: Schedule 1-A (2025), line 18
+      locator: Schedule 1-A (2025), line 18, "Subtract line 17 from line 16. If zero or less, enter the amount from
+        line 15 on line 21"
   - id: s1a.line19_thousands
     printed: (helper)
     label: Line 19. Divide line 18 by $1,000, decreasing the result to the next lower whole number (kept as that many thousands
@@ -1350,7 +1361,7 @@ form:
         param: s1a.hundred_per_thousand
     cite:
       doc: f1040s1a
-      locator: Schedule 1-A (2025), lines 19 and 20
+      locator: Schedule 1-A (2025), line 20, "Multiply line 19 by $100"
   - id: s1a.line20
     printed: '20'
     label: Multiply line 19 by $100
@@ -1372,7 +1383,8 @@ form:
         then: s1a.line20_calc
     cite:
       doc: i1040gi
-      locator: p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; Part III caution
+      locator: p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; p. 106, Part III No Tax on
+        Overtime, "If you are married, you must file a joint return with your spouse to claim this deduction"
   - id: s1a.line21_figured
     printed: (helper)
     label: Subtract line 20 from line 15. If zero or less, enter -0-
@@ -1769,7 +1781,8 @@ form:
       take: s1a.line26
     cite:
       doc: f1040s1a
-      locator: Schedule 1-A (2025), line 27
+      locator: Schedule 1-A (2025), line 27, "Subtract line 26 from line 25. If zero or less, enter the amount from
+        line 24 on line 30"
   - id: s1a.line28_thousands
     printed: (helper)
     label: Line 28. Divide line 27 by $1,000, increasing the result to the next higher whole number (kept as that many thousands
@@ -1794,7 +1807,7 @@ form:
         param: s1a.two_hundred_per_thousand
     cite:
       doc: f1040s1a
-      locator: Schedule 1-A (2025), lines 28 and 29
+      locator: Schedule 1-A (2025), line 29, "Multiply line 28 by $200"
   - id: s1a.line29
     printed: '29'
     label: Multiply line 28 by $200
@@ -1925,7 +1938,9 @@ form:
         - const: mfs
     cite:
       doc: i1040gi
-      locator: p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if"; Part V caution
+      locator: p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if"; p. 110, Part V Enhanced
+        Deduction for Seniors, "If you are married, you must file a joint return with your spouse to claim this
+        deduction"
   - id: s1a.line31_calc
     printed: (helper)
     label: 'Figured: Enter the amount from line 3'
@@ -1957,7 +1972,9 @@ form:
         then: s1a.line31_calc
     cite:
       doc: i1040gi
-      locator: p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if"; Part V caution
+      locator: p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if"; p. 110, Part V Enhanced
+        Deduction for Seniors, "If you are married, you must file a joint return with your spouse to claim this
+        deduction"
   - id: s1a.senior_base_other
     printed: (helper)
     label: Year parameter s1a.senior_base_other ($75,000)
@@ -2039,7 +2056,9 @@ form:
         then: s1a.line32_calc
     cite:
       doc: i1040gi
-      locator: p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if"; Part V caution
+      locator: p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if"; p. 110, Part V Enhanced
+        Deduction for Seniors, "If you are married, you must file a joint return with your spouse to claim this
+        deduction"
   - id: s1a.line33_calc
     printed: (helper)
     label: 'Figured: Subtract line 32 from line 31. If zero or less, enter $6,000 on line 35'
@@ -2072,7 +2091,9 @@ form:
         then: s1a.line33_calc
     cite:
       doc: i1040gi
-      locator: p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if"; Part V caution
+      locator: p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if"; p. 110, Part V Enhanced
+        Deduction for Seniors, "If you are married, you must file a joint return with your spouse to claim this
+        deduction"
   - id: s1a.line33_over
     printed: (helper)
     label: Is the amount on line 31 more than the amount on line 32?
@@ -2095,7 +2116,7 @@ form:
       take: s1a.line32
     cite:
       doc: f1040s1a
-      locator: Schedule 1-A (2025), line 33
+      locator: Schedule 1-A (2025), line 33, "Subtract line 32 from line 31. If zero or less, enter $6,000 on line 35"
   - id: s1a.line34_calc
     printed: (helper)
     label: 'Figured: Multiply line 33 by 6% (0.06)'
@@ -2129,7 +2150,9 @@ form:
         then: s1a.line34_calc
     cite:
       doc: i1040gi
-      locator: p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if"; Part V caution
+      locator: p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if"; p. 110, Part V Enhanced
+        Deduction for Seniors, "If you are married, you must file a joint return with your spouse to claim this
+        deduction"
   - id: s1a.senior_amount
     printed: (helper)
     label: Year parameter s1a.senior_amount ($6,000)
@@ -2172,7 +2195,8 @@ form:
         then: s1a.line35_figured
     cite:
       doc: f1040s1a
-      locator: Schedule 1-A (2025), lines 33 and 35
+      locator: Schedule 1-A (2025), line 35, "Subtract line 34 from $6,000. If zero or less, enter -0-", line 33, "If
+        zero or less, enter $6,000 on line 35"
   - id: s1a.line35
     printed: '35'
     label: Subtract line 34 from $6,000. If zero or less, enter -0-
@@ -2194,7 +2218,9 @@ form:
         then: s1a.line35_calc
     cite:
       doc: i1040gi
-      locator: p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if"; Part V caution
+      locator: p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if"; p. 110, Part V Enhanced
+        Deduction for Seniors, "If you are married, you must file a joint return with your spouse to claim this
+        deduction"
   - id: s1a.died_before_65_count
     printed: (helper)
     label: Your entry, if you were born between January 2, 1960, and January 1, 1961, and died in 2025 before reaching age 65

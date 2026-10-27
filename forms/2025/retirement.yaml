@@ -238,8 +238,11 @@ form:
       - const: direct_rollover_G
     cite:
       doc: f1099r
-      locator: Box 2a, 'For a direct rollover ... zero should be shown and you must enter zero (-0-) on the Taxable
-        amount line'
+      locator: p. 5, Box 2a, "For a direct rollover, other than from a qualified plan, section 403(b) plan, or
+        governmental section 457(b) plan to a designated Roth account in the same plan or to a Roth IRA, zero should
+        be shown and you must enter zero (-0-) on the “Taxable amount” line of your tax return"; pp. 7 and 9, Box 7,
+        "G—Direct rollover of a distribution to a qualified plan, a section 403(b) plan, a governmental section 457(b)
+        plan, or an IRA"
   - id: retirement.bad_code
     printed: (gate)
     label: Distribution code the tool does not compute
@@ -273,7 +276,9 @@ form:
           - const: roth_ira
     cite:
       doc: i1040gi
-      locator: p. 27, Exception 2 (a Roth IRA distribution other than code Q needs Form 8606); f1099r Box 7
+      locator: p. 27, Exception 2 (a Roth IRA distribution other than code Q needs Form 8606); f1099r pp. 7 and 9, Box
+        7, "The following codes identify the distribution you received", "Q—Qualified distribution from a Roth IRA or
+        Roth SIMPLE IRA"
   - id: retirement.rolled
     printed: (helper)
     label: Amount rolled over (the whole distribution for a direct rollover)

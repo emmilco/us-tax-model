@@ -23,14 +23,14 @@
 - **Authored helper label:** Recovery period under GDS for the asset class
 - **Encoded (Enum(macrs_period)):** Find the entry in GDS recovery period by asset class (Pub. 946, Appendix B, Tables B-1 and B-2) for asset_class column (a).
 - Expr: `{"keys":["asset.class"],"op":"keyed_lookup","table":"class_lives"}`
-- Cite: [p946] Appendix B, Tables B-1 and B-2, GDS (MACRS) column; i4562 p. 11, Column (d)—Recovery period (For use in preparing 2025 returns; sha256 07fadfb2)
+- Cite: [p946] pp. 99–108, Table B-1, "Table B-1. Table of Class Lives and Recovery Periods", "Class Life GDS (in years) (MACRS) ADS", "Table B-2. Table of Class Lives and Recovery Periods" (GDS (MACRS) column); i4562 p. 11, Column (d)—Recovery period (For use in preparing 2025 returns; sha256 07fadfb2)
 
 ## (gate) — `asset.outside`
 
 - **Authored helper label:** The asset class is outside this tool
 - **Encoded (Bool):** column (d) = 'outside'
 - Expr: `{"eq":["asset.period",{"const":"outside"}],"op":"test"}`
-- Cite: [p946] Appendix B, Tables B-1 and B-2 (farming classes, classes with footnotes, and periods other than 3 to 20 years) (For use in preparing 2025 returns; sha256 07fadfb2)
+- Cite: [p946] pp. 99–108, Table B-1, "Table B-1. Table of Class Lives and Recovery Periods", "Table B-2. Table of Class Lives and Recovery Periods", "Agriculture: 01.1", "Certain Property for Which Recovery Periods Assigned" (farming classes, classes with footnotes, and periods other than 3 to 20 years) (For use in preparing 2025 returns; sha256 07fadfb2)
 
 ## (screen) — `asset.screen`
 
@@ -137,7 +137,7 @@
 - **Authored helper label:** Placed in service in 2025
 - **Encoded (Bool):** column (b) = 'y2025'
 - Expr: `{"eq":["asset.placed",{"const":"y2025"}],"op":"test"}`
-- Cite: [i4562] p. 9, Lines 19a Through 19j, "Use lines 19a through 19j only for assets placed in service during the tax year beginning in 2025"; Line 17 (2025; sha256 5c1c95b7)
+- Cite: [i4562] p. 9, Lines 19a Through 19j, "Use lines 19a through 19j only for assets placed in service during the tax year beginning in 2025"; p. 9, Line 17, "For tangible property placed in service in tax years beginning before 2025 and depreciated under MACRS" (2025; sha256 5c1c95b7)
 
 ## (helper) — `asset.on_19`
 
@@ -172,7 +172,7 @@
 - **Authored helper label:** Last year of recovery for the recovery period
 - **Encoded (Count):** Find the entry in Last year of recovery of each GDS recovery period (Pub. 946, Tables A-1 to A-5 and A-8 to A-12) for period column (d).
 - Expr: `{"keys":["asset.period"],"op":"keyed_lookup","table":"macrs_last_year"}`
-- Cite: [p946] Appendix A, Tables A-1 to A-5 and A-8 to A-12 (For use in preparing 2025 returns; sha256 07fadfb2)
+- Cite: [p946] pp. 71–84, Table A-1 to Table A-5 and Table A-8 to Table A-12, "3-, 5-, 7-, 10-, 15-, and 20-Year Property Half-Year Convention", "Mid-Quarter Convention Placed in Service in First Quarter", "Mid-Quarter Convention Placed in Service in Fourth Quarter", "Depreciation rate for recovery period", "Straight Line Method Half-Year Convention", "Straight Line Method Mid-Quarter Convention Placed in Service in First Quarter", "Table A-12. Straight Line Method Mid-Quarter Convention Placed in Service in Fourth Quarter", "Recovery periods in years" (the last year printed for the recovery period) (For use in preparing 2025 returns; sha256 07fadfb2)
 
 ## (helper) — `asset.done`
 
@@ -327,14 +327,14 @@
 - **Authored helper label:** MACRS rate, half-year convention
 - **Encoded (Rate):** Find the entry in MACRS percentage tables, General Depreciation System (Pub. 946, Tables A-1 to A-5 and A-8 to A-12) for period column (d) and convention helper "Half-year convention" and year helper "Year of recovery in 2025".
 - Expr: `{"keys":["asset.period","asset.hy","asset.year"],"op":"keyed_lookup","table":"macrs_gds"}`
-- Cite: [i4562] p. 12, Column (g), "Multiply column (c) by the applicable rate from the appropriate table"; Pub. 946 Tables A-1 and A-8 (2025; sha256 5c1c95b7)
+- Cite: [i4562] p. 12, Column (g), "Multiply column (c) by the applicable rate from the appropriate table"; p946 pp. 71 and 75, Table A-1, "3-, 5-, 7-, 10-, 15-, and 20-Year Property Half-Year Convention", "Straight Line Method Half-Year Convention" (2025; sha256 5c1c95b7)
 
 ## (helper) — `asset.rate_mq`
 
 - **Authored helper label:** MACRS rate, mid-quarter convention
 - **Encoded (Rate):** Find the entry in MACRS percentage tables, General Depreciation System (Pub. 946, Tables A-1 to A-5 and A-8 to A-12) for period column (d) and convention helper "Mid-quarter convention for that quarter" and year helper "Year of recovery in 2025".
 - Expr: `{"keys":["asset.period","asset.qconv","asset.year"],"op":"keyed_lookup","table":"macrs_gds"}`
-- Cite: [i4562] p. 12, Column (g); Pub. 946 Tables A-2 to A-5 and A-9 to A-12 (2025; sha256 5c1c95b7)
+- Cite: [i4562] p. 12, Column (g); p946 pp. 71–73 and 77–84, Table A-2 to Table A-5 and Table A-9 to Table A-12, "Mid-Quarter Convention Placed in Service in First Quarter", "Mid-Quarter Convention Placed in Service in Fourth Quarter", "Straight Line Method Mid-Quarter Convention Placed in Service in First Quarter", "Table A-12. Straight Line Method Mid-Quarter Convention Placed in Service in Fourth Quarter" (2025; sha256 5c1c95b7)
 
 ## (helper) — `asset.macrs_hy`
 
@@ -412,7 +412,7 @@
 - **Authored helper label:** MACRS rate for the 2025 year of recovery
 - **Encoded (Rate):** Find the entry in MACRS percentage tables, General Depreciation System (Pub. 946, Tables A-1 to A-5 and A-8 to A-12) for period column (d) and convention column (e) and year helper "Year of recovery in 2025".
 - Expr: `{"keys":["asset.period","asset.prior_conv","asset.year"],"op":"keyed_lookup","table":"macrs_gds"}`
-- Cite: [p946] Appendix A, Tables A-1 to A-5 and A-8 to A-12 (For use in preparing 2025 returns; sha256 07fadfb2)
+- Cite: [p946] pp. 71–84, Table A-1 to Table A-5 and Table A-8 to Table A-12, "3-, 5-, 7-, 10-, 15-, and 20-Year Property Half-Year Convention", "Mid-Quarter Convention Placed in Service in First Quarter", "Mid-Quarter Convention Placed in Service in Fourth Quarter", "Straight Line Method Half-Year Convention", "Straight Line Method Mid-Quarter Convention Placed in Service in First Quarter", "Table A-12. Straight Line Method Mid-Quarter Convention Placed in Service in Fourth Quarter" (For use in preparing 2025 returns; sha256 07fadfb2)
 
 ## (helper) — `asset.macrs_prior_live`
 

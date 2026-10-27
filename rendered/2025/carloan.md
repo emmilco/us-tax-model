@@ -86,7 +86,7 @@
 - **Authored helper label:** Part of the loan that is a specified passenger vehicle loan
 - **Encoded (NonNegDollars):** Subtract helper "Nonqualifying amounts less the down payment applied first against them" from helper "Total amount of this loan when it was taken out". If zero or less, enter -0-.
 - Expr: `{"from":"carloan.financed","op":"subtract_floor0","take":"carloan.nonqualifying_debt"}`
-- Cite: [fr-2025-24154] pp. 20–22, Proposed § 1.163-16(d)(2)(iii)(A), "Only the portion of the indebtedness allocated to the indebtedness described in paragraph (d)(2)(i) of this section is an SPVL"; (d)(6) Example 4 (Federal Register Vol. 91, No. 1 (2026-01-02), proposed rules REG-113515-25 (Car Loan Interest Deduction), FR Doc. 2025-24154; sha256 4d243f55)
+- Cite: [fr-2025-24154] pp. 20–22, Proposed § 1.163-16(d)(2)(iii)(A), "Only the portion of the indebtedness allocated to the indebtedness described in paragraph (d)(2)(i) of this section is an SPVL"; p. 22, Example 4, "Negative equity and down payment", "the down payment of $4,000 is allocated against the $6,000 of negative equity" (Federal Register Vol. 91, No. 1 (2026-01-02), proposed rules REG-113515-25 (Car Loan Interest Deduction), FR Doc. 2025-24154; sha256 4d243f55)
 
 ## (helper) — `carloan.refi_balance`
 
@@ -152,7 +152,7 @@
 - **Authored helper label:** Interest for this loan, Schedule 1-A
 - **Encoded (NonNegDollars):** Choose — [helper "The loan and the vehicle qualify" = false → helper "Year parameter sales.zero"] [helper "The loan and the vehicle qualify" = true → helper "Interest allocated pro rata to the qualifying part of the loan"]
 - Expr: `{"alternatives":[{"guard":{"eq":["carloan.eligible",{"const":false}],"op":"test"},"then":"carloan.zero"},{"guard":{"eq":["carloan.eligible",{"const":true}],"op":"test"},"then":"carloan.allocated"}],"op":"choose"}`
-- Cite: [i1040gi] p. 110, Schedule 1-A, line 22, column (iii); column (ii), interest deducted on Schedule C, E or F, is outside this tool (scope.schedule1) (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 110, Schedule 1-A, line 22, column (iii), "On line 22, column (iii), enter the total amount of the QPVLI paid or accrued on the loan during the taxable year minus the amount on line 22, column (ii)" (column (ii), interest deducted on Schedule C, E or F, is outside this tool: scope.schedule1) (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## 22(ii) — `carloan.col_ii_input`
 

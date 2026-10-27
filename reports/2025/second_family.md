@@ -1,6 +1,6 @@
 # Second-family review comparison — 2025
 
-Summary: 113 form-kind pair(s) with logs from Claude and deepseek; ruled model-error noise 8.9% (199/2232 second-family lines judged; pending reviews are provisional); 32 eligible, 81 pending; raw agreement 69.7% (diagnostic only); current independence yield 201 line(s); both families disputed 424
+Summary: 113 form-kind pair(s) with logs from Claude and deepseek; ruled model-error noise 8.9% (199/2232 second-family lines judged; pending reviews are provisional); 33 eligible, 80 pending; raw agreement 69.9% (diagnostic only); current independence yield 196 line(s); both families disputed 422
 
 Written by `tools/transcription/compare_families.py` on 2026-10-27 from the review logs under `reviews/2025/`. For each form with a Claude log and a second model family's log of the same kind (`<form>.<family>.md`, families.py), the lines judged in both are compared.
 
@@ -627,7 +627,7 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | carloan | deepseek (deepseek-flash) | 2 | 0 | 0.0% | 0/2 (0.0%) | pass | 0 | 2 | 0 | 0 |
 | dcprov | deepseek (deepseek-flash) | 3 | 3 | 100.0% | 0/3 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | dependent | deepseek (deepseek-flash) | 2 | 0 | 0.0% | 1/2 (50.0%) | pending | 0 | 2 | 0 | 0 |
-| div | deepseek (deepseek-flash) | 22 | 19 | 86.4% | 1/22 (4.5%) | pass | 3 | 0 | 0 | 0 |
+| div | deepseek (deepseek-flash) | 22 | 22 | 100.0% | 0/22 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | eic | deepseek (deepseek-flash) | 13 | 12 | 92.3% | 0/13 (0.0%) | pass | 1 | 0 | 0 | 0 |
 | f1040 | deepseek (deepseek-flash) | 57 | 53 | 93.0% | 1/57 (1.8%) | pass | 4 | 0 | 0 | 0 |
 | f2441 | deepseek (deepseek-flash) | 36 | 29 | 80.6% | 2/36 (5.6%) | pass | 2 | 5 | 0 | 0 |
@@ -652,10 +652,10 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | oi8z | deepseek (deepseek-flash) | 2 | 1 | 50.0% | 0/2 (0.0%) | pending | 1 | 0 | 0 | 0 |
 | otjob | deepseek (deepseek-flash) | 1 | 1 | 100.0% | 0/1 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | person | deepseek (deepseek-flash) | 23 | 19 | 82.6% | 0/23 (0.0%) | pending | 2 | 1 | 1 | 0 |
-| qbi | deepseek (deepseek-flash) | 1 | 0 | 0.0% | 0/1 (0.0%) | pending | 0 | 1 | 0 | 0 |
+| qbi | deepseek (deepseek-flash) | 1 | 0 | 0.0% | 1/1 (100.0%) | pending | 0 | 1 | 0 | 0 |
 | qdcg | deepseek (deepseek-flash) | 25 | 22 | 88.0% | 0/25 (0.0%) | pending | 0 | 2 | 1 | 0 |
-| refund | deepseek (deepseek-flash) | 9 | 7 | 77.8% | 0/9 (0.0%) | pending | 0 | 2 | 0 | 0 |
-| retirement | deepseek (deepseek-flash) | 10 | 3 | 30.0% | 0/10 (0.0%) | pass | 2 | 5 | 0 | 0 |
+| refund | deepseek (deepseek-flash) | 9 | 7 | 77.8% | 0/9 (0.0%) | pass | 0 | 2 | 0 | 0 |
+| retirement | deepseek (deepseek-flash) | 10 | 6 | 60.0% | 0/10 (0.0%) | pass | 0 | 3 | 1 | 0 |
 | s1 | deepseek (deepseek-flash) | 29 | 19 | 65.5% | 0/29 (0.0%) | pending | 6 | 4 | 0 | 0 |
 | s179 | deepseek (deepseek-flash) | 13 | 11 | 84.6% | 1/13 (7.7%) | pass | 0 | 2 | 0 | 0 |
 | s1a | deepseek (deepseek-flash) | 43 | 41 | 95.3% | 0/43 (0.0%) | pass | 1 | 1 | 0 | 0 |
@@ -678,7 +678,7 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | tipjob | deepseek (deepseek-flash) | 3 | 3 | 100.0% | 0/3 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | u1250 | deepseek (deepseek-flash) | 18 | 5 | 27.8% | 0/18 (0.0%) | pending | 0 | 13 | 0 | 0 |
 | w2 | deepseek (deepseek-flash) | 17 | 17 | 100.0% | 0/17 (0.0%) | pass | 0 | 0 | 0 | 0 |
-| **all** | | 1033 | 879 | 85.1% | | | 53 | 84 | 17 | 0 |
+| **all** | | 1033 | 885 | 85.7% | | | 48 | 82 | 18 | 0 |
 
 Pending asset [deepseek]: 4 open, unclassified or interface-gap rulings.
 Pending dependent [deepseek]: model-error noise above 10%.
@@ -694,9 +694,8 @@ Pending ltc [deepseek]: 1 open, unclassified or interface-gap rulings.
 Pending mq [deepseek]: 2 open, unclassified or interface-gap rulings.
 Pending oi8z [deepseek]: 1 open, unclassified or interface-gap rulings.
 Pending person [deepseek]: 3 open, unclassified or interface-gap rulings.
-Pending qbi [deepseek]: 1 open, unclassified or interface-gap rulings.
+Pending qbi [deepseek]: model-error noise above 10%.
 Pending qdcg [deepseek]: 2 open, unclassified or interface-gap rulings.
-Pending refund [deepseek]: 2 open, unclassified or interface-gap rulings.
 Pending s1 [deepseek]: 10 open, unclassified or interface-gap rulings.
 Pending s2 [deepseek]: 1 open, unclassified or interface-gap rulings.
 Pending sa [deepseek]: 3 open, unclassified or interface-gap rulings.
@@ -717,9 +716,6 @@ Pending u1250 [deepseek]: 13 open, unclassified or interface-gap rulings.
 | asset | deepseek | (b) | MISMATCH | Column (b) is month and year placed in service; the restatement captures only the year and limits it to 2005-2025. |
 | asset | deepseek | (c) | MISMATCH | Column (c) requires subtracting allocable credits and deductions, including section 179 and the special allowance, after multiplying; the restatement stops at the multiplication. |
 | asset | deepseek | 14 | MISMATCH | The IRS line also provides a 50% special allowance for qualified reuse and recycling property; the full/forty/none choices do not cover it and no refusal names it. |
-| div | deepseek | bad_components | MISMATCH | IRS says Box 1b and Box 5 are portions of the amount in box 1a; the helper compares Form 1040 line 3a (total qualified dividends) to box 1a instead of comparing box 1b to box 1a. |
-| div | deepseek | box1b | MISMATCH | IRS says 'Box 1b. Shows the portion of the amount in box 1a that may be eligible for reduced capital gains rates'; the helper instead takes Form 1040 line 3a, not the Form 1099-DIV box 1b portion. |
-| div | deepseek | unsupported | MISMATCH | IRS says 'Any amount received in excess of your basis is taxable to you as capital gain'; the helper only tests box 3 > 0 with basis_reconciled false and omits an excess-distribution condition. |
 | eic | deepseek | 1 | MISMATCH | IRS Worksheet A says "Use this worksheet only if you answered “No” to Step 5, question 2. Otherwise, use Worksheet B." and its line 1 says "Enter your earned income from Step 5"; the restatement instead uses Worksheet B line 6 when the self-employed helper is true. |
 | f1040 | deepseek | 1z | MISMATCH | IRS text says "Add lines 1a through 1h"; the restatement adds only line 1a and line 1e. |
 | f1040 | deepseek | 27a | MISMATCH | The referenced eic.credit helper returns only Worksheet A line 6 or zero; IRS Step 5 question 2 says for self-employed "Skip question 3 and Step 6; go to Worksheet B," whose line 11 is the credit. |
@@ -742,8 +738,6 @@ Pending u1250 [deepseek]: 13 open, unclassified or interface-gap rulings.
 | oi8z | deepseek | 8z (amount) | MISMATCH | The line is NonNegDollars, but the IRS line 8z examples include a 'Loss on certain corrective distributions of excess deferrals'; a loss cannot be entered as a nonnegative amount to include in income. |
 | person | deepseek | Step 21 | MISMATCH | IRS Step 21 says to subtract step 20 from step 19 as the maximum deductible contribution; the smaller of Step 7 or Step 8 is only the Step 8 shortcut when there are no elective deferrals. |
 | person | deepseek | Step 3 | MISMATCH | IRS Step 3 says only to subtract step 2 from step 1, while the restatement adds a zero-or-less floor that can change a negative result. |
-| retirement | deepseek | (SMW 6) | MISMATCH | IRS line 5 says 'If your annuity starting date was before 1987, skip lines 6 and 7'; the restatement still computes line 6 from the recovered-tax-free helper. |
-| retirement | deepseek | (SMW 7) | MISMATCH | IRS line 5 says 'If your annuity starting date was before 1987, skip lines 6 and 7'; the restatement still subtracts line 6 from line 2. |
 | s1 | deepseek | 15 | MISMATCH | The IRS says 'If you were self-employed and owe self-employment tax, fill in Schedule SE'; the restatement returns zero unless the person has at least one Schedule C, without refusing partnership or other self-employment income on that path. |
 | s1 | deepseek | 16 | MISMATCH | The IRS line is 'Self-employed SEP, SIMPLE, and qualified plans'; the restatement computes only a 'Self-employed SEP or SIMPLE deduction' and returns zero when there is no Schedule C. |
 | s1 | deepseek | 17 | MISMATCH | The IRS instructions allow the deduction for 'a partner with net earnings from self-employment' and a 'more-than-2% shareholder in an S corporation,' but the restatement only sums Schedule C (sc) Form 7206 line 14 amounts. |
@@ -771,8 +765,8 @@ Pending u1250 [deepseek]: 13 open, unclassified or interface-gap rulings.
 
 | form | second family | line | Claude | second family | second family's reason |
 | --- | --- | --- | --- | --- | --- |
-| carloan | deepseek | 22(ii) | MISMATCH | MISMATCH | IRS column (ii) says 'the amount of the QPVLI, if any, that was deducted elsewhere on your return (for example, on Schedule C, Schedule E, or Schedule F)', but the restatement limits it to Schedule C. |
-| carloan | deepseek | 22(iii) | MISMATCH | MISMATCH | IRS line 22(iii) says to subtract 'the amount on line 22, column (ii)', which can include Schedule E or Schedule F deductions; the restatement subtracts only a Schedule C helper (zero without a Schedule C), so it does not compute the IRS line. |
+| carloan | deepseek | 22(ii) | MISMATCH | MISMATCH | The IRS text says to enter 'the amount of the QPVLI, if any, that was deducted elsewhere on your return (for example, on Schedule C, Schedule E, or Schedule F),' but the restatement limits the input to interest deducted on Schedule C only. |
+| carloan | deepseek | 22(iii) | MISMATCH | MISMATCH | The IRS text says to enter 'the total amount of the QPVLI paid or accrued on the loan during the taxable year minus the amount on line 22, column (ii),' but the restatement subtracts only a Schedule C helper that is zero without a Schedule C, omitting deductions elsewhere such as Schedule E or Schedule F. |
 | dependent | deepseek | 2(c) | MISMATCH | MISMATCH | The IRS instruction says to check column (c) if the person 'was over age 12 at the time the care was provided and was disabled.' For a person over 13 at year-end the restatement does not use the care-time disabled helper; it only requires the separate 2025 incapacity input, so it can check the box even if the disability did not exist when the care was provided. |
 | dependent | deepseek | 2(d) | MISMATCH | MISMATCH | Form 2441 column (d) says 'If you completed Part III, don't include in column (d) any benefits shown on line 28'; line 28 is lines 24 plus 25. The restatement instead says to include expenses paid with dependent care benefits and subtract only 'benefits you exclude,' so it can leave deductible benefits (line 24) in column (d). |
 | f2441 | deepseek | 18 | MISMATCH | MISMATCH | The IRS says earned income for lines 18 and 19 is determined as for lines 4 and 5 but does not include dependent care benefits shown on line 12; the restatement's person.dc_earned_b instead removes line 1e, not line 12 benefits. |
@@ -803,16 +797,14 @@ Pending u1250 [deepseek]: 13 open, unclassified or interface-gap rulings.
 | mq | deepseek | q4 | MISMATCH | MISMATCH | The IRS test uses the total depreciable bases of MACRS property placed in service during the last 3 months, excluding nonresidential real property, residential rental property, railroad grading/tunnel bore, property placed in service and disposed of in the same year, and non-MACRS property; the helper merely adds person.mq_q4 and does not apply those exclusions or the personal-use basis reduction. |
 | mq | deepseek | total | MISMATCH | MISMATCH | The IRS denominator is the total depreciable bases of all MACRS property placed in service during the entire year, with the same exclusions and personal-use reduction; the helper adds person.mq_total without those limitations. |
 | person | deepseek | Step 1 | MISMATCH | MISMATCH | IRS Step 1 says to enter net profit from Schedule C line 31, Schedule F line 34, or Schedule K-1 box 14 code A; the restatement uses only the Schedule C helper. |
-| qbi | deepseek | 3 | MISMATCH | MISMATCH | The IRS form line is 'Qualified business net (loss) carryforward from the prior year . . . 3 ( )', where the parentheses indicate a negative loss carryforward; the restatement says to enter it as a positive amount. |
+| qbi | deepseek | 3 | MISMATCH | MISMATCH | IRS line 3 is "Qualified business net (loss) carryforward from the prior year" shown with parentheses, and line 4 says "Combine lines 2 and 3," so the carryforward is a negative amount; the restatement instead says "entered as a positive amount." The line 3 instructions also require the "qualified portion" allowed in calculating taxable income in the current year, not merely prior-year line 16. |
 | qdcg | deepseek | 1 | MISMATCH | MISMATCH | IRS line 1 says to use Form 1040 line 15, but adds: 'However, if you are filing Form 2555 ... enter the amount from line 3 of the Foreign Earned Income Tax Worksheet.' The restatement always uses Form 1040 line 15 and has no Form 2555 refusal or alternate. |
 | qdcg | deepseek | 3 | UNCLEAR | UNCLEAR | The Schedule D 'Yes' branch matches, but for the 'No' branch IRS says 'Enter the amount from Form 1040 or 1040-SR, line 7a'; the provided text does not define line 7a, so the program's use of a 'Capital gain distributions, generally Form 1099-DIV box 2a' helper cannot be verified. |
-| refund | deepseek | 1 | MISMATCH | MISMATCH | The IRS Exception also requires Pub. 525 when 'You received a refund in 2025 that is for a tax year other than 2024' or 'You made your last payment of 2024 estimated state or local income tax in 2025'; the program's refusals do not exclude those cases. |
-| refund | deepseek | 6 | UNCLEAR | MISMATCH | The IRS line says 'Multiply the number of boxes checked by $1,550 ($1,950 if your 2024 filing status was single or head of household)' and for married filing separately allows spouse boxes only if 'your spouse had no income, isn’t filing a return, and can’t be claimed as a dependent'; the restatement only adds helper amounts and zeroes spouse boxes for statuses other than MFJ/MFS, omitting those c… |
-| retirement | deepseek | (SMW 10) | MISMATCH | MISMATCH | IRS line 10 says 'Was your annuity starting date before 1987? Yes. STOP Do not complete the rest of this worksheet'; the restatement adds line 6 and line 8 even for a pre-1987 annuity. |
-| retirement | deepseek | (SMW 11) | MISMATCH | MISMATCH | IRS line 10 says 'Do not complete the rest of this worksheet' when the annuity starting date was before 1987; the restatement still subtracts line 10 from line 2. |
-| retirement | deepseek | (SMW 2) | MISMATCH | MISMATCH | The worksheet's before-you-begin note says to 'include any death benefit exclusion that you are entitled to (up to $5,000) in the amount entered on line 2'; the restatement uses only the cost helper and omits that addition. |
-| retirement | deepseek | (SMW 4) | MISMATCH | MISMATCH | The Table 1 helper uses only the after-November 18-1996 numbers; IRS Table 1 also has a before-November 19-1996 column, so a pre-November 19, 1996 annuity would use 300/260/240/170/120 rather than 360/310/260/210/160. |
-| retirement | deepseek | (SMW 8) | MISMATCH | MISMATCH | IRS line 5 says if the annuity starting date was before 1987, skip lines 6 and 7 and enter the line 5 amount on line 8; the restatement always takes the smaller of line 5 or line 7. |
+| refund | deepseek | 1 | MISMATCH | MISMATCH | The min(refund, 2024 Schedule A line 5d) computation is right, but the IRS says to use Pub. 525 instead of this worksheet if the refund is for a tax year other than 2024 or if the last 2024 estimated state or local income tax payment was made in 2025; the refusal rules omit those exceptions. |
+| refund | deepseek | 6 | UNCLEAR | MISMATCH | IRS line 6 says to multiply the number of boxes checked by $1,550 ($1,950 if the 2024 status was single or head of household), and for MFS the spouse boxes count only if the spouse had no income, isn’t filing, and can’t be claimed as a dependent; the restatement adds per-box amounts and omits the MFS conditions. |
+| retirement | deepseek | (SMW 10) | MISMATCH | MISMATCH | IRS line 10 asks whether the annuity starting date was before 1987 and says Yes means STOP and do not complete the rest of the worksheet; the restatement unconditionally adds lines 6 and 8. |
+| retirement | deepseek | (SMW 4) | MISMATCH | MISMATCH | The true branch matches, but for non-joint annuities the Table 1 helper uses only the after-November 18, 1996 numbers; IRS Table 1 separately provides a before-November 19, 1996 column (for example, 300 rather than 360 for age 55 or under). |
+| retirement | deepseek | (SMW 8) | MISMATCH | MISMATCH | IRS line 5 says that if your annuity starting date was before 1987, skip lines 6 and 7 and enter this amount on line 8; the restatement always computes the smaller of line 5 or line 7. |
 | s1 | deepseek | 1 | MISMATCH | MISMATCH | The IRS Exception requires Pub. 525 instead of the worksheet in cases such as 'You owed alternative minimum tax in 2024' or 'You couldn’t use the full amount of credits...'; the restatement only refuses box 8 and not_2024. |
 | s1 | deepseek | 10 | MISMATCH | MISMATCH | The IRS line says 'Combine lines 1 through 7 and 9'; the restatement adds only lines 1, 2a, 3, 7, and 9, omitting lines 4, 5, and 6. |
 | s1 | deepseek | 25 | MISMATCH | MISMATCH | The IRS line says 'Total other adjustments. Add lines 24a through 24z'; the restatement enters only line 24a, omitting 24b through 24z. |

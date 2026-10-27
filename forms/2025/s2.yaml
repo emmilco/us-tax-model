@@ -148,7 +148,7 @@ form:
           - s2.line18
       cite:
         doc: f1040s2
-        locator: Schedule 2 (2025), lines 2, 3, 4, 11, 12, 18 and 21
+        locator: Schedule 2 (2025), line 21, "Add lines 4, 7 through 16, 18, and 19. These are your total other taxes"
       refuses:
         - when: s2.amt
           form: Form 6251

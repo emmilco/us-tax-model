@@ -142,14 +142,14 @@
 - **Authored helper label:** Direct rollover (code G)
 - **Encoded (Bool):** helper "Distribution code in box 7" = 'direct_rollover_G'
 - Expr: `{"eq":["retirement.code",{"const":"direct_rollover_G"}],"op":"test"}`
-- Cite: [f1099r] Box 2a, 'For a direct rollover ... zero should be shown and you must enter zero (-0-) on the Taxable amount line' (2025 (calendar-year form); sha256 d6b7be48)
+- Cite: [f1099r] p. 5, Box 2a, "For a direct rollover, other than from a qualified plan, section 403(b) plan, or governmental section 457(b) plan to a designated Roth account in the same plan or to a Roth IRA, zero should be shown and you must enter zero (-0-) on the “Taxable amount” line of your tax return"; pp. 7 and 9, Box 7, "G—Direct rollover of a distribution to a qualified plan, a section 403(b) plan, a governmental section 457(b) plan, or an IRA" (2025 (calendar-year form); sha256 d6b7be48)
 
 ## (gate) — `retirement.bad_code`
 
 - **Authored helper label:** Distribution code the tool does not compute
 - **Encoded (Bool):** (helper "Distribution code in box 7" = 'other' or helper "Kind of account the distribution came from" = 'roth_ira' and helper "Distribution code in box 7" ≠ 'qualified_roth_Q' or helper "Distribution code in box 7" = 'qualified_roth_Q' and helper "Kind of account the distribution came from" ≠ 'roth_ira')
 - Expr: `{"any":[{"eq":["retirement.code",{"const":"other"}],"op":"test"},{"all":[{"eq":["retirement.account",{"const":"roth_ira"}],"op":"test"},{"ne":["retirement.code",{"const":"qualified_roth_Q"}],"op":"test"}],"op":"test"},{"all":[{"eq":["retirement.code",{"const":"qualified_roth_Q"}],"op":"test"},{"ne":["retirement.account",{"const":"roth_ira"}],"op":"test"}],"op":"test"}],"op":"test"}`
-- Cite: [i1040gi] p. 27, Exception 2 (a Roth IRA distribution other than code Q needs Form 8606); f1099r Box 7 (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 27, Exception 2 (a Roth IRA distribution other than code Q needs Form 8606); f1099r pp. 7 and 9, Box 7, "The following codes identify the distribution you received", "Q—Qualified distribution from a Roth IRA or Roth SIMPLE IRA" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `retirement.rolled`
 

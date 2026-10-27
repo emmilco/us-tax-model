@@ -119,7 +119,16 @@ form:
             - const: true
       cite:
         doc: f1040s8812
-        locator: Schedule 8812 (2025), line 4
+        locator: Schedule 8812 (2025), line 4; i1040s8812 p. 1, Taxpayer Identification Number Requirements, "If you,
+          and your spouse if filing jointly, do not have a valid SSN, you can’t claim the CTC or ACTC", "If you are
+          filing a joint return, only one spouse is required to have a valid SSN to be eligible for the CTC or ACTC",
+          "For the CTC and ACTC, a valid SSN is one that is valid for employment and that is issued by the Social
+          Security Administration before the due date of your 2025 return (including extensions)", "If you have a
+          qualifying child who does not have a valid SSN, you can’t use the child to claim the CTC or ACTC"; i1040gi
+          pp. 17–19, Step 3, "Do you have a child who meets the conditions to be your qualifying child?", "Was the
+          child a U.S. citizen, U.S. national, or U.S. resident alien?", "Was the child under age 17 at the end of
+          2025?", "Did you, or your spouse if filing a joint return, and this child have SSNs valid for employment and
+          issued before the due date of your 2025 return (including extensions)?"
     - id: s8812.line5
       printed: "5"
       type: NonNegDollars
@@ -147,7 +156,17 @@ form:
             - const: true
       cite:
         doc: f1040s8812
-        locator: Schedule 8812 (2025), line 6
+        locator: Schedule 8812 (2025), line 6; i1040s8812 p. 1, Taxpayer Identification Number Requirements, "If your
+          qualifying child does not have a valid SSN, but has another type of taxpayer identification number issued on
+          or before the due date of your 2025 return (including extensions), you may be able to claim the ODC for that
+          child", "TIN Required by Due Date of Your Return To Claim the ODC", "If you have a dependent who does not
+          have an SSN, ITIN, or ATIN issued on or before the due date of your 2025 return (including extensions), you
+          can’t use that dependent to claim the ODC"; i1040gi pp. 17–19, Step 3, "Did the child have an SSN, ITIN, or
+          adoption taxpayer identification number (ATIN) issued on or before the due date of your return (including
+          extensions)?", "Was the child a U.S. citizen, U.S. national, or U.S. resident alien?", "Was the child under
+          age 17 at the end of 2025? Yes. Continue No. You can claim the credit for other", "Did your qualifying
+          relative have an SSN, ITIN, or ATIN issued on or before the due date of your 2025 return (including
+          extensions)?", "Was your qualifying relative a U.S. citizen, U.S. national, or U.S. resident alien?"
     - id: s8812.line7
       printed: "7"
       type: NonNegDollars
@@ -659,9 +678,12 @@ form:
             then: s8812.eiw_7
       cite:
         doc: i1040s8812
-        locator: p. 7, Earned Income Chart—Line 18a (taking the EIC without Worksheet B, "your earned income from Step 5 of
-          the EIC instructions ... plus all of your nontaxable combat pay if you did not elect to include it"; combat pay is
-          refused; not taking the EIC, the Earned Income Worksheet)
+        locator: p. 7, Earned Income Chart—Line 18a, taking the EIC without Worksheet B, "are taking the EIC on Form
+          1040 or 1040-SR, line 27a", "did not complete Worksheet B, relating to the EIC, in your Instructions for
+          Form 1040", "your earned income from Step 5 of the EIC instructions in your tax return instructions, plus
+          all of your nontaxable combat pay if you did not elect to include it in earned income for the EIC" (combat
+          pay is refused), not taking the EIC, "are not taking the EIC", "the amount figured using the Earned Income
+          Worksheet next"
     - id: s8812.line18b
       printed: 18b
       shown_when: s8812.show_iia
@@ -943,7 +965,11 @@ form:
             then: s8812.part_iib_result
       cite:
         doc: f1040s8812
-        locator: Schedule 8812 (2025), lines 20 (Next) through 27
+        locator: p. 2, Part II-A Additional Child Tax Credit for All Filers, "Next. On line 16b, is the amount $5,100
+          or more?", "No. If you are a bona fide resident of Puerto Rico, go to line 21. Otherwise, skip Part II-B and
+          enter the smaller of line 17 or line 20 on line 27", "Yes. If line 20 is equal to or more than line 17, skip
+          Part II-B and enter the amount from line 17 on line 27. Otherwise, go to line 21", "Next, enter the smaller
+          of line 17 or line 26 on line 27", "This is your additional child tax credit"
       refuses:
         - when: s8812.puerto_rico
           form: Schedule 8812 Part II-B for bona fide residents of Puerto Rico

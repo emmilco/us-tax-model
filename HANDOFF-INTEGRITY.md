@@ -472,7 +472,7 @@ The review server returns HTTP 200 on item 2.
 ## Where the plan stands (prior batch)
 
 - **Phase 0 (honest reporting): done**, commit a946fae. Evidence report with M and E columns and the scoreboard;
-  citation check on computed lines (305 locators to rewrite, `--strict` not yet in check-all); LICENSE,
+  citation check on computed lines (all locators verifiable and `--strict` in check-all since 2026-10-27); LICENSE,
   LICENSE-DATA, README, `handoffs/`; spec 6.5 and 3.11 qualified; BUG-0089 to BUG-0093.
 - **Phase 1, first batch: done**, commit ac69196. 1.0 packet tool; 1.0b DeepSeek transport; 1.3 per-family review
   logs, `families.json`, `compare_families.py`; 1.4(a) per-form engine lines and the not-computed floor; 1.6 spec 4.7

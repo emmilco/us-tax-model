@@ -129,14 +129,14 @@
 - **Encoded (NonNegDollars):** Divide line 6 by helper "$15,000 ($30,000 if married filing jointly)", rounded to 3 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply line 1 by the result.
 - Interpretation: amb.2025.sli_ratio_places
 - Expr: `{"amount":"sli.line1","op":"prorate","part":"sli.line6","places":3,"whole":"sli.divisor"}`
-- Cite: [i1040gi] p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, lines 7 and 8 ('Enter the result as a decimal (rounded to at least three places). If the result is 1.000 or more, enter 1.000' and 'Multiply line 1 by line 7'; three places, amb.2025.sli_ratio_places) (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, lines 7 and 8, "Divide line 6 by $15,000 ($30,000 if married filing jointly). Enter the result as a decimal (rounded to at least three places). If the result is 1.000 or more, enter 1.000" and "Multiply line 1 by line 7" (rounded to three places: amb.2025.sli_ratio_places) (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## 8 — `sli.line8`
 
 - **IRS:** Multiply line 1 by line 7
 - **Encoded (NonNegDollars):** Choose — [helper "Is the amount on line 4 more than the amount on line 5?" = true → helper "Divide line 6 by $15,000 ($30,000 if married filing jointly), rounded to three places, not more than 1.000; multiply line 1 by the result"] [helper "Is the amount on line 4 more than the amount on line 5?" = false → helper "Year parameter sales.zero"]
 - Expr: `{"alternatives":[{"guard":{"eq":["sli.over",{"const":true}],"op":"test"},"then":"sli.line8_figured"},{"guard":{"eq":["sli.over",{"const":false}],"op":"test"},"then":"sli.zero"}],"op":"choose"}`
-- Cite: [i1040gi] p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 6, 'No. Skip lines 6 and 7, enter -0- on line 8, and go to line 9'; line 8 (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 6, "No. Skip lines 6 and 7, enter -0- on line 8, and go to line 9", line 8, "Multiply line 1 by line 7" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## 9 — `sli.line9`
 

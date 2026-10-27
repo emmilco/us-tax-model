@@ -56,7 +56,10 @@ form:
               - const: 500000
       cite:
         doc: i8283
-        locator: pp. 1–3, Who Must File and Which Sections To Complete; f8283 Section A
+        locator: pp. 1–3, Who Must File and Which Sections To Complete; f8283 p. 1, Section A, "Also list publicly
+          traded securities and certain other property even if the deduction is more than $5,000", Section B, "for
+          which you claimed a deduction of more than $5,000 per item or group (except contributions reportable in
+          Section A)"
     - id: gift.allowed
       printed: (helper)
       type: NonNegDollars

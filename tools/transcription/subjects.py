@@ -17,7 +17,9 @@ import re
 import yaml
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-CITE_TEXT = re.compile(r"\[[a-z0-9-]+\] [^\n]*?\([^()\n]*; sha256 [0-9a-f]+\)")
+# A rendered citation runs from its [doc] tag to "; sha256 <hex>)"; the document details may
+# themselves contain parentheses ("January 2024 (continuous-use form)").
+CITE_TEXT = re.compile(r"\[[a-z0-9-]+\] [^\n]*?; sha256 [0-9a-f]+\)")
 
 
 def _sha(obj):

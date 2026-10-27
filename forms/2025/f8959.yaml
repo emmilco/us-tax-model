@@ -36,7 +36,8 @@ form:
         field: person.medicare5
       cite:
         doc: f8959
-        locator: Form 8959 (2025), lines 1–24; i8959 pp. 1–3
+        locator: p. 1, Part I, line 1, "Medicare wages and tips from Form W-2, box 5", "enter the total of the amounts
+          from box 5"; i8959 pp. 1–3
       refuses:
         - when: f8959.unsupported
           form: Form 8959 additional source forms
@@ -142,7 +143,7 @@ form:
           - f8959.line3
       cite:
         doc: f8959
-        locator: Form 8959 (2025), lines 1–24; i8959 pp. 1–3
+        locator: p. 1, Part I, line 4, "Add lines 1 through 3"; i8959 pp. 1–3
     - id: f8959.line5
       printed: "5"
       type: NonNegDollars
@@ -163,7 +164,7 @@ form:
         take: f8959.line5
       cite:
         doc: f8959
-        locator: Form 8959 (2025), lines 1–24; i8959 pp. 1–3
+        locator: p. 1, Part I, line 6, "Subtract line 5 from line 4. If zero or less, enter -0-"; i8959 pp. 1–3
     - id: f8959.line7
       printed: "7"
       type: NonNegDollars
@@ -175,7 +176,8 @@ form:
           param: medicare.additional_rate
       cite:
         doc: f8959
-        locator: Form 8959 (2025), lines 1–24; i8959 pp. 1–3
+        locator: p. 1, Part I, line 7, "Additional Medicare Tax on Medicare wages. Multiply line 6 by 0.9% (0.009)";
+          i8959 pp. 1–3
       ambiguity: amb.2025.multiplication_subcent
     - id: f8959.line9
       printed: "9"
@@ -207,7 +209,7 @@ form:
         take: f8959.line10
       cite:
         doc: f8959
-        locator: Form 8959 (2025), lines 1–24; i8959 pp. 1–3
+        locator: p. 1, Part II, line 11, "Subtract line 10 from line 9. If zero or less, enter -0-"; i8959 pp. 1–3
     - id: f8959.line12
       printed: "12"
       type: NonNegDollars
@@ -218,7 +220,7 @@ form:
         take: f8959.line11
       cite:
         doc: f8959
-        locator: Form 8959 (2025), lines 1–24; i8959 pp. 1–3
+        locator: p. 1, Part II, line 12, "Subtract line 11 from line 8. If zero or less, enter -0-"; i8959 pp. 1–3
     - id: f8959.line13
       printed: "13"
       type: NonNegDollars
@@ -230,7 +232,8 @@ form:
           param: medicare.additional_rate
       cite:
         doc: f8959
-        locator: Form 8959 (2025), lines 1–24; i8959 pp. 1–3
+        locator: p. 1, Part II, line 13, "Additional Medicare Tax on self-employment income. Multiply line 12 by 0.9%
+          (0.009)"; i8959 pp. 1–3
       ambiguity: amb.2025.multiplication_subcent
     - id: f8959.line15
       printed: "15"
@@ -252,7 +255,7 @@ form:
         take: f8959.line15
       cite:
         doc: f8959
-        locator: Form 8959 (2025), lines 1–24; i8959 pp. 1–3
+        locator: p. 1, Part III, line 16, "Subtract line 15 from line 14. If zero or less, enter -0-"; i8959 pp. 1–3
     - id: f8959.line17
       printed: "17"
       type: NonNegDollars
@@ -264,7 +267,7 @@ form:
           param: medicare.additional_rate
       cite:
         doc: f8959
-        locator: Form 8959 (2025), lines 1–24; i8959 pp. 1–3
+        locator: p. 1, Part III, line 17, "Multiply line 16 by 0.9% (0.009)"; i8959 pp. 1–3
       ambiguity: amb.2025.multiplication_subcent
     - id: f8959.line18
       printed: "18"
@@ -278,7 +281,7 @@ form:
           - f8959.line17
       cite:
         doc: f8959
-        locator: Form 8959 (2025), lines 1–24; i8959 pp. 1–3
+        locator: p. 1, Part IV, line 18, "Add lines 7, 13, and 17"; i8959 pp. 1–3
     - id: f8959.line19
       printed: "19"
       type: NonNegDollars
@@ -289,7 +292,8 @@ form:
         field: person.medicare6
       cite:
         doc: f8959
-        locator: Form 8959 (2025), lines 1–24; i8959 pp. 1–3
+        locator: p. 1, Part V, line 19, "Medicare tax withheld from Form W-2, box 6", "enter the total of the amounts
+          from box 6"; i8959 pp. 1–3
       refuses:
         - when: f8959.unsupported
           form: Form 8959 additional source forms
@@ -318,7 +322,8 @@ form:
           param: medicare.regular_rate
       cite:
         doc: f8959
-        locator: Form 8959 (2025), lines 1–24; i8959 pp. 1–3
+        locator: p. 1, Part V, line 21, "Multiply line 20 by 1.45% (0.0145). This is your regular Medicare tax"; i8959
+          pp. 1–3
       ambiguity: amb.2025.multiplication_subcent
     - id: f8959.line22
       printed: "22"
@@ -330,7 +335,7 @@ form:
         take: f8959.line21
       cite:
         doc: f8959
-        locator: Form 8959 (2025), lines 1–24; i8959 pp. 1–3
+        locator: p. 1, Part V, line 22, "Subtract line 21 from line 19. If zero or less, enter -0-"; i8959 pp. 1–3
     - id: f8959.line24
       printed: "24"
       type: NonNegDollars
@@ -342,4 +347,5 @@ form:
           - f8959.line23
       cite:
         doc: f8959
-        locator: Form 8959 (2025), lines 1–24; i8959 pp. 1–3
+        locator: p. 1, Part V, line 24, "Total Additional Medicare Tax withholding. Add lines 22 and 23"; i8959 pp.
+          1–3

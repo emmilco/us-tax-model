@@ -885,8 +885,8 @@ form:
         - eic.wsb_se
       cite:
         doc: i1040gi
-        locator: p. 47, Worksheet B, Part 4, line 4b (line 4a is your earned income from Step 5; line 3, statutory employees,
-          is refused)
+        locator: p. 47, Worksheet B, Part 4, line 4b, "4a. Enter your earned income from Step 5", "b. Combine lines
+          1e, 2c, 3, and 4a. This is your total earned income" (line 3, statutory employees, is refused)
     - id: eic.show_wsb6
       printed: (helper)
       label: Worksheet B line 6 is completed (the credit is reached and Worksheet B is used)
@@ -1804,7 +1804,10 @@ form:
               - const: false
       cite:
         doc: i1040gi
-        locator: p. 47, Worksheet B, line 5, "STOP No. You can't take the credit. Check the box on Form 1040 or 1040-SR, line 27c" (reached after Steps 1 to 4 and Step 5, question 2, Yes; Step 5, question 3, has no such instruction, p. 42)
+        locator: p. 47, Worksheet B, line 5, "STOP No. You can't take the credit. Check the box on Form 1040 or
+          1040-SR, line 27c" (reached after Steps 1 to 4 and Step 5, question 2, Yes); p. 42, Step 5, question 3,
+          whose STOP has no such instruction, "is your earned income less than $61,555 ($68,675 if married filing
+          jointly)", "Yes. Go to Step 6. No. STOP You can’t take the credit"
     - id: eic.separated_box
       printed: (helper)
       type: Bool

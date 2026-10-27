@@ -23,7 +23,7 @@
 - **IRS:** The amount for that person's age
 - **Encoded (NonNegDollars):** Find the entry in Qualified long-term care premium limit by age (Form 7206, line 2(b)) for age helper "That person's age at the end of 2025".
 - Expr: `{"keys":["ltc.age"],"op":"keyed_lookup","table":"ltc_limit"}`
-- Cite: [f7206] Form 7206 (2025), line 2(b) (2025; created 2025-10-02; sha256 822203c9)
+- Cite: [f7206] Form 7206 (2025), line 2(b), "The amount shown below. Use the person’s age at the end of the tax year" (2025; created 2025-10-02; sha256 822203c9)
 
 ## (helper) — `ltc.amount`
 

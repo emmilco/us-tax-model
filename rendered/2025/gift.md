@@ -30,7 +30,7 @@
 - **Authored helper label:** Appraisal threshold: non-publicly-traded group over $5,000
 - **Encoded (Bool):** helper "Is this group publicly traded securities?" = false and helper "Deduction before income limits for this item or group of similar items across all donees, after required valuation/basis reductions" > $5,000
 - Expr: `{"all":[{"eq":["gift.public_securities",{"const":false}],"op":"test"},{"gt":["gift.deduction",{"const":500000}],"op":"test"}],"op":"test"}`
-- Cite: [i8283] pp. 1–3, Who Must File and Which Sections To Complete; f8283 Section A (December 2025; printed date 2026-01-30; sha256 2de015f7)
+- Cite: [i8283] pp. 1–3, Who Must File and Which Sections To Complete; f8283 p. 1, Section A, "Also list publicly traded securities and certain other property even if the deduction is more than $5,000", Section B, "for which you claimed a deduction of more than $5,000 per item or group (except contributions reportable in Section A)" (December 2025; printed date 2026-01-30; sha256 2de015f7)
 
 ## (helper) — `gift.allowed`
 

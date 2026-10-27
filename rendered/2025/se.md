@@ -57,7 +57,7 @@
 - **Authored helper label:** Line 3 times 92.35%
 - **Encoded (NonNegDollars):** Multiply helper "Line 3 when more than zero" by helper "92.35%".
 - Expr: `{"amount":"line3pos","op":"multiply_rate","rate":"rate9235"}`
-- Cite: [f1040sse] Schedule SE (2025), line 4a (2025; created 2025-05-07; sha256 05bc2b3e)
+- Cite: [f1040sse] p. 1, Part I, "If line 3 is more than zero, multiply line 3 by 92.35% (0.9235)" (line 4a) (2025; created 2025-05-07; sha256 05bc2b3e)
 
 ## 4a — `line4a`
 

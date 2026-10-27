@@ -4,17 +4,17 @@ The rendered English of every printed line of `Form 1099-DIV — distribution co
 
 | field | value |
 | --- | --- |
-| date | 2026-10-23 |
+| date | 2026-10-27 |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
-| prompt sha256 | b7a7d184024eaf4070dd8db4ecc8ec5e9333b4baa8f28be436c8a7b551d77606 |
+| prompt sha256 | 1778c4ca6275720af58f1a3ee8f80e2626e709f958faccda1dc7f7ab98a04116 |
 | prompt policy | render-source-comparison-v2 |
 | system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
 | reasoning effort | provider default |
 | output token budget | 65536 |
-| subject sha256 | 4ad39baafac680e2a95d81964b30abeac08ebe2d3b396d444dd8508e7f4e4924 |
+| subject sha256 | 6598a6f635c04edcaa5692a3c853bed1c4368436c016d206cc3fc39b49b95c23 |
 | lines judged | 22 |
-| match / mismatch / unclear / missing | 19 / 3 / 0 / 0 |
+| match / mismatch / unclear / missing | 22 / 0 / 0 / 0 |
 | verdicts for lines not in the form | none |
 
 ## Source pages given to the model
@@ -22,131 +22,122 @@ The rendered English of every printed line of `Form 1099-DIV — distribution co
 | document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
 | --- | --- | --- | --- | --- | --- | --- |
 | f1099div | January 2024 (continuous-use form) | 1, 2, 3, 4, 5, 6 | whole document | 833d93e5f2d0bfcc8c9d720c0e8cb8e623cd2c6a8ee25f364f1f69f49fa490e3 | 5 | 617419bd079b1520174ceca8549065c9e4001f2b06a16d1425c5469bbe49fa3d |
-| i1040sd | 2025; printed date 2025-12-11 | 8 | cited pages | 145b3d02ba6ce4257939dfbd8f99d519875224cb4ceb4237a1aa24ed862360f1 | 8 | 0120691acc1fa8bf63941916a3b9423db8fba10d67f098a580fdc518c5fd08ec |
+| i1040sd | 2025; printed date 2025-12-11 | 8, 11 | cited pages | 145b3d02ba6ce4257939dfbd8f99d519875224cb4ceb4237a1aa24ed862360f1 | 8, 11 | 0120691acc1fa8bf63941916a3b9423db8fba10d67f098a580fdc518c5fd08ec |
+| i1040sb | TY2025; printed April 23, 2025 | 1, 2, 3 | whole document | 2bf62267574473b36fd9a69b6e0837ef74d72ac7d5dcbf1d26e7047d099f1e05 | 1, 2, 3 | 0d38b25d416cb650ef264faf8c1f118dfa4666f3949fbba7120f8c04d4e6914e |
+| f8995 | 2025; created 2025-09-12 | 1 | whole document | 49922587df3bd093e24470f5b42d0e3382ef8f5210b3cedccb02ccb864f2f65a | - | 8e2e78d7610e1d45e93c10c8b03f9026d46a1166678c6ed93f852569c382f346 |
+| i8995 | 2025; printed date 2026-01-26 | 3, 4 | pages named by another document's citation | 96284eaad2fe5ec324de9fd4335cea9ea3260e66ff1d8b1725c1cff7fbe1ddc2 | 3, 4 | 6671a64ba0011f89e03eb5985954073dcd984b3f346495182916b0ecaa42ec1a |
 
 ## Lines
 
 ### box2b — Unrecaptured section 1250 gain, box 2b
 Status: **MATCH**
 
-Model: IRS Box 2b is the unrecaptured section 1250 gain portion of box 2a; the helper simply inputs that box amount.
+Model: The IRS text says box 2b 'Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain'; the helper simply carries the box 2b amount as a nonnegative input.
 
 ### box2c — Section 1202 gain, box 2c
 Status: **MATCH**
 
-Model: IRS Box 2c is the section 1202 gain portion of box 2a; the helper inputs that box amount.
+Model: The IRS text says box 2c 'Shows the portion of the amount in box 2a that is section 1202 gain'; the helper carries the box 2c amount as supplied.
 
 ### box2d — Collectibles (28%) gain, box 2d
 Status: **MATCH**
 
-Model: IRS Box 2d is the collectibles (28%) gain portion of box 2a; the helper inputs that box amount.
+Model: The IRS text says box 2d 'Shows the portion of the amount in box 2a that is 28% rate gain from sales or exchanges of collectibles'; the helper carries the box 2d amount.
 
 ### box2e — Section 897 ordinary dividends, box 2e
 Status: **MATCH**
 
-Model: IRS Box 2e is section 897 ordinary dividends (a portion of box 1a); the helper inputs that box amount.
+Model: The IRS text says box 2e shows the portion of box 1a that is section 897 gain attributable to disposition of USRPI; the label and input match that line.
 
 ### box2f — Section 897 capital gain, box 2f
 Status: **MATCH**
 
-Model: IRS Box 2f is section 897 capital gain (a portion of box 2a); the helper inputs that box amount.
+Model: The IRS text says box 2f shows the portion of box 2a that is section 897 gain attributable to disposition of USRPI; the helper carries the box 2f amount.
 
 ### box3 — Nondividend distributions/return of capital, box 3
 Status: **MATCH**
 
-Model: IRS Box 3 is return of capital/nondividend distributions; the helper inputs that box amount.
+Model: 'Box 3. Shows a return of capital'; the helper carries the nondividend distribution/return-of-capital amount as supplied.
 
 ### box9 — Cash liquidation distributions, box 9
 Status: **MATCH**
 
-Model: IRS Boxes 9 and 10 show cash and noncash liquidation distributions; the helper inputs box 9.
+Model: 'Boxes 9 and 10. Show cash and noncash liquidation distributions'; the helper carries the box 9 cash liquidation amount.
 
 ### box10 — Noncash liquidation distributions, box 10
 Status: **MATCH**
 
-Model: IRS Boxes 9 and 10 show cash and noncash liquidation distributions; the helper inputs box 10.
+Model: 'Boxes 9 and 10. Show cash and noncash liquidation distributions'; the helper carries the box 10 noncash liquidation amount.
 
 ### box12 — Exempt-interest dividends, box 12
 Status: **MATCH**
 
-Model: IRS Box 12 shows exempt-interest dividends, and the text states Box 13 amounts are included in Box 12; the helper inputs that box amount.
+Model: Box 12 'Shows exempt-interest dividends from a mutual fund or other RIC paid to you during the calendar year,' and the IRS text confirms for box 13 that 'This amount is included in box 12,' matching the parenthetical.
 
 ### box13 — Specified private activity bond interest dividends, box 13
 Status: **MATCH**
 
-Model: IRS Box 13 shows specified private activity bond interest dividends subject to AMT and included in Box 12; the helper inputs that box amount.
+Model: Box 13 'Shows exempt-interest dividends subject to the alternative minimum tax'; the helper carries that amount as supplied.
 
 ### basis_reconciled — For box 3, have basis reductions been applied to records with no distribution exceeding ba
 Status: **MATCH**
 
-Model: The IRS text says Box 3 reduces basis to the extent of basis and excess is capital gain; asking whether basis reductions were applied is consistent with that treatment.
+Model: Consistent with box 3 instructions that to the extent of basis 'the distribution reduces your basis and is not taxable,' with any excess 'taxable to you as capital gain'; the flag records whether that basis reduction was applied.
 
 ### box1a — Amount from sb.ordinary_dividends
 Status: **MATCH**
 
-Model: IRS Box 1a is total ordinary dividends; the helper takes that amount from sb.ordinary_dividends.
+Model: Box 1a 'Shows total ordinary dividends that are taxable,' and Schedule B line 5 says this 'should be shown in box 1a of your Forms 1099-DIV,' so drawing box 1a from sb.ordinary_dividends matches.
 
 ### box1b — Amount from f1040.line3a
-Status: **MISMATCH**
+Status: **MATCH**
 
-Restated: Enter the amount from f1040 line 3a.
-
-Model: IRS says 'Box 1b. Shows the portion of the amount in box 1a that may be eligible for reduced capital gains rates'; the helper instead takes Form 1040 line 3a, not the Form 1099-DIV box 1b portion.
-
-Ruling: scope; archived f1099div recipient instructions p. 5 describes each payer box 1b. div is expressly an aggregate values sheet, not a prepared information return: div.box1b displays the supplied Form 1040 line 3a subtotal after its qualification exceptions (i1040gi p. 26), not an individual payer box. The objection correctly distinguishes those quantities. Retain that disclosed aggregate-input scope; this does not validate raw per-payer box 1b amounts or claim the adjusted subtotal is always their unadjusted sum.
+Model: Box 1b is the portion of box 1a eligible for reduced capital gains rates, which the IRS directs the recipient to report as qualified dividends; taking that reported amount (Form 1040 line 3a, 'Qualified dividends') is consistent.
 
 ### box2a — Amount from sd.distributions
 Status: **MATCH**
 
-Model: IRS Box 2a is total capital gain distributions; the helper takes that amount from sd.distributions.
+Model: Box 2a 'Shows total capital gain distributions from a regulated investment company (RIC) or real estate investment trust (REIT),' matching the sd.distributions source.
 
 ### box5 — Amount from qbi.dividends
 Status: **MATCH**
 
-Model: IRS Box 5 shows the portion of box 1a potentially eligible for the section 199A deduction; the helper takes the box 5 amount from qbi.dividends.
+Model: Box 5 'Shows the portion of the amount in box 1a that may be eligible for the 20% qualified business income deduction under section 199A'; the i8995 text supports the holding-period and no-obligation-to-another conditions.
 
 ### section1202 — Section 1202 distribution present
 Status: **MATCH**
 
-Model: IRS Box 2c is section 1202 gain; a presence check for box 2c > 0 is consistent.
+Model: Box 2c reports section 1202 gain from small business stock, so testing box 2c > $0 correctly identifies a section 1202 distribution.
 
 ### amt — Specified private activity bond dividends present
 Status: **MATCH**
 
-Model: IRS Box 13 is exempt-interest dividends subject to AMT; a presence check for box 13 > 0 is consistent.
+Model: Box 13 shows exempt-interest dividends subject to the alternative minimum tax, so testing box 13 > $0 correctly identifies AMT-relevant dividends.
 
 ### unsupported — Unsupported section 897, liquidation or unreconciled basis/excess distribution
-Status: **MISMATCH**
+Status: **MATCH**
 
-Restated: (helper "Section 897 ordinary dividends, box 2e" > $0 or helper "Section 897 capital gain, box 2f" > $0 or helper "Cash liquidation distributions, box 9" > $0 or helper "Noncash liquidation distributions, box 10" > $0 or helper "Nondividend distributions/return of capital, box 3" > $0 and helper "For box 3, have basis reductions been applied to records with no distribution exceeding basis?" = false)
-
-Model: IRS says 'Any amount received in excess of your basis is taxable to you as capital gain'; the helper only tests box 3 > 0 with basis_reconciled false and omits an excess-distribution condition.
-
-Ruling: model error; archived f1099div recipient instructions p. 5 Box 3 taxes amounts exceeding basis. div.basis_reconciled explicitly asks whether basis reductions were applied WITH NO DISTRIBUTION EXCEEDING BASIS. For positive box 3, a false answer makes div.unsupported true and div.screen refuses, with a remedy naming basis reconciliation and excess gain. Thus the alleged omitted excess-distribution condition is present in the shared question and its enforcement. One model error among 22 judged lines is below the 10% limit; this does not turn the aggregate-display scope into per-payer verification.
+Model: Boxes 2e/2f (section 897), 9/10 (liquidation), and unreconciled box 3 basis/excess gain are all special treatments outside a plain dividend computation; flagging them narrows scope rather than changing a supported value.
 
 ### bad_special — A gain component exceeds total capital gain distributions
 Status: **MATCH**
 
-Model: IRS says Boxes 2b, 2c, and 2d are portions of box 2a; the helper flags components or their total exceeding box 2a.
+Model: Boxes 2b, 2c and 2d are each 'the portion of the amount in box 2a,' so testing each component (and their total) against box 2a correctly detects inconsistent amounts.
 
 ### screen — Zero only after distribution scope checks
 Status: **MATCH**
 
-Model: The refusals name the out-of-scope Section 1202/AMT, section 897/liquidation/return-of-capital, and inconsistent component cases; entering $0 after those checks is a scope screen.
+Model: The $0 screen with refusals is a scope gate; each refusal names the excluded case and the form needed (Form 8949 code Q and Form 6251 for section 1202 exclusion, Form 6251 for box 13 AMT interest), consistent with the IRS text.
 
 ### bad_components — Qualified or section 199A dividends exceed ordinary dividends
-Status: **MISMATCH**
+Status: **MATCH**
 
-Restated: (f1040 line 3a > sb helper "Total ordinary dividends, Form 1099-DIV box 1a" or qbi helper "Qualified section 199A dividends from Form 1099-DIV box 5 after confirming holding-period and related-payment requirements" > sb helper "Total ordinary dividends, Form 1099-DIV box 1a")
-
-Model: IRS says Box 1b and Box 5 are portions of the amount in box 1a; the helper compares Form 1040 line 3a (total qualified dividends) to box 1a instead of comparing box 1b to box 1a.
-
-Ruling: scope; f1099div recipient instructions p. 5 says boxes 1b/5 are portions of box 1a. div.bad_components is a necessary consistency check on shared aggregate supplied totals (f1040.line3a, qbi.dividends and sb.ordinary_dividends); div is a values sheet rather than per-payer information-return preparation. This gate checks that supplied qualified/199A dividends do not exceed supplied ordinary dividends. It does not assert per-payer validation or equality between an adjusted Form 1040 subtotal and each raw box.
+Model: The IRS text makes box 1b and box 5 portions of box 1a, so testing qualified dividends and section 199A dividends against total ordinary dividends correctly detects inconsistent totals.
 
 ### special_total — Total special capital-gain distribution components
 Status: **MATCH**
 
-Model: The IRS text identifies boxes 2b, 2c, and 2d as portions/components of box 2a; summing those components is consistent.
+Model: Boxes 2b, 2c and 2d are each portions of box 2a, so summing them as the total special capital-gain components is consistent with the IRS text.
 
 ## Raw response
 
@@ -154,68 +145,68 @@ Model: The IRS text identifies boxes 2b, 2c, and 2d as portions/components of bo
 lines:
   - key: "box2b"
     status: MATCH
-    reason: "IRS Box 2b is the unrecaptured section 1250 gain portion of box 2a; the helper simply inputs that box amount."
+    reason: "The IRS text says box 2b 'Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain'; the helper simply carries the box 2b amount as a nonnegative input."
   - key: "box2c"
     status: MATCH
-    reason: "IRS Box 2c is the section 1202 gain portion of box 2a; the helper inputs that box amount."
+    reason: "The IRS text says box 2c 'Shows the portion of the amount in box 2a that is section 1202 gain'; the helper carries the box 2c amount as supplied."
   - key: "box2d"
     status: MATCH
-    reason: "IRS Box 2d is the collectibles (28%) gain portion of box 2a; the helper inputs that box amount."
+    reason: "The IRS text says box 2d 'Shows the portion of the amount in box 2a that is 28% rate gain from sales or exchanges of collectibles'; the helper carries the box 2d amount."
   - key: "box2e"
     status: MATCH
-    reason: "IRS Box 2e is section 897 ordinary dividends (a portion of box 1a); the helper inputs that box amount."
+    reason: "The IRS text says box 2e shows the portion of box 1a that is section 897 gain attributable to disposition of USRPI; the label and input match that line."
   - key: "box2f"
     status: MATCH
-    reason: "IRS Box 2f is section 897 capital gain (a portion of box 2a); the helper inputs that box amount."
+    reason: "The IRS text says box 2f shows the portion of box 2a that is section 897 gain attributable to disposition of USRPI; the helper carries the box 2f amount."
   - key: "box3"
     status: MATCH
-    reason: "IRS Box 3 is return of capital/nondividend distributions; the helper inputs that box amount."
+    reason: "'Box 3. Shows a return of capital'; the helper carries the nondividend distribution/return-of-capital amount as supplied."
   - key: "box9"
     status: MATCH
-    reason: "IRS Boxes 9 and 10 show cash and noncash liquidation distributions; the helper inputs box 9."
+    reason: "'Boxes 9 and 10. Show cash and noncash liquidation distributions'; the helper carries the box 9 cash liquidation amount."
   - key: "box10"
     status: MATCH
-    reason: "IRS Boxes 9 and 10 show cash and noncash liquidation distributions; the helper inputs box 10."
+    reason: "'Boxes 9 and 10. Show cash and noncash liquidation distributions'; the helper carries the box 10 noncash liquidation amount."
   - key: "box12"
     status: MATCH
-    reason: "IRS Box 12 shows exempt-interest dividends, and the text states Box 13 amounts are included in Box 12; the helper inputs that box amount."
+    reason: "Box 12 'Shows exempt-interest dividends from a mutual fund or other RIC paid to you during the calendar year,' and the IRS text confirms for box 13 that 'This amount is included in box 12,' matching the parenthetical."
   - key: "box13"
     status: MATCH
-    reason: "IRS Box 13 shows specified private activity bond interest dividends subject to AMT and included in Box 12; the helper inputs that box amount."
+    reason: "Box 13 'Shows exempt-interest dividends subject to the alternative minimum tax'; the helper carries that amount as supplied."
   - key: "basis_reconciled"
     status: MATCH
-    reason: "The IRS text says Box 3 reduces basis to the extent of basis and excess is capital gain; asking whether basis reductions were applied is consistent with that treatment."
+    reason: "Consistent with box 3 instructions that to the extent of basis 'the distribution reduces your basis and is not taxable,' with any excess 'taxable to you as capital gain'; the flag records whether that basis reduction was applied."
   - key: "box1a"
     status: MATCH
-    reason: "IRS Box 1a is total ordinary dividends; the helper takes that amount from sb.ordinary_dividends."
+    reason: "Box 1a 'Shows total ordinary dividends that are taxable,' and Schedule B line 5 says this 'should be shown in box 1a of your Forms 1099-DIV,' so drawing box 1a from sb.ordinary_dividends matches."
   - key: "box1b"
-    status: MISMATCH
-    reason: "IRS says 'Box 1b. Shows the portion of the amount in box 1a that may be eligible for reduced capital gains rates'; the helper instead takes Form 1040 line 3a, not the Form 1099-DIV box 1b portion."
+    status: MATCH
+    reason: "Box 1b is the portion of box 1a eligible for reduced capital gains rates, which the IRS directs the recipient to report as qualified dividends; taking that reported amount (Form 1040 line 3a, 'Qualified dividends') is consistent."
   - key: "box2a"
     status: MATCH
-    reason: "IRS Box 2a is total capital gain distributions; the helper takes that amount from sd.distributions."
+    reason: "Box 2a 'Shows total capital gain distributions from a regulated investment company (RIC) or real estate investment trust (REIT),' matching the sd.distributions source."
   - key: "box5"
     status: MATCH
-    reason: "IRS Box 5 shows the portion of box 1a potentially eligible for the section 199A deduction; the helper takes the box 5 amount from qbi.dividends."
+    reason: "Box 5 'Shows the portion of the amount in box 1a that may be eligible for the 20% qualified business income deduction under section 199A'; the i8995 text supports the holding-period and no-obligation-to-another conditions."
   - key: "section1202"
     status: MATCH
-    reason: "IRS Box 2c is section 1202 gain; a presence check for box 2c > 0 is consistent."
+    reason: "Box 2c reports section 1202 gain from small business stock, so testing box 2c > $0 correctly identifies a section 1202 distribution."
   - key: "amt"
     status: MATCH
-    reason: "IRS Box 13 is exempt-interest dividends subject to AMT; a presence check for box 13 > 0 is consistent."
+    reason: "Box 13 shows exempt-interest dividends subject to the alternative minimum tax, so testing box 13 > $0 correctly identifies AMT-relevant dividends."
   - key: "unsupported"
-    status: MISMATCH
-    reason: "IRS says 'Any amount received in excess of your basis is taxable to you as capital gain'; the helper only tests box 3 > 0 with basis_reconciled false and omits an excess-distribution condition."
+    status: MATCH
+    reason: "Boxes 2e/2f (section 897), 9/10 (liquidation), and unreconciled box 3 basis/excess gain are all special treatments outside a plain dividend computation; flagging them narrows scope rather than changing a supported value."
   - key: "bad_special"
     status: MATCH
-    reason: "IRS says Boxes 2b, 2c, and 2d are portions of box 2a; the helper flags components or their total exceeding box 2a."
+    reason: "Boxes 2b, 2c and 2d are each 'the portion of the amount in box 2a,' so testing each component (and their total) against box 2a correctly detects inconsistent amounts."
   - key: "screen"
     status: MATCH
-    reason: "The refusals name the out-of-scope Section 1202/AMT, section 897/liquidation/return-of-capital, and inconsistent component cases; entering $0 after those checks is a scope screen."
+    reason: "The $0 screen with refusals is a scope gate; each refusal names the excluded case and the form needed (Form 8949 code Q and Form 6251 for section 1202 exclusion, Form 6251 for box 13 AMT interest), consistent with the IRS text."
   - key: "bad_components"
-    status: MISMATCH
-    reason: "IRS says Box 1b and Box 5 are portions of the amount in box 1a; the helper compares Form 1040 line 3a (total qualified dividends) to box 1a instead of comparing box 1b to box 1a."
+    status: MATCH
+    reason: "The IRS text makes box 1b and box 5 portions of box 1a, so testing qualified dividends and section 199A dividends against total ordinary dividends correctly detects inconsistent totals."
   - key: "special_total"
     status: MATCH
-    reason: "The IRS text identifies boxes 2b, 2c, and 2d as portions/components of box 2a; summing those components is consistent."
+    reason: "Boxes 2b, 2c and 2d are each portions of box 2a, so summing them as the total special capital-gain components is consistent with the IRS text."
 ```

@@ -546,7 +546,7 @@
 - **Authored helper label:** Line 31 is a loss
 - **Encoded (Bool):** line 31 < helper "Zero"
 - Expr: `{"lt":["sc.line31","sc.zero"],"op":"test"}`
-- Cite: [i1040sc] p. 14, Line 31, "If your expenses ... are more than your gross income"; Line 32 (2025; sha256 b5536db9)
+- Cite: [i1040sc] p. 14, Line 31, "If your expenses ... are more than your gross income"; p. 14, Line 32, "At-risk rules. In most cases, if you have a business loss and amounts invested in the business for which you are not at risk" (2025; sha256 b5536db9)
 
 ## 32 — `sc.at_risk`
 
@@ -758,7 +758,7 @@
 - **Authored helper label:** Line 28 for this business
 - **Encoded (NonNegDollars):** Add helper "Line 25 for this business" and helper "Column (h), line 26, for this business".
 - Expr: `{"of":["sc.f25","sc.f26h"],"op":"sum"}`
-- Cite: [f4562] Form 4562 (2025), line 28 (2025; created 2025-10-09; sha256 c05f9d1f)
+- Cite: [f4562] p. 2, Part V, "Add amounts in column (h), lines 25 through 27. Enter here and on line 21" (line 28) (2025; created 2025-10-09; sha256 c05f9d1f)
 
 ## (helper) — `sc.f29_assets`
 
@@ -779,7 +779,7 @@
 - **Authored helper label:** Line 29 for this business
 - **Encoded (NonNegDollars):** Add helper "Section 179 elected on listed property other than vehicles" and helper "Section 179 on vehicles".
 - Expr: `{"of":["sc.f29_assets","sc.f29_veh"],"op":"sum"}`
-- Cite: [f4562] Form 4562 (2025), line 29 (2025; created 2025-10-09; sha256 c05f9d1f)
+- Cite: [f4562] p. 2, Part V, "Add amounts in column (i), line 26. Enter here and on line 7" (line 29) (2025; created 2025-10-09; sha256 c05f9d1f)
 
 ## (helper) — `sc.s179_elected`
 
@@ -793,7 +793,7 @@
 - **Authored helper label:** Depreciation other than the section 179 deduction (Form 4562 lines 14, 17, 19 and 21)
 - **Encoded (NonNegDollars):** Add helper "Special allowance on property other than listed property", helper "MACRS on earlier property other than listed property", helper "MACRS on 2025 property of period y3 other than listed property", helper "MACRS on 2025 property of period y5 other than listed property", helper "MACRS on 2025 property of period y7 other than listed property", helper "MACRS on 2025 property of period y10 other than listed property", helper "MACRS on 2025 property of period y15 other than listed property", helper "MACRS on 2025 property of period y20 other than listed property", helper "MACRS on 2025 property of period y15sl other than listed property", and helper "Line 28 for this business".
 - Expr: `{"of":["sc.f14","sc.f17","sc.f19_y3","sc.f19_y5","sc.f19_y7","sc.f19_y10","sc.f19_y15","sc.f19_y20","sc.f19_y15sl","sc.f28"],"op":"sum"}`
-- Cite: [f4562] Form 4562 (2025), line 22 (2025; created 2025-10-09; sha256 c05f9d1f)
+- Cite: [f4562] p. 2, Part IV, "Total. Add amounts from line 12, lines 14 through 17, lines 19 and 20 in column (g), and line 21" (line 22, less line 12) (2025; created 2025-10-09; sha256 c05f9d1f)
 
 ## (helper) — `sc.s179_return`
 
@@ -892,7 +892,7 @@
 - **Authored helper label:** Net profit of this business (zero for a loss)
 - **Encoded (NonNegDollars):** Subtract helper "Zero" from helper "The amount for Schedule 1, line 3 and Schedule SE, line 2". If zero or less, enter -0-.
 - Expr: `{"from":"sc.result","op":"subtract_floor0","take":"sc.zero"}`
-- Cite: [f7206] Form 7206 (2025), lines 4 and 5 (2025; created 2025-10-02; sha256 822203c9)
+- Cite: [f7206] p. 1, "Enter your net profit* and any other earned income** from the trade or business under which the insurance plan is established" (line 4), "Don’t include any net losses shown on these schedules" (line 5) (2025; created 2025-10-02; sha256 822203c9)
 
 ## (screen) — `sc.hi_uses`
 
@@ -956,14 +956,14 @@
 - **Authored helper label:** Line 4 is more than zero
 - **Encoded (Bool):** line 4 (sc.f7206_line4) > helper "Zero"
 - Expr: `{"gt":["sc.f7206_line4","sc.zero"],"op":"test"}`
-- Cite: [f7206] Form 7206 (2025), line 6 (2025; created 2025-10-02; sha256 822203c9)
+- Cite: [f7206] p. 1, "Divide line 4 by line 5" (line 6) (2025; created 2025-10-02; sha256 822203c9)
 
 ## (helper) — `sc.f7206_line7_pos`
 
 - **Authored helper label:** Schedule 1, line 15 (this person's), times line 4 divided by line 5
 - **Encoded (NonNegDollars):** Divide line 4 (sc.f7206_line4) by line 5 (sc.f7206_line5), rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply person helper "Schedule SE line 13 (deduction for one-half of self-employment tax) for this person" by the result.
 - Expr: `{"amount":"person.se_line13","op":"prorate","part":"sc.f7206_line4","places":6,"whole":"sc.f7206_line5"}`
-- Cite: [f7206] Form 7206 (2025), lines 6 and 7 (amb.2025.f7206_line15_person; amb.2025.f7206_ratio_places) (2025; created 2025-10-02; sha256 822203c9)
+- Cite: [f7206] p. 1, "Divide line 4 by line 5" (line 6), "Multiply Schedule 1 (Form 1040), line 15, deductible part of self-employment tax, by the percentage on line 6" (line 7, amb.2025.f7206_line15_person, amb.2025.f7206_ratio_places) (2025; created 2025-10-02; sha256 822203c9)
 
 ## 7 — `sc.f7206_line7`
 
@@ -984,7 +984,7 @@
 - **Authored helper label:** This person's SEP or SIMPLE deduction times line 4 divided by line 5
 - **Encoded (NonNegDollars):** Divide line 4 (sc.f7206_line4) by line 5 (sc.f7206_line5), rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply person helper "Schedule 1 line 16 for this person" by the result.
 - Expr: `{"amount":"person.s16","op":"prorate","part":"sc.f7206_line4","places":6,"whole":"sc.f7206_line5"}`
-- Cite: [f7206] Form 7206 (2025), line 9 (amb.2025.f7206_plan_attribution) (2025; created 2025-10-02; sha256 822203c9)
+- Cite: [f7206] p. 1, "Enter the amount, if any, from Schedule 1 (Form 1040), line 16, self-employed SEP, SIMPLE, and qualified plans, attributable to the same trade or business in which the insurance plan is established" (line 9, amb.2025.f7206_plan_attribution) (2025; created 2025-10-02; sha256 822203c9)
 
 ## 9 — `sc.f7206_line9`
 
@@ -1068,7 +1068,7 @@
 - **IRS:** Qualified business income or (loss) of this business
 - **Encoded (Dollars):** Subtract helper "Deductions attributable to this business: self-employment tax, retirement plan and health insurance (Form 7206 for this business)" from helper "The amount for Schedule 1, line 3 and Schedule SE, line 2".
 - Expr: `{"from":"sc.result","op":"subtract","take":"sc.qbi_ded"}`
-- Cite: [i8995] p. 4, Line 1, column (c); Form 8995 (2025), line 1(c) (2025; printed date 2026-01-26; sha256 875843ba)
+- Cite: [i8995] p. 4, Line 1, column (c); f8995 p. 1, "(c) Qualified business income or (loss)" (line 1(c)) (2025; printed date 2026-01-26; sha256 875843ba)
 
 ## (screen) — `sc.tips_ot`
 

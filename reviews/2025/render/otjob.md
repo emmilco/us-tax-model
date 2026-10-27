@@ -4,11 +4,15 @@ The rendered English of every printed line of `Qualified Overtime Compensation F
 
 | field | value |
 | --- | --- |
-| date | 2026-10-19 |
+| date | 2026-10-27 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | dc033648850121e23c70671204ec9c4ce848708225343b3390b4ae3de86644c4 |
-| subject sha256 | 0c8625ff1305a43dc91f9975f63aeae7e8cd9091a03cc32579cf0ea8f4707e1d |
+| prompt sha256 | e625ac4a03d54c3b124d721cbbbc7084bc5cd64bd8fa7a06e582d75f7964c9e3 |
+| prompt policy | render-source-comparison-v2 |
+| system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
+| reasoning effort | provider default |
+| output token budget | transport default (65536 for DeepSeek) |
+| subject sha256 | e2721cf8506da1b69c5a83dee7008cdd3fdeb8551f04a26a506a965f68659361 |
 | lines judged | 1 |
 | match / mismatch / unclear / missing | 1 / 0 / 0 / 0 |
 | verdicts for lines not in the form | none |
@@ -25,7 +29,7 @@ The rendered English of every printed line of `Qualified Overtime Compensation F
 ### 1(b) — Qualified overtime reported on Form W-2, box 1
 Status: **MATCH**
 
-Model: The restatement enters $0 for FLSA-ineligible employees, which fits the text that overtime paid to them 'is not qualified overtime compensation'. It uses the employer-reported (box 14 or on-request) amount or the separately shown FLSA Overtime Premium directly, the total for overtime hours divided by three, or at double time the pay above the regular rate times one-half and the total times one-fourth, which agrees with Examples 2 and 3 and Notice 2025-69 (C)/(D). It includes amounts not in W-2 box 1 as the instructions direct, and the refusal names the special section 7 rules, other rates, reasonable-method estimates and adjustments that it excludes.
+Model: The text says qualified overtime must be paid to an FLSA-eligible employee, so entering $0 when the filer is not eligible is right. For an eligible filer, the program allows the employer's box 14 or on-request amount, the separately shown FLSA Overtime Premium (method 1), total overtime pay ÷ 3 (method 2), and the double-time fractions of one-half and one-fourth (methods 3 and 4). It also includes overtime not in box 1 ("enter that amount here"). The refusal names the cases it leaves out: reasonable-method estimates, other overtime rates and special section 7 rules.
 
 ## Raw response
 
@@ -33,5 +37,5 @@ Model: The restatement enters $0 for FLSA-ineligible employees, which fits the t
 lines:
   - key: "1(b)"
     status: MATCH
-    reason: "The restatement enters $0 for FLSA-ineligible employees, which fits the text that overtime paid to them 'is not qualified overtime compensation'. It uses the employer-reported (box 14 or on-request) amount or the separately shown FLSA Overtime Premium directly, the total for overtime hours divided by three, or at double time the pay above the regular rate times one-half and the total times one-fourth, which agrees with Examples 2 and 3 and Notice 2025-69 (C)/(D). It includes amounts not in W-2 box 1 as the instructions direct, and the refusal names the special section 7 rules, other rates, reasonable-method estimates and adjustments that it excludes."
+    reason: "The text says qualified overtime must be paid to an FLSA-eligible employee, so entering $0 when the filer is not eligible is right. For an eligible filer, the program allows the employer's box 14 or on-request amount, the separately shown FLSA Overtime Premium (method 1), total overtime pay ÷ 3 (method 2), and the double-time fractions of one-half and one-fourth (methods 3 and 4). It also includes overtime not in box 1 (\"enter that amount here\"). The refusal names the cases it leaves out: reasonable-method estimates, other overtime rates and special section 7 rules."
 ```

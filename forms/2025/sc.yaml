@@ -1065,7 +1065,8 @@ form:
       - sc.zero
     cite:
       doc: i1040sc
-      locator: p. 14, Line 31, "If your expenses ... are more than your gross income"; Line 32
+      locator: p. 14, Line 31, "If your expenses ... are more than your gross income"; p. 14, Line 32, "At-risk rules.
+        In most cases, if you have a business loss and amounts invested in the business for which you are not at risk"
   - id: sc.at_risk
     printed: '32'
     label: If you have a loss, is all your investment in this business at risk (box 32a)?
@@ -1497,7 +1498,7 @@ form:
       - sc.f26h
     cite:
       doc: f4562
-      locator: Form 4562 (2025), line 28
+      locator: p. 2, Part V, "Add amounts in column (h), lines 25 through 27. Enter here and on line 21" (line 28)
   - id: sc.f29_assets
     printed: (helper)
     label: Section 179 elected on listed property other than vehicles
@@ -1532,7 +1533,7 @@ form:
       - sc.f29_veh
     cite:
       doc: f4562
-      locator: Form 4562 (2025), line 29
+      locator: p. 2, Part V, "Add amounts in column (i), line 26. Enter here and on line 7" (line 29)
   - id: sc.s179_elected
     printed: (helper)
     label: Section 179 elected for this business's 2025 property
@@ -1564,7 +1565,8 @@ form:
       - sc.f28
     cite:
       doc: f4562
-      locator: Form 4562 (2025), line 22
+      locator: p. 2, Part IV, "Total. Add amounts from line 12, lines 14 through 17, lines 19 and 20 in column (g),
+        and line 21" (line 22, less line 12)
   - id: sc.s179_return
     printed: (helper)
     label: The return's section 179 deduction, for its only Schedule C
@@ -1738,7 +1740,8 @@ form:
       take: sc.zero
     cite:
       doc: f7206
-      locator: Form 7206 (2025), lines 4 and 5
+      locator: p. 1, "Enter your net profit* and any other earned income** from the trade or business under which the
+        insurance plan is established" (line 4), "Don’t include any net losses shown on these schedules" (line 5)
   - id: sc.hi_uses
     printed: (screen)
     label: Health insurance established under this business
@@ -1856,7 +1859,7 @@ form:
       - sc.zero
     cite:
       doc: f7206
-      locator: Form 7206 (2025), line 6
+      locator: p. 1, "Divide line 4 by line 5" (line 6)
   - id: sc.f7206_line7_pos
     printed: (helper)
     label: Schedule 1, line 15 (this person's), times line 4 divided by line 5
@@ -1869,7 +1872,9 @@ form:
       places: 6
     cite:
       doc: f7206
-      locator: Form 7206 (2025), lines 6 and 7 (amb.2025.f7206_line15_person; amb.2025.f7206_ratio_places)
+      locator: p. 1, "Divide line 4 by line 5" (line 6), "Multiply Schedule 1 (Form 1040), line 15, deductible part of
+        self-employment tax, by the percentage on line 6" (line 7, amb.2025.f7206_line15_person,
+        amb.2025.f7206_ratio_places)
   - id: sc.f7206_line7
     printed: '7'
     label: Multiply Schedule 1 (Form 1040), line 15, deductible part of self-employment tax, by the percentage on line 6
@@ -1915,7 +1920,9 @@ form:
       places: 6
     cite:
       doc: f7206
-      locator: Form 7206 (2025), line 9 (amb.2025.f7206_plan_attribution)
+      locator: p. 1, "Enter the amount, if any, from Schedule 1 (Form 1040), line 16, self-employed SEP, SIMPLE, and
+        qualified plans, attributable to the same trade or business in which the insurance plan is established" (line
+        9, amb.2025.f7206_plan_attribution)
   - id: sc.f7206_line9
     printed: '9'
     label: Schedule 1, line 16, attributable to the same trade or business
@@ -2102,7 +2109,7 @@ form:
       take: sc.qbi_ded
     cite:
       doc: i8995
-      locator: p. 4, Line 1, column (c); Form 8995 (2025), line 1(c)
+      locator: p. 4, Line 1, column (c); f8995 p. 1, "(c) Qualified business income or (loss)" (line 1(c))
   - id: sc.tips_ot
     printed: (screen)
     label: Tips or overtime in this business to be deducted on Schedule 1-A

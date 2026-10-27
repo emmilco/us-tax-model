@@ -557,21 +557,21 @@
 - **Authored helper label:** MACRS rate, half-year convention
 - **Encoded (Rate):** Find the entry in MACRS percentage tables, General Depreciation System (Pub. 946, Tables A-1 to A-5 and A-8 to A-12) for period helper "Five-year property" and convention helper "Half-year convention" and year helper "Year of recovery in 2025".
 - Expr: `{"keys":["scveh.y5","scveh.hy","scveh.year"],"op":"keyed_lookup","table":"macrs_gds"}`
-- Cite: [p946] Appendix A, Table A-1, 5-year column (For use in preparing 2025 returns; sha256 07fadfb2)
+- Cite: [p946] p. 71, Table A-1, "3-, 5-, 7-, 10-, 15-, and 20-Year Property Half-Year Convention", "20.00% 32.00 19.20 11.52 11.52" (5-year column) (For use in preparing 2025 returns; sha256 07fadfb2)
 
 ## (helper) — `scveh.rate_mq`
 
 - **Authored helper label:** MACRS rate, mid-quarter convention
 - **Encoded (Rate):** Find the entry in MACRS percentage tables, General Depreciation System (Pub. 946, Tables A-1 to A-5 and A-8 to A-12) for period helper "Five-year property" and convention helper "Mid-quarter convention for that quarter" and year helper "Year of recovery in 2025".
 - Expr: `{"keys":["scveh.y5","scveh.qconv","scveh.year"],"op":"keyed_lookup","table":"macrs_gds"}`
-- Cite: [p946] Appendix A, Tables A-2 to A-5, 5-year column (For use in preparing 2025 returns; sha256 07fadfb2)
+- Cite: [p946] pp. 71–73, Table A-2 to Table A-5, "Mid-Quarter Convention Placed in Service in First Quarter", "35.00% 26.00 15.60 11.01 11.01", "Mid-Quarter Convention Placed in Service in Second Quarter", "25.00% 30.00 18.00 11.37 11.37", "Mid-Quarter Convention Placed in Service in Third Quarter", "15.00% 34.00 20.40 12.24 11.30", "Mid-Quarter Convention Placed in Service in Fourth Quarter", "5.00% 38.00 22.80 13.68 10.94" (5-year column) (For use in preparing 2025 returns; sha256 07fadfb2)
 
 ## (helper) — `scveh.rate_prior`
 
 - **Authored helper label:** MACRS rate for the 2025 year of recovery
 - **Encoded (Rate):** Find the entry in MACRS percentage tables, General Depreciation System (Pub. 946, Tables A-1 to A-5 and A-8 to A-12) for period helper "Five-year property" and convention helper "Convention used in the year placed in service" and year helper "Year of recovery in 2025".
 - Expr: `{"keys":["scveh.y5","scveh.prior_conv","scveh.year"],"op":"keyed_lookup","table":"macrs_gds"}`
-- Cite: [p946] Appendix A, Tables A-1 to A-5, 5-year column (For use in preparing 2025 returns; sha256 07fadfb2)
+- Cite: [p946] pp. 71–73, Table A-1 to Table A-5, "3-, 5-, 7-, 10-, 15-, and 20-Year Property Half-Year Convention", "20.00% 32.00 19.20 11.52 11.52", "Mid-Quarter Convention Placed in Service in First Quarter", "35.00% 26.00 15.60 11.01 11.01", "Mid-Quarter Convention Placed in Service in Second Quarter", "25.00% 30.00 18.00 11.37 11.37", "Mid-Quarter Convention Placed in Service in Third Quarter", "15.00% 34.00 20.40 12.24 11.30", "Mid-Quarter Convention Placed in Service in Fourth Quarter", "5.00% 38.00 22.80 13.68 10.94" (5-year column) (For use in preparing 2025 returns; sha256 07fadfb2)
 
 ## (helper) — `scveh.line19_hy`
 
@@ -641,7 +641,7 @@
 - **Authored helper label:** MACRS rate for year 1
 - **Encoded (Rate):** Find the entry in MACRS percentage tables, General Depreciation System (Pub. 946, Tables A-1 to A-5 and A-8 to A-12) for period helper "Five-year property" and convention helper "Convention used in the year placed in service" and year helper "Year 1 of the recovery period".
 - Expr: `{"keys":["scveh.y5","scveh.prior_conv","scveh.k1"],"op":"keyed_lookup","table":"macrs_gds"}`
-- Cite: [p946] Appendix A, Tables A-1 to A-5, 5-year column (For use in preparing 2025 returns; sha256 07fadfb2)
+- Cite: [p946] pp. 71–73, Table A-1 to Table A-5, "3-, 5-, 7-, 10-, 15-, and 20-Year Property Half-Year Convention", "20.00% 32.00 19.20 11.52 11.52", "Mid-Quarter Convention Placed in Service in First Quarter", "35.00% 26.00 15.60 11.01 11.01", "Mid-Quarter Convention Placed in Service in Second Quarter", "25.00% 30.00 18.00 11.37 11.37", "Mid-Quarter Convention Placed in Service in Third Quarter", "15.00% 34.00 20.40 12.24 11.30", "Mid-Quarter Convention Placed in Service in Fourth Quarter", "5.00% 38.00 22.80 13.68 10.94" (5-year column) (For use in preparing 2025 returns; sha256 07fadfb2)
 
 ## (helper) — `scveh.t1`
 
@@ -683,7 +683,7 @@
 - **Authored helper label:** MACRS rate for year 2
 - **Encoded (Rate):** Find the entry in MACRS percentage tables, General Depreciation System (Pub. 946, Tables A-1 to A-5 and A-8 to A-12) for period helper "Five-year property" and convention helper "Convention used in the year placed in service" and year helper "Year 2 of the recovery period".
 - Expr: `{"keys":["scveh.y5","scveh.prior_conv","scveh.k2"],"op":"keyed_lookup","table":"macrs_gds"}`
-- Cite: [p946] Appendix A, Tables A-1 to A-5, 5-year column (For use in preparing 2025 returns; sha256 07fadfb2)
+- Cite: [p946] pp. 71–73, Table A-1 to Table A-5, "3-, 5-, 7-, 10-, 15-, and 20-Year Property Half-Year Convention", "20.00% 32.00 19.20 11.52 11.52", "Mid-Quarter Convention Placed in Service in First Quarter", "35.00% 26.00 15.60 11.01 11.01", "Mid-Quarter Convention Placed in Service in Second Quarter", "25.00% 30.00 18.00 11.37 11.37", "Mid-Quarter Convention Placed in Service in Third Quarter", "15.00% 34.00 20.40 12.24 11.30", "Mid-Quarter Convention Placed in Service in Fourth Quarter", "5.00% 38.00 22.80 13.68 10.94" (5-year column) (For use in preparing 2025 returns; sha256 07fadfb2)
 
 ## (helper) — `scveh.t2`
 
@@ -718,7 +718,7 @@
 - **Authored helper label:** MACRS rate for year 3
 - **Encoded (Rate):** Find the entry in MACRS percentage tables, General Depreciation System (Pub. 946, Tables A-1 to A-5 and A-8 to A-12) for period helper "Five-year property" and convention helper "Convention used in the year placed in service" and year helper "Year 3 of the recovery period".
 - Expr: `{"keys":["scveh.y5","scveh.prior_conv","scveh.k3"],"op":"keyed_lookup","table":"macrs_gds"}`
-- Cite: [p946] Appendix A, Tables A-1 to A-5, 5-year column (For use in preparing 2025 returns; sha256 07fadfb2)
+- Cite: [p946] pp. 71–73, Table A-1 to Table A-5, "3-, 5-, 7-, 10-, 15-, and 20-Year Property Half-Year Convention", "20.00% 32.00 19.20 11.52 11.52", "Mid-Quarter Convention Placed in Service in First Quarter", "35.00% 26.00 15.60 11.01 11.01", "Mid-Quarter Convention Placed in Service in Second Quarter", "25.00% 30.00 18.00 11.37 11.37", "Mid-Quarter Convention Placed in Service in Third Quarter", "15.00% 34.00 20.40 12.24 11.30", "Mid-Quarter Convention Placed in Service in Fourth Quarter", "5.00% 38.00 22.80 13.68 10.94" (5-year column) (For use in preparing 2025 returns; sha256 07fadfb2)
 
 ## (helper) — `scveh.t3`
 
@@ -753,7 +753,7 @@
 - **Authored helper label:** MACRS rate for year 4
 - **Encoded (Rate):** Find the entry in MACRS percentage tables, General Depreciation System (Pub. 946, Tables A-1 to A-5 and A-8 to A-12) for period helper "Five-year property" and convention helper "Convention used in the year placed in service" and year helper "Year 4 of the recovery period".
 - Expr: `{"keys":["scveh.y5","scveh.prior_conv","scveh.k4"],"op":"keyed_lookup","table":"macrs_gds"}`
-- Cite: [p946] Appendix A, Tables A-1 to A-5, 5-year column (For use in preparing 2025 returns; sha256 07fadfb2)
+- Cite: [p946] pp. 71–73, Table A-1 to Table A-5, "3-, 5-, 7-, 10-, 15-, and 20-Year Property Half-Year Convention", "20.00% 32.00 19.20 11.52 11.52", "Mid-Quarter Convention Placed in Service in First Quarter", "35.00% 26.00 15.60 11.01 11.01", "Mid-Quarter Convention Placed in Service in Second Quarter", "25.00% 30.00 18.00 11.37 11.37", "Mid-Quarter Convention Placed in Service in Third Quarter", "15.00% 34.00 20.40 12.24 11.30", "Mid-Quarter Convention Placed in Service in Fourth Quarter", "5.00% 38.00 22.80 13.68 10.94" (5-year column) (For use in preparing 2025 returns; sha256 07fadfb2)
 
 ## (helper) — `scveh.t4`
 
@@ -788,7 +788,7 @@
 - **Authored helper label:** MACRS rate for year 5
 - **Encoded (Rate):** Find the entry in MACRS percentage tables, General Depreciation System (Pub. 946, Tables A-1 to A-5 and A-8 to A-12) for period helper "Five-year property" and convention helper "Convention used in the year placed in service" and year helper "Year 5 of the recovery period".
 - Expr: `{"keys":["scveh.y5","scveh.prior_conv","scveh.k5"],"op":"keyed_lookup","table":"macrs_gds"}`
-- Cite: [p946] Appendix A, Tables A-1 to A-5, 5-year column (For use in preparing 2025 returns; sha256 07fadfb2)
+- Cite: [p946] pp. 71–73, Table A-1 to Table A-5, "3-, 5-, 7-, 10-, 15-, and 20-Year Property Half-Year Convention", "20.00% 32.00 19.20 11.52 11.52", "Mid-Quarter Convention Placed in Service in First Quarter", "35.00% 26.00 15.60 11.01 11.01", "Mid-Quarter Convention Placed in Service in Second Quarter", "25.00% 30.00 18.00 11.37 11.37", "Mid-Quarter Convention Placed in Service in Third Quarter", "15.00% 34.00 20.40 12.24 11.30", "Mid-Quarter Convention Placed in Service in Fourth Quarter", "5.00% 38.00 22.80 13.68 10.94" (5-year column) (For use in preparing 2025 returns; sha256 07fadfb2)
 
 ## (helper) — `scveh.t5`
 
@@ -823,7 +823,7 @@
 - **Authored helper label:** MACRS rate for year 6
 - **Encoded (Rate):** Find the entry in MACRS percentage tables, General Depreciation System (Pub. 946, Tables A-1 to A-5 and A-8 to A-12) for period helper "Five-year property" and convention helper "Convention used in the year placed in service" and year helper "Year 6 of the recovery period".
 - Expr: `{"keys":["scveh.y5","scveh.prior_conv","scveh.k6"],"op":"keyed_lookup","table":"macrs_gds"}`
-- Cite: [p946] Appendix A, Tables A-1 to A-5, 5-year column (For use in preparing 2025 returns; sha256 07fadfb2)
+- Cite: [p946] pp. 71–73, Table A-1 to Table A-5, "3-, 5-, 7-, 10-, 15-, and 20-Year Property Half-Year Convention", "20.00% 32.00 19.20 11.52 11.52", "Mid-Quarter Convention Placed in Service in First Quarter", "35.00% 26.00 15.60 11.01 11.01", "Mid-Quarter Convention Placed in Service in Second Quarter", "25.00% 30.00 18.00 11.37 11.37", "Mid-Quarter Convention Placed in Service in Third Quarter", "15.00% 34.00 20.40 12.24 11.30", "Mid-Quarter Convention Placed in Service in Fourth Quarter", "5.00% 38.00 22.80 13.68 10.94" (5-year column) (For use in preparing 2025 returns; sha256 07fadfb2)
 
 ## (helper) — `scveh.t6`
 
@@ -900,7 +900,7 @@
 - **Authored helper label:** Column (h) for a vehicle not subject to the limits
 - **Encoded (NonNegDollars):** Choose — [helper "Placed in service in 2019 (2025 is after the recovery period)" = false → line 19] [helper "Placed in service in 2019 (2025 is after the recovery period)" = true → helper "Zero"]
 - Expr: `{"alternatives":[{"guard":{"eq":["scveh.is2019",{"const":false}],"op":"test"},"then":"scveh.line19"},{"guard":{"eq":["scveh.is2019",{"const":true}],"op":"test"},"then":"scveh.zero"}],"op":"choose"}`
-- Cite: [i4562] p. 15, Column (h); Pub. 946, "You cannot claim a depreciation deduction for listed property other than passenger automobiles after the recovery period ends" (2025; sha256 5c1c95b7)
+- Cite: [i4562] p. 15, Column (h); p946 p. 61, Deductions After the Recovery Period, "Caution: You cannot claim a depreciation deduction for listed property other than passenger automobiles after the recovery period ends" (2025; sha256 5c1c95b7)
 
 ## (helper) — `scveh.macrs_v`
 

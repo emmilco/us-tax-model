@@ -67,7 +67,9 @@ form:
           2024 Form 8995-A), entered as a positive amount (zero if none)
       cite:
         doc: i8995
-        locator: 'Line 3, "enter the amount from line 16 of your 2024 Form 8995" (owner: the printed amount)'
+        locator: 'p. 4, Line 3, "Include here the qualified portion of trade or business (loss) carryforward allowed in calculating
+          taxable income in the current year"; p. 5, Line 16, "This is the amount to be carried forward to the next year" (owner:
+          the printed amount)'
     - id: qbi.business_any
       printed: (gate)
       label: Business income or a carryforward with taxable income above the Form 8995 threshold
@@ -114,8 +116,7 @@ form:
           - f1040.line13b
       cite:
         doc: i8995-correction
-        locator: "Correction to 2025 Form 8995 instructions, line 11: Form 1040 line 11a minus lines 12e and
-          13b"
+        locator: 'Correction to 2025 Form 8995 instructions, Line 11, "Form 1040 or 1040-SR filers: Form 1040 or 1040-SR, line 11a, minus lines 12e and 13b"'
     - id: qbi.taxable_before
       printed: (helper)
       type: NonNegDollars
@@ -126,8 +127,7 @@ form:
         take: qbi.deductions_before
       cite:
         doc: i8995-correction
-        locator: "Correction to 2025 Form 8995 instructions, line 11: Form 1040 line 11a minus lines 12e and
-          13b"
+        locator: 'Correction to 2025 Form 8995 instructions, Line 11, "Enter your taxable income figured before any QBI deduction", "Form 1040 or 1040-SR filers: Form 1040 or 1040-SR, line 11a, minus lines 12e and 13b"'
     - id: qbi.net_capital_gain
       printed: (helper)
       type: NonNegDollars
@@ -139,7 +139,9 @@ form:
           - f1040.line3a
       cite:
         doc: f8995
-        locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
+        locator: p. 1, "Enter your net capital gain, if any, increased by any qualified dividends" (line 12); i8995 p.
+          4, Line 12, "line 3a, plus your net capital gain", "your net capital gain is the smaller of Schedule D (Form
+          1040), line 15 or 16, unless line 15 or 16 is zero or less"
     - id: qbi.threshold
       printed: (helper)
       type: NonNegDollars
@@ -161,7 +163,8 @@ form:
           - qbi.threshold
       cite:
         doc: f8995
-        locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
+        locator: p. 1, "Use this form if your taxable income, before your qualified business income deduction, is at
+          or below $197,300 ($394,600 if married filing jointly)"; i8995 pp. 3–4
     - id: qbi.deduction
       printed: (helper)
       type: NonNegDollars
@@ -183,4 +186,6 @@ form:
             then: f8995.line15
       cite:
         doc: f8995
-        locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
+        locator: p. 1, "Use this form if your taxable income, before your qualified business income deduction, is at
+          or below $197,300 ($394,600 if married filing jointly)", "Qualified business income deduction. Enter the
+          smaller of line 10 or line 14" (line 15); i8995 pp. 3–4

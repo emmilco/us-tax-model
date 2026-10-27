@@ -280,9 +280,7 @@ form:
       places: 3
     cite:
       doc: i1040gi
-      locator: p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, lines 7 and 8 ('Enter the result as a
-        decimal (rounded to at least three places). If the result is 1.000 or more, enter 1.000' and 'Multiply line 1 by line
-        7'; three places, amb.2025.sli_ratio_places)
+      locator: 'p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, lines 7 and 8, "Divide line 6 by $15,000 ($30,000 if married filing jointly). Enter the result as a decimal (rounded to at least three places). If the result is 1.000 or more, enter 1.000" and "Multiply line 1 by line 7" (rounded to three places: amb.2025.sli_ratio_places)'
     ambiguity: amb.2025.sli_ratio_places
   - id: sli.line8
     printed: '8'
@@ -305,8 +303,8 @@ form:
         then: sli.zero
     cite:
       doc: i1040gi
-      locator: p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 6, 'No. Skip lines 6 and 7, enter
-        -0- on line 8, and go to line 9'; line 8
+      locator: p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 6, "No. Skip lines 6 and 7,
+        enter -0- on line 8, and go to line 9", line 8, "Multiply line 1 by line 7"
   - id: sli.line9
     printed: '9'
     label: Student loan interest deduction. Subtract line 8 from line 1. Enter the result here and on Schedule 1, line 21

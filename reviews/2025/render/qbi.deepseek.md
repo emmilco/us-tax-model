@@ -4,15 +4,15 @@ The rendered English of every printed line of `Qualified business income and sec
 
 | field | value |
 | --- | --- |
-| date | 2026-10-23 |
+| date | 2026-10-27 |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
-| prompt sha256 | b9bad7f717fe26a5a90f57385cdcfb11b8e88d1a3ed6432093063617c229596e |
+| prompt sha256 | e86d5771f84cf8553d61d7af5c4533519e5ac805fa51838fe5d2cab37fbaeda3 |
 | prompt policy | render-source-comparison-v2 |
 | system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
 | reasoning effort | provider default |
 | output token budget | 65536 |
-| subject sha256 | 160165d0edca43732df94a0a23b768e058d3593a5fd76c8e5a94f19506e9771a |
+| subject sha256 | 50f6069b0fc66b0331df115f52f02af9cf49ab51a4e9839ceb291f8371ad2f69 |
 | lines judged | 1 |
 | match / mismatch / unclear / missing | 0 / 1 / 0 / 0 |
 | verdicts for lines not in the form | none |
@@ -34,9 +34,9 @@ Status: **MISMATCH**
 
 Restated: Input — The qualified business loss carryforward from line 16 of your 2024 Form 8995 (or the corresponding line of your 2024 Form 8995-A), entered as a positive amount (zero if none)
 
-Model: The IRS form line is 'Qualified business net (loss) carryforward from the prior year . . . 3 ( )', where the parentheses indicate a negative loss carryforward; the restatement says to enter it as a positive amount.
+Model: IRS line 3 is "Qualified business net (loss) carryforward from the prior year" shown with parentheses, and line 4 says "Combine lines 2 and 3," so the carryforward is a negative amount; the restatement instead says "entered as a positive amount." The line 3 instructions also require the "qualified portion" allowed in calculating taxable income in the current year, not merely prior-year line 16.
 
-Ruling: open
+Ruling: model error; on the sign: f8995 p. 1, line 3 "Qualified business net (loss) carryforward from the prior year" is printed in parentheses and line 4 says "Combine lines 2 and 3". The qbi line 3 is an input entered as a positive amount, and the form line that prints it negates it (f8995.line3: "Subtract qbi line 3 from qbi helper 'Year parameter sales.zero'"), so lines 4 and 16 combine a negative amount as the form requires; the model read the input's sign convention as the printed amount. On the second point (the "qualified portion" allowed this year, i8995 p. 4, Line 3: "Include here the qualified portion of trade or business (loss) carryforward allowed in calculating taxable income in the current year"; i8995 p. 3: previously suspended losses allowed are "treated as a qualified net loss carryforward ... See Line 3"): scope, refused by qbi.unsupported ("losses or deductions suspended in an earlier year by another provision and allowed this year") on qbi.eligible. Incidental citation-only finding on this line: findings.md F2.
 
 ## Raw response
 
@@ -44,5 +44,5 @@ Ruling: open
 lines:
   - key: "3"
     status: MISMATCH
-    reason: "The IRS form line is 'Qualified business net (loss) carryforward from the prior year . . . 3 ( )', where the parentheses indicate a negative loss carryforward; the restatement says to enter it as a positive amount."
+    reason: 'IRS line 3 is "Qualified business net (loss) carryforward from the prior year" shown with parentheses, and line 4 says "Combine lines 2 and 3," so the carryforward is a negative amount; the restatement instead says "entered as a positive amount." The line 3 instructions also require the "qualified portion" allowed in calculating taxable income in the current year, not merely prior-year line 16.'
 ```

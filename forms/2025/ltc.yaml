@@ -38,7 +38,7 @@ form:
       - ltc.age
     cite:
       doc: f7206
-      locator: Form 7206 (2025), line 2(b)
+      locator: Form 7206 (2025), line 2(b), "The amount shown below. Use the person’s age at the end of the tax year"
   - id: ltc.amount
     printed: (helper)
     label: The smaller of (a) or (b)

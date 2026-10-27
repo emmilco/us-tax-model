@@ -22,14 +22,14 @@
 - **Authored helper label:** Is the amount less than $100,000?
 - **Encoded (Bool):** column (a) (amount) < $100,000 (ordinary.table_boundary)
 - Expr: `{"lt":["amount",{"param":"ordinary.table_boundary"}],"op":"test"}`
-- Cite: [i1040gi] Instructions for Form 1040, line 16 (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 36, Line 16, Tax Table or Tax Computation Worksheet, "If your taxable income is less than $100,000, you must use the Tax Table", "If your taxable income is $100,000 or more, use the Tax Computation Worksheet right after the Tax Table" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (a) — `table_tax`
 
 - **Authored helper label:** Use the Tax Table
 - **Encoded (NonNegDollars):** Use 2025 Tax Table at column (a) (amount) for the filing status (helper "The return's filing status").
 - Expr: `{"key":"amount","op":"table_lookup","status":"status","table":"tax_table"}`
-- Cite: [i1040gi] 2025 Tax Table, p. 68 (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 68, 2025 Tax Table, "If line 15 (taxable income) is—", "And you are—", "Your tax is—" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (a) — `worksheet_tax`
 
@@ -43,4 +43,4 @@
 - **Authored helper label:** Tax on the amount
 - **Encoded (Dollars):** Choose — [helper "Is the amount less than $100,000?" = true → column (a) (table_tax)] [helper "Is the amount less than $100,000?" = false → column (a) (worksheet_tax)]
 - Expr: `{"alternatives":[{"guard":{"eq":["below_boundary",{"const":true}],"op":"test"},"then":"table_tax"},{"guard":{"eq":["below_boundary",{"const":false}],"op":"test"},"then":"worksheet_tax"}],"op":"choose"}`
-- Cite: [i1040gi] Instructions for Form 1040, line 16 (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 36, Line 16, Tax Table or Tax Computation Worksheet, "If your taxable income is less than $100,000, you must use the Tax Table, later in these instructions, to figure your tax", "If your taxable income is $100,000 or more, use the Tax Computation Worksheet right after the Tax Table" (2025; printed date 2026-02-25; sha256 482e9c48)

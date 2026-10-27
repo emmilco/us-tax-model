@@ -323,7 +323,7 @@ form:
           - f8960.line4b
       cite:
         doc: f8960
-        locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+        locator: p. 1, Part I, line 4c, "Combine lines 4a and 4b"
     - id: f8960.line5a
       printed: 5a
       type: Dollars
@@ -346,7 +346,7 @@ form:
           - f8960.line5c
       cite:
         doc: f8960
-        locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+        locator: p. 1, Part I, line 5d, "Combine lines 5a through 5c"
     - id: f8960.line8
       printed: "8"
       type: Dollars
@@ -364,7 +364,7 @@ form:
           - f8960.line7
       cite:
         doc: f8960
-        locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+        locator: p. 1, Part I, line 8, "Total investment income. Combine lines 1, 2, 3, 4c, 5d, 6, and 7"
     - id: f8960.line9a
       printed: 9a
       type: NonNegDollars
@@ -408,7 +408,8 @@ form:
             then: f8960.zero
       cite:
         doc: i8960
-        locator: pp. 17–18, line 9b; any reasonable allocation method
+        locator: pp. 17–18, line 9b; p. 18, Line 9b—State, Local, and Foreign Income Tax, "allocable to NII using any
+          reasonable method"
       refuses:
         - when: f8960.bad_allocation
           form: Form 8960 line 9b
@@ -429,7 +430,7 @@ form:
           - f8960.line9c
       cite:
         doc: f8960
-        locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+        locator: p. 1, Part II, line 9d, "Add lines 9a, 9b, and 9c"
     - id: f8960.line11
       printed: "11"
       type: NonNegDollars
@@ -441,7 +442,7 @@ form:
           - f8960.line10
       cite:
         doc: f8960
-        locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+        locator: p. 1, Part II, line 11, "Total deductions and modifications. Add lines 9d and 10"
     - id: f8960.line12
       printed: "12"
       type: NonNegDollars
@@ -452,7 +453,8 @@ form:
         take: f8960.line11
       cite:
         doc: f8960
-        locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+        locator: p. 1, Part III, line 12, "Net investment income. Subtract Part II, line 11, from Part I, line 8", "If
+          zero or less, enter -0-"
     - id: f8960.line13
       printed: "13"
       type: Dollars
@@ -498,7 +500,7 @@ form:
         take: f8960.line14
       cite:
         doc: f8960
-        locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+        locator: p. 1, Part III, line 15, "Subtract line 14 from line 13. If zero or less, enter -0-"
     - id: f8960.line16
       printed: "16"
       type: NonNegDollars
@@ -510,7 +512,7 @@ form:
           - f8960.line15
       cite:
         doc: f8960
-        locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+        locator: p. 1, Part III, line 16, "Enter the smaller of line 12 or line 15"
     - id: f8960.line17
       printed: "17"
       type: NonNegDollars
@@ -522,7 +524,8 @@ form:
           param: niit.rate
       cite:
         doc: f8960
-        locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+        locator: p. 1, Part III, line 17, "Net investment income tax for individuals. Multiply line 16 by 3.8%
+          (0.038)"
       ambiguity: amb.2025.multiplication_subcent
     - id: f8960.bad_allocation
       printed: (gate)

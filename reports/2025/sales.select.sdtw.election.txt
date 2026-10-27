@@ -30,26 +30,26 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); 4ea1de80)
   (helper) Section 1202 distribution present
       = false
-      cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); 4ea1de80)
+      cite: [f1099div] p. 5, Instructions for Recipient, Box 2c, "Shows the portion of the amount in box 2a that is section 1202 gain from certain small business stock that may be subject to an exclusion" (January 2024 (continuous-use form); 4ea1de80)
   (helper) Specified private activity bond dividends present
       = false
-      cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); 4ea1de80)
+      cite: [f1099div] p. 5, Instructions for Recipient, Box 13, "Shows exempt-interest dividends subject to the alternative minimum tax" (January 2024 (continuous-use form); 4ea1de80)
   (helper) Unsupported section 897, liquidation or unreconciled basis/excess distribution
       = false
-      cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); 4ea1de80)
+      cite: [f1099div] p. 5, Instructions for Recipient, boxes 2e, 2f, 3, 9 and 10, "Box 2e. Shows the portion of the amount in box 1a that is section 897 gain", "Box 2f. Shows the portion of the amount in box 2a that is section 897 gain", "Box 3. Shows a return of capital. To the extent of your cost (or other basis) in the stock, the distribution reduces your basis and is not taxable", "Boxes 9 and 10. Show cash and noncash liquidation distributions" (January 2024 (continuous-use form); 4ea1de80)
   (helper) A gain component exceeds total capital gain distributions
       = false
-      cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); 4ea1de80)
+      cite: [f1099div] p. 5, Instructions for Recipient, boxes 2b to 2d, "Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain", "Box 2c. Shows the portion of the amount in box 2a that is section 1202 gain", "Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain" (January 2024 (continuous-use form); 4ea1de80)
   (helper) Zero only after distribution scope checks
       = $0
       cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); 4ea1de80)
       note: Interpretation amb.2025.box2c_scope: Refuse nonzero box 2c; no exclusion or AMT amount is silently omitted. Archived Schedule D instructions require the exclusion on Form 8949 code Q and describe an AMT adjustment for 50/60/75-percent exclusions. The existing explicit exclusions are retained; the owner was notified and asked, then said continue without selecting an expansion. (i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
   (gate) Qualified or section 199A dividends exceed ordinary dividends
       = false
-      cite: [f1099div] Instructions for Recipient, boxes 1a, 1b and 5 (January 2024 (continuous-use form); 4ea1de80)
+      cite: [f1099div] p. 5, Instructions for Recipient, boxes 1b and 5, "Box 1b. Shows the portion of the amount in box 1a that may be eligible for reduced capital gains rates", "Box 5. Shows the portion of the amount in box 1a that may be eligible for the 20% qualified business income deduction under section 199A" (January 2024 (continuous-use form); 4ea1de80)
   (helper) Total special capital-gain distribution components
       = $0
-      cite: [f1099div] Instructions for Recipient, capital gain components in boxes 2b–2d (January 2024 (continuous-use form); 4ea1de80)
+      cite: [f1099div] p. 5, Instructions for Recipient, boxes 2b to 2d, "Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain", "Box 2c. Shows the portion of the amount in box 2a that is section 1202 gain", "Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain" (January 2024 (continuous-use form); 4ea1de80)
 
 == Form 1040 — U.S. Individual Income Tax Return (the lines this tool computes) ==
   Filing Status Single. Married filing jointly (even if only one had income). Married filing separately. Head of household (HOH). Qualifying surviving spouse (QSS).
@@ -57,7 +57,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [f1040] Form 1040, Filing Status (2025; created 2025-09-05; 3d31c226)
   1a  Total amount from Form(s) W-2, box 1
       = $61,750
-      cite: [i1040gi] Instructions for Form 1040, pp. 23–24, lines 1a–1h (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] pp. 23–24, Line 1a, Total Amount From Form(s) W-2, Box 1, "Enter the total amount from Form(s) W-2, box 1. If a joint return, also include your spouse’s income from Form(s) W-2, box 1" (2025; printed date 2026-02-25; 482e9c48)
       note: confirmed roster $person: taxpayer
   1e  Taxable dependent care benefits from Form 2441, line 26
       = $0
@@ -118,17 +118,17 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [f1040] Form 1040 (2025), line 14 (2025; created 2025-09-05; 3d31c226)
   15  Subtract line 14 from line 11b. If zero or less, enter -0-. This is your taxable income
       = $50,000
-      cite: [i1040gi] Instructions for Form 1040, line 15 (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] f1040 Form 1040 (2025), line 15, "Subtract line 14 from line 11b. If zero or less, enter -0-. This is your taxable income" (2025; printed date 2026-02-25; 482e9c48)
   (gate) Use the Qualified Dividends and Capital Gain Tax Worksheet?
       = true
-      cite: [i1040gi] Instructions for Form 1040, line 16 (Qualified Dividends and Capital Gain Tax Worksheet) (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 36, Line 16, Qualified Dividends and Capital Gain Tax Worksheet, "Use the Qualified Dividends and Capital Gain Tax Worksheet, later, to figure your tax if you don’t have to use the Schedule D Tax Worksheet and if any of the following applies", "You reported qualified dividends on Form 1040 or 1040-SR, line 3a", "You don’t have to file Schedule D and you reported capital gain distributions on Form 1040 or 1040-SR, line 7a", "You are filing Schedule D, and Schedule D, lines 15 and 16, are both more than zero" (2025; printed date 2026-02-25; 482e9c48)
   (gate) Schedule D Tax Worksheet required after its exceptions
       = true
       cite: [i1040sd] p. 15, Schedule D Tax Worksheet, applicability and exceptions (2025; printed date 2025-12-11; 650643a6)
       note: Interpretation amb.2025.sd4952_selection: Use the detailed worksheet conditions, including line 4g and exceptions. The worksheet explicitly limits its own use and the Form 1040 line 16 instructions repeat the line 4g condition. (i1040sd, p. 15, Schedule D Tax Worksheet, applicability; compare f1040sd line 20 and i1040gi p. 36)
   16  Tax (see instructions). Check if any from Form(s): 1 8814 2 4972 3
       = $5,532.50
-      cite: [i1040gi] Instructions for Form 1040, line 16 (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 34, Line 16, Tax, "Tax on your taxable income. Figure the tax using one of the methods described later"; p. 36, Line 16, "Use the Schedule D Tax Worksheet in the Instructions for Schedule D to figure the amount to enter on Form 1040 or 1040-SR, line 16", "Use the Qualified Dividends and Capital Gain Tax Worksheet, later, to figure your tax if you don’t have to use the Schedule D Tax Worksheet" (2025; printed date 2026-02-25; 482e9c48)
       note: taken: {"eq":["f1040.gate.sdtw",{"const":true}],"op":"test"}
 
 == Form 2441 — Child and Dependent Care Expenses (Parts I to III) ==
@@ -213,14 +213,14 @@ Values sheet — tax year 2025 (not a complete return for all filers)
 == Form 8995 — Qualified Business Income Deduction Simplified Computation ==
   2   Total qualified business income or (loss). Combine lines 1i through 1v, column (c)
       = $0
-      cite: [f8995] Form 8995 (2025), line 2; i8995 Line 1, the trades or businesses of the Schedule C entries (2025; created 2025-09-12; 55380ad2)
+      cite: [f8995] Form 8995 (2025), line 2; i8995 p. 4, Line 1, "Enter on line 1(c) the net QBI or (loss) for the trade, business, or aggregation reported in the corresponding row" (the trades or businesses of the Schedule C entries) (2025; created 2025-09-12; 55380ad2)
       note: confirmed roster $person: taxpayer
   3   Qualified business net (loss) carryforward from the prior year
       = $0
       cite: [f8995] Form 8995 (2025), line 3 (2025; created 2025-09-12; 55380ad2)
   (helper) Combine lines 2 and 3
       = $0
-      cite: [f8995] Form 8995 (2025), lines 4 and 16 (2025; created 2025-09-12; 55380ad2)
+      cite: [f8995] p. 1, "Total qualified business income. Combine lines 2 and 3" (line 4), "Total qualified business (loss) carryforward. Combine lines 2 and 3" (line 16) (2025; created 2025-09-12; 55380ad2)
   4   Total qualified business income. Combine lines 2 and 3. If zero or less, enter -0-
       = $0
       cite: [f8995] Form 8995 (2025), line 4 (2025; created 2025-09-12; 55380ad2)
@@ -236,12 +236,12 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
   9   Multiply f8995.line8 by qbi.rate
       = $0
-      cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
+      cite: [f8995] p. 1, "REIT and PTP component. Multiply line 8 by 20% (0.20)" (line 9); i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
       note: half-up to the cent per the ambiguity register; Interpretation amb.2025.multiplication_subcent: Round the product half-up to the nearest cent at the multiplication. Matches the half-up convention of the printed whole-dollar rounding rules. The whole-dollar default is unaffected: whole-dollar amounts multiplied by these rates produce exact cents, so the reading only matters when cents are turned on.
  (i1040gi, QDCGT worksheet, lines 18 and 21; Rounding Off to Whole Dollars, p. 23)
   10  Add f8995.line5, f8995.line9
       = $0
-      cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
+      cite: [f8995] p. 1, "Qualified business income deduction before the income limitation. Add lines 5 and 9" (line 10); i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
   11  Taxable income before qualified business income deduction (see instructions)
       = $50,000
       cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
@@ -250,15 +250,15 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
   13  Subtract f8995.line12 from f8995.line11; if zero or less, enter zero
       = $46,000
-      cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
+      cite: [f8995] p. 1, "Subtract line 12 from line 11. If zero or less, enter -0-" (line 13); i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
   14  Multiply f8995.line13 by qbi.rate
       = $9,200
-      cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
+      cite: [f8995] p. 1, "Income limitation. Multiply line 13 by 20% (0.20)" (line 14); i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
       note: half-up to the cent per the ambiguity register; Interpretation amb.2025.multiplication_subcent: Round the product half-up to the nearest cent at the multiplication. Matches the half-up convention of the printed whole-dollar rounding rules. The whole-dollar default is unaffected: whole-dollar amounts multiplied by these rates produce exact cents, so the reading only matters when cents are turned on.
  (i1040gi, QDCGT worksheet, lines 18 and 21; Rounding Off to Whole Dollars, p. 23)
   15  Smaller of f8995.line10, f8995.line14
       = $0
-      cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
+      cite: [f8995] p. 1, "Qualified business income deduction. Enter the smaller of line 10 or line 14" (line 15); i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
 
 == 28% Rate Gain Worksheet — distribution-only path ==
   1   Enter the total of all collectibles gain or (loss) from items you reported on Form 8949, Part II
@@ -289,18 +289,18 @@ Values sheet — tax year 2025 (not a complete return for all filers)
 == Household facts for dependents and head of household ==
   (helper) Number of entries for you
       = 1
-      cite: [f1040] Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first name and middle initial"; Filing Status (2025; created 2025-09-05; 3d31c226)
+      cite: [f1040] Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first name and middle initial"; p. 1, Filing Status, "Married filing jointly (even if only one had income)" (2025; created 2025-09-05; 3d31c226)
       note: confirmed roster $person: taxpayer
   (helper) Number of entries for your spouse
       = 0
-      cite: [f1040] Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first name and middle initial"; Filing Status (2025; created 2025-09-05; 3d31c226)
+      cite: [f1040] Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first name and middle initial"; p. 1, Filing Status, "Married filing jointly (even if only one had income)" (2025; created 2025-09-05; 3d31c226)
       note: confirmed roster $person: taxpayer
   (helper) One entry for you, and one for your spouse exactly when filing jointly
       = true
-      cite: [f1040] Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first name and middle initial"; Filing Status (2025; created 2025-09-05; 3d31c226)
+      cite: [f1040] Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first name and middle initial"; p. 1, Filing Status, "Married filing jointly (even if only one had income)" (2025; created 2025-09-05; 3d31c226)
   (gate) The people entered do not match the filing status
       = false
-      cite: [f1040] Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first name and middle initial"; Filing Status (2025; created 2025-09-05; 3d31c226)
+      cite: [f1040] Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first name and middle initial"; p. 1, Filing Status, "Married filing jointly (even if only one had income)" (2025; created 2025-09-05; 3d31c226)
   (helper) Number of people on the return under age 16 at the end of 2025
       = 0
       cite: [i1040gi] p. 66, Self-Select PIN, "You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025" (2025; printed date 2026-02-25; 482e9c48)
@@ -365,7 +365,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       note: confirmed roster $f8889@person[taxpayer]:
   (helper) Form 8889 line 16 for this person
       = $0
-      cite: [f8889] Form 8889 (2025), Part II, "If you are filing jointly and both you and your spouse each have separate HSAs, complete a separate Part II for each spouse"; line 16 (2025; created 2025-03-28; 15ed4587)
+      cite: [f8889] p. 1, Part II, "HSA Distributions. If you are filing jointly and both you and your spouse each have separate HSAs, complete a separate Part II for each spouse", line 16, "Taxable HSA distributions. Subtract line 15 from line 14c. If zero or less, enter -0-" (2025; created 2025-03-28; 15ed4587)
       note: confirmed roster $f8889@person[taxpayer]:
   (helper) Number of this person's Schedules C while this person has railroad retirement compensation
       = 0
@@ -406,7 +406,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       note: confirmed roster $sc@person[taxpayer]:
   (helper) Qualified business income or loss of this person's businesses
       = $0
-      cite: [i8995] pp. 2, 4, Determining Your Qualified Business Income; Line 1 (2025; printed date 2026-01-26; 875843ba)
+      cite: [i8995] pp. 2, 4, Determining Your Qualified Business Income; p. 4, Line 1, "Enter on line 1(c) the net QBI or (loss) for the trade, business, or aggregation reported in the corresponding row" (2025; printed date 2026-01-26; 875843ba)
       note: confirmed roster $sc@person[taxpayer]:
   (helper) This person's Schedules C with Schedule 1-A tips or overtime
       = 0
@@ -452,25 +452,25 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
   3   Qualified business net (loss) carryforward from the prior year (as a positive amount)
       = $0
-      cite: [i8995] Line 3, "enter the amount from line 16 of your 2024 Form 8995" (owner: the printed amount) (2025; printed date 2026-01-26; 875843ba)
+      cite: [i8995] p. 4, Line 3, "Include here the qualified portion of trade or business (loss) carryforward allowed in calculating taxable income in the current year"; p. 5, Line 16, "This is the amount to be carried forward to the next year" (owner: the printed amount) (2025; printed date 2026-01-26; 875843ba)
   (helper) Form 1040 lines 12e and 13b, the deductions taken before the QBI deduction
       = $15,750
-      cite: [i8995-correction] Correction to 2025 Form 8995 instructions, line 11: Form 1040 line 11a minus lines 12e and 13b (Post-release correction to the 2025 Instructions for Form 8995 (published 2026-02-13); page last reviewed 2026-06-28; 926735a0)
+      cite: [i8995-correction] Correction to 2025 Form 8995 instructions, Line 11, "Form 1040 or 1040-SR filers: Form 1040 or 1040-SR, line 11a, minus lines 12e and 13b" (Post-release correction to the 2025 Instructions for Form 8995 (published 2026-02-13); page last reviewed 2026-06-28; 926735a0)
   (helper) Taxable income before the QBI deduction; Form 1040 line 11a minus lines 12e and 13b, floored at zero
       = $50,000
-      cite: [i8995-correction] Correction to 2025 Form 8995 instructions, line 11: Form 1040 line 11a minus lines 12e and 13b (Post-release correction to the 2025 Instructions for Form 8995 (published 2026-02-13); page last reviewed 2026-06-28; 926735a0)
+      cite: [i8995-correction] Correction to 2025 Form 8995 instructions, Line 11, "Enter your taxable income figured before any QBI deduction", "Form 1040 or 1040-SR filers: Form 1040 or 1040-SR, line 11a, minus lines 12e and 13b" (Post-release correction to the 2025 Instructions for Form 8995 (published 2026-02-13); page last reviewed 2026-06-28; 926735a0)
   (helper) Add sd.net_gain, f1040.line3a
       = $4,000
-      cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
+      cite: [f8995] p. 1, "Enter your net capital gain, if any, increased by any qualified dividends" (line 12); i8995 p. 4, Line 12, "line 3a, plus your net capital gain", "your net capital gain is the smaller of Schedule D (Form 1040), line 15 or 16, unless line 15 or 16 is zero or less" (2025; created 2025-09-12; 55380ad2)
   (helper) Year parameter qbi.threshold
       = $197,300
       cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
   (helper) Taxable income before QBI exceeds the Form 8995 threshold
       = false
-      cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
+      cite: [f8995] p. 1, "Use this form if your taxable income, before your qualified business income deduction, is at or below $197,300 ($394,600 if married filing jointly)"; i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
   (helper) Select Form 8995 or dividend-only Form 8995-A
       = $0
-      cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
+      cite: [f8995] p. 1, "Use this form if your taxable income, before your qualified business income deduction, is at or below $197,300 ($394,600 if married filing jointly)", "Qualified business income deduction. Enter the smaller of line 10 or line 14" (line 15); i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
       note: taken: {"eq":["qbi.use_8995a",{"const":false}],"op":"test"}
 
 == State and Local Income Tax Refund Worksheet—Schedule 1, Line 1 ==
@@ -501,7 +501,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       note: taken: {"eq":["s1.has_uc",{"const":false}],"op":"test"}
   (helper) The net loss of all Schedules C (as a positive amount)
       = $0
-      cite: [f1040s1] Schedule 1 (2025), line 3; i1040sc p. 1, Excess business loss limitation (2025; created 2025-07-25; 8dafec71)
+      cite: [f1040s1] Schedule 1 (2025), line 3, "Business income or (loss). Attach Schedule C"; i1040sc p. 1, Excess business loss limitation (2025; created 2025-07-25; 8dafec71)
   (helper) Net profit or loss of all Schedules C
       = $0
       cite: [i1040sc] p. 1, Reminders, Excess business loss limitation (2025; b5536db9)
@@ -598,11 +598,11 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       note: confirmed roster $person: taxpayer
   16  Self-employed SEP, SIMPLE, and qualified plans
       = $0
-      cite: [i1040gi] p. 93, Schedule 1, line 16; p560 chapter 3, Where To Deduct Contributions, and chapter 5 (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 93, Schedule 1, line 16; p560 p. 17, Where To Deduct Contributions, "Sole proprietors and partners deduct contributions for themselves on line 16 of Schedule 1 (Form 1040)"; p560 p. 39, Table and Worksheets for the Self-Employed, "Enter your actual contribution, not to exceed your maximum deductible contribution, on Schedule 1 (Form 1040), line 16" (2025; printed date 2026-02-25; 482e9c48)
       note: confirmed roster $person: taxpayer
   17  Self-employed health insurance deduction
       = $0
-      cite: [i1040gi] pp. 94–95, Schedule 1, line 17, Self-Employed Health Insurance Deduction; Form 7206 (2025), line 14 (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] pp. 94–95, Schedule 1, line 17, Self-Employed Health Insurance Deduction; f7206 line 14 (2025; printed date 2026-02-25; 482e9c48)
       note: confirmed roster $person: taxpayer
   18  Penalty on early withdrawal of savings
       = $0
@@ -700,11 +700,11 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [i1040gi] p. 33, Line 12d, "If your filing status is married filing separately and your spouse was born before January 2, 1961, or was blind at the end of 2025, you can check the appropriate box(es) on line 12d if your spouse had no income, isn't filing a return, and can't be claimed as a dependent on another person's return" (2025; printed date 2026-02-25; 482e9c48)
   (helper) Your entry, if the answer is yes
       = 0
-      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+      cite: [f1040sa] i1040gi p. 35, Standard Deduction Chart for People Who Were Born Before January 2, 1961, or Were Blind, "You were born before January 2, 1961", "Enter the total number of boxes checked" (2025; created 2025-11-20; c14acf34)
       note: confirmed roster $person: taxpayer
   (helper) Were you born before January 2, 1961?
       = false
-      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+      cite: [f1040sa] i1040gi p. 35, Standard Deduction Chart for People Who Were Born Before January 2, 1961, or Were Blind, "You were born before January 2, 1961", "Enter the total number of boxes checked" (2025; created 2025-11-20; c14acf34)
   (helper) Elect to itemize even if the standard deduction is larger?
       = false
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
@@ -742,15 +742,15 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       note: Interpretation amb.2025.sa_medical_negative_agi: The second (sa.agi_floor, copied to line 2). The instruction names a part of the expenses, and no part of the expenses exceeds the expenses themselves; the signed reading would deduct $324.85 of medical expenses on a return with none (engine differential case se-00255, BUG-0094). Tax-Calculator (calcfunctions.ItemDed, posagi = max(c00100, 0.)) and PolicyEngine-US both floor adjusted gross income at zero before taking the percentage. Equivalent to flooring line 3 at zero; the floor is placed on line 2's operand so that lines 3 and 4 keep their printed wording. (i1040sca, p. 1, Medical and Dental Expenses, "You can deduct only the part of your medical and dental expenses that exceeds 7.5% of the amount of your adjusted gross income on Form 1040 or 1040-SR, line 11b")
   3   Multiply sa.line2 by sa.medical_rate
       = $4,931.25
-      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+      cite: [f1040sa] p. 1, Medical and Dental Expenses, line 3, "Multiply line 2 by 7.5% (0.075)" (2025; created 2025-11-20; c14acf34)
       note: half-up to the cent per the ambiguity register; Interpretation amb.2025.multiplication_subcent: Round the product half-up to the nearest cent at the multiplication. Matches the half-up convention of the printed whole-dollar rounding rules. The whole-dollar default is unaffected: whole-dollar amounts multiplied by these rates produce exact cents, so the reading only matters when cents are turned on.
  (i1040gi, QDCGT worksheet, lines 18 and 21; Rounding Off to Whole Dollars, p. 23)
   4   Subtract sa.line3 from sa.line1; if zero or less, enter zero
       = $0
-      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+      cite: [f1040sa] p. 1, Medical and Dental Expenses, line 4, "Subtract line 3 from line 1. If line 3 is more than line 1, enter -0-" (2025; created 2025-11-20; c14acf34)
   5d  Add sa.line5a, sa.line5b, sa.line5c
       = $0
-      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+      cite: [f1040sa] p. 1, Taxes You Paid, line 5d, "d Add lines 5a through 5c" (2025; created 2025-11-20; c14acf34)
   (helper) Year parameter sa.salt_base
       = $40,000
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
@@ -762,28 +762,28 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
   (helper) Subtract sa.saltthreshold from sa.agi; if zero or less, enter zero
       = $0
-      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+      cite: [f1040sa] i1040sca p. 7, State and Local Tax Deduction Worksheet, "Enter $500,000 ($250,000 if married filing separately)", "Is the amount on line 4 more than the amount on line 5?", "Subtract line 5 from line 4" (2025; created 2025-11-20; c14acf34)
   (helper) Multiply sa.saltexcess by sa.salt_rate
       = $0
-      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+      cite: [f1040sa] i1040sca p. 7, State and Local Tax Deduction Worksheet, "Multiply line 6 by 30% (0.30)" (2025; created 2025-11-20; c14acf34)
       note: half-up to the cent per the ambiguity register; Interpretation amb.2025.multiplication_subcent: Round the product half-up to the nearest cent at the multiplication. Matches the half-up convention of the printed whole-dollar rounding rules. The whole-dollar default is unaffected: whole-dollar amounts multiplied by these rates produce exact cents, so the reading only matters when cents are turned on.
  (i1040gi, QDCGT worksheet, lines 18 and 21; Rounding Off to Whole Dollars, p. 23)
   (helper) Subtract sa.saltreduction from sa.saltbase; if zero or less, enter zero
       = $40,000
-      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+      cite: [f1040sa] i1040sca p. 7, State and Local Tax Deduction Worksheet, "Subtract line 7 from line 1", "Enter $40,000" (2025; created 2025-11-20; c14acf34)
   (helper) Larger of remaining ceiling and $10,000
       = $40,000
       cite: [i1040sca] p. 7, State and Local Tax Deduction Worksheet (2025; printed date 2025-12-08; b0999b12)
   (helper) Married filing separately
       = false
-      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+      cite: [f1040sa] i1040sca p. 7, State and Local Tax Deduction Worksheet, "(half the amount on line 9 if married filing separately)" (2025; created 2025-11-20; c14acf34)
   (helper) Half the worksheet ceiling if married filing separately
       = $40,000
       cite: [i1040sca] p. 7, State and Local Tax Deduction Worksheet (2025; printed date 2025-12-08; b0999b12)
       note: taken: {"eq":["sa.mfs",{"const":false}],"op":"test"}
   5e  Smaller of sa.line5d, sa.saltlimit
       = $0
-      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+      cite: [f1040sa] p. 1, Taxes You Paid, line 5e, "Enter the smaller of line 5d or $40,000 ($20,000 if married filing separately)"; i1040sca p. 7, Line 5e, "If Form 1040 or 1040-SR, line 11b is more than $500,000 ($250,000 if married filing separately), or if you completed Form 2555, Form 4563, or excluded income from Puerto Rico, complete the State and Local Tax Deduction Worksheet to figure the amount to enter on line 5e" (2025; created 2025-11-20; c14acf34)
   6   Amount from sa.zero
       = $0
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
@@ -805,26 +805,26 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       note: taken: {"eq":["s1.has_gambling",{"const":false}],"op":"test"}
   7   Add sa.line5e, sa.line6
       = $0
-      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+      cite: [f1040sa] p. 1, Taxes You Paid, line 7, "Add lines 5e and 6" (2025; created 2025-11-20; c14acf34)
   8e  Add sa.line8a, sa.line8b, sa.line8c
       = $0
-      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+      cite: [f1040sa] p. 1, Interest You Paid, line 8e, "e Add lines 8a through 8c" (2025; created 2025-11-20; c14acf34)
   9   Amount from f4952.line8
       = $0
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
   10  Add sa.line8e, sa.line9
       = $0
-      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+      cite: [f1040sa] p. 1, Interest You Paid, line 10, "Add lines 8e and 9" (2025; created 2025-11-20; c14acf34)
   12  Total supported noncash donations before income limits
       = $0
-      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+      cite: [f1040sa] p. 1, Gifts to Charity, line 12, "Other than by cash or check. If you made any gift of $250 or more, see instructions" (2025; created 2025-11-20; c14acf34)
       note: confirmed roster $gift:
   14  Add sa.line11, sa.line12, sa.line13
       = $0
-      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+      cite: [f1040sa] p. 1, Gifts to Charity, line 14, "Add lines 11 through 13" (2025; created 2025-11-20; c14acf34)
   17  Add sa.line4, sa.line7, sa.line10, sa.line14, sa.line15, sa.line16
       = $0
-      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+      cite: [f1040sa] p. 1, Total Itemized Deductions, line 17, "Add the amounts in the far right column for lines 4 through 16. Also, enter this amount on Form 1040 or 1040-SR, line 12e" (2025; created 2025-11-20; c14acf34)
   (helper) Year parameter sa.standard_base
       = $15,750
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
@@ -847,14 +847,14 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [i1040gi] p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)"; pp. 34–35, Standard Deduction Chart for People Who Were Born Before January 2, 1961, or Were Blind (2025; printed date 2026-02-25; 482e9c48)
   (helper) Add sa.standardbase, sa.extra_age65, sa.extra_blind
       = $15,750
-      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+      cite: [f1040sa] i1040gi pp. 34–35, Line 12e Standard Deduction or Itemized Deductions, "Exception 4—Born before January 2, 1961, or blind", "Standard Deduction Chart for People Who Were Born Before January 2, 1961, or Were Blind", "If born before January 2, 1961, or blind, multiply the number on line 1 by $1,600 ($2,000 if single or head of household)" (2025; created 2025-11-20; c14acf34)
   (helper) Standard deduction, zero when MFS spouse itemizes
       = $15,750
       cite: [i1040gi] pp. 34–35, line 12e and Standard Deduction Chart (2025; printed date 2026-02-25; 482e9c48)
       note: taken: {"eq":["sa.mfs_spouse_itemizes",{"const":false}],"op":"test"}
   (helper) Itemize if elected, required, or itemized total exceeds standard
       = false
-      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+      cite: [f1040sa] p. 1, Total Itemized Deductions, line 18, "If you elect to itemize deductions even though they are less than your standard deduction, check this box"; i1040gi p. 34, Line 12e Standard Deduction or Itemized Deductions, "In most cases, your federal income tax will be less if you take the larger of your standard deduction or itemized deductions", "If you checked the box on line 12b, your standard deduction is zero" (2025; created 2025-11-20; c14acf34)
   (helper) Deduction selected for Form 1040 line 12e
       = $15,750
       cite: [i1040gi] pp. 34–35, line 12e and Standard Deduction Chart (2025; printed date 2026-02-25; 482e9c48)
@@ -887,7 +887,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
   (helper) Digital asset box G–L
       = false
-      cite: [f8949] Parts I and II, boxes G–L (2025; created 2025-05-05; 27451389)
+      cite: [f8949] p. 1, Part I, "(G) Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS", "(H) Short-term transactions reported on Form(s) 1099-DA showing basis was not reported to the IRS", "(I) Short-term digital asset transactions not reported to you on Form 1099-DA or Form 1099-B"; p. 2, Part II, "(J) Long-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS", "(K) Long-term transactions reported on Form(s) 1099-DA showing basis was not reported to the IRS", "(L) Long-term digital asset transactions not reported to you on Form 1099-DA or Form 1099-B" (2025; created 2025-05-05; 27451389)
   (helper) Basis correction code B applies
       = false
       cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
@@ -1002,48 +1002,48 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [i1040sd] p. 15, Schedule D Tax Worksheet, applicability (2025; printed date 2025-12-11; 650643a6)
   (helper) Count screened transactions
       = 1
-      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+      cite: [f1040sd] p. 1, Capital Gains and Losses, "Use Form 8949 to list your transactions for lines 1b, 2, 3, 8b, 9, and 10" (2025; created 2025-10-06; 90564c8b)
       note: confirmed roster $sales: a
   (helper) Transaction screening dependency
       = false
-      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+      cite: [f1040sd] p. 1, Capital Gains and Losses, "Use Form 8949 to list your transactions for lines 1b, 2, 3, 8b, 9, and 10" (2025; created 2025-10-06; 90564c8b)
   (helper) Schedule D required for entered sales or special distribution gains
       = true
-      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+      cite: [f1040sd] i1040gi p. 31, Line 7a, "If you sold a capital asset, such as a stock, bond, or digital asset, you must complete and attach Form 8949 and Schedule D", "None of the Form(s) 1099-DIV (or substitute statements) have an amount in box 2b (unrecaptured section 1250 gain), box 2c (section 1202 gain), or box 2d (collectibles (28%) gain)" (2025; created 2025-10-06; 90564c8b)
   (helper) No amount on an inapplicable line
       = $0
       cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
   1a(h) Line 1a, column (h) totals
       = $0
-      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+      cite: [f1040sd] p. 1, Part I, line 1a, column (h), "Totals for all short-term transactions reported on Form 1099-B or Form 1099-DA for which basis was reported to the IRS and for which you have no adjustments", "(h) Gain or (loss) Subtract column (e) from column (d) and combine the result with column (g)" (2025; created 2025-10-06; 90564c8b)
       note: confirmed roster $sales: a
   1b(h) Line 1b, column (h) totals
       = $0
-      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+      cite: [f1040sd] p. 1, Part I, line 1b, column (h), "Totals for all transactions reported on Form(s) 8949 with Box A or Box G checked", "(h) Gain or (loss) Subtract column (e) from column (d) and combine the result with column (g)" (2025; created 2025-10-06; 90564c8b)
       note: confirmed roster $sales: a
   2(h) Line 2, column (h) totals
       = $0
-      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+      cite: [f1040sd] p. 1, Part I, line 2, column (h), "Totals for all transactions reported on Form(s) 8949 with Box B or Box H checked", "(h) Gain or (loss) Subtract column (e) from column (d) and combine the result with column (g)" (2025; created 2025-10-06; 90564c8b)
       note: confirmed roster $sales: a
   3(h) Line 3, column (h) totals
       = $0
-      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+      cite: [f1040sd] p. 1, Part I, line 3, column (h), "Totals for all transactions reported on Form(s) 8949 with Box C or Box I checked", "(h) Gain or (loss) Subtract column (e) from column (d) and combine the result with column (g)" (2025; created 2025-10-06; 90564c8b)
       note: confirmed roster $sales: a
   8a(h) Line 8a, column (h) totals
       = $0
-      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+      cite: [f1040sd] p. 1, Part II, line 8a, column (h), "Totals for all long-term transactions reported on Form 1099-B or Form 1099-DA for which basis was reported to the IRS and for which you have no adjustments", "(h) Gain or (loss) Subtract column (e) from column (d) and combine the result with column (g)" (2025; created 2025-10-06; 90564c8b)
       note: confirmed roster $sales: a
   8b(h) Line 8b, column (h) totals
       = $4,000
-      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+      cite: [f1040sd] p. 1, Part II, line 8b, column (h), "Totals for all transactions reported on Form(s) 8949 with Box D or Box J checked", "(h) Gain or (loss) Subtract column (e) from column (d) and combine the result with column (g)" (2025; created 2025-10-06; 90564c8b)
       note: confirmed roster $sales: a
   9(h) Line 9, column (h) totals
       = $0
-      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+      cite: [f1040sd] p. 1, Part II, line 9, column (h), "Totals for all transactions reported on Form(s) 8949 with Box E or Box K checked", "(h) Gain or (loss) Subtract column (e) from column (d) and combine the result with column (g)" (2025; created 2025-10-06; 90564c8b)
       note: confirmed roster $sales: a
   10(h) Line 10, column (h) totals
       = $0
-      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+      cite: [f1040sd] p. 1, Part II, line 10, column (h), "Totals for all transactions reported on Form(s) 8949 with Box F or Box L checked", "(h) Gain or (loss) Subtract column (e) from column (d) and combine the result with column (g)" (2025; created 2025-10-06; 90564c8b)
       note: confirmed roster $sales: a
   4   Line 4: zero only after unsupported source/carryover screening
       = $0
@@ -1065,32 +1065,32 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
   13  Capital gain distributions
       = $0
-      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+      cite: [f1040sd] p. 1, Part II, line 13, "Capital gain distributions. See the instructions" (2025; created 2025-10-06; 90564c8b)
   7   Combine the amounts for Schedule D line 7
       = $0
-      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+      cite: [f1040sd] p. 1, Part I, line 7, "Net short-term capital gain or (loss). Combine lines 1a through 6 in column (h)" (2025; created 2025-10-06; 90564c8b)
   15  Combine the amounts for Schedule D line 15
       = $4,000
-      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+      cite: [f1040sd] p. 1, Part II, line 15, "Net long-term capital gain or (loss). Combine lines 8a through 14 in column (h)" (2025; created 2025-10-06; 90564c8b)
   16  Combine the amounts for Schedule D line 16
       = $4,000
-      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+      cite: [f1040sd] p. 2, Part III, line 16, "Combine lines 7 and 15 and enter the result" (2025; created 2025-10-06; 90564c8b)
   17  Are lines 15 and 16 both gains?
       = true
-      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+      cite: [f1040sd] p. 2, Part III, line 17, "Are lines 15 and 16 both gains?" (2025; created 2025-10-06; 90564c8b)
   (helper) Line 16 is a loss
       = false
-      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+      cite: [f1040sd] p. 2, Part III, line 16, "If line 16 is a loss, skip lines 17 through 20 below. Then, go to line 21" (2025; created 2025-10-06; 90564c8b)
   (helper) Capital gain or limited capital loss for Form 1040 line 7a
       = $4,000
-      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+      cite: [f1040sd] p. 2, Part III, lines 16 and 21, "If line 16 is a gain, enter the amount from line 16 on Form 1040, 1040-SR, or 1040-NR, line 7a", "If line 16 is zero, skip lines 17 through 21 below and enter -0- on Form 1040, 1040-SR, or 1040-NR, line 7a", "If line 16 is a loss, enter here and on Form 1040, 1040-SR, or 1040-NR, line 7a, the smaller of" (2025; created 2025-10-06; 90564c8b)
       note: taken: {"eq":["sd.has_loss",{"const":false}],"op":"test"}
   (helper) Smaller of Schedule D lines 15 and 16
       = $4,000
-      cite: [i1040gi] QDCGT worksheet, line 3 (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] i1040gi p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 3, "Yes. Enter the smaller of line 15 or line 16 of Schedule D" (2025; printed date 2026-02-25; 482e9c48)
   (helper) Nonnegative net capital gain for QDCGT
       = $4,000
-      cite: [i1040gi] QDCGT worksheet, line 3 (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] i1040gi p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 3, "Yes. Enter the smaller of line 15 or line 16 of Schedule D. If either line 15 or line 16 is blank or a loss, enter -0-" (2025; printed date 2026-02-25; 482e9c48)
 
 == Schedule D Tax Worksheet ==
   (helper) Zero for skipped worksheet lines

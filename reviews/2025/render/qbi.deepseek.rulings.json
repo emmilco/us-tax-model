@@ -1,0 +1,14 @@
+{
+ "kind": "render",
+ "form": "qbi",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "3",
+   "restated": "Input — The qualified business loss carryforward from line 16 of your 2024 Form 8995 (or the corresponding line of your 2024 Form 8995-A), entered as a positive amount (zero if none)",
+   "model": "IRS line 3 is \"Qualified business net (loss) carryforward from the prior year\" shown with parentheses, and line 4 says \"Combine lines 2 and 3,\" so the carryforward is a negative amount; the restatement instead says \"entered as a positive amount.\" The line 3 instructions also require the \"qualified portion\" allowed in calculating taxable income in the current year, not merely prior-year line 16.",
+   "ruling": "Ruling: model error; on the sign: f8995 p. 1, line 3 \"Qualified business net (loss) carryforward from the prior year\" is printed in parentheses and line 4 says \"Combine lines 2 and 3\". The qbi line 3 is an input entered as a positive amount, and the form line that prints it negates it (f8995.line3: \"Subtract qbi line 3 from qbi helper 'Year parameter sales.zero'\"), so lines 4 and 16 combine a negative amount as the form requires; the model read the input's sign convention as the printed amount. On the second point (the \"qualified portion\" allowed this year, i8995 p. 4, Line 3: \"Include here the qualified portion of trade or business (loss) carryforward allowed in calculating taxable income in the current year\"; i8995 p. 3: previously suspended losses allowed are \"treated as a qualified net loss carryforward ... See Line 3\"): scope, refused by qbi.unsupported (\"losses or deductions suspended in an earlier year by another provision and allowed this year\") on qbi.eligible. Incidental citation-only finding on this line: findings.md F2.",
+   "context": "030f7b68698c287c04aa067a2869058207f85af23ce2b928029e6ffca69fc1d5"
+  }
+ ]
+}

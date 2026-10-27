@@ -177,7 +177,8 @@ form:
           - const: 0
       cite:
         doc: f1099div
-        locator: Instructions for Recipient, boxes 1–16
+        locator: p. 5, Instructions for Recipient, Box 2c, "Shows the portion of the amount in box 2a that is section
+          1202 gain from certain small business stock that may be subject to an exclusion"
     - id: div.amt
       printed: (helper)
       type: Bool
@@ -189,7 +190,8 @@ form:
           - const: 0
       cite:
         doc: f1099div
-        locator: Instructions for Recipient, boxes 1–16
+        locator: p. 5, Instructions for Recipient, Box 13, "Shows exempt-interest dividends subject to the alternative
+          minimum tax"
     - id: div.unsupported
       printed: (helper)
       type: Bool
@@ -225,7 +227,11 @@ form:
                   - const: false
       cite:
         doc: f1099div
-        locator: Instructions for Recipient, boxes 1–16
+        locator: p. 5, Instructions for Recipient, boxes 2e, 2f, 3, 9 and 10, "Box 2e. Shows the portion of the amount
+          in box 1a that is section 897 gain", "Box 2f. Shows the portion of the amount in box 2a that is section 897
+          gain", "Box 3. Shows a return of capital. To the extent of your cost (or other basis) in the stock, the
+          distribution reduces your basis and is not taxable", "Boxes 9 and 10. Show cash and noncash liquidation
+          distributions"
     - id: div.bad_special
       printed: (helper)
       type: Bool
@@ -251,7 +257,9 @@ form:
               - sd.distributions
       cite:
         doc: f1099div
-        locator: Instructions for Recipient, boxes 1–16
+        locator: p. 5, Instructions for Recipient, boxes 2b to 2d, "Box 2b. Shows the portion of the amount in box 2a
+          that is unrecaptured section 1250 gain", "Box 2c. Shows the portion of the amount in box 2a that is section
+          1202 gain", "Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain"
     - id: div.screen
       printed: (helper)
       type: NonNegDollars
@@ -315,7 +323,9 @@ form:
               - sb.ordinary_dividends
       cite:
         doc: f1099div
-        locator: Instructions for Recipient, boxes 1a, 1b and 5
+        locator: p. 5, Instructions for Recipient, boxes 1b and 5, "Box 1b. Shows the portion of the amount in box 1a
+          that may be eligible for reduced capital gains rates", "Box 5. Shows the portion of the amount in box 1a
+          that may be eligible for the 20% qualified business income deduction under section 199A"
     - id: div.special_total
       printed: (helper)
       type: NonNegDollars
@@ -328,4 +338,6 @@ form:
           - div.box2d
       cite:
         doc: f1099div
-        locator: Instructions for Recipient, capital gain components in boxes 2b–2d
+        locator: p. 5, Instructions for Recipient, boxes 2b to 2d, "Box 2b. Shows the portion of the amount in box 2a
+          that is unrecaptured section 1250 gain", "Box 2c. Shows the portion of the amount in box 2a that is section
+          1202 gain", "Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain"

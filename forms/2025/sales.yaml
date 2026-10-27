@@ -163,7 +163,12 @@ form:
               - const: L
       cite:
         doc: f8949
-        locator: Parts I and II, boxes G–L
+        locator: p. 1, Part I, "(G) Short-term transactions reported on Form(s) 1099-DA showing basis was reported to
+          the IRS", "(H) Short-term transactions reported on Form(s) 1099-DA showing basis was not reported to the
+          IRS", "(I) Short-term digital asset transactions not reported to you on Form 1099-DA or Form 1099-B"; p. 2,
+          Part II, "(J) Long-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS",
+          "(K) Long-term transactions reported on Form(s) 1099-DA showing basis was not reported to the IRS", "(L)
+          Long-term digital asset transactions not reported to you on Form 1099-DA or Form 1099-B"
     - id: sales.has_b
       printed: (helper)
       label: Basis correction code B applies

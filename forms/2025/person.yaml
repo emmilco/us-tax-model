@@ -280,7 +280,14 @@ form:
           - const: true
       cite:
         doc: i8889
-        locator: 'p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025; Steps 1 to 3'
+        locator: p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during
+          2025, Steps 1 to 3, "Spouses who have separate HSAs and had family coverage under an HDHP at any time during
+          2025, use the following rules to figure the amount on line 6", "Step 1. Refigure the contribution limit that
+          would have been entered on line 5 if you had entered on line 3 the total of the worksheet amounts only for
+          the months you were treated as having family coverage", "Step 2. Divide the refigured contribution limit
+          from Step 1 equally between you and your spouse, unless you both agree on a different allocation (such as
+          allocating nothing to one spouse)", "Step 3. Subtract the part of the contribution limit allocated to your
+          spouse in Step 2 from the amount determined in Step 1"
     - id: person.hsa_agreed
       printed: (helper)
       type: Count
@@ -302,7 +309,14 @@ form:
             - const: agreed
       cite:
         doc: i8889
-        locator: 'p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025; Steps 1 to 3'
+        locator: p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during
+          2025, Steps 1 to 3, "Spouses who have separate HSAs and had family coverage under an HDHP at any time during
+          2025, use the following rules to figure the amount on line 6", "Step 1. Refigure the contribution limit that
+          would have been entered on line 5 if you had entered on line 3 the total of the worksheet amounts only for
+          the months you were treated as having family coverage", "Step 2. Divide the refigured contribution limit
+          from Step 1 equally between you and your spouse, unless you both agree on a different allocation (such as
+          allocating nothing to one spouse)", "Step 3. Subtract the part of the contribution limit allocated to your
+          spouse in Step 2 from the amount determined in Step 1"
     - id: person.hsa_step1
       printed: (helper)
       type: NonNegDollars
@@ -318,7 +332,14 @@ form:
           - const: true
       cite:
         doc: i8889
-        locator: 'p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025; Steps 1 to 3'
+        locator: p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during
+          2025, Steps 1 to 3, "Spouses who have separate HSAs and had family coverage under an HDHP at any time during
+          2025, use the following rules to figure the amount on line 6", "Step 1. Refigure the contribution limit that
+          would have been entered on line 5 if you had entered on line 3 the total of the worksheet amounts only for
+          the months you were treated as having family coverage", "Step 2. Divide the refigured contribution limit
+          from Step 1 equally between you and your spouse, unless you both agree on a different allocation (such as
+          allocating nothing to one spouse)", "Step 3. Subtract the part of the contribution limit allocated to your
+          spouse in Step 2 from the amount determined in Step 1"
     - id: person.hsa_share
       printed: (helper)
       type: NonNegDollars
@@ -334,7 +355,14 @@ form:
           - const: true
       cite:
         doc: i8889
-        locator: 'p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025; Steps 1 to 3'
+        locator: p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during
+          2025, Steps 1 to 3, "Spouses who have separate HSAs and had family coverage under an HDHP at any time during
+          2025, use the following rules to figure the amount on line 6", "Step 1. Refigure the contribution limit that
+          would have been entered on line 5 if you had entered on line 3 the total of the worksheet amounts only for
+          the months you were treated as having family coverage", "Step 2. Divide the refigured contribution limit
+          from Step 1 equally between you and your spouse, unless you both agree on a different allocation (such as
+          allocating nothing to one spouse)", "Step 3. Subtract the part of the contribution limit allocated to your
+          spouse in Step 2 from the amount determined in Step 1"
     - id: person.hsa_deduction
       printed: (helper)
       type: NonNegDollars
@@ -366,8 +394,9 @@ form:
         field: f8889.line16
       cite:
         doc: f8889
-        locator: 'Form 8889 (2025), Part II, "If you are filing jointly and both you and your spouse each have separate HSAs,
-          complete a separate Part II for each spouse"; line 16'
+        locator: p. 1, Part II, "HSA Distributions. If you are filing jointly and both you and your spouse each have
+          separate HSAs, complete a separate Part II for each spouse", line 16, "Taxable HSA distributions. Subtract
+          line 15 from line 14c. If zero or less, enter -0-"
     - id: person.hsa_addtax
       printed: (helper)
       type: NonNegDollars
@@ -560,7 +589,7 @@ form:
         field: w2.box2
       cite:
         doc: f1040
-        locator: Form 1040 (2025), line 25a
+        locator: p. 2, Payments and Refundable Credits, line 25a, "Federal income tax withheld from:", "Form(s) W-2"
     - id: person.eligible
       printed: eligible
       label: More than one employer and total social security wages over $176,100
@@ -650,7 +679,8 @@ form:
         field: w2.box5
       cite:
         doc: f8959
-        locator: Form 8959 (2025), lines 1–24; i8959 pp. 1–3
+        locator: Form 8959 (2025), line 1, "Medicare wages and tips from Form W-2, box 5", "enter the total of the
+          amounts from box 5"; i8959 pp. 1–3
       refuses:
         - when: person.rrta
           form: Form 8959 RRTA computation
@@ -668,7 +698,8 @@ form:
         field: w2.box6
       cite:
         doc: f8959
-        locator: Form 8959 (2025), lines 1–24; i8959 pp. 1–3
+        locator: Form 8959 (2025), line 19, "Medicare tax withheld from Form W-2, box 6", "enter the total of the
+          amounts from box 6"; i8959 pp. 1–3
       refuses:
         - when: person.rrta
           form: Form 8959 RRTA computation
@@ -869,7 +900,8 @@ form:
           then: person.zero
       cite:
         doc: f1040sse
-        locator: Schedule SE (2025), line 6; i8959 Line 8, "Schedule SE, line 6"
+        locator: Schedule SE (2025), line 6, "Add lines 4c and 5b"; i8959 p. 3, Line 8, "Enter your self-employment
+          income from Schedule SE (Form 1040), Part I, line 6"
       refuses:
         - when: person.se_rrta
           form: Schedule SE with railroad retirement (tier 1) compensation
@@ -974,7 +1006,8 @@ form:
           then: person.zero
       cite:
         doc: f1040sse
-        locator: Schedule SE (2025), line 4c
+        locator: Schedule SE (2025), line 4c, "Combine lines 4a and 4b. If less than $400, stop; you don’t owe
+          self-employment tax"
       refuses:
         - when: person.se_rrta
           form: Schedule SE with railroad retirement (tier 1) compensation
@@ -1152,8 +1185,10 @@ form:
         places: 6
       cite:
         doc: p560
-        locator: pp. 39–40, chapter 5, Deduction Worksheet for Self-Employed, Steps 4 and 5; Rate Table for Self-Employed (for example 10%
-          gives 0.090909) (amb.2025.sep_rate_places)
+        locator: pp. 39–40, chapter 5, Deduction Worksheet for Self-Employed, Steps 4 and 5, "Enter your rate from the
+          Rate Table for Self-Employed or Rate Worksheet for Self-Employed", "Multiply step 3 by step 4"; p. 38,
+          chapter 5, Rate Table for Self-Employed, "If your plan's contribution rate is 10% of a participant's
+          compensation, your rate is 0.090909" (amb.2025.sep_rate_places)
     - id: person.comp_limit
       printed: (helper)
       label: $350,000
@@ -1223,8 +1258,10 @@ form:
         - person.sep_s21
       cite:
         doc: p560
-        locator: p. 39, chapter 5, "Enter your actual contribution, not to exceed your maximum deductible contribution"; chapter 2, Excess
-          contributions
+        locator: p. 39, chapter 5, "Enter your actual contribution, not to exceed your maximum deductible
+          contribution"; p. 11, chapter 2, Carryover of Excess SEP Contributions, "If you made SEP contributions that
+          are more than the deduction limit (nondeductible contributions), you can carry over and deduct the
+          difference in later years"
     - id: person.sep_deduction
       printed: (helper)
       label: SEP deduction for yourself
@@ -1545,7 +1582,9 @@ form:
           then: person.simple_deduction
       cite:
         doc: i1040gi
-        locator: p. 93, Schedule 1, line 16, Self-Employed SEP, SIMPLE, and Qualified Plans; p560 chapter 5
+        locator: p. 93, Schedule 1, line 16, Self-Employed SEP, SIMPLE, and Qualified Plans; p560 p. 38, chapter 5,
+          "if you are self-employed, you must use the rate table or rate worksheet and deduction worksheet to figure
+          your deduction for contributions you made for yourself to a SEP IRA or qualified plan"
     - id: person.s16
       printed: (helper)
       label: Schedule 1 line 16 for this person
@@ -1578,7 +1617,9 @@ form:
         field: sc.profit_pos
       cite:
         doc: i7206
-        locator: Line 5, Form 7206 (2025), "Don't include any net losses"
+        locator: f7206 Form 7206 (2025), line 5, "Enter the total of all net profits* from Schedule C (Form 1040),
+          line 31; Schedule F (Form 1040), line 34; or Schedule K-1 (Form 1065), box 14, code A", "Don’t include any
+          net losses shown on these schedules"
     - id: person.sehi
       printed: (helper)
       label: Self-employed health insurance deduction, this person
@@ -1600,7 +1641,8 @@ form:
         field: sc.qbi
       cite:
         doc: i8995
-        locator: pp. 2, 4, Determining Your Qualified Business Income; Line 1
+        locator: pp. 2, 4, Determining Your Qualified Business Income; p. 4, Line 1, "Enter on line 1(c) the net QBI
+          or (loss) for the trade, business, or aggregation reported in the corresponding row"
     - id: person.eic_part1
       printed: (helper)
       label: 'Worksheet B, Part 1 for this person: Schedule SE line 3 less line 13'
@@ -2087,7 +2129,9 @@ form:
         - person.sav_simple
       cite:
         doc: f8880
-        locator: 'Form 8880 (2025), line 2; p. 2, Line 2, "Include on line 2 any of the following amounts"'
+        locator: Form 8880 (2025), line 2, "Elective deferrals to a 401(k) or other qualified employer plan, voluntary
+          employee contributions, and 501(c)(18)(D) plan contributions for 2025"; p. 2, Line 2, "Include on line 2 any
+          of the following amounts"
       refuses:
       - when: person.sav_excess_gate
         form: Excess elective deferrals on Form 8880 line 2

@@ -167,7 +167,8 @@ form:
       take: s1.ebl_total
     cite:
       doc: f1040s1
-      locator: Schedule 1 (2025), line 3; i1040sc p. 1, Excess business loss limitation
+      locator: Schedule 1 (2025), line 3, "Business income or (loss). Attach Schedule C"; i1040sc p. 1, Excess
+        business loss limitation
   - id: s1.ebl_total
     printed: (helper)
     label: Net profit or loss of all Schedules C
@@ -222,7 +223,7 @@ form:
       field: person.sc_count
     cite:
       doc: f1040s1
-      locator: Schedule 1 (2025), line 3
+      locator: Schedule 1 (2025), line 3, "Business income or (loss). Attach Schedule C"
   - id: s1.has_sc
     printed: (helper)
     label: The return has a Schedule C
@@ -235,7 +236,7 @@ form:
         type: Count
     cite:
       doc: f1040s1
-      locator: Schedule 1 (2025), line 3
+      locator: Schedule 1 (2025), line 3, "Business income or (loss). Attach Schedule C"
   - id: s1.sc_1a_count
     printed: (helper)
     label: Number of Schedules C with tips or overtime for Schedule 1-A
@@ -799,7 +800,10 @@ form:
       field: person.s16
     cite:
       doc: i1040gi
-      locator: p. 93, Schedule 1, line 16; p560 chapter 3, Where To Deduct Contributions, and chapter 5
+      locator: p. 93, Schedule 1, line 16; p560 p. 17, Where To Deduct Contributions, "Sole proprietors and partners
+        deduct contributions for themselves on line 16 of Schedule 1 (Form 1040)"; p560 p. 39, Table and Worksheets
+        for the Self-Employed, "Enter your actual contribution, not to exceed your maximum deductible contribution, on
+        Schedule 1 (Form 1040), line 16"
   - id: s1.line17
     printed: '17'
     label: Self-employed health insurance deduction
@@ -810,7 +814,7 @@ form:
       field: person.sehi
     cite:
       doc: i1040gi
-      locator: pp. 94–95, Schedule 1, line 17, Self-Employed Health Insurance Deduction; Form 7206 (2025), line 14
+      locator: pp. 94–95, Schedule 1, line 17, Self-Employed Health Insurance Deduction; f7206 line 14
   - id: s1.line18
     printed: '18'
     label: Penalty on early withdrawal of savings

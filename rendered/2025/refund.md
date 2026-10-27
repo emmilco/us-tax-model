@@ -303,7 +303,7 @@
 - **IRS:** Check any boxes that apply. Multiply the number of boxes checked by $1,550 ($1,950 if your 2024 filing status was single or head of household). No boxes checked, enter -0-
 - **Encoded (NonNegDollars):** Add helper "The amount for the box "You were born before January 2, 1960" (zero if not checked)", helper "The amount for the box "You are blind" (zero if not checked)", helper "The amount for the box "Spouse was born before January 2, 1960" (zero if not checked, and when your 2024 filing status was not married filing jointly or married filing separately)", and helper "The amount for the box "Spouse is blind" (zero if not checked, and when your 2024 filing status was not married filing jointly or married filing separately)".
 - Expr: `{"of":["refund.amt_you_born","refund.amt_you_blind","refund.amt_spouse_born","refund.amt_spouse_blind"],"op":"sum"}`
-- Cite: [i1040gi] p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 6, "Check any boxes that apply" and "No boxes checked. Enter -0-" (the amount for each box checked, added; the same as the number of boxes times the amount) (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 6, "Check any boxes that apply", "Multiply the number of boxes checked by $1,550 ($1,950 if your 2024 filing status was single or head of household)" and "No boxes checked. Enter -0-" (the amount for each box checked, added, is the number of boxes times the amount) (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## 7 — `refund.line7`
 

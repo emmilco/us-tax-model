@@ -578,7 +578,7 @@ form:
       - f8880.line3b
     cite:
       doc: f8880
-      locator: Form 8880 (2025), lines 3 and 7 (with no contributions in either column, line 7 is zero)
+      locator: 'p. 1, "(a) You", "(b) Your spouse", "Add lines 1 and 2" (line 3, both columns), "Add the amounts on line 6. If zero, stop; you can’t take this credit" (line 7: with no contributions in either column, line 7 is zero)'
   - id: f8880.can_take
     printed: (helper)
     label: 'The credit is figured: contributions in a column (with none, line 7 is zero), line 8 not more than the limit

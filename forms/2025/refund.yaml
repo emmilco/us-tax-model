@@ -710,9 +710,10 @@ form:
       - refund.amt_spouse_blind
     cite:
       doc: i1040gi
-      locator: p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 6, "Check any boxes that apply"
-        and "No boxes checked. Enter -0-" (the amount for each box checked, added; the same as the number of boxes times the
-        amount)
+      locator: p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 6, "Check any boxes that
+        apply", "Multiply the number of boxes checked by $1,550 ($1,950 if your 2024 filing status was single or head
+        of household)" and "No boxes checked. Enter -0-" (the amount for each box checked, added, is the number of
+        boxes times the amount)
   - id: refund.line7
     printed: '7'
     label: Add lines 5 and 6

@@ -100,7 +100,8 @@ form:
             - const: true
       cite:
         doc: f1040sa
-        locator: Schedule A (2025), lines 1–18
+        locator: i1040gi p. 35, Standard Deduction Chart for People Who Were Born Before January 2, 1961, or Were
+          Blind, "You were born before January 2, 1961", "Enter the total number of boxes checked"
     - id: sa.age65
       printed: (helper)
       label: Were you born before January 2, 1961?
@@ -113,7 +114,8 @@ form:
           type: Count
       cite:
         doc: f1040sa
-        locator: Schedule A (2025), lines 1–18
+        locator: i1040gi p. 35, Standard Deduction Chart for People Who Were Born Before January 2, 1961, or Were
+          Blind, "You were born before January 2, 1961", "Enter the total number of boxes checked"
     - id: sa.spouse_itemizes
       printed: (helper)
       type: Bool
@@ -253,7 +255,7 @@ form:
           param: sa.medical_rate
       cite:
         doc: f1040sa
-        locator: Schedule A (2025), lines 1–18
+        locator: p. 1, Medical and Dental Expenses, line 3, "Multiply line 2 by 7.5% (0.075)"
       ambiguity: amb.2025.multiplication_subcent
     - id: sa.line4
       printed: "4"
@@ -265,7 +267,8 @@ form:
         take: sa.line3
       cite:
         doc: f1040sa
-        locator: Schedule A (2025), lines 1–18
+        locator: p. 1, Medical and Dental Expenses, line 4, "Subtract line 3 from line 1. If line 3 is more than line
+          1, enter -0-"
     - id: sa.line5d
       printed: 5d
       type: NonNegDollars
@@ -278,7 +281,7 @@ form:
           - sa.line5c
       cite:
         doc: f1040sa
-        locator: Schedule A (2025), lines 1–18
+        locator: p. 1, Taxes You Paid, line 5d, "d Add lines 5a through 5c"
     - id: sa.saltbase
       printed: (helper)
       type: NonNegDollars
@@ -319,7 +322,8 @@ form:
         take: sa.saltthreshold
       cite:
         doc: f1040sa
-        locator: Schedule A (2025), lines 1–18
+        locator: i1040sca p. 7, State and Local Tax Deduction Worksheet, "Enter $500,000 ($250,000 if married filing
+          separately)", "Is the amount on line 4 more than the amount on line 5?", "Subtract line 5 from line 4"
     - id: sa.saltreduction
       printed: (helper)
       type: NonNegDollars
@@ -331,7 +335,7 @@ form:
           param: sa.salt_rate
       cite:
         doc: f1040sa
-        locator: Schedule A (2025), lines 1–18
+        locator: i1040sca p. 7, State and Local Tax Deduction Worksheet, "Multiply line 6 by 30% (0.30)"
       ambiguity: amb.2025.multiplication_subcent
     - id: sa.saltremaining
       printed: (helper)
@@ -343,7 +347,8 @@ form:
         take: sa.saltreduction
       cite:
         doc: f1040sa
-        locator: Schedule A (2025), lines 1–18
+        locator: i1040sca p. 7, State and Local Tax Deduction Worksheet, "Subtract line 7 from line 1", "Enter
+          $40,000"
     - id: sa.saltfloor_applied
       printed: (helper)
       type: NonNegDollars
@@ -367,7 +372,9 @@ form:
           param: sa.half
       cite:
         doc: f1040sa
-        locator: Schedule A (2025), lines 1–18
+        locator: i1040sca p. 7, State and Local Tax Deduction Worksheet, "State and local tax deduction. Enter the
+          smaller of the amount on line 9 (half the amount on line 9 if married filing separately) or the amount from
+          Schedule A, line 5d"
       ambiguity: amb.2025.multiplication_subcent
     - id: sa.mfs
       printed: (helper)
@@ -380,7 +387,8 @@ form:
           - const: mfs
       cite:
         doc: f1040sa
-        locator: Schedule A (2025), lines 1–18
+        locator: i1040sca p. 7, State and Local Tax Deduction Worksheet, "(half the amount on line 9 if married filing
+          separately)"
     - id: sa.saltlimit
       printed: (helper)
       type: NonNegDollars
@@ -414,7 +422,10 @@ form:
           - sa.saltlimit
       cite:
         doc: f1040sa
-        locator: Schedule A (2025), lines 1–18
+        locator: p. 1, Taxes You Paid, line 5e, "Enter the smaller of line 5d or $40,000 ($20,000 if married filing
+          separately)"; i1040sca p. 7, Line 5e, "If Form 1040 or 1040-SR, line 11b is more than $500,000 ($250,000 if
+          married filing separately), or if you completed Form 2555, Form 4563, or excluded income from Puerto Rico,
+          complete the State and Local Tax Deduction Worksheet to figure the amount to enter on line 5e"
     - id: sa.line6
       printed: "6"
       type: NonNegDollars
@@ -646,7 +657,7 @@ form:
           - sa.line6
       cite:
         doc: f1040sa
-        locator: Schedule A (2025), lines 1–18
+        locator: p. 1, Taxes You Paid, line 7, "Add lines 5e and 6"
     - id: sa.line8e
       printed: 8e
       type: NonNegDollars
@@ -659,7 +670,7 @@ form:
           - sa.line8c
       cite:
         doc: f1040sa
-        locator: Schedule A (2025), lines 1–18
+        locator: p. 1, Interest You Paid, line 8e, "e Add lines 8a through 8c"
     - id: sa.line9
       printed: "9"
       type: NonNegDollars
@@ -681,7 +692,7 @@ form:
           - sa.line9
       cite:
         doc: f1040sa
-        locator: Schedule A (2025), lines 1–18
+        locator: p. 1, Interest You Paid, line 10, "Add lines 8e and 9"
     - id: sa.line12
       printed: "12"
       type: NonNegDollars
@@ -692,7 +703,8 @@ form:
         field: gift.allowed
       cite:
         doc: f1040sa
-        locator: Schedule A (2025), lines 1–18
+        locator: p. 1, Gifts to Charity, line 12, "Other than by cash or check. If you made any gift of $250 or more,
+          see instructions"
       refuses:
         - when: sa.unsupported
           form: Schedule A unsupported item / Form 4684
@@ -725,7 +737,7 @@ form:
           - const: 50000
       cite:
         doc: f1040sa
-        locator: Schedule A (2025), lines 1–18
+        locator: p. 1, Gifts to Charity, line 12, "You must attach Form 8283 if over $500"
     - id: sa.line14
       printed: "14"
       type: NonNegDollars
@@ -738,7 +750,7 @@ form:
           - sa.line13
       cite:
         doc: f1040sa
-        locator: Schedule A (2025), lines 1–18
+        locator: p. 1, Gifts to Charity, line 14, "Add lines 11 through 13"
     - id: sa.line17
       printed: "17"
       type: NonNegDollars
@@ -754,7 +766,8 @@ form:
           - sa.line16
       cite:
         doc: f1040sa
-        locator: Schedule A (2025), lines 1–18
+        locator: p. 1, Total Itemized Deductions, line 17, "Add the amounts in the far right column for lines 4
+          through 16. Also, enter this amount on Form 1040 or 1040-SR, line 12e"
       refuses:
         - when: sa.unsupported
           form: Schedule A unsupported item / Form 4684
@@ -876,7 +889,10 @@ form:
           - sa.extra_blind
       cite:
         doc: f1040sa
-        locator: Schedule A (2025), lines 1–18
+        locator: i1040gi pp. 34–35, Line 12e Standard Deduction or Itemized Deductions, "Exception 4—Born before
+          January 2, 1961, or blind", "Standard Deduction Chart for People Who Were Born Before January 2, 1961, or
+          Were Blind", "If born before January 2, 1961, or blind, multiply the number on line 1 by $1,600 ($2,000 if
+          single or head of household)"
     - id: sa.standard
       printed: (helper)
       type: NonNegDollars
@@ -934,7 +950,10 @@ form:
               - sa.standard
       cite:
         doc: f1040sa
-        locator: Schedule A (2025), lines 1–18
+        locator: p. 1, Total Itemized Deductions, line 18, "If you elect to itemize deductions even though they are
+          less than your standard deduction, check this box"; i1040gi p. 34, Line 12e Standard Deduction or Itemized
+          Deductions, "In most cases, your federal income tax will be less if you take the larger of your standard
+          deduction or itemized deductions", "If you checked the box on line 12b, your standard deduction is zero"
     - id: sa.deduction
       printed: (helper)
       type: NonNegDollars

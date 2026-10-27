@@ -2518,3 +2518,28 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
 - **Fix:** open; next batch. The choice between recording a design limit (a Bool line, always false,
   beside T-027) and asking the choice is the owner's.
 - **Tags:** printed-choice-not-encoded; unrecorded-scope-limit; open; caught-by-render-adjudication
+
+## BUG-0163 — Car loan column (ii) subtracts all Schedule C interest from prorated QPVLI (open)
+
+- **Date:** 2026-10-27
+- **Caught by:** source adjudication of the carloan render reviews re-run after the rendered-subject
+  citation fix (`.transcription/proposed/citefix/`).
+- **Symptom:** on a partly qualifying loan (mixed-use, or refinanced above the old balance) column (iii)
+  is the prorated QPVLI less the whole interest deducted on Schedule C. Proposed § 1.163-16(g)(1)–(2)
+  (fr-2025-24154 p. 23) reduces QPVLI only by deducted interest "that is QPVLI", so the Schedule C amount
+  would be prorated by the same ratio. Example: ratio 0.8, interest $1,000, $300 on Schedule C: the
+  project gives $500, the pro rata reading $560; Schedule 1-A line 24 and Form 1040 line 13b are
+  understated. Moderate confidence; the owner may treat the split as an ambiguity.
+- **Where:** `forms/2025/carloan.yaml`, `carloan.col_ii`/`carloan.col_iii`.
+- **Fix:** open; next batch (owner's decision whether finding or ambiguity).
+- **Tags:** proration-of-subtraction; amount-affecting; open; caught-by-render-adjudication
+
+## BUG-0164 — Form 8995 line 3 input cited a quotation absent from the instructions
+
+- **Date:** 2026-10-27
+- **Caught by:** the same render adjudication, checking the qbi locator against the archive.
+- **Symptom:** `qbi.carryforward` quoted "enter the amount from line 16 of your 2024 Form 8995", which
+  appears in neither i8995 nor f8995; the citation check does not verify quotes on input lines (T-072).
+- **Where:** `forms/2025/qbi.yaml`.
+- **Fix:** the locator quotes i8995 p. 4, Line 3 and p. 5, Line 16, keeping the owner's note; citation only.
+- **Tags:** misquoted-citation; unchecked-input-citation; caught-by-render-adjudication

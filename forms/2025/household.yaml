@@ -17,7 +17,8 @@ form:
         field: person.one
       cite:
         doc: f1040
-        locator: 'Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first name and middle initial"; Filing Status'
+        locator: Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first
+          name and middle initial"; p. 1, Filing Status, "Married filing jointly (even if only one had income)"
     - id: household.taxpayers
       printed: (helper)
       type: Count
@@ -33,7 +34,8 @@ form:
           - const: taxpayer
       cite:
         doc: f1040
-        locator: 'Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first name and middle initial"; Filing Status'
+        locator: Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first
+          name and middle initial"; p. 1, Filing Status, "Married filing jointly (even if only one had income)"
     - id: household.spouses
       printed: (helper)
       type: Count
@@ -49,7 +51,8 @@ form:
           - const: spouse
       cite:
         doc: f1040
-        locator: 'Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first name and middle initial"; Filing Status'
+        locator: Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first
+          name and middle initial"; p. 1, Filing Status, "Married filing jointly (even if only one had income)"
     - id: household.roster_ok
       printed: (helper)
       type: Bool
@@ -91,7 +94,8 @@ form:
               type: Count
       cite:
         doc: f1040
-        locator: 'Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first name and middle initial"; Filing Status'
+        locator: Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first
+          name and middle initial"; p. 1, Filing Status, "Married filing jointly (even if only one had income)"
       refuses:
         - when: household.filer_under16
           form: A filer under age 16 at the end of 2025
@@ -112,7 +116,8 @@ form:
         - const: false
       cite:
         doc: f1040
-        locator: 'Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first name and middle initial"; Filing Status'
+        locator: Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first
+          name and middle initial"; p. 1, Filing Status, "Married filing jointly (even if only one had income)"
     - id: household.hsa_people
       printed: (helper)
       type: Count
@@ -142,7 +147,14 @@ form:
           type: Count
       cite:
         doc: i8889
-        locator: 'p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025; Steps 1 to 3'
+        locator: p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during
+          2025, Steps 1 to 3, "Spouses who have separate HSAs and had family coverage under an HDHP at any time during
+          2025, use the following rules to figure the amount on line 6", "Step 1. Refigure the contribution limit that
+          would have been entered on line 5 if you had entered on line 3 the total of the worksheet amounts only for
+          the months you were treated as having family coverage", "Step 2. Divide the refigured contribution limit
+          from Step 1 equally between you and your spouse, unless you both agree on a different allocation (such as
+          allocating nothing to one spouse)", "Step 3. Subtract the part of the contribution limit allocated to your
+          spouse in Step 2 from the amount determined in Step 1"
     - id: household.hsa_split_count
       printed: (helper)
       type: Count
@@ -153,7 +165,14 @@ form:
         field: person.hsa_split
       cite:
         doc: i8889
-        locator: 'p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025; Steps 1 to 3'
+        locator: p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during
+          2025, Steps 1 to 3, "Spouses who have separate HSAs and had family coverage under an HDHP at any time during
+          2025, use the following rules to figure the amount on line 6", "Step 1. Refigure the contribution limit that
+          would have been entered on line 5 if you had entered on line 3 the total of the worksheet amounts only for
+          the months you were treated as having family coverage", "Step 2. Divide the refigured contribution limit
+          from Step 1 equally between you and your spouse, unless you both agree on a different allocation (such as
+          allocating nothing to one spouse)", "Step 3. Subtract the part of the contribution limit allocated to your
+          spouse in Step 2 from the amount determined in Step 1"
     - id: household.hsa_agreed_count
       printed: (helper)
       type: Count
@@ -164,7 +183,14 @@ form:
         field: person.hsa_agreed
       cite:
         doc: i8889
-        locator: 'p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025; Steps 1 to 3'
+        locator: p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during
+          2025, Steps 1 to 3, "Spouses who have separate HSAs and had family coverage under an HDHP at any time during
+          2025, use the following rules to figure the amount on line 6", "Step 1. Refigure the contribution limit that
+          would have been entered on line 5 if you had entered on line 3 the total of the worksheet amounts only for
+          the months you were treated as having family coverage", "Step 2. Divide the refigured contribution limit
+          from Step 1 equally between you and your spouse, unless you both agree on a different allocation (such as
+          allocating nothing to one spouse)", "Step 3. Subtract the part of the contribution limit allocated to your
+          spouse in Step 2 from the amount determined in Step 1"
     - id: household.hsa_step1_sum
       printed: (helper)
       type: NonNegDollars
@@ -175,7 +201,14 @@ form:
         field: person.hsa_step1
       cite:
         doc: i8889
-        locator: 'p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025; Steps 1 to 3'
+        locator: p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during
+          2025, Steps 1 to 3, "Spouses who have separate HSAs and had family coverage under an HDHP at any time during
+          2025, use the following rules to figure the amount on line 6", "Step 1. Refigure the contribution limit that
+          would have been entered on line 5 if you had entered on line 3 the total of the worksheet amounts only for
+          the months you were treated as having family coverage", "Step 2. Divide the refigured contribution limit
+          from Step 1 equally between you and your spouse, unless you both agree on a different allocation (such as
+          allocating nothing to one spouse)", "Step 3. Subtract the part of the contribution limit allocated to your
+          spouse in Step 2 from the amount determined in Step 1"
     - id: household.hsa_share_sum
       printed: (helper)
       type: NonNegDollars
@@ -186,7 +219,14 @@ form:
         field: person.hsa_share
       cite:
         doc: i8889
-        locator: 'p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025; Steps 1 to 3'
+        locator: p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during
+          2025, Steps 1 to 3, "Spouses who have separate HSAs and had family coverage under an HDHP at any time during
+          2025, use the following rules to figure the amount on line 6", "Step 1. Refigure the contribution limit that
+          would have been entered on line 5 if you had entered on line 3 the total of the worksheet amounts only for
+          the months you were treated as having family coverage", "Step 2. Divide the refigured contribution limit
+          from Step 1 equally between you and your spouse, unless you both agree on a different allocation (such as
+          allocating nothing to one spouse)", "Step 3. Subtract the part of the contribution limit allocated to your
+          spouse in Step 2 from the amount determined in Step 1"
     - id: household.work_ssn_count
       printed: (helper)
       type: Count

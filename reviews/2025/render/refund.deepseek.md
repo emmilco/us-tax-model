@@ -4,15 +4,15 @@ The rendered English of every printed line of `State and Local Income Tax Refund
 
 | field | value |
 | --- | --- |
-| date | 2026-10-23 |
+| date | 2026-10-27 |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
-| prompt sha256 | 62f69e18c59ce115c4f5d06567fbd962f287d7161ea6cc2a479c8e7e30cf03bd |
+| prompt sha256 | 4fa4491b4588d1e4a1ca9e8b2408ce5c4611b305a7e1d6a8958b1979f05ec53f |
 | prompt policy | render-source-comparison-v2 |
 | system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
 | reasoning effort | provider default |
 | output token budget | 65536 |
-| subject sha256 | 5d0982533b132432ca85e78e925207b136acb2d4bccc973bc90d61fb1af0414e |
+| subject sha256 | 91b3cbebdd7d66acede0e17c69121bdfe9f004247da995655c6e3a5dd53cc155 |
 | lines judged | 9 |
 | match / mismatch / unclear / missing | 7 / 2 / 0 / 0 |
 | verdicts for lines not in the form | none |
@@ -33,53 +33,53 @@ Status: **MISMATCH**
 
 Restated: Enter the smaller of helper "State or local income tax refunds, credits or offsets you received in 2025" or helper "The amount on your 2024 Schedule A, line 5d".
 
-Model: The IRS Exception also requires Pub. 525 when 'You received a refund in 2025 that is for a tax year other than 2024' or 'You made your last payment of 2024 estimated state or local income tax in 2025'; the program's refusals do not exclude those cases.
+Model: The min(refund, 2024 Schedule A line 5d) computation is right, but the IRS says to use Pub. 525 instead of this worksheet if the refund is for a tax year other than 2024 or if the last 2024 estimated state or local income tax payment was made in 2025; the refusal rules omit those exceptions.
 
-Ruling: open
+Ruling: scope; i1040gi p. 89, Line 1, Exception: "See Itemized Deduction Recoveries in Pub. 525 instead of using the State and Local Income Tax Refund Worksheet ... if any of the following applies", "1. You received a refund in 2025 that is for a tax year other than 2024" and "5. You made your last payment of 2024 estimated state or local income tax in 2025". Both are screened by refund.not_2024 ("Is any of these refunds for a tax year other than 2024 (box 3 of Form 1099-G), or did you make your last payment of 2024 estimated state or local income tax in 2025?"), whose refusal sits on refund.taxable, the line Schedule 1 line 1 enters, so no such refund reaches a completed return through line 1. The refusal is located on the reading line rather than line 1 itself; the model saw only line 1's two refusals (exc_tax, exc_who: items 3, 4, 6-9). The min with 2024 Schedule A line 5d matches ("But don't enter more than the amount of your state and local income taxes shown on your 2024 Schedule A, line 5d"). Same as the archived ruling, rechecked.
 
 ### 2 — Subtract the amount on your 2024 Schedule A, line 5e, from the amount of state and local i
 Status: **MATCH**
 
-Model: Matches the line 2 subtraction and zero floor; the line5e>5d refusal correctly handles an amount inconsistent with 2024 Schedule A line 5e being the smaller of line 5d and the limit.
+Model: It computes line 5d less line 5e with a zero floor, matching the worksheet's line 2 subtraction; the line5e > line5d refusal addresses an inconsistent entry.
 
 ### 3 — Subtract line 2 from line 1
 Status: **MATCH**
 
-Model: Subtracting line 2 from line 1 with a zero floor gives the same result as the worksheet's 'No' STOP branch (none taxable).
+Model: It subtracts line 2 from line 1 with a zero floor, matching the worksheet's yes branch and the none-taxable result when line 1 is not greater than line 2.
 
 ### 4 — Enter your total itemized deductions from your 2024 Schedule A, line 17
 Status: **MATCH**
 
-Model: Enters the 2024 Schedule A line 17 total itemized deductions as the worksheet says.
+Model: It uses the 2024 Schedule A line 17 total itemized deductions, as the worksheet says.
 
 ### 5 — Enter the amount shown below for the filing status claimed on your 2024 Form 1040 or 1040-
 Status: **MATCH**
 
-Model: The filing-status amounts ($14,600 single/MFS, $29,200 MFJ/QSS, $21,900 HOH) match the worksheet.
+Model: The filing-status amounts match the worksheet: $14,600 for single/MFS, $29,200 for MFJ/QSS, and $21,900 for HOH.
 
 ### 6 — Check any boxes that apply. Multiply the number of boxes checked by $1,550 ($1,950 if your
 Status: **MISMATCH**
 
 Restated: Add helper "The amount for the box "You were born before January 2, 1960" (zero if not checked)", helper "The amount for the box "You are blind" (zero if not checked)", helper "The amount for the box "Spouse was born before January 2, 1960" (zero if not checked, and when your 2024 filing status was not married filing jointly or married filing separately)", and helper "The amount for the box "Spouse is blind" (zero if not checked, and when your 2024 filing status was not married filing jointly or married filing separately)".
 
-Model: The IRS line says 'Multiply the number of boxes checked by $1,550 ($1,950 if your 2024 filing status was single or head of household)' and for married filing separately allows spouse boxes only if 'your spouse had no income, isn’t filing a return, and can’t be claimed as a dependent'; the restatement only adds helper amounts and zeroes spouse boxes for statuses other than MFJ/MFS, omitting those conditions.
+Model: IRS line 6 says to multiply the number of boxes checked by $1,550 ($1,950 if the 2024 status was single or head of household), and for MFS the spouse boxes count only if the spouse had no income, isn’t filing, and can’t be claimed as a dependent; the restatement adds per-box amounts and omits the MFS conditions.
 
-Ruling: open
+Ruling: representation; i1040gi p. 90, State and Local Income Tax Refund Worksheet, line 6: "Multiply the number of boxes checked by $1,550 ($1,950 if your 2024 filing status was single or head of household)". Each per-box helper is refund.per_box ("$1,550 ($1,950 if your 2024 filing status was single or head of household)": single/hoh -> refund.box_unmarried $1,950; mfj/mfs/qss -> refund.box_married $1,550) when its box is checked and zero otherwise, so the sum is boxes times the rate. The MFS footnote ("If your filing status is married filing separately, you can check the boxes for your spouse only if your spouse had no income, isn't filing a return, and can't be claimed as a dependent on another person's return") is carried in the spouse questions refund.spouse_born and refund.spouse_blind ("If your 2024 filing status was married filing separately, answer yes only if your spouse also had no income, wasn't filing a return, and couldn't be claimed as a dependent"). The model's "adds per-box amounts" is the same quantity as the count times the rate. On the qualifying-surviving-spouse point (spouse boxes zero unless 2024 status MFJ or MFS): ambiguity, amb.2025.refund_boxes_2024 (chosen reading: "ask the spouse questions only when the 2024 filing status was married filing jointly or married filing separately"); the worksheet is silent on QSS, and on the 2024 Form 1040 the spouse boxes belong to a spouse on the return.
 
 ### 7 — Add lines 5 and 6
 Status: **MATCH**
 
-Model: Adds lines 5 and 6 as the worksheet says.
+Model: It adds lines 5 and 6, as the worksheet says.
 
-### 8 — Subtract line 7 from line 4 (if your 2024 filing status was married filing separately and 
+### 8 — Subtract line 7 from line 4 (if your 2024 filing status was married filing separately and
 Status: **MATCH**
 
-Model: Matches the line 8 subtraction/STOP result and the special MFS rule using line 4 when the spouse itemized in 2024.
+Model: It returns line 4 when 2024 MFS spouse itemized and otherwise subtracts line 7 from line 4 with a zero floor, matching the line 8 note and computation.
 
 ### 9 — Taxable part of your refund. Enter the smaller of line 3 or line 8 here and on Schedule 1,
 Status: **MATCH**
 
-Model: Enters the smaller of line 3 or line 8, with zero when line 1 is not more than line 2, matching the worksheet's taxable-part line and STOP branch.
+Model: It enters zero when line 1 is not more than line 2 and otherwise the smaller of line 3 or line 8, matching the worksheet's taxable-refund line.
 
 ## Raw response
 
@@ -87,29 +87,29 @@ Model: Enters the smaller of line 3 or line 8, with zero when line 1 is not more
 lines:
   - key: "1"
     status: MISMATCH
-    reason: "The IRS Exception also requires Pub. 525 when 'You received a refund in 2025 that is for a tax year other than 2024' or 'You made your last payment of 2024 estimated state or local income tax in 2025'; the program's refusals do not exclude those cases."
+    reason: "The min(refund, 2024 Schedule A line 5d) computation is right, but the IRS says to use Pub. 525 instead of this worksheet if the refund is for a tax year other than 2024 or if the last 2024 estimated state or local income tax payment was made in 2025; the refusal rules omit those exceptions."
   - key: "2"
     status: MATCH
-    reason: "Matches the line 2 subtraction and zero floor; the line5e>5d refusal correctly handles an amount inconsistent with 2024 Schedule A line 5e being the smaller of line 5d and the limit."
+    reason: "It computes line 5d less line 5e with a zero floor, matching the worksheet's line 2 subtraction; the line5e > line5d refusal addresses an inconsistent entry."
   - key: "3"
     status: MATCH
-    reason: "Subtracting line 2 from line 1 with a zero floor gives the same result as the worksheet's 'No' STOP branch (none taxable)."
+    reason: "It subtracts line 2 from line 1 with a zero floor, matching the worksheet's yes branch and the none-taxable result when line 1 is not greater than line 2."
   - key: "4"
     status: MATCH
-    reason: "Enters the 2024 Schedule A line 17 total itemized deductions as the worksheet says."
+    reason: "It uses the 2024 Schedule A line 17 total itemized deductions, as the worksheet says."
   - key: "5"
     status: MATCH
-    reason: "The filing-status amounts ($14,600 single/MFS, $29,200 MFJ/QSS, $21,900 HOH) match the worksheet."
+    reason: "The filing-status amounts match the worksheet: $14,600 for single/MFS, $29,200 for MFJ/QSS, and $21,900 for HOH."
   - key: "6"
     status: MISMATCH
-    reason: "The IRS line says 'Multiply the number of boxes checked by $1,550 ($1,950 if your 2024 filing status was single or head of household)' and for married filing separately allows spouse boxes only if 'your spouse had no income, isn’t filing a return, and can’t be claimed as a dependent'; the restatement only adds helper amounts and zeroes spouse boxes for statuses other than MFJ/MFS, omitting those conditions."
+    reason: "IRS line 6 says to multiply the number of boxes checked by $1,550 ($1,950 if the 2024 status was single or head of household), and for MFS the spouse boxes count only if the spouse had no income, isn’t filing, and can’t be claimed as a dependent; the restatement adds per-box amounts and omits the MFS conditions."
   - key: "7"
     status: MATCH
-    reason: "Adds lines 5 and 6 as the worksheet says."
+    reason: "It adds lines 5 and 6, as the worksheet says."
   - key: "8"
     status: MATCH
-    reason: "Matches the line 8 subtraction/STOP result and the special MFS rule using line 4 when the spouse itemized in 2024."
+    reason: "It returns line 4 when 2024 MFS spouse itemized and otherwise subtracts line 7 from line 4 with a zero floor, matching the line 8 note and computation."
   - key: "9"
     status: MATCH
-    reason: "Enters the smaller of line 3 or line 8, with zero when line 1 is not more than line 2, matching the worksheet's taxable-part line and STOP branch."
+    reason: "It enters zero when line 1 is not more than line 2 and otherwise the smaller of line 3 or line 8, matching the worksheet's taxable-refund line."
 ```

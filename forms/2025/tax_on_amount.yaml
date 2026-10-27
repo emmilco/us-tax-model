@@ -34,7 +34,9 @@ def:
       expr: { op: test, lt: ["amount", { param: "ordinary.table_boundary" }] }
       cite:
         doc: i1040gi
-        locator: "Instructions for Form 1040, line 16"
+        locator: p. 36, Line 16, Tax Table or Tax Computation Worksheet, "If your taxable income is less than
+          $100,000, you must use the Tax Table", "If your taxable income is $100,000 or more, use the Tax Computation
+          Worksheet right after the Tax Table"
 
     - id: table_tax
       printed: "(a)"
@@ -43,7 +45,7 @@ def:
       expr: { op: table_lookup, table: "tax_table", key: "amount", status: "status" }
       cite:
         doc: i1040gi
-        locator: "2025 Tax Table, p. 68"
+        locator: p. 68, 2025 Tax Table, "If line 15 (taxable income) is—", "And you are—", "Your tax is—"
 
     - id: worksheet_tax
       printed: "(a)"
@@ -72,5 +74,7 @@ def:
             then: "worksheet_tax"
       cite:
         doc: i1040gi
-        locator: "Instructions for Form 1040, line 16"
+        locator: p. 36, Line 16, Tax Table or Tax Computation Worksheet, "If your taxable income is less than
+          $100,000, you must use the Tax Table, later in these instructions, to figure your tax", "If your taxable
+          income is $100,000 or more, use the Tax Computation Worksheet right after the Tax Table"
         quote: "If your taxable income is less than $100,000, you must use the Tax Table ... If your taxable income is $100,000 or more, use the Tax Computation Worksheet right after the Tax Table."

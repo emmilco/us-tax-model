@@ -601,8 +601,8 @@ form:
         then: f8889.dec_amount
     cite:
       doc: i8889
-      locator: p. 4, Line 3, rules 2, 3 and 4 (rule 4 covers a filer who 'were, or were considered, an eligible individual
-        for the entire year' and changed type; amb.2025.hsa_last_month_change)
+      locator: p. 4, Line 3, rules 2, 3 and 4 (rule 4 covers a filer who 'were, or were considered, an eligible
+        individual for the entire year' and changed type, amb.2025.hsa_last_month_change)
     ambiguity: amb.2025.hsa_last_month_change
   - id: f8889.line3_part_year
     printed: (helper)
@@ -1337,7 +1337,7 @@ form:
       - param: sales.zero
     cite:
       doc: f8889
-      locator: Form 8889 (2025), line 14a
+      locator: p. 1, Part II, "HSA Distributions", "Total distributions you received in 2025 from all HSAs" (line 14a)
   - id: f8889.rollover
     printed: (helper)
     label: Distributions included on line 14a that you rolled over to another HSA

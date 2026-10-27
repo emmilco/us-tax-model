@@ -4,15 +4,15 @@ The rendered English of every printed line of `Qualified Overtime Compensation F
 
 | field | value |
 | --- | --- |
-| date | 2026-10-23 |
+| date | 2026-10-27 |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
-| prompt sha256 | dc033648850121e23c70671204ec9c4ce848708225343b3390b4ae3de86644c4 |
+| prompt sha256 | e625ac4a03d54c3b124d721cbbbc7084bc5cd64bd8fa7a06e582d75f7964c9e3 |
 | prompt policy | render-source-comparison-v2 |
 | system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
 | reasoning effort | provider default |
 | output token budget | 65536 |
-| subject sha256 | 0c8625ff1305a43dc91f9975f63aeae7e8cd9091a03cc32579cf0ea8f4707e1d |
+| subject sha256 | e2721cf8506da1b69c5a83dee7008cdd3fdeb8551f04a26a506a965f68659361 |
 | lines judged | 1 |
 | match / mismatch / unclear / missing | 1 / 0 / 0 / 0 |
 | verdicts for lines not in the form | none |
@@ -29,7 +29,7 @@ The rendered English of every printed line of `Qualified Overtime Compensation F
 ### 1(b) — Qualified overtime reported on Form W-2, box 1
 Status: **MATCH**
 
-Model: The IRS line asks for qualified overtime compensation reported on Form W-2, box 1; qualified overtime is the FLSA overtime premium, and the restatement computes that premium by the chosen allowed method, with zero when the employee is not FLSA-eligible.
+Model: The line returns zero for an FLSA-ineligible employer and otherwise uses the FLSA overtime premium by the permitted method, matching the IRS definition of qualified overtime compensation; the refusal names the unsupported special-rule and other-method cases.
 
 ## Raw response
 
@@ -37,5 +37,5 @@ Model: The IRS line asks for qualified overtime compensation reported on Form W-
 lines:
   - key: "1(b)"
     status: MATCH
-    reason: "The IRS line asks for qualified overtime compensation reported on Form W-2, box 1; qualified overtime is the FLSA overtime premium, and the restatement computes that premium by the chosen allowed method, with zero when the employee is not FLSA-eligible."
+    reason: "The line returns zero for an FLSA-ineligible employer and otherwise uses the FLSA overtime premium by the permitted method, matching the IRS definition of qualified overtime compensation; the refusal names the unsupported special-rule and other-method cases."
 ```

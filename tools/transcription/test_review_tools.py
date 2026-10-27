@@ -119,6 +119,17 @@ class RulingContext(unittest.TestCase):
             self.assertIn("Ruling: open", path.read_text())
 
 
+class RenderedSubject(unittest.TestCase):
+    def test_citation_text_never_reaches_the_rendered_subject(self):
+        import subjects
+        line = "- Cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); sha256 4ea1de80)\n"
+        moved = line.replace("boxes 1–16", "box 1a")
+        plain = "- Cite: [f1040] Form 1040 (2025), line 9 (2025; sha256 0123abcd)\n"
+        self.assertEqual(subjects.of_rendered("x\n" + line), subjects.of_rendered("x\n" + moved))
+        self.assertEqual(subjects.of_rendered(plain), subjects.of_rendered(plain.replace("line 9", "line 10")))
+        self.assertNotEqual(subjects.of_rendered("Adds lines 1 and 2\n" + line), subjects.of_rendered("Adds lines 1 and 3\n" + line))
+
+
 class RenderContext(unittest.TestCase):
     def documents(self):
         def entry(lid, printed, encoded):

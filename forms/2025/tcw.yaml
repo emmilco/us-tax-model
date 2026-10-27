@@ -37,61 +37,61 @@ def:
       label: "Multiply line (a) by 22% (0.22)"
       type: NonNegDollars
       expr: { op: multiply_rate, amount: "amount", rate: { param: "tcw.single.b1.rate" } }
-      cite: { doc: i1040gi, locator: "TCW Section A, row 1" }
+      cite: { doc: i1040gi, locator: 'p. 80, Section A—Use if your filing status is Single, row 1, "At least $100,000 but not over $103,350", "(c) Multiply (a) by (b)", "× 22% (0.22)"' }
     - id: single.row1.tax
       printed: "Tax"
       label: "Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
       type: Dollars
       expr: { op: subtract, from: "single.row1.product", take: { param: "tcw.single.b1.subtract" } }
-      cite: { doc: i1040gi, locator: "TCW Section A, row 1" }
+      cite: { doc: i1040gi, locator: 'p. 80, Section A—Use if your filing status is Single, row 1, "At least $100,000 but not over $103,350", "$ 5,086.00", "Tax. Subtract (d) from (c)"' }
     - id: single.row2.product
       printed: "(c)"
       label: "Multiply line (a) by 24% (0.24)"
       type: NonNegDollars
       expr: { op: multiply_rate, amount: "amount", rate: { param: "tcw.single.b2.rate" } }
-      cite: { doc: i1040gi, locator: "TCW Section A, row 2" }
+      cite: { doc: i1040gi, locator: 'p. 80, Section A—Use if your filing status is Single, row 2, "Over $103,350 but not over $197,300", "(c) Multiply (a) by (b)", "× 24% (0.24)"' }
     - id: single.row2.tax
       printed: "Tax"
       label: "Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
       type: Dollars
       expr: { op: subtract, from: "single.row2.product", take: { param: "tcw.single.b2.subtract" } }
-      cite: { doc: i1040gi, locator: "TCW Section A, row 2" }
+      cite: { doc: i1040gi, locator: 'p. 80, Section A—Use if your filing status is Single, row 2, "Over $103,350 but not over $197,300", "$ 7,153.00", "Tax. Subtract (d) from (c)"' }
     - id: single.row3.product
       printed: "(c)"
       label: "Multiply line (a) by 32% (0.32)"
       type: NonNegDollars
       expr: { op: multiply_rate, amount: "amount", rate: { param: "tcw.single.b3.rate" } }
-      cite: { doc: i1040gi, locator: "TCW Section A, row 3" }
+      cite: { doc: i1040gi, locator: 'p. 80, Section A—Use if your filing status is Single, row 3, "Over $197,300 but not over $250,525", "(c) Multiply (a) by (b)", "× 32% (0.32)"' }
     - id: single.row3.tax
       printed: "Tax"
       label: "Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
       type: Dollars
       expr: { op: subtract, from: "single.row3.product", take: { param: "tcw.single.b3.subtract" } }
-      cite: { doc: i1040gi, locator: "TCW Section A, row 3" }
+      cite: { doc: i1040gi, locator: 'p. 80, Section A—Use if your filing status is Single, row 3, "Over $197,300 but not over $250,525", "$ 22,937.00", "Tax. Subtract (d) from (c)"' }
     - id: single.row4.product
       printed: "(c)"
       label: "Multiply line (a) by 35% (0.35)"
       type: NonNegDollars
       expr: { op: multiply_rate, amount: "amount", rate: { param: "tcw.single.b4.rate" } }
-      cite: { doc: i1040gi, locator: "TCW Section A, row 4" }
+      cite: { doc: i1040gi, locator: 'p. 80, Section A—Use if your filing status is Single, row 4, "Over $250,525 but not over $626,350", "(c) Multiply (a) by (b)", "× 35% (0.35)"' }
     - id: single.row4.tax
       printed: "Tax"
       label: "Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
       type: Dollars
       expr: { op: subtract, from: "single.row4.product", take: { param: "tcw.single.b4.subtract" } }
-      cite: { doc: i1040gi, locator: "TCW Section A, row 4" }
+      cite: { doc: i1040gi, locator: 'p. 80, Section A—Use if your filing status is Single, row 4, "Over $250,525 but not over $626,350", "$ 30,452.75", "Tax. Subtract (d) from (c)"' }
     - id: single.row5.product
       printed: "(c)"
       label: "Multiply line (a) by 37% (0.37)"
       type: NonNegDollars
       expr: { op: multiply_rate, amount: "amount", rate: { param: "tcw.single.b5.rate" } }
-      cite: { doc: i1040gi, locator: "TCW Section A, row 5" }
+      cite: { doc: i1040gi, locator: 'p. 80, Section A—Use if your filing status is Single, row 5, "Over $626,350", "(c) Multiply (a) by (b)", "× 37% (0.37)"' }
     - id: single.row5.tax
       printed: "Tax"
       label: "Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
       type: Dollars
       expr: { op: subtract, from: "single.row5.product", take: { param: "tcw.single.b5.subtract" } }
-      cite: { doc: i1040gi, locator: "TCW Section A, row 5" }
+      cite: { doc: i1040gi, locator: 'p. 80, Section A—Use if your filing status is Single, row 5, "Over $626,350", "$ 42,979.75", "Tax. Subtract (d) from (c)"' }
     - id: single.result
       printed: "Tax"
       label: "Section A—Use if your filing status is Single. Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
@@ -125,7 +125,7 @@ def:
             then: "single.row4.tax"
           - guard: { op: test, gt: ["amount", { param: "tcw.single.b4.upper" }] }
             then: "single.row5.tax"
-      cite: { doc: i1040gi, locator: "TCW Section A" }
+      cite: { doc: i1040gi, locator: 'p. 80, Section A—Use if your filing status is Single, "Complete the row below that applies to you", "Tax. Subtract (d) from (c)"' }
 
     # Section B — Married filing jointly or Qualifying surviving spouse
     - id: mfj.row1.product
@@ -133,61 +133,61 @@ def:
       label: "Multiply line (a) by 22% (0.22)"
       type: NonNegDollars
       expr: { op: multiply_rate, amount: "amount", rate: { param: "tcw.mfj.b1.rate" } }
-      cite: { doc: i1040gi, locator: "TCW Section B, row 1" }
+      cite: { doc: i1040gi, locator: 'p. 80, Section B—Use if your filing status is Married filing jointly or Qualifying surviving spouse, row 1, "At least $100,000 but not over $206,700", "(c) Multiply (a) by (b)", "× 22% (0.22)"' }
     - id: mfj.row1.tax
       printed: "Tax"
       label: "Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
       type: Dollars
       expr: { op: subtract, from: "mfj.row1.product", take: { param: "tcw.mfj.b1.subtract" } }
-      cite: { doc: i1040gi, locator: "TCW Section B, row 1" }
+      cite: { doc: i1040gi, locator: 'p. 80, Section B—Use if your filing status is Married filing jointly or Qualifying surviving spouse, row 1, "At least $100,000 but not over $206,700", "$ 10,172.00", "Tax. Subtract (d) from (c)"' }
     - id: mfj.row2.product
       printed: "(c)"
       label: "Multiply line (a) by 24% (0.24)"
       type: NonNegDollars
       expr: { op: multiply_rate, amount: "amount", rate: { param: "tcw.mfj.b2.rate" } }
-      cite: { doc: i1040gi, locator: "TCW Section B, row 2" }
+      cite: { doc: i1040gi, locator: 'p. 80, Section B—Use if your filing status is Married filing jointly or Qualifying surviving spouse, row 2, "Over $206,700 but not over $394,600", "(c) Multiply (a) by (b)", "× 24% (0.24)"' }
     - id: mfj.row2.tax
       printed: "Tax"
       label: "Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
       type: Dollars
       expr: { op: subtract, from: "mfj.row2.product", take: { param: "tcw.mfj.b2.subtract" } }
-      cite: { doc: i1040gi, locator: "TCW Section B, row 2" }
+      cite: { doc: i1040gi, locator: 'p. 80, Section B—Use if your filing status is Married filing jointly or Qualifying surviving spouse, row 2, "Over $206,700 but not over $394,600", "$ 14,306.00", "Tax. Subtract (d) from (c)"' }
     - id: mfj.row3.product
       printed: "(c)"
       label: "Multiply line (a) by 32% (0.32)"
       type: NonNegDollars
       expr: { op: multiply_rate, amount: "amount", rate: { param: "tcw.mfj.b3.rate" } }
-      cite: { doc: i1040gi, locator: "TCW Section B, row 3" }
+      cite: { doc: i1040gi, locator: 'p. 80, Section B—Use if your filing status is Married filing jointly or Qualifying surviving spouse, row 3, "Over $394,600 but not over $501,050", "(c) Multiply (a) by (b)", "× 32% (0.32)"' }
     - id: mfj.row3.tax
       printed: "Tax"
       label: "Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
       type: Dollars
       expr: { op: subtract, from: "mfj.row3.product", take: { param: "tcw.mfj.b3.subtract" } }
-      cite: { doc: i1040gi, locator: "TCW Section B, row 3" }
+      cite: { doc: i1040gi, locator: 'p. 80, Section B—Use if your filing status is Married filing jointly or Qualifying surviving spouse, row 3, "Over $394,600 but not over $501,050", "$ 45,874.00", "Tax. Subtract (d) from (c)"' }
     - id: mfj.row4.product
       printed: "(c)"
       label: "Multiply line (a) by 35% (0.35)"
       type: NonNegDollars
       expr: { op: multiply_rate, amount: "amount", rate: { param: "tcw.mfj.b4.rate" } }
-      cite: { doc: i1040gi, locator: "TCW Section B, row 4" }
+      cite: { doc: i1040gi, locator: 'p. 80, Section B—Use if your filing status is Married filing jointly or Qualifying surviving spouse, row 4, "Over $501,050 but not over $751,600", "(c) Multiply (a) by (b)", "× 35% (0.35)"' }
     - id: mfj.row4.tax
       printed: "Tax"
       label: "Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
       type: Dollars
       expr: { op: subtract, from: "mfj.row4.product", take: { param: "tcw.mfj.b4.subtract" } }
-      cite: { doc: i1040gi, locator: "TCW Section B, row 4" }
+      cite: { doc: i1040gi, locator: 'p. 80, Section B—Use if your filing status is Married filing jointly or Qualifying surviving spouse, row 4, "Over $501,050 but not over $751,600", "$ 60,905.50", "Tax. Subtract (d) from (c)"' }
     - id: mfj.row5.product
       printed: "(c)"
       label: "Multiply line (a) by 37% (0.37)"
       type: NonNegDollars
       expr: { op: multiply_rate, amount: "amount", rate: { param: "tcw.mfj.b5.rate" } }
-      cite: { doc: i1040gi, locator: "TCW Section B, row 5" }
+      cite: { doc: i1040gi, locator: 'p. 80, Section B—Use if your filing status is Married filing jointly or Qualifying surviving spouse, row 5, "Over $751,600", "(c) Multiply (a) by (b)", "× 37% (0.37)"' }
     - id: mfj.row5.tax
       printed: "Tax"
       label: "Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
       type: Dollars
       expr: { op: subtract, from: "mfj.row5.product", take: { param: "tcw.mfj.b5.subtract" } }
-      cite: { doc: i1040gi, locator: "TCW Section B, row 5" }
+      cite: { doc: i1040gi, locator: 'p. 80, Section B—Use if your filing status is Married filing jointly or Qualifying surviving spouse, row 5, "Over $751,600", "$ 75,937.50", "Tax. Subtract (d) from (c)"' }
     - id: mfj.result
       printed: "Tax"
       label: "Section B—Use if your filing status is Married filing jointly or Qualifying surviving spouse. Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
@@ -221,7 +221,7 @@ def:
             then: "mfj.row4.tax"
           - guard: { op: test, gt: ["amount", { param: "tcw.mfj.b4.upper" }] }
             then: "mfj.row5.tax"
-      cite: { doc: i1040gi, locator: "TCW Section B" }
+      cite: { doc: i1040gi, locator: 'p. 80, Section B—Use if your filing status is Married filing jointly or Qualifying surviving spouse, "Complete the row below that applies to you", "Tax. Subtract (d) from (c)"' }
 
     # Section C — Married filing separately
     - id: mfs.row1.product
@@ -229,61 +229,61 @@ def:
       label: "Multiply line (a) by 22% (0.22)"
       type: NonNegDollars
       expr: { op: multiply_rate, amount: "amount", rate: { param: "tcw.mfs.b1.rate" } }
-      cite: { doc: i1040gi, locator: "TCW Section C, row 1" }
+      cite: { doc: i1040gi, locator: 'p. 80, Section C—Use if your filing status is Married filing separately, row 1, "At least $100,000 but not over $103,350", "(c) Multiply (a) by (b)", "× 22% (0.22)"' }
     - id: mfs.row1.tax
       printed: "Tax"
       label: "Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
       type: Dollars
       expr: { op: subtract, from: "mfs.row1.product", take: { param: "tcw.mfs.b1.subtract" } }
-      cite: { doc: i1040gi, locator: "TCW Section C, row 1" }
+      cite: { doc: i1040gi, locator: 'p. 80, Section C—Use if your filing status is Married filing separately, row 1, "At least $100,000 but not over $103,350", "$ 5,086.00", "Tax. Subtract (d) from (c)"' }
     - id: mfs.row2.product
       printed: "(c)"
       label: "Multiply line (a) by 24% (0.24)"
       type: NonNegDollars
       expr: { op: multiply_rate, amount: "amount", rate: { param: "tcw.mfs.b2.rate" } }
-      cite: { doc: i1040gi, locator: "TCW Section C, row 2" }
+      cite: { doc: i1040gi, locator: 'p. 80, Section C—Use if your filing status is Married filing separately, row 2, "Over $103,350 but not over $197,300", "(c) Multiply (a) by (b)", "× 24% (0.24)"' }
     - id: mfs.row2.tax
       printed: "Tax"
       label: "Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
       type: Dollars
       expr: { op: subtract, from: "mfs.row2.product", take: { param: "tcw.mfs.b2.subtract" } }
-      cite: { doc: i1040gi, locator: "TCW Section C, row 2" }
+      cite: { doc: i1040gi, locator: 'p. 80, Section C—Use if your filing status is Married filing separately, row 2, "Over $103,350 but not over $197,300", "$ 7,153.00", "Tax. Subtract (d) from (c)"' }
     - id: mfs.row3.product
       printed: "(c)"
       label: "Multiply line (a) by 32% (0.32)"
       type: NonNegDollars
       expr: { op: multiply_rate, amount: "amount", rate: { param: "tcw.mfs.b3.rate" } }
-      cite: { doc: i1040gi, locator: "TCW Section C, row 3" }
+      cite: { doc: i1040gi, locator: 'p. 80, Section C—Use if your filing status is Married filing separately, row 3, "Over $197,300 but not over $250,525", "(c) Multiply (a) by (b)", "× 32% (0.32)"' }
     - id: mfs.row3.tax
       printed: "Tax"
       label: "Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
       type: Dollars
       expr: { op: subtract, from: "mfs.row3.product", take: { param: "tcw.mfs.b3.subtract" } }
-      cite: { doc: i1040gi, locator: "TCW Section C, row 3" }
+      cite: { doc: i1040gi, locator: 'p. 80, Section C—Use if your filing status is Married filing separately, row 3, "Over $197,300 but not over $250,525", "$ 22,937.00", "Tax. Subtract (d) from (c)"' }
     - id: mfs.row4.product
       printed: "(c)"
       label: "Multiply line (a) by 35% (0.35)"
       type: NonNegDollars
       expr: { op: multiply_rate, amount: "amount", rate: { param: "tcw.mfs.b4.rate" } }
-      cite: { doc: i1040gi, locator: "TCW Section C, row 4" }
+      cite: { doc: i1040gi, locator: 'p. 80, Section C—Use if your filing status is Married filing separately, row 4, "Over $250,525 but not over $375,800", "(c) Multiply (a) by (b)", "× 35% (0.35)"' }
     - id: mfs.row4.tax
       printed: "Tax"
       label: "Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
       type: Dollars
       expr: { op: subtract, from: "mfs.row4.product", take: { param: "tcw.mfs.b4.subtract" } }
-      cite: { doc: i1040gi, locator: "TCW Section C, row 4" }
+      cite: { doc: i1040gi, locator: 'p. 80, Section C—Use if your filing status is Married filing separately, row 4, "Over $250,525 but not over $375,800", "$ 30,452.75", "Tax. Subtract (d) from (c)"' }
     - id: mfs.row5.product
       printed: "(c)"
       label: "Multiply line (a) by 37% (0.37)"
       type: NonNegDollars
       expr: { op: multiply_rate, amount: "amount", rate: { param: "tcw.mfs.b5.rate" } }
-      cite: { doc: i1040gi, locator: "TCW Section C, row 5" }
+      cite: { doc: i1040gi, locator: 'p. 80, Section C—Use if your filing status is Married filing separately, row 5, "Over $375,800", "(c) Multiply (a) by (b)", "× 37% (0.37)"' }
     - id: mfs.row5.tax
       printed: "Tax"
       label: "Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
       type: Dollars
       expr: { op: subtract, from: "mfs.row5.product", take: { param: "tcw.mfs.b5.subtract" } }
-      cite: { doc: i1040gi, locator: "TCW Section C, row 5" }
+      cite: { doc: i1040gi, locator: 'p. 80, Section C—Use if your filing status is Married filing separately, row 5, "Over $375,800", "$ 37,968.75", "Tax. Subtract (d) from (c)"' }
     - id: mfs.result
       printed: "Tax"
       label: "Section C—Use if your filing status is Married filing separately. Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
@@ -317,7 +317,7 @@ def:
             then: "mfs.row4.tax"
           - guard: { op: test, gt: ["amount", { param: "tcw.mfs.b4.upper" }] }
             then: "mfs.row5.tax"
-      cite: { doc: i1040gi, locator: "TCW Section C" }
+      cite: { doc: i1040gi, locator: 'p. 80, Section C—Use if your filing status is Married filing separately, "Complete the row below that applies to you", "Tax. Subtract (d) from (c)"' }
 
     # Section D — Head of household
     - id: hoh.row1.product
@@ -325,61 +325,61 @@ def:
       label: "Multiply line (a) by 22% (0.22)"
       type: NonNegDollars
       expr: { op: multiply_rate, amount: "amount", rate: { param: "tcw.hoh.b1.rate" } }
-      cite: { doc: i1040gi, locator: "TCW Section D, row 1" }
+      cite: { doc: i1040gi, locator: 'p. 80, Section D—Use if your filing status is Head of household, row 1, "At least $100,000 but not over $103,350", "(c) Multiply (a) by (b)", "× 22% (0.22)"' }
     - id: hoh.row1.tax
       printed: "Tax"
       label: "Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
       type: Dollars
       expr: { op: subtract, from: "hoh.row1.product", take: { param: "tcw.hoh.b1.subtract" } }
-      cite: { doc: i1040gi, locator: "TCW Section D, row 1" }
+      cite: { doc: i1040gi, locator: 'p. 80, Section D—Use if your filing status is Head of household, row 1, "At least $100,000 but not over $103,350", "$ 6,825.00", "Tax. Subtract (d) from (c)"' }
     - id: hoh.row2.product
       printed: "(c)"
       label: "Multiply line (a) by 24% (0.24)"
       type: NonNegDollars
       expr: { op: multiply_rate, amount: "amount", rate: { param: "tcw.hoh.b2.rate" } }
-      cite: { doc: i1040gi, locator: "TCW Section D, row 2" }
+      cite: { doc: i1040gi, locator: 'p. 80, Section D—Use if your filing status is Head of household, row 2, "Over $103,350 but not over $197,300", "(c) Multiply (a) by (b)", "× 24% (0.24)"' }
     - id: hoh.row2.tax
       printed: "Tax"
       label: "Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
       type: Dollars
       expr: { op: subtract, from: "hoh.row2.product", take: { param: "tcw.hoh.b2.subtract" } }
-      cite: { doc: i1040gi, locator: "TCW Section D, row 2" }
+      cite: { doc: i1040gi, locator: 'p. 80, Section D—Use if your filing status is Head of household, row 2, "Over $103,350 but not over $197,300", "$ 8,892.00", "Tax. Subtract (d) from (c)"' }
     - id: hoh.row3.product
       printed: "(c)"
       label: "Multiply line (a) by 32% (0.32)"
       type: NonNegDollars
       expr: { op: multiply_rate, amount: "amount", rate: { param: "tcw.hoh.b3.rate" } }
-      cite: { doc: i1040gi, locator: "TCW Section D, row 3" }
+      cite: { doc: i1040gi, locator: 'p. 80, Section D—Use if your filing status is Head of household, row 3, "Over $197,300 but not over $250,500", "(c) Multiply (a) by (b)", "× 32% (0.32)"' }
     - id: hoh.row3.tax
       printed: "Tax"
       label: "Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
       type: Dollars
       expr: { op: subtract, from: "hoh.row3.product", take: { param: "tcw.hoh.b3.subtract" } }
-      cite: { doc: i1040gi, locator: "TCW Section D, row 3" }
+      cite: { doc: i1040gi, locator: 'p. 80, Section D—Use if your filing status is Head of household, row 3, "Over $197,300 but not over $250,500", "$ 24,676.00", "Tax. Subtract (d) from (c)"' }
     - id: hoh.row4.product
       printed: "(c)"
       label: "Multiply line (a) by 35% (0.35)"
       type: NonNegDollars
       expr: { op: multiply_rate, amount: "amount", rate: { param: "tcw.hoh.b4.rate" } }
-      cite: { doc: i1040gi, locator: "TCW Section D, row 4" }
+      cite: { doc: i1040gi, locator: 'p. 80, Section D—Use if your filing status is Head of household, row 4, "Over $250,500 but not over $626,350", "(c) Multiply (a) by (b)", "× 35% (0.35)"' }
     - id: hoh.row4.tax
       printed: "Tax"
       label: "Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
       type: Dollars
       expr: { op: subtract, from: "hoh.row4.product", take: { param: "tcw.hoh.b4.subtract" } }
-      cite: { doc: i1040gi, locator: "TCW Section D, row 4" }
+      cite: { doc: i1040gi, locator: 'p. 80, Section D—Use if your filing status is Head of household, row 4, "Over $250,500 but not over $626,350", "$ 32,191.00", "Tax. Subtract (d) from (c)"' }
     - id: hoh.row5.product
       printed: "(c)"
       label: "Multiply line (a) by 37% (0.37)"
       type: NonNegDollars
       expr: { op: multiply_rate, amount: "amount", rate: { param: "tcw.hoh.b5.rate" } }
-      cite: { doc: i1040gi, locator: "TCW Section D, row 5" }
+      cite: { doc: i1040gi, locator: 'p. 80, Section D—Use if your filing status is Head of household, row 5, "Over $626,350", "(c) Multiply (a) by (b)", "× 37% (0.37)"' }
     - id: hoh.row5.tax
       printed: "Tax"
       label: "Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
       type: Dollars
       expr: { op: subtract, from: "hoh.row5.product", take: { param: "tcw.hoh.b5.subtract" } }
-      cite: { doc: i1040gi, locator: "TCW Section D, row 5" }
+      cite: { doc: i1040gi, locator: 'p. 80, Section D—Use if your filing status is Head of household, row 5, "Over $626,350", "$ 44,718.00", "Tax. Subtract (d) from (c)"' }
     - id: hoh.result
       printed: "Tax"
       label: "Section D—Use if your filing status is Head of household. Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
@@ -413,7 +413,7 @@ def:
             then: "hoh.row4.tax"
           - guard: { op: test, gt: ["amount", { param: "tcw.hoh.b4.upper" }] }
             then: "hoh.row5.tax"
-      cite: { doc: i1040gi, locator: "TCW Section D" }
+      cite: { doc: i1040gi, locator: 'p. 80, Section D—Use if your filing status is Head of household, "Complete the row below that applies to you", "Tax. Subtract (d) from (c)"' }
 
     - id: tax
       printed: "Tax"
@@ -432,4 +432,4 @@ def:
             then: "mfs.result"
           - guard: { op: test, eq: ["status", { const: "hoh" }] }
             then: "hoh.result"
-      cite: { doc: i1040gi, locator: "TCW, sections A-D" }
+      cite: { doc: i1040gi, locator: 'p. 80, 2025 Tax Computation Worksheet—Line 16, "Section A—Use if your filing status is Single", "Section B—Use if your filing status is Married filing jointly or Qualifying surviving spouse", "Section C—Use if your filing status is Married filing separately", "Section D—Use if your filing status is Head of household"' }

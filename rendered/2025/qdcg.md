@@ -36,21 +36,21 @@
 - **IRS:** Are you filing Schedule D? Yes. Enter the smaller of line 15 or line 16 of Schedule D. If either line 15 or line 16 is blank or a loss, enter -0-. No. Enter the amount from Form 1040 or 1040-SR, line 7a
 - **Encoded (NonNegDollars):** Choose — [helper "Are you filing Schedule D?" = true → helper "Enter the smaller of line 15 or line 16 of Schedule D. If either line 15 or line 16 is blank or a loss, enter -0-."] [helper "Are you filing Schedule D?" = false → sd helper "Capital gain distributions, generally Form 1099-DIV box 2a"]
 - Expr: `{"alternatives":[{"guard":{"eq":["qdcg.schedule_d_filed",{"const":true}],"op":"test"},"then":"qdcg.schedule_d_net_gain"},{"guard":{"eq":["qdcg.schedule_d_filed",{"const":false}],"op":"test"},"then":"sd.distributions"}],"op":"choose"}`
-- Cite: [i1040gi] QDCGT worksheet, line 3 (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 3, "Are you filing Schedule D?", "Yes. Enter the smaller of line 15 or line 16 of Schedule D. If either line 15 or line 16 is blank or a loss, enter -0-", "No. Enter the amount from Form 1040 or 1040-SR, line 7a" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## 4 — `qdcg.line4`
 
 - **IRS:** Add lines 2 and 3
 - **Encoded (NonNegDollars):** Add line 2 and line 3.
 - Expr: `{"of":["qdcg.line2","qdcg.line3"],"op":"sum"}`
-- Cite: [i1040gi] QDCGT worksheet, line 4 (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 4, "Add lines 2 and 3" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## 5 — `qdcg.line5`
 
 - **IRS:** Subtract line 4 from line 1. If zero or less, enter -0-
 - **Encoded (NonNegDollars):** Subtract line 4 from line 1. If zero or less, enter -0-.
 - Expr: `{"from":"qdcg.line1","op":"subtract_floor0","take":"qdcg.line4"}`
-- Cite: [i1040gi] QDCGT worksheet, line 5 (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 5, "Subtract line 4 from line 1. If zero or less, enter -0-" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## 6 — `qdcg.line6`
 
@@ -64,28 +64,28 @@
 - **IRS:** Enter the smaller of line 1 or line 6
 - **Encoded (NonNegDollars):** Enter the smaller of line 1 or line 6.
 - Expr: `{"of":["qdcg.line1","qdcg.line6"],"op":"smaller_of"}`
-- Cite: [i1040gi] QDCGT worksheet, line 7 (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 7, "Enter the smaller of line 1 or line 6" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## 8 — `qdcg.line8`
 
 - **IRS:** Enter the smaller of line 5 or line 7
 - **Encoded (NonNegDollars):** Enter the smaller of line 5 or line 7.
 - Expr: `{"of":["qdcg.line5","qdcg.line7"],"op":"smaller_of"}`
-- Cite: [i1040gi] QDCGT worksheet, line 8 (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 8, "Enter the smaller of line 5 or line 7" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## 9 — `qdcg.line9`
 
 - **IRS:** Subtract line 8 from line 7. This amount is taxed at 0%
 - **Encoded (Dollars):** Subtract line 8 from line 7.
 - Expr: `{"from":"qdcg.line7","op":"subtract","take":"qdcg.line8"}`
-- Cite: [i1040gi] QDCGT worksheet, line 9 (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 9, "Subtract line 8 from line 7. This amount is taxed at 0%" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## 10 — `qdcg.line10`
 
 - **IRS:** Enter the smaller of line 1 or line 4
 - **Encoded (NonNegDollars):** Enter the smaller of line 1 or line 4.
 - Expr: `{"of":["qdcg.line1","qdcg.line4"],"op":"smaller_of"}`
-- Cite: [i1040gi] QDCGT worksheet, line 10 (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 10, "Enter the smaller of line 1 or line 4" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## 11 — `qdcg.line11`
 
@@ -99,7 +99,7 @@
 - **IRS:** Subtract line 11 from line 10
 - **Encoded (Dollars):** Subtract line 11 from line 10.
 - Expr: `{"from":"qdcg.line10","op":"subtract","take":"qdcg.line11"}`
-- Cite: [i1040gi] QDCGT worksheet, line 12 (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 12, "Subtract line 11 from line 10" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## 13 — `qdcg.line13`
 
@@ -113,56 +113,56 @@
 - **IRS:** Enter the smaller of line 1 or line 13
 - **Encoded (NonNegDollars):** Enter the smaller of line 1 or line 13.
 - Expr: `{"of":["qdcg.line1","qdcg.line13"],"op":"smaller_of"}`
-- Cite: [i1040gi] QDCGT worksheet, line 14 (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 14, "Enter the smaller of line 1 or line 13" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## 15 — `qdcg.line15`
 
 - **IRS:** Add lines 5 and 9
 - **Encoded (Dollars):** Add line 5 and line 9.
 - Expr: `{"of":["qdcg.line5","qdcg.line9"],"op":"sum"}`
-- Cite: [i1040gi] QDCGT worksheet, line 15 (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 15, "Add lines 5 and 9" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## 16 — `qdcg.line16`
 
 - **IRS:** Subtract line 15 from line 14. If zero or less, enter -0-
 - **Encoded (NonNegDollars):** Subtract line 15 from line 14. If zero or less, enter -0-.
 - Expr: `{"from":"qdcg.line14","op":"subtract_floor0","take":"qdcg.line15"}`
-- Cite: [i1040gi] QDCGT worksheet, line 16 (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 16, "Subtract line 15 from line 14. If zero or less, enter -0-" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## 17 — `qdcg.line17`
 
 - **IRS:** Enter the smaller of line 12 or line 16
 - **Encoded (Dollars):** Enter the smaller of line 12 or line 16.
 - Expr: `{"of":["qdcg.line12","qdcg.line16"],"op":"smaller_of"}`
-- Cite: [i1040gi] QDCGT worksheet, line 17 (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 17, "Enter the smaller of line 12 or line 16" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## 18 — `qdcg.line18`
 
 - **IRS:** Multiply line 17 by 15% (0.15)
 - **Encoded (Dollars):** Multiply line 17 by 15% (0.15) (qdcg.rate_15).
 - Expr: `{"amount":"qdcg.line17","op":"multiply_rate","rate":{"param":"qdcg.rate_15"}}`
-- Cite: [i1040gi] QDCGT worksheet, line 18 (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 18, "Multiply line 17 by 15% (0.15)" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## 19 — `qdcg.line19`
 
 - **IRS:** Add lines 9 and 17
 - **Encoded (Dollars):** Add line 9 and line 17.
 - Expr: `{"of":["qdcg.line9","qdcg.line17"],"op":"sum"}`
-- Cite: [i1040gi] QDCGT worksheet, line 19 (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 19, "Add lines 9 and 17" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## 20 — `qdcg.line20`
 
 - **IRS:** Subtract line 19 from line 10
 - **Encoded (Dollars):** Subtract line 19 from line 10.
 - Expr: `{"from":"qdcg.line10","op":"subtract","take":"qdcg.line19"}`
-- Cite: [i1040gi] QDCGT worksheet, line 20 (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 20, "Subtract line 19 from line 10" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## 21 — `qdcg.line21`
 
 - **IRS:** Multiply line 20 by 20% (0.20)
 - **Encoded (Dollars):** Multiply line 20 by 20% (0.20) (qdcg.rate_20).
 - Expr: `{"amount":"qdcg.line20","op":"multiply_rate","rate":{"param":"qdcg.rate_20"}}`
-- Cite: [i1040gi] QDCGT worksheet, line 21 (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 21, "Multiply line 20 by 20% (0.20)" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## 22 — `qdcg.line22`
 
@@ -176,7 +176,7 @@
 - **IRS:** Add lines 18, 21, and 22
 - **Encoded (Dollars):** Add line 18, line 21, and line 22.
 - Expr: `{"of":["qdcg.line18","qdcg.line21","qdcg.line22"],"op":"sum"}`
-- Cite: [i1040gi] QDCGT worksheet, line 23 (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 23, "Add lines 18, 21, and 22" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## 24 — `qdcg.line24`
 
@@ -190,4 +190,4 @@
 - **IRS:** Tax on all taxable income. Enter the smaller of line 23 or line 24. Also include this amount on the entry space on Form 1040 or 1040-SR, line 16. If you are filing Form 2555, don't enter this amount on the entry space on Form 1040 or 1040-SR, line 16. Instead, enter it on line 4 of the Foreign Earned Income Tax Worksheet
 - **Encoded (Dollars):** Enter the smaller of line 23 or line 24.
 - Expr: `{"of":["qdcg.line23","qdcg.line24"],"op":"smaller_of"}`
-- Cite: [i1040gi] QDCGT worksheet, line 25 (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 25, "Tax on all taxable income. Enter the smaller of line 23 or line 24" (2025; printed date 2026-02-25; sha256 482e9c48)

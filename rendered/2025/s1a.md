@@ -114,7 +114,7 @@
 - **Authored helper label:** Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN
 - **Encoded (Bool):** helper "Did you receive qualified tips as an employee in 2025 that you want to deduct?" = true and f1040 line Filing Status ≠ 'mfs' and helper "You have a valid SSN or, if married filing jointly, a spouse who received them has a valid SSN" = true
 - Expr: `{"all":[{"eq":["s1a.tips",{"const":true}],"op":"test"},{"ne":["f1040.status",{"const":"mfs"}],"op":"test"},{"eq":["s1a.tip_ssn",{"const":true}],"op":"test"}],"op":"test"}`
-- Cite: [i1040gi] p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; Part II caution, "If married, you must file jointly" (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; p. 101, Part II No Tax on Tips, "If you are married, you must file a joint return with your spouse to claim this deduction" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `s1a.line4a_calc`
 
@@ -128,7 +128,7 @@
 - **IRS:** Enter qualified tips included on Form W-2, box 7, but see the instructions if Form W-2, box 5 is more than $176,100 or you received tips that are not subject to social security and Medicare taxes
 - **Encoded (NonNegDollars):** Choose — [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = true → helper "Figured: Enter qualified tips included on Form W-2, box 7, but see the instructions if Form W-2, box 5 is more than $176,100 or you received tips that are not subject to social security and Medicare taxes"]
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.part2",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.part2",{"const":true}],"op":"test"},"then":"s1a.line4a_calc"}],"op":"choose"}`
-- Cite: [i1040gi] p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; Part II caution, "If married, you must file jointly" (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; p. 101, Part II No Tax on Tips, "If you are married, you must file a joint return with your spouse to claim this deduction" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `s1a.line4b_calc`
 
@@ -143,14 +143,14 @@
 - **IRS:** Qualified tips included on Form 4137, line 1, row A, column (c). If Form 4137 is not filed, enter -0-
 - **Encoded (NonNegDollars):** Choose — [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = true → helper "Figured: Qualified tips included on Form 4137, line 1, row A, column (c). If Form 4137 is not filed, enter -0-"]
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.part2",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.part2",{"const":true}],"op":"test"},"then":"s1a.line4b_calc"}],"op":"choose"}`
-- Cite: [i1040gi] p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; Part II caution, "If married, you must file jointly" (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; p. 101, Part II No Tax on Tips, "If you are married, you must file a joint return with your spouse to claim this deduction" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `s1a.line4c_one`
 
 - **Authored helper label:** Line 4c with one employer: the larger of line 4a or line 4b
 - **Encoded (NonNegDollars):** Enter the larger of line 4a or line 4b.
 - Expr: `{"of":["s1a.line4a","s1a.line4b"],"op":"larger_of"}`
-- Cite: [f1040s1a] Schedule 1-A (2025), line 4c (2025; created 2025-11-04; sha256 64f97b38)
+- Cite: [f1040s1a] Schedule 1-A (2025), line 4c, "If you only received qualified tips as an employee with respect to employment with one employer, enter the larger of line 4a or line 4b" (2025; created 2025-11-04; sha256 64f97b38)
 
 ## (helper) — `s1a.line4c_calc`
 
@@ -164,7 +164,7 @@
 - **IRS:** If you only received qualified tips as an employee with respect to employment with one employer, enter the larger of line 4a or line 4b. Otherwise, see the instructions to determine the amount to enter on line 4c
 - **Encoded (NonNegDollars):** Choose — [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = true → helper "Figured: If you only received qualified tips as an employee with respect to employment with one employer, enter the larger of line 4a or line 4b. Otherwise, see the instructions to determine the amount to enter on line 4c"]
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.part2",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.part2",{"const":true}],"op":"test"},"then":"s1a.line4c_calc"}],"op":"choose"}`
-- Cite: [i1040gi] p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; Part II caution, "If married, you must file jointly" (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; p. 101, Part II No Tax on Tips, "If you are married, you must file a joint return with your spouse to claim this deduction" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `s1a.line5_calc`
 
@@ -180,7 +180,7 @@
 - **IRS:** Qualified tips received in the course of a trade or business
 - **Encoded (NonNegDollars):** Choose — [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = true → helper "Figured: Qualified tips received in the course of a trade or business"]
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.part2",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.part2",{"const":true}],"op":"test"},"then":"s1a.line5_calc"}],"op":"choose"}`
-- Cite: [i1040gi] p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; Part II caution, "If married, you must file jointly" (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; p. 101, Part II No Tax on Tips, "If you are married, you must file a joint return with your spouse to claim this deduction" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `s1a.line6_calc`
 
@@ -194,7 +194,7 @@
 - **IRS:** Add lines 4c and 5
 - **Encoded (NonNegDollars):** Choose — [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = true → helper "Figured: Add lines 4c and 5"]
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.part2",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.part2",{"const":true}],"op":"test"},"then":"s1a.line6_calc"}],"op":"choose"}`
-- Cite: [i1040gi] p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; Part II caution, "If married, you must file jointly" (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; p. 101, Part II No Tax on Tips, "If you are married, you must file a joint return with your spouse to claim this deduction" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `s1a.line7_calc`
 
@@ -208,7 +208,7 @@
 - **IRS:** Enter the smaller of the amount on line 6 or $25,000
 - **Encoded (NonNegDollars):** Choose — [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = true → helper "Figured: Enter the smaller of the amount on line 6 or $25,000"]
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.part2",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.part2",{"const":true}],"op":"test"},"then":"s1a.line7_calc"}],"op":"choose"}`
-- Cite: [i1040gi] p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; Part II caution, "If married, you must file jointly" (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; p. 101, Part II No Tax on Tips, "If you are married, you must file a joint return with your spouse to claim this deduction" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `s1a.tips_max`
 
@@ -243,7 +243,7 @@
 - **IRS:** Enter the amount from line 3
 - **Encoded (Dollars):** Choose — [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = true → helper "Figured: Enter the amount from line 3"]
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.part2",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.part2",{"const":true}],"op":"test"},"then":"s1a.line8_calc"}],"op":"choose"}`
-- Cite: [i1040gi] p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; Part II caution, "If married, you must file jointly" (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; p. 101, Part II No Tax on Tips, "If you are married, you must file a joint return with your spouse to claim this deduction" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `s1a.line9_calc`
 
@@ -257,7 +257,7 @@
 - **IRS:** Enter $150,000 ($300,000 if married filing jointly)
 - **Encoded (NonNegDollars):** Choose — [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = true → helper "Figured: Enter $150,000 ($300,000 if married filing jointly)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.part2",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.part2",{"const":true}],"op":"test"},"then":"s1a.line9_calc"}],"op":"choose"}`
-- Cite: [i1040gi] p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; Part II caution, "If married, you must file jointly" (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; p. 101, Part II No Tax on Tips, "If you are married, you must file a joint return with your spouse to claim this deduction" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `s1a.line10_calc`
 
@@ -271,7 +271,7 @@
 - **IRS:** Subtract line 9 from line 8. If zero or less, enter the amount from line 7 on line 13
 - **Encoded (Dollars):** Choose — [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = true → helper "Figured: Subtract line 9 from line 8. If zero or less, enter the amount from line 7 on line 13"]
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.part2",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.part2",{"const":true}],"op":"test"},"then":"s1a.line10_calc"}],"op":"choose"}`
-- Cite: [i1040gi] p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; Part II caution, "If married, you must file jointly" (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; p. 101, Part II No Tax on Tips, "If you are married, you must file a joint return with your spouse to claim this deduction" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `s1a.line10_over`
 
@@ -285,7 +285,7 @@
 - **Authored helper label:** Line 10 if more than zero, otherwise zero
 - **Encoded (NonNegDollars):** Subtract line 9 from line 8. If zero or less, enter -0-.
 - Expr: `{"from":"s1a.line8","op":"subtract_floor0","take":"s1a.line9"}`
-- Cite: [f1040s1a] Schedule 1-A (2025), line 10 (2025; created 2025-11-04; sha256 64f97b38)
+- Cite: [f1040s1a] Schedule 1-A (2025), line 10, "Subtract line 9 from line 8. If zero or less, enter the amount from line 7 on line 13" (2025; created 2025-11-04; sha256 64f97b38)
 
 ## (helper) — `s1a.line11_thousands`
 
@@ -299,14 +299,14 @@
 - **Authored helper label:** Figured: Multiply line 11 by $100
 - **Encoded (NonNegDollars):** Multiply helper "Line 11. Divide line 10 by $1,000, decreasing the result to the next lower whole number (kept as that many thousands of dollars)" by 1/10 (s1a.hundred_per_thousand).
 - Expr: `{"amount":"s1a.line11_thousands","op":"multiply_rate","rate":{"param":"s1a.hundred_per_thousand"}}`
-- Cite: [f1040s1a] Schedule 1-A (2025), lines 11 and 12 (2025; created 2025-11-04; sha256 64f97b38)
+- Cite: [f1040s1a] Schedule 1-A (2025), line 12, "Multiply line 11 by $100" (2025; created 2025-11-04; sha256 64f97b38)
 
 ## 12 — `s1a.line12`
 
 - **IRS:** Multiply line 11 by $100
 - **Encoded (NonNegDollars):** Choose — [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = true → helper "Figured: Multiply line 11 by $100"]
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.part2",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.part2",{"const":true}],"op":"test"},"then":"s1a.line12_calc"}],"op":"choose"}`
-- Cite: [i1040gi] p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; Part II caution, "If married, you must file jointly" (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; p. 101, Part II No Tax on Tips, "If you are married, you must file a joint return with your spouse to claim this deduction" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `s1a.line13_figured`
 
@@ -370,7 +370,7 @@
 - **Authored helper label:** Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN
 - **Encoded (Bool):** helper "Did you receive qualified overtime compensation in 2025 that you want to deduct?" = true and f1040 line Filing Status ≠ 'mfs' and helper "You have a valid SSN or, if married filing jointly, a spouse who received it has a valid SSN" = true
 - Expr: `{"all":[{"eq":["s1a.overtime",{"const":true}],"op":"test"},{"ne":["f1040.status",{"const":"mfs"}],"op":"test"},{"eq":["s1a.ot_ssn",{"const":true}],"op":"test"}],"op":"test"}`
-- Cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; Part III caution (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; p. 106, Part III No Tax on Overtime, "If you are married, you must file a joint return with your spouse to claim this deduction" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `s1a.line14a_calc`
 
@@ -384,7 +384,7 @@
 - **IRS:** Qualified overtime compensation included in Form W-2, box 1. If you received qualified overtime compensation not reported on Form W-2, box 1, see instructions
 - **Encoded (NonNegDollars):** Choose — [helper "Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN" = true → helper "Figured: Qualified overtime compensation included in Form W-2, box 1. If you received qualified overtime compensation not reported on Form W-2, box 1, see instructions"]
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.part3",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.part3",{"const":true}],"op":"test"},"then":"s1a.line14a_calc"}],"op":"choose"}`
-- Cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; Part III caution (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; p. 106, Part III No Tax on Overtime, "If you are married, you must file a joint return with your spouse to claim this deduction" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `s1a.line14b_calc`
 
@@ -400,7 +400,7 @@
 - **IRS:** Qualified overtime compensation included in Form 1099-NEC, box 1, or Form 1099-MISC, box 3
 - **Encoded (NonNegDollars):** Choose — [helper "Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN" = true → helper "Figured: Qualified overtime compensation included in Form 1099-NEC, box 1, or Form 1099-MISC, box 3"]
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.part3",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.part3",{"const":true}],"op":"test"},"then":"s1a.line14b_calc"}],"op":"choose"}`
-- Cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; Part III caution (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; p. 106, Part III No Tax on Overtime, "If you are married, you must file a joint return with your spouse to claim this deduction" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `s1a.line14c_calc`
 
@@ -414,7 +414,7 @@
 - **IRS:** Add lines 14a and 14b
 - **Encoded (NonNegDollars):** Choose — [helper "Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN" = true → helper "Figured: Add lines 14a and 14b"]
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.part3",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.part3",{"const":true}],"op":"test"},"then":"s1a.line14c_calc"}],"op":"choose"}`
-- Cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; Part III caution (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; p. 106, Part III No Tax on Overtime, "If you are married, you must file a joint return with your spouse to claim this deduction" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `s1a.ot_max_other`
 
@@ -449,7 +449,7 @@
 - **IRS:** Enter the smaller of the amount on line 14c or $12,500 ($25,000 if married filing jointly)
 - **Encoded (NonNegDollars):** Choose — [helper "Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN" = true → helper "Figured: Enter the smaller of the amount on line 14c or $12,500 ($25,000 if married filing jointly)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.part3",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.part3",{"const":true}],"op":"test"},"then":"s1a.line15_calc"}],"op":"choose"}`
-- Cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; Part III caution (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; p. 106, Part III No Tax on Overtime, "If you are married, you must file a joint return with your spouse to claim this deduction" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `s1a.line16_calc`
 
@@ -463,7 +463,7 @@
 - **IRS:** Enter the amount from line 3
 - **Encoded (Dollars):** Choose — [helper "Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN" = true → helper "Figured: Enter the amount from line 3"]
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.part3",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.part3",{"const":true}],"op":"test"},"then":"s1a.line16_calc"}],"op":"choose"}`
-- Cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; Part III caution (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; p. 106, Part III No Tax on Overtime, "If you are married, you must file a joint return with your spouse to claim this deduction" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `s1a.line17_calc`
 
@@ -477,7 +477,7 @@
 - **IRS:** Enter $150,000 ($300,000 if married filing jointly)
 - **Encoded (NonNegDollars):** Choose — [helper "Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN" = true → helper "Figured: Enter $150,000 ($300,000 if married filing jointly)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.part3",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.part3",{"const":true}],"op":"test"},"then":"s1a.line17_calc"}],"op":"choose"}`
-- Cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; Part III caution (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; p. 106, Part III No Tax on Overtime, "If you are married, you must file a joint return with your spouse to claim this deduction" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `s1a.line18_calc`
 
@@ -491,7 +491,7 @@
 - **IRS:** Subtract line 17 from line 16. If zero or less, enter the amount from line 15 on line 21
 - **Encoded (Dollars):** Choose — [helper "Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN" = true → helper "Figured: Subtract line 17 from line 16. If zero or less, enter the amount from line 15 on line 21"]
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.part3",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.part3",{"const":true}],"op":"test"},"then":"s1a.line18_calc"}],"op":"choose"}`
-- Cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; Part III caution (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; p. 106, Part III No Tax on Overtime, "If you are married, you must file a joint return with your spouse to claim this deduction" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `s1a.line18_over`
 
@@ -505,7 +505,7 @@
 - **Authored helper label:** Line 18 if more than zero, otherwise zero
 - **Encoded (NonNegDollars):** Subtract line 17 from line 16. If zero or less, enter -0-.
 - Expr: `{"from":"s1a.line16","op":"subtract_floor0","take":"s1a.line17"}`
-- Cite: [f1040s1a] Schedule 1-A (2025), line 18 (2025; created 2025-11-04; sha256 64f97b38)
+- Cite: [f1040s1a] Schedule 1-A (2025), line 18, "Subtract line 17 from line 16. If zero or less, enter the amount from line 15 on line 21" (2025; created 2025-11-04; sha256 64f97b38)
 
 ## (helper) — `s1a.line19_thousands`
 
@@ -519,14 +519,14 @@
 - **Authored helper label:** Figured: Multiply line 19 by $100
 - **Encoded (NonNegDollars):** Multiply helper "Line 19. Divide line 18 by $1,000, decreasing the result to the next lower whole number (kept as that many thousands of dollars)" by 1/10 (s1a.hundred_per_thousand).
 - Expr: `{"amount":"s1a.line19_thousands","op":"multiply_rate","rate":{"param":"s1a.hundred_per_thousand"}}`
-- Cite: [f1040s1a] Schedule 1-A (2025), lines 19 and 20 (2025; created 2025-11-04; sha256 64f97b38)
+- Cite: [f1040s1a] Schedule 1-A (2025), line 20, "Multiply line 19 by $100" (2025; created 2025-11-04; sha256 64f97b38)
 
 ## 20 — `s1a.line20`
 
 - **IRS:** Multiply line 19 by $100
 - **Encoded (NonNegDollars):** Choose — [helper "Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN" = true → helper "Figured: Multiply line 19 by $100"]
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.part3",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.part3",{"const":true}],"op":"test"},"then":"s1a.line20_calc"}],"op":"choose"}`
-- Cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; Part III caution (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; p. 106, Part III No Tax on Overtime, "If you are married, you must file a joint return with your spouse to claim this deduction" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `s1a.line21_figured`
 
@@ -681,7 +681,7 @@
 - **Authored helper label:** Line 27 if more than zero, otherwise zero
 - **Encoded (NonNegDollars):** Subtract line 26 from line 25. If zero or less, enter -0-.
 - Expr: `{"from":"s1a.line25","op":"subtract_floor0","take":"s1a.line26"}`
-- Cite: [f1040s1a] Schedule 1-A (2025), line 27 (2025; created 2025-11-04; sha256 64f97b38)
+- Cite: [f1040s1a] Schedule 1-A (2025), line 27, "Subtract line 26 from line 25. If zero or less, enter the amount from line 24 on line 30" (2025; created 2025-11-04; sha256 64f97b38)
 
 ## (helper) — `s1a.line28_thousands`
 
@@ -695,7 +695,7 @@
 - **Authored helper label:** Figured: Multiply line 28 by $200
 - **Encoded (NonNegDollars):** Multiply helper "Line 28. Divide line 27 by $1,000, increasing the result to the next higher whole number (kept as that many thousands of dollars)" by 1/5 (s1a.two_hundred_per_thousand).
 - Expr: `{"amount":"s1a.line28_thousands","op":"multiply_rate","rate":{"param":"s1a.two_hundred_per_thousand"}}`
-- Cite: [f1040s1a] Schedule 1-A (2025), lines 28 and 29 (2025; created 2025-11-04; sha256 64f97b38)
+- Cite: [f1040s1a] Schedule 1-A (2025), line 29, "Multiply line 28 by $200" (2025; created 2025-11-04; sha256 64f97b38)
 
 ## 29 — `s1a.line29`
 
@@ -744,7 +744,7 @@
 - **Authored helper label:** Part V applies: you (and/or your spouse if filing jointly) were born before January 2, 1961, and have a valid SSN, not married filing separately
 - **Encoded (Bool):** helper "You (and/or your spouse if filing jointly) were born before January 2, 1961, and have a valid SSN" = true and f1040 line Filing Status ≠ 'mfs'
 - Expr: `{"all":[{"eq":["s1a.senior_any",{"const":true}],"op":"test"},{"ne":["f1040.status",{"const":"mfs"}],"op":"test"}],"op":"test"}`
-- Cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if"; Part V caution (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if"; p. 110, Part V Enhanced Deduction for Seniors, "If you are married, you must file a joint return with your spouse to claim this deduction" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `s1a.line31_calc`
 
@@ -758,7 +758,7 @@
 - **IRS:** Enter the amount from line 3
 - **Encoded (Dollars):** Choose — [helper "Part V applies: you (and/or your spouse if filing jointly) were born before January 2, 1961, and have a valid SSN, not married filing separately" = false → helper "Year parameter sales.zero"] [helper "Part V applies: you (and/or your spouse if filing jointly) were born before January 2, 1961, and have a valid SSN, not married filing separately" = true → helper "Figured: Enter the amount from line 3"]
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.part5",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.part5",{"const":true}],"op":"test"},"then":"s1a.line31_calc"}],"op":"choose"}`
-- Cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if"; Part V caution (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if"; p. 110, Part V Enhanced Deduction for Seniors, "If you are married, you must file a joint return with your spouse to claim this deduction" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `s1a.senior_base_other`
 
@@ -786,7 +786,7 @@
 - **IRS:** Enter $75,000 ($150,000 if married filing jointly)
 - **Encoded (NonNegDollars):** Choose — [helper "Part V applies: you (and/or your spouse if filing jointly) were born before January 2, 1961, and have a valid SSN, not married filing separately" = false → helper "Year parameter sales.zero"] [helper "Part V applies: you (and/or your spouse if filing jointly) were born before January 2, 1961, and have a valid SSN, not married filing separately" = true → helper "Figured: Enter $75,000 ($150,000 if married filing jointly)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.part5",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.part5",{"const":true}],"op":"test"},"then":"s1a.line32_calc"}],"op":"choose"}`
-- Cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if"; Part V caution (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if"; p. 110, Part V Enhanced Deduction for Seniors, "If you are married, you must file a joint return with your spouse to claim this deduction" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `s1a.line33_calc`
 
@@ -800,7 +800,7 @@
 - **IRS:** Subtract line 32 from line 31. If zero or less, enter $6,000 on line 35
 - **Encoded (Dollars):** Choose — [helper "Part V applies: you (and/or your spouse if filing jointly) were born before January 2, 1961, and have a valid SSN, not married filing separately" = false → helper "Year parameter sales.zero"] [helper "Part V applies: you (and/or your spouse if filing jointly) were born before January 2, 1961, and have a valid SSN, not married filing separately" = true → helper "Figured: Subtract line 32 from line 31. If zero or less, enter $6,000 on line 35"]
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.part5",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.part5",{"const":true}],"op":"test"},"then":"s1a.line33_calc"}],"op":"choose"}`
-- Cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if"; Part V caution (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if"; p. 110, Part V Enhanced Deduction for Seniors, "If you are married, you must file a joint return with your spouse to claim this deduction" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `s1a.line33_over`
 
@@ -814,7 +814,7 @@
 - **Authored helper label:** Line 33 if more than zero, otherwise zero
 - **Encoded (NonNegDollars):** Subtract line 32 from line 31. If zero or less, enter -0-.
 - Expr: `{"from":"s1a.line31","op":"subtract_floor0","take":"s1a.line32"}`
-- Cite: [f1040s1a] Schedule 1-A (2025), line 33 (2025; created 2025-11-04; sha256 64f97b38)
+- Cite: [f1040s1a] Schedule 1-A (2025), line 33, "Subtract line 32 from line 31. If zero or less, enter $6,000 on line 35" (2025; created 2025-11-04; sha256 64f97b38)
 
 ## (helper) — `s1a.line34_calc`
 
@@ -828,7 +828,7 @@
 - **IRS:** Multiply line 33 by 6% (0.06)
 - **Encoded (NonNegDollars):** Choose — [helper "Part V applies: you (and/or your spouse if filing jointly) were born before January 2, 1961, and have a valid SSN, not married filing separately" = false → helper "Year parameter sales.zero"] [helper "Part V applies: you (and/or your spouse if filing jointly) were born before January 2, 1961, and have a valid SSN, not married filing separately" = true → helper "Figured: Multiply line 33 by 6% (0.06)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.part5",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.part5",{"const":true}],"op":"test"},"then":"s1a.line34_calc"}],"op":"choose"}`
-- Cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if"; Part V caution (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if"; p. 110, Part V Enhanced Deduction for Seniors, "If you are married, you must file a joint return with your spouse to claim this deduction" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `s1a.senior_amount`
 
@@ -849,14 +849,14 @@
 - **Authored helper label:** Figured: Subtract line 34 from $6,000. If zero or less, enter -0-
 - **Encoded (NonNegDollars):** Choose — [helper "Is the amount on line 31 more than the amount on line 32?" = false → helper "Year parameter s1a.senior_amount ($6,000)"] [helper "Is the amount on line 31 more than the amount on line 32?" = true → helper "Subtract line 34 from $6,000. If zero or less, enter -0-"]
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.line33_over",{"const":false}],"op":"test"},"then":"s1a.senior_amount"},{"guard":{"eq":["s1a.line33_over",{"const":true}],"op":"test"},"then":"s1a.line35_figured"}],"op":"choose"}`
-- Cite: [f1040s1a] Schedule 1-A (2025), lines 33 and 35 (2025; created 2025-11-04; sha256 64f97b38)
+- Cite: [f1040s1a] Schedule 1-A (2025), line 35, "Subtract line 34 from $6,000. If zero or less, enter -0-", line 33, "If zero or less, enter $6,000 on line 35" (2025; created 2025-11-04; sha256 64f97b38)
 
 ## 35 — `s1a.line35`
 
 - **IRS:** Subtract line 34 from $6,000. If zero or less, enter -0-
 - **Encoded (NonNegDollars):** Choose — [helper "Part V applies: you (and/or your spouse if filing jointly) were born before January 2, 1961, and have a valid SSN, not married filing separately" = false → helper "Year parameter sales.zero"] [helper "Part V applies: you (and/or your spouse if filing jointly) were born before January 2, 1961, and have a valid SSN, not married filing separately" = true → helper "Figured: Subtract line 34 from $6,000. If zero or less, enter -0-"]
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.part5",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.part5",{"const":true}],"op":"test"},"then":"s1a.line35_calc"}],"op":"choose"}`
-- Cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if"; Part V caution (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if"; p. 110, Part V Enhanced Deduction for Seniors, "If you are married, you must file a joint return with your spouse to claim this deduction" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `s1a.died_before_65_count`
 

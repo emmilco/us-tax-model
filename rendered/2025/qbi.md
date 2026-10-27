@@ -38,7 +38,7 @@
 - **IRS:** Qualified business net (loss) carryforward from the prior year (as a positive amount)
 - **Encoded (NonNegDollars):** Input — The qualified business loss carryforward from line 16 of your 2024 Form 8995 (or the corresponding line of your 2024 Form 8995-A), entered as a positive amount (zero if none)
 - Expr: `{"op":"input","source":"The qualified business loss carryforward from line 16 of your 2024 Form 8995 (or the corresponding line of your 2024 Form 8995-A), entered as a positive amount (zero if none)"}`
-- Cite: [i8995] Line 3, "enter the amount from line 16 of your 2024 Form 8995" (owner: the printed amount) (2025; printed date 2026-01-26; sha256 875843ba)
+- Cite: [i8995] p. 4, Line 3, "Include here the qualified portion of trade or business (loss) carryforward allowed in calculating taxable income in the current year"; p. 5, Line 16, "This is the amount to be carried forward to the next year" (owner: the printed amount) (2025; printed date 2026-01-26; sha256 875843ba)
 
 ## (gate) — `qbi.business_any`
 
@@ -60,21 +60,21 @@
 - **Authored helper label:** Form 1040 lines 12e and 13b, the deductions taken before the QBI deduction
 - **Encoded (NonNegDollars):** Add sa helper "Deduction selected for Form 1040 line 12e" and f1040 line 13b.
 - Expr: `{"of":["sa.deduction","f1040.line13b"],"op":"sum"}`
-- Cite: [i8995-correction] Correction to 2025 Form 8995 instructions, line 11: Form 1040 line 11a minus lines 12e and 13b (Post-release correction to the 2025 Instructions for Form 8995 (published 2026-02-13); page last reviewed 2026-06-28; sha256 926735a0)
+- Cite: [i8995-correction] Correction to 2025 Form 8995 instructions, Line 11, "Form 1040 or 1040-SR filers: Form 1040 or 1040-SR, line 11a, minus lines 12e and 13b" (Post-release correction to the 2025 Instructions for Form 8995 (published 2026-02-13); page last reviewed 2026-06-28; sha256 926735a0)
 
 ## (helper) — `qbi.taxable_before`
 
 - **Authored helper label:** Taxable income before the QBI deduction; Form 1040 line 11a minus lines 12e and 13b, floored at zero
 - **Encoded (NonNegDollars):** Subtract helper "Form 1040 lines 12e and 13b, the deductions taken before the QBI deduction" from sa helper "Form 1040 line 11b adjusted gross income". If zero or less, enter -0-.
 - Expr: `{"from":"sa.agi","op":"subtract_floor0","take":"qbi.deductions_before"}`
-- Cite: [i8995-correction] Correction to 2025 Form 8995 instructions, line 11: Form 1040 line 11a minus lines 12e and 13b (Post-release correction to the 2025 Instructions for Form 8995 (published 2026-02-13); page last reviewed 2026-06-28; sha256 926735a0)
+- Cite: [i8995-correction] Correction to 2025 Form 8995 instructions, Line 11, "Enter your taxable income figured before any QBI deduction", "Form 1040 or 1040-SR filers: Form 1040 or 1040-SR, line 11a, minus lines 12e and 13b" (Post-release correction to the 2025 Instructions for Form 8995 (published 2026-02-13); page last reviewed 2026-06-28; sha256 926735a0)
 
 ## (helper) — `qbi.net_capital_gain`
 
 - **Authored helper label:** Add sd.net_gain, f1040.line3a
 - **Encoded (NonNegDollars):** Add sd helper "Nonnegative net capital gain for QDCGT" and f1040 line 3a.
 - Expr: `{"of":["sd.net_gain","f1040.line3a"],"op":"sum"}`
-- Cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; sha256 55380ad2)
+- Cite: [f8995] p. 1, "Enter your net capital gain, if any, increased by any qualified dividends" (line 12); i8995 p. 4, Line 12, "line 3a, plus your net capital gain", "your net capital gain is the smaller of Schedule D (Form 1040), line 15 or 16, unless line 15 or 16 is zero or less" (2025; created 2025-09-12; sha256 55380ad2)
 
 ## (helper) — `qbi.threshold`
 
@@ -88,11 +88,11 @@
 - **Authored helper label:** Taxable income before QBI exceeds the Form 8995 threshold
 - **Encoded (Bool):** helper "Taxable income before the QBI deduction; Form 1040 line 11a minus lines 12e and 13b, floored at zero" > helper "Year parameter qbi.threshold"
 - Expr: `{"gt":["qbi.taxable_before","qbi.threshold"],"op":"test"}`
-- Cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; sha256 55380ad2)
+- Cite: [f8995] p. 1, "Use this form if your taxable income, before your qualified business income deduction, is at or below $197,300 ($394,600 if married filing jointly)"; i8995 pp. 3–4 (2025; created 2025-09-12; sha256 55380ad2)
 
 ## (helper) — `qbi.deduction`
 
 - **Authored helper label:** Select Form 8995 or dividend-only Form 8995-A
 - **Encoded (NonNegDollars):** Choose — [helper "Taxable income before QBI exceeds the Form 8995 threshold" = true → helper "Form 8995-A (section 199A dividends only)"] [helper "Taxable income before QBI exceeds the Form 8995 threshold" = false → f8995 line 15]
 - Expr: `{"alternatives":[{"guard":{"eq":["qbi.use_8995a",{"const":true}],"op":"test"},"then":"qbi.via_8995a"},{"guard":{"eq":["qbi.use_8995a",{"const":false}],"op":"test"},"then":"f8995.line15"}],"op":"choose"}`
-- Cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; sha256 55380ad2)
+- Cite: [f8995] p. 1, "Use this form if your taxable income, before your qualified business income deduction, is at or below $197,300 ($394,600 if married filing jointly)", "Qualified business income deduction. Enter the smaller of line 10 or line 14" (line 15); i8995 pp. 3–4 (2025; created 2025-09-12; sha256 55380ad2)

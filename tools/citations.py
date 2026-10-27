@@ -35,8 +35,7 @@ segment that names pages of an archived PDF:
 
       Writes reports/<year>/citations.md; exits 1 on any unruled page
       finding. The computed-line findings are counted and listed but fail the
-      check only with --strict; the flag joins check-all once the list is
-      empty.
+      check only with --strict, which check-all passes.
 
   --relocate
       for a year whose locators were carried over from an earlier year, find

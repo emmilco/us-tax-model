@@ -157,28 +157,28 @@
 - **Authored helper label:** This persons Form 8889 uses the spouse rule of line 6
 - **Encoded (Count):** Add f8889.one over every confirmed f8889 entry for which helper "Spouses with separate HSAs, treated as having family coverage at any time during 2025" = true, within the current person when parent-bound. An unanswered roster is unknown.
 - Expr: `{"collection":"f8889","field":"f8889.one","op":"sum_over","where":{"eq":["f8889.split",{"const":true}],"op":"test"}}`
-- Cite: [i8889] p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025; Steps 1 to 3 (2025; sha256 da6f2f58)
+- Cite: [i8889] p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025, Steps 1 to 3, "Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025, use the following rules to figure the amount on line 6", "Step 1. Refigure the contribution limit that would have been entered on line 5 if you had entered on line 3 the total of the worksheet amounts only for the months you were treated as having family coverage", "Step 2. Divide the refigured contribution limit from Step 1 equally between you and your spouse, unless you both agree on a different allocation (such as allocating nothing to one spouse)", "Step 3. Subtract the part of the contribution limit allocated to your spouse in Step 2 from the amount determined in Step 1" (2025; sha256 da6f2f58)
 
 ## (helper) — `person.hsa_agreed`
 
 - **Authored helper label:** This persons Form 8889 uses an agreed allocation under the spouse rule of line 6
 - **Encoded (Count):** Add f8889.one over every confirmed f8889 entry for which helper "Spouses with separate HSAs, treated as having family coverage at any time during 2025" = true and helper "Do you and your spouse divide the family contribution limit equally, or by a different allocation you both agree on?" = 'agreed', within the current person when parent-bound. An unanswered roster is unknown.
 - Expr: `{"collection":"f8889","field":"f8889.one","op":"sum_over","where":{"all":[{"eq":["f8889.split",{"const":true}],"op":"test"},{"eq":["f8889.allocation",{"const":"agreed"}],"op":"test"}],"op":"test"}}`
-- Cite: [i8889] p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025; Steps 1 to 3 (2025; sha256 da6f2f58)
+- Cite: [i8889] p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025, Steps 1 to 3, "Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025, use the following rules to figure the amount on line 6", "Step 1. Refigure the contribution limit that would have been entered on line 5 if you had entered on line 3 the total of the worksheet amounts only for the months you were treated as having family coverage", "Step 2. Divide the refigured contribution limit from Step 1 equally between you and your spouse, unless you both agree on a different allocation (such as allocating nothing to one spouse)", "Step 3. Subtract the part of the contribution limit allocated to your spouse in Step 2 from the amount determined in Step 1" (2025; sha256 da6f2f58)
 
 ## (helper) — `person.hsa_step1`
 
 - **Authored helper label:** This persons Step 1 limit under the spouse rule of line 6
 - **Encoded (NonNegDollars):** Add f8889.step1 over every confirmed f8889 entry for which helper "Spouses with separate HSAs, treated as having family coverage at any time during 2025" = true, within the current person when parent-bound. An unanswered roster is unknown.
 - Expr: `{"collection":"f8889","field":"f8889.step1","op":"sum_over","where":{"eq":["f8889.split",{"const":true}],"op":"test"}}`
-- Cite: [i8889] p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025; Steps 1 to 3 (2025; sha256 da6f2f58)
+- Cite: [i8889] p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025, Steps 1 to 3, "Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025, use the following rules to figure the amount on line 6", "Step 1. Refigure the contribution limit that would have been entered on line 5 if you had entered on line 3 the total of the worksheet amounts only for the months you were treated as having family coverage", "Step 2. Divide the refigured contribution limit from Step 1 equally between you and your spouse, unless you both agree on a different allocation (such as allocating nothing to one spouse)", "Step 3. Subtract the part of the contribution limit allocated to your spouse in Step 2 from the amount determined in Step 1" (2025; sha256 da6f2f58)
 
 ## (helper) — `person.hsa_share`
 
 - **Authored helper label:** This persons part of the Step 1 limit under the spouse rule of line 6
 - **Encoded (NonNegDollars):** Add f8889.share_raw over every confirmed f8889 entry for which helper "Spouses with separate HSAs, treated as having family coverage at any time during 2025" = true, within the current person when parent-bound. An unanswered roster is unknown.
 - Expr: `{"collection":"f8889","field":"f8889.share_raw","op":"sum_over","where":{"eq":["f8889.split",{"const":true}],"op":"test"}}`
-- Cite: [i8889] p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025; Steps 1 to 3 (2025; sha256 da6f2f58)
+- Cite: [i8889] p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025, Steps 1 to 3, "Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025, use the following rules to figure the amount on line 6", "Step 1. Refigure the contribution limit that would have been entered on line 5 if you had entered on line 3 the total of the worksheet amounts only for the months you were treated as having family coverage", "Step 2. Divide the refigured contribution limit from Step 1 equally between you and your spouse, unless you both agree on a different allocation (such as allocating nothing to one spouse)", "Step 3. Subtract the part of the contribution limit allocated to your spouse in Step 2 from the amount determined in Step 1" (2025; sha256 da6f2f58)
 
 ## (helper) — `person.hsa_deduction`
 
@@ -193,7 +193,7 @@
 - **Authored helper label:** Form 8889 line 16 for this person
 - **Encoded (NonNegDollars):** Add f8889.line16 over every confirmed f8889 entry, within the current person when parent-bound. An unanswered roster is unknown.
 - Expr: `{"collection":"f8889","field":"f8889.line16","op":"sum_over"}`
-- Cite: [f8889] Form 8889 (2025), Part II, "If you are filing jointly and both you and your spouse each have separate HSAs, complete a separate Part II for each spouse"; line 16 (2025; created 2025-03-28; sha256 15ed4587)
+- Cite: [f8889] p. 1, Part II, "HSA Distributions. If you are filing jointly and both you and your spouse each have separate HSAs, complete a separate Part II for each spouse", line 16, "Taxable HSA distributions. Subtract line 15 from line 14c. If zero or less, enter -0-" (2025; created 2025-03-28; sha256 15ed4587)
 
 ## (helper) — `person.hsa_addtax`
 
@@ -307,7 +307,7 @@
 - **Authored helper label:** Total W-2 box 2 for this person
 - **Encoded (NonNegDollars):** Add w2.box2 over every confirmed w2 entry, within the current person when parent-bound. An unanswered roster is unknown.
 - Expr: `{"collection":"w2","field":"w2.box2","op":"sum_over"}`
-- Cite: [f1040] Form 1040 (2025), line 25a (2025; created 2025-09-05; sha256 3d31c226)
+- Cite: [f1040] p. 2, Payments and Refundable Credits, line 25a, "Federal income tax withheld from:", "Form(s) W-2" (2025; created 2025-09-05; sha256 3d31c226)
 
 ## eligible — `person.eligible`
 
@@ -345,7 +345,7 @@
 - **Encoded (NonNegDollars):** Add w2.box5 over every confirmed w2 entry, within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when person.rrta is true, cannot complete Form 8959 RRTA computation. RRTA compensation is outside the supported wage-only path. Cite: [f8959] Form 8959 (2025), lines 1–24; i8959 pp. 1–3 (2025; created 2025-04-30; sha256 13e64004)
 - Expr: `{"collection":"w2","field":"w2.box5","op":"sum_over"}`
-- Cite: [f8959] Form 8959 (2025), lines 1–24; i8959 pp. 1–3 (2025; created 2025-04-30; sha256 13e64004)
+- Cite: [f8959] Form 8959 (2025), line 1, "Medicare wages and tips from Form W-2, box 5", "enter the total of the amounts from box 5"; i8959 pp. 1–3 (2025; created 2025-04-30; sha256 13e64004)
 
 ## (helper) — `person.medicare6`
 
@@ -353,7 +353,7 @@
 - **Encoded (NonNegDollars):** Add w2.box6 over every confirmed w2 entry, within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when person.rrta is true, cannot complete Form 8959 RRTA computation. RRTA compensation is outside the supported wage-only path. Cite: [f8959] Form 8959 (2025), lines 1–24; i8959 pp. 1–3 (2025; created 2025-04-30; sha256 13e64004)
 - Expr: `{"collection":"w2","field":"w2.box6","op":"sum_over"}`
-- Cite: [f8959] Form 8959 (2025), lines 1–24; i8959 pp. 1–3 (2025; created 2025-04-30; sha256 13e64004)
+- Cite: [f8959] Form 8959 (2025), line 19, "Medicare tax withheld from Form W-2, box 6", "enter the total of the amounts from box 6"; i8959 pp. 1–3 (2025; created 2025-04-30; sha256 13e64004)
 
 ## (helper) — `person.sc_count`
 
@@ -453,7 +453,7 @@
 - **Encoded (NonNegDollars):** Choose — [helper "This person has at least one Schedule C" = true → "line6" of Schedule SE (Form 1040) — Self-Employment Tax, one per person with line2 = helper "Schedule SE line 2 for this person" and line8a = line wages] [helper "This person has at least one Schedule C" = false → line zero]
 - **Refusal:** when person.se_rrta is true, cannot complete Schedule SE with railroad retirement (tier 1) compensation. Schedule SE line 8a adds railroad retirement (tier 1) compensation to the social security wages, and this tool does not take railroad compensation. Prepare Schedule SE with the railroad retirement instructions. Cite: [f1040sse] Schedule SE (2025), line 8a, "Total social security wages and tips (total of boxes 3 and 7 on Form(s) W-2) and railroad retirement (tier 1) compensation" (2025; created 2025-05-07; sha256 05bc2b3e)
 - Expr: `{"alternatives":[{"guard":{"eq":["person.has_sc",{"const":true}],"op":"test"},"then":{"bind":{"line2":"person.se_line2","line8a":"person.wages"},"def":"se","line":"line6"}},{"guard":{"eq":["person.has_sc",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
-- Cite: [f1040sse] Schedule SE (2025), line 6; i8959 Line 8, "Schedule SE, line 6" (2025; created 2025-05-07; sha256 05bc2b3e)
+- Cite: [f1040sse] Schedule SE (2025), line 6, "Add lines 4c and 5b"; i8959 p. 3, Line 8, "Enter your self-employment income from Schedule SE (Form 1040), Part I, line 6" (2025; created 2025-05-07; sha256 05bc2b3e)
 
 ## (helper) — `person.se_line12`
 
@@ -477,7 +477,7 @@
 - **Encoded (NonNegDollars):** Choose — [helper "This person has at least one Schedule C" = true → "line4c" of Schedule SE (Form 1040) — Self-Employment Tax, one per person with line2 = helper "Schedule SE line 2 for this person" and line8a = line wages] [helper "This person has at least one Schedule C" = false → line zero]
 - **Refusal:** when person.se_rrta is true, cannot complete Schedule SE with railroad retirement (tier 1) compensation. Schedule SE line 8a adds railroad retirement (tier 1) compensation to the social security wages, and this tool does not take railroad compensation. Prepare Schedule SE with the railroad retirement instructions. Cite: [f1040sse] Schedule SE (2025), line 8a, "Total social security wages and tips (total of boxes 3 and 7 on Form(s) W-2) and railroad retirement (tier 1) compensation" (2025; created 2025-05-07; sha256 05bc2b3e)
 - Expr: `{"alternatives":[{"guard":{"eq":["person.has_sc",{"const":true}],"op":"test"},"then":{"bind":{"line2":"person.se_line2","line8a":"person.wages"},"def":"se","line":"line4c"}},{"guard":{"eq":["person.has_sc",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
-- Cite: [f1040sse] Schedule SE (2025), line 4c (2025; created 2025-05-07; sha256 05bc2b3e)
+- Cite: [f1040sse] Schedule SE (2025), line 4c, "Combine lines 4a and 4b. If less than $400, stop; you don’t owe self-employment tax" (2025; created 2025-05-07; sha256 05bc2b3e)
 
 ## (helper) — `person.plan`
 
@@ -569,7 +569,7 @@
 - **Authored helper label:** Multiply step 3 by step 4 (the plan rate divided by the plan rate plus 1, to six decimal places)
 - **Encoded (NonNegDollars):** Divide helper "The plan rate, as cents" by helper "The plan rate plus 100%, as cents", rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply line Step 3 by the result.
 - Expr: `{"amount":"person.sep_s3","op":"prorate","part":"person.sep_rate_c","places":6,"whole":"person.sep_rate_plus"}`
-- Cite: [p560] pp. 39–40, chapter 5, Deduction Worksheet for Self-Employed, Steps 4 and 5; Rate Table for Self-Employed (for example 10% gives 0.090909) (amb.2025.sep_rate_places) (For use in preparing 2025 returns; sha256 1f1f7abe)
+- Cite: [p560] pp. 39–40, chapter 5, Deduction Worksheet for Self-Employed, Steps 4 and 5, "Enter your rate from the Rate Table for Self-Employed or Rate Worksheet for Self-Employed", "Multiply step 3 by step 4"; p. 38, chapter 5, Rate Table for Self-Employed, "If your plan's contribution rate is 10% of a participant's compensation, your rate is 0.090909" (amb.2025.sep_rate_places) (For use in preparing 2025 returns; sha256 1f1f7abe)
 
 ## (helper) — `person.comp_limit`
 
@@ -611,7 +611,7 @@
 - **Authored helper label:** The SEP contributions are more than the maximum deductible contribution
 - **Encoded (Bool):** helper "Contributions to your own SEP IRA for 2025" > line Step 21
 - Expr: `{"gt":["person.sep_contrib","person.sep_s21"],"op":"test"}`
-- Cite: [p560] p. 39, chapter 5, "Enter your actual contribution, not to exceed your maximum deductible contribution"; chapter 2, Excess contributions (For use in preparing 2025 returns; sha256 1f1f7abe)
+- Cite: [p560] p. 39, chapter 5, "Enter your actual contribution, not to exceed your maximum deductible contribution"; p. 11, chapter 2, Carryover of Excess SEP Contributions, "If you made SEP contributions that are more than the deduction limit (nondeductible contributions), you can carry over and deduct the difference in later years" (For use in preparing 2025 returns; sha256 1f1f7abe)
 
 ## (helper) — `person.sep_deduction`
 
@@ -775,7 +775,7 @@
 - **Authored helper label:** Self-employed SEP or SIMPLE deduction for this person
 - **Encoded (NonNegDollars):** Choose — [helper "Retirement plan of this self-employed person" = 'none' → line zero] [helper "Retirement plan of this self-employed person" = 'sep' → helper "SEP deduction for yourself"] [helper "Retirement plan of this self-employed person" = 'simple' → helper "SIMPLE deduction for yourself"]
 - Expr: `{"alternatives":[{"guard":{"eq":["person.plan",{"const":"none"}],"op":"test"},"then":"person.zero"},{"guard":{"eq":["person.plan",{"const":"sep"}],"op":"test"},"then":"person.sep_deduction"},{"guard":{"eq":["person.plan",{"const":"simple"}],"op":"test"},"then":"person.simple_deduction"}],"op":"choose"}`
-- Cite: [i1040gi] p. 93, Schedule 1, line 16, Self-Employed SEP, SIMPLE, and Qualified Plans; p560 chapter 5 (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 93, Schedule 1, line 16, Self-Employed SEP, SIMPLE, and Qualified Plans; p560 p. 38, chapter 5, "if you are self-employed, you must use the rate table or rate worksheet and deduction worksheet to figure your deduction for contributions you made for yourself to a SEP IRA or qualified plan" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `person.s16`
 
@@ -789,7 +789,7 @@
 - **Authored helper label:** Total of all net profits of this person's businesses (losses not included)
 - **Encoded (NonNegDollars):** Add sc.profit_pos over every confirmed sc entry, within the current person when parent-bound. An unanswered roster is unknown.
 - Expr: `{"collection":"sc","field":"sc.profit_pos","op":"sum_over"}`
-- Cite: [i7206] Line 5, Form 7206 (2025), "Don't include any net losses" (2025; sha256 9cbf92b3)
+- Cite: [i7206] f7206 Form 7206 (2025), line 5, "Enter the total of all net profits* from Schedule C (Form 1040), line 31; Schedule F (Form 1040), line 34; or Schedule K-1 (Form 1065), box 14, code A", "Don’t include any net losses shown on these schedules" (2025; sha256 9cbf92b3)
 
 ## (helper) — `person.sehi`
 
@@ -803,7 +803,7 @@
 - **Authored helper label:** Qualified business income or loss of this person's businesses
 - **Encoded (Dollars):** Add sc.qbi over every confirmed sc entry, within the current person when parent-bound. An unanswered roster is unknown.
 - Expr: `{"collection":"sc","field":"sc.qbi","op":"sum_over"}`
-- Cite: [i8995] pp. 2, 4, Determining Your Qualified Business Income; Line 1 (2025; printed date 2026-01-26; sha256 875843ba)
+- Cite: [i8995] pp. 2, 4, Determining Your Qualified Business Income; p. 4, Line 1, "Enter on line 1(c) the net QBI or (loss) for the trade, business, or aggregation reported in the corresponding row" (2025; printed date 2026-01-26; sha256 875843ba)
 
 ## (helper) — `person.eic_part1`
 
@@ -1017,7 +1017,7 @@
 - **Encoded (NonNegDollars):** Add helper "Elective deferrals and designated Roth contributions for 2025 from this person's Forms W-2, box 12", helper "Voluntary employee contributions for 2025 to a qualified retirement plan (after-tax, not designated Roth)", and helper "This person's own SIMPLE IRA salary reduction contributions as a self-employed person".
 - **Refusal:** when person.sav_excess_gate is true, cannot complete Excess elective deferrals on Form 8880 line 2. Elective deferrals over the limit for the year, and their later distribution, are outside this tool. Cite: [iw2w3] p. 20, Box 12—Codes, "Even though the 2025 limit for elective deferrals and designated Roth contributions is $23,500" (2025; printed date 2025-02-19; sha256 bfecbc99)
 - Expr: `{"of":["person.sav_w2","person.sav_voluntary","person.sav_simple"],"op":"sum"}`
-- Cite: [f8880] Form 8880 (2025), line 2; p. 2, Line 2, "Include on line 2 any of the following amounts" (2025; created 2025-11-04; sha256 ba2b2877)
+- Cite: [f8880] Form 8880 (2025), line 2, "Elective deferrals to a 401(k) or other qualified employer plan, voluntary employee contributions, and 501(c)(18)(D) plan contributions for 2025"; p. 2, Line 2, "Include on line 2 any of the following amounts" (2025; created 2025-11-04; sha256 ba2b2877)
 
 ## (helper) — `person.sav_prior_joint`
 

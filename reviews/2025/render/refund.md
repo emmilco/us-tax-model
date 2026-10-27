@@ -4,11 +4,15 @@ The rendered English of every printed line of `State and Local Income Tax Refund
 
 | field | value |
 | --- | --- |
-| date | 2026-10-22 |
+| date | 2026-10-27 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | 62f69e18c59ce115c4f5d06567fbd962f287d7161ea6cc2a479c8e7e30cf03bd |
-| subject sha256 | 5d0982533b132432ca85e78e925207b136acb2d4bccc973bc90d61fb1af0414e |
+| prompt sha256 | 4fa4491b4588d1e4a1ca9e8b2408ce5c4611b305a7e1d6a8958b1979f05ec53f |
+| prompt policy | render-source-comparison-v2 |
+| system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
+| reasoning effort | provider default |
+| output token budget | transport default (65536 for DeepSeek) |
+| subject sha256 | 91b3cbebdd7d66acede0e17c69121bdfe9f004247da995655c6e3a5dd53cc155 |
 | lines judged | 9 |
 | match / mismatch / unclear / missing | 7 / 1 / 1 / 0 |
 | verdicts for lines not in the form | none |
@@ -29,53 +33,53 @@ Status: **MISMATCH**
 
 Restated: Enter the smaller of helper "State or local income tax refunds, credits or offsets you received in 2025" or helper "The amount on your 2024 Schedule A, line 5d".
 
-Model: Taking the smaller of the 2025 refunds received and 2024 Schedule A line 5d matches the worksheet's 'But don't enter more than the amount... shown on your 2024 Schedule A, line 5d'. But the refusals leave out some Exception cases, so the worksheet would still be used for them: '1. You received a refund in 2025 that is for a tax year other than 2024' and '5. You made your last payment of 2024 estimated state or local income tax in 2025.' Exception 2 ('a refund other than an income tax refund') is also not refused; the input label limits the amount to income tax refunds, but no refusal names that case.
+Model: The min of the refund and 2024 Schedule A line 5d matches 'But don't enter more than the amount ... on your 2024 Schedule A, line 5d'. However, the refusals omit Exceptions that send the filer to Pub. 525: '1. You received a refund in 2025 that is for a tax year other than 2024' and '5. You made your last payment of 2024 estimated state or local income tax in 2025'. The 'received' input takes all box 2 amounts, so those refunds would enter line 1 unallocated.
 
-Ruling: refusal located elsewhere; project retained. The cases named are refused on the line that reads this one: refund.taxable, which Schedule 1 line 1 enters, refuses on refund.not_2024 ("Is any of these refunds for a tax year other than 2024 (box 3 of Form 1099-G), or did you make your last payment of 2024 estimated state or local income tax in 2025?"), exceptions 1 and 5 (i1040gi p. 89, Line 1, "1. You received a refund in 2025 that is for a tax year other than 2024", "5. You made your last payment of 2024 estimated state or local income tax in 2025"), and gives zero, without the worksheet, unless you itemized for 2024 and deducted income rather than sales taxes (refund.worksheet; p. 88, Line 1, "If the refund was for a tax you paid in 2024 and you deducted state and local income taxes on your 2024 Schedule A, use the State and Local Income Tax Refund Worksheet"). Exceptions 3, 4 and 6 to 9 are the two refusals on this line (refund.exc_tax, refund.exc_who), exception 2 is refused by the Schedule 1 screen (scope.schedule1, which names other recoveries of amounts deducted or credited in an earlier year).
+Ruling: scope; i1040gi p. 89, Line 1, Exception: "See Itemized Deduction Recoveries in Pub. 525 instead of using the State and Local Income Tax Refund Worksheet ... if any of the following applies", "1. You received a refund in 2025 that is for a tax year other than 2024" and "5. You made your last payment of 2024 estimated state or local income tax in 2025". Both are screened by refund.not_2024 ("Is any of these refunds for a tax year other than 2024 (box 3 of Form 1099-G), or did you make your last payment of 2024 estimated state or local income tax in 2025?"), whose refusal sits on refund.taxable, the line Schedule 1 line 1 enters, so no such refund reaches a completed return through line 1. The refusal is located on the reading line rather than line 1 itself; the model saw only line 1's two refusals (exc_tax, exc_who: items 3, 4, 6-9). The min with 2024 Schedule A line 5d matches ("But don't enter more than the amount of your state and local income taxes shown on your 2024 Schedule A, line 5d"). Same as the archived ruling, rechecked.
 
 ### 2 — Subtract the amount on your 2024 Schedule A, line 5e, from the amount of state and local i
 Status: **MATCH**
 
-Model: The worksheet subtracts 2024 Schedule A line 5e from line 5d when 5d is more than 5e. Otherwise, line 1 goes to line 3 unchanged, which a line 2 of zero also produces. The refusal covers the case where line 5e is more than line 5d.
+Model: The worksheet subtracts 2024 Schedule A line 5e from line 5d when 5d is more, and otherwise skips line 2. The restatement's 5d minus 5e, floored at zero, gives the same result. The refusal covers the impossible case where 5e is more than 5d.
 
 ### 3 — Subtract line 2 from line 1
 Status: **MATCH**
 
-Model: 'Yes. Subtract line 2 from line 1.' In the 'No... None of your refund is taxable' case, the program's floor of zero plus the line 9 gate give zero.
+Model: 'Subtract line 2 from line 1' when line 1 is more than line 2. When line 2 is skipped, line 2 is zero and line 3 equals line 1, as the 'No' branch says. The 'None of your refund is taxable' stop is carried through line 9.
 
 ### 4 — Enter your total itemized deductions from your 2024 Schedule A, line 17
 Status: **MATCH**
 
-Model: 'Enter your total itemized deductions from your 2024 Schedule A, line 17.'
+Model: 'Enter your total itemized deductions from your 2024 Schedule A, line 17.' The MFS skip note is handled at line 8.
 
 ### 5 — Enter the amount shown below for the filing status claimed on your 2024 Form 1040 or 1040-
 Status: **MATCH**
 
-Model: The amounts by filing status match: single or married filing separately $14,600; married filing jointly or qualifying surviving spouse $29,200; head of household $21,900.
+Model: These amounts match the worksheet: 'Single or married filing separately—$14,600; Married filing jointly or qualifying surviving spouse—$29,200; Head of household—$21,900'.
 
 ### 6 — Check any boxes that apply. Multiply the number of boxes checked by $1,550 ($1,950 if your
 Status: **UNCLEAR**
 
 Restated: Add helper "The amount for the box "You were born before January 2, 1960" (zero if not checked)", helper "The amount for the box "You are blind" (zero if not checked)", helper "The amount for the box "Spouse was born before January 2, 1960" (zero if not checked, and when your 2024 filing status was not married filing jointly or married filing separately)", and helper "The amount for the box "Spouse is blind" (zero if not checked, and when your 2024 filing status was not married filing jointly or married filing separately)".
 
-Model: The worksheet says 'Multiply the number of boxes checked by $1,550 ($1,950 if your 2024 filing status was single or head of household)'. The restatement adds per-box 'amounts' that are not defined in the glossary, so the $1,550/$1,950 rates can't be checked. The married-filing-separately spouse-box condition ('only if your spouse had no income, isn't filing a return, and can't be claimed as a dependent') is also not shown in the restatement.
+Model: The worksheet says 'Multiply the number of boxes checked by $1,550 ($1,950 if your 2024 filing status was single or head of household)'. The per-box amount helpers are not defined in the glossary, so the rate cannot be checked. The spouse-box gate (allowed only for MFJ/MFS) does not show the footnote condition for MFS: 'only if your spouse had no income, isn't filing a return, and can't be claimed as a dependent'. The worksheet text also gives no basis for zeroing spouse boxes for qualifying surviving spouse.
 
-Ruling: representation; project retained. Each per-box helper is refund.per_box when its box is checked and zero otherwise, and refund.per_box is $1,550, or $1,950 when the 2024 status was single or head of household (refund.box_married, refund.box_unmarried), so the sum is the number of boxes times the amount (i1040gi p. 90, State and Local Income Tax Refund Worksheet, line 6, "Multiply the number of boxes checked by $1,550 ($1,950 if your 2024 filing status was single or head of household)"). The married filing separately condition for the spouse boxes is in the spouse questions themselves (refund.spouse_born, refund.spouse_blind: "answer yes only if your spouse also had no income, wasn't filing a return, and couldn't be claimed as a dependent on another person's return"), as the footnote says ("you can check the boxes for your spouse only if your spouse had no income, isn't filing a return, and can't be claimed as a dependent"); amb.2025.refund_boxes_2024 records the reading.
+Ruling: representation; i1040gi p. 90, State and Local Income Tax Refund Worksheet, line 6: "Multiply the number of boxes checked by $1,550 ($1,950 if your 2024 filing status was single or head of household)". Each per-box helper is refund.per_box ("$1,550 ($1,950 if your 2024 filing status was single or head of household)": single/hoh -> refund.box_unmarried $1,950; mfj/mfs/qss -> refund.box_married $1,550) when its box is checked and zero otherwise, so the sum is boxes times the rate. The MFS footnote ("If your filing status is married filing separately, you can check the boxes for your spouse only if your spouse had no income, isn't filing a return, and can't be claimed as a dependent on another person's return") is carried in the spouse questions refund.spouse_born and refund.spouse_blind ("If your 2024 filing status was married filing separately, answer yes only if your spouse also had no income, wasn't filing a return, and couldn't be claimed as a dependent"). The rate was not checkable by the model because helpers are glossed only by label (the label does state the rate). On the qualifying-surviving-spouse point (spouse boxes zero unless 2024 status MFJ or MFS): ambiguity, amb.2025.refund_boxes_2024 (chosen reading: "ask the spouse questions only when the 2024 filing status was married filing jointly or married filing separately"); the worksheet is silent on QSS, and on the 2024 Form 1040 the spouse boxes belong to a spouse on the return.
 
 ### 7 — Add lines 5 and 6
 Status: **MATCH**
 
 Model: 'Add lines 5 and 6.'
 
-### 8 — Subtract line 7 from line 4 (if your 2024 filing status was married filing separately and 
+### 8 — Subtract line 7 from line 4 (if your 2024 filing status was married filing separately and
 Status: **MATCH**
 
-Model: 'Yes. Subtract line 7 from line 4'. The 'No... STOP' case gives zero, which then flows to zero on line 9. For married filing separately with a spouse who itemized, the Note says to 'skip lines 5 through 7, enter the amount from line 4 on line 8', which is what the restatement does.
+Model: Line 4 minus line 7, floored at zero, matches 'Subtract line 7 from line 4', and the zero result matches the 'No' STOP. For MFS where the spouse itemized, using line 4 matches the note 'skip lines 5 through 7, enter the amount from line 4 on line 8'.
 
 ### 9 — Taxable part of your refund. Enter the smaller of line 3 or line 8 here and on Schedule 1,
 Status: **MATCH**
 
-Model: 'Enter the smaller of line 3 or line 8'. The program enters zero when line 1 is not more than line 2, matching line 3's 'No. STOP None of your refund is taxable.'
+Model: 'Enter the smaller of line 3 or line 8.' Zero when line 1 is not more than line 2 matches the line 3 'No. STOP None of your refund is taxable'. The line 8 STOP also yields zero through the min.
 
 ## Raw response
 
@@ -84,30 +88,30 @@ Model: 'Enter the smaller of line 3 or line 8'. The program enters zero when lin
 lines:
   - key: "1"
     status: MISMATCH
-    reason: "Taking the smaller of the 2025 refunds received and 2024 Schedule A line 5d matches the worksheet's 'But don't enter more than the amount... shown on your 2024 Schedule A, line 5d'. But the refusals leave out some Exception cases, so the worksheet would still be used for them: '1. You received a refund in 2025 that is for a tax year other than 2024' and '5. You made your last payment of 2024 estimated state or local income tax in 2025.' Exception 2 ('a refund other than an income tax refund') is also not refused; the input label limits the amount to income tax refunds, but no refusal names that case."
+    reason: "The min of the refund and 2024 Schedule A line 5d matches 'But don't enter more than the amount ... on your 2024 Schedule A, line 5d'. However, the refusals omit Exceptions that send the filer to Pub. 525: '1. You received a refund in 2025 that is for a tax year other than 2024' and '5. You made your last payment of 2024 estimated state or local income tax in 2025'. The 'received' input takes all box 2 amounts, so those refunds would enter line 1 unallocated."
   - key: "2"
     status: MATCH
-    reason: "The worksheet subtracts 2024 Schedule A line 5e from line 5d when 5d is more than 5e. Otherwise, line 1 goes to line 3 unchanged, which a line 2 of zero also produces. The refusal covers the case where line 5e is more than line 5d."
+    reason: "The worksheet subtracts 2024 Schedule A line 5e from line 5d when 5d is more, and otherwise skips line 2. The restatement's 5d minus 5e, floored at zero, gives the same result. The refusal covers the impossible case where 5e is more than 5d."
   - key: "3"
     status: MATCH
-    reason: "'Yes. Subtract line 2 from line 1.' In the 'No... None of your refund is taxable' case, the program's floor of zero plus the line 9 gate give zero."
+    reason: "'Subtract line 2 from line 1' when line 1 is more than line 2. When line 2 is skipped, line 2 is zero and line 3 equals line 1, as the 'No' branch says. The 'None of your refund is taxable' stop is carried through line 9."
   - key: "4"
     status: MATCH
-    reason: "'Enter your total itemized deductions from your 2024 Schedule A, line 17.'"
+    reason: "'Enter your total itemized deductions from your 2024 Schedule A, line 17.' The MFS skip note is handled at line 8."
   - key: "5"
     status: MATCH
-    reason: "The amounts by filing status match: single or married filing separately $14,600; married filing jointly or qualifying surviving spouse $29,200; head of household $21,900."
+    reason: "These amounts match the worksheet: 'Single or married filing separately—$14,600; Married filing jointly or qualifying surviving spouse—$29,200; Head of household—$21,900'."
   - key: "6"
     status: UNCLEAR
-    reason: "The worksheet says 'Multiply the number of boxes checked by $1,550 ($1,950 if your 2024 filing status was single or head of household)'. The restatement adds per-box 'amounts' that are not defined in the glossary, so the $1,550/$1,950 rates can't be checked. The married-filing-separately spouse-box condition ('only if your spouse had no income, isn't filing a return, and can't be claimed as a dependent') is also not shown in the restatement."
+    reason: "The worksheet says 'Multiply the number of boxes checked by $1,550 ($1,950 if your 2024 filing status was single or head of household)'. The per-box amount helpers are not defined in the glossary, so the rate cannot be checked. The spouse-box gate (allowed only for MFJ/MFS) does not show the footnote condition for MFS: 'only if your spouse had no income, isn't filing a return, and can't be claimed as a dependent'. The worksheet text also gives no basis for zeroing spouse boxes for qualifying surviving spouse."
   - key: "7"
     status: MATCH
     reason: "'Add lines 5 and 6.'"
   - key: "8"
     status: MATCH
-    reason: "'Yes. Subtract line 7 from line 4'. The 'No... STOP' case gives zero, which then flows to zero on line 9. For married filing separately with a spouse who itemized, the Note says to 'skip lines 5 through 7, enter the amount from line 4 on line 8', which is what the restatement does."
+    reason: "Line 4 minus line 7, floored at zero, matches 'Subtract line 7 from line 4', and the zero result matches the 'No' STOP. For MFS where the spouse itemized, using line 4 matches the note 'skip lines 5 through 7, enter the amount from line 4 on line 8'."
   - key: "9"
     status: MATCH
-    reason: "'Enter the smaller of line 3 or line 8'. The program enters zero when line 1 is not more than line 2, matching line 3's 'No. STOP None of your refund is taxable.'"
+    reason: "'Enter the smaller of line 3 or line 8.' Zero when line 1 is not more than line 2 matches the line 3 'No. STOP None of your refund is taxable'. The line 8 STOP also yields zero through the min."
 ```
 ```

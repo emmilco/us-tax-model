@@ -113,28 +113,28 @@
 - **Authored helper label:** Section 1202 distribution present
 - **Encoded (Bool):** helper "Section 1202 gain, box 2c" > $0
 - Expr: `{"gt":["div.box2c",{"const":0}],"op":"test"}`
-- Cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); sha256 4ea1de80)
+- Cite: [f1099div] p. 5, Instructions for Recipient, Box 2c, "Shows the portion of the amount in box 2a that is section 1202 gain from certain small business stock that may be subject to an exclusion" (January 2024 (continuous-use form); sha256 4ea1de80)
 
 ## (helper) — `div.amt`
 
 - **Authored helper label:** Specified private activity bond dividends present
 - **Encoded (Bool):** helper "Specified private activity bond interest dividends, box 13" > $0
 - Expr: `{"gt":["div.box13",{"const":0}],"op":"test"}`
-- Cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); sha256 4ea1de80)
+- Cite: [f1099div] p. 5, Instructions for Recipient, Box 13, "Shows exempt-interest dividends subject to the alternative minimum tax" (January 2024 (continuous-use form); sha256 4ea1de80)
 
 ## (helper) — `div.unsupported`
 
 - **Authored helper label:** Unsupported section 897, liquidation or unreconciled basis/excess distribution
 - **Encoded (Bool):** (helper "Section 897 ordinary dividends, box 2e" > $0 or helper "Section 897 capital gain, box 2f" > $0 or helper "Cash liquidation distributions, box 9" > $0 or helper "Noncash liquidation distributions, box 10" > $0 or helper "Nondividend distributions/return of capital, box 3" > $0 and helper "For box 3, have basis reductions been applied to records with no distribution exceeding basis?" = false)
 - Expr: `{"any":[{"gt":["div.box2e",{"const":0}],"op":"test"},{"gt":["div.box2f",{"const":0}],"op":"test"},{"gt":["div.box9",{"const":0}],"op":"test"},{"gt":["div.box10",{"const":0}],"op":"test"},{"all":[{"gt":["div.box3",{"const":0}],"op":"test"},{"eq":["div.basis_reconciled",{"const":false}],"op":"test"}],"op":"test"}],"op":"test"}`
-- Cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); sha256 4ea1de80)
+- Cite: [f1099div] p. 5, Instructions for Recipient, boxes 2e, 2f, 3, 9 and 10, "Box 2e. Shows the portion of the amount in box 1a that is section 897 gain", "Box 2f. Shows the portion of the amount in box 2a that is section 897 gain", "Box 3. Shows a return of capital. To the extent of your cost (or other basis) in the stock, the distribution reduces your basis and is not taxable", "Boxes 9 and 10. Show cash and noncash liquidation distributions" (January 2024 (continuous-use form); sha256 4ea1de80)
 
 ## (helper) — `div.bad_special`
 
 - **Authored helper label:** A gain component exceeds total capital gain distributions
 - **Encoded (Bool):** (helper "Unrecaptured section 1250 gain, box 2b" > sd helper "Capital gain distributions, generally Form 1099-DIV box 2a" or helper "Section 1202 gain, box 2c" > sd helper "Capital gain distributions, generally Form 1099-DIV box 2a" or helper "Collectibles (28%) gain, box 2d" > sd helper "Capital gain distributions, generally Form 1099-DIV box 2a" or helper "Total special capital-gain distribution components" > sd helper "Capital gain distributions, generally Form 1099-DIV box 2a")
 - Expr: `{"any":[{"gt":["div.box2b","sd.distributions"],"op":"test"},{"gt":["div.box2c","sd.distributions"],"op":"test"},{"gt":["div.box2d","sd.distributions"],"op":"test"},{"gt":["div.special_total","sd.distributions"],"op":"test"}],"op":"test"}`
-- Cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); sha256 4ea1de80)
+- Cite: [f1099div] p. 5, Instructions for Recipient, boxes 2b to 2d, "Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain", "Box 2c. Shows the portion of the amount in box 2a that is section 1202 gain", "Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain" (January 2024 (continuous-use form); sha256 4ea1de80)
 
 ## (helper) — `div.screen`
 
@@ -154,11 +154,11 @@
 - **Authored helper label:** Qualified or section 199A dividends exceed ordinary dividends
 - **Encoded (Bool):** (f1040 line 3a > sb helper "Total ordinary dividends, Form 1099-DIV box 1a" or qbi helper "Qualified section 199A dividends from Form 1099-DIV box 5 after confirming holding-period and related-payment requirements" > sb helper "Total ordinary dividends, Form 1099-DIV box 1a")
 - Expr: `{"any":[{"gt":["f1040.line3a","sb.ordinary_dividends"],"op":"test"},{"gt":["qbi.dividends","sb.ordinary_dividends"],"op":"test"}],"op":"test"}`
-- Cite: [f1099div] Instructions for Recipient, boxes 1a, 1b and 5 (January 2024 (continuous-use form); sha256 4ea1de80)
+- Cite: [f1099div] p. 5, Instructions for Recipient, boxes 1b and 5, "Box 1b. Shows the portion of the amount in box 1a that may be eligible for reduced capital gains rates", "Box 5. Shows the portion of the amount in box 1a that may be eligible for the 20% qualified business income deduction under section 199A" (January 2024 (continuous-use form); sha256 4ea1de80)
 
 ## (helper) — `div.special_total`
 
 - **Authored helper label:** Total special capital-gain distribution components
 - **Encoded (NonNegDollars):** Add helper "Unrecaptured section 1250 gain, box 2b", helper "Section 1202 gain, box 2c", and helper "Collectibles (28%) gain, box 2d".
 - Expr: `{"of":["div.box2b","div.box2c","div.box2d"],"op":"sum"}`
-- Cite: [f1099div] Instructions for Recipient, capital gain components in boxes 2b–2d (January 2024 (continuous-use form); sha256 4ea1de80)
+- Cite: [f1099div] p. 5, Instructions for Recipient, boxes 2b to 2d, "Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain", "Box 2c. Shows the portion of the amount in box 2a that is section 1202 gain", "Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain" (January 2024 (continuous-use form); sha256 4ea1de80)

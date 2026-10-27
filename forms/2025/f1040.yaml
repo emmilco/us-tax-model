@@ -25,7 +25,8 @@ form:
         field: person.box1
       cite:
         doc: i1040gi
-        locator: Instructions for Form 1040, pp. 23–24, lines 1a–1h
+        locator: pp. 23–24, Line 1a, Total Amount From Form(s) W-2, Box 1, "Enter the total amount from Form(s) W-2,
+          box 1. If a joint return, also include your spouse’s income from Form(s) W-2, box 1"
       refuses:
         - when: household.roster_bad
           form: The people on the return
@@ -468,7 +469,8 @@ form:
         take: f1040.line14
       cite:
         doc: i1040gi
-        locator: Instructions for Form 1040, line 15
+        locator: f1040 Form 1040 (2025), line 15, "Subtract line 14 from line 11b. If zero or less, enter -0-. This is
+          your taxable income"
     - id: f1040.gate.qdcg_applies
       printed: (gate)
       label: Use the Qualified Dividends and Capital Gain Tax Worksheet?
@@ -502,7 +504,11 @@ form:
                   - const: true
       cite:
         doc: i1040gi
-        locator: Instructions for Form 1040, line 16 (Qualified Dividends and Capital Gain Tax Worksheet)
+        locator: p. 36, Line 16, Qualified Dividends and Capital Gain Tax Worksheet, "Use the Qualified Dividends and
+          Capital Gain Tax Worksheet, later, to figure your tax if you don’t have to use the Schedule D Tax Worksheet
+          and if any of the following applies", "You reported qualified dividends on Form 1040 or 1040-SR, line 3a",
+          "You don’t have to file Schedule D and you reported capital gain distributions on Form 1040 or 1040-SR, line
+          7a", "You are filing Schedule D, and Schedule D, lines 15 and 16, are both more than zero"
     - id: f1040.gate.sdtw
       printed: (gate)
       type: Bool
@@ -572,7 +578,10 @@ form:
               line: tax
       cite:
         doc: i1040gi
-        locator: Instructions for Form 1040, line 16
+        locator: p. 36, Line 16, "No. Use one of the following methods to figure your tax", "If your taxable income is
+          less than $100,000, you must use the Tax Table", "If your taxable income is $100,000 or more, use the Tax
+          Computation Worksheet", "Use the Qualified Dividends and Capital Gain Tax Worksheet, later, to figure your
+          tax if you don’t have to use the Schedule D Tax Worksheet"
     - id: f1040.line16
       printed: "16"
       label: "Tax (see instructions). Check if any from Form(s): 1 8814 2 4972 3"
@@ -594,7 +603,10 @@ form:
             then: f1040.non_sdtw_tax
       cite:
         doc: i1040gi
-        locator: Instructions for Form 1040, line 16
+        locator: p. 34, Line 16, Tax, "Tax on your taxable income. Figure the tax using one of the methods described
+          later"; p. 36, Line 16, "Use the Schedule D Tax Worksheet in the Instructions for Schedule D to figure the
+          amount to enter on Form 1040 or 1040-SR, line 16", "Use the Qualified Dividends and Capital Gain Tax
+          Worksheet, later, to figure your tax if you don’t have to use the Schedule D Tax Worksheet"
       refuses:
         - when: scope.other_line16
           form: Forms 8814, 4972, 8615, 8621 or 8978, a section 962 election, or an education credit recapture

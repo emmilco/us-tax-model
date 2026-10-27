@@ -50,14 +50,14 @@
 - **Authored helper label:** Your entry, if the answer is yes
 - **Encoded (Count):** Add person.one over every confirmed person entry for which helper "Whose entry is this, yours or your spouse's?" = 'taxpayer' and helper "Were you born before January 2, 1961?" = true, within the current person when parent-bound. An unanswered roster is unknown.
 - Expr: `{"collection":"person","field":"person.one","op":"sum_over","where":{"all":[{"eq":["person.role",{"const":"taxpayer"}],"op":"test"},{"eq":["person.age65",{"const":true}],"op":"test"}],"op":"test"}}`
-- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+- Cite: [f1040sa] i1040gi p. 35, Standard Deduction Chart for People Who Were Born Before January 2, 1961, or Were Blind, "You were born before January 2, 1961", "Enter the total number of boxes checked" (2025; created 2025-11-20; sha256 c14acf34)
 
 ## (helper) — `sa.age65`
 
 - **Authored helper label:** Were you born before January 2, 1961?
 - **Encoded (Bool):** helper "Your entry, if the answer is yes" > 0 (a count)
 - Expr: `{"gt":["sa.age65_count",{"const":0,"type":"Count"}],"op":"test"}`
-- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+- Cite: [f1040sa] i1040gi p. 35, Standard Deduction Chart for People Who Were Born Before January 2, 1961, or Were Blind, "You were born before January 2, 1961", "Enter the total number of boxes checked" (2025; created 2025-11-20; sha256 c14acf34)
 
 ## (helper) — `sa.spouse_itemizes`
 
@@ -151,21 +151,21 @@
 - **Encoded (NonNegDollars):** Multiply line 2 by 75/1000 (sa.medical_rate).
 - Interpretation: amb.2025.multiplication_subcent
 - Expr: `{"amount":"sa.line2","op":"multiply_rate","rate":{"param":"sa.medical_rate"}}`
-- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+- Cite: [f1040sa] p. 1, Medical and Dental Expenses, line 3, "Multiply line 2 by 7.5% (0.075)" (2025; created 2025-11-20; sha256 c14acf34)
 
 ## 4 — `sa.line4`
 
 - **IRS:** Subtract sa.line3 from sa.line1; if zero or less, enter zero
 - **Encoded (NonNegDollars):** Subtract line 3 from line 1. If zero or less, enter -0-.
 - Expr: `{"from":"sa.line1","op":"subtract_floor0","take":"sa.line3"}`
-- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+- Cite: [f1040sa] p. 1, Medical and Dental Expenses, line 4, "Subtract line 3 from line 1. If line 3 is more than line 1, enter -0-" (2025; created 2025-11-20; sha256 c14acf34)
 
 ## 5d — `sa.line5d`
 
 - **IRS:** Add sa.line5a, sa.line5b, sa.line5c
 - **Encoded (NonNegDollars):** Add line 5a, line 5b, and line 5c.
 - Expr: `{"of":["sa.line5a","sa.line5b","sa.line5c"],"op":"sum"}`
-- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+- Cite: [f1040sa] p. 1, Taxes You Paid, line 5d, "d Add lines 5a through 5c" (2025; created 2025-11-20; sha256 c14acf34)
 
 ## (helper) — `sa.saltbase`
 
@@ -193,7 +193,7 @@
 - **Authored helper label:** Subtract sa.saltthreshold from sa.agi; if zero or less, enter zero
 - **Encoded (NonNegDollars):** Subtract helper "Year parameter sa.salt_threshold" from helper "Form 1040 line 11b adjusted gross income". If zero or less, enter -0-.
 - Expr: `{"from":"sa.agi","op":"subtract_floor0","take":"sa.saltthreshold"}`
-- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+- Cite: [f1040sa] i1040sca p. 7, State and Local Tax Deduction Worksheet, "Enter $500,000 ($250,000 if married filing separately)", "Is the amount on line 4 more than the amount on line 5?", "Subtract line 5 from line 4" (2025; created 2025-11-20; sha256 c14acf34)
 
 ## (helper) — `sa.saltreduction`
 
@@ -201,14 +201,14 @@
 - **Encoded (NonNegDollars):** Multiply helper "Subtract sa.saltthreshold from sa.agi; if zero or less, enter zero" by 3/10 (sa.salt_rate).
 - Interpretation: amb.2025.multiplication_subcent
 - Expr: `{"amount":"sa.saltexcess","op":"multiply_rate","rate":{"param":"sa.salt_rate"}}`
-- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+- Cite: [f1040sa] i1040sca p. 7, State and Local Tax Deduction Worksheet, "Multiply line 6 by 30% (0.30)" (2025; created 2025-11-20; sha256 c14acf34)
 
 ## (helper) — `sa.saltremaining`
 
 - **Authored helper label:** Subtract sa.saltreduction from sa.saltbase; if zero or less, enter zero
 - **Encoded (NonNegDollars):** Subtract helper "Multiply sa.saltexcess by sa.salt_rate" from helper "Year parameter sa.salt_base". If zero or less, enter -0-.
 - Expr: `{"from":"sa.saltbase","op":"subtract_floor0","take":"sa.saltreduction"}`
-- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+- Cite: [f1040sa] i1040sca p. 7, State and Local Tax Deduction Worksheet, "Subtract line 7 from line 1", "Enter $40,000" (2025; created 2025-11-20; sha256 c14acf34)
 
 ## (helper) — `sa.saltfloor_applied`
 
@@ -223,14 +223,14 @@
 - **Encoded (NonNegDollars):** Multiply helper "Larger of remaining ceiling and $10,000" by 1/2 (sa.half).
 - Interpretation: amb.2025.multiplication_subcent
 - Expr: `{"amount":"sa.saltfloor_applied","op":"multiply_rate","rate":{"param":"sa.half"}}`
-- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+- Cite: [f1040sa] i1040sca p. 7, State and Local Tax Deduction Worksheet, "State and local tax deduction. Enter the smaller of the amount on line 9 (half the amount on line 9 if married filing separately) or the amount from Schedule A, line 5d" (2025; created 2025-11-20; sha256 c14acf34)
 
 ## (helper) — `sa.mfs`
 
 - **Authored helper label:** Married filing separately
 - **Encoded (Bool):** f1040 line Filing Status = 'mfs'
 - Expr: `{"eq":["f1040.status",{"const":"mfs"}],"op":"test"}`
-- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+- Cite: [f1040sa] i1040sca p. 7, State and Local Tax Deduction Worksheet, "(half the amount on line 9 if married filing separately)" (2025; created 2025-11-20; sha256 c14acf34)
 
 ## (helper) — `sa.saltlimit`
 
@@ -244,7 +244,7 @@
 - **IRS:** Smaller of sa.line5d, sa.saltlimit
 - **Encoded (NonNegDollars):** Enter the smaller of line 5d or helper "Half the worksheet ceiling if married filing separately".
 - Expr: `{"of":["sa.line5d","sa.saltlimit"],"op":"smaller_of"}`
-- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+- Cite: [f1040sa] p. 1, Taxes You Paid, line 5e, "Enter the smaller of line 5d or $40,000 ($20,000 if married filing separately)"; i1040sca p. 7, Line 5e, "If Form 1040 or 1040-SR, line 11b is more than $500,000 ($250,000 if married filing separately), or if you completed Form 2555, Form 4563, or excluded income from Puerto Rico, complete the State and Local Tax Deduction Worksheet to figure the amount to enter on line 5e" (2025; created 2025-11-20; sha256 c14acf34)
 
 ## 6 — `sa.line6`
 
@@ -326,14 +326,14 @@
 - **IRS:** Add sa.line5e, sa.line6
 - **Encoded (NonNegDollars):** Add line 5e and line 6.
 - Expr: `{"of":["sa.line5e","sa.line6"],"op":"sum"}`
-- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+- Cite: [f1040sa] p. 1, Taxes You Paid, line 7, "Add lines 5e and 6" (2025; created 2025-11-20; sha256 c14acf34)
 
 ## 8e — `sa.line8e`
 
 - **IRS:** Add sa.line8a, sa.line8b, sa.line8c
 - **Encoded (NonNegDollars):** Add line 8a, line 8b, and line 8c.
 - Expr: `{"of":["sa.line8a","sa.line8b","sa.line8c"],"op":"sum"}`
-- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+- Cite: [f1040sa] p. 1, Interest You Paid, line 8e, "e Add lines 8a through 8c" (2025; created 2025-11-20; sha256 c14acf34)
 
 ## 9 — `sa.line9`
 
@@ -347,7 +347,7 @@
 - **IRS:** Add sa.line8e, sa.line9
 - **Encoded (NonNegDollars):** Add line 8e and line 9.
 - Expr: `{"of":["sa.line8e","sa.line9"],"op":"sum"}`
-- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+- Cite: [f1040sa] p. 1, Interest You Paid, line 10, "Add lines 8e and 9" (2025; created 2025-11-20; sha256 c14acf34)
 
 ## 12 — `sa.line12`
 
@@ -357,21 +357,21 @@
 - **Refusal:** when sa.charity_limited is true, cannot complete Schedule A charitable limitation / carryover. Income-limited and carried-over charitable deductions are outside scope. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 - **Refusal:** when sa.excluded_income is true, cannot complete Schedule A SALT Worksheet / Forms 2555 and 4563. Excluded-income addbacks are outside scope. Cite: [i1040sca] p. 7, State and Local Tax Deduction Worksheet (2025; printed date 2025-12-08; sha256 b0999b12)
 - Expr: `{"collection":"gift","field":"gift.allowed","op":"sum_over"}`
-- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+- Cite: [f1040sa] p. 1, Gifts to Charity, line 12, "Other than by cash or check. If you made any gift of $250 or more, see instructions" (2025; created 2025-11-20; sha256 c14acf34)
 
 ## (helper) — `sa.form8283`
 
 - **Authored helper label:** Noncash total exceeds $500; Form 8283 attachment required
 - **Encoded (Bool):** line 12 > $500
 - Expr: `{"gt":["sa.line12",{"const":50000}],"op":"test"}`
-- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+- Cite: [f1040sa] p. 1, Gifts to Charity, line 12, "You must attach Form 8283 if over $500" (2025; created 2025-11-20; sha256 c14acf34)
 
 ## 14 — `sa.line14`
 
 - **IRS:** Add sa.line11, sa.line12, sa.line13
 - **Encoded (NonNegDollars):** Add line 11, line 12, and line 13.
 - Expr: `{"of":["sa.line11","sa.line12","sa.line13"],"op":"sum"}`
-- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+- Cite: [f1040sa] p. 1, Gifts to Charity, line 14, "Add lines 11 through 13" (2025; created 2025-11-20; sha256 c14acf34)
 
 ## 17 — `sa.line17`
 
@@ -381,7 +381,7 @@
 - **Refusal:** when sa.charity_limited is true, cannot complete Schedule A charitable limitation / carryover. Income-limited and carried-over charitable deductions are outside scope. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 - **Refusal:** when sa.excluded_income is true, cannot complete Schedule A SALT Worksheet / Forms 2555 and 4563. Excluded-income addbacks are outside scope. Cite: [i1040sca] p. 7, State and Local Tax Deduction Worksheet (2025; printed date 2025-12-08; sha256 b0999b12)
 - Expr: `{"of":["sa.line4","sa.line7","sa.line10","sa.line14","sa.line15","sa.line16"],"op":"sum"}`
-- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+- Cite: [f1040sa] p. 1, Total Itemized Deductions, line 17, "Add the amounts in the far right column for lines 4 through 16. Also, enter this amount on Form 1040 or 1040-SR, line 12e" (2025; created 2025-11-20; sha256 c14acf34)
 
 ## (helper) — `sa.standardbase`
 
@@ -430,7 +430,7 @@
 - **Authored helper label:** Add sa.standardbase, sa.extra_age65, sa.extra_blind
 - **Encoded (NonNegDollars):** Add helper "Year parameter sa.standard_base", helper "Additional standard deduction for each box checked for age", and helper "Additional standard deduction for each box checked for blindness".
 - Expr: `{"of":["sa.standardbase","sa.extra_age65","sa.extra_blind"],"op":"sum"}`
-- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+- Cite: [f1040sa] i1040gi pp. 34–35, Line 12e Standard Deduction or Itemized Deductions, "Exception 4—Born before January 2, 1961, or blind", "Standard Deduction Chart for People Who Were Born Before January 2, 1961, or Were Blind", "If born before January 2, 1961, or blind, multiply the number on line 1 by $1,600 ($2,000 if single or head of household)" (2025; created 2025-11-20; sha256 c14acf34)
 
 ## (helper) — `sa.standard`
 
@@ -446,7 +446,7 @@
 - **Authored helper label:** Itemize if elected, required, or itemized total exceeds standard
 - **Encoded (Bool):** (helper "Elect to itemize even if the standard deduction is larger?" = true or helper "MFS with spouse itemizing" = true or line 17 > helper "Standard deduction, zero when MFS spouse itemizes")
 - Expr: `{"any":[{"eq":["sa.elect_itemize",{"const":true}],"op":"test"},{"eq":["sa.mfs_spouse_itemizes",{"const":true}],"op":"test"},{"gt":["sa.line17","sa.standard"],"op":"test"}],"op":"test"}`
-- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+- Cite: [f1040sa] p. 1, Total Itemized Deductions, line 18, "If you elect to itemize deductions even though they are less than your standard deduction, check this box"; i1040gi p. 34, Line 12e Standard Deduction or Itemized Deductions, "In most cases, your federal income tax will be less if you take the larger of your standard deduction or itemized deductions", "If you checked the box on line 12b, your standard deduction is zero" (2025; created 2025-11-20; sha256 c14acf34)
 
 ## (helper) — `sa.deduction`
 

@@ -360,7 +360,7 @@
 - **Authored helper label:** Additional child tax credit ceiling for this person ($1,700 for a qualifying child, else 0)
 - **Encoded (NonNegDollars):** Choose — [helper "Qualifying child for the child tax credit (Step 3)" = true → helper "Year parameter actc.per_child"] [helper "Qualifying child for the child tax credit (Step 3)" = false → helper "No amount for this person"]
 - Expr: `{"alternatives":[{"guard":{"eq":["dependent.ctc_child",{"const":true}],"op":"test"},"then":"dependent.actc_per_child"},{"guard":{"eq":["dependent.ctc_child",{"const":false}],"op":"test"},"then":"dependent.zero"}],"op":"choose"}`
-- Cite: [f1040s8812] Schedule 8812 (2025), line 16b, "Number of qualifying children under age 17 with the required social security number x $1,700" (2025; created 2025-07-30; sha256 6936462d)
+- Cite: [f1040s8812] p. 2, Part II-A Additional Child Tax Credit for All Filers, line 16b, "b Number of qualifying children under age 17 with the required social security number", "x $1,700. Enter the result" (2025; created 2025-07-30; sha256 6936462d)
 
 ## (helper) — `dependent.hoh_test2`
 
