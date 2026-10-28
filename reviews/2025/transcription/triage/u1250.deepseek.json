@@ -2,8 +2,28 @@
  "bank": null,
  "errors": [
   {
-   "line": "u1250.line3",
-   "message": "u1250.u1250.line3: declared NonNegDollars but the expression does not prove non-negativity"
+   "line": "u1250.line10",
+   "message": "u1250.u1250.__type_gate_6: collection reference requires sum_over"
+  },
+  {
+   "line": "u1250.line10",
+   "message": "u1250.u1250.__type_gate_6: comparison operands have incompatible types"
+  },
+  {
+   "line": "u1250.line12",
+   "message": "u1250.u1250.__type_gate_7: collection reference requires sum_over"
+  },
+  {
+   "line": "u1250.line12",
+   "message": "u1250.u1250.__type_gate_7: comparison operands have incompatible types"
+  },
+  {
+   "line": "u1250.line14",
+   "message": "u1250.u1250.__type_gate_11: collection reference requires sum_over"
+  },
+  {
+   "line": "u1250.line14",
+   "message": "u1250.u1250.__type_gate_11: comparison operands have incompatible types"
   }
  ],
  "failures": [],
@@ -11,42 +31,11 @@
  "form": "u1250",
  "lines": [
   {
-   "candidate": "u1250.line1",
-   "handle": "1",
-   "open_at_triage": true,
-   "project": "u1250.line1",
-   "status": "DISAGREE",
-   "triage": "candidate invalid"
-  },
-  {
-   "candidate": "u1250.line2",
-   "handle": "2",
-   "open_at_triage": true,
-   "project": "u1250.line2",
-   "status": "DISAGREE",
-   "triage": "candidate invalid"
-  },
-  {
    "candidate": "u1250.line3",
    "handle": "3",
    "open_at_triage": true,
    "project": "u1250.line3",
-   "status": "DISAGREE",
-   "triage": "candidate invalid"
-  },
-  {
-   "candidate": "u1250.line4",
-   "handle": "4",
-   "open_at_triage": true,
-   "project": "u1250.line4",
-   "status": "DISAGREE",
-   "triage": "candidate invalid"
-  },
-  {
-   "candidate": "u1250.line5",
-   "handle": "5",
-   "open_at_triage": true,
-   "project": "u1250.line5",
+   "shown_when": "u1250.reached",
    "status": "DISAGREE",
    "triage": "candidate invalid"
   },
@@ -55,22 +44,7 @@
    "handle": "6",
    "open_at_triage": true,
    "project": "u1250.line6",
-   "status": "DISAGREE",
-   "triage": "candidate invalid"
-  },
-  {
-   "candidate": "u1250.line7",
-   "handle": "7",
-   "open_at_triage": true,
-   "project": "u1250.line7",
-   "status": "DISAGREE",
-   "triage": "candidate invalid"
-  },
-  {
-   "candidate": "u1250.line8",
-   "handle": "8",
-   "open_at_triage": true,
-   "project": "u1250.line8",
+   "shown_when": "u1250.reached",
    "status": "DISAGREE",
    "triage": "candidate invalid"
   },
@@ -79,6 +53,7 @@
    "handle": "9",
    "open_at_triage": true,
    "project": "u1250.line9",
+   "shown_when": "u1250.reached",
    "status": "DISAGREE",
    "triage": "candidate invalid"
   },
@@ -87,6 +62,7 @@
    "handle": "10",
    "open_at_triage": true,
    "project": "u1250.line10",
+   "shown_when": "u1250.reached",
    "status": "DISAGREE",
    "triage": "candidate invalid"
   },
@@ -95,14 +71,16 @@
    "handle": "12",
    "open_at_triage": true,
    "project": "u1250.line12",
+   "shown_when": "u1250.reached",
    "status": "DISAGREE",
    "triage": "candidate invalid"
   },
   {
-   "candidate": "u1250.line16",
-   "handle": "16",
+   "candidate": "u1250.line13",
+   "handle": "13",
    "open_at_triage": true,
-   "project": "u1250.line16",
+   "project": "u1250.line13",
+   "shown_when": "u1250.reached",
    "status": "DISAGREE",
    "triage": "candidate invalid"
   },
@@ -111,6 +89,7 @@
    "handle": "14",
    "open_at_triage": true,
    "project": "u1250.line14",
+   "shown_when": "u1250.reached",
    "status": "DISAGREE",
    "triage": "candidate invalid"
   },
@@ -119,6 +98,7 @@
    "handle": "15",
    "open_at_triage": true,
    "project": "u1250.line15",
+   "shown_when": "u1250.reached",
    "status": "DISAGREE",
    "triage": "candidate invalid"
   },
@@ -127,14 +107,24 @@
    "handle": "17",
    "open_at_triage": true,
    "project": "u1250.line17",
+   "shown_when": "u1250.reached",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "u1250.line18",
+   "handle": "18",
+   "open_at_triage": true,
+   "project": "u1250.line18",
+   "shown_when": "u1250.reached",
    "status": "DISAGREE",
    "triage": "candidate invalid"
   }
  ],
- "log_sha256_at_triage": "f3629b50b25d965b5ae7e1a9de82bf860d6a24207758d73dacd79fa4391177a1",
- "policy": "executable-triage-v1",
- "response_sha256": "a4a30ebf1abcd4359da2b7dffa29da113925e00edbe910d3e83459d6dde6a1e2",
+ "log_sha256_at_triage": "bd337113b2a31768a92c4020dfee491f96bf73017dc2679eff4ca0f594a4e146",
+ "policy": "executable-triage-v2",
+ "response_sha256": "52b8be71230a64ecf7da44ec8b4283278e6bf4a661796c852e01ee013782ad7b",
  "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
  "state": "invalid",
- "subject_sha256": "7c2ca6c3b3c2a68b084811d9125f6cfdf739788a227ba22ed2e192b9e2fd45a0"
+ "subject_sha256": "d22f54615d647315065968d83cdb2845effb876bc11cf8b106d4480ec0d13cc8"
 }

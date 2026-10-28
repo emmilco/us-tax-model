@@ -637,3 +637,30 @@
 - Reason: A maximum deductible contribution below zero has no meaning, and the first reading would make a zero contribution exceed it, refusing every return with a SEP plan and a Schedule C loss at person.sep_excess. On the second, a zero contribution deducts zero and any contribution above zero is refused as excess, which is the deduction the first reading gives wherever it gives one. Where both readings complete the return, no Form 1040 or Schedule 1 amount differs; only the printed worksheet steps do (BUG-0180, regression stage14.sep.loss_floor).
 - Status: Applied for BUG-0180; the owner's decision is not yet recorded.
 - Cite: [p560] p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 3, "Subtract step 2 from step 1", and Step 21, "This is your maximum deductible contribution" (For use in preparing 2025 returns; sha256 1f1f7abe)
+
+## amb.2025.clcw_line1_signed
+
+- Text at issue: Capital Loss Carryover Worksheet line 1: "Enter the amount from your 2024 Form 1040, 1040-SR, or 1040-NR, line 15. If the amount would have been a loss if you could enter a negative number on that line, enclose the amount in parentheses". The 2024 Form 1040 prints line 15 as line 11 less line 14, floored at zero, so the would-be loss is not on the return; the filer has to work it out.
+- Candidate readings: Ask for one signed amount, the 2024 line 15 before its zero floor, with help text. | Ask for 2024 Form 1040 lines 11 and 14, as printed, and take line 1 as line 11 less line 14 (clcw.line1).
+- **Chosen:** The second.
+- Reason: Both lines are printed on the 2024 return, so nothing is computed by hand, and their difference is the amount the worksheet describes (2024 Form 1040 line 15 subtracts line 14 from line 11, archived under sources/2024). Owner's decision D2(a), 2026-10-27.
+- Status: Owner decision, 2026-10-27 (research/premises/stage20-capital-loss-carryover.decisions.md, D2).
+- Cite: [i1040sd] p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 1, "If the amount would have been a loss if you could enter a negative number on that line, enclose the amount in parentheses" (2025; printed date 2025-12-11; sha256 650643a6)
+
+## amb.2025.clcw_line2_printed
+
+- Text at issue: Capital Loss Carryover Worksheet line 2: "Enter the loss from your 2024 Schedule D, line 21, as a positive amount". Pub. 550 says the carryover counts the year's allowable deduction "whether or not you claimed it", so where the 2024 return understated line 21 the printed and the allowable figures differ.
+- Candidate readings: Take line 2 as printed on the 2024 Schedule D, refusing figures that cannot be right (more than $3,000, more than the loss on 2024 line 16, or less than the smaller of that loss and $1,500). | Recompute line 2 as the allowable loss from 2024 lines 7 and 15 and the 2024 filing status.
+- **Chosen:** The first (clcw.line2, refused on clcw.bad; the lower bound is $1,500 because the 2024 status is not asked).
+- Reason: The worksheet names the printed line, and the second reading needs the 2024 filing status as another question. The $3,000 bound applies whatever the 2024 status was, since a 2024 return married filing separately can precede a 2025 single return and its $1,500 limit cannot be assumed. Owner's decision D2(b), 2026-10-27.
+- Status: Owner decision, 2026-10-27 (research/premises/stage20-capital-loss-carryover.decisions.md, D2).
+- Cite: [p550] p. 102, Capital Losses, "whether or not you claimed it and whether or not you filed a return for the current year" (2025 returns; printed date 2026-03-05; sha256 83552968)
+
+## amb.2025.clcw_to_2026
+
+- Text at issue: Schedule D instructions, line 21: "You have a capital loss carryover from 2025 to 2026 if you have a loss on line 16" and "To figure any capital loss carryover to 2026, you will use the Capital Loss Carryover Worksheet in the 2026 Instructions for Schedule D. If you want to figure your carryover to 2026 now, see Pub. 550." Pub. 550 states the rule in prose; its worksheet is the one from 2024 to 2025.
+- Candidate readings: Show no carryover to 2026, leaving it to the 2026 instructions. | Apply the 13 lines of the 2025 worksheet to this return, reading each 2024 figure as the 2025 one (clcw26).
+- **Chosen:** The second.
+- Reason: The archived 2024 and 2025 editions of the worksheet differ only in their years (sources/2024/i1040sd p. 11, sources/2025/i1040sd p. 10), and the lines give Pub. 550's rule, "the amount of your total net loss that is more than the lesser of" the allowable deduction and taxable income increased by it (checked by brute force over random cases in the Stage 20 premise map and its verification). The figures are the inputs the 2026 return needs. Owner's decision D4, 2026-10-27.
+- Status: Owner decision, 2026-10-27 (research/premises/stage20-capital-loss-carryover.decisions.md, D4).
+- Cite: [i1040sd] p. 14, Line 21, "If you want to figure your carryover to 2026 now, see Pub. 550" (2025; printed date 2025-12-11; sha256 650643a6)

@@ -1,0 +1,13 @@
+{
+ "kind": "render",
+ "form": "clcw",
+ "rulings": [
+  {
+   "printed": "1",
+   "restated": "Subtract helper \"The amount on line 14 of your 2024 Form 1040 or 1040-SR (your deductions)\" from helper \"The amount on line 11 of your 2024 Form 1040 or 1040-SR (adjusted gross income)\".",
+   "model": "The IRS line says \"Enter the amount from your 2024 Form 1040, 1040-SR, or 1040-NR, line 15,\" enclosed in parentheses if it would have been a loss. The restatement instead computes 2024 line 11 minus line 14, and nothing in the text given says line 15 equals line 11 minus line 14. The restatement also leaves out Form 1040-NR without a refusal.",
+   "ruling": "Ruling: ambiguity; amb.2025.clcw_line1_signed. UNCLEAR: the model says nothing in the text given says line 15 equals line 11 minus line 14, and that Form 1040-NR is left out without a refusal. i1040sd p. 10, line 1: \"Enter the amount from your 2024 Form 1040, 1040-SR, or 1040-NR, line 15. If the amount would have been a loss if you could enter a negative number on that line, enclose the amount in parentheses\". The rendering states the reading recorded in amb.2025.clcw_line1_signed (owner's decision D2(a), 2026-10-27): ask for 2024 lines 11 and 14 as printed and take line 1 as their difference, because the printed line 15 is floored at zero and the worksheet wants the amount before the floor. The identity is printed on the 2024 Form 1040 (sources/2024/f1040 p. 1, line 15: \"Subtract line 14 from line 11. If zero or less, enter -0-. This is your taxable income\"), a page the review was not given (it had i1040sd pp. 3 and 10 and p550 pp. 102-103), because the line's citation names only the worksheet. Form 1040-NR is outside the tool (this tool prepares Form 1040 or 1040-SR only), so leaving it out changes nothing. Same ruling as the first Stage 20 round. The BUG-0185 change (line 1 shown only when clcw.applies) agrees with p. 10, \"Otherwise, you don't have any carryovers\", and is not disputed.",
+   "context": "200a59d06ccbfe4f832eb59ada1cd279754628950bb4c0ec8356776916a65603"
+  }
+ ]
+}

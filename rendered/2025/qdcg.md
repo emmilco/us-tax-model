@@ -6,7 +6,7 @@
 ## (question) — `qdcg.schedule_d_filed`
 
 - **Authored helper label:** Are you filing Schedule D?
-- **Encoded (Bool):** Enter the amount from sd helper "Schedule D required for entered sales or special distribution gains".
+- **Encoded (Bool):** Enter the amount from sd helper "Schedule D required for entered sales, special distribution gains or a capital loss carryover".
 - Expr: `{"from":"sd.filed","op":"copy"}`
 - Cite: [i1040gi] QDCGT worksheet, line 3 (2025; printed date 2026-02-25; sha256 482e9c48)
 

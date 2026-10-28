@@ -409,9 +409,6 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1? Count section 1256 contracts and a casualty or theft of property whether you held the property directly or through an entity.
       = false
       cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
-  (helper) Is there a capital loss carried into 2025 from any earlier year?
-      = false
-      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
   (helper) Count screened transactions
       = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L)
       cite: [f1040sd] p. 1, Capital Gains and Losses, "Use Form 8949 to list your transactions for lines 1b, 2, 3, 8b, 9, and 10" (2025; created 2025-10-06; 90564c8b)
@@ -502,7 +499,7 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
 Derivations:
   sales[a].digital: test(sales[a].box = G; "G" = G)
   sales[a].one: gate(sales[a].digital = true)
-  sd.count: sum_over(sd.other_forms = false; sd.carryover = false; sales[a].one = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L))
+  sd.count: sum_over(sd.other_forms = false; sales[a].one = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L))
   sd.screen: test(sd.count = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L); 0 = 0)
   sd.line1a.h: gate(sd.screen = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L))
   sd.line7: sum(sd.line1a.h = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L))

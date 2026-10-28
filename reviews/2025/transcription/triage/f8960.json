@@ -1,0 +1,2273 @@
+{
+ "bank": {
+  "evaluation_failures": 0,
+  "fixtures": 1159,
+  "generated": 500,
+  "partial_bases": 40,
+  "partial_records": 127,
+  "seed": 20261026
+ },
+ "errors": [],
+ "failures": [],
+ "family": "claude",
+ "form": "f8960",
+ "lines": [
+  {
+   "absent": 0,
+   "agree": 1738,
+   "candidate": "f8960.line1",
+   "compared": 1786,
+   "differ": 48,
+   "handle": "1",
+   "in_scope": 1693,
+   "in_scope_agree": 1655,
+   "kinds": {
+    "project-refuses": 10,
+    "project-unknown": 38
+   },
+   "kinds_by_return": {
+    "incomplete": {
+     "project-unknown": 17
+    },
+    "refused": {
+     "project-refuses": 10,
+     "project-unknown": 21
+    }
+   },
+   "open_at_triage": true,
+   "project": "f8960.line1",
+   "shown_when": null,
+   "sources": {
+    "fixture": 1159,
+    "generated": 500,
+    "partial": 127
+   },
+   "status": "DISAGREE",
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "cents": 2792800,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.line2b",
+       "value": {
+        "cents": 2792800,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i8960",
+       "locator": "pp. 14\u201315, deduction recoveries; compare i1040gi p. 90, state/local income tax refund worksheet"
+      },
+      "form": "Form 8960 Deduction Recoveries Worksheet / Schedule 1",
+      "gate": "f8960.refund",
+      "kind": "refusal",
+      "remedy": "A prior deducted expense recovery needs the NIIT recovery worksheet and review of Schedule 1 reporting; this path is outside scope."
+     },
+     "project_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8960.refund",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8880.4",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.line2b",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i8960",
+       "locator": "pp. 14\u201315, deduction recoveries; compare i1040gi p. 90, state/local income tax refund worksheet"
+      },
+      "form": "Form 8960 Deduction Recoveries Worksheet / Schedule 1",
+      "gate": "f8960.refund",
+      "kind": "refusal",
+      "remedy": "A prior deducted expense recovery needs the NIIT recovery worksheet and review of Schedule 1 reporting; this path is outside scope."
+     },
+     "project_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8960.refund",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.sb.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 2792800,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.line2b",
+       "value": {
+        "cents": 2792800,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i8960",
+       "locator": "pp. 14\u201315, deduction recoveries; compare i1040gi p. 90, state/local income tax refund worksheet"
+      },
+      "form": "Form 8960 Deduction Recoveries Worksheet / Schedule 1",
+      "gate": "f8960.refund",
+      "kind": "refusal",
+      "remedy": "A prior deducted expense recovery needs the NIIT recovery worksheet and review of Schedule 1 reporting; this path is outside scope."
+     },
+     "project_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8960.refund",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.person.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.line2b",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i8960",
+       "locator": "pp. 14\u201315, deduction recoveries; compare i1040gi p. 90, state/local income tax refund worksheet"
+      },
+      "form": "Form 8960 Deduction Recoveries Worksheet / Schedule 1",
+      "gate": "f8960.refund",
+      "kind": "refusal",
+      "remedy": "A prior deducted expense recovery needs the NIIT recovery worksheet and review of Schedule 1 reporting; this path is outside scope."
+     },
+     "project_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8960.refund",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage4.refuse.8960.refund",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.line2b",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i8960",
+       "locator": "pp. 14\u201315, deduction recoveries; compare i1040gi p. 90, state/local income tax refund worksheet"
+      },
+      "form": "Form 8960 Deduction Recoveries Worksheet / Schedule 1",
+      "gate": "f8960.refund",
+      "kind": "refusal",
+      "remedy": "A prior deducted expense recovery needs the NIIT recovery worksheet and review of Schedule 1 reporting; this path is outside scope."
+     },
+     "project_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8960.refund",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 39,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "cents": 7706637,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.line2b",
+       "value": {
+        "cents": 7706637,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i8960",
+       "locator": "pp. 14\u201315, deduction recoveries; compare i1040gi p. 90, state/local income tax refund worksheet"
+      },
+      "form": "Form 8960 Deduction Recoveries Worksheet / Schedule 1",
+      "gate": "f8960.refund",
+      "kind": "refusal",
+      "remedy": "A prior deducted expense recovery needs the NIIT recovery worksheet and review of Schedule 1 reporting; this path is outside scope."
+     },
+     "project_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8960.refund",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 68,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.line2b",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "project-unknown",
+     "project": {
+      "input": "f8960.refund",
+      "kind": "unknown",
+      "reason": "no input supplied for f8960.refund"
+     },
+     "project_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8960.refund",
+       "value": {
+        "input": "f8960.refund",
+        "kind": "unknown",
+        "reason": "no input supplied for f8960.refund"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "base": "classm.f2441.1.deepseek",
+      "kind": "partial",
+      "withheld": "f8960.refund"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.line2b",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "project-unknown",
+     "project": {
+      "input": "f8960.refund",
+      "kind": "unknown",
+      "reason": "no input supplied for f8960.refund"
+     },
+     "project_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8960.refund",
+       "value": {
+        "input": "f8960.refund",
+        "kind": "unknown",
+        "reason": "no input supplied for f8960.refund"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "base": "classm.f2441.5.deepseek",
+      "kind": "partial",
+      "withheld": "f8960.refund"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 61700,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.line2b",
+       "value": {
+        "cents": 61700,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "project-unknown",
+     "project": {
+      "input": "f8960.refund",
+      "kind": "unknown",
+      "reason": "no input supplied for f8960.refund"
+     },
+     "project_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8960.refund",
+       "value": {
+        "input": "f8960.refund",
+        "kind": "unknown",
+        "reason": "no input supplied for f8960.refund"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.f8889.4.deepseek",
+      "kind": "partial",
+      "withheld": "f8960.refund"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 12100,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.line2b",
+       "value": {
+        "cents": 12100,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "project-unknown",
+     "project": {
+      "input": "f8960.refund",
+      "kind": "unknown",
+      "reason": "no input supplied for f8960.refund"
+     },
+     "project_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8960.refund",
+       "value": {
+        "input": "f8960.refund",
+        "kind": "unknown",
+        "reason": "no input supplied for f8960.refund"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.f4952.3.deepseek",
+      "kind": "partial",
+      "withheld": "f8960.refund"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.line2b",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "project-unknown",
+     "project": {
+      "input": "f8960.refund",
+      "kind": "unknown",
+      "reason": "no input supplied for f8960.refund"
+     },
+     "project_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8960.refund",
+       "value": {
+        "input": "f8960.refund",
+        "kind": "unknown",
+        "reason": "no input supplied for f8960.refund"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "base": "classm.g28.1.deepseek",
+      "kind": "partial",
+      "withheld": "f8960.refund"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.line2b",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "project-unknown",
+     "project": {
+      "input": "f8960.refund",
+      "kind": "unknown",
+      "reason": "no input supplied for f8960.refund"
+     },
+     "project_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8960.refund",
+       "value": {
+        "input": "f8960.refund",
+        "kind": "unknown",
+        "reason": "no input supplied for f8960.refund"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.sd.3.deepseek",
+      "kind": "partial",
+      "withheld": "f8960.refund"
+     }
+    }
+   ]
+  },
+  {
+   "absent": 0,
+   "agree": 1595,
+   "candidate": "f8960.line2",
+   "compared": 1786,
+   "differ": 191,
+   "handle": "2",
+   "in_scope": 1703,
+   "in_scope_agree": 1534,
+   "kinds": {
+    "candidate-refuses": 22,
+    "candidate-unknown": 169
+   },
+   "kinds_by_return": {
+    "incomplete": {
+     "candidate-unknown": 115
+    },
+    "refused": {
+     "candidate-refuses": 22,
+     "candidate-unknown": 54
+    }
+   },
+   "open_at_triage": true,
+   "project": "f8960.line2",
+   "shown_when": null,
+   "sources": {
+    "fixture": 1159,
+    "generated": 500,
+    "partial": 127
+   },
+   "status": "DISAGREE",
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "f8960.unsupported",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sb.line6",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f5695.6",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "f8960.unsupported",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sb.line6",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.w2.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f8960.unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for f8960.unsupported"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "input": "f8960.unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for f8960.unsupported"
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sb.line6",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "table.band.first",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f8960.unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for f8960.unsupported"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "input": "f8960.unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for f8960.unsupported"
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sb.line6",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "table.band.mid",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f8960.unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for f8960.unsupported"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "input": "f8960.unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for f8960.unsupported"
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sb.line6",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "table.band.last",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f8960.unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for f8960.unsupported"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "input": "f8960.unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for f8960.unsupported"
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sb.line6",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "switch.below",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f8960.unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for f8960.unsupported"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "input": "f8960.unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for f8960.unsupported"
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sb.line6",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "switch.exact",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f8960.unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for f8960.unsupported"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "input": "f8960.unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for f8960.unsupported"
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sb.line6",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "tcw.single.b1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "f8960.unsupported",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sb.line6",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage4.refuse.8960.unsupported",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "f8960.unsupported",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sb.line6",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage4.refuse.8960.unsupported.simultaneous",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "f8960.unsupported",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 18,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sb.line6",
+       "value": {
+        "cents": 18,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 17,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "f8960.unsupported",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 4032228,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sb.line6",
+       "value": {
+        "cents": 4032228,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 32,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    }
+   ]
+  },
+  {
+   "absent": 0,
+   "agree": 1742,
+   "candidate": "f8960.line13",
+   "compared": 1786,
+   "differ": 44,
+   "handle": "13",
+   "in_scope": 1386,
+   "in_scope_agree": 1353,
+   "kinds": {
+    "candidate-refuses": 5,
+    "project-refuses": 6,
+    "project-unknown": 33
+   },
+   "kinds_by_return": {
+    "incomplete": {
+     "project-unknown": 17
+    },
+    "refused": {
+     "candidate-refuses": 5,
+     "project-refuses": 6,
+     "project-unknown": 16
+    }
+   },
+   "open_at_triage": true,
+   "project": "f8960.line13",
+   "shown_when": null,
+   "sources": {
+    "fixture": 1159,
+    "generated": 500,
+    "partial": 127
+   },
+   "status": "DISAGREE",
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "cents": 7313500,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.line11a",
+       "value": {
+        "cents": 7313500,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i8960",
+       "locator": "pp. 14\u201315, deduction recoveries; compare i1040gi p. 90, state/local income tax refund worksheet"
+      },
+      "form": "Form 8960 Deduction Recoveries Worksheet / Schedule 1",
+      "gate": "f8960.refund",
+      "kind": "refusal",
+      "remedy": "A prior deducted expense recovery needs the NIIT recovery worksheet and review of Schedule 1 reporting; this path is outside scope."
+     },
+     "project_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8960.refund",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8880.4",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 10442300,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.line11a",
+       "value": {
+        "cents": 10442300,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i8960",
+       "locator": "pp. 14\u201315, deduction recoveries; compare i1040gi p. 90, state/local income tax refund worksheet"
+      },
+      "form": "Form 8960 Deduction Recoveries Worksheet / Schedule 1",
+      "gate": "f8960.refund",
+      "kind": "refusal",
+      "remedy": "A prior deducted expense recovery needs the NIIT recovery worksheet and review of Schedule 1 reporting; this path is outside scope."
+     },
+     "project_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8960.refund",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.sb.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 7313500,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.line11a",
+       "value": {
+        "cents": 7313500,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i8960",
+       "locator": "pp. 14\u201315, deduction recoveries; compare i1040gi p. 90, state/local income tax refund worksheet"
+      },
+      "form": "Form 8960 Deduction Recoveries Worksheet / Schedule 1",
+      "gate": "f8960.refund",
+      "kind": "refusal",
+      "remedy": "A prior deducted expense recovery needs the NIIT recovery worksheet and review of Schedule 1 reporting; this path is outside scope."
+     },
+     "project_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8960.refund",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.person.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 10000000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.line11a",
+       "value": {
+        "cents": 10000000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i8960",
+       "locator": "pp. 14\u201315, deduction recoveries; compare i1040gi p. 90, state/local income tax refund worksheet"
+      },
+      "form": "Form 8960 Deduction Recoveries Worksheet / Schedule 1",
+      "gate": "f8960.refund",
+      "kind": "refusal",
+      "remedy": "A prior deducted expense recovery needs the NIIT recovery worksheet and review of Schedule 1 reporting; this path is outside scope."
+     },
+     "project_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8960.refund",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage4.refuse.8960.refund",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 37379563,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.line11a",
+       "value": {
+        "cents": 37379563,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i8960",
+       "locator": "pp. 14\u201315, deduction recoveries; compare i1040gi p. 90, state/local income tax refund worksheet"
+      },
+      "form": "Form 8960 Deduction Recoveries Worksheet / Schedule 1",
+      "gate": "f8960.refund",
+      "kind": "refusal",
+      "remedy": "A prior deducted expense recovery needs the NIIT recovery worksheet and review of Schedule 1 reporting; this path is outside scope."
+     },
+     "project_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8960.refund",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 74,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "cents": 8895866,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.line11a",
+       "value": {
+        "cents": 8895866,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i8960",
+       "locator": "pp. 14\u201315, deduction recoveries; compare i1040gi p. 90, state/local income tax refund worksheet"
+      },
+      "form": "Form 8960 Deduction Recoveries Worksheet / Schedule 1",
+      "gate": "f8960.refund",
+      "kind": "refusal",
+      "remedy": "A prior deducted expense recovery needs the NIIT recovery worksheet and review of Schedule 1 reporting; this path is outside scope."
+     },
+     "project_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8960.refund",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 360,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "cents": 5000000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.line11a",
+       "value": {
+        "cents": 5000000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "project-unknown",
+     "project": {
+      "input": "f8960.refund",
+      "kind": "unknown",
+      "reason": "no input supplied for f8960.refund"
+     },
+     "project_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8960.refund",
+       "value": {
+        "input": "f8960.refund",
+        "kind": "unknown",
+        "reason": "no input supplied for f8960.refund"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "base": "classm.f2441.1.deepseek",
+      "kind": "partial",
+      "withheld": "f8960.refund"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 2800000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.line11a",
+       "value": {
+        "cents": 2800000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "project-unknown",
+     "project": {
+      "input": "f8960.refund",
+      "kind": "unknown",
+      "reason": "no input supplied for f8960.refund"
+     },
+     "project_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8960.refund",
+       "value": {
+        "input": "f8960.refund",
+        "kind": "unknown",
+        "reason": "no input supplied for f8960.refund"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "base": "classm.f2441.5.deepseek",
+      "kind": "partial",
+      "withheld": "f8960.refund"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "f1040sd",
+       "locator": "Schedule D (2025), Parts I\u2013III"
+      },
+      "form": "Schedule D additional source forms",
+      "gate": "sd.other_forms",
+      "kind": "refusal",
+      "remedy": "Prepare the required source forms; their gains/losses are outside the supported securities slice."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.line11a",
+       "value": {
+        "cite": {
+         "doc": "f1040sd",
+         "locator": "Schedule D (2025), Parts I\u2013III"
+        },
+        "form": "Schedule D additional source forms",
+        "gate": "sd.other_forms",
+        "kind": "refusal",
+        "remedy": "Prepare the required source forms; their gains/losses are outside the supported securities slice."
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "candidate-refuses",
+     "project": {
+      "input": "f8960.refund",
+      "kind": "unknown",
+      "reason": "no input supplied for f8960.refund"
+     },
+     "project_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8960.refund",
+       "value": {
+        "input": "f8960.refund",
+        "kind": "unknown",
+        "reason": "no input supplied for f8960.refund"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.f8889.4.deepseek",
+      "kind": "partial",
+      "withheld": "f8960.refund"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 5012100,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.line11a",
+       "value": {
+        "cents": 5012100,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "project-unknown",
+     "project": {
+      "input": "f8960.refund",
+      "kind": "unknown",
+      "reason": "no input supplied for f8960.refund"
+     },
+     "project_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8960.refund",
+       "value": {
+        "input": "f8960.refund",
+        "kind": "unknown",
+        "reason": "no input supplied for f8960.refund"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.f4952.3.deepseek",
+      "kind": "partial",
+      "withheld": "f8960.refund"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 16822738,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.line11a",
+       "value": {
+        "cents": 16822738,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "project-unknown",
+     "project": {
+      "input": "f8960.refund",
+      "kind": "unknown",
+      "reason": "no input supplied for f8960.refund"
+     },
+     "project_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8960.refund",
+       "value": {
+        "input": "f8960.refund",
+        "kind": "unknown",
+        "reason": "no input supplied for f8960.refund"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "base": "classm.g28.1.deepseek",
+      "kind": "partial",
+      "withheld": "f8960.refund"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 50710900,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.line11a",
+       "value": {
+        "cents": 50710900,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "project-unknown",
+     "project": {
+      "input": "f8960.refund",
+      "kind": "unknown",
+      "reason": "no input supplied for f8960.refund"
+     },
+     "project_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8960.refund",
+       "value": {
+        "input": "f8960.refund",
+        "kind": "unknown",
+        "reason": "no input supplied for f8960.refund"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.sd.3.deepseek",
+      "kind": "partial",
+      "withheld": "f8960.refund"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 7594300,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.line11a",
+       "value": {
+        "cents": 7594300,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "project-unknown",
+     "project": {
+      "input": "f8960.refund",
+      "kind": "unknown",
+      "reason": "no input supplied for f8960.refund"
+     },
+     "project_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8960.refund",
+       "value": {
+        "input": "f8960.refund",
+        "kind": "unknown",
+        "reason": "no input supplied for f8960.refund"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.clcw.3.deepseek",
+      "kind": "partial",
+      "withheld": "f8960.refund"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "f1099div",
+       "locator": "Instructions for Recipient, boxes 1a, 1b and 5"
+      },
+      "form": "Form 1099-DIV dividend components",
+      "gate": "div.bad_components",
+      "kind": "refusal",
+      "remedy": "Correct the supplied totals: qualified dividends and section 199A dividends are portions of ordinary dividends."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.line11a",
+       "value": {
+        "cite": {
+         "doc": "f1099div",
+         "locator": "Instructions for Recipient, boxes 1a, 1b and 5"
+        },
+        "form": "Form 1099-DIV dividend components",
+        "gate": "div.bad_components",
+        "kind": "refusal",
+        "remedy": "Correct the supplied totals: qualified dividends and section 199A dividends are portions of ordinary dividends."
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "candidate-refuses",
+     "project": {
+      "input": "f8960.refund",
+      "kind": "unknown",
+      "reason": "no input supplied for f8960.refund"
+     },
+     "project_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8960.refund",
+       "value": {
+        "input": "f8960.refund",
+        "kind": "unknown",
+        "reason": "no input supplied for f8960.refund"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.retirement.1",
+      "kind": "partial",
+      "withheld": "f8960.refund"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i4562",
+       "locator": "p. 5, Line 12"
+      },
+      "form": "Section 179 deduction to allocate among more than one business",
+      "gate": "s179.multi",
+      "kind": "refusal",
+      "remedy": "Allocating a limited or carried-over section 179 deduction among businesses is outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.line11a",
+       "value": {
+        "cite": {
+         "doc": "i4562",
+         "locator": "p. 5, Line 12"
+        },
+        "form": "Section 179 deduction to allocate among more than one business",
+        "gate": "s179.multi",
+        "kind": "refusal",
+        "remedy": "Allocating a limited or carried-over section 179 deduction among businesses is outside this tool."
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "candidate-refuses",
+     "project": {
+      "input": "f8960.refund",
+      "kind": "unknown",
+      "reason": "no input supplied for f8960.refund"
+     },
+     "project_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8960.refund",
+       "value": {
+        "input": "f8960.refund",
+        "kind": "unknown",
+        "reason": "no input supplied for f8960.refund"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.s179.4",
+      "kind": "partial",
+      "withheld": "f8960.refund"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i8889",
+       "locator": "p. 7, Line 13, Excess Contributions You Make and Excess Employer Contributions"
+      },
+      "form": "Form 5329 (excess HSA contributions) or excess employer contributions",
+      "gate": "person[spouse].f8889[hsa].excess",
+      "kind": "refusal",
+      "remedy": "Contributions above the limit carry an additional tax (Form 5329) or are income; this tool does not compute them."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.line11a",
+       "value": {
+        "cite": {
+         "doc": "i8889",
+         "locator": "p. 7, Line 13, Excess Contributions You Make and Excess Employer Contributions"
+        },
+        "form": "Form 5329 (excess HSA contributions) or excess employer contributions",
+        "gate": "person[spouse].f8889[hsa].excess",
+        "kind": "refusal",
+        "remedy": "Contributions above the limit carry an additional tax (Form 5329) or are income; this tool does not compute them."
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "candidate-refuses",
+     "project": {
+      "input": "f8960.refund",
+      "kind": "unknown",
+      "reason": "no input supplied for f8960.refund"
+     },
+     "project_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8960.refund",
+       "value": {
+        "input": "f8960.refund",
+        "kind": "unknown",
+        "reason": "no input supplied for f8960.refund"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.sc.1",
+      "kind": "partial",
+      "withheld": "f8960.refund"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "p946",
+       "locator": "p. 19, Business Income Limit, Two different taxable income limits, Steps 1 to 8"
+      },
+      "form": "Section 179 deduction with a home office deduction limited by gross income (Pub. 946, two different taxable income limits)",
+      "gate": "person[taxpayer].sc[biz_a].ho_both_limits",
+      "kind": "refusal",
+      "remedy": "Figuring two income-based limits in the order of Pub. 946 is outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.line11a",
+       "value": {
+        "cite": {
+         "doc": "p946",
+         "locator": "p. 19, Business Income Limit, Two different taxable income limits, Steps 1 to 8"
+        },
+        "form": "Section 179 deduction with a home office deduction limited by gross income (Pub. 946, two different taxable income limits)",
+        "gate": "person[taxpayer].sc[biz_a].ho_both_limits",
+        "kind": "refusal",
+        "remedy": "Figuring two income-based limits in the order of Pub. 946 is outside this tool."
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "candidate-refuses",
+     "project": {
+      "input": "f8960.refund",
+      "kind": "unknown",
+      "reason": "no input supplied for f8960.refund"
+     },
+     "project_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8960.refund",
+       "value": {
+        "input": "f8960.refund",
+        "kind": "unknown",
+        "reason": "no input supplied for f8960.refund"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.scveh.5",
+      "kind": "partial",
+      "withheld": "f8960.refund"
+     }
+    }
+   ]
+  }
+ ],
+ "log_sha256_at_triage": "5253a7d6da5f8c1d12973aadd518734990c88f7b27a596129d59c836fcc81d2d",
+ "policy": "executable-triage-v2",
+ "response_sha256": "e304d0a57be29acbd1ed8bd01f590f877b17c653b65a0c752d5206a8141481ab",
+ "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
+ "state": "evaluated",
+ "subject_sha256": "3c7a28c49804ca0324f3f06af0761f3839cd9084c481579701ed4b35d19c58e7"
+}

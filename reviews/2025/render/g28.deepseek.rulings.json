@@ -1,0 +1,42 @@
+{
+ "kind": "render",
+ "form": "g28",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "1",
+   "restated": "Enter the amount from div helper \"Zero only after distribution scope checks\".",
+   "model": "IRS line 1 asks for \"the total of all collectibles gain or (loss) from items you reported on Form 8949, Part II\"; the restatement instead enters $0 from the distribution scope helper, and no refusal names Form 8949 Part II collectibles as excluded.",
+   "ruling": "Ruling: scope; i1040sd p. 11, 28% Rate Gain Worksheet, line 1: \"Enter the total of all collectibles gain or (loss) from items you reported on Form 8949, Part II\". Collectibles on Form 8949 Part II are refused at the sale by sales.special (\"Does this sale involve collectibles ..., qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property), or an interest in a partnership, S corporation or trust holding such property?\"), through sales.one, before any Schedule D total (checked: sales[s2].special true on classm.g28.2 gives sd.line7, g28.line7, u1250.line18 and f1040.line7a refused). Line 1 is $0.00 only behind that refusal. The refusal sits on Schedule D and the sale, not on this line's derivation, so the rendered English the reviewer saw did not name it. The line is shown only when Schedule D line 17 is Yes (BUG-0183), which the reviewer did not contest. No change to the data.",
+   "context": "74d6cdc5f0a7da889e69551aa8ee0d9578950c75b763d1df15e60877cccd54d4"
+  },
+  {
+   "printed": "2",
+   "restated": "Enter the amount from div helper \"Zero only after distribution scope checks\".",
+   "model": "IRS line 2 requires the positive total of section 1202 exclusions from Form 8949 Part II code Q at 50%, 2/3, or 1/3; the restatement enters $0 from a distribution helper and does not compute those amounts, and its refusal covers only section 1202 distributions, not Code Q exclusions generally.",
+   "ruling": "Ruling: scope; i1040sd p. 11, 28% Rate Gain Worksheet, line 2: \"Enter as a positive number the total of: • Any section 1202 exclusion you reported in column (g) of Form 8949, Part II, with code “Q” in column (f), that is 50% of the gain; ...\". A code Q exclusion arises from a sale of qualified small business stock, refused at the sale by sales.special (\"Does this sale involve collectibles ..., qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property), or an interest in a partnership, S corporation or trust holding such property?\") (checked: sales[s2].special true on classm.g28.2 gives sd.line7, g28.line7, u1250.line18 and f1040.line7a refused); from Form 1099-DIV box 2c, refused by div.section1202 (\"Form 8949 code Q / Form 6251\"); or from a Schedule K-1, refused by sd.other_forms (\"Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1? ...\"). The reviewer's claim that the refusal \"covers only section 1202 distributions\" overlooks sales.special. Line 2 is $0.00 only behind these refusals. The refusal sits on Schedule D and the sale, not on this line's derivation, so the rendered English the reviewer saw did not name it. The line is shown only when Schedule D line 17 is Yes (BUG-0183), which the reviewer did not contest. No change to the data.",
+   "context": "74d6cdc5f0a7da889e69551aa8ee0d9578950c75b763d1df15e60877cccd54d4"
+  },
+  {
+   "printed": "3",
+   "restated": "Enter the amount from div helper \"Zero only after distribution scope checks\".",
+   "model": "IRS line 3 requires the total collectibles gain or (loss) from Form 4684 line 4 (if line 15 is more than zero), Form 6252, Form 6781 Part II, and Form 8824; the restatement is merely a $0 distribution-scope helper and no refusal names those forms as excluded.",
+   "ruling": "Ruling: scope; i1040sd p. 11, 28% Rate Gain Worksheet, line 3: \"Enter the total of all collectibles gain or (loss) from Form 4684, line 4 (but only if Form 4684, line 15, is more than zero); Form 6252; Form 6781, Part II; and Form 8824\". All four forms are refused by sd.other_forms (\"Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1? ...\"), which refuses Schedule D through sd.count (checked: sd.other_forms true on classm.g28.2 gives sd.line7, sd.line14, g28.line5, g28.line7, u1250.line16, u1250.line18 and f1040.line7a refused). Line 3 is $0.00 only behind that refusal. The refusal sits on Schedule D and the sale, not on this line's derivation, so the rendered English the reviewer saw did not name it. The line is shown only when Schedule D line 17 is Yes (BUG-0183), which the reviewer did not contest. No change to the data.",
+   "context": "74d6cdc5f0a7da889e69551aa8ee0d9578950c75b763d1df15e60877cccd54d4"
+  },
+  {
+   "printed": "4",
+   "restated": "Enter the amount from div helper \"Collectibles (28%) gain, box 2d\".",
+   "model": "IRS line 4 is \"the total of any collectibles gain reported to you on: Form 1099-DIV, box 2d; Form 2439, box 1d; and Schedule K-1\"; the restatement uses only Form 1099-DIV box 2d and omits the other two sources without a refusal.",
+   "ruling": "Ruling: scope; i1040sd p. 11, 28% Rate Gain Worksheet, line 4: \"Enter the total of any collectibles gain reported to you on: • Form 1099-DIV, box 2d; • Form 2439, box 1d; and • Schedule K-1 from a partnership, S corporation, estate, or trust.\" Form 2439 and Schedule K-1 amounts are refused by sd.other_forms (\"Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1? ...\") (checked: sd.other_forms true on classm.g28.2 gives sd.line7, sd.line14, g28.line5, g28.line7, u1250.line16, u1250.line18 and f1040.line7a refused); within scope line 4 is Form 1099-DIV box 2d alone, as i1040sd p. 2 directs: \"If there is an amount in box 2d, include that amount on line 4 of the 28% Rate Gain Worksheet in these instructions if you complete line 18 of Schedule D.\" The refusal sits on Schedule D and the sale, not on this line's derivation, so the rendered English the reviewer saw did not name it. The line is shown only when Schedule D line 17 is Yes (BUG-0183), which the reviewer did not contest. No change to the data.",
+   "context": "74d6cdc5f0a7da889e69551aa8ee0d9578950c75b763d1df15e60877cccd54d4"
+  },
+  {
+   "printed": "5",
+   "restated": "Enter the amount from sd line 14.",
+   "model": "IRS line 5 says to enter long-term capital loss carryovers from \"Schedule D, line 14; and Schedule K-1 (Form 1041), box 11, code D\"; the restatement uses only Schedule D line 14 and does not refuse or account for the K-1 amount.",
+   "ruling": "Ruling: scope; i1040sd p. 11, 28% Rate Gain Worksheet, line 5: \"Enter your long-term capital loss carryovers from Schedule D, line 14; and Schedule K-1 (Form 1041), box 11, code D\", printed \"5. ( )\". The Schedule D line 14 part is the representation the page asks: since Stage 20 the line copies Schedule D line 14, the worksheet result held negative (\"a loss, negative\"), and line 7 combines it as a loss (constructed return: 2024 Schedule D line 15 -$10,000 and line 21 $3,000, box 2d $400, line 17 Yes: line 5 -$10,000.00, line 7 $0.00). A Schedule K-1 (Form 1041) box 11 code D carryover is a capital loss on a Schedule K-1, refused by sd.other_forms (\"Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1? ...\") and by scope.schedule1 (\"... sales of business property (Form 4797); ... partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1) ...\"); sd.line14 itself refuses on sd.other_forms (checked: sd.other_forms true on classm.g28.2 gives sd.line7, sd.line14, g28.line5, g28.line7, u1250.line16, u1250.line18 and f1040.line7a refused). The project's English says so (\"is refused by the Schedule D screen\"). The refusal sits on Schedule D and the sale, not on this line's derivation, so the rendered English the reviewer saw did not name it. The line is shown only when Schedule D line 17 is Yes (BUG-0183), which the reviewer did not contest. No change to the data.",
+   "context": "74d6cdc5f0a7da889e69551aa8ee0d9578950c75b763d1df15e60877cccd54d4"
+  }
+ ]
+}

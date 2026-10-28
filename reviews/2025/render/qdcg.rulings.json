@@ -9,6 +9,13 @@
    "ruling": "Ruling: scope; project retained. The Foreign Earned Income Tax Worksheet alternative applies only to a filer who claimed the exclusion or housing deduction on Form 2555 (i1040gi p. 36, line 16: \"If you claimed the foreign earned income exclusion, housing exclusion, or housing deduction on Form 2555, you must use the Foreign Earned Income Tax Worksheet\"). That filer reports the exclusion on Schedule 1, line 8d (i1040gi p. 91: \"Foreign earned income exclusion and housing exclusion from Form 2555\"), and the return refuses any Schedule 1 income at Form 1040 line 8 (`scope.schedule1`, forms/2025/f1040.yaml) before line 16 is reached. The alternative is recorded as not encoded in the worksheet note. No change to the data."
   },
   {
+   "printed": "1",
+   "restated": "Enter the amount from f1040 line 15.",
+   "model": "The restatement always takes Form 1040 line 15, and no refusal excludes Form 2555 filers. The IRS line adds: \"However, if you are filing Form 2555 (relating to foreign earned income), enter the amount from line 3 of the Foreign Earned Income Tax Worksheet.\"",
+   "ruling": "Ruling: scope; the model says no refusal excludes Form 2555 filers. The worksheet's alternative applies only to a filer who claims the foreign earned income or housing exclusion or the housing deduction on Form 2555 (i1040gi p. 36, Line 16: \"If you claimed the foreign earned income exclusion, housing exclusion, or housing deduction on Form 2555, you must figure your tax using the Foreign Earned Income Tax Worksheet\"). That exclusion is reported on Schedule 1 line 8d, which is refused by s1.line8_other (s1.yaml: \"the foreign earned income or housing exclusion from Form 2555 (8d)\"), and sa.excluded_income asks about Form 2555; the worksheet note records the alternative as not encoded. Unchanged by Stage 20 (line 1 reads Form 1040 line 15, whose Schedule D inputs changed only in their English names); same ruling as the earlier round.",
+   "context": "d3cfe36f3daba0792a62019b916380e20aa4e7e4e1d374414569561379cf26fc"
+  },
+  {
    "printed": "2",
    "restated": "Enter the amount from f1040 line 3a.",
    "model": "The restatement matches \"Enter the amount from Form 1040 or 1040-SR, line 3a.\" However, the asterisk sends Form 2555 filers to a footnote in the Foreign Earned Income Tax Worksheet, and that footnote is not in the text given, so the Form 2555 case cannot be judged.",

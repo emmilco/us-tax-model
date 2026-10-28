@@ -4,17 +4,17 @@ The rendered English of every printed line of `Schedule D — securities sales a
 
 | field | value |
 | --- | --- |
-| date | 2026-10-26 |
+| date | 2026-10-27 |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
-| prompt sha256 | afc0704a53be3bdc9f34ee222cd9f088068dab73426fed6106b68396fdb86baf |
+| prompt sha256 | 04728b33493dd779d4177982aef3694b366296836745e6b2738683515d09962a |
 | prompt policy | render-source-comparison-v2 |
 | system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
 | reasoning effort | provider default |
 | output token budget | 65536 |
-| subject sha256 | f619efc423f49555bc3e17271d712b89acae98dd68a232f99eded47d589fafac |
+| subject sha256 | f0dc1255712e282cb90d9cc4ff2ab072e67e24b3fdb2804e57adb1437395c129 |
 | lines judged | 46 |
-| match / mismatch / unclear / missing | 46 / 0 / 0 / 0 |
+| match / mismatch / unclear / missing | 45 / 1 / 0 / 0 |
 | verdicts for lines not in the form | none |
 
 ## Source pages given to the model
@@ -23,7 +23,7 @@ The rendered English of every printed line of `Schedule D — securities sales a
 | --- | --- | --- | --- | --- | --- | --- |
 | f1040sd | 2025; created 2025-10-06 | 1, 2 | whole document | 221151530f7cd599e8ad00bc3e1ba62d6b7ff34e402c336f4ae58d698c9f5187 | - | eb461181b39879c79d1c0b7761ca0cd9ade46fdb1531cdee3281053c348f6c41 |
 | i1040sd | 2025; printed date 2025-12-11 | 8, 10, 11, 12, 15 | cited pages | 145b3d02ba6ce4257939dfbd8f99d519875224cb4ceb4237a1aa24ed862360f1 | 8, 11, 12 | 0120691acc1fa8bf63941916a3b9423db8fba10d67f098a580fdc518c5fd08ec |
-| i1040gi | 2025; printed date 2026-02-25 | 38 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 | - | af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420 |
+| i1040gi | 2025; printed date 2026-02-25 | 31, 38 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 | 31 | af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420 |
 | i8949 | 2025; printed date 2026-01-20 | 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 | cited pages | d3ddc2b91cf89087ca348ebb00dbd1c80bbc025fa4df1176753d25013f581a67 | 2, 3, 4, 5, 6, 7, 9, 10 | cabdc81a0677c0e4de4a89f9a71d328395c4cc839206ebadb56aeb54bf954b85 |
 | f1099div | January 2024 (continuous-use form) | 1, 2, 3, 4, 5, 6 | whole document | 833d93e5f2d0bfcc8c9d720c0e8cb8e623cd2c6a8ee25f364f1f69f49fa490e3 | 5 | 617419bd079b1520174ceca8549065c9e4001f2b06a16d1425c5469bbe49fa3d |
 | f4952 | 2025; created 2025-05-28 | 1, 2, 3, 4 | whole document | efbeec4c44a1e43fb00231942c811a454d86b3632a2a662238893f8c4595bf81 | 3, 4 | c98eb27a83a89faecfdd0cd6597e8063fbd86a14ba1606f3e96c1c5f016d2b5c |
@@ -37,232 +37,236 @@ The rendered English of every printed line of `Schedule D — securities sales a
 ### 1a(d) — Line 1a, column (d) totals
 Status: **MATCH**
 
-Model: Line 1a column (d) totals short-term reported transactions eligible for aggregation; the program sums proceeds for classification A aggregate entries, with refusals excluding unsupported/digital cases.
+Model: IRS line 1a totals short-term basis-reported, no-adjustment transactions; the restatement sums proceeds for the A/aggregate subset, with unsupported cases refused.
 
 ### 1a(e) — Line 1a, column (e) totals
 Status: **MATCH**
 
-Model: Line 1a column (e) is cost or other basis; for classification A the program uses the basis reported to the IRS, as required for line 1a.
+Model: IRS line 1a column (e) is cost or other basis for those short-term basis-reported, no-adjustment transactions; the restatement uses the basis helper for the A/aggregate subset.
 
 ### 1a(g) — Line 1a, column (g) totals
 Status: **MATCH**
 
-Model: Line 1a is limited to transactions with no adjustments; the program's aggregate eligibility and refusals exclude adjustment cases, so summing sales.g yields the required zero adjustment total.
+Model: IRS line 1a has no adjustments; the restatement sums the adjustment helper over A/aggregate entries, and ineligible aggregate adjustments are refused.
 
 ### 1a(h) — Line 1a, column (h) totals
 Status: **MATCH**
 
-Model: Line 1a column (h) is gain or loss from proceeds less basis plus adjustments; for eligible aggregate transactions sales.h reduces to proceeds less basis.
+Model: IRS line 1a column (h) is proceeds less basis plus adjustments; the restatement uses the column (h) helper for A/aggregate entries.
 
 ### 1b(d) — Line 1b, column (d) totals
 Status: **MATCH**
 
-Model: Line 1b column (d) totals Form 8949 box A/G transactions; the program sums proceeds for classification A entries reported in detail.
+Model: IRS line 1b totals Form 8949 Box A (and Box G, excluded as digital) transactions; the restatement sums proceeds for A/detail entries.
 
 ### 1b(e) — Line 1b, column (e) totals
 Status: **MATCH**
 
-Model: Line 1b column (e) is cost or other basis from Form 8949; for box A basis-reported entries the program uses reported basis.
+Model: IRS line 1b column (e) is cost or other basis for Box A transactions; the restatement uses the basis helper for A/detail entries.
 
 ### 1b(g) — Line 1b, column (g) totals
 Status: **MATCH**
 
-Model: Line 1b column (g) is the Form 8949 adjustment total; the program sums supported basis and wash-sale adjustments for classification A detail entries.
+Model: IRS line 1b column (g) is adjustments for Box A transactions; the restatement sums the supported adjustment helper for A/detail entries.
 
 ### 1b(h) — Line 1b, column (h) totals
 Status: **MATCH**
 
-Model: Line 1b column (h) subtracts column (e) from column (d) and combines column (g); sales.h follows that computation.
+Model: IRS line 1b column (h) is proceeds less basis plus adjustments; the restatement uses the column (h) helper for A/detail entries.
 
 ### 2(d) — Line 2, column (d) totals
 Status: **MATCH**
 
-Model: Line 2 column (d) totals Form 8949 box B/H transactions; the program sums proceeds for classification B detail entries.
+Model: IRS line 2 totals Form 8949 Box B (and Box H, excluded as digital) transactions; the restatement sums proceeds for B/detail entries.
 
 ### 2(e) — Line 2, column (e) totals
 Status: **MATCH**
 
-Model: Line 2 column (e) is cost or other basis; for box B basis-not-reported entries the program uses correct adjusted basis from records.
+Model: IRS line 2 column (e) is cost or other basis for Box B transactions; the restatement uses the basis helper for B/detail entries.
 
 ### 2(g) — Line 2, column (g) totals
 Status: **MATCH**
 
-Model: Line 2 column (g) is the Form 8949 adjustment total; the program sums supported adjustments for classification B detail entries.
+Model: IRS line 2 column (g) is adjustments for Box B transactions; the restatement sums the supported adjustment helper for B/detail entries.
 
 ### 2(h) — Line 2, column (h) totals
 Status: **MATCH**
 
-Model: Line 2 column (h) subtracts column (e) from column (d) and combines column (g); sales.h follows that computation.
+Model: IRS line 2 column (h) is proceeds less basis plus adjustments; the restatement uses the column (h) helper for B/detail entries.
 
 ### 3(d) — Line 3, column (d) totals
 Status: **MATCH**
 
-Model: Line 3 column (d) totals Form 8949 box C/I transactions; the program sums proceeds for classification C detail entries.
+Model: IRS line 3 totals Form 8949 Box C (and Box I, excluded as digital) transactions; the restatement sums proceeds for C/detail entries.
 
 ### 3(e) — Line 3, column (e) totals
 Status: **MATCH**
 
-Model: Line 3 column (e) is cost or other basis; for box C entries not reported on a 1099-B/DA the program uses correct adjusted basis from records.
+Model: IRS line 3 column (e) is cost or other basis for Box C transactions; the restatement uses the basis helper for C/detail entries.
 
 ### 3(g) — Line 3, column (g) totals
 Status: **MATCH**
 
-Model: Line 3 column (g) is the Form 8949 adjustment total; the program sums supported adjustments for classification C detail entries.
+Model: IRS line 3 column (g) is adjustments for Box C transactions; the restatement sums the supported adjustment helper for C/detail entries.
 
 ### 3(h) — Line 3, column (h) totals
 Status: **MATCH**
 
-Model: Line 3 column (h) subtracts column (e) from column (d) and combines column (g); sales.h follows that computation.
+Model: IRS line 3 column (h) is proceeds less basis plus adjustments; the restatement uses the column (h) helper for C/detail entries.
 
 ### 8a(d) — Line 8a, column (d) totals
 Status: **MATCH**
 
-Model: Line 8a column (d) totals long-term reported transactions eligible for aggregation; the program sums proceeds for classification D aggregate entries, refusing unsupported/digital cases.
+Model: IRS line 8a totals long-term basis-reported, no-adjustment transactions; the restatement sums proceeds for the D/aggregate subset, with unsupported cases refused.
 
 ### 8a(e) — Line 8a, column (e) totals
 Status: **MATCH**
 
-Model: Line 8a column (e) is cost or other basis; for classification D the program uses the basis reported to the IRS, as required for line 8a.
+Model: IRS line 8a column (e) is cost or other basis for those long-term basis-reported, no-adjustment transactions; the restatement uses the basis helper for D/aggregate entries.
 
 ### 8a(g) — Line 8a, column (g) totals
 Status: **MATCH**
 
-Model: Line 8a is limited to transactions with no adjustments; the program's aggregate eligibility and refusals exclude adjustment cases, so summing sales.g yields the required zero adjustment total.
+Model: IRS line 8a has no adjustments; the restatement sums the adjustment helper over D/aggregate entries, and ineligible aggregate adjustments are refused.
 
 ### 8a(h) — Line 8a, column (h) totals
 Status: **MATCH**
 
-Model: Line 8a column (h) is gain or loss from proceeds less basis plus adjustments; for eligible aggregate transactions sales.h reduces to proceeds less basis.
+Model: IRS line 8a column (h) is proceeds less basis plus adjustments; the restatement uses the column (h) helper for D/aggregate entries.
 
 ### 8b(d) — Line 8b, column (d) totals
 Status: **MATCH**
 
-Model: Line 8b column (d) totals Form 8949 box D/J transactions; the program sums proceeds for classification D detail entries.
+Model: IRS line 8b totals Form 8949 Box D (and Box J, excluded as digital) transactions; the restatement sums proceeds for D/detail entries.
 
 ### 8b(e) — Line 8b, column (e) totals
 Status: **MATCH**
 
-Model: Line 8b column (e) is cost or other basis from Form 8949; for box D basis-reported entries the program uses reported basis.
+Model: IRS line 8b column (e) is cost or other basis for Box D transactions; the restatement uses the basis helper for D/detail entries.
 
 ### 8b(g) — Line 8b, column (g) totals
 Status: **MATCH**
 
-Model: Line 8b column (g) is the Form 8949 adjustment total; the program sums supported basis and wash-sale adjustments for classification D detail entries.
+Model: IRS line 8b column (g) is adjustments for Box D transactions; the restatement sums the supported adjustment helper for D/detail entries.
 
 ### 8b(h) — Line 8b, column (h) totals
 Status: **MATCH**
 
-Model: Line 8b column (h) subtracts column (e) from column (d) and combines column (g); sales.h follows that computation.
+Model: IRS line 8b column (h) is proceeds less basis plus adjustments; the restatement uses the column (h) helper for D/detail entries.
 
 ### 9(d) — Line 9, column (d) totals
 Status: **MATCH**
 
-Model: Line 9 column (d) totals Form 8949 box E/K transactions; the program sums proceeds for classification E detail entries.
+Model: IRS line 9 totals Form 8949 Box E (and Box K, excluded as digital) transactions; the restatement sums proceeds for E/detail entries.
 
 ### 9(e) — Line 9, column (e) totals
 Status: **MATCH**
 
-Model: Line 9 column (e) is cost or other basis; for box E basis-not-reported entries the program uses correct adjusted basis from records.
+Model: IRS line 9 column (e) is cost or other basis for Box E transactions; the restatement uses the basis helper for E/detail entries.
 
 ### 9(g) — Line 9, column (g) totals
 Status: **MATCH**
 
-Model: Line 9 column (g) is the Form 8949 adjustment total; the program sums supported adjustments for classification E detail entries.
+Model: IRS line 9 column (g) is adjustments for Box E transactions; the restatement sums the supported adjustment helper for E/detail entries.
 
 ### 9(h) — Line 9, column (h) totals
 Status: **MATCH**
 
-Model: Line 9 column (h) subtracts column (e) from column (d) and combines column (g); sales.h follows that computation.
+Model: IRS line 9 column (h) is proceeds less basis plus adjustments; the restatement uses the column (h) helper for E/detail entries.
 
 ### 10(d) — Line 10, column (d) totals
 Status: **MATCH**
 
-Model: Line 10 column (d) totals Form 8949 box F/L transactions; the program sums proceeds for classification F detail entries.
+Model: IRS line 10 totals Form 8949 Box F (and Box L, excluded as digital) transactions; the restatement sums proceeds for F/detail entries.
 
 ### 10(e) — Line 10, column (e) totals
 Status: **MATCH**
 
-Model: Line 10 column (e) is cost or other basis; for box F entries not reported on a 1099-B/DA the program uses correct adjusted basis from records.
+Model: IRS line 10 column (e) is cost or other basis for Box F transactions; the restatement uses the basis helper for F/detail entries.
 
 ### 10(g) — Line 10, column (g) totals
 Status: **MATCH**
 
-Model: Line 10 column (g) is the Form 8949 adjustment total; the program sums supported adjustments for classification F detail entries.
+Model: IRS line 10 column (g) is adjustments for Box F transactions; the restatement sums the supported adjustment helper for F/detail entries.
 
 ### 10(h) — Line 10, column (h) totals
 Status: **MATCH**
 
-Model: Line 10 column (h) subtracts column (e) from column (d) and combines column (g); sales.h follows that computation.
+Model: IRS line 10 column (h) is proceeds less basis plus adjustments; the restatement uses the column (h) helper for F/detail entries.
 
 ### 4 — Line 4: zero only after unsupported source/carryover screening
 Status: **MATCH**
 
-Model: The IRS line 4 is for Form 6252/4684/6781/8824 short-term amounts; the program uses zero when inapplicable and refuses when other source forms are present.
+Model: With no other-form items, the Form 6252/4684/6781/8824 short-term items described on line 4 are absent, so $0 is correct; the refusal names those excluded forms.
 
 ### 5 — Line 5: zero only after unsupported source/carryover screening
 Status: **MATCH**
 
-Model: The IRS line 5 is for Schedule K-1 short-term gains/losses; the program uses zero when inapplicable and refuses when other source forms are present.
+Model: With no other-form or K-1 items, the line 5 short-term partnership/S corporation/estate/trust amount is absent, so $0 is correct; the refusal names that exclusion.
 
-### 6 — Line 6: zero only after unsupported source/carryover screening
+### 6 — Short-term capital loss carryover, from line 8 of the Capital Loss Carryover Worksheet (a
 Status: **MATCH**
 
-Model: The IRS line 6 is the short-term capital loss carryover; the program uses zero when inapplicable and refuses when a carryover or other source forms are present.
+Model: IRS line 6 takes the short-term capital loss carryover from line 8 of the Capital Loss Carryover Worksheet; the restatement enters it as a negative loss when the 2024 line 21 loss gate applies, else no amount.
 
 ### 11 — Line 11: zero only after unsupported source/carryover screening
 Status: **MATCH**
 
-Model: The IRS line 11 is for Form 4797/2439/6252/4684/6781/8824 long-term amounts; the program uses zero when inapplicable and refuses when other source forms are present.
+Model: With no other-form items, the Forms 4797/2439/6252/4684/6781/8824 long-term amounts described on line 11 are absent, so $0 is correct; the refusal names those excluded forms.
 
 ### 12 — Line 12: zero only after unsupported source/carryover screening
 Status: **MATCH**
 
-Model: The IRS line 12 is for Schedule K-1 long-term gains/losses; the program uses zero when inapplicable and refuses when other source forms are present.
+Model: With no K-1 items, the line 12 long-term partnership/S corporation/estate/trust amount is absent, so $0 is correct; the refusal names that exclusion.
 
-### 14 — Line 14: zero only after unsupported source/carryover screening
+### 14 — Long-term capital loss carryover, from line 13 of the Capital Loss Carryover Worksheet (a
 Status: **MATCH**
 
-Model: The IRS line 14 is the long-term capital loss carryover; the program uses zero when inapplicable and refuses when a carryover or other source forms are present.
+Model: IRS line 14 takes the long-term capital loss carryover from line 13 of the Capital Loss Carryover Worksheet; the restatement enters it as a negative loss when the 2024 line 21 loss gate applies, else no amount.
 
 ### 13 — Capital gain distributions
 Status: **MATCH**
 
-Model: The IRS line 13 is capital gain distributions; the program uses Form 1099-DIV box 2a plus a zero scope check, with refusals excluding unsupported distribution cases.
+Model: IRS line 13 is capital gain distributions; the restatement adds the 1099-DIV box 2a distribution input and a zero scope-check, refusing unsupported distribution cases.
 
 ### 7 — Combine the amounts for Schedule D line 7
 Status: **MATCH**
 
-Model: The IRS line 7 combines lines 1a through 6 in column (h); the program adds the column (h) amounts for 1a, 1b, 2, and 3 plus lines 4 through 6.
+Model: IRS line 7 combines lines 1a through 6 in column (h); the restatement adds the corresponding line 1a, 1b, 2, 3, 4, 5, and 6 amounts.
 
 ### 15 — Combine the amounts for Schedule D line 15
 Status: **MATCH**
 
-Model: The IRS line 15 combines lines 8a through 14 in column (h); the program adds the column (h) amounts for 8a, 8b, 9, and 10 plus lines 11 through 14.
+Model: IRS line 15 combines lines 8a through 14 in column (h); the restatement adds the corresponding line 8a, 8b, 9, 10, 11, 12, 13, and 14 amounts.
 
 ### 16 — Combine the amounts for Schedule D line 16
 Status: **MATCH**
 
-Model: The IRS line 16 combines lines 7 and 15; the program adds line 7 and line 15.
+Model: IRS line 16 combines lines 7 and 15; the restatement adds line 7 and line 15.
 
 ### 17 — Are lines 15 and 16 both gains?
 Status: **MATCH**
 
-Model: The IRS line 17 asks whether lines 15 and 16 are both gains; the program checks both amounts are greater than zero.
+Model: IRS line 17 asks whether lines 15 and 16 are both gains; the restatement is true exactly when both amounts are greater than zero.
 
 ### 20 — Are lines 18 and 19 zero and are you not filing Form 4952?
-Status: **MATCH**
+Status: **MISMATCH**
 
-Model: The IRS line 20 asks whether lines 18 and 19 are zero or blank and Form 4952 is not being filed; the program checks the corresponding zero helpers and the Form 4952 filing helper.
+Restated: helper "Line 18. 28% Rate Gain Worksheet result, or zero when line 17 is No (lines 18 through 21 skipped)" = $0 and helper "Line 19. Unrecaptured Section 1250 Gain Worksheet result, or zero when line 17 is No (lines 18 through 21 skipped)" = $0 and helper "Are you filing Form 4952?" = false
+
+Model: IRS line 17 says: 'No. Skip lines 18 through 21, and go to line 22.' The restatement computes line 20 even when line 17 is No; it should be skipped.
+
+Ruling: representation; f1040sd p. 2, line 17: "Are lines 15 and 16 both gains? Yes. Go to line 18. No. Skip lines 18 through 21, and go to line 22." The model reads the restated line 20 as computed when line 17 is No. Line 20 is a Boolean flow predicate: the documented convention (forms/2025/sd.yaml form note, "Boolean flow predicates are shown even when their printed line is skipped"; adjudication README, owner's decision of 2026-10-26, "Boolean flow predicates are shown ... so the rule does not apply to them") exempts it from the skipped-line rule, and on the line-17-No path no amount reads it (the tax worksheet choice goes by line 22, which the project computes). The English states the printed question ("Are lines 18 and 19 both zero or blank and you are not filing Form 4952?") over lines 18 and 19, which are $0 when line 17 is No, and the Form 4952 helper. Project stands.
 
 ### 21 — Deductible loss, signed; zero when line 21 is skipped
 Status: **MATCH**
 
-Model: The IRS line 21 limits a line 16 loss to the annual capital loss limit; the program takes the larger signed amount, equivalent to the smaller positive loss when the note's positive-number rule is applied.
+Model: IRS line 21 applies only if line 16 is a loss and uses the smaller positive loss or annual limit; the signed helper chooses the larger signed amount, equivalent to that smaller positive amount, and otherwise no amount.
 
 ### 22 — Do you have qualified dividends?
 Status: **MATCH**
 
-Model: The IRS line 22 asks whether there are qualified dividends on Form 1040 line 3a; the program checks f1040 line 3a greater than zero.
+Model: IRS line 22 asks whether there are qualified dividends on Form 1040 line 3a; the restatement is true exactly when f1040 line 3a is greater than zero.
 
 ## Raw response
 
@@ -270,140 +274,140 @@ Model: The IRS line 22 asks whether there are qualified dividends on Form 1040 l
 lines:
   - key: "1a(d)"
     status: MATCH
-    reason: "Line 1a column (d) totals short-term reported transactions eligible for aggregation; the program sums proceeds for classification A aggregate entries, with refusals excluding unsupported/digital cases."
+    reason: "IRS line 1a totals short-term basis-reported, no-adjustment transactions; the restatement sums proceeds for the A/aggregate subset, with unsupported cases refused."
   - key: "1a(e)"
     status: MATCH
-    reason: "Line 1a column (e) is cost or other basis; for classification A the program uses the basis reported to the IRS, as required for line 1a."
+    reason: "IRS line 1a column (e) is cost or other basis for those short-term basis-reported, no-adjustment transactions; the restatement uses the basis helper for the A/aggregate subset."
   - key: "1a(g)"
     status: MATCH
-    reason: "Line 1a is limited to transactions with no adjustments; the program's aggregate eligibility and refusals exclude adjustment cases, so summing sales.g yields the required zero adjustment total."
+    reason: "IRS line 1a has no adjustments; the restatement sums the adjustment helper over A/aggregate entries, and ineligible aggregate adjustments are refused."
   - key: "1a(h)"
     status: MATCH
-    reason: "Line 1a column (h) is gain or loss from proceeds less basis plus adjustments; for eligible aggregate transactions sales.h reduces to proceeds less basis."
+    reason: "IRS line 1a column (h) is proceeds less basis plus adjustments; the restatement uses the column (h) helper for A/aggregate entries."
   - key: "1b(d)"
     status: MATCH
-    reason: "Line 1b column (d) totals Form 8949 box A/G transactions; the program sums proceeds for classification A entries reported in detail."
+    reason: "IRS line 1b totals Form 8949 Box A (and Box G, excluded as digital) transactions; the restatement sums proceeds for A/detail entries."
   - key: "1b(e)"
     status: MATCH
-    reason: "Line 1b column (e) is cost or other basis from Form 8949; for box A basis-reported entries the program uses reported basis."
+    reason: "IRS line 1b column (e) is cost or other basis for Box A transactions; the restatement uses the basis helper for A/detail entries."
   - key: "1b(g)"
     status: MATCH
-    reason: "Line 1b column (g) is the Form 8949 adjustment total; the program sums supported basis and wash-sale adjustments for classification A detail entries."
+    reason: "IRS line 1b column (g) is adjustments for Box A transactions; the restatement sums the supported adjustment helper for A/detail entries."
   - key: "1b(h)"
     status: MATCH
-    reason: "Line 1b column (h) subtracts column (e) from column (d) and combines column (g); sales.h follows that computation."
+    reason: "IRS line 1b column (h) is proceeds less basis plus adjustments; the restatement uses the column (h) helper for A/detail entries."
   - key: "2(d)"
     status: MATCH
-    reason: "Line 2 column (d) totals Form 8949 box B/H transactions; the program sums proceeds for classification B detail entries."
+    reason: "IRS line 2 totals Form 8949 Box B (and Box H, excluded as digital) transactions; the restatement sums proceeds for B/detail entries."
   - key: "2(e)"
     status: MATCH
-    reason: "Line 2 column (e) is cost or other basis; for box B basis-not-reported entries the program uses correct adjusted basis from records."
+    reason: "IRS line 2 column (e) is cost or other basis for Box B transactions; the restatement uses the basis helper for B/detail entries."
   - key: "2(g)"
     status: MATCH
-    reason: "Line 2 column (g) is the Form 8949 adjustment total; the program sums supported adjustments for classification B detail entries."
+    reason: "IRS line 2 column (g) is adjustments for Box B transactions; the restatement sums the supported adjustment helper for B/detail entries."
   - key: "2(h)"
     status: MATCH
-    reason: "Line 2 column (h) subtracts column (e) from column (d) and combines column (g); sales.h follows that computation."
+    reason: "IRS line 2 column (h) is proceeds less basis plus adjustments; the restatement uses the column (h) helper for B/detail entries."
   - key: "3(d)"
     status: MATCH
-    reason: "Line 3 column (d) totals Form 8949 box C/I transactions; the program sums proceeds for classification C detail entries."
+    reason: "IRS line 3 totals Form 8949 Box C (and Box I, excluded as digital) transactions; the restatement sums proceeds for C/detail entries."
   - key: "3(e)"
     status: MATCH
-    reason: "Line 3 column (e) is cost or other basis; for box C entries not reported on a 1099-B/DA the program uses correct adjusted basis from records."
+    reason: "IRS line 3 column (e) is cost or other basis for Box C transactions; the restatement uses the basis helper for C/detail entries."
   - key: "3(g)"
     status: MATCH
-    reason: "Line 3 column (g) is the Form 8949 adjustment total; the program sums supported adjustments for classification C detail entries."
+    reason: "IRS line 3 column (g) is adjustments for Box C transactions; the restatement sums the supported adjustment helper for C/detail entries."
   - key: "3(h)"
     status: MATCH
-    reason: "Line 3 column (h) subtracts column (e) from column (d) and combines column (g); sales.h follows that computation."
+    reason: "IRS line 3 column (h) is proceeds less basis plus adjustments; the restatement uses the column (h) helper for C/detail entries."
   - key: "8a(d)"
     status: MATCH
-    reason: "Line 8a column (d) totals long-term reported transactions eligible for aggregation; the program sums proceeds for classification D aggregate entries, refusing unsupported/digital cases."
+    reason: "IRS line 8a totals long-term basis-reported, no-adjustment transactions; the restatement sums proceeds for the D/aggregate subset, with unsupported cases refused."
   - key: "8a(e)"
     status: MATCH
-    reason: "Line 8a column (e) is cost or other basis; for classification D the program uses the basis reported to the IRS, as required for line 8a."
+    reason: "IRS line 8a column (e) is cost or other basis for those long-term basis-reported, no-adjustment transactions; the restatement uses the basis helper for D/aggregate entries."
   - key: "8a(g)"
     status: MATCH
-    reason: "Line 8a is limited to transactions with no adjustments; the program's aggregate eligibility and refusals exclude adjustment cases, so summing sales.g yields the required zero adjustment total."
+    reason: "IRS line 8a has no adjustments; the restatement sums the adjustment helper over D/aggregate entries, and ineligible aggregate adjustments are refused."
   - key: "8a(h)"
     status: MATCH
-    reason: "Line 8a column (h) is gain or loss from proceeds less basis plus adjustments; for eligible aggregate transactions sales.h reduces to proceeds less basis."
+    reason: "IRS line 8a column (h) is proceeds less basis plus adjustments; the restatement uses the column (h) helper for D/aggregate entries."
   - key: "8b(d)"
     status: MATCH
-    reason: "Line 8b column (d) totals Form 8949 box D/J transactions; the program sums proceeds for classification D detail entries."
+    reason: "IRS line 8b totals Form 8949 Box D (and Box J, excluded as digital) transactions; the restatement sums proceeds for D/detail entries."
   - key: "8b(e)"
     status: MATCH
-    reason: "Line 8b column (e) is cost or other basis from Form 8949; for box D basis-reported entries the program uses reported basis."
+    reason: "IRS line 8b column (e) is cost or other basis for Box D transactions; the restatement uses the basis helper for D/detail entries."
   - key: "8b(g)"
     status: MATCH
-    reason: "Line 8b column (g) is the Form 8949 adjustment total; the program sums supported basis and wash-sale adjustments for classification D detail entries."
+    reason: "IRS line 8b column (g) is adjustments for Box D transactions; the restatement sums the supported adjustment helper for D/detail entries."
   - key: "8b(h)"
     status: MATCH
-    reason: "Line 8b column (h) subtracts column (e) from column (d) and combines column (g); sales.h follows that computation."
+    reason: "IRS line 8b column (h) is proceeds less basis plus adjustments; the restatement uses the column (h) helper for D/detail entries."
   - key: "9(d)"
     status: MATCH
-    reason: "Line 9 column (d) totals Form 8949 box E/K transactions; the program sums proceeds for classification E detail entries."
+    reason: "IRS line 9 totals Form 8949 Box E (and Box K, excluded as digital) transactions; the restatement sums proceeds for E/detail entries."
   - key: "9(e)"
     status: MATCH
-    reason: "Line 9 column (e) is cost or other basis; for box E basis-not-reported entries the program uses correct adjusted basis from records."
+    reason: "IRS line 9 column (e) is cost or other basis for Box E transactions; the restatement uses the basis helper for E/detail entries."
   - key: "9(g)"
     status: MATCH
-    reason: "Line 9 column (g) is the Form 8949 adjustment total; the program sums supported adjustments for classification E detail entries."
+    reason: "IRS line 9 column (g) is adjustments for Box E transactions; the restatement sums the supported adjustment helper for E/detail entries."
   - key: "9(h)"
     status: MATCH
-    reason: "Line 9 column (h) subtracts column (e) from column (d) and combines column (g); sales.h follows that computation."
+    reason: "IRS line 9 column (h) is proceeds less basis plus adjustments; the restatement uses the column (h) helper for E/detail entries."
   - key: "10(d)"
     status: MATCH
-    reason: "Line 10 column (d) totals Form 8949 box F/L transactions; the program sums proceeds for classification F detail entries."
+    reason: "IRS line 10 totals Form 8949 Box F (and Box L, excluded as digital) transactions; the restatement sums proceeds for F/detail entries."
   - key: "10(e)"
     status: MATCH
-    reason: "Line 10 column (e) is cost or other basis; for box F entries not reported on a 1099-B/DA the program uses correct adjusted basis from records."
+    reason: "IRS line 10 column (e) is cost or other basis for Box F transactions; the restatement uses the basis helper for F/detail entries."
   - key: "10(g)"
     status: MATCH
-    reason: "Line 10 column (g) is the Form 8949 adjustment total; the program sums supported adjustments for classification F detail entries."
+    reason: "IRS line 10 column (g) is adjustments for Box F transactions; the restatement sums the supported adjustment helper for F/detail entries."
   - key: "10(h)"
     status: MATCH
-    reason: "Line 10 column (h) subtracts column (e) from column (d) and combines column (g); sales.h follows that computation."
+    reason: "IRS line 10 column (h) is proceeds less basis plus adjustments; the restatement uses the column (h) helper for F/detail entries."
   - key: "4"
     status: MATCH
-    reason: "The IRS line 4 is for Form 6252/4684/6781/8824 short-term amounts; the program uses zero when inapplicable and refuses when other source forms are present."
+    reason: "With no other-form items, the Form 6252/4684/6781/8824 short-term items described on line 4 are absent, so $0 is correct; the refusal names those excluded forms."
   - key: "5"
     status: MATCH
-    reason: "The IRS line 5 is for Schedule K-1 short-term gains/losses; the program uses zero when inapplicable and refuses when other source forms are present."
+    reason: "With no other-form or K-1 items, the line 5 short-term partnership/S corporation/estate/trust amount is absent, so $0 is correct; the refusal names that exclusion."
   - key: "6"
     status: MATCH
-    reason: "The IRS line 6 is the short-term capital loss carryover; the program uses zero when inapplicable and refuses when a carryover or other source forms are present."
+    reason: "IRS line 6 takes the short-term capital loss carryover from line 8 of the Capital Loss Carryover Worksheet; the restatement enters it as a negative loss when the 2024 line 21 loss gate applies, else no amount."
   - key: "11"
     status: MATCH
-    reason: "The IRS line 11 is for Form 4797/2439/6252/4684/6781/8824 long-term amounts; the program uses zero when inapplicable and refuses when other source forms are present."
+    reason: "With no other-form items, the Forms 4797/2439/6252/4684/6781/8824 long-term amounts described on line 11 are absent, so $0 is correct; the refusal names those excluded forms."
   - key: "12"
     status: MATCH
-    reason: "The IRS line 12 is for Schedule K-1 long-term gains/losses; the program uses zero when inapplicable and refuses when other source forms are present."
+    reason: "With no K-1 items, the line 12 long-term partnership/S corporation/estate/trust amount is absent, so $0 is correct; the refusal names that exclusion."
   - key: "14"
     status: MATCH
-    reason: "The IRS line 14 is the long-term capital loss carryover; the program uses zero when inapplicable and refuses when a carryover or other source forms are present."
+    reason: "IRS line 14 takes the long-term capital loss carryover from line 13 of the Capital Loss Carryover Worksheet; the restatement enters it as a negative loss when the 2024 line 21 loss gate applies, else no amount."
   - key: "13"
     status: MATCH
-    reason: "The IRS line 13 is capital gain distributions; the program uses Form 1099-DIV box 2a plus a zero scope check, with refusals excluding unsupported distribution cases."
+    reason: "IRS line 13 is capital gain distributions; the restatement adds the 1099-DIV box 2a distribution input and a zero scope-check, refusing unsupported distribution cases."
   - key: "7"
     status: MATCH
-    reason: "The IRS line 7 combines lines 1a through 6 in column (h); the program adds the column (h) amounts for 1a, 1b, 2, and 3 plus lines 4 through 6."
+    reason: "IRS line 7 combines lines 1a through 6 in column (h); the restatement adds the corresponding line 1a, 1b, 2, 3, 4, 5, and 6 amounts."
   - key: "15"
     status: MATCH
-    reason: "The IRS line 15 combines lines 8a through 14 in column (h); the program adds the column (h) amounts for 8a, 8b, 9, and 10 plus lines 11 through 14."
+    reason: "IRS line 15 combines lines 8a through 14 in column (h); the restatement adds the corresponding line 8a, 8b, 9, 10, 11, 12, 13, and 14 amounts."
   - key: "16"
     status: MATCH
-    reason: "The IRS line 16 combines lines 7 and 15; the program adds line 7 and line 15."
+    reason: "IRS line 16 combines lines 7 and 15; the restatement adds line 7 and line 15."
   - key: "17"
     status: MATCH
-    reason: "The IRS line 17 asks whether lines 15 and 16 are both gains; the program checks both amounts are greater than zero."
+    reason: "IRS line 17 asks whether lines 15 and 16 are both gains; the restatement is true exactly when both amounts are greater than zero."
   - key: "20"
-    status: MATCH
-    reason: "The IRS line 20 asks whether lines 18 and 19 are zero or blank and Form 4952 is not being filed; the program checks the corresponding zero helpers and the Form 4952 filing helper."
+    status: MISMATCH
+    reason: "IRS line 17 says: 'No. Skip lines 18 through 21, and go to line 22.' The restatement computes line 20 even when line 17 is No; it should be skipped."
   - key: "21"
     status: MATCH
-    reason: "The IRS line 21 limits a line 16 loss to the annual capital loss limit; the program takes the larger signed amount, equivalent to the smaller positive loss when the note's positive-number rule is applied."
+    reason: "IRS line 21 applies only if line 16 is a loss and uses the smaller positive loss or annual limit; the signed helper chooses the larger signed amount, equivalent to that smaller positive amount, and otherwise no amount."
   - key: "22"
     status: MATCH
-    reason: "The IRS line 22 asks whether there are qualified dividends on Form 1040 line 3a; the program checks f1040 line 3a greater than zero."
+    reason: "IRS line 22 asks whether there are qualified dividends on Form 1040 line 3a; the restatement is true exactly when f1040 line 3a is greater than zero."
 ```

@@ -1,0 +1,1429 @@
+{
+ "bank": {
+  "evaluation_failures": 0,
+  "fixtures": 1168,
+  "generated": 500,
+  "partial_bases": 40,
+  "partial_records": 0,
+  "seed": 20261026
+ },
+ "errors": [],
+ "failures": [],
+ "family": "deepseek",
+ "form": "clcw26",
+ "lines": [
+  {
+   "absent": 0,
+   "agree": 308,
+   "candidate": "clcw26.line3",
+   "compared": 1668,
+   "differ": 1360,
+   "handle": "3",
+   "in_scope": 1267,
+   "in_scope_agree": 130,
+   "kinds": {
+    "candidate-refuses": 203,
+    "candidate-shows-skipped": 127,
+    "candidate-unknown": 1010,
+    "project-refuses": 20
+   },
+   "kinds_by_return": {
+    "completed": {
+     "candidate-shows-skipped": 82,
+     "candidate-unknown": 414
+    },
+    "incomplete": {
+     "candidate-unknown": 261
+    },
+    "refused": {
+     "candidate-refuses": 203,
+     "candidate-shows-skipped": 45,
+     "candidate-unknown": 335,
+     "project-refuses": 20
+    }
+   },
+   "open_at_triage": true,
+   "project": "clcw26.line3",
+   "shown_when": "clcw26.show",
+   "sources": {
+    "fixture": 1168,
+    "generated": 500
+   },
+   "status": "DISAGREE",
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "input": "clcw.spouse_screen",
+      "kind": "unknown",
+      "reason": "no input supplied for clcw.spouse_screen"
+     },
+     "candidate_operands": [
+      {
+       "ref": "clcw26.line2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "clcw26.h_neg_line1",
+       "value": {
+        "input": "clcw.spouse_screen",
+        "kind": "unknown",
+        "reason": "no input supplied for clcw.spouse_screen"
+       }
+      }
+     ],
+     "instance": "clcw26",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "clcw26.combined",
+       "value": {
+        "cents": 2637500,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "clcw26.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "clcw.spouse_screen",
+      "kind": "unknown",
+      "reason": "no input supplied for clcw.spouse_screen"
+     },
+     "candidate_operands": [
+      {
+       "ref": "clcw26.line2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "clcw26.h_neg_line1",
+       "value": {
+        "input": "clcw.spouse_screen",
+        "kind": "unknown",
+        "reason": "no input supplied for clcw.spouse_screen"
+       }
+      }
+     ],
+     "instance": "clcw26",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "clcw26.combined",
+       "value": {
+        "cents": 5350000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "clcw26.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "clcw.spouse_screen",
+      "kind": "unknown",
+      "reason": "no input supplied for clcw.spouse_screen"
+     },
+     "candidate_operands": [
+      {
+       "ref": "clcw26.line2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "clcw26.h_neg_line1",
+       "value": {
+        "input": "clcw.spouse_screen",
+        "kind": "unknown",
+        "reason": "no input supplied for clcw.spouse_screen"
+       }
+      }
+     ],
+     "instance": "clcw26",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "clcw26.combined",
+       "value": {
+        "cents": 1787500,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "clcw26.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "clcw.spouse_screen",
+      "kind": "unknown",
+      "reason": "no input supplied for clcw.spouse_screen"
+     },
+     "candidate_operands": [
+      {
+       "ref": "clcw26.line2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "clcw26.h_neg_line1",
+       "value": {
+        "input": "clcw.spouse_screen",
+        "kind": "unknown",
+        "reason": "no input supplied for clcw.spouse_screen"
+       }
+      }
+     ],
+     "instance": "clcw26",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "clcw26.combined",
+       "value": {
+        "cents": -1862500,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "clcw26.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.4.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "clcw.spouse_screen",
+      "kind": "unknown",
+      "reason": "no input supplied for clcw.spouse_screen"
+     },
+     "candidate_operands": [
+      {
+       "ref": "clcw26.line2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "clcw26.h_neg_line1",
+       "value": {
+        "input": "clcw.spouse_screen",
+        "kind": "unknown",
+        "reason": "no input supplied for clcw.spouse_screen"
+       }
+      }
+     ],
+     "instance": "clcw26",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "clcw26.combined",
+       "value": {
+        "cents": 437500,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "clcw26.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.5.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "clcw.spouse_screen",
+      "kind": "unknown",
+      "reason": "no input supplied for clcw.spouse_screen"
+     },
+     "candidate_operands": [
+      {
+       "ref": "clcw26.line2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "clcw26.h_neg_line1",
+       "value": {
+        "input": "clcw.spouse_screen",
+        "kind": "unknown",
+        "reason": "no input supplied for clcw.spouse_screen"
+       }
+      }
+     ],
+     "instance": "clcw26",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "clcw26.combined",
+       "value": {
+        "cents": 2137500,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "clcw26.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.6.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "clcw.prior_sd7",
+      "kind": "unknown",
+      "reason": "no input supplied for clcw.prior_sd7"
+     },
+     "candidate_operands": [
+      {
+       "ref": "clcw26.line2",
+       "value": {
+        "input": "clcw.prior_sd7",
+        "kind": "unknown",
+        "reason": "no input supplied for clcw.prior_sd7"
+       }
+      },
+      {
+       "ref": "clcw26.h_neg_line1",
+       "value": {
+        "input": "clcw.spouse_screen",
+        "kind": "unknown",
+        "reason": "no input supplied for clcw.spouse_screen"
+       }
+      }
+     ],
+     "instance": "clcw26",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "f1040",
+       "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19\u201320 and 27\u201331"
+      },
+      "form": "Schedule 1",
+      "gate": "scope.schedule1",
+      "kind": "refusal",
+      "remedy": "Schedule 1 income and adjustments other than the ones this tool computes (Schedule C business income, a taxable state or local income tax refund, alimony under an agreement made before 2019, unemployment compensation, the supported line 8 items, educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction, the early withdrawal penalty, the IRA deduction, student loan interest and jury duty pay given to your employer) are outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "clcw26.combined",
+       "value": {
+        "cite": {
+         "doc": "f1040",
+         "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19\u201320 and 27\u201331"
+        },
+        "form": "Schedule 1",
+        "gate": "scope.schedule1",
+        "kind": "refusal",
+        "remedy": "Schedule 1 income and adjustments other than the ones this tool computes (Schedule C business income, a taxable state or local income tax refund, alimony under an agreement made before 2019, unemployment compensation, the supported line 8 items, educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction, the early withdrawal penalty, the IRA deduction, student loan interest and jury duty pay given to your employer) are outside this tool."
+       }
+      },
+      {
+       "ref": "clcw26.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8889.5.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 8962910,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "clcw26.line2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "clcw26.h_neg_line1",
+       "value": {
+        "cents": -8962910,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "clcw26",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "clcw26.combined",
+       "value": {
+        "cents": 8962910,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "clcw26.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f4952.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 823416,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "clcw26.line2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "clcw26.h_neg_line1",
+       "value": {
+        "cents": -823416,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "clcw26",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "clcw26.combined",
+       "value": {
+        "cents": 823416,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "clcw26.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f4952.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "pp. 34\u201335, line 12e and Standard Deduction Chart"
+      },
+      "form": "Standard Deduction Worksheet for Dependents / dual-status rules",
+      "gate": "sa.dependent",
+      "kind": "refusal",
+      "remedy": "Dependent and dual-status standard deductions are outside this resident nondependent slice."
+     },
+     "candidate_operands": [
+      {
+       "ref": "clcw26.line2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "clcw26.h_neg_line1",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "pp. 34\u201335, line 12e and Standard Deduction Chart"
+        },
+        "form": "Standard Deduction Worksheet for Dependents / dual-status rules",
+        "gate": "sa.dependent",
+        "kind": "refusal",
+        "remedy": "Dependent and dual-status standard deductions are outside this resident nondependent slice."
+       }
+      }
+     ],
+     "instance": "clcw26",
+     "kind": "candidate-refuses",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "clcw26.combined",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "pp. 34\u201335, line 12e and Standard Deduction Chart"
+        },
+        "form": "Standard Deduction Worksheet for Dependents / dual-status rules",
+        "gate": "sa.dependent",
+        "kind": "refusal",
+        "remedy": "Dependent and dual-status standard deductions are outside this resident nondependent slice."
+       }
+      },
+      {
+       "ref": "clcw26.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f4952.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i8283",
+       "locator": "pp. 1\u20133, Who Must File and Which Sections To Complete; f8283 Section A"
+      },
+      "form": "Form 8283 special treatment",
+      "gate": "gift[item_a].special",
+      "kind": "refusal",
+      "remedy": "This contribution requires unsupported appraisal or special-property treatment."
+     },
+     "candidate_operands": [
+      {
+       "ref": "clcw26.line2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "clcw26.h_neg_line1",
+       "value": {
+        "cite": {
+         "doc": "i8283",
+         "locator": "pp. 1\u20133, Who Must File and Which Sections To Complete; f8283 Section A"
+        },
+        "form": "Form 8283 special treatment",
+        "gate": "gift[item_a].special",
+        "kind": "refusal",
+        "remedy": "This contribution requires unsupported appraisal or special-property treatment."
+       }
+      }
+     ],
+     "instance": "clcw26",
+     "kind": "candidate-refuses",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "clcw26.combined",
+       "value": {
+        "cite": {
+         "doc": "i8283",
+         "locator": "pp. 1\u20133, Who Must File and Which Sections To Complete; f8283 Section A"
+        },
+        "form": "Form 8283 special treatment",
+        "gate": "gift[item_a].special",
+        "kind": "refusal",
+        "remedy": "This contribution requires unsupported appraisal or special-property treatment."
+       }
+      },
+      {
+       "ref": "clcw26.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f4952.4.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 8962910,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "clcw26.line2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "clcw26.h_neg_line1",
+       "value": {
+        "cents": -8962910,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "clcw26",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "clcw26.combined",
+       "value": {
+        "cents": 8962910,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "clcw26.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8960.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 24611000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "clcw26.line2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "clcw26.h_neg_line1",
+       "value": {
+        "cents": -24611000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "clcw26",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "clcw26.combined",
+       "value": {
+        "cents": 24611000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "clcw26.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8960.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 8962910,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "clcw26.line2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "clcw26.h_neg_line1",
+       "value": {
+        "cents": -8962910,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "clcw26",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "clcw26.combined",
+       "value": {
+        "cents": 8962910,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "clcw26.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.g28.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i4562",
+       "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
+      },
+      "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+      "gate": "person[spouse].sc[biz_a].scveh[car_1].low_use",
+      "kind": "refusal",
+      "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "clcw26.line2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "clcw26.h_neg_line1",
+       "value": {
+        "cite": {
+         "doc": "i4562",
+         "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
+        },
+        "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+        "gate": "person[spouse].sc[biz_a].scveh[car_1].low_use",
+        "kind": "refusal",
+        "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
+       }
+      }
+     ],
+     "instance": "clcw26",
+     "kind": "candidate-refuses",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "clcw26.combined",
+       "value": {
+        "cite": {
+         "doc": "i4562",
+         "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
+        },
+        "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+        "gate": "person[spouse].sc[biz_a].scveh[car_1].low_use",
+        "kind": "refusal",
+        "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
+       }
+      },
+      {
+       "ref": "clcw26.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.g28.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 8962910,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "clcw26.line2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "clcw26.h_neg_line1",
+       "value": {
+        "cents": -8962910,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "clcw26",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "clcw26.combined",
+       "value": {
+        "cents": 8962910,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "clcw26.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.sd.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "clcw.prior_sd7",
+      "kind": "unknown",
+      "reason": "no input supplied for clcw.prior_sd7"
+     },
+     "candidate_operands": [
+      {
+       "ref": "clcw26.line2",
+       "value": {
+        "input": "clcw.prior_sd7",
+        "kind": "unknown",
+        "reason": "no input supplied for clcw.prior_sd7"
+       }
+      },
+      {
+       "ref": "clcw26.h_neg_line1",
+       "value": {
+        "input": "clcw.spouse_screen",
+        "kind": "unknown",
+        "reason": "no input supplied for clcw.spouse_screen"
+       }
+      }
+     ],
+     "instance": "clcw26",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040sb",
+       "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+      },
+      "form": "Schedule B special treatment / Form 8815",
+      "gate": "sb.unsupported",
+      "kind": "refusal",
+      "remedy": "Prepare the applicable adjustment or exclusion; this tool supports unadjusted taxable interest and ordinary dividends."
+     },
+     "project_operands": [
+      {
+       "ref": "clcw26.combined",
+       "value": {
+        "cite": {
+         "doc": "i1040sb",
+         "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+        },
+        "form": "Schedule B special treatment / Form 8815",
+        "gate": "sb.unsupported",
+        "kind": "refusal",
+        "remedy": "Prepare the applicable adjustment or exclusion; this tool supports unadjusted taxable interest and ordinary dividends."
+       }
+      },
+      {
+       "ref": "clcw26.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.asset.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "clcw.spouse_screen",
+      "kind": "unknown",
+      "reason": "no input supplied for clcw.spouse_screen"
+     },
+     "candidate_operands": [
+      {
+       "ref": "clcw26.line2",
+       "value": {
+        "cents": 263900,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "clcw26.h_neg_line1",
+       "value": {
+        "input": "clcw.spouse_screen",
+        "kind": "unknown",
+        "reason": "no input supplied for clcw.spouse_screen"
+       }
+      }
+     ],
+     "instance": "clcw26",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "f4952",
+       "locator": "pp. 1, 3\u20134, Investment Interest Expense Deduction"
+      },
+      "form": "Form 4952 / Form 6198 / Schedule E",
+      "gate": "f4952.unsupported",
+      "kind": "refusal",
+      "remedy": "Allocate the interest and prepare the applicable unsupported schedule or at-risk computation."
+     },
+     "project_operands": [
+      {
+       "ref": "clcw26.combined",
+       "value": {
+        "cite": {
+         "doc": "f4952",
+         "locator": "pp. 1, 3\u20134, Investment Interest Expense Deduction"
+        },
+        "form": "Form 4952 / Form 6198 / Schedule E",
+        "gate": "f4952.unsupported",
+        "kind": "refusal",
+        "remedy": "Allocate the interest and prepare the applicable unsupported schedule or at-risk computation."
+       }
+      },
+      {
+       "ref": "clcw26.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.carloan.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "clcw.prior_sd7",
+      "kind": "unknown",
+      "reason": "no input supplied for clcw.prior_sd7"
+     },
+     "candidate_operands": [
+      {
+       "ref": "clcw26.line2",
+       "value": {
+        "input": "clcw.prior_sd7",
+        "kind": "unknown",
+        "reason": "no input supplied for clcw.prior_sd7"
+       }
+      },
+      {
+       "ref": "clcw26.h_neg_line1",
+       "value": {
+        "input": "clcw.spouse_screen",
+        "kind": "unknown",
+        "reason": "no input supplied for clcw.spouse_screen"
+       }
+      }
+     ],
+     "instance": "clcw26",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "f4952",
+       "locator": "pp. 1, 3\u20134, Investment Interest Expense Deduction"
+      },
+      "form": "Form 4952 alternative allocation",
+      "gate": "f4952.alternative_allocation",
+      "kind": "refusal",
+      "remedy": "Only the default capital-gain-first allocation is supported; alternative allocation and Form 1116 coordination are outside scope."
+     },
+     "project_operands": [
+      {
+       "ref": "clcw26.combined",
+       "value": {
+        "cite": {
+         "doc": "f4952",
+         "locator": "pp. 1, 3\u20134, Investment Interest Expense Deduction"
+        },
+        "form": "Form 4952 alternative allocation",
+        "gate": "f4952.alternative_allocation",
+        "kind": "refusal",
+        "remedy": "Only the default capital-gain-first allocation is supported; alternative allocation and Form 1116 coordination are outside scope."
+       }
+      },
+      {
+       "ref": "clcw26.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.carloan.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "pp. 34\u201335, line 12e and Standard Deduction Chart"
+      },
+      "form": "Standard Deduction Worksheet for Dependents / dual-status rules",
+      "gate": "sa.dependent",
+      "kind": "refusal",
+      "remedy": "Dependent and dual-status standard deductions are outside this resident nondependent slice."
+     },
+     "candidate_operands": [
+      {
+       "ref": "clcw26.line2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "clcw26.h_neg_line1",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "pp. 34\u201335, line 12e and Standard Deduction Chart"
+        },
+        "form": "Standard Deduction Worksheet for Dependents / dual-status rules",
+        "gate": "sa.dependent",
+        "kind": "refusal",
+        "remedy": "Dependent and dual-status standard deductions are outside this resident nondependent slice."
+       }
+      }
+     ],
+     "instance": "clcw26",
+     "kind": "candidate-refuses",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "clcw26.combined",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "pp. 34\u201335, line 12e and Standard Deduction Chart"
+        },
+        "form": "Standard Deduction Worksheet for Dependents / dual-status rules",
+        "gate": "sa.dependent",
+        "kind": "refusal",
+        "remedy": "Dependent and dual-status standard deductions are outside this resident nondependent slice."
+       }
+      },
+      {
+       "ref": "clcw26.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f4952.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i8283",
+       "locator": "pp. 1\u20133, Who Must File and Which Sections To Complete; f8283 Section A"
+      },
+      "form": "Form 8283 special treatment",
+      "gate": "gift[item_a].special",
+      "kind": "refusal",
+      "remedy": "This contribution requires unsupported appraisal or special-property treatment."
+     },
+     "candidate_operands": [
+      {
+       "ref": "clcw26.line2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "clcw26.h_neg_line1",
+       "value": {
+        "cite": {
+         "doc": "i8283",
+         "locator": "pp. 1\u20133, Who Must File and Which Sections To Complete; f8283 Section A"
+        },
+        "form": "Form 8283 special treatment",
+        "gate": "gift[item_a].special",
+        "kind": "refusal",
+        "remedy": "This contribution requires unsupported appraisal or special-property treatment."
+       }
+      }
+     ],
+     "instance": "clcw26",
+     "kind": "candidate-refuses",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "clcw26.combined",
+       "value": {
+        "cite": {
+         "doc": "i8283",
+         "locator": "pp. 1\u20133, Who Must File and Which Sections To Complete; f8283 Section A"
+        },
+        "form": "Form 8283 special treatment",
+        "gate": "gift[item_a].special",
+        "kind": "refusal",
+        "remedy": "This contribution requires unsupported appraisal or special-property treatment."
+       }
+      },
+      {
+       "ref": "clcw26.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f4952.4",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "clcw.spouse_screen",
+      "kind": "unknown",
+      "reason": "no input supplied for clcw.spouse_screen"
+     },
+     "candidate_operands": [
+      {
+       "ref": "clcw26.line2",
+       "value": {
+        "cents": 150000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "clcw26.h_neg_line1",
+       "value": {
+        "input": "clcw.spouse_screen",
+        "kind": "unknown",
+        "reason": "no input supplied for clcw.spouse_screen"
+       }
+      }
+     ],
+     "instance": "clcw26",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040sb",
+       "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+      },
+      "form": "Form 3520 / Form 3520-A",
+      "gate": "sb.line8",
+      "kind": "refusal",
+      "remedy": "Review and prepare the required foreign-trust information returns; this path is outside scope."
+     },
+     "project_operands": [
+      {
+       "ref": "clcw26.combined",
+       "value": {
+        "cite": {
+         "doc": "i1040sb",
+         "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+        },
+        "form": "Form 3520 / Form 3520-A",
+        "gate": "sb.line8",
+        "kind": "refusal",
+        "remedy": "Review and prepare the required foreign-trust information returns; this path is outside scope."
+       }
+      },
+      {
+       "ref": "clcw26.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8959.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i4562",
+       "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
+      },
+      "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+      "gate": "person[spouse].sc[biz_a].scveh[car_1].low_use",
+      "kind": "refusal",
+      "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "clcw26.line2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "clcw26.h_neg_line1",
+       "value": {
+        "cite": {
+         "doc": "i4562",
+         "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
+        },
+        "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+        "gate": "person[spouse].sc[biz_a].scveh[car_1].low_use",
+        "kind": "refusal",
+        "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
+       }
+      }
+     ],
+     "instance": "clcw26",
+     "kind": "candidate-refuses",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "clcw26.combined",
+       "value": {
+        "cite": {
+         "doc": "i4562",
+         "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
+        },
+        "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+        "gate": "person[spouse].sc[biz_a].scveh[car_1].low_use",
+        "kind": "refusal",
+        "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
+       }
+      },
+      {
+       "ref": "clcw26.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.g28.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "clcw.spouse_screen",
+      "kind": "unknown",
+      "reason": "no input supplied for clcw.spouse_screen"
+     },
+     "candidate_operands": [
+      {
+       "ref": "clcw26.line2",
+       "value": {
+        "cents": 300000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "clcw26.h_neg_line1",
+       "value": {
+        "input": "clcw.spouse_screen",
+        "kind": "unknown",
+        "reason": "no input supplied for clcw.spouse_screen"
+       }
+      }
+     ],
+     "instance": "clcw26",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "f4952",
+       "locator": "pp. 1, 3\u20134, Investment Interest Expense Deduction"
+      },
+      "form": "Form 4952",
+      "gate": "f4952.bad_election",
+      "kind": "refusal",
+      "remedy": "Enter no more than the sum of lines 4b and 4e on line 4g."
+     },
+     "project_operands": [
+      {
+       "ref": "clcw26.combined",
+       "value": {
+        "cite": {
+         "doc": "f4952",
+         "locator": "pp. 1, 3\u20134, Investment Interest Expense Deduction"
+        },
+        "form": "Form 4952",
+        "gate": "f4952.bad_election",
+        "kind": "refusal",
+        "remedy": "Enter no more than the sum of lines 4b and 4e on line 4g."
+       }
+      },
+      {
+       "ref": "clcw26.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.oi8z.1",
+      "kind": "fixture"
+     }
+    }
+   ]
+  }
+ ],
+ "log_sha256_at_triage": "55db6ad6875205e0862dbcbb655deb9a2e22f8643dd8d9f32b5a7c681c96f70e",
+ "policy": "executable-triage-v2",
+ "response_sha256": "6ee184f931db605f32b55611439722b96b19418527857d3bf3ab00c93f5ef9be",
+ "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
+ "state": "evaluated",
+ "subject_sha256": "cd1860b673af88976841ed370a4905ad7cb46e9ceb0e582596ba2e6c7b6a92f7"
+}

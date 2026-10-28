@@ -3,6 +3,13 @@
  "form": "f4952",
  "rulings": [
   {
+   "printed": "4a",
+   "restated": "Add sb line 2 and sb line 6.",
+   "model": "Line 4a is 'Gross income from property held for investment', but Schedule B line 2 comes before line 3, where 'you may be able to exclude part or all of the interest' on series EE or I savings bonds (Form 8815). Using line 2 would count excludable interest that is not gross income, where the taxable total after line 3 should be used. The text given does not show any other mismatch for ordinary dividends.",
+   "ruling": "Ruling: scope; the model says Schedule B line 2 comes before line 3, where savings bond interest can be excluded (Form 8815), so line 4a could count excludable interest. f4952 p. 3, Line 4a: \"Gross income from property held for investment includes income, unless derived in the ordinary course of a trade or business, from interest, ordinary dividends (except Alaska Permanent Fund dividends), annuities, and royalties.\" The exclusion is refused: Schedule B line 3 (sb.line3) is zero and refuses on sb.unsupported (\"a savings bond interest exclusion\"), and sb.line2 carries the same screen, so on every computed return line 2 is the taxable interest (line 4). The English names the lines correctly; no amount differs within scope. Same reading as the earlier rounds.",
+   "context": "f16f89303bdab941e20fee8e3668eb4fc0ba2a9acca5e0da96e6d7c506b841d2"
+  },
+  {
    "printed": "4d",
    "restated": "Subtract $0 from sd line 16. If zero or less, enter -0-.",
    "model": "Line 4d is the \"excess, if any, of your total gains over your total losses from the disposition of property held for investment.\" The only wording given for sd line 16 is \"Combine the amounts for Schedule D line 16,\" which does not show that it is limited to property held for investment. None of the gates excludes non-investment dispositions on Schedule D.",

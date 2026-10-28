@@ -370,10 +370,8 @@
   {
    "id": "capital_loss_carryover",
    "group": "capital_loss_carryover",
-   "gates": [
-    "sd.carryover"
-   ],
-   "label": "Capital loss carryover from 2024",
+   "gates": [],
+   "label": "Capital loss carryover from 2024 (supported since Stage 20; its remaining refusals are unmeasured gates)",
    "irs": {
     "combine": "max",
     "cells": [
@@ -388,7 +386,8 @@
       "header": "Long-term loss carryover"
      }
     ]
-   }
+   },
+   "refused": false
   },
   {
    "id": "form5329",

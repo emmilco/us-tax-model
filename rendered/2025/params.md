@@ -36,6 +36,8 @@
 | `actc.per_child` | NonNegDollars | $1,700 | [f1040s8812] Schedule 8812 (2025), line 16b, "x $1,700" (2025; created 2025-07-30; sha256 6936462d) |
 | `actc.rate` | Rate | 15% (0.15) | [f1040s8812] Schedule 8812 (2025), line 20, "Multiply the amount on line 19 by 15% (0.15)" (2025; created 2025-07-30; sha256 6936462d) |
 | `actc.three_children` | NonNegDollars | $5,100 | [f1040s8812] Schedule 8812 (2025), after line 20, "On line 16b, is the amount $5,100 or more?" (2025; created 2025-07-30; sha256 6936462d) |
+| `clcw.prior_limit` | NonNegDollars | $3,000 | [i1040sd] p. 3, Capital Losses, "You can deduct capital losses up to the amount of your capital gains plus $3,000 ($1,500 if married filing separately)" (2025; printed date 2025-12-11; sha256 650643a6) |
+| `clcw.prior_limit_mfs` | NonNegDollars | $1,500 | [i1040sd] p. 3, Capital Losses, "You can deduct capital losses up to the amount of your capital gains plus $3,000 ($1,500 if married filing separately)" (2025; printed date 2025-12-11; sha256 650643a6) |
 | `ctc.age_limit` | Count | 17 | [i1040gi] p. 18, Step 3, "Was the child under age 17 at the end of 2025?" (2025; printed date 2026-02-25; sha256 482e9c48) |
 | `ctc.per_child` | NonNegDollars | $2,200 | [f1040s8812] Schedule 8812 (2025), line 5, "Multiply line 4 by $2,200" (2025; created 2025-07-30; sha256 6936462d) |
 | `ctc.phaseout_rate` | Rate | 5% (0.05) | [f1040s8812] Schedule 8812 (2025), line 11, "Multiply line 10 by 5% (0.05)" (2025; created 2025-07-30; sha256 6936462d) |

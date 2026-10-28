@@ -6,7 +6,7 @@
   "adapters": {
     "f4952.election": {
       "type": "NonNegDollars",
-      "behavior": "The entire supplied line4g election after the ordered carryover, unsupported-source, alternative-allocation and election-limit gates; not merely its capital-gain portion. Independent source reviews still transcribe every printed computed tax quantity.",
+      "behavior": "The entire supplied line4g election after the ordered unsupported-source, alternative-allocation and election-limit gates (a 2024 carryforward on line 2 does not gate it); not merely its capital-gain portion. Independent source reviews still transcribe every printed computed tax quantity.",
       "copy_consumers": [
         "sd.investment_election"
       ]
@@ -111,8 +111,8 @@
         "f4952.carryover": true
       },
       "expect": {
-        "kind": "refusal",
-        "gate": "f4952.carryover"
+        "kind": "money",
+        "cents": 70000
       }
     },
     {
@@ -122,8 +122,8 @@
         "f4952.carryover": null
       },
       "expect": {
-        "kind": "unknown",
-        "input": "f4952.carryover"
+        "kind": "money",
+        "cents": 70000
       }
     },
     {
@@ -179,7 +179,7 @@
       },
       "expect": {
         "kind": "refusal",
-        "gate": "f4952.carryover"
+        "gate": "f4952.unsupported"
       }
     },
     {
@@ -190,8 +190,8 @@
         "f4952.unsupported": true
       },
       "expect": {
-        "kind": "unknown",
-        "input": "f4952.carryover"
+        "kind": "refusal",
+        "gate": "f4952.unsupported"
       }
     },
     {

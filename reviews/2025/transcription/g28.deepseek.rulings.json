@@ -1,0 +1,14 @@
+{
+ "kind": "transcription",
+ "form": "g28",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "6",
+   "project": "{\"of\": [{\"const\": 0}, {\"ref\": \"sd.line7\"}], \"op\": \"smaller_of\"}",
+   "second": "{\"of\": [{\"from\": {\"const\": 0}, \"op\": \"subtract\", \"take\": {\"const\": 0}}, {\"ref\": \"sd.line7\"}], \"op\": \"smaller_of\"}",
+   "ruling": "Ruling: model error; i1040sd p. 11, Line 18: \"If you checked “Yes” on line 17, complete the 28% Rate Gain Worksheet in these instructions\". f1040sd p. 2, line 17: \"Are lines 15 and 16 both gains? Yes. Go to line 18. No. Skip lines 18 through 21, and go to line 22.\" (f1040sd was not among the pages given; the i1040sd p. 11 sentence was.) Triage executable-triage-v2 (triage/g28.deepseek.json; 1,159 fixtures, 500 generated returns seed 20261026, 40 partial bases, 0 partial records; 1,659 comparisons): 1,539 agree; 120 candidate-shows-skipped (25 on completed returns, 17 incomplete, 78 refused); no value, refusal or unknown difference. The candidate's arithmetic is the project's (the smaller of Schedule D line 7 and zero (the reply's zero is 0 minus 0); every return on which the project shows line 6 agrees), but the reply declares no shown_when, so it shows Schedule D line 7's loss on returns that never reach the worksheet; the project hides line 6 behind g28.reached (sd.line17 true; BUG-0183). Witnesses: classm.ltc.1 (completed; Schedule D line 17 No, line 7 -$1,657.00) project hidden, candidate -$1,657.00; classm.clcw26.2.deepseek (completed; line 7 -$10,701.00) project hidden, candidate -$10,701.00. Under the owner-confirmed skipped-line rule (adjudication README) a nonzero amount shown on a worksheet the filer never reaches is a defect of the side that shows it. The published interface offered shown_when (\"a Bool line of the same document\") and sd.line17 (Bool), so the source reading was expressible. The Stage 20 gate is confirmed on this line. Project stands.",
+   "context": "dac50b9b20c00007870a5f9378c5f5269c9b9b436690cd90ce0da5340a72d1c9"
+  }
+ ]
+}

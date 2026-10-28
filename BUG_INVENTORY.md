@@ -2749,3 +2749,94 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
   right: under the printed arithmetic Step 21 is negative and `person.sep_excess` refuses the return. New
   regression `stage14.sep.loss_floor`. No computed value changes.
 - **Tags:** closes-earlier-entry; registered-reading
+
+## BUG-0182 — OpenTaxSolver's IRA limitation left out the student loan interest line it moves
+
+- **Date:** 2026-10-27
+- **Caught by:** the engine differential after Stage 20 (case gen-00497, OpenTaxSolver `s1.line21`, project $0,
+  engine $82.89, unexplained).
+- **Symptom:** the adapter supplies the IRA deduction as the contributions (OpenTaxSolver has no IRA Deduction
+  Worksheet). The `ira_phaseout` limitation excluded the lines after AGI, but Schedule 1 line 21's phase-out reads
+  modified AGI after the IRA deduction, so on a return in both phase-outs the student loan interest deduction
+  differed for the same cause. The Stage 20 carryover moved this return's AGI into the student loan range; before,
+  it was above both.
+- **Where:** `tools/engines/ots_adapter.py`, `limitations()`, feature `ira_phaseout`.
+- **Why the checks did not catch it:** no earlier generated return was in both phase-out ranges at once.
+- **Fix:** the limitation also covers `s1.line21`. No project value changes.
+- **Tags:** engine-limitation-incomplete; caught-by-engine-differential
+
+## BUG-0183 — The 28% Rate Gain and Unrecaptured Section 1250 Gain Worksheets were shown when Schedule D line 17 is No
+
+- **Date:** 2026-10-27
+- **Caught by:** the Stage 20 blind predictions (scenario R8: Form 1099-DIV box 2d $400 and a long-term carryover,
+  Schedule D line 16 a loss). Both predictors marked the 28% Rate Gain Worksheet as not used; the values sheet showed
+  it with line 4 $400 and line 5 ($3,000).
+- **Symptom:** i1040sd p. 11 says to complete both worksheets "If you checked “Yes” on line 17"; Schedule D line 17
+  says "No. Skip lines 18 through 21". The worksheets' printed lines had no `shown_when`, so a return that never
+  reaches them showed nonzero amounts on them (line 4 from box 2d before this stage; lines 5 and 16 from a carryover
+  since). Under the owner's decision of 2026-10-26 a worksheet that is not reached is skipped, and a nonzero amount on
+  a skipped line is a defect. No other line changes: Schedule D lines 18 and 19 already read zero when line 17 is No.
+- **Where:** `forms/2025/g28.yaml`, `forms/2025/u1250.yaml`.
+- **Why the checks did not catch it:** the skipped-line sweep of round 4 covered worksheets after a printed STOP,
+  not worksheets entered only from a Schedule D Yes answer.
+- **Fix:** `g28.reached` and `u1250.reached` (Schedule D line 17 is Yes); every printed line of both worksheets is
+  shown only then. Values unchanged.
+- **Tags:** skipped-line-shown; caught-by-blind-prediction
+
+## BUG-0184 — Schedule D lines 4, 5, 11 and 12 are still labelled as screened for carryovers (open)
+
+- **Date:** 2026-10-27
+- **Caught by:** the Stage 20 adjudication of the Schedule D reviews (`.transcription/proposed/stage20/sd.findings.md`, F1).
+- **Symptom:** the labels of `sd.line4`, `sd.line5`, `sd.line11` and `sd.line12` read "zero only after unsupported
+  source/carryover screening"; Stage 20 removed the carryover refusal from those lines, so "/carryover" no longer
+  describes them. Wording only: no value, refusal or shown line changes.
+- **Where:** `forms/2025/sd.yaml`.
+- **Fix:** open; with the next change to `sd.yaml` (drop "/carryover"). Deferred because the labels are part of the
+  Schedule D review subject, so a wording change alone would stale the current Schedule D reviews (the pattern of
+  T-074).
+- **Tags:** stale-label; open; caught-by-source-adjudication
+
+## BUG-0185 — The Capital Loss Carryover Worksheet showed its lines when it does not apply
+
+- **Date:** 2026-10-27
+- **Caught by:** the Stage 20 adjudication of the clcw render reviews (`.transcription/proposed/stage20/clcw.findings.md`,
+  F1), by reading the form against the source; confirmed on `stage20.mut.line21_below_limit`.
+- **Symptom:** i1040sd p. 10: "Use this worksheet ... if your 2024 Schedule D, line 21, is a loss and (a) that loss is a
+  smaller loss than the loss on your 2024 Schedule D, line 16; or (b) if the amount on your 2024 Form 1040, 1040-SR or
+  1040-NR, line 15 would be less than zero ... Otherwise, you don’t have any carryovers." Where neither holds, lines 1
+  to 7 showed amounts (line 8 and 13 are $0 by the arithmetic). A worksheet the filer is told not to use is not reached,
+  and a nonzero amount on a line not reached is a defect (owner's decision of 2026-10-26). Display only.
+- **Where:** `forms/2025/clcw.yaml`.
+- **Why the checks did not catch it:** the decision batch argued the applicability test needs no gate line because the
+  carryovers come out zero; that is true of the values, not of the lines shown.
+- **Fix:** `clcw.applies` (condition (a) or (b)); lines 1 to 5 are shown on it, lines 6 to 8 on `clcw.show_st` and 9 to 13
+  on `clcw.show_lt`, which now require it. Values unchanged.
+- **Tags:** skipped-line-shown; caught-by-source-adjudication
+
+## BUG-0186 — A 2024 line 21 loss entered below what any 2024 return shows was accepted
+
+- **Date:** 2026-10-27
+- **Caught by:** the same adjudication (F2); witness: a $5,000 2024 loss with line 21 entered as $0 gave a $5,000
+  carryover in place of $2,000 and a 2025 deduction $1,000 too large.
+- **Symptom:** `clcw.bad` refused line 21 entries above $3,000 or above the line 16 loss, not entries below the smaller of
+  the line 16 loss and $1,500, which no correct 2024 return can print for any filing status (i1040sd p. 3, "plus $3,000
+  ($1,500 if married filing separately)"). The carryover, the 2025 deduction and the carryover to 2026 changed on a
+  wrong entry.
+- **Where:** `forms/2025/clcw.yaml`, `clcw.bad`.
+- **Why the checks did not catch it:** the generator draws line 21 exactly from the 2024 figures, so no generated return
+  carries an understated entry; D2(b) listed only the upper bounds.
+- **Fix:** `clcw.prior_floor` (the smaller of the line 16 loss and the new parameter `clcw.prior_limit_mfs`, $1,500); `clcw.bad`
+  also refuses an entry below it; the remedy and `amb.2025.clcw_line2_printed` name the bound. Regressions
+  `stage20.refuse.line21_zero_with_loss` and `stage20.refuse.line21_below_floor`.
+- **Tags:** consistency-screen-incomplete; caught-by-source-adjudication
+
+## BUG-0187 — The carryover to 2026 was shown whenever Schedule D line 16 is a loss
+
+- **Date:** 2026-10-27
+- **Caught by:** the same adjudication (`clcw26.findings.md`, F1); witness: a fully deducted $1,000 loss.
+- **Symptom:** i1040sd p. 14, Line 21: "You have a capital loss carryover from 2025 to 2026 if you have a loss on line 16
+  and either" the loss is more than the loss on line 21 or line 15 would be less than zero. `clcw26.show` tested only the
+  loss on line 16, so the worksheet was shown (with $0 carryovers) where the instructions say there is none. Display only.
+- **Where:** `forms/2025/clcw26.yaml`, `clcw26.show`.
+- **Fix:** `clcw26.show` tests the whole sentence. Values unchanged.
+- **Tags:** skipped-line-shown; caught-by-source-adjudication

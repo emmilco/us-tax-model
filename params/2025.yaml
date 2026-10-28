@@ -1073,6 +1073,18 @@ params:
       cite:
         doc: f1040sd
         locator: Schedule D (2025), Parts I–III
+    clcw.prior_limit_mfs:
+      type: NonNegDollars
+      value: 150000
+      cite:
+        doc: i1040sd
+        locator: 'p. 3, Capital Losses, "You can deduct capital losses up to the amount of your capital gains plus $3,000 ($1,500 if married filing separately)"'
+    clcw.prior_limit:
+      type: NonNegDollars
+      value: 300000
+      cite:
+        doc: i1040sd
+        locator: 'p. 3, Capital Losses, "You can deduct capital losses up to the amount of your capital gains plus $3,000 ($1,500 if married filing separately)"'
     sdtw.ordinary_ceiling:
       type: NonNegDollars
       value:

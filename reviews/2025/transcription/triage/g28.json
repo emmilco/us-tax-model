@@ -1,0 +1,387 @@
+{
+ "bank": {
+  "evaluation_failures": 0,
+  "fixtures": 1159,
+  "generated": 500,
+  "partial_bases": 40,
+  "partial_records": 0,
+  "seed": 20261026
+ },
+ "errors": [],
+ "failures": [],
+ "family": "claude",
+ "form": "g28",
+ "lines": [
+  {
+   "absent": 0,
+   "agree": 1539,
+   "candidate": "g28.line6",
+   "compared": 1659,
+   "differ": 120,
+   "handle": "6",
+   "in_scope": 1584,
+   "in_scope_agree": 1464,
+   "kinds": {
+    "candidate-shows-skipped": 120
+   },
+   "kinds_by_return": {
+    "completed": {
+     "candidate-shows-skipped": 25
+    },
+    "incomplete": {
+     "candidate-shows-skipped": 17
+    },
+    "refused": {
+     "candidate-shows-skipped": 78
+    }
+   },
+   "open_at_triage": true,
+   "project": "g28.line6",
+   "shown_when": "g28.reached",
+   "sources": {
+    "fixture": 1159,
+    "generated": 500
+   },
+   "status": "DISAGREE",
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "cents": -793400,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": -793400,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": -793400,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": -793400,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.sd.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": -2462600,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": -2462600,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": -2462600,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": -2462600,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.clcw.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": -640100,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": -640100,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": -640100,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": -640100,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.clcw.4.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": -1070100,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": -1070100,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": -1070100,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": -1070100,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.clcw26.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": -2723700,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": -2723700,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": -2723700,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": -2723700,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8880.4",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": -165700,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": -165700,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": -165700,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": -165700,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.ltc.1",
+      "kind": "fixture"
+     }
+    }
+   ]
+  }
+ ],
+ "log_sha256_at_triage": "63dfe69f36e7b5a1d602644f6c8d75c1b97070744b37989d08a9a9cc107e1da3",
+ "policy": "executable-triage-v2",
+ "response_sha256": "6ba8a38458750975b3d89f13ceb6f8b17cfc58ea1a1a09a9217cf293ad7706a0",
+ "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
+ "state": "evaluated",
+ "subject_sha256": "bd7523ec2d028e8f80f4e30e1aa12b994a12c67c1de38dea565dcfdc641e443f"
+}

@@ -281,7 +281,47 @@ def gen_case(rng, i):
         features.add("car_loan_interest")
     facts.update(age=age, tips=tips, overtime=overtime, car_loan_interest=car)
     add_form_features(random.Random(f"forms:{i}"), inputs, facts, features, ages, wages, age)
+    add_carryovers(random.Random(f"carry:{i}"), inputs, facts, features)
     return {"id": f"gen-{i:05d}", "inputs": inputs, "facts": facts, "features": sorted(features)}
+
+
+def carryovers_by_rule(taxable, deduction, st, lt):
+    """The carryovers into the next year by Pub. 550's rule (p550 p. 102), not by the worksheet's lines: the
+    carryover is the net loss that is more than the lesser of the allowable deduction and taxable income
+    increased by it, the short-term loss used first, each kept short- or long-term, a loss of one term first
+    reduced by a gain of the other. Returns (short-term, long-term), positive cents."""
+    used = min(deduction, max(0, taxable + deduction))
+    st_loss, lt_loss, st_gain, lt_gain = max(0, -st), max(0, -lt), max(0, st), max(0, lt)
+    return max(0, st_loss - lt_gain - used), max(0, lt_loss - st_gain - max(0, used - st_loss))
+
+
+def add_carryovers(r, inputs, facts, features):
+    """A capital loss carried from 2024 on about one return in seven, from a 2024 Schedule D whose line 16 is a
+    loss and 2024 taxable income that is sometimes negative; and, for itemizers with investment interest, a
+    Form 4952 carryforward from 2024 on about three in ten. A separate generator leaves every earlier draw
+    unchanged."""
+    inputs.update({"clcw.spouse_screen": False, "f8960.prior_2i": False})
+    carry_st = carry_lt = 0
+    if r.random() < 0.15:
+        st = -r.randint(1, 3_000_000) if r.random() < 0.6 else r.randint(0, 1_500_000)
+        lt = -r.randint(1, 3_000_000) if r.random() < 0.6 else r.randint(0, 1_500_000)
+        if st + lt >= 0:
+            st = -(lt + r.randint(1, 1_000_000))
+        agi = r.randint(-1_000_000, 1_500_000) if r.random() < 0.25 else r.randint(1_500_001, 20_000_000)
+        deductions = r.randint(1_460_000, 3_000_000)
+        line21 = min(300_000, -(st + lt))
+        inputs.update({"sd.carryover": True, "clcw.prior_11": agi, "clcw.prior_14": deductions, "clcw.prior_sd7": st,
+                       "clcw.prior_sd15": lt, "clcw.prior_sd21": line21})
+        carry_st, carry_lt = carryovers_by_rule(agi - deductions, line21, st, lt)
+        facts["prior_year"] = {"line15": agi - deductions, "sd7": st, "sd15": lt, "sd21": line21}
+        features.add("capital_loss_carryover")
+    facts.update(capital_loss_carryover_st=carry_st, capital_loss_carryover_lt=carry_lt)
+    carry_ii = 0
+    if facts.get("investment_interest") and r.random() < 0.3:
+        carry_ii = r.randint(1_000, 1_000_000)
+        inputs.update({"f4952.carryover": True, "f4952.prior_7": carry_ii})
+        features.add("investment_interest_carryover")
+    facts["investment_interest_carryover"] = carry_ii
 
 
 def add_form_features(r, inputs, facts, features, ages, wages, age):

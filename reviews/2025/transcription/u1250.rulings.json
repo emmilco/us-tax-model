@@ -23,6 +23,13 @@
   {
    "printed": "15",
    "project": "{\"ref\": \"g28.line6\"}",
+   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": 0}, {\"ref\": \"sd.line7\"}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"ref\": \"sd.line7\"}, {\"const\": 0}], \"test\": \"lt\"}, \"then\": {\"ref\": \"sd.line7\"}}], \"op\": \"choose\"}",
+   "ruling": "Ruling: model error; i1040sd p. 13, line 15: \"Enter the (loss), if any, from Schedule D, line 7. If Schedule D, line 7, is zero or a gain, enter -0-\"; i1040sd p. 11, Line 19: \"If you checked “Yes” on line 17, complete the Unrecaptured Section 1250 Gain Worksheet in these instructions\". Triage could not execute this reply (triage/u1250.json, state invalid: u1250.line16 \"model changed a published result type\"), so this line is ruled by reading the expression. The candidate's value is the project's when the worksheet is reached (its choice of sd.line7 when below zero, else sd.zero, equals the project's copy of g28.line6, the smaller of Schedule D line 7 and zero), but the reply declares no shown_when, so it shows Schedule D line 7's loss on returns where line 17 is No; the project hides line 15 behind u1250.reached (sd.line17 true; BUG-0183). The same expression on the same predicate was executed for g28 line 6 (triage/g28.json and g28.deepseek.json: 120 candidate-shows-skipped of 1,659, 25 on completed returns; classm.ltc.1 completed, hidden, candidate -$1,657.00), and u1250.reached and g28.reached are the same test. Under the owner-confirmed skipped-line rule (adjudication README) a nonzero amount shown on a worksheet the filer never reaches is a defect of the side that shows it. The published interface offered shown_when (\"a Bool line of the same document\") and sd.line17 (Bool), so the source reading was expressible. Project stands.",
+   "context": "7e7daa8dc908c134f9316ea7448478a58ea7b6d5f3073f958e8e360e30dea8cf"
+  },
+  {
+   "printed": "15",
+   "project": "{\"ref\": \"g28.line6\"}",
    "second": "{\"of\": [{\"const\": 0}, {\"ref\": \"sd.line7\"}], \"op\": \"smaller_of\"}",
    "ruling": "Ruling: equivalent; project retained. The project copies g28.line6, which is the smaller of sd.line7 and sd.zero (0); the second takes the smaller of 0 and sd.line7. The same signed loss or zero."
   },
@@ -33,16 +40,44 @@
    "ruling": "Ruling: equivalent; project retained. Zero on both sides: the project enters sales.zero, whose value is 0 (params/2025.yaml), and the second copies sd.line14, which is sd.zero (sales.zero = 0). A capital loss carryover is refused through sd.carryover and sd.other_forms on both readings, so the sign question in the second's note does not arise."
   },
   {
+   "printed": "16",
+   "project": "{\"ref\": \"sd.line14\"}",
+   "second": "{\"expression\": {\"from\": {\"const\": 0}, \"op\": \"subtract_floor0\", \"take\": {\"ref\": \"sd.line14\"}}, \"invalid_model_types\": [{\"line\": \"u1250.line16\", \"message\": \"model changed a published result type\"}]}",
+   "ruling": "Ruling: model error; on the declaration, not the tax reading. i1040sd p. 13, line 16: \"Enter your long-term capital loss carryovers from Schedule D, line 14; and Schedule K-1 (Form 1041), box 11, code D\", printed \"16. ( )\"; line 17: \"Combine lines 14 through 16. If the result is a (loss), enter it as a positive amount. If the result is zero or a gain, enter -0-\". The reply declares u1250.line16 NonNegDollars (0 minus Schedule D line 14, floored at zero), changing the published type Dollars, and fails type validation (\"model changed a published result type\"; triage/u1250.json state invalid, so no line of the reply was executed). The project holds the carryover negative, copying Schedule D line 14 (the Stage 20 sign, decisions file \"Settled by the evidence\" 1). On the tax reading the reply is equivalent: its positive line 16 is subtracted on its line 17, and its line 14 + line 15 - line 16 equals the project's sum of lines 14 through 16 on every return. Project checked on a constructed return (classm.g28.2 with a 2024 carryover: 2024 Form 1040 lines 11 $20,000 and 14 $30,000, 2024 Schedule D lines 7 $0, 15 -$10,000, 21 $3,000; box 2d $400; Schedule D line 17 Yes): Schedule D line 14 -$10,000.00, u1250 line 16 -$10,000.00, line 14 $400.00, line 15 $0.00, line 17 $9,600.00, line 18 $0.00; g28 line 5 -$10,000.00, line 7 $0.00. No project defect.",
+   "context": "7e7daa8dc908c134f9316ea7448478a58ea7b6d5f3073f958e8e360e30dea8cf"
+  },
+  {
+   "printed": "17",
+   "project": "{\"from\": {\"const\": 0}, \"op\": \"subtract_floor0\", \"take\": {\"of\": [{\"line\": \"14\"}, {\"line\": \"15\"}, {\"line\": \"16\"}], \"op\": \"sum\"}}",
+   "second": "{\"expression\": {\"from\": {\"const\": 0}, \"op\": \"subtract_floor0\", \"take\": {\"from\": {\"of\": [{\"line\": \"14\"}, {\"line\": \"15\"}], \"op\": \"sum\"}, \"op\": \"subtract\", \"take\": {\"line\": \"16\"}}}, \"invalid_model_types\": [{\"line\": \"u1250.line16\", \"message\": \"model changed a published result type\"}]}",
+   "ruling": "Ruling: model error; on the declaration, not the tax reading. i1040sd p. 13, line 16: \"Enter your long-term capital loss carryovers from Schedule D, line 14; and Schedule K-1 (Form 1041), box 11, code D\", printed \"16. ( )\"; line 17: \"Combine lines 14 through 16. If the result is a (loss), enter it as a positive amount. If the result is zero or a gain, enter -0-\". The line reads u1250.line16, whose declaration fails type validation (above), so it is reported invalid and was not executed. Its expression, 0 minus ((line 14 + line 15) - line 16) floored at zero with a positive line 16, equals the project's 0 minus (lines 14 + 15 + 16) floored at zero with a negative line 16 on every return. Project checked on a constructed return (classm.g28.2 with a 2024 carryover: 2024 Form 1040 lines 11 $20,000 and 14 $30,000, 2024 Schedule D lines 7 $0, 15 -$10,000, 21 $3,000; box 2d $400; Schedule D line 17 Yes): Schedule D line 14 -$10,000.00, u1250 line 16 -$10,000.00, line 14 $400.00, line 15 $0.00, line 17 $9,600.00, line 18 $0.00; g28 line 5 -$10,000.00, line 7 $0.00. No project defect.",
+   "context": "7e7daa8dc908c134f9316ea7448478a58ea7b6d5f3073f958e8e360e30dea8cf"
+  },
+  {
    "printed": "17",
    "project": "{\"from\": {\"param\": \"sales.zero\"}, \"op\": \"subtract_floor0\", \"take\": {\"of\": [{\"line\": \"14\"}, {\"line\": \"15\"}, {\"line\": \"16\"}], \"op\": \"sum\"}}",
    "second": "{\"from\": {\"const\": 0}, \"op\": \"subtract_floor0\", \"take\": {\"of\": [{\"line\": \"14\"}, {\"line\": \"15\"}, {\"line\": \"16\"}], \"op\": \"sum\"}}",
    "ruling": "Ruling: equivalent; project retained. Both enter zero less the sum of lines 14 to 16, floored at zero; the project writes the zero as sales.zero (value 0), the second as a constant."
   },
   {
+   "printed": "18",
+   "project": "{\"from\": {\"line\": \"13\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"17\"}}",
+   "second": "{\"expression\": {\"from\": {\"line\": \"13\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"17\"}}, \"invalid_model_types\": [{\"line\": \"u1250.line16\", \"message\": \"model changed a published result type\"}]}",
+   "ruling": "Ruling: model error; on the declaration, not the tax reading. i1040sd p. 13, line 18: \"Unrecaptured section 1250 gain. Subtract line 17 from line 13. If zero or less, enter -0-.\" The expression is the project's exactly; the line is listed only because it depends on u1250.line16, whose declared type fails validation (line 16 above). No project defect.",
+   "context": "7e7daa8dc908c134f9316ea7448478a58ea7b6d5f3073f958e8e360e30dea8cf"
+  },
+  {
    "printed": "2",
    "project": "{\"param\": \"sales.zero\"}",
    "second": "{\"const\": 0}",
    "ruling": "Ruling: equivalent; project retained. Zero on both sides: the project enters sales.zero, whose value is 0 (params/2025.yaml), and the second enters 0. Form 4797, Form 6252 and Schedule K-1 gains are refused through sd.other_forms, and sales of depreciable real property or of a partnership interest holding it through sales.special (the u1250 note: 'Form 4797 and other non-distribution sources are outside scope')."
+  },
+  {
+   "printed": "3",
+   "project": "{\"const\": 0}",
+   "second": "{\"from\": {\"line\": \"1\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"2\"}}",
+   "ruling": "Ruling: representation; i1040sd p. 13: \"If you aren’t reporting a gain on Form 4797, line 7, skip lines 1 through 9 and go to line 10.\" Line: \"Subtract line 2 from line 1\". Triage could not execute this reply (triage/u1250.json, state invalid: u1250.line16 \"model changed a published result type\"), so this line is ruled by reading the expression. Form 4797 gains and losses are refused by sd.other_forms (\"Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1?\"), which refuses Schedule D and Form 1040 line 7a (checked: sd.other_forms true on classm.g28.2 gives sd.line7, g28.line7, u1250.line18 and f1040.line7a refused). The candidate's lines 1 and 2 are sd.zero (its notes give Form 4797 as refused), and subtract_floor0 of zero from zero is zero, so the line is $0.00 on every return the interview can produce, as is the project's (div.screen, $0.00); a zero on a line the source skips is permitted, so the candidate's missing shown_when has no effect here. No difference.",
+   "context": "7e7daa8dc908c134f9316ea7448478a58ea7b6d5f3073f958e8e360e30dea8cf"
   },
   {
    "printed": "3",
@@ -64,9 +99,23 @@
   },
   {
    "printed": "6",
+   "project": "{\"const\": 0}",
+   "second": "{\"of\": [{\"line\": \"3\"}, {\"line\": \"4\"}, {\"line\": \"5\"}], \"op\": \"sum\"}",
+   "ruling": "Ruling: representation; i1040sd p. 13: \"If you aren’t reporting a gain on Form 4797, line 7, skip lines 1 through 9 and go to line 10.\" Line: \"Add lines 3 through 5\". Triage could not execute this reply (triage/u1250.json, state invalid: u1250.line16 \"model changed a published result type\"), so this line is ruled by reading the expression. Form 4797 gains and losses are refused by sd.other_forms (\"Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1?\"), which refuses Schedule D and Form 1040 line 7a (checked: sd.other_forms true on classm.g28.2 gives sd.line7, g28.line7, u1250.line18 and f1040.line7a refused). The candidate's lines 3, 4 and 5 are zero (line 3 above; lines 4 and 5 sd.zero for Form 6252 and Schedule K-1, refused by sd.other_forms), so the line is $0.00 on every return the interview can produce, as is the project's (div.screen, $0.00); a zero on a line the source skips is permitted, so the candidate's missing shown_when has no effect here. No difference.",
+   "context": "7e7daa8dc908c134f9316ea7448478a58ea7b6d5f3073f958e8e360e30dea8cf"
+  },
+  {
+   "printed": "6",
    "project": "{\"param\": \"sales.zero\"}",
    "second": "{\"of\": [{\"line\": \"3\"}, {\"line\": \"4\"}, {\"line\": \"5\"}], \"op\": \"sum\"}",
    "ruling": "Ruling: equivalent; project retained. Zero on both sides: the project enters sales.zero, whose value is 0 (params/2025.yaml), and the second adds lines 3 to 5, all 0."
+  },
+  {
+   "printed": "7",
+   "project": "{\"const\": 0}",
+   "second": "{\"of\": [{\"const\": 0}, {\"line\": \"6\"}], \"op\": \"smaller_of\"}",
+   "ruling": "Ruling: representation; i1040sd p. 13: \"If you aren’t reporting a gain on Form 4797, line 7, skip lines 1 through 9 and go to line 10.\" Line: \"Enter the smaller of line 6 or the gain from Form 4797, line 7\". Triage could not execute this reply (triage/u1250.json, state invalid: u1250.line16 \"model changed a published result type\"), so this line is ruled by reading the expression. Form 4797 gains and losses are refused by sd.other_forms (\"Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1?\"), which refuses Schedule D and Form 1040 line 7a (checked: sd.other_forms true on classm.g28.2 gives sd.line7, g28.line7, u1250.line18 and f1040.line7a refused). The candidate's smaller of line 6 ($0.00) and sd.zero is zero, so the line is $0.00 on every return the interview can produce, as is the project's (div.screen, $0.00); a zero on a line the source skips is permitted, so the candidate's missing shown_when has no effect here. No difference.",
+   "context": "7e7daa8dc908c134f9316ea7448478a58ea7b6d5f3073f958e8e360e30dea8cf"
   },
   {
    "printed": "7",
@@ -79,6 +128,13 @@
    "project": "{\"param\": \"sales.zero\"}",
    "second": "{\"const\": 0}",
    "ruling": "Ruling: equivalent; project retained. Zero on both sides: the project enters sales.zero, whose value is 0 (params/2025.yaml), and the second enters 0. Form 4797, Form 6252 and Schedule K-1 gains are refused through sd.other_forms, and sales of depreciable real property or of a partnership interest holding it through sales.special (the u1250 note: 'Form 4797 and other non-distribution sources are outside scope')."
+  },
+  {
+   "printed": "9",
+   "project": "{\"const\": 0}",
+   "second": "{\"from\": {\"line\": \"7\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"8\"}}",
+   "ruling": "Ruling: representation; i1040sd p. 13: \"If you aren’t reporting a gain on Form 4797, line 7, skip lines 1 through 9 and go to line 10.\" Line: \"Subtract line 8 from line 7. If zero or less, enter -0-\". Triage could not execute this reply (triage/u1250.json, state invalid: u1250.line16 \"model changed a published result type\"), so this line is ruled by reading the expression. Form 4797 gains and losses are refused by sd.other_forms (\"Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1?\"), which refuses Schedule D and Form 1040 line 7a (checked: sd.other_forms true on classm.g28.2 gives sd.line7, g28.line7, u1250.line18 and f1040.line7a refused). The candidate's lines 7 and 8 are zero, so the line is $0.00 on every return the interview can produce, as is the project's (div.screen, $0.00); a zero on a line the source skips is permitted, so the candidate's missing shown_when has no effect here. No difference.",
+   "context": "7e7daa8dc908c134f9316ea7448478a58ea7b6d5f3073f958e8e360e30dea8cf"
   },
   {
    "printed": "9",

@@ -12863,11 +12863,14 @@
       }
     },
     {
-      "id": "sales.refuse.carryover",
+      "id": "sales.carryover.short_term",
       "covers": [
-        "sd.carryover"
+        "sd.carryover",
+        "clcw",
+        "clcw26"
       ],
-      "evidence": "synthetic refusal regression",
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 20, predicted by hand from i1040sd p. 10 before recording. 2024: Form 1040 line 11 $50,000, line 14 $15,000; Schedule D line 7 -$10,000, line 15 $0, line 21 -$3,000. Worksheet: line 1 $35,000, line 2 $3,000, line 3 $38,000, line 4 $3,000, line 5 $10,000, line 6 $0, line 7 $3,000, line 8 $7,000; line 15 is not a loss, so lines 9 to 13 are skipped and line 13 is $0. 2025: a $4,000 short-term gain; Schedule D line 6 -$7,000, line 7 -$3,000, line 16 -$3,000, line 21 -$3,000 (the limit), Form 1040 line 7a -$3,000. Carryover to 2026: 2025 line 1 is negative and line 3 $0, so line 8 is the whole $3,000 net short-term loss.",
       "inputs": {
         "$sales": [
           "a"
@@ -12972,541 +12975,72 @@
         "f2441.benefits": false,
         "f2441.employer_care": false,
         "person[taxpayer].sav_trad": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "clcw.spouse_screen": false,
+        "clcw.prior_11": 5000000,
+        "clcw.prior_14": 1500000,
+        "clcw.prior_sd7": -1000000,
+        "clcw.prior_sd15": 0,
+        "clcw.prior_sd21": 300000,
+        "qbi.unsupported": false,
+        "qbi.carryforward": 0
       },
       "expect": {
-        "f1040.line7a": {
-          "kind": "refusal",
-          "form": "Capital Loss Carryover Worksheet",
-          "remedy": "Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.",
-          "cite": {
-            "doc": "f1040sd",
-            "locator": "Schedule D (2025), Parts I–III",
-            "revision": "2025; created 2025-10-06",
-            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
-            "tax_year": 2025
-          },
-          "gate": "sd.carryover"
+        "clcw.line1": {
+          "kind": "money",
+          "cents": 3500000
         },
-        "sd.line1a.d": {
-          "kind": "refusal",
-          "form": "Capital Loss Carryover Worksheet",
-          "remedy": "Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.",
-          "cite": {
-            "doc": "f1040sd",
-            "locator": "Schedule D (2025), Parts I–III",
-            "revision": "2025; created 2025-10-06",
-            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
-            "tax_year": 2025
-          },
-          "gate": "sd.carryover"
+        "clcw.line3": {
+          "kind": "money",
+          "cents": 3800000
         },
-        "sd.line1a.e": {
-          "kind": "refusal",
-          "form": "Capital Loss Carryover Worksheet",
-          "remedy": "Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.",
-          "cite": {
-            "doc": "f1040sd",
-            "locator": "Schedule D (2025), Parts I–III",
-            "revision": "2025; created 2025-10-06",
-            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
-            "tax_year": 2025
-          },
-          "gate": "sd.carryover"
+        "clcw.line4": {
+          "kind": "money",
+          "cents": 300000
         },
-        "sd.line1a.g": {
-          "kind": "refusal",
-          "form": "Capital Loss Carryover Worksheet",
-          "remedy": "Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.",
-          "cite": {
-            "doc": "f1040sd",
-            "locator": "Schedule D (2025), Parts I–III",
-            "revision": "2025; created 2025-10-06",
-            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
-            "tax_year": 2025
-          },
-          "gate": "sd.carryover"
+        "clcw.line7": {
+          "kind": "money",
+          "cents": 300000
         },
-        "sd.line1a.h": {
-          "kind": "refusal",
-          "form": "Capital Loss Carryover Worksheet",
-          "remedy": "Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.",
-          "cite": {
-            "doc": "f1040sd",
-            "locator": "Schedule D (2025), Parts I–III",
-            "revision": "2025; created 2025-10-06",
-            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
-            "tax_year": 2025
-          },
-          "gate": "sd.carryover"
+        "clcw.line8": {
+          "kind": "money",
+          "cents": 700000
         },
-        "sd.line1b.d": {
-          "kind": "refusal",
-          "form": "Capital Loss Carryover Worksheet",
-          "remedy": "Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.",
-          "cite": {
-            "doc": "f1040sd",
-            "locator": "Schedule D (2025), Parts I–III",
-            "revision": "2025; created 2025-10-06",
-            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
-            "tax_year": 2025
-          },
-          "gate": "sd.carryover"
-        },
-        "sd.line1b.e": {
-          "kind": "refusal",
-          "form": "Capital Loss Carryover Worksheet",
-          "remedy": "Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.",
-          "cite": {
-            "doc": "f1040sd",
-            "locator": "Schedule D (2025), Parts I–III",
-            "revision": "2025; created 2025-10-06",
-            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
-            "tax_year": 2025
-          },
-          "gate": "sd.carryover"
-        },
-        "sd.line1b.g": {
-          "kind": "refusal",
-          "form": "Capital Loss Carryover Worksheet",
-          "remedy": "Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.",
-          "cite": {
-            "doc": "f1040sd",
-            "locator": "Schedule D (2025), Parts I–III",
-            "revision": "2025; created 2025-10-06",
-            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
-            "tax_year": 2025
-          },
-          "gate": "sd.carryover"
-        },
-        "sd.line1b.h": {
-          "kind": "refusal",
-          "form": "Capital Loss Carryover Worksheet",
-          "remedy": "Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.",
-          "cite": {
-            "doc": "f1040sd",
-            "locator": "Schedule D (2025), Parts I–III",
-            "revision": "2025; created 2025-10-06",
-            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
-            "tax_year": 2025
-          },
-          "gate": "sd.carryover"
-        },
-        "sd.line2.d": {
-          "kind": "refusal",
-          "form": "Capital Loss Carryover Worksheet",
-          "remedy": "Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.",
-          "cite": {
-            "doc": "f1040sd",
-            "locator": "Schedule D (2025), Parts I–III",
-            "revision": "2025; created 2025-10-06",
-            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
-            "tax_year": 2025
-          },
-          "gate": "sd.carryover"
-        },
-        "sd.line2.e": {
-          "kind": "refusal",
-          "form": "Capital Loss Carryover Worksheet",
-          "remedy": "Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.",
-          "cite": {
-            "doc": "f1040sd",
-            "locator": "Schedule D (2025), Parts I–III",
-            "revision": "2025; created 2025-10-06",
-            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
-            "tax_year": 2025
-          },
-          "gate": "sd.carryover"
-        },
-        "sd.line2.g": {
-          "kind": "refusal",
-          "form": "Capital Loss Carryover Worksheet",
-          "remedy": "Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.",
-          "cite": {
-            "doc": "f1040sd",
-            "locator": "Schedule D (2025), Parts I–III",
-            "revision": "2025; created 2025-10-06",
-            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
-            "tax_year": 2025
-          },
-          "gate": "sd.carryover"
-        },
-        "sd.line2.h": {
-          "kind": "refusal",
-          "form": "Capital Loss Carryover Worksheet",
-          "remedy": "Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.",
-          "cite": {
-            "doc": "f1040sd",
-            "locator": "Schedule D (2025), Parts I–III",
-            "revision": "2025; created 2025-10-06",
-            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
-            "tax_year": 2025
-          },
-          "gate": "sd.carryover"
-        },
-        "sd.line3.d": {
-          "kind": "refusal",
-          "form": "Capital Loss Carryover Worksheet",
-          "remedy": "Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.",
-          "cite": {
-            "doc": "f1040sd",
-            "locator": "Schedule D (2025), Parts I–III",
-            "revision": "2025; created 2025-10-06",
-            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
-            "tax_year": 2025
-          },
-          "gate": "sd.carryover"
-        },
-        "sd.line3.e": {
-          "kind": "refusal",
-          "form": "Capital Loss Carryover Worksheet",
-          "remedy": "Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.",
-          "cite": {
-            "doc": "f1040sd",
-            "locator": "Schedule D (2025), Parts I–III",
-            "revision": "2025; created 2025-10-06",
-            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
-            "tax_year": 2025
-          },
-          "gate": "sd.carryover"
-        },
-        "sd.line3.g": {
-          "kind": "refusal",
-          "form": "Capital Loss Carryover Worksheet",
-          "remedy": "Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.",
-          "cite": {
-            "doc": "f1040sd",
-            "locator": "Schedule D (2025), Parts I–III",
-            "revision": "2025; created 2025-10-06",
-            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
-            "tax_year": 2025
-          },
-          "gate": "sd.carryover"
-        },
-        "sd.line3.h": {
-          "kind": "refusal",
-          "form": "Capital Loss Carryover Worksheet",
-          "remedy": "Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.",
-          "cite": {
-            "doc": "f1040sd",
-            "locator": "Schedule D (2025), Parts I–III",
-            "revision": "2025; created 2025-10-06",
-            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
-            "tax_year": 2025
-          },
-          "gate": "sd.carryover"
-        },
-        "sd.line8a.d": {
-          "kind": "refusal",
-          "form": "Capital Loss Carryover Worksheet",
-          "remedy": "Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.",
-          "cite": {
-            "doc": "f1040sd",
-            "locator": "Schedule D (2025), Parts I–III",
-            "revision": "2025; created 2025-10-06",
-            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
-            "tax_year": 2025
-          },
-          "gate": "sd.carryover"
-        },
-        "sd.line8a.e": {
-          "kind": "refusal",
-          "form": "Capital Loss Carryover Worksheet",
-          "remedy": "Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.",
-          "cite": {
-            "doc": "f1040sd",
-            "locator": "Schedule D (2025), Parts I–III",
-            "revision": "2025; created 2025-10-06",
-            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
-            "tax_year": 2025
-          },
-          "gate": "sd.carryover"
-        },
-        "sd.line8a.g": {
-          "kind": "refusal",
-          "form": "Capital Loss Carryover Worksheet",
-          "remedy": "Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.",
-          "cite": {
-            "doc": "f1040sd",
-            "locator": "Schedule D (2025), Parts I–III",
-            "revision": "2025; created 2025-10-06",
-            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
-            "tax_year": 2025
-          },
-          "gate": "sd.carryover"
-        },
-        "sd.line8a.h": {
-          "kind": "refusal",
-          "form": "Capital Loss Carryover Worksheet",
-          "remedy": "Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.",
-          "cite": {
-            "doc": "f1040sd",
-            "locator": "Schedule D (2025), Parts I–III",
-            "revision": "2025; created 2025-10-06",
-            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
-            "tax_year": 2025
-          },
-          "gate": "sd.carryover"
-        },
-        "sd.line8b.d": {
-          "kind": "refusal",
-          "form": "Capital Loss Carryover Worksheet",
-          "remedy": "Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.",
-          "cite": {
-            "doc": "f1040sd",
-            "locator": "Schedule D (2025), Parts I–III",
-            "revision": "2025; created 2025-10-06",
-            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
-            "tax_year": 2025
-          },
-          "gate": "sd.carryover"
-        },
-        "sd.line8b.e": {
-          "kind": "refusal",
-          "form": "Capital Loss Carryover Worksheet",
-          "remedy": "Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.",
-          "cite": {
-            "doc": "f1040sd",
-            "locator": "Schedule D (2025), Parts I–III",
-            "revision": "2025; created 2025-10-06",
-            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
-            "tax_year": 2025
-          },
-          "gate": "sd.carryover"
-        },
-        "sd.line8b.g": {
-          "kind": "refusal",
-          "form": "Capital Loss Carryover Worksheet",
-          "remedy": "Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.",
-          "cite": {
-            "doc": "f1040sd",
-            "locator": "Schedule D (2025), Parts I–III",
-            "revision": "2025; created 2025-10-06",
-            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
-            "tax_year": 2025
-          },
-          "gate": "sd.carryover"
-        },
-        "sd.line8b.h": {
-          "kind": "refusal",
-          "form": "Capital Loss Carryover Worksheet",
-          "remedy": "Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.",
-          "cite": {
-            "doc": "f1040sd",
-            "locator": "Schedule D (2025), Parts I–III",
-            "revision": "2025; created 2025-10-06",
-            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
-            "tax_year": 2025
-          },
-          "gate": "sd.carryover"
-        },
-        "sd.line9.d": {
-          "kind": "refusal",
-          "form": "Capital Loss Carryover Worksheet",
-          "remedy": "Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.",
-          "cite": {
-            "doc": "f1040sd",
-            "locator": "Schedule D (2025), Parts I–III",
-            "revision": "2025; created 2025-10-06",
-            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
-            "tax_year": 2025
-          },
-          "gate": "sd.carryover"
-        },
-        "sd.line9.e": {
-          "kind": "refusal",
-          "form": "Capital Loss Carryover Worksheet",
-          "remedy": "Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.",
-          "cite": {
-            "doc": "f1040sd",
-            "locator": "Schedule D (2025), Parts I–III",
-            "revision": "2025; created 2025-10-06",
-            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
-            "tax_year": 2025
-          },
-          "gate": "sd.carryover"
-        },
-        "sd.line9.g": {
-          "kind": "refusal",
-          "form": "Capital Loss Carryover Worksheet",
-          "remedy": "Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.",
-          "cite": {
-            "doc": "f1040sd",
-            "locator": "Schedule D (2025), Parts I–III",
-            "revision": "2025; created 2025-10-06",
-            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
-            "tax_year": 2025
-          },
-          "gate": "sd.carryover"
-        },
-        "sd.line9.h": {
-          "kind": "refusal",
-          "form": "Capital Loss Carryover Worksheet",
-          "remedy": "Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.",
-          "cite": {
-            "doc": "f1040sd",
-            "locator": "Schedule D (2025), Parts I–III",
-            "revision": "2025; created 2025-10-06",
-            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
-            "tax_year": 2025
-          },
-          "gate": "sd.carryover"
-        },
-        "sd.line10.d": {
-          "kind": "refusal",
-          "form": "Capital Loss Carryover Worksheet",
-          "remedy": "Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.",
-          "cite": {
-            "doc": "f1040sd",
-            "locator": "Schedule D (2025), Parts I–III",
-            "revision": "2025; created 2025-10-06",
-            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
-            "tax_year": 2025
-          },
-          "gate": "sd.carryover"
-        },
-        "sd.line10.e": {
-          "kind": "refusal",
-          "form": "Capital Loss Carryover Worksheet",
-          "remedy": "Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.",
-          "cite": {
-            "doc": "f1040sd",
-            "locator": "Schedule D (2025), Parts I–III",
-            "revision": "2025; created 2025-10-06",
-            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
-            "tax_year": 2025
-          },
-          "gate": "sd.carryover"
-        },
-        "sd.line10.g": {
-          "kind": "refusal",
-          "form": "Capital Loss Carryover Worksheet",
-          "remedy": "Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.",
-          "cite": {
-            "doc": "f1040sd",
-            "locator": "Schedule D (2025), Parts I–III",
-            "revision": "2025; created 2025-10-06",
-            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
-            "tax_year": 2025
-          },
-          "gate": "sd.carryover"
-        },
-        "sd.line10.h": {
-          "kind": "refusal",
-          "form": "Capital Loss Carryover Worksheet",
-          "remedy": "Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.",
-          "cite": {
-            "doc": "f1040sd",
-            "locator": "Schedule D (2025), Parts I–III",
-            "revision": "2025; created 2025-10-06",
-            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
-            "tax_year": 2025
-          },
-          "gate": "sd.carryover"
-        },
-        "sd.count": {
-          "kind": "refusal",
-          "form": "Capital Loss Carryover Worksheet",
-          "remedy": "Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.",
-          "cite": {
-            "doc": "f1040sd",
-            "locator": "Schedule D (2025), Parts I–III",
-            "revision": "2025; created 2025-10-06",
-            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
-            "tax_year": 2025
-          },
-          "gate": "sd.carryover"
-        },
-        "sd.filed": {
-          "kind": "refusal",
-          "form": "Capital Loss Carryover Worksheet",
-          "remedy": "Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.",
-          "cite": {
-            "doc": "f1040sd",
-            "locator": "Schedule D (2025), Parts I–III",
-            "revision": "2025; created 2025-10-06",
-            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
-            "tax_year": 2025
-          },
-          "gate": "sd.carryover"
-        },
-        "sd.line4": {
-          "kind": "refusal",
-          "form": "Capital Loss Carryover Worksheet",
-          "remedy": "Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.",
-          "cite": {
-            "doc": "f1040sd",
-            "locator": "Schedule D (2025), Parts I–III",
-            "revision": "2025; created 2025-10-06",
-            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
-            "tax_year": 2025
-          },
-          "gate": "sd.carryover"
-        },
-        "sd.line5": {
-          "kind": "refusal",
-          "form": "Capital Loss Carryover Worksheet",
-          "remedy": "Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.",
-          "cite": {
-            "doc": "f1040sd",
-            "locator": "Schedule D (2025), Parts I–III",
-            "revision": "2025; created 2025-10-06",
-            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
-            "tax_year": 2025
-          },
-          "gate": "sd.carryover"
+        "clcw.line13": {
+          "kind": "money",
+          "cents": 0
         },
         "sd.line6": {
-          "kind": "refusal",
-          "form": "Capital Loss Carryover Worksheet",
-          "remedy": "Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.",
-          "cite": {
-            "doc": "f1040sd",
-            "locator": "Schedule D (2025), Parts I–III",
-            "revision": "2025; created 2025-10-06",
-            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
-            "tax_year": 2025
-          },
-          "gate": "sd.carryover"
+          "kind": "money",
+          "cents": -700000
         },
-        "sd.line11": {
-          "kind": "refusal",
-          "form": "Capital Loss Carryover Worksheet",
-          "remedy": "Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.",
-          "cite": {
-            "doc": "f1040sd",
-            "locator": "Schedule D (2025), Parts I–III",
-            "revision": "2025; created 2025-10-06",
-            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
-            "tax_year": 2025
-          },
-          "gate": "sd.carryover"
-        },
-        "sd.line12": {
-          "kind": "refusal",
-          "form": "Capital Loss Carryover Worksheet",
-          "remedy": "Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.",
-          "cite": {
-            "doc": "f1040sd",
-            "locator": "Schedule D (2025), Parts I–III",
-            "revision": "2025; created 2025-10-06",
-            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
-            "tax_year": 2025
-          },
-          "gate": "sd.carryover"
+        "sd.line7": {
+          "kind": "money",
+          "cents": -300000
         },
         "sd.line14": {
-          "kind": "refusal",
-          "form": "Capital Loss Carryover Worksheet",
-          "remedy": "Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.",
-          "cite": {
-            "doc": "f1040sd",
-            "locator": "Schedule D (2025), Parts I–III",
-            "revision": "2025; created 2025-10-06",
-            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
-            "tax_year": 2025
-          },
-          "gate": "sd.carryover"
+          "kind": "money",
+          "cents": 0
+        },
+        "sd.line21": {
+          "kind": "money",
+          "cents": -300000
+        },
+        "sd.filed": {
+          "kind": "bool",
+          "value": true
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": -300000
+        },
+        "clcw26.line8": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "clcw26.line13": {
+          "kind": "money",
+          "cents": 0
         }
       }
     },

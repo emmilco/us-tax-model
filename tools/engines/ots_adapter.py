@@ -235,8 +235,8 @@ def w2_sum(inputs, person, box):
 def net_capital_gain(f):
     """Form 8995 line 12 from the facts: the excess of net long-term gain over net short-term
     loss, not below zero, plus qualified dividends. Supplied, not computed by the engine."""
-    lt = f["long_term_gain"] + f["capital_gain_distributions"]
-    st = f["short_term_gain"]
+    lt = f["long_term_gain"] + f["capital_gain_distributions"] - f.get("capital_loss_carryover_lt", 0)
+    st = f["short_term_gain"] - f.get("capital_loss_carryover_st", 0)
     ncg = max(0, lt + min(st, 0)) if lt > 0 else 0
     return ncg + f["qualified_dividends"]
 
@@ -310,6 +310,18 @@ def run_case(pkg, case, workdir):
         lines[f"f8959.line{n}"] = m_vals[f"L{n}"]
     lines["f8959.tax"] = m_vals["L18"]
 
+    # --- Last year's return for the Capital Loss Carryover Worksheet ---
+    # OTS reads the 2024 figures from a prior-year output file named on line D6 and runs the worksheet itself.
+    # The file is written with the five figures the worksheet reads; line 15 is the signed amount the worksheet
+    # asks for (2024 line 11 less line 14), not the floored line an OTS 2024 output would print.
+    prior_file = None
+    if f.get("prior_year"):
+        py = f["prior_year"]
+        prior_file = Path(workdir) / "prior_year_out.txt"
+        prior_file.write_text("".join(f"{k} = {money(v)}\n" for k, v in (
+            ("L15", py["line15"]), ("D7", py["sd7"]), ("D15", py["sd15"]), ("D16", py["sd7"] + py["sd15"]), ("D21", -py["sd21"]))))
+    invest = f["investment_interest"] + f.get("investment_interest_carryover", 0)
+
     # --- Form 1040, pass 1 ---
     def f1040_values(l13a, l19, l28, s2_12, s3_1, s3_2):
         v = {
@@ -324,12 +336,13 @@ def run_case(pkg, case, workdir):
             "L13a": money(l13a), "L19": money(l19), "L25a": money(f["withheld"]), "L25c": money(m_vals["L24"]), "L28": money(l28),
             "CapGains-A/D": sales_entries(inputs, ("A", "D")), "CapGains-B/E": sales_entries(inputs, ("B", "E")),
             "D13": money(f["capital_gain_distributions"]), "D19": money(f["unrecaptured_1250"]), "Collectibles": money(f["gain_28pct"]),
+            **({"D6": str(prior_file)} if prior_file else {}),
             "S1_3": money(se_income), "S1_7": money(f.get("unemployment", 0)),
             "S1_11": money(f.get("educator_deduction", 0)), "S1_13": money(hsa_l13), "S1_15": money(se_l13),
             "S1_20": money(f.get("ira_contribution", 0)), "S1_21": money(f.get("student_loan_interest", 0)),
             "S1A_4a": money(f.get("tips", 0)), "S1A_14a": money(f.get("overtime", 0)), "S1A_22aiii": money(f.get("car_loan_interest", 0)),
             "A1": money(f["medical"]), "A5a": money(f["salt_income_tax"]), "A5b": money(f["salt_real_estate"]),
-            "A8a": money(f["mortgage_interest"]), "A9": money(f["investment_interest"]),
+            "A8a": money(f["mortgage_interest"]), "A9": money(invest),
             "A11": money(f["cash_gifts"]), "A12": money(f["noncash_gifts"]),
             "S2_4": money(se_l12), "S2_11": money(m_vals["L18"]), "S2_12": money(s2_12),
             "S3_1": money(s3_1), "S3_2": money(s3_2),
@@ -350,7 +363,7 @@ def run_case(pkg, case, workdir):
     n_vals, _, _ = run_program(pkg, f"taxsolve_f8960_{YEAR_TAG}", "Form_8960/Form_8960_template.txt",
                                {**IDENT, "Status": STATUS[status], "Entity": "Individual", "Sec6013g": "No", "Sec6013h": "No", "Sec1141_10g": "No",
                                 "L1": money(f["interest"]), "L2": money(f["ordinary_dividends"]), "L5a": money(p1["L7a"]),
-                                "L9a": money(f["investment_interest"] if itemized else 0), "L13": money(p1["L11a"])},
+                                "L9a": money(invest if itemized else 0), "L13": money(p1["L11a"])},
                                workdir, "f8960")
     for n in ("8", "11", "12", "15", "16", "17"):
         lines[f"f8960.line{n}"] = n_vals[f"L{n}"]
@@ -454,6 +467,17 @@ def run_case(pkg, case, workdir):
             if lab in ("D18", "D19") and not d17_yes:
                 continue  # lines 18 to 21 are skipped when lines 15 and 16 are not both gains
             lines[pid] = p.get(lab, 0)
+        if prior_file:
+            lines["sd.line6"] = p.get("D6", 0)
+            lines["sd.line14"] = p.get("D14", 0)
+    # The Capital Loss Carryover Worksheet lines the engine printed (it prints lines 5 to 8 only when the 2024
+    # line 7 is a loss and lines 9 to 13 only when line 15 is, as the worksheet's skip rules say, and nothing
+    # when its applicability test finds no carryover).
+    if prior_file:
+        for n in range(1, 14):
+            if f"CarryOverWs{n}" in p:
+                lines[f"clcw.line{n}"] = p[f"CarryOverWs{n}"]
+        feats.add("ots_carryover_worksheet" if "CarryOverWs1" in p else "ots_no_carryover_found")
     # The worksheets, when the engine ran them.
     if "QDCG1" in p:
         for n in range(1, 26):
@@ -620,9 +644,10 @@ def limitations(pkg_version):
          "reason": "OpenTaxSolver takes the residential clean energy credit as an input (S3_5a) and does not compute Form 5695; supplied as zero"},
         {"feature": "home_improvement", "lines": AFTER_CREDIT_LINES,
          "reason": "OpenTaxSolver takes the energy efficient home improvement credit as an input (S3_5b) and does not compute Form 5695; supplied as zero"},
-        {"feature": "ira_phaseout", "lines": AGI_LINES,
+        {"feature": "ira_phaseout", "lines": AGI_LINES + ["s1.line21"],
          "reason": "OpenTaxSolver takes the IRA deduction as an input (S1_20), supplied as the contributions; it does not compute the IRA Deduction Worksheet's "
-                   "phase-out by modified AGI, so returns whose deduction is less than the contributions are not compared on the lines that follow AGI"},
+                   "phase-out by modified AGI, so returns whose deduction is less than the contributions are not compared on the lines that follow AGI, "
+                   "nor on Schedule 1 line 21, whose student loan interest phase-out reads modified AGI after the IRA deduction"},
         {"feature": "sli_phaseout", "lines": AGI_LINES + ["s1.line21"],
          "reason": "OpenTaxSolver's student loan interest worksheet (Calc_StudentLoan_Sched1L21) uses the exact line 7 ratio; the project rounds it to three places "
                    "(amb.2025.sli_ratio_places), which moves the deduction by up to a few dollars, so returns in the phase-out are not compared on the lines that follow AGI"},

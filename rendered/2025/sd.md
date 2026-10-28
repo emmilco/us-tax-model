@@ -1,7 +1,7 @@
 # Schedule D — securities sales and supplied distribution subtotals
 
 - Document: `sd` (form, tax year 2025)
-- Note: Special-gain feeders are computed from 1099-DIV box 2b/2d. Section 1202 distributions, non-securities source forms and prior-year carryovers are refused. Boolean flow predicates are shown even when their printed line is skipped.
+- Note: Special-gain feeders are computed from 1099-DIV box 2b/2d. Section 1202 distributions, non-securities source forms are refused. Lines 6 and 14 come from the Capital Loss Carryover Worksheet (`clcw`), held as negative amounts. Boolean flow predicates are shown even when their printed line is skipped.
 
 ## (helper) — `sd.other_forms`
 
@@ -12,10 +12,10 @@
 
 ## (helper) — `sd.carryover`
 
-- **Authored helper label:** Is there a capital loss carried into 2025 from any earlier year?
-- **Encoded (Bool):** Input — Is there a capital loss carried into 2025 from any earlier year?
-- Expr: `{"op":"input","source":"Is there a capital loss carried into 2025 from any earlier year?"}`
-- Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
+- **Authored helper label:** Did line 21 of your 2024 Schedule D show a loss?
+- **Encoded (Bool):** Input — Did line 21 of your 2024 Schedule D show a loss? On a 2025 joint return, answer for your 2024 joint return, or for either spouse's separate 2024 return.
+- Expr: `{"op":"input","source":"Did line 21 of your 2024 Schedule D show a loss? On a 2025 joint return, answer for your 2024 joint return, or for either spouse's separate 2024 return."}`
+- Cite: [i1040sd] p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, "Use this worksheet to figure your capital loss carryovers from 2024 to 2025 if your 2024 Schedule D, line 21, is a loss", "Otherwise, you don’t have any carryovers" (2025; printed date 2025-12-11; sha256 650643a6)
 
 ## (helper) — `sd.distributions`
 
@@ -41,7 +41,7 @@
 ## (helper) — `sd.filing4952`
 
 - **Authored helper label:** Are you filing Form 4952?
-- **Encoded (Bool):** Enter the amount from f4952 helper "File for an election, or to claim interest when the exception does not apply".
+- **Encoded (Bool):** Enter the amount from f4952 helper "File for an election, or to claim interest (including a 2024 carryforward) when the exception does not apply".
 - Expr: `{"from":"f4952.required","op":"copy"}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 
@@ -57,7 +57,6 @@
 - **Authored helper label:** Count screened transactions
 - **Encoded (Count):** Add sales.one over every confirmed sales entry, within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.other_forms is true, cannot complete Schedule D additional source forms. Prepare the required source forms; their gains/losses are outside the supported securities slice. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
-- **Refusal:** when sd.carryover is true, cannot complete Capital Loss Carryover Worksheet. Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - Expr: `{"collection":"sales","field":"sales.one","op":"sum_over"}`
 - Cite: [f1040sd] p. 1, Capital Gains and Losses, "Use Form 8949 to list your transactions for lines 1b, 2, 3, 8b, 9, and 10" (2025; created 2025-10-06; sha256 90564c8b)
 
@@ -71,10 +70,10 @@
 
 ## (helper) — `sd.filed`
 
-- **Authored helper label:** Schedule D required for entered sales or special distribution gains
-- **Encoded (Bool):** (helper "Count screened transactions" > 0 (a count) or helper "Line 18. 28% Rate Gain Worksheet result, or zero when line 17 is No (lines 18 through 21 skipped)" > $0 or helper "Line 19. Unrecaptured Section 1250 Gain Worksheet result, or zero when line 17 is No (lines 18 through 21 skipped)" > $0)
-- Expr: `{"any":[{"gt":["sd.count",{"const":0,"type":"Count"}],"op":"test"},{"gt":["sd.line18",{"const":0}],"op":"test"},{"gt":["sd.line19",{"const":0}],"op":"test"}],"op":"test"}`
-- Cite: [f1040sd] i1040gi p. 31, Line 7a, "If you sold a capital asset, such as a stock, bond, or digital asset, you must complete and attach Form 8949 and Schedule D", "None of the Form(s) 1099-DIV (or substitute statements) have an amount in box 2b (unrecaptured section 1250 gain), box 2c (section 1202 gain), or box 2d (collectibles (28%) gain)" (2025; created 2025-10-06; sha256 90564c8b)
+- **Authored helper label:** Schedule D required for entered sales, special distribution gains or a capital loss carryover
+- **Encoded (Bool):** (helper "Count screened transactions" > 0 (a count) or helper "Line 18. 28% Rate Gain Worksheet result, or zero when line 17 is No (lines 18 through 21 skipped)" > $0 or helper "Line 19. Unrecaptured Section 1250 Gain Worksheet result, or zero when line 17 is No (lines 18 through 21 skipped)" > $0 or line 6 < $0 or line 14 < $0)
+- Expr: `{"any":[{"gt":["sd.count",{"const":0,"type":"Count"}],"op":"test"},{"gt":["sd.line18",{"const":0}],"op":"test"},{"gt":["sd.line19",{"const":0}],"op":"test"},{"lt":["sd.line6",{"const":0}],"op":"test"},{"lt":["sd.line14",{"const":0}],"op":"test"}],"op":"test"}`
+- Cite: [f1040sd] i1040gi p. 31, Line 7a, "If you sold a capital asset, such as a stock, bond, or digital asset, you must complete and attach Form 8949 and Schedule D", "None of the Form(s) 1099-DIV (or substitute statements) have an amount in box 2b (unrecaptured section 1250 gain), box 2c (section 1202 gain), or box 2d (collectibles (28%) gain)", "You have no capital losses" (2025; created 2025-10-06; sha256 90564c8b)
 
 ## (helper) — `sd.zero`
 
@@ -344,7 +343,6 @@
 - **IRS:** Line 4: zero only after unsupported source/carryover screening
 - **Encoded (Dollars):** Enter the amount from helper "No amount on an inapplicable line".
 - **Refusal:** when sd.other_forms is true, cannot complete Schedule D additional source forms. Prepare the required source forms; their gains/losses are outside the supported securities slice. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
-- **Refusal:** when sd.carryover is true, cannot complete Capital Loss Carryover Worksheet. Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - Expr: `{"from":"sd.zero","op":"copy"}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 
@@ -353,25 +351,29 @@
 - **IRS:** Line 5: zero only after unsupported source/carryover screening
 - **Encoded (Dollars):** Enter the amount from helper "No amount on an inapplicable line".
 - **Refusal:** when sd.other_forms is true, cannot complete Schedule D additional source forms. Prepare the required source forms; their gains/losses are outside the supported securities slice. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
-- **Refusal:** when sd.carryover is true, cannot complete Capital Loss Carryover Worksheet. Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - Expr: `{"from":"sd.zero","op":"copy"}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
+
+## (helper) — `sd.line6_ws`
+
+- **Authored helper label:** Line 8 of the Capital Loss Carryover Worksheet, held as a loss (negative)
+- **Encoded (Dollars):** Subtract clcw line 8 from helper "No amount on an inapplicable line".
+- Expr: `{"from":"sd.zero","op":"subtract","take":"clcw.line8"}`
+- Cite: [f1040sd] p. 1, Part I, line 6, "Short-term capital loss carryover. Enter the amount, if any, from line 8 of your Capital Loss Carryover Worksheet in the instructions" (2025; created 2025-10-06; sha256 90564c8b)
 
 ## 6 — `sd.line6`
 
-- **IRS:** Line 6: zero only after unsupported source/carryover screening
-- **Encoded (Dollars):** Enter the amount from helper "No amount on an inapplicable line".
+- **IRS:** Short-term capital loss carryover, from line 8 of the Capital Loss Carryover Worksheet (a loss, negative)
+- **Encoded (Dollars):** Choose — [helper "Did line 21 of your 2024 Schedule D show a loss?" = true → helper "Line 8 of the Capital Loss Carryover Worksheet, held as a loss (negative)"] [helper "Did line 21 of your 2024 Schedule D show a loss?" = false → helper "No amount on an inapplicable line"]
 - **Refusal:** when sd.other_forms is true, cannot complete Schedule D additional source forms. Prepare the required source forms; their gains/losses are outside the supported securities slice. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
-- **Refusal:** when sd.carryover is true, cannot complete Capital Loss Carryover Worksheet. Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
-- Expr: `{"from":"sd.zero","op":"copy"}`
-- Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
+- Expr: `{"alternatives":[{"guard":{"eq":["sd.carryover",{"const":true}],"op":"test"},"then":"sd.line6_ws"},{"guard":{"eq":["sd.carryover",{"const":false}],"op":"test"},"then":"sd.zero"}],"op":"choose"}`
+- Cite: [f1040sd] p. 1, Part I, line 6, "Short-term capital loss carryover. Enter the amount, if any, from line 8 of your Capital Loss Carryover Worksheet in the instructions" (2025; created 2025-10-06; sha256 90564c8b)
 
 ## 11 — `sd.line11`
 
 - **IRS:** Line 11: zero only after unsupported source/carryover screening
 - **Encoded (Dollars):** Enter the amount from helper "No amount on an inapplicable line".
 - **Refusal:** when sd.other_forms is true, cannot complete Schedule D additional source forms. Prepare the required source forms; their gains/losses are outside the supported securities slice. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
-- **Refusal:** when sd.carryover is true, cannot complete Capital Loss Carryover Worksheet. Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - Expr: `{"from":"sd.zero","op":"copy"}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 
@@ -380,18 +382,23 @@
 - **IRS:** Line 12: zero only after unsupported source/carryover screening
 - **Encoded (Dollars):** Enter the amount from helper "No amount on an inapplicable line".
 - **Refusal:** when sd.other_forms is true, cannot complete Schedule D additional source forms. Prepare the required source forms; their gains/losses are outside the supported securities slice. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
-- **Refusal:** when sd.carryover is true, cannot complete Capital Loss Carryover Worksheet. Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - Expr: `{"from":"sd.zero","op":"copy"}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
+
+## (helper) — `sd.line14_ws`
+
+- **Authored helper label:** Line 13 of the Capital Loss Carryover Worksheet, held as a loss (negative)
+- **Encoded (Dollars):** Subtract clcw line 13 from helper "No amount on an inapplicable line".
+- Expr: `{"from":"sd.zero","op":"subtract","take":"clcw.line13"}`
+- Cite: [f1040sd] p. 1, Part II, line 14, "Long-term capital loss carryover. Enter the amount, if any, from line 13 of your Capital Loss Carryover Worksheet in the instructions" (2025; created 2025-10-06; sha256 90564c8b)
 
 ## 14 — `sd.line14`
 
-- **IRS:** Line 14: zero only after unsupported source/carryover screening
-- **Encoded (Dollars):** Enter the amount from helper "No amount on an inapplicable line".
+- **IRS:** Long-term capital loss carryover, from line 13 of the Capital Loss Carryover Worksheet (a loss, negative)
+- **Encoded (Dollars):** Choose — [helper "Did line 21 of your 2024 Schedule D show a loss?" = true → helper "Line 13 of the Capital Loss Carryover Worksheet, held as a loss (negative)"] [helper "Did line 21 of your 2024 Schedule D show a loss?" = false → helper "No amount on an inapplicable line"]
 - **Refusal:** when sd.other_forms is true, cannot complete Schedule D additional source forms. Prepare the required source forms; their gains/losses are outside the supported securities slice. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
-- **Refusal:** when sd.carryover is true, cannot complete Capital Loss Carryover Worksheet. Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
-- Expr: `{"from":"sd.zero","op":"copy"}`
-- Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
+- Expr: `{"alternatives":[{"guard":{"eq":["sd.carryover",{"const":true}],"op":"test"},"then":"sd.line14_ws"},{"guard":{"eq":["sd.carryover",{"const":false}],"op":"test"},"then":"sd.zero"}],"op":"choose"}`
+- Cite: [f1040sd] p. 1, Part II, line 14, "Long-term capital loss carryover. Enter the amount, if any, from line 13 of your Capital Loss Carryover Worksheet in the instructions" (2025; created 2025-10-06; sha256 90564c8b)
 
 ## 13 — `sd.line13`
 

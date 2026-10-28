@@ -12,6 +12,10 @@ interview:
   - f2441.household_notice
   - f5695.line32b
   - ira.basis_total
+  - clcw26.line8
+  - clcw26.line13
+  - clcw26.decedent_notice
+  - clcw.figures_notice
   initial: {}
   cite:
     doc: f1040

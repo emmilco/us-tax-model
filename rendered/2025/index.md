@@ -6,6 +6,8 @@ Review these renderings line by line against the archived IRS sources in `source
 | --- | --- | --- |
 | asset.md | form | 68 |
 | carloan.md | form | 29 |
+| clcw.md | worksheet | 33 |
+| clcw26.md | worksheet | 19 |
 | dcprov.md | worksheet | 6 |
 | dependent.md | worksheet | 66 |
 | div.md | form | 22 |
@@ -13,17 +15,17 @@ Review these renderings line by line against the archived IRS sources in `source
 | f1040.md | form | 65 |
 | f2441.md | form | 82 |
 | f4562.md | form | 15 |
-| f4952.md | form | 25 |
+| f4952.md | form | 26 |
 | f5695.md | form | 141 |
 | f8606.md | form | 6 |
 | f8880.md | form | 40 |
 | f8889.md | form | 96 |
 | f8959.md | form | 26 |
-| f8960.md | form | 30 |
+| f8960.md | form | 32 |
 | f8995.md | form | 18 |
 | f8995a.md | form | 14 |
 | ftc.md | form | 11 |
-| g28.md | form | 8 |
+| g28.md | form | 9 |
 | gift.md | form | 5 |
 | household.md | form | 35 |
 | interest.md | form | 2 |
@@ -49,7 +51,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | sc.md | form | 152 |
 | scope.md | form | 5 |
 | scveh.md | form | 144 |
-| sd.md | form | 63 |
+| sd.md | form | 65 |
 | sdtw.md | worksheet | 75 |
 | se.md | def | 28 |
 | sli.md | form | 23 |
@@ -57,7 +59,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | tax_on_amount.md | def | 6 |
 | tcw.md | def | 47 |
 | tipjob.md | form | 6 |
-| u1250.md | form | 19 |
+| u1250.md | form | 20 |
 | w2.md | form | 38 |
 | auto_limit.md | keyed | 0 rows |
 | auto_limit_first_nobonus.md | keyed | 0 rows |

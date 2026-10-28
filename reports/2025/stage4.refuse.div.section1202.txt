@@ -95,9 +95,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   1   Investment interest paid or accrued in 2025
       = $0
       cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
-  (helper) Any prior-year disallowed investment interest carryover?
+  (helper) Do you have investment interest expense disallowed in 2024 and carried forward (line 7 of your 2024 Form 4952)?
       = false
-      cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
+      cite: [f4952] p. 1, Part I, line 2, "Disallowed investment interest expense from 2024 Form 4952, line 7" (2025; created 2025-05-28; 5113c166)
   (helper) Any interest expense attributable to royalties, a business, passive activities, tax-exempt income or at-risk limitations; any deductible investment expense other than interest (for example depreciation or depletion on assets that produce investment income, or investment expenses on a Schedule K-1); or any other investment income or expense beyond interest, dividends and securities sales?
       = false
       cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
@@ -110,9 +110,10 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Zero amount
       = $0
       cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
-  2   Prior-year disallowed interest is zero after screening
+  2   Disallowed investment interest expense from 2024 Form 4952, line 7
       = $0
-      cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
+      cite: [f4952] p. 1, Part I, line 2, "Disallowed investment interest expense from 2024 Form 4952, line 7" (2025; created 2025-05-28; 5113c166)
+      note: taken: {"eq":["f4952.carryover",{"const":false}],"op":"test"}
   3   Add lines 1 and 2
       = $0
       cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
@@ -723,9 +724,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1? Count section 1256 contracts and a casualty or theft of property whether you held the property directly or through an entity.
       = false
       cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
-  (helper) Is there a capital loss carried into 2025 from any earlier year?
+  (helper) Did line 21 of your 2024 Schedule D show a loss?
       = false
-      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+      cite: [i1040sd] p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, "Use this worksheet to figure your capital loss carryovers from 2024 to 2025 if your 2024 Schedule D, line 21, is a loss", "Otherwise, you don’t have any carryovers" (2025; printed date 2025-12-11; 650643a6)
   (helper) Capital gain distributions, generally Form 1099-DIV box 2a
       = $1
       cite: [i1040sd] p. 11, line 13 (2025; printed date 2025-12-11; 650643a6)
@@ -777,9 +778,10 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   5   Line 5: zero only after unsupported source/carryover screening
       = $0
       cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
-  6   Line 6: zero only after unsupported source/carryover screening
+  6   Short-term capital loss carryover, from line 8 of the Capital Loss Carryover Worksheet (a loss, negative)
       = $0
-      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+      cite: [f1040sd] p. 1, Part I, line 6, "Short-term capital loss carryover. Enter the amount, if any, from line 8 of your Capital Loss Carryover Worksheet in the instructions" (2025; created 2025-10-06; 90564c8b)
+      note: taken: {"eq":["sd.carryover",{"const":false}],"op":"test"}
   11  Line 11: zero only after unsupported source/carryover screening
       = $0
       cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
@@ -840,6 +842,8 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       note: taken: {"eq":["ssb.has_benefits",{"const":false}],"op":"test"}
 
 Path choices (guard wording per the rendered worksheets in rendered/2025/):
+  sd.line6: chose $0 (guard 1)
+      not taken: guard 0 = false
   sd.to1040: chose REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
   f1040.sd.to1040: chose REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
   f1040.line1e: chose $0 (guard 1)
@@ -869,6 +873,8 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   sa.deduction: chose REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
   f1040.sa.deduction: chose REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
   f1040.line16: chose REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
+  f4952.line2: chose $0 (guard 1)
+      not taken: guard 0 = false
   qbi.sa.deduction: chose REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
   qbi.deduction: chose REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
   person[taxpayer].se_line12: chose $0 (guard 1)
@@ -885,23 +891,23 @@ Derivations:
   s3.mfs: test(f1040.status = single; "mfs" = mfs)
   scope.s3.mfs: test(f1040.status = single; "mfs" = mfs)
   scope.ready: test(scope.schedule1 = false; scope.credits = false; scope.other_income = false; scope.other_line16 = false; s3.mfs = false; true = true; true = true)
-  sd.count: sum_over(sd.other_forms = false; sd.carryover = false)
+  sd.count: sum_over(sd.other_forms = false)
   sd.screen: test(sd.count = 0; 0 = 0)
   sd.line1a.h: sum_over(sd.screen = false)
   sd.line1b.h: sum_over(sd.screen = false)
   sd.line2.h: sum_over(sd.screen = false)
   sd.line3.h: sum_over(sd.screen = false)
   sd.zero: param(#sales.zero = $0)
-  sd.line4: copy(sd.other_forms = false; sd.carryover = false; sd.zero = $0)
-  sd.line5: copy(sd.other_forms = false; sd.carryover = false; sd.zero = $0)
-  sd.line6: copy(sd.other_forms = false; sd.carryover = false; sd.zero = $0)
+  sd.line4: copy(sd.other_forms = false; sd.zero = $0)
+  sd.line5: copy(sd.other_forms = false; sd.zero = $0)
+  sd.line6: choose(sd.other_forms = false; sd.carryover = false; true = true; sd.carryover = false; false = false; sd.zero = $0)
   sd.line7: sum(sd.line1a.h = $0; sd.line1b.h = $0; sd.line2.h = $0; sd.line3.h = $0; sd.line4 = $0; sd.line5 = $0; sd.line6 = $0)
   sd.line8a.h: sum_over(sd.screen = false)
   sd.line8b.h: sum_over(sd.screen = false)
   sd.line9.h: sum_over(sd.screen = false)
   sd.line10.h: sum_over(sd.screen = false)
-  sd.line11: copy(sd.other_forms = false; sd.carryover = false; sd.zero = $0)
-  sd.line12: copy(sd.other_forms = false; sd.carryover = false; sd.zero = $0)
+  sd.line11: copy(sd.other_forms = false; sd.zero = $0)
+  sd.line12: copy(sd.other_forms = false; sd.zero = $0)
   div.section1202: test(div.box2c = $1; 0 = $0)
   div.screen: gate(div.section1202 = true)
   sd.div.screen: gate(div.section1202 = true)
@@ -1011,7 +1017,7 @@ Derivations:
   f1040.gate.sdtw: test(f1040.gate.qdcg_applies = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax); true = true)
   f1040.line16: choose(scope.other_line16 = false; f1040.gate.sdtw = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax); true = true)
   f4952.zero: param(#sales.zero = $0)
-  f4952.line2: copy(f4952.carryover = false; f4952.unsupported = false; f4952.alternative_allocation = false; f4952.zero = $0)
+  f4952.line2: choose(f4952.unsupported = false; f4952.alternative_allocation = false; f4952.carryover = false; true = true; f4952.carryover = false; false = false; f4952.zero = $0)
   f4952.line3: sum(f4952.line1 = $0; f4952.line2 = $0)
   f4952.line4b: copy(f1040.line3a = $0)
   f4952.sb.line2: sum_over(sb.unsupported = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false)
@@ -1024,7 +1030,7 @@ Derivations:
   f4952.line4e: smaller_of(f4952.line4d = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax))
   f4952.line4f: subtract(f4952.line4d = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax); f4952.line4e = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax))
   f4952.line4h: sum(f4952.line4c = $0; f4952.line4f = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax))
-  f4952.line5: copy(f4952.carryover = false; f4952.unsupported = false; f4952.alternative_allocation = false; f4952.zero = $0)
+  f4952.line5: copy(f4952.unsupported = false; f4952.alternative_allocation = false; f4952.zero = $0)
   f4952.line6: subtract_floor0(f4952.line4h = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax); f4952.line5 = $0)
   f4952.line8: smaller_of(f4952.line3 = $0; f4952.line6 = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax))
   qbi.sa.agi: copy(f1040.line11b = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax))

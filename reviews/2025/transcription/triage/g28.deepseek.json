@@ -1,80 +1,345 @@
 {
- "bank": null,
- "errors": [
-  {
-   "line": "g28.line1",
-   "message": "g28.g28.__type_gate_0: collection reference requires sum_over"
-  },
-  {
-   "line": "g28.line1",
-   "message": "g28.g28.__type_gate_0: comparison operands have incompatible types"
-  },
-  {
-   "line": "g28.line2",
-   "message": "g28.g28.__type_gate_1: collection reference requires sum_over"
-  },
-  {
-   "line": "g28.line2",
-   "message": "g28.g28.__type_gate_1: comparison operands have incompatible types"
-  }
- ],
+ "bank": {
+  "evaluation_failures": 0,
+  "fixtures": 1159,
+  "generated": 500,
+  "partial_bases": 40,
+  "partial_records": 0,
+  "seed": 20261026
+ },
+ "errors": [],
  "failures": [],
  "family": "deepseek",
  "form": "g28",
  "lines": [
   {
-   "candidate": "g28.line1",
-   "handle": "1",
-   "open_at_triage": true,
-   "project": "g28.line1",
-   "status": "DISAGREE",
-   "triage": "candidate invalid"
-  },
-  {
-   "candidate": "g28.line2",
-   "handle": "2",
-   "open_at_triage": true,
-   "project": "g28.line2",
-   "status": "DISAGREE",
-   "triage": "candidate invalid"
-  },
-  {
-   "candidate": "g28.line3",
-   "handle": "3",
-   "open_at_triage": true,
-   "project": "g28.line3",
-   "status": "DISAGREE",
-   "triage": "candidate invalid"
-  },
-  {
-   "candidate": "g28.line5",
-   "handle": "5",
-   "open_at_triage": true,
-   "project": "g28.line5",
-   "status": "DISAGREE",
-   "triage": "candidate invalid"
-  },
-  {
+   "absent": 0,
+   "agree": 1539,
    "candidate": "g28.line6",
+   "compared": 1659,
+   "differ": 120,
    "handle": "6",
+   "in_scope": 1584,
+   "in_scope_agree": 1464,
+   "kinds": {
+    "candidate-shows-skipped": 120
+   },
+   "kinds_by_return": {
+    "completed": {
+     "candidate-shows-skipped": 25
+    },
+    "incomplete": {
+     "candidate-shows-skipped": 17
+    },
+    "refused": {
+     "candidate-shows-skipped": 78
+    }
+   },
    "open_at_triage": true,
    "project": "g28.line6",
+   "shown_when": "g28.reached",
+   "sources": {
+    "fixture": 1159,
+    "generated": 500
+   },
    "status": "DISAGREE",
-   "triage": "candidate invalid"
-  },
-  {
-   "candidate": "g28.line7",
-   "handle": "7",
-   "open_at_triage": true,
-   "project": "g28.line7",
-   "status": "DISAGREE",
-   "triage": "candidate invalid"
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "cents": -793400,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": -793400,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "g28.h_zero_dollars",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": -793400,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.sd.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": -2462600,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": -2462600,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "g28.h_zero_dollars",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": -2462600,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.clcw.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": -640100,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": -640100,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "g28.h_zero_dollars",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": -640100,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.clcw.4.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": -1070100,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": -1070100,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "g28.h_zero_dollars",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": -1070100,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.clcw26.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": -2723700,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": -2723700,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "g28.h_zero_dollars",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": -2723700,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8880.4",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": -165700,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": -165700,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "g28.h_zero_dollars",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": -165700,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.ltc.1",
+      "kind": "fixture"
+     }
+    }
+   ]
   }
  ],
- "log_sha256_at_triage": "0344c87a5785e906f062ff6772865b5f0b6e443a148db5481da201182463f0e9",
- "policy": "executable-triage-v1",
- "response_sha256": "c283c119b41e1b13032746182e62c056f735f0f0a0cc9e8bb6e26328422fc16b",
+ "log_sha256_at_triage": "9d2b2e732831339a9130beb3bb1c5d17d6576bcc9f79d3b64a40682d8ff19f5e",
+ "policy": "executable-triage-v2",
+ "response_sha256": "c638dfff673a5f4860f11580a52e395788d9bf1f2e94dd8eca0e0f684b12df31",
  "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
- "state": "invalid",
- "subject_sha256": "d3675d564369686983bc99fcd9853dd427c67e24295a10e7e22f5845ed5876d5"
+ "state": "evaluated",
+ "subject_sha256": "bd7523ec2d028e8f80f4e30e1aa12b994a12c67c1de38dea565dcfdc641e443f"
 }

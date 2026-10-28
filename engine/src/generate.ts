@@ -123,6 +123,8 @@ const FIXED = new Set([
   `${HSA}.line14a`, `${HSA}.rollover`, `${HSA}.medical`, `${HSA}.line17a`, `${HSA}.subject_part`,
   "household.married", "household.credit_disallowed", "household.community_property",
   "person[taxpayer].eic_ssn", "person[taxpayer].under16",
+  "clcw.spouse_screen", "clcw.prior_11", "clcw.prior_14", "clcw.prior_sd7", "clcw.prior_sd15", "clcw.prior_sd21",
+  "f4952.prior_7", "f8960.prior_2i",
 ]);
 
 interface Employer { box1: number; box2pct: number; box7: number; over: number; deferral: number }
@@ -682,7 +684,37 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
   }
   cohereSpouseHsa(inputs);
   applyScreens(inputs);
+  putCarryovers(inputs);
   return inputs;
+}
+
+/** A deterministic stream from the return's other answers, so carryover figures vary without drawing from the
+ * random stream that every other generated return depends on. */
+function derivedStream(inputs: Inputs, salt: string): () => number {
+  let h = 2166136261 >>> 0;
+  for (const c of salt + JSON.stringify(Object.entries(inputs).sort(([a], [b]) => a.localeCompare(b)))) h = Math.imul(h ^ c.charCodeAt(0), 16777619) >>> 0;
+  return () => { h = (h + 0x6d2b79f5) >>> 0; let x = Math.imul(h ^ (h >>> 15), 1 | h); x ^= x + Math.imul(x ^ (x >>> 7), 61 | x); return ((x ^ (x >>> 14)) >>> 0) / 4294967296; };
+}
+
+/** The 2024 figures behind a capital loss carryover (`sd.carryover` drawn true) and a Form 4952 carryforward
+ * (`f4952.carryover` drawn true): a 2024 Schedule D whose line 16 is a loss, line 21 the smaller of that loss and
+ * $3,000, and 2024 taxable income that is sometimes negative, so every branch of the worksheet is reached. */
+function putCarryovers(inputs: Inputs): void {
+  const next = derivedStream(inputs, "carryover");
+  const between = (lo: number, hi: number) => lo + Math.floor(next() * (hi - lo + 1));
+  inputs["clcw.spouse_screen"] = false;
+  inputs["f8960.prior_2i"] = false;
+  if (inputs["sd.carryover"] === true) {
+    let st = next() < 0.6 ? -between(1, 3_000_000) : between(0, 1_500_000);
+    const lt = next() < 0.6 ? -between(1, 3_000_000) : between(0, 1_500_000);
+    if (st + lt >= 0) st = -(lt + between(1, 1_000_000));
+    const income = next() < 0.25 ? between(-1_000_000, 1_500_000) : between(1_500_001, 20_000_000);
+    Object.assign(inputs, { "clcw.prior_sd7": st, "clcw.prior_sd15": lt, "clcw.prior_sd21": Math.min(300_000, -(st + lt)),
+      "clcw.prior_11": income, "clcw.prior_14": between(1_460_000, 3_000_000) });
+  } else {
+    Object.assign(inputs, { "clcw.prior_sd7": 0, "clcw.prior_sd15": 0, "clcw.prior_sd21": 0, "clcw.prior_11": 0, "clcw.prior_14": 0 });
+  }
+  inputs["f4952.prior_7"] = inputs["f4952.carryover"] === true ? between(1, 2_000_000) : 0;
 }
 
 /** A deterministic corpus of n generated returns. */

@@ -4,8 +4,8 @@ form:
   title: Form 4952 — supported investment-interest deduction and election
   tax_year: 2025
   note: The election is supplied by the taxpayer, not optimized or made automatically.
-    Capital-gain-first allocation is used. A calculated carryforward to 2026 is shown; prior-year
-    carryovers are refused.
+    Capital-gain-first allocation is used. The carryforward from 2024 (2024 line 7) is entered on line 2, and the
+    carryforward to 2026 is shown on line 7.
   lines:
     - id: f4952.line1
       printed: "1"
@@ -20,13 +20,24 @@ form:
     - id: f4952.carryover
       printed: (helper)
       type: Bool
-      label: Any prior-year disallowed investment interest carryover?
+      label: Do you have investment interest expense disallowed in 2024 and carried forward (line 7 of your 2024 Form 4952)?
       expr:
         op: input
-        source: Any prior-year disallowed investment interest carryover?
+        source: Do you have investment interest expense that was disallowed in 2024 and carried forward to 2025 (an amount
+          on line 7 of your 2024 Form 4952)?
       cite:
         doc: f4952
-        locator: pp. 1, 3–4, Investment Interest Expense Deduction
+        locator: p. 1, Part I, line 2, "Disallowed investment interest expense from 2024 Form 4952, line 7"
+    - id: f4952.prior_7
+      printed: (helper)
+      type: NonNegDollars
+      label: The amount on line 7 of your 2024 Form 4952
+      expr:
+        op: input
+        source: The amount on line 7 of your 2024 Form 4952 (disallowed investment interest expense carried forward to 2025)
+      cite:
+        doc: f4952
+        locator: p. 1, Part I, line 2, "Disallowed investment interest expense from 2024 Form 4952, line 7"
     - id: f4952.unsupported
       printed: (helper)
       type: Bool
@@ -85,20 +96,26 @@ form:
     - id: f4952.line2
       printed: "2"
       type: NonNegDollars
-      label: Prior-year disallowed interest is zero after screening
+      label: Disallowed investment interest expense from 2024 Form 4952, line 7
       expr:
-        op: copy
-        from: f4952.zero
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - f4952.carryover
+                - const: true
+            then: f4952.prior_7
+          - guard:
+              op: test
+              eq:
+                - f4952.carryover
+                - const: false
+            then: f4952.zero
       cite:
         doc: f4952
-        locator: pp. 1, 3–4, Investment Interest Expense Deduction
+        locator: p. 1, Part I, line 2, "Disallowed investment interest expense from 2024 Form 4952, line 7"
       refuses:
-        - when: f4952.carryover
-          form: Form 4952
-          remedy: Prior-year investment-interest carryovers are outside scope.
-          cite:
-            doc: f4952
-            locator: pp. 1, 3–4, Investment Interest Expense Deduction
         - when: f4952.unsupported
           form: Form 4952 / Form 6198 / Schedule E
           remedy: Allocate the interest and prepare the applicable unsupported schedule or at-risk
@@ -235,12 +252,6 @@ form:
         doc: f4952
         locator: pp. 1, 3–4, Investment Interest Expense Deduction
       refuses:
-        - when: f4952.carryover
-          form: Form 4952
-          remedy: Prior-year investment-interest carryovers are outside scope.
-          cite:
-            doc: f4952
-            locator: pp. 1, 3–4, Investment Interest Expense Deduction
         - when: f4952.unsupported
           form: Form 4952 / Form 6198 / Schedule E
           remedy: Allocate the interest and prepare the applicable unsupported schedule or at-risk
@@ -285,12 +296,6 @@ form:
         doc: f4952
         locator: pp. 1, 3–4, Investment Interest Expense Deduction
       refuses:
-        - when: f4952.carryover
-          form: Form 4952
-          remedy: Prior-year investment-interest carryovers are outside scope.
-          cite:
-            doc: f4952
-            locator: pp. 1, 3–4, Investment Interest Expense Deduction
         - when: f4952.unsupported
           form: Form 4952 / Form 6198 / Schedule E
           remedy: Allocate the interest and prepare the applicable unsupported schedule or at-risk
@@ -365,7 +370,7 @@ form:
     - id: f4952.required
       printed: (helper)
       type: Bool
-      label: File for an election, or to claim interest when the exception does not apply
+      label: File for an election, or to claim interest (including a 2024 carryforward) when the exception does not apply
       expr:
         op: test
         any:
@@ -377,7 +382,7 @@ form:
             all:
               - op: test
                 gt:
-                  - f4952.line1
+                  - f4952.line3
                   - const: 0
               - op: test
                 eq:
@@ -387,12 +392,6 @@ form:
         doc: f4952
         locator: pp. 1, 3–4, Investment Interest Expense Deduction
       refuses:
-        - when: f4952.carryover
-          form: Form 4952
-          remedy: Prior-year investment-interest carryovers are outside scope.
-          cite:
-            doc: f4952
-            locator: pp. 1, 3–4, Investment Interest Expense Deduction
         - when: f4952.unsupported
           form: Form 4952 / Form 6198 / Schedule E
           remedy: Allocate the interest and prepare the applicable unsupported schedule or at-risk

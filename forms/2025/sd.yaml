@@ -4,7 +4,8 @@ form:
   title: Schedule D — securities sales and supplied distribution subtotals
   tax_year: 2025
   note: Special-gain feeders are computed from 1099-DIV box 2b/2d. Section 1202 distributions,
-    non-securities source forms and prior-year carryovers are refused. Boolean flow predicates are
+    non-securities source forms are refused. Lines 6 and 14 come from the Capital Loss Carryover Worksheet
+    (`clcw`), held as negative amounts. Boolean flow predicates are
     shown even when their printed line is skipped.
   lines:
     - id: sd.other_forms
@@ -19,14 +20,17 @@ form:
         locator: Schedule D (2025), Parts I–III
     - id: sd.carryover
       printed: (helper)
-      label: 'Is there a capital loss carried into 2025 from any earlier year?'
+      label: 'Did line 21 of your 2024 Schedule D show a loss?'
       type: Bool
       expr:
         op: input
-        source: 'Is there a capital loss carried into 2025 from any earlier year?'
+        source: 'Did line 21 of your 2024 Schedule D show a loss? On a 2025 joint return, answer for your 2024 joint return,
+          or for either spouse''s separate 2024 return.'
       cite:
-        doc: f1040sd
-        locator: Schedule D (2025), Parts I–III
+        doc: i1040sd
+        locator: p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, "Use this worksheet to figure your capital loss
+          carryovers from 2024 to 2025 if your 2024 Schedule D, line 21, is a loss", "Otherwise, you don’t have any
+          carryovers"
     - id: sd.distributions
       printed: (helper)
       label: Capital gain distributions, generally Form 1099-DIV box 2a
@@ -121,12 +125,6 @@ form:
           cite:
             doc: f1040sd
             locator: Schedule D (2025), Parts I–III
-        - when: sd.carryover
-          form: Capital Loss Carryover Worksheet
-          remedy: Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.
-          cite:
-            doc: f1040sd
-            locator: Schedule D (2025), Parts I–III
     - id: sd.screen
       printed: (helper)
       label: Transaction screening dependency
@@ -146,7 +144,7 @@ form:
         omit a transaction."
     - id: sd.filed
       printed: (helper)
-      label: Schedule D required for entered sales or special distribution gains
+      label: Schedule D required for entered sales, special distribution gains or a capital loss carryover
       type: Bool
       expr:
         op: test
@@ -164,12 +162,20 @@ form:
             gt:
               - sd.line19
               - const: 0
+          - op: test
+            lt:
+              - sd.line6
+              - const: 0
+          - op: test
+            lt:
+              - sd.line14
+              - const: 0
       cite:
         doc: f1040sd
         locator: i1040gi p. 31, Line 7a, "If you sold a capital asset, such as a stock, bond, or digital asset, you
           must complete and attach Form 8949 and Schedule D", "None of the Form(s) 1099-DIV (or substitute statements)
           have an amount in box 2b (unrecaptured section 1250 gain), box 2c (section 1202 gain), or box 2d
-          (collectibles (28%) gain)"
+          (collectibles (28%) gain)", "You have no capital losses"
     - id: sd.zero
       printed: (helper)
       label: No amount on an inapplicable line
@@ -1172,12 +1178,6 @@ form:
           cite:
             doc: f1040sd
             locator: Schedule D (2025), Parts I–III
-        - when: sd.carryover
-          form: Capital Loss Carryover Worksheet
-          remedy: Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.
-          cite:
-            doc: f1040sd
-            locator: Schedule D (2025), Parts I–III
     - id: sd.line5
       printed: "5"
       label: "Line 5: zero only after unsupported source/carryover screening"
@@ -1196,33 +1196,46 @@ form:
           cite:
             doc: f1040sd
             locator: Schedule D (2025), Parts I–III
-        - when: sd.carryover
-          form: Capital Loss Carryover Worksheet
-          remedy: Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.
-          cite:
-            doc: f1040sd
-            locator: Schedule D (2025), Parts I–III
-    - id: sd.line6
-      printed: "6"
-      label: "Line 6: zero only after unsupported source/carryover screening"
+    - id: sd.line6_ws
+      printed: (helper)
+      label: Line 8 of the Capital Loss Carryover Worksheet, held as a loss (negative)
       type: Dollars
       expr:
-        op: copy
+        op: subtract
         from: sd.zero
+        take: clcw.line8
       cite:
         doc: f1040sd
-        locator: Schedule D (2025), Parts I–III
+        locator: p. 1, Part I, line 6, "Short-term capital loss carryover. Enter the amount, if any, from line 8 of your Capital Loss Carryover Worksheet
+          in the instructions"
+    - id: sd.line6
+      printed: "6"
+      label: Short-term capital loss carryover, from line 8 of the Capital Loss Carryover Worksheet (a loss, negative)
+      type: Dollars
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sd.carryover
+                - const: true
+            then: sd.line6_ws
+          - guard:
+              op: test
+              eq:
+                - sd.carryover
+                - const: false
+            then: sd.zero
+      cite:
+        doc: f1040sd
+        locator: p. 1, Part I, line 6, "Short-term capital loss carryover. Enter the amount, if any, from line 8 of your Capital Loss Carryover Worksheet
+          in the instructions"
       refuses:
         - when: sd.other_forms
           form: Schedule D additional source forms
           remedy: Prepare the required source forms; their gains/losses are outside the supported securities
             slice.
-          cite:
-            doc: f1040sd
-            locator: Schedule D (2025), Parts I–III
-        - when: sd.carryover
-          form: Capital Loss Carryover Worksheet
-          remedy: Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.
           cite:
             doc: f1040sd
             locator: Schedule D (2025), Parts I–III
@@ -1244,12 +1257,6 @@ form:
           cite:
             doc: f1040sd
             locator: Schedule D (2025), Parts I–III
-        - when: sd.carryover
-          form: Capital Loss Carryover Worksheet
-          remedy: Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.
-          cite:
-            doc: f1040sd
-            locator: Schedule D (2025), Parts I–III
     - id: sd.line12
       printed: "12"
       label: "Line 12: zero only after unsupported source/carryover screening"
@@ -1268,33 +1275,46 @@ form:
           cite:
             doc: f1040sd
             locator: Schedule D (2025), Parts I–III
-        - when: sd.carryover
-          form: Capital Loss Carryover Worksheet
-          remedy: Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.
-          cite:
-            doc: f1040sd
-            locator: Schedule D (2025), Parts I–III
-    - id: sd.line14
-      printed: "14"
-      label: "Line 14: zero only after unsupported source/carryover screening"
+    - id: sd.line14_ws
+      printed: (helper)
+      label: Line 13 of the Capital Loss Carryover Worksheet, held as a loss (negative)
       type: Dollars
       expr:
-        op: copy
+        op: subtract
         from: sd.zero
+        take: clcw.line13
       cite:
         doc: f1040sd
-        locator: Schedule D (2025), Parts I–III
+        locator: p. 1, Part II, line 14, "Long-term capital loss carryover. Enter the amount, if any, from line 13 of your Capital Loss Carryover Worksheet
+          in the instructions"
+    - id: sd.line14
+      printed: "14"
+      label: Long-term capital loss carryover, from line 13 of the Capital Loss Carryover Worksheet (a loss, negative)
+      type: Dollars
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sd.carryover
+                - const: true
+            then: sd.line14_ws
+          - guard:
+              op: test
+              eq:
+                - sd.carryover
+                - const: false
+            then: sd.zero
+      cite:
+        doc: f1040sd
+        locator: p. 1, Part II, line 14, "Long-term capital loss carryover. Enter the amount, if any, from line 13 of your Capital Loss Carryover Worksheet
+          in the instructions"
       refuses:
         - when: sd.other_forms
           form: Schedule D additional source forms
           remedy: Prepare the required source forms; their gains/losses are outside the supported securities
             slice.
-          cite:
-            doc: f1040sd
-            locator: Schedule D (2025), Parts I–III
-        - when: sd.carryover
-          form: Capital Loss Carryover Worksheet
-          remedy: Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.
           cite:
             doc: f1040sd
             locator: Schedule D (2025), Parts I–III

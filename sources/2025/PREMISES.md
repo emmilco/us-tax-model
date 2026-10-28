@@ -1462,3 +1462,13 @@ its adversarial verification `stage16-schedule1-misc.verification.md` (6 errors,
 and the decision batch, written from both, `stage16-schedule1-misc.decisions.md`: the owner accepted D1 to D14 as
 recommended. Where the map and its verification differ, the verification's checked facts govern.
 
+
+## Stage 20 premise map — the capital loss carryover
+
+Status: **owner decisions taken 2026-10-27** (TASKS.md T-075). The map is
+`research/premises/stage20-capital-loss-carryover.md`, its adversarial verification
+`stage20-capital-loss-carryover.verification.md` (8 errors, 8 items out of date after Stage 15), and the decision
+batch, written from both and checked against the tree at 671826a, `stage20-capital-loss-carryover.decisions.md`: the
+owner accepted D1 to D6 as recommended, with the items listed there as settled by the evidence. Where the map and its
+verification differ, the verification's checked facts govern; where the tree has moved since, the decision batch
+records the current state. The stage is the first of the route in `docs/2026-10-26_plan_revision.md` section E.

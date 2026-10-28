@@ -1,0 +1,13 @@
+{
+ "kind": "render",
+ "form": "clcw26",
+ "rulings": [
+  {
+   "printed": "1",
+   "restated": "Subtract f1040 line 14 from f1040 line 11b.",
+   "model": "The IRS line says \"Enter the amount from your ... Form 1040 ... line 15\" and to show it in parentheses if it \"would have been a loss.\" The pages given never define Form 1040 line 15, so they don't confirm it equals line 11b minus line 14 without a floor at zero.",
+   "ruling": "Ruling: interface gap; the model says the pages given never define Form 1040 line 15, so they do not confirm it equals line 11b minus line 14 without a floor at zero. The worksheet is applied to this return with each 2024 figure read as the 2025 one (amb.2025.clcw_to_2026). Line 1 is held before the zero floor, as i1040sd p. 14, Line 21 requires (\"would be less than zero if you could enter a negative amount on that line\"), and as amb.2025.clcw_line1_signed does for the 2024 worksheet. The identity is printed on Form 1040 (2025) p. 2, line 15: \"Subtract line 14 from line 11b. If zero or less, enter -0-. This is your taxable income\". That page was not given to the reviewer (only i1040sd pp. 10 and 14 and p550 p. 103 were). The English states the source correctly; the UNCLEAR is a coverage gap of the review. Same ruling as the first Stage 20 round.",
+   "context": "0473398ef62599292dfebac8afd43c064b8c4dbb1e07a9a10839f7c2c6a3c1e0"
+  }
+ ]
+}

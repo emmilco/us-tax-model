@@ -87,17 +87,17 @@ Growth proceeds in order of the coverage each addition gains under that estimate
 - Self-employment: Schedule C with Schedule SE, depreciation (Form 4562), the self-employed health insurance deduction, SEP and SIMPLE contributions and the qualified business income deduction.
 - Other credits (Stage 15): the child and dependent care credit with dependent care benefits (Form 2441), the saver's credit (Form 8880) and the residential energy credits (Form 5695), with Schedule 8812 Credit Limit Worksheet B; the other nonrefundable credits (general business, adoption, clean vehicle, elderly or disabled, education and the rest) stay refused.
 - The remaining Schedule 1 items (Stage 16): the taxable state or local refund (the Form 1040 instructions' worksheet), other income (gambling winnings with losses on Schedule A, canceled nonbusiness debt, HSA distributions, Alaska Permanent Fund dividends, jury duty pay, prizes and awards, activity not for profit, scholarships not on a W-2, and a closed list of line 8z kinds), the IRA deduction with Form 8606 Part I when there is no distribution, the early withdrawal penalty and alimony under pre-2019 agreements; the saver's credit now counts traditional IRA contributions. Form 4797, the net operating loss deduction, the foreign earned income exclusion and the other line 8 kinds stay refused.
+- The capital loss carryover (Stage 20): the Capital Loss Carryover Worksheet from figures on the prior-year return, to Schedule D lines 6 and 14 and the 28% and section 1250 worksheets, the carryover to the next year shown, and the Form 4952 investment interest carryforward; a carryover from a joint return with someone other than the present joint spouse, the separate carryovers of two prior-year returns combined on a joint return, and the net investment income carryforward adjustment stay refused.
 
-Remaining, in the order of the estimate when this section was last revised (the estimated coverage after each, from about 69% now; the estimate still counts every return with other income as refused, because it cannot tell which part of that category Stage 16 computes, so it understates the present figure):
+Remaining, in the order of the route to the first goal the owner approved on 2026-10-27 (`docs/2026-10-26_plan_revision.md` section E: by single category, the cheapest set of stages that reaches 80%), then by the estimate (the estimated coverage after each, from 71.0% now; the estimate still counts every return with other income as refused, so it understates the present figure):
 
-1. Schedule E: rental and royalty income, partnerships, S corporations, estates and trusts (74%).
-2. The rest of Schedule 1: the other income kinds still refused, Form 4797, the net operating loss deduction and the foreign earned income exclusion (79%).
-3. The premium tax credit (84%, the first goal).
-4. The education credits (88%).
-5. The capital loss carryover (91%).
-6. The additional tax on qualified retirement plans, Form 5329 (94%).
-7. Married filing separately (97%, the target).
-8. Form 1116 and the remaining deferrals of 2.2, and the smaller situations the report lists.
+1. The premium tax credit (76%).
+2. The education credits (80%, the first goal).
+3. The additional tax on qualified retirement plans, Form 5329 (82%).
+4. Schedule E: rental and royalty income, partnerships, S corporations, estates and trusts (88%).
+5. The rest of Schedule 1: the other income kinds still refused, Form 4797, the net operating loss deduction and the foreign earned income exclusion (94%).
+6. Married filing separately (97%, the target).
+7. Form 1116 and the remaining deferrals of 2.2, and the smaller situations the report lists.
 
 The integrity plan (`docs/2026-10-22_integrity_plan.md`), as amended by the owner on 2026-10-24 (`docs/2026-10-24_validation_policy.md`), precedes the remaining stages. Its Phases 0 and 1 complete first. The tax-year-2026 rehearsal on the posted draft documents then decides whether work continues on the 2025 sources. Thereafter each stage closes under the plan's standing regime: transcription and render reviews under two model families, second-family whole-return working, engine mappings extended wherever an engine models the new feature, and a handoff reporting outside-family coverage and its gaps before fixture counts. Human source readings and ruling samples are optional. Confirmed defects require correction, a regression and expanded independent checks of the affected regime before coverage resumes.
 
@@ -460,7 +460,6 @@ Scope items not yet taken up. Work items of every kind, including these, are tra
 
 - Form 1116, deferred by decision.
 - Filling official PDFs.
-- Capital loss carryover in and out.
 - Married filing separately.
 - Credits for dependents, which a Head of Household filer will commonly need; first item of the coverage goal (2.4).
 - The household architecture test: whether the atom vocabulary expresses the qualifying-child and head-of-household predicates without `opaque` escapes.

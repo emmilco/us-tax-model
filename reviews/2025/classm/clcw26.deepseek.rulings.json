@@ -1,0 +1,124 @@
+{
+ "kind": "classm",
+ "form": "clcw26",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "case": "classm.clcw26.3",
+   "printed": "1",
+   "project": "$29,527.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.clcw26.3.deepseek.prompt.txt) lists each line as \"line N (<type>)\". The reply names them the same way, keeping the type (\"line 1 (Dollars)\"), and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching. So no line of this case was read, while the same model's replies for cases 1, 2 and 4 were read. On this return the worksheet is not reached: Schedule D line 16 is a $51,731 gain (the prompt states \"Line 16 is a loss: no\"), so clcw26.show is false and the project hides all 13 lines. i1040sd p. 14, Line 21: \"You have a capital loss carryover from 2025 to 2026 if you have a loss on line 16 and either ...\". The right entry for each line is therefore blank. The reply's value is $29,527.00, the same arithmetic as the project's internal $29,527.00, but entered on a line the source does not reach. By the skipped-line rule that is a defect of the reply, not evidence. No project defect. Dropped: no line of a case whose worksheet is not reached is evidence for the fixture.",
+   "drop": true,
+   "context": "6e47b7416221c2c9da80b22c9d5842d5fdc1730dded50070cfe1d1796a95efc4"
+  },
+  {
+   "case": "classm.clcw26.3",
+   "printed": "10",
+   "project": "$34,650.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.clcw26.3.deepseek.prompt.txt) lists each line as \"line N (<type>)\". The reply names them the same way, keeping the type (\"line 1 (Dollars)\"), and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching. So no line of this case was read, while the same model's replies for cases 1, 2 and 4 were read. On this return the worksheet is not reached: Schedule D line 16 is a $51,731 gain (the prompt states \"Line 16 is a loss: no\"), so clcw26.show is false and the project hides all 13 lines. i1040sd p. 14, Line 21: \"You have a capital loss carryover from 2025 to 2026 if you have a loss on line 16 and either ...\". The right entry for each line is therefore blank. The reply leaves line 10 blank (\"Skipped\"), which is right. The project's $34,650.00 is its internal value on a hidden line, not a shown amount, so it is not a difference. No project defect. Dropped: no line of a case whose worksheet is not reached is evidence for the fixture.",
+   "drop": true,
+   "context": "6e47b7416221c2c9da80b22c9d5842d5fdc1730dded50070cfe1d1796a95efc4"
+  },
+  {
+   "case": "classm.clcw26.3",
+   "printed": "11",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.clcw26.3.deepseek.prompt.txt) lists each line as \"line N (<type>)\". The reply names them the same way, keeping the type (\"line 1 (Dollars)\"), and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching. So no line of this case was read, while the same model's replies for cases 1, 2 and 4 were read. On this return the worksheet is not reached: Schedule D line 16 is a $51,731 gain (the prompt states \"Line 16 is a loss: no\"), so clcw26.show is false and the project hides all 13 lines. i1040sd p. 14, Line 21: \"You have a capital loss carryover from 2025 to 2026 if you have a loss on line 16 and either ...\". The right entry for each line is therefore blank. The reply leaves line 11 blank (\"Skipped\"), which is right. The project's $0.00 is its internal value on a hidden line, not a shown amount, so it is not a difference. No project defect. Dropped: no line of a case whose worksheet is not reached is evidence for the fixture.",
+   "drop": true,
+   "context": "6e47b7416221c2c9da80b22c9d5842d5fdc1730dded50070cfe1d1796a95efc4"
+  },
+  {
+   "case": "classm.clcw26.3",
+   "printed": "12",
+   "project": "$34,650.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.clcw26.3.deepseek.prompt.txt) lists each line as \"line N (<type>)\". The reply names them the same way, keeping the type (\"line 1 (Dollars)\"), and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching. So no line of this case was read, while the same model's replies for cases 1, 2 and 4 were read. On this return the worksheet is not reached: Schedule D line 16 is a $51,731 gain (the prompt states \"Line 16 is a loss: no\"), so clcw26.show is false and the project hides all 13 lines. i1040sd p. 14, Line 21: \"You have a capital loss carryover from 2025 to 2026 if you have a loss on line 16 and either ...\". The right entry for each line is therefore blank. The reply leaves line 12 blank (\"Skipped\"), which is right. The project's $34,650.00 is its internal value on a hidden line, not a shown amount, so it is not a difference. No project defect. Dropped: no line of a case whose worksheet is not reached is evidence for the fixture.",
+   "drop": true,
+   "context": "6e47b7416221c2c9da80b22c9d5842d5fdc1730dded50070cfe1d1796a95efc4"
+  },
+  {
+   "case": "classm.clcw26.3",
+   "printed": "13",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.clcw26.3.deepseek.prompt.txt) lists each line as \"line N (<type>)\". The reply names them the same way, keeping the type (\"line 1 (Dollars)\"), and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching. So no line of this case was read, while the same model's replies for cases 1, 2 and 4 were read. On this return the worksheet is not reached: Schedule D line 16 is a $51,731 gain (the prompt states \"Line 16 is a loss: no\"), so clcw26.show is false and the project hides all 13 lines. i1040sd p. 14, Line 21: \"You have a capital loss carryover from 2025 to 2026 if you have a loss on line 16 and either ...\". The right entry for each line is therefore blank. The reply leaves line 13 blank (\"Skipped\"), which is right. The project's $0.00 is its internal value on a hidden line, not a shown amount, so it is not a difference. No project defect. Dropped: no line of a case whose worksheet is not reached is evidence for the fixture.",
+   "drop": true,
+   "context": "6e47b7416221c2c9da80b22c9d5842d5fdc1730dded50070cfe1d1796a95efc4"
+  },
+  {
+   "case": "classm.clcw26.3",
+   "printed": "2",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.clcw26.3.deepseek.prompt.txt) lists each line as \"line N (<type>)\". The reply names them the same way, keeping the type (\"line 1 (Dollars)\"), and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching. So no line of this case was read, while the same model's replies for cases 1, 2 and 4 were read. On this return the worksheet is not reached: Schedule D line 16 is a $51,731 gain (the prompt states \"Line 16 is a loss: no\"), so clcw26.show is false and the project hides all 13 lines. i1040sd p. 14, Line 21: \"You have a capital loss carryover from 2025 to 2026 if you have a loss on line 16 and either ...\". The right entry for each line is therefore blank. The reply's value is $0.00, the same as the project's internal $0.00; on an unreached line a zero is permitted by the skipped-line rule. No project defect. Dropped: no line of a case whose worksheet is not reached is evidence for the fixture.",
+   "drop": true,
+   "context": "6e47b7416221c2c9da80b22c9d5842d5fdc1730dded50070cfe1d1796a95efc4"
+  },
+  {
+   "case": "classm.clcw26.3",
+   "printed": "3",
+   "project": "$29,527.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.clcw26.3.deepseek.prompt.txt) lists each line as \"line N (<type>)\". The reply names them the same way, keeping the type (\"line 1 (Dollars)\"), and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching. So no line of this case was read, while the same model's replies for cases 1, 2 and 4 were read. On this return the worksheet is not reached: Schedule D line 16 is a $51,731 gain (the prompt states \"Line 16 is a loss: no\"), so clcw26.show is false and the project hides all 13 lines. i1040sd p. 14, Line 21: \"You have a capital loss carryover from 2025 to 2026 if you have a loss on line 16 and either ...\". The right entry for each line is therefore blank. The reply's value is $29,527.00, the same arithmetic as the project's internal $29,527.00, but entered on a line the source does not reach. By the skipped-line rule that is a defect of the reply, not evidence. No project defect. Dropped: no line of a case whose worksheet is not reached is evidence for the fixture.",
+   "drop": true,
+   "context": "6e47b7416221c2c9da80b22c9d5842d5fdc1730dded50070cfe1d1796a95efc4"
+  },
+  {
+   "case": "classm.clcw26.3",
+   "printed": "4",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.clcw26.3.deepseek.prompt.txt) lists each line as \"line N (<type>)\". The reply names them the same way, keeping the type (\"line 1 (Dollars)\"), and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching. So no line of this case was read, while the same model's replies for cases 1, 2 and 4 were read. On this return the worksheet is not reached: Schedule D line 16 is a $51,731 gain (the prompt states \"Line 16 is a loss: no\"), so clcw26.show is false and the project hides all 13 lines. i1040sd p. 14, Line 21: \"You have a capital loss carryover from 2025 to 2026 if you have a loss on line 16 and either ...\". The right entry for each line is therefore blank. The reply's value is $0.00, the same as the project's internal $0.00; on an unreached line a zero is permitted by the skipped-line rule. No project defect. Dropped: no line of a case whose worksheet is not reached is evidence for the fixture.",
+   "drop": true,
+   "context": "6e47b7416221c2c9da80b22c9d5842d5fdc1730dded50070cfe1d1796a95efc4"
+  },
+  {
+   "case": "classm.clcw26.3",
+   "printed": "5",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.clcw26.3.deepseek.prompt.txt) lists each line as \"line N (<type>)\". The reply names them the same way, keeping the type (\"line 1 (Dollars)\"), and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching. So no line of this case was read, while the same model's replies for cases 1, 2 and 4 were read. On this return the worksheet is not reached: Schedule D line 16 is a $51,731 gain (the prompt states \"Line 16 is a loss: no\"), so clcw26.show is false and the project hides all 13 lines. i1040sd p. 14, Line 21: \"You have a capital loss carryover from 2025 to 2026 if you have a loss on line 16 and either ...\". The right entry for each line is therefore blank. The reply's value is $0.00, the same as the project's internal $0.00; on an unreached line a zero is permitted by the skipped-line rule. No project defect. Dropped: no line of a case whose worksheet is not reached is evidence for the fixture.",
+   "drop": true,
+   "context": "6e47b7416221c2c9da80b22c9d5842d5fdc1730dded50070cfe1d1796a95efc4"
+  },
+  {
+   "case": "classm.clcw26.3",
+   "printed": "6",
+   "project": "$17,081.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.clcw26.3.deepseek.prompt.txt) lists each line as \"line N (<type>)\". The reply names them the same way, keeping the type (\"line 1 (Dollars)\"), and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching. So no line of this case was read, while the same model's replies for cases 1, 2 and 4 were read. On this return the worksheet is not reached: Schedule D line 16 is a $51,731 gain (the prompt states \"Line 16 is a loss: no\"), so clcw26.show is false and the project hides all 13 lines. i1040sd p. 14, Line 21: \"You have a capital loss carryover from 2025 to 2026 if you have a loss on line 16 and either ...\". The right entry for each line is therefore blank. The reply leaves line 6 blank (\"Skipped\"), which is right. The project's $17,081.00 is its internal value on a hidden line, not a shown amount, so it is not a difference. No project defect. Dropped: no line of a case whose worksheet is not reached is evidence for the fixture.",
+   "drop": true,
+   "context": "6e47b7416221c2c9da80b22c9d5842d5fdc1730dded50070cfe1d1796a95efc4"
+  },
+  {
+   "case": "classm.clcw26.3",
+   "printed": "7",
+   "project": "$17,081.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.clcw26.3.deepseek.prompt.txt) lists each line as \"line N (<type>)\". The reply names them the same way, keeping the type (\"line 1 (Dollars)\"), and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching. So no line of this case was read, while the same model's replies for cases 1, 2 and 4 were read. On this return the worksheet is not reached: Schedule D line 16 is a $51,731 gain (the prompt states \"Line 16 is a loss: no\"), so clcw26.show is false and the project hides all 13 lines. i1040sd p. 14, Line 21: \"You have a capital loss carryover from 2025 to 2026 if you have a loss on line 16 and either ...\". The right entry for each line is therefore blank. The reply leaves line 7 blank (\"Skipped\"), which is right. The project's $17,081.00 is its internal value on a hidden line, not a shown amount, so it is not a difference. No project defect. Dropped: no line of a case whose worksheet is not reached is evidence for the fixture.",
+   "drop": true,
+   "context": "6e47b7416221c2c9da80b22c9d5842d5fdc1730dded50070cfe1d1796a95efc4"
+  },
+  {
+   "case": "classm.clcw26.3",
+   "printed": "8",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.clcw26.3.deepseek.prompt.txt) lists each line as \"line N (<type>)\". The reply names them the same way, keeping the type (\"line 1 (Dollars)\"), and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching. So no line of this case was read, while the same model's replies for cases 1, 2 and 4 were read. On this return the worksheet is not reached: Schedule D line 16 is a $51,731 gain (the prompt states \"Line 16 is a loss: no\"), so clcw26.show is false and the project hides all 13 lines. i1040sd p. 14, Line 21: \"You have a capital loss carryover from 2025 to 2026 if you have a loss on line 16 and either ...\". The right entry for each line is therefore blank. The reply leaves line 8 blank (\"Skipped\"), which is right. The project's $0.00 is its internal value on a hidden line, not a shown amount, so it is not a difference. No project defect. Dropped: no line of a case whose worksheet is not reached is evidence for the fixture.",
+   "drop": true,
+   "context": "6e47b7416221c2c9da80b22c9d5842d5fdc1730dded50070cfe1d1796a95efc4"
+  },
+  {
+   "case": "classm.clcw26.3",
+   "printed": "9",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.clcw26.3.deepseek.prompt.txt) lists each line as \"line N (<type>)\". The reply names them the same way, keeping the type (\"line 1 (Dollars)\"), and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching. So no line of this case was read, while the same model's replies for cases 1, 2 and 4 were read. On this return the worksheet is not reached: Schedule D line 16 is a $51,731 gain (the prompt states \"Line 16 is a loss: no\"), so clcw26.show is false and the project hides all 13 lines. i1040sd p. 14, Line 21: \"You have a capital loss carryover from 2025 to 2026 if you have a loss on line 16 and either ...\". The right entry for each line is therefore blank. The reply leaves line 9 blank (\"Skipped\"), which is right. The project's $0.00 is its internal value on a hidden line, not a shown amount, so it is not a difference. No project defect. Dropped: no line of a case whose worksheet is not reached is evidence for the fixture.",
+   "drop": true,
+   "context": "6e47b7416221c2c9da80b22c9d5842d5fdc1730dded50070cfe1d1796a95efc4"
+  }
+ ]
+}

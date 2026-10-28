@@ -82,6 +82,9 @@ bank:
   - input: f4952.carryover
     order: 10
     help: Money is integer cents; answer true/false for screening questions. Unknown may be null.
+  - input: f4952.prior_7
+    order: 10
+    help: 'Money is integer cents: the amount on line 7 of the Form 4952 you filed for 2024.'
   - input: f4952.unsupported
     order: 10
     help: Money is integer cents; answer true/false for screening questions. Unknown may be null.
@@ -101,6 +104,11 @@ bank:
     help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
       Married filing separately and unsupported items are refused with citations. A penalty on early withdrawal of savings
       (Schedule 1 line 18) is not another adjustment here; this tool enters it on line 10.
+  - input: f8960.prior_2i
+    order: 11
+    help: Answer true or false. Asked only when a capital loss is carried into 2025 and your modified adjusted gross income
+      is over the net investment income tax threshold. Answer false if you did not figure net investment income tax for
+      2024.
   - input: f8960.refund
     order: 10
     help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
@@ -350,6 +358,28 @@ bank:
     order: 10
     help: Money is integer cents; enter true/false for questions and one of the stated values for classifications.
       Unknown answers may be null; they never become zero.
+  - input: clcw.spouse_screen
+    order: 10
+    help: 'Answer true or false. If, on a 2025 joint return, only one of you filed a separate 2024 return with a loss on
+      Schedule D line 21, answer false and enter the figures from that return.'
+  - input: clcw.prior_11
+    order: 10
+    help: 'Money is integer cents, negative if it was a loss: the amount printed on line 11 of the Form 1040 or 1040-SR
+      you filed for 2024. If you did not file for 2024, or your 2024 Schedule D left out a capital loss carried into
+      2024, enter the amount a correct 2024 return would have shown (here and in the questions that follow).'
+  - input: clcw.prior_14
+    order: 10
+    help: 'Money is integer cents: the amount printed on line 14 of the Form 1040 or 1040-SR you filed for 2024.'
+  - input: clcw.prior_sd7
+    order: 10
+    help: 'Money is integer cents, negative if it was a loss (printed in parentheses): line 7 of your 2024 Schedule D.'
+  - input: clcw.prior_sd15
+    order: 10
+    help: 'Money is integer cents, negative if it was a loss (printed in parentheses): line 15 of your 2024 Schedule D.'
+  - input: clcw.prior_sd21
+    order: 10
+    help: 'Money is integer cents, entered as a positive amount: the loss printed in parentheses on line 21 of your 2024
+      Schedule D (at most $3,000).'
   - input: sd.distributions
     order: 10
     help: Money is integer cents; enter true/false for questions and one of the stated values for classifications.

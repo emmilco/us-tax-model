@@ -1,0 +1,77 @@
+{
+ "kind": "transcription",
+ "form": "u1250",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "10",
+   "project": "{\"const\": 0}",
+   "second": "{\"expression\": {\"const\": 0}, \"invalid_model_types\": [{\"line\": \"u1250.line10\", \"message\": \"u1250.u1250.__type_gate_6: collection reference requires sum_over\"}, {\"line\": \"u1250.line10\", \"message\": \"u1250.u1250.__type_gate_6: comparison operands have incompatible types\"}]}",
+   "ruling": "Ruling: model error; on the declaration, not the tax reading. i1040sd p. 13, line 10: \"Enter the amount of any gain from the sale or exchange of an interest in a partnership attributable to unrecaptured section 1250 gain.\" The reply lists refuses: [sales.special], a per-entry field of the sales collection, as a return-level gate; type validation rejects it (\"collection reference requires sum_over\"; \"comparison operands have incompatible types\"), so triage could not execute the reply. On the reading, its value (ss.zero, $0.00) equals the project's, and such sales are already refused per sale by sales.special (\"an interest in a partnership, S corporation or trust holding such property\"), which reaches Schedule D and Form 1040 line 7a (checked: sales[s2].special true on classm.g28.2 gives sd.line7, g28.line7, u1250.line18 and f1040.line7a refused). No project defect.",
+   "context": "ad59c874d817081c4695e32aae0cfeeef21929f13d376bf79003b636bd17f9a9"
+  },
+  {
+   "printed": "12",
+   "project": "{\"const\": 0}",
+   "second": "{\"expression\": {\"const\": 0}, \"invalid_model_types\": [{\"line\": \"u1250.line12\", \"message\": \"u1250.u1250.__type_gate_7: collection reference requires sum_over\"}, {\"line\": \"u1250.line12\", \"message\": \"u1250.u1250.__type_gate_7: comparison operands have incompatible types\"}]}",
+   "ruling": "Ruling: model error; on the declaration, not the tax reading. i1040sd p. 13, line 12: \"Enter the total of any unrecaptured section 1250 gain from sales (including installment sales) or other dispositions of section 1250 property held more than 1 year for which you didn’t make an entry in Part I of Form 4797 for the year of sale.\" The reply lists refuses: [sales.special, sd.other_forms]; sales.special is a per-entry collection field and fails type validation (\"collection reference requires sum_over\"), so triage could not execute the reply. On the reading, its value ($0.00) equals the project's: a direct sale of section 1250 property is refused per sale by sales.special (\"depreciable real property (section 1250 property)\") and an installment sale (Form 6252) by sd.other_forms, both reaching Form 1040 line 7a (checked as on line 10). No project defect.",
+   "context": "ad59c874d817081c4695e32aae0cfeeef21929f13d376bf79003b636bd17f9a9"
+  },
+  {
+   "printed": "13",
+   "project": "{\"of\": [{\"line\": \"10\"}, {\"line\": \"11\"}, {\"line\": \"12\"}, {\"line\": \"9\"}], \"op\": \"sum\"}",
+   "second": "{\"expression\": {\"of\": [{\"line\": \"10\"}, {\"line\": \"11\"}, {\"line\": \"12\"}, {\"line\": \"9\"}], \"op\": \"sum\"}, \"invalid_model_types\": [{\"line\": \"u1250.line10\", \"message\": \"u1250.u1250.__type_gate_6: collection reference requires sum_over\"}, {\"line\": \"u1250.line10\", \"message\": \"u1250.u1250.__type_gate_6: comparison operands have incompatible types\"}, {\"line\": \"u1250.line12\", \"message\": \"u1250.u1250.__type_gate_7: collection reference requires sum_over\"}, {\"line\": \"u1250.line12\", \"message\": \"u1250.u1250.__type_gate_7: comparison operands have incompatible types\"}]}",
+   "ruling": "Ruling: model error; on the declaration, not the tax reading. i1040sd p. 13, line 13: \"Add lines 9 through 12.\" The expression is the project's exactly; the line is listed only because it reads lines 10 and 12, whose declarations fail type validation (above). No project defect.",
+   "context": "ad59c874d817081c4695e32aae0cfeeef21929f13d376bf79003b636bd17f9a9"
+  },
+  {
+   "printed": "14",
+   "project": "{\"of\": [{\"ref\": \"g28.line1\"}, {\"ref\": \"g28.line2\"}, {\"ref\": \"g28.line3\"}, {\"ref\": \"g28.line4\"}], \"op\": \"sum\"}",
+   "second": "{\"expression\": {\"ref\": \"div.box2d\"}, \"invalid_model_types\": [{\"line\": \"u1250.line14\", \"message\": \"u1250.u1250.__type_gate_11: collection reference requires sum_over\"}, {\"line\": \"u1250.line14\", \"message\": \"u1250.u1250.__type_gate_11: comparison operands have incompatible types\"}]}",
+   "ruling": "Ruling: model error; on the declaration, not the tax reading. i1040sd p. 13, line 14: \"If you had any section 1202 gain or collectibles gain or (loss), enter the total of lines 1 through 4 of the 28% Rate Gain Worksheet. Otherwise, enter -0-.\" The reply lists refuses: [sales.special, sd.other_forms]; sales.special fails type validation (\"collection reference requires sum_over\"), so triage could not execute the reply. On the reading, its div.box2d equals the project's total of g28 lines 1 to 4 on every return the interview can produce: g28 lines 1 to 3 are div.screen ($0.00; Form 8949 collectibles and section 1202 sales refused by sales.special, Forms 4684, 6252, 6781 and 8824 by sd.other_forms, box 2c by div.section1202) and g28 line 4 is div.box2d (constructed return above: $400.00 on both). The reply's copy skips the worksheet the source names, but it computes the same quantity. No project defect.",
+   "context": "ad59c874d817081c4695e32aae0cfeeef21929f13d376bf79003b636bd17f9a9"
+  },
+  {
+   "printed": "15",
+   "project": "{\"ref\": \"g28.line6\"}",
+   "second": "{\"of\": [{\"const\": 0}, {\"ref\": \"sd.line7\"}], \"op\": \"smaller_of\"}",
+   "ruling": "Ruling: model error; i1040sd p. 13, line 15: \"Enter the (loss), if any, from Schedule D, line 7. If Schedule D, line 7, is zero or a gain, enter -0-\"; i1040sd p. 11, Line 19: \"If you checked “Yes” on line 17, complete the Unrecaptured Section 1250 Gain Worksheet in these instructions\". Triage could not execute this reply (triage/u1250.deepseek.json, state invalid: lines 10, 12 and 14 declare refuses: [sales.special], \"collection reference requires sum_over\"), so this line is ruled by reading the expression. The candidate's value is the project's when the worksheet is reached (its smaller of sd.line7 and a zero helper equals the project's copy of g28.line6, the smaller of Schedule D line 7 and zero), but the reply declares no shown_when, so it shows Schedule D line 7's loss on returns where line 17 is No; the project hides line 15 behind u1250.reached (sd.line17 true; BUG-0183). The same expression on the same predicate was executed for g28 line 6 (triage/g28.json and g28.deepseek.json: 120 candidate-shows-skipped of 1,659, 25 on completed returns; classm.ltc.1 completed, hidden, candidate -$1,657.00), and u1250.reached and g28.reached are the same test. Under the owner-confirmed skipped-line rule (adjudication README) a nonzero amount shown on a worksheet the filer never reaches is a defect of the side that shows it. The published interface offered shown_when (\"a Bool line of the same document\") and sd.line17 (Bool), so the source reading was expressible. Project stands.",
+   "context": "ad59c874d817081c4695e32aae0cfeeef21929f13d376bf79003b636bd17f9a9"
+  },
+  {
+   "printed": "17",
+   "project": "{\"from\": {\"const\": 0}, \"op\": \"subtract_floor0\", \"take\": {\"of\": [{\"line\": \"14\"}, {\"line\": \"15\"}, {\"line\": \"16\"}], \"op\": \"sum\"}}",
+   "second": "{\"expression\": {\"from\": {\"const\": 0}, \"op\": \"subtract_floor0\", \"take\": {\"of\": [{\"line\": \"14\"}, {\"line\": \"15\"}, {\"line\": \"16\"}], \"op\": \"sum\"}}, \"invalid_model_types\": [{\"line\": \"u1250.line14\", \"message\": \"u1250.u1250.__type_gate_11: collection reference requires sum_over\"}, {\"line\": \"u1250.line14\", \"message\": \"u1250.u1250.__type_gate_11: comparison operands have incompatible types\"}]}",
+   "ruling": "Ruling: model error; on the declaration, not the tax reading. i1040sd p. 13, line 16: \"Enter your long-term capital loss carryovers from Schedule D, line 14; and Schedule K-1 (Form 1041), box 11, code D\", printed \"16. ( )\"; line 17: \"Combine lines 14 through 16. If the result is a (loss), enter it as a positive amount. If the result is zero or a gain, enter -0-\". The expression is the project's (0 minus the sum of lines 14 to 16, floored at zero, with line 16 a copy of Schedule D line 14, negative); the line is listed only because it reads line 14, whose declaration fails type validation (above). Project checked on a constructed return (classm.g28.2 with a 2024 carryover: 2024 Form 1040 lines 11 $20,000 and 14 $30,000, 2024 Schedule D lines 7 $0, 15 -$10,000, 21 $3,000; box 2d $400; Schedule D line 17 Yes): Schedule D line 14 -$10,000.00, u1250 line 16 -$10,000.00, line 14 $400.00, line 15 $0.00, line 17 $9,600.00, line 18 $0.00; g28 line 5 -$10,000.00, line 7 $0.00. No project defect.",
+   "context": "ad59c874d817081c4695e32aae0cfeeef21929f13d376bf79003b636bd17f9a9"
+  },
+  {
+   "printed": "18",
+   "project": "{\"from\": {\"line\": \"13\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"17\"}}",
+   "second": "{\"expression\": {\"from\": {\"line\": \"13\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"17\"}}, \"invalid_model_types\": [{\"line\": \"u1250.line10\", \"message\": \"u1250.u1250.__type_gate_6: collection reference requires sum_over\"}, {\"line\": \"u1250.line10\", \"message\": \"u1250.u1250.__type_gate_6: comparison operands have incompatible types\"}, {\"line\": \"u1250.line12\", \"message\": \"u1250.u1250.__type_gate_7: collection reference requires sum_over\"}, {\"line\": \"u1250.line12\", \"message\": \"u1250.u1250.__type_gate_7: comparison operands have incompatible types\"}, {\"line\": \"u1250.line14\", \"message\": \"u1250.u1250.__type_gate_11: collection reference requires sum_over\"}, {\"line\": \"u1250.line14\", \"message\": \"u1250.u1250.__type_gate_11: comparison operands have incompatible types\"}]}",
+   "ruling": "Ruling: model error; on the declaration, not the tax reading. i1040sd p. 13, line 18: \"Unrecaptured section 1250 gain. Subtract line 17 from line 13. If zero or less, enter -0-.\" The expression is the project's exactly; the line is listed only because it reads lines 13 and 17, which depend on declarations that fail type validation (lines 10, 12 and 14 above). No project defect.",
+   "context": "ad59c874d817081c4695e32aae0cfeeef21929f13d376bf79003b636bd17f9a9"
+  },
+  {
+   "printed": "3",
+   "project": "{\"const\": 0}",
+   "second": "{\"from\": {\"line\": \"1\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"2\"}}",
+   "ruling": "Ruling: representation; i1040sd p. 13: \"If you aren’t reporting a gain on Form 4797, line 7, skip lines 1 through 9 and go to line 10.\" Line: \"Subtract line 2 from line 1\". Triage could not execute this reply (triage/u1250.deepseek.json, state invalid: lines 10, 12 and 14 declare refuses: [sales.special], \"collection reference requires sum_over\"), so this line is ruled by reading the expression. Form 4797 gains and losses are refused by sd.other_forms (\"Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1?\"), which refuses Schedule D and Form 1040 line 7a (checked: sd.other_forms true on classm.g28.2 gives sd.line7, g28.line7, u1250.line18 and f1040.line7a refused). The candidate's lines 1 and 2 are ss.zero (declared refused on sd.other_forms), and subtract_floor0 of zero from zero is zero, so the line is $0.00 on every return the interview can produce, as is the project's (div.screen, $0.00); a zero on a line the source skips is permitted, so the candidate's missing shown_when has no effect here. No difference.",
+   "context": "ad59c874d817081c4695e32aae0cfeeef21929f13d376bf79003b636bd17f9a9"
+  },
+  {
+   "printed": "6",
+   "project": "{\"const\": 0}",
+   "second": "{\"of\": [{\"line\": \"3\"}, {\"line\": \"4\"}, {\"line\": \"5\"}], \"op\": \"sum\"}",
+   "ruling": "Ruling: representation; i1040sd p. 13: \"If you aren’t reporting a gain on Form 4797, line 7, skip lines 1 through 9 and go to line 10.\" Line: \"Add lines 3 through 5\". Triage could not execute this reply (triage/u1250.deepseek.json, state invalid: lines 10, 12 and 14 declare refuses: [sales.special], \"collection reference requires sum_over\"), so this line is ruled by reading the expression. Form 4797 gains and losses are refused by sd.other_forms (\"Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1?\"), which refuses Schedule D and Form 1040 line 7a (checked: sd.other_forms true on classm.g28.2 gives sd.line7, g28.line7, u1250.line18 and f1040.line7a refused). The candidate's lines 3, 4 and 5 are zero (line 3 above; lines 4 and 5 ss.zero), so the line is $0.00 on every return the interview can produce, as is the project's (div.screen, $0.00); a zero on a line the source skips is permitted, so the candidate's missing shown_when has no effect here. No difference.",
+   "context": "ad59c874d817081c4695e32aae0cfeeef21929f13d376bf79003b636bd17f9a9"
+  },
+  {
+   "printed": "9",
+   "project": "{\"const\": 0}",
+   "second": "{\"from\": {\"line\": \"7\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"8\"}}",
+   "ruling": "Ruling: representation; i1040sd p. 13: \"If you aren’t reporting a gain on Form 4797, line 7, skip lines 1 through 9 and go to line 10.\" Line: \"Subtract line 8 from line 7. If zero or less, enter -0-\". Triage could not execute this reply (triage/u1250.deepseek.json, state invalid: lines 10, 12 and 14 declare refuses: [sales.special], \"collection reference requires sum_over\"), so this line is ruled by reading the expression. Form 4797 gains and losses are refused by sd.other_forms (\"Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1?\"), which refuses Schedule D and Form 1040 line 7a (checked: sd.other_forms true on classm.g28.2 gives sd.line7, g28.line7, u1250.line18 and f1040.line7a refused). The candidate's lines 7 and 8 are ss.zero, so the line is $0.00 on every return the interview can produce, as is the project's (div.screen, $0.00); a zero on a line the source skips is permitted, so the candidate's missing shown_when has no effect here. No difference.",
+   "context": "ad59c874d817081c4695e32aae0cfeeef21929f13d376bf79003b636bd17f9a9"
+  }
+ ]
+}

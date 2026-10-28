@@ -18,6 +18,13 @@
    "context": "6f486f2c34ed05a4cadfbd637a74fe69ad70f1ec99b0f3d21dd2960a59bf6872"
   },
   {
+   "printed": "1z",
+   "restated": "Add line 1a and line 1e.",
+   "model": "The IRS line says 'Add lines 1a through 1h,' but the restatement adds only line 1a and line 1e.",
+   "ruling": "Ruling: scope; the model says the restatement adds only lines 1a and 1e of \"Add lines 1a through 1h\". Lines 1b to 1d and 1f to 1h are refused: scope.other_income asks for other earned income (Form 1040 lines 1b to 1d and 1f to 1h), and f1040.line8 refuses on it (checked in forms/2025/f1040.yaml), so on every computed return those lines are zero and the sum is Form 1040 line 1z. Unchanged by Stage 20; same ruling as rounds 2 and 3.",
+   "context": "5e508b2a542e2e95b6b95b47e5256aedd765e56e46d197842551e61056f10694"
+  },
+  {
    "printed": "27a",
    "restated": "Enter the amount from eic helper \"Earned income credit for Form 1040, line 27a (Worksheet A, line 6, or Worksheet B, line 11 for a filer who answered Yes to Step 5, question 2, when Steps 1 to 5 are passed; zero otherwise)\".",
    "model": "The eic.credit helper computes only Worksheet A line 6; the IRS instructions say a filer who answers Yes to Step 5 question 2 skips question 3 and uses Worksheet B line 11.",
@@ -46,6 +53,13 @@
    "context": "50100172621db859beb07ae113e41b943d664d2c141c7c0f4515dbc4a6756a70"
   },
   {
+   "printed": "27c",
+   "restated": "Enter the amount from eic helper \"The instructions say to check the box on line 27c (a STOP that says so, or Worksheet A line 2 is zero); the filer's own choice not to claim the EIC is not asked\".",
+   "model": "The IRS line says 'If you do not want to claim the EIC, check here,' but the restatement only handles instructed STOP cases and expressly does not ask the filer's own choice.",
+   "ruling": "Ruling: scope; the model says the filer's own choice not to claim the EIC is not asked. i1040gi p. 43, Line 27c: \"Check the box on line 27c if you do not want to claim the earned income credit or if you have been instructed to check the box in the instructions for line 27a\". The rendered English states the limit itself (\"the filer's own choice not to claim the EIC is not asked\"), a recorded design limit (TASKS.md T-027). Unchanged by Stage 20; same ruling as rounds 2 to 4.",
+   "context": "5e508b2a542e2e95b6b95b47e5256aedd765e56e46d197842551e61056f10694"
+  },
+  {
    "printed": "28",
    "restated": "Enter the amount from s8812 line 27.",
    "model": "IRS says \"If you do not want to claim the ACTC, check here\"; the restatement only enters the amount from Schedule 8812 line 27 and omits that election.",
@@ -60,11 +74,25 @@
    "context": "50100172621db859beb07ae113e41b943d664d2c141c7c0f4515dbc4a6756a70"
   },
   {
+   "printed": "28 (box)",
+   "restated": "true = false",
+   "model": "The IRS line provides 'If you do not want to claim the ACTC, check here,' but the restatement sets the box value to false unconditionally.",
+   "ruling": "Ruling: scope; the model says the restatement sets the box unchecked unconditionally. Form 1040 (2025) line 28, \"If you do not want to claim the ACTC, check here\"; i1040gi p. 61, Line 28, \"If you do not want to claim the additional child tax credit, check the box on line 28\". This is the recorded design limit BUG-0174 (owner's decision, 2026-10-27): f1040.line28_box is always unchecked and its printed label says so (\"not asked; this tool always claims the credit\"). The rendering states the limit; it does not misread the source. Same ruling as round 4.",
+   "context": "5e508b2a542e2e95b6b95b47e5256aedd765e56e46d197842551e61056f10694"
+  },
+  {
    "printed": "6b",
    "restated": "Enter the amount from ssb line 18.",
    "model": "The IRS says 'Do not use the Social Security Benefits Worksheet in these instructions if any of the following applies' (for example, filing Form 2555, 4563, or 8815, or repayments greater than benefits); the restatement always enters the worksheet's ssb line 18 and names no refusal for those cases.",
    "ruling": "Ruling: model error; the model says the restatement \"always enters the worksheet's ssb line 18 and names no refusal\" for the Pub. 915 cases. Line 6b copies ssb.line18, and the worksheet it reads refuses those cases at ssb.line2 (gates ssb.pub915, ssb.lump_sum, ssb.terror_disability), so the restatement of line 6b need not repeat them; on every computed return the worksheet applies. i1040gi p. 31, Lines 6a and 6b: \"Exception. Do not use the Social Security Benefits Worksheet in these instructions if any of the following applies\" (contributions to a traditional IRA with workplace-plan coverage, repayments more than benefits, Forms 2555, 4563 or 8815, excluded adoption benefits or Puerto Rico income), the question ssb.pub915 asks word for word.",
    "context": "50100172621db859beb07ae113e41b943d664d2c141c7c0f4515dbc4a6756a70"
+  },
+  {
+   "printed": "Dependents (separated spouses)",
+   "restated": "Enter the amount from eic helper \"A married filer filing separately or as head of household who passes Step 3, questions 4 and 5, and answers No to question 6 (the special rule for separated spouses)\".",
+   "model": "The IRS checkbox is for MFS/HOH filers who lived apart for the last 6 months or are legally separated and lived apart at year end; the restatement instead uses an EIC Step 3/4 helper requiring EIC steps and a qualifying child.",
+   "ruling": "Ruling: ambiguity; amb.2025.separated_spouses_box (owner's decision, 2026-10-26). The model compares the restatement with the printed box wording, which has no EIC conditions. The only instructions for the box are the earned income credit's: i1040gi p. 41, Step 3, question 6, \"No. Check the box in the Dependents section that discusses the special rule for separated spouses on page 1 of Form 1040 or 1040-SR\", and p. 44, Special rule for separated spouses, \"If you meet these requirements, make sure you check the box in the Dependents section\". The register records both readings (checked only under the EIC special rule, or whenever the printed condition holds) and the first is chosen; the rendered English states the chosen reading (eic.separated_box) accurately. Unchanged by Stage 20; same ruling as round 4.",
+   "context": "5e508b2a542e2e95b6b95b47e5256aedd765e56e46d197842551e61056f10694"
   }
  ]
 }

@@ -1,0 +1,63 @@
+{
+ "kind": "classm",
+ "form": "g28",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "case": "classm.g28.1",
+   "printed": "1",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.g28.1.deepseek.prompt.txt) lists the line as \"line 1 (NonNegDollars)\" and asks for printed: \"<printed>\"; the reply names it \"line 1 (NonNegDollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (the same model's reply for classm.g28.2 uses \"line 1\" and was read). The reply's value is $0.00; the project's is $0.00. The worksheet is not reached on this return (Schedule D line 17 No; g28.reached false; i1040sd p. 11, Line 18: \"If you checked “Yes” on line 17, complete the 28% Rate Gain Worksheet in these instructions\"), so the project hides the line and the right entry is blank; the reply's zero is permitted by the skipped-line rule. No project defect. No expectation is recorded for a line without a parsed answer; nothing to drop.",
+   "context": "87416c2e12a5e5795bcf2dfaaf564d87798c61f1b3a264026730d68359775bb2"
+  },
+  {
+   "case": "classm.g28.1",
+   "printed": "2",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.g28.1.deepseek.prompt.txt) lists the line as \"line 2 (NonNegDollars)\" and asks for printed: \"<printed>\"; the reply names it \"line 2 (NonNegDollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (the same model's reply for classm.g28.2 uses \"line 2\" and was read). The reply's value is $0.00; the project's is $0.00. The worksheet is not reached on this return (Schedule D line 17 No; g28.reached false; i1040sd p. 11, Line 18: \"If you checked “Yes” on line 17, complete the 28% Rate Gain Worksheet in these instructions\"), so the project hides the line and the right entry is blank; the reply's zero is permitted by the skipped-line rule. No project defect. No expectation is recorded for a line without a parsed answer; nothing to drop.",
+   "context": "87416c2e12a5e5795bcf2dfaaf564d87798c61f1b3a264026730d68359775bb2"
+  },
+  {
+   "case": "classm.g28.1",
+   "printed": "3",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.g28.1.deepseek.prompt.txt) lists the line as \"line 3 (NonNegDollars)\" and asks for printed: \"<printed>\"; the reply names it \"line 3 (NonNegDollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (the same model's reply for classm.g28.2 uses \"line 3\" and was read). The reply's value is $0.00; the project's is $0.00. The worksheet is not reached on this return (Schedule D line 17 No; g28.reached false; i1040sd p. 11, Line 18: \"If you checked “Yes” on line 17, complete the 28% Rate Gain Worksheet in these instructions\"), so the project hides the line and the right entry is blank; the reply's zero is permitted by the skipped-line rule. No project defect. No expectation is recorded for a line without a parsed answer; nothing to drop.",
+   "context": "87416c2e12a5e5795bcf2dfaaf564d87798c61f1b3a264026730d68359775bb2"
+  },
+  {
+   "case": "classm.g28.1",
+   "printed": "4",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.g28.1.deepseek.prompt.txt) lists the line as \"line 4 (NonNegDollars)\" and asks for printed: \"<printed>\"; the reply names it \"line 4 (NonNegDollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (the same model's reply for classm.g28.2 uses \"line 4\" and was read). The reply's value is $0.00; the project's is $0.00. The worksheet is not reached on this return (Schedule D line 17 No; g28.reached false; i1040sd p. 11, Line 18: \"If you checked “Yes” on line 17, complete the 28% Rate Gain Worksheet in these instructions\"), so the project hides the line and the right entry is blank; the reply's zero is permitted by the skipped-line rule. No project defect. No expectation is recorded for a line without a parsed answer; nothing to drop.",
+   "context": "87416c2e12a5e5795bcf2dfaaf564d87798c61f1b3a264026730d68359775bb2"
+  },
+  {
+   "case": "classm.g28.1",
+   "printed": "5",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.g28.1.deepseek.prompt.txt) lists the line as \"line 5 (Dollars)\" and asks for printed: \"<printed>\"; the reply names it \"line 5 (Dollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (the same model's reply for classm.g28.2 uses \"line 5\" and was read). The reply's value is $0.00; the project's is $0.00. The worksheet is not reached on this return (Schedule D line 17 No; g28.reached false; i1040sd p. 11, Line 18: \"If you checked “Yes” on line 17, complete the 28% Rate Gain Worksheet in these instructions\"), so the project hides the line and the right entry is blank; the reply's zero is permitted by the skipped-line rule. No project defect. No expectation is recorded for a line without a parsed answer; nothing to drop.",
+   "context": "87416c2e12a5e5795bcf2dfaaf564d87798c61f1b3a264026730d68359775bb2"
+  },
+  {
+   "case": "classm.g28.1",
+   "printed": "6",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.g28.1.deepseek.prompt.txt) lists the line as \"line 6 (Dollars)\" and asks for printed: \"<printed>\"; the reply names it \"line 6 (Dollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (the same model's reply for classm.g28.2 uses \"line 6\" and was read). The reply's value is $0.00; the project's is $0.00. The worksheet is not reached on this return (Schedule D line 17 No; g28.reached false; i1040sd p. 11, Line 18: \"If you checked “Yes” on line 17, complete the 28% Rate Gain Worksheet in these instructions\"), so the project hides the line and the right entry is blank; the reply's zero is permitted by the skipped-line rule. No project defect. No expectation is recorded for a line without a parsed answer; nothing to drop.",
+   "context": "87416c2e12a5e5795bcf2dfaaf564d87798c61f1b3a264026730d68359775bb2"
+  },
+  {
+   "case": "classm.g28.1",
+   "printed": "7",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.g28.1.deepseek.prompt.txt) lists the line as \"line 7 (NonNegDollars)\" and asks for printed: \"<printed>\"; the reply names it \"line 7 (NonNegDollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (the same model's reply for classm.g28.2 uses \"line 7\" and was read). The reply's value is $0.00; the project's is $0.00. The worksheet is not reached on this return (Schedule D line 17 No; g28.reached false; i1040sd p. 11, Line 18: \"If you checked “Yes” on line 17, complete the 28% Rate Gain Worksheet in these instructions\"), so the project hides the line and the right entry is blank; the reply's zero is permitted by the skipped-line rule. No project defect. No expectation is recorded for a line without a parsed answer; nothing to drop.",
+   "context": "87416c2e12a5e5795bcf2dfaaf564d87798c61f1b3a264026730d68359775bb2"
+  }
+ ]
+}

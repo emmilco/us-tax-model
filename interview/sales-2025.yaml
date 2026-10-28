@@ -24,11 +24,18 @@ interview:
   - sales.wash_loss
   - sd.other_forms
   - sd.carryover
+  - clcw.spouse_screen
+  - clcw.prior_11
+  - clcw.prior_14
+  - clcw.prior_sd7
+  - clcw.prior_sd15
+  - clcw.prior_sd21
   - sd.distributions
   - f1040.status
   - f1040.line3a
   - f4952.line1
   - f4952.carryover
+  - f4952.prior_7
   - f4952.unsupported
   - f4952.alternative_allocation
   - f4952.line4g

@@ -1,0 +1,490 @@
+form:
+  id: clcw
+  kind: worksheet
+  title: Capital Loss Carryover Worksheet—Lines 6 and 14
+  tax_year: 2025
+  note: The worksheet in the Schedule D instructions, from figures on the 2024 return. It is used only when line 21 of
+    the 2024 Schedule D shows a loss (`sd.carryover`); lines 8 and 13 go to Schedule D lines 6 and 14. Two separate
+    2024 returns that each carry a loss into a 2025 joint return, and a 2024 joint return with someone other than the
+    2025 joint spouse, are refused.
+  lines:
+  - id: clcw.zero
+    printed: (helper)
+    label: Year parameter sales.zero
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: sales.zero
+    cite:
+      doc: i1040sd
+      locator: p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 3, "If zero or less, enter -0-"
+  - id: clcw.spouse_screen
+    printed: (gate)
+    label: 'Is either of these true: the 2024 return these figures come from was a joint return, and for 2025 you are not
+      filing a joint return with the same spouse; or, on this 2025 joint return, you and your spouse each filed a separate
+      2024 return whose Schedule D line 21 showed a loss?'
+    type: Bool
+    expr:
+      op: input
+      source: 'Is either of these true: the 2024 return these figures come from was a joint return, and for 2025 you are not
+        filing a joint return with the same spouse (for example after a divorce, a separation or the death of your spouse
+        in 2024); or, on this 2025 joint return, you and your spouse each filed a separate 2024 return whose Schedule D line
+        21 showed a loss?'
+    cite:
+      doc: i1040sd
+      locator: p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, "If you and your spouse once filed a joint return and
+        are filing separate returns for 2025, any capital loss carryover from the joint return can be deducted only on the
+        return of the spouse who actually had the loss"; p550 p. 103, Joint and separate returns, "combine your separate
+        capital loss carryovers"
+  - id: clcw.prior_11
+    printed: (helper)
+    label: The amount on line 11 of your 2024 Form 1040 or 1040-SR (adjusted gross income)
+    type: Dollars
+    expr:
+      op: input
+      source: The amount on line 11 of your 2024 Form 1040 or 1040-SR (your adjusted gross income for 2024), negative if
+        it was a loss
+    cite:
+      doc: i1040sd
+      locator: p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 1, "Enter the amount from your 2024 Form 1040,
+        1040-SR, or 1040-NR, line 15"
+    ambiguity: amb.2025.clcw_line1_signed
+  - id: clcw.prior_14
+    printed: (helper)
+    label: The amount on line 14 of your 2024 Form 1040 or 1040-SR (your deductions)
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The amount on line 14 of your 2024 Form 1040 or 1040-SR (your standard or itemized deduction plus the
+        qualified business income deduction)
+    cite:
+      doc: i1040sd
+      locator: p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 1, "If the amount would have been a loss if you
+        could enter a negative number on that line, enclose the amount in parentheses"
+    ambiguity: amb.2025.clcw_line1_signed
+  - id: clcw.prior_sd7
+    printed: (helper)
+    label: The amount on line 7 of your 2024 Schedule D (net short-term capital gain or loss)
+    type: Dollars
+    expr:
+      op: input
+      source: The amount on line 7 of your 2024 Schedule D (net short-term capital gain or loss), negative if it was a loss
+    cite:
+      doc: i1040sd
+      locator: p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 5, "Enter the loss from your 2024 Schedule D,
+        line 7, as a positive amount", and line 10, "Enter any gain from your 2024 Schedule D, line 7"
+  - id: clcw.prior_sd15
+    printed: (helper)
+    label: The amount on line 15 of your 2024 Schedule D (net long-term capital gain or loss)
+    type: Dollars
+    expr:
+      op: input
+      source: The amount on line 15 of your 2024 Schedule D (net long-term capital gain or loss), negative if it was a loss
+    cite:
+      doc: i1040sd
+      locator: p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 6, "Enter any gain from your 2024 Schedule D,
+        line 15", and line 9, "Enter the loss from your 2024 Schedule D, line 15, as a positive amount"
+  - id: clcw.prior_sd21
+    printed: (helper)
+    label: The loss on line 21 of your 2024 Schedule D, as a positive amount
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The loss on line 21 of your 2024 Schedule D, entered as a positive amount (line 21 is printed in parentheses)
+    cite:
+      doc: i1040sd
+      locator: p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 2, "Enter the loss from your 2024 Schedule D,
+        line 21, as a positive amount"
+    ambiguity: amb.2025.clcw_line2_printed
+  - id: clcw.prior_16
+    printed: (helper)
+    label: Line 16 of the 2024 Schedule D (lines 7 and 15 combined)
+    type: Dollars
+    expr:
+      op: sum
+      of:
+      - clcw.prior_sd7
+      - clcw.prior_sd15
+    cite:
+      doc: i1040sd
+      locator: p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, "if your 2024 Schedule D, line 21, is a loss and (a)
+        that loss is a smaller loss than the loss on your 2024 Schedule D, line 16"
+  - id: clcw.prior_loss
+    printed: (helper)
+    label: The loss on line 16 of the 2024 Schedule D, as a positive amount
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: clcw.zero
+      take: clcw.prior_16
+    cite:
+      doc: i1040sd
+      locator: p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, "that loss is a smaller loss than the loss on your
+        2024 Schedule D, line 16"
+  - id: clcw.prior_limit
+    printed: (helper)
+    label: The $3,000 limit on the deductible capital loss
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: clcw.prior_limit
+    cite:
+      doc: i1040sd
+      locator: 'p. 3, Capital Losses, "You can deduct capital losses up to the amount of your capital gains plus $3,000
+        ($1,500 if married filing separately)"'
+  - id: clcw.prior_limit_mfs
+    printed: (helper)
+    label: The $1,500 limit on the deductible capital loss for a married person filing separately
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: clcw.prior_limit_mfs
+    cite:
+      doc: i1040sd
+      locator: 'p. 3, Capital Losses, "You can deduct capital losses up to the amount of your capital gains plus $3,000
+        ($1,500 if married filing separately)"'
+  - id: clcw.prior_floor
+    printed: (helper)
+    label: The least loss any 2024 Schedule D line 21 can show (the smaller of the line 16 loss and $1,500)
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - clcw.prior_loss
+      - clcw.prior_limit_mfs
+    cite:
+      doc: i1040sd
+      locator: 'p. 3, Capital Losses, "You can deduct capital losses up to the amount of your capital gains plus $3,000
+        ($1,500 if married filing separately)"'
+    ambiguity: amb.2025.clcw_line2_printed
+  - id: clcw.bad
+    printed: (gate)
+    label: The loss entered for 2024 Schedule D line 21 is more than $3,000, more than the loss on 2024 Schedule D line 16,
+      or less than the smaller of that loss and $1,500
+    type: Bool
+    expr:
+      op: test
+      any:
+      - op: test
+        gt:
+        - clcw.prior_sd21
+        - clcw.prior_limit
+      - op: test
+        gt:
+        - clcw.prior_sd21
+        - clcw.prior_loss
+      - op: test
+        lt:
+        - clcw.prior_sd21
+        - clcw.prior_floor
+    cite:
+      doc: i1040sd
+      locator: 'p. 3, Capital Losses, "You can deduct capital losses up to the amount of your capital gains plus $3,000
+        ($1,500 if married filing separately)"'
+    ambiguity: amb.2025.clcw_line2_printed
+  - id: clcw.applies
+    printed: (helper)
+    label: The worksheet applies (the 2024 line 21 loss is smaller than the line 16 loss, or 2024 taxable income would be
+      less than zero)
+    type: Bool
+    expr:
+      op: test
+      any:
+      - op: test
+        lt:
+        - clcw.prior_sd21
+        - clcw.prior_loss
+      - op: test
+        lt:
+        - clcw.prior_11
+        - clcw.prior_14
+    cite:
+      doc: i1040sd
+      locator: p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, "(a) that loss is a smaller loss than the loss on
+        your 2024 Schedule D, line 16", "if the amount on your 2024 Form 1040, 1040-SR or 1040-NR, line 15 would be less
+        than zero if you could enter a negative amount on that line", "Otherwise, you don’t have any carryovers"
+  - id: clcw.show_st
+    printed: (helper)
+    label: The worksheet applies and line 7 of the 2024 Schedule D is a loss
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - clcw.applies
+        - const: true
+      - op: test
+        eq:
+        - clcw.st_loss
+        - const: true
+    cite:
+      doc: i1040sd
+      locator: p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, "If line 7 of your 2024 Schedule D is a loss, go to
+        line 5"
+  - id: clcw.show_lt
+    printed: (helper)
+    label: The worksheet applies and line 15 of the 2024 Schedule D is a loss
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - clcw.applies
+        - const: true
+      - op: test
+        eq:
+        - clcw.lt_loss
+        - const: true
+    cite:
+      doc: i1040sd
+      locator: p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, "If line 15 of your 2024 Schedule D is a loss, go to
+        line 9"
+  - id: clcw.line1
+    printed: "1"
+    shown_when: clcw.applies
+    label: Your 2024 taxable income (2024 Form 1040 line 15), negative if it would have been a loss
+    type: Dollars
+    expr:
+      op: subtract
+      from: clcw.prior_11
+      take: clcw.prior_14
+    cite:
+      doc: i1040sd
+      locator: p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 1, "Enter the amount from your 2024 Form 1040,
+        1040-SR, or 1040-NR, line 15. If the amount would have been a loss if you could enter a negative number on that
+        line, enclose the amount in parentheses"
+    ambiguity: amb.2025.clcw_line1_signed
+    refuses:
+    - when: clcw.spouse_screen
+      form: Capital Loss Carryover Worksheet for spouses' 2024 returns
+      remedy: A carryover from a 2024 joint return with someone other than your 2025 joint spouse, which only the spouse
+        who had the loss can deduct, and the separate carryovers of two 2024 returns combined on a 2025 joint return, are
+        outside this tool.
+      cite:
+        doc: i1040sd
+        locator: p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, "can be deducted only on the return of the spouse
+          who actually had the loss"; p550 p. 103, Joint and separate returns, "combine your separate capital loss
+          carryovers"
+  - id: clcw.line2
+    printed: "2"
+    shown_when: clcw.applies
+    label: Enter the loss from your 2024 Schedule D, line 21, as a positive amount
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: clcw.prior_sd21
+    cite:
+      doc: i1040sd
+      locator: p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 2, "Enter the loss from your 2024 Schedule D,
+        line 21, as a positive amount"
+    ambiguity: amb.2025.clcw_line2_printed
+    refuses:
+    - when: clcw.bad
+      form: Capital Loss Carryover Worksheet line 2
+      remedy: Check your 2024 Schedule D. Line 21 cannot be a larger loss than $3,000 or than the loss on line 16 (lines 7
+        and 15 combined), nor a smaller loss than the line 16 loss or $1,500, whichever is less; enter the amounts as
+        printed on the 2024 return.
+      cite:
+        doc: i1040sd
+        locator: 'p. 3, Capital Losses, "You can deduct capital losses up to the amount of your capital gains plus $3,000
+          ($1,500 if married filing separately)"'
+  - id: clcw.combined
+    printed: (helper)
+    label: Lines 1 and 2 combined
+    type: Dollars
+    expr:
+      op: sum
+      of:
+      - clcw.line1
+      - clcw.line2
+    cite:
+      doc: i1040sd
+      locator: p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 3, "Combine lines 1 and 2"
+  - id: clcw.line3
+    printed: "3"
+    shown_when: clcw.applies
+    label: Combine lines 1 and 2. If zero or less, enter -0-
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: clcw.combined
+      take: clcw.zero
+    cite:
+      doc: i1040sd
+      locator: p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 3, "Combine lines 1 and 2. If zero or less,
+        enter -0-"
+  - id: clcw.line4
+    printed: "4"
+    shown_when: clcw.applies
+    label: Enter the smaller of line 2 or line 3
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - clcw.line2
+      - clcw.line3
+    cite:
+      doc: i1040sd
+      locator: p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 4, "Enter the smaller of line 2 or line 3"
+  - id: clcw.st_loss
+    printed: (helper)
+    label: Line 7 of your 2024 Schedule D is a loss
+    type: Bool
+    expr:
+      op: test
+      lt:
+      - clcw.prior_sd7
+      - const: 0
+    cite:
+      doc: i1040sd
+      locator: p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, "If line 7 of your 2024 Schedule D is a loss, go to
+        line 5"
+  - id: clcw.lt_loss
+    printed: (helper)
+    label: Line 15 of your 2024 Schedule D is a loss
+    type: Bool
+    expr:
+      op: test
+      lt:
+      - clcw.prior_sd15
+      - const: 0
+    cite:
+      doc: i1040sd
+      locator: p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, "If line 15 of your 2024 Schedule D is a loss, go to
+        line 9"
+  - id: clcw.line5
+    printed: "5"
+    shown_when: clcw.applies
+    label: Enter the loss from your 2024 Schedule D, line 7, as a positive amount (zero if line 7 is not a loss)
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: clcw.zero
+      take: clcw.prior_sd7
+    cite:
+      doc: i1040sd
+      locator: p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 5, "Enter the loss from your 2024 Schedule D,
+        line 7, as a positive amount", and "If line 7 of your 2024 Schedule D is a loss, go to line 5"
+  - id: clcw.line6
+    printed: "6"
+    label: Enter any gain from your 2024 Schedule D, line 15. If a loss, enter -0-
+    shown_when: clcw.show_st
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: clcw.prior_sd15
+      take: clcw.zero
+    cite:
+      doc: i1040sd
+      locator: p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 6, "Enter any gain from your 2024 Schedule D,
+        line 15. If a loss, enter -0-"
+  - id: clcw.line7
+    printed: "7"
+    label: Add lines 4 and 6
+    shown_when: clcw.show_st
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - clcw.line4
+      - clcw.line6
+    cite:
+      doc: i1040sd
+      locator: p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 7, "Add lines 4 and 6"
+  - id: clcw.line8
+    printed: "8"
+    label: Short-term capital loss carryover for 2025. Subtract line 7 from line 5. If zero or less, enter -0-
+    shown_when: clcw.show_st
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: clcw.line5
+      take: clcw.line7
+    cite:
+      doc: i1040sd
+      locator: p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 8, "Short-term capital loss carryover for 2025.
+        Subtract line 7 from line 5. If zero or less, enter -0-. If more than zero, also enter this amount on Schedule D,
+        line 6"
+  - id: clcw.line9
+    printed: "9"
+    label: Enter the loss from your 2024 Schedule D, line 15, as a positive amount
+    shown_when: clcw.show_lt
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: clcw.zero
+      take: clcw.prior_sd15
+    cite:
+      doc: i1040sd
+      locator: p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 9, "Enter the loss from your 2024 Schedule D,
+        line 15, as a positive amount"
+  - id: clcw.line10
+    printed: "10"
+    label: Enter any gain from your 2024 Schedule D, line 7. If a loss, enter -0-
+    shown_when: clcw.show_lt
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: clcw.prior_sd7
+      take: clcw.zero
+    cite:
+      doc: i1040sd
+      locator: p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 10, "Enter any gain from your 2024 Schedule D,
+        line 7. If a loss, enter -0-"
+  - id: clcw.line11
+    printed: "11"
+    label: Subtract line 5 from line 4. If zero or less, enter -0-
+    shown_when: clcw.show_lt
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: clcw.line4
+      take: clcw.line5
+    cite:
+      doc: i1040sd
+      locator: p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 11, "Subtract line 5 from line 4. If zero or
+        less, enter -0-"
+  - id: clcw.line12
+    printed: "12"
+    label: Add lines 10 and 11
+    shown_when: clcw.show_lt
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - clcw.line10
+      - clcw.line11
+    cite:
+      doc: i1040sd
+      locator: p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 12, "Add lines 10 and 11"
+  - id: clcw.line13
+    printed: "13"
+    label: Long-term capital loss carryover for 2025. Subtract line 12 from line 9. If zero or less, enter -0-
+    shown_when: clcw.show_lt
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: clcw.line9
+      take: clcw.line12
+    cite:
+      doc: i1040sd
+      locator: p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 13, "Long-term capital loss carryover for 2025.
+        Subtract line 12 from line 9. If zero or less, enter -0-. If more than zero, also enter this amount on Schedule D,
+        line 14"
+  - id: clcw.figures_notice
+    printed: (helper)
+    label: 'Notice: the carryover is figured from the 2024 amounts you entered. If you did not file a 2024 return, or your
+      2024 Schedule D left out a capital loss carried into 2024, they must be the amounts a correct 2024 return would have
+      shown.'
+    type: Bool
+    expr:
+      op: test
+      eq:
+      - sd.carryover
+      - const: true
+    cite:
+      doc: p550
+      locator: p. 102, Capital Losses, "you must take the current year's allowable deduction into account, whether or not
+        you claimed it and whether or not you filed a return for the current year"

@@ -1,0 +1,14 @@
+{
+ "bank": null,
+ "errors": [],
+ "failures": [],
+ "family": "claude",
+ "form": "clcw26",
+ "lines": [],
+ "log_sha256_at_triage": "26e875dbee1dc68295de0bca7106857fe6c19366db9c50505f1f3a37e63e7d0a",
+ "policy": "executable-triage-v2",
+ "response_sha256": "452f93f395f0cb692b686b9e7437154bdd6fa5243c7d447095c5b8c50a0da97a",
+ "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
+ "state": "no candidate lines",
+ "subject_sha256": "cd1860b673af88976841ed370a4905ad7cb46e9ceb0e582596ba2e6c7b6a92f7"
+}

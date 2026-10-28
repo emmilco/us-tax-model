@@ -17,6 +17,44 @@ form:
       cite:
         doc: f8960
         locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+    - id: f8960.prior_2i
+      printed: (gate)
+      type: Bool
+      label: Was there an amount on line 2(i) of the Net Gains and Losses Worksheet (Form 8960 instructions) when you figured
+        your 2024 net investment income tax?
+      expr:
+        op: input
+        source: When you figured your 2024 net investment income tax (Form 8960), was there an amount on line 2(i) of the Net
+          Gains and Losses Worksheet in the Form 8960 instructions (an adjustment to a capital loss carryforward for losses
+          excluded from net investment income)?
+      cite:
+        doc: i8960
+        locator: p. 10, Net Gains and Losses Worksheet, line 2(h), "Enter the amount reported on line 2(i) of this worksheet
+          from your prior tax year return calculations"; p. 9, "capital loss carryforwards must be adjusted"
+    - id: f8960.carryforward_adj
+      printed: (gate)
+      type: Bool
+      label: A capital loss carryover with a 2024 Net Gains and Losses Worksheet line 2(i) amount, on a return whose modified
+        adjusted gross income is over the threshold
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - sd.carryover
+              - const: true
+          - op: test
+            gt:
+              - f8960.line15
+              - const: 0
+          - op: test
+            eq:
+              - f8960.prior_2i
+              - const: true
+      cite:
+        doc: i8960
+        locator: p. 9, "capital loss carryforwards must be adjusted"; p. 10, Net Gains and Losses Worksheet, line 2(h),
+          "Enter the amount reported on line 2(i) of this worksheet from your prior tax year return calculations"
     - id: f8960.refund
       printed: (helper)
       type: Bool
@@ -170,6 +208,13 @@ form:
         doc: f8960
         locator: Form 8960 (2025), Parts I–III, individual lines 1–17
       refuses:
+        - when: f8960.carryforward_adj
+          form: Form 8960 Net Gains and Losses Worksheet lines 2(h) and 2(i)
+          remedy: The adjustment of a capital loss carryforward for losses excluded from net investment income (the prior
+            year's worksheet line 2(i)) is outside this tool.
+          cite:
+            doc: i8960
+            locator: p. 9, "capital loss carryforwards must be adjusted"
         - when: f8960.unsupported
           form: Form 8960 additional adjustments
           remedy: The required investment-income or MAGI modifications are outside this supported slice.

@@ -1,3 +1,13 @@
+# Handoff — updated 2026-10-27, later (Claude Opus 5.5)
+
+## State after Stage 20
+
+Coverage work resumed on the owner's route to 80% (`docs/2026-10-26_plan_revision.md` section E: Stages 20, 18, 19,
+21). Stage 20, the capital loss carryover, is built, reviewed and committed: `handoffs/HANDOFF-STAGE-20.md`. The
+estimate is 71.0% (from 68.6%). Next: Stage 18, the premium tax credit; start with its decision batch from
+`research/premises/stage18-premium-tax-credit.md` and its verification, checked against the current tree, and stop
+for the owner's answers before authoring. Open from Stage 20: BUG-0184 (wording), T-074, T-076.
+
 # Handoff — updated 2026-10-27 (Claude Opus 5.5)
 
 ## State on 2026-10-27

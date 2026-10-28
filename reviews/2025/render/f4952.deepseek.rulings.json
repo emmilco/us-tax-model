@@ -4,6 +4,13 @@
  "family": "deepseek",
  "rulings": [
   {
+   "printed": "4a",
+   "restated": "Add sb line 2 and sb line 6.",
+   "model": "IRS line 4a includes ordinary dividends but 'except Alaska Permanent Fund dividends'; the restatement adds Schedule B ordinary dividends without that exception, so it can overstate line 4a.",
+   "ruling": "Ruling: model error; the model says the restatement adds Schedule B ordinary dividends without the Alaska Permanent Fund exception. f4952 p. 3, Line 4a: \"ordinary dividends (except Alaska Permanent Fund dividends)\". Schedule B line 6 copies sb.ordinary_dividends, \"Total ordinary dividends, Form 1099-DIV box 1a\"; Alaska Permanent Fund dividends are not Form 1099-DIV dividends and are reported on Schedule 1 line 8g (s1.yaml, p525 p. 31, \"report it as income on Schedule 1\"), so they never reach line 4a. The model assumed they are in Schedule B line 6.",
+   "context": "d3b3d2ff5fd2216d722dd23fdccca816dde70b5e0a311beb2423586175bf55a4"
+  },
+  {
    "printed": "4d",
    "restated": "Subtract $0 from sd line 16. If zero or less, enter -0-.",
    "model": "The IRS line is 'Net gain from the disposition of property held for investment'; the restatement uses Schedule D line 16, which is not limited to property held for investment and can include other gains or losses.",

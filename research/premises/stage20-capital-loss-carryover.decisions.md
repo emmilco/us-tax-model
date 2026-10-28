@@ -1,5 +1,8 @@
 # Stage 20 (the capital loss carryover): decision batch for the owner
 
+> **Owner's answer (2026-10-27): all recommended.** D1 to D6 are accepted as recommended, with the items under
+> "Settled by the evidence".
+
 Prepared on 2026-10-27 from `stage20-capital-loss-carryover.md` (the premise map, 2026-10-22) and
 `stage20-capital-loss-carryover.verification.md` (its adversarial check, at 1c465c2), and checked again against
 the tree at 671826a. Where the map and the verification differ, the verification's checked facts are used; where

@@ -1,0 +1,14 @@
+{
+ "bank": null,
+ "errors": [],
+ "failures": [],
+ "family": "deepseek",
+ "form": "clcw",
+ "lines": [],
+ "log_sha256_at_triage": "ac30701189e003d3df720dde3795a2de503c737fa311d3bd38a1b2b9cd2dcfbe",
+ "policy": "executable-triage-v2",
+ "response_sha256": "cc00a4f17050d5381a8cbc104213cd877a75f3ce098e310b8d2270b5d4486701",
+ "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
+ "state": "no candidate lines",
+ "subject_sha256": "ec566d96a73721f08704e370ce5253fb97b65362cfc30d2da46151178af4cb47"
+}

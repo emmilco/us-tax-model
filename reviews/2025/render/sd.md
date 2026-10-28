@@ -4,15 +4,15 @@ The rendered English of every printed line of `Schedule D — securities sales a
 
 | field | value |
 | --- | --- |
-| date | 2026-10-26 |
+| date | 2026-10-27 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | afc0704a53be3bdc9f34ee222cd9f088068dab73426fed6106b68396fdb86baf |
+| prompt sha256 | 04728b33493dd779d4177982aef3694b366296836745e6b2738683515d09962a |
 | prompt policy | render-source-comparison-v2 |
 | system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
 | reasoning effort | provider default |
 | output token budget | transport default (65536 for DeepSeek) |
-| subject sha256 | f619efc423f49555bc3e17271d712b89acae98dd68a232f99eded47d589fafac |
+| subject sha256 | f0dc1255712e282cb90d9cc4ff2ab072e67e24b3fdb2804e57adb1437395c129 |
 | lines judged | 46 |
 | match / mismatch / unclear / missing | 46 / 0 / 0 / 0 |
 | verdicts for lines not in the form | none |
@@ -23,7 +23,7 @@ The rendered English of every printed line of `Schedule D — securities sales a
 | --- | --- | --- | --- | --- | --- | --- |
 | f1040sd | 2025; created 2025-10-06 | 1, 2 | whole document | 221151530f7cd599e8ad00bc3e1ba62d6b7ff34e402c336f4ae58d698c9f5187 | - | eb461181b39879c79d1c0b7761ca0cd9ade46fdb1531cdee3281053c348f6c41 |
 | i1040sd | 2025; printed date 2025-12-11 | 8, 10, 11, 12, 15 | cited pages | 145b3d02ba6ce4257939dfbd8f99d519875224cb4ceb4237a1aa24ed862360f1 | 8, 11, 12 | 0120691acc1fa8bf63941916a3b9423db8fba10d67f098a580fdc518c5fd08ec |
-| i1040gi | 2025; printed date 2026-02-25 | 38 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 | - | af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420 |
+| i1040gi | 2025; printed date 2026-02-25 | 31, 38 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 | 31 | af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420 |
 | i8949 | 2025; printed date 2026-01-20 | 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 | cited pages | d3ddc2b91cf89087ca348ebb00dbd1c80bbc025fa4df1176753d25013f581a67 | 2, 3, 4, 5, 6, 7, 9, 10 | cabdc81a0677c0e4de4a89f9a71d328395c4cc839206ebadb56aeb54bf954b85 |
 | f1099div | January 2024 (continuous-use form) | 1, 2, 3, 4, 5, 6 | whole document | 833d93e5f2d0bfcc8c9d720c0e8cb8e623cd2c6a8ee25f364f1f69f49fa490e3 | 5 | 617419bd079b1520174ceca8549065c9e4001f2b06a16d1425c5469bbe49fa3d |
 | f4952 | 2025; created 2025-05-28 | 1, 2, 3, 4 | whole document | efbeec4c44a1e43fb00231942c811a454d86b3632a2a662238893f8c4595bf81 | 3, 4 | c98eb27a83a89faecfdd0cd6597e8063fbd86a14ba1606f3e96c1c5f016d2b5c |
@@ -37,207 +37,207 @@ The rendered English of every printed line of `Schedule D — securities sales a
 ### 1a(d) — Line 1a, column (d) totals
 Status: **MATCH**
 
-Model: Sums proceeds of Box A transactions reported on line 1a: basis reported to the IRS and no adjustments. Line 1a is for short-term Form 1099-B/1099-DA transactions 'for which basis was reported to the IRS and for which you have no adjustments'. Digital assets and failed eligibility are refused.
+Model: Sums proceeds of Box A transactions reported on the aggregate route, which matches line 1a's short-term transactions with basis reported to the IRS and no adjustments. The bad_aggregate refusal enforces the Exception 1 conditions, and the digital refusal excludes Form 1099-DA transactions.
 
 ### 1a(e) — Line 1a, column (e) totals
 Status: **MATCH**
 
-Model: For Box A, column (e) is the basis shown on the broker report. That matches 'enter the basis shown on Form 1099-B' for covered securities.
+Model: For Box A, column (e) is the basis reported on the broker statement. Aggregate entries require no corrections, so that is the correct line 1a basis total.
 
 ### 1a(g) — Line 1a, column (g) totals
 Status: **MATCH**
 
-Model: Aggregate-route entries must have code 'none', so column (g) is zero. That matches line 1a's 'no adjustments' requirement.
+Model: Aggregate entries must have code 'none', so neither the B nor the W adjustment applies and column (g) sums to zero. That is consistent with line 1a covering transactions 'for which you have no adjustments'.
 
 ### 1a(h) — Line 1a, column (h) totals
 Status: **MATCH**
 
-Model: Sums (d) minus (e) plus (g) over the line 1a transactions. That matches 'Subtract the cost or other basis in column (e) from the proceeds (sales price) in column (d)'.
+Model: Column (h) per entry is proceeds less column (e) plus column (g), summed. This matches 'Subtract column (e) from column (d) and combine the result with column (g)'.
 
 ### 1b(d) — Line 1b, column (d) totals
 Status: **MATCH**
 
-Model: Sums proceeds of Box A transactions reported on Form 8949 for line 1b ('Box A or Box G checked'). Box G digital assets are refused.
+Model: Sums proceeds of Box A transactions reported in detail on Form 8949. This matches 'Totals for all transactions reported on Form(s) 8949 with Box A'; Box G (digital assets) is refused.
 
 ### 1b(e) — Line 1b, column (e) totals
 Status: **MATCH**
 
-Model: For Box A, column (e) is the reported basis even when it is incorrect. That matches 'enter the basis shown on Form 1099-B ... in column (e), even though that basis is incorrect'.
+Model: For Box A, column (e) is the reported basis even if it is incorrect, as the IRS text directs: 'enter the basis shown on Form 1099-B ... in column (e), even though that basis is incorrect.'
 
 ### 1b(g) — Line 1b, column (g) totals
 Status: **MATCH**
 
-Model: Column (g) is reported basis minus correct basis (the Worksheet for Basis Adjustments, lines 3/4) plus the positive wash-sale loss (code W). Other codes are refused.
+Model: Column (g) is reported basis minus correct basis under code B, plus a positive wash-sale adjustment under code W. This matches the Worksheet for Basis Adjustments and the code W instructions; other codes are refused.
 
 ### 1b(h) — Line 1b, column (h) totals
 Status: **MATCH**
 
-Model: Sums (d) minus (e) combined with (g), as the column (h) instructions say.
+Model: Sums (d) − (e) + (g) per entry, matching the column (h) instructions.
 
 ### 2(d) — Line 2, column (d) totals
 Status: **MATCH**
 
-Model: Sums proceeds of Box B transactions for line 2 ('Box B or Box H checked'). Box H is refused as a digital asset.
+Model: Sums proceeds of Box B detail transactions, matching line 2 'with Box B ... checked'; Box H is refused.
 
 ### 2(e) — Line 2, column (e) totals
 Status: **MATCH**
 
-Model: For Box B, column (e) is the correct basis from records. That matches 'For noncovered securities, enter the correct basis of the property in column (e)', with -0- in column (g) for code B.
+Model: For Box B (basis not reported), column (e) is the correct basis, matching 'enter the correct basis in column (e)'.
 
 ### 2(g) — Line 2, column (g) totals
 Status: **MATCH**
 
-Model: The basis correction applies only to covered boxes, so only the wash-sale adjustment remains for Box B. That matches 'enter the correct basis in column (e), and enter -0- in column (g)' for code B on Box B.
+Model: No B adjustment applies to Box B because adjust_b requires basis reported to the IRS, matching 'enter -0- in column (g)'. A W adjustment is entered as a positive amount, per the code W instructions.
 
 ### 2(h) — Line 2, column (h) totals
 Status: **MATCH**
 
-Model: Sums (d) minus (e) combined with (g), as the column (h) instructions say.
+Model: Sums (d) − (e) + (g), matching the column (h) instructions.
 
 ### 3(d) — Line 3, column (d) totals
 Status: **MATCH**
 
-Model: Sums net proceeds of Box C transactions for line 3. That matches 'enter in column (d) the net proceeds' when no Form 1099-B was received. Box I is refused.
+Model: Sums proceeds of Box C detail transactions, using net proceeds when there is no broker report. This matches line 3 and the column (d) instructions; Box I is refused.
 
 ### 3(e) — Line 3, column (e) totals
 Status: **MATCH**
 
-Model: For Box C, column (e) is the correct basis from records. Code B on Box C is refused.
+Model: Box C has no broker basis report, so column (e) is the correct basis from records.
 
 ### 3(g) — Line 3, column (g) totals
 Status: **MATCH**
 
-Model: Only the wash-sale adjustment applies, entered as a positive amount per code W. Other codes are refused.
+Model: Code B is refused for Box C and W is entered as a positive amount, consistent with the column (g) instructions.
 
 ### 3(h) — Line 3, column (h) totals
 Status: **MATCH**
 
-Model: Sums (d) minus (e) combined with (g), as the column (h) instructions say.
+Model: Sums (d) − (e) + (g), matching the column (h) instructions.
 
 ### 8a(d) — Line 8a, column (d) totals
 Status: **MATCH**
 
-Model: Sums proceeds of Box D transactions reported on line 8a: long-term, basis reported to the IRS, no adjustments. That matches the line 8a text and Exception 1.
+Model: Sums proceeds of Box D aggregate-route transactions, matching line 8a's long-term transactions with basis reported to the IRS and no adjustments. Exception 1 conditions are enforced by refusal.
 
 ### 8a(e) — Line 8a, column (e) totals
 Status: **MATCH**
 
-Model: Column (e) is the reported basis for Box D. That matches the instructions for covered securities.
+Model: Column (e) is the reported basis for Box D, which aggregate eligibility requires to be correct.
 
 ### 8a(g) — Line 8a, column (g) totals
 Status: **MATCH**
 
-Model: Aggregate entries carry no codes, so column (g) is zero. That is consistent with 'no adjustments'.
+Model: Aggregate entries have no codes, so column (g) is zero, consistent with 'for which you have no adjustments'.
 
 ### 8a(h) — Line 8a, column (h) totals
 Status: **MATCH**
 
-Model: Sums (d) minus (e) plus (g). That matches the line 8a example, where column (h) is $6,000 minus $2,000.
+Model: Sums (d) − (e) + (g), matching the column (h) instructions.
 
 ### 8b(d) — Line 8b, column (d) totals
 Status: **MATCH**
 
-Model: Sums proceeds of Box D transactions on Form 8949 for line 8b ('Box D or Box J checked'). Box J is refused.
+Model: Sums proceeds of Box D detail transactions, matching line 8b 'with Box D ... checked'; Box J is refused.
 
 ### 8b(e) — Line 8b, column (e) totals
 Status: **MATCH**
 
-Model: Column (e) is the reported basis for Box D, even when incorrect, with the correction made in column (g).
+Model: Column (e) is the reported basis for Box D, per 'enter the basis shown on Form 1099-B ... in column (e), even though that basis is incorrect.'
 
 ### 8b(g) — Line 8b, column (g) totals
 Status: **MATCH**
 
-Model: Column (g) is reported basis minus correct basis plus the wash-sale loss. That matches the basis worksheet and the code W instructions.
+Model: The B adjustment (reported minus correct basis) and the positive W adjustment match the Worksheet for Basis Adjustments and the code W instructions.
 
 ### 8b(h) — Line 8b, column (h) totals
 Status: **MATCH**
 
-Model: Sums (d) minus (e) combined with (g), as the column (h) instructions say.
+Model: Sums (d) − (e) + (g), matching the column (h) instructions.
 
 ### 9(d) — Line 9, column (d) totals
 Status: **MATCH**
 
-Model: Sums proceeds of Box E transactions for line 9 ('Box E or Box K checked'). Box K is refused.
+Model: Sums proceeds of Box E detail transactions, matching line 9; Box K is refused.
 
 ### 9(e) — Line 9, column (e) totals
 Status: **MATCH**
 
-Model: Column (e) is the correct basis for noncovered Box E transactions, as the column (e) instructions say.
+Model: For Box E, column (e) is the correct basis, matching 'enter the correct basis in column (e)'.
 
 ### 9(g) — Line 9, column (g) totals
 Status: **MATCH**
 
-Model: There is no basis correction in column (g) for Box E, so only the wash-sale adjustment remains. That matches the instructions for code B on Box E.
+Model: No B adjustment applies to Box E, matching 'enter -0- in column (g)'. A W adjustment is entered as a positive amount.
 
 ### 9(h) — Line 9, column (h) totals
 Status: **MATCH**
 
-Model: Sums (d) minus (e) combined with (g), as the column (h) instructions say.
+Model: Sums (d) − (e) + (g), matching the column (h) instructions.
 
 ### 10(d) — Line 10, column (d) totals
 Status: **MATCH**
 
-Model: Sums net proceeds of Box F transactions for line 10. Box L is refused.
+Model: Sums proceeds of Box F detail transactions, using net proceeds when there is no report, matching line 10; Box L is refused.
 
 ### 10(e) — Line 10, column (e) totals
 Status: **MATCH**
 
-Model: Column (e) is the correct basis for Box F transactions. Code B on Box F is refused.
+Model: Box F has no broker report, so column (e) is the correct basis from records.
 
 ### 10(g) — Line 10, column (g) totals
 Status: **MATCH**
 
-Model: Only the wash-sale adjustment applies. Other codes are refused.
+Model: Code B is refused for Box F and W is entered as a positive amount, consistent with the column (g) instructions.
 
 ### 10(h) — Line 10, column (h) totals
 Status: **MATCH**
 
-Model: Sums (d) minus (e) combined with (g), as the column (h) instructions say.
+Model: Sums (d) − (e) + (g), matching the column (h) instructions.
 
 ### 4 — Line 4: zero only after unsupported source/carryover screening
 Status: **MATCH**
 
-Model: Line 4 ('Short-term gain from Form 6252 and short-term gain or (loss) from Forms 4684, 6781, and 8824') is zero. The other_forms refusal excludes those forms.
+Model: Zero is entered, and the refusal names Forms 6252, 4684, 6781 and 8824, which are the sources line 4 lists.
 
 ### 5 — Line 5: zero only after unsupported source/carryover screening
 Status: **MATCH**
 
-Model: Line 5 (gain or loss from Schedule(s) K-1) is zero. The other_forms refusal excludes K-1 capital gains.
+Model: Zero is entered, and the refusal covers capital gains or losses on a Schedule K-1, which is line 5's source.
 
-### 6 — Line 6: zero only after unsupported source/carryover screening
+### 6 — Short-term capital loss carryover, from line 8 of the Capital Loss Carryover Worksheet (a
 Status: **MATCH**
 
-Model: Line 6 (short-term capital loss carryover) is zero. The carryover refusal excludes prior-year carryovers.
+Model: When the 2024 line 21 showed a loss, the program enters Capital Loss Carryover Worksheet line 8 as a negative amount. This matches 'Enter the amount, if any, from line 8 of your Capital Loss Carryover Worksheet' shown in parentheses; otherwise it enters no carryover.
 
 ### 11 — Line 11: zero only after unsupported source/carryover screening
 Status: **MATCH**
 
-Model: Line 11 (gain from Form 4797, Part I, and Forms 2439, 6252, 4684, 6781, 8824) is zero. The other_forms refusal excludes those forms.
+Model: Zero is entered, and the refusal covers Forms 4797, 2439, 6252, 4684, 6781 and 8824, which are line 11's sources.
 
 ### 12 — Line 12: zero only after unsupported source/carryover screening
 Status: **MATCH**
 
-Model: Line 12 (K-1 long-term gain or loss) is zero. The other_forms refusal excludes it.
+Model: Zero is entered, and the refusal covers Schedule K-1 capital gains or losses, which is line 12's source.
 
-### 14 — Line 14: zero only after unsupported source/carryover screening
+### 14 — Long-term capital loss carryover, from line 13 of the Capital Loss Carryover Worksheet (a
 Status: **MATCH**
 
-Model: Line 14 (long-term capital loss carryover) is zero. The carryover refusal excludes it.
+Model: When the 2024 line 21 showed a loss, the program enters Capital Loss Carryover Worksheet line 13 as a negative amount. This matches 'Enter the amount, if any, from line 13 of your Capital Loss Carryover Worksheet' shown in parentheses.
 
 ### 13 — Capital gain distributions
 Status: **MATCH**
 
-Model: Line 13 'Capital gain distributions' is the Form 1099-DIV box 2a total, plus a zero helper whose refusals screen out unsupported distribution cases. The text says 'Report the total gain (box 2a) on Schedule D, line 13'.
+Model: Enters Form 1099-DIV box 2a capital gain distributions, matching 'Report the total gain (box 2a) on Schedule D, line 13'. Section 1202, section 897, liquidation and unreconciled return-of-capital cases are refused.
 
 ### 7 — Combine the amounts for Schedule D line 7
 Status: **MATCH**
 
-Model: Adds the column (h) amounts on lines 1a through 6. That matches 'Combine lines 1a through 6 in column (h)'.
+Model: Adds column (h) of lines 1a through 6, matching 'Combine lines 1a through 6 in column (h)'.
 
 ### 15 — Combine the amounts for Schedule D line 15
 Status: **MATCH**
 
-Model: Adds lines 8a through 14 in column (h). That matches 'Combine lines 8a through 14 in column (h)'. Line 14 is zero in scope.
+Model: Adds column (h) of lines 8a through 14, matching 'Combine lines 8a through 14 in column (h)'.
 
 ### 16 — Combine the amounts for Schedule D line 16
 Status: **MATCH**
@@ -247,22 +247,22 @@ Model: Matches 'Combine lines 7 and 15'.
 ### 17 — Are lines 15 and 16 both gains?
 Status: **MATCH**
 
-Model: Tests whether lines 15 and 16 are both positive. That matches 'Are lines 15 and 16 both gains?'.
+Model: Tests whether both line 15 and line 16 are positive, matching 'Are lines 15 and 16 both gains?'
 
 ### 20 — Are lines 18 and 19 zero and are you not filing Form 4952?
 Status: **MATCH**
 
-Model: Tests whether lines 18 and 19 are zero and Form 4952 is not being filed. That matches 'Are lines 18 and 19 both zero or blank and you are not filing Form 4952?'. The Form 4952 filing test follows the 'Who Must File' exception.
+Model: Tests whether lines 18 and 19 are zero and Form 4952 is not being filed. This matches 'Are lines 18 and 19 both zero or blank and you are not filing Form 4952?'; the helpers treat skipped lines as zero.
 
 ### 21 — Deductible loss, signed; zero when line 21 is skipped
 Status: **MATCH**
 
-Model: When line 16 is a loss, takes the larger of the signed loss and -$3,000 (-$1,500 for MFS). That matches 'the smaller of ... treat both amounts as positive numbers'. Zero otherwise, since the line does not apply.
+Model: When line 16 is a loss, the program takes the larger of the signed line 16 and −$3,000 (−$1,500 for married filing separately). That is the smaller loss in absolute terms, matching 'treat both amounts as positive numbers'.
 
 ### 22 — Do you have qualified dividends?
 Status: **MATCH**
 
-Model: Tests whether Form 1040 line 3a is above $0. That matches 'Do you have qualified dividends on Form 1040 ... line 3a?'.
+Model: Tests whether Form 1040 line 3a is greater than zero, matching 'Do you have qualified dividends on Form 1040 ... line 3a?'
 
 ## Raw response
 
@@ -271,141 +271,141 @@ Model: Tests whether Form 1040 line 3a is above $0. That matches 'Do you have qu
 lines:
   - key: "1a(d)"
     status: MATCH
-    reason: "Sums proceeds of Box A transactions reported on line 1a: basis reported to the IRS and no adjustments. Line 1a is for short-term Form 1099-B/1099-DA transactions 'for which basis was reported to the IRS and for which you have no adjustments'. Digital assets and failed eligibility are refused."
+    reason: "Sums proceeds of Box A transactions reported on the aggregate route, which matches line 1a's short-term transactions with basis reported to the IRS and no adjustments. The bad_aggregate refusal enforces the Exception 1 conditions, and the digital refusal excludes Form 1099-DA transactions."
   - key: "1a(e)"
     status: MATCH
-    reason: "For Box A, column (e) is the basis shown on the broker report. That matches 'enter the basis shown on Form 1099-B' for covered securities."
+    reason: "For Box A, column (e) is the basis reported on the broker statement. Aggregate entries require no corrections, so that is the correct line 1a basis total."
   - key: "1a(g)"
     status: MATCH
-    reason: "Aggregate-route entries must have code 'none', so column (g) is zero. That matches line 1a's 'no adjustments' requirement."
+    reason: "Aggregate entries must have code 'none', so neither the B nor the W adjustment applies and column (g) sums to zero. That is consistent with line 1a covering transactions 'for which you have no adjustments'."
   - key: "1a(h)"
     status: MATCH
-    reason: "Sums (d) minus (e) plus (g) over the line 1a transactions. That matches 'Subtract the cost or other basis in column (e) from the proceeds (sales price) in column (d)'."
+    reason: "Column (h) per entry is proceeds less column (e) plus column (g), summed. This matches 'Subtract column (e) from column (d) and combine the result with column (g)'."
   - key: "1b(d)"
     status: MATCH
-    reason: "Sums proceeds of Box A transactions reported on Form 8949 for line 1b ('Box A or Box G checked'). Box G digital assets are refused."
+    reason: "Sums proceeds of Box A transactions reported in detail on Form 8949. This matches 'Totals for all transactions reported on Form(s) 8949 with Box A'; Box G (digital assets) is refused."
   - key: "1b(e)"
     status: MATCH
-    reason: "For Box A, column (e) is the reported basis even when it is incorrect. That matches 'enter the basis shown on Form 1099-B ... in column (e), even though that basis is incorrect'."
+    reason: "For Box A, column (e) is the reported basis even if it is incorrect, as the IRS text directs: 'enter the basis shown on Form 1099-B ... in column (e), even though that basis is incorrect.'"
   - key: "1b(g)"
     status: MATCH
-    reason: "Column (g) is reported basis minus correct basis (the Worksheet for Basis Adjustments, lines 3/4) plus the positive wash-sale loss (code W). Other codes are refused."
+    reason: "Column (g) is reported basis minus correct basis under code B, plus a positive wash-sale adjustment under code W. This matches the Worksheet for Basis Adjustments and the code W instructions; other codes are refused."
   - key: "1b(h)"
     status: MATCH
-    reason: "Sums (d) minus (e) combined with (g), as the column (h) instructions say."
+    reason: "Sums (d) − (e) + (g) per entry, matching the column (h) instructions."
   - key: "2(d)"
     status: MATCH
-    reason: "Sums proceeds of Box B transactions for line 2 ('Box B or Box H checked'). Box H is refused as a digital asset."
+    reason: "Sums proceeds of Box B detail transactions, matching line 2 'with Box B ... checked'; Box H is refused."
   - key: "2(e)"
     status: MATCH
-    reason: "For Box B, column (e) is the correct basis from records. That matches 'For noncovered securities, enter the correct basis of the property in column (e)', with -0- in column (g) for code B."
+    reason: "For Box B (basis not reported), column (e) is the correct basis, matching 'enter the correct basis in column (e)'."
   - key: "2(g)"
     status: MATCH
-    reason: "The basis correction applies only to covered boxes, so only the wash-sale adjustment remains for Box B. That matches 'enter the correct basis in column (e), and enter -0- in column (g)' for code B on Box B."
+    reason: "No B adjustment applies to Box B because adjust_b requires basis reported to the IRS, matching 'enter -0- in column (g)'. A W adjustment is entered as a positive amount, per the code W instructions."
   - key: "2(h)"
     status: MATCH
-    reason: "Sums (d) minus (e) combined with (g), as the column (h) instructions say."
+    reason: "Sums (d) − (e) + (g), matching the column (h) instructions."
   - key: "3(d)"
     status: MATCH
-    reason: "Sums net proceeds of Box C transactions for line 3. That matches 'enter in column (d) the net proceeds' when no Form 1099-B was received. Box I is refused."
+    reason: "Sums proceeds of Box C detail transactions, using net proceeds when there is no broker report. This matches line 3 and the column (d) instructions; Box I is refused."
   - key: "3(e)"
     status: MATCH
-    reason: "For Box C, column (e) is the correct basis from records. Code B on Box C is refused."
+    reason: "Box C has no broker basis report, so column (e) is the correct basis from records."
   - key: "3(g)"
     status: MATCH
-    reason: "Only the wash-sale adjustment applies, entered as a positive amount per code W. Other codes are refused."
+    reason: "Code B is refused for Box C and W is entered as a positive amount, consistent with the column (g) instructions."
   - key: "3(h)"
     status: MATCH
-    reason: "Sums (d) minus (e) combined with (g), as the column (h) instructions say."
+    reason: "Sums (d) − (e) + (g), matching the column (h) instructions."
   - key: "8a(d)"
     status: MATCH
-    reason: "Sums proceeds of Box D transactions reported on line 8a: long-term, basis reported to the IRS, no adjustments. That matches the line 8a text and Exception 1."
+    reason: "Sums proceeds of Box D aggregate-route transactions, matching line 8a's long-term transactions with basis reported to the IRS and no adjustments. Exception 1 conditions are enforced by refusal."
   - key: "8a(e)"
     status: MATCH
-    reason: "Column (e) is the reported basis for Box D. That matches the instructions for covered securities."
+    reason: "Column (e) is the reported basis for Box D, which aggregate eligibility requires to be correct."
   - key: "8a(g)"
     status: MATCH
-    reason: "Aggregate entries carry no codes, so column (g) is zero. That is consistent with 'no adjustments'."
+    reason: "Aggregate entries have no codes, so column (g) is zero, consistent with 'for which you have no adjustments'."
   - key: "8a(h)"
     status: MATCH
-    reason: "Sums (d) minus (e) plus (g). That matches the line 8a example, where column (h) is $6,000 minus $2,000."
+    reason: "Sums (d) − (e) + (g), matching the column (h) instructions."
   - key: "8b(d)"
     status: MATCH
-    reason: "Sums proceeds of Box D transactions on Form 8949 for line 8b ('Box D or Box J checked'). Box J is refused."
+    reason: "Sums proceeds of Box D detail transactions, matching line 8b 'with Box D ... checked'; Box J is refused."
   - key: "8b(e)"
     status: MATCH
-    reason: "Column (e) is the reported basis for Box D, even when incorrect, with the correction made in column (g)."
+    reason: "Column (e) is the reported basis for Box D, per 'enter the basis shown on Form 1099-B ... in column (e), even though that basis is incorrect.'"
   - key: "8b(g)"
     status: MATCH
-    reason: "Column (g) is reported basis minus correct basis plus the wash-sale loss. That matches the basis worksheet and the code W instructions."
+    reason: "The B adjustment (reported minus correct basis) and the positive W adjustment match the Worksheet for Basis Adjustments and the code W instructions."
   - key: "8b(h)"
     status: MATCH
-    reason: "Sums (d) minus (e) combined with (g), as the column (h) instructions say."
+    reason: "Sums (d) − (e) + (g), matching the column (h) instructions."
   - key: "9(d)"
     status: MATCH
-    reason: "Sums proceeds of Box E transactions for line 9 ('Box E or Box K checked'). Box K is refused."
+    reason: "Sums proceeds of Box E detail transactions, matching line 9; Box K is refused."
   - key: "9(e)"
     status: MATCH
-    reason: "Column (e) is the correct basis for noncovered Box E transactions, as the column (e) instructions say."
+    reason: "For Box E, column (e) is the correct basis, matching 'enter the correct basis in column (e)'."
   - key: "9(g)"
     status: MATCH
-    reason: "There is no basis correction in column (g) for Box E, so only the wash-sale adjustment remains. That matches the instructions for code B on Box E."
+    reason: "No B adjustment applies to Box E, matching 'enter -0- in column (g)'. A W adjustment is entered as a positive amount."
   - key: "9(h)"
     status: MATCH
-    reason: "Sums (d) minus (e) combined with (g), as the column (h) instructions say."
+    reason: "Sums (d) − (e) + (g), matching the column (h) instructions."
   - key: "10(d)"
     status: MATCH
-    reason: "Sums net proceeds of Box F transactions for line 10. Box L is refused."
+    reason: "Sums proceeds of Box F detail transactions, using net proceeds when there is no report, matching line 10; Box L is refused."
   - key: "10(e)"
     status: MATCH
-    reason: "Column (e) is the correct basis for Box F transactions. Code B on Box F is refused."
+    reason: "Box F has no broker report, so column (e) is the correct basis from records."
   - key: "10(g)"
     status: MATCH
-    reason: "Only the wash-sale adjustment applies. Other codes are refused."
+    reason: "Code B is refused for Box F and W is entered as a positive amount, consistent with the column (g) instructions."
   - key: "10(h)"
     status: MATCH
-    reason: "Sums (d) minus (e) combined with (g), as the column (h) instructions say."
+    reason: "Sums (d) − (e) + (g), matching the column (h) instructions."
   - key: "4"
     status: MATCH
-    reason: "Line 4 ('Short-term gain from Form 6252 and short-term gain or (loss) from Forms 4684, 6781, and 8824') is zero. The other_forms refusal excludes those forms."
+    reason: "Zero is entered, and the refusal names Forms 6252, 4684, 6781 and 8824, which are the sources line 4 lists."
   - key: "5"
     status: MATCH
-    reason: "Line 5 (gain or loss from Schedule(s) K-1) is zero. The other_forms refusal excludes K-1 capital gains."
+    reason: "Zero is entered, and the refusal covers capital gains or losses on a Schedule K-1, which is line 5's source."
   - key: "6"
     status: MATCH
-    reason: "Line 6 (short-term capital loss carryover) is zero. The carryover refusal excludes prior-year carryovers."
+    reason: "When the 2024 line 21 showed a loss, the program enters Capital Loss Carryover Worksheet line 8 as a negative amount. This matches 'Enter the amount, if any, from line 8 of your Capital Loss Carryover Worksheet' shown in parentheses; otherwise it enters no carryover."
   - key: "11"
     status: MATCH
-    reason: "Line 11 (gain from Form 4797, Part I, and Forms 2439, 6252, 4684, 6781, 8824) is zero. The other_forms refusal excludes those forms."
+    reason: "Zero is entered, and the refusal covers Forms 4797, 2439, 6252, 4684, 6781 and 8824, which are line 11's sources."
   - key: "12"
     status: MATCH
-    reason: "Line 12 (K-1 long-term gain or loss) is zero. The other_forms refusal excludes it."
+    reason: "Zero is entered, and the refusal covers Schedule K-1 capital gains or losses, which is line 12's source."
   - key: "14"
     status: MATCH
-    reason: "Line 14 (long-term capital loss carryover) is zero. The carryover refusal excludes it."
+    reason: "When the 2024 line 21 showed a loss, the program enters Capital Loss Carryover Worksheet line 13 as a negative amount. This matches 'Enter the amount, if any, from line 13 of your Capital Loss Carryover Worksheet' shown in parentheses."
   - key: "13"
     status: MATCH
-    reason: "Line 13 'Capital gain distributions' is the Form 1099-DIV box 2a total, plus a zero helper whose refusals screen out unsupported distribution cases. The text says 'Report the total gain (box 2a) on Schedule D, line 13'."
+    reason: "Enters Form 1099-DIV box 2a capital gain distributions, matching 'Report the total gain (box 2a) on Schedule D, line 13'. Section 1202, section 897, liquidation and unreconciled return-of-capital cases are refused."
   - key: "7"
     status: MATCH
-    reason: "Adds the column (h) amounts on lines 1a through 6. That matches 'Combine lines 1a through 6 in column (h)'."
+    reason: "Adds column (h) of lines 1a through 6, matching 'Combine lines 1a through 6 in column (h)'."
   - key: "15"
     status: MATCH
-    reason: "Adds lines 8a through 14 in column (h). That matches 'Combine lines 8a through 14 in column (h)'. Line 14 is zero in scope."
+    reason: "Adds column (h) of lines 8a through 14, matching 'Combine lines 8a through 14 in column (h)'."
   - key: "16"
     status: MATCH
     reason: "Matches 'Combine lines 7 and 15'."
   - key: "17"
     status: MATCH
-    reason: "Tests whether lines 15 and 16 are both positive. That matches 'Are lines 15 and 16 both gains?'."
+    reason: "Tests whether both line 15 and line 16 are positive, matching 'Are lines 15 and 16 both gains?'"
   - key: "20"
     status: MATCH
-    reason: "Tests whether lines 18 and 19 are zero and Form 4952 is not being filed. That matches 'Are lines 18 and 19 both zero or blank and you are not filing Form 4952?'. The Form 4952 filing test follows the 'Who Must File' exception."
+    reason: "Tests whether lines 18 and 19 are zero and Form 4952 is not being filed. This matches 'Are lines 18 and 19 both zero or blank and you are not filing Form 4952?'; the helpers treat skipped lines as zero."
   - key: "21"
     status: MATCH
-    reason: "When line 16 is a loss, takes the larger of the signed loss and -$3,000 (-$1,500 for MFS). That matches 'the smaller of ... treat both amounts as positive numbers'. Zero otherwise, since the line does not apply."
+    reason: "When line 16 is a loss, the program takes the larger of the signed line 16 and −$3,000 (−$1,500 for married filing separately). That is the smaller loss in absolute terms, matching 'treat both amounts as positive numbers'."
   - key: "22"
     status: MATCH
-    reason: "Tests whether Form 1040 line 3a is above $0. That matches 'Do you have qualified dividends on Form 1040 ... line 3a?'."
+    reason: "Tests whether Form 1040 line 3a is greater than zero, matching 'Do you have qualified dividends on Form 1040 ... line 3a?'"
 ```
 ```

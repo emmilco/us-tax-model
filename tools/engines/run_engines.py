@@ -302,16 +302,16 @@ def run_policyengine(cases):
             "qualified_dividend_income": y(dollars(f["qualified_dividends"])),
             "non_qualified_dividend_income": y(dollars(f["ordinary_dividends"] - f["qualified_dividends"])),
             "qualified_reit_and_ptp_income": y(dollars(f["section_199a_dividends"])),
-            "short_term_capital_gains": y(dollars(f["short_term_gain"])),
+            "short_term_capital_gains": y(dollars(f["short_term_gain"] - f.get("capital_loss_carryover_st", 0))),
             # Capital gain distributions enter Schedule D as long-term gain (line 13); the
             # engine's distributions input does not reach income in this version.
-            "long_term_capital_gains": y(dollars(f["long_term_gain"] + f["capital_gain_distributions"])),
+            "long_term_capital_gains": y(dollars(f["long_term_gain"] + f["capital_gain_distributions"] - f.get("capital_loss_carryover_lt", 0))),
             "other_medical_expenses": y(dollars(f["medical"])),
             "real_estate_taxes": y(dollars(f["salt_real_estate"])),
             "deductible_mortgage_interest": y(dollars(f["mortgage_interest"])),
             "charitable_cash_donations": y(dollars(f["cash_gifts"])),
             "charitable_non_cash_donations": y(dollars(f["noncash_gifts"])),
-            "investment_interest_expense": y(dollars(f["investment_interest"])),
+            "investment_interest_expense": y(dollars(f["investment_interest"] + f.get("investment_interest_carryover", 0))),
             # Form 1099-DIV box 2d is a collectibles gain before netting; the engine nets it
             # against the net short-term loss on its own, as the 28% Rate Gain Worksheet does.
             "collectibles_gain_or_loss": y(dollars(f["gain_28pct"])),
@@ -403,9 +403,10 @@ def run_taxcalc(cases):
             e00300=dollars(f["interest"]), e00600=dollars(f["ordinary_dividends"]), e00650=dollars(f["qualified_dividends"]),
             # Distributions enter Schedule D line 13 and net against sales; Tax-Calculator's
             # e01100 is the no-Schedule-D path, so they go into net long-term gain instead.
-            p22250=dollars(f["short_term_gain"]), p23250=dollars(f["long_term_gain"] + f["capital_gain_distributions"]), e01100=0.0,
+            p22250=dollars(f["short_term_gain"] - f.get("capital_loss_carryover_st", 0)),
+            p23250=dollars(f["long_term_gain"] + f["capital_gain_distributions"] - f.get("capital_loss_carryover_lt", 0)), e01100=0.0,
             e17500=dollars(f["medical"]), e18400=dollars(f["salt_income_tax"]), e18500=dollars(f["salt_real_estate"]),
-            e19200=dollars(f["mortgage_interest"] + f["investment_interest"]),
+            e19200=dollars(f["mortgage_interest"] + f["investment_interest"] + f.get("investment_interest_carryover", 0)),
             e19800=dollars(f["cash_gifts"]), e20100=dollars(f["noncash_gifts"]), e07300=dollars(f["foreign_tax"]),
             e02300=dollars(f.get("unemployment", 0)), e03220=dollars(f.get("educator_deduction", 0)), e03290=dollars(f.get("hsa_deduction", 0)),
             tip_income=dollars(f.get("tips", 0)), overtime_income=dollars(f.get("overtime", 0)), auto_loan_interest=dollars(f.get("car_loan_interest", 0)),

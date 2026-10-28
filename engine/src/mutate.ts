@@ -532,6 +532,19 @@ const EQUIVALENT_IF: Record<string, { reason: string; holds: (data: CanonicalDat
       return stop.expr.op === "test" && "all" in stop.expr && i >= 0 && i < j && j < k;
     },
   },
+  "refusal.f4952.f4952.required.1": {
+    reason: "The removed refusal (the alternative-allocation gate, after the unsupported-items gate) is carried by f4952.election, the first operand f4952.required reads: election refuses on the same gates in the same order with the same records, and the any-test returns the first refusal it meets. With the gate No both routes evaluate the same expression; with it Yes both refuse on the same record (the unsupported-items gate first on both); with it unanswered, the unknown election is the first pending value on both, and line 3 reaches the same gate through line 2.",
+    holds: (d) => {
+      const req = findLine(d, "f4952.required"), el = findLine(d, "f4952.election");
+      if (!req || !el || req.expr.op !== "test" || !("any" in req.expr)) return false;
+      const gates = (l: typeof req) => (l.refuses ?? []).map((r) => r.when);
+      if (stableStringify(gates(req)) !== stableStringify(["f4952.unsupported", "f4952.alternative_allocation"])) return false;
+      if (stableStringify(gates(el).slice(0, 2)) !== stableStringify(gates(req))) return false;
+      const strip = (r: unknown) => stableStringify(r);
+      if (strip(req.refuses![0]) !== strip(el.refuses![0]) || strip(req.refuses![1]) !== strip(el.refuses![1])) return false;
+      return operandRefs(d, req.expr)[0] === "f4952.election";
+    },
+  },
   "boundary.s1a.s1a.line10_over": s1aStepSkip("s1a.line10_over", "s1a.line8", "s1a.line9", "s1a.line10_pos", "s1a.line12", "s1a.line13_figured", "s1a.line7", "s1a.line13_amount"),
   "boundary.s1a.s1a.line18_over": s1aStepSkip("s1a.line18_over", "s1a.line16", "s1a.line17", "s1a.line18_pos", "s1a.line20", "s1a.line21_figured", "s1a.line15", "s1a.line21_amount"),
   "boundary.s1a.s1a.line27_over": s1aStepSkip("s1a.line27_over", "s1a.line25", "s1a.line26", "s1a.line27_pos", "s1a.line29", "s1a.line30_figured", "s1a.line24", "s1a.line30_amount"),

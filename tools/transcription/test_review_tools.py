@@ -934,7 +934,7 @@ class InternalAdapterContracts(unittest.TestCase):
         self.assertEqual(result["state"], "pass")
         self.assertEqual(len(result["cases"]), 21)
         self.assertFalse(result["evidence_credit"])
-        self.assertTrue(all(len(test["outputs"]) == 17 for test in result["cases"]))
+        self.assertTrue(all(len(test["outputs"]) == 15 for test in result["cases"]))
 
     def test_refusal_removal_is_caught_by_engineering_cases(self):
         context = json.loads(json.dumps(T.model_type_context()))

@@ -147,9 +147,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   1   Investment interest paid or accrued in 2025
       = $1,000
       cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
-  (helper) Any prior-year disallowed investment interest carryover?
+  (helper) Do you have investment interest expense disallowed in 2024 and carried forward (line 7 of your 2024 Form 4952)?
       = false
-      cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
+      cite: [f4952] p. 1, Part I, line 2, "Disallowed investment interest expense from 2024 Form 4952, line 7" (2025; created 2025-05-28; 5113c166)
   (helper) Any interest expense attributable to royalties, a business, passive activities, tax-exempt income or at-risk limitations; any deductible investment expense other than interest (for example depreciation or depletion on assets that produce investment income, or investment expenses on a Schedule K-1); or any other investment income or expense beyond interest, dividends and securities sales?
       = false
       cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
@@ -165,9 +165,10 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Zero amount
       = $0
       cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
-  2   Prior-year disallowed interest is zero after screening
+  2   Disallowed investment interest expense from 2024 Form 4952, line 7
       = $0
-      cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
+      cite: [f4952] p. 1, Part I, line 2, "Disallowed investment interest expense from 2024 Form 4952, line 7" (2025; created 2025-05-28; 5113c166)
+      note: taken: {"eq":["f4952.carryover",{"const":false}],"op":"test"}
   3   Add lines 1 and 2
       = $1,000
       cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
@@ -213,7 +214,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Filing exception: interest and ordinary dividends less qualified dividends exceed investment interest, with no other deductible expenses or carryover
       = true
       cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
-  (helper) File for an election, or to claim interest when the exception does not apply
+  (helper) File for an election, or to claim interest (including a 2024 carryforward) when the exception does not apply
       = false
       cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
 
@@ -312,6 +313,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Any annuity, rental, royalty, business or pass-through income; a CFC or PFIC holding; a section 911 exclusion; a disposition adjustment; a section 1411 net operating loss; excluded savings bond interest (Form 8815); a deductible investment expense other than investment interest or state and local tax; or another net investment income adjustment?
       = false
       cite: [f8960] Form 8960 (2025), Parts I–III, individual lines 1–17 (2025; created 2025-08-19; 9b323b71)
+  (gate) A capital loss carryover with a 2024 Net Gains and Losses Worksheet line 2(i) amount, on a return whose modified adjusted gross income is over the threshold
+      = false
+      cite: [i8960] p. 9, "capital loss carryforwards must be adjusted"; p. 10, Net Gains and Losses Worksheet, line 2(h), "Enter the amount reported on line 2(i) of this worksheet from your prior tax year return calculations" (2025; printed date 2026-02-04; b10fbb23)
   (helper) Any recovery or refund in 2025 of an amount deducted on an earlier Form 8960 (for example a state or local income tax refund, or a refund of foreign income tax), even if none of it is taxable on Form 1040?
       = false
       cite: [f8960] Form 8960 (2025), Parts I–III, individual lines 1–17 (2025; created 2025-08-19; 9b323b71)
@@ -480,9 +484,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   3   Enter the total of all collectibles gain or (loss) from Form 4684, line 4 (but only if Form 4684, line 15, is more than zero); Form 6252; Form 6781, Part II; and Form 8824
       = $0
       cite: [i1040sd] p. 11, 28% Rate Gain Worksheet, lines 1–7 (2025; printed date 2025-12-11; 650643a6)
-  5   Enter your long-term capital loss carryovers from Schedule D, line 14; and Schedule K-1 (Form 1041), box 11, code D
+  5   Long-term capital loss carryover from Schedule D, line 14 (a loss, negative); Schedule K-1 (Form 1041), box 11, code D is refused by the Schedule D screen
       = $0
-      cite: [i1040sd] p. 11, 28% Rate Gain Worksheet, lines 1–7 (2025; printed date 2025-12-11; 650643a6)
+      cite: [i1040sd] p. 11, "Enter your long-term capital loss carryovers from Schedule D, line 14" (2025; printed date 2025-12-11; 650643a6)
   4   Enter the total of any collectibles gain reported to you on: Form 1099-DIV, box 2d; Form 2439, box 1d; and Schedule K-1 from a partnership, S corporation, estate, or trust
       = $0
       cite: [i1040sd] p. 11, 28% Rate Gain Worksheet, lines 1–7 (2025; printed date 2025-12-11; 650643a6)
@@ -1324,9 +1328,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1? Count section 1256 contracts and a casualty or theft of property whether you held the property directly or through an entity.
       = false
       cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
-  (helper) Is there a capital loss carried into 2025 from any earlier year?
+  (helper) Did line 21 of your 2024 Schedule D show a loss?
       = false
-      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+      cite: [i1040sd] p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, "Use this worksheet to figure your capital loss carryovers from 2024 to 2025 if your 2024 Schedule D, line 21, is a loss", "Otherwise, you don’t have any carryovers" (2025; printed date 2025-12-11; 650643a6)
   (helper) Capital gain distributions, generally Form 1099-DIV box 2a
       = $0
       cite: [i1040sd] p. 11, line 13 (2025; printed date 2025-12-11; 650643a6)
@@ -1348,9 +1352,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Transaction screening dependency
       = false
       cite: [f1040sd] p. 1, Capital Gains and Losses, "Use Form 8949 to list your transactions for lines 1b, 2, 3, 8b, 9, and 10" (2025; created 2025-10-06; 90564c8b)
-  (helper) Schedule D required for entered sales or special distribution gains
+  (helper) Schedule D required for entered sales, special distribution gains or a capital loss carryover
       = true
-      cite: [f1040sd] i1040gi p. 31, Line 7a, "If you sold a capital asset, such as a stock, bond, or digital asset, you must complete and attach Form 8949 and Schedule D", "None of the Form(s) 1099-DIV (or substitute statements) have an amount in box 2b (unrecaptured section 1250 gain), box 2c (section 1202 gain), or box 2d (collectibles (28%) gain)" (2025; created 2025-10-06; 90564c8b)
+      cite: [f1040sd] i1040gi p. 31, Line 7a, "If you sold a capital asset, such as a stock, bond, or digital asset, you must complete and attach Form 8949 and Schedule D", "None of the Form(s) 1099-DIV (or substitute statements) have an amount in box 2b (unrecaptured section 1250 gain), box 2c (section 1202 gain), or box 2d (collectibles (28%) gain)", "You have no capital losses" (2025; created 2025-10-06; 90564c8b)
   (helper) No amount on an inapplicable line
       = $0
       cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
@@ -1392,18 +1396,20 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   5   Line 5: zero only after unsupported source/carryover screening
       = $0
       cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
-  6   Line 6: zero only after unsupported source/carryover screening
+  6   Short-term capital loss carryover, from line 8 of the Capital Loss Carryover Worksheet (a loss, negative)
       = $0
-      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+      cite: [f1040sd] p. 1, Part I, line 6, "Short-term capital loss carryover. Enter the amount, if any, from line 8 of your Capital Loss Carryover Worksheet in the instructions" (2025; created 2025-10-06; 90564c8b)
+      note: taken: {"eq":["sd.carryover",{"const":false}],"op":"test"}
   11  Line 11: zero only after unsupported source/carryover screening
       = $0
       cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
   12  Line 12: zero only after unsupported source/carryover screening
       = $0
       cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
-  14  Line 14: zero only after unsupported source/carryover screening
+  14  Long-term capital loss carryover, from line 13 of the Capital Loss Carryover Worksheet (a loss, negative)
       = $0
-      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+      cite: [f1040sd] p. 1, Part II, line 14, "Long-term capital loss carryover. Enter the amount, if any, from line 13 of your Capital Loss Carryover Worksheet in the instructions" (2025; created 2025-10-06; 90564c8b)
+      note: taken: {"eq":["sd.carryover",{"const":false}],"op":"test"}
   13  Capital gain distributions
       = $0
       cite: [f1040sd] p. 1, Part II, line 13, "Capital gain distributions. See the instructions" (2025; created 2025-10-06; 90564c8b)
@@ -1476,9 +1482,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   12  Enter the total of any unrecaptured section 1250 gain from sales (including installment sales) or other dispositions of section 1250 property held more than 1 year for which you didn’t make an entry in Part I of Form 4797 for the year of sale
       = $0
       cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  16  Enter your long-term capital loss carryovers from Schedule D, line 14; and Schedule K-1 (Form 1041), box 11, code D
+  16  Long-term capital loss carryover from Schedule D, line 14 (a loss, negative); Schedule K-1 (Form 1041), box 11, code D is refused by the Schedule D screen
       = $0
-      cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
+      cite: [i1040sd] p. 13, "Enter your long-term capital loss carryovers from Schedule D, line 14" (2025; printed date 2025-12-11; 650643a6)
   11  Enter the total of any amounts reported to you as “unrecaptured section 1250 gain” on a Schedule K-1, Form 1099-DIV, or Form 2439 from an estate, a trust, a real estate investment trust, or a mutual fund (or other regulated investment company) or in connection with a Form 1099-R
       = $0
       cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
@@ -1502,10 +1508,14 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
 
 Path choices (guard wording per the rendered worksheets in rendered/2025/):
+  sd.line6: chose $0 (guard 1)
+      not taken: guard 0 = false
   sales[a].e: chose $0 (guard 0)
   sales[a].b: chose $0 (guard 1)
       not taken: guard 0 = false
   sales[a].w: chose $0 (guard 1)
+      not taken: guard 0 = false
+  sd.line14: chose $0 (guard 1)
       not taken: guard 0 = false
   sd.to1040: chose $10,000 (guard 1)
       not taken: guard 0 = false
@@ -1542,6 +1552,8 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   sa.saltlimit: chose $40,000 (guard 1)
       not taken: guard 0 = false
+  f4952.line2: chose $0 (guard 1)
+      not taken: guard 0 = false
   sa.line16: chose $0 (guard 1)
       not taken: guard 0 = false
   sa.deduction: chose $6,000 (guard 0)
@@ -1554,8 +1566,12 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   s1a.line36b: chose $0 (guard 0)
   qbi.deduction: chose $0 (guard 0)
   f1040.qbi.deduction: chose $0 (guard 0)
+  g28.sd.line14: chose $0 (guard 1)
+      not taken: guard 0 = false
   sd.line18: chose $0 (guard 0)
   f1040.sd.line18: chose $0 (guard 0)
+  u1250.sd.line14: chose $0 (guard 1)
+      not taken: guard 0 = false
   sd.line19: chose $0 (guard 0)
   f1040.sd.line19: chose $0 (guard 0)
   qdcg.line3: chose $10,000 (guard 0)
@@ -1596,16 +1612,16 @@ Derivations:
   sales[a].bad_code: test(sales[a].code = none; "other" = other; sales[a].has_b = false; true = true)
   sales[a].bad_aggregate: test(sales[a].route = detail; "aggregate" = aggregate)
   sales[a].one: param(sales[a].digital = false; sales[a].special = false; sales[a].bad_code = false; sales[a].bad_aggregate = false; #sales.one = 1)
-  sd.count: sum_over(sd.other_forms = false; sd.carryover = false; sales[a].one = 1)
+  sd.count: sum_over(sd.other_forms = false; sales[a].one = 1)
   sd.screen: test(sd.count = 1; 0 = 0)
   sd.line1a.h: sum_over(sd.screen = false; sales[a].box = D; "A" = A)
   sd.line1b.h: sum_over(sd.screen = false; sales[a].box = D; "A" = A)
   sd.line2.h: sum_over(sd.screen = false; sales[a].box = D; "B" = B)
   sd.line3.h: sum_over(sd.screen = false; sales[a].box = D; "C" = C)
   sd.zero: param(#sales.zero = $0)
-  sd.line4: copy(sd.other_forms = false; sd.carryover = false; sd.zero = $0)
-  sd.line5: copy(sd.other_forms = false; sd.carryover = false; sd.zero = $0)
-  sd.line6: copy(sd.other_forms = false; sd.carryover = false; sd.zero = $0)
+  sd.line4: copy(sd.other_forms = false; sd.zero = $0)
+  sd.line5: copy(sd.other_forms = false; sd.zero = $0)
+  sd.line6: choose(sd.other_forms = false; sd.carryover = false; true = true; sd.carryover = false; false = false; sd.zero = $0)
   sd.line7: sum(sd.line1a.h = $0; sd.line1b.h = $0; sd.line2.h = $0; sd.line3.h = $0; sd.line4 = $0; sd.line5 = $0; sd.line6 = $0)
   sd.line8a.h: sum_over(sd.screen = false; sales[a].box = D; "D" = D; sales[a].route = detail; "aggregate" = aggregate)
   sales[a].covered: test(sales[a].box = D; "A" = A; sales[a].box = D; "D" = D)
@@ -1621,8 +1637,8 @@ Derivations:
   sd.line8b.h: sum_over(sd.screen = false; sales[a].box = D; "D" = D; sales[a].route = detail; "detail" = detail; sales[a].h = $10,000)
   sd.line9.h: sum_over(sd.screen = false; sales[a].box = D; "E" = E)
   sd.line10.h: sum_over(sd.screen = false; sales[a].box = D; "F" = F)
-  sd.line11: copy(sd.other_forms = false; sd.carryover = false; sd.zero = $0)
-  sd.line12: copy(sd.other_forms = false; sd.carryover = false; sd.zero = $0)
+  sd.line11: copy(sd.other_forms = false; sd.zero = $0)
+  sd.line12: copy(sd.other_forms = false; sd.zero = $0)
   div.section1202: test(div.box2c = $0; 0 = $0)
   div.amt: test(div.box13 = $0; 0 = $0)
   div.unsupported: test(div.box2e = $0; 0 = $0; div.box2f = $0; 0 = $0; div.box9 = $0; 0 = $0; div.box10 = $0; 0 = $0; div.box3 = $0; 0 = $0)
@@ -1632,7 +1648,7 @@ Derivations:
   div.screen: param(div.section1202 = false; div.amt = false; div.unsupported = false; div.bad_special = false; div.bad_components = false; #sales.zero = $0)
   sd.div.screen: param(div.section1202 = false; div.amt = false; div.unsupported = false; div.bad_special = false; div.bad_components = false; #sales.zero = $0)
   sd.line13: sum(sd.distributions = $0; div.screen = $0)
-  sd.line14: copy(sd.other_forms = false; sd.carryover = false; sd.zero = $0)
+  sd.line14: choose(sd.other_forms = false; sd.carryover = false; true = true; sd.carryover = false; false = false; sd.zero = $0)
   sd.line15: sum(sd.line8a.h = $0; sd.line8b.h = $10,000; sd.line9.h = $0; sd.line10.h = $0; sd.line11 = $0; sd.line12 = $0; sd.line13 = $0; sd.line14 = $0)
   sd.line16: sum(sd.line7 = $0; sd.line15 = $10,000)
   sd.has_loss: test(sd.line16 = $10,000; 0 = $0)
@@ -1756,7 +1772,7 @@ Derivations:
   sa.line8c: copy(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false; sa.zero = $0)
   sa.line8e: sum(sa.line8a = $0; sa.line8b = $0; sa.line8c = $0)
   f4952.zero: param(#sales.zero = $0)
-  f4952.line2: copy(f4952.carryover = false; f4952.unsupported = false; f4952.alternative_allocation = false; f4952.zero = $0)
+  f4952.line2: choose(f4952.unsupported = false; f4952.alternative_allocation = false; f4952.carryover = false; true = true; f4952.carryover = false; false = false; f4952.zero = $0)
   f4952.line3: sum(f4952.line1 = $1,000; f4952.line2 = $0)
   f4952.line4b: copy(f1040.line3a = $0)
   f4952.sb.line2: sum_over(sb.unsupported = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false; interest[bank].amount = $3,000)
@@ -1773,9 +1789,9 @@ Derivations:
   f4952.line4f: subtract(f4952.line4d = $10,000; f4952.line4e = $10,000)
   f4952.election_limit: sum(f4952.line4b = $0; f4952.line4e = $10,000)
   f4952.bad_election: test(f4952.line4g = $0; f4952.election_limit = $10,000)
-  f4952.election: copy(f4952.carryover = false; f4952.unsupported = false; f4952.alternative_allocation = false; f4952.bad_election = false; f4952.line4g = $0)
+  f4952.election: copy(f4952.unsupported = false; f4952.alternative_allocation = false; f4952.bad_election = false; f4952.line4g = $0)
   f4952.line4h: sum(f4952.line4c = $10,000; f4952.line4f = $0; f4952.election = $0)
-  f4952.line5: copy(f4952.carryover = false; f4952.unsupported = false; f4952.alternative_allocation = false; f4952.zero = $0)
+  f4952.line5: copy(f4952.unsupported = false; f4952.alternative_allocation = false; f4952.zero = $0)
   f4952.line6: subtract_floor0(f4952.line4h = $10,000; f4952.line5 = $0)
   f4952.line8: smaller_of(f4952.line3 = $1,000; f4952.line6 = $10,000)
   sa.f4952.line8: smaller_of(f4952.line3 = $1,000; f4952.line6 = $10,000)
@@ -1856,7 +1872,8 @@ Derivations:
   g28.line2: copy(div.screen = $0)
   g28.line3: copy(div.screen = $0)
   g28.line4: copy(div.box2d = $0)
-  g28.line5: copy(div.screen = $0)
+  g28.sd.line14: choose(sd.other_forms = false; sd.carryover = false; true = true; sd.carryover = false; false = false; sd.zero = $0)
+  g28.line5: copy(sd.line14 = $0)
   g28.sd.line7: sum(sd.line1a.h = $0; sd.line1b.h = $0; sd.line2.h = $0; sd.line3.h = $0; sd.line4 = $0; sd.line5 = $0; sd.line6 = $0)
   g28.sd.zero: param(#sales.zero = $0)
   g28.line6: smaller_of(sd.line7 = $0; sd.zero = $0)
@@ -1879,7 +1896,8 @@ Derivations:
   u1250.line14: sum(g28.line1 = $0; g28.line2 = $0; g28.line3 = $0; g28.line4 = $0)
   u1250.g28.line6: smaller_of(sd.line7 = $0; sd.zero = $0)
   u1250.line15: copy(g28.line6 = $0)
-  u1250.line16: copy(div.screen = $0)
+  u1250.sd.line14: choose(sd.other_forms = false; sd.carryover = false; true = true; sd.carryover = false; false = false; sd.zero = $0)
+  u1250.line16: copy(sd.line14 = $0)
   u1250.combined: sum(u1250.line14 = $0; u1250.line15 = $0; u1250.line16 = $0)
   u1250.line17: subtract_floor0(sd.zero = $0; u1250.combined = $0)
   u1250.line18: subtract_floor0(u1250.line13 = $0; u1250.line17 = $0)
@@ -1887,8 +1905,8 @@ Derivations:
   sd.line19: choose(sd.line17 = true; true = true; u1250.line18 = $0)
   f1040.sd.line19: choose(sd.line17 = true; true = true; u1250.line18 = $0)
   f4952.exception: test(f4952.line4c = $10,000; f4952.line1 = $1,000; f4952.line5 = $0; 0 = $0; f4952.carryover = false; false = false)
-  f4952.required: test(f4952.carryover = false; f4952.unsupported = false; f4952.alternative_allocation = false; f4952.election = $0; 0 = $0; f4952.line1 = $1,000; 0 = $0; f4952.exception = true; false = false)
-  sd.f4952.required: test(f4952.carryover = false; f4952.unsupported = false; f4952.alternative_allocation = false; f4952.election = $0; 0 = $0; f4952.line1 = $1,000; 0 = $0; f4952.exception = true; false = false)
+  f4952.required: test(f4952.unsupported = false; f4952.alternative_allocation = false; f4952.election = $0; 0 = $0; f4952.line3 = $1,000; 0 = $0; f4952.exception = true; false = false)
+  sd.f4952.required: test(f4952.unsupported = false; f4952.alternative_allocation = false; f4952.election = $0; 0 = $0; f4952.line3 = $1,000; 0 = $0; f4952.exception = true; false = false)
   sd.filing4952: copy(f4952.required = false)
   f1040.sd.filing4952: copy(f4952.required = false)
   f1040.gate.sdtw: test(f1040.gate.qdcg_applies = true; true = true; sd.line17 = true; true = true; sd.line18 = $0; 0 = $0; sd.line19 = $0; 0 = $0; sd.filing4952 = false; true = true)
@@ -1983,7 +2001,8 @@ Derivations:
   f8960.line4c: sum(f8960.line4a = $0; f8960.line4b = $0)
   f8960.f1040.line7a: copy(sd.to1040 = $10,000)
   f8960.line5a: copy(f1040.line7a = $10,000)
-  f8960.line5b: copy(f8960.unsupported = false; f8960.refund = false; f8960.zero = $0)
+  f8960.carryforward_adj: test(sd.carryover = false; true = true)
+  f8960.line5b: copy(f8960.carryforward_adj = false; f8960.unsupported = false; f8960.refund = false; f8960.zero = $0)
   f8960.line5c: copy(f8960.unsupported = false; f8960.refund = false; f8960.zero = $0)
   f8960.line5d: sum(f8960.line5a = $10,000; f8960.line5b = $0; f8960.line5c = $0)
   f8960.line6: copy(f8960.unsupported = false; f8960.refund = false; f8960.zero = $0)

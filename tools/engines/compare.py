@@ -606,7 +606,7 @@ def derived_features(case, values):
     def m(line):
         v = values.get(line, {}).get("value", {})
         return v.get("cents") if v.get("kind") == "money" else None
-    if (m("f4952.line1") or 0) > (m("f4952.line8") or 0):
+    if (m("f4952.line3") or 0) > (m("f4952.line8") or 0):
         feats.add("investment_interest_limited")
     it = values.get("sa.itemizes", {}).get("value", {})
     feats.add("itemizes" if it.get("kind") == "bool" and it["value"] else "does_not_itemize")

@@ -142,6 +142,8 @@ def build_info(case, year):
         other["iraDeduction"] = dollars(f["ira_contribution"])
     if f.get("foreign_tax"):
         other["foreignTaxCredit"] = dollars(f["foreign_tax"])
+    if f.get("investment_interest_carryover"):
+        other["priorYearInvestmentInterestCarryover"] = dollars(f["investment_interest_carryover"])
     info = {
         "f1099s": f1099s, "w2s": w2s(inputs, TAXPAYER, "PRIMARY", box12) + (w2s(inputs, SPOUSE, "SPOUSE") if joint else []),
         "realEstate": [], "estimatedTaxes": [], "f3921s": [], "scheduleK1Form1065s": [], "questions": {}, "stateResidencies": [{"state": "TX"}],
@@ -159,6 +161,11 @@ def build_info(case, year):
                            if f.get("car_loan_interest") else []},
         "otherIncome": other,
     }
+    if f.get("capital_loss_carryover_st") or f.get("capital_loss_carryover_lt"):
+        # Entered as positive amounts; UsTaxes puts them on Schedule D lines 4 and 11 (ScheduleD.ts `l4`, `l11`),
+        # where the form prints them on lines 6 and 14; lines 7 and 15 are the same either way.
+        info["priorYearCapitalLossCarryover"] = {"shortTerm": dollars(f["capital_loss_carryover_st"]),
+                                                 "longTerm": dollars(f["capital_loss_carryover_lt"])}
     if hsa:
         family = inputs.get(f"{HSA}.months_family", 0) == 12
         info["healthSavingsAccounts"].append({"label": "HSA", "coverageType": "family" if family else "self-only",

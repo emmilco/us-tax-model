@@ -1,0 +1,92 @@
+{
+ "bank": null,
+ "errors": [
+  {
+   "line": "u1250.line16",
+   "message": "model changed a published result type"
+  }
+ ],
+ "failures": [],
+ "family": "claude",
+ "form": "u1250",
+ "lines": [
+  {
+   "candidate": "u1250.line3",
+   "handle": "3",
+   "open_at_triage": true,
+   "project": "u1250.line3",
+   "shown_when": "u1250.reached",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "u1250.line6",
+   "handle": "6",
+   "open_at_triage": true,
+   "project": "u1250.line6",
+   "shown_when": "u1250.reached",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "u1250.line7",
+   "handle": "7",
+   "open_at_triage": true,
+   "project": "u1250.line7",
+   "shown_when": "u1250.reached",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "u1250.line9",
+   "handle": "9",
+   "open_at_triage": true,
+   "project": "u1250.line9",
+   "shown_when": "u1250.reached",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "u1250.line16",
+   "handle": "16",
+   "open_at_triage": true,
+   "project": "u1250.line16",
+   "shown_when": "u1250.reached",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "u1250.line15",
+   "handle": "15",
+   "open_at_triage": true,
+   "project": "u1250.line15",
+   "shown_when": "u1250.reached",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "u1250.line17",
+   "handle": "17",
+   "open_at_triage": true,
+   "project": "u1250.line17",
+   "shown_when": "u1250.reached",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "u1250.line18",
+   "handle": "18",
+   "open_at_triage": true,
+   "project": "u1250.line18",
+   "shown_when": "u1250.reached",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  }
+ ],
+ "log_sha256_at_triage": "4123e60adcd6a0f43a0c42d18255f2f29bfd1a0207d2ac4724476ad0dc68d6b8",
+ "policy": "executable-triage-v2",
+ "response_sha256": "5e235b5967d15974dac731811fdea000b793f129a121b303b3fb32b7ba9c6bb5",
+ "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
+ "state": "invalid",
+ "subject_sha256": "d22f54615d647315065968d83cdb2845effb876bc11cf8b106d4480ec0d13cc8"
+}

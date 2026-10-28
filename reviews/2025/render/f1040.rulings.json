@@ -180,6 +180,13 @@
   {
    "printed": "Dependents (separated spouses)",
    "restated": "Enter the amount from eic helper \"A married filer filing separately or as head of household who passes Step 3, questions 4 and 5, and answers No to question 6 (the special rule for separated spouses)\".",
+   "model": "The form says 'Check if your filing status is MFS or HOH and you lived apart from your spouse for the last 6 months of 2025, or you are legally separated... and you did not live in the same household as your spouse at the end of 2025.' The program also requires an EIC qualifying child, passing EIC Steps 1–2, and answering No to Step 3 question 6. So a separated MFS or HOH filer who fails those EIC conditions would not get the box checked.",
+   "ruling": "Ruling: ambiguity; amb.2025.separated_spouses_box (owner's decision, 2026-10-26). The model compares the restatement with the printed box wording, which has no EIC conditions. The only instructions for the box are the earned income credit's: i1040gi p. 41, Step 3, question 6, \"No. Check the box in the Dependents section that discusses the special rule for separated spouses on page 1 of Form 1040 or 1040-SR\", and p. 44, Special rule for separated spouses, \"If you meet these requirements, make sure you check the box in the Dependents section\". The register records both readings (checked only under the EIC special rule, or whenever the printed condition holds) and the first is chosen; the rendered English states the chosen reading (eic.separated_box) accurately. Unchanged by Stage 20; same ruling as round 4.",
+   "context": "73c2021c48e2994e1ffde7231c6eb692b2845fb2bc66b8e4f9f16cdfd2ff2674"
+  },
+  {
+   "printed": "Dependents (separated spouses)",
+   "restated": "Enter the amount from eic helper \"A married filer filing separately or as head of household who passes Step 3, questions 4 and 5, and answers No to question 6 (the special rule for separated spouses)\".",
    "model": "The program checks the box only for filers who have passed EIC Steps 1 and 2, have a qualifying child and are not a qualifying child of another person. The form's box text, 'Check if your filing status is MFS or HOH and you lived apart from your spouse for the last 6 months of 2025, or you are legally separated ...', sets no EIC-eligibility conditions.",
    "ruling": "Ruling: project retained (owner's ruling on the separated-spouses box, Stage 9). The box is encoded for the EIC's special rule for separated spouses (i1040gi p. 41, Step 3, question 6), where it is reached only after Steps 1 and 2; the Dependents-section box for other uses is tracked in TASKS.md T-027."
   }

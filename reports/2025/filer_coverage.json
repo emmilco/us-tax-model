@@ -5,12 +5,12 @@
  "microdata_filing_units_unweighted_total": 157629339.546014,
  "raking_max_share_error": 7.132191345032847e-07,
  "coverage": {
-  "central": 0.6855938015922951,
-  "low": 0.6567762423575846,
+  "central": 0.7104683754294547,
+  "low": 0.6917877568702803,
   "high": 0.7647929821379662,
   "microdata_part": 0.7647929821379662,
-  "irs_only_independent_factor": 0.8964436358656547,
-  "irs_only_share_sum": 0.10801673978038158
+  "irs_only_independent_factor": 0.9289682201886216,
+  "irs_only_share_sum": 0.07300522526768594
  },
  "categories": [
   {
@@ -108,18 +108,6 @@
    "microdata_share_before_raking": 0.0012370253462135729,
    "share": 0.010853103599370926,
    "basis": "IRS count, overlap from microdata"
-  },
-  {
-   "id": "capital_loss_carryover",
-   "group": "capital_loss_carryover",
-   "label": "Capital loss carryover from 2024",
-   "gates": [
-    "sd.carryover"
-   ],
-   "irs_returns": 5622923.0,
-   "microdata_share_before_raking": null,
-   "share": 0.03501151451269565,
-   "basis": "IRS count only (independence assumed)"
   },
   {
    "id": "form5329",
@@ -223,26 +211,21 @@
   {
    "group": "schedule_e",
    "label": "Rental, royalty, partnership, S corporation, estate (Schedule E)",
-   "coverage_after": 0.738224119793352
+   "coverage_after": 0.7650082160519875
   },
   {
    "group": "schedule1_misc",
    "label": "Other Schedule 1 income and adjustments",
-   "coverage_after": 0.79128905873272
+   "coverage_after": 0.8199984462334089
   },
   {
    "group": "premium_tax_credit",
    "label": "Premium tax credit (Form 8962)",
-   "coverage_after": 0.8398479865563306
+   "coverage_after": 0.8703191791270134
   },
   {
    "group": "education",
    "label": "Education credits (Form 8863)",
-   "coverage_after": 0.8809063920838406
-  },
-  {
-   "group": "capital_loss_carryover",
-   "label": "Capital loss carryover",
    "coverage_after": 0.9128672573113619
   },
   {
@@ -278,17 +261,16 @@
  ],
  "coverage_without_model_only_category": {},
  "gain_if_covered_alone": {
-  "married": 0.02072136235033495,
-  "premium_tax_credit": 0.04427372385482553,
-  "education": 0.03326176174784923,
-  "other_credits": 0.006322667842075025,
-  "schedule_e": 0.0526303182010569,
-  "capital_loss_carryover": 0.02487457383715963,
-  "retirement_penalty": 0.022453530798438814,
-  "schedule1_misc": 0.038700495076577135,
-  "schedule2_misc": 0.00310388941391182,
-  "other_earned_income": 0.005454394225542725,
-  "farm": 0.003560106755365555
+  "married": 0.02147317057350273,
+  "premium_tax_credit": 0.04588005403242501,
+  "education": 0.0344685581725388,
+  "other_credits": 0.006552065581261535,
+  "schedule_e": 0.05453984062253281,
+  "retirement_penalty": 0.023268185202334646,
+  "schedule1_misc": 0.04010461850955038,
+  "schedule2_misc": 0.0032165040936674716,
+  "other_earned_income": 0.0056522894392759815,
+  "farm": 0.003689273819228678
  },
  "gates_mapped": [
   "retirement.special",
@@ -298,8 +280,7 @@
   "sa.excluded_income",
   "scope.credits",
   "scope.other_income",
-  "scope.schedule1",
-  "sd.carryover"
+  "scope.schedule1"
  ],
  "gates_unmeasured": [
   "asset.bonus_mixed",
@@ -307,7 +288,9 @@
   "asset.s179_bad",
   "asset.screened",
   "carloan.refi_nested",
-  "dependent.dc_no_tin",
+  "clcw.bad",
+  "clcw.spouse_screen",
+  "dependent.claimed_no_tin",
   "dependent.divorced_rule",
   "dependent.income_exception",
   "dependent.married",
@@ -330,7 +313,6 @@
   "f4952.alternative_allocation",
   "f4952.bad_dividends",
   "f4952.bad_election",
-  "f4952.carryover",
   "f4952.unsupported",
   "f5695.ac_no_qmid",
   "f5695.business_use",
@@ -356,11 +338,15 @@
   "f8889.unsupported",
   "f8959.unsupported",
   "f8960.bad_allocation",
+  "f8960.carryforward_adj",
   "f8960.refund",
   "f8960.unsupported",
   "ftc.needs1116",
   "gift.section_b",
   "gift.special",
+  "household.credit_disallowed",
+  "household.filer_under16",
+  "household.hoh_community_property",
   "household.hoh_fails",
   "household.roster_bad",
   "ira.both_kinds",
@@ -370,6 +356,7 @@
   "ira.kbh_short",
   "ira.less_gate",
   "ira.over_comp",
+  "ira.se_capital_gate",
   "ira.special_gate",
   "oi8z.additional_tax",
   "oi8z.figured",
@@ -394,8 +381,8 @@
   "refund.box8",
   "refund.exc_tax",
   "refund.exc_who",
+  "refund.line5e_bad",
   "refund.not_2024",
-  "refund.other",
   "retirement.annuity_rollover",
   "retirement.bad_code",
   "s1.alimony_unsupported",
@@ -409,6 +396,7 @@
   "s179.mfs",
   "s179.multi",
   "s179.orphan",
+  "s179.over_limit",
   "s1a.senior_decedent",
   "s1a.spouse_senior_decedent",
   "s8812.combat_pay",

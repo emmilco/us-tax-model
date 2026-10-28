@@ -1,5 +1,136 @@
 Values sheet — tax year 2025 (not a complete return for all filers)
 
+== Capital Loss Carryover Worksheet—Lines 6 and 14 ==
+  (helper) Year parameter sales.zero
+      = $0
+      cite: [i1040sd] p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 3, "If zero or less, enter -0-" (2025; printed date 2025-12-11; 650643a6)
+  (gate) Is either of these true: the 2024 return these figures come from was a joint return, and for 2025 you are not filing a joint return with the same spouse; or, on this 2025 joint return, you and your spouse each filed a separate 2024 return whose Schedule D line 21 showed a loss?
+      = UNKNOWN (no input supplied for clcw.spouse_screen)
+      cite: [i1040sd] p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, "If you and your spouse once filed a joint return and are filing separate returns for 2025, any capital loss carryover from the joint return can be deducted only on the return of the spouse who actually had the loss"; p550 p. 103, Joint and separate returns, "combine your separate capital loss carryovers" (2025; printed date 2025-12-11; 650643a6)
+  (helper) The amount on line 11 of your 2024 Form 1040 or 1040-SR (adjusted gross income)
+      = UNKNOWN (no input supplied for clcw.prior_11)
+      cite: [i1040sd] p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 1, "Enter the amount from your 2024 Form 1040, 1040-SR, or 1040-NR, line 15" (2025; printed date 2025-12-11; 650643a6)
+      note: Interpretation amb.2025.clcw_line1_signed: The second. Both lines are printed on the 2024 return, so nothing is computed by hand, and their difference is the amount the worksheet describes (2024 Form 1040 line 15 subtracts line 14 from line 11, archived under sources/2024). Owner's decision D2(a), 2026-10-27. (i1040sd, p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 1, "If the amount would have been a loss if you could enter a negative number on that line, enclose the amount in parentheses")
+  (helper) The amount on line 14 of your 2024 Form 1040 or 1040-SR (your deductions)
+      = UNKNOWN (no input supplied for clcw.prior_14)
+      cite: [i1040sd] p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 1, "If the amount would have been a loss if you could enter a negative number on that line, enclose the amount in parentheses" (2025; printed date 2025-12-11; 650643a6)
+      note: Interpretation amb.2025.clcw_line1_signed: The second. Both lines are printed on the 2024 return, so nothing is computed by hand, and their difference is the amount the worksheet describes (2024 Form 1040 line 15 subtracts line 14 from line 11, archived under sources/2024). Owner's decision D2(a), 2026-10-27. (i1040sd, p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 1, "If the amount would have been a loss if you could enter a negative number on that line, enclose the amount in parentheses")
+  (helper) The amount on line 7 of your 2024 Schedule D (net short-term capital gain or loss)
+      = UNKNOWN (no input supplied for clcw.prior_sd7)
+      cite: [i1040sd] p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 5, "Enter the loss from your 2024 Schedule D, line 7, as a positive amount", and line 10, "Enter any gain from your 2024 Schedule D, line 7" (2025; printed date 2025-12-11; 650643a6)
+  (helper) The amount on line 15 of your 2024 Schedule D (net long-term capital gain or loss)
+      = UNKNOWN (no input supplied for clcw.prior_sd15)
+      cite: [i1040sd] p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 6, "Enter any gain from your 2024 Schedule D, line 15", and line 9, "Enter the loss from your 2024 Schedule D, line 15, as a positive amount" (2025; printed date 2025-12-11; 650643a6)
+  (helper) The loss on line 21 of your 2024 Schedule D, as a positive amount
+      = UNKNOWN (no input supplied for clcw.prior_sd21)
+      cite: [i1040sd] p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 2, "Enter the loss from your 2024 Schedule D, line 21, as a positive amount" (2025; printed date 2025-12-11; 650643a6)
+      note: Interpretation amb.2025.clcw_line2_printed: The first (clcw.line2, refused on clcw.bad; the lower bound is $1,500 because the 2024 status is not asked). The worksheet names the printed line, and the second reading needs the 2024 filing status as another question. The $3,000 bound applies whatever the 2024 status was, since a 2024 return married filing separately can precede a 2025 single return and its $1,500 limit cannot be assumed. Owner's decision D2(b), 2026-10-27. (p550, p. 102, Capital Losses, "whether or not you claimed it and whether or not you filed a return for the current year")
+  (helper) Line 16 of the 2024 Schedule D (lines 7 and 15 combined)
+      = UNKNOWN (no input supplied for clcw.prior_sd7)
+      cite: [i1040sd] p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, "if your 2024 Schedule D, line 21, is a loss and (a) that loss is a smaller loss than the loss on your 2024 Schedule D, line 16" (2025; printed date 2025-12-11; 650643a6)
+  (helper) The loss on line 16 of the 2024 Schedule D, as a positive amount
+      = UNKNOWN (no input supplied for clcw.prior_sd7)
+      cite: [i1040sd] p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, "that loss is a smaller loss than the loss on your 2024 Schedule D, line 16" (2025; printed date 2025-12-11; 650643a6)
+  (helper) The $3,000 limit on the deductible capital loss
+      = $3,000
+      cite: [i1040sd] p. 3, Capital Losses, "You can deduct capital losses up to the amount of your capital gains plus $3,000 ($1,500 if married filing separately)" (2025; printed date 2025-12-11; 650643a6)
+  (helper) The $1,500 limit on the deductible capital loss for a married person filing separately
+      = $1,500
+      cite: [i1040sd] p. 3, Capital Losses, "You can deduct capital losses up to the amount of your capital gains plus $3,000 ($1,500 if married filing separately)" (2025; printed date 2025-12-11; 650643a6)
+  (helper) The least loss any 2024 Schedule D line 21 can show (the smaller of the line 16 loss and $1,500)
+      = UNKNOWN (no input supplied for clcw.prior_sd7)
+      cite: [i1040sd] p. 3, Capital Losses, "You can deduct capital losses up to the amount of your capital gains plus $3,000 ($1,500 if married filing separately)" (2025; printed date 2025-12-11; 650643a6)
+      note: Interpretation amb.2025.clcw_line2_printed: The first (clcw.line2, refused on clcw.bad; the lower bound is $1,500 because the 2024 status is not asked). The worksheet names the printed line, and the second reading needs the 2024 filing status as another question. The $3,000 bound applies whatever the 2024 status was, since a 2024 return married filing separately can precede a 2025 single return and its $1,500 limit cannot be assumed. Owner's decision D2(b), 2026-10-27. (p550, p. 102, Capital Losses, "whether or not you claimed it and whether or not you filed a return for the current year")
+  (gate) The loss entered for 2024 Schedule D line 21 is more than $3,000, more than the loss on 2024 Schedule D line 16, or less than the smaller of that loss and $1,500
+      = UNKNOWN (no input supplied for clcw.prior_sd21)
+      cite: [i1040sd] p. 3, Capital Losses, "You can deduct capital losses up to the amount of your capital gains plus $3,000 ($1,500 if married filing separately)" (2025; printed date 2025-12-11; 650643a6)
+      note: Interpretation amb.2025.clcw_line2_printed: The first (clcw.line2, refused on clcw.bad; the lower bound is $1,500 because the 2024 status is not asked). The worksheet names the printed line, and the second reading needs the 2024 filing status as another question. The $3,000 bound applies whatever the 2024 status was, since a 2024 return married filing separately can precede a 2025 single return and its $1,500 limit cannot be assumed. Owner's decision D2(b), 2026-10-27. (p550, p. 102, Capital Losses, "whether or not you claimed it and whether or not you filed a return for the current year")
+  (helper) The worksheet applies (the 2024 line 21 loss is smaller than the line 16 loss, or 2024 taxable income would be less than zero)
+      = UNKNOWN (no input supplied for clcw.prior_sd21)
+      cite: [i1040sd] p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, "(a) that loss is a smaller loss than the loss on your 2024 Schedule D, line 16", "if the amount on your 2024 Form 1040, 1040-SR or 1040-NR, line 15 would be less than zero if you could enter a negative amount on that line", "Otherwise, you don’t have any carryovers" (2025; printed date 2025-12-11; 650643a6)
+  (helper) The worksheet applies and line 7 of the 2024 Schedule D is a loss
+      = UNKNOWN (no input supplied for clcw.prior_sd21)
+      cite: [i1040sd] p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, "If line 7 of your 2024 Schedule D is a loss, go to line 5" (2025; printed date 2025-12-11; 650643a6)
+  (helper) The worksheet applies and line 15 of the 2024 Schedule D is a loss
+      = UNKNOWN (no input supplied for clcw.prior_sd21)
+      cite: [i1040sd] p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, "If line 15 of your 2024 Schedule D is a loss, go to line 9" (2025; printed date 2025-12-11; 650643a6)
+  1   Your 2024 taxable income (2024 Form 1040 line 15), negative if it would have been a loss
+      = UNKNOWN (no input supplied for clcw.spouse_screen)
+      cite: [i1040sd] p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 1, "Enter the amount from your 2024 Form 1040, 1040-SR, or 1040-NR, line 15. If the amount would have been a loss if you could enter a negative number on that line, enclose the amount in parentheses" (2025; printed date 2025-12-11; 650643a6)
+      note: Interpretation amb.2025.clcw_line1_signed: The second. Both lines are printed on the 2024 return, so nothing is computed by hand, and their difference is the amount the worksheet describes (2024 Form 1040 line 15 subtracts line 14 from line 11, archived under sources/2024). Owner's decision D2(a), 2026-10-27. (i1040sd, p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 1, "If the amount would have been a loss if you could enter a negative number on that line, enclose the amount in parentheses")
+  2   Enter the loss from your 2024 Schedule D, line 21, as a positive amount
+      = UNKNOWN (no input supplied for clcw.prior_sd21)
+      cite: [i1040sd] p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 2, "Enter the loss from your 2024 Schedule D, line 21, as a positive amount" (2025; printed date 2025-12-11; 650643a6)
+      note: Interpretation amb.2025.clcw_line2_printed: The first (clcw.line2, refused on clcw.bad; the lower bound is $1,500 because the 2024 status is not asked). The worksheet names the printed line, and the second reading needs the 2024 filing status as another question. The $3,000 bound applies whatever the 2024 status was, since a 2024 return married filing separately can precede a 2025 single return and its $1,500 limit cannot be assumed. Owner's decision D2(b), 2026-10-27. (p550, p. 102, Capital Losses, "whether or not you claimed it and whether or not you filed a return for the current year")
+  (helper) Lines 1 and 2 combined
+      = UNKNOWN (no input supplied for clcw.spouse_screen)
+      cite: [i1040sd] p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 3, "Combine lines 1 and 2" (2025; printed date 2025-12-11; 650643a6)
+  3   Combine lines 1 and 2. If zero or less, enter -0-
+      = UNKNOWN (no input supplied for clcw.spouse_screen)
+      cite: [i1040sd] p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 3, "Combine lines 1 and 2. If zero or less, enter -0-" (2025; printed date 2025-12-11; 650643a6)
+  4   Enter the smaller of line 2 or line 3
+      = UNKNOWN (no input supplied for clcw.prior_sd21)
+      cite: [i1040sd] p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 4, "Enter the smaller of line 2 or line 3" (2025; printed date 2025-12-11; 650643a6)
+  (helper) Line 7 of your 2024 Schedule D is a loss
+      = UNKNOWN (no input supplied for clcw.prior_sd7)
+      cite: [i1040sd] p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, "If line 7 of your 2024 Schedule D is a loss, go to line 5" (2025; printed date 2025-12-11; 650643a6)
+  (helper) Line 15 of your 2024 Schedule D is a loss
+      = UNKNOWN (no input supplied for clcw.prior_sd15)
+      cite: [i1040sd] p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, "If line 15 of your 2024 Schedule D is a loss, go to line 9" (2025; printed date 2025-12-11; 650643a6)
+  5   Enter the loss from your 2024 Schedule D, line 7, as a positive amount (zero if line 7 is not a loss)
+      = UNKNOWN (no input supplied for clcw.prior_sd7)
+      cite: [i1040sd] p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 5, "Enter the loss from your 2024 Schedule D, line 7, as a positive amount", and "If line 7 of your 2024 Schedule D is a loss, go to line 5" (2025; printed date 2025-12-11; 650643a6)
+  6   Enter any gain from your 2024 Schedule D, line 15. If a loss, enter -0-
+      = UNKNOWN (no input supplied for clcw.prior_sd15)
+      cite: [i1040sd] p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 6, "Enter any gain from your 2024 Schedule D, line 15. If a loss, enter -0-" (2025; printed date 2025-12-11; 650643a6)
+  7   Add lines 4 and 6
+      = UNKNOWN (no input supplied for clcw.prior_sd21)
+      cite: [i1040sd] p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 7, "Add lines 4 and 6" (2025; printed date 2025-12-11; 650643a6)
+  8   Short-term capital loss carryover for 2025. Subtract line 7 from line 5. If zero or less, enter -0-
+      = UNKNOWN (no input supplied for clcw.prior_sd7)
+      cite: [i1040sd] p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 8, "Short-term capital loss carryover for 2025. Subtract line 7 from line 5. If zero or less, enter -0-. If more than zero, also enter this amount on Schedule D, line 6" (2025; printed date 2025-12-11; 650643a6)
+  9   Enter the loss from your 2024 Schedule D, line 15, as a positive amount
+      = UNKNOWN (no input supplied for clcw.prior_sd15)
+      cite: [i1040sd] p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 9, "Enter the loss from your 2024 Schedule D, line 15, as a positive amount" (2025; printed date 2025-12-11; 650643a6)
+  10  Enter any gain from your 2024 Schedule D, line 7. If a loss, enter -0-
+      = UNKNOWN (no input supplied for clcw.prior_sd7)
+      cite: [i1040sd] p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 10, "Enter any gain from your 2024 Schedule D, line 7. If a loss, enter -0-" (2025; printed date 2025-12-11; 650643a6)
+  11  Subtract line 5 from line 4. If zero or less, enter -0-
+      = UNKNOWN (no input supplied for clcw.prior_sd21)
+      cite: [i1040sd] p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 11, "Subtract line 5 from line 4. If zero or less, enter -0-" (2025; printed date 2025-12-11; 650643a6)
+  12  Add lines 10 and 11
+      = UNKNOWN (no input supplied for clcw.prior_sd7)
+      cite: [i1040sd] p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 12, "Add lines 10 and 11" (2025; printed date 2025-12-11; 650643a6)
+  13  Long-term capital loss carryover for 2025. Subtract line 12 from line 9. If zero or less, enter -0-
+      = UNKNOWN (no input supplied for clcw.prior_sd15)
+      cite: [i1040sd] p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 13, "Long-term capital loss carryover for 2025. Subtract line 12 from line 9. If zero or less, enter -0-. If more than zero, also enter this amount on Schedule D, line 14" (2025; printed date 2025-12-11; 650643a6)
+  (helper) Notice: the carryover is figured from the 2024 amounts you entered. If you did not file a 2024 return, or your 2024 Schedule D left out a capital loss carried into 2024, they must be the amounts a correct 2024 return would have shown.
+      = false
+      cite: [p550] p. 102, Capital Losses, "you must take the current year's allowable deduction into account, whether or not you claimed it and whether or not you filed a return for the current year" (2025 returns; printed date 2026-03-05; 83552968)
+
+== Capital loss carryover to 2026 (Capital Loss Carryover Worksheet applied to this return) ==
+  (helper) Year parameter sales.zero
+      = $0
+      cite: [i1040sd] p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 3, "If zero or less, enter -0-" (2025; printed date 2025-12-11; 650643a6)
+  (helper) Schedule D line 16 is a loss that is more than the loss on line 21, or taxable income would be less than zero, so a carryover to 2026 is figured
+      = false
+      cite: [i1040sd] p. 14, Line 21, "You have a capital loss carryover from 2025 to 2026 if you have a loss on line 16 and either", "That loss is more than the loss on line 21", "The amount on Form 1040, 1040-SR, or 1040-NR, line 15, would be less than zero if you could enter a negative amount on that line" (2025; printed date 2025-12-11; 650643a6)
+      note: Interpretation amb.2025.clcw_to_2026: The second. The archived 2024 and 2025 editions of the worksheet differ only in their years (sources/2024/i1040sd p. 11, sources/2025/i1040sd p. 10), and the lines give Pub. 550's rule, "the amount of your total net loss that is more than the lesser of" the allowable deduction and taxable income increased by it (checked by brute force over random cases in the Stage 20 premise map and its verification). The figures are the inputs the 2026 return needs. Owner's decision D4, 2026-10-27. (i1040sd, p. 14, Line 21, "If you want to figure your carryover to 2026 now, see Pub. 550")
+  (helper) Schedule D line 16 and line 7 are losses
+      = false
+      cite: [i1040sd] p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, "If line 7 of your 2024 Schedule D is a loss, go to line 5" (2025; printed date 2025-12-11; 650643a6)
+      note: Interpretation amb.2025.clcw_to_2026: The second. The archived 2024 and 2025 editions of the worksheet differ only in their years (sources/2024/i1040sd p. 11, sources/2025/i1040sd p. 10), and the lines give Pub. 550's rule, "the amount of your total net loss that is more than the lesser of" the allowable deduction and taxable income increased by it (checked by brute force over random cases in the Stage 20 premise map and its verification). The figures are the inputs the 2026 return needs. Owner's decision D4, 2026-10-27. (i1040sd, p. 14, Line 21, "If you want to figure your carryover to 2026 now, see Pub. 550")
+  (helper) Schedule D line 16 and line 15 are losses
+      = false
+      cite: [i1040sd] p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, "If line 15 of your 2024 Schedule D is a loss, go to line 9" (2025; printed date 2025-12-11; 650643a6)
+      note: Interpretation amb.2025.clcw_to_2026: The second. The archived 2024 and 2025 editions of the worksheet differ only in their years (sources/2024/i1040sd p. 11, sources/2025/i1040sd p. 10), and the lines give Pub. 550's rule, "the amount of your total net loss that is more than the lesser of" the allowable deduction and taxable income increased by it (checked by brute force over random cases in the Stage 20 premise map and its verification). The figures are the inputs the 2026 return needs. Owner's decision D4, 2026-10-27. (i1040sd, p. 14, Line 21, "If you want to figure your carryover to 2026 now, see Pub. 550")
+  (helper) Lines 1 and 2 combined
+      = $114,250
+      cite: [i1040sd] p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 3, "Combine lines 1 and 2" (2025; printed date 2025-12-11; 650643a6)
+  (helper) Notice: if your spouse died in 2025, the part of these carryovers that came from your spouse's losses does not carry over to 2026; it can be deducted only on this return.
+      = false
+      cite: [p550] p. 103, Decedent's capital loss, "can be deducted only on the final income tax return filed for the decedent" (2025 returns; printed date 2026-03-05; 83552968)
+
 == Form 1099-DIV — distribution components and scope screening ==
   (helper) Unrecaptured section 1250 gain, box 2b
       = $0
@@ -809,9 +940,12 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   1   Investment interest paid or accrued in 2025
       = $0
       cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
-  (helper) Any prior-year disallowed investment interest carryover?
+  (helper) Do you have investment interest expense disallowed in 2024 and carried forward (line 7 of your 2024 Form 4952)?
       = false
-      cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
+      cite: [f4952] p. 1, Part I, line 2, "Disallowed investment interest expense from 2024 Form 4952, line 7" (2025; created 2025-05-28; 5113c166)
+  (helper) The amount on line 7 of your 2024 Form 4952
+      = UNKNOWN (no input supplied for f4952.prior_7)
+      cite: [f4952] p. 1, Part I, line 2, "Disallowed investment interest expense from 2024 Form 4952, line 7" (2025; created 2025-05-28; 5113c166)
   (helper) Any interest expense attributable to royalties, a business, passive activities, tax-exempt income or at-risk limitations; any deductible investment expense other than interest (for example depreciation or depletion on assets that produce investment income, or investment expenses on a Schedule K-1); or any other investment income or expense beyond interest, dividends and securities sales?
       = false
       cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
@@ -827,9 +961,10 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Zero amount
       = $0
       cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
-  2   Prior-year disallowed interest is zero after screening
+  2   Disallowed investment interest expense from 2024 Form 4952, line 7
       = $0
-      cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
+      cite: [f4952] p. 1, Part I, line 2, "Disallowed investment interest expense from 2024 Form 4952, line 7" (2025; created 2025-05-28; 5113c166)
+      note: taken: {"eq":["f4952.carryover",{"const":false}],"op":"test"}
   3   Add lines 1 and 2
       = $0
       cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
@@ -878,7 +1013,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Filing exception: interest and ordinary dividends less qualified dividends exceed investment interest, with no other deductible expenses or carryover
       = false
       cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
-  (helper) File for an election, or to claim interest when the exception does not apply
+  (helper) File for an election, or to claim interest (including a 2024 carryforward) when the exception does not apply
       = false
       cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
 
@@ -1585,6 +1720,12 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Any annuity, rental, royalty, business or pass-through income; a CFC or PFIC holding; a section 911 exclusion; a disposition adjustment; a section 1411 net operating loss; excluded savings bond interest (Form 8815); a deductible investment expense other than investment interest or state and local tax; or another net investment income adjustment?
       = false
       cite: [f8960] Form 8960 (2025), Parts I–III, individual lines 1–17 (2025; created 2025-08-19; 9b323b71)
+  (gate) Was there an amount on line 2(i) of the Net Gains and Losses Worksheet (Form 8960 instructions) when you figured your 2024 net investment income tax?
+      = UNKNOWN (no input supplied for f8960.prior_2i)
+      cite: [i8960] p. 10, Net Gains and Losses Worksheet, line 2(h), "Enter the amount reported on line 2(i) of this worksheet from your prior tax year return calculations"; p. 9, "capital loss carryforwards must be adjusted" (2025; printed date 2026-02-04; b10fbb23)
+  (gate) A capital loss carryover with a 2024 Net Gains and Losses Worksheet line 2(i) amount, on a return whose modified adjusted gross income is over the threshold
+      = false
+      cite: [i8960] p. 9, "capital loss carryforwards must be adjusted"; p. 10, Net Gains and Losses Worksheet, line 2(h), "Enter the amount reported on line 2(i) of this worksheet from your prior tax year return calculations" (2025; printed date 2026-02-04; b10fbb23)
   (helper) Any recovery or refund in 2025 of an amount deducted on an earlier Form 8960 (for example a state or local income tax refund, or a refund of foreign income tax), even if none of it is taxable on Form 1040?
       = false
       cite: [f8960] Form 8960 (2025), Parts I–III, individual lines 1–17 (2025; created 2025-08-19; 9b323b71)
@@ -1825,28 +1966,10 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       note: taken: {"eq":["ftc.has_tax",{"const":false}],"op":"test"}
 
 == 28% Rate Gain Worksheet — distribution-only path ==
-  1   Enter the total of all collectibles gain or (loss) from items you reported on Form 8949, Part II
-      = $0
-      cite: [i1040sd] p. 11, 28% Rate Gain Worksheet, lines 1–7 (2025; printed date 2025-12-11; 650643a6)
-  2   Enter as a positive number the total of: any section 1202 exclusion you reported in column (g) of Form 8949, Part II, with code “Q” in column (f), that is 50% of the gain; 2/3 of any such exclusion that is 60% of the gain; and 1/3 of any such exclusion that is 75% of the gain. Don’t make an entry for any section 1202 exclusion that is 100% of the gain
-      = $0
-      cite: [i1040sd] p. 11, 28% Rate Gain Worksheet, lines 1–7 (2025; printed date 2025-12-11; 650643a6)
-  3   Enter the total of all collectibles gain or (loss) from Form 4684, line 4 (but only if Form 4684, line 15, is more than zero); Form 6252; Form 6781, Part II; and Form 8824
-      = $0
-      cite: [i1040sd] p. 11, 28% Rate Gain Worksheet, lines 1–7 (2025; printed date 2025-12-11; 650643a6)
-  5   Enter your long-term capital loss carryovers from Schedule D, line 14; and Schedule K-1 (Form 1041), box 11, code D
-      = $0
-      cite: [i1040sd] p. 11, 28% Rate Gain Worksheet, lines 1–7 (2025; printed date 2025-12-11; 650643a6)
-  4   Enter the total of any collectibles gain reported to you on: Form 1099-DIV, box 2d; Form 2439, box 1d; and Schedule K-1 from a partnership, S corporation, estate, or trust
-      = $0
-      cite: [i1040sd] p. 11, 28% Rate Gain Worksheet, lines 1–7 (2025; printed date 2025-12-11; 650643a6)
-  6   If Schedule D, line 7, is a (loss), enter that (loss) here. Otherwise, enter -0-
-      = $0
-      cite: [i1040sd] p. 11, 28% Rate Gain Worksheet, lines 1–7 (2025; printed date 2025-12-11; 650643a6)
+  (helper) Schedule D line 17 is Yes, so the worksheet is reached
+      = false
+      cite: [i1040sd] p. 11, Line 18, "If you checked “Yes” on line 17, complete the 28% Rate Gain Worksheet in these instructions" (2025; printed date 2025-12-11; 650643a6)
   (helper) Add g28.line1, g28.line2, g28.line3, g28.line4, g28.line5, g28.line6
-      = $0
-      cite: [i1040sd] p. 11, 28% Rate Gain Worksheet, lines 1–7 (2025; printed date 2025-12-11; 650643a6)
-  7   Combine lines 1 through 6. If zero or less, enter -0-. If more than zero, also enter this amount on Schedule D, line 18
       = $0
       cite: [i1040sd] p. 11, 28% Rate Gain Worksheet, lines 1–7 (2025; printed date 2025-12-11; 650643a6)
 
@@ -4699,9 +4822,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1? Count section 1256 contracts and a casualty or theft of property whether you held the property directly or through an entity.
       = false
       cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
-  (helper) Is there a capital loss carried into 2025 from any earlier year?
+  (helper) Did line 21 of your 2024 Schedule D show a loss?
       = false
-      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+      cite: [i1040sd] p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, "Use this worksheet to figure your capital loss carryovers from 2024 to 2025 if your 2024 Schedule D, line 21, is a loss", "Otherwise, you don’t have any carryovers" (2025; printed date 2025-12-11; 650643a6)
   (helper) Capital gain distributions, generally Form 1099-DIV box 2a
       = $0
       cite: [i1040sd] p. 11, line 13 (2025; printed date 2025-12-11; 650643a6)
@@ -4726,9 +4849,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Transaction screening dependency
       = false
       cite: [f1040sd] p. 1, Capital Gains and Losses, "Use Form 8949 to list your transactions for lines 1b, 2, 3, 8b, 9, and 10" (2025; created 2025-10-06; 90564c8b)
-  (helper) Schedule D required for entered sales or special distribution gains
+  (helper) Schedule D required for entered sales, special distribution gains or a capital loss carryover
       = false
-      cite: [f1040sd] i1040gi p. 31, Line 7a, "If you sold a capital asset, such as a stock, bond, or digital asset, you must complete and attach Form 8949 and Schedule D", "None of the Form(s) 1099-DIV (or substitute statements) have an amount in box 2b (unrecaptured section 1250 gain), box 2c (section 1202 gain), or box 2d (collectibles (28%) gain)" (2025; created 2025-10-06; 90564c8b)
+      cite: [f1040sd] i1040gi p. 31, Line 7a, "If you sold a capital asset, such as a stock, bond, or digital asset, you must complete and attach Form 8949 and Schedule D", "None of the Form(s) 1099-DIV (or substitute statements) have an amount in box 2b (unrecaptured section 1250 gain), box 2c (section 1202 gain), or box 2d (collectibles (28%) gain)", "You have no capital losses" (2025; created 2025-10-06; 90564c8b)
   (helper) No amount on an inapplicable line
       = $0
       cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
@@ -4866,18 +4989,26 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   5   Line 5: zero only after unsupported source/carryover screening
       = $0
       cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
-  6   Line 6: zero only after unsupported source/carryover screening
+  (helper) Line 8 of the Capital Loss Carryover Worksheet, held as a loss (negative)
+      = UNKNOWN (no input supplied for clcw.prior_sd7)
+      cite: [f1040sd] p. 1, Part I, line 6, "Short-term capital loss carryover. Enter the amount, if any, from line 8 of your Capital Loss Carryover Worksheet in the instructions" (2025; created 2025-10-06; 90564c8b)
+  6   Short-term capital loss carryover, from line 8 of the Capital Loss Carryover Worksheet (a loss, negative)
       = $0
-      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+      cite: [f1040sd] p. 1, Part I, line 6, "Short-term capital loss carryover. Enter the amount, if any, from line 8 of your Capital Loss Carryover Worksheet in the instructions" (2025; created 2025-10-06; 90564c8b)
+      note: taken: {"eq":["sd.carryover",{"const":false}],"op":"test"}
   11  Line 11: zero only after unsupported source/carryover screening
       = $0
       cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
   12  Line 12: zero only after unsupported source/carryover screening
       = $0
       cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
-  14  Line 14: zero only after unsupported source/carryover screening
+  (helper) Line 13 of the Capital Loss Carryover Worksheet, held as a loss (negative)
+      = UNKNOWN (no input supplied for clcw.prior_sd15)
+      cite: [f1040sd] p. 1, Part II, line 14, "Long-term capital loss carryover. Enter the amount, if any, from line 13 of your Capital Loss Carryover Worksheet in the instructions" (2025; created 2025-10-06; 90564c8b)
+  14  Long-term capital loss carryover, from line 13 of the Capital Loss Carryover Worksheet (a loss, negative)
       = $0
-      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+      cite: [f1040sd] p. 1, Part II, line 14, "Long-term capital loss carryover. Enter the amount, if any, from line 13 of your Capital Loss Carryover Worksheet in the instructions" (2025; created 2025-10-06; 90564c8b)
+      note: taken: {"eq":["sd.carryover",{"const":false}],"op":"test"}
   13  Capital gain distributions
       = $0
       cite: [f1040sd] p. 1, Part II, line 13, "Capital gain distributions. See the instructions" (2025; created 2025-10-06; 90564c8b)
@@ -5367,66 +5498,18 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       note: taken: {"eq":["ssb.has_benefits",{"const":false}],"op":"test"}
 
 == Unrecaptured Section 1250 Gain Worksheet — distribution-only path ==
-  1   If you have a section 1250 property in Part III of Form 4797 for which you made an entry in Part I of Form 4797 (but not on Form 6252), enter the smaller of line 22 or line 24 of Form 4797 for that property
-      = $0
-      cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  2   Enter the amount from Form 4797, line 26g, for the property for which you made an entry on line 1
-      = $0
-      cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  3   Subtract line 2 from line 1
-      = $0
-      cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  4   Enter the total unrecaptured section 1250 gain included on line 26 or line 37 of Form(s) 6252 from installment sales of trade or business property held more than 1 year
-      = $0
-      cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  5   Enter the total of any amounts reported to you on a Schedule K-1 from a partnership or an S corporation as “unrecaptured section 1250 gain”
-      = $0
-      cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  6   Add lines 3 through 5
-      = $0
-      cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  7   Enter the smaller of line 6 or the gain from Form 4797, line 7
-      = $0
-      cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  8   Enter the amount, if any, from Form 4797, line 8
-      = $0
-      cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  9   Subtract line 8 from line 7. If zero or less, enter -0-
-      = $0
-      cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  10  Enter the amount of any gain from the sale or exchange of an interest in a partnership attributable to unrecaptured section 1250 gain
-      = $0
-      cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  12  Enter the total of any unrecaptured section 1250 gain from sales (including installment sales) or other dispositions of section 1250 property held more than 1 year for which you didn’t make an entry in Part I of Form 4797 for the year of sale
-      = $0
-      cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  16  Enter your long-term capital loss carryovers from Schedule D, line 14; and Schedule K-1 (Form 1041), box 11, code D
-      = $0
-      cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  11  Enter the total of any amounts reported to you as “unrecaptured section 1250 gain” on a Schedule K-1, Form 1099-DIV, or Form 2439 from an estate, a trust, a real estate investment trust, or a mutual fund (or other regulated investment company) or in connection with a Form 1099-R
-      = $0
-      cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  13  Add lines 9 through 12
-      = $0
-      cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  14  If you had any section 1202 gain or collectibles gain or (loss), enter the total of lines 1 through 4 of the 28% Rate Gain Worksheet. Otherwise, enter -0-
-      = $0
-      cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  15  Enter the (loss), if any, from Schedule D, line 7. If Schedule D, line 7, is zero or a gain, enter -0-
-      = $0
-      cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
+  (helper) Schedule D line 17 is Yes, so the worksheet is reached
+      = false
+      cite: [i1040sd] p. 11, Line 19, "If you checked “Yes” on line 17, complete the Unrecaptured Section 1250 Gain Worksheet in these instructions" (2025; printed date 2025-12-11; 650643a6)
   (helper) Add u1250.line14, u1250.line15, u1250.line16
-      = $0
-      cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  17  Combine lines 14 through 16. If the result is a (loss), enter it as a positive amount. If the result is zero or a gain, enter -0-
-      = $0
-      cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  18  Unrecaptured section 1250 gain. Subtract line 17 from line 13. If zero or less, enter -0-. If more than zero, enter the result here and on Schedule D, line 19
       = $0
       cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
 
 Path choices (guard wording per the rendered worksheets in rendered/2025/):
-  eic.top_limit: chose $61,555 (guard 0)
+  sd.line6: chose $0 (guard 1)
+      not taken: guard 0 = false
+  sd.line14: chose $0 (guard 1)
+      not taken: guard 0 = false
   f1040.line1e: chose $0 (guard 1)
       not taken: guard 0 = false
   ssb.line18: chose $0 (guard 1)
@@ -5460,25 +5543,9 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   s1.sli.deduction: chose $0 (guard 1)
       not taken: guard 0 = false
-  eic.limit_other: chose $19,104 (guard 0)
-  eic.limit_joint: chose $26,214 (guard 0)
-  eic.limit: chose $19,104 (guard 0)
-  person[taxpayer].eic_se: chose $0 (guard 1)
-      not taken: guard 0 = false
-  eic.earned_for_limit: chose $130,000 (guard 0)
-  eic.line1: chose $130,000 (guard 0)
-  eic.line1_table: chose UNKNOWN (no band for 13000000 cents) (guard 0)
-  eic.line2: chose UNKNOWN (no band for 13000000 cents) (guard 0)
-  eic.threshold_other: chose $10,620 (guard 0)
-  eic.threshold_joint: chose $17,730 (guard 0)
-  eic.line5_threshold: chose $10,620 (guard 0)
-  eic.line5: chose UNKNOWN (no band for 13000000 cents) (guard 0)
-  eic.after_line4: chose UNKNOWN (no band for 13000000 cents) (guard 1)
-      not taken: guard 0 = false
-  eic.line6: chose UNKNOWN (no band for 13000000 cents) (guard 0)
-  eic.credit: chose $0 (guard 1)
-      not taken: guard 0 = false
   sa.saltlimit: chose $40,000 (guard 1)
+      not taken: guard 0 = false
+  f4952.line2: chose $0 (guard 1)
       not taken: guard 0 = false
   sa.line16: chose $0 (guard 1)
       not taken: guard 0 = false
@@ -5498,6 +5565,29 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   qbi.deduction: chose $0 (guard 1)
       not taken: guard 0 = false
   f1040.qbi.deduction: chose $0 (guard 1)
+      not taken: guard 0 = false
+  sd.line21: chose $0 (guard 1)
+      not taken: guard 0 = false
+  clcw26.sd.line21: chose $0 (guard 1)
+      not taken: guard 0 = false
+  eic.top_limit: chose $61,555 (guard 0)
+  eic.limit_other: chose $19,104 (guard 0)
+  eic.limit_joint: chose $26,214 (guard 0)
+  eic.limit: chose $19,104 (guard 0)
+  person[taxpayer].eic_se: chose $0 (guard 1)
+      not taken: guard 0 = false
+  eic.earned_for_limit: chose $130,000 (guard 0)
+  eic.line1: chose $130,000 (guard 0)
+  eic.line1_table: chose UNKNOWN (no band for 13000000 cents) (guard 0)
+  eic.line2: chose UNKNOWN (no band for 13000000 cents) (guard 0)
+  eic.threshold_other: chose $10,620 (guard 0)
+  eic.threshold_joint: chose $17,730 (guard 0)
+  eic.line5_threshold: chose $10,620 (guard 0)
+  eic.line5: chose UNKNOWN (no band for 13000000 cents) (guard 0)
+  eic.after_line4: chose UNKNOWN (no band for 13000000 cents) (guard 1)
+      not taken: guard 0 = false
+  eic.line6: chose UNKNOWN (no band for 13000000 cents) (guard 0)
+  eic.credit: chose $0 (guard 1)
       not taken: guard 0 = false
   sd.line18: chose $0 (guard 1)
       not taken: guard 0 = false
@@ -5590,6 +5680,8 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   f8995.line16: chose $0 (guard 1)
       not taken: guard 0 = false
   ftc.f1040.line16: chose $20,267 (guard 1)
+      not taken: guard 0 = false
+  g28.sd.line14: chose $0 (guard 1)
       not taken: guard 0 = false
   person[taxpayer].ira_line2: chose $89,000 (guard 1)
       not taken: guard 0 = false
@@ -5702,8 +5794,6 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   s8812.s3.line5a: chose $0 (guard 1)
       not taken: guard 0 = false
-  sd.line21: chose $0 (guard 1)
-      not taken: guard 0 = false
   sdtw.line4: chose $0 (guard 1)
       not taken: guard 0 = false
   sdtw.sd.line18: chose $0 (guard 1)
@@ -5763,6 +5853,8 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   ssb.line10: chose $9,000 (guard 0)
   ssb.line16: chose UNKNOWN (no input supplied for ssb.pub915) (guard 1)
       not taken: guard 0 = false
+  u1250.sd.line14: chose $0 (guard 1)
+      not taken: guard 0 = false
   person[taxpayer].educator_eligible_amount: chose UNKNOWN (no input supplied for person[taxpayer].eligible_educator)
   person[taxpayer].se_line4c: chose $0 (guard 1)
       not taken: guard 0 = false
@@ -5785,10 +5877,51 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   person[taxpayer].w2[emp_a].g_counted: chose UNKNOWN (no input supplied for person[taxpayer].w2[emp_a].box12_g)
 
 Derivations:
-  div.box1a: copy(sb.ordinary_dividends = $0)
-  div.box1b: copy(f1040.line3a = $0)
-  div.box2a: copy(sd.distributions = $0)
-  div.box5: copy(qbi.dividends = $0)
+  clcw.zero: param(#sales.zero = $0)
+  clcw.prior_16: sum(clcw.prior_sd7 = UNKNOWN (no input supplied for clcw.prior_sd7); clcw.prior_sd15 = UNKNOWN (no input supplied for clcw.prior_sd15))
+  clcw.prior_loss: subtract_floor0(clcw.zero = $0; clcw.prior_16 = UNKNOWN (no input supplied for clcw.prior_sd7))
+  clcw.prior_limit: param(#clcw.prior_limit = $3,000)
+  clcw.prior_limit_mfs: param(#clcw.prior_limit_mfs = $1,500)
+  clcw.prior_floor: smaller_of(clcw.prior_loss = UNKNOWN (no input supplied for clcw.prior_sd7); clcw.prior_limit_mfs = $1,500)
+  clcw.bad: test(clcw.prior_sd21 = UNKNOWN (no input supplied for clcw.prior_sd21); clcw.prior_limit = $3,000; clcw.prior_sd21 = UNKNOWN (no input supplied for clcw.prior_sd21); clcw.prior_loss = UNKNOWN (no input supplied for clcw.prior_sd7); clcw.prior_sd21 = UNKNOWN (no input supplied for clcw.prior_sd21); clcw.prior_floor = UNKNOWN (no input supplied for clcw.prior_sd7))
+  clcw.applies: test(clcw.prior_sd21 = UNKNOWN (no input supplied for clcw.prior_sd21); clcw.prior_loss = UNKNOWN (no input supplied for clcw.prior_sd7); clcw.prior_11 = UNKNOWN (no input supplied for clcw.prior_11); clcw.prior_14 = UNKNOWN (no input supplied for clcw.prior_14))
+  clcw.st_loss: test(clcw.prior_sd7 = UNKNOWN (no input supplied for clcw.prior_sd7); 0 = $0)
+  clcw.show_st: test(clcw.applies = UNKNOWN (no input supplied for clcw.prior_sd21); true = true; clcw.st_loss = UNKNOWN (no input supplied for clcw.prior_sd7); true = true)
+  clcw.lt_loss: test(clcw.prior_sd15 = UNKNOWN (no input supplied for clcw.prior_sd15); 0 = $0)
+  clcw.show_lt: test(clcw.applies = UNKNOWN (no input supplied for clcw.prior_sd21); true = true; clcw.lt_loss = UNKNOWN (no input supplied for clcw.prior_sd15); true = true)
+  clcw.line1: gate(clcw.spouse_screen = UNKNOWN (no input supplied for clcw.spouse_screen))
+  clcw.line2: gate(clcw.bad = UNKNOWN (no input supplied for clcw.prior_sd21))
+  clcw.combined: sum(clcw.line1 = UNKNOWN (no input supplied for clcw.spouse_screen); clcw.line2 = UNKNOWN (no input supplied for clcw.prior_sd21))
+  clcw.line3: subtract_floor0(clcw.combined = UNKNOWN (no input supplied for clcw.spouse_screen); clcw.zero = $0)
+  clcw.line4: smaller_of(clcw.line2 = UNKNOWN (no input supplied for clcw.prior_sd21); clcw.line3 = UNKNOWN (no input supplied for clcw.spouse_screen))
+  clcw.line5: subtract_floor0(clcw.zero = $0; clcw.prior_sd7 = UNKNOWN (no input supplied for clcw.prior_sd7))
+  clcw.line6: subtract_floor0(clcw.prior_sd15 = UNKNOWN (no input supplied for clcw.prior_sd15); clcw.zero = $0)
+  clcw.line7: sum(clcw.line4 = UNKNOWN (no input supplied for clcw.prior_sd21); clcw.line6 = UNKNOWN (no input supplied for clcw.prior_sd15))
+  clcw.line8: subtract_floor0(clcw.line5 = UNKNOWN (no input supplied for clcw.prior_sd7); clcw.line7 = UNKNOWN (no input supplied for clcw.prior_sd21))
+  clcw.line9: subtract_floor0(clcw.zero = $0; clcw.prior_sd15 = UNKNOWN (no input supplied for clcw.prior_sd15))
+  clcw.line10: subtract_floor0(clcw.prior_sd7 = UNKNOWN (no input supplied for clcw.prior_sd7); clcw.zero = $0)
+  clcw.line11: subtract_floor0(clcw.line4 = UNKNOWN (no input supplied for clcw.prior_sd21); clcw.line5 = UNKNOWN (no input supplied for clcw.prior_sd7))
+  clcw.line12: sum(clcw.line10 = UNKNOWN (no input supplied for clcw.prior_sd7); clcw.line11 = UNKNOWN (no input supplied for clcw.prior_sd21))
+  clcw.line13: subtract_floor0(clcw.line9 = UNKNOWN (no input supplied for clcw.prior_sd15); clcw.line12 = UNKNOWN (no input supplied for clcw.prior_sd7))
+  clcw.figures_notice: test(sd.carryover = false; true = true)
+  clcw26.zero: param(#sales.zero = $0)
+  sd.count: sum_over(sd.other_forms = false)
+  sd.screen: test(sd.count = 0; 0 = 0)
+  sd.line1a.h: sum_over(sd.screen = false)
+  sd.line1b.h: sum_over(sd.screen = false)
+  sd.line2.h: sum_over(sd.screen = false)
+  sd.line3.h: sum_over(sd.screen = false)
+  sd.zero: param(#sales.zero = $0)
+  sd.line4: copy(sd.other_forms = false; sd.zero = $0)
+  sd.line5: copy(sd.other_forms = false; sd.zero = $0)
+  sd.line6: choose(sd.other_forms = false; sd.carryover = false; true = true; sd.carryover = false; false = false; sd.zero = $0)
+  sd.line7: sum(sd.line1a.h = $0; sd.line1b.h = $0; sd.line2.h = $0; sd.line3.h = $0; sd.line4 = $0; sd.line5 = $0; sd.line6 = $0)
+  sd.line8a.h: sum_over(sd.screen = false)
+  sd.line8b.h: sum_over(sd.screen = false)
+  sd.line9.h: sum_over(sd.screen = false)
+  sd.line10.h: sum_over(sd.screen = false)
+  sd.line11: copy(sd.other_forms = false; sd.zero = $0)
+  sd.line12: copy(sd.other_forms = false; sd.zero = $0)
   div.section1202: test(div.box2c = $0; 0 = $0)
   div.amt: test(div.box13 = $0; 0 = $0)
   div.unsupported: test(div.box2e = $0; 0 = $0; div.box2f = $0; 0 = $0; div.box9 = $0; 0 = $0; div.box10 = $0; 0 = $0; div.box3 = $0; 0 = $0)
@@ -5796,13 +5929,16 @@ Derivations:
   div.bad_special: test(div.box2b = $0; sd.distributions = $0; div.box2c = $0; sd.distributions = $0; div.box2d = $0; sd.distributions = $0; div.special_total = $0; sd.distributions = $0)
   div.bad_components: test(f1040.line3a = $0; sb.ordinary_dividends = $0; qbi.dividends = $0; sb.ordinary_dividends = $0)
   div.screen: param(div.section1202 = false; div.amt = false; div.unsupported = false; div.bad_special = false; div.bad_components = false; #sales.zero = $0)
-  eic.age_range_count: sum_over(person[taxpayer].born_before_2001 = UNKNOWN (no input supplied for person[taxpayer].born_before_2001); true = true; person[taxpayer].born_after_1960 = UNKNOWN (no input supplied for person[taxpayer].born_after_1960); true = true)
-  eic.age_range: test(eic.age_range_count = UNKNOWN (no input supplied for person[taxpayer].born_before_2001); 0 = 0)
-  eic.zero: param(#sales.zero = $0)
-  eic.has_qc: test(eic.qc_count = 0; 0 = 0)
-  eic.married_rules: test(f1040.status = single; "mfs" = mfs; f1040.status = single; "hoh" = hoh)
-  eic.limit3_other: param(#eic.limit3.other = $61,555)
-  eic.top_limit: choose(f1040.status = single; "single" = single; eic.limit3_other = $61,555)
+  sd.div.screen: param(div.section1202 = false; div.amt = false; div.unsupported = false; div.bad_special = false; div.bad_components = false; #sales.zero = $0)
+  sd.line13: sum(sd.distributions = $0; div.screen = $0)
+  sd.line14: choose(sd.other_forms = false; sd.carryover = false; true = true; sd.carryover = false; false = false; sd.zero = $0)
+  sd.line15: sum(sd.line8a.h = $0; sd.line8b.h = $0; sd.line9.h = $0; sd.line10.h = $0; sd.line11 = $0; sd.line12 = $0; sd.line13 = $0; sd.line14 = $0)
+  sd.line16: sum(sd.line7 = $0; sd.line15 = $0)
+  sd.has_loss: test(sd.line16 = $0; 0 = $0)
+  clcw26.sd.has_loss: test(sd.line16 = $0; 0 = $0)
+  clcw26.show: test(sd.has_loss = false; true = true)
+  clcw26.show_st: test(clcw26.show = false; true = true)
+  clcw26.show_lt: test(clcw26.show = false; true = true)
   household.under16_count: sum_over(person[taxpayer].under16 = false; true = true)
   household.filer_under16: test(household.under16_count = 0; 0 = 0)
   person[taxpayer].one: param(#person.one = 1)
@@ -5832,29 +5968,6 @@ Derivations:
   ssb.line18: choose(ssb.has_benefits = false; true = true; ssb.has_benefits = false; false = false; ssb.zero = $0)
   f1040.ssb.line18: choose(ssb.has_benefits = false; true = true; ssb.has_benefits = false; false = false; ssb.zero = $0)
   f1040.line6b: copy(ssb.line18 = $0)
-  sd.count: sum_over(sd.other_forms = false; sd.carryover = false)
-  sd.screen: test(sd.count = 0; 0 = 0)
-  sd.line1a.h: sum_over(sd.screen = false)
-  sd.line1b.h: sum_over(sd.screen = false)
-  sd.line2.h: sum_over(sd.screen = false)
-  sd.line3.h: sum_over(sd.screen = false)
-  sd.zero: param(#sales.zero = $0)
-  sd.line4: copy(sd.other_forms = false; sd.carryover = false; sd.zero = $0)
-  sd.line5: copy(sd.other_forms = false; sd.carryover = false; sd.zero = $0)
-  sd.line6: copy(sd.other_forms = false; sd.carryover = false; sd.zero = $0)
-  sd.line7: sum(sd.line1a.h = $0; sd.line1b.h = $0; sd.line2.h = $0; sd.line3.h = $0; sd.line4 = $0; sd.line5 = $0; sd.line6 = $0)
-  sd.line8a.h: sum_over(sd.screen = false)
-  sd.line8b.h: sum_over(sd.screen = false)
-  sd.line9.h: sum_over(sd.screen = false)
-  sd.line10.h: sum_over(sd.screen = false)
-  sd.line11: copy(sd.other_forms = false; sd.carryover = false; sd.zero = $0)
-  sd.line12: copy(sd.other_forms = false; sd.carryover = false; sd.zero = $0)
-  sd.div.screen: param(div.section1202 = false; div.amt = false; div.unsupported = false; div.bad_special = false; div.bad_components = false; #sales.zero = $0)
-  sd.line13: sum(sd.distributions = $0; div.screen = $0)
-  sd.line14: copy(sd.other_forms = false; sd.carryover = false; sd.zero = $0)
-  sd.line15: sum(sd.line8a.h = $0; sd.line8b.h = $0; sd.line9.h = $0; sd.line10.h = $0; sd.line11 = $0; sd.line12 = $0; sd.line13 = $0; sd.line14 = $0)
-  sd.line16: sum(sd.line7 = $0; sd.line15 = $0)
-  sd.has_loss: test(sd.line16 = $0; 0 = $0)
   sd.to1040: choose(sd.has_loss = false; true = true; sd.has_loss = false; false = false; sd.line16 = $0)
   f1040.sd.to1040: choose(sd.has_loss = false; true = true; sd.has_loss = false; false = false; sd.line16 = $0)
   f1040.line7a: copy(sd.to1040 = $0)
@@ -5918,6 +6031,162 @@ Derivations:
   f1040.line10: copy(scope.schedule1 = false; s1.line26 = $0)
   f1040.line11a: subtract(f1040.line9 = $130,000; f1040.line10 = $0)
   f1040.line11b: copy(f1040.line11a = $130,000)
+  clcw26.f1040.line11b: copy(f1040.line11a = $130,000)
+  household.hoh_fails: test(f1040.status = single; "hoh" = hoh)
+  f1040.household.hoh_fails: test(f1040.status = single; "hoh" = hoh)
+  sa.mfs: test(f1040.status = single; "mfs" = mfs)
+  sa.mfs_spouse_itemizes: test(sa.mfs = false; true = true)
+  sa.f1040.line11b: copy(f1040.line11a = $130,000)
+  sa.agi: copy(f1040.line11b = $130,000)
+  sa.zero: param(#sales.zero = $0)
+  sa.agi_floor: subtract_floor0(sa.agi = $130,000; sa.zero = $0)
+  sa.line2: copy(sa.agi_floor = $130,000)
+  sa.line3: multiply_rate(sa.line2 = $130,000; #sa.medical_rate = 75/1000)
+  sa.line4: subtract_floor0(sa.line1 = $0; sa.line3 = $9,750)
+  sa.line5d: sum(sa.line5a = $0; sa.line5b = $0; sa.line5c = $0)
+  sa.saltbase: param(#sa.salt_base = $40,000)
+  sa.saltthreshold: param(#sa.salt_threshold = $500,000)
+  sa.saltexcess: subtract_floor0(sa.agi = $130,000; sa.saltthreshold = $500,000)
+  sa.saltreduction: multiply_rate(sa.saltexcess = $0; #sa.salt_rate = 3/10)
+  sa.saltremaining: subtract_floor0(sa.saltbase = $40,000; sa.saltreduction = $0)
+  sa.saltfloor: param(#sa.salt_floor = $10,000)
+  sa.saltfloor_applied: larger_of(sa.saltremaining = $40,000; sa.saltfloor = $10,000)
+  sa.saltlimit: choose(sa.mfs = false; true = true; sa.mfs = false; false = false; sa.saltfloor_applied = $40,000)
+  sa.line5e: smaller_of(sa.line5d = $0; sa.saltlimit = $40,000)
+  sa.line6: copy(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false; sa.zero = $0)
+  sa.line7: sum(sa.line5e = $0; sa.line6 = $0)
+  sa.line8b: copy(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false; sa.zero = $0)
+  sa.line8c: copy(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false; sa.zero = $0)
+  sa.line8e: sum(sa.line8a = $0; sa.line8b = $0; sa.line8c = $0)
+  f4952.zero: param(#sales.zero = $0)
+  f4952.line2: choose(f4952.unsupported = false; f4952.alternative_allocation = false; f4952.carryover = false; true = true; f4952.carryover = false; false = false; f4952.zero = $0)
+  f4952.line3: sum(f4952.line1 = $0; f4952.line2 = $0)
+  f4952.line4b: copy(f1040.line3a = $0)
+  f4952.sb.line2: sum_over(sb.unsupported = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false)
+  f4952.sb.line6: copy(sb.unsupported = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false; sb.ordinary_dividends = $0)
+  f4952.line4a: sum(sb.line2 = $0; sb.line6 = $0)
+  f4952.bad_dividends: test(f4952.line4b = $0; f4952.line4a = $0)
+  f4952.line4c: subtract(f4952.bad_dividends = false; f4952.line4a = $0; f4952.line4b = $0)
+  f4952.sd.line16: sum(sd.line7 = $0; sd.line15 = $0)
+  f4952.line4d: subtract_floor0(sd.line16 = $0; 0 = $0)
+  sd.net_gain_raw: smaller_of(sd.line15 = $0; sd.line16 = $0)
+  sd.net_gain: subtract_floor0(sd.net_gain_raw = $0; 0 = $0)
+  f4952.sd.net_gain: subtract_floor0(sd.net_gain_raw = $0; 0 = $0)
+  f4952.line4e: smaller_of(f4952.line4d = $0; sd.net_gain = $0)
+  f4952.line4f: subtract(f4952.line4d = $0; f4952.line4e = $0)
+  f4952.election_limit: sum(f4952.line4b = $0; f4952.line4e = $0)
+  f4952.bad_election: test(f4952.line4g = $0; f4952.election_limit = $0)
+  f4952.election: copy(f4952.unsupported = false; f4952.alternative_allocation = false; f4952.bad_election = false; f4952.line4g = $0)
+  f4952.line4h: sum(f4952.line4c = $0; f4952.line4f = $0; f4952.election = $0)
+  f4952.line5: copy(f4952.unsupported = false; f4952.alternative_allocation = false; f4952.zero = $0)
+  f4952.line6: subtract_floor0(f4952.line4h = $0; f4952.line5 = $0)
+  f4952.line8: smaller_of(f4952.line3 = $0; f4952.line6 = $0)
+  sa.f4952.line8: smaller_of(f4952.line3 = $0; f4952.line6 = $0)
+  sa.line9: copy(f4952.line8 = $0)
+  sa.line10: sum(sa.line8e = $0; sa.line9 = $0)
+  sa.line12: sum_over(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false)
+  sa.line13: copy(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false; sa.zero = $0)
+  sa.line14: sum(sa.line11 = $0; sa.line12 = $0; sa.line13 = $0)
+  sa.line15: copy(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false; sa.zero = $0)
+  sa.s1.has_gambling: test(s1.gambling_winnings = $0; #sales.zero = $0)
+  sa.line16: choose(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false; s1.has_gambling = false; true = true; s1.has_gambling = false; false = false; sa.zero = $0)
+  sa.line17: sum(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false; sa.line4 = $0; sa.line7 = $0; sa.line10 = $0; sa.line14 = $0; sa.line15 = $0; sa.line16 = $0)
+  sa.mfs_spouse_extra: test(f1040.status = single; "mfs" = mfs)
+  sa.standardbase: param(#sa.standard_base = $15,750)
+  sa.extra: param(#sa.standard_extra = $2,000)
+  sa.boxes_age65: sum_over(person[taxpayer].age65 = false; true = true)
+  sa.extra_age65: multiply_count(sa.extra = $2,000; sa.boxes_age65 = 0)
+  sa.boxes_blind: sum_over(person[taxpayer].blind = false; true = true)
+  sa.extra_blind: multiply_count(sa.extra = $2,000; sa.boxes_blind = 0)
+  sa.standardraw: sum(sa.standardbase = $15,750; sa.extra_age65 = $0; sa.extra_blind = $0)
+  sa.standard: choose(sa.dependent = false; sa.mfs_spouse_extra = false; sa.mfs_spouse_itemizes = false; true = true; sa.mfs_spouse_itemizes = false; false = false; sa.standardraw = $15,750)
+  sa.itemizes: test(sa.elect_itemize = false; true = true; sa.mfs_spouse_itemizes = false; true = true; sa.line17 = $0; sa.standard = $15,750)
+  sa.deduction: choose(sa.itemizes = false; true = true; sa.itemizes = false; false = false; sa.standard = $15,750)
+  f1040.sa.deduction: choose(sa.itemizes = false; true = true; sa.itemizes = false; false = false; sa.standard = $15,750)
+  f1040.line12e: copy(household.hoh_fails = false; sa.deduction = $15,750)
+  qbi.sa.agi: copy(f1040.line11b = $130,000)
+  qbi.sa.deduction: choose(sa.itemizes = false; true = true; sa.itemizes = false; false = false; sa.standard = $15,750)
+  s1.sc_1a_count: sum_over(person[taxpayer].sc_1a = 0)
+  s1.sc_1a: test(s1.sc_1a_count = 0; 0 = 0)
+  s1a.s1.sc_1a: test(s1.sc_1a_count = 0; 0 = 0)
+  s1a.zero: param(#sales.zero = $0)
+  s1a.line13: choose(s1.sc_1a = false; s1a.tips = false; false = false; s1a.zero = $0)
+  s1a.line21: choose(s1.sc_1a = false; s1a.overtime = false; false = false; s1a.zero = $0)
+  s1a.line30: choose(s1a.carloan = false; false = false; s1a.zero = $0)
+  sa.age65_count: sum_over(person[taxpayer].role = taxpayer; "taxpayer" = taxpayer; person[taxpayer].age65 = false; true = true)
+  sa.age65: test(sa.age65_count = 0; 0 = 0)
+  s1a.sa.age65: test(sa.age65_count = 0; 0 = 0)
+  s1a.line36a: choose(sa.age65 = false; false = false; s1a.zero = $0)
+  s1a.spouse_senior_count: sum_over(person[taxpayer].role = taxpayer; "spouse" = spouse)
+  s1a.spouse_senior: test(s1a.spouse_senior_count = 0; 0 = 0)
+  s1a.line36b: choose(s1a.spouse_senior = false; false = false; s1a.zero = $0)
+  s1a.line37: sum(s1a.line36a = $0; s1a.line36b = $0)
+  s1a.line38: sum(s1a.line13 = $0; s1a.line21 = $0; s1a.line30 = $0; s1a.line37 = $0)
+  f1040.s1a.line38: sum(s1a.line13 = $0; s1a.line21 = $0; s1a.line30 = $0; s1a.line37 = $0)
+  f1040.line13b: copy(s1a.line38 = $0)
+  qbi.f1040.line13b: copy(s1a.line38 = $0)
+  qbi.deductions_before: sum(sa.deduction = $15,750; f1040.line13b = $0)
+  qbi.taxable_before: subtract_floor0(sa.agi = $130,000; qbi.deductions_before = $15,750)
+  qbi.threshold: param(#qbi.threshold = $197,300)
+  qbi.use_8995a: test(qbi.taxable_before = $114,250; qbi.threshold = $197,300)
+  f8995.line2: sum_over(person[taxpayer].qbi = $0)
+  qbi.zero: param(#sales.zero = $0)
+  f8995.qbi.zero: param(#sales.zero = $0)
+  f8995.line3: subtract(qbi.zero = $0; qbi.carryforward = $0)
+  f8995.line4_sum: sum(f8995.line2 = $0; f8995.line3 = $0)
+  f8995.line4: subtract_floor0(f8995.line4_sum = $0; qbi.zero = $0)
+  f8995.line5: multiply_rate(f8995.line4 = $0; #qbi.rate = 1/5)
+  qbi.eligible: copy(qbi.unsupported = false; qbi.dividends = $0)
+  f8995.qbi.eligible: copy(qbi.unsupported = false; qbi.dividends = $0)
+  f8995.line6: copy(qbi.eligible = $0)
+  f8995.line8: copy(f8995.line6 = $0)
+  f8995.line9: multiply_rate(f8995.line8 = $0; #qbi.rate = 1/5)
+  f8995.line10: sum(f8995.line5 = $0; f8995.line9 = $0)
+  f8995.qbi.taxable_before: subtract_floor0(sa.agi = $130,000; qbi.deductions_before = $15,750)
+  f8995.line11: copy(qbi.taxable_before = $114,250)
+  qbi.sd.net_gain: subtract_floor0(sd.net_gain_raw = $0; 0 = $0)
+  qbi.net_capital_gain: sum(sd.net_gain = $0; f1040.line3a = $0)
+  f8995.qbi.net_capital_gain: sum(sd.net_gain = $0; f1040.line3a = $0)
+  f8995.line12: copy(qbi.net_capital_gain = $0)
+  f8995.line13: subtract_floor0(f8995.line11 = $114,250; f8995.line12 = $0)
+  f8995.line14: multiply_rate(f8995.line13 = $114,250; #qbi.rate = 1/5)
+  f8995.line15: smaller_of(f8995.line10 = $0; f8995.line14 = $22,850)
+  qbi.f8995.line15: smaller_of(f8995.line10 = $0; f8995.line14 = $22,850)
+  qbi.deduction: choose(qbi.use_8995a = false; true = true; qbi.use_8995a = false; false = false; f8995.line15 = $0)
+  f1040.qbi.deduction: choose(qbi.use_8995a = false; true = true; qbi.use_8995a = false; false = false; f8995.line15 = $0)
+  f1040.line13a: copy(qbi.deduction = $0)
+  f1040.line14: sum(f1040.line12e = $15,750; f1040.line13a = $0; f1040.line13b = $0)
+  clcw26.f1040.line14: sum(f1040.line12e = $15,750; f1040.line13a = $0; f1040.line13b = $0)
+  clcw26.line1: subtract(f1040.line11b = $130,000; f1040.line14 = $15,750)
+  sd.line21: choose(sd.has_loss = false; true = true; sd.has_loss = false; false = false; sd.zero = $0)
+  clcw26.sd.line21: choose(sd.has_loss = false; true = true; sd.has_loss = false; false = false; sd.zero = $0)
+  clcw26.line2: subtract_floor0(clcw26.zero = $0; sd.line21 = $0)
+  clcw26.combined: sum(clcw26.line1 = $114,250; clcw26.line2 = $0)
+  clcw26.line3: subtract_floor0(clcw26.combined = $114,250; clcw26.zero = $0)
+  clcw26.line4: smaller_of(clcw26.line2 = $0; clcw26.line3 = $114,250)
+  clcw26.sd.line7: sum(sd.line1a.h = $0; sd.line1b.h = $0; sd.line2.h = $0; sd.line3.h = $0; sd.line4 = $0; sd.line5 = $0; sd.line6 = $0)
+  clcw26.line5: subtract_floor0(clcw26.zero = $0; sd.line7 = $0)
+  clcw26.sd.line15: sum(sd.line8a.h = $0; sd.line8b.h = $0; sd.line9.h = $0; sd.line10.h = $0; sd.line11 = $0; sd.line12 = $0; sd.line13 = $0; sd.line14 = $0)
+  clcw26.line6: subtract_floor0(sd.line15 = $0; clcw26.zero = $0)
+  clcw26.line7: sum(clcw26.line4 = $0; clcw26.line6 = $0)
+  clcw26.line8: subtract_floor0(clcw26.line5 = $0; clcw26.line7 = $0)
+  clcw26.line9: subtract_floor0(clcw26.zero = $0; sd.line15 = $0)
+  clcw26.line10: subtract_floor0(sd.line7 = $0; clcw26.zero = $0)
+  clcw26.line11: subtract_floor0(clcw26.line4 = $0; clcw26.line5 = $0)
+  clcw26.line12: sum(clcw26.line10 = $0; clcw26.line11 = $0)
+  clcw26.line13: subtract_floor0(clcw26.line9 = $0; clcw26.line12 = $0)
+  clcw26.decedent_notice: test(f1040.status = single; "mfj" = mfj)
+  div.box1a: copy(sb.ordinary_dividends = $0)
+  div.box1b: copy(f1040.line3a = $0)
+  div.box2a: copy(sd.distributions = $0)
+  div.box5: copy(qbi.dividends = $0)
+  eic.age_range_count: sum_over(person[taxpayer].born_before_2001 = UNKNOWN (no input supplied for person[taxpayer].born_before_2001); true = true; person[taxpayer].born_after_1960 = UNKNOWN (no input supplied for person[taxpayer].born_after_1960); true = true)
+  eic.age_range: test(eic.age_range_count = UNKNOWN (no input supplied for person[taxpayer].born_before_2001); 0 = 0)
+  eic.zero: param(#sales.zero = $0)
+  eic.has_qc: test(eic.qc_count = 0; 0 = 0)
+  eic.married_rules: test(f1040.status = single; "mfs" = mfs; f1040.status = single; "hoh" = hoh)
+  eic.limit3_other: param(#eic.limit3.other = $61,555)
+  eic.top_limit: choose(f1040.status = single; "single" = single; eic.limit3_other = $61,555)
   eic.f1040.line11b: copy(f1040.line11a = $130,000)
   eic.below_top: test(f1040.line11b = $130,000; eic.top_limit = $61,555)
   eic.limit0_other: param(#eic.limit0.other = $19,104)
@@ -6011,136 +6280,12 @@ Derivations:
   f1040.ssb.has_benefits: test(ssb.line1 = $0; #sales.zero = $0)
   f1040.line6c: test(ssb.has_benefits = false; true = true)
   f1040.line6d: test(f1040.status = single; "mfs" = mfs)
-  household.hoh_fails: test(f1040.status = single; "hoh" = hoh)
-  f1040.household.hoh_fails: test(f1040.status = single; "hoh" = hoh)
-  sa.mfs: test(f1040.status = single; "mfs" = mfs)
-  sa.mfs_spouse_itemizes: test(sa.mfs = false; true = true)
-  sa.f1040.line11b: copy(f1040.line11a = $130,000)
-  sa.agi: copy(f1040.line11b = $130,000)
-  sa.zero: param(#sales.zero = $0)
-  sa.agi_floor: subtract_floor0(sa.agi = $130,000; sa.zero = $0)
-  sa.line2: copy(sa.agi_floor = $130,000)
-  sa.line3: multiply_rate(sa.line2 = $130,000; #sa.medical_rate = 75/1000)
-  sa.line4: subtract_floor0(sa.line1 = $0; sa.line3 = $9,750)
-  sa.line5d: sum(sa.line5a = $0; sa.line5b = $0; sa.line5c = $0)
-  sa.saltbase: param(#sa.salt_base = $40,000)
-  sa.saltthreshold: param(#sa.salt_threshold = $500,000)
-  sa.saltexcess: subtract_floor0(sa.agi = $130,000; sa.saltthreshold = $500,000)
-  sa.saltreduction: multiply_rate(sa.saltexcess = $0; #sa.salt_rate = 3/10)
-  sa.saltremaining: subtract_floor0(sa.saltbase = $40,000; sa.saltreduction = $0)
-  sa.saltfloor: param(#sa.salt_floor = $10,000)
-  sa.saltfloor_applied: larger_of(sa.saltremaining = $40,000; sa.saltfloor = $10,000)
-  sa.saltlimit: choose(sa.mfs = false; true = true; sa.mfs = false; false = false; sa.saltfloor_applied = $40,000)
-  sa.line5e: smaller_of(sa.line5d = $0; sa.saltlimit = $40,000)
-  sa.line6: copy(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false; sa.zero = $0)
-  sa.line7: sum(sa.line5e = $0; sa.line6 = $0)
-  sa.line8b: copy(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false; sa.zero = $0)
-  sa.line8c: copy(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false; sa.zero = $0)
-  sa.line8e: sum(sa.line8a = $0; sa.line8b = $0; sa.line8c = $0)
-  f4952.zero: param(#sales.zero = $0)
-  f4952.line2: copy(f4952.carryover = false; f4952.unsupported = false; f4952.alternative_allocation = false; f4952.zero = $0)
-  f4952.line3: sum(f4952.line1 = $0; f4952.line2 = $0)
-  f4952.line4b: copy(f1040.line3a = $0)
-  f4952.sb.line2: sum_over(sb.unsupported = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false)
-  f4952.sb.line6: copy(sb.unsupported = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false; sb.ordinary_dividends = $0)
-  f4952.line4a: sum(sb.line2 = $0; sb.line6 = $0)
-  f4952.bad_dividends: test(f4952.line4b = $0; f4952.line4a = $0)
-  f4952.line4c: subtract(f4952.bad_dividends = false; f4952.line4a = $0; f4952.line4b = $0)
-  f4952.sd.line16: sum(sd.line7 = $0; sd.line15 = $0)
-  f4952.line4d: subtract_floor0(sd.line16 = $0; 0 = $0)
-  sd.net_gain_raw: smaller_of(sd.line15 = $0; sd.line16 = $0)
-  sd.net_gain: subtract_floor0(sd.net_gain_raw = $0; 0 = $0)
-  f4952.sd.net_gain: subtract_floor0(sd.net_gain_raw = $0; 0 = $0)
-  f4952.line4e: smaller_of(f4952.line4d = $0; sd.net_gain = $0)
-  f4952.line4f: subtract(f4952.line4d = $0; f4952.line4e = $0)
-  f4952.election_limit: sum(f4952.line4b = $0; f4952.line4e = $0)
-  f4952.bad_election: test(f4952.line4g = $0; f4952.election_limit = $0)
-  f4952.election: copy(f4952.carryover = false; f4952.unsupported = false; f4952.alternative_allocation = false; f4952.bad_election = false; f4952.line4g = $0)
-  f4952.line4h: sum(f4952.line4c = $0; f4952.line4f = $0; f4952.election = $0)
-  f4952.line5: copy(f4952.carryover = false; f4952.unsupported = false; f4952.alternative_allocation = false; f4952.zero = $0)
-  f4952.line6: subtract_floor0(f4952.line4h = $0; f4952.line5 = $0)
-  f4952.line8: smaller_of(f4952.line3 = $0; f4952.line6 = $0)
-  sa.f4952.line8: smaller_of(f4952.line3 = $0; f4952.line6 = $0)
-  sa.line9: copy(f4952.line8 = $0)
-  sa.line10: sum(sa.line8e = $0; sa.line9 = $0)
-  sa.line12: sum_over(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false)
-  sa.line13: copy(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false; sa.zero = $0)
-  sa.line14: sum(sa.line11 = $0; sa.line12 = $0; sa.line13 = $0)
-  sa.line15: copy(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false; sa.zero = $0)
-  sa.s1.has_gambling: test(s1.gambling_winnings = $0; #sales.zero = $0)
-  sa.line16: choose(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false; s1.has_gambling = false; true = true; s1.has_gambling = false; false = false; sa.zero = $0)
-  sa.line17: sum(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false; sa.line4 = $0; sa.line7 = $0; sa.line10 = $0; sa.line14 = $0; sa.line15 = $0; sa.line16 = $0)
-  sa.mfs_spouse_extra: test(f1040.status = single; "mfs" = mfs)
-  sa.standardbase: param(#sa.standard_base = $15,750)
-  sa.extra: param(#sa.standard_extra = $2,000)
-  sa.boxes_age65: sum_over(person[taxpayer].age65 = false; true = true)
-  sa.extra_age65: multiply_count(sa.extra = $2,000; sa.boxes_age65 = 0)
-  sa.boxes_blind: sum_over(person[taxpayer].blind = false; true = true)
-  sa.extra_blind: multiply_count(sa.extra = $2,000; sa.boxes_blind = 0)
-  sa.standardraw: sum(sa.standardbase = $15,750; sa.extra_age65 = $0; sa.extra_blind = $0)
-  sa.standard: choose(sa.dependent = false; sa.mfs_spouse_extra = false; sa.mfs_spouse_itemizes = false; true = true; sa.mfs_spouse_itemizes = false; false = false; sa.standardraw = $15,750)
-  sa.itemizes: test(sa.elect_itemize = false; true = true; sa.mfs_spouse_itemizes = false; true = true; sa.line17 = $0; sa.standard = $15,750)
-  sa.deduction: choose(sa.itemizes = false; true = true; sa.itemizes = false; false = false; sa.standard = $15,750)
-  f1040.sa.deduction: choose(sa.itemizes = false; true = true; sa.itemizes = false; false = false; sa.standard = $15,750)
-  f1040.line12e: copy(household.hoh_fails = false; sa.deduction = $15,750)
-  qbi.sa.agi: copy(f1040.line11b = $130,000)
-  qbi.sa.deduction: choose(sa.itemizes = false; true = true; sa.itemizes = false; false = false; sa.standard = $15,750)
-  s1.sc_1a_count: sum_over(person[taxpayer].sc_1a = 0)
-  s1.sc_1a: test(s1.sc_1a_count = 0; 0 = 0)
-  s1a.s1.sc_1a: test(s1.sc_1a_count = 0; 0 = 0)
-  s1a.zero: param(#sales.zero = $0)
-  s1a.line13: choose(s1.sc_1a = false; s1a.tips = false; false = false; s1a.zero = $0)
-  s1a.line21: choose(s1.sc_1a = false; s1a.overtime = false; false = false; s1a.zero = $0)
-  s1a.line30: choose(s1a.carloan = false; false = false; s1a.zero = $0)
-  sa.age65_count: sum_over(person[taxpayer].role = taxpayer; "taxpayer" = taxpayer; person[taxpayer].age65 = false; true = true)
-  sa.age65: test(sa.age65_count = 0; 0 = 0)
-  s1a.sa.age65: test(sa.age65_count = 0; 0 = 0)
-  s1a.line36a: choose(sa.age65 = false; false = false; s1a.zero = $0)
-  s1a.spouse_senior_count: sum_over(person[taxpayer].role = taxpayer; "spouse" = spouse)
-  s1a.spouse_senior: test(s1a.spouse_senior_count = 0; 0 = 0)
-  s1a.line36b: choose(s1a.spouse_senior = false; false = false; s1a.zero = $0)
-  s1a.line37: sum(s1a.line36a = $0; s1a.line36b = $0)
-  s1a.line38: sum(s1a.line13 = $0; s1a.line21 = $0; s1a.line30 = $0; s1a.line37 = $0)
-  f1040.s1a.line38: sum(s1a.line13 = $0; s1a.line21 = $0; s1a.line30 = $0; s1a.line37 = $0)
-  f1040.line13b: copy(s1a.line38 = $0)
-  qbi.f1040.line13b: copy(s1a.line38 = $0)
-  qbi.deductions_before: sum(sa.deduction = $15,750; f1040.line13b = $0)
-  qbi.taxable_before: subtract_floor0(sa.agi = $130,000; qbi.deductions_before = $15,750)
-  qbi.threshold: param(#qbi.threshold = $197,300)
-  qbi.use_8995a: test(qbi.taxable_before = $114,250; qbi.threshold = $197,300)
-  f8995.line2: sum_over(person[taxpayer].qbi = $0)
-  qbi.zero: param(#sales.zero = $0)
-  f8995.qbi.zero: param(#sales.zero = $0)
-  f8995.line3: subtract(qbi.zero = $0; qbi.carryforward = $0)
-  f8995.line4_sum: sum(f8995.line2 = $0; f8995.line3 = $0)
-  f8995.line4: subtract_floor0(f8995.line4_sum = $0; qbi.zero = $0)
-  f8995.line5: multiply_rate(f8995.line4 = $0; #qbi.rate = 1/5)
-  qbi.eligible: copy(qbi.unsupported = false; qbi.dividends = $0)
-  f8995.qbi.eligible: copy(qbi.unsupported = false; qbi.dividends = $0)
-  f8995.line6: copy(qbi.eligible = $0)
-  f8995.line8: copy(f8995.line6 = $0)
-  f8995.line9: multiply_rate(f8995.line8 = $0; #qbi.rate = 1/5)
-  f8995.line10: sum(f8995.line5 = $0; f8995.line9 = $0)
-  f8995.qbi.taxable_before: subtract_floor0(sa.agi = $130,000; qbi.deductions_before = $15,750)
-  f8995.line11: copy(qbi.taxable_before = $114,250)
-  qbi.sd.net_gain: subtract_floor0(sd.net_gain_raw = $0; 0 = $0)
-  qbi.net_capital_gain: sum(sd.net_gain = $0; f1040.line3a = $0)
-  f8995.qbi.net_capital_gain: sum(sd.net_gain = $0; f1040.line3a = $0)
-  f8995.line12: copy(qbi.net_capital_gain = $0)
-  f8995.line13: subtract_floor0(f8995.line11 = $114,250; f8995.line12 = $0)
-  f8995.line14: multiply_rate(f8995.line13 = $114,250; #qbi.rate = 1/5)
-  f8995.line15: smaller_of(f8995.line10 = $0; f8995.line14 = $22,850)
-  qbi.f8995.line15: smaller_of(f8995.line10 = $0; f8995.line14 = $22,850)
-  qbi.deduction: choose(qbi.use_8995a = false; true = true; qbi.use_8995a = false; false = false; f8995.line15 = $0)
-  f1040.qbi.deduction: choose(qbi.use_8995a = false; true = true; qbi.use_8995a = false; false = false; f8995.line15 = $0)
-  f1040.line13a: copy(qbi.deduction = $0)
-  f1040.line14: sum(f1040.line12e = $15,750; f1040.line13a = $0; f1040.line13b = $0)
   f1040.line15: subtract_floor0(f1040.line11b = $130,000; f1040.line14 = $15,750)
   sd.line17: test(sd.line15 = $0; 0 = $0)
   sd.line18: choose(sd.line17 = false; true = true; sd.line17 = false; false = false; sd.zero = $0)
   sd.line19: choose(sd.line17 = false; true = true; sd.line17 = false; false = false; sd.zero = $0)
-  sd.filed: test(sd.count = 0; 0 = 0; sd.line18 = $0; 0 = $0; sd.line19 = $0; 0 = $0)
-  f1040.sd.filed: test(sd.count = 0; 0 = 0; sd.line18 = $0; 0 = $0; sd.line19 = $0; 0 = $0)
+  sd.filed: test(sd.count = 0; 0 = 0; sd.line18 = $0; 0 = $0; sd.line19 = $0; 0 = $0; sd.line6 = $0; 0 = $0; sd.line14 = $0; 0 = $0)
+  f1040.sd.filed: test(sd.count = 0; 0 = 0; sd.line18 = $0; 0 = $0; sd.line19 = $0; 0 = $0; sd.line6 = $0; 0 = $0; sd.line14 = $0; 0 = $0)
   f1040.sd.line17: test(sd.line15 = $0; 0 = $0)
   f1040.gate.qdcg_applies: test(f1040.line15 = $114,250; 0 = $0; f1040.line3a = $0; 0 = $0; sd.filed = false; false = false; sd.distributions = $0; 0 = $0; sd.line17 = false; true = true)
   f1040.gate.sdtw: test(f1040.gate.qdcg_applies = false; true = true)
@@ -6265,7 +6410,8 @@ Derivations:
   f8960.line4c: sum(f8960.line4a = $0; f8960.line4b = $0)
   f8960.f1040.line7a: copy(sd.to1040 = $0)
   f8960.line5a: copy(f1040.line7a = $0)
-  f8960.line5b: copy(f8960.unsupported = false; f8960.refund = false; f8960.zero = $0)
+  f8960.carryforward_adj: test(sd.carryover = false; true = true)
+  f8960.line5b: copy(f8960.carryforward_adj = false; f8960.unsupported = false; f8960.refund = false; f8960.zero = $0)
   f8960.line5c: copy(f8960.unsupported = false; f8960.refund = false; f8960.zero = $0)
   f8960.line5d: sum(f8960.line5a = $0; f8960.line5b = $0; f8960.line5c = $0)
   f8960.line6: copy(f8960.unsupported = false; f8960.refund = false; f8960.zero = $0)
@@ -6435,7 +6581,7 @@ Derivations:
   f2441.line31: smaller_of(f2441.line29 = UNKNOWN (no input supplied for f2441.line14); f2441.line30 = UNKNOWN (collection roster not confirmed))
   f4952.line7: subtract_floor0(f4952.line3 = $0; f4952.line6 = $0)
   f4952.exception: test(f4952.line4c = $0; f4952.line1 = $0)
-  f4952.required: test(f4952.carryover = false; f4952.unsupported = false; f4952.alternative_allocation = false; f4952.election = $0; 0 = $0; f4952.line1 = $0; 0 = $0)
+  f4952.required: test(f4952.unsupported = false; f4952.alternative_allocation = false; f4952.election = $0; 0 = $0; f4952.line3 = $0; 0 = $0)
   f5695.zero: param(#sales.zero = $0)
   f5695.line5b: choose(f5695.line5a = UNKNOWN (no input supplied for f5695.line5a); true = true)
   f5695.line6a: gate(f5695.business_use = UNKNOWN (no input supplied for f5695.business_use))
@@ -6589,11 +6735,14 @@ Derivations:
   ftc.limit: param(#ftc.limit = $300)
   ftc.f1040.line16: choose(scope.other_line16 = false; f1040.gate.sdtw = false; true = true; f1040.gate.sdtw = false; false = false; f1040.non_sdtw_tax = $20,267)
   ftc.limited: smaller_of(ftc.taxes = $0; f1040.line16 = $20,267)
+  g28.sd.line17: test(sd.line15 = $0; 0 = $0)
+  g28.reached: test(sd.line17 = false; true = true)
   g28.div.screen: param(div.section1202 = false; div.amt = false; div.unsupported = false; div.bad_special = false; div.bad_components = false; #sales.zero = $0)
   g28.line1: copy(div.screen = $0)
   g28.line2: copy(div.screen = $0)
   g28.line3: copy(div.screen = $0)
-  g28.line5: copy(div.screen = $0)
+  g28.sd.line14: choose(sd.other_forms = false; sd.carryover = false; true = true; sd.carryover = false; false = false; sd.zero = $0)
+  g28.line5: copy(sd.line14 = $0)
   g28.line4: copy(div.box2d = $0)
   g28.sd.line7: sum(sd.line1a.h = $0; sd.line1b.h = $0; sd.line2.h = $0; sd.line3.h = $0; sd.line4 = $0; sd.line5 = $0; sd.line6 = $0)
   g28.sd.zero: param(#sales.zero = $0)
@@ -6714,7 +6863,7 @@ Derivations:
   qbi.business_any: test(f8995.line2 = $0; #sales.zero = $0; qbi.carryforward = $0; #sales.zero = $0)
   qbi.f8995a.line39: sum(f8995a.line37 = $0; f8995a.line38 = $0)
   qbi.via_8995a: copy(qbi.business_any = false; f8995a.line39 = $0)
-  qdcg.sd.filed: test(sd.count = 0; 0 = 0; sd.line18 = $0; 0 = $0; sd.line19 = $0; 0 = $0)
+  qdcg.sd.filed: test(sd.count = 0; 0 = 0; sd.line18 = $0; 0 = $0; sd.line19 = $0; 0 = $0; sd.line6 = $0; 0 = $0; sd.line14 = $0; 0 = $0)
   qdcg.schedule_d_filed: copy(sd.filed = false)
   qdcg.sd.net_gain: subtract_floor0(sd.net_gain_raw = $0; 0 = $0)
   qdcg.schedule_d_net_gain: copy(sd.net_gain = $0)
@@ -7016,9 +7165,9 @@ Derivations:
   sb.partIII: test(sb.line4 = $0; 150000 = $1,500; sb.line6 = $0; 150000 = $1,500; sb.line7a = false; true = true; sb.line8 = false; true = true)
   scope.s3.mfs: test(f1040.status = single; "mfs" = mfs)
   scope.ready: test(scope.schedule1 = false; scope.credits = false; scope.other_income = false; scope.other_line16 = false; s3.mfs = false; true = true; true = true)
-  sd.f4952.required: test(f4952.carryover = false; f4952.unsupported = false; f4952.alternative_allocation = false; f4952.election = $0; 0 = $0; f4952.line1 = $0; 0 = $0)
+  sd.f4952.required: test(f4952.unsupported = false; f4952.alternative_allocation = false; f4952.election = $0; 0 = $0; f4952.line3 = $0; 0 = $0)
   sd.filing4952: copy(f4952.required = false)
-  sd.f4952.election: copy(f4952.carryover = false; f4952.unsupported = false; f4952.alternative_allocation = false; f4952.bad_election = false; f4952.line4g = $0)
+  sd.f4952.election: copy(f4952.unsupported = false; f4952.alternative_allocation = false; f4952.bad_election = false; f4952.line4g = $0)
   sd.investment_election: copy(f4952.election = $0)
   sd.line1a.d: sum_over(sd.screen = false)
   sd.line1a.e: sum_over(sd.screen = false)
@@ -7044,10 +7193,13 @@ Derivations:
   sd.line10.d: sum_over(sd.screen = false)
   sd.line10.e: sum_over(sd.screen = false)
   sd.line10.g: sum_over(sd.screen = false)
+  sd.clcw.line8: subtract_floor0(clcw.line5 = UNKNOWN (no input supplied for clcw.prior_sd7); clcw.line7 = UNKNOWN (no input supplied for clcw.prior_sd21))
+  sd.line6_ws: subtract(sd.zero = $0; clcw.line8 = UNKNOWN (no input supplied for clcw.prior_sd7))
+  sd.clcw.line13: subtract_floor0(clcw.line9 = UNKNOWN (no input supplied for clcw.prior_sd15); clcw.line12 = UNKNOWN (no input supplied for clcw.prior_sd7))
+  sd.line14_ws: subtract(sd.zero = $0; clcw.line13 = UNKNOWN (no input supplied for clcw.prior_sd15))
   sd.line20: test(sd.line18 = $0; 0 = $0; sd.line19 = $0; 0 = $0; sd.filing4952 = false; false = false)
   sd.loss_limit: param(#sd.loss_limit = -$3,000)
   sd.limited_loss: larger_of(sd.line16 = $0; sd.loss_limit = -$3,000)
-  sd.line21: choose(sd.has_loss = false; true = true; sd.has_loss = false; false = false; sd.zero = $0)
   sd.line22: test(f1040.line3a = $0; 0 = $0)
   sdtw.zero: param(#sales.zero = $0)
   sdtw.ordinary_ceiling: param(#sdtw.ordinary_ceiling = $197,300)
@@ -7221,6 +7373,8 @@ Derivations:
   ssb.line16: choose(ssb.mfs_together = false; true = true; ssb.mfs_together = false; false = false; ssb.line16_sum = UNKNOWN (no input supplied for ssb.pub915))
   ssb.line17: multiply_rate(ssb.line1 = $0; #ssb.rate85 = 85/100)
   ssb.line18_figured: smaller_of(ssb.line16 = UNKNOWN (no input supplied for ssb.pub915); ssb.line17 = $0)
+  u1250.sd.line17: test(sd.line15 = $0; 0 = $0)
+  u1250.reached: test(sd.line17 = false; true = true)
   u1250.div.screen: param(div.section1202 = false; div.amt = false; div.unsupported = false; div.bad_special = false; div.bad_components = false; #sales.zero = $0)
   u1250.line1: copy(div.screen = $0)
   u1250.line2: copy(div.screen = $0)
@@ -7233,7 +7387,8 @@ Derivations:
   u1250.line9: copy(div.screen = $0)
   u1250.line10: copy(div.screen = $0)
   u1250.line12: copy(div.screen = $0)
-  u1250.line16: copy(div.screen = $0)
+  u1250.sd.line14: choose(sd.other_forms = false; sd.carryover = false; true = true; sd.carryover = false; false = false; sd.zero = $0)
+  u1250.line16: copy(sd.line14 = $0)
   u1250.line11: copy(div.box2b = $0)
   u1250.line13: sum(u1250.line9 = $0; u1250.line10 = $0; u1250.line11 = $0; u1250.line12 = $0)
   u1250.g28.line1: copy(div.screen = $0)
@@ -7357,18 +7512,21 @@ Derivations:
   person[taxpayer].w2[emp_a].g_counted: choose(person[taxpayer].w2[emp_a].has_g = UNKNOWN (no input supplied for person[taxpayer].w2[emp_a].box12_g); true = true)
   person[taxpayer].w2[emp_a].code_h: test(person[taxpayer].w2[emp_a].box12_h = UNKNOWN (no input supplied for person[taxpayer].w2[emp_a].box12_h); #sales.zero = $0)
   person[taxpayer].w2[emp_a].sav_listed: gate(person[taxpayer].w2[emp_a].box12_userra = UNKNOWN (no input supplied for person[taxpayer].w2[emp_a].box12_userra))
+Interpretation amb.2025.clcw_line1_signed: The second. Both lines are printed on the 2024 return, so nothing is computed by hand, and their difference is the amount the worksheet describes (2024 Form 1040 line 15 subtracts line 14 from line 11, archived under sources/2024). Owner's decision D2(a), 2026-10-27. (i1040sd, p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 1, "If the amount would have been a loss if you could enter a negative number on that line, enclose the amount in parentheses")
+Interpretation amb.2025.clcw_line2_printed: The first (clcw.line2, refused on clcw.bad; the lower bound is $1,500 because the 2024 status is not asked). The worksheet names the printed line, and the second reading needs the 2024 filing status as another question. The $3,000 bound applies whatever the 2024 status was, since a 2024 return married filing separately can precede a 2025 single return and its $1,500 limit cannot be assumed. Owner's decision D2(b), 2026-10-27. (p550, p. 102, Capital Losses, "whether or not you claimed it and whether or not you filed a return for the current year")
 Interpretation amb.2025.box2c_scope: Refuse nonzero box 2c; no exclusion or AMT amount is silently omitted. Archived Schedule D instructions require the exclusion on Form 8949 code Q and describe an AMT adjustment for 50/60/75-percent exclusions. The existing explicit exclusions are retained; the owner was notified and asked, then said continue without selecting an expansion. (i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
+Interpretation amb.2025.clcw_to_2026: The second. The archived 2024 and 2025 editions of the worksheet differ only in their years (sources/2024/i1040sd p. 11, sources/2025/i1040sd p. 10), and the lines give Pub. 550's rule, "the amount of your total net loss that is more than the lesser of" the allowable deduction and taxable income increased by it (checked by brute force over random cases in the Stage 20 premise map and its verification). The figures are the inputs the 2026 return needs. Owner's decision D4, 2026-10-27. (i1040sd, p. 14, Line 21, "If you want to figure your carryover to 2026 now, see Pub. 550")
 Interpretation amb.2025.filer_under_16: The second. The refusal cites the one sentence the text has about age 16 and names the register entry; it does not claim the text forbids the return. The owner's decision of 2026-10-22 (integrity plan decision 10). A return for a child under 16 is one the tool's slice does not model well (Form 8615 is refused through scope.other_line16 only when the filer knows to answer it); the refusal makes the age an explicit entry rather than a silent assumption. (i1040gi, p. 66, Self-Select PIN, "You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025")
 Interpretation amb.2025.alimony_screen: The first (s1.alimony, s1.alimony_unsupported; amounts under an agreement entered into after 2018, or after a change that expressly excludes them, are not asked, as the questions say, and are neither income nor deductible). The owner's decision (Stage 16 decision batch, D2, with the screens of the premise map, R-ALI-1 and R-ALI-2). The statement listing the other agreements and recipients, and the recapture worksheet, are not prepared; a payment partly child support needs the Pub. 504 allocation rules. (p504, p. 12, Alimony, "If you paid alimony to more than one person, enter the SSN or ITIN of one of the recipients"; p. 16, Recapture of Alimony; p. 13, Underpayment)
 Interpretation amb.2025.cod_fully_taxable: The first (s1.cod_amount, s1.cod_unsupported). Student loans are refused with the other exceptions. The owner's decision (Stage 16 decision batch, D2, "fully taxable canceled nonbusiness debt"). An excepted student loan discharge is nontaxable and usually comes with no Form 1099-C (p. 3, TIP), so a filer who reports one is refused rather than told how much of it to include; the conservative choice where D2 is silent. (p4681, p. 3, General Rules, "There are several exceptions and exclusions that may result in part or all of a canceled debt being nontaxable"; p. 4, Exceptions)
 Interpretation amb.2025.ewp_oid: The first (interest.penalty, totaled on s1.line18 and copied to Form 8960 line 10). The owner's decision (Stage 16 decision batch, D2, as corrected by the verification, E4) allows an input or a screen; the instruction treats the two forms alike, so an input loses nothing. Form 1099-OID is not archived, so its box number is not named. (i1040gi, p. 95, Line 18, "The Form 1099-INT or Form 1099-OID you received will show the amount of any penalty you were charged")
 Interpretation amb.2025.jury_24a_cap: The first (s1.jury_over refuses s1.line24a). The pay given to the employer is part of the pay received (p525 p. 34, "you can deduct the amount turned over to your employer"), so a larger amount is an entry error to correct, not a case to cap silently; as with w2.g_bad, the refusal fires only on an impossible entry. Premise map Q14, left open by D3. (i1040gi, p. 99, Line 24a, "Enter your jury duty pay if you gave the pay to your employer because your employer paid your salary while you served on the jury")
-Interpretation amb.2025.separated_spouses_box: The first (eic.separated_box, copied to f1040.separated_spouses). The owner's decision (2026-10-26, source adjudication). The only instructions for the box are the earned income credit's, and no amount depends on it; the alternative would add questions for the separation-agreement branch on returns that do not claim the credit. (f1040, Form 1040 (2025), Dependents section, the box for the special rule for separated spouses)
 Interpretation amb.2025.sa_medical_negative_agi: The second (sa.agi_floor, copied to line 2). The instruction names a part of the expenses, and no part of the expenses exceeds the expenses themselves; the signed reading would deduct $324.85 of medical expenses on a return with none (engine differential case se-00255, BUG-0094). Tax-Calculator (calcfunctions.ItemDed, posagi = max(c00100, 0.)) and PolicyEngine-US both floor adjusted gross income at zero before taking the percentage. Equivalent to flooring line 3 at zero; the floor is placed on line 2's operand so that lines 3 and 4 keep their printed wording. (i1040sca, p. 1, Medical and Dental Expenses, "You can deduct only the part of your medical and dental expenses that exceeds 7.5% of the amount of your adjusted gross income on Form 1040 or 1040-SR, line 11b")
 Interpretation amb.2025.multiplication_subcent: Round the product half-up to the nearest cent at the multiplication. Matches the half-up convention of the printed whole-dollar rounding rules. The whole-dollar default is unaffected: whole-dollar amounts multiplied by these rates produce exact cents, so the reading only matters when cents are turned on.
  (i1040gi, QDCGT worksheet, lines 18 and 21; Rounding Off to Whole Dollars, p. 23)
 Interpretation amb.2025.qbi_cooperative_patron: Refuse any patron of an agricultural or horticultural cooperative, specified or not (qbi.unsupported). The owner asked for the strictly accurate reading. Refusing every patron satisfies both texts: a filer the form excludes is never computed on it, and a filer the instructions exclude is a patron the form also excludes. The cost is a refusal for a patron of a cooperative that is not specified, which the instructions would allow.
  (f8995, Form 8995 (2025), note above line 1; i8995, Who Can Use Form 8995; i1040gi line 13a)
+Interpretation amb.2025.separated_spouses_box: The first (eic.separated_box, copied to f1040.separated_spouses). The owner's decision (2026-10-26, source adjudication). The only instructions for the box are the earned income credit's, and no amount depends on it; the alternative would add questions for the separation-agreement branch on returns that do not claim the credit. (f1040, Form 1040 (2025), Dependents section, the box for the special rule for separated spouses)
 Interpretation amb.2025.sd4952_selection: Use the detailed worksheet conditions, including line 4g and exceptions. The worksheet explicitly limits its own use and the Form 1040 line 16 instructions repeat the line 4g condition. (i1040sd, p. 15, Schedule D Tax Worksheet, applicability; compare f1040sd line 20 and i1040gi p. 36)
 Interpretation amb.2025.savers_traditional: The first (person.sav_line1 adds person.ira_contrib). The owner's decision (Stage 16 decision 10). The line names traditional IRA contributions without limiting them to the deductible ones. Excess or recharacterized contributions, traditional or Roth, are refused by one screen per person (person.ira_excess), which also answers Stage 15 owner question 4. (f8880, Form 8880 (2025), line 1, "Traditional and Roth IRA contributions")
 Interpretation amb.2025.clwb_claiming_part1: The first (f5695.claiming_part1). The second is circular (line 15 depends on whether Worksheet B is completed). The readings cannot differ in any amount. With Worksheet B completed, the Part I limit subtracts Worksheet B line 14, which is never more than Schedule 8812 line 12, instead of Form 1040 line 19, the smaller of line 12 and Credit Limit Worksheet A line 3; so the limit with Worksheet B is at least the limit without it. If line 13 is more than zero and line 15 is zero with Worksheet B, it is zero without it too, and Credit Limit Worksheet A line 4 (Worksheet B line 15, Schedule 3 line 5a) is zero either way; if line 15 is more than zero, both readings complete Worksheet B. (i1040s8812, p. 4, Credit Limit Worksheet A, "Complete Credit Limit Worksheet B only if you meet all the following")
