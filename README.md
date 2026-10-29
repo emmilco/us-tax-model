@@ -1,3 +1,6 @@
+> ***NOTE***: If you came here from Hacker News, (1) yes this is all vibe-coded; (2) a more readable description of the project can be found here: https://github.com/emmilco/us-tax-model/blob/main/spec/spec.md
+
+
 # us-tax-model
 
 The forms-and-instructions layer of US federal individual income tax as public, cited, machine-checkable
