@@ -1,0 +1,74 @@
+{
+ "bank": null,
+ "errors": [
+  {
+   "line": "f5329.l47",
+   "message": "f5329.f5329.l47: collection reference requires sum_over"
+  }
+ ],
+ "failures": [],
+ "family": "deepseek",
+ "form": "f5329",
+ "lines": [
+  {
+   "candidate": "f5329.must",
+   "handle": "f5329.must",
+   "open_at_triage": true,
+   "project": "f5329.must",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f5329.l2",
+   "handle": "2",
+   "open_at_triage": true,
+   "project": "f5329.l2",
+   "shown_when": "f5329.files",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f5329.l4",
+   "handle": "4",
+   "open_at_triage": true,
+   "project": "f5329.l4",
+   "shown_when": "f5329.files",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f5329.l47",
+   "handle": "47",
+   "open_at_triage": true,
+   "project": "f5329.l47",
+   "shown_when": "f5329.files",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f5329.l48",
+   "handle": "48",
+   "open_at_triage": true,
+   "project": "f5329.l48",
+   "shown_when": "f5329.files",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f5329.l49",
+   "handle": "49",
+   "open_at_triage": true,
+   "project": "f5329.l49",
+   "shown_when": "f5329.files",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  }
+ ],
+ "log_sha256_at_triage": "35b16af77216c0c9c3e6e1b18892c4b1b341238bc103ebe8a938e99b2e1b811b",
+ "policy": "executable-triage-v2",
+ "response_sha256": "6247dcdf15d352961d5546a30ba79f174ca391bd488606aa0e64b70f52a77a0b",
+ "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
+ "state": "invalid",
+ "subject_sha256": "77781f5dc775ee7143adcf4754a133764b92b837af5b2e3527d8c28f8aab08e7"
+}

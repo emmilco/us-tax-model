@@ -9,6 +9,7 @@
       "evidence": "A — official IRS example",
       "evidence_note": "i8949 p. 11 examples 1–4; i1040sd p. 11 repeats 1–3. Class A covers only stated column arithmetic. For example 3, code B and correct basis are synthetic scaffolding to supply the stated -$1,000 adjustment; the source does not specify its code. Classification for examples 1–3 is synthetic.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -87,7 +88,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -136,6 +137,7 @@
       "evidence": "A — official IRS example",
       "evidence_note": "i8949 p. 11 examples 1–4; i1040sd p. 11 repeats 1–3. Class A covers only stated column arithmetic. For example 3, code B and correct basis are synthetic scaffolding to supply the stated -$1,000 adjustment; the source does not specify its code. Classification for examples 1–3 is synthetic.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -214,7 +216,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -263,6 +265,7 @@
       "evidence": "A — official IRS example",
       "evidence_note": "i8949 p. 11 examples 1–4; i1040sd p. 11 repeats 1–3. Class A covers only stated column arithmetic. For example 3, code B and correct basis are synthetic scaffolding to supply the stated -$1,000 adjustment; the source does not specify its code. Classification for examples 1–3 is synthetic.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -341,7 +344,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -390,6 +393,7 @@
       "evidence": "A — official IRS example",
       "evidence_note": "i8949 p. 11 examples 1–4; i1040sd p. 11 repeats 1–3. Class A covers only stated column arithmetic. For example 3, code B and correct basis are synthetic scaffolding to supply the stated -$1,000 adjustment; the source does not specify its code. Classification for examples 1–3 is synthetic.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -468,7 +472,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -517,6 +521,7 @@
       "evidence": "A — official IRS example",
       "evidence_note": "i1040sd pp. 10–11, Example 1, 1099-B branch.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -595,7 +600,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -648,6 +653,7 @@
       "evidence": "A — official IRS example",
       "evidence_note": "i1040sd p. 11 continuation of Example 1.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a",
@@ -736,7 +742,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -789,6 +795,7 @@
       "evidence": "synthetic regression (not independently hand-worked)",
       "evidence_note": "Synthetic inputs and manually calculated expectations; no class B claim.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -867,7 +874,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -924,6 +931,7 @@
       "evidence": "synthetic regression (not independently hand-worked)",
       "evidence_note": "Synthetic inputs and manually calculated expectations; no class B claim.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -1002,7 +1010,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -1059,6 +1067,7 @@
       "evidence": "synthetic regression (not independently hand-worked)",
       "evidence_note": "Synthetic inputs and manually calculated expectations; no class B claim.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -1137,7 +1146,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -1194,6 +1203,7 @@
       "evidence": "synthetic regression (not independently hand-worked)",
       "evidence_note": "Synthetic inputs and manually calculated expectations; no class B claim.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -1272,7 +1282,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -1329,6 +1339,7 @@
       "evidence": "synthetic regression (not independently hand-worked)",
       "evidence_note": "Synthetic inputs and manually calculated expectations; no class B claim.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -1407,7 +1418,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -1464,6 +1475,7 @@
       "evidence": "synthetic regression (not independently hand-worked)",
       "evidence_note": "Synthetic inputs and manually calculated expectations; no class B claim.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -1542,7 +1554,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -1599,6 +1611,7 @@
       "evidence": "synthetic regression (not independently hand-worked)",
       "evidence_note": "Synthetic inputs and manually calculated expectations; no class B claim.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -1677,7 +1690,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -1734,6 +1747,7 @@
       "evidence": "synthetic regression (not independently hand-worked)",
       "evidence_note": "Synthetic inputs and manually calculated expectations; no class B claim.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -1812,7 +1826,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -1869,6 +1883,7 @@
       "evidence": "synthetic regression (not independently hand-worked)",
       "evidence_note": "Synthetic inputs and manually calculated expectations; no class B claim.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -1947,7 +1962,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -2004,6 +2019,7 @@
       "evidence": "synthetic regression (not independently hand-worked)",
       "evidence_note": "Synthetic inputs and manually calculated expectations; no class B claim.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -2082,7 +2098,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -2139,6 +2155,7 @@
       "evidence": "synthetic regression (not independently hand-worked)",
       "evidence_note": "Synthetic inputs and manually calculated expectations; no class B claim.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -2217,7 +2234,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -2274,6 +2291,7 @@
       "evidence": "synthetic regression (not independently hand-worked)",
       "evidence_note": "Synthetic inputs and manually calculated expectations; no class B claim.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -2352,7 +2370,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -2409,6 +2427,7 @@
       "evidence": "synthetic regression (not independently hand-worked)",
       "evidence_note": "Synthetic inputs and manually calculated expectations; no class B claim.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -2487,7 +2506,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -2544,6 +2563,7 @@
       "evidence": "synthetic regression (not independently hand-worked)",
       "evidence_note": "Synthetic inputs and manually calculated expectations; no class B claim.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -2622,7 +2642,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -2679,6 +2699,7 @@
       "evidence": "synthetic regression (not independently hand-worked)",
       "evidence_note": "Synthetic inputs and manually calculated expectations; no class B claim.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -2757,7 +2778,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -2814,6 +2835,7 @@
       "evidence": "synthetic regression (not independently hand-worked)",
       "evidence_note": "Synthetic inputs and manually calculated expectations; no class B claim.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -2892,7 +2914,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -2949,6 +2971,7 @@
       "evidence": "synthetic regression (not independently hand-worked)",
       "evidence_note": "Synthetic inputs and manually calculated expectations; no class B claim.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -3027,7 +3050,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -3084,6 +3107,7 @@
       "evidence": "synthetic regression (not independently hand-worked)",
       "evidence_note": "Synthetic inputs and manually calculated expectations; no class B claim.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -3162,7 +3186,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -3219,6 +3243,7 @@
       "evidence": "synthetic regression (not independently hand-worked)",
       "evidence_note": "Synthetic inputs and manually calculated expectations; no class B claim.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -3297,7 +3322,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -3354,6 +3379,7 @@
       "evidence": "synthetic regression (not independently hand-worked)",
       "evidence_note": "Synthetic inputs and manually calculated expectations; no class B claim.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -3433,7 +3459,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -3490,6 +3516,7 @@
       "evidence": "synthetic regression (not independently hand-worked)",
       "evidence_note": "Synthetic inputs and manually calculated expectations; no class B claim.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -3568,7 +3595,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -3625,6 +3652,7 @@
       "evidence": "synthetic regression (not independently hand-worked)",
       "evidence_note": "Synthetic inputs and manually calculated expectations; no class B claim.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -3704,7 +3732,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -3761,6 +3789,7 @@
       "evidence": "synthetic regression (not independently hand-worked)",
       "evidence_note": "Synthetic inputs and manually calculated expectations; no class B claim.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -3839,7 +3868,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -3896,6 +3925,7 @@
       "evidence": "synthetic regression (not independently hand-worked)",
       "evidence_note": "Synthetic inputs and manually calculated expectations; no class B claim.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -3975,7 +4005,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -4032,6 +4062,7 @@
       "evidence": "synthetic regression (not independently hand-worked)",
       "evidence_note": "Synthetic inputs and manually calculated expectations; no class B claim.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -4110,7 +4141,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -4167,6 +4198,7 @@
       "evidence": "synthetic regression (not independently hand-worked)",
       "evidence_note": "Synthetic inputs and manually calculated expectations; no class B claim.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -4246,7 +4278,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -4303,6 +4335,7 @@
       "evidence": "synthetic regression (not independently hand-worked)",
       "evidence_note": "Synthetic inputs and manually calculated expectations; no class B claim.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -4381,7 +4414,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -4438,6 +4471,7 @@
       "evidence": "synthetic regression (not independently hand-worked)",
       "evidence_note": "Synthetic inputs and manually calculated expectations; no class B claim.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -4517,7 +4551,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -4574,6 +4608,7 @@
       "evidence": "synthetic regression (not independently hand-worked)",
       "evidence_note": "Synthetic inputs and manually calculated expectations; no class B claim.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -4652,7 +4687,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -4709,6 +4744,7 @@
       "evidence": "synthetic regression (not independently hand-worked)",
       "evidence_note": "Synthetic inputs and manually calculated expectations; no class B claim.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -4788,7 +4824,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -4845,6 +4881,7 @@
       "evidence": "synthetic regression (not independently hand-worked)",
       "evidence_note": "Synthetic inputs and manually calculated expectations; no class B claim.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -4923,7 +4960,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -4980,6 +5017,7 @@
       "evidence": "synthetic regression (not independently hand-worked)",
       "evidence_note": "Synthetic inputs and manually calculated expectations; no class B claim.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -5059,7 +5097,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -5116,6 +5154,7 @@
       "evidence": "synthetic regression (not independently hand-worked)",
       "evidence_note": "Synthetic inputs and manually calculated expectations; no class B claim.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -5194,7 +5233,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -5251,6 +5290,7 @@
       "evidence": "synthetic regression (not independently hand-worked)",
       "evidence_note": "Synthetic inputs and manually calculated expectations; no class B claim.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -5330,7 +5370,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -5387,6 +5427,7 @@
       "evidence": "synthetic regression (not independently hand-worked)",
       "evidence_note": "Synthetic inputs and manually calculated expectations; no class B claim.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -5465,7 +5506,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -5526,6 +5567,7 @@
       "evidence": "synthetic regression (not independently hand-worked)",
       "evidence_note": "Synthetic inputs and manually calculated expectations; no class B claim.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -5605,7 +5647,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -5662,6 +5704,7 @@
       "evidence": "synthetic regression (not independently hand-worked)",
       "evidence_note": "Synthetic inputs and manually calculated expectations; no class B claim.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a",
@@ -5750,7 +5793,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -5803,6 +5846,7 @@
       "evidence": "synthetic regression (not independently hand-worked)",
       "evidence_note": "Synthetic inputs and manually calculated expectations; no class B claim.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [],
         "sd.other_forms": false,
@@ -5878,7 +5922,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -5939,6 +5983,7 @@
       "evidence": "synthetic regression (not independently hand-worked)",
       "evidence_note": "Synthetic inputs and manually calculated expectations; no class B claim.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [],
         "sd.other_forms": false,
@@ -6014,7 +6059,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -6074,6 +6119,7 @@
       ],
       "evidence": "synthetic refusal regression",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -6151,7 +6197,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -6645,6 +6691,7 @@
       ],
       "evidence": "synthetic refusal regression",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -6722,7 +6769,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -7216,6 +7263,7 @@
       ],
       "evidence": "synthetic refusal regression",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -7293,7 +7341,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -7787,6 +7835,7 @@
       ],
       "evidence": "synthetic refusal regression",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -7864,7 +7913,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -8358,6 +8407,7 @@
       ],
       "evidence": "synthetic refusal regression",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -8435,7 +8485,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -8929,6 +8979,7 @@
       ],
       "evidence": "synthetic refusal regression",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -9006,7 +9057,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -9500,6 +9551,7 @@
       ],
       "evidence": "synthetic refusal regression",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -9577,7 +9629,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -10071,6 +10123,7 @@
       ],
       "evidence": "synthetic refusal regression",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -10148,7 +10201,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -10642,6 +10695,7 @@
       ],
       "evidence": "synthetic refusal regression",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -10719,7 +10773,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -11213,6 +11267,7 @@
       ],
       "evidence": "synthetic refusal regression",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -11290,7 +11345,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -11784,6 +11839,7 @@
       ],
       "evidence": "synthetic refusal regression",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -11861,7 +11917,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -12355,6 +12411,7 @@
       ],
       "evidence": "synthetic refusal regression",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -12432,7 +12489,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -12929,6 +12986,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 20, predicted by hand from i1040sd p. 10 before recording. 2024: Form 1040 line 11 $50,000, line 14 $15,000; Schedule D line 7 -$10,000, line 15 $0, line 21 -$3,000. Worksheet: line 1 $35,000, line 2 $3,000, line 3 $38,000, line 4 $3,000, line 5 $10,000, line 6 $0, line 7 $3,000, line 8 $7,000; line 15 is not a loss, so lines 9 to 13 are skipped and line 13 is $0. 2025: a $4,000 short-term gain; Schedule D line 6 -$7,000, line 7 -$3,000, line 16 -$3,000, line 21 -$3,000 (the limit), Form 1040 line 7a -$3,000. Carryover to 2026: 2025 line 1 is negative and line 3 $0, so line 8 is the whole $3,000 net short-term loss.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -13006,7 +13064,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -13109,6 +13167,7 @@
       ],
       "evidence": "synthetic refusal regression",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -13186,7 +13245,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -13758,6 +13817,7 @@
       ],
       "evidence": "synthetic refusal regression",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -13844,7 +13904,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -13893,6 +13953,7 @@
       ],
       "evidence": "synthetic refusal regression",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -13979,7 +14040,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -14028,6 +14089,7 @@
       ],
       "evidence": "synthetic refusal regression",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -14114,7 +14176,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -14167,6 +14229,7 @@
       ],
       "evidence": "synthetic regression",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -14253,7 +14316,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -14305,6 +14368,7 @@
       ],
       "evidence": "synthetic regression",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -14391,7 +14455,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -14443,6 +14507,7 @@
       ],
       "evidence": "synthetic regression",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -14529,7 +14594,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -14581,6 +14646,7 @@
       ],
       "evidence": "synthetic regression",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -14667,7 +14733,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -14719,6 +14785,7 @@
       ],
       "evidence": "synthetic regression",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a"
@@ -14805,7 +14872,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -14857,6 +14924,7 @@
       ],
       "evidence": "synthetic regression",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "a",
@@ -14953,7 +15021,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -15015,6 +15083,7 @@
       "evidence": "synthetic regression",
       "evidence_note": "Column expectations individually calculated from the supplied row tuples; no class B claim.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "$sales": [
           "1a",
@@ -15171,7 +15240,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,

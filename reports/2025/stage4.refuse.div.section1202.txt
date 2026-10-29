@@ -39,11 +39,11 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   4b  IRA distributions, taxable amount
       = $0
       cite: [i1040gi] p. 27, line 4b, 'figure the taxable amount of each distribution and enter the total of the taxable amounts on line 4b' (2025; printed date 2026-02-25; 482e9c48)
-      note: confirmed roster $retirement:
+      note: confirmed roster $person: taxpayer
   5b  Pensions and annuities, taxable amount
       = $0
       cite: [i1040gi] pp. 28-30, Lines 5a and 5b; p. 29, Simplified Method Worksheet, 'Enter the total of the taxable parts on Form 1040 or 1040-SR, line 5b' (2025; printed date 2026-02-25; 482e9c48)
-      note: confirmed roster $retirement:
+      note: confirmed roster $person: taxpayer
   6b  Social security benefits, taxable amount
       = $0
       cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 18 (2025; printed date 2026-02-25; 482e9c48)
@@ -407,6 +407,14 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = $0
       cite: [f1040] Form 1040 (2025), line 1a (2025; created 2025-09-05; 3d31c226)
       note: confirmed roster $w2@person[taxpayer]: a
+  (helper) Taxable IRA distributions on this person's Forms 1099-R (line 4b amounts)
+      = $0
+      cite: [i1040gi] p. 27, line 4b, 'figure the taxable amount of each distribution and enter the total of the taxable amounts on line 4b' (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $retirement@person[taxpayer]:
+  (helper) Taxable pension and annuity distributions on this person's Forms 1099-R (line 5b amounts)
+      = $0
+      cite: [i1040gi] pp. 28-30, Lines 5a and 5b; p. 29, Simplified Method Worksheet, 'Enter the total of the taxable parts on Form 1040 or 1040-SR, line 5b' (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $retirement@person[taxpayer]:
   zero No excess credit
       = $0
       cite: [i1040gi] p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
@@ -462,6 +470,160 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (gate) Nondeductible contributions for 2025 with a 2025 traditional IRA distribution or Roth conversion
       = false
       cite: [f8606] Form 8606 (2025), Part I, "In 2025, did you take a distribution from a traditional IRA, or make a Roth IRA conversion?" and "Go to line 4" (2025; 748a2bf2)
+  (helper) Form 5329 line 1 for this person: early distributions includible in income
+      = $0
+      cite: [i5329] p. 3, Line 1, "Enter the amount of early distributions includible in income (other than qualified disaster recovery distributions) that you received from:" (2025; aec3d325)
+      note: confirmed roster $retirement@person[taxpayer]:
+  (helper) Exception amounts before the per-person limits
+      = $0
+      cite: [i5329] p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99." (2025; aec3d325)
+      note: confirmed roster $retirement@person[taxpayer]:
+  (helper) Line 1 amounts from code S distributions
+      = $0
+      cite: [i5329] p. 5, Line 4, "If any amount on line 3 was a distribution from a SIMPLE IRA received within 2 years from the date you first participated in the SIMPLE IRA plan, you must multiply that amount by 25% instead of 10%." (2025; aec3d325)
+      note: confirmed roster $retirement@person[taxpayer]:
+  (helper) Line 2 amounts from code S distributions
+      = $0
+      cite: [i5329] p. 5, Line 4, "If any amount on line 3 was a distribution from a SIMPLE IRA received within 2 years from the date you first participated in the SIMPLE IRA plan, you must multiply that amount by 25% instead of 10%." (2025; aec3d325)
+      note: confirmed roster $retirement@person[taxpayer]:
+  (helper) Exception 05 amounts
+      = $0
+      cite: [i5329] p. 5, Line 2, "Qualified retirement plan distributions up to the amount you paid for unreimbursed medical expenses during the year minus 7.5% of your adjusted gross income (AGI) for the year." (2025; aec3d325)
+      note: confirmed roster $retirement@person[taxpayer]:
+  (helper) Exception 09 amounts
+      = $0
+      cite: [p590b] p. 27, First home, "you don't have to pay the 10% additional tax on up to $10,000 of distributions you receive to buy, build, or rebuild a first home." (2025; d18a592e)
+      note: confirmed roster $retirement@person[taxpayer]:
+  (helper) Exception 19 amounts
+      = $0
+      cite: [p590b] p. 28, Qualified birth or adoption distribution, "A qualified birth or adoption distribution must not exceed $5,000 per taxpayer." (2025; d18a592e)
+      note: confirmed roster $retirement@person[taxpayer]:
+  (helper) Exception 22 amounts
+      = $0
+      cite: [p590b] p. 28, Distributions to domestic abuse victims, "on to a domestic abuse victim must not exceed the lesser of $10,300 for 2025 or 50% of the present value of the IRA." (2025; d18a592e)
+      note: confirmed roster $retirement@person[taxpayer]:
+  (helper) Exception 23 amounts
+      = $0
+      cite: [p590b] p. 28, Emergency personal expense distributions, "personal expense distribution must not exceed the lesser of $1,000 or your total interest in the IRA minus $1,000." (2025; d18a592e)
+      note: confirmed roster $retirement@person[taxpayer]:
+  (helper) This person's Form 5329 taxes
+      = $0
+      cite: [f1040s2] p. 1, Part II, line 8, "Additional tax on IRAs or other tax-favored accounts. Attach Form 5329 if required." (2025; created 2025-05-08; 64d867b6)
+      note: confirmed roster $f5329@person[taxpayer]: form
+  (helper) Year parameter f5329.cap_abuse ($10,300)
+      = $10,300
+      cite: [p590b] p. 28, Distributions to domestic abuse victims, "on to a domestic abuse victim must not exceed the lesser of $10,300 for 2025 or 50% of the present value of the IRA." (2025; d18a592e)
+  (helper) Year parameter f5329.cap_emergency ($1,000)
+      = $1,000
+      cite: [p590b] p. 28, Emergency personal expense distributions, "personal expense distribution must not exceed the lesser of $1,000 or your total interest in the IRA minus $1,000." (2025; d18a592e)
+  (helper) Exception 05 limited to the medical expenses above 7.5% of AGI (Schedule A line 4)
+      = $0
+      cite: [i5329] p. 5, Line 2, "Qualified retirement plan distributions up to the amount you paid for unreimbursed medical expenses during the year minus 7.5% of your adjusted gross income (AGI) for the year." (2025; aec3d325)
+      note: taken: {"eq":["person.x_has05",{"const":false}],"op":"test"}; Interpretation amb.2025.f5329_medical_joint: The first (person.x_c05 limits each person to Schedule A line 4, and s2.e05_over refuses when the spouses together exceed it). Owner's decision D8(d), 2026-10-29. (i5329, p. 5, Line 2, "Qualified retirement plan distributions up to the amount you paid for unreimbursed medical expenses during the year minus 7.5% of your adjusted gross income (AGI) for the year.")
+  (helper) Any exception 05 amount
+      = false
+      cite: [i5329] p. 5, Line 2, "Qualified retirement plan distributions up to the amount you paid for unreimbursed medical expenses during the year minus 7.5% of your adjusted gross income (AGI) for the year." (2025; aec3d325)
+  (helper) Any exception 09 amount
+      = false
+      cite: [p590b] p. 27, First home, "you don't have to pay the 10% additional tax on up to $10,000 of distributions you receive to buy, build, or rebuild a first home." (2025; d18a592e)
+  (helper) Exception 09 within the $10,000 first-home limit
+      = $0
+      cite: [p590b] p. 27, First home, "you don't have to pay the 10% additional tax on up to $10,000 of distributions you receive to buy, build, or rebuild a first home." (2025; d18a592e)
+      note: taken: {"eq":["person.x_has09",{"const":false}],"op":"test"}
+  (helper) Any exception 19 amount
+      = false
+      cite: [p590b] p. 28, Qualified birth or adoption distribution, "A qualified birth or adoption distribution must not exceed $5,000 per taxpayer." (2025; d18a592e)
+  (helper) Exception 19 within $5,000 a birth or adoption
+      = $0
+      cite: [p590b] p. 28, Qualified birth or adoption distribution, "A qualified birth or adoption distribution must not exceed $5,000 per taxpayer." (2025; d18a592e)
+      note: taken: {"eq":["person.x_has19",{"const":false}],"op":"test"}
+  (helper) Exception 22 within $10,300
+      = $0
+      cite: [p590b] p. 28, Distributions to domestic abuse victims, "on to a domestic abuse victim must not exceed the lesser of $10,300 for 2025 or 50% of the present value of the IRA." (2025; d18a592e)
+  (helper) Exception 23 within $1,000
+      = $0
+      cite: [p590b] p. 28, Emergency personal expense distributions, "personal expense distribution must not exceed the lesser of $1,000 or your total interest in the IRA minus $1,000." (2025; d18a592e)
+  (helper) Forms 1099-R claiming exception 23
+      = 0
+      cite: [p590b] p. 28, Distribution limits, "You are limited to taking one emergency personal expense distribution per calendar year" (2025; d18a592e)
+      note: confirmed roster $retirement@person[taxpayer]:
+  (gate) Exception 23 claimed on more than one distribution
+      = false
+      cite: [p590b] p. 28, Distribution limits, "You are limited to taking one emergency personal expense distribution per calendar year" (2025; d18a592e)
+  (helper) Exceptions 05, 09, 19, 22 and 23 before their limits
+      = $0
+      cite: [i5329] p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99." (2025; aec3d325)
+  (helper) Exceptions 05, 09, 19, 22 and 23 within their limits
+      = $0
+      cite: [i5329] p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99." (2025; aec3d325)
+  (helper) Exceptions without a fixed limit
+      = $0
+      cite: [i5329] p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99." (2025; aec3d325)
+  (gate) A limited exception over its limit on a person with a code S distribution
+      = false
+      cite: [i5329] p. 5, Line 4, "If any amount on line 3 was a distribution from a SIMPLE IRA received within 2 years from the date you first participated in the SIMPLE IRA plan, you must multiply that amount by 25% instead of 10%." (2025; aec3d325)
+      note: Interpretation amb.2025.f5329_simple_limits: The first (person.x_limit_binds refuses Form 5329 line 4). The split changes the tax and the text gives no rule, so the tool refuses the narrow case rather than choose one; a session choice within the owner's D4, reported to the owner. (i5329, p. 5, Line 4, "If any amount on line 3 was a distribution from a SIMPLE IRA received within 2 years from the date you first participated in the SIMPLE IRA plan, you must multiply that amount by 25% instead of 10%.")
+  (gate) Form 5329 parts this tool does not prepare
+      = false
+      cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account." (2025; 2ad77023)
+  (helper) This person's 2025 HSA excess contributions (Form 8889)
+      = $0
+      cite: [i5329] p. 8, Line 47, "Enter the excess of your contributions (made by you or on your behalf) to your HSAs for 2025 from Form 8889, line 2 (unless withdrawn—discussed next), over your contribution limit (Form 8889, line 12)." (2025; aec3d325)
+      note: confirmed roster $f8889@person[taxpayer]:
+
+== Form 5329, Additional Taxes on Qualified Plans (Including IRAs) and Other Tax-Favored Accounts (Parts I and VII), one per person — person[taxpayer].f5329[form] ==
+  1   Early distributions includible in income
+      = $0
+      cite: [f5329] p. 1, Part I, line 1, "Early distributions includible in income (see instructions)." (2025; 2ad77023)
+  2   Early distributions included on line 1 that are not subject to the additional tax
+      = $0
+      cite: [i5329] p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99." (2025; aec3d325)
+      note: Interpretation amb.2025.f5329_line1_codes: The first (retirement.l1 is the taxable amount of a code 1 or S entry only). The tax is the same either way. Owner's decision D8(a), 2026-10-29. (i5329, p. 3, Line 1, "Enter the amount of early distributions includible in income (other than qualified disaster recovery distributions) that you received from:")
+  3   Amount subject to additional tax. Subtract line 2 from line 1
+      = $0
+      cite: [f5329] p. 1, Part I, line 3, "Amount subject to additional tax. Subtract line 2 from line 1" (2025; 2ad77023)
+  (helper) The part of line 3 from code S distributions
+      = $0
+      cite: [i5329] p. 5, Line 4, "If any amount on line 3 was a distribution from a SIMPLE IRA received within 2 years from the date you first participated in the SIMPLE IRA plan, you must multiply that amount by 25% instead of 10%." (2025; aec3d325)
+  (helper) The rest of line 3
+      = $0
+      cite: [i5329] p. 5, Line 4, "If any amount on line 3 was a distribution from a SIMPLE IRA received within 2 years from the date you first participated in the SIMPLE IRA plan, you must multiply that amount by 25% instead of 10%." (2025; aec3d325)
+  (helper) Year parameter f5329.early_rate (10%)
+      = 10/100
+      cite: [f5329] p. 1, Part I, line 4, "Additional tax. Enter 10% (0.10) of line 3. Include this amount on Schedule 2 (Form 1040), line 8" (2025; 2ad77023)
+  (helper) Year parameter f5329.simple_rate (25%)
+      = 25/100
+      cite: [i5329] p. 5, Line 4, "If any amount on line 3 was a distribution from a SIMPLE IRA received within 2 years from the date you first participated in the SIMPLE IRA plan, you must multiply that amount by 25% instead of 10%." (2025; aec3d325)
+  (helper) 10% of the line 3 amount not from code S distributions
+      = $0
+      cite: [f5329] p. 1, Part I, line 4, "Additional tax. Enter 10% (0.10) of line 3. Include this amount on Schedule 2 (Form 1040), line 8" (2025; 2ad77023)
+      note: half-up to the cent per the ambiguity register; Interpretation amb.2025.f5329_line4_cents: The first (f5329.tax10 and f5329.tax25 on the person's line 3). The two can differ by a cent on the no-form path only. Owner's decision D8(b), 2026-10-29. (f5329, p. 1, Part I, line 4, "Additional tax. Enter 10% (0.10) of line 3.")
+  (helper) 25% of the line 3 amount from code S distributions
+      = $0
+      cite: [i5329] p. 5, Line 4, "If any amount on line 3 was a distribution from a SIMPLE IRA received within 2 years from the date you first participated in the SIMPLE IRA plan, you must multiply that amount by 25% instead of 10%." (2025; aec3d325)
+      note: half-up to the cent per the ambiguity register
+  4   Additional tax. 10% of line 3 (25% of the part from a SIMPLE IRA within 2 years). Include on Schedule 2 (Form 1040), line 8
+      = $0
+      cite: [f5329] p. 1, Part I, line 4, "Additional tax. Enter 10% (0.10) of line 3. Include this amount on Schedule 2 (Form 1040), line 8" (2025; 2ad77023)
+  47  Excess contributions for 2025
+      = $0
+      cite: [i5329] p. 8, Line 47, "Also include on line 47 any excess contributions your employer made." (2025; aec3d325)
+  48  Total excess contributions. Add lines 46 and 47 (lines 42 to 46 are zero in this tool)
+      = $0
+      cite: [f5329] p. 2, Part VII, line 48, "Total excess contributions. Add lines 46 and 47" (2025; 2ad77023)
+  (helper) Any 2025 HSA excess contributions
+      = false
+      cite: [f5329] p. 2, Part VII, line 49, "Additional tax. Enter 6% (0.06) of the smaller of line 48 or the value of your HSAs on December 31, 2025 (including 2025 contributions made in 2026)." (2025; 2ad77023)
+  (helper) Zero
+      = $0
+      cite: [f5329] p. 2, Part VII, line 49, "Additional tax. Enter 6% (0.06) of the smaller of line 48 or the value of your HSAs on December 31, 2025 (including 2025 contributions made in 2026)." (2025; 2ad77023)
+  49  Additional tax. 6% of the smaller of line 48 or the value of your HSAs on December 31, 2025. Include on Schedule 2 (Form 1040), line 8
+      = $0
+      cite: [f5329] p. 2, Part VII, line 49, "Additional tax. Enter 6% (0.06) of the smaller of line 48 or the value of your HSAs on December 31, 2025 (including 2025 contributions made in 2026)." (2025; 2ad77023)
+      note: taken: {"eq":["f5329.has_excess",{"const":false}],"op":"test"}
+  (helper) This person's Form 5329 taxes for Schedule 2 line 8 (lines 4 and 49)
+      = $0
+      cite: [f1040s2] p. 1, Part II, line 8, "Additional tax on IRAs or other tax-favored accounts. Attach Form 5329 if required." (2025; created 2025-05-08; 64d867b6)
 
 == Form W-2 — wage, withholding and Social Security boxes by employer — person[taxpayer].w2[a] ==
   1   Wages, tips, other compensation
@@ -557,12 +719,24 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Are you required to file Form 6251 or do you have an AMT adjustment requiring its review?
       = false
       cite: [f1040s2] Schedule 2 (2025), lines 2, 3, 11, 12 and 21 (2025; created 2025-05-08; 64d867b6)
-  (helper) Any amount on Schedule 2 other than self-employment tax from Schedule SE, Additional Medicare Tax, Net Investment Income Tax or the additional 20% tax on taxable HSA distributions (Form 8889 line 17b, which this tool figures), for example the alternative minimum tax, repayment of a clean vehicle credit, household employment taxes, the additional tax on early retirement distributions (often called a penalty) or on an HSA you did not keep as an eligible individual (Form 8889 Part III), uncollected social security or Medicare tax on tips or group-term life insurance (W-2 box 12 codes A, B, M or N), tax on unreported tips (Form 4137), or interest on deferred tax?
+  (helper) Any amount on Schedule 2 other than self-employment tax from Schedule SE, Additional Medicare Tax, Net Investment Income Tax or the additional 20% tax on taxable HSA distributions (Form 8889 line 17b, which this tool figures), for example the alternative minimum tax, repayment of a clean vehicle credit, household employment taxes, the additional tax on an HSA you did not keep as an eligible individual (Form 8889 Part III), uncollected social security or Medicare tax on tips or group-term life insurance (W-2 box 12 codes A, B, M or N), tax on unreported tips (Form 4137), or interest on deferred tax? (Form 5329 Part I, early distributions, and the 2025 HSA excess are figured by this tool and are not other amounts.)
       = false
       cite: [f1040s2] Schedule 2 (2025), lines 2, 3, 11, 12 and 21 (2025; created 2025-05-08; 64d867b6)
   4   Self-employment tax. Attach Schedule SE
       = $0
       cite: [f1040s2] Schedule 2 (2025), line 4; i1040sse p. 2, Joint Returns, "Enter the combined SE tax on Schedule 2 (Form 1040), line 4" (2025; created 2025-05-08; 64d867b6)
+      note: confirmed roster $person: taxpayer
+  (helper) Exception 05 (medical expenses) amounts of everyone on the return, each person's already limited to Schedule A line 4
+      = $0
+      cite: [i5329] p. 5, Line 2, "Qualified retirement plan distributions up to the amount you paid for unreimbursed medical expenses during the year minus 7.5% of your adjusted gross income (AGI) for the year." (2025; aec3d325)
+      note: confirmed roster $person: taxpayer
+  (gate) On a joint return, medical-expense exceptions of both spouses above the medical expenses over 7.5% of AGI
+      = false
+      cite: [i5329] p. 5, Line 2, "Qualified retirement plan distributions up to the amount you paid for unreimbursed medical expenses during the year minus 7.5% of your adjusted gross income (AGI) for the year." (2025; aec3d325)
+      note: Interpretation amb.2025.f5329_medical_joint: The first (person.x_c05 limits each person to Schedule A line 4, and s2.e05_over refuses when the spouses together exceed it). Owner's decision D8(d), 2026-10-29. (i5329, p. 5, Line 2, "Qualified retirement plan distributions up to the amount you paid for unreimbursed medical expenses during the year minus 7.5% of your adjusted gross income (AGI) for the year.")
+  8   Additional tax on IRAs or other tax-favored accounts. Attach Form 5329 if required
+      = $0
+      cite: [f1040s2] p. 1, Part II, line 8, "Additional tax on IRAs or other tax-favored accounts. Attach Form 5329 if required. If not required, check here" (2025; created 2025-05-08; 64d867b6)
       note: confirmed roster $person: taxpayer
   11  Amount from f8959.line18
       = $0
@@ -570,7 +744,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   12  Amount from f8960.line17
       = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
       cite: [f1040s2] Schedule 2 (2025), lines 2, 3, 11, 12 and 21 (2025; created 2025-05-08; 64d867b6)
-  21  Add s2.line4, s2.line11, s2.line12, s2.line18
+  21  Add s2.line4, s2.line8, s2.line11, s2.line12, s2.line18
       = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
       cite: [f1040s2] Schedule 2 (2025), line 21, "Add lines 4, 7 through 16, 18, and 19. These are your total other taxes" (2025; created 2025-05-08; 64d867b6)
 
@@ -879,6 +1053,14 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   qbi.deduction: chose REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
   person[taxpayer].se_line12: chose $0 (guard 1)
       not taken: guard 0 = false
+  person[taxpayer].x_c05: chose $0 (guard 1)
+      not taken: guard 0 = false
+  person[taxpayer].x_c09: chose $0 (guard 1)
+      not taken: guard 0 = false
+  person[taxpayer].x_c19: chose $0 (guard 1)
+      not taken: guard 0 = false
+  person[taxpayer].f5329[form].l49: chose $0 (guard 1)
+      not taken: guard 0 = false
   person[taxpayer].se_line6: chose $0 (guard 1)
       not taken: guard 0 = false
   f8960.line9a: chose REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
@@ -941,6 +1123,8 @@ Derivations:
   sb.line6: copy(sb.unsupported = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false; sb.ordinary_dividends = $0)
   f1040.sb.line6: copy(sb.unsupported = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false; sb.ordinary_dividends = $0)
   f1040.line3b: copy(sb.line6 = $0)
+  f1040.line4b: sum_over(person[taxpayer].ira_taxable = $0)
+  f1040.line5b: sum_over(person[taxpayer].plan_taxable = $0)
   ssb.line1: copy(ssb.benefits = $0)
   ssb.has_benefits: test(ssb.line1 = $0; #sales.zero = $0)
   ssb.zero: param(#sales.zero = $0)
@@ -1042,6 +1226,45 @@ Derivations:
   qbi.deduction: choose(qbi.use_8995a = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax); true = true)
   person[taxpayer].se_line12: choose(person[taxpayer].se_rrta = false; person[taxpayer].has_sc = false; true = true; person[taxpayer].has_sc = false; false = false; person[taxpayer].zero = $0)
   s2.line4: sum_over(person[taxpayer].se_line12 = $0)
+  person[taxpayer].x_has05: test(person[taxpayer].x_e05 = $0; 0 = $0)
+  person[taxpayer].x_c05: choose(person[taxpayer].x_has05 = false; true = true; person[taxpayer].x_has05 = false; false = false; person[taxpayer].zero = $0)
+  s2.e05_total: sum_over(person[taxpayer].x_c05 = $0)
+  s2.e05_over: test(s2.e05_total = $0; 0 = $0)
+  person[taxpayer].x_two23: test(person[taxpayer].x_n23 = 0; 1 = 1)
+  person[taxpayer].f5329[form].person.x_two23: test(person[taxpayer].x_n23 = 0; 1 = 1)
+  person[taxpayer].x_limit_binds: test(person[taxpayer].x_l1_s = $0; 0 = $0)
+  person[taxpayer].f5329[form].person.x_limit_binds: test(person[taxpayer].x_l1_s = $0; 0 = $0)
+  person[taxpayer].f5329[form].l1: copy(person[taxpayer].x_l1 = $0)
+  person[taxpayer].x_capped_sum: sum(person[taxpayer].x_e05 = $0; person[taxpayer].x_e09 = $0; person[taxpayer].x_e19 = $0; person[taxpayer].x_e22 = $0; person[taxpayer].x_e23 = $0)
+  person[taxpayer].x_other_exc: subtract_floor0(person[taxpayer].x_l2_all = $0; person[taxpayer].x_capped_sum = $0)
+  person[taxpayer].f5329[form].person.x_other_exc: subtract_floor0(person[taxpayer].x_l2_all = $0; person[taxpayer].x_capped_sum = $0)
+  person[taxpayer].x_has09: test(person[taxpayer].x_e09 = $0; 0 = $0)
+  person[taxpayer].x_c09: choose(person[taxpayer].x_has09 = false; true = true; person[taxpayer].x_has09 = false; false = false; person[taxpayer].zero = $0)
+  person[taxpayer].x_has19: test(person[taxpayer].x_e19 = $0; 0 = $0)
+  person[taxpayer].x_c19: choose(person[taxpayer].x_has19 = false; true = true; person[taxpayer].x_has19 = false; false = false; person[taxpayer].zero = $0)
+  person[taxpayer].x_cap22: param(#f5329.cap_abuse = $10,300)
+  person[taxpayer].x_c22: smaller_of(person[taxpayer].x_e22 = $0; person[taxpayer].x_cap22 = $10,300)
+  person[taxpayer].x_cap23: param(#f5329.cap_emergency = $1,000)
+  person[taxpayer].x_c23: smaller_of(person[taxpayer].x_e23 = $0; person[taxpayer].x_cap23 = $1,000)
+  person[taxpayer].x_limited_sum: sum(person[taxpayer].x_c05 = $0; person[taxpayer].x_c09 = $0; person[taxpayer].x_c19 = $0; person[taxpayer].x_c22 = $0; person[taxpayer].x_c23 = $0)
+  person[taxpayer].f5329[form].person.x_limited_sum: sum(person[taxpayer].x_c05 = $0; person[taxpayer].x_c09 = $0; person[taxpayer].x_c19 = $0; person[taxpayer].x_c22 = $0; person[taxpayer].x_c23 = $0)
+  person[taxpayer].f5329[form].l2: sum(person[taxpayer].x_other_exc = $0; person[taxpayer].x_limited_sum = $0)
+  person[taxpayer].f5329[form].l3: subtract_floor0(person[taxpayer].f5329[form].l1 = $0; person[taxpayer].f5329[form].l2 = $0)
+  person[taxpayer].f5329[form].l3_s: subtract_floor0(person[taxpayer].x_l1_s = $0; person[taxpayer].x_l2_s = $0)
+  person[taxpayer].f5329[form].l3_other: subtract_floor0(person[taxpayer].f5329[form].l3 = $0; person[taxpayer].f5329[form].l3_s = $0)
+  person[taxpayer].f5329[form].rate10: param(#f5329.early_rate = 10/100)
+  person[taxpayer].f5329[form].tax10: multiply_rate(person[taxpayer].f5329[form].l3_other = $0; person[taxpayer].f5329[form].rate10 = 10/100)
+  person[taxpayer].f5329[form].rate25: param(#f5329.simple_rate = 25/100)
+  person[taxpayer].f5329[form].tax25: multiply_rate(person[taxpayer].f5329[form].l3_s = $0; person[taxpayer].f5329[form].rate25 = 25/100)
+  person[taxpayer].f5329[form].l4: sum(person[taxpayer].x_other = false; person[taxpayer].x_two23 = false; person[taxpayer].x_limit_binds = false; person[taxpayer].f5329[form].tax10 = $0; person[taxpayer].f5329[form].tax25 = $0)
+  person[taxpayer].f5329[form].l47: copy(person[taxpayer].x_hsa_excess = $0)
+  person[taxpayer].f5329[form].l48: copy(person[taxpayer].f5329[form].l47 = $0)
+  person[taxpayer].f5329[form].has_excess: test(person[taxpayer].f5329[form].l48 = $0; 0 = $0)
+  person[taxpayer].f5329[form].zero: param(#sales.zero = $0)
+  person[taxpayer].f5329[form].l49: choose(person[taxpayer].x_other = false; person[taxpayer].f5329[form].has_excess = false; true = true; person[taxpayer].f5329[form].has_excess = false; false = false; person[taxpayer].f5329[form].zero = $0)
+  person[taxpayer].f5329[form].tax: sum(person[taxpayer].f5329[form].l4 = $0; person[taxpayer].f5329[form].l49 = $0)
+  person[taxpayer].x_tax: sum_over(person[taxpayer].f5329[form].tax = $0)
+  s2.line8: sum_over(s2.e05_over = false; person[taxpayer].x_tax = $0)
   person[taxpayer].medicare5: sum_over(person[taxpayer].rrta = false; person[taxpayer].w2[a].box5 = $200,000)
   f8959.line1: sum_over(f8959.unsupported = false; person[taxpayer].medicare5 = $200,000)
   f8959.zero: param(#sales.zero = $0)
@@ -1087,7 +1310,7 @@ Derivations:
   f8960.line17: multiply_rate(f8960.line16 = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax); #niit.rate = 38/1000)
   s2.f8960.line17: multiply_rate(f8960.line16 = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax); #niit.rate = 38/1000)
   s2.line12: copy(f8960.line17 = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax))
-  s2.line21: sum(s2.amt = false; s2.other = false; s2.line4 = $0; s2.line11 = $0; s2.line12 = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax))
+  s2.line21: sum(s2.amt = false; s2.other = false; s2.line4 = $0; s2.line8 = $0; s2.line11 = $0; s2.line12 = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax))
   person[taxpayer].medicare6: sum_over(person[taxpayer].rrta = false; person[taxpayer].w2[a].box6 = $2,900)
   f8959.line19: sum_over(f8959.unsupported = false; person[taxpayer].medicare6 = $2,900)
   f8959.line20: copy(f8959.line1 = $200,000)
@@ -1110,6 +1333,10 @@ Interpretation amb.2025.sa_medical_negative_agi: The second (sa.agi_floor, copie
 Interpretation amb.2025.multiplication_subcent: Round the product half-up to the nearest cent at the multiplication. Matches the half-up convention of the printed whole-dollar rounding rules. The whole-dollar default is unaffected: whole-dollar amounts multiplied by these rates produce exact cents, so the reading only matters when cents are turned on.
  (i1040gi, QDCGT worksheet, lines 18 and 21; Rounding Off to Whole Dollars, p. 23)
 Interpretation amb.2025.sd4952_selection: Use the detailed worksheet conditions, including line 4g and exceptions. The worksheet explicitly limits its own use and the Form 1040 line 16 instructions repeat the line 4g condition. (i1040sd, p. 15, Schedule D Tax Worksheet, applicability; compare f1040sd line 20 and i1040gi p. 36)
+Interpretation amb.2025.f5329_medical_joint: The first (person.x_c05 limits each person to Schedule A line 4, and s2.e05_over refuses when the spouses together exceed it). Owner's decision D8(d), 2026-10-29. (i5329, p. 5, Line 2, "Qualified retirement plan distributions up to the amount you paid for unreimbursed medical expenses during the year minus 7.5% of your adjusted gross income (AGI) for the year.")
+Interpretation amb.2025.f5329_simple_limits: The first (person.x_limit_binds refuses Form 5329 line 4). The split changes the tax and the text gives no rule, so the tool refuses the narrow case rather than choose one; a session choice within the owner's D4, reported to the owner. (i5329, p. 5, Line 4, "If any amount on line 3 was a distribution from a SIMPLE IRA received within 2 years from the date you first participated in the SIMPLE IRA plan, you must multiply that amount by 25% instead of 10%.")
+Interpretation amb.2025.f5329_line1_codes: The first (retirement.l1 is the taxable amount of a code 1 or S entry only). The tax is the same either way. Owner's decision D8(a), 2026-10-29. (i5329, p. 3, Line 1, "Enter the amount of early distributions includible in income (other than qualified disaster recovery distributions) that you received from:")
+Interpretation amb.2025.f5329_line4_cents: The first (f5329.tax10 and f5329.tax25 on the person's line 3). The two can differ by a cent on the no-form path only. Owner's decision D8(b), 2026-10-29. (f5329, p. 1, Part I, line 4, "Additional tax. Enter 10% (0.10) of line 3.")
 Scope: Form 1040 lines 1a–37 with the schedules and forms this tool implements and their refusal screens. Unsupported paths are refused with citations. No filing or transmission.
 Rounding: amounts are exact cents; the return-wide whole-dollar rounding setting is deferred (see ambiguities/2025.yaml).
 Estimated tax penalty: not computed; the IRS will figure it (see i1040gi, line 38).

@@ -1539,7 +1539,7 @@ form:
           eq:
           - dependent.edu_over
           - const: true
-      cite: &id001
+      cite:
         doc: i8863
         locator: p. 9, Adjusted Qualified Education Expenses Worksheet, "Complete a separate worksheet for each student for each
           academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having paid)
@@ -1740,7 +1740,7 @@ form:
             - const: true
           then:
             def: aqee
-            bind: &id002
+            bind:
               inst: dependent.edu_inst
               mat: dependent.edu_mat
               adj: dependent.edu_adj
@@ -1754,13 +1754,17 @@ form:
       cite:
         doc: f8863
         locator: p. 2, Part III, line 27, "Adjusted qualified education expenses (see instructions). Don’t enter more than $4,000"
-      refuses: &id003
+      refuses:
       - when: dependent.edu_over_refused
         form: Adjusted Qualified Education Expenses Worksheet for more than one academic period
         remedy: The worksheet is completed for each academic period, and an academic period whose tax-free educational assistance
           and refunds exceed its own expenses cannot be netted against another period's expenses. Figure the worksheet period
           by period.
-        cite: *id001
+        cite:
+          doc: i8863
+          locator: p. 9, Adjusted Qualified Education Expenses Worksheet, "Complete a separate worksheet for each student for
+            each academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having
+            paid) qualified education expenses in 2025."
     - id: dependent.edu_line28
       printed: '28'
       label: Subtract $2,000 from line 27. If zero or less, enter -0-
@@ -1776,7 +1780,10 @@ form:
             - const: true
           then:
             def: aqee
-            bind: *id002
+            bind:
+              inst: dependent.edu_inst
+              mat: dependent.edu_mat
+              adj: dependent.edu_adj
             line: line28
         - guard:
             op: test
@@ -1787,7 +1794,17 @@ form:
       cite:
         doc: f8863
         locator: p. 2, Part III, line 28, "Subtract $2,000 from line 27. If zero or less, enter -0-"
-      refuses: *id003
+      refuses:
+      - when: dependent.edu_over_refused
+        form: Adjusted Qualified Education Expenses Worksheet for more than one academic period
+        remedy: The worksheet is completed for each academic period, and an academic period whose tax-free educational assistance
+          and refunds exceed its own expenses cannot be netted against another period's expenses. Figure the worksheet period
+          by period.
+        cite:
+          doc: i8863
+          locator: p. 9, Adjusted Qualified Education Expenses Worksheet, "Complete a separate worksheet for each student for
+            each academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having
+            paid) qualified education expenses in 2025."
     - id: dependent.edu_line29
       printed: '29'
       label: Multiply line 28 by 25% (0.25)
@@ -1803,7 +1820,10 @@ form:
             - const: true
           then:
             def: aqee
-            bind: *id002
+            bind:
+              inst: dependent.edu_inst
+              mat: dependent.edu_mat
+              adj: dependent.edu_adj
             line: line29
         - guard:
             op: test
@@ -1814,7 +1834,17 @@ form:
       cite:
         doc: f8863
         locator: p. 2, Part III, line 29, "Multiply line 28 by 25% (0.25)"
-      refuses: *id003
+      refuses:
+      - when: dependent.edu_over_refused
+        form: Adjusted Qualified Education Expenses Worksheet for more than one academic period
+        remedy: The worksheet is completed for each academic period, and an academic period whose tax-free educational assistance
+          and refunds exceed its own expenses cannot be netted against another period's expenses. Figure the worksheet period
+          by period.
+        cite:
+          doc: i8863
+          locator: p. 9, Adjusted Qualified Education Expenses Worksheet, "Complete a separate worksheet for each student for
+            each academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having
+            paid) qualified education expenses in 2025."
     - id: dependent.edu_line30
       printed: '30'
       label: American opportunity credit for this student. If line 28 is zero, enter the amount from line 27. Otherwise, add $2,000
@@ -1831,7 +1861,10 @@ form:
             - const: true
           then:
             def: aqee
-            bind: *id002
+            bind:
+              inst: dependent.edu_inst
+              mat: dependent.edu_mat
+              adj: dependent.edu_adj
             line: line30
         - guard:
             op: test
@@ -1843,7 +1876,17 @@ form:
         doc: f8863
         locator: p. 2, Part III, line 30, "If line 28 is zero, enter the amount from line 27.", "Include the total of all amounts
           from all Parts III, line 30, on Part I, line 1"
-      refuses: *id003
+      refuses:
+      - when: dependent.edu_over_refused
+        form: Adjusted Qualified Education Expenses Worksheet for more than one academic period
+        remedy: The worksheet is completed for each academic period, and an academic period whose tax-free educational assistance
+          and refunds exceed its own expenses cannot be netted against another period's expenses. Figure the worksheet period
+          by period.
+        cite:
+          doc: i8863
+          locator: p. 9, Adjusted Qualified Education Expenses Worksheet, "Complete a separate worksheet for each student for
+            each academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having
+            paid) qualified education expenses in 2025."
     - id: dependent.edu_line31
       printed: '31'
       label: Adjusted qualified education expenses for the lifetime learning credit
@@ -1859,7 +1902,10 @@ form:
             - const: true
           then:
             def: aqee
-            bind: *id002
+            bind:
+              inst: dependent.edu_inst
+              mat: dependent.edu_mat
+              adj: dependent.edu_adj
             line: ws4_llc
         - guard:
             op: test
@@ -1871,7 +1917,17 @@ form:
         doc: f8863
         locator: p. 2, Part III, line 31, "Adjusted qualified education expenses (see instructions). Include the total of all
           amounts from all Parts III, line 31, on Part II, line 10"
-      refuses: *id003
+      refuses:
+      - when: dependent.edu_over_refused
+        form: Adjusted Qualified Education Expenses Worksheet for more than one academic period
+        remedy: The worksheet is completed for each academic period, and an academic period whose tax-free educational assistance
+          and refunds exceed its own expenses cannot be netted against another period's expenses. Figure the worksheet period
+          by period.
+        cite:
+          doc: i8863
+          locator: p. 9, Adjusted Qualified Education Expenses Worksheet, "Complete a separate worksheet for each student for
+            each academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having
+            paid) qualified education expenses in 2025."
     # --- end Stage 19 ---
   collection:
     cite:

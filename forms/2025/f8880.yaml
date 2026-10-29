@@ -133,8 +133,8 @@ form:
     type: NonNegDollars
     expr:
       op: sum_over
-      collection: retirement
-      field: retirement.sav_amount
+      collection: person
+      field: person.sav_dist
     cite:
       doc: f8880
       locator: 'p. 2, Line 4, "Enter the total amount of distributions you, and your spouse if filing jointly, received after

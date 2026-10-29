@@ -11,6 +11,7 @@
       "evidence": "synthetic-regression",
       "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -34,7 +35,7 @@
         "person[taxpayer].w2[b].box3": 10000000,
         "person[taxpayer].w2[b].box7": 0,
         "person[taxpayer].w2[b].box4": 620000,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -89,6 +90,7 @@
       "evidence": "synthetic-regression",
       "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -112,7 +114,7 @@
         "person[taxpayer].w2[b].box3": 7609999,
         "person[taxpayer].w2[b].box7": 0,
         "person[taxpayer].w2[b].box4": 471820,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -167,6 +169,7 @@
       "evidence": "synthetic-regression",
       "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -190,7 +193,7 @@
         "person[taxpayer].w2[b].box3": 7610000,
         "person[taxpayer].w2[b].box7": 0,
         "person[taxpayer].w2[b].box4": 471821,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -245,6 +248,7 @@
       "evidence": "synthetic-regression",
       "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -268,7 +272,7 @@
         "person[taxpayer].w2[b].box3": 7610001,
         "person[taxpayer].w2[b].box7": 0,
         "person[taxpayer].w2[b].box4": 471821,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -323,6 +327,7 @@
       "evidence": "synthetic-regression",
       "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -346,7 +351,7 @@
         "person[taxpayer].w2[b].box3": 10000000,
         "person[taxpayer].w2[b].box7": 0,
         "person[taxpayer].w2[b].box4": 491819,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -401,6 +406,7 @@
       "evidence": "synthetic-regression",
       "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -424,7 +430,7 @@
         "person[taxpayer].w2[b].box3": 10000000,
         "person[taxpayer].w2[b].box7": 0,
         "person[taxpayer].w2[b].box4": 491820,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -479,6 +485,7 @@
       "evidence": "synthetic-regression",
       "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -502,7 +509,7 @@
         "person[taxpayer].w2[b].box3": 10000000,
         "person[taxpayer].w2[b].box7": 0,
         "person[taxpayer].w2[b].box4": 491821,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -557,6 +564,7 @@
       "evidence": "synthetic-regression",
       "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -576,7 +584,7 @@
         "person[taxpayer].w2[a].box3": 17610000,
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box4": 1091820,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -631,6 +639,7 @@
       "evidence": "synthetic-regression",
       "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -656,7 +665,7 @@
           "param": "ss.limit",
           "offset": -1
         },
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -711,6 +720,7 @@
       "evidence": "synthetic-regression",
       "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -733,7 +743,7 @@
           "param": "ss.limit",
           "offset": 1
         },
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -815,6 +825,7 @@
       "evidence": "synthetic-regression",
       "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -841,7 +852,7 @@
         "person[taxpayer].w2[b].box3": 5000000,
         "person[taxpayer].w2[b].box7": 0,
         "person[taxpayer].w2[b].box4": 310000,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -923,6 +934,7 @@
       "evidence": "synthetic-regression",
       "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -946,7 +958,7 @@
         "person[taxpayer].w2[b].box3": 7610001,
         "person[taxpayer].w2[b].box7": 0,
         "person[taxpayer].w2[b].box4": 471821,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -1001,6 +1013,7 @@
       "evidence": "synthetic-regression",
       "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -1015,7 +1028,7 @@
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -1070,6 +1083,8 @@
       "evidence": "synthetic-regression",
       "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values. Stage 13: married filing jointly is computed; neither spouse has a Form W-2, so no excess Social Security credit: Schedule 3 lines 11 and 15 and Form 1040 line 31 are $0 (predicted by hand before recording).",
       "inputs": {
+        "person[taxpayer].x_other": false,
+        "person[spouse].x_other": false,
         "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
@@ -1085,7 +1100,8 @@
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
+        "$retirement@person[spouse]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -1149,6 +1165,7 @@
       "evidence": "synthetic-regression",
       "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values. Stage 13: married filing separately stays refused, now through s3.mfs.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "mfs",
         "$person": [
@@ -1163,7 +1180,7 @@
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -1245,6 +1262,7 @@
       "evidence": "synthetic-regression",
       "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -1259,7 +1277,7 @@
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -1341,6 +1359,7 @@
       "evidence": "synthetic-regression",
       "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
@@ -1364,7 +1383,7 @@
         "person[taxpayer].w2[b].box3": 10000000,
         "person[taxpayer].w2[b].box7": 0,
         "person[taxpayer].w2[b].box4": 620000,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -1419,6 +1438,7 @@
       "evidence": "synthetic-regression",
       "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "qss",
         "$person": [
@@ -1442,7 +1462,7 @@
         "person[taxpayer].w2[b].box3": 10000000,
         "person[taxpayer].w2[b].box7": 0,
         "person[taxpayer].w2[b].box4": 620000,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -1497,6 +1517,7 @@
       "evidence": "synthetic-regression",
       "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values. Stage 18: Schedule 3 line 9 is figured on Form 8962 from Forms 1095-A (none here, so $0), no longer a supplied $1.23; lines 15 and 31 are $1.23 less.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -1520,7 +1541,7 @@
         "person[taxpayer].w2[b].box3": 10000000,
         "person[taxpayer].w2[b].box7": 0,
         "person[taxpayer].w2[b].box4": 620000,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -1575,6 +1596,8 @@
       "evidence": "synthetic-regression",
       "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
       "inputs": {
+        "person[taxpayer].x_other": false,
+        "person[second].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -1602,7 +1625,8 @@
         "person[second].w2[a].box3": 10000000,
         "person[second].w2[a].box7": 0,
         "person[second].w2[a].box4": 620000,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
+        "$retirement@person[second]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -1659,6 +1683,7 @@
       "evidence": "synthetic-regression",
       "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -1684,7 +1709,7 @@
         "person[taxpayer].w2[b].box3": 5000000,
         "person[taxpayer].w2[b].box7": 0,
         "person[taxpayer].w2[b].box4": 0,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,

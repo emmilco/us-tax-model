@@ -1,0 +1,13 @@
+{
+ "kind": "render",
+ "form": "f5329",
+ "rulings": [
+  {
+   "printed": "2",
+   "restated": "Add person helper \"Exceptions without a fixed limit\" and person helper \"Exceptions 05, 09, 19, 22 and 23 within their limits\".",
+   "model": "Pub. 590-B sets two further limits that the program's caps and its exception-amount input omit. Exception 22 'must not exceed the lesser of $10,300 for 2025 or 50% of the present value of the IRA'. Exception 23 'must not exceed the lesser of $1,000 or your total interest in the IRA minus $1,000'.",
+   "ruling": "Ruling: finding (F1, EXC-LIMITS; the project's line and the question behind it, not its English); p590b p. 28, Domestic abuse victim distributions, Distribution limits: \"An eligible distribution to a domestic abuse victim must not exceed the lesser of $10,300 for 2025 or 50% of the present value of the IRA\"; Emergency personal expense distributions, Distribution limits: \"the amount that may be treated as an emergency personal expense distribution must not exceed the lesser of $1,000 or your total interest in the IRA minus $1,000\". The restatement is right about what the project does: person.x_c22 and person.x_c23 cap at $10,300 and $1,000 only, and retirement.exc_amount asks \"the amount you used for that purpose\" with no word of the account-value limits, which decision D4 said would be \"attested in the question's wording\". A domestic-abuse distribution of $8,000 from an IRA worth $12,000 is excluded in full, where the limit is $6,000 ($200 of tax omitted). See .transcription/proposed/stage21/f5329.findings.md F1.",
+   "context": "751d503d6bbd3e8ccaac0ceb10826109c317b38ba86192f6e166ea85345d7947"
+  }
+ ]
+}

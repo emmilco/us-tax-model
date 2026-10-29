@@ -1,6 +1,6 @@
 # Second-family review comparison — 2025
 
-Summary: 145 form-kind pair(s) with logs from Claude and deepseek; ruled model-error noise 7.6% (328/4334 second-family lines judged; pending reviews are provisional); 59 eligible, 85 pending; raw agreement 80.5% (diagnostic only); current independence yield 257 line(s); both families disputed 466
+Summary: 149 form-kind pair(s) with logs from Claude and deepseek; ruled model-error noise 7.8% (361/4605 second-family lines judged; pending reviews are provisional); 63 eligible, 85 pending; raw agreement 80.8% (diagnostic only); current independence yield 262 line(s); both families disputed 493
 
 Written by `tools/transcription/compare_families.py` on 2026-10-29 from the review logs under `reviews/2025/`. For each form with a Claude log and a second model family's log of the same kind (`<form>.<family>.md`, families.py), the lines judged in both are compared.
 
@@ -25,16 +25,17 @@ Written by `tools/transcription/compare_families.py` on 2026-10-29 from the revi
 | dependent | deepseek (deepseek-flash) | 21 | 1 | 4.8% | 15/21 (71.4%) | pending | 3 | 16 | 1 | 0 |
 | div | deepseek (deepseek-flash) | 0 | 0 | n/a | 0/0 (n/a) | pending | 0 | 0 | 0 | 0 |
 | eic | deepseek (deepseek-flash) | 18 | 8 | 44.4% | 8/18 (44.4%) | pending | 3 | 6 | 1 | 0 |
-| f1040 | deepseek (deepseek-flash) | 52 | 33 | 63.5% | 10/52 (19.2%) | pending | 8 | 10 | 1 | 0 |
+| f1040 | deepseek (deepseek-flash) | 52 | 36 | 69.2% | 8/52 (15.4%) | pending | 6 | 5 | 5 | 0 |
 | f1095a | deepseek (deepseek-flash) | 29 | 13 | 44.8% | 15/29 (51.7%) | pending | 13 | 3 | 0 | 0 |
 | f2441 | deepseek (deepseek-flash) | 37 | 12 | 32.4% | 22/37 (59.5%) | pending | 15 | 7 | 3 | 0 |
 | f4562 | deepseek (deepseek-flash) | 15 | 1 | 6.7% | 0/15 (0.0%) | pending | 0 | 14 | 0 | 0 |
 | f4952 | deepseek (deepseek-flash) | 14 | 9 | 64.3% | 3/14 (21.4%) | pending | 1 | 4 | 0 | 0 |
+| f5329 | deepseek (deepseek-flash) | 10 | 4 | 40.0% | 5/10 (50.0%) | pending | 4 | 2 | 0 | 0 |
 | f5695 | deepseek (deepseek-flash) | 33 | 9 | 27.3% | 13/33 (39.4%) | pending | 2 | 12 | 10 | 0 |
 | f8606 | deepseek (deepseek-flash) | 5 | 2 | 40.0% | 0/5 (0.0%) | pending | 0 | 3 | 0 | 0 |
 | f8863 | deepseek (deepseek-flash) | 28 | 16 | 57.1% | 11/28 (39.3%) | pending | 7 | 5 | 0 | 0 |
-| f8880 | deepseek (deepseek-flash) | 21 | 12 | 57.1% | 5/21 (23.8%) | pending | 0 | 5 | 4 | 0 |
-| f8889 | deepseek (deepseek-flash) | 19 | 10 | 52.6% | 0/19 (0.0%) | pending | 1 | 8 | 0 | 0 |
+| f8880 | deepseek (deepseek-flash) | 21 | 5 | 23.8% | 16/21 (76.2%) | pending | 7 | 9 | 0 | 0 |
+| f8889 | deepseek (deepseek-flash) | 20 | 5 | 25.0% | 8/20 (40.0%) | pending | 3 | 12 | 0 | 0 |
 | f8959 | deepseek (deepseek-flash) | 24 | 22 | 91.7% | 0/24 (0.0%) | pending | 0 | 2 | 0 | 0 |
 | f8960 | deepseek (deepseek-flash) | 25 | 19 | 76.0% | 3/25 (12.0%) | pending | 3 | 3 | 0 | 0 |
 | f8962 | deepseek (deepseek-flash) | 97 | 34 | 35.1% | 23/97 (23.7%) | pending | 13 | 11 | 39 | 0 |
@@ -50,15 +51,15 @@ Written by `tools/transcription/compare_families.py` on 2026-10-29 from the revi
 | mq | deepseek (deepseek-flash) | 1 | 1 | 100.0% | 0/1 (0.0%) | pending | 0 | 0 | 0 | 0 |
 | oi8z | deepseek (deepseek-flash) | 1 | 1 | 100.0% | 0/1 (0.0%) | pending | 0 | 0 | 0 | 0 |
 | otjob | deepseek (deepseek-flash) | 2 | 1 | 50.0% | 0/2 (0.0%) | pending | 0 | 1 | 0 | 0 |
-| person | deepseek (deepseek-flash) | 80 | 29 | 36.2% | 32/80 (40.0%) | pending | 10 | 39 | 2 | 0 |
+| person | deepseek (deepseek-flash) | 99 | 36 | 36.4% | 43/99 (43.4%) | pending | 11 | 47 | 5 | 0 |
 | qbi | deepseek (deepseek-flash) | 5 | 1 | 20.0% | 0/5 (0.0%) | pending | 2 | 2 | 0 | 0 |
 | qdcg | deepseek (deepseek-flash) | 26 | 23 | 88.5% | 0/26 (0.0%) | pass | 0 | 3 | 0 | 0 |
 | refund | deepseek (deepseek-flash) | 11 | 3 | 27.3% | 5/11 (45.5%) | pending | 5 | 3 | 0 | 0 |
-| retirement | deepseek (deepseek-flash) | 16 | 10 | 62.5% | 0/16 (0.0%) | pending | 2 | 4 | 0 | 0 |
+| retirement | deepseek (deepseek-flash) | 26 | 10 | 38.5% | 11/26 (42.3%) | pending | 0 | 16 | 0 | 0 |
 | s1 | deepseek (deepseek-flash) | 27 | 19 | 70.4% | 6/27 (22.2%) | pending | 2 | 4 | 2 | 0 |
 | s179 | deepseek (deepseek-flash) | 14 | 10 | 71.4% | 2/14 (14.3%) | pending | 1 | 2 | 1 | 0 |
 | s1a | deepseek (deepseek-flash) | 43 | 8 | 18.6% | 34/43 (79.1%) | pending | 1 | 34 | 0 | 0 |
-| s2 | deepseek (deepseek-flash) | 10 | 4 | 40.0% | 4/10 (40.0%) | pending | 5 | 1 | 0 | 0 |
+| s2 | deepseek (deepseek-flash) | 13 | 8 | 61.5% | 4/13 (30.8%) | pending | 4 | 1 | 0 | 0 |
 | s3 | deepseek (deepseek-flash) | 11 | 6 | 54.5% | 5/11 (45.5%) | pending | 0 | 5 | 0 | 0 |
 | s8812 | deepseek (deepseek-flash) | 34 | 18 | 52.9% | 13/34 (38.2%) | pending | 10 | 6 | 0 | 0 |
 | sa | deepseek (deepseek-flash) | 22 | 15 | 68.2% | 6/22 (27.3%) | pending | 2 | 5 | 0 | 0 |
@@ -77,7 +78,7 @@ Written by `tools/transcription/compare_families.py` on 2026-10-29 from the revi
 | tipjob | deepseek (deepseek-flash) | 3 | 2 | 66.7% | 0/3 (0.0%) | pending | 0 | 0 | 1 | 0 |
 | u1250 | deepseek (deepseek-flash) | 18 | 6 | 33.3% | 7/18 (38.9%) | pending | 4 | 6 | 2 | 0 |
 | w2 | deepseek (deepseek-flash) | 5 | 3 | 60.0% | 0/5 (0.0%) | pending | 0 | 1 | 1 | 0 |
-| **all** | | 1108 | 485 | 43.8% | | | 164 | 375 | 84 | 7 |
+| **all** | | 1151 | 491 | 42.7% | | | 173 | 400 | 87 | 7 |
 
 Pending asset [deepseek]: model-error noise above 10%.
 Pending carloan [deepseek]: model-error noise above 10%.
@@ -86,17 +87,18 @@ Pending dependent [deepseek]: model-error noise above 10%; no passing current ex
 Excluded internal adapters for div: div.screen. Original logs/rulings are preserved; separate engineering checks earn no independent tax-evidence credit.
 Pending div [deepseek]: no source-defined computed targets; internal adapter checks earn no tax-evidence credit; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending eic [deepseek]: model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for deepseek: current expression/refusal validation fails.
-Pending f1040 [deepseek]: 1 open, unclassified or interface-gap rulings; model-error noise above 10%.
+Pending f1040 [deepseek]: model-error noise above 10%; no passing current expression type validation: claude; no verified current request context for claude: current expression/refusal validation fails.
 Pending f1095a [deepseek]: model-error noise above 10%.
 Pending f2441 [deepseek]: model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for claude: required input/interface wording is missing or stale; no verified current request context for deepseek: current expression/refusal validation fails.
 Pending f4562 [deepseek]: 14 open, unclassified or interface-gap rulings; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Excluded internal adapters for f4952: f4952.election. Original logs/rulings are preserved; separate engineering checks earn no independent tax-evidence credit.
 Pending f4952 [deepseek]: model-error noise above 10%.
+Pending f5329 [deepseek]: model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for deepseek: current expression/refusal validation fails.
 Pending f5695 [deepseek]: model-error noise above 10%.
 Pending f8606 [deepseek]: 3 open, unclassified or interface-gap rulings; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending f8863 [deepseek]: model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for deepseek: current expression/refusal validation fails.
-Pending f8880 [deepseek]: model-error noise above 10%.
-Pending f8889 [deepseek]: no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
+Pending f8880 [deepseek]: model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for deepseek: current expression/refusal validation fails.
+Pending f8889 [deepseek]: model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for deepseek: current expression/refusal validation fails; no passing current source-based partial-input checks: deepseek.
 Pending f8959 [deepseek]: no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending f8960 [deepseek]: model-error noise above 10%.
 Pending f8962 [deepseek]: model-error noise above 10%; no passing current expression type validation: claude, deepseek; no verified current request context for claude: current expression/refusal validation fails; no verified current request context for deepseek: current expression/refusal validation fails.
@@ -111,16 +113,16 @@ Pending ira [deepseek]: model-error noise above 10%.
 Pending mq [deepseek]: no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending oi8z [deepseek]: transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending otjob [deepseek]: no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
-Pending person [deepseek]: 2 open, unclassified or interface-gap rulings; model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for deepseek: current expression/refusal validation fails.
+Pending person [deepseek]: 3 open, unclassified or interface-gap rulings; model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for deepseek: current expression/refusal validation fails.
 Pending qbi [deepseek]: 4 open, unclassified or interface-gap rulings; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending refund [deepseek]: model-error noise above 10%; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
-Pending retirement [deepseek]: 4 open, unclassified or interface-gap rulings; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
+Pending retirement [deepseek]: model-error noise above 10%.
 Pending s1 [deepseek]: model-error noise above 10%.
 Pending s179 [deepseek]: model-error noise above 10%.
 Pending s1a [deepseek]: model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for claude: required input/interface wording is missing or stale; no verified current request context for deepseek: current expression/refusal validation fails.
-Pending s2 [deepseek]: 2 open, unclassified or interface-gap rulings; model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for deepseek: current expression/refusal validation fails.
+Pending s2 [deepseek]: 1 open, unclassified or interface-gap rulings; model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for deepseek: current expression/refusal validation fails.
 Pending s3 [deepseek]: model-error noise above 10%.
-Pending s8812 [deepseek]: model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for deepseek: current expression/refusal validation fails.
+Pending s8812 [deepseek]: model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for claude: required input/interface wording is missing or stale; no verified current request context for deepseek: current expression/refusal validation fails.
 Pending sa [deepseek]: 1 open, unclassified or interface-gap rulings; model-error noise above 10%.
 Pending sb [deepseek]: no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending sc [deepseek]: 7 missing expected lines; 34 open, unclassified or interface-gap rulings; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
@@ -147,14 +149,12 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | eic | deepseek | 1 | DISAGREE | (no reason given) |
 | eic | deepseek | eic.clergy | DISAGREE | The closed input interface provides no clergy-specific indicator; within the declared scope this box is modeled as not checked. |
 | eic | deepseek | eic.self_employed | DISAGREE | (no reason given) |
-| f1040 | deepseek | 19 | DISAGREE | (no reason given) |
 | f1040 | deepseek | 1a | DISAGREE | (no reason given) |
 | f1040 | deepseek | 25a | DISAGREE | (no reason given) |
-| f1040 | deepseek | 25c | DISAGREE | (no reason given) |
 | f1040 | deepseek | 2a | DISAGREE | (no reason given) |
 | f1040 | deepseek | 2b | DISAGREE | (no reason given) |
 | f1040 | deepseek | 3b | DISAGREE | (no reason given) |
-| f1040 | deepseek | 6a | DISAGREE | (no reason given) |
+| f1040 | deepseek | 6d | DISAGREE | (no reason given) |
 | f1095a | deepseek | f1095a.b_apr | DISAGREE | (no reason given) |
 | f1095a | deepseek | f1095a.b_aug | DISAGREE | (no reason given) |
 | f1095a | deepseek | f1095a.b_dec | DISAGREE | (no reason given) |
@@ -184,6 +184,10 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | f2441 | deepseek | 9a | DISAGREE | (no reason given) |
 | f2441 | deepseek | 9c | DISAGREE | (no reason given) |
 | f4952 | deepseek | 2 | DISAGREE | (no reason given) |
+| f5329 | deepseek | 4 | DISAGREE | The SIMPLE IRA 25% rate on the SIMPLE IRA portion is applied in the provided person.x_tax aggregate. |
+| f5329 | deepseek | 47 | DISAGREE | Line 47 current-year HSA excess contributions are taken from Form 8889 line 13 because the underlying contribution, employer-contribution and limit detail is outside the supplied Form 5329 interface. |
+| f5329 | deepseek | 48 | DISAGREE | Lines 42 through 46 are not in this Parts I and VII slice; the total excess contributions are taken from the provided person.x_hsa_excess aggregate. |
+| f5329 | deepseek | 49 | DISAGREE | (no reason given) |
 | f5695 | deepseek | 32b | DISAGREE | (no reason given) |
 | f5695 | deepseek | 5b | DISAGREE | (no reason given) |
 | f8863 | deepseek | (CLW 2) | DISAGREE | (no reason given) |
@@ -193,7 +197,16 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | f8863 | deepseek | 19 | DISAGREE | (no reason given) |
 | f8863 | deepseek | 8 | DISAGREE | (no reason given) |
 | f8863 | deepseek | 9 | DISAGREE | (no reason given) |
-| f8889 | deepseek | 17b | DISAGREE | Uses subject_part when line 17a is true; otherwise uses all of line 16 when line 17a is false. If line 16 is zero, the tax is zero regardless of line 17a. |
+| f8880 | deepseek | (CLW 2) | DISAGREE | The supplied catalog provides Schedule 3 line 8 as the published total of the credits the worksheet lists; the individual 6d and 6l lines are not in the supplied catalog. |
+| f8880 | deepseek | 10 | DISAGREE | (no reason given) |
+| f8880 | deepseek | 3(a) | DISAGREE | (no reason given) |
+| f8880 | deepseek | 3(b) | DISAGREE | (no reason given) |
+| f8880 | deepseek | 5(a) | DISAGREE | (no reason given) |
+| f8880 | deepseek | 5(b) | DISAGREE | (no reason given) |
+| f8880 | deepseek | 7 | DISAGREE | (no reason given) |
+| f8889 | deepseek | 12 | DISAGREE | (no reason given) |
+| f8889 | deepseek | 5 | DISAGREE | (no reason given) |
+| f8889 | deepseek | 8 | DISAGREE | (no reason given) |
 | f8960 | deepseek | 10 | DISAGREE | (no reason given) |
 | f8960 | deepseek | 9a | DISAGREE | (no reason given) |
 | f8960 | deepseek | 9b | DISAGREE | (no reason given) |
@@ -225,12 +238,13 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | person | deepseek | Step 3 | DISAGREE | (no reason given) |
 | person | deepseek | Step 5 | DISAGREE | (no reason given) |
 | person | deepseek | Step 7 | DISAGREE | (no reason given) |
-| person | deepseek | Step 8 | DISAGREE | (no reason given) |
-| person | deepseek | credit | DISAGREE | (no reason given) |
-| person | deepseek | excess | DISAGREE | (no reason given) |
+| person | deepseek | person.hsa_forms | DISAGREE | (no reason given) |
 | person | deepseek | person.income179 | DISAGREE | (no reason given) |
+| person | deepseek | person.positive_profits | DISAGREE | (no reason given) |
 | person | deepseek | person.sc_1a | DISAGREE | (no reason given) |
-| person | deepseek | wages | DISAGREE | (no reason given) |
+| person | deepseek | person.x_must | DISAGREE | (no reason given) |
+| person | deepseek | person.x_tax | DISAGREE | (no reason given) |
+| person | deepseek | person.x_two23 | DISAGREE | (no reason given) |
 | qbi | deepseek | qbi.eligible | DISAGREE | (no reason given) |
 | qbi | deepseek | qbi.net_capital_gain | DISAGREE | (no reason given) |
 | refund | deepseek | 1 | DISAGREE | The IRS says none of the refund is taxable if you did not itemize or elected general sales taxes; I set line 1 to zero in those cases so that line 9 is zero. |
@@ -238,17 +252,14 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | refund | deepseek | 4 | DISAGREE | If there were no 2024 itemized deductions, line 4 is set to zero because the worksheet is not used. |
 | refund | deepseek | refund.has | DISAGREE | The IRS worksheet does not print a separate yes/no result; I encode has as true exactly when the taxable part on line 9 is greater than zero. |
 | refund | deepseek | refund.taxable | DISAGREE | (no reason given) |
-| retirement | deepseek | retirement.is_ira | DISAGREE | (no reason given) |
-| retirement | deepseek | retirement.taxable | DISAGREE | (no reason given) |
 | s1 | deepseek | 19a | DISAGREE | (no reason given) |
 | s1 | deepseek | 2a | DISAGREE | (no reason given) |
 | s179 | deepseek | s179.differs | DISAGREE | The IRS pages do not name this interface. Read here as whether the business income limitation reduces the deduction below the sum of lines 9 and 10, i.e. whether a carryover arises. |
 | s1a | deepseek | 38 | DISAGREE | (no reason given) |
-| s2 | deepseek | 11 | DISAGREE | Form 8959 line 24. |
-| s2 | deepseek | 17c | DISAGREE | Total of each person's Form 8889 line 17b additional tax, represented by person.hsa_addtax. |
-| s2 | deepseek | 18 | DISAGREE | Only line 17c is computed here. Other line 17a through 17z amounts are outside this tool's scope; s2.other refuses this line when any unsupported Schedule 2 amount is present. |
-| s2 | deepseek | 21 | DISAGREE | Within this tool's scope, line 21 is the sum of lines 4, 11, 12 and 18. Lines 7 through 10, 13 through 16 and 19 are outside scope; s2.other refuses this line when any unsupported Schedule 2 amount is present. |
-| s2 | deepseek | 4 | DISAGREE | Total of each person's Schedule SE line 13; the per-person SE computation carries its own scope gates. |
+| s2 | deepseek | 11 | DISAGREE | (no reason given) |
+| s2 | deepseek | 21 | DISAGREE | Only the computed Part II amounts are summed; other Part II amounts are outside scope and covered by s2.other. |
+| s2 | deepseek | 4 | DISAGREE | (no reason given) |
+| s2 | deepseek | 8 (box) | DISAGREE | (no reason given) |
 | s8812 | deepseek | 13 | DISAGREE | (no reason given) |
 | s8812 | deepseek | 14 | DISAGREE | (no reason given) |
 | s8812 | deepseek | 16a | DISAGREE | (no reason given) |
@@ -347,13 +358,8 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | eic | deepseek | eic.separated_box | DISAGREE | DISAGREE | (no reason given) |
 | f1040 | deepseek | 16 | DISAGREE | DISAGREE | (no reason given) |
 | f1040 | deepseek | 1e | DISAGREE | DISAGREE | (no reason given) |
+| f1040 | deepseek | 28 (box) | DISAGREE | DISAGREE | No supplied input or line gives this election; the tool claims the ACTC by default, so this box is false. |
 | f1040 | deepseek | 29 | DISAGREE | DISAGREE | (no reason given) |
-| f1040 | deepseek | 4a | DISAGREE | DISAGREE | (no reason given) |
-| f1040 | deepseek | 4b | DISAGREE | DISAGREE | (no reason given) |
-| f1040 | deepseek | 4c | DISAGREE | DISAGREE | (no reason given) |
-| f1040 | deepseek | 5a | DISAGREE | DISAGREE | (no reason given) |
-| f1040 | deepseek | 5b | DISAGREE | DISAGREE | (no reason given) |
-| f1040 | deepseek | 5c | DISAGREE | DISAGREE | (no reason given) |
 | f1040 | deepseek | 6c | DISAGREE | DISAGREE | (no reason given) |
 | f1095a | deepseek | f1095a.b_used | DISAGREE | DISAGREE | The IRS text supplies the b_counted gate for whether column B is counted; b_used exposes that same condition for other forms. |
 | f1095a | deepseek | f1095a.line33a | DISAGREE | DISAGREE | (no reason given) |
@@ -383,6 +389,8 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | f4952 | deepseek | 4d | DISAGREE | DISAGREE | Computed from the supported securities sales collection; capital gain distributions and capital loss carryovers are outside this interface and are covered by f4952.unsupported. |
 | f4952 | deepseek | 4e | DISAGREE | DISAGREE | Net capital gain is computed from long-term sales over short-term losses in the supported securities sales collection. |
 | f4952 | deepseek | f4952.required | DISAGREE | DISAGREE | Computed from the Who Must File exception: not required when line 4c is more than line 1, there is no carryover, and no unsupported other investment income or expense. |
+| f5329 | deepseek | 2 | DISAGREE | DISAGREE | The exception amount is taken from the provided person.x_limited_sum aggregate, which limits the total exceptions to line 1. |
+| f5329 | deepseek | f5329.must | DISAGREE | DISAGREE | Within this Parts I and VII slice, the form is treated as required when there is an early distribution on line 1 or total HSA excess contributions on line 48. |
 | f5695 | deepseek | 14 | DISAGREE | DISAGREE | The worksheet also lists Schedule 3 lines 6l, 6d, 6m, 6f, 6g, 6c, and 6h; those lines are not in the supplied interface, so this expression subtracts only the supplied Schedule 3 lines 1 through 4, Form 5695 line 32, and Form 1040 line 19. |
 | f5695 | deepseek | 18b | DISAGREE | DISAGREE | (no reason given) |
 | f5695 | deepseek | 19h | DISAGREE | DISAGREE | (no reason given) |
@@ -403,16 +411,24 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | f8863 | deepseek | 7 (box) | DISAGREE | DISAGREE | (no reason given) |
 | f8863 | deepseek | f8863.eligible | DISAGREE | DISAGREE | Eligibility for at least one education credit: expenses paid, not married filing separately, and not claimed as a dependent or a dual-status alien. The AOC ban is handled separately as a refusal on the AOC lines, leaving the lifetime learning credit available. |
 | f8863 | deepseek | f8863.kid_needed | DISAGREE | DISAGREE | Implements the under-age-24 refundable AOC restriction from the instructions: under 24, a parent alive, not filing jointly, and either under 18; age 18 with earned income less than half support; or over 18 and under 24 as a full-time student with earned income less than half support. It uses the taxpayer entry in the person collection. |
-| f8880 | deepseek | 12 | DISAGREE | DISAGREE | The caution makes the credit unavailable if a person who made the contribution or deferral was born after January 1, 2008, was claimed as a dependent, or was a student; that condition is carried to the result as zero. The line 7 zero and line 9 zero instructions also produce zero through the multiplication. |
-| f8880 | deepseek | 4(a) | DISAGREE | DISAGREE | The instructions' joint-return exception is read as keeping nonjoint-year distributions in the receiving person's own column and putting the other spouse's distributions in a column only for years the couple filed jointly (person.sav_prior_joint); person.sav_prior_other stays in the person's own column. |
-| f8880 | deepseek | 4(b) | DISAGREE | DISAGREE | Same joint-return exception mapping as line 4(a). |
+| f8880 | deepseek | 1(a) | DISAGREE | DISAGREE | (no reason given) |
+| f8880 | deepseek | 1(b) | DISAGREE | DISAGREE | (no reason given) |
+| f8880 | deepseek | 12 | DISAGREE | DISAGREE | (no reason given) |
+| f8880 | deepseek | 2(a) | DISAGREE | DISAGREE | (no reason given) |
+| f8880 | deepseek | 2(b) | DISAGREE | DISAGREE | (no reason given) |
+| f8880 | deepseek | 4(a) | DISAGREE | DISAGREE | (no reason given) |
+| f8880 | deepseek | 4(b) | DISAGREE | DISAGREE | (no reason given) |
 | f8880 | deepseek | 6(a) | DISAGREE | DISAGREE | (no reason given) |
 | f8880 | deepseek | 6(b) | DISAGREE | DISAGREE | (no reason given) |
-| f8889 | deepseek | 13 | DISAGREE | DISAGREE | Smaller of line 2 and line 12; zero is forced when line 2 is zero without needing line 12. |
+| f8889 | deepseek | 13 | DISAGREE | DISAGREE | (no reason given) |
+| f8889 | deepseek | 14b | DISAGREE | DISAGREE | Chosen reading: the rolled-over part cannot exceed line 14a; when line 14a is zero, line 14b is zero even if the rollover input is absent. |
+| f8889 | deepseek | 15 | DISAGREE | DISAGREE | Chosen reading: qualified medical expenses entered on line 15 cannot exceed line 14c. |
 | f8889 | deepseek | 16 | DISAGREE | DISAGREE | (no reason given) |
-| f8889 | deepseek | 3 | DISAGREE | DISAGREE | Computes the line 3 limitation from the Line 3 Limitation Chart: monthly amounts by family/self-only coverage, with the last-month rule replacing the actual months with 12 months of December coverage, and the age-55 additional amount included on line 3 only when not married with family coverage (otherwise line 7). |
-| f8889 | deepseek | 6 | DISAGREE | DISAGREE | Uses the Line 6 steps: share of the family-month limit plus the self-only-month limit when both spouses have HSAs and family coverage; otherwise line 5. |
-| f8889 | deepseek | 7 | DISAGREE | DISAGREE | (no reason given) |
+| f8889 | deepseek | 17b | DISAGREE | DISAGREE | (no reason given) |
+| f8889 | deepseek | 3 | DISAGREE | DISAGREE | (no reason given) |
+| f8889 | deepseek | 6 | DISAGREE | DISAGREE | (no reason given) |
+| f8889 | deepseek | 7 | DISAGREE | DISAGREE | Chosen reading: the additional contribution amount is prorated by family-coverage eligible months; when the last-month rule treats December family coverage as lasting all year, twelve months are used. |
+| f8889 | deepseek | f8889.excess_amt | DISAGREE | DISAGREE | (no reason given) |
 | f8889 | deepseek | f8889.share_raw | DISAGREE | DISAGREE | (no reason given) |
 | f8889 | deepseek | f8889.split | DISAGREE | DISAGREE | (no reason given) |
 | f8889 | deepseek | f8889.step1 | DISAGREE | DISAGREE | (no reason given) |
@@ -482,9 +498,9 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | person | deepseek | Step 6 | DISAGREE | DISAGREE | (no reason given) |
 | person | deepseek | eligible | DISAGREE | DISAGREE | (no reason given) |
 | person | deepseek | person.dc_earned | DISAGREE | DISAGREE | (no reason given) |
-| person | deepseek | person.dc_earned_b | DISAGREE | DISAGREE | The archived per-person interface does not distinguish two earned-income amounts for one person; both dependent-care earned-income fields carry this person's earned income. |
+| person | deepseek | person.dc_earned_b | DISAGREE | DISAGREE | (no reason given) |
 | person | deepseek | person.dc_has_box10 | DISAGREE | DISAGREE | (no reason given) |
-| person | deepseek | person.edu_kid | DISAGREE | DISAGREE | The archived questions do not separately identify age 18; the threshold age questions are used as the closest reading of the under-24 restriction. |
+| person | deepseek | person.edu_kid | DISAGREE | DISAGREE | (no reason given) |
 | person | deepseek | person.educator_deduction | DISAGREE | DISAGREE | (no reason given) |
 | person | deepseek | person.eic_se | DISAGREE | DISAGREE | (no reason given) |
 | person | deepseek | person.hsa_agreed | DISAGREE | DISAGREE | (no reason given) |
@@ -502,15 +518,23 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | person | deepseek | person.ira_nondeductible | DISAGREE | DISAGREE | (no reason given) |
 | person | deepseek | person.ira_se | DISAGREE | DISAGREE | (no reason given) |
 | person | deepseek | person.ira_ssb | DISAGREE | DISAGREE | (no reason given) |
+| person | deepseek | person.ira_taxable | DISAGREE | DISAGREE | (no reason given) |
+| person | deepseek | person.plan_amount_a | DISAGREE | DISAGREE | (no reason given) |
+| person | deepseek | person.plan_rollovers | DISAGREE | DISAGREE | (no reason given) |
+| person | deepseek | person.plan_taxable | DISAGREE | DISAGREE | (no reason given) |
 | person | deepseek | person.s16 | DISAGREE | DISAGREE | (no reason given) |
-| person | deepseek | person.s179_listed | DISAGREE | DISAGREE | Listed-property section 179 is outside the supplied asset screening interface; this aggregate carries zero. |
+| person | deepseek | person.s179_listed | DISAGREE | DISAGREE | The supplied Schedule C interface does not expose a person-level split of elected section 179 cost between listed and nonlisted property; this line reports zero and the total elected cost is carried on person.s179_nonlisted. |
 | person | deepseek | person.s179_nonlisted | DISAGREE | DISAGREE | (no reason given) |
 | person | deepseek | person.sav_ineligible | DISAGREE | DISAGREE | (no reason given) |
+| person | deepseek | person.sav_line1 | DISAGREE | DISAGREE | (no reason given) |
 | person | deepseek | person.sav_line2 | DISAGREE | DISAGREE | (no reason given) |
 | person | deepseek | person.sc_total | DISAGREE | DISAGREE | (no reason given) |
 | person | deepseek | person.se_line12 | DISAGREE | DISAGREE | (no reason given) |
 | person | deepseek | person.se_line13 | DISAGREE | DISAGREE | (no reason given) |
 | person | deepseek | person.se_line6 | DISAGREE | DISAGREE | (no reason given) |
+| person | deepseek | person.x_c05 | DISAGREE | DISAGREE | (no reason given) |
+| person | deepseek | person.x_limit_binds | DISAGREE | DISAGREE | The supplied retirement interface does not expose per-exception limit usage; treated as true when any limited-exception amount is present. |
+| person | deepseek | person.x_limited_sum | DISAGREE | DISAGREE | (no reason given) |
 | qbi | deepseek | qbi.deduction | DISAGREE | DISAGREE | (no reason given) |
 | qbi | deepseek | qbi.taxable_before | DISAGREE | DISAGREE | (no reason given) |
 | qdcg | deepseek | 13 | DISAGREE | DISAGREE | (no reason given) |
@@ -519,10 +543,22 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | refund | deepseek | 6 | DISAGREE | DISAGREE | (no reason given) |
 | refund | deepseek | 8 | DISAGREE | DISAGREE | The worksheet's note for married filing separately when the spouse itemized deductions is implemented by copying line 4 to line 8 and bypassing lines 5 through 7. |
 | refund | deepseek | 9 | DISAGREE | DISAGREE | The STOP conditions on lines 3 and 8 are carried into zero through subtract_floor0 and the smaller of line 3 or line 8. |
-| retirement | deepseek | (SMW 4) | DISAGREE | DISAGREE | (no reason given) |
-| retirement | deepseek | retirement.amount_a | DISAGREE | DISAGREE | (no reason given) |
+| retirement | deepseek | (SMW 4) | DISAGREE | DISAGREE | The worksheet's line 3 has a pre-November 19, 1996 column; the retirement.annuity input limits this slice to annuities with an annuity starting date after November 18, 1996, so only that column is used. |
+| retirement | deepseek | retirement.amount_a | DISAGREE | DISAGREE | Entered on line 4a or 5a only when the distribution is not fully taxable; fully taxable distributions go only on 4b or 5b. |
 | retirement | deepseek | retirement.has_rollover | DISAGREE | DISAGREE | (no reason given) |
-| retirement | deepseek | retirement.sav_amount | DISAGREE | DISAGREE | (no reason given) |
+| retirement | deepseek | retirement.is_e23 | DISAGREE | DISAGREE | (no reason given) |
+| retirement | deepseek | retirement.is_ira | DISAGREE | DISAGREE | (no reason given) |
+| retirement | deepseek | retirement.l1 | DISAGREE | DISAGREE | The early amount is the taxable amount for early, SIMPLE, code 2, disability and death codes; normal, rollover and qualified Roth distributions are not early. The screening gates refuse partial code 2, recapture and other unsupported cases. |
+| retirement | deepseek | retirement.l1_s | DISAGREE | DISAGREE | (no reason given) |
+| retirement | deepseek | retirement.l2 | DISAGREE | DISAGREE | For codes 2, 3 and 4 the exception is treated as covering the whole early amount; otherwise the exception amount is the smaller of the early amount and exc_amount. Per-person dollar caps are applied later. |
+| retirement | deepseek | retirement.l2_e05 | DISAGREE | DISAGREE | (no reason given) |
+| retirement | deepseek | retirement.l2_e09 | DISAGREE | DISAGREE | (no reason given) |
+| retirement | deepseek | retirement.l2_e19 | DISAGREE | DISAGREE | (no reason given) |
+| retirement | deepseek | retirement.l2_e22 | DISAGREE | DISAGREE | (no reason given) |
+| retirement | deepseek | retirement.l2_e23 | DISAGREE | DISAGREE | (no reason given) |
+| retirement | deepseek | retirement.l2_s | DISAGREE | DISAGREE | (no reason given) |
+| retirement | deepseek | retirement.sav_amount | DISAGREE | DISAGREE | Form 8880 line 4 excludes rollovers and the military, 404(k) and inherited IRA distributions; other exclusions are in retirement.special and are refused. |
+| retirement | deepseek | retirement.taxable | DISAGREE | DISAGREE | Within the supported scope, taxable is zero for direct rollovers and qualified Roth distributions; for a plan with a Simplified Method annuity it is SMW9; otherwise it is gross minus rollover (and box 5 for a plan). A nonqualified Roth distribution needs Form 8606 and is refused. |
 | s1 | deepseek | 1 | DISAGREE | DISAGREE | (no reason given) |
 | s1 | deepseek | 16 | DISAGREE | DISAGREE | (no reason given) |
 | s1 | deepseek | 7 | DISAGREE | DISAGREE | (no reason given) |
@@ -563,7 +599,7 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | s1a | deepseek | 7 | DISAGREE | DISAGREE | (no reason given) |
 | s1a | deepseek | 8 | DISAGREE | DISAGREE | (no reason given) |
 | s1a | deepseek | 9 | DISAGREE | DISAGREE | (no reason given) |
-| s2 | deepseek | 1a | DISAGREE | DISAGREE | Repayment is Form 8962 line 29. Form 8962's allocation and other-scope gates refuse this line; s2.other is not listed here because this repayment is within the tool's scope. |
+| s2 | deepseek | 1a | DISAGREE | DISAGREE | (no reason given) |
 | s3 | deepseek | 2 | DISAGREE | DISAGREE | (no reason given) |
 | s3 | deepseek | 3 | DISAGREE | DISAGREE | (no reason given) |
 | s3 | deepseek | 5a | DISAGREE | DISAGREE | (no reason given) |
@@ -698,16 +734,17 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | dependent | deepseek (deepseek-flash) | 11 | 4 | 36.4% | 0/11 (0.0%) | pending | 0 | 7 | 0 | 0 |
 | div | deepseek (deepseek-flash) | 22 | 22 | 100.0% | 0/22 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | eic | deepseek (deepseek-flash) | 13 | 13 | 100.0% | 0/13 (0.0%) | pass | 0 | 0 | 0 | 0 |
-| f1040 | deepseek (deepseek-flash) | 58 | 55 | 94.8% | 1/58 (1.7%) | pass | 1 | 2 | 0 | 0 |
+| f1040 | deepseek (deepseek-flash) | 58 | 52 | 89.7% | 2/58 (3.4%) | pass | 5 | 1 | 0 | 0 |
 | f1095a | deepseek (deepseek-flash) | 76 | 75 | 98.7% | 0/76 (0.0%) | pass | 0 | 0 | 1 | 0 |
 | f2441 | deepseek (deepseek-flash) | 36 | 29 | 80.6% | 0/36 (0.0%) | pass | 2 | 5 | 0 | 0 |
 | f4562 | deepseek (deepseek-flash) | 15 | 10 | 66.7% | 0/15 (0.0%) | pass | 3 | 2 | 0 | 0 |
 | f4952 | deepseek (deepseek-flash) | 15 | 14 | 93.3% | 1/15 (6.7%) | pass | 0 | 1 | 0 | 0 |
+| f5329 | deepseek (deepseek-flash) | 7 | 5 | 71.4% | 0/7 (0.0%) | pass | 1 | 1 | 0 | 0 |
 | f5695 | deepseek (deepseek-flash) | 72 | 70 | 97.2% | 2/72 (2.8%) | pass | 2 | 0 | 0 | 0 |
 | f8606 | deepseek (deepseek-flash) | 5 | 3 | 60.0% | 0/5 (0.0%) | pending | 1 | 0 | 1 | 0 |
 | f8863 | deepseek (deepseek-flash) | 25 | 20 | 80.0% | 1/25 (4.0%) | pass | 1 | 4 | 0 | 0 |
-| f8880 | deepseek (deepseek-flash) | 21 | 18 | 85.7% | 0/21 (0.0%) | pass | 0 | 1 | 2 | 0 |
-| f8889 | deepseek (deepseek-flash) | 19 | 18 | 94.7% | 0/19 (0.0%) | pass | 0 | 0 | 1 | 0 |
+| f8880 | deepseek (deepseek-flash) | 21 | 20 | 95.2% | 0/21 (0.0%) | pass | 0 | 1 | 0 | 0 |
+| f8889 | deepseek (deepseek-flash) | 19 | 18 | 94.7% | 0/19 (0.0%) | pass | 0 | 1 | 0 | 0 |
 | f8959 | deepseek (deepseek-flash) | 24 | 23 | 95.8% | 0/24 (0.0%) | pass | 0 | 0 | 1 | 0 |
 | f8960 | deepseek (deepseek-flash) | 25 | 22 | 88.0% | 0/25 (0.0%) | pass | 1 | 2 | 0 | 0 |
 | f8962 | deepseek (deepseek-flash) | 95 | 91 | 95.8% | 0/95 (0.0%) | pass | 0 | 1 | 3 | 0 |
@@ -727,11 +764,11 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | qbi | deepseek (deepseek-flash) | 1 | 0 | 0.0% | 1/1 (100.0%) | pending | 0 | 1 | 0 | 0 |
 | qdcg | deepseek (deepseek-flash) | 25 | 24 | 96.0% | 0/25 (0.0%) | pass | 0 | 0 | 1 | 0 |
 | refund | deepseek (deepseek-flash) | 9 | 7 | 77.8% | 0/9 (0.0%) | pass | 0 | 2 | 0 | 0 |
-| retirement | deepseek (deepseek-flash) | 10 | 6 | 60.0% | 0/10 (0.0%) | pass | 0 | 3 | 1 | 0 |
+| retirement | deepseek (deepseek-flash) | 10 | 4 | 40.0% | 0/10 (0.0%) | pass | 1 | 3 | 2 | 0 |
 | s1 | deepseek (deepseek-flash) | 29 | 19 | 65.5% | 0/29 (0.0%) | pending | 6 | 4 | 0 | 0 |
 | s179 | deepseek (deepseek-flash) | 13 | 11 | 84.6% | 1/13 (7.7%) | pass | 0 | 2 | 0 | 0 |
 | s1a | deepseek (deepseek-flash) | 43 | 41 | 95.3% | 0/43 (0.0%) | pass | 1 | 1 | 0 | 0 |
-| s2 | deepseek (deepseek-flash) | 10 | 8 | 80.0% | 0/10 (0.0%) | pass | 2 | 0 | 0 | 0 |
+| s2 | deepseek (deepseek-flash) | 12 | 10 | 83.3% | 0/12 (0.0%) | pass | 2 | 0 | 0 | 0 |
 | s3 | deepseek (deepseek-flash) | 13 | 11 | 84.6% | 0/13 (0.0%) | pass | 1 | 0 | 1 | 0 |
 | s8812 | deepseek (deepseek-flash) | 31 | 28 | 90.3% | 0/31 (0.0%) | pass | 1 | 2 | 0 | 0 |
 | sa | deepseek (deepseek-flash) | 24 | 21 | 87.5% | 0/24 (0.0%) | pending | 2 | 1 | 0 | 0 |
@@ -750,7 +787,7 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | tipjob | deepseek (deepseek-flash) | 3 | 3 | 100.0% | 0/3 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | u1250 | deepseek (deepseek-flash) | 18 | 4 | 22.2% | 0/18 (0.0%) | pass | 0 | 13 | 1 | 0 |
 | w2 | deepseek (deepseek-flash) | 17 | 17 | 100.0% | 0/17 (0.0%) | pass | 0 | 0 | 0 | 0 |
-| **all** | | 1282 | 1124 | 87.7% | | | 47 | 86 | 25 | 0 |
+| **all** | | 1291 | 1128 | 87.4% | | | 53 | 87 | 23 | 0 |
 
 Pending asset [deepseek]: 4 open, unclassified or interface-gap rulings.
 Pending dependent [deepseek]: 6 open, unclassified or interface-gap rulings.
@@ -781,12 +818,17 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 | asset | deepseek | (b) | MISMATCH | Column (b) is month and year placed in service; the restatement captures only the year and limits it to 2005-2025. |
 | asset | deepseek | (c) | MISMATCH | Column (c) requires subtracting allocable credits and deductions, including section 179 and the special allowance, after multiplying; the restatement stops at the multiplication. |
 | asset | deepseek | 14 | MISMATCH | The IRS line also provides a 50% special allowance for qualified reuse and recycling property; the full/forty/none choices do not cover it and no refusal names it. |
-| f1040 | deepseek | 28 (box) | MISMATCH | IRS says 'If you do not want to claim the additional child tax credit, check the box on line 28'; the restatement always sets the box false. |
+| f1040 | deepseek | 13a | MISMATCH | IRS says use Form 8995 only if you aren't a patron in a specified agricultural or horticultural cooperative; the helper selects Form 8995 by the taxable-income threshold only and does not account for a patron. |
+| f1040 | deepseek | 16 | MISMATCH | IRS says use the Schedule D Tax Worksheet if you file Form 4952 and have an amount on line 4g, even if you don't need to file Schedule D; the gate also requires the QDCG worksheet to apply. |
+| f1040 | deepseek | 27a | MISMATCH | IRS says use Worksheet A only if you answered No to Step 5 question 2; otherwise use Worksheet B. The helper computes only Worksheet A line 6 and has no Worksheet B line 11 branch. |
+| f1040 | deepseek | 27c | MISMATCH | IRS says check line 27c if you do not want to claim the EIC or if instructed; the restatement expressly does not ask the filer's own choice not to claim the EIC. |
+| f1040 | deepseek | 28 (box) | MISMATCH | IRS says check this box if you do not want to claim the ACTC; the restatement sets the box always false and ignores that election. |
 | f2441 | deepseek | 12 | MISMATCH | The IRS line 12 includes amounts received under a dependent care assistance program from your sole proprietorship or partnership; person.dc_benefits sums only W-2 box 10 benefits less the box 1 part. |
 | f2441 | deepseek | 22 | MISMATCH | The IRS line asks whether any amount on line 12 or 13 is from a sole proprietorship or partnership and says to enter the amount if Yes; the program unconditionally enters zero. |
 | f4562 | deepseek | 25 | MISMATCH | The helper sums asset.bonus_2025 for listed property, but that asset helper uses line 14, which is expressly for property '(other than listed property)'; line 25 is the special allowance for qualified listed property used more than 50% in a qualified business use. |
 | f4562 | deepseek | 28 | MISMATCH | The helper adds only line 25 and line 26(h). IRS line 28 says: 'Add amounts in column (h), lines 25 through 27,' so line 27 is omitted. |
 | f4562 | deepseek | 29 | MISMATCH | The helper uses asset.s179_2025, which references line 6(c), but line 6 instructions say 'Do not include any listed property on line 6. Enter the elected section 179 cost of listed property in column (i) of line 26.' Line 29 is limited to column (i), line 26. |
+| f5329 | deepseek | 48 | MISMATCH | The form says 'Total excess contributions. Add lines 46 and 47'; the restatement enters only line 47, omitting line 46 prior-year excess contributions. |
 | f5695 | deepseek | 32a | MISMATCH | The helper requires occupying the home with a non-spouse 'on a joint return'; the IRS rule applies if you occupied your home jointly with someone, with only an exception for married individuals filing a joint return. |
 | f5695 | deepseek | 32b | MISMATCH | IRS line 32b is limited to a fractional share of qualified energy efficiency improvements or residential energy property expenditures; the helper uses any energy efficient home improvement costs paid in 2025 and its definition includes a home energy audit, which is neither. |
 | f8606 | deepseek | 1 | MISMATCH | The IRS line 1 instructions say to include repayments of qualified reservist distributions and to subtract worksheet line 12 "or the amount you chose to deduct on Schedule 1 (Form 1040), line 20, if less"; the helper uses only worksheet line 12 and omits those items. |
@@ -799,7 +841,8 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 | ira | deepseek | 2b | MISMATCH | IRS line 2 says married filing separately and lived apart from your spouse for all of 2025 enter $89,000; the line 2 helper maps every MFS return to $10,000. |
 | ltc | deepseek | 2(a) | MISMATCH | The IRS note excludes payments for any month you were eligible to participate in a long-term care insurance plan subsidized by your employer or your spouse's employer, or the employer of either your dependent or your child who was under age 27 at the end of 2025; the restatement instead states the exclusion in terms of the covered person's eligibility for a plan subsidized by an employer. |
 | oi8z | deepseek | 8z (amount) | MISMATCH | The line is NonNegDollars, but the IRS line 8z examples include a 'Loss on certain corrective distributions of excess deferrals'; a loss cannot be entered as a nonnegative amount to include in income. |
-| person | deepseek | Step 3 | MISMATCH | IRS Step 3 says only 'Subtract step 2 from step 1'; it does not say to enter -0- if zero or less, so a negative result should not be floored. |
+| person | deepseek | Step 3 | MISMATCH | IRS Step 3 says only 'Net earnings from self-employment. Subtract step 2 from step 1'; it does not provide a zero-or-less floor. |
+| retirement | deepseek | (SMW 5) | MISMATCH | IRS line 5 adds: 'If your annuity starting date was before 1987, skip lines 6 and 7 and enter this amount on line 8. Otherwise, go to line 6'; the restatement omits this condition. |
 | s1 | deepseek | 15 | MISMATCH | The IRS says 'If you were self-employed and owe self-employment tax, fill in Schedule SE'; the restatement returns zero unless the person has at least one Schedule C, without refusing partnership or other self-employment income on that path. |
 | s1 | deepseek | 16 | MISMATCH | The IRS line is 'Self-employed SEP, SIMPLE, and qualified plans'; the restatement computes only a 'Self-employed SEP or SIMPLE deduction' and returns zero when there is no Schedule C. |
 | s1 | deepseek | 17 | MISMATCH | The IRS instructions allow the deduction for 'a partner with net earnings from self-employment' and a 'more-than-2% shareholder in an S corporation,' but the restatement only sums Schedule C (sc) Form 7206 line 14 amounts. |
@@ -807,8 +850,8 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 | s1 | deepseek | 8f | MISMATCH | The IRS line 8f says 'Enter the total of the amounts from Form 8889, lines 16 and 20'; the restatement uses only Form 8889 line 16. |
 | s1 | deepseek | 8j | MISMATCH | The restatement excludes 'the rental of personal property' from line 8j, but Pub. 525 says 'You must include on your return income from an activity, even if you don’t expect to make a profit'; line 8l covers only a for-profit rental not in the business. |
 | s1a | deepseek | 23 | MISMATCH | Line 23 adds column (iii), but the program's column (iii) subtracts only Schedule C interest; IRS column (ii) is 'Deducted on Schedule C, Schedule E, or Schedule F.' |
-| s2 | deepseek | 18 | MISMATCH | IRS line 18 says “Total additional taxes. Add lines 17a through 17z”; the restatement enters only line 17c and has no refusal for the other additional taxes. |
-| s2 | deepseek | 1z | MISMATCH | IRS line 1z says “Add lines 1a through 1y”; the restatement enters only line 1a and has no refusal for the other additions to tax. |
+| s2 | deepseek | 18 | MISMATCH | The IRS says 'Add lines 17a through 17z,' but the restatement enters only the amount from line 17c. |
+| s2 | deepseek | 1z | MISMATCH | The IRS says 'Add lines 1a through 1y,' but the restatement enters only the amount from line 1a. |
 | s3 | deepseek | 14 | MISMATCH | IRS line 14 says "Add lines 13a through 13z," but the restatement accepts a supplied subtotal instead of adding those lines. |
 | s8812 | deepseek | 24 | MISMATCH | The IRS line says '1040-NR filers: Enter the amount from Schedule 3 (Form 1040), line 11'; the restatement instead adds f1040 line 27a for all filers. |
 | sa | deepseek | 5e | MISMATCH | IRS line 5e says if you completed Form 2555 or 4563, or excluded Puerto Rico income, see the SALT worksheet; that worksheet adds those excluded amounts to line 11b. The program's ceiling helper uses only Form 1040 line 11b and there is no excluded-income refusal on line 5e. |
@@ -837,8 +880,7 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 | dependent | deepseek | 29 | MISMATCH | MISMATCH | The line uses the same AOC student gate, which is broader than the IRS rule requiring filers and students to have been issued a TIN by the due date. |
 | dependent | deepseek | 30 | MISMATCH | MISMATCH | The line uses the same AOC student gate, which is broader than the IRS rule requiring filers and students to have been issued a TIN by the due date. |
 | dependent | deepseek | 31 | MISMATCH | MISMATCH | The LLC student gate uses the same eligible-student TIN helper allowing only-applied ITINs, while the IRS table says for the lifetime learning credit 'Students must have been issued a TIN by the due date.' |
-| f1040 | deepseek | 27a | MISMATCH | MISMATCH | The helper selects eic.line6 whenever Steps 1-5 pass; IRS line 27a requires Worksheet B line 11 for a filer who answered Yes to Step 5, question 2. |
-| f1040 | deepseek | 27c | MISMATCH | MISMATCH | IRS says 'Check the box on line 27c if you do not want to claim the earned income credit or if you have been instructed to check the box'; the restatement omits the filer's voluntary choice not to claim. |
+| f1040 | deepseek | 29 | MISMATCH | MISMATCH | IRS says you cannot claim an education credit if your filing status is married filing separately; the helper checks only that expenses were paid and that the filer/spouse is not claimed as a dependent. |
 | f2441 | deepseek | 18 | MISMATCH | MISMATCH | Earned income for line 18 is determined as under lines 4 and 5 without line 12 benefits; person.dc_earned_b still omits Form 1040 line 1z and statutory employee Schedule C line 1 income. |
 | f2441 | deepseek | 19 | MISMATCH | MISMATCH | The line uses the same earned-income helper as line 18, which omits Form 1040 line 1z and statutory employee Schedule C line 1 income; the IRS line 19 uses the lines 4/5 earned-income rules. |
 | f2441 | deepseek | 4 | MISMATCH | MISMATCH | The IRS earned-income instructions include Form 1040 line 1z and, for a statutory employee, Schedule C line 1; person.dc_earned instead uses W-2 box 1, line 1e, and Schedule SE/Worksheet B, omitting those components. |
@@ -847,11 +889,13 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 | f4562 | deepseek | 22 | MISMATCH | MISMATCH | The restatement omits lines 15 and 16, lines 19g through 19j, and line 20. IRS line 22 says: 'Add amounts from line 12, lines 14 through 17, lines 19 and 20 in column (g), and line 21.' |
 | f4562 | deepseek | 26(h) | MISMATCH | MISMATCH | The helper uses asset.dep_listed, built from line 19(g) and line 17 MACRS; Part III says 'Don’t include listed property,' while line 26(h) is the Part V depreciation deduction for listed property used more than 50% in a qualified business use. |
 | f4952 | deepseek | 4a | MISMATCH | MISMATCH | IRS line 4a includes ordinary dividends but 'except Alaska Permanent Fund dividends'; the restatement adds Schedule B ordinary dividends without that exception, so it can overstate line 4a. |
+| f5329 | deepseek | 2 | MISMATCH | MISMATCH | The Exception 22 and 23 helpers cap only at $10,300 and $1,000, but the IRS text limits them to the lesser of $10,300 or 50% of the present value of the IRA, and the lesser of $1,000 or your total interest in the IRA minus $1,000. |
 | f8863 | deepseek | 13 | MISMATCH | MISMATCH | IRS line 13 says '$180,000 if married filing jointly; or $90,000 if single, head of household, or qualifying surviving spouse.' It does not provide an MFS amount, and MFS filers cannot claim the education credit. |
 | f8863 | deepseek | 16 | MISMATCH | MISMATCH | IRS line 16 says '$20,000 if married filing jointly; or $10,000 if single, head of household, or qualifying surviving spouse.' It does not provide an MFS amount, and MFS filers cannot claim the education credit. |
 | f8863 | deepseek | 2 | MISMATCH | MISMATCH | IRS line 2 says '$180,000 if married filing jointly; or $90,000 if single, head of household, or qualifying surviving spouse.' It does not provide an MFS amount, and MFS filers cannot claim the education credit. |
 | f8863 | deepseek | 5 | MISMATCH | MISMATCH | IRS line 5 says '$20,000 if married filing jointly; or $10,000 if single, head of household, or qualifying surviving spouse.' It does not provide an MFS amount, and MFS filers cannot claim the credit. |
-| f8880 | deepseek | (CLW 2) | MISMATCH | MISMATCH | The IRS worksheet says to enter the total of Schedule 3 lines 1 through 3, 6d, and 6l, but the restatement adds only Schedule 3 lines 1, 2, and 3, omitting 6d and 6l. |
+| f8880 | deepseek | (CLW 2) | MISMATCH | MISMATCH | The IRS worksheet says "Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l," but the restatement adds only Schedule 3 lines 1 through 3, omitting 6d and 6l. |
+| f8889 | deepseek | 7 | MISMATCH | MISMATCH | The IRS worksheet counts months where 'You or your spouse had family coverage under an HDHP and were, or were considered to be, an eligible individual on the first day of the month,' but the program uses the general number of eligible months, overstating line 7 when family coverage exists only part of the year. |
 | f8960 | deepseek | 5a | MISMATCH | MISMATCH | IRS line 5a instructions say to combine 'Form 1040 or 1040-SR, line 7a, and Schedule 1 (Form 1040), line 4'; the restatement uses only f1040 line 7a. |
 | f8960 | deepseek | 5b | MISMATCH | MISMATCH | The carryforward refusal is gated by f8960.carryforward_adj, which requires line 15 over $0; IRS says 'Starting in 2014, capital loss carryforwards must be adjusted if any sum of all capital gain or loss amounts excluded from NII on lines 5b and 5c was a net loss' with no MAGI-over-threshold condition. |
 | f8962 | deepseek | 24 | MISMATCH | MISMATCH | The restatement treats line 5 >= 100 or the Marketplace estimate as sufficient for an applicable taxpayer, but IRS says if married at the end of 2025 you generally must file a joint return, and you cannot take the PTC with married filing separately unless an exception applies. |
@@ -871,9 +915,9 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 | qbi | deepseek | 3 | MISMATCH | MISMATCH | IRS line 3 is "Qualified business net (loss) carryforward from the prior year" shown with parentheses, and line 4 says "Combine lines 2 and 3," so the carryforward is a negative amount; the restatement instead says "entered as a positive amount." The line 3 instructions also require the "qualified portion" allowed in calculating taxable income in the current year, not merely prior-year line 16. |
 | refund | deepseek | 1 | MISMATCH | MISMATCH | The min(refund, 2024 Schedule A line 5d) computation is right, but the IRS says to use Pub. 525 instead of this worksheet if the refund is for a tax year other than 2024 or if the last 2024 estimated state or local income tax payment was made in 2025; the refusal rules omit those exceptions. |
 | refund | deepseek | 6 | UNCLEAR | MISMATCH | IRS line 6 says to multiply the number of boxes checked by $1,550 ($1,950 if the 2024 status was single or head of household), and for MFS the spouse boxes count only if the spouse had no income, isn’t filing, and can’t be claimed as a dependent; the restatement adds per-box amounts and omits the MFS conditions. |
-| retirement | deepseek | (SMW 10) | MISMATCH | MISMATCH | IRS line 10 asks whether the annuity starting date was before 1987 and says Yes means STOP and do not complete the rest of the worksheet; the restatement unconditionally adds lines 6 and 8. |
-| retirement | deepseek | (SMW 4) | MISMATCH | MISMATCH | The true branch matches, but for non-joint annuities the Table 1 helper uses only the after-November 18, 1996 numbers; IRS Table 1 separately provides a before-November 19, 1996 column (for example, 300 rather than 360 for age 55 or under). |
-| retirement | deepseek | (SMW 8) | MISMATCH | MISMATCH | IRS line 5 says that if your annuity starting date was before 1987, skip lines 6 and 7 and enter this amount on line 8; the restatement always computes the smaller of line 5 or line 7. |
+| retirement | deepseek | (SMW 10) | MISMATCH | MISMATCH | IRS line 10 asks 'Was your annuity starting date before 1987?' and says if Yes, 'STOP Do not complete the rest of this worksheet'; the restatement unconditionally adds lines 6 and 8. |
+| retirement | deepseek | (SMW 2) | MISMATCH | MISMATCH | IRS says to include any death benefit exclusion (up to $5,000) in the amount entered on line 2 for a beneficiary of a deceased employee who died before August 21, 1996; the helper defines only cost/net investment and omits that addition. |
+| retirement | deepseek | (SMW 4) | MISMATCH | MISMATCH | Table 1 has a before-November-19-1996 column (300, 260, 240, 170, 120), but the helper uses only the after-November-18-1996 numbers (360, 310, 260, 210, 160); no refusal covers pre-November-19-1996 annuities. |
 | s1 | deepseek | 1 | MISMATCH | MISMATCH | The IRS Exception requires Pub. 525 instead of the worksheet in cases such as 'You owed alternative minimum tax in 2024' or 'You couldn’t use the full amount of credits...'; the restatement only refuses box 8 and not_2024. |
 | s1 | deepseek | 10 | MISMATCH | MISMATCH | The IRS line says 'Combine lines 1 through 7 and 9'; the restatement adds only lines 1, 2a, 3, 7, and 9, omitting lines 4, 5, and 6. |
 | s1 | deepseek | 25 | MISMATCH | MISMATCH | The IRS line says 'Total other adjustments. Add lines 24a through 24z'; the restatement enters only line 24a, omitting 24b through 24z. |
@@ -925,36 +969,37 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 | clcw26 | deepseek (deepseek-flash) | 28 | 28 | 100.0% | 0/31 (0.0%) | pending | 0 | 0 | 0 | 24 |
 | dependent | deepseek (deepseek-flash) | 30 | 28 | 93.3% | 1/30 (3.3%) | pass | 1 | 1 | 0 | 0 |
 | eic | deepseek (deepseek-flash) | 38 | 38 | 100.0% | 0/50 (0.0%) | pending | 0 | 0 | 0 | 66 |
-| f1040 | deepseek (deepseek-flash) | 244 | 244 | 100.0% | 0/244 (0.0%) | pending | 0 | 0 | 0 | 16 |
+| f1040 | deepseek (deepseek-flash) | 304 | 304 | 100.0% | 0/304 (0.0%) | pending | 0 | 0 | 0 | 8 |
 | f1095a | deepseek (deepseek-flash) | 66 | 65 | 98.5% | 1/66 (1.5%) | pass | 0 | 1 | 0 | 0 |
 | f2441 | deepseek (deepseek-flash) | 137 | 135 | 98.5% | 0/151 (0.0%) | pending | 0 | 0 | 2 | 67 |
 | f4952 | deepseek (deepseek-flash) | 52 | 52 | 100.0% | 0/52 (0.0%) | pass | 0 | 0 | 0 | 0 |
+| f5329 | deepseek (deepseek-flash) | 21 | 21 | 100.0% | 0/21 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | f5695 | deepseek (deepseek-flash) | 322 | 321 | 99.7% | 1/342 (0.3%) | pending | 1 | 0 | 0 | 222 |
 | f8863 | deepseek (deepseek-flash) | 52 | 52 | 100.0% | 0/66 (0.0%) | pending | 0 | 0 | 0 | 48 |
-| f8880 | deepseek (deepseek-flash) | 48 | 43 | 89.6% | 5/50 (10.0%) | pending | 2 | 3 | 0 | 36 |
-| f8889 | deepseek (deepseek-flash) | 105 | 98 | 93.3% | 7/105 (6.7%) | pass | 7 | 0 | 0 | 0 |
+| f8880 | deepseek (deepseek-flash) | 38 | 38 | 100.0% | 0/41 (0.0%) | pending | 0 | 0 | 0 | 46 |
+| f8889 | deepseek (deepseek-flash) | 135 | 132 | 97.8% | 0/135 (0.0%) | pass | 0 | 3 | 0 | 0 |
 | f8960 | deepseek (deepseek-flash) | 50 | 50 | 100.0% | 0/50 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | f8962 | deepseek (deepseek-flash) | 394 | 360 | 91.4% | 0/394 (0.0%) | pending | 34 | 0 | 0 | 176 |
 | g28 | deepseek (deepseek-flash) | 3 | 3 | 100.0% | 0/3 (0.0%) | pending | 0 | 0 | 0 | 11 |
-| person | deepseek (deepseek-flash) | 15 | 14 | 93.3% | 1/15 (6.7%) | pass | 1 | 0 | 0 | 0 |
-| s2 | deepseek (deepseek-flash) | 19 | 19 | 100.0% | 0/19 (0.0%) | pending | 0 | 0 | 0 | 1 |
+| person | deepseek (deepseek-flash) | 15 | 14 | 93.3% | 1/15 (6.7%) | pass | 0 | 1 | 0 | 0 |
+| retirement | deepseek (deepseek-flash) | 100 | 96 | 96.0% | 0/100 (0.0%) | pass | 0 | 0 | 4 | 0 |
+| s2 | deepseek (deepseek-flash) | 36 | 36 | 100.0% | 0/36 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | s3 | deepseek (deepseek-flash) | 40 | 40 | 100.0% | 0/40 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | s8812 | deepseek (deepseek-flash) | 94 | 94 | 100.0% | 0/94 (0.0%) | pass | 0 | 0 | 0 | 30 |
 | sd | deepseek (deepseek-flash) | 41 | 41 | 100.0% | 0/41 (0.0%) | pending | 0 | 0 | 0 | 97 |
 | u1250 | deepseek (deepseek-flash) | 18 | 18 | 100.0% | 0/18 (0.0%) | pass | 0 | 0 | 0 | 18 |
 | w2 | deepseek (deepseek-flash) | 39 | 39 | 100.0% | 0/39 (0.0%) | pass | 0 | 0 | 0 | 0 |
-| **all** | | 1876 | 1823 | 97.2% | | | 46 | 5 | 2 | 833 |
+| **all** | | 2094 | 2046 | 97.7% | | | 36 | 6 | 6 | 834 |
 
 Pending clcw26 [deepseek]: 5 missing expected lines.
 Pending eic [deepseek]: 16 missing expected lines.
-Pending f1040 [deepseek]: 15 missing expected lines.
+Pending f1040 [deepseek]: 7 missing expected lines.
 Pending f2441 [deepseek]: 3 missing expected lines.
 Pending f5695 [deepseek]: 4 missing expected lines.
 Pending f8863 [deepseek]: 7 missing expected lines.
-Pending f8880 [deepseek]: 3 missing expected lines.
+Pending f8880 [deepseek]: 13 missing expected lines.
 Pending f8962 [deepseek]: 34 open, unclassified or interface-gap rulings.
 Pending g28 [deepseek]: 11 missing expected lines.
-Pending s2 [deepseek]: 1 missing expected lines.
 Pending sd [deepseek]: 32 missing expected lines.
 
 ### Independence yield
@@ -963,15 +1008,6 @@ Pending sd [deepseek]: 32 missing expected lines.
 | --- | --- | --- | --- | --- |
 | dependent | deepseek | classm.dependent.1 — dependent[dep_a].dc_line2c | DISAGREE | model gave yes; work: Age 15 is over 12 and the person was disabled/not able to care for themselves; check line 2(c). |
 | f5695 | deepseek | classm.f5695.16 — 14 | DISAGREE | model gave $0.00; work: Limit worksheet: 7,955 - (600 + 7,355) = 0.00 |
-| f8880 | deepseek | classm.f8880.4 — 6(b) | DISAGREE | model gave $1,330.00; work: smaller of 1330.00 or 2000.00 = 1330.00 |
-| f8880 | deepseek | classm.f8880.4 — 7 | DISAGREE | model gave $1,330.00; work: 0.00 + 1330.00 = 1330.00 |
-| f8889 | deepseek | classm.f8889.2 — person[spouse].f8889[hsa].line12 | DISAGREE | model gave $1,844.00; work: line 8 $1,844.00 - line 11 $0 = $1,844.00 |
-| f8889 | deepseek | classm.f8889.2 — person[spouse].f8889[hsa].line13 | DISAGREE | model gave $1,844.00; work: Smaller of line 2 $3,637.00 or line 12 $1,844.00 = $1,844.00 |
-| f8889 | deepseek | classm.f8889.2 — person[spouse].f8889[hsa].line6 | DISAGREE | model gave $1,094.00; work: Allocated part of Step 1 family limit = $1,094.00 |
-| f8889 | deepseek | classm.f8889.2 — person[spouse].f8889[hsa].line8 | DISAGREE | model gave $1,844.00; work: line 6 $1,094.00 + line 7 $750.00 = $1,844.00 |
-| f8889 | deepseek | classm.f8889.2 — person[taxpayer].f8889[hsa].line12 | DISAGREE | model gave $7,456.00; work: line 8 $7,456.00 - line 11 $0 = $7,456.00 |
-| f8889 | deepseek | classm.f8889.2 — person[taxpayer].f8889[hsa].line6 | DISAGREE | model gave $7,456.00; work: Allocated part of Step 1 family limit = $7,456.00 |
-| f8889 | deepseek | classm.f8889.2 — person[taxpayer].f8889[hsa].line8 | DISAGREE | model gave $7,456.00; work: line 6 $7,456.00 + line 7 $0 = $7,456.00 |
 | f8962 | deepseek | classm.f8962.6 — 12(c) | DISAGREE | model gave $420.00; work: Monthly contribution = line 8b = 420 |
 | f8962 | deepseek | classm.f8962.6 — 12(d) | DISAGREE | model gave $692.00; work: 1,112 - 420 = 692 |
 | f8962 | deepseek | classm.f8962.6 — 12(e) | DISAGREE | model gave $692.00; work: smaller of 802 and 692 = 692 |
@@ -1006,7 +1042,6 @@ Pending sd [deepseek]: 32 missing expected lines.
 | f8962 | deepseek | classm.f8962.6 — 7 | DISAGREE | model gave 6.275%; work: 6.000% + 11 x 0.025% = 6.275% = 0.06275 |
 | f8962 | deepseek | classm.f8962.6 — 8a | DISAGREE | model gave $5,043.00; work: 80,369 x 0.06275 = 5,043.15475; nearest dollar = 5,043 |
 | f8962 | deepseek | classm.f8962.6 — 8b | DISAGREE | model gave $420.00; work: 5,043 / 12 = 420.25; nearest dollar = 420 |
-| person | deepseek | classm.person.1 — person[taxpayer].wages | DISAGREE | model gave $29,524.00; work: 29,524.00 + 0.00 = 29,524.00 |
 
 ### Lines both families disputed
 
@@ -1014,6 +1049,7 @@ Pending sd [deepseek]: 32 missing expected lines.
 | --- | --- | --- | --- | --- | --- |
 | dependent | deepseek | classm.dependent.6 — dependent[dep_b].dc_line2d | DISAGREE | DISAGREE | model gave $0.00; work: Age 25 and not disabled, so not a qualifying person for the child and dependent care credit; no care expenses reported. |
 | f1095a | deepseek | classm.f1095a.1 — f1095a[mkt_b].line33c | DISAGREE | DISAGREE | model gave $2,042.00; work: Line 33 column C as given |
-| f8880 | deepseek | classm.f8880.4 — 1(b) | DISAGREE | DISAGREE | model gave $1,330.00; work: Spouse line 1 entries: 665.00 + 665.00 = 1330.00 |
-| f8880 | deepseek | classm.f8880.4 — 3(b) | DISAGREE | DISAGREE | model gave $1,330.00; work: 1330.00 + 0.00 = 1330.00 |
-| f8880 | deepseek | classm.f8880.4 — 5(b) | DISAGREE | DISAGREE | model gave $1,330.00; work: 1330.00 - 0.00 = 1330.00 |
+| f8889 | deepseek | classm.f8889.2 — person[taxpayer].f8889[hsa].line12 | DISAGREE | DISAGREE | model gave $5,031.25; work: Line 8 minus line 11: 5,031.25 - 0.00 = 5,031.25. |
+| f8889 | deepseek | classm.f8889.2 — person[taxpayer].f8889[hsa].line7 | DISAGREE | DISAGREE | model gave $750.00; work: Age 55+, married, family coverage 9 months: 1,000 x 9/12 = 750.00. |
+| f8889 | deepseek | classm.f8889.2 — person[taxpayer].f8889[hsa].line8 | DISAGREE | DISAGREE | model gave $5,031.25; work: Line 6 plus line 7: 4,281.25 + 750.00 = 5,031.25. |
+| person | deepseek | classm.person.1 — person[taxpayer].wages | DISAGREE | DISAGREE | model gave $29,524.00; work: W-2 box 1 totals: 29,524.00 + 0.00. |

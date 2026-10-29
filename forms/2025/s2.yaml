@@ -19,10 +19,10 @@ form:
     - id: s2.other
       printed: (helper)
       type: Bool
-      label: 'Any amount on Schedule 2 other than self-employment tax from Schedule SE, Additional Medicare Tax, Net Investment Income Tax or the additional 20% tax on taxable HSA distributions (Form 8889 line 17b, which this tool figures), for example the alternative minimum tax, repayment of a clean vehicle credit, household employment taxes, the additional tax on early retirement distributions (often called a penalty) or on an HSA you did not keep as an eligible individual (Form 8889 Part III), uncollected social security or Medicare tax on tips or group-term life insurance (W-2 box 12 codes A, B, M or N), tax on unreported tips (Form 4137), or interest on deferred tax?'
+      label: 'Any amount on Schedule 2 other than self-employment tax from Schedule SE, Additional Medicare Tax, Net Investment Income Tax or the additional 20% tax on taxable HSA distributions (Form 8889 line 17b, which this tool figures), for example the alternative minimum tax, repayment of a clean vehicle credit, household employment taxes, the additional tax on an HSA you did not keep as an eligible individual (Form 8889 Part III), uncollected social security or Medicare tax on tips or group-term life insurance (W-2 box 12 codes A, B, M or N), tax on unreported tips (Form 4137), or interest on deferred tax? (Form 5329 Part I, early distributions, and the 2025 HSA excess are figured by this tool and are not other amounts.)'
       expr:
         op: input
-        source: 'Any amount on Schedule 2 other than self-employment tax from Schedule SE, Additional Medicare Tax, Net Investment Income Tax or the additional 20% tax on taxable HSA distributions (Form 8889 line 17b, which this tool figures), for example the alternative minimum tax, repayment of a clean vehicle credit, household employment taxes, the additional tax on early retirement distributions (often called a penalty) or on an HSA you did not keep as an eligible individual (Form 8889 Part III), uncollected social security or Medicare tax on tips or group-term life insurance (W-2 box 12 codes A, B, M or N), tax on unreported tips (Form 4137), or interest on deferred tax?'
+        source: 'Any amount on Schedule 2 other than self-employment tax from Schedule SE, Additional Medicare Tax, Net Investment Income Tax or the additional 20% tax on taxable HSA distributions (Form 8889 line 17b, which this tool figures), for example the alternative minimum tax, repayment of a clean vehicle credit, household employment taxes, the additional tax on an HSA you did not keep as an eligible individual (Form 8889 Part III), uncollected social security or Medicare tax on tips or group-term life insurance (W-2 box 12 codes A, B, M or N), tax on unreported tips (Form 4137), or interest on deferred tax? (Form 5329 Part I, early distributions, and the 2025 HSA excess are figured by this tool and are not other amounts.)'
       cite:
         doc: f1040s2
         locator: Schedule 2 (2025), lines 2, 3, 11, 12 and 21
@@ -129,6 +129,99 @@ form:
       cite:
         doc: f1040s2
         locator: Schedule 2 (2025), line 4; i1040sse p. 2, Joint Returns, "Enter the combined SE tax on Schedule 2 (Form 1040), line 4"
+    - id: s2.line8_must
+      printed: (helper)
+      type: Count
+      label: Persons who must file Form 5329
+      expr:
+        op: sum_over
+        collection: person
+        field: person.x_must
+      cite:
+        doc: i5329
+        locator: 'p. 1, Who Must File, "However, if distribution code 1 is correctly shown in box 7 of all your Forms 1099-R and you owe the additional tax on the full amount shown on each Form 1099-R, you don’t have to file Form 5329."'
+    - id: s2.line8_file
+      printed: (helper)
+      type: Bool
+      label: Someone on the return must file Form 5329, so a Form 5329 is prepared for each person with an early distribution
+      expr:
+        op: test
+        gt:
+          - s2.line8_must
+          - const: 0
+            type: Count
+      cite:
+        doc: i5329
+        locator: 'p. 1, Who Must File, "However, if distribution code 1 is correctly shown in box 7 of all your Forms 1099-R and you owe the additional tax on the full amount shown on each Form 1099-R, you don’t have to file Form 5329."'
+      ambiguity: amb.2025.f5329_joint_box
+    - id: s2.e05_total
+      printed: (helper)
+      type: NonNegDollars
+      label: Exception 05 (medical expenses) amounts of everyone on the return, each person's already limited to Schedule A line 4
+      expr:
+        op: sum_over
+        collection: person
+        field: person.x_c05
+      cite:
+        doc: i5329
+        locator: 'p. 5, Line 2, "Qualified retirement plan distributions up to the amount you paid for unreimbursed medical expenses during the year minus 7.5% of your adjusted gross income (AGI) for the year."'
+    - id: s2.e05_over
+      printed: (gate)
+      type: Bool
+      label: On a joint return, medical-expense exceptions of both spouses above the medical expenses over 7.5% of AGI
+      expr:
+        op: test
+        all:
+          - op: test
+            gt:
+              - s2.e05_total
+              - const: 0
+          - op: test
+            gt:
+              - s2.e05_total
+              - sa.line4
+      cite:
+        doc: i5329
+        locator: 'p. 5, Line 2, "Qualified retirement plan distributions up to the amount you paid for unreimbursed medical expenses during the year minus 7.5% of your adjusted gross income (AGI) for the year."'
+      ambiguity: amb.2025.f5329_medical_joint
+    - id: s2.line8
+      printed: "8"
+      type: NonNegDollars
+      label: Additional tax on IRAs or other tax-favored accounts. Attach Form 5329 if required
+      expr:
+        op: sum_over
+        collection: person
+        field: person.x_tax
+      cite:
+        doc: f1040s2
+        locator: 'p. 1, Part II, line 8, "Additional tax on IRAs or other tax-favored accounts. Attach Form 5329 if required. If not required, check here"'
+      refuses:
+        - when: s2.e05_over
+          form: Form 5329 line 2 (exception 05 of both spouses)
+          remedy: The medical-expense exceptions of both spouses together exceed the medical expenses above 7.5% of your joint
+            AGI; reduce them so that together they do not exceed it.
+          cite:
+            doc: i5329
+            locator: 'p. 5, Line 2, "Qualified retirement plan distributions up to the amount you paid for unreimbursed medical expenses during the year minus 7.5% of your adjusted gross income (AGI) for the year."'
+    - id: s2.line8_box
+      printed: 8 (box)
+      type: Bool
+      label: If not required, check here (the 10% tax on code 1 distributions entered directly, without Form 5329)
+      display: The Schedule 2 line 8 check box, shown on the values sheet; it changes no amount.
+      expr:
+        op: test
+        all:
+          - op: test
+            gt:
+              - s2.line8
+              - const: 0
+          - op: test
+            eq:
+              - s2.line8_file
+              - const: false
+      cite:
+        doc: f1040s2
+        locator: 'p. 1, Part II, line 8, "Additional tax on IRAs or other tax-favored accounts. Attach Form 5329 if required. If not required, check here"; i1040gi p. 112, Line 8, "Also check the box on line 8 to indicate that you don’t have to file Form 5329."'
     - id: s2.line11
       printed: "11"
       type: NonNegDollars
@@ -174,11 +267,12 @@ form:
     - id: s2.line21
       printed: "21"
       type: NonNegDollars
-      label: Add s2.line4, s2.line11, s2.line12, s2.line18
+      label: Add s2.line4, s2.line8, s2.line11, s2.line12, s2.line18
       expr:
         op: sum
         of:
           - s2.line4
+          - s2.line8
           - s2.line11
           - s2.line12
           - s2.line18

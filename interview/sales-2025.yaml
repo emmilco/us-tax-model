@@ -125,6 +125,10 @@ interview:
   - retirement.box5
   - retirement.rollover
   - retirement.special
+  - retirement.early_screen
+  - retirement.code_screen
+  - retirement.exception
+  - retirement.exc_amount
   - retirement.annuity
   - retirement.cost
   - retirement.used_last_year
@@ -183,6 +187,11 @@ interview:
   - f8889.line2
   - f8889.line9
   - f8889.unsupported
+  - f8889.employer_in_box1
+  - person.x_hsa_value
+  - person.x_other
+  - person.x_prior09
+  - person.x_births
   - f8889.months_eligible
   - f8889.months_family
   - f8889.age55

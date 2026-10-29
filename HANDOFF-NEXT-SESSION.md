@@ -1,3 +1,13 @@
+# Handoff — updated 2026-10-29, evening (Claude Opus 5.5)
+
+## State after Stage 21: the 80% goal is reached
+
+Stage 21, Form 5329 Parts I and VII (with Form 1099-R entries moved under each person, D1), is built, reviewed in three
+rounds and committed: `handoffs/HANDOFF-STAGE-21.md`. The estimate is **82.2%** (from 79.6%), past the route's 80% goal
+(`docs/2026-10-26_plan_revision.md` section E is complete). Findings BUG-0200 to BUG-0205; open review-tool and display
+points T-079, T-081. Next, per the owner's standing goal: hardening (verification, loose ends, improvements to existing
+code), starting from the open entries of TASKS.md and BUG_INVENTORY.md.
+
 # Handoff — updated 2026-10-29, later (Claude Opus 5.5)
 
 ## State after Stage 19

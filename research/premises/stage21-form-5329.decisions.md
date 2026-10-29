@@ -1,7 +1,7 @@
 # Stage 21 (Form 5329): decision batch for the owner
 
-> **Draft, awaiting the owner (2026-10-29).** Nothing below is decided. Each decision gives the recommendation first,
-> then the alternative.
+> **Owner's answer (2026-10-29): all recommended.** D1 to D10 are accepted as recommended, with the items under
+> "Settled by the evidence".
 
 Prepared on 2026-10-29 from `stage21-form-5329.md` (the premise map, 2026-10-22, at 6051ec0) and
 `stage21-form-5329.verification.md` (its adversarial check, at 1c465c2). Both were checked again against the tree at

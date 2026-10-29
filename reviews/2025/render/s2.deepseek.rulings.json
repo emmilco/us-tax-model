@@ -6,9 +6,30 @@
   {
    "printed": "18",
    "restated": "Enter the amount from line 17c.",
+   "model": "IRS line 18 says 'Total additional taxes. Add lines 17a through 17z'; the restatement enters only line 17c.",
+   "ruling": "Ruling: representation; f1040s2 p. 2, line 18, \"Total additional taxes. Add lines 17a through 17z\". The restatement enters line 17c; s2.other refuses line 21, the only reader of line 18, on any other line 17 amount, so on every computed return line 18 equals line 17c. Same as Stage 18. Project stands.",
+   "context": "7ac8f2ca6b284e85f7f0e3bbc1da6d53e0b2a05150cefd07e6510fe14a851604"
+  },
+  {
+   "printed": "18",
+   "restated": "Enter the amount from line 17c.",
    "model": "IRS line 18 says “Total additional taxes. Add lines 17a through 17z”; the restatement enters only line 17c and has no refusal for the other additional taxes.",
    "ruling": "Ruling: representation; f1040s2 p. 2, line 18, \"Total additional taxes. Add lines 17a through 17z\". The restatement enters line 17c; the cite says \"the other line 17 items are refused by s2.other\", and s2.other (\"Any amount on Schedule 2 other than self-employment tax from Schedule SE, Additional Medicare Tax, Net Investment Income Tax or the additional 20% tax on taxable HSA distributions ...\") refuses lines 2, 3 and 21, so on every computed return lines 17a, 17b and 17d to 17z are zero and line 18 equals line 17c (Form 8889 line 17b). The model looked for the refusal on line 18; it is on line 21, which reads line 18. Project stands.",
    "context": "1ef85de918ce0e2625f3acbfd7e768563ddb113f5d876ac77ac6014cd2169099"
+  },
+  {
+   "printed": "18",
+   "restated": "Enter the amount from line 17c.",
+   "model": "The IRS says 'Add lines 17a through 17z,' but the restatement enters only the amount from line 17c.",
+   "ruling": "Ruling: representation; f1040s2 p. 2, line 18, \"Total additional taxes. Add lines 17a through 17z\". The restatement enters line 17c; s2.other refuses line 21, the only reader of line 18, on any other line 17 amount, so on every computed return line 18 equals line 17c. Same as Stage 18 and round 1. Project stands.",
+   "context": "471ad67d873ea90231214053e77eb62a68232f1dc66821cb36bd0ba9b645c153"
+  },
+  {
+   "printed": "1z",
+   "restated": "Enter the amount from line 1a.",
+   "model": "IRS line 1z says 'Add lines 1a through 1y'; the restatement uses only line 1a.",
+   "ruling": "Ruling: representation; f1040s2 p. 1, line 1z, \"Add lines 1a through 1y\". s2.other (\"Any amount on Schedule 2 other than ...\") refuses lines 2, 3 and 21, so any return with an amount on lines 1b to 1y is refused and on every computed return line 1z equals line 1a, as the label says. The Stage 21 narrowing of s2.other concerns line 8 only and does not change this. Same as Stage 18. Project stands.",
+   "context": "7ac8f2ca6b284e85f7f0e3bbc1da6d53e0b2a05150cefd07e6510fe14a851604"
   },
   {
    "printed": "1z",
@@ -16,6 +37,20 @@
    "model": "IRS line 1z says “Add lines 1a through 1y”; the restatement enters only line 1a and has no refusal for the other additions to tax.",
    "ruling": "Ruling: representation; f1040s2 p. 1, line 1z, \"Add lines 1a through 1y\". The restatement enters line 1a, and the line's own label says \"lines 1b to 1y are refused by the Schedule 2 screen\": s2.other (\"Any amount on Schedule 2 other than self-employment tax from Schedule SE, Additional Medicare Tax, Net Investment Income Tax or the additional 20% tax on taxable HSA distributions ...\") refuses lines 2, 3 and 21, so any return with an amount on lines 1b to 1y is refused at line 3, the line Form 1040 line 17 reads, and on every computed return lines 1b to 1y are zero and line 1z equals line 1a. The model looked for a refusal on line 1z itself; it sits on lines 2, 3 and 21 of the restated form it was shown. Project stands.",
    "context": "1ef85de918ce0e2625f3acbfd7e768563ddb113f5d876ac77ac6014cd2169099"
+  },
+  {
+   "printed": "1z",
+   "restated": "Enter the amount from line 1a.",
+   "model": "The IRS says 'Add lines 1a through 1y,' but the restatement enters only the amount from line 1a.",
+   "ruling": "Ruling: representation; f1040s2 p. 1, line 1z, \"Add lines 1a through 1y\". s2.other (\"Any amount on Schedule 2 other than ...\") refuses lines 2, 3 and 21, so any return with an amount on lines 1b to 1y is refused, and on every computed return line 1z equals line 1a, as the heading says. The round-1 rewording of s2.other (its Form 5329 clause moved to the end) concerns line 8 only and does not change this. Same as Stage 18 and round 1. Project stands.",
+   "context": "471ad67d873ea90231214053e77eb62a68232f1dc66821cb36bd0ba9b645c153"
+  },
+  {
+   "printed": "8 (box)",
+   "restated": "line 8 > $0 and helper \"Someone on the return must file Form 5329, so a Form 5329 is prepared for each person with an early distribution\" = false",
+   "model": "IRS says 'If not required, check here'; the restatement also requires line 8 > $0, so it would not check the box when no Form 5329 is required and line 8 is zero.",
+   "ruling": "Ruling: model error; f1040s2 p. 1, line 8, \"Attach Form 5329 if required. If not required, check here\"; i5329 p. 1 (given), Who Must File: \"you don’t have to file Form 5329. Instead, see the instructions for Schedule 2 (Form 1040), line 8 ... for how to report the 10% additional tax directly on that line\"; i1040gi p. 112, Line 8, Exception: \"multiply the taxable amount of the distribution by 10% (0.10) and enter the result on line 8 ... Also check the box on line 8 to indicate that you don’t have to file Form 5329\". The box goes with a 10% tax entered directly on line 8; with no line 8 amount there is nothing to mark, so the project's \"line 8 > $0\" condition is the source's. (i1040gi p. 112 was not among the pages given; i5329 p. 1 was.) Project stands.",
+   "context": "7ac8f2ca6b284e85f7f0e3bbc1da6d53e0b2a05150cefd07e6510fe14a851604"
   }
  ]
 }

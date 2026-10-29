@@ -4,6 +4,174 @@
  "family": "deepseek",
  "rulings": [
   {
+   "case": "classm.f8880.1",
+   "printed": "(CLW 1)",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.f8880.1.deepseek.prompt.txt) lists the line as \"\\\"(CLW 1)\\\" (Dollars)\"; the reply names every line of this case \"line (CLW 1) (Dollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer for any of the case's 21 lines (T-070 (1), T-081 (1); the same model's replies for classm.f8880.2 to .4 use the bare handle and were read). Line 7 is $0.00 and the reply leaves the line blank (\"Skipped: line 7 is zero, so stop; no credit\"), which is the source: f8880 p. 1, line 7, \"Add the amounts on line 6. If zero, stop; you can't take this credit\". The project shows $0.00, not a nonzero amount on a skipped line. No numeric assertion to keep or drop.",
+   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e"
+  },
+  {
+   "case": "classm.f8880.1",
+   "printed": "(CLW 2)",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.f8880.1.deepseek.prompt.txt) lists the line as \"\\\"(CLW 2)\\\" (Dollars)\"; the reply names every line of this case \"line (CLW 2) (Dollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer for any of the case's 21 lines (T-070 (1), T-081 (1); the same model's replies for classm.f8880.2 to .4 use the bare handle and were read). Line 7 is $0.00 and the reply leaves the line blank (\"Skipped: line 7 is zero, so stop; no credit\"), which is the source: f8880 p. 1, line 7, \"Add the amounts on line 6. If zero, stop; you can't take this credit\". The project shows $0.00, not a nonzero amount on a skipped line. No numeric assertion to keep or drop.",
+   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e"
+  },
+  {
+   "case": "classm.f8880.1",
+   "printed": "(CLW 3)",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.f8880.1.deepseek.prompt.txt) lists the line as \"\\\"(CLW 3)\\\" (NonNegDollars)\"; the reply names every line of this case \"line (CLW 3) (NonNegDollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer for any of the case's 21 lines (T-070 (1), T-081 (1); the same model's replies for classm.f8880.2 to .4 use the bare handle and were read). Line 7 is $0.00 and the reply leaves the line blank (\"Skipped: line 7 is zero, so stop; no credit\"), which is the source: f8880 p. 1, line 7, \"Add the amounts on line 6. If zero, stop; you can't take this credit\". The project shows $0.00, not a nonzero amount on a skipped line. No numeric assertion to keep or drop.",
+   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e"
+  },
+  {
+   "case": "classm.f8880.1",
+   "printed": "1(a)",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.f8880.1.deepseek.prompt.txt) lists the line as \"\\\"1(a)\\\" (NonNegDollars)\"; the reply names every line of this case \"line 1(a) (NonNegDollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer for any of the case's 21 lines (T-070 (1), T-081 (1); the same model's replies for classm.f8880.2 to .4 use the bare handle and were read). The reply's value is $0.00; the project's is $0.00. They are equal, so no project defect. No expectation is recorded for a line without a parsed answer; after the parser fix this line would agree.",
+   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e"
+  },
+  {
+   "case": "classm.f8880.1",
+   "printed": "1(b)",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.f8880.1.deepseek.prompt.txt) lists the line as \"\\\"1(b)\\\" (NonNegDollars)\"; the reply names every line of this case \"line 1(b) (NonNegDollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer for any of the case's 21 lines (T-070 (1), T-081 (1); the same model's replies for classm.f8880.2 to .4 use the bare handle and were read). The case is head of household; the reply leaves column (b) blank (\"Column (b) is completed only for a joint return\"), as f8880 p. 2, Column (b), \"Complete column (b) only if you're filing a joint return\". The project shows $0.00, not a nonzero amount. No numeric assertion to keep or drop.",
+   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e"
+  },
+  {
+   "case": "classm.f8880.1",
+   "printed": "10",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.f8880.1.deepseek.prompt.txt) lists the line as \"\\\"10\\\" (NonNegDollars)\"; the reply names every line of this case \"line 10 (NonNegDollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer for any of the case's 21 lines (T-070 (1), T-081 (1); the same model's replies for classm.f8880.2 to .4 use the bare handle and were read). Line 7 is $0.00 and the reply leaves the line blank (\"Skipped: line 7 is zero, so stop; no credit\"), which is the source: f8880 p. 1, line 7, \"Add the amounts on line 6. If zero, stop; you can't take this credit\". The project shows $0.00, not a nonzero amount on a skipped line. No numeric assertion to keep or drop.",
+   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e"
+  },
+  {
+   "case": "classm.f8880.1",
+   "printed": "11",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.f8880.1.deepseek.prompt.txt) lists the line as \"\\\"11\\\" (NonNegDollars)\"; the reply names every line of this case \"line 11 (NonNegDollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer for any of the case's 21 lines (T-070 (1), T-081 (1); the same model's replies for classm.f8880.2 to .4 use the bare handle and were read). Line 7 is $0.00 and the reply leaves the line blank (\"Skipped: line 7 is zero, so stop; no credit\"), which is the source: f8880 p. 1, line 7, \"Add the amounts on line 6. If zero, stop; you can't take this credit\". The project shows $0.00, not a nonzero amount on a skipped line. No numeric assertion to keep or drop.",
+   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e"
+  },
+  {
+   "case": "classm.f8880.1",
+   "printed": "12",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.f8880.1.deepseek.prompt.txt) lists the line as \"\\\"12\\\" (NonNegDollars)\"; the reply names every line of this case \"line 12 (NonNegDollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer for any of the case's 21 lines (T-070 (1), T-081 (1); the same model's replies for classm.f8880.2 to .4 use the bare handle and were read). Line 7 is $0.00 and the reply leaves the line blank (\"Skipped: line 7 is zero, so stop; no credit\"), which is the source: f8880 p. 1, line 7, \"Add the amounts on line 6. If zero, stop; you can't take this credit\". The project shows $0.00, not a nonzero amount on a skipped line. No numeric assertion to keep or drop.",
+   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e"
+  },
+  {
+   "case": "classm.f8880.1",
+   "printed": "2(a)",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.f8880.1.deepseek.prompt.txt) lists the line as \"\\\"2(a)\\\" (NonNegDollars)\"; the reply names every line of this case \"line 2(a) (NonNegDollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer for any of the case's 21 lines (T-070 (1), T-081 (1); the same model's replies for classm.f8880.2 to .4 use the bare handle and were read). The reply's value is $0.00; the project's is $0.00. They are equal, so no project defect. No expectation is recorded for a line without a parsed answer; after the parser fix this line would agree.",
+   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e"
+  },
+  {
+   "case": "classm.f8880.1",
+   "printed": "2(b)",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.f8880.1.deepseek.prompt.txt) lists the line as \"\\\"2(b)\\\" (NonNegDollars)\"; the reply names every line of this case \"line 2(b) (NonNegDollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer for any of the case's 21 lines (T-070 (1), T-081 (1); the same model's replies for classm.f8880.2 to .4 use the bare handle and were read). The case is head of household; the reply leaves column (b) blank (\"Column (b) is completed only for a joint return\"), as f8880 p. 2, Column (b), \"Complete column (b) only if you're filing a joint return\". The project shows $0.00, not a nonzero amount. No numeric assertion to keep or drop.",
+   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e"
+  },
+  {
+   "case": "classm.f8880.1",
+   "printed": "3(a)",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.f8880.1.deepseek.prompt.txt) lists the line as \"\\\"3(a)\\\" (NonNegDollars)\"; the reply names every line of this case \"line 3(a) (NonNegDollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer for any of the case's 21 lines (T-070 (1), T-081 (1); the same model's replies for classm.f8880.2 to .4 use the bare handle and were read). The reply's value is $0.00; the project's is $0.00. They are equal, so no project defect. No expectation is recorded for a line without a parsed answer; after the parser fix this line would agree.",
+   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e"
+  },
+  {
+   "case": "classm.f8880.1",
+   "printed": "3(b)",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.f8880.1.deepseek.prompt.txt) lists the line as \"\\\"3(b)\\\" (NonNegDollars)\"; the reply names every line of this case \"line 3(b) (NonNegDollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer for any of the case's 21 lines (T-070 (1), T-081 (1); the same model's replies for classm.f8880.2 to .4 use the bare handle and were read). The case is head of household; the reply leaves column (b) blank (\"Column (b) is completed only for a joint return\"), as f8880 p. 2, Column (b), \"Complete column (b) only if you're filing a joint return\". The project shows $0.00, not a nonzero amount. No numeric assertion to keep or drop.",
+   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e"
+  },
+  {
+   "case": "classm.f8880.1",
+   "printed": "4(a)",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.f8880.1.deepseek.prompt.txt) lists the line as \"\\\"4(a)\\\" (NonNegDollars)\"; the reply names every line of this case \"line 4(a) (NonNegDollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer for any of the case's 21 lines (T-070 (1), T-081 (1); the same model's replies for classm.f8880.2 to .4 use the bare handle and were read). The reply's value is $0.00; the project's is $0.00. They are equal, so no project defect. No expectation is recorded for a line without a parsed answer; after the parser fix this line would agree.",
+   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e"
+  },
+  {
+   "case": "classm.f8880.1",
+   "printed": "4(b)",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.f8880.1.deepseek.prompt.txt) lists the line as \"\\\"4(b)\\\" (NonNegDollars)\"; the reply names every line of this case \"line 4(b) (NonNegDollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer for any of the case's 21 lines (T-070 (1), T-081 (1); the same model's replies for classm.f8880.2 to .4 use the bare handle and were read). The case is head of household; the reply leaves column (b) blank (\"Column (b) is completed only for a joint return\"), as f8880 p. 2, Column (b), \"Complete column (b) only if you're filing a joint return\". The project shows $0.00, not a nonzero amount. No numeric assertion to keep or drop.",
+   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e"
+  },
+  {
+   "case": "classm.f8880.1",
+   "printed": "5(a)",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.f8880.1.deepseek.prompt.txt) lists the line as \"\\\"5(a)\\\" (NonNegDollars)\"; the reply names every line of this case \"line 5(a) (NonNegDollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer for any of the case's 21 lines (T-070 (1), T-081 (1); the same model's replies for classm.f8880.2 to .4 use the bare handle and were read). The reply's value is $0.00; the project's is $0.00. They are equal, so no project defect. No expectation is recorded for a line without a parsed answer; after the parser fix this line would agree.",
+   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e"
+  },
+  {
+   "case": "classm.f8880.1",
+   "printed": "5(b)",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.f8880.1.deepseek.prompt.txt) lists the line as \"\\\"5(b)\\\" (NonNegDollars)\"; the reply names every line of this case \"line 5(b) (NonNegDollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer for any of the case's 21 lines (T-070 (1), T-081 (1); the same model's replies for classm.f8880.2 to .4 use the bare handle and were read). The case is head of household; the reply leaves column (b) blank (\"Column (b) is completed only for a joint return\"), as f8880 p. 2, Column (b), \"Complete column (b) only if you're filing a joint return\". The project shows $0.00, not a nonzero amount. No numeric assertion to keep or drop.",
+   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e"
+  },
+  {
+   "case": "classm.f8880.1",
+   "printed": "6(a)",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.f8880.1.deepseek.prompt.txt) lists the line as \"\\\"6(a)\\\" (NonNegDollars)\"; the reply names every line of this case \"line 6(a) (NonNegDollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer for any of the case's 21 lines (T-070 (1), T-081 (1); the same model's replies for classm.f8880.2 to .4 use the bare handle and were read). The reply's value is $0.00; the project's is $0.00. They are equal, so no project defect. No expectation is recorded for a line without a parsed answer; after the parser fix this line would agree.",
+   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e"
+  },
+  {
+   "case": "classm.f8880.1",
+   "printed": "6(b)",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.f8880.1.deepseek.prompt.txt) lists the line as \"\\\"6(b)\\\" (NonNegDollars)\"; the reply names every line of this case \"line 6(b) (NonNegDollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer for any of the case's 21 lines (T-070 (1), T-081 (1); the same model's replies for classm.f8880.2 to .4 use the bare handle and were read). The case is head of household; the reply leaves column (b) blank (\"Column (b) is completed only for a joint return\"), as f8880 p. 2, Column (b), \"Complete column (b) only if you're filing a joint return\". The project shows $0.00, not a nonzero amount. No numeric assertion to keep or drop.",
+   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e"
+  },
+  {
+   "case": "classm.f8880.1",
+   "printed": "7",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.f8880.1.deepseek.prompt.txt) lists the line as \"\\\"7\\\" (NonNegDollars)\"; the reply names every line of this case \"line 7 (NonNegDollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer for any of the case's 21 lines (T-070 (1), T-081 (1); the same model's replies for classm.f8880.2 to .4 use the bare handle and were read). The reply's value is $0.00; the project's is $0.00. They are equal, so no project defect. No expectation is recorded for a line without a parsed answer; after the parser fix this line would agree.",
+   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e"
+  },
+  {
+   "case": "classm.f8880.1",
+   "printed": "8",
+   "project": "$32,936.00",
+   "model": "no answer",
+   "ruling": "Ruling: finding; on the project's line (S21-8880-STOP, `.transcription/proposed/stage21/f8880.findings.md`), and model error on the reply format. The prompt (.classm/classm.f8880.1.deepseek.prompt.txt) lists the line as \"\\\"8\\\" (Dollars)\"; the reply names every line of this case \"line 8 (Dollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer for any of the case's 21 lines (T-070 (1), T-081 (1); the same model's replies for classm.f8880.2 to .4 use the bare handle and were read). Line 7 is $0.00 and the reply leaves the line blank, which is the source (f8880 p. 1, line 7, \"Add the amounts on line 6. If zero, stop; you can't take this credit\"; a line after a STOP counts as skipped, README); the project shows $32,936.00 on a line the filer never reaches. Display only; line 12 is $0.00. No numeric assertion to keep or drop.",
+   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e"
+  },
+  {
+   "case": "classm.f8880.1",
+   "printed": "9",
+   "project": "50%",
+   "model": "no answer",
+   "ruling": "Ruling: finding; on the project's line (S21-8880-STOP, `.transcription/proposed/stage21/f8880.findings.md`), and model error on the reply format. The prompt (.classm/classm.f8880.1.deepseek.prompt.txt) lists the line as \"\\\"9\\\" (Rate)\"; the reply names every line of this case \"line 9 (Rate)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer for any of the case's 21 lines (T-070 (1), T-081 (1); the same model's replies for classm.f8880.2 to .4 use the bare handle and were read). Line 7 is $0.00 and the reply leaves the line blank, which is the source (f8880 p. 1, line 7, \"Add the amounts on line 6. If zero, stop; you can't take this credit\"; a line after a STOP counts as skipped, README); the project shows 50% on a line the filer never reaches. Display only; line 12 is $0.00. No numeric assertion to keep or drop.",
+   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e"
+  },
+  {
    "case": "classm.f8880.4",
    "printed": "1(b)",
    "project": "$665.00",

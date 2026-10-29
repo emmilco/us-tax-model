@@ -133,13 +133,8 @@ form:
       type: NonNegDollars
       expr:
         op: sum_over
-        collection: retirement
-        field: retirement.amount_a
-        where:
-          op: test
-          eq:
-          - retirement.is_ira
-          - const: true
+        collection: person
+        field: person.ira_amount_a
       cite:
         doc: i1040gi
         locator: pp. 26-27, Lines 4a and 4b (total distributions where an exception applies; 'More than one distribution')
@@ -149,13 +144,8 @@ form:
       type: NonNegDollars
       expr:
         op: sum_over
-        collection: retirement
-        field: retirement.taxable
-        where:
-          op: test
-          eq:
-          - retirement.is_ira
-          - const: true
+        collection: person
+        field: person.ira_taxable
       cite:
         doc: i1040gi
         locator: p. 27, line 4b, 'figure the taxable amount of each distribution and enter the total of the taxable
@@ -166,19 +156,8 @@ form:
       type: Count
       expr:
         op: sum_over
-        collection: retirement
-        field: retirement.one
-        where:
-          op: test
-          all:
-          - op: test
-            eq:
-            - retirement.is_ira
-            - const: true
-          - op: test
-            eq:
-            - retirement.has_rollover
-            - const: true
+        collection: person
+        field: person.ira_rollovers
       cite:
         doc: i1040gi
         locator: p. 27, Exception 1, 'Also check box 1 on line 4c'
@@ -201,13 +180,8 @@ form:
       type: NonNegDollars
       expr:
         op: sum_over
-        collection: retirement
-        field: retirement.amount_a
-        where:
-          op: test
-          eq:
-          - retirement.is_ira
-          - const: false
+        collection: person
+        field: person.plan_amount_a
       cite:
         doc: i1040gi
         locator: pp. 28-30, Lines 5a and 5b
@@ -217,13 +191,8 @@ form:
       type: NonNegDollars
       expr:
         op: sum_over
-        collection: retirement
-        field: retirement.taxable
-        where:
-          op: test
-          eq:
-          - retirement.is_ira
-          - const: false
+        collection: person
+        field: person.plan_taxable
       cite:
         doc: i1040gi
         locator: pp. 28-30, Lines 5a and 5b; p. 29, Simplified Method Worksheet, 'Enter the total of the taxable parts
@@ -234,19 +203,8 @@ form:
       type: Count
       expr:
         op: sum_over
-        collection: retirement
-        field: retirement.one
-        where:
-          op: test
-          all:
-          - op: test
-            eq:
-            - retirement.is_ira
-            - const: false
-          - op: test
-            eq:
-            - retirement.has_rollover
-            - const: true
+        collection: person
+        field: person.plan_rollovers
       cite:
         doc: i1040gi
         locator: p. 30, Rollovers, 'Also check box 1 on line 5c'

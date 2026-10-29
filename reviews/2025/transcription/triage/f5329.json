@@ -1,0 +1,286 @@
+{
+ "bank": {
+  "evaluation_failures": 0,
+  "fixtures": 1372,
+  "generated": 500,
+  "partial_bases": 40,
+  "partial_records": 0,
+  "seed": 20261026
+ },
+ "errors": [],
+ "failures": [],
+ "family": "claude",
+ "form": "f5329",
+ "lines": [
+  {
+   "absent": 0,
+   "agree": 2149,
+   "candidate": "f5329.must",
+   "compared": 2149,
+   "differ": 0,
+   "handle": "f5329.must",
+   "in_scope": 2092,
+   "in_scope_agree": 2092,
+   "kinds": {},
+   "kinds_by_return": {},
+   "open_at_triage": true,
+   "project": "f5329.must",
+   "shown_when": null,
+   "sources": {
+    "fixture": 1584,
+    "generated": 565
+   },
+   "status": "DISAGREE",
+   "triage": "agrees on sample",
+   "witnesses": []
+  },
+  {
+   "absent": 0,
+   "agree": 2144,
+   "candidate": "f5329.l2",
+   "compared": 2149,
+   "differ": 5,
+   "handle": "2",
+   "in_scope": 2148,
+   "in_scope_agree": 2143,
+   "kinds": {
+    "value": 5
+   },
+   "kinds_by_return": {
+    "completed": {
+     "value": 4
+    },
+    "refused": {
+     "value": 1
+    }
+   },
+   "open_at_triage": true,
+   "project": "f5329.l2",
+   "shown_when": "f5329.files",
+   "sources": {
+    "fixture": 1584,
+    "generated": 565
+   },
+   "status": "DISAGREE",
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "cents": 1900000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].x_l2_all",
+       "value": {
+        "cents": 1900000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "value",
+     "project": {
+      "cents": 1380000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_other_exc",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_limited_sum",
+       "value": {
+        "cents": 1380000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "stage21.blind.e4",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 1220000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].x_l2_all",
+       "value": {
+        "cents": 1220000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "value",
+     "project": {
+      "cents": 1100000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_other_exc",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_limited_sum",
+       "value": {
+        "cents": 1100000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "stage21.blind.e5",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 900000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].x_l2_all",
+       "value": {
+        "cents": 900000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "value",
+     "project": {
+      "cents": 747500,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_other_exc",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_limited_sum",
+       "value": {
+        "cents": 747500,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "stage21.blind.e6",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 150000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].x_l2_all",
+       "value": {
+        "cents": 150000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "value",
+     "project": {
+      "cents": 100000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_other_exc",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_limited_sum",
+       "value": {
+        "cents": 100000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "stage21.mut.e23_over_cap",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 150000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].x_l2_all",
+       "value": {
+        "cents": 150000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "value",
+     "project": {
+      "cents": 100000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_other_exc",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_limited_sum",
+       "value": {
+        "cents": 100000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage21.refuse.limit_binds",
+      "kind": "fixture"
+     }
+    }
+   ]
+  }
+ ],
+ "log_sha256_at_triage": "fb1489adf359c31bd6eb7913f85b49678534973c04ce26179babbd363f3b17c0",
+ "policy": "executable-triage-v2",
+ "response_sha256": "8071c025236972162af67327a34174c0cc9f912556beb169800bf67e42b0fbb9",
+ "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
+ "state": "evaluated",
+ "subject_sha256": "77781f5dc775ee7143adcf4754a133764b92b837af5b2e3527d8c28f8aab08e7"
+}

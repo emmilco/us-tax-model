@@ -1,0 +1,359 @@
+form:
+  id: f5329
+  kind: form
+  title: Form 5329, Additional Taxes on Qualified Plans (Including IRAs) and Other Tax-Favored Accounts (Parts I and VII),
+    one per person
+  tax_year: 2025
+  note: Part I from the person's Forms 1099-R with code 1 or S, with each entry's exception and the per-person limits; Part
+    VII for the 2025 HSA excess. Parts II to VI, VIII and IX, earlier-year excesses, and the early-distribution cases of each
+    entry's screen are refused.
+  collection:
+    parent: person
+    implicit: form
+    cite:
+      doc: i5329
+      locator: p. 1, Who Must File, "However, if distribution code 1 is correctly shown in box 7 of all your Forms 1099-R
+        and you owe the additional tax on the full amount shown on each Form 1099-R, you don’t have to file Form 5329."
+  lines:
+  - id: f5329.l1
+    printed: '1'
+    label: Early distributions includible in income
+    shown_when: f5329.files
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: person.x_l1
+    cite:
+      doc: f5329
+      locator: p. 1, Part I, line 1, "Early distributions includible in income (see instructions)."
+  - id: f5329.l2
+    printed: '2'
+    label: Early distributions included on line 1 that are not subject to the additional tax
+    shown_when: f5329.files
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - person.x_other_exc
+      - person.x_limited_sum
+    cite:
+      doc: i5329
+      locator: p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable
+        exception number (01–23). If more than one exception applies, enter 99."
+    ambiguity: amb.2025.f5329_line1_codes
+  - id: f5329.l3
+    printed: '3'
+    label: Amount subject to additional tax. Subtract line 2 from line 1
+    shown_when: f5329.files
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f5329.l1
+      take: f5329.l2
+    cite:
+      doc: f5329
+      locator: p. 1, Part I, line 3, "Amount subject to additional tax. Subtract line 2 from line 1"
+  - id: f5329.l3_s
+    printed: (helper)
+    label: The part of line 3 from code S distributions
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: person.x_l1_s
+      take: person.x_l2_s
+    cite:
+      doc: i5329
+      locator: p. 5, Line 4, "If any amount on line 3 was a distribution from a SIMPLE IRA received within 2 years from the
+        date you first participated in the SIMPLE IRA plan, you must multiply that amount by 25% instead of 10%."
+  - id: f5329.l3_other
+    printed: (helper)
+    label: The rest of line 3
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f5329.l3
+      take: f5329.l3_s
+    cite:
+      doc: i5329
+      locator: p. 5, Line 4, "If any amount on line 3 was a distribution from a SIMPLE IRA received within 2 years from the
+        date you first participated in the SIMPLE IRA plan, you must multiply that amount by 25% instead of 10%."
+  - id: f5329.rate10
+    printed: (helper)
+    label: Year parameter f5329.early_rate (10%)
+    type: Rate
+    expr:
+      op: param
+      ref: f5329.early_rate
+    cite:
+      doc: f5329
+      locator: p. 1, Part I, line 4, "Additional tax. Enter 10% (0.10) of line 3. Include this amount on Schedule 2 (Form
+        1040), line 8"
+  - id: f5329.rate25
+    printed: (helper)
+    label: Year parameter f5329.simple_rate (25%)
+    type: Rate
+    expr:
+      op: param
+      ref: f5329.simple_rate
+    cite:
+      doc: i5329
+      locator: p. 5, Line 4, "If any amount on line 3 was a distribution from a SIMPLE IRA received within 2 years from the
+        date you first participated in the SIMPLE IRA plan, you must multiply that amount by 25% instead of 10%."
+  - id: f5329.tax10
+    printed: (helper)
+    label: 10% of the line 3 amount not from code S distributions
+    type: NonNegDollars
+    expr:
+      op: multiply_rate
+      amount: f5329.l3_other
+      rate: f5329.rate10
+    cite:
+      doc: f5329
+      locator: p. 1, Part I, line 4, "Additional tax. Enter 10% (0.10) of line 3. Include this amount on Schedule 2 (Form
+        1040), line 8"
+    ambiguity: amb.2025.f5329_line4_cents
+  - id: f5329.tax25
+    printed: (helper)
+    label: 25% of the line 3 amount from code S distributions
+    type: NonNegDollars
+    expr:
+      op: multiply_rate
+      amount: f5329.l3_s
+      rate: f5329.rate25
+    cite:
+      doc: i5329
+      locator: p. 5, Line 4, "If any amount on line 3 was a distribution from a SIMPLE IRA received within 2 years from the
+        date you first participated in the SIMPLE IRA plan, you must multiply that amount by 25% instead of 10%."
+  - id: f5329.l4
+    printed: '4'
+    label: Additional tax. 10% of line 3 (25% of the part from a SIMPLE IRA within 2 years). Include on Schedule 2 (Form 1040),
+      line 8
+    shown_when: f5329.files
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - f5329.tax10
+      - f5329.tax25
+    cite:
+      doc: f5329
+      locator: p. 1, Part I, line 4, "Additional tax. Enter 10% (0.10) of line 3. Include this amount on Schedule 2 (Form
+        1040), line 8"
+    refuses:
+    - when: person.x_other
+      form: Form 5329 Parts II, III, IV, V, VI, VIII or IX
+      remedy: Taxable Coverdell, qualified tuition program or ABLE distributions, excess contributions to IRAs from an earlier
+        year, excess Coverdell, Archer MSA or ABLE contributions, earlier-year HSA excess without Form 8889, and missed required
+        minimum distributions need Form 5329 parts this tool does not prepare.
+      cite:
+        doc: f5329
+        locator: p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z,
+          from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040),
+          line 8q, from an ABLE account."
+    - when: person.x_two23
+      form: Form 5329 line 2, exception 23 on more than one distribution
+      remedy: Only one distribution a calendar year can be an emergency personal expense distribution; claim exception 23
+        on one Form 1099-R only.
+      cite:
+        doc: p590b
+        locator: p. 28, Distribution limits, "You are limited to taking one emergency personal expense distribution per calendar
+          year"
+    - when: person.x_limit_binds
+      form: Form 5329 line 4 with a SIMPLE IRA distribution and a limited exception over its limit
+      remedy: When a limited exception (05, 09, 19, 22 or 23) exceeds its limit and a code S distribution is among the distributions,
+        the part of line 3 taxed at 25% depends on which distributions the limit falls on, which this tool does not decide.
+      cite:
+        doc: i5329
+        locator: p. 5, Line 4, "If any amount on line 3 was a distribution from a SIMPLE IRA received within 2 years from
+          the date you first participated in the SIMPLE IRA plan, you must multiply that amount by 25% instead of 10%."
+  - id: f5329.l47
+    printed: '47'
+    label: Excess contributions for 2025
+    shown_when: f5329.files
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: person.x_hsa_excess
+    cite:
+      doc: i5329
+      locator: p. 8, Line 47, "Also include on line 47 any excess contributions your employer made."
+  - id: f5329.l48
+    printed: '48'
+    label: Total excess contributions. Add lines 46 and 47 (lines 42 to 46 are zero in this tool)
+    shown_when: f5329.files
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: f5329.l47
+    cite:
+      doc: f5329
+      locator: p. 2, Part VII, line 48, "Total excess contributions. Add lines 46 and 47"
+  - id: f5329.l49_base
+    printed: (helper)
+    label: Smaller of line 48 and the year-end value of your HSAs
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - f5329.l48
+      - person.x_hsa_value
+    cite:
+      doc: f5329
+      locator: p. 2, Part VII, line 49, "Additional tax. Enter 6% (0.06) of the smaller of line 48 or the value of your HSAs
+        on December 31, 2025 (including 2025 contributions made in 2026)."
+  - id: f5329.rate6
+    printed: (helper)
+    label: Year parameter f5329.excess_rate (6%)
+    type: Rate
+    expr:
+      op: param
+      ref: f5329.excess_rate
+    cite:
+      doc: f5329
+      locator: p. 2, Part VII, line 49, "Additional tax. Enter 6% (0.06) of the smaller of line 48 or the value of your HSAs
+        on December 31, 2025 (including 2025 contributions made in 2026)."
+  - id: f5329.l49_tax
+    printed: (helper)
+    label: 6% of the smaller of line 48 and the year-end value
+    type: NonNegDollars
+    expr:
+      op: multiply_rate
+      amount: f5329.l49_base
+      rate: f5329.rate6
+    cite:
+      doc: f5329
+      locator: p. 2, Part VII, line 49, "Additional tax. Enter 6% (0.06) of the smaller of line 48 or the value of your HSAs
+        on December 31, 2025 (including 2025 contributions made in 2026)."
+  - id: f5329.has_excess
+    printed: (helper)
+    label: Any 2025 HSA excess contributions
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - f5329.l48
+      - const: 0
+    cite:
+      doc: f5329
+      locator: p. 2, Part VII, line 49, "Additional tax. Enter 6% (0.06) of the smaller of line 48 or the value of your HSAs
+        on December 31, 2025 (including 2025 contributions made in 2026)."
+  - id: f5329.zero
+    printed: (helper)
+    label: Zero
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: sales.zero
+    cite:
+      doc: f5329
+      locator: p. 2, Part VII, line 49, "Additional tax. Enter 6% (0.06) of the smaller of line 48 or the value of your HSAs
+        on December 31, 2025 (including 2025 contributions made in 2026)."
+  - id: f5329.l49
+    printed: '49'
+    label: Additional tax. 6% of the smaller of line 48 or the value of your HSAs on December 31, 2025. Include on Schedule
+      2 (Form 1040), line 8
+    shown_when: f5329.files
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f5329.has_excess
+          - const: true
+        then: f5329.l49_tax
+      - guard:
+          op: test
+          eq:
+          - f5329.has_excess
+          - const: false
+        then: f5329.zero
+    cite:
+      doc: f5329
+      locator: p. 2, Part VII, line 49, "Additional tax. Enter 6% (0.06) of the smaller of line 48 or the value of your HSAs
+        on December 31, 2025 (including 2025 contributions made in 2026)."
+    refuses:
+    - when: person.x_other
+      form: Form 5329 Parts II, III, IV, V, VI, VIII or IX
+      remedy: Taxable Coverdell, qualified tuition program or ABLE distributions, excess contributions to IRAs from an earlier
+        year, excess Coverdell, Archer MSA or ABLE contributions, earlier-year HSA excess without Form 8889, and missed required
+        minimum distributions need Form 5329 parts this tool does not prepare.
+      cite:
+        doc: f5329
+        locator: p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z,
+          from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040),
+          line 8q, from an ABLE account."
+  - id: f5329.tax
+    printed: (helper)
+    label: This person's Form 5329 taxes for Schedule 2 line 8 (lines 4 and 49)
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - f5329.l4
+      - f5329.l49
+    cite:
+      doc: f1040s2
+      locator: p. 1, Part II, line 8, "Additional tax on IRAs or other tax-favored accounts. Attach Form 5329 if required."
+  - id: f5329.must
+    printed: (helper)
+    label: This person must file Form 5329 (an exception claimed, a code S distribution, or HSA excess)
+    type: Bool
+    expr:
+      op: test
+      any:
+      - op: test
+        gt:
+        - person.x_l2_all
+        - const: 0
+      - op: test
+        gt:
+        - person.x_l1_s
+        - const: 0
+      - op: test
+        gt:
+        - f5329.l48
+        - const: 0
+    cite:
+      doc: i5329
+      locator: p. 1, Who Must File, "However, if distribution code 1 is correctly shown in box 7 of all your Forms 1099-R
+        and you owe the additional tax on the full amount shown on each Form 1099-R, you don’t have to file Form 5329."
+  - id: f5329.one
+    printed: (helper)
+    label: One form
+    type: Count
+    expr:
+      op: param
+      ref: person.one
+    cite:
+      doc: i5329
+      locator: p. 1, Who Must File, "However, if distribution code 1 is correctly shown in box 7 of all your Forms 1099-R
+        and you owe the additional tax on the full amount shown on each Form 1099-R, you don’t have to file Form 5329."
+  - id: f5329.files
+    printed: (helper)
+    label: 'Form 5329 is prepared for this person: someone on the return must file it, and this person has an early distribution
+      or HSA excess'
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - s2.line8_file
+        - const: true
+      - op: test
+        any:
+        - op: test
+          gt:
+          - person.x_l1
+          - const: 0
+        - op: test
+          gt:
+          - f5329.l48
+          - const: 0
+    cite:
+      doc: i5329
+      locator: p. 1, Who Must File, "However, if distribution code 1 is correctly shown in box 7 of all your Forms 1099-R
+        and you owe the additional tax on the full amount shown on each Form 1099-R, you don’t have to file Form 5329."
+    ambiguity: amb.2025.f5329_joint_box

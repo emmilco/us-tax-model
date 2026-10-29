@@ -4,11 +4,47 @@
  "rulings": [
   {
    "case": "classm.retirement.1",
+   "printed": "person[taxpayer].retirement[r2].smw1",
+   "project": "$28,224.00",
+   "model": "$0.00",
+   "ruling": "Ruling: finding (F3, SMW-SHOWN in .transcription/proposed/stage21/retirement.findings.md); i1040gi p. 28, Partially Taxable Pensions and Annuities: \"But if your annuity starting date (defined later) was after July 1, 1986, see Simplified Method, later, to find out if you must use that method to figure the taxable part\"; p. 29, the worksheet's title, \"Simplified Method Worksheet—Lines 5a and 5b\", and \"If you had more than one partially taxable pension or annuity, figure the taxable part of each separately\". Entry r2 of classm.retirement.1 is a traditional IRA distribution (code 7, box 1 $28,224.00, $22,801.00 rolled over, retirement.annuity false); its taxable amount goes to line 4b by Exception 1 ($5,423.00, agreed) and it never reaches the worksheet. The project still shows the worksheet line, line 1 $28,224.00 on the values sheet (the retirement.smw* lines have no shown_when), which the skipped-line rule forbids (README: a line of a worksheet the filer never reaches must not show an amount). No other amount changes. The model's $0.00 is the right display once the line is hidden, so it is kept. Dropped: the Simplified Method Worksheet lines are helpers the values sheet cannot hide (T-081 (2)), so the model's blank for a worksheet that does not apply is not evidence about the project's value; F3 is recorded there.",
+   "drop": true,
+   "context": "6bc613794223480ec7edc896f2f62c5b8ad75344e0a6aca0af4ba794c150c3a8"
+  },
+  {
+   "case": "classm.retirement.1",
+   "printed": "person[taxpayer].retirement[r2].smw9",
+   "project": "$28,224.00",
+   "model": "$0.00",
+   "ruling": "Ruling: finding (F3, SMW-SHOWN in .transcription/proposed/stage21/retirement.findings.md); i1040gi p. 28, Partially Taxable Pensions and Annuities: \"But if your annuity starting date (defined later) was after July 1, 1986, see Simplified Method, later, to find out if you must use that method to figure the taxable part\"; p. 29, the worksheet's title, \"Simplified Method Worksheet—Lines 5a and 5b\", and \"If you had more than one partially taxable pension or annuity, figure the taxable part of each separately\". Entry r2 of classm.retirement.1 is a traditional IRA distribution (code 7, box 1 $28,224.00, $22,801.00 rolled over, retirement.annuity false); its taxable amount goes to line 4b by Exception 1 ($5,423.00, agreed) and it never reaches the worksheet. The project still shows the worksheet line, line 9 $28,224.00 on the values sheet (the retirement.smw* lines have no shown_when), which the skipped-line rule forbids (README: a line of a worksheet the filer never reaches must not show an amount). No other amount changes. The model's $0.00 is the right display once the line is hidden, so it is kept. Dropped: the Simplified Method Worksheet lines are helpers the values sheet cannot hide (T-081 (2)), so the model's blank for a worksheet that does not apply is not evidence about the project's value; F3 is recorded there.",
+   "drop": true,
+   "context": "6bc613794223480ec7edc896f2f62c5b8ad75344e0a6aca0af4ba794c150c3a8"
+  },
+  {
+   "case": "classm.retirement.1",
    "printed": "retirement[r2].show_a",
    "project": "yes",
    "model": "no",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. As in the earlier ruling on classm.retirement.9: box 1 is $0, so line 5a is $0 whether or not the entry is shown (amount_a agrees); the project shows it because box 5 ($545.00) is nonzero on a plan distribution outside the Simplified Method, i1040gi p. 28, Partially Taxable Pensions and Annuities.",
    "drop": true
+  },
+  {
+   "case": "classm.retirement.3",
+   "printed": "person[taxpayer].retirement[r1].smw1",
+   "project": "$11,843.00",
+   "model": "$0.00",
+   "ruling": "Ruling: finding (F3, SMW-SHOWN in .transcription/proposed/stage21/retirement.findings.md; not changed in round 2, T-081 (2)); i1040gi p. 28, Partially Taxable Pensions and Annuities: \"But if your annuity starting date (defined later) was after July 1, 1986, see Simplified Method, later, to find out if you must use that method to figure the taxable part\"; p. 29, the worksheet's title, \"Simplified Method Worksheet—Lines 5a and 5b\". The case inputs (fixtures/2025/classm.json, classm.retirement.3): one entry r1, account traditional_ira, code simple_S, box 1 $11,843.00, rollover $0, retirement.annuity false, exception e19 with $4,915.00. It is an IRA distribution, fully taxable on line 4b ($11,843.00, eval run), and never reaches the worksheet; the worksheet inputs the generator also filled (used_last_year, joint_life, age 77) are read only by the worksheet. The project still shows the worksheet line, line 1 $11,843.00 on the values sheet (the retirement.smw* lines have no shown_when), which the skipped-line rule forbids (README: a line of a worksheet the filer never reaches must not show an amount). No other amount changes: Form 5329 lines 1 to 4 are $11,843.00, $4,915.00, $6,928.00 and $1,732.00 (25% of line 3, code S), Schedule 2 line 8 $1,732.00. The model's $0.00 is the right display once the line is hidden. Dropped, as in round 1: the worksheet lines are helpers the values sheet cannot hide (T-081 (2)), so the model's blank for a worksheet that does not apply is not evidence about the project's value, and the expectation is what makes the fixture fail.",
+   "drop": true,
+   "context": "6bc613794223480ec7edc896f2f62c5b8ad75344e0a6aca0af4ba794c150c3a8"
+  },
+  {
+   "case": "classm.retirement.3",
+   "printed": "person[taxpayer].retirement[r1].smw9",
+   "project": "$11,843.00",
+   "model": "$0.00",
+   "ruling": "Ruling: finding (F3, SMW-SHOWN in .transcription/proposed/stage21/retirement.findings.md; not changed in round 2, T-081 (2)); i1040gi p. 28, Partially Taxable Pensions and Annuities: \"But if your annuity starting date (defined later) was after July 1, 1986, see Simplified Method, later, to find out if you must use that method to figure the taxable part\"; p. 29, the worksheet's title, \"Simplified Method Worksheet—Lines 5a and 5b\". The case inputs (fixtures/2025/classm.json, classm.retirement.3): one entry r1, account traditional_ira, code simple_S, box 1 $11,843.00, rollover $0, retirement.annuity false, exception e19 with $4,915.00. It is an IRA distribution, fully taxable on line 4b ($11,843.00, eval run), and never reaches the worksheet; the worksheet inputs the generator also filled (used_last_year, joint_life, age 77) are read only by the worksheet. The project still shows the worksheet line, line 9 $11,843.00 on the values sheet (the retirement.smw* lines have no shown_when), which the skipped-line rule forbids (README: a line of a worksheet the filer never reaches must not show an amount). No other amount changes: Form 5329 lines 1 to 4 are $11,843.00, $4,915.00, $6,928.00 and $1,732.00 (25% of line 3, code S), Schedule 2 line 8 $1,732.00. The model's $0.00 is the right display once the line is hidden. Dropped, as in round 1: the worksheet lines are helpers the values sheet cannot hide (T-081 (2)), so the model's blank for a worksheet that does not apply is not evidence about the project's value, and the expectation is what makes the fixture fail.",
+   "drop": true,
+   "context": "6bc613794223480ec7edc896f2f62c5b8ad75344e0a6aca0af4ba794c150c3a8"
   },
   {
    "case": "classm.retirement.3",

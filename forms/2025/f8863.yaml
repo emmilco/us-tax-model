@@ -133,7 +133,7 @@ form:
     cite:
       doc: f8863
       locator: p. 1, Part I, line 3, "Enter the amount from Form 1040 or 1040-SR, line 11b."
-    refuses: &id002
+    refuses:
     - when: sa.excluded_income
       form: Form 8863, lines 3 and 14, with Form 2555, Form 4563 or excluded Puerto Rico income
       remedy: With excluded foreign, American Samoa or Puerto Rico income, Form 8863 lines 3 and 14 add the excluded income
@@ -218,7 +218,7 @@ form:
         eq:
         - f8863.ban
         - const: true
-    cite: &id001
+    cite:
       doc: i8863
       locator: p. 1, Form 8862 may be required, "If your American opportunity credit was denied or reduced for any reason
         other than a math or clerical error for any tax year beginning after 2015, you must attach a completed Form 8862,
@@ -246,7 +246,12 @@ form:
       form: Form 8862, Information To Claim Certain Credits After Disallowance, or a ban on the American opportunity credit
       remedy: An American opportunity credit after a denial or reduction (other than for a math or clerical error) needs Form
         8862, and a credit within a 2- or 10-year ban is not allowed; this tool does not prepare either.
-      cite: *id001
+      cite:
+        doc: i8863
+        locator: p. 1, Form 8862 may be required, "If your American opportunity credit was denied or reduced for any reason
+          other than a math or clerical error for any tax year beginning after 2015, you must attach a completed Form 8862,
+          Information To Claim Certain Credits After Disallowance, to your tax return for the next tax year for which you
+          claim the credit."
   - id: f8863.kid_needed
     printed: (helper)
     label: Line 7 is above zero on a return that is not joint (the line 7 conditions are asked)
@@ -517,7 +522,16 @@ form:
     cite:
       doc: i8863
       locator: p. 8, Line 14, "Generally, your MAGI is the amount on your Form 1040 or 1040-SR, line 11b."
-    refuses: *id002
+    refuses:
+    - when: sa.excluded_income
+      form: Form 8863, lines 3 and 14, with Form 2555, Form 4563 or excluded Puerto Rico income
+      remedy: With excluded foreign, American Samoa or Puerto Rico income, Form 8863 lines 3 and 14 add the excluded income
+        back (Pub. 970); this tool does not prepare it.
+      cite:
+        doc: i8863
+        locator: p. 3, Who cannot claim a credit, "However, if you’re filing Form 2555, Foreign Earned Income; or Form 4563,
+          Exclusion of Income for Bona Fide Residents of American Samoa; or are excluding income from Puerto Rico, add to
+          the amount on your Form 1040 or 1040-SR, line 11b, the amount of income you excluded."
   - id: f8863.line15
     printed: '15'
     label: Subtract line 14 from line 13. If zero or less, skip lines 16 and 17, enter -0- on line 18, and go to line 19

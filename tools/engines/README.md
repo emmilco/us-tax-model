@@ -165,7 +165,10 @@ the foreign tax as the foreign tax credit (`otherIncome`); an HSA with full-year
 coverage; Form 1098-E; Schedule A items; care expenses with the count of
 qualifying persons; tips, overtime and the car loan as `obbbDeductions`; the IRA
 and Roth contributions for Form 8880; Form 5695 Part I costs and the Part II
-credit (UsTaxes takes Part II as an amount).
+credit (UsTaxes takes Part II as an amount); each early traditional IRA
+distribution as an IRA record (gross and taxable amount; code S as a SIMPLE IRA),
+with `earlyWithdrawalAmount` the taxable amount on a code 1 entry with no
+exception and left out otherwise.
 
 Lines reached (project ids): Form 1040 lines 1a, 1z, 6b, 7a, 8, 9, 10, 11a,
 11b, 12e, 13a, 13b, 14 to 24, 25a, 25d, 27a, 28, 32, 33, 34, 37 and the
@@ -179,7 +182,8 @@ Worksheet lines 1 to 25; the Social Security Benefits Worksheet lines 1 to 18;
 the student loan interest worksheet lines 1 to 4, 8, 9; Schedule 8812 lines 3,
 5, 7, 8, 10 to 12, 14, 16a to 21, 23 to 27; Form 8889 lines 3, 5, 6, 8, 11, 12, 13;
 Form 8959 lines 1, 4, 6, 7, 18, 19, 21, 22, 24; Form 8960 lines 8, 9a, 9b, 9d, 11,
-12, 15, 16, 17. Pass-throughs and the result lines left unmapped, with the
+12, 15, 16, 17; Schedule 2 line 8 and the filer's Form 5329 lines 1 and 4 (UsTaxes'
+`l1` and `l8`). Pass-throughs and the result lines left unmapped, with the
 reason, are in `USTAXES_PASS_THROUGH`.
 
 UsTaxes emulates the Tax Table by the rate schedule at the midpoint of the band
@@ -215,7 +219,9 @@ nonqualified dividends); `tax_table_band_edge` (a double just below a band
 boundary); `foreign_tax_limited` (the credit is not limited by the tax);
 `ustaxes_edu_cents` (education credits rounded to whole dollars), `edu_credit_limited`
 (no Form 8863 Credit Limit Worksheet) and `ustaxes_edu_no_schedule3` (Schedule 3, and so
-line 3, attached only for certain other credits). The
+line 3, attached only for certain other credits); for Form 5329 (below),
+`early_exception`, `early_simple`, `early_spouse`, `early_tax_cents` and
+`hsa_excess_tax`. The
 features are the generator's, read off the project's values (`compare.py`
 `derived_features`), or reported by the adapter about the engine's run or the
 case's inputs (`run_features`). Two defects found in the source move no mapped
@@ -352,6 +358,26 @@ floor also bounds how much of the generated population the project refuses.
   OpenTaxSolver takes Schedule 3 line 3 and Form 1040 line 29 as entered amounts (limitation
   `education`). No engine has the line 7 test for filers under 24 (`edu_no_refund`), and
   PolicyEngine and UsTaxes use an unrounded phase-out fraction (`edu_phaseout_inexact`).
+- Form 5329 and Schedule 2 line 8 (Stage 21): the generator gives about one return in ten without IRA or Roth
+  contributions (`add_early`; so Form 8880 is not involved) one or two Forms 1099-R for a traditional IRA early
+  distribution, nothing rolled over, code 1 or (about one in five) code S, about three in ten with an exception and
+  the amount it covers (first home with earlier first-home distributions, birth or adoption with a count, domestic
+  abuse, emergency, medical expenses, and unlimited ones; a limited exception is not drawn beside a code S entry,
+  which the project refuses); on a joint return your spouse sometimes has one too. Most amounts are multiples of
+  $10, so that 10% is whole dollars. Every person answers No to the Form 5329 parts not prepared (`x_other`), and
+  every Form 8889 answers its box 1 question and, without contributions, no eligible months (Part VII reads the
+  Form 8889 limit). The taxable amount enters every engine as income: PolicyEngine `taxable_ira_distributions` (per
+  person), Tax-Calculator `e01400`, OpenTaxSolver `L4a`/`L4b`, UsTaxes an IRA record. Only UsTaxes computes the
+  additional tax, and only where its model is the form (D9 of the Stage 21 decisions): IRA code 1 entries with no
+  exception, `earlyWithdrawalAmount` the taxable amount, whole-dollar tax. Its structural differences are
+  limitations: no line 2 or limits (`early_exception`), one 10% rate (`early_simple`), one form for both spouses
+  (`early_spouse`, on the filer's Form 5329 lines), the tax rounded to dollars (`early_tax_cents`, read off the
+  project's Schedule 2 line 8), no Part VII (`hsa_excess_tax`); its line 8 box is always unchecked (unmapped), and
+  its Form 5329 reads IRA records only (the generator draws no plan distributions). PolicyEngine-US has no Form 5329
+  variable (`early_withdrawal_penalty` is an input, the Schedule 1 savings penalty), Tax-Calculator takes Schedule 2
+  line 8 as the input `e09900` and OpenTaxSolver as the entered `S2_8`: they could only echo it, so each is
+  excluded where the project's line 8 is positive (`early_distribution_tax`: Schedule 2 lines 8 and 21, Form 1040
+  lines 23, 24, 34, 35a, 37 and the pre-credit total, as each engine maps them).
 - Form 5695 costs are supplied net of subsidies and rebates, as the form
   takes them; PolicyEngine is told its modeled Department of Energy home
   electrification rebate covers nothing

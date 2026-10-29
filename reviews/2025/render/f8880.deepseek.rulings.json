@@ -6,6 +6,13 @@
   {
    "printed": "(CLW 2)",
    "restated": "Add s3 line 1, s3 line 2, and s3 line 3.",
+   "model": "The IRS worksheet says \"Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l,\" but the restatement adds only Schedule 3 lines 1 through 3, omitting 6d and 6l.",
+   "ruling": "Ruling: scope; the English is the source within the slice. f8880 p. 2, Credit Limit Worksheet: \"2. Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l\". The rendered line (the model raised the same point as the Claude render) adds Schedule 3 lines 1, 2 and 3 and its citation says \"(lines 6d and 6l are refused by scope.credits)\": the credit for the elderly or the disabled (line 6d) and any other Schedule 3 line 6 credit are refused through scope.credits on Schedule 3 line 8 (\"Other credit forms (Schedule 3 lines 6a to 6z; Form 1040 lines 30 and 31)\"), so on every return that reaches the worksheet they are zero. The refusal sits on Schedule 3, which the render does not show. Same ruling as Stage 19.",
+   "context": "55a0a0828bc485412a7246bd9c637f39b0202f07292d0f662ac9b08c88a4c693"
+  },
+  {
+   "printed": "(CLW 2)",
+   "restated": "Add s3 line 1, s3 line 2, and s3 line 3.",
    "model": "The IRS worksheet says to enter the total of Schedule 3 lines 1 through 3, 6d, and 6l, but the restatement adds only Schedule 3 lines 1, 2, and 3, omitting 6d and 6l.",
    "ruling": "Ruling: scope; the English is the source within the slice. f8880 p. 2, Credit Limit Worksheet: \"2. Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l\". The rendered line (rendered/2025/f8880.md, (CLW 2); the model raised the same point as the claude render) adds Schedule 3 lines 1, 2 and 3, the last being the education credits since Stage 19, and its citation says \"(lines 6d and 6l are refused by scope.credits)\": the credit for the elderly or the disabled (line 6d) and any other Schedule 3 line 6 credit are refused through scope.credits on Schedule 3 line 8 (\"Other credit forms (Schedule 3 lines 6a to 6z; Form 1040 lines 30 and 31)\"), so on every return that reaches the worksheet they are zero. The refusal sits on Schedule 3, which the render does not show.",
    "context": "679329ca4f0bf3dbc100df8cae5dd88d42543ec61901b274b36649a402ea591e"

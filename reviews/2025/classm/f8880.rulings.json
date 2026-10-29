@@ -43,6 +43,78 @@
    "drop": true
   },
   {
+   "case": "classm.f8880.2",
+   "printed": "(CLW 1)",
+   "project": "$1,198.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.f8880.2.prompt.txt) lists the line as \"line (CLW 1)\"; the reply names it \"CLW 1\" without the parentheses, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (the known defect T-070 (1), T-081 (1); the reply for classm.f8880.1 writes \"(CLW n)\" and was read). The reply's value is $1,198.00; the project's is $1,198.00. They are equal, and the worksheet is reached (line 7 $4,000.00; line 12 $1,198.00 agrees), so no project defect. No expectation is recorded for a line without a parsed answer; after the parser fix this line would agree.",
+   "context": "b2a554f8a175d0f4a2039bccf6f137d5136e1aca1059ce7cc54268945e6a8526"
+  },
+  {
+   "case": "classm.f8880.2",
+   "printed": "(CLW 2)",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.f8880.2.prompt.txt) lists the line as \"line (CLW 2)\"; the reply names it \"CLW 2\" without the parentheses, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (the known defect T-070 (1), T-081 (1); the reply for classm.f8880.1 writes \"(CLW n)\" and was read). The reply's value is $0.00; the project's is $0.00. They are equal, and the worksheet is reached (line 7 $4,000.00; line 12 $1,198.00 agrees), so no project defect. No expectation is recorded for a line without a parsed answer; after the parser fix this line would agree.",
+   "context": "b2a554f8a175d0f4a2039bccf6f137d5136e1aca1059ce7cc54268945e6a8526"
+  },
+  {
+   "case": "classm.f8880.2",
+   "printed": "(CLW 3)",
+   "project": "$1,198.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.f8880.2.prompt.txt) lists the line as \"line (CLW 3)\"; the reply names it \"CLW 3\" without the parentheses, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (the known defect T-070 (1), T-081 (1); the reply for classm.f8880.1 writes \"(CLW n)\" and was read). The reply's value is $1,198.00; the project's is $1,198.00. They are equal, and the worksheet is reached (line 7 $4,000.00; line 12 $1,198.00 agrees), so no project defect. No expectation is recorded for a line without a parsed answer; after the parser fix this line would agree.",
+   "context": "b2a554f8a175d0f4a2039bccf6f137d5136e1aca1059ce7cc54268945e6a8526"
+  },
+  {
+   "case": "classm.f8880.3",
+   "printed": "(CLW 1)",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.f8880.3.prompt.txt) lists the line as \"line (CLW 1)\"; the reply names it \"CLW 1\" without the parentheses, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (the known defect T-070 (1), T-081 (1); the reply for classm.f8880.1 writes \"(CLW n)\" and was read). The case has line 7 $0.00 and Form 1040 line 18 $0.00; the reply's value is blank (\"Skipped; line 7 is zero, so stop\"), which is the source: f8880 p. 1, line 7, \"Add the amounts on line 6. If zero, stop; you can't take this credit\" (a worksheet after a STOP counts as skipped, README). The project shows $0.00, not a nonzero amount on a skipped line. No numeric assertion to keep or drop.",
+   "context": "b2a554f8a175d0f4a2039bccf6f137d5136e1aca1059ce7cc54268945e6a8526"
+  },
+  {
+   "case": "classm.f8880.3",
+   "printed": "(CLW 2)",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.f8880.3.prompt.txt) lists the line as \"line (CLW 2)\"; the reply names it \"CLW 2\" without the parentheses, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (the known defect T-070 (1), T-081 (1); the reply for classm.f8880.1 writes \"(CLW n)\" and was read). The case has line 7 $0.00 and Form 1040 line 18 $0.00; the reply's value is blank (\"Skipped; line 7 is zero, so stop\"), which is the source: f8880 p. 1, line 7, \"Add the amounts on line 6. If zero, stop; you can't take this credit\" (a worksheet after a STOP counts as skipped, README). The project shows $0.00, not a nonzero amount on a skipped line. No numeric assertion to keep or drop.",
+   "context": "b2a554f8a175d0f4a2039bccf6f137d5136e1aca1059ce7cc54268945e6a8526"
+  },
+  {
+   "case": "classm.f8880.3",
+   "printed": "(CLW 3)",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.f8880.3.prompt.txt) lists the line as \"line (CLW 3)\"; the reply names it \"CLW 3\" without the parentheses, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (the known defect T-070 (1), T-081 (1); the reply for classm.f8880.1 writes \"(CLW n)\" and was read). The case has line 7 $0.00 and Form 1040 line 18 $0.00; the reply's value is blank (\"Skipped; line 7 is zero, so stop\"), which is the source: f8880 p. 1, line 7, \"Add the amounts on line 6. If zero, stop; you can't take this credit\" (a worksheet after a STOP counts as skipped, README). The project shows $0.00, not a nonzero amount on a skipped line. No numeric assertion to keep or drop.",
+   "context": "b2a554f8a175d0f4a2039bccf6f137d5136e1aca1059ce7cc54268945e6a8526"
+  },
+  {
+   "case": "classm.f8880.4",
+   "printed": "(CLW 1)",
+   "project": "$26.00",
+   "model": "no answer",
+   "ruling": "Ruling: finding; on the project's line (S21-8880-STOP, `.transcription/proposed/stage21/f8880.findings.md`), and model error on the reply format. The prompt (.classm/classm.f8880.4.prompt.txt) lists the line as \"line (CLW 1)\"; the reply names it \"CLW 1\" without the parentheses, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (the known defect T-070 (1), T-081 (1); the reply for classm.f8880.1 writes \"(CLW n)\" and was read). The case (head of household) has line 7 $0.00; the reply's value is blank (\"Skipped: stopped at line 7\"), which is the source: f8880 p. 1, line 7, \"Add the amounts on line 6. If zero, stop; you can't take this credit\"; a worksheet after a STOP counts as skipped (README). The project shows $26.00 here (Form 1040 line 18), and $26.00 on (CLW 3) and line 11 and $73,135.00 on line 8, on a return that cannot take the credit (confirmed by node engine/dist/main.js eval on the case inputs). Display only; line 12 is $0.00. No numeric assertion to keep or drop.",
+   "context": "b2a554f8a175d0f4a2039bccf6f137d5136e1aca1059ce7cc54268945e6a8526"
+  },
+  {
+   "case": "classm.f8880.4",
+   "printed": "(CLW 2)",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.f8880.4.prompt.txt) lists the line as \"line (CLW 2)\"; the reply names it \"CLW 2\" without the parentheses, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (the known defect T-070 (1), T-081 (1); the reply for classm.f8880.1 writes \"(CLW n)\" and was read). The case has line 7 $0.00; the reply's value is blank (\"Skipped: stopped at line 7\"), which is the source: f8880 p. 1, line 7, \"Add the amounts on line 6. If zero, stop; you can't take this credit\". The project shows $0.00 (Schedule 3 lines 1 to 3 are $0.00), not a nonzero amount on a skipped line. No numeric assertion to keep or drop.",
+   "context": "b2a554f8a175d0f4a2039bccf6f137d5136e1aca1059ce7cc54268945e6a8526"
+  },
+  {
+   "case": "classm.f8880.4",
+   "printed": "(CLW 3)",
+   "project": "$26.00",
+   "model": "no answer",
+   "ruling": "Ruling: finding; on the project's line (S21-8880-STOP), and model error on the reply format. The prompt (.classm/classm.f8880.4.prompt.txt) lists the line as \"line (CLW 3)\"; the reply names it \"CLW 3\" without the parentheses, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (the known defect T-070 (1), T-081 (1); the reply for classm.f8880.1 writes \"(CLW n)\" and was read). The case has line 7 $0.00 and the reply's value is blank, which is the source (f8880 p. 1, line 7, \"Add the amounts on line 6. If zero, stop; you can't take this credit\"); the project shows $26.00 (CLW 1 less CLW 2) on a worksheet the filer never reaches. Display only; line 12 is $0.00. No numeric assertion to keep or drop.",
+   "context": "b2a554f8a175d0f4a2039bccf6f137d5136e1aca1059ce7cc54268945e6a8526"
+  },
+  {
    "case": "classm.f8880.4",
    "printed": "1(b)",
    "project": "$665.00",

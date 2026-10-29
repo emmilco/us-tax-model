@@ -713,6 +713,14 @@ def derived_features(case, values):
     # The foreign tax credit is less than the foreign tax paid: the tax on line 16 limited it.
     if case["inputs"].get("ftc.taxes", 0) > (m("ftc.credit") or 0):
         feats.add("foreign_tax_limited")
+    # Form 5329 (Schedule 2 line 8): a tax on early distributions or HSA excess contributions, and that tax not in
+    # whole dollars (UsTaxes rounds its line to dollars); a Part VII tax (no engine has Part VII).
+    if (m("s2.line8") or 0) > 0:
+        feats.add("early_distribution_tax")
+        if (m("s2.line8") or 0) % 100:
+            feats.add("early_tax_cents")
+    if any((m(f"person[{p}].f5329[form].l49") or 0) > 0 for p in ("taxpayer", "spouse")):
+        feats.add("hsa_excess_tax")
     return feats
 
 

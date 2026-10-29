@@ -24,7 +24,7 @@ form:
     type: Enum(retirement_code)
     expr:
       op: input
-      source: 'Distribution code in box 7: normal_7, death_4, early_exception_2, direct_rollover_G, qualified_roth_Q,
+      source: 'Distribution code in box 7: normal_7, death_4, early_exception_2, early_1 (code 1, early distribution, no known exception), simple_S (code S, SIMPLE IRA in its first 2 years), disability_3 (code 3, disability), direct_rollover_G, qualified_roth_Q,
         or other (any other code, or two codes)'
     cite:
       doc: f1099r
@@ -63,8 +63,7 @@ form:
       locator: p. 27, Exception 1 (IRA rollovers); p. 30, Rollovers
   - id: retirement.special
     printed: (helper)
-    label: 'Does this distribution involve any of these: an early distribution with no known exception (code 1,
-      J or S); a disability pension received before minimum retirement age, or a pension partly excludable because you were disabled as a result of a terrorist attack; a corrective distribution of excess
+    label: 'Does this distribution involve any of these: a disability pension received before minimum retirement age, or a pension partly excludable because you were disabled as a result of a terrorist attack; a corrective distribution of excess
       deferrals or contributions; a qualified charitable distribution or HSA funding distribution; nondeductible
       contributions to any traditional IRA; a conversion or recharacterization (Form 8606); a 2024 or 2025 IRA contribution returned to you, or excess contributions for an earlier year returned to you in 2025;
       a rollover to a Roth IRA or designated Roth account; a lump-sum distribution you may report on Form 4972;
@@ -72,8 +71,7 @@ form:
     type: Bool
     expr:
       op: input
-      source: 'Does this distribution involve any of these: an early distribution with no known exception (code
-        1, J or S); a disability pension received before minimum retirement age, or a pension partly excludable because you were disabled as a result of a terrorist attack; a corrective distribution of excess
+      source: 'Does this distribution involve any of these: a disability pension received before minimum retirement age, or a pension partly excludable because you were disabled as a result of a terrorist attack; a corrective distribution of excess
         deferrals or contributions; a qualified charitable distribution or HSA funding distribution; nondeductible
         contributions to any traditional IRA; a conversion or recharacterization (Form 8606); a 2024 or 2025 IRA contribution returned to you, or excess contributions for an earlier year returned to you in 2025;
         a rollover to a Roth IRA or designated Roth account; a lump-sum distribution you may report on Form 4972;
@@ -258,6 +256,26 @@ form:
         all:
         - op: test
           eq:
+          - retirement.code
+          - const: simple_S
+        - op: test
+          ne:
+          - retirement.account
+          - const: traditional_ira
+      - op: test
+        all:
+        - op: test
+          eq:
+          - retirement.code
+          - const: disability_3
+        - op: test
+          eq:
+          - retirement.is_ira
+          - const: false
+      - op: test
+        all:
+        - op: test
+          eq:
           - retirement.account
           - const: roth_ira
         - op: test
@@ -311,8 +329,9 @@ form:
           Public Safety Officers, Simplified Method'
     - when: retirement.bad_code
       form: Form 8606 or another Form 1099-R code
-      remedy: A Roth IRA distribution other than a qualified distribution (code Q), or a distribution code other
-        than 7, 4, 2, G or Q, is outside this tool.
+      remedy: A Roth IRA distribution other than a qualified distribution (code Q), code S other than from a traditional
+        SIMPLE IRA, code 3 other than from an IRA, or a distribution code other than 7, 4, 2, 1, S, 3, G or Q, is outside
+        this tool.
       cite:
         doc: i1040gi
         locator: p. 27, Exception 2; f1099r Box 7
@@ -937,11 +956,21 @@ form:
           Public Safety Officers, Simplified Method'
     - when: retirement.bad_code
       form: Form 8606 or another Form 1099-R code
-      remedy: A Roth IRA distribution other than a qualified distribution (code Q), or a distribution code other
-        than 7, 4, 2, G or Q, is outside this tool.
+      remedy: A Roth IRA distribution other than a qualified distribution (code Q), code S other than from a traditional
+        SIMPLE IRA, code 3 other than from an IRA, or a distribution code other than 7, 4, 2, 1, S, 3, G or Q, is outside
+        this tool.
       cite:
         doc: i1040gi
         locator: p. 27, Exception 2; f1099r Box 7
+    - when: retirement.screen_refused
+      form: Form 5329 or Form 8915-F for this Form 1099-R
+      remedy: A qualified disaster recovery distribution, a modified series of substantially equal payments, an annuity or
+        modified endowment contract distribution, a repayment, a December 30-31 long-term care distribution, more than one
+        exception, an exception covering only part of a code 2 distribution, or a code 4 or 7 that does not fit needs Form
+        5329 or Form 8915-F rules this tool does not apply.
+      cite:
+        doc: i5329
+        locator: 'p. 5, Line 2, "Enter on line 2 the amount that you can exclude."'
     - when: retirement.annuity_rollover
       form: Pub. 575 (rollover of a pension or annuity figured by the Simplified Method)
       remedy: A rollover from a pension or annuity whose taxable part is figured with the Simplified Method is
@@ -1129,7 +1158,537 @@ form:
       doc: f8880
       locator: 'p. 2, Line 4, "Enter the total amount of distributions you, and your spouse if filing jointly, received after
         2022 and before the due date of your 2025 return (including extensions) from any of the following types of plans"'
+# --- Stage 21: Form 5329 (generated) ---
+  - id: retirement.early
+    printed: (helper)
+    label: An early distribution with no known exception (code 1, or code S from a SIMPLE IRA in the first 2 years)
+    type: Bool
+    expr:
+      op: test
+      any:
+      - op: test
+        eq:
+        - retirement.code
+        - const: early_1
+      - op: test
+        eq:
+        - retirement.code
+        - const: simple_S
+    cite:
+      doc: i5329
+      locator: p. 3, Line 1, "Enter the amount of early distributions includible in income (other than qualified disaster recovery
+        distributions) that you received from:"
+  - id: retirement.early_screen
+    printed: (gate)
+    label: An early distribution of a kind Form 5329 Part I is not computed for here
+    type: Bool
+    expr:
+      op: input
+      source: 'Is any of these true of this distribution: it is a qualified disaster recovery distribution (Form 8915-F); it
+        is part of a series of substantially equal periodic payments that was modified (recapture); it is from an annuity contract
+        or a modified endowment contract; it repays a birth or adoption, terminal illness, domestic abuse or emergency personal
+        expense distribution; it is an emergency personal expense distribution within 3 years after an earlier one you have
+        not repaid; it is a qualified long-term care distribution made December 30 or 31, 2025; or more than one exception to
+        the additional tax applies to it?'
+    cite:
+      doc: i5329
+      locator: p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable
+        exception number (01–23). If more than one exception applies, enter 99."
+  - id: retirement.code_screen
+    printed: (gate)
+    label: A code 2, 4 or 7 distribution whose code does not fit
+    type: Bool
+    expr:
+      op: input
+      source: 'Is either of these true of this distribution: the exception that code 2 shows covers only part of it; or its
+        code is wrong because you were under age 59½ when you received it (code 7) or you are not the beneficiary of a person
+        who died (code 4)?'
+    cite:
+      doc: i5329
+      locator: p. 1, Who Must File, "You received a distribution subject to the tax on early distributions from a qualified
+        retirement plan (other than a Roth IRA) and you meet an exception to the tax on early distributions from the list shown
+        later, but box 7 of your Form 1099-R doesn’t indicate an exception or the exception doesn’t apply to the entire distribution."
+  - id: retirement.screen_refused
+    printed: (gate)
+    label: This Form 1099-R needs Form 5329 parts or codes this tool does not compute
+    type: Bool
+    expr:
+      op: test
+      any:
+      - op: test
+        all:
+        - op: test
+          eq:
+          - retirement.early
+          - const: true
+        - op: test
+          eq:
+          - retirement.early_screen
+          - const: true
+      - op: test
+        all:
+        - op: test
+          any:
+          - op: test
+            eq:
+            - retirement.code
+            - const: early_exception_2
+          - op: test
+            eq:
+            - retirement.code
+            - const: normal_7
+          - op: test
+            eq:
+            - retirement.code
+            - const: death_4
+        - op: test
+          eq:
+          - retirement.code_screen
+          - const: true
+    cite:
+      doc: i5329
+      locator: p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable
+        exception number (01–23). If more than one exception applies, enter 99."
+  - id: retirement.exception
+    printed: (helper)
+    label: Exception to the additional tax that applies to this distribution (i5329 p. 5 table), or none
+    type: Enum(early_exception)
+    expr:
+      op: input
+      source: Which exception to the 10% additional tax applies to this distribution? Enter the number from the table in the
+        Form 5329 instructions (for example 02 substantially equal periodic payments, 03 disability, 05 medical expenses, 08
+        higher education expenses, 09 first home, 12 incorrectly coded as early, 19 birth or adoption, 20 terminal illness),
+        or none.
+    cite:
+      doc: i5329
+      locator: p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable
+        exception number (01–23). If more than one exception applies, enter 99."
+  - id: retirement.has_exception
+    printed: (helper)
+    label: An exception applies
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - retirement.early
+        - const: true
+      - op: test
+        ne:
+        - retirement.exception
+        - const: none
+    cite:
+      doc: i5329
+      locator: p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable
+        exception number (01–23). If more than one exception applies, enter 99."
+  - id: retirement.exc_amount
+    printed: (helper)
+    label: Amount of this distribution the exception covers
+    type: NonNegDollars
+    expr:
+      op: input
+      source: 'Amount of this distribution that the exception covers (the tool applies the dollar limits per person). Medical
+        expenses (05), birth or adoption (19) and domestic abuse (22): the amount of the distribution that qualifies, whatever
+        it was spent on; for 05 the tool limits it to the medical expenses above 7.5% of AGI, and for 22 enter no more than
+        50% of the present value of the IRA or plan account. First home (09): the amount used to pay qualified acquisition costs.
+        Emergency expenses (23): no more than your total interest in the IRA or plan account minus $1,000. Health insurance
+        premiums while unemployed (07): the premiums you paid. Higher education (08): your adjusted qualified education expenses
+        (Pub. 970, chapter 8). Other exceptions: the amount the exception covers.'
+    cite:
+      doc: i5329
+      locator: p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable
+        exception number (01–23). If more than one exception applies, enter 99."
+    ambiguity: amb.2025.f5329_education_k12
+  - id: retirement.wrong_kind
+    printed: (gate)
+    label: An exception that does not apply to this kind of account
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - retirement.has_exception
+        - const: true
+      - op: test
+        any:
+        - op: test
+          all:
+          - op: test
+            eq:
+            - retirement.is_ira
+            - const: true
+          - op: test
+            any:
+            - op: test
+              eq:
+              - retirement.exception
+              - const: e01
+            - op: test
+              eq:
+              - retirement.exception
+              - const: e06
+        - op: test
+          all:
+          - op: test
+            eq:
+            - retirement.is_ira
+            - const: false
+          - op: test
+            any:
+            - op: test
+              eq:
+              - retirement.exception
+              - const: e07
+            - op: test
+              eq:
+              - retirement.exception
+              - const: e08
+            - op: test
+              eq:
+              - retirement.exception
+              - const: e09
+    cite:
+      doc: i5329
+      locator: p. 5, Line 2, "Qualified retirement plan distributions (doesn’t apply to IRAs) you received after separation
+        from service"
+  - id: retirement.l1
+    printed: (helper)
+    label: 'Form 5329 line 1 share: the taxable amount of an early distribution'
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - retirement.early
+          - const: true
+        then: retirement.taxable
+      - guard:
+          op: test
+          eq:
+          - retirement.early
+          - const: false
+        then: retirement.zero
+    cite:
+      doc: i5329
+      locator: p. 3, Line 1, "Enter the amount of early distributions includible in income (other than qualified disaster recovery
+        distributions) that you received from:"
+  - id: retirement.exc_capped
+    printed: (helper)
+    label: Smaller of the exception amount and the taxable amount
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - retirement.exc_amount
+      - retirement.taxable
+    cite:
+      doc: i5329
+      locator: p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable
+        exception number (01–23). If more than one exception applies, enter 99."
+  - id: retirement.l2
+    printed: (helper)
+    label: Form 5329 line 2 share before the per-person limits
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - retirement.has_exception
+          - const: true
+        then: retirement.exc_capped
+      - guard:
+          op: test
+          eq:
+          - retirement.has_exception
+          - const: false
+        then: retirement.zero
+    cite:
+      doc: i5329
+      locator: p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable
+        exception number (01–23). If more than one exception applies, enter 99."
+    refuses:
+    - when: retirement.wrong_kind
+      form: Form 5329 line 2 exception for another kind of account
+      remedy: Exceptions 01 and 06 do not apply to IRAs, and 07, 08 and 09 apply only to IRAs (i5329 p. 5). Check the exception
+        number.
+      cite:
+        doc: i5329
+        locator: p. 5, Line 2, "Qualified retirement plan distributions (doesn’t apply to IRAs) you received after separation
+          from service"
+  - id: retirement.is_e05
+    printed: (helper)
+    label: Exception 05
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - retirement.has_exception
+        - const: true
+      - op: test
+        eq:
+        - retirement.exception
+        - const: e05
+    cite:
+      doc: i5329
+      locator: p. 5, Line 2, "Qualified retirement plan distributions up to the amount you paid for unreimbursed medical expenses
+        during the year minus 7.5% of your adjusted gross income (AGI) for the year."
+  - id: retirement.l2_e05
+    printed: (helper)
+    label: Line 2 share under exception 05
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - retirement.is_e05
+          - const: true
+        then: retirement.l2
+      - guard:
+          op: test
+          eq:
+          - retirement.is_e05
+          - const: false
+        then: retirement.zero
+    cite:
+      doc: i5329
+      locator: p. 5, Line 2, "Qualified retirement plan distributions up to the amount you paid for unreimbursed medical expenses
+        during the year minus 7.5% of your adjusted gross income (AGI) for the year."
+  - id: retirement.is_e09
+    printed: (helper)
+    label: Exception 09
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - retirement.has_exception
+        - const: true
+      - op: test
+        eq:
+        - retirement.exception
+        - const: e09
+    cite:
+      doc: i5329
+      locator: p. 5, Line 2, "IRA distributions made for the purchase of a first home, up to $10,000."
+  - id: retirement.l2_e09
+    printed: (helper)
+    label: Line 2 share under exception 09
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - retirement.is_e09
+          - const: true
+        then: retirement.l2
+      - guard:
+          op: test
+          eq:
+          - retirement.is_e09
+          - const: false
+        then: retirement.zero
+    cite:
+      doc: i5329
+      locator: p. 5, Line 2, "IRA distributions made for the purchase of a first home, up to $10,000."
+  - id: retirement.is_e19
+    printed: (helper)
+    label: Exception 19
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - retirement.has_exception
+        - const: true
+      - op: test
+        eq:
+        - retirement.exception
+        - const: e19
+    cite:
+      doc: i5329
+      locator: p. 5, Line 2, "A qualified distribution from a retirement plan for the birth or adoption of a child is a distribution
+        of up to $5,000 if made during the 1-year period beginning on the date your child was born or adopted."
+  - id: retirement.l2_e19
+    printed: (helper)
+    label: Line 2 share under exception 19
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - retirement.is_e19
+          - const: true
+        then: retirement.l2
+      - guard:
+          op: test
+          eq:
+          - retirement.is_e19
+          - const: false
+        then: retirement.zero
+    cite:
+      doc: i5329
+      locator: p. 5, Line 2, "A qualified distribution from a retirement plan for the birth or adoption of a child is a distribution
+        of up to $5,000 if made during the 1-year period beginning on the date your child was born or adopted."
+  - id: retirement.is_e22
+    printed: (helper)
+    label: Exception 22
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - retirement.has_exception
+        - const: true
+      - op: test
+        eq:
+        - retirement.exception
+        - const: e22
+    cite:
+      doc: i5329
+      locator: p. 5, Line 2, "Qualified distributions to victims of domestic abuse."
+  - id: retirement.l2_e22
+    printed: (helper)
+    label: Line 2 share under exception 22
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - retirement.is_e22
+          - const: true
+        then: retirement.l2
+      - guard:
+          op: test
+          eq:
+          - retirement.is_e22
+          - const: false
+        then: retirement.zero
+    cite:
+      doc: i5329
+      locator: p. 5, Line 2, "Qualified distributions to victims of domestic abuse."
+  - id: retirement.is_e23
+    printed: (helper)
+    label: Exception 23
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - retirement.has_exception
+        - const: true
+      - op: test
+        eq:
+        - retirement.exception
+        - const: e23
+    cite:
+      doc: i5329
+      locator: p. 5, Line 2, "meeting the unforeseeable or immediate financial needs relating to necessary personal or family
+        emergency expenses"
+  - id: retirement.l2_e23
+    printed: (helper)
+    label: Line 2 share under exception 23
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - retirement.is_e23
+          - const: true
+        then: retirement.l2
+      - guard:
+          op: test
+          eq:
+          - retirement.is_e23
+          - const: false
+        then: retirement.zero
+    cite:
+      doc: i5329
+      locator: p. 5, Line 2, "meeting the unforeseeable or immediate financial needs relating to necessary personal or family
+        emergency expenses"
+  - id: retirement.is_s
+    printed: (helper)
+    label: Code S (a SIMPLE IRA distribution within 2 years)
+    type: Bool
+    expr:
+      op: test
+      eq:
+      - retirement.code
+      - const: simple_S
+    cite:
+      doc: i5329
+      locator: p. 5, Line 4, "If any amount on line 3 was a distribution from a SIMPLE IRA received within 2 years from the
+        date you first participated in the SIMPLE IRA plan, you must multiply that amount by 25% instead of 10%."
+  - id: retirement.l1_s
+    printed: (helper)
+    label: Line 1 share from a code S distribution
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - retirement.is_s
+          - const: true
+        then: retirement.l1
+      - guard:
+          op: test
+          eq:
+          - retirement.is_s
+          - const: false
+        then: retirement.zero
+    cite:
+      doc: i5329
+      locator: p. 5, Line 4, "If any amount on line 3 was a distribution from a SIMPLE IRA received within 2 years from the
+        date you first participated in the SIMPLE IRA plan, you must multiply that amount by 25% instead of 10%."
+  - id: retirement.l2_s
+    printed: (helper)
+    label: Line 2 share from a code S distribution
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - retirement.is_s
+          - const: true
+        then: retirement.l2
+      - guard:
+          op: test
+          eq:
+          - retirement.is_s
+          - const: false
+        then: retirement.zero
+    cite:
+      doc: i5329
+      locator: p. 5, Line 4, "If any amount on line 3 was a distribution from a SIMPLE IRA received within 2 years from the
+        date you first participated in the SIMPLE IRA plan, you must multiply that amount by 25% instead of 10%."
+# --- end Stage 21 ---
   collection:
+    parent: person
     cite:
       doc: i1040gi
       locator: pp. 26-30, lines 4a-5b ('If you ... received more than one distribution, figure the taxable amount of

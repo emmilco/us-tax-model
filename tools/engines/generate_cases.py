@@ -83,7 +83,7 @@ def gen_case(rng, i):
         "f1040.tax_exempt_interest": 0, "div.box12": 0, "eic.qc_of_another": False, "person[taxpayer].born_before_2001": True, "person[taxpayer].born_after_1960": True, "eic.us_home": True, "household.married": False,
         "household.credit_disallowed": False, "household.community_property": False,
         "person[taxpayer].eic_ssn": True, "person[taxpayer].under16": False,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         # Form 2441: no care expenses and no dependent care benefits.
         "f2441.care": False, "f2441.benefits": False, "f2441.employer_care": False,
     }
@@ -213,8 +213,7 @@ def gen_case(rng, i):
     if facts["n24"] >= 3:
         features.add("three_or_more_children")
 
-    # Social security benefits on a third of returns (no Form 1099-R distributions: engines take
-    # taxable pensions as an input, so only the benefits worksheet is compared).
+    # Social security benefits on a third of returns (Form 1099-R distributions are added by add_early).
     ss = log_uniform(rng, 100_000, 4_500_000) if rng.random() < 0.33 else 0
     inputs.update({"ssb.benefits": ss, "ssb.pub915": False, "ssb.lump_sum": False, "ssb.terror_disability": False})
     facts["ss_benefits"] = ss
@@ -284,7 +283,77 @@ def gen_case(rng, i):
     add_carryovers(random.Random(f"carry:{i}"), inputs, facts, features)
     add_marketplace(random.Random(f"ptc:{i}"), inputs, facts, features)
     add_education(random.Random(f"edu:{i}"), inputs, facts, features, ages, young_ok=i < 100_000)
+    early_answers(inputs, TAXPAYER)
+    if not facts.get("ira_contribution") and not facts.get("roth_contribution"):
+        add_early(random.Random(f"early:{i}"), inputs, facts, features, TAXPAYER, "taxpayer")
     return {"id": f"gen-{i:05d}", "inputs": inputs, "facts": facts, "features": sorted(features)}
+
+
+# Form 5329 exceptions drawn for an early traditional IRA distribution (i5329 p. 5; 01 and 06 apply only to plans);
+# the limited ones (05, 09, 19, 22, 23) are listed more than once.
+EARLY_EXCEPTIONS = ("e09", "e09", "e19", "e19", "e22", "e23", "e05", "e12", "e02", "e03", "e07", "e08", "e21")
+UNLIMITED_EXCEPTIONS = ("e12", "e02", "e03", "e07", "e08", "e21")
+
+
+def early_answers(inputs, person):
+    """Form 5329's per-person answers and Form 8889's box 1 answer: none of the parts not prepared, no earlier
+    first-home distributions or births, no HSA excess (the generated HSA contributions stay within the limit)."""
+    inputs.update({f"{person}.x_other": False, f"{person}.x_prior09": 0, f"{person}.x_births": 0, f"{person}.x_hsa_value": 0})
+    for h in inputs.get(f"$f8889@{person}", []):
+        H = f"{person}.f8889[{h}]"
+        inputs[f"{H}.employer_in_box1"] = False
+        # Part VII reads the Form 8889 limit (lines 3 to 8) on every return with the form, so an account with no
+        # contributions answers its coverage too: no eligible months.
+        for k, v in (("months_eligible", 0), ("months_family", 0), ("age55", False), ("dec_coverage", "none"), ("last_month", False)):
+            inputs.setdefault(f"{H}.{k}", v)
+
+
+def add_early(r, inputs, facts, features, person, who):
+    """A Form 1099-R for a traditional IRA early distribution on about one return in ten (only where there are no IRA
+    or Roth contributions, so Form 8880 is not involved): one entry, sometimes two, code 1 or (about one in five)
+    code S, nothing rolled over, so the taxable amount is box 1. About three in ten claim an exception with the amount
+    it covers, the limited ones (not beside a code S entry) sometimes over their limits (earlier first-home
+    distributions, one or two births or adoptions). Most amounts are multiples of $10, so that 10% is whole dollars; the rest carry cents. The facts
+    give each engine the taxable IRA distributions and each entry. A separate generator leaves every earlier draw
+    unchanged."""
+    if r.random() >= 0.1:
+        return
+    n = 2 if r.random() < 0.3 else 1
+    keys = [f"ira_{k + 1}" for k in range(n)]
+    inputs[f"$retirement@{person}"] = keys
+    entries, first = [], None
+    codes = ["simple_S" if r.random() < 0.2 else "early_1" for _ in keys]
+    # With a code S distribution, a limited exception over its limit is refused (x_limit_binds), so it is not drawn.
+    choices = EARLY_EXCEPTIONS if "simple_S" not in codes else UNLIMITED_EXCEPTIONS
+    for k, code in zip(keys, codes):
+        E = f"{person}.retirement[{k}]"
+        box1 = r.randint(50, 3_000) * 1_000 if r.random() < 0.75 else r.randint(50_000, 3_000_000)
+        exc, amount = "none", 0
+        if r.random() < 0.3:
+            exc = first if first is not None and r.random() < 0.5 else r.choice(choices)
+            first = exc
+            amount = {"e09": lambda: r.randint(200_000, 1_200_000), "e19": lambda: r.randint(100_000, 900_000),
+                      "e22": lambda: r.randint(200_000, 1_400_000), "e23": lambda: r.randint(20_000, 200_000)}.get(
+                exc, lambda: box1 if r.random() < 0.6 else r.randint(0, box1))()
+            if exc == "e09" and r.random() < 0.4:
+                inputs[f"{person}.x_prior09"] = r.randint(1, 1_000_000)
+            if exc == "e19":
+                inputs[f"{person}.x_births"] = 1 if r.random() < 0.8 else 2
+        inputs.update({f"{E}.account": "traditional_ira", f"{E}.code": code, f"{E}.box1": box1, f"{E}.box5": 0, f"{E}.rollover": 0,
+                       f"{E}.special": False, f"{E}.annuity": False, f"{E}.cost": 0, f"{E}.used_last_year": False, f"{E}.last_line4": 0,
+                       f"{E}.joint_life": False, f"{E}.age": 40, f"{E}.combined_age": 80, f"{E}.months": 12, f"{E}.recovered": 0,
+                       f"{E}.sav_military": False, f"{E}.sav_404k": False, f"{E}.sav_inherited": False,
+                       f"{E}.early_screen": False, f"{E}.code_screen": False, f"{E}.exception": exc, f"{E}.exc_amount": amount})
+        entries.append({"who": who, "code": code, "taxable": box1, "exception": exc, "exc_amount": amount})
+    facts.setdefault("early", []).extend(entries)
+    facts["ira_distributions" if who == "taxpayer" else "spouse_ira_distributions"] = sum(e["taxable"] for e in entries)
+    features.update({"ira_distribution", "early_distribution"})
+    if any(e["exception"] != "none" for e in entries):
+        features.add("early_exception")
+    if any(e["code"] == "simple_S" for e in entries):
+        features.add("early_simple")
+    if who == "spouse":
+        features.add("early_spouse")
 
 
 EDU_ANSWERS = ("", "_1098t", "_over", "_line23", "_line24", "_line25", "_line26", "_ein")
@@ -553,7 +622,8 @@ def make_joint(case, j):
                    f"{SPOUSE}.eic_ssn": True, f"{SPOUSE}.under16": False,
                    f"{SPOUSE}.age65": age >= 66, f"{SPOUSE}.blind": False, f"{SPOUSE}.born_before_2001": True,
                    f"{SPOUSE}.born_after_1960": age < 66, f"{SPOUSE}.educator_expenses": 0,
-                   f"$tipjob@{SPOUSE}": [], f"$otjob@{SPOUSE}": [], f"$f8889@{SPOUSE}": [], f"$sc@{SPOUSE}": []})
+                   f"$tipjob@{SPOUSE}": [], f"$otjob@{SPOUSE}": [], f"$f8889@{SPOUSE}": [], f"$sc@{SPOUSE}": [],
+                   f"$retirement@{SPOUSE}": []})
     inputs.update(saver_answers(SPOUSE))
     if age >= 66:
         inputs[f"{SPOUSE}.died_before_65"] = False; features.add("spouse_senior")
@@ -579,6 +649,9 @@ def make_joint(case, j):
         inputs["f8863.paid"] = True
         facts.setdefault("education", {"students": []})["students"].append({"who": "spouse", **edu_student(redu, inputs, SPOUSE)})
         edu_totals(facts, features)
+    early_answers(inputs, SPOUSE)
+    if not facts.get("ira_contribution") and not facts.get("roth_contribution"):
+        add_early(random.Random(f"early-mfj:{j}"), inputs, facts, features, SPOUSE, "spouse")
     facts.update(joint=True, hoh=False, spouse_age=age, spouse_wages=wages, withheld=facts["withheld"] + withheld,
                  medicare_wages=facts["medicare_wages"] + medicare)
     features.add("joint")

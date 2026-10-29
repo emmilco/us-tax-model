@@ -191,6 +191,19 @@ def build_info(case, year):
             "contributions": dollars(f.get("ira_contribution", 0) + f.get("roth_contribution", 0)), "rolloverContributions": 0,
             "rothIraConversion": 0, "recharacterizedContributions": 0, "requiredMinimumDistributions": 0, "lateContributions": 0,
             "repayments": 0})
+    for k, e in enumerate(f.get("early") or []):
+        # Form 1099-R: a traditional IRA (code S: a SIMPLE IRA) distribution, nothing rolled over. UsTaxes' Form 5329 taxes
+        # `earlyWithdrawalAmount`, which "amounts with exception codes should be excluded by the user" (F5329.ts): it is the
+        # taxable amount on a code 1 entry with no exception, and left out on the others (limitations early_exception and
+        # early_simple).
+        ira = {"payer": f"IRA {k + 1}", "personRole": "PRIMARY" if e["who"] == "taxpayer" else "SPOUSE",
+               "grossDistribution": dollars(e["taxable"]), "taxableAmount": dollars(e["taxable"]), "taxableAmountNotDetermined": False,
+               "totalDistribution": False, "federalIncomeTaxWithheld": 0, "planType": "SimpleIRA" if e["code"] == "simple_S" else "IRA",
+               "contributions": 0, "rolloverContributions": 0, "rothIraConversion": 0, "recharacterizedContributions": 0,
+               "requiredMinimumDistributions": 0, "lateContributions": 0, "repayments": 0}
+        if e["code"] == "early_1" and e["exception"] == "none":
+            ira["earlyWithdrawalAmount"] = dollars(e["taxable"])
+        info["individualRetirementArrangements"].append(ira)
     if f.get("care_expenses"):
         info["dependentCareExpenses"] = {"qualifyingPersonCount": f["care_persons"], "totalExpenses": dollars(f["care_expenses"])}
     part1 = f.get("energy_part1") or {}
@@ -273,6 +286,10 @@ F8962_MAP = {"f8962.line8a": "f8962.contributionAmount", "f8962.line11e": "f8962
 F8863_MAP = {"f8863.line1": "f8863.aotcBeforePhaseOut", "f8863.line8": "f8863.l8", "f8863.line9": "f8863.aotcNonrefundable",
              "f8863.line12": "f8863.llcBeforePhaseOut", "f8863.line18": "f8863.llcAfterPhaseOut", "f8863.line19": "f8863.l19",
              "s3.line3": "s3.l3", "f1040.line29": "f1040.l29"}
+# Form 5329 Part I (UsTaxes' F5329.ts: line 1, the early withdrawal amounts of both spouses, and the 10% tax it numbers l8)
+# and Schedule 2 line 8. Read on every return; the per-person lines are the filer's (UsTaxes keeps one form for both
+# spouses, limitation early_spouse).
+F5329_MAP = {"s2.line8": "s2.l8", "person[taxpayer].f5329[form].l1": "f5329.l1", "person[taxpayer].f5329[form].l4": "f5329.l8"}
 USTAXES_PRECISION = "float64"
 
 
@@ -282,7 +299,7 @@ def lines_of(case, values):
     def get(key):
         x = v.get(key)
         return 0 if x is None else x
-    out = {pid: cents(get(k)) for pid, k in {**F1040_MAP, **S1A_MAP}.items() if isinstance(get(k), (int, float))}
+    out = {pid: cents(get(k)) for pid, k in {**F1040_MAP, **S1A_MAP, **F5329_MAP}.items() if isinstance(get(k), (int, float))}
     out["f1040.tax_before_credits"] = cents(get("f1040.l18")) + cents(get("f1040.l23"))
     for feature, nums in S1A_PARTS.items():
         if feature in case["features"] or (feature == "senior" and "spouse_senior" in case["features"]):
@@ -366,7 +383,7 @@ def run_ustaxes(cases, year, work_root):
         if fs:
             feats[cid] = sorted(fs)
     # Self-employed returns are not run; every mapped line is excluded under `self_employed`.
-    mapped = sorted({**F1040_MAP, **S1A_MAP}) + ["f1040.tax_before_credits"]
+    mapped = sorted({**F1040_MAP, **S1A_MAP, **F5329_MAP}) + ["f1040.tax_before_credits"]
     for cid in skipped:
         lines[cid] = {pid: None for pid in mapped}
     if failures:
@@ -451,13 +468,17 @@ USTAXES_PASS_THROUGH = {"lines": [], "components": {
                   "(likewise lines 18, 27 and 33); the part totals (lines 13, 21, 30, 37) are mapped",
     "s1a.line9": "the phase-out thresholds (lines 9, 17, 26, 32) are parameters",
     "person.se_line12": "UsTaxes never builds Schedule C, so self-employed returns are not run",
+    "s2.line8_box": "UsTaxes' Schedule 2 line 8 box is always unchecked (Schedule2.ts `l8box`: `false // TODO`); a Bool, not a money line",
+    "person.f5329.l2": "UsTaxes' Form 5329 has no line 2 (exceptions are left out of `earlyWithdrawalAmount` by the user), so lines 2 and 3 "
+                       "are not computed; lines 1 and 4 (its `l8`) are mapped",
+    "person.f5329.l49": "UsTaxes' Form 5329 has no Part VII (F5329.ts: \"Parts II-IX (lines 9+) — not implemented\"; limitation hsa_excess_tax)",
 }}
 
 
 def mapped_lines():
     """Every project line id the adapter can report."""
     parts = {f"s1a.line{n}" for nums in S1A_PARTS.values() for n in nums}
-    return sorted(set(F1040_MAP) | set(S1A_MAP) | parts | set(QDCG_MAP) | set(SSB_MAP) | set(SLI_MAP) | set(HSA_MAP) | set(S8812_MAP) | set(F8962_MAP) | set(F8863_MAP)
+    return sorted(set(F1040_MAP) | set(S1A_MAP) | set(F5329_MAP) | parts | set(QDCG_MAP) | set(SSB_MAP) | set(SLI_MAP) | set(HSA_MAP) | set(S8812_MAP) | set(F8962_MAP) | set(F8863_MAP)
                   | {"f1040.tax_before_credits"})
 
 
@@ -512,6 +533,10 @@ EDU_NO_REFUND = ("the engine has no Form 8863 line 7 test: it makes 40% of the A
                  "no refundable part (i8863 p. 7, Line 7; 26 U.S.C. 25A(i)(6)); returns with the box checked are not compared on the "
                  "lines it moves")
 
+# Lines Schedule 2 line 8 (Form 5329) moves: Form 5329 itself, Schedule 2 line 21, Form 1040 lines 23 and 24, the pre-credit
+# total and the refund or amount owed.
+EARLY_MOVED = re.compile(r"^(f1040\.(line(23|24|34|35a|37)|tax_before_credits)|s2\.line(8|21)|person\[[^\]]+\]\.f5329\[)")
+
 
 def limitations():
     """The engine's declared limitations: each names the feature that triggers it, the lines it
@@ -554,7 +579,31 @@ def limitations():
                    "(Schedule8812.ts lines 99-111) although Schedule3.ts `l3` returns it; Schedule 3 line 3 and Form 1040 line 29 "
                    "are compared, the lines after the credits are not"},
     ]
-    return [stub, no_s3, *edu_lims,
+    early = srt(l for l in ALL if EARLY_MOVED.match(l))
+    early_lims = [
+        {"feature": "early_exception", "lines": early,
+         "reason": "UsTaxes' Form 5329 (irsForms/F5329.ts) has no line 2: it taxes the entered `earlyWithdrawalAmount` of each IRA record, "
+                   "which \"amounts with exception codes should be excluded by the user\", with no exception number, no per-person limits "
+                   "(first home, birth or adoption, domestic abuse, emergency, medical expenses) and no cap at the taxable amount; the adapter "
+                   "enters it only on code 1 entries with no exception, so returns with an exception are not compared on the lines it moves"},
+        {"feature": "early_simple", "lines": early,
+         "reason": "UsTaxes' Form 5329 applies one rate, 10% (irsForms/F5329.ts `EARLY_WITHDRAWAL_TAX_RATE = 0.1`), with no 25% rate for a "
+                   "SIMPLE IRA distribution in the first 2 years (i5329 p. 5, line 4; code S); the adapter enters no early withdrawal amount "
+                   "on a code S entry, so returns with one are not compared on the lines it moves"},
+        {"feature": "early_spouse", "lines": ["person[taxpayer].f5329[form].l1", "person[taxpayer].f5329[form].l4"],
+         "reason": "UsTaxes keeps one Form 5329 for the return, whose line 1 adds the early withdrawal amounts of both spouses (irsForms/"
+                   "F5329.ts `l1`: primary plus spouse), where each spouse files a separate Form 5329 (i5329 p. 2, Joint returns, \"If both you "
+                   "and your spouse are required to file Form 5329, complete a separate form for each of you\"); the filer's own lines are not compared when the "
+                   "spouse has an early distribution (Schedule 2 line 8 is)"},
+        {"feature": "early_tax_cents", "lines": early,
+         "reason": "UsTaxes rounds the Form 5329 tax to whole dollars (irsForms/F5329.ts `l8`: `Math.round(base * 0.1)`), where the project "
+                   "carries line 4 to the cent (amb.2025.f5329_line4_cents); returns whose Schedule 2 line 8 has cents are not compared on "
+                   "the lines it moves"},
+        {"feature": "hsa_excess_tax", "lines": early,
+         "reason": "UsTaxes' Form 5329 has no Part VII (irsForms/F5329.ts: \"Parts II-IX (lines 9+) — not implemented\"), so the 6% tax "
+                   "on HSA excess contributions does not reach its Schedule 2 line 8"},
+    ]
+    return [stub, no_s3, *edu_lims, *early_lims,
         {"feature": "self_employed", "lines": ALL,
          "reason": "UsTaxes never builds Schedule C: irsForms/F1040.ts declares `scheduleC?: ScheduleC` and no code assigns it, so "
                    "`selfEmployedIncome` reaches no form (Schedule 1 line 3, Schedule SE, the QBI deduction and earned income are all "

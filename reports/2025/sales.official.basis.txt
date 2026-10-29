@@ -78,11 +78,11 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   4b  IRA distributions, taxable amount
       = $0
       cite: [i1040gi] p. 27, line 4b, 'figure the taxable amount of each distribution and enter the total of the taxable amounts on line 4b' (2025; printed date 2026-02-25; 482e9c48)
-      note: confirmed roster $retirement:
+      note: confirmed roster $person: taxpayer
   5b  Pensions and annuities, taxable amount
       = $0
       cite: [i1040gi] pp. 28-30, Lines 5a and 5b; p. 29, Simplified Method Worksheet, 'Enter the total of the taxable parts on Form 1040 or 1040-SR, line 5b' (2025; printed date 2026-02-25; 482e9c48)
-      note: confirmed roster $retirement:
+      note: confirmed roster $person: taxpayer
   6b  Social security benefits, taxable amount
       = $0
       cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 18 (2025; printed date 2026-02-25; 482e9c48)
@@ -354,6 +354,14 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = $0
       cite: [f1040] Form 1040 (2025), line 1a (2025; created 2025-09-05; 3d31c226)
       note: confirmed roster $w2@person[taxpayer]:
+  (helper) Taxable IRA distributions on this person's Forms 1099-R (line 4b amounts)
+      = $0
+      cite: [i1040gi] p. 27, line 4b, 'figure the taxable amount of each distribution and enter the total of the taxable amounts on line 4b' (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $retirement@person[taxpayer]:
+  (helper) Taxable pension and annuity distributions on this person's Forms 1099-R (line 5b amounts)
+      = $0
+      cite: [i1040gi] pp. 28-30, Lines 5a and 5b; p. 29, Simplified Method Worksheet, 'Enter the total of the taxable parts on Form 1040 or 1040-SR, line 5b' (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $retirement@person[taxpayer]:
   zero No excess credit
       = $0
       cite: [i1040gi] p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
@@ -1227,6 +1235,8 @@ Derivations:
   sb.line6: copy(sb.unsupported = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false; sb.ordinary_dividends = $0)
   f1040.sb.line6: copy(sb.unsupported = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false; sb.ordinary_dividends = $0)
   f1040.line3b: copy(sb.line6 = $0)
+  f1040.line4b: sum_over(person[taxpayer].ira_taxable = $0)
+  f1040.line5b: sum_over(person[taxpayer].plan_taxable = $0)
   ssb.line1: copy(ssb.benefits = $0)
   ssb.has_benefits: test(ssb.line1 = $0; #sales.zero = $0)
   ssb.zero: param(#sales.zero = $0)

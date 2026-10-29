@@ -7,10 +7,10 @@ the fixture test compares).
 
 | Metric | Value |
 | --- | --- |
-| Mutants | 2633 |
-| Killed by the checker | 281 |
-| Killed by fixtures | 2241 |
-| Surviving | 111 (111 provably equivalent) |
+| Mutants | 2715 |
+| Killed by the checker | 294 |
+| Killed by fixtures | 2308 |
+| Surviving | 113 (113 provably equivalent) |
 | Mutation score (raw) | 95.8% |
 | Mutation score (equivalent mutants excluded) | 100.0% |
 
@@ -23,6 +23,7 @@ the fixture test compares).
 - `operand.f2441.f2441.line11.line10` (replace an operand, f2441.f2441.line11): Copy-chain identity: f2441.line10 and f2441.clw3 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.f2441.f2441.line25.line24` (replace an operand, f2441.f2441.line25): Floor-minus-min identity: f2441.line25 is f2441.line24_20_21 less f2441.line24, floored at zero, and one of f2441.line24 and f2441.line22 is the ungated smaller of f2441.line24_20_21 and the other, so f2441.line24_20_21 less either, floored at zero, is the same at every input; f2441.line24_20_21 is read first on both routes and the other operand second, so the same refusal or unknown wins.
 - `refusal.f4952.f4952.required.1` (remove refusal, f4952.f4952.required): The removed refusal (the alternative-allocation gate, after the unsupported-items gate) is carried by f4952.election, the first operand f4952.required reads: election refuses on the same gates in the same order with the same records, and the any-test returns the first refusal it meets. With the gate No both routes evaluate the same expression; with it Yes both refuse on the same record (the unsupported-items gate first on both); with it unanswered, the unknown election is the first pending value on both, and line 3 reaches the same gate through line 2. (structural conditions re-checked this run.)
+- `operand.f5329.f5329.l49_base.l48` (replace an operand, f5329.f5329.l49_base): Copy-chain identity: f5329.l48 and f5329.l47 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.f5695.f5695.line15.line14` (replace an operand, f5695.f5695.line15): Copy-chain identity: f5695.line14 and f5695.rce_ws3 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.f5695.f5695.line16.line15` (replace an operand, f5695.f5695.line16): Floor-minus-min identity: f5695.line16 is f5695.line13 less f5695.line15, floored at zero, and one of f5695.line15 and f5695.line14 is the ungated smaller of f5695.line13 and the other, so f5695.line13 less either, floored at zero, is the same at every input; f5695.line13 is read first on both routes and the other operand second, so the same refusal or unknown wins.
 - `operand.f5695.f5695.line32.line31` (replace an operand, f5695.f5695.line32): Copy-chain identity: f5695.line31 and f5695.eehi_ws3 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
@@ -46,6 +47,7 @@ the fixture test compares).
 - `operand.person.person.dc_earned.eic_se` (replace an operand, person.person.dc_earned): person.eic_se is person.eic_se_has when the person has a Schedule C and $0 otherwise. With no Schedule C every sum over the person's Schedule C entries is $0, so the Schedule SE railroad gate is false, line 4c is $0, files_se is false and eic_se_has is the empty Schedule C total, $0; with the roster unanswered both routes are unknown. The replacement changes no value. (structural conditions re-checked this run.)
 - `operand.qdcg.qdcg.line8.line7` (replace an operand, qdcg.qdcg.line8): qdcg.line8 is min(qdcg.line5, qdcg.line7) and qdcg.line7 is the ungated min(qdcg.line1, qdcg.line6); qdcg.line5 is qdcg.line1 less a non-negative amount, floored at zero, with qdcg.line1 not negative, so qdcg.line5 <= qdcg.line1 and min(qdcg.line5, min(qdcg.line1, qdcg.line6)) = min(qdcg.line5, qdcg.line6) at every input; qdcg.line5 is read first on both routes. (structural conditions re-checked this run.)
 - `operand.qdcg.qdcg.line12.line11` (replace an operand, qdcg.qdcg.line12): Copy-chain identity: qdcg.line11 and qdcg.line9 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
+- `operand.retirement.retirement.exc_capped.taxable` (replace an operand, retirement.retirement.exc_capped): Guarded figure: retirement.l1 is retirement.taxable wherever retirement.early holds, and every printed line reads retirement.exc_capped (a helper) only through choices whose guards make retirement.early true, so the replacement changes no printed value; where retirement.early does not hold only retirement.exc_capped's own, unprinted value can differ.
 - `operand.s1.s1.line26.line25` (replace an operand, s1.s1.line26): Copy-chain identity: s1.line25 and s1.line24a expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.s179.s179.line13.line12` (replace an operand, s179.s179.line13): Floor-minus-min identity: s179.line13 is s179.line9_10 less s179.line12, floored at zero, and one of s179.line12 and s179.line11 is the ungated smaller of s179.line9_10 and the other, so s179.line9_10 less either, floored at zero, is the same at every input; s179.line9_10 is read first on both routes and the other operand second, so the same refusal or unknown wins.
 - `operand.s1a.s1a.line2e.line2b` (replace an operand, s1a.s1a.line2e): Copy-chain identity: s1a.line2b and s1a.zero expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.

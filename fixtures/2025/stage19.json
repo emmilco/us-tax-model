@@ -11,6 +11,8 @@
       "evidence": "A — official IRS example",
       "evidence_note": "p970 p. 19, Figuring the Credit, Example: joint return, dependent child in the junior (third) year, MAGI $70,000, qualified education expenses $4,300, \"Jack and Kay can claim a $2,500 American opportunity credit in 2025. This is 100% of the first $2,000 of qualified education expenses, plus 25% of the next $2,000.\" Class A covers lines 27, 30, 1 and 7 ($4,000 and $2,500). The 40%/60% split (line 8 $1,000, line 9 and line 19 $1,500, Form 1040 line 29 $1,000) follows from the form, not the example; line 19 is $1,500 because the scaffolded tax exceeds it. Synthetic scaffolding (not in the example): the $70,000 MAGI is taxpayer W-2 wages; the child is 20, a full-time student, a qualifying child for the credit for other dependents only; all $4,300 is paid to the institution; \"meet all of the requirements\" is read as a 1098-T and EIN available, line 23 No, line 24 Yes, line 25 No (a junior has not completed 4 years), line 26 No.",
       "inputs": {
+        "person[taxpayer].x_other": false,
+        "person[spouse].x_other": false,
         "f8863.paid": true,
         "f1040.status": "mfj",
         "$person": [
@@ -95,7 +97,8 @@
         "household.married": true,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
+        "$retirement@person[spouse]": [],
         "ssb.benefits": 0,
         "f1040.tax_exempt_interest": 0,
         "div.box12": 0,
@@ -307,6 +310,8 @@
       "evidence": "A — official IRS example",
       "evidence_note": "p970 p. 28, Example: joint return, MAGI $75,000; Toni already has a bachelor's degree and paid $5,000 of qualified education expenses for the fall 2025 semester; \"Bruce and Toni can claim a $1,000 (20% x $5,000) lifetime learning credit on their 2025 joint tax return.\" Class A covers lines 31, 10, 11, 12 and 18. Line 19 $1,000 follows because the tax exceeds it. The bachelor's degree is read as line 25 Yes (first 4 years completed before 2025), so the American opportunity credit is unavailable and lines 1 and 8 are zero. Synthetic scaffolding: Toni is the spouse entry; the $75,000 MAGI is taxpayer W-2 wages; the $5,000 is paid to the institution; Form 1098-T and EIN available; lines 23, 26 No, line 24 Yes.",
       "inputs": {
+        "person[taxpayer].x_other": false,
+        "person[spouse].x_other": false,
         "f8863.paid": true,
         "f1040.status": "mfj",
         "$person": [
@@ -389,7 +394,8 @@
         "household.married": true,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
+        "$retirement@person[spouse]": [],
         "ssb.benefits": 0,
         "f1040.tax_exempt_interest": 0,
         "div.box12": 0,
@@ -579,6 +585,8 @@
       "evidence": "A — official IRS example",
       "evidence_note": "p970 p. 20, Phaseout, Example: joint return, MAGI $165,000, $5,000 of qualified education expenses, tentative credit $2,500, ($180,000 - $165,000) / $20,000, \"The result is the amount of your phased out (reduced) American opportunity credit ($1,875).\" Class A covers lines 30, 1, 3, 4 and 7. Line 8 $750 and line 9 and line 19 $1,125 follow from the form (joint, so line 7 is refundable at 40%; the tax exceeds $1,125). The example does not say who the student is: the taxpayer is the student (adult, so the line 7 age test does not arise; joint in any case). Synthetic scaffolding: MAGI is taxpayer W-2 wages; the $5,000 is paid to the institution; Form 1098-T and EIN available; lines 23, 25, 26 No, line 24 Yes. The ratio 0.750 is exact, so the rounding ambiguity is not exercised.",
       "inputs": {
+        "person[taxpayer].x_other": false,
+        "person[spouse].x_other": false,
         "f8863.paid": true,
         "f1040.status": "mfj",
         "$person": [
@@ -661,7 +669,8 @@
         "household.married": true,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
+        "$retirement@person[spouse]": [],
         "ssb.benefits": 0,
         "f1040.tax_exempt_interest": 0,
         "div.box12": 0,
@@ -847,6 +856,8 @@
       "evidence": "A — official IRS example",
       "evidence_note": "p970 p. 29, Phaseout, Example: joint return, MAGI $161,000, $6,600 of qualified education expenses, \"a $1,320 (20% x $6,600) tentative credit\", ($180,000 - $161,000) / $20,000, \"The result is the amount of your phased-out (reduced) lifetime learning credit ($1,254).\" Class A covers lines 31, 10, 11, 12, 14, 15 and 18. Line 19 $1,254 follows because the tax exceeds it. The example does not name the student or say why the American opportunity credit is not used: the taxpayer is the student and has completed the first 4 years (line 25 Yes), so only the lifetime learning credit applies. Synthetic scaffolding: MAGI is taxpayer W-2 wages; the $6,600 is paid to the institution; Form 1098-T and EIN available. The ratio 0.950 is exact.",
       "inputs": {
+        "person[taxpayer].x_other": false,
+        "person[spouse].x_other": false,
         "f8863.paid": true,
         "f1040.status": "mfj",
         "$person": [
@@ -929,7 +940,8 @@
         "household.married": true,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
+        "$retirement@person[spouse]": [],
         "ssb.benefits": 0,
         "f1040.tax_exempt_interest": 0,
         "div.box12": 0,
@@ -1115,6 +1127,7 @@
       "evidence": "A — official IRS example",
       "evidence_note": "i8863 p. 5, Coordination with Pell grants, Example 1: $5,000 of qualified education expenses, a $5,000 Pell grant applied to them as a tax-free scholarship; \"you will have $0 ($5,000 - $5,000) of adjusted qualified education expenses available to figure your credit. Your credit will be $0.\" Class A covers line 27 (worksheet line 2a $5,000) and the zero credit on lines 30, 1, 7, 8 and 19. Synthetic scaffolding (not in the example): the parent files single with $60,000 of W-2 wages; the child is 18, a full-time student and the parent's qualifying child (credit for other dependents only; no EIC at this income); the $5,000 is paid to the institution; \"meet all other requirements\" is read as Form 1098-T and EIN available, line 23 No, line 24 Yes, line 25 No (first semester), line 26 No. The parent is not the student; the parent is an adult born before 2002, answered for the Form 8863 line 7 test, which a non-joint filer is asked about themselves. The child's own return (the $4,000 included in the child's income) is not modeled.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": true,
         "f1040.status": "single",
         "$person": [
@@ -1215,7 +1228,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -1396,6 +1409,7 @@
       "evidence": "A — official IRS example",
       "evidence_note": "i8863 p. 5, Example 2: only $1,000 of the Pell grant applied to qualified education expenses; \"you will have $4,000 ($5,000 - $1,000) of adjusted qualified education expenses available to figure your credit. Your refundable American opportunity credit will be $1,000. Your nonrefundable credit may be as much as $1,500, but depends on your tax liability.\" Class A covers line 27 $4,000, line 8 and Form 1040 line 29 $1,000, and line 9 $1,500 (the \"as much as\" amount). Line 19 $1,500 is the scaffolded case where the tax exceeds $1,500. Synthetic scaffolding (not in the example): the parent files single with $60,000 of W-2 wages; the child is 18, a full-time student and the parent's qualifying child (credit for other dependents only; no EIC at this income); the $5,000 is paid to the institution; \"meet all other requirements\" is read as Form 1098-T and EIN available, line 23 No, line 24 Yes, line 25 No (first semester), line 26 No. The parent is not the student; the parent is an adult born before 2002, answered for the Form 8863 line 7 test, which a non-joint filer is asked about themselves. The child's own return (the $4,000 included in the child's income) is not modeled.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": true,
         "f1040.status": "single",
         "$person": [
@@ -1496,7 +1510,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -1682,6 +1696,7 @@
       "evidence": "A — official IRS example",
       "evidence_note": "i8863 p. 5, Example 2, last sentence: \"If you're not otherwise required to file a tax return, you should file to get a refund of your $1,000 refundable credit, but your tax liability and nonrefundable credit will be $0.\" Class A covers line 8, Form 1040 line 29 and the $1,000 refund (lines 33, 34), line 19 $0 and line 22 $0. Line 9 $1,500 follows from the form. The \"not otherwise required to file\" parent is scaffolded with no income at all (no W-2), single, claiming the 18-year-old student child; the other scaffolding is as in pell.ex2.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": true,
         "f1040.status": "single",
         "$person": [
@@ -1773,7 +1788,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -1962,6 +1977,7 @@
       "evidence": "A — official IRS example",
       "evidence_note": "p970 p. 15, Example 1, no scholarship: AGI and MAGI $39,250, standard deduction $15,750, \"taxable income of $23,500 and an income tax liability before credits of $2,585\", \"qualified education expenses of $4,000, which results in a credit of $2,500 and a tax liability after credits of $85 ($2,585 - $2,500).\" Class A covers lines 11b, 15, 16, 27 and 7; lines 8 $1,000, 19 $1,500, 22 and 24 $1,085 and 29 $1,000 follow from the form and are the form reading of the $85 (line 24 $1,085 less line 29 $1,000). No EIC at this AGI. Bill is 28, unmarried (single), first-year full-time student in a degree program; \"Bill and the college meet all the requirements\" is read as Form 1098-T and EIN available, line 23 No, line 24 Yes, line 25 No, line 26 No; born before 2002, so the line 7 refundability test does not apply. Synthetic scaffolding: the AGI the example states without a source is W-2 wages with no withholding; the $5,600 of qualified education expenses is paid to the institution (room and board are excluded and not entered). The publication's \"tax liability after credits\" nets the $1,000 refundable credit (Form 1040 line 29) against the tax; on the form the nonrefundable $1,500 reduces line 22 and the $1,000 is a payment.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": true,
         "f1040.status": "single",
         "$person": [
@@ -2060,7 +2076,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -2241,6 +2257,7 @@
       "evidence": "A — official IRS example",
       "evidence_note": "p970 pp. 15-16, Example 2, scholarship excluded from income: a $5,600 scholarship usable for any expense, excluded from income; \"Bill's adjusted qualified education expenses would be zero, and there would be no education credit. Therefore, Bill's tax liability after credits would be $2,585.\" Class A covers line 27 $0 (worksheet line 2a $5,600), lines 7 and 19 $0, and lines 16, 22 and 24 $2,585. The scholarship does not exceed the period's expenses (line 2a equals line 1). Bill is 28, unmarried (single), first-year full-time student in a degree program; \"Bill and the college meet all the requirements\" is read as Form 1098-T and EIN available, line 23 No, line 24 Yes, line 25 No, line 26 No; born before 2002, so the line 7 refundability test does not apply. Synthetic scaffolding: the AGI the example states without a source is W-2 wages with no withholding; the $5,600 of qualified education expenses is paid to the institution (room and board are excluded and not entered). The publication's \"tax liability after credits\" nets the $1,000 refundable credit (Form 1040 line 29) against the tax; on the form the nonrefundable $1,500 reduces line 22 and the $1,000 is a payment.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": true,
         "f1040.status": "single",
         "$person": [
@@ -2339,7 +2356,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -2505,6 +2522,7 @@
       "evidence": "A — official IRS example",
       "evidence_note": "p970 p. 16, Example 3, scholarship partially included in income: $4,000 of the $5,600 scholarship included in income (Schedule 1 line 8r) and deemed applied to room and board; the remaining $1,600 reduces expenses (worksheet line 2a); \"the adjusted qualified education expenses would be $4,000. Bill's AGI and MAGI would increase to $43,250, the taxable income would increase to $27,500, and the tax liability before credits would increase to $3,065\", credit $2,500, \"the tax liability after credits would be $565 ($3,065 - $2,500).\" Class A covers lines 8r, 11b, 15, 16, 27 and 7; lines 8 $1,000, 19 $1,500, 22 and 24 $1,565 and 29 $1,000 are the form reading of the $565. Example 4 (the scholarship paid directly to the college) has the same inputs and results and is not a separate case. Bill is 28, unmarried (single), first-year full-time student in a degree program; \"Bill and the college meet all the requirements\" is read as Form 1098-T and EIN available, line 23 No, line 24 Yes, line 25 No, line 26 No; born before 2002, so the line 7 refundability test does not apply. Synthetic scaffolding: the AGI the example states without a source is W-2 wages with no withholding; the $5,600 of qualified education expenses is paid to the institution (room and board are excluded and not entered). The publication's \"tax liability after credits\" nets the $1,000 refundable credit (Form 1040 line 29) against the tax; on the form the nonrefundable $1,500 reduces line 22 and the $1,000 is a payment.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": true,
         "f1040.status": "single",
         "$person": [
@@ -2603,7 +2621,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -2786,6 +2804,7 @@
       "evidence": "A — official IRS example",
       "evidence_note": "p970 p. 16, Example 5, scholarship excluded: \"The AGI and MAGI would be $24,125. The tax liability before any credits would be $51. The qualified education expenses would be reduced to $500. Jane would be able to receive a $251 American opportunity credit ($200 refundable and $51 nonrefundable), a $1,700 additional child tax credit, and a $4,204 EIC. In total, Jane would be able to receive a tax refund of $6,104.\" Class A covers lines 11b, 16, 27, 8, 19, 29, 28, 27a and 33/34. Line 7 $500 and line 22 $0 follow (the $51 tax is fully offset, so the nonrefundable child tax credit is zero and the whole $1,700 is refundable). Worksheet line 2a $5,500, Schedule 1 line 8r $0. Jane is 28, unmarried, files head of household with her 10-year-old qualifying child (EIC and child tax credit), first-year full-time certificate student; wages $24,125 on a W-2 with no withholding and no other income or adjustments, except the scholarship she includes in income, entered on Schedule 1 line 8r. \"Jane and the college meet all the requirements\" is read as Form 1098-T and EIN available, line 23 No, line 24 Yes, line 25 No, line 26 No; born before 2002, so the line 7 refundability test does not apply. Synthetic scaffolding: head of household (the example says unmarried with a dependent child; household.home_cost Yes); the $6,000 is paid to the institution; the scholarship allocated to tuition does not exceed the period's expenses. The publication's \"American opportunity credit\" total is the allowed amount: Form 8863 line 8 (refundable) plus line 19 (nonrefundable, limited by the tax).",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": true,
         "f1040.status": "hoh",
         "$person": [
@@ -2886,7 +2905,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -3095,6 +3114,7 @@
       "evidence": "A — official IRS example",
       "evidence_note": "p970 p. 16, Example 5, entire scholarship included: \"The qualified education expenses would be $6,000, and the AGI and MAGI would be $29,625. The tax liability before any credits would be $603. Jane would be able to receive a $1,603 American opportunity credit ($1,000 refundable and $603 nonrefundable), a $1,700 additional child tax credit, and a $3,325 EIC. In total, Jane would be able to receive a tax refund of $6,025.\" Class A covers lines 11b, 16, 8, 19, 29, 28, 27a and 33/34; line 27 is the $4,000 cap of the stated $6,000 and line 7 $2,500 follows. Schedule 1 line 8r $5,500, worksheet line 2a $0. The EIC at $3,325 requires the line 8r scholarship to be outside earned income (AGI phase-out). Jane is 28, unmarried, files head of household with her 10-year-old qualifying child (EIC and child tax credit), first-year full-time certificate student; wages $24,125 on a W-2 with no withholding and no other income or adjustments, except the scholarship she includes in income, entered on Schedule 1 line 8r. \"Jane and the college meet all the requirements\" is read as Form 1098-T and EIN available, line 23 No, line 24 Yes, line 25 No, line 26 No; born before 2002, so the line 7 refundability test does not apply. Synthetic scaffolding: head of household (the example says unmarried with a dependent child; household.home_cost Yes); the $6,000 is paid to the institution; the scholarship allocated to tuition does not exceed the period's expenses. The publication's \"American opportunity credit\" total is the allowed amount: Form 8863 line 8 (refundable) plus line 19 (nonrefundable, limited by the tax).",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": true,
         "f1040.status": "hoh",
         "$person": [
@@ -3195,7 +3215,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -3404,6 +3424,7 @@
       "evidence": "A — official IRS example",
       "evidence_note": "p970 p. 16, Example 5, $3,500 included: \"The qualified education expenses would be $4,000, and the AGI and MAGI would be $27,625. The tax liability before any credits would be $403. Jane would be able to receive a $1,403 American opportunity credit ($1,000 refundable and $403 nonrefundable), a $1,700 additional child tax credit, and a $3,645 EIC. In total, Jane would be able to receive a tax refund of $6,345.\" Class A covers lines 11b, 16, 27, 8, 19, 29, 28, 27a and 33/34; line 7 $2,500 follows. Schedule 1 line 8r $3,500, worksheet line 2a $2,000. Jane is 28, unmarried, files head of household with her 10-year-old qualifying child (EIC and child tax credit), first-year full-time certificate student; wages $24,125 on a W-2 with no withholding and no other income or adjustments, except the scholarship she includes in income, entered on Schedule 1 line 8r. \"Jane and the college meet all the requirements\" is read as Form 1098-T and EIN available, line 23 No, line 24 Yes, line 25 No, line 26 No; born before 2002, so the line 7 refundability test does not apply. Synthetic scaffolding: head of household (the example says unmarried with a dependent child; household.home_cost Yes); the $6,000 is paid to the institution; the scholarship allocated to tuition does not exceed the period's expenses. The publication's \"American opportunity credit\" total is the allowed amount: Form 8863 line 8 (refundable) plus line 19 (nonrefundable, limited by the tax).",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": true,
         "f1040.status": "hoh",
         "$person": [
@@ -3504,7 +3525,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -3713,6 +3734,7 @@
       "evidence": "A — official IRS example",
       "evidence_note": "p970 p. 16, Example 5, $1,500 included: \"The qualified education expenses would be $2,000, and the AGI and MAGI would be $25,625. The tax liability before any credits would be $201. Jane would be able to receive a $1,001 American opportunity credit ($800 refundable and $201 nonrefundable), a $1,700 additional child tax credit, and a $3,964 EIC. In total, Jane would be able to receive a tax refund of $6,464.\" Class A covers lines 11b, 16, 27, 8, 19, 29, 28, 27a and 33/34; line 7 $2,000 follows. Schedule 1 line 8r $1,500, worksheet line 2a $4,000. Jane is 28, unmarried, files head of household with her 10-year-old qualifying child (EIC and child tax credit), first-year full-time certificate student; wages $24,125 on a W-2 with no withholding and no other income or adjustments, except the scholarship she includes in income, entered on Schedule 1 line 8r. \"Jane and the college meet all the requirements\" is read as Form 1098-T and EIN available, line 23 No, line 24 Yes, line 25 No, line 26 No; born before 2002, so the line 7 refundability test does not apply. Synthetic scaffolding: head of household (the example says unmarried with a dependent child; household.home_cost Yes); the $6,000 is paid to the institution; the scholarship allocated to tuition does not exceed the period's expenses. The publication's \"American opportunity credit\" total is the allowed amount: Form 8863 line 8 (refundable) plus line 19 (nonrefundable, limited by the tax).",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": true,
         "f1040.status": "hoh",
         "$person": [
@@ -3813,7 +3835,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -4020,6 +4042,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 19 return E1: blind-predicted. Two agents worked it from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage19/); they agreed with each other and with the evaluator on all 33 values asserted here. Lines a predictor marked blank are not asserted.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "$dependent": [],
         "$f1095a": [],
         "$f8889@person[taxpayer]": [],
@@ -4029,7 +4052,7 @@
         "$person": [
           "taxpayer"
         ],
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "$sales": [],
         "$sc@person[taxpayer]": [],
         "$w2@person[taxpayer]": [
@@ -4383,6 +4406,8 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 19 return E2: blind-predicted. Two agents worked it from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage19/); they agreed with each other and with the evaluator on all 43 values asserted here. Lines a predictor marked blank are not asserted.",
       "inputs": {
+        "person[taxpayer].x_other": false,
+        "person[spouse].x_other": false,
         "$dcprov": [],
         "$dependent": [
           "son"
@@ -4399,7 +4424,8 @@
           "taxpayer",
           "spouse"
         ],
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
+        "$retirement@person[spouse]": [],
         "$sales": [],
         "$sc@person[spouse]": [],
         "$sc@person[taxpayer]": [],
@@ -4828,6 +4854,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 19 return E3: blind-predicted. Two agents worked it from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage19/); they agreed with each other and with the evaluator on all 38 values asserted here. Lines a predictor marked blank are not asserted.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "$dependent": [
           "daughter"
         ],
@@ -4839,7 +4866,7 @@
         "$person": [
           "taxpayer"
         ],
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "$sales": [],
         "$sc@person[taxpayer]": [],
         "$w2@person[taxpayer]": [
@@ -5250,6 +5277,8 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 19 return E4: blind-predicted. Two agents worked it from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage19/); they agreed with each other and with the evaluator on all 33 values asserted here. Lines a predictor marked blank are not asserted.",
       "inputs": {
+        "person[taxpayer].x_other": false,
+        "person[spouse].x_other": false,
         "$dcprov": [],
         "$dependent": [
           "son",
@@ -5267,7 +5296,8 @@
           "taxpayer",
           "spouse"
         ],
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
+        "$retirement@person[spouse]": [],
         "$sales": [],
         "$sc@person[spouse]": [],
         "$sc@person[taxpayer]": [],
@@ -5668,6 +5698,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 19 return E5: blind-predicted. Two agents worked it from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage19/); they agreed with each other and with the evaluator on all 32 values asserted here. Lines a predictor marked blank are not asserted.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "$dependent": [],
         "$f1095a": [],
         "$f8889@person[taxpayer]": [],
@@ -5677,7 +5708,7 @@
         "$person": [
           "taxpayer"
         ],
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "$sales": [],
         "$sc@person[taxpayer]": [],
         "$w2@person[taxpayer]": [
@@ -6027,6 +6058,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 19 return E6: blind-predicted. Two agents worked it from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage19/); they agreed with each other and with the evaluator on all 32 values asserted here. Lines a predictor marked blank are not asserted.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "$dependent": [],
         "$f1095a": [],
         "$f8889@person[taxpayer]": [],
@@ -6036,7 +6068,7 @@
         "$person": [
           "taxpayer"
         ],
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "$sales": [],
         "$sc@person[taxpayer]": [],
         "$w2@person[taxpayer]": [
@@ -6386,6 +6418,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 19 return E7: blind-predicted. Two agents worked it from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage19/); they agreed with each other and with the evaluator on all 32 values asserted here. Lines a predictor marked blank are not asserted.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "$dependent": [],
         "$f1095a": [],
         "$f8889@person[taxpayer]": [],
@@ -6395,7 +6428,7 @@
         "$person": [
           "taxpayer"
         ],
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "$sales": [],
         "$sc@person[taxpayer]": [],
         "$w2@person[taxpayer]": [
@@ -6745,6 +6778,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 19 return E8: blind-predicted. Two agents worked it from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage19/); they agreed with each other and with the evaluator on all 33 values asserted here. Lines a predictor marked blank are not asserted.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "$dependent": [],
         "$f1095a": [],
         "$f8889@person[taxpayer]": [],
@@ -6754,7 +6788,7 @@
         "$person": [
           "taxpayer"
         ],
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "$sales": [],
         "$sc@person[taxpayer]": [],
         "$w2@person[taxpayer]": [
@@ -7108,6 +7142,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 19 return E9: blind-predicted. Two agents worked it from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage19/); they agreed with each other and with the evaluator on all 38 values asserted here. Lines a predictor marked blank are not asserted.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "$dependent": [
           "son",
           "daughter"
@@ -7120,7 +7155,7 @@
         "$person": [
           "taxpayer"
         ],
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "$sales": [],
         "$sc@person[taxpayer]": [],
         "$w2@person[taxpayer]": [
@@ -7555,6 +7590,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 19 return E10: blind-predicted. Two agents worked it from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage19/); they agreed with each other and with the evaluator on all 34 values asserted here. Lines a predictor marked blank are not asserted.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "$dependent": [],
         "$f1095a": [],
         "$f8889@person[taxpayer]": [],
@@ -7564,7 +7600,7 @@
         "$person": [
           "taxpayer"
         ],
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "$sales": [],
         "$sc@person[taxpayer]": [],
         "$w2@person[taxpayer]": [
@@ -7921,6 +7957,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 19 mutation scenario: blind return E1 with $500 of 2026 tax-free assistance that exceeds one academic period's own expenses; i8863 p. 9 completes the worksheet \"for each student for each academic period\", which this tool refuses (D3).",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "$dependent": [],
         "$f1095a": [],
         "$f8889@person[taxpayer]": [],
@@ -7930,7 +7967,7 @@
         "$person": [
           "taxpayer"
         ],
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "$sales": [],
         "$sc@person[taxpayer]": [],
         "$w2@person[taxpayer]": [
@@ -8216,6 +8253,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 19 mutation scenario, predicted by hand: blind return E1 with $500 of tax-free assistance received in 2026 for 2025 expenses (worksheet line 2b): line 27 $3,550 - $500 = $3,050, line 28 $1,050, line 29 $262.50, line 30 $2,262.50, line 7 $2,262.50 x 0.543 = $1,228.54.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "$dependent": [],
         "$f1095a": [],
         "$f8889@person[taxpayer]": [],
@@ -8225,7 +8263,7 @@
         "$person": [
           "taxpayer"
         ],
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "$sales": [],
         "$sc@person[taxpayer]": [],
         "$w2@person[taxpayer]": [
@@ -8466,6 +8504,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 19 mutation scenario: blind return E3 whose dependent student has $1,000 of tax-free assistance exceeding one academic period's own expenses (refused, D3).",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "$dependent": [
           "daughter"
         ],
@@ -8477,7 +8516,7 @@
         "$person": [
           "taxpayer"
         ],
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "$sales": [],
         "$sc@person[taxpayer]": [],
         "$w2@person[taxpayer]": [
@@ -8800,6 +8839,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 19 mutation scenario: blind return E1 with excluded foreign or possession income; i8863 p. 3 adds the excluded income to line 11b for lines 3 and 14, which this tool refuses (D1).",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "$dependent": [],
         "$f1095a": [],
         "$f8889@person[taxpayer]": [],
@@ -8809,7 +8849,7 @@
         "$person": [
           "taxpayer"
         ],
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "$sales": [],
         "$sc@person[taxpayer]": [],
         "$w2@person[taxpayer]": [
@@ -9056,6 +9096,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 19 mutation scenario: blind return E1 claiming the American opportunity credit after a denial that needs Form 8862 (or within a ban), refused (D1).",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "$dependent": [],
         "$f1095a": [],
         "$f8889@person[taxpayer]": [],
@@ -9065,7 +9106,7 @@
         "$person": [
           "taxpayer"
         ],
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "$sales": [],
         "$sc@person[taxpayer]": [],
         "$w2@person[taxpayer]": [
@@ -9299,6 +9340,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 19 mutation scenario: blind return E1 with another credit claimed (the other-credits screen Yes): Credit Limit Worksheet line 5 includes Schedule 3 lines 6d and 6l, refused.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "$dependent": [],
         "$f1095a": [],
         "$f8889@person[taxpayer]": [],
@@ -9308,7 +9350,7 @@
         "$person": [
           "taxpayer"
         ],
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "$sales": [],
         "$sc@person[taxpayer]": [],
         "$w2@person[taxpayer]": [
@@ -9542,6 +9584,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 19 mutation scenario: blind return E3 (two lifetime learning credit students) where the filer is claimed as a dependent on another return: i8863 p. 3, \"You cannot claim an education credit ... 1. You're claimed as a dependent on another person's tax return\"; line 10 and line 11 are $0.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "$dependent": [
           "daughter"
         ],
@@ -9553,7 +9596,7 @@
         "$person": [
           "taxpayer"
         ],
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "$sales": [],
         "$sc@person[taxpayer]": [],
         "$w2@person[taxpayer]": [
@@ -9829,6 +9872,8 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 15 return H1 (married filing jointly, one child aged 4, expenses $6,000, plan maximum $5,000) with the $5,000 of W-2 box 10 moved to the spouse: you wages $3,000 and no box 10; spouse wages $40,000 and box 10 $5,000 (none in box 1). Part III by hand from i2441: line 12 $5,000; 16 $6,000; 17 $5,000; 18 $3,000 and 19 $40,000 (\"earned income doesn't include any dependent care benefits shown on line 12\"); 20 $3,000; 21 $5,000; 22 $0; 23 $5,000; 24 $0; 25 $3,000; 26 $2,000 (to Form 1040 line 1e); 27 $3,000; 28 $3,000; 29 $0, so line 31 is $0 and no credit remains. Lines 4 and 5: \"If filing jointly, figure your and your spouse's earned income separately\" and earned income includes \"The amount shown on Form 1040 ... line 1z\"; under the owner ruling amb.2025.dc_line1e_attribution line 1e is the earned income of the spouse whose Forms W-2 show box 10 (only the spouse here): line 4 = $3,000, line 5 = $40,000 + $2,000 = $42,000. One person on the return shows box 10.",
       "inputs": {
+        "person[taxpayer].x_other": false,
+        "person[spouse].x_other": false,
         "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
@@ -9913,7 +9958,8 @@
         "household.married": true,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
+        "$retirement@person[spouse]": [],
         "ssb.benefits": 0,
         "f1040.tax_exempt_interest": 0,
         "div.box12": 0,
@@ -10093,6 +10139,8 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 13 return: married filing jointly, only you have an HSA, family HDHP coverage all 12 months, contribution $8,550. The spouse rule of line 6 applies only to \"Spouses who have separate HSAs and had family coverage\" (i8889 p. 7); with one HSA it does not apply, so line 6 = line 5 = $8,550 and Schedule 1 line 13 is $8,550. No Form 8889 uses the spouse rule, so this person's Step 1 limit and Step 2/3 share under that rule are $0 (the form's own refigured Step 1 figure, $8,550 x 12 / 12 less line 4 $0 = $8,550, is not counted), and both household totals are $0.",
       "inputs": {
+        "person[taxpayer].x_other": false,
+        "person[spouse].x_other": false,
         "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
@@ -10175,7 +10223,8 @@
         "household.married": true,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
+        "$retirement@person[spouse]": [],
         "ssb.benefits": 0,
         "f1040.tax_exempt_interest": 0,
         "div.box12": 0,
@@ -10327,6 +10376,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14 return: single, wages $10,000, Schedule C loss $2,000. Schedule SE line 4a = line 3 (-$2,000, \"If line 3 is more than zero, multiply ... Otherwise, enter amount from line 3\"); line 4c \"If less than $400, stop; you don't owe self-employment tax\", so line 4c is $0 and the person does not file Schedule SE. EIC Worksheet B Part 2 (\"Self-Employed NOT Required To File Schedule SE\") line 2b -$2,000; line 4b $10,000 - $2,000 = $8,000; AGI $8,000; EIC Table, $8,000, no child: $614.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -10421,7 +10471,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -10554,6 +10604,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 16 return I3 (single, aged 40, covered by a plan at work, traditional IRA contribution $7,000) with wages $78,999.50; the return is figured in dollars and cents. IRA Deduction Worksheet (i1040gi p. 97): line 2 $89,000; line 3 $78,999.50; line 4 $0; line 5 $78,999.50; line 6 = $89,000 - $78,999.50 = $10,000.50. \"If single ... and the result is $10,000 or more, enter the applicable amount below on line 7 ... $7,000 if under age 50\": line 7 $7,000 (not 70% of line 6, $7,000.35 rounded up to $7,010). Line 8 and 10 $78,999.50; line 11 $7,000; line 12 the smallest of 7, 10, 11 = $7,000; Schedule 1 line 20 $7,000.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -10652,7 +10703,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -10740,6 +10791,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Mutation scenario, predicted by hand: stage16.ira.i10 (single, aged 66, wages $20,000, Social Security benefits). The Social Security Benefits Worksheet copy of the IRA deduction limit is the smaller of the applicable amount ($7,000 plus the $1,000 catch-up at 50 or older, $8,000) and IRA Deduction Worksheet line 10 ($20,000 of compensation): $8,000 (i1040gi p. 98, line 12, \"enter the smallest of line 7a, 10, or 11a\").",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -10838,7 +10890,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 1200000,
         "s1.uc_paid": 0,
         "s1.alimony": false,

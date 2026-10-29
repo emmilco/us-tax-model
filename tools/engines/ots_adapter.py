@@ -333,6 +333,9 @@ def run_case(pkg, case, workdir):
             "L2b": [money(inputs[f"interest[{k}].amount"]) for k in inputs.get("$interest", [])],
             "L3a": [money(f["qualified_dividends"])], "L3b": [money(f["ordinary_dividends"])],
             "L6a": money(f.get("ss_benefits", 0)),
+            # Form 1099-R: traditional IRA distributions, nothing rolled over, so box 1 is the taxable amount.
+            "L4a": money(f.get("ira_distributions", 0) + f.get("spouse_ira_distributions", 0)),
+            "L4b": money(f.get("ira_distributions", 0) + f.get("spouse_ira_distributions", 0)),
             "L13a": money(l13a), "L19": money(l19), "L25a": money(f["withheld"]), "L25c": money(m_vals["L24"]), "L28": money(l28),
             "CapGains-A/D": sales_entries(inputs, ("A", "D")), "CapGains-B/E": sales_entries(inputs, ("B", "E")),
             "D13": money(f["capital_gain_distributions"]), "D19": money(f["unrecaptured_1250"]), "Collectibles": money(f["gain_28pct"]),
@@ -612,6 +615,7 @@ OTS_PASS_THROUGH = {"lines": [], "components": {
     "f1040.line1z": "mapped (sum of Forms W-2 box 1)",
     "f8863.line19": "OTS does not compute Form 8863; Schedule 3 line 3 and Form 1040 line 29 are entered amounts (limitation education)",
     "f1040.line29": "OTS does not compute Form 8863; Form 1040 line 29 is an entered amount (limitation education)",
+    "s2.line8": "OTS does not compute Form 5329; Schedule 2 line 8 is an entered amount (S2_8, limitation early_distribution_tax)",
 }}
 
 
@@ -629,6 +633,14 @@ EDU_MOVED = re.compile(r"^(f1040\.line(19|2[0-2]|24|28|29|3[2-7]|35a)|s3\.line(3
 EDU_REASON = ("OpenTaxSolver does not compute Form 8863: it reads Schedule 3 line 3 and Form 1040 line 29 as entered amounts, and the "
               "engine is given none, so its credits after the education credits, its tax after credits and its payments omit the "
               "education credits the project figures on these returns")
+
+# Lines Schedule 2 line 8 (Form 5329) moves: Schedule 2 line 21, Form 1040 lines 23 and 24, the pre-credit total and the
+# refund or amount owed.
+EARLY_MOVED = re.compile(r"^(f1040\.(line(23|24|34|35a|37)|tax_before_credits)|s2\.line(8|21)|person\[[^\]]+\]\.f5329\[)")
+EARLY_REASON = ("OpenTaxSolver does not compute Form 5329: it reads Schedule 2 line 8 as an entered amount (S2_8, \"Additional tax on IRAs, "
+                "other qualified retirement plans, Form 5329\"), which could only echo a supplied figure, and the engine is given none, so "
+                "on returns where the project figures the additional tax on early distributions or on HSA excess contributions its "
+                "Schedule 2 line 21 and total tax omit it")
 
 
 def limitations(pkg_version):
@@ -733,6 +745,7 @@ def limitations(pkg_version):
     lims.append({"feature": "marketplace", "lines": sorted(l for l in universe if PTC_MOVED.match(l)),
                  "reason": PTC_REASON})
     lims.append({"feature": "education", "lines": sorted(l for l in universe if EDU_MOVED.match(l)), "reason": EDU_REASON})
+    lims.append({"feature": "early_distribution_tax", "lines": sorted(l for l in universe if EARLY_MOVED.match(l)), "reason": EARLY_REASON})
     return lims
 
 

@@ -18,9 +18,10 @@ bank:
   questions:
   - input: $person
     order: 0
-    help: One entry for you and, on a joint return, one for your spouse. Amounts that are not asked person by person
-      (interest, dividends, sales, pensions and annuities, social security benefits, deductions, payments) are entered
-      once, for you and your spouse combined.
+    help: One entry for you and, on a joint return, one for your spouse. Forms W-2 and Forms 1099-R (IRA distributions,
+      pensions and annuities) are entered under the person who received them. Amounts that are not asked person by
+      person (interest, dividends, sales, social security benefits, deductions, payments) are entered once, for you and
+      your spouse combined.
     prompt: Who is on this return? Enter ["taxpayer"], or ["taxpayer","spouse"] if you are married filing jointly.
   - input: person.role
     order: 0
@@ -1032,6 +1033,42 @@ bank:
     order: 31
     help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
       do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: person.x_other
+    order: 10
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: retirement.early_screen
+    order: 3
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: retirement.code_screen
+    order: 3
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: retirement.exception
+    order: 3
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: retirement.exc_amount
+    order: 4
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: person.x_prior09
+    order: 31
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: person.x_births
+    order: 31
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: person.x_hsa_value
+    order: 31
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f8889.employer_in_box1
+    order: 11
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
   - input: f8962.estimate_100
     order: 11
     help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
@@ -1052,8 +1089,8 @@ bank:
     order: 1
     help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
       do not guess. Married filing separately and unsupported items are refused with citations.
-    prompt: List stable keys for each Form 1099-R you received (one key per form, for example payer names). Use
-      [] if you received none.
+    prompt: For this person (you, or your spouse on a joint return) — List stable keys for each Form 1099-R this
+      person received (one key per form, for example payer names). Use [] if this person received none.
   - input: retirement.account
     order: 2
     help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;

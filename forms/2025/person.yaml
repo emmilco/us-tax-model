@@ -590,6 +590,128 @@ form:
       cite:
         doc: f1040
         locator: p. 2, Payments and Refundable Credits, line 25a, "Federal income tax withheld from:", "Form(s) W-2"
+    - id: person.ira_amount_a
+      printed: (helper)
+      label: IRA distributions on this person's Forms 1099-R (line 4a amounts)
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: retirement
+        field: retirement.amount_a
+        where:
+          op: test
+          eq:
+            - retirement.is_ira
+            - const: true
+      cite:
+        doc: i1040gi
+        locator: pp. 26-27, Lines 4a and 4b (total distributions where an exception applies; 'More than one distribution')
+    - id: person.ira_taxable
+      printed: (helper)
+      label: Taxable IRA distributions on this person's Forms 1099-R (line 4b amounts)
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: retirement
+        field: retirement.taxable
+        where:
+          op: test
+          eq:
+            - retirement.is_ira
+            - const: true
+      cite:
+        doc: i1040gi
+        locator: p. 27, line 4b, 'figure the taxable amount of each distribution and enter the total of the taxable
+          amounts on line 4b'
+    - id: person.ira_rollovers
+      printed: (helper)
+      label: Number of this person's IRA distributions with a rollover
+      type: Count
+      expr:
+        op: sum_over
+        collection: retirement
+        field: retirement.one
+        where:
+          op: test
+          all:
+            - op: test
+              eq:
+                - retirement.is_ira
+                - const: true
+            - op: test
+              eq:
+                - retirement.has_rollover
+                - const: true
+      cite:
+        doc: i1040gi
+        locator: p. 27, Exception 1, 'Also check box 1 on line 4c'
+    - id: person.plan_amount_a
+      printed: (helper)
+      label: Pension and annuity distributions on this person's Forms 1099-R (line 5a amounts)
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: retirement
+        field: retirement.amount_a
+        where:
+          op: test
+          eq:
+            - retirement.is_ira
+            - const: false
+      cite:
+        doc: i1040gi
+        locator: pp. 28-30, Lines 5a and 5b
+    - id: person.plan_taxable
+      printed: (helper)
+      label: Taxable pension and annuity distributions on this person's Forms 1099-R (line 5b amounts)
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: retirement
+        field: retirement.taxable
+        where:
+          op: test
+          eq:
+            - retirement.is_ira
+            - const: false
+      cite:
+        doc: i1040gi
+        locator: pp. 28-30, Lines 5a and 5b; p. 29, Simplified Method Worksheet, 'Enter the total of the taxable parts
+          on Form 1040 or 1040-SR, line 5b'
+    - id: person.plan_rollovers
+      printed: (helper)
+      label: Number of this person's pension distributions with a rollover
+      type: Count
+      expr:
+        op: sum_over
+        collection: retirement
+        field: retirement.one
+        where:
+          op: test
+          all:
+            - op: test
+              eq:
+                - retirement.is_ira
+                - const: false
+            - op: test
+              eq:
+                - retirement.has_rollover
+                - const: true
+      cite:
+        doc: i1040gi
+        locator: p. 30, Rollovers, 'Also check box 1 on line 5c'
+    - id: person.sav_dist
+      printed: (helper)
+      label: Distributions received in 2025 that Form 8880 line 4 counts, on this person's Forms 1099-R
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: retirement
+        field: retirement.sav_amount
+      cite:
+        doc: f8880
+        locator: 'p. 2, Line 4, "Enter the total amount of distributions you, and your spouse if filing jointly, received after
+          2022 and before the due date of your 2025 return (including extensions)"'
     - id: person.eligible
       printed: eligible
       label: More than one employer and total social security wages over $176,100
@@ -3484,7 +3606,7 @@ form:
           eq:
           - person.edu_over
           - const: true
-      cite: &id001
+      cite:
         doc: i8863
         locator: p. 9, Adjusted Qualified Education Expenses Worksheet, "Complete a separate worksheet for each student for each
           academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having paid)
@@ -3685,7 +3807,7 @@ form:
             - const: true
           then:
             def: aqee
-            bind: &id002
+            bind:
               inst: person.edu_inst
               mat: person.edu_mat
               adj: person.edu_adj
@@ -3699,13 +3821,17 @@ form:
       cite:
         doc: f8863
         locator: p. 2, Part III, line 27, "Adjusted qualified education expenses (see instructions). Don’t enter more than $4,000"
-      refuses: &id003
+      refuses:
       - when: person.edu_over_refused
         form: Adjusted Qualified Education Expenses Worksheet for more than one academic period
         remedy: The worksheet is completed for each academic period, and an academic period whose tax-free educational assistance
           and refunds exceed its own expenses cannot be netted against another period's expenses. Figure the worksheet period
           by period.
-        cite: *id001
+        cite:
+          doc: i8863
+          locator: p. 9, Adjusted Qualified Education Expenses Worksheet, "Complete a separate worksheet for each student for
+            each academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having
+            paid) qualified education expenses in 2025."
     - id: person.edu_line28
       printed: '28'
       label: Subtract $2,000 from line 27. If zero or less, enter -0-
@@ -3721,7 +3847,10 @@ form:
             - const: true
           then:
             def: aqee
-            bind: *id002
+            bind:
+              inst: person.edu_inst
+              mat: person.edu_mat
+              adj: person.edu_adj
             line: line28
         - guard:
             op: test
@@ -3732,7 +3861,17 @@ form:
       cite:
         doc: f8863
         locator: p. 2, Part III, line 28, "Subtract $2,000 from line 27. If zero or less, enter -0-"
-      refuses: *id003
+      refuses:
+      - when: person.edu_over_refused
+        form: Adjusted Qualified Education Expenses Worksheet for more than one academic period
+        remedy: The worksheet is completed for each academic period, and an academic period whose tax-free educational assistance
+          and refunds exceed its own expenses cannot be netted against another period's expenses. Figure the worksheet period
+          by period.
+        cite:
+          doc: i8863
+          locator: p. 9, Adjusted Qualified Education Expenses Worksheet, "Complete a separate worksheet for each student for
+            each academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having
+            paid) qualified education expenses in 2025."
     - id: person.edu_line29
       printed: '29'
       label: Multiply line 28 by 25% (0.25)
@@ -3748,7 +3887,10 @@ form:
             - const: true
           then:
             def: aqee
-            bind: *id002
+            bind:
+              inst: person.edu_inst
+              mat: person.edu_mat
+              adj: person.edu_adj
             line: line29
         - guard:
             op: test
@@ -3759,7 +3901,17 @@ form:
       cite:
         doc: f8863
         locator: p. 2, Part III, line 29, "Multiply line 28 by 25% (0.25)"
-      refuses: *id003
+      refuses:
+      - when: person.edu_over_refused
+        form: Adjusted Qualified Education Expenses Worksheet for more than one academic period
+        remedy: The worksheet is completed for each academic period, and an academic period whose tax-free educational assistance
+          and refunds exceed its own expenses cannot be netted against another period's expenses. Figure the worksheet period
+          by period.
+        cite:
+          doc: i8863
+          locator: p. 9, Adjusted Qualified Education Expenses Worksheet, "Complete a separate worksheet for each student for
+            each academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having
+            paid) qualified education expenses in 2025."
     - id: person.edu_line30
       printed: '30'
       label: American opportunity credit for this student. If line 28 is zero, enter the amount from line 27. Otherwise, add $2,000
@@ -3776,7 +3928,10 @@ form:
             - const: true
           then:
             def: aqee
-            bind: *id002
+            bind:
+              inst: person.edu_inst
+              mat: person.edu_mat
+              adj: person.edu_adj
             line: line30
         - guard:
             op: test
@@ -3788,7 +3943,17 @@ form:
         doc: f8863
         locator: p. 2, Part III, line 30, "If line 28 is zero, enter the amount from line 27.", "Include the total of all amounts
           from all Parts III, line 30, on Part I, line 1"
-      refuses: *id003
+      refuses:
+      - when: person.edu_over_refused
+        form: Adjusted Qualified Education Expenses Worksheet for more than one academic period
+        remedy: The worksheet is completed for each academic period, and an academic period whose tax-free educational assistance
+          and refunds exceed its own expenses cannot be netted against another period's expenses. Figure the worksheet period
+          by period.
+        cite:
+          doc: i8863
+          locator: p. 9, Adjusted Qualified Education Expenses Worksheet, "Complete a separate worksheet for each student for
+            each academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having
+            paid) qualified education expenses in 2025."
     - id: person.edu_line31
       printed: '31'
       label: Adjusted qualified education expenses for the lifetime learning credit
@@ -3804,7 +3969,10 @@ form:
             - const: true
           then:
             def: aqee
-            bind: *id002
+            bind:
+              inst: person.edu_inst
+              mat: person.edu_mat
+              adj: person.edu_adj
             line: ws4_llc
         - guard:
             op: test
@@ -3816,7 +3984,17 @@ form:
         doc: f8863
         locator: p. 2, Part III, line 31, "Adjusted qualified education expenses (see instructions). Include the total of all
           amounts from all Parts III, line 31, on Part II, line 10"
-      refuses: *id003
+      refuses:
+      - when: person.edu_over_refused
+        form: Adjusted Qualified Education Expenses Worksheet for more than one academic period
+        remedy: The worksheet is completed for each academic period, and an academic period whose tax-free educational assistance
+          and refunds exceed its own expenses cannot be netted against another period's expenses. Figure the worksheet period
+          by period.
+        cite:
+          doc: i8863
+          locator: p. 9, Adjusted Qualified Education Expenses Worksheet, "Complete a separate worksheet for each student for
+            each academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having
+            paid) qualified education expenses in 2025."
     - id: person.edu_born_2007
       printed: (helper)
       label: Were you born before January 2, 2007?
@@ -3931,6 +4109,545 @@ form:
           apply to you."
       ambiguity: amb.2025.edu_age_rule
     # --- end Stage 19 ---
+  # --- Stage 21: Form 5329 (generated) ---
+    - id: person.x_l1
+      printed: (helper)
+      label: 'Form 5329 line 1 for this person: early distributions includible in income'
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: retirement
+        field: retirement.l1
+      cite:
+        doc: i5329
+        locator: p. 3, Line 1, "Enter the amount of early distributions includible in income (other than qualified disaster recovery
+          distributions) that you received from:"
+    - id: person.x_l2_all
+      printed: (helper)
+      label: Exception amounts before the per-person limits
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: retirement
+        field: retirement.l2
+      cite:
+        doc: i5329
+        locator: p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable
+          exception number (01–23). If more than one exception applies, enter 99."
+    - id: person.x_l1_s
+      printed: (helper)
+      label: Line 1 amounts from code S distributions
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: retirement
+        field: retirement.l1_s
+      cite:
+        doc: i5329
+        locator: p. 5, Line 4, "If any amount on line 3 was a distribution from a SIMPLE IRA received within 2 years from the
+          date you first participated in the SIMPLE IRA plan, you must multiply that amount by 25% instead of 10%."
+    - id: person.x_l2_s
+      printed: (helper)
+      label: Line 2 amounts from code S distributions
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: retirement
+        field: retirement.l2_s
+      cite:
+        doc: i5329
+        locator: p. 5, Line 4, "If any amount on line 3 was a distribution from a SIMPLE IRA received within 2 years from the
+          date you first participated in the SIMPLE IRA plan, you must multiply that amount by 25% instead of 10%."
+    - id: person.x_e05
+      printed: (helper)
+      label: Exception 05 amounts
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: retirement
+        field: retirement.l2_e05
+      cite:
+        doc: i5329
+        locator: p. 5, Line 2, "Qualified retirement plan distributions up to the amount you paid for unreimbursed medical expenses
+          during the year minus 7.5% of your adjusted gross income (AGI) for the year."
+    - id: person.x_e09
+      printed: (helper)
+      label: Exception 09 amounts
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: retirement
+        field: retirement.l2_e09
+      cite:
+        doc: p590b
+        locator: p. 27, First home, "you don't have to pay the 10% additional tax on up to $10,000 of distributions you receive
+          to buy, build, or rebuild a first home."
+    - id: person.x_e19
+      printed: (helper)
+      label: Exception 19 amounts
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: retirement
+        field: retirement.l2_e19
+      cite:
+        doc: p590b
+        locator: p. 28, Qualified birth or adoption distribution, "A qualified birth or adoption distribution must not exceed
+          $5,000 per taxpayer."
+    - id: person.x_e22
+      printed: (helper)
+      label: Exception 22 amounts
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: retirement
+        field: retirement.l2_e22
+      cite:
+        doc: p590b
+        locator: p. 28, Distributions to domestic abuse victims, "on to a domestic abuse victim must not exceed the lesser of
+          $10,300 for 2025 or 50% of the present value of the IRA."
+    - id: person.x_e23
+      printed: (helper)
+      label: Exception 23 amounts
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: retirement
+        field: retirement.l2_e23
+      cite:
+        doc: p590b
+        locator: p. 28, Emergency personal expense distributions, "personal expense distribution must not exceed the lesser of
+          $1,000 or your total interest in the IRA minus $1,000."
+    - id: person.x_tax
+      printed: (helper)
+      label: This person's Form 5329 taxes
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: f5329
+        field: f5329.tax
+      cite:
+        doc: f1040s2
+        locator: p. 1, Part II, line 8, "Additional tax on IRAs or other tax-favored accounts. Attach Form 5329 if required."
+    - id: person.x_must
+      printed: (helper)
+      label: One if this person must file Form 5329
+      type: Count
+      expr:
+        op: sum_over
+        collection: f5329
+        field: f5329.one
+        where:
+          op: test
+          eq:
+          - f5329.must
+          - const: true
+      cite:
+        doc: i5329
+        locator: p. 1, Who Must File, "However, if distribution code 1 is correctly shown in box 7 of all your Forms 1099-R and
+          you owe the additional tax on the full amount shown on each Form 1099-R, you don’t have to file Form 5329."
+    - id: person.x_prior09
+      printed: (helper)
+      label: Earlier first-home distributions excluded from the additional tax
+      type: NonNegDollars
+      expr:
+        op: input
+        source: Total of your earlier IRA distributions (before 2025) for which the first-home exception was used; zero if none
+      cite:
+        doc: p590b
+        locator: p. 27, First home, "you don't have to pay the 10% additional tax on up to $10,000 of distributions you receive
+          to buy, build, or rebuild a first home."
+    - id: person.x_cap09_base
+      printed: (helper)
+      label: Year parameter f5329.cap_first_home ($10,000)
+      type: NonNegDollars
+      expr:
+        op: param
+        ref: f5329.cap_first_home
+      cite:
+        doc: p590b
+        locator: p. 27, First home, "you don't have to pay the 10% additional tax on up to $10,000 of distributions you receive
+          to buy, build, or rebuild a first home."
+    - id: person.x_cap09
+      printed: (helper)
+      label: 'First-home limit left: $10,000 less earlier first-home distributions'
+      type: NonNegDollars
+      expr:
+        op: subtract_floor0
+        from: person.x_cap09_base
+        take: person.x_prior09
+      cite:
+        doc: p590b
+        locator: p. 27, First home, "you don't have to pay the 10% additional tax on up to $10,000 of distributions you receive
+          to buy, build, or rebuild a first home."
+    - id: person.x_births
+      printed: (helper)
+      label: Number of births or adoptions the distributions were for
+      type: Count
+      expr:
+        op: input
+        source: For how many births or adoptions (children born or adopted, each counted once) did you take the birth or adoption
+          distributions?
+      cite:
+        doc: p590b
+        locator: p. 28, Qualified birth or adoption distribution, "A qualified birth or adoption distribution must not exceed
+          $5,000 per taxpayer."
+    - id: person.x_cap19_one
+      printed: (helper)
+      label: Year parameter f5329.cap_birth ($5,000)
+      type: NonNegDollars
+      expr:
+        op: param
+        ref: f5329.cap_birth
+      cite:
+        doc: p590b
+        locator: p. 28, Qualified birth or adoption distribution, "A qualified birth or adoption distribution must not exceed
+          $5,000 per taxpayer."
+    - id: person.x_cap19
+      printed: (helper)
+      label: $5,000 for each birth or adoption
+      type: NonNegDollars
+      expr:
+        op: multiply_count
+        amount: person.x_cap19_one
+        count: person.x_births
+      cite:
+        doc: p590b
+        locator: p. 28, Qualified birth or adoption distribution, "A qualified birth or adoption distribution must not exceed
+          $5,000 per taxpayer."
+      ambiguity: amb.2025.f5329_birth_cap
+    - id: person.x_cap22
+      printed: (helper)
+      label: Year parameter f5329.cap_abuse ($10,300)
+      type: NonNegDollars
+      expr:
+        op: param
+        ref: f5329.cap_abuse
+      cite:
+        doc: p590b
+        locator: p. 28, Distributions to domestic abuse victims, "on to a domestic abuse victim must not exceed the lesser of
+          $10,300 for 2025 or 50% of the present value of the IRA."
+    - id: person.x_cap23
+      printed: (helper)
+      label: Year parameter f5329.cap_emergency ($1,000)
+      type: NonNegDollars
+      expr:
+        op: param
+        ref: f5329.cap_emergency
+      cite:
+        doc: p590b
+        locator: p. 28, Emergency personal expense distributions, "personal expense distribution must not exceed the lesser of
+          $1,000 or your total interest in the IRA minus $1,000."
+    - id: person.x_c05
+      printed: (helper)
+      label: Exception 05 limited to the medical expenses above 7.5% of AGI (Schedule A line 4)
+      type: NonNegDollars
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.x_has05
+            - const: true
+          then: person.x_c05_min
+        - guard:
+            op: test
+            eq:
+            - person.x_has05
+            - const: false
+          then: person.zero
+      cite:
+        doc: i5329
+        locator: p. 5, Line 2, "Qualified retirement plan distributions up to the amount you paid for unreimbursed medical expenses
+          during the year minus 7.5% of your adjusted gross income (AGI) for the year."
+      ambiguity: amb.2025.f5329_medical_joint
+    - id: person.x_has05
+      printed: (helper)
+      label: Any exception 05 amount
+      type: Bool
+      expr:
+        op: test
+        gt:
+        - person.x_e05
+        - const: 0
+      cite:
+        doc: i5329
+        locator: p. 5, Line 2, "Qualified retirement plan distributions up to the amount you paid for unreimbursed medical expenses
+          during the year minus 7.5% of your adjusted gross income (AGI) for the year."
+    - id: person.x_c05_min
+      printed: (helper)
+      label: Smaller of the exception 05 amounts and Schedule A line 4
+      type: NonNegDollars
+      expr:
+        op: smaller_of
+        of:
+        - person.x_e05
+        - sa.line4
+      cite:
+        doc: i5329
+        locator: p. 5, Line 2, "Qualified retirement plan distributions up to the amount you paid for unreimbursed medical expenses
+          during the year minus 7.5% of your adjusted gross income (AGI) for the year."
+    - id: person.x_has09
+      printed: (helper)
+      label: Any exception 09 amount
+      type: Bool
+      expr:
+        op: test
+        gt:
+        - person.x_e09
+        - const: 0
+      cite:
+        doc: p590b
+        locator: p. 27, First home, "you don't have to pay the 10% additional tax on up to $10,000 of distributions you receive
+          to buy, build, or rebuild a first home."
+    - id: person.x_c09_min
+      printed: (helper)
+      label: Smaller of the exception 09 amounts and the limit left
+      type: NonNegDollars
+      expr:
+        op: smaller_of
+        of:
+        - person.x_e09
+        - person.x_cap09
+      cite:
+        doc: p590b
+        locator: p. 27, First home, "you don't have to pay the 10% additional tax on up to $10,000 of distributions you receive
+          to buy, build, or rebuild a first home."
+    - id: person.x_c09
+      printed: (helper)
+      label: Exception 09 within the $10,000 first-home limit
+      type: NonNegDollars
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.x_has09
+            - const: true
+          then: person.x_c09_min
+        - guard:
+            op: test
+            eq:
+            - person.x_has09
+            - const: false
+          then: person.zero
+      cite:
+        doc: p590b
+        locator: p. 27, First home, "you don't have to pay the 10% additional tax on up to $10,000 of distributions you receive
+          to buy, build, or rebuild a first home."
+    - id: person.x_has19
+      printed: (helper)
+      label: Any exception 19 amount
+      type: Bool
+      expr:
+        op: test
+        gt:
+        - person.x_e19
+        - const: 0
+      cite:
+        doc: p590b
+        locator: p. 28, Qualified birth or adoption distribution, "A qualified birth or adoption distribution must not exceed
+          $5,000 per taxpayer."
+    - id: person.x_c19_min
+      printed: (helper)
+      label: Smaller of the exception 19 amounts and $5,000 a birth or adoption
+      type: NonNegDollars
+      expr:
+        op: smaller_of
+        of:
+        - person.x_e19
+        - person.x_cap19
+      cite:
+        doc: p590b
+        locator: p. 28, Qualified birth or adoption distribution, "A qualified birth or adoption distribution must not exceed
+          $5,000 per taxpayer."
+    - id: person.x_c19
+      printed: (helper)
+      label: Exception 19 within $5,000 a birth or adoption
+      type: NonNegDollars
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.x_has19
+            - const: true
+          then: person.x_c19_min
+        - guard:
+            op: test
+            eq:
+            - person.x_has19
+            - const: false
+          then: person.zero
+      cite:
+        doc: p590b
+        locator: p. 28, Qualified birth or adoption distribution, "A qualified birth or adoption distribution must not exceed
+          $5,000 per taxpayer."
+    - id: person.x_c22
+      printed: (helper)
+      label: Exception 22 within $10,300
+      type: NonNegDollars
+      expr:
+        op: smaller_of
+        of:
+        - person.x_e22
+        - person.x_cap22
+      cite:
+        doc: p590b
+        locator: p. 28, Distributions to domestic abuse victims, "on to a domestic abuse victim must not exceed the lesser of
+          $10,300 for 2025 or 50% of the present value of the IRA."
+    - id: person.x_c23
+      printed: (helper)
+      label: Exception 23 within $1,000
+      type: NonNegDollars
+      expr:
+        op: smaller_of
+        of:
+        - person.x_e23
+        - person.x_cap23
+      cite:
+        doc: p590b
+        locator: p. 28, Emergency personal expense distributions, "personal expense distribution must not exceed the lesser of
+          $1,000 or your total interest in the IRA minus $1,000."
+    - id: person.x_n23
+      printed: (helper)
+      label: Forms 1099-R claiming exception 23
+      type: Count
+      expr:
+        op: sum_over
+        collection: retirement
+        field: retirement.one
+        where:
+          op: test
+          eq:
+          - retirement.is_e23
+          - const: true
+      cite:
+        doc: p590b
+        locator: p. 28, Distribution limits, "You are limited to taking one emergency personal expense distribution per calendar
+          year"
+    - id: person.x_two23
+      printed: (gate)
+      label: Exception 23 claimed on more than one distribution
+      type: Bool
+      expr:
+        op: test
+        gt:
+        - person.x_n23
+        - const: 1
+          type: Count
+      cite:
+        doc: p590b
+        locator: p. 28, Distribution limits, "You are limited to taking one emergency personal expense distribution per calendar
+          year"
+    - id: person.x_capped_sum
+      printed: (helper)
+      label: Exceptions 05, 09, 19, 22 and 23 before their limits
+      type: NonNegDollars
+      expr:
+        op: sum
+        of:
+        - person.x_e05
+        - person.x_e09
+        - person.x_e19
+        - person.x_e22
+        - person.x_e23
+      cite:
+        doc: i5329
+        locator: p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable
+          exception number (01–23). If more than one exception applies, enter 99."
+    - id: person.x_limited_sum
+      printed: (helper)
+      label: Exceptions 05, 09, 19, 22 and 23 within their limits
+      type: NonNegDollars
+      expr:
+        op: sum
+        of:
+        - person.x_c05
+        - person.x_c09
+        - person.x_c19
+        - person.x_c22
+        - person.x_c23
+      cite:
+        doc: i5329
+        locator: p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable
+          exception number (01–23). If more than one exception applies, enter 99."
+    - id: person.x_other_exc
+      printed: (helper)
+      label: Exceptions without a fixed limit
+      type: NonNegDollars
+      expr:
+        op: subtract_floor0
+        from: person.x_l2_all
+        take: person.x_capped_sum
+      cite:
+        doc: i5329
+        locator: p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable
+          exception number (01–23). If more than one exception applies, enter 99."
+    - id: person.x_limit_binds
+      printed: (gate)
+      label: A limited exception over its limit on a person with a code S distribution
+      type: Bool
+      expr:
+        op: test
+        all:
+        - op: test
+          gt:
+          - person.x_l1_s
+          - const: 0
+        - op: test
+          gt:
+          - person.x_capped_sum
+          - person.x_limited_sum
+      cite:
+        doc: i5329
+        locator: p. 5, Line 4, "If any amount on line 3 was a distribution from a SIMPLE IRA received within 2 years from the
+          date you first participated in the SIMPLE IRA plan, you must multiply that amount by 25% instead of 10%."
+      ambiguity: amb.2025.f5329_simple_limits
+    - id: person.x_other
+      printed: (gate)
+      label: Form 5329 parts this tool does not prepare
+      type: Bool
+      expr:
+        op: input
+        source: 'Does any of these apply to you: a taxable distribution from a Coverdell ESA, a qualified tuition program (529
+          plan) or an ABLE account; excess contributions to a traditional or Roth IRA for an earlier year that are still in the
+          IRA (whether or not you contributed for 2025); excess contributions to a Coverdell ESA, an Archer MSA or an ABLE account;
+          excess HSA contributions from an earlier year when you have no Form 8889 for 2025; or a required minimum distribution
+          from an IRA or plan that you did not take?'
+      cite:
+        doc: f5329
+        locator: p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from
+          a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line
+          8q, from an ABLE account."
+    - id: person.x_hsa_value
+      printed: (helper)
+      label: Value of your HSAs on December 31, 2025 (including 2025 contributions made in 2026)
+      type: NonNegDollars
+      expr:
+        op: input
+        source: Total value of your HSAs on December 31, 2025, including contributions for 2025 that you made in 2026 (asked only
+          when you have excess HSA contributions)
+      cite:
+        doc: f5329
+        locator: p. 2, Part VII, line 49, "Additional tax. Enter 6% (0.06) of the smaller of line 48 or the value of your HSAs
+          on December 31, 2025 (including 2025 contributions made in 2026)."
+    - id: person.x_hsa_excess
+      printed: (helper)
+      label: This person's 2025 HSA excess contributions (Form 8889)
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: f8889
+        field: f8889.excess_amt
+      cite:
+        doc: i5329
+        locator: p. 8, Line 47, "Enter the excess of your contributions (made by you or on your behalf) to your HSAs for 2025
+          from Form 8889, line 2 (unless withdrawn—discussed next), over your contribution limit (Form 8889, line 12)."
+  # --- end Stage 21 ---
   collection:
     cite:
       doc: f1040

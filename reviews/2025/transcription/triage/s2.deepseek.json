@@ -2,12 +2,8 @@
  "bank": null,
  "errors": [
   {
-   "line": "s2.line17c",
-   "message": "s2.s2.__type_gate_9: collection reference requires sum_over"
-  },
-  {
-   "line": "s2.line17c",
-   "message": "s2.s2.__type_gate_9: comparison operands have incompatible types"
+   "line": "s2.line4",
+   "message": "s2.s2.line4: reference 'line12' does not resolve"
   }
  ],
  "failures": [],
@@ -33,28 +29,19 @@
    "triage": "candidate invalid"
   },
   {
+   "candidate": "s2.line8_box",
+   "handle": "8 (box)",
+   "open_at_triage": true,
+   "project": "s2.line8_box",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
    "candidate": "s2.line11",
    "handle": "11",
    "open_at_triage": true,
    "project": "s2.line11",
-   "shown_when": null,
-   "status": "DISAGREE",
-   "triage": "candidate invalid"
-  },
-  {
-   "candidate": "s2.line17c",
-   "handle": "17c",
-   "open_at_triage": true,
-   "project": "s2.line17c",
-   "shown_when": null,
-   "status": "DISAGREE",
-   "triage": "candidate invalid"
-  },
-  {
-   "candidate": "s2.line18",
-   "handle": "18",
-   "open_at_triage": true,
-   "project": "s2.line18",
    "shown_when": null,
    "status": "DISAGREE",
    "triage": "candidate invalid"
@@ -69,10 +56,10 @@
    "triage": "candidate invalid"
   }
  ],
- "log_sha256_at_triage": "b8b2d1b22c1f4bf0b0291c660d7ea12fcb701e173896b889013438e5d32b7250",
+ "log_sha256_at_triage": "01e06c942bc2d8489df36e0e500d8450c1aa14c4ffbc142be4d867a18390e1f4",
  "policy": "executable-triage-v2",
- "response_sha256": "ecaf9ec54553c54444014d7464adecd489c16e526da6ba5b50dd91b1dd31b80b",
+ "response_sha256": "46bbe189ac0d14f5dcf5537ceeb455778f5646c37e49c761bf58c13b2528e4b8",
  "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
  "state": "invalid",
- "subject_sha256": "4759a5b8af72a8a1ecd8592cccb2daf4365d07ea7749079da936923ffcc906ec"
+ "subject_sha256": "b2b87b0e197101e5e6429e748764e6bd5b53c5caa544c6cc925781ba632165f2"
 }

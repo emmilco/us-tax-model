@@ -9,6 +9,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: single, wages $40,000; one employer, $8,000 of qualified tips (Form W-2 box 7). Line 3 $40,000; 4a $8,000, 4b $0, 4c $8,000; line 7 $8,000; line 10 = $40,000 - $150,000 is zero or less, so line 13 = line 7 = $8,000; line 38 $8,000; Form 1040 line 13b $8,000; line 14 = $15,750 + $8,000 = $23,750; line 15 = $40,000 - $23,750 = $16,250.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -110,7 +111,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -212,6 +213,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: single, wages $60,000; two employers, $9,000 and $4,500 of qualified tips. Line 4a is -0- with more than one employer; the worksheet column (d) total $13,500 goes on line 4c; line 7 $13,500; line 10 zero or less; line 13 $13,500.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -313,7 +315,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -398,6 +400,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: single, wages $80,000; one employer, $30,000 of qualified tips. Line 7 = smaller of $30,000 or $25,000 = $25,000; line 13 $25,000.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -499,7 +502,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -573,6 +576,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: single, wages $163,500; one employer, $20,000 of tips. Line 10 = $163,500 - $150,000 = $13,500; line 11 = 13 (13.5 decreased to 13); line 12 = 13 x $100 = $1,300; line 13 = $20,000 - $1,300 = $18,700.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -674,7 +678,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -748,6 +752,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: single, wages $200,000; $2,000 of tips. Line 10 $50,000; line 11 50; line 12 $5,000; line 13 = $2,000 - $5,000, zero or less, -0-.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -849,7 +854,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -923,6 +928,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: single, wages $150,999.99; $5,000 of tips. Line 10 $999.99; line 11 = 0 (0.99999 decreased to 0); line 12 $0; line 13 $5,000.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -1024,7 +1030,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -1098,6 +1104,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: single, wages $151,000; $5,000 of tips. Line 10 $1,000; line 11 = 1; line 12 $100; line 13 $4,900.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -1199,7 +1206,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -1273,6 +1280,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: single, wages $40,000; $8,000 of tips, but no SSN valid for employment: Part II is filled out only with a valid SSN, so line 13 is $0 and line 38 $0.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -1374,7 +1382,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -1448,6 +1456,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: single, wages $40,000; one employer where not all the tips were qualified tips (for example tips in an occupation not on the list): splitting is outside this tool, refused.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -1549,7 +1558,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -1624,6 +1633,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: single, wages $70,000; one FLSA-eligible employer, statement shows a $6,000 FLSA Overtime Premium (method 1). Line 14a $6,000; 14b $0; 14c $6,000; line 15 = smaller of $6,000 or $12,500 = $6,000; line 18 zero or less; line 21 $6,000.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -1725,7 +1735,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -1809,6 +1819,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: instructions Example 1: $15,000 paid for overtime hours at time-and-a-half; method 2 divides by 3: $5,000. Wages $65,000; line 21 $5,000.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -1910,7 +1921,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -1982,6 +1993,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: instructions Example 2: double time, pay stub shows $10,000 of premium above the regular rate; method 3 at double time multiplies by one-half: $5,000.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -2083,7 +2095,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -2155,6 +2167,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: instructions Example 3: double time, $20,000 total pay for overtime hours; method 4 at double time multiplies by one-fourth: $5,000.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -2256,7 +2269,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -2328,6 +2341,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: method 2 on $1,000.00: $333.333..., the product rounded half-up to the cent (amb.2025.multiplication_subcent): $333.33.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -2429,7 +2443,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -2501,6 +2515,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: method 2 on $1,000.01: $333.3366..., rounded half-up to the cent: $333.34.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -2602,7 +2617,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -2674,6 +2689,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: two employers: $9,000 premium (method 1) and $12,000 total at time-and-a-half (method 2, $4,000). Worksheet total $13,000 on line 14a; line 15 = smaller of $13,000 or $12,500 = $12,500; wages $100,000; line 21 $12,500.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -2775,7 +2791,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -2856,6 +2872,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: single, wages $155,250; $10,000 premium. Line 18 = $5,250; line 19 = 5; line 20 = $500; line 21 = $10,000 - $500 = $9,500.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -2957,7 +2974,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -3033,6 +3050,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: overtime claimed, but the filer was not an FLSA-eligible employee of the only employer: no qualified overtime; line 14a $0; line 21 $0.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -3134,7 +3152,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -3203,6 +3221,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: overtime figured by a reasonable-method estimate (method 5): refused.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -3304,7 +3323,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -3380,6 +3399,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: an employer under a special FLSA overtime rule (for example section 7(k)): refused.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -3481,7 +3501,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -3557,6 +3577,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: single, wages $60,000; one new qualifying loan, $3,200 of interest, nothing else financed. Line 22 column (iii) $3,200; line 23 $3,200; line 24 $3,200; line 27 = $60,000 - $100,000, zero or less; line 30 $3,200.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -3658,7 +3679,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -3739,6 +3760,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: single, wages $104,500; interest $5,000. Line 27 $4,500; line 28 = 5 (4.5 increased to 5); line 29 = $1,000; line 30 = $4,000.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -3840,7 +3862,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -3917,6 +3939,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: single, wages $100,000.01; interest $5,000. Line 27 $0.01; line 28 = 1 (increased to the next whole number); line 29 $200; line 30 $4,800.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -4027,7 +4050,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -4104,6 +4127,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: two qualifying loans, $7,000 and $6,000 of interest; line 23 $13,000; line 24 = smaller of $13,000 or $10,000 = $10,000; wages $50,000; line 30 $10,000.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -4205,7 +4229,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -4288,6 +4312,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: a loan on a vehicle that is not an applicable passenger vehicle (for example used): its interest is not qualified; line 30 $0.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -4389,7 +4414,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -4461,6 +4486,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: proposed § 1.163-16(d)(6) Example 4: $40,000 vehicle, $6,000 negative equity, $4,000 down payment, $42,000 financed. The down payment is applied first to the negative equity: $2,000 nonqualifying, $40,000 qualifying. Ratio 40,000/42,000 = 0.952380952..., six places 0.952381 (amb.2025.carloan_ratio_places); interest $2,100 x 0.952381 = $2,000.0001, $2,000.00 to the cent; line 30 $2,000 (wages $60,000).",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -4562,7 +4588,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -4638,6 +4664,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: proposed § 1.163-16(d)(6) Example 3: a $38,000 refinancing of a qualifying loan with a $30,000 balance; only $30,000 is a qualifying loan. Ratio 30,000/38,000 = 0.78947368..., six places 0.789474; interest $1,900 x 0.789474 = $1,500.0006, $1,500.00; line 30 $1,500.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -4739,7 +4766,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -4814,6 +4841,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: a refinancing for less than the balance it replaced ($20,000 of a $25,000 balance): ratio 1; all $1,200 of interest qualifies.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -4915,7 +4943,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -4986,6 +5014,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: the filer became the borrower when the previous borrower died; the loan met the requirements when taken out (proposed § 1.163-16(d)(5)(ii)); interest $2,500, nothing else financed; line 30 $2,500.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -5087,7 +5116,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -5156,6 +5185,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: a $30,000 loan that financed $10,000 of nonqualifying amounts and no down payment: qualifying $20,000; ratio 0.6666666... rounded to six places 0.666667; interest $1,234.57 x 0.666667 = $823.0471..., $823.05.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -5257,7 +5287,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -5329,6 +5359,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: a refinancing of a loan that was itself only partly a qualifying loan: refused.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -5430,7 +5461,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -5510,6 +5541,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: single, born before January 2, 1961, valid SSN, wages $50,000. Line 31 $50,000; line 32 $75,000; line 33 zero or less, so line 35 $6,000; line 36a $6,000; line 37 $6,000; line 38 $6,000; Form 1040 line 14 = $15,750 + $2,000 (age 65) + $6,000 = $23,750; line 15 = $26,250.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -5611,7 +5643,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -5693,6 +5725,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: single, 65 or older, wages $90,000. Line 33 $15,000; line 34 = 6% = $900; line 35 = $6,000 - $900 = $5,100; line 37 $5,100.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -5794,7 +5827,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -5868,6 +5901,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: single, 65 or older, wages $175,000. Line 33 $100,000; line 34 $6,000; line 35 -0-.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -5969,7 +6003,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -6039,6 +6073,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: single, 65 or older, wages $75,000.10. Line 33 $0.10; line 34 = 6% = $0.006, rounded half-up to the cent $0.01 (amb.2025.multiplication_subcent); line 35 $5,999.99.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -6140,7 +6175,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -6214,6 +6249,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: single, 65 or older, wages $50,000, no SSN valid for employment: line 36a $0; line 37 $0.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -6315,7 +6351,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -6381,6 +6417,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: the final return of a person born in 1960 who died in 2025 before reaching 65: refused (owner's ruling).",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -6482,7 +6519,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -6553,6 +6590,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: single, 65 or older, wages $120,000; tips $5,000 (one employer); overtime premium $4,000; car loan interest $3,000. Line 3 $120,000. Line 13 $5,000 (line 10 zero or less). Line 21 $4,000. Line 27 $20,000; line 28 20; line 29 $4,000; line 30 = $3,000 - $4,000, -0-. Line 33 $45,000; line 34 $2,700; line 35 $3,300; line 37 $3,300. Line 38 = $5,000 + $4,000 + $0 + $3,300 = $12,300; Form 1040 line 14 = $17,750 + $12,300 = $30,050; line 15 = $89,950.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -6654,7 +6692,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -6768,6 +6806,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: 65 or older and filing Form 2555 (excluded income): modified AGI needs Schedule 1-A lines 2a-2d, refused through sa.excluded_income.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -6869,7 +6908,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -6940,6 +6979,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: filing Form 2555 but claiming no Schedule 1-A deduction (under 65, no tips, overtime or car loan): Schedule 1-A is not needed, line 38 $0, not refused.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -7041,7 +7081,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -7102,6 +7142,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: married filing separately, wages $60,000; tips $8,000, overtime premium $6,000, born before January 2, 1961, car loan interest $3,000. The Part II, III and V cautions say a married filer must file jointly to claim: lines 13, 21 and 37 are $0. Part IV has no such bar: line 26 $100,000, line 27 zero or less, line 30 $3,000.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "mfs",
         "$person": [
@@ -7203,7 +7244,7 @@
         "household.married": true,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -7297,6 +7338,8 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: married filing jointly, wages $301,000; tips $20,000; overtime premium $30,000. Line 9 $300,000; line 10 $1,000; line 11 1; line 12 $100; line 13 $19,900. Line 15 = smaller of $30,000 or $25,000 = $25,000; line 17 $300,000; line 18 $1,000; line 20 $100; line 21 $24,900.",
       "inputs": {
+        "person[taxpayer].x_other": false,
+        "person[spouse].x_other": false,
         "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
@@ -7399,7 +7442,8 @@
         "household.married": true,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
+        "$retirement@person[spouse]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -7518,6 +7562,8 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: married filing jointly, wages $200,000.50; car loan interest $5,000. Line 26 $200,000; line 27 $0.50; line 28 = 1 (increased to the next whole number); line 29 $200; line 30 $4,800.",
       "inputs": {
+        "person[taxpayer].x_other": false,
+        "person[spouse].x_other": false,
         "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
@@ -7620,7 +7666,8 @@
         "household.married": true,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
+        "$retirement@person[spouse]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -7721,6 +7768,8 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: married filing jointly, wages $160,000, the filer born before January 2, 1961 (no spouse born before then is modeled; line 36b $0). Line 32 $150,000; line 33 $10,000; line 34 $600; line 35 $5,400; line 36a $5,400; line 37 $5,400.",
       "inputs": {
+        "person[taxpayer].x_other": false,
+        "person[spouse].x_other": false,
         "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
@@ -7823,7 +7872,8 @@
         "household.married": true,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
+        "$retirement@person[spouse]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -7922,6 +7972,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: no car loan interest claimed: lines 23, 24 and 30 are $0 and no loan list is asked for.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -8023,7 +8074,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -8092,6 +8143,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: tips from one employer and Form 4137 (s2.other): line 4b refuses (Form 4137 is outside this tool), so line 13 refuses.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -8193,7 +8245,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -8268,6 +8320,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: tips from two employers and Form 4137 (s2.other): worksheet column (c) refuses, so line 4c and line 13 refuse.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -8369,7 +8422,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -8460,6 +8513,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: born before January 2, 1961, with a spouse's standard-deduction boxes claimed (sa.spouse_extra): line 36b refuses, so line 37 refuses. Stage 13: a spouses boxes are refused only on a married filing separately return, and line 36b is for a spouse on a joint return, so on this single return line 36b is $0 and line 37 equals line 36a (unchanged). The case formerly expected a refusal; renamed from stage12.refuse.spouse_senior. Joint cases with a spouse born before 1961 are in stage13.json.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -8561,7 +8615,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -8631,6 +8685,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: tips claimed and Schedule 1 business income (scope.schedule1): line 5 refuses, so line 6 refuses.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -8732,7 +8787,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -8811,6 +8866,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: overtime claimed and Schedule 1 business income (scope.schedule1): line 14b refuses, so line 14c refuses.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -8912,7 +8968,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -8993,6 +9049,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: tips claimed with Form 2555 or excluded Puerto Rico income (sa.excluded_income): line 8 copies line 3, which needs line 2a, refused; line 13 refuses.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -9094,7 +9151,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -9169,6 +9226,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "BUG-0163 regression, predicted from fr-2025-24154 p. 23, proposed § 1.163-16(g)(1) (\"Independently deductible interest is limited to interest that is QPVLI\") and (d)(2)(iii)(A) (pro rata allocation) before recording: a mixed loan, $20,000 financed of which $4,000 does not qualify (ratio 0.8), $424 of interest and $106 deducted on Schedule C: QPVLI $339.20, column (ii) the QPVLI part of the Schedule C interest $84.80, column (iii) $254.40 (the previous whole-amount subtraction gave $233.20).",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "div.box2b": 0,
         "div.box2c": 0,
@@ -9516,7 +9574,7 @@
         "sales[s1].wash_loss": 0,
         "$gift": [],
         "$dependent": [],
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "$tipjob@person[taxpayer]": [
           "tip_1",
           "tip_2",

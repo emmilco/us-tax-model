@@ -5,12 +5,12 @@
  "microdata_filing_units_unweighted_total": 157629339.546014,
  "raking_max_share_error": 7.132191345032847e-07,
  "coverage": {
-  "central": 0.7960628608511052,
-  "low": 0.7839270610590404,
+  "central": 0.8221343071245405,
+  "low": 0.8156389675535175,
   "high": 0.8569322863267264,
   "microdata_part": 0.8569322863267264,
-  "irs_only_independent_factor": 0.9289682201886216,
-  "irs_only_share_sum": 0.07300522526768594
+  "irs_only_independent_factor": 0.9593923816882326,
+  "irs_only_share_sum": 0.041293318773208874
  },
  "categories": [
   {
@@ -84,19 +84,6 @@
    "microdata_share_before_raking": 0.0012370253462135729,
    "share": 0.010853103599370926,
    "basis": "IRS count, overlap from microdata"
-  },
-  {
-   "id": "form5329",
-   "group": "retirement_penalty",
-   "label": "Additional tax on qualified plans (Form 5329)",
-   "gates": [
-    "retirement.special",
-    "s2.other"
-   ],
-   "irs_returns": 5092999.0,
-   "microdata_share_before_raking": null,
-   "share": 0.03171190649447706,
-   "basis": "IRS count only (independence assumed)"
   },
   {
    "id": "other_income",
@@ -187,16 +174,11 @@
   {
    "group": "schedule_e",
    "label": "Rental, royalty, partnership, S corporation, estate (Schedule E)",
-   "coverage_after": 0.8541820876940303
+   "coverage_after": 0.8821569669431841
   },
   {
    "group": "schedule1_misc",
    "label": "Other Schedule 1 income and adjustments",
-   "coverage_after": 0.9128672573113619
-  },
-  {
-   "group": "retirement_penalty",
-   "label": "Additional tax on retirement plans (Form 5329)",
    "coverage_after": 0.9427641044376377
   },
   {
@@ -227,17 +209,15 @@
  ],
  "coverage_without_model_only_category": {},
  "gain_if_covered_alone": {
-  "married": 0.02147317057350273,
-  "other_credits": 0.0073414331326856486,
-  "schedule_e": 0.05811922684292503,
-  "retirement_penalty": 0.026071446273435273,
-  "schedule1_misc": 0.04248379844245709,
-  "schedule2_misc": 0.0036040160819212907,
-  "other_earned_income": 0.006333255436835827,
-  "farm": 0.004661188246479431
+  "married": 0.022176427364466234,
+  "other_credits": 0.0075818686421177395,
+  "schedule_e": 0.06002265981864363,
+  "schedule1_misc": 0.04387516352561094,
+  "schedule2_misc": 0.003722049363298008,
+  "other_earned_income": 0.006540672635875655,
+  "farm": 0.004813844430952785
  },
  "gates_mapped": [
-  "retirement.special",
   "s2.amt",
   "s2.other",
   "s3.mfs",
@@ -349,6 +329,8 @@
   "person.se_screened",
   "person.sep_excess",
   "person.simple_excess",
+  "person.x_limit_binds",
+  "person.x_other",
   "qbi.business_any",
   "qbi.unsupported",
   "refund.box8",
@@ -358,6 +340,9 @@
   "refund.not_2024",
   "retirement.annuity_rollover",
   "retirement.bad_code",
+  "retirement.screen_refused",
+  "retirement.special",
+  "retirement.wrong_kind",
   "s1.alimony_unsupported",
   "s1.cod_unsupported",
   "s1.ebl",
@@ -372,6 +357,7 @@
   "s179.over_limit",
   "s1a.senior_decedent",
   "s1a.spouse_senior_decedent",
+  "s2.e05_over",
   "s8812.combat_pay",
   "s8812.puerto_rico",
   "sa.charity_limited",

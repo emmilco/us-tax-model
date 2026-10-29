@@ -179,6 +179,15 @@
    "drop": true
   },
   {
+   "case": "classm.person.1",
+   "printed": "person[taxpayer].wages",
+   "project": "$44,754.00",
+   "model": "$29,524.00",
+   "ruling": "Ruling: model error; iw2w3 p. 18, boxes 3 and 7 (social security wages and social security tips; amb.2025.ss_wages): person.wages is the sum of w2.wages, boxes 3 plus 7, the amount the excess social security tax test compares with the wage base (i1040gi p. 117, Line 11). Case inputs (fixtures/2025/classm.json, classm.person.1): emp_a box 1 $29,524.00, box 3 $29,524.00, box 7 $0.00; emp_b box 1 $0.00, box 3 $0.00, box 7 $15,230.00; so boxes 3 plus 7 total $44,754.00, the project's value. The model's work (\"Box 1 wages: 29,524.00 + 0.00 = 29,524.00\") adds the Forms W-2 box 1 amounts and misses emp_b's box 7 tips of $15,230.00. Same case and ruling as Stage 19 rounds 2 and 3. A wrong worked value is not evidence; dropped.",
+   "drop": true,
+   "context": "a4fdaa547307b752413a27ba813c04b9fc293b18e24ee47d1a1bc58526440fe5"
+  },
+  {
    "case": "classm.person.2",
    "printed": "person[taxpayer].ira_line2",
    "project": "$10,000.00",

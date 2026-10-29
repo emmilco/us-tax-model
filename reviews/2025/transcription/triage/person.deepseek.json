@@ -2,8 +2,44 @@
  "bank": null,
  "errors": [
   {
-   "line": "person.h_se_line4a_mult",
-   "message": "person.person.h_se_line4a_mult: declared NonNegDollars but the expression does not prove non-negativity"
+   "line": "person.se_line6",
+   "message": "malformed expression (project schema): data/alternatives/0/guard must be object, data/alternatives/0/guard must be object, data/alternatives/0/guard must be object"
+  },
+  {
+   "line": "person.se_line12",
+   "message": "malformed expression (project schema): data/alternatives/0/guard must be object, data/alternatives/0/guard must be object, data/alternatives/0/guard must be object"
+  },
+  {
+   "line": "person.h_sep_10000",
+   "message": "malformed expression (project schema): data/count must be string, data/op must be equal to constant, data/op must be equal to constant"
+  },
+  {
+   "line": "person.h_educator_cap",
+   "message": "malformed expression (project schema): data/of/1 must be string, data/of/1 must be string, data/of/1 must be string"
+  },
+  {
+   "line": "person.h_se_line4a",
+   "message": "malformed expression (project schema): data/alternatives/0/guard must be object, data/alternatives/0/guard must be object, data/alternatives/0/guard must be object"
+  },
+  {
+   "line": "person.se_line6",
+   "message": "person.person.se_line6: malformed expression"
+  },
+  {
+   "line": "person.se_line12",
+   "message": "person.person.se_line12: malformed expression"
+  },
+  {
+   "line": "person.h_sep_10000",
+   "message": "person.person.h_sep_10000: malformed expression"
+  },
+  {
+   "line": "person.h_educator_cap",
+   "message": "person.person.h_educator_cap: malformed expression"
+  },
+  {
+   "line": "person.h_se_line4a",
+   "message": "person.person.h_se_line4a: malformed expression"
   }
  ],
  "failures": [],
@@ -15,6 +51,15 @@
    "handle": "person.educator_deduction",
    "open_at_triage": true,
    "project": "person.educator_deduction",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.hsa_forms",
+   "handle": "person.hsa_forms",
+   "open_at_triage": true,
+   "project": "person.hsa_forms",
    "shown_when": null,
    "status": "DISAGREE",
    "triage": "candidate invalid"
@@ -42,6 +87,42 @@
    "handle": "person.hsa_share",
    "open_at_triage": true,
    "project": "person.hsa_share",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.ira_taxable",
+   "handle": "person.ira_taxable",
+   "open_at_triage": true,
+   "project": "person.ira_taxable",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.plan_amount_a",
+   "handle": "person.plan_amount_a",
+   "open_at_triage": true,
+   "project": "person.plan_amount_a",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.plan_taxable",
+   "handle": "person.plan_taxable",
+   "open_at_triage": true,
+   "project": "person.plan_taxable",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.plan_rollovers",
+   "handle": "person.plan_rollovers",
+   "open_at_triage": true,
+   "project": "person.plan_rollovers",
    "shown_when": null,
    "status": "DISAGREE",
    "triage": "candidate invalid"
@@ -119,6 +200,15 @@
    "triage": "candidate invalid"
   },
   {
+   "candidate": "person.positive_profits",
+   "handle": "person.positive_profits",
+   "open_at_triage": true,
+   "project": "person.positive_profits",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
    "candidate": "person.eic_se",
    "handle": "person.eic_se",
    "open_at_triage": true,
@@ -168,6 +258,15 @@
    "handle": "person.sav_ineligible",
    "open_at_triage": true,
    "project": "person.sav_ineligible",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.sav_line1",
+   "handle": "person.sav_line1",
+   "open_at_triage": true,
+   "project": "person.sav_line1",
    "shown_when": null,
    "status": "DISAGREE",
    "triage": "candidate invalid"
@@ -299,10 +398,55 @@
    "triage": "candidate invalid"
   },
   {
-   "candidate": "person.wages",
-   "handle": "wages",
+   "candidate": "person.x_tax",
+   "handle": "person.x_tax",
    "open_at_triage": true,
-   "project": "person.wages",
+   "project": "person.x_tax",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.x_must",
+   "handle": "person.x_must",
+   "open_at_triage": true,
+   "project": "person.x_must",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.x_c05",
+   "handle": "person.x_c05",
+   "open_at_triage": true,
+   "project": "person.x_c05",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.x_two23",
+   "handle": "person.x_two23",
+   "open_at_triage": true,
+   "project": "person.x_two23",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.x_limited_sum",
+   "handle": "person.x_limited_sum",
+   "open_at_triage": true,
+   "project": "person.x_limited_sum",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.x_limit_binds",
+   "handle": "person.x_limit_binds",
+   "open_at_triage": true,
+   "project": "person.x_limit_binds",
    "shown_when": null,
    "status": "DISAGREE",
    "triage": "candidate invalid"
@@ -312,24 +456,6 @@
    "handle": "eligible",
    "open_at_triage": true,
    "project": "person.eligible",
-   "shown_when": null,
-   "status": "DISAGREE",
-   "triage": "candidate invalid"
-  },
-  {
-   "candidate": "person.excess",
-   "handle": "excess",
-   "open_at_triage": true,
-   "project": "person.excess",
-   "shown_when": null,
-   "status": "DISAGREE",
-   "triage": "candidate invalid"
-  },
-  {
-   "candidate": "person.credit",
-   "handle": "credit",
-   "open_at_triage": true,
-   "project": "person.credit",
    "shown_when": null,
    "status": "DISAGREE",
    "triage": "candidate invalid"
@@ -389,15 +515,6 @@
    "triage": "candidate invalid"
   },
   {
-   "candidate": "person.sep_s8",
-   "handle": "Step 8",
-   "open_at_triage": true,
-   "project": "person.sep_s8",
-   "shown_when": null,
-   "status": "DISAGREE",
-   "triage": "candidate invalid"
-  },
-  {
    "candidate": "person.sep_s21",
    "handle": "Step 21",
    "open_at_triage": true,
@@ -452,10 +569,10 @@
    "triage": "candidate invalid"
   }
  ],
- "log_sha256_at_triage": "50939be3a4405e163da6cf0d779c401abd22bdc143b48db7519cf5531918c8db",
+ "log_sha256_at_triage": "619f0644c3a50fcf8a02ccac977ca88e76ac81621ab44a4fcccf05e4f4ac4466",
  "policy": "executable-triage-v2",
- "response_sha256": "4a3e013bb31358246ad9f2055f5c38b0b687fe3e81c1ac458259f801cdb9ee19",
+ "response_sha256": "a5c98cd0860a5c8dfbb1d787d756252c842d7df48c2fd9d41e2ed1e5e6e53535",
  "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
  "state": "invalid",
- "subject_sha256": "3fc7752cefd529213bec9f3a461ddc38340937db202648ef82f97c1bbfec6e18"
+ "subject_sha256": "ebe28dcf736bff381f44e46fc56978601981c79e9abaeb44fbcd80d025cd38c6"
 }

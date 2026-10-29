@@ -77,7 +77,7 @@ form:
       HSA contributions from an earlier year that remain in your HSA; failing to remain an eligible individual during a testing
       period that began in an earlier year; an HSA you acquired because of the account beneficiary''s death; the HSA of a person who died in 2025 whose
       estate is the beneficiary; a deemed distribution
-      (a prohibited transaction, or an HSA used as security for a loan); a withdrawal of excess contributions or their earnings;
+      (a prohibited transaction, or an HSA used as security for a loan); a withdrawal of excess contributions or their earnings (made in 2025, or in 2026 by the due date of your 2025 return, including extensions);
       or a mistaken distribution you repaid?'
     type: Bool
     expr:
@@ -87,8 +87,8 @@ form:
         to remain an eligible individual during a testing period that began in an earlier year (last-month rule or qualified
         HSA funding distribution); an HSA you acquired because of the account beneficiary''s death; the HSA of a person who
         died in 2025 whose estate is the beneficiary (its value at death is included on the final return); a deemed distribution
-        from an HSA in 2025 (a prohibited transaction, or any part of an HSA used as security for a loan); a 2025 distribution
-        that withdrew excess contributions or their earnings; or a mistaken distribution you repaid to your HSA?'
+        from an HSA in 2025 (a prohibited transaction, or any part of an HSA used as security for a loan); a withdrawal of
+        excess contributions or their earnings, made in 2025 or in 2026 by the due date of your 2025 return, including extensions; or a mistaken distribution you repaid to your HSA?'
     cite:
       doc: i8889
       locator: Parts II and III, line 4 (Archer MSAs), line 10 (qualified HSA funding distributions), line 13 (Prior Year
@@ -1232,24 +1232,70 @@ form:
     cite:
       doc: f8889
       locator: Form 8889 (2025), line 12
+  - id: f8889.employer_in_box1
+    printed: (helper)
+    label: The excess employer contributions are included in Form W-2 box 1
+    type: Bool
+    expr:
+      op: input
+      source: Are your employer's HSA contributions above the limit included in your wages in Form W-2 box 1? (Answer no if the
+        employer has not included them; asked only when employer contributions exceed the limit.)
+    cite:
+      doc: i8889
+      locator: 'p. 8, Excess Employer Contributions, "Excess employer contributions are the excess, if any, of your employer''s contributions over your limitation on line 8."'
   - id: f8889.excess
     printed: (helper)
-    label: Contributions exceed the limit (line 2 more than line 12, or employer contributions more than line 8)
+    label: Employer contributions above the limit that are not included in Form W-2 box 1
     type: Bool
     expr:
       op: test
-      any:
-      - op: test
-        gt:
-        - f8889.line2
-        - f8889.line12
+      all:
       - op: test
         gt:
         - f8889.line11
         - f8889.line8
+      - op: test
+        eq:
+        - f8889.employer_in_box1
+        - const: false
     cite:
       doc: i8889
-      locator: p. 7, Line 13, Excess Contributions You Make and Excess Employer Contributions
+      locator: 'p. 8, Excess Employer Contributions, "Excess employer contributions are the excess, if any, of your employer''s contributions over your limitation on line 8."'
+  - id: f8889.excess_own
+    printed: (helper)
+    label: Your contributions above your limit (line 2 less line 13)
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f8889.line2
+      take: f8889.line13
+    cite:
+      doc: i5329
+      locator: 'p. 8, Line 47, "Enter the excess of your contributions (made by you or on your behalf) to your HSAs for 2025 from
+        Form 8889, line 2 (unless withdrawn—discussed next), over your contribution limit (Form 8889, line 12)."'
+  - id: f8889.excess_employer
+    printed: (helper)
+    label: Employer contributions above the limit (line 11 less line 8)
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f8889.line11
+      take: f8889.line8
+    cite:
+      doc: i5329
+      locator: 'p. 8, Line 47, "Also include on line 47 any excess contributions your employer made."'
+  - id: f8889.excess_amt
+    printed: (helper)
+    label: 2025 excess HSA contributions for Form 5329 line 47
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - f8889.excess_own
+      - f8889.excess_employer
+    cite:
+      doc: i5329
+      locator: 'p. 8, Line 47, "Also include on line 47 any excess contributions your employer made."'
   - id: f8889.line13_figured
     printed: (helper)
     label: Generally, enter the smaller of line 2 or line 12
@@ -1278,12 +1324,12 @@ form:
         doc: i8889
         locator: p. 6, Line 3 Limitation Chart and Worksheet
     - when: f8889.excess
-      form: Form 5329 (excess HSA contributions) or excess employer contributions
-      remedy: Contributions above the limit carry an additional tax (Form 5329) or are income; this tool does not compute
-        them.
+      form: Excess employer HSA contributions not included in Form W-2 box 1
+      remedy: Employer contributions above the limit that your employer did not include in box 1 are other income, which
+        this tool does not take; ask the employer for a corrected Form W-2.
       cite:
         doc: i8889
-        locator: p. 7, Line 13, Excess Contributions You Make and Excess Employer Contributions
+        locator: 'p. 8, Excess Employer Contributions, "Excess employer contributions are the excess, if any, of your employer''s contributions over your limitation on line 8."'
   - id: f8889.line13
     printed: '13'
     label: HSA deduction (see instructions)

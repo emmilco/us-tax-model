@@ -417,7 +417,7 @@ was checked against i8863 pp. 4 and 9: comparing with the institution-paid base 
 wrong amount, and the round-1 witness is now refused; the label of `person.edu_over` still says "its own expenses"
 (stale wording, no amount).
 
-## Stage 19 round 3
+## Stage 19 round 3 (superseded subject)
 
 Subject after the round-2 fixes; for this entry only the label of `person.edu_over` changed ("exceed its expenses paid to
 the institution"). Fresh replies of 2026-10-29. Full ruling text: `.transcription/proposed/stage19/round3/transcription.person.json`,
@@ -534,3 +534,146 @@ project's error (p970 p. 11). Review-coverage note: the person logs give i4562 p
 Form 4562 line 6, 7 and 11 instructions; `person.s179_nonlisted` and `s179_listed` cite "i4562 p. 4, Part I", so the
 cited-page selection misses p. 5 (a citation-locator gap, not a tax error). The Claude section 179 placements are ruled
 interface gap on that ground.
+
+## Stage 21
+
+Subject after Stage 21 (Form 5329 Parts I and VII, decisions D1 to D10 in
+`research/premises/stage21-form-5329.decisions.md`): the per-person Form 1099-R totals of D1 (`person.ira_amount_a` to
+`person.sav_dist`) and the Form 5329 block (`person.x_*`); every other person line is unchanged. Fresh replies of
+2026-10-29 (claude-opus-5-5, deepseek-flash). Full ruling text: `.transcription/proposed/stage21/transcription.person.json`,
+`transcription.person.deepseek.json`, `render.person.deepseek.json`, `classm.person.json`, `classm.person.deepseek.json`.
+Claude triage: `../triage/person.json`, executable-triage-v2 (1,372 fixtures, 500 generated returns seed 20261026, 2,084
+partial records; 4,917 comparisons per line). The deepseek-flash reply fails validation on five expressions
+(`person.se_line6`, `person.se_line12`, `person.h_se_line4a`, `person.h_sep_10000`, `person.h_educator_cap`, project
+schema), so `../triage/person.deepseek.json` is `invalid`; lines reaching them are model errors on the declaration, the
+others are ruled by reading. Lines whose expression is unchanged from Stage 19 round 3 keep that ruling with the new
+counts; the Claude render log has no open line.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | person.educator_deduction | representation | 3,347/4,917 agree; 1,540 candidate-unknown, 30 project-unknown | i1040gi p. 93, Line 11 | As Stage 19 round 3: same expression; ruling stands. |
+| claude | transcription | person.hsa_agreed | representation | 4,624/4,917 agree; 40 candidate-unknown, 253 value | i8889 p. 7, Line 6, Step 2 | As Stage 19 round 3: same expression; ruling stands. |
+| claude | transcription | person.hsa_step1 | representation | 4,532/4,917 agree; 3 candidate-unknown, 382 value | i8889 p. 7, Line 6, Step 2 | As Stage 19 round 3: same expression; ruling stands. |
+| claude | transcription | person.hsa_share | interface gap | 4,221/4,917 agree; 30 candidate-refuses, 295 candidate-unknown, 371 value | i8889 p. 7, Line 6, Step 2 | As Stage 19 round 3: same expression; ruling stands. |
+| claude | transcription | person.s179_nonlisted | interface gap | 4,685/4,917 agree; 221 candidate-refuses, 11 value | i4562 p. 5, Line 6, column | As Stage 19 round 3: same expression; ruling stands. |
+| claude | transcription | person.s179_listed | interface gap | 4,663/4,917 agree; 221 project-refuses, 22 project-unknown, 11 value | i4562 p. 5, Line 7 | As Stage 19 round 3: same expression; ruling stands. |
+| claude | transcription | person.sc_total | scope | 4,916/4,917 agree; 1 project-refuses | i1040sc p. 15, Line 32, Some investment is not at risk | As Stage 19 round 3: same expression; ruling stands. |
+| claude | transcription | person.se_line6 | scope | 3,468/4,917 agree; 26 candidate-refuses, 1,422 candidate-unknown, 1 project-refuses | i1040sse p. 1, Who Must File Schedule SE | As Stage 19 round 3: same expression; ruling stands. |
+| claude | transcription | person.se_line12 | scope | 3,468/4,917 agree; 26 candidate-refuses, 1,422 candidate-unknown, 1 project-refuses | i1040sse p. 1, Who Must File Schedule SE | As Stage 19 round 3: same expression; ruling stands. |
+| claude | transcription | person.se_line13 | scope | 3,468/4,917 agree; 26 candidate-refuses, 1,422 candidate-unknown, 1 project-refuses | p560 p. 39, Deduction Worksheet for Self-Employed, Step 2 | As Stage 19 round 3: same expression; ruling stands. |
+| claude | transcription | person.dc_has_box10 | representation | 4,917/4,917 agree | i2441 p. 5, Line 12 | As Stage 19 round 3: same expression; ruling stands. |
+| claude | transcription | person.dc_earned | model error | 3,485/4,917 agree; 24 candidate-refuses, 1,394 candidate-unknown, 12 project-refuses, 2 value | i2441 p. 4 | As Stage 19 round 3: same expression; ruling stands. |
+| claude | transcription | person.dc_earned_b | scope | 3,486/4,917 agree; 26 candidate-refuses, 1,404 candidate-unknown, 1 project-refuses | i2441 p. 5, Line 18 | As Stage 19 round 3: same expression; ruling stands. |
+| claude | transcription | person.sav_ineligible | ambiguity | 4,733/4,917 agree; 46 candidate-unknown, 2 project-unknown, 136 value | f8880 p. 2; amb.2025.savers_ineligible_column | As Stage 19 round 3: same expression; ruling stands. |
+| claude | transcription | person.sav_line1 | scope | 4,912/4,917 agree; 1 project-refuses, 4 project-unknown | f8880 line 1 | As Stage 19 round 3: same expression; ruling stands. |
+| claude | transcription | person.ira_contrib | scope | 3,077/4,917 agree; 1 candidate-refuses, 1,808 candidate-unknown, 31 project-unknown | i1040gi p. 98, line 11 | As Stage 19 round 3: same expression; ruling stands. |
+| claude | transcription | person.ira_cov | ambiguity | 4,260/4,917 agree; 47 candidate-unknown, 10 project-unknown, 600 value | i1040gi p. 96; amb.2025.ira_covered | As Stage 19 round 3: same expression; ruling stands. |
+| claude | transcription | person.ira_line2 | ambiguity | 4,559/4,917 agree; 5 candidate-refuses, 61 candidate-unknown, 6 project-unknown, 286 value | i1040gi p. 97, line 2 | As Stage 19 round 3: same expression; ruling stands. |
+| claude | transcription | person.ira_line6 | representation | 3,563/4,917 agree; 76 candidate-refuses, 1,089 candidate-unknown, 40 project-refuses, 24 project-unknown, 125 value | i1040gi p. 97, line 6 | As Stage 19 round 3: same expression; ruling stands. |
+| claude | transcription | person.ira_8606_line2 | scope | 3,066/4,917 agree; 1,807 candidate-unknown, 12 project-refuses, 32 project-unknown | i8606 p. 9, Line 2 | As Stage 19 round 3: same expression; ruling stands. |
+| claude | transcription | person.ira_ssb | scope | 2,293/4,917 agree; 545 candidate-refuses, 2,043 candidate-unknown, 10 project-refuses, 26 project-unknown | i1040gi p. 98, line 12 | As Stage 19 round 3: same expression; ruling stands. |
+| claude | transcription | eligible | representation | 4,875/4,917 agree; 1 project-unknown, 41 value | i1040gi p. 117, Line 11 | As Stage 19 round 3: same expression; ruling stands. |
+| claude | transcription | Step 1 | scope | 3,447/4,917 agree; 2 candidate-refuses, 56 project-refuses, 1,412 project-unknown | p560 p. 39, Deduction Worksheet for Self-Employed, Step 1 | As Stage 19 round 3: same expression; ruling stands. |
+| claude | transcription | Step 2 | scope | 3,468/4,917 agree; 26 candidate-refuses, 1,422 candidate-unknown, 1 project-refuses | p560 p. 39, Deduction Worksheet for Self-Employed, Step 2 | As Stage 19 round 3: same expression; ruling stands. |
+| claude | transcription | Step 6 | representation | 4,917/4,917 agree | p560 p. 39, Step 6 | As Stage 19 round 3: same expression; ruling stands. |
+| claude | transcription | person.s16 | scope | 3,199/4,917 agree; 82 candidate-refuses, 1,601 candidate-unknown, 35 project-refuses | p560 p. 39, after Step 21 | SIMPLE helpers restructured; no value differs; placements. |
+| claude | transcription | person.eic_se | scope | 3,468/4,917 agree; 26 candidate-refuses, 1,422 candidate-unknown, 1 project-refuses | i1040gi EIC Worksheet B, Part 1 | Now line 3 less line 13 for everyone; same amount; placements. |
+| claude | transcription | person.sav_line2 | scope | 3,421/4,917 agree; 216 candidate-refuses, 1,260 candidate-unknown, 10 project-refuses, 10 value | f8880 p. 2, Line 2 | Round-3 omission fixed; values only on refused over-limit SIMPLE returns. |
+| claude | transcription | person.ira_line7 | ambiguity | 4,327/4,917 agree; 349 candidate-refuses, 132 candidate-unknown, 33 project-refuses, 7 project-unknown, 69 value | amb.2025.ira_covered; i1040gi pp. 97-98, line 7 | Now tests anyone_covered; values follow ira_cov (amb.2025.ira_covered). |
+| claude | transcription | person.ira_deduction | scope | 2,173/4,917 agree; 654 candidate-refuses, 2,054 candidate-unknown, 11 project-refuses, 25 project-unknown | i1040gi p. 98 | Same formula; refusal declarations dropped; inherited placements. |
+| claude | transcription | person.ira_nondeductible | scope | 2,173/4,917 agree; 654 candidate-refuses, 2,055 candidate-unknown, 10 project-refuses, 25 project-unknown | i8606 p. 9, Line 1 | Same formula; inherited placements. |
+| claude | transcription | person.ira_files_8606 | scope | 2,173/4,917 agree; 654 candidate-refuses, 2,055 candidate-unknown, 10 project-refuses, 25 project-unknown | i8606 p. 2, Who Must File | Basis condition screened at retirement.special; placements. |
+| claude | transcription | person.ira_dist_gate | scope | 3,153/4,917 agree; 21 candidate-refuses, 1,731 candidate-unknown, 12 project-refuses | f8606 | Same gate plus screened basis condition; placements. |
+| claude | transcription | person.ira_8606_line14 | scope | 2,124/4,917 agree; 654 candidate-refuses, 2,103 candidate-unknown, 11 project-refuses, 25 project-unknown | f8606 (2025) Part I, line 14 | Same two amounts; placements. |
+| claude | transcription | person.ira_se | scope | 3,182/4,917 agree; 101 candidate-refuses, 1,595 candidate-unknown, 39 project-refuses | i1040gi p. 97, line 9 | eic_se less s16, the same amount; placements. |
+| claude | transcription | person.edu_kid | model error | 3,139/4,917 agree; 1,669 candidate-unknown, 42 project-refuses, 67 value | i8863 p. 7, Line 7 | Still no f8863.kid_needed gate. |
+| claude | transcription | 27 | model error | 2,480/4,917 agree; 2,437 candidate-unknown | i8863 p. 3, Who cannot claim a credit | Restructured, same logic: no itin_applied or f8863.paid test. |
+| claude | transcription | 28 | model error | 2,480/4,917 agree; 2,437 candidate-unknown | i8863 p. 3, Who cannot claim a credit | Restructured, same logic: no itin_applied or f8863.paid test. |
+| claude | transcription | 29 | model error | 2,480/4,917 agree; 2,437 candidate-unknown | i8863 p. 3, Who cannot claim a credit | Restructured, same logic: no itin_applied or f8863.paid test. |
+| claude | transcription | 30 | model error | 2,480/4,917 agree; 2,437 candidate-unknown | i8863 p. 3, Who cannot claim a credit | Restructured, same logic: no itin_applied or f8863.paid test. |
+| claude | transcription | 31 | model error | 2,479/4,917 agree; 1 candidate-refuses, 2,437 candidate-unknown | i8863 p. 3, Who cannot claim a credit | Restructured, same logic: no itin_applied or f8863.paid test. |
+| claude | transcription | person.ira_amount_a | representation | 4,917/4,917 agree | i1040gi p. 26, Lines 4a and 4b, IRA Distributions | Same per-person sum (D1); reference vs input only. |
+| claude | transcription | person.ira_taxable | representation | 4,917/4,917 agree | i1040gi p. 26, Lines 4a and 4b, IRA Distributions | Same per-person sum (D1). |
+| claude | transcription | person.ira_rollovers | representation | 4,917/4,917 agree | i1040gi pp. 26-27, Lines 4a and 4b, rollovers | Same count (D1). |
+| claude | transcription | person.plan_amount_a | representation | 4,917/4,917 agree | i1040gi p. 28, Lines 5a and 5b, Pensions and Annuities | Same per-person sum (D1). |
+| claude | transcription | person.plan_taxable | representation | 4,917/4,917 agree | i1040gi p. 28, Lines 5a and 5b, Pensions and Annuities | Same per-person sum (D1). |
+| claude | transcription | person.plan_rollovers | representation | 4,917/4,917 agree | i1040gi pp. 28-29, Lines 5a and 5b, rollovers | Same count (D1). |
+| claude | transcription | person.x_c05 | model error | 4,916/4,917 agree; 1 value | i5329 p. 5, Line 2, exception 05 | No Schedule A line 4 limit (stage21.blind.e6: $9,000.00 against $7,475.00). |
+| claude | transcription | person.x_l2_all | model error | 1,871/4,917 agree; 3,045 candidate-unknown, 1 value | i5329 p. 5, Line 2 | Needs x_prior09/x_births on every return; its value is line 2 after limits, the printed line agrees. |
+| claude | transcription | person.x_limited_sum | model error | 1,871/4,917 agree; 3,046 candidate-unknown | i5329 p. 5, Line 2 | Needs x_prior09/x_births everywhere; omits exception 05 from the limited set. |
+| claude | transcription | person.x_other_exc | model error | 4,912/4,917 agree; 5 value | i5329 p. 5, Line 2, exception 05 | Carries exception 05 unlimited (stage21.blind.e6). |
+| claude | transcription | person.x_limit_binds | model error | 1,870/4,917 agree; 3,045 candidate-unknown, 1 project-refuses, 1 value | i5329 p. 5, Line 4 | Drops the code S condition (stage21.blind.e4 True against False); unknown as x_l2_all. |
+| deepseek | transcription | person.hsa_agreed | representation | not executable (reply invalid) | i8889 p. 7, Line 6, Step 2 | As Stage 19 round 3; same expression. |
+| deepseek | transcription | person.hsa_step1 | representation | not executable (reply invalid) | i8889 p. 7, Line 6, Step 2 | As Stage 19 round 3; same expression. |
+| deepseek | transcription | person.hsa_share | interface gap | not executable (reply invalid) | i8889 p. 7, Line 6, Step 3 | As Stage 19 round 3; same expression. |
+| deepseek | transcription | person.s179_listed | interface gap | not executable (reply invalid) | i4562 p. 5, Line 7 | As Stage 19 round 3; same expression. |
+| deepseek | transcription | person.sc_total | scope | not executable (reply invalid) | i1040sc p. 15, Line 32, Some investment is not at risk | As Stage 19 round 3; same expression. |
+| deepseek | transcription | person.sc_1a | model error | not executable (reply invalid) | i1040gi p. 104, Schedule 1-A Line 5 | As Stage 19 round 3; same expression. |
+| deepseek | transcription | person.sav_ineligible | ambiguity | not executable (reply invalid) | f8880 p. 2; amb.2025.savers_ineligible_column | As Stage 19 round 3; same expression. |
+| deepseek | transcription | person.educator_deduction | model error | not executable (reply invalid) | i1040gi p. 93, Line 11 | Declaration error (malformed expression in its closure). |
+| deepseek | transcription | person.se_line6 | model error | not executable (reply invalid) | i1040sse p. 1, line 4c | Declaration error (malformed expression in its closure). |
+| deepseek | transcription | person.se_line12 | model error | not executable (reply invalid) | i1040sse p. 1, line 12 | Declaration error (malformed expression in its closure). |
+| deepseek | transcription | person.se_line13 | model error | not executable (reply invalid) | i1040sse line 13 | Declaration error (malformed expression in its closure). |
+| deepseek | transcription | person.s16 | model error | not executable (reply invalid) | p560 p. 39, after Step 21 | Declaration error (malformed expression in its closure). |
+| deepseek | transcription | person.eic_se | model error | not executable (reply invalid) | i1040gi EIC Worksheet B, Part 1 | Declaration error (malformed expression in its closure). |
+| deepseek | transcription | person.dc_earned | model error | not executable (reply invalid) | i2441 p. 4 | Declaration error (malformed expression in its closure). |
+| deepseek | transcription | person.dc_earned_b | model error | not executable (reply invalid) | i2441 p. 5, Line 18 | Declaration error (malformed expression in its closure). |
+| deepseek | transcription | person.ira_se | model error | not executable (reply invalid) | i1040gi p. 97, line 9 | Declaration error (malformed expression in its closure). |
+| deepseek | transcription | Step 2 | model error | not executable (reply invalid) | p560 p. 39, Step 2 | Declaration error (malformed expression in its closure). |
+| deepseek | transcription | Step 3 | model error | not executable (reply invalid) | p560 p. 39, Step 3 | Declaration error (malformed expression in its closure). |
+| deepseek | transcription | Step 5 | model error | not executable (reply invalid) | p560 pp. 38-39, Rate Worksheet and Step 5 | Declaration error (malformed expression in its closure). |
+| deepseek | transcription | Step 6 | model error | not executable (reply invalid) | p560 p. 39, Step 6 | Declaration error (malformed expression in its closure). |
+| deepseek | transcription | Step 7 | model error | not executable (reply invalid) | p560 p. 39, Step 7 | Declaration error (malformed expression in its closure). |
+| deepseek | transcription | Step 21 | model error | not executable (reply invalid) | p560 p. 39, Step 21 | Declaration error (malformed expression in its closure). |
+| deepseek | transcription | person.hsa_forms | model error | not executable (reply invalid) | i8889 p. 4, Name and social security number | Counts only forms with contributions; a distribution-only Form 8889 escapes hsa_repeated. |
+| deepseek | transcription | person.ira_taxable | model error | not executable (reply invalid) | i1040gi p. 26, Lines 4a and 4b, IRA Distributions | No IRA filter: pension entries added to line 4b (stage21.blind.e4: $19,000.00 against $15,500.00). |
+| deepseek | transcription | person.plan_amount_a | representation | not executable (reply invalid) | i1040gi p. 28, Lines 5a and 5b, Pensions and Annuities | Same sum (D1). |
+| deepseek | transcription | person.plan_taxable | representation | not executable (reply invalid) | i1040gi p. 28, Lines 5a and 5b, Pensions and Annuities | Same sum (D1). |
+| deepseek | transcription | person.plan_rollovers | representation | not executable (reply invalid) | i1040gi pp. 28-29, Lines 5a and 5b, rollovers | Same count (D1). |
+| deepseek | transcription | person.s179_nonlisted | interface gap | not executable (reply invalid) | i4562 p. 5, Line 6, column | Now the Claude expression; p. 5 of i4562 not given. |
+| deepseek | transcription | person.income179 | model error | not executable (reply invalid) | i4562 p. 5, Line 11 | Sums positive line 29: drops losses and line 30. |
+| deepseek | transcription | person.positive_profits | representation | not executable (reply invalid) | see ruling | Same total of profits. |
+| deepseek | transcription | person.dc_has_box10 | model error | not executable (reply invalid) | i2441 p. 5, Line 12 | Tests box 10 net of the box 1 part, not box 10. |
+| deepseek | transcription | person.sav_line1 | scope | not executable (reply invalid) | f8880 line 1 | No sav_trad gate; excess refusal as project. |
+| deepseek | transcription | person.sav_line2 | model error | not executable (reply invalid) | f8880 p. 2, Line 2 | Omits own SIMPLE deferrals. |
+| deepseek | transcription | person.ira_contrib | scope | not executable (reply invalid) | i1040gi p. 98, line 11 | No sav_trad gate; excess refusal. |
+| deepseek | transcription | person.ira_cov | model error | not executable (reply invalid) | i1040gi p. 96; amb.2025.ira_covered | Drops own SEP/SIMPLE coverage. |
+| deepseek | transcription | person.ira_line2 | model error | not executable (reply invalid) | i1040gi p. 97, line 2 | Copies ira.line2a/2b built from it: cycle. |
+| deepseek | transcription | person.ira_line6 | model error | not executable (reply invalid) | i1040gi p. 97, line 6 | Copies ira.line6a/6b: cycle. |
+| deepseek | transcription | person.ira_line7 | model error | not executable (reply invalid) | i1040gi pp. 97-98, line 7 | Copies ira.line7a/7b: cycle. |
+| deepseek | transcription | person.ira_deduction | model error | not executable (reply invalid) | i1040gi p. 98 | Copies ira.line12a/12b: cycle. |
+| deepseek | transcription | person.ira_nondeductible | model error | not executable (reply invalid) | i8606 p. 9, Line 1 | Sums f8606.line1, a copy of it: cycle. |
+| deepseek | transcription | person.ira_files_8606 | model error | not executable (reply invalid) | i8606 p. 2, Who Must File | Reads circular lines; basis alone triggers. |
+| deepseek | transcription | person.ira_8606_line2 | model error | not executable (reply invalid) | i8606 p. 9, Line 2 | Sums f8606.line2, a copy of it: cycle. |
+| deepseek | transcription | person.ira_dist_gate | model error | not executable (reply invalid) | f8606 | Copies ira_dist alone. |
+| deepseek | transcription | person.ira_ssb | model error | not executable (reply invalid) | amb.2025.ira_ssb_copy; i1040gi p. 98, line 12 | Copies the circular deduction. |
+| deepseek | transcription | person.edu_kid | model error | not executable (reply invalid) | i8863 p. 7, Line 7 | Age 18 without the support test; no kid_needed gate. |
+| deepseek | transcription | eligible | representation | not executable (reply invalid) | i1040gi p. 117, Line 11 | Extra over-limit test belongs to person.credit. |
+| deepseek | transcription | Step 1 | scope | not executable (reply invalid) | p560 p. 39, Step 1 | Cited se_screened, at-risk and plan_screen refusals. |
+| deepseek | transcription | 27 | model error | not executable (reply invalid) | i8863 p. 3, Who cannot claim a credit | Copies aqee for everyone: no eligibility or TIN gates. |
+| deepseek | transcription | 28 | model error | not executable (reply invalid) | i8863 p. 3, Who cannot claim a credit | Copies aqee for everyone: no eligibility or TIN gates. |
+| deepseek | transcription | 29 | model error | not executable (reply invalid) | i8863 p. 3, Who cannot claim a credit | Copies aqee for everyone: no eligibility or TIN gates. |
+| deepseek | transcription | 30 | model error | not executable (reply invalid) | i8863 p. 3, Who cannot claim a credit | Copies aqee for everyone: no eligibility or TIN gates. |
+| deepseek | transcription | 31 | model error | not executable (reply invalid) | i8863 p. 3, Who cannot claim a credit | Copies aqee for everyone: no eligibility or TIN gates. |
+| deepseek | transcription | person.x_tax | model error | not executable (reply invalid) | f5329 p. 1, Part I, line 4 | No per-person limits and no Part VII (stage21.blind.e4: $0.00 against $520.00). |
+| deepseek | transcription | person.x_must | model error | not executable (reply invalid) | i5329 p. 1, Who Must File | Counts code 1 entries: no no-form path (Tom Jones 1 against 0). |
+| deepseek | transcription | person.x_c05 | model error | not executable (reply invalid) | i5329 p. 5, Line 2, exception 05 | No Schedule A line 4 limit. |
+| deepseek | transcription | person.x_two23 | model error | not executable (reply invalid) | p590b p. 28, Distribution limits | Any 22 or 23 amount, not two 23 entries. |
+| deepseek | transcription | person.x_limited_sum | model error | not executable (reply invalid) | p590b p. 27, First home | No limits at all (stage21.blind.e4: $19,000.00 against $13,800.00). |
+| deepseek | transcription | person.x_limit_binds | model error | not executable (reply invalid) | i5329 p. 5, Line 4 | Any limited exception present: would refuse e6. |
+| deepseek | render | Step 3 | ambiguity | render MISMATCH | p560 p. 39, Step 3 | amb.2025.sep_loss_floor; the English states the chosen floor. |
+| claude | classm | classm.person.1 — person[taxpayer].wages | model error (dropped) | case inputs: boxes 3+7 = $44,754.00 | iw2w3 p. 18 | Uses box 1; misses emp_b box 7 tips. |
+| deepseek | classm | classm.person.1 — person[taxpayer].wages | model error (dropped) | case inputs: boxes 3+7 = $44,754.00 | iw2w3 p. 18 | Uses box 1; misses emp_b box 7 tips. |
+
+Findings: one, medium severity, from scrutiny of the Stage 21 block rather than from a reply — F1 `VALUE-LIMBS`,
+`person.x_c22` and `person.x_c23` apply only the $10,300 and $1,000 limits; the 50%-of-value and interest-less-$1,000 limbs
+of p590b p. 28 are neither computed nor attested by any question, although D4 and the `params` locators say they are
+attested (witness: `stage21.mut.e23_over_cap` with $1,000.00 claimed, line 4 $200.00 against $220.00 for an IRA interest
+of $1,800.00; `.transcription/proposed/stage21/person.findings.md`). Checked without finding: the 05 limit at Schedule A
+line 4 and the joint refusal (`s2.e05_over`), the 09 limit less earlier distributions (p590b p. 27, item 3 and the
+spouse tip), the 19 limit per birth (`amb.2025.f5329_birth_cap`), the one-a-year rule of 23 (`x_two23`), the code S
+refusal `x_limit_binds` (`amb.2025.f5329_simple_limits`), the D3(b) screen `x_other` (its wording covers every D3(b)
+item), `x_hsa_value` asked only with an excess, `x_hsa_excess` (line 2 less line 13 plus the employer excess), and
+`x_must` against i5329 p. 1; each was evaluated on the 24 `stage21` fixtures. Noted: the three-year rule of exception 23
+(p590b p. 28) is not screened (left to the filer's exception answer), and the `retirement.code` question wording does not
+list the Stage 21 codes (retirement's owner).

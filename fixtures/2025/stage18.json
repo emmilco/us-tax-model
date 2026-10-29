@@ -12,6 +12,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 18 return P1: blind-predicted. Two agents worked it from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage18/); they agreed with each other and with the evaluator on all 19 values asserted here. Lines a predictor marked skipped or blank are not asserted.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -110,7 +111,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -312,6 +313,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 18 return P2: blind-predicted. Two agents worked it from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage18/); they agreed with each other and with the evaluator on all 19 values asserted here. Lines a predictor marked skipped or blank are not asserted.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -410,7 +412,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -612,6 +614,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 18 return P3: blind-predicted. Two agents worked it from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage18/); they agreed with each other and with the evaluator on all 21 values asserted here. Lines a predictor marked skipped or blank are not asserted.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -710,7 +713,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -920,6 +923,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 18 return P4: blind-predicted. Two agents worked it from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage18/); they agreed with each other and with the evaluator on all 20 values asserted here. Lines a predictor marked skipped or blank are not asserted.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -1018,7 +1022,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -1224,6 +1228,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 18 return P5: blind-predicted. Two agents worked it from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage18/); they agreed with each other and with the evaluator on all 19 values asserted here. Lines a predictor marked skipped or blank are not asserted.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
@@ -1325,7 +1330,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -1574,6 +1579,8 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 18 return P6: blind-predicted. Two agents worked it from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage18/); they agreed with each other and with the evaluator on all 21 values asserted here. Lines a predictor marked skipped or blank are not asserted.",
       "inputs": {
+        "person[taxpayer].x_other": false,
+        "person[spouse].x_other": false,
         "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
@@ -1659,7 +1666,8 @@
         "household.married": true,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
+        "$retirement@person[spouse]": [],
         "ssb.benefits": 0,
         "f1040.tax_exempt_interest": 0,
         "div.box12": 0,
@@ -1936,6 +1944,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 18 return P7: blind-predicted. Two agents worked it from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage18/); they agreed with each other and with the evaluator on all 19 values asserted here. Lines a predictor marked skipped or blank are not asserted.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -2034,7 +2043,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -2240,6 +2249,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 18 return P8: blind-predicted. Two agents worked it from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage18/); they agreed with each other and with the evaluator on all 13 values asserted here. Lines a predictor marked skipped or blank are not asserted.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -2338,7 +2348,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -2519,6 +2529,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 18 return P9: blind-predicted. Two agents worked it from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage18/); they agreed with each other and with the evaluator on all 67 values asserted here. Lines a predictor marked skipped or blank are not asserted.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -2617,7 +2628,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -3056,6 +3067,8 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 18 return P10: blind-predicted. Two agents worked it from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage18/); they agreed with each other and with the evaluator on all 87 values asserted here. Lines a predictor marked skipped or blank are not asserted.",
       "inputs": {
+        "person[taxpayer].x_other": false,
+        "person[spouse].x_other": false,
         "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
@@ -3138,7 +3151,8 @@
         "household.married": true,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
+        "$retirement@person[spouse]": [],
         "ssb.benefits": 0,
         "f1040.tax_exempt_interest": 0,
         "div.box12": 0,
@@ -3678,6 +3692,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 18 return P11: blind-predicted. Two agents worked it from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage18/); they agreed with each other and with the evaluator on all 19 values asserted here. Lines a predictor marked skipped or blank are not asserted.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -3776,7 +3791,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -3984,6 +3999,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 18 return P12: blind-predicted. Two agents worked it from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage18/); they agreed with each other and with the evaluator on all 85 values asserted here. Lines a predictor marked skipped or blank are not asserted.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -4082,7 +4098,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -4644,6 +4660,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 18 return P13: blind-predicted. Two agents worked it from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage18/); they agreed with each other and with the evaluator on all 19 values asserted here. Lines a predictor marked skipped or blank are not asserted.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -4742,7 +4759,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -4944,6 +4961,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 18 return P14: blind-predicted. Two agents worked it from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage18/); they agreed with each other and with the evaluator on all 19 values asserted here. Lines a predictor marked skipped or blank are not asserted.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
@@ -5044,7 +5062,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -5270,6 +5288,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 18 return P15: blind-predicted. Two agents worked it from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage18/); they agreed with each other and with the evaluator on all 20 values asserted here. Lines a predictor marked skipped or blank are not asserted.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
@@ -5370,7 +5389,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -5600,6 +5619,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 18 return P16: blind-predicted. Two agents worked it from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage18/); they agreed with each other and with the evaluator on all 19 values asserted here. Lines a predictor marked skipped or blank are not asserted.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -5698,7 +5718,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 900000,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -5903,6 +5923,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 18 return P17: blind-predicted. Two agents worked it from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage18/); they agreed with each other and with the evaluator on all 19 values asserted here. Lines a predictor marked skipped or blank are not asserted.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -6001,7 +6022,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -6203,6 +6224,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 18 return P18: blind-predicted. Two agents worked it from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage18/); they agreed with each other and with the evaluator on all 19 values asserted here. Lines a predictor marked skipped or blank are not asserted.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -6301,7 +6323,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -6503,6 +6525,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 18 return P19: blind-predicted. Two agents worked it from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage18/); they agreed with each other and with the evaluator on all 19 values asserted here. Lines a predictor marked skipped or blank are not asserted.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -6601,7 +6624,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -6803,6 +6826,8 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 18 return P20: blind-predicted. Two agents worked it from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage18/); they agreed with each other and with the evaluator on all 19 values asserted here. Lines a predictor marked skipped or blank are not asserted.",
       "inputs": {
+        "person[taxpayer].x_other": false,
+        "person[spouse].x_other": false,
         "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
@@ -6893,7 +6918,8 @@
         "household.married": true,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
+        "$retirement@person[spouse]": [],
         "ssb.benefits": 0,
         "f1040.tax_exempt_interest": 0,
         "div.box12": 0,
@@ -7274,6 +7300,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 18 refusal regression, recorded from the evaluator: a policy shared with another tax family (Part IV) is refused.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -7372,7 +7399,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -7533,6 +7560,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 18 refusal regression, recorded from the evaluator: coverage this tool does not reconcile (not lawfully present, an HRA, unpaid premiums, no tax family) is refused.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -7631,7 +7659,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -7792,6 +7820,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 18 control, recorded from the evaluator: the year-of-marriage answer refuses only a joint return; on a single return it is not a refusal.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -7890,7 +7919,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -8020,6 +8049,8 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 18 refusal regression, recorded from the evaluator: a joint return with Marketplace coverage before the first full month of a 2025 marriage (Part V) is refused.",
       "inputs": {
+        "person[taxpayer].x_other": false,
+        "person[spouse].x_other": false,
         "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
@@ -8105,7 +8136,8 @@
         "household.married": true,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
+        "$retirement@person[spouse]": [],
         "ssb.benefits": 0,
         "f1040.tax_exempt_interest": 0,
         "div.box12": 0,
@@ -8333,6 +8365,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 18 refusal regression, recorded from the evaluator: column B counted on two Forms 1095-A from one state is refused.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -8431,7 +8464,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -8585,6 +8618,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 18 refusal regression, recorded from the evaluator: Form 2555 amounts (Worksheet 1-1 line 3) are refused.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -8683,7 +8717,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -8832,6 +8866,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 18 mutation scenario, predicted by hand and recorded: P15 with a parent listed who is not a qualifying relative (gross income $30,000), so not claimed: tax family size stays 2 and line 2b counts only the claimed child ($8,000); the parent's modified AGI is not household income (i8962 p. 4, \"plus the modified AGI of each individual whom you claim as a dependent\").",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
@@ -8933,7 +8968,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -9123,6 +9158,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 18 mutation scenario, predicted by hand and recorded: two Forms 1095-A from one state on the monthly route (the second policy from July); column B is counted on the first only ($500 a month, i8962 p. 16, \"Enter the amount from column B of only one Form 1095-A\"), column A adds both ($350, and $500 from July).",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -9221,7 +9257,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -9444,6 +9480,8 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 18 mutation scenario, predicted by hand and recorded: a joint return with 18 children, tax family 20, the largest family the pinned poverty table holds ($52,720 + 12 x $5,380 = $117,280, Table 1-1 footnote).",
       "inputs": {
+        "person[taxpayer].x_other": false,
+        "person[spouse].x_other": false,
         "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
@@ -9545,7 +9583,8 @@
         "household.married": true,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
+        "$retirement@person[spouse]": [],
         "ssb.benefits": 0,
         "f1040.tax_exempt_interest": 0,
         "div.box12": 0,
@@ -10119,6 +10158,8 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 18 refusal regression, recorded from the evaluator: a tax family of 21 is above the pinned poverty table and refused.",
       "inputs": {
+        "person[taxpayer].x_other": false,
+        "person[spouse].x_other": false,
         "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
@@ -10221,7 +10262,8 @@
         "household.married": true,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
+        "$retirement@person[spouse]": [],
         "ssb.benefits": 0,
         "f1040.tax_exempt_interest": 0,
         "div.box12": 0,
@@ -10828,6 +10870,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 18 mutation scenario, predicted by hand and recorded: P7 with no advance payments. The exception for income below the poverty line needs advance payments (i8962 p. 9, \"APTC was paid for the coverage of 1 or more months during 2025\"), so the filer is not an applicable taxpayer and no credit is allowed.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -10926,7 +10969,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -11069,6 +11112,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 18 adjudication regression (finding R2), predicted by hand: two policies from one state that follow one another (January to June, then July to December). Each month has one Form 1095-A, so each form's column B counts for its months (i8962 p. 16, \"If you have more than one Form 1095-A showing coverage in a particular month\"). Contribution $129 a month: column (e) is $350 for January to June and $150 for July to December; line 24 $3,000, advance payments $1,500.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -11167,7 +11211,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -11392,6 +11436,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 18 adjudication regression (finding R1): blind return P8 (line 5 below 100) with an enrolled lawfully present alien not eligible for Medicaid because of immigration status. i8962 p. 9 makes such a filer an applicable taxpayer; decision D6 refuses the branch.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -11490,7 +11535,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -11657,6 +11702,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 18 adjudication regression (finding F1), predicted by hand: blind return P8 (Form 8962 line 29 $375, Form 1040 line 16 $0) with $200 of creditable foreign tax under the election without Form 1116. The limit is regular tax, i1116 p. 25, Line 20, \"the total of Form 1040 ... line 16, and Schedule 2 (Form 1040), Part I, line 1z\": $0 + $375, so the credit is $200 and line 22 $175.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -11755,7 +11801,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -11894,6 +11940,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 18 mutation scenario, predicted by hand: two Forms 1095-A from one state, both covering every month on the monthly route; only the first form's column B is counted (i8962 p. 16, \"Enter the amount from column B of only one Form 1095-A\"). Contribution $129 a month: column (a) $500, column (b) $500, column (d) $371, column (e) $371 each month; line 24 $4,452, advance payments $3,000.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -11992,7 +12039,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,
@@ -12250,6 +12297,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 18 mutation scenario: Schedule 2 line 3 refuses on its own screen for other Schedule 2 taxes (s2.other) even when Form 8962, read through line 1z, also refuses (an allocation, f8962.alloc). The screen order is the evidence: s2.amt, then s2.other, before the lines summed.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -12348,7 +12396,7 @@
         "household.community_property": false,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "s1.alimony": false,

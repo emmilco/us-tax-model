@@ -314,7 +314,19 @@ def eval (ctx : Ctx) : Nat → Frame → Cmd → EvalM Json
             continue
           if isUnknown gv then return gv
           if objGet gv "value" == some (Json.bool true) then
-            return Json.mkObj [("kind", Json.str "refusal"), ("gate", Json.str (if (findLine frame.doc gate).isSome then keyOf frame gate else gate)),
+            -- The gate's key is the key of the entry it is read in: this frame, or an enclosing collection entry.
+            let gateFormId := (gate.splitOn ".").headD ""
+            let gateKey :=
+              if (findLine frame.doc gate).isSome then keyOf frame gate
+              else match ctx.forms.get? gateFormId with
+                | some gdoc =>
+                  if (findLine gdoc gate).isSome && (objGet gdoc "collection").isSome then
+                    match enclosingKey frame.instKey gateFormId with
+                    | some k => keyOf { docId := gateFormId, doc := gdoc, instKey := some k, bind := Json.null, caller := none } gate
+                    | none => gate
+                  else gate
+                | none => gate
+            return Json.mkObj [("kind", Json.str "refusal"), ("gate", Json.str gateKey),
               ("form", objGetD r "form" Json.null), ("remedy", objGetD r "remedy" Json.null), ("cite", objGetD r "cite" Json.null)]
       | _ => pure ()
       let expr := objGetD line "expr" Json.null

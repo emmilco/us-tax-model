@@ -12,6 +12,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Single, wages $30,000, unemployment compensation $5,000 (Form 1099-G box 1): Schedule 1 line 7 $5,000, line 10 $5,000, Form 1040 line 8 $5,000, line 9 $35,000 (i1040gi p. 89).",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -113,7 +114,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -186,6 +187,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: As uc.basic, but $1,000 of a 2025 overpayment repaid in 2025: line 7 $4,000, the line 7 box checked with $1,000 beside it (p. 89).",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -287,7 +289,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -360,6 +362,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Unemployment compensation with contributions to a governmental unemployment compensation program: refused (p. 89, Caution).",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -461,7 +464,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -531,6 +534,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Eligible educator, wages $40,000, qualified expenses $450: line 11 $300 (up to $300, p. 93); Form 1040 line 10 $300, line 11a $39,700, line 14 $15,750 (the standard deduction), line 15 $23,950.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -632,7 +636,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -711,6 +715,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Eligible educator, qualified expenses $200: line 11 $200.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -812,7 +817,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -872,6 +877,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Qualified expenses $450 but not an eligible educator (fewer than 900 hours): line 11 $0.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -973,7 +979,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -1037,6 +1043,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Self-only HDHP coverage every month, under 55, contributions $3,000, no employer contributions: line 3 $4,300, line 12 $4,300, line 13 $3,000 (Form 8889 line 3; i8889 p. 7, line 13).",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -1140,7 +1147,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -1224,6 +1231,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Family coverage every month, unmarried, 55 at the end of 2025, contributions $9,000: line 3 $9,550 (chart $9,550 a month, total divided by 12), line 13 $9,000.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -1327,7 +1335,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -1399,6 +1407,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Self-only all year, contributions $3,000 and employer contributions $1,000: line 11 $1,000, line 12 $3,300, line 13 $3,000.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -1502,7 +1511,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -1574,6 +1583,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Eligible with self-only coverage for 6 months (January to June), not eligible on December 1, contributions $2,000: chart total $25,800, divided by 12 $2,150 on line 3; line 13 $2,000 (i8889 p. 4, rule 5; p. 6 chart).",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -1677,7 +1687,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -1749,6 +1759,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Eligible all 12 months, family coverage for 4 of them, self-only on December 1, under 55, contributions $5,500: chart 8 x $4,300 + 4 x $8,550 = $68,600, divided by 12 = $5,716.67 (half-up), which is more than the self-only $4,300, so line 3 $5,716.67 (rule 4); line 13 $5,500.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -1852,7 +1863,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -1924,6 +1935,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Eligible with family coverage from October 1 (3 months), family on December 1, using the last-month rule, contributions $8,000: treated as family all year, line 3 $8,550 (rule 2); line 13 $8,000.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -2027,7 +2039,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -2099,6 +2111,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: As hsa.last_month but not using the last-month rule, contributions $2,000: chart 3 x $8,550 = $25,650, divided by 12 = $2,137.50 on line 3; line 13 $2,000.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -2202,7 +2215,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -2264,7 +2277,7 @@
       }
     },
     {
-      "id": "stage11.refuse.hsa_excess",
+      "id": "stage11.hsa_excess",
       "covers": [
         "s1",
         "f8889",
@@ -2272,8 +2285,9 @@
         "f1040.lines8-10"
       ],
       "evidence": "synthetic refusal regression",
-      "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Self-only all year, contributions $5,000 against a $4,300 limit: excess contributions (Form 5329), refused.",
+      "evidence_note": "Stage 11 case, figured since Stage 21 (Form 5329 Part VII): self-only all year, contributions $5,000 against a $4,300 limit. The deduction is $4,300 (Form 8889 line 13, \"the smaller of line 2 or line 12\"); the $700 excess is taxed at 6% of the smaller of the excess and the HSAs' value on December 31 ($5,000): $42.00 on Schedule 2 line 8 (f5329 p. 2, line 49).",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -2377,7 +2391,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -2425,21 +2439,21 @@
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
         "s1.cod_any": false,
-        "$f1095a": []
+        "$f1095a": [],
+        "person[taxpayer].x_hsa_value": 500000
       },
       "expect": {
         "f1040.line10": {
-          "kind": "refusal",
-          "gate": "person[taxpayer].f8889[hsa].excess",
-          "form": "Form 5329 (excess HSA contributions) or excess employer contributions",
-          "remedy": "Contributions above the limit carry an additional tax (Form 5329) or are income; this tool does not compute them.",
-          "cite": {
-            "doc": "i8889",
-            "locator": "p. 7, Line 13, Excess Contributions You Make and Excess Employer Contributions",
-            "revision": "2025",
-            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
-            "tax_year": 2025
-          }
+          "kind": "money",
+          "cents": 430000
+        },
+        "person[taxpayer].f5329[form].l49": {
+          "kind": "money",
+          "cents": 4200
+        },
+        "s2.line8": {
+          "kind": "money",
+          "cents": 4200
         }
       }
     },
@@ -2454,6 +2468,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Family months (5) more than eligible months (3): impossible counts, refused.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -2557,7 +2572,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -2634,6 +2649,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: the Form 8889 screen answered Yes (one of the situations it lists, such as a qualified HSA funding distribution): refused. Since Stage 16 the screen no longer lists taxable distributions, which Form 8889 Part II computes.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -2737,7 +2753,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -2814,6 +2830,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Single, wages $50,000, student loan interest $1,200: worksheet line 4 $50,000 is not more than $85,000, so the deduction is $1,200 (i1040gi p. 99); Form 1040 line 11a $48,800.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -2915,7 +2932,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -2983,6 +3000,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Student loan interest $3,000: line 1 $2,500 (don't enter more than $2,500), deduction $2,500.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -3084,7 +3102,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -3148,6 +3166,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Wages $90,000, interest $2,000: line 4 $90,000, line 6 $5,000, line 7 0.333 (5,000 / 15,000 to three places), line 8 $666.00, deduction $1,334.00.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -3249,7 +3268,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -3317,6 +3336,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Wages $92,500, interest $2,500: line 6 $7,500, line 7 0.500, line 8 $1,250, deduction $1,250.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -3418,7 +3438,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -3482,6 +3502,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Wages $101,000, interest $2,500: line 6 $16,000, line 7 1.000 (the result is more than 1.000), line 8 $2,500, deduction $0.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -3583,7 +3604,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -3647,6 +3668,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Wages $86,000, interest $2,500: line 6 $1,000, line 7 0.067 (0.0666... rounded to three places, amb.2025.sli_ratio_places), line 8 $167.50, deduction $2,332.50.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -3748,7 +3770,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -3812,6 +3834,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Interest $1,200 but claimed as a dependent on a parent's return: no deduction (p. 98).",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -3913,7 +3936,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -3973,6 +3996,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Interest $1,200 with Form 2555: use Pub. 970 instead of the worksheet, refused (p. 98, Exception).",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -4074,7 +4098,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -4143,6 +4167,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Wages $90,000, eligible educator expenses $300, HSA contributions $1,000 (self-only all year), interest $2,000: worksheet line 3 $1,300 (Schedule 1 lines 11 and 13), line 4 $88,700, line 6 $3,700, line 7 0.247, line 8 $494.00, deduction $1,506.00; Schedule 1 line 26 $2,806.00, Form 1040 line 11a $87,194.00.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -4246,7 +4271,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -4332,6 +4357,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Single, wages $30,000, benefits $20,000, eligible educator expenses $300: Social Security Benefits Worksheet line 6 $300, line 7 $39,700, line 9 $14,700, line 11 $5,700, line 14 $4,500, line 15 $4,845, line 16 $9,345, line 17 $17,000; line 6b $9,345 (p. 32).",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -4433,7 +4459,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 2000000,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -4504,6 +4530,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Single, wages $20,000, unemployment $10,000, benefits $20,000: line 3 includes Form 1040 line 8, so line 5 $40,000 and line 6b $9,600, as with any other $10,000 of income.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -4605,7 +4632,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 2000000,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -4673,6 +4700,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Married filing separately with HSA contributions: the spouses' rules (Form 8889 lines 6 and 7) are outside this tool, refused. Stage 13: Form 8889 on a married filing separately return stays refused (f8889.mfs); joint returns use the spouse rules.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "mfs",
         "$person": [
@@ -4776,7 +4804,7 @@
         "household.married": true,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -4853,6 +4881,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Single, wages $85,007.50, interest $2,500: line 6 $7.50, line 7 0.001 (7.50 / 15,000 = 0.0005, rounded half-up to three places), line 8 $2.50, deduction $2,497.50.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -4954,7 +4983,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -5025,6 +5054,8 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Married filing jointly, wages $170,015, interest $2,500: line 5 $170,000, line 6 $15, line 7 0.001 (15 / 30,000 = 0.0005, rounded half-up), line 8 $2.50, deduction $2,497.50 (the return itself refuses elsewhere for a joint filing).",
       "inputs": {
+        "person[taxpayer].x_other": false,
+        "person[spouse].x_other": false,
         "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
@@ -5127,7 +5158,8 @@
         "household.married": true,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
+        "$retirement@person[spouse]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
@@ -5226,6 +5258,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Eligible from February 1 (11 months), family coverage in 4 of them, self-only on December 1, under 55, using the last-month rule, contributions $5,000: considered eligible all year with a change of type, so line 3 is the greater of the chart (11 x $4,300 + 4 x $4,250 = $64,300, divided by 12 = $5,358.33) and the self-only $4,300 (rule 4, amb.2025.hsa_last_month_change): $5,358.33; line 13 $5,000.",
       "inputs": {
+        "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
@@ -5329,7 +5362,7 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
-        "$retirement": [],
+        "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
         "person[taxpayer].born_after_1960": true,
         "f1040.tax_exempt_interest": 0,

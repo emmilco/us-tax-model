@@ -745,3 +745,66 @@
 - Reason: Pub. 970 is the later revision and explains the shift (January 31 falls on a Saturday). Owner's decision D7(d), 2026-10-29.
 - Status: Owner decision, 2026-10-29 (research/premises/stage19-education-credits.decisions.md, D7).
 - Cite: [p970] p. 2, Reminders, "After February 2, 2026 (January 31 falls on a Saturday), but before you file your 2025 tax return, you or the student must request that the educational institution furnish Form 1098-T." (2025; sha256 167f3d6d)
+
+## amb.2025.f5329_line1_codes
+
+- Text at issue: i5329 p. 3, line 1, "Enter the amount of early distributions includible in income"; on its face this would take code 2 distributions too, with the same amount on line 2.
+- Candidate readings: Line 1 holds only code 1 and code S distributions; a code 2 distribution, whose exception is shown by the code, is left off Form 5329. | Line 1 also takes code 2 distributions, offset on line 2.
+- **Chosen:** The first (retirement.l1 is the taxable amount of a code 1 or S entry only).
+- Reason: The tax is the same either way. Owner's decision D8(a), 2026-10-29.
+- Status: Owner decision, 2026-10-29 (research/premises/stage21-form-5329.decisions.md, D8).
+- Cite: [i5329] p. 3, Line 1, "Enter the amount of early distributions includible in income (other than qualified disaster recovery distributions) that you received from:" (2025; sha256 aec3d325)
+
+## amb.2025.f5329_line4_cents
+
+- Text at issue: Form 5329 line 4 is 10% of line 3 for the person; i1040gi p. 112 says for the no-form path "multiply the taxable amount of the distribution by 10%", per distribution.
+- Candidate readings: Figure line 4 once per person, at the cent, as the form does. | Figure 10% of each distribution and add them.
+- **Chosen:** The first (f5329.tax10 and f5329.tax25 on the person's line 3).
+- Reason: The two can differ by a cent on the no-form path only. Owner's decision D8(b), 2026-10-29.
+- Status: Owner decision, 2026-10-29 (research/premises/stage21-form-5329.decisions.md, D8).
+- Cite: [f5329] p. 1, Part I, line 4, "Additional tax. Enter 10% (0.10) of line 3." (2025; sha256 2ad77023)
+
+## amb.2025.f5329_birth_cap
+
+- Text at issue: Exception 19: i5329 p. 5, "a distribution of up to $5,000 if made during the 1-year period beginning on the date your child was born or adopted"; p590b p. 28, "must not exceed $5,000 per taxpayer".
+- Candidate readings: $5,000 per person for each birth or adoption. | $5,000 per person in all.
+- **Chosen:** The first (person.x_cap19 is $5,000 times the number of births or adoptions).
+- Reason: The instructions tie the amount to each birth or adoption, and the publication to each taxpayer; the statute (26 U.S.C. 72(t)(2)(H)) is to be archived as a second printing. Owner's decision D8(c), 2026-10-29.
+- Status: Owner decision, 2026-10-29 (research/premises/stage21-form-5329.decisions.md, D8).
+- Cite: [p590b] p. 28, Qualified birth or adoption distribution, "A qualified birth or adoption distribution must not exceed $5,000 per taxpayer." (2025; sha256 d18a592e)
+
+## amb.2025.f5329_medical_joint
+
+- Text at issue: Exception 05 covers "unreimbursed medical expenses during the year minus 7.5% of your adjusted gross income"; on a joint return both spouses may claim it, and the archived text does not say how the joint excess is shared.
+- Candidate readings: The excess of the joint medical expenses over 7.5% of joint AGI is one amount, shared by both spouses' forms. | Each spouse may use the whole excess.
+- **Chosen:** The first (person.x_c05 limits each person to Schedule A line 4, and s2.e05_over refuses when the spouses together exceed it).
+- Reason: Owner's decision D8(d), 2026-10-29.
+- Status: Owner decision, 2026-10-29 (research/premises/stage21-form-5329.decisions.md, D8).
+- Cite: [i5329] p. 5, Line 2, "Qualified retirement plan distributions up to the amount you paid for unreimbursed medical expenses during the year minus 7.5% of your adjusted gross income (AGI) for the year." (2025; sha256 aec3d325)
+
+## amb.2025.f5329_education_k12
+
+- Text at issue: Exception 08 is for "IRA distributions made for qualified higher education expenses" (i5329 p. 5); p590b p. 27 also lists "Additional qualified education expenses in connection with elementary and secondary tuition".
+- Candidate readings: The filer's adjusted qualified education expenses as entered, including K-12 tuition that p590b lists. | Higher education expenses only.
+- **Chosen:** The first (retirement.exc_amount, as entered for exception 08).
+- Reason: Owner's decision D8(e), 2026-10-29.
+- Status: Owner decision, 2026-10-29 (research/premises/stage21-form-5329.decisions.md, D8).
+- Cite: [i5329] p. 5, Line 2, "IRA distributions made for qualified higher education expenses." (2025; sha256 aec3d325)
+
+## amb.2025.f5329_simple_limits
+
+- Text at issue: Line 4 taxes the part of line 3 from a code S distribution at 25%; when a limited exception (05, 09, 19, 22 or 23) exceeds its limit across several distributions, the text does not say which distributions the limit falls on.
+- Candidate readings: Refuse when a limited exception exceeds its limit for a person who also has a code S distribution. | Apply the limit first to the distributions taxed at 10% (or at 25%, or in proportion).
+- **Chosen:** The first (person.x_limit_binds refuses Form 5329 line 4).
+- Reason: The split changes the tax and the text gives no rule, so the tool refuses the narrow case rather than choose one; a session choice within the owner's D4, reported to the owner.
+- Status: Session reading, 2026-10-29, within decision D4 (research/premises/stage21-form-5329.decisions.md); to be confirmed by the owner.
+- Cite: [i5329] p. 5, Line 4, "If any amount on line 3 was a distribution from a SIMPLE IRA received within 2 years from the date you first participated in the SIMPLE IRA plan, you must multiply that amount by 25% instead of 10%." (2025; sha256 aec3d325)
+
+## amb.2025.f5329_joint_box
+
+- Text at issue: The Schedule 2 line 8 box ("If not required, check here") on a joint return where one spouse must file Form 5329 and the other has only code 1 distributions taxed in full.
+- Candidate readings: Prepare a Form 5329 for every person with an early distribution whenever anyone on the return must file one; check the box only when no one must. | Per person: the second spouse's 10% goes on line 8 directly beside the first spouse's form.
+- **Chosen:** The first (s2.line8_file and f5329.files; s2.line8_box).
+- Reason: The tax is the same either way, and the instructions give no way to mark the mixed case. Owner's decision D5, 2026-10-29.
+- Status: Owner decision, 2026-10-29 (research/premises/stage21-form-5329.decisions.md, D5).
+- Cite: [f1040s2] p. 1, Part II, line 8, "Additional tax on IRAs or other tax-favored accounts. Attach Form 5329 if required. If not required, check here" (2025; created 2025-05-08; sha256 64d867b6)

@@ -34,6 +34,7 @@ interview:
   - dependent.married
   - dependent.tin
   - dependent.lawful
+  - person.x_other
   - dependent.work_ssn
   - dependent.gross_income
   - dependent.supported

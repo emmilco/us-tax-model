@@ -1,7 +1,7 @@
 # Form 1099-R distributions (IRAs, pensions and annuities)
 
 - Document: `retirement` (form, tax year 2025)
-- Collection: keyed entries; [i1040gi] pp. 26-30, lines 4a-5b ('If you ... received more than one distribution, figure the taxable amount of each distribution') (2025; printed date 2026-02-25; sha256 482e9c48)
+- Collection: keyed entries within person; [i1040gi] pp. 26-30, lines 4a-5b ('If you ... received more than one distribution, figure the taxable amount of each distribution') (2025; printed date 2026-02-25; sha256 482e9c48)
 - Note: One entry per Form 1099-R. IRA distributions go to Form 1040 lines 4a and 4b, pensions and annuities to lines 5a and 5b. The Simplified Method Worksheet is figured for each annuity with after-tax cost.
 
 ## (helper) — `retirement.account`
@@ -14,8 +14,8 @@
 ## (helper) — `retirement.code`
 
 - **Authored helper label:** Distribution code in box 7
-- **Encoded (Enum(retirement_code)):** Input — Distribution code in box 7: normal_7, death_4, early_exception_2, direct_rollover_G, qualified_roth_Q, or other (any other code, or two codes)
-- Expr: `{"op":"input","source":"Distribution code in box 7: normal_7, death_4, early_exception_2, direct_rollover_G, qualified_roth_Q, or other (any other code, or two codes)"}`
+- **Encoded (Enum(retirement_code)):** Input — Distribution code in box 7: normal_7, death_4, early_exception_2, early_1 (code 1, early distribution, no known exception), simple_S (code S, SIMPLE IRA in its first 2 years), disability_3 (code 3, disability), direct_rollover_G, qualified_roth_Q, or other (any other code, or two codes)
+- Expr: `{"op":"input","source":"Distribution code in box 7: normal_7, death_4, early_exception_2, early_1 (code 1, early distribution, no known exception), simple_S (code S, SIMPLE IRA in its first 2 years), disability_3 (code 3, disability), direct_rollover_G, qualified_roth_Q, or other (any other code, or two codes)"}`
 - Cite: [f1099r] Instructions for Recipient, Box 7 (2025 (calendar-year form); sha256 d6b7be48)
 
 ## (helper) — `retirement.box1`
@@ -41,9 +41,9 @@
 
 ## (helper) — `retirement.special`
 
-- **Authored helper label:** Does this distribution involve any of these: an early distribution with no known exception (code 1, J or S); a disability pension received before minimum retirement age, or a pension partly excludable because you were disabled as a result of a terrorist attack; a corrective distribution of excess deferrals or contributions; a qualified charitable distribution or HSA funding distribution; nondeductible contributions to any traditional IRA; a conversion or recharacterization (Form 8606); a 2024 or 2025 IRA contribution returned to you, or excess contributions for an earlier year returned to you in 2025; a rollover to a Roth IRA or designated Roth account; a lump-sum distribution you may report on Form 4972; a nonqualified annuity; the retired public safety officer premium exclusion; a death benefit exclusion; a plan loan offset; a Form RRB-1099-R; U.S. Civil Service retirement benefits under the alternative annuity option (Pub. 721); or a pension or annuity in which you have after-tax cost whose annuity starting date was before November 19, 1996, or for which the Simplified Method does not apply (the General Rule)?
-- **Encoded (Bool):** Input — Does this distribution involve any of these: an early distribution with no known exception (code 1, J or S); a disability pension received before minimum retirement age, or a pension partly excludable because you were disabled as a result of a terrorist attack; a corrective distribution of excess deferrals or contributions; a qualified charitable distribution or HSA funding distribution; nondeductible contributions to any traditional IRA; a conversion or recharacterization (Form 8606); a 2024 or 2025 IRA contribution returned to you, or excess contributions for an earlier year returned to you in 2025; a rollover to a Roth IRA or designated Roth account; a lump-sum distribution you may report on Form 4972; a nonqualified annuity; the retired public safety officer premium exclusion; a death benefit exclusion; a plan loan offset; a Form RRB-1099-R; U.S. Civil Service retirement benefits under the alternative annuity option (Pub. 721); or a pension or annuity in which you have after-tax cost whose annuity starting date was before November 19, 1996, or for which the Simplified Method does not apply (the General Rule)?
-- Expr: `{"op":"input","source":"Does this distribution involve any of these: an early distribution with no known exception (code 1, J or S); a disability pension received before minimum retirement age, or a pension partly excludable because you were disabled as a result of a terrorist attack; a corrective distribution of excess deferrals or contributions; a qualified charitable distribution or HSA funding distribution; nondeductible contributions to any traditional IRA; a conversion or recharacterization (Form 8606); a 2024 or 2025 IRA contribution returned to you, or excess contributions for an earlier year returned to you in 2025; a rollover to a Roth IRA or designated Roth account; a lump-sum distribution you may report on Form 4972; a nonqualified annuity; the retired public safety officer premium exclusion; a death benefit exclusion; a plan loan offset; a Form RRB-1099-R; U.S. Civil Service retirement benefits under the alternative annuity option (Pub. 721); or a pension or annuity in which you have after-tax cost whose annuity starting date was before November 19, 1996, or for which the Simplified Method does not apply (the General Rule)?"}`
+- **Authored helper label:** Does this distribution involve any of these: a disability pension received before minimum retirement age, or a pension partly excludable because you were disabled as a result of a terrorist attack; a corrective distribution of excess deferrals or contributions; a qualified charitable distribution or HSA funding distribution; nondeductible contributions to any traditional IRA; a conversion or recharacterization (Form 8606); a 2024 or 2025 IRA contribution returned to you, or excess contributions for an earlier year returned to you in 2025; a rollover to a Roth IRA or designated Roth account; a lump-sum distribution you may report on Form 4972; a nonqualified annuity; the retired public safety officer premium exclusion; a death benefit exclusion; a plan loan offset; a Form RRB-1099-R; U.S. Civil Service retirement benefits under the alternative annuity option (Pub. 721); or a pension or annuity in which you have after-tax cost whose annuity starting date was before November 19, 1996, or for which the Simplified Method does not apply (the General Rule)?
+- **Encoded (Bool):** Input — Does this distribution involve any of these: a disability pension received before minimum retirement age, or a pension partly excludable because you were disabled as a result of a terrorist attack; a corrective distribution of excess deferrals or contributions; a qualified charitable distribution or HSA funding distribution; nondeductible contributions to any traditional IRA; a conversion or recharacterization (Form 8606); a 2024 or 2025 IRA contribution returned to you, or excess contributions for an earlier year returned to you in 2025; a rollover to a Roth IRA or designated Roth account; a lump-sum distribution you may report on Form 4972; a nonqualified annuity; the retired public safety officer premium exclusion; a death benefit exclusion; a plan loan offset; a Form RRB-1099-R; U.S. Civil Service retirement benefits under the alternative annuity option (Pub. 721); or a pension or annuity in which you have after-tax cost whose annuity starting date was before November 19, 1996, or for which the Simplified Method does not apply (the General Rule)?
+- Expr: `{"op":"input","source":"Does this distribution involve any of these: a disability pension received before minimum retirement age, or a pension partly excludable because you were disabled as a result of a terrorist attack; a corrective distribution of excess deferrals or contributions; a qualified charitable distribution or HSA funding distribution; nondeductible contributions to any traditional IRA; a conversion or recharacterization (Form 8606); a 2024 or 2025 IRA contribution returned to you, or excess contributions for an earlier year returned to you in 2025; a rollover to a Roth IRA or designated Roth account; a lump-sum distribution you may report on Form 4972; a nonqualified annuity; the retired public safety officer premium exclusion; a death benefit exclusion; a plan loan offset; a Form RRB-1099-R; U.S. Civil Service retirement benefits under the alternative annuity option (Pub. 721); or a pension or annuity in which you have after-tax cost whose annuity starting date was before November 19, 1996, or for which the Simplified Method does not apply (the General Rule)?"}`
 - Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method; f1099r Box 7 codes (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `retirement.annuity`
@@ -147,8 +147,8 @@
 ## (gate) — `retirement.bad_code`
 
 - **Authored helper label:** Distribution code the tool does not compute
-- **Encoded (Bool):** (helper "Distribution code in box 7" = 'other' or helper "Kind of account the distribution came from" = 'roth_ira' and helper "Distribution code in box 7" ≠ 'qualified_roth_Q' or helper "Distribution code in box 7" = 'qualified_roth_Q' and helper "Kind of account the distribution came from" ≠ 'roth_ira')
-- Expr: `{"any":[{"eq":["retirement.code",{"const":"other"}],"op":"test"},{"all":[{"eq":["retirement.account",{"const":"roth_ira"}],"op":"test"},{"ne":["retirement.code",{"const":"qualified_roth_Q"}],"op":"test"}],"op":"test"},{"all":[{"eq":["retirement.code",{"const":"qualified_roth_Q"}],"op":"test"},{"ne":["retirement.account",{"const":"roth_ira"}],"op":"test"}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** (helper "Distribution code in box 7" = 'other' or helper "Distribution code in box 7" = 'simple_S' and helper "Kind of account the distribution came from" ≠ 'traditional_ira' or helper "Distribution code in box 7" = 'disability_3' and helper "IRA distribution (lines 4a and 4b)" = false or helper "Kind of account the distribution came from" = 'roth_ira' and helper "Distribution code in box 7" ≠ 'qualified_roth_Q' or helper "Distribution code in box 7" = 'qualified_roth_Q' and helper "Kind of account the distribution came from" ≠ 'roth_ira')
+- Expr: `{"any":[{"eq":["retirement.code",{"const":"other"}],"op":"test"},{"all":[{"eq":["retirement.code",{"const":"simple_S"}],"op":"test"},{"ne":["retirement.account",{"const":"traditional_ira"}],"op":"test"}],"op":"test"},{"all":[{"eq":["retirement.code",{"const":"disability_3"}],"op":"test"},{"eq":["retirement.is_ira",{"const":false}],"op":"test"}],"op":"test"},{"all":[{"eq":["retirement.account",{"const":"roth_ira"}],"op":"test"},{"ne":["retirement.code",{"const":"qualified_roth_Q"}],"op":"test"}],"op":"test"},{"all":[{"eq":["retirement.code",{"const":"qualified_roth_Q"}],"op":"test"},{"ne":["retirement.account",{"const":"roth_ira"}],"op":"test"}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 27, Exception 2 (a Roth IRA distribution other than code Q needs Form 8606); f1099r pp. 7 and 9, Box 7, "The following codes identify the distribution you received", "Q—Qualified distribution from a Roth IRA or Roth SIMPLE IRA" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `retirement.rolled`
@@ -156,7 +156,7 @@
 - **Authored helper label:** Amount rolled over (the whole distribution for a direct rollover)
 - **Encoded (NonNegDollars):** Choose — [helper "Direct rollover (code G)" = true → helper "Gross distribution, box 1"] [helper "Direct rollover (code G)" = false → helper "Amount you rolled over within 60 days to a qualified plan or IRA (not a Roth account)"]
 - **Refusal:** when retirement.special is true, cannot complete Form 1099-R special cases (Forms 5329, 8606, 4972, 8915-F, Pub. 575 or 939). This distribution needs a form or rule outside this tool. Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
-- **Refusal:** when retirement.bad_code is true, cannot complete Form 8606 or another Form 1099-R code. A Roth IRA distribution other than a qualified distribution (code Q), or a distribution code other than 7, 4, 2, G or Q, is outside this tool. Cite: [i1040gi] p. 27, Exception 2; f1099r Box 7 (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Refusal:** when retirement.bad_code is true, cannot complete Form 8606 or another Form 1099-R code. A Roth IRA distribution other than a qualified distribution (code Q), code S other than from a traditional SIMPLE IRA, code 3 other than from an IRA, or a distribution code other than 7, 4, 2, 1, S, 3, G or Q, is outside this tool. Cite: [i1040gi] p. 27, Exception 2; f1099r Box 7 (2025; printed date 2026-02-25; sha256 482e9c48)
 - Expr: `{"alternatives":[{"guard":{"eq":["retirement.direct",{"const":true}],"op":"test"},"then":"retirement.box1"},{"guard":{"eq":["retirement.direct",{"const":false}],"op":"test"},"then":"retirement.rollover"}],"op":"choose"}`
 - Cite: [i1040gi] p. 27, Exception 1; p. 30, Rollovers (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -396,7 +396,8 @@
 - **Authored helper label:** Taxable amount of this distribution (line 4b or 5b)
 - **Encoded (NonNegDollars):** Choose — [helper "IRA distribution (lines 4a and 4b)" = true → helper "Taxable IRA amount: the part not rolled over (zero for a qualified Roth IRA distribution)"] [helper "IRA distribution (lines 4a and 4b)" = false → helper "Taxable pension or annuity amount (the Simplified Method for an annuity with after-tax cost)"]
 - **Refusal:** when retirement.special is true, cannot complete Form 1099-R special cases (Forms 5329, 8606, 4972, 8915-F, Pub. 575 or 939). This distribution needs a form or rule outside this tool. Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
-- **Refusal:** when retirement.bad_code is true, cannot complete Form 8606 or another Form 1099-R code. A Roth IRA distribution other than a qualified distribution (code Q), or a distribution code other than 7, 4, 2, G or Q, is outside this tool. Cite: [i1040gi] p. 27, Exception 2; f1099r Box 7 (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Refusal:** when retirement.bad_code is true, cannot complete Form 8606 or another Form 1099-R code. A Roth IRA distribution other than a qualified distribution (code Q), code S other than from a traditional SIMPLE IRA, code 3 other than from an IRA, or a distribution code other than 7, 4, 2, 1, S, 3, G or Q, is outside this tool. Cite: [i1040gi] p. 27, Exception 2; f1099r Box 7 (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Refusal:** when retirement.screen_refused is true, cannot complete Form 5329 or Form 8915-F for this Form 1099-R. A qualified disaster recovery distribution, a modified series of substantially equal payments, an annuity or modified endowment contract distribution, a repayment, a December 30-31 long-term care distribution, more than one exception, an exception covering only part of a code 2 distribution, or a code 4 or 7 that does not fit needs Form 5329 or Form 8915-F rules this tool does not apply. Cite: [i5329] p. 5, Line 2, "Enter on line 2 the amount that you can exclude." (2025; sha256 aec3d325)
 - **Refusal:** when retirement.annuity_rollover is true, cannot complete Pub. 575 (rollover of a pension or annuity figured by the Simplified Method). A rollover from a pension or annuity whose taxable part is figured with the Simplified Method is outside this tool. Cite: [i1040gi] p. 30, Rollovers, 'See Pub. 575 for more details on rollovers' (2025; printed date 2026-02-25; sha256 482e9c48)
 - Expr: `{"alternatives":[{"guard":{"eq":["retirement.is_ira",{"const":true}],"op":"test"},"then":"retirement.ira_taxable"},{"guard":{"eq":["retirement.is_ira",{"const":false}],"op":"test"},"then":"retirement.plan_taxable"}],"op":"choose"}`
 - Cite: [i1040gi] pp. 27-30, lines 4b and 5b (2025; printed date 2026-02-25; sha256 482e9c48)
@@ -413,7 +414,8 @@
 - **Authored helper label:** Total distribution entered on line 4a or 5a (none when fully taxable)
 - **Encoded (NonNegDollars):** Choose — [helper "An exception applies, so the total distribution goes on line 4a or 5a" = true → helper "Gross distribution, box 1"] [helper "An exception applies, so the total distribution goes on line 4a or 5a" = false → helper "No amount"]
 - **Refusal:** when retirement.special is true, cannot complete Form 1099-R special cases (Forms 5329, 8606, 4972, 8915-F, Pub. 575 or 939). This distribution needs a form or rule outside this tool. Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
-- **Refusal:** when retirement.bad_code is true, cannot complete Form 8606 or another Form 1099-R code. A Roth IRA distribution other than a qualified distribution (code Q), or a distribution code other than 7, 4, 2, G or Q, is outside this tool. Cite: [i1040gi] p. 27, Exception 2; f1099r Box 7 (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Refusal:** when retirement.bad_code is true, cannot complete Form 8606 or another Form 1099-R code. A Roth IRA distribution other than a qualified distribution (code Q), code S other than from a traditional SIMPLE IRA, code 3 other than from an IRA, or a distribution code other than 7, 4, 2, 1, S, 3, G or Q, is outside this tool. Cite: [i1040gi] p. 27, Exception 2; f1099r Box 7 (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Refusal:** when retirement.screen_refused is true, cannot complete Form 5329 or Form 8915-F for this Form 1099-R. A qualified disaster recovery distribution, a modified series of substantially equal payments, an annuity or modified endowment contract distribution, a repayment, a December 30-31 long-term care distribution, more than one exception, an exception covering only part of a code 2 distribution, or a code 4 or 7 that does not fit needs Form 5329 or Form 8915-F rules this tool does not apply. Cite: [i5329] p. 5, Line 2, "Enter on line 2 the amount that you can exclude." (2025; sha256 aec3d325)
 - **Refusal:** when retirement.annuity_rollover is true, cannot complete Pub. 575 (rollover of a pension or annuity figured by the Simplified Method). A rollover from a pension or annuity whose taxable part is figured with the Simplified Method is outside this tool. Cite: [i1040gi] p. 30, Rollovers, 'See Pub. 575 for more details on rollovers' (2025; printed date 2026-02-25; sha256 482e9c48)
 - Expr: `{"alternatives":[{"guard":{"eq":["retirement.show_a",{"const":true}],"op":"test"},"then":"retirement.box1"},{"guard":{"eq":["retirement.show_a",{"const":false}],"op":"test"},"then":"retirement.zero"}],"op":"choose"}`
 - Cite: [i1040gi] pp. 27-30, lines 4a and 5a (2025; printed date 2026-02-25; sha256 482e9c48)
@@ -462,3 +464,173 @@
 - **Encoded (NonNegDollars):** Choose — [helper "A distribution Form 8880 line 4 does not count (from a military retirement plan or of section 404(k) dividends, for a plan; from an inherited IRA as a nonspouse beneficiary, for an IRA)" = true → helper "No amount"] [helper "A distribution Form 8880 line 4 does not count (from a military retirement plan or of section 404(k) dividends, for a plan; from an inherited IRA as a nonspouse beneficiary, for an IRA)" = false → helper "The distribution less the part rolled over (the whole distribution for a direct rollover)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["retirement.sav_excluded",{"const":true}],"op":"test"},"then":"retirement.zero"},{"guard":{"eq":["retirement.sav_excluded",{"const":false}],"op":"test"},"then":"retirement.sav_gross"}],"op":"choose"}`
 - Cite: [f8880] p. 2, Line 4, "Enter the total amount of distributions you, and your spouse if filing jointly, received after 2022 and before the due date of your 2025 return (including extensions) from any of the following types of plans" (2025; created 2025-11-04; sha256 ba2b2877)
+
+## (helper) — `retirement.early`
+
+- **Authored helper label:** An early distribution with no known exception (code 1, or code S from a SIMPLE IRA in the first 2 years)
+- **Encoded (Bool):** (helper "Distribution code in box 7" = 'early_1' or helper "Distribution code in box 7" = 'simple_S')
+- Expr: `{"any":[{"eq":["retirement.code",{"const":"early_1"}],"op":"test"},{"eq":["retirement.code",{"const":"simple_S"}],"op":"test"}],"op":"test"}`
+- Cite: [i5329] p. 3, Line 1, "Enter the amount of early distributions includible in income (other than qualified disaster recovery distributions) that you received from:" (2025; sha256 aec3d325)
+
+## (gate) — `retirement.early_screen`
+
+- **Authored helper label:** An early distribution of a kind Form 5329 Part I is not computed for here
+- **Encoded (Bool):** Input — Is any of these true of this distribution: it is a qualified disaster recovery distribution (Form 8915-F); it is part of a series of substantially equal periodic payments that was modified (recapture); it is from an annuity contract or a modified endowment contract; it repays a birth or adoption, terminal illness, domestic abuse or emergency personal expense distribution; it is an emergency personal expense distribution within 3 years after an earlier one you have not repaid; it is a qualified long-term care distribution made December 30 or 31, 2025; or more than one exception to the additional tax applies to it?
+- Expr: `{"op":"input","source":"Is any of these true of this distribution: it is a qualified disaster recovery distribution (Form 8915-F); it is part of a series of substantially equal periodic payments that was modified (recapture); it is from an annuity contract or a modified endowment contract; it repays a birth or adoption, terminal illness, domestic abuse or emergency personal expense distribution; it is an emergency personal expense distribution within 3 years after an earlier one you have not repaid; it is a qualified long-term care distribution made December 30 or 31, 2025; or more than one exception to the additional tax applies to it?"}`
+- Cite: [i5329] p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99." (2025; sha256 aec3d325)
+
+## (gate) — `retirement.code_screen`
+
+- **Authored helper label:** A code 2, 4 or 7 distribution whose code does not fit
+- **Encoded (Bool):** Input — Is either of these true of this distribution: the exception that code 2 shows covers only part of it; or its code is wrong because you were under age 59½ when you received it (code 7) or you are not the beneficiary of a person who died (code 4)?
+- Expr: `{"op":"input","source":"Is either of these true of this distribution: the exception that code 2 shows covers only part of it; or its code is wrong because you were under age 59½ when you received it (code 7) or you are not the beneficiary of a person who died (code 4)?"}`
+- Cite: [i5329] p. 1, Who Must File, "You received a distribution subject to the tax on early distributions from a qualified retirement plan (other than a Roth IRA) and you meet an exception to the tax on early distributions from the list shown later, but box 7 of your Form 1099-R doesn’t indicate an exception or the exception doesn’t apply to the entire distribution." (2025; sha256 aec3d325)
+
+## (gate) — `retirement.screen_refused`
+
+- **Authored helper label:** This Form 1099-R needs Form 5329 parts or codes this tool does not compute
+- **Encoded (Bool):** (helper "An early distribution with no known exception (code 1, or code S from a SIMPLE IRA in the first 2 years)" = true and helper "An early distribution of a kind Form 5329 Part I is not computed for here" = true or (helper "Distribution code in box 7" = 'early_exception_2' or helper "Distribution code in box 7" = 'normal_7' or helper "Distribution code in box 7" = 'death_4') and helper "A code 2, 4 or 7 distribution whose code does not fit" = true)
+- Expr: `{"any":[{"all":[{"eq":["retirement.early",{"const":true}],"op":"test"},{"eq":["retirement.early_screen",{"const":true}],"op":"test"}],"op":"test"},{"all":[{"any":[{"eq":["retirement.code",{"const":"early_exception_2"}],"op":"test"},{"eq":["retirement.code",{"const":"normal_7"}],"op":"test"},{"eq":["retirement.code",{"const":"death_4"}],"op":"test"}],"op":"test"},{"eq":["retirement.code_screen",{"const":true}],"op":"test"}],"op":"test"}],"op":"test"}`
+- Cite: [i5329] p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99." (2025; sha256 aec3d325)
+
+## (helper) — `retirement.exception`
+
+- **Authored helper label:** Exception to the additional tax that applies to this distribution (i5329 p. 5 table), or none
+- **Encoded (Enum(early_exception)):** Input — Which exception to the 10% additional tax applies to this distribution? Enter the number from the table in the Form 5329 instructions (for example 02 substantially equal periodic payments, 03 disability, 05 medical expenses, 08 higher education expenses, 09 first home, 12 incorrectly coded as early, 19 birth or adoption, 20 terminal illness), or none.
+- Expr: `{"op":"input","source":"Which exception to the 10% additional tax applies to this distribution? Enter the number from the table in the Form 5329 instructions (for example 02 substantially equal periodic payments, 03 disability, 05 medical expenses, 08 higher education expenses, 09 first home, 12 incorrectly coded as early, 19 birth or adoption, 20 terminal illness), or none."}`
+- Cite: [i5329] p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99." (2025; sha256 aec3d325)
+
+## (helper) — `retirement.has_exception`
+
+- **Authored helper label:** An exception applies
+- **Encoded (Bool):** helper "An early distribution with no known exception (code 1, or code S from a SIMPLE IRA in the first 2 years)" = true and helper "Exception to the additional tax that applies to this distribution (i5329 p. 5 table), or none" ≠ 'none'
+- Expr: `{"all":[{"eq":["retirement.early",{"const":true}],"op":"test"},{"ne":["retirement.exception",{"const":"none"}],"op":"test"}],"op":"test"}`
+- Cite: [i5329] p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99." (2025; sha256 aec3d325)
+
+## (helper) — `retirement.exc_amount`
+
+- **Authored helper label:** Amount of this distribution the exception covers
+- **Encoded (NonNegDollars):** Input — Amount of this distribution that the exception covers (the tool applies the dollar limits per person). Medical expenses (05), birth or adoption (19) and domestic abuse (22): the amount of the distribution that qualifies, whatever it was spent on; for 05 the tool limits it to the medical expenses above 7.5% of AGI, and for 22 enter no more than 50% of the present value of the IRA or plan account. First home (09): the amount used to pay qualified acquisition costs. Emergency expenses (23): no more than your total interest in the IRA or plan account minus $1,000. Health insurance premiums while unemployed (07): the premiums you paid. Higher education (08): your adjusted qualified education expenses (Pub. 970, chapter 8). Other exceptions: the amount the exception covers.
+- Interpretation: amb.2025.f5329_education_k12
+- Expr: `{"op":"input","source":"Amount of this distribution that the exception covers (the tool applies the dollar limits per person). Medical expenses (05), birth or adoption (19) and domestic abuse (22): the amount of the distribution that qualifies, whatever it was spent on; for 05 the tool limits it to the medical expenses above 7.5% of AGI, and for 22 enter no more than 50% of the present value of the IRA or plan account. First home (09): the amount used to pay qualified acquisition costs. Emergency expenses (23): no more than your total interest in the IRA or plan account minus $1,000. Health insurance premiums while unemployed (07): the premiums you paid. Higher education (08): your adjusted qualified education expenses (Pub. 970, chapter 8). Other exceptions: the amount the exception covers."}`
+- Cite: [i5329] p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99." (2025; sha256 aec3d325)
+
+## (gate) — `retirement.wrong_kind`
+
+- **Authored helper label:** An exception that does not apply to this kind of account
+- **Encoded (Bool):** helper "An exception applies" = true and (helper "IRA distribution (lines 4a and 4b)" = true and (helper "Exception to the additional tax that applies to this distribution (i5329 p. 5 table), or none" = 'e01' or helper "Exception to the additional tax that applies to this distribution (i5329 p. 5 table), or none" = 'e06') or helper "IRA distribution (lines 4a and 4b)" = false and (helper "Exception to the additional tax that applies to this distribution (i5329 p. 5 table), or none" = 'e07' or helper "Exception to the additional tax that applies to this distribution (i5329 p. 5 table), or none" = 'e08' or helper "Exception to the additional tax that applies to this distribution (i5329 p. 5 table), or none" = 'e09'))
+- Expr: `{"all":[{"eq":["retirement.has_exception",{"const":true}],"op":"test"},{"any":[{"all":[{"eq":["retirement.is_ira",{"const":true}],"op":"test"},{"any":[{"eq":["retirement.exception",{"const":"e01"}],"op":"test"},{"eq":["retirement.exception",{"const":"e06"}],"op":"test"}],"op":"test"}],"op":"test"},{"all":[{"eq":["retirement.is_ira",{"const":false}],"op":"test"},{"any":[{"eq":["retirement.exception",{"const":"e07"}],"op":"test"},{"eq":["retirement.exception",{"const":"e08"}],"op":"test"},{"eq":["retirement.exception",{"const":"e09"}],"op":"test"}],"op":"test"}],"op":"test"}],"op":"test"}],"op":"test"}`
+- Cite: [i5329] p. 5, Line 2, "Qualified retirement plan distributions (doesn’t apply to IRAs) you received after separation from service" (2025; sha256 aec3d325)
+
+## (helper) — `retirement.l1`
+
+- **Authored helper label:** Form 5329 line 1 share: the taxable amount of an early distribution
+- **Encoded (NonNegDollars):** Choose — [helper "An early distribution with no known exception (code 1, or code S from a SIMPLE IRA in the first 2 years)" = true → helper "Taxable amount of this distribution (line 4b or 5b)"] [helper "An early distribution with no known exception (code 1, or code S from a SIMPLE IRA in the first 2 years)" = false → helper "No amount"]
+- Expr: `{"alternatives":[{"guard":{"eq":["retirement.early",{"const":true}],"op":"test"},"then":"retirement.taxable"},{"guard":{"eq":["retirement.early",{"const":false}],"op":"test"},"then":"retirement.zero"}],"op":"choose"}`
+- Cite: [i5329] p. 3, Line 1, "Enter the amount of early distributions includible in income (other than qualified disaster recovery distributions) that you received from:" (2025; sha256 aec3d325)
+
+## (helper) — `retirement.exc_capped`
+
+- **Authored helper label:** Smaller of the exception amount and the taxable amount
+- **Encoded (NonNegDollars):** Enter the smaller of helper "Amount of this distribution the exception covers" or helper "Taxable amount of this distribution (line 4b or 5b)".
+- Expr: `{"of":["retirement.exc_amount","retirement.taxable"],"op":"smaller_of"}`
+- Cite: [i5329] p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99." (2025; sha256 aec3d325)
+
+## (helper) — `retirement.l2`
+
+- **Authored helper label:** Form 5329 line 2 share before the per-person limits
+- **Encoded (NonNegDollars):** Choose — [helper "An exception applies" = true → helper "Smaller of the exception amount and the taxable amount"] [helper "An exception applies" = false → helper "No amount"]
+- **Refusal:** when retirement.wrong_kind is true, cannot complete Form 5329 line 2 exception for another kind of account. Exceptions 01 and 06 do not apply to IRAs, and 07, 08 and 09 apply only to IRAs (i5329 p. 5). Check the exception number. Cite: [i5329] p. 5, Line 2, "Qualified retirement plan distributions (doesn’t apply to IRAs) you received after separation from service" (2025; sha256 aec3d325)
+- Expr: `{"alternatives":[{"guard":{"eq":["retirement.has_exception",{"const":true}],"op":"test"},"then":"retirement.exc_capped"},{"guard":{"eq":["retirement.has_exception",{"const":false}],"op":"test"},"then":"retirement.zero"}],"op":"choose"}`
+- Cite: [i5329] p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99." (2025; sha256 aec3d325)
+
+## (helper) — `retirement.is_e05`
+
+- **Authored helper label:** Exception 05
+- **Encoded (Bool):** helper "An exception applies" = true and helper "Exception to the additional tax that applies to this distribution (i5329 p. 5 table), or none" = 'e05'
+- Expr: `{"all":[{"eq":["retirement.has_exception",{"const":true}],"op":"test"},{"eq":["retirement.exception",{"const":"e05"}],"op":"test"}],"op":"test"}`
+- Cite: [i5329] p. 5, Line 2, "Qualified retirement plan distributions up to the amount you paid for unreimbursed medical expenses during the year minus 7.5% of your adjusted gross income (AGI) for the year." (2025; sha256 aec3d325)
+
+## (helper) — `retirement.l2_e05`
+
+- **Authored helper label:** Line 2 share under exception 05
+- **Encoded (NonNegDollars):** Choose — [helper "Exception 05" = true → helper "Form 5329 line 2 share before the per-person limits"] [helper "Exception 05" = false → helper "No amount"]
+- Expr: `{"alternatives":[{"guard":{"eq":["retirement.is_e05",{"const":true}],"op":"test"},"then":"retirement.l2"},{"guard":{"eq":["retirement.is_e05",{"const":false}],"op":"test"},"then":"retirement.zero"}],"op":"choose"}`
+- Cite: [i5329] p. 5, Line 2, "Qualified retirement plan distributions up to the amount you paid for unreimbursed medical expenses during the year minus 7.5% of your adjusted gross income (AGI) for the year." (2025; sha256 aec3d325)
+
+## (helper) — `retirement.is_e09`
+
+- **Authored helper label:** Exception 09
+- **Encoded (Bool):** helper "An exception applies" = true and helper "Exception to the additional tax that applies to this distribution (i5329 p. 5 table), or none" = 'e09'
+- Expr: `{"all":[{"eq":["retirement.has_exception",{"const":true}],"op":"test"},{"eq":["retirement.exception",{"const":"e09"}],"op":"test"}],"op":"test"}`
+- Cite: [i5329] p. 5, Line 2, "IRA distributions made for the purchase of a first home, up to $10,000." (2025; sha256 aec3d325)
+
+## (helper) — `retirement.l2_e09`
+
+- **Authored helper label:** Line 2 share under exception 09
+- **Encoded (NonNegDollars):** Choose — [helper "Exception 09" = true → helper "Form 5329 line 2 share before the per-person limits"] [helper "Exception 09" = false → helper "No amount"]
+- Expr: `{"alternatives":[{"guard":{"eq":["retirement.is_e09",{"const":true}],"op":"test"},"then":"retirement.l2"},{"guard":{"eq":["retirement.is_e09",{"const":false}],"op":"test"},"then":"retirement.zero"}],"op":"choose"}`
+- Cite: [i5329] p. 5, Line 2, "IRA distributions made for the purchase of a first home, up to $10,000." (2025; sha256 aec3d325)
+
+## (helper) — `retirement.is_e19`
+
+- **Authored helper label:** Exception 19
+- **Encoded (Bool):** helper "An exception applies" = true and helper "Exception to the additional tax that applies to this distribution (i5329 p. 5 table), or none" = 'e19'
+- Expr: `{"all":[{"eq":["retirement.has_exception",{"const":true}],"op":"test"},{"eq":["retirement.exception",{"const":"e19"}],"op":"test"}],"op":"test"}`
+- Cite: [i5329] p. 5, Line 2, "A qualified distribution from a retirement plan for the birth or adoption of a child is a distribution of up to $5,000 if made during the 1-year period beginning on the date your child was born or adopted." (2025; sha256 aec3d325)
+
+## (helper) — `retirement.l2_e19`
+
+- **Authored helper label:** Line 2 share under exception 19
+- **Encoded (NonNegDollars):** Choose — [helper "Exception 19" = true → helper "Form 5329 line 2 share before the per-person limits"] [helper "Exception 19" = false → helper "No amount"]
+- Expr: `{"alternatives":[{"guard":{"eq":["retirement.is_e19",{"const":true}],"op":"test"},"then":"retirement.l2"},{"guard":{"eq":["retirement.is_e19",{"const":false}],"op":"test"},"then":"retirement.zero"}],"op":"choose"}`
+- Cite: [i5329] p. 5, Line 2, "A qualified distribution from a retirement plan for the birth or adoption of a child is a distribution of up to $5,000 if made during the 1-year period beginning on the date your child was born or adopted." (2025; sha256 aec3d325)
+
+## (helper) — `retirement.is_e22`
+
+- **Authored helper label:** Exception 22
+- **Encoded (Bool):** helper "An exception applies" = true and helper "Exception to the additional tax that applies to this distribution (i5329 p. 5 table), or none" = 'e22'
+- Expr: `{"all":[{"eq":["retirement.has_exception",{"const":true}],"op":"test"},{"eq":["retirement.exception",{"const":"e22"}],"op":"test"}],"op":"test"}`
+- Cite: [i5329] p. 5, Line 2, "Qualified distributions to victims of domestic abuse." (2025; sha256 aec3d325)
+
+## (helper) — `retirement.l2_e22`
+
+- **Authored helper label:** Line 2 share under exception 22
+- **Encoded (NonNegDollars):** Choose — [helper "Exception 22" = true → helper "Form 5329 line 2 share before the per-person limits"] [helper "Exception 22" = false → helper "No amount"]
+- Expr: `{"alternatives":[{"guard":{"eq":["retirement.is_e22",{"const":true}],"op":"test"},"then":"retirement.l2"},{"guard":{"eq":["retirement.is_e22",{"const":false}],"op":"test"},"then":"retirement.zero"}],"op":"choose"}`
+- Cite: [i5329] p. 5, Line 2, "Qualified distributions to victims of domestic abuse." (2025; sha256 aec3d325)
+
+## (helper) — `retirement.is_e23`
+
+- **Authored helper label:** Exception 23
+- **Encoded (Bool):** helper "An exception applies" = true and helper "Exception to the additional tax that applies to this distribution (i5329 p. 5 table), or none" = 'e23'
+- Expr: `{"all":[{"eq":["retirement.has_exception",{"const":true}],"op":"test"},{"eq":["retirement.exception",{"const":"e23"}],"op":"test"}],"op":"test"}`
+- Cite: [i5329] p. 5, Line 2, "meeting the unforeseeable or immediate financial needs relating to necessary personal or family emergency expenses" (2025; sha256 aec3d325)
+
+## (helper) — `retirement.l2_e23`
+
+- **Authored helper label:** Line 2 share under exception 23
+- **Encoded (NonNegDollars):** Choose — [helper "Exception 23" = true → helper "Form 5329 line 2 share before the per-person limits"] [helper "Exception 23" = false → helper "No amount"]
+- Expr: `{"alternatives":[{"guard":{"eq":["retirement.is_e23",{"const":true}],"op":"test"},"then":"retirement.l2"},{"guard":{"eq":["retirement.is_e23",{"const":false}],"op":"test"},"then":"retirement.zero"}],"op":"choose"}`
+- Cite: [i5329] p. 5, Line 2, "meeting the unforeseeable or immediate financial needs relating to necessary personal or family emergency expenses" (2025; sha256 aec3d325)
+
+## (helper) — `retirement.is_s`
+
+- **Authored helper label:** Code S (a SIMPLE IRA distribution within 2 years)
+- **Encoded (Bool):** helper "Distribution code in box 7" = 'simple_S'
+- Expr: `{"eq":["retirement.code",{"const":"simple_S"}],"op":"test"}`
+- Cite: [i5329] p. 5, Line 4, "If any amount on line 3 was a distribution from a SIMPLE IRA received within 2 years from the date you first participated in the SIMPLE IRA plan, you must multiply that amount by 25% instead of 10%." (2025; sha256 aec3d325)
+
+## (helper) — `retirement.l1_s`
+
+- **Authored helper label:** Line 1 share from a code S distribution
+- **Encoded (NonNegDollars):** Choose — [helper "Code S (a SIMPLE IRA distribution within 2 years)" = true → helper "Form 5329 line 1 share: the taxable amount of an early distribution"] [helper "Code S (a SIMPLE IRA distribution within 2 years)" = false → helper "No amount"]
+- Expr: `{"alternatives":[{"guard":{"eq":["retirement.is_s",{"const":true}],"op":"test"},"then":"retirement.l1"},{"guard":{"eq":["retirement.is_s",{"const":false}],"op":"test"},"then":"retirement.zero"}],"op":"choose"}`
+- Cite: [i5329] p. 5, Line 4, "If any amount on line 3 was a distribution from a SIMPLE IRA received within 2 years from the date you first participated in the SIMPLE IRA plan, you must multiply that amount by 25% instead of 10%." (2025; sha256 aec3d325)
+
+## (helper) — `retirement.l2_s`
+
+- **Authored helper label:** Line 2 share from a code S distribution
+- **Encoded (NonNegDollars):** Choose — [helper "Code S (a SIMPLE IRA distribution within 2 years)" = true → helper "Form 5329 line 2 share before the per-person limits"] [helper "Code S (a SIMPLE IRA distribution within 2 years)" = false → helper "No amount"]
+- Expr: `{"alternatives":[{"guard":{"eq":["retirement.is_s",{"const":true}],"op":"test"},"then":"retirement.l2"},{"guard":{"eq":["retirement.is_s",{"const":false}],"op":"test"},"then":"retirement.zero"}],"op":"choose"}`
+- Cite: [i5329] p. 5, Line 4, "If any amount on line 3 was a distribution from a SIMPLE IRA received within 2 years from the date you first participated in the SIMPLE IRA plan, you must multiply that amount by 25% instead of 10%." (2025; sha256 aec3d325)

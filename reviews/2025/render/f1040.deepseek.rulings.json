@@ -4,6 +4,20 @@
  "family": "deepseek",
  "rulings": [
   {
+   "printed": "13a",
+   "restated": "Enter the amount from qbi helper \"Select Form 8995 or dividend-only Form 8995-A\".",
+   "model": "IRS says use Form 8995 only if you aren't a patron in a specified agricultural or horticultural cooperative; the helper selects Form 8995 by the taxable-income threshold only and does not account for a patron.",
+   "ruling": "Ruling: scope; the model says the helper picks Form 8995 by the taxable-income threshold only and does not account for a patron. i1040gi p. 34, Line 13a: \"You aren't a patron in a specified agricultural or horticultural cooperative. If you don't meet these requirements, use Form 8995-A\". Every patron of any agricultural or horticultural cooperative is refused through qbi.unsupported (its question ends \"or are you a patron of any agricultural or horticultural cooperative, specified or not\"; amb.2025.qbi_cooperative_patron) before the form is chosen. Same ruling as round 2.",
+   "context": "4642b9ca87f4c5849bb8c786cf4bc79d5cb1e549b023819499238c7001f8557b"
+  },
+  {
+   "printed": "16",
+   "restated": "Choose — [helper \"Schedule D Tax Worksheet required after its exceptions\" = true → sdtw line 47] [helper \"Schedule D Tax Worksheet required after its exceptions\" = false → helper \"Tax when Schedule D Tax Worksheet does not apply\"]",
+   "model": "IRS says use the Schedule D Tax Worksheet if you file Form 4952 and have an amount on line 4g, even if you don't need to file Schedule D; the gate also requires the QDCG worksheet to apply.",
+   "ruling": "Ruling: model error; the model says the gate wrongly also requires the Qualified Dividends and Capital Gain Tax Worksheet test for a Form 4952 line 4g filer. i1040sd p. 15, Schedule D Tax Worksheet: \"Complete this worksheet only if line 18 or line 19 of Schedule D is more than zero and lines 15 and 16 of Schedule D are gains or if you file Form 4952 and you have an amount on line 4g, even if you don't need to file Schedule D. Otherwise, complete the Qualified Dividends and Capital Gain Tax Worksheet\"; the same page's Exception: \"Don't use the Qualified Dividends and Capital Gain Tax Worksheet or this worksheet to figure your tax if: • Line 15 or line 16 of Schedule D is zero or less and you have no qualified dividends on Form 1040, 1040-SR, or 1040-NR, line 3a; or • Form 1040, 1040-SR, or 1040-NR, line 15, is zero or less\". The gate is that Exception's negation, which applies to both worksheets, and a line 4g amount comes from qualified dividends or net capital gain; amb.2025.sd4952_selection. Same ruling as round 4.",
+   "context": "4642b9ca87f4c5849bb8c786cf4bc79d5cb1e549b023819499238c7001f8557b"
+  },
+  {
    "printed": "16",
    "restated": "Choose — [helper \"Schedule D Tax Worksheet required after its exceptions\" = true → sdtw line 47] [helper \"Schedule D Tax Worksheet required after its exceptions\" = false → helper \"Tax when Schedule D Tax Worksheet does not apply\"]",
    "model": "The restatement's gate also requires 'Use the Qualified Dividends and Capital Gain Tax Worksheet?' = true, but the IRS says use the Schedule D Tax Worksheet if you have to file Form 4952 and have an amount on line 4g, even if you don't need to file Schedule D.",
@@ -23,6 +37,13 @@
    "model": "The IRS line says 'Add lines 1a through 1h,' but the restatement adds only line 1a and line 1e.",
    "ruling": "Ruling: scope; the model says the restatement adds only lines 1a and 1e of \"Add lines 1a through 1h\". Lines 1b to 1d and 1f to 1h are refused: scope.other_income asks for other earned income (Form 1040 lines 1b to 1d and 1f to 1h), and f1040.line8 refuses on it (checked in forms/2025/f1040.yaml), so on every computed return those lines are zero and the sum is Form 1040 line 1z. Unchanged by Stage 20; same ruling as rounds 2 and 3.",
    "context": "5e508b2a542e2e95b6b95b47e5256aedd765e56e46d197842551e61056f10694"
+  },
+  {
+   "printed": "27a",
+   "restated": "Enter the amount from eic helper \"Earned income credit for Form 1040, line 27a (Worksheet A, line 6, or Worksheet B, line 11 for a filer who answered Yes to Step 5, question 2, when Steps 1 to 5 are passed; zero otherwise)\".",
+   "model": "IRS says use Worksheet A only if you answered No to Step 5 question 2; otherwise use Worksheet B. The helper computes only Worksheet A line 6 and has no Worksheet B line 11 branch.",
+   "ruling": "Ruling: model error; the model says the helper computes only Worksheet A line 6. The restated label it quotes names both worksheets (\"Worksheet A, line 6, or Worksheet B, line 11 for a filer who answered Yes to Step 5, question 2\"), and the computation follows Worksheet B for those filers (eic.line1 is eic.wsb_6; lines 2 to 6 serve as Worksheet B lines 7 to 11). i1040gi p. 46, Worksheet A: \"Use this worksheet only if you answered 'No' to Step 5, question 2. Otherwise, use Worksheet B\"; p. 48, Worksheet B, line 11. Same ruling as rounds 2 to 4 and Stage 19 (Stage 19's finding H1 on eic.us_home is fixed: the question now reads \"Was your main home, and your spouse's if filing a joint return, in the United States\").",
+   "context": "4642b9ca87f4c5849bb8c786cf4bc79d5cb1e549b023819499238c7001f8557b"
   },
   {
    "printed": "27a",
@@ -69,6 +90,13 @@
   {
    "printed": "27c",
    "restated": "Enter the amount from eic helper \"The instructions say to check the box on line 27c (a STOP that says so, or Worksheet A line 2 is zero); the filer's own choice not to claim the EIC is not asked\".",
+   "model": "IRS says check line 27c if you do not want to claim the EIC or if instructed; the restatement expressly does not ask the filer's own choice not to claim the EIC.",
+   "ruling": "Ruling: scope; the model says the filer's own choice not to claim the EIC is not asked. i1040gi p. 43, Line 27c: \"Check the box on line 27c if you do not want to claim the earned income credit or if you have been instructed to check the box in the instructions for line 27a\". The rendered English states the limit itself, a recorded design limit (TASKS.md T-027). Same ruling as rounds 2 to 4 and Stages 19 and 20.",
+   "context": "4642b9ca87f4c5849bb8c786cf4bc79d5cb1e549b023819499238c7001f8557b"
+  },
+  {
+   "printed": "27c",
+   "restated": "Enter the amount from eic helper \"The instructions say to check the box on line 27c (a STOP that says so, or Worksheet A line 2 is zero); the filer's own choice not to claim the EIC is not asked\".",
    "model": "The IRS line says 'If you do not want to claim the EIC, check here,' but the restatement only handles instructed STOP cases and expressly does not ask the filer's own choice.",
    "ruling": "Ruling: scope; the model says the filer's own choice not to claim the EIC is not asked. i1040gi p. 43, Line 27c: \"Check the box on line 27c if you do not want to claim the earned income credit or if you have been instructed to check the box in the instructions for line 27a\". The rendered English states the limit itself (\"the filer's own choice not to claim the EIC is not asked\"), a recorded design limit (TASKS.md T-027). Unchanged by Stage 20; same ruling as rounds 2 to 4.",
    "context": "5e508b2a542e2e95b6b95b47e5256aedd765e56e46d197842551e61056f10694"
@@ -97,9 +125,23 @@
   {
    "printed": "28 (box)",
    "restated": "true = false",
+   "model": "IRS says check this box if you do not want to claim the ACTC; the restatement sets the box always false and ignores that election.",
+   "ruling": "Ruling: scope; the model says the restatement sets the box always unchecked. Form 1040 (2025) line 28, \"If you do not want to claim the ACTC, check here\"; i1040gi p. 61, Line 28: \"If you do not want to claim the additional child tax credit, check the box on line 28\". This is the recorded design limit BUG-0174 (owner's decision, 2026-10-27), and the printed label says so (\"not asked; this tool always claims the credit\"). Same ruling as round 4 and Stages 19 and 20.",
+   "context": "4642b9ca87f4c5849bb8c786cf4bc79d5cb1e549b023819499238c7001f8557b"
+  },
+  {
+   "printed": "28 (box)",
+   "restated": "true = false",
    "model": "The IRS line provides 'If you do not want to claim the ACTC, check here,' but the restatement sets the box value to false unconditionally.",
    "ruling": "Ruling: scope; the model says the restatement sets the box unchecked unconditionally. Form 1040 (2025) line 28, \"If you do not want to claim the ACTC, check here\"; i1040gi p. 61, Line 28, \"If you do not want to claim the additional child tax credit, check the box on line 28\". This is the recorded design limit BUG-0174 (owner's decision, 2026-10-27): f1040.line28_box is always unchecked and its printed label says so (\"not asked; this tool always claims the credit\"). The rendering states the limit; it does not misread the source. Same ruling as round 4.",
    "context": "5e508b2a542e2e95b6b95b47e5256aedd765e56e46d197842551e61056f10694"
+  },
+  {
+   "printed": "29",
+   "restated": "Choose — [f8863 helper \"An education credit can be claimed on this return: expenses paid, and neither you nor your spouse is claimed as a dependent\" = true → f8863 line 8] [f8863 helper \"An education credit can be claimed on this return: expenses paid, and neither you nor your spouse is claimed as a dependent\" = false → f8863 helper \"Zero\"]",
+   "model": "IRS says you cannot claim an education credit if your filing status is married filing separately; the helper checks only that expenses were paid and that the filer/spouse is not claimed as a dependent.",
+   "ruling": "Ruling: scope; the model says the helper checks only expenses paid and the dependency test, not married filing separately. i8863 p. 3, Who cannot claim a credit: \"2. Your filing status is married filing separately\". Married filing separately is refused for the whole return (s3.mfs; i1040gi p. 14), so no filer the helper meets is married filing separately. As the Claude render of this line.",
+   "context": "4642b9ca87f4c5849bb8c786cf4bc79d5cb1e549b023819499238c7001f8557b"
   },
   {
    "printed": "6b",

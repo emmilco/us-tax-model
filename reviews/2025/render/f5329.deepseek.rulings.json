@@ -1,0 +1,21 @@
+{
+ "kind": "render",
+ "form": "f5329",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "2",
+   "restated": "Add person helper \"Exceptions without a fixed limit\" and person helper \"Exceptions 05, 09, 19, 22 and 23 within their limits\".",
+   "model": "The Exception 22 and 23 helpers cap only at $10,300 and $1,000, but the IRS text limits them to the lesser of $10,300 or 50% of the present value of the IRA, and the lesser of $1,000 or your total interest in the IRA minus $1,000.",
+   "ruling": "Ruling: finding (F1, EXC-LIMITS; the project's line and the question behind it, not its English); p590b p. 28, Domestic abuse victim distributions, Distribution limits: \"An eligible distribution to a domestic abuse victim must not exceed the lesser of $10,300 for 2025 or 50% of the present value of the IRA\"; Emergency personal expense distributions, Distribution limits: \"the amount that may be treated as an emergency personal expense distribution must not exceed the lesser of $1,000 or your total interest in the IRA minus $1,000\". The restatement is right about what the project does: person.x_c22 and person.x_c23 cap at $10,300 and $1,000 only, and retirement.exc_amount asks \"the amount you used for that purpose\" with no word of the account-value limits, which decision D4 said would be \"attested in the question's wording\". A domestic-abuse distribution of $8,000 from an IRA worth $12,000 is excluded in full, where the limit is $6,000 ($200 of tax omitted). See .transcription/proposed/stage21/f5329.findings.md F1.",
+   "context": "5846118525eb07eb2f0846741d0e1d84e08d08957ad516346e4ccbc92d8b78e0"
+  },
+  {
+   "printed": "48",
+   "restated": "Enter the amount from line 47.",
+   "model": "The form says 'Total excess contributions. Add lines 46 and 47'; the restatement enters only line 47, omitting line 46 prior-year excess contributions.",
+   "ruling": "Ruling: scope; f5329 p. 2, line 48, \"Total excess contributions. Add lines 46 and 47\"; i5329 p. 8, Line 42, \"Enter the amount from line 48 of your 2024 Form 5329 only if the amount on line 49 of your 2024 Form 5329 is more than zero\". Lines 42 to 46 carry an earlier year's HSA excess, which the project refuses: f8889.unsupported asks about \"excess HSA contributions from an earlier year that remain in your HSA\", and person.x_other about \"excess HSA contributions from an earlier year when you have no Form 8889 for 2025\" (refusing f5329 lines 4 and 49). On every computed return line 46 is zero and line 48 equals line 47, as the label says (\"lines 42 to 46 are zero in this tool\"). Project stands.",
+   "context": "5846118525eb07eb2f0846741d0e1d84e08d08957ad516346e4ccbc92d8b78e0"
+  }
+ ]
+}

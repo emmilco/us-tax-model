@@ -148,6 +148,8 @@ PE_PASS_THROUGH = {"lines": [], "components": {
     "eic.credit": "reached through Form 1040 line 27a, a copy of it",
     "f8863.line1": "the engine has no variable for the American opportunity credit before the phase-out; line 7 is mapped",
     "f8863.line12": "the engine has no variable for the lifetime learning credit before the phase-out; line 18 is mapped",
+    "s2.line8": "the engine has no Form 5329 variable: early_withdrawal_penalty is an input with no formula, the Schedule 1 line 18 "
+                "penalty on early withdrawal of savings, and taxable_ira_distributions reaches income only (limitation early_distribution_tax)",
 }}
 # Lines that move with adjusted gross income, for limitations on an engine's AGI.
 PE_AGI_LINES = [l for l in PE_MAP if l not in ("eic.earned_income", "eic.line1", "person[taxpayer].se_line12", "person[taxpayer].se_line13", "s2.line4", "s1.line15")]
@@ -251,6 +253,8 @@ TC_PASS_THROUGH = {"lines": [], "components": {
     "f8863.line1": "e87521 (Form 8863 line 1, the total of Part III line 30) is an input",
     "f8863.line10": "e87530 (Form 8863 line 10, the total of Part III line 31) is an input",
     "f8863.line18": "EducationTaxCredit computes line 18 but does not expose it; c07230 (line 19) is an output",
+    "s2.line8": "e09900 (Schedule 2 line 8, the Form 5329 taxes) is an input; the engine does not compute Form 5329, so it could only "
+                "echo the amount supplied (limitation early_distribution_tax)",
 }}
 TC_AGI_LINES = [l for l in TC_MAP if l not in ("eic.earned_income", "eic.line1", "person[taxpayer].se_line12", "person[taxpayer].se_line13", "s2.line4", "s1.line15")]
 TC_LIMITATIONS = [
@@ -299,6 +303,14 @@ EDU_NO_REFUND = ("the engine has no Form 8863 line 7 test: it makes 40% of the A
                  "where a filer under 24 who is not filing jointly and meets line 7 conditions 1 and 2 checks the line 7 box and has "
                  "no refundable part (i8863 p. 7, Line 7; 26 U.S.C. 25A(i)(6)); returns with the box checked are not compared on the "
                  "lines it moves")
+# Lines Schedule 2 line 8 (Form 5329) moves: Schedule 2 line 21, Form 1040 lines 23 and 24, the pre-credit total and the
+# refund or amount owed. An engine with no Form 5329 is not compared on them where the project has that tax.
+EARLY_MOVED = re.compile(r"^(f1040\.(line(23|24|34|35a|37)|tax_before_credits)|s2\.line(8|21)|person\[[^\]]+\]\.f5329\[)")
+EARLY_REASON = ("the engine does not compute Form 5329: it has no input for the code of a Form 1099-R distribution and takes Schedule 2 "
+                "line 8 (if at all) as an entered amount, so on returns where the project figures the 10% (25% for a SIMPLE IRA in its "
+                "first 2 years) additional tax on early distributions, or the 6% tax on HSA excess contributions, its total tax omits it")
+for _mapping, _limitations in ((PE_MAP, PE_LIMITATIONS), (TC_MAP, TC_LIMITATIONS)):
+    _limitations.append({"feature": "early_distribution_tax", "lines": [l for l in _mapping if EARLY_MOVED.match(l)], "reason": EARLY_REASON})
 for _mapping, _limitations in ((PE_MAP, PE_LIMITATIONS), (TC_MAP, TC_LIMITATIONS)):
     _limitations.append({"feature": "marketplace", "lines": [l for l in _mapping if PTC_MOVED.match(l)], "reason": PTC_REASON})
     _limitations.append({"feature": "edu_no_refund", "lines": [l for l in _mapping if EDU_MOVED.match(l)], "reason": EDU_NO_REFUND})
@@ -370,6 +382,8 @@ def run_policyengine(cases):
             "traditional_ira_contributions": y(dollars(f.get("ira_contribution", 0))),
             "roth_ira_contributions": y(dollars(f.get("roth_contribution", 0))),
             "ira_active_participant": y(bool(f.get("ira_work_plan", False))),
+            # Form 1099-R: the taxable traditional IRA distributions (Form 1040 line 4b).
+            "taxable_ira_distributions": y(dollars(f.get("ira_distributions", 0))),
             # Roles are supplied so an adult child stays a dependent; by age ordering
             # the engine would make an adult child the filer's spouse.
             "tax_unit_role_input": y("HEAD"),
@@ -389,7 +403,8 @@ def run_policyengine(cases):
         if f.get("joint"):
             sid = f"{pid}_s"
             people[sid] = {"age": y(f["spouse_age"]), "medicare_enrolled": y(False),
-                           "employment_income": y(dollars(f["spouse_wages"])), "tax_unit_role_input": y("SPOUSE")}
+                           "employment_income": y(dollars(f["spouse_wages"])), "tax_unit_role_input": y("SPOUSE"),
+                           "taxable_ira_distributions": y(dollars(f.get("spouse_ira_distributions", 0)))}
             members.append(sid)
         for k, age in enumerate(f.get("children", [])):
             cid = f"{pid}_c{k + 1}"
@@ -473,6 +488,8 @@ def run_taxcalc(cases):
             # Form 8863 line 1 (the tentative American opportunity credit, Part III line 30 summed) and line 10 (the lifetime
             # learning credit expenses, Part III line 31 summed); the engine applies the phase-outs and the Credit Limit Worksheet.
             e87521=dollars((f.get("education") or {}).get("line1", 0)), e87530=dollars((f.get("education") or {}).get("line10", 0)),
+            # Form 1099-R: the taxable traditional IRA distributions of both spouses (Form 1040 line 4b).
+            e01400=dollars(f.get("ira_distributions", 0) + f.get("spouse_ira_distributions", 0)),
         ))
     df = pd.DataFrame(rows).astype(float)
     for col in ("RECID", "MARS", "FLPDYR", "XTOT", "n24", "nu18", "n1820", "n21", "EIC", "f2441", "nu13"):

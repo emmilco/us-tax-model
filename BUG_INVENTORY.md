@@ -3003,3 +3003,97 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
   answer it Yes, which is how they were already claimed) and BUG-0193 (fixed with Stage 19: the remedies name the
   education credits and the premium tax credit "figured on Form 8962").
 - **Tags:** disposition
+
+## BUG-0200 — The joint medical-exception refusal fired on single returns
+
+- **Date:** 2026-10-29
+- **Caught by:** the Stage 21 blind-scenario builder (E6, a single filer whose exception 05 exceeds Schedule A line 4), in the
+  stage that introduced it, before review.
+- **Symptom:** `s2.e05_over` compared the raw exception 05 amounts of everyone on the return with Schedule A line 4, so a
+  single filer's medical exception above line 4 was refused instead of limited to it (D4).
+- **Where:** `forms/2025/s2.yaml`, `s2.e05_total`.
+- **Fix:** the total adds each person's already-limited amount (`person.x_c05`), so only spouses who together exceed line
+  4 are refused (D8(d)).
+- **Tags:** over-refusal; caught-by-blind-scenario
+
+## BUG-0201 — More than one emergency personal expense distribution a year was excepted
+
+- **Date:** 2026-10-29
+- **Caught by:** the Stage 21 blind predictions (E5: both predictors excepted only one of two emergency distributions), in
+  the stage that introduced it.
+- **Symptom:** p590b p. 28, Distribution limits, "You are limited to taking one emergency personal expense distribution per
+  calendar year" (26 U.S.C. 72(t)(2)(I)(ii), "Not more than 1 distribution per calendar year"). The project limited only the
+  year's total to $1,000, so two distributions claiming exception 23 were both excepted.
+- **Where:** `forms/2025/person.yaml` (Stage 21 block), `forms/2025/f5329.yaml` line 4.
+- **Fix:** `person.x_two23` refuses Form 5329 line 4 when exception 23 is claimed on more than one Form 1099-R (the tool
+  cannot tell which came first); blind return E5 claims it on the first distribution only.
+- **Tags:** missing-limit; caught-by-blind-prediction
+
+## BUG-0202 — A 2025 HSA excess withdrawn by the due date was taxed at 6%
+
+- **Date:** 2026-10-29
+- **Caught by:** the Stage 21 adjudication of Form 8889 (`.transcription/proposed/stage21/f8889.findings.md`,
+  S21-HSA-WITHDRAWN), in the stage that introduced Part VII.
+- **Symptom:** i5329 p. 8, Line 47: excess contributions withdrawn by the due date, with their earnings, "will be treated
+  as not having been contributed". `f8889.unsupported` asked only about "a 2025 distribution that withdrew excess
+  contributions", so a withdrawal made in 2026 before the due date was not refused and Part VII taxed the excess. D6 had
+  said the question would be reworded.
+- **Where:** `forms/2025/f8889.yaml`, `f8889.unsupported`.
+- **Fix:** the question asks about a withdrawal of excess contributions or their earnings made in 2025 or in 2026 by the
+  due date of the 2025 return (refused, as D6 decided).
+- **Tags:** missing-screen; caught-by-source-adjudication
+
+## BUG-0203 — The account-value limits of exceptions 22 and 23 were not stated
+
+- **Date:** 2026-10-29
+- **Caught by:** the Stage 21 adjudication of retirement, person and the Form 5329 render logs (F1 EXC-LIMITS, VALUE-LIMBS).
+- **Symptom:** p590b p. 28 limits exception 22 to the lesser of $10,300 or 50% of the IRA's present value, and exception
+  23 to the lesser of $1,000 or the IRA interest less $1,000. D4 put the account-value halves in the question's wording,
+  but `retirement.exc_amount` did not mention them (nor D4's help for 07 and 08), and the three-year bar on exception 23
+  was not screened.
+- **Where:** `forms/2025/retirement.yaml` (Stage 21 block).
+- **Fix:** `exc_amount` states both account-value limits and the 07 and 08 amounts; `early_screen` lists an emergency
+  distribution within 3 years after an earlier one not repaid. The question also numbers terminal illness 20, as i5329
+  p. 5 does (it said 21).
+- **Tags:** question-incomplete; caught-by-source-adjudication
+
+## BUG-0204 — The Form 1099-R code question did not offer the new codes
+
+- **Date:** 2026-10-29
+- **Caught by:** the Stage 21 adjudication of the person logs (noted), in the stage that added the codes.
+- **Symptom:** `retirement.code` listed normal_7, death_4, early_exception_2, direct_rollover_G, qualified_roth_Q and other,
+  so a filer with code 1, S or 3 following the wording would answer "other" and be refused.
+- **Where:** `forms/2025/retirement.yaml`, `retirement.code`.
+- **Fix:** the question names early_1, simple_S and disability_3. `s2.other`'s new clause moves to the end of the question,
+  and `s2.line8_box` also cites i1040gi p. 112; the i8889 citations of the HSA excess lines point to p. 8.
+- **Tags:** question-incomplete; caught-by-source-adjudication
+
+## BUG-0205 — The exception amount asked how a medical, birth or abuse distribution was spent
+
+- **Date:** 2026-10-29
+- **Caught by:** the Stage 21 round-2 adjudication of retirement (`.transcription/proposed/stage21/round2/retirement.findings.md`,
+  F4 EXC-USE), in the stage that introduced the question. Witness: classm.retirement.3 with $2,000 of a birth distribution
+  spent: line 4 $2,460.75 where the source gives $1,710.75.
+- **Symptom:** `retirement.exc_amount` asked for "the amount you used for that purpose" for exceptions 05, 19 and 22, which
+  have no use test (i5329 p. 5; p590b pp. 25 and 28); only 09 (first home) and 23 (emergency expenses) turn on the purpose.
+- **Where:** `forms/2025/retirement.yaml` (Stage 21 block).
+- **Fix:** the question asks, per exception, for the amount that qualifies (05, 19, 22), the amount used for first-home costs
+  (09), the emergency amount (23), the premiums (07) and the education expenses (08); 22 and 23 name the IRA or plan account.
+  Also from round 2: the HSA withdrawal question says "including extensions" (i5329 p. 8), and the citations of the
+  employer-excess lines and the line 8 box quote the paragraphs that state them.
+- **Tags:** question-wrong; caught-by-source-adjudication
+
+## BUG-0206 — The Lean evaluator named a refusal gate on an enclosing entry without the entry's key
+
+- **Date:** 2026-10-29
+- **Caught by:** the evaluator comparison (`npm run compare`) in the Stage 21 pre-commit check-all: 3 differing cases,
+  `stage21.refuse.two23`, `stage21.refuse.limit_binds` and `stage21.refuse.x_other`.
+- **Symptom:** a refusal raised in `person[taxpayer].f5329[form]` by a gate on the enclosing person entry
+  (`when: person.x_two23`) carried the gate `person.x_two23` in the Lean evaluator and `person[taxpayer].x_two23` in the
+  TypeScript one. The form, remedy and citation agreed. `spec.md` section 4 defines a refusal by "the gate line's key";
+  keys are qualified by entry, so the TypeScript value is the specified one.
+- **Where:** `lean/TaxFormalization/Eval.lean`, the refusal gate loop: it qualified the gate only when the gate line was in
+  the current document and otherwise kept the bare id. Stage 21 is the first refusal whose gate is on an enclosing entry.
+- **Fix:** the gate's key is built in the enclosing collection entry (`enclosingKey`), as a read of that entry's line is.
+  Returned values were never affected.
+- **Tags:** tool-defect; value-neutral; latent-until-new-input; caught-by-evaluator-comparison

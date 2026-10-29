@@ -1491,3 +1491,11 @@ Status: **owner decisions taken 2026-10-29** (TASKS.md T-080). The map is
 31bbd60 with the Stage 18 build, `stage19-education-credits.decisions.md`: the owner accepted D1 to D9 as recommended,
 with the items listed there as settled by the evidence. The atom vocabulary does not change. The stage is the third of
 the route in `docs/2026-10-26_plan_revision.md` section E.
+
+## Stage 21 premise map — Form 5329
+
+Status: **owner decisions taken 2026-10-29** (TASKS.md T-082). The map is `research/premises/stage21-form-5329.md`, its
+adversarial verification `stage21-form-5329.verification.md`, and the decision batch, written from both and checked
+against the tree with the Stage 19 build, `stage21-form-5329.decisions.md`: the owner accepted D1 to D10 as
+recommended, with the items listed there as settled by the evidence. The atom vocabulary does not change. The stage is
+the fourth and last of the route in `docs/2026-10-26_plan_revision.md` section E.

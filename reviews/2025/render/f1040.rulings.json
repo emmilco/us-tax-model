@@ -113,6 +113,13 @@
    "ruling": "Ruling: model error; project retained. The two Worksheet B STOPs are reached through the shared lines: eic.line1 is Worksheet B line 6 for a Schedule C filer, so Worksheet B line 7 is eic.line2, and 'If line 7 is zero, STOP ... Check the box on Form 1040 ... line 27c' (i1040gi p. 48) is the term 'Worksheet A line 2 is zero'; line 4b zero or less makes line 6 zero (eic.wsb_6 floors at zero), line 7 zero and the box checked (stage14.eic.wsb_stop_27c: line 4b -$5,000, line 27c checked); line 5 'No' is eic.wsb_line5_stop. The filer's own choice not to claim the EIC is not asked (the label says so)."
   },
   {
+   "printed": "29",
+   "restated": "Choose — [f8863 helper \"An education credit can be claimed on this return: expenses paid, and neither you nor your spouse is claimed as a dependent\" = true → f8863 line 8] [f8863 helper \"An education credit can be claimed on this return: expenses paid, and neither you nor your spouse is claimed as a dependent\" = false → f8863 helper \"Zero\"]",
+   "model": "The eligibility gate tests only that expenses were paid and that no one claims the filer as a dependent. The instructions also say 'You cannot claim an education credit... if... 2. Your filing status is married filing separately,' and the gate does not exclude MFS.",
+   "ruling": "Ruling: scope; the model says the gate does not exclude married filing separately. i8863 p. 3, Who cannot claim a credit: \"2. Your filing status is married filing separately\". A married filing separately return is refused for the whole return (s3.mfs, read by scope.yaml and f2441.yaml; i1040gi p. 14, Married Filing Separately), so f8863.eligible never meets such a filer; the restatement of line 29 need not repeat it. Same reading as the Stage 19 adjudication of line 29.",
+   "context": "a041f34b15c92976bcabb7019060368c3a16b2f8bfe5b963429102ae14bda7cf"
+  },
+  {
    "printed": "2b",
    "restated": "Enter the amount from sb line 4.",
    "model": "The line 2b instructions say only \"Enter your total taxable interest income on line 2b\". The Schedule B text is not provided, so there is nothing to confirm that Schedule B line 4 (line 2 minus line 3) is the amount carried to line 2b.",

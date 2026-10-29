@@ -309,6 +309,55 @@
 - Expr: `{"collection":"w2","field":"w2.box2","op":"sum_over"}`
 - Cite: [f1040] p. 2, Payments and Refundable Credits, line 25a, "Federal income tax withheld from:", "Form(s) W-2" (2025; created 2025-09-05; sha256 3d31c226)
 
+## (helper) — `person.ira_amount_a`
+
+- **Authored helper label:** IRA distributions on this person's Forms 1099-R (line 4a amounts)
+- **Encoded (NonNegDollars):** Add retirement.amount_a over every confirmed retirement entry for which helper "IRA distribution (lines 4a and 4b)" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"retirement","field":"retirement.amount_a","op":"sum_over","where":{"eq":["retirement.is_ira",{"const":true}],"op":"test"}}`
+- Cite: [i1040gi] pp. 26-27, Lines 4a and 4b (total distributions where an exception applies; 'More than one distribution') (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.ira_taxable`
+
+- **Authored helper label:** Taxable IRA distributions on this person's Forms 1099-R (line 4b amounts)
+- **Encoded (NonNegDollars):** Add retirement.taxable over every confirmed retirement entry for which helper "IRA distribution (lines 4a and 4b)" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"retirement","field":"retirement.taxable","op":"sum_over","where":{"eq":["retirement.is_ira",{"const":true}],"op":"test"}}`
+- Cite: [i1040gi] p. 27, line 4b, 'figure the taxable amount of each distribution and enter the total of the taxable amounts on line 4b' (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.ira_rollovers`
+
+- **Authored helper label:** Number of this person's IRA distributions with a rollover
+- **Encoded (Count):** Add retirement.one over every confirmed retirement entry for which helper "IRA distribution (lines 4a and 4b)" = true and helper "Part or all of the distribution was rolled over (an amount rolled over, or a direct rollover, code G)" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"retirement","field":"retirement.one","op":"sum_over","where":{"all":[{"eq":["retirement.is_ira",{"const":true}],"op":"test"},{"eq":["retirement.has_rollover",{"const":true}],"op":"test"}],"op":"test"}}`
+- Cite: [i1040gi] p. 27, Exception 1, 'Also check box 1 on line 4c' (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.plan_amount_a`
+
+- **Authored helper label:** Pension and annuity distributions on this person's Forms 1099-R (line 5a amounts)
+- **Encoded (NonNegDollars):** Add retirement.amount_a over every confirmed retirement entry for which helper "IRA distribution (lines 4a and 4b)" = false, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"retirement","field":"retirement.amount_a","op":"sum_over","where":{"eq":["retirement.is_ira",{"const":false}],"op":"test"}}`
+- Cite: [i1040gi] pp. 28-30, Lines 5a and 5b (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.plan_taxable`
+
+- **Authored helper label:** Taxable pension and annuity distributions on this person's Forms 1099-R (line 5b amounts)
+- **Encoded (NonNegDollars):** Add retirement.taxable over every confirmed retirement entry for which helper "IRA distribution (lines 4a and 4b)" = false, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"retirement","field":"retirement.taxable","op":"sum_over","where":{"eq":["retirement.is_ira",{"const":false}],"op":"test"}}`
+- Cite: [i1040gi] pp. 28-30, Lines 5a and 5b; p. 29, Simplified Method Worksheet, 'Enter the total of the taxable parts on Form 1040 or 1040-SR, line 5b' (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.plan_rollovers`
+
+- **Authored helper label:** Number of this person's pension distributions with a rollover
+- **Encoded (Count):** Add retirement.one over every confirmed retirement entry for which helper "IRA distribution (lines 4a and 4b)" = false and helper "Part or all of the distribution was rolled over (an amount rolled over, or a direct rollover, code G)" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"retirement","field":"retirement.one","op":"sum_over","where":{"all":[{"eq":["retirement.is_ira",{"const":false}],"op":"test"},{"eq":["retirement.has_rollover",{"const":true}],"op":"test"}],"op":"test"}}`
+- Cite: [i1040gi] p. 30, Rollovers, 'Also check box 1 on line 5c' (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.sav_dist`
+
+- **Authored helper label:** Distributions received in 2025 that Form 8880 line 4 counts, on this person's Forms 1099-R
+- **Encoded (NonNegDollars):** Add retirement.sav_amount over every confirmed retirement entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"retirement","field":"retirement.sav_amount","op":"sum_over"}`
+- Cite: [f8880] p. 2, Line 4, "Enter the total amount of distributions you, and your spouse if filing jointly, received after 2022 and before the due date of your 2025 return (including extensions)" (2025; created 2025-11-04; sha256 ba2b2877)
+
 ## eligible — `person.eligible`
 
 - **Authored helper label:** More than one employer and total social security wages over $176,100
@@ -1729,3 +1778,279 @@
 - Interpretation: amb.2025.edu_age_rule
 - Expr: `{"all":[{"eq":["f8863.kid_needed",{"const":true}],"op":"test"},{"any":[{"eq":["person.sav_born",{"const":false}],"op":"test"},{"all":[{"eq":["person.edu_born_2007",{"const":false}],"op":"test"},{"eq":["person.edu_half_support",{"const":true}],"op":"test"}],"op":"test"},{"all":[{"eq":["person.edu_born_2002",{"const":false}],"op":"test"},{"eq":["person.edu_fulltime",{"const":true}],"op":"test"},{"eq":["person.edu_half_support",{"const":true}],"op":"test"}],"op":"test"}],"op":"test"},{"eq":["person.edu_parent",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i8863] p. 7, Line 7, "You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you." (2025; sha256 195cfd5e)
+
+## (helper) — `person.x_l1`
+
+- **Authored helper label:** Form 5329 line 1 for this person: early distributions includible in income
+- **Encoded (NonNegDollars):** Add retirement.l1 over every confirmed retirement entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"retirement","field":"retirement.l1","op":"sum_over"}`
+- Cite: [i5329] p. 3, Line 1, "Enter the amount of early distributions includible in income (other than qualified disaster recovery distributions) that you received from:" (2025; sha256 aec3d325)
+
+## (helper) — `person.x_l2_all`
+
+- **Authored helper label:** Exception amounts before the per-person limits
+- **Encoded (NonNegDollars):** Add retirement.l2 over every confirmed retirement entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"retirement","field":"retirement.l2","op":"sum_over"}`
+- Cite: [i5329] p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99." (2025; sha256 aec3d325)
+
+## (helper) — `person.x_l1_s`
+
+- **Authored helper label:** Line 1 amounts from code S distributions
+- **Encoded (NonNegDollars):** Add retirement.l1_s over every confirmed retirement entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"retirement","field":"retirement.l1_s","op":"sum_over"}`
+- Cite: [i5329] p. 5, Line 4, "If any amount on line 3 was a distribution from a SIMPLE IRA received within 2 years from the date you first participated in the SIMPLE IRA plan, you must multiply that amount by 25% instead of 10%." (2025; sha256 aec3d325)
+
+## (helper) — `person.x_l2_s`
+
+- **Authored helper label:** Line 2 amounts from code S distributions
+- **Encoded (NonNegDollars):** Add retirement.l2_s over every confirmed retirement entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"retirement","field":"retirement.l2_s","op":"sum_over"}`
+- Cite: [i5329] p. 5, Line 4, "If any amount on line 3 was a distribution from a SIMPLE IRA received within 2 years from the date you first participated in the SIMPLE IRA plan, you must multiply that amount by 25% instead of 10%." (2025; sha256 aec3d325)
+
+## (helper) — `person.x_e05`
+
+- **Authored helper label:** Exception 05 amounts
+- **Encoded (NonNegDollars):** Add retirement.l2_e05 over every confirmed retirement entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"retirement","field":"retirement.l2_e05","op":"sum_over"}`
+- Cite: [i5329] p. 5, Line 2, "Qualified retirement plan distributions up to the amount you paid for unreimbursed medical expenses during the year minus 7.5% of your adjusted gross income (AGI) for the year." (2025; sha256 aec3d325)
+
+## (helper) — `person.x_e09`
+
+- **Authored helper label:** Exception 09 amounts
+- **Encoded (NonNegDollars):** Add retirement.l2_e09 over every confirmed retirement entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"retirement","field":"retirement.l2_e09","op":"sum_over"}`
+- Cite: [p590b] p. 27, First home, "you don't have to pay the 10% additional tax on up to $10,000 of distributions you receive to buy, build, or rebuild a first home." (2025; sha256 d18a592e)
+
+## (helper) — `person.x_e19`
+
+- **Authored helper label:** Exception 19 amounts
+- **Encoded (NonNegDollars):** Add retirement.l2_e19 over every confirmed retirement entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"retirement","field":"retirement.l2_e19","op":"sum_over"}`
+- Cite: [p590b] p. 28, Qualified birth or adoption distribution, "A qualified birth or adoption distribution must not exceed $5,000 per taxpayer." (2025; sha256 d18a592e)
+
+## (helper) — `person.x_e22`
+
+- **Authored helper label:** Exception 22 amounts
+- **Encoded (NonNegDollars):** Add retirement.l2_e22 over every confirmed retirement entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"retirement","field":"retirement.l2_e22","op":"sum_over"}`
+- Cite: [p590b] p. 28, Distributions to domestic abuse victims, "on to a domestic abuse victim must not exceed the lesser of $10,300 for 2025 or 50% of the present value of the IRA." (2025; sha256 d18a592e)
+
+## (helper) — `person.x_e23`
+
+- **Authored helper label:** Exception 23 amounts
+- **Encoded (NonNegDollars):** Add retirement.l2_e23 over every confirmed retirement entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"retirement","field":"retirement.l2_e23","op":"sum_over"}`
+- Cite: [p590b] p. 28, Emergency personal expense distributions, "personal expense distribution must not exceed the lesser of $1,000 or your total interest in the IRA minus $1,000." (2025; sha256 d18a592e)
+
+## (helper) — `person.x_tax`
+
+- **Authored helper label:** This person's Form 5329 taxes
+- **Encoded (NonNegDollars):** Add f5329.tax over every confirmed f5329 entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"f5329","field":"f5329.tax","op":"sum_over"}`
+- Cite: [f1040s2] p. 1, Part II, line 8, "Additional tax on IRAs or other tax-favored accounts. Attach Form 5329 if required." (2025; created 2025-05-08; sha256 64d867b6)
+
+## (helper) — `person.x_must`
+
+- **Authored helper label:** One if this person must file Form 5329
+- **Encoded (Count):** Add f5329.one over every confirmed f5329 entry for which helper "This person must file Form 5329 (an exception claimed, a code S distribution, or HSA excess)" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"f5329","field":"f5329.one","op":"sum_over","where":{"eq":["f5329.must",{"const":true}],"op":"test"}}`
+- Cite: [i5329] p. 1, Who Must File, "However, if distribution code 1 is correctly shown in box 7 of all your Forms 1099-R and you owe the additional tax on the full amount shown on each Form 1099-R, you don’t have to file Form 5329." (2025; sha256 aec3d325)
+
+## (helper) — `person.x_prior09`
+
+- **Authored helper label:** Earlier first-home distributions excluded from the additional tax
+- **Encoded (NonNegDollars):** Input — Total of your earlier IRA distributions (before 2025) for which the first-home exception was used; zero if none
+- Expr: `{"op":"input","source":"Total of your earlier IRA distributions (before 2025) for which the first-home exception was used; zero if none"}`
+- Cite: [p590b] p. 27, First home, "you don't have to pay the 10% additional tax on up to $10,000 of distributions you receive to buy, build, or rebuild a first home." (2025; sha256 d18a592e)
+
+## (helper) — `person.x_cap09_base`
+
+- **Authored helper label:** Year parameter f5329.cap_first_home ($10,000)
+- **Encoded (NonNegDollars):** Enter $10,000 (f5329.cap_first_home).
+- Expr: `{"op":"param","ref":"f5329.cap_first_home"}`
+- Cite: [p590b] p. 27, First home, "you don't have to pay the 10% additional tax on up to $10,000 of distributions you receive to buy, build, or rebuild a first home." (2025; sha256 d18a592e)
+
+## (helper) — `person.x_cap09`
+
+- **Authored helper label:** First-home limit left: $10,000 less earlier first-home distributions
+- **Encoded (NonNegDollars):** Subtract helper "Earlier first-home distributions excluded from the additional tax" from helper "Year parameter f5329.cap_first_home ($10,000)". If zero or less, enter -0-.
+- Expr: `{"from":"person.x_cap09_base","op":"subtract_floor0","take":"person.x_prior09"}`
+- Cite: [p590b] p. 27, First home, "you don't have to pay the 10% additional tax on up to $10,000 of distributions you receive to buy, build, or rebuild a first home." (2025; sha256 d18a592e)
+
+## (helper) — `person.x_births`
+
+- **Authored helper label:** Number of births or adoptions the distributions were for
+- **Encoded (Count):** Input — For how many births or adoptions (children born or adopted, each counted once) did you take the birth or adoption distributions?
+- Expr: `{"op":"input","source":"For how many births or adoptions (children born or adopted, each counted once) did you take the birth or adoption distributions?"}`
+- Cite: [p590b] p. 28, Qualified birth or adoption distribution, "A qualified birth or adoption distribution must not exceed $5,000 per taxpayer." (2025; sha256 d18a592e)
+
+## (helper) — `person.x_cap19_one`
+
+- **Authored helper label:** Year parameter f5329.cap_birth ($5,000)
+- **Encoded (NonNegDollars):** Enter $5,000 (f5329.cap_birth).
+- Expr: `{"op":"param","ref":"f5329.cap_birth"}`
+- Cite: [p590b] p. 28, Qualified birth or adoption distribution, "A qualified birth or adoption distribution must not exceed $5,000 per taxpayer." (2025; sha256 d18a592e)
+
+## (helper) — `person.x_cap19`
+
+- **Authored helper label:** $5,000 for each birth or adoption
+- **Encoded (NonNegDollars):** Multiply helper "Year parameter f5329.cap_birth ($5,000)" by the number on helper "Number of births or adoptions the distributions were for".
+- Interpretation: amb.2025.f5329_birth_cap
+- Expr: `{"amount":"person.x_cap19_one","count":"person.x_births","op":"multiply_count"}`
+- Cite: [p590b] p. 28, Qualified birth or adoption distribution, "A qualified birth or adoption distribution must not exceed $5,000 per taxpayer." (2025; sha256 d18a592e)
+
+## (helper) — `person.x_cap22`
+
+- **Authored helper label:** Year parameter f5329.cap_abuse ($10,300)
+- **Encoded (NonNegDollars):** Enter $10,300 (f5329.cap_abuse).
+- Expr: `{"op":"param","ref":"f5329.cap_abuse"}`
+- Cite: [p590b] p. 28, Distributions to domestic abuse victims, "on to a domestic abuse victim must not exceed the lesser of $10,300 for 2025 or 50% of the present value of the IRA." (2025; sha256 d18a592e)
+
+## (helper) — `person.x_cap23`
+
+- **Authored helper label:** Year parameter f5329.cap_emergency ($1,000)
+- **Encoded (NonNegDollars):** Enter $1,000 (f5329.cap_emergency).
+- Expr: `{"op":"param","ref":"f5329.cap_emergency"}`
+- Cite: [p590b] p. 28, Emergency personal expense distributions, "personal expense distribution must not exceed the lesser of $1,000 or your total interest in the IRA minus $1,000." (2025; sha256 d18a592e)
+
+## (helper) — `person.x_c05`
+
+- **Authored helper label:** Exception 05 limited to the medical expenses above 7.5% of AGI (Schedule A line 4)
+- **Encoded (NonNegDollars):** Choose — [helper "Any exception 05 amount" = true → helper "Smaller of the exception 05 amounts and Schedule A line 4"] [helper "Any exception 05 amount" = false → line zero]
+- Interpretation: amb.2025.f5329_medical_joint
+- Expr: `{"alternatives":[{"guard":{"eq":["person.x_has05",{"const":true}],"op":"test"},"then":"person.x_c05_min"},{"guard":{"eq":["person.x_has05",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
+- Cite: [i5329] p. 5, Line 2, "Qualified retirement plan distributions up to the amount you paid for unreimbursed medical expenses during the year minus 7.5% of your adjusted gross income (AGI) for the year." (2025; sha256 aec3d325)
+
+## (helper) — `person.x_has05`
+
+- **Authored helper label:** Any exception 05 amount
+- **Encoded (Bool):** helper "Exception 05 amounts" > $0
+- Expr: `{"gt":["person.x_e05",{"const":0}],"op":"test"}`
+- Cite: [i5329] p. 5, Line 2, "Qualified retirement plan distributions up to the amount you paid for unreimbursed medical expenses during the year minus 7.5% of your adjusted gross income (AGI) for the year." (2025; sha256 aec3d325)
+
+## (helper) — `person.x_c05_min`
+
+- **Authored helper label:** Smaller of the exception 05 amounts and Schedule A line 4
+- **Encoded (NonNegDollars):** Enter the smaller of helper "Exception 05 amounts" or sa line 4.
+- Expr: `{"of":["person.x_e05","sa.line4"],"op":"smaller_of"}`
+- Cite: [i5329] p. 5, Line 2, "Qualified retirement plan distributions up to the amount you paid for unreimbursed medical expenses during the year minus 7.5% of your adjusted gross income (AGI) for the year." (2025; sha256 aec3d325)
+
+## (helper) — `person.x_has09`
+
+- **Authored helper label:** Any exception 09 amount
+- **Encoded (Bool):** helper "Exception 09 amounts" > $0
+- Expr: `{"gt":["person.x_e09",{"const":0}],"op":"test"}`
+- Cite: [p590b] p. 27, First home, "you don't have to pay the 10% additional tax on up to $10,000 of distributions you receive to buy, build, or rebuild a first home." (2025; sha256 d18a592e)
+
+## (helper) — `person.x_c09_min`
+
+- **Authored helper label:** Smaller of the exception 09 amounts and the limit left
+- **Encoded (NonNegDollars):** Enter the smaller of helper "Exception 09 amounts" or helper "First-home limit left: $10,000 less earlier first-home distributions".
+- Expr: `{"of":["person.x_e09","person.x_cap09"],"op":"smaller_of"}`
+- Cite: [p590b] p. 27, First home, "you don't have to pay the 10% additional tax on up to $10,000 of distributions you receive to buy, build, or rebuild a first home." (2025; sha256 d18a592e)
+
+## (helper) — `person.x_c09`
+
+- **Authored helper label:** Exception 09 within the $10,000 first-home limit
+- **Encoded (NonNegDollars):** Choose — [helper "Any exception 09 amount" = true → helper "Smaller of the exception 09 amounts and the limit left"] [helper "Any exception 09 amount" = false → line zero]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.x_has09",{"const":true}],"op":"test"},"then":"person.x_c09_min"},{"guard":{"eq":["person.x_has09",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
+- Cite: [p590b] p. 27, First home, "you don't have to pay the 10% additional tax on up to $10,000 of distributions you receive to buy, build, or rebuild a first home." (2025; sha256 d18a592e)
+
+## (helper) — `person.x_has19`
+
+- **Authored helper label:** Any exception 19 amount
+- **Encoded (Bool):** helper "Exception 19 amounts" > $0
+- Expr: `{"gt":["person.x_e19",{"const":0}],"op":"test"}`
+- Cite: [p590b] p. 28, Qualified birth or adoption distribution, "A qualified birth or adoption distribution must not exceed $5,000 per taxpayer." (2025; sha256 d18a592e)
+
+## (helper) — `person.x_c19_min`
+
+- **Authored helper label:** Smaller of the exception 19 amounts and $5,000 a birth or adoption
+- **Encoded (NonNegDollars):** Enter the smaller of helper "Exception 19 amounts" or helper "$5,000 for each birth or adoption".
+- Expr: `{"of":["person.x_e19","person.x_cap19"],"op":"smaller_of"}`
+- Cite: [p590b] p. 28, Qualified birth or adoption distribution, "A qualified birth or adoption distribution must not exceed $5,000 per taxpayer." (2025; sha256 d18a592e)
+
+## (helper) — `person.x_c19`
+
+- **Authored helper label:** Exception 19 within $5,000 a birth or adoption
+- **Encoded (NonNegDollars):** Choose — [helper "Any exception 19 amount" = true → helper "Smaller of the exception 19 amounts and $5,000 a birth or adoption"] [helper "Any exception 19 amount" = false → line zero]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.x_has19",{"const":true}],"op":"test"},"then":"person.x_c19_min"},{"guard":{"eq":["person.x_has19",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
+- Cite: [p590b] p. 28, Qualified birth or adoption distribution, "A qualified birth or adoption distribution must not exceed $5,000 per taxpayer." (2025; sha256 d18a592e)
+
+## (helper) — `person.x_c22`
+
+- **Authored helper label:** Exception 22 within $10,300
+- **Encoded (NonNegDollars):** Enter the smaller of helper "Exception 22 amounts" or helper "Year parameter f5329.cap_abuse ($10,300)".
+- Expr: `{"of":["person.x_e22","person.x_cap22"],"op":"smaller_of"}`
+- Cite: [p590b] p. 28, Distributions to domestic abuse victims, "on to a domestic abuse victim must not exceed the lesser of $10,300 for 2025 or 50% of the present value of the IRA." (2025; sha256 d18a592e)
+
+## (helper) — `person.x_c23`
+
+- **Authored helper label:** Exception 23 within $1,000
+- **Encoded (NonNegDollars):** Enter the smaller of helper "Exception 23 amounts" or helper "Year parameter f5329.cap_emergency ($1,000)".
+- Expr: `{"of":["person.x_e23","person.x_cap23"],"op":"smaller_of"}`
+- Cite: [p590b] p. 28, Emergency personal expense distributions, "personal expense distribution must not exceed the lesser of $1,000 or your total interest in the IRA minus $1,000." (2025; sha256 d18a592e)
+
+## (helper) — `person.x_n23`
+
+- **Authored helper label:** Forms 1099-R claiming exception 23
+- **Encoded (Count):** Add retirement.one over every confirmed retirement entry for which helper "Exception 23" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"retirement","field":"retirement.one","op":"sum_over","where":{"eq":["retirement.is_e23",{"const":true}],"op":"test"}}`
+- Cite: [p590b] p. 28, Distribution limits, "You are limited to taking one emergency personal expense distribution per calendar year" (2025; sha256 d18a592e)
+
+## (gate) — `person.x_two23`
+
+- **Authored helper label:** Exception 23 claimed on more than one distribution
+- **Encoded (Bool):** helper "Forms 1099-R claiming exception 23" > 1 (a count)
+- Expr: `{"gt":["person.x_n23",{"const":1,"type":"Count"}],"op":"test"}`
+- Cite: [p590b] p. 28, Distribution limits, "You are limited to taking one emergency personal expense distribution per calendar year" (2025; sha256 d18a592e)
+
+## (helper) — `person.x_capped_sum`
+
+- **Authored helper label:** Exceptions 05, 09, 19, 22 and 23 before their limits
+- **Encoded (NonNegDollars):** Add helper "Exception 05 amounts", helper "Exception 09 amounts", helper "Exception 19 amounts", helper "Exception 22 amounts", and helper "Exception 23 amounts".
+- Expr: `{"of":["person.x_e05","person.x_e09","person.x_e19","person.x_e22","person.x_e23"],"op":"sum"}`
+- Cite: [i5329] p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99." (2025; sha256 aec3d325)
+
+## (helper) — `person.x_limited_sum`
+
+- **Authored helper label:** Exceptions 05, 09, 19, 22 and 23 within their limits
+- **Encoded (NonNegDollars):** Add helper "Exception 05 limited to the medical expenses above 7.5% of AGI (Schedule A line 4)", helper "Exception 09 within the $10,000 first-home limit", helper "Exception 19 within $5,000 a birth or adoption", helper "Exception 22 within $10,300", and helper "Exception 23 within $1,000".
+- Expr: `{"of":["person.x_c05","person.x_c09","person.x_c19","person.x_c22","person.x_c23"],"op":"sum"}`
+- Cite: [i5329] p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99." (2025; sha256 aec3d325)
+
+## (helper) — `person.x_other_exc`
+
+- **Authored helper label:** Exceptions without a fixed limit
+- **Encoded (NonNegDollars):** Subtract helper "Exceptions 05, 09, 19, 22 and 23 before their limits" from helper "Exception amounts before the per-person limits". If zero or less, enter -0-.
+- Expr: `{"from":"person.x_l2_all","op":"subtract_floor0","take":"person.x_capped_sum"}`
+- Cite: [i5329] p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99." (2025; sha256 aec3d325)
+
+## (gate) — `person.x_limit_binds`
+
+- **Authored helper label:** A limited exception over its limit on a person with a code S distribution
+- **Encoded (Bool):** helper "Line 1 amounts from code S distributions" > $0 and helper "Exceptions 05, 09, 19, 22 and 23 before their limits" > helper "Exceptions 05, 09, 19, 22 and 23 within their limits"
+- Interpretation: amb.2025.f5329_simple_limits
+- Expr: `{"all":[{"gt":["person.x_l1_s",{"const":0}],"op":"test"},{"gt":["person.x_capped_sum","person.x_limited_sum"],"op":"test"}],"op":"test"}`
+- Cite: [i5329] p. 5, Line 4, "If any amount on line 3 was a distribution from a SIMPLE IRA received within 2 years from the date you first participated in the SIMPLE IRA plan, you must multiply that amount by 25% instead of 10%." (2025; sha256 aec3d325)
+
+## (gate) — `person.x_other`
+
+- **Authored helper label:** Form 5329 parts this tool does not prepare
+- **Encoded (Bool):** Input — Does any of these apply to you: a taxable distribution from a Coverdell ESA, a qualified tuition program (529 plan) or an ABLE account; excess contributions to a traditional or Roth IRA for an earlier year that are still in the IRA (whether or not you contributed for 2025); excess contributions to a Coverdell ESA, an Archer MSA or an ABLE account; excess HSA contributions from an earlier year when you have no Form 8889 for 2025; or a required minimum distribution from an IRA or plan that you did not take?
+- Expr: `{"op":"input","source":"Does any of these apply to you: a taxable distribution from a Coverdell ESA, a qualified tuition program (529 plan) or an ABLE account; excess contributions to a traditional or Roth IRA for an earlier year that are still in the IRA (whether or not you contributed for 2025); excess contributions to a Coverdell ESA, an Archer MSA or an ABLE account; excess HSA contributions from an earlier year when you have no Form 8889 for 2025; or a required minimum distribution from an IRA or plan that you did not take?"}`
+- Cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account." (2025; sha256 2ad77023)
+
+## (helper) — `person.x_hsa_value`
+
+- **Authored helper label:** Value of your HSAs on December 31, 2025 (including 2025 contributions made in 2026)
+- **Encoded (NonNegDollars):** Input — Total value of your HSAs on December 31, 2025, including contributions for 2025 that you made in 2026 (asked only when you have excess HSA contributions)
+- Expr: `{"op":"input","source":"Total value of your HSAs on December 31, 2025, including contributions for 2025 that you made in 2026 (asked only when you have excess HSA contributions)"}`
+- Cite: [f5329] p. 2, Part VII, line 49, "Additional tax. Enter 6% (0.06) of the smaller of line 48 or the value of your HSAs on December 31, 2025 (including 2025 contributions made in 2026)." (2025; sha256 2ad77023)
+
+## (helper) — `person.x_hsa_excess`
+
+- **Authored helper label:** This person's 2025 HSA excess contributions (Form 8889)
+- **Encoded (NonNegDollars):** Add f8889.excess_amt over every confirmed f8889 entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"f8889","field":"f8889.excess_amt","op":"sum_over"}`
+- Cite: [i5329] p. 8, Line 47, "Enter the excess of your contributions (made by you or on your behalf) to your HSAs for 2025 from Form 8889, line 2 (unless withdrawn—discussed next), over your contribution limit (Form 8889, line 12)." (2025; sha256 aec3d325)

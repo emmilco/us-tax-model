@@ -390,11 +390,9 @@
   {
    "id": "form5329",
    "group": "retirement_penalty",
-   "gates": [
-    "retirement.special",
-    "s2.other"
-   ],
-   "label": "Additional tax on qualified plans (Form 5329)",
+   "gates": [],
+   "refused": false,
+   "label": "Additional tax on qualified plans (Form 5329) (supported since Stage 21; its remaining refusals are unmeasured gates)",
    "irs": {
     "combine": "sum",
     "cells": [

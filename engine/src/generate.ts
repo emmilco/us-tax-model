@@ -113,6 +113,11 @@ const MODELLED = new Set([
   "person[taxpayer].sav_roth",
 ]);
 
+// Form 5329's per-person answers and Form 8889's box 1 answer (Stage 21): set by `putEarly` after every other draw, so
+// neither the random stream nor the derived streams (which hash the answers given before them) see them.
+const EARLY_ROOTS = ["x_other", "x_prior09", "x_births", "x_hsa_value"].map((k) => `person[taxpayer].${k}`).concat(`${HSA}.employer_in_box1`);
+const EARLY_SET = new Set(EARLY_ROOTS);
+
 // Inputs given their "no" or zero answer on every generated return, or an answer derived from other draws, and drawn
 // from no arbitrary, so the random stream is the same as without them: alimony, canceled debt and HSA distributions
 // (Schedule 1 lines 2a, 8c, 8f, 19a); the marital answer (joint filers are married; a head of household is married on
@@ -127,6 +132,7 @@ const FIXED = new Set([
   "f4952.prior_7", "f8960.prior_2i",
   "f8962.alloc", "f8962.married_in_2025", "f8962.other", "f8962.same_state_counted", "f8962.estimate_100", "f8962.alien_below", "f8962.fpl_table",
   "f8863.paid", "f8863.ban",
+  ...EARLY_ROOTS,
   ...["", "_1098t", "_inst", "_mat", "_a2025", "_a2026", "_refunds", "_over", "_line23", "_line24", "_line25", "_line26", "_ein",
     "_born_2007", "_born_2002", "_fulltime", "_half_support", "_parent"].map((k) => `person[taxpayer].edu${k}`),
 ]);
@@ -442,8 +448,8 @@ export const SCREENS: Screen[] = [
   { entry: null, when: ["f2441.care"], amounts: [/^dependent\[[^\]]+\]\.dc_paid$/] },
   { entry: null, when: ["f2441.benefits"], amounts: ["f2441.line13", "f2441.line14", "f2441.paid_2026", "f2441.plan_max", /\.w2\[[^\]]+\]\.box10(?:_wages)?$/] },
   { entry: W2, when: ["box12_any"], amounts: ["box12_d", "box12_e", "box12_f", "box12_g", "box12_h", "box12_s", "box12_aa", "box12_bb", "box12_ee", "g_elective"] },
-  { entry: /^retirement\[[^\]]+\]$/, when: ["annuity"], amounts: ["cost", "recovered", "last_line4"] },
-  { entry: /^retirement\[[^\]]+\]$/, when: ["used_last_year"], amounts: ["last_line4"] },
+  { entry: /^person\[[^\]]+\]\.retirement\[[^\]]+\]$/, when: ["annuity"], amounts: ["cost", "recovered", "last_line4"] },
+  { entry: /^person\[[^\]]+\]\.retirement\[[^\]]+\]$/, when: ["used_last_year"], amounts: ["last_line4"] },
   { entry: /^.*\.scveh\[[^\]]+\]$/, when: ["owned"], amounts: ["cost", "prior_179", "s179_elect"] },
   { entry: /^.*\.sc\[[^\]]+\]$/, when: ["hi_uses"], amounts: ["f7206_line1"] },
 ];
@@ -481,7 +487,7 @@ function putBox12(inputs: Inputs, W: string, deferral: number): void {
 function buildInputs(data: CanonicalData, s: Spec): Inputs {
   const { roots } = declaredInputs(data);
   const inputs: Inputs = {};
-  for (const [key, line] of roots) inputs[key] = defaultFor(data, line);
+  for (const [key, line] of roots) if (!EARLY_SET.has(key)) inputs[key] = defaultFor(data, line);
   // Clean returns keep every out-of-scope flag at its usual value, so most
   // generated returns compute all the way through; the rest exercise gates.
   for (const [key, v] of Object.entries(s.flags)) inputs[key] = s.clean ? (BOOL_TRUE_PERCENT[key] ?? 0) >= 50 : v;
@@ -589,7 +595,7 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
   // account does not allow is kept only on unclean returns, so the gates are exercised too.
   const retiree = s.profile === "retiree";
   const dists = retiree ? s.pensions : [];
-  inputs["$retirement"] = dists.map((_, i) => `r${i + 1}`);
+  inputs["$retirement@person[taxpayer]"] = dists.map((_, i) => `r${i + 1}`);
   dists.forEach((d, i) => {
     const code = s.clean ? (d.account === "roth_ira" ? "qualified_roth_Q" : d.code === "qualified_roth_Q" || d.code === "other" ? "normal_7" : d.code) : d.code;
     const { savExcluded, ...fields } = d;
@@ -597,7 +603,7 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
     const entry = { ...fields, code, special: s.clean ? false : d.special, annuity: d.account === "plan" && d.annuity,
       box5: d.account === "plan" ? d.box5 : 0, rollover: Math.min(d.rollover, d.box1),
       sav_military: d.account === "plan" && savExcluded, sav_404k: false, sav_inherited: d.account !== "plan" && savExcluded };
-    for (const [k, v] of Object.entries(entry)) inputs[`retirement[r${i + 1}].${k}`] = v;
+    for (const [k, v] of Object.entries(entry)) inputs[`person[taxpayer].retirement[r${i + 1}].${k}`] = v;
   });
   inputs["ssb.benefits"] = retiree ? s.benefits : 0;
   // Schedule 1 items: unemployment (with part of a current-year overpayment sometimes repaid), educator expenses,
@@ -658,6 +664,8 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
     if (sp.age65) inputs[`${P}.died_before_65`] = sp.died;
     const keys = sp.employers.map((_, k) => `emp_${String.fromCharCode(97 + k)}`);
     inputs[`$w2@${P}`] = keys;
+    // The generated distributions are the taxpayer's; your spouse has no Form 1099-R.
+    inputs[`$retirement@${P}`] = [];
     sp.employers.forEach((e, k) => {
       const box1 = e.box1, box3 = Math.min(box1, Math.max(0, WAGE_BASE - e.box7)), box5 = box1 + e.box7;
       Object.assign(inputs, { [`${P}.w2[${keys[k]}].box1`]: box1, [`${P}.w2[${keys[k]}].box2`]: rate(box1, e.box2pct, 100), [`${P}.w2[${keys[k]}].box3`]: box3,
@@ -693,6 +701,7 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
   putCarryovers(inputs);
   putPtc(inputs);
   putEdu(inputs);
+  putEarly(inputs);
   return inputs;
 }
 
@@ -748,6 +757,77 @@ function putEdu(inputs: Inputs): void {
     const why = next() < 0.75 ? "aoc" : (["line23", "ein", "ein", "line23", "line25", "line24"] as const)[Math.floor(next() * 6)]!;
     Object.assign(inputs, { [`${E}.edu_line23`]: why === "line23", [`${E}.edu_line24`]: why !== "line24",
       [`${E}.edu_line25`]: why === "line25", [`${E}.edu_line26`]: false, [`${E}.edu_ein`]: why !== "ein" });
+  }
+}
+
+const RETIREMENT_FIELDS: Record<string, number | boolean | string> = {
+  account: "traditional_ira", code: "normal_7", box1: 0, box5: 0, rollover: 0, special: false, annuity: false, cost: 0,
+  used_last_year: false, last_line4: 0, joint_life: false, age: 50, combined_age: 100, months: 12, recovered: 0,
+  sav_military: false, sav_404k: false, sav_inherited: false,
+};
+// Exceptions drawn for an early distribution, by kind of account (i5329 p. 5: 01 and 06 only for plans, 07 to 09 only
+// for IRAs); the limited ones (05, 09, 19, 22, 23) are listed more than once.
+const IRA_EXCEPTIONS = ["e09", "e09", "e19", "e19", "e22", "e23", "e05", "e12", "e02", "e03", "e07", "e08", "e21", "e10"];
+const PLAN_EXCEPTIONS = ["e19", "e19", "e22", "e23", "e05", "e12", "e01", "e06", "e02", "e03", "e21", "e11"];
+
+/** Form 5329 (Stage 21), from a derived stream after every other draw. Every person answers No to the parts not
+ * prepared and every Form 1099-R No to its screens with no exception. On about one return in ten with a Form 1099-R,
+ * one of your traditional IRA or plan distributions (sometimes two) is an early distribution: code 1 mostly, code S
+ * on some traditional IRAs; about half claim an exception with the amount it covers, the limited ones (first home
+ * with earlier first-home distributions, birth or adoption with a count, domestic abuse, emergency, medical)
+ * sometimes over their limits and sometimes on both entries; on a joint return your spouse sometimes has an early
+ * traditional IRA distribution as well. A Form 8889 with contributions answers the year-end value of the HSAs
+ * (sometimes below the excess) and, with employer contributions, whether an excess is in Form W-2 box 1. */
+function putEarly(inputs: Inputs): void {
+  const next = derivedStream(inputs, "early");
+  const between = (lo: number, hi: number) => lo + Math.floor(next() * (hi - lo + 1));
+  const pick = <T>(xs: readonly T[]): T => xs[Math.floor(next() * xs.length)]!;
+  const persons = ((inputs["$person"] as string[] | undefined) ?? []).map((p) => `person[${p}]`);
+  for (const P of persons) {
+    Object.assign(inputs, { [`${P}.x_other`]: false, [`${P}.x_prior09`]: 0, [`${P}.x_births`]: 0, [`${P}.x_hsa_value`]: 0 });
+    for (const e of (inputs[`$retirement@${P}`] as string[] | undefined) ?? []) {
+      Object.assign(inputs, { [`${P}.retirement[${e}].early_screen`]: false, [`${P}.retirement[${e}].code_screen`]: false,
+        [`${P}.retirement[${e}].exception`]: "none", [`${P}.retirement[${e}].exc_amount`]: 0 });
+    }
+    for (const h of (inputs[`$f8889@${P}`] as string[] | undefined) ?? []) {
+      const H = `${P}.f8889[${h}]`;
+      const own = Number(inputs[`${H}.line2`] ?? 0), employer = Number(inputs[`${H}.line9`] ?? 0);
+      inputs[`${H}.employer_in_box1`] = employer > 0 && next() < 0.9;
+      if (own + employer > 0) inputs[`${P}.x_hsa_value`] = next() < 0.25 ? between(0, own + employer) : own + employer + between(0, 2_000_000);
+    }
+  }
+  const T = "person[taxpayer]";
+  const entries = ((inputs[`$retirement@${T}`] as string[] | undefined) ?? [])
+    .filter((e) => inputs[`${T}.retirement[${e}].account`] !== "roth_ira");
+  if (entries.length === 0 || next() >= 0.1) return;
+  const chosen = entries.length > 1 && next() < 0.3 ? entries.slice(0, 2) : [pick(entries)];
+  let first: string | null = null;
+  const early = (P: string, E: string, ira: boolean) => {
+    inputs[`${E}.code`] = ira && next() < 0.25 ? "simple_S" : "early_1";
+    if (next() >= 0.5) return;
+    const list = ira ? IRA_EXCEPTIONS : PLAN_EXCEPTIONS;
+    const exc = first !== null && list.includes(first) && next() < 0.5 ? first : pick(list);
+    first = exc;
+    const taxable = Math.max(0, Number(inputs[`${E}.box1`]) - Number(inputs[`${E}.rollover`] ?? 0));
+    const amount = exc === "e09" ? between(200_000, 1_200_000) : exc === "e19" ? between(100_000, 900_000)
+      : exc === "e22" ? between(200_000, 1_400_000) : exc === "e23" ? between(20_000, 200_000)
+      : next() < 0.6 ? taxable : between(0, taxable);
+    Object.assign(inputs, { [`${E}.exception`]: exc, [`${E}.exc_amount`]: amount });
+    if (exc === "e09" && next() < 0.4) inputs[`${P}.x_prior09`] = between(1, 1_000_000);
+    if (exc === "e19") inputs[`${P}.x_births`] = next() < 0.8 ? 1 : 2;
+  };
+  for (const e of chosen) {
+    const E = `${T}.retirement[${e}]`;
+    early(T, E, inputs[`${E}.account`] === "traditional_ira");
+  }
+  if (inputs["f1040.status"] === "mfj" && next() < 0.3) {
+    const S = "person[spouse]", E = `${S}.retirement[r1]`;
+    inputs[`$retirement@${S}`] = ["r1"];
+    for (const [k, v] of Object.entries(RETIREMENT_FIELDS)) inputs[`${E}.${k}`] = v;
+    Object.assign(inputs, { [`${E}.box1`]: between(50_000, 3_000_000), [`${E}.early_screen`]: false, [`${E}.code_screen`]: false,
+      [`${E}.exception`]: "none", [`${E}.exc_amount`]: 0 });
+    first = null;
+    early(S, E, true);
   }
 }
 
