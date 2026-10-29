@@ -11,6 +11,7 @@
       "evidence": "synthetic-regression",
       "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -88,6 +89,7 @@
       "evidence": "synthetic-regression",
       "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -165,6 +167,7 @@
       "evidence": "synthetic-regression",
       "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -242,6 +245,7 @@
       "evidence": "synthetic-regression",
       "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -319,6 +323,7 @@
       "evidence": "synthetic-regression",
       "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -396,6 +401,7 @@
       "evidence": "synthetic-regression",
       "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -473,6 +479,7 @@
       "evidence": "synthetic-regression",
       "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -550,6 +557,7 @@
       "evidence": "synthetic-regression",
       "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -623,6 +631,7 @@
       "evidence": "synthetic-regression",
       "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -702,6 +711,7 @@
       "evidence": "synthetic-regression",
       "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -805,6 +815,7 @@
       "evidence": "synthetic-regression",
       "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -912,6 +923,7 @@
       "evidence": "synthetic-regression",
       "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -989,6 +1001,7 @@
       "evidence": "synthetic-regression",
       "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -1057,6 +1070,7 @@
       "evidence": "synthetic-regression",
       "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values. Stage 13: married filing jointly is computed; neither spouse has a Form W-2, so no excess Social Security credit: Schedule 3 lines 11 and 15 and Form 1040 line 31 are $0 (predicted by hand before recording).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -1135,6 +1149,7 @@
       "evidence": "synthetic-regression",
       "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values. Stage 13: married filing separately stays refused, now through s3.mfs.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfs",
         "$person": [
           "taxpayer"
@@ -1230,6 +1245,7 @@
       "evidence": "synthetic-regression",
       "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -1325,6 +1341,7 @@
       "evidence": "synthetic-regression",
       "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
           "taxpayer"
@@ -1402,6 +1419,7 @@
       "evidence": "synthetic-regression",
       "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "qss",
         "$person": [
           "taxpayer"
@@ -1479,6 +1497,7 @@
       "evidence": "synthetic-regression",
       "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values. Stage 18: Schedule 3 line 9 is figured on Form 8962 from Forms 1095-A (none here, so $0), no longer a supplied $1.23; lines 15 and 31 are $1.23 less.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -1556,6 +1575,7 @@
       "evidence": "synthetic-regression",
       "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer",
@@ -1639,6 +1659,7 @@
       "evidence": "synthetic-regression",
       "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"

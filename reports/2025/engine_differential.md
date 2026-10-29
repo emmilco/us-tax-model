@@ -18,19 +18,25 @@ Not-computed floor: the run fails when the project left more than 5% of an engin
 | f1040.line13b | 1537 | 0 | 0 | 2 | 0 | 140 | 0 | 0 | 21 | 21 (1.2%) |
 | f1040.line15 | 942 | 0 | 0 | 443 | 0 | 253 | 2 | 0 | 60 | 60 (3.5%) |
 | f1040.line16 | 464 | 779 | 0 | 102 | 0 | 295 | 0 | 0 | 60 | 60 (3.5%) |
-| f1040.line19 | 777 | 110 | 0 | 0 | 0 | 773 | 0 | 0 | 40 | 40 (2.4%) |
-| f1040.line27a | 1281 | 230 | 0 | 0 | 0 | 150 | 0 | 0 | 39 | 39 (2.3%) |
-| f1040.line28 | 816 | 70 | 0 | 1 | 0 | 773 | 0 | 0 | 40 | 40 (2.4%) |
+| f1040.line19 | 774 | 102 | 0 | 0 | 0 | 784 | 0 | 0 | 40 | 40 (2.4%) |
+| f1040.line27a | 1282 | 229 | 0 | 0 | 0 | 150 | 0 | 0 | 39 | 39 (2.3%) |
+| f1040.line28 | 812 | 63 | 0 | 1 | 0 | 784 | 0 | 0 | 40 | 40 (2.4%) |
+| f1040.line29 | 1530 | 0 | 0 | 0 | 0 | 163 | 0 | 0 | 7 | 7 (0.4%) |
 | f1040.line6b | 1637 | 0 | 0 | 29 | 0 | 19 | 0 | 0 | 15 | 15 (0.9%) |
 | f1040.tax_before_credits | 402 | 688 | 0 | 112 | 0 | 441 | 0 | 0 | 57 | 57 (3.4%) |
 | f2441.line11 | 197 | 12 | 0 | 0 | 0 | 401 | 0 | 0 | 1090 | 9 (0.5%) |
 | f2441.line9c | 259 | 0 | 0 | 0 | 0 | 150 | 0 | 0 | 1291 | 5 (0.3%) |
 | f5695.line13 | 169 | 0 | 0 | 3 | 0 | 19 | 0 | 0 | 1509 | 0 (0.0%) |
-| f5695.line15 | 81 | 41 | 0 | 1 | 0 | 401 | 0 | 0 | 1176 | 4 (0.2%) |
+| f5695.line15 | 79 | 41 | 0 | 1 | 0 | 414 | 0 | 0 | 1165 | 4 (0.2%) |
 | f5695.line30 | 139 | 0 | 0 | 7 | 0 | 59 | 0 | 0 | 1495 | 0 (0.0%) |
-| f5695.line32 | 103 | 5 | 0 | 5 | 0 | 428 | 0 | 0 | 1159 | 3 (0.2%) |
+| f5695.line32 | 101 | 7 | 0 | 5 | 0 | 441 | 0 | 0 | 1146 | 3 (0.2%) |
+| f8863.line18 | 1626 | 0 | 0 | 0 | 0 | 33 | 0 | 0 | 41 | 41 (2.4%) |
+| f8863.line19 | 1208 | 21 | 0 | 0 | 0 | 414 | 0 | 0 | 57 | 57 (3.4%) |
+| f8863.line7 | 1626 | 0 | 0 | 0 | 0 | 33 | 0 | 0 | 41 | 41 (2.4%) |
+| f8863.line8 | 1626 | 0 | 0 | 0 | 0 | 33 | 0 | 0 | 41 | 41 (2.4%) |
+| f8863.line9 | 1626 | 0 | 0 | 0 | 0 | 33 | 0 | 0 | 41 | 41 (2.4%) |
 | f8880.line10 | 1634 | 0 | 0 | 3 | 0 | 22 | 0 | 0 | 41 | 41 (2.4%) |
-| f8880.line12 | 1248 | 11 | 0 | 1 | 0 | 403 | 0 | 0 | 37 | 37 (2.2%) |
+| f8880.line12 | 1237 | 9 | 0 | 1 | 0 | 416 | 0 | 0 | 37 | 37 (2.2%) |
 | f8959.tax | 1676 | 0 | 0 | 5 | 0 | 19 | 0 | 0 | 0 | 0 (0.0%) |
 | f8960.tax | 1469 | 0 | 0 | 3 | 0 | 189 | 0 | 0 | 39 | 39 (2.3%) |
 | person[taxpayer].se_line12 | 1655 | 0 | 0 | 45 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
@@ -43,8 +49,9 @@ Not-computed floor: the run fails when the project left more than 5% of an engin
 | s1a.line37 | 1666 | 0 | 0 | 2 | 0 | 19 | 0 | 0 | 13 | 13 (0.8%) |
 | s2.line4 | 1655 | 0 | 0 | 45 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
 | s3.line2 | 1278 | 12 | 0 | 0 | 0 | 401 | 0 | 0 | 9 | 9 (0.5%) |
-| s3.line5a | 1253 | 41 | 0 | 1 | 0 | 401 | 0 | 0 | 4 | 4 (0.2%) |
-| s3.line5b | 1259 | 5 | 0 | 5 | 0 | 428 | 0 | 0 | 3 | 3 (0.2%) |
+| s3.line3 | 1256 | 21 | 0 | 0 | 0 | 414 | 0 | 0 | 9 | 9 (0.5%) |
+| s3.line5a | 1240 | 41 | 0 | 1 | 0 | 414 | 0 | 0 | 4 | 4 (0.2%) |
+| s3.line5b | 1244 | 7 | 0 | 5 | 0 | 441 | 0 | 0 | 3 | 3 (0.2%) |
 | s8812.line12 | 1511 | 0 | 0 | 0 | 0 | 150 | 0 | 0 | 39 | 39 (2.3%) |
 | sa.deduction | 1508 | 0 | 0 | 4 | 0 | 173 | 0 | 0 | 15 | 15 (0.9%) |
 | sa.line17 | 1508 | 0 | 0 | 4 | 0 | 173 | 0 | 0 | 15 | 15 (0.9%) |
@@ -56,6 +63,7 @@ Exclusions:
 - PolicyEngine-US does not deduct investment interest expense (Form 4952 line 8) on Form 8960 line 9a
 - PolicyEngine-US limits the state and local tax deduction to adjusted gross income; Schedule A line 5e limits it only by the statutory cap
 - PolicyEngine-US lists capped_qualified_furnace_or_hot_water_boiler_credit twice in gov.irs.credits.energy_efficient_home_improvement.qualified_expenditures.credits, so it counts the furnace credit twice in Form 5695 line 27
+- PolicyEngine-US phases the education credits out by the exact fraction of the excess of modified AGI over $80,000 ($160,000 joint) (education_credit_phase_out, lifetime_learning_credit_phase_out); Form 8863 lines 6 and 17 round the ratio to three places ("rounded to at least three places"; the project rounds to three, amb.2025.edu_ratio_places), so returns whose ratio is not exact at three places are not compared on the lines it moves
 - PolicyEngine-US phases the student loan interest deduction out with the exact ratio; the worksheet's line 7 ratio is rounded to three places in the project (amb.2025.sli_ratio_places), which moves the deduction by up to a few dollars
 - PolicyEngine-US reduces the tips, overtime and car loan interest deductions by the rate times the exact excess of modified AGI over the threshold; Schedule 1-A lines 11, 19 and 28 count whole $1,000 steps (rounded down, down and up) first
 - PolicyEngine-US takes the foreign tax credit as a supplied amount with a Form 1116-style limit on foreign-source income; the simple no-Form-1116 path is compared before credits instead
@@ -63,6 +71,7 @@ Exclusions:
 - PolicyEngine-US's eitc_earned_income includes net earnings from self-employment less half the self-employment tax; Step 5 earned income (Form 1040 instructions, line 27) holds wages only and Worksheet B adds the self-employment amounts, so Worksheet B line 6 (eic.line1) is compared instead on self-employed returns
 - PolicyEngine-US's energy_efficient_home_improvement_credit_potential takes the larger of the $1,200-capped total and the heat pump credit; Form 5695 line 30 adds line 28 and line 29h
 - PolicyEngine-US's saver's credit rate (gov.irs.credits.retirement_saving.rate.joint, a bracket scale whose first threshold is $0) is zero for an adjusted gross income below zero; the Form 8880 line 9 table's first row has no lower bound ("---" to $23,750, $35,625 or $47,500: 0.5)
+- the engine has no Form 8863 line 7 test: it makes 40% of the American opportunity credit refundable on every return, where a filer under 24 who is not filing jointly and meets line 7 conditions 1 and 2 checks the line 7 box and has no refundable part (i8863 p. 7, Line 7; 26 U.S.C. 25A(i)(6)); returns with the box checked are not compared on the lines it moves
 - the engine is given no Form 1095-A, so its tax, credits and payments omit the premium tax credit reconciliation (Form 8962) the project figures on these returns
 
 Project result lines not mapped:
@@ -73,6 +82,8 @@ Project result lines not mapped:
 - s8812.line14: reached through Form 1040 line 19, a copy of it
 - s8812.line27: reached through Form 1040 line 28, a copy of it
 - eic.credit: reached through Form 1040 line 27a, a copy of it
+- f8863.line1: the engine has no variable for the American opportunity credit before the phase-out; line 7 is mapped
+- f8863.line12: the engine has no variable for the lifetime learning credit before the phase-out; line 18 is mapped
 
 ## Tax-Calculator
 
@@ -86,14 +97,19 @@ Project result lines not mapped:
 | f1040.line13b | 1368 | 0 | 0 | 2 | 0 | 330 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line15 | 821 | 0 | 0 | 69 | 0 | 809 | 1 | 0 | 0 | 0 (0.0%) |
 | f1040.line16 | 354 | 502 | 0 | 55 | 0 | 772 | 0 | 0 | 17 | 17 (1.0%) |
-| f1040.line19 | 566 | 78 | 0 | 0 | 0 | 1056 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line20 | 580 | 273 | 0 | 0 | 0 | 840 | 0 | 0 | 7 | 7 (0.4%) |
-| f1040.line24 | 413 | 292 | 0 | 77 | 0 | 902 | 0 | 0 | 16 | 16 (0.9%) |
-| f1040.line27a | 1065 | 195 | 0 | 0 | 0 | 440 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line28 | 594 | 50 | 0 | 0 | 0 | 1056 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line19 | 570 | 78 | 0 | 0 | 0 | 1052 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line20 | 536 | 316 | 0 | 0 | 0 | 840 | 0 | 0 | 8 | 8 (0.5%) |
+| f1040.line24 | 426 | 284 | 0 | 78 | 0 | 896 | 0 | 0 | 16 | 16 (0.9%) |
+| f1040.line27a | 1066 | 194 | 0 | 0 | 0 | 440 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line28 | 600 | 48 | 0 | 0 | 0 | 1052 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line29 | 1258 | 0 | 0 | 0 | 0 | 442 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line6b | 1344 | 0 | 0 | 26 | 0 | 330 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.tax_before_credits | 302 | 446 | 0 | 69 | 0 | 867 | 0 | 0 | 16 | 16 (0.9%) |
 | f2441.line11 | 146 | 6 | 0 | 0 | 0 | 840 | 0 | 0 | 708 | 1 (0.1%) |
+| f8863.line19 | 830 | 14 | 0 | 0 | 0 | 840 | 0 | 0 | 16 | 16 (0.9%) |
+| f8863.line7 | 1368 | 0 | 0 | 0 | 0 | 332 | 0 | 0 | 0 | 0 (0.0%) |
+| f8863.line8 | 1368 | 0 | 0 | 0 | 0 | 332 | 0 | 0 | 0 | 0 (0.0%) |
+| f8863.line9 | 1368 | 0 | 0 | 0 | 0 | 332 | 0 | 0 | 0 | 0 (0.0%) |
 | f8959.tax | 1366 | 0 | 0 | 4 | 0 | 330 | 0 | 0 | 0 | 0 (0.0%) |
 | f8960.tax | 1300 | 0 | 0 | 0 | 0 | 400 | 0 | 0 | 0 | 0 (0.0%) |
 | person[taxpayer].se_line12 | 1656 | 0 | 0 | 44 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
@@ -105,6 +121,7 @@ Project result lines not mapped:
 | s1a.line37 | 1368 | 0 | 0 | 2 | 0 | 330 | 0 | 0 | 0 | 0 (0.0%) |
 | s2.line4 | 1656 | 0 | 0 | 44 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
 | s3.line2 | 853 | 6 | 0 | 0 | 0 | 840 | 0 | 0 | 1 | 1 (0.1%) |
+| s3.line3 | 841 | 14 | 0 | 0 | 0 | 840 | 0 | 0 | 5 | 5 (0.3%) |
 | sa.deduction | 889 | 0 | 0 | 2 | 0 | 809 | 0 | 0 | 0 | 0 (0.0%) |
 | sa.line17 | 1180 | 0 | 0 | 2 | 0 | 518 | 0 | 0 | 0 | 0 (0.0%) |
 
@@ -122,6 +139,7 @@ Exclusions:
 - Tax-Calculator takes the student loan interest deduction as a supplied amount (e03210) rather than computing the worksheet's phase-out, so returns with student loan interest are not compared
 - Tax-Calculator treats a unit owing no tax under either deduction as taking the standard deduction; the project itemizes whenever itemized deductions exceed the standard deduction. The itemized total itself is compared on every return through a forced-itemize pass
 - Tax-Calculator's earned includes self-employment earnings less half the self-employment tax; Step 5 earned income (Form 1040 instructions, line 27) holds wages only and Worksheet B adds the self-employment amounts, so Worksheet B line 6 (eic.line1) is compared instead on self-employed returns
+- the engine has no Form 8863 line 7 test: it makes 40% of the American opportunity credit refundable on every return, where a filer under 24 who is not filing jointly and meets line 7 conditions 1 and 2 checks the line 7 box and has no refundable part (i8863 p. 7, Line 7; 26 U.S.C. 25A(i)(6)); returns with the box checked are not compared on the lines it moves
 - the engine is given no Form 1095-A, so its tax, credits and payments omit the premium tax credit reconciliation (Form 8962) the project figures on these returns
 
 Project result lines not mapped:
@@ -141,6 +159,9 @@ Project result lines not mapped:
 - s8812.line14: reached through Form 1040 line 19, a copy of it
 - s8812.line27: reached through Form 1040 line 28, a copy of it
 - eic.credit: reached through Form 1040 line 27a, a copy of it
+- f8863.line1: e87521 (Form 8863 line 1, the total of Part III line 30) is an input
+- f8863.line10: e87530 (Form 8863 line 10, the total of Part III line 31) is an input
+- f8863.line18: EducationTaxCredit computes line 18 but does not expose it; c07230 (line 19) is an output
 
 ## OpenTaxSolver
 
@@ -169,19 +190,19 @@ Project result lines not mapped:
 | f1040.line16 | 1023 | 0 | 0 | 0 | 53 | 624 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line17 | 1462 | 0 | 0 | 0 | 0 | 238 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line18 | 946 | 0 | 0 | 0 | 48 | 706 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line19 | 422 | 0 | 0 | 0 | 0 | 548 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line19 | 360 | 0 | 0 | 0 | 0 | 610 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line1z | 1700 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line20 | 749 | 0 | 0 | 0 | 0 | 951 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line21 | 749 | 0 | 0 | 0 | 0 | 951 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line22 | 709 | 0 | 0 | 0 | 40 | 951 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line20 | 634 | 0 | 0 | 0 | 0 | 1066 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line21 | 634 | 0 | 0 | 0 | 0 | 1066 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line22 | 600 | 0 | 0 | 0 | 34 | 1066 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line23 | 1320 | 0 | 0 | 0 | 42 | 338 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line24 | 691 | 0 | 0 | 0 | 58 | 951 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line24 | 586 | 0 | 0 | 0 | 48 | 1066 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line25d | 1567 | 0 | 0 | 0 | 0 | 133 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line28 | 265 | 0 | 0 | 0 | 1 | 704 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line32 | 552 | 0 | 0 | 0 | 1 | 1147 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line33 | 552 | 0 | 0 | 0 | 1 | 1147 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line34 | 532 | 0 | 0 | 0 | 21 | 1147 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line37 | 524 | 0 | 0 | 0 | 29 | 1147 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line28 | 229 | 0 | 0 | 0 | 1 | 740 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line32 | 471 | 0 | 0 | 0 | 1 | 1228 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line33 | 471 | 0 | 0 | 0 | 1 | 1228 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line34 | 455 | 0 | 0 | 0 | 17 | 1228 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line37 | 448 | 0 | 0 | 0 | 24 | 1228 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line6b | 1557 | 0 | 0 | 0 | 32 | 111 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line7a | 1700 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line8 | 1700 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
@@ -267,17 +288,17 @@ Project result lines not mapped:
 | s1a.line38 | 1434 | 0 | 0 | 0 | 3 | 263 | 0 | 0 | 0 | 0 (0.0%) |
 | s2.line21 | 1320 | 0 | 0 | 0 | 42 | 338 | 0 | 0 | 0 | 0 (0.0%) |
 | s3.line2 | 994 | 0 | 0 | 0 | 0 | 706 | 0 | 0 | 0 | 0 (0.0%) |
-| s3.line8 | 749 | 0 | 0 | 0 | 0 | 951 | 0 | 0 | 0 | 0 (0.0%) |
+| s3.line8 | 634 | 0 | 0 | 0 | 0 | 1066 | 0 | 0 | 0 | 0 (0.0%) |
 | s8812.line10 | 830 | 0 | 0 | 0 | 0 | 140 | 0 | 0 | 0 | 0 (0.0%) |
 | s8812.line11 | 830 | 0 | 0 | 0 | 0 | 140 | 0 | 0 | 0 | 0 (0.0%) |
 | s8812.line12 | 830 | 0 | 0 | 0 | 0 | 140 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line14 | 422 | 0 | 0 | 0 | 0 | 548 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line16a | 422 | 0 | 0 | 0 | 0 | 548 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line14 | 360 | 0 | 0 | 0 | 0 | 610 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line16a | 360 | 0 | 0 | 0 | 0 | 610 | 0 | 0 | 0 | 0 (0.0%) |
 | s8812.line16b | 285 | 0 | 0 | 0 | 0 | 33 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line17 | 422 | 0 | 0 | 0 | 0 | 548 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line17 | 360 | 0 | 0 | 0 | 0 | 610 | 0 | 0 | 0 | 0 (0.0%) |
 | s8812.line19 | 263 | 0 | 0 | 0 | 13 | 40 | 0 | 0 | 0 | 0 (0.0%) |
 | s8812.line20 | 269 | 0 | 0 | 0 | 9 | 40 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line27 | 265 | 0 | 0 | 0 | 1 | 704 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line27 | 229 | 0 | 0 | 0 | 1 | 740 | 0 | 0 | 0 | 0 (0.0%) |
 | s8812.line5 | 889 | 0 | 0 | 0 | 0 | 81 | 0 | 0 | 0 | 0 (0.0%) |
 | s8812.line7 | 889 | 0 | 0 | 0 | 0 | 81 | 0 | 0 | 0 | 0 (0.0%) |
 | s8812.line8 | 889 | 0 | 0 | 0 | 0 | 81 | 0 | 0 | 0 | 0 (0.0%) |
@@ -387,6 +408,7 @@ Exclusions:
 
 - OpenTaxSolver 23.06's Schedule 1-A Part IV (sched_1A) truncates line 28 (`j = sched1A_L[27] / 1000.0`) where the form rounds up to the next whole number, and multiplies line 29 by $300 per $1,000 where the form says $200; the 23.07 revision history reports both fixed
 - OpenTaxSolver 23.06's Schedule D Tax Worksheet (sched_D_tax_worksheet) codes the line 19 ceiling for single and married filing separately as 197,390 (the 2025 worksheet: $197,300) and runs lines 33 to 43 only when lines 1 and 32 are equal (`absolutev(ws[1]-ws[32]) < 0.01`), where the worksheet says to skip them when they are equal; the 23.07 revision history reports both fixed
+- OpenTaxSolver does not compute Form 8863: it reads Schedule 3 line 3 and Form 1040 line 29 as entered amounts, and the engine is given none, so its credits after the education credits, its tax after credits and its payments omit the education credits the project figures on these returns
 - OpenTaxSolver figures Schedule A line 3 as 7.5% of a negative adjusted gross income and line 4 as `NotLessThanZero(SchedA[1] - SchedA[3])`, adding the negative floor to the medical expenses, where the instructions allow "only the part of your medical and dental expenses that exceeds 7.5% of the amount of your adjusted gross income" (i1040sca, line 1). It caps lines 11 and 12 at 60% and 30% of adjusted gross income by multiplying the AGI as it stands (`if (charityCC > 0.60 * L[11]) charityCC = 0.60 * L[11]`), so a negative AGI turns gifts, even none, into a negative charitable deduction on line 14; the project's limit is the sa.charity_limited screen, which the generator answers no. Its Form 2441 program's line 8 rate lookup (GetLimit over line_8_rate_table) returns zero for an AGI below the table's first row, where the project reads the first row ("$0—15,000": 0.35) for any amount not over $15,000
 - OpenTaxSolver fixes Schedule D Tax Worksheet lines 3 and 4 at zero (sched_D_tax_worksheet: `ws[3] = 0.0; /* Form 4952, line 4g. */ ws[4] = 0.0; /* Form 4952, line 4e. */`); on a return that files Form 4952 the project carries its line 4e there. Line 3 is zero on the generated returns (no line 4g election), so lines 5 and 8 and the tax are unmoved
 - OpenTaxSolver has no Form 8995-A; its Form 8995 program computes the simplified deduction above the taxable income threshold, where the form sends the filer to Form 8995-A and the project refuses the return
@@ -421,6 +443,8 @@ Project result lines not mapped:
 - eic.line1: no EIC computation
 - u1250.line18: the Unrecaptured Section 1250 Gain Worksheet is not computed; its result is the input D19
 - f1040.line1z: mapped (sum of Forms W-2 box 1)
+- f8863.line19: OTS does not compute Form 8863; Schedule 3 line 3 and Form 1040 line 29 are entered amounts (limitation education)
+- f1040.line29: OTS does not compute Form 8863; Form 1040 line 29 is an entered amount (limitation education)
 
 ## UsTaxes
 
@@ -437,27 +461,34 @@ Project result lines not mapped:
 | f1040.line16 | 410 | 0 | 268 | 39 | 0 | 983 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line17 | 682 | 0 | 0 | 0 | 0 | 1018 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line18 | 390 | 0 | 255 | 37 | 0 | 1018 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line19 | 390 | 0 | 25 | 0 | 0 | 1285 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line19 | 353 | 0 | 22 | 0 | 0 | 1325 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line1a | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line1z | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line20 | 415 | 0 | 0 | 0 | 0 | 1285 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line21 | 390 | 0 | 25 | 0 | 0 | 1285 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line22 | 260 | 0 | 127 | 28 | 0 | 1285 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line20 | 375 | 0 | 0 | 0 | 0 | 1325 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line21 | 353 | 0 | 22 | 0 | 0 | 1325 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line22 | 239 | 0 | 111 | 25 | 0 | 1325 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line23 | 894 | 0 | 88 | 0 | 0 | 718 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line24 | 212 | 0 | 174 | 19 | 0 | 1295 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line24 | 191 | 0 | 156 | 19 | 0 | 1334 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line25a | 1330 | 0 | 0 | 0 | 0 | 370 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line25d | 1330 | 0 | 0 | 0 | 0 | 370 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line27a | 856 | 0 | 0 | 0 | 0 | 844 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line28 | 258 | 0 | 5 | 0 | 0 | 1437 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line32 | 258 | 0 | 5 | 0 | 0 | 1437 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line33 | 256 | 0 | 5 | 0 | 0 | 1439 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line34 | 162 | 0 | 90 | 9 | 0 | 1439 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line37 | 214 | 0 | 34 | 13 | 0 | 1439 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line28 | 238 | 0 | 4 | 0 | 0 | 1458 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line29 | 128 | 0 | 0 | 0 | 0 | 84 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line32 | 238 | 0 | 4 | 0 | 0 | 1458 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line33 | 236 | 0 | 4 | 0 | 0 | 1460 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line34 | 153 | 0 | 78 | 9 | 0 | 1460 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line37 | 194 | 0 | 33 | 13 | 0 | 1460 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line6b | 1132 | 0 | 0 | 20 | 0 | 548 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line7a | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line8 | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line9 | 1132 | 0 | 0 | 20 | 0 | 548 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.tax_before_credits | 324 | 0 | 316 | 23 | 0 | 1037 | 0 | 0 | 0 | 0 (0.0%) |
+| f8863.line1 | 138 | 0 | 0 | 0 | 0 | 74 | 0 | 0 | 0 | 0 (0.0%) |
+| f8863.line12 | 138 | 0 | 0 | 0 | 0 | 74 | 0 | 0 | 0 | 0 (0.0%) |
+| f8863.line18 | 138 | 0 | 0 | 0 | 0 | 74 | 0 | 0 | 0 | 0 (0.0%) |
+| f8863.line19 | 92 | 0 | 0 | 0 | 0 | 120 | 0 | 0 | 0 | 0 (0.0%) |
+| f8863.line8 | 138 | 0 | 0 | 0 | 0 | 74 | 0 | 0 | 0 | 0 (0.0%) |
+| f8863.line9 | 138 | 0 | 0 | 0 | 0 | 74 | 0 | 0 | 0 | 0 (0.0%) |
 | f8959.line1 | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
 | f8959.line18 | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
 | f8959.line19 | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
@@ -546,16 +577,17 @@ Project result lines not mapped:
 | s1a.line8 | 133 | 0 | 0 | 2 | 0 | 24 | 0 | 0 | 0 | 0 (0.0%) |
 | s2.line21 | 894 | 0 | 88 | 0 | 0 | 718 | 0 | 0 | 0 | 0 (0.0%) |
 | s3.line11 | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
-| s3.line15 | 1328 | 0 | 0 | 0 | 0 | 372 | 0 | 0 | 0 | 0 (0.0%) |
-| s3.line8 | 415 | 0 | 0 | 0 | 0 | 1285 | 0 | 0 | 0 | 0 (0.0%) |
+| s3.line15 | 1289 | 0 | 0 | 0 | 0 | 411 | 0 | 0 | 0 | 0 (0.0%) |
+| s3.line3 | 92 | 0 | 0 | 0 | 0 | 120 | 0 | 0 | 0 | 0 (0.0%) |
+| s3.line8 | 375 | 0 | 0 | 0 | 0 | 1325 | 0 | 0 | 0 | 0 (0.0%) |
 | s3.line9 | 36 | 0 | 0 | 0 | 0 | 73 | 0 | 0 | 0 | 0 (0.0%) |
 | s8812.line10 | 611 | 0 | 0 | 0 | 0 | 176 | 0 | 0 | 0 | 0 (0.0%) |
 | s8812.line11 | 611 | 0 | 0 | 0 | 0 | 176 | 0 | 0 | 0 | 0 (0.0%) |
 | s8812.line12 | 611 | 0 | 0 | 0 | 0 | 176 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line14 | 170 | 0 | 25 | 0 | 0 | 592 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line16a | 170 | 0 | 25 | 0 | 0 | 592 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line14 | 160 | 0 | 22 | 0 | 0 | 605 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line16a | 160 | 0 | 22 | 0 | 0 | 605 | 0 | 0 | 0 | 0 (0.0%) |
 | s8812.line16b | 737 | 0 | 0 | 0 | 0 | 50 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line17 | 179 | 0 | 16 | 0 | 0 | 592 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line17 | 168 | 0 | 14 | 0 | 0 | 605 | 0 | 0 | 0 | 0 (0.0%) |
 | s8812.line18a | 712 | 0 | 0 | 0 | 0 | 50 | 0 | 0 | 25 | 25 (3.2%) |
 | s8812.line19 | 712 | 0 | 0 | 0 | 0 | 50 | 0 | 0 | 25 | 25 (3.2%) |
 | s8812.line20 | 702 | 0 | 0 | 10 | 0 | 50 | 0 | 0 | 25 | 25 (3.2%) |
@@ -564,7 +596,7 @@ Project result lines not mapped:
 | s8812.line24 | 423 | 0 | 0 | 0 | 0 | 364 | 0 | 0 | 0 | 0 (0.0%) |
 | s8812.line25 | 327 | 0 | 0 | 0 | 0 | 460 | 0 | 0 | 0 | 0 (0.0%) |
 | s8812.line26 | 322 | 0 | 0 | 5 | 0 | 460 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line27 | 99 | 0 | 5 | 0 | 0 | 683 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line27 | 95 | 0 | 4 | 0 | 0 | 688 | 0 | 0 | 0 | 0 (0.0%) |
 | s8812.line3 | 600 | 0 | 0 | 11 | 0 | 176 | 0 | 0 | 0 | 0 (0.0%) |
 | s8812.line5 | 737 | 0 | 0 | 0 | 0 | 50 | 0 | 0 | 0 | 0 (0.0%) |
 | s8812.line7 | 737 | 0 | 0 | 0 | 0 | 50 | 0 | 0 | 0 | 0 (0.0%) |
@@ -616,6 +648,7 @@ Exclusions:
 - UsTaxes allocates part of the Schedule A state and local tax deduction to investment income on Form 8960 line 9b by the ratio of line 8 to AGI (irsForms/F8960.ts `l9b`); the generator enters no allocation (f8960.allocated_taxes is zero), so itemizers with a state and local tax deduction are not compared from line 9b on
 - UsTaxes allocates part of the Schedule A state and local tax deduction to investment income on Form 8960 line 9b by the ratio of line 8 to AGI (irsForms/F8960.ts `l9b`); the generator enters no allocation (f8960.allocated_taxes is zero), so itemizers with a state and local tax deduction are not compared from line 9b on; where modified AGI is over the threshold (Form 8960 line 15) the tax lines follow
 - UsTaxes allowed an earned income credit on this return (see the `eic` limitation for its method); its eligibility tests are partly stubs (ScheduleEIC.ts: `validSSNs`, `over25Under65`, `qualifyingChildOfAnother` return fixed values), so the lines the credit moves are not compared
+- UsTaxes attaches Schedule 3 only for the excess social security credit, the foreign tax credit, an extension payment or Schedule R (irsForms/Schedule3.ts lines 50-54, `isNeeded`), so a nonrefundable education credit with none of those reaches neither Form 1040 line 20 (F1040.ts `l20`) nor Schedule 8812 Credit Limit Worksheet A (Schedule8812.ts lines 99-111) although Schedule3.ts `l3` returns it; Schedule 3 line 3 and Form 1040 line 29 are compared, the lines after the credits are not
 - UsTaxes attaches Schedule 3 only for the excess social security credit, the foreign tax credit, an extension payment or Schedule R (irsForms/Schedule3.ts lines 50-54, `isNeeded`); a net premium tax credit with none of those is dropped from Schedule 3 line 15 and Form 1040 line 31 although Schedule3.ts `l9` returns it
 - UsTaxes computed an alternative minimum tax (Form 6251, irsForms/F6251.ts `l11`) on this return; Form 6251 is outside the project's scope (the s2.amt screen)
 - UsTaxes emulates the Tax Table by flooring the amount to whole dollars and taking the band midpoint (irsForms/TaxTable.ts `computeTax`, `Math.floor(income)`) on a double built by summing the return's lines; when the project's amount in integer cents is exactly a band boundary, the double can land a hair below it (mfj-00061: line 15 is $85,350.00 and the engine reads the $85,300 band); the Tax Table reads "At least" the boundary
@@ -623,7 +656,10 @@ Exclusions:
 - UsTaxes figures the Form 8889 line 7 additional contribution from the date of birth (irsForms/F8889.ts `l7`: $1,000 when the filer is 55 by December 31), the same date that gives the senior deduction; the generator answers the age-55 question (f8889 age55) independently of the age it gives a senior, so a filer 66 or older who answered no cannot be expressed to UsTaxes
 - UsTaxes figures the earned income credit from Rev. Proc. formulas at a rounded income (irsForms/ScheduleEIC.ts `roundIncome`: `Math.round(Math.round(income) / 50) * 50 + 25`, which for the upper half of each $50 band reads the next band's midpoint), not from the EIC Table, keeps the unrounded formula value, and always takes the smaller of the amounts at earned income and at AGI (`credit`), where Worksheet A uses the earned income amount alone when AGI is below the phase-out threshold
 - UsTaxes floors adjusted gross income at zero (irsForms/F1040.ts line 472, `l11a = Math.max(0, l9 - l10)`), where Form 1040 line 11 is line 9 minus line 10 and may be negative
+- UsTaxes has no Form 8863 Credit Limit Worksheet: line 19 (irsForms/F8863.ts `l19`) is lines 9 and 18 added, not limited by the tax; returns where the worksheet's line 6 is less than its line 3 are not compared on line 19 and the lines after it
 - UsTaxes never builds Schedule C: irsForms/F1040.ts declares `scheduleC?: ScheduleC` and no code assigns it, so `selfEmployedIncome` reaches no form (Schedule 1 line 3, Schedule SE, the QBI deduction and earned income are all zero); returns with self-employment income are not run
+- UsTaxes phases the education credits out by the unrounded fraction 1 - (MAGI - $80,000) / $10,000 ($160,000 and $20,000 joint) (irsForms/F8863.ts `phaseOutFraction`); Form 8863 lines 6 and 17 round the ratio to three places (the project to three, amb.2025.edu_ratio_places), so returns whose ratio is not exact at three places are not compared on the lines it moves
+- UsTaxes rounds the American opportunity credit after the phase-out, its 40% and 60% parts and the lifetime learning credit before and after the phase-out to whole dollars (irsForms/F8863.ts `aotcAfterPhaseOut`, `l8`, `aotcNonrefundable`, `llcBeforePhaseOut`, `llcAfterPhaseOut`: `Math.round`), where the project carries cents; returns on which any of the project's Form 8863 lines 1, 7, 8, 9, 12 and 18 has cents are not compared on the lines they move
 - UsTaxes takes qualified business income only from Schedule K-1 (Form 1065) box 20 code Z (irsForms/F1040.ts `totalQbi`); its Form 1099-DIV has no box 5, so section 199A dividends give no Form 8995 and no line 13a deduction
 - UsTaxes takes the Form 5695 Part II credit as an entered amount (CreditType.EnergyEfficientHomeImprovement, irsForms/F5695.ts `l14PartII`), supplied as the generator's credit before the limit; Schedule 3 line 5b is `f5695.l30` (Parts I and II, unlimited), it reaches Form 1040 only when Schedule 3 is needed for another reason, and Credit Limit Worksheet A subtracts it twice when Schedule 3 is needed (Schedule8812.ts lines 97-124)
 - UsTaxes takes the IRA deduction as an entered amount (`otherIncome.iraDeduction`, Schedule 1 line 19a in irsForms/Schedule1.ts), supplied as the contributions; it has no IRA Deduction Worksheet, so returns whose deduction the worksheet limits are not compared on the lines that follow it
@@ -644,6 +680,7 @@ Exclusions:
 - UsTaxes' Social Security Benefits Worksheet line 6 adds Schedule 1 line 10 (the additional income total) to the adjustments (irsForms/worksheets/SocialSecurityBenefits.ts `l6`, first term `schedule1.l10()`), where the worksheet's line 6 is Schedule 1 lines 11 through 20, 23 and 25; returns with benefits and unemployment compensation are not compared from line 6 on
 - UsTaxes' student loan interest phase-out starts at $80,000 ($165,000 married filing jointly) over $15,000 ($30,000) (data/federal.ts lines 358-364, the 2024 amounts), where the 2025 worksheet uses $85,000 ($170,000) to $100,000 ($200,000); returns whose modified AGI (worksheet line 4) lies between UsTaxes' start and the worksheet's end are not compared on the lines that follow it
 - UsTaxes' student loan interest worksheet uses the unrounded line 7 ratio (irsForms/worksheets/StudentLoanInterestWorksheet.ts `l7`), where the project rounds it to three places (amb.2025.sli_ratio_places)
+- the engine has no Form 8863 line 7 test: it makes 40% of the American opportunity credit refundable on every return, where a filer under 24 who is not filing jointly and meets line 7 conditions 1 and 2 checks the line 7 box and has no refundable part (i8863 p. 7, Line 7; 26 U.S.C. 25A(i)(6)); returns with the box checked are not compared on the lines it moves (irsForms/F8863.ts `l8`: 40% of the credit after the phase-out, with no line 7 condition)
 
 Project result lines not mapped:
 

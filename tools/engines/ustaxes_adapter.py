@@ -167,6 +167,12 @@ def build_info(case, year):
         adv = [mk["advance"] // 12] * 11 + [mk["advance"] - 11 * (mk["advance"] // 12)]
         info["marketplace1095As"] = [{"monthlyPremiums": [dollars(mk["premium"])] * 12, "monthlySlcsp": [dollars(mk["slcsp"])] * 12,
                                       "monthlyAdvancePtc": [dollars(x) for x in adv]}]
+    if f.get("education"):
+        # Form 8863: per student the adjusted qualified education expenses and whether the student is an AOC student
+        # (UsTaxes' EducationExpenses: aotcQualifiedExpenses with aotcEligible, or llcQualifiedExpenses).
+        info["educationExpenses"] = [{"studentName": str(s["who"]), "isDependent": s["who"] not in ("taxpayer", "spouse"),
+                                      "aotcEligible": bool(s["aoc"]), "aotcQualifiedExpenses": dollars(s["aoc_expenses"]),
+                                      "llcQualifiedExpenses": dollars(s["llc_expenses"])} for s in f["education"]["students"]]
     if f.get("capital_loss_carryover_st") or f.get("capital_loss_carryover_lt"):
         # Entered as positive amounts; UsTaxes puts them on Schedule D lines 4 and 11 (ScheduleD.ts `l4`, `l11`),
         # where the form prints them on lines 6 and 14; lines 7 and 15 are the same either way.
@@ -260,6 +266,13 @@ S8812_MAP = {"s8812.line3": "s8812.l3", "s8812.line5": "s8812.l5", "s8812.line7"
 # return with a Form 1095-A and compared only where that is the form (limitation ustaxes_ptc_stub).
 F8962_MAP = {"f8962.line8a": "f8962.contributionAmount", "f8962.line11e": "f8962.allowablePtc", "f8962.line25": "f8962.annualAdvancePtc",
              "f8962.line26": "f8962.credit", "f8962.line29": "f8962.excessRepayment", "s3.line9": "s3.l9"}
+# Form 8863 (UsTaxes' F8863.ts): line 1 (`aotcBeforePhaseOut`), the refundable and nonrefundable parts of the American
+# opportunity credit after the phase-out (lines 8 and 9), the lifetime learning credit before and after the phase-out
+# (lines 12 and 18), line 19 with no Credit Limit Worksheet, Schedule 3 line 3 and Form 1040 line 29. Read on every return
+# with education expenses and compared only where its model is the form (the edu_* and ustaxes_edu_* limitations).
+F8863_MAP = {"f8863.line1": "f8863.aotcBeforePhaseOut", "f8863.line8": "f8863.l8", "f8863.line9": "f8863.aotcNonrefundable",
+             "f8863.line12": "f8863.llcBeforePhaseOut", "f8863.line18": "f8863.llcAfterPhaseOut", "f8863.line19": "f8863.l19",
+             "s3.line3": "s3.l3", "f1040.line29": "f1040.l29"}
 USTAXES_PRECISION = "float64"
 
 
@@ -286,6 +299,8 @@ def lines_of(case, values):
         out.update({pid: cents(get(k)) for pid, k in S8812_MAP.items()})
     if case["facts"].get("marketplace"):
         out.update({pid: cents(get(k)) for pid, k in F8962_MAP.items()})
+    if case["facts"].get("education"):
+        out.update({pid: cents(get(k)) for pid, k in F8863_MAP.items()})
     return out
 
 
@@ -442,7 +457,7 @@ USTAXES_PASS_THROUGH = {"lines": [], "components": {
 def mapped_lines():
     """Every project line id the adapter can report."""
     parts = {f"s1a.line{n}" for nums in S1A_PARTS.values() for n in nums}
-    return sorted(set(F1040_MAP) | set(S1A_MAP) | parts | set(QDCG_MAP) | set(SSB_MAP) | set(SLI_MAP) | set(HSA_MAP) | set(S8812_MAP) | set(F8962_MAP)
+    return sorted(set(F1040_MAP) | set(S1A_MAP) | parts | set(QDCG_MAP) | set(SSB_MAP) | set(SLI_MAP) | set(HSA_MAP) | set(S8812_MAP) | set(F8962_MAP) | set(F8863_MAP)
                   | {"f1040.tax_before_credits"})
 
 
@@ -483,10 +498,20 @@ HSA_FAMILY = ("UsTaxes' Form 8889 line 6 halves the line 5 limit for any family-
 
 # Lines a Form 1095-A moves: Schedule 3 line 9 and Schedule 2 line 1a, and through Form 1040 lines 17, 18 and 31 the tax,
 # every credit the tax limits, the payments and the refund. Engines given no Form 1095-A are not compared on them there.
-PTC_MOVED = re.compile(r"^(f1040\.line(1[7-9]|2[0-9]|3[0-9]|35a)|f1040\.tax_before_credits|s3\.line(2|4|5a|5b|8|9|15)|s2\.line(1a|1z|3|21)"
-                       r"|s8812\.|f2441\.line(9c|10|11)|f8880\.line(11|12)|f5695\.line(14|15|31|32)|f8962\.)")
+PTC_MOVED = re.compile(r"^(f1040\.line(1[7-9]|2[0-9]|3[0-9]|35a)|f1040\.tax_before_credits|s3\.line(2|3|4|5a|5b|8|9|15)|s2\.line(1a|1z|3|21)"
+                       r"|s8812\.|f2441\.line(9c|10|11)|f8863\.line19|f8880\.line(11|12)|f5695\.line(14|15|31|32)|f8962\.)")
 PTC_REASON = ("the engine is given no Form 1095-A, so its tax, credits and payments omit the premium tax credit reconciliation "
               "(Form 8962) the project figures on these returns")
+
+# Lines Form 8863 moves: its own lines, Schedule 3 line 3 and Form 1040 line 29, and through them every credit after the
+# education credits, the tax after credits, the payments and the refund.
+EDU_MOVED = re.compile(r"^(f1040\.line(19|2[0-2]|24|28|29|3[2-7]|35a)|s3\.line(3|4|5a|5b|8|15)|s8812\.(line(14|16a|17|27)|clw)"
+                       r"|f8880\.line(11|12)|f5695\.line(14|15|31|32)|f8863\.)")
+EDU_NO_REFUND = ("the engine has no Form 8863 line 7 test: it makes 40% of the American opportunity credit refundable on every return, "
+                 "where a filer under 24 who is not filing jointly and meets line 7 conditions 1 and 2 checks the line 7 box and has "
+                 "no refundable part (i8863 p. 7, Line 7; 26 U.S.C. 25A(i)(6)); returns with the box checked are not compared on the "
+                 "lines it moves")
+
 
 def limitations():
     """The engine's declared limitations: each names the feature that triggers it, the lines it
@@ -503,7 +528,33 @@ def limitations():
             "reason": "UsTaxes' Form 8962 (irsForms/F8962.ts) applies a flat 8.5% of AGI (`applicableContributionRate`) with no federal "
                       "poverty line, Table 2 or Table 5 limitation and no monthly calculation: it is the form only at 400% of the poverty "
                       "line or more, on line 11, with modified AGI equal to AGI; other returns with a Form 1095-A are not compared after line 16"}
-    return [stub, no_s3,
+    edu = srt(l for l in ALL if EDU_MOVED.match(l))
+    edu_lims = [
+        {"feature": "edu_no_refund", "lines": edu,
+         "reason": EDU_NO_REFUND + " (irsForms/F8863.ts `l8`: 40% of the credit after the phase-out, with no line 7 condition)"},
+        {"feature": "edu_phaseout_inexact", "lines": edu,
+         "reason": "UsTaxes phases the education credits out by the unrounded fraction 1 - (MAGI - $80,000) / $10,000 ($160,000 and "
+                   "$20,000 joint) (irsForms/F8863.ts `phaseOutFraction`); Form 8863 lines 6 and 17 round the ratio to three places "
+                   "(the project to three, amb.2025.edu_ratio_places), so returns whose ratio is not exact at three places are not "
+                   "compared on the lines it moves"},
+        {"feature": "ustaxes_edu_cents", "lines": edu,
+         "reason": "UsTaxes rounds the American opportunity credit after the phase-out, its 40% and 60% parts and the lifetime "
+                   "learning credit before and after the phase-out to whole dollars (irsForms/F8863.ts `aotcAfterPhaseOut`, `l8`, "
+                   "`aotcNonrefundable`, `llcBeforePhaseOut`, `llcAfterPhaseOut`: `Math.round`), where the project carries cents; "
+                   "returns on which any of the project's Form 8863 lines 1, 7, 8, 9, 12 and 18 has cents are not compared on the "
+                   "lines they move"},
+        {"feature": "edu_credit_limited", "lines": srt({"f8863.line19", "s3.line3"} | AFTER_CREDIT_LINES),
+         "reason": "UsTaxes has no Form 8863 Credit Limit Worksheet: line 19 (irsForms/F8863.ts `l19`) is lines 9 and 18 added, not "
+                   "limited by the tax; returns where the worksheet's line 6 is less than its line 3 are not compared on line 19 and "
+                   "the lines after it"},
+        {"feature": "ustaxes_edu_no_schedule3", "lines": srt(AFTER_CREDIT_LINES),
+         "reason": "UsTaxes attaches Schedule 3 only for the excess social security credit, the foreign tax credit, an extension "
+                   "payment or Schedule R (irsForms/Schedule3.ts lines 50-54, `isNeeded`), so a nonrefundable education credit with "
+                   "none of those reaches neither Form 1040 line 20 (F1040.ts `l20`) nor Schedule 8812 Credit Limit Worksheet A "
+                   "(Schedule8812.ts lines 99-111) although Schedule3.ts `l3` returns it; Schedule 3 line 3 and Form 1040 line 29 "
+                   "are compared, the lines after the credits are not"},
+    ]
+    return [stub, no_s3, *edu_lims,
         {"feature": "self_employed", "lines": ALL,
          "reason": "UsTaxes never builds Schedule C: irsForms/F1040.ts declares `scheduleC?: ScheduleC` and no code assigns it, so "
                    "`selfEmployedIncome` reaches no form (Schedule 1 line 3, Schedule SE, the QBI deduction and earned income are all "

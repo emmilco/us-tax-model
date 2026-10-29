@@ -1,0 +1,14 @@
+{
+ "bank": null,
+ "errors": [],
+ "failures": [],
+ "family": "deepseek",
+ "form": "aqee",
+ "lines": [],
+ "log_sha256_at_triage": "9332621d6034339d48618444b28031d1cbec04bacb5f29079d392c5ae09ff22b",
+ "policy": "executable-triage-v2",
+ "response_sha256": "bcdc99ff3a032b553897b58391e50743fccb496952a333f428f2e6bbc517ea24",
+ "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
+ "state": "no candidate lines",
+ "subject_sha256": "295917039b59519098258d4955b3f383a2c177683a1b8d1019e6973af3bd62a3"
+}

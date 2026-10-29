@@ -4,12 +4,13 @@ Review these renderings line by line against the archived IRS sources in `source
 
 | File | Kind | Lines |
 | --- | --- | --- |
+| aqee.md | def | 16 |
 | asset.md | form | 68 |
 | carloan.md | form | 29 |
 | clcw.md | worksheet | 33 |
 | clcw26.md | worksheet | 19 |
 | dcprov.md | worksheet | 6 |
-| dependent.md | worksheet | 69 |
+| dependent.md | worksheet | 97 |
 | div.md | form | 22 |
 | eic.md | worksheet | 87 |
 | f1040.md | form | 65 |
@@ -19,6 +20,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | f4952.md | form | 26 |
 | f5695.md | form | 141 |
 | f8606.md | form | 6 |
+| f8863.md | form | 44 |
 | f8880.md | form | 40 |
 | f8889.md | form | 96 |
 | f8959.md | form | 26 |
@@ -36,7 +38,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | mq.md | worksheet | 7 |
 | oi8z.md | worksheet | 6 |
 | otjob.md | form | 12 |
-| person.md | worksheet | 203 |
+| person.md | worksheet | 236 |
 | qbi.md | form | 13 |
 | qdcg.md | worksheet | 27 |
 | refund.md | form | 48 |
@@ -45,7 +47,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | s179.md | form | 28 |
 | s1a.md | form | 136 |
 | s2.md | form | 13 |
-| s3.md | form | 14 |
+| s3.md | form | 15 |
 | s8812.md | form | 85 |
 | sa.md | form | 61 |
 | sales.md | form | 25 |

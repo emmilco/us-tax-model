@@ -610,15 +610,26 @@ OTS_PASS_THROUGH = {"lines": [], "components": {
     "eic.line1": "no EIC computation",
     "u1250.line18": "the Unrecaptured Section 1250 Gain Worksheet is not computed; its result is the input D19",
     "f1040.line1z": "mapped (sum of Forms W-2 box 1)",
+    "f8863.line19": "OTS does not compute Form 8863; Schedule 3 line 3 and Form 1040 line 29 are entered amounts (limitation education)",
+    "f1040.line29": "OTS does not compute Form 8863; Form 1040 line 29 is an entered amount (limitation education)",
 }}
 
 
 # Lines a Form 1095-A moves: Schedule 3 line 9 and Schedule 2 line 1a, and through Form 1040 lines 17, 18 and 31 the tax,
 # every credit the tax limits, the payments and the refund. Engines given no Form 1095-A are not compared on them there.
-PTC_MOVED = re.compile(r"^(f1040\.line(1[7-9]|2[0-9]|3[0-9]|35a)|f1040\.tax_before_credits|s3\.line(2|4|5a|5b|8|9|15)|s2\.line(1a|1z|3|21)"
-                       r"|s8812\.|f2441\.line(9c|10|11)|f8880\.line(11|12)|f5695\.line(14|15|31|32)|f8962\.)")
+PTC_MOVED = re.compile(r"^(f1040\.line(1[7-9]|2[0-9]|3[0-9]|35a)|f1040\.tax_before_credits|s3\.line(2|3|4|5a|5b|8|9|15)|s2\.line(1a|1z|3|21)"
+                       r"|s8812\.|f2441\.line(9c|10|11)|f8863\.line19|f8880\.line(11|12)|f5695\.line(14|15|31|32)|f8962\.)")
 PTC_REASON = ("the engine is given no Form 1095-A, so its tax, credits and payments omit the premium tax credit reconciliation "
               "(Form 8962) the project figures on these returns")
+
+# Lines Form 8863 moves: its own lines, Schedule 3 line 3 and Form 1040 line 29, and through them every credit after the
+# education credits, the tax after credits, the payments and the refund.
+EDU_MOVED = re.compile(r"^(f1040\.line(19|2[0-2]|24|28|29|3[2-7]|35a)|s3\.line(3|4|5a|5b|8|15)|s8812\.(line(14|16a|17|27)|clw)"
+                       r"|f8880\.line(11|12)|f5695\.line(14|15|31|32)|f8863\.)")
+EDU_REASON = ("OpenTaxSolver does not compute Form 8863: it reads Schedule 3 line 3 and Form 1040 line 29 as entered amounts, and the "
+              "engine is given none, so its credits after the education credits, its tax after credits and its payments omit the "
+              "education credits the project figures on these returns")
+
 
 def limitations(pkg_version):
     """The engine's declared limitations, keyed by generator or derived features. Those marked
@@ -721,6 +732,7 @@ def limitations(pkg_version):
                                                "15", "16a", "16b", "17", "18a", "18b", "19", "20", "21", "22", "23", "24", "25", "26", "27")})
     lims.append({"feature": "marketplace", "lines": sorted(l for l in universe if PTC_MOVED.match(l)),
                  "reason": PTC_REASON})
+    lims.append({"feature": "education", "lines": sorted(l for l in universe if EDU_MOVED.match(l)), "reason": EDU_REASON})
     return lims
 
 

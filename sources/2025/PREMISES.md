@@ -1482,3 +1482,12 @@ written from both and checked against the tree at 4d24cbc, `stage18-premium-tax-
 accepted D1 to D9 as recommended, with the items listed there as settled by the evidence, including the three
 additions to the atom vocabulary of D2. The stage is the second of the route in `docs/2026-10-26_plan_revision.md`
 section E.
+
+## Stage 19 premise map — the education credits
+
+Status: **owner decisions taken 2026-10-29** (TASKS.md T-080). The map is
+`research/premises/stage19-education-credits.md`, its adversarial verification
+`stage19-education-credits.verification.md`, and the decision batch, written from both and checked against the tree at
+31bbd60 with the Stage 18 build, `stage19-education-credits.decisions.md`: the owner accepted D1 to D9 as recommended,
+with the items listed there as settled by the evidence. The atom vocabulary does not change. The stage is the third of
+the route in `docs/2026-10-26_plan_revision.md` section E.

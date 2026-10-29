@@ -20,6 +20,27 @@
   {
    "printed": "Step 3",
    "restated": "Subtract line Step 2 from line Step 1. If zero or less, enter -0-.",
+   "model": "IRS Step 3 says \"Net earnings from self-employment. Subtract step 2 from step 1\" and does not include the zero-or-less floor added by the restatement.",
+   "ruling": "Ruling: ambiguity; amb.2025.sep_loss_floor (BUG-0181, the disposition of the round-4 finding BUG-0180). p560 p. 39, Deduction Worksheet for Self-Employed: \"Step 3 Net earnings from self-employment. Subtract step 2 from step 1\" prints no floor. The model read the page and the English correctly: person.sep_s3 floors Step 3 at zero and the English says so (\"If zero or less, enter -0-\"). The register records both readings and chooses the floor (\"A maximum deductible contribution below zero has no meaning\"; where both readings complete the return no Form 1040 or Schedule 1 amount differs, only the printed worksheet steps), naming person.sep_s3 in its chosen reading; the line itself carries no ambiguity field pointing back to the entry (a traceability gap only, noted in the summary). Project stands.",
+   "context": "95a2d7c8206bd561be91e06f3deba4e750b2e2e759add510bdb28db247a20dc6"
+  },
+  {
+   "printed": "Step 3",
+   "restated": "Subtract line Step 2 from line Step 1. If zero or less, enter -0-.",
+   "model": "IRS Step 3 says only 'Net earnings from self-employment. Subtract step 2 from step 1'; it does not provide 'If zero or less, enter -0-,' so the added nonnegative floor changes loss cases.",
+   "ruling": "Ruling: ambiguity; amb.2025.sep_loss_floor (BUG-0181, the disposition of the round-4 finding BUG-0180). p560 p. 39, Deduction Worksheet for Self-Employed: \"Step 3 Net earnings from self-employment. Subtract step 2 from step 1\" prints no floor. The model read the page and the English correctly: person.sep_s3 floors Step 3 at zero and the English says so (\"If zero or less, enter -0-\"). The register records both readings and chooses the floor (\"A maximum deductible contribution below zero has no meaning\"; where both readings complete the return no Form 1040 or Schedule 1 amount differs, only the printed worksheet steps), naming person.sep_s3 in its chosen reading; the line itself still carries no ambiguity field pointing back to the entry (a traceability gap only, noted in round 1). Unchanged since round 1; project stands.",
+   "context": "4ec02d0eaa540f569a3c7d963a5135c90a6f9163bcda4a91cc0cc670c590c347"
+  },
+  {
+   "printed": "Step 3",
+   "restated": "Subtract line Step 2 from line Step 1. If zero or less, enter -0-.",
+   "model": "IRS Step 3 says only 'Subtract step 2 from step 1'; it does not say to enter -0- if zero or less, so a negative result should not be floored.",
+   "ruling": "Ruling: ambiguity; amb.2025.sep_loss_floor (BUG-0181, the disposition of the round-4 finding BUG-0180). p560 p. 39, Deduction Worksheet for Self-Employed: \"Step 3 Net earnings from self-employment. Subtract step 2 from step 1\" prints no floor. The model read the page and the English correctly: person.sep_s3 floors Step 3 at zero and the English says so (\"If zero or less, enter -0-\"). The register records both readings and chooses the floor (\"A maximum deductible contribution below zero has no meaning\"; where both readings complete the return no Form 1040 or Schedule 1 amount differs, only the printed worksheet steps), naming person.sep_s3 in its chosen reading; the line itself still carries no ambiguity field pointing back to the entry (a traceability gap only, noted in round 1). Unchanged since round 1 (the round-3 reply repeats the round-2 reading); project stands.",
+   "context": "732da67b91f0140d9f0bd64f773859473c2dcb1f3c8cb892632167e36e8cad11"
+  },
+  {
+   "printed": "Step 3",
+   "restated": "Subtract line Step 2 from line Step 1. If zero or less, enter -0-.",
    "model": "Pub. 560 Step 3 says only 'Net earnings from self-employment. Subtract step 2 from step 1'; it does not provide the added 'If zero or less, enter -0-' floor.",
    "ruling": "Ruling: finding; the project's line, not its English, departs from the page. p560 p. 39, Deduction Worksheet for Self-Employed: \"Step 3 Net earnings from self-employment. Subtract step 2 from step 1\" (no floor; the page prints no \"-0-\" instruction for Steps 3 to 21). person.sep_s3 is NonNegDollars by subtract_floor0, and the English states that faithfully (\"If zero or less, enter -0-\"), so the model read the English correctly. On a reachable return the printed step differs: a SEP participant (person.plan sep, contribution $0) whose Schedule C shows a $5,000 loss has Step 1 -$5,000.00 and Step 2 $0.00; the page's arithmetic gives Step 3 -$5,000.00 (and negative Steps 5, 7 and 21), the project prints $0.00 (constructed, not executed). No Form 1040 amount changes: any contribution above zero is refused at person.sep_excess on both readings, and a zero contribution deducts zero. The floor is a reasonable reading (a maximum deductible contribution below zero has no meaning), but it is an unprinted rule with no ambiguity-register entry, as amb.2025.sa_medical_negative_agi records for the like case on Schedule A. Severity: low (printed worksheet steps only). Proposed: record the reading in ambiguities/2025.yaml and cite it on person.sep_s3; see .transcription/proposed/round4/person.findings.md.",
    "context": "da345ebe6576e309df5502390571b2a6348576fa182cf72216b7f513bb5e51c6"

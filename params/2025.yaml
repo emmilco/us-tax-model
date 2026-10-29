@@ -1126,6 +1126,81 @@ params:
       cite:
         doc: i1095a
         locator: 'p. 2, "Total the amounts on lines 21 through 32 and enter on line 33."'
+    edu.magi_limit:
+      type: NonNegDollars
+      value:
+        single: 9000000
+        mfj: 18000000
+        mfs: 9000000
+        hoh: 9000000
+        qss: 9000000
+      cite:
+        doc: f8863
+        locator: 'p. 1, Part I, line 2, "Enter $180,000 if married filing jointly; or $90,000 if single, head of household,"; i8863
+          p. 1, Reminders, "The lifetime learning credit and the American opportunity credit MAGI limits are $180,000 if you’re
+          married filing jointly ($90,000 if you’re filing single, head of household, or qualifying surviving spouse)." (married
+          filing separately is refused for the whole return, so its amount is never reached)'
+    edu.phaseout_range:
+      type: NonNegDollars
+      value:
+        single: 1000000
+        mfj: 2000000
+        mfs: 1000000
+        hoh: 1000000
+        qss: 1000000
+      cite:
+        doc: f8863
+        locator: 'p. 1, Part I, line 5, "Enter $20,000 if married filing jointly; or $10,000 if single, head of household,"; i8863
+          p. 3, American Opportunity Credit, "The amount of your credit is gradually reduced (phased out) if your MAGI is between
+          $80,000 and $90,000 ($160,000 and $180,000 if you file a joint return)." (married filing separately is never reached)'
+    aoc.expense_cap:
+      type: NonNegDollars
+      value: 400000
+      cite:
+        doc: f8863
+        locator: 'p. 2, Part III, line 27, "Don’t enter more than $4,000"; i8863 p. 3, American Opportunity Credit, "This credit
+          equals 100% of the first $2,000 and 25% of the next $2,000 of adjusted qualified education expenses paid for each
+          eligible student."'
+    aoc.full_band:
+      type: NonNegDollars
+      value: 200000
+      cite:
+        doc: f8863
+        locator: 'p. 2, Part III, line 28, "Subtract $2,000 from line 27. If zero or less, enter -0-"; i8863 p. 3, American
+          Opportunity Credit, "This credit equals 100% of the first $2,000 and 25% of the next $2,000 of adjusted qualified
+          education expenses paid for each eligible student."'
+    aoc.second_rate:
+      type: Rate
+      value:
+        num: 25
+        den: 100
+      cite:
+        doc: f8863
+        locator: 'p. 2, Part III, line 29, "Multiply line 28 by 25% (0.25)"'
+    aoc.refundable_rate:
+      type: Rate
+      value:
+        num: 40
+        den: 100
+      cite:
+        doc: f8863
+        locator: 'p. 1, Part I, line 8, "Refundable American opportunity credit. Multiply line 7 by 40% (0.40)."'
+    llc.expense_cap:
+      type: NonNegDollars
+      value: 1000000
+      cite:
+        doc: f8863
+        locator: 'p. 1, Part II, line 11, "Enter the smaller of line 10 or $10,000"; i8863 p. 4, Lifetime Learning Credit, "up to a
+          maximum of $10,000 of adjusted qualified education expenses per return."'
+    llc.rate:
+      type: Rate
+      value:
+        num: 20
+        den: 100
+      cite:
+        doc: f8863
+        locator: 'p. 1, Part II, line 12, "Multiply line 11 by 20% (0.20)"; i8863 p. 4, Lifetime Learning Credit, "The lifetime
+          learning credit equals 20% of adjusted qualified education expenses"'
     ptc.twelfth:
       type: Rate
       value:

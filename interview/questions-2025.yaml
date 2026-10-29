@@ -500,6 +500,10 @@ bank:
     order: 2
     help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
       do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: dependent.lawful
+    order: 3
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
   - input: dependent.tin
     order: 2
     help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
@@ -894,6 +898,138 @@ bank:
       do not guess. Married filing separately and unsupported items are refused with citations.
   - input: f8962.fpl_table
     order: 10
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f8863.paid
+    order: 10
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: person.edu
+    order: 21
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: person.edu_1098t
+    order: 21
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: person.edu_inst
+    order: 21
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: person.edu_mat
+    order: 21
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: person.edu_a2025
+    order: 21
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: person.edu_a2026
+    order: 21
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: person.edu_refunds
+    order: 21
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: person.edu_line23
+    order: 21
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: person.edu_line24
+    order: 21
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: person.edu_line25
+    order: 21
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: person.edu_line26
+    order: 21
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: person.edu_ein
+    order: 21
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: person.edu_over
+    order: 31
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: dependent.edu
+    order: 21
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: dependent.edu_1098t
+    order: 21
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: dependent.edu_inst
+    order: 21
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: dependent.edu_mat
+    order: 21
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: dependent.edu_a2025
+    order: 21
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: dependent.edu_a2026
+    order: 21
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: dependent.edu_refunds
+    order: 21
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: dependent.edu_line23
+    order: 21
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: dependent.edu_line24
+    order: 21
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: dependent.edu_line25
+    order: 21
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: dependent.edu_line26
+    order: 21
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: dependent.edu_ein
+    order: 21
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: dependent.edu_over
+    order: 31
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f8863.ban
+    order: 31
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: person.edu_born_2007
+    order: 31
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: person.edu_born_2002
+    order: 31
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: person.edu_fulltime
+    order: 31
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: person.edu_half_support
+    order: 31
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: person.edu_parent
+    order: 31
     help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
       do not guess. Married filing separately and unsupported items are refused with citations.
   - input: f8962.estimate_100

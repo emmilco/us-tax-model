@@ -700,3 +700,48 @@
 - Reason: The instructions make line 10 a test ("Check “Yes” and continue to line 11 if all of the following apply"), not a choice. Owner's decision D7(d), 2026-10-28.
 - Status: Owner decision, 2026-10-28 (research/premises/stage18-premium-tax-credit.decisions.md, D7).
 - Cite: [i8962] p. 14, Line 10, "Check “Yes” and continue to line 11 if all of the following apply for each qualified health plan" (2025; sha256 f4ac86ad)
+
+## amb.2025.edu_ratio_places
+
+- Text at issue: Form 8863 lines 6 and 17 say "Enter the result as a decimal (rounded to at least three places)".
+- Candidate readings: Round the ratio half-up to exactly three decimal places, the least precision the text allows. | Keep the ratio at full precision, which also satisfies "at least three places".
+- **Chosen:** The first (the prorate atom with places 3 on f8863.line7 and f8863.line18), as amb.2025.sli_ratio_places reads the same words.
+- Reason: The owner's Stage 11 ruling on the same words, applied by the Stage 19 decision batch (Settled item 4). The readings differ by at most a few dollars of credit.
+- Status: Owner decision, 2026-10-29 (research/premises/stage19-education-credits.decisions.md, Settled item 4).
+- Cite: [f8863] p. 1, Part I, line 6, "Less than line 5, divide line 4 by line 5. Enter the result as a decimal (rounded to at least three places)." (2025; sha256 a251a1cf)
+
+## amb.2025.edu_filer_tin
+
+- Text at issue: i8863 p. 3, the American opportunity credit's fifth requirement: "Filers and students must have been issued a TIN by the due date of their 2025 return (including extensions)." On a joint return both spouses are filers.
+- Candidate readings: Both spouses on a joint return must have a TIN by the due date (household.all_tin). | One spouse suffices.
+- **Chosen:** The first; without it an American opportunity credit student goes to the lifetime learning credit (line 31).
+- Reason: Both spouses are filers of a joint return, and the text says "Filers". The 2026 draft instructions read one spouse as enough, but under the new valid-SSN rule of P.L. 119-21 sec. 70606, which is not the 2025 text. Owner's decision D7(a), 2026-10-29.
+- Status: Owner decision, 2026-10-29 (research/premises/stage19-education-credits.decisions.md, D7).
+- Cite: [i8863] p. 3, Student qualifications, "5. Filers and students must have been issued a TIN by the due date of their 2025 return (including extensions)." (2025; sha256 195cfd5e)
+
+## amb.2025.edu_age_rule
+
+- Text at issue: i8863 p. 7 tests the age "at the end of 2025" (under 18, age 18, over 18 and under 24) without saying when a birthday on January 1 counts.
+- Candidate readings: Age at the end of 2025 by the day-before-the-birthday rule, from birth dates (born before January 2, 2008, January 2, 2007 and January 2, 2002). | The age in whole years on December 31, 2025, as the filer states it.
+- **Chosen:** The first (person.sav_born, person.edu_born_2007 and person.edu_born_2002 feeding person.edu_kid).
+- Reason: Pub. 501 states the rule for age 65 and the project's other birth-date questions apply it. Owner's decision D7(b), 2026-10-29.
+- Status: Owner decision, 2026-10-29 (research/premises/stage19-education-credits.decisions.md, D7).
+- Cite: [i8863] p. 7, Line 7, "You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you." (2025; sha256 195cfd5e)
+
+## amb.2025.edu_fulltime
+
+- Text at issue: i8863 p. 7, line 7 condition 1c says "a full-time student (defined later)"; the definition that follows is headed "Solely for purposes of determining whether a scholarship is considered support".
+- Candidate readings: The 5-month definition applies to condition 1c as well. | Condition 1c uses some other meaning of full-time student, which the instructions do not give.
+- **Chosen:** The first (person.edu_fulltime asks the 5-month definition).
+- Reason: Condition 1c points to "(defined later)", and the only definition later is the 5-month one. Owner's decision D7(c), 2026-10-29.
+- Status: Owner decision, 2026-10-29 (research/premises/stage19-education-credits.decisions.md, D7).
+- Cite: [i8863] p. 7, Full-time student, "you were a full-time student for 2025 if during any part of any 5 calendar months during the year you were enrolled as a full-time student at an eligible educational institution (defined earlier)" (2025; sha256 195cfd5e)
+
+## amb.2025.edu_1098t_date
+
+- Text at issue: The Form 1098-T exception for a form the institution did not furnish: i8863 p. 1 says the request must be made "After January 31, 2026, but before you file the return"; Pub. 970 p. 2 says "After February 2, 2026 (January 31 falls on a Saturday)".
+- Candidate readings: After February 2, 2026 (Pub. 970, the later revision). | After January 31, 2026 (i8863).
+- **Chosen:** The first, in the help text of person.edu_1098t and dependent.edu_1098t.
+- Reason: Pub. 970 is the later revision and explains the shift (January 31 falls on a Saturday). Owner's decision D7(d), 2026-10-29.
+- Status: Owner decision, 2026-10-29 (research/premises/stage19-education-credits.decisions.md, D7).
+- Cite: [p970] p. 2, Reminders, "After February 2, 2026 (January 31 falls on a Saturday), but before you file your 2025 tax return, you or the student must request that the educational institution furnish Form 1098-T." (2025; sha256 167f3d6d)

@@ -2,48 +2,8 @@
  "bank": null,
  "errors": [
   {
-   "line": "person.excess",
-   "message": "person.person.excess: reference 'person.h_excess_raw' does not resolve"
-  },
-  {
-   "line": "person.hsa_step1",
-   "message": "person.person.__type_gate_5: collection reference requires sum_over"
-  },
-  {
-   "line": "person.hsa_step1",
-   "message": "person.person.__type_gate_5: comparison operands have incompatible types"
-  },
-  {
-   "line": "person.hsa_share",
-   "message": "person.person.__type_gate_6: collection reference requires sum_over"
-  },
-  {
-   "line": "person.hsa_share",
-   "message": "person.person.__type_gate_6: comparison operands have incompatible types"
-  },
-  {
-   "line": "person.hsa_deduction",
-   "message": "person.person.__type_gate_7: collection reference requires sum_over"
-  },
-  {
-   "line": "person.hsa_deduction",
-   "message": "person.person.__type_gate_7: comparison operands have incompatible types"
-  },
-  {
-   "line": "person.hsa_taxable",
-   "message": "person.person.__type_gate_8: collection reference requires sum_over"
-  },
-  {
-   "line": "person.hsa_taxable",
-   "message": "person.person.__type_gate_8: comparison operands have incompatible types"
-  },
-  {
-   "line": "person.hsa_addtax",
-   "message": "person.person.__type_gate_9: collection reference requires sum_over"
-  },
-  {
-   "line": "person.hsa_addtax",
-   "message": "person.person.__type_gate_9: comparison operands have incompatible types"
+   "line": "person.h_se_line4a_mult",
+   "message": "person.person.h_se_line4a_mult: declared NonNegDollars but the expression does not prove non-negativity"
   }
  ],
  "failures": [],
@@ -82,51 +42,6 @@
    "handle": "person.hsa_share",
    "open_at_triage": true,
    "project": "person.hsa_share",
-   "shown_when": null,
-   "status": "DISAGREE",
-   "triage": "candidate invalid"
-  },
-  {
-   "candidate": "person.hsa_deduction",
-   "handle": "person.hsa_deduction",
-   "open_at_triage": true,
-   "project": "person.hsa_deduction",
-   "shown_when": null,
-   "status": "DISAGREE",
-   "triage": "candidate invalid"
-  },
-  {
-   "candidate": "person.hsa_taxable",
-   "handle": "person.hsa_taxable",
-   "open_at_triage": true,
-   "project": "person.hsa_taxable",
-   "shown_when": null,
-   "status": "DISAGREE",
-   "triage": "candidate invalid"
-  },
-  {
-   "candidate": "person.hsa_addtax",
-   "handle": "person.hsa_addtax",
-   "open_at_triage": true,
-   "project": "person.hsa_addtax",
-   "shown_when": null,
-   "status": "DISAGREE",
-   "triage": "candidate invalid"
-  },
-  {
-   "candidate": "person.tip_employers",
-   "handle": "person.tip_employers",
-   "open_at_triage": true,
-   "project": "person.tip_employers",
-   "shown_when": null,
-   "status": "DISAGREE",
-   "triage": "candidate invalid"
-  },
-  {
-   "candidate": "person.tip_reported",
-   "handle": "person.tip_reported",
-   "open_at_triage": true,
-   "project": "person.tip_reported",
    "shown_when": null,
    "status": "DISAGREE",
    "triage": "candidate invalid"
@@ -204,15 +119,6 @@
    "triage": "candidate invalid"
   },
   {
-   "candidate": "person.qbi",
-   "handle": "person.qbi",
-   "open_at_triage": true,
-   "project": "person.qbi",
-   "shown_when": null,
-   "status": "DISAGREE",
-   "triage": "candidate invalid"
-  },
-  {
    "candidate": "person.eic_se",
    "handle": "person.eic_se",
    "open_at_triage": true,
@@ -262,15 +168,6 @@
    "handle": "person.sav_ineligible",
    "open_at_triage": true,
    "project": "person.sav_ineligible",
-   "shown_when": null,
-   "status": "DISAGREE",
-   "triage": "candidate invalid"
-  },
-  {
-   "candidate": "person.sav_line1",
-   "handle": "person.sav_line1",
-   "open_at_triage": true,
-   "project": "person.sav_line1",
    "shown_when": null,
    "status": "DISAGREE",
    "triage": "candidate invalid"
@@ -393,10 +290,19 @@
    "triage": "candidate invalid"
   },
   {
-   "candidate": "person.over",
-   "handle": "over",
+   "candidate": "person.edu_kid",
+   "handle": "person.edu_kid",
    "open_at_triage": true,
-   "project": "person.over",
+   "project": "person.edu_kid",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.wages",
+   "handle": "wages",
+   "open_at_triage": true,
+   "project": "person.wages",
    "shown_when": null,
    "status": "DISAGREE",
    "triage": "candidate invalid"
@@ -447,6 +353,15 @@
    "triage": "candidate invalid"
   },
   {
+   "candidate": "person.sep_s3",
+   "handle": "Step 3",
+   "open_at_triage": true,
+   "project": "person.sep_s3",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
    "candidate": "person.sep_s5",
    "handle": "Step 5",
    "open_at_triage": true,
@@ -463,12 +378,84 @@
    "shown_when": null,
    "status": "DISAGREE",
    "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.sep_s7",
+   "handle": "Step 7",
+   "open_at_triage": true,
+   "project": "person.sep_s7",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.sep_s8",
+   "handle": "Step 8",
+   "open_at_triage": true,
+   "project": "person.sep_s8",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.sep_s21",
+   "handle": "Step 21",
+   "open_at_triage": true,
+   "project": "person.sep_s21",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.edu_line27",
+   "handle": "27",
+   "open_at_triage": true,
+   "project": "person.edu_line27",
+   "shown_when": "person.edu_aoc",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.edu_line28",
+   "handle": "28",
+   "open_at_triage": true,
+   "project": "person.edu_line28",
+   "shown_when": "person.edu_aoc",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.edu_line29",
+   "handle": "29",
+   "open_at_triage": true,
+   "project": "person.edu_line29",
+   "shown_when": "person.edu_aoc",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.edu_line30",
+   "handle": "30",
+   "open_at_triage": true,
+   "project": "person.edu_line30",
+   "shown_when": "person.edu_aoc",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.edu_line31",
+   "handle": "31",
+   "open_at_triage": true,
+   "project": "person.edu_line31",
+   "shown_when": "person.edu_llc",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
   }
  ],
- "log_sha256_at_triage": "b20dd9e0410dd4301a952e91dd840fcb9595580051d96e32f803916bf4fd99b8",
+ "log_sha256_at_triage": "50939be3a4405e163da6cf0d779c401abd22bdc143b48db7519cf5531918c8db",
  "policy": "executable-triage-v2",
- "response_sha256": "60156201b54e662f2658a71aeffcadf2d40e0724510d6dbb96f8a6dbd169bd4c",
+ "response_sha256": "4a3e013bb31358246ad9f2055f5c38b0b687fe3e81c1ac458259f801cdb9ee19",
  "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
  "state": "invalid",
- "subject_sha256": "cedbc126a7e2ebef2c444cd8498bbcb81ef95101c5c1b375434ffbd9b3a57064"
+ "subject_sha256": "3fc7752cefd529213bec9f3a461ddc38340937db202648ef82f97c1bbfec6e18"
 }

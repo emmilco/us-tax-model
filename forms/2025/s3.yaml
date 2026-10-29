@@ -47,6 +47,28 @@ form:
       cite:
         doc: f1040s3
         locator: Schedule 3 (2025), lines 1 and 8
+    - id: s3.line3
+      printed: "3"
+      type: Dollars
+      label: Education credits from Form 8863, line 19
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - f8863.eligible
+                - const: true
+            then: f8863.line19
+          - guard:
+              op: test
+              eq:
+                - f8863.eligible
+                - const: false
+            then: s3.zero
+      cite:
+        doc: f1040s3
+        locator: 'p. 1, Part I, line 3, "Education credits from Form 8863, line 19"'
     - id: s3.line4
       printed: "4"
       type: NonNegDollars
@@ -110,6 +132,7 @@ form:
         of:
           - s3.line1
           - s3.line2
+          - s3.line3
           - s3.line4
           - s3.line5a
           - s3.line5b
@@ -119,8 +142,8 @@ form:
         locator: Schedule 3 (2025), line 8
       refuses:
         - when: scope.credits
-          form: Other credit forms (Schedule 3 lines 3 and 6a to 6z; Form 1040 lines 29 to 31)
-          remedy: Credits other than the foreign tax credit by election, the excess social security credit, the Schedule 8812 credits, the earned income credit, the child and dependent care credit, the saver's credit, the residential energy credits and the net premium tax credit entered from Form 8962 require forms outside this proof of concept.
+          form: Other credit forms (Schedule 3 lines 6a to 6z; Form 1040 lines 30 and 31)
+          remedy: Credits other than the foreign tax credit by election, the excess social security credit, the Schedule 8812 credits, the earned income credit, the child and dependent care credit, the saver's credit, the residential energy credits, the net premium tax credit figured on Form 8962 and the education credits (Form 8863) require forms outside this proof of concept.
           cite:
             doc: f1040
             locator: Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31

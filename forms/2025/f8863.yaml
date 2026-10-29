@@ -1,0 +1,661 @@
+form:
+  id: f8863
+  kind: form
+  title: Form 8863, Education Credits (American Opportunity and Lifetime Learning Credits)
+  tax_year: 2025
+  note: Part III is on each student's person or dependent entry (lines 23 to 31), with the worksheet arithmetic in the aqee
+    definition. A Form 8862 claim or a ban, an academic period whose assistance exceeds its own expenses, and excluded foreign
+    or possession income are refused; married filing separately and nonresident aliens are refused for the whole return.
+  lines:
+  - id: f8863.paid
+    printed: (gate)
+    label: Qualified education expenses paid in 2025 for you, your spouse or a dependent you claim
+    type: Bool
+    expr:
+      op: input
+      source: Did anyone pay qualified education expenses in 2025 for you, your spouse if filing jointly, or a dependent you
+        claim, at a college, university, vocational school or other postsecondary school (for tuition, required fees or course
+        materials)?
+    cite:
+      doc: i8863
+      locator: p. 2, Who Can Claim an Education Credit, "You may be able to claim an education credit if you, your spouse,
+        or a dependent you claim on your tax return was a student enrolled at or attending an eligible educational institution."
+  - id: f8863.zero
+    printed: (helper)
+    label: Zero
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: sales.zero
+    cite:
+      doc: f8863
+      locator: p. 1, Part II, line 10, "If zero, skip lines 11 through 17, enter -0- on line 18, and go to line 19"
+  - id: f8863.eligible
+    printed: (helper)
+    label: 'An education credit can be claimed on this return: expenses paid, and neither you nor your spouse is claimed as
+      a dependent'
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8863.paid
+        - const: true
+      - op: test
+        eq:
+        - sli.claimed
+        - const: false
+    cite:
+      doc: i8863
+      locator: p. 3, Who cannot claim a credit, "1. You’re claimed as a dependent on another person’s tax return, such as
+        your parent’s return."
+  - id: f8863.aoc_person
+    printed: (helper)
+    label: Part III line 30 of you and your spouse
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: person
+      field: person.edu_line30
+    cite:
+      doc: f8863
+      locator: p. 1, Part I, line 1, "After completing Part III for each student, enter the total of all amounts from all
+        Parts III, line 30"
+  - id: f8863.aoc_dep
+    printed: (helper)
+    label: Part III line 30 of the dependents you claim
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: dependent
+      field: dependent.edu_line30
+    cite:
+      doc: f8863
+      locator: p. 1, Part I, line 1, "After completing Part III for each student, enter the total of all amounts from all
+        Parts III, line 30"
+  - id: f8863.aoc_sum
+    printed: (helper)
+    label: All Parts III, line 30
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - f8863.aoc_person
+      - f8863.aoc_dep
+    cite:
+      doc: f8863
+      locator: p. 1, Part I, line 1, "After completing Part III for each student, enter the total of all amounts from all
+        Parts III, line 30"
+  - id: f8863.line1
+    printed: '1'
+    label: After completing Part III for each student, enter the total of all amounts from all Parts III, line 30
+    shown_when: f8863.eligible
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8863.eligible
+          - const: true
+        then: f8863.aoc_sum
+      - guard:
+          op: test
+          eq:
+          - f8863.eligible
+          - const: false
+        then: f8863.zero
+    cite:
+      doc: f8863
+      locator: p. 1, Part I, line 1, "After completing Part III for each student, enter the total of all amounts from all
+        Parts III, line 30"
+  - id: f8863.line2
+    printed: '2'
+    label: Enter $180,000 if married filing jointly; or $90,000 if single, head of household, or qualifying surviving spouse
+    shown_when: f8863.eligible
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: edu.magi_limit
+    cite:
+      doc: f8863
+      locator: p. 1, Part I, line 2, "Enter $180,000 if married filing jointly; or $90,000 if single, head of household,"
+  - id: f8863.line3
+    printed: '3'
+    label: Enter the amount from Form 1040 or 1040-SR, line 11b
+    shown_when: f8863.eligible
+    type: Dollars
+    expr:
+      op: copy
+      from: f1040.line11b
+    cite:
+      doc: f8863
+      locator: p. 1, Part I, line 3, "Enter the amount from Form 1040 or 1040-SR, line 11b."
+    refuses: &id002
+    - when: sa.excluded_income
+      form: Form 8863, lines 3 and 14, with Form 2555, Form 4563 or excluded Puerto Rico income
+      remedy: With excluded foreign, American Samoa or Puerto Rico income, Form 8863 lines 3 and 14 add the excluded income
+        back (Pub. 970); this tool does not prepare it.
+      cite:
+        doc: i8863
+        locator: p. 3, Who cannot claim a credit, "However, if you’re filing Form 2555, Foreign Earned Income; or Form 4563,
+          Exclusion of Income for Bona Fide Residents of American Samoa; or are excluding income from Puerto Rico, add to
+          the amount on your Form 1040 or 1040-SR, line 11b, the amount of income you excluded."
+  - id: f8863.line4
+    printed: '4'
+    label: Subtract line 3 from line 2. If zero or less, stop; you can't take any education credit
+    shown_when: f8863.eligible
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f8863.line2
+      take: f8863.line3
+    cite:
+      doc: f8863
+      locator: p. 1, Part I, line 4, "Subtract line 3 from line 2. If zero or less, stop; you can’t take any education"
+  - id: f8863.show_after4
+    printed: (helper)
+    label: Line 4 is more than zero (the form continues after line 4)
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8863.eligible
+        - const: true
+      - op: test
+        gt:
+        - f8863.line4
+        - const: 0
+    cite:
+      doc: f8863
+      locator: p. 1, Part I, line 4, "Subtract line 3 from line 2. If zero or less, stop; you can’t take any education"
+  - id: f8863.line5
+    printed: '5'
+    label: Enter $20,000 if married filing jointly; or $10,000 if single, head of household, or qualifying surviving spouse
+    shown_when: f8863.show_after4
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: edu.phaseout_range
+    cite:
+      doc: f8863
+      locator: p. 1, Part I, line 5, "Enter $20,000 if married filing jointly; or $10,000 if single, head of household,"
+  - id: f8863.ban
+    printed: (gate)
+    label: An American opportunity credit after a denial or reduction, or within a ban
+    type: Bool
+    expr:
+      op: input
+      source: Was your American opportunity credit denied or reduced, for a reason other than a math or clerical error, for
+        a tax year after 2015, so that Form 8862 is required (it is not, if you filed Form 8862 for 2024 and the credit was
+        allowed), or are you within 2 years of a final determination that a claim was due to reckless or intentional disregard
+        of the rules, or within 10 years of one that it was due to fraud?
+    cite:
+      doc: i8863
+      locator: 'p. 3, American Opportunity Credit, "Caution: Don’t claim the American opportunity credit for 2 years after
+        there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years
+        after there was a final determination that your claim was due to fraud."'
+  - id: f8863.ban_refused
+    printed: (gate)
+    label: An American opportunity credit claimed that needs Form 8862 or is barred
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        gt:
+        - f8863.line1
+        - const: 0
+      - op: test
+        gt:
+        - f8863.line4
+        - const: 0
+      - op: test
+        eq:
+        - f8863.ban
+        - const: true
+    cite: &id001
+      doc: i8863
+      locator: p. 1, Form 8862 may be required, "If your American opportunity credit was denied or reduced for any reason
+        other than a math or clerical error for any tax year beginning after 2015, you must attach a completed Form 8862,
+        Information To Claim Certain Credits After Disallowance, to your tax return for the next tax year for which you claim
+        the credit."
+  - id: f8863.line7
+    printed: '7'
+    label: 'Multiply line 1 by line 6 (line 6: 1.000 if line 4 is equal to or more than line 5; otherwise line 4 divided by
+      line 5, rounded to three places)'
+    shown_when: f8863.show_after4
+    type: NonNegDollars
+    expr:
+      op: prorate
+      amount: f8863.line1
+      part: f8863.line4
+      whole: f8863.line5
+      places: 3
+    cite:
+      doc: f8863
+      locator: p. 1, Part I, lines 6 and 7, "Less than line 5, divide line 4 by line 5. Enter the result as a decimal (rounded
+        to at least three places). Multiply line 1 by line 6."
+    ambiguity: amb.2025.edu_ratio_places
+    refuses:
+    - when: f8863.ban_refused
+      form: Form 8862, Information To Claim Certain Credits After Disallowance, or a ban on the American opportunity credit
+      remedy: An American opportunity credit after a denial or reduction (other than for a math or clerical error) needs Form
+        8862, and a credit within a 2- or 10-year ban is not allowed; this tool does not prepare either.
+      cite: *id001
+  - id: f8863.kid_needed
+    printed: (helper)
+    label: Line 7 is above zero on a return that is not joint (the line 7 conditions are asked)
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        gt:
+        - f8863.line1
+        - const: 0
+      - op: test
+        gt:
+        - f8863.line7
+        - const: 0
+      - op: test
+        ne:
+        - f1040.status
+        - const: mfj
+    cite:
+      doc: i8863
+      locator: p. 7, Line 7, "3. You’re not filing a joint return for 2025."
+  - id: f8863.kid
+    printed: (helper)
+    label: You meet line 7 conditions 1 and 2 (under 24 with the age, student and support conditions, and a parent alive)
+    type: Count
+    expr:
+      op: sum_over
+      collection: person
+      field: person.one
+      where:
+        op: test
+        all:
+        - op: test
+          eq:
+          - person.role
+          - const: taxpayer
+        - op: test
+          eq:
+          - person.edu_kid
+          - const: true
+    cite:
+      doc: i8863
+      locator: p. 7, Line 7, "You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below
+        apply to you."
+  - id: f8863.no_refund
+    printed: 7 (box)
+    label: 'You can''t take the refundable American opportunity credit: check this box (line 7 conditions 1, 2 and 3)'
+    shown_when: f8863.show_after4
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8863.kid_needed
+        - const: true
+      - op: test
+        gt:
+        - f8863.kid
+        - const: 0
+          type: Count
+    cite:
+      doc: i8863
+      locator: p. 7, Line 7, "3. You’re not filing a joint return for 2025.", "If you meet these conditions, check the box
+        next to line 7, skip line 8, and enter the amount from line 7 on line 9."
+  - id: f8863.refund_rate
+    printed: (helper)
+    label: Year parameter aoc.refundable_rate (40%)
+    type: Rate
+    expr:
+      op: param
+      ref: aoc.refundable_rate
+    cite:
+      doc: f8863
+      locator: p. 1, Part I, line 8, "Refundable American opportunity credit. Multiply line 7 by 40% (0.40)."
+  - id: f8863.line7_40
+    printed: (helper)
+    label: Multiply line 7 by 40% (0.40)
+    type: NonNegDollars
+    expr:
+      op: multiply_rate
+      amount: f8863.line7
+      rate: f8863.refund_rate
+    cite:
+      doc: f8863
+      locator: p. 1, Part I, line 8, "Refundable American opportunity credit. Multiply line 7 by 40% (0.40)."
+  - id: f8863.line8
+    printed: '8'
+    label: Refundable American opportunity credit. Multiply line 7 by 40% (0.40). Enter the amount here and on Form 1040 or
+      1040-SR, line 29
+    shown_when: f8863.show_after4
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8863.no_refund
+          - const: true
+        then: f8863.zero
+      - guard:
+          op: test
+          eq:
+          - f8863.no_refund
+          - const: false
+        then: f8863.line7_40
+    cite:
+      doc: f8863
+      locator: p. 1, Part I, line 8, "Refundable American opportunity credit. Multiply line 7 by 40% (0.40). Enter the amount
+        here and on Form 1040 or 1040-SR, line 29."
+  - id: f8863.line9
+    printed: '9'
+    label: Subtract line 8 from line 7. Enter here and on line 2 of the Credit Limit Worksheet
+    shown_when: f8863.show_after4
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f8863.line7
+      take: f8863.line8
+    cite:
+      doc: f8863
+      locator: p. 1, Part II, line 9, "Subtract line 8 from line 7. Enter here and on line 2 of the Credit Limit Worksheet."
+  - id: f8863.llc_person
+    printed: (helper)
+    label: Part III line 31 of you and your spouse
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: person
+      field: person.edu_line31
+    cite:
+      doc: f8863
+      locator: p. 1, Part II, line 10, "After completing Part III for each student, enter the total of all amounts from all
+        Parts III, line 31."
+  - id: f8863.llc_dep
+    printed: (helper)
+    label: Part III line 31 of the dependents you claim
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: dependent
+      field: dependent.edu_line31
+    cite:
+      doc: f8863
+      locator: p. 1, Part II, line 10, "After completing Part III for each student, enter the total of all amounts from all
+        Parts III, line 31."
+  - id: f8863.llc_sum
+    printed: (helper)
+    label: All Parts III, line 31
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - f8863.llc_person
+      - f8863.llc_dep
+    cite:
+      doc: f8863
+      locator: p. 1, Part II, line 10, "After completing Part III for each student, enter the total of all amounts from all
+        Parts III, line 31."
+  - id: f8863.line10
+    printed: '10'
+    label: After completing Part III for each student, enter the total of all amounts from all Parts III, line 31
+    shown_when: f8863.show_after4
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8863.eligible
+          - const: true
+        then: f8863.llc_sum
+      - guard:
+          op: test
+          eq:
+          - f8863.eligible
+          - const: false
+        then: f8863.zero
+    cite:
+      doc: f8863
+      locator: p. 1, Part II, line 10, "After completing Part III for each student, enter the total of all amounts from all
+        Parts III, line 31."
+  - id: f8863.llc_cap
+    printed: (helper)
+    label: Year parameter llc.expense_cap ($10,000)
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: llc.expense_cap
+    cite:
+      doc: f8863
+      locator: p. 1, Part II, line 11, "Enter the smaller of line 10 or $10,000"
+  - id: f8863.show_llc
+    printed: (helper)
+    label: Line 10 is more than zero (lines 11 to 17 are completed)
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8863.show_after4
+        - const: true
+      - op: test
+        gt:
+        - f8863.line10
+        - const: 0
+    cite:
+      doc: f8863
+      locator: p. 1, Part II, line 10, "If zero, skip lines 11 through 17, enter -0- on line 18, and go to line 19"
+  - id: f8863.line11
+    printed: '11'
+    label: Enter the smaller of line 10 or $10,000
+    shown_when: f8863.show_llc
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - f8863.line10
+      - f8863.llc_cap
+    cite:
+      doc: f8863
+      locator: p. 1, Part II, line 11, "Enter the smaller of line 10 or $10,000"
+  - id: f8863.llc_rate
+    printed: (helper)
+    label: Year parameter llc.rate (20%)
+    type: Rate
+    expr:
+      op: param
+      ref: llc.rate
+    cite:
+      doc: f8863
+      locator: p. 1, Part II, line 12, "Multiply line 11 by 20% (0.20)"
+  - id: f8863.line12
+    printed: '12'
+    label: Multiply line 11 by 20% (0.20)
+    shown_when: f8863.show_llc
+    type: NonNegDollars
+    expr:
+      op: multiply_rate
+      amount: f8863.line11
+      rate: f8863.llc_rate
+    cite:
+      doc: f8863
+      locator: p. 1, Part II, line 12, "Multiply line 11 by 20% (0.20)"
+  - id: f8863.line13
+    printed: '13'
+    label: Enter $180,000 if married filing jointly; or $90,000 if single, head of household, or qualifying surviving spouse
+    shown_when: f8863.show_llc
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: edu.magi_limit
+    cite:
+      doc: f8863
+      locator: p. 1, Part II, line 13, "Enter $180,000 if married filing jointly; or $90,000 if single, head of household,"
+  - id: f8863.line14
+    printed: '14'
+    label: Enter the amount from Form 1040 or 1040-SR, line 11b
+    shown_when: f8863.show_llc
+    type: Dollars
+    expr:
+      op: copy
+      from: f1040.line11b
+    cite:
+      doc: i8863
+      locator: p. 8, Line 14, "Generally, your MAGI is the amount on your Form 1040 or 1040-SR, line 11b."
+    refuses: *id002
+  - id: f8863.line15
+    printed: '15'
+    label: Subtract line 14 from line 13. If zero or less, skip lines 16 and 17, enter -0- on line 18, and go to line 19
+    shown_when: f8863.show_llc
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f8863.line13
+      take: f8863.line14
+    cite:
+      doc: f8863
+      locator: p. 1, Part II, line 15, "Subtract line 14 from line 13. If zero or less, skip lines 16 and 17, enter -0- on"
+  - id: f8863.line16
+    printed: '16'
+    label: Enter $20,000 if married filing jointly; or $10,000 if single, head of household, or qualifying surviving spouse
+    shown_when: f8863.show_llc
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: edu.phaseout_range
+    cite:
+      doc: f8863
+      locator: p. 1, Part II, line 16, "Enter $20,000 if married filing jointly; or $10,000 if single, head of household,"
+  - id: f8863.line18
+    printed: '18'
+    label: 'Multiply line 12 by line 17 (line 17: 1.000 if line 15 is equal to or more than line 16; otherwise line 15 divided
+      by line 16, rounded to three places). Enter here and on line 1 of the Credit Limit Worksheet'
+    shown_when: f8863.show_after4
+    type: NonNegDollars
+    expr:
+      op: prorate
+      amount: f8863.line12
+      part: f8863.line15
+      whole: f8863.line16
+      places: 3
+    cite:
+      doc: f8863
+      locator: p. 1, Part II, lines 17 and 18, "Less than line 16, divide line 15 by line 16. Enter the result as a decimal
+        (rounded to at least three places).", "Multiply line 12 by line 17. Enter here and on line 1 of the Credit Limit Worksheet."
+    ambiguity: amb.2025.edu_ratio_places
+  - id: f8863.clw1
+    printed: (CLW 1)
+    label: Enter the amount from Form 8863, line 18
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: f8863.line18
+    cite:
+      doc: i8863
+      locator: p. 8, Credit Limit Worksheet, "1. Enter the amount from Form 8863, line 18"
+  - id: f8863.clw2
+    printed: (CLW 2)
+    label: Enter the amount from Form 8863, line 9
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: f8863.line9
+    cite:
+      doc: i8863
+      locator: p. 8, Credit Limit Worksheet, "2. Enter the amount from Form 8863, line 9"
+  - id: f8863.clw3
+    printed: (CLW 3)
+    label: Add lines 1 and 2
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - f8863.clw1
+      - f8863.clw2
+    cite:
+      doc: i8863
+      locator: p. 8, Credit Limit Worksheet, "3. Add lines 1 and 2"
+  - id: f8863.clw4
+    printed: (CLW 4)
+    label: Enter the amount from Form 1040 or 1040-SR, line 18
+    type: Dollars
+    expr:
+      op: copy
+      from: f1040.line18
+    cite:
+      doc: i8863
+      locator: p. 8, Credit Limit Worksheet, "4. Enter the amount from Form 1040 or 1040-SR, line 18"
+  - id: f8863.clw5
+    printed: (CLW 5)
+    label: Enter the total of your credits from Schedule 3 (Form 1040), lines 1, 2, 6d, and 6l (lines 6d and 6l are refused
+      in this tool)
+    type: Dollars
+    expr:
+      op: sum
+      of:
+      - s3.line1
+      - s3.line2
+    cite:
+      doc: i8863
+      locator: p. 8, Credit Limit Worksheet, "5. Enter the total of your credits from Schedule 3 (Form 1040), lines 1, 2,
+        6d, and 6l"
+    refuses:
+    - when: scope.credits
+      form: Credit Limit Worksheet (Form 8863 instructions), line 5 (Schedule 3 lines 6d and 6l)
+      remedy: Credits other than the foreign tax credit and the child and dependent care credit that come before the education
+        credits are outside this tool.
+      cite:
+        doc: i8863
+        locator: p. 8, Credit Limit Worksheet, "5. Enter the total of your credits from Schedule 3 (Form 1040), lines 1, 2,
+          6d, and 6l"
+  - id: f8863.clw6
+    printed: (CLW 6)
+    label: Subtract line 5 from line 4
+    type: Dollars
+    expr:
+      op: subtract
+      from: f8863.clw4
+      take: f8863.clw5
+    cite:
+      doc: i8863
+      locator: p. 8, Credit Limit Worksheet, "6. Subtract line 5 from line 4"
+  - id: f8863.clw7
+    printed: (CLW 7)
+    label: Enter the smaller of line 3 or line 6 here and on Form 8863, line 19
+    type: Dollars
+    expr:
+      op: smaller_of
+      of:
+      - f8863.clw3
+      - f8863.clw6
+    cite:
+      doc: i8863
+      locator: p. 8, Credit Limit Worksheet, "7. Enter the smaller of line 3 or line 6 here and on Form 8863, line 19"
+  - id: f8863.line19
+    printed: '19'
+    label: Nonrefundable education credits. Enter the amount from line 7 of the Credit Limit Worksheet here and on Schedule
+      3 (Form 1040), line 3
+    shown_when: f8863.show_after4
+    type: Dollars
+    expr:
+      op: copy
+      from: f8863.clw7
+    cite:
+      doc: f8863
+      locator: p. 1, Part II, line 19, "Nonrefundable education credits. Enter the amount from line 7 of the Credit Limit
+        Worksheet (see instructions) here and on Schedule 3 (Form 1040), line 3"

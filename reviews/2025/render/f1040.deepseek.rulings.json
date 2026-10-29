@@ -34,6 +34,13 @@
   {
    "printed": "27a",
    "restated": "Enter the amount from eic helper \"Earned income credit for Form 1040, line 27a (Worksheet A, line 6, or Worksheet B, line 11 for a filer who answered Yes to Step 5, question 2, when Steps 1 to 5 are passed; zero otherwise)\".",
+   "model": "The helper selects eic.line6 whenever Steps 1-5 pass; IRS line 27a requires Worksheet B line 11 for a filer who answered Yes to Step 5, question 2.",
+   "ruling": "Ruling: model error; the model says the helper selects eic.line6 whenever Steps 1 to 5 pass and ignores Worksheet B. The restated label it quotes names both worksheets (\"Worksheet A, line 6, or Worksheet B, line 11 for a filer who answered Yes to Step 5, question 2\"), and the computation follows Worksheet B for those filers (eic.line1 is eic.wsb_6, and lines 2 to 6 serve as Worksheet B lines 7 to 11). i1040gi p. 46, Worksheet A: \"Use this worksheet only if you answered ‘No’ to Step 5, question 2. Otherwise, use Worksheet B\"; p. 48, Worksheet B, line 11. Same ruling as rounds 2 to 4. (The Claude render of this line found a different, real defect in eic.us_home: finding H1, which this reply did not raise.)",
+   "context": "85ed05cea5bc1f4497a11073573b7e33bc041cb4f8bebd70727c51c7f78cec3f"
+  },
+  {
+   "printed": "27a",
+   "restated": "Enter the amount from eic helper \"Earned income credit for Form 1040, line 27a (Worksheet A, line 6, or Worksheet B, line 11 for a filer who answered Yes to Step 5, question 2, when Steps 1 to 5 are passed; zero otherwise)\".",
    "model": "The referenced eic.credit helper returns only Worksheet A line 6 or zero; IRS Step 5 question 2 says for self-employed \"Skip question 3 and Step 6; go to Worksheet B,\" whose line 11 is the credit.",
    "ruling": "Ruling: model error; the model says the eic.credit helper \"returns only Worksheet A line 6 or zero\". The restated label it quotes names both worksheets (\"Worksheet A, line 6, or Worksheet B, line 11 for a filer who answered Yes to Step 5, question 2\"), and the computation follows Worksheet B for those filers (eic.line1 is eic.wsb_6, and lines 2 to 6 serve as Worksheet B lines 7 to 11; round 2 F2, relabelled since). i1040gi p. 46, Worksheet A: \"Use this worksheet only if you answered 'No' to Step 5, question 2. Otherwise, use Worksheet B\"; p. 48, Worksheet B, line 11.",
    "context": "6f486f2c34ed05a4cadfbd637a74fe69ad70f1ec99b0f3d21dd2960a59bf6872"
@@ -44,6 +51,13 @@
    "model": "IRS says \"Check the box on line 27c if you do not want to claim the earned income credit or if you have been instructed...\"; the restatement expressly does not ask the filer's own choice.",
    "ruling": "Ruling: scope; the model says the filer's own choice not to claim the EIC is not asked. i1040gi p. 43, Line 27c: \"Check the box on line 27c if you do not want to claim the earned income credit or if you have been instructed to check the box in the instructions for line 27a\". The rendered English states the limit itself (\"the filer's own choice not to claim the EIC is not asked\"), and it is a recorded design limit (TASKS.md T-027: \"the filer's own choice not to claim is not asked\"). The computed part (the instructed STOPs) is not disputed. Same ruling as round 2.",
    "context": "6f486f2c34ed05a4cadfbd637a74fe69ad70f1ec99b0f3d21dd2960a59bf6872"
+  },
+  {
+   "printed": "27c",
+   "restated": "Enter the amount from eic helper \"The instructions say to check the box on line 27c (a STOP that says so, or Worksheet A line 2 is zero); the filer's own choice not to claim the EIC is not asked\".",
+   "model": "IRS says 'Check the box on line 27c if you do not want to claim the earned income credit or if you have been instructed to check the box'; the restatement omits the filer's voluntary choice not to claim.",
+   "ruling": "Ruling: scope; the model says the filer’s own choice not to claim the EIC is not asked. i1040gi p. 43, Line 27c: \"Check the box on line 27c if you do not want to claim the earned income credit or if you have been instructed to check the box in the instructions for line 27a\". The rendered English states the limit itself (\"the filer’s own choice not to claim the EIC is not asked\"), a recorded design limit (TASKS.md T-027). Unchanged by Stage 19; same ruling as rounds 2 to 4 and Stage 20. (The instructed-STOP part is affected by finding H1, ruled on the Claude log.)",
+   "context": "85ed05cea5bc1f4497a11073573b7e33bc041cb4f8bebd70727c51c7f78cec3f"
   },
   {
    "printed": "27c",
@@ -72,6 +86,13 @@
    "model": "IRS says 'If you do not want to claim the ACTC, check here'; the restatement hardcodes the box to false.",
    "ruling": "Ruling: scope; the model says the restatement hardcodes the box unchecked. Form 1040 (2025) line 28, \"If you do not want to claim the ACTC, check here\"; i1040gi p. 61, Line 28, \"If you do not want to claim the additional child tax credit, check the box on line 28\". This is the recorded design limit BUG-0174 (owner's decision, 2026-10-27, closing round 3's finding BUG-0162): f1040.line28_box is always unchecked and its printed label says so (\"not asked; this tool always claims the credit\"), as line 27c's choice is handled (T-027). The rendering states the limit; it does not misread the source.",
    "context": "50100172621db859beb07ae113e41b943d664d2c141c7c0f4515dbc4a6756a70"
+  },
+  {
+   "printed": "28 (box)",
+   "restated": "true = false",
+   "model": "IRS says 'If you do not want to claim the additional child tax credit, check the box on line 28'; the restatement always sets the box false.",
+   "ruling": "Ruling: scope; the model says the restatement sets the box unchecked unconditionally. Form 1040 (2025) line 28, \"If you do not want to claim the ACTC, check here\"; i1040gi p. 61, Line 28, \"If you do not want to claim the additional child tax credit, check the box on line 28\". This is the recorded design limit BUG-0174 (owner’s decision, 2026-10-27): f1040.line28_box is always unchecked and its printed label says so (\"not asked; this tool always claims the credit\"). The rendering states the limit; it does not misread the source. Same ruling as round 4 and Stage 20.",
+   "context": "85ed05cea5bc1f4497a11073573b7e33bc041cb4f8bebd70727c51c7f78cec3f"
   },
   {
    "printed": "28 (box)",

@@ -211,7 +211,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) You, or your spouse if filing a joint return, were at least age 25 but under age 65 at the end of 2025
       = UNKNOWN (no input supplied for person[taxpayer].born_before_2001)
       cite: [i1040gi] p. 41, Step 4, question 2, "Were you, or your spouse if filing a joint return, at least age 25 but under age 65 at the end of 2025?" (2025; printed date 2026-02-25; 482e9c48)
-  (helper) Was your main home in the United States for more than half of 2025?
+  (helper) Was your main home, and your spouse's if filing a joint return, in the United States for more than half of 2025?
       = UNKNOWN (no input supplied for eic.us_home)
       cite: [i1040gi] p. 42, Step 4, question 3; p. 44, Members of the military; p. 45, United States (2025; printed date 2026-02-25; 482e9c48)
   (helper) No amount
@@ -643,6 +643,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   29  American opportunity credit from Form 8863, line 8
       = $0
       cite: [f1040] Form 1040 (2025), line 29 (2025; created 2025-09-05; 3d31c226)
+      note: taken: {"eq":["f8863.eligible",{"const":false}],"op":"test"}
   30  Refundable adoption credit from Form 8839, line 13
       = $0
       cite: [f1040] Form 1040 (2025), line 30 (2025; created 2025-09-05; 3d31c226)
@@ -1093,7 +1094,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = $0
       cite: [i5695] p. 5, Residential Clean Energy Credit Limit Worksheet—Line 14, "Include the amount in the instructions for Schedule 8812 (Form 1040), Credit Limit Worksheet B, line 14, instead of the amount from Form 1040, 1040-SR, or 1040-NR, line 19, if the instructions for Schedule 8812 (Form 1040) direct you to complete Credit Limit Worksheet B" (2025; 55113467)
       note: taken: {"eq":["s8812.clwb_complete",{"const":false}],"op":"test"}
-  (helper) Residential Clean Energy Credit Limit Worksheet, line 2. Schedule 3 lines 6l, 1, 2, 6d, 3 and 4, Form 5695 line 32, Schedule 3 lines 6m and 6f, Form 1040 line 19 (or Credit Limit Worksheet B line 14), and Schedule 3 lines 6g, 6c and 6h; in this tool Schedule 3 lines 1, 2 and 4, Form 5695 line 32 and the child tax credit, the others being refused
+  (helper) Residential Clean Energy Credit Limit Worksheet, line 2. Schedule 3 lines 6l, 1, 2, 6d, 3 and 4, Form 5695 line 32, Schedule 3 lines 6m and 6f, Form 1040 line 19 (or Credit Limit Worksheet B line 14), and Schedule 3 lines 6g, 6c and 6h; in this tool Schedule 3 lines 1, 2, 3 and 4, Form 5695 line 32 and the child tax credit, the others being refused
       = $0
       cite: [i5695] p. 5, Residential Clean Energy Credit Limit Worksheet—Line 14, line 2, "Enter the total of the following credit(s)/adjustment(s) if you are taking the credit(s)/adjustment(s) on your 2025 income tax return" (2025; 55113467)
   (helper) Residential Clean Energy Credit Limit Worksheet, line 3. Subtract line 2 from line 1. If zero or less, enter -0-
@@ -1461,7 +1462,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Energy Efficient Home Improvement Credit Limit Worksheet, line 1. Enter the amount from Form 1040, line 18
       = $20,267
       cite: [i5695] p. 7, Energy Efficient Home Improvement Credit Limit Worksheet—Line 31, line 1, "Enter the amount from Form 1040, 1040-SR, or 1040-NR, line 18" (2025; 55113467)
-  (helper) Energy Efficient Home Improvement Credit Limit Worksheet, line 2. Schedule 3 lines 6l, 1, 2, 6d, 3 and 4; in this tool lines 1, 2 and 4, the others being refused
+  (helper) Energy Efficient Home Improvement Credit Limit Worksheet, line 2. Schedule 3 lines 6l, 1, 2, 6d, 3 and 4; in this tool lines 1, 2, 3 and 4, the others being refused
       = $0
       cite: [i5695] p. 7, Energy Efficient Home Improvement Credit Limit Worksheet—Line 31, line 2, "Enter the total of the following credit(s)/adjustment(s) if you are taking the credit(s)/adjustment(s) on your 2025 income tax return" (2025; 55113467)
   (helper) Energy Efficient Home Improvement Credit Limit Worksheet, line 3. Subtract line 2 from line 1. If zero or less, enter -0-
@@ -1482,6 +1483,92 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   32b If you live in a condominium or cooperative and have a fractional share of the qualified energy efficiency improvements or residential energy property expenditures, check here
       = false
       cite: [i5695] p. 7, Lines 32a and 32b, "must check the box on line 32b" (2025; 55113467)
+
+== Form 8863, Education Credits (American Opportunity and Lifetime Learning Credits) ==
+  (gate) Qualified education expenses paid in 2025 for you, your spouse or a dependent you claim
+      = false
+      cite: [i8863] p. 2, Who Can Claim an Education Credit, "You may be able to claim an education credit if you, your spouse, or a dependent you claim on your tax return was a student enrolled at or attending an eligible educational institution." (2025; 195cfd5e)
+  (helper) Zero
+      = $0
+      cite: [f8863] p. 1, Part II, line 10, "If zero, skip lines 11 through 17, enter -0- on line 18, and go to line 19" (2025; a251a1cf)
+  (helper) An education credit can be claimed on this return: expenses paid, and neither you nor your spouse is claimed as a dependent
+      = false
+      cite: [i8863] p. 3, Who cannot claim a credit, "1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return." (2025; 195cfd5e)
+  (helper) Part III line 30 of you and your spouse
+      = $0
+      cite: [f8863] p. 1, Part I, line 1, "After completing Part III for each student, enter the total of all amounts from all Parts III, line 30" (2025; a251a1cf)
+      note: confirmed roster $person: taxpayer
+  (helper) Part III line 30 of the dependents you claim
+      = $0
+      cite: [f8863] p. 1, Part I, line 1, "After completing Part III for each student, enter the total of all amounts from all Parts III, line 30" (2025; a251a1cf)
+      note: confirmed roster $dependent:
+  (helper) All Parts III, line 30
+      = $0
+      cite: [f8863] p. 1, Part I, line 1, "After completing Part III for each student, enter the total of all amounts from all Parts III, line 30" (2025; a251a1cf)
+  (helper) Line 4 is more than zero (the form continues after line 4)
+      = false
+      cite: [f8863] p. 1, Part I, line 4, "Subtract line 3 from line 2. If zero or less, stop; you can’t take any education" (2025; a251a1cf)
+  (gate) An American opportunity credit after a denial or reduction, or within a ban
+      = UNKNOWN (no input supplied for f8863.ban)
+      cite: [i8863] p. 3, American Opportunity Credit, "Caution: Don’t claim the American opportunity credit for 2 years after there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years after there was a final determination that your claim was due to fraud." (2025; 195cfd5e)
+  (gate) An American opportunity credit claimed that needs Form 8862 or is barred
+      = false
+      cite: [i8863] p. 1, Form 8862 may be required, "If your American opportunity credit was denied or reduced for any reason other than a math or clerical error for any tax year beginning after 2015, you must attach a completed Form 8862, Information To Claim Certain Credits After Disallowance, to your tax return for the next tax year for which you claim the credit." (2025; 195cfd5e)
+  (helper) Line 7 is above zero on a return that is not joint (the line 7 conditions are asked)
+      = false
+      cite: [i8863] p. 7, Line 7, "3. You’re not filing a joint return for 2025." (2025; 195cfd5e)
+  (helper) You meet line 7 conditions 1 and 2 (under 24 with the age, student and support conditions, and a parent alive)
+      = 0
+      cite: [i8863] p. 7, Line 7, "You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you." (2025; 195cfd5e)
+      note: confirmed roster $person: taxpayer
+  (helper) Year parameter aoc.refundable_rate (40%)
+      = 40/100
+      cite: [f8863] p. 1, Part I, line 8, "Refundable American opportunity credit. Multiply line 7 by 40% (0.40)." (2025; a251a1cf)
+  (helper) Multiply line 7 by 40% (0.40)
+      = $0
+      cite: [f8863] p. 1, Part I, line 8, "Refundable American opportunity credit. Multiply line 7 by 40% (0.40)." (2025; a251a1cf)
+      note: half-up to the cent per the ambiguity register
+  (helper) Part III line 31 of you and your spouse
+      = $0
+      cite: [f8863] p. 1, Part II, line 10, "After completing Part III for each student, enter the total of all amounts from all Parts III, line 31." (2025; a251a1cf)
+      note: confirmed roster $person: taxpayer
+  (helper) Part III line 31 of the dependents you claim
+      = $0
+      cite: [f8863] p. 1, Part II, line 10, "After completing Part III for each student, enter the total of all amounts from all Parts III, line 31." (2025; a251a1cf)
+      note: confirmed roster $dependent:
+  (helper) All Parts III, line 31
+      = $0
+      cite: [f8863] p. 1, Part II, line 10, "After completing Part III for each student, enter the total of all amounts from all Parts III, line 31." (2025; a251a1cf)
+  (helper) Year parameter llc.expense_cap ($10,000)
+      = $10,000
+      cite: [f8863] p. 1, Part II, line 11, "Enter the smaller of line 10 or $10,000" (2025; a251a1cf)
+  (helper) Line 10 is more than zero (lines 11 to 17 are completed)
+      = false
+      cite: [f8863] p. 1, Part II, line 10, "If zero, skip lines 11 through 17, enter -0- on line 18, and go to line 19" (2025; a251a1cf)
+  (helper) Year parameter llc.rate (20%)
+      = 20/100
+      cite: [f8863] p. 1, Part II, line 12, "Multiply line 11 by 20% (0.20)" (2025; a251a1cf)
+  (CLW 1) Enter the amount from Form 8863, line 18
+      = $0
+      cite: [i8863] p. 8, Credit Limit Worksheet, "1. Enter the amount from Form 8863, line 18" (2025; 195cfd5e)
+  (CLW 2) Enter the amount from Form 8863, line 9
+      = $0
+      cite: [i8863] p. 8, Credit Limit Worksheet, "2. Enter the amount from Form 8863, line 9" (2025; 195cfd5e)
+  (CLW 3) Add lines 1 and 2
+      = $0
+      cite: [i8863] p. 8, Credit Limit Worksheet, "3. Add lines 1 and 2" (2025; 195cfd5e)
+  (CLW 4) Enter the amount from Form 1040 or 1040-SR, line 18
+      = $20,267
+      cite: [i8863] p. 8, Credit Limit Worksheet, "4. Enter the amount from Form 1040 or 1040-SR, line 18" (2025; 195cfd5e)
+  (CLW 5) Enter the total of your credits from Schedule 3 (Form 1040), lines 1, 2, 6d, and 6l (lines 6d and 6l are refused in this tool)
+      = $0
+      cite: [i8863] p. 8, Credit Limit Worksheet, "5. Enter the total of your credits from Schedule 3 (Form 1040), lines 1, 2, 6d, and 6l" (2025; 195cfd5e)
+  (CLW 6) Subtract line 5 from line 4
+      = $20,267
+      cite: [i8863] p. 8, Credit Limit Worksheet, "6. Subtract line 5 from line 4" (2025; 195cfd5e)
+  (CLW 7) Enter the smaller of line 3 or line 6 here and on Form 8863, line 19
+      = $0
+      cite: [i8863] p. 8, Credit Limit Worksheet, "7. Enter the smaller of line 3 or line 6 here and on Form 8863, line 19" (2025; 195cfd5e)
 
 == Form 8880 — Credit for Qualified Retirement Savings Contributions (the saver's credit) ==
   (helper) Year parameter sales.zero
@@ -1601,7 +1688,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [f8880] p. 2, Credit Limit Worksheet, "1. Enter the amount from Form 1040, 1040-SR, or 1040-NR, line 18" (2025; created 2025-11-04; ba2b2877)
   (CLW 2) Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l
       = $0
-      cite: [f8880] p. 2, Credit Limit Worksheet, "2. Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l" (lines 3, 6d and 6l are refused by scope.credits) (2025; created 2025-11-04; ba2b2877)
+      cite: [f8880] p. 2, Credit Limit Worksheet, "2. Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l" (lines 6d and 6l are refused by scope.credits) (2025; created 2025-11-04; ba2b2877)
   (CLW 3) Subtract line 2 from line 1. Also enter this amount on Form 8880, line 11. But if zero or less, stop; you can't take the credit
       = $20,267
       cite: [f8880] p. 2, Credit Limit Worksheet, "3. Subtract line 2 from line 1. Also enter this amount on Form 8880, line 11. But if zero or less, stop; you can’t take the credit" (2025; created 2025-11-04; ba2b2877)
@@ -3216,6 +3303,85 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = $0
       cite: [i1040gi] p. 98, IRA Deduction Worksheet—Continued, line 9, "Generally, this is your (and your spouse’s if filing jointly) net earnings from self-employment if your personal services were a material income-producing factor" (2025; printed date 2026-02-25; 482e9c48)
       note: taken: {"eq":["person.has_sc",{"const":false}],"op":"test"}; Interpretation amb.2025.ira_se_earned: The first. Pub. 590-A names the net earnings "from your trade or business" reduced by the two deductions, which is the net profit; the 92.35% figure would reduce the profit for the tax twice. A Schedule C business whose income comes mainly from capital rather than the owner's services is not screened (an open question for the owner). (p590a, p. 6, What Is Compensation?, "If you are self-employed (a sole proprietor or a partner), compensation is the net"; p. 7, "earnings from your trade or business (provided your personal services are a material income-producing factor) reduced by the total of")
+  (gate) Qualified education expenses paid in 2025 for this person
+      = UNKNOWN (no input supplied for person[taxpayer].edu)
+      cite: [i8863] p. 2, Who Can Claim an Education Credit, "You may be able to claim an education credit if you, your spouse, or a dependent you claim on your tax return was a student enrolled at or attending an eligible educational institution." (2025; 195cfd5e)
+  (gate) The student received a 2025 Form 1098-T from the institution, or an exception applies
+      = UNKNOWN (no input supplied for person[taxpayer].edu_1098t)
+      cite: [i8863] p. 1, Form 1098-T requirement, "To be eligible to claim the American opportunity credit or the lifetime learning credit, the law requires a taxpayer (or a dependent) to have received Form 1098-T, Tuition Statement, from an eligible educational institution, whether domestic or foreign." (2025; 195cfd5e)
+      note: Interpretation amb.2025.edu_1098t_date: The first, in the help text of person.edu_1098t and dependent.edu_1098t. Pub. 970 is the later revision and explains the shift (January 31 falls on a Saturday). Owner's decision D7(d), 2026-10-29. (p970, p. 2, Reminders, "After February 2, 2026 (January 31 falls on a Saturday), but before you file your 2025 tax return, you or the student must request that the educational institution furnish Form 1098-T.")
+  (helper) An eligible student of this return: expenses paid, a TIN by the due date and a Form 1098-T (or an exception)
+      = false
+      cite: [i8863] p. 3, Who cannot claim a credit, "5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions)." (2025; 195cfd5e)
+  (helper) Qualified education expenses required to be paid to the institution
+      = UNKNOWN (no input supplied for person[taxpayer].edu_inst)
+      cite: [i8863] p. 4, Qualified Education Expenses, "Generally, qualified education expenses are amounts paid in 2025 for tuition and fees required for the student’s enrollment or attendance at an eligible educational institution." (2025; 195cfd5e)
+  (helper) Other course materials (American opportunity credit only)
+      = UNKNOWN (no input supplied for person[taxpayer].edu_mat)
+      cite: [i8863] p. 4, Qualified Education Expenses, "American opportunity credit: Qualified education expenses include amounts paid for tuition, fees, and course materials, which include books, supplies, and equipment needed for a course of study, whether or not the materials are purchased from the educational institution as a condition of enrollment or attendance." (2025; 195cfd5e)
+  (helper) Adjusted Qualified Education Expenses Worksheet, line 2a
+      = UNKNOWN (no input supplied for person[taxpayer].edu_a2025)
+      cite: [i8863] p. 9, Adjusted Qualified Education Expenses Worksheet, "a. Tax-free educational assistance received in 2025 allocable to the academic period" (2025; 195cfd5e)
+  (helper) Adjusted Qualified Education Expenses Worksheet, line 2b
+      = UNKNOWN (no input supplied for person[taxpayer].edu_a2026)
+      cite: [i8863] p. 9, Adjusted Qualified Education Expenses Worksheet, "b. Tax-free educational assistance received in 2026 (and before you file your 2025 tax return) allocable to the academic period" (2025; 195cfd5e)
+  (helper) Adjusted Qualified Education Expenses Worksheet, line 2c
+      = UNKNOWN (no input supplied for person[taxpayer].edu_refunds)
+      cite: [i8863] p. 9, Adjusted Qualified Education Expenses Worksheet, "c. Refunds of qualified education expenses paid in 2025 if the refund is received in 2025 or in 2026 before you file your 2025 tax return" (2025; 195cfd5e)
+  (helper) Add lines 2a, 2b and 2c
+      = UNKNOWN (no input supplied for person[taxpayer].edu_a2025)
+      cite: [i8863] p. 9, Adjusted Qualified Education Expenses Worksheet, "3. Total adjustments (add lines 2a, 2b, and 2c)" (2025; 195cfd5e)
+  (helper) Adjusted Qualified Education Expenses Worksheet, line 3 for an eligible student: add lines 2a, 2b and 2c
+      = $0
+      cite: [i8863] p. 9, Adjusted Qualified Education Expenses Worksheet, "3. Total adjustments (add lines 2a, 2b, and 2c)" (2025; 195cfd5e)
+      note: taken: {"eq":["person.edu_student",{"const":false}],"op":"test"}
+  (gate) An academic period whose tax-free assistance and refunds exceed its expenses paid to the institution
+      = UNKNOWN (no input supplied for person[taxpayer].edu_over)
+      cite: [i8863] p. 4, Tax-free educational assistance, "For tax-free educational assistance received in 2025, reduce the qualified education expenses for each academic period by the amount of tax-free educational assistance allocable to that academic period." (2025; 195cfd5e)
+  (gate) Adjustments that exceed one academic period's expenses
+      = false
+      cite: [i8863] p. 9, Adjusted Qualified Education Expenses Worksheet, "Complete a separate worksheet for each student for each academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having paid) qualified education expenses in 2025." (2025; 195cfd5e)
+  (helper) Line 24 is reached (line 23 did not stop)
+      = false
+      cite: [f8863] p. 2, Part III, line 23, "Yes—Stop! Go to line 31 for this student." (2025; a251a1cf)
+  (helper) Line 25 is reached (line 24 did not stop)
+      = false
+      cite: [f8863] p. 2, Part III, line 24, "No—Stop! Go to line 31 for this student." (2025; a251a1cf)
+  (helper) Line 26 is reached (line 25 did not stop)
+      = false
+      cite: [f8863] p. 2, Part III, line 25, "Yes—Stop! Go to line 31 for this student." (2025; a251a1cf)
+  (gate) The institution's employer identification number (EIN) is available
+      = UNKNOWN (no input supplied for person[taxpayer].edu_ein)
+      cite: [i8863] p. 4, Student qualifications, "7. You must provide the educational institution’s employer identification number (EIN) on your Form 8863." (2025; 195cfd5e)
+  (helper) An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available
+      = false
+      cite: [f8863] p. 2, Part III, line 26, "No—Complete lines 27 through 30 for this student."; i8863 p. 3, Student qualifications, "5. Filers and students must have been issued a TIN by the due date of their 2025 return (including extensions)." (2025; a251a1cf)
+      note: Interpretation amb.2025.edu_filer_tin: The first; without it an American opportunity credit student goes to the lifetime learning credit (line 31). Both spouses are filers of a joint return, and the text says "Filers". The 2026 draft instructions read one spouse as enough, but under the new valid-SSN rule of P.L. 119-21 sec. 70606, which is not the 2025 text. Owner's decision D7(a), 2026-10-29. (i8863, p. 3, Student qualifications, "5. Filers and students must have been issued a TIN by the due date of their 2025 return (including extensions).")
+  (helper) A lifetime learning credit student: an eligible student who is not an American opportunity credit student
+      = false
+      cite: [i8863] p. 4, Tip, "If the requirements above aren’t met for any student, you cannot claim the American opportunity credit for that student. You may be able to claim the lifetime learning credit for part or all of that student’s qualified education expenses instead if certain requirements are met." (2025; 195cfd5e)
+  (helper) Were you born before January 2, 2007?
+      = UNKNOWN (no input supplied for person[taxpayer].edu_born_2007)
+      cite: [i8863] p. 7, Line 7, "b. Age 18 at the end of 2025 and your earned income (defined later) was less than one-half of your support (defined later), or" (2025; 195cfd5e)
+      note: Interpretation amb.2025.edu_age_rule: The first (person.sav_born, person.edu_born_2007 and person.edu_born_2002 feeding person.edu_kid). Pub. 501 states the rule for age 65 and the project's other birth-date questions apply it. Owner's decision D7(b), 2026-10-29. (i8863, p. 7, Line 7, "You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you.")
+  (helper) Were you born before January 2, 2002?
+      = UNKNOWN (no input supplied for person[taxpayer].edu_born_2002)
+      cite: [i8863] p. 7, Line 7, "1. Were you under age 24 at the end of 2025?" (2025; 195cfd5e)
+      note: Interpretation amb.2025.edu_age_rule: The first (person.sav_born, person.edu_born_2007 and person.edu_born_2002 feeding person.edu_kid). Pub. 501 states the rule for age 65 and the project's other birth-date questions apply it. Owner's decision D7(b), 2026-10-29. (i8863, p. 7, Line 7, "You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you.")
+  (helper) A full-time student for 2025 (any part of 5 calendar months at an eligible educational institution)
+      = UNKNOWN (no input supplied for person[taxpayer].edu_fulltime)
+      cite: [i8863] p. 7, Full-time student, "you were a full-time student for 2025 if during any part of any 5 calendar months during the year you were enrolled as a full-time student at an eligible educational institution (defined earlier), or took a full-time, on-farm training course given by such an institution or by a state, county, or local government agency." (2025; 195cfd5e)
+      note: Interpretation amb.2025.edu_fulltime: The first (person.edu_fulltime asks the 5-month definition). Condition 1c points to "(defined later)", and the only definition later is the 5-month one. Owner's decision D7(c), 2026-10-29. (i8863, p. 7, Full-time student, "you were a full-time student for 2025 if during any part of any 5 calendar months during the year you were enrolled as a full-time student at an eligible educational institution (defined earlier)")
+  (helper) Your earned income was less than one-half of your support for 2025
+      = UNKNOWN (no input supplied for person[taxpayer].edu_half_support)
+      cite: [i8863] p. 7, Earned income, "Earned income includes wages, salaries, professional fees, and other payments received for personal services actually performed." (2025; 195cfd5e)
+  (helper) At least one of your parents was alive at the end of 2025
+      = UNKNOWN (no input supplied for person[taxpayer].edu_parent)
+      cite: [i8863] p. 7, Line 7, "2. At least one of your parents was alive at the end of 2025." (2025; 195cfd5e)
+  (helper) Line 7 conditions 1 and 2 for you: under 18; or 18 with earned income less than half of your support; or over 18 and under 24, a full-time student, with earned income less than half of your support; and a parent alive
+      = false
+      cite: [i8863] p. 7, Line 7, "You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you." (2025; 195cfd5e)
+      note: Interpretation amb.2025.edu_age_rule: The first (person.sav_born, person.edu_born_2007 and person.edu_born_2002 feeding person.edu_kid). Pub. 501 states the rule for age 65 and the project's other birth-date questions apply it. Owner's decision D7(b), 2026-10-29. (i8863, p. 7, Line 7, "You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you.")
 
 == Form 8606 — Nondeductible IRAs, Part I (nondeductible contributions with no 2025 distribution), one per person — person[taxpayer].f8606[form] ==
   (helper) This person files Form 8606 (nondeductible contributions to a traditional IRA for 2025)
@@ -4489,6 +4655,10 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Year parameter sales.zero
       = $0
       cite: [f1040s3] Schedule 3 (2025), lines 1 and 8 (2025; created 2025-11-17; 008cfd3f)
+  3   Education credits from Form 8863, line 19
+      = $0
+      cite: [f1040s3] p. 1, Part I, line 3, "Education credits from Form 8863, line 19" (2025; created 2025-11-17; 008cfd3f)
+      note: taken: {"eq":["f8863.eligible",{"const":false}],"op":"test"}
   4   Retirement savings contributions credit. Attach Form 8880
       = $0
       cite: [f1040s3] Schedule 3 (2025), line 4 (2025; created 2025-11-17; 008cfd3f)
@@ -4588,7 +4758,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Credit Limit Worksheet A, line 1. Enter the amount from line 18 of your Form 1040
       = $20,267
       cite: [i1040s8812] p. 4, Credit Limit Worksheet A, line 1 (2025; printed date 2026-01-23; bb9788cd)
-  (helper) Credit Limit Worksheet A, line 2. Schedule 3 lines 1, 2, 3, 4, 5b, 6d, 6f, 6l and 6m; in this tool lines 1, 2, 4 and 5b, the other credits being refused
+  (helper) Credit Limit Worksheet A, line 2. Schedule 3 lines 1, 2, 3, 4, 5b, 6d, 6f, 6l and 6m; in this tool lines 1, 2, 3, 4 and 5b, the other credits being refused
       = $0
       cite: [i1040s8812] p. 4, Credit Limit Worksheet A, line 2 (2025; printed date 2026-01-23; bb9788cd)
   (helper) Credit Limit Worksheet A, line 3. Subtract line 2 from line 1
@@ -5007,7 +5177,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately (business income or loss from Schedule C; a taxable state or local income tax refund; alimony under an agreement made before 2019; unemployment compensation; the line 8 items asked one by one; educator expenses; the HSA deduction; the deductible part of self-employment tax; self-employed SEP and SIMPLE contributions; the self-employed health insurance deduction; the penalty on early withdrawal of savings; the IRA deduction; student loan interest; jury duty pay you gave your employer), including statutory-employee wages or clergy income; church employee income (wages from a church that elected exemption from social security and Medicare taxes); other qualified retirement plans for the self-employed (such as a solo 401(k) or other Keogh plan); a refund or other recovery of an amount you deducted or took a credit for in an earlier year, other than a state or local income tax refund (for example a refund of general sales tax, real estate tax or personal property tax, a refund of mortgage interest in box 4 of Form 1098, a reimbursement of medical expenses, or a payment on a bad debt you deducted); sales of business property (Form 4797); a net operating loss deduction; rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1); rental of personal property; farm income (Schedule F); an exclusion of Medicaid waiver payments (Schedule 1 line 8s); or an adjustment on Schedule 1 line 12, 14 or 23? (Schedule 1-A deductions are asked separately.)
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
-  (helper) Do you want to claim any credit other than the foreign tax credit claimed without Form 1116, the excess social security credit, the child tax credit, the credit for other dependents, the additional child tax credit, the earned income credit, the credit for child and dependent care expenses (Form 2441), the retirement savings contributions credit (Form 8880), the residential energy credits (Form 5695) and the net premium tax credit this tool figures on Form 8962 from your Forms 1095-A (Schedule 3 line 9), or do you have any other amount for Schedule 3 Part I (for example a Form 8978 adjustment)?
+  (helper) Do you want to claim any credit other than the foreign tax credit claimed without Form 1116, the excess social security credit, the child tax credit, the credit for other dependents, the additional child tax credit, the earned income credit, the credit for child and dependent care expenses (Form 2441), the retirement savings contributions credit (Form 8880), the residential energy credits (Form 5695), the net premium tax credit this tool figures on Form 8962 from your Forms 1095-A (Schedule 3 line 9) and the education credits this tool figures on Form 8863 (the American opportunity and lifetime learning credits), or do you have any other amount for Schedule 3 Part I (for example a Form 8978 adjustment)?
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
   (helper) Any nonresident alien status (you or your spouse, for any part of 2025) or other income or return treatment outside wages, interest, dividends, supported securities sales, Form 1099-R distributions and social security benefits, including wages or tips not on a Form W-2, Medicaid waiver payments (whether or not in Form W-2 box 1), adoption benefits, dependent care benefits other than those shown in box 10 of a Form W-2 (or a grace-period amount from such a plan), other earned income (Form 1040 lines 1b to 1d and 1f to 1h), or income or loss from a passive activity (including gain on selling an interest in one)?
@@ -5814,6 +5984,10 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   s8812.s3.line2: chose $0 (guard 1)
       not taken: guard 0 = false
+  s3.line3: chose $0 (guard 1)
+      not taken: guard 0 = false
+  s8812.s3.line3: chose $0 (guard 1)
+      not taken: guard 0 = false
   person[taxpayer].w2[emp_a].sav_deferral: chose $0 (guard 1)
       not taken: guard 0 = false
   person[taxpayer].sav_simple: chose $0 (guard 1)
@@ -5846,6 +6020,8 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   s8812.line27: chose $0 (guard 0)
   f1040.s8812.line27: chose $0 (guard 0)
+  f1040.line29: chose $0 (guard 1)
+      not taken: guard 0 = false
   s3.line9: chose $0 (guard 1)
       not taken: guard 0 = false
   person[taxpayer].credit: chose $0 (guard 1)
@@ -5864,6 +6040,8 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   f5695.s3.line2: chose $0 (guard 1)
       not taken: guard 0 = false
+  f5695.s3.line3: chose $0 (guard 1)
+      not taken: guard 0 = false
   f5695.s3.line5b: chose $0 (guard 1)
       not taken: guard 0 = false
   f5695.line18b: chose UNKNOWN (no input supplied for f5695.line17a)
@@ -5875,6 +6053,18 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   f5695.line25e: chose UNKNOWN (no input supplied for f5695.line21a)
   f5695.line26c: chose UNKNOWN (no input supplied for f5695.line26a)
   f5695.line29h: chose UNKNOWN (no input supplied for f5695.line21a)
+  person[taxpayer].edu_line30: chose $0 (guard 1)
+      not taken: guard 0 = false
+  f8863.line1: chose $0 (guard 1)
+      not taken: guard 0 = false
+  f8863.line8: chose $0 (guard 1)
+      not taken: guard 0 = false
+  person[taxpayer].edu_line31: chose $0 (guard 1)
+      not taken: guard 0 = false
+  f8863.line10: chose $0 (guard 1)
+      not taken: guard 0 = false
+  f8863.s3.line2: chose $0 (guard 1)
+      not taken: guard 0 = false
   f8880.prior_joint: chose $0 (guard 1)
       not taken: guard 0 = false
   f8880.line4b: chose $0 (guard 1)
@@ -5882,6 +6072,8 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   f8880.line6a: chose $0 (guard 0)
   f8880.line6b: chose $0 (guard 0)
   f8880.s3.line2: chose $0 (guard 1)
+      not taken: guard 0 = false
+  f8880.s3.line3: chose $0 (guard 1)
       not taken: guard 0 = false
   f8962.allowed: chose UNKNOWN (no input supplied for f1040.tax_exempt_interest) (guard 0)
   f8962.line28: chose UNKNOWN (no input supplied for f1040.tax_exempt_interest)
@@ -6081,6 +6273,14 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   person[taxpayer].ira_below: chose $0 (guard 1)
       not taken: guard 0 = false
   person[taxpayer].ira_line7_figured: chose $0 (guard 1)
+      not taken: guard 0 = false
+  person[taxpayer].edu_adj: chose $0 (guard 1)
+      not taken: guard 0 = false
+  person[taxpayer].edu_line27: chose $0 (guard 1)
+      not taken: guard 0 = false
+  person[taxpayer].edu_line28: chose $0 (guard 1)
+      not taken: guard 0 = false
+  person[taxpayer].edu_line29: chose $0 (guard 1)
       not taken: guard 0 = false
   person[taxpayer].w2[emp_a].g_counted: chose UNKNOWN (no input supplied for person[taxpayer].w2[emp_a].box12_g)
 
@@ -6546,6 +6746,10 @@ Derivations:
   s3.zero: param(#sales.zero = $0)
   s3.line2: choose(f2441.care = false; true = true; f2441.care = false; false = false; s3.zero = $0)
   s8812.s3.line2: choose(f2441.care = false; true = true; f2441.care = false; false = false; s3.zero = $0)
+  f8863.eligible: test(f8863.paid = false; true = true)
+  s3.f8863.eligible: test(f8863.paid = false; true = true)
+  s3.line3: choose(f8863.eligible = false; true = true; f8863.eligible = false; false = false; s3.zero = $0)
+  s8812.s3.line3: choose(f8863.eligible = false; true = true; f8863.eligible = false; false = false; s3.zero = $0)
   person[taxpayer].ira_any_contrib: test(person[taxpayer].ira_has = false; true = true; person[taxpayer].sav_roth = $0; #sales.zero = $0)
   person[taxpayer].ira_excess_gate: test(person[taxpayer].ira_any_contrib = false; true = true)
   person[taxpayer].sav_line1: sum(person[taxpayer].ira_excess_gate = false; person[taxpayer].sav_able = false; person[taxpayer].ira_contrib = $0; person[taxpayer].sav_roth = $0)
@@ -6570,7 +6774,7 @@ Derivations:
   s8812.s3.line4: copy(f8880.line12 = $0)
   s3.line5b: choose(f5695.part2_any = false; true = true; f5695.part2_any = false; false = false; s3.zero = $0)
   s8812.s3.line5b: choose(f5695.part2_any = false; true = true; f5695.part2_any = false; false = false; s3.zero = $0)
-  s8812.clw_a2: sum(scope.credits = false; s3.line1 = $0; s3.line2 = $0; s3.line4 = $0; s3.line5b = $0)
+  s8812.clw_a2: sum(scope.credits = false; s3.line1 = $0; s3.line2 = $0; s3.line3 = $0; s3.line4 = $0; s3.line5b = $0)
   s8812.clw_a3: subtract(s8812.clw_a1 = $20,267; s8812.clw_a2 = $0)
   f5695.claiming_part1: test(f5695.part1_any = false; true = true)
   s8812.f5695.claiming_part1: test(f5695.part1_any = false; true = true)
@@ -6582,8 +6786,8 @@ Derivations:
   f1040.s8812.line14: smaller_of(s8812.line12 = $0; s8812.line13 = $20,267)
   f1040.line19: copy(s8812.line14 = $0)
   s3.line5a: choose(f5695.part1_any = false; true = true; f5695.part1_any = false; false = false; s3.zero = $0)
-  s3.line8: sum(scope.credits = false; s3.line1 = $0; s3.line2 = $0; s3.line4 = $0; s3.line5a = $0; s3.line5b = $0; s3.zero = $0)
-  f1040.s3.line8: sum(scope.credits = false; s3.line1 = $0; s3.line2 = $0; s3.line4 = $0; s3.line5a = $0; s3.line5b = $0; s3.zero = $0)
+  s3.line8: sum(scope.credits = false; s3.line1 = $0; s3.line2 = $0; s3.line3 = $0; s3.line4 = $0; s3.line5a = $0; s3.line5b = $0; s3.zero = $0)
+  f1040.s3.line8: sum(scope.credits = false; s3.line1 = $0; s3.line2 = $0; s3.line3 = $0; s3.line4 = $0; s3.line5a = $0; s3.line5b = $0; s3.zero = $0)
   f1040.line20: copy(s3.line8 = $0)
   f1040.line21: sum(f1040.line19 = $0; f1040.line20 = $0)
   f1040.line22: subtract_floor0(f1040.line18 = $20,267; f1040.line21 = $0)
@@ -6700,7 +6904,10 @@ Derivations:
   f1040.s8812.line27: choose(s8812.puerto_rico = false; s8812.few_children = true; true = true; s8812.from_part_iia = $0)
   f1040.line28: copy(s8812.line27 = $0)
   f1040.line28_box: test(true = true; false = false)
-  f1040.line29: param(scope.credits = false; #sales.zero = $0)
+  f1040.f8863.eligible: test(f8863.paid = false; true = true)
+  f8863.zero: param(#sales.zero = $0)
+  f1040.f8863.zero: param(#sales.zero = $0)
+  f1040.line29: choose(f8863.eligible = false; true = true; f8863.eligible = false; false = false; f8863.zero = $0)
   f1040.line30: param(scope.credits = false; #sales.zero = $0)
   s3.f8962.any: test(f8962.forms = 0; 0 = 0)
   s3.line9: choose(f8962.any = false; true = true; f8962.any = false; false = false; s3.zero = $0)
@@ -6813,9 +7020,10 @@ Derivations:
   f5695.ctc: choose(s8812.clwb_complete = false; true = true; s8812.clwb_complete = false; false = false; f5695.ctc_line19 = $0)
   f5695.s3.line1: copy(ftc.credit = $0)
   f5695.s3.line2: choose(f2441.care = false; true = true; f2441.care = false; false = false; s3.zero = $0)
+  f5695.s3.line3: choose(f8863.eligible = false; true = true; f8863.eligible = false; false = false; s3.zero = $0)
   f5695.s3.line4: copy(f8880.line12 = $0)
   f5695.s3.line5b: choose(f5695.part2_any = false; true = true; f5695.part2_any = false; false = false; s3.zero = $0)
-  f5695.rce_ws2: sum(scope.credits = false; s3.line1 = $0; s3.line2 = $0; s3.line4 = $0; s3.line5b = $0; f5695.ctc = $0)
+  f5695.rce_ws2: sum(scope.credits = false; s3.line1 = $0; s3.line2 = $0; s3.line3 = $0; s3.line4 = $0; s3.line5b = $0; f5695.ctc = $0)
   f5695.rce_ws3: subtract_floor0(f5695.rce_ws1 = $20,267; f5695.rce_ws2 = $0)
   f5695.line14: copy(f5695.rce_ws3 = $20,267)
   f5695.line15: smaller_of(f5695.line13 = UNKNOWN (no input supplied for f5695.business_use); f5695.line14 = $20,267)
@@ -6883,12 +7091,62 @@ Derivations:
   f5695.separate_homes_joint: test(f1040.status = single; "mfj" = mfj)
   f5695.line30: gate(f5695.business_use = UNKNOWN (no input supplied for f5695.business_use))
   f5695.eehi_ws1: copy(f1040.line18 = $20,267)
-  f5695.eehi_ws2: sum(scope.credits = false; s3.line1 = $0; s3.line2 = $0; s3.line4 = $0)
+  f5695.eehi_ws2: sum(scope.credits = false; s3.line1 = $0; s3.line2 = $0; s3.line3 = $0; s3.line4 = $0)
   f5695.eehi_ws3: subtract_floor0(f5695.eehi_ws1 = $20,267; f5695.eehi_ws2 = $0)
   f5695.line31: copy(f5695.eehi_ws3 = $20,267)
   f5695.line32: smaller_of(f5695.line30 = UNKNOWN (no input supplied for f5695.business_use); f5695.line31 = $20,267)
   f5695.line32a: test(f5695.joint_occupancy = UNKNOWN (no input supplied for f5695.joint_occupancy); true = true)
   f5695.line32b: test(f5695.part2_any = false; true = true)
+  person[taxpayer].edu_student: test(f8863.paid = false; true = true)
+  person[taxpayer].edu_over_refused: test(person[taxpayer].edu_student = false; true = true)
+  person[taxpayer].edu_aoc: test(person[taxpayer].edu_student = false; true = true)
+  person[taxpayer].edu_line30: choose(person[taxpayer].edu_over_refused = false; person[taxpayer].edu_aoc = false; true = true; person[taxpayer].edu_aoc = false; false = false; person[taxpayer].zero = $0)
+  f8863.aoc_person: sum_over(person[taxpayer].edu_line30 = $0)
+  f8863.aoc_sum: sum(f8863.aoc_person = $0; f8863.aoc_dep = $0)
+  f8863.line1: choose(f8863.eligible = false; true = true; f8863.eligible = false; false = false; f8863.zero = $0)
+  f8863.line2: param(#edu.magi_limit = $90,000)
+  f8863.f1040.line11b: copy(f1040.line11a = $130,000)
+  f8863.line3: copy(sa.excluded_income = false; f1040.line11b = $130,000)
+  f8863.line4: subtract_floor0(f8863.line2 = $90,000; f8863.line3 = $130,000)
+  f8863.show_after4: test(f8863.eligible = false; true = true)
+  f8863.line5: param(#edu.phaseout_range = $10,000)
+  f8863.ban_refused: test(f8863.line1 = $0; 0 = $0)
+  f8863.line7: prorate(f8863.ban_refused = false; f8863.line1 = $0; f8863.line4 = $0; f8863.line5 = $10,000)
+  f8863.kid_needed: test(f8863.line1 = $0; 0 = $0)
+  person[taxpayer].f8863.kid_needed: test(f8863.line1 = $0; 0 = $0)
+  person[taxpayer].edu_kid: test(f8863.kid_needed = false; true = true)
+  f8863.kid: sum_over(person[taxpayer].role = taxpayer; "taxpayer" = taxpayer; person[taxpayer].edu_kid = false; true = true)
+  f8863.no_refund: test(f8863.kid_needed = false; true = true)
+  f8863.refund_rate: param(#aoc.refundable_rate = 40/100)
+  f8863.line7_40: multiply_rate(f8863.line7 = $0; f8863.refund_rate = 40/100)
+  f8863.line8: choose(f8863.no_refund = false; true = true; f8863.no_refund = false; false = false; f8863.line7_40 = $0)
+  f8863.line9: subtract_floor0(f8863.line7 = $0; f8863.line8 = $0)
+  person[taxpayer].edu_llc: test(person[taxpayer].edu_student = false; true = true)
+  person[taxpayer].edu_line31: choose(person[taxpayer].edu_over_refused = false; person[taxpayer].edu_llc = false; true = true; person[taxpayer].edu_llc = false; false = false; person[taxpayer].zero = $0)
+  f8863.llc_person: sum_over(person[taxpayer].edu_line31 = $0)
+  f8863.llc_sum: sum(f8863.llc_person = $0; f8863.llc_dep = $0)
+  f8863.line10: choose(f8863.eligible = false; true = true; f8863.eligible = false; false = false; f8863.zero = $0)
+  f8863.llc_cap: param(#llc.expense_cap = $10,000)
+  f8863.show_llc: test(f8863.show_after4 = false; true = true)
+  f8863.line11: smaller_of(f8863.line10 = $0; f8863.llc_cap = $10,000)
+  f8863.llc_rate: param(#llc.rate = 20/100)
+  f8863.line12: multiply_rate(f8863.line11 = $0; f8863.llc_rate = 20/100)
+  f8863.line13: param(#edu.magi_limit = $90,000)
+  f8863.line14: copy(sa.excluded_income = false; f1040.line11b = $130,000)
+  f8863.line15: subtract_floor0(f8863.line13 = $90,000; f8863.line14 = $130,000)
+  f8863.line16: param(#edu.phaseout_range = $10,000)
+  f8863.line18: prorate(f8863.line12 = $0; f8863.line15 = $0; f8863.line16 = $10,000)
+  f8863.clw1: copy(f8863.line18 = $0)
+  f8863.clw2: copy(f8863.line9 = $0)
+  f8863.clw3: sum(f8863.clw1 = $0; f8863.clw2 = $0)
+  f8863.f1040.line18: sum(f1040.line16 = $20,267; f1040.line17 = $0)
+  f8863.clw4: copy(f1040.line18 = $20,267)
+  f8863.s3.line1: copy(ftc.credit = $0)
+  f8863.s3.line2: choose(f2441.care = false; true = true; f2441.care = false; false = false; s3.zero = $0)
+  f8863.clw5: sum(scope.credits = false; s3.line1 = $0; s3.line2 = $0)
+  f8863.clw6: subtract(f8863.clw4 = $20,267; f8863.clw5 = $0)
+  f8863.clw7: smaller_of(f8863.clw3 = $0; f8863.clw6 = $20,267)
+  f8863.line19: copy(f8863.clw7 = $0)
   f8880.joint: test(f1040.status = single; "mfj" = mfj)
   person[taxpayer].sav_prior_joint: input(person[taxpayer].sav_able = false)
   f8880.prior_joint_sum: sum_over(person[taxpayer].sav_prior_joint = $0)
@@ -6920,7 +7178,8 @@ Derivations:
   f8880.clw1: copy(f1040.line18 = $20,267)
   f8880.s3.line1: copy(ftc.credit = $0)
   f8880.s3.line2: choose(f2441.care = false; true = true; f2441.care = false; false = false; s3.zero = $0)
-  f8880.clw2: sum(s3.line1 = $0; s3.line2 = $0)
+  f8880.s3.line3: choose(f8863.eligible = false; true = true; f8863.eligible = false; false = false; s3.zero = $0)
+  f8880.clw2: sum(s3.line1 = $0; s3.line2 = $0; s3.line3 = $0)
   f8880.clw3: subtract_floor0(f8880.clw1 = $20,267; f8880.clw2 = $0)
   f8880.line11: copy(f8880.clw3 = $20,267)
   f8880.agi_limit: param(#savers.agi_limit = $39,500)
@@ -7829,6 +8088,14 @@ Derivations:
   person[taxpayer].ira_ssb_figured: smaller_of(ira.cov_gate = false; person[taxpayer].ira_ssb_lim = UNKNOWN (no input supplied for person[taxpayer].ira_age50); person[taxpayer].ira_line11 = $0)
   person[taxpayer].ira_se_take: sum(person[taxpayer].se_line13 = $0; person[taxpayer].s16 = $0)
   person[taxpayer].ira_se_figured: subtract_floor0(person[taxpayer].sc_total = $0; person[taxpayer].ira_se_take = $0)
+  person[taxpayer].edu_adj_sum: sum(person[taxpayer].edu_a2025 = UNKNOWN (no input supplied for person[taxpayer].edu_a2025); person[taxpayer].edu_a2026 = UNKNOWN (no input supplied for person[taxpayer].edu_a2026); person[taxpayer].edu_refunds = UNKNOWN (no input supplied for person[taxpayer].edu_refunds))
+  person[taxpayer].edu_adj: choose(person[taxpayer].edu_student = false; true = true; person[taxpayer].edu_student = false; false = false; person[taxpayer].zero = $0)
+  person[taxpayer].edu_show24: test(person[taxpayer].edu_student = false; true = true)
+  person[taxpayer].edu_show25: test(person[taxpayer].edu_show24 = false; true = true)
+  person[taxpayer].edu_show26: test(person[taxpayer].edu_show25 = false; true = true)
+  person[taxpayer].edu_line27: choose(person[taxpayer].edu_over_refused = false; person[taxpayer].edu_aoc = false; true = true; person[taxpayer].edu_aoc = false; false = false; person[taxpayer].zero = $0)
+  person[taxpayer].edu_line28: choose(person[taxpayer].edu_over_refused = false; person[taxpayer].edu_aoc = false; true = true; person[taxpayer].edu_aoc = false; false = false; person[taxpayer].zero = $0)
+  person[taxpayer].edu_line29: choose(person[taxpayer].edu_over_refused = false; person[taxpayer].edu_aoc = false; true = true; person[taxpayer].edu_aoc = false; false = false; person[taxpayer].zero = $0)
   person[taxpayer].w2[emp_a].box10_bad: test(person[taxpayer].w2[emp_a].box10_wages = UNKNOWN (no input supplied for person[taxpayer].w2[emp_a].box10_wages); person[taxpayer].w2[emp_a].box10 = UNKNOWN (no input supplied for person[taxpayer].w2[emp_a].box10))
   person[taxpayer].w2[emp_a].dc_net: gate(person[taxpayer].w2[emp_a].box10_bad = UNKNOWN (no input supplied for person[taxpayer].w2[emp_a].box10_wages))
   person[taxpayer].w2[emp_a].dc_zero: param(#sales.zero = $0)
@@ -7865,6 +8132,9 @@ Interpretation amb.2025.f5695_battery_second_home: The first (f5695.line5a asks 
 Interpretation amb.2025.f5695_17abc_section_a: The first (f5695.sec_a_claimed gates lines 18b, 19h and 20d only). The owner's decision. Section B has its own residence test on line 21a, "a home located in the United States that you use as a residence", which is not limited to the main home, and its own original-use test on line 21b, and the audit has its own test on line 26a; the form's direction is "Do not complete Part II, Section A". Reading the No as disallowing Section B would make line 21a's wider residence test unreachable for anyone without Section A improvements on a main home. (f5695, Form 5695 (2025), lines 17a to 17c and 21a; i5695 p. 5, Lines 17a Through 17e)
 Interpretation amb.2025.f5695_section_b_residence: The first (f5695.line21a's question says the home may be a second home or a home you rent). The owner's decision. Line 21a and the Section B paragraph state the wider test, line 21c asks for "each home", and Fact Sheet 2025-01 says "such property may be installed in the taxpayer’s second home" and that "the taxpayer may rent the home". The main-home statements are in Section A (lines 17a and 17d) and in a summary in the Form 1040 instructions. (fs-2025-01, p. 5, Energy Efficient Home Improvement Credit - Qualifying residence, "In this case, the taxpayer may rent the home in which such property is installed, and such property may be installed in the taxpayer’s second home")
 Interpretation amb.2025.f5695_category_cap: The first (f5695.ac_capped, wh_capped, furnace_capped and enabling_capped against f5695.item_max). The owner's decision to encode the form as printed. The joint occupancy list of credit limits (i5695 p. 3) also gives the limit by category ("$600 for central air conditioners"). The two readings differ only for a filer with two or more items in one category whose 30% exceeds $600 together, and line 28's $1,200 limit narrows even that. (f5695, Form 5695 (2025), lines 22d, 23d, 24d and 25e; i5695 p. 2, Energy Efficient Home Improvement Credit (Part II), "A credit limit of $600 for any qualified energy property item")
+Interpretation amb.2025.edu_filer_tin: The first; without it an American opportunity credit student goes to the lifetime learning credit (line 31). Both spouses are filers of a joint return, and the text says "Filers". The 2026 draft instructions read one spouse as enough, but under the new valid-SSN rule of P.L. 119-21 sec. 70606, which is not the 2025 text. Owner's decision D7(a), 2026-10-29. (i8863, p. 3, Student qualifications, "5. Filers and students must have been issued a TIN by the due date of their 2025 return (including extensions).")
+Interpretation amb.2025.edu_ratio_places: The first (the prorate atom with places 3 on f8863.line7 and f8863.line18), as amb.2025.sli_ratio_places reads the same words. The owner's Stage 11 ruling on the same words, applied by the Stage 19 decision batch (Settled item 4). The readings differ by at most a few dollars of credit. (f8863, p. 1, Part I, line 6, "Less than line 5, divide line 4 by line 5. Enter the result as a decimal (rounded to at least three places).")
+Interpretation amb.2025.edu_age_rule: The first (person.sav_born, person.edu_born_2007 and person.edu_born_2002 feeding person.edu_kid). Pub. 501 states the rule for age 65 and the project's other birth-date questions apply it. Owner's decision D7(b), 2026-10-29. (i8863, p. 7, Line 7, "You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you.")
 Interpretation amb.2025.savers_2026_joint: The first (person.sav_prior_joint includes 2026; f8880.prior_joint). The owner's decision (Stage 15 premise map, decision 4). The 2026 return cannot be known when the 2025 return is prepared, and the 2025 return's filing status is the one fact available. (f8880, p. 2, Line 4, "Exception. Don’t include your spouse’s distributions with yours when entering an amount on line 4 if you and your spouse didn’t file a joint return for the year the distribution was received")
 Interpretation amb.2025.savers_line4_gross: The first (retirement.sav_gross; f8880.line4a and f8880.line4b). The owner's decision (Stage 15 premise map, decision 4). The text says "total amount of distributions" and excludes only the kinds it lists; a rollover is excluded because it is "not taxable as the result of a rollover", and the other exclusions it lists either need a form this tool refuses (retirement.special, retirement.bad_code) or are asked for each Form 1099-R (retirement.sav_military, retirement.sav_404k, retirement.sav_inherited). (f8880, p. 2, Line 4, "Enter the total amount of distributions"; "Don’t include any of the following")
 Interpretation amb.2025.savers_ineligible_column: The first (f8880.line6a and f8880.line6b through f8880.elig_a and f8880.elig_b). The owner's decision (Stage 15 premise map, decision 4). The test is of "the person(s) who made the qualified contribution or elective deferral", so it reads as a test of each contributor, and the form keeps each spouse's contributions in their own column. Whether a person is claimed as a dependent is asked of each person (person.sav_claimed), not read from the return's "can claim" question; it is asked only when someone can claim you or your spouse (sa.dependent), since otherwise no one is claimed. (f8880, p. 2, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a) was born after January 1, 2008; (b) is claimed as a dependent on someone else’s 2025 tax return; or (c) was a student")
@@ -7893,6 +8163,8 @@ Interpretation amb.2025.sli_ratio_places: Round the ratio half-up to three decim
 Interpretation amb.2025.ss_wages: Use boxes 3 plus 7, summed across employers separately per person. Owner approved the Stage 2 proposal. iw2w3 p. 18 defines these boxes and their combined wage base; box 1 can exclude deferrals subject to Social Security. (iw2w3, p. 18, boxes 3 and 7; compare i1040gi p. 117, Schedule 3 line 11)
 Interpretation amb.2025.savers_sep_contrib: The first (person.sav_simple_plan). The owner's decision (Stage 15 premise map, decision 2). Only elective deferrals to a SEP (code F, a salary reduction SEP) are named; a SEP contribution a self-employed person makes for themselves is a nonelective contribution. (f8880, p. 2, Line 2, "Elective deferrals (including designated Roth contributions under section 402A, if applicable) to a 401(k), 403(b), governmental 457(b), SEP, SIMPLE, or the federal TSP")
 Interpretation amb.2025.ira_line7_cents: The first. The project's rule for products (amb.2025.multiplication_subcent). The readings differ only when the exact product is less than half a cent above a multiple of $10. (i1040gi, p. 98, IRA Deduction Worksheet—Continued, line 7, "If the result isn’t a multiple of $10, increase it to the next multiple of $10 (for example, increase $490.30 to $500)")
+Interpretation amb.2025.edu_1098t_date: The first, in the help text of person.edu_1098t and dependent.edu_1098t. Pub. 970 is the later revision and explains the shift (January 31 falls on a Saturday). Owner's decision D7(d), 2026-10-29. (p970, p. 2, Reminders, "After February 2, 2026 (January 31 falls on a Saturday), but before you file your 2025 tax return, you or the student must request that the educational institution furnish Form 1098-T.")
+Interpretation amb.2025.edu_fulltime: The first (person.edu_fulltime asks the 5-month definition). Condition 1c points to "(defined later)", and the only definition later is the 5-month one. Owner's decision D7(c), 2026-10-29. (i8863, p. 7, Full-time student, "you were a full-time student for 2025 if during any part of any 5 calendar months during the year you were enrolled as a full-time student at an eligible educational institution (defined earlier)")
 Scope: Form 1040 lines 1a–37 with the schedules and forms this tool implements and their refusal screens. Unsupported paths are refused with citations. No filing or transmission.
 Rounding: amounts are exact cents; the return-wide whole-dollar rounding setting is deferred (see ambiguities/2025.yaml).
 Estimated tax penalty: not computed; the IRS will figure it (see i1040gi, line 38).

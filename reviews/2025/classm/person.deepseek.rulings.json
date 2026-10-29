@@ -1,0 +1,16 @@
+{
+ "kind": "classm",
+ "form": "person",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "case": "classm.person.1",
+   "printed": "person[taxpayer].wages",
+   "project": "$44,754.00",
+   "model": "$29,524.00",
+   "ruling": "Ruling: model error; iw2w3 p. 18, boxes 3 and 7 (social security wages and social security tips; amb.2025.ss_wages): person.wages is the sum of w2.wages, boxes 3 plus 7, the amount the excess social security tax test compares with the wage base (i1040gi p. 117, Line 11). Case inputs (fixtures/2025/classm.deepseek.json, classm.person.1.deepseek): emp_a box 1 $29,524.00, box 3 $29,524.00, box 7 $0.00; emp_b box 1 $0.00, box 3 $0.00, box 7 $15,230.00; so boxes 3 plus 7 total $44,754.00, the project's value. The model's work (\"29,524.00 + 0.00 = 29,524.00\") adds emp_a's amount and emp_b's box 3 (or box 1) and misses emp_b's box 7 tips of $15,230.00. Same case and ruling as round 2. A wrong worked value is not evidence; dropped.",
+   "drop": true,
+   "context": "d9432bca94f0e18a30855ef864a1571cd02473647e2973a22b77b969b1367ede"
+  }
+ ]
+}

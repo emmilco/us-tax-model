@@ -1,0 +1,210 @@
+# Form 8863 Part III, lines 27 to 31, with the Adjusted Qualified Education Expenses Worksheet (i8863 p. 9), for one
+# student: instanced from each person or dependent entry with that student's expenses and adjustments.
+
+def:
+  id: aqee
+  kind: def
+  title: Form 8863, Part III lines 27 to 31 with the Adjusted Qualified Education Expenses Worksheet, one per student
+  tax_year: 2025
+  parameters:
+  - inst
+  - mat
+  - adj
+  lines:
+  - id: inst
+    printed: (helper)
+    label: Qualified education expenses required to be paid to the institution (tuition, fees, and books, supplies and equipment
+      required as a condition of enrollment or attendance)
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Bound by the calling line (this student's expenses required to be paid to the institution).
+    cite:
+      doc: i8863
+      locator: 'p. 4, Qualified Education Expenses, "Lifetime learning credit: Qualified education expenses include amounts
+        paid for books, supplies, and equipment only if required to be paid to the institution as a condition of enrollment
+        or attendance."'
+  - id: mat
+    printed: (helper)
+    label: Other course materials needed for a course of study (books, supplies and equipment not required to be paid to the
+      institution; American opportunity credit only)
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Bound by the calling line (this student's other course materials).
+    cite:
+      doc: i8863
+      locator: 'p. 4, Qualified Education Expenses, "American opportunity credit: Qualified education expenses include amounts
+        paid for tuition, fees, and course materials, which include books, supplies, and equipment needed for a course of
+        study, whether or not the materials are purchased from the educational institution as a condition of enrollment or
+        attendance."'
+  - id: adj
+    printed: (helper)
+    label: 'Worksheet line 3: total adjustments (lines 2a, 2b and 2c)'
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Bound by the calling line (this student's tax-free educational assistance and refunds).
+    cite:
+      doc: i8863
+      locator: p. 9, Adjusted Qualified Education Expenses Worksheet, "3. Total adjustments (add lines 2a, 2b, and 2c)"
+  - id: ws1_aoc
+    printed: (helper)
+    label: 'Worksheet line 1 for the American opportunity credit: total qualified education expenses (tuition, fees and course
+      materials)'
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - inst
+      - mat
+    cite:
+      doc: i8863
+      locator: p. 9, Adjusted Qualified Education Expenses Worksheet, "1. Total qualified education expenses paid for or on
+        behalf of the student in 2025 for the academic period"
+  - id: ws4_aoc
+    printed: (helper)
+    label: 'Worksheet line 4 for the American opportunity credit: subtract line 3 from line 1; if zero or less, enter -0-'
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: ws1_aoc
+      take: adj
+    cite:
+      doc: i8863
+      locator: p. 9, Adjusted Qualified Education Expenses Worksheet, "4. Adjusted qualified education expenses. Subtract
+        line 3 from line 1. If zero or less, enter -0-"
+  - id: ws4_llc
+    printed: (helper)
+    label: 'Worksheet line 4 for the lifetime learning credit: the expenses required to be paid to the institution less line
+      3; if zero or less, enter -0-'
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: inst
+      take: adj
+    cite:
+      doc: i8863
+      locator: p. 9, Adjusted Qualified Education Expenses Worksheet, "4. Adjusted qualified education expenses. Subtract
+        line 3 from line 1. If zero or less, enter -0-"
+  - id: cap
+    printed: (helper)
+    label: Year parameter aoc.expense_cap ($4,000)
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: aoc.expense_cap
+    cite:
+      doc: f8863
+      locator: p. 2, Part III, line 27, "Adjusted qualified education expenses (see instructions). Don’t enter more than $4,000"
+  - id: band
+    printed: (helper)
+    label: Year parameter aoc.full_band ($2,000)
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: aoc.full_band
+    cite:
+      doc: f8863
+      locator: p. 2, Part III, line 28, "Subtract $2,000 from line 27. If zero or less, enter -0-"
+  - id: rate25
+    printed: (helper)
+    label: Year parameter aoc.second_rate (25%)
+    type: Rate
+    expr:
+      op: param
+      ref: aoc.second_rate
+    cite:
+      doc: f8863
+      locator: p. 2, Part III, line 29, "Multiply line 28 by 25% (0.25)"
+  - id: zero
+    printed: (helper)
+    label: Zero
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: sales.zero
+    cite:
+      doc: f8863
+      locator: p. 2, Part III, line 30, "If line 28 is zero, enter the amount from line 27."
+  - id: line27
+    printed: '27'
+    label: Adjusted qualified education expenses. Don't enter more than $4,000
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - ws4_aoc
+      - cap
+    cite:
+      doc: f8863
+      locator: p. 2, Part III, line 27, "Adjusted qualified education expenses (see instructions). Don’t enter more than $4,000"
+  - id: line28
+    printed: '28'
+    label: Subtract $2,000 from line 27. If zero or less, enter -0-
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: line27
+      take: band
+    cite:
+      doc: f8863
+      locator: p. 2, Part III, line 28, "Subtract $2,000 from line 27. If zero or less, enter -0-"
+  - id: line29
+    printed: '29'
+    label: Multiply line 28 by 25% (0.25)
+    type: NonNegDollars
+    expr:
+      op: multiply_rate
+      amount: line28
+      rate: rate25
+    cite:
+      doc: f8863
+      locator: p. 2, Part III, line 29, "Multiply line 28 by 25% (0.25)"
+  - id: line29_plus
+    printed: (helper)
+    label: Add $2,000 to the amount on line 29
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - line29
+      - band
+    cite:
+      doc: f8863
+      locator: p. 2, Part III, line 30, "Otherwise, add $2,000 to the amount on line 29 and enter the result."
+  - id: line28_zero
+    printed: (helper)
+    label: Line 28 is zero
+    type: Bool
+    expr:
+      op: test
+      eq:
+      - line28
+      - const: 0
+    cite:
+      doc: f8863
+      locator: p. 2, Part III, line 30, "If line 28 is zero, enter the amount from line 27."
+  - id: line30
+    printed: '30'
+    label: If line 28 is zero, enter the amount from line 27. Otherwise, add $2,000 to the amount on line 29
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - line28_zero
+          - const: true
+        then: line27
+      - guard:
+          op: test
+          eq:
+          - line28_zero
+          - const: false
+        then: line29_plus
+    cite:
+      doc: f8863
+      locator: p. 2, Part III, line 30, "If line 28 is zero, enter the amount from line 27.", "Otherwise, add $2,000 to the
+        amount on line 29 and enter the result."

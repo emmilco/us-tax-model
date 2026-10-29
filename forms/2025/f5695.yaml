@@ -380,7 +380,7 @@ form:
     printed: (helper)
     label: 'Residential Clean Energy Credit Limit Worksheet, line 2. Schedule 3 lines 6l, 1, 2, 6d, 3 and 4, Form 5695 line
       32, Schedule 3 lines 6m and 6f, Form 1040 line 19 (or Credit Limit Worksheet B line 14), and Schedule 3 lines 6g, 6c
-      and 6h; in this tool Schedule 3 lines 1, 2 and 4, Form 5695 line 32 and the child tax credit, the others being
+      and 6h; in this tool Schedule 3 lines 1, 2, 3 and 4, Form 5695 line 32 and the child tax credit, the others being
       refused'
     type: Dollars
     expr:
@@ -388,6 +388,7 @@ form:
       of:
       - s3.line1
       - s3.line2
+      - s3.line3
       - s3.line4
       - s3.line5b
       - f5695.ctc
@@ -398,8 +399,8 @@ form:
     note: Form 5695 line 32 is read as Schedule 3 line 5b, which is line 32 when Part II is completed and zero otherwise.
     refuses:
     - when: scope.credits
-      form: Residential Clean Energy Credit Limit Worksheet, line 2 (Schedule 3 lines 3, 6c, 6d, 6f, 6g, 6h, 6l and 6m)
-      remedy: Credits other than the foreign tax credit, the dependent credits and the residential energy credits are
+      form: Residential Clean Energy Credit Limit Worksheet, line 2 (Schedule 3 lines 6c, 6d, 6f, 6g, 6h, 6l and 6m)
+      remedy: Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the education credits, the saver's credit and the residential energy credits are
         outside this tool.
       cite:
         doc: i5695
@@ -2060,13 +2061,14 @@ form:
   - id: f5695.eehi_ws2
     printed: (helper)
     label: 'Energy Efficient Home Improvement Credit Limit Worksheet, line 2. Schedule 3 lines 6l, 1, 2, 6d, 3 and 4; in this
-      tool lines 1, 2 and 4, the others being refused'
+      tool lines 1, 2, 3 and 4, the others being refused'
     type: Dollars
     expr:
       op: sum
       of:
       - s3.line1
       - s3.line2
+      - s3.line3
       - s3.line4
     cite:
       doc: i5695
@@ -2074,8 +2076,8 @@ form:
         following credit(s)/adjustment(s) if you are taking the credit(s)/adjustment(s) on your 2025 income tax return"
     refuses:
     - when: scope.credits
-      form: Energy Efficient Home Improvement Credit Limit Worksheet, line 2 (Schedule 3 lines 3, 6d and 6l)
-      remedy: Credits other than the foreign tax credit, the dependent credits and the residential energy credits are
+      form: Energy Efficient Home Improvement Credit Limit Worksheet, line 2 (Schedule 3 lines 6d and 6l)
+      remedy: Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the education credits, the saver's credit and the residential energy credits are
         outside this tool.
       cite:
         doc: i5695

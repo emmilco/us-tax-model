@@ -5,10 +5,10 @@
  "family": "claude",
  "form": "scope",
  "lines": [],
- "log_sha256_at_triage": "667ddedd14683935f176c392adba8529864d020573855b75e339f765d35565db",
+ "log_sha256_at_triage": "a315b7b227598629361e36e2e5a6cd8fc8541bc1313844ba9388b3f232ea7fa3",
  "policy": "executable-triage-v2",
- "response_sha256": "8847be1fe191b73bc1576849558f5981a7c96117e64c96fd37f8428776220c5b",
+ "response_sha256": "ce1a52afe9b1f28f173f7ba8fd43983dee3273b8bbb3e5072cb32a49f5e994cd",
  "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
  "state": "no candidate lines",
- "subject_sha256": "de4cdbc23a6b3776ce1275620efad1c547ebb2b7eb5fcf3ebad9f7c066b83606"
+ "subject_sha256": "f20949791e737a3a5a3208a079db7881d94ebdce21a902a586d72768afa13b63"
 }

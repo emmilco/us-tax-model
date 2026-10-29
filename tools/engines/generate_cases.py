@@ -283,7 +283,97 @@ def gen_case(rng, i):
     add_form_features(random.Random(f"forms:{i}"), inputs, facts, features, ages, wages, age)
     add_carryovers(random.Random(f"carry:{i}"), inputs, facts, features)
     add_marketplace(random.Random(f"ptc:{i}"), inputs, facts, features)
+    add_education(random.Random(f"edu:{i}"), inputs, facts, features, ages, young_ok=i < 100_000)
     return {"id": f"gen-{i:05d}", "inputs": inputs, "facts": facts, "features": sorted(features)}
+
+
+EDU_ANSWERS = ("", "_1098t", "_over", "_line23", "_line24", "_line25", "_line26", "_ein")
+EDU_AMOUNTS = ("_inst", "_mat", "_a2025", "_a2026", "_refunds")
+
+
+def edu_entry_defaults(inputs, entry):
+    """A person or dependent entry with no education expenses: every Form 8863 answer No, every amount zero."""
+    inputs.update({f"{entry}.edu{k}": False for k in EDU_ANSWERS})
+    inputs.update({f"{entry}.edu{k}": 0 for k in EDU_AMOUNTS})
+
+
+def edu_line7_answers(inputs, person, age, r=None):
+    """Form 8863 line 7 birth-date, student, support and parent answers for a filer `age` at the end of the year (born
+    before January 2, 2007 means 19 or older, before January 2, 2002 means 24 or older)."""
+    young = r is not None
+    inputs.update({f"{person}.edu_born_2007": age >= 19, f"{person}.edu_born_2002": age >= 24,
+                   f"{person}.edu_fulltime": young and r.random() < 0.6, f"{person}.edu_half_support": young and r.random() < 0.6,
+                   f"{person}.edu_parent": not young or r.random() < 0.9})
+
+
+def edu_student(r, inputs, entry):
+    """One student's Form 8863 inputs: about three in four pass Part III lines 23 to 26 with the institution's EIN (an AOC
+    student); the rest have had the credit for 4 earlier years, have no EIN (the line 31 fallback), completed the first 4
+    years or were not enrolled half-time (an LLC student). Amounts are usually multiples of $20. Returns the student's
+    economic facts, figured from the raw amounts by the credit rules (i8863 pp. 4-6), not from the project's lines."""
+    whole = r.random() < 0.75
+    amount = lambda lo, hi: r.randint(lo // 2000, hi // 2000) * 2000 if whole else r.randint(lo, hi)
+    inst = amount(50_000, 1_500_000)
+    mat = amount(2_000, 150_000) if r.random() < 0.5 else 0
+    a2025 = amount(0, inst // 2) if r.random() < 0.3 else 0
+    a2026 = amount(0, 40_000) if r.random() < 0.05 else 0
+    refunds = amount(0, 40_000) if r.random() < 0.05 else 0
+    why = "aoc" if r.random() < 0.75 else r.choice(["line23", "ein", "ein", "line23", "line25", "line24"])
+    inputs.update({f"{entry}.edu": True, f"{entry}.edu_1098t": True, f"{entry}.edu_inst": inst, f"{entry}.edu_mat": mat,
+                   f"{entry}.edu_a2025": a2025, f"{entry}.edu_a2026": a2026, f"{entry}.edu_refunds": refunds, f"{entry}.edu_over": False,
+                   f"{entry}.edu_line23": why == "line23", f"{entry}.edu_line24": why != "line24", f"{entry}.edu_line25": why == "line25",
+                   f"{entry}.edu_line26": False, f"{entry}.edu_ein": why != "ein"})
+    assistance = a2025 + a2026 + refunds
+    aoc_expenses = max(0, inst + mat - assistance)
+    capped = min(aoc_expenses, 400_000)
+    aoc = why == "aoc"
+    return {"aoc": aoc, "aoc_expenses": aoc_expenses if aoc else 0, "llc_expenses": 0 if aoc else max(0, inst - assistance),
+            "credit": (min(capped, 200_000) + rate(max(0, capped - 200_000), (25, 100))) if aoc else 0}
+
+
+def edu_totals(facts, features):
+    """Form 8863 lines 1 and 10 from the students' facts, and the education features."""
+    students = facts["education"]["students"]
+    facts["education"]["line1"] = sum(s["credit"] for s in students)
+    facts["education"]["line10"] = sum(s["llc_expenses"] for s in students)
+    features.add("education")
+    if any(s["aoc"] for s in students):
+        features.add("education_aoc")
+    if any(not s["aoc"] for s in students):
+        features.add("education_llc")
+
+
+def add_education(r, inputs, facts, features, ages, young_ok):
+    """Form 8863 on about one return in eight: one student, sometimes two, among you and the dependents 17 or older.
+    On some single returns with no dependents, no IRA contributions and a filer under 65 the student is you at 18 to
+    23, with line 7 answers in both branches. A Form 8862 claim, a ban and an academic period whose assistance exceeds
+    its expenses are No; every entry without expenses answers No. A separate generator leaves every earlier draw
+    unchanged."""
+    inputs.update({"f8863.paid": False, "f8863.ban": False})
+    edu_entry_defaults(inputs, TAXPAYER)
+    edu_line7_answers(inputs, TAXPAYER, facts.get("age", 40))
+    for k in range(len(ages)):
+        edu_entry_defaults(inputs, f"dependent[child_{k + 1}]")
+    if r.random() >= 0.125:
+        return
+    pool = ["taxpayer"] + [k for k, a in enumerate(ages) if a >= 17]
+    chosen = r.sample(pool, 2 if len(pool) > 1 and r.random() < 0.3 else 1)
+    students = []
+    for who in chosen:
+        entry = TAXPAYER if who == "taxpayer" else f"dependent[child_{who + 1}]"
+        students.append({"who": who, **edu_student(r, inputs, entry)})
+        if who == "taxpayer" and young_ok and not ages and facts.get("age", 40) == 40 and not facts.get("ira_contribution") \
+                and not facts.get("roth_contribution") and r.random() < 0.4:
+            # A filer under 24: the earned income credit's age test (born before January 2, 2001) fails, and the
+            # saver's credit student answer follows the full-time answer (there are no contributions).
+            age = r.randint(18, 23)
+            facts["age"] = age
+            edu_line7_answers(inputs, TAXPAYER, age, r)
+            inputs.update({f"{TAXPAYER}.born_before_2001": False, f"{TAXPAYER}.sav_student": inputs[f"{TAXPAYER}.edu_fulltime"]})
+            features.add("young_filer")
+    inputs["f8863.paid"] = True
+    facts["education"] = {"students": students}
+    edu_totals(facts, features)
 
 
 def add_marketplace(r, inputs, facts, features):
@@ -481,6 +571,14 @@ def make_joint(case, j):
         wages += w; medicare += w; withheld += e["box2"]; box3s.append(box3)
     if n_emp == 2 and sum(box3s) > WAGE_BASE:
         features.add("excess_social_security")
+    # Form 8863: the spouse's entry, a student on about one joint return in sixteen. A separate generator.
+    edu_entry_defaults(inputs, SPOUSE)
+    edu_line7_answers(inputs, SPOUSE, age)
+    redu = random.Random(f"edu-mfj:{j}")
+    if redu.random() < 0.0625:
+        inputs["f8863.paid"] = True
+        facts.setdefault("education", {"students": []})["students"].append({"who": "spouse", **edu_student(redu, inputs, SPOUSE)})
+        edu_totals(facts, features)
     facts.update(joint=True, hoh=False, spouse_age=age, spouse_wages=wages, withheld=facts["withheld"] + withheld,
                  medicare_wages=facts["medicare_wages"] + medicare)
     features.add("joint")

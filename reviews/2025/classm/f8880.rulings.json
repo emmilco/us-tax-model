@@ -4,6 +4,30 @@
  "rulings": [
   {
    "case": "classm.f8880.1",
+   "printed": "(CLW 1)",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.f8880.1.prompt.txt) lists the line as \"line (CLW 1)\"; the reply names it \"CLW 1\" without the parentheses, so the class M parser found no answer. The reply's value is \"blank\" with the work \"Skipped: the form stops at line 7\", which is the source: f8880 p. 1, line 7, \"Add the amounts on line 6. If zero, stop; you can’t take this credit\" (the case has line 7 $0.00 and Form 1040 line 18 $0.00). The project shows $0.00, which is the true worksheet amount (Form 1040 line 18 is $0.00, Schedule 3 lines 1 to 3 are $0.00) and is not a nonzero amount on a skipped line. No numeric assertion to keep or drop.",
+   "context": "6979fe511df6e36cec643290d5a1298b27a902d08ba184360da1bbac094de25b"
+  },
+  {
+   "case": "classm.f8880.1",
+   "printed": "(CLW 2)",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.f8880.1.prompt.txt) lists the line as \"line (CLW 2)\"; the reply names it \"CLW 2\" without the parentheses, so the class M parser found no answer. The reply's value is \"blank\" with the work \"Skipped: the form stops at line 7\", which is the source: f8880 p. 1, line 7, \"Add the amounts on line 6. If zero, stop; you can’t take this credit\" (the case has line 7 $0.00 and Form 1040 line 18 $0.00). The project shows $0.00, which is the true worksheet amount (Form 1040 line 18 is $0.00, Schedule 3 lines 1 to 3 are $0.00) and is not a nonzero amount on a skipped line. No numeric assertion to keep or drop.",
+   "context": "6979fe511df6e36cec643290d5a1298b27a902d08ba184360da1bbac094de25b"
+  },
+  {
+   "case": "classm.f8880.1",
+   "printed": "(CLW 3)",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.f8880.1.prompt.txt) lists the line as \"line (CLW 3)\"; the reply names it \"CLW 3\" without the parentheses, so the class M parser found no answer. The reply's value is \"blank\" with the work \"Skipped: the form stops at line 7\", which is the source: f8880 p. 1, line 7, \"Add the amounts on line 6. If zero, stop; you can’t take this credit\" (the case has line 7 $0.00 and Form 1040 line 18 $0.00). The project shows $0.00, which is the true worksheet amount (Form 1040 line 18 is $0.00, Schedule 3 lines 1 to 3 are $0.00) and is not a nonzero amount on a skipped line. No numeric assertion to keep or drop.",
+   "context": "6979fe511df6e36cec643290d5a1298b27a902d08ba184360da1bbac094de25b"
+  },
+  {
+   "case": "classm.f8880.1",
    "printed": "8",
    "project": "$-12,028.87",
    "model": "$0.00",
@@ -20,11 +44,38 @@
   },
   {
    "case": "classm.f8880.4",
+   "printed": "1(b)",
+   "project": "$665.00",
+   "model": "$0.00",
+   "ruling": "Ruling: ambiguity; amb.2025.savers_ineligible_column; model value dropped from the fixture (the non-chosen placement). The case (fixtures/2025/classm.json, classm.f8880.4; married filing jointly) has the spouse born after January 1, 2008 (person[spouse].sav_born false) with a $665.00 Roth IRA contribution (person[spouse].sav_roth 66500), no other contribution or distribution. f8880 p. 1, Caution: \"You cannot take this credit if either of the following applies. ... The person(s) who made the qualified contribution or elective deferral (a) was born after January 1, 2008; (b) is claimed as a dependent on someone else’s 2025 tax return; or (c) was a student\". The model applies the Caution on line 1(b) (\"spouse is a student/dependent/born after 1/1/2008, so the Caution rule excludes it\"); the project enters the contribution on line 1(b) as printed and zeroes the spouse's column on line 6(b) under amb.2025.savers_ineligible_column (owner decision 4): \"On a joint return, an ineligible spouse's own column is zero (line 6 of that column), and the other spouse's column is figured as usual\", chosen as f8880.line6a/6b through f8880.elig_a/elig_b. Lines 6(b), 7 and 12 are $0.00 on both readings.",
+   "drop": true,
+   "context": "6979fe511df6e36cec643290d5a1298b27a902d08ba184360da1bbac094de25b"
+  },
+  {
+   "case": "classm.f8880.4",
    "printed": "11",
    "project": "$26.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 7 is zero in this case, and the model stopped there and left the later lines at zero; the project figures every line regardless and applies the stop on line 12 (f8880.can_take), which is zero here on both sides. f8880 p. 1, line 7, \"Add the amounts on line 6. If zero, stop; you can't take this credit\". As the stop rulings in reviews/2025/classm/eic and s8812.",
    "drop": true
+  },
+  {
+   "case": "classm.f8880.4",
+   "printed": "3(b)",
+   "project": "$665.00",
+   "model": "$0.00",
+   "ruling": "Ruling: ambiguity; amb.2025.savers_ineligible_column; model value dropped from the fixture. Inherits line 1(b): the model's $0.00 is the Caution applied on line 1(b), the project's $665.00 is line 1(b) plus line 2(b) as printed, the zero placed on line 6(b) under amb.2025.savers_ineligible_column (owner decision 4): \"On a joint return, an ineligible spouse's own column is zero (line 6 of that column), and the other spouse's column is figured as usual\", chosen as f8880.line6a/6b through f8880.elig_a/elig_b. The case (fixtures/2025/classm.json, classm.f8880.4; married filing jointly) has the spouse born after January 1, 2008 (person[spouse].sav_born false) with a $665.00 Roth IRA contribution (person[spouse].sav_roth 66500), no other contribution or distribution.",
+   "drop": true,
+   "context": "6979fe511df6e36cec643290d5a1298b27a902d08ba184360da1bbac094de25b"
+  },
+  {
+   "case": "classm.f8880.4",
+   "printed": "5(b)",
+   "project": "$665.00",
+   "model": "$0.00",
+   "ruling": "Ruling: ambiguity; amb.2025.savers_ineligible_column; model value dropped from the fixture. As line 3(b): line 5(b) is line 3(b) less line 4(b) ($0.00); the difference is where the ineligible spouse's zero goes, which amb.2025.savers_ineligible_column (owner decision 4): \"On a joint return, an ineligible spouse's own column is zero (line 6 of that column), and the other spouse's column is figured as usual\", chosen as f8880.line6a/6b through f8880.elig_a/elig_b puts on line 6(b). The case (fixtures/2025/classm.json, classm.f8880.4; married filing jointly) has the spouse born after January 1, 2008 (person[spouse].sav_born false) with a $665.00 Roth IRA contribution (person[spouse].sav_roth 66500), no other contribution or distribution.",
+   "drop": true,
+   "context": "6979fe511df6e36cec643290d5a1298b27a902d08ba184360da1bbac094de25b"
   },
   {
    "case": "classm.f8880.4",

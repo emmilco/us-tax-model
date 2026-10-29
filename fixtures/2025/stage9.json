@@ -10,6 +10,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 9, predicted by hand from the printed instructions before recording: Single, no qualifying child, wages $4,000 (aged 25 to 64, main home in the United States). Printed row $4,000-$4,050, no children: $308 (i1040gi p. 50). Line 4 Yes, line 6 is line 2.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -210,6 +211,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 9, predicted by hand from the printed instructions before recording: Single, no qualifying child, wages $12,000, in the phase-out (above $10,620). Printed row $12,000-$12,050, no children: $542 (p. 51).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -394,6 +396,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 9, predicted by hand from the printed instructions before recording: As no_child.4000 but born before January 1, 1961 (age 65 or older, and not born after December 31, 1960): Step 4, question 2 is No, no credit (p. 41).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -583,6 +586,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 9, predicted by hand from the printed instructions before recording: As no_child.4000 but born on January 1, 1961: 65 or older for the standard deduction (sa.age65 yes), yet born after December 31, 1960, so Step 4, question 2 is Yes and the credit is the same $308 (p. 41; BUG-0034).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -745,6 +749,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 9, predicted by hand from the printed instructions before recording: As no_child.4000 but born on or after January 2, 2001: Step 4, question 2 is No.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -925,6 +930,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 9, predicted by hand from the printed instructions before recording: As no_child.4000 but main home outside the United States for more than half of 2025: Step 4, question 3 is No (p. 42).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -1109,6 +1115,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 9, predicted by hand from the printed instructions before recording: As no_child.4000 but the filer could be a qualifying child of another person: Step 4, question 5 is Yes, STOP (p. 42).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -1293,6 +1300,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 9, predicted by hand from the printed instructions before recording: Head of household, one child, wages $25,000 and interest $5,000 (AGI $30,000, investment income $5,000). Line 2: printed row $25,000-$25,050, one child, $4,060 (p. 52); line 4 No; line 3 is not less than $23,350, so line 5 is the row $30,000-$30,050, one child, $3,261 (p. 53); line 6 is the smaller, $3,261.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
           "taxpayer"
@@ -1512,6 +1520,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 9, predicted by hand from the printed instructions before recording: Head of household, two children, wages $15,000 (building up; the plateau begins at $17,880). Printed row $15,000-$15,050, two children: $6,010 (p. 51).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
           "taxpayer"
@@ -1741,6 +1750,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 9, predicted by hand from the printed instructions before recording: Head of household, three children, wages $20,000 (on the plateau, below the $23,350 threshold). Printed row $20,000-$20,050, three children: $8,046 (p. 52).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
           "taxpayer"
@@ -1992,6 +2002,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 9, predicted by hand from the printed instructions before recording: Head of household, one child, wages $4,000, interest $12,000: investment income is more than $11,950, so Step 2 stops without Form 4797 (p. 40).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
           "taxpayer"
@@ -2203,6 +2214,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 9, predicted by hand from the printed instructions before recording: Head of household, one child without a valid SSN, wages $15,000: the child is a qualifying child, so Step 4 (and its age question, deliberately not answered here) is skipped, but Worksheet A uses the column for no children with valid SSNs: row $15,000-$15,050, $312 (pp. 41, 46, 51).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
           "taxpayer"
@@ -2408,6 +2420,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 9, predicted by hand from the printed instructions before recording: Single, no qualifying child, no wages, interest $1,000: earned income is $0, below the table's first row, so line 2 is zero and the credit stops (ambiguity register amb.2025.eic_below_table).  Shown-line regression (owner decision 2026-10-26: skipped lines are hidden): Worksheet A line 2 is zero, so i1040gi p. 46 \"If line 2 is zero, STOP\" hides line 3 (BUG-0156).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -2600,6 +2613,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 9, predicted by hand from the printed instructions before recording: Single, no qualifying child, wages $19,103: less than $19,104, so Steps 1 and 5 pass; the row $19,100-$19,150 is starred and the footnote gives $0 below $19,104 (p. 52).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -2797,6 +2811,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 9, predicted by hand from the printed instructions before recording: Single, no qualifying child, wages $19,104: Step 1, question 1 is No (the amount must be less than $19,104).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -2986,6 +3001,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 9, predicted by hand from the printed instructions before recording: Head of household, one child, wages $50,420: below $50,434; the row $50,400-$50,450 is starred for one child and the footnote gives $3 (p. 57).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
           "taxpayer"
@@ -3189,6 +3205,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 9, predicted by hand from the printed instructions before recording: Head of household, one child, wages $4,000, interest $11,951: investment income $11,951 is more than $11,950 (p. 40, Step 2, question 2).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
           "taxpayer"
@@ -3380,6 +3397,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 9, predicted by hand from the printed instructions before recording: Single, no qualifying child, wages $1: the first table row, $1-$50, no children, is $2 (p. 49).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -3541,6 +3559,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 9, predicted by hand from the printed instructions before recording: Head of household, one child, wages $20,000 and interest $3,350 (AGI $23,350, not less than the $23,350 line 5 amount): line 2 is the row $20,000-$20,050, $4,328; line 5 is the row $23,350-$23,400, $4,324 (p. 52); line 6 is the smaller, $4,324.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
           "taxpayer"
@@ -3737,6 +3756,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 9, predicted by hand from the printed instructions before recording: Head of household, one child, wages $50,434: Step 1, question 1 is No (less than $50,434 is required).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
           "taxpayer"
@@ -3930,6 +3950,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 9, predicted by hand from the printed instructions before recording: Head of household, two children, wages $57,310: Step 1, question 1 is No.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
           "taxpayer"
@@ -4145,6 +4166,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 9, predicted by hand from the printed instructions before recording: Head of household, three children, wages $61,555: Step 1, question 1 is No.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
           "taxpayer"
@@ -4382,6 +4404,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 9, predicted by hand from the printed instructions before recording: Married filing jointly, no qualifying child, wages $26,214: Step 1, question 1 is No ($26,214 if married filing jointly). The return itself refuses at line 33 (married statuses); line 27a is computed.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -4577,6 +4600,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 9, predicted by hand from the printed instructions before recording: Married filing jointly, one child, wages $57,554: Step 1, question 1 is No.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -4795,6 +4819,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 9, predicted by hand from the printed instructions before recording: Married filing jointly, two children, wages $64,430: Step 1, question 1 is No.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -5035,6 +5060,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 9, predicted by hand from the printed instructions before recording: Married filing jointly, three children, wages $68,675: Step 1, question 1 is No.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -5297,6 +5323,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 9, predicted by hand from the printed instructions before recording: Married filing jointly, no qualifying child, wages $12,000: the joint column of the row $12,000-$12,050 is $649 (still on the plateau below $17,730) (p. 51).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -5483,6 +5510,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 9, predicted by hand from the printed instructions before recording: Head of household, one child, wages $4,000, interest $7,000 and capital gain distributions $5,000 (line 7a, no Schedule D): investment income $12,000 is more than $11,950.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
           "taxpayer"
@@ -5675,6 +5703,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 9, predicted by hand from the printed instructions before recording: Head of household, one child, wages $12,000 and interest $11,500 (AGI $23,500): line 2 is the row $12,000-$12,050, $4,089 (p. 51); line 5 is the row $23,500-$23,550, $4,300 (p. 52); line 6 is the smaller, $4,089.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
           "taxpayer"
@@ -5867,6 +5896,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 9, predicted by hand from the printed instructions before recording: Single, under 25, wages $4,000, with a dependent parent who is not a qualifying child for the EIC: no qualifying child, so Step 4 applies and its age question stops the credit.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -6051,6 +6081,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 9, predicted by hand from the printed instructions before recording: As no_child.4000 with excluded foreign or Puerto Rico income: Step 1, question 3 is refused.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -6217,6 +6248,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 9, predicted by hand from the printed instructions before recording: As no_child.4000 with a Form 8814 or other line 16 tax: Step 2, question 4 is refused.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -6383,6 +6415,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 9, predicted by hand from the printed instructions before recording: As no_child.4000 where someone can claim the filer as a dependent: Step 4, question 6 is refused.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -6562,6 +6595,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 9, predicted by hand from the printed instructions before recording: Head of household, one child who meets the conditions to be the qualifying child of another person: the tie-breaker rules are refused (p. 44).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
           "taxpayer"
@@ -6751,6 +6785,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 9, predicted by hand from the printed instructions before recording: Head of household, one married child: the married-child rule is refused (p. 44).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
           "taxpayer"
@@ -6940,6 +6975,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 9, predicted by hand from the printed instructions before recording: Head of household, one child, wages $4,000, nontaxable combat pay: Step 5, line 4 is refused, and so is Worksheet A line 1.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
           "taxpayer"
@@ -7142,6 +7178,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 9, predicted by hand from the printed instructions before recording: Single, one child, wages $120,000, nontaxable combat pay: AGI is above every EIC limit, so line 27a is $0 and Schedule 8812 line 18a comes from the Earned Income Worksheet, whose line 1b refuses for combat pay (i1040s8812 p. 7, Earned Income Chart).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -7339,6 +7376,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 9, predicted by hand from the printed instructions before recording: The Stage 8 return with three children, wages $5,000 and withholding above line 20, but the filer could be the qualifying child of another person, so no EIC: Part II-B line 25 is $382.50 (more than line 20, $375), line 26 is $382.50 and the additional child tax credit is $382.50, as before Stage 9.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
           "taxpayer"
@@ -7578,6 +7616,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 9 follow-up, predicted by hand from the printed instructions before recording: Head of household, married at the end of 2025, one child, wages $4,000; you and your spouse did not share a principal residence for the last 6 months: Step 3, question 4 is No, so skip question 5 and go to question 6 (p. 41); the row $4,000-$4,050, one child, is $1,369 (p. 50).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
           "taxpayer"
@@ -7771,6 +7810,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 9 follow-up, predicted by hand from the printed instructions before recording: As lived_apart, but sharing a principal residence for the last 6 months while legally separated under a decree of separate maintenance and living apart at the end of 2025: question 5 is Yes, continue to question 6; $1,369.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
           "taxpayer"
@@ -7957,6 +7997,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 9 follow-up, predicted by hand from the printed instructions before recording: As lived_apart, but sharing a principal residence for the last 6 months and not legally separated: question 5 is No, STOP (p. 41); no credit.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
           "taxpayer"
@@ -8155,6 +8196,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 9 follow-up, predicted by hand from the printed instructions before recording: Married filing separately, one child, wages $4,000, no shared principal residence for the last 6 months: Step 3, questions 3 and 4 lead to question 6; the Single/head of household column (the table's star note gives it to married filing separately) is $1,369. The return itself refuses at line 33 (married statuses); line 27a is computed.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfs",
         "$person": [
           "taxpayer"
@@ -8344,6 +8386,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Housekeeping pass, predicted before recording: as no_child.4000 with an item requiring Schedule 1 (which covers Schedule SE): line 27b, clergy filing Schedule SE, is refused (i1040gi p. 43).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -8510,6 +8553,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Inputs are stage9.eic.one_child.line5 with the filer's social security card printed Not Valid for Employment but the number not issued solely to receive a federally funded benefit: the SSN is valid for the EIC (i1040gi p. 44, \"For the EIC, a valid SSN is a number issued by the Social Security Administration unless 'Not Valid for Employment' is printed on the social security card and the number was issued solely to allow the recipient of the SSN to apply for or receive a federally funded benefit\"), so Step 1, question 2 passes and line 27a is $3,261 as in the source case; the child tax credit needs an SSN valid for employment (p. 17), so the child is not a qualifying child for it and is an other dependent instead ($500, within the $638 tax). Predicted from i1040gi pp. 17, 40, 44 and 46; no independent human hand-work is claimed.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
           "taxpayer"
@@ -8733,6 +8777,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Inputs are stage9.eic.one_child.line5 with the filer's SSN valid for employment but, for the EIC, issued solely to receive a federally funded benefit with Not Valid for Employment printed on the card: Step 1, question 2 is No, so the EIC is zero and the box on line 27c is checked (i1040gi p. 40, Step 1, question 2, \"No. STOP You can't take the credit. Check the box on Form 1040 or 1040-SR, line 27c\"); the child tax credit is unchanged. Predicted from i1040gi pp. 17, 40 and 44; no independent human hand-work is claimed.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
           "taxpayer"
@@ -8944,6 +8989,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage9.eic.one_child.line5 with the filer answering that an EIC, child tax credit, additional child tax credit or credit for other dependents for an earlier year was reduced or disallowed other than for a math or clerical error (or that a 2- or 10-year disallowance period applies): Form 8862 and the disallowance period are outside this tool (i1040gi p. 43, Form 8862, who must file), so the EIC line and Schedule 8812 line 12 are refused and Form 1040 lines 19, 27a and 37 follow. The refused values are the evaluator's.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
           "taxpayer"
@@ -9191,6 +9237,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "BUG-0152 regression, predicted from i1040gi p. 46, Worksheet A line 4 (\"Are the amounts on lines 3 and 1 the same? Yes. Skip line 5\") before recording: the inputs of classm.f2441.4, where lines 1 and 3 are both $5,000, hide line 5.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
           "taxpayer"
@@ -9397,6 +9444,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "BUG-0156 regression, predicted from i1040gi p. 47 (\"Use this worksheet if you answered Yes to Step 5, question 2\") and p. 40 (Step 1 STOP) before recording: the inputs of classm.f2441.2.deepseek, a joint return with AGI $85,000 above the Step 1 limit and no Schedule C, never reach Step 5 or Worksheet B, so Worksheet B lines 4b and 6 are hidden.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -9675,6 +9723,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Mutation-equivalence second reading (kills boundary.eic.eic.self_employed), predicted from the archived i1040gi before recording: as no_child.4000 but wages $20,000 and student loan interest $2,500 (Schedule 1 line 21), so AGI is $17,500 and no Schedule C is filed. Step 1 question 1: AGI is less than $19,104 (no qualifying child), so the filer continues. Step 5 question 2 is No (not self-employed), so Worksheet B does not apply (p. 46, Worksheet A: 'Use this worksheet only if you answered \"No\" to Step 5, question 2'). Step 5 question 3: earned income $20,000 is not less than $19,104, and the instruction for No is only 'You can't take the credit.' (p. 42); the Worksheet B line 5 STOP that says 'Check the box on Form 1040 or 1040-SR, line 27c' (p. 47) is not reached. Line 27a $0; line 27c unchecked.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -9848,6 +9897,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Mutation-equivalence second reading (kills refusal.eic.eic.step5_line2.0 and operand.eic.eic.step5_line4.zero), predicted from the archived i1040gi before recording: as no_child.4000 with the other-income screen answered Yes (it covers Medicaid waiver payments) and no combat pay. Step 5 line 2 is 'the Medicaid waiver payment amounts excluded from income on Schedule 1, line 8s' (p. 42), which this tool does not ask, so line 2 refuses with the Medicaid waiver entry. Step 5 line 4 is 'all of your nontaxable combat pay if you elect to include it in earned income' (p. 42): with no combat pay it is $0, whatever the other-income screen says. Form 1040 line 27a refuses through line 8's own other-income entry.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -10034,6 +10084,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Mutation-equivalence second reading (kills refusal.eic.eic.step1_resident.0), predicted from the archived i1040gi before recording: as stage9.eic.refuse.other_income but with the Schedule 1 screen left unanswered, the state the interview is in when it stops at the other-income refusal (the scope screens share one order and are asked by key). AGI is then unknown, so Step 1 question 1 cannot be answered, but the other-income screen (which covers nonresident alien status, Step 1 question 4, p. 40) is answered Yes: the EIC refuses on it (a refusal outranks an unknown, spec 4.7.2), so lines 27a and 27c carry the Step 1 question 4 refusal rather than a $0 credit.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -10214,6 +10265,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Mutation-equivalence second reading (kills refusal.eic.eic.step5_line1.0), predicted from the archived i1040gi before recording: the inputs of stage9.eic.refuse.clergy_schedule1 (an item requiring Schedule 1, which covers clergy and church employee income). Step 5 question 1 asks whether you file Schedule SE as a member of the clergy or with church employee income, and Yes sends you to 'Clergy or Church employees, whichever applies' (p. 42) before worksheet line 1; this tool refuses those items, so Step 5 line 1 itself refuses rather than showing Form 1040 line 1z.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -10380,6 +10432,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Mutation-equivalence second reading (kills refusal.eic.eic.step2_other.0), predicted from the archived f1040 before recording: the inputs of stage16.cleanup.refuse.f1040_line16 as the interview asks them (it stops at the Form 1040 line 16 screen, before the Schedule 1 screen). The filing status is single, and the Dependents box reads 'Check if your filing status is MFS or HOH and you lived apart from your spouse for the last 6 months of 2025, or you are legally separated' (Form 1040, page 1), so it is unchecked whatever the EIC steps say; line 16 refuses on its own entry.",
       "inputs": {
+        "f8863.paid": false,
         "$person": [
           "taxpayer"
         ],

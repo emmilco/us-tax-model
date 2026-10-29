@@ -15,6 +15,27 @@
    "ruling": "Ruling: scope; project retained (as the prior ruling). Schedule 3 lines 3, 6d and 6l are credits this tool refuses through scope.credits (refused on Schedule 3 line 8, \"Other credit forms (Schedule 3 lines 3 and 6a to 6z ...)\"), so on every return that reaches the worksheet they are zero and lines 1 and 2 are the whole of the line; the line's citation says so. f8880 p. 2, Credit Limit Worksheet, \"2. Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l\". No change."
   },
   {
+   "printed": "(CLW 2)",
+   "restated": "Add s3 line 1, s3 line 2, and s3 line 3.",
+   "model": "The worksheet says \"Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l.\" The restatement adds only Schedule 3 lines 1-3 and omits 6d (elderly or disabled credit) and 6l.",
+   "ruling": "Ruling: scope; the English is the source within the slice. f8880 p. 2, Credit Limit Worksheet: \"2. Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l\". The rendered line (rendered/2025/f8880.md, (CLW 2)) adds Schedule 3 lines 1, 2 and 3, the last being the education credits since Stage 19, and its citation says \"(lines 6d and 6l are refused by scope.credits)\": the credit for the elderly or the disabled (line 6d) and any other Schedule 3 line 6 credit are refused through scope.credits on Schedule 3 line 8 (\"Other credit forms (Schedule 3 lines 6a to 6z; Form 1040 lines 30 and 31)\"), so on every return that reaches the worksheet they are zero. The refusal sits on Schedule 3, which the render does not show.",
+   "context": "2029ea100d2d4c089505799ed1df861996d691087b24bf348d86e4b30bf58cdb"
+  },
+  {
+   "printed": "1(b)",
+   "restated": "Add person.sav_line1 over every confirmed person entry for which helper \"Whose entry is this, yours or your spouse's?\" = 'spouse', within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "The instructions say \"Complete column (b) only if you're filing a joint return.\" The restatement sums spouse entries with no joint-return condition, unlike line 4(b), which is gated on married filing jointly. A spouse entry on a non-joint return would therefore put an amount in column (b).",
+   "ruling": "Ruling: representation; f8880 p. 2, Column (b): \"Complete column (b) only if you’re filing a joint return\". The rendered sum over spouse entries has no filing-status condition of its own because the roster has a spouse entry only on a joint return: the $person question reads \"Who is on this return? Enter [\\\"taxpayer\\\"], or [\\\"taxpayer\\\",\\\"spouse\\\"] if you are married filing jointly\" (interview/questions-2025.yaml, help \"One entry for you and, on a joint return, one for your spouse\"), so the sum is zero on any other return. Line 4(b) carries an explicit joint guard because its joint-year input (person.sav_prior_joint) sums over both entries. The roster rule is stated in the interview, not checked by a refusal; a filer who answered against it is outside what the interview produces.",
+   "context": "2029ea100d2d4c089505799ed1df861996d691087b24bf348d86e4b30bf58cdb"
+  },
+  {
+   "printed": "2(b)",
+   "restated": "Add person.sav_line2 over every confirmed person entry for which helper \"Whose entry is this, yours or your spouse's?\" = 'spouse', within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "The instructions say \"Complete column (b) only if you're filing a joint return.\" The restatement sums spouse entries without requiring a joint return.",
+   "ruling": "Ruling: representation; as line 1(b). f8880 p. 2, Column (b): \"Complete column (b) only if you’re filing a joint return\"; the roster has a spouse entry only on a joint return: the $person question reads \"Who is on this return? Enter [\\\"taxpayer\\\"], or [\\\"taxpayer\\\",\\\"spouse\\\"] if you are married filing jointly\" (interview/questions-2025.yaml, help \"One entry for you and, on a joint return, one for your spouse\"), so the spouse sum is column (b) of a joint return and zero otherwise.",
+   "context": "2029ea100d2d4c089505799ed1df861996d691087b24bf348d86e4b30bf58cdb"
+  },
+  {
    "printed": "4(a)",
    "restated": "Add helper \"Distributions received in 2025 that line 4 counts (the Forms 1099-R of the return, less rollovers and the excluded kinds)\", helper \"Distributions from years filed jointly, counted in both columns (on a joint return; none otherwise)\", and helper \"Your own distributions in 2023, 2024 and 2026 (before the due date) from years not filed jointly with your spouse\".",
    "model": "The IRS asks for 'the total amount of distributions you... received after 2022 and before the due date'. A filer who is not filing jointly for 2025 drops their own distributions from earlier years filed jointly: prior_joint is $0 when not filing jointly, and prior_own_a covers only years 'not filed jointly with your spouse'. Those distributions still belong in column (a).",

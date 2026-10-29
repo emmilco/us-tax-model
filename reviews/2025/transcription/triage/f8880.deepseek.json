@@ -1,140 +1,7504 @@
 {
- "bank": null,
- "errors": [
-  {
-   "line": "f8880.line6a",
-   "message": "malformed expression (project schema): data/of/1 must be string, data/of/1 must be string, data/of/1 must be string"
-  },
-  {
-   "line": "f8880.line6b",
-   "message": "malformed expression (project schema): data/of/1 must be string, data/of/1 must be string, data/of/1 must be string"
-  },
-  {
-   "line": "f8880.line6a",
-   "message": "f8880.f8880.line6a: malformed expression"
-  },
-  {
-   "line": "f8880.line6b",
-   "message": "f8880.f8880.line6b: malformed expression"
-  },
-  {
-   "line": "f8880.line9",
-   "message": "f8880.f8880.line9: table 'f8880.line9' does not exist"
-  },
-  {
-   "line": "f8880.line12",
-   "message": "f8880.f8880.line12: comparison operands have incompatible types"
-  },
-  {
-   "line": "f8880.line12",
-   "message": "f8880.f8880.line12: comparison operands have incompatible types"
-  },
-  {
-   "line": "f8880.line1a",
-   "message": "f8880.f8880.__type_gate_0: collection reference requires sum_over"
-  },
-  {
-   "line": "f8880.line1a",
-   "message": "f8880.f8880.__type_gate_0: comparison operands have incompatible types"
-  },
-  {
-   "line": "f8880.line1b",
-   "message": "f8880.f8880.__type_gate_1: collection reference requires sum_over"
-  },
-  {
-   "line": "f8880.line1b",
-   "message": "f8880.f8880.__type_gate_1: comparison operands have incompatible types"
-  },
-  {
-   "line": "f8880.line2a",
-   "message": "f8880.f8880.__type_gate_2: collection reference requires sum_over"
-  },
-  {
-   "line": "f8880.line2a",
-   "message": "f8880.f8880.__type_gate_2: comparison operands have incompatible types"
-  },
-  {
-   "line": "f8880.line2b",
-   "message": "f8880.f8880.__type_gate_3: collection reference requires sum_over"
-  },
-  {
-   "line": "f8880.line2b",
-   "message": "f8880.f8880.__type_gate_3: comparison operands have incompatible types"
-  },
-  {
-   "line": "f8880.line4a",
-   "message": "f8880.f8880.__type_gate_4: collection reference requires sum_over"
-  },
-  {
-   "line": "f8880.line4a",
-   "message": "f8880.f8880.__type_gate_4: comparison operands have incompatible types"
-  },
-  {
-   "line": "f8880.line4b",
-   "message": "f8880.f8880.__type_gate_5: collection reference requires sum_over"
-  },
-  {
-   "line": "f8880.line4b",
-   "message": "f8880.f8880.__type_gate_5: comparison operands have incompatible types"
-  }
- ],
+ "bank": {
+  "evaluation_failures": 0,
+  "fixtures": 1306,
+  "generated": 500,
+  "partial_bases": 40,
+  "partial_records": 0,
+  "seed": 20261026
+ },
+ "errors": [],
  "failures": [],
  "family": "deepseek",
  "form": "f8880",
  "lines": [
   {
+   "absent": 0,
+   "agree": 1654,
    "candidate": "f8880.line4a",
+   "compared": 1806,
+   "differ": 152,
    "handle": "4(a)",
+   "in_scope": 1760,
+   "in_scope_agree": 1638,
+   "kinds": {
+    "candidate-unknown": 1,
+    "project-refuses": 30,
+    "project-unknown": 1,
+    "value": 120
+   },
+   "kinds_by_return": {
+    "completed": {
+     "candidate-unknown": 1,
+     "value": 32
+    },
+    "incomplete": {
+     "project-unknown": 1,
+     "value": 16
+    },
+    "refused": {
+     "project-refuses": 30,
+     "value": 72
+    }
+   },
    "open_at_triage": true,
    "project": "f8880.line4a",
+   "shown_when": null,
+   "sources": {
+    "fixture": 1306,
+    "generated": 500
+   },
    "status": "DISAGREE",
-   "triage": "candidate invalid"
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_tax_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_tax_other",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_spouse_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 27, Exception 2; f1099r Box 7"
+      },
+      "form": "Form 8606 or another Form 1099-R code",
+      "gate": "retirement[r2].bad_code",
+      "kind": "refusal",
+      "remedy": "A Roth IRA distribution other than a qualified distribution (code Q), or a distribution code other than 7, 4, 2, G or Q, is outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.dist_2025",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 27, Exception 2; f1099r Box 7"
+        },
+        "form": "Form 8606 or another Form 1099-R code",
+        "gate": "retirement[r2].bad_code",
+        "kind": "refusal",
+        "remedy": "A Roth IRA distribution other than a qualified distribution (code Q), or a distribution code other than 7, 4, 2, G or Q, is outside this tool."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.w2.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_tax_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_tax_other",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_spouse_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method"
+      },
+      "form": "Form 1099-R special cases (Forms 5329, 8606, 4972, 8915-F, Pub. 575 or 939)",
+      "gate": "retirement[r1].special",
+      "kind": "refusal",
+      "remedy": "This distribution needs a form or rule outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.dist_2025",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method"
+        },
+        "form": "Form 1099-R special cases (Forms 5329, 8606, 4972, 8915-F, Pub. 575 or 939)",
+        "gate": "retirement[r1].special",
+        "kind": "refusal",
+        "remedy": "This distribution needs a form or rule outside this tool."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.clcw.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_tax_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_tax_other",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_spouse_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "value",
+     "project": {
+      "cents": 4384200,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.dist_2025",
+       "value": {
+        "cents": 4384200,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.prior_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.prior_own_a",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dependent.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_tax_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_tax_other",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_spouse_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "value",
+     "project": {
+      "cents": 275100,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.dist_2025",
+       "value": {
+        "cents": 275100,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.prior_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.prior_own_a",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dependent.5.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_tax_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_tax_other",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_spouse_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "value",
+     "project": {
+      "cents": 1519500,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.dist_2025",
+       "value": {
+        "cents": 1519500,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.prior_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.prior_own_a",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.carloan.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_tax_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_tax_other",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_spouse_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method"
+      },
+      "form": "Form 1099-R special cases (Forms 5329, 8606, 4972, 8915-F, Pub. 575 or 939)",
+      "gate": "retirement[r1].special",
+      "kind": "refusal",
+      "remedy": "This distribution needs a form or rule outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.dist_2025",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method"
+        },
+        "form": "Form 1099-R special cases (Forms 5329, 8606, 4972, 8915-F, Pub. 575 or 939)",
+        "gate": "retirement[r1].special",
+        "kind": "refusal",
+        "remedy": "This distribution needs a form or rule outside this tool."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8606.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_tax_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_tax_other",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_spouse_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 27, Exception 2; f1099r Box 7"
+      },
+      "form": "Form 8606 or another Form 1099-R code",
+      "gate": "retirement[r1].bad_code",
+      "kind": "refusal",
+      "remedy": "A Roth IRA distribution other than a qualified distribution (code Q), or a distribution code other than 7, 4, 2, G or Q, is outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.dist_2025",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 27, Exception 2; f1099r Box 7"
+        },
+        "form": "Form 8606 or another Form 1099-R code",
+        "gate": "retirement[r1].bad_code",
+        "kind": "refusal",
+        "remedy": "A Roth IRA distribution other than a qualified distribution (code Q), or a distribution code other than 7, 4, 2, G or Q, is outside this tool."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8959.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_tax_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_tax_other",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_spouse_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "value",
+     "project": {
+      "cents": 2825700,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.dist_2025",
+       "value": {
+        "cents": 2825700,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.prior_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.prior_own_a",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.ira.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_tax_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_tax_other",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_spouse_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 27, Exception 2; f1099r Box 7"
+      },
+      "form": "Form 8606 or another Form 1099-R code",
+      "gate": "retirement[r1].bad_code",
+      "kind": "refusal",
+      "remedy": "A Roth IRA distribution other than a qualified distribution (code Q), or a distribution code other than 7, 4, 2, G or Q, is outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.dist_2025",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 27, Exception 2; f1099r Box 7"
+        },
+        "form": "Form 8606 or another Form 1099-R code",
+        "gate": "retirement[r1].bad_code",
+        "kind": "refusal",
+        "remedy": "A Roth IRA distribution other than a qualified distribution (code Q), or a distribution code other than 7, 4, 2, G or Q, is outside this tool."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.otjob.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_tax_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_tax_other",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_spouse_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method"
+      },
+      "form": "Form 1099-R special cases (Forms 5329, 8606, 4972, 8915-F, Pub. 575 or 939)",
+      "gate": "retirement[r1].special",
+      "kind": "refusal",
+      "remedy": "This distribution needs a form or rule outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.dist_2025",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method"
+        },
+        "form": "Form 1099-R special cases (Forms 5329, 8606, 4972, 8915-F, Pub. 575 or 939)",
+        "gate": "retirement[r1].special",
+        "kind": "refusal",
+        "remedy": "This distribution needs a form or rule outside this tool."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.refund.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_tax_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_tax_other",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_spouse_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "value",
+     "project": {
+      "cents": 2682700,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.dist_2025",
+       "value": {
+        "cents": 2682700,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.prior_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.prior_own_a",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.retirement.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_tax_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_tax_other",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_spouse_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "value",
+     "project": {
+      "cents": 3495200,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.dist_2025",
+       "value": {
+        "cents": 3495200,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.prior_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.prior_own_a",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.retirement.4",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_tax_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_tax_other",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_spouse_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "project-unknown",
+     "project": {
+      "input": "retirement[r].code",
+      "kind": "unknown",
+      "reason": "no input supplied for retirement[r].code"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.dist_2025",
+       "value": {
+        "input": "retirement[r].code",
+        "kind": "unknown",
+        "reason": "no input supplied for retirement[r].code"
+       }
+      },
+      {
+       "ref": "f8880.prior_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.prior_own_a",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage10.ira.roth_code_unanswered",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].sav_prior_joint",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].sav_prior_joint"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_tax_joint",
+       "value": {
+        "input": "person[taxpayer].sav_prior_joint",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].sav_prior_joint"
+       }
+      },
+      {
+       "ref": "f8880.h_tax_other",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_spouse_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.dist_2025",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.prior_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.prior_own_a",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "stage16.cleanup.f5695_small_wind",
+      "kind": "fixture"
+     }
+    }
+   ]
   },
   {
+   "absent": 0,
+   "agree": 1613,
    "candidate": "f8880.line4b",
+   "compared": 1806,
+   "differ": 193,
    "handle": "4(b)",
+   "in_scope": 1784,
+   "in_scope_agree": 1610,
+   "kinds": {
+    "candidate-refuses": 13,
+    "candidate-unknown": 162,
+    "project-refuses": 6,
+    "value": 12
+   },
+   "kinds_by_return": {
+    "completed": {
+     "candidate-unknown": 2,
+     "value": 7
+    },
+    "incomplete": {
+     "candidate-unknown": 111
+    },
+    "refused": {
+     "candidate-refuses": 13,
+     "candidate-unknown": 49,
+     "project-refuses": 6,
+     "value": 5
+    }
+   },
    "open_at_triage": true,
    "project": "f8880.line4b",
+   "shown_when": null,
+   "sources": {
+    "fixture": 1306,
+    "generated": 500
+   },
    "status": "DISAGREE",
-   "triage": "candidate invalid"
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_spouse_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_spouse_other",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_tax_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 27, Exception 2; f1099r Box 7"
+      },
+      "form": "Form 8606 or another Form 1099-R code",
+      "gate": "retirement[r2].bad_code",
+      "kind": "refusal",
+      "remedy": "A Roth IRA distribution other than a qualified distribution (code Q), or a distribution code other than 7, 4, 2, G or Q, is outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.joint",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.line4b_joint",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 27, Exception 2; f1099r Box 7"
+        },
+        "form": "Form 8606 or another Form 1099-R code",
+        "gate": "retirement[r2].bad_code",
+        "kind": "refusal",
+        "remedy": "A Roth IRA distribution other than a qualified distribution (code Q), or a distribution code other than 7, 4, 2, G or Q, is outside this tool."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.w2.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[sample].sav_able",
+      "kind": "unknown",
+      "reason": "no input supplied for person[sample].sav_able"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_spouse_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_spouse_other",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_tax_joint",
+       "value": {
+        "input": "person[sample].sav_able",
+        "kind": "unknown",
+        "reason": "no input supplied for person[sample].sav_able"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.joint",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.joint",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "classm.f8889.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "f8880",
+       "locator": "p. 2, What\u2019s New, \"See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about ABLE accounts\""
+      },
+      "form": "ABLE account contributions or distributions on Form 8880 (Pub. 907)",
+      "gate": "person[taxpayer].sav_able",
+      "kind": "refusal",
+      "remedy": "Contributions to an ABLE account by its designated beneficiary (line 1) and ABLE distributions (line 4) are outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_spouse_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_spouse_other",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_tax_joint",
+       "value": {
+        "cite": {
+         "doc": "f8880",
+         "locator": "p. 2, What\u2019s New, \"See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about ABLE accounts\""
+        },
+        "form": "ABLE account contributions or distributions on Form 8880 (Pub. 907)",
+        "gate": "person[taxpayer].sav_able",
+        "kind": "refusal",
+        "remedy": "Contributions to an ABLE account by its designated beneficiary (line 1) and ABLE distributions (line 4) are outside this tool."
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.joint",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.joint",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.sd.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_spouse_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_spouse_other",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_tax_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "value",
+     "project": {
+      "cents": 275100,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.joint",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.line4b_joint",
+       "value": {
+        "cents": 275100,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dependent.5.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "f8880",
+       "locator": "p. 2, What\u2019s New, \"See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about ABLE accounts\""
+      },
+      "form": "ABLE account contributions or distributions on Form 8880 (Pub. 907)",
+      "gate": "person[taxpayer].sav_able",
+      "kind": "refusal",
+      "remedy": "Contributions to an ABLE account by its designated beneficiary (line 1) and ABLE distributions (line 4) are outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_spouse_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_spouse_other",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_tax_joint",
+       "value": {
+        "cite": {
+         "doc": "f8880",
+         "locator": "p. 2, What\u2019s New, \"See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about ABLE accounts\""
+        },
+        "form": "ABLE account contributions or distributions on Form 8880 (Pub. 907)",
+        "gate": "person[taxpayer].sav_able",
+        "kind": "refusal",
+        "remedy": "Contributions to an ABLE account by its designated beneficiary (line 1) and ABLE distributions (line 4) are outside this tool."
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.joint",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.joint",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dcprov.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_spouse_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_spouse_other",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_tax_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "value",
+     "project": {
+      "cents": 2825700,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.joint",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.line4b_joint",
+       "value": {
+        "cents": 2825700,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.ira.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_spouse_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_spouse_other",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_tax_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 27, Exception 2; f1099r Box 7"
+      },
+      "form": "Form 8606 or another Form 1099-R code",
+      "gate": "retirement[r1].bad_code",
+      "kind": "refusal",
+      "remedy": "A Roth IRA distribution other than a qualified distribution (code Q), or a distribution code other than 7, 4, 2, G or Q, is outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.joint",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.line4b_joint",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 27, Exception 2; f1099r Box 7"
+        },
+        "form": "Form 8606 or another Form 1099-R code",
+        "gate": "retirement[r1].bad_code",
+        "kind": "refusal",
+        "remedy": "A Roth IRA distribution other than a qualified distribution (code Q), or a distribution code other than 7, 4, 2, G or Q, is outside this tool."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.otjob.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].sav_able",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].sav_able"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_spouse_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_spouse_other",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_tax_joint",
+       "value": {
+        "input": "person[taxpayer].sav_able",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].sav_able"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.joint",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.joint",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.sb.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "f8880",
+       "locator": "p. 2, What\u2019s New, \"See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about ABLE accounts\""
+      },
+      "form": "ABLE account contributions or distributions on Form 8880 (Pub. 907)",
+      "gate": "person[taxpayer].sav_able",
+      "kind": "refusal",
+      "remedy": "Contributions to an ABLE account by its designated beneficiary (line 1) and ABLE distributions (line 4) are outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_spouse_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_spouse_other",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_tax_joint",
+       "value": {
+        "cite": {
+         "doc": "f8880",
+         "locator": "p. 2, What\u2019s New, \"See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about ABLE accounts\""
+        },
+        "form": "ABLE account contributions or distributions on Form 8880 (Pub. 907)",
+        "gate": "person[taxpayer].sav_able",
+        "kind": "refusal",
+        "remedy": "Contributions to an ABLE account by its designated beneficiary (line 1) and ABLE distributions (line 4) are outside this tool."
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.joint",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.joint",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.sd.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "f8880",
+       "locator": "p. 2, What\u2019s New, \"See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about ABLE accounts\""
+      },
+      "form": "ABLE account contributions or distributions on Form 8880 (Pub. 907)",
+      "gate": "person[taxpayer].sav_able",
+      "kind": "refusal",
+      "remedy": "Contributions to an ABLE account by its designated beneficiary (line 1) and ABLE distributions (line 4) are outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_spouse_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_spouse_other",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_tax_joint",
+       "value": {
+        "cite": {
+         "doc": "f8880",
+         "locator": "p. 2, What\u2019s New, \"See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about ABLE accounts\""
+        },
+        "form": "ABLE account contributions or distributions on Form 8880 (Pub. 907)",
+        "gate": "person[taxpayer].sav_able",
+        "kind": "refusal",
+        "remedy": "Contributions to an ABLE account by its designated beneficiary (line 1) and ABLE distributions (line 4) are outside this tool."
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.joint",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.joint",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.sli.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].sav_able",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].sav_able"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_spouse_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_spouse_other",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_tax_joint",
+       "value": {
+        "input": "person[taxpayer].sav_able",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].sav_able"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.joint",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.joint",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.tax_on_amount.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_spouse_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_spouse_other",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_tax_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "value",
+     "project": {
+      "cents": 3911000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.joint",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.line4b_joint",
+       "value": {
+        "cents": 3911000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.tcw.15",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_spouse_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_spouse_other",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_tax_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method"
+      },
+      "form": "Form 1099-R special cases (Forms 5329, 8606, 4972, 8915-F, Pub. 575 or 939)",
+      "gate": "retirement[r1].special",
+      "kind": "refusal",
+      "remedy": "This distribution needs a form or rule outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.joint",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.line4b_joint",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method"
+        },
+        "form": "Form 1099-R special cases (Forms 5329, 8606, 4972, 8915-F, Pub. 575 or 939)",
+        "gate": "retirement[r1].special",
+        "kind": "refusal",
+        "remedy": "This distribution needs a form or rule outside this tool."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.w2.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_spouse_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_spouse_other",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_tax_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "value",
+     "project": {
+      "cents": 275100,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.joint",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.line4b_joint",
+       "value": {
+        "cents": 275100,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dependent.5",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[sample].sav_able",
+      "kind": "unknown",
+      "reason": "no input supplied for person[sample].sav_able"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_spouse_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_spouse_other",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_tax_joint",
+       "value": {
+        "input": "person[sample].sav_able",
+        "kind": "unknown",
+        "reason": "no input supplied for person[sample].sav_able"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.joint",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.joint",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "classm.f8889.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].sav_able",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].sav_able"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_spouse_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_spouse_other",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_tax_joint",
+       "value": {
+        "input": "person[taxpayer].sav_able",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].sav_able"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.joint",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.joint",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "table.band.first",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].sav_able",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].sav_able"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_spouse_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_spouse_other",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_tax_joint",
+       "value": {
+        "input": "person[taxpayer].sav_able",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].sav_able"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.joint",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.joint",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "table.band.mid",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 200000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_spouse_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_spouse_other",
+       "value": {
+        "cents": 200000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_tax_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "value",
+     "project": {
+      "cents": 700000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.joint",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.line4b_joint",
+       "value": {
+        "cents": 700000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "stage15.f8880.s1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 30000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_spouse_joint",
+       "value": {
+        "cents": 30000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_spouse_other",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_tax_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "value",
+     "project": {
+      "cents": 130000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.joint",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.line4b_joint",
+       "value": {
+        "cents": 130000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "stage15.f8880-2.b15",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "f8880",
+       "locator": "p. 2, What\u2019s New, \"See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about ABLE accounts\""
+      },
+      "form": "ABLE account contributions or distributions on Form 8880 (Pub. 907)",
+      "gate": "person[taxpayer].sav_able",
+      "kind": "refusal",
+      "remedy": "Contributions to an ABLE account by its designated beneficiary (line 1) and ABLE distributions (line 4) are outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_spouse_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_spouse_other",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_tax_joint",
+       "value": {
+        "cite": {
+         "doc": "f8880",
+         "locator": "p. 2, What\u2019s New, \"See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about ABLE accounts\""
+        },
+        "form": "ABLE account contributions or distributions on Form 8880 (Pub. 907)",
+        "gate": "person[taxpayer].sav_able",
+        "kind": "refusal",
+        "remedy": "Contributions to an ABLE account by its designated beneficiary (line 1) and ABLE distributions (line 4) are outside this tool."
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.joint",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.joint",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage15.refuse.person.sav_able",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "f8880",
+       "locator": "p. 2, What\u2019s New, \"See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about ABLE accounts\""
+      },
+      "form": "ABLE account contributions or distributions on Form 8880 (Pub. 907)",
+      "gate": "person[taxpayer].sav_able",
+      "kind": "refusal",
+      "remedy": "Contributions to an ABLE account by its designated beneficiary (line 1) and ABLE distributions (line 4) are outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_spouse_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_spouse_other",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_tax_joint",
+       "value": {
+        "cite": {
+         "doc": "f8880",
+         "locator": "p. 2, What\u2019s New, \"See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about ABLE accounts\""
+        },
+        "form": "ABLE account contributions or distributions on Form 8880 (Pub. 907)",
+        "gate": "person[taxpayer].sav_able",
+        "kind": "refusal",
+        "remedy": "Contributions to an ABLE account by its designated beneficiary (line 1) and ABLE distributions (line 4) are outside this tool."
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.joint",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.joint",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage16.sd.line17_no_skips_19",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_spouse_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_spouse_other",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_tax_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 27, Exception 2; f1099r Box 7"
+      },
+      "form": "Form 8606 or another Form 1099-R code",
+      "gate": "retirement[r1].bad_code",
+      "kind": "refusal",
+      "remedy": "A Roth IRA distribution other than a qualified distribution (code Q), or a distribution code other than 7, 4, 2, G or Q, is outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.joint",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.line4b_joint",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 27, Exception 2; f1099r Box 7"
+        },
+        "form": "Form 8606 or another Form 1099-R code",
+        "gate": "retirement[r1].bad_code",
+        "kind": "refusal",
+        "remedy": "A Roth IRA distribution other than a qualified distribution (code Q), or a distribution code other than 7, 4, 2, G or Q, is outside this tool."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 262,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_spouse_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_spouse_other",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_tax_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 27, Exception 2; f1099r Box 7"
+      },
+      "form": "Form 8606 or another Form 1099-R code",
+      "gate": "retirement[r1].bad_code",
+      "kind": "refusal",
+      "remedy": "A Roth IRA distribution other than a qualified distribution (code Q), or a distribution code other than 7, 4, 2, G or Q, is outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.joint",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.line4b_joint",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 27, Exception 2; f1099r Box 7"
+        },
+        "form": "Form 8606 or another Form 1099-R code",
+        "gate": "retirement[r1].bad_code",
+        "kind": "refusal",
+        "remedy": "A Roth IRA distribution other than a qualified distribution (code Q), or a distribution code other than 7, 4, 2, G or Q, is outside this tool."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 332,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_spouse_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_spouse_other",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_tax_joint",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 27, Exception 2; f1099r Box 7"
+      },
+      "form": "Form 8606 or another Form 1099-R code",
+      "gate": "retirement[r1].bad_code",
+      "kind": "refusal",
+      "remedy": "A Roth IRA distribution other than a qualified distribution (code Q), or a distribution code other than 7, 4, 2, G or Q, is outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.joint",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.line4b_joint",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 27, Exception 2; f1099r Box 7"
+        },
+        "form": "Form 8606 or another Form 1099-R code",
+        "gate": "retirement[r1].bad_code",
+        "kind": "refusal",
+        "remedy": "A Roth IRA distribution other than a qualified distribution (code Q), or a distribution code other than 7, 4, 2, G or Q, is outside this tool."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 475,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    }
+   ]
   },
   {
+   "absent": 0,
+   "agree": 1711,
    "candidate": "f8880.line6a",
+   "compared": 1806,
+   "differ": 95,
    "handle": "6(a)",
+   "in_scope": 1741,
+   "in_scope_agree": 1680,
+   "kinds": {
+    "candidate-refuses": 7,
+    "candidate-unknown": 1,
+    "project-refuses": 27,
+    "project-unknown": 1,
+    "value": 59
+   },
+   "kinds_by_return": {
+    "completed": {
+     "candidate-unknown": 1,
+     "value": 18
+    },
+    "incomplete": {
+     "project-unknown": 1,
+     "value": 1
+    },
+    "refused": {
+     "candidate-refuses": 7,
+     "project-refuses": 27,
+     "value": 40
+    }
+   },
    "open_at_triage": true,
    "project": "f8880.line6a",
+   "shown_when": null,
+   "sources": {
+    "fixture": 1306,
+    "generated": 500
+   },
    "status": "DISAGREE",
-   "triage": "candidate invalid"
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "cite": {
+       "doc": "f8880",
+       "locator": "p. 2, What\u2019s New, \"See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about ABLE accounts\""
+      },
+      "form": "ABLE account contributions or distributions on Form 8880 (Pub. 907)",
+      "gate": "person[taxpayer].sav_able",
+      "kind": "refusal",
+      "remedy": "Contributions to an ABLE account by its designated beneficiary (line 1) and ABLE distributions (line 4) are outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.line5a",
+       "value": {
+        "cite": {
+         "doc": "f8880",
+         "locator": "p. 2, What\u2019s New, \"See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about ABLE accounts\""
+        },
+        "form": "ABLE account contributions or distributions on Form 8880 (Pub. 907)",
+        "gate": "person[taxpayer].sav_able",
+        "kind": "refusal",
+        "remedy": "Contributions to an ABLE account by its designated beneficiary (line 1) and ABLE distributions (line 4) are outside this tool."
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.elig_a",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.elig_a",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.sd.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.line5a",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_cap",
+       "value": {
+        "cents": 200000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method"
+      },
+      "form": "Form 1099-R special cases (Forms 5329, 8606, 4972, 8915-F, Pub. 575 or 939)",
+      "gate": "retirement[r1].special",
+      "kind": "refusal",
+      "remedy": "This distribution needs a form or rule outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.elig_a",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.line6a_figured",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method"
+        },
+        "form": "Form 1099-R special cases (Forms 5329, 8606, 4972, 8915-F, Pub. 575 or 939)",
+        "gate": "retirement[r1].special",
+        "kind": "refusal",
+        "remedy": "This distribution needs a form or rule outside this tool."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.clcw.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 200000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.line5a",
+       "value": {
+        "cents": 1258100,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_cap",
+       "value": {
+        "cents": 200000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "value",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.elig_a",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.elig_a",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.clcw.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "p560",
+       "locator": "pp. 8\u201311, 14\u201317, 38\u201340, chapters 2, 3 and 5"
+      },
+      "form": "Retirement plan contributions outside this tool",
+      "gate": "person[taxpayer].plan_screened",
+      "kind": "refusal",
+      "remedy": "These retirement contributions are outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.line5a",
+       "value": {
+        "cite": {
+         "doc": "p560",
+         "locator": "pp. 8\u201311, 14\u201317, 38\u201340, chapters 2, 3 and 5"
+        },
+        "form": "Retirement plan contributions outside this tool",
+        "gate": "person[taxpayer].plan_screened",
+        "kind": "refusal",
+        "remedy": "These retirement contributions are outside this tool."
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.elig_a",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.elig_a",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.clcw.4.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 200000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.line5a",
+       "value": {
+        "cents": 223400,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_cap",
+       "value": {
+        "cents": 200000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "value",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.elig_a",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.line6a_figured",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dependent.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 200000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.line5a",
+       "value": {
+        "cents": 438400,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_cap",
+       "value": {
+        "cents": 200000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "value",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.elig_a",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.elig_a",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dependent.8.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 200000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.line5a",
+       "value": {
+        "cents": 429200,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_cap",
+       "value": {
+        "cents": 200000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method"
+      },
+      "form": "Form 1099-R special cases (Forms 5329, 8606, 4972, 8915-F, Pub. 575 or 939)",
+      "gate": "retirement[r1].special",
+      "kind": "refusal",
+      "remedy": "This distribution needs a form or rule outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.elig_a",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.line6a_figured",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method"
+        },
+        "form": "Form 1099-R special cases (Forms 5329, 8606, 4972, 8915-F, Pub. 575 or 939)",
+        "gate": "retirement[r1].special",
+        "kind": "refusal",
+        "remedy": "This distribution needs a form or rule outside this tool."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8606.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.line5a",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_cap",
+       "value": {
+        "cents": 200000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 27, Exception 2; f1099r Box 7"
+      },
+      "form": "Form 8606 or another Form 1099-R code",
+      "gate": "retirement[r1].bad_code",
+      "kind": "refusal",
+      "remedy": "A Roth IRA distribution other than a qualified distribution (code Q), or a distribution code other than 7, 4, 2, G or Q, is outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.elig_a",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.line6a_figured",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 27, Exception 2; f1099r Box 7"
+        },
+        "form": "Form 8606 or another Form 1099-R code",
+        "gate": "retirement[r1].bad_code",
+        "kind": "refusal",
+        "remedy": "A Roth IRA distribution other than a qualified distribution (code Q), or a distribution code other than 7, 4, 2, G or Q, is outside this tool."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8959.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.line5a",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_cap",
+       "value": {
+        "cents": 200000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 27, Exception 2; f1099r Box 7"
+      },
+      "form": "Form 8606 or another Form 1099-R code",
+      "gate": "retirement[r1].bad_code",
+      "kind": "refusal",
+      "remedy": "A Roth IRA distribution other than a qualified distribution (code Q), or a distribution code other than 7, 4, 2, G or Q, is outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.elig_a",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.line6a_figured",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 27, Exception 2; f1099r Box 7"
+        },
+        "form": "Form 8606 or another Form 1099-R code",
+        "gate": "retirement[r1].bad_code",
+        "kind": "refusal",
+        "remedy": "A Roth IRA distribution other than a qualified distribution (code Q), or a distribution code other than 7, 4, 2, G or Q, is outside this tool."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.otjob.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 200000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.line5a",
+       "value": {
+        "cents": 429200,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_cap",
+       "value": {
+        "cents": 200000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method"
+      },
+      "form": "Form 1099-R special cases (Forms 5329, 8606, 4972, 8915-F, Pub. 575 or 939)",
+      "gate": "retirement[r1].special",
+      "kind": "refusal",
+      "remedy": "This distribution needs a form or rule outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.elig_a",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.line6a_figured",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method"
+        },
+        "form": "Form 1099-R special cases (Forms 5329, 8606, 4972, 8915-F, Pub. 575 or 939)",
+        "gate": "retirement[r1].special",
+        "kind": "refusal",
+        "remedy": "This distribution needs a form or rule outside this tool."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.refund.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 200000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.line5a",
+       "value": {
+        "cents": 355400,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_cap",
+       "value": {
+        "cents": 200000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "value",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.elig_a",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.line6a_figured",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.retirement.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.line5a",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_cap",
+       "value": {
+        "cents": 200000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method"
+      },
+      "form": "Form 1099-R special cases (Forms 5329, 8606, 4972, 8915-F, Pub. 575 or 939)",
+      "gate": "retirement[r1].special",
+      "kind": "refusal",
+      "remedy": "This distribution needs a form or rule outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.elig_a",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.line6a_figured",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method"
+        },
+        "form": "Form 1099-R special cases (Forms 5329, 8606, 4972, 8915-F, Pub. 575 or 939)",
+        "gate": "retirement[r1].special",
+        "kind": "refusal",
+        "remedy": "This distribution needs a form or rule outside this tool."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.s179.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "f8880",
+       "locator": "p. 2, What\u2019s New, \"See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about ABLE accounts\""
+      },
+      "form": "ABLE account contributions or distributions on Form 8880 (Pub. 907)",
+      "gate": "person[taxpayer].sav_able",
+      "kind": "refusal",
+      "remedy": "Contributions to an ABLE account by its designated beneficiary (line 1) and ABLE distributions (line 4) are outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.line5a",
+       "value": {
+        "cite": {
+         "doc": "f8880",
+         "locator": "p. 2, What\u2019s New, \"See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about ABLE accounts\""
+        },
+        "form": "ABLE account contributions or distributions on Form 8880 (Pub. 907)",
+        "gate": "person[taxpayer].sav_able",
+        "kind": "refusal",
+        "remedy": "Contributions to an ABLE account by its designated beneficiary (line 1) and ABLE distributions (line 4) are outside this tool."
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.elig_a",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.elig_a",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.sd.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 200000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.line5a",
+       "value": {
+        "cents": 2536700,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_cap",
+       "value": {
+        "cents": 200000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "value",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.elig_a",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.line6a_figured",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.sdtw.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 200000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.line5a",
+       "value": {
+        "cents": 1267600,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_cap",
+       "value": {
+        "cents": 200000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "value",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.elig_a",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.line6a_figured",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.sdtw.5",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "p560",
+       "locator": "pp. 8\u201311, 14\u201317, 38\u201340, chapters 2, 3 and 5"
+      },
+      "form": "Retirement plan contributions outside this tool",
+      "gate": "person[taxpayer].plan_screened",
+      "kind": "refusal",
+      "remedy": "These retirement contributions are outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.line5a",
+       "value": {
+        "cite": {
+         "doc": "p560",
+         "locator": "pp. 8\u201311, 14\u201317, 38\u201340, chapters 2, 3 and 5"
+        },
+        "form": "Retirement plan contributions outside this tool",
+        "gate": "person[taxpayer].plan_screened",
+        "kind": "refusal",
+        "remedy": "These retirement contributions are outside this tool."
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.elig_a",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.elig_a",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.clcw.4",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.line5a",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_cap",
+       "value": {
+        "cents": 200000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "project-unknown",
+     "project": {
+      "input": "retirement[r].code",
+      "kind": "unknown",
+      "reason": "no input supplied for retirement[r].code"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.elig_a",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.line6a_figured",
+       "value": {
+        "input": "retirement[r].code",
+        "kind": "unknown",
+        "reason": "no input supplied for retirement[r].code"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage10.ira.roth_code_unanswered",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].sav_prior_joint",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].sav_prior_joint"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.line5a",
+       "value": {
+        "input": "person[taxpayer].sav_prior_joint",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].sav_prior_joint"
+       }
+      },
+      {
+       "ref": "f8880.h_cap",
+       "value": {
+        "cents": 200000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.elig_a",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.line6a_figured",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "stage16.cleanup.f5695_small_wind",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "f8880",
+       "locator": "p. 2, What\u2019s New, \"See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about ABLE accounts\""
+      },
+      "form": "ABLE account contributions or distributions on Form 8880 (Pub. 907)",
+      "gate": "person[taxpayer].sav_able",
+      "kind": "refusal",
+      "remedy": "Contributions to an ABLE account by its designated beneficiary (line 1) and ABLE distributions (line 4) are outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.line5a",
+       "value": {
+        "cite": {
+         "doc": "f8880",
+         "locator": "p. 2, What\u2019s New, \"See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about ABLE accounts\""
+        },
+        "form": "ABLE account contributions or distributions on Form 8880 (Pub. 907)",
+        "gate": "person[taxpayer].sav_able",
+        "kind": "refusal",
+        "remedy": "Contributions to an ABLE account by its designated beneficiary (line 1) and ABLE distributions (line 4) are outside this tool."
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.elig_a",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.elig_a",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 152,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "f8880",
+       "locator": "p. 2, What\u2019s New, \"See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about ABLE accounts\""
+      },
+      "form": "ABLE account contributions or distributions on Form 8880 (Pub. 907)",
+      "gate": "person[taxpayer].sav_able",
+      "kind": "refusal",
+      "remedy": "Contributions to an ABLE account by its designated beneficiary (line 1) and ABLE distributions (line 4) are outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.line5a",
+       "value": {
+        "cite": {
+         "doc": "f8880",
+         "locator": "p. 2, What\u2019s New, \"See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about ABLE accounts\""
+        },
+        "form": "ABLE account contributions or distributions on Form 8880 (Pub. 907)",
+        "gate": "person[taxpayer].sav_able",
+        "kind": "refusal",
+        "remedy": "Contributions to an ABLE account by its designated beneficiary (line 1) and ABLE distributions (line 4) are outside this tool."
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.elig_a",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.elig_a",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 218,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    }
+   ]
   },
   {
+   "absent": 0,
+   "agree": 1616,
    "candidate": "f8880.line6b",
+   "compared": 1806,
+   "differ": 190,
    "handle": "6(b)",
+   "in_scope": 1784,
+   "in_scope_agree": 1613,
+   "kinds": {
+    "candidate-refuses": 13,
+    "candidate-unknown": 161,
+    "project-refuses": 6,
+    "value": 10
+   },
+   "kinds_by_return": {
+    "completed": {
+     "candidate-unknown": 2,
+     "value": 5
+    },
+    "incomplete": {
+     "candidate-unknown": 110
+    },
+    "refused": {
+     "candidate-refuses": 13,
+     "candidate-unknown": 49,
+     "project-refuses": 6,
+     "value": 5
+    }
+   },
    "open_at_triage": true,
    "project": "f8880.line6b",
+   "shown_when": null,
+   "sources": {
+    "fixture": 1306,
+    "generated": 500
+   },
    "status": "DISAGREE",
-   "triage": "candidate invalid"
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "cents": 200000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.line5b",
+       "value": {
+        "cents": 992600,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_cap",
+       "value": {
+        "cents": 200000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 27, Exception 2; f1099r Box 7"
+      },
+      "form": "Form 8606 or another Form 1099-R code",
+      "gate": "retirement[r2].bad_code",
+      "kind": "refusal",
+      "remedy": "A Roth IRA distribution other than a qualified distribution (code Q), or a distribution code other than 7, 4, 2, G or Q, is outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.elig_b",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.line6b_figured",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 27, Exception 2; f1099r Box 7"
+        },
+        "form": "Form 8606 or another Form 1099-R code",
+        "gate": "retirement[r2].bad_code",
+        "kind": "refusal",
+        "remedy": "A Roth IRA distribution other than a qualified distribution (code Q), or a distribution code other than 7, 4, 2, G or Q, is outside this tool."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.w2.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[sample].sav_able",
+      "kind": "unknown",
+      "reason": "no input supplied for person[sample].sav_able"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.line5b",
+       "value": {
+        "input": "person[sample].sav_able",
+        "kind": "unknown",
+        "reason": "no input supplied for person[sample].sav_able"
+       }
+      },
+      {
+       "ref": "f8880.h_cap",
+       "value": {
+        "cents": 200000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.elig_b",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.line6b_figured",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "classm.f8889.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "f8880",
+       "locator": "p. 2, What\u2019s New, \"See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about ABLE accounts\""
+      },
+      "form": "ABLE account contributions or distributions on Form 8880 (Pub. 907)",
+      "gate": "person[taxpayer].sav_able",
+      "kind": "refusal",
+      "remedy": "Contributions to an ABLE account by its designated beneficiary (line 1) and ABLE distributions (line 4) are outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.line5b",
+       "value": {
+        "cite": {
+         "doc": "f8880",
+         "locator": "p. 2, What\u2019s New, \"See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about ABLE accounts\""
+        },
+        "form": "ABLE account contributions or distributions on Form 8880 (Pub. 907)",
+        "gate": "person[taxpayer].sav_able",
+        "kind": "refusal",
+        "remedy": "Contributions to an ABLE account by its designated beneficiary (line 1) and ABLE distributions (line 4) are outside this tool."
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.elig_b",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.line6b_figured",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.sd.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 66500,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.line5b",
+       "value": {
+        "cents": 66500,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_cap",
+       "value": {
+        "cents": 200000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "value",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.elig_b",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.elig_b",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8880.4.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "f8880",
+       "locator": "p. 2, What\u2019s New, \"See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about ABLE accounts\""
+      },
+      "form": "ABLE account contributions or distributions on Form 8880 (Pub. 907)",
+      "gate": "person[taxpayer].sav_able",
+      "kind": "refusal",
+      "remedy": "Contributions to an ABLE account by its designated beneficiary (line 1) and ABLE distributions (line 4) are outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.line5b",
+       "value": {
+        "cite": {
+         "doc": "f8880",
+         "locator": "p. 2, What\u2019s New, \"See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about ABLE accounts\""
+        },
+        "form": "ABLE account contributions or distributions on Form 8880 (Pub. 907)",
+        "gate": "person[taxpayer].sav_able",
+        "kind": "refusal",
+        "remedy": "Contributions to an ABLE account by its designated beneficiary (line 1) and ABLE distributions (line 4) are outside this tool."
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.elig_b",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.line6b_figured",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dcprov.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 66500,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.line5b",
+       "value": {
+        "cents": 66500,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_cap",
+       "value": {
+        "cents": 200000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "value",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.elig_b",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.elig_b",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8880.4",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 200000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.line5b",
+       "value": {
+        "cents": 1382000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_cap",
+       "value": {
+        "cents": 200000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "value",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.elig_b",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.line6b_figured",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.ira.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.line5b",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_cap",
+       "value": {
+        "cents": 200000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 27, Exception 2; f1099r Box 7"
+      },
+      "form": "Form 8606 or another Form 1099-R code",
+      "gate": "retirement[r1].bad_code",
+      "kind": "refusal",
+      "remedy": "A Roth IRA distribution other than a qualified distribution (code Q), or a distribution code other than 7, 4, 2, G or Q, is outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.elig_b",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.line6b_figured",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 27, Exception 2; f1099r Box 7"
+        },
+        "form": "Form 8606 or another Form 1099-R code",
+        "gate": "retirement[r1].bad_code",
+        "kind": "refusal",
+        "remedy": "A Roth IRA distribution other than a qualified distribution (code Q), or a distribution code other than 7, 4, 2, G or Q, is outside this tool."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.otjob.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].sav_able",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].sav_able"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.line5b",
+       "value": {
+        "input": "person[taxpayer].sav_able",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].sav_able"
+       }
+      },
+      {
+       "ref": "f8880.h_cap",
+       "value": {
+        "cents": 200000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.elig_b",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.line6b_figured",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.sb.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "f8880",
+       "locator": "p. 2, What\u2019s New, \"See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about ABLE accounts\""
+      },
+      "form": "ABLE account contributions or distributions on Form 8880 (Pub. 907)",
+      "gate": "person[taxpayer].sav_able",
+      "kind": "refusal",
+      "remedy": "Contributions to an ABLE account by its designated beneficiary (line 1) and ABLE distributions (line 4) are outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.line5b",
+       "value": {
+        "cite": {
+         "doc": "f8880",
+         "locator": "p. 2, What\u2019s New, \"See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about ABLE accounts\""
+        },
+        "form": "ABLE account contributions or distributions on Form 8880 (Pub. 907)",
+        "gate": "person[taxpayer].sav_able",
+        "kind": "refusal",
+        "remedy": "Contributions to an ABLE account by its designated beneficiary (line 1) and ABLE distributions (line 4) are outside this tool."
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.elig_b",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.line6b_figured",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.sd.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "f8880",
+       "locator": "p. 2, What\u2019s New, \"See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about ABLE accounts\""
+      },
+      "form": "ABLE account contributions or distributions on Form 8880 (Pub. 907)",
+      "gate": "person[taxpayer].sav_able",
+      "kind": "refusal",
+      "remedy": "Contributions to an ABLE account by its designated beneficiary (line 1) and ABLE distributions (line 4) are outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.line5b",
+       "value": {
+        "cite": {
+         "doc": "f8880",
+         "locator": "p. 2, What\u2019s New, \"See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about ABLE accounts\""
+        },
+        "form": "ABLE account contributions or distributions on Form 8880 (Pub. 907)",
+        "gate": "person[taxpayer].sav_able",
+        "kind": "refusal",
+        "remedy": "Contributions to an ABLE account by its designated beneficiary (line 1) and ABLE distributions (line 4) are outside this tool."
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.elig_b",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.line6b_figured",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.sli.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].sav_able",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].sav_able"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.line5b",
+       "value": {
+        "input": "person[taxpayer].sav_able",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].sav_able"
+       }
+      },
+      {
+       "ref": "f8880.h_cap",
+       "value": {
+        "cents": 200000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.elig_b",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.line6b_figured",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.tax_on_amount.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 200000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.line5b",
+       "value": {
+        "cents": 457800,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_cap",
+       "value": {
+        "cents": 200000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "value",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.elig_b",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.line6b_figured",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.tcw.15",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 200000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.line5b",
+       "value": {
+        "cents": 992600,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_cap",
+       "value": {
+        "cents": 200000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method"
+      },
+      "form": "Form 1099-R special cases (Forms 5329, 8606, 4972, 8915-F, Pub. 575 or 939)",
+      "gate": "retirement[r1].special",
+      "kind": "refusal",
+      "remedy": "This distribution needs a form or rule outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.elig_b",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.line6b_figured",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method"
+        },
+        "form": "Form 1099-R special cases (Forms 5329, 8606, 4972, 8915-F, Pub. 575 or 939)",
+        "gate": "retirement[r1].special",
+        "kind": "refusal",
+        "remedy": "This distribution needs a form or rule outside this tool."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.w2.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[sample].sav_able",
+      "kind": "unknown",
+      "reason": "no input supplied for person[sample].sav_able"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.line5b",
+       "value": {
+        "input": "person[sample].sav_able",
+        "kind": "unknown",
+        "reason": "no input supplied for person[sample].sav_able"
+       }
+      },
+      {
+       "ref": "f8880.h_cap",
+       "value": {
+        "cents": 200000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.elig_b",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.line6b_figured",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "classm.f8889.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].sav_able",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].sav_able"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.line5b",
+       "value": {
+        "input": "person[taxpayer].sav_able",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].sav_able"
+       }
+      },
+      {
+       "ref": "f8880.h_cap",
+       "value": {
+        "cents": 200000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.elig_b",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.line6b_figured",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "table.band.first",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].sav_able",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].sav_able"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.line5b",
+       "value": {
+        "input": "person[taxpayer].sav_able",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].sav_able"
+       }
+      },
+      {
+       "ref": "f8880.h_cap",
+       "value": {
+        "cents": 200000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.elig_b",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.line6b_figured",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "table.band.mid",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 100000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.line5b",
+       "value": {
+        "cents": 100000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_cap",
+       "value": {
+        "cents": 200000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "value",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.elig_b",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.elig_b",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "stage15.f8880.s13",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 170000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.line5b",
+       "value": {
+        "cents": 170000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_cap",
+       "value": {
+        "cents": 200000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "value",
+     "project": {
+      "cents": 70000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.elig_b",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.line6b_figured",
+       "value": {
+        "cents": 70000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "stage15.f8880-2.b15",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "f8880",
+       "locator": "p. 2, What\u2019s New, \"See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about ABLE accounts\""
+      },
+      "form": "ABLE account contributions or distributions on Form 8880 (Pub. 907)",
+      "gate": "person[taxpayer].sav_able",
+      "kind": "refusal",
+      "remedy": "Contributions to an ABLE account by its designated beneficiary (line 1) and ABLE distributions (line 4) are outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.line5b",
+       "value": {
+        "cite": {
+         "doc": "f8880",
+         "locator": "p. 2, What\u2019s New, \"See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about ABLE accounts\""
+        },
+        "form": "ABLE account contributions or distributions on Form 8880 (Pub. 907)",
+        "gate": "person[taxpayer].sav_able",
+        "kind": "refusal",
+        "remedy": "Contributions to an ABLE account by its designated beneficiary (line 1) and ABLE distributions (line 4) are outside this tool."
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.elig_b",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.line6b_figured",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage15.refuse.person.sav_able",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "f8880",
+       "locator": "p. 2, What\u2019s New, \"See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about ABLE accounts\""
+      },
+      "form": "ABLE account contributions or distributions on Form 8880 (Pub. 907)",
+      "gate": "person[taxpayer].sav_able",
+      "kind": "refusal",
+      "remedy": "Contributions to an ABLE account by its designated beneficiary (line 1) and ABLE distributions (line 4) are outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.line5b",
+       "value": {
+        "cite": {
+         "doc": "f8880",
+         "locator": "p. 2, What\u2019s New, \"See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about ABLE accounts\""
+        },
+        "form": "ABLE account contributions or distributions on Form 8880 (Pub. 907)",
+        "gate": "person[taxpayer].sav_able",
+        "kind": "refusal",
+        "remedy": "Contributions to an ABLE account by its designated beneficiary (line 1) and ABLE distributions (line 4) are outside this tool."
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.elig_b",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.line6b_figured",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage16.sd.line17_no_skips_19",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.line5b",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_cap",
+       "value": {
+        "cents": 200000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 27, Exception 2; f1099r Box 7"
+      },
+      "form": "Form 8606 or another Form 1099-R code",
+      "gate": "retirement[r1].bad_code",
+      "kind": "refusal",
+      "remedy": "A Roth IRA distribution other than a qualified distribution (code Q), or a distribution code other than 7, 4, 2, G or Q, is outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.elig_b",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.line6b_figured",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 27, Exception 2; f1099r Box 7"
+        },
+        "form": "Form 8606 or another Form 1099-R code",
+        "gate": "retirement[r1].bad_code",
+        "kind": "refusal",
+        "remedy": "A Roth IRA distribution other than a qualified distribution (code Q), or a distribution code other than 7, 4, 2, G or Q, is outside this tool."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 262,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "cents": 35800,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.line5b",
+       "value": {
+        "cents": 35800,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_cap",
+       "value": {
+        "cents": 200000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 27, Exception 2; f1099r Box 7"
+      },
+      "form": "Form 8606 or another Form 1099-R code",
+      "gate": "retirement[r1].bad_code",
+      "kind": "refusal",
+      "remedy": "A Roth IRA distribution other than a qualified distribution (code Q), or a distribution code other than 7, 4, 2, G or Q, is outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.elig_b",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.line6b_figured",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 27, Exception 2; f1099r Box 7"
+        },
+        "form": "Form 8606 or another Form 1099-R code",
+        "gate": "retirement[r1].bad_code",
+        "kind": "refusal",
+        "remedy": "A Roth IRA distribution other than a qualified distribution (code Q), or a distribution code other than 7, 4, 2, G or Q, is outside this tool."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 332,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "cents": 200000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.line5b",
+       "value": {
+        "cents": 275581,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.h_cap",
+       "value": {
+        "cents": 200000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 27, Exception 2; f1099r Box 7"
+      },
+      "form": "Form 8606 or another Form 1099-R code",
+      "gate": "retirement[r1].bad_code",
+      "kind": "refusal",
+      "remedy": "A Roth IRA distribution other than a qualified distribution (code Q), or a distribution code other than 7, 4, 2, G or Q, is outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.elig_b",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.line6b_figured",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 27, Exception 2; f1099r Box 7"
+        },
+        "form": "Form 8606 or another Form 1099-R code",
+        "gate": "retirement[r1].bad_code",
+        "kind": "refusal",
+        "remedy": "A Roth IRA distribution other than a qualified distribution (code Q), or a distribution code other than 7, 4, 2, G or Q, is outside this tool."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 475,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    }
+   ]
   },
   {
-   "candidate": "f8880.line9",
-   "handle": "9",
-   "open_at_triage": true,
-   "project": "f8880.line9",
-   "status": "DISAGREE",
-   "triage": "candidate invalid"
-  },
-  {
+   "absent": 0,
+   "agree": 1120,
    "candidate": "f8880.line12",
+   "compared": 1806,
+   "differ": 686,
    "handle": "12",
+   "in_scope": 1121,
+   "in_scope_agree": 947,
+   "kinds": {
+    "candidate-refuses": 478,
+    "candidate-unknown": 171,
+    "project-refuses": 34,
+    "value": 3
+   },
+   "kinds_by_return": {
+    "completed": {
+     "candidate-unknown": 2,
+     "value": 3
+    },
+    "incomplete": {
+     "candidate-unknown": 138
+    },
+    "refused": {
+     "candidate-refuses": 478,
+     "candidate-unknown": 31,
+     "project-refuses": 34
+    }
+   },
    "open_at_triage": true,
    "project": "f8880.line12",
+   "shown_when": null,
+   "sources": {
+    "fixture": 1306,
+    "generated": 500
+   },
    "status": "DISAGREE",
-   "triage": "candidate invalid"
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "pp. 34\u201335, line 12e and Standard Deduction Chart"
+      },
+      "form": "Standard Deduction Worksheet for Dependents / dual-status rules",
+      "gate": "sa.dependent",
+      "kind": "refusal",
+      "remedy": "Dependent and dual-status standard deductions are outside this resident nondependent slice."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_any_ineligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.h_any_ineligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.h_smaller",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "pp. 34\u201335, line 12e and Standard Deduction Chart"
+        },
+        "form": "Standard Deduction Worksheet for Dependents / dual-status rules",
+        "gate": "sa.dependent",
+        "kind": "refusal",
+        "remedy": "Dependent and dual-status standard deductions are outside this resident nondependent slice."
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.can_take",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.can_take",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f4952.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i8283",
+       "locator": "pp. 1\u20133, Who Must File and Which Sections To Complete; f8283 Section A"
+      },
+      "form": "Form 8283 special treatment",
+      "gate": "gift[item_a].special",
+      "kind": "refusal",
+      "remedy": "This contribution requires unsupported appraisal or special-property treatment."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_any_ineligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.h_any_ineligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.h_smaller",
+       "value": {
+        "cite": {
+         "doc": "i8283",
+         "locator": "pp. 1\u20133, Who Must File and Which Sections To Complete; f8283 Section A"
+        },
+        "form": "Form 8283 special treatment",
+        "gate": "gift[item_a].special",
+        "kind": "refusal",
+        "remedy": "This contribution requires unsupported appraisal or special-property treatment."
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.can_take",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.can_take",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f4952.4.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_any_ineligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "f8880",
+       "locator": "p. 2, What\u2019s New, \"See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about ABLE accounts\""
+      },
+      "form": "ABLE account contributions or distributions on Form 8880 (Pub. 907)",
+      "gate": "person[taxpayer].sav_able",
+      "kind": "refusal",
+      "remedy": "Contributions to an ABLE account by its designated beneficiary (line 1) and ABLE distributions (line 4) are outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.can_take",
+       "value": {
+        "cite": {
+         "doc": "f8880",
+         "locator": "p. 2, What\u2019s New, \"See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about ABLE accounts\""
+        },
+        "form": "ABLE account contributions or distributions on Form 8880 (Pub. 907)",
+        "gate": "person[taxpayer].sav_able",
+        "kind": "refusal",
+        "remedy": "Contributions to an ABLE account by its designated beneficiary (line 1) and ABLE distributions (line 4) are outside this tool."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.sd.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i1040sb",
+       "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+      },
+      "form": "Schedule B special treatment / Form 8815",
+      "gate": "sb.unsupported",
+      "kind": "refusal",
+      "remedy": "Prepare the applicable adjustment or exclusion; this tool supports unadjusted taxable interest and ordinary dividends."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_any_ineligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.h_any_ineligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.h_smaller",
+       "value": {
+        "cite": {
+         "doc": "i1040sb",
+         "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+        },
+        "form": "Schedule B special treatment / Form 8815",
+        "gate": "sb.unsupported",
+        "kind": "refusal",
+        "remedy": "Prepare the applicable adjustment or exclusion; this tool supports unadjusted taxable interest and ordinary dividends."
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.can_take",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.can_take",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.clcw.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "f4952",
+       "locator": "pp. 1, 3\u20134, Investment Interest Expense Deduction"
+      },
+      "form": "Form 4952 alternative allocation",
+      "gate": "f4952.alternative_allocation",
+      "kind": "refusal",
+      "remedy": "Only the default capital-gain-first allocation is supported; alternative allocation and Form 1116 coordination are outside scope."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_any_ineligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.h_any_ineligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.h_smaller",
+       "value": {
+        "cite": {
+         "doc": "f4952",
+         "locator": "pp. 1, 3\u20134, Investment Interest Expense Deduction"
+        },
+        "form": "Form 4952 alternative allocation",
+        "gate": "f4952.alternative_allocation",
+        "kind": "refusal",
+        "remedy": "Only the default capital-gain-first allocation is supported; alternative allocation and Form 1116 coordination are outside scope."
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.can_take",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.can_take",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.clcw.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_any_ineligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "p560",
+       "locator": "pp. 8\u201311, 14\u201317, 38\u201340, chapters 2, 3 and 5"
+      },
+      "form": "Retirement plan contributions outside this tool",
+      "gate": "person[taxpayer].plan_screened",
+      "kind": "refusal",
+      "remedy": "These retirement contributions are outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.can_take",
+       "value": {
+        "cite": {
+         "doc": "p560",
+         "locator": "pp. 8\u201311, 14\u201317, 38\u201340, chapters 2, 3 and 5"
+        },
+        "form": "Retirement plan contributions outside this tool",
+        "gate": "person[taxpayer].plan_screened",
+        "kind": "refusal",
+        "remedy": "These retirement contributions are outside this tool."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.clcw.4.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "f1040",
+       "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19\u201320 and 27\u201331"
+      },
+      "form": "Forms 8814, 4972, 8615, 8621 or 8978, a section 962 election, or an education credit recapture",
+      "gate": "scope.other_line16",
+      "kind": "refusal",
+      "remedy": "Additional Form 1040 line 16 taxes are outside this proof of concept."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_any_ineligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.h_any_ineligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.h_smaller",
+       "value": {
+        "cite": {
+         "doc": "f1040",
+         "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19\u201320 and 27\u201331"
+        },
+        "form": "Forms 8814, 4972, 8615, 8621 or 8978, a section 962 election, or an education credit recapture",
+        "gate": "scope.other_line16",
+        "kind": "refusal",
+        "remedy": "Additional Form 1040 line 16 taxes are outside this proof of concept."
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.can_take",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.can_take",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.clcw26.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i1116",
+       "locator": "pp. 1\u20132, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax"
+      },
+      "form": "Form 1116",
+      "gate": "ftc.needs1116",
+      "kind": "refusal",
+      "remedy": "The small-tax election is unavailable or not chosen. Form 1116 is deferred, not dropped; prepare it separately."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_any_ineligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.h_any_ineligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.h_smaller",
+       "value": {
+        "cite": {
+         "doc": "i1116",
+         "locator": "pp. 1\u20132, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax"
+        },
+        "form": "Form 1116",
+        "gate": "ftc.needs1116",
+        "kind": "refusal",
+        "remedy": "The small-tax election is unavailable or not chosen. Form 1116 is deferred, not dropped; prepare it separately."
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.can_take",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.can_take",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dependent.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_any_ineligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "f8880",
+       "locator": "Form 8880 (2025), line 8, \"* See Pub. 590-A, Contributions to Individual Retirement Arrangements, for the amount to enter if you claim any exclusion or deduction for foreign earned income, foreign housing, income from Puerto Rico, or income from American Samoa\""
+      },
+      "form": "Form 8880 line 8 refigured for excluded income (Pub. 590-A)",
+      "gate": "sa.excluded_income",
+      "kind": "refusal",
+      "remedy": "With an exclusion or deduction for foreign earned income or foreign housing, or income from Puerto Rico or American Samoa, line 8 is figured by Pub. 590-A, which this tool does not apply."
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.can_take",
+       "value": {
+        "cite": {
+         "doc": "f8880",
+         "locator": "Form 8880 (2025), line 8, \"* See Pub. 590-A, Contributions to Individual Retirement Arrangements, for the amount to enter if you claim any exclusion or deduction for foreign earned income, foreign housing, income from Puerto Rico, or income from American Samoa\""
+        },
+        "form": "Form 8880 line 8 refigured for excluded income (Pub. 590-A)",
+        "gate": "sa.excluded_income",
+        "kind": "refusal",
+        "remedy": "With an exclusion or deduction for foreign earned income or foreign housing, or income from Puerto Rico or American Samoa, line 8 is figured by Pub. 590-A, which this tool does not apply."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dependent.8.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "s1a.tips",
+      "kind": "unknown",
+      "reason": "no input supplied for s1a.tips"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_any_ineligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.h_any_ineligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.h_smaller",
+       "value": {
+        "input": "s1a.tips",
+        "kind": "unknown",
+        "reason": "no input supplied for s1a.tips"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.can_take",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.can_take",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.sb.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].sav_born",
+      "kind": "unknown",
+      "lowerBound": 0,
+      "reason": "no input supplied for person[taxpayer].sav_born"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_any_ineligible",
+       "value": {
+        "input": "person[taxpayer].sav_born",
+        "kind": "unknown",
+        "lowerBound": 0,
+        "reason": "no input supplied for person[taxpayer].sav_born"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.can_take",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.can_take",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.sb.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_any_ineligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "f8880",
+       "locator": "p. 2, What\u2019s New, \"See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about ABLE accounts\""
+      },
+      "form": "ABLE account contributions or distributions on Form 8880 (Pub. 907)",
+      "gate": "person[taxpayer].sav_able",
+      "kind": "refusal",
+      "remedy": "Contributions to an ABLE account by its designated beneficiary (line 1) and ABLE distributions (line 4) are outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.can_take",
+       "value": {
+        "cite": {
+         "doc": "f8880",
+         "locator": "p. 2, What\u2019s New, \"See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about ABLE accounts\""
+        },
+        "form": "ABLE account contributions or distributions on Form 8880 (Pub. 907)",
+        "gate": "person[taxpayer].sav_able",
+        "kind": "refusal",
+        "remedy": "Contributions to an ABLE account by its designated beneficiary (line 1) and ABLE distributions (line 4) are outside this tool."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.sd.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].sav_born",
+      "kind": "unknown",
+      "lowerBound": 0,
+      "reason": "no input supplied for person[taxpayer].sav_born"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_any_ineligible",
+       "value": {
+        "input": "person[taxpayer].sav_born",
+        "kind": "unknown",
+        "lowerBound": 0,
+        "reason": "no input supplied for person[taxpayer].sav_born"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1116",
+       "locator": "pp. 1\u20132, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax"
+      },
+      "form": "Form 1116",
+      "gate": "ftc.needs1116",
+      "kind": "refusal",
+      "remedy": "The small-tax election is unavailable or not chosen. Form 1116 is deferred, not dropped; prepare it separately."
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.can_take",
+       "value": {
+        "cite": {
+         "doc": "i1116",
+         "locator": "pp. 1\u20132, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax"
+        },
+        "form": "Form 1116",
+        "gate": "ftc.needs1116",
+        "kind": "refusal",
+        "remedy": "The small-tax election is unavailable or not chosen. Form 1116 is deferred, not dropped; prepare it separately."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.tax_on_amount.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_any_ineligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "f8880",
+       "locator": "Form 8880 (2025), line 8, \"* See Pub. 590-A, Contributions to Individual Retirement Arrangements, for the amount to enter if you claim any exclusion or deduction for foreign earned income, foreign housing, income from Puerto Rico, or income from American Samoa\""
+      },
+      "form": "Form 8880 line 8 refigured for excluded income (Pub. 590-A)",
+      "gate": "sa.excluded_income",
+      "kind": "refusal",
+      "remedy": "With an exclusion or deduction for foreign earned income or foreign housing, or income from Puerto Rico or American Samoa, line 8 is figured by Pub. 590-A, which this tool does not apply."
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.can_take",
+       "value": {
+        "cite": {
+         "doc": "f8880",
+         "locator": "Form 8880 (2025), line 8, \"* See Pub. 590-A, Contributions to Individual Retirement Arrangements, for the amount to enter if you claim any exclusion or deduction for foreign earned income, foreign housing, income from Puerto Rico, or income from American Samoa\""
+        },
+        "form": "Form 8880 line 8 refigured for excluded income (Pub. 590-A)",
+        "gate": "sa.excluded_income",
+        "kind": "refusal",
+        "remedy": "With an exclusion or deduction for foreign earned income or foreign housing, or income from Puerto Rico or American Samoa, line 8 is figured by Pub. 590-A, which this tool does not apply."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dependent.8",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].sav_born",
+      "kind": "unknown",
+      "lowerBound": 0,
+      "reason": "no input supplied for person[taxpayer].sav_born"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_any_ineligible",
+       "value": {
+        "input": "person[taxpayer].sav_born",
+        "kind": "unknown",
+        "lowerBound": 0,
+        "reason": "no input supplied for person[taxpayer].sav_born"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.can_take",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.can_take",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "table.band.mid",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].sav_born",
+      "kind": "unknown",
+      "lowerBound": 0,
+      "reason": "no input supplied for person[taxpayer].sav_born"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_any_ineligible",
+       "value": {
+        "input": "person[taxpayer].sav_born",
+        "kind": "unknown",
+        "lowerBound": 0,
+        "reason": "no input supplied for person[taxpayer].sav_born"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.can_take",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.can_take",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "table.band.last",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].sav_born",
+      "kind": "unknown",
+      "lowerBound": 0,
+      "reason": "no input supplied for person[taxpayer].sav_born"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_any_ineligible",
+       "value": {
+        "input": "person[taxpayer].sav_born",
+        "kind": "unknown",
+        "lowerBound": 0,
+        "reason": "no input supplied for person[taxpayer].sav_born"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.can_take",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.can_take",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "switch.below",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].sav_born",
+      "kind": "unknown",
+      "lowerBound": 0,
+      "reason": "no input supplied for person[taxpayer].sav_born"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_any_ineligible",
+       "value": {
+        "input": "person[taxpayer].sav_born",
+        "kind": "unknown",
+        "lowerBound": 0,
+        "reason": "no input supplied for person[taxpayer].sav_born"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.can_take",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.can_take",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "switch.exact",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 50000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_any_ineligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.h_any_ineligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.h_smaller",
+       "value": {
+        "cents": 50000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "value",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.can_take",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.can_take",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "stage15.f8880.s1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_any_ineligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "value",
+     "project": {
+      "cents": 15100,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.can_take",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.line12_figured",
+       "value": {
+        "cents": 15100,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "stage15.f8880.s13",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 145300,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_any_ineligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.h_any_ineligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.h_smaller",
+       "value": {
+        "cents": 145300,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "value",
+     "project": {
+      "cents": 60000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.can_take",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.line12_figured",
+       "value": {
+        "cents": 60000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "stage15.f8880-2.b15",
+      "kind": "fixture"
+     }
+    }
+   ]
   }
  ],
- "log_sha256_at_triage": "487e08cd3892823ac871d033ed848c0dfcdc1bdd0988a8b02aef198fd22d86e9",
- "policy": "executable-triage-v1",
- "response_sha256": "6a03d5105b601c899e632cf7e072a1cac73a72211787b838aeaba15151c4370b",
+ "log_sha256_at_triage": "abb1dca435d690bf0d889ba1eb33b40441f40e92183a73f6ba05304eeb9ce9c8",
+ "policy": "executable-triage-v2",
+ "response_sha256": "340af56519a731e08372f69ac7ce86b9c31e7ba479ae35861be21834a7e8355f",
  "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
- "state": "invalid",
- "subject_sha256": "e072d64a1f57ba4b7b9ff4357a47e8f77b605d32fd4e87591e41d73b151e2fb9"
+ "state": "evaluated",
+ "subject_sha256": "eb110b19d4f28dc665cabb42729c389cd81934a87b4652d3e9323de1b8aa8f1a"
 }

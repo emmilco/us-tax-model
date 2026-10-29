@@ -11,6 +11,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1 line 1 and its worksheet, the Tax Table) and p525, by two independent agents that did not see the encoding and agreed on every value; recorded after comparison. Facts: On your 2024 return you took the standard deduction. 2024 state income tax refund $1,000. Lines the worksheet does not reach, and (where a person was born before January 2, 1960) the 2025 lines that depend on age, are not asserted. Working (predictor A): 2024 standard deduction: i1040gi p.89 TIP (a) 'None of your refund is taxable if ... you didn't itemize'; Pub 525 Example 29 same. Worksheet not used; Sch 1 line 1 = 0. | 2025: wages 50000 + Sch1 line 10 0 = f1040 line 9/11 50000; minus std deduction 15750 = line 15 34250; Tax Table (Single) row 34250-34300 = 3875 = line 16; line 17 = 0 so line 18 = 3875. Sources: i1040gi p.89 (Sch 1 line 1 TIP and Exception), p.90 (State and Local Income Tax Refund Worksheet); 2025 std deduction i1040gi p.~35 worksheet line 3 / What's New ($15,750 single, $31,500 MFJ); Tax Table i1040gi (Single/MFJ columns); f1040s1 line 10 = combine lines 1-7 and 9 -> f1040 line 8; f1040 line 18 = 16 + 17 (17 = 0).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -205,6 +206,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1 line 1 and its worksheet, the Tax Table) and p525, by two independent agents that did not see the encoding and agreed on every value; recorded after comparison. Facts: On your 2024 return you itemized and deducted state and local general sales taxes instead of income taxes. 2024 state income tax refund $1,500. Lines the worksheet does not reach, and (where a person was born before January 2, 1960) the 2025 lines that depend on age, are not asserted. Working (predictor A): 2024 deducted general sales taxes: i1040gi p.89 TIP (b) 'None of your refund is taxable if ... elected to deduct state and local general sales taxes'; Pub 525 Example 27 analog. Worksheet not used; Sch 1 line 1 = 0. | 2025: wages 50000 + Sch1 line 10 0 = f1040 line 9/11 50000; minus std deduction 15750 = line 15 34250; Tax Table (Single) row 34250-34300 = 3875 = line 16; line 17 = 0 so line 18 = 3875. Sources: i1040gi p.89 (Sch 1 line 1 TIP and Exception), p.90 (State and Local Income Tax Refund Worksheet); 2025 std deduction i1040gi p.~35 worksheet line 3 / What's New ($15,750 single, $31,500 MFJ); Tax Table i1040gi (Single/MFJ columns); f1040s1 line 10 = combine lines 1-7 and 9 -> f1040 line 8; f1040 line 18 = 16 + 17 (17 = 0).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -399,6 +401,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1 line 1 and its worksheet, the Tax Table) and p525, by two independent agents that did not see the encoding and agreed on every value; recorded after comparison. Facts: 2024: single; Schedule A line 5d $9,000 and line 5e $9,000; Schedule A line 17 $20,000; no 2024 checkboxes. Refund $3,000. Lines the worksheet does not reach, and (where a person was born before January 2, 1960) the 2025 lines that depend on age, are not asserted. Working (predictor A): L1 = refund 3,000 capped at 2024 Sch A 5d 9,000 -> 3,000. L2: is 5d 9,000 more than 5e 9,000? No -> enter L1 on L3 = 3,000 (L2 left blank). L4 = 20,000. L5 single = 14,600. L6 no boxes = 0. L7 = 14,600. L8: 14,600 < 20,000 yes -> 5,400. L9 = smaller of 3,000 / 5,400 = 3,000. | 2025: wages 50000 + Sch1 line 10 3000 = f1040 line 9/11 53000; minus std deduction 15750 = line 15 37250; Tax Table (Single) row 37250-37300 = 4235 = line 16; line 17 = 0 so line 18 = 4235. Sources: i1040gi p.89 (Sch 1 line 1 TIP and Exception), p.90 (State and Local Income Tax Refund Worksheet); 2025 std deduction i1040gi p.~35 worksheet line 3 / What's New ($15,750 single, $31,500 MFJ); Tax Table i1040gi (Single/MFJ columns); f1040s1 line 10 = combine lines 1-7 and 9 -> f1040 line 8; f1040 line 18 = 16 + 17 (17 = 0).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -625,6 +628,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1 line 1 and its worksheet, the Tax Table) and p525, by two independent agents that did not see the encoding and agreed on every value; recorded after comparison. Facts: As F3, but line 17 is $15,000 and you were born before January 2, 1960. Lines the worksheet does not reach, and (where a person was born before January 2, 1960) the 2025 lines that depend on age, are not asserted. Working (predictor A): L1 = 3,000 (cap 9,000). L2 No branch -> L3 = 3,000. L4 = 15,000. L5 single 14,600. L6 one box (born before 1/2/1960) x 1,950 (single) = 1,950. L7 = 16,550. L8: is 16,550 less than 15,000? No -> STOP, none taxable. Sch 1 line 1 = 0. | 2025: wages 50000 + Sch1 line 10 0 = f1040 line 9/11 50000; minus std deduction 15750 = line 15 34250; Tax Table (Single) row 34250-34300 = 3875 = line 16; line 17 = 0 so line 18 = 3875. Sources: i1040gi p.89 (Sch 1 line 1 TIP and Exception), p.90 (State and Local Income Tax Refund Worksheet); 2025 std deduction i1040gi p.~35 worksheet line 3 / What's New ($15,750 single, $31,500 MFJ); Tax Table i1040gi (Single/MFJ columns); f1040s1 line 10 = combine lines 1-7 and 9 -> f1040 line 8; f1040 line 18 = 16 + 17 (17 = 0).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -831,6 +835,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1 line 1 and its worksheet, the Tax Table) and p525, by two independent agents that did not see the encoding and agreed on every value; recorded after comparison. Facts: As F3, but line 17 is $17,000 and you were born before January 2, 1960. Lines the worksheet does not reach, and (where a person was born before January 2, 1960) the 2025 lines that depend on age, are not asserted. Working (predictor A): L1 = 3,000. L2 No -> L3 = 3,000. L4 = 17,000. L5 14,600. L6 1 x 1,950 = 1,950. L7 = 16,550. L8 = 17,000 - 16,550 = 450. L9 = min(3,000, 450) = 450. | 2025: wages 50000 + Sch1 line 10 450 = f1040 line 9/11 50450; minus std deduction 15750 = line 15 34700; Tax Table (Single) row 34700-34750 = 3929 = line 16; line 17 = 0 so line 18 = 3929. Sources: i1040gi p.89 (Sch 1 line 1 TIP and Exception), p.90 (State and Local Income Tax Refund Worksheet); 2025 std deduction i1040gi p.~35 worksheet line 3 / What's New ($15,750 single, $31,500 MFJ); Tax Table i1040gi (Single/MFJ columns); f1040s1 line 10 = combine lines 1-7 and 9 -> f1040 line 8; f1040 line 18 = 16 + 17 (17 = 0).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -1045,6 +1050,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1 line 1 and its worksheet, the Tax Table) and p525, by two independent agents that did not see the encoding and agreed on every value; recorded after comparison. Facts: 2025 married filing jointly (you wages $50,000, spouse none). 2024: married filing jointly; line 5d $12,000, line 5e $10,000, line 17 $40,000; your spouse was born before January 2, 1960. Refund $3,000. Lines the worksheet does not reach, and (where a person was born before January 2, 1960) the 2025 lines that depend on age, are not asserted. Working (predictor A): L1 = 3,000 (cap 5d 12,000). L2: 5d 12,000 > 5e 10,000 Yes -> 12,000 - 10,000 = 2,000; is L1 3,000 > L2 2,000? Yes -> L3 = 1,000. L4 = 40,000. L5 MFJ = 29,200. L6 one box (spouse born before 1/2/1960) x 1,550 (2024 status MFJ, not single/HOH) = 1,550. L7 = 30,750. L8 = 9,250. L9 = min(1,000, 9,250) = 1,000. | 2025: wages 50000 + Sch1 line 10 1000 = f1040 line 9/11 51000; minus std deduction 31500 = line 15 19500; Tax Table (MFJ) row 19500-19550 = 1953 = line 16; line 17 = 0 so line 18 = 1953. Sources: i1040gi p.89 (Sch 1 line 1 TIP and Exception), p.90 (State and Local Income Tax Refund Worksheet); 2025 std deduction i1040gi p.~35 worksheet line 3 / What's New ($15,750 single, $31,500 MFJ); Tax Table i1040gi (Single/MFJ columns); f1040s1 line 10 = combine lines 1-7 and 9 -> f1040 line 8; f1040 line 18 = 16 + 17 (17 = 0).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -1310,6 +1316,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1 line 1 and its worksheet, the Tax Table) and p525, by two independent agents that did not see the encoding and agreed on every value; recorded after comparison. Facts: 2024: single; line 5d $15,000, line 5e $10,000, line 17 $30,000. Refund $3,000. Lines the worksheet does not reach, and (where a person was born before January 2, 1960) the 2025 lines that depend on age, are not asserted. Working (predictor A): L1 = 3,000 (cap 15,000). L2: 15,000 > 10,000 Yes -> 5,000; is L1 3,000 > 5,000? No -> STOP, none taxable. Sch 1 line 1 = 0. | 2025: wages 50000 + Sch1 line 10 0 = f1040 line 9/11 50000; minus std deduction 15750 = line 15 34250; Tax Table (Single) row 34250-34300 = 3875 = line 16; line 17 = 0 so line 18 = 3875. Sources: i1040gi p.89 (Sch 1 line 1 TIP and Exception), p.90 (State and Local Income Tax Refund Worksheet); 2025 std deduction i1040gi p.~35 worksheet line 3 / What's New ($15,750 single, $31,500 MFJ); Tax Table i1040gi (Single/MFJ columns); f1040s1 line 10 = combine lines 1-7 and 9 -> f1040 line 8; f1040 line 18 = 16 + 17 (17 = 0).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -1512,6 +1519,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1 line 1 and its worksheet, the Tax Table) and p525, by two independent agents that did not see the encoding and agreed on every value; recorded after comparison. Facts: 2024: single; line 5d $4,000, line 5e $4,000, line 17 $30,000. Refund $5,000. Lines the worksheet does not reach, and (where a person was born before January 2, 1960) the 2025 lines that depend on age, are not asserted. Working (predictor A): L1 = refund 5,000 capped at 2024 5d 4,000 -> 4,000. L2: 4,000 > 4,000? No -> L3 = 4,000. L4 = 30,000. L5 14,600. L6 0. L7 14,600. L8 = 15,400. L9 = min(4,000, 15,400) = 4,000. | 2025: wages 50000 + Sch1 line 10 4000 = f1040 line 9/11 54000; minus std deduction 15750 = line 15 38250; Tax Table (Single) row 38250-38300 = 4355 = line 16; line 17 = 0 so line 18 = 4355. Sources: i1040gi p.89 (Sch 1 line 1 TIP and Exception), p.90 (State and Local Income Tax Refund Worksheet); 2025 std deduction i1040gi p.~35 worksheet line 3 / What's New ($15,750 single, $31,500 MFJ); Tax Table i1040gi (Single/MFJ columns); f1040s1 line 10 = combine lines 1-7 and 9 -> f1040 line 8; f1040 line 18 = 16 + 17 (17 = 0).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -1738,6 +1746,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1 line 1 and its worksheet, the Tax Table) and p525, by two independent agents that did not see the encoding and agreed on every value; recorded after comparison. Facts: 2024: head of household; you were born before January 2, 1960 and are blind; line 5d $8,000, line 5e $8,000, line 17 $28,000. Refund $3,000. Lines the worksheet does not reach, and (where a person was born before January 2, 1960) the 2025 lines that depend on age, are not asserted. Working (predictor A): L1 = 3,000 (cap 8,000). L2 No (8,000 not > 8,000) -> L3 = 3,000. L4 = 28,000. L5 HOH = 21,900. L6 two boxes (born before 1/2/1960; blind) x 1,950 (HOH) = 3,900. L7 = 25,800. L8 = 2,200. L9 = min(3,000, 2,200) = 2,200. 2025 return single per scenario default. | 2025: wages 50000 + Sch1 line 10 2200 = f1040 line 9/11 52200; minus std deduction 15750 = line 15 36450; Tax Table (Single) row 36450-36500 = 4139 = line 16; line 17 = 0 so line 18 = 4139. Sources: i1040gi p.89 (Sch 1 line 1 TIP and Exception), p.90 (State and Local Income Tax Refund Worksheet); 2025 std deduction i1040gi p.~35 worksheet line 3 / What's New ($15,750 single, $31,500 MFJ); Tax Table i1040gi (Single/MFJ columns); f1040s1 line 10 = combine lines 1-7 and 9 -> f1040 line 8; f1040 line 18 = 16 + 17 (17 = 0).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -1952,6 +1961,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1 line 1 and its worksheet, the Tax Table) and p525, by two independent agents that did not see the encoding and agreed on every value; recorded after comparison. Facts: 2024: qualifying surviving spouse; line 5d $6,000, line 5e $6,000, line 17 $30,000. Refund $2,000. Lines the worksheet does not reach, and (where a person was born before January 2, 1960) the 2025 lines that depend on age, are not asserted. Working (predictor A): L1 = 2,000 (cap 6,000). L2 No -> L3 = 2,000. L4 = 30,000. L5 QSS = 29,200. L6 0. L7 29,200. L8 = 800. L9 = min(2,000, 800) = 800. 2025 return single per scenario default. | 2025: wages 50000 + Sch1 line 10 800 = f1040 line 9/11 50800; minus std deduction 15750 = line 15 35050; Tax Table (Single) row 35050-35100 = 3971 = line 16; line 17 = 0 so line 18 = 3971. Sources: i1040gi p.89 (Sch 1 line 1 TIP and Exception), p.90 (State and Local Income Tax Refund Worksheet); 2025 std deduction i1040gi p.~35 worksheet line 3 / What's New ($15,750 single, $31,500 MFJ); Tax Table i1040gi (Single/MFJ columns); f1040s1 line 10 = combine lines 1-7 and 9 -> f1040 line 8; f1040 line 18 = 16 + 17 (17 = 0).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -2183,6 +2193,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (IRA Deduction Worksheet, Social Security Benefits Worksheet, Tax Table), p590a, f8606, i8606 and f8880, by two independent agents that did not see the encoding; recorded after comparison. Facts: Married filing jointly, both aged 39. You are covered by a plan at work; wages $66,000. Your spouse is not covered; wages $51,500. Taxable interest $9,000. Each of you contributes $7,000 to a traditional IRA. The two predictors differed here only on rounding: Pub. 590-A Example 1 prints $6,825, but its own Worksheet 1-2 line 4 (\"If the result isn't a multiple of $10, round it to the next highest multiple of $10\") and the i1040gi IRA Deduction Worksheet line 7 (\"increase it to the next multiple of $10\") give $6,830; the expected values follow the printed rule (predictor B), and the example's figure is an open owner question. Working (predictor B): 1040 line 9 = 66,000+51,500+9,000 = 126,500. WS (i1040gi p.97): 2a 146,000 (covered, MFJ); 2b 246,000 (not covered). 3 = 126,500; 4 = 0; 5 = 126,500 both. 6a = 19,500 (<20,000, covered column -> line 7); 6b = 119,500 (>=10,000, uncovered column -> 7b = 7,000). 7a = 19,500 x 0.35 = 6,825 -> next multiple of $10 = 6,830 (p.98 line 7). 8 = 117,500 wages; 9 = 0; 10 = 117,500. 11a = 11b = 7,000. 12a = min(6,830,117,500,7,000) = 6,830; 12b = 7,000. s1 line 20 = 13,830 = line 26. Form 8606 (you): line 1 = 7,000 - 6,830 = 170; line 2 = 0; line 3 = 170; no distribution/conversion -> line 14 = 170. AGI = 126,500 - 13,830 = 112,670. Std ded MFJ 31,500. Line 15 = 81,170. Tax Table MFJ 81,150-81,200 = 9,264. Line 17 = 0 so line 18 = 9,264. Saver's credit: AGI > 79,000, not available.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -2515,6 +2526,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (IRA Deduction Worksheet, Social Security Benefits Worksheet, Tax Table), p590a, f8606, i8606 and f8880, by two independent agents that did not see the encoding; recorded after comparison. Facts: Single, aged 40, covered by a plan at work. Wages $72,000 and taxable interest $18,000. Traditional IRA contribution $7,000. Working (predictor B): Line 9 = 72,000+18,000 = 90,000. WS 2a = 89,000 (single); 3 = 90,000; 4 = 0; 5 = 90,000. Line 6: 90,000 is not less than 89,000 -> STOP, none deductible (p.97). Deduction 0. Form 8606 line 1 = 7,000, 2 = 0, 3 = 7,000, 14 = 7,000. AGI 90,000; std 15,750; taxable 74,250; Tax Table single 74,250-74,300 = 11,255. Saver's credit unavailable (AGI > 39,500).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -2745,6 +2757,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (IRA Deduction Worksheet, Social Security Benefits Worksheet, Tax Table), p590a, f8606, i8606 and f8880, by two independent agents that did not see the encoding; recorded after comparison. Facts: Single, aged 40, covered. Wages $85,000. Traditional IRA contribution $7,000. Working (predictor B): 2a 89,000; 3 = 85,000; 5 = 85,000; 6 = 4,000 (<10,000 -> line 7). 7 = 4,000 x 0.70 = 2,800 (multiple of 10, >=200). 8 = 85,000; 10 = 85,000; 11 = 7,000; 12 = 2,800. Nondeductible 4,200 -> 8606 lines 1,3,14 = 4,200. AGI 82,200; taxable 66,450; Tax Table single 66,450-66,500 = 9,539.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -2995,6 +3008,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (IRA Deduction Worksheet, Social Security Benefits Worksheet, Tax Table), p590a, f8606, i8606 and f8880, by two independent agents that did not see the encoding; recorded after comparison. Facts: Single, aged 40, covered. Wages $81,234.56. Traditional IRA contribution $7,000. Working (predictor B): 5 = 81,234.56; 6 = 89,000 - 81,234.56 = 7,765.44; 7 = x0.70 = 5,435.808 -> next multiple of $10 = 5,440. 12 = min(5,440, 81,234.56, 7,000) = 5,440. Nondeductible 1,560. AGI 75,794.56; taxable 60,044.56; Tax Table single 60,000-60,050 = 8,120.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -3245,6 +3259,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (IRA Deduction Worksheet, Social Security Benefits Worksheet, Tax Table), p590a, f8606, i8606 and f8880, by two independent agents that did not see the encoding; recorded after comparison. Facts: Single, aged 55, covered. Wages $88,800. Traditional IRA contribution $8,000. Working (predictor B): 6 = 89,000 - 88,800 = 200; age 55 -> 80%: 160, less than $200 -> enter 200 (p.98 line 7). 12 = min(200, 88,800, 8,000) = 200. Nondeductible 7,800. AGI 88,600; taxable 72,850; Tax Table single 72,850-72,900 = 10,947.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -3495,6 +3510,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (IRA Deduction Worksheet, Social Security Benefits Worksheet, Tax Table), p590a, f8606, i8606 and f8880, by two independent agents that did not see the encoding; recorded after comparison. Facts: Single, aged 30, not covered. Wages $5,000. Traditional IRA contribution $4,000. Working (predictor B): 1a No -> skip 2-6, 7a = 7,000 (under 50). 8 = 5,000; 10 = 5,000; 11 = 4,000; 12 = 4,000. AGI 1,000; std 15,750; taxable 0; tax 0. Form 8880: 1 = 4,000 ... 6 = 2,000, 7 = 2,000, 8 = 1,000, 9 = 0.5, 10 = 1,000; CLW (f8880 p.2): 1 = line 18 = 0, 2 = 0, 3 = 0 -> stop, no credit. s3 line 4 = 0.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -3778,6 +3794,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (IRA Deduction Worksheet, Social Security Benefits Worksheet, Tax Table), p590a, f8606, i8606 and f8880, by two independent agents that did not see the encoding; recorded after comparison. Facts: Married filing jointly, neither covered. You: aged 52, wages $60,000, traditional IRA $8,000. Spouse: aged 40, wages $40,000, traditional IRA $7,000. Working (predictor B): Neither covered -> skip 2-6; 7a = 8,000 (age 52), 7b = 7,000. 8 = 100,000; 10 = 100,000; 12a 8,000, 12b 7,000; s1 line 20 = 15,000. AGI 85,000; std 31,500; taxable 53,500; Tax Table MFJ 53,500-53,550 = 5,946. Saver's credit unavailable (AGI 85,000 > 79,000).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -4066,6 +4083,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (IRA Deduction Worksheet, Social Security Benefits Worksheet, Tax Table), p590a, f8606, i8606 and f8880, by two independent agents that did not see the encoding; recorded after comparison. Facts: Married filing jointly, both covered. You: wages $70,000, traditional IRA $7,000. Spouse: wages $60,000, traditional IRA $7,000. Both under 50. Working (predictor B): 2a = 2b = 146,000; 3 = 130,000; 5 = 130,000 both; 6 = 16,000 each (<20,000 -> line 7); 7 = 16,000 x 0.35 = 5,600 each. 8 = 130,000; 10 = 130,000; 12a = 12b = 5,600; s1 line 20 = 11,200. Each spouse files 8606: 1 = 1,400, 3 = 1,400, 14 = 1,400. AGI 118,800; std 31,500; taxable 87,300; Tax Table MFJ 87,300-87,350 = 10,002.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -4410,6 +4428,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (IRA Deduction Worksheet, Social Security Benefits Worksheet, Tax Table), p590a, f8606, i8606 and f8880, by two independent agents that did not see the encoding; recorded after comparison. Facts: Single, aged 30, not covered. Wages $30,000. Traditional IRA contribution $5,000. (Saver's credit.) Working (predictor B): Not covered: 7a = 7,000; 8 = 30,000; 10 = 30,000; 11 = 5,000; 12 = 5,000. AGI 25,000; taxable 9,250; Tax Table single 9,250-9,300 = 928. 8880: line 6 = min(5,000, 2,000) = 2,000; 7 = 2,000; 8 = 25,000 (over 23,750 not over 25,500, single -> 0.2); 10 = 400; CLW 1 = 928, 2 = 0, 3 = 928; 12 = min(400, 928) = 400 -> s3 line 4.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -4693,6 +4712,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (IRA Deduction Worksheet, Social Security Benefits Worksheet, Tax Table), p590a, f8606, i8606 and f8880, by two independent agents that did not see the encoding; recorded after comparison. Facts: Single, aged 66 (born 1959), not covered. Wages $20,000; Social Security benefits (Form SSA-1099 box 5) $12,000. Traditional IRA contribution $3,000. Working (predictor B): Not covered, so the SSB Worksheet exception (i1040gi p.31: traditional IRA contribution AND covered by a plan -> Pub 590-A) does not apply. IRA WS: 1a No; age 66 -> 50 or older -> 7a = 8,000; 8 = 20,000; 10 = 20,000; 11 = 3,000; 12 = 3,000. SSB WS (p.32): 1 = 12,000; 2 = 6,000; 3 = 20,000 (line 1z); 4 = 0; 5 = 26,000; 6 = s1 lines 11-20 = 3,000; 7 = 23,000; 8 = 25,000; 9: 25,000 not less than 23,000 -> STOP, none taxable, 6b = 0. Line 9 = 20,000; AGI 17,000. Born 1959 -> line 12d box; std ded chart (p.35) single, 1 box = 17,750. Taxable 0; tax 0. 8880: 8 = 17,000 -> 0.5; 10 = 1,000; CLW 1 = 0 -> 3 = 0 -> stop, no credit.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -5032,6 +5052,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1 line 8, Schedule A, the Tax Table, the EIC), i1040sca, i1040s8812 and p525, by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single. Wages $60,000. Gambling winnings $5,000 (Form W-2G box 1); gambling losses $7,000. State income tax paid $4,000; home mortgage interest (Form 1098) $9,000. Working (predictor A): s1 8b gambling winnings 5,000 (i1040gi Line 8b p.90); s1 9 = 5,000; s1 10 = 5,000 -> f1040 line 8. f1040 1z 60,000; 9 = 65,000; 10 = 0; 11a/11b AGI 65,000. Sch A: 5a 4,000; 5d 4,000; 5e smaller of 5d or 40,000 = 4,000 (AGI under 500,000; f1040sa line 5e); 7 = 4,000; 8a 9,000; 8e 9,000; 10 9,000; 16 gambling losses only to the extent of winnings on s1 8b (i1040sca line 16): min(7,000, 5,000) = 5,000; 17 = 4,000+9,000+5,000 = 18,000 > standard 15,750 (single, i1040gi Standard Deduction) so itemize: 12e = 18,000; 14 = 18,000; 15 = 65,000 - 18,000 = 47,000; 16 Tax Table single 47,000-47,050 = 5,405; 18 = 5,405 (no Schedule 2).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -5280,6 +5301,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1 line 8, Schedule A, the Tax Table, the EIC), i1040sca, i1040s8812 and p525, by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: As O1, but gambling losses $1,200. Working (predictor A): s1 8b 5,000; 9 5,000; 10 5,000; AGI 65,000. Itemized would be 5a/5e 4,000 + 8a 9,000 + 16 min(1,200, 5,000)=1,200 = 14,200 < standard 15,750, so take the standard deduction (Schedule A not filed). 12e 15,750; 14 15,750; 15 = 49,250; Tax Table single 49,250-49,300 = 5,755 (check: 1,192.50 + 4,386 + 22% x 800 at midpoint 49,275 = 5,754.50 -> 5,755); 18 = 5,755.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -5492,6 +5514,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1 line 8, Schedule A, the Tax Table, the EIC), i1040sca, i1040s8812 and p525, by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single. Wages $60,000. Gambling winnings $3,000; losses $2,000. No other itemized deductions. Working (predictor A): s1 8b 3,000; 9 3,000; 10 3,000; AGI 63,000. Only itemizable item is gambling losses min(2,000, 3,000)=2,000 < 15,750, so standard deduction. 15 = 63,000 - 15,750 = 47,250; Tax Table single 47,250-47,300 = 5,435; 18 = 5,435.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -5704,6 +5727,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1 line 8, Schedule A, the Tax Table, the EIC), i1040sca, i1040s8812 and p525, by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Married filing jointly. Wages $50,000 (yours). Alaska Permanent Fund dividends $1,000 each, $2,000 in all. Working (predictor A): Alaska Permanent Fund dividends reported on s1 line 8g (p525, Alaska Permanent Fund dividend): 1,000 x 2 = 2,000 on the joint return; 9 2,000; 10 2,000. AGI 52,000; standard MFJ 31,500; 15 = 20,500; Tax Table MFJ 20,500-20,550 = 2,053; 18 = 2,053.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -5963,6 +5987,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1 line 8, Schedule A, the Tax Table, the EIC), i1040sca, i1040s8812 and p525, by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single. Wages $45,000. Jury duty pay $300, all of which you gave to your employer because it paid your salary while you served. Working (predictor A): s1 8h jury duty pay 300 (i1040gi Line 8h: enter and see line 24a); 9 300; 10 300 -> f1040 8. s1 24a 300 because the pay was given to the employer that paid salary during service (i1040gi Line 24a p.99); 25 300; 26 300 -> f1040 10. f1040 9 = 45,300; 11a AGI 45,000; 12e 15,750; 15 29,250; Tax Table single 29,250-29,300 = 3,275; 18 = 3,275.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -6187,6 +6212,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1 line 8, Schedule A, the Tax Table, the EIC), i1040sca, i1040s8812 and p525, by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single. Wages $45,000. A $50 prize won in a photography contest. Working (predictor A): s1 8i prizes and awards 50 (i1040gi Line 8i); 9 50; 10 50. AGI 45,050; 15 = 29,300; Tax Table single 29,300-29,350 = 3,281; 18 = 3,281.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -6399,6 +6425,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1 line 8, Schedule A, the Tax Table, the EIC), i1040sca, i1040s8812 and p525, by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single. Wages $45,000. Income of $700 from a hobby (an activity not engaged in for profit). Working (predictor A): s1 8j activity not engaged in for profit income 700 (i1040gi Line 8j; p525); no hobby expenses stated (none are deductible as an adjustment anyway); 9 700; 10 700. AGI 45,700; 15 = 29,950; Tax Table single 29,950-30,000 = 3,359; 18 = 3,359.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -6611,6 +6638,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1 line 8, Schedule A, the Tax Table, the EIC), i1040sca, i1040s8812 and p525, by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single, a degree candidate. Wages $15,000. A $10,000 scholarship not on a Form W-2: $6,000 used for tuition and required fees, $4,000 for room and board. Working (predictor A): Degree candidate: s1 8r includes only amounts used for expenses other than tuition and course-related expenses (i1040gi Line 8r): room and board 4,000; the 6,000 for tuition and required fees is excluded. 9 4,000; 10 4,000. AGI 19,000; 12e 15,750; 15 3,250; Tax Table single 3,250-3,300 = 328; 18 = 328.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -6823,6 +6851,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1 line 8, Schedule A, the Tax Table, the EIC), i1040sca, i1040s8812 and p525, by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single. Wages $40,000. Reemployment trade adjustment assistance (RTAA) payments $1,500 (Form 1099-G box 5) and kickbacks received $800. Working (predictor A): s1 8z other income: RTAA payments 1,500 (i1040gi Line 8z list) + kickbacks 800 (p525 Kickbacks: Schedule 1 line 8z) = 2,300; 9 2,300; 10 2,300. AGI 42,300; 15 26,550; Tax Table single 26,550-26,600 = 2,951 (check: 1,192.50 + 12% x (26,575 - 11,925) = 2,950.50 -> 2,951); 18 = 2,951.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -7042,6 +7071,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1 line 8, Schedule A, the Tax Table, the EIC), i1040sca, i1040s8812 and p525, by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Head of household with one qualifying child aged 6. Wages $20,000. Gambling winnings $5,000; no losses. Working (predictor A): s1 8b 5,000; 9 5,000; 10 5,000. AGI 25,000; HOH standard 23,625; 15 = 1,375; Tax Table HOH 1,375-1,400 = 139; 18 = 139. EIC (i1040gi EIC Worksheet A, one child): line 1 earned income 20,000 -> table 4,328 (line 2); line 3 AGI 25,000 is not less than 23,350, so line 5 looks up 25,000-25,050 -> 4,060 (check: 4,328 - 15.98% x (25,025 - 23,350) = 4,060.33); line 6 smaller = 4,060 -> f1040 27a. Gambling winnings are not investment income for the EIC test (interest, dividends, capital gains, rents/royalties, passive). Schedule 8812: 1/3 = 25,000; 4 = 1; 5 = 2,200; 8 = 2,200; 9 = 200,000; 10 = 0; 11 = 0; 12 = 2,200; Credit Limit Worksheet A line 1 = f1040 18 = 139, line 2 = 0 (no Schedule 3 credits), 3 = 139, 5 = 139 -> 13 = 139; 14 = smaller(2,200, 139) = 139. 16a = 2,061; 16b = 1 x 1,700 = 1,700; 17 = 1,700; 18a = 20,000; 19 = 17,500; 20 = 2,625; 16b < 5,100 so 27 = smaller(17, 20) = 1,700.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
           "taxpayer"
@@ -7361,6 +7391,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1, Schedule 2, the Tax Table and Tax Computation Worksheet), p504, f8889, i8889, p4681, f8959 and i8960, by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single. Wages $40,000. Taxable interest $300 from a bank, with an early withdrawal penalty of $75 (Form 1099-INT box 2). Working (predictor A): 1040 line 1z 40,000; line 2b 300; line 9 = 40,300. Sch 1 line 18 penalty on early withdrawal of savings = 1099-INT box 2 = 75 (i1040gi Sch 1 line 18); Sch 1 line 26 = 75 -> 1040 line 10. Line 11(a) = 40,300 - 75 = 40,225. Std deduction single 15,750 (f1040 margin). Line 15 = 24,475. Tax Table row 24,450-24,500 single = 2,699. No Sch 2 -> line 17 0, line 18 = 2,699; line 23 = 0.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -7561,6 +7592,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1, Schedule 2, the Tax Table and Tax Computation Worksheet), p504, f8889, i8889, p4681, f8959 and i8960, by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single. Wages $30,000. Alimony received of $1,000 a month under a 2015 decree, $12,000. Working (predictor A): Decree 2015 (before 2019, unmodified) -> alimony received taxable, Sch 1 line 2a = 12,000 (i1040gi Sch 1 line 2a). Sch 1 line 10 = 12,000 -> 1040 line 8. Line 9 = 30,000 + 12,000 = 42,000; line 10 = 0; line 11 = 42,000; minus 15,750 = 26,250. Tax Table 26,250-26,300 single = 2,915. Line 18 = 2,915; line 23 = 0.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -7756,6 +7788,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1, Schedule 2, the Tax Table and Tax Computation Worksheet), p504, f8889, i8889, p4681, f8959 and i8960, by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single. Wages $60,000. Alimony paid of $1,500 a month under a 2017 separation agreement, $18,000. Working (predictor A): 2017 separation agreement (before 2019) -> alimony paid deductible, Sch 1 line 19a = 18,000 (i1040gi lines 19a-19c). Sch 1 line 26 = 18,000 -> 1040 line 10. Line 9 = 60,000; line 11 = 42,000; line 15 = 42,000 - 15,750 = 26,250. Tax Table 26,250-26,300 single = 2,915. Line 23 = 0.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -7955,6 +7988,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1, Schedule 2, the Tax Table and Tax Computation Worksheet), p504, f8889, i8889, p4681, f8959 and i8960, by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single, aged 45. Wages $50,000. HSA distributions (Form 1099-SA box 1) $3,000, of which $1,000 paid qualified medical expenses. Working (predictor A): 8889: 14a 3,000; 14b 0; 14c 3,000; 15 qualified medical 1,000; 16 = 2,000 -> Sch 1 line 8f (i1040gi line 8f: lines 16 + 20). Age 45: no exception (i8889 Exceptions: death, disability, age 65), 17a unchecked, 17b = 20% x 2,000 = 400 -> Sch 2 17c 400; 18 = 400; 21 = 400 -> 1040 line 23. 1040 line 9 = 52,000; line 11 = 52,000; line 15 = 36,250; Tax Table 36,250-36,300 single = 4,115.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -8206,6 +8240,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1, Schedule 2, the Tax Table and Tax Computation Worksheet), p504, f8889, i8889, p4681, f8959 and i8960, by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single, turned 65 on July 10, 2025. Wages $50,000. HSA distributions $4,000, none for medical expenses; $1,500 of them were made before your 65th birthday. Working (predictor A): 8889: 14a 4,000; 14c 4,000; 15 0; 16 4,000 -> Sch 1 8f. Exception applies to distributions made after turning 65 (i8889 Part II), so 17a checked; 17b = 20% of the 1,500 made before the 65th birthday = 300 -> Sch 2 17c, 18, 21 = 300 -> 1040 line 23. 1040 line 9 = 54,000 = line 11. Born July 10, 1960 (before Jan 2, 1961): line 12d box; std deduction chart, single, 1 box = 17,750. Sch 1-A Part V: line 31 MAGI 54,000 <= 75,000 -> line 35 = 6,000; 36a 6,000; 37 6,000; line 38 -> 1040 line 13b 6,000. Line 14 = 23,750; line 15 = 30,250. Tax Table 30,250-30,300 single = 3,395.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -8466,6 +8501,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1, Schedule 2, the Tax Table and Tax Computation Worksheet), p504, f8889, i8889, p4681, f8959 and i8960, by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single, aged 70. Wages $30,000. HSA distributions $2,000, none for medical expenses. Working (predictor A): 8889: 14a 2,000; 16 2,000 -> Sch 1 8f. Aged 70: all distributions after turning 65, 17a checked, 17b 0; Sch 2 17c/18/21 = 0. 1040 line 9 = 32,000 = line 11. Std deduction (born before 1961, single, 1 box) 17,750; Sch 1-A Part V: MAGI 32,000 <= 75,000 -> 6,000 on line 13b. Line 14 = 23,750; line 15 = 8,250. Tax Table 8,250-8,300 single = 828.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -8726,6 +8762,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1, Schedule 2, the Tax Table and Tax Computation Worksheet), p504, f8889, i8889, p4681, f8959 and i8960, by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single. Wages $45,000. A credit card company canceled $5,000 of your debt (Form 1099-C box 2 $5,000); no exclusion or exception applies. Working (predictor A): Canceled nonbusiness debt 1099-C box 2 5,000, no exclusion -> Sch 1 line 8c 5,000 (i1040gi line 8c). Line 9 (Sch 1) 5,000; line 10 5,000 -> 1040 line 8. 1040 line 9 = 50,000 = line 11; line 15 = 34,250. Tax Table 34,250-34,300 single = 3,875.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -8923,6 +8960,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1, Schedule 2, the Tax Table and Tax Computation Worksheet), p504, f8889, i8889, p4681, f8959 and i8960, by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single. Wages $45,000. You owed a friend $1,000 for a personal loan, and the friend accepted $400 in full settlement; no exclusion or exception applies. Working (predictor A): Pub 4681 example: owed friend 1,000, paid 400 in full satisfaction -> canceled debt 600. Sch 1 8c 600; line 9 600; line 10 600 -> 1040 line 8. 1040 line 9 = 45,600 = line 11; line 15 = 29,850. Tax Table 29,850-29,900 single = 3,347.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -9120,6 +9158,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1, Schedule 2, the Tax Table and Tax Computation Worksheet), p504, f8889, i8889, p4681, f8959 and i8960, by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Married filing jointly. You: wages $50,000, aged 45, HSA distributions $2,000, none for medical. Spouse: wages $30,000, aged 40, HSA distributions $1,000, all for medical. Working (predictor A): Separate Part II per spouse (f8889 Part II heading). You: 14a 2,000; 15 0; 16 2,000; age 45, 17b 400. Spouse: 14a 1,000; 15 1,000; 16 0; 17b 0. Sch 1 8f = 2,000 + 0 = 2,000; Sch 2 17c = 400 + 0 = 400; 18 400; 21 400. 1040 line 9 = 80,000 + 2,000 = 82,000 = line 11; MFJ std ded 31,500; line 15 = 50,500. Tax Table 50,500-50,550 MFJ = 5,586.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -9461,6 +9500,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1, Schedule 2, the Tax Table and Tax Computation Worksheet), p504, f8889, i8889, p4681, f8959 and i8960, by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single. Wages $250,000. Taxable interest $10,000, with an early withdrawal penalty of $500. Working (predictor A): 1040 line 1z 250,000; 2b 10,000; line 9 260,000. Sch 1 line 18 = 500; line 26 = 500 -> 1040 line 10. Line 11 = 259,500; line 15 = 259,500 - 15,750 = 243,750 (>= 100,000 -> Tax Computation Worksheet Section A, row over 197,300 not over 250,525: 243,750 x 0.32 = 78,000 - 22,937 = 55,063). Form 8959: Medicare wages 250,000 - 200,000 = 50,000 x 0.009 = 450 -> Sch 2 line 11. Form 8960: line 1 interest 10,000; line 8 10,000; i8960 note: early withdrawal penalty (Sch 1 line 18) reported on line 10 -> 500; line 11 = 500; line 12 NII 9,500; line 13 MAGI 259,500; line 14 200,000; line 15 59,500; line 16 = 9,500; line 17 = 9,500 x 0.038 = 361 -> Sch 2 line 12. Sch 2 line 21 = 450 + 361 = 811 -> 1040 line 23. Line 18 = 55,063 (no Sch 2 Part I).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -9708,6 +9748,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "BUG-0084. Joint return, wages $60,000 and $50,000; the spouse was born in 1960, has no SSN valid for employment and died in 2025 before reaching 65. i1040gi p. 33, Line 12d, Death of spouse in 2025, \"don't check the box that says 'Spouse was born before January 2, 1961'\"; p501 p. 23: no age box, so the MFJ base $31,500 (line 12e), line 15 $78,500 and Tax Table tax $8,946 (line 16, the $78,500 to $78,550 row, married filing jointly).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -9921,6 +9962,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage16.refund.f7 (single; 2024 itemized with state income tax, refund $3,000, Schedule A line 5d $15,000 and 5e $10,000, line 17 $30,000), with the 2024 exceptions answer (alternative minimum tax, unused credits, zero-rate gains, or a refund larger than the income-tax deduction less the sales-tax amount) changed to Yes (Pub. 525 Worksheet 2). The worksheet applies (itemized, income taxes deducted) and refund.taxable's own gates (box 8, other years) are No, so worksheet line 1 is reached through line 9's test and its own entry decides its value; Schedule 1 line 1 and the lines after it carry the same refusal through line 1. The refused values are the evaluator's.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -10150,6 +10192,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage16.refund.f7 (single; 2024 itemized with state income tax, refund $3,000, Schedule A line 5d $15,000 and 5e $10,000, line 17 $30,000), with the who-question (claimable as a dependent in 2024, a 2024 nonresident alien, or a refund from a joint state return without the same joint 2025 return) changed to Yes (Pub. 525 Worksheet 2). The worksheet applies and refund.taxable's own gates are No, and the exceptions answer checked before it on line 1 is No, so worksheet line 1's second entry decides its value; Schedule 1 line 1 and the lines after it carry the same refusal through line 1. The refused values are the evaluator's.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -10379,6 +10422,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage16.refund.f7 (single; 2024 itemized with state income tax, refund $3,000, Schedule A line 5d $15,000 and 5e $10,000, line 17 $30,000), with Form 1099-G box 8 (trade or business income) answered Yes. The worksheet applies and no worksheet line carries this gate, so the worksheet's line 9 is a number and the taxable refund's own entry decides its value; Schedule 1 line 1 and the lines after it carry the same refusal through it. The refused values are the evaluator's.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -10595,6 +10639,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage16.refund.f7 (single; 2024 itemized with state income tax, refund $3,000, Schedule A line 5d $15,000 and 5e $10,000, line 17 $30,000), with the other-year question (a refund for a year other than 2024, or the last 2024 estimated payment made in 2025) answered Yes. Box 8 is No and no worksheet line carries this gate, so the worksheet's line 9 is a number and the taxable refund's second entry decides its value; Schedule 1 line 1 and the lines after it carry the same refusal through it. The refused values are the evaluator's.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -10811,6 +10856,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage16.other.o1 (gambling winnings $5,000), with the professional-gambler question answered Yes (Schedule C). Line 8b copies the winnings, an input, so its own entry decides its value; line 9 and the lines after it carry the same refusal through line 8b. The refused values are the evaluator's.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -11014,6 +11060,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage16.other.o1 (gambling winnings $5,000), with the question on other line 8 income this tool does not compute answered Yes. No line 8 entry (8b to 8z) carries this gate, so their sum is a number and line 9's own entry decides its value; line 10 and Form 1040 line 8 carry the same refusal through line 9. The refused values are the evaluator's.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -11208,6 +11255,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage16.other.o5 (jury duty pay $300, all of it given to the employer), with the amount given to the employer changed to $400, more than the $300 of jury duty pay on line 8h. Line 24a copies that input, so its own entry decides its value; lines 25 and 26 carry the same refusal through it. The refused values are the evaluator's.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -11415,6 +11463,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage16.small.s7 (canceled debt $5,000), with the canceled-debt exceptions question (Form 982, Pub. 4681 exceptions, business or farm debt, foreclosure or repossession) answered Yes. The refused line copies the amount, an input, so its own entry decides its value; line 8c and the lines after it carry the same refusal through it. The refused values are the evaluator's.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -11630,6 +11679,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage16.small.s2 (alimony received $12,000), with the alimony exceptions question (more than one agreement, recapture, or payments partly child support) answered Yes. The refused line copies the amount received, an input, so its own entry decides its value; line 2a and the lines after it carry the same refusal through it. The refused values are the evaluator's.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -11834,6 +11884,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage16.small.s3 (alimony paid $18,000), with the alimony exceptions question answered Yes. The refused line copies the amount paid, an input, so its own entry decides its value; line 19a and the lines after it carry the same refusal through it. The refused values are the evaluator's.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -12038,6 +12089,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage16.other.o9 (two line 8z items: reemployment trade adjustment assistance $1,500 and kickbacks $800), with the first item's type changed to recovery (Pub. 525, Recoveries). The item's taxable amount copies its amount, an input, so its own entry decides its value; line 8z and the lines after it carry the same refusal through it, and the second item stays $800. The refused values are the evaluator's.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -12252,6 +12304,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage16.other.o9 (two line 8z items: reemployment trade adjustment assistance $1,500 and kickbacks $800), with the first item's type changed to charitable_recapture (an additional tax on Schedule 2 line 17g). The recovery gate before it is false, and the taxable amount copies the item's amount, an input, so its second entry decides its value; line 8z and the lines after it carry the same refusal through it. The refused values are the evaluator's.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -12466,6 +12519,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage16.other.o9 (two line 8z items: reemployment trade adjustment assistance $1,500 and kickbacks $800), with the first item's type changed to other (income figured under Pub. 525, Miscellaneous Income). The two gates before it are false, and the taxable amount copies the item's amount, an input, so its third entry decides its value; line 8z and the lines after it carry the same refusal through it. The refused values are the evaluator's.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -12680,6 +12734,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage15.f2441-2.r17 (dependent care benefits with qualified expenses paid, Part III worked through line 31), with the employer-furnished-care question answered Yes. Qualified expenses paid (f2441.paid_total) are $6,000, more than zero, so the gate holds; line 30 subtracts line 28 ($2,000) from the expenses paid, and neither carries this gate, so line 30's own entry decides its value; line 31 carries the same refusal through it. The refused values are the evaluator's.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
           "taxpayer"
@@ -12936,6 +12991,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage16.small.s4 (an HSA distribution of $3,000 on line 14a, $1,000 of it for medical expenses), with the amount rolled over changed to $4,000, more than the $3,000 distributed. Line 14b chooses the rollover amount, an input, so its own entry decides its value; lines 14c and 16 and Schedule 1 line 8f carry the same refusal through it. The refused values are the evaluator's.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -13156,6 +13212,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage16.small.s4 (an HSA distribution of $3,000 on line 14a, $1,000 of it for medical expenses), with the unsupported-HSA-situations question (Part III, Form 8853, or other HSA situations) answered Yes. Line 16 carries the screen's own refusal entry (as line 13 does), so line 16 refuses whatever its figure; the figure behind it, line 14c less line 15, is $2,000. Schedule 1 line 8f carries the same refusal through line 16. The refused values are the evaluator's.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -13358,6 +13415,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage16.small.s5 (an HSA distribution of $4,000, none for medical expenses, with the line 17a exception checked), with the part of line 16 subject to the additional tax changed to $5,000, more than line 16's $4,000. The line copies that input, so its own entry decides its value; the amount subject to the additional tax and line 17b carry the same refusal through it, while line 16 stays a number. The refused values are the evaluator's.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -13566,6 +13624,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage16.ira.i7 (married filing jointly, neither covered by a workplace plan, traditional IRA contributions $8,000 and $7,000), with the spouse's contributions changed to $6,000 traditional and $1,000 Roth, keeping the spouse within the $7,000 limit. The traditional-and-Roth-on-a-joint-return gate is the first entry of person.ira_line11, which copies the contribution (an input through the traditional-IRA question), so its own entry decides each person's line 11; lines 12a, 20 and Schedule 1 line 20 carry the same refusal through it. The refused values are the evaluator's.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -13848,6 +13907,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage16.ira.i7 (married filing jointly, neither covered, traditional IRA contributions $8,000 and $7,000, one spouse 50 or older), with the two Forms W-2 changed to wages of $6,000 and $5,000 (boxes 1, 3 and 5, with boxes 4 and 6 at 6.2% and 1.45%), so worksheet line 10 is $11,000, less than the $15,000 that applies with one spouse 50 or older. No Roth contributions, so the first gate is false and this second entry of person.ira_line11 decides each person's line 11 (the later over-compensation gate also holds, a different refusal); line 20 and Schedule 1 line 20 carry the same refusal through it. The refused values are the evaluator's.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -14117,6 +14177,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage16.ira.i9 (single, wages $30,000, not covered by a plan, traditional IRA contribution $5,000), with the excess-or-recharacterized-contributions question answered Yes. Two lines carry this gate on their own: person.ira_line11 (after the joint-return gates, false on a single return) and Form 8880 line 1 (person.sav_line1, first entry); each reads the contribution, an input through the traditional-IRA question, so each line's own entry decides its value; line 20 and Schedule 1 line 20 carry the refusal through line 11. The refused values are the evaluator's.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -14328,6 +14389,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage16.ira.i9 (single, wages $30,000, not covered by a plan, traditional IRA contribution $5,000), with the contribution changed to $8,000, more than the $7,000 limit under age 50 but less than the $30,000 of compensation. The earlier gates (joint-return gates, the excess question) are false, so this fourth entry of person.ira_line11 decides its value; line 20 and Schedule 1 line 20 carry the same refusal through it. The refused values are the evaluator's.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -14526,6 +14588,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage16.ira.i9 (single, not covered by a plan, traditional IRA contribution $5,000), with the Form W-2 wages changed from $30,000 to $4,000 (boxes 1, 3 and 5, with boxes 4 and 6 at 6.2% and 1.45%), so the $5,000 contribution is more than worksheet line 10. The contribution is within the $7,000 limit and the earlier gates are false, so this fifth entry of person.ira_line11 decides its value; line 20 and Schedule 1 line 20 carry the same refusal through it. The refused values are the evaluator's.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -14728,6 +14791,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage16.ira.i9 (single, wages $30,000, not covered by a plan, traditional IRA contribution $5,000), with the IRA special-cases question answered Yes. The earlier gates of person.ira_line11 are false, so its sixth entry decides its value; line 20 and Schedule 1 line 20 carry the same refusal through it. The refused values are the evaluator's.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -14926,6 +14990,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage16.ira.i3 (single, wages $85,000, covered by a workplace plan, traditional IRA contribution $7,000), with the excluded foreign or possession income question answered Yes; the gate needs someone covered by a plan, which this filer is. The earlier gates of person.ira_line11 are false, so its seventh entry decides its value; line 20 and Schedule 1 line 20 carry the same refusal through it. The refused values are the evaluator's.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -15124,6 +15189,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage16.ira.i9 (single, wages $30,000, not covered by a plan, traditional IRA contribution $5,000), with the nontaxable combat pay question answered Yes. The earlier gates of person.ira_line11 are false, so its eighth entry decides its value; line 20 and Schedule 1 line 20 carry the same refusal through it. The refused values are the evaluator's.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -15323,6 +15389,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage16.ira.i3 (single, wages $85,000, covered by a workplace plan, traditional IRA contribution $7,000 of which $2,800 deductible and $4,200 nondeductible), with the question on a 2025 distribution or Roth conversion answered Yes. Two lines carry this gate on their own: the person's IRA deduction (worksheet line 12 for this person, read from person.ira_line12, which carries no gate) and Form 8606 line 14 (a copy of line 3, the nondeductible amount, read from person.ira_line12 and line 11, not from the deduction); each line's own entry decides its value; line 20 and Schedule 1 line 20 carry the refusal through the deduction. The refused values are the evaluator's.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -15542,6 +15609,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage16.ira.i3 (single, wages $85,000, covered by a workplace plan, $4,200 nondeductible, so Form 8606 is filed), with the basis-adjustments question (Form 8606 line 2) answered Yes. The person's line 2 amount chooses the basis input when Form 8606 is filed, so its own entry decides its value; Form 8606 lines 2, 3 and 14 carry the same refusal through it, while line 1 stays a number. The refused values are the evaluator's.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -15757,6 +15825,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage16.ira.i10 (single, wages $20,000, social security benefits $12,000, traditional IRA contribution $3,000, 50 or older), with workplace retirement plan coverage answered Yes, so the gate for social security benefits with an IRA deduction and plan coverage (Pub. 590-A Appendix B) holds. The figured amount is the smaller of the limit-or-compensation amount and line 11, and neither carries this gate (person.ira_line11's gates are false here), so its own entry decides its value; the person's amount for the Social Security Benefits Worksheet carries the same refusal through it. The refused values are the evaluator's.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -15948,6 +16017,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage16.ira.i9 (single, wages $30,000, not covered by a plan, traditional IRA contribution $5,000, all deductible), with the question whether to deduct less than the most allowed answered Yes. The total of the persons' deductions is $5,000 and carries no gate, so line 20's own entry decides its value; Schedule 1 line 20 carries the same refusal through it. The refused values are the evaluator's.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -16137,6 +16207,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "SC-01 of the Stage 16 mutation scenarios. Single, aged 40. Wages $50,000, covered by a plan at work. Contributed $7,000 to a **Roth** IRA for 2025. No traditional IRA contribution. No excess contribution, no recharacterization, no IRA distribution. Two agents worked the return by hand from the archived text without the encoding and agreed on every asserted value; the expected values are theirs.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -16315,6 +16386,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "SC-02 of the Stage 16 mutation scenarios. Single, aged 45. Wages $3,000; not covered by a plan at work. Received $12,000 of alimony in 2025 from a former spouse under a divorce decree signed in 2017 and never modified. All of it is alimony: no child support, one agreement, one payer, no recapture. Paid no alimony. Contributed $5,000 to a traditional IRA for 2025. No Roth contribution, no IRA distribution. Two agents worked the return by hand from the archived text without the encoding and agreed on every asserted value; the expected values are theirs.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -16527,6 +16599,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "SC-03 of the Stage 16 mutation scenarios. Single, aged 40. Wages $60,000. Paid $6,000 of alimony in 2025 to a former spouse under a divorce decree signed in 2016 and never modified. All of it is alimony: one agreement, one recipient, no child support, no recapture. Received no alimony. No IRA contributions. Two agents worked the return by hand from the archived text without the encoding and agreed on every asserted value; the expected values are theirs.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -16707,6 +16780,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "SC-04 of the Stage 16 mutation scenarios. Single, aged 30. Wages $60,000; not covered by a plan at work. For 2025 contributed $3,000 to a traditional IRA and $2,000 to a Roth IRA (together within the annual limit; no excess, no recharacterization). No IRA distribution or conversion. Two agents worked the return by hand from the archived text without the encoding and agreed on every asserted value; the expected values are theirs.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -16890,6 +16964,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "SC-05 of the Stage 16 mutation scenarios. Married filing jointly. You: aged 40, wages $9,000. Spouse: aged 38, wages $5,000. Neither is covered by a plan at work. For 2025 you contributed $2,000 and your spouse $1,000 to traditional IRAs. No Roth contributions, no IRA distributions, no other income. Two agents worked the return by hand from the archived text without the encoding and agreed on every asserted value; the expected values are theirs.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -17135,6 +17210,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "SC-06 of the Stage 16 mutation scenarios. Married filing jointly. You: aged 52, wages $9,000. Spouse: aged 45, wages $6,000. Neither is covered by a plan at work. For 2025 you contributed $2,000 and your spouse $1,000 to traditional IRAs. No Roth contributions, no IRA distributions, no other income. Two agents worked the return by hand from the archived text without the encoding and agreed on every asserted value; the expected values are theirs.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -17380,6 +17456,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "SC-07 of the Stage 16 mutation scenarios. Married filing jointly. You: aged 55, wages $10,000. Spouse: aged 52, wages $6,000. Neither is covered by a plan at work. For 2025 you contributed $2,000 and your spouse $1,000 to traditional IRAs. No Roth contributions, no IRA distributions, no other income. Two agents worked the return by hand from the archived text without the encoding and agreed on every asserted value; the expected values are theirs.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -17625,6 +17702,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "SC-08 of the Stage 16 mutation scenarios. Married filing jointly; both aged 39. The return is figured in dollars and cents: amounts are **not** rounded to whole dollars. You: wages $70,000.00, covered by a plan at work, contributed $7,000 to a traditional IRA for 2025. Spouse: wages $55,999.50, not covered by a plan, no IRA contribution. No Roth contributions, no IRA distributions, no other income or adjustments. Two agents worked the return by hand from the archived text without the encoding and agreed on every asserted value; the expected values are theirs.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -17873,6 +17951,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "SC-09 of the Stage 16 mutation scenarios. Single, aged 45. Wages $50,000; the W-2 shows no employer HSA contributions (no box 12 code W). Covered all of 2025 by a self-only high-deductible health plan, with no other health coverage, no Medicare, no Archer MSA, and not claimable as a dependent. Contributed $2,000 of your own money to your HSA for 2025 (not through payroll). Received HSA distributions of $3,000 in 2025 (Form 1099-SA box 1). $1,000 of it paid qualified medical expenses; the rest was not used for medical expenses, nothing was rolled over, and no exception to the additional tax applies (not disabled, not 65, alive at year end). No excess contributions withdrawn, no qualified HSA funding distribution, not under the last-month rule. Two agents worked the return by hand from the archived text without the encoding and agreed on every asserted value; the expected values are theirs.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -18085,6 +18164,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "SC-10 of the Stage 16 mutation scenarios. 2025: single, aged 40, wages $50,000. In 2025 received a $1,500 state income tax refund for tax year 2024 (Form 1099-G box 2; box 8 not checked). 2024 return: filing status single; itemized deductions on Schedule A, deducting state and local **income** taxes (not general sales taxes); Schedule A line 5d $9,000 and line 5e $9,000; Schedule A line 17 $16,000. In 2024 you were under 65 and not blind. None of the worksheet's exceptions apply (no AMT, no unused credits, no zero-rate situation, not a dependent, not a nonresident). No other recoveries. Two agents worked the return by hand from the archived text without the encoding and agreed on every asserted value; the expected values are theirs. The inputs leave out the questions the interview does not ask on this path (the evaluator needs no answer to them); answering them would hide the case from the mutants it exists to kill.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -18290,6 +18370,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "SC-11 of the Stage 16 mutation scenarios. 2025: single, aged 40, wages $50,000. In 2025 received a $2,000 state income tax refund for tax year 2024 (Form 1099-G box 2; box 8 not checked). 2024 return: itemized deductions on Schedule A, deducting state and local **income** taxes; Schedule A line 5d $12,000 and line 5e $10,000. None of the worksheet's exceptions apply. No other recoveries. Two agents worked the return by hand from the archived text without the encoding and agreed on every asserted value; the expected values are theirs. The inputs leave out the questions the interview does not ask on this path (the evaluator needs no answer to them); answering them would hide the case from the mutants it exists to kill.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -18475,6 +18556,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage16.refund.f3 (a taxable state income tax refund figured on the worksheet) with the 2024 Schedule A line 5e entered $1 above line 5d, which cannot be (i1040sca p. 7, Line 5e, \"enter the smaller of line 5d or $40,000\"); worksheet line 2 carries the entry-error refusal and Schedule 1 line 1 reads it. The refused values are the evaluator's.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -18665,6 +18747,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage14.sc.basic (a single filer with one Schedule C) with a $3,000 traditional IRA contribution, no plan coverage, and Yes to the question whether the Schedule C income is from a business in which personal services are not a material income-producing factor (p590a pp. 6\u20137, Self-employment income); IRA Deduction Worksheet line 9 carries the refusal and Schedule 1 line 20 reads it. The refused values are the evaluator's.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -18889,6 +18972,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage11.hsa.self_full_year (single, self-only HDHP coverage all year, $3,000 contributed) with six eligible months, all of family coverage, but self-only coverage on December 1; December 1 is one of the months counted (i8889 p. 6, Line 3 Limitation Chart and Worksheet), so the answers contradict each other and Form 8889 refuses them as an entry error. The refused values are the evaluator's.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -19095,6 +19179,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage11.hsa.self_full_year (single, self-only HDHP coverage all year, $3,000 contributed) with six eligible months, none of family coverage, but family coverage on December 1; December 1 is one of the months counted (i8889 p. 6, Line 3 Limitation Chart and Worksheet), so the answers contradict each other and Form 8889 refuses them as an entry error. The refused values are the evaluator's.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -19301,6 +19386,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage11.hsa.self_full_year (single, self-only HDHP coverage all year, $3,000 contributed) with no eligible month, but self-only coverage as an eligible individual on December 1; December 1 is one of the months counted (i8889 p. 6, Line 3 Limitation Chart and Worksheet), so the answers contradict each other and Form 8889 refuses them as an entry error. The refused values are the evaluator's.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -19507,6 +19593,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage11.hsa.self_full_year (single, self-only HDHP coverage all year, $3,000 contributed) with twelve eligible months, but not an eligible individual on December 1; December 1 is one of the months counted (i8889 p. 6, Line 3 Limitation Chart and Worksheet), so the answers contradict each other and Form 8889 refuses them as an entry error. The refused values are the evaluator's.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -19713,6 +19800,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Inputs are stage16.small.s7 (single; $5,000 of fully taxable canceled nonbusiness debt, the only Schedule 1 income) with Yes to the question whether any debt was canceled and an amount of $0; the exceptions question is not asked for a zero amount and is left out, as the interview leaves it. Line 8c is the amount, $0, and lines 9 and 10 add nothing else (i1040gi p. 91, Line 8c; Schedule 1 lines 9 and 10).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -19874,6 +19962,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Inputs are stage16.small.s7 (single; $5,000 of fully taxable canceled nonbusiness debt, the only Schedule 1 income) with No to the question whether any debt was canceled; the amount and the exceptions question are not asked after a No and are left out, as the interview leaves them. Line 8c is $0 and lines 9 and 10 add nothing else (Schedule 1 lines 8c, 9 and 10).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -20034,6 +20123,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage4.refuse.scope.other_line16 as the interview asks them (it stops at the first refusal, after six answers): Yes to the screen for the additional Form 1040 line 16 taxes (Forms 8814, 4972, 8615, 8621 or 8978, a section 962 election, an education credit recapture). Form 1040 line 16 carries its own refusal entry for that screen. The refused value is the evaluator's.",
       "inputs": {
+        "f8863.paid": false,
         "$person": [
           "taxpayer"
         ],
@@ -20073,6 +20163,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage4.refuse.scope.credits as the interview asks them (it stops at the refusal, after four answers): Yes to the screen for other credits. Form 1040 lines 29 and 30 and Schedule 3 line 8 each carry their own refusal entry for that screen. The refused values are the evaluator's.",
       "inputs": {
+        "f8863.paid": false,
         "$person": [
           "taxpayer"
         ],
@@ -20087,23 +20178,14 @@
       },
       "expect": {
         "f1040.line29": {
-          "kind": "refusal",
-          "gate": "scope.credits",
-          "form": "Other credit forms (Schedule 3 lines 3 and 6a to 6z; Form 1040 lines 29 to 31)",
-          "remedy": "Credits other than the foreign tax credit by election, the excess social security credit, the Schedule 8812 credits, the earned income credit, the child and dependent care credit, the saver's credit, the residential energy credits and the net premium tax credit entered from Form 8962 require forms outside this proof of concept.",
-          "cite": {
-            "doc": "f1040",
-            "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19\u201320 and 27\u201331",
-            "revision": "2025; created 2025-09-05",
-            "snapshot": "3d31c226df0d189ced80e039d01cf0f8820c1019681a0f0ca6264de277b7e982",
-            "tax_year": 2025
-          }
+          "kind": "money",
+          "cents": 0
         },
         "f1040.line30": {
           "kind": "refusal",
           "gate": "scope.credits",
-          "form": "Other credit forms (Schedule 3 lines 3 and 6a to 6z; Form 1040 lines 29 to 31)",
-          "remedy": "Credits other than the foreign tax credit by election, the excess social security credit, the Schedule 8812 credits, the earned income credit, the child and dependent care credit, the saver's credit, the residential energy credits and the net premium tax credit entered from Form 8962 require forms outside this proof of concept.",
+          "form": "Other credit forms (Schedule 3 lines 6a to 6z; Form 1040 lines 30 and 31)",
+          "remedy": "Credits other than the foreign tax credit by election, the excess social security credit, the Schedule 8812 credits, the earned income credit, the child and dependent care credit, the saver's credit, the residential energy credits, the net premium tax credit figured on Form 8962 and the education credits (Form 8863) require forms outside this proof of concept.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19\u201320 and 27\u201331",
@@ -20115,8 +20197,8 @@
         "s3.line8": {
           "kind": "refusal",
           "gate": "scope.credits",
-          "form": "Other credit forms (Schedule 3 lines 3 and 6a to 6z; Form 1040 lines 29 to 31)",
-          "remedy": "Credits other than the foreign tax credit by election, the excess social security credit, the Schedule 8812 credits, the earned income credit, the child and dependent care credit, the saver's credit, the residential energy credits and the net premium tax credit entered from Form 8962 require forms outside this proof of concept.",
+          "form": "Other credit forms (Schedule 3 lines 6a to 6z; Form 1040 lines 30 and 31)",
+          "remedy": "Credits other than the foreign tax credit by election, the excess social security credit, the Schedule 8812 credits, the earned income credit, the child and dependent care credit, the saver's credit, the residential energy credits, the net premium tax credit figured on Form 8962 and the education credits (Form 8863) require forms outside this proof of concept.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19\u201320 and 27\u201331",
@@ -20135,6 +20217,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage14.refuse.se_railroad as the interview asks them (it stops at the refusal): wage statements report railroad retirement compensation. The person's Medicare wages and Medicare tax withheld (W-2 boxes 5 and 6, read by Form 8959) each carry the railroad refusal entry. The refused values are the evaluator's.",
       "inputs": {
+        "f8863.paid": false,
         "$person": [
           "taxpayer"
         ],
@@ -20210,6 +20293,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage16.refund.f7 with Yes to the Form 4952 screen for interest attributable to royalties, a business, passive activities or tax-exempt income, as the interview asks them: it stops at the refusal, so the alternative allocation question and the investment interest amount are not asked and are left out. Form 4952 line 3 (line 1 plus line 2) returns line 2's refusal ahead of the unasked line 1; whether Form 4952 is required returns its own entry for the screen. The refused values are the evaluator's.",
       "inputs": {
+        "f8863.paid": false,
         "$person": [
           "taxpayer"
         ],
@@ -20278,6 +20362,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Inputs are stage14.refuse.se_screen as the interview asks them: a Schedule SE item outside the tool, so Form 8959 Part II (line 13) refuses. Part III, the railroad retirement part, does not read Part II: line 14 is $0 (no railroad compensation) and line 16 is line 14 less line 15, floored at zero, $0. The refused value is the evaluator's; line 16 follows from Form 8959 lines 14 to 16.",
       "inputs": {
+        "f8863.paid": false,
         "$person": [
           "taxpayer"
         ],
@@ -20440,6 +20525,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage15.refuse.f2441.student_disabled (deemed earned income for a student or disabled spouse) as the interview asks them, with No to the ITIN application question the interview now asks. Form 2441 line 24 reads line 20 through the smaller of lines 20 and 21, and line 20 carries the refusal. The refused value is the evaluator's.",
       "inputs": {
+        "f8863.paid": false,
         "$person": [
           "taxpayer",
           "spouse"
@@ -20638,6 +20724,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Inputs are stage15.f5695.s2 as the interview asks them: No to the home energy audit (line 26a), so the audit cost is not asked and is left out, as the interview leaves it. The expected values are stage15.f5695.s2's blind-predicted lines 27, 30 and 32, which do not depend on the audit cost when line 26a is No.",
       "inputs": {
+        "f8863.paid": false,
         "$person": [
           "taxpayer",
           "spouse"
@@ -20844,6 +20931,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Inputs are stage15.f5695.s7 as the interview asks them: No on line 21a, so Section B lines 22 to 25 and line 29 are skipped and the heat pump costs are not asked; they are left out, as the interview leaves them. The expected values are stage15.f5695.s7's blind-predicted lines 27, 30 and 32.",
       "inputs": {
+        "f8863.paid": false,
         "$person": [
           "taxpayer"
         ],
@@ -21008,6 +21096,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Simultaneous refusals (precedence), with every answer of stage16.refund.f7 given: Yes to the Schedule A charitable limitation screen and Yes to Form 8938. Adjusted gross income, and so Schedule A line 4, refuses for Form 8938; Schedule A line 17 checks its own entries before its operands, so it refuses for the charitable limitation. The refused value is the evaluator's.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -21185,6 +21274,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Simultaneous refusals (precedence), with every answer of stage16.refund.f7 given: Yes to the excluded-income screen and Yes to Form 8938. Adjusted gross income, and so Schedule A line 4, refuses for Form 8938; Schedule A line 17 checks its own entries before its operands, so it refuses for excluded income (its SALT worksheet entry). The refused value is the evaluator's.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -21362,6 +21452,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Mutation scenario for Credit Limit Worksheet B lines 7 to 12 (T-051). Two agents worked the return by hand from the archived f1040, i1040gi, f1040s1, f1040sse, f8995, i8995, f1040s8812, i1040s8812 (Credit Limit Worksheets A and B, the Earned Income Chart and Worksheet), f5695 and i5695 without the encoding and agreed on every asserted value but one, Residential Clean Energy Credit Limit Worksheet line 2, which i5695 p. 5 (its footnote) sets to Credit Limit Worksheet B line 14 when that worksheet is completed, as stage15.f5695-2.e12 records; the expected values are theirs. Lines after a skip are not asserted. Facts: head of household, unmarried, age 40; solar electric property $5,000 on the existing main home; taxable interest $15,000 (over the $11,950 investment income limit, so no EIC); nothing else. Three qualifying children aged 3, 6 and 9. One W-2: boxes 1, 3 and 5 $1,000, box 4 $62.00, box 6 $14.50. A sole proprietorship with $2,000 of gross receipts and no expenses (Schedule SE line 12 $282.59; half, $141.295, entered as $141.30). CLW B line 5 (15% of $358.70, $53.81) is less than line 1, so lines 7 to 11 are figured: $76.50 withheld plus $141.30, less no EIC, $217.80, the larger on line 12.  Shown-line regression (owner decision 2026-10-26: skipped lines are hidden): the EIC flowchart STOPs at Step 2 (investment income), so Worksheet A lines are hidden.",
       "inputs": {
+        "f8863.paid": false,
         "$person": [
           "taxpayer"
         ],
@@ -21935,6 +22026,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Mutation scenario for Credit Limit Worksheet B line 11 with fewer than three children (T-051). Two agents worked the return by hand from the archived f1040, i1040gi, f1040s1, f1040sse, f8995, i8995, f1040s8812, i1040s8812 (Credit Limit Worksheets A and B, the Earned Income Chart and Worksheet), f5695 and i5695 without the encoding and agreed on every asserted value but one, Residential Clean Energy Credit Limit Worksheet line 2, which i5695 p. 5 (its footnote) sets to Credit Limit Worksheet B line 14 when that worksheet is completed, as stage15.f5695-2.e12 records; the expected values are theirs. Lines after a skip are not asserted. Facts: head of household, unmarried, age 40; solar electric property $5,000 on the existing main home; taxable interest $15,000 (over the $11,950 investment income limit, so no EIC); nothing else. Two qualifying children aged 3 and 6. One W-2: boxes 1, 3 and 5 $4,000, box 4 $248, box 6 $58. CLW B line 6 skips lines 7 to 10 (line 2 under $5,100), so line 11 is $0 and line 12 is line 5, $225. The interview does not ask W-2 boxes 4 and 6 on this path and they are left out, as it leaves them.",
       "inputs": {
+        "f8863.paid": false,
         "$person": [
           "taxpayer"
         ],
@@ -22376,6 +22468,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage16.small.s4 as the interview asks them, for a person whose only HSA item is one the tool does not support (a qualified HSA funding distribution from an IRA, a testing-period failure or an inherited HSA): Form 8889 is answered for the person and the unsupported-HSA-situations question Yes. The interview asks that question straight after the Form 8889 roster and stops at the refusal, so no contribution or distribution amount is asked. Form 8889 lines 13 and 16 carry the question's refusal entry whatever their figure, and Schedule 1 lines 13 and 8f carry it through them. The refused values are the evaluator's.",
       "inputs": {
+        "f8863.paid": false,
         "$person": [
           "taxpayer"
         ],
@@ -22483,6 +22576,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage15.f8880.s1 (a $5,000 pension distribution, code 7) as the interview asks them, with Yes to the Form 1099-R special-cases question; the interview stops at the refusal, so the later questions about the entry (whether it is an annuity with after-tax cost, and so on) are not asked and are left out. The entry's line 1 checks the special-cases entry first and refuses with it; Form 1040 line 5b carries the same refusal. The refused values are the evaluator's.",
       "inputs": {
+        "f8863.paid": false,
         "$person": [
           "taxpayer",
           "spouse"
@@ -22547,6 +22641,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Inputs are stage15.f5695-2.e12 (head of household, wages $26,000, three children, solar electric property $5,000; blind-predicted) as the interview asks them, with $2,000 of qualified small wind energy property costs added on line 3 and No to the questions the interview now asks that e12 predates. Line 6a adds lines 1 through 5b, $7,000; line 6b is 30%, $2,100, and line 13 the same. The limit (lines 14 and 15) does not depend on the credit and stays $0 as e12 records, so line 16, the carryforward, is $2,100 (Form 5695 (2025) lines 6a, 6b, 13 to 16; i5695 p. 5). The expected values follow from the form's arithmetic over e12's predicted values and agree with the evaluator.",
       "inputs": {
+        "f8863.paid": false,
         "$person": [
           "taxpayer"
         ],
@@ -22799,6 +22894,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Inputs are stage11.hsa.family_55 filed as head of household with the qualifying child of stage8.hoh.child.ctc, the filer married at the end of 2025 but considered unmarried for head of household: Form 8889 reads the marital answer, not the filing status, so the chart amount for a month of family coverage is $8,550 (not $9,550, which is for the unmarried: i8889 p. 6, \"If, at the end of 2025, you were unmarried and age 55 or older, enter $9,550 for the month\"), line 3 is $8,550, the $1,000 additional contribution amount goes on line 7 (p. 5, \"If you are married and had family coverage at any time during the year, the additional contribution amount is figured on line 7 and is not included on line 3\"), line 8 is $9,550 and line 13 is the $9,000 contributed; the standard deduction is the head of household amount. Predicted from i8889 pp. 4-7 and i1040gi p. 14; no independent human hand-work is claimed.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
           "taxpayer"
@@ -23016,6 +23112,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Inputs are audit.f8889.married_hoh_family_age55 with the filer unmarried at the end of 2025: the chart amount for a month of family coverage is $9,550 (i8889 p. 6), line 3 is $9,550, line 7 is zero and line 13 is the $9,000 contributed, as in stage11.hsa.family_55; only the marital answer separates the two cases. Predicted from i8889 pp. 4-7; no independent human hand-work is claimed.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
           "taxpayer"
@@ -23233,6 +23330,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Inputs are stage16.ira.i5 with wages of $85,000: a single filer age 50 or older, covered by a plan at work, contributing $8,000. Line 2 is $89,000 and line 5 (modified AGI) $85,000, so line 6 is $4,000; the column takes 80% for a person age 50 or older ($3,200), already a multiple of $10 and at least $200, so line 7 is $3,200, and the deduction is the smallest of line 7, line 10 (compensation) and line 11 (the $8,000 contributed): $3,200 on Schedule 1 line 20. Predicted from i1040gi pp. 97-98 (IRA Deduction Worksheet, lines 2, 6 and 7, 'Multiply line 6 by 70% (0.70) (or by 80% (0.80) in the column for the IRA of a person who is age 50 or older at the end of 2025)'); no independent human hand-work is claimed.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -23417,6 +23515,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Inputs are stage16.ira.i8 with the taxpayer age 50 or older contributing $8,000: a joint return, both spouses covered by a plan at work, wages $70,000 and $60,000. Line 2 is $146,000 in both columns and line 5 (modified AGI) $130,000, so line 6 is $16,000 in both; the taxpayer's column takes 40% ($6,400) and the spouse's 35% ($5,600), both multiples of $10 and at least $200, so lines 7a and 7b are $6,400 and $5,600; the deductions are the smallest of line 7, compensation and the contributions ($8,000 and $7,000): $6,400 and $5,600, $12,000 on Schedule 1 line 20. Predicted from i1040gi pp. 97-98 (IRA Deduction Worksheet, line 7, 'Multiply line 6 by 35% (0.35) (or by 40% (0.40) in the column for the IRA of a person who is age 50 or older at the end of 2025)'); no independent human hand-work is claimed.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -23666,6 +23765,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "BUG-0138 source-based partial-input facts and reference amounts derived from archived i8889 pp.8-9 and f8889 p.1, not evaluator outputs. i8889 p.8 lines14b/15 count only actual distributions; p.9 taxes only taxable distributions. Zero distributed dollars needs no rollover, medical or exception figures.",
       "inputs": {
+        "f8863.paid": false,
         "$person": [
           "sample"
         ],
@@ -23708,6 +23808,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "BUG-0138 source-based partial-input facts and reference amounts derived from archived i8889 pp.8-9 and f8889 p.1, not evaluator outputs. An explicit zero rollover leaves the same zero-distribution amounts; no medical or exception answer is needed.",
       "inputs": {
+        "f8863.paid": false,
         "$person": [
           "sample"
         ],
@@ -23751,6 +23852,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "BUG-0138 source-based partial-input facts and reference amounts derived from archived i8889 pp.8-9 and f8889 p.1, not evaluator outputs. All $1000 distributed dollars pay qualifying expenses; no taxable amount remains and no exception answer is needed. i8889 pp.8-9. Part I context supplies no personal/employer contributions, twelve eligible self-only months, no last-month election and an unmarried filer, so positive Part II cases can seed independent worked jobs without supplying their reference answers.",
       "inputs": {
+        "f8863.paid": false,
         "$person": [
           "sample"
         ],
@@ -23806,6 +23908,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "BUG-0138 source-based partial-input facts and reference amounts derived from archived i8889 pp.8-9 and f8889 p.1, not evaluator outputs. All $1000 distributed dollars are rolled over, with no medical-use amount; the remainder and taxable amount are zero. i8889 p.8. Part I context supplies no personal/employer contributions, twelve eligible self-only months, no last-month election and an unmarried filer, so positive Part II cases can seed independent worked jobs without supplying their reference answers.",
       "inputs": {
+        "f8863.paid": false,
         "$person": [
           "sample"
         ],
@@ -23861,6 +23964,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "BUG-0138 source-based partial-input facts and reference amounts derived from archived i8889 pp.8-9 and f8889 p.1, not evaluator outputs. i8889 pp.8-9: $1000 minus $250 rollover minus $250 qualified expenses is $500 taxable; with no exception, 20% is $100. Part I context supplies no personal/employer contributions, twelve eligible self-only months, no last-month election and an unmarried filer, so positive Part II cases can seed independent worked jobs without supplying their reference answers.",
       "inputs": {
+        "f8863.paid": false,
         "$person": [
           "sample"
         ],
@@ -23917,6 +24021,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "BUG-0138 source-based partial-input facts and reference amounts derived from archived i8889 pp.8-9 and f8889 p.1, not evaluator outputs. i8889 p.9 limits 20% tax to the nonexcepted part: $100 nonexcepted out of $500 taxable produces $20. Part I context supplies no personal/employer contributions, twelve eligible self-only months, no last-month election and an unmarried filer, so positive Part II cases can seed independent worked jobs without supplying their reference answers.",
       "inputs": {
+        "f8863.paid": false,
         "$person": [
           "sample"
         ],
@@ -23973,6 +24078,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Source-derived spouse-coverage facts and amounts, not evaluator outputs. i8889 p.4 How To Complete Part I and rule1: both eligible spouses are treated as family-covered if either has a family HDHP, disregarding self-only coverage. These supplied counts are already spouse-attributed. With two separate HSAs, p.7 line6 divides $8550 equally into $4275 per spouse. Each $2000 personal contribution is below its limit.",
       "inputs": {
+        "f8863.paid": false,
         "$person": [
           "sample",
           "spouse"
@@ -24041,6 +24147,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Source-derived spouse-coverage facts and amounts, not evaluator outputs. i8889 p.4 How To Complete Part I and rule1: both eligible spouses are treated as family-covered if either has a family HDHP, disregarding self-only coverage. These supplied counts are already spouse-attributed. Only one spouse has an HSA; no separate-HSA division applies and the full $8550 limit remains. Each $2000 personal contribution is below its limit.",
       "inputs": {
+        "f8863.paid": false,
         "$person": [
           "sample",
           "spouse"
@@ -24086,6 +24193,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Engineering arithmetic and consistency-boundary checks, with no independent tax-evidence credit. Both spouses are eligible for six months, all attributed family coverage, without the last-month rule; the ordinary chart line5 is $4275 while the annual chart amount remains $8550. The underlying under-55 chart implies an under-55 $8550 family amount and $4300 self-only amount (i8889 p.6 chart). The internal twelve-month numerators are $8550 times 12 = $102600 and $4300 times 12 = $51600; they are not claimed as IRS printed amounts. Zero distributions imply line16 zero; a supplied zero subject part is not MORE THAN zero, so subject_bad is false. These assertions replace lost mutation sensitivity from retired helper-inclusive M fixtures without promoting helper plumbing as independent IRS calculations.",
       "inputs": {
+        "f8863.paid": false,
         "$person": [
           "sample",
           "spouse"
@@ -24144,6 +24252,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "BUG-0149 regression, predicted from f1040sd p. 2, line 17 (\"No. Skip lines 18 through 21, and go to line 22\") before recording: generated return 20261026/76, whose 28% Rate Gain Worksheet line 7 is positive while Schedule D line 17 is No, enters zero on Schedule D line 18.",
       "inputs": {
+        "f8863.paid": false,
         "div.box2b": 0,
         "div.box2c": 0,
         "div.box2d": 439165,
@@ -24645,6 +24754,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "BUG-0149 regression, predicted from f1040sd p. 2, line 17 before recording: the inputs of classm.sli.2, whose Unrecaptured Section 1250 Gain Worksheet line 18 is $145 while Schedule D line 17 is No, enter zero on Schedule D line 19.",
       "inputs": {
+        "f8863.paid": false,
         "div.box2b": 14500,
         "div.box2c": 0,
         "div.box2d": 0,
@@ -25022,6 +25132,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Mutation-equivalence second reader (P2, refusal.f4952.f4952.required.2), predicted from i4952 (an alternative allocation of investment interest is outside the tool and refused) before recording: with the alternative-allocation question unanswered, whether Form 4952 is required is unknown, waiting on that answer.",
       "inputs": {
+        "f8863.paid": false,
         "div.box2b": 0,
         "div.box2c": 0,
         "div.box2d": 0,

@@ -1,0 +1,52 @@
+{
+ "kind": "classm",
+ "form": "f8880",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "case": "classm.f8880.4",
+   "printed": "1(b)",
+   "project": "$665.00",
+   "model": "$1,330.00",
+   "ruling": "Ruling: model error; model value dropped from the fixture. The case (fixtures/2025/classm.json, classm.f8880.4; married filing jointly) has the spouse born after January 1, 2008 (person[spouse].sav_born false) with a $665.00 Roth IRA contribution (person[spouse].sav_roth 66500), no other contribution or distribution. The model's work, \"Spouse line 1 entries: 665.00 + 665.00 = 1330.00\", counts the one $665.00 contribution twice; f8880 p. 1, line 1, \"Traditional and Roth IRA contributions, and ABLE account contributions by the designated beneficiary for 2025\", is that one contribution. The project's $665.00 is right on its reading (amb.2025.savers_ineligible_column puts the ineligible spouse's zero on line 6(b)).",
+   "drop": true,
+   "context": "505fac1d994dcbb08076ba22f83162b9d6dc250c5e75694a42df05b1f31d9f64"
+  },
+  {
+   "case": "classm.f8880.4",
+   "printed": "3(b)",
+   "project": "$665.00",
+   "model": "$1,330.00",
+   "ruling": "Ruling: model error; model value dropped from the fixture. Inherits the double count on line 1(b) (model 1,330.00 + 0.00); the case has one $665.00 Roth IRA contribution for the spouse. The case (fixtures/2025/classm.json, classm.f8880.4; married filing jointly) has the spouse born after January 1, 2008 (person[spouse].sav_born false) with a $665.00 Roth IRA contribution (person[spouse].sav_roth 66500), no other contribution or distribution.",
+   "drop": true,
+   "context": "505fac1d994dcbb08076ba22f83162b9d6dc250c5e75694a42df05b1f31d9f64"
+  },
+  {
+   "case": "classm.f8880.4",
+   "printed": "5(b)",
+   "project": "$665.00",
+   "model": "$1,330.00",
+   "ruling": "Ruling: model error; model value dropped from the fixture. Inherits the double count on line 1(b) (1,330.00 - 0.00); project 665.00. The case (fixtures/2025/classm.json, classm.f8880.4; married filing jointly) has the spouse born after January 1, 2008 (person[spouse].sav_born false) with a $665.00 Roth IRA contribution (person[spouse].sav_roth 66500), no other contribution or distribution.",
+   "drop": true,
+   "context": "505fac1d994dcbb08076ba22f83162b9d6dc250c5e75694a42df05b1f31d9f64"
+  },
+  {
+   "case": "classm.f8880.4",
+   "printed": "6(b)",
+   "project": "$0.00",
+   "model": "$1,330.00",
+   "ruling": "Ruling: model error; model value dropped from the fixture. Two errors: the line 1(b) double count, and the Caution not applied at all. f8880 p. 1, Caution: \"You cannot take this credit if either of the following applies. ... The person(s) who made the qualified contribution or elective deferral (a) was born after January 1, 2008; (b) is claimed as a dependent on someone else’s 2025 tax return; or (c) was a student\"; the spouse was born after January 1, 2008, so the spouse's contribution gives no credit on any reading of amb.2025.savers_ineligible_column (the chosen reading zeroes the spouse's column on line 6(b), the other bars the whole credit). The model's $1,330.00 counts it; the project's $0.00 is right. The case (fixtures/2025/classm.json, classm.f8880.4; married filing jointly) has the spouse born after January 1, 2008 (person[spouse].sav_born false) with a $665.00 Roth IRA contribution (person[spouse].sav_roth 66500), no other contribution or distribution.",
+   "drop": true,
+   "context": "505fac1d994dcbb08076ba22f83162b9d6dc250c5e75694a42df05b1f31d9f64"
+  },
+  {
+   "case": "classm.f8880.4",
+   "printed": "7",
+   "project": "$0.00",
+   "model": "$1,330.00",
+   "ruling": "Ruling: model error; model value dropped from the fixture. Inherits line 6(b): with the spouse ineligible under the Caution (f8880 p. 1, \"The person(s) who made the qualified contribution or elective deferral (a) was born after January 1, 2008\") and no taxpayer contribution, line 7 is $0.00 (\"If zero, stop; you can’t take this credit\"), as the project has. The case (fixtures/2025/classm.json, classm.f8880.4; married filing jointly) has the spouse born after January 1, 2008 (person[spouse].sav_born false) with a $665.00 Roth IRA contribution (person[spouse].sav_roth 66500), no other contribution or distribution.",
+   "drop": true,
+   "context": "505fac1d994dcbb08076ba22f83162b9d6dc250c5e75694a42df05b1f31d9f64"
+  }
+ ]
+}

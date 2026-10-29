@@ -10,6 +10,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: wages $60,000 (you) and $50,000 (spouse), one employer each. Line 1a $110,000; line 11b $110,000; standard deduction $31,500 (line 12e, line 14); line 15 $78,500. Tax Table, $78,500-$78,550, married filing jointly: tax on the midpoint $78,525 = $2,385 + 12% x $54,675 = $8,946. No excess social security (one employer each).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -235,6 +236,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: you: two employers, $100,000 each, $6,200 social security tax each, $12,400 in all; excess over $10,918.20 is $1,481.80. Spouse: two employers, $50,000 each, $6,200 in all, no excess. The credit is figured separately for each spouse: Schedule 3 line 11 $1,481.80.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -454,6 +456,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: each spouse: two employers, $100,000 each; $1,481.80 excess each; Schedule 3 line 11 $2,963.60. Combined Medicare wages $400,000; Form 8959 line 7: 0.9% of ($400,000 - $250,000) = $1,350.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -676,6 +679,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: Medicare wages $150,000 each, one employer each (no employer withholds Additional Medicare Tax below $200,000). Form 8959 line 1 $300,000; line 5 $250,000 (married filing jointly); line 6 $50,000; line 7 0.9% = $450; line 18 $450.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -893,6 +897,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: you born before January 2, 1961; spouse blind. Two boxes: $31,500 + 2 x $1,600 = $34,700. Schedule 1-A Part V: you are 65 with a valid SSN, MAGI $110,000 under $150,000, line 35 $6,000, line 36a $6,000, line 36b $0 (spouse not 65); line 37 $6,000. Line 14 = $34,700 + $6,000 = $40,700.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -1111,6 +1116,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: both born before January 2, 1961, and both blind: four boxes, $31,500 + 4 x $1,600 = $37,900. Both 65 with valid SSNs, MAGI $110,000: lines 36a and 36b $6,000 each, line 37 $12,000. Line 14 $49,900.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -1329,6 +1335,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: both 65 with valid SSNs; wages $120,000 and $80,000. Line 31 $200,000; line 32 $150,000; line 33 $50,000; line 34 6% = $3,000; line 35 $3,000; lines 36a and 36b $3,000 each; line 37 $6,000.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -1551,6 +1558,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: both 65; your spouse has an ITIN but no SSN valid for employment. Line 36a $6,000; line 36b $0 (the spouse claiming must have a valid SSN, i1040gi p. 110); line 37 $6,000.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -1762,6 +1770,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: only your spouse born before January 2, 1961 (valid SSN); MAGI $110,000. Line 36a $0; line 36b $6,000; line 37 $6,000. Standard deduction $31,500 + $1,600 = $33,100.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -1975,6 +1984,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: your spouse was born in 1960 and died in 2025 before reaching age 65: does not qualify (i1040gi p. 110, Death of a taxpayer); this case is refused at line 36b, and Form 1040 line 13b with it.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -2203,6 +2213,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: both eligible educators, expenses $400 (you) and $450 (spouse): $300 each, line 11 $600; line 10 $600; line 11b $110,000 - $600 = $109,400.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -2414,6 +2425,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: you are an eligible educator with $250 of expenses; your spouse paid $500 but is not an eligible educator: line 11 $250.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -2617,6 +2629,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: qualified tips $15,000 (you, one employer) and $14,000 (spouse, one employer): two employers, so line 4a $0 and the worksheet total on line 4c $29,000; line 7 is limited to $25,000 (not a per-spouse limit); MAGI $110,000 under $300,000; line 13 $25,000.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -2837,6 +2850,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: as above, but your spouse has no SSN valid for employment: only your $15,000 counts (the spouse who received the tips must have a valid SSN); one employer, line 4a and line 4c $15,000; line 13 $15,000.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -3054,6 +3068,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: overtime premium $14,000 (you) and $13,000 (spouse): line 14a $27,000; line 15 limited to $25,000 (married filing jointly); line 21 $25,000.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -3274,6 +3289,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: each spouse has an HSA and family coverage all year: line 3 $8,550 on each form; line 6 divides it equally, $4,275 each (Step 1 $8,550, Step 4 $0); each contributed $4,275; line 13 $4,275 each; Schedule 1 line 13 $8,550.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -3518,6 +3534,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: family coverage all year; you agree to allocate the whole $8,550 to you and nothing to your spouse: your line 6 $8,550, your spouses $0; you contributed $8,550: line 13 $8,550; Schedule 1 line 13 $8,550.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -3756,6 +3773,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: agreed parts of $8,550 and $1,000 add to more than the $8,550 Step 1 limit: refused at line 6 (the spouses form is reached first).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -3991,6 +4009,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: you count 12 family months and your spouse none, though if either had family coverage while both were eligible both are treated as having it (i8889 p. 4, rule 1): your form is refused; your spouses line 6 is the self-only $4,300.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -4227,6 +4246,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: each spouse eligible all year, family coverage for 6 months (including December 1), self-only for 6. Step 1: $8,550 x 6 / 12 = $4,275; Step 2: half, $2,137.50; Step 3: $4,275 - $2,137.50 = $2,137.50; Step 4: self-only months $4,300 x 6 / 12 = $2,150; line 6 $4,287.50 each. Each contributed $4,287.50; Schedule 1 line 13 $8,575.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -4471,6 +4491,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: family coverage all year, you are 55 or older: the additional contribution amount is not on line 3 (married with family coverage, i8889 p. 5 Note): line 3 $8,550, line 6 $4,275; line 7 = $1,000 x 12 / 12 = $1,000; line 8 $5,275. You contributed $5,275, your spouse $4,275: Schedule 1 line 13 $9,550.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -4715,6 +4736,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: only you have an HSA (family coverage all year): no division, line 6 = line 5 = $8,550; contribution $8,550; Schedule 1 line 13 $8,550.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -4930,6 +4952,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: married, self-only coverage all year, 55 or older: the $1,000 stays on line 3 (rule 6), line 3 $5,300, line 7 $0; contribution $5,300; line 13 $5,300.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -5150,6 +5173,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: two Forms 8889 entered for you: one per person, combining your own HSAs; separate forms are for an inherited HSA, outside this tool (i8889 p. 3): refused at Schedule 1 line 13.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -5380,6 +5404,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: no children; you are 22 (born after January 1, 2001), your spouse 35: \"you, or your spouse if filing a joint return\" were 25 to 64, so Step 4 question 2 is met. Earned income $15,000 ($10,000 and $5,000); EIC Table, no children, $15,000-$15,050, married filing jointly column: $649 (line 1 and line 3 the same). Line 27a $649.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -5585,6 +5610,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: as above but your spouse has no SSN valid for employment: Step 1 question 2 asks whether you, and your spouse if filing jointly, have one; the answer is no, so no EIC: line 27a $0.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -5787,6 +5813,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: the Stage 8 case of a filer without an SSN valid for employment and one qualifying child, now joint with a spouse who has one: only one spouse needs a valid SSN for the child tax credit (the other has an ITIN): Schedule 8812 line 4 one child, line 5 $2,200, line 8 $2,200.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -5996,6 +6023,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: as above but neither spouse has an SSN valid for employment and your spouse has no SSN or ITIN: no child tax credit, and no credit for other dependents (\"you, and your spouse if filing jointly, must have either an SSN or ITIN\"): line 4 0, line 5 $0, line 8 $0.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -6204,6 +6232,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: benefits $30,000 for you and your spouse together, wages $20,000 (one spouse): worksheet line 2 $15,000; line 7 $35,000; line 8 $32,000 (married filing jointly); line 9 $3,000; line 10 $12,000; line 11 $0; line 12 $3,000; line 13 $1,500; line 14 $1,500; line 18 $1,500. Form 1040 line 6b $1,500.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -6406,6 +6435,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: student loan interest $2,500; MAGI $185,000 (wages $100,000 and $85,000). Worksheet line 5 $170,000 (married filing jointly); line 6 $15,000; line 7 $15,000 / $30,000 = 0.500; line 8 $1,250; deduction $1,250 (line 10).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -6612,6 +6642,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: married filing jointly with only your entry: refused at line 1a (one entry for each spouse on a joint return).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer"
@@ -6785,6 +6816,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: single with a spouse entry: refused at line 1a.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer",
@@ -6994,6 +7026,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: each spouse an eligible individual from July 1 with family coverage, using the last-month rule (treated as eligible with family coverage all year, i8889 p. 4 rule 2); you are 55 or older. Step 1: $8,550 x 12 / 12 = $8,550; half $4,275; Step 4 $0; line 6 $4,275 each. Your line 7: $1,000 x 12 / 12 = $1,000; line 8 $5,275. Contributions $5,275 and $4,275: Schedule 1 line 13 $9,550.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -7250,6 +7283,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: each spouse an eligible individual from April 1 (9 months, all with family coverage, December 1 family), no last-month rule. Step 1: $8,550 x 9 / 12 = $6,412.50; half $3,206.25; Step 4: $4,300 x 9 - $4,300 x 9 = $0; line 6 $3,206.25 each. Contributions $3,206.25 each: Schedule 1 line 13 $6,412.50.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -7486,6 +7520,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: you divide the family limit equally and your spouse enters an agreed allocation: both Forms 8889 must use the allocation you both agree on, so line 6 is refused (the spouses form is reached first).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -7721,6 +7756,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: the Stage 8 case with one qualifying child, joint: you have an SSN valid for employment, your spouse has neither an SSN nor an ITIN. The other spouse must have an SSN or ITIN for the child tax credit, and both must for the credit for other dependents: line 4 0, line 5 $0, line 8 $0.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -7929,6 +7965,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: both 65; you have an ITIN but no SSN valid for employment, your spouse has one. Line 36a $0; line 36b $6,000 (MAGI $110,000); line 37 $6,000.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -8139,6 +8176,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: your qualified tips $10,000 and $6,000 from two employers; your spouse (no SSN valid for employment) $4,000 from one. Only your two employers count: line 4a $0, line 4c $16,000; line 13 $16,000.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -8358,6 +8396,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: only your spouse received qualified tips ($5,000) and has no SSN valid for employment: Part II does not apply, so its lines, among them line 8 (modified AGI), are $0; line 13 $0.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -8566,6 +8605,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: overtime premium $10,000 (you) and $5,000 (spouse, no SSN valid for employment): only yours counts, line 14a $10,000; line 21 $10,000.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -8782,6 +8822,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: a joint return with neither spouse born before January 2, 1961: Part V does not apply, so lines 31 to 37 are $0 (i1040gi p. 110, \"Fill out Schedule 1-A, Part V, only if\").",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -8990,6 +9031,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: only your spouse had qualified overtime ($5,000) and has no SSN valid for employment: Part III does not apply, so its lines, among them line 16 (modified AGI), are $0; line 21 $0.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -9200,6 +9242,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: married filing separately (refused overall at Schedule 3 line 11; Schedule A still figured): state and local income tax $30,000; AGI $100,000 below the $250,000 threshold for a separate return, so the $40,000 ceiling is not reduced; half for a separate return, $20,000; line 5e the smaller of $30,000 and $20,000, $20,000.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfs",
         "$person": [
           "taxpayer"
@@ -9367,6 +9410,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: as above with AGI $400,000: $150,000 over the $250,000 threshold, reduced by 30% = $45,000, the ceiling $40,000 - $45,000 is below the $10,000 floor, so $10,000; half, $5,000; line 5e $5,000.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfs",
         "$person": [
           "taxpayer"

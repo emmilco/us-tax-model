@@ -1,0 +1,14 @@
+{
+ "bank": null,
+ "errors": [],
+ "failures": [],
+ "family": "claude",
+ "form": "aqee",
+ "lines": [],
+ "log_sha256_at_triage": "f950947cc2231b8b5fd838f30ba5b139c77cf037020b9a308395c009b7a8bdd4",
+ "policy": "executable-triage-v2",
+ "response_sha256": "109d2166d0186dadd49e7995f950c99b6f26da6428df88499014f591b2ccfec3",
+ "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
+ "state": "no candidate lines",
+ "subject_sha256": "295917039b59519098258d4955b3f383a2c177683a1b8d1019e6973af3bd62a3"
+}

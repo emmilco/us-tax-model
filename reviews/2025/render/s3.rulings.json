@@ -11,6 +11,13 @@
   {
    "printed": "1",
    "restated": "Enter the amount from ftc helper \"Credit is the smaller of creditable foreign tax and regular income tax; zero if no foreign tax\".",
+   "model": "The election credit is the smaller of total foreign tax or regular tax, and regular tax follows the line 20 instructions: \"the total of Form 1040, 1040-SR, or 1040-NR, line 16, and Schedule 2 (Form 1040), Part I, line 1z, less any tax included on line 16 from Form 4972.\" The ftc.regular_tax helper adds f1040 line 16 and s2 line 1z but never subtracts Form 4972 tax, and no refusal excludes Form 4972.",
+   "ruling": "Ruling: scope; i1116 p. 25, Line 20: \"Individuals. Enter the total of Form 1040, 1040-SR, or 1040-NR, line 16, and Schedule 2 (Form 1040), Part I, line 1z, less any tax included on line 16 from Form 4972\". The model says ftc.regular_tax never subtracts Form 4972 tax and that no refusal excludes Form 4972. Form 4972 is refused: f1040.line16, which ftc.regular_tax reads, refuses when scope.other_line16 is yes (\"Any additional Form 1040 line 16 tax or filing, including filing Form 8814 (even with no tax), Form 4972, ...\"; its refusal form \"Forms 8814, 4972, 8615, 8621 or 8978, a section 962 election, or an education credit recapture\", forms/2025/f1040.yaml), so on every computed return line 16 includes no Form 4972 tax and there is nothing to subtract. The rest of the model's reading confirms that Stage 18's F1 is fixed: ftc.regular_tax is now f1040.line16 plus s2.line1z (forms/2025/ftc.yaml). Stage 19 did not change line 1. Project stands.",
+   "context": "0ed930c2197bdb92bcc9426247435502f55e9982ca5cddc2fcbefd1a683e8f8c"
+  },
+  {
+   "printed": "1",
+   "restated": "Enter the amount from ftc helper \"Credit is the smaller of creditable foreign tax and regular income tax; zero if no foreign tax\".",
    "model": "The form says only \"Foreign tax credit. Attach Form 1116 if required\", and the Line 1 instructions are not in the pages given. Nothing provided supports capping the credit at Form 1040 line 16, or the $300/$600 limit and other election conditions that trigger the Form 1116 refusal.",
    "ruling": "Ruling: representation; project retained. The helper is the election to claim the credit without Form 1116 (i1116 pp. 1–2, the election to claim the foreign tax credit without filing Form 1116: the credit is the smaller of the total foreign tax and the regular tax when all foreign income is passive, reported on payee statements and within the $300/$600 limit); every failed condition refuses through `ftc.needs1116`. The ftc worksheet has its own render log. No change to the data."
   },

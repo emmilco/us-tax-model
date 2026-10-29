@@ -1,3 +1,12 @@
+# Handoff — updated 2026-10-29, later (Claude Opus 5.5)
+
+## State after Stage 19
+
+Stage 19, the education credits (Form 8863), is built and reviewed: `handoffs/HANDOFF-STAGE-19.md`. The estimate is
+79.6% (from 75.6%), short of 80%; the route's last stage, Stage 21 (Form 5329), is next: its decision batch first,
+from `research/premises/stage21-form-5329.md` and its verification, then the owner's answers. Findings BUG-0194 to
+BUG-0199 (BUG-0192 and 0193 closed); review-tool points T-081.
+
 # Handoff — updated 2026-10-29 (Claude Opus 5.5)
 
 ## State after Stage 18

@@ -34,14 +34,14 @@ const range = (a, b) => Array.from({ length: b - a + 1 }, (_, i) => `l${a + i}`)
 // with no arguments; part2a/part2b of Schedule 8812 return records whose fields are read too.
 const READ = [
   ['f1040', (f) => f, ['l1a', 'l1z', 'l2b', 'l3a', 'l3b', 'l6a', 'l6b', 'l7a', 'l8', 'l9', 'l10', 'l11a', 'l11b', 'l12e', 'l13a', 'l13b',
-    'l14', 'l15', 'l16', 'l17', 'l18', 'l19', 'l20', 'l21', 'l22', 'l23', 'l24', 'l25a', 'l25c', 'l25d', 'l27a', 'l28', 'l31', 'l32',
+    'l14', 'l15', 'l16', 'l17', 'l18', 'l19', 'l20', 'l21', 'l22', 'l23', 'l24', 'l25a', 'l25c', 'l25d', 'l27a', 'l28', 'l29', 'l31', 'l32',
     'l33', 'l34', 'l37', 'standardDeduction']],
   ['s1', (f) => f.schedule1, ['l7', 'l9', 'l10', 'l11', 'l13', 'l15', 'l19a', 'l21', 'l26']],
   ['s1a', (f) => f.schedule1A, ['l1', 'l3', 'l4a', 'l4c', 'l6', 'l7', 'l8', 'l9', 'l10', 'l11', 'l12', 'l13', 'l14a', 'l14c', 'l15', 'l16',
     'l17', 'l18', 'l19', 'l20', 'l21', 'l23', 'l24', 'l25', 'l26', 'l27', 'l28', 'l29', 'l30', 'l31', 'l32', 'l33', 'l34', 'l35', 'l36a',
     'l36b', 'l37', 'l38', 'isNeeded']],
   ['s2', (f) => f.schedule2, ['l2', 'l3', 'l4', 'l11', 'l12', 'l21']],
-  ['s3', (f) => f.schedule3, ['isNeeded', 'l1', 'l2', 'l4', 'l5a', 'l5b', 'l8', 'l9', 'l11', 'l15']],
+  ['s3', (f) => f.schedule3, ['isNeeded', 'l1', 'l2', 'l3', 'l4', 'l5a', 'l5b', 'l8', 'l9', 'l11', 'l15']],
   ['sa', (f) => f.scheduleA, ['isNeeded', 'l1', 'l2', 'l3', 'l4', 'l5a', 'l5b', 'l5d', 'l5e', 'l7', 'l8a', 'l8e', 'l9', 'l10', 'l11', 'l12',
     'l14', 'l17']],
   ['sb', (f) => f.scheduleB, ['l2', 'l4', 'l6']],
@@ -63,6 +63,9 @@ const READ = [
   ['f5695', (f) => f.f5695, ['l15', 'l30']],
   ['f6251', (f) => f.f6251, ['l11']],
   ['f8995', (f) => f.f8995, ['deductions']],
+  // Form 8863: the public lines and the per-credit amounts F8863.ts keeps in private (TypeScript-only) members.
+  ['f8863', (f) => f.f8863, ['isNeeded', 'aotcBeforePhaseOut', 'aotcAfterPhaseOut', 'aotcNonrefundable', 'llcBeforePhaseOut',
+    'llcAfterPhaseOut', 'l8', 'l19']],
   ['f8962', (f) => f.f8962, ['isNeeded', 'contributionAmount', 'allowablePtc', 'annualAdvancePtc', 'credit', 'excessRepayment']]
 ]
 

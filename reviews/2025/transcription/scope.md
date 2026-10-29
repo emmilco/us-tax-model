@@ -4,22 +4,22 @@ Second transcription of `Proof-of-concept scope screening` by an isolated model 
 
 | field | value |
 | --- | --- |
-| date | 2026-10-28 |
+| date | 2026-10-29 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | c3113c54f794fcd4772074e379480c05c39f7a584082c3fb595fe8187bc2658a |
+| prompt sha256 | 7074ecb0a2547a942323807bc8158d66c587781f833d5583834b1c9707a8bca9 |
 | prompt policy | source-only-computation-v2 |
 | comparison policy | checked-expression-types-v2 |
 | input context policy | required-review-interfaces-v2 |
 | complete input context | pass |
-| required input context sha256 | 5ac12627d8763adddc11695970bc9f73665e746b0fb583dc5ffa75e5a76a3e89 |
+| required input context sha256 | cf20c37e86adab6c403890e6d32cb88b8dd53b1cc8302a059e39518f9ced1c9a |
 | type validation policy | project-expression-types-v3 |
 | model type validation | pass |
 | system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
 | reasoning effort | provider default |
 | output token budget | transport default (65536 for DeepSeek) |
 | interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
-| subject sha256 | de4cdbc23a6b3776ce1275620efad1c547ebb2b7eb5fcf3ebad9f7c066b83606 |
+| subject sha256 | f20949791e737a3a5a3208a079db7881d94ebdce21a902a586d72768afa13b63 |
 | printed lines compared | 0 |
 | agree / disagree / missing | 0 / 0 / 0 |
 | extra printed lines in second | none |
@@ -37,9 +37,11 @@ Second transcription of `Proof-of-concept scope screening` by an isolated model 
 
 ```yaml
 ```yaml
-# No printed lines or result interfaces were requested for form "scope".
-# The four screening inputs (scope.schedule1, scope.credits, scope.other_income,
-# scope.other_line16) already exist and must not be redefined. No new lines are added.
+# No printed lines and no result interfaces were requested for form "scope".
+# The four screening questions (scope.schedule1, scope.credits, scope.other_income,
+# scope.other_line16) already exist as inputs and must not be redefined.
+# The supplied Form 1040 pages do not call for any computation from them on this
+# form, so no line is added here.
 lines: []
 ```
 ```

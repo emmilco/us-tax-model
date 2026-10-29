@@ -9,6 +9,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Synthetic whole return: two employers $80,000+$40,000, interest $1,200, dividends $2,000 ordinary/$1,500 qualified; single; standard deduction; balance due. No independent human hand-work is claimed.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -351,6 +352,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Synthetic whole return: one employer $130,000, $2,000 estimated payments; single; standard deduction; refund by withholding. No independent human hand-work is claimed.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -680,6 +682,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Synthetic whole return: $90,000 wages, $1,000 interest, $4,000 dividends ($2,000 qualified), $6,000 long-term gain, itemized $25,000; single. No independent human hand-work is claimed.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -1026,6 +1029,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Synthetic refusal regression: Schedule 1, Schedule 1-A and credit screens all fire; the refused lines and their propagation are asserted. No independent human review is claimed.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -1342,6 +1346,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Synthetic refusal regression: other-income screen fires; line 8 and its downstream lines refuse with the cited identity. No independent human review is claimed.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"

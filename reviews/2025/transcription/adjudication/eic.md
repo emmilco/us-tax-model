@@ -2,7 +2,43 @@
 
 Method: `README.md` in this directory.
 
-## Round 4
+## Stage 19 round 2
+
+Fresh reviews of 2026-10-29 (Claude claude-opus-5-5 and deepseek-flash, transcription; Claude class M). eic was not
+reviewed in Stage 19 round 1; its only change since round 4 is BUG-0195, the wording of `eic.us_home` ("Was your main
+home, and your spouse's if filing a joint return, in the United States for more than half of 2025?", i1040gi p. 42,
+Step 4, question 3, now quoted by the label and question), which changes no expression. Triage `../triage/eic.json`
+(executable-triage-v2; 1,325 fixtures, 500 generated returns seed 20261026, 110 partial records; 1,935 comparisons). The
+deepseek reply fails the project schema (`eic.self_employed`, `eic.separated_box`: any/all lists of bare ids), so
+`../triage/eic.deepseek.json` is `invalid` and its lines are ruled by reading. Rulings in
+`.transcription/proposed/stage19/round2/` (`transcription.eic[.deepseek].json`, `classm.eic.json`). Round 4 reasoning
+was reused and re-checked against the new replies and witnesses. No difference turns on `eic.us_home`.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | eic.credit | model error | 1,830/1,935; 0 value; 38 candidate-unknown (8 completed), 55 candidate-refuses, 9 project-unknown, 3 project-refuses | i1040gi p. 40, Step 1 q1 | Child count needed above every Step 1 limit (classm.f8995a.1, dependent.us_half); refusals scope; project unknowns withhold tax-exempt interest. |
+| claude | transcription | eic.check_27c | model error | 1,847/1,935; 0 value; 46 candidate-unknown (13 completed), 32 candidate-refuses, 10 project-refuses | i1040gi p. 43, Line 27c; p. 40 | Same unknowns; the round 4 household.married reading is gone; refusals on refused returns. |
+| claude | transcription | eic.separated_box | model error | 1,891/1,935; 0 value; 3 candidate-unknown (1 completed), 32 candidate-refuses, 9 project-refuses | i1040gi p. 41, Step 3 q3 and q6; p. 44 | Same terms as the project (amb.2025.separated_spouses_box); unknowns as eic.credit (audit.household.hoh_married_no_community_property). |
+| claude | transcription | 4b | model error | 661/1,935; 1,227 candidate-shows-skipped (641 completed), 21 candidate-unknown, 8 candidate-refuses, 18 project-refuses | i1040gi p. 47; p. 42, Step 5 q2 | Shown for filers who never use Worksheet B (classm.f2441.2.deepseek $85,000). |
+| claude | transcription | 2 | model error | 1,683/1,935; 66 candidate-shows-skipped (22 completed), 46 candidate-unknown, 96 project-unknown (all refused), 44 refusals | i1040gi p. 40; p. 46 | Shown after STOPs (classm.f4952.2.deepseek $308); project unknowns are "no band" lookups where `eic.eligible` itself refuses (T-070 (2)). |
+| claude | transcription | 5 | model error | 1,608/1,935; 242 candidate-shows-skipped (151 completed), 50 candidate-unknown, 35 refusals | i1040gi p. 46, lines 4 and 5 | Figured and shown when line 4 is Yes (classm.f2441.1.deepseek $65). |
+| claude | transcription | 6 (eic.line6) | model error | 1,824/1,935; 25 candidate-shows-skipped (10 completed), 48 candidate-unknown, 38 refusals | i1040gi pp. 40, 46 | Shown after STOPs (stage13.eic_spouse_no_ssn $649). |
+| deepseek | transcription | eic.self_employed | model error | invalid (schema) | i1040gi p. 42, Step 5 q2 | Declaration fails validation; the reading is otherwise the project's Schedule C test. |
+| deepseek | transcription | eic.credit | model error | invalid; by reading | i1040gi p. 40, Steps 1 and 2; p. 42, Step 4 | No Steps 1 to 5 at all: table credit for every filer. |
+| deepseek | transcription | eic.check_27c | model error | invalid; by reading | i1040gi p. 43, Line 27c | Checked whenever the credit is zero (as round 4). |
+| deepseek | transcription | eic.separated_box | model error | invalid (schema) | i1040gi p. 41, Step 3 q3 and q6 | Declaration fails; no Steps 1 and 2, no household.married. |
+| deepseek | transcription | eic.clergy | scope | invalid; by reading | i1040gi p. 43, Line 27b | Constant no; the project refuses on scope.schedule1. |
+| deepseek | transcription | 1, 2, 5, 6 (eic.line6) | model error | invalid; by reading | i1040gi pp. 40, 42, 46 | Figured and shown on every return, after any STOP; line 1 omits the merged Worksheet B line 6. |
+| claude | class M | classm.eic.2, (Step 5, 1) to (Step 5, 5) | model error (drop) | reply blank, project $31,939.00 / $0.00 | i1040gi p. 40, Step 1 q1 | Reply format "Step 5, n" (T-070 (1)); its blank is the source reading; the project's Step 5 helpers shown on a return that never reaches Step 5 are open T-067 (BUG-0151). |
+| claude | class M | classm.eic.4 and classm.eic.6, (Step 5, 1) to (Step 5, 5) | model error | reply values equal the project's ($5,137.00 / $0.00) | i1040gi p. 42, Step 5 | Reply format only (T-070 (1)); nothing to drop. |
+| claude | class M | classm.eic.5, 6 (eic.line6) | representation (drop) | model $0.00; project hidden (internal $4,080.00) | i1040gi p. 40, Step 1 q2 | No valid SSN: line 6 hidden, credit $0.00; class M compared the hidden value (T-079 (1)). |
+
+Class M check (BUG-0195): none of the 16 disagreements turns on the reworded question; `eic.us_home` is Yes on cases 2, 4
+and 5 and No on case 6, whose return is refused (`sa.excluded_income`).
+
+Findings: none. Every disputed project line stands; the BUG-0195 wording matches the source and introduced no error.
+
+## Round 4 (superseded subject)
 
 Fresh reviews of 2026-10-27 (Claude claude-opus-5-5 and deepseek-flash). The only eic change since round 3 is T-071:
 `eic.separated_box` now links `amb.2025.separated_spouses_box`, which changes no value. The batch also changed person and

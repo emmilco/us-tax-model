@@ -20,6 +20,13 @@
   {
    "printed": "14",
    "restated": "Input — Total other payments or refundable credits (supplied subtotal; preparation outside Stage 2)",
+   "model": "IRS line 14 says \"Add lines 13a through 13z,\" but the restatement accepts a supplied subtotal instead of adding those lines.",
+   "ruling": "Ruling: scope; f1040s3 p. 1, line 14, \"Total other payments or refundable credits. Add lines 13a through 13z\". The restatement says what the project does: line 14 is a supplied subtotal, an acknowledged input boundary (the component credits are prepared outside the tool), with no screen. Stage 19 did not touch it; same ruling as Stage 18. Project unchanged.",
+   "context": "a2df2f8d83e14ad14e7d629a7254d112711a6b997f66c88a767321a908ba3ffb"
+  },
+  {
+   "printed": "14",
+   "restated": "Input — Total other payments or refundable credits (supplied subtotal; preparation outside Stage 2)",
    "model": "IRS line 14 says 'Add lines 13a through 13z'; the restatement instead takes a supplied subtotal and does not compute that addition.",
    "ruling": "Ruling: scope/input boundary; f1040s3 (2025) p.1 line14 totals lines13a–13z. This slice explicitly requests that already-prepared subtotal as an input, with preparation of its component credits outside Stage2. No independent computation or worked-value evidence for that subtotal is claimed. The objection correctly identifies the unimplemented preparation; it is an acknowledged input boundary, not model noise.",
    "context": "1e647a16495198dafd67b5fdc7aa5541ee300b6baecd665a24a633720e7fceeb"

@@ -249,9 +249,16 @@
 ## (helper) — `dependent.qr_relationship`
 
 - **Authored helper label:** A relative listed in Step 4, or any other person who lived with you all year
-- **Encoded (Bool):** (helper "Relationship to you" = 'child' or helper "Relationship to you" = 'sibling' or helper "Relationship to you" = 'parent' or helper "Relationship to you" = 'parent_relative' or helper "Relationship to you" = 'in_law' or (helper "Relationship to you" = 'household_member' or helper "Relationship to you" = 'sibling_descendant' or helper "Relationship to you" = 'other') and helper "Months lived with you in 2025, counting temporary absences" = 12 (a count))
-- Expr: `{"any":[{"eq":["dependent.relationship",{"const":"child"}],"op":"test"},{"eq":["dependent.relationship",{"const":"sibling"}],"op":"test"},{"eq":["dependent.relationship",{"const":"parent"}],"op":"test"},{"eq":["dependent.relationship",{"const":"parent_relative"}],"op":"test"},{"eq":["dependent.relationship",{"const":"in_law"}],"op":"test"},{"all":[{"any":[{"eq":["dependent.relationship",{"const":"household_member"}],"op":"test"},{"eq":["dependent.relationship",{"const":"sibling_descendant"}],"op":"test"},{"eq":["dependent.relationship",{"const":"other"}],"op":"test"}],"op":"test"},{"eq":["dependent.months",{"const":12,"type":"Count"}],"op":"test"}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** (helper "Relationship to you" = 'child' or helper "Relationship to you" = 'sibling' or helper "Relationship to you" = 'parent' or helper "Relationship to you" = 'parent_relative' or helper "Relationship to you" = 'in_law' or (helper "Relationship to you" = 'household_member' or helper "Relationship to you" = 'sibling_descendant' or helper "Relationship to you" = 'other') and helper "Months lived with you in 2025, counting temporary absences" = 12 (a count) and (helper "Relationship to you" ≠ 'other' and helper "Relationship to you" ≠ 'sibling_descendant' or helper "Your relationship with this person did not violate local law" = true))
+- Expr: `{"any":[{"eq":["dependent.relationship",{"const":"child"}],"op":"test"},{"eq":["dependent.relationship",{"const":"sibling"}],"op":"test"},{"eq":["dependent.relationship",{"const":"parent"}],"op":"test"},{"eq":["dependent.relationship",{"const":"parent_relative"}],"op":"test"},{"eq":["dependent.relationship",{"const":"in_law"}],"op":"test"},{"all":[{"any":[{"eq":["dependent.relationship",{"const":"household_member"}],"op":"test"},{"eq":["dependent.relationship",{"const":"sibling_descendant"}],"op":"test"},{"eq":["dependent.relationship",{"const":"other"}],"op":"test"}],"op":"test"},{"eq":["dependent.months",{"const":12,"type":"Count"}],"op":"test"},{"any":[{"all":[{"ne":["dependent.relationship",{"const":"other"}],"op":"test"},{"ne":["dependent.relationship",{"const":"sibling_descendant"}],"op":"test"}],"op":"test"},{"eq":["dependent.lawful",{"const":true}],"op":"test"}],"op":"test"}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 19, Step 4, "A qualifying relative is your..." through "Any other person (other than your spouse) who lived with you all year as a member of your household" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `dependent.lawful`
+
+- **Authored helper label:** Your relationship with this person did not violate local law
+- **Encoded (Bool):** Input — Did your relationship with this person not violate local law? (Asked for a person who is a Step 4 relative only as a member of your household all year, such as a sibling's grandchild or a step sibling's child, or who is no relative.)
+- Expr: `{"op":"input","source":"Did your relationship with this person not violate local law? (Asked for a person who is a Step 4 relative only as a member of your household all year, such as a sibling's grandchild or a step sibling's child, or who is no relative.)"}`
+- Cite: [i1040gi] p. 19, Step 4, "Any other person (other than your spouse) who lived with you all year as a member of your household if your relationship didn’t violate local law." (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `dependent.qr_income`
 
@@ -501,3 +508,208 @@
 - Interpretation: amb.2025.ptc_dependent_filing
 - Expr: `{"alternatives":[{"guard":{"eq":["dependent.ptc_files",{"const":true}],"op":"test"},"then":"dependent.ptc_magi"},{"guard":{"eq":["dependent.ptc_files",{"const":false}],"op":"test"},"then":"dependent.zero"}],"op":"choose"}`
 - Cite: [i8962] p. 8, Line 2b, "Only include your dependents who are required to file an income tax return because their income meets the income tax return filing threshold." (2025; sha256 f4ac86ad)
+
+## (gate) — `dependent.edu`
+
+- **Authored helper label:** Qualified education expenses paid in 2025 for this dependent
+- **Encoded (Bool):** Input — Did anyone pay qualified education expenses in 2025 for this dependent at an eligible educational institution (a college, university, vocational school, or other postsecondary school eligible for federal student aid)?
+- Expr: `{"op":"input","source":"Did anyone pay qualified education expenses in 2025 for this dependent at an eligible educational institution (a college, university, vocational school, or other postsecondary school eligible for federal student aid)?"}`
+- Cite: [i8863] p. 2, Who Can Claim an Education Credit, "You may be able to claim an education credit if you, your spouse, or a dependent you claim on your tax return was a student enrolled at or attending an eligible educational institution." (2025; sha256 195cfd5e)
+
+## (gate) — `dependent.edu_1098t`
+
+- **Authored helper label:** The student received a 2025 Form 1098-T from the institution, or an exception applies
+- **Encoded (Bool):** Input — Did the student receive a 2025 Form 1098-T from the educational institution? Answer yes also if the institution was not required to furnish one (for example a qualified nonresident alien, expenses paid entirely with scholarships or under a formal billing arrangement, or only courses for which no academic credit is awarded), or if the institution did not furnish it and, after February 2, 2026, but before you file, you or the student requested it and you can show the enrollment and the payments.
+- Interpretation: amb.2025.edu_1098t_date
+- Expr: `{"op":"input","source":"Did the student receive a 2025 Form 1098-T from the educational institution? Answer yes also if the institution was not required to furnish one (for example a qualified nonresident alien, expenses paid entirely with scholarships or under a formal billing arrangement, or only courses for which no academic credit is awarded), or if the institution did not furnish it and, after February 2, 2026, but before you file, you or the student requested it and you can show the enrollment and the payments."}`
+- Cite: [i8863] p. 1, Form 1098-T requirement, "To be eligible to claim the American opportunity credit or the lifetime learning credit, the law requires a taxpayer (or a dependent) to have received Form 1098-T, Tuition Statement, from an eligible educational institution, whether domestic or foreign." (2025; sha256 195cfd5e)
+
+## (helper) — `dependent.edu_student`
+
+- **Authored helper label:** An eligible student of this return: expenses paid, a TIN by the due date and a Form 1098-T (or an exception), and claimed as your dependent
+- **Encoded (Bool):** f8863 helper "Qualified education expenses paid in 2025 for you, your spouse or a dependent you claim" = true and helper "Your dependent" = true and helper "Qualified education expenses paid in 2025 for this dependent" = true and helper "SSN, ITIN or ATIN issued on or before the due date of your return?" = true and helper "The student received a 2025 Form 1098-T from the institution, or an exception applies" = true
+- Expr: `{"all":[{"eq":["f8863.paid",{"const":true}],"op":"test"},{"eq":["dependent.claimed",{"const":true}],"op":"test"},{"eq":["dependent.edu",{"const":true}],"op":"test"},{"eq":["dependent.tin",{"const":true}],"op":"test"},{"eq":["dependent.edu_1098t",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [i8863] p. 2, Who can claim a dependent’s expenses, "If a student is claimed as a dependent on another person’s tax return, all qualified education expenses of the student are treated as having been paid by that person. Therefore, only that person can claim an education credit for the student." (2025; sha256 195cfd5e)
+
+## (helper) — `dependent.edu_inst`
+
+- **Authored helper label:** Qualified education expenses required to be paid to the institution
+- **Encoded (NonNegDollars):** Input — Qualified education expenses paid in 2025 for this student, by anyone, that had to be paid to the institution: tuition, required enrollment fees, and books, supplies and equipment required to be paid to the institution as a condition of enrollment or attendance, for academic periods beginning in 2025 or in the first 3 months of 2026. Use the amounts actually paid, which may differ from Form 1098-T box 1. Do not include amounts paid in 2024 or 2026, room and board, insurance, medical expenses (including student health fees), transportation, expenses deducted elsewhere (for example on Schedule C), or expenses used for a tax-free distribution from a Coverdell ESA or qualified tuition program (529 plan); zero if none
+- Expr: `{"op":"input","source":"Qualified education expenses paid in 2025 for this student, by anyone, that had to be paid to the institution: tuition, required enrollment fees, and books, supplies and equipment required to be paid to the institution as a condition of enrollment or attendance, for academic periods beginning in 2025 or in the first 3 months of 2026. Use the amounts actually paid, which may differ from Form 1098-T box 1. Do not include amounts paid in 2024 or 2026, room and board, insurance, medical expenses (including student health fees), transportation, expenses deducted elsewhere (for example on Schedule C), or expenses used for a tax-free distribution from a Coverdell ESA or qualified tuition program (529 plan); zero if none"}`
+- Cite: [i8863] p. 4, Qualified Education Expenses, "Generally, qualified education expenses are amounts paid in 2025 for tuition and fees required for the student’s enrollment or attendance at an eligible educational institution." (2025; sha256 195cfd5e)
+
+## (helper) — `dependent.edu_mat`
+
+- **Authored helper label:** Other course materials (American opportunity credit only)
+- **Encoded (NonNegDollars):** Input — Other course materials paid for in 2025 for this student: books, supplies and equipment needed for a course of study that did not have to be paid to the institution (they count for the American opportunity credit only); the same exclusions as for the expenses paid to the institution; zero if none
+- Expr: `{"op":"input","source":"Other course materials paid for in 2025 for this student: books, supplies and equipment needed for a course of study that did not have to be paid to the institution (they count for the American opportunity credit only); the same exclusions as for the expenses paid to the institution; zero if none"}`
+- Cite: [i8863] p. 4, Qualified Education Expenses, "American opportunity credit: Qualified education expenses include amounts paid for tuition, fees, and course materials, which include books, supplies, and equipment needed for a course of study, whether or not the materials are purchased from the educational institution as a condition of enrollment or attendance." (2025; sha256 195cfd5e)
+
+## (helper) — `dependent.edu_a2025`
+
+- **Authored helper label:** Adjusted Qualified Education Expenses Worksheet, line 2a
+- **Encoded (NonNegDollars):** Input — Tax-free educational assistance received in 2025 for this student's 2025 expenses: the tax-free part of scholarships and fellowship grants (including Pell grants; Form 1098-T box 5 may help), tax-free employer-provided educational assistance, veterans' educational assistance, and other tax-free educational assistance. Do not include wages, loans, gifts, inheritances, withdrawals from personal savings, emergency financial aid grants, or a scholarship the student includes in income (for you or your spouse, the amount on Schedule 1 line 8r); zero if none
+- Expr: `{"op":"input","source":"Tax-free educational assistance received in 2025 for this student's 2025 expenses: the tax-free part of scholarships and fellowship grants (including Pell grants; Form 1098-T box 5 may help), tax-free employer-provided educational assistance, veterans' educational assistance, and other tax-free educational assistance. Do not include wages, loans, gifts, inheritances, withdrawals from personal savings, emergency financial aid grants, or a scholarship the student includes in income (for you or your spouse, the amount on Schedule 1 line 8r); zero if none"}`
+- Cite: [i8863] p. 9, Adjusted Qualified Education Expenses Worksheet, "a. Tax-free educational assistance received in 2025 allocable to the academic period" (2025; sha256 195cfd5e)
+
+## (helper) — `dependent.edu_a2026`
+
+- **Authored helper label:** Adjusted Qualified Education Expenses Worksheet, line 2b
+- **Encoded (NonNegDollars):** Input — Tax-free educational assistance received in 2026, before you file this return, that is allocable to an academic period of these 2025 expenses; zero if none
+- Expr: `{"op":"input","source":"Tax-free educational assistance received in 2026, before you file this return, that is allocable to an academic period of these 2025 expenses; zero if none"}`
+- Cite: [i8863] p. 9, Adjusted Qualified Education Expenses Worksheet, "b. Tax-free educational assistance received in 2026 (and before you file your 2025 tax return) allocable to the academic period" (2025; sha256 195cfd5e)
+
+## (helper) — `dependent.edu_refunds`
+
+- **Authored helper label:** Adjusted Qualified Education Expenses Worksheet, line 2c
+- **Encoded (NonNegDollars):** Input — Refunds of these 2025 qualified education expenses received in 2025, or in 2026 before you file this return; zero if none
+- Expr: `{"op":"input","source":"Refunds of these 2025 qualified education expenses received in 2025, or in 2026 before you file this return; zero if none"}`
+- Cite: [i8863] p. 9, Adjusted Qualified Education Expenses Worksheet, "c. Refunds of qualified education expenses paid in 2025 if the refund is received in 2025 or in 2026 before you file your 2025 tax return" (2025; sha256 195cfd5e)
+
+## (helper) — `dependent.edu_adj_sum`
+
+- **Authored helper label:** Add lines 2a, 2b and 2c
+- **Encoded (NonNegDollars):** Add helper "Adjusted Qualified Education Expenses Worksheet, line 2a", helper "Adjusted Qualified Education Expenses Worksheet, line 2b", and helper "Adjusted Qualified Education Expenses Worksheet, line 2c".
+- Expr: `{"of":["dependent.edu_a2025","dependent.edu_a2026","dependent.edu_refunds"],"op":"sum"}`
+- Cite: [i8863] p. 9, Adjusted Qualified Education Expenses Worksheet, "3. Total adjustments (add lines 2a, 2b, and 2c)" (2025; sha256 195cfd5e)
+
+## (helper) — `dependent.edu_adj`
+
+- **Authored helper label:** Adjusted Qualified Education Expenses Worksheet, line 3 for an eligible student: add lines 2a, 2b and 2c
+- **Encoded (NonNegDollars):** Choose — [helper "An eligible student of this return: expenses paid, a TIN by the due date and a Form 1098-T (or an exception), and claimed as your dependent" = true → helper "Add lines 2a, 2b and 2c"] [helper "An eligible student of this return: expenses paid, a TIN by the due date and a Form 1098-T (or an exception), and claimed as your dependent" = false → helper "No amount for this person"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.edu_student",{"const":true}],"op":"test"},"then":"dependent.edu_adj_sum"},{"guard":{"eq":["dependent.edu_student",{"const":false}],"op":"test"},"then":"dependent.zero"}],"op":"choose"}`
+- Cite: [i8863] p. 9, Adjusted Qualified Education Expenses Worksheet, "3. Total adjustments (add lines 2a, 2b, and 2c)" (2025; sha256 195cfd5e)
+
+## (gate) — `dependent.edu_over`
+
+- **Authored helper label:** An academic period whose tax-free assistance and refunds exceed its expenses paid to the institution
+- **Encoded (Bool):** Input — Was there an academic period for which the tax-free educational assistance and refunds allocable to it were more than that period's qualified education expenses that had to be paid to the institution (tuition, required fees and course materials required to be paid to the institution)?
+- Expr: `{"op":"input","source":"Was there an academic period for which the tax-free educational assistance and refunds allocable to it were more than that period's qualified education expenses that had to be paid to the institution (tuition, required fees and course materials required to be paid to the institution)?"}`
+- Cite: [i8863] p. 4, Tax-free educational assistance, "For tax-free educational assistance received in 2025, reduce the qualified education expenses for each academic period by the amount of tax-free educational assistance allocable to that academic period." (2025; sha256 195cfd5e)
+
+## (gate) — `dependent.edu_over_refused`
+
+- **Authored helper label:** Adjustments that exceed one academic period's expenses
+- **Encoded (Bool):** helper "An eligible student of this return: expenses paid, a TIN by the due date and a Form 1098-T (or an exception), and claimed as your dependent" = true and helper "Adjusted Qualified Education Expenses Worksheet, line 3 for an eligible student: add lines 2a, 2b and 2c" > $0 and helper "An academic period whose tax-free assistance and refunds exceed its expenses paid to the institution" = true
+- Expr: `{"all":[{"eq":["dependent.edu_student",{"const":true}],"op":"test"},{"gt":["dependent.edu_adj",{"const":0}],"op":"test"},{"eq":["dependent.edu_over",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [i8863] p. 9, Adjusted Qualified Education Expenses Worksheet, "Complete a separate worksheet for each student for each academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having paid) qualified education expenses in 2025." (2025; sha256 195cfd5e)
+
+## 23 — `dependent.edu_line23`
+
+- **Authored helper label:** Has the American opportunity credit been claimed for this student for any 4 prior tax years?
+- **Encoded (Bool):** Input — Has the American opportunity credit been claimed (by you or anyone else) for this student for any 4 tax years before 2025?
+- **Shown on the values sheet only when:** An eligible student of this return: expenses paid, a TIN by the due date and a Form 1098-T (or an exception), and claimed as your dependent (`dependent.edu_student`)
+- Expr: `{"op":"input","source":"Has the American opportunity credit been claimed (by you or anyone else) for this student for any 4 tax years before 2025?"}`
+- Cite: [f8863] p. 2, Part III, line 23, "Has the American opportunity credit been claimed for this student for any 4 prior tax years?" (2025; sha256 a251a1cf)
+
+## (helper) — `dependent.edu_show24`
+
+- **Authored helper label:** Line 24 is reached (line 23 did not stop)
+- **Encoded (Bool):** helper "An eligible student of this return: expenses paid, a TIN by the due date and a Form 1098-T (or an exception), and claimed as your dependent" = true and line 23 = false
+- Expr: `{"all":[{"eq":["dependent.edu_student",{"const":true}],"op":"test"},{"eq":["dependent.edu_line23",{"const":false}],"op":"test"}],"op":"test"}`
+- Cite: [f8863] p. 2, Part III, line 23, "Yes—Stop! Go to line 31 for this student." (2025; sha256 a251a1cf)
+
+## 24 — `dependent.edu_line24`
+
+- **Authored helper label:** Was the student enrolled at least half-time for at least one academic period that began or is treated as having begun in 2025 at an eligible educational institution in a program leading toward a postsecondary degree, certificate, or other recognized postsecondary educational credential?
+- **Encoded (Bool):** Input — Was the student enrolled at least half-time (Form 1098-T box 8) for at least one academic period that began in 2025, or in the first 3 months of 2026 if paid for in 2025, at an eligible educational institution, in a program leading toward a postsecondary degree, certificate or other recognized postsecondary educational credential?
+- **Shown on the values sheet only when:** Line 24 is reached (line 23 did not stop) (`dependent.edu_show24`)
+- Expr: `{"op":"input","source":"Was the student enrolled at least half-time (Form 1098-T box 8) for at least one academic period that began in 2025, or in the first 3 months of 2026 if paid for in 2025, at an eligible educational institution, in a program leading toward a postsecondary degree, certificate or other recognized postsecondary educational credential?"}`
+- Cite: [f8863] p. 2, Part III, line 24, "Was the student enrolled at least half-time for at least one academic period that began or is treated as having begun in 2025 at an eligible educational institution in a program leading toward a postsecondary degree, certificate, or other recognized postsecondary educational credential?" (2025; sha256 a251a1cf)
+
+## (helper) — `dependent.edu_show25`
+
+- **Authored helper label:** Line 25 is reached (line 24 did not stop)
+- **Encoded (Bool):** helper "Line 24 is reached (line 23 did not stop)" = true and line 24 = true
+- Expr: `{"all":[{"eq":["dependent.edu_show24",{"const":true}],"op":"test"},{"eq":["dependent.edu_line24",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [f8863] p. 2, Part III, line 24, "No—Stop! Go to line 31 for this student." (2025; sha256 a251a1cf)
+
+## 25 — `dependent.edu_line25`
+
+- **Authored helper label:** Did the student complete the first 4 years of postsecondary education before 2025?
+- **Encoded (Bool):** Input — Did the student complete the first 4 years of postsecondary education before 2025, as determined by the institution (4 years of academic credit, not counting credit awarded solely for proficiency examinations)?
+- **Shown on the values sheet only when:** Line 25 is reached (line 24 did not stop) (`dependent.edu_show25`)
+- Expr: `{"op":"input","source":"Did the student complete the first 4 years of postsecondary education before 2025, as determined by the institution (4 years of academic credit, not counting credit awarded solely for proficiency examinations)?"}`
+- Cite: [f8863] p. 2, Part III, line 25, "Did the student complete the first 4 years of postsecondary education before 2025?" (2025; sha256 a251a1cf)
+
+## (helper) — `dependent.edu_show26`
+
+- **Authored helper label:** Line 26 is reached (line 25 did not stop)
+- **Encoded (Bool):** helper "Line 25 is reached (line 24 did not stop)" = true and line 25 = false
+- Expr: `{"all":[{"eq":["dependent.edu_show25",{"const":true}],"op":"test"},{"eq":["dependent.edu_line25",{"const":false}],"op":"test"}],"op":"test"}`
+- Cite: [f8863] p. 2, Part III, line 25, "Yes—Stop! Go to line 31 for this student." (2025; sha256 a251a1cf)
+
+## 26 — `dependent.edu_line26`
+
+- **Authored helper label:** Was the student convicted, before the end of 2025, of a felony for possession or distribution of a controlled substance?
+- **Encoded (Bool):** Input — Was the student convicted, before the end of 2025, of a federal or state felony for possession or distribution of a controlled substance?
+- **Shown on the values sheet only when:** Line 26 is reached (line 25 did not stop) (`dependent.edu_show26`)
+- Expr: `{"op":"input","source":"Was the student convicted, before the end of 2025, of a federal or state felony for possession or distribution of a controlled substance?"}`
+- Cite: [f8863] p. 2, Part III, line 26, "Was the student convicted, before the end of 2025, of a felony for possession or distribution of a controlled substance?" (2025; sha256 a251a1cf)
+
+## (gate) — `dependent.edu_ein`
+
+- **Authored helper label:** The institution's employer identification number (EIN) is available
+- **Encoded (Bool):** Input — Do you have the educational institution's employer identification number (EIN), from Form 1098-T or from the institution?
+- Expr: `{"op":"input","source":"Do you have the educational institution's employer identification number (EIN), from Form 1098-T or from the institution?"}`
+- Cite: [i8863] p. 4, Student qualifications, "7. You must provide the educational institution’s employer identification number (EIN) on your Form 8863." (2025; sha256 195cfd5e)
+
+## (helper) — `dependent.edu_aoc`
+
+- **Authored helper label:** An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available
+- **Encoded (Bool):** helper "An eligible student of this return: expenses paid, a TIN by the due date and a Form 1098-T (or an exception), and claimed as your dependent" = true and line 23 = false and line 24 = true and line 25 = false and line 26 = false and household helper "You, and your spouse if filing jointly, have an SSN or ITIN, or have applied for an ITIN" = true and helper "The institution's employer identification number (EIN) is available" = true
+- Interpretation: amb.2025.edu_filer_tin
+- Expr: `{"all":[{"eq":["dependent.edu_student",{"const":true}],"op":"test"},{"eq":["dependent.edu_line23",{"const":false}],"op":"test"},{"eq":["dependent.edu_line24",{"const":true}],"op":"test"},{"eq":["dependent.edu_line25",{"const":false}],"op":"test"},{"eq":["dependent.edu_line26",{"const":false}],"op":"test"},{"eq":["household.all_tin",{"const":true}],"op":"test"},{"eq":["dependent.edu_ein",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [f8863] p. 2, Part III, line 26, "No—Complete lines 27 through 30 for this student."; i8863 p. 3, Student qualifications, "5. Filers and students must have been issued a TIN by the due date of their 2025 return (including extensions)." (2025; sha256 a251a1cf)
+
+## (helper) — `dependent.edu_llc`
+
+- **Authored helper label:** A lifetime learning credit student: an eligible student who is not an American opportunity credit student
+- **Encoded (Bool):** helper "An eligible student of this return: expenses paid, a TIN by the due date and a Form 1098-T (or an exception), and claimed as your dependent" = true and helper "An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available" = false
+- Expr: `{"all":[{"eq":["dependent.edu_student",{"const":true}],"op":"test"},{"eq":["dependent.edu_aoc",{"const":false}],"op":"test"}],"op":"test"}`
+- Cite: [i8863] p. 4, Tip, "If the requirements above aren’t met for any student, you cannot claim the American opportunity credit for that student. You may be able to claim the lifetime learning credit for part or all of that student’s qualified education expenses instead if certain requirements are met." (2025; sha256 195cfd5e)
+
+## 27 — `dependent.edu_line27`
+
+- **Authored helper label:** Adjusted qualified education expenses. Don't enter more than $4,000
+- **Encoded (NonNegDollars):** Choose — [helper "An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available" = true → "line27" of Form 8863, Part III lines 27 to 31 with the Adjusted Qualified Education Expenses Worksheet, one per student with adj = helper "Adjusted Qualified Education Expenses Worksheet, line 3 for an eligible student: add lines 2a, 2b and 2c", inst = helper "Qualified education expenses required to be paid to the institution", and mat = helper "Other course materials (American opportunity credit only)"] [helper "An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available" = false → helper "No amount for this person"]
+- **Refusal:** when dependent.edu_over_refused is true, cannot complete Adjusted Qualified Education Expenses Worksheet for more than one academic period. The worksheet is completed for each academic period, and an academic period whose tax-free educational assistance and refunds exceed its own expenses cannot be netted against another period's expenses. Figure the worksheet period by period. Cite: [i8863] p. 9, Adjusted Qualified Education Expenses Worksheet, "Complete a separate worksheet for each student for each academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having paid) qualified education expenses in 2025." (2025; sha256 195cfd5e)
+- **Shown on the values sheet only when:** An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available (`dependent.edu_aoc`)
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.edu_aoc",{"const":true}],"op":"test"},"then":{"bind":{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"},"def":"aqee","line":"line27"}},{"guard":{"eq":["dependent.edu_aoc",{"const":false}],"op":"test"},"then":"dependent.zero"}],"op":"choose"}`
+- Cite: [f8863] p. 2, Part III, line 27, "Adjusted qualified education expenses (see instructions). Don’t enter more than $4,000" (2025; sha256 a251a1cf)
+
+## 28 — `dependent.edu_line28`
+
+- **Authored helper label:** Subtract $2,000 from line 27. If zero or less, enter -0-
+- **Encoded (NonNegDollars):** Choose — [helper "An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available" = true → "line28" of Form 8863, Part III lines 27 to 31 with the Adjusted Qualified Education Expenses Worksheet, one per student with adj = helper "Adjusted Qualified Education Expenses Worksheet, line 3 for an eligible student: add lines 2a, 2b and 2c", inst = helper "Qualified education expenses required to be paid to the institution", and mat = helper "Other course materials (American opportunity credit only)"] [helper "An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available" = false → helper "No amount for this person"]
+- **Refusal:** when dependent.edu_over_refused is true, cannot complete Adjusted Qualified Education Expenses Worksheet for more than one academic period. The worksheet is completed for each academic period, and an academic period whose tax-free educational assistance and refunds exceed its own expenses cannot be netted against another period's expenses. Figure the worksheet period by period. Cite: [i8863] p. 9, Adjusted Qualified Education Expenses Worksheet, "Complete a separate worksheet for each student for each academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having paid) qualified education expenses in 2025." (2025; sha256 195cfd5e)
+- **Shown on the values sheet only when:** An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available (`dependent.edu_aoc`)
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.edu_aoc",{"const":true}],"op":"test"},"then":{"bind":{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"},"def":"aqee","line":"line28"}},{"guard":{"eq":["dependent.edu_aoc",{"const":false}],"op":"test"},"then":"dependent.zero"}],"op":"choose"}`
+- Cite: [f8863] p. 2, Part III, line 28, "Subtract $2,000 from line 27. If zero or less, enter -0-" (2025; sha256 a251a1cf)
+
+## 29 — `dependent.edu_line29`
+
+- **Authored helper label:** Multiply line 28 by 25% (0.25)
+- **Encoded (NonNegDollars):** Choose — [helper "An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available" = true → "line29" of Form 8863, Part III lines 27 to 31 with the Adjusted Qualified Education Expenses Worksheet, one per student with adj = helper "Adjusted Qualified Education Expenses Worksheet, line 3 for an eligible student: add lines 2a, 2b and 2c", inst = helper "Qualified education expenses required to be paid to the institution", and mat = helper "Other course materials (American opportunity credit only)"] [helper "An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available" = false → helper "No amount for this person"]
+- **Refusal:** when dependent.edu_over_refused is true, cannot complete Adjusted Qualified Education Expenses Worksheet for more than one academic period. The worksheet is completed for each academic period, and an academic period whose tax-free educational assistance and refunds exceed its own expenses cannot be netted against another period's expenses. Figure the worksheet period by period. Cite: [i8863] p. 9, Adjusted Qualified Education Expenses Worksheet, "Complete a separate worksheet for each student for each academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having paid) qualified education expenses in 2025." (2025; sha256 195cfd5e)
+- **Shown on the values sheet only when:** An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available (`dependent.edu_aoc`)
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.edu_aoc",{"const":true}],"op":"test"},"then":{"bind":{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"},"def":"aqee","line":"line29"}},{"guard":{"eq":["dependent.edu_aoc",{"const":false}],"op":"test"},"then":"dependent.zero"}],"op":"choose"}`
+- Cite: [f8863] p. 2, Part III, line 29, "Multiply line 28 by 25% (0.25)" (2025; sha256 a251a1cf)
+
+## 30 — `dependent.edu_line30`
+
+- **Authored helper label:** American opportunity credit for this student. If line 28 is zero, enter the amount from line 27. Otherwise, add $2,000 to the amount on line 29
+- **Encoded (NonNegDollars):** Choose — [helper "An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available" = true → "line30" of Form 8863, Part III lines 27 to 31 with the Adjusted Qualified Education Expenses Worksheet, one per student with adj = helper "Adjusted Qualified Education Expenses Worksheet, line 3 for an eligible student: add lines 2a, 2b and 2c", inst = helper "Qualified education expenses required to be paid to the institution", and mat = helper "Other course materials (American opportunity credit only)"] [helper "An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available" = false → helper "No amount for this person"]
+- **Refusal:** when dependent.edu_over_refused is true, cannot complete Adjusted Qualified Education Expenses Worksheet for more than one academic period. The worksheet is completed for each academic period, and an academic period whose tax-free educational assistance and refunds exceed its own expenses cannot be netted against another period's expenses. Figure the worksheet period by period. Cite: [i8863] p. 9, Adjusted Qualified Education Expenses Worksheet, "Complete a separate worksheet for each student for each academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having paid) qualified education expenses in 2025." (2025; sha256 195cfd5e)
+- **Shown on the values sheet only when:** An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available (`dependent.edu_aoc`)
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.edu_aoc",{"const":true}],"op":"test"},"then":{"bind":{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"},"def":"aqee","line":"line30"}},{"guard":{"eq":["dependent.edu_aoc",{"const":false}],"op":"test"},"then":"dependent.zero"}],"op":"choose"}`
+- Cite: [f8863] p. 2, Part III, line 30, "If line 28 is zero, enter the amount from line 27.", "Include the total of all amounts from all Parts III, line 30, on Part I, line 1" (2025; sha256 a251a1cf)
+
+## 31 — `dependent.edu_line31`
+
+- **Authored helper label:** Adjusted qualified education expenses for the lifetime learning credit
+- **Encoded (NonNegDollars):** Choose — [helper "A lifetime learning credit student: an eligible student who is not an American opportunity credit student" = true → "ws4_llc" of Form 8863, Part III lines 27 to 31 with the Adjusted Qualified Education Expenses Worksheet, one per student with adj = helper "Adjusted Qualified Education Expenses Worksheet, line 3 for an eligible student: add lines 2a, 2b and 2c", inst = helper "Qualified education expenses required to be paid to the institution", and mat = helper "Other course materials (American opportunity credit only)"] [helper "A lifetime learning credit student: an eligible student who is not an American opportunity credit student" = false → helper "No amount for this person"]
+- **Refusal:** when dependent.edu_over_refused is true, cannot complete Adjusted Qualified Education Expenses Worksheet for more than one academic period. The worksheet is completed for each academic period, and an academic period whose tax-free educational assistance and refunds exceed its own expenses cannot be netted against another period's expenses. Figure the worksheet period by period. Cite: [i8863] p. 9, Adjusted Qualified Education Expenses Worksheet, "Complete a separate worksheet for each student for each academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having paid) qualified education expenses in 2025." (2025; sha256 195cfd5e)
+- **Shown on the values sheet only when:** A lifetime learning credit student: an eligible student who is not an American opportunity credit student (`dependent.edu_llc`)
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.edu_llc",{"const":true}],"op":"test"},"then":{"bind":{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"},"def":"aqee","line":"ws4_llc"}},{"guard":{"eq":["dependent.edu_llc",{"const":false}],"op":"test"},"then":"dependent.zero"}],"op":"choose"}`
+- Cite: [f8863] p. 2, Part III, line 31, "Adjusted qualified education expenses (see instructions). Include the total of all amounts from all Parts III, line 31, on Part II, line 10" (2025; sha256 a251a1cf)

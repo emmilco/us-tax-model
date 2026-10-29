@@ -4,7 +4,7 @@ The rendered English of every printed line of `Earned Income Credit (EIC)—Step
 
 | field | value |
 | --- | --- |
-| date | 2026-10-27 |
+| date | 2026-10-29 |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
 | prompt sha256 | 10293c0d3fc0f53d00bafe5362fd601a94d27c391dd74d57bf83571130fc5e98 |
@@ -12,7 +12,7 @@ The rendered English of every printed line of `Earned Income Credit (EIC)—Step
 | system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
 | reasoning effort | provider default |
 | output token budget | 65536 |
-| subject sha256 | 11e3e35b4777a8a919c0e2682a332ad1626c14faab62505a908adddf0d33a3c7 |
+| subject sha256 | 31e0d2ca44bb37fa1b24bae3bd135676524619d3245de39a3251ca5f3aff36c5 |
 | lines judged | 13 |
 | match / mismatch / unclear / missing | 13 / 0 / 0 / 0 |
 | verdicts for lines not in the form | none |
@@ -45,67 +45,67 @@ The rendered English of every printed line of `Earned Income Credit (EIC)—Step
 ### (Step 5, 1) — Enter the amount from Form 1040 or 1040-SR, line 1z
 Status: **MATCH**
 
-Model: IRS Step 5 line 1 says 'Enter the amount from Form 1040 or 1040-SR, line 1z'; clergy, church-employee and statutory-employee cases are refused.
+Model: The IRS Step 5 worksheet line 1 says to enter Form 1040 line 1z; the refusal excludes clergy, church employee, and statutory employee cases as stated.
 
 ### (Step 5, 2) — Medicaid waiver payments excluded from income on Schedule 1, line 8s, unless chosen as ear
 Status: **MATCH**
 
-Model: IRS line 2 is the Medicaid waiver payment exclusion; with Medicaid waiver payments refused, zero is correct for supported cases.
+Model: With Medicaid waiver payment cases refused, the supported amount is $0, consistent with the IRS line and its -0- choice for included payments.
 
 ### (Step 5, 3) — Subtract line 2 from line 1
 Status: **MATCH**
 
-Model: IRS line 3 says 'Subtract line 2 from line 1.'
+Model: IRS line 3 says to subtract line 2 from line 1.
 
 ### (Step 5, 4) — Nontaxable combat pay you elect to include in earned income; zero in this tool
 Status: **MATCH**
 
-Model: IRS line 4 is nontaxable combat pay; combat pay cases are refused, so zero is correct for supported cases.
+Model: With nontaxable combat pay refused, the supported amount is $0, matching the line when no combat pay is elected.
 
 ### (Step 5, 5) — Add lines 3 and 4. This is your earned income
 Status: **MATCH**
 
-Model: IRS line 5 says 'Add lines 3 and 4. This is your earned income.'
+Model: IRS line 5 says to add lines 3 and 4.
 
 ### 4b — Worksheet B, line 4b. Combine lines 1e, 2c, 3, and 4a. This is your total earned income
 Status: **MATCH**
 
-Model: IRS Worksheet B line 4b combines lines 1e, 2c, 3, and 4a; statutory-employee line 3 is refused, and the restatement adds 4a plus 1e/2c.
+Model: Worksheet B line 4b combines lines 1e, 2c, 3, and 4a; statutory employee line 3 is excluded by the refusal, and Step 5 line 5 supplies line 4a.
 
 ### 6 (eic.wsb_6) — Worksheet B, line 6. Enter your total earned income from Part 4, line 4b (zero if line 4b
 Status: **MATCH**
 
-Model: IRS Worksheet B line 6 is total earned income from line 4b; subtracting zero and flooring at zero is equivalent for the positive line 4b cases that reach line 6.
+Model: Worksheet B line 6 enters total earned income from line 4b; subtracting zero and flooring at zero is equivalent for completed line 6 cases.
 
 ### 1 — Enter your earned income from Step 5 (Worksheet A, line 1), or Worksheet B, line 6
 Status: **MATCH**
 
-Model: IRS Worksheet A line 1 is earned income from Step 5; the reporting gate is Worksheet A (Step 5 question 2 No), so the Step 5, 5 branch applies.
+Model: Worksheet A line 1 enters earned income from Step 5; when Worksheet A is used, Step 5 question 2 is No, so Step 5 line 5 is the correct amount.
 
 ### 2 — Look up the amount on line 1 in the EIC Table to find the credit, using the column for you
 Status: **MATCH**
 
-Model: IRS line 2 looks up line 1 in the EIC Table; the table starts at $1, so returning zero below $1 is correct.
+Model: Worksheet A line 2 looks up line 1 in the EIC Table using the filing status and qualifying-child column; zero when line 1 is below the table is consistent.
 
 ### 3 — Enter the amount from Form 1040 or 1040-SR, line 11b
 Status: **MATCH**
 
-Model: IRS line 3 says 'Enter the amount from Form 1040 or 1040-SR, line 11b.'
+Model: Worksheet A line 3 says to enter Form 1040 line 11b.
 
 ### 4 — Are the amounts on lines 3 and 1 the same?
 Status: **MATCH**
 
-Model: IRS line 4 asks 'Are the amounts on lines 3 and 1 the same?'
+Model: Worksheet A line 4 asks whether the amounts on lines 3 and 1 are the same.
 
 ### 5 — Look up the amount on line 3 in the EIC Table to find the credit, using the column for you
 Status: **MATCH**
 
-Model: IRS line 5 looks up line 3 in the EIC Table by filing status and number of qualifying children with valid SSNs; the reporting gate captures the leave-blank threshold.
+Model: Worksheet A line 5, when not left blank, is the EIC Table credit for line 3 in the correct qualifying-child column.
 
 ### 6 (eic.line6) — This is your earned income credit
 Status: **MATCH**
 
-Model: IRS line 6 is line 2 when line 4 is Yes, line 2 when line 5 is left blank, and otherwise the smaller of lines 5 and 2.
+Model: Worksheet A line 6 uses line 2 if line 4 is Yes, and otherwise applies the line 2 versus line 5 smaller-amount rule.
 
 ## Raw response
 
@@ -113,41 +113,41 @@ Model: IRS line 6 is line 2 when line 4 is Yes, line 2 when line 5 is left blank
 lines:
   - key: "(Step 5, 1)"
     status: MATCH
-    reason: "IRS Step 5 line 1 says 'Enter the amount from Form 1040 or 1040-SR, line 1z'; clergy, church-employee and statutory-employee cases are refused."
+    reason: "The IRS Step 5 worksheet line 1 says to enter Form 1040 line 1z; the refusal excludes clergy, church employee, and statutory employee cases as stated."
   - key: "(Step 5, 2)"
     status: MATCH
-    reason: "IRS line 2 is the Medicaid waiver payment exclusion; with Medicaid waiver payments refused, zero is correct for supported cases."
+    reason: "With Medicaid waiver payment cases refused, the supported amount is $0, consistent with the IRS line and its -0- choice for included payments."
   - key: "(Step 5, 3)"
     status: MATCH
-    reason: "IRS line 3 says 'Subtract line 2 from line 1.'"
+    reason: "IRS line 3 says to subtract line 2 from line 1."
   - key: "(Step 5, 4)"
     status: MATCH
-    reason: "IRS line 4 is nontaxable combat pay; combat pay cases are refused, so zero is correct for supported cases."
+    reason: "With nontaxable combat pay refused, the supported amount is $0, matching the line when no combat pay is elected."
   - key: "(Step 5, 5)"
     status: MATCH
-    reason: "IRS line 5 says 'Add lines 3 and 4. This is your earned income.'"
+    reason: "IRS line 5 says to add lines 3 and 4."
   - key: "4b"
     status: MATCH
-    reason: "IRS Worksheet B line 4b combines lines 1e, 2c, 3, and 4a; statutory-employee line 3 is refused, and the restatement adds 4a plus 1e/2c."
+    reason: "Worksheet B line 4b combines lines 1e, 2c, 3, and 4a; statutory employee line 3 is excluded by the refusal, and Step 5 line 5 supplies line 4a."
   - key: "6 (eic.wsb_6)"
     status: MATCH
-    reason: "IRS Worksheet B line 6 is total earned income from line 4b; subtracting zero and flooring at zero is equivalent for the positive line 4b cases that reach line 6."
+    reason: "Worksheet B line 6 enters total earned income from line 4b; subtracting zero and flooring at zero is equivalent for completed line 6 cases."
   - key: "1"
     status: MATCH
-    reason: "IRS Worksheet A line 1 is earned income from Step 5; the reporting gate is Worksheet A (Step 5 question 2 No), so the Step 5, 5 branch applies."
+    reason: "Worksheet A line 1 enters earned income from Step 5; when Worksheet A is used, Step 5 question 2 is No, so Step 5 line 5 is the correct amount."
   - key: "2"
     status: MATCH
-    reason: "IRS line 2 looks up line 1 in the EIC Table; the table starts at $1, so returning zero below $1 is correct."
+    reason: "Worksheet A line 2 looks up line 1 in the EIC Table using the filing status and qualifying-child column; zero when line 1 is below the table is consistent."
   - key: "3"
     status: MATCH
-    reason: "IRS line 3 says 'Enter the amount from Form 1040 or 1040-SR, line 11b.'"
+    reason: "Worksheet A line 3 says to enter Form 1040 line 11b."
   - key: "4"
     status: MATCH
-    reason: "IRS line 4 asks 'Are the amounts on lines 3 and 1 the same?'"
+    reason: "Worksheet A line 4 asks whether the amounts on lines 3 and 1 are the same."
   - key: "5"
     status: MATCH
-    reason: "IRS line 5 looks up line 3 in the EIC Table by filing status and number of qualifying children with valid SSNs; the reporting gate captures the leave-blank threshold."
+    reason: "Worksheet A line 5, when not left blank, is the EIC Table credit for line 3 in the correct qualifying-child column."
   - key: "6 (eic.line6)"
     status: MATCH
-    reason: "IRS line 6 is line 2 when line 4 is Yes, line 2 when line 5 is left blank, and otherwise the smaller of lines 5 and 2."
+    reason: "Worksheet A line 6 uses line 2 if line 4 is Yes, and otherwise applies the line 2 versus line 5 smaller-amount rule."
 ```

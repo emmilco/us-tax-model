@@ -64,11 +64,11 @@ form:
     - id: eic.us_home
       printed: (helper)
       type: Bool
-      label: Was your main home in the United States for more than half of 2025?
+      label: Was your main home, and your spouse's if filing a joint return, in the United States for more than half of 2025?
       expr:
         op: input
-        source: Was your main home in the United States (the 50 states and the District of Columbia) for more than half of
-          2025? If you were on extended active military duty outside the United States, that time counts as a main home in
+        source: Was your main home, and your spouse's if filing a joint return, in the United States (the 50 states and the
+          District of Columbia) for more than half of 2025? If you were on extended active military duty outside the United States, that time counts as a main home in
           the United States.
       cite:
         doc: i1040gi

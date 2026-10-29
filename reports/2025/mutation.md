@@ -7,11 +7,11 @@ the fixture test compares).
 
 | Metric | Value |
 | --- | --- |
-| Mutants | 2569 |
-| Killed by the checker | 275 |
-| Killed by fixtures | 2184 |
-| Surviving | 110 (110 provably equivalent) |
-| Mutation score (raw) | 95.7% |
+| Mutants | 2633 |
+| Killed by the checker | 281 |
+| Killed by fixtures | 2241 |
+| Surviving | 111 (111 provably equivalent) |
+| Mutation score (raw) | 95.8% |
 | Mutation score (equivalent mutants excluded) | 100.0% |
 
 ## Surviving — classified equivalent
@@ -26,6 +26,7 @@ the fixture test compares).
 - `operand.f5695.f5695.line15.line14` (replace an operand, f5695.f5695.line15): Copy-chain identity: f5695.line14 and f5695.rce_ws3 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.f5695.f5695.line16.line15` (replace an operand, f5695.f5695.line16): Floor-minus-min identity: f5695.line16 is f5695.line13 less f5695.line15, floored at zero, and one of f5695.line15 and f5695.line14 is the ungated smaller of f5695.line13 and the other, so f5695.line13 less either, floored at zero, is the same at every input; f5695.line13 is read first on both routes and the other operand second, so the same refusal or unknown wins.
 - `operand.f5695.f5695.line32.line31` (replace an operand, f5695.f5695.line32): Copy-chain identity: f5695.line31 and f5695.eehi_ws3 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
+- `operand.f8863.f8863.clw3.clw1` (replace an operand, f8863.f8863.clw3): Copy-chain identity: f8863.clw1 and f8863.line18 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.f8959.f8959.line3.zero` (replace an operand, f8959.f8959.line3): Copy-chain identity: f8959.zero and f8959.line2 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.f8959.f8959.line23.zero` (replace an operand, f8959.f8959.line23): Copy-chain identity: f8959.zero and f8959.line14 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.f8959.f8959.line4.line2` (replace an operand, f8959.f8959.line4): Copy-chain identity: f8959.line2 and f8959.line23 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.

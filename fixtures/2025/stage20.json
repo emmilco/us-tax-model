@@ -11,6 +11,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 20, short-term carryover only: blind-predicted. Two agents worked the return from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage20/); they agreed with each other and with the evaluator on all 20 values asserted here, the tax included. Lines a predictor marked skipped or not used are not asserted.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -314,6 +315,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 20, long-term carryover only: blind-predicted. Two agents worked the return from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage20/); they agreed with each other and with the evaluator on all 25 values asserted here, the tax included. Lines a predictor marked skipped or not used are not asserted.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -637,6 +639,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 20, both terms, 2024 taxable income negative: blind-predicted. Two agents worked the return from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage20/); they agreed with each other and with the evaluator on all 28 values asserted here, the tax included. Lines a predictor marked skipped or not used are not asserted.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -967,6 +970,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 20, 2024 taxable income slightly negative (line 3 below line 2): blind-predicted. Two agents worked the return from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage20/); they agreed with each other and with the evaluator on all 20 values asserted here, the tax included. Lines a predictor marked skipped or not used are not asserted.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -1259,6 +1263,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 20, 2024 short-term loss with a long-term gain: blind-predicted. Two agents worked the return from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage20/); they agreed with each other and with the evaluator on all 23 values asserted here, the tax included. Lines a predictor marked skipped or not used are not asserted.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -1574,6 +1579,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 20, 2024 long-term loss with a short-term gain; distributions only in 2025: blind-predicted. Two agents worked the return from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage20/); they agreed with each other and with the evaluator on all 25 values asserted here, the tax included. Lines a predictor marked skipped or not used are not asserted.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -1886,6 +1892,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 20, joint return, 2025 gain absorbs the carryover: blind-predicted. Two agents worked the return from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage20/); they agreed with each other and with the evaluator on all 25 values asserted here, the tax included. Lines a predictor marked skipped or not used are not asserted.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -2216,6 +2223,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 20, long-term carryover against box 2d collectibles gain: blind-predicted. Two agents worked the return from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage20/); they agreed with each other and with the evaluator on all 25 values asserted here, the tax included. Lines a predictor marked skipped or not used are not asserted.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -2529,6 +2537,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 20, Form 4952 carryforward from 2024: blind-predicted. Two agents worked the return from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage20/); they agreed with each other and with the evaluator on all 17 values asserted here, the tax included. Lines a predictor marked skipped or not used are not asserted.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -2807,6 +2816,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 20, carryover on a return owing net investment income tax: blind-predicted. Two agents worked the return from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage20/); they agreed with each other and with the evaluator on all 28 values asserted here, the tax included. Lines a predictor marked skipped or not used are not asserted.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -3144,6 +3154,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 20 refusal regression, recorded from the evaluator: the refusal named by the id fires on this return.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -3417,6 +3428,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 20 refusal regression, recorded from the evaluator: the refusal named by the id fires on this return.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -3677,6 +3689,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 20 refusal regression, recorded from the evaluator: the refusal named by the id fires on this return.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -3937,6 +3950,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 20 refusal regression, recorded from the evaluator: the refusal named by the id fires on this return.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -4192,6 +4206,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 20 refusal regression, recorded from the evaluator: the refusal named by the id fires on this return.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -4440,6 +4455,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 20 control, recorded from the evaluator: the case next to a refusal that must still compute.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -4677,6 +4693,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 20 control, recorded from the evaluator: the case next to a refusal that must still compute.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -4913,6 +4930,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Predicted by hand from i1040sd p. 10 before recording: 2024 line 11 $40,000, line 14 $14,600, Schedule D line 7 -$2,000, line 15 $0, line 21 ($2,000). Line 1 $25,400, line 2 $2,000, line 3 $27,400, line 4 $2,000 (the smaller of lines 2 and 3), line 5 $2,000, line 7 $2,000, line 8 $0: the whole 2024 loss was deducted, so nothing carries and Schedule D line 6 is $0.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -5157,6 +5175,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Predicted by hand from i1040sd p. 10 and p. 14 (Line 21) before recording: wages $60,000, a $1,000 short-term gain and a $6,000 long-term loss, no carryover into 2025. Schedule D line 7 $1,000, line 15 -$6,000, line 16 -$5,000, line 21 -$3,000. Carryover to 2026: line 1 $41,250 ($57,000 less the $15,750 standard deduction), line 2 $3,000, line 3 $44,250, line 4 $3,000, line 5 $0, line 9 $6,000, line 10 $1,000, line 11 $3,000, line 12 $4,000, line 13 $2,000 (Pub. 550: the $5,000 net loss less the $3,000 deducted).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -5443,6 +5462,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 20 refusal regression, recorded from the evaluator: the alternative-allocation refusal on Form 4952 with a 2024 carryforward.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -5679,6 +5699,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 20 refusal regression, recorded from the evaluator: a 2024 line 21 of $3,000.50, more than the $3,000 limit, is refused.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -5927,6 +5948,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 20 refusal regression, recorded from the evaluator: with other Schedule D source forms and a carryover, Schedule D lines 6 and 14 refuse on the source-form screen, while the worksheet results they would hold (held negative) are still figured.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -6182,6 +6204,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 20 refusal regression (BUG-0186), recorded from the evaluator: a 2024 line 21 entered as $0 on a $5,000 loss (the gate answered Yes) is refused.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -6429,6 +6452,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 20 refusal regression (BUG-0186), recorded from the evaluator: a 2024 line 21 of $1,499.99 on a $2,000 loss, below the smaller of the loss and $1,500 is refused.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -6676,6 +6700,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 20 control for BUG-0186, predicted by hand and recorded: a $1,000 2024 loss with line 21 ($1,000): a valid entry below $1,500, accepted; the worksheet does not apply (the loss was fully deducted and 2024 taxable income is positive), so nothing carries.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -6917,6 +6942,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 20 control for BUG-0186, predicted by hand and recorded: a $2,000 2024 loss with line 21 ($1,500), the amount a 2024 return filed separately prints: accepted, and $500 carries as a short-term loss.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"

@@ -11,6 +11,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Single, wages $50,000; traditional IRA distribution $10,000, code 7, nothing rolled over: fully taxable, so $10,000 on line 4b and no entry on line 4a (i1040gi p. 27).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -193,6 +194,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: As fully_taxable, but $6,000 rolled over within 60 days to another traditional IRA: Exception 1, total on line 4a ($10,000), the part not rolled over on line 4b ($4,000), box 1 on line 4c checked (p. 27).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -371,6 +373,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Roth IRA distribution $5,000, code Q: Exception 2(b), line 4a $5,000 and line 4b $0 (p. 27).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -545,6 +548,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Mutation-equivalence second reader (P1, refusal.retirement.retirement.amount_a.1), predicted from i1040gi p. 27 (the distribution code decides whether the Roth IRA exception applies, and a code outside the tool is refused) before recording: with the Form 1099-R code unanswered, Form 1040 line 4a is unknown, waiting on that answer, not box 1.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -715,6 +719,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Roth IRA distribution with code 7: Form 8606 is needed (Exception 2), refused.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -894,6 +899,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Traditional IRA distribution with a code outside 7, 4, 2, G and Q: refused.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -1086,6 +1092,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Traditional IRA distribution answered yes on the special-cases screen (for example a qualified charitable distribution): refused.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -1278,6 +1285,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Plan distribution $20,000, code G (direct rollover to a traditional IRA): line 5a $20,000, line 5b $0, box 1 on line 5c checked (pp. 30-31; f1099r box 2a).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -1456,6 +1464,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Pension $12,000, code 7, box 5 employee contributions $1,200, no annuity worksheet: line 5a $12,000, line 5b $10,800 (p. 30, Rollovers: subtract the contributions in box 5).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -1634,6 +1643,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Annuity $24,000 for 12 months, cost $31,000, age 62 at the annuity starting date (after November 18, 1996), first year: line 3 is 260 (Table 1, 61-65), line 4 $119.23 ($31,000 / 260, half-up to the cent), line 5 $1,430.76, line 7 $31,000, line 8 $1,430.76, line 9 (line 5b) $22,569.24, line 10 $1,430.76, line 11 $29,569.24 (p. 29). Lines 10 and 11 (T-030; the annuity starting date is after November 18, 1996, so line 10's question is answered No), predicted by hand before recording: line 10 $0 + $1,430.76 = $1,430.76; line 11 $31,000 - $1,430.76 = $29,569.24.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -1830,6 +1840,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Annuity $24,000, cost $31,000, worksheet completed last year with line 4 $100.00 and $5,000 recovered tax free so far: line 4 $100.00, line 5 $1,200, line 7 $26,000, line 8 $1,200, line 9 $22,800 (p. 29, note under line 2, line 6). Lines 10 and 11 (T-030; the annuity starting date is after November 18, 1996, so line 10's question is answered No), predicted by hand before recording: line 10 $5,000 + $1,200 = $6,200; line 11 $31,000 - $6,200 = $24,800.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -2017,6 +2028,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Joint and survivor annuity starting after 1997, combined ages 125, payments for 6 months totalling $12,000, cost $31,000: line 3 is 310 (Table 2, 121-130), line 4 $100.00, line 5 $600, line 9 $11,400. Lines 10 and 11 (T-030; the annuity starting date is after November 18, 1996, so line 10's question is answered No), predicted by hand before recording: line 10 $0 + $600 = $600; line 11 $31,000 - $600 = $30,400.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -2209,6 +2221,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Annuity $24,000, cost $31,000 of which $30,500 already recovered, age 72: line 4 $193.75 (Table 1, 160), line 5 $2,325, line 7 $500, line 8 $500 (the smaller), line 9 $23,500, line 11 $0. Lines 10 and 11 (T-030; the annuity starting date is after November 18, 1996, so line 10's question is answered No), predicted by hand before recording: line 10 $30,500 + $500 = $31,000; line 11 $31,000 - $31,000 = $0.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -2397,6 +2410,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Single, wages $50,000, benefits $20,000: worksheet lines 5 $60,000, 7 $60,000, 9 $35,000, 11 $26,000, 14 $4,500, 15 $22,100, 16 $26,600, 17 $17,000; line 6b $17,000 (p. 32).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -2566,6 +2580,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Single, wages $10,000, benefits $20,000: line 5 $20,000 is not more than $25,000, so none taxable.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -2731,6 +2746,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Single, wages $25,000, benefits $20,000: line 5 $35,000, line 9 $10,000, line 11 $1,000, line 12 $9,000, line 13 $4,500, line 14 $4,500, line 15 $850, line 16 $5,350, line 17 $17,000; line 6b $5,350.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -2900,6 +2916,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Single, wages $20,000, IRA distribution $10,000 (fully taxable), benefits $20,000: line 3 $30,000 (includes line 4b), line 5 $40,000, line 9 $15,000, line 11 $6,000, line 14 $4,500, line 15 $5,100, line 16 $9,600; line 6b $9,600; total income $39,600.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -3077,6 +3094,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Married filing jointly, wages $30,000, benefits $30,000: line 2 $15,000, line 5 $45,000, line 8 $32,000, line 9 $13,000, line 10 $12,000, line 11 $1,000, line 13 $6,000, line 14 $6,000, line 15 $850, line 16 $6,850; line 6b $6,850 (the return itself refuses at line 33).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -3263,6 +3281,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Married filing separately and lived with the spouse during 2025, wages $10,000, benefits $20,000: lines 8 to 15 skipped, line 16 is 85% of line 7 ($20,000) = $17,000, line 17 $17,000; line 6b $17,000.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfs",
         "$person": [
           "taxpayer"
@@ -3429,6 +3448,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: As mfs_together but lived apart all year: line 8 $25,000, line 5 $20,000, none taxable; line 6d checked.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfs",
         "$person": [
           "taxpayer"
@@ -3595,6 +3615,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Benefits $20,000 with an exception (for example a traditional IRA contribution while covered by a workplace plan): the worksheet does not apply, refused.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -3765,6 +3786,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Benefits $20,000 and the lump-sum election: refused; line 6c is checked.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -3939,6 +3961,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Traditional IRA $10,000 with $6,000 rolled over (line 4a $10,000, 4b $4,000, 4c box 1 checked) and a pension $12,000 with box 5 $1,200 and no rollover (line 5a $12,000, 5b $10,800, 5c unchecked): each distribution goes only to its own lines; line 9 $64,800.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -4144,6 +4167,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Plan distribution $20,000, code 7, of which $5,000 rolled over within 60 days to a traditional IRA, no box 5: line 5a $20,000, line 5b $15,000, box 1 on line 5c checked, line 4c unchecked (p. 30, Rollovers).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -4326,6 +4350,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Roth IRA distribution, code Q, answered yes on the special-cases screen (for example a qualified charitable distribution): refused on line 4b even though a qualified Roth distribution is otherwise $0.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -4505,6 +4530,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Four single-life annuities of $12,000 each for 12 months, first year, nothing recovered: age 50 with cost $36,000 (Table 1, 360: line 4 $100.00), age 58 with cost $31,000 (310: $100.00), age 68 with cost $21,000 (210: $100.00), age 71 with cost $16,000 (160: $100.00); each line 5 $1,200 and line 9 $10,800, so line 5b $43,200 (p. 29).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -4752,6 +4778,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Four joint-and-survivor annuities starting after 1997, $12,000 each for 12 months, first year: combined ages 100 with cost $41,000 (Table 2, 410), 115 with $36,000 (360), 135 with $26,000 (260), 150 with $21,000 (210); each line 4 $100.00 and line 9 $10,800, so line 5b $43,200 (p. 29).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -4995,6 +5022,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Single, wages $30,000, tax-exempt interest $2,000 (line 2a), benefits $20,000: line 2 $10,000, line 3 $30,000, line 4 $2,000, line 5 $42,000, line 7 $42,000, line 9 $17,000, line 11 $8,000, line 12 $9,000, line 13 $4,500, line 14 $4,500, line 15 $6,800, line 16 $11,300, line 17 $17,000; line 6b $11,300 (p. 32).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -5160,6 +5188,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Single, wages $31,000, benefits $4,000: line 2 $2,000, line 5 $33,000, line 9 $8,000, line 11 $0, line 12 $8,000, line 13 $4,000, line 14 $2,000 (line 2 is the smaller), line 15 $0, line 16 $2,000, line 17 $3,400; line 6b $2,000.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -5329,6 +5358,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Annuity $12,000 for 12 months, cost $31,000, all $31,000 recovered tax free in earlier years: the entire cost came back before 2025, so the payments are fully taxable: line 5b $12,000 and no entry on line 5a (p. 28, Fully Taxable Pensions and Annuities).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -5509,6 +5539,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: As cost_recovered, but the recovered amount entered ($40,000) is more than the cost ($31,000): still fully taxable, line 5b $12,000, no line 5a entry; line 5b never exceeds box 1.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -5689,6 +5720,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: A pension answered as a Simplified Method annuity with code G (direct rollover): the rollover of such payments is left to Pub. 575 (p. 30, Rollovers), refused on lines 5a and 5b.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -5887,6 +5919,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Benefits $20,000 of which some are disability payments for injuries from a terrorist attack: excluded from income under the p. 31 rule (Pub. 3920), refused.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -6057,6 +6090,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Plan distribution with code G (direct rollover) and $0 in box 1: a direct rollover is a rollover (p. 30, 'Use lines 5a and 5b to report a rollover, including a direct rollover'), so box 1 on line 5c is checked; lines 5a and 5b are $0.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -6235,6 +6269,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: As cost_recovered, with $1,000 in box 5: the payments are still fully taxable once the cost has been recovered, so line 5b $12,000 and no entry on line 5a (box 5 bears on a plan distribution only outside the Simplified Method; p. 28).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -6415,6 +6450,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: As ss.tax_exempt_interest, but the $2,000 is $1,000 of tax-exempt interest (Form 1099-INT box 8) and $1,000 of exempt-interest dividends (Form 1099-DIV box 12): line 2a is their total, $2,000 ('Also include on line 2a any exempt-interest dividends', p. 25), so line 6b is again $11,300.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -6579,6 +6615,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Mutation-equivalence second reading (kills refusal.ssb.ssb.line6.0), predicted from the archived i1040gi before recording: the inputs of stage10.ss.middle (single, wages $25,000, benefits $20,000) with the Schedule 1 screen answered Yes. Worksheet line 6 is 'the total of the amounts from Schedule 1, lines 11 through 20, and 23 and 25' (p. 32), which this tool cannot total when Schedule 1 items it does not ask are present, so line 6 refuses on its own entry; line 5 refuses through Form 1040 line 8.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"

@@ -1,7 +1,7 @@
 # Stage 19 (the education credits): decision batch for the owner
 
-> **Draft, awaiting the owner (2026-10-29).** Nothing in it is decided. D1 to D9 and the items under "Settled by the
-> evidence" are recommendations.
+> **Owner's answer (2026-10-29): all recommended.** D1 to D9 are accepted as recommended, with the items under
+> "Settled by the evidence".
 
 Prepared on 2026-10-29 from `stage19-education-credits.md` (the premise map, 2026-10-22, at 6051ec0) and
 `stage19-education-credits.verification.md` (its adversarial check, at 1c465c2), and checked again against the tree at

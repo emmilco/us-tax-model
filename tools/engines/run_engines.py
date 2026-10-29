@@ -120,6 +120,16 @@ PE_MAP = {
     "s1a.line21": ["overtime_income_deduction"],
     "s1a.line30": ["auto_loan_interest_deduction"],
     "s1a.line37": ["additional_senior_deduction"],
+    # Form 8863: the American opportunity credit after the phase-out (line 7), its refundable part (line 8, Form 1040
+    # line 29) and the rest (line 9), the lifetime learning credit after the phase-out (line 18), and the nonrefundable
+    # credits after the Credit Limit Worksheet (line 19, Schedule 3 line 3).
+    "f8863.line7": ["american_opportunity_credit"],
+    "f8863.line8": ["refundable_american_opportunity_credit"],
+    "f8863.line9": ["non_refundable_american_opportunity_credit_potential"],
+    "f8863.line18": ["lifetime_learning_credit_potential"],
+    "f8863.line19": ["education_tax_credits"],
+    "s3.line3": ["education_tax_credits"],
+    "f1040.line29": ["refundable_american_opportunity_credit"],
 }
 PE_PRECISION = "float32"
 # Lines the engine takes whole from the generator's facts (none), components of computed lines
@@ -136,6 +146,8 @@ PE_PASS_THROUGH = {"lines": [], "components": {
     "s8812.line14": "reached through Form 1040 line 19, a copy of it",
     "s8812.line27": "reached through Form 1040 line 28, a copy of it",
     "eic.credit": "reached through Form 1040 line 27a, a copy of it",
+    "f8863.line1": "the engine has no variable for the American opportunity credit before the phase-out; line 7 is mapped",
+    "f8863.line12": "the engine has no variable for the lifetime learning credit before the phase-out; line 18 is mapped",
 }}
 # Lines that move with adjusted gross income, for limitations on an engine's AGI.
 PE_AGI_LINES = [l for l in PE_MAP if l not in ("eic.earned_income", "eic.line1", "person[taxpayer].se_line12", "person[taxpayer].se_line13", "s2.line4", "s1.line15")]
@@ -201,6 +213,14 @@ TC_MAP = {
     "s1a.line21": ["overtime_income_deduction"],
     "s1a.line30": ["auto_loan_interest_deduction"],
     "s1a.line37": ["senior_deduction"],
+    # Form 8863 (AmOppCreditParts, EducationTaxCredit): line 8 (Form 1040 line 29), line 9, line 7 as their sum, and
+    # line 19 after the Credit Limit Worksheet (Schedule 3 line 3), from line 1 (e87521) and line 10 (e87530).
+    "f8863.line7": ["c10960", "c87668"],
+    "f8863.line8": ["c10960"],
+    "f8863.line9": ["c87668"],
+    "f8863.line19": ["c07230"],
+    "s3.line3": ["c07230"],
+    "f1040.line29": ["c10960"],
 }
 TC_PRECISION = "float64"
 TC_PASS_THROUGH = {"lines": [], "components": {
@@ -228,6 +248,9 @@ TC_PASS_THROUGH = {"lines": [], "components": {
     "s8812.line14": "reached through Form 1040 line 19, a copy of it",
     "s8812.line27": "reached through Form 1040 line 28, a copy of it",
     "eic.credit": "reached through Form 1040 line 27a, a copy of it",
+    "f8863.line1": "e87521 (Form 8863 line 1, the total of Part III line 30) is an input",
+    "f8863.line10": "e87530 (Form 8863 line 10, the total of Part III line 31) is an input",
+    "f8863.line18": "EducationTaxCredit computes line 18 but does not expose it; c07230 (line 19) is an output",
 }}
 TC_AGI_LINES = [l for l in TC_MAP if l not in ("eic.earned_income", "eic.line1", "person[taxpayer].se_line12", "person[taxpayer].se_line13", "s2.line4", "s1.line15")]
 TC_LIMITATIONS = [
@@ -260,16 +283,31 @@ TC_LIMITATIONS = [
 ]
 # The credits limited by the tax (Form 2441 line 10, Form 8880 line 11, Form 5695 lines 14 and 31) move with
 # Form 1040 line 16, so every limitation that sets line 16 aside sets them aside too.
-TAX_LIMITED_CREDIT_LINES = ["f2441.line11", "s3.line2", "f8880.line12", "f5695.line15", "s3.line5a", "f5695.line32", "s3.line5b"]
+TAX_LIMITED_CREDIT_LINES = ["f2441.line11", "s3.line2", "f8863.line19", "s3.line3", "f8880.line12", "f5695.line15", "s3.line5a", "f5695.line32", "s3.line5b"]
 
 # Lines a Form 1095-A moves: Schedule 3 line 9 and Schedule 2 line 1a, and through Form 1040 lines 17, 18 and 31 the tax,
 # every credit the tax limits, the payments and the refund. Engines given no Form 1095-A are not compared on them there.
-PTC_MOVED = re.compile(r"^(f1040\.line(1[7-9]|2[0-9]|3[0-9]|35a)|f1040\.tax_before_credits|s3\.line(2|4|5a|5b|8|9|15)|s2\.line(1a|1z|3|21)"
-                       r"|s8812\.|f2441\.line(9c|10|11)|f8880\.line(11|12)|f5695\.line(14|15|31|32)|f8962\.)")
+PTC_MOVED = re.compile(r"^(f1040\.line(1[7-9]|2[0-9]|3[0-9]|35a)|f1040\.tax_before_credits|s3\.line(2|3|4|5a|5b|8|9|15)|s2\.line(1a|1z|3|21)"
+                       r"|s8812\.|f2441\.line(9c|10|11)|f8863\.line19|f8880\.line(11|12)|f5695\.line(14|15|31|32)|f8962\.)")
 PTC_REASON = ("the engine is given no Form 1095-A, so its tax, credits and payments omit the premium tax credit reconciliation "
               "(Form 8962) the project figures on these returns")
+# Lines Form 8863 moves: its own lines, Schedule 3 line 3 and Form 1040 line 29, and through them every credit after the
+# education credits, the tax after credits, the payments and the refund.
+EDU_MOVED = re.compile(r"^(f1040\.line(19|2[0-2]|24|28|29|3[2-7]|35a)|s3\.line(3|4|5a|5b|8|15)|s8812\.(line(14|16a|17|27)|clw)"
+                       r"|f8880\.line(11|12)|f5695\.line(14|15|31|32)|f8863\.)")
+EDU_NO_REFUND = ("the engine has no Form 8863 line 7 test: it makes 40% of the American opportunity credit refundable on every return, "
+                 "where a filer under 24 who is not filing jointly and meets line 7 conditions 1 and 2 checks the line 7 box and has "
+                 "no refundable part (i8863 p. 7, Line 7; 26 U.S.C. 25A(i)(6)); returns with the box checked are not compared on the "
+                 "lines it moves")
 for _mapping, _limitations in ((PE_MAP, PE_LIMITATIONS), (TC_MAP, TC_LIMITATIONS)):
     _limitations.append({"feature": "marketplace", "lines": [l for l in _mapping if PTC_MOVED.match(l)], "reason": PTC_REASON})
+    _limitations.append({"feature": "edu_no_refund", "lines": [l for l in _mapping if EDU_MOVED.match(l)], "reason": EDU_NO_REFUND})
+PE_LIMITATIONS.append({"feature": "edu_phaseout_inexact", "lines": [l for l in PE_MAP if EDU_MOVED.match(l)],
+                       "reason": "PolicyEngine-US phases the education credits out by the exact fraction of the excess of modified AGI "
+                                 "over $80,000 ($160,000 joint) (education_credit_phase_out, lifetime_learning_credit_phase_out); "
+                                 "Form 8863 lines 6 and 17 round the ratio to three places (\"rounded to at least three places\"; the "
+                                 "project rounds to three, amb.2025.edu_ratio_places), so returns whose ratio is not exact at three places "
+                                 "are not compared on the lines it moves"})
 for _mapping, _limitations in ((PE_MAP, PE_LIMITATIONS), (TC_MAP, TC_LIMITATIONS)):
     for _lim in _limitations:
         if "f1040.line16" in _lim["lines"]:
@@ -358,6 +396,13 @@ def run_policyengine(cases):
             # Children 17 and over are full-time students in the generated cases.
             people[cid] = {"age": y(age), "is_full_time_student": y(age >= 17), "tax_unit_role_input": y("DEPENDENT")}
             members.append(cid)
+        # Form 8863: each student's adjusted qualified education expenses (for an AOC student, course materials included)
+        # and whether the student is an AOC student; a student who is not is a lifetime learning credit student.
+        for s in (f.get("education") or {}).get("students", []):
+            who = pid if s["who"] == "taxpayer" else f"{pid}_s" if s["who"] == "spouse" else f"{pid}_c{s['who'] + 1}"
+            people[who].update({"qualified_tuition_expenses": y(dollars(s["aoc_expenses"] if s["aoc"] else s["llc_expenses"])),
+                                "is_eligible_for_american_opportunity_credit": y(bool(s["aoc"])),
+                                "is_eligible_for_lifetime_learning_credit": y(True)})
         units[pid] = {"members": members,
                       "filing_status": y("JOINT" if f.get("joint") else "HEAD_OF_HOUSEHOLD" if f.get("hoh") else "SINGLE"),
                       "state_and_local_sales_or_income_tax": y(dollars(f["salt_income_tax"])),
@@ -425,6 +470,9 @@ def run_taxcalc(cases):
             # The IRA contributions enter as the deduction (the phase-out is not computed), and the Form 5695
             # credits before their limits as one amount figured from the costs; the engine applies the tax limits.
             e03150=dollars(f.get("ira_contribution", 0)), e07260=dollars(f.get("energy_credit", 0)),
+            # Form 8863 line 1 (the tentative American opportunity credit, Part III line 30 summed) and line 10 (the lifetime
+            # learning credit expenses, Part III line 31 summed); the engine applies the phase-outs and the Credit Limit Worksheet.
+            e87521=dollars((f.get("education") or {}).get("line1", 0)), e87530=dollars((f.get("education") or {}).get("line10", 0)),
         ))
     df = pd.DataFrame(rows).astype(float)
     for col in ("RECID", "MARS", "FLPDYR", "XTOT", "n24", "nu18", "n1820", "n21", "EIC", "f2441", "nu13"):

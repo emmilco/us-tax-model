@@ -1,0 +1,7282 @@
+{
+ "bank": {
+  "evaluation_failures": 0,
+  "fixtures": 1325,
+  "generated": 500,
+  "partial_bases": 40,
+  "partial_records": 52,
+  "seed": 20261026
+ },
+ "errors": [],
+ "failures": [],
+ "family": "claude",
+ "form": "f8863",
+ "lines": [
+  {
+   "absent": 0,
+   "agree": 1795,
+   "candidate": "f8863.eligible",
+   "compared": 1877,
+   "differ": 82,
+   "handle": "f8863.eligible",
+   "in_scope": 1848,
+   "in_scope_agree": 1795,
+   "kinds": {
+    "candidate-refuses": 29,
+    "project-unknown": 9,
+    "value": 44
+   },
+   "kinds_by_return": {
+    "completed": {
+     "value": 16
+    },
+    "incomplete": {
+     "project-unknown": 7,
+     "value": 3
+    },
+    "refused": {
+     "candidate-refuses": 29,
+     "project-unknown": 2,
+     "value": 25
+    }
+   },
+   "open_at_triage": true,
+   "project": "f8863.eligible",
+   "shown_when": null,
+   "sources": {
+    "fixture": 1325,
+    "generated": 500,
+    "partial": 52
+   },
+   "status": "DISAGREE",
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.paid",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"mfs\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "f8863.line4",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "value",
+     "project": {
+      "kind": "bool",
+      "value": true
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.paid",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sli.claimed",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dependent.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i1040sd",
+       "locator": "pp. 11\u201312, lines 18 and 19"
+      },
+      "form": "Schedule D special gains worksheets",
+      "gate": "sales[s2].special",
+      "kind": "refusal",
+      "remedy": "Direct sales of collectibles, section 1202 stock and section 1250 property are unsupported."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.paid",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "\"mfs\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "f8863.line4",
+       "value": {
+        "cite": {
+         "doc": "i1040sd",
+         "locator": "pp. 11\u201312, lines 18 and 19"
+        },
+        "form": "Schedule D special gains worksheets",
+        "gate": "sales[s2].special",
+        "kind": "refusal",
+        "remedy": "Direct sales of collectibles, section 1202 stock and section 1250 property are unsupported."
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "candidate-refuses",
+     "project": {
+      "kind": "bool",
+      "value": true
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.paid",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sli.claimed",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dependent.5.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i1040sb",
+       "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+      },
+      "form": "Form 8938",
+      "gate": "sb.form8938",
+      "kind": "refusal",
+      "remedy": "Prepare the required foreign financial asset disclosure; this tool does not prepare Form 8938."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.paid",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "qss"
+       }
+      },
+      {
+       "ref": "\"mfs\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "f8863.line4",
+       "value": {
+        "cite": {
+         "doc": "i1040sb",
+         "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+        },
+        "form": "Form 8938",
+        "gate": "sb.form8938",
+        "kind": "refusal",
+        "remedy": "Prepare the required foreign financial asset disclosure; this tool does not prepare Form 8938."
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "candidate-refuses",
+     "project": {
+      "kind": "bool",
+      "value": true
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.paid",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sli.claimed",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dependent.6.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.paid",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"mfs\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "f8863.line4",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "value",
+     "project": {
+      "kind": "bool",
+      "value": true
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.paid",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sli.claimed",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.s3.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.paid",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"mfs\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "f8863.line4",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "value",
+     "project": {
+      "kind": "bool",
+      "value": true
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.paid",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sli.claimed",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f1040.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.paid",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "qss"
+       }
+      },
+      {
+       "ref": "\"mfs\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "f8863.line4",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "value",
+     "project": {
+      "kind": "bool",
+      "value": true
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.paid",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sli.claimed",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f5695.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.paid",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "qss"
+       }
+      },
+      {
+       "ref": "\"mfs\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "f8863.line4",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "value",
+     "project": {
+      "kind": "bool",
+      "value": true
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.paid",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sli.claimed",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f5695.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.paid",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"mfs\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "f8863.line4",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "value",
+     "project": {
+      "kind": "bool",
+      "value": true
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.paid",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sli.claimed",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.s3.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i1040sd",
+       "locator": "pp. 11\u201312, lines 18 and 19"
+      },
+      "form": "Schedule D special gains worksheets",
+      "gate": "sales[s2].special",
+      "kind": "refusal",
+      "remedy": "Direct sales of collectibles, section 1202 stock and section 1250 property are unsupported."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.paid",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "\"mfs\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "f8863.line4",
+       "value": {
+        "cite": {
+         "doc": "i1040sd",
+         "locator": "pp. 11\u201312, lines 18 and 19"
+        },
+        "form": "Schedule D special gains worksheets",
+        "gate": "sales[s2].special",
+        "kind": "refusal",
+        "remedy": "Direct sales of collectibles, section 1202 stock and section 1250 property are unsupported."
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "candidate-refuses",
+     "project": {
+      "kind": "bool",
+      "value": true
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.paid",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sli.claimed",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dependent.5",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i1040sb",
+       "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+      },
+      "form": "Form 8938",
+      "gate": "sb.form8938",
+      "kind": "refusal",
+      "remedy": "Prepare the required foreign financial asset disclosure; this tool does not prepare Form 8938."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.paid",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "qss"
+       }
+      },
+      {
+       "ref": "\"mfs\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "f8863.line4",
+       "value": {
+        "cite": {
+         "doc": "i1040sb",
+         "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+        },
+        "form": "Form 8938",
+        "gate": "sb.form8938",
+        "kind": "refusal",
+        "remedy": "Prepare the required foreign financial asset disclosure; this tool does not prepare Form 8938."
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "candidate-refuses",
+     "project": {
+      "kind": "bool",
+      "value": true
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.paid",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sli.claimed",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dependent.6",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "sa.excluded_income",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.paid",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"mfs\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "f8863.line4",
+       "value": {
+        "cite": null,
+        "form": "model-declared refusal",
+        "gate": "sa.excluded_income",
+        "kind": "refusal",
+        "remedy": "Outside candidate scope"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "candidate-refuses",
+     "project": {
+      "kind": "bool",
+      "value": true
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.paid",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sli.claimed",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage19.refuse.excluded_income",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i1040sd",
+       "locator": "p. 10, lines 1a and 8a"
+      },
+      "form": "Form 8949",
+      "gate": "sales[s1].bad_aggregate",
+      "kind": "refusal",
+      "remedy": "Use the detail route; this transaction does not qualify for Schedule D lines 1a/8a."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.paid",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "qss"
+       }
+      },
+      {
+       "ref": "\"mfs\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "f8863.line4",
+       "value": {
+        "cite": {
+         "doc": "i1040sd",
+         "locator": "p. 10, lines 1a and 8a"
+        },
+        "form": "Form 8949",
+        "gate": "sales[s1].bad_aggregate",
+        "kind": "refusal",
+        "remedy": "Use the detail route; this transaction does not qualify for Schedule D lines 1a/8a."
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "candidate-refuses",
+     "project": {
+      "kind": "bool",
+      "value": true
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.paid",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sli.claimed",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 10,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.paid",
+       "value": {
+        "input": "f8863.paid",
+        "kind": "unknown",
+        "reason": "no input supplied for f8863.paid"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "\"mfs\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "f8863.line4",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "project-unknown",
+     "project": {
+      "input": "f8863.paid",
+      "kind": "unknown",
+      "reason": "no input supplied for f8863.paid"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.paid",
+       "value": {
+        "input": "f8863.paid",
+        "kind": "unknown",
+        "reason": "no input supplied for f8863.paid"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sli.claimed",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.f8889.2.deepseek",
+      "kind": "partial",
+      "withheld": "f8863.paid"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.paid",
+       "value": {
+        "input": "f8863.paid",
+        "kind": "unknown",
+        "reason": "no input supplied for f8863.paid"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "hoh"
+       }
+      },
+      {
+       "ref": "\"mfs\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "f8863.line4",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "project-unknown",
+     "project": {
+      "input": "f8863.paid",
+      "kind": "unknown",
+      "reason": "no input supplied for f8863.paid"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.paid",
+       "value": {
+        "input": "f8863.paid",
+        "kind": "unknown",
+        "reason": "no input supplied for f8863.paid"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sli.claimed",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "base": "classm.f4952.1.deepseek",
+      "kind": "partial",
+      "withheld": "f8863.paid"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.paid",
+       "value": {
+        "input": "f8863.paid",
+        "kind": "unknown",
+        "reason": "no input supplied for f8863.paid"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "hoh"
+       }
+      },
+      {
+       "ref": "\"mfs\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "f8863.line4",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "project-unknown",
+     "project": {
+      "input": "f8863.paid",
+      "kind": "unknown",
+      "reason": "no input supplied for f8863.paid"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.paid",
+       "value": {
+        "input": "f8863.paid",
+        "kind": "unknown",
+        "reason": "no input supplied for f8863.paid"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sli.claimed",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "base": "classm.f8960.1.deepseek",
+      "kind": "partial",
+      "withheld": "f8863.paid"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.paid",
+       "value": {
+        "input": "f8863.paid",
+        "kind": "unknown",
+        "reason": "no input supplied for f8863.paid"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "hoh"
+       }
+      },
+      {
+       "ref": "\"mfs\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "f8863.line4",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "project-unknown",
+     "project": {
+      "input": "f8863.paid",
+      "kind": "unknown",
+      "reason": "no input supplied for f8863.paid"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.paid",
+       "value": {
+        "input": "f8863.paid",
+        "kind": "unknown",
+        "reason": "no input supplied for f8863.paid"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sli.claimed",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "base": "classm.sd.1.deepseek",
+      "kind": "partial",
+      "withheld": "f8863.paid"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.paid",
+       "value": {
+        "input": "f8863.paid",
+        "kind": "unknown",
+        "reason": "no input supplied for f8863.paid"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "qss"
+       }
+      },
+      {
+       "ref": "\"mfs\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "f8863.line4",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "project-unknown",
+     "project": {
+      "input": "f8863.paid",
+      "kind": "unknown",
+      "reason": "no input supplied for f8863.paid"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.paid",
+       "value": {
+        "input": "f8863.paid",
+        "kind": "unknown",
+        "reason": "no input supplied for f8863.paid"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sli.claimed",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "base": "classm.clcw26.4.deepseek",
+      "kind": "partial",
+      "withheld": "f8863.paid"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.paid",
+       "value": {
+        "input": "f8863.paid",
+        "kind": "unknown",
+        "reason": "no input supplied for f8863.paid"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"mfs\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "f8863.line4",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "project-unknown",
+     "project": {
+      "input": "f8863.paid",
+      "kind": "unknown",
+      "reason": "no input supplied for f8863.paid"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.paid",
+       "value": {
+        "input": "f8863.paid",
+        "kind": "unknown",
+        "reason": "no input supplied for f8863.paid"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sli.claimed",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "base": "classm.s3.2.deepseek",
+      "kind": "partial",
+      "withheld": "f8863.paid"
+     }
+    }
+   ]
+  },
+  {
+   "absent": 0,
+   "agree": 599,
+   "candidate": "f8863.kid_needed",
+   "compared": 1877,
+   "differ": 1278,
+   "handle": "f8863.kid_needed",
+   "in_scope": 1434,
+   "in_scope_agree": 569,
+   "kinds": {
+    "candidate-refuses": 408,
+    "candidate-unknown": 858,
+    "project-refuses": 5,
+    "project-unknown": 4,
+    "value": 3
+   },
+   "kinds_by_return": {
+    "completed": {
+     "candidate-unknown": 383
+    },
+    "incomplete": {
+     "candidate-unknown": 259,
+     "project-unknown": 3
+    },
+    "refused": {
+     "candidate-refuses": 408,
+     "candidate-unknown": 216,
+     "project-refuses": 5,
+     "project-unknown": 1,
+     "value": 3
+    }
+   },
+   "open_at_triage": true,
+   "project": "f8863.kid_needed",
+   "shown_when": null,
+   "sources": {
+    "fixture": 1325,
+    "generated": 500,
+    "partial": 52
+   },
+   "status": "DISAGREE",
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "input": "f8863.ban",
+      "kind": "unknown",
+      "reason": "no input supplied for f8863.ban"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.line7",
+       "value": {
+        "input": "f8863.ban",
+        "kind": "unknown",
+        "reason": "no input supplied for f8863.ban"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "hoh"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.line1",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f8863.ban",
+      "kind": "unknown",
+      "reason": "no input supplied for f8863.ban"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.line7",
+       "value": {
+        "input": "f8863.ban",
+        "kind": "unknown",
+        "reason": "no input supplied for f8863.ban"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "hoh"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.line1",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f8863.ban",
+      "kind": "unknown",
+      "reason": "no input supplied for f8863.ban"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.line7",
+       "value": {
+        "input": "f8863.ban",
+        "kind": "unknown",
+        "reason": "no input supplied for f8863.ban"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "hoh"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.line1",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.4.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f8863.ban",
+      "kind": "unknown",
+      "reason": "no input supplied for f8863.ban"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.line7",
+       "value": {
+        "input": "f8863.ban",
+        "kind": "unknown",
+        "reason": "no input supplied for f8863.ban"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "hoh"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.line1",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.5.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f8863.ban",
+      "kind": "unknown",
+      "reason": "no input supplied for f8863.ban"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.line7",
+       "value": {
+        "input": "f8863.ban",
+        "kind": "unknown",
+        "reason": "no input supplied for f8863.ban"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "hoh"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.line1",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.6.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i2441",
+       "locator": "p. 5, Line 14, \"enter on line 14 the total of the following amounts included on line 12\""
+      },
+      "form": "Form 2441 line 14 amounts",
+      "gate": "f2441.line14_bad",
+      "kind": "refusal",
+      "remedy": "The amounts forfeited or carried forward on line 14 are amounts included on line 12, so line 14 cannot be more than line 12. Check the amounts with your employer."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.line7",
+       "value": {
+        "cite": {
+         "doc": "i2441",
+         "locator": "p. 5, Line 14, \"enter on line 14 the total of the following amounts included on line 12\""
+        },
+        "form": "Form 2441 line 14 amounts",
+        "gate": "f2441.line14_bad",
+        "kind": "refusal",
+        "remedy": "The amounts forfeited or carried forward on line 14 are amounts included on line 12, so line 14 cannot be more than line 12. Check the amounts with your employer."
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "candidate-refuses",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.line1",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.w2.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f8863.ban",
+      "kind": "unknown",
+      "reason": "no input supplied for f8863.ban"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.line7",
+       "value": {
+        "input": "f8863.ban",
+        "kind": "unknown",
+        "reason": "no input supplied for f8863.ban"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.line1",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "classm.f8889.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "sa.excluded_income",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.line7",
+       "value": {
+        "cite": null,
+        "form": "model-declared refusal",
+        "gate": "sa.excluded_income",
+        "kind": "refusal",
+        "remedy": "Outside candidate scope"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "candidate-refuses",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.line1",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8889.4.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "f1040",
+       "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19\u201320 and 27\u201331"
+      },
+      "form": "Schedule 1",
+      "gate": "scope.schedule1",
+      "kind": "refusal",
+      "remedy": "Schedule 1 income and adjustments other than the ones this tool computes (Schedule C business income, a taxable state or local income tax refund, alimony under an agreement made before 2019, unemployment compensation, the supported line 8 items, educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction, the early withdrawal penalty, the IRA deduction, student loan interest and jury duty pay given to your employer) are outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.line7",
+       "value": {
+        "cite": {
+         "doc": "f1040",
+         "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19\u201320 and 27\u201331"
+        },
+        "form": "Schedule 1",
+        "gate": "scope.schedule1",
+        "kind": "refusal",
+        "remedy": "Schedule 1 income and adjustments other than the ones this tool computes (Schedule C business income, a taxable state or local income tax refund, alimony under an agreement made before 2019, unemployment compensation, the supported line 8 items, educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction, the early withdrawal penalty, the IRA deduction, student loan interest and jury duty pay given to your employer) are outside this tool."
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "candidate-refuses",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.line1",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8889.5.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i4562",
+       "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
+      },
+      "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+      "gate": "person[spouse].sc[biz_a].scveh[car_1].low_use",
+      "kind": "refusal",
+      "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.line7",
+       "value": {
+        "cite": {
+         "doc": "i4562",
+         "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
+        },
+        "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+        "gate": "person[spouse].sc[biz_a].scveh[car_1].low_use",
+        "kind": "refusal",
+        "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "candidate-refuses",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.line1",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.g28.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i1040sb",
+       "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+      },
+      "form": "Schedule B special treatment / Form 8815",
+      "gate": "sb.unsupported",
+      "kind": "refusal",
+      "remedy": "Prepare the applicable adjustment or exclusion; this tool supports unadjusted taxable interest and ordinary dividends."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.line7",
+       "value": {
+        "cite": {
+         "doc": "i1040sb",
+         "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+        },
+        "form": "Schedule B special treatment / Form 8815",
+        "gate": "sb.unsupported",
+        "kind": "refusal",
+        "remedy": "Prepare the applicable adjustment or exclusion; this tool supports unadjusted taxable interest and ordinary dividends."
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "candidate-refuses",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.line1",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.clcw.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "p560",
+       "locator": "pp. 8\u201311, 14\u201317, 38\u201340, chapters 2, 3 and 5"
+      },
+      "form": "Retirement plan contributions outside this tool",
+      "gate": "person[taxpayer].plan_screened",
+      "kind": "refusal",
+      "remedy": "These retirement contributions are outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.line7",
+       "value": {
+        "cite": {
+         "doc": "p560",
+         "locator": "pp. 8\u201311, 14\u201317, 38\u201340, chapters 2, 3 and 5"
+        },
+        "form": "Retirement plan contributions outside this tool",
+        "gate": "person[taxpayer].plan_screened",
+        "kind": "refusal",
+        "remedy": "These retirement contributions are outside this tool."
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "candidate-refuses",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.line1",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.clcw.4.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.line7",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 20, Children of divorced or separated parents"
+      },
+      "form": "Children of divorced or separated parents",
+      "gate": "dependent[dep_b].divorced_rule",
+      "kind": "refusal",
+      "remedy": "The rule for children of divorced or separated parents is outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.line1",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 20, Children of divorced or separated parents"
+        },
+        "form": "Children of divorced or separated parents",
+        "gate": "dependent[dep_b].divorced_rule",
+        "kind": "refusal",
+        "remedy": "The rule for children of divorced or separated parents is outside this tool."
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 74,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.line7",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "value",
+     "project": {
+      "kind": "bool",
+      "value": true
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.line1",
+       "value": {
+        "cents": 250000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8863.line7",
+       "value": {
+        "cents": 250000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 82,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.line7",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 21, Married person"
+      },
+      "form": "Married person rules",
+      "gate": "dependent[dep_c].married",
+      "kind": "refusal",
+      "remedy": "A married dependent is outside this tool; see Married person in the instructions."
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.line1",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 21, Married person"
+        },
+        "form": "Married person rules",
+        "gate": "dependent[dep_c].married",
+        "kind": "refusal",
+        "remedy": "A married dependent is outside this tool; see Married person in the instructions."
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 103,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.line7",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "project-unknown",
+     "project": {
+      "input": "dependent[dep_b].lawful",
+      "kind": "unknown",
+      "reason": "no input supplied for dependent[dep_b].lawful"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.line1",
+       "value": {
+        "input": "dependent[dep_b].lawful",
+        "kind": "unknown",
+        "reason": "no input supplied for dependent[dep_b].lawful"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8863.line7",
+       "value": {
+        "input": "dependent[dep_b].lawful",
+        "kind": "unknown",
+        "reason": "no input supplied for dependent[dep_b].lawful"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "index": 145,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.line7",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "value",
+     "project": {
+      "kind": "bool",
+      "value": true
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.line1",
+       "value": {
+        "cents": 476015,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8863.line7",
+       "value": {
+        "cents": 476015,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 155,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.line7",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 21, Qualifying child of more than one person"
+      },
+      "form": "Qualifying child of more than one person (tie-breaker rules)",
+      "gate": "dependent[dep_a].other_claimant",
+      "kind": "refusal",
+      "remedy": "This person may be the qualifying child of another person. The tie-breaker rules are outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.line1",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 21, Qualifying child of more than one person"
+        },
+        "form": "Qualifying child of more than one person (tie-breaker rules)",
+        "gate": "dependent[dep_a].other_claimant",
+        "kind": "refusal",
+        "remedy": "This person may be the qualifying child of another person. The tie-breaker rules are outside this tool."
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 347,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.line7",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "value",
+     "project": {
+      "kind": "bool",
+      "value": true
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.line1",
+       "value": {
+        "cents": 250000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8863.line7",
+       "value": {
+        "cents": 250000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 415,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.line7",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 21, Qualifying child of more than one person"
+      },
+      "form": "Qualifying child of more than one person (tie-breaker rules)",
+      "gate": "dependent[dep_a].other_claimant",
+      "kind": "refusal",
+      "remedy": "This person may be the qualifying child of another person. The tie-breaker rules are outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.line1",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 21, Qualifying child of more than one person"
+        },
+        "form": "Qualifying child of more than one person (tie-breaker rules)",
+        "gate": "dependent[dep_a].other_claimant",
+        "kind": "refusal",
+        "remedy": "This person may be the qualifying child of another person. The tie-breaker rules are outside this tool."
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 418,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.line7",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 22, Social security number, \"You must enter each dependent\u2019s social security number (SSN)\" and \"If your dependent child was born and died in 2025 and you do not have an SSN for the child, enter \u201cDied\u201d on row (3) of the Dependents section and include a copy of the child\u2019s birth certificate, death certificate, or hospital records\"; p. 14, Head of Household, \"The dependents you claim are those you list by name and SSN ... in the Dependents section on Form 1040 or 1040-SR\""
+      },
+      "form": "Dependent without an SSN, ITIN or ATIN (Form 1040, Dependents, row (3))",
+      "gate": "dependent[dep_b].claimed_no_tin",
+      "kind": "refusal",
+      "remedy": "Each dependent must be listed with an SSN (or ITIN or ATIN) issued on or before the due date of your return. A dependent child who was born and died in 2025 without an SSN, entered as \"Died\" on row (3) with a copy of the birth certificate, death certificate or hospital records, is outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.line1",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 22, Social security number, \"You must enter each dependent\u2019s social security number (SSN)\" and \"If your dependent child was born and died in 2025 and you do not have an SSN for the child, enter \u201cDied\u201d on row (3) of the Dependents section and include a copy of the child\u2019s birth certificate, death certificate, or hospital records\"; p. 14, Head of Household, \"The dependents you claim are those you list by name and SSN ... in the Dependents section on Form 1040 or 1040-SR\""
+        },
+        "form": "Dependent without an SSN, ITIN or ATIN (Form 1040, Dependents, row (3))",
+        "gate": "dependent[dep_b].claimed_no_tin",
+        "kind": "refusal",
+        "remedy": "Each dependent must be listed with an SSN (or ITIN or ATIN) issued on or before the due date of your return. A dependent child who was born and died in 2025 without an SSN, entered as \"Died\" on row (3) with a copy of the birth certificate, death certificate or hospital records, is outside this tool."
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 454,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.line7",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "project-unknown",
+     "project": {
+      "input": "f8863.paid",
+      "kind": "unknown",
+      "reason": "no input supplied for f8863.paid"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.line1",
+       "value": {
+        "input": "f8863.paid",
+        "kind": "unknown",
+        "reason": "no input supplied for f8863.paid"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8863.line7",
+       "value": {
+        "input": "f8863.paid",
+        "kind": "unknown",
+        "reason": "no input supplied for f8863.paid"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "base": "classm.s3.2.deepseek",
+      "kind": "partial",
+      "withheld": "f8863.paid"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.line7",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "project-unknown",
+     "project": {
+      "input": "f8863.paid",
+      "kind": "unknown",
+      "reason": "no input supplied for f8863.paid"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.line1",
+       "value": {
+        "input": "f8863.paid",
+        "kind": "unknown",
+        "reason": "no input supplied for f8863.paid"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8863.line7",
+       "value": {
+        "input": "f8863.paid",
+        "kind": "unknown",
+        "reason": "no input supplied for f8863.paid"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "base": "classm.f1040.2.deepseek",
+      "kind": "partial",
+      "withheld": "f8863.paid"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.line7",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "project-unknown",
+     "project": {
+      "input": "f8863.paid",
+      "kind": "unknown",
+      "reason": "no input supplied for f8863.paid"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.line1",
+       "value": {
+        "input": "f8863.paid",
+        "kind": "unknown",
+        "reason": "no input supplied for f8863.paid"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8863.line7",
+       "value": {
+        "input": "f8863.paid",
+        "kind": "unknown",
+        "reason": "no input supplied for f8863.paid"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.eic.2.deepseek",
+      "kind": "partial",
+      "withheld": "f8863.paid"
+     }
+    }
+   ]
+  },
+  {
+   "absent": 0,
+   "agree": 600,
+   "candidate": "f8863.line1",
+   "compared": 1877,
+   "differ": 1277,
+   "handle": "1",
+   "in_scope": 1839,
+   "in_scope_agree": 591,
+   "kinds": {
+    "candidate-refuses": 22,
+    "candidate-unknown": 1221,
+    "project-refuses": 7,
+    "project-unknown": 4,
+    "value": 23
+   },
+   "kinds_by_return": {
+    "completed": {
+     "candidate-unknown": 488,
+     "value": 7
+    },
+    "incomplete": {
+     "candidate-unknown": 290,
+     "project-unknown": 3,
+     "value": 2
+    },
+    "refused": {
+     "candidate-refuses": 22,
+     "candidate-unknown": 443,
+     "project-refuses": 7,
+     "project-unknown": 1,
+     "value": 14
+    }
+   },
+   "open_at_triage": true,
+   "project": "f8863.line1",
+   "shown_when": "f8863.eligible",
+   "sources": {
+    "fixture": 1325,
+    "generated": 500,
+    "partial": 52
+   },
+   "status": "DISAGREE",
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "input": "f8863.ban",
+      "kind": "unknown",
+      "reason": "no input supplied for f8863.ban"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.ban",
+       "value": {
+        "input": "f8863.ban",
+        "kind": "unknown",
+        "reason": "no input supplied for f8863.ban"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f8863.ban",
+      "kind": "unknown",
+      "reason": "no input supplied for f8863.ban"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.ban",
+       "value": {
+        "input": "f8863.ban",
+        "kind": "unknown",
+        "reason": "no input supplied for f8863.ban"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f8863.ban",
+      "kind": "unknown",
+      "reason": "no input supplied for f8863.ban"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.ban",
+       "value": {
+        "input": "f8863.ban",
+        "kind": "unknown",
+        "reason": "no input supplied for f8863.ban"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f8863.ban",
+      "kind": "unknown",
+      "reason": "no input supplied for f8863.ban"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.ban",
+       "value": {
+        "input": "f8863.ban",
+        "kind": "unknown",
+        "reason": "no input supplied for f8863.ban"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.4.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f8863.ban",
+      "kind": "unknown",
+      "reason": "no input supplied for f8863.ban"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.ban",
+       "value": {
+        "input": "f8863.ban",
+        "kind": "unknown",
+        "reason": "no input supplied for f8863.ban"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.5.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f8863.ban",
+      "kind": "unknown",
+      "reason": "no input supplied for f8863.ban"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.ban",
+       "value": {
+        "input": "f8863.ban",
+        "kind": "unknown",
+        "reason": "no input supplied for f8863.ban"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.6.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i1040sd",
+       "locator": "pp. 11\u201312, lines 18 and 19"
+      },
+      "form": "Schedule D special gains worksheets",
+      "gate": "sales[s2].special",
+      "kind": "refusal",
+      "remedy": "Direct sales of collectibles, section 1202 stock and section 1250 property are unsupported."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.ban",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "cite": {
+         "doc": "i1040sd",
+         "locator": "pp. 11\u201312, lines 18 and 19"
+        },
+        "form": "Schedule D special gains worksheets",
+        "gate": "sales[s2].special",
+        "kind": "refusal",
+        "remedy": "Direct sales of collectibles, section 1202 stock and section 1250 property are unsupported."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.aoc_sum",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dependent.5.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i1040sb",
+       "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+      },
+      "form": "Form 8938",
+      "gate": "sb.form8938",
+      "kind": "refusal",
+      "remedy": "Prepare the required foreign financial asset disclosure; this tool does not prepare Form 8938."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.ban",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "cite": {
+         "doc": "i1040sb",
+         "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+        },
+        "form": "Form 8938",
+        "gate": "sb.form8938",
+        "kind": "refusal",
+        "remedy": "Prepare the required foreign financial asset disclosure; this tool does not prepare Form 8938."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.aoc_sum",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dependent.6.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.ban",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "value",
+     "project": {
+      "cents": 250000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.aoc_sum",
+       "value": {
+        "cents": 250000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.s3.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.ban",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "value",
+     "project": {
+      "cents": 250000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.aoc_sum",
+       "value": {
+        "cents": 250000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.s3.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i1040sd",
+       "locator": "pp. 11\u201312, lines 18 and 19"
+      },
+      "form": "Schedule D special gains worksheets",
+      "gate": "sales[s2].special",
+      "kind": "refusal",
+      "remedy": "Direct sales of collectibles, section 1202 stock and section 1250 property are unsupported."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.ban",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "cite": {
+         "doc": "i1040sd",
+         "locator": "pp. 11\u201312, lines 18 and 19"
+        },
+        "form": "Schedule D special gains worksheets",
+        "gate": "sales[s2].special",
+        "kind": "refusal",
+        "remedy": "Direct sales of collectibles, section 1202 stock and section 1250 property are unsupported."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.aoc_sum",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dependent.5",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i1040sb",
+       "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+      },
+      "form": "Form 8938",
+      "gate": "sb.form8938",
+      "kind": "refusal",
+      "remedy": "Prepare the required foreign financial asset disclosure; this tool does not prepare Form 8938."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.ban",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "cite": {
+         "doc": "i1040sb",
+         "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+        },
+        "form": "Form 8938",
+        "gate": "sb.form8938",
+        "kind": "refusal",
+        "remedy": "Prepare the required foreign financial asset disclosure; this tool does not prepare Form 8938."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.aoc_sum",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dependent.6",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "sa.excluded_income",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.ban",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "cite": null,
+        "form": "model-declared refusal",
+        "gate": "sa.excluded_income",
+        "kind": "refusal",
+        "remedy": "Outside candidate scope"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 238750,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.aoc_sum",
+       "value": {
+        "cents": 238750,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage19.refuse.excluded_income",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "f8863.ban",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.ban",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 238750,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.aoc_sum",
+       "value": {
+        "cents": 238750,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage19.refuse.ban",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.ban",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "value",
+     "project": {
+      "cents": 250000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.aoc_sum",
+       "value": {
+        "cents": 250000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 14,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.ban",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "value",
+     "project": {
+      "cents": 250000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.aoc_sum",
+       "value": {
+        "cents": 250000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 67,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.ban",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 20, Children of divorced or separated parents"
+      },
+      "form": "Children of divorced or separated parents",
+      "gate": "dependent[dep_b].divorced_rule",
+      "kind": "refusal",
+      "remedy": "The rule for children of divorced or separated parents is outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.aoc_sum",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 20, Children of divorced or separated parents"
+        },
+        "form": "Children of divorced or separated parents",
+        "gate": "dependent[dep_b].divorced_rule",
+        "kind": "refusal",
+        "remedy": "The rule for children of divorced or separated parents is outside this tool."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 74,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.ban",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "value",
+     "project": {
+      "cents": 250000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.aoc_sum",
+       "value": {
+        "cents": 250000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 82,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.ban",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "value",
+     "project": {
+      "cents": 500000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.aoc_sum",
+       "value": {
+        "cents": 500000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "index": 90,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.ban",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 21, Married person"
+      },
+      "form": "Married person rules",
+      "gate": "dependent[dep_c].married",
+      "kind": "refusal",
+      "remedy": "A married dependent is outside this tool; see Married person in the instructions."
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.aoc_sum",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 21, Married person"
+        },
+        "form": "Married person rules",
+        "gate": "dependent[dep_c].married",
+        "kind": "refusal",
+        "remedy": "A married dependent is outside this tool; see Married person in the instructions."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 103,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.ban",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "project-unknown",
+     "project": {
+      "input": "dependent[dep_b].lawful",
+      "kind": "unknown",
+      "reason": "no input supplied for dependent[dep_b].lawful"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.aoc_sum",
+       "value": {
+        "input": "dependent[dep_b].lawful",
+        "kind": "unknown",
+        "reason": "no input supplied for dependent[dep_b].lawful"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "index": 145,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.ban",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 20, Children of divorced or separated parents"
+      },
+      "form": "Children of divorced or separated parents",
+      "gate": "dependent[dep_b].divorced_rule",
+      "kind": "refusal",
+      "remedy": "The rule for children of divorced or separated parents is outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.aoc_sum",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 20, Children of divorced or separated parents"
+        },
+        "form": "Children of divorced or separated parents",
+        "gate": "dependent[dep_b].divorced_rule",
+        "kind": "refusal",
+        "remedy": "The rule for children of divorced or separated parents is outside this tool."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 156,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.ban",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 20, Children of divorced or separated parents"
+      },
+      "form": "Children of divorced or separated parents",
+      "gate": "dependent[dep_a].divorced_rule",
+      "kind": "refusal",
+      "remedy": "The rule for children of divorced or separated parents is outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.aoc_sum",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 20, Children of divorced or separated parents"
+        },
+        "form": "Children of divorced or separated parents",
+        "gate": "dependent[dep_a].divorced_rule",
+        "kind": "refusal",
+        "remedy": "The rule for children of divorced or separated parents is outside this tool."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 322,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.ban",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 21, Qualifying child of more than one person"
+      },
+      "form": "Qualifying child of more than one person (tie-breaker rules)",
+      "gate": "dependent[dep_a].other_claimant",
+      "kind": "refusal",
+      "remedy": "This person may be the qualifying child of another person. The tie-breaker rules are outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.aoc_sum",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 21, Qualifying child of more than one person"
+        },
+        "form": "Qualifying child of more than one person (tie-breaker rules)",
+        "gate": "dependent[dep_a].other_claimant",
+        "kind": "refusal",
+        "remedy": "This person may be the qualifying child of another person. The tie-breaker rules are outside this tool."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 347,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.ban",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 21, Qualifying child of more than one person"
+      },
+      "form": "Qualifying child of more than one person (tie-breaker rules)",
+      "gate": "dependent[dep_a].other_claimant",
+      "kind": "refusal",
+      "remedy": "This person may be the qualifying child of another person. The tie-breaker rules are outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.aoc_sum",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 21, Qualifying child of more than one person"
+        },
+        "form": "Qualifying child of more than one person (tie-breaker rules)",
+        "gate": "dependent[dep_a].other_claimant",
+        "kind": "refusal",
+        "remedy": "This person may be the qualifying child of another person. The tie-breaker rules are outside this tool."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 418,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.ban",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "project-unknown",
+     "project": {
+      "input": "f8863.paid",
+      "kind": "unknown",
+      "reason": "no input supplied for f8863.paid"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "input": "f8863.paid",
+        "kind": "unknown",
+        "reason": "no input supplied for f8863.paid"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "base": "classm.s3.2.deepseek",
+      "kind": "partial",
+      "withheld": "f8863.paid"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.ban",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "project-unknown",
+     "project": {
+      "input": "f8863.paid",
+      "kind": "unknown",
+      "reason": "no input supplied for f8863.paid"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "input": "f8863.paid",
+        "kind": "unknown",
+        "reason": "no input supplied for f8863.paid"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "base": "classm.f1040.2.deepseek",
+      "kind": "partial",
+      "withheld": "f8863.paid"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.ban",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "project-unknown",
+     "project": {
+      "input": "f8863.paid",
+      "kind": "unknown",
+      "reason": "no input supplied for f8863.paid"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "input": "f8863.paid",
+        "kind": "unknown",
+        "reason": "no input supplied for f8863.paid"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.eic.2.deepseek",
+      "kind": "partial",
+      "withheld": "f8863.paid"
+     }
+    }
+   ]
+  },
+  {
+   "absent": 0,
+   "agree": 612,
+   "candidate": "f8863.no_refund",
+   "compared": 1877,
+   "differ": 1265,
+   "handle": "7 (box)",
+   "in_scope": 1439,
+   "in_scope_agree": 582,
+   "kinds": {
+    "candidate-refuses": 408,
+    "candidate-unknown": 857
+   },
+   "kinds_by_return": {
+    "completed": {
+     "candidate-unknown": 378
+    },
+    "incomplete": {
+     "candidate-unknown": 264
+    },
+    "refused": {
+     "candidate-refuses": 408,
+     "candidate-unknown": 215
+    }
+   },
+   "open_at_triage": true,
+   "project": "f8863.no_refund",
+   "shown_when": "f8863.show_after4",
+   "sources": {
+    "fixture": 1325,
+    "generated": 500,
+    "partial": 52
+   },
+   "status": "DISAGREE",
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "input": "f8863.ban",
+      "kind": "unknown",
+      "lowerBound": 0,
+      "reason": "no input supplied for f8863.ban"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.h_kid_count",
+       "value": {
+        "input": "f8863.ban",
+        "kind": "unknown",
+        "lowerBound": 0,
+        "reason": "no input supplied for f8863.ban"
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "hoh"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.kid_needed",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f8863.ban",
+      "kind": "unknown",
+      "lowerBound": 0,
+      "reason": "no input supplied for f8863.ban"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.h_kid_count",
+       "value": {
+        "input": "f8863.ban",
+        "kind": "unknown",
+        "lowerBound": 0,
+        "reason": "no input supplied for f8863.ban"
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "hoh"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.kid_needed",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f8863.ban",
+      "kind": "unknown",
+      "lowerBound": 0,
+      "reason": "no input supplied for f8863.ban"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.h_kid_count",
+       "value": {
+        "input": "f8863.ban",
+        "kind": "unknown",
+        "lowerBound": 0,
+        "reason": "no input supplied for f8863.ban"
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "hoh"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.kid_needed",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.4.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f8863.ban",
+      "kind": "unknown",
+      "lowerBound": 0,
+      "reason": "no input supplied for f8863.ban"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.h_kid_count",
+       "value": {
+        "input": "f8863.ban",
+        "kind": "unknown",
+        "lowerBound": 0,
+        "reason": "no input supplied for f8863.ban"
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "hoh"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.kid_needed",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.5.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f8863.ban",
+      "kind": "unknown",
+      "lowerBound": 0,
+      "reason": "no input supplied for f8863.ban"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.h_kid_count",
+       "value": {
+        "input": "f8863.ban",
+        "kind": "unknown",
+        "lowerBound": 0,
+        "reason": "no input supplied for f8863.ban"
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "hoh"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.kid_needed",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.6.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i2441",
+       "locator": "p. 5, Line 14, \"enter on line 14 the total of the following amounts included on line 12\""
+      },
+      "form": "Form 2441 line 14 amounts",
+      "gate": "f2441.line14_bad",
+      "kind": "refusal",
+      "remedy": "The amounts forfeited or carried forward on line 14 are amounts included on line 12, so line 14 cannot be more than line 12. Check the amounts with your employer."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.h_kid_count",
+       "value": {
+        "cite": {
+         "doc": "i2441",
+         "locator": "p. 5, Line 14, \"enter on line 14 the total of the following amounts included on line 12\""
+        },
+        "form": "Form 2441 line 14 amounts",
+        "gate": "f2441.line14_bad",
+        "kind": "refusal",
+        "remedy": "The amounts forfeited or carried forward on line 14 are amounts included on line 12, so line 14 cannot be more than line 12. Check the amounts with your employer."
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "candidate-refuses",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.kid_needed",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.w2.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f8863.ban",
+      "kind": "unknown",
+      "lowerBound": 0,
+      "reason": "no input supplied for f8863.ban"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.h_kid_count",
+       "value": {
+        "input": "f8863.ban",
+        "kind": "unknown",
+        "lowerBound": 0,
+        "reason": "no input supplied for f8863.ban"
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.kid_needed",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "classm.f8889.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "sa.excluded_income",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.h_kid_count",
+       "value": {
+        "cite": null,
+        "form": "model-declared refusal",
+        "gate": "sa.excluded_income",
+        "kind": "refusal",
+        "remedy": "Outside candidate scope"
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "candidate-refuses",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.kid_needed",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8889.4.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "f1040",
+       "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19\u201320 and 27\u201331"
+      },
+      "form": "Schedule 1",
+      "gate": "scope.schedule1",
+      "kind": "refusal",
+      "remedy": "Schedule 1 income and adjustments other than the ones this tool computes (Schedule C business income, a taxable state or local income tax refund, alimony under an agreement made before 2019, unemployment compensation, the supported line 8 items, educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction, the early withdrawal penalty, the IRA deduction, student loan interest and jury duty pay given to your employer) are outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.h_kid_count",
+       "value": {
+        "cite": {
+         "doc": "f1040",
+         "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19\u201320 and 27\u201331"
+        },
+        "form": "Schedule 1",
+        "gate": "scope.schedule1",
+        "kind": "refusal",
+        "remedy": "Schedule 1 income and adjustments other than the ones this tool computes (Schedule C business income, a taxable state or local income tax refund, alimony under an agreement made before 2019, unemployment compensation, the supported line 8 items, educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction, the early withdrawal penalty, the IRA deduction, student loan interest and jury duty pay given to your employer) are outside this tool."
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "candidate-refuses",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.kid_needed",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8889.5.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i4562",
+       "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
+      },
+      "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+      "gate": "person[spouse].sc[biz_a].scveh[car_1].low_use",
+      "kind": "refusal",
+      "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.h_kid_count",
+       "value": {
+        "cite": {
+         "doc": "i4562",
+         "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
+        },
+        "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+        "gate": "person[spouse].sc[biz_a].scveh[car_1].low_use",
+        "kind": "refusal",
+        "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "candidate-refuses",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.kid_needed",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.g28.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i1040sb",
+       "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+      },
+      "form": "Schedule B special treatment / Form 8815",
+      "gate": "sb.unsupported",
+      "kind": "refusal",
+      "remedy": "Prepare the applicable adjustment or exclusion; this tool supports unadjusted taxable interest and ordinary dividends."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.h_kid_count",
+       "value": {
+        "cite": {
+         "doc": "i1040sb",
+         "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+        },
+        "form": "Schedule B special treatment / Form 8815",
+        "gate": "sb.unsupported",
+        "kind": "refusal",
+        "remedy": "Prepare the applicable adjustment or exclusion; this tool supports unadjusted taxable interest and ordinary dividends."
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "candidate-refuses",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.kid_needed",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.clcw.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "p560",
+       "locator": "pp. 8\u201311, 14\u201317, 38\u201340, chapters 2, 3 and 5"
+      },
+      "form": "Retirement plan contributions outside this tool",
+      "gate": "person[taxpayer].plan_screened",
+      "kind": "refusal",
+      "remedy": "These retirement contributions are outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.h_kid_count",
+       "value": {
+        "cite": {
+         "doc": "p560",
+         "locator": "pp. 8\u201311, 14\u201317, 38\u201340, chapters 2, 3 and 5"
+        },
+        "form": "Retirement plan contributions outside this tool",
+        "gate": "person[taxpayer].plan_screened",
+        "kind": "refusal",
+        "remedy": "These retirement contributions are outside this tool."
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "candidate-refuses",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.kid_needed",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.clcw.4.deepseek",
+      "kind": "fixture"
+     }
+    }
+   ]
+  },
+  {
+   "absent": 0,
+   "agree": 1848,
+   "candidate": "f8863.line10",
+   "compared": 1877,
+   "differ": 29,
+   "handle": "10",
+   "in_scope": 1841,
+   "in_scope_agree": 1839,
+   "kinds": {
+    "candidate-refuses": 25,
+    "candidate-shows-skipped": 1,
+    "project-refuses": 2,
+    "project-unknown": 1
+   },
+   "kinds_by_return": {
+    "completed": {
+     "candidate-shows-skipped": 1
+    },
+    "refused": {
+     "candidate-refuses": 25,
+     "project-refuses": 2,
+     "project-unknown": 1
+    }
+   },
+   "open_at_triage": true,
+   "project": "f8863.line10",
+   "shown_when": "f8863.show_after4",
+   "sources": {
+    "fixture": 1325,
+    "generated": 500,
+    "partial": 52
+   },
+   "status": "DISAGREE",
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i1040sd",
+       "locator": "pp. 11\u201312, lines 18 and 19"
+      },
+      "form": "Schedule D special gains worksheets",
+      "gate": "sales[s2].special",
+      "kind": "refusal",
+      "remedy": "Direct sales of collectibles, section 1202 stock and section 1250 property are unsupported."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "cite": {
+         "doc": "i1040sd",
+         "locator": "pp. 11\u201312, lines 18 and 19"
+        },
+        "form": "Schedule D special gains worksheets",
+        "gate": "sales[s2].special",
+        "kind": "refusal",
+        "remedy": "Direct sales of collectibles, section 1202 stock and section 1250 property are unsupported."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 478800,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.llc_sum",
+       "value": {
+        "cents": 478800,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dependent.5.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i1040sb",
+       "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+      },
+      "form": "Form 8938",
+      "gate": "sb.form8938",
+      "kind": "refusal",
+      "remedy": "Prepare the required foreign financial asset disclosure; this tool does not prepare Form 8938."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "cite": {
+         "doc": "i1040sb",
+         "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+        },
+        "form": "Form 8938",
+        "gate": "sb.form8938",
+        "kind": "refusal",
+        "remedy": "Prepare the required foreign financial asset disclosure; this tool does not prepare Form 8938."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 1282800,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.llc_sum",
+       "value": {
+        "cents": 1282800,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dependent.6.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i1040sd",
+       "locator": "pp. 11\u201312, lines 18 and 19"
+      },
+      "form": "Schedule D special gains worksheets",
+      "gate": "sales[s2].special",
+      "kind": "refusal",
+      "remedy": "Direct sales of collectibles, section 1202 stock and section 1250 property are unsupported."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "cite": {
+         "doc": "i1040sd",
+         "locator": "pp. 11\u201312, lines 18 and 19"
+        },
+        "form": "Schedule D special gains worksheets",
+        "gate": "sales[s2].special",
+        "kind": "refusal",
+        "remedy": "Direct sales of collectibles, section 1202 stock and section 1250 property are unsupported."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 478800,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.llc_sum",
+       "value": {
+        "cents": 478800,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dependent.5",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i1040sb",
+       "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+      },
+      "form": "Form 8938",
+      "gate": "sb.form8938",
+      "kind": "refusal",
+      "remedy": "Prepare the required foreign financial asset disclosure; this tool does not prepare Form 8938."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "cite": {
+         "doc": "i1040sb",
+         "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+        },
+        "form": "Form 8938",
+        "gate": "sb.form8938",
+        "kind": "refusal",
+        "remedy": "Prepare the required foreign financial asset disclosure; this tool does not prepare Form 8938."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 1282800,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.llc_sum",
+       "value": {
+        "cents": 1282800,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dependent.6",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "sa.excluded_income",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "cite": null,
+        "form": "model-declared refusal",
+        "gate": "sa.excluded_income",
+        "kind": "refusal",
+        "remedy": "Outside candidate scope"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.llc_sum",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage19.refuse.excluded_income",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 1220000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.h_line10_sum",
+       "value": {
+        "cents": 1220000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "stage19.mut.claimed_filer_llc",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i1040sd",
+       "locator": "p. 10, lines 1a and 8a"
+      },
+      "form": "Form 8949",
+      "gate": "sales[s1].bad_aggregate",
+      "kind": "refusal",
+      "remedy": "Use the detail route; this transaction does not qualify for Schedule D lines 1a/8a."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "cite": {
+         "doc": "i1040sd",
+         "locator": "p. 10, lines 1a and 8a"
+        },
+        "form": "Form 8949",
+        "gate": "sales[s1].bad_aggregate",
+        "kind": "refusal",
+        "remedy": "Use the detail route; this transaction does not qualify for Schedule D lines 1a/8a."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.llc_sum",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 10,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 20, Children of divorced or separated parents"
+      },
+      "form": "Children of divorced or separated parents",
+      "gate": "dependent[dep_b].divorced_rule",
+      "kind": "refusal",
+      "remedy": "The rule for children of divorced or separated parents is outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.llc_sum",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 20, Children of divorced or separated parents"
+        },
+        "form": "Children of divorced or separated parents",
+        "gate": "dependent[dep_b].divorced_rule",
+        "kind": "refusal",
+        "remedy": "The rule for children of divorced or separated parents is outside this tool."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 156,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 20, Children of divorced or separated parents"
+      },
+      "form": "Children of divorced or separated parents",
+      "gate": "dependent[dep_a].divorced_rule",
+      "kind": "refusal",
+      "remedy": "The rule for children of divorced or separated parents is outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.llc_sum",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 20, Children of divorced or separated parents"
+        },
+        "form": "Children of divorced or separated parents",
+        "gate": "dependent[dep_a].divorced_rule",
+        "kind": "refusal",
+        "remedy": "The rule for children of divorced or separated parents is outside this tool."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 322,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8863",
+     "kind": "project-unknown",
+     "project": {
+      "input": "f8863.paid",
+      "kind": "unknown",
+      "reason": "no input supplied for f8863.paid"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "input": "f8863.paid",
+        "kind": "unknown",
+        "reason": "no input supplied for f8863.paid"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.eic.2.deepseek",
+      "kind": "partial",
+      "withheld": "f8863.paid"
+     }
+    }
+   ]
+  }
+ ],
+ "log_sha256_at_triage": "95bcb7cc47356db69e7182c2a1bd527abdd305a8ccedc05a6ee3cd3364d0ca02",
+ "policy": "executable-triage-v2",
+ "response_sha256": "426a31f25efb0b0382ded2cbb93fd1993848a9008821dd2428edde68b6f4dda2",
+ "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
+ "state": "evaluated",
+ "subject_sha256": "89c77a74f5250176c5aa6bb1e879d28547dd7b694c705dacb2dd35831b5bf5b2"
+}

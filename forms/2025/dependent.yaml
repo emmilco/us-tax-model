@@ -590,9 +590,37 @@ form:
                   - dependent.months
                   - const: 12
                     type: Count
+              - op: test
+                any:
+                  - op: test
+                    all:
+                      - op: test
+                        ne:
+                          - dependent.relationship
+                          - const: other
+                      - op: test
+                        ne:
+                          - dependent.relationship
+                          - const: sibling_descendant
+                  - op: test
+                    eq:
+                      - dependent.lawful
+                      - const: true
       cite:
         doc: i1040gi
         locator: p. 19, Step 4, "A qualifying relative is your..." through "Any other person (other than your spouse) who lived with you all year as a member of your household"
+    - id: dependent.lawful
+      printed: (helper)
+      type: Bool
+      label: Your relationship with this person did not violate local law
+      expr:
+        op: input
+        source: Did your relationship with this person not violate local law? (Asked for a person who is a Step 4 relative only
+          as a member of your household all year, such as a sibling's grandchild or a step sibling's child, or who is no
+          relative.)
+      cite:
+        doc: i1040gi
+        locator: p. 19, Step 4, "Any other person (other than your spouse) who lived with you all year as a member of your household if your relationship didn’t violate local law."
     - id: dependent.qr_income
       printed: (helper)
       type: Bool
@@ -1310,6 +1338,541 @@ form:
         locator: 'p. 8, Line 2b, "Only include your dependents who are required to file an income tax return because their
           income meets the income tax return filing threshold."'
       ambiguity: amb.2025.ptc_dependent_filing
+    # --- Stage 19: education credits (generated) ---
+    - id: dependent.edu
+      printed: (gate)
+      label: Qualified education expenses paid in 2025 for this dependent
+      type: Bool
+      expr:
+        op: input
+        source: Did anyone pay qualified education expenses in 2025 for this dependent at an eligible educational institution
+          (a college, university, vocational school, or other postsecondary school eligible for federal student aid)?
+      cite:
+        doc: i8863
+        locator: p. 2, Who Can Claim an Education Credit, "You may be able to claim an education credit if you, your spouse, or
+          a dependent you claim on your tax return was a student enrolled at or attending an eligible educational institution."
+    - id: dependent.edu_1098t
+      printed: (gate)
+      label: The student received a 2025 Form 1098-T from the institution, or an exception applies
+      type: Bool
+      expr:
+        op: input
+        source: Did the student receive a 2025 Form 1098-T from the educational institution? Answer yes also if the institution
+          was not required to furnish one (for example a qualified nonresident alien, expenses paid entirely with scholarships
+          or under a formal billing arrangement, or only courses for which no academic credit is awarded), or if the institution
+          did not furnish it and, after February 2, 2026, but before you file, you or the student requested it and you can show
+          the enrollment and the payments.
+      cite:
+        doc: i8863
+        locator: p. 1, Form 1098-T requirement, "To be eligible to claim the American opportunity credit or the lifetime learning
+          credit, the law requires a taxpayer (or a dependent) to have received Form 1098-T, Tuition Statement, from an eligible
+          educational institution, whether domestic or foreign."
+      ambiguity: amb.2025.edu_1098t_date
+    - id: dependent.edu_student
+      printed: (helper)
+      label: 'An eligible student of this return: expenses paid, a TIN by the due date and a Form 1098-T (or an exception), and
+        claimed as your dependent'
+      type: Bool
+      expr:
+        op: test
+        all:
+        - op: test
+          eq:
+          - f8863.paid
+          - const: true
+        - op: test
+          eq:
+          - dependent.claimed
+          - const: true
+        - op: test
+          eq:
+          - dependent.edu
+          - const: true
+        - op: test
+          eq:
+          - dependent.tin
+          - const: true
+        - op: test
+          eq:
+          - dependent.edu_1098t
+          - const: true
+      cite:
+        doc: i8863
+        locator: p. 2, Who can claim a dependent’s expenses, "If a student is claimed as a dependent on another person’s tax return,
+          all qualified education expenses of the student are treated as having been paid by that person. Therefore, only that
+          person can claim an education credit for the student."
+    - id: dependent.edu_inst
+      printed: (helper)
+      label: Qualified education expenses required to be paid to the institution
+      type: NonNegDollars
+      expr:
+        op: input
+        source: 'Qualified education expenses paid in 2025 for this student, by anyone, that had to be paid to the institution:
+          tuition, required enrollment fees, and books, supplies and equipment required to be paid to the institution as a condition
+          of enrollment or attendance, for academic periods beginning in 2025 or in the first 3 months of 2026. Use the amounts
+          actually paid, which may differ from Form 1098-T box 1. Do not include amounts paid in 2024 or 2026, room and board,
+          insurance, medical expenses (including student health fees), transportation, expenses deducted elsewhere (for example
+          on Schedule C), or expenses used for a tax-free distribution from a Coverdell ESA or qualified tuition program (529
+          plan); zero if none'
+      cite:
+        doc: i8863
+        locator: p. 4, Qualified Education Expenses, "Generally, qualified education expenses are amounts paid in 2025 for tuition
+          and fees required for the student’s enrollment or attendance at an eligible educational institution."
+    - id: dependent.edu_mat
+      printed: (helper)
+      label: Other course materials (American opportunity credit only)
+      type: NonNegDollars
+      expr:
+        op: input
+        source: 'Other course materials paid for in 2025 for this student: books, supplies and equipment needed for a course of
+          study that did not have to be paid to the institution (they count for the American opportunity credit only); the same
+          exclusions as for the expenses paid to the institution; zero if none'
+      cite:
+        doc: i8863
+        locator: 'p. 4, Qualified Education Expenses, "American opportunity credit: Qualified education expenses include amounts
+          paid for tuition, fees, and course materials, which include books, supplies, and equipment needed for a course of study,
+          whether or not the materials are purchased from the educational institution as a condition of enrollment or attendance."'
+    - id: dependent.edu_a2025
+      printed: (helper)
+      label: Adjusted Qualified Education Expenses Worksheet, line 2a
+      type: NonNegDollars
+      expr:
+        op: input
+        source: 'Tax-free educational assistance received in 2025 for this student''s 2025 expenses: the tax-free part of scholarships
+          and fellowship grants (including Pell grants; Form 1098-T box 5 may help), tax-free employer-provided educational assistance,
+          veterans'' educational assistance, and other tax-free educational assistance. Do not include wages, loans, gifts, inheritances,
+          withdrawals from personal savings, emergency financial aid grants, or a scholarship the student includes in income (for
+          you or your spouse, the amount on Schedule 1 line 8r); zero if none'
+      cite:
+        doc: i8863
+        locator: p. 9, Adjusted Qualified Education Expenses Worksheet, "a. Tax-free educational assistance received in 2025 allocable
+          to the academic period"
+    - id: dependent.edu_a2026
+      printed: (helper)
+      label: Adjusted Qualified Education Expenses Worksheet, line 2b
+      type: NonNegDollars
+      expr:
+        op: input
+        source: Tax-free educational assistance received in 2026, before you file this return, that is allocable to an academic
+          period of these 2025 expenses; zero if none
+      cite:
+        doc: i8863
+        locator: p. 9, Adjusted Qualified Education Expenses Worksheet, "b. Tax-free educational assistance received in 2026 (and
+          before you file your 2025 tax return) allocable to the academic period"
+    - id: dependent.edu_refunds
+      printed: (helper)
+      label: Adjusted Qualified Education Expenses Worksheet, line 2c
+      type: NonNegDollars
+      expr:
+        op: input
+        source: Refunds of these 2025 qualified education expenses received in 2025, or in 2026 before you file this return; zero
+          if none
+      cite:
+        doc: i8863
+        locator: p. 9, Adjusted Qualified Education Expenses Worksheet, "c. Refunds of qualified education expenses paid in 2025
+          if the refund is received in 2025 or in 2026 before you file your 2025 tax return"
+    - id: dependent.edu_adj_sum
+      printed: (helper)
+      label: Add lines 2a, 2b and 2c
+      type: NonNegDollars
+      expr:
+        op: sum
+        of:
+        - dependent.edu_a2025
+        - dependent.edu_a2026
+        - dependent.edu_refunds
+      cite:
+        doc: i8863
+        locator: p. 9, Adjusted Qualified Education Expenses Worksheet, "3. Total adjustments (add lines 2a, 2b, and 2c)"
+    - id: dependent.edu_adj
+      printed: (helper)
+      label: 'Adjusted Qualified Education Expenses Worksheet, line 3 for an eligible student: add lines 2a, 2b and 2c'
+      type: NonNegDollars
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.edu_student
+            - const: true
+          then: dependent.edu_adj_sum
+        - guard:
+            op: test
+            eq:
+            - dependent.edu_student
+            - const: false
+          then: dependent.zero
+      cite:
+        doc: i8863
+        locator: p. 9, Adjusted Qualified Education Expenses Worksheet, "3. Total adjustments (add lines 2a, 2b, and 2c)"
+    - id: dependent.edu_over
+      printed: (gate)
+      label: An academic period whose tax-free assistance and refunds exceed its expenses paid to the institution
+      type: Bool
+      expr:
+        op: input
+        source: Was there an academic period for which the tax-free educational assistance and refunds allocable to it were more
+          than that period's qualified education expenses that had to be paid to the institution (tuition, required fees and course
+          materials required to be paid to the institution)?
+      cite:
+        doc: i8863
+        locator: p. 4, Tax-free educational assistance, "For tax-free educational assistance received in 2025, reduce the qualified
+          education expenses for each academic period by the amount of tax-free educational assistance allocable to that academic
+          period."
+    - id: dependent.edu_over_refused
+      printed: (gate)
+      label: Adjustments that exceed one academic period's expenses
+      type: Bool
+      expr:
+        op: test
+        all:
+        - op: test
+          eq:
+          - dependent.edu_student
+          - const: true
+        - op: test
+          gt:
+          - dependent.edu_adj
+          - const: 0
+        - op: test
+          eq:
+          - dependent.edu_over
+          - const: true
+      cite: &id001
+        doc: i8863
+        locator: p. 9, Adjusted Qualified Education Expenses Worksheet, "Complete a separate worksheet for each student for each
+          academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having paid)
+          qualified education expenses in 2025."
+    - id: dependent.edu_line23
+      printed: '23'
+      label: Has the American opportunity credit been claimed for this student for any 4 prior tax years?
+      shown_when: dependent.edu_student
+      type: Bool
+      expr:
+        op: input
+        source: Has the American opportunity credit been claimed (by you or anyone else) for this student for any 4 tax years
+          before 2025?
+      cite:
+        doc: f8863
+        locator: p. 2, Part III, line 23, "Has the American opportunity credit been claimed for this student for any 4 prior tax
+          years?"
+    - id: dependent.edu_show24
+      printed: (helper)
+      label: Line 24 is reached (line 23 did not stop)
+      type: Bool
+      expr:
+        op: test
+        all:
+        - op: test
+          eq:
+          - dependent.edu_student
+          - const: true
+        - op: test
+          eq:
+          - dependent.edu_line23
+          - const: false
+      cite:
+        doc: f8863
+        locator: p. 2, Part III, line 23, "Yes—Stop! Go to line 31 for this student."
+    - id: dependent.edu_line24
+      printed: '24'
+      label: Was the student enrolled at least half-time for at least one academic period that began or is treated as having begun
+        in 2025 at an eligible educational institution in a program leading toward a postsecondary degree, certificate, or other
+        recognized postsecondary educational credential?
+      shown_when: dependent.edu_show24
+      type: Bool
+      expr:
+        op: input
+        source: Was the student enrolled at least half-time (Form 1098-T box 8) for at least one academic period that began in
+          2025, or in the first 3 months of 2026 if paid for in 2025, at an eligible educational institution, in a program leading
+          toward a postsecondary degree, certificate or other recognized postsecondary educational credential?
+      cite:
+        doc: f8863
+        locator: p. 2, Part III, line 24, "Was the student enrolled at least half-time for at least one academic period that began
+          or is treated as having begun in 2025 at an eligible educational institution in a program leading toward a postsecondary
+          degree, certificate, or other recognized postsecondary educational credential?"
+    - id: dependent.edu_show25
+      printed: (helper)
+      label: Line 25 is reached (line 24 did not stop)
+      type: Bool
+      expr:
+        op: test
+        all:
+        - op: test
+          eq:
+          - dependent.edu_show24
+          - const: true
+        - op: test
+          eq:
+          - dependent.edu_line24
+          - const: true
+      cite:
+        doc: f8863
+        locator: p. 2, Part III, line 24, "No—Stop! Go to line 31 for this student."
+    - id: dependent.edu_line25
+      printed: '25'
+      label: Did the student complete the first 4 years of postsecondary education before 2025?
+      shown_when: dependent.edu_show25
+      type: Bool
+      expr:
+        op: input
+        source: Did the student complete the first 4 years of postsecondary education before 2025, as determined by the institution
+          (4 years of academic credit, not counting credit awarded solely for proficiency examinations)?
+      cite:
+        doc: f8863
+        locator: p. 2, Part III, line 25, "Did the student complete the first 4 years of postsecondary education before 2025?"
+    - id: dependent.edu_show26
+      printed: (helper)
+      label: Line 26 is reached (line 25 did not stop)
+      type: Bool
+      expr:
+        op: test
+        all:
+        - op: test
+          eq:
+          - dependent.edu_show25
+          - const: true
+        - op: test
+          eq:
+          - dependent.edu_line25
+          - const: false
+      cite:
+        doc: f8863
+        locator: p. 2, Part III, line 25, "Yes—Stop! Go to line 31 for this student."
+    - id: dependent.edu_line26
+      printed: '26'
+      label: Was the student convicted, before the end of 2025, of a felony for possession or distribution of a controlled substance?
+      shown_when: dependent.edu_show26
+      type: Bool
+      expr:
+        op: input
+        source: Was the student convicted, before the end of 2025, of a federal or state felony for possession or distribution
+          of a controlled substance?
+      cite:
+        doc: f8863
+        locator: p. 2, Part III, line 26, "Was the student convicted, before the end of 2025, of a felony for possession or distribution
+          of a controlled substance?"
+    - id: dependent.edu_ein
+      printed: (gate)
+      label: The institution's employer identification number (EIN) is available
+      type: Bool
+      expr:
+        op: input
+        source: Do you have the educational institution's employer identification number (EIN), from Form 1098-T or from the institution?
+      cite:
+        doc: i8863
+        locator: p. 4, Student qualifications, "7. You must provide the educational institution’s employer identification number
+          (EIN) on your Form 8863."
+    - id: dependent.edu_aoc
+      printed: (helper)
+      label: 'An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution''s EIN
+        is available'
+      type: Bool
+      expr:
+        op: test
+        all:
+        - op: test
+          eq:
+          - dependent.edu_student
+          - const: true
+        - op: test
+          eq:
+          - dependent.edu_line23
+          - const: false
+        - op: test
+          eq:
+          - dependent.edu_line24
+          - const: true
+        - op: test
+          eq:
+          - dependent.edu_line25
+          - const: false
+        - op: test
+          eq:
+          - dependent.edu_line26
+          - const: false
+        - op: test
+          eq:
+          - household.all_tin
+          - const: true
+        - op: test
+          eq:
+          - dependent.edu_ein
+          - const: true
+      cite:
+        doc: f8863
+        locator: p. 2, Part III, line 26, "No—Complete lines 27 through 30 for this student."; i8863 p. 3, Student qualifications,
+          "5. Filers and students must have been issued a TIN by the due date of their 2025 return (including extensions)."
+      ambiguity: amb.2025.edu_filer_tin
+    - id: dependent.edu_llc
+      printed: (helper)
+      label: 'A lifetime learning credit student: an eligible student who is not an American opportunity credit student'
+      type: Bool
+      expr:
+        op: test
+        all:
+        - op: test
+          eq:
+          - dependent.edu_student
+          - const: true
+        - op: test
+          eq:
+          - dependent.edu_aoc
+          - const: false
+      cite:
+        doc: i8863
+        locator: p. 4, Tip, "If the requirements above aren’t met for any student, you cannot claim the American opportunity credit
+          for that student. You may be able to claim the lifetime learning credit for part or all of that student’s qualified
+          education expenses instead if certain requirements are met."
+    - id: dependent.edu_line27
+      printed: '27'
+      label: Adjusted qualified education expenses. Don't enter more than $4,000
+      shown_when: dependent.edu_aoc
+      type: NonNegDollars
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.edu_aoc
+            - const: true
+          then:
+            def: aqee
+            bind: &id002
+              inst: dependent.edu_inst
+              mat: dependent.edu_mat
+              adj: dependent.edu_adj
+            line: line27
+        - guard:
+            op: test
+            eq:
+            - dependent.edu_aoc
+            - const: false
+          then: dependent.zero
+      cite:
+        doc: f8863
+        locator: p. 2, Part III, line 27, "Adjusted qualified education expenses (see instructions). Don’t enter more than $4,000"
+      refuses: &id003
+      - when: dependent.edu_over_refused
+        form: Adjusted Qualified Education Expenses Worksheet for more than one academic period
+        remedy: The worksheet is completed for each academic period, and an academic period whose tax-free educational assistance
+          and refunds exceed its own expenses cannot be netted against another period's expenses. Figure the worksheet period
+          by period.
+        cite: *id001
+    - id: dependent.edu_line28
+      printed: '28'
+      label: Subtract $2,000 from line 27. If zero or less, enter -0-
+      shown_when: dependent.edu_aoc
+      type: NonNegDollars
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.edu_aoc
+            - const: true
+          then:
+            def: aqee
+            bind: *id002
+            line: line28
+        - guard:
+            op: test
+            eq:
+            - dependent.edu_aoc
+            - const: false
+          then: dependent.zero
+      cite:
+        doc: f8863
+        locator: p. 2, Part III, line 28, "Subtract $2,000 from line 27. If zero or less, enter -0-"
+      refuses: *id003
+    - id: dependent.edu_line29
+      printed: '29'
+      label: Multiply line 28 by 25% (0.25)
+      shown_when: dependent.edu_aoc
+      type: NonNegDollars
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.edu_aoc
+            - const: true
+          then:
+            def: aqee
+            bind: *id002
+            line: line29
+        - guard:
+            op: test
+            eq:
+            - dependent.edu_aoc
+            - const: false
+          then: dependent.zero
+      cite:
+        doc: f8863
+        locator: p. 2, Part III, line 29, "Multiply line 28 by 25% (0.25)"
+      refuses: *id003
+    - id: dependent.edu_line30
+      printed: '30'
+      label: American opportunity credit for this student. If line 28 is zero, enter the amount from line 27. Otherwise, add $2,000
+        to the amount on line 29
+      shown_when: dependent.edu_aoc
+      type: NonNegDollars
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.edu_aoc
+            - const: true
+          then:
+            def: aqee
+            bind: *id002
+            line: line30
+        - guard:
+            op: test
+            eq:
+            - dependent.edu_aoc
+            - const: false
+          then: dependent.zero
+      cite:
+        doc: f8863
+        locator: p. 2, Part III, line 30, "If line 28 is zero, enter the amount from line 27.", "Include the total of all amounts
+          from all Parts III, line 30, on Part I, line 1"
+      refuses: *id003
+    - id: dependent.edu_line31
+      printed: '31'
+      label: Adjusted qualified education expenses for the lifetime learning credit
+      shown_when: dependent.edu_llc
+      type: NonNegDollars
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.edu_llc
+            - const: true
+          then:
+            def: aqee
+            bind: *id002
+            line: ws4_llc
+        - guard:
+            op: test
+            eq:
+            - dependent.edu_llc
+            - const: false
+          then: dependent.zero
+      cite:
+        doc: f8863
+        locator: p. 2, Part III, line 31, "Adjusted qualified education expenses (see instructions). Include the total of all
+          amounts from all Parts III, line 31, on Part II, line 10"
+      refuses: *id003
+    # --- end Stage 19 ---
   collection:
     cite:
       doc: f1040

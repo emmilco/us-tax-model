@@ -529,10 +529,11 @@ form:
       of:
       - s3.line1
       - s3.line2
+      - s3.line3
     cite:
       doc: f8880
       locator: 'p. 2, Credit Limit Worksheet, "2. Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l"
-        (lines 3, 6d and 6l are refused by scope.credits)'
+        (lines 6d and 6l are refused by scope.credits)'
   - id: f8880.clw3
     printed: (CLW 3)
     label: Subtract line 2 from line 1. Also enter this amount on Form 8880, line 11. But if zero or less, stop; you can't

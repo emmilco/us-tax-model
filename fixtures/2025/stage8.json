@@ -12,6 +12,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Synthetic: head of household, wages $120,000, one qualifying child age 10 with an SSN; foreign tax $25 by election. The child tax credit is $2,200 and the tax exceeds it, so line 14 takes line 12 and no additional credit arises. Predicted by the authoring session from the archived Schedule 8812 and i1040gi pp. 14, 17-19; no independent human hand-work is claimed.  Shown-line regression (owner decision 2026-10-26: skipped lines are hidden): line 16a is zero, so f1040s8812 line 16a \"If zero, stop here\" hides lines 16b to 26.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
           "taxpayer"
@@ -506,6 +507,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Synthetic: head of household, wages $4,000, one qualifying child age 3. No tax, so the whole $2,200 is unused (line 16a); line 16b is $1,700; earned income $4,000 less $2,500 at 15% gives $225 on line 20; fewer than three children, so Part II-B is skipped and line 27 is the smaller of line 17 ($1,700) and line 20 ($225). The Part II-B lines are still computed: withheld social security $248 plus Medicare $58 is $306 on lines 21, 23 and 25, which exceeds line 20, so line 26 is $306. Predicted by the authoring session from the archived Schedule 8812; no independent human hand-work is claimed. Stage 9: the EIC applies (one qualifying child with a valid SSN, head of household, earned income and AGI $4,000); predicted by hand from the printed EIC Table row $4,000-$4,050, one child, $1,369 (i1040gi p. 50), Worksheet A line 4 Yes so line 6 is line 2; the refund rises by $1,369; Part II-B line 24 carries the EIC.  Shown-line regression (owner decision 2026-10-26: skipped lines are hidden): line 16b is under $5,100 and not Puerto Rico, so the Next instruction after line 20 skips Part II-B.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
           "taxpayer"
@@ -1032,6 +1034,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Synthetic: head of household, wages $30,000, three qualifying children (ages 2, 5, 8). Line 8 is $6,600; the tax is $638 (taxable income $6,375 after the $23,625 head of household standard deduction, read from the Tax Table, whose cell is the rounded tax at the midpoint of the $6,350-$6,400 row), so line 14 is $638 and line 16a is $5,962; line 16b is exactly $5,100, which is \"$5,100 or more\", so Part II-B applies; line 20 ($4,125) is less than line 17 ($5,100); withheld social security and Medicare total $2,295 on line 25; line 26 is the larger, $4,125; line 27 is the smaller of line 17 and line 26, $4,125. Predicted by the authoring session from the archived Schedule 8812; no independent human hand-work is claimed. Stage 9: the EIC applies; printed row $30,000-$30,050, three children, $6,640 (i1040gi p. 53); line 4 Yes; Part II-B line 25 falls to zero and line 26 stays at line 20, so the ACTC is unchanged and the refund rises by $6,640.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
           "taxpayer"
@@ -1720,6 +1723,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Synthetic: head of household, wages $5,000, three qualifying children. No tax; line 16a $6,600; line 16b $5,100; line 20 is 15% of $2,500, $375; withheld social security $310 plus Medicare $72.50 is $382.50 on line 25, which is larger than line 20, so line 26 is $382.50 and line 27 is the smaller of line 17 ($5,100) and line 26, $382.50. Predicted by the authoring session from the archived Schedule 8812; no independent human hand-work is claimed. Stage 9: the EIC applies; printed row $5,000-$5,050, three children, $2,261 (i1040gi p. 50); Part II-B line 25 ($382.50 before) falls to zero once line 24 carries the EIC, so line 26 is line 20 ($375) and the ACTC falls by $7.50; refund $882.50 - $7.50 + $2,261 = $3,136.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
           "taxpayer"
@@ -2409,6 +2413,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Synthetic: single, wages $215,300, one qualifying child age 12. Line 3 exceeds the $200,000 threshold by $15,300, which rounds up to $16,000 on line 10; 5% is $800 on line 11; line 12 is $2,200 less $800, $1,400; the tax exceeds it, so line 14 is $1,400. Predicted by the authoring session from the archived Schedule 8812; no independent human hand-work is claimed. BUG-0165: Form 1040 line 25c now includes Form 8959 line 24 ($137.70 Additional Medicare Tax withheld; i1040gi p. 39, Line 25c), so line 37 falls by that amount, $18,126.70 to $17,989.00.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -2894,6 +2899,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Synthetic: head of household under Test 1 only. Wages $120,000; the filer’s parent (age 70) lived elsewhere all year with gross income $4,000, the filer provided over half the support and paid over half the cost of the parent’s home, but not over half the cost of the filer’s own home. The parent is a qualifying relative and an other dependent ($500); Test 1 is met, Test 2 is not. Predicted by the authoring session from i1040gi pp. 14 and 19; no independent human hand-work is claimed.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
           "taxpayer"
@@ -3385,6 +3391,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "BUG-0153 regression, predicted from p501 p. 9 before recording: the same parent who did not live with the filer for more than half of the part of the year she was alive, with no Test 1 upkeep, does not qualify the filer for head of household; line 12e is refused at household.hoh_fails.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
           "taxpayer"
@@ -3577,6 +3584,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "BUG-0153 regression, predicted from p501 p. 9, Death or birth (\"Your qualifying child or qualifying relative who lived with you for more than half the part of the year they were alive\") before recording: a dependent parent who died in 2025 and lived with the filer for more than half of the part of the year she was alive (months 0, as the months question instructs) qualifies the filer for head of household under Test 2; standard deduction $23,625.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
           "taxpayer"
@@ -3760,6 +3768,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "BUG-0158 regression, predicted from i1040gi p. 15 (\"the person is considered to have lived with you for more than half of 2025 if your main home was this person's main home for more than half the time since the person was adopted or placed with you in 2025\") before recording: an adult child adopted in 2025, a qualifying relative who lived with the filer more than half of the time since the adoption (months 0, as instructed), qualifies the filer for head of household under Test 2; standard deduction $23,625.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
           "taxpayer"
@@ -3944,6 +3953,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Synthetic refusal regression: head of household checked, wages $120,000, one child age 10 who lived with the filer five months. The child fails the residency test (not a qualifying child) but is a qualifying relative and an other dependent; neither head of household test is met, so Form 1040 line 12e refuses and the lines that read it follow. Predicted by the authoring session from i1040gi pp. 14, 17 and 19; no independent human hand-work is claimed.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
           "taxpayer"
@@ -4593,6 +4603,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Synthetic: single, wages $120,000, four listed persons at the boundaries of the dependent tests: a child who lived with the filer exactly six months (not more than half the year, so a qualifying relative rather than a qualifying child); a parent with gross income of exactly $5,200 (not less than the limit, so not a dependent); a child age 19 who is not a student (fails the age test, qualifies as a relative); a child age 10 who is a resident of Mexico and not a U.S. citizen (a dependent, but neither credit, since both credits require a U.S. citizen, national or resident alien). Two other dependents at $500, line 6 is 2. Predicted by the authoring session from i1040gi pp. 17-19; no independent human hand-work is claimed.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -5351,6 +5362,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Synthetic: single, filer age 40, wages $120,000, three children: age 23 full-time student (a qualifying child, too old for the child tax credit, so an other dependent); age 24 full-time student (fails the age test, a qualifying relative); age 17 (a qualifying child who is not under 17, so an other dependent). Line 6 is 3, line 7 $1,500. Predicted by the authoring session from i1040gi pp. 17-19; no independent human hand-work is claimed.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -6012,6 +6024,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Synthetic: single, filer age 40, wages $120,000, four listed persons: an unrelated member of the household who lived with the filer all year (a qualifying relative, an other dependent); an unrelated person who lived with the filer eleven months (not a relative, not a dependent); a permanently and totally disabled child age 35 (a qualifying child through the disability clause; an other dependent); a child age 8 whose SSN is not valid for employment (a qualifying child, counted on line 6 rather than line 4). Line 4 is 0, line 6 is 3. Predicted by the authoring session from i1040gi pp. 17-19; no independent human hand-work is claimed.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -6743,6 +6756,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Synthetic: single, wages $120,000, one child age 10, but the filer can be claimed as a dependent by someone else, so the child is not the filer’s dependent (Step 2 question 4 and Step 4 question 5) and no credit arises. Predicted by the authoring session from i1040gi pp. 18-19; no independent human hand-work is claimed.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -7383,6 +7397,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Synthetic: single, wages $120,000, one child age 10 with an SSN valid for employment, but the filer’s SSN is not valid for employment (Step 3 question 4), so the child is an other dependent ($500) rather than a child tax credit child. Predicted by the authoring session from i1040gi p. 18; no independent human hand-work is claimed.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -7861,6 +7876,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Synthetic: single, wages $120,000, one child age 10, but the filer has no SSN or ITIN issued by the due date (Step 5 question 1) and so no SSN valid for employment either; the child is a dependent but neither credit is allowed. Predicted by the authoring session from i1040gi pp. 18-19; no independent human hand-work is claimed.  Shown-line regression (owner decision 2026-10-26: skipped lines are hidden): line 12 is zero, so f1040s8812 line 12 \"No. Stop here\" hides line 13.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -8344,6 +8360,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Synthetic refusal regression: the child meets the conditions to be the qualifying child of another person, so the qualifying-child test refuses (tie-breaker rules) and Schedule 8812 line 4 follows. No independent human review is claimed.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -9068,6 +9085,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Synthetic refusal regression: the rule for children of divorced or separated parents applies, so the qualifying-child test refuses. No independent human review is claimed.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -9792,6 +9810,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Synthetic refusal regression: the child is married, so the qualifying-child test refuses (Married person rules). No independent human review is claimed.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -10516,6 +10535,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Synthetic refusal regression: a parent (not a qualifying child) claimed under a multiple support agreement, so the qualifying-relative test refuses; Schedule 8812 line 6 (other dependents) follows, while line 4 (qualifying children) is 0 because the parent fails the child relationship test before the refusal is reached. No independent human review is claimed.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -11225,6 +11245,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Synthetic refusal regression: a permanently and totally disabled parent with gross income of $6,000, at or over the $5,200 limit, so the exception-to-gross-income gate is true and the qualifying-relative test refuses; Schedule 8812 line 6 follows and line 4 is 0. No independent human review is claimed.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -11944,6 +11965,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Synthetic refusal regression: excluded Puerto Rico, Form 2555 or Form 4563 income is reported, so Schedule 8812 lines 2a, 2b and 2c each refuse and line 2d follows. No independent human review is claimed.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -12654,6 +12676,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Synthetic refusal regression: other credits are claimed, so Credit Limit Worksheet A lines 2 and 4 refuse and Schedule 8812 line 13 follows. No independent human review is claimed. Stage 9: line 27a left the credits screen, so Schedule 8812 line 24 (Form 1040 line 27a plus Schedule 3 line 11) is $0 for this filer, whose AGI is above every EIC limit.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -12875,8 +12898,8 @@
         "f1040.line19": {
           "kind": "refusal",
           "gate": "scope.credits",
-          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 3, 6d, 6f, 6l, 6m)",
-          "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the saver's credit and the residential energy credits are outside this tool.",
+          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 6d, 6f, 6l, 6m)",
+          "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the education credits, the saver's credit and the residential energy credits are outside this tool.",
           "cite": {
             "doc": "i1040s8812",
             "locator": "p. 4, Credit Limit Worksheet A, line 2",
@@ -12888,8 +12911,8 @@
         "f1040.line28": {
           "kind": "refusal",
           "gate": "scope.credits",
-          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 3, 6d, 6f, 6l, 6m)",
-          "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the saver's credit and the residential energy credits are outside this tool.",
+          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 6d, 6f, 6l, 6m)",
+          "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the education credits, the saver's credit and the residential energy credits are outside this tool.",
           "cite": {
             "doc": "i1040s8812",
             "locator": "p. 4, Credit Limit Worksheet A, line 2",
@@ -12901,8 +12924,8 @@
         "f1040.line34": {
           "kind": "refusal",
           "gate": "scope.credits",
-          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 3, 6d, 6f, 6l, 6m)",
-          "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the saver's credit and the residential energy credits are outside this tool.",
+          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 6d, 6f, 6l, 6m)",
+          "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the education credits, the saver's credit and the residential energy credits are outside this tool.",
           "cite": {
             "doc": "i1040s8812",
             "locator": "p. 4, Credit Limit Worksheet A, line 2",
@@ -12914,8 +12937,8 @@
         "f1040.line37": {
           "kind": "refusal",
           "gate": "scope.credits",
-          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 3, 6d, 6f, 6l, 6m)",
-          "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the saver's credit and the residential energy credits are outside this tool.",
+          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 6d, 6f, 6l, 6m)",
+          "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the education credits, the saver's credit and the residential energy credits are outside this tool.",
           "cite": {
             "doc": "i1040s8812",
             "locator": "p. 4, Credit Limit Worksheet A, line 2",
@@ -12959,8 +12982,8 @@
         "s8812.clw_a2": {
           "kind": "refusal",
           "gate": "scope.credits",
-          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 3, 6d, 6f, 6l, 6m)",
-          "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the saver's credit and the residential energy credits are outside this tool.",
+          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 6d, 6f, 6l, 6m)",
+          "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the education credits, the saver's credit and the residential energy credits are outside this tool.",
           "cite": {
             "doc": "i1040s8812",
             "locator": "p. 4, Credit Limit Worksheet A, line 2",
@@ -12972,8 +12995,8 @@
         "s8812.clw_a3": {
           "kind": "refusal",
           "gate": "scope.credits",
-          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 3, 6d, 6f, 6l, 6m)",
-          "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the saver's credit and the residential energy credits are outside this tool.",
+          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 6d, 6f, 6l, 6m)",
+          "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the education credits, the saver's credit and the residential energy credits are outside this tool.",
           "cite": {
             "doc": "i1040s8812",
             "locator": "p. 4, Credit Limit Worksheet A, line 2",
@@ -12998,8 +13021,8 @@
         "s8812.clw_a5": {
           "kind": "refusal",
           "gate": "scope.credits",
-          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 3, 6d, 6f, 6l, 6m)",
-          "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the saver's credit and the residential energy credits are outside this tool.",
+          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 6d, 6f, 6l, 6m)",
+          "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the education credits, the saver's credit and the residential energy credits are outside this tool.",
           "cite": {
             "doc": "i1040s8812",
             "locator": "p. 4, Credit Limit Worksheet A, line 2",
@@ -13011,8 +13034,8 @@
         "s8812.earned_covers": {
           "kind": "refusal",
           "gate": "scope.credits",
-          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 3, 6d, 6f, 6l, 6m)",
-          "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the saver's credit and the residential energy credits are outside this tool.",
+          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 6d, 6f, 6l, 6m)",
+          "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the education credits, the saver's credit and the residential energy credits are outside this tool.",
           "cite": {
             "doc": "i1040s8812",
             "locator": "p. 4, Credit Limit Worksheet A, line 2",
@@ -13060,8 +13083,8 @@
         "s8812.from_part_iia": {
           "kind": "refusal",
           "gate": "scope.credits",
-          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 3, 6d, 6f, 6l, 6m)",
-          "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the saver's credit and the residential energy credits are outside this tool.",
+          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 6d, 6f, 6l, 6m)",
+          "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the education credits, the saver's credit and the residential energy credits are outside this tool.",
           "cite": {
             "doc": "i1040s8812",
             "locator": "p. 4, Credit Limit Worksheet A, line 2",
@@ -13073,8 +13096,8 @@
         "s8812.from_part_iib": {
           "kind": "refusal",
           "gate": "scope.credits",
-          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 3, 6d, 6f, 6l, 6m)",
-          "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the saver's credit and the residential energy credits are outside this tool.",
+          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 6d, 6f, 6l, 6m)",
+          "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the education credits, the saver's credit and the residential energy credits are outside this tool.",
           "cite": {
             "doc": "i1040s8812",
             "locator": "p. 4, Credit Limit Worksheet A, line 2",
@@ -13102,8 +13125,8 @@
         "s8812.line13": {
           "kind": "refusal",
           "gate": "scope.credits",
-          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 3, 6d, 6f, 6l, 6m)",
-          "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the saver's credit and the residential energy credits are outside this tool.",
+          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 6d, 6f, 6l, 6m)",
+          "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the education credits, the saver's credit and the residential energy credits are outside this tool.",
           "cite": {
             "doc": "i1040s8812",
             "locator": "p. 4, Credit Limit Worksheet A, line 2",
@@ -13115,8 +13138,8 @@
         "s8812.line14": {
           "kind": "refusal",
           "gate": "scope.credits",
-          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 3, 6d, 6f, 6l, 6m)",
-          "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the saver's credit and the residential energy credits are outside this tool.",
+          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 6d, 6f, 6l, 6m)",
+          "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the education credits, the saver's credit and the residential energy credits are outside this tool.",
           "cite": {
             "doc": "i1040s8812",
             "locator": "p. 4, Credit Limit Worksheet A, line 2",
@@ -13128,8 +13151,8 @@
         "s8812.line16a": {
           "kind": "refusal",
           "gate": "scope.credits",
-          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 3, 6d, 6f, 6l, 6m)",
-          "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the saver's credit and the residential energy credits are outside this tool.",
+          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 6d, 6f, 6l, 6m)",
+          "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the education credits, the saver's credit and the residential energy credits are outside this tool.",
           "cite": {
             "doc": "i1040s8812",
             "locator": "p. 4, Credit Limit Worksheet A, line 2",
@@ -13145,8 +13168,8 @@
         "s8812.line17": {
           "kind": "refusal",
           "gate": "scope.credits",
-          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 3, 6d, 6f, 6l, 6m)",
-          "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the saver's credit and the residential energy credits are outside this tool.",
+          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 6d, 6f, 6l, 6m)",
+          "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the education credits, the saver's credit and the residential energy credits are outside this tool.",
           "cite": {
             "doc": "i1040s8812",
             "locator": "p. 4, Credit Limit Worksheet A, line 2",
@@ -13198,8 +13221,8 @@
         "s8812.line27": {
           "kind": "refusal",
           "gate": "scope.credits",
-          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 3, 6d, 6f, 6l, 6m)",
-          "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the saver's credit and the residential energy credits are outside this tool.",
+          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 6d, 6f, 6l, 6m)",
+          "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the education credits, the saver's credit and the residential energy credits are outside this tool.",
           "cite": {
             "doc": "i1040s8812",
             "locator": "p. 4, Credit Limit Worksheet A, line 2",
@@ -13251,8 +13274,8 @@
         "s8812.part_iib_result": {
           "kind": "refusal",
           "gate": "scope.credits",
-          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 3, 6d, 6f, 6l, 6m)",
-          "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the saver's credit and the residential energy credits are outside this tool.",
+          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 6d, 6f, 6l, 6m)",
+          "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the education credits, the saver's credit and the residential energy credits are outside this tool.",
           "cite": {
             "doc": "i1040s8812",
             "locator": "p. 4, Credit Limit Worksheet A, line 2",
@@ -13275,6 +13298,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Synthetic refusal regression: nontaxable combat pay was received, so Earned Income Worksheet line 1b and Schedule 8812 line 18b refuse and line 18a follows. No independent human review is claimed.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
           "taxpayer"
@@ -13926,6 +13950,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Synthetic refusal regression: Schedule 1 is in play, so Earned Income Worksheet lines 3, 4 and 5 and Schedule 8812 line 22 refuse. No independent human review is claimed. Stage 14: Earned Income Worksheet line 5 and Schedule 8812 line 22 now read Schedule 1, line 15 (zero here) instead of refusing; lines 3 and 7 refuse with the reworded statutory employee, farm or partnership refusal. Line 23 therefore computes ($306) and line 25 refuses through the general Schedule 1 refusal; the return stays refused.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
           "taxpayer"
@@ -14706,6 +14731,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Synthetic refusal regression: other Schedule 2 taxes are reported, so Schedule 8812 line 22 refuses (Schedule 2 lines 5, 6 and 13) and lines 23 and 25 follow. No independent human review is claimed.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
           "taxpayer"
@@ -15369,6 +15395,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Synthetic refusal regression: the filer is a bona fide resident of Puerto Rico, so Schedule 8812 line 27 refuses (the Puerto Rico path through Part II-B) and Form 1040 line 28 follows. No independent human review is claimed.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
           "taxpayer"
@@ -15892,6 +15919,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage8.hoh.child.ctc with the child answered as having no SSN, ITIN or ATIN: the child meets Steps 1 and 2 but \"You must enter each dependent's social security number (SSN)\" (i1040gi p. 22), so the dependent line, the head of household Test 2 line and the credit for other dependents are refused; the child tax credit test is simply false (it reads the TIN itself); Form 1040 line 12e (head of household checked) and line 19 follow. The refused values are the evaluator's.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
           "taxpayer"
@@ -16162,6 +16190,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage8.hoh.parent.test1 with the parent answered as having no SSN, ITIN or ATIN: the parent meets Step 4 but cannot be listed as a dependent without a number (i1040gi p. 22), so the dependent line and head of household Test 1 are refused and Form 1040 line 12e follows (p. 14: the dependents you claim are those you list by name and SSN). The refused values are the evaluator's.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
           "taxpayer"
@@ -16401,6 +16430,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Inputs are stage8.hoh.child.ctc filed single, with the child answered as having lived with the filer five months, not supported by the filer, and having no SSN, ITIN or ATIN: the child is neither a qualifying child nor a qualifying relative, so no dependent is listed and the missing number refuses nothing (i1040gi p. 22 requires a number for each dependent you enter); the return computes. Predicted from i1040gi pp. 17-19 and 22; no independent human hand-work is claimed.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -16595,6 +16625,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage8.single.phaseout.partial with the filer answered as under age 16 at the end of 2025: the owner's entry check (amb.2025.filer_under_16; the archived text states no such rule) refuses the people-on-the-return line, and Form 1040 line 1a and every line after it follow. The refused values are the evaluator's.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -16808,6 +16839,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage8.hoh.child.ctc with the filer answered as married at the end of 2025 (considered unmarried for head of household) and living in a community property state: community income under state law (i1040gi p. 23, Community Property States; Form 8958 and Pub. 555) is outside this tool, so the head of household eligibility line is refused and Form 1040 line 12e and every line after it follow (owner's decision, amb.2025.hoh_community_property). The refused values are the evaluator's.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
           "taxpayer"
@@ -17021,6 +17053,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Inputs are stage8.hoh.child.ctc with the filer answered as married at the end of 2025 (considered unmarried for head of household) and not living in a community property state: the community property gate is false and the return computes as stage8.hoh.child.ctc does (line 12e $23,625; line 37 $153). Predicted from i1040gi pp. 14 and 23; no independent human hand-work is claimed.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
           "taxpayer"
@@ -17207,6 +17240,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Inputs are stage8.single.phaseout.partial with the filer answered as living in a community property state and not married: the gate reads only a married head of household, so it is false and the return computes as stage8.single.phaseout.partial does. Predicted from i1040gi p. 23 (the paragraph speaks of you and your spouse); no independent human hand-work is claimed. BUG-0165: Form 1040 line 25c now includes Form 8959 line 24 ($137.70 Additional Medicare Tax withheld; i1040gi p. 39, Line 25c), so line 37 falls by that amount, $18,126.70 to $17,989.00.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -17393,6 +17427,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage8.hoh.child.ctc with the filer answering that a child tax credit, additional child tax credit, credit for other dependents or EIC for an earlier year was reduced or disallowed other than for a math or clerical error (or that a 2- or 10-year disallowance period applies): Form 8862 and the disallowance period are outside this tool (i1040s8812 p. 2, Form 8862 may be required), so Schedule 8812 line 12 is refused and Form 1040 line 19 and every line after it follow; the EIC line is refused on the same answer. The refused values are the evaluator's.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
           "taxpayer"
@@ -17628,6 +17663,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Mutation-equivalence second reading (kills refusal.dependent.dependent.qualifying_relative.2), predicted from the archived i1040gi before recording: the inputs of stage8.refuse.dependent.married with the tie-breaker question (qualifying child of more than one person) left unanswered, the state the interview is in when it stops at the married answer (the dependent questions share one order and are asked by key). The qualifying-child test is then unknown, but the qualifying-relative test refuses on the married entry (Married person rules, p. 21), and a refusal outranks an unknown in the dependent test (spec 4.7.2), so the dependent and Form 1040 line 19 refuse rather than wait for the unanswered question. No independent human review is claimed.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"

@@ -319,6 +319,24 @@
       "revision_locator": "Footer, \"Form 1095-A (2025)\""
     },
     {
+      "id": "f1098t",
+      "url": "https://www.irs.gov/pub/irs-prior/f1098t--2025.pdf",
+      "purpose": "Stage 19: Form 1098-T (2025), the box captions named in the education credit help text (D9)",
+      "resolved_url": "https://www.irs.gov/pub/irs-prior/f1098t--2025.pdf",
+      "fetched_at": "2026-10-29T11:31:34.336527+00:00",
+      "file": "f1098t.pdf",
+      "sha256": "3f6f2b2b1478b9dbc7d0b95469ca5fecdf3c52e1b75d66c7356b1c16e4c43275",
+      "revision": null,
+      "revision_status": "Pending inspection of archived document; not cleared for encoding",
+      "text_file": "f1098t.txt",
+      "text_sha256": "50f61c0632523a76823b9863d594e3f21a08d79d43b1192b9a09bc442ef03da6",
+      "cols_file": "f1098t.cols.txt",
+      "cols_sha256": "d13438403347f8e6fe32721f3c58619624940ff79271814c30e4a3f17c107b01",
+      "pages_file": "f1098t.pages.json",
+      "pages_sha256": "f53b7bb13cec67be27a81150a6a11777bc255c0012e35127c549a4e8b749d0d3",
+      "extract_tool_version": "0.10"
+    },
+    {
       "id": "f1099c",
       "url": "https://www.irs.gov/pub/irs-pdf/f1099c.pdf",
       "resolved_url": "https://www.irs.gov/pub/irs-pdf/f1099c.pdf",
@@ -2493,6 +2511,25 @@
       "cols_sha256": "d3132c3232c0ac98facedd3d129246f9627b89906d23aaeb5a7c0d7ce1b2db35",
       "pages_file": "usc-26-179.pages.json",
       "pages_sha256": "046819b04e90e39f718bd52f15bc42465197e380031f0f9acf224dbe64a3023d",
+      "extract_tool_version": "0.10"
+    },
+    {
+      "id": "usc-26-25a",
+      "url": "https://www.govinfo.gov/content/pkg/USCODE-2024-title26/pdf/USCODE-2024-title26-subtitleA-chap1-subchapA-partIV-subpartA-sec25A.pdf",
+      "document_tax_year": 2025,
+      "purpose": "Stage 19: 26 U.S.C. 25A (the American opportunity and lifetime learning credits), a second reading of the TIN requirement (D7(a)) and the refundability rule of 25A(i); law, not a form source",
+      "resolved_url": "https://www.govinfo.gov/content/pkg/USCODE-2024-title26/pdf/USCODE-2024-title26-subtitleA-chap1-subchapA-partIV-subpartA-sec25A.pdf",
+      "fetched_at": "2026-10-29T11:31:33.901918+00:00",
+      "file": "usc-26-25a.pdf",
+      "sha256": "6f9a0b8896d2422e7c9dbb3cd9a3a6afb17ea853325d806ea2b567886be08fe2",
+      "revision": null,
+      "revision_status": "Pending inspection of archived document; not cleared for encoding",
+      "text_file": "usc-26-25a.txt",
+      "text_sha256": "89e1cc2c275b41110f11449151409e01e69c72401ec5b6494160aba46f40142a",
+      "cols_file": "usc-26-25a.cols.txt",
+      "cols_sha256": "fa1c07be35fa23a405ba64cf5c7a9f182aa01a962e736809836fc866efc1af07",
+      "pages_file": "usc-26-25a.pages.json",
+      "pages_sha256": "ac1237c2d33a9e7ab36f6b6dda2b0d5ea4065e3e81f435245768c823842fb0ef",
       "extract_tool_version": "0.10"
     },
     {

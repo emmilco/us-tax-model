@@ -13,6 +13,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: receipts $60,000 less returns $1,000 (line 3 $59,000); cost of goods sold $2,000 + $10,000 - $3,000 = $9,000 (lines 35-42, line 4); gross profit $50,000; other income $500 (line 7 $50,500); expenses advertising $1,200, supplies $800, meals $600 at 50% and $1,000 at 80% (line 24b $300 + $800 = $1,100), utilities $400, other $250: line 28 $3,750; line 31 $46,750. Schedule SE: $46,750 x 92.35% = $43,173.63 (line 4a, 4c, 6); line 10 12.4% = $5,353.53; line 11 2.9% = $1,252.04; line 12 $6,605.57; line 13 $3,302.79 (half-up). AGI $46,750 - $3,302.79 = $43,447.21. QBI $43,447.21, 20% = $8,689.44; taxable income before QBI $43,447.21 - $15,750 = $27,697.21, 20% = $5,539.44 (line 14); line 15 the smaller, $5,539.44. Schedule 2 line 21 is line 4, $6,605.57 (no Additional Medicare Tax or NIIT).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -265,6 +266,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: as stage14.sc.basic with $750 of meals not subject to the 50% limit (amb.2025.meals_full_exceptions, owner, T-042; i1040sc p. 10, Line 24b, Amount of deduction), deducted in full: line 24b $300 + $800 + $750 = $1,850; line 28 $4,500; line 31 $46,000. Schedule SE: $46,000 x 92.35% = $42,481.00; line 10 12.4% = $5,267.64; line 11 2.9% = $1,231.95; line 12 $6,499.59; line 13 $3,249.80 (half-up). AGI $46,000 - $3,249.80 = $42,750.20. QBI $42,750.20, 20% = $8,550.04; taxable income before QBI $42,750.20 - $15,750 = $27,000.20, 20% = $5,400.04; line 15 the smaller, $5,400.04. Schedule 2 line 21 is line 4, $6,499.59.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -489,6 +491,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: receipts $400 and no expenses: line 31 $400; Schedule SE line 4a $400 x 92.35% = $369.40, less than $400, so no self-employment tax (line 4c, 6, 12 zero) and no deduction on line 15.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -698,6 +701,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: wages $180,000 (box 3, above the $176,100 base) and a Schedule C profit of $20,000: line 6 $20,000 x 92.35% = $18,470; line 9 zero (line 7 less line 8a), so line 10 is zero; line 11 2.9% = $535.63; line 12 $535.63; line 13 $267.82 (half-up of $267.815).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -912,6 +916,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: wages $170,000 and a profit of $30,000: line 6 $27,705; line 9 $176,100 - $170,000 = $6,100; line 10 12.4% x $6,100 = $756.40; line 11 2.9% x $27,705 = $803.45 (half-up of $803.445); line 12 $1,559.85; line 13 $779.93 (half-up of $779.925).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -1120,6 +1125,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: wages $50,000; a business with receipts $5,000 and office expense $15,000: line 31 a loss of $10,000 (all investment at risk, line 32a). Schedule SE: line 3 -$10,000, line 4a -$10,000, less than $400, no tax. Schedule 1 line 3 -$10,000, line 10 -$10,000; total income and AGI $40,000. QBI line 2 -$10,000; line 4 zero; line 16 carryforward -$10,000.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -1350,6 +1356,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: profit $20,000; Schedule SE line 12 $2,825.82 (line 6 $18,470; 12.4% $2,290.28; 2.9% $535.63, half-up of $535.63), line 13 $1,412.91; QBI $20,000 - $1,412.91 = $18,587.09; prior-year carryforward $5,000 (line 3 -$5,000); line 4 $13,587.09; line 5 20% = $2,717.42 (half-up of $2,717.418).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -1558,6 +1565,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: line 29 $20,000; 200 square feet x $5 = $1,000 (worksheet lines 2 to 5); line 30 $1,000; line 31 $19,000.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -1761,6 +1769,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: as stage14.ho.basic with a second business of the same person that also claims the business use of the home. The 300 square feet apply to all the businesses you conduct in your home and must be allocated among them (i1040sc p. 10, Simplified method); the owner chose to refuse a person with more than one home-office business, so line 30 of each refuses through sc.ho_multi.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -2026,6 +2035,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: as stage14.ho.basic with a second business of the same person, with the same income and expenses, that claims no business use of the home: one home-office business, so no refusal. The first business: line 29 $20,000, 200 square feet x $5 = $1,000 on line 30, line 31 $19,000; the second: line 30 zero, line 31 $20,000.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -2281,6 +2291,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: 400 square feet is more than 300, so line 2 is 300 and line 4 $1,500; line 30 $1,500; line 31 $18,500.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -2484,6 +2495,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: line 29 $600; line 4 $1,500; no section 179 election, so line 5 is the smaller of line 1 ($600) or line 4: $600; line 31 zero.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -2687,6 +2699,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: the home office screen is answered Yes (actual expenses on Form 8829 or a special simplified-method case): the square footage line refuses with Form 8829 and so do line 30 and line 31.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -2904,6 +2917,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: line 29 before section 179 is $2,000; a $1,000 section 179 election leaves $1,000, less than the $1,500 home office amount, so the two taxable income limits of Pub. 946 interact and line 30 refuses.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -3122,6 +3136,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: 10,000 business miles x $0.70 = $7,000 plus parking and tolls $150: line 9 $7,150; line 31 $30,000 - $7,150 = $22,850.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -3333,6 +3348,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a car placed in service in 2025 (acquired after January 19), cost $40,000, 8,000 of 10,000 miles for business (80%): operating costs $5,000 x 80% = $4,000 on line 9. Depreciation worksheet: line 7 $20,200 (with the special allowance); line 9 $16,160; line 13 $32,000; line 16 100% = $32,000, limited to line 11, $16,160 (line 25); lines 17 to 20 zero. Schedule C line 13 $16,160.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -3564,6 +3580,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a car placed in service in October 2025, the only property placed in service (so the mid-quarter convention applies: 100% of the bases in the fourth quarter), no special allowance, 100% business use, cost $30,000: line 7 $12,200; line 17 $12,200; line 18 $30,000; line 19 $30,000 x 5.00% (Table A-5, 5-year, year 1) = $1,500; line 20 $1,500.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -3794,6 +3811,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a car placed in service in 2023, half-year convention, no section 179 or special allowance, cost $25,000, 60% business use in 2025: year 3 of recovery; line 7 $11,700 (2023, 3rd year); line 9 $7,020; line 13 $15,000; line 19 $15,000 x 19.20% = $2,880; line 20 the smaller, $2,880.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -4019,6 +4037,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a car placed in service in 2019 (half-year, no section 179, no special allowance), cost $80,000, 75% business use in 2025, the first year after its recovery period: deductions allowable at 100% business use under the limits: $10,100, $16,100, $9,700, $5,760, $5,760 and $4,608 (the 2024 table amount, below the $5,760 limit), total $52,028; unrecovered basis $27,972; 2025: the lesser of $5,760 and $27,972, times 75% = $4,320.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -4241,6 +4260,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: an SUV rated over 6,000 pounds placed in service in 2025 (acquired after January 19), 100% business, cost $70,000, section 179 election $31,300 (the SUV limit): no passenger automobile limits; line 15 $38,700; special allowance 100% = $38,700; MACRS zero. Part I: line 2 $70,000, line 8 and 9 $31,300, business income before section 179 $200,000 - $38,700 = $161,300, line 12 $31,300. Schedule C line 13 $70,000.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -4463,6 +4483,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a $40,000 section 179 election on an SUV is more than the $31,300 limit: the election line refuses.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -4686,6 +4707,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a car used 40% for business on actual expenses: listed property used 50% or less is refused at the year placed in service, and with it the depreciation.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -4910,6 +4932,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a leased car on actual expenses, 50% business: operating costs $2,000 x 50% = $1,000 on line 9; lease payments $6,000 x 50% = $3,000 on line 20a; no depreciation.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -5134,6 +5157,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a computer (asset class 00.12, 5-year) placed in service in March 2025 for $3,000, no special allowance or section 179: half-year convention, 20.00% = $600 on Form 4562 line 19b and Schedule C line 13.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -5351,6 +5375,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: office furniture (00.11, 7-year) for $10,000 placed in service in November 2025, the only property: mid-quarter convention, Table A-5 7-year year 1 3.57% = $357.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -5564,6 +5589,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a $6,000 computer in February and $5,000 of furniture in December: $5,000 is more than 40% of $11,000, so the mid-quarter convention applies: computer 35.00% (Table A-2) = $2,100; furniture 3.57% (Table A-5) = $178.50.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -5796,6 +5822,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a $6,000 computer in February and $3,000 of furniture in December: $3,000 is not more than 40% of $9,000 (5 x $3,000 = $15,000 is not more than 2 x $9,000 = $18,000), so the half-year convention applies: computer 20% = $1,200; furniture 14.29% = $428.70.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -6027,6 +6054,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: 7-year property for $20,000 acquired after January 19, 2025, special allowance claimed: 100% = $20,000 (Form 4562 line 14); MACRS zero.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -6247,6 +6275,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: 5-year property for $10,000 acquired before January 20, 2025 and placed in service in 2025: special allowance 40% = $4,000; MACRS on $6,000 at 20% = $1,200; line 13 $5,200.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -6463,6 +6492,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: 5-year property for $10,000 acquired after January 19, 2025, with the election of 40% instead of 100%: special allowance $4,000; MACRS $1,200.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -6676,6 +6706,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: 7-year property for $12,000 with a $5,000 section 179 election and no special allowance: basis $7,000 x 14.29% = $1,000.30; Part I line 12 $5,000 (business income before section 179 $48,999.70); Schedule C line 13 $6,000.30. Schedule SE line 2 is the net profit after the deduction, $43,999.70.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -6896,6 +6927,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: receipts $3,000 and a $10,000 section 179 election on $10,000 of 7-year property (no special allowance, so no MACRS basis is left): business income before section 179 $3,000 (no wages); line 11 $3,000; line 12 $3,000; line 13 carryover to 2026 $7,000; the deduction differs from the election and the return has one Schedule C, so its line 13 is $3,000.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -7120,6 +7152,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: as stage14.s179.income_limit but with $20,000 of wages: business income $3,000 + $20,000 = $23,000, so line 12 is the full $10,000 and line 31 is a loss of $7,000. Schedule 1 line 3 is the $7,000 loss (all investment at risk). Line 1 is the $2,500,000 the line 1 instruction states (i4562 p. 4; amb.2025.s179_carryover_no_property, owner, T-043), so line 5 is $2,500,000 and line 11 is the smaller of business income and that. Line 11 is therefore the business income, $23,000.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -7354,6 +7387,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived sources before recording: no section 179 property placed in service in 2025, a $3,000 carryover from 2024 Form 4562 line 13, and receipts of $50,000. Line 1 is the $2,500,000 the line 1 instruction states (i4562 p. 4), not Worksheet 1's smaller of that and the $0 cost of 2025 property (amb.2025.s179_carryover_no_property, owner, T-043: 26 U.S.C. 179(b)(3)(B) and Treas. Reg. 1.179-3(b)-(c) allow a carryover up to the unused dollar limitation and the business income limit). Line 5 $2,500,000; line 9 zero; line 11 the smaller of $50,000 business income and line 5: $50,000; line 12 the smaller of $3,000 and $50,000: $3,000; line 13 zero. Line 12 differs from the $0 elected for 2025 and the return has one Schedule C, so its line 13 is $3,000.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -7562,6 +7596,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a $10,000 section 179 election limited by business income ($3,000) on a return with two Schedules C: the allowed deduction differs from the election and must be allocated between the businesses, which is refused at each business's section 179 line.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -7837,6 +7872,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: 7-year property placed in service in 2023 (half-year, no section 179 or allowance), cost $10,000: 2025 is year 3, 17.49% = $1,749 on line 17.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -8053,6 +8089,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: as stage14.asset.prior_7yr, with the whole $10,000 expensed under section 179 in 2023: the unadjusted basis is $10,000 less the $10,000 section 179 deduction, zero (Pub. 946 p. 37, Figuring the Unadjusted Basis of Your Property, 'you do reduce your original basis by ... Any section 179 deduction claimed'), so line 17 is zero and Schedule C line 13 zero.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -8273,6 +8310,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: 5-year property placed in service in 2022 that took a $20,000 special allowance on its $20,000 cost: unadjusted basis zero, no 2025 depreciation.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -8481,6 +8519,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: 5-year property placed in service in August 2023 under the mid-quarter convention, cost $8,000: year 3 of Table A-4 (5-year) = 20.400%.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -8689,6 +8728,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: qualified improvement property for $30,000 placed in service in 2025, no special allowance: 15-year straight line, half-year (Table A-8) 3.33% = $999, reported on line 19e.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -8901,6 +8941,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: 5-year property placed in service in 2015: 2025 is year 11, after the last year (6) of its recovery period: no depreciation.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -9109,6 +9150,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: listed property (7-year) placed in service in 2024, 60% business use, cost $5,000: basis $3,000; year 2 24.49% = $734.70, on Form 4562 line 26 column (h) (not line 17). Schedule C line 13 $734.70.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -9329,6 +9371,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: asset class 01.21 (cattle, a farming class) is outside this tool: the cost line refuses.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -9547,6 +9590,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: profit $100,000; Schedule SE line 12 $14,129.55, line 13 $7,064.78 (half-up of $7,064.775). SEP Deduction Worksheet for Self-Employed: step 3 $92,935.22; step 4 the 25% rate reduced to 0.2 (25/125); step 5 $18,587.04; step 6 $350,000 x 25% = $87,500; step 8 $70,000; step 21 $18,587.04. Contribution $18,000 is within it: Schedule 1 line 16 $18,000.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -9750,6 +9794,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: as stage14.sep.basic but $19,000 contributed, more than the $18,587.04 maximum: the deduction refuses (excess contributions).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -9954,6 +9999,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: profit $60,000: compensation for the SIMPLE IRA is Schedule SE line 4 = $55,410. Salary reduction contributions $18,000: $16,500 within the limit and $1,500 catch-up (limit $3,500, and not more than $55,410 - $16,500); matching contribution 3% x $55,410 = $1,662.30 (not more than the $18,000 deferred). Schedule 1 line 16 $18,000 + $1,662.30 = $19,662.30.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -10159,6 +10205,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: profit $60,000, age 61: deferrals $21,750 ($16,500 plus the $5,250 catch-up for ages 60 to 63); 2% nonelective contribution on $55,410 = $1,108.20. Line 16 $22,858.20.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -10364,6 +10411,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: deferrals of $18,000 under age 50: $1,500 above the $16,500 limit with no catch-up allowed: the deduction refuses.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -10572,6 +10620,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: profit $50,000, health insurance $6,000 under the business: Form 7206 line 4 $50,000, line 5 $50,000, line 7 the whole of line 13 of Schedule SE ($3,532.39), line 13 $46,467.61; line 14 the smaller, $6,000; Schedule 1 line 17 $6,000. QBI is reduced by the deduction: $50,000 - $3,532.39 - $6,000 = $40,467.61.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -10774,6 +10823,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: profit $3,000, premiums $6,000: Schedule SE line 13 $211.94; Form 7206 line 8 = $3,000 less that; the deduction is limited to line 13 = $2788.06.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -10969,6 +11019,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: premiums $4,000 and qualified long-term care for two people: $2,500 paid for a person aged 51 to 60 (limited to $1,800) and $3,000 for a person 71 or older (limit $6,020, so $3,000): line 2 $4,800; line 3 $8,800; line 14 $8,800 (profit $60,000).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -11175,6 +11226,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: two businesses with profits of $30,000 (insurance established under it, $5,000) and $10,000: Schedule SE on $40,000, line 13 $2,825.91; Form 7206 line 6 0.75; line 7 $2,825.91 x 0.75 = $2,119.43; line 8 $27,880.57; line 14 $5,000. QBI of the main business $30,000 - $2,119.43 - $5,000 = $22,880.57; of the other $10,000 - $706.48 = $9,293.52.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -11426,6 +11478,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: Marketplace insurance with the premium tax credit: Form 7206 line 1 refuses (Pub. 974).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -11644,6 +11697,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: married filing jointly, each spouse with a business: $50,000 (you) and $30,000 (your spouse), no wages. Separate Schedules SE: yours line 6 $46,175, line 12 $7,064.78; your spouse's line 6 $27,705, line 12 $4,238.87; Schedule 2 line 4 $11,303.65; Schedule 1 line 15 $3,532.39 + $2,119.44 = $5,651.83; Form 8959 line 8 $73,880.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -11923,6 +11977,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: married filing jointly: your spouse's $180,000 of wages do not reduce your Schedule SE wage base (line 8a is your own wages, zero): your line 10 is 12.4% of the full $36,940, line 12 $5,651.82.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -12148,6 +12203,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a Schedule C screen answered Yes: line 1 refuses, and so does line 31 and Schedule 1 line 3.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -12362,6 +12418,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a Schedule C screen answered Yes: line 1 refuses, and so does line 31 and Schedule 1 line 3.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -12576,6 +12633,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a Schedule C screen answered Yes: line 1 refuses, and so does line 31 and Schedule 1 line 3.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -12790,6 +12848,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a Schedule C screen answered Yes: line 1 refuses, and so does line 31 and Schedule 1 line 3.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -13004,6 +13063,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a Schedule C screen answered Yes: line 1 refuses, and so does line 31 and Schedule 1 line 3.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -13218,6 +13278,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a loss of $4,000 with some investment not at risk (box 32b): Form 6198 is refused at the loss.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -13432,6 +13493,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: an inventory method other than cost or lower of cost or market: line 35 refuses.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -13633,6 +13695,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a Schedule SE screen answered Yes (for example church employee income): Schedule SE line 2 refuses, and so do Schedule 2 line 4 and Schedule 1 line 15.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -13847,6 +13910,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a Schedule C loss of $400,000, more than the $313,000 threshold for a single filer: Schedule 1 line 3 refuses with Form 461. Schedule 1 line 10 refuses with it.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -14071,6 +14135,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: profit $300,000, so taxable income before the deduction is above $197,300: Form 8995-A with business income is refused.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -14272,6 +14337,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a business that received qualified tips to be deducted on Schedule 1-A: Schedule 1-A line 5 refuses.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -14473,6 +14539,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "BUG-0147 regression, predicted from i1040gi p. 101 (Part II and III apply to anyone who received qualified tips or overtime) and p. 104, line 5, before recording: a business whose income includes qualified tips or 1099 overtime, with no employee tips or overtime claimed, is refused at s1.sc_1a on Schedule 1-A lines 13 and 21 and the whole return, instead of the deduction defaulting to zero.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -14700,6 +14767,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: single, no qualifying child, no wages; a Schedule C profit of $13,000: Schedule SE line 12 $1,836.84 (line 6 $12,005.50; 12.4% $1,488.68; 2.9% $348.16), line 13 $918.42. EIC Worksheet B: line 1a $13,000 (Schedule SE line 3), line 1d $918.42, line 1e $12,081.58; line 4b $12,081.58 (no other earned income). AGI is also $12,081.58, so line 9 is Yes; the credit is the EIC Table amount for $12,081.58 with no child (single): $538.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -14910,6 +14978,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: wages $10,000 and a Schedule C loss of $2,000 (no Schedule SE): Worksheet B Part 2 line 2b -$2,000; line 4b $10,000 - $2,000 = $8,000; AGI $8,000; credit from the EIC Table for $8,000, no child: $614.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -15127,6 +15196,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: head of household with one qualifying child, no wages, a Schedule C profit of $10,000: Schedule SE line 13 $706.48 (line 12 $1,412.96); EIC Worksheet B line 4b $9,293.52; Schedule 8812 line 18a takes it (Earned Income Chart, taking the EIC with Worksheet B); line 19 $6,793.52; line 20 15% = $1,019.03 (half-up of $1,019.028). Line 27 is the smaller of line 17 ($1,700) and line 20: $1,019.03.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "hoh",
         "$person": [
           "taxpayer"
@@ -15364,6 +15434,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: the vehicle screen answered Yes (for example a special allowance claimed in an earlier year): the cost line refuses.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -15587,6 +15658,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a car placed in service in 2017 (2025 is its year 9): placed in service before 2019 is refused at the cost line.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -15805,6 +15877,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a 2025 car whose special allowance choice is not the same for all 5-year property: the 100% allowance line refuses.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -16028,6 +16101,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: the standard mileage rate is not available for this vehicle (not used in its first year): the mileage amount refuses.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -16239,6 +16313,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: as stage14.veh.refuse_bonus_mixed with the 40% election: the 40% line refuses.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -16462,6 +16537,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: listed property used 50% for business (not more than 50%): the basis line refuses (ADS).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -16679,6 +16755,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a $4,000 section 179 election on property with a $3,000 business cost: the line after section 179 refuses.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -16896,6 +16973,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: 5-year property for $3,000 used 60% in the business with a $1,000 section 179 election: business cost $1,800 (more than 50% use, so the election is allowed); basis after section 179 $800.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -17104,6 +17182,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a section 179 election on property used 50% for business (not more than 50%): refused.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -17321,6 +17400,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a special allowance choice not the same for the whole class: the 100% line refuses.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -17538,6 +17618,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a business use percentage of 101: the basis line refuses.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -17755,6 +17836,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a $2,000 matching contribution where 3% of $55,410 is $1,662.30: refused as an excess contribution.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -17961,6 +18043,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a retirement plan screen answered Yes (for example a SARSEP): the SEP contribution line refuses.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -18165,6 +18248,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a car placed in service in February 2025, no special allowance, 90% business use, cost $30,000 (the only property, half-year): line 9 $12,200 x 90% = $10,980; line 13 $27,000; line 19 20% = $5,400; line 20 the smaller, $5,400.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -18387,6 +18471,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a $90,000 car placed in service in 2025, 100% business, section 179 election $5,000, no special allowance: line 9 $12,200; line 10 $5,000; line 11 $7,200; line 15 $85,000; line 19 20% = $17,000; line 20 limited to line 17 = $7,200; total $12,200.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -18613,6 +18698,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a $30,000 car acquired after January 19, 2025 with the 40% election, 100% business, half-year: line 7 $20,200; line 16 40% = $12,000; allowed $12,000; line 17 $8,200; line 18 $18,000; line 19 20% = $3,600; line 20 $3,600.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -18839,6 +18925,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a $50,000 car placed in service in December 2022 under the mid-quarter convention, 100% business, no section 179 or allowance: 2025 is year 4; line 7 $6,460 (2022, 4th and later); line 19 $50,000 x 13.6800%; line 20 the smaller.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -19052,6 +19139,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a $15,000 car placed in service in 2024 with a $2,000 section 179 deduction that year, 70% business use: line 13 $10,500; line 14 $2,000; line 15 $8,500; line 19 32% = $2,720; line 9 $19,800 x 70% = $13,860; line 20 $2,720.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -19265,6 +19353,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a $60,000 car placed in service in May 2019 under the mid-quarter convention with a $3,000 section 179 deduction, 100% business use in 2025: at 100% use the recovery-period deductions are each the lesser of the limit and the table amount on $57,000 (year 1 with the $3,000): $10100, $16100, $9700, $5760, $5760, $2428.2; unrecovered basis $10151.8; 2025 the lesser of $5,760 and that.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -19482,6 +19571,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a heavy truck (not subject to the limits) placed in service in 2023, half-year, $60,000, 100% business: year 3, 19.20% = $11,520.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -19691,6 +19781,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a heavy truck placed in service in 2019: recovered by 2024, no 2025 depreciation.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -19901,6 +19992,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: 5-year property for $10,000 acquired before January 20 and placed in service in November 2025, the only property, special allowance claimed: the mid-quarter test uses the basis before the allowance ($10,000, all in the fourth quarter); allowance 40% = $4,000; MACRS $6,000 x 5.00% (Table A-5) = $300.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -20117,6 +20209,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a light truck (asset class 00.241, 5-year, entered as property because it is not a passenger vehicle) placed in service in 2021, 80% business use, cost $20,000, with a $2,000 section 179 deduction and a $4,000 special allowance taken: unadjusted basis $16,000 - $2,000 - $4,000 = $10,000; 2025 is year 5, 11.52% = $1,152.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -20330,6 +20423,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: 5-year property for $10,000 used 60% in the business, 2025, half-year, no allowance: basis $6,000; 20% = $1,200. Part I line 2 counts the $6,000 business cost (used more than 50%).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -20547,6 +20641,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: 5-year property (not listed) used 40% in the business: basis $4,000, 20% = $800; not counted on Part I line 2 (used 50% or less).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -20759,6 +20854,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: 5-year property placed in service in 2020 (half-year), $5,000: 2025 is year 6, the last year of the recovery period: 5.76% = $288.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -20968,6 +21064,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a $6,000 computer in March and $4,000 of furniture in October: $4,000 is exactly 40% of $10,000, not more, so the half-year convention applies: 20% = $1,200 and 14.29% = $571.60.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -21199,6 +21296,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: profit $100,000, plan rate 10% (reduced rate 0.090909): step 3 $92,935.22, step 5 $8448.65; a contribution exactly equal to the maximum is deductible in full.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -21394,6 +21492,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a Schedule C loss of exactly $313,000 (single): not more than the threshold, so Schedule 1 line 3 is -$313,000.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -21600,6 +21699,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a car used exactly 50% for business on actual expenses: not more than 50%, refused.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -21823,6 +21923,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a car used 50% for business on the standard mileage rate: 5,000 miles x $0.70 = $3,500 (no business use test applies to the standard rate).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -22025,6 +22126,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: receipts $433.14: line 4a $433.14 x 92.35% = $400.00 (half-up of $400.0045), not less than $400, so self-employment tax is owed: line 10 $49.60, line 11 $11.60, line 12 $61.20.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -22221,6 +22323,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: health insurance of $3,000 under a business with a loss of $5,000: Form 7206 line 4 zero, line 5 zero, no deduction (line 14 zero).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -22419,6 +22522,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a $4,000,001 machine with a $2,500,000 section 179 election and business income above it: line 2 $4,000,001, line 4 $1, line 5 $2,499,999; line 9 and line 12 $2,499,999. BUG-0148: the election is now $2,499,999, the line 5 limitation (i4562 p. 4, Line 3); lines 4, 5, 9 and 12 are as predicted.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -22638,6 +22742,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived sources before recording: a $4,000,100 press (7-year, half-year, no special allowance), a $2,499,900 section 179 election, a $1,000 carryover from 2024 and $5,000,000 of receipts. Line 2 $4,000,100; line 4 $100; line 5 $2,500,000 - $100 = $2,499,900; line 9 $2,499,900; income before section 179 $5,000,000 less MACRS on $1,500,200 at 14.29% ($214,378.58) = $4,785,621.42; line 11 the smaller of that and line 5, $2,499,900; line 12 the smaller of $2,500,900 and $2,499,900: $2,499,900; line 13 $1,000. The election uses the whole dollar limitation, so no unused allowance is left for the carryover (Treas. Reg. 1.179-3(b)-(c); T-043).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -22866,6 +22971,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived sources before recording: a $7,000,000 press and no section 179 election: line 2 $7,000,000; line 4 $7,000,000 - $4,000,000 = $3,000,000; line 5 $2,500,000 - $3,000,000, zero or less, so zero (Form 4562 line 5, 'If zero or less, enter -0-'); line 12 zero.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -23082,6 +23188,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a $3,000,000 machine with a $3,000,000 election and business income above it: line 1 the smaller of $3,000,000 or $2,500,000; line 5 $2,500,000; line 9 the smaller of line 5 or line 8, $2,500,000; line 12 $2,500,000; line 13 (lines 9 and 10 less line 12) zero: an election above the dollar limit is not carried over, only an amount disallowed by the business income limit (the first prediction recorded a $500,000 carryover; corrected against Form 4562 line 13 before recording). BUG-0148: the election is now $2,500,000, the most i4562 p. 4, Line 3 permits (\"limited to the maximum dollar amount on line 1\"); lines 1, 5, 9, 12 and 13 are as predicted, and the $500,000 not elected stays depreciable basis. An election above the limit is refused (stage14.s179.refuse_over_limit).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -23298,6 +23405,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "BUG-0148 regression, predicted from i4562 p. 5, Line 5 (\"If line 5 is zero, you cannot elect to expense any section 179 property\") before recording: a $7,000,000 machine (line 4 $3,000,000, line 5 zero) with a $1,000,000 election is refused at s179.over_limit on line 9.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -23519,6 +23627,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "BUG-0148 regression, predicted from i4562 p. 4, Line 3 (\"The amount of section 179 property for which you can make the election is limited to the maximum dollar amount on line 1\") before recording: a $3,000,000 election against the $2,500,000 limitation is refused at s179.over_limit on line 9 rather than deducting $2,500,000 and losing the other $500,000 from basis.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -23749,6 +23858,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a $31,301 section 179 election on an SUV, $1 above the limit: refused.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -23975,6 +24085,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: profit $500,000, plan rate 25%: step 5 $96477.28; step 6 $87,500; step 7 the smaller; step 8 $70,000; step 21 $70,000, so a $70,000 contribution is deductible.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -24181,6 +24292,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: salary reduction contributions of exactly $16,500 under age 50: within the limit; line 16 $16,500.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -24381,6 +24493,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: profit $600,000: compensation $554,100, of which only $350,000 counts for the 2% nonelective contribution: $7,000; a $7,000 contribution is deductible.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -24583,6 +24696,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a $2,000 computer (not listed; $500 section 179, 100% allowance on the rest $1,500) and $3,000 of listed photographic equipment used 80% (business cost $2,400; $400 section 179; 100% allowance on $2,000), both 2025: line 6 $500, line 14 $1,500, line 25 $2,000, line 29 $400, line 26(h) zero. Schedule C line 13: section 179 $900 (line 12) plus line 14 $1,500 and line 21 (line 28) $2,000: $4,400. Per asset (T-030): the camera's line 25 $2,000 and column (i) $400; the computer's column (c) $2,000 less $500 and $1,500, zero.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -24839,6 +24953,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: as stage14.asset.listed_and_not, with the listed photographic equipment taking the 40% special allowance instead of 100% (i4562 p. 5, Line 14, the election for property acquired after January 19, 2025): business cost $2,400, section 179 $400, allowance 40% of $2,000 = $800 on line 25; the remaining $1,200 at 14.29% (7-year, half-year) = $171.48 in column (h) of line 26; line 28 $971.48. Schedule C line 13: section 179 $900 plus line 14 $1,500 plus line 28 $971.48 = $3,371.48.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -25082,6 +25197,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: employee tips of $8,000 (Schedule 1-A Part II, as in stage12.tips.one_employer) and a separate business with $5,000 of receipts and no tips: Schedule 1-A line 5 (tips in a trade or business) is zero, not refused.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -25297,6 +25413,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a $3,000 section 179 carryover from 2024 on a return with no Schedule C: Part I line 13 refuses.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -25450,6 +25567,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a retirement plan screen answered Yes with a SIMPLE plan: the salary reduction line refuses.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -25656,6 +25774,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: the 40% election not the same for the whole class: the 40% line refuses.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -25873,6 +25992,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: overtime claimed on Schedule 1-A (as in stage12.ot.premium) and a business whose income includes qualified overtime reported on Form 1099-NEC: Schedule 1-A line 14b refuses.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -26099,6 +26219,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: receipts $60,000; supplies $700, meals $1,000 at 80% ($800), other expenses $330: line 28 $1,830; line 31 $58,170.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -26295,6 +26416,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a $40,000 car placed in service in August 2019 (mid-quarter, third quarter) with a $2,000 section 179 deduction, 8,000 business, 1,000 commuting and 1,000 other miles in 2025 (80%): at 100% business use the recovery-period deductions are, year 1, the lesser of $10,100 and $2,000 + 15% of $38,000; then the lesser of each year's limit and the Table A-4 amount on $38,000: $7700, $12920, $7752, $4651.2, $4294, $2682.8 (total $40000); unrecovered basis $0; 2025 the lesser of $5,760 and that, times 80%: $0. Operating costs $1,000 x 80% = $800 on line 9. Worksheet line 19 is zero: 2025 is after the recovery period, when the worksheet is not used (Pub. 946 p. 61).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -26524,6 +26646,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: profit $19,000: compensation $17,546.50; deferrals $18,000 at age 50: $16,500 regular and $1,500 catch-up, but the catch-up may not exceed $17,546.50 - $16,500 = $1,046.50: refused as excess.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -26734,6 +26857,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: profit $200,000: compensation $184,700; deferrals $16,500 under age 50 (no catch-up); matching 3% x $184,700 = $5,541 (not more than the $16,500 deferred): line 16 $22,041.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -26935,6 +27059,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: profit $500,000, plan rate 5% (reduced rate 0.047619): step 5 $22970.76; step 6 $350,000 x 5% = $17,500; step 7 the smaller, $17,500; step 21 $17,500.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -27138,6 +27263,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived sources before recording: a $2,000 election on $2,000 of 7-year property and a $3,000 carryover from 2024, business income $50,000. Line 1 is the $2,500,000 the line 1 instruction states (i4562 p. 4; amb.2025.s179_carryover_no_property, owner, T-043), so line 5 is $2,500,000; line 9 $2,000; line 10 $3,000; line 11 the smaller of line 5 or income: $50,000; line 12 the smaller of $5,000 or $50,000: $5,000; line 13 zero. Under Worksheet 1's cap (line 1 the $2,000 cost) the carryover would have deducted nothing.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -27358,6 +27484,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "BUG-0155 regression, predicted from i4562 p. 5, Line 5 (\"If line 5 is zero ... skip lines 6 through 11, enter zero on line 12, and enter the carryover of any disallowed deduction from 2024 ... on line 13\") before recording: a $7,000,000 machine (line 5 zero) with no election and a $3,000 carryover hides line 10, and line 13 carries the $3,000.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -27574,6 +27701,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a home office of 200 square feet ($1,000) and a $1,000 section 179 election on $1,000 of furniture: line 13 $1,000; line 29 $49,000; the worksheet's line 1 is $49,000; $1,000 is not more than $50,000 less the $1,000 election, so line 30 is $1,000.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -27794,6 +27922,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: profit $100,000, SEP contribution $18,000, health insurance $6,000: Form 7206 line 8 $100,000 - $7,064.78 = $92,935.22; line 9 $18,000 (one business); line 10 $74,935.22; line 14 $6,000. QBI $100,000 - $7,064.78 - $18,000 - $6,000 = $68,935.22.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -27999,6 +28128,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: receipts $5,000 and a leased car used 100% for business ($3,000 of lease payments on line 20a): line 31 $2,000; Schedule SE line 13 $141.3; Form 7206 line 13 $1858.7; premiums $3,000, so line 14 is $1858.7.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -28208,6 +28338,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: salary reduction contributions of $16,501 under age 50, $1 over the limit: refused.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -28417,6 +28548,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a Schedule C loss of $313,000.01, 1 cent over the single threshold: Schedule 1 line 3 refuses with Form 461, and so does line 10.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -28646,6 +28778,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: profit $300,000, no wages, single: Schedule SE line 6 $277,050 (Form 8959 line 8); line 9 $200,000; line 10 zero; line 11 $200,000; line 12 $77,050; line 13 0.9% = $693.45; line 18 $693.45. Schedule 8812 line 21 by the Additional Medicare Tax and RRTA Tax Worksheet (i1040s8812 p. 9): line 6 zero (no Forms W-2), line 7 one-half of $693.45 = $346.73 (half-up to the cent), line 16 and line 21 $346.73. Schedule 8812 line 22 is Schedule 1 line 15 (Schedule 2 lines 5, 6 and 13 are zero): Schedule SE line 12 is 12.4% of $176,100 = $21,836.40 plus 2.9% of $277,050 = $8,034.45, total $29,870.85, one-half $14,935.43 (half-up to the cent); line 23, lines 21 and 22 added, $15,282.16.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -28866,6 +28999,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived sources before recording: a $1,000 election on $2,000 of 7-year property and a $3,000 carryover, receipts $50,000. The $1,000 not expensed is depreciated at 14.29% (7-year, half-year convention, year 1): $142.90, so business income before section 179 is $49,857.10. Line 1 is the $2,500,000 the line 1 instruction states (i4562 p. 4; amb.2025.s179_carryover_no_property, owner, T-043): line 5 $2,500,000; lines 8 and 9 $1,000; line 11 the smaller of line 5 and income, $49,857.10; line 12 the smaller of lines 9 + 10 ($4,000) and line 11: $4,000; line 13 zero.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -29079,6 +29213,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: joint return, no wages or dependents: the taxpayer's Schedule C profit $50,000 (Schedule SE line 12 $7,064.78, Schedule 1 line 15 $3532.39), the spouse's Schedule C loss $60,000. Not taking the EIC, so line 18a comes from the Earned Income Worksheet (i1040s8812 p. 8): line 3 combines $0, $0 and $50,000 - $60,000 = -$10,000, zero or less, so stop and enter -0- on line 18a; line 19 zero.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -29366,6 +29501,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: joint return, no wages or dependents: the taxpayer's Schedule C profit $50,000 (Schedule SE line 12 $7,064.78, Schedule 1 line 15 $3,532.39), the spouse's Schedule C loss $50,000. Not taking the EIC, so line 18a comes from the Earned Income Worksheet (i1040s8812 p. 8): line 3 combines $0, $0 and $50,000 - $50,000 = $0, zero or less, so stop and enter -0- on line 18a (line 6, $3,532.39, is not subtracted); line 19 zero. The boundary case of the stop: line 3 exactly zero.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfj",
         "$person": [
           "taxpayer",
@@ -29653,6 +29789,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: single, no wages, a Schedule C loss of $5,000 (office expense): EIC Worksheet B line 4b is -$5,000, 'If line 4b is zero or less, STOP. You can't take the credit. Check the box on Form 1040 or 1040-SR, line 27c' (i1040gi p. 47). The project enters zero on Worksheet B line 6, so Worksheet A line 1 and line 2 are zero and its STOP checks line 27c as well: line 27a $0, line 27c checked.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -29863,6 +30000,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: single, no qualifying children, Schedule C profit $21,000, no wages, $1,500 of student loan interest: Schedule SE $19,393.50 net earnings, tax $2,404.79 + $562.41 = $2,967.20, deductible half $1,483.60; AGI $21,000 - $1,483.60 - $1,500 = $18,016.40, less than $19,104, so Step 1 passes; EIC Worksheet B line 4b $21,000 - $1,483.60 = $19,516.40, not less than $19,104 (Worksheet B line 5, i1040gi p. 47): No, STOP, you can't take the credit; check the box on line 27c. Line 27a $0, line 27c checked.  Shown-line regression (owner decision 2026-10-26: skipped lines are hidden): Worksheet B line 5 is No, so i1040gi p. 47 \"No. STOP You can't take the credit\" hides Worksheet B line 6 (BUG-0156).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -30082,6 +30220,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: wages $50,000; Schedule C receipts $5,600, a $5,000 machine placed in service in 2025 with $1,000 elected under section 179, a $4,500 carryover from 2024, and a 300-square-foot home office ($1,500): Form 4562 line 12 can reach $5,000 (lines 9 and 10, with line 11 including the wages, i4562 p. 5), which would leave Schedule C line 29 below the $1,500 simplified-method amount, so the two income limits of Pub. 946 (p. 19) interact and the home office deduction is refused.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -30312,6 +30451,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: married filing separately, Schedule C receipts $50,000, a $1,000 tool (7-year property) placed in service in 2025 with all $1,000 elected under section 179: on a separate return the dollar limitation is allocated between the spouses and line 2 includes the spouse's property (i4562 p. 5, Line 5; p. 4, Line 2), which the tool does not figure, so Form 4562 line 5 refuses (owner).",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfs",
         "$person": [
           "taxpayer"
@@ -30529,6 +30669,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived sources before recording: married filing separately, the same business with the tool depreciated, no section 179 election and no carryover, so the separate-return refusal does not apply. Line 1 is $2,500,000 (i4562 p. 4, Line 1; T-043) and nothing is placed in service above $4,000,000, so the limitation is $2,500,000; on a separate return line 5 is that multiplied by 50% (i4562 p. 5, Line 5, the allocation when the spouses elect no other): $1,250,000.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "mfs",
         "$person": [
           "taxpayer"
@@ -30741,6 +30882,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Predicted from the owner's ruling (T-044, BUG-0076) before recording: a person with a Schedule C who answers yes to the railroad question is refused at Schedule SE, whose line 8a adds railroad retirement (tier 1) compensation; each Schedule SE line the person carries refuses. Inputs are stage14.sep.basic with person.rrta true.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -30984,6 +31126,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Predicted from the owner's ruling (T-044, BUG-0076) before recording: a vehicle on actual expenses with no miles has no business-use percentage (business miles over total miles, i4562 p. 14) and is refused at its total miles. Inputs are stage14.veh.leased_actual with every mileage zero.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -31208,6 +31351,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Predicted from the owner's ruling (T-044, BUG-0078) before recording: a SEP or SIMPLE plan with more than one Schedule C is refused (Pub. 560 p. 7: only the earned income of the business with the plan counts). Inputs are stage14.sep.basic with a second, $30,000 Schedule C and a $20,000 contribution.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -31470,6 +31614,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Mutation-equivalence second reading (kills operand.eic.eic.wsb_4b.earned_income), predicted from the archived i1040gi before recording: the inputs of stage14.eic.wsb_only_business (a Schedule C profit of $13,000, no wages) with nontaxable combat pay answered Yes. Step 5 line 4 is 'all of your nontaxable combat pay if you elect to include it in earned income' and line 5 adds lines 3 and 4 (p. 42); Worksheet B line 4a is 'your earned income from Step 5' and line 4b combines it with line 1e (p. 47). Combat pay is outside this tool, so Step 5 line 4 refuses and with it Worksheet B line 4b, Worksheet A line 1 (line 4b through line 6) and Form 1040 line 27a.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"
@@ -31703,6 +31848,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "BUG-0169 regression, predicted from p560 p. 39, Deduction Worksheet for Self-Employed, Step 1 (\"Enter your net profit from Schedule C (Form 1040), line 31; Schedule F (Form 1040), line 34;* or Schedule K-1 (Form 1065),* box 14, code A\") before recording: with SEP contributions and self-employment income not on a Schedule C (screen Yes), Step 1 is refused at the self-employment screen rather than showing the Schedule C profit alone.",
       "inputs": {
+        "f8863.paid": false,
         "div.box2b": 0,
         "div.box2c": 0,
         "div.box2d": 0,
@@ -32191,6 +32337,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "BUG-0180, amb.2025.sep_loss_floor. Predicted by hand from the archived p560 p. 39 worksheet before recording: Schedule C loss $5,000 (line 8 advertising $5,000, no receipts), SEP plan rate 10%, contribution $0. Step 1 -$5,000.00; Step 2 $0.00 (Schedule SE line 4c below $400). The printed arithmetic gives Step 3 -$5,000.00 and Steps 5, 7 and 21 -$454.55; under the registered reading Step 3 is floored at zero, so Steps 3, 5, 7 and 21 are $0.00, the zero contribution is not excess, and Schedule 1 line 16 is $0.00.",
       "inputs": {
+        "f8863.paid": false,
         "f1040.status": "single",
         "$person": [
           "taxpayer"

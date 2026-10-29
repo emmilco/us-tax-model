@@ -1,0 +1,35 @@
+{
+ "kind": "render",
+ "form": "f5695",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "32a",
+   "restated": "helper \"Did you occupy the home jointly with someone other than your spouse, each occupant completing their own Form 5695?\" = true",
+   "model": "IRS line 32a applies when you occupied the home jointly with someone—'If you occupied your home jointly with someone, each occupant must complete their own Form 5695'—without requiring a joint return; the helper asks whether you occupied it jointly 'on a joint return,' so it would fail to check the box for unmarried joint occupants.",
+   "ruling": "Ruling: model error; the restatement checks the box exactly when f5695.joint_occupancy is Yes, as i5695 p. 7, Line 32a, says: \"Joint occupants of a home who are claiming the energy efficient home improvement credit must check the box on line 32a\" (p. 3, Joint occupancy, \"If you occupied your home jointly with someone, each occupant must complete their own Form 5695\"). The model reads the input's qualifier \"with someone other than your spouse on a joint return\" as limiting the question to joint returns; it excludes the spouse of a joint return from \"someone\", and the interview help says so (\"These rules do not apply to married individuals filing a joint return. Joint occupancy is refused by this tool.\", interview/questions-2025.yaml). An unmarried joint occupant answers Yes and is refused on line 30 (owner decision 7). The phrasing is awkward; a clearer wording (\"with someone, other than a spouse with whom you file this joint return\") would remove the misreading, but the English does not misstate the source.",
+   "context": "a652e8d1244c14b6d46aa777f0d7a5b563fc78b91e10fea69360eeb331538d1d"
+  },
+  {
+   "printed": "32a",
+   "restated": "helper \"Did you occupy the home jointly with someone other than your spouse, each occupant completing their own Form 5695?\" = true",
+   "model": "The helper requires occupying the home with a non-spouse 'on a joint return'; the IRS rule applies if you occupied your home jointly with someone, with only an exception for married individuals filing a joint return.",
+   "ruling": "Ruling: model error; the restatement checks the box exactly when f5695.joint_occupancy is Yes, as i5695 p. 7, Line 32a, says: \"Joint occupants of a home who are claiming the energy efficient home improvement credit must check the box on line 32a\" (p. 3, Joint occupancy, \"If you occupied your home jointly with someone, each occupant must complete their own Form 5695\"). The model reads the input's qualifier \"with someone other than your spouse on a joint return\" as requiring a joint return; it only excludes the spouse with whom a joint return is filed from \"someone\", and the interview help says so (\"These rules do not apply to married individuals filing a joint return. Joint occupancy is refused by this tool.\", interview/questions-2025.yaml). The model itself states the source's exception for married individuals filing a joint return, which is what the qualifier encodes. An unmarried joint occupant answers Yes and is refused on line 30 (owner decision 7). As in round 1: the phrasing is awkward (the rendered label shortens it to \"someone other than your spouse\"), but the English does not misstate the source. Unchanged since round 1 (BUG-0196 touched only the Credit Limit Worksheet remedies).",
+   "context": "6a4e0b645f755fdf3ef4c599daf5c61cd278a6c38d41939558ede5b362e9d033"
+  },
+  {
+   "printed": "32b",
+   "restated": "helper \"Any energy efficient home improvement costs paid in 2025\" = true and helper \"Do you live in a condominium or cooperative and claim a fractional share of its costs?\" = true",
+   "model": "IRS line 32b applies only to a fractional share of 'qualified energy efficiency improvements or residential energy property expenditures'; the helper's 'Any energy efficient home improvement costs paid in 2025' also includes a home energy audit, so it can check 32b for audit-only costs not covered by the IRS line.",
+   "ruling": "Ruling: model error; i5695 p. 7, Lines 32a and 32b: \"Occupants of a condominium or cooperative who are claiming a fractional share of the qualified energy efficiency improvements or residential energy property costs must check the box on line 32b\". The restatement is f5695.part2_any and f5695.condo; the model objects that f5695.part2_any includes a home energy audit, but the condition that matters is carried by f5695.condo itself, whose question is \"Do you live in a condominium or cooperative and include in Part II a fractional share of the qualified energy efficiency improvements or residential energy property costs of the condominium management association or the cooperative housing corporation?\", the line's own words. An audit-only filer answers No there.",
+   "context": "a652e8d1244c14b6d46aa777f0d7a5b563fc78b91e10fea69360eeb331538d1d"
+  },
+  {
+   "printed": "32b",
+   "restated": "helper \"Any energy efficient home improvement costs paid in 2025\" = true and helper \"Do you live in a condominium or cooperative and claim a fractional share of its costs?\" = true",
+   "model": "IRS line 32b is limited to a fractional share of qualified energy efficiency improvements or residential energy property expenditures; the helper uses any energy efficient home improvement costs paid in 2025 and its definition includes a home energy audit, which is neither.",
+   "ruling": "Ruling: model error; i5695 p. 7, Lines 32a and 32b: \"Occupants of a condominium or cooperative who are claiming a fractional share of the qualified energy efficiency improvements or residential energy property costs must check the box on line 32b\". The restatement is f5695.part2_any and f5695.condo; the model objects that f5695.part2_any includes a home energy audit, but the condition that matters is carried by f5695.condo itself, whose question is \"Do you live in a condominium or cooperative and include in Part II a fractional share of the qualified energy efficiency improvements or residential energy property costs of the condominium management association or the cooperative housing corporation?\", the line's own words. An audit-only filer answers No there. As ruled in round 1; the line is unchanged.",
+   "context": "6a4e0b645f755fdf3ef4c599daf5c61cd278a6c38d41939558ede5b362e9d033"
+  }
+ ]
+}

@@ -126,6 +126,9 @@ const FIXED = new Set([
   "clcw.spouse_screen", "clcw.prior_11", "clcw.prior_14", "clcw.prior_sd7", "clcw.prior_sd15", "clcw.prior_sd21",
   "f4952.prior_7", "f8960.prior_2i",
   "f8962.alloc", "f8962.married_in_2025", "f8962.other", "f8962.same_state_counted", "f8962.estimate_100", "f8962.alien_below", "f8962.fpl_table",
+  "f8863.paid", "f8863.ban",
+  ...["", "_1098t", "_inst", "_mat", "_a2025", "_a2026", "_refunds", "_over", "_line23", "_line24", "_line25", "_line26", "_ein",
+    "_born_2007", "_born_2002", "_fulltime", "_half_support", "_parent"].map((k) => `person[taxpayer].edu${k}`),
 ]);
 
 interface Employer { box1: number; box2pct: number; box7: number; over: number; deferral: number }
@@ -559,6 +562,8 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
   s.gifts.forEach((g, i) => { for (const [k, v] of Object.entries(g)) inputs[`gift[item_${String.fromCharCode(97 + i)}].${k}`] = v; });
   inputs["$dependent"] = s.dependents.map((_, i) => `dep_${String.fromCharCode(97 + i)}`);
   s.dependents.forEach((d, i) => { for (const [k, v] of Object.entries(d)) inputs[`dependent[dep_${String.fromCharCode(97 + i)}].${k}`] = v; });
+  // An "other" household member's relationship is lawful (Step 4); answered without a draw, so the stream is unchanged.
+  s.dependents.forEach((_, i) => { inputs[`dependent[dep_${String.fromCharCode(97 + i)}].lawful`] = true; });
   // Form 2441, derived from the generated facts so the random stream is unchanged: a child turning 13 is under 13
   // for part of the year, a permanently and totally disabled person cannot care for themselves, and the expenses vary
   // with the age. One care provider, identified by its number.
@@ -687,10 +692,64 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
   applyScreens(inputs);
   putCarryovers(inputs);
   putPtc(inputs);
+  putEdu(inputs);
   return inputs;
 }
 
 const MONTHS = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
+
+const EDU_ANSWERS = ["", "_1098t", "_over", "_line23", "_line24", "_line25", "_line26", "_ein"];
+const EDU_AMOUNTS = ["_inst", "_mat", "_a2025", "_a2026", "_refunds"];
+
+/** Form 8863 on about one return in eight, from a derived stream: one or two students among you, your spouse on a
+ * joint return and the dependents, mostly American opportunity credit students, the rest lifetime learning credit
+ * students (the credit claimed for 4 earlier years, no institution EIN, the first 4 years completed, or not
+ * half-time), with expenses, course materials, tax-free assistance and refunds. Every other entry answers No with
+ * zero amounts. Your line 7 answers agree with your other birth-date answers. The screens (a Form 8862 claim or ban,
+ * an academic period whose assistance exceeds its expenses) are No. */
+function putEdu(inputs: Inputs): void {
+  const next = derivedStream(inputs, "edu");
+  const between = (lo: number, hi: number) => lo + Math.floor(next() * (hi - lo + 1));
+  const persons = ((inputs["$person"] as string[] | undefined) ?? []).map((p) => `person[${p}]`);
+  const deps = ((inputs["$dependent"] as string[] | undefined) ?? []).map((d) => `dependent[${d}]`);
+  for (const E of [...persons, ...deps]) {
+    for (const k of EDU_ANSWERS) inputs[`${E}.edu${k}`] = false;
+    for (const k of EDU_AMOUNTS) inputs[`${E}.edu${k}`] = 0;
+  }
+  // Born before January 2, 2008 (sav_born), 2007 and 2002, and before January 2, 2001 (born_before_2001), in order.
+  for (const P of persons) {
+    const old = inputs[`${P}.born_before_2001`] === true || inputs[`${P}.age65`] === true;
+    const adult = inputs[`${P}.sav_born`] !== false;
+    const b2007 = adult && (old || next() < 0.6);
+    Object.assign(inputs, { [`${P}.edu_born_2007`]: b2007, [`${P}.edu_born_2002`]: b2007 && (old || next() < 0.2),
+      [`${P}.edu_fulltime`]: next() < 0.7, [`${P}.edu_half_support`]: next() < 0.6, [`${P}.edu_parent`]: next() < 0.9 });
+  }
+  inputs["f8863.ban"] = false;
+  inputs["f8863.paid"] = false;
+  if (next() >= 0.125) return;
+  const pool = [...persons, ...deps];
+  const students: string[] = [];
+  const count = pool.length > 1 && next() < 0.3 ? 2 : 1;
+  while (students.length < count) {
+    const E = pool[Math.floor(next() * pool.length)]!;
+    if (!students.includes(E)) students.push(E);
+  }
+  inputs["f8863.paid"] = true;
+  for (const E of students) {
+    const inst = between(50_000, 1_500_000);
+    inputs[`${E}.edu`] = true;
+    inputs[`${E}.edu_1098t`] = next() < 0.95;
+    inputs[`${E}.edu_inst`] = inst;
+    inputs[`${E}.edu_mat`] = next() < 0.5 ? between(0, 150_000) : 0;
+    inputs[`${E}.edu_a2025`] = next() < 0.3 ? between(0, Math.floor(inst / 2)) : 0;
+    inputs[`${E}.edu_a2026`] = next() < 0.05 ? between(0, 50_000) : 0;
+    inputs[`${E}.edu_refunds`] = next() < 0.05 ? between(0, 50_000) : 0;
+    // An AOC student passes lines 23 to 26 with the institution's EIN; an LLC student fails one of them.
+    const why = next() < 0.75 ? "aoc" : (["line23", "ein", "ein", "line23", "line25", "line24"] as const)[Math.floor(next() * 6)]!;
+    Object.assign(inputs, { [`${E}.edu_line23`]: why === "line23", [`${E}.edu_line24`]: why !== "line24",
+      [`${E}.edu_line25`]: why === "line25", [`${E}.edu_line26`]: false, [`${E}.edu_ein`]: why !== "ein" });
+  }
+}
 
 /** Forms 1095-A on about one return in seven, from the same derived stream: most with full-year coverage and the same
  * columns A and B every month, the rest month by month (coverage starting during the year, a column B that changes);

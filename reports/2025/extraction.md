@@ -4,8 +4,8 @@ Offline checks that the archived IRS text is a faithful reading of the archived 
 
 | check | documents | failing |
 | --- | --- | --- |
-| layout vs reading order | 116 | 0 |
-| PDFKit against poppler | 116 | 0 |
+| layout vs reading order | 118 | 0 |
+| PDFKit against poppler | 118 | 0 |
 | PDF vs HTML snapshot | 12 | 0 |
 
 ## Per document
@@ -43,6 +43,8 @@ Offline checks that the archived IRS text is a faithful reading of the archived 
 - **f1065sk1** layout vs reading order: 1 pages, identical characters
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
 - **f1095a** layout vs reading order: 3 pages, identical characters
+    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
+- **f1098t** layout vs reading order: 4 pages, identical characters
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
 - **f1099c** layout vs reading order: 4 pages, identical characters
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
@@ -279,5 +281,7 @@ Offline checks that the archived IRS text is a faithful reading of the archived 
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (1 such occurrences; 2 words poppler reads that PDFKit skips)
 - **usc-26-179** layout vs reading order: 7 pages, identical characters (4 page(s) differ only in word spacing)
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
+- **usc-26-25a** layout vs reading order: 6 pages, identical characters (4 page(s) differ only in word spacing)
+    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (2 such occurrences; 4 words poppler reads that PDFKit skips)
 - **usc-26-36b** layout vs reading order: 8 pages, identical characters (4 page(s) differ only in word spacing)
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 2 words poppler reads that PDFKit skips)

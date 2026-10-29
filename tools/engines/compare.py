@@ -58,7 +58,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)
 sys.path.insert(0, os.path.join(ROOT, "tools"))
 from taxyear import Y  # noqa: E402
 TAX_LINES = {"f1040.line16", "f1040.line19", "f1040.line20", "f1040.line24", "f1040.line28", "f1040.tax_before_credits",
-             "f2441.line11", "s3.line2", "f8880.line12", "f5695.line15", "s3.line5a", "f5695.line32", "s3.line5b"}
+             "f2441.line11", "s3.line2", "f8863.line19", "s3.line3", "f8880.line12", "f5695.line15", "s3.line5a", "f5695.line32", "s3.line5b"}
 # The run fails when, on a mapped line, the project left more than this share of the engine's cases
 # without a value, unless the line is allow-listed below: the project value is unknown where the
 # named input is false (the form is not filed), and the share is measured on the other returns.
@@ -188,11 +188,14 @@ def schedule_mode_expectations(values, case, t, engine_tax=None, niit=None):
     tax18 = tax16 + line17
     ftc_taxes = case["inputs"].get("ftc.taxes", 0) if (m("f1040.line20") or 0) > 0 or case["inputs"].get("ftc.taxes", 0) > 0 else 0
     tax20 = min(ftc_taxes, tax16) if m("f1040.line20") is not None else 0
-    # Schedule 3 lines 2, 4 and 5b: each credit is the smaller of its amount before the limit and the
-    # tax left after the credits before it (Form 2441 line 10, Form 8880 line 11, Form 5695 line 31).
+    # Schedule 3 lines 2, 3, 4 and 5b: each credit is the smaller of its amount before the limit and the
+    # tax left after the credits before it (Form 2441 line 10, the Form 8863 Credit Limit Worksheet line 6,
+    # Form 8880 line 11, Form 5695 line 31).
     remaining = max(0, tax18 - tax20)
     cdcc = min(m("f2441.line9c") or 0, remaining) if case["inputs"].get("f2441.care") else 0
     remaining = max(0, remaining - cdcc)
+    edu = min(m("f8863.clw3") or 0, remaining) if m("f8863.line19") is not None else 0
+    remaining = max(0, remaining - edu)
     savers = min(m("f8880.line10") or 0, remaining)
     remaining = max(0, remaining - savers)
     eehic = min(m("f5695.line30") or 0, remaining) if case["inputs"].get("f5695.part2_any") else 0
@@ -200,7 +203,7 @@ def schedule_mode_expectations(values, case, t, engine_tax=None, niit=None):
     # move with the table-versus-schedule difference through the credit limit. With Worksheet B (Form
     # 5695 Part I and a qualifying child) the residential clean energy credit, limited after the Worksheet
     # B child tax credit, is taken first through Worksheet A line 4; otherwise it follows line 19.
-    clw_a3 = tax18 - tax20 - cdcc - savers - eehic
+    clw_a3 = tax18 - tax20 - cdcc - edu - savers - eehic
     line12 = m("s8812.line12") or 0
     worksheet_b = bool(b("s8812.clwb_complete"))
     ctc_before_rce = (m("s8812.clwb_14") or 0) if worksheet_b else min(line12, clw_a3)
@@ -215,18 +218,18 @@ def schedule_mode_expectations(values, case, t, engine_tax=None, niit=None):
         tax28 = line17_8812
     else:
         tax28 = min(line17_8812, m("s8812.line26") or 0)
-    line22 = max(0, tax18 - tax20 - cdcc - savers - eehic - tax19 - rce)
+    line22 = max(0, tax18 - tax20 - cdcc - edu - savers - eehic - tax19 - rce)
     out = {"f1040.line16": tax16, "f1040.line19": tax19, "f1040.line20": tax20, "f1040.line28": tax28,
            "f1040.line24": line22 + line23,
            "f1040.tax_before_credits": tax18 + line23,
-           "f2441.line11": cdcc, "s3.line2": cdcc, "f8880.line12": savers,
+           "f2441.line11": cdcc, "s3.line2": cdcc, "f8863.line19": edu, "s3.line3": edu, "f8880.line12": savers,
            "f5695.line15": rce, "s3.line5a": rce, "f5695.line32": eehic, "s3.line5b": eehic}
     if engine_tax is None and niit is None:
         return out
     line33 = (m("f1040.line33") or 0) - (m("f1040.line28") or 0) + tax28
-    out.update({"f1040.line18": tax18, "f1040.line21": tax19 + tax20 + cdcc + savers + eehic + rce, "f1040.line22": line22,
+    out.update({"f1040.line18": tax18, "f1040.line21": tax19 + tax20 + cdcc + edu + savers + eehic + rce, "f1040.line22": line22,
                 "f1040.line23": line23, "s2.line21": (m("s2.line21") or 0) - (m("f8960.line17") or 0) + niit17,
-                "f8960.line17": niit17, "f8960.tax": niit17, "s3.line8": tax20 + cdcc + savers + eehic + rce,
+                "f8960.line17": niit17, "f8960.tax": niit17, "s3.line8": tax20 + cdcc + edu + savers + eehic + rce,
                 "f1040.line32": (m("f1040.line32") or 0) - (m("f1040.line28") or 0) + tax28, "f1040.line33": line33,
                 "f1040.line34": max(0, line33 - (line22 + line23)), "f1040.line37": max(0, line22 + line23 - line33),
                 "s8812.line14": tax19, "s8812.line16a": line16a, "s8812.line17": line17_8812, "s8812.line27": tax28})
@@ -632,6 +635,22 @@ def derived_features(case, values):
         # payment or Schedule R (irsForms/Schedule3.ts `isNeeded`), so a net premium tax credit alone never reaches line 31.
         if (m("s3.line9") or 0) > 0 and (m("s3.line1") or 0) == 0 and (m("s3.line11") or 0) == 0:
             feats.add("ustaxes_ptc_no_schedule3")
+    # Form 8863. The line 7 box (no refundable American opportunity credit), which no engine models; a phase-out ratio
+    # (lines 6 and 17: line 4 over line 5) that three places do not hold exactly, where an engine keeps it unrounded;
+    # the Credit Limit Worksheet limiting line 19; cents on the lines an engine rounds to whole dollars; and a
+    # nonrefundable credit with no other reason for Schedule 3 in UsTaxes (irsForms/Schedule3.ts `isNeeded`).
+    nr = values.get("f8863.no_refund", {}).get("value", {})
+    if nr.get("kind") == "bool" and nr["value"]:
+        feats.add("edu_no_refund")
+    l4, l5 = m("f8863.line4"), m("f8863.line5")
+    if ((m("f8863.line1") or 0) > 0 or (m("f8863.line10") or 0) > 0) and l4 is not None and l5 and 0 < l4 < l5 and (l4 * 1000) % l5:
+        feats.add("edu_phaseout_inexact")
+    if (m("f8863.clw3") or 0) > (m("f8863.line19") or 0):
+        feats.add("edu_credit_limited")
+    if any((m(f"f8863.line{n}") or 0) % 100 for n in (1, 7, 8, 9, 12, 18)):
+        feats.add("ustaxes_edu_cents")
+    if (m("f8863.line19") or 0) > 0 and (m("s3.line1") or 0) == 0 and (m("s3.line11") or 0) == 0:
+        feats.add("ustaxes_edu_no_schedule3")
     if 0 < (m("sli.line8") or 0) < (m("sli.line1") or 0):
         feats.add("sli_phaseout")
     if (m("f1040.line16") or 0) == 0:

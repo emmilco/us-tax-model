@@ -7,17 +7,17 @@ Shares are of the 160,602,107 individual returns the IRS counted for tax year 20
 (Statistics of Income, Publication 1304, archived under `sources/2025/soi-*`). Overlaps between situations
 come from PolicyEngine-US microdata simulated for 2025, raked to every IRS count it can place.
 
-**Estimated coverage: 75.6%** of returns. If the IRS-only categories overlapped the rest
-completely the figure would be 81.4%; if they overlapped nothing, 74.1%.
+**Estimated coverage: 79.6%** of returns. If the IRS-only categories overlapped the rest
+completely the figure would be 85.7%; if they overlapped nothing, 78.4%.
 
 Limits of this estimate:
 
 - IRS counts are for 2023; the 2025 shares are assumed similar.
 - Where the IRS gives only parts of a situation with unknown overlap, the largest part is used, a lower bound.
-- 160 of the 168 refusal gates in the forms are not measured (no IRS count or
+- 164 of the 172 refusal gates in the forms are not measured (no IRS count or
   microdata variable), so the true coverage is lower by their share. Gates measured only in part (for example
   `scope.credits`, `scope.other_line16`) also refuse situations not counted here. Unmeasured:
-  `asset.bonus_mixed`, `asset.listed_low`, `asset.s179_bad`, `asset.screened`, `carloan.refi_nested`, `clcw.bad`, `clcw.spouse_screen`, `dependent.claimed_no_tin`, `dependent.divorced_rule`, `dependent.income_exception`, `dependent.married`, `dependent.multiple_support`, `dependent.other_claimant`, `div.amt`, `div.bad_components`, `div.bad_special`, `div.section1202`, `div.unsupported`, `f2441.attrib_gate`, `f2441.employer_care_gate`, `f2441.line14_bad`, `f2441.nondependent_gate`, `f2441.plans_differ`, `f2441.prior_year`, `f2441.provider_ineligible`, `f2441.spouse_died_gate`, `f2441.student_disabled`, `f4952.alternative_allocation`, `f4952.bad_dividends`, `f4952.bad_election`, `f4952.unsupported`, `f5695.ac_no_qmid`, `f5695.business_use`, `f5695.construction_later`, `f5695.doors_no_qmid`, `f5695.enabling_no_qmid`, `f5695.furnace_no_qmid`, `f5695.hp_no_qmid`, `f5695.joint_occupancy`, `f5695.line7a`, `f5695.sec_a_new_home`, `f5695.sec_b_new_home`, `f5695.separate_homes_joint`, `f5695.wh_no_qmid`, `f5695.windows_no_qmid`, `f8606.dist`, `f8889.allocation_bad`, `f8889.bad_months`, `f8889.excess`, `f8889.mfs`, `f8889.rollover_bad`, `f8889.subject_bad`, `f8889.unsupported`, `f8959.unsupported`, `f8960.bad_allocation`, `f8960.carryforward_adj`, `f8960.refund`, `f8960.unsupported`, `f8962.alloc`, `f8962.big_family`, `f8962.marriage`, `f8962.other`, `f8962.two_counted`, `ftc.needs1116`, `gift.section_b`, `gift.special`, `household.credit_disallowed`, `household.filer_under16`, `household.hoh_community_property`, `household.hoh_fails`, `household.roster_bad`, `ira.both_kinds`, `ira.combat_gate`, `ira.cov_gate`, `ira.excl_gate`, `ira.kbh_short`, `ira.less_gate`, `ira.over_comp`, `ira.se_capital_gate`, `ira.special_gate`, `oi8z.additional_tax`, `oi8z.figured`, `oi8z.recovery`, `otjob.refused`, `person.hsa_repeated`, `person.ira_basis_gate`, `person.ira_dist_gate`, `person.ira_excess_gate`, `person.ira_over_limit`, `person.over`, `person.plan_screened`, `person.rrta`, `person.sav_able`, `person.sav_excess_gate`, `person.se_rrta`, `person.se_screened`, `person.sep_excess`, `person.simple_excess`, `qbi.business_any`, `qbi.unsupported`, `refund.box8`, `refund.exc_tax`, `refund.exc_who`, `refund.line5e_bad`, `refund.not_2024`, `retirement.annuity_rollover`, `retirement.bad_code`, `s1.alimony_unsupported`, `s1.cod_unsupported`, `s1.ebl`, `s1.gambling_business`, `s1.jury_over`, `s1.line8_other`, `s1.sc_1a`, `s1.uc_unsupported`, `s179.mfs`, `s179.multi`, `s179.orphan`, `s179.over_limit`, `s1a.senior_decedent`, `s1a.spouse_senior_decedent`, `s8812.combat_pay`, `s8812.puerto_rico`, `sa.charity_limited`, `sa.dependent`, `sa.mfs_spouse_extra`, `sa.unsupported`, `sales.bad_aggregate`, `sales.bad_code`, `sales.digital`, `sales.special`, `sb.fbar_required`, `sb.form8938`, `sb.line8`, `sb.unsupported`, `sc.hi_screened`, `sc.ho_both_limits`, `sc.ho_multi`, `sc.ho_screened`, `sc.inventory_other`, `sc.not_at_risk`, `sc.screened`, `scope.other_line16`, `scveh.bonus_mixed`, `scveh.low_use`, `scveh.no_miles`, `scveh.s179_bad`, `scveh.screened`, `scveh.smr_bad`, `scveh.too_old`, `sd.other_forms`, `sd.screen`, `ssb.lump_sum`, `ssb.pub915`, `ssb.terror_disability`, `tipjob.mixed`, `w2.box10_bad`, `w2.box12_userra`, `w2.code_h`, `w2.g_bad`.
+  `asset.bonus_mixed`, `asset.listed_low`, `asset.s179_bad`, `asset.screened`, `carloan.refi_nested`, `clcw.bad`, `clcw.spouse_screen`, `dependent.claimed_no_tin`, `dependent.divorced_rule`, `dependent.edu_over_refused`, `dependent.income_exception`, `dependent.married`, `dependent.multiple_support`, `dependent.other_claimant`, `div.amt`, `div.bad_components`, `div.bad_special`, `div.section1202`, `div.unsupported`, `f2441.attrib_gate`, `f2441.employer_care_gate`, `f2441.line14_bad`, `f2441.nondependent_gate`, `f2441.plans_differ`, `f2441.prior_year`, `f2441.provider_ineligible`, `f2441.spouse_died_gate`, `f2441.student_disabled`, `f4952.alternative_allocation`, `f4952.bad_dividends`, `f4952.bad_election`, `f4952.unsupported`, `f5695.ac_no_qmid`, `f5695.business_use`, `f5695.construction_later`, `f5695.doors_no_qmid`, `f5695.enabling_no_qmid`, `f5695.furnace_no_qmid`, `f5695.hp_no_qmid`, `f5695.joint_occupancy`, `f5695.line7a`, `f5695.sec_a_new_home`, `f5695.sec_b_new_home`, `f5695.separate_homes_joint`, `f5695.wh_no_qmid`, `f5695.windows_no_qmid`, `f8606.dist`, `f8863.ban_refused`, `f8889.allocation_bad`, `f8889.bad_months`, `f8889.excess`, `f8889.mfs`, `f8889.rollover_bad`, `f8889.subject_bad`, `f8889.unsupported`, `f8959.unsupported`, `f8960.bad_allocation`, `f8960.carryforward_adj`, `f8960.refund`, `f8960.unsupported`, `f8962.alien_branch`, `f8962.alloc`, `f8962.big_family`, `f8962.marriage`, `f8962.other`, `f8962.two_counted`, `ftc.needs1116`, `gift.section_b`, `gift.special`, `household.credit_disallowed`, `household.filer_under16`, `household.hoh_community_property`, `household.hoh_fails`, `household.roster_bad`, `ira.both_kinds`, `ira.combat_gate`, `ira.cov_gate`, `ira.excl_gate`, `ira.kbh_short`, `ira.less_gate`, `ira.over_comp`, `ira.se_capital_gate`, `ira.special_gate`, `oi8z.additional_tax`, `oi8z.figured`, `oi8z.recovery`, `otjob.refused`, `person.edu_over_refused`, `person.hsa_repeated`, `person.ira_basis_gate`, `person.ira_dist_gate`, `person.ira_excess_gate`, `person.ira_over_limit`, `person.over`, `person.plan_screened`, `person.rrta`, `person.sav_able`, `person.sav_excess_gate`, `person.se_rrta`, `person.se_screened`, `person.sep_excess`, `person.simple_excess`, `qbi.business_any`, `qbi.unsupported`, `refund.box8`, `refund.exc_tax`, `refund.exc_who`, `refund.line5e_bad`, `refund.not_2024`, `retirement.annuity_rollover`, `retirement.bad_code`, `s1.alimony_unsupported`, `s1.cod_unsupported`, `s1.ebl`, `s1.gambling_business`, `s1.jury_over`, `s1.line8_other`, `s1.sc_1a`, `s1.uc_unsupported`, `s179.mfs`, `s179.multi`, `s179.orphan`, `s179.over_limit`, `s1a.senior_decedent`, `s1a.spouse_senior_decedent`, `s8812.combat_pay`, `s8812.puerto_rico`, `sa.charity_limited`, `sa.dependent`, `sa.mfs_spouse_extra`, `sa.unsupported`, `sales.bad_aggregate`, `sales.bad_code`, `sales.digital`, `sales.special`, `sb.fbar_required`, `sb.form8938`, `sb.line8`, `sb.unsupported`, `sc.hi_screened`, `sc.ho_both_limits`, `sc.ho_multi`, `sc.ho_screened`, `sc.inventory_other`, `sc.not_at_risk`, `sc.screened`, `scope.other_line16`, `scveh.bonus_mixed`, `scveh.low_use`, `scveh.no_miles`, `scveh.s179_bad`, `scveh.screened`, `scveh.smr_bad`, `scveh.too_old`, `sd.other_forms`, `sd.screen`, `ssb.lump_sum`, `ssb.pub915`, `ssb.terror_disability`, `tipjob.mixed`, `w2.box10_bad`, `w2.box12_userra`, `w2.code_h`, `w2.g_bad`.
 
 ## Coverage gained by each group, in the order that gains most
 
@@ -25,15 +25,14 @@ Coverage here is of the measured situations only; 100% would still leave the unm
 
 | Step | Group | Coverage after | Gain if covered alone now |
 |---|---|---|---|
-| 1 | Rental, royalty, partnership, S corporation, estate (Schedule E) | 81.3% (+5.7) | +5.7 |
-| 2 | Other Schedule 1 income and adjustments | 87.0% (+5.7) | +4.2 |
-| 3 | Education credits (Form 8863) | 91.3% (+4.3) | +4.0 |
-| 4 | Additional tax on retirement plans (Form 5329) | 94.3% (+3.0) | +2.5 |
-| 5 | Married filing separately | 96.8% (+2.5) | +2.1 |
-| 6 | Farm income (Schedule F) | 97.9% (+1.1) | +0.5 |
-| 7 | Other credits (dependent care, saver's, energy, others) | 98.8% (+0.9) | +0.7 |
-| 8 | Wages not on Form W-2 and other earned income | 99.5% (+0.8) | +0.6 |
-| 9 | Other Schedule 2 taxes (AMT and others) | 100.0% (+0.5) | +0.3 |
+| 1 | Rental, royalty, partnership, S corporation, estate (Schedule E) | 85.4% (+5.8) | +5.8 |
+| 2 | Other Schedule 1 income and adjustments | 91.3% (+5.9) | +4.2 |
+| 3 | Additional tax on retirement plans (Form 5329) | 94.3% (+3.0) | +2.6 |
+| 4 | Married filing separately | 96.8% (+2.5) | +2.1 |
+| 5 | Farm income (Schedule F) | 97.9% (+1.1) | +0.5 |
+| 6 | Other credits (dependent care, saver's, energy, others) | 98.8% (+0.9) | +0.7 |
+| 7 | Wages not on Form W-2 and other earned income | 99.5% (+0.8) | +0.6 |
+| 8 | Other Schedule 2 taxes (AMT and others) | 100.0% (+0.5) | +0.4 |
 
 ## Refused situations
 
@@ -41,7 +40,6 @@ Coverage here is of the measured situations only; 100% would still leave the unm
 |---|---|---|---|---|---|
 | Rental and royalty income or loss | Rental, royalty, partnership, S corporation, estate (Schedule E) | 5.9% | 9,542,639 | 8.6% | IRS count, overlap from microdata |
 | Other income (Schedule 1 line 8z and similar) | Other Schedule 1 income and adjustments | 4.8% | 7,787,273 | 2.5% | IRS count, overlap from microdata |
-| Education credits | Education credits (Form 8863) | 4.5% | 7,211,349 | 0.5% | IRS count, overlap from microdata |
 | Partnership or S corporation income or loss | Rental, royalty, partnership, S corporation, estate (Schedule E) | 3.5% | 5,554,014 | 7.1% | IRS count, overlap from microdata |
 | Additional tax on qualified plans (Form 5329) | Additional tax on retirement plans (Form 5329) | 3.2% | 5,092,999 | — | IRS count only (independence assumed) |
 | Married filing separately | Married filing separately | 2.6% | 4,139,858 | 1.2% | IRS count, overlap from microdata |

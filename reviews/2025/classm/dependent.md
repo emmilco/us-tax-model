@@ -4,15 +4,15 @@
 
 | field | value |
 | --- | --- |
-| date | 2026-10-28 |
+| date | 2026-10-29 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt policy | worked-values-request-bound-v2 |
 | system sha256 | 18ff9cfe094eedd0548bba02012b0ebf2a58d0606e834e3633432585b4192cb7 |
 | reasoning effort | provider default |
 | output token budget | transport default (65536 for DeepSeek) |
-| subject sha256 | 9c906d79d70d31ada408045b720d6cae272794f3002c03fd45e40354e6711144 |
-| cases | 5 |
+| subject sha256 | f3d0b09de8d82c0aa6d560f86701b6fbabeb1ac8854336934637128e13e11ca4 |
+| cases | 7 |
 | worked target scope | printed IRS lines |
 
 ## Source pages given to the model
@@ -26,10 +26,12 @@
 | i2441 | 2025 | 1, 3, 4 | cited pages | 361baee739cc7cb7b6a84c7412397cfba901c1a3e5f225a8077cb8716917887e | 1, 3, 4 | 3046d96b0769e20213f700deb20a0de9edc6a4572eda61bd70f5c8c88bc912ee |
 | f2441 | 2025; created 2025-03-18 | 1, 2 | whole document | f39ca34d11c156e1ac55f4e2b5f16ef03c919773245cd7e50836e4c1555339c7 | - | 0e24fa891992674b84736c78565752c4a7d6f411fca4e24e5bb1307f239f60d6 |
 | i8962 | 2025 | 8 | cited pages | 6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976 | 8 | 11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309 |
+| i8863 | 2025 | 1, 2, 3, 4, 9 | cited pages | 71d45c0b03b4521697e7f4fd52bbcc489d7dac6a3645b6d36f514ae5992e2e4d | 1, 3, 4, 9 | 6d486b4afb1f1647b7b99243cde905cf9def6b2813e5ed0bcb9925329c1e8a2b |
+| f8863 | 2025 | 1, 2 | whole document | 8e2a766019b69e75af71e8da04f82a27534acb97f9ae4c2b72438a56d10d444e | - | 37bbeebd24c238e54a031ab21ac880feb5d8e9ce98f792e1b45d93e1bf8abc6c |
 
 ## Lines
 
-### case classm.dependent.1 — prompt sha256 bca957966a75e603d6fb2dd84229cd010c52c40fe493eea574b039f6f529d05b; branches: dependent.student:false, dependent.student:true, dependent.disabled:false, dependent.disabled:true, dependent.self_support:false, dependent.joint_return:false, dependent.citizen:true, dependent.canada_mexico:false, dependent.canada_mexico:true, dependent.married:false, dependent.tin:true, dependent.work_ssn:true, dependent.supported:true, dependent.other_claimant:false, dependent.divorced_rule:false, dependent.multiple_support:false, dependent.parent_home_paid:false, dependent.parent_home_paid:true, dependent.hoh_lived_half:true, dependent.dc_lived_half:true, dependent.qc_relationship:false, dependent.qc_relationship:true, dependent.younger:false, dependent.younger:true, dependent.us_half:false, dependent.us_half:true, dependent.eic_ssn:false, dependent.eic_ssn:true, dependent.qc_age:false, dependent.qc_age:true, dependent.lived_half:true, dependent.qualifying_child:false, dependent.qualifying_child:true, dependent.resident:true, dependent.qc_dependent:false, dependent.qc_dependent:true, dependent.qr_relationship:true, dependent.qr_income:false, dependent.qr_income:true, dependent.income_exception:false, dependent.qualifying_relative:false, dependent.qualifying_relative:true, dependent.qr_dependent:false, dependent.qr_dependent:true, dependent.claimed_no_tin:false, dependent.claimed:false, dependent.claimed:true, dependent.under_ctc_age:false, dependent.under_ctc_age:true, dependent.ctc_child:false, dependent.ctc_child:true, dependent.odc_person:false, dependent.odc_person:true, dependent.ctc_amount#0, dependent.ctc_amount#1, dependent.odc_amount#0, dependent.odc_amount#1, dependent.actc_amount#0, dependent.actc_amount#1, dependent.hoh_test2:false, dependent.hoh_test2:true, dependent.hoh_test1:false, dependent.eic_child:false, dependent.eic_child:true, dependent.eic_ssn_child:false, dependent.eic_ssn_child:true, dependent.dc_child_all_year:false, dependent.dc_child_all_year:true, dependent.dc_age13:false, dependent.dc_under13:true, dependent.dc_child:false, dependent.dc_incapable:false, dependent.dc_incapable:true, dependent.dc_disabled_qp:false, dependent.dc_disabled_qp:true, dependent.dc_qp:false, dependent.dc_line2c:false, dependent.ptc_files:false, dependent.ptc_magi_counted#1
+### case classm.dependent.1 — prompt sha256 a0b18ba380d0619d0622d223d7e4f044e6bbcd2aeb9ae0f2e22d2028b00f1d90; branches: dependent.student:false, dependent.student:true, dependent.disabled:false, dependent.disabled:true, dependent.self_support:false, dependent.joint_return:false, dependent.citizen:true, dependent.canada_mexico:false, dependent.canada_mexico:true, dependent.married:false, dependent.tin:true, dependent.work_ssn:true, dependent.supported:true, dependent.other_claimant:false, dependent.divorced_rule:false, dependent.multiple_support:false, dependent.parent_home_paid:false, dependent.hoh_lived_half:true, dependent.dc_lived_half:true, dependent.qc_relationship:false, dependent.qc_relationship:true, dependent.younger:true, dependent.us_half:false, dependent.us_half:true, dependent.eic_ssn:false, dependent.eic_ssn:true, dependent.qc_age:true, dependent.lived_half:true, dependent.qualifying_child:false, dependent.qualifying_child:true, dependent.resident:true, dependent.qc_dependent:false, dependent.qc_dependent:true, dependent.qr_relationship:true, dependent.lawful:true, dependent.qr_income:false, dependent.qr_income:true, dependent.income_exception:false, dependent.qualifying_relative:false, dependent.qualifying_relative:true, dependent.qr_dependent:false, dependent.qr_dependent:true, dependent.claimed_no_tin:false, dependent.claimed:true, dependent.under_ctc_age:false, dependent.under_ctc_age:true, dependent.ctc_child:false, dependent.ctc_child:true, dependent.odc_person:false, dependent.odc_person:true, dependent.ctc_amount#0, dependent.ctc_amount#1, dependent.odc_amount#0, dependent.odc_amount#1, dependent.actc_amount#0, dependent.actc_amount#1, dependent.hoh_test2:true, dependent.hoh_test1:false, dependent.eic_child:false, dependent.eic_child:true, dependent.eic_ssn_child:false, dependent.eic_ssn_child:true, dependent.dc_child_all_year:false, dependent.dc_child_all_year:true, dependent.dc_age13:false, dependent.dc_under13:true, dependent.dc_child:false, dependent.dc_incapable:false, dependent.dc_incapable:true, dependent.dc_disabled_qp:false, dependent.dc_disabled_qp:true, dependent.dc_qp:false, dependent.dc_line2c:false, dependent.ptc_files:false, dependent.ptc_magi_counted#1, dependent.edu:false, dependent.edu:true, dependent.edu_1098t:false, dependent.edu_1098t:true, dependent.edu_student:false, dependent.edu_student:true, dependent.edu_adj#0, dependent.edu_adj#1, dependent.edu_over:false, dependent.edu_over_refused:false, dependent.edu_line23:false, dependent.edu_show24:false, dependent.edu_show24:true, dependent.edu_line24:false, dependent.edu_line24:true, dependent.edu_show25:false, dependent.edu_show25:true, dependent.edu_line25:false, dependent.edu_show26:false, dependent.edu_show26:true, dependent.edu_line26:false, dependent.edu_ein:false, dependent.edu_ein:true, dependent.edu_aoc:false, dependent.edu_aoc:true, dependent.edu_llc:false, dependent.edu_line27#0, dependent.edu_line27#1, dependent.edu_line28#0, dependent.edu_line28#1, dependent.edu_line29#0, dependent.edu_line29#1, dependent.edu_line30#0, dependent.edu_line30#1, dependent.edu_line31#1
 
 ### classm.dependent.1 — dependent[dep_a].dc_line2d — Qualified expenses you incurred and paid in 2025 for the person listed in column
 Status: **AGREE**
@@ -47,13 +49,9 @@ Status: **AGREE**
 Value: $0.00
 
 ### classm.dependent.1 — dependent[dep_b].dc_line2c — Check here if the qualifying person was over age 12 and was disabled
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: no
-Model: yes
-Work: Qualifying relative: household member all year, GI $4,588 < $5,200, over half support. Age 71, not able to care for self, lived with you > half year (i2441 QP 3), so over 12 and disabled
-
-Ruling: model error; project retained (no). Case inputs (fixtures/2025/classm.json, classm.dependent.1; the deepseek case, classm.deepseek.json classm.dependent.1.deepseek, has the same inputs): dep_b is a household_member aged 71, 12 months, gross income $4,588.00, supported, dc_incapable yes, so the project claims dep_b as a qualifying relative and its dc_disabled_qp is yes; but f2441.care is no (and f2441.benefits no), and dependent.dc_qp begins with f2441.care, so dc_qp and the box are no. The prompt showed "Did you pay for the care of a qualifying person so you could work or look for work?: no"; the model's work ("Age 71, not able to care for self, lived with you > half year ... so over 12 and disabled") ignores it. i2441 p. 3, Column (c): "Check the box in column (c) if the qualifying person listed in column (a) was over age 12 at the time the care was provided and was disabled"; with no care provided there is no care time, no line 2 entry and no Form 2441 (i2441 p. 1, Purpose of Form). The box is display-only (dependent.dc_line2c, "it changes no amount"). Same reading and ruling as rounds 2 and 3. [dropped]
+Value: no
 
 ### classm.dependent.1 — dependent[dep_c].dc_line2d — Qualified expenses you incurred and paid in 2025 for the person listed in column
 Status: **AGREE**
@@ -65,7 +63,7 @@ Status: **AGREE**
 
 Value: no
 
-### case classm.dependent.2 — prompt sha256 454ef9b0d589babc13afd26ddfe17a2cb93bc34b82651332524c76a374d27704; branches: dependent.student:false, dependent.student:true, dependent.disabled:false, dependent.self_support:false, dependent.joint_return:false, dependent.citizen:false, dependent.citizen:true, dependent.canada_mexico:false, dependent.canada_mexico:true, dependent.married:false, dependent.tin:true, dependent.work_ssn:false, dependent.work_ssn:true, dependent.supported:false, dependent.supported:true, dependent.other_claimant:false, dependent.divorced_rule:false, dependent.multiple_support:false, dependent.parent_home_paid:false, dependent.parent_home_paid:true, dependent.hoh_lived_half:true, dependent.dc_lived_half:true, dependent.qc_relationship:false, dependent.qc_relationship:true, dependent.younger:false, dependent.younger:true, dependent.us_half:true, dependent.eic_ssn:true, dependent.qc_age:false, dependent.qc_age:true, dependent.lived_half:true, dependent.qualifying_child:false, dependent.qualifying_child:true, dependent.resident:false, dependent.resident:true, dependent.qc_dependent:false, dependent.qc_dependent:true, dependent.qr_relationship:true, dependent.qr_income:false, dependent.qr_income:true, dependent.income_exception:false, dependent.qualifying_relative:false, dependent.qualifying_relative:true, dependent.qr_dependent:false, dependent.qr_dependent:true, dependent.claimed_no_tin:false, dependent.claimed:false, dependent.claimed:true, dependent.under_ctc_age:true, dependent.ctc_child:false, dependent.odc_person:false, dependent.odc_person:true, dependent.ctc_amount#1, dependent.odc_amount#0, dependent.odc_amount#1, dependent.actc_amount#1, dependent.hoh_test2:false, dependent.hoh_test2:true, dependent.hoh_test1:false, dependent.eic_child:false, dependent.eic_child:true, dependent.eic_ssn_child:false, dependent.eic_ssn_child:true, dependent.dc_child_all_year:false, dependent.dc_age13:false, dependent.dc_age13:true, dependent.dc_under13:true, dependent.dc_child:false, dependent.dc_child:true, dependent.dc_incapable:false, dependent.dc_disabled_qp:false, dependent.dc_qp:false, dependent.dc_line2c:false, dependent.ptc_files:false, dependent.ptc_magi_counted#1
+### case classm.dependent.2 — prompt sha256 aa9f41c6409139f3c05bcaa2af88a5e91f5384a405df3333975bcd577ad9b9b9; branches: dependent.student:false, dependent.student:true, dependent.disabled:false, dependent.self_support:false, dependent.joint_return:false, dependent.citizen:false, dependent.citizen:true, dependent.canada_mexico:false, dependent.canada_mexico:true, dependent.married:false, dependent.tin:true, dependent.work_ssn:false, dependent.work_ssn:true, dependent.supported:false, dependent.supported:true, dependent.other_claimant:false, dependent.divorced_rule:false, dependent.multiple_support:false, dependent.parent_home_paid:false, dependent.parent_home_paid:true, dependent.hoh_lived_half:true, dependent.dc_lived_half:true, dependent.qc_relationship:false, dependent.qc_relationship:true, dependent.younger:false, dependent.younger:true, dependent.us_half:true, dependent.eic_ssn:true, dependent.qc_age:false, dependent.qc_age:true, dependent.lived_half:true, dependent.qualifying_child:false, dependent.qualifying_child:true, dependent.resident:false, dependent.resident:true, dependent.qc_dependent:false, dependent.qc_dependent:true, dependent.qr_relationship:true, dependent.lawful:true, dependent.qr_income:false, dependent.qr_income:true, dependent.income_exception:false, dependent.qualifying_relative:false, dependent.qualifying_relative:true, dependent.qr_dependent:false, dependent.qr_dependent:true, dependent.claimed_no_tin:false, dependent.claimed:false, dependent.claimed:true, dependent.under_ctc_age:true, dependent.ctc_child:false, dependent.odc_person:false, dependent.odc_person:true, dependent.ctc_amount#1, dependent.odc_amount#0, dependent.odc_amount#1, dependent.actc_amount#1, dependent.hoh_test2:false, dependent.hoh_test2:true, dependent.hoh_test1:false, dependent.eic_child:false, dependent.eic_child:true, dependent.eic_ssn_child:false, dependent.eic_ssn_child:true, dependent.dc_child_all_year:false, dependent.dc_age13:false, dependent.dc_age13:true, dependent.dc_under13:true, dependent.dc_child:false, dependent.dc_child:true, dependent.dc_incapable:false, dependent.dc_disabled_qp:false, dependent.dc_qp:false, dependent.dc_line2c:false, dependent.ptc_files:false, dependent.ptc_magi_counted#1, dependent.edu:false, dependent.edu_1098t:false, dependent.edu_student:false, dependent.edu_adj#1, dependent.edu_over:false, dependent.edu_over_refused:false, dependent.edu_line23:false, dependent.edu_show24:false, dependent.edu_line24:false, dependent.edu_show25:false, dependent.edu_line25:false, dependent.edu_show26:false, dependent.edu_line26:false, dependent.edu_ein:false, dependent.edu_aoc:false, dependent.edu_llc:false, dependent.edu_line27#1, dependent.edu_line28#1, dependent.edu_line29#1, dependent.edu_line30#1, dependent.edu_line31#1
 
 ### classm.dependent.2 — dependent[dep_a].dc_line2d — Qualified expenses you incurred and paid in 2025 for the person listed in column
 Status: **AGREE**
@@ -97,7 +95,7 @@ Status: **AGREE**
 
 Value: no
 
-### case classm.dependent.3 — prompt sha256 a66a39142d9df6849d8c06028825c879b83b9178d87dbe7a2f2d2197c8d24651; branches: dependent.student:false, dependent.student:true, dependent.disabled:false, dependent.self_support:false, dependent.self_support:true, dependent.joint_return:false, dependent.joint_return:true, dependent.citizen:false, dependent.citizen:true, dependent.canada_mexico:false, dependent.married:false, dependent.tin:true, dependent.work_ssn:true, dependent.supported:true, dependent.other_claimant:false, dependent.divorced_rule:false, dependent.multiple_support:false, dependent.parent_home_paid:false, dependent.parent_home_paid:true, dependent.hoh_lived_half:true, dependent.dc_lived_half:true, dependent.qc_relationship:false, dependent.qc_relationship:true, dependent.younger:true, dependent.us_half:true, dependent.eic_ssn:true, dependent.qc_age:false, dependent.lived_half:true, dependent.qualifying_child:false, dependent.resident:false, dependent.resident:true, dependent.qc_dependent:false, dependent.qr_relationship:true, dependent.qr_income:true, dependent.income_exception:false, dependent.qualifying_relative:true, dependent.qr_dependent:false, dependent.qr_dependent:true, dependent.claimed_no_tin:false, dependent.claimed:false, dependent.claimed:true, dependent.under_ctc_age:false, dependent.ctc_child:false, dependent.odc_person:false, dependent.odc_person:true, dependent.ctc_amount#1, dependent.odc_amount#0, dependent.odc_amount#1, dependent.actc_amount#1, dependent.hoh_test2:false, dependent.hoh_test2:true, dependent.hoh_test1:false, dependent.hoh_test1:true, dependent.eic_child:false, dependent.eic_ssn_child:false, dependent.dc_child_all_year:false, dependent.dc_age13:false, dependent.dc_under13:true, dependent.dc_child:false, dependent.dc_incapable:false, dependent.dc_disabled_qp:false, dependent.dc_qp:false, dependent.dc_line2c:false, dependent.ptc_files:false, dependent.ptc_magi_counted#1
+### case classm.dependent.3 — prompt sha256 43cd2604496b759d4699b4e0e7629a608ecd219cb2cfcc2965e357c0fa2cde29; branches: dependent.student:false, dependent.disabled:false, dependent.self_support:false, dependent.joint_return:false, dependent.citizen:true, dependent.canada_mexico:true, dependent.married:false, dependent.tin:true, dependent.work_ssn:true, dependent.supported:false, dependent.other_claimant:false, dependent.divorced_rule:false, dependent.multiple_support:false, dependent.parent_home_paid:false, dependent.hoh_lived_half:true, dependent.dc_lived_half:true, dependent.qc_relationship:true, dependent.younger:true, dependent.us_half:true, dependent.eic_ssn:true, dependent.qc_age:true, dependent.lived_half:true, dependent.qualifying_child:true, dependent.resident:true, dependent.qc_dependent:true, dependent.qr_relationship:true, dependent.lawful:true, dependent.qr_income:false, dependent.income_exception:false, dependent.qualifying_relative:false, dependent.qr_dependent:false, dependent.claimed_no_tin:false, dependent.claimed:true, dependent.under_ctc_age:true, dependent.ctc_child:true, dependent.odc_person:false, dependent.ctc_amount#0, dependent.odc_amount#1, dependent.actc_amount#0, dependent.hoh_test2:true, dependent.hoh_test1:false, dependent.eic_child:true, dependent.eic_ssn_child:true, dependent.dc_child_all_year:true, dependent.dc_age13:false, dependent.dc_under13:true, dependent.dc_child:false, dependent.dc_incapable:false, dependent.dc_disabled_qp:false, dependent.dc_qp:false, dependent.dc_line2c:false, dependent.ptc_files:false, dependent.ptc_magi_counted#1, dependent.edu:true, dependent.edu_1098t:true, dependent.edu_student:true, dependent.edu_adj#0, dependent.edu_over:false, dependent.edu_over_refused:false, dependent.edu_line23:false, dependent.edu_show24:true, dependent.edu_line24:true, dependent.edu_show25:true, dependent.edu_line25:true, dependent.edu_show26:false, dependent.edu_line26:false, dependent.edu_ein:true, dependent.edu_aoc:false, dependent.edu_llc:true, dependent.edu_line27#1, dependent.edu_line28#1, dependent.edu_line29#1, dependent.edu_line30#1, dependent.edu_line31#0
 
 ### classm.dependent.3 — dependent[dep_a].dc_line2d — Qualified expenses you incurred and paid in 2025 for the person listed in column
 Status: **AGREE**
@@ -109,27 +107,7 @@ Status: **AGREE**
 
 Value: no
 
-### classm.dependent.3 — dependent[dep_b].dc_line2d — Qualified expenses you incurred and paid in 2025 for the person listed in column
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.dependent.3 — dependent[dep_b].dc_line2c — Check here if the qualifying person was over age 12 and was disabled
-Status: **AGREE**
-
-Value: no
-
-### classm.dependent.3 — dependent[dep_c].dc_line2d — Qualified expenses you incurred and paid in 2025 for the person listed in column
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.dependent.3 — dependent[dep_c].dc_line2c — Check here if the qualifying person was over age 12 and was disabled
-Status: **AGREE**
-
-Value: no
-
-### case classm.dependent.4 — prompt sha256 431d051c89c0cafea4ebe556e4dac53b819ae0a421363219cecdbe149c4eb689; branches: dependent.student:false, dependent.disabled:false, dependent.self_support:false, dependent.joint_return:false, dependent.citizen:true, dependent.canada_mexico:false, dependent.married:false, dependent.tin:false, dependent.work_ssn:true, dependent.supported:true, dependent.other_claimant:false, dependent.divorced_rule:false, dependent.multiple_support:false, dependent.parent_home_paid:false, dependent.hoh_lived_half:true, dependent.dc_lived_half:true, dependent.qc_relationship:false, dependent.younger:false, dependent.us_half:true, dependent.eic_ssn:true, dependent.qc_age:false, dependent.lived_half:true, dependent.qualifying_child:false, dependent.resident:true, dependent.qc_dependent:false, dependent.qr_relationship:false, dependent.qr_income:true, dependent.income_exception:false, dependent.qualifying_relative:false, dependent.qr_dependent:false, dependent.claimed_no_tin:false, dependent.claimed:false, dependent.under_ctc_age:false, dependent.ctc_child:false, dependent.odc_person:false, dependent.ctc_amount#1, dependent.odc_amount#1, dependent.actc_amount#1, dependent.hoh_test2:false, dependent.hoh_test1:false, dependent.eic_child:false, dependent.eic_ssn_child:false, dependent.dc_child_all_year:false, dependent.dc_age13:false, dependent.dc_under13:true, dependent.dc_child:false, dependent.dc_incapable:false, dependent.dc_disabled_qp:false, dependent.dc_qp:false, dependent.dc_line2c:false, dependent.ptc_files:false, dependent.ptc_magi_counted#1
+### case classm.dependent.4 — prompt sha256 56937170ab090837b926a6c76825c07bb8ed653ee0d09bae34a2e5de6ec1c524; branches: dependent.student:false, dependent.student:true, dependent.disabled:false, dependent.self_support:false, dependent.self_support:true, dependent.joint_return:false, dependent.joint_return:true, dependent.citizen:false, dependent.citizen:true, dependent.canada_mexico:false, dependent.married:false, dependent.tin:true, dependent.work_ssn:true, dependent.supported:true, dependent.other_claimant:false, dependent.divorced_rule:false, dependent.multiple_support:false, dependent.parent_home_paid:false, dependent.parent_home_paid:true, dependent.hoh_lived_half:true, dependent.dc_lived_half:true, dependent.qc_relationship:false, dependent.qc_relationship:true, dependent.younger:true, dependent.us_half:true, dependent.eic_ssn:true, dependent.qc_age:false, dependent.lived_half:true, dependent.qualifying_child:false, dependent.resident:false, dependent.resident:true, dependent.qc_dependent:false, dependent.qr_relationship:true, dependent.lawful:true, dependent.qr_income:true, dependent.income_exception:false, dependent.qualifying_relative:true, dependent.qr_dependent:false, dependent.qr_dependent:true, dependent.claimed_no_tin:false, dependent.claimed:false, dependent.claimed:true, dependent.under_ctc_age:false, dependent.ctc_child:false, dependent.odc_person:false, dependent.odc_person:true, dependent.ctc_amount#1, dependent.odc_amount#0, dependent.odc_amount#1, dependent.actc_amount#1, dependent.hoh_test2:false, dependent.hoh_test2:true, dependent.hoh_test1:false, dependent.hoh_test1:true, dependent.eic_child:false, dependent.eic_ssn_child:false, dependent.dc_child_all_year:false, dependent.dc_age13:false, dependent.dc_under13:true, dependent.dc_child:false, dependent.dc_incapable:false, dependent.dc_disabled_qp:false, dependent.dc_qp:false, dependent.dc_line2c:false, dependent.ptc_files:false, dependent.ptc_magi_counted#1, dependent.edu:false, dependent.edu_1098t:false, dependent.edu_student:false, dependent.edu_adj#1, dependent.edu_over:false, dependent.edu_over_refused:false, dependent.edu_line23:false, dependent.edu_show24:false, dependent.edu_line24:false, dependent.edu_show25:false, dependent.edu_line25:false, dependent.edu_show26:false, dependent.edu_line26:false, dependent.edu_ein:false, dependent.edu_aoc:false, dependent.edu_llc:false, dependent.edu_line27#1, dependent.edu_line28#1, dependent.edu_line29#1, dependent.edu_line30#1, dependent.edu_line31#1
 
 ### classm.dependent.4 — dependent[dep_a].dc_line2d — Qualified expenses you incurred and paid in 2025 for the person listed in column
 Status: **AGREE**
@@ -141,28 +119,82 @@ Status: **AGREE**
 
 Value: no
 
-### case classm.dependent.5 — prompt sha256 88ba7a01593c352edb57888138cd535bc684099fd9fc57c6f283c64f60cff1dd; branches: dependent.student:false, dependent.student:true, dependent.disabled:false, dependent.self_support:false, dependent.joint_return:false, dependent.joint_return:true, dependent.citizen:true, dependent.canada_mexico:false, dependent.married:false, dependent.tin:true, dependent.work_ssn:true, dependent.supported:true, dependent.other_claimant:false, dependent.divorced_rule:false, dependent.multiple_support:false, dependent.parent_home_paid:false, dependent.parent_home_paid:true, dependent.hoh_lived_half:true, dependent.dc_lived_half:true, dependent.qc_relationship:true, dependent.younger:true, dependent.us_half:true, dependent.eic_ssn:true, dependent.qc_age:false, dependent.qc_age:true, dependent.lived_half:true, dependent.qualifying_child:false, dependent.qualifying_child:true, dependent.resident:true, dependent.qc_dependent:false, dependent.qc_dependent:true, dependent.qr_relationship:true, dependent.qr_income:true, dependent.income_exception:false, dependent.qualifying_relative:false, dependent.qualifying_relative:true, dependent.qr_dependent:false, dependent.qr_dependent:true, dependent.claimed_no_tin:false, dependent.claimed:true, dependent.under_ctc_age:false, dependent.under_ctc_age:true, dependent.ctc_child:false, dependent.ctc_child:true, dependent.odc_person:false, dependent.odc_person:true, dependent.ctc_amount#0, dependent.ctc_amount#1, dependent.odc_amount#0, dependent.odc_amount#1, dependent.actc_amount#0, dependent.actc_amount#1, dependent.hoh_test2:true, dependent.hoh_test1:false, dependent.eic_child:false, dependent.eic_child:true, dependent.eic_ssn_child:false, dependent.eic_ssn_child:true, dependent.dc_child_all_year:false, dependent.dc_child_all_year:true, dependent.dc_age13:false, dependent.dc_under13:true, dependent.dc_child:false, dependent.dc_incapable:false, dependent.dc_disabled_qp:false, dependent.dc_qp:false, dependent.dc_qp:true, dependent.dc_line2c:false, dependent.ptc_files:false, dependent.ptc_magi_counted#1
+### classm.dependent.4 — dependent[dep_b].dc_line2d — Qualified expenses you incurred and paid in 2025 for the person listed in column
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.dependent.4 — dependent[dep_b].dc_line2c — Check here if the qualifying person was over age 12 and was disabled
+Status: **AGREE**
+
+Value: no
+
+### classm.dependent.4 — dependent[dep_c].dc_line2d — Qualified expenses you incurred and paid in 2025 for the person listed in column
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.dependent.4 — dependent[dep_c].dc_line2c — Check here if the qualifying person was over age 12 and was disabled
+Status: **AGREE**
+
+Value: no
+
+### case classm.dependent.5 — prompt sha256 2513a6ebb3617303d934b3e38bd23184c39c79e4f0ef580eba717f80f4be6cd7; branches: dependent.student:false, dependent.disabled:false, dependent.self_support:false, dependent.joint_return:false, dependent.citizen:true, dependent.canada_mexico:false, dependent.married:false, dependent.tin:false, dependent.work_ssn:true, dependent.supported:true, dependent.other_claimant:false, dependent.divorced_rule:false, dependent.multiple_support:false, dependent.parent_home_paid:false, dependent.hoh_lived_half:true, dependent.dc_lived_half:true, dependent.qc_relationship:false, dependent.younger:false, dependent.us_half:true, dependent.eic_ssn:true, dependent.qc_age:false, dependent.lived_half:true, dependent.qualifying_child:false, dependent.resident:true, dependent.qc_dependent:false, dependent.qr_relationship:false, dependent.lawful:true, dependent.qr_income:true, dependent.income_exception:false, dependent.qualifying_relative:false, dependent.qr_dependent:false, dependent.claimed_no_tin:false, dependent.claimed:false, dependent.under_ctc_age:false, dependent.ctc_child:false, dependent.odc_person:false, dependent.ctc_amount#1, dependent.odc_amount#1, dependent.actc_amount#1, dependent.hoh_test2:false, dependent.hoh_test1:false, dependent.eic_child:false, dependent.eic_ssn_child:false, dependent.dc_child_all_year:false, dependent.dc_age13:false, dependent.dc_under13:true, dependent.dc_child:false, dependent.dc_incapable:false, dependent.dc_disabled_qp:false, dependent.dc_qp:false, dependent.dc_line2c:false, dependent.ptc_files:false, dependent.ptc_magi_counted#1, dependent.edu:false, dependent.edu_1098t:false, dependent.edu_student:false, dependent.edu_adj#1, dependent.edu_over:false, dependent.edu_over_refused:false, dependent.edu_line23:false, dependent.edu_show24:false, dependent.edu_line24:false, dependent.edu_show25:false, dependent.edu_line25:false, dependent.edu_show26:false, dependent.edu_line26:false, dependent.edu_ein:false, dependent.edu_aoc:false, dependent.edu_llc:false, dependent.edu_line27#1, dependent.edu_line28#1, dependent.edu_line29#1, dependent.edu_line30#1, dependent.edu_line31#1
 
 ### classm.dependent.5 — dependent[dep_a].dc_line2d — Qualified expenses you incurred and paid in 2025 for the person listed in column
 Status: **AGREE**
 
-Value: $1,480.00
+Value: $0.00
 
 ### classm.dependent.5 — dependent[dep_a].dc_line2c — Check here if the qualifying person was over age 12 and was disabled
 Status: **AGREE**
 
 Value: no
 
-### classm.dependent.5 — dependent[dep_b].dc_line2d — Qualified expenses you incurred and paid in 2025 for the person listed in column
+### case classm.dependent.6 — prompt sha256 50abc4cfe07c753a5198f08c2d40b5483103c98c61e067a9fc6768e621606188; branches: dependent.student:false, dependent.student:true, dependent.disabled:false, dependent.self_support:false, dependent.joint_return:false, dependent.joint_return:true, dependent.citizen:true, dependent.canada_mexico:false, dependent.married:false, dependent.tin:true, dependent.work_ssn:true, dependent.supported:true, dependent.other_claimant:false, dependent.divorced_rule:false, dependent.multiple_support:false, dependent.parent_home_paid:false, dependent.parent_home_paid:true, dependent.hoh_lived_half:true, dependent.dc_lived_half:true, dependent.qc_relationship:true, dependent.younger:true, dependent.us_half:true, dependent.eic_ssn:true, dependent.qc_age:false, dependent.qc_age:true, dependent.lived_half:true, dependent.qualifying_child:false, dependent.qualifying_child:true, dependent.resident:true, dependent.qc_dependent:false, dependent.qc_dependent:true, dependent.qr_relationship:true, dependent.lawful:true, dependent.qr_income:true, dependent.income_exception:false, dependent.qualifying_relative:false, dependent.qualifying_relative:true, dependent.qr_dependent:false, dependent.qr_dependent:true, dependent.claimed_no_tin:false, dependent.claimed:true, dependent.under_ctc_age:false, dependent.under_ctc_age:true, dependent.ctc_child:false, dependent.ctc_child:true, dependent.odc_person:false, dependent.odc_person:true, dependent.ctc_amount#0, dependent.ctc_amount#1, dependent.odc_amount#0, dependent.odc_amount#1, dependent.actc_amount#0, dependent.actc_amount#1, dependent.hoh_test2:true, dependent.hoh_test1:false, dependent.eic_child:false, dependent.eic_child:true, dependent.eic_ssn_child:false, dependent.eic_ssn_child:true, dependent.dc_child_all_year:false, dependent.dc_child_all_year:true, dependent.dc_age13:false, dependent.dc_under13:true, dependent.dc_child:false, dependent.dc_incapable:false, dependent.dc_disabled_qp:false, dependent.dc_qp:false, dependent.dc_qp:true, dependent.dc_line2c:false, dependent.ptc_files:false, dependent.ptc_magi_counted#1, dependent.edu:false, dependent.edu_1098t:false, dependent.edu_student:false, dependent.edu_adj#1, dependent.edu_over:false, dependent.edu_over_refused:false, dependent.edu_line23:false, dependent.edu_show24:false, dependent.edu_line24:false, dependent.edu_show25:false, dependent.edu_line25:false, dependent.edu_show26:false, dependent.edu_line26:false, dependent.edu_ein:false, dependent.edu_aoc:false, dependent.edu_llc:false, dependent.edu_line27#1, dependent.edu_line28#1, dependent.edu_line29#1, dependent.edu_line30#1, dependent.edu_line31#1
+
+### classm.dependent.6 — dependent[dep_a].dc_line2d — Qualified expenses you incurred and paid in 2025 for the person listed in column
+Status: **AGREE**
+
+Value: $1,480.00
+
+### classm.dependent.6 — dependent[dep_a].dc_line2c — Check here if the qualifying person was over age 12 and was disabled
+Status: **AGREE**
+
+Value: no
+
+### classm.dependent.6 — dependent[dep_b].dc_line2d — Qualified expenses you incurred and paid in 2025 for the person listed in column
 Status: **DISAGREE**
 
 Project: $250.00
 Model: $0.00
-Work: Age 25 non-student, not disabled: not a qualifying child, and able to care for self; not a qualifying person, so enter 0
+Work: Age 25, not a student, not disabled: fails the qualifying child age test; can care for self, so not a 2441 qualifying person; enter 0
 
-Ruling: representation; project retained; model value dropped from the fixture. Case inputs (fixtures/2025/classm.json, classm.dependent.5; the prompt showed dep_b's "Qualified expenses incurred and paid in 2025 for this person's care = $250.00"): f2441.care yes; dep_b is a child aged 25, not a student, not disabled, dc_incapable no, dc_paid $250.00 (and joint_return yes with married no). The project claims dep_b as a qualifying relative, but dc_child_all_year, dc_child and dc_disabled_qp are all no, so dependent.dc_qp is no; dependent.dc_line2d is a plain copy of dc_paid and shows $250.00. The model's $0.00 follows from what it was shown and is the source's reading (i2441 p. 3, Line 2, "Don't list a person on line 2 unless they are listed as an eligible person under Qualifying Person(s), earlier"). But the $250.00 reaches nothing: f2441.paid_total (line 3) sums column (d) only where dc_qp is true ($1,480.00 here, dep_a alone), and the interview never asks dc_paid for a non-qualifying person, because the engine evaluates that where filter before the field (checked: with dep_b's dc_paid removed, the line 3 total is unchanged). The amount exists only because the generated return supplies an answer the interview does not ask, as for the dc_line2d entries ruled in round 2. Project retained; the expectation is dropped because the fixture would pin a value no interview produces. [dropped]
+Ruling: representation; project retained; model value dropped from the fixture. Case inputs (fixtures/2025/classm.json, classm.dependent.6): f2441.care yes; dep_b is a child aged 25, not a student, not disabled, dc_incapable no, joint_return yes with married no, dc_paid $250.00. The project claims dep_b as a qualifying relative, but dc_child_all_year, dc_child and dc_disabled_qp are all no, so dependent.dc_qp is no; dependent.dc_line2d copies dc_paid and shows $250.00. The model's $0.00 is the source's reading (i2441 p. 3, Line 2, "Don't list a person on line 2 unless they are listed as an eligible person under Qualifying Person(s), earlier"). The $250.00 reaches nothing: f2441.paid_total (line 3) sums column (d) only where dc_qp is true, and the interview never asks dc_paid for a non-qualifying person (the where filter is evaluated before the field). The amount exists only because the generated return supplies an answer the interview does not ask; the same entry was ruled as classm.dependent.8 in Stage 19 rounds 1 and 2 (the case is renumbered) and at classm.dependent.5 in Stage 18. The expectation is dropped because the fixture would pin a value no interview return shows. [dropped]
 
-### classm.dependent.5 — dependent[dep_b].dc_line2c — Check here if the qualifying person was over age 12 and was disabled
+### classm.dependent.6 — dependent[dep_b].dc_line2c — Check here if the qualifying person was over age 12 and was disabled
+Status: **AGREE**
+
+Value: no
+
+### case classm.dependent.7 — prompt sha256 24adf3670298476245a1ebec9d05c3da57c92be9aaee26420050e4fab2cc1551; branches: dependent.student:false, dependent.disabled:false, dependent.self_support:false, dependent.joint_return:false, dependent.citizen:true, dependent.canada_mexico:false, dependent.married:false, dependent.tin:true, dependent.work_ssn:true, dependent.supported:true, dependent.other_claimant:false, dependent.divorced_rule:false, dependent.multiple_support:false, dependent.parent_home_paid:false, dependent.hoh_lived_half:true, dependent.dc_lived_half:true, dependent.qc_relationship:false, dependent.qc_relationship:true, dependent.younger:true, dependent.us_half:true, dependent.eic_ssn:true, dependent.qc_age:false, dependent.lived_half:true, dependent.qualifying_child:false, dependent.resident:true, dependent.qc_dependent:false, dependent.qr_relationship:true, dependent.lawful:true, dependent.qr_income:true, dependent.income_exception:false, dependent.qualifying_relative:true, dependent.qr_dependent:true, dependent.claimed_no_tin:false, dependent.claimed:true, dependent.under_ctc_age:false, dependent.ctc_child:false, dependent.odc_person:true, dependent.ctc_amount#1, dependent.odc_amount#0, dependent.actc_amount#1, dependent.hoh_test2:true, dependent.hoh_test1:false, dependent.eic_child:false, dependent.eic_ssn_child:false, dependent.dc_child_all_year:false, dependent.dc_age13:false, dependent.dc_under13:true, dependent.dc_child:false, dependent.dc_incapable:false, dependent.dc_disabled_qp:false, dependent.dc_qp:false, dependent.dc_line2c:false, dependent.ptc_files:false, dependent.ptc_magi_counted#1, dependent.edu:false, dependent.edu:true, dependent.edu_1098t:false, dependent.edu_1098t:true, dependent.edu_student:false, dependent.edu_student:true, dependent.edu_adj#0, dependent.edu_adj#1, dependent.edu_over:false, dependent.edu_over_refused:false, dependent.edu_line23:false, dependent.edu_line23:true, dependent.edu_show24:false, dependent.edu_line24:false, dependent.edu_line24:true, dependent.edu_show25:false, dependent.edu_line25:false, dependent.edu_show26:false, dependent.edu_line26:false, dependent.edu_ein:false, dependent.edu_ein:true, dependent.edu_aoc:false, dependent.edu_llc:false, dependent.edu_llc:true, dependent.edu_line27#1, dependent.edu_line28#1, dependent.edu_line29#1, dependent.edu_line30#1, dependent.edu_line31#0, dependent.edu_line31#1
+
+### classm.dependent.7 — dependent[dep_a].dc_line2d — Qualified expenses you incurred and paid in 2025 for the person listed in column
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.dependent.7 — dependent[dep_a].dc_line2c — Check here if the qualifying person was over age 12 and was disabled
+Status: **AGREE**
+
+Value: no
+
+### classm.dependent.7 — dependent[dep_b].dc_line2d — Qualified expenses you incurred and paid in 2025 for the person listed in column
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.dependent.7 — dependent[dep_b].dc_line2c — Check here if the qualifying person was over age 12 and was disabled
 Status: **AGREE**
 
 Value: no
@@ -176,22 +208,22 @@ Value: no
 lines:
   - printed: "dependent[dep_a].dc_line2d"
     value: "0.00"
-    work: "Qualified expenses incurred and paid in 2025 for this person = $0.00; no care was paid for (Form 2441 col. (d))"
+    work: "No care paid so you could work (Form 2441 answer no); qualified care expenses given = $0.00"
   - printed: "dependent[dep_a].dc_line2c"
     value: "no"
-    work: "Age 11, so qualifying child under 13 (i2441 Qualifying Person 1); not over age 12, so col. (c) not checked"
+    work: "No care was paid, so Form 2441 line 2 has no entry; filer also says under age 13 when care was provided, so not 'over age 12'"
   - printed: "dependent[dep_b].dc_line2d"
     value: "0.00"
-    work: "Qualified expenses incurred and paid in 2025 for this person = $0.00"
+    work: "No care paid so you could work; qualified care expenses given = $0.00"
   - printed: "dependent[dep_b].dc_line2c"
-    value: "yes"
-    work: "Qualifying relative: household member all year, GI $4,588 < $5,200, over half support. Age 71, not able to care for self, lived with you > half year (i2441 QP 3), so over 12 and disabled"
+    value: "no"
+    work: "Age 8 and able to care for self; not over age 12 and disabled"
   - printed: "dependent[dep_c].dc_line2d"
     value: "0.00"
-    work: "Not a qualifying person: fails QC age test (not younger than you, not disabled); fails QR gross income test ($7,156 >= $5,200). Expenses $0.00"
+    work: "No care paid so you could work; qualified care expenses given = $0.00"
   - printed: "dependent[dep_c].dc_line2c"
     value: "no"
-    work: "Age 9, not over 12, able to care for self, and not a qualifying person, so col. (c) not checked"
+    work: "Not physically or mentally unable to care for self, so not disabled; no care was paid"
 ```
 ```
 
@@ -202,22 +234,22 @@ lines:
 lines:
   - printed: "dependent[dep_a].dc_line2d"
     value: "0.00"
-    work: "Qualifying child (age 13, younger, lived with you 12 mo) under 13 for part of 2025, so a qualifying person; qualified expenses incurred and paid = $0.00"
+    work: "Filer paid no care expenses so they could work; qualified expenses given as $0.00"
   - printed: "dependent[dep_a].dc_line2c"
     value: "no"
-    work: "Not physically or mentally unable to care for self, so not over age 12 and disabled"
+    work: "Age 13 is over 12, but the person is able to care for themselves, so not disabled; box not checked"
   - printed: "dependent[dep_b].dc_line2d"
     value: "0.00"
-    work: "Not a U.S. citizen/national/resident or resident of Canada/Mexico, so no dependent (Step 4 Q2 STOP); not a qualifying person; expenses $0.00"
+    work: "No care expenses paid; qualified expenses $0.00 (also not a dependent: support test not met and gross income of $5,617 is not under $5,200)"
   - printed: "dependent[dep_b].dc_line2c"
     value: "no"
-    work: "Not disabled (able to care for self); not a qualifying person"
+    work: "Age 3 is not over 12, and the person is able to care for themselves; box not checked"
   - printed: "dependent[dep_c].dc_line2d"
     value: "0.00"
-    work: "Not younger than you, so not a qualifying child; qualifying relative but not disabled, so not a qualifying person; expenses $0.00"
+    work: "No care expenses paid; qualified expenses $0.00 (also not younger than the filer, so fails the qualifying-child age test)"
   - printed: "dependent[dep_c].dc_line2c"
     value: "no"
-    work: "Age 11 and not disabled; box applies only to over age 12 and disabled"
+    work: "Age 11 is not over 12, and the person is able to care for themselves; box not checked"
 ```
 ```
 
@@ -228,35 +260,37 @@ lines:
 lines:
   - printed: "dependent[dep_a].dc_line2d"
     value: "0.00"
-    work: "No care paid so you could work (Form 2441 answer no); qualified expenses given as $0.00"
+    work: "Sibling, age 4, lived with you 12 months: qualifying child and dependent under 13. Qualified care expenses incurred and paid in 2025 = $0.00."
   - printed: "dependent[dep_a].dc_line2c"
     value: "no"
-    work: "Age 40 is over 12, but able to care for self, so not disabled; box not checked (i2441 col (c))"
-  - printed: "dependent[dep_b].dc_line2d"
-    value: "0.00"
-    work: "No care paid so you could work; qualified expenses given as $0.00"
-  - printed: "dependent[dep_b].dc_line2c"
-    value: "no"
-    work: "Age 86 is over 12, but able to care for self, so not disabled; box not checked"
-  - printed: "dependent[dep_c].dc_line2d"
-    value: "0.00"
-    work: "No care paid so you could work; qualified expenses given as $0.00"
-  - printed: "dependent[dep_c].dc_line2c"
-    value: "no"
-    work: "Age 53 is over 12, but able to care for self, so not disabled; box not checked"
+    work: "Column (c) is checked only if the person was over age 12 and disabled. Age 4 and not unable to self-care, so no."
 ```
 ```
 
 ### classm.dependent.4
 
 ```yaml
+```yaml
 lines:
   - printed: "dependent[dep_a].dc_line2d"
     value: "0.00"
-    work: "No care paid (Form 2441 answer no), entry expenses $0.00. Not a qualifying person: household member lived 10 of 12 months, not all year, so not a qualifying relative."
+    work: "No care paid (Form 2441 answer no); qualified expenses given $0.00; not a qualifying person (age 40, able to care for self)"
   - printed: "dependent[dep_a].dc_line2c"
     value: "no"
-    work: "Age 26 (over 12) but able to care for themselves, so not disabled per i2441 col (c); box not checked."
+    work: "Col (c) is checked only if over age 12 AND disabled; age 40 but physically/mentally able to care for self"
+  - printed: "dependent[dep_b].dc_line2d"
+    value: "0.00"
+    work: "No care paid; qualified expenses given $0.00; not a qualifying person (age 86, able to care for self)"
+  - printed: "dependent[dep_b].dc_line2c"
+    value: "no"
+    work: "Col (c) is checked only if over age 12 AND disabled; age 86 but not incapable of self-care"
+  - printed: "dependent[dep_c].dc_line2d"
+    value: "0.00"
+    work: "No care paid; qualified expenses given $0.00; not a qualifying person (age 53, able to care for self)"
+  - printed: "dependent[dep_c].dc_line2c"
+    value: "no"
+    work: "Col (c) is checked only if over age 12 AND disabled; age 53 but not incapable of self-care"
+```
 ```
 
 ### classm.dependent.5
@@ -265,16 +299,50 @@ lines:
 ```yaml
 lines:
   - printed: "dependent[dep_a].dc_line2d"
-    value: "1480.00"
-    work: "Sibling age 4 meets all qualifying child tests and is a dependent under 13, so a qualifying person; expenses $1,480.00"
+    value: "0.00"
+    work: "Filer paid no care expenses (Form 2441 answer no; expenses $0.00). dep_a is also not a qualifying person: a 26-year-old household member is not a qualifying child, and living 10 of 12 months fails the all-year test for a qualifying relative, so 0.00."
   - printed: "dependent[dep_a].dc_line2c"
     value: "no"
-    work: "Age 4 is not over age 12 and is not disabled, so the box is not checked"
+    work: "Col (c) requires over age 12 AND disabled. dep_a is over 12 (age 26) but able to care for themselves, so no."
+```
+```
+
+### classm.dependent.6
+
+```yaml
+```yaml
+lines:
+  - printed: "dependent[dep_a].dc_line2d"
+    value: "1480.00"
+    work: "Sibling age 4 passes every qualifying child test, is your dependent and was under 13, so is a qualifying person; enter paid expenses of $1,480.00"
+  - printed: "dependent[dep_a].dc_line2c"
+    value: "no"
+    work: "Not over age 12 and not disabled, so column (c) stays unchecked"
   - printed: "dependent[dep_b].dc_line2d"
     value: "0.00"
-    work: "Age 25 non-student, not disabled: not a qualifying child, and able to care for self; not a qualifying person, so enter 0"
+    work: "Age 25, not a student, not disabled: fails the qualifying child age test; can care for self, so not a 2441 qualifying person; enter 0"
   - printed: "dependent[dep_b].dc_line2c"
     value: "no"
-    work: "Over 12 but not physically or mentally incapable of self-care, so the box is not checked"
+    work: "Over age 12 but not physically or mentally unable to care for self, so not disabled; column (c) stays unchecked"
+```
+```
+
+### classm.dependent.7
+
+```yaml
+```yaml
+lines:
+  - printed: "dependent[dep_a].dc_line2d"
+    value: "0.00"
+    work: "Not a qualifying person: age 49, so not a qualifying child under 13, and able to care for self. No care was paid in 2025 (Form 2441 answer is no). Enter 0."
+  - printed: "dependent[dep_a].dc_line2c"
+    value: "no"
+    work: "Over age 12 but not physically or mentally unable to care for self, so not disabled. Box stays unchecked."
+  - printed: "dependent[dep_b].dc_line2d"
+    value: "0.00"
+    work: "Parent who qualifies only as a qualifying relative and is able to care for self, so not a qualifying person. No care was paid in 2025. Enter 0."
+  - printed: "dependent[dep_b].dc_line2c"
+    value: "no"
+    work: "Not physically or mentally unable to care for self, so not disabled. Box stays unchecked."
 ```
 ```

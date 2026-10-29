@@ -184,6 +184,15 @@ export function runProperties(): number {
     results.push(r);
   }
 
+  // The Form 8863 Credit Limit Worksheet subtracts Schedule 3 lines 1 and 2 from Form 1040 line 18 as printed
+  // (f8863.clw6, a plain subtract): the foreign tax credit and the Form 2441 credit are each limited by line 18, so
+  // their sum never exceeds it.
+  results.push(runProperty("edu_clw_nonneg", "Form 8863 Credit Limit Worksheet line 6 (Form 1040 line 18 less Schedule 3 lines 1 and 2) is never negative.", arb, (inputs) => {
+    const v = cents(evaluate(data, inputs, ["f8863.clw6"]).derivations.get("f8863.clw6")?.value);
+    if (v === null) return { applicable: false, ok: true };
+    return v >= 0 ? { applicable: true, ok: true } : { applicable: true, ok: false, detail: `f8863.clw6 ${v} cents` };
+  }));
+
   // 4. A refusal never becomes a number: a line whose evaluated operands
   // include a refusal is itself a refusal.
   const refusedOperandCheck = (r: EvalResult): Verdict & { both: number } => {

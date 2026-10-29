@@ -5,10 +5,10 @@
  "microdata_filing_units_unweighted_total": 157629339.546014,
  "raking_max_share_error": 7.132191345032847e-07,
  "coverage": {
-  "central": 0.7563484294618797,
-  "low": 0.7411759415630885,
-  "high": 0.8141811668307745,
-  "microdata_part": 0.8141811668307745,
+  "central": 0.7960628608511052,
+  "low": 0.7839270610590404,
+  "high": 0.8569322863267264,
+  "microdata_part": 0.8569322863267264,
   "irs_only_independent_factor": 0.9289682201886216,
   "irs_only_share_sum": 0.07300522526768594
  },
@@ -23,18 +23,6 @@
    "irs_returns": 4139858.0,
    "microdata_share_before_raking": 0.01213388637242343,
    "share": 0.02577710728090902,
-   "basis": "IRS count, overlap from microdata"
-  },
-  {
-   "id": "education",
-   "group": "education",
-   "label": "Education credits",
-   "gates": [
-    "scope.credits"
-   ],
-   "irs_returns": 7211349.0,
-   "microdata_share_before_raking": 0.005307730052777667,
-   "share": 0.04490196447608361,
    "basis": "IRS count, overlap from microdata"
   },
   {
@@ -199,16 +187,11 @@
   {
    "group": "schedule_e",
    "label": "Rental, royalty, partnership, S corporation, estate (Schedule E)",
-   "coverage_after": 0.8133810773493193
+   "coverage_after": 0.8541820876940303
   },
   {
    "group": "schedule1_misc",
    "label": "Other Schedule 1 income and adjustments",
-   "coverage_after": 0.8703191791270134
-  },
-  {
-   "group": "education",
-   "label": "Education credits (Form 8863)",
    "coverage_after": 0.9128672573113619
   },
   {
@@ -245,13 +228,12 @@
  "coverage_without_model_only_category": {},
  "gain_if_covered_alone": {
   "married": 0.02147317057350273,
-  "education": 0.03971443138922548,
-  "other_credits": 0.006975179590679059,
-  "schedule_e": 0.05703264788743956,
-  "retirement_penalty": 0.024770779309601254,
-  "schedule1_misc": 0.04168797309413008,
-  "schedule2_misc": 0.0034242169021704294,
-  "other_earned_income": 0.006017298430315288,
+  "other_credits": 0.0073414331326856486,
+  "schedule_e": 0.05811922684292503,
+  "retirement_penalty": 0.026071446273435273,
+  "schedule1_misc": 0.04248379844245709,
+  "schedule2_misc": 0.0036040160819212907,
+  "other_earned_income": 0.006333255436835827,
   "farm": 0.004661188246479431
  },
  "gates_mapped": [
@@ -274,6 +256,7 @@
   "clcw.spouse_screen",
   "dependent.claimed_no_tin",
   "dependent.divorced_rule",
+  "dependent.edu_over_refused",
   "dependent.income_exception",
   "dependent.married",
   "dependent.multiple_support",
@@ -311,6 +294,7 @@
   "f5695.wh_no_qmid",
   "f5695.windows_no_qmid",
   "f8606.dist",
+  "f8863.ban_refused",
   "f8889.allocation_bad",
   "f8889.bad_months",
   "f8889.excess",
@@ -323,6 +307,7 @@
   "f8960.carryforward_adj",
   "f8960.refund",
   "f8960.unsupported",
+  "f8962.alien_branch",
   "f8962.alloc",
   "f8962.big_family",
   "f8962.marriage",
@@ -349,6 +334,7 @@
   "oi8z.figured",
   "oi8z.recovery",
   "otjob.refused",
+  "person.edu_over_refused",
   "person.hsa_repeated",
   "person.ira_basis_gate",
   "person.ira_dist_gate",

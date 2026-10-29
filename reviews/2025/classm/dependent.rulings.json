@@ -157,6 +157,24 @@
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Case inputs (fixtures/2025/classm.json, classm.dependent.5; the prompt showed dep_b's \"Qualified expenses incurred and paid in 2025 for this person's care = $250.00\"): f2441.care yes; dep_b is a child aged 25, not a student, not disabled, dc_incapable no, dc_paid $250.00 (and joint_return yes with married no). The project claims dep_b as a qualifying relative, but dc_child_all_year, dc_child and dc_disabled_qp are all no, so dependent.dc_qp is no; dependent.dc_line2d is a plain copy of dc_paid and shows $250.00. The model's $0.00 follows from what it was shown and is the source's reading (i2441 p. 3, Line 2, \"Don't list a person on line 2 unless they are listed as an eligible person under Qualifying Person(s), earlier\"). But the $250.00 reaches nothing: f2441.paid_total (line 3) sums column (d) only where dc_qp is true ($1,480.00 here, dep_a alone), and the interview never asks dc_paid for a non-qualifying person, because the engine evaluates that where filter before the field (checked: with dep_b's dc_paid removed, the line 3 total is unchanged). The amount exists only because the generated return supplies an answer the interview does not ask, as for the dc_line2d entries ruled in round 2. Project retained; the expectation is dropped because the fixture would pin a value no interview produces.",
    "drop": true,
    "context": "17995415d37dfcaacda14a1e59372b644b353c70b86070817adc978a15811bfd"
+  },
+  {
+   "case": "classm.dependent.6",
+   "printed": "dependent[dep_b].dc_line2d",
+   "project": "$250.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Case inputs (fixtures/2025/classm.json, classm.dependent.6): f2441.care yes; dep_b is a child aged 25, not a student, not disabled, dc_incapable no, joint_return yes with married no, dc_paid $250.00. The project claims dep_b as a qualifying relative, but dc_child_all_year, dc_child and dc_disabled_qp are all no, so dependent.dc_qp is no; dependent.dc_line2d copies dc_paid and shows $250.00. The model's $0.00 is the source's reading (i2441 p. 3, Line 2, \"Don't list a person on line 2 unless they are listed as an eligible person under Qualifying Person(s), earlier\"). The $250.00 reaches nothing: f2441.paid_total (line 3) sums column (d) only where dc_qp is true, and the interview never asks dc_paid for a non-qualifying person (the where filter is evaluated before the field). The amount exists only because the generated return supplies an answer the interview does not ask; the same entry was ruled as classm.dependent.8 in Stage 19 rounds 1 and 2 (the case is renumbered) and at classm.dependent.5 in Stage 18. The expectation is dropped because the fixture would pin a value no interview return shows.",
+   "drop": true,
+   "context": "c241b5a69efcf319c0a5a26a4301d174af8dc9cd098d155297f692f86c3f1626"
+  },
+  {
+   "case": "classm.dependent.8",
+   "printed": "dependent[dep_b].dc_line2d",
+   "project": "$250.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Case inputs (fixtures/2025/classm.json, classm.dependent.8): f2441.care yes; dep_b is a child aged 25, not a student, not disabled, dc_incapable no, joint_return yes with married no, dc_paid $250.00. The project claims dep_b as a qualifying relative, but dc_child_all_year, dc_child and dc_disabled_qp are all no, so dependent.dc_qp is no; dependent.dc_line2d copies dc_paid and shows $250.00. The model's $0.00 is the source's reading (i2441 p. 3, Line 2, \"Don't list a person on line 2 unless they are listed as an eligible person under Qualifying Person(s), earlier\"). The $250.00 reaches nothing: f2441.paid_total (line 3) sums column (d) only where dc_qp is true, and the interview never asks dc_paid for a non-qualifying person (the where filter is evaluated before the field). The amount exists only because the generated return supplies an answer the interview does not ask; the same case was ruled in Stage 19 round 1 and at classm.dependent.5 in Stage 18 (.transcription/proposed/stage18/dependent.findings.md, Checked, not findings). The expectation is dropped because the fixture would pin a value no interview return shows.",
+   "drop": true,
+   "context": "5805b3596d9d705ff9f71de024eafceab8df92ca72ef416f5de5b934217cd870"
   }
  ]
 }

@@ -2930,3 +2930,76 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
 - **Fix:** open; with Stage 19, which rewrites those remedies to name the education credits (its decision batch, Settled
   item 1). Deferred because `f1040.yaml` is otherwise unchanged by Stage 18.
 - **Tags:** stale-label; open; caught-by-source-adjudication
+
+## BUG-0194 — Form 8863 lines skipped by the form's own instructions were shown
+
+- **Date:** 2026-10-29
+- **Caught by:** the Stage 19 blind predictions (`reviews/2025/blind/stage19/`): both predictors left blank lines 13 to 16
+  when line 10 is zero, and a student's line 24 after line 23 is Yes; the values sheet showed them.
+- **Symptom:** f8863 p. 1, line 10, "If zero, skip lines 11 through 17, enter -0- on line 18, and go to line 19"; line 4,
+  "If zero or less, stop; you can't take any education credit"; p. 2, lines 23 to 25, "Stop! Go to line 31 for this
+  student". The lines after each stop were shown with their computed values. Display only.
+- **Where:** `forms/2025/f8863.yaml` (lines 5 to 19), the Part III lines 24 to 26 on `person.yaml` and `dependent.yaml`.
+- **Fix:** `f8863.show_after4` (line 4 above zero) gates lines 5 to 19, `f8863.show_llc` (and line 10 above zero) lines 11
+  to 16; `edu_show24` to `edu_show26` chain lines 24 to 26 on the answers before them. Values unchanged.
+- **Tags:** skipped-line-shown; caught-by-blind-prediction
+
+## BUG-0195 — The EIC main-home test asked only about the filer's home, not the spouse's on a joint return
+
+- **Date:** 2026-10-29
+- **Caught by:** the Stage 19 adjudication of the Form 1040 render logs (`.transcription/proposed/stage19/f1040.findings.md`,
+  H1). Pre-existing. Witness: `stage9.eic.joint.no_child.12000` with the spouse's main home abroad: the project allows
+  $649.00 where the source gives none.
+- **Symptom:** i1040gi p. 42, Step 4, question 3, "Was your main home, and your spouse's if filing a joint return, in the
+  United States for more than half of 2025?" `eic.us_home` asked "Was your main home in the United States".
+- **Where:** `forms/2025/eic.yaml`, `eic.us_home`.
+- **Fix:** the question asks about both homes on a joint return, as printed.
+- **Tags:** misread-source; caught-by-source-adjudication
+
+## BUG-0196 — Two Form 5695 remedies called the child care and saver's credits outside the tool
+
+- **Date:** 2026-10-29
+- **Caught by:** the Stage 19 adjudication of Form 5695 (`.transcription/proposed/stage19/f5695.findings.md`, S1).
+- **Symptom:** the `scope.credits` remedies of `f5695.rce_ws2` and `f5695.eehi_ws2` listed only the foreign tax credit,
+  the dependent credits, the education credits and the residential energy credits as computed; the tool also computes
+  the child and dependent care credit and the saver's credit, which both worksheets include. Wording only.
+- **Where:** `forms/2025/f5695.yaml`.
+- **Fix:** the remedies name every computed credit, as `s8812.clw_a2`'s does.
+- **Tags:** stale-label; caught-by-source-adjudication
+
+## BUG-0197 — The education academic-period screen did not say which expenses to compare
+
+- **Date:** 2026-10-29
+- **Caught by:** the Stage 19 adjudication of the person and dependent logs (`.transcription/proposed/stage19/person.findings.md`,
+  Q1), in the stage that introduced it.
+- **Symptom:** `person.edu_over` and `dependent.edu_over` asked whether a period's assistance exceeded "that period's own
+  qualified education expenses". A lifetime learning student whose outside course materials covered the gap would
+  answer No, and line 31 would be netted over the year instead of floored for that period (i8863 p. 9, "for each
+  student for each academic period"); a constructed witness gives line 31 $3,000 for $2,600.
+- **Where:** `forms/2025/person.yaml`, `forms/2025/dependent.yaml` (Stage 19 block).
+- **Fix:** the question compares with the expenses that had to be paid to the institution, the lifetime learning
+  credit's expenses; for an American opportunity student it can only over-refuse.
+- **Tags:** ambiguous-question; caught-by-source-adjudication
+
+## BUG-0198 — A Form 8862 or ban answer refused returns that could take no education credit
+
+- **Date:** 2026-10-29
+- **Caught by:** the Stage 19 adjudication of Form 8863 (`.transcription/proposed/stage19/f8863.findings.md`, R2), in the
+  stage that introduced it. Witness: Jack and Kay with wages of $200,000 and the ban answered Yes: refused, though line
+  4 is zero and no credit can be claimed.
+- **Symptom:** `f8863.ban_refused` tested line 1 above zero only; f8863 p. 1, line 4, "If zero or less, stop; you can't
+  take any education credit".
+- **Where:** `forms/2025/f8863.yaml`.
+- **Fix:** the gate also requires line 4 above zero. Accepted residue (round-2 R3): when line 4 is a few dollars, line 6
+  rounds to 0.000 and line 7 is $0, so a ban answer still refuses a return that claims nothing; an over-refusal, kept.
+- **Tags:** over-refusal; caught-by-source-adjudication
+
+## BUG-0199 — Disposition of BUG-0192 and BUG-0193
+
+- **Date:** 2026-10-29
+- **Closes:** BUG-0192 (fixed with the Stage 19 change to `dependent.yaml`, the trigger it was deferred to: the new input
+  `dependent.lawful`, asked only for an `other` or `sibling_descendant` person who lived with you all year (the second added in round 2, L1), and `dependent.qr_relationship`
+  requiring it, per i1040gi p. 19, Step 4, "if your relationship didn't violate local law"; fixtures with such a person
+  answer it Yes, which is how they were already claimed) and BUG-0193 (fixed with Stage 19: the remedies name the
+  education credits and the premium tax credit "figured on Form 8962").
+- **Tags:** disposition

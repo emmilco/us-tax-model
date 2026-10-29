@@ -270,12 +270,13 @@ form:
     - id: s8812.clw_a2
       printed: (helper)
       type: Dollars
-      label: Credit Limit Worksheet A, line 2. Schedule 3 lines 1, 2, 3, 4, 5b, 6d, 6f, 6l and 6m; in this tool lines 1, 2, 4 and 5b, the other credits being refused
+      label: Credit Limit Worksheet A, line 2. Schedule 3 lines 1, 2, 3, 4, 5b, 6d, 6f, 6l and 6m; in this tool lines 1, 2, 3, 4 and 5b, the other credits being refused
       expr:
         op: sum
         of:
           - s3.line1
           - s3.line2
+          - s3.line3
           - s3.line4
           - s3.line5b
       cite:
@@ -283,8 +284,8 @@ form:
         locator: p. 4, Credit Limit Worksheet A, line 2
       refuses:
         - when: scope.credits
-          form: Credit Limit Worksheet A, line 2 (Schedule 3 lines 3, 6d, 6f, 6l, 6m)
-          remedy: Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the saver's credit and the residential energy credits are outside this tool.
+          form: Credit Limit Worksheet A, line 2 (Schedule 3 lines 6d, 6f, 6l, 6m)
+          remedy: Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the education credits, the saver's credit and the residential energy credits are outside this tool.
           cite:
             doc: i1040s8812
             locator: p. 4, Credit Limit Worksheet A, line 2

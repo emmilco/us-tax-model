@@ -4,7 +4,7 @@
 
 | field | value |
 | --- | --- |
-| date | 2026-10-26 |
+| date | 2026-10-29 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt policy | worked-values-request-bound-v2 |
@@ -12,7 +12,7 @@
 | reasoning effort | provider default |
 | output token budget | transport default (65536 for DeepSeek) |
 | subject sha256 | d8cd1e7cfda63ac5ad42f4c11c90f6933c451f95a3d0ca28d3bfc1891171479f |
-| cases | 9 |
+| cases | 8 |
 
 ## Source pages given to the model
 
@@ -22,53 +22,38 @@
 
 ## Lines
 
-### case classm.eic.1 — prompt sha256 97dc9e2a135a1c89f40f551096e35a9f649327e3cae46c4250ab400f41f06f52; branches: eic.qc_of_another:false, eic.age_range:true, eic.us_home:true, eic.has_qc:true, eic.married_rules:false, eic.top_limit#4, eic.below_top:true, eic.limit_other#1, eic.limit_joint#1, eic.limit#4, eic.step1_income:true, eic.step1_ssn:true, eic.step1_foreign:true, eic.step1_resident:true, eic.gain_7a:floor, eic.step2_income:true, eic.step2_other:true, eic.same_home:true, eic.legally_separated:true, eic.step3_married:true, eic.step3:true, eic.step4:true, eic.step34:true, eic.reached_step5:true, eic.self_employed:false, eic.show_wsb4b:false, eic.show_wsb6:false, eic.wsb_6:positive, eic.earned_for_limit#0, eic.step5_income:true, eic.eligible:true, eic.line1#0, eic.line1_in_table:true, eic.line1_table#1, eic.line2#0, eic.show3:true, eic.line4:false, eic.threshold_other#1, eic.threshold_joint#1, eic.line5_threshold#4, eic.line5_blank:true, eic.show5:false, eic.line5#1, eic.smaller:left, eic.after_line4#0, eic.line6#1, eic.credit#0, eic.reached_step3:true, eic.check_27c:false, eic.wsb_4b_positive:true, eic.wsb_line5_stop:false, eic.separated_box:false, eic.clergy:false
+### case classm.eic.1 — prompt sha256 2f0a2b64de8a51b6cc63c69982986356143de9a7e0690f51696f0b29c8bab90a; branches: eic.qc_of_another:false, eic.age_range:true, eic.us_home:true, eic.has_qc:true, eic.married_rules:false, eic.top_limit#3, eic.below_top:true, eic.limit_other#1, eic.limit_joint#1, eic.limit#3, eic.step1_income:true, eic.step1_ssn:true, eic.step1_foreign:true, eic.step1_resident:true, eic.gain_7a:floor, eic.step2_income:true, eic.step2_other:true, eic.same_home:false, eic.legally_separated:false, eic.step3_married:true, eic.step3:true, eic.step4:true, eic.step34:true, eic.reached_step5:true, eic.self_employed:false, eic.show_wsb4b:false, eic.show_wsb6:false, eic.wsb_6:positive, eic.earned_for_limit#0, eic.step5_income:true, eic.eligible:true, eic.line1#0, eic.line1_in_table:true, eic.line1_table#1, eic.line2#0, eic.show3:true, eic.line4:true, eic.threshold_other#1, eic.threshold_joint#1, eic.line5_threshold#3, eic.line5_blank:false, eic.show5:false, eic.line5#1, eic.smaller:left, eic.after_line4#1, eic.line6#0, eic.credit#0, eic.reached_step3:true, eic.check_27c:false, eic.wsb_4b_positive:true, eic.wsb_line5_stop:false, eic.separated_box:false, eic.clergy:false
 
 ### classm.eic.1 — (Step 5, 1) — Enter the amount from Form 1040 or 1040-SR, line 1z
-Status: **MISSING**
+Status: **AGREE**
 
-Project: $5,137.00
-Model: no answer
-
-Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.eic.1.prompt.txt) lists the line as "line (Step 5, 1)" and says each line is "named by its printed number as it appears in the IRS text (where two lines share a number, followed by a name in parentheses: answer with the whole handle, exactly as given)"; the reply names it "Step 5, 1" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading 'line ' before matching, and the log records no answer (the replies for classm.eic.3 to classm.eic.8 use "(Step 5, 1)" and were read). The reply's value is $5,137.00 (Form 1040 line 1z); the project's is $5,137.00. They are equal, and Step 5 is reached on this return (eic.reached_step5 true; Worksheet A line 1 $5,137.00 agrees), so no project defect. No expectation is recorded for a line without a parsed answer; nothing to drop.
+Value: $32,936.00
 
 ### classm.eic.1 — (Step 5, 2) — Medicaid waiver payments excluded from income on Schedule 1, line 8s, unless cho
-Status: **MISSING**
+Status: **AGREE**
 
-Project: $0.00
-Model: no answer
-
-Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.eic.1.prompt.txt) lists the line as "line (Step 5, 2)" and says each line is "named by its printed number as it appears in the IRS text (where two lines share a number, followed by a name in parentheses: answer with the whole handle, exactly as given)"; the reply names it "Step 5, 2" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading 'line ' before matching, and the log records no answer (the replies for classm.eic.3 to classm.eic.8 use "(Step 5, 2)" and were read). The reply's value is $0.00 (no Medicaid waiver payments); the project's is $0.00. They are equal, and Step 5 is reached on this return (eic.reached_step5 true; Worksheet A line 1 $5,137.00 agrees), so no project defect. No expectation is recorded for a line without a parsed answer; nothing to drop.
+Value: $0.00
 
 ### classm.eic.1 — (Step 5, 3) — Subtract line 2 from line 1
-Status: **MISSING**
+Status: **AGREE**
 
-Project: $5,137.00
-Model: no answer
-
-Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.eic.1.prompt.txt) lists the line as "line (Step 5, 3)" and says each line is "named by its printed number as it appears in the IRS text (where two lines share a number, followed by a name in parentheses: answer with the whole handle, exactly as given)"; the reply names it "Step 5, 3" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading 'line ' before matching, and the log records no answer (the replies for classm.eic.3 to classm.eic.8 use "(Step 5, 3)" and were read). The reply's value is $5,137.00 (line 1 minus line 2); the project's is $5,137.00. They are equal, and Step 5 is reached on this return (eic.reached_step5 true; Worksheet A line 1 $5,137.00 agrees), so no project defect. No expectation is recorded for a line without a parsed answer; nothing to drop.
+Value: $32,936.00
 
 ### classm.eic.1 — (Step 5, 4) — Nontaxable combat pay you elect to include in earned income; zero in this tool
-Status: **MISSING**
+Status: **AGREE**
 
-Project: $0.00
-Model: no answer
-
-Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.eic.1.prompt.txt) lists the line as "line (Step 5, 4)" and says each line is "named by its printed number as it appears in the IRS text (where two lines share a number, followed by a name in parentheses: answer with the whole handle, exactly as given)"; the reply names it "Step 5, 4" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading 'line ' before matching, and the log records no answer (the replies for classm.eic.3 to classm.eic.8 use "(Step 5, 4)" and were read). The reply's value is $0.00 (no combat pay elected); the project's is $0.00. They are equal, and Step 5 is reached on this return (eic.reached_step5 true; Worksheet A line 1 $5,137.00 agrees), so no project defect. No expectation is recorded for a line without a parsed answer; nothing to drop.
+Value: $0.00
 
 ### classm.eic.1 — (Step 5, 5) — Add lines 3 and 4. This is your earned income
-Status: **MISSING**
+Status: **AGREE**
 
-Project: $5,137.00
-Model: no answer
-
-Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.eic.1.prompt.txt) lists the line as "line (Step 5, 5)" and says each line is "named by its printed number as it appears in the IRS text (where two lines share a number, followed by a name in parentheses: answer with the whole handle, exactly as given)"; the reply names it "Step 5, 5" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading 'line ' before matching, and the log records no answer (the replies for classm.eic.3 to classm.eic.8 use "(Step 5, 5)" and were read). The reply's value is $5,137.00 (lines 3 plus 4); the project's is $5,137.00. They are equal, and Step 5 is reached on this return (eic.reached_step5 true; Worksheet A line 1 $5,137.00 agrees), so no project defect. No expectation is recorded for a line without a parsed answer; nothing to drop.
+Value: $32,936.00
 
 ### classm.eic.1 — 4b — Worksheet B, line 4b. Combine lines 1e, 2c, 3, and 4a. This is your total earned
 Status: **SKIPPED**
 
 Model: blank
-Work: Not self-employed, so Step 5 question 2 is No; use Worksheet A, and Worksheet B is not used
+Work: Not self-employed, clergy, church employee or statutory employee; Step 5 Q2 No, so use Worksheet A and leave Worksheet B blank
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -76,52 +61,52 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Worksheet B is not used
+Work: Worksheet B not used
 
 No numeric assertion or class M credit: the model left this line blank.
 
 ### classm.eic.1 — 1 — Enter your earned income from Step 5 (Worksheet A, line 1), or Worksheet B, line
 Status: **AGREE**
 
-Value: $5,137.00
+Value: $32,936.00
 
 ### classm.eic.1 — 2 — Look up the amount on line 1 in the EIC Table to find the credit, using the colu
 Status: **AGREE**
 
-Value: $1,743.00
+Value: $2,798.00
 
 ### classm.eic.1 — 3 — Enter the amount from Form 1040 or 1040-SR, line 11b
 Status: **AGREE**
 
-Value: $2,137.00
+Value: $32,936.00
 
 ### classm.eic.1 — 4 — Are the amounts on lines 3 and 1 the same?
 Status: **AGREE**
 
-Value: no
+Value: yes
 
 ### classm.eic.1 — 5 — Look up the amount on line 3 in the EIC Table to find the credit, using the colu
 Status: **SKIPPED**
 
 Model: blank
-Work: Has 1 or more qualifying children and line 3 (2,137) is less than 23,350, so leave line 5 blank
+Work: Skipped because line 4 is Yes
 
 No numeric assertion or class M credit: the model left this line blank.
 
 ### classm.eic.1 — 6 (eic.line6) — This is your earned income credit
 Status: **AGREE**
 
-Value: $1,743.00
+Value: $2,798.00
 
-### case classm.eic.2 — prompt sha256 fd48df5c8feb2f35b2eb4cef190385ed09d56334df50ea0eab262f186078569d; branches: eic.qc_of_another:false, eic.age_range:true, eic.us_home:true, eic.has_qc:false, eic.married_rules:true, eic.top_limit#2, eic.below_top:true, eic.limit_other#0, eic.limit_joint#0, eic.limit#2, eic.step1_income:false, eic.step1_ssn:true, eic.step1_foreign:true, eic.step1_resident:true, eic.gain_7a:positive, eic.step2_income:false, eic.step2_other:true, eic.same_home:false, eic.legally_separated:false, eic.step3_married:true, eic.step3:true, eic.step4:false, eic.step34:false, eic.reached_step5:false, eic.self_employed:true, eic.show_wsb4b:false, eic.show_wsb6:false, eic.wsb_6:floor, eic.earned_for_limit#1, eic.step5_income:true, eic.eligible:false, eic.line1#1, eic.line1_in_table:false, eic.line1_table#0, eic.line2#1, eic.show3:false, eic.line4:false, eic.threshold_other#0, eic.threshold_joint#0, eic.line5_threshold#2, eic.line5_blank:false, eic.show5:false, eic.line5#0, eic.smaller:left, eic.after_line4#1, eic.line6#1, eic.credit#1, eic.reached_step3:false, eic.check_27c:false, eic.wsb_4b_positive:false, eic.wsb_line5_stop:false, eic.separated_box:false, eic.clergy:false
+### case classm.eic.2 — prompt sha256 f6af437905efb58814c93ae8f9f82cd49b2f0a3abc7416121def126fbf7b40d1; branches: eic.qc_of_another:false, eic.age_range:true, eic.us_home:true, eic.has_qc:false, eic.married_rules:true, eic.top_limit#2, eic.below_top:false, eic.limit_other#0, eic.limit_joint#0, eic.limit#2, eic.step1_income:false, eic.step1_ssn:true, eic.step1_foreign:true, eic.step1_resident:true, eic.gain_7a:positive, eic.step2_income:false, eic.step2_other:true, eic.same_home:false, eic.legally_separated:false, eic.step3_married:true, eic.step3:true, eic.step4:false, eic.step34:false, eic.reached_step5:false, eic.self_employed:true, eic.show_wsb4b:false, eic.show_wsb6:false, eic.wsb_6:floor, eic.earned_for_limit#1, eic.step5_income:true, eic.eligible:false, eic.line1#1, eic.line1_in_table:false, eic.line1_table#0, eic.line2#1, eic.show3:false, eic.line4:false, eic.threshold_other#0, eic.threshold_joint#0, eic.line5_threshold#2, eic.line5_blank:false, eic.show5:false, eic.line5#0, eic.smaller:left, eic.after_line4#1, eic.line6#1, eic.credit#1, eic.reached_step3:false, eic.check_27c:false, eic.wsb_4b_positive:false, eic.wsb_line5_stop:false, eic.separated_box:false, eic.clergy:false
 
 ### classm.eic.2 — (Step 5, 1) — Enter the amount from Form 1040 or 1040-SR, line 1z
 Status: **MISSING**
 
-Project: $0.00
+Project: $31,939.00
 Model: no answer
 
-Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.eic.2.prompt.txt) lists the line as "line (Step 5, 1)" and says each line is "named by its printed number as it appears in the IRS text (where two lines share a number, followed by a name in parentheses: answer with the whole handle, exactly as given)"; the reply names it "Step 5, 1" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading 'line ' before matching, and the log records no answer (the replies for classm.eic.3 to classm.eic.8 use "(Step 5, 1)" and were read). The reply's value is blank ("Step 1 Q1: MFS, no children with valid SSNs, AGI $22,732 is not under $19,104, so STOP and Step 5 is never reached"); the project's is $0.00. The reply's blank is right: i1040gi p. 40, Step 1, question 1, "No children who have valid SSNs lived with you, is the amount on Form 1040 or 1040-SR, line 11b, less than $19,104 ...? No. STOP" (eic.reached_step5 false). The project's Step 5 lines are helpers that shown_when cannot hide (TASKS T-067), but every one is $0.00 here, which the skipped-line rule permits; no finding. Nothing to drop.
+Ruling: model error; on the reply format, not the tax reading (T-070 (1)). The prompt (.classm/classm.eic.2.prompt.txt) lists the line as "line (Step 5, 1)" and asks for the whole handle exactly as given; the reply names it "Step 5, 1" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading "line " before matching, and the log records no answer (the replies for classm.eic.1, .3, .5 and .8 write "(Step 5, n)" and classm.eic.7 "line (Step 5, n)", and were read). The reply's value is blank: "Not reached. Step 1 Q1: no qualifying children and line 11b $65,538.15 is not less than $19,104, so STOP, you can't take the credit." That is the source reading (i1040gi p. 40, Step 1, question 1, with no qualifying child: "less than $19,104 ($26,214 if married filing jointly)? ... No. STOP"). The project's value is $31,939.00 (eic.reached_step5 false, eic.credit $0.00): the Step 5 helper lines are figured and shown on a return that never reaches Step 5, the open T-067 (BUG-0151; shown_when does not apply to helpers). Not a new finding, and the credit is $0.00 on both sides. Dropped: a line the flow chart never reaches is not evidence for the fixture. [dropped]
 
 ### classm.eic.2 — (Step 5, 2) — Medicaid waiver payments excluded from income on Schedule 1, line 8s, unless cho
 Status: **MISSING**
@@ -129,15 +114,15 @@ Status: **MISSING**
 Project: $0.00
 Model: no answer
 
-Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.eic.2.prompt.txt) lists the line as "line (Step 5, 2)" and says each line is "named by its printed number as it appears in the IRS text (where two lines share a number, followed by a name in parentheses: answer with the whole handle, exactly as given)"; the reply names it "Step 5, 2" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading 'line ' before matching, and the log records no answer (the replies for classm.eic.3 to classm.eic.8 use "(Step 5, 2)" and were read). The reply's value is blank ("Step 1 Q1: MFS, no children with valid SSNs, AGI $22,732 is not under $19,104, so STOP and Step 5 is never reached"); the project's is $0.00. The reply's blank is right: i1040gi p. 40, Step 1, question 1, "No children who have valid SSNs lived with you, is the amount on Form 1040 or 1040-SR, line 11b, less than $19,104 ...? No. STOP" (eic.reached_step5 false). The project's Step 5 lines are helpers that shown_when cannot hide (TASKS T-067), but every one is $0.00 here, which the skipped-line rule permits; no finding. Nothing to drop.
+Ruling: model error; on the reply format, not the tax reading (T-070 (1)). The prompt (.classm/classm.eic.2.prompt.txt) lists the line as "line (Step 5, 2)" and asks for the whole handle exactly as given; the reply names it "Step 5, 2" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading "line " before matching, and the log records no answer (the replies for classm.eic.1, .3, .5 and .8 write "(Step 5, n)" and classm.eic.7 "line (Step 5, n)", and were read). The reply's value is blank: "Not reached. Step 1 Q1: no qualifying children and line 11b $65,538.15 is not less than $19,104, so STOP, you can't take the credit." That is the source reading (i1040gi p. 40, Step 1, question 1, with no qualifying child: "less than $19,104 ($26,214 if married filing jointly)? ... No. STOP"). The project's value is $0.00 (eic.reached_step5 false, eic.credit $0.00): the Step 5 helper lines are figured and shown on a return that never reaches Step 5, the open T-067 (BUG-0151; shown_when does not apply to helpers). Not a new finding, and the credit is $0.00 on both sides. Dropped: a line the flow chart never reaches is not evidence for the fixture. [dropped]
 
 ### classm.eic.2 — (Step 5, 3) — Subtract line 2 from line 1
 Status: **MISSING**
 
-Project: $0.00
+Project: $31,939.00
 Model: no answer
 
-Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.eic.2.prompt.txt) lists the line as "line (Step 5, 3)" and says each line is "named by its printed number as it appears in the IRS text (where two lines share a number, followed by a name in parentheses: answer with the whole handle, exactly as given)"; the reply names it "Step 5, 3" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading 'line ' before matching, and the log records no answer (the replies for classm.eic.3 to classm.eic.8 use "(Step 5, 3)" and were read). The reply's value is blank ("Step 1 Q1: MFS, no children with valid SSNs, AGI $22,732 is not under $19,104, so STOP and Step 5 is never reached"); the project's is $0.00. The reply's blank is right: i1040gi p. 40, Step 1, question 1, "No children who have valid SSNs lived with you, is the amount on Form 1040 or 1040-SR, line 11b, less than $19,104 ...? No. STOP" (eic.reached_step5 false). The project's Step 5 lines are helpers that shown_when cannot hide (TASKS T-067), but every one is $0.00 here, which the skipped-line rule permits; no finding. Nothing to drop.
+Ruling: model error; on the reply format, not the tax reading (T-070 (1)). The prompt (.classm/classm.eic.2.prompt.txt) lists the line as "line (Step 5, 3)" and asks for the whole handle exactly as given; the reply names it "Step 5, 3" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading "line " before matching, and the log records no answer (the replies for classm.eic.1, .3, .5 and .8 write "(Step 5, n)" and classm.eic.7 "line (Step 5, n)", and were read). The reply's value is blank: "Not reached. Step 1 Q1: no qualifying children and line 11b $65,538.15 is not less than $19,104, so STOP, you can't take the credit." That is the source reading (i1040gi p. 40, Step 1, question 1, with no qualifying child: "less than $19,104 ($26,214 if married filing jointly)? ... No. STOP"). The project's value is $31,939.00 (eic.reached_step5 false, eic.credit $0.00): the Step 5 helper lines are figured and shown on a return that never reaches Step 5, the open T-067 (BUG-0151; shown_when does not apply to helpers). Not a new finding, and the credit is $0.00 on both sides. Dropped: a line the flow chart never reaches is not evidence for the fixture. [dropped]
 
 ### classm.eic.2 — (Step 5, 4) — Nontaxable combat pay you elect to include in earned income; zero in this tool
 Status: **MISSING**
@@ -145,21 +130,21 @@ Status: **MISSING**
 Project: $0.00
 Model: no answer
 
-Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.eic.2.prompt.txt) lists the line as "line (Step 5, 4)" and says each line is "named by its printed number as it appears in the IRS text (where two lines share a number, followed by a name in parentheses: answer with the whole handle, exactly as given)"; the reply names it "Step 5, 4" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading 'line ' before matching, and the log records no answer (the replies for classm.eic.3 to classm.eic.8 use "(Step 5, 4)" and were read). The reply's value is blank ("Step 1 Q1: MFS, no children with valid SSNs, AGI $22,732 is not under $19,104, so STOP and Step 5 is never reached"); the project's is $0.00. The reply's blank is right: i1040gi p. 40, Step 1, question 1, "No children who have valid SSNs lived with you, is the amount on Form 1040 or 1040-SR, line 11b, less than $19,104 ...? No. STOP" (eic.reached_step5 false). The project's Step 5 lines are helpers that shown_when cannot hide (TASKS T-067), but every one is $0.00 here, which the skipped-line rule permits; no finding. Nothing to drop.
+Ruling: model error; on the reply format, not the tax reading (T-070 (1)). The prompt (.classm/classm.eic.2.prompt.txt) lists the line as "line (Step 5, 4)" and asks for the whole handle exactly as given; the reply names it "Step 5, 4" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading "line " before matching, and the log records no answer (the replies for classm.eic.1, .3, .5 and .8 write "(Step 5, n)" and classm.eic.7 "line (Step 5, n)", and were read). The reply's value is blank: "Not reached. Step 1 Q1: no qualifying children and line 11b $65,538.15 is not less than $19,104, so STOP, you can't take the credit." That is the source reading (i1040gi p. 40, Step 1, question 1, with no qualifying child: "less than $19,104 ($26,214 if married filing jointly)? ... No. STOP"). The project's value is $0.00 (eic.reached_step5 false, eic.credit $0.00): the Step 5 helper lines are figured and shown on a return that never reaches Step 5, the open T-067 (BUG-0151; shown_when does not apply to helpers). Not a new finding, and the credit is $0.00 on both sides. Dropped: a line the flow chart never reaches is not evidence for the fixture. [dropped]
 
 ### classm.eic.2 — (Step 5, 5) — Add lines 3 and 4. This is your earned income
 Status: **MISSING**
 
-Project: $0.00
+Project: $31,939.00
 Model: no answer
 
-Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.eic.2.prompt.txt) lists the line as "line (Step 5, 5)" and says each line is "named by its printed number as it appears in the IRS text (where two lines share a number, followed by a name in parentheses: answer with the whole handle, exactly as given)"; the reply names it "Step 5, 5" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading 'line ' before matching, and the log records no answer (the replies for classm.eic.3 to classm.eic.8 use "(Step 5, 5)" and were read). The reply's value is blank ("Step 1 Q1: MFS, no children with valid SSNs, AGI $22,732 is not under $19,104, so STOP and Step 5 is never reached"); the project's is $0.00. The reply's blank is right: i1040gi p. 40, Step 1, question 1, "No children who have valid SSNs lived with you, is the amount on Form 1040 or 1040-SR, line 11b, less than $19,104 ...? No. STOP" (eic.reached_step5 false). The project's Step 5 lines are helpers that shown_when cannot hide (TASKS T-067), but every one is $0.00 here, which the skipped-line rule permits; no finding. Nothing to drop.
+Ruling: model error; on the reply format, not the tax reading (T-070 (1)). The prompt (.classm/classm.eic.2.prompt.txt) lists the line as "line (Step 5, 5)" and asks for the whole handle exactly as given; the reply names it "Step 5, 5" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading "line " before matching, and the log records no answer (the replies for classm.eic.1, .3, .5 and .8 write "(Step 5, n)" and classm.eic.7 "line (Step 5, n)", and were read). The reply's value is blank: "Not reached. Step 1 Q1: no qualifying children and line 11b $65,538.15 is not less than $19,104, so STOP, you can't take the credit." That is the source reading (i1040gi p. 40, Step 1, question 1, with no qualifying child: "less than $19,104 ($26,214 if married filing jointly)? ... No. STOP"). The project's value is $31,939.00 (eic.reached_step5 false, eic.credit $0.00): the Step 5 helper lines are figured and shown on a return that never reaches Step 5, the open T-067 (BUG-0151; shown_when does not apply to helpers). Not a new finding, and the credit is $0.00 on both sides. Dropped: a line the flow chart never reaches is not evidence for the fixture. [dropped]
 
 ### classm.eic.2 — 4b — Worksheet B, line 4b. Combine lines 1e, 2c, 3, and 4a. This is your total earned
 Status: **SKIPPED**
 
 Model: blank
-Work: Worksheet B not reached: STOP at Step 1
+Work: Worksheet B not reached; the credit was disallowed at Step 1.
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -167,7 +152,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Worksheet B not reached: STOP at Step 1
+Work: Worksheet B not reached; the credit was disallowed at Step 1.
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -175,7 +160,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Worksheet A not reached: STOP at Step 1
+Work: Worksheet A not reached; the credit was disallowed at Step 1.
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -183,7 +168,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Worksheet A not reached: STOP at Step 1
+Work: Worksheet A not reached; the credit was disallowed at Step 1.
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -191,7 +176,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Worksheet A not reached: STOP at Step 1
+Work: Worksheet A not reached; the credit was disallowed at Step 1.
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -199,7 +184,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Worksheet A not reached: STOP at Step 1
+Work: Worksheet A not reached; the credit was disallowed at Step 1.
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -207,7 +192,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Worksheet A not reached: STOP at Step 1
+Work: Worksheet A not reached; the credit was disallowed at Step 1.
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -216,12 +201,12 @@ Status: **AGREE**
 
 Value: $0.00
 
-### case classm.eic.3 — prompt sha256 3398fd501e9ccfd11b74693ab60dae6f157a6f781e673426096426f45fa64396; branches: eic.qc_of_another:false, eic.age_range:true, eic.us_home:true, eic.has_qc:true, eic.married_rules:false, eic.top_limit#0, eic.below_top:true, eic.limit_other#2, eic.limit_joint#2, eic.limit#0, eic.step1_income:true, eic.step1_ssn:true, eic.step1_foreign:true, eic.step1_resident:true, eic.gain_7a:floor, eic.step2_income:true, eic.step2_other:true, eic.same_home:false, eic.legally_separated:false, eic.step3_married:true, eic.step3:true, eic.step4:true, eic.step34:true, eic.reached_step5:true, eic.self_employed:true, eic.show_wsb4b:true, eic.show_wsb6:true, eic.wsb_6:positive, eic.earned_for_limit#1, eic.step5_income:true, eic.eligible:true, eic.line1#1, eic.line1_in_table:true, eic.line1_table#2, eic.line2#0, eic.show3:true, eic.line4:false, eic.threshold_other#1, eic.threshold_joint#1, eic.line5_threshold#0, eic.line5_blank:true, eic.show5:false, eic.line5#2, eic.smaller:left, eic.after_line4#0, eic.line6#1, eic.credit#0, eic.reached_step3:true, eic.check_27c:false, eic.wsb_4b_positive:true, eic.wsb_line5_stop:false, eic.separated_box:false, eic.clergy:false
+### case classm.eic.3 — prompt sha256 ff595cf497062f7ed3ce51027787eb85d27841ba24dff1c203670fa86bb82330; branches: eic.qc_of_another:false, eic.age_range:true, eic.us_home:true, eic.has_qc:true, eic.married_rules:false, eic.top_limit#0, eic.below_top:true, eic.limit_other#2, eic.limit_joint#2, eic.limit#0, eic.step1_income:true, eic.step1_ssn:true, eic.step1_foreign:true, eic.step1_resident:true, eic.gain_7a:floor, eic.step2_income:true, eic.step2_other:true, eic.same_home:false, eic.legally_separated:false, eic.step3_married:true, eic.step3:true, eic.step4:true, eic.step34:true, eic.reached_step5:true, eic.self_employed:true, eic.show_wsb4b:true, eic.show_wsb6:true, eic.wsb_6:positive, eic.earned_for_limit#1, eic.step5_income:true, eic.eligible:true, eic.line1#1, eic.line1_in_table:true, eic.line1_table#2, eic.line2#0, eic.show3:true, eic.line4:true, eic.threshold_other#1, eic.threshold_joint#1, eic.line5_threshold#0, eic.line5_blank:true, eic.show5:false, eic.line5#2, eic.smaller:left, eic.after_line4#0, eic.line6#0, eic.credit#0, eic.reached_step3:true, eic.check_27c:false, eic.wsb_4b_positive:true, eic.wsb_line5_stop:false, eic.separated_box:false, eic.clergy:false
 
 ### classm.eic.3 — (Step 5, 1) — Enter the amount from Form 1040 or 1040-SR, line 1z
 Status: **AGREE**
 
-Value: $77,987.00
+Value: $13,709.00
 
 ### classm.eic.3 — (Step 5, 2) — Medicaid waiver payments excluded from income on Schedule 1, line 8s, unless cho
 Status: **AGREE**
@@ -231,7 +216,7 @@ Value: $0.00
 ### classm.eic.3 — (Step 5, 3) — Subtract line 2 from line 1
 Status: **AGREE**
 
-Value: $77,987.00
+Value: $13,709.00
 
 ### classm.eic.3 — (Step 5, 4) — Nontaxable combat pay you elect to include in earned income; zero in this tool
 Status: **AGREE**
@@ -241,83 +226,98 @@ Value: $0.00
 ### classm.eic.3 — (Step 5, 5) — Add lines 3 and 4. This is your earned income
 Status: **AGREE**
 
-Value: $77,987.00
+Value: $13,709.00
 
 ### classm.eic.3 — 4b — Worksheet B, line 4b. Combine lines 1e, 2c, 3, and 4a. This is your total earned
 Status: **AGREE**
 
-Value: $12,181.20
+Value: $12,259.68
 
 ### classm.eic.3 — 6 (eic.wsb_6) — Worksheet B, line 6. Enter your total earned income from Part 4, line 4b (zero i
 Status: **AGREE**
 
-Value: $12,181.20
+Value: $12,259.68
 
 ### classm.eic.3 — 1 — Enter your earned income from Step 5 (Worksheet A, line 1), or Worksheet B, line
 Status: **AGREE**
 
-Value: $12,181.20
+Value: $12,259.68
 
 ### classm.eic.3 — 2 — Look up the amount on line 1 in the EIC Table to find the credit, using the colu
 Status: **AGREE**
 
-Value: $4,870.00
+Value: $4,910.00
 
 ### classm.eic.3 — 3 — Enter the amount from Form 1040 or 1040-SR, line 11b
 Status: **AGREE**
 
-Value: $10,228.20
+Value: $12,259.68
 
 ### classm.eic.3 — 4 — Are the amounts on lines 3 and 1 the same?
 Status: **AGREE**
 
-Value: no
+Value: yes
 
 ### classm.eic.3 — 5 — Look up the amount on line 3 in the EIC Table to find the credit, using the colu
 Status: **SKIPPED**
 
 Model: blank
-Work: 1+ child with valid SSN and line 3 (10,228.20) < $23,350, so leave blank and use line 2
+Work: Line 4 is yes, so skip line 5
 
 No numeric assertion or class M credit: the model left this line blank.
 
 ### classm.eic.3 — 6 (eic.line6) — This is your earned income credit
 Status: **AGREE**
 
-Value: $4,870.00
+Value: $4,910.00
 
-### case classm.eic.4 — prompt sha256 7ada53fb48b11d9d1017223ce125ec2492f395aec5aa8fcd142371df37b64fbc; branches: eic.qc_of_another:true, eic.age_range:true, eic.us_home:false, eic.has_qc:false, eic.married_rules:true, eic.top_limit#3, eic.below_top:true, eic.limit_other#0, eic.limit_joint#0, eic.limit#3, eic.step1_income:true, eic.step1_ssn:true, eic.step1_resident:true, eic.gain_7a:floor, eic.step2_income:true, eic.step2_other:true, eic.same_home:true, eic.legally_separated:false, eic.step3_married:false, eic.step3:false, eic.step4:false, eic.step34:false, eic.self_employed:false, eic.wsb_6:floor, eic.earned_for_limit#0, eic.step5_income:true, eic.line1#0, eic.line1_in_table:false, eic.line1_table#0, eic.line2#1, eic.line4:false, eic.threshold_other#0, eic.threshold_joint#0, eic.line5_threshold#3, eic.line5_blank:true, eic.line5#0, eic.smaller:right, eic.after_line4#0, eic.line6#1, eic.wsb_4b_positive:false, eic.clergy:false
+### case classm.eic.4 — prompt sha256 60f126faf7f84feb08c9618673a18384791c153959f8fc9e826973677100a2c0; branches: eic.qc_of_another:false, eic.age_range:true, eic.us_home:true, eic.has_qc:true, eic.married_rules:false, eic.top_limit#4, eic.below_top:true, eic.limit_other#1, eic.limit_joint#1, eic.limit#4, eic.step1_income:true, eic.step1_ssn:true, eic.step1_foreign:true, eic.step1_resident:true, eic.gain_7a:floor, eic.step2_income:true, eic.step2_other:true, eic.same_home:true, eic.legally_separated:true, eic.step3_married:true, eic.step3:true, eic.step4:true, eic.step34:true, eic.reached_step5:true, eic.self_employed:false, eic.show_wsb4b:false, eic.show_wsb6:false, eic.wsb_6:positive, eic.earned_for_limit#0, eic.step5_income:true, eic.eligible:true, eic.line1#0, eic.line1_in_table:true, eic.line1_table#1, eic.line2#0, eic.show3:true, eic.line4:false, eic.threshold_other#1, eic.threshold_joint#1, eic.line5_threshold#4, eic.line5_blank:true, eic.show5:false, eic.line5#1, eic.smaller:right, eic.after_line4#0, eic.line6#1, eic.credit#0, eic.reached_step3:true, eic.check_27c:false, eic.wsb_4b_positive:true, eic.wsb_line5_stop:false, eic.separated_box:false, eic.clergy:false
 
 ### classm.eic.4 — (Step 5, 1) — Enter the amount from Form 1040 or 1040-SR, line 1z
-Status: **AGREE**
+Status: **MISSING**
 
-Value: $0.00
+Project: $5,137.00
+Model: no answer
+
+Ruling: model error; on the reply format, not the tax reading (T-070 (1)). The prompt (.classm/classm.eic.4.prompt.txt) lists the line as "line (Step 5, 1)" and asks for the whole handle exactly as given; the reply names it "Step 5, 1" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading "line " before matching, and the log records no answer (the replies for classm.eic.1, .3, .5 and .8 write "(Step 5, n)" and classm.eic.7 "line (Step 5, n)", and were read). The reply's value is $5,137.00 ("Form 1040 line 1z = 5,137.00"; Medicaid waiver payments and combat pay zero in this tool); the project's is $5,137.00. They are equal, and Step 5 is reached (eic.reached_step5 true, eic.credit $1,743.00, which the reply's line 6 agrees with), so the project amount is not a T-067 case. Nothing to drop.
 
 ### classm.eic.4 — (Step 5, 2) — Medicaid waiver payments excluded from income on Schedule 1, line 8s, unless cho
-Status: **AGREE**
+Status: **MISSING**
 
-Value: $0.00
+Project: $0.00
+Model: no answer
+
+Ruling: model error; on the reply format, not the tax reading (T-070 (1)). The prompt (.classm/classm.eic.4.prompt.txt) lists the line as "line (Step 5, 2)" and asks for the whole handle exactly as given; the reply names it "Step 5, 2" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading "line " before matching, and the log records no answer (the replies for classm.eic.1, .3, .5 and .8 write "(Step 5, n)" and classm.eic.7 "line (Step 5, n)", and were read). The reply's value is $0.00 ("Form 1040 line 1z = 5,137.00"; Medicaid waiver payments and combat pay zero in this tool); the project's is $0.00. They are equal, and Step 5 is reached (eic.reached_step5 true, eic.credit $1,743.00, which the reply's line 6 agrees with), so the project amount is not a T-067 case. Nothing to drop.
 
 ### classm.eic.4 — (Step 5, 3) — Subtract line 2 from line 1
-Status: **AGREE**
+Status: **MISSING**
 
-Value: $0.00
+Project: $5,137.00
+Model: no answer
+
+Ruling: model error; on the reply format, not the tax reading (T-070 (1)). The prompt (.classm/classm.eic.4.prompt.txt) lists the line as "line (Step 5, 3)" and asks for the whole handle exactly as given; the reply names it "Step 5, 3" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading "line " before matching, and the log records no answer (the replies for classm.eic.1, .3, .5 and .8 write "(Step 5, n)" and classm.eic.7 "line (Step 5, n)", and were read). The reply's value is $5,137.00 ("Form 1040 line 1z = 5,137.00"; Medicaid waiver payments and combat pay zero in this tool); the project's is $5,137.00. They are equal, and Step 5 is reached (eic.reached_step5 true, eic.credit $1,743.00, which the reply's line 6 agrees with), so the project amount is not a T-067 case. Nothing to drop.
 
 ### classm.eic.4 — (Step 5, 4) — Nontaxable combat pay you elect to include in earned income; zero in this tool
-Status: **AGREE**
+Status: **MISSING**
 
-Value: $0.00
+Project: $0.00
+Model: no answer
+
+Ruling: model error; on the reply format, not the tax reading (T-070 (1)). The prompt (.classm/classm.eic.4.prompt.txt) lists the line as "line (Step 5, 4)" and asks for the whole handle exactly as given; the reply names it "Step 5, 4" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading "line " before matching, and the log records no answer (the replies for classm.eic.1, .3, .5 and .8 write "(Step 5, n)" and classm.eic.7 "line (Step 5, n)", and were read). The reply's value is $0.00 ("Form 1040 line 1z = 5,137.00"; Medicaid waiver payments and combat pay zero in this tool); the project's is $0.00. They are equal, and Step 5 is reached (eic.reached_step5 true, eic.credit $1,743.00, which the reply's line 6 agrees with), so the project amount is not a T-067 case. Nothing to drop.
 
 ### classm.eic.4 — (Step 5, 5) — Add lines 3 and 4. This is your earned income
-Status: **AGREE**
+Status: **MISSING**
 
-Value: $0.00
+Project: $5,137.00
+Model: no answer
+
+Ruling: model error; on the reply format, not the tax reading (T-070 (1)). The prompt (.classm/classm.eic.4.prompt.txt) lists the line as "line (Step 5, 5)" and asks for the whole handle exactly as given; the reply names it "Step 5, 5" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading "line " before matching, and the log records no answer (the replies for classm.eic.1, .3, .5 and .8 write "(Step 5, n)" and classm.eic.7 "line (Step 5, n)", and were read). The reply's value is $5,137.00 ("Form 1040 line 1z = 5,137.00"; Medicaid waiver payments and combat pay zero in this tool); the project's is $5,137.00. They are equal, and Step 5 is reached (eic.reached_step5 true, eic.credit $1,743.00, which the reply's line 6 agrees with), so the project amount is not a T-067 case. Nothing to drop.
 
 ### classm.eic.4 — 4b — Worksheet B, line 4b. Combine lines 1e, 2c, 3, and 4a. This is your total earned
 Status: **SKIPPED**
 
 Model: blank
-Work: Step 5 q2 is No (no self-employment, Schedule SE or statutory employee); Worksheet B not used
+Work: Not self-employed, no clergy/church/statutory income; Step 5 Q2 answer is No, so use Worksheet A and leave Worksheet B blank
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -325,56 +325,50 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Worksheet B not used
+Work: Worksheet B is not used
 
 No numeric assertion or class M credit: the model left this line blank.
 
 ### classm.eic.4 — 1 — Enter your earned income from Step 5 (Worksheet A, line 1), or Worksheet B, line
 Status: **AGREE**
 
-Value: $0.00
+Value: $5,137.00
 
 ### classm.eic.4 — 2 — Look up the amount on line 1 in the EIC Table to find the credit, using the colu
 Status: **AGREE**
 
-Value: $0.00
+Value: $1,743.00
 
 ### classm.eic.4 — 3 — Enter the amount from Form 1040 or 1040-SR, line 11b
-Status: **SKIPPED**
+Status: **AGREE**
 
-Model: blank
-Work: Skipped: STOP at line 2 (zero credit)
-
-No numeric assertion or class M credit: the model left this line blank.
+Value: $16,019.00
 
 ### classm.eic.4 — 4 — Are the amounts on lines 3 and 1 the same?
-Status: **SKIPPED**
+Status: **AGREE**
 
-Model: blank
-Work: Skipped: STOP at line 2
-
-No numeric assertion or class M credit: the model left this line blank.
+Value: no
 
 ### classm.eic.4 — 5 — Look up the amount on line 3 in the EIC Table to find the credit, using the colu
 Status: **SKIPPED**
 
 Model: blank
-Work: Skipped: STOP at line 2
+Work: 1 qualifying child; line 3 of 16,019 is less than 23,350, so leave line 5 blank and enter line 2 on line 6
 
 No numeric assertion or class M credit: the model left this line blank.
 
 ### classm.eic.4 — 6 (eic.line6) — This is your earned income credit
 Status: **AGREE**
 
-Value: $0.00
+Value: $1,743.00
 
-### case classm.eic.5 — prompt sha256 5876a8be31a1917a31203fe8ba51c16471bf82eb07205af19ee4c8b582021768; branches: eic.qc_of_another:false, eic.age_range:true, eic.us_home:true, eic.has_qc:true, eic.married_rules:false, eic.top_limit#1, eic.below_top:true, eic.limit_other#1, eic.limit_joint#1, eic.limit#1, eic.step1_income:false, eic.step1_ssn:false, eic.step1_foreign:true, eic.step1_resident:true, eic.gain_7a:floor, eic.step2_income:true, eic.step2_other:true, eic.same_home:false, eic.legally_separated:false, eic.step3_married:true, eic.step3:true, eic.step4:true, eic.step34:true, eic.reached_step5:false, eic.self_employed:false, eic.show_wsb4b:false, eic.show_wsb6:false, eic.wsb_6:positive, eic.earned_for_limit#0, eic.step5_income:false, eic.eligible:false, eic.line1#0, eic.line1_in_table:true, eic.line1_table#1, eic.line2#0, eic.show3:false, eic.line4:true, eic.threshold_other#1, eic.threshold_joint#1, eic.line5_threshold#1, eic.line5_blank:false, eic.show5:false, eic.line5#1, eic.smaller:left, eic.after_line4#1, eic.line6#0, eic.credit#1, eic.reached_step3:false, eic.check_27c:false, eic.wsb_4b_positive:true, eic.wsb_line5_stop:false, eic.separated_box:false, eic.clergy:false
+### case classm.eic.5 — prompt sha256 56c6a40aa252e36592aa4bad3f25cbcf397a3581342f61224073148dc0d63b81; branches: eic.qc_of_another:false, eic.age_range:true, eic.us_home:true, eic.has_qc:true, eic.married_rules:false, eic.top_limit#1, eic.below_top:true, eic.limit_other#1, eic.limit_joint#1, eic.limit#1, eic.step1_income:true, eic.step1_ssn:false, eic.step1_foreign:true, eic.step1_resident:true, eic.gain_7a:floor, eic.step2_income:true, eic.step2_other:true, eic.same_home:false, eic.legally_separated:false, eic.step3_married:true, eic.step3:true, eic.step4:true, eic.step34:true, eic.reached_step5:false, eic.self_employed:false, eic.show_wsb4b:false, eic.show_wsb6:false, eic.wsb_6:positive, eic.earned_for_limit#0, eic.step5_income:true, eic.eligible:false, eic.line1#0, eic.line1_in_table:true, eic.line1_table#1, eic.line2#0, eic.show3:false, eic.line4:true, eic.threshold_other#1, eic.threshold_joint#1, eic.line5_threshold#1, eic.line5_blank:false, eic.show5:false, eic.line5#1, eic.smaller:left, eic.after_line4#1, eic.line6#0, eic.credit#1, eic.reached_step3:false, eic.check_27c:true, eic.wsb_4b_positive:true, eic.wsb_line5_stop:false, eic.separated_box:false, eic.clergy:false
 
 ### classm.eic.5 — (Step 5, 1) — Enter the amount from Form 1040 or 1040-SR, line 1z
 Status: **SKIPPED**
 
 Model: blank
-Work: Step 1 Q2: no EIC-valid SSN, and AGI $61,693 is not under $57,554 (MFJ, 1 child) -> STOP before Step 5
+Work: Step 1 Q2: SSNs not valid for EIC -> STOP, can't take the credit; Step 5 not reached
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -382,7 +376,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Not reached; stopped at Step 1
+Work: Not reached; stopped at Step 1 Q2
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -390,7 +384,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Not reached; stopped at Step 1
+Work: Not reached; stopped at Step 1 Q2
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -398,7 +392,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Not reached; stopped at Step 1
+Work: Not reached; stopped at Step 1 Q2
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -406,7 +400,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Not reached; stopped at Step 1
+Work: Not reached; stopped at Step 1 Q2
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -414,7 +408,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Worksheet B not used (no self-employment) and credit barred at Step 1
+Work: Worksheet B not used; stopped at Step 1 Q2
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -422,7 +416,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Worksheet B not used
+Work: Worksheet B not used; stopped at Step 1 Q2
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -430,7 +424,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Worksheet A not reached; stopped at Step 1
+Work: Worksheet A not reached; stopped at Step 1 Q2
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -438,7 +432,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Worksheet A not reached
+Work: Worksheet A not reached; stopped at Step 1 Q2
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -446,7 +440,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Worksheet A not reached
+Work: Worksheet A not reached; stopped at Step 1 Q2
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -454,7 +448,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Worksheet A not reached
+Work: Worksheet A not reached; stopped at Step 1 Q2
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -462,47 +456,66 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Worksheet A not reached
+Work: Worksheet A not reached; stopped at Step 1 Q2
 
 No numeric assertion or class M credit: the model left this line blank.
 
 ### classm.eic.5 — 6 (eic.line6) — This is your earned income credit
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $0.00
+Project: $4,080.00
+Model: $0.00
+Work: No valid SSNs for EIC -> can't take the credit (check box 27c); EIC = 0
 
-### case classm.eic.6 — prompt sha256 0951cb2ada0433aee4101a79f8da156aa6c5f5c8f86210be849c3d5562e0d048; branches: eic.qc_of_another:false, eic.age_range:true, eic.us_home:true, eic.has_qc:true, eic.married_rules:true, eic.top_limit#2, eic.below_top:true, eic.limit_other#1, eic.limit_joint#1, eic.limit#2, eic.step1_income:true, eic.step1_ssn:true, eic.step1_foreign:true, eic.step1_resident:true, eic.gain_7a:floor, eic.step2_income:true, eic.step2_other:true, eic.same_home:false, eic.legally_separated:false, eic.step3_married:true, eic.step3:true, eic.step4:false, eic.step34:true, eic.reached_step5:true, eic.self_employed:false, eic.show_wsb4b:false, eic.show_wsb6:false, eic.wsb_6:floor, eic.earned_for_limit#0, eic.step5_income:true, eic.eligible:true, eic.line1#0, eic.line1_in_table:false, eic.line1_table#1, eic.line2#1, eic.show3:false, eic.line4:false, eic.threshold_other#1, eic.threshold_joint#1, eic.line5_threshold#2, eic.line5_blank:true, eic.show5:false, eic.line5#1, eic.smaller:right, eic.after_line4#0, eic.line6#1, eic.credit#0, eic.reached_step3:true, eic.check_27c:true, eic.wsb_4b_positive:false, eic.wsb_line5_stop:false, eic.separated_box:true, eic.clergy:false
+Ruling: representation; project retained; model value dropped from the fixture. i1040gi p. 40, Step 1, question 2: "Do you, and your spouse if filing a joint return, have a valid SSN? ... No. STOP You can't take the credit." The case has no valid SSN for the EIC (eic.step1_ssn false, eic.eligible false); the reply stops there and enters $0.00 ("No valid SSNs for EIC -> can't take the credit (check box 27c); EIC = 0"), its other Worksheet A lines blank. The project hides Worksheet A line 6 (shown_when eic.eligible, false), the credit eic.credit is $0.00 and line 27c is checked (eic.check_27c true), so both sides file no credit. The $4,080.00 in the log is the hidden line's internal value, compared because the class M fill of a non-collection document ignores shown_when (T-079 (1)). Not caused by the BUG-0195 wording (eic.us_home is Yes on this case). Dropped: a hidden line's internal value is not evidence. [dropped]
+
+### case classm.eic.6 — prompt sha256 1dc893df8ef83d795e0dca51d4cd3b3b1ea02a033207b76d21fc7f738d89adef; branches: eic.qc_of_another:true, eic.age_range:true, eic.us_home:false, eic.has_qc:false, eic.married_rules:true, eic.top_limit#3, eic.below_top:true, eic.limit_other#0, eic.limit_joint#0, eic.limit#3, eic.step1_income:true, eic.step1_ssn:true, eic.step1_resident:true, eic.gain_7a:floor, eic.step2_income:true, eic.step2_other:true, eic.same_home:true, eic.legally_separated:false, eic.step3_married:false, eic.step3:false, eic.step4:false, eic.step34:false, eic.self_employed:false, eic.wsb_6:floor, eic.earned_for_limit#0, eic.step5_income:true, eic.line1#0, eic.line1_in_table:false, eic.line1_table#0, eic.line2#1, eic.line4:false, eic.threshold_other#0, eic.threshold_joint#0, eic.line5_threshold#3, eic.line5_blank:true, eic.line5#0, eic.smaller:right, eic.after_line4#0, eic.line6#1, eic.wsb_4b_positive:false, eic.clergy:false
 
 ### classm.eic.6 — (Step 5, 1) — Enter the amount from Form 1040 or 1040-SR, line 1z
-Status: **AGREE**
+Status: **MISSING**
 
-Value: $0.00
+Project: $0.00
+Model: no answer
+
+Ruling: model error; on the reply format, not the tax reading (T-070 (1)). The prompt (.classm/classm.eic.6.prompt.txt) lists the line as "line (Step 5, 1)" and asks for the whole handle exactly as given; the reply names it "Step 5, 1" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading "line " before matching, and the log records no answer (the replies for classm.eic.1, .3, .5 and .8 write "(Step 5, n)" and classm.eic.7 "line (Step 5, n)", and were read). The reply's value is $0.00 (Form 1040 line 1z $0.00); the project's is $0.00. They are equal. The return is refused (sa.excluded_income, excluded foreign or possession income; i1040gi p. 40, Step 1, question 3, "Are you filing Form 2555?"), and eic.us_home, the BUG-0195 question, is answered No here, which does not enter these lines. Nothing to drop: the values agree and neither side shows a nonzero amount.
 
 ### classm.eic.6 — (Step 5, 2) — Medicaid waiver payments excluded from income on Schedule 1, line 8s, unless cho
-Status: **AGREE**
+Status: **MISSING**
 
-Value: $0.00
+Project: $0.00
+Model: no answer
+
+Ruling: model error; on the reply format, not the tax reading (T-070 (1)). The prompt (.classm/classm.eic.6.prompt.txt) lists the line as "line (Step 5, 2)" and asks for the whole handle exactly as given; the reply names it "Step 5, 2" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading "line " before matching, and the log records no answer (the replies for classm.eic.1, .3, .5 and .8 write "(Step 5, n)" and classm.eic.7 "line (Step 5, n)", and were read). The reply's value is $0.00 (Form 1040 line 1z $0.00); the project's is $0.00. They are equal. The return is refused (sa.excluded_income, excluded foreign or possession income; i1040gi p. 40, Step 1, question 3, "Are you filing Form 2555?"), and eic.us_home, the BUG-0195 question, is answered No here, which does not enter these lines. Nothing to drop: the values agree and neither side shows a nonzero amount.
 
 ### classm.eic.6 — (Step 5, 3) — Subtract line 2 from line 1
-Status: **AGREE**
+Status: **MISSING**
 
-Value: $0.00
+Project: $0.00
+Model: no answer
+
+Ruling: model error; on the reply format, not the tax reading (T-070 (1)). The prompt (.classm/classm.eic.6.prompt.txt) lists the line as "line (Step 5, 3)" and asks for the whole handle exactly as given; the reply names it "Step 5, 3" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading "line " before matching, and the log records no answer (the replies for classm.eic.1, .3, .5 and .8 write "(Step 5, n)" and classm.eic.7 "line (Step 5, n)", and were read). The reply's value is $0.00 (Form 1040 line 1z $0.00); the project's is $0.00. They are equal. The return is refused (sa.excluded_income, excluded foreign or possession income; i1040gi p. 40, Step 1, question 3, "Are you filing Form 2555?"), and eic.us_home, the BUG-0195 question, is answered No here, which does not enter these lines. Nothing to drop: the values agree and neither side shows a nonzero amount.
 
 ### classm.eic.6 — (Step 5, 4) — Nontaxable combat pay you elect to include in earned income; zero in this tool
-Status: **AGREE**
+Status: **MISSING**
 
-Value: $0.00
+Project: $0.00
+Model: no answer
+
+Ruling: model error; on the reply format, not the tax reading (T-070 (1)). The prompt (.classm/classm.eic.6.prompt.txt) lists the line as "line (Step 5, 4)" and asks for the whole handle exactly as given; the reply names it "Step 5, 4" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading "line " before matching, and the log records no answer (the replies for classm.eic.1, .3, .5 and .8 write "(Step 5, n)" and classm.eic.7 "line (Step 5, n)", and were read). The reply's value is $0.00 (Form 1040 line 1z $0.00); the project's is $0.00. They are equal. The return is refused (sa.excluded_income, excluded foreign or possession income; i1040gi p. 40, Step 1, question 3, "Are you filing Form 2555?"), and eic.us_home, the BUG-0195 question, is answered No here, which does not enter these lines. Nothing to drop: the values agree and neither side shows a nonzero amount.
 
 ### classm.eic.6 — (Step 5, 5) — Add lines 3 and 4. This is your earned income
-Status: **AGREE**
+Status: **MISSING**
 
-Value: $0.00
+Project: $0.00
+Model: no answer
+
+Ruling: model error; on the reply format, not the tax reading (T-070 (1)). The prompt (.classm/classm.eic.6.prompt.txt) lists the line as "line (Step 5, 5)" and asks for the whole handle exactly as given; the reply names it "Step 5, 5" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading "line " before matching, and the log records no answer (the replies for classm.eic.1, .3, .5 and .8 write "(Step 5, n)" and classm.eic.7 "line (Step 5, n)", and were read). The reply's value is $0.00 (Form 1040 line 1z $0.00); the project's is $0.00. They are equal. The return is refused (sa.excluded_income, excluded foreign or possession income; i1040gi p. 40, Step 1, question 3, "Are you filing Form 2555?"), and eic.us_home, the BUG-0195 question, is answered No here, which does not enter these lines. Nothing to drop: the values agree and neither side shows a nonzero amount.
 
 ### classm.eic.6 — 4b — Worksheet B, line 4b. Combine lines 1e, 2c, 3, and 4a. This is your total earned
 Status: **SKIPPED**
 
 Model: blank
-Work: Step 5 q2 is No (no self-employment, Schedule SE or statutory employee), so Worksheet A is used and Worksheet B is not completed
+Work: Not self-employed, so Step 5 Q2 is No; Worksheet B not used
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -510,7 +523,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Worksheet B is not used
+Work: Worksheet B not used
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -528,7 +541,7 @@ Value: $0.00
 Status: **SKIPPED**
 
 Model: blank
-Work: Worksheet stopped at line 2 (zero credit)
+Work: Line 2 is zero, STOP; not reached
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -536,7 +549,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Worksheet stopped at line 2
+Work: Line 2 is zero, STOP; not reached
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -544,7 +557,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Worksheet stopped at line 2
+Work: Line 2 is zero, STOP; not reached
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -553,13 +566,13 @@ Status: **AGREE**
 
 Value: $0.00
 
-### case classm.eic.7 — prompt sha256 ad14e2d805c28e72b23836233db7ce59441f02679aedb679b96c8327edb324fc; branches: eic.qc_of_another:false, eic.age_range:false, eic.us_home:true, eic.has_qc:false, eic.married_rules:false, eic.top_limit#0, eic.below_top:false, eic.limit_other#0, eic.limit_joint#0, eic.limit#0, eic.step1_income:false, eic.step1_ssn:true, eic.step1_foreign:true, eic.step1_resident:true, eic.gain_7a:floor, eic.step2_income:true, eic.same_home:false, eic.legally_separated:false, eic.step3_married:true, eic.step3:true, eic.step4:false, eic.step34:false, eic.reached_step5:false, eic.self_employed:false, eic.show_wsb4b:false, eic.show_wsb6:false, eic.wsb_6:positive, eic.earned_for_limit#0, eic.step5_income:false, eic.eligible:false, eic.line1#0, eic.line1_in_table:true, eic.line1_table#0, eic.line2#0, eic.show3:false, eic.line4:false, eic.threshold_other#0, eic.threshold_joint#0, eic.line5_threshold#0, eic.line5_blank:false, eic.show5:false, eic.line5#0, eic.smaller:left, eic.after_line4#1, eic.line6#1, eic.credit#1, eic.reached_step3:false, eic.check_27c:false, eic.wsb_4b_positive:true, eic.wsb_line5_stop:false, eic.separated_box:false, eic.clergy:false
+### case classm.eic.7 — prompt sha256 30c2ed71b94888cb0249caf897533d8328f99392f3feaa8f9554a46e0a5f91c2; branches: eic.qc_of_another:false, eic.age_range:false, eic.us_home:true, eic.has_qc:false, eic.married_rules:false, eic.top_limit#0, eic.below_top:true, eic.limit_other#0, eic.limit_joint#0, eic.limit#0, eic.step1_income:false, eic.step1_ssn:true, eic.step1_foreign:true, eic.step1_resident:true, eic.gain_7a:floor, eic.step2_income:true, eic.same_home:false, eic.legally_separated:false, eic.step3_married:true, eic.step3:true, eic.step4:false, eic.step34:false, eic.reached_step5:false, eic.self_employed:false, eic.show_wsb4b:false, eic.show_wsb6:false, eic.wsb_6:positive, eic.earned_for_limit#0, eic.step5_income:false, eic.eligible:false, eic.line1#0, eic.line1_in_table:true, eic.line1_table#0, eic.line2#0, eic.show3:false, eic.line4:false, eic.threshold_other#0, eic.threshold_joint#0, eic.line5_threshold#0, eic.line5_blank:false, eic.show5:false, eic.line5#0, eic.smaller:left, eic.after_line4#1, eic.line6#1, eic.credit#1, eic.reached_step3:false, eic.check_27c:false, eic.wsb_4b_positive:true, eic.wsb_line5_stop:false, eic.separated_box:false, eic.clergy:false
 
 ### classm.eic.7 — (Step 5, 1) — Enter the amount from Form 1040 or 1040-SR, line 1z
 Status: **SKIPPED**
 
 Model: blank
-Work: Step 1 Q1: no qualifying children and line 11b $66,664 is not less than $19,104, so STOP; Step 5 not reached
+Work: Step 1 Q1: no children with valid SSNs; line 11b $50,354 is not less than $19,104, so STOP and Step 5 is never reached
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -567,7 +580,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: STOP at Step 1; Step 5 not reached
+Work: Not reached; stopped at Step 1
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -575,7 +588,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: STOP at Step 1; Step 5 not reached
+Work: Not reached; stopped at Step 1
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -583,7 +596,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: STOP at Step 1; Step 5 not reached
+Work: Not reached; stopped at Step 1
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -591,7 +604,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: STOP at Step 1; Step 5 not reached
+Work: Not reached; stopped at Step 1
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -599,7 +612,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: STOP at Step 1; Worksheet B not used
+Work: Worksheet B not used: not self-employed, and stopped at Step 1
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -607,7 +620,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: STOP at Step 1; Worksheet B not used
+Work: Worksheet B not used
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -615,7 +628,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: STOP at Step 1; Worksheet A not reached
+Work: Worksheet A not reached; stopped at Step 1
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -623,7 +636,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: STOP at Step 1; Worksheet A not reached
+Work: Worksheet A not reached; stopped at Step 1
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -631,7 +644,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: STOP at Step 1; Worksheet A not reached
+Work: Worksheet A not reached; stopped at Step 1
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -639,7 +652,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: STOP at Step 1; Worksheet A not reached
+Work: Worksheet A not reached; stopped at Step 1
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -647,7 +660,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: STOP at Step 1; Worksheet A not reached
+Work: Worksheet A not reached; stopped at Step 1
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -656,12 +669,12 @@ Status: **AGREE**
 
 Value: $0.00
 
-### case classm.eic.8 — prompt sha256 96574154f846362db54e5ae61ba328adc58ebeb09f2bc469d11271d4f7d79c9e; branches: eic.qc_of_another:false, eic.age_range:true, eic.us_home:true, eic.has_qc:true, eic.married_rules:false, eic.top_limit#0, eic.below_top:true, eic.limit_other#1, eic.limit_joint#1, eic.limit#0, eic.step1_income:true, eic.step1_ssn:true, eic.step1_foreign:true, eic.step1_resident:true, eic.gain_7a:floor, eic.step2_income:true, eic.step2_other:true, eic.same_home:false, eic.legally_separated:false, eic.step3_married:true, eic.step3:true, eic.step4:true, eic.step34:true, eic.reached_step5:true, eic.self_employed:false, eic.show_wsb4b:false, eic.show_wsb6:false, eic.wsb_6:positive, eic.earned_for_limit#0, eic.step5_income:true, eic.eligible:true, eic.line1#0, eic.line1_in_table:true, eic.line1_table#1, eic.line2#0, eic.show3:true, eic.line4:false, eic.threshold_other#1, eic.threshold_joint#1, eic.line5_threshold#0, eic.line5_blank:false, eic.show5:true, eic.line5#1, eic.smaller:right, eic.after_line4#1, eic.line6#1, eic.credit#0, eic.reached_step3:true, eic.check_27c:false, eic.wsb_4b_positive:true, eic.wsb_line5_stop:false, eic.separated_box:false, eic.clergy:false
+### case classm.eic.8 — prompt sha256 ebacd93a25734e78ae7d70c3cf6d577f6465467f97d237a69e74494af93fa798; branches: eic.qc_of_another:false, eic.age_range:true, eic.us_home:true, eic.has_qc:true, eic.married_rules:true, eic.top_limit#2, eic.below_top:true, eic.limit_other#1, eic.limit_joint#1, eic.limit#2, eic.step1_income:true, eic.step1_ssn:true, eic.step1_foreign:true, eic.step1_resident:true, eic.gain_7a:floor, eic.step2_income:true, eic.step2_other:true, eic.same_home:false, eic.legally_separated:false, eic.step3_married:true, eic.step3:true, eic.step4:false, eic.step34:true, eic.reached_step5:true, eic.self_employed:false, eic.show_wsb4b:false, eic.show_wsb6:false, eic.wsb_6:positive, eic.earned_for_limit#0, eic.step5_income:true, eic.eligible:true, eic.line1#0, eic.line1_in_table:true, eic.line1_table#1, eic.line2#0, eic.show3:true, eic.line4:false, eic.threshold_other#1, eic.threshold_joint#1, eic.line5_threshold#2, eic.line5_blank:false, eic.show5:true, eic.line5#1, eic.smaller:right, eic.after_line4#1, eic.line6#1, eic.credit#0, eic.reached_step3:true, eic.check_27c:false, eic.wsb_4b_positive:true, eic.wsb_line5_stop:false, eic.separated_box:true, eic.clergy:false
 
 ### classm.eic.8 — (Step 5, 1) — Enter the amount from Form 1040 or 1040-SR, line 1z
 Status: **AGREE**
 
-Value: $26,469.00
+Value: $25,118.00
 
 ### classm.eic.8 — (Step 5, 2) — Medicaid waiver payments excluded from income on Schedule 1, line 8s, unless cho
 Status: **AGREE**
@@ -671,7 +684,7 @@ Value: $0.00
 ### classm.eic.8 — (Step 5, 3) — Subtract line 2 from line 1
 Status: **AGREE**
 
-Value: $26,469.00
+Value: $25,118.00
 
 ### classm.eic.8 — (Step 5, 4) — Nontaxable combat pay you elect to include in earned income; zero in this tool
 Status: **AGREE**
@@ -681,13 +694,13 @@ Value: $0.00
 ### classm.eic.8 — (Step 5, 5) — Add lines 3 and 4. This is your earned income
 Status: **AGREE**
 
-Value: $26,469.00
+Value: $25,118.00
 
 ### classm.eic.8 — 4b — Worksheet B, line 4b. Combine lines 1e, 2c, 3, and 4a. This is your total earned
 Status: **SKIPPED**
 
 Model: blank
-Work: Step 5 Q2 answered No (not self-employed), so Worksheet A is used and Worksheet B is not completed
+Work: Not self-employed, so Step 5 Q2 = No; use Worksheet A and leave Worksheet B blank
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -695,24 +708,24 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Worksheet B not used
+Work: Worksheet B not used; blank
 
 No numeric assertion or class M credit: the model left this line blank.
 
 ### classm.eic.8 — 1 — Enter your earned income from Step 5 (Worksheet A, line 1), or Worksheet B, line
 Status: **AGREE**
 
-Value: $26,469.00
+Value: $25,118.00
 
 ### classm.eic.8 — 2 — Look up the amount on line 1 in the EIC Table to find the credit, using the colu
 Status: **AGREE**
 
-Value: $3,829.00
+Value: $4,044.00
 
 ### classm.eic.8 — 3 — Enter the amount from Form 1040 or 1040-SR, line 11b
 Status: **AGREE**
 
-Value: $26,360.00
+Value: $23,618.00
 
 ### classm.eic.8 — 4 — Are the amounts on lines 3 and 1 the same?
 Status: **AGREE**
@@ -722,102 +735,157 @@ Value: no
 ### classm.eic.8 — 5 — Look up the amount on line 3 in the EIC Table to find the credit, using the colu
 Status: **AGREE**
 
-Value: $3,845.00
+Value: $4,284.00
 
 ### classm.eic.8 — 6 (eic.line6) — This is your earned income credit
 Status: **AGREE**
 
-Value: $3,829.00
-
-### case classm.eic.9 — prompt sha256 9747601dbf4c635c773bffe98b3d4a42b23dfce77d97a5f96508a11930d3072c; branches: eic.qc_of_another:false, eic.age_range:true, eic.us_home:true, eic.has_qc:true, eic.married_rules:false, eic.top_limit#0, eic.below_top:true, eic.limit_other#1, eic.limit_joint#1, eic.limit#0, eic.step1_income:true, eic.step1_ssn:true, eic.step1_foreign:true, eic.step1_resident:true, eic.gain_7a:floor, eic.step2_income:true, eic.step2_other:true, eic.same_home:false, eic.legally_separated:false, eic.step3_married:true, eic.step3:true, eic.step4:true, eic.step34:true, eic.reached_step5:true, eic.self_employed:true, eic.show_wsb4b:true, eic.show_wsb6:false, eic.wsb_6:positive, eic.earned_for_limit#1, eic.step5_income:false, eic.eligible:false, eic.line1#1, eic.line1_in_table:true, eic.line1_table#1, eic.line2#0, eic.show3:false, eic.line4:false, eic.threshold_other#1, eic.threshold_joint#1, eic.line5_threshold#0, eic.line5_blank:false, eic.show5:false, eic.line5#1, eic.smaller:right, eic.after_line4#1, eic.line6#1, eic.credit#1, eic.reached_step3:true, eic.check_27c:true, eic.wsb_4b_positive:true, eic.wsb_line5_stop:true, eic.separated_box:false, eic.clergy:false
-
-### classm.eic.9 — (Step 5, 1) — Enter the amount from Form 1040 or 1040-SR, line 1z
-Status: **MISSING**
-
-Project: $73,579.00
-Model: no answer
-
-Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.eic.9.prompt.txt) lists the line as "line (Step 5, 1)" and says each line is "named by its printed number as it appears in the IRS text (where two lines share a number, followed by a name in parentheses: answer with the whole handle, exactly as given)"; the reply names it "Step 5, 1" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading 'line ' before matching, and the log records no answer (the replies for classm.eic.3 to classm.eic.8 use "(Step 5, 1)" and were read). The reply's value is $73,579.00 (Form 1040 line 1z); the project's is $73,579.00. They are equal, and Step 5 is reached (eic.reached_step5 true; Worksheet B line 4a reads it and line 4b $55,005.10 agrees), so the project amount is not a T-067 case. Nothing to drop.
-
-### classm.eic.9 — (Step 5, 2) — Medicaid waiver payments excluded from income on Schedule 1, line 8s, unless cho
-Status: **MISSING**
-
-Project: $0.00
-Model: no answer
-
-Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.eic.9.prompt.txt) lists the line as "line (Step 5, 2)" and says each line is "named by its printed number as it appears in the IRS text (where two lines share a number, followed by a name in parentheses: answer with the whole handle, exactly as given)"; the reply names it "Step 5, 2" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading 'line ' before matching, and the log records no answer (the replies for classm.eic.3 to classm.eic.8 use "(Step 5, 2)" and were read). The reply's value is $0.00 (no Medicaid waiver payments); the project's is $0.00. They are equal, and Step 5 is reached (eic.reached_step5 true; Worksheet B line 4a reads it and line 4b $55,005.10 agrees), so the project amount is not a T-067 case. Nothing to drop.
-
-### classm.eic.9 — (Step 5, 3) — Subtract line 2 from line 1
-Status: **MISSING**
-
-Project: $73,579.00
-Model: no answer
-
-Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.eic.9.prompt.txt) lists the line as "line (Step 5, 3)" and says each line is "named by its printed number as it appears in the IRS text (where two lines share a number, followed by a name in parentheses: answer with the whole handle, exactly as given)"; the reply names it "Step 5, 3" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading 'line ' before matching, and the log records no answer (the replies for classm.eic.3 to classm.eic.8 use "(Step 5, 3)" and were read). The reply's value is $73,579.00 (line 1 minus line 2); the project's is $73,579.00. They are equal, and Step 5 is reached (eic.reached_step5 true; Worksheet B line 4a reads it and line 4b $55,005.10 agrees), so the project amount is not a T-067 case. Nothing to drop.
-
-### classm.eic.9 — (Step 5, 4) — Nontaxable combat pay you elect to include in earned income; zero in this tool
-Status: **MISSING**
-
-Project: $0.00
-Model: no answer
-
-Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.eic.9.prompt.txt) lists the line as "line (Step 5, 4)" and says each line is "named by its printed number as it appears in the IRS text (where two lines share a number, followed by a name in parentheses: answer with the whole handle, exactly as given)"; the reply names it "Step 5, 4" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading 'line ' before matching, and the log records no answer (the replies for classm.eic.3 to classm.eic.8 use "(Step 5, 4)" and were read). The reply's value is $0.00 (no combat pay elected); the project's is $0.00. They are equal, and Step 5 is reached (eic.reached_step5 true; Worksheet B line 4a reads it and line 4b $55,005.10 agrees), so the project amount is not a T-067 case. Nothing to drop.
-
-### classm.eic.9 — (Step 5, 5) — Add lines 3 and 4. This is your earned income
-Status: **MISSING**
-
-Project: $73,579.00
-Model: no answer
-
-Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.eic.9.prompt.txt) lists the line as "line (Step 5, 5)" and says each line is "named by its printed number as it appears in the IRS text (where two lines share a number, followed by a name in parentheses: answer with the whole handle, exactly as given)"; the reply names it "Step 5, 5" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading 'line ' before matching, and the log records no answer (the replies for classm.eic.3 to classm.eic.8 use "(Step 5, 5)" and were read). The reply's value is $73,579.00 (lines 3 plus 4); the project's is $73,579.00. They are equal, and Step 5 is reached (eic.reached_step5 true; Worksheet B line 4a reads it and line 4b $55,005.10 agrees), so the project amount is not a T-067 case. Nothing to drop.
-
-### classm.eic.9 — 4b — Worksheet B, line 4b. Combine lines 1e, 2c, 3, and 4a. This is your total earned
-Status: **AGREE**
-
-Value: $55,005.10
-
-### classm.eic.9 — 6 (eic.wsb_6) — Worksheet B, line 6. Enter your total earned income from Part 4, line 4b (zero i
-Status: **AGREE**
-
-Value: $55,005.10
-
-### classm.eic.9 — 1 — Enter your earned income from Step 5 (Worksheet A, line 1), or Worksheet B, line
-Status: **AGREE**
-
-Value: $55,005.10
-
-### classm.eic.9 — 2 — Look up the amount on line 1 in the EIC Table to find the credit, using the colu
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.eic.9 — 3 — Enter the amount from Form 1040 or 1040-SR, line 11b
-Status: **AGREE**
-
-Value: $48,693.10
-
-### classm.eic.9 — 4 — Are the amounts on lines 3 and 1 the same?
-Status: **AGREE**
-
-Value: no
-
-### classm.eic.9 — 5 — Look up the amount on line 3 in the EIC Table to find the credit, using the colu
-Status: **DISAGREE**
-
-Project: $281.00
-Model: $1,819.00
-Work: 48,693.10 is not less than 23,350; EIC Table, Single, 1 child: 48,650-48,700 gives 1,819
-
-Ruling: model error; i1040gi p. 46, Worksheet A, line 5: "No. Look up the amount on line 3 in the EIC Table to find the credit. Be sure you use the correct column for your filing status and the number of qualifying children you have who have valid SSNs." Line 3 is $48,693.10, single, one qualifying child with a valid SSN. The EIC Table, i1040gi p. 56, row "48,650 48,700" gives, for single, head of household or qualifying surviving spouse, 0 children $0, 1 child $281, 2 children $1,819, 3 children $2,713. Project $281.00 (tables/2025/eic_1.yaml); model $1,819.00 ("EIC Table, Single, 1 child: 48,650-48,700 gives 1,819"), the two-children column. The model's value is a misread table, not evidence. Also, the line is after a STOP on this return (Worksheet B line 4b $55,005.10 is not less than $50,434, i1040gi p. 47, line 5 "No. STOP"), so the project hides it (eic.show5 false) and the model should have left it blank; line 6 and the credit ($0.00) agree. [dropped]
-
-### classm.eic.9 — 6 (eic.line6) — This is your earned income credit
-Status: **AGREE**
-
-Value: $0.00
+Value: $4,044.00
 
 ## Raw responses
 
 ### classm.eic.1
+
+```yaml
+```yaml
+lines:
+  - printed: "(Step 5, 1)"
+    value: "32936.00"
+    work: "Form 1040 line 1z = 32,936.00"
+  - printed: "(Step 5, 2)"
+    value: "0.00"
+    work: "No Medicaid waiver payments excluded (zero in this tool)"
+  - printed: "(Step 5, 3)"
+    value: "32936.00"
+    work: "32,936.00 - 0.00"
+  - printed: "(Step 5, 4)"
+    value: "0.00"
+    work: "No nontaxable combat pay elected (zero in this tool)"
+  - printed: "(Step 5, 5)"
+    value: "32936.00"
+    work: "32,936.00 + 0.00 = earned income"
+  - printed: "4b"
+    value: "blank"
+    work: "Not self-employed, clergy, church employee or statutory employee; Step 5 Q2 No, so use Worksheet A and leave Worksheet B blank"
+  - printed: "6 (eic.wsb_6)"
+    value: "blank"
+    work: "Worksheet B not used"
+  - printed: "1"
+    value: "32936.00"
+    work: "Worksheet A line 1 = Step 5 earned income 32,936.00"
+  - printed: "2"
+    value: "2798.00"
+    work: "EIC Table row 32,900-32,950, HOH column, 1 child with valid SSN (dep_c) = 2,798"
+  - printed: "3"
+    value: "32936.00"
+    work: "Form 1040 line 11b = 32,936.00"
+  - printed: "4"
+    value: "yes"
+    work: "Line 3 32,936 = line 1 32,936; skip line 5 and enter line 2 on line 6"
+  - printed: "5"
+    value: "blank"
+    work: "Skipped because line 4 is Yes"
+  - printed: "6 (eic.line6)"
+    value: "2798.00"
+    work: "Amount from line 2"
+```
+```
+
+### classm.eic.2
+
+```yaml
+```yaml
+lines:
+  - printed: "Step 5, 1"
+    value: "blank"
+    work: "Not reached. Step 1 Q1: no qualifying children and line 11b $65,538.15 is not less than $19,104, so STOP, you can't take the credit."
+  - printed: "Step 5, 2"
+    value: "blank"
+    work: "Not reached; the credit was disallowed at Step 1."
+  - printed: "Step 5, 3"
+    value: "blank"
+    work: "Not reached; the credit was disallowed at Step 1."
+  - printed: "Step 5, 4"
+    value: "blank"
+    work: "Not reached; the credit was disallowed at Step 1."
+  - printed: "Step 5, 5"
+    value: "blank"
+    work: "Not reached; the credit was disallowed at Step 1."
+  - printed: "4b"
+    value: "blank"
+    work: "Worksheet B not reached; the credit was disallowed at Step 1."
+  - printed: "6 (eic.wsb_6)"
+    value: "blank"
+    work: "Worksheet B not reached; the credit was disallowed at Step 1."
+  - printed: "1"
+    value: "blank"
+    work: "Worksheet A not reached; the credit was disallowed at Step 1."
+  - printed: "2"
+    value: "blank"
+    work: "Worksheet A not reached; the credit was disallowed at Step 1."
+  - printed: "3"
+    value: "blank"
+    work: "Worksheet A not reached; the credit was disallowed at Step 1."
+  - printed: "4"
+    value: "blank"
+    work: "Worksheet A not reached; the credit was disallowed at Step 1."
+  - printed: "5"
+    value: "blank"
+    work: "Worksheet A not reached; the credit was disallowed at Step 1."
+  - printed: "6 (eic.line6)"
+    value: "0.00"
+    work: "No credit. Step 1 STOP (AGI $65,538.15 is at least $19,104 with no children). Step 2 investment income is also over $11,950 (21,941 + 51,204 + 9,641 = $82,786). Step 4 Q1 also stops MFS filers without a qualifying child."
+```
+```
+
+### classm.eic.3
+
+```yaml
+```yaml
+lines:
+  - printed: "(Step 5, 1)"
+    value: "13709.00"
+    work: "Form 1040 line 1z = 13,709.00"
+  - printed: "(Step 5, 2)"
+    value: "0.00"
+    work: "No Medicaid waiver payments excluded; zero in this tool"
+  - printed: "(Step 5, 3)"
+    value: "13709.00"
+    work: "13,709.00 - 0.00"
+  - printed: "(Step 5, 4)"
+    value: "0.00"
+    work: "No nontaxable combat pay elected; zero in this tool"
+  - printed: "(Step 5, 5)"
+    value: "13709.00"
+    work: "13,709.00 + 0.00 = earned income"
+  - printed: "4b"
+    value: "12259.68"
+    work: "Parts 1-2 (Schedule C) -1,449.32 + Part 3 0 + 4a 13,709.00 = 12,259.68"
+  - printed: "6 (eic.wsb_6)"
+    value: "12259.68"
+    work: "Line 4b is positive and below the $57,310 limit (2 children with valid SSNs), so 12,259.68"
+  - printed: "1"
+    value: "12259.68"
+    work: "Self-employed (Schedule C), so use Worksheet B line 6 = 12,259.68"
+  - printed: "2"
+    value: "4910.00"
+    work: "EIC Table row 12,250-12,300, Single column, 2 children with valid SSNs (dep_a, dep_c) = 4,910"
+  - printed: "3"
+    value: "12259.68"
+    work: "Form 1040 line 11b = 12,259.68"
+  - printed: "4"
+    value: "yes"
+    work: "Line 3 (12,259.68) equals line 1 (12,259.68)"
+  - printed: "5"
+    value: ""
+    work: "Line 4 is yes, so skip line 5"
+  - printed: "6 (eic.line6)"
+    value: "4910.00"
+    work: "Line 4 is yes, so enter line 2 = 4,910"
+```
+```
+
+### classm.eic.4
 
 ```yaml
 ```yaml
@@ -830,178 +898,37 @@ lines:
     work: "No Medicaid waiver payments excluded on Schedule 1 line 8s; zero in this tool"
   - printed: "Step 5, 3"
     value: "5137.00"
-    work: "Line 1 minus line 2: 5,137.00 - 0 = 5,137.00"
+    work: "5,137.00 - 0.00 = 5,137.00"
   - printed: "Step 5, 4"
     value: "0.00"
     work: "No nontaxable combat pay elected; zero in this tool"
   - printed: "Step 5, 5"
     value: "5137.00"
-    work: "Line 3 plus line 4: 5,137.00 + 0 = 5,137.00; this is earned income"
+    work: "5,137.00 + 0.00 = 5,137.00 earned income"
   - printed: "4b"
     value: "blank"
-    work: "Not self-employed, so Step 5 question 2 is No; use Worksheet A, and Worksheet B is not used"
+    work: "Not self-employed, no clergy/church/statutory income; Step 5 Q2 answer is No, so use Worksheet A and leave Worksheet B blank"
   - printed: "6 (eic.wsb_6)"
     value: "blank"
     work: "Worksheet B is not used"
   - printed: "1"
     value: "5137.00"
-    work: "Earned income from Step 5 line 5 = 5,137.00"
+    work: "Earned income from Step 5, line 5 = 5,137.00"
   - printed: "2"
     value: "1743.00"
-    work: "EIC Table row 5,100-5,150, QSS column, 1 qualifying child with valid SSN = 1,743"
+    work: "EIC Table row 5,100-5,150, QSS column, 1 child with valid SSN (dep_a) = 1,743"
   - printed: "3"
-    value: "2137.00"
-    work: "Form 1040 line 11b = 2,137.00"
+    value: "16019.00"
+    work: "Form 1040 line 11b = 16,019.00"
   - printed: "4"
     value: "no"
-    work: "Line 3 (2,137) differs from line 1 (5,137)"
+    work: "Line 3 (16,019) is not equal to line 1 (5,137); go to line 5"
   - printed: "5"
     value: "blank"
-    work: "Has 1 or more qualifying children and line 3 (2,137) is less than 23,350, so leave line 5 blank"
+    work: "1 qualifying child; line 3 of 16,019 is less than 23,350, so leave line 5 blank and enter line 2 on line 6"
   - printed: "6 (eic.line6)"
     value: "1743.00"
-    work: "Enter the line 2 amount on line 6 = 1,743"
-```
-```
-
-### classm.eic.2
-
-```yaml
-```yaml
-lines:
-  - printed: "Step 5, 1"
-    value: "blank"
-    work: "Step 1 Q1: MFS, no children with valid SSNs, AGI $22,732 is not under $19,104, so STOP and Step 5 is never reached"
-  - printed: "Step 5, 2"
-    value: "blank"
-    work: "Not reached: STOP at Step 1. Investment income of $97,691 exceeds $11,950 with no Form 4797 (Step 2), and MFS with no qualifying child is barred (Step 4 Q1)"
-  - printed: "Step 5, 3"
-    value: "blank"
-    work: "Not reached: STOP at Step 1"
-  - printed: "Step 5, 4"
-    value: "blank"
-    work: "Not reached: STOP at Step 1"
-  - printed: "Step 5, 5"
-    value: "blank"
-    work: "Not reached: STOP at Step 1"
-  - printed: "4b"
-    value: "blank"
-    work: "Worksheet B not reached: STOP at Step 1"
-  - printed: "6 (eic.wsb_6)"
-    value: "blank"
-    work: "Worksheet B not reached: STOP at Step 1"
-  - printed: "1"
-    value: "blank"
-    work: "Worksheet A not reached: STOP at Step 1"
-  - printed: "2"
-    value: "blank"
-    work: "Worksheet A not reached: STOP at Step 1"
-  - printed: "3"
-    value: "blank"
-    work: "Worksheet A not reached: STOP at Step 1"
-  - printed: "4"
-    value: "blank"
-    work: "Worksheet A not reached: STOP at Step 1"
-  - printed: "5"
-    value: "blank"
-    work: "Worksheet A not reached: STOP at Step 1"
-  - printed: "6 (eic.line6)"
-    value: "0.00"
-    work: "You can't take the credit (Step 1 STOP), so the EIC is $0"
-```
-```
-
-### classm.eic.3
-
-```yaml
-```yaml
-lines:
-  - printed: "(Step 5, 1)"
-    value: "77987.00"
-    work: "Form 1040 line 1z = 77,987.00"
-  - printed: "(Step 5, 2)"
-    value: "0.00"
-    work: "No Medicaid waiver payments excluded; zero in this tool"
-  - printed: "(Step 5, 3)"
-    value: "77987.00"
-    work: "77,987.00 - 0.00"
-  - printed: "(Step 5, 4)"
-    value: "0.00"
-    work: "No nontaxable combat pay elected; zero in this tool"
-  - printed: "(Step 5, 5)"
-    value: "77987.00"
-    work: "77,987.00 + 0.00; Schedule C filed, so Step 5 Q2 = Yes and Worksheet B applies"
-  - printed: "4b"
-    value: "12181.20"
-    work: "Parts 1-2 (-65,805.80) + Step 5 earned income 77,987.00 = 12,181.20"
-  - printed: "6 (eic.wsb_6)"
-    value: "12181.20"
-    work: "4b is positive and below $57,310 (2 children with valid SSNs), so line 6 = line 4b"
-  - printed: "1"
-    value: "12181.20"
-    work: "Worksheet B line 6"
-  - printed: "2"
-    value: "4870.00"
-    work: "EIC Table row 12,150-12,200, Single, 2 children = 4,870"
-  - printed: "3"
-    value: "10228.20"
-    work: "Form 1040 line 11b"
-  - printed: "4"
-    value: "no"
-    work: "10,228.20 is not equal to 12,181.20"
-  - printed: "5"
-    value: "blank"
-    work: "1+ child with valid SSN and line 3 (10,228.20) < $23,350, so leave blank and use line 2"
-  - printed: "6 (eic.line6)"
-    value: "4870.00"
-    work: "Amount from line 2"
-```
-```
-
-### classm.eic.4
-
-```yaml
-```yaml
-lines:
-  - printed: "(Step 5, 1)"
-    value: "0.00"
-    work: "Form 1040 line 1z = 0.00"
-  - printed: "(Step 5, 2)"
-    value: "0.00"
-    work: "No Medicaid waiver payments excluded (zero in this tool)"
-  - printed: "(Step 5, 3)"
-    value: "0.00"
-    work: "0.00 - 0.00 = 0.00"
-  - printed: "(Step 5, 4)"
-    value: "0.00"
-    work: "No nontaxable combat pay elected (zero in this tool)"
-  - printed: "(Step 5, 5)"
-    value: "0.00"
-    work: "0.00 + 0.00 = 0.00 earned income"
-  - printed: "4b"
-    value: ""
-    work: "Step 5 q2 is No (no self-employment, Schedule SE or statutory employee); Worksheet B not used"
-  - printed: "6 (eic.wsb_6)"
-    value: ""
-    work: "Worksheet B not used"
-  - printed: "1"
-    value: "0.00"
-    work: "Earned income from Step 5, line 5 = 0.00"
-  - printed: "2"
-    value: "0.00"
-    work: "EIC Table, HOH column, 0 children: 0 is below the first row (1-50), so credit 0. Line 2 is zero: STOP, check box 27c. Also Step 1 q3: filing Form 2555, STOP."
-  - printed: "3"
-    value: ""
-    work: "Skipped: STOP at line 2 (zero credit)"
-  - printed: "4"
-    value: ""
-    work: "Skipped: STOP at line 2"
-  - printed: "5"
-    value: ""
-    work: "Skipped: STOP at line 2"
-  - printed: "6 (eic.line6)"
-    value: "0.00"
-    work: "Not eligible (Form 2555 filer; zero table credit), so EIC = 0"
+    work: "Line 6 = line 2 = 1,743.00"
 ```
 ```
 
@@ -1012,43 +939,43 @@ lines:
 lines:
   - printed: "(Step 5, 1)"
     value: "blank"
-    work: "Step 1 Q2: no EIC-valid SSN, and AGI $61,693 is not under $57,554 (MFJ, 1 child) -> STOP before Step 5"
+    work: "Step 1 Q2: SSNs not valid for EIC -> STOP, can't take the credit; Step 5 not reached"
   - printed: "(Step 5, 2)"
     value: "blank"
-    work: "Not reached; stopped at Step 1"
+    work: "Not reached; stopped at Step 1 Q2"
   - printed: "(Step 5, 3)"
     value: "blank"
-    work: "Not reached; stopped at Step 1"
+    work: "Not reached; stopped at Step 1 Q2"
   - printed: "(Step 5, 4)"
     value: "blank"
-    work: "Not reached; stopped at Step 1"
+    work: "Not reached; stopped at Step 1 Q2"
   - printed: "(Step 5, 5)"
     value: "blank"
-    work: "Not reached; stopped at Step 1"
+    work: "Not reached; stopped at Step 1 Q2"
   - printed: "4b"
     value: "blank"
-    work: "Worksheet B not used (no self-employment) and credit barred at Step 1"
+    work: "Worksheet B not used; stopped at Step 1 Q2"
   - printed: "6 (eic.wsb_6)"
     value: "blank"
-    work: "Worksheet B not used"
+    work: "Worksheet B not used; stopped at Step 1 Q2"
   - printed: "1"
     value: "blank"
-    work: "Worksheet A not reached; stopped at Step 1"
+    work: "Worksheet A not reached; stopped at Step 1 Q2"
   - printed: "2"
     value: "blank"
-    work: "Worksheet A not reached"
+    work: "Worksheet A not reached; stopped at Step 1 Q2"
   - printed: "3"
     value: "blank"
-    work: "Worksheet A not reached"
+    work: "Worksheet A not reached; stopped at Step 1 Q2"
   - printed: "4"
     value: "blank"
-    work: "Worksheet A not reached"
+    work: "Worksheet A not reached; stopped at Step 1 Q2"
   - printed: "5"
     value: "blank"
-    work: "Worksheet A not reached"
+    work: "Worksheet A not reached; stopped at Step 1 Q2"
   - printed: "6 (eic.line6)"
     value: "0.00"
-    work: "Can't take the credit (Step 1 Q2 STOP: SSN not valid for EIC; check box 27c) -> EIC = 0"
+    work: "No valid SSNs for EIC -> can't take the credit (check box 27c); EIC = 0"
 ```
 ```
 
@@ -1057,45 +984,45 @@ lines:
 ```yaml
 ```yaml
 lines:
-  - printed: "(Step 5, 1)"
+  - printed: "Step 5, 1"
     value: "0.00"
     work: "Form 1040 line 1z = 0.00"
-  - printed: "(Step 5, 2)"
+  - printed: "Step 5, 2"
     value: "0.00"
-    work: "No Medicaid waiver payments excluded; zero in this tool"
-  - printed: "(Step 5, 3)"
+    work: "No Medicaid waiver payments excluded in this tool"
+  - printed: "Step 5, 3"
     value: "0.00"
     work: "0.00 - 0.00 = 0.00"
-  - printed: "(Step 5, 4)"
+  - printed: "Step 5, 4"
     value: "0.00"
-    work: "No nontaxable combat pay elected; zero in this tool"
-  - printed: "(Step 5, 5)"
+    work: "No nontaxable combat pay elected in this tool"
+  - printed: "Step 5, 5"
     value: "0.00"
     work: "0.00 + 0.00 = 0.00 earned income"
   - printed: "4b"
-    value: "blank"
-    work: "Step 5 q2 is No (no self-employment, Schedule SE or statutory employee), so Worksheet A is used and Worksheet B is not completed"
+    value: ""
+    work: "Not self-employed, so Step 5 Q2 is No; Worksheet B not used"
   - printed: "6 (eic.wsb_6)"
-    value: "blank"
-    work: "Worksheet B is not used"
+    value: ""
+    work: "Worksheet B not used"
   - printed: "1"
     value: "0.00"
     work: "Earned income from Step 5 line 5 = 0.00"
   - printed: "2"
     value: "0.00"
-    work: "MFS uses the single column (star note). One qualifying child with valid SSN (dep_a); 0 is below the first table row, so credit = 0. Line 2 is zero: STOP, can't take the credit"
+    work: "Disqualified: Form 2555/4563 Yes (Step 1 Q3); married HOH without a qualifying child (Step 4 Q1); also 0 earned income gives 0 credit; STOP"
   - printed: "3"
-    value: "blank"
-    work: "Worksheet stopped at line 2 (zero credit)"
+    value: ""
+    work: "Line 2 is zero, STOP; not reached"
   - printed: "4"
-    value: "blank"
-    work: "Worksheet stopped at line 2"
+    value: ""
+    work: "Line 2 is zero, STOP; not reached"
   - printed: "5"
-    value: "blank"
-    work: "Worksheet stopped at line 2"
+    value: ""
+    work: "Line 2 is zero, STOP; not reached"
   - printed: "6 (eic.line6)"
     value: "0.00"
-    work: "Line 2 is zero, so no EIC is allowed; credit = 0"
+    work: "No credit allowed; check box on line 27c"
 ```
 ```
 
@@ -1104,45 +1031,45 @@ lines:
 ```yaml
 ```yaml
 lines:
-  - printed: "(Step 5, 1)"
-    value: ""
-    work: "Step 1 Q1: no qualifying children and line 11b $66,664 is not less than $19,104, so STOP; Step 5 not reached"
-  - printed: "(Step 5, 2)"
-    value: ""
-    work: "STOP at Step 1; Step 5 not reached"
-  - printed: "(Step 5, 3)"
-    value: ""
-    work: "STOP at Step 1; Step 5 not reached"
-  - printed: "(Step 5, 4)"
-    value: ""
-    work: "STOP at Step 1; Step 5 not reached"
-  - printed: "(Step 5, 5)"
-    value: ""
-    work: "STOP at Step 1; Step 5 not reached"
-  - printed: "4b"
-    value: ""
-    work: "STOP at Step 1; Worksheet B not used"
-  - printed: "6 (eic.wsb_6)"
-    value: ""
-    work: "STOP at Step 1; Worksheet B not used"
-  - printed: "1"
-    value: ""
-    work: "STOP at Step 1; Worksheet A not reached"
-  - printed: "2"
-    value: ""
-    work: "STOP at Step 1; Worksheet A not reached"
-  - printed: "3"
-    value: ""
-    work: "STOP at Step 1; Worksheet A not reached"
-  - printed: "4"
-    value: ""
-    work: "STOP at Step 1; Worksheet A not reached"
-  - printed: "5"
-    value: ""
-    work: "STOP at Step 1; Worksheet A not reached"
-  - printed: "6 (eic.line6)"
+  - printed: "line (Step 5, 1)"
+    value: "blank"
+    work: "Step 1 Q1: no children with valid SSNs; line 11b $50,354 is not less than $19,104, so STOP and Step 5 is never reached"
+  - printed: "line (Step 5, 2)"
+    value: "blank"
+    work: "Not reached; stopped at Step 1"
+  - printed: "line (Step 5, 3)"
+    value: "blank"
+    work: "Not reached; stopped at Step 1"
+  - printed: "line (Step 5, 4)"
+    value: "blank"
+    work: "Not reached; stopped at Step 1"
+  - printed: "line (Step 5, 5)"
+    value: "blank"
+    work: "Not reached; stopped at Step 1"
+  - printed: "line 4b"
+    value: "blank"
+    work: "Worksheet B not used: not self-employed, and stopped at Step 1"
+  - printed: "line 6 (eic.wsb_6)"
+    value: "blank"
+    work: "Worksheet B not used"
+  - printed: "line 1"
+    value: "blank"
+    work: "Worksheet A not reached; stopped at Step 1"
+  - printed: "line 2"
+    value: "blank"
+    work: "Worksheet A not reached; stopped at Step 1"
+  - printed: "line 3"
+    value: "blank"
+    work: "Worksheet A not reached; stopped at Step 1"
+  - printed: "line 4"
+    value: "blank"
+    work: "Worksheet A not reached; stopped at Step 1"
+  - printed: "line 5"
+    value: "blank"
+    work: "Worksheet A not reached; stopped at Step 1"
+  - printed: "line 6 (eic.line6)"
     value: "0.00"
-    work: "You can't take the credit (Step 1 STOP: AGI $66,664 is at least the $19,104 limit for no children), so EIC is $0"
+    work: "Step 1 STOP (AGI $50,354 >= $19,104 with no qualifying children): you can't take the credit, so EIC = 0"
 ```
 ```
 
@@ -1152,90 +1079,43 @@ lines:
 ```yaml
 lines:
   - printed: "(Step 5, 1)"
-    value: "26469.00"
-    work: "Form 1040 line 1z = 26,469.00"
+    value: "25118.00"
+    work: "Form 1040 line 1z = 25,118.00"
   - printed: "(Step 5, 2)"
     value: "0.00"
-    work: "No Medicaid waiver payments excluded on Schedule 1 line 8s"
+    work: "No Medicaid waiver payments excluded on Schedule 1 line 8s; zero in this tool"
   - printed: "(Step 5, 3)"
-    value: "26469.00"
-    work: "26,469.00 - 0.00"
+    value: "25118.00"
+    work: "25,118.00 - 0.00 = 25,118.00"
   - printed: "(Step 5, 4)"
     value: "0.00"
-    work: "No nontaxable combat pay elected"
-  - printed: "(Step 5, 5)"
-    value: "26469.00"
-    work: "26,469.00 + 0.00 = earned income"
-  - printed: "4b"
-    value: "blank"
-    work: "Step 5 Q2 answered No (not self-employed), so Worksheet A is used and Worksheet B is not completed"
-  - printed: "6 (eic.wsb_6)"
-    value: "blank"
-    work: "Worksheet B not used"
-  - printed: "1"
-    value: "26469.00"
-    work: "Earned income from Step 5 line 5"
-  - printed: "2"
-    value: "3829.00"
-    work: "EIC Table row 26,450-26,500, Single, 1 child = 3,829"
-  - printed: "3"
-    value: "26360.00"
-    work: "Form 1040 line 11b = 26,360.00"
-  - printed: "4"
-    value: "no"
-    work: "26,360 is not equal to 26,469"
-  - printed: "5"
-    value: "3845.00"
-    work: "1 child; 26,360 is not less than 23,350; EIC Table row 26,350-26,400, Single, 1 child = 3,845"
-  - printed: "6 (eic.line6)"
-    value: "3829.00"
-    work: "Smaller of line 5 (3,845) and line 2 (3,829)"
-```
-```
-
-### classm.eic.9
-
-```yaml
-```yaml
-lines:
-  - printed: "Step 5, 1"
-    value: "73579.00"
-    work: "Form 1040 line 1z = 73,579.00"
-  - printed: "Step 5, 2"
-    value: "0.00"
-    work: "No Medicaid waiver payments excluded; zero in this tool"
-  - printed: "Step 5, 3"
-    value: "73579.00"
-    work: "73,579.00 - 0.00"
-  - printed: "Step 5, 4"
-    value: "0.00"
     work: "No nontaxable combat pay elected; zero in this tool"
-  - printed: "Step 5, 5"
-    value: "73579.00"
-    work: "73,579.00 + 0.00 = earned income; Schedule C filed, so Step 5 Q2 is Yes and Worksheet B applies"
+  - printed: "(Step 5, 5)"
+    value: "25118.00"
+    work: "25,118.00 + 0.00 = 25,118.00 earned income"
   - printed: "4b"
-    value: "55005.10"
-    work: "Parts 1-2 total (-18,573.90) + line 3 (0) + line 4a (73,579.00) = 55,005.10; not less than 50,434 for 1 child, so line 5 says STOP"
-  - printed: "line 6 (eic.wsb_6)"
-    value: "55005.10"
-    work: "Line 4b = 55,005.10 (positive)"
+    value: ""
+    work: "Not self-employed, so Step 5 Q2 = No; use Worksheet A and leave Worksheet B blank"
+  - printed: "6 (eic.wsb_6)"
+    value: ""
+    work: "Worksheet B not used; blank"
   - printed: "1"
-    value: "55005.10"
-    work: "Worksheet B line 6 = 55,005.10"
+    value: "25118.00"
+    work: "Earned income from Step 5 line 5 = 25,118.00"
   - printed: "2"
-    value: "0.00"
-    work: "EIC Table, Single, 1 child: 55,000-55,050 gives 0; line 2 is zero, so STOP"
+    value: "4044.00"
+    work: "EIC Table, Single/HOH/QSS column (used for MFS under the separated-spouse rule), 1 child; 25,100-25,150 row = 4,044"
   - printed: "3"
-    value: "48693.10"
-    work: "Form 1040 line 11b = 48,693.10"
+    value: "23618.00"
+    work: "Form 1040 line 11b = 23,618.00"
   - printed: "4"
     value: "no"
-    work: "48,693.10 is not equal to 55,005.10"
+    work: "23,618 is not equal to 25,118"
   - printed: "5"
-    value: "1819.00"
-    work: "48,693.10 is not less than 23,350; EIC Table, Single, 1 child: 48,650-48,700 gives 1,819"
-  - printed: "line 6 (eic.line6)"
-    value: "0.00"
-    work: "Smaller of line 5 (1,819) and line 2 (0) = 0; no credit allowed (Worksheet B line 5 STOP and line 2 is zero)"
+    value: "4284.00"
+    work: "1 child and line 3 of 23,618 is not under 23,350; EIC Table 23,600-23,650 row, 1-child column = 4,284"
+  - printed: "6 (eic.line6)"
+    value: "4044.00"
+    work: "Smaller of line 5 (4,284) and line 2 (4,044) = 4,044"
 ```
 ```

@@ -212,7 +212,10 @@ and `hsa_senior_without_age55` (catch-up from the date of birth); `ustaxes_amt`
 allocation); `investment_interest_limited` and
 `ustaxes_investment_interest_limited` (Form 4952 counts only interest and
 nonqualified dividends); `tax_table_band_edge` (a double just below a band
-boundary); `foreign_tax_limited` (the credit is not limited by the tax). The
+boundary); `foreign_tax_limited` (the credit is not limited by the tax);
+`ustaxes_edu_cents` (education credits rounded to whole dollars), `edu_credit_limited`
+(no Form 8863 Credit Limit Worksheet) and `ustaxes_edu_no_schedule3` (Schedule 3, and so
+line 3, attached only for certain other credits). The
 features are the generator's, read off the project's values (`compare.py`
 `derived_features`), or reported by the adapter about the engine's run or the
 case's inputs (`run_features`). Two defects found in the source move no mapped
@@ -342,6 +345,13 @@ floor also bounds how much of the generated population the project refuses.
   it limits the state and local tax deduction to adjusted gross income; and
   neither engine deducts Form 4952 investment interest on Form 8960 line 9a.
   Each is a stated limitation keyed by a feature read off the project's values.
+- The education credits (Form 8863): the generator draws one or two students on about one return in
+  seven (`putEdu`, `add_education`). PolicyEngine takes each person's qualified expenses and the
+  American opportunity eligibility flags, Tax-Calculator the tentative credit (`e87521`, Form 8863
+  line 1) and the lifetime learning expenses (`e87530`, line 10), UsTaxes `educationExpenses`;
+  OpenTaxSolver takes Schedule 3 line 3 and Form 1040 line 29 as entered amounts (limitation
+  `education`). No engine has the line 7 test for filers under 24 (`edu_no_refund`), and
+  PolicyEngine and UsTaxes use an unrounded phase-out fraction (`edu_phaseout_inexact`).
 - Form 5695 costs are supplied net of subsidies and rebates, as the form
   takes them; PolicyEngine is told its modeled Department of Energy home
   electrification rebate covers nothing
