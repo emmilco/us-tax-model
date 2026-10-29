@@ -34,6 +34,17 @@ def halfUpDiv (n d : Int) : Int := (2 * n + d) / (2 * d)
 /-- Amount times a rate, half-up at the cent. -/
 def multiplyRateHalfUp (a num den : Int) : Int := halfUpDiv (a * num) den
 
+/-- `multiply_rate` with a rounding unit: the exact product amount × num ÷ den rounded once,
+half-up, to a multiple of `u` cents (Form 8962 line 8a, "Multiply line 3 by line 7. Round to nearest
+whole dollar amount", u = 100). -/
+def multiplyRateToUnit (a num den u : Int) : Int := halfUpDiv (a * num) (den * u) * u
+
+/-- The `percent_floor` atom: `cap` + 1 when the part is more than `cap` percent of the whole, and
+otherwise 100 × part ÷ whole with the decimals dropped, not below zero (Form 8962 Worksheet 2: "Enter
+401", "drop any numbers after the decimal point"). The whole is positive where it is used. -/
+def percentFloor (part whole cap : Int) : Int :=
+  if 100 * part > cap * whole then cap + 1 else if part ≤ 0 then 0 else (100 * part) / whole
+
 /-- The `multiply_count` atom: an amount in cents times a whole number (for example a monthly
     amount times the number of months). Exact; no rounding. -/
 def multiplyCount (a n : Int) : Int := a * n

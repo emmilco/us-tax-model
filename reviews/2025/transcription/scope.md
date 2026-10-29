@@ -4,11 +4,22 @@ Second transcription of `Proof-of-concept scope screening` by an isolated model 
 
 | field | value |
 | --- | --- |
-| date | 2026-10-22 |
+| date | 2026-10-28 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | 112bede2e2e61d51379f9c5df4b039240e2f532e6a52eaefb8541d3b59c09bec |
-| subject sha256 | d6185340a93727cfa63e59b9df00637e2982b2ee78040bc10c3e9f7b0653ad4c |
+| prompt sha256 | c3113c54f794fcd4772074e379480c05c39f7a584082c3fb595fe8187bc2658a |
+| prompt policy | source-only-computation-v2 |
+| comparison policy | checked-expression-types-v2 |
+| input context policy | required-review-interfaces-v2 |
+| complete input context | pass |
+| required input context sha256 | 5ac12627d8763adddc11695970bc9f73665e746b0fb583dc5ffa75e5a76a3e89 |
+| type validation policy | project-expression-types-v3 |
+| model type validation | pass |
+| system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
+| reasoning effort | provider default |
+| output token budget | transport default (65536 for DeepSeek) |
+| interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
+| subject sha256 | de4cdbc23a6b3776ce1275620efad1c547ebb2b7eb5fcf3ebad9f7c066b83606 |
 | printed lines compared | 0 |
 | agree / disagree / missing | 0 / 0 / 0 |
 | extra printed lines in second | none |
@@ -26,6 +37,9 @@ Second transcription of `Proof-of-concept scope screening` by an isolated model 
 
 ```yaml
 ```yaml
+# No printed lines or result interfaces were requested for form "scope".
+# The four screening inputs (scope.schedule1, scope.credits, scope.other_income,
+# scope.other_line16) already exist and must not be redefined. No new lines are added.
 lines: []
 ```
 ```

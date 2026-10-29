@@ -19,10 +19,10 @@ form:
     - id: s2.other
       printed: (helper)
       type: Bool
-      label: 'Any amount on Schedule 2 other than self-employment tax from Schedule SE, Additional Medicare Tax, Net Investment Income Tax or the additional 20% tax on taxable HSA distributions (Form 8889 line 17b, which this tool figures), for example the alternative minimum tax, repayment of excess advance premium tax credit or of a clean vehicle credit, household employment taxes, the additional tax on early retirement distributions (often called a penalty) or on an HSA you did not keep as an eligible individual (Form 8889 Part III), uncollected social security or Medicare tax on tips or group-term life insurance (W-2 box 12 codes A, B, M or N), tax on unreported tips (Form 4137), or interest on deferred tax?'
+      label: 'Any amount on Schedule 2 other than self-employment tax from Schedule SE, Additional Medicare Tax, Net Investment Income Tax or the additional 20% tax on taxable HSA distributions (Form 8889 line 17b, which this tool figures), for example the alternative minimum tax, repayment of a clean vehicle credit, household employment taxes, the additional tax on early retirement distributions (often called a penalty) or on an HSA you did not keep as an eligible individual (Form 8889 Part III), uncollected social security or Medicare tax on tips or group-term life insurance (W-2 box 12 codes A, B, M or N), tax on unreported tips (Form 4137), or interest on deferred tax?'
       expr:
         op: input
-        source: 'Any amount on Schedule 2 other than self-employment tax from Schedule SE, Additional Medicare Tax, Net Investment Income Tax or the additional 20% tax on taxable HSA distributions (Form 8889 line 17b, which this tool figures), for example the alternative minimum tax, repayment of excess advance premium tax credit or of a clean vehicle credit, household employment taxes, the additional tax on early retirement distributions (often called a penalty) or on an HSA you did not keep as an eligible individual (Form 8889 Part III), uncollected social security or Medicare tax on tips or group-term life insurance (W-2 box 12 codes A, B, M or N), tax on unreported tips (Form 4137), or interest on deferred tax?'
+        source: 'Any amount on Schedule 2 other than self-employment tax from Schedule SE, Additional Medicare Tax, Net Investment Income Tax or the additional 20% tax on taxable HSA distributions (Form 8889 line 17b, which this tool figures), for example the alternative minimum tax, repayment of a clean vehicle credit, household employment taxes, the additional tax on early retirement distributions (often called a penalty) or on an HSA you did not keep as an eligible individual (Form 8889 Part III), uncollected social security or Medicare tax on tips or group-term life insurance (W-2 box 12 codes A, B, M or N), tax on unreported tips (Form 4137), or interest on deferred tax?'
       cite:
         doc: f1040s2
         locator: Schedule 2 (2025), lines 2, 3, 11, 12 and 21
@@ -36,6 +36,40 @@ form:
       cite:
         doc: f1040s2
         locator: Schedule 2 (2025), lines 2, 3, 11, 12 and 21
+    - id: s2.line1a
+      printed: 1a
+      type: NonNegDollars
+      label: Excess advance premium tax credit repayment. Attach Form 8962
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - f8962.any
+                - const: true
+            then: f8962.line29
+          - guard:
+              op: test
+              eq:
+                - f8962.any
+                - const: false
+            then: s2.zero
+      cite:
+        doc: f1040s2
+        locator: 'p. 1, Part I, line 1a, "Excess advance premium tax credit repayment. Attach Form 8962"; i1040gi p. 111, "If
+          the advance credit payments were more than the premium tax credit you can claim, the amount you must repay will be
+          shown on Form 8962, line 29."'
+    - id: s2.line1z
+      printed: 1z
+      type: NonNegDollars
+      label: Add lines 1a through 1y (lines 1b to 1y are refused by the Schedule 2 screen)
+      expr:
+        op: copy
+        from: s2.line1a
+      cite:
+        doc: f1040s2
+        locator: 'p. 1, Part I, line 1z, "Add lines 1a through 1y"'
     - id: s2.line2
       printed: "2"
       type: NonNegDollars
@@ -62,13 +96,15 @@ form:
     - id: s2.line3
       printed: "3"
       type: NonNegDollars
-      label: Amount from s2.zero
+      label: Add lines 1z and 2
       expr:
-        op: copy
-        from: s2.zero
+        op: sum
+        of:
+          - s2.line1z
+          - s2.line2
       cite:
         doc: f1040s2
-        locator: Schedule 2 (2025), lines 2, 3, 11, 12 and 21
+        locator: 'p. 1, Part I, line 3, "Add lines 1z and 2. Enter here and on Form 1040, 1040-SR, or 1040-NR, line 17"'
       refuses:
         - when: s2.amt
           form: Form 6251

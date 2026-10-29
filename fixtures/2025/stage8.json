@@ -58,7 +58,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -169,7 +168,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -552,7 +552,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -671,7 +670,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -1078,7 +1078,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -1241,7 +1240,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "dependent[a].actc_amount": {
@@ -1766,7 +1766,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -1929,7 +1928,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "dependent[a].actc_amount": {
@@ -2455,7 +2455,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -2566,7 +2565,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -2940,7 +2940,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -3053,7 +3052,8 @@
         "f2441.employer_care": false,
         "s1.cod_any": false,
         "dependent[parent].born_died": false,
-        "dependent[parent].placed": false
+        "dependent[parent].placed": false,
+        "$f1095a": []
       },
       "expect": {
         "dependent[parent].actc_amount": {
@@ -3431,7 +3431,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -3544,7 +3543,8 @@
         "f2441.employer_care": false,
         "s1.cod_any": false,
         "dependent[parent].born_died": true,
-        "dependent[parent].part_year_home": false
+        "dependent[parent].part_year_home": false,
+        "$f1095a": []
       },
       "expect": {
         "dependent[parent].hoh_test2": {
@@ -3623,7 +3623,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -3736,7 +3735,8 @@
         "f2441.employer_care": false,
         "s1.cod_any": false,
         "dependent[parent].born_died": true,
-        "dependent[parent].part_year_home": true
+        "dependent[parent].part_year_home": true,
+        "$f1095a": []
       },
       "expect": {
         "dependent[parent].hoh_test2": {
@@ -3806,7 +3806,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -3920,7 +3919,8 @@
         "s1.cod_any": false,
         "dependent[parent].born_died": false,
         "dependent[parent].part_year_home": true,
-        "dependent[parent].placed": true
+        "dependent[parent].placed": true,
+        "$f1095a": []
       },
       "expect": {
         "dependent[parent].hoh_test2": {
@@ -3990,7 +3990,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -4100,7 +4099,8 @@
         "f2441.employer_care": false,
         "s1.cod_any": false,
         "dependent[child].born_died": false,
-        "dependent[child].placed": false
+        "dependent[child].placed": false,
+        "$f1095a": []
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -4639,7 +4639,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -4812,7 +4811,8 @@
         "f2441.employer_care": false,
         "s1.cod_any": false,
         "dependent[six_months].born_died": false,
-        "dependent[six_months].placed": false
+        "dependent[six_months].placed": false,
+        "$f1095a": []
       },
       "expect": {
         "dependent[age19].actc_amount": {
@@ -5397,7 +5397,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -5548,7 +5547,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "dependent[age17].actc_amount": {
@@ -6058,7 +6058,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -6229,7 +6228,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "dependent[all_year].actc_amount": {
@@ -6789,7 +6789,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -6897,7 +6896,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -7429,7 +7429,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -7540,7 +7539,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -7907,7 +7907,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -8019,7 +8018,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -8390,7 +8390,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -8501,7 +8500,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -9114,7 +9114,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -9225,7 +9224,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -9838,7 +9838,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -9949,7 +9948,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -10562,7 +10562,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -10673,7 +10672,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "dependent[parent].actc_amount": {
@@ -11271,7 +11271,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -11382,7 +11381,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "dependent[parent].actc_amount": {
@@ -11990,7 +11990,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -12098,7 +12097,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -12700,7 +12700,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -12801,7 +12800,8 @@
         "f2441.benefits": false,
         "f2441.employer_care": false,
         "person[taxpayer].sav_trad": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -13321,7 +13321,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -13440,7 +13439,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -13972,7 +13972,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -14088,7 +14087,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -14752,7 +14752,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -14868,7 +14867,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -15415,7 +15415,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -15534,7 +15533,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -15938,7 +15938,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -16049,7 +16048,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "dependent[child].claimed_no_tin": {
@@ -16208,7 +16208,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -16319,7 +16318,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "dependent[parent].claimed_no_tin": {
@@ -16447,7 +16447,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -16558,7 +16557,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "dependent[child].claimed_no_tin": {
@@ -16641,7 +16641,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -16752,7 +16751,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "household.filer_under16": {
@@ -16854,7 +16854,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -16965,7 +16964,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "household.hoh_community_property": {
@@ -17067,7 +17067,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -17178,7 +17177,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "household.hoh_community_property": {
@@ -17253,7 +17253,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -17364,7 +17363,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "household.hoh_community_property": {
@@ -17439,7 +17439,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -17550,7 +17549,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "s8812.line12": {
@@ -17674,7 +17674,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -17784,7 +17783,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "dependent[child].claimed": {

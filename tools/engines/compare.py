@@ -619,6 +619,19 @@ def derived_features(case, values):
         feats.add("eic")
     if (m("f8960.line9a") or 0) > 0:
         feats.add("investment_interest_on_8960")
+    # UsTaxes' Form 8962 is a flat 8.5% of AGI on the annual route: the form only at 400% of the poverty line or more,
+    # on line 11, with modified AGI equal to AGI (no tax-exempt interest, no untaxed social security).
+    if "marketplace" in feats:
+        l5 = values.get("f8962.line5", {}).get("value", {})
+        l10 = values.get("f8962.line10", {}).get("value", {})
+        form = (l5.get("kind") == "count" and l5["value"] >= 400 and l10.get("kind") == "bool" and l10["value"]
+                and (m("f8962.ws1_2") or 0) == 0 and (m("f8962.ws1_4") or 0) == 0)
+        if not form:
+            feats.add("ustaxes_ptc_stub")
+        # UsTaxes attaches Schedule 3 only for the excess social security credit, the foreign tax credit, an extension
+        # payment or Schedule R (irsForms/Schedule3.ts `isNeeded`), so a net premium tax credit alone never reaches line 31.
+        if (m("s3.line9") or 0) > 0 and (m("s3.line1") or 0) == 0 and (m("s3.line11") or 0) == 0:
+            feats.add("ustaxes_ptc_no_schedule3")
     if 0 < (m("sli.line8") or 0) < (m("sli.line1") or 0):
         feats.add("sli_phaseout")
     if (m("f1040.line16") or 0) == 0:

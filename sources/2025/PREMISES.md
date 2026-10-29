@@ -1472,3 +1472,13 @@ batch, written from both and checked against the tree at 671826a, `stage20-capit
 owner accepted D1 to D6 as recommended, with the items listed there as settled by the evidence. Where the map and its
 verification differ, the verification's checked facts govern; where the tree has moved since, the decision batch
 records the current state. The stage is the first of the route in `docs/2026-10-26_plan_revision.md` section E.
+
+## Stage 18 premise map — the premium tax credit
+
+Status: **owner decisions taken 2026-10-28** (TASKS.md T-077). The map is
+`research/premises/stage18-premium-tax-credit.md`, its adversarial verification
+`stage18-premium-tax-credit.verification.md` (7 errors, 5 items out of date after Stage 15), and the decision batch,
+written from both and checked against the tree at 4d24cbc, `stage18-premium-tax-credit.decisions.md`: the owner
+accepted D1 to D9 as recommended, with the items listed there as settled by the evidence, including the three
+additions to the atom vocabulary of D2. The stage is the second of the route in `docs/2026-10-26_plan_revision.md`
+section E.

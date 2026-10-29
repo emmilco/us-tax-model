@@ -4,16 +4,22 @@ Second transcription of `Proof-of-concept scope screening` by an isolated model 
 
 | field | value |
 | --- | --- |
-| date | 2026-10-23 |
+| date | 2026-10-28 |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
-| prompt sha256 | 01c4414bb8424f02191183e09d1dff6c6b8f99f81bcc243760e5a5dbae4bb709 |
+| prompt sha256 | c3113c54f794fcd4772074e379480c05c39f7a584082c3fb595fe8187bc2658a |
 | prompt policy | source-only-computation-v2 |
+| comparison policy | checked-expression-types-v2 |
+| input context policy | required-review-interfaces-v2 |
+| complete input context | pass |
+| required input context sha256 | 5ac12627d8763adddc11695970bc9f73665e746b0fb583dc5ffa75e5a76a3e89 |
+| type validation policy | project-expression-types-v3 |
+| model type validation | pass |
 | system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
 | reasoning effort | provider default |
 | output token budget | 65536 |
 | interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
-| subject sha256 | d6185340a93727cfa63e59b9df00637e2982b2ee78040bc10c3e9f7b0653ad4c |
+| subject sha256 | de4cdbc23a6b3776ce1275620efad1c547ebb2b7eb5fcf3ebad9f7c066b83606 |
 | printed lines compared | 0 |
 | agree / disagree / missing | 0 / 0 / 0 |
 | extra printed lines in second | none |

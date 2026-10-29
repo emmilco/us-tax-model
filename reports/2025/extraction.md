@@ -4,8 +4,8 @@ Offline checks that the archived IRS text is a faithful reading of the archived 
 
 | check | documents | failing |
 | --- | --- | --- |
-| layout vs reading order | 114 | 0 |
-| PDFKit against poppler | 114 | 0 |
+| layout vs reading order | 116 | 0 |
+| PDFKit against poppler | 116 | 0 |
 | PDF vs HTML snapshot | 12 | 0 |
 
 ## Per document
@@ -95,6 +95,8 @@ Offline checks that the archived IRS text is a faithful reading of the archived 
 - **f8995** layout vs reading order: 1 pages, identical characters
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
 - **f8995a** layout vs reading order: 2 pages, identical characters
+    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
+- **fr-2024-00796** layout vs reading order: 3 pages, identical characters (2 page(s) differ only in word spacing)
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
 - **fr-2025-24154** layout vs reading order: 27 pages, identical characters (3 page(s) differ only in word spacing)
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
@@ -277,3 +279,5 @@ Offline checks that the archived IRS text is a faithful reading of the archived 
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (1 such occurrences; 2 words poppler reads that PDFKit skips)
 - **usc-26-179** layout vs reading order: 7 pages, identical characters (4 page(s) differ only in word spacing)
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
+- **usc-26-36b** layout vs reading order: 8 pages, identical characters (4 page(s) differ only in word spacing)
+    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 2 words poppler reads that PDFKit skips)

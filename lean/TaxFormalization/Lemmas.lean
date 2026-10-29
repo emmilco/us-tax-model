@@ -462,4 +462,85 @@ theorem rateBand_index_mono {V : Type} (bands : List (Option Int × V)) {k k' : 
       simp only [h2, cond_false]
       omega
 
+/-! ## `percent_floor` and `multiply_rate` to a unit -/
+
+/-- `percent_floor` is never negative (for a cap that is not negative and a positive whole). -/
+theorem percentFloor_nonneg {part whole cap : Int} (hc : 0 ≤ cap) (hw : 0 < whole) :
+    0 ≤ percentFloor part whole cap := by
+  unfold percentFloor
+  split
+  · omega
+  · split
+    · omega
+    · exact Int.ediv_nonneg (by omega) (by omega)
+
+/-- `percent_floor` is at most `cap` + 1. -/
+theorem percentFloor_le {part whole cap : Int} (hc : 0 ≤ cap) (hw : 0 < whole) :
+    percentFloor part whole cap ≤ cap + 1 := by
+  unfold percentFloor
+  split
+  · omega
+  · rename_i h
+    split
+    · omega
+    · have : (100 * part) / whole ≤ cap := by
+        apply Int.ediv_le_of_le_mul hw
+        omega
+      omega
+
+/-- Below the cap, `percent_floor` is the percentage with the decimals dropped: the largest whole
+number `p` with `p × whole ≤ 100 × part`. -/
+theorem percentFloor_floor {part whole cap : Int} (hw : 0 < whole) (hp : 0 < part)
+    (h : 100 * part ≤ cap * whole) :
+    percentFloor part whole cap * whole ≤ 100 * part ∧
+      100 * part < (percentFloor part whole cap + 1) * whole := by
+  unfold percentFloor
+  have h1 : ¬ (100 * part > cap * whole) := by omega
+  have h2 : ¬ (part ≤ 0) := by omega
+  simp only [h1, h2, if_false]
+  constructor
+  · exact Int.ediv_mul_le (100 * part) (by omega)
+  · exact Int.lt_ediv_add_one_mul_self (100 * part) hw
+
+/-- `percent_floor` is monotone in the part (for a cap that is not negative and a positive whole). -/
+theorem percentFloor_mono_part {part part' whole cap : Int} (h : part ≤ part') (hc : 0 ≤ cap)
+    (hw : 0 < whole) : percentFloor part whole cap ≤ percentFloor part' whole cap := by
+  have hle := percentFloor_le (part := part') hc hw
+  have hnn := percentFloor_nonneg (part := part) hc hw
+  unfold percentFloor at *
+  by_cases h1 : 100 * part' > cap * whole
+  · simp only [h1, if_true]
+    by_cases h0 : 100 * part > cap * whole
+    · simp only [h0, if_true]; omega
+    · simp only [h0, if_false]
+      by_cases hp : part ≤ 0
+      · simp only [hp, if_true]; omega
+      · simp only [hp, if_false]
+        have : (100 * part) / whole ≤ cap := Int.ediv_le_of_le_mul hw (by omega)
+        omega
+  · have h0 : ¬ (100 * part > cap * whole) := by omega
+    simp only [h1, h0, if_false]
+    by_cases hp' : part' ≤ 0
+    · have hp : part ≤ 0 := by omega
+      simp only [hp, hp', if_true]; omega
+    · simp only [hp', if_false]
+      by_cases hp : part ≤ 0
+      · simp only [hp, if_true]; exact Int.ediv_nonneg (by omega) (by omega)
+      · simp only [hp, if_false]
+        exact Int.ediv_le_ediv hw (by omega)
+
+/-- `multiply_rate` rounded to a unit gives a multiple of the unit. -/
+theorem multiplyRateToUnit_multiple (a num den u : Int) :
+    ∃ k, multiplyRateToUnit a num den u = k * u :=
+  ⟨halfUpDiv (a * num) (den * u), rfl⟩
+
+/-- `multiply_rate` rounded to a unit is monotone in the amount. -/
+theorem multiplyRateToUnit_mono_amount {a a' num den u : Int} (h : a ≤ a') (hn : 0 ≤ num)
+    (hd : 0 < den) (hu : 0 < u) :
+    multiplyRateToUnit a num den u ≤ multiplyRateToUnit a' num den u := by
+  unfold multiplyRateToUnit
+  apply Int.mul_le_mul_of_nonneg_right _ (by omega)
+  apply halfUpDiv_mono_num (Int.mul_le_mul_of_nonneg_right h hn)
+  exact Int.mul_pos hd hu
+
 end TaxFormalization

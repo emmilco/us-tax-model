@@ -41,7 +41,7 @@ const READ = [
     'l17', 'l18', 'l19', 'l20', 'l21', 'l23', 'l24', 'l25', 'l26', 'l27', 'l28', 'l29', 'l30', 'l31', 'l32', 'l33', 'l34', 'l35', 'l36a',
     'l36b', 'l37', 'l38', 'isNeeded']],
   ['s2', (f) => f.schedule2, ['l2', 'l3', 'l4', 'l11', 'l12', 'l21']],
-  ['s3', (f) => f.schedule3, ['isNeeded', 'l1', 'l2', 'l4', 'l5a', 'l5b', 'l8', 'l11', 'l15']],
+  ['s3', (f) => f.schedule3, ['isNeeded', 'l1', 'l2', 'l4', 'l5a', 'l5b', 'l8', 'l9', 'l11', 'l15']],
   ['sa', (f) => f.scheduleA, ['isNeeded', 'l1', 'l2', 'l3', 'l4', 'l5a', 'l5b', 'l5d', 'l5e', 'l7', 'l8a', 'l8e', 'l9', 'l10', 'l11', 'l12',
     'l14', 'l17']],
   ['sb', (f) => f.scheduleB, ['l2', 'l4', 'l6']],
@@ -62,7 +62,8 @@ const READ = [
   ['f8880', (f) => f.f8880, ['l3', 'creditRate', 'l4', 'credit']],
   ['f5695', (f) => f.f5695, ['l15', 'l30']],
   ['f6251', (f) => f.f6251, ['l11']],
-  ['f8995', (f) => f.f8995, ['deductions']]
+  ['f8995', (f) => f.f8995, ['deductions']],
+  ['f8962', (f) => f.f8962, ['isNeeded', 'contributionAmount', 'allowablePtc', 'annualAdvancePtc', 'credit', 'excessRepayment']]
 ]
 
 // UsTaxes recomputes every line from the start on each call (no line is stored), so reading a few

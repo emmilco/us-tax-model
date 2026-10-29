@@ -141,12 +141,24 @@ form:
       label: Net premium tax credit. Attach Form 8962
       type: NonNegDollars
       expr:
-        op: input
-        source: Net premium tax credit from Form 8962 (supplied subtotal; preparation outside Stage 2)
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - f8962.any
+                - const: true
+            then: f8962.line26
+          - guard:
+              op: test
+              eq:
+                - f8962.any
+                - const: false
+            then: s3.zero
       cite:
         doc: f1040s3
-        locator: Schedule 3 (2025), line 9
-      note: Supplied subtotal; this stage does not prepare the underlying form or lines.
+        locator: 'p. 1, Part II, line 9, "Net premium tax credit. Attach Form 8962"; i1040gi p. 117, "your net premium tax credit
+          will be shown on Form 8962, line 26."'
     - id: s3.line10
       printed: "10"
       label: Amount paid with request for extension to file (see instructions)

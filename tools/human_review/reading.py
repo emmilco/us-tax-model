@@ -384,7 +384,13 @@ class Reading:
             items = [P(r) for r in e["of"]]
             return ("the larger of " if len(items) == 2 else "the largest of ") + join_and(items)
         if op == "multiply_rate":
+            if e.get("unit"):
+                unit = e["unit"]
+                return f"{P(e['amount'])} times {O(e['rate'])}, rounded to the nearest {dollars(unit) if unit >= 100 else unit}"
             return f"{P(e['amount'])} times {O(e['rate'])}"
+        if op == "percent_floor":
+            return (f"{e.get('cap', 0) + 1} if {P(e['part'])} is more than {e.get('cap')}% of {O(e['whole'])}; otherwise "
+                    f"{P(e['part'])} divided by {O(e['whole'])}, times 100, with the decimals dropped")
         if op == "multiply_count":
             return f"{P(e['amount'])} times {P(e['count'])}"
         if op == "round":

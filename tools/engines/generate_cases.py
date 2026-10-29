@@ -68,7 +68,7 @@ def gen_case(rng, i):
         "f4952.line4g": 0, "f4952.carryover": False, "f4952.unsupported": False, "f4952.alternative_allocation": False,
         "f8959.unsupported": False, "f8960.unsupported": False, "f8960.refund": False, "f8960.allocated_taxes": 0,
         "ftc.all_passive": True, "ftc.statements": True, "ftc.eligible": True, "ftc.elect": True,
-        "s3.line9": 0, "s3.line10": 0, "s3.line12": 0, "s3.line14": 0,
+        "$f1095a": [], "s3.line10": 0, "s3.line12": 0, "s3.line14": 0,
         "sa.unsupported": False, "sa.charity_limited": False, "sa.excluded_income": False, "sa.dependent": False,
         "sa.spouse_extra": False, "person[taxpayer].age65": False, "person[taxpayer].blind": False, "sa.spouse_itemizes": False, "sa.elect_itemize": False,
         "sa.line5c": 0,
@@ -282,7 +282,27 @@ def gen_case(rng, i):
     facts.update(age=age, tips=tips, overtime=overtime, car_loan_interest=car)
     add_form_features(random.Random(f"forms:{i}"), inputs, facts, features, ages, wages, age)
     add_carryovers(random.Random(f"carry:{i}"), inputs, facts, features)
+    add_marketplace(random.Random(f"ptc:{i}"), inputs, facts, features)
     return {"id": f"gen-{i:05d}", "inputs": inputs, "facts": facts, "features": sorted(features)}
+
+
+def add_marketplace(r, inputs, facts, features):
+    """A Form 1095-A on about one return in twelve: full-year coverage with the same columns A and B every month, and
+    advance payments from none to more than the credit. The screens are answered No (the generated families are
+    unaffected by them), the 48-state poverty table applies, and claimed dependents are not required to file. A
+    separate generator leaves every earlier draw unchanged."""
+    inputs.update({"f8962.alloc": False, "f8962.married_in_2025": False, "f8962.other": False, "f8962.same_state_counted": False, "f8962.alien_below": False,
+                   "f8962.fpl_table": "contiguous", "f8962.estimate_100": True})
+    for k in inputs.get("$dependent", []):
+        inputs.update({f"dependent[{k}].ptc_files": False, f"dependent[{k}].ptc_magi": 0})
+    if r.random() >= 0.08:
+        return
+    a, b = r.randint(20_000, 150_000), r.randint(15_000, 130_000)
+    c_total = r.randint(0, 12 * b) if r.random() < 0.8 else 0
+    inputs.update({"$f1095a": ["mkt"], "f1095a[mkt].uniform": True, "f1095a[mkt].b_counted": True, "f1095a[mkt].mo_a": a,
+                   "f1095a[mkt].mo_b": b, "f1095a[mkt].c_total": c_total})
+    facts["marketplace"] = {"premium": a, "slcsp": b, "advance": c_total}
+    features.add("marketplace")
 
 
 def carryovers_by_rule(taxable, deduction, st, lt):

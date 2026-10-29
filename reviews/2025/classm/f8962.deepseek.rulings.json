@@ -1,0 +1,313 @@
+{
+ "kind": "classm",
+ "form": "f8962",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "case": "classm.f8962.6",
+   "printed": "12(c)",
+   "project": "$421.00",
+   "model": "$420.00",
+   "ruling": "Ruling: interface gap; the deciding text was not given to the reviewer. Case classm.f8962.6.deepseek (fixtures/2025/classm.deepseek.json): line 3 $80,369, line 5 = 311 (project evaluated: line 7 0.0628, line 8a $5,047, line 8b $421). i8962 p. 10, Line 7: \"Enter on line 7 the decimal number from Table 2 that applies to the amount you entered on line 5.\" i8962 p. 11, Table 2 prints 0.0628 for 311 (the 302-352 column of sources/2025/i8962.cols.txt; tables/2025/ptc_applicable_figure.yaml row 311 = 628/10000; tools/extract_ptc_tables.py --check passes: \"Table 2 (402 rows) ... match i8962\"). But page 11 is not among the pages given (log: i8962 pages 1, 3, 4, 6, 8, 9, 10, 12 to 18; .classm/classm.f8962.6.deepseek.prompt.txt has no Table 2), so the model replaced the table by a linear interpolation, 6.000% + 11 x 0.025% = 6.275%. Its value contradicts the source, so it is not evidence and the expectation is dropped; the omission is a coverage gap of the review (README, interface gap), not a project error. Line 12(c): project $421.00, model $420.00; it follows from the model's line 7 (its line 8a $5,043 and 8b $420 instead of $5,047 and $421), with the rest of its work the project's.",
+   "drop": true,
+   "context": "2cc1b7de9f5f240b984930394a24b01ff855895d531881ff0d878653681dfb44"
+  },
+  {
+   "case": "classm.f8962.6",
+   "printed": "12(d)",
+   "project": "$691.00",
+   "model": "$692.00",
+   "ruling": "Ruling: interface gap; the deciding text was not given to the reviewer. Case classm.f8962.6.deepseek (fixtures/2025/classm.deepseek.json): line 3 $80,369, line 5 = 311 (project evaluated: line 7 0.0628, line 8a $5,047, line 8b $421). i8962 p. 10, Line 7: \"Enter on line 7 the decimal number from Table 2 that applies to the amount you entered on line 5.\" i8962 p. 11, Table 2 prints 0.0628 for 311 (the 302-352 column of sources/2025/i8962.cols.txt; tables/2025/ptc_applicable_figure.yaml row 311 = 628/10000; tools/extract_ptc_tables.py --check passes: \"Table 2 (402 rows) ... match i8962\"). But page 11 is not among the pages given (log: i8962 pages 1, 3, 4, 6, 8, 9, 10, 12 to 18; .classm/classm.f8962.6.deepseek.prompt.txt has no Table 2), so the model replaced the table by a linear interpolation, 6.000% + 11 x 0.025% = 6.275%. Its value contradicts the source, so it is not evidence and the expectation is dropped; the omission is a coverage gap of the review (README, interface gap), not a project error. Line 12(d): project $691.00, model $692.00; it follows from the model's line 7 (its line 8a $5,043 and 8b $420 instead of $5,047 and $421), with the rest of its work the project's.",
+   "drop": true,
+   "context": "2cc1b7de9f5f240b984930394a24b01ff855895d531881ff0d878653681dfb44"
+  },
+  {
+   "case": "classm.f8962.6",
+   "printed": "12(e)",
+   "project": "$691.00",
+   "model": "$692.00",
+   "ruling": "Ruling: interface gap; the deciding text was not given to the reviewer. Case classm.f8962.6.deepseek (fixtures/2025/classm.deepseek.json): line 3 $80,369, line 5 = 311 (project evaluated: line 7 0.0628, line 8a $5,047, line 8b $421). i8962 p. 10, Line 7: \"Enter on line 7 the decimal number from Table 2 that applies to the amount you entered on line 5.\" i8962 p. 11, Table 2 prints 0.0628 for 311 (the 302-352 column of sources/2025/i8962.cols.txt; tables/2025/ptc_applicable_figure.yaml row 311 = 628/10000; tools/extract_ptc_tables.py --check passes: \"Table 2 (402 rows) ... match i8962\"). But page 11 is not among the pages given (log: i8962 pages 1, 3, 4, 6, 8, 9, 10, 12 to 18; .classm/classm.f8962.6.deepseek.prompt.txt has no Table 2), so the model replaced the table by a linear interpolation, 6.000% + 11 x 0.025% = 6.275%. Its value contradicts the source, so it is not evidence and the expectation is dropped; the omission is a coverage gap of the review (README, interface gap), not a project error. Line 12(e): project $691.00, model $692.00; it follows from the model's line 7 (its line 8a $5,043 and 8b $420 instead of $5,047 and $421), with the rest of its work the project's.",
+   "drop": true,
+   "context": "2cc1b7de9f5f240b984930394a24b01ff855895d531881ff0d878653681dfb44"
+  },
+  {
+   "case": "classm.f8962.6",
+   "printed": "13(c)",
+   "project": "$421.00",
+   "model": "$420.00",
+   "ruling": "Ruling: interface gap; the deciding text was not given to the reviewer. Case classm.f8962.6.deepseek (fixtures/2025/classm.deepseek.json): line 3 $80,369, line 5 = 311 (project evaluated: line 7 0.0628, line 8a $5,047, line 8b $421). i8962 p. 10, Line 7: \"Enter on line 7 the decimal number from Table 2 that applies to the amount you entered on line 5.\" i8962 p. 11, Table 2 prints 0.0628 for 311 (the 302-352 column of sources/2025/i8962.cols.txt; tables/2025/ptc_applicable_figure.yaml row 311 = 628/10000; tools/extract_ptc_tables.py --check passes: \"Table 2 (402 rows) ... match i8962\"). But page 11 is not among the pages given (log: i8962 pages 1, 3, 4, 6, 8, 9, 10, 12 to 18; .classm/classm.f8962.6.deepseek.prompt.txt has no Table 2), so the model replaced the table by a linear interpolation, 6.000% + 11 x 0.025% = 6.275%. Its value contradicts the source, so it is not evidence and the expectation is dropped; the omission is a coverage gap of the review (README, interface gap), not a project error. Line 13(c): project $421.00, model $420.00; it follows from the model's line 7 (its line 8a $5,043 and 8b $420 instead of $5,047 and $421), with the rest of its work the project's.",
+   "drop": true,
+   "context": "2cc1b7de9f5f240b984930394a24b01ff855895d531881ff0d878653681dfb44"
+  },
+  {
+   "case": "classm.f8962.6",
+   "printed": "13(d)",
+   "project": "$691.00",
+   "model": "$692.00",
+   "ruling": "Ruling: interface gap; the deciding text was not given to the reviewer. Case classm.f8962.6.deepseek (fixtures/2025/classm.deepseek.json): line 3 $80,369, line 5 = 311 (project evaluated: line 7 0.0628, line 8a $5,047, line 8b $421). i8962 p. 10, Line 7: \"Enter on line 7 the decimal number from Table 2 that applies to the amount you entered on line 5.\" i8962 p. 11, Table 2 prints 0.0628 for 311 (the 302-352 column of sources/2025/i8962.cols.txt; tables/2025/ptc_applicable_figure.yaml row 311 = 628/10000; tools/extract_ptc_tables.py --check passes: \"Table 2 (402 rows) ... match i8962\"). But page 11 is not among the pages given (log: i8962 pages 1, 3, 4, 6, 8, 9, 10, 12 to 18; .classm/classm.f8962.6.deepseek.prompt.txt has no Table 2), so the model replaced the table by a linear interpolation, 6.000% + 11 x 0.025% = 6.275%. Its value contradicts the source, so it is not evidence and the expectation is dropped; the omission is a coverage gap of the review (README, interface gap), not a project error. Line 13(d): project $691.00, model $692.00; it follows from the model's line 7 (its line 8a $5,043 and 8b $420 instead of $5,047 and $421), with the rest of its work the project's.",
+   "drop": true,
+   "context": "2cc1b7de9f5f240b984930394a24b01ff855895d531881ff0d878653681dfb44"
+  },
+  {
+   "case": "classm.f8962.6",
+   "printed": "13(e)",
+   "project": "$691.00",
+   "model": "$692.00",
+   "ruling": "Ruling: interface gap; the deciding text was not given to the reviewer. Case classm.f8962.6.deepseek (fixtures/2025/classm.deepseek.json): line 3 $80,369, line 5 = 311 (project evaluated: line 7 0.0628, line 8a $5,047, line 8b $421). i8962 p. 10, Line 7: \"Enter on line 7 the decimal number from Table 2 that applies to the amount you entered on line 5.\" i8962 p. 11, Table 2 prints 0.0628 for 311 (the 302-352 column of sources/2025/i8962.cols.txt; tables/2025/ptc_applicable_figure.yaml row 311 = 628/10000; tools/extract_ptc_tables.py --check passes: \"Table 2 (402 rows) ... match i8962\"). But page 11 is not among the pages given (log: i8962 pages 1, 3, 4, 6, 8, 9, 10, 12 to 18; .classm/classm.f8962.6.deepseek.prompt.txt has no Table 2), so the model replaced the table by a linear interpolation, 6.000% + 11 x 0.025% = 6.275%. Its value contradicts the source, so it is not evidence and the expectation is dropped; the omission is a coverage gap of the review (README, interface gap), not a project error. Line 13(e): project $691.00, model $692.00; it follows from the model's line 7 (its line 8a $5,043 and 8b $420 instead of $5,047 and $421), with the rest of its work the project's.",
+   "drop": true,
+   "context": "2cc1b7de9f5f240b984930394a24b01ff855895d531881ff0d878653681dfb44"
+  },
+  {
+   "case": "classm.f8962.6",
+   "printed": "14(c)",
+   "project": "$421.00",
+   "model": "$420.00",
+   "ruling": "Ruling: interface gap; the deciding text was not given to the reviewer. Case classm.f8962.6.deepseek (fixtures/2025/classm.deepseek.json): line 3 $80,369, line 5 = 311 (project evaluated: line 7 0.0628, line 8a $5,047, line 8b $421). i8962 p. 10, Line 7: \"Enter on line 7 the decimal number from Table 2 that applies to the amount you entered on line 5.\" i8962 p. 11, Table 2 prints 0.0628 for 311 (the 302-352 column of sources/2025/i8962.cols.txt; tables/2025/ptc_applicable_figure.yaml row 311 = 628/10000; tools/extract_ptc_tables.py --check passes: \"Table 2 (402 rows) ... match i8962\"). But page 11 is not among the pages given (log: i8962 pages 1, 3, 4, 6, 8, 9, 10, 12 to 18; .classm/classm.f8962.6.deepseek.prompt.txt has no Table 2), so the model replaced the table by a linear interpolation, 6.000% + 11 x 0.025% = 6.275%. Its value contradicts the source, so it is not evidence and the expectation is dropped; the omission is a coverage gap of the review (README, interface gap), not a project error. Line 14(c): project $421.00, model $420.00; it follows from the model's line 7 (its line 8a $5,043 and 8b $420 instead of $5,047 and $421), with the rest of its work the project's.",
+   "drop": true,
+   "context": "2cc1b7de9f5f240b984930394a24b01ff855895d531881ff0d878653681dfb44"
+  },
+  {
+   "case": "classm.f8962.6",
+   "printed": "14(d)",
+   "project": "$691.00",
+   "model": "$692.00",
+   "ruling": "Ruling: interface gap; the deciding text was not given to the reviewer. Case classm.f8962.6.deepseek (fixtures/2025/classm.deepseek.json): line 3 $80,369, line 5 = 311 (project evaluated: line 7 0.0628, line 8a $5,047, line 8b $421). i8962 p. 10, Line 7: \"Enter on line 7 the decimal number from Table 2 that applies to the amount you entered on line 5.\" i8962 p. 11, Table 2 prints 0.0628 for 311 (the 302-352 column of sources/2025/i8962.cols.txt; tables/2025/ptc_applicable_figure.yaml row 311 = 628/10000; tools/extract_ptc_tables.py --check passes: \"Table 2 (402 rows) ... match i8962\"). But page 11 is not among the pages given (log: i8962 pages 1, 3, 4, 6, 8, 9, 10, 12 to 18; .classm/classm.f8962.6.deepseek.prompt.txt has no Table 2), so the model replaced the table by a linear interpolation, 6.000% + 11 x 0.025% = 6.275%. Its value contradicts the source, so it is not evidence and the expectation is dropped; the omission is a coverage gap of the review (README, interface gap), not a project error. Line 14(d): project $691.00, model $692.00; it follows from the model's line 7 (its line 8a $5,043 and 8b $420 instead of $5,047 and $421), with the rest of its work the project's.",
+   "drop": true,
+   "context": "2cc1b7de9f5f240b984930394a24b01ff855895d531881ff0d878653681dfb44"
+  },
+  {
+   "case": "classm.f8962.6",
+   "printed": "14(e)",
+   "project": "$691.00",
+   "model": "$692.00",
+   "ruling": "Ruling: interface gap; the deciding text was not given to the reviewer. Case classm.f8962.6.deepseek (fixtures/2025/classm.deepseek.json): line 3 $80,369, line 5 = 311 (project evaluated: line 7 0.0628, line 8a $5,047, line 8b $421). i8962 p. 10, Line 7: \"Enter on line 7 the decimal number from Table 2 that applies to the amount you entered on line 5.\" i8962 p. 11, Table 2 prints 0.0628 for 311 (the 302-352 column of sources/2025/i8962.cols.txt; tables/2025/ptc_applicable_figure.yaml row 311 = 628/10000; tools/extract_ptc_tables.py --check passes: \"Table 2 (402 rows) ... match i8962\"). But page 11 is not among the pages given (log: i8962 pages 1, 3, 4, 6, 8, 9, 10, 12 to 18; .classm/classm.f8962.6.deepseek.prompt.txt has no Table 2), so the model replaced the table by a linear interpolation, 6.000% + 11 x 0.025% = 6.275%. Its value contradicts the source, so it is not evidence and the expectation is dropped; the omission is a coverage gap of the review (README, interface gap), not a project error. Line 14(e): project $691.00, model $692.00; it follows from the model's line 7 (its line 8a $5,043 and 8b $420 instead of $5,047 and $421), with the rest of its work the project's.",
+   "drop": true,
+   "context": "2cc1b7de9f5f240b984930394a24b01ff855895d531881ff0d878653681dfb44"
+  },
+  {
+   "case": "classm.f8962.6",
+   "printed": "15(c)",
+   "project": "$421.00",
+   "model": "$420.00",
+   "ruling": "Ruling: interface gap; the deciding text was not given to the reviewer. Case classm.f8962.6.deepseek (fixtures/2025/classm.deepseek.json): line 3 $80,369, line 5 = 311 (project evaluated: line 7 0.0628, line 8a $5,047, line 8b $421). i8962 p. 10, Line 7: \"Enter on line 7 the decimal number from Table 2 that applies to the amount you entered on line 5.\" i8962 p. 11, Table 2 prints 0.0628 for 311 (the 302-352 column of sources/2025/i8962.cols.txt; tables/2025/ptc_applicable_figure.yaml row 311 = 628/10000; tools/extract_ptc_tables.py --check passes: \"Table 2 (402 rows) ... match i8962\"). But page 11 is not among the pages given (log: i8962 pages 1, 3, 4, 6, 8, 9, 10, 12 to 18; .classm/classm.f8962.6.deepseek.prompt.txt has no Table 2), so the model replaced the table by a linear interpolation, 6.000% + 11 x 0.025% = 6.275%. Its value contradicts the source, so it is not evidence and the expectation is dropped; the omission is a coverage gap of the review (README, interface gap), not a project error. Line 15(c): project $421.00, model $420.00; it follows from the model's line 7 (its line 8a $5,043 and 8b $420 instead of $5,047 and $421), with the rest of its work the project's.",
+   "drop": true,
+   "context": "2cc1b7de9f5f240b984930394a24b01ff855895d531881ff0d878653681dfb44"
+  },
+  {
+   "case": "classm.f8962.6",
+   "printed": "15(d)",
+   "project": "$691.00",
+   "model": "$692.00",
+   "ruling": "Ruling: interface gap; the deciding text was not given to the reviewer. Case classm.f8962.6.deepseek (fixtures/2025/classm.deepseek.json): line 3 $80,369, line 5 = 311 (project evaluated: line 7 0.0628, line 8a $5,047, line 8b $421). i8962 p. 10, Line 7: \"Enter on line 7 the decimal number from Table 2 that applies to the amount you entered on line 5.\" i8962 p. 11, Table 2 prints 0.0628 for 311 (the 302-352 column of sources/2025/i8962.cols.txt; tables/2025/ptc_applicable_figure.yaml row 311 = 628/10000; tools/extract_ptc_tables.py --check passes: \"Table 2 (402 rows) ... match i8962\"). But page 11 is not among the pages given (log: i8962 pages 1, 3, 4, 6, 8, 9, 10, 12 to 18; .classm/classm.f8962.6.deepseek.prompt.txt has no Table 2), so the model replaced the table by a linear interpolation, 6.000% + 11 x 0.025% = 6.275%. Its value contradicts the source, so it is not evidence and the expectation is dropped; the omission is a coverage gap of the review (README, interface gap), not a project error. Line 15(d): project $691.00, model $692.00; it follows from the model's line 7 (its line 8a $5,043 and 8b $420 instead of $5,047 and $421), with the rest of its work the project's.",
+   "drop": true,
+   "context": "2cc1b7de9f5f240b984930394a24b01ff855895d531881ff0d878653681dfb44"
+  },
+  {
+   "case": "classm.f8962.6",
+   "printed": "15(e)",
+   "project": "$691.00",
+   "model": "$692.00",
+   "ruling": "Ruling: interface gap; the deciding text was not given to the reviewer. Case classm.f8962.6.deepseek (fixtures/2025/classm.deepseek.json): line 3 $80,369, line 5 = 311 (project evaluated: line 7 0.0628, line 8a $5,047, line 8b $421). i8962 p. 10, Line 7: \"Enter on line 7 the decimal number from Table 2 that applies to the amount you entered on line 5.\" i8962 p. 11, Table 2 prints 0.0628 for 311 (the 302-352 column of sources/2025/i8962.cols.txt; tables/2025/ptc_applicable_figure.yaml row 311 = 628/10000; tools/extract_ptc_tables.py --check passes: \"Table 2 (402 rows) ... match i8962\"). But page 11 is not among the pages given (log: i8962 pages 1, 3, 4, 6, 8, 9, 10, 12 to 18; .classm/classm.f8962.6.deepseek.prompt.txt has no Table 2), so the model replaced the table by a linear interpolation, 6.000% + 11 x 0.025% = 6.275%. Its value contradicts the source, so it is not evidence and the expectation is dropped; the omission is a coverage gap of the review (README, interface gap), not a project error. Line 15(e): project $691.00, model $692.00; it follows from the model's line 7 (its line 8a $5,043 and 8b $420 instead of $5,047 and $421), with the rest of its work the project's.",
+   "drop": true,
+   "context": "2cc1b7de9f5f240b984930394a24b01ff855895d531881ff0d878653681dfb44"
+  },
+  {
+   "case": "classm.f8962.6",
+   "printed": "16(c)",
+   "project": "$421.00",
+   "model": "$420.00",
+   "ruling": "Ruling: interface gap; the deciding text was not given to the reviewer. Case classm.f8962.6.deepseek (fixtures/2025/classm.deepseek.json): line 3 $80,369, line 5 = 311 (project evaluated: line 7 0.0628, line 8a $5,047, line 8b $421). i8962 p. 10, Line 7: \"Enter on line 7 the decimal number from Table 2 that applies to the amount you entered on line 5.\" i8962 p. 11, Table 2 prints 0.0628 for 311 (the 302-352 column of sources/2025/i8962.cols.txt; tables/2025/ptc_applicable_figure.yaml row 311 = 628/10000; tools/extract_ptc_tables.py --check passes: \"Table 2 (402 rows) ... match i8962\"). But page 11 is not among the pages given (log: i8962 pages 1, 3, 4, 6, 8, 9, 10, 12 to 18; .classm/classm.f8962.6.deepseek.prompt.txt has no Table 2), so the model replaced the table by a linear interpolation, 6.000% + 11 x 0.025% = 6.275%. Its value contradicts the source, so it is not evidence and the expectation is dropped; the omission is a coverage gap of the review (README, interface gap), not a project error. Line 16(c): project $421.00, model $420.00; it follows from the model's line 7 (its line 8a $5,043 and 8b $420 instead of $5,047 and $421), with the rest of its work the project's.",
+   "drop": true,
+   "context": "2cc1b7de9f5f240b984930394a24b01ff855895d531881ff0d878653681dfb44"
+  },
+  {
+   "case": "classm.f8962.6",
+   "printed": "16(d)",
+   "project": "$691.00",
+   "model": "$692.00",
+   "ruling": "Ruling: interface gap; the deciding text was not given to the reviewer. Case classm.f8962.6.deepseek (fixtures/2025/classm.deepseek.json): line 3 $80,369, line 5 = 311 (project evaluated: line 7 0.0628, line 8a $5,047, line 8b $421). i8962 p. 10, Line 7: \"Enter on line 7 the decimal number from Table 2 that applies to the amount you entered on line 5.\" i8962 p. 11, Table 2 prints 0.0628 for 311 (the 302-352 column of sources/2025/i8962.cols.txt; tables/2025/ptc_applicable_figure.yaml row 311 = 628/10000; tools/extract_ptc_tables.py --check passes: \"Table 2 (402 rows) ... match i8962\"). But page 11 is not among the pages given (log: i8962 pages 1, 3, 4, 6, 8, 9, 10, 12 to 18; .classm/classm.f8962.6.deepseek.prompt.txt has no Table 2), so the model replaced the table by a linear interpolation, 6.000% + 11 x 0.025% = 6.275%. Its value contradicts the source, so it is not evidence and the expectation is dropped; the omission is a coverage gap of the review (README, interface gap), not a project error. Line 16(d): project $691.00, model $692.00; it follows from the model's line 7 (its line 8a $5,043 and 8b $420 instead of $5,047 and $421), with the rest of its work the project's.",
+   "drop": true,
+   "context": "2cc1b7de9f5f240b984930394a24b01ff855895d531881ff0d878653681dfb44"
+  },
+  {
+   "case": "classm.f8962.6",
+   "printed": "16(e)",
+   "project": "$691.00",
+   "model": "$692.00",
+   "ruling": "Ruling: interface gap; the deciding text was not given to the reviewer. Case classm.f8962.6.deepseek (fixtures/2025/classm.deepseek.json): line 3 $80,369, line 5 = 311 (project evaluated: line 7 0.0628, line 8a $5,047, line 8b $421). i8962 p. 10, Line 7: \"Enter on line 7 the decimal number from Table 2 that applies to the amount you entered on line 5.\" i8962 p. 11, Table 2 prints 0.0628 for 311 (the 302-352 column of sources/2025/i8962.cols.txt; tables/2025/ptc_applicable_figure.yaml row 311 = 628/10000; tools/extract_ptc_tables.py --check passes: \"Table 2 (402 rows) ... match i8962\"). But page 11 is not among the pages given (log: i8962 pages 1, 3, 4, 6, 8, 9, 10, 12 to 18; .classm/classm.f8962.6.deepseek.prompt.txt has no Table 2), so the model replaced the table by a linear interpolation, 6.000% + 11 x 0.025% = 6.275%. Its value contradicts the source, so it is not evidence and the expectation is dropped; the omission is a coverage gap of the review (README, interface gap), not a project error. Line 16(e): project $691.00, model $692.00; it follows from the model's line 7 (its line 8a $5,043 and 8b $420 instead of $5,047 and $421), with the rest of its work the project's.",
+   "drop": true,
+   "context": "2cc1b7de9f5f240b984930394a24b01ff855895d531881ff0d878653681dfb44"
+  },
+  {
+   "case": "classm.f8962.6",
+   "printed": "17(c)",
+   "project": "$421.00",
+   "model": "$420.00",
+   "ruling": "Ruling: interface gap; the deciding text was not given to the reviewer. Case classm.f8962.6.deepseek (fixtures/2025/classm.deepseek.json): line 3 $80,369, line 5 = 311 (project evaluated: line 7 0.0628, line 8a $5,047, line 8b $421). i8962 p. 10, Line 7: \"Enter on line 7 the decimal number from Table 2 that applies to the amount you entered on line 5.\" i8962 p. 11, Table 2 prints 0.0628 for 311 (the 302-352 column of sources/2025/i8962.cols.txt; tables/2025/ptc_applicable_figure.yaml row 311 = 628/10000; tools/extract_ptc_tables.py --check passes: \"Table 2 (402 rows) ... match i8962\"). But page 11 is not among the pages given (log: i8962 pages 1, 3, 4, 6, 8, 9, 10, 12 to 18; .classm/classm.f8962.6.deepseek.prompt.txt has no Table 2), so the model replaced the table by a linear interpolation, 6.000% + 11 x 0.025% = 6.275%. Its value contradicts the source, so it is not evidence and the expectation is dropped; the omission is a coverage gap of the review (README, interface gap), not a project error. Line 17(c): project $421.00, model $420.00; it follows from the model's line 7 (its line 8a $5,043 and 8b $420 instead of $5,047 and $421), with the rest of its work the project's.",
+   "drop": true,
+   "context": "2cc1b7de9f5f240b984930394a24b01ff855895d531881ff0d878653681dfb44"
+  },
+  {
+   "case": "classm.f8962.6",
+   "printed": "17(d)",
+   "project": "$691.00",
+   "model": "$692.00",
+   "ruling": "Ruling: interface gap; the deciding text was not given to the reviewer. Case classm.f8962.6.deepseek (fixtures/2025/classm.deepseek.json): line 3 $80,369, line 5 = 311 (project evaluated: line 7 0.0628, line 8a $5,047, line 8b $421). i8962 p. 10, Line 7: \"Enter on line 7 the decimal number from Table 2 that applies to the amount you entered on line 5.\" i8962 p. 11, Table 2 prints 0.0628 for 311 (the 302-352 column of sources/2025/i8962.cols.txt; tables/2025/ptc_applicable_figure.yaml row 311 = 628/10000; tools/extract_ptc_tables.py --check passes: \"Table 2 (402 rows) ... match i8962\"). But page 11 is not among the pages given (log: i8962 pages 1, 3, 4, 6, 8, 9, 10, 12 to 18; .classm/classm.f8962.6.deepseek.prompt.txt has no Table 2), so the model replaced the table by a linear interpolation, 6.000% + 11 x 0.025% = 6.275%. Its value contradicts the source, so it is not evidence and the expectation is dropped; the omission is a coverage gap of the review (README, interface gap), not a project error. Line 17(d): project $691.00, model $692.00; it follows from the model's line 7 (its line 8a $5,043 and 8b $420 instead of $5,047 and $421), with the rest of its work the project's.",
+   "drop": true,
+   "context": "2cc1b7de9f5f240b984930394a24b01ff855895d531881ff0d878653681dfb44"
+  },
+  {
+   "case": "classm.f8962.6",
+   "printed": "17(e)",
+   "project": "$691.00",
+   "model": "$692.00",
+   "ruling": "Ruling: interface gap; the deciding text was not given to the reviewer. Case classm.f8962.6.deepseek (fixtures/2025/classm.deepseek.json): line 3 $80,369, line 5 = 311 (project evaluated: line 7 0.0628, line 8a $5,047, line 8b $421). i8962 p. 10, Line 7: \"Enter on line 7 the decimal number from Table 2 that applies to the amount you entered on line 5.\" i8962 p. 11, Table 2 prints 0.0628 for 311 (the 302-352 column of sources/2025/i8962.cols.txt; tables/2025/ptc_applicable_figure.yaml row 311 = 628/10000; tools/extract_ptc_tables.py --check passes: \"Table 2 (402 rows) ... match i8962\"). But page 11 is not among the pages given (log: i8962 pages 1, 3, 4, 6, 8, 9, 10, 12 to 18; .classm/classm.f8962.6.deepseek.prompt.txt has no Table 2), so the model replaced the table by a linear interpolation, 6.000% + 11 x 0.025% = 6.275%. Its value contradicts the source, so it is not evidence and the expectation is dropped; the omission is a coverage gap of the review (README, interface gap), not a project error. Line 17(e): project $691.00, model $692.00; it follows from the model's line 7 (its line 8a $5,043 and 8b $420 instead of $5,047 and $421), with the rest of its work the project's.",
+   "drop": true,
+   "context": "2cc1b7de9f5f240b984930394a24b01ff855895d531881ff0d878653681dfb44"
+  },
+  {
+   "case": "classm.f8962.6",
+   "printed": "18(c)",
+   "project": "$421.00",
+   "model": "$420.00",
+   "ruling": "Ruling: interface gap; the deciding text was not given to the reviewer. Case classm.f8962.6.deepseek (fixtures/2025/classm.deepseek.json): line 3 $80,369, line 5 = 311 (project evaluated: line 7 0.0628, line 8a $5,047, line 8b $421). i8962 p. 10, Line 7: \"Enter on line 7 the decimal number from Table 2 that applies to the amount you entered on line 5.\" i8962 p. 11, Table 2 prints 0.0628 for 311 (the 302-352 column of sources/2025/i8962.cols.txt; tables/2025/ptc_applicable_figure.yaml row 311 = 628/10000; tools/extract_ptc_tables.py --check passes: \"Table 2 (402 rows) ... match i8962\"). But page 11 is not among the pages given (log: i8962 pages 1, 3, 4, 6, 8, 9, 10, 12 to 18; .classm/classm.f8962.6.deepseek.prompt.txt has no Table 2), so the model replaced the table by a linear interpolation, 6.000% + 11 x 0.025% = 6.275%. Its value contradicts the source, so it is not evidence and the expectation is dropped; the omission is a coverage gap of the review (README, interface gap), not a project error. Line 18(c): project $421.00, model $420.00; it follows from the model's line 7 (its line 8a $5,043 and 8b $420 instead of $5,047 and $421), with the rest of its work the project's.",
+   "drop": true,
+   "context": "2cc1b7de9f5f240b984930394a24b01ff855895d531881ff0d878653681dfb44"
+  },
+  {
+   "case": "classm.f8962.6",
+   "printed": "18(d)",
+   "project": "$671.00",
+   "model": "$672.00",
+   "ruling": "Ruling: interface gap; the deciding text was not given to the reviewer. Case classm.f8962.6.deepseek (fixtures/2025/classm.deepseek.json): line 3 $80,369, line 5 = 311 (project evaluated: line 7 0.0628, line 8a $5,047, line 8b $421). i8962 p. 10, Line 7: \"Enter on line 7 the decimal number from Table 2 that applies to the amount you entered on line 5.\" i8962 p. 11, Table 2 prints 0.0628 for 311 (the 302-352 column of sources/2025/i8962.cols.txt; tables/2025/ptc_applicable_figure.yaml row 311 = 628/10000; tools/extract_ptc_tables.py --check passes: \"Table 2 (402 rows) ... match i8962\"). But page 11 is not among the pages given (log: i8962 pages 1, 3, 4, 6, 8, 9, 10, 12 to 18; .classm/classm.f8962.6.deepseek.prompt.txt has no Table 2), so the model replaced the table by a linear interpolation, 6.000% + 11 x 0.025% = 6.275%. Its value contradicts the source, so it is not evidence and the expectation is dropped; the omission is a coverage gap of the review (README, interface gap), not a project error. Line 18(d): project $671.00, model $672.00; it follows from the model's line 7 (its line 8a $5,043 and 8b $420 instead of $5,047 and $421), with the rest of its work the project's.",
+   "drop": true,
+   "context": "2cc1b7de9f5f240b984930394a24b01ff855895d531881ff0d878653681dfb44"
+  },
+  {
+   "case": "classm.f8962.6",
+   "printed": "19(c)",
+   "project": "$421.00",
+   "model": "$420.00",
+   "ruling": "Ruling: interface gap; the deciding text was not given to the reviewer. Case classm.f8962.6.deepseek (fixtures/2025/classm.deepseek.json): line 3 $80,369, line 5 = 311 (project evaluated: line 7 0.0628, line 8a $5,047, line 8b $421). i8962 p. 10, Line 7: \"Enter on line 7 the decimal number from Table 2 that applies to the amount you entered on line 5.\" i8962 p. 11, Table 2 prints 0.0628 for 311 (the 302-352 column of sources/2025/i8962.cols.txt; tables/2025/ptc_applicable_figure.yaml row 311 = 628/10000; tools/extract_ptc_tables.py --check passes: \"Table 2 (402 rows) ... match i8962\"). But page 11 is not among the pages given (log: i8962 pages 1, 3, 4, 6, 8, 9, 10, 12 to 18; .classm/classm.f8962.6.deepseek.prompt.txt has no Table 2), so the model replaced the table by a linear interpolation, 6.000% + 11 x 0.025% = 6.275%. Its value contradicts the source, so it is not evidence and the expectation is dropped; the omission is a coverage gap of the review (README, interface gap), not a project error. Line 19(c): project $421.00, model $420.00; it follows from the model's line 7 (its line 8a $5,043 and 8b $420 instead of $5,047 and $421), with the rest of its work the project's.",
+   "drop": true,
+   "context": "2cc1b7de9f5f240b984930394a24b01ff855895d531881ff0d878653681dfb44"
+  },
+  {
+   "case": "classm.f8962.6",
+   "printed": "19(d)",
+   "project": "$671.00",
+   "model": "$672.00",
+   "ruling": "Ruling: interface gap; the deciding text was not given to the reviewer. Case classm.f8962.6.deepseek (fixtures/2025/classm.deepseek.json): line 3 $80,369, line 5 = 311 (project evaluated: line 7 0.0628, line 8a $5,047, line 8b $421). i8962 p. 10, Line 7: \"Enter on line 7 the decimal number from Table 2 that applies to the amount you entered on line 5.\" i8962 p. 11, Table 2 prints 0.0628 for 311 (the 302-352 column of sources/2025/i8962.cols.txt; tables/2025/ptc_applicable_figure.yaml row 311 = 628/10000; tools/extract_ptc_tables.py --check passes: \"Table 2 (402 rows) ... match i8962\"). But page 11 is not among the pages given (log: i8962 pages 1, 3, 4, 6, 8, 9, 10, 12 to 18; .classm/classm.f8962.6.deepseek.prompt.txt has no Table 2), so the model replaced the table by a linear interpolation, 6.000% + 11 x 0.025% = 6.275%. Its value contradicts the source, so it is not evidence and the expectation is dropped; the omission is a coverage gap of the review (README, interface gap), not a project error. Line 19(d): project $671.00, model $672.00; it follows from the model's line 7 (its line 8a $5,043 and 8b $420 instead of $5,047 and $421), with the rest of its work the project's.",
+   "drop": true,
+   "context": "2cc1b7de9f5f240b984930394a24b01ff855895d531881ff0d878653681dfb44"
+  },
+  {
+   "case": "classm.f8962.6",
+   "printed": "20(c)",
+   "project": "$421.00",
+   "model": "$420.00",
+   "ruling": "Ruling: interface gap; the deciding text was not given to the reviewer. Case classm.f8962.6.deepseek (fixtures/2025/classm.deepseek.json): line 3 $80,369, line 5 = 311 (project evaluated: line 7 0.0628, line 8a $5,047, line 8b $421). i8962 p. 10, Line 7: \"Enter on line 7 the decimal number from Table 2 that applies to the amount you entered on line 5.\" i8962 p. 11, Table 2 prints 0.0628 for 311 (the 302-352 column of sources/2025/i8962.cols.txt; tables/2025/ptc_applicable_figure.yaml row 311 = 628/10000; tools/extract_ptc_tables.py --check passes: \"Table 2 (402 rows) ... match i8962\"). But page 11 is not among the pages given (log: i8962 pages 1, 3, 4, 6, 8, 9, 10, 12 to 18; .classm/classm.f8962.6.deepseek.prompt.txt has no Table 2), so the model replaced the table by a linear interpolation, 6.000% + 11 x 0.025% = 6.275%. Its value contradicts the source, so it is not evidence and the expectation is dropped; the omission is a coverage gap of the review (README, interface gap), not a project error. Line 20(c): project $421.00, model $420.00; it follows from the model's line 7 (its line 8a $5,043 and 8b $420 instead of $5,047 and $421), with the rest of its work the project's.",
+   "drop": true,
+   "context": "2cc1b7de9f5f240b984930394a24b01ff855895d531881ff0d878653681dfb44"
+  },
+  {
+   "case": "classm.f8962.6",
+   "printed": "20(d)",
+   "project": "$671.00",
+   "model": "$672.00",
+   "ruling": "Ruling: interface gap; the deciding text was not given to the reviewer. Case classm.f8962.6.deepseek (fixtures/2025/classm.deepseek.json): line 3 $80,369, line 5 = 311 (project evaluated: line 7 0.0628, line 8a $5,047, line 8b $421). i8962 p. 10, Line 7: \"Enter on line 7 the decimal number from Table 2 that applies to the amount you entered on line 5.\" i8962 p. 11, Table 2 prints 0.0628 for 311 (the 302-352 column of sources/2025/i8962.cols.txt; tables/2025/ptc_applicable_figure.yaml row 311 = 628/10000; tools/extract_ptc_tables.py --check passes: \"Table 2 (402 rows) ... match i8962\"). But page 11 is not among the pages given (log: i8962 pages 1, 3, 4, 6, 8, 9, 10, 12 to 18; .classm/classm.f8962.6.deepseek.prompt.txt has no Table 2), so the model replaced the table by a linear interpolation, 6.000% + 11 x 0.025% = 6.275%. Its value contradicts the source, so it is not evidence and the expectation is dropped; the omission is a coverage gap of the review (README, interface gap), not a project error. Line 20(d): project $671.00, model $672.00; it follows from the model's line 7 (its line 8a $5,043 and 8b $420 instead of $5,047 and $421), with the rest of its work the project's.",
+   "drop": true,
+   "context": "2cc1b7de9f5f240b984930394a24b01ff855895d531881ff0d878653681dfb44"
+  },
+  {
+   "case": "classm.f8962.6",
+   "printed": "21(c)",
+   "project": "$421.00",
+   "model": "$420.00",
+   "ruling": "Ruling: interface gap; the deciding text was not given to the reviewer. Case classm.f8962.6.deepseek (fixtures/2025/classm.deepseek.json): line 3 $80,369, line 5 = 311 (project evaluated: line 7 0.0628, line 8a $5,047, line 8b $421). i8962 p. 10, Line 7: \"Enter on line 7 the decimal number from Table 2 that applies to the amount you entered on line 5.\" i8962 p. 11, Table 2 prints 0.0628 for 311 (the 302-352 column of sources/2025/i8962.cols.txt; tables/2025/ptc_applicable_figure.yaml row 311 = 628/10000; tools/extract_ptc_tables.py --check passes: \"Table 2 (402 rows) ... match i8962\"). But page 11 is not among the pages given (log: i8962 pages 1, 3, 4, 6, 8, 9, 10, 12 to 18; .classm/classm.f8962.6.deepseek.prompt.txt has no Table 2), so the model replaced the table by a linear interpolation, 6.000% + 11 x 0.025% = 6.275%. Its value contradicts the source, so it is not evidence and the expectation is dropped; the omission is a coverage gap of the review (README, interface gap), not a project error. Line 21(c): project $421.00, model $420.00; it follows from the model's line 7 (its line 8a $5,043 and 8b $420 instead of $5,047 and $421), with the rest of its work the project's.",
+   "drop": true,
+   "context": "2cc1b7de9f5f240b984930394a24b01ff855895d531881ff0d878653681dfb44"
+  },
+  {
+   "case": "classm.f8962.6",
+   "printed": "21(d)",
+   "project": "$671.00",
+   "model": "$672.00",
+   "ruling": "Ruling: interface gap; the deciding text was not given to the reviewer. Case classm.f8962.6.deepseek (fixtures/2025/classm.deepseek.json): line 3 $80,369, line 5 = 311 (project evaluated: line 7 0.0628, line 8a $5,047, line 8b $421). i8962 p. 10, Line 7: \"Enter on line 7 the decimal number from Table 2 that applies to the amount you entered on line 5.\" i8962 p. 11, Table 2 prints 0.0628 for 311 (the 302-352 column of sources/2025/i8962.cols.txt; tables/2025/ptc_applicable_figure.yaml row 311 = 628/10000; tools/extract_ptc_tables.py --check passes: \"Table 2 (402 rows) ... match i8962\"). But page 11 is not among the pages given (log: i8962 pages 1, 3, 4, 6, 8, 9, 10, 12 to 18; .classm/classm.f8962.6.deepseek.prompt.txt has no Table 2), so the model replaced the table by a linear interpolation, 6.000% + 11 x 0.025% = 6.275%. Its value contradicts the source, so it is not evidence and the expectation is dropped; the omission is a coverage gap of the review (README, interface gap), not a project error. Line 21(d): project $671.00, model $672.00; it follows from the model's line 7 (its line 8a $5,043 and 8b $420 instead of $5,047 and $421), with the rest of its work the project's.",
+   "drop": true,
+   "context": "2cc1b7de9f5f240b984930394a24b01ff855895d531881ff0d878653681dfb44"
+  },
+  {
+   "case": "classm.f8962.6",
+   "printed": "22(c)",
+   "project": "$421.00",
+   "model": "$420.00",
+   "ruling": "Ruling: interface gap; the deciding text was not given to the reviewer. Case classm.f8962.6.deepseek (fixtures/2025/classm.deepseek.json): line 3 $80,369, line 5 = 311 (project evaluated: line 7 0.0628, line 8a $5,047, line 8b $421). i8962 p. 10, Line 7: \"Enter on line 7 the decimal number from Table 2 that applies to the amount you entered on line 5.\" i8962 p. 11, Table 2 prints 0.0628 for 311 (the 302-352 column of sources/2025/i8962.cols.txt; tables/2025/ptc_applicable_figure.yaml row 311 = 628/10000; tools/extract_ptc_tables.py --check passes: \"Table 2 (402 rows) ... match i8962\"). But page 11 is not among the pages given (log: i8962 pages 1, 3, 4, 6, 8, 9, 10, 12 to 18; .classm/classm.f8962.6.deepseek.prompt.txt has no Table 2), so the model replaced the table by a linear interpolation, 6.000% + 11 x 0.025% = 6.275%. Its value contradicts the source, so it is not evidence and the expectation is dropped; the omission is a coverage gap of the review (README, interface gap), not a project error. Line 22(c): project $421.00, model $420.00; it follows from the model's line 7 (its line 8a $5,043 and 8b $420 instead of $5,047 and $421), with the rest of its work the project's.",
+   "drop": true,
+   "context": "2cc1b7de9f5f240b984930394a24b01ff855895d531881ff0d878653681dfb44"
+  },
+  {
+   "case": "classm.f8962.6",
+   "printed": "23(c)",
+   "project": "$421.00",
+   "model": "$420.00",
+   "ruling": "Ruling: interface gap; the deciding text was not given to the reviewer. Case classm.f8962.6.deepseek (fixtures/2025/classm.deepseek.json): line 3 $80,369, line 5 = 311 (project evaluated: line 7 0.0628, line 8a $5,047, line 8b $421). i8962 p. 10, Line 7: \"Enter on line 7 the decimal number from Table 2 that applies to the amount you entered on line 5.\" i8962 p. 11, Table 2 prints 0.0628 for 311 (the 302-352 column of sources/2025/i8962.cols.txt; tables/2025/ptc_applicable_figure.yaml row 311 = 628/10000; tools/extract_ptc_tables.py --check passes: \"Table 2 (402 rows) ... match i8962\"). But page 11 is not among the pages given (log: i8962 pages 1, 3, 4, 6, 8, 9, 10, 12 to 18; .classm/classm.f8962.6.deepseek.prompt.txt has no Table 2), so the model replaced the table by a linear interpolation, 6.000% + 11 x 0.025% = 6.275%. Its value contradicts the source, so it is not evidence and the expectation is dropped; the omission is a coverage gap of the review (README, interface gap), not a project error. Line 23(c): project $421.00, model $420.00; it follows from the model's line 7 (its line 8a $5,043 and 8b $420 instead of $5,047 and $421), with the rest of its work the project's.",
+   "drop": true,
+   "context": "2cc1b7de9f5f240b984930394a24b01ff855895d531881ff0d878653681dfb44"
+  },
+  {
+   "case": "classm.f8962.6",
+   "printed": "24",
+   "project": "$5,554.00",
+   "model": "$5,560.00",
+   "ruling": "Ruling: interface gap; the deciding text was not given to the reviewer. Case classm.f8962.6.deepseek (fixtures/2025/classm.deepseek.json): line 3 $80,369, line 5 = 311 (project evaluated: line 7 0.0628, line 8a $5,047, line 8b $421). i8962 p. 10, Line 7: \"Enter on line 7 the decimal number from Table 2 that applies to the amount you entered on line 5.\" i8962 p. 11, Table 2 prints 0.0628 for 311 (the 302-352 column of sources/2025/i8962.cols.txt; tables/2025/ptc_applicable_figure.yaml row 311 = 628/10000; tools/extract_ptc_tables.py --check passes: \"Table 2 (402 rows) ... match i8962\"). But page 11 is not among the pages given (log: i8962 pages 1, 3, 4, 6, 8, 9, 10, 12 to 18; .classm/classm.f8962.6.deepseek.prompt.txt has no Table 2), so the model replaced the table by a linear interpolation, 6.000% + 11 x 0.025% = 6.275%. Its value contradicts the source, so it is not evidence and the expectation is dropped; the omission is a coverage gap of the review (README, interface gap), not a project error. Line 24: project $5,554.00, model $5,560.00; it follows from the model's line 7 (its line 8a $5,043 and 8b $420 instead of $5,047 and $421), with the rest of its work the project's.",
+   "drop": true,
+   "context": "2cc1b7de9f5f240b984930394a24b01ff855895d531881ff0d878653681dfb44"
+  },
+  {
+   "case": "classm.f8962.6",
+   "printed": "27",
+   "project": "$271.00",
+   "model": "$265.00",
+   "ruling": "Ruling: interface gap; the deciding text was not given to the reviewer. Case classm.f8962.6.deepseek (fixtures/2025/classm.deepseek.json): line 3 $80,369, line 5 = 311 (project evaluated: line 7 0.0628, line 8a $5,047, line 8b $421). i8962 p. 10, Line 7: \"Enter on line 7 the decimal number from Table 2 that applies to the amount you entered on line 5.\" i8962 p. 11, Table 2 prints 0.0628 for 311 (the 302-352 column of sources/2025/i8962.cols.txt; tables/2025/ptc_applicable_figure.yaml row 311 = 628/10000; tools/extract_ptc_tables.py --check passes: \"Table 2 (402 rows) ... match i8962\"). But page 11 is not among the pages given (log: i8962 pages 1, 3, 4, 6, 8, 9, 10, 12 to 18; .classm/classm.f8962.6.deepseek.prompt.txt has no Table 2), so the model replaced the table by a linear interpolation, 6.000% + 11 x 0.025% = 6.275%. Its value contradicts the source, so it is not evidence and the expectation is dropped; the omission is a coverage gap of the review (README, interface gap), not a project error. Line 27: project $271.00, model $265.00; it follows from the model's line 7 (its line 8a $5,043 and 8b $420 instead of $5,047 and $421), with the rest of its work the project's.",
+   "drop": true,
+   "context": "2cc1b7de9f5f240b984930394a24b01ff855895d531881ff0d878653681dfb44"
+  },
+  {
+   "case": "classm.f8962.6",
+   "printed": "29",
+   "project": "$271.00",
+   "model": "$265.00",
+   "ruling": "Ruling: interface gap; the deciding text was not given to the reviewer. Case classm.f8962.6.deepseek (fixtures/2025/classm.deepseek.json): line 3 $80,369, line 5 = 311 (project evaluated: line 7 0.0628, line 8a $5,047, line 8b $421). i8962 p. 10, Line 7: \"Enter on line 7 the decimal number from Table 2 that applies to the amount you entered on line 5.\" i8962 p. 11, Table 2 prints 0.0628 for 311 (the 302-352 column of sources/2025/i8962.cols.txt; tables/2025/ptc_applicable_figure.yaml row 311 = 628/10000; tools/extract_ptc_tables.py --check passes: \"Table 2 (402 rows) ... match i8962\"). But page 11 is not among the pages given (log: i8962 pages 1, 3, 4, 6, 8, 9, 10, 12 to 18; .classm/classm.f8962.6.deepseek.prompt.txt has no Table 2), so the model replaced the table by a linear interpolation, 6.000% + 11 x 0.025% = 6.275%. Its value contradicts the source, so it is not evidence and the expectation is dropped; the omission is a coverage gap of the review (README, interface gap), not a project error. Line 29: project $271.00, model $265.00; it follows from the model's line 7 (its line 8a $5,043 and 8b $420 instead of $5,047 and $421), with the rest of its work the project's.",
+   "drop": true,
+   "context": "2cc1b7de9f5f240b984930394a24b01ff855895d531881ff0d878653681dfb44"
+  },
+  {
+   "case": "classm.f8962.6",
+   "printed": "7",
+   "project": "6.28%",
+   "model": "6.275%",
+   "ruling": "Ruling: interface gap; the deciding text was not given to the reviewer. Case classm.f8962.6.deepseek (fixtures/2025/classm.deepseek.json): line 3 $80,369, line 5 = 311 (project evaluated: line 7 0.0628, line 8a $5,047, line 8b $421). i8962 p. 10, Line 7: \"Enter on line 7 the decimal number from Table 2 that applies to the amount you entered on line 5.\" i8962 p. 11, Table 2 prints 0.0628 for 311 (the 302-352 column of sources/2025/i8962.cols.txt; tables/2025/ptc_applicable_figure.yaml row 311 = 628/10000; tools/extract_ptc_tables.py --check passes: \"Table 2 (402 rows) ... match i8962\"). But page 11 is not among the pages given (log: i8962 pages 1, 3, 4, 6, 8, 9, 10, 12 to 18; .classm/classm.f8962.6.deepseek.prompt.txt has no Table 2), so the model replaced the table by a linear interpolation, 6.000% + 11 x 0.025% = 6.275%. Its value contradicts the source, so it is not evidence and the expectation is dropped; the omission is a coverage gap of the review (README, interface gap), not a project error. Line 7: project 6.28%, model 6.275%; this is the root.",
+   "drop": true,
+   "context": "2cc1b7de9f5f240b984930394a24b01ff855895d531881ff0d878653681dfb44"
+  },
+  {
+   "case": "classm.f8962.6",
+   "printed": "8a",
+   "project": "$5,047.00",
+   "model": "$5,043.00",
+   "ruling": "Ruling: interface gap; the deciding text was not given to the reviewer. Case classm.f8962.6.deepseek (fixtures/2025/classm.deepseek.json): line 3 $80,369, line 5 = 311 (project evaluated: line 7 0.0628, line 8a $5,047, line 8b $421). i8962 p. 10, Line 7: \"Enter on line 7 the decimal number from Table 2 that applies to the amount you entered on line 5.\" i8962 p. 11, Table 2 prints 0.0628 for 311 (the 302-352 column of sources/2025/i8962.cols.txt; tables/2025/ptc_applicable_figure.yaml row 311 = 628/10000; tools/extract_ptc_tables.py --check passes: \"Table 2 (402 rows) ... match i8962\"). But page 11 is not among the pages given (log: i8962 pages 1, 3, 4, 6, 8, 9, 10, 12 to 18; .classm/classm.f8962.6.deepseek.prompt.txt has no Table 2), so the model replaced the table by a linear interpolation, 6.000% + 11 x 0.025% = 6.275%. Its value contradicts the source, so it is not evidence and the expectation is dropped; the omission is a coverage gap of the review (README, interface gap), not a project error. Line 8a: project $5,047.00, model $5,043.00; it follows from the model's line 7 (its line 8a $5,043 and 8b $420 instead of $5,047 and $421), with the rest of its work the project's.",
+   "drop": true,
+   "context": "2cc1b7de9f5f240b984930394a24b01ff855895d531881ff0d878653681dfb44"
+  },
+  {
+   "case": "classm.f8962.6",
+   "printed": "8b",
+   "project": "$421.00",
+   "model": "$420.00",
+   "ruling": "Ruling: interface gap; the deciding text was not given to the reviewer. Case classm.f8962.6.deepseek (fixtures/2025/classm.deepseek.json): line 3 $80,369, line 5 = 311 (project evaluated: line 7 0.0628, line 8a $5,047, line 8b $421). i8962 p. 10, Line 7: \"Enter on line 7 the decimal number from Table 2 that applies to the amount you entered on line 5.\" i8962 p. 11, Table 2 prints 0.0628 for 311 (the 302-352 column of sources/2025/i8962.cols.txt; tables/2025/ptc_applicable_figure.yaml row 311 = 628/10000; tools/extract_ptc_tables.py --check passes: \"Table 2 (402 rows) ... match i8962\"). But page 11 is not among the pages given (log: i8962 pages 1, 3, 4, 6, 8, 9, 10, 12 to 18; .classm/classm.f8962.6.deepseek.prompt.txt has no Table 2), so the model replaced the table by a linear interpolation, 6.000% + 11 x 0.025% = 6.275%. Its value contradicts the source, so it is not evidence and the expectation is dropped; the omission is a coverage gap of the review (README, interface gap), not a project error. Line 8b: project $421.00, model $420.00; it follows from the model's line 7 (its line 8a $5,043 and 8b $420 instead of $5,047 and $421), with the rest of its work the project's.",
+   "drop": true,
+   "context": "2cc1b7de9f5f240b984930394a24b01ff855895d531881ff0d878653681dfb44"
+  }
+ ]
+}

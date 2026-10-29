@@ -1,6 +1,14 @@
 params:
   tax_year: 2025
   enums:
+    ptc_fpl_table:
+      values:
+        - contiguous
+        - alaska
+        - hawaii
+      cite:
+        doc: f8962
+        locator: 'p. 1, Part I, line 4, "Check the appropriate box for the federal poverty table used"'
     sales_box:
       values:
         - A
@@ -1073,6 +1081,59 @@ params:
       cite:
         doc: f1040sd
         locator: Schedule D (2025), Parts I–III
+    ptc.repay_200:
+      value:
+        single: 37500
+        mfj: 75000
+        mfs: 75000
+        hoh: 75000
+        qss: 75000
+      type: NonNegDollars
+      cite:
+        doc: rp-2024-40
+        locator: 'pp. 9–10, Refundable Credit for Coverage Under a Qualified Health Plan, "the limitation on tax imposed
+          under § 36B(f)(2)(B) for excess advance credit payments is determined using the following table", row "Less than 200%"; i8962
+          p. 18, Table 5. Repayment Limitation'
+    ptc.repay_300:
+      value:
+        single: 97500
+        mfj: 195000
+        mfs: 195000
+        hoh: 195000
+        qss: 195000
+      type: NonNegDollars
+      cite:
+        doc: rp-2024-40
+        locator: 'pp. 9–10, Refundable Credit for Coverage Under a Qualified Health Plan, "the limitation on tax imposed
+          under § 36B(f)(2)(B) for excess advance credit payments is determined using the following table", row "At least 200% but less than 300%"; i8962
+          p. 18, Table 5. Repayment Limitation'
+    ptc.repay_400:
+      value:
+        single: 162500
+        mfj: 325000
+        mfs: 325000
+        hoh: 325000
+        qss: 325000
+      type: NonNegDollars
+      cite:
+        doc: rp-2024-40
+        locator: 'pp. 9–10, Refundable Credit for Coverage Under a Qualified Health Plan, "the limitation on tax imposed
+          under § 36B(f)(2)(B) for excess advance credit payments is determined using the following table", row "At least 300% but less than 400%"; i8962
+          p. 18, Table 5. Repayment Limitation'
+    ptc.months:
+      type: Count
+      value: 12
+      cite:
+        doc: i1095a
+        locator: 'p. 2, "Total the amounts on lines 21 through 32 and enter on line 33."'
+    ptc.twelfth:
+      type: Rate
+      value:
+        num: 1
+        den: 12
+      cite:
+        doc: f8962
+        locator: 'p. 1, line 8b, "Monthly contribution amount. Divide line 8a by 12. Round to nearest whole dollar amount"'
     clcw.prior_limit_mfs:
       type: NonNegDollars
       value: 150000

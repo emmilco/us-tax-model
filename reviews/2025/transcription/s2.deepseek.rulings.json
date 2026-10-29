@@ -1,0 +1,49 @@
+{
+ "kind": "transcription",
+ "form": "s2",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "11",
+   "project": "{\"ref\": \"f8959.line18\"}",
+   "second": "{\"ref\": \"f8959.line24\"}",
+   "ruling": "Ruling: interface gap; f8959 p. 1, line 18: \"Add lines 7, 13, and 17. Also include this amount on Schedule 2 (Form 1040), line 11\"; line 24 is \"Total Additional Medicare Tax withholding ... include this amount with federal income tax withholding on Form 1040, 1040-SR, or 1040-NR, line 25c\". The reply does not validate: its line 17c declares refusal gate f8889.unsupported, a per-person Form 8889 question (f8889 is a collection under person), as a return-level gate, which the checker rejects (\"s2.s2.__type_gate_9: collection reference requires sum_over\"; \"comparison operands have incompatible types\"), so triage/s2.deepseek.json (executable-triage-v2) executed no line (6 x candidate invalid). The malformed declaration is not evidence either way; this line is ruled by reading its expression against the source. The candidate copies f8959.line24, the withholding, instead of the tax. Form 8959 was not among the pages given (f1040s2, i1040gi p. 111, i1040sse), Schedule 2 line 11 says only \"Additional Medicare Tax. Attach Form 8959\", and the interface lists f8959.line18 and f8959.line24 by printed number only. The deciding text was not given: interface gap. Project stands.",
+   "context": "60cad8d8626091d8b9b832119daad83739a1d262962990c174c0ec172313c182"
+  },
+  {
+   "printed": "17c",
+   "project": "{\"collection\": \"person\", \"field\": \"person.hsa_addtax\", \"op\": \"sum_over\", \"where\": null}",
+   "second": "{\"expression\": {\"collection\": \"person\", \"field\": \"person.hsa_addtax\", \"op\": \"sum_over\", \"where\": null}, \"invalid_model_types\": [{\"line\": \"s2.line17c\", \"message\": \"s2.s2.__type_gate_9: collection reference requires sum_over\"}, {\"line\": \"s2.line17c\", \"message\": \"s2.s2.__type_gate_9: comparison operands have incompatible types\"}]}",
+   "ruling": "Ruling: model error; on the refusal declaration, not the tax reading. f1040s2 line 17c, \"Additional tax on HSA distributions. Attach Form 8889\"; f8889 line 17b, \"Also, include this amount in the total on Schedule 2 (Form 1040), Part II, line 17c\". The candidate's expression is the project's (person.hsa_addtax summed over person), but its declared gate f8889.unsupported is a question of each person's Form 8889 entry, not a return-level Boolean, and fails validation (\"s2.s2.__type_gate_9: collection reference requires sum_over\"; \"comparison operands have incompatible types\"). That is the only validation error of the reply and the reason triage/s2.deepseek.json executed nothing. The project reaches the same screen inside each Form 8889 (f8889.unsupported refuses lines 13 and 16). Project stands.",
+   "context": "60cad8d8626091d8b9b832119daad83739a1d262962990c174c0ec172313c182"
+  },
+  {
+   "printed": "18",
+   "project": "{\"line\": \"17c\"}",
+   "second": "{\"expression\": {\"line\": \"17c\"}, \"invalid_model_types\": [{\"line\": \"s2.line17c\", \"message\": \"s2.s2.__type_gate_9: collection reference requires sum_over\"}, {\"line\": \"s2.line17c\", \"message\": \"s2.s2.__type_gate_9: comparison operands have incompatible types\"}]}",
+   "ruling": "Ruling: model error; on the declaration it depends on, not the tax reading. f1040s2 line 18, \"Total additional taxes. Add lines 17a through 17z\". The candidate's expression is the project's (line 17c, the other line 17 items refused by s2.other at line 21), but it depends on line 17c, whose refusal declaration fails validation (f8889.unsupported used as a return-level gate), so the line is reported invalid. Substance agrees. Project stands.",
+   "context": "60cad8d8626091d8b9b832119daad83739a1d262962990c174c0ec172313c182"
+  },
+  {
+   "printed": "1a",
+   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"collection\": \"f1095a\", \"field\": \"f1095a.one\", \"op\": \"sum_over\", \"where\": null}, {\"const\": 0, \"type\": \"Count\"}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"f1095a\", \"field\": \"f1095a.one\", \"op\": \"sum_over\", \"where\": null}], \"test\": \"lt\"}, \"then\": {\"ref\": \"f8962.line29\"}}], \"op\": \"choose\"}",
+   "second": "{\"ref\": \"f8962.line29\"}",
+   "ruling": "Ruling: model error; i1040gi p. 111, Line 1a: \"If you, your spouse with whom you are filing a joint return, or your dependent was enrolled in coverage purchased from the Marketplace and advance payments of the premium tax credit were made for the coverage, complete Form 8962 ... If the advance credit payments were more than the premium tax credit you can claim, the amount you must repay will be shown on Form 8962, line 29. Enter that amount, if any, on line 1a\". The reply does not validate: its line 17c declares refusal gate f8889.unsupported, a per-person Form 8889 question (f8889 is a collection under person), as a return-level gate, which the checker rejects (\"s2.s2.__type_gate_9: collection reference requires sum_over\"; \"comparison operands have incompatible types\"), so triage/s2.deepseek.json (executable-triage-v2) executed no line (6 x candidate invalid). The malformed declaration is not evidence either way; this line is ruled by reading its expression against the source. The expression copies f8962.line29 with no route for a return without a Form 1095-A (the project's f8962.any guard gives zero), so it needs Form 8962's answers from filers with no Marketplace coverage, as ruled on the Claude log's 1a; its refusal list (f8962.alloc, f8962.other) names real screens. Project stands.",
+   "context": "60cad8d8626091d8b9b832119daad83739a1d262962990c174c0ec172313c182"
+  },
+  {
+   "printed": "21",
+   "project": "{\"of\": [{\"line\": \"11\"}, {\"line\": \"12\"}, {\"line\": \"18\"}, {\"line\": \"4\"}], \"op\": \"sum\"}",
+   "second": "{\"expression\": {\"of\": [{\"line\": \"11\"}, {\"line\": \"12\"}, {\"line\": \"18\"}, {\"line\": \"4\"}], \"op\": \"sum\"}, \"invalid_model_types\": [{\"line\": \"s2.line17c\", \"message\": \"s2.s2.__type_gate_9: collection reference requires sum_over\"}, {\"line\": \"s2.line17c\", \"message\": \"s2.s2.__type_gate_9: comparison operands have incompatible types\"}]}",
+   "ruling": "Ruling: model error; on the declaration it depends on, not the tax reading. f1040s2 line 21, \"Add lines 4, 7 through 16, 18, and 19. These are your total other taxes\". The candidate's expression is the project's (lines 4, 11, 12 and 18, refused on s2.other), but it depends on line 18 and through it on line 17c's invalid refusal declaration. Its own line 4 and line 11 operands are the interface gaps ruled on those lines. Substance agrees with the project's line. Project stands.",
+   "context": "60cad8d8626091d8b9b832119daad83739a1d262962990c174c0ec172313c182"
+  },
+  {
+   "printed": "4",
+   "project": "{\"collection\": \"person\", \"field\": \"person.se_line12\", \"op\": \"sum_over\", \"where\": null}",
+   "second": "{\"collection\": \"person\", \"field\": \"person.se_line13\", \"op\": \"sum_over\", \"where\": null}",
+   "ruling": "Ruling: interface gap; f1040sse p. 1, line 12: \"Self-employment tax. Add lines 10 and 11. Enter here and on Schedule 2 (Form 1040), line 4\"; line 13: \"Deduction for one-half of self-employment tax ... Enter here and on Schedule 1 (Form 1040), line 15\". The reply does not validate: its line 17c declares refusal gate f8889.unsupported, a per-person Form 8889 question (f8889 is a collection under person), as a return-level gate, which the checker rejects (\"s2.s2.__type_gate_9: collection reference requires sum_over\"; \"comparison operands have incompatible types\"), so triage/s2.deepseek.json (executable-triage-v2) executed no line (6 x candidate invalid). The malformed declaration is not evidence either way; this line is ruled by reading its expression against the source. The candidate sums person.se_line13, the half-SE-tax deduction, which would put half the tax on line 4. The pages given were f1040s2, i1040gi p. 111 and i1040sse pp. 1-5; the Schedule SE form, which alone says which line goes to Schedule 2 line 4, was not among them, and the interface lists person.se_line12 and person.se_line13 only as \"(helper)\" with no label. The deciding text was not given: interface gap (a coverage gap of the review). Project stands (the Claude reply, on the same pages, chose line 12).",
+   "context": "60cad8d8626091d8b9b832119daad83739a1d262962990c174c0ec172313c182"
+  }
+ ]
+}

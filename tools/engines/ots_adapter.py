@@ -613,6 +613,13 @@ OTS_PASS_THROUGH = {"lines": [], "components": {
 }}
 
 
+# Lines a Form 1095-A moves: Schedule 3 line 9 and Schedule 2 line 1a, and through Form 1040 lines 17, 18 and 31 the tax,
+# every credit the tax limits, the payments and the refund. Engines given no Form 1095-A are not compared on them there.
+PTC_MOVED = re.compile(r"^(f1040\.line(1[7-9]|2[0-9]|3[0-9]|35a)|f1040\.tax_before_credits|s3\.line(2|4|5a|5b|8|9|15)|s2\.line(1a|1z|3|21)"
+                       r"|s8812\.|f2441\.line(9c|10|11)|f8880\.line(11|12)|f5695\.line(14|15|31|32)|f8962\.)")
+PTC_REASON = ("the engine is given no Form 1095-A, so its tax, credits and payments omit the premium tax credit reconciliation "
+              "(Form 8962) the project figures on these returns")
+
 def limitations(pkg_version):
     """The engine's declared limitations, keyed by generator or derived features. Those marked
     with a version are defects of that release and drop away when another release is installed."""
@@ -707,6 +714,13 @@ def limitations(pkg_version):
              "reason": "OpenTaxSolver 23.06's Schedule 1-A Part IV (sched_1A) truncates line 28 (`j = sched1A_L[27] / 1000.0`) where the form rounds up to the next "
                        "whole number, and multiplies line 29 by $300 per $1,000 where the form says $200; the 23.07 revision history reports both fixed"},
         ]
+    universe = ({*F1040_LABELS.values(), "f1040.tax_before_credits", "f1040.line19", "f1040.line28", "s3.line2", "s3.line4", "s3.line5a",
+                 "s3.line5b", "s3.line15", "f2441.line9c", "f2441.line10", "f2441.line11", "f8880.line11", "f8880.line12", "f5695.line14",
+                 "f5695.line15", "f5695.line31", "f5695.line32"}
+                | {f"s8812.line{n}" for n in ("1", "2a", "2b", "2c", "2d", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14",
+                                               "15", "16a", "16b", "17", "18a", "18b", "19", "20", "21", "22", "23", "24", "25", "26", "27")})
+    lims.append({"feature": "marketplace", "lines": sorted(l for l in universe if PTC_MOVED.match(l)),
+                 "reason": PTC_REASON})
     return lims
 
 

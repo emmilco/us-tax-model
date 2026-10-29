@@ -1,0 +1,14 @@
+{
+ "kind": "render",
+ "form": "f8962",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "24",
+   "restated": "Choose — [helper \"You are an applicable taxpayer (line 5 at least 100, or the Marketplace estimate exception)\" = false → helper \"Year parameter sales.zero\"] [helper \"You are an applicable taxpayer (line 5 at least 100, or the Marketplace estimate exception)\" = true → helper \"The PTC allowed: line 11, column (e), or lines 12 through 23, column (e), added\"]",
+   "model": "The restatement treats line 5 >= 100 or the Marketplace estimate as sufficient for an applicable taxpayer, but IRS says if married at the end of 2025 you generally must file a joint return, and you cannot take the PTC with married filing separately unless an exception applies.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1). f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 16, Not an applicable taxpayer, \"If you are not an applicable taxpayer because you are using filing status married filing separately and Exception 2, earlier, does not apply to you, you cannot take the PTC ... enter -0- on line 24\". The reviewer's point is the married-filing-separately bar (and the joint-return expectation for someone married at the end of 2025). No married filing separately return is completed: scope.ready refuses on s3.mfs (forms/2025/s3.yaml, scope.yaml, cite i1040gi p. 14), Exception 2 included, as D1 keeps; the rendering's form note says so. Re-checked this round: stage18.married_in_2025_single with f1040.status set to mfs (constructed by the adjudicator from the fixture, not a fixture) evaluates to a refusal at scope.ready and Form 1040 line 37 with gate s3.mfs.",
+   "context": "c58590f21e43a3c761c7f8d4bb6d5e6912577c373f8e0590718007a4a580a902"
+  }
+ ]
+}

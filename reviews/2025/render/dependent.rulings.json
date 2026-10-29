@@ -67,6 +67,13 @@
    "context": "d0770124019b8370d2fafd9d01dc85be4078f442d6906ce5a9e182dd5f0dfa26"
   },
   {
+   "printed": "2(d)",
+   "restated": "Enter the amount from helper \"Qualified expenses incurred and paid in 2025 for this person's care\".",
+   "model": "The restatement's input tells the filer to include expenses paid with dependent care benefits and relies on Form 2441 to subtract the excluded benefits later. The IRS column (d) instruction says the opposite: \"If you completed Part III, don't include in column (d) any benefits shown on line 28.\" Form 2441 line 30 repeats this: \"Don't include in column (d) any benefits shown on line 28 above.\"",
+   "ruling": "Ruling: ambiguity; amb.2025.dc_line30 (chosen reading: column (d) shows each person's expenses including those paid with dependent care benefits, and line 30 subtracts line 28 from the total; owner's decision, Stage 15 decision 6). Form 2441 line 30: \"Complete line 2 on page 1 of this form. Don't include in column (d) any benefits shown on line 28 above. Then, add the amounts in column (d) and enter the total here\"; the instructions give no rule for dividing line 28 among persons. The model reads the register's rejected reading (column (d) net of benefits). The helper's English says what the project asks: expenses including those paid with benefits, \"Form 2441 subtracts the benefits you exclude\" (f2441.line30). As ruled in rounds 2 and 3. Project stands.",
+   "context": "db71d668f5ba18f8caac3dba8ba379d4ed848b5c75a41d9eec64c078bfc7c89e"
+  },
+  {
    "printed": "ctc_child",
    "restated": "helper \"Qualifying child who is your dependent (Step 2)\" = true and helper \"SSN, ITIN or ATIN issued on or before the due date of your return?\" = true and helper \"U.S. citizen, U.S. national or U.S. resident alien?\" = true and helper \"Under age 17 at the end of 2025\" = true and helper \"SSN valid for employment issued before the due date of your return?\" = true and household helper \"Do you have an SSN valid for employment issued before the due date of your return?\" = true",
    "model": "Step 3, question 4 asks 'Did you, or your spouse if filing a joint return, and this child have SSNs valid for employment'. The restatement tests only your own SSN, so on a joint return where only your spouse holds the valid SSN the child would fail.",

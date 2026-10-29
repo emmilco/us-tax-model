@@ -6,6 +6,13 @@
   {
    "printed": "1",
    "restated": "Enter the amount from ftc helper \"Credit is the smaller of creditable foreign tax and regular income tax; zero if no foreign tax\".",
+   "model": "The IRS election instruction requires the smaller of total foreign tax or regular tax, and regular tax is 'the total of Form 1040 ... line 16, and Schedule 2 (Form 1040), Part I, line 1z, less any tax included on line 16 from Form 4972'; the helper uses only f1040.line16 and omits Schedule 2 line 1z and the Form 4972 reduction.",
+   "ruling": "Ruling: finding; i1116 p. 2 (election to claim the credit without Form 1116): \"enter on the foreign tax credit line of your tax return ... the smaller of (a) your total foreign tax, or (b) your regular tax. See the instructions for line 20\"; p. 25, Line 20: \"Individuals. Enter the total of Form 1040, 1040-SR, or 1040-NR, line 16, and Schedule 2 (Form 1040), Part I, line 1z, less any tax included on line 16 from Form 4972\". The English is accurate: ftc.limited is \"Smaller of ftc.taxes, f1040.line16\". Before Stage 18 the earlier rulings accepted this because every Schedule 2 Part I amount was refused (s2.other then listed \"repayment of excess advance premium tax credit\") and Form 4972 is refused through scope.other_line16, so line 1z was zero on every computed return. Stage 18 removed that item from s2.other and made line 1a a copy of Form 8962 line 29, so line 1z is now nonzero on every computed return with an excess advance payment, and the limit is understated there. Witness (constructed from stage18.blind.p8, single, a $375.00 repayment and Form 1040 line 16 $0.00, with ftc.taxes $200.00 and the election conditions all yes): project ftc.credit $0.00, Form 1040 line 22 $375.00; by the source the regular tax is $0 + $375 = $375 and the credit $200.00, line 22 $175.00 (refund $167.00 against $367.00). Finding F1 (s3.findings.md), introduced by Stage 18; amount, narrow.",
+   "context": "7da39f87a469704e429fd75c7f3e69244d05ff98f9e6994418bb88ac82cd8206"
+  },
+  {
+   "printed": "1",
+   "restated": "Enter the amount from ftc helper \"Credit is the smaller of creditable foreign tax and regular income tax; zero if no foreign tax\".",
    "model": "The helper uses f1040 line 16 alone as regular tax, but the IRS says regular tax is the total of Form 1040 line 16 and Schedule 2 (Form 1040), Part I, line 1z, less any tax included on line 16 from Form 4972.",
    "ruling": "Ruling: scope/representation on supported completed individual returns; i1116 (2025) pp.1–2 requires the smaller of foreign tax and regular tax, with p.25 Line20 defining regular tax as Form1040 line16 plus Schedule2 PartI line1z less Form4972 tax, with Form8978 adjustments. s2.other explicitly excludes advance-credit repayments and every other unsupported Schedule2 tax and is enforced at s2.line3/line21. scope.other_line16 excludes Forms4972/8978 and is enforced at f1040.line16. Thus the additional terms are zero on supported completed returns; Form1040 line16 is the regular-tax amount in this slice. Stand-alone excluded cases are not claimed equivalent. The reviewer correctly identifies the full IRS rule; its reduction here depends on those declared refusals, not model noise.",
    "context": "1e647a16495198dafd67b5fdc7aa5541ee300b6baecd665a24a633720e7fceeb"
@@ -16,6 +23,13 @@
    "model": "IRS line 14 says 'Add lines 13a through 13z'; the restatement instead takes a supplied subtotal and does not compute that addition.",
    "ruling": "Ruling: scope/input boundary; f1040s3 (2025) p.1 line14 totals lines13a–13z. This slice explicitly requests that already-prepared subtotal as an input, with preparation of its component credits outside Stage2. No independent computation or worked-value evidence for that subtotal is claimed. The objection correctly identifies the unimplemented preparation; it is an acknowledged input boundary, not model noise.",
    "context": "1e647a16495198dafd67b5fdc7aa5541ee300b6baecd665a24a633720e7fceeb"
+  },
+  {
+   "printed": "14",
+   "restated": "Input — Total other payments or refundable credits (supplied subtotal; preparation outside Stage 2)",
+   "model": "IRS line 14 says 'Total other payments or refundable credits. Add lines 13a through 13z'; the restatement instead takes an input 'supplied subtotal' and does not compute or refuse the 13a-13z components.",
+   "ruling": "Ruling: scope; f1040s3 p. 1, line 14, \"Total other payments or refundable credits. Add lines 13a through 13z\". The restatement says what the project does: line 14 is a supplied subtotal, an acknowledged input boundary (the component credits are prepared outside the tool), with no screen; nothing in Stage 18 touched it. As ruled before. Project unchanged.",
+   "context": "7da39f87a469704e429fd75c7f3e69244d05ff98f9e6994418bb88ac82cd8206"
   },
   {
    "printed": "14",

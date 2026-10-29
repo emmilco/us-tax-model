@@ -1,10 +1,10 @@
 {
  "bank": {
   "evaluation_failures": 0,
-  "fixtures": 1083,
+  "fixtures": 1222,
   "generated": 500,
   "partial_bases": 40,
-  "partial_records": 160,
+  "partial_records": 120,
   "seed": 20261026
  },
  "errors": [],
@@ -14,37 +14,38 @@
  "lines": [
   {
    "absent": 0,
-   "agree": 349,
+   "agree": 391,
    "candidate": "s3.line2",
-   "compared": 1743,
-   "differ": 1394,
+   "compared": 1842,
+   "differ": 1451,
    "handle": "2",
-   "in_scope": 969,
-   "in_scope_agree": 317,
+   "in_scope": 1056,
+   "in_scope_agree": 359,
    "kinds": {
-    "candidate-refuses": 742,
-    "candidate-unknown": 652
+    "candidate-refuses": 754,
+    "candidate-unknown": 697
    },
    "kinds_by_return": {
     "completed": {
      "candidate-refuses": 2,
-     "candidate-unknown": 305
+     "candidate-unknown": 344
     },
     "incomplete": {
-     "candidate-refuses": 4,
-     "candidate-unknown": 286
+     "candidate-refuses": 3,
+     "candidate-unknown": 290
     },
     "refused": {
-     "candidate-refuses": 736,
-     "candidate-unknown": 61
+     "candidate-refuses": 749,
+     "candidate-unknown": 63
     }
    },
    "open_at_triage": true,
    "project": "s3.line2",
+   "shown_when": null,
    "sources": {
-    "fixture": 1083,
+    "fixture": 1222,
     "generated": 500,
-    "partial": 160
+    "partial": 120
    },
    "status": "DISAGREE",
    "triage": "differs",
@@ -201,92 +202,27 @@
     },
     {
      "candidate": {
-      "input": "$dcprov",
-      "kind": "unknown",
-      "reason": "collection roster not confirmed"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f2441.line11",
-       "value": {
-        "input": "$dcprov",
-        "kind": "unknown",
-        "reason": "collection roster not confirmed"
-       }
-      }
-     ],
-     "instance": "s3",
-     "kind": "candidate-unknown",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "f2441.care",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f2441.care",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "s3.zero",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.asset.1",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
       "cite": {
-       "doc": "f8949",
-       "locator": "Parts I and II, boxes G\u2013L"
+       "doc": "i2441",
+       "locator": "p. 4, If You or Your Spouse Was a Student or Disabled, \"Their earned income for each month is considered to be at least $250 ($500 if you had two or more qualifying persons at any time during 2025)\""
       },
-      "form": "Form 8949 digital asset boxes G\u2013L",
-      "gate": "sales[s1].digital",
+      "form": "Deemed earned income for a student or disabled spouse or filer (Form 2441, line B and lines 4, 5, 18 and 19)",
+      "gate": "f2441.student_disabled",
       "kind": "refusal",
-      "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part."
+      "remedy": "The deemed earned income of $250 or $500 a month for a full-time student or a person not able to care for themselves, and a disabled spouse as a qualifying person, are outside this tool."
      },
      "candidate_operands": [
       {
        "ref": "f2441.line11",
        "value": {
         "cite": {
-         "doc": "f8949",
-         "locator": "Parts I and II, boxes G\u2013L"
+         "doc": "i2441",
+         "locator": "p. 4, If You or Your Spouse Was a Student or Disabled, \"Their earned income for each month is considered to be at least $250 ($500 if you had two or more qualifying persons at any time during 2025)\""
         },
-        "form": "Form 8949 digital asset boxes G\u2013L",
-        "gate": "sales[s1].digital",
+        "form": "Deemed earned income for a student or disabled spouse or filer (Form 2441, line B and lines 4, 5, 18 and 19)",
+        "gate": "f2441.student_disabled",
         "kind": "refusal",
-        "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part."
+        "remedy": "The deemed earned income of $250 or $500 a month for a full-time student or a person not able to care for themselves, and a disabled spouse as a qualifying person, are outside this tool."
        }
       }
      ],
@@ -335,33 +271,33 @@
      ],
      "project_return": "refused",
      "source": {
-      "id": "classm.asset.2",
+      "id": "classm.f4952.3.deepseek",
       "kind": "fixture"
      }
     },
     {
      "candidate": {
       "cite": {
-       "doc": "i1040sb",
-       "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+       "doc": "i8283",
+       "locator": "pp. 1\u20133, Who Must File and Which Sections To Complete; f8283 Section A"
       },
-      "form": "Schedule B special treatment / Form 8815",
-      "gate": "sb.unsupported",
+      "form": "Form 8283 special treatment",
+      "gate": "gift[item_a].special",
       "kind": "refusal",
-      "remedy": "Prepare the applicable adjustment or exclusion; this tool supports unadjusted taxable interest and ordinary dividends."
+      "remedy": "This contribution requires unsupported appraisal or special-property treatment."
      },
      "candidate_operands": [
       {
        "ref": "f2441.line11",
        "value": {
         "cite": {
-         "doc": "i1040sb",
-         "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+         "doc": "i8283",
+         "locator": "pp. 1\u20133, Who Must File and Which Sections To Complete; f8283 Section A"
         },
-        "form": "Schedule B special treatment / Form 8815",
-        "gate": "sb.unsupported",
+        "form": "Form 8283 special treatment",
+        "gate": "gift[item_a].special",
         "kind": "refusal",
-        "remedy": "Prepare the applicable adjustment or exclusion; this tool supports unadjusted taxable interest and ordinary dividends."
+        "remedy": "This contribution requires unsupported appraisal or special-property treatment."
        }
       }
      ],
@@ -410,33 +346,33 @@
      ],
      "project_return": "refused",
      "source": {
-      "id": "classm.asset.3",
+      "id": "classm.f4952.4.deepseek",
       "kind": "fixture"
      }
     },
     {
      "candidate": {
       "cite": {
-       "doc": "i1116",
-       "locator": "pp. 1\u20132, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax"
+       "doc": "i4562",
+       "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
       },
-      "form": "Form 1116",
-      "gate": "ftc.needs1116",
+      "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+      "gate": "person[spouse].sc[biz_a].scveh[car_1].low_use",
       "kind": "refusal",
-      "remedy": "The small-tax election is unavailable or not chosen. Form 1116 is deferred, not dropped; prepare it separately."
+      "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
      },
      "candidate_operands": [
       {
        "ref": "f2441.line11",
        "value": {
         "cite": {
-         "doc": "i1116",
-         "locator": "pp. 1\u20132, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax"
+         "doc": "i4562",
+         "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
         },
-        "form": "Form 1116",
-        "gate": "ftc.needs1116",
+        "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+        "gate": "person[spouse].sc[biz_a].scveh[car_1].low_use",
         "kind": "refusal",
-        "remedy": "The small-tax election is unavailable or not chosen. Form 1116 is deferred, not dropped; prepare it separately."
+        "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
        }
       }
      ],
@@ -485,33 +421,33 @@
      ],
      "project_return": "refused",
      "source": {
-      "id": "classm.asset.4",
+      "id": "classm.g28.2.deepseek",
       "kind": "fixture"
      }
     },
     {
      "candidate": {
       "cite": {
-       "doc": "i1040sb",
-       "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+       "doc": "i2441",
+       "locator": "p. 4, If You or Your Spouse Was a Student or Disabled, \"Their earned income for each month is considered to be at least $250 ($500 if you had two or more qualifying persons at any time during 2025)\""
       },
-      "form": "Form 8938",
-      "gate": "sb.form8938",
+      "form": "Deemed earned income for a student or disabled spouse or filer (Form 2441, line B and lines 4, 5, 18 and 19)",
+      "gate": "f2441.student_disabled",
       "kind": "refusal",
-      "remedy": "Prepare the required foreign financial asset disclosure; this tool does not prepare Form 8938."
+      "remedy": "The deemed earned income of $250 or $500 a month for a full-time student or a person not able to care for themselves, and a disabled spouse as a qualifying person, are outside this tool."
      },
      "candidate_operands": [
       {
        "ref": "f2441.line11",
        "value": {
         "cite": {
-         "doc": "i1040sb",
-         "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+         "doc": "i2441",
+         "locator": "p. 4, If You or Your Spouse Was a Student or Disabled, \"Their earned income for each month is considered to be at least $250 ($500 if you had two or more qualifying persons at any time during 2025)\""
         },
-        "form": "Form 8938",
-        "gate": "sb.form8938",
+        "form": "Deemed earned income for a student or disabled spouse or filer (Form 2441, line B and lines 4, 5, 18 and 19)",
+        "gate": "f2441.student_disabled",
         "kind": "refusal",
-        "remedy": "Prepare the required foreign financial asset disclosure; this tool does not prepare Form 8938."
+        "remedy": "The deemed earned income of $250 or $500 a month for a full-time student or a person not able to care for themselves, and a disabled spouse as a qualifying person, are outside this tool."
        }
       }
      ],
@@ -560,7 +496,7 @@
      ],
      "project_return": "refused",
      "source": {
-      "id": "classm.carloan.1",
+      "id": "classm.clcw.1.deepseek",
       "kind": "fixture"
      }
     },
@@ -625,72 +561,7 @@
      ],
      "project_return": "refused",
      "source": {
-      "id": "classm.f4952.1",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "$dcprov",
-      "kind": "unknown",
-      "reason": "collection roster not confirmed"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f2441.line11",
-       "value": {
-        "input": "$dcprov",
-        "kind": "unknown",
-        "reason": "collection roster not confirmed"
-       }
-      }
-     ],
-     "instance": "s3",
-     "kind": "candidate-unknown",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "f2441.care",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f2441.care",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "s3.zero",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "incomplete",
-     "source": {
-      "id": "classm.f4952.2",
+      "id": "classm.asset.1",
       "kind": "fixture"
      }
     },
@@ -888,42 +759,173 @@
       "id": "classm.f8995a.1",
       "kind": "fixture"
      }
+    },
+    {
+     "candidate": {
+      "input": "$dcprov",
+      "kind": "unknown",
+      "reason": "collection roster not confirmed"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f2441.line11",
+       "value": {
+        "input": "$dcprov",
+        "kind": "unknown",
+        "reason": "collection roster not confirmed"
+       }
+      }
+     ],
+     "instance": "s3",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f2441.care",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f2441.care",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "s3.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "classm.f8995a.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "$dcprov",
+      "kind": "unknown",
+      "reason": "collection roster not confirmed"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f2441.line11",
+       "value": {
+        "input": "$dcprov",
+        "kind": "unknown",
+        "reason": "collection roster not confirmed"
+       }
+      }
+     ],
+     "instance": "s3",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f2441.care",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f2441.care",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "s3.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.ltc.1",
+      "kind": "fixture"
+     }
     }
    ]
   },
   {
    "absent": 0,
-   "agree": 229,
+   "agree": 288,
    "candidate": "s3.line5a",
-   "compared": 1743,
-   "differ": 1514,
+   "compared": 1842,
+   "differ": 1554,
    "handle": "5a",
-   "in_scope": 914,
-   "in_scope_agree": 201,
+   "in_scope": 1005,
+   "in_scope_agree": 254,
    "kinds": {
-    "candidate-refuses": 801,
-    "candidate-unknown": 713
+    "candidate-refuses": 803,
+    "candidate-unknown": 751
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-refuses": 3,
-     "candidate-unknown": 358
+     "candidate-refuses": 2,
+     "candidate-unknown": 403
     },
     "incomplete": {
-     "candidate-refuses": 4,
-     "candidate-unknown": 306
+     "candidate-refuses": 3,
+     "candidate-unknown": 299
     },
     "refused": {
-     "candidate-refuses": 794,
+     "candidate-refuses": 798,
      "candidate-unknown": 49
     }
    },
    "open_at_triage": true,
    "project": "s3.line5a",
+   "shown_when": null,
    "sources": {
-    "fixture": 1083,
+    "fixture": 1222,
     "generated": 500,
-    "partial": 160
+    "partial": 120
    },
    "status": "DISAGREE",
    "triage": "differs",
@@ -1546,26 +1548,26 @@
     {
      "candidate": {
       "cite": {
-       "doc": "i1040gi",
-       "locator": "p. 20, Multiple support agreements"
+       "doc": "i5695",
+       "locator": "p. 1, Costs, \"costs connected with the construction of a home are treated as being paid when your original use of the constructed home begins\""
       },
-      "form": "Multiple support agreements",
-      "gate": "dependent[dep_b].multiple_support",
+      "form": "Form 5695 Part I for a constructed or reconstructed home whose original use did not begin in 2025",
+      "gate": "f5695.construction_later",
       "kind": "refusal",
-      "remedy": "A person claimed under a multiple support agreement is outside this tool."
+      "remedy": "Costs of constructing or reconstructing a home are treated as paid when your original use of the home begins; a home first used in another year is outside this tool."
      },
      "candidate_operands": [
       {
        "ref": "f5695.line15",
        "value": {
         "cite": {
-         "doc": "i1040gi",
-         "locator": "p. 20, Multiple support agreements"
+         "doc": "i5695",
+         "locator": "p. 1, Costs, \"costs connected with the construction of a home are treated as being paid when your original use of the constructed home begins\""
         },
-        "form": "Multiple support agreements",
-        "gate": "dependent[dep_b].multiple_support",
+        "form": "Form 5695 Part I for a constructed or reconstructed home whose original use did not begin in 2025",
+        "gate": "f5695.construction_later",
         "kind": "refusal",
-        "remedy": "A person claimed under a multiple support agreement is outside this tool."
+        "remedy": "Costs of constructing or reconstructing a home are treated as paid when your original use of the home begins; a home first used in another year is outside this tool."
        }
       }
      ],
@@ -1614,33 +1616,33 @@
      ],
      "project_return": "refused",
      "source": {
-      "id": "classm.asset.1",
+      "id": "classm.f4952.3.deepseek",
       "kind": "fixture"
      }
     },
     {
      "candidate": {
       "cite": {
-       "doc": "f8949",
-       "locator": "Parts I and II, boxes G\u2013L"
+       "doc": "i8283",
+       "locator": "pp. 1\u20133, Who Must File and Which Sections To Complete; f8283 Section A"
       },
-      "form": "Form 8949 digital asset boxes G\u2013L",
-      "gate": "sales[s1].digital",
+      "form": "Form 8283 special treatment",
+      "gate": "gift[item_a].special",
       "kind": "refusal",
-      "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part."
+      "remedy": "This contribution requires unsupported appraisal or special-property treatment."
      },
      "candidate_operands": [
       {
        "ref": "f5695.line15",
        "value": {
         "cite": {
-         "doc": "f8949",
-         "locator": "Parts I and II, boxes G\u2013L"
+         "doc": "i8283",
+         "locator": "pp. 1\u20133, Who Must File and Which Sections To Complete; f8283 Section A"
         },
-        "form": "Form 8949 digital asset boxes G\u2013L",
-        "gate": "sales[s1].digital",
+        "form": "Form 8283 special treatment",
+        "gate": "gift[item_a].special",
         "kind": "refusal",
-        "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part."
+        "remedy": "This contribution requires unsupported appraisal or special-property treatment."
        }
       }
      ],
@@ -1689,33 +1691,33 @@
      ],
      "project_return": "refused",
      "source": {
-      "id": "classm.asset.2",
+      "id": "classm.f4952.4.deepseek",
       "kind": "fixture"
      }
     },
     {
      "candidate": {
       "cite": {
-       "doc": "i1040sb",
-       "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+       "doc": "i4562",
+       "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
       },
-      "form": "Schedule B special treatment / Form 8815",
-      "gate": "sb.unsupported",
+      "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+      "gate": "person[spouse].sc[biz_a].scveh[car_1].low_use",
       "kind": "refusal",
-      "remedy": "Prepare the applicable adjustment or exclusion; this tool supports unadjusted taxable interest and ordinary dividends."
+      "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
      },
      "candidate_operands": [
       {
        "ref": "f5695.line15",
        "value": {
         "cite": {
-         "doc": "i1040sb",
-         "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+         "doc": "i4562",
+         "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
         },
-        "form": "Schedule B special treatment / Form 8815",
-        "gate": "sb.unsupported",
+        "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+        "gate": "person[spouse].sc[biz_a].scveh[car_1].low_use",
         "kind": "refusal",
-        "remedy": "Prepare the applicable adjustment or exclusion; this tool supports unadjusted taxable interest and ordinary dividends."
+        "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
        }
       }
      ],
@@ -1764,7 +1766,7 @@
      ],
      "project_return": "refused",
      "source": {
-      "id": "classm.asset.3",
+      "id": "classm.g28.2.deepseek",
       "kind": "fixture"
      }
     }
@@ -1772,37 +1774,38 @@
   },
   {
    "absent": 0,
-   "agree": 273,
+   "agree": 317,
    "candidate": "s3.line5b",
-   "compared": 1743,
-   "differ": 1470,
+   "compared": 1842,
+   "differ": 1525,
    "handle": "5b",
-   "in_scope": 962,
-   "in_scope_agree": 234,
+   "in_scope": 1049,
+   "in_scope_agree": 281,
    "kinds": {
-    "candidate-refuses": 742,
-    "candidate-unknown": 728
+    "candidate-refuses": 757,
+    "candidate-unknown": 768
    },
    "kinds_by_return": {
     "completed": {
      "candidate-refuses": 2,
-     "candidate-unknown": 358
+     "candidate-unknown": 403
     },
     "incomplete": {
-     "candidate-refuses": 4,
-     "candidate-unknown": 306
+     "candidate-refuses": 3,
+     "candidate-unknown": 299
     },
     "refused": {
-     "candidate-refuses": 736,
-     "candidate-unknown": 64
+     "candidate-refuses": 752,
+     "candidate-unknown": 66
     }
    },
    "open_at_triage": true,
    "project": "s3.line5b",
+   "shown_when": null,
    "sources": {
-    "fixture": 1083,
+    "fixture": 1222,
     "generated": 500,
-    "partial": 160
+    "partial": 120
    },
    "status": "DISAGREE",
    "triage": "differs",
@@ -2350,26 +2353,26 @@
     {
      "candidate": {
       "cite": {
-       "doc": "f1040sd",
-       "locator": "Schedule D (2025), Parts I\u2013III"
+       "doc": "f1040",
+       "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19\u201320 and 27\u201331"
       },
-      "form": "Capital Loss Carryover Worksheet",
-      "gate": "sd.carryover",
+      "form": "Schedule 1",
+      "gate": "scope.schedule1",
       "kind": "refusal",
-      "remedy": "Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet."
+      "remedy": "Schedule 1 income and adjustments other than the ones this tool computes (Schedule C business income, a taxable state or local income tax refund, alimony under an agreement made before 2019, unemployment compensation, the supported line 8 items, educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction, the early withdrawal penalty, the IRA deduction, student loan interest and jury duty pay given to your employer) are outside this tool."
      },
      "candidate_operands": [
       {
        "ref": "f5695.line32",
        "value": {
         "cite": {
-         "doc": "f1040sd",
-         "locator": "Schedule D (2025), Parts I\u2013III"
+         "doc": "f1040",
+         "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19\u201320 and 27\u201331"
         },
-        "form": "Capital Loss Carryover Worksheet",
-        "gate": "sd.carryover",
+        "form": "Schedule 1",
+        "gate": "scope.schedule1",
         "kind": "refusal",
-        "remedy": "Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet."
+        "remedy": "Schedule 1 income and adjustments other than the ones this tool computes (Schedule C business income, a taxable state or local income tax refund, alimony under an agreement made before 2019, unemployment compensation, the supported line 8 items, educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction, the early withdrawal penalty, the IRA deduction, student loan interest and jury duty pay given to your employer) are outside this tool."
        }
       }
      ],
@@ -2425,26 +2428,26 @@
     {
      "candidate": {
       "cite": {
-       "doc": "f8949",
-       "locator": "Parts I and II, boxes G\u2013L"
+       "doc": "i1040gi",
+       "locator": "pp. 34\u201335, line 12e and Standard Deduction Chart"
       },
-      "form": "Form 8949 digital asset boxes G\u2013L",
-      "gate": "sales[s1].digital",
+      "form": "Standard Deduction Worksheet for Dependents / dual-status rules",
+      "gate": "sa.dependent",
       "kind": "refusal",
-      "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part."
+      "remedy": "Dependent and dual-status standard deductions are outside this resident nondependent slice."
      },
      "candidate_operands": [
       {
        "ref": "f5695.line32",
        "value": {
         "cite": {
-         "doc": "f8949",
-         "locator": "Parts I and II, boxes G\u2013L"
+         "doc": "i1040gi",
+         "locator": "pp. 34\u201335, line 12e and Standard Deduction Chart"
         },
-        "form": "Form 8949 digital asset boxes G\u2013L",
-        "gate": "sales[s1].digital",
+        "form": "Standard Deduction Worksheet for Dependents / dual-status rules",
+        "gate": "sa.dependent",
         "kind": "refusal",
-        "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part."
+        "remedy": "Dependent and dual-status standard deductions are outside this resident nondependent slice."
        }
       }
      ],
@@ -2493,7 +2496,585 @@
      ],
      "project_return": "refused",
      "source": {
-      "id": "classm.asset.2",
+      "id": "classm.f4952.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i8283",
+       "locator": "pp. 1\u20133, Who Must File and Which Sections To Complete; f8283 Section A"
+      },
+      "form": "Form 8283 special treatment",
+      "gate": "gift[item_a].special",
+      "kind": "refusal",
+      "remedy": "This contribution requires unsupported appraisal or special-property treatment."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f5695.line32",
+       "value": {
+        "cite": {
+         "doc": "i8283",
+         "locator": "pp. 1\u20133, Who Must File and Which Sections To Complete; f8283 Section A"
+        },
+        "form": "Form 8283 special treatment",
+        "gate": "gift[item_a].special",
+        "kind": "refusal",
+        "remedy": "This contribution requires unsupported appraisal or special-property treatment."
+       }
+      }
+     ],
+     "instance": "s3",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f5695.part2_any",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f5695.part2_any",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "s3.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f4952.4.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i4562",
+       "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
+      },
+      "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+      "gate": "person[spouse].sc[biz_a].scveh[car_1].low_use",
+      "kind": "refusal",
+      "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f5695.line32",
+       "value": {
+        "cite": {
+         "doc": "i4562",
+         "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
+        },
+        "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+        "gate": "person[spouse].sc[biz_a].scveh[car_1].low_use",
+        "kind": "refusal",
+        "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
+       }
+      }
+     ],
+     "instance": "s3",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f5695.part2_any",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f5695.part2_any",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "s3.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.g28.2.deepseek",
+      "kind": "fixture"
+     }
+    }
+   ]
+  },
+  {
+   "absent": 0,
+   "agree": 488,
+   "candidate": "s3.line9",
+   "compared": 1842,
+   "differ": 1354,
+   "handle": "9",
+   "in_scope": 1558,
+   "in_scope_agree": 447,
+   "kinds": {
+    "candidate-refuses": 243,
+    "candidate-unknown": 1111
+   },
+   "kinds_by_return": {
+    "completed": {
+     "candidate-unknown": 442
+    },
+    "incomplete": {
+     "candidate-unknown": 233
+    },
+    "refused": {
+     "candidate-refuses": 243,
+     "candidate-unknown": 436
+    }
+   },
+   "open_at_triage": true,
+   "project": "s3.line9",
+   "shown_when": null,
+   "sources": {
+    "fixture": 1222,
+    "generated": 500,
+    "partial": 120
+   },
+   "status": "DISAGREE",
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "input": "f8962.alloc",
+      "kind": "unknown",
+      "reason": "no input supplied for f8962.alloc"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8962.line26",
+       "value": {
+        "input": "f8962.alloc",
+        "kind": "unknown",
+        "reason": "no input supplied for f8962.alloc"
+       }
+      }
+     ],
+     "instance": "s3",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8962.any",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8962.any",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "s3.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f8962.alloc",
+      "kind": "unknown",
+      "reason": "no input supplied for f8962.alloc"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8962.line26",
+       "value": {
+        "input": "f8962.alloc",
+        "kind": "unknown",
+        "reason": "no input supplied for f8962.alloc"
+       }
+      }
+     ],
+     "instance": "s3",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8962.any",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8962.any",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "s3.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f8962.alloc",
+      "kind": "unknown",
+      "reason": "no input supplied for f8962.alloc"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8962.line26",
+       "value": {
+        "input": "f8962.alloc",
+        "kind": "unknown",
+        "reason": "no input supplied for f8962.alloc"
+       }
+      }
+     ],
+     "instance": "s3",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8962.any",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8962.any",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "s3.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f8962.alloc",
+      "kind": "unknown",
+      "reason": "no input supplied for f8962.alloc"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8962.line26",
+       "value": {
+        "input": "f8962.alloc",
+        "kind": "unknown",
+        "reason": "no input supplied for f8962.alloc"
+       }
+      }
+     ],
+     "instance": "s3",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8962.any",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8962.any",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "s3.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.4.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f8962.alloc",
+      "kind": "unknown",
+      "reason": "no input supplied for f8962.alloc"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8962.line26",
+       "value": {
+        "input": "f8962.alloc",
+        "kind": "unknown",
+        "reason": "no input supplied for f8962.alloc"
+       }
+      }
+     ],
+     "instance": "s3",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8962.any",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8962.any",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "s3.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.5.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f8962.alloc",
+      "kind": "unknown",
+      "reason": "no input supplied for f8962.alloc"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8962.line26",
+       "value": {
+        "input": "f8962.alloc",
+        "kind": "unknown",
+        "reason": "no input supplied for f8962.alloc"
+       }
+      }
+     ],
+     "instance": "s3",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8962.any",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8962.any",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "s3.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.6.deepseek",
       "kind": "fixture"
      }
     },
@@ -2503,23 +3084,23 @@
        "doc": "i1040sb",
        "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
       },
-      "form": "Schedule B special treatment / Form 8815",
-      "gate": "sb.unsupported",
+      "form": "Form 3520 / Form 3520-A",
+      "gate": "sb.line8",
       "kind": "refusal",
-      "remedy": "Prepare the applicable adjustment or exclusion; this tool supports unadjusted taxable interest and ordinary dividends."
+      "remedy": "Review and prepare the required foreign-trust information returns; this path is outside scope."
      },
      "candidate_operands": [
       {
-       "ref": "f5695.line32",
+       "ref": "f8962.line26",
        "value": {
         "cite": {
          "doc": "i1040sb",
          "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
         },
-        "form": "Schedule B special treatment / Form 8815",
-        "gate": "sb.unsupported",
+        "form": "Form 3520 / Form 3520-A",
+        "gate": "sb.line8",
         "kind": "refusal",
-        "remedy": "Prepare the applicable adjustment or exclusion; this tool supports unadjusted taxable interest and ordinary dividends."
+        "remedy": "Review and prepare the required foreign-trust information returns; this path is outside scope."
        }
       }
      ],
@@ -2531,7 +3112,7 @@
      },
      "project_operands": [
       {
-       "ref": "f5695.part2_any",
+       "ref": "f8962.any",
        "value": {
         "kind": "bool",
         "value": false
@@ -2545,7 +3126,7 @@
        }
       },
       {
-       "ref": "f5695.part2_any",
+       "ref": "f8962.any",
        "value": {
         "kind": "bool",
         "value": false
@@ -2568,33 +3149,33 @@
      ],
      "project_return": "refused",
      "source": {
-      "id": "classm.asset.3",
+      "id": "classm.dependent.1.deepseek",
       "kind": "fixture"
      }
     },
     {
      "candidate": {
       "cite": {
-       "doc": "i1116",
-       "locator": "pp. 1\u20132, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax"
+       "doc": "i1040gi",
+       "locator": "p. 89, Schedule 1, line 7, Caution and the last paragraph"
       },
-      "form": "Form 1116",
-      "gate": "ftc.needs1116",
+      "form": "Unemployment compensation contributions or earlier-year repayments (Form 1099-G instructions, Pub. 525)",
+      "gate": "s1.uc_unsupported",
       "kind": "refusal",
-      "remedy": "The small-tax election is unavailable or not chosen. Form 1116 is deferred, not dropped; prepare it separately."
+      "remedy": "Reducing unemployment compensation by program contributions, or repayments of amounts included in an earlier year, is outside this tool."
      },
      "candidate_operands": [
       {
-       "ref": "f5695.line32",
+       "ref": "f8962.line26",
        "value": {
         "cite": {
-         "doc": "i1116",
-         "locator": "pp. 1\u20132, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax"
+         "doc": "i1040gi",
+         "locator": "p. 89, Schedule 1, line 7, Caution and the last paragraph"
         },
-        "form": "Form 1116",
-        "gate": "ftc.needs1116",
+        "form": "Unemployment compensation contributions or earlier-year repayments (Form 1099-G instructions, Pub. 525)",
+        "gate": "s1.uc_unsupported",
         "kind": "refusal",
-        "remedy": "The small-tax election is unavailable or not chosen. Form 1116 is deferred, not dropped; prepare it separately."
+        "remedy": "Reducing unemployment compensation by program contributions, or repayments of amounts included in an earlier year, is outside this tool."
        }
       }
      ],
@@ -2606,7 +3187,7 @@
      },
      "project_operands": [
       {
-       "ref": "f5695.part2_any",
+       "ref": "f8962.any",
        "value": {
         "kind": "bool",
         "value": false
@@ -2620,7 +3201,7 @@
        }
       },
       {
-       "ref": "f5695.part2_any",
+       "ref": "f8962.any",
        "value": {
         "kind": "bool",
         "value": false
@@ -2643,17 +3224,317 @@
      ],
      "project_return": "refused",
      "source": {
-      "id": "classm.asset.4",
+      "id": "classm.dependent.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "p560",
+       "locator": "pp. 8\u201311, 14\u201317, 38\u201340, chapters 2, 3 and 5"
+      },
+      "form": "Retirement plan contributions outside this tool (SARSEP, other plan rates, higher SIMPLE limits, more than one plan, a plan with more than one Schedule C, other elective deferrals, Roth contributions, excess contributions)",
+      "gate": "person[taxpayer].plan_screened",
+      "kind": "refusal",
+      "remedy": "These retirement contributions are outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8962.line26",
+       "value": {
+        "cite": {
+         "doc": "p560",
+         "locator": "pp. 8\u201311, 14\u201317, 38\u201340, chapters 2, 3 and 5"
+        },
+        "form": "Retirement plan contributions outside this tool (SARSEP, other plan rates, higher SIMPLE limits, more than one plan, a plan with more than one Schedule C, other elective deferrals, Roth contributions, excess contributions)",
+        "gate": "person[taxpayer].plan_screened",
+        "kind": "refusal",
+        "remedy": "These retirement contributions are outside this tool."
+       }
+      }
+     ],
+     "instance": "s3",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8962.any",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8962.any",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "s3.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dependent.5.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i1040sb",
+       "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+      },
+      "form": "Form 3520 / Form 3520-A",
+      "gate": "sb.line8",
+      "kind": "refusal",
+      "remedy": "Review and prepare the required foreign-trust information returns; this path is outside scope."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8962.line26",
+       "value": {
+        "cite": {
+         "doc": "i1040sb",
+         "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+        },
+        "form": "Form 3520 / Form 3520-A",
+        "gate": "sb.line8",
+        "kind": "refusal",
+        "remedy": "Review and prepare the required foreign-trust information returns; this path is outside scope."
+       }
+      }
+     ],
+     "instance": "s3",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8962.any",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8962.any",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "s3.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dependent.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 89, Schedule 1, line 7, Caution and the last paragraph"
+      },
+      "form": "Unemployment compensation contributions or earlier-year repayments (Form 1099-G instructions, Pub. 525)",
+      "gate": "s1.uc_unsupported",
+      "kind": "refusal",
+      "remedy": "Reducing unemployment compensation by program contributions, or repayments of amounts included in an earlier year, is outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8962.line26",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 89, Schedule 1, line 7, Caution and the last paragraph"
+        },
+        "form": "Unemployment compensation contributions or earlier-year repayments (Form 1099-G instructions, Pub. 525)",
+        "gate": "s1.uc_unsupported",
+        "kind": "refusal",
+        "remedy": "Reducing unemployment compensation by program contributions, or repayments of amounts included in an earlier year, is outside this tool."
+       }
+      }
+     ],
+     "instance": "s3",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8962.any",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8962.any",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "s3.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dependent.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "p560",
+       "locator": "pp. 8\u201311, 14\u201317, 38\u201340, chapters 2, 3 and 5"
+      },
+      "form": "Retirement plan contributions outside this tool (SARSEP, other plan rates, higher SIMPLE limits, more than one plan, a plan with more than one Schedule C, other elective deferrals, Roth contributions, excess contributions)",
+      "gate": "person[taxpayer].plan_screened",
+      "kind": "refusal",
+      "remedy": "These retirement contributions are outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8962.line26",
+       "value": {
+        "cite": {
+         "doc": "p560",
+         "locator": "pp. 8\u201311, 14\u201317, 38\u201340, chapters 2, 3 and 5"
+        },
+        "form": "Retirement plan contributions outside this tool (SARSEP, other plan rates, higher SIMPLE limits, more than one plan, a plan with more than one Schedule C, other elective deferrals, Roth contributions, excess contributions)",
+        "gate": "person[taxpayer].plan_screened",
+        "kind": "refusal",
+        "remedy": "These retirement contributions are outside this tool."
+       }
+      }
+     ],
+     "instance": "s3",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8962.any",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8962.any",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "s3.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dependent.5",
       "kind": "fixture"
      }
     }
    ]
   }
  ],
- "log_sha256_at_triage": "6a6615c974e49a90c7fcd7cf6defd70d95d814d14bb951e6a2c0b814b9d12e7b",
- "policy": "executable-triage-v1",
- "response_sha256": "587ea0fc2ecc99691b1fe3699c6bc755e69c62dfdc72325fceaf27e5da4e9fec",
+ "log_sha256_at_triage": "865301ed17167d5b6ecea3a07252ff1271e345843649e660ba479bef9a047a39",
+ "policy": "executable-triage-v2",
+ "response_sha256": "117c4de80aff92378eaa53567ace61c600a86211d16a73b79cdf808cd7ab8dc0",
  "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
  "state": "evaluated",
- "subject_sha256": "e7ce01846798c69ee4d6b727c95c831ca4e09a386772b23c1c9d52e4530bff60"
+ "subject_sha256": "14028feb47721223b21dc6e3c8d3fbd076111aab37e2c6a4b67fdd699719f315"
 }

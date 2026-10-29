@@ -76,7 +76,7 @@ function generatedCases(n: number): Case[] {
         proceeds:Math.floor(rnd()*5000000), reported_basis:Math.floor(rnd()*5000000)}).map(([k,v])=>[`sales[generated].${k}`,v])));
     }
     const stage2: Inputs = { ...inputs, "person[taxpayer].rrta": false, ...(status === "mfj" ? { "person[spouse].rrta": false } : {}),
-      "$w2@person[taxpayer]": ["a", "b"], "s3.line9": 0, "s3.line10": 0, "s3.line12": 0, "s3.line14": 0 };
+      "$w2@person[taxpayer]": ["a", "b"], "$f1095a": [], "s3.line10": 0, "s3.line12": 0, "s3.line14": 0 };
     for (const employer of ["a", "b"]) {
       stage2[`person[taxpayer].w2[${employer}].box3`] = Math.floor(rnd() * 17610001);
       stage2[`person[taxpayer].w2[${employer}].box7`] = 0;

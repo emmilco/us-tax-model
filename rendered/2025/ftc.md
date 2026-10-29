@@ -66,17 +66,24 @@
 - Expr: `{"all":[{"eq":["ftc.has_tax",{"const":true}],"op":"test"},{"any":[{"gt":["ftc.taxes","ftc.limit"],"op":"test"},{"eq":["ftc.all_passive",{"const":false}],"op":"test"},{"eq":["ftc.statements",{"const":false}],"op":"test"},{"eq":["ftc.eligible",{"const":false}],"op":"test"},{"eq":["ftc.elect",{"const":false}],"op":"test"}],"op":"test"}],"op":"test"}`
 - Cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; sha256 6998cf8c)
 
+## (helper) — `ftc.regular_tax`
+
+- **Authored helper label:** Regular tax for the limit (Form 1040 line 16 plus Schedule 2 line 1z)
+- **Encoded (Dollars):** Add f1040 line 16 and s2 line 1z.
+- Expr: `{"of":["f1040.line16","s2.line1z"],"op":"sum"}`
+- Cite: [i1116] p. 25, Line 20, "Enter the total of Form 1040, 1040-SR, or 1040-NR, line 16, and Schedule 2 (Form 1040), Part I, line 1z, less any tax included on line 16 from Form 4972." (2025; printed date 2025-12-23; sha256 6998cf8c)
+
 ## (helper) — `ftc.limited`
 
-- **Authored helper label:** Smaller of ftc.taxes, f1040.line16
-- **Encoded (Dollars):** Enter the smaller of helper "Total creditable foreign taxes after required reductions; generally Form 1099-INT box 6 and Form 1099-DIV box 7" or f1040 line 16.
-- Expr: `{"of":["ftc.taxes","f1040.line16"],"op":"smaller_of"}`
+- **Authored helper label:** Smaller of ftc.taxes, ftc.regular_tax
+- **Encoded (Dollars):** Enter the smaller of helper "Total creditable foreign taxes after required reductions; generally Form 1099-INT box 6 and Form 1099-DIV box 7" or helper "Regular tax for the limit (Form 1040 line 16 plus Schedule 2 line 1z)".
+- Expr: `{"of":["ftc.taxes","ftc.regular_tax"],"op":"smaller_of"}`
 - Cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; sha256 6998cf8c)
 
 ## (helper) — `ftc.credit`
 
 - **Authored helper label:** Credit is the smaller of creditable foreign tax and regular income tax; zero if no foreign tax
-- **Encoded (Dollars):** Choose — [helper "Positive foreign taxes" = true → helper "Smaller of ftc.taxes, f1040.line16"] [helper "Positive foreign taxes" = false → helper "Year parameter sales.zero"]
+- **Encoded (Dollars):** Choose — [helper "Positive foreign taxes" = true → helper "Smaller of ftc.taxes, ftc.regular_tax"] [helper "Positive foreign taxes" = false → helper "Year parameter sales.zero"]
 - **Refusal:** when ftc.needs1116 is true, cannot complete Form 1116. The small-tax election is unavailable or not chosen. Form 1116 is deferred, not dropped; prepare it separately. Cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; sha256 6998cf8c)
 - Expr: `{"alternatives":[{"guard":{"eq":["ftc.has_tax",{"const":true}],"op":"test"},"then":"ftc.limited"},{"guard":{"eq":["ftc.has_tax",{"const":false}],"op":"test"},"then":"ftc.zero"}],"op":"choose"}`
 - Cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; sha256 6998cf8c)

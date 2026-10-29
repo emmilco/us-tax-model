@@ -1,0 +1,413 @@
+{
+ "bank": {
+  "evaluation_failures": 0,
+  "fixtures": 1228,
+  "generated": 500,
+  "partial_bases": 40,
+  "partial_records": 1113,
+  "seed": 20261026
+ },
+ "errors": [],
+ "failures": [],
+ "family": "claude",
+ "form": "f1095a",
+ "lines": [
+  {
+   "absent": 0,
+   "agree": 1677,
+   "candidate": "f1095a.line33a",
+   "compared": 1677,
+   "differ": 0,
+   "handle": "f1095a.line33a",
+   "in_scope": 1677,
+   "in_scope_agree": 1677,
+   "kinds": {},
+   "kinds_by_return": {},
+   "open_at_triage": true,
+   "project": "f1095a.line33a",
+   "shown_when": null,
+   "sources": {
+    "fixture": 57,
+    "generated": 87,
+    "partial": 1533
+   },
+   "status": "DISAGREE",
+   "triage": "agrees on sample",
+   "witnesses": []
+  },
+  {
+   "absent": 0,
+   "agree": 1677,
+   "candidate": "f1095a.line33b",
+   "compared": 1677,
+   "differ": 0,
+   "handle": "f1095a.line33b",
+   "in_scope": 1677,
+   "in_scope_agree": 1677,
+   "kinds": {},
+   "kinds_by_return": {},
+   "open_at_triage": true,
+   "project": "f1095a.line33b",
+   "shown_when": null,
+   "sources": {
+    "fixture": 57,
+    "generated": 87,
+    "partial": 1533
+   },
+   "status": "DISAGREE",
+   "triage": "agrees on sample",
+   "witnesses": []
+  },
+  {
+   "absent": 0,
+   "agree": 1653,
+   "candidate": "f1095a.b_used",
+   "compared": 1677,
+   "differ": 24,
+   "handle": "f1095a.b_used",
+   "in_scope": 1677,
+   "in_scope_agree": 1653,
+   "kinds": {
+    "candidate-unknown": 24
+   },
+   "kinds_by_return": {
+    "completed": {
+     "candidate-unknown": 12
+    },
+    "refused": {
+     "candidate-unknown": 12
+    }
+   },
+   "open_at_triage": true,
+   "project": "f1095a.b_used",
+   "shown_when": null,
+   "sources": {
+    "fixture": 57,
+    "generated": 87,
+    "partial": 1533
+   },
+   "status": "DISAGREE",
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "input": "f1095a[mkt_a].b_counted",
+      "kind": "unknown",
+      "reason": "no input supplied for f1095a[mkt_a].b_counted"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f1095a[mkt_a].b_counted",
+       "value": {
+        "input": "f1095a[mkt_a].b_counted",
+        "kind": "unknown",
+        "reason": "no input supplied for f1095a[mkt_a].b_counted"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f1095a[mkt_a]",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "bool",
+      "value": true
+     },
+     "project_operands": [
+      {
+       "ref": "f8962.forms",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "base": "classm.dependent.4.deepseek",
+      "kind": "partial",
+      "withheld": "f1095a[mkt_a].b_counted"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f1095a[mkt_a].b_counted",
+      "kind": "unknown",
+      "reason": "no input supplied for f1095a[mkt_a].b_counted"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f1095a[mkt_a].b_counted",
+       "value": {
+        "input": "f1095a[mkt_a].b_counted",
+        "kind": "unknown",
+        "reason": "no input supplied for f1095a[mkt_a].b_counted"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f1095a[mkt_a]",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "bool",
+      "value": true
+     },
+     "project_operands": [
+      {
+       "ref": "f8962.forms",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "base": "classm.s3.2",
+      "kind": "partial",
+      "withheld": "f1095a[mkt_a].b_counted"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f1095a[mkt_a].b_counted",
+      "kind": "unknown",
+      "reason": "no input supplied for f1095a[mkt_a].b_counted"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f1095a[mkt_a].b_counted",
+       "value": {
+        "input": "f1095a[mkt_a].b_counted",
+        "kind": "unknown",
+        "reason": "no input supplied for f1095a[mkt_a].b_counted"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f1095a[mkt_a]",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "bool",
+      "value": true
+     },
+     "project_operands": [
+      {
+       "ref": "f8962.forms",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "base": "classm.f8962.4",
+      "kind": "partial",
+      "withheld": "f1095a[mkt_a].b_counted"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f1095a[m].b_counted",
+      "kind": "unknown",
+      "reason": "no input supplied for f1095a[m].b_counted"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f1095a[m].b_counted",
+       "value": {
+        "input": "f1095a[m].b_counted",
+        "kind": "unknown",
+        "reason": "no input supplied for f1095a[m].b_counted"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f1095a[m]",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "bool",
+      "value": true
+     },
+     "project_operands": [
+      {
+       "ref": "f8962.forms",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "base": "stage18.blind.p3",
+      "kind": "partial",
+      "withheld": "f1095a[m].b_counted"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f1095a[m].b_counted",
+      "kind": "unknown",
+      "reason": "no input supplied for f1095a[m].b_counted"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f1095a[m].b_counted",
+       "value": {
+        "input": "f1095a[m].b_counted",
+        "kind": "unknown",
+        "reason": "no input supplied for f1095a[m].b_counted"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f1095a[m]",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "bool",
+      "value": true
+     },
+     "project_operands": [
+      {
+       "ref": "f8962.forms",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "base": "stage18.blind.p7",
+      "kind": "partial",
+      "withheld": "f1095a[m].b_counted"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f1095a[m].b_counted",
+      "kind": "unknown",
+      "reason": "no input supplied for f1095a[m].b_counted"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f1095a[m].b_counted",
+       "value": {
+        "input": "f1095a[m].b_counted",
+        "kind": "unknown",
+        "reason": "no input supplied for f1095a[m].b_counted"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f1095a[m]",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "bool",
+      "value": true
+     },
+     "project_operands": [
+      {
+       "ref": "f8962.forms",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "base": "stage18.blind.p15",
+      "kind": "partial",
+      "withheld": "f1095a[m].b_counted"
+     }
+    }
+   ]
+  }
+ ],
+ "log_sha256_at_triage": "32a561c4f92c2512d4378671d4cb550476c7dee1198f575381d6c725c9f89905",
+ "policy": "executable-triage-v2",
+ "response_sha256": "6199ef085dcab73772e954e735999f0101ffdfb82531230725d6183c2c03c7ce",
+ "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
+ "state": "evaluated",
+ "subject_sha256": "76ab29f35c7b38d49f296977b1de451eacccd7c5dc123fd22accfbad5c3fe82f"
+}

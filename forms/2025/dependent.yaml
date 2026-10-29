@@ -1256,6 +1256,60 @@ form:
       cite:
         doc: i2441
         locator: 'p. 3, Column (c), "Check the box in column (c) if the qualifying person listed in column (a) was over age 12 at the time the care was provided and was disabled"'
+    - id: dependent.ptc_files
+      printed: (gate)
+      label: Is this dependent required to file a 2025 return because of their income (Chart B in the Form 1040 instructions)?
+      type: Bool
+      expr:
+        op: input
+        source: 'Is this dependent required to file a 2025 income tax return because of their income, by Chart B in the Form
+          1040 instructions (unearned income over $1,350, earned income over $15,750, or gross income over the larger of $1,350
+          and earned income up to $15,300 plus $450, for a single dependent under 65 and not blind)? Answer no if the dependent
+          files only to claim a refund of withheld or estimated tax.'
+      cite:
+        doc: i8962
+        locator: 'p. 8, Line 2b, "Only include your dependents who are required to file an income tax return because their
+          income meets the income tax return filing threshold.", "Do not include the modified AGI of dependents who are filing
+          a tax return only to claim a refund of tax withheld or estimated tax."; i1040gi p. 10, Chart B—For Children and Other
+          Dependents, "Your unearned income was over $1,350."'
+      ambiguity: amb.2025.ptc_dependent_filing
+    - id: dependent.ptc_magi
+      printed: (helper)
+      label: This dependent's modified AGI (Worksheet 1-2)
+      type: Dollars
+      expr:
+        op: input
+        source: 'This dependent''s modified AGI for 2025: the AGI on their return (line 11a), plus their tax-exempt interest
+          (line 2a), plus any Form 2555 amounts, plus the part of their social security benefits that is not taxable (line 6a
+          less line 6b); negative if it was a loss'
+      cite:
+        doc: i8962
+        locator: 'p. 8, Worksheet 1-2, "Only include your dependents who are required to file an income tax return because
+          their income meets the income tax return filing threshold."'
+    - id: dependent.ptc_magi_counted
+      printed: (helper)
+      label: This dependent's modified AGI counted in household income (zero unless required to file because of income)
+      type: Dollars
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - dependent.ptc_files
+                - const: true
+            then: dependent.ptc_magi
+          - guard:
+              op: test
+              eq:
+                - dependent.ptc_files
+                - const: false
+            then: dependent.zero
+      cite:
+        doc: i8962
+        locator: 'p. 8, Line 2b, "Only include your dependents who are required to file an income tax return because their
+          income meets the income tax return filing threshold."'
+      ambiguity: amb.2025.ptc_dependent_filing
   collection:
     cite:
       doc: f1040

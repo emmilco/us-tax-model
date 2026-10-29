@@ -1,0 +1,470 @@
+{
+ "bank": null,
+ "errors": [
+  {
+   "line": "f1095a.one",
+   "message": "model redefined a foreign interface"
+  }
+ ],
+ "failures": [],
+ "family": "claude",
+ "form": "f8962",
+ "lines": [
+  {
+   "candidate": "f8962.forms",
+   "handle": "f8962.forms",
+   "open_at_triage": true,
+   "project": "f8962.forms",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8962.any",
+   "handle": "f8962.any",
+   "open_at_triage": true,
+   "project": "f8962.any",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8962.line2b",
+   "handle": "2b",
+   "open_at_triage": true,
+   "project": "f8962.line2b",
+   "shown_when": "f8962.any",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8962.line9",
+   "handle": "9",
+   "open_at_triage": true,
+   "project": "f8962.line9",
+   "shown_when": "f8962.filing",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8962.line10",
+   "handle": "10",
+   "open_at_triage": true,
+   "project": "f8962.line10",
+   "shown_when": "f8962.filing",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8962.line11a",
+   "handle": "11(a)",
+   "open_at_triage": true,
+   "project": "f8962.line11a",
+   "shown_when": "f8962.show_annual",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8962.line11b",
+   "handle": "11(b)",
+   "open_at_triage": true,
+   "project": "f8962.line11b",
+   "shown_when": "f8962.show_annual",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8962.line11f",
+   "handle": "11(f)",
+   "open_at_triage": true,
+   "project": "f8962.line11f",
+   "shown_when": "f8962.show_annual",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8962.line12a",
+   "handle": "12(a)",
+   "open_at_triage": true,
+   "project": "f8962.line12a",
+   "shown_when": "f8962.show_jan",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8962.line12b",
+   "handle": "12(b)",
+   "open_at_triage": true,
+   "project": "f8962.line12b",
+   "shown_when": "f8962.show_jan",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8962.line12c",
+   "handle": "12(c)",
+   "open_at_triage": true,
+   "project": "f8962.line12c",
+   "shown_when": "f8962.show_jan_calc",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8962.line13a",
+   "handle": "13(a)",
+   "open_at_triage": true,
+   "project": "f8962.line13a",
+   "shown_when": "f8962.show_feb",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8962.line13b",
+   "handle": "13(b)",
+   "open_at_triage": true,
+   "project": "f8962.line13b",
+   "shown_when": "f8962.show_feb",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8962.line13c",
+   "handle": "13(c)",
+   "open_at_triage": true,
+   "project": "f8962.line13c",
+   "shown_when": "f8962.show_feb_calc",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8962.line14a",
+   "handle": "14(a)",
+   "open_at_triage": true,
+   "project": "f8962.line14a",
+   "shown_when": "f8962.show_mar",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8962.line14b",
+   "handle": "14(b)",
+   "open_at_triage": true,
+   "project": "f8962.line14b",
+   "shown_when": "f8962.show_mar",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8962.line14c",
+   "handle": "14(c)",
+   "open_at_triage": true,
+   "project": "f8962.line14c",
+   "shown_when": "f8962.show_mar_calc",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8962.line15a",
+   "handle": "15(a)",
+   "open_at_triage": true,
+   "project": "f8962.line15a",
+   "shown_when": "f8962.show_apr",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8962.line15b",
+   "handle": "15(b)",
+   "open_at_triage": true,
+   "project": "f8962.line15b",
+   "shown_when": "f8962.show_apr",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8962.line15c",
+   "handle": "15(c)",
+   "open_at_triage": true,
+   "project": "f8962.line15c",
+   "shown_when": "f8962.show_apr_calc",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8962.line16a",
+   "handle": "16(a)",
+   "open_at_triage": true,
+   "project": "f8962.line16a",
+   "shown_when": "f8962.show_may",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8962.line16b",
+   "handle": "16(b)",
+   "open_at_triage": true,
+   "project": "f8962.line16b",
+   "shown_when": "f8962.show_may",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8962.line16c",
+   "handle": "16(c)",
+   "open_at_triage": true,
+   "project": "f8962.line16c",
+   "shown_when": "f8962.show_may_calc",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8962.line17a",
+   "handle": "17(a)",
+   "open_at_triage": true,
+   "project": "f8962.line17a",
+   "shown_when": "f8962.show_jun",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8962.line17b",
+   "handle": "17(b)",
+   "open_at_triage": true,
+   "project": "f8962.line17b",
+   "shown_when": "f8962.show_jun",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8962.line17c",
+   "handle": "17(c)",
+   "open_at_triage": true,
+   "project": "f8962.line17c",
+   "shown_when": "f8962.show_jun_calc",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8962.line18a",
+   "handle": "18(a)",
+   "open_at_triage": true,
+   "project": "f8962.line18a",
+   "shown_when": "f8962.show_jul",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8962.line18b",
+   "handle": "18(b)",
+   "open_at_triage": true,
+   "project": "f8962.line18b",
+   "shown_when": "f8962.show_jul",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8962.line18c",
+   "handle": "18(c)",
+   "open_at_triage": true,
+   "project": "f8962.line18c",
+   "shown_when": "f8962.show_jul_calc",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8962.line19a",
+   "handle": "19(a)",
+   "open_at_triage": true,
+   "project": "f8962.line19a",
+   "shown_when": "f8962.show_aug",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8962.line19b",
+   "handle": "19(b)",
+   "open_at_triage": true,
+   "project": "f8962.line19b",
+   "shown_when": "f8962.show_aug",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8962.line19c",
+   "handle": "19(c)",
+   "open_at_triage": true,
+   "project": "f8962.line19c",
+   "shown_when": "f8962.show_aug_calc",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8962.line20a",
+   "handle": "20(a)",
+   "open_at_triage": true,
+   "project": "f8962.line20a",
+   "shown_when": "f8962.show_sep",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8962.line20b",
+   "handle": "20(b)",
+   "open_at_triage": true,
+   "project": "f8962.line20b",
+   "shown_when": "f8962.show_sep",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8962.line20c",
+   "handle": "20(c)",
+   "open_at_triage": true,
+   "project": "f8962.line20c",
+   "shown_when": "f8962.show_sep_calc",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8962.line21a",
+   "handle": "21(a)",
+   "open_at_triage": true,
+   "project": "f8962.line21a",
+   "shown_when": "f8962.show_oct",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8962.line21b",
+   "handle": "21(b)",
+   "open_at_triage": true,
+   "project": "f8962.line21b",
+   "shown_when": "f8962.show_oct",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8962.line21c",
+   "handle": "21(c)",
+   "open_at_triage": true,
+   "project": "f8962.line21c",
+   "shown_when": "f8962.show_oct_calc",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8962.line22a",
+   "handle": "22(a)",
+   "open_at_triage": true,
+   "project": "f8962.line22a",
+   "shown_when": "f8962.show_nov",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8962.line22b",
+   "handle": "22(b)",
+   "open_at_triage": true,
+   "project": "f8962.line22b",
+   "shown_when": "f8962.show_nov",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8962.line22c",
+   "handle": "22(c)",
+   "open_at_triage": true,
+   "project": "f8962.line22c",
+   "shown_when": "f8962.show_nov_calc",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8962.line23a",
+   "handle": "23(a)",
+   "open_at_triage": true,
+   "project": "f8962.line23a",
+   "shown_when": "f8962.show_dec",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8962.line23b",
+   "handle": "23(b)",
+   "open_at_triage": true,
+   "project": "f8962.line23b",
+   "shown_when": "f8962.show_dec",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8962.line23c",
+   "handle": "23(c)",
+   "open_at_triage": true,
+   "project": "f8962.line23c",
+   "shown_when": "f8962.show_dec_calc",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8962.line24",
+   "handle": "24",
+   "open_at_triage": true,
+   "project": "f8962.line24",
+   "shown_when": "f8962.filing",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8962.line25",
+   "handle": "25",
+   "open_at_triage": true,
+   "project": "f8962.line25",
+   "shown_when": "f8962.filing",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8962.line26",
+   "handle": "26",
+   "open_at_triage": true,
+   "project": "f8962.line26",
+   "shown_when": "f8962.net",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8962.line27",
+   "handle": "27",
+   "open_at_triage": true,
+   "project": "f8962.line27",
+   "shown_when": "f8962.excess",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8962.line28",
+   "handle": "28",
+   "open_at_triage": true,
+   "project": "f8962.line28",
+   "shown_when": "f8962.show_28",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8962.line29",
+   "handle": "29",
+   "open_at_triage": true,
+   "project": "f8962.line29",
+   "shown_when": "f8962.excess",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  }
+ ],
+ "log_sha256_at_triage": "dc0a3a5a0e3103de88f65fc9f1c6a1b9d80ef142cfaf68fffabbf33f36216f05",
+ "policy": "executable-triage-v2",
+ "response_sha256": "00ce9e288fffe917eb3c34ceab41d38e0e8b475d8fbc3119dd8522ad1cd85283",
+ "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
+ "state": "invalid",
+ "subject_sha256": "e72c7109c38ebd836a3333bcdf5f525e1084186c54b3dbab3a35ff6ddbc431f4"
+}

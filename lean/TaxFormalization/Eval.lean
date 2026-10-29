@@ -411,25 +411,31 @@ def eval (ctx : Ctx) : Nat → Frame → Cmd → EvalM Json
     | "sum" =>
       match objGet expr "of" with
       | some (.arr refs) =>
+        -- All operands money, or all Counts (the checker allows nothing else).
         let mut total : Int := 0
         let mut unk : Option Json := none
         let mut wrong : Option Json := none
+        let mut kind : Option String := none
         for r in refs do
           match r.getStr? with
           | .ok ref => do
             let v ← eval ctx fuel frame (.line ref)
             if kindOf v == some "refusal" then return v
-            if isMoney v then
-              total := total + (moneyOf v).getD 0
+            if isMoney v || kindOf v == some "count" then
+              let k := if isMoney v then "money" else "count"
+              if kind.isSome && kind != some k then
+                if wrong.isNone then wrong := some (unknown "sum operands mix money and Counts")
+              if kind.isNone then kind := some k
+              total := total + (if isMoney v then (moneyOf v).getD 0 else (numGet v "value").getD 0)
             else if isUnknown v then
               if unk.isNone then unk := some v
             else
-              if wrong.isNone then wrong := some (unknown s!"sum operand {ref} is not money")
+              if wrong.isNone then wrong := some (unknown s!"sum operand {ref} is not money or a Count")
           | .error _ => return unknown "sum operand not a reference"
         match unk, wrong with
         | some u, _ => return u
         | none, some w => return w
-        | none, none => return mkMoney total
+        | none, none => return (if kind == some "count" then mkCount total else mkMoney total)
       | _ => pure (unknown "sum has no operands")
     | "subtract" | "subtract_floor0" =>
       match strGet expr "from" with
@@ -497,9 +503,24 @@ def eval (ctx : Ctx) : Nat → Frame → Cmd → EvalM Json
           let a := (moneyOf amtV).getD 0
           let n := (numGet rateV "num").getD 0
           let d := (numGet rateV "den").getD 1
-          pure (mkMoney (multiplyRateHalfUp a n d))
+          match numGet expr "unit" with
+          | some u =>
+            if u > 0 then pure (mkMoney (multiplyRateToUnit a n d u))
+            else pure (unknown "multiply_rate unit is not a positive integer")
+          | none => pure (mkMoney (multiplyRateHalfUp a n d))
         else pure (unknown "multiply_rate operands wrong")
       | none => pure (unknown "multiply_rate has no amount")
+    | "percent_floor" =>
+      match strGet expr "part" with
+      | some partRef =>
+        let partV ← eval ctx fuel frame (.line partRef)
+        let wholeV ← eval ctx fuel frame (.operand (objGetD expr "whole" Json.null))
+        if let some x := incompleteOperand [partV, wholeV] then pure x
+        else if isMoney partV && isMoney wholeV && (moneyOf wholeV).getD 0 > 0 then
+          let cap := (numGet expr "cap").getD 0
+          pure (mkCount (percentFloor ((moneyOf partV).getD 0) ((moneyOf wholeV).getD 0) cap))
+        else pure (unknown "percent_floor operands wrong")
+      | none => pure (unknown "percent_floor has no part")
     | "round" =>
       match strGet expr "of" with
       | some ofRef =>

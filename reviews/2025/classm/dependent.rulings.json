@@ -23,9 +23,9 @@
    "printed": "dependent[dep_b].dc_line2c",
    "project": "no",
    "model": "yes",
-   "ruling": "Ruling: model error; project retained (no). The model checks column (c) for dep_b, age 71, a qualifying relative not able to care for themselves, but on this return no care was provided or paid (inputs f2441.care no, f2441.benefits no; every entry's column (d), including the model's own, is $0.00). i2441 p. 3, Column (c): \"Check the box in column (c) if the qualifying person listed in column (a) was over age 12 at the time the care was provided and was disabled\"; with no care provided there is no line 2 entry and no Form 2441 (i2441 p. 1, Purpose of Form: the form is filed to claim the credit or exclude benefits). Same reading and ruling as round 2; the transcription candidates' 2(c) carry the same omission of f2441.care.",
+   "ruling": "Ruling: model error; project retained (no). Case inputs (fixtures/2025/classm.json, classm.dependent.1; the deepseek case, classm.deepseek.json classm.dependent.1.deepseek, has the same inputs): dep_b is a household_member aged 71, 12 months, gross income $4,588.00, supported, dc_incapable yes, so the project claims dep_b as a qualifying relative and its dc_disabled_qp is yes; but f2441.care is no (and f2441.benefits no), and dependent.dc_qp begins with f2441.care, so dc_qp and the box are no. The prompt showed \"Did you pay for the care of a qualifying person so you could work or look for work?: no\"; the model's work (\"Age 71, not able to care for self, lived with you > half year ... so over 12 and disabled\") ignores it. i2441 p. 3, Column (c): \"Check the box in column (c) if the qualifying person listed in column (a) was over age 12 at the time the care was provided and was disabled\"; with no care provided there is no care time, no line 2 entry and no Form 2441 (i2441 p. 1, Purpose of Form). The box is display-only (dependent.dc_line2c, \"it changes no amount\"). Same reading and ruling as rounds 2 and 3.",
    "drop": true,
-   "context": "ad57a1c8e5703a407ff06d24217894af11faafd0df7b44ca2d926e93518bae9c"
+   "context": "17995415d37dfcaacda14a1e59372b644b353c70b86070817adc978a15811bfd"
   },
   {
    "case": "classm.dependent.1",
@@ -154,8 +154,9 @@
    "printed": "dependent[dep_b].dc_line2d",
    "project": "$250.00",
    "model": "$0.00",
-   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. This entry is not a qualifying person (dependent.dc_qp no, which the model agrees with); the model leaves it off line 2 (i2441 p. 3, Line 2, \"Don't list a person on line 2 unless they are listed as an eligible person\"), the project copies the person's expenses and applies the qualifying-person test where column (d) is summed (f2441.paid_total), so the Form 2441 total is the same.",
-   "drop": true
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Case inputs (fixtures/2025/classm.json, classm.dependent.5; the prompt showed dep_b's \"Qualified expenses incurred and paid in 2025 for this person's care = $250.00\"): f2441.care yes; dep_b is a child aged 25, not a student, not disabled, dc_incapable no, dc_paid $250.00 (and joint_return yes with married no). The project claims dep_b as a qualifying relative, but dc_child_all_year, dc_child and dc_disabled_qp are all no, so dependent.dc_qp is no; dependent.dc_line2d is a plain copy of dc_paid and shows $250.00. The model's $0.00 follows from what it was shown and is the source's reading (i2441 p. 3, Line 2, \"Don't list a person on line 2 unless they are listed as an eligible person under Qualifying Person(s), earlier\"). But the $250.00 reaches nothing: f2441.paid_total (line 3) sums column (d) only where dc_qp is true ($1,480.00 here, dep_a alone), and the interview never asks dc_paid for a non-qualifying person, because the engine evaluates that where filter before the field (checked: with dep_b's dc_paid removed, the line 3 total is unchanged). The amount exists only because the generated return supplies an answer the interview does not ask, as for the dc_line2d entries ruled in round 2. Project retained; the expectation is dropped because the fixture would pin a value no interview produces.",
+   "drop": true,
+   "context": "17995415d37dfcaacda14a1e59372b644b353c70b86070817adc978a15811bfd"
   }
  ]
 }

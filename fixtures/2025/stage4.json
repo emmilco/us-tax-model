@@ -39,7 +39,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -139,7 +138,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "sa.standard": {
@@ -214,7 +214,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -318,7 +317,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8959.line6": {
@@ -369,7 +369,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -473,7 +472,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8959.line6": {
@@ -524,7 +524,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -624,7 +623,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8959.line6": {
@@ -675,7 +675,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -800,7 +799,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8959.line6": {
@@ -851,7 +851,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -976,7 +975,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8959.line6": {
@@ -1027,7 +1027,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -1148,7 +1147,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8959.line6": {
@@ -1199,7 +1199,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -1303,7 +1302,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8959.line6": {
@@ -1354,7 +1354,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -1458,7 +1457,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8959.line6": {
@@ -1509,7 +1509,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -1609,7 +1608,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8959.line6": {
@@ -1660,7 +1660,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -1761,7 +1760,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8959.line6": {
@@ -1812,7 +1812,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -1913,7 +1912,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8959.line6": {
@@ -1964,7 +1964,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -2061,7 +2060,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8959.line6": {
@@ -2112,7 +2112,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -2236,7 +2235,8 @@
         "person[spouse].sav_prior_joint": 0,
         "person[spouse].sav_prior_other": 0,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8959.line6": {
@@ -2287,7 +2287,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -2411,7 +2410,8 @@
         "person[spouse].sav_prior_joint": 0,
         "person[spouse].sav_prior_other": 0,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8959.line6": {
@@ -2462,7 +2462,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -2582,7 +2581,8 @@
         "person[spouse].sav_prior_joint": 0,
         "person[spouse].sav_prior_other": 0,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8959.line6": {
@@ -2633,7 +2633,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -2733,7 +2732,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8959.line18": {
@@ -2872,7 +2872,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -2972,7 +2971,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8959.line24": {
@@ -3019,7 +3019,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -3123,7 +3122,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "sa.line5e": {
@@ -3170,7 +3170,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -3270,7 +3269,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "sa.line5e": {
@@ -3317,7 +3317,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -3417,7 +3416,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "sa.line5e": {
@@ -3464,7 +3464,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -3564,7 +3563,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "sa.line5e": {
@@ -3611,7 +3611,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -3711,7 +3710,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "sa.line5e": {
@@ -3758,7 +3758,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -3855,7 +3854,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "sa.line5e": {
@@ -3902,7 +3902,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -3999,7 +3998,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "sa.line5e": {
@@ -4050,7 +4050,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -4150,7 +4149,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "sa.line5e": {
@@ -4197,7 +4197,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -4297,7 +4296,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "sa.line3": {
@@ -4348,7 +4348,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -4448,7 +4447,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "sa.line4": {
@@ -4495,7 +4495,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -4596,7 +4595,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "sa.standard": {
@@ -4643,7 +4643,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -4765,7 +4764,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "sa.standard": {
@@ -4812,7 +4812,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -4913,7 +4912,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "sa.standard": {
@@ -4960,7 +4960,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -5081,7 +5080,8 @@
         "person[spouse].sav_prior_other": 0,
         "f2441.employer_care": false,
         "person[taxpayer].died_before_65": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "sa.standard": {
@@ -5128,7 +5128,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -5226,7 +5225,8 @@
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
         "person[taxpayer].died_before_65": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "sa.standard": {
@@ -5273,7 +5273,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -5370,7 +5369,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "sa.standard": {
@@ -5421,7 +5421,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -5521,7 +5520,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "sa.itemizes": {
@@ -5572,7 +5572,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -5672,7 +5671,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "sa.itemizes": {
@@ -5723,7 +5723,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -5823,7 +5822,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f4952.line8": {
@@ -5878,7 +5878,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -5978,7 +5977,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f4952.line8": {
@@ -6033,7 +6033,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -6133,7 +6132,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f4952.line8": {
@@ -6196,7 +6196,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -6308,7 +6307,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8960.line8": {
@@ -6371,7 +6371,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -6471,7 +6470,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8960.line17": {
@@ -6518,7 +6518,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -6618,7 +6617,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8960.line17": {
@@ -6665,7 +6665,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -6786,7 +6785,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8960.line17": {
@@ -6833,7 +6833,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -6954,7 +6953,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8960.line17": {
@@ -7001,7 +7001,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -7101,7 +7100,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8960.line17": {
@@ -7148,7 +7148,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -7248,7 +7247,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8960.line17": {
@@ -7295,7 +7295,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -7415,7 +7414,8 @@
         "person[spouse].sav_prior_joint": 0,
         "person[spouse].sav_prior_other": 0,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8960.line17": {
@@ -7462,7 +7462,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -7582,7 +7581,8 @@
         "person[spouse].sav_prior_joint": 0,
         "person[spouse].sav_prior_other": 0,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8960.line17": {
@@ -7629,7 +7629,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -7726,7 +7725,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8960.line17": {
@@ -7773,7 +7773,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -7870,7 +7869,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8960.line17": {
@@ -7917,7 +7917,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -8017,7 +8016,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8960.line9a": {
@@ -8072,7 +8072,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -8172,7 +8171,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "qbi.use_8995a": {
@@ -8231,7 +8231,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -8331,7 +8330,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "qbi.use_8995a": {
@@ -8390,7 +8390,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -8490,7 +8489,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "qbi.use_8995a": {
@@ -8549,7 +8549,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -8649,7 +8648,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "qbi.taxable_before": {
@@ -8708,7 +8708,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -8808,7 +8807,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "qbi.deduction": {
@@ -8867,7 +8867,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -8967,7 +8966,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "ftc.credit": {
@@ -9014,7 +9014,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -9114,7 +9113,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "ftc.credit": {
@@ -9165,7 +9165,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -9265,7 +9264,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "ftc.credit": {
@@ -9312,7 +9312,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -9412,7 +9411,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "sdtw.line31": {
@@ -9659,7 +9659,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -9759,7 +9758,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "sdtw.after22": {
@@ -9838,7 +9838,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -9938,7 +9937,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "sdtw.after32": {
@@ -9993,7 +9993,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -10101,7 +10100,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "g28.line7": {
@@ -10156,7 +10156,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -10261,7 +10260,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "sa.line12": {
@@ -10312,7 +10312,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -10417,7 +10416,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "sa.line12": {
@@ -10468,7 +10468,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -10573,7 +10572,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "sa.line12": {
@@ -10623,7 +10623,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -10720,7 +10719,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "scope.ready": {
@@ -10775,7 +10775,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -10862,7 +10861,8 @@
         "f2441.benefits": false,
         "f2441.employer_care": false,
         "person[taxpayer].sav_trad": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "scope.ready": {
@@ -10917,7 +10917,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -11014,7 +11013,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "scope.ready": {
@@ -11069,7 +11069,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -11166,7 +11165,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "scope.ready": {
@@ -11223,7 +11223,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -11330,7 +11329,8 @@
         "s1a.tips": false,
         "s1a.overtime": false,
         "s1a.carloan": false,
-        "s179.line10": 0
+        "s179.line10": 0,
+        "$f1095a": []
       },
       "expect": {
         "f4952.line2": {
@@ -11392,7 +11392,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -11489,7 +11488,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f4952.line8": {
@@ -11596,7 +11596,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -11693,7 +11692,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f4952.line8": {
@@ -11800,7 +11800,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -11900,7 +11899,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f4952.election": {
@@ -11955,7 +11955,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -12052,7 +12051,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8959.line18": {
@@ -12198,7 +12198,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -12298,7 +12297,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8960.line17": {
@@ -12496,7 +12496,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -12596,7 +12595,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8960.line17": {
@@ -12794,7 +12794,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -12894,7 +12893,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "sa.line17": {
@@ -13040,7 +13040,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -13140,7 +13139,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "sa.line17": {
@@ -13286,7 +13286,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -13386,7 +13385,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "sa.line17": {
@@ -13532,7 +13532,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -13632,7 +13631,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "sa.standard": {
@@ -13687,7 +13687,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -13787,7 +13786,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "sa.standard": {
@@ -13843,7 +13843,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -13943,7 +13942,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "sb.line4": {
@@ -14037,7 +14037,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -14137,7 +14136,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "sb.line4": {
@@ -14231,7 +14231,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -14331,7 +14330,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "sb.line4": {
@@ -14425,7 +14425,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -14525,7 +14524,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "sb.line4": {
@@ -14619,7 +14619,6 @@
         "qbi.unsupported": true,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -14719,7 +14718,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "qbi.deduction": {
@@ -14778,7 +14778,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -14875,7 +14874,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "ftc.credit": {
@@ -14930,7 +14930,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -15027,7 +15026,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "ftc.credit": {
@@ -15082,7 +15082,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -15179,7 +15178,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "ftc.credit": {
@@ -15234,7 +15234,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -15331,7 +15330,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "ftc.credit": {
@@ -15386,7 +15386,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -15483,7 +15482,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "ftc.credit": {
@@ -15538,7 +15538,6 @@
         "qbi.unsupported": false,
         "s2.amt": true,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -15638,7 +15637,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "s2.line21": {
@@ -15719,7 +15719,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -15819,7 +15818,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "s2.line21": {
@@ -15900,7 +15900,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -16005,7 +16004,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "sa.line12": {
@@ -16061,7 +16061,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -16166,7 +16165,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "sa.line12": {
@@ -16221,7 +16221,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -16321,7 +16320,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f1040.line7a": {
@@ -16376,7 +16376,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -16476,7 +16475,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f1040.line7a": {
@@ -16531,7 +16531,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -16631,7 +16630,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f1040.line7a": {
@@ -16686,7 +16686,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -16786,7 +16785,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f1040.line7a": {
@@ -16842,7 +16842,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -16942,7 +16941,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "sdtw.line30": {
@@ -17025,7 +17025,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -17125,7 +17124,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "sdtw.line21": {
@@ -17196,7 +17196,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -17296,7 +17295,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "qbi.taxable_before": {
@@ -17355,7 +17355,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -17455,7 +17454,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "sb.partIII": {
@@ -17506,7 +17506,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -17614,7 +17613,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8960.line5a": {
@@ -17669,7 +17669,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -17789,7 +17788,8 @@
         "person[spouse].sav_prior_joint": 0,
         "person[spouse].sav_prior_other": 0,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8959.line6": {
@@ -17835,7 +17835,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -17935,7 +17934,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f4952.line8": {
@@ -17990,7 +17990,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -18090,7 +18089,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f1040.line7a": {
@@ -18145,7 +18145,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -18245,7 +18244,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f1040.line7a": {
@@ -18300,7 +18300,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -18400,7 +18399,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f1040.line7a": {
@@ -18455,7 +18455,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -18555,7 +18554,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8960.line17": {
@@ -18610,7 +18610,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -18707,7 +18706,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f4952.line8": {
@@ -18815,7 +18815,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -18915,7 +18914,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "sa.line17": {
@@ -19061,7 +19061,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -19161,7 +19160,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8960.line17": {
@@ -19359,7 +19359,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -19459,7 +19458,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "sb.line4": {
@@ -19553,7 +19553,6 @@
         "qbi.unsupported": false,
         "s2.amt": true,
         "s2.other": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -19653,7 +19652,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "s2.line21": {
@@ -19735,7 +19735,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -19843,7 +19842,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f4952.line4d": {
@@ -19902,7 +19902,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -20011,7 +20010,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "sa.line4": {
@@ -20110,7 +20110,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -20222,7 +20221,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8960.line8": {
@@ -20309,7 +20309,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -20406,7 +20405,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "scope.ready": {
@@ -20462,7 +20462,6 @@
         "qbi.unsupported": false,
         "s2.amt": false,
         "s2.other": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -20562,7 +20561,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "sdtw.line6": {
@@ -20645,7 +20645,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -20784,7 +20783,8 @@
         "household.credit_disallowed": false,
         "household.community_property": false,
         "person[taxpayer].eic_ssn": true,
-        "person[taxpayer].under16": false
+        "person[taxpayer].under16": false,
+        "$f1095a": []
       },
       "expect": {
         "f1040.line11b": {
@@ -20863,7 +20863,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -21002,7 +21001,8 @@
         "household.credit_disallowed": false,
         "household.community_property": false,
         "person[taxpayer].eic_ssn": true,
-        "person[taxpayer].under16": false
+        "person[taxpayer].under16": false,
+        "$f1095a": []
       },
       "expect": {
         "f1040.line11b": {

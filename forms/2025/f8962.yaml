@@ -1,0 +1,2533 @@
+form:
+  id: f8962
+  kind: form
+  title: Form 8962, Premium Tax Credit (Parts I to III)
+  tax_year: 2025
+  note: Prepared when there is a Form 1095-A. Parts IV and V (allocation, year of marriage), coverage of someone not lawfully
+    present, QSEHRA and individual coverage HRAs, unpaid premiums and advance payments for someone in no tax family are refused;
+    married filing separately is refused for the whole return.
+  lines:
+  - id: f8962.zero
+    printed: (helper)
+    label: Year parameter sales.zero
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: sales.zero
+    cite:
+      doc: f8962
+      locator: p. 1, Part I, line 3, "Household income. Add the amounts on lines 2a and 2b. See instructions"
+  - id: f8962.forms
+    printed: (helper)
+    label: Number of Forms 1095-A
+    type: Count
+    expr:
+      op: sum_over
+      collection: f1095a
+      field: f1095a.one
+    cite:
+      doc: i8962
+      locator: p. 15, Column (a), "If you have more than one Form 1095-A, add the amounts together and enter the total on
+        Form 8962, line 11, column (a)."
+  - id: f8962.any
+    printed: (helper)
+    label: Any Form 1095-A, so Form 8962 is prepared
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - f8962.forms
+      - const: 0
+        type: Count
+    cite:
+      doc: i8962
+      locator: p. 3, Who Must File, "You are taking the PTC."
+  - id: f8962.alloc
+    printed: (gate)
+    label: A policy shared with another tax family, or a divorce or separation in 2025 with a shared policy
+    type: Bool
+    expr:
+      op: input
+      source: Did any Form 1095-A policy cover someone in your tax family and also someone who is not in it (for example a
+        former spouse, or a child someone else claims), or were you divorced or legally separated during 2025 while enrolled
+        in a policy with your former spouse?
+    cite:
+      doc: i8962
+      locator: p. 12, Allocating policy amounts, "The policy covered at least one individual in your tax family and at least
+        one individual in another tax family"
+  - id: f8962.married_in_2025
+    printed: (gate)
+    label: Married during 2025 with coverage before the first full month of marriage
+    type: Bool
+    expr:
+      op: input
+      source: Did you and your spouse marry during 2025, and was anyone in your tax family enrolled in a Marketplace plan
+        before your first full month of marriage?
+    cite:
+      doc: i8962
+      locator: p. 13, Table 4, "Was anyone in your tax family enrolled in a qualified health plan before your first full month
+        of marriage?"
+  - id: f8962.marriage
+    printed: (gate)
+    label: A joint return with Marketplace coverage before the first full month of a 2025 marriage
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f1040.status
+        - const: mfj
+      - op: test
+        eq:
+        - f8962.married_in_2025
+        - const: true
+    cite:
+      doc: i8962
+      locator: p. 13, Table 4, "Was anyone in your tax family enrolled in a qualified health plan before your first full month
+        of marriage?"
+  - id: f8962.other
+    printed: (gate)
+    label: Coverage this tool does not reconcile (not lawfully present, an HRA, unpaid premiums, no tax family)
+    type: Bool
+    expr:
+      op: input
+      source: 'Does any of these apply: someone enrolled was not lawfully present in the United States; you or a family member
+        were offered or covered by a qualified small employer HRA (QSEHRA, W-2 box 12 code FF) or an individual coverage HRA
+        for 2025; any part of a month''s premium was not paid by the due date of your return, or a Form 1095-A shows zero
+        in column A for a month whose premium you paid; or advance payments were made for someone who is in no one''s tax
+        family?'
+    cite:
+      doc: i8962
+      locator: p. 6, "Individuals who are not lawfully present in the United States are not eligible for the PTC for their
+        coverage in a qualified health plan through a Marketplace."; p. 3, "If you were covered under an individual coverage
+        HRA for 2025, you are not allowed a PTC for your 2025 Marketplace health insurance."; p. 1, "If the QSEHRA is affordable
+        for a month, no PTC is allowed for the month."; p. 4, Enrollment premiums, "You are generally not allowed a monthly
+        credit amount for the month if any part of that month"
+  - id: f8962.two_counted
+    printed: (gate)
+    label: Column B counted on two Forms 1095-A from the same state for the same month
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        gt:
+        - f8962.forms
+        - const: 1
+          type: Count
+      - op: test
+        eq:
+        - f8962.same_state_counted
+        - const: true
+    cite:
+      doc: i8962
+      locator: p. 15, Column (b), "Enter the amount from column B of only one Form 1095-A—do not add the amounts from each
+        form."
+  - id: f8962.same_state_counted
+    printed: (gate)
+    label: Did you count column B on two Forms 1095-A from the same state that show coverage in the same month?
+    type: Bool
+    expr:
+      op: input
+      source: Of the Forms 1095-A whose column B you counted, do two from the same state show coverage in the same month?
+    cite:
+      doc: i8962
+      locator: p. 16, Column (b), "If you have more than one Form 1095-A showing coverage in a particular month, use the following
+        rules to determine the amounts to enter on Form 8962, column (b), for that month."
+  - id: f8962.deps
+    printed: (helper)
+    label: Dependents you claim
+    type: Count
+    expr:
+      op: sum_over
+      collection: dependent
+      field: dependent.one
+      where:
+        op: test
+        eq:
+        - dependent.claimed
+        - const: true
+    cite:
+      doc: i8962
+      locator: p. 3, Terms You May Need To Know, "Your dependents whom you claim on your 2025 tax return."
+  - id: f8962.line1
+    printed: '1'
+    label: Tax family size
+    shown_when: f8962.any
+    type: Count
+    expr:
+      op: sum
+      of:
+      - household.persons
+      - f8962.deps
+    cite:
+      doc: f8962
+      locator: p. 1, Part I, line 1, "Tax family size. Enter your tax family size. See instructions"
+  - id: f8962.ws1_1
+    printed: (helper)
+    label: 'Worksheet 1-1, line 1: AGI (Form 1040 line 11a)'
+    type: Dollars
+    expr:
+      op: copy
+      from: f1040.line11a
+    cite:
+      doc: i8962
+      locator: p. 8, Worksheet 1-1, line 1, "Enter your AGI* from Form 1040, 1040-SR, or 1040-NR, line 11a"
+  - id: f8962.ws1_2
+    printed: (helper)
+    label: 'Worksheet 1-1, line 2: tax-exempt interest (Form 1040 line 2a)'
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: f1040.line2a
+    cite:
+      doc: i8962
+      locator: p. 8, Worksheet 1-1, line 2, "Enter any tax-exempt interest from Form 1040, 1040-SR, or 1040-NR, line 2a"
+  - id: f8962.ws1_3
+    printed: (helper)
+    label: 'Worksheet 1-1, line 3: Form 2555 amounts (zero after the screen)'
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: f8962.zero
+    cite:
+      doc: i8962
+      locator: p. 8, Worksheet 1-1, line 3, "Enter any amounts from Form 2555, lines 45 and 50"
+    refuses:
+    - when: sa.excluded_income
+      form: Form 2555
+      remedy: The foreign earned income and housing exclusions (Form 2555) are outside this tool.
+      cite:
+        doc: i8962
+        locator: p. 8, Worksheet 1-1, line 3, "Enter any amounts from Form 2555, lines 45 and 50"
+  - id: f8962.ws1_4
+    printed: (helper)
+    label: 'Worksheet 1-1, line 4: social security benefits not taxed (line 6a less line 6b)'
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f1040.line6a
+      take: f1040.line6b
+    cite:
+      doc: i8962
+      locator: p. 8, Worksheet 1-1, line 4, "If line 6a is more than line 6b, subtract line 6b from line 6a and enter the
+        result"
+  - id: f8962.line2a
+    printed: 2a
+    label: Modified AGI (Worksheet 1-1, line 5)
+    shown_when: f8962.any
+    type: Dollars
+    expr:
+      op: sum
+      of:
+      - f8962.ws1_1
+      - f8962.ws1_2
+      - f8962.ws1_3
+      - f8962.ws1_4
+    cite:
+      doc: i8962
+      locator: p. 8, Worksheet 1-1, line 5, "Add lines 1 through 4. Enter here and on Form 8962, line 2a"
+  - id: f8962.line2b
+    printed: 2b
+    label: Dependents' modified AGI (dependents required to file because of their income)
+    shown_when: f8962.any
+    type: Dollars
+    expr:
+      op: sum_over
+      collection: dependent
+      field: dependent.ptc_magi_counted
+      where:
+        op: test
+        eq:
+        - dependent.claimed
+        - const: true
+    cite:
+      doc: i8962
+      locator: p. 8, Line 2b, "Only include your dependents who are required to file an income tax return because their income
+        meets the income tax return filing threshold.", "Do not include the modified AGI of dependents who are filing a tax
+        return only to claim a refund of tax withheld or estimated tax."
+    ambiguity: amb.2025.ptc_dependent_filing
+  - id: f8962.income_total
+    printed: (helper)
+    label: Lines 2a and 2b combined
+    type: Dollars
+    expr:
+      op: sum
+      of:
+      - f8962.line2a
+      - f8962.line2b
+    cite:
+      doc: i8962
+      locator: p. 8, Line 3, "Combine them even if one or both of them are negative. If the total is less than zero, enter
+        -0- on line 3."
+  - id: f8962.line3
+    printed: '3'
+    label: Household income
+    shown_when: f8962.any
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f8962.income_total
+      take: f8962.zero
+    cite:
+      doc: i8962
+      locator: p. 8, Line 3, "Combine them even if one or both of them are negative. If the total is less than zero, enter
+        -0- on line 3."
+  - id: f8962.fpl_table
+    printed: (gate)
+    label: Which federal poverty table applies (contiguous, alaska or hawaii)
+    type: Enum(ptc_fpl_table)
+    expr:
+      op: input
+      source: 'Which federal poverty table applies: alaska if you, or your spouse on a joint return, lived in Alaska during
+        2025; otherwise hawaii if either of you lived in Hawaii during 2025; otherwise contiguous (the 48 contiguous states
+        and the District of Columbia)'
+    cite:
+      doc: i8962
+      locator: p. 8, Line 4, "use the table with the higher dollar amounts for your family size."
+  - id: f8962.big_family
+    printed: (gate)
+    label: Tax family size above 20
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - f8962.line1
+      - const: 20
+        type: Count
+    cite:
+      doc: i8962
+      locator: p. 8, Line 4, Table 1-1, "If your family size was more than 8 people"
+  - id: f8962.line4
+    printed: '4'
+    label: Federal poverty line
+    shown_when: f8962.any
+    type: NonNegDollars
+    expr:
+      op: keyed_lookup
+      table: ptc_poverty_line
+      keys:
+      - f8962.fpl_table
+      - f8962.line1
+    cite:
+      doc: i8962
+      locator: p. 8, Line 4, "use the table with the higher dollar amounts for your family size."
+    refuses:
+    - when: f8962.big_family
+      form: Form 8962 line 4 for a tax family of more than 20
+      remedy: The poverty table here stops at a family of 20; use the footnote to Table 1-1, 1-2 or 1-3.
+      cite:
+        doc: i8962
+        locator: p. 8, Line 4, Table 1-1, "If your family size was more than 8 people"
+  - id: f8962.line5
+    printed: '5'
+    label: Household income as a percentage of the federal poverty line (Worksheet 2)
+    shown_when: f8962.any
+    type: Count
+    expr:
+      op: percent_floor
+      part: f8962.line3
+      whole: f8962.line4
+      cap: 400
+    cite:
+      doc: i8962
+      locator: p. 9, Worksheet 2, line 4, "Enter 401 here and on line 5 of Form 8962."
+  - id: f8962.aptc
+    printed: (helper)
+    label: Any advance payments on the Forms 1095-A
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - f8962.aptc_total
+      - const: 0
+    cite:
+      doc: i8962
+      locator: p. 10, "If APTC was paid for any individuals in your tax family, skip lines 7 and 8, and go to line 9."
+  - id: f8962.aptc_total
+    printed: (helper)
+    label: Advance payments on all Forms 1095-A (line 33C)
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: f1095a
+      field: f1095a.line33c
+    cite:
+      doc: i8962
+      locator: p. 16, Column (f), "If you have more than one Form 1095-A, add the amounts together and enter the total on
+        Form 8962, line 11, column (f)."
+  - id: f8962.estimate_100
+    printed: (gate)
+    label: The Marketplace estimated household income of at least 100% of the poverty line
+    type: Bool
+    expr:
+      op: input
+      source: When you enrolled, did the Marketplace estimate that your household income for 2025 would be at least 100% of
+        the federal poverty line for your family size?
+    cite:
+      doc: i8962
+      locator: p. 9, "The Marketplace estimated at the time of enrollment that your household income would be at least 100%
+        of the federal poverty line for your family size for 2025."
+  - id: f8962.applicable
+    printed: (helper)
+    label: You are an applicable taxpayer (line 5 at least 100, or the Marketplace estimate exception)
+    type: Bool
+    expr:
+      op: test
+      any:
+      - op: test
+        ge:
+        - f8962.line5
+        - const: 100
+          type: Count
+      - op: test
+        all:
+        - op: test
+          eq:
+          - f8962.aptc
+          - const: true
+        - op: test
+          eq:
+          - f8962.estimate_100
+          - const: true
+    cite:
+      doc: i8962
+      locator: p. 6, Applicable taxpayer, "Generally, you are an applicable taxpayer if your household income for 2025"; p.
+        9, "The Marketplace estimated at the time of enrollment that your household income would be at least 100% of the federal
+        poverty line for your family size for 2025."
+    ambiguity: amb.2025.ptc_not_applicable
+  - id: f8962.show_applicable
+    printed: (helper)
+    label: Lines 7 and 8 are used (a Form 1095-A and an applicable taxpayer)
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8962.any
+        - const: true
+      - op: test
+        eq:
+        - f8962.applicable
+        - const: true
+    cite:
+      doc: i8962
+      locator: p. 10, "If you meet all of the requirements under either Estimated household income at least 100% of the federal
+        poverty line or Alien lawfully present in the United States, earlier, continue to line 7."
+  - id: f8962.filing
+    printed: (helper)
+    label: Form 8962 is completed past line 5 (a Form 1095-A, and an applicable taxpayer or advance payments)
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8962.any
+        - const: true
+      - op: test
+        any:
+        - op: test
+          eq:
+          - f8962.applicable
+          - const: true
+        - op: test
+          eq:
+          - f8962.aptc
+          - const: true
+    cite:
+      doc: i8962
+      locator: p. 10, "However, if no APTC was paid for any individuals in your tax family, stop; do not complete Form 8962."
+  - id: f8962.alien_below
+    printed: (gate)
+    label: An enrolled lawfully present alien not eligible for Medicaid because of immigration status
+    type: Bool
+    expr:
+      op: input
+      source: Was someone in your tax family who enrolled in a qualified health plan through the Marketplace lawfully present
+        in the United States but not eligible for Medicaid because of their immigration status?
+    cite:
+      doc: i8962
+      locator: p. 9, Alien lawfully present in the United States, "Certain aliens with household income below 100% of the federal
+        poverty line are not eligible for Medicaid because of their immigration status."
+  - id: f8962.alien_branch
+    printed: (gate)
+    label: A Form 1095-A, household income below 100% of the poverty line and the lawfully present alien exception
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8962.any
+        - const: true
+      - op: test
+        lt:
+        - f8962.line5
+        - const: 100
+          type: Count
+      - op: test
+        eq:
+        - f8962.alien_below
+        - const: true
+    cite:
+      doc: i8962
+      locator: p. 9, Line 5, "If the amount on line 5 is less than 100%, you can take the PTC if you meet the requirements under
+        Estimated household income at least 100% of the federal poverty line next or Alien lawfully present in the United
+        States, later."
+  - id: f8962.line7
+    printed: '7'
+    label: Applicable figure (Table 2)
+    shown_when: f8962.show_applicable
+    type: Rate
+    expr:
+      op: keyed_lookup
+      table: ptc_applicable_figure
+      keys:
+      - f8962.line5
+    cite:
+      doc: i8962
+      locator: p. 10, Line 7, "Enter on line 7 the decimal number from Table 2 that applies to the amount you entered on line
+        5."; p. 11, Table 2, "If the amount on line 5 is 150 or less, your applicable figure is 0.0000."
+  - id: f8962.line8a
+    printed: 8a
+    label: Annual contribution amount (line 3 times line 7, to the nearest dollar)
+    shown_when: f8962.show_applicable
+    type: NonNegDollars
+    expr:
+      op: multiply_rate
+      amount: f8962.line3
+      rate: f8962.line7
+      unit: 100
+    cite:
+      doc: i8962
+      locator: p. 12, Line 8a, "Multiply line 3 by line 7 and enter the result on line 8a, rounded to the nearest whole dollar
+        amount."
+  - id: f8962.line8b
+    printed: 8b
+    label: Monthly contribution amount (line 8a divided by 12, to the nearest dollar)
+    shown_when: f8962.show_applicable
+    type: NonNegDollars
+    expr:
+      op: multiply_rate
+      amount: f8962.line8a
+      rate:
+        param: ptc.twelfth
+      unit: 100
+    cite:
+      doc: i8962
+      locator: p. 12, Line 8b, "Divide line 8a by 12.0 and enter the result on line 8b, rounded to the nearest whole dollar
+        amount."
+  - id: f8962.line9
+    printed: '9'
+    label: Allocating policy amounts, or the alternative calculation for year of marriage
+    shown_when: f8962.filing
+    type: Bool
+    expr:
+      op: test
+      any:
+      - op: test
+        eq:
+        - f8962.alloc
+        - const: true
+      - op: test
+        eq:
+        - f8962.marriage
+        - const: true
+    cite:
+      doc: f8962
+      locator: p. 1, Part II, line 9, "Are you allocating policy amounts with another taxpayer or do you want to use the alternative
+        calculation for year of marriage? See instructions."
+  - id: f8962.nonuniform
+    printed: (helper)
+    label: Forms 1095-A without full-year coverage and unchanged columns A and B
+    type: Count
+    expr:
+      op: sum_over
+      collection: f1095a
+      field: f1095a.one
+      where:
+        op: test
+        eq:
+        - f1095a.uniform
+        - const: false
+    cite: &id001
+      doc: i8962
+      locator: p. 14, Line 10, "Check “Yes” and continue to line 11 if all of the following apply for each qualified health
+        plan", "Full-year coverage with no changes on Form 1095-A, Part III, column A or B."
+  - id: f8962.line10
+    printed: '10'
+    label: Annual calculation (every Form 1095-A has full-year coverage with no changes in columns A and B)
+    shown_when: f8962.filing
+    type: Bool
+    expr:
+      op: test
+      eq:
+      - f8962.nonuniform
+      - const: 0
+        type: Count
+    cite: *id001
+    ambiguity: amb.2025.ptc_annual_route
+  - id: f8962.show_annual
+    printed: (helper)
+    label: Line 11 is used (Form 8962 completed past line 5 and line 10 Yes)
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8962.filing
+        - const: true
+      - op: test
+        eq:
+        - f8962.line10
+        - const: true
+    cite: *id001
+  - id: f8962.show_annual_calc
+    printed: (helper)
+    label: Line 11 is used and you are an applicable taxpayer
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8962.show_annual
+        - const: true
+      - op: test
+        eq:
+        - f8962.applicable
+        - const: true
+    cite:
+      doc: i8962
+      locator: p. 10, "If APTC was paid for any individuals in your tax family, skip lines 7 and 8, and go to line 9."
+  - id: f8962.line11a
+    printed: 11(a)
+    label: Annual enrollment premiums (Form(s) 1095-A, line 33A)
+    shown_when: f8962.show_annual
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: f1095a
+      field: f1095a.line33a
+    cite:
+      doc: f8962
+      locator: p. 1, Part II, line 11, "(a) Annual enrollment premiums (Form(s) 1095-A, line 33A)"
+  - id: f8962.line11b
+    printed: 11(b)
+    label: Annual applicable SLCSP premium (Form(s) 1095-A, line 33B)
+    shown_when: f8962.show_annual
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: f1095a
+      field: f1095a.line33b
+      where:
+        op: test
+        eq:
+        - f1095a.b_used
+        - const: true
+    cite:
+      doc: f8962
+      locator: p. 1, Part II, line 11, "(b) Annual applicable SLCSP premium (Form(s) 1095-A, line 33B)"
+  - id: f8962.line11c
+    printed: 11(c)
+    label: Annual contribution amount (line 8a)
+    shown_when: f8962.show_annual_calc
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: f8962.line8a
+    cite:
+      doc: f8962
+      locator: p. 1, Part II, line 11, "(c) Annual contribution amount (line 8a)"
+  - id: f8962.line11d
+    printed: 11(d)
+    label: Annual maximum premium assistance (subtract (c) from (b), if zero or less, enter -0-)
+    shown_when: f8962.show_annual_calc
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f8962.line11b
+      take: f8962.line11c
+    cite:
+      doc: f8962
+      locator: p. 1, Part II, line 11, "(d) Annual maximum premium assistance (subtract (c) from (b)"
+  - id: f8962.line11e
+    printed: 11(e)
+    label: Annual PTC allowed (smaller of (a) or (d))
+    shown_when: f8962.show_annual_calc
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - f8962.line11a
+      - f8962.line11d
+    cite:
+      doc: f8962
+      locator: p. 1, Part II, line 11, "(e) Annual PTC allowed"
+  - id: f8962.line11f
+    printed: 11(f)
+    label: Annual advance payment of PTC (Form(s) 1095-A, line 33C)
+    shown_when: f8962.show_annual
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: f8962.aptc_total
+    cite:
+      doc: f8962
+      locator: p. 1, Part II, line 11, "1095-A, line 33C)"
+  - id: f8962.show_jan
+    printed: (helper)
+    label: 'Line 12 is used: line 10 No and coverage in January'
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8962.filing
+        - const: true
+      - op: test
+        eq:
+        - f8962.line10
+        - const: false
+      - op: test
+        any:
+        - op: test
+          gt:
+          - f8962.line12a
+          - const: 0
+        - op: test
+          gt:
+          - f8962.line12b
+          - const: 0
+    cite:
+      doc: i8962
+      locator: p. 17, Column (c), "If columns (a) and (b) of any of lines 12 through 23 are blank, leave column (c) of the
+        corresponding line blank."
+  - id: f8962.show_jan_calc
+    printed: (helper)
+    label: Line 12 is used and you are an applicable taxpayer
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8962.show_jan
+        - const: true
+      - op: test
+        eq:
+        - f8962.applicable
+        - const: true
+    cite:
+      doc: i8962
+      locator: p. 10, "If APTC was paid for any individuals in your tax family, skip lines 7 and 8, and go to line 9."
+  - id: f8962.line12a
+    printed: 12(a)
+    label: 'January: monthly enrollment premiums (Form(s) 1095-A, column A)'
+    shown_when: f8962.show_jan
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: f1095a
+      field: f1095a.a_jan
+    cite: &id002
+      doc: i8962
+      locator: p. 16, Column (a), "If you have more than one Form 1095-A affecting a particular month, add the amounts together
+        for that month and enter the total on the appropriate line on Form 8962, column (a)."
+  - id: f8962.line12b
+    printed: 12(b)
+    label: 'January: monthly applicable SLCSP premium (Form(s) 1095-A, column B)'
+    shown_when: f8962.show_jan
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: f1095a
+      field: f1095a.b_jan
+      where:
+        op: test
+        eq:
+        - f1095a.b_used
+        - const: true
+    cite:
+      doc: i8962
+      locator: p. 16, Column (b), "Enter the amount from column B of only one Form 1095-A—do not add the amounts from each
+        form."
+  - id: f8962.line12c
+    printed: 12(c)
+    label: 'January: monthly contribution amount (line 8b)'
+    shown_when: f8962.show_jan_calc
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: f8962.line8b
+    cite:
+      doc: i8962
+      locator: p. 17, Column (c), "If columns (a) and (b) of any of lines 12 through 23 are blank, leave column (c) of the
+        corresponding line blank."
+  - id: f8962.line12d
+    printed: 12(d)
+    label: 'January: monthly maximum premium assistance (subtract (c) from (b), if zero or less, enter -0-)'
+    shown_when: f8962.show_jan_calc
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f8962.line12b
+      take: f8962.line12c
+    cite:
+      doc: f8962
+      locator: p. 1, Part II, Monthly Calculation, "Monthly Calculation"
+  - id: f8962.line12e
+    printed: 12(e)
+    label: 'January: monthly PTC allowed (smaller of (a) or (d))'
+    shown_when: f8962.show_jan_calc
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - f8962.line12a
+      - f8962.line12d
+    cite:
+      doc: f8962
+      locator: p. 1, Part II, Monthly Calculation, "Monthly Calculation"
+  - id: f8962.line12f
+    printed: 12(f)
+    label: 'January: monthly advance payment of PTC (Form(s) 1095-A, column C)'
+    shown_when: f8962.show_jan
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: f1095a
+      field: f1095a.in_c_jan
+    cite:
+      doc: i8962
+      locator: p. 17, Column (f), "If you have more than one Form 1095-A affecting a particular month, add the amounts together
+        for that month and enter the total on the appropriate line on Form 8962, column (f)."
+  - id: f8962.show_feb
+    printed: (helper)
+    label: 'Line 13 is used: line 10 No and coverage in February'
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8962.filing
+        - const: true
+      - op: test
+        eq:
+        - f8962.line10
+        - const: false
+      - op: test
+        any:
+        - op: test
+          gt:
+          - f8962.line13a
+          - const: 0
+        - op: test
+          gt:
+          - f8962.line13b
+          - const: 0
+    cite:
+      doc: i8962
+      locator: p. 17, Column (c), "If columns (a) and (b) of any of lines 12 through 23 are blank, leave column (c) of the
+        corresponding line blank."
+  - id: f8962.show_feb_calc
+    printed: (helper)
+    label: Line 13 is used and you are an applicable taxpayer
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8962.show_feb
+        - const: true
+      - op: test
+        eq:
+        - f8962.applicable
+        - const: true
+    cite:
+      doc: i8962
+      locator: p. 10, "If APTC was paid for any individuals in your tax family, skip lines 7 and 8, and go to line 9."
+  - id: f8962.line13a
+    printed: 13(a)
+    label: 'February: monthly enrollment premiums (Form(s) 1095-A, column A)'
+    shown_when: f8962.show_feb
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: f1095a
+      field: f1095a.a_feb
+    cite: *id002
+  - id: f8962.line13b
+    printed: 13(b)
+    label: 'February: monthly applicable SLCSP premium (Form(s) 1095-A, column B)'
+    shown_when: f8962.show_feb
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: f1095a
+      field: f1095a.b_feb
+      where:
+        op: test
+        eq:
+        - f1095a.b_used
+        - const: true
+    cite:
+      doc: i8962
+      locator: p. 16, Column (b), "Enter the amount from column B of only one Form 1095-A—do not add the amounts from each
+        form."
+  - id: f8962.line13c
+    printed: 13(c)
+    label: 'February: monthly contribution amount (line 8b)'
+    shown_when: f8962.show_feb_calc
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: f8962.line8b
+    cite:
+      doc: i8962
+      locator: p. 17, Column (c), "If columns (a) and (b) of any of lines 12 through 23 are blank, leave column (c) of the
+        corresponding line blank."
+  - id: f8962.line13d
+    printed: 13(d)
+    label: 'February: monthly maximum premium assistance (subtract (c) from (b), if zero or less, enter -0-)'
+    shown_when: f8962.show_feb_calc
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f8962.line13b
+      take: f8962.line13c
+    cite:
+      doc: f8962
+      locator: p. 1, Part II, Monthly Calculation, "Monthly Calculation"
+  - id: f8962.line13e
+    printed: 13(e)
+    label: 'February: monthly PTC allowed (smaller of (a) or (d))'
+    shown_when: f8962.show_feb_calc
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - f8962.line13a
+      - f8962.line13d
+    cite:
+      doc: f8962
+      locator: p. 1, Part II, Monthly Calculation, "Monthly Calculation"
+  - id: f8962.line13f
+    printed: 13(f)
+    label: 'February: monthly advance payment of PTC (Form(s) 1095-A, column C)'
+    shown_when: f8962.show_feb
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: f1095a
+      field: f1095a.in_c_feb
+    cite:
+      doc: i8962
+      locator: p. 17, Column (f), "If you have more than one Form 1095-A affecting a particular month, add the amounts together
+        for that month and enter the total on the appropriate line on Form 8962, column (f)."
+  - id: f8962.show_mar
+    printed: (helper)
+    label: 'Line 14 is used: line 10 No and coverage in March'
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8962.filing
+        - const: true
+      - op: test
+        eq:
+        - f8962.line10
+        - const: false
+      - op: test
+        any:
+        - op: test
+          gt:
+          - f8962.line14a
+          - const: 0
+        - op: test
+          gt:
+          - f8962.line14b
+          - const: 0
+    cite:
+      doc: i8962
+      locator: p. 17, Column (c), "If columns (a) and (b) of any of lines 12 through 23 are blank, leave column (c) of the
+        corresponding line blank."
+  - id: f8962.show_mar_calc
+    printed: (helper)
+    label: Line 14 is used and you are an applicable taxpayer
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8962.show_mar
+        - const: true
+      - op: test
+        eq:
+        - f8962.applicable
+        - const: true
+    cite:
+      doc: i8962
+      locator: p. 10, "If APTC was paid for any individuals in your tax family, skip lines 7 and 8, and go to line 9."
+  - id: f8962.line14a
+    printed: 14(a)
+    label: 'March: monthly enrollment premiums (Form(s) 1095-A, column A)'
+    shown_when: f8962.show_mar
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: f1095a
+      field: f1095a.a_mar
+    cite: *id002
+  - id: f8962.line14b
+    printed: 14(b)
+    label: 'March: monthly applicable SLCSP premium (Form(s) 1095-A, column B)'
+    shown_when: f8962.show_mar
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: f1095a
+      field: f1095a.b_mar
+      where:
+        op: test
+        eq:
+        - f1095a.b_used
+        - const: true
+    cite:
+      doc: i8962
+      locator: p. 16, Column (b), "Enter the amount from column B of only one Form 1095-A—do not add the amounts from each
+        form."
+  - id: f8962.line14c
+    printed: 14(c)
+    label: 'March: monthly contribution amount (line 8b)'
+    shown_when: f8962.show_mar_calc
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: f8962.line8b
+    cite:
+      doc: i8962
+      locator: p. 17, Column (c), "If columns (a) and (b) of any of lines 12 through 23 are blank, leave column (c) of the
+        corresponding line blank."
+  - id: f8962.line14d
+    printed: 14(d)
+    label: 'March: monthly maximum premium assistance (subtract (c) from (b), if zero or less, enter -0-)'
+    shown_when: f8962.show_mar_calc
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f8962.line14b
+      take: f8962.line14c
+    cite:
+      doc: f8962
+      locator: p. 1, Part II, Monthly Calculation, "Monthly Calculation"
+  - id: f8962.line14e
+    printed: 14(e)
+    label: 'March: monthly PTC allowed (smaller of (a) or (d))'
+    shown_when: f8962.show_mar_calc
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - f8962.line14a
+      - f8962.line14d
+    cite:
+      doc: f8962
+      locator: p. 1, Part II, Monthly Calculation, "Monthly Calculation"
+  - id: f8962.line14f
+    printed: 14(f)
+    label: 'March: monthly advance payment of PTC (Form(s) 1095-A, column C)'
+    shown_when: f8962.show_mar
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: f1095a
+      field: f1095a.in_c_mar
+    cite:
+      doc: i8962
+      locator: p. 17, Column (f), "If you have more than one Form 1095-A affecting a particular month, add the amounts together
+        for that month and enter the total on the appropriate line on Form 8962, column (f)."
+  - id: f8962.show_apr
+    printed: (helper)
+    label: 'Line 15 is used: line 10 No and coverage in April'
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8962.filing
+        - const: true
+      - op: test
+        eq:
+        - f8962.line10
+        - const: false
+      - op: test
+        any:
+        - op: test
+          gt:
+          - f8962.line15a
+          - const: 0
+        - op: test
+          gt:
+          - f8962.line15b
+          - const: 0
+    cite:
+      doc: i8962
+      locator: p. 17, Column (c), "If columns (a) and (b) of any of lines 12 through 23 are blank, leave column (c) of the
+        corresponding line blank."
+  - id: f8962.show_apr_calc
+    printed: (helper)
+    label: Line 15 is used and you are an applicable taxpayer
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8962.show_apr
+        - const: true
+      - op: test
+        eq:
+        - f8962.applicable
+        - const: true
+    cite:
+      doc: i8962
+      locator: p. 10, "If APTC was paid for any individuals in your tax family, skip lines 7 and 8, and go to line 9."
+  - id: f8962.line15a
+    printed: 15(a)
+    label: 'April: monthly enrollment premiums (Form(s) 1095-A, column A)'
+    shown_when: f8962.show_apr
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: f1095a
+      field: f1095a.a_apr
+    cite: *id002
+  - id: f8962.line15b
+    printed: 15(b)
+    label: 'April: monthly applicable SLCSP premium (Form(s) 1095-A, column B)'
+    shown_when: f8962.show_apr
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: f1095a
+      field: f1095a.b_apr
+      where:
+        op: test
+        eq:
+        - f1095a.b_used
+        - const: true
+    cite:
+      doc: i8962
+      locator: p. 16, Column (b), "Enter the amount from column B of only one Form 1095-A—do not add the amounts from each
+        form."
+  - id: f8962.line15c
+    printed: 15(c)
+    label: 'April: monthly contribution amount (line 8b)'
+    shown_when: f8962.show_apr_calc
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: f8962.line8b
+    cite:
+      doc: i8962
+      locator: p. 17, Column (c), "If columns (a) and (b) of any of lines 12 through 23 are blank, leave column (c) of the
+        corresponding line blank."
+  - id: f8962.line15d
+    printed: 15(d)
+    label: 'April: monthly maximum premium assistance (subtract (c) from (b), if zero or less, enter -0-)'
+    shown_when: f8962.show_apr_calc
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f8962.line15b
+      take: f8962.line15c
+    cite:
+      doc: f8962
+      locator: p. 1, Part II, Monthly Calculation, "Monthly Calculation"
+  - id: f8962.line15e
+    printed: 15(e)
+    label: 'April: monthly PTC allowed (smaller of (a) or (d))'
+    shown_when: f8962.show_apr_calc
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - f8962.line15a
+      - f8962.line15d
+    cite:
+      doc: f8962
+      locator: p. 1, Part II, Monthly Calculation, "Monthly Calculation"
+  - id: f8962.line15f
+    printed: 15(f)
+    label: 'April: monthly advance payment of PTC (Form(s) 1095-A, column C)'
+    shown_when: f8962.show_apr
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: f1095a
+      field: f1095a.in_c_apr
+    cite:
+      doc: i8962
+      locator: p. 17, Column (f), "If you have more than one Form 1095-A affecting a particular month, add the amounts together
+        for that month and enter the total on the appropriate line on Form 8962, column (f)."
+  - id: f8962.show_may
+    printed: (helper)
+    label: 'Line 16 is used: line 10 No and coverage in May'
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8962.filing
+        - const: true
+      - op: test
+        eq:
+        - f8962.line10
+        - const: false
+      - op: test
+        any:
+        - op: test
+          gt:
+          - f8962.line16a
+          - const: 0
+        - op: test
+          gt:
+          - f8962.line16b
+          - const: 0
+    cite:
+      doc: i8962
+      locator: p. 17, Column (c), "If columns (a) and (b) of any of lines 12 through 23 are blank, leave column (c) of the
+        corresponding line blank."
+  - id: f8962.show_may_calc
+    printed: (helper)
+    label: Line 16 is used and you are an applicable taxpayer
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8962.show_may
+        - const: true
+      - op: test
+        eq:
+        - f8962.applicable
+        - const: true
+    cite:
+      doc: i8962
+      locator: p. 10, "If APTC was paid for any individuals in your tax family, skip lines 7 and 8, and go to line 9."
+  - id: f8962.line16a
+    printed: 16(a)
+    label: 'May: monthly enrollment premiums (Form(s) 1095-A, column A)'
+    shown_when: f8962.show_may
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: f1095a
+      field: f1095a.a_may
+    cite: *id002
+  - id: f8962.line16b
+    printed: 16(b)
+    label: 'May: monthly applicable SLCSP premium (Form(s) 1095-A, column B)'
+    shown_when: f8962.show_may
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: f1095a
+      field: f1095a.b_may
+      where:
+        op: test
+        eq:
+        - f1095a.b_used
+        - const: true
+    cite:
+      doc: i8962
+      locator: p. 16, Column (b), "Enter the amount from column B of only one Form 1095-A—do not add the amounts from each
+        form."
+  - id: f8962.line16c
+    printed: 16(c)
+    label: 'May: monthly contribution amount (line 8b)'
+    shown_when: f8962.show_may_calc
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: f8962.line8b
+    cite:
+      doc: i8962
+      locator: p. 17, Column (c), "If columns (a) and (b) of any of lines 12 through 23 are blank, leave column (c) of the
+        corresponding line blank."
+  - id: f8962.line16d
+    printed: 16(d)
+    label: 'May: monthly maximum premium assistance (subtract (c) from (b), if zero or less, enter -0-)'
+    shown_when: f8962.show_may_calc
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f8962.line16b
+      take: f8962.line16c
+    cite:
+      doc: f8962
+      locator: p. 1, Part II, Monthly Calculation, "Monthly Calculation"
+  - id: f8962.line16e
+    printed: 16(e)
+    label: 'May: monthly PTC allowed (smaller of (a) or (d))'
+    shown_when: f8962.show_may_calc
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - f8962.line16a
+      - f8962.line16d
+    cite:
+      doc: f8962
+      locator: p. 1, Part II, Monthly Calculation, "Monthly Calculation"
+  - id: f8962.line16f
+    printed: 16(f)
+    label: 'May: monthly advance payment of PTC (Form(s) 1095-A, column C)'
+    shown_when: f8962.show_may
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: f1095a
+      field: f1095a.in_c_may
+    cite:
+      doc: i8962
+      locator: p. 17, Column (f), "If you have more than one Form 1095-A affecting a particular month, add the amounts together
+        for that month and enter the total on the appropriate line on Form 8962, column (f)."
+  - id: f8962.show_jun
+    printed: (helper)
+    label: 'Line 17 is used: line 10 No and coverage in June'
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8962.filing
+        - const: true
+      - op: test
+        eq:
+        - f8962.line10
+        - const: false
+      - op: test
+        any:
+        - op: test
+          gt:
+          - f8962.line17a
+          - const: 0
+        - op: test
+          gt:
+          - f8962.line17b
+          - const: 0
+    cite:
+      doc: i8962
+      locator: p. 17, Column (c), "If columns (a) and (b) of any of lines 12 through 23 are blank, leave column (c) of the
+        corresponding line blank."
+  - id: f8962.show_jun_calc
+    printed: (helper)
+    label: Line 17 is used and you are an applicable taxpayer
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8962.show_jun
+        - const: true
+      - op: test
+        eq:
+        - f8962.applicable
+        - const: true
+    cite:
+      doc: i8962
+      locator: p. 10, "If APTC was paid for any individuals in your tax family, skip lines 7 and 8, and go to line 9."
+  - id: f8962.line17a
+    printed: 17(a)
+    label: 'June: monthly enrollment premiums (Form(s) 1095-A, column A)'
+    shown_when: f8962.show_jun
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: f1095a
+      field: f1095a.a_jun
+    cite: *id002
+  - id: f8962.line17b
+    printed: 17(b)
+    label: 'June: monthly applicable SLCSP premium (Form(s) 1095-A, column B)'
+    shown_when: f8962.show_jun
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: f1095a
+      field: f1095a.b_jun
+      where:
+        op: test
+        eq:
+        - f1095a.b_used
+        - const: true
+    cite:
+      doc: i8962
+      locator: p. 16, Column (b), "Enter the amount from column B of only one Form 1095-A—do not add the amounts from each
+        form."
+  - id: f8962.line17c
+    printed: 17(c)
+    label: 'June: monthly contribution amount (line 8b)'
+    shown_when: f8962.show_jun_calc
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: f8962.line8b
+    cite:
+      doc: i8962
+      locator: p. 17, Column (c), "If columns (a) and (b) of any of lines 12 through 23 are blank, leave column (c) of the
+        corresponding line blank."
+  - id: f8962.line17d
+    printed: 17(d)
+    label: 'June: monthly maximum premium assistance (subtract (c) from (b), if zero or less, enter -0-)'
+    shown_when: f8962.show_jun_calc
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f8962.line17b
+      take: f8962.line17c
+    cite:
+      doc: f8962
+      locator: p. 1, Part II, Monthly Calculation, "Monthly Calculation"
+  - id: f8962.line17e
+    printed: 17(e)
+    label: 'June: monthly PTC allowed (smaller of (a) or (d))'
+    shown_when: f8962.show_jun_calc
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - f8962.line17a
+      - f8962.line17d
+    cite:
+      doc: f8962
+      locator: p. 1, Part II, Monthly Calculation, "Monthly Calculation"
+  - id: f8962.line17f
+    printed: 17(f)
+    label: 'June: monthly advance payment of PTC (Form(s) 1095-A, column C)'
+    shown_when: f8962.show_jun
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: f1095a
+      field: f1095a.in_c_jun
+    cite:
+      doc: i8962
+      locator: p. 17, Column (f), "If you have more than one Form 1095-A affecting a particular month, add the amounts together
+        for that month and enter the total on the appropriate line on Form 8962, column (f)."
+  - id: f8962.show_jul
+    printed: (helper)
+    label: 'Line 18 is used: line 10 No and coverage in July'
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8962.filing
+        - const: true
+      - op: test
+        eq:
+        - f8962.line10
+        - const: false
+      - op: test
+        any:
+        - op: test
+          gt:
+          - f8962.line18a
+          - const: 0
+        - op: test
+          gt:
+          - f8962.line18b
+          - const: 0
+    cite:
+      doc: i8962
+      locator: p. 17, Column (c), "If columns (a) and (b) of any of lines 12 through 23 are blank, leave column (c) of the
+        corresponding line blank."
+  - id: f8962.show_jul_calc
+    printed: (helper)
+    label: Line 18 is used and you are an applicable taxpayer
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8962.show_jul
+        - const: true
+      - op: test
+        eq:
+        - f8962.applicable
+        - const: true
+    cite:
+      doc: i8962
+      locator: p. 10, "If APTC was paid for any individuals in your tax family, skip lines 7 and 8, and go to line 9."
+  - id: f8962.line18a
+    printed: 18(a)
+    label: 'July: monthly enrollment premiums (Form(s) 1095-A, column A)'
+    shown_when: f8962.show_jul
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: f1095a
+      field: f1095a.a_jul
+    cite: *id002
+  - id: f8962.line18b
+    printed: 18(b)
+    label: 'July: monthly applicable SLCSP premium (Form(s) 1095-A, column B)'
+    shown_when: f8962.show_jul
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: f1095a
+      field: f1095a.b_jul
+      where:
+        op: test
+        eq:
+        - f1095a.b_used
+        - const: true
+    cite:
+      doc: i8962
+      locator: p. 16, Column (b), "Enter the amount from column B of only one Form 1095-A—do not add the amounts from each
+        form."
+  - id: f8962.line18c
+    printed: 18(c)
+    label: 'July: monthly contribution amount (line 8b)'
+    shown_when: f8962.show_jul_calc
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: f8962.line8b
+    cite:
+      doc: i8962
+      locator: p. 17, Column (c), "If columns (a) and (b) of any of lines 12 through 23 are blank, leave column (c) of the
+        corresponding line blank."
+  - id: f8962.line18d
+    printed: 18(d)
+    label: 'July: monthly maximum premium assistance (subtract (c) from (b), if zero or less, enter -0-)'
+    shown_when: f8962.show_jul_calc
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f8962.line18b
+      take: f8962.line18c
+    cite:
+      doc: f8962
+      locator: p. 1, Part II, Monthly Calculation, "Monthly Calculation"
+  - id: f8962.line18e
+    printed: 18(e)
+    label: 'July: monthly PTC allowed (smaller of (a) or (d))'
+    shown_when: f8962.show_jul_calc
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - f8962.line18a
+      - f8962.line18d
+    cite:
+      doc: f8962
+      locator: p. 1, Part II, Monthly Calculation, "Monthly Calculation"
+  - id: f8962.line18f
+    printed: 18(f)
+    label: 'July: monthly advance payment of PTC (Form(s) 1095-A, column C)'
+    shown_when: f8962.show_jul
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: f1095a
+      field: f1095a.in_c_jul
+    cite:
+      doc: i8962
+      locator: p. 17, Column (f), "If you have more than one Form 1095-A affecting a particular month, add the amounts together
+        for that month and enter the total on the appropriate line on Form 8962, column (f)."
+  - id: f8962.show_aug
+    printed: (helper)
+    label: 'Line 19 is used: line 10 No and coverage in August'
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8962.filing
+        - const: true
+      - op: test
+        eq:
+        - f8962.line10
+        - const: false
+      - op: test
+        any:
+        - op: test
+          gt:
+          - f8962.line19a
+          - const: 0
+        - op: test
+          gt:
+          - f8962.line19b
+          - const: 0
+    cite:
+      doc: i8962
+      locator: p. 17, Column (c), "If columns (a) and (b) of any of lines 12 through 23 are blank, leave column (c) of the
+        corresponding line blank."
+  - id: f8962.show_aug_calc
+    printed: (helper)
+    label: Line 19 is used and you are an applicable taxpayer
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8962.show_aug
+        - const: true
+      - op: test
+        eq:
+        - f8962.applicable
+        - const: true
+    cite:
+      doc: i8962
+      locator: p. 10, "If APTC was paid for any individuals in your tax family, skip lines 7 and 8, and go to line 9."
+  - id: f8962.line19a
+    printed: 19(a)
+    label: 'August: monthly enrollment premiums (Form(s) 1095-A, column A)'
+    shown_when: f8962.show_aug
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: f1095a
+      field: f1095a.a_aug
+    cite: *id002
+  - id: f8962.line19b
+    printed: 19(b)
+    label: 'August: monthly applicable SLCSP premium (Form(s) 1095-A, column B)'
+    shown_when: f8962.show_aug
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: f1095a
+      field: f1095a.b_aug
+      where:
+        op: test
+        eq:
+        - f1095a.b_used
+        - const: true
+    cite:
+      doc: i8962
+      locator: p. 16, Column (b), "Enter the amount from column B of only one Form 1095-A—do not add the amounts from each
+        form."
+  - id: f8962.line19c
+    printed: 19(c)
+    label: 'August: monthly contribution amount (line 8b)'
+    shown_when: f8962.show_aug_calc
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: f8962.line8b
+    cite:
+      doc: i8962
+      locator: p. 17, Column (c), "If columns (a) and (b) of any of lines 12 through 23 are blank, leave column (c) of the
+        corresponding line blank."
+  - id: f8962.line19d
+    printed: 19(d)
+    label: 'August: monthly maximum premium assistance (subtract (c) from (b), if zero or less, enter -0-)'
+    shown_when: f8962.show_aug_calc
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f8962.line19b
+      take: f8962.line19c
+    cite:
+      doc: f8962
+      locator: p. 1, Part II, Monthly Calculation, "Monthly Calculation"
+  - id: f8962.line19e
+    printed: 19(e)
+    label: 'August: monthly PTC allowed (smaller of (a) or (d))'
+    shown_when: f8962.show_aug_calc
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - f8962.line19a
+      - f8962.line19d
+    cite:
+      doc: f8962
+      locator: p. 1, Part II, Monthly Calculation, "Monthly Calculation"
+  - id: f8962.line19f
+    printed: 19(f)
+    label: 'August: monthly advance payment of PTC (Form(s) 1095-A, column C)'
+    shown_when: f8962.show_aug
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: f1095a
+      field: f1095a.in_c_aug
+    cite:
+      doc: i8962
+      locator: p. 17, Column (f), "If you have more than one Form 1095-A affecting a particular month, add the amounts together
+        for that month and enter the total on the appropriate line on Form 8962, column (f)."
+  - id: f8962.show_sep
+    printed: (helper)
+    label: 'Line 20 is used: line 10 No and coverage in September'
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8962.filing
+        - const: true
+      - op: test
+        eq:
+        - f8962.line10
+        - const: false
+      - op: test
+        any:
+        - op: test
+          gt:
+          - f8962.line20a
+          - const: 0
+        - op: test
+          gt:
+          - f8962.line20b
+          - const: 0
+    cite:
+      doc: i8962
+      locator: p. 17, Column (c), "If columns (a) and (b) of any of lines 12 through 23 are blank, leave column (c) of the
+        corresponding line blank."
+  - id: f8962.show_sep_calc
+    printed: (helper)
+    label: Line 20 is used and you are an applicable taxpayer
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8962.show_sep
+        - const: true
+      - op: test
+        eq:
+        - f8962.applicable
+        - const: true
+    cite:
+      doc: i8962
+      locator: p. 10, "If APTC was paid for any individuals in your tax family, skip lines 7 and 8, and go to line 9."
+  - id: f8962.line20a
+    printed: 20(a)
+    label: 'September: monthly enrollment premiums (Form(s) 1095-A, column A)'
+    shown_when: f8962.show_sep
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: f1095a
+      field: f1095a.a_sep
+    cite: *id002
+  - id: f8962.line20b
+    printed: 20(b)
+    label: 'September: monthly applicable SLCSP premium (Form(s) 1095-A, column B)'
+    shown_when: f8962.show_sep
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: f1095a
+      field: f1095a.b_sep
+      where:
+        op: test
+        eq:
+        - f1095a.b_used
+        - const: true
+    cite:
+      doc: i8962
+      locator: p. 16, Column (b), "Enter the amount from column B of only one Form 1095-A—do not add the amounts from each
+        form."
+  - id: f8962.line20c
+    printed: 20(c)
+    label: 'September: monthly contribution amount (line 8b)'
+    shown_when: f8962.show_sep_calc
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: f8962.line8b
+    cite:
+      doc: i8962
+      locator: p. 17, Column (c), "If columns (a) and (b) of any of lines 12 through 23 are blank, leave column (c) of the
+        corresponding line blank."
+  - id: f8962.line20d
+    printed: 20(d)
+    label: 'September: monthly maximum premium assistance (subtract (c) from (b), if zero or less, enter -0-)'
+    shown_when: f8962.show_sep_calc
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f8962.line20b
+      take: f8962.line20c
+    cite:
+      doc: f8962
+      locator: p. 1, Part II, Monthly Calculation, "Monthly Calculation"
+  - id: f8962.line20e
+    printed: 20(e)
+    label: 'September: monthly PTC allowed (smaller of (a) or (d))'
+    shown_when: f8962.show_sep_calc
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - f8962.line20a
+      - f8962.line20d
+    cite:
+      doc: f8962
+      locator: p. 1, Part II, Monthly Calculation, "Monthly Calculation"
+  - id: f8962.line20f
+    printed: 20(f)
+    label: 'September: monthly advance payment of PTC (Form(s) 1095-A, column C)'
+    shown_when: f8962.show_sep
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: f1095a
+      field: f1095a.in_c_sep
+    cite:
+      doc: i8962
+      locator: p. 17, Column (f), "If you have more than one Form 1095-A affecting a particular month, add the amounts together
+        for that month and enter the total on the appropriate line on Form 8962, column (f)."
+  - id: f8962.show_oct
+    printed: (helper)
+    label: 'Line 21 is used: line 10 No and coverage in October'
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8962.filing
+        - const: true
+      - op: test
+        eq:
+        - f8962.line10
+        - const: false
+      - op: test
+        any:
+        - op: test
+          gt:
+          - f8962.line21a
+          - const: 0
+        - op: test
+          gt:
+          - f8962.line21b
+          - const: 0
+    cite:
+      doc: i8962
+      locator: p. 17, Column (c), "If columns (a) and (b) of any of lines 12 through 23 are blank, leave column (c) of the
+        corresponding line blank."
+  - id: f8962.show_oct_calc
+    printed: (helper)
+    label: Line 21 is used and you are an applicable taxpayer
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8962.show_oct
+        - const: true
+      - op: test
+        eq:
+        - f8962.applicable
+        - const: true
+    cite:
+      doc: i8962
+      locator: p. 10, "If APTC was paid for any individuals in your tax family, skip lines 7 and 8, and go to line 9."
+  - id: f8962.line21a
+    printed: 21(a)
+    label: 'October: monthly enrollment premiums (Form(s) 1095-A, column A)'
+    shown_when: f8962.show_oct
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: f1095a
+      field: f1095a.a_oct
+    cite: *id002
+  - id: f8962.line21b
+    printed: 21(b)
+    label: 'October: monthly applicable SLCSP premium (Form(s) 1095-A, column B)'
+    shown_when: f8962.show_oct
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: f1095a
+      field: f1095a.b_oct
+      where:
+        op: test
+        eq:
+        - f1095a.b_used
+        - const: true
+    cite:
+      doc: i8962
+      locator: p. 16, Column (b), "Enter the amount from column B of only one Form 1095-A—do not add the amounts from each
+        form."
+  - id: f8962.line21c
+    printed: 21(c)
+    label: 'October: monthly contribution amount (line 8b)'
+    shown_when: f8962.show_oct_calc
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: f8962.line8b
+    cite:
+      doc: i8962
+      locator: p. 17, Column (c), "If columns (a) and (b) of any of lines 12 through 23 are blank, leave column (c) of the
+        corresponding line blank."
+  - id: f8962.line21d
+    printed: 21(d)
+    label: 'October: monthly maximum premium assistance (subtract (c) from (b), if zero or less, enter -0-)'
+    shown_when: f8962.show_oct_calc
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f8962.line21b
+      take: f8962.line21c
+    cite:
+      doc: f8962
+      locator: p. 1, Part II, Monthly Calculation, "Monthly Calculation"
+  - id: f8962.line21e
+    printed: 21(e)
+    label: 'October: monthly PTC allowed (smaller of (a) or (d))'
+    shown_when: f8962.show_oct_calc
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - f8962.line21a
+      - f8962.line21d
+    cite:
+      doc: f8962
+      locator: p. 1, Part II, Monthly Calculation, "Monthly Calculation"
+  - id: f8962.line21f
+    printed: 21(f)
+    label: 'October: monthly advance payment of PTC (Form(s) 1095-A, column C)'
+    shown_when: f8962.show_oct
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: f1095a
+      field: f1095a.in_c_oct
+    cite:
+      doc: i8962
+      locator: p. 17, Column (f), "If you have more than one Form 1095-A affecting a particular month, add the amounts together
+        for that month and enter the total on the appropriate line on Form 8962, column (f)."
+  - id: f8962.show_nov
+    printed: (helper)
+    label: 'Line 22 is used: line 10 No and coverage in November'
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8962.filing
+        - const: true
+      - op: test
+        eq:
+        - f8962.line10
+        - const: false
+      - op: test
+        any:
+        - op: test
+          gt:
+          - f8962.line22a
+          - const: 0
+        - op: test
+          gt:
+          - f8962.line22b
+          - const: 0
+    cite:
+      doc: i8962
+      locator: p. 17, Column (c), "If columns (a) and (b) of any of lines 12 through 23 are blank, leave column (c) of the
+        corresponding line blank."
+  - id: f8962.show_nov_calc
+    printed: (helper)
+    label: Line 22 is used and you are an applicable taxpayer
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8962.show_nov
+        - const: true
+      - op: test
+        eq:
+        - f8962.applicable
+        - const: true
+    cite:
+      doc: i8962
+      locator: p. 10, "If APTC was paid for any individuals in your tax family, skip lines 7 and 8, and go to line 9."
+  - id: f8962.line22a
+    printed: 22(a)
+    label: 'November: monthly enrollment premiums (Form(s) 1095-A, column A)'
+    shown_when: f8962.show_nov
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: f1095a
+      field: f1095a.a_nov
+    cite: *id002
+  - id: f8962.line22b
+    printed: 22(b)
+    label: 'November: monthly applicable SLCSP premium (Form(s) 1095-A, column B)'
+    shown_when: f8962.show_nov
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: f1095a
+      field: f1095a.b_nov
+      where:
+        op: test
+        eq:
+        - f1095a.b_used
+        - const: true
+    cite:
+      doc: i8962
+      locator: p. 16, Column (b), "Enter the amount from column B of only one Form 1095-A—do not add the amounts from each
+        form."
+  - id: f8962.line22c
+    printed: 22(c)
+    label: 'November: monthly contribution amount (line 8b)'
+    shown_when: f8962.show_nov_calc
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: f8962.line8b
+    cite:
+      doc: i8962
+      locator: p. 17, Column (c), "If columns (a) and (b) of any of lines 12 through 23 are blank, leave column (c) of the
+        corresponding line blank."
+  - id: f8962.line22d
+    printed: 22(d)
+    label: 'November: monthly maximum premium assistance (subtract (c) from (b), if zero or less, enter -0-)'
+    shown_when: f8962.show_nov_calc
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f8962.line22b
+      take: f8962.line22c
+    cite:
+      doc: f8962
+      locator: p. 1, Part II, Monthly Calculation, "Monthly Calculation"
+  - id: f8962.line22e
+    printed: 22(e)
+    label: 'November: monthly PTC allowed (smaller of (a) or (d))'
+    shown_when: f8962.show_nov_calc
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - f8962.line22a
+      - f8962.line22d
+    cite:
+      doc: f8962
+      locator: p. 1, Part II, Monthly Calculation, "Monthly Calculation"
+  - id: f8962.line22f
+    printed: 22(f)
+    label: 'November: monthly advance payment of PTC (Form(s) 1095-A, column C)'
+    shown_when: f8962.show_nov
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: f1095a
+      field: f1095a.in_c_nov
+    cite:
+      doc: i8962
+      locator: p. 17, Column (f), "If you have more than one Form 1095-A affecting a particular month, add the amounts together
+        for that month and enter the total on the appropriate line on Form 8962, column (f)."
+  - id: f8962.show_dec
+    printed: (helper)
+    label: 'Line 23 is used: line 10 No and coverage in December'
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8962.filing
+        - const: true
+      - op: test
+        eq:
+        - f8962.line10
+        - const: false
+      - op: test
+        any:
+        - op: test
+          gt:
+          - f8962.line23a
+          - const: 0
+        - op: test
+          gt:
+          - f8962.line23b
+          - const: 0
+    cite:
+      doc: i8962
+      locator: p. 17, Column (c), "If columns (a) and (b) of any of lines 12 through 23 are blank, leave column (c) of the
+        corresponding line blank."
+  - id: f8962.show_dec_calc
+    printed: (helper)
+    label: Line 23 is used and you are an applicable taxpayer
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8962.show_dec
+        - const: true
+      - op: test
+        eq:
+        - f8962.applicable
+        - const: true
+    cite:
+      doc: i8962
+      locator: p. 10, "If APTC was paid for any individuals in your tax family, skip lines 7 and 8, and go to line 9."
+  - id: f8962.line23a
+    printed: 23(a)
+    label: 'December: monthly enrollment premiums (Form(s) 1095-A, column A)'
+    shown_when: f8962.show_dec
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: f1095a
+      field: f1095a.a_dec
+    cite: *id002
+  - id: f8962.line23b
+    printed: 23(b)
+    label: 'December: monthly applicable SLCSP premium (Form(s) 1095-A, column B)'
+    shown_when: f8962.show_dec
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: f1095a
+      field: f1095a.b_dec
+      where:
+        op: test
+        eq:
+        - f1095a.b_used
+        - const: true
+    cite:
+      doc: i8962
+      locator: p. 16, Column (b), "Enter the amount from column B of only one Form 1095-A—do not add the amounts from each
+        form."
+  - id: f8962.line23c
+    printed: 23(c)
+    label: 'December: monthly contribution amount (line 8b)'
+    shown_when: f8962.show_dec_calc
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: f8962.line8b
+    cite:
+      doc: i8962
+      locator: p. 17, Column (c), "If columns (a) and (b) of any of lines 12 through 23 are blank, leave column (c) of the
+        corresponding line blank."
+  - id: f8962.line23d
+    printed: 23(d)
+    label: 'December: monthly maximum premium assistance (subtract (c) from (b), if zero or less, enter -0-)'
+    shown_when: f8962.show_dec_calc
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f8962.line23b
+      take: f8962.line23c
+    cite:
+      doc: f8962
+      locator: p. 1, Part II, Monthly Calculation, "Monthly Calculation"
+  - id: f8962.line23e
+    printed: 23(e)
+    label: 'December: monthly PTC allowed (smaller of (a) or (d))'
+    shown_when: f8962.show_dec_calc
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - f8962.line23a
+      - f8962.line23d
+    cite:
+      doc: f8962
+      locator: p. 1, Part II, Monthly Calculation, "Monthly Calculation"
+  - id: f8962.line23f
+    printed: 23(f)
+    label: 'December: monthly advance payment of PTC (Form(s) 1095-A, column C)'
+    shown_when: f8962.show_dec
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: f1095a
+      field: f1095a.in_c_dec
+    cite:
+      doc: i8962
+      locator: p. 17, Column (f), "If you have more than one Form 1095-A affecting a particular month, add the amounts together
+        for that month and enter the total on the appropriate line on Form 8962, column (f)."
+  - id: f8962.monthly_e
+    printed: (helper)
+    label: Lines 12 through 23, column (e), added
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - f8962.line12e
+      - f8962.line13e
+      - f8962.line14e
+      - f8962.line15e
+      - f8962.line16e
+      - f8962.line17e
+      - f8962.line18e
+      - f8962.line19e
+      - f8962.line20e
+      - f8962.line21e
+      - f8962.line22e
+      - f8962.line23e
+    cite:
+      doc: f8962
+      locator: p. 1, Part II, line 24, "Total PTC. Enter the amount from line 11, column (e), or add lines 12 through 23,
+        column (e), and enter the total here"
+  - id: f8962.monthly_f
+    printed: (helper)
+    label: Lines 12 through 23, column (f), added
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - f8962.line12f
+      - f8962.line13f
+      - f8962.line14f
+      - f8962.line15f
+      - f8962.line16f
+      - f8962.line17f
+      - f8962.line18f
+      - f8962.line19f
+      - f8962.line20f
+      - f8962.line21f
+      - f8962.line22f
+      - f8962.line23f
+    cite:
+      doc: f8962
+      locator: p. 1, Part II, line 25, "Advance payment of PTC. Enter the amount from line 11, column (f), or add lines 12
+        through 23, column (f), and enter the total here"
+  - id: f8962.allowed
+    printed: (helper)
+    label: 'The PTC allowed: line 11, column (e), or lines 12 through 23, column (e), added'
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8962.line10
+          - const: true
+        then: f8962.line11e
+      - guard:
+          op: test
+          eq:
+          - f8962.line10
+          - const: false
+        then: f8962.monthly_e
+    cite:
+      doc: f8962
+      locator: p. 1, Part II, line 24, "Total PTC. Enter the amount from line 11, column (e), or add lines 12 through 23,
+        column (e), and enter the total here"
+  - id: f8962.line24
+    printed: '24'
+    label: Total PTC
+    shown_when: f8962.filing
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8962.applicable
+          - const: false
+        then: f8962.zero
+      - guard:
+          op: test
+          eq:
+          - f8962.applicable
+          - const: true
+        then: f8962.allowed
+    cite:
+      doc: f8962
+      locator: p. 1, Part II, line 24, "Total PTC. Enter the amount from line 11, column (e), or add lines 12 through 23,
+        column (e), and enter the total here"
+    ambiguity: amb.2025.ptc_not_applicable
+    refuses: &id003
+    - when: f8962.alloc
+      form: Form 8962 Part IV, Allocation of Policy Amounts
+      remedy: A policy shared with another tax family, and a divorce or separation in 2025, need an allocation of the policy
+        amounts (Part IV), which this tool does not prepare.
+      cite:
+        doc: i8962
+        locator: p. 12, Allocating policy amounts, "The policy covered at least one individual in your tax family and at least
+          one individual in another tax family"
+    - when: f8962.marriage
+      form: Form 8962 Part V, Alternative Calculation for Year of Marriage
+      remedy: A 2025 marriage with Marketplace coverage before the first full month of marriage needs the year-of-marriage
+        rules (Part V and Pub. 974), which this tool does not prepare.
+      cite:
+        doc: i8962
+        locator: p. 13, Table 4, "Was anyone in your tax family enrolled in a qualified health plan before your first full
+          month of marriage?"
+    - when: f8962.other
+      form: Form 8962 with coverage outside this tool
+      remedy: Coverage of someone not lawfully present, a QSEHRA or individual coverage HRA, unpaid premiums and advance payments
+        for someone in no tax family need Pub. 974 rules this tool does not prepare.
+      cite:
+        doc: i8962
+        locator: p. 6, "Individuals who are not lawfully present in the United States are not eligible for the PTC for their
+          coverage in a qualified health plan through a Marketplace."
+    - when: f8962.alien_branch
+      form: Form 8962 for a lawfully present alien below 100% of the federal poverty line
+      remedy: A lawfully present alien not eligible for Medicaid because of immigration status, with household income below
+        100% of the poverty line, can be an applicable taxpayer, which this tool does not prepare.
+      cite:
+        doc: i8962
+        locator: p. 9, Alien lawfully present in the United States, "Certain aliens with household income below 100% of the
+          federal poverty line are not eligible for Medicaid because of their immigration status."
+    - when: f8962.two_counted
+      form: Form 8962, line 11 or 12 to 23, column (b)
+      remedy: For a month that several counted Forms 1095-A from one state cover, enter column B from only one of them. Forms
+        that share only some of their months need month-by-month choices this tool does not take.
+      cite:
+        doc: i8962
+        locator: p. 15, Column (b), "Enter the amount from column B of only one Form 1095-A—do not add the amounts from each
+          form."
+  - id: f8962.line25
+    printed: '25'
+    label: Advance payment of PTC
+    shown_when: f8962.filing
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8962.line10
+          - const: true
+        then: f8962.line11f
+      - guard:
+          op: test
+          eq:
+          - f8962.line10
+          - const: false
+        then: f8962.monthly_f
+    cite:
+      doc: f8962
+      locator: p. 1, Part II, line 25, "Advance payment of PTC. Enter the amount from line 11, column (f), or add lines 12
+        through 23, column (f), and enter the total here"
+    refuses: *id003
+  - id: f8962.net
+    printed: (helper)
+    label: Form 8962 completed past line 5 and line 24 is at least line 25 (line 26 is used)
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8962.filing
+        - const: true
+      - op: test
+        ge:
+        - f8962.line24
+        - f8962.line25
+    cite:
+      doc: f8962
+      locator: p. 1, Part II, line 26, "If line 24 equals line 25, enter -0-. Stop here. If line 25 is greater than line 24,
+        leave this line blank and continue to line 27"
+  - id: f8962.line26
+    printed: '26'
+    label: Net PTC (to Schedule 3, line 9)
+    shown_when: f8962.net
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f8962.line24
+      take: f8962.line25
+    cite:
+      doc: f8962
+      locator: p. 1, Part II, line 26, "Net PTC. If line 24 is greater than line 25, subtract line 25 from line 24. Enter
+        the difference here and on Schedule 3 (Form 1040), line 9."
+  - id: f8962.excess
+    printed: (helper)
+    label: Form 8962 completed past line 5 and line 25 is greater than line 24 (Part III is used)
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8962.filing
+        - const: true
+      - op: test
+        gt:
+        - f8962.line25
+        - f8962.line24
+    cite:
+      doc: f8962
+      locator: p. 1, Part III, line 27, "Excess advance payment of PTC. If line 25 is greater than line 24, subtract line
+        24 from line 25. Enter the difference here"
+  - id: f8962.line27
+    printed: '27'
+    label: Excess advance payment of PTC
+    shown_when: f8962.excess
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f8962.line25
+      take: f8962.line24
+    cite:
+      doc: f8962
+      locator: p. 1, Part III, line 27, "Excess advance payment of PTC. If line 25 is greater than line 24, subtract line
+        24 from line 25. Enter the difference here"
+  - id: f8962.repay_200
+    printed: (helper)
+    label: Table 5 limitation, line 5 below 200
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: ptc.repay_200
+    cite:
+      doc: i8962
+      locator: p. 18, Line 28, "The excess APTC you must repay may be limited to the amounts in Table 5."
+  - id: f8962.repay_300
+    printed: (helper)
+    label: Table 5 limitation, line 5 below 300
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: ptc.repay_300
+    cite:
+      doc: i8962
+      locator: p. 18, Line 28, "The excess APTC you must repay may be limited to the amounts in Table 5."
+  - id: f8962.repay_400
+    printed: (helper)
+    label: Table 5 limitation, line 5 below 400
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: ptc.repay_400
+    cite:
+      doc: i8962
+      locator: p. 18, Line 28, "The excess APTC you must repay may be limited to the amounts in Table 5."
+  - id: f8962.show_28
+    printed: (helper)
+    label: Line 28 is used (Part III, and line 5 below 400)
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8962.excess
+        - const: true
+      - op: test
+        lt:
+        - f8962.line5
+        - const: 400
+          type: Count
+    cite:
+      doc: i8962
+      locator: p. 18, Line 28, "If your entry on Form 8962, line 5, is 400 or more, there is no repayment limitation."
+  - id: f8962.line28
+    printed: '28'
+    label: Repayment limitation (Table 5)
+    shown_when: f8962.show_28
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          all:
+          - op: test
+            ge:
+            - f8962.line5
+            - const: 0
+              type: Count
+          - op: test
+            lt:
+            - f8962.line5
+            - const: 200
+              type: Count
+        then: f8962.repay_200
+      - guard:
+          op: test
+          all:
+          - op: test
+            ge:
+            - f8962.line5
+            - const: 200
+              type: Count
+          - op: test
+            lt:
+            - f8962.line5
+            - const: 300
+              type: Count
+        then: f8962.repay_300
+      - guard:
+          op: test
+          all:
+          - op: test
+            ge:
+            - f8962.line5
+            - const: 300
+              type: Count
+          - op: test
+            lt:
+            - f8962.line5
+            - const: 400
+              type: Count
+        then: f8962.repay_400
+      - guard:
+          op: test
+          ge:
+          - f8962.line5
+          - const: 400
+            type: Count
+        then: f8962.line27
+    cite:
+      doc: i8962
+      locator: p. 18, Line 28, "The excess APTC you must repay may be limited to the amounts in Table 5.", "Leave line 28
+        blank and enter the amount from line 27 on line 29."
+  - id: f8962.line29
+    printed: '29'
+    label: Excess advance PTC repayment (to Schedule 2, line 1a)
+    shown_when: f8962.excess
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - f8962.line27
+      - f8962.line28
+    cite:
+      doc: f8962
+      locator: p. 1, Part III, line 29, "Excess advance PTC repayment. Enter the smaller of line 27 or line 28 here and on
+        Schedule 2 (Form 1040), line 1a"

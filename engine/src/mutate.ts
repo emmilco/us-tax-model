@@ -103,6 +103,7 @@ export function mutations(data: CanonicalData): Mutation[] {
       if (expr.op === "round") refs.push(expr.of);
       if (expr.op === "multiply_count") refs.push(expr.amount, expr.count);
       if (expr.op === "prorate") refs.push(expr.amount, expr.part);
+      if (expr.op === "percent_floor") refs.push(expr.part);
       if (expr.op === "keyed_lookup") refs.push(...expr.keys);
       if (expr.op === "rate_lookup") refs.push(expr.key, ...(expr.status ? [expr.status] : []));
       if (expr.op === "copy" && typeof expr.from === "string") refs.push(expr.from);

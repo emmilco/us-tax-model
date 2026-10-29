@@ -1,5 +1,8 @@
 # Stage 18 (the premium tax credit): decision batch for the owner
 
+> **Owner's answer (2026-10-28): all recommended.** D1 to D9 are accepted as recommended, with the items under
+> "Settled by the evidence".
+
 Prepared on 2026-10-28 from `stage18-premium-tax-credit.md` (the premise map, 2026-10-22) and
 `stage18-premium-tax-credit.verification.md` (its adversarial check, at 1c465c2), and checked again against the tree
 at 4d24cbc. Where the map and the verification differ, the verification's checked facts are used; where the tree has

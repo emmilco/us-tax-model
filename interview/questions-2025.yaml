@@ -14,6 +14,7 @@ bank:
     ltc: 'For this person covered by long-term care insurance — '
     dcprov: 'For this care provider (Form 2441, Part I) — '
     oi8z: 'For this item of other income (Schedule 1, line 8z) — '
+    f1095a: 'For this Form 1095-A (Health Insurance Marketplace Statement) — '
   questions:
   - input: $person
     order: 0
@@ -193,10 +194,6 @@ bank:
     help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
       Married filing separately and unsupported items are refused with citations. The additional 20% tax on taxable HSA
       distributions (Form 8889 line 17b) is figured by this tool; it is not another amount here.
-  - input: s3.line9
-    order: 10
-    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
-      Married filing separately and unsupported items are refused with citations.
   - input: s3.line10
     order: 10
     help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
@@ -706,6 +703,213 @@ bank:
       do not guess. Married filing separately and unsupported items are refused with citations.
   - input: s8812.puerto_rico
     order: 20
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: $f1095a
+    order: 1
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+    prompt: List stable keys for each Form 1095-A (Health Insurance Marketplace Statement) you received, one key per form.
+      Do not list a VOID form, or the form a CORRECTED one replaces, or a form for a catastrophic or stand-alone dental plan.
+      Use [] if you received none.
+  - input: f1095a.uniform
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f1095a.mo_a
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f1095a.mo_b
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f1095a.c_total
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f1095a.in_a_jan
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f1095a.in_a_feb
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f1095a.in_a_mar
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f1095a.in_a_apr
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f1095a.in_a_may
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f1095a.in_a_jun
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f1095a.in_a_jul
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f1095a.in_a_aug
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f1095a.in_a_sep
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f1095a.in_a_oct
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f1095a.in_a_nov
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f1095a.in_a_dec
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f1095a.in_b_jan
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f1095a.in_b_feb
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f1095a.in_b_mar
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f1095a.in_b_apr
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f1095a.in_b_may
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f1095a.in_b_jun
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f1095a.in_b_jul
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f1095a.in_b_aug
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f1095a.in_b_sep
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f1095a.in_b_oct
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f1095a.in_b_nov
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f1095a.in_b_dec
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f1095a.in_c_jan
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f1095a.in_c_feb
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f1095a.in_c_mar
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f1095a.in_c_apr
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f1095a.in_c_may
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f1095a.in_c_jun
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f1095a.in_c_jul
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f1095a.in_c_aug
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f1095a.in_c_sep
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f1095a.in_c_oct
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f1095a.in_c_nov
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f1095a.in_c_dec
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f1095a.b_counted
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f8962.alloc
+    order: 10
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f8962.married_in_2025
+    order: 10
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f8962.other
+    order: 10
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f8962.same_state_counted
+    order: 10
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f8962.fpl_table
+    order: 10
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f8962.estimate_100
+    order: 11
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f8962.alien_below
+    order: 11
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: dependent.ptc_files
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: dependent.ptc_magi
+    order: 2
     help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
       do not guess. Married filing separately and unsupported items are refused with citations.
   - input: $retirement

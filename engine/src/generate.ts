@@ -125,6 +125,7 @@ const FIXED = new Set([
   "person[taxpayer].eic_ssn", "person[taxpayer].under16",
   "clcw.spouse_screen", "clcw.prior_11", "clcw.prior_14", "clcw.prior_sd7", "clcw.prior_sd15", "clcw.prior_sd21",
   "f4952.prior_7", "f8960.prior_2i",
+  "f8962.alloc", "f8962.married_in_2025", "f8962.other", "f8962.same_state_counted", "f8962.estimate_100", "f8962.alien_below", "f8962.fpl_table",
 ]);
 
 interface Employer { box1: number; box2pct: number; box7: number; over: number; deferral: number }
@@ -685,7 +686,60 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
   cohereSpouseHsa(inputs);
   applyScreens(inputs);
   putCarryovers(inputs);
+  putPtc(inputs);
   return inputs;
+}
+
+const MONTHS = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
+
+/** Forms 1095-A on about one return in seven, from the same derived stream: most with full-year coverage and the same
+ * columns A and B every month, the rest month by month (coverage starting during the year, a column B that changes);
+ * two forms sometimes, from one state or from two. The screens are No; the poverty table and the Marketplace's
+ * below-100% estimate vary. Claimed dependents are not required to file. */
+function putPtc(inputs: Inputs): void {
+  const next = derivedStream(inputs, "ptc");
+  const between = (lo: number, hi: number) => lo + Math.floor(next() * (hi - lo + 1));
+  Object.assign(inputs, { "f8962.alloc": false, "f8962.married_in_2025": false, "f8962.other": false, "f8962.same_state_counted": false, "f8962.alien_below": false,
+    "f8962.estimate_100": next() < 0.7, "f8962.fpl_table": next() < 0.9 ? "contiguous" : next() < 0.5 ? "alaska" : "hawaii" });
+  for (const k of (inputs["$dependent"] as string[] | undefined) ?? []) Object.assign(inputs, { [`dependent[${k}].ptc_files`]: false, [`dependent[${k}].ptc_magi`]: 0 });
+  if (next() >= 0.15) { inputs["$f1095a"] = []; return; }
+  const n = next() < 0.8 ? 1 : 2;
+  const twoStates = next() < 0.3;
+  const keys = Array.from({ length: n }, (_, i) => `mkt_${String.fromCharCode(97 + i)}`);
+  inputs["$f1095a"] = keys;
+  // Two forms from one state either follow one another (the first ends when the second starts; both are counted, since
+  // no month has two forms) or the second covers only months the first covers (only the first is counted).
+  const sequential = n === 2 && !twoStates && next() < 0.4;
+  const cut = between(1, 11);
+  let firstStart = 0;
+  keys.forEach((key, i) => {
+    const E = `f1095a[${key}]`;
+    const uniform = !sequential && next() < 0.7 && !(i === 1 && !twoStates && firstStart > 0);
+    const a = between(15_000, 150_000), b = between(15_000, 120_000);
+    inputs[`${E}.uniform`] = uniform;
+    inputs[`${E}.b_counted`] = i === 0 || twoStates || sequential;
+    // Both the uniform answers and the monthly amounts are filled, agreeing with each other, so every line of the entry is
+    // computed whichever route the form takes (the interview asks only one set).
+    if (uniform) {
+      const c = Math.min(b, between(0, b));
+      Object.assign(inputs, { [`${E}.mo_a`]: a, [`${E}.mo_b`]: b, [`${E}.c_total`]: 12 * c });
+      MONTHS.forEach((m) => Object.assign(inputs, { [`${E}.in_a_${m}`]: a, [`${E}.in_b_${m}`]: b, [`${E}.in_c_${m}`]: c }));
+    } else {
+      const nested = i === 1 && !twoStates && !sequential;
+      const start = sequential ? (i === 0 ? 0 : cut) : between(nested ? firstStart : 0, 11);
+      const end = sequential && i === 0 ? cut - 1 : 11;
+      if (i === 0) firstStart = start;
+      const bChange = between(start, 11), b2 = between(15_000, 120_000);
+      let cTotal = 0;
+      MONTHS.forEach((m, k) => {
+        const on = k >= start && k <= end;
+        const bm = !on ? 0 : k >= bChange ? b2 : b;
+        const cm = on ? between(0, bm) : 0; cTotal += cm;
+        Object.assign(inputs, { [`${E}.in_a_${m}`]: on ? a : 0, [`${E}.in_b_${m}`]: bm, [`${E}.in_c_${m}`]: cm });
+      });
+      Object.assign(inputs, { [`${E}.mo_a`]: a, [`${E}.mo_b`]: b, [`${E}.c_total`]: cTotal });
+    }
+  });
 }
 
 /** A deterministic stream from the return's other answers, so carryover figures vary without drawing from the

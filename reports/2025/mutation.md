@@ -7,11 +7,11 @@ the fixture test compares).
 
 | Metric | Value |
 | --- | --- |
-| Mutants | 2353 |
-| Killed by the checker | 255 |
-| Killed by fixtures | 1988 |
+| Mutants | 2569 |
+| Killed by the checker | 275 |
+| Killed by fixtures | 2184 |
 | Surviving | 110 (110 provably equivalent) |
-| Mutation score (raw) | 95.3% |
+| Mutation score (raw) | 95.7% |
 | Mutation score (equivalent mutants excluded) | 100.0% |
 
 ## Surviving — classified equivalent
@@ -71,7 +71,7 @@ the fixture test compares).
 - `boundary.s1a.s1a.line33_over` (replace strict greater-than with inclusive, s1a.s1a.line33_over): The test 's1a.line31 more than s1a.line32' made inclusive adds only s1a.line31 = s1a.line32; there s1a.line33_pos is zero, the reduction s1a.line34 is zero (zero in whole $1,000 steps, or 6% of zero), and s1a.line35_figured (s1a.senior_amount less s1a.line34) equals s1a.senior_amount, the value the other branch gives. The test is read only by s1a.line35_calc. (structural conditions re-checked this run.)
 - `operand.s1a.s1a.line33_pos.line32` (replace an operand, s1a.s1a.line33_pos): Guarded figure: s1a.line32 is s1a.line32_calc wherever s1a.part5 holds, and every printed line reads s1a.line33_pos (a helper) only through choices whose guards make s1a.part5 true, so the replacement changes no printed value; where s1a.part5 does not hold only s1a.line33_pos's own, unprinted value can differ.
 - `operand.s1a.s1a.line35_figured.line34` (replace an operand, s1a.s1a.line35_figured): Guarded figure: s1a.line34 is s1a.line34_calc wherever s1a.part5 holds, and every printed line reads s1a.line35_figured (a helper) only through choices whose guards make s1a.part5 true, so the replacement changes no printed value; where s1a.part5 does not hold only s1a.line35_figured's own, unprinted value can differ.
-- `operand.s2.s2.line3.zero` (replace an operand, s2.s2.line3): Copy-chain identity: s2.zero and s2.line2 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
+- `operand.s2.s2.line3.line1z` (replace an operand, s2.s2.line3): Copy-chain identity: s2.line1z and s2.line1a expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.s2.s2.line21.line18` (replace an operand, s2.s2.line21): Copy-chain identity: s2.line18 and s2.line17c expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.s8812.s8812.line2b.zero` (replace an operand, s8812.s8812.line2b): Copy-chain identity: s8812.zero and s8812.line2a expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.s8812.s8812.line2c.zero` (replace an operand, s8812.s8812.line2c): Copy-chain identity: s8812.zero and s8812.line2b expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.

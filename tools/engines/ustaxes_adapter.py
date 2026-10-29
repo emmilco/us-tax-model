@@ -26,6 +26,7 @@ keyed by the generator feature (or a feature read off the project's values or re
 adapter) that triggers it, and names the UsTaxes source location.
 """
 import json
+import re
 import os
 import subprocess
 import tempfile
@@ -161,6 +162,11 @@ def build_info(case, year):
                            if f.get("car_loan_interest") else []},
         "otherIncome": other,
     }
+    if f.get("marketplace"):
+        mk = f["marketplace"]
+        adv = [mk["advance"] // 12] * 11 + [mk["advance"] - 11 * (mk["advance"] // 12)]
+        info["marketplace1095As"] = [{"monthlyPremiums": [dollars(mk["premium"])] * 12, "monthlySlcsp": [dollars(mk["slcsp"])] * 12,
+                                      "monthlyAdvancePtc": [dollars(x) for x in adv]}]
     if f.get("capital_loss_carryover_st") or f.get("capital_loss_carryover_lt"):
         # Entered as positive amounts; UsTaxes puts them on Schedule D lines 4 and 11 (ScheduleD.ts `l4`, `l11`),
         # where the form prints them on lines 6 and 14; lines 7 and 15 are the same either way.
@@ -250,6 +256,10 @@ S8812_MAP = {"s8812.line3": "s8812.l3", "s8812.line5": "s8812.l5", "s8812.line7"
              "s8812.line21": "s8812.part2b.l21", "s8812.line23": "s8812.part2b.l23", "s8812.line24": "s8812.part2b.l24",
              "s8812.line25": "s8812.part2b.l25", "s8812.line26": "s8812.part2b.l26", "s8812.line27": "s8812.l27"}
 
+# Form 8962 (UsTaxes' F8962.ts): a flat 8.5% of AGI, no poverty line, Table 2 or Table 5, annual only. Read on every
+# return with a Form 1095-A and compared only where that is the form (limitation ustaxes_ptc_stub).
+F8962_MAP = {"f8962.line8a": "f8962.contributionAmount", "f8962.line11e": "f8962.allowablePtc", "f8962.line25": "f8962.annualAdvancePtc",
+             "f8962.line26": "f8962.credit", "f8962.line29": "f8962.excessRepayment", "s3.line9": "s3.l9"}
 USTAXES_PRECISION = "float64"
 
 
@@ -274,6 +284,8 @@ def lines_of(case, values):
         out.update({pid: cents(get(k)) for pid, k in HSA_MAP.items()})
     if case["facts"].get("children"):
         out.update({pid: cents(get(k)) for pid, k in S8812_MAP.items()})
+    if case["facts"].get("marketplace"):
+        out.update({pid: cents(get(k)) for pid, k in F8962_MAP.items()})
     return out
 
 
@@ -430,7 +442,7 @@ USTAXES_PASS_THROUGH = {"lines": [], "components": {
 def mapped_lines():
     """Every project line id the adapter can report."""
     parts = {f"s1a.line{n}" for nums in S1A_PARTS.values() for n in nums}
-    return sorted(set(F1040_MAP) | set(S1A_MAP) | parts | set(QDCG_MAP) | set(SSB_MAP) | set(SLI_MAP) | set(HSA_MAP) | set(S8812_MAP)
+    return sorted(set(F1040_MAP) | set(S1A_MAP) | parts | set(QDCG_MAP) | set(SSB_MAP) | set(SLI_MAP) | set(HSA_MAP) | set(S8812_MAP) | set(F8962_MAP)
                   | {"f1040.tax_before_credits"})
 
 
@@ -469,6 +481,13 @@ HSA_FAMILY = ("UsTaxes' Form 8889 line 6 halves the line 5 limit for any family-
               "separate HSAs")
 
 
+# Lines a Form 1095-A moves: Schedule 3 line 9 and Schedule 2 line 1a, and through Form 1040 lines 17, 18 and 31 the tax,
+# every credit the tax limits, the payments and the refund. Engines given no Form 1095-A are not compared on them there.
+PTC_MOVED = re.compile(r"^(f1040\.line(1[7-9]|2[0-9]|3[0-9]|35a)|f1040\.tax_before_credits|s3\.line(2|4|5a|5b|8|9|15)|s2\.line(1a|1z|3|21)"
+                       r"|s8812\.|f2441\.line(9c|10|11)|f8880\.line(11|12)|f5695\.line(14|15|31|32)|f8962\.)")
+PTC_REASON = ("the engine is given no Form 1095-A, so its tax, credits and payments omit the premium tax credit reconciliation "
+              "(Form 8962) the project figures on these returns")
+
 def limitations():
     """The engine's declared limitations: each names the feature that triggers it, the lines it
     moves and the UsTaxes source (paths under src/forms/Y2025/ of the clone; line numbers at the
@@ -476,7 +495,15 @@ def limitations():
     ALL = mapped_lines()
     AGI_LINES = sorted(set(ALL) - INCOME_LINES - {f"{HSA}.line{n}" for n in (3, 5, 6, 8, 11, 12, 13)} - {"s1.line13"})
     srt = lambda s: sorted(set(s))
-    return [
+    no_s3 = {"feature": "ustaxes_ptc_no_schedule3", "lines": sorted({"s3.line15"} | {l for l in ALL if l in REFUND_LINES or l in {"f1040.line31", "f1040.line32", "f1040.line33", "f1040.line34", "f1040.line37"}}),
+             "reason": "UsTaxes attaches Schedule 3 only for the excess social security credit, the foreign tax credit, an extension payment "
+                       "or Schedule R (irsForms/Schedule3.ts lines 50-54, `isNeeded`); a net premium tax credit with none of those is dropped "
+                       "from Schedule 3 line 15 and Form 1040 line 31 although Schedule3.ts `l9` returns it"}
+    stub = {"feature": "ustaxes_ptc_stub", "lines": sorted({l for l in ALL if PTC_MOVED.match(l)}),
+            "reason": "UsTaxes' Form 8962 (irsForms/F8962.ts) applies a flat 8.5% of AGI (`applicableContributionRate`) with no federal "
+                      "poverty line, Table 2 or Table 5 limitation and no monthly calculation: it is the form only at 400% of the poverty "
+                      "line or more, on line 11, with modified AGI equal to AGI; other returns with a Form 1095-A are not compared after line 16"}
+    return [stub, no_s3,
         {"feature": "self_employed", "lines": ALL,
          "reason": "UsTaxes never builds Schedule C: irsForms/F1040.ts declares `scheduleC?: ScheduleC` and no code assigns it, so "
                    "`selfEmployedIncome` reaches no form (Schedule 1 line 3, Schedule SE, the QBI deduction and earned income are all "

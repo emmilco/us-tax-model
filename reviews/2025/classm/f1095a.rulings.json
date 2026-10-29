@@ -1,0 +1,15 @@
+{
+ "kind": "classm",
+ "form": "f1095a",
+ "rulings": [
+  {
+   "case": "classm.f1095a.1",
+   "printed": "f1095a[mkt_b].line33c",
+   "project": "$2,043.00",
+   "model": "$2,042.00",
+   "ruling": "Ruling: model error; the reply copies an answer the interview does not ask on this route, and it contradicts the monthly entries. In fixtures/2025/classm.json case classm.f1095a.1, Form 1095-A mkt_b is answered No to the D3 question (f1095a[mkt_b].uniform false). Its twelve column C entries are $203, $253, $329, $132, $211, $315, $76, $243, $145, $102, $11 and $23, which total $2,043.00. The generated record also supplies f1095a[mkt_b].c_total = $2,042.00, which the interview does not ask for a non-uniform form: line 33C reads f1095a.yr_c_monthly when uniform is false, so c_total is never demanded. The prompt listed it as \"Line 33, column C\", and the reply took it \"as given\". The source makes line 33 the total of the months: i1095a p. 2, \"Total the amounts on lines 21 through 32 and enter on line 33\"; f1095a p. 3, \"The Marketplace will report the amounts in columns A, B, and C on lines 21–32 for each month and enter the totals on line 33.\" The project's $2,043.00 is that total. No project defect. Dropped: a value read from an answer the interview cannot produce is not evidence. Suspected tooling defect O2: the class M generator supplies inputs off the asked route, here inconsistent with the asked ones.",
+   "drop": true,
+   "context": "ce797550b75de10b2b730ad28c022accb5a402ecdc7ed5d28dda82cd68390d70"
+  }
+ ]
+}

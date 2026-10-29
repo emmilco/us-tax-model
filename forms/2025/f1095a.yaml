@@ -1,0 +1,1056 @@
+form:
+  id: f1095a
+  kind: form
+  title: Form 1095-A, Health Insurance Marketplace Statement (one entry per form)
+  tax_year: 2025
+  note: One entry per Form 1095-A. A form with coverage in all 12 months and the same columns A and B every month is entered
+    by its monthly amounts and line 33C; any other form month by month. Column B is the corrected applicable SLCSP premium
+    where the form's is blank, zero or wrong (i8962 p. 14).
+  lines:
+  - id: f1095a.one
+    printed: (helper)
+    label: One Form 1095-A
+    type: Count
+    expr:
+      op: param
+      ref: sales.one
+    cite:
+      doc: f1095a
+      locator: p. 3, Instructions for Recipient, "If you or your family members enrolled at the Marketplace in more than one
+        qualified health plan policy, you will receive a Form 1095-A for each policy."
+  - id: f1095a.months
+    printed: (helper)
+    label: Twelve months
+    type: Count
+    expr:
+      op: param
+      ref: ptc.months
+    cite: &id001
+      doc: i8962
+      locator: p. 14, Line 10, "Check “Yes” and continue to line 11 if all of the following apply for each qualified health
+        plan", "Full-year coverage with no changes on Form 1095-A, Part III, column A or B."
+  - id: f1095a.uniform
+    printed: (gate)
+    label: Does this Form 1095-A show coverage in all 12 months of 2025, with the same amount in column A every month and
+      the same amount in column B every month?
+    type: Bool
+    expr:
+      op: input
+      source: Does this Form 1095-A show coverage in all 12 months of 2025, with the same amount in column A (monthly enrollment
+        premiums) every month and the same amount in column B (monthly SLCSP premium) every month? Use the corrected column
+        B if column B is blank, zero or wrong.
+    cite: *id001
+  - id: f1095a.mo_a
+    printed: (helper)
+    label: The monthly amount in column A (the same every month)
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The monthly amount in Part III, column A (monthly enrollment premiums), the same in every month
+    cite: &id002
+      doc: i8962
+      locator: p. 16, Column (a), "If you have more than one Form 1095-A affecting a particular month, add the amounts together
+        for that month and enter the total on the appropriate line on Form 8962, column (a)."
+  - id: f1095a.mo_b
+    printed: (helper)
+    label: The monthly amount in column B (the same every month)
+    type: NonNegDollars
+    expr:
+      op: input
+      source: 'The monthly amount in Part III, column B (monthly SLCSP premium), the same in every month: the amount in column
+        B, or the correct applicable SLCSP premium if column B is blank, zero or wrong (from the Marketplace''s tool, for
+        example HealthCare.gov/Tax-Tool)'
+    cite: &id003
+      doc: i8962
+      locator: p. 14, "you must determine the correct applicable SLCSP premium for every month."; p974 p. 27, Applicable SLCSP
+        premium tools, "Only the Marketplaces are able to provide applicable SLCSP premiums."
+  - id: f1095a.c_total
+    printed: (helper)
+    label: Line 33, column C (annual advance payment of premium tax credit)
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The amount on line 33, column C (annual total of the monthly advance payment of premium tax credit)
+    cite:
+      doc: i8962
+      locator: p. 16, Column (f), "If you have more than one Form 1095-A, add the amounts together and enter the total on
+        Form 8962, line 11, column (f)."
+  - id: f1095a.in_a_jan
+    printed: (helper)
+    label: 'January: column A (monthly enrollment premiums)'
+    type: NonNegDollars
+    expr:
+      op: input
+      source: January 2025, column A (monthly enrollment premiums); zero if blank
+    cite: *id002
+  - id: f1095a.in_a_feb
+    printed: (helper)
+    label: 'February: column A (monthly enrollment premiums)'
+    type: NonNegDollars
+    expr:
+      op: input
+      source: February 2025, column A (monthly enrollment premiums); zero if blank
+    cite: *id002
+  - id: f1095a.in_a_mar
+    printed: (helper)
+    label: 'March: column A (monthly enrollment premiums)'
+    type: NonNegDollars
+    expr:
+      op: input
+      source: March 2025, column A (monthly enrollment premiums); zero if blank
+    cite: *id002
+  - id: f1095a.in_a_apr
+    printed: (helper)
+    label: 'April: column A (monthly enrollment premiums)'
+    type: NonNegDollars
+    expr:
+      op: input
+      source: April 2025, column A (monthly enrollment premiums); zero if blank
+    cite: *id002
+  - id: f1095a.in_a_may
+    printed: (helper)
+    label: 'May: column A (monthly enrollment premiums)'
+    type: NonNegDollars
+    expr:
+      op: input
+      source: May 2025, column A (monthly enrollment premiums); zero if blank
+    cite: *id002
+  - id: f1095a.in_a_jun
+    printed: (helper)
+    label: 'June: column A (monthly enrollment premiums)'
+    type: NonNegDollars
+    expr:
+      op: input
+      source: June 2025, column A (monthly enrollment premiums); zero if blank
+    cite: *id002
+  - id: f1095a.in_a_jul
+    printed: (helper)
+    label: 'July: column A (monthly enrollment premiums)'
+    type: NonNegDollars
+    expr:
+      op: input
+      source: July 2025, column A (monthly enrollment premiums); zero if blank
+    cite: *id002
+  - id: f1095a.in_a_aug
+    printed: (helper)
+    label: 'August: column A (monthly enrollment premiums)'
+    type: NonNegDollars
+    expr:
+      op: input
+      source: August 2025, column A (monthly enrollment premiums); zero if blank
+    cite: *id002
+  - id: f1095a.in_a_sep
+    printed: (helper)
+    label: 'September: column A (monthly enrollment premiums)'
+    type: NonNegDollars
+    expr:
+      op: input
+      source: September 2025, column A (monthly enrollment premiums); zero if blank
+    cite: *id002
+  - id: f1095a.in_a_oct
+    printed: (helper)
+    label: 'October: column A (monthly enrollment premiums)'
+    type: NonNegDollars
+    expr:
+      op: input
+      source: October 2025, column A (monthly enrollment premiums); zero if blank
+    cite: *id002
+  - id: f1095a.in_a_nov
+    printed: (helper)
+    label: 'November: column A (monthly enrollment premiums)'
+    type: NonNegDollars
+    expr:
+      op: input
+      source: November 2025, column A (monthly enrollment premiums); zero if blank
+    cite: *id002
+  - id: f1095a.in_a_dec
+    printed: (helper)
+    label: 'December: column A (monthly enrollment premiums)'
+    type: NonNegDollars
+    expr:
+      op: input
+      source: December 2025, column A (monthly enrollment premiums); zero if blank
+    cite: *id002
+  - id: f1095a.in_b_jan
+    printed: (helper)
+    label: 'January: column B (monthly SLCSP premium)'
+    type: NonNegDollars
+    expr:
+      op: input
+      source: 'January 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium
+        if column B is blank, zero or wrong (from the Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if blank'
+    cite: *id003
+  - id: f1095a.in_b_feb
+    printed: (helper)
+    label: 'February: column B (monthly SLCSP premium)'
+    type: NonNegDollars
+    expr:
+      op: input
+      source: 'February 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium
+        if column B is blank, zero or wrong (from the Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if blank'
+    cite: *id003
+  - id: f1095a.in_b_mar
+    printed: (helper)
+    label: 'March: column B (monthly SLCSP premium)'
+    type: NonNegDollars
+    expr:
+      op: input
+      source: 'March 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium
+        if column B is blank, zero or wrong (from the Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if blank'
+    cite: *id003
+  - id: f1095a.in_b_apr
+    printed: (helper)
+    label: 'April: column B (monthly SLCSP premium)'
+    type: NonNegDollars
+    expr:
+      op: input
+      source: 'April 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium
+        if column B is blank, zero or wrong (from the Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if blank'
+    cite: *id003
+  - id: f1095a.in_b_may
+    printed: (helper)
+    label: 'May: column B (monthly SLCSP premium)'
+    type: NonNegDollars
+    expr:
+      op: input
+      source: 'May 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium
+        if column B is blank, zero or wrong (from the Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if blank'
+    cite: *id003
+  - id: f1095a.in_b_jun
+    printed: (helper)
+    label: 'June: column B (monthly SLCSP premium)'
+    type: NonNegDollars
+    expr:
+      op: input
+      source: 'June 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium
+        if column B is blank, zero or wrong (from the Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if blank'
+    cite: *id003
+  - id: f1095a.in_b_jul
+    printed: (helper)
+    label: 'July: column B (monthly SLCSP premium)'
+    type: NonNegDollars
+    expr:
+      op: input
+      source: 'July 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium
+        if column B is blank, zero or wrong (from the Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if blank'
+    cite: *id003
+  - id: f1095a.in_b_aug
+    printed: (helper)
+    label: 'August: column B (monthly SLCSP premium)'
+    type: NonNegDollars
+    expr:
+      op: input
+      source: 'August 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium
+        if column B is blank, zero or wrong (from the Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if blank'
+    cite: *id003
+  - id: f1095a.in_b_sep
+    printed: (helper)
+    label: 'September: column B (monthly SLCSP premium)'
+    type: NonNegDollars
+    expr:
+      op: input
+      source: 'September 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium
+        if column B is blank, zero or wrong (from the Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if blank'
+    cite: *id003
+  - id: f1095a.in_b_oct
+    printed: (helper)
+    label: 'October: column B (monthly SLCSP premium)'
+    type: NonNegDollars
+    expr:
+      op: input
+      source: 'October 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium
+        if column B is blank, zero or wrong (from the Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if blank'
+    cite: *id003
+  - id: f1095a.in_b_nov
+    printed: (helper)
+    label: 'November: column B (monthly SLCSP premium)'
+    type: NonNegDollars
+    expr:
+      op: input
+      source: 'November 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium
+        if column B is blank, zero or wrong (from the Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if blank'
+    cite: *id003
+  - id: f1095a.in_b_dec
+    printed: (helper)
+    label: 'December: column B (monthly SLCSP premium)'
+    type: NonNegDollars
+    expr:
+      op: input
+      source: 'December 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium
+        if column B is blank, zero or wrong (from the Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if blank'
+    cite: *id003
+  - id: f1095a.in_c_jan
+    printed: (helper)
+    label: 'January: column C (monthly advance payment of premium tax credit)'
+    type: NonNegDollars
+    expr:
+      op: input
+      source: January 2025, column C (monthly advance payment of premium tax credit); zero if blank
+    cite: &id004
+      doc: i8962
+      locator: p. 17, Column (f), "If you have more than one Form 1095-A affecting a particular month, add the amounts together
+        for that month and enter the total on the appropriate line on Form 8962, column (f)."
+  - id: f1095a.in_c_feb
+    printed: (helper)
+    label: 'February: column C (monthly advance payment of premium tax credit)'
+    type: NonNegDollars
+    expr:
+      op: input
+      source: February 2025, column C (monthly advance payment of premium tax credit); zero if blank
+    cite: *id004
+  - id: f1095a.in_c_mar
+    printed: (helper)
+    label: 'March: column C (monthly advance payment of premium tax credit)'
+    type: NonNegDollars
+    expr:
+      op: input
+      source: March 2025, column C (monthly advance payment of premium tax credit); zero if blank
+    cite: *id004
+  - id: f1095a.in_c_apr
+    printed: (helper)
+    label: 'April: column C (monthly advance payment of premium tax credit)'
+    type: NonNegDollars
+    expr:
+      op: input
+      source: April 2025, column C (monthly advance payment of premium tax credit); zero if blank
+    cite: *id004
+  - id: f1095a.in_c_may
+    printed: (helper)
+    label: 'May: column C (monthly advance payment of premium tax credit)'
+    type: NonNegDollars
+    expr:
+      op: input
+      source: May 2025, column C (monthly advance payment of premium tax credit); zero if blank
+    cite: *id004
+  - id: f1095a.in_c_jun
+    printed: (helper)
+    label: 'June: column C (monthly advance payment of premium tax credit)'
+    type: NonNegDollars
+    expr:
+      op: input
+      source: June 2025, column C (monthly advance payment of premium tax credit); zero if blank
+    cite: *id004
+  - id: f1095a.in_c_jul
+    printed: (helper)
+    label: 'July: column C (monthly advance payment of premium tax credit)'
+    type: NonNegDollars
+    expr:
+      op: input
+      source: July 2025, column C (monthly advance payment of premium tax credit); zero if blank
+    cite: *id004
+  - id: f1095a.in_c_aug
+    printed: (helper)
+    label: 'August: column C (monthly advance payment of premium tax credit)'
+    type: NonNegDollars
+    expr:
+      op: input
+      source: August 2025, column C (monthly advance payment of premium tax credit); zero if blank
+    cite: *id004
+  - id: f1095a.in_c_sep
+    printed: (helper)
+    label: 'September: column C (monthly advance payment of premium tax credit)'
+    type: NonNegDollars
+    expr:
+      op: input
+      source: September 2025, column C (monthly advance payment of premium tax credit); zero if blank
+    cite: *id004
+  - id: f1095a.in_c_oct
+    printed: (helper)
+    label: 'October: column C (monthly advance payment of premium tax credit)'
+    type: NonNegDollars
+    expr:
+      op: input
+      source: October 2025, column C (monthly advance payment of premium tax credit); zero if blank
+    cite: *id004
+  - id: f1095a.in_c_nov
+    printed: (helper)
+    label: 'November: column C (monthly advance payment of premium tax credit)'
+    type: NonNegDollars
+    expr:
+      op: input
+      source: November 2025, column C (monthly advance payment of premium tax credit); zero if blank
+    cite: *id004
+  - id: f1095a.in_c_dec
+    printed: (helper)
+    label: 'December: column C (monthly advance payment of premium tax credit)'
+    type: NonNegDollars
+    expr:
+      op: input
+      source: December 2025, column C (monthly advance payment of premium tax credit); zero if blank
+    cite: *id004
+  - id: f1095a.a_jan
+    printed: (helper)
+    label: January, column A
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: true
+        then: f1095a.mo_a
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: false
+        then: f1095a.in_a_jan
+    cite: *id002
+  - id: f1095a.a_feb
+    printed: (helper)
+    label: February, column A
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: true
+        then: f1095a.mo_a
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: false
+        then: f1095a.in_a_feb
+    cite: *id002
+  - id: f1095a.a_mar
+    printed: (helper)
+    label: March, column A
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: true
+        then: f1095a.mo_a
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: false
+        then: f1095a.in_a_mar
+    cite: *id002
+  - id: f1095a.a_apr
+    printed: (helper)
+    label: April, column A
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: true
+        then: f1095a.mo_a
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: false
+        then: f1095a.in_a_apr
+    cite: *id002
+  - id: f1095a.a_may
+    printed: (helper)
+    label: May, column A
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: true
+        then: f1095a.mo_a
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: false
+        then: f1095a.in_a_may
+    cite: *id002
+  - id: f1095a.a_jun
+    printed: (helper)
+    label: June, column A
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: true
+        then: f1095a.mo_a
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: false
+        then: f1095a.in_a_jun
+    cite: *id002
+  - id: f1095a.a_jul
+    printed: (helper)
+    label: July, column A
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: true
+        then: f1095a.mo_a
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: false
+        then: f1095a.in_a_jul
+    cite: *id002
+  - id: f1095a.a_aug
+    printed: (helper)
+    label: August, column A
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: true
+        then: f1095a.mo_a
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: false
+        then: f1095a.in_a_aug
+    cite: *id002
+  - id: f1095a.a_sep
+    printed: (helper)
+    label: September, column A
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: true
+        then: f1095a.mo_a
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: false
+        then: f1095a.in_a_sep
+    cite: *id002
+  - id: f1095a.a_oct
+    printed: (helper)
+    label: October, column A
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: true
+        then: f1095a.mo_a
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: false
+        then: f1095a.in_a_oct
+    cite: *id002
+  - id: f1095a.a_nov
+    printed: (helper)
+    label: November, column A
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: true
+        then: f1095a.mo_a
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: false
+        then: f1095a.in_a_nov
+    cite: *id002
+  - id: f1095a.a_dec
+    printed: (helper)
+    label: December, column A
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: true
+        then: f1095a.mo_a
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: false
+        then: f1095a.in_a_dec
+    cite: *id002
+  - id: f1095a.b_jan
+    printed: (helper)
+    label: January, column B
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: true
+        then: f1095a.mo_b
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: false
+        then: f1095a.in_b_jan
+    cite: *id003
+  - id: f1095a.b_feb
+    printed: (helper)
+    label: February, column B
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: true
+        then: f1095a.mo_b
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: false
+        then: f1095a.in_b_feb
+    cite: *id003
+  - id: f1095a.b_mar
+    printed: (helper)
+    label: March, column B
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: true
+        then: f1095a.mo_b
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: false
+        then: f1095a.in_b_mar
+    cite: *id003
+  - id: f1095a.b_apr
+    printed: (helper)
+    label: April, column B
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: true
+        then: f1095a.mo_b
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: false
+        then: f1095a.in_b_apr
+    cite: *id003
+  - id: f1095a.b_may
+    printed: (helper)
+    label: May, column B
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: true
+        then: f1095a.mo_b
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: false
+        then: f1095a.in_b_may
+    cite: *id003
+  - id: f1095a.b_jun
+    printed: (helper)
+    label: June, column B
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: true
+        then: f1095a.mo_b
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: false
+        then: f1095a.in_b_jun
+    cite: *id003
+  - id: f1095a.b_jul
+    printed: (helper)
+    label: July, column B
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: true
+        then: f1095a.mo_b
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: false
+        then: f1095a.in_b_jul
+    cite: *id003
+  - id: f1095a.b_aug
+    printed: (helper)
+    label: August, column B
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: true
+        then: f1095a.mo_b
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: false
+        then: f1095a.in_b_aug
+    cite: *id003
+  - id: f1095a.b_sep
+    printed: (helper)
+    label: September, column B
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: true
+        then: f1095a.mo_b
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: false
+        then: f1095a.in_b_sep
+    cite: *id003
+  - id: f1095a.b_oct
+    printed: (helper)
+    label: October, column B
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: true
+        then: f1095a.mo_b
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: false
+        then: f1095a.in_b_oct
+    cite: *id003
+  - id: f1095a.b_nov
+    printed: (helper)
+    label: November, column B
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: true
+        then: f1095a.mo_b
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: false
+        then: f1095a.in_b_nov
+    cite: *id003
+  - id: f1095a.b_dec
+    printed: (helper)
+    label: December, column B
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: true
+        then: f1095a.mo_b
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: false
+        then: f1095a.in_b_dec
+    cite: *id003
+  - id: f1095a.yr_a_monthly
+    printed: (helper)
+    label: Column A added over the 12 months
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - f1095a.in_a_jan
+      - f1095a.in_a_feb
+      - f1095a.in_a_mar
+      - f1095a.in_a_apr
+      - f1095a.in_a_may
+      - f1095a.in_a_jun
+      - f1095a.in_a_jul
+      - f1095a.in_a_aug
+      - f1095a.in_a_sep
+      - f1095a.in_a_oct
+      - f1095a.in_a_nov
+      - f1095a.in_a_dec
+    cite:
+      doc: i1095a
+      locator: p. 2, "Total the amounts on lines 21 through 32 and enter on line 33."
+  - id: f1095a.yr_a_uniform
+    printed: (helper)
+    label: Column A times 12 months
+    type: NonNegDollars
+    expr:
+      op: multiply_count
+      amount: f1095a.mo_a
+      count: f1095a.months
+    cite:
+      doc: i1095a
+      locator: p. 2, "Total the amounts on lines 21 through 32 and enter on line 33."
+  - id: f1095a.line33a
+    printed: (helper)
+    label: Line 33, column A
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: true
+        then: f1095a.yr_a_uniform
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: false
+        then: f1095a.yr_a_monthly
+    cite:
+      doc: i1095a
+      locator: p. 2, "Total the amounts on lines 21 through 32 and enter on line 33."
+    ambiguity: amb.2025.ptc_1095a_cents
+  - id: f1095a.yr_b_monthly
+    printed: (helper)
+    label: Column B added over the 12 months
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - f1095a.in_b_jan
+      - f1095a.in_b_feb
+      - f1095a.in_b_mar
+      - f1095a.in_b_apr
+      - f1095a.in_b_may
+      - f1095a.in_b_jun
+      - f1095a.in_b_jul
+      - f1095a.in_b_aug
+      - f1095a.in_b_sep
+      - f1095a.in_b_oct
+      - f1095a.in_b_nov
+      - f1095a.in_b_dec
+    cite:
+      doc: i1095a
+      locator: p. 2, "Total the amounts on lines 21 through 32 and enter on line 33."
+  - id: f1095a.yr_b_uniform
+    printed: (helper)
+    label: Column B times 12 months
+    type: NonNegDollars
+    expr:
+      op: multiply_count
+      amount: f1095a.mo_b
+      count: f1095a.months
+    cite:
+      doc: i1095a
+      locator: p. 2, "Total the amounts on lines 21 through 32 and enter on line 33."
+  - id: f1095a.line33b
+    printed: (helper)
+    label: Line 33, column B
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: true
+        then: f1095a.yr_b_uniform
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: false
+        then: f1095a.yr_b_monthly
+    cite:
+      doc: i1095a
+      locator: p. 2, "Total the amounts on lines 21 through 32 and enter on line 33."
+    ambiguity: amb.2025.ptc_1095a_cents
+  - id: f1095a.yr_c_monthly
+    printed: (helper)
+    label: Column C added over the 12 months
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - f1095a.in_c_jan
+      - f1095a.in_c_feb
+      - f1095a.in_c_mar
+      - f1095a.in_c_apr
+      - f1095a.in_c_may
+      - f1095a.in_c_jun
+      - f1095a.in_c_jul
+      - f1095a.in_c_aug
+      - f1095a.in_c_sep
+      - f1095a.in_c_oct
+      - f1095a.in_c_nov
+      - f1095a.in_c_dec
+    cite:
+      doc: i1095a
+      locator: p. 2, "Total the amounts on lines 21 through 32 and enter on line 33."
+  - id: f1095a.line33c
+    printed: (helper)
+    label: Line 33, column C
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: true
+        then: f1095a.c_total
+      - guard:
+          op: test
+          eq:
+          - f1095a.uniform
+          - const: false
+        then: f1095a.yr_c_monthly
+    cite:
+      doc: i1095a
+      locator: p. 2, "Total the amounts on lines 21 through 32 and enter on line 33."
+  - id: f1095a.b_counted
+    printed: (gate)
+    label: Do you count this Form 1095-A's column B?
+    type: Bool
+    expr:
+      op: input
+      source: Do you count this Form 1095-A's column B? Count it unless another Form 1095-A from the same state, whose column
+        B you count, shows coverage in every month this one does. For a month that several forms from one state cover, column
+        B is entered from only one of them; forms from different states, and policies from one state that follow one another,
+        are each counted.
+    cite:
+      doc: i8962
+      locator: p. 16, Column (b), "If you have more than one Form 1095-A showing coverage in a particular month, use the following
+        rules to determine the amounts to enter on Form 8962, column (b), for that month.", "Enter the amount from column B of
+        only one Form 1095-A—do not add the amounts from each form."
+  - id: f1095a.b_used
+    printed: (helper)
+    label: This form's column B is counted (the only form, or counted under the one-form-a-month rule)
+    type: Bool
+    expr:
+      op: test
+      any:
+      - op: test
+        eq:
+        - f8962.forms
+        - const: 1
+          type: Count
+      - op: test
+        eq:
+        - f1095a.b_counted
+        - const: true
+    cite:
+      doc: i8962
+      locator: p. 15, Column (b), "Enter the amount from column B of only one Form 1095-A—do not add the amounts from each
+        form."
+  collection:
+    cite:
+      doc: f1095a
+      locator: p. 3, Instructions for Recipient, "If you or your family members enrolled at the Marketplace in more than one
+        qualified health plan policy, you will receive a Form 1095-A for each policy."

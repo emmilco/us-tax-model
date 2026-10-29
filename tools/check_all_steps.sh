@@ -66,6 +66,7 @@ step check_extraction python3 tools/check_extraction.py "$@"
 step check_extraction_self_test python3 tools/check_extraction.py --self-test
 step check_macrs_tables python3 tools/check_macrs_tables.py "$@"
 step check_macrs_tables_self_test python3 tools/check_macrs_tables.py --self-test "$@"
+step check_ptc_tables python3 tools/extract_ptc_tables.py --check
 step check_auto_limits python3 tools/check_auto_limits.py "$@"
 step check_auto_limits_self_test python3 tools/check_auto_limits.py --self-test "$@"
 step check_bug_inventory python3 tools/check_bug_inventory.py

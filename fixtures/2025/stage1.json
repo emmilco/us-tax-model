@@ -11994,7 +11994,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -12063,7 +12062,8 @@
         "f2441.benefits": false,
         "f2441.employer_care": false,
         "person[taxpayer].sav_trad": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "qdcg.line22": {

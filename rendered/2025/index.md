@@ -9,10 +9,11 @@ Review these renderings line by line against the archived IRS sources in `source
 | clcw.md | worksheet | 33 |
 | clcw26.md | worksheet | 19 |
 | dcprov.md | worksheet | 6 |
-| dependent.md | worksheet | 66 |
+| dependent.md | worksheet | 69 |
 | div.md | form | 22 |
 | eic.md | worksheet | 87 |
 | f1040.md | form | 65 |
+| f1095a.md | form | 76 |
 | f2441.md | form | 82 |
 | f4562.md | form | 15 |
 | f4952.md | form | 26 |
@@ -22,9 +23,10 @@ Review these renderings line by line against the archived IRS sources in `source
 | f8889.md | form | 96 |
 | f8959.md | form | 26 |
 | f8960.md | form | 32 |
+| f8962.md | form | 156 |
 | f8995.md | form | 18 |
 | f8995a.md | form | 14 |
-| ftc.md | form | 11 |
+| ftc.md | form | 12 |
 | g28.md | form | 9 |
 | gift.md | form | 5 |
 | household.md | form | 35 |
@@ -42,7 +44,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | s1.md | form | 66 |
 | s179.md | form | 28 |
 | s1a.md | form | 136 |
-| s2.md | form | 11 |
+| s2.md | form | 13 |
 | s3.md | form | 14 |
 | s8812.md | form | 85 |
 | sa.md | form | 61 |
@@ -72,6 +74,8 @@ Review these renderings line by line against the archived IRS sources in `source
 | ltc_limit.md | keyed | 0 rows |
 | macrs_gds.md | keyed | 0 rows |
 | macrs_last_year.md | keyed | 0 rows |
+| ptc_applicable_figure.md | keyed | 0 rows |
+| ptc_poverty_line.md | keyed | 0 rows |
 | quarter_convention.md | keyed | 0 rows |
 | rate_schedule.md | bracket_schedule | 4 rows |
 | recovery_year.md | keyed | 0 rows |

@@ -1,0 +1,21 @@
+{
+ "kind": "render",
+ "form": "s2",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "18",
+   "restated": "Enter the amount from line 17c.",
+   "model": "IRS line 18 says “Total additional taxes. Add lines 17a through 17z”; the restatement enters only line 17c and has no refusal for the other additional taxes.",
+   "ruling": "Ruling: representation; f1040s2 p. 2, line 18, \"Total additional taxes. Add lines 17a through 17z\". The restatement enters line 17c; the cite says \"the other line 17 items are refused by s2.other\", and s2.other (\"Any amount on Schedule 2 other than self-employment tax from Schedule SE, Additional Medicare Tax, Net Investment Income Tax or the additional 20% tax on taxable HSA distributions ...\") refuses lines 2, 3 and 21, so on every computed return lines 17a, 17b and 17d to 17z are zero and line 18 equals line 17c (Form 8889 line 17b). The model looked for the refusal on line 18; it is on line 21, which reads line 18. Project stands.",
+   "context": "1ef85de918ce0e2625f3acbfd7e768563ddb113f5d876ac77ac6014cd2169099"
+  },
+  {
+   "printed": "1z",
+   "restated": "Enter the amount from line 1a.",
+   "model": "IRS line 1z says “Add lines 1a through 1y”; the restatement enters only line 1a and has no refusal for the other additions to tax.",
+   "ruling": "Ruling: representation; f1040s2 p. 1, line 1z, \"Add lines 1a through 1y\". The restatement enters line 1a, and the line's own label says \"lines 1b to 1y are refused by the Schedule 2 screen\": s2.other (\"Any amount on Schedule 2 other than self-employment tax from Schedule SE, Additional Medicare Tax, Net Investment Income Tax or the additional 20% tax on taxable HSA distributions ...\") refuses lines 2, 3 and 21, so any return with an amount on lines 1b to 1y is refused at line 3, the line Form 1040 line 17 reads, and on every computed return lines 1b to 1y are zero and line 1z equals line 1a. The model looked for a refusal on line 1z itself; it sits on lines 2, 3 and 21 of the restated form it was shown. Project stands.",
+   "context": "1ef85de918ce0e2625f3acbfd7e768563ddb113f5d876ac77ac6014cd2169099"
+  }
+ ]
+}

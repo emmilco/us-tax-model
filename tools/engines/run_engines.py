@@ -30,6 +30,7 @@ project line) and "supplied" ({ case_id: { line: cents } }, the amounts the
 adapter gives it in place of a computation), for the comparison's model of its
 unrounded arithmetic.
 """
+import re
 import argparse, json, sys, warnings
 from pathlib import Path
 
@@ -260,6 +261,15 @@ TC_LIMITATIONS = [
 # The credits limited by the tax (Form 2441 line 10, Form 8880 line 11, Form 5695 lines 14 and 31) move with
 # Form 1040 line 16, so every limitation that sets line 16 aside sets them aside too.
 TAX_LIMITED_CREDIT_LINES = ["f2441.line11", "s3.line2", "f8880.line12", "f5695.line15", "s3.line5a", "f5695.line32", "s3.line5b"]
+
+# Lines a Form 1095-A moves: Schedule 3 line 9 and Schedule 2 line 1a, and through Form 1040 lines 17, 18 and 31 the tax,
+# every credit the tax limits, the payments and the refund. Engines given no Form 1095-A are not compared on them there.
+PTC_MOVED = re.compile(r"^(f1040\.line(1[7-9]|2[0-9]|3[0-9]|35a)|f1040\.tax_before_credits|s3\.line(2|4|5a|5b|8|9|15)|s2\.line(1a|1z|3|21)"
+                       r"|s8812\.|f2441\.line(9c|10|11)|f8880\.line(11|12)|f5695\.line(14|15|31|32)|f8962\.)")
+PTC_REASON = ("the engine is given no Form 1095-A, so its tax, credits and payments omit the premium tax credit reconciliation "
+              "(Form 8962) the project figures on these returns")
+for _mapping, _limitations in ((PE_MAP, PE_LIMITATIONS), (TC_MAP, TC_LIMITATIONS)):
+    _limitations.append({"feature": "marketplace", "lines": [l for l in _mapping if PTC_MOVED.match(l)], "reason": PTC_REASON})
 for _mapping, _limitations in ((PE_MAP, PE_LIMITATIONS), (TC_MAP, TC_LIMITATIONS)):
     for _lim in _limitations:
         if "f1040.line16" in _lim["lines"]:

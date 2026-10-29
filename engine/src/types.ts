@@ -33,13 +33,14 @@ export type Expr =
   | { op: "subtract_floor0"; from: string; take: Operand }
   | { op: "smaller_of"; of: string[] }
   | { op: "larger_of"; of: string[] }
-  | { op: "multiply_rate"; amount: string; rate: Operand }
+  | { op: "multiply_rate"; amount: string; rate: Operand; unit?: number }
   | { op: "table_lookup"; table: string; key: string; status: string }
   | { op: "choose"; alternatives: { guard: TestExpr; then: LineRef }[] }
   | TestExpr
   | { op: "round"; of: string; unit: number; rule: string }
   | { op: "multiply_count"; amount: string; count: string }
   | { op: "prorate"; amount: string; part: string; whole: Operand; places: number }
+  | { op: "percent_floor"; part: string; whole: Operand; cap: number }
   | { op: "bracket_schedule"; table: string; key: string; status: string }
   | { op: "sum_over"; collection: string; field: string; where?: TestExpr }
   | { op: "keyed_lookup"; table: string; keys: string[] }

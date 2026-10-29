@@ -478,3 +478,26 @@
 - **Encoded (Bool):** helper "A qualifying person for Form 2441 (you have care expenses, and this person is your dependent and either your qualifying child under 13 or not able to care for themselves and living with you for more than half the year)" = true and helper "Physically or mentally not able to care for themselves?" = true and (helper "Age at the end of 2025" > 13 (dc.child_age) or helper "Age at the end of 2025" = 13 (dc.child_age) and helper "Care provided while this qualifying person was age 13 or older and disabled" = true)
 - Expr: `{"all":[{"eq":["dependent.dc_qp",{"const":true}],"op":"test"},{"eq":["dependent.dc_incapable",{"const":true}],"op":"test"},{"any":[{"gt":["dependent.age",{"param":"dc.child_age"}],"op":"test"},{"all":[{"eq":["dependent.age",{"param":"dc.child_age"}],"op":"test"},{"eq":["dependent.dc_over12_care",{"const":true}],"op":"test"}],"op":"test"}],"op":"test"}],"op":"test"}`
 - Cite: [i2441] p. 3, Column (c), "Check the box in column (c) if the qualifying person listed in column (a) was over age 12 at the time the care was provided and was disabled" (2025; sha256 86f0669e)
+
+## (gate) — `dependent.ptc_files`
+
+- **Authored helper label:** Is this dependent required to file a 2025 return because of their income (Chart B in the Form 1040 instructions)?
+- **Encoded (Bool):** Input — Is this dependent required to file a 2025 income tax return because of their income, by Chart B in the Form 1040 instructions (unearned income over $1,350, earned income over $15,750, or gross income over the larger of $1,350 and earned income up to $15,300 plus $450, for a single dependent under 65 and not blind)? Answer no if the dependent files only to claim a refund of withheld or estimated tax.
+- Interpretation: amb.2025.ptc_dependent_filing
+- Expr: `{"op":"input","source":"Is this dependent required to file a 2025 income tax return because of their income, by Chart B in the Form 1040 instructions (unearned income over $1,350, earned income over $15,750, or gross income over the larger of $1,350 and earned income up to $15,300 plus $450, for a single dependent under 65 and not blind)? Answer no if the dependent files only to claim a refund of withheld or estimated tax."}`
+- Cite: [i8962] p. 8, Line 2b, "Only include your dependents who are required to file an income tax return because their income meets the income tax return filing threshold.", "Do not include the modified AGI of dependents who are filing a tax return only to claim a refund of tax withheld or estimated tax."; i1040gi p. 10, Chart B—For Children and Other Dependents, "Your unearned income was over $1,350." (2025; sha256 f4ac86ad)
+
+## (helper) — `dependent.ptc_magi`
+
+- **Authored helper label:** This dependent's modified AGI (Worksheet 1-2)
+- **Encoded (Dollars):** Input — This dependent's modified AGI for 2025: the AGI on their return (line 11a), plus their tax-exempt interest (line 2a), plus any Form 2555 amounts, plus the part of their social security benefits that is not taxable (line 6a less line 6b); negative if it was a loss
+- Expr: `{"op":"input","source":"This dependent's modified AGI for 2025: the AGI on their return (line 11a), plus their tax-exempt interest (line 2a), plus any Form 2555 amounts, plus the part of their social security benefits that is not taxable (line 6a less line 6b); negative if it was a loss"}`
+- Cite: [i8962] p. 8, Worksheet 1-2, "Only include your dependents who are required to file an income tax return because their income meets the income tax return filing threshold." (2025; sha256 f4ac86ad)
+
+## (helper) — `dependent.ptc_magi_counted`
+
+- **Authored helper label:** This dependent's modified AGI counted in household income (zero unless required to file because of income)
+- **Encoded (Dollars):** Choose — [helper "Is this dependent required to file a 2025 return because of their income (Chart B in the Form 1040 instructions)?" = true → helper "This dependent's modified AGI (Worksheet 1-2)"] [helper "Is this dependent required to file a 2025 return because of their income (Chart B in the Form 1040 instructions)?" = false → helper "No amount for this person"]
+- Interpretation: amb.2025.ptc_dependent_filing
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.ptc_files",{"const":true}],"op":"test"},"then":"dependent.ptc_magi"},{"guard":{"eq":["dependent.ptc_files",{"const":false}],"op":"test"},"then":"dependent.zero"}],"op":"choose"}`
+- Cite: [i8962] p. 8, Line 2b, "Only include your dependents who are required to file an income tax return because their income meets the income tax return filing threshold." (2025; sha256 f4ac86ad)

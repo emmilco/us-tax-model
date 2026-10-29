@@ -343,17 +343,22 @@ function checkLine(ctx: Ctx, doc: FormDoc, line: Line): void {
       break;
     }
     case "sum": {
+      // Money operands give money; Count operands, all of them Counts, give a Count.
       if (expr.of.length === 0) ctx.errors.push(`${where}: sum of nothing`);
       let allNonneg = true;
+      const kinds = new Set<string>();
       for (const ref of expr.of) {
         const hit = requireRef(ctx, doc, ref, where);
         if (hit) {
           const ty = declaredTyOf(ctx, hit.doc, hit.line);
-          if (ty.kind !== "money") ctx.errors.push(`${where}: sum operand '${ref}' is not money`);
+          kinds.add(ty.kind);
+          if (ty.kind !== "money" && ty.kind !== "count") ctx.errors.push(`${where}: sum operand '${ref}' is not money or a Count`);
           allNonneg = allNonneg && ty.kind === "money" && ty.nonneg;
         }
       }
-      compatible(ctx, declared, tyMoney(allNonneg), where);
+      if (kinds.has("money") && kinds.has("count")) ctx.errors.push(`${where}: sum mixes money and Count operands`);
+      if (kinds.size === 1 && kinds.has("count")) compatible(ctx, declared, { kind: "count" }, where);
+      else compatible(ctx, declared, tyMoney(allNonneg), where);
       break;
     }
     case "subtract":
@@ -391,7 +396,16 @@ function checkLine(ctx: Ctx, doc: FormDoc, line: Line): void {
       }
       const rateTy = operandTyOf(ctx, doc, expr.rate, where);
       if (rateTy.kind !== "rate") ctx.errors.push(`${where}: rate operand is not a Rate`);
+      if (expr.unit !== undefined && !(Number.isInteger(expr.unit) && expr.unit > 0)) ctx.errors.push(`${where}: multiply_rate unit must be a positive whole number of cents`);
       compatible(ctx, declared, tyMoney(amountNonneg), where);
+      break;
+    }
+    case "percent_floor": {
+      const phit = requireRef(ctx, doc, expr.part, where);
+      if (phit && declaredTyOf(ctx, phit.doc, phit.line).kind !== "money") ctx.errors.push(`${where}: part '${expr.part}' is not money`);
+      if (operandTyOf(ctx, doc, expr.whole, where).kind !== "money") ctx.errors.push(`${where}: whole operand is not money`);
+      if (!Number.isInteger(expr.cap) || expr.cap < 1) ctx.errors.push(`${where}: cap must be a positive whole number`);
+      compatible(ctx, declared, { kind: "count" }, where);
       break;
     }
     case "multiply_count": {
@@ -663,6 +677,10 @@ function checkCycles(ctx: Ctx, data: CanonicalData): void {
         break;
       case "prorate":
         refs.push(expr.amount, expr.part);
+        operands.push(expr.whole);
+        break;
+      case "percent_floor":
+        refs.push(expr.part);
         operands.push(expr.whole);
         break;
       case "table_lookup":

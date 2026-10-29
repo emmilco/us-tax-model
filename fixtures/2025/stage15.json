@@ -56,7 +56,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -218,7 +217,8 @@
         "retirement[p].sav_inherited": false,
         "f2441.employer_care": false,
         "person[spouse].ira_excess": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8880.line1a": {
@@ -352,7 +352,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -443,7 +442,8 @@
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
         "person[taxpayer].ira_excess": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8880.line1a": {
@@ -586,7 +586,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -686,7 +685,8 @@
         "person[taxpayer].w2[emp_a].box12_bb": 0,
         "person[taxpayer].w2[emp_a].box12_ee": 0,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8880.line1a": {
@@ -829,7 +829,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -920,7 +919,8 @@
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
         "person[taxpayer].ira_excess": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8880.line1a": {
@@ -1063,7 +1063,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -1154,7 +1153,8 @@
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
         "person[taxpayer].ira_excess": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8880.line1a": {
@@ -1297,7 +1297,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -1388,7 +1387,8 @@
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
         "person[taxpayer].ira_excess": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8880.line1a": {
@@ -1505,7 +1505,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -1646,7 +1645,8 @@
         "f2441.employer_care": false,
         "person[spouse].ira_excess": false,
         "person[taxpayer].ira_excess": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8880.line1a": {
@@ -1813,7 +1813,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -1933,7 +1932,8 @@
         "dependent[a].eic_ssn": true,
         "f2441.employer_care": false,
         "person[taxpayer].ira_excess": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8880.line1a": {
@@ -2088,7 +2088,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -2188,7 +2187,8 @@
         "person[taxpayer].w2[emp_a].box12_bb": 0,
         "person[taxpayer].w2[emp_a].box12_ee": 0,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8880.line1a": {
@@ -2286,7 +2286,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -2388,7 +2387,8 @@
         "person[taxpayer].w2[emp_a].g_governmental": true,
         "person[taxpayer].w2[emp_a].g_elective": 100000,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8880.line1a": {
@@ -2531,7 +2531,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -2631,7 +2630,8 @@
         "person[taxpayer].w2[emp_a].box12_bb": 0,
         "person[taxpayer].w2[emp_a].box12_ee": 0,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8880.line1a": {
@@ -2774,7 +2774,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -2865,7 +2864,8 @@
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
         "person[taxpayer].ira_excess": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8880.line1a": {
@@ -3006,7 +3006,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -3156,7 +3155,8 @@
         "person[taxpayer].w2[e0].box12_ee": 0,
         "f2441.employer_care": false,
         "person[spouse].ira_excess": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8880.line1a": {
@@ -3309,7 +3309,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -3503,7 +3502,8 @@
         "person[taxpayer].w2[e0].box12_bb": 0,
         "person[taxpayer].w2[e0].box12_ee": 0,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8880.line1a": {
@@ -3682,7 +3682,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -3773,7 +3772,8 @@
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
         "person[taxpayer].ira_excess": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8880.line1a": {
@@ -3920,7 +3920,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -4053,7 +4052,8 @@
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f2441.line3": {
@@ -4210,7 +4210,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -4410,7 +4409,8 @@
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f2441.line3": {
@@ -4567,7 +4567,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -4743,7 +4742,8 @@
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f2441.line3": {
@@ -4902,7 +4902,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -5041,7 +5040,8 @@
         "f2441.plans_differ": false,
         "f2441.plan_max": 500000,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f2441.line11": {
@@ -5223,7 +5223,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -5362,7 +5361,8 @@
         "f2441.plans_differ": false,
         "f2441.plan_max": 500000,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f2441.line11": {
@@ -5542,7 +5542,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -5750,7 +5749,8 @@
         "f2441.plans_differ": false,
         "f2441.plan_max": 500000,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f2441.line3": {
@@ -5989,7 +5989,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -6123,7 +6122,8 @@
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f2441.line3": {
@@ -6280,7 +6280,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -6456,7 +6455,8 @@
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f2441.line3": {
@@ -6613,7 +6613,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -6791,7 +6790,8 @@
         "f2441.employer_care": false,
         "s1.cod_any": false,
         "dependent[a].born_died": true,
-        "dependent[a].part_year_home": true
+        "dependent[a].part_year_home": true,
+        "$f1095a": []
       },
       "expect": {
         "dependent[a].dc_qp": {
@@ -6865,7 +6865,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -6998,7 +6997,8 @@
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f2441.line3": {
@@ -7157,7 +7157,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -7290,7 +7289,8 @@
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f2441.line3": {
@@ -7449,7 +7449,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -7582,7 +7581,8 @@
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f2441.line3": {
@@ -7741,7 +7741,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -7880,7 +7879,8 @@
         "f2441.plans_differ": false,
         "f2441.plan_max": 500000,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f2441.line11": {
@@ -8062,7 +8062,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -8219,7 +8218,8 @@
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f2441.line3": {
@@ -8374,7 +8374,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -8518,7 +8517,8 @@
         "f5695.separate_homes": false,
         "f5695.condo": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f5695.line1": {
@@ -8630,7 +8630,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -8823,7 +8822,8 @@
         "f5695.separate_homes": false,
         "f5695.condo": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f5695.line19a": {
@@ -8985,7 +8985,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -9129,7 +9128,8 @@
         "f5695.separate_homes": false,
         "f5695.condo": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f5695.line18a": {
@@ -9261,7 +9261,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -9454,7 +9453,8 @@
         "f5695.separate_homes": false,
         "f5695.condo": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f5695.line5b": {
@@ -9568,7 +9568,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -9712,7 +9711,8 @@
         "f5695.separate_homes": false,
         "f5695.condo": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f5695.line12": {
@@ -9818,7 +9818,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -9962,7 +9961,8 @@
         "f5695.separate_homes": false,
         "f5695.condo": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f5695.line26b": {
@@ -10080,7 +10080,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -10224,7 +10223,8 @@
         "f5695.separate_homes": false,
         "f5695.condo": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f5695.line19a": {
@@ -10358,7 +10358,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -10502,7 +10501,8 @@
         "f5695.separate_homes": false,
         "f5695.condo": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f5695.line20b": {
@@ -10624,7 +10624,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -10819,7 +10818,8 @@
         "f5695.separate_homes": false,
         "f5695.condo": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f5695.line1": {
@@ -11017,7 +11017,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -11161,7 +11160,8 @@
         "f5695.separate_homes": false,
         "f5695.condo": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f5695.line22a": {
@@ -11287,7 +11287,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -11431,7 +11430,8 @@
         "f5695.separate_homes": false,
         "f5695.condo": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f5695.line18a": {
@@ -11561,7 +11561,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -11705,7 +11704,8 @@
         "f5695.separate_homes": false,
         "f5695.condo": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f5695.line18a": {
@@ -11847,7 +11847,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -11991,7 +11990,8 @@
         "f5695.separate_homes": false,
         "f5695.condo": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f5695.line2": {
@@ -12117,7 +12117,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -12250,7 +12249,8 @@
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f2441.line3": {
@@ -12369,7 +12369,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -12502,7 +12501,8 @@
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f2441.line3": {
@@ -12621,7 +12621,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -12754,7 +12753,8 @@
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f2441.line3": {
@@ -12873,7 +12873,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -13006,7 +13005,8 @@
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f2441.line3": {
@@ -13125,7 +13125,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -13258,7 +13257,8 @@
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f2441.line3": {
@@ -13377,7 +13377,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -13510,7 +13509,8 @@
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f2441.line3": {
@@ -13629,7 +13629,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -13762,7 +13761,8 @@
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f2441.line3": {
@@ -13881,7 +13881,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -14014,7 +14013,8 @@
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f2441.line3": {
@@ -14133,7 +14133,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -14266,7 +14265,8 @@
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f2441.line3": {
@@ -14385,7 +14385,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -14518,7 +14517,8 @@
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f2441.line3": {
@@ -14637,7 +14637,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -14770,7 +14769,8 @@
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f2441.line3": {
@@ -14889,7 +14889,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -15022,7 +15021,8 @@
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f2441.line3": {
@@ -15141,7 +15141,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -15274,7 +15273,8 @@
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f2441.line3": {
@@ -15393,7 +15393,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -15526,7 +15525,8 @@
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f2441.line3": {
@@ -15643,7 +15643,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -15819,7 +15818,8 @@
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f2441.line3": {
@@ -15938,7 +15938,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -16077,7 +16076,8 @@
         "f2441.plans_differ": false,
         "f2441.plan_max": 500000,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f2441.line12": {
@@ -16227,7 +16227,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -16390,7 +16389,8 @@
         "f2441.plans_differ": false,
         "f2441.plan_max": 500000,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f2441.line3": {
@@ -16585,7 +16585,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -16729,7 +16728,8 @@
         "f5695.separate_homes": false,
         "f5695.condo": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f5695.line20b": {
@@ -16851,7 +16851,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -16995,7 +16994,8 @@
         "f5695.separate_homes": false,
         "f5695.condo": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f5695.line22a": {
@@ -17121,7 +17121,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -17265,7 +17264,8 @@
         "f5695.separate_homes": false,
         "f5695.condo": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f5695.line23b": {
@@ -17387,7 +17387,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -17531,7 +17530,8 @@
         "f5695.separate_homes": false,
         "f5695.condo": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f5695.line24a": {
@@ -17657,7 +17657,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -17801,7 +17800,8 @@
         "f5695.separate_homes": false,
         "f5695.condo": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f5695.line24a": {
@@ -17927,7 +17927,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -18071,7 +18070,8 @@
         "f5695.separate_homes": false,
         "f5695.condo": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f5695.line25c": {
@@ -18213,7 +18213,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -18357,7 +18356,8 @@
         "f5695.separate_homes": false,
         "f5695.condo": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f5695.line25c": {
@@ -18499,7 +18499,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -18643,7 +18642,8 @@
         "f5695.separate_homes": false,
         "f5695.condo": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f5695.line19a": {
@@ -18777,7 +18777,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -18921,7 +18920,8 @@
         "f5695.separate_homes": false,
         "f5695.condo": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f5695.line18a": {
@@ -19047,7 +19047,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -19191,7 +19190,8 @@
         "f5695.separate_homes": false,
         "f5695.condo": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f5695.line18a": {
@@ -19333,7 +19333,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -19477,7 +19476,8 @@
         "f5695.separate_homes": false,
         "f5695.condo": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f5695.line1": {
@@ -19595,7 +19595,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -19812,7 +19811,8 @@
         "f5695.separate_homes": false,
         "f5695.condo": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f5695.line1": {
@@ -20006,7 +20006,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -20223,7 +20222,8 @@
         "f5695.separate_homes": false,
         "f5695.condo": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f5695.line1": {
@@ -20420,7 +20420,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -20511,7 +20510,8 @@
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
         "person[taxpayer].ira_excess": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8880.line1a": {
@@ -20657,7 +20657,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -20748,7 +20747,8 @@
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
         "person[taxpayer].ira_excess": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8880.line1a": {
@@ -20894,7 +20894,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -21014,7 +21013,8 @@
         "dependent[a].eic_ssn": true,
         "f2441.employer_care": false,
         "person[taxpayer].ira_excess": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8880.line1a": {
@@ -21172,7 +21172,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -21292,7 +21291,8 @@
         "dependent[a].eic_ssn": true,
         "f2441.employer_care": false,
         "person[taxpayer].ira_excess": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8880.line1a": {
@@ -21450,7 +21450,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -21541,7 +21540,8 @@
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
         "person[taxpayer].ira_excess": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8880.line1a": {
@@ -21661,7 +21661,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -21801,7 +21800,8 @@
         "person[spouse].w2[e0].box12_any": false,
         "f2441.employer_care": false,
         "person[taxpayer].ira_excess": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8880.line1a": {
@@ -21969,7 +21969,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -22109,7 +22108,8 @@
         "person[spouse].w2[e0].box12_any": false,
         "f2441.employer_care": false,
         "person[taxpayer].ira_excess": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8880.line1a": {
@@ -22279,7 +22279,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -22399,7 +22398,8 @@
         "dependent[a].eic_ssn": true,
         "f2441.employer_care": false,
         "person[taxpayer].ira_excess": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8880.line1a": {
@@ -22531,7 +22531,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -22671,7 +22670,8 @@
         "person[spouse].w2[e0].box12_any": false,
         "f2441.employer_care": false,
         "person[taxpayer].ira_excess": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8880.line1a": {
@@ -22817,7 +22817,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -22917,7 +22916,8 @@
         "person[taxpayer].w2[emp_a].box12_bb": 0,
         "person[taxpayer].w2[emp_a].box12_ee": 0,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8880.line1a": {
@@ -23063,7 +23063,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -23163,7 +23162,8 @@
         "person[taxpayer].w2[emp_a].box12_bb": 0,
         "person[taxpayer].w2[emp_a].box12_ee": 0,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8880.line1a": {
@@ -23309,7 +23309,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -23409,7 +23408,8 @@
         "person[taxpayer].w2[emp_a].box12_bb": 60000,
         "person[taxpayer].w2[emp_a].box12_ee": 0,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8880.line1a": {
@@ -23555,7 +23555,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -23655,7 +23654,8 @@
         "person[taxpayer].w2[emp_a].box12_bb": 0,
         "person[taxpayer].w2[emp_a].box12_ee": 90000,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8880.line1a": {
@@ -23799,7 +23799,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -23940,7 +23939,8 @@
         "f2441.employer_care": false,
         "person[spouse].ira_excess": false,
         "person[taxpayer].ira_excess": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8880.line1a": {
@@ -24108,7 +24108,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -24261,7 +24260,8 @@
         "f2441.employer_care": false,
         "person[spouse].ira_excess": false,
         "person[taxpayer].ira_excess": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8880.line1a": {
@@ -24423,7 +24423,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -24623,7 +24622,8 @@
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f2441.line4": {
@@ -24732,7 +24732,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -24932,7 +24931,8 @@
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f2441.line4": {
@@ -25041,7 +25041,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -25241,7 +25240,8 @@
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f2441.line4": {
@@ -25350,7 +25350,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -25550,7 +25549,8 @@
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f2441.line5": {
@@ -25633,7 +25633,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -25841,7 +25840,8 @@
         "f2441.plans_differ": false,
         "f2441.plan_max": 500000,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f2441.line4": {
@@ -25926,7 +25926,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -26059,7 +26058,8 @@
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f2441.line9b": {
@@ -26129,7 +26129,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -26337,7 +26336,8 @@
         "f2441.plans_differ": true,
         "f2441.plan_max": 500000,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f2441.line21": {
@@ -26407,7 +26407,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -26615,7 +26614,8 @@
         "f2441.plans_differ": false,
         "f2441.plan_max": 500000,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f2441.line15": {
@@ -26687,7 +26687,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -26820,7 +26819,8 @@
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f2441.qp_count": {
@@ -26905,7 +26905,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -27038,7 +27037,8 @@
         "dcprov[p0].related": true,
         "f2441.paid_2026": 0,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f2441.paid_total": {
@@ -27110,7 +27110,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -27243,7 +27242,8 @@
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "dependent[a].claimed": {
@@ -27367,7 +27367,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -27500,7 +27499,8 @@
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f2441.line11": {
@@ -27572,7 +27572,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -27711,7 +27710,8 @@
         "f2441.plans_differ": false,
         "f2441.plan_max": 500000,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f2441.line26": {
@@ -27783,7 +27783,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -27927,7 +27926,8 @@
         "f5695.separate_homes": false,
         "f5695.condo": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f5695.line6a": {
@@ -27999,7 +27999,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -28143,7 +28142,8 @@
         "f5695.separate_homes": false,
         "f5695.condo": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f5695.line6a": {
@@ -28215,7 +28215,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -28359,7 +28358,8 @@
         "f5695.separate_homes": false,
         "f5695.condo": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f5695.line11": {
@@ -28431,7 +28431,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -28575,7 +28574,8 @@
         "f5695.separate_homes": false,
         "f5695.condo": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f5695.rce_ws2": {
@@ -28645,7 +28645,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -28838,7 +28837,8 @@
         "f5695.separate_homes": false,
         "f5695.condo": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f5695.eehi_ws2": {
@@ -28908,7 +28908,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -29101,7 +29100,8 @@
         "f5695.separate_homes": false,
         "f5695.condo": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f5695.line30": {
@@ -29171,7 +29171,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -29364,7 +29363,8 @@
         "f5695.separate_homes": false,
         "f5695.condo": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f5695.line30": {
@@ -29434,7 +29434,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -29627,7 +29626,8 @@
         "f5695.separate_homes": true,
         "f5695.condo": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f5695.line30": {
@@ -29697,7 +29697,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -29890,7 +29889,8 @@
         "f5695.separate_homes": false,
         "f5695.condo": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f5695.line30": {
@@ -29960,7 +29960,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -30153,7 +30152,8 @@
         "f5695.separate_homes": false,
         "f5695.condo": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f5695.line30": {
@@ -30223,7 +30223,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -30416,7 +30415,8 @@
         "f5695.separate_homes": false,
         "f5695.condo": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f5695.doors_capped": {
@@ -30512,7 +30512,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -30705,7 +30704,8 @@
         "f5695.separate_homes": false,
         "f5695.condo": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f5695.wh_capped": {
@@ -30814,7 +30814,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -31007,7 +31006,8 @@
         "f5695.separate_homes": false,
         "f5695.condo": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f5695.enabling_capped": {
@@ -31082,7 +31082,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -31226,7 +31225,8 @@
         "f5695.separate_homes": false,
         "f5695.condo": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f5695.line18b": {
@@ -31301,7 +31301,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -31496,7 +31495,8 @@
         "f5695.separate_homes": false,
         "f5695.condo": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "s8812.clwb_11": {
@@ -31568,7 +31568,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -31659,7 +31658,8 @@
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
         "person[taxpayer].ira_excess": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8880.line8": {
@@ -31729,7 +31729,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -31870,7 +31869,8 @@
         "f2441.employer_care": false,
         "person[spouse].ira_excess": false,
         "person[taxpayer].ira_excess": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8880.prior_own_a": {
@@ -31953,7 +31953,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -32044,7 +32043,8 @@
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
         "person[taxpayer].ira_excess": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "person[taxpayer].sav_line1": {
@@ -32142,7 +32142,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -32242,7 +32241,8 @@
         "person[taxpayer].w2[emp_a].box12_bb": 0,
         "person[taxpayer].w2[emp_a].box12_ee": 0,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "person[taxpayer].sav_line2": {
@@ -32314,7 +32314,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -32414,7 +32413,8 @@
         "person[taxpayer].w2[emp_a].box12_bb": 0,
         "person[taxpayer].w2[emp_a].box12_ee": 0,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "person[taxpayer].w2[emp_a].sav_listed": {
@@ -32486,7 +32486,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -32586,7 +32585,8 @@
         "person[taxpayer].w2[emp_a].box12_bb": 0,
         "person[taxpayer].w2[emp_a].box12_ee": 0,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "person[taxpayer].w2[emp_a].sav_listed": {
@@ -32658,7 +32658,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -32760,7 +32759,8 @@
         "person[taxpayer].w2[emp_a].g_governmental": true,
         "person[taxpayer].w2[emp_a].g_elective": 150000,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "person[taxpayer].w2[emp_a].g_gov_part": {
@@ -32832,7 +32832,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -32971,7 +32970,8 @@
         "f2441.plans_differ": false,
         "f2441.plan_max": 500000,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "person[taxpayer].w2[emp_a].dc_net": {
@@ -33044,7 +33044,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -33182,7 +33181,8 @@
         "dcprov[p1].paid": 100000,
         "dcprov[p1].related": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f2441.statement_count": {
@@ -33258,7 +33258,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -33415,7 +33414,8 @@
         "dependent[b].dc_paid": 0,
         "dependent[b].dc_incapable": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f2441.qp_count": {
@@ -33487,7 +33487,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -33668,7 +33667,8 @@
         "dependent[c].dc_paid": 400000,
         "dependent[c].dc_incapable": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f2441.qp_count": {
@@ -33733,7 +33733,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -33941,7 +33940,8 @@
         "f2441.plans_differ": false,
         "f2441.plan_max": 600000,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f2441.exclusion_max": {
@@ -34008,7 +34008,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -34099,7 +34098,8 @@
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
         "person[taxpayer].ira_excess": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f8880.agi_limit": {
@@ -34173,7 +34173,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -34317,7 +34316,8 @@
         "f5695.separate_homes": false,
         "f5695.condo": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f5695.line18a": {
@@ -34453,7 +34453,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -34637,7 +34636,8 @@
         "f2441.plans_differ": false,
         "f2441.plan_max": 500000,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f2441.line12": {
@@ -34811,7 +34811,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -34955,7 +34954,8 @@
         "f5695.separate_homes": false,
         "f5695.condo": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f1040.line11a": {
@@ -35085,7 +35085,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -35302,7 +35301,8 @@
         "f5695.separate_homes": false,
         "f5695.condo": false,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f1040.line11a": {
@@ -35573,7 +35573,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -35712,7 +35711,8 @@
         "f2441.plans_differ": false,
         "f2441.plan_max": 500000,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f2441.line12": {
@@ -35783,7 +35783,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -35922,7 +35921,8 @@
         "f2441.plans_differ": false,
         "f2441.plan_max": 500000,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f2441.line12": {
@@ -35993,7 +35993,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -36132,7 +36131,8 @@
         "f2441.plans_differ": false,
         "f2441.plan_max": 500000,
         "f2441.employer_care": false,
-        "s1.cod_any": false
+        "s1.cod_any": false,
+        "$f1095a": []
       },
       "expect": {
         "f2441.line12": {
@@ -36211,7 +36211,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -36389,7 +36388,8 @@
         "f2441.employer_care": false,
         "s1.cod_any": false,
         "dependent[a].dc_under13": true,
-        "dependent[a].dc_over12_care": false
+        "dependent[a].dc_over12_care": false,
+        "$f1095a": []
       },
       "expect": {
         "f2441.line3": {
@@ -36544,7 +36544,6 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
@@ -36722,7 +36721,8 @@
         "f2441.employer_care": false,
         "s1.cod_any": false,
         "dependent[a].dc_under13": true,
-        "dependent[a].dc_over12_care": true
+        "dependent[a].dc_over12_care": true,
+        "$f1095a": []
       },
       "expect": {
         "f2441.line3": {

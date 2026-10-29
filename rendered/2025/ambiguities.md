@@ -240,7 +240,7 @@
 - Candidate readings: Pub. 503's list of four (dcprov.related), which is broader for a spouse (at any time during the year) and narrower for a parent (only of your child under 13). | The instructions' list (your spouse, the parent of your qualifying child, your dependent, your child under 19).
 - **Chosen:** The first (dcprov.related asks Pub. 503's list; a Yes refuses Form 2441).
 - Reason: The owner's decision (Stage 15, decision 6). The publication is the more specific text, and both lists agree on a dependent and a child under 19. A provider in either list refuses, so the reading decides only which question is asked.
-- Status: Owner ruling, Stage 15 (T-048).
+- Status: Owner ruling, Stage 15 (T-048); reason revisited after Stage 18 (T-049).
 - Cite: [p503] p. 8, Payments to Relatives or Dependents, "However, don't count any amounts you pay to" (For use in preparing 2025 returns; sha256 3a00d0c1)
 
 ## amb.2025.dc_line1e_attribution
@@ -284,7 +284,7 @@
 - Text at issue: Form 2441, line 8: "Enter on line 8 the decimal amount shown below that applies to the amount on line 7", in a table whose first band is "Over $0 But not over 15,000".
 - Candidate readings: Line 7 of zero or less takes the first band's .35. | Line 7 of zero or less has no decimal amount, and the credit is not figured.
 - **Chosen:** The first (tables/2025/dc_rate.yaml, the first band open below).
-- Reason: The owner's ruling. In this tool the readings cannot differ in the credit. Line 7 (adjusted gross income) of zero or less gives taxable income of zero and no tax on Form 1040 line 16, and Schedule 2 Part I (line 17) is zero here, the alternative minimum tax and the repayment of excess advance premium tax credit being refused (s2.amt and the Schedule 2 screen); so line 18 is zero, and the Credit Limit Worksheet's line 3 and line 10 are zero. A rate is still needed for line 8 to be known.
+- Reason: The owner's ruling. Line 7 (adjusted gross income) of zero or less gives taxable income of zero and no tax on Form 1040 line 16, but since Stage 18 Schedule 2 line 1a can be positive there (a repayment of excess advance premium tax credit, limited by Table 5 to $375 or $750 when household income is below the poverty line), so line 18, and with it the Credit Limit Worksheet's lines 3 and 10, can be above zero, and the readings can differ in the credit. The ruling chose the first reading, a rate for line 8, regardless of that; T-049 re-examined the reason after Stage 18.
 - Status: Owner ruling, Stage 15 (T-048).
 - Cite: [f2441] Form 2441 (2025), line 8 (2025; created 2025-03-18; sha256 6c3c2d19)
 
@@ -664,3 +664,39 @@
 - Reason: The archived 2024 and 2025 editions of the worksheet differ only in their years (sources/2024/i1040sd p. 11, sources/2025/i1040sd p. 10), and the lines give Pub. 550's rule, "the amount of your total net loss that is more than the lesser of" the allowable deduction and taxable income increased by it (checked by brute force over random cases in the Stage 20 premise map and its verification). The figures are the inputs the 2026 return needs. Owner's decision D4, 2026-10-27.
 - Status: Owner decision, 2026-10-27 (research/premises/stage20-capital-loss-carryover.decisions.md, D4).
 - Cite: [i1040sd] p. 14, Line 21, "If you want to figure your carryover to 2026 now, see Pub. 550" (2025; printed date 2025-12-11; sha256 650643a6)
+
+## amb.2025.ptc_dependent_filing
+
+- Text at issue: Form 8962 line 2b counts the modified AGI of dependents "who are required to file an income tax return because their income meets the income tax return filing threshold". Chart B of the Form 1040 instructions gives the income thresholds for dependents; Chart C adds other reasons to file (self-employment earnings of $400 or more, advance payments of the premium tax credit), which are not income meeting a threshold in the sense of Chart B.
+- Candidate readings: Count a claimed dependent required to file by Chart B (unearned, earned or gross income), not by Chart C alone. | Count any claimed dependent required to file for any reason, Chart C included.
+- **Chosen:** The first (dependent.ptc_files, with Chart B in its question).
+- Reason: The instructions name the income filing threshold, which is Chart B's test; Chart C's reasons are other requirements. The statute (26 U.S.C. 36B, archived as usc-26-36b) is the second reading. Owner's decision D7(b), 2026-10-28.
+- Status: Owner decision, 2026-10-28 (research/premises/stage18-premium-tax-credit.decisions.md, D7).
+- Cite: [i8962] p. 8, Line 2b, "Only include your dependents who are required to file an income tax return because their income meets the income tax return filing threshold." (2025; sha256 f4ac86ad)
+
+## amb.2025.ptc_not_applicable
+
+- Text at issue: Below 100% of the federal poverty line without the Marketplace-estimate exception, i8962 says "you are not an applicable taxpayer and you are not eligible to take the PTC. If APTC was paid for any individuals in your tax family, skip lines 7 and 8, and go to line 9." Unlike its rule for married filing separately, it does not say to enter -0- on line 24.
+- Candidate readings: Line 24 is zero and line 25 the advance payments, so the excess is repaid up to the Table 5 limit. | Leave line 24 to the columns (e) figured without lines 7 and 8.
+- **Chosen:** The first (f8962.line24 is zero when f8962.applicable is false).
+- Reason: A taxpayer who is "not eligible to take the PTC" is allowed none; the columns that would figure it read the skipped lines 7 and 8. Owner's decision D7(a), 2026-10-28.
+- Status: Owner decision, 2026-10-28 (research/premises/stage18-premium-tax-credit.decisions.md, D7).
+- Cite: [i8962] p. 10, "If APTC was paid for any individuals in your tax family, skip lines 7 and 8, and go to line 9." (2025; sha256 f4ac86ad)
+
+## amb.2025.ptc_1095a_cents
+
+- Text at issue: i8962 p. 22, Entering amounts from Form 1095-A: "You should round the amounts on Form 1095-A to the nearest whole dollar and enter dollars only on Form 8962."
+- Candidate readings: Keep the Form 1095-A amounts in exact cents. | Round each amount to the nearest dollar before it is used.
+- **Chosen:** The first.
+- Reason: "should" leaves rounding to the filer, and the tool keeps every entered amount as given (as amb.2025.sales_rounding does); a return that rounds can differ by a few dollars. Owner's decision D7(c), 2026-10-28.
+- Status: Owner decision, 2026-10-28 (research/premises/stage18-premium-tax-credit.decisions.md, D7).
+- Cite: [i8962] p. 22, "You should round the amounts on Form 1095-A to the nearest whole dollar and enter dollars only on Form 8962." (2025; sha256 f4ac86ad)
+
+## amb.2025.ptc_annual_route
+
+- Text at issue: Form 8962 line 10 is answered Yes when every Form 1095-A has full-year coverage with no changes in columns A and B; line 11 then uses the annual contribution amount (line 8a), where the monthly lines would use line 8b, line 8a divided by 12 and rounded to the dollar. The two can differ by a few dollars.
+- Candidate readings: Line 10 is a test; when it holds, line 11 is used. | Let the filer choose whichever route gives the larger credit.
+- **Chosen:** The first (f8962.line10 derived from the entries).
+- Reason: The instructions make line 10 a test ("Check “Yes” and continue to line 11 if all of the following apply"), not a choice. Owner's decision D7(d), 2026-10-28.
+- Status: Owner decision, 2026-10-28 (research/premises/stage18-premium-tax-credit.decisions.md, D7).
+- Cite: [i8962] p. 14, Line 10, "Check “Yes” and continue to line 11 if all of the following apply for each qualified health plan" (2025; sha256 f4ac86ad)

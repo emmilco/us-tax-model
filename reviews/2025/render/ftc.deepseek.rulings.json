@@ -32,6 +32,13 @@
    "context": "751fdc2a5fff55122f14b2970347d7f1b0afb7ab0c926006c40970dcfe952a4f"
   },
   {
+   "printed": "regular_tax",
+   "restated": "Add f1040 line 16 and s2 line 1z.",
+   "model": "IRS line 20 requires Form 1040 line 16 plus Schedule 2 line 1z 'less any tax included on line 16 from Form 4972' (and possible Form 8978 adjustment); the restatement only adds the two lines.",
+   "ruling": "Ruling: scope; screens scope.other_line16 and scope.credits. i1116 p. 25, Line 20, \"Individuals. Enter the total of Form 1040, 1040-SR, or 1040-NR, line 16, and Schedule 2 (Form 1040), Part I, line 1z, less any tax included on line 16 from Form 4972.\" and \"If you file Form 8978, Partner’s Additional Reporting Year Tax, you will need to increase or decrease the amount you report on Form 1116, line 20 ... If, after your adjustment, the amount of your tax is zero or less, enter -0- on Form 1116, line 20.\" The restatement is the BUG-0190 fix (round-1 F1): ftc.regular_tax = f1040.line16 + s2.line1z. The three omitted terms are refused. Form 4972: scope.other_line16 (\"... including filing Form 8814 (even with no tax), Form 4972, Form 8615, a section 962 election, Form 8621, a Form 8978 amount ...\") refuses f1040.line16 and scope.ready, so no Form 4972 tax is in line 16 and nothing is subtracted. Form 8978: a positive amount is in line 16 and refused by the same screen; a negative one goes to Schedule 3 Part I and is refused by scope.credits (\"... any other amount for Schedule 3 Part I (for example a Form 8978 adjustment)\", at f1040 lines 29 and 30). The zero floor applies only \"after your adjustment\"; without one, line 16 and line 1z are both NonNegDollars, so their sum is never below zero. The fix uses line 1z, not line 3, which agrees with the page (line 3 adds the alternative minimum tax, section 26(b)(2)). Regression stage18.ftc_limit_with_repayment evaluates to ftc.regular_tax $375.00, ftc.credit $200.00 and Form 1040 line 22 $175.00, the round-1 source values. No new error found.",
+   "context": "cce77a446274d8b073a534c5cfae2041b606489009b1bebf28437dfbf4318e0b"
+  },
+  {
    "printed": "taxes",
    "restated": "Input — Total creditable foreign taxes after required reductions; generally Form 1099-INT box 6 and Form 1099-DIV box 7",
    "model": "The IRS text requires total creditable foreign taxes after reductions and lists Form 1099-INT and Form 1099-DIV as qualified payee statements, but it does not specify box 6 or box 7.",

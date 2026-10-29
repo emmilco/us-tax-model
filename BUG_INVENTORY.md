@@ -2840,3 +2840,93 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
 - **Where:** `forms/2025/clcw26.yaml`, `clcw26.show`.
 - **Fix:** `clcw26.show` tests the whole sentence. Values unchanged.
 - **Tags:** skipped-line-shown; caught-by-source-adjudication
+
+## BUG-0188 — A lawfully present alien below 100% of the poverty line was computed as not an applicable taxpayer
+
+- **Date:** 2026-10-29
+- **Caught by:** the session, checking decision D6 against the encoding before the Stage 18 adjudication; confirmed by the
+  render and transcription adjudication (`.transcription/proposed/stage18/f8962.findings.md` and
+  `f8962.render-classm.findings.md`, R1). Witness: blind return P8 (line 5 = 79, advance payments $5,000) with an enrolled
+  lawfully present alien: line 24 $0 and a $375 repayment where the source allows a $160 net credit.
+- **Symptom:** i8962 p. 9, "Alien lawfully present in the United States", makes such a filer an applicable taxpayer below
+  100%. D6 decided the branch is refused, but `f8962.other` asks only about someone not lawfully present and no other
+  screen asked about it, so the return was completed with a wrong amount instead of refused.
+- **Where:** `forms/2025/f8962.yaml`, `f8962.applicable` and the line 24 refusals.
+- **Why the checks did not catch it:** the blind predictors and both reviewers worked from the same screens; deepseek's
+  render matched every line.
+- **Fix:** the gate `f8962.alien_below` (asked only with a Form 1095-A and line 5 below 100) and `f8962.alien_branch`,
+  refusing on line 24 with the i8962 p. 9 citation. Regression `stage18.refuse.alien_below_100`.
+- **Tags:** missing-screen; caught-by-source-adjudication
+
+## BUG-0189 — Column B was counted per Form 1095-A for the year, not per month
+
+- **Date:** 2026-10-29
+- **Caught by:** the Stage 18 transcription adjudication (`.transcription/proposed/stage18/f8962.findings.md`, R2); neither
+  reviewer raised it. Witness: one state, a policy for January to June and another for July to December: line 24 $2,100
+  and line 26 $600 where the source gives $3,000 and $1,500.
+- **Symptom:** i8962 p. 16, Column (b), applies the one-form rule only "If you have more than one Form 1095-A showing
+  coverage in a particular month". `f1095a.b_counted` asked for one counted form per state for the whole year, so
+  policies that follow one another in one state lost column B for the uncounted form's months, or, with both marked,
+  were refused by `f8962.two_counted`.
+- **Where:** `forms/2025/f1095a.yaml` `f1095a.b_counted`; `forms/2025/f8962.yaml` `f8962.same_state_counted`,
+  `f8962.two_counted` and its remedy.
+- **Fix:** the questions ask the per-month rule (count a form unless another counted form from its state covers every
+  one of its months; refuse two counted forms from one state that share a month, which also refuses partial overlaps).
+  Regression `stage18.mut.sequential_policies_one_state`. The generator draws sequential policies too.
+- **Tags:** misread-source; caught-by-source-adjudication
+
+## BUG-0190 — The foreign tax credit limit left out Schedule 2 line 1z
+
+- **Date:** 2026-10-29
+- **Caught by:** the Stage 18 adjudication of the Schedule 3 render logs (`.transcription/proposed/stage18/s3.findings.md`,
+  F1). Witness: P8 with $200 of foreign tax under the election: credit $0 and refund $167 where the source gives $200 and
+  $367.
+- **Symptom:** i1116 p. 25, Line 20, "Enter the total of Form 1040 ... line 16, and Schedule 2 (Form 1040), Part I, line
+  1z". `ftc.limited` used line 16 alone, which was exact while every Schedule 2 Part I amount was refused; Stage 18 made
+  line 1a (the excess advance PTC repayment) computed.
+- **Where:** `forms/2025/ftc.yaml`, `ftc.limited`.
+- **Fix:** `ftc.regular_tax` = line 16 + Schedule 2 line 1z, cited to i1116 p. 25; Form 4972 stays refused through
+  `scope.other_line16`. No other limit reads line 16 alone. Regression `stage18.ftc_limit_with_repayment`.
+- **Tags:** stale-assumption; caught-by-source-adjudication
+
+## BUG-0191 — Form 8962 lines were shown on returns with no Form 1095-A
+
+- **Date:** 2026-10-29
+- **Caught by:** the Stage 18 class M adjudication (O1): line 10 printed "Yes" on every return without a Form 1095-A.
+- **Symptom:** lines 1 to 5, 7, 8a, 8b, 9, 10, 11(a), (b), (f), 24 and 25 were shown on the values sheet of every return,
+  though Form 8962 is filed only with a Form 1095-A (i8962 p. 3, Who Must File). Display only.
+- **Where:** `forms/2025/f8962.yaml`.
+- **Fix:** lines 1 to 5 are shown only when `f8962.any`; lines 7 and 8 use `f8962.show_applicable`. The round-2
+  adjudication found the fix incomplete (R3, N1: `show_annual_calc` and `f8962.net` did not test for a form, so 11(c) to
+  11(e) and 26 still showed) and that lines after the line 5 STOP showed for a non-applicable taxpayer with no advance
+  payments (R4; i8962 p. 10, "if no APTC was paid for any individuals in your tax family, stop; do not complete Form
+  8962"). `f8962.filing` (a form, and an applicable taxpayer or advance payments) now gates lines 9, 10, 24, 25, line 11
+  (`show_annual`, which `show_annual_calc` reads), every month's `show_<m>`, line 26 (`f8962.net`) and lines 27 to 29 (`f8962.excess`, which the round-3 adjudication found
+  printing UNKNOWN on completed returns with no Form 1095-A, R5); its name follows
+  the class M convention, so unfiled Forms 8962 are no longer worked by hand. Values unchanged.
+- **Tags:** skipped-line-shown; caught-by-source-adjudication
+
+## BUG-0192 — An "other" household member was counted as a qualifying relative without the local-law condition (open)
+
+- **Date:** 2026-10-29
+- **Caught by:** the Stage 18 dependent adjudication (`.transcription/proposed/stage18/dependent.findings.md`, F2), from
+  the Claude transcription reply's note. Pre-existing.
+- **Symptom:** i1040gi p. 19, Step 4, "Any other person ... who lived with you all year as a member of your household if
+  your relationship didn't violate local law." `dependent.qr_relationship` is true for `other` with 12 months without
+  asking the condition. Low: rare, and it allows a dependent the source might not.
+- **Where:** `forms/2025/dependent.yaml`, `dependent.qr_relationship`.
+- **Fix:** open; with the next change to `dependent.yaml`: one Bool asked only for `other` with 12 months (the
+  alternative, rewording the `other` gloss, changes the owner's `amb.2025.foster_parent_relationship` gloss and needs the
+  owner). Deferred because a new input stales the dependent reviews just adjudicated (the pattern of BUG-0184).
+- **Tags:** missing-condition; open; caught-by-source-adjudication
+
+## BUG-0193 — Four refusal remedies still say the premium tax credit is "entered from Form 8962" (open)
+
+- **Date:** 2026-10-29
+- **Caught by:** the Stage 18 scope adjudication (`.transcription/proposed/stage18/scope.findings.md`, F3) and the Stage 19
+  decision draft.
+- **Symptom:** the remedies of `scope.credits` in `scope.yaml`, `f1040.yaml` (lines 29 and 30) and `s3.yaml` (line 8)
+  list "the net premium tax credit entered from Form 8962"; it is now figured. Wording only.
+- **Fix:** open; with Stage 19, which rewrites those remedies to name the education credits (its decision batch, Settled
+  item 1). Deferred because `f1040.yaml` is otherwise unchanged by Stage 18.
+- **Tags:** stale-label; open; caught-by-source-adjudication

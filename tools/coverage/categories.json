@@ -107,10 +107,8 @@
   {
    "id": "ptc",
    "group": "premium_tax_credit",
-   "gates": [
-    "s2.other"
-   ],
-   "label": "Premium tax credit or advance payments (Form 8962 is not prepared; line 9 is a supplied subtotal)",
+   "gates": [],
+   "label": "Premium tax credit or advance payments (supported since Stage 18; its remaining refusals are unmeasured gates)",
    "micro": {
     "positive": [
      "premium_tax_credit"
@@ -130,7 +128,8 @@
       "header": "Advance payment of premium tax credit"
      }
     ]
-   }
+   },
+   "refused": false
   },
   {
    "id": "education",

@@ -787,6 +787,25 @@
       "extract_tool_version": "0.10"
     },
     {
+      "id": "fr-2024-00796",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2024-01-17/pdf/2024-00796.pdf",
+      "document_tax_year": 2025,
+      "purpose": "Stage 18: the 2024 HHS poverty guidelines (89 FR 2961), the second printing of Form 8962 Tables 1-1 to 1-3",
+      "resolved_url": "https://www.govinfo.gov/content/pkg/FR-2024-01-17/pdf/2024-00796.pdf",
+      "fetched_at": "2026-10-29T02:59:22.144056+00:00",
+      "file": "fr-2024-00796.pdf",
+      "sha256": "9bf6ec5bed0ca08d7cad8acb44fe802ffa4bbb420a9f86fd76cbf8d33a9a01fb",
+      "revision": null,
+      "revision_status": "Pending inspection of archived document; not cleared for encoding",
+      "text_file": "fr-2024-00796.txt",
+      "text_sha256": "70b3aa1a74b81ebb5b7d0fea076a081d81f5abba731c581e403a4b0e4e87304c",
+      "cols_file": "fr-2024-00796.cols.txt",
+      "cols_sha256": "b6b9670341f56468be3b3f90ea6f2303e1c2a6f1e40f72381b5cfa505e9db5ef",
+      "pages_file": "fr-2024-00796.pages.json",
+      "pages_sha256": "f332333e7e81dafe3a94567ed50e341a145b46fb34867475abf9f108e6885522",
+      "extract_tool_version": "0.10"
+    },
+    {
       "id": "fr-2025-24154",
       "url": "https://www.govinfo.gov/content/pkg/FR-2026-01-02/pdf/2025-24154.pdf",
       "resolved_url": "https://www.govinfo.gov/content/pkg/FR-2026-01-02/pdf/2025-24154.pdf",
@@ -2474,6 +2493,25 @@
       "cols_sha256": "d3132c3232c0ac98facedd3d129246f9627b89906d23aaeb5a7c0d7ce1b2db35",
       "pages_file": "usc-26-179.pages.json",
       "pages_sha256": "046819b04e90e39f718bd52f15bc42465197e380031f0f9acf224dbe64a3023d",
+      "extract_tool_version": "0.10"
+    },
+    {
+      "id": "usc-26-36b",
+      "url": "https://www.govinfo.gov/content/pkg/USCODE-2024-title26/pdf/USCODE-2024-title26-subtitleA-chap1-subchapA-partIV-subpartC-sec36B.pdf",
+      "document_tax_year": 2025,
+      "purpose": "Stage 18: 26 U.S.C. 36B (the premium tax credit), a second reading of household income and the dependents counted (D7(b)); law, not a form source",
+      "resolved_url": "https://www.govinfo.gov/content/pkg/USCODE-2024-title26/pdf/USCODE-2024-title26-subtitleA-chap1-subchapA-partIV-subpartC-sec36B.pdf",
+      "fetched_at": "2026-10-29T02:59:21.898681+00:00",
+      "file": "usc-26-36b.pdf",
+      "sha256": "c3bea9a9114806f319ec59e3953629bbca7524edbe20fd76f26aff4fdd93a7e2",
+      "revision": null,
+      "revision_status": "Pending inspection of archived document; not cleared for encoding",
+      "text_file": "usc-26-36b.txt",
+      "text_sha256": "ba9fce0e443f997f0e1c96a1351df08cfd8d6bfe071198215e3a0d2577870031",
+      "cols_file": "usc-26-36b.cols.txt",
+      "cols_sha256": "045c93c92cd64184c1761a48a231241b58eebee2f89ac944342148530b8b1e41",
+      "pages_file": "usc-26-36b.pages.json",
+      "pages_sha256": "c50e21946f1cae9e1310521368666e70d8f0b51203a0892cfefa43e5d02d6e6d",
       "extract_tool_version": "0.10"
     },
     {

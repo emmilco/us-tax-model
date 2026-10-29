@@ -1,3 +1,14 @@
+# Handoff — updated 2026-10-29 (Claude Opus 5.5)
+
+## State after Stage 18
+
+Stage 18, the premium tax credit (Forms 1095-A and 8962), is built, reviewed in four rounds and committed:
+`handoffs/HANDOFF-STAGE-18.md`. The estimate is 75.6% (from 71.0%). Adjudication found BUG-0188 to BUG-0191 (fixed)
+and BUG-0192, 0193 (open, deferred to the next change of their forms); review-tool defects are T-079; PolicyEngine-US as
+a Form 8962 engine is T-078. Next: Stage 19, the education credits. Its decision batch is drafted at
+`research/premises/stage19-education-credits.decisions.md` and waits for the owner's answers before authoring. Its
+estimate after the stage is 79.6%, so the 80% goal also needs Stage 21 (Form 5329).
+
 # Handoff — updated 2026-10-27, later (Claude Opus 5.5)
 
 ## State after Stage 20

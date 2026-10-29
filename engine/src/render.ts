@@ -146,7 +146,9 @@ function exprText(expr: Expr, doc: FormDoc, ctx: RenderCtx): string {
     case "larger_of":
       return `Enter the larger of ${listOr(expr.of.map((r) => refText(doc, r, ctx)))}.`;
     case "multiply_rate":
-      return `Multiply ${refText(doc, expr.amount, ctx)} by ${operandText(expr.rate, doc, ctx)}.`;
+      return expr.unit === undefined
+        ? `Multiply ${refText(doc, expr.amount, ctx)} by ${operandText(expr.rate, doc, ctx)}.`
+        : `Multiply ${refText(doc, expr.amount, ctx)} by ${operandText(expr.rate, doc, ctx)}, rounded to the nearest multiple of ${fmtMoney(expr.unit)} (half up).`;
     case "multiply_count":
       return `Multiply ${refText(doc, expr.amount, ctx)} by the number on ${refText(doc, expr.count, ctx)}.`;
     case "keyed_lookup": {
@@ -154,6 +156,8 @@ function exprText(expr: Expr, doc: FormDoc, ctx: RenderCtx): string {
       const names = t?.keys?.map((k) => k.name) ?? [];
       return `Find the entry in ${t ? t.title : expr.table} for ${expr.keys.map((k, i) => `${names[i] ?? "key"} ${refText(doc, k, ctx)}`).join(" and ")}.`;
     }
+    case "percent_floor":
+      return `If ${refText(doc, expr.part, ctx)} is more than ${expr.cap}% of ${operandText(expr.whole, doc, ctx)}, enter ${expr.cap + 1}. Otherwise divide ${refText(doc, expr.part, ctx)} by ${operandText(expr.whole, doc, ctx)}, multiply by 100 and drop any numbers after the decimal point.`;
     case "prorate":
       return `Divide ${refText(doc, expr.part, ctx)} by ${operandText(expr.whole, doc, ctx)}, rounded to ${expr.places} decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply ${refText(doc, expr.amount, ctx)} by the result.`;
     case "round": {

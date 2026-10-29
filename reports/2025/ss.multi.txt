@@ -8,6 +8,15 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = $1,481.80
       cite: [f1040] Form 1040 (2025), line 31 (2025; created 2025-09-05; 3d31c226)
 
+== Form 8962, Premium Tax Credit (Parts I to III) ==
+  (helper) Number of Forms 1095-A
+      = 0
+      cite: [i8962] p. 15, Column (a), "If you have more than one Form 1095-A, add the amounts together and enter the total on Form 8962, line 11, column (a)." (2025; f4ac86ad)
+      note: confirmed roster $f1095a:
+  (helper) Any Form 1095-A, so Form 8962 is prepared
+      = false
+      cite: [i8962] p. 3, Who Must File, "You are taking the PTC." (2025; f4ac86ad)
+
 == Each person on the return — per-person facts and totals (excess Social Security tax, Schedule SE, SEP and SIMPLE plans, health insurance and others) — person[taxpayer] ==
   rrta Do any wage statements report railroad retirement compensation or taxes (W-2 box 14), or did you file Form CT-2 as an employee representative?
       = false
@@ -83,12 +92,16 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [i1040gi] p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
 
 == Schedule 3 — selected lines ==
+  (helper) Year parameter sales.zero
+      = $0
+      cite: [f1040s3] Schedule 3 (2025), lines 1 and 8 (2025; created 2025-11-17; 008cfd3f)
   (gate) Married filing separately
       = false
       cite: [i1040gi] p. 14, Married Filing Separately (2025; printed date 2026-02-25; 482e9c48)
   9   Net premium tax credit. Attach Form 8962
       = $0
-      cite: [f1040s3] Schedule 3 (2025), line 9 (2025; created 2025-11-17; 008cfd3f)
+      cite: [f1040s3] p. 1, Part II, line 9, "Net premium tax credit. Attach Form 8962"; i1040gi p. 117, "your net premium tax credit will be shown on Form 8962, line 26." (2025; created 2025-11-17; 008cfd3f)
+      note: taken: {"eq":["f8962.any",{"const":false}],"op":"test"}
   10  Amount paid with request for extension to file (see instructions)
       = $0
       cite: [f1040s3] Schedule 3 (2025), line 10 (2025; created 2025-11-17; 008cfd3f)
@@ -107,9 +120,15 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [f1040s3] Schedule 3 (2025), line 15 (2025; created 2025-11-17; 008cfd3f)
 
 Path choices (guard wording per the rendered worksheets in rendered/2025/):
+  s3.line9: chose $0 (guard 1)
+      not taken: guard 0 = false
   person[taxpayer].credit: chose $1,481.80 (guard 0)
 
 Derivations:
+  f8962.any: test(f8962.forms = 0; 0 = 0)
+  s3.f8962.any: test(f8962.forms = 0; 0 = 0)
+  s3.zero: param(#sales.zero = $0)
+  s3.line9: choose(f8962.any = false; true = true; f8962.any = false; false = false; s3.zero = $0)
   s3.mfs: test(f1040.status = single; "mfs" = mfs)
   person[taxpayer].w2[a].over: test(person[taxpayer].w2[a].box4 = $6,200; #ss.limit = $10,918.20)
   person[taxpayer].w2[b].over: test(person[taxpayer].w2[b].box4 = $6,200; #ss.limit = $10,918.20)

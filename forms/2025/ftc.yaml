@@ -140,15 +140,28 @@ form:
         doc: i1116
         locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20,
           regular tax
+    - id: ftc.regular_tax
+      printed: (helper)
+      type: Dollars
+      label: Regular tax for the limit (Form 1040 line 16 plus Schedule 2 line 1z)
+      expr:
+        op: sum
+        of:
+          - f1040.line16
+          - s2.line1z
+      cite:
+        doc: i1116
+        locator: p. 25, Line 20, "Enter the total of Form 1040, 1040-SR, or 1040-NR, line 16, and Schedule 2 (Form 1040), Part I,
+          line 1z, less any tax included on line 16 from Form 4972."
     - id: ftc.limited
       printed: (helper)
       type: Dollars
-      label: Smaller of ftc.taxes, f1040.line16
+      label: Smaller of ftc.taxes, ftc.regular_tax
       expr:
         op: smaller_of
         of:
           - ftc.taxes
-          - f1040.line16
+          - ftc.regular_tax
       cite:
         doc: i1116
         locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20,

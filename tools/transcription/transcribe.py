@@ -307,9 +307,10 @@ use subtract_floor0 against zero when an IRS zero floor must establish a nonnega
   {op: subtract_floor0, from: <ref>, take: <operand>}     # if zero or less, enter -0-
   {op: smaller_of, of: [<ref>, <ref>]}
   {op: larger_of, of: [<ref>, <ref>]}
-  {op: multiply_rate, amount: <ref>, rate: {param: name}}  # rate is a parameter
+  {op: multiply_rate, amount: <ref>, rate: {param: name}, unit: <integer cents>}  # rate is a parameter; unit optional: the exact product rounded once, half-up, to that unit (100 = to the dollar); without it, half-up to the cent
   {op: multiply_count, amount: <ref>, count: <ref>}         # an amount times a whole number (a Count line), e.g. a monthly amount times months
   {op: prorate, amount: <ref>, part: <ref>, whole: <operand>, places: <int>}  # amount times (part / whole), the ratio rounded half-up to <places> decimal places and kept between 0 and 1
+  {op: percent_floor, part: <ref>, whole: <operand>, cap: <int>}  # a whole-number percentage: cap + 1 when part is more than cap% of whole, else 100 x part / whole with the decimals dropped (not below 0)
   {op: keyed_lookup, table: <table id>, keys: [<ref>, ...]}  # the entry of a printed table (a rate, an amount, a number or a category) found by the values of the key lines, in the table's key order
   {op: rate_lookup, table: <table id>, key: <ref>, status: <ref>}  # the rate of a printed "Over / But not over" table for the amount on the key line; status (the filing status line) only when the table has filing-status columns
   {op: round, of: <ref>, unit: <integer cents>, rule: half_up | up | down}  # e.g. up to the next $1,000: unit 100000, rule up
@@ -887,7 +888,12 @@ class Expander:
         if op in ("subtract", "subtract_floor0"):
             return {"op": op, "from": self.ref(e["from"], depth), "take": self.operand(e["take"], depth)}
         if op == "multiply_rate":
-            return {"op": op, "amount": self.ref(e["amount"], depth), "rate": self.operand(e["rate"], depth)}
+            out = {"op": op, "amount": self.ref(e["amount"], depth), "rate": self.operand(e["rate"], depth)}
+            if e.get("unit") is not None:
+                out["unit"] = e.get("unit")
+            return out
+        if op == "percent_floor":
+            return {"op": op, "part": self.ref(e["part"], depth), "whole": self.operand(e["whole"], depth), "cap": e.get("cap")}
         if op == "round":
             return {"op": op, "of": self.ref(e["of"], depth), "unit": e.get("unit"), "rule": e.get("rule")}
         if op == "multiply_count":

@@ -18,19 +18,19 @@ Not-computed floor: the run fails when the project left more than 5% of an engin
 | f1040.line13b | 1537 | 0 | 0 | 2 | 0 | 140 | 0 | 0 | 21 | 21 (1.2%) |
 | f1040.line15 | 942 | 0 | 0 | 443 | 0 | 253 | 2 | 0 | 60 | 60 (3.5%) |
 | f1040.line16 | 464 | 779 | 0 | 102 | 0 | 295 | 0 | 0 | 60 | 60 (3.5%) |
-| f1040.line19 | 832 | 121 | 0 | 0 | 0 | 704 | 0 | 0 | 43 | 43 (2.5%) |
-| f1040.line27a | 1388 | 252 | 0 | 0 | 0 | 19 | 0 | 0 | 41 | 41 (2.4%) |
-| f1040.line28 | 874 | 78 | 0 | 1 | 0 | 704 | 0 | 0 | 43 | 43 (2.5%) |
+| f1040.line19 | 777 | 110 | 0 | 0 | 0 | 773 | 0 | 0 | 40 | 40 (2.4%) |
+| f1040.line27a | 1281 | 230 | 0 | 0 | 0 | 150 | 0 | 0 | 39 | 39 (2.3%) |
+| f1040.line28 | 816 | 70 | 0 | 1 | 0 | 773 | 0 | 0 | 40 | 40 (2.4%) |
 | f1040.line6b | 1637 | 0 | 0 | 29 | 0 | 19 | 0 | 0 | 15 | 15 (0.9%) |
-| f1040.tax_before_credits | 427 | 751 | 0 | 122 | 0 | 340 | 0 | 0 | 60 | 60 (3.5%) |
-| f2441.line11 | 211 | 12 | 0 | 0 | 0 | 295 | 0 | 0 | 1182 | 9 (0.5%) |
-| f2441.line9c | 276 | 0 | 0 | 0 | 0 | 19 | 0 | 0 | 1405 | 5 (0.3%) |
+| f1040.tax_before_credits | 402 | 688 | 0 | 112 | 0 | 441 | 0 | 0 | 57 | 57 (3.4%) |
+| f2441.line11 | 197 | 12 | 0 | 0 | 0 | 401 | 0 | 0 | 1090 | 9 (0.5%) |
+| f2441.line9c | 259 | 0 | 0 | 0 | 0 | 150 | 0 | 0 | 1291 | 5 (0.3%) |
 | f5695.line13 | 169 | 0 | 0 | 3 | 0 | 19 | 0 | 0 | 1509 | 0 (0.0%) |
-| f5695.line15 | 93 | 42 | 0 | 1 | 0 | 295 | 0 | 0 | 1269 | 4 (0.2%) |
+| f5695.line15 | 81 | 41 | 0 | 1 | 0 | 401 | 0 | 0 | 1176 | 4 (0.2%) |
 | f5695.line30 | 139 | 0 | 0 | 7 | 0 | 59 | 0 | 0 | 1495 | 0 (0.0%) |
-| f5695.line32 | 111 | 5 | 0 | 5 | 0 | 330 | 0 | 0 | 1249 | 3 (0.2%) |
+| f5695.line32 | 103 | 5 | 0 | 5 | 0 | 428 | 0 | 0 | 1159 | 3 (0.2%) |
 | f8880.line10 | 1634 | 0 | 0 | 3 | 0 | 22 | 0 | 0 | 41 | 41 (2.4%) |
-| f8880.line12 | 1349 | 14 | 0 | 1 | 0 | 297 | 0 | 0 | 39 | 39 (2.3%) |
+| f8880.line12 | 1248 | 11 | 0 | 1 | 0 | 403 | 0 | 0 | 37 | 37 (2.2%) |
 | f8959.tax | 1676 | 0 | 0 | 5 | 0 | 19 | 0 | 0 | 0 | 0 (0.0%) |
 | f8960.tax | 1469 | 0 | 0 | 3 | 0 | 189 | 0 | 0 | 39 | 39 (2.3%) |
 | person[taxpayer].se_line12 | 1655 | 0 | 0 | 45 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
@@ -42,10 +42,10 @@ Not-computed floor: the run fails when the project left more than 5% of an engin
 | s1a.line30 | 1555 | 0 | 0 | 0 | 0 | 140 | 0 | 0 | 5 | 5 (0.3%) |
 | s1a.line37 | 1666 | 0 | 0 | 2 | 0 | 19 | 0 | 0 | 13 | 13 (0.8%) |
 | s2.line4 | 1655 | 0 | 0 | 45 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| s3.line2 | 1384 | 12 | 0 | 0 | 0 | 295 | 0 | 0 | 9 | 9 (0.5%) |
-| s3.line5a | 1358 | 42 | 0 | 1 | 0 | 295 | 0 | 0 | 4 | 4 (0.2%) |
-| s3.line5b | 1357 | 5 | 0 | 5 | 0 | 330 | 0 | 0 | 3 | 3 (0.2%) |
-| s8812.line12 | 1640 | 0 | 0 | 0 | 0 | 19 | 0 | 0 | 41 | 41 (2.4%) |
+| s3.line2 | 1278 | 12 | 0 | 0 | 0 | 401 | 0 | 0 | 9 | 9 (0.5%) |
+| s3.line5a | 1253 | 41 | 0 | 1 | 0 | 401 | 0 | 0 | 4 | 4 (0.2%) |
+| s3.line5b | 1259 | 5 | 0 | 5 | 0 | 428 | 0 | 0 | 3 | 3 (0.2%) |
+| s8812.line12 | 1511 | 0 | 0 | 0 | 0 | 150 | 0 | 0 | 39 | 39 (2.3%) |
 | sa.deduction | 1508 | 0 | 0 | 4 | 0 | 173 | 0 | 0 | 15 | 15 (0.9%) |
 | sa.line17 | 1508 | 0 | 0 | 4 | 0 | 173 | 0 | 0 | 15 | 15 (0.9%) |
 | sa.standard | 1681 | 0 | 0 | 0 | 0 | 19 | 0 | 0 | 0 | 0 (0.0%) |
@@ -63,6 +63,7 @@ Exclusions:
 - PolicyEngine-US's eitc_earned_income includes net earnings from self-employment less half the self-employment tax; Step 5 earned income (Form 1040 instructions, line 27) holds wages only and Worksheet B adds the self-employment amounts, so Worksheet B line 6 (eic.line1) is compared instead on self-employed returns
 - PolicyEngine-US's energy_efficient_home_improvement_credit_potential takes the larger of the $1,200-capped total and the heat pump credit; Form 5695 line 30 adds line 28 and line 29h
 - PolicyEngine-US's saver's credit rate (gov.irs.credits.retirement_saving.rate.joint, a bracket scale whose first threshold is $0) is zero for an adjusted gross income below zero; the Form 8880 line 9 table's first row has no lower bound ("---" to $23,750, $35,625 or $47,500: 0.5)
+- the engine is given no Form 1095-A, so its tax, credits and payments omit the premium tax credit reconciliation (Form 8962) the project figures on these returns
 
 Project result lines not mapped:
 
@@ -85,14 +86,14 @@ Project result lines not mapped:
 | f1040.line13b | 1368 | 0 | 0 | 2 | 0 | 330 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line15 | 821 | 0 | 0 | 69 | 0 | 809 | 1 | 0 | 0 | 0 (0.0%) |
 | f1040.line16 | 354 | 502 | 0 | 55 | 0 | 772 | 0 | 0 | 17 | 17 (1.0%) |
-| f1040.line19 | 614 | 82 | 0 | 0 | 0 | 1004 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line20 | 629 | 292 | 0 | 0 | 0 | 772 | 0 | 0 | 7 | 7 (0.4%) |
-| f1040.line24 | 438 | 319 | 0 | 84 | 0 | 842 | 0 | 0 | 17 | 17 (1.0%) |
-| f1040.line27a | 1157 | 213 | 0 | 0 | 0 | 330 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line28 | 642 | 54 | 0 | 0 | 0 | 1004 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line19 | 566 | 78 | 0 | 0 | 0 | 1056 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line20 | 580 | 273 | 0 | 0 | 0 | 840 | 0 | 0 | 7 | 7 (0.4%) |
+| f1040.line24 | 413 | 292 | 0 | 77 | 0 | 902 | 0 | 0 | 16 | 16 (0.9%) |
+| f1040.line27a | 1065 | 195 | 0 | 0 | 0 | 440 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line28 | 594 | 50 | 0 | 0 | 0 | 1056 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line6b | 1344 | 0 | 0 | 26 | 0 | 330 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.tax_before_credits | 323 | 484 | 0 | 75 | 0 | 801 | 0 | 0 | 17 | 17 (1.0%) |
-| f2441.line11 | 158 | 6 | 0 | 0 | 0 | 772 | 0 | 0 | 764 | 1 (0.1%) |
+| f1040.tax_before_credits | 302 | 446 | 0 | 69 | 0 | 867 | 0 | 0 | 16 | 16 (0.9%) |
+| f2441.line11 | 146 | 6 | 0 | 0 | 0 | 840 | 0 | 0 | 708 | 1 (0.1%) |
 | f8959.tax | 1366 | 0 | 0 | 4 | 0 | 330 | 0 | 0 | 0 | 0 (0.0%) |
 | f8960.tax | 1300 | 0 | 0 | 0 | 0 | 400 | 0 | 0 | 0 | 0 (0.0%) |
 | person[taxpayer].se_line12 | 1656 | 0 | 0 | 44 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
@@ -103,7 +104,7 @@ Project result lines not mapped:
 | s1a.line30 | 1370 | 0 | 0 | 0 | 0 | 330 | 0 | 0 | 0 | 0 (0.0%) |
 | s1a.line37 | 1368 | 0 | 0 | 2 | 0 | 330 | 0 | 0 | 0 | 0 (0.0%) |
 | s2.line4 | 1656 | 0 | 0 | 44 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| s3.line2 | 921 | 6 | 0 | 0 | 0 | 772 | 0 | 0 | 1 | 1 (0.1%) |
+| s3.line2 | 853 | 6 | 0 | 0 | 0 | 840 | 0 | 0 | 1 | 1 (0.1%) |
 | sa.deduction | 889 | 0 | 0 | 2 | 0 | 809 | 0 | 0 | 0 | 0 (0.0%) |
 | sa.line17 | 1180 | 0 | 0 | 2 | 0 | 518 | 0 | 0 | 0 | 0 (0.0%) |
 
@@ -121,6 +122,7 @@ Exclusions:
 - Tax-Calculator takes the student loan interest deduction as a supplied amount (e03210) rather than computing the worksheet's phase-out, so returns with student loan interest are not compared
 - Tax-Calculator treats a unit owing no tax under either deduction as taking the standard deduction; the project itemizes whenever itemized deductions exceed the standard deduction. The itemized total itself is compared on every return through a forced-itemize pass
 - Tax-Calculator's earned includes self-employment earnings less half the self-employment tax; Step 5 earned income (Form 1040 instructions, line 27) holds wages only and Worksheet B adds the self-employment amounts, so Worksheet B line 6 (eic.line1) is compared instead on self-employed returns
+- the engine is given no Form 1095-A, so its tax, credits and payments omit the premium tax credit reconciliation (Form 8962) the project figures on these returns
 
 Project result lines not mapped:
 
@@ -165,34 +167,34 @@ Project result lines not mapped:
 | f1040.line14 | 1215 | 0 | 0 | 0 | 21 | 464 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line15 | 1150 | 0 | 0 | 0 | 86 | 464 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line16 | 1023 | 0 | 0 | 0 | 53 | 624 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line17 | 1589 | 0 | 0 | 0 | 0 | 111 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line18 | 1023 | 0 | 0 | 0 | 53 | 624 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line19 | 457 | 0 | 0 | 0 | 0 | 513 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line17 | 1462 | 0 | 0 | 0 | 0 | 238 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line18 | 946 | 0 | 0 | 0 | 48 | 706 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line19 | 422 | 0 | 0 | 0 | 0 | 548 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line1z | 1700 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line20 | 812 | 0 | 0 | 0 | 0 | 888 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line21 | 812 | 0 | 0 | 0 | 0 | 888 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line22 | 769 | 0 | 0 | 0 | 43 | 888 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line23 | 1434 | 0 | 0 | 0 | 44 | 222 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line24 | 750 | 0 | 0 | 0 | 62 | 888 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line25d | 1700 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line28 | 286 | 0 | 0 | 0 | 1 | 683 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line32 | 598 | 0 | 0 | 0 | 1 | 1101 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line33 | 598 | 0 | 0 | 0 | 1 | 1101 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line34 | 574 | 0 | 0 | 0 | 25 | 1101 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line37 | 570 | 0 | 0 | 0 | 29 | 1101 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line20 | 749 | 0 | 0 | 0 | 0 | 951 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line21 | 749 | 0 | 0 | 0 | 0 | 951 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line22 | 709 | 0 | 0 | 0 | 40 | 951 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line23 | 1320 | 0 | 0 | 0 | 42 | 338 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line24 | 691 | 0 | 0 | 0 | 58 | 951 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line25d | 1567 | 0 | 0 | 0 | 0 | 133 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line28 | 265 | 0 | 0 | 0 | 1 | 704 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line32 | 552 | 0 | 0 | 0 | 1 | 1147 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line33 | 552 | 0 | 0 | 0 | 1 | 1147 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line34 | 532 | 0 | 0 | 0 | 21 | 1147 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line37 | 524 | 0 | 0 | 0 | 29 | 1147 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line6b | 1557 | 0 | 0 | 0 | 32 | 111 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line7a | 1700 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line8 | 1700 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line9 | 1558 | 0 | 0 | 0 | 31 | 111 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.tax_before_credits | 995 | 0 | 0 | 0 | 81 | 624 | 0 | 0 | 0 | 0 (0.0%) |
-| f2441.line10 | 168 | 0 | 0 | 0 | 4 | 113 | 0 | 0 | 0 | 0 (0.0%) |
-| f2441.line11 | 172 | 0 | 0 | 0 | 0 | 113 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.tax_before_credits | 920 | 0 | 0 | 0 | 74 | 706 | 0 | 0 | 0 | 0 (0.0%) |
+| f2441.line10 | 158 | 0 | 0 | 0 | 4 | 123 | 0 | 0 | 0 | 0 (0.0%) |
+| f2441.line11 | 162 | 0 | 0 | 0 | 0 | 123 | 0 | 0 | 0 | 0 (0.0%) |
 | f2441.line3 | 285 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
 | f2441.line4 | 273 | 0 | 0 | 0 | 12 | 0 | 0 | 0 | 0 | 0 (0.0%) |
 | f2441.line6 | 285 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
 | f2441.line7 | 251 | 0 | 0 | 0 | 16 | 18 | 0 | 0 | 0 | 0 (0.0%) |
 | f2441.line9a | 266 | 0 | 0 | 0 | 0 | 19 | 0 | 0 | 0 | 0 (0.0%) |
-| f2441.line9c | 266 | 0 | 0 | 0 | 0 | 19 | 0 | 0 | 0 | 0 (0.0%) |
+| f2441.line9c | 250 | 0 | 0 | 0 | 0 | 35 | 0 | 0 | 0 | 0 (0.0%) |
 | f8959.line13 | 1700 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
 | f8959.line17 | 1700 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
 | f8959.line18 | 1695 | 0 | 0 | 0 | 5 | 0 | 0 | 0 | 0 | 0 (0.0%) |
@@ -263,22 +265,22 @@ Project result lines not mapped:
 | s1a.line30 | 1437 | 0 | 0 | 0 | 0 | 263 | 0 | 0 | 0 | 0 (0.0%) |
 | s1a.line37 | 1586 | 0 | 0 | 0 | 3 | 111 | 0 | 0 | 0 | 0 (0.0%) |
 | s1a.line38 | 1434 | 0 | 0 | 0 | 3 | 263 | 0 | 0 | 0 | 0 (0.0%) |
-| s2.line21 | 1434 | 0 | 0 | 0 | 44 | 222 | 0 | 0 | 0 | 0 (0.0%) |
-| s3.line2 | 1076 | 0 | 0 | 0 | 0 | 624 | 0 | 0 | 0 | 0 (0.0%) |
-| s3.line8 | 812 | 0 | 0 | 0 | 0 | 888 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line10 | 907 | 0 | 0 | 0 | 0 | 63 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line11 | 907 | 0 | 0 | 0 | 0 | 63 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line12 | 907 | 0 | 0 | 0 | 0 | 63 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line14 | 457 | 0 | 0 | 0 | 0 | 513 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line16a | 457 | 0 | 0 | 0 | 0 | 513 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line16b | 318 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line17 | 457 | 0 | 0 | 0 | 0 | 513 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line19 | 294 | 0 | 0 | 0 | 15 | 7 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line20 | 300 | 0 | 0 | 0 | 11 | 7 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line27 | 286 | 0 | 0 | 0 | 1 | 683 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line5 | 970 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line7 | 970 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line8 | 970 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| s2.line21 | 1320 | 0 | 0 | 0 | 42 | 338 | 0 | 0 | 0 | 0 (0.0%) |
+| s3.line2 | 994 | 0 | 0 | 0 | 0 | 706 | 0 | 0 | 0 | 0 (0.0%) |
+| s3.line8 | 749 | 0 | 0 | 0 | 0 | 951 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line10 | 830 | 0 | 0 | 0 | 0 | 140 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line11 | 830 | 0 | 0 | 0 | 0 | 140 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line12 | 830 | 0 | 0 | 0 | 0 | 140 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line14 | 422 | 0 | 0 | 0 | 0 | 548 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line16a | 422 | 0 | 0 | 0 | 0 | 548 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line16b | 285 | 0 | 0 | 0 | 0 | 33 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line17 | 422 | 0 | 0 | 0 | 0 | 548 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line19 | 263 | 0 | 0 | 0 | 13 | 40 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line20 | 269 | 0 | 0 | 0 | 9 | 40 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line27 | 265 | 0 | 0 | 0 | 1 | 704 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line5 | 889 | 0 | 0 | 0 | 0 | 81 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line7 | 889 | 0 | 0 | 0 | 0 | 81 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line8 | 889 | 0 | 0 | 0 | 0 | 81 | 0 | 0 | 0 | 0 (0.0%) |
 | sa.deduction | 1474 | 0 | 0 | 0 | 2 | 224 | 0 | 0 | 0 | 0 (0.0%) |
 | sa.line10 | 1579 | 0 | 0 | 0 | 0 | 121 | 0 | 0 | 0 | 0 (0.0%) |
 | sa.line14 | 1697 | 0 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | 0 (0.0%) |
@@ -399,6 +401,7 @@ Exclusions:
 - OpenTaxSolver's Schedule 8812 program takes the Part II-A route (`if (L16b <= 5100.0)`, taxsolve_f8812) when line 16b is exactly $5,100, where the form's line 20 asks 'On line 16b, is the amount $5,100 or more?' and sends a Yes to Part II-B when line 20 is less than line 17; with three qualifying children the engine skips Part II-B
 - OpenTaxSolver's TaxRateFunction emulates the Tax Table by quantizing the amount to its band (`k = income / x; x = x * (double)k + dx`) on a double built by summing the return's lines; when the project's amount in integer cents is exactly a band boundary, the engine's double can land a hair below it (mfj-00061: 107,096.84 + 2,341.61 + 7,689.01 - 277.46 - 31,500 = 85,349.99999999999) and the band below is read; the Tax Table reads "At least" the boundary
 - OpenTaxSolver's student loan interest worksheet (Calc_StudentLoan_Sched1L21) uses the exact line 7 ratio; the project rounds it to three places (amb.2025.sli_ratio_places), which moves the deduction by up to a few dollars, so returns in the phase-out are not compared on the lines that follow AGI
+- the engine is given no Form 1095-A, so its tax, credits and payments omit the premium tax credit reconciliation (Form 8962) the project figures on these returns
 
 Project result lines not mapped:
 
@@ -432,29 +435,29 @@ Project result lines not mapped:
 | f1040.line14 | 817 | 0 | 0 | 2 | 0 | 881 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line15 | 798 | 0 | 0 | 21 | 0 | 881 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line16 | 410 | 0 | 268 | 39 | 0 | 983 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line17 | 717 | 0 | 0 | 0 | 0 | 983 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line18 | 410 | 0 | 268 | 39 | 0 | 983 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line19 | 409 | 0 | 27 | 0 | 0 | 1264 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line17 | 682 | 0 | 0 | 0 | 0 | 1018 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line18 | 390 | 0 | 255 | 37 | 0 | 1018 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line19 | 390 | 0 | 25 | 0 | 0 | 1285 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line1a | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line1z | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line20 | 436 | 0 | 0 | 0 | 0 | 1264 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line21 | 409 | 0 | 27 | 0 | 0 | 1264 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line22 | 271 | 0 | 135 | 30 | 0 | 1264 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line23 | 940 | 0 | 90 | 0 | 0 | 670 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line24 | 223 | 0 | 182 | 20 | 0 | 1275 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line25a | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line25d | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line27a | 888 | 0 | 0 | 0 | 0 | 812 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line28 | 271 | 0 | 6 | 0 | 0 | 1423 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line32 | 271 | 0 | 6 | 0 | 0 | 1423 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line33 | 269 | 0 | 6 | 0 | 0 | 1425 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line34 | 165 | 0 | 98 | 12 | 0 | 1425 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line37 | 229 | 0 | 34 | 12 | 0 | 1425 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line20 | 415 | 0 | 0 | 0 | 0 | 1285 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line21 | 390 | 0 | 25 | 0 | 0 | 1285 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line22 | 260 | 0 | 127 | 28 | 0 | 1285 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line23 | 894 | 0 | 88 | 0 | 0 | 718 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line24 | 212 | 0 | 174 | 19 | 0 | 1295 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line25a | 1330 | 0 | 0 | 0 | 0 | 370 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line25d | 1330 | 0 | 0 | 0 | 0 | 370 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line27a | 856 | 0 | 0 | 0 | 0 | 844 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line28 | 258 | 0 | 5 | 0 | 0 | 1437 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line32 | 258 | 0 | 5 | 0 | 0 | 1437 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line33 | 256 | 0 | 5 | 0 | 0 | 1439 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line34 | 162 | 0 | 90 | 9 | 0 | 1439 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line37 | 214 | 0 | 34 | 13 | 0 | 1439 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line6b | 1132 | 0 | 0 | 20 | 0 | 548 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line7a | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line8 | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line9 | 1132 | 0 | 0 | 20 | 0 | 548 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.tax_before_credits | 343 | 0 | 330 | 24 | 0 | 1003 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.tax_before_credits | 324 | 0 | 316 | 23 | 0 | 1037 | 0 | 0 | 0 | 0 (0.0%) |
 | f8959.line1 | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
 | f8959.line18 | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
 | f8959.line19 | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
@@ -475,6 +478,11 @@ Project result lines not mapped:
 | f8960.line9b | 954 | 0 | 0 | 0 | 0 | 746 | 0 | 0 | 0 | 0 (0.0%) |
 | f8960.line9d | 891 | 0 | 0 | 0 | 0 | 809 | 0 | 0 | 0 | 0 (0.0%) |
 | f8960.tax | 940 | 0 | 90 | 0 | 0 | 670 | 0 | 0 | 0 | 0 (0.0%) |
+| f8962.line11e | 36 | 0 | 0 | 0 | 0 | 73 | 0 | 0 | 0 | 0 (0.0%) |
+| f8962.line25 | 36 | 0 | 0 | 0 | 0 | 73 | 0 | 0 | 0 | 0 (0.0%) |
+| f8962.line26 | 36 | 0 | 0 | 0 | 0 | 73 | 0 | 0 | 0 | 0 (0.0%) |
+| f8962.line29 | 36 | 0 | 0 | 0 | 0 | 73 | 0 | 0 | 0 | 0 (0.0%) |
+| f8962.line8a | 36 | 0 | 0 | 0 | 0 | 73 | 0 | 0 | 0 | 0 (0.0%) |
 | person[taxpayer].f8889[hsa].line11 | 221 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
 | person[taxpayer].f8889[hsa].line12 | 113 | 0 | 0 | 0 | 0 | 108 | 0 | 0 | 0 | 0 (0.0%) |
 | person[taxpayer].f8889[hsa].line13 | 1316 | 0 | 0 | 0 | 0 | 384 | 0 | 0 | 0 | 0 (0.0%) |
@@ -536,30 +544,31 @@ Project result lines not mapped:
 | s1a.line6 | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
 | s1a.line7 | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
 | s1a.line8 | 133 | 0 | 0 | 2 | 0 | 24 | 0 | 0 | 0 | 0 (0.0%) |
-| s2.line21 | 940 | 0 | 90 | 0 | 0 | 670 | 0 | 0 | 0 | 0 (0.0%) |
+| s2.line21 | 894 | 0 | 88 | 0 | 0 | 718 | 0 | 0 | 0 | 0 (0.0%) |
 | s3.line11 | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
-| s3.line15 | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
-| s3.line8 | 436 | 0 | 0 | 0 | 0 | 1264 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line10 | 653 | 0 | 0 | 0 | 0 | 134 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line11 | 653 | 0 | 0 | 0 | 0 | 134 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line12 | 653 | 0 | 0 | 0 | 0 | 134 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line14 | 181 | 0 | 27 | 0 | 0 | 579 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line16a | 181 | 0 | 27 | 0 | 0 | 579 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line16b | 787 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line17 | 190 | 0 | 18 | 0 | 0 | 579 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line18a | 761 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 26 | 26 (3.3%) |
-| s8812.line19 | 761 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 26 | 26 (3.3%) |
-| s8812.line20 | 748 | 0 | 0 | 13 | 0 | 0 | 0 | 0 | 26 | 26 (3.3%) |
-| s8812.line21 | 654 | 0 | 0 | 0 | 0 | 133 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line23 | 654 | 0 | 0 | 0 | 0 | 133 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line24 | 441 | 0 | 0 | 0 | 0 | 346 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line25 | 342 | 0 | 0 | 0 | 0 | 445 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line26 | 336 | 0 | 0 | 6 | 0 | 445 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line27 | 105 | 0 | 6 | 0 | 0 | 676 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line3 | 642 | 0 | 0 | 11 | 0 | 134 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line5 | 787 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line7 | 787 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line8 | 787 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| s3.line15 | 1328 | 0 | 0 | 0 | 0 | 372 | 0 | 0 | 0 | 0 (0.0%) |
+| s3.line8 | 415 | 0 | 0 | 0 | 0 | 1285 | 0 | 0 | 0 | 0 (0.0%) |
+| s3.line9 | 36 | 0 | 0 | 0 | 0 | 73 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line10 | 611 | 0 | 0 | 0 | 0 | 176 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line11 | 611 | 0 | 0 | 0 | 0 | 176 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line12 | 611 | 0 | 0 | 0 | 0 | 176 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line14 | 170 | 0 | 25 | 0 | 0 | 592 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line16a | 170 | 0 | 25 | 0 | 0 | 592 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line16b | 737 | 0 | 0 | 0 | 0 | 50 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line17 | 179 | 0 | 16 | 0 | 0 | 592 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line18a | 712 | 0 | 0 | 0 | 0 | 50 | 0 | 0 | 25 | 25 (3.2%) |
+| s8812.line19 | 712 | 0 | 0 | 0 | 0 | 50 | 0 | 0 | 25 | 25 (3.2%) |
+| s8812.line20 | 702 | 0 | 0 | 10 | 0 | 50 | 0 | 0 | 25 | 25 (3.2%) |
+| s8812.line21 | 610 | 0 | 0 | 0 | 0 | 177 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line23 | 610 | 0 | 0 | 0 | 0 | 177 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line24 | 423 | 0 | 0 | 0 | 0 | 364 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line25 | 327 | 0 | 0 | 0 | 0 | 460 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line26 | 322 | 0 | 0 | 5 | 0 | 460 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line27 | 99 | 0 | 5 | 0 | 0 | 683 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line3 | 600 | 0 | 0 | 11 | 0 | 176 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line5 | 737 | 0 | 0 | 0 | 0 | 50 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line7 | 737 | 0 | 0 | 0 | 0 | 50 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line8 | 737 | 0 | 0 | 0 | 0 | 50 | 0 | 0 | 0 | 0 (0.0%) |
 | sa.deduction | 1054 | 0 | 0 | 2 | 0 | 644 | 0 | 0 | 0 | 0 (0.0%) |
 | sa.line10 | 1056 | 0 | 0 | 0 | 0 | 644 | 0 | 0 | 0 | 0 (0.0%) |
 | sa.line14 | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
@@ -607,6 +616,7 @@ Exclusions:
 - UsTaxes allocates part of the Schedule A state and local tax deduction to investment income on Form 8960 line 9b by the ratio of line 8 to AGI (irsForms/F8960.ts `l9b`); the generator enters no allocation (f8960.allocated_taxes is zero), so itemizers with a state and local tax deduction are not compared from line 9b on
 - UsTaxes allocates part of the Schedule A state and local tax deduction to investment income on Form 8960 line 9b by the ratio of line 8 to AGI (irsForms/F8960.ts `l9b`); the generator enters no allocation (f8960.allocated_taxes is zero), so itemizers with a state and local tax deduction are not compared from line 9b on; where modified AGI is over the threshold (Form 8960 line 15) the tax lines follow
 - UsTaxes allowed an earned income credit on this return (see the `eic` limitation for its method); its eligibility tests are partly stubs (ScheduleEIC.ts: `validSSNs`, `over25Under65`, `qualifyingChildOfAnother` return fixed values), so the lines the credit moves are not compared
+- UsTaxes attaches Schedule 3 only for the excess social security credit, the foreign tax credit, an extension payment or Schedule R (irsForms/Schedule3.ts lines 50-54, `isNeeded`); a net premium tax credit with none of those is dropped from Schedule 3 line 15 and Form 1040 line 31 although Schedule3.ts `l9` returns it
 - UsTaxes computed an alternative minimum tax (Form 6251, irsForms/F6251.ts `l11`) on this return; Form 6251 is outside the project's scope (the s2.amt screen)
 - UsTaxes emulates the Tax Table by flooring the amount to whole dollars and taking the band midpoint (irsForms/TaxTable.ts `computeTax`, `Math.floor(income)`) on a double built by summing the return's lines; when the project's amount in integer cents is exactly a band boundary, the double can land a hair below it (mfj-00061: line 15 is $85,350.00 and the engine reads the $85,300 band); the Tax Table reads "At least" the boundary
 - UsTaxes enters the $1,000 additional contribution for age 55 on Form 8889 line 7 in every case (irsForms/F8889.ts `l7`) and $4,300 on line 3, where the project's Line 3 Limitation Chart includes it on line 3 for an unmarried filer; line 8 is the same either way
@@ -626,6 +636,7 @@ Exclusions:
 - UsTaxes' Form 8880 (irsForms/F8880.ts `l4`) is the contributions times the rate rounded down to whole dollars, with no line 11 limit by the tax, and reaches Form 1040 line 20 only when Schedule 3 is needed for another reason (Schedule3.ts `isNeeded`, F1040.ts line 536)
 - UsTaxes' Form 8889 line 6 halves the line 5 limit for any family-coverage account (irsForms/F8889.ts `splitFamilyContributionLimit`: `Math.round(this.l5() / 2)`), where the instructions split it only between spouses with separate HSAs
 - UsTaxes' Form 8889 line 6 halves the line 5 limit for any family-coverage account (irsForms/F8889.ts `splitFamilyContributionLimit`: `Math.round(this.l5() / 2)`), where the instructions split it only between spouses with separate HSAs; on this return the contributions exceed UsTaxes' halved line 12, or (a joint return) UsTaxes' spouse Form 8889, which takes in every family-coverage account (F8889.ts constructor), deducts the same contributions again on Schedule 1 line 13, so line 13 and the lines after it differ
+- UsTaxes' Form 8962 (irsForms/F8962.ts) applies a flat 8.5% of AGI (`applicableContributionRate`) with no federal poverty line, Table 2 or Table 5 limitation and no monthly calculation: it is the form only at 400% of the poverty line or more, on line 11, with modified AGI equal to AGI; other returns with a Form 1095-A are not compared after line 16
 - UsTaxes' Schedule 1-A Part IV (irsForms/Schedule1A.ts lines 150-207) reads line 23 from `l22aiii`/`l22biii`, which return undefined, so lines 23 and 24 are empty and the car loan interest deduction (line 30) is always zero; the entered interest (`l22iiiTotal`) is never used
 - UsTaxes' Schedule 1-A Part IV (irsForms/Schedule1A.ts lines 150-207) reads line 23 from `l22aiii`/`l22biii`, which return undefined, so lines 23 and 24 are empty and the car loan interest deduction (line 30) is always zero; the entered interest (`l22iiiTotal`) is never used; returns where the project's line 30 is positive are not compared from line 38 on
 - UsTaxes' Schedule 8812 line 20 test is inverted and uses $4,800 (irsForms/Schedule8812.ts lines 184-194: `l20No = l16b >= 4800`), where the form asks whether line 16b is $5,100 or more and, if not, enters the smaller of lines 17 and 20 on line 27; so with one or two qualifying children UsTaxes goes to Part II-B, and with three or more it skips Part II-B, whenever line 20 is less than line 17

@@ -805,7 +805,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   8   Enter on line 8 the decimal amount shown below that applies to the amount on line 7
       = 20/100
       cite: [f2441] Form 2441 (2025), line 8 (2025; created 2025-03-18; 6c3c2d19)
-      note: band over 4300000 but not over -; Interpretation amb.2025.dc_rate_nonpositive_agi: The first (tables/2025/dc_rate.yaml, the first band open below). The owner's ruling. In this tool the readings cannot differ in the credit. Line 7 (adjusted gross income) of zero or less gives taxable income of zero and no tax on Form 1040 line 16, and Schedule 2 Part I (line 17) is zero here, the alternative minimum tax and the repayment of excess advance premium tax credit being refused (s2.amt and the Schedule 2 screen); so line 18 is zero, and the Credit Limit Worksheet's line 3 and line 10 are zero. A rate is still needed for line 8 to be known. (f2441, Form 2441 (2025), line 8)
+      note: band over 4300000 but not over -; Interpretation amb.2025.dc_rate_nonpositive_agi: The first (tables/2025/dc_rate.yaml, the first band open below). The owner's ruling. Line 7 (adjusted gross income) of zero or less gives taxable income of zero and no tax on Form 1040 line 16, but since Stage 18 Schedule 2 line 1a can be positive there (a repayment of excess advance premium tax credit, limited by Table 5 to $375 or $750 when household income is below the poverty line), so line 18, and with it the Credit Limit Worksheet's lines 3 and 10, can be above zero, and the readings can differ in the credit. The ruling chose the first reading, a rate for line 8, regardless of that; T-049 re-examined the reason after Stage 18. (f2441, Form 2441 (2025), line 8)
   9a  Multiply line 6 by the decimal amount on line 8
       = UNKNOWN (collection roster not confirmed)
       cite: [f2441] Form 2441 (2025), line 9a (2025; created 2025-03-18; 6c3c2d19)
@@ -1818,6 +1818,197 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = false
       cite: [i8960] pp. 17–18, Line 9b, the allowable taxes allocable to net investment income (2025; printed date 2026-02-04; b10fbb23)
 
+== Form 8962, Premium Tax Credit (Parts I to III) ==
+  (helper) Year parameter sales.zero
+      = $0
+      cite: [f8962] p. 1, Part I, line 3, "Household income. Add the amounts on lines 2a and 2b. See instructions" (2025; dc7d2c6b)
+  (helper) Number of Forms 1095-A
+      = 0
+      cite: [i8962] p. 15, Column (a), "If you have more than one Form 1095-A, add the amounts together and enter the total on Form 8962, line 11, column (a)." (2025; f4ac86ad)
+      note: confirmed roster $f1095a:
+  (helper) Any Form 1095-A, so Form 8962 is prepared
+      = false
+      cite: [i8962] p. 3, Who Must File, "You are taking the PTC." (2025; f4ac86ad)
+  (gate) A policy shared with another tax family, or a divorce or separation in 2025 with a shared policy
+      = UNKNOWN (no input supplied for f8962.alloc)
+      cite: [i8962] p. 12, Allocating policy amounts, "The policy covered at least one individual in your tax family and at least one individual in another tax family" (2025; f4ac86ad)
+  (gate) Married during 2025 with coverage before the first full month of marriage
+      = UNKNOWN (no input supplied for f8962.married_in_2025)
+      cite: [i8962] p. 13, Table 4, "Was anyone in your tax family enrolled in a qualified health plan before your first full month of marriage?" (2025; f4ac86ad)
+  (gate) A joint return with Marketplace coverage before the first full month of a 2025 marriage
+      = false
+      cite: [i8962] p. 13, Table 4, "Was anyone in your tax family enrolled in a qualified health plan before your first full month of marriage?" (2025; f4ac86ad)
+  (gate) Coverage this tool does not reconcile (not lawfully present, an HRA, unpaid premiums, no tax family)
+      = UNKNOWN (no input supplied for f8962.other)
+      cite: [i8962] p. 6, "Individuals who are not lawfully present in the United States are not eligible for the PTC for their coverage in a qualified health plan through a Marketplace."; p. 3, "If you were covered under an individual coverage HRA for 2025, you are not allowed a PTC for your 2025 Marketplace health insurance."; p. 1, "If the QSEHRA is affordable for a month, no PTC is allowed for the month."; p. 4, Enrollment premiums, "You are generally not allowed a monthly credit amount for the month if any part of that month" (2025; f4ac86ad)
+  (gate) Column B counted on two Forms 1095-A from the same state for the same month
+      = false
+      cite: [i8962] p. 15, Column (b), "Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form." (2025; f4ac86ad)
+  (gate) Did you count column B on two Forms 1095-A from the same state that show coverage in the same month?
+      = UNKNOWN (no input supplied for f8962.same_state_counted)
+      cite: [i8962] p. 16, Column (b), "If you have more than one Form 1095-A showing coverage in a particular month, use the following rules to determine the amounts to enter on Form 8962, column (b), for that month." (2025; f4ac86ad)
+  (helper) Dependents you claim
+      = 0
+      cite: [i8962] p. 3, Terms You May Need To Know, "Your dependents whom you claim on your 2025 tax return." (2025; f4ac86ad)
+      note: confirmed roster $dependent:
+  (helper) Worksheet 1-1, line 1: AGI (Form 1040 line 11a)
+      = $130,000
+      cite: [i8962] p. 8, Worksheet 1-1, line 1, "Enter your AGI* from Form 1040, 1040-SR, or 1040-NR, line 11a" (2025; f4ac86ad)
+  (helper) Worksheet 1-1, line 2: tax-exempt interest (Form 1040 line 2a)
+      = UNKNOWN (no input supplied for f1040.tax_exempt_interest)
+      cite: [i8962] p. 8, Worksheet 1-1, line 2, "Enter any tax-exempt interest from Form 1040, 1040-SR, or 1040-NR, line 2a" (2025; f4ac86ad)
+  (helper) Worksheet 1-1, line 3: Form 2555 amounts (zero after the screen)
+      = $0
+      cite: [i8962] p. 8, Worksheet 1-1, line 3, "Enter any amounts from Form 2555, lines 45 and 50" (2025; f4ac86ad)
+  (helper) Worksheet 1-1, line 4: social security benefits not taxed (line 6a less line 6b)
+      = $0
+      cite: [i8962] p. 8, Worksheet 1-1, line 4, "If line 6a is more than line 6b, subtract line 6b from line 6a and enter the result" (2025; f4ac86ad)
+  (helper) Lines 2a and 2b combined
+      = UNKNOWN (no input supplied for f1040.tax_exempt_interest)
+      cite: [i8962] p. 8, Line 3, "Combine them even if one or both of them are negative. If the total is less than zero, enter -0- on line 3." (2025; f4ac86ad)
+  (gate) Which federal poverty table applies (contiguous, alaska or hawaii)
+      = UNKNOWN (no input supplied for f8962.fpl_table)
+      cite: [i8962] p. 8, Line 4, "use the table with the higher dollar amounts for your family size." (2025; f4ac86ad)
+  (gate) Tax family size above 20
+      = false
+      cite: [i8962] p. 8, Line 4, Table 1-1, "If your family size was more than 8 people" (2025; f4ac86ad)
+  (helper) Any advance payments on the Forms 1095-A
+      = false
+      cite: [i8962] p. 10, "If APTC was paid for any individuals in your tax family, skip lines 7 and 8, and go to line 9." (2025; f4ac86ad)
+  (helper) Advance payments on all Forms 1095-A (line 33C)
+      = $0
+      cite: [i8962] p. 16, Column (f), "If you have more than one Form 1095-A, add the amounts together and enter the total on Form 8962, line 11, column (f)." (2025; f4ac86ad)
+      note: confirmed roster $f1095a:
+  (gate) The Marketplace estimated household income of at least 100% of the poverty line
+      = UNKNOWN (no input supplied for f8962.estimate_100)
+      cite: [i8962] p. 9, "The Marketplace estimated at the time of enrollment that your household income would be at least 100% of the federal poverty line for your family size for 2025." (2025; f4ac86ad)
+  (helper) You are an applicable taxpayer (line 5 at least 100, or the Marketplace estimate exception)
+      = UNKNOWN (no input supplied for f1040.tax_exempt_interest)
+      cite: [i8962] p. 6, Applicable taxpayer, "Generally, you are an applicable taxpayer if your household income for 2025"; p. 9, "The Marketplace estimated at the time of enrollment that your household income would be at least 100% of the federal poverty line for your family size for 2025." (2025; f4ac86ad)
+      note: Interpretation amb.2025.ptc_not_applicable: The first (f8962.line24 is zero when f8962.applicable is false). A taxpayer who is "not eligible to take the PTC" is allowed none; the columns that would figure it read the skipped lines 7 and 8. Owner's decision D7(a), 2026-10-28. (i8962, p. 10, "If APTC was paid for any individuals in your tax family, skip lines 7 and 8, and go to line 9.")
+  (helper) Lines 7 and 8 are used (a Form 1095-A and an applicable taxpayer)
+      = false
+      cite: [i8962] p. 10, "If you meet all of the requirements under either Estimated household income at least 100% of the federal poverty line or Alien lawfully present in the United States, earlier, continue to line 7." (2025; f4ac86ad)
+  (helper) Form 8962 is completed past line 5 (a Form 1095-A, and an applicable taxpayer or advance payments)
+      = false
+      cite: [i8962] p. 10, "However, if no APTC was paid for any individuals in your tax family, stop; do not complete Form 8962." (2025; f4ac86ad)
+  (gate) An enrolled lawfully present alien not eligible for Medicaid because of immigration status
+      = UNKNOWN (no input supplied for f8962.alien_below)
+      cite: [i8962] p. 9, Alien lawfully present in the United States, "Certain aliens with household income below 100% of the federal poverty line are not eligible for Medicaid because of their immigration status." (2025; f4ac86ad)
+  (gate) A Form 1095-A, household income below 100% of the poverty line and the lawfully present alien exception
+      = false
+      cite: [i8962] p. 9, Line 5, "If the amount on line 5 is less than 100%, you can take the PTC if you meet the requirements under Estimated household income at least 100% of the federal poverty line next or Alien lawfully present in the United States, later." (2025; f4ac86ad)
+  (helper) Forms 1095-A without full-year coverage and unchanged columns A and B
+      = 0
+      cite: [i8962] p. 14, Line 10, "Check “Yes” and continue to line 11 if all of the following apply for each qualified health plan", "Full-year coverage with no changes on Form 1095-A, Part III, column A or B." (2025; f4ac86ad)
+      note: confirmed roster $f1095a:
+  (helper) Line 11 is used (Form 8962 completed past line 5 and line 10 Yes)
+      = false
+      cite: [i8962] p. 14, Line 10, "Check “Yes” and continue to line 11 if all of the following apply for each qualified health plan", "Full-year coverage with no changes on Form 1095-A, Part III, column A or B." (2025; f4ac86ad)
+  (helper) Line 11 is used and you are an applicable taxpayer
+      = false
+      cite: [i8962] p. 10, "If APTC was paid for any individuals in your tax family, skip lines 7 and 8, and go to line 9." (2025; f4ac86ad)
+  (helper) Line 12 is used: line 10 No and coverage in January
+      = false
+      cite: [i8962] p. 17, Column (c), "If columns (a) and (b) of any of lines 12 through 23 are blank, leave column (c) of the corresponding line blank." (2025; f4ac86ad)
+  (helper) Line 12 is used and you are an applicable taxpayer
+      = false
+      cite: [i8962] p. 10, "If APTC was paid for any individuals in your tax family, skip lines 7 and 8, and go to line 9." (2025; f4ac86ad)
+  (helper) Line 13 is used: line 10 No and coverage in February
+      = false
+      cite: [i8962] p. 17, Column (c), "If columns (a) and (b) of any of lines 12 through 23 are blank, leave column (c) of the corresponding line blank." (2025; f4ac86ad)
+  (helper) Line 13 is used and you are an applicable taxpayer
+      = false
+      cite: [i8962] p. 10, "If APTC was paid for any individuals in your tax family, skip lines 7 and 8, and go to line 9." (2025; f4ac86ad)
+  (helper) Line 14 is used: line 10 No and coverage in March
+      = false
+      cite: [i8962] p. 17, Column (c), "If columns (a) and (b) of any of lines 12 through 23 are blank, leave column (c) of the corresponding line blank." (2025; f4ac86ad)
+  (helper) Line 14 is used and you are an applicable taxpayer
+      = false
+      cite: [i8962] p. 10, "If APTC was paid for any individuals in your tax family, skip lines 7 and 8, and go to line 9." (2025; f4ac86ad)
+  (helper) Line 15 is used: line 10 No and coverage in April
+      = false
+      cite: [i8962] p. 17, Column (c), "If columns (a) and (b) of any of lines 12 through 23 are blank, leave column (c) of the corresponding line blank." (2025; f4ac86ad)
+  (helper) Line 15 is used and you are an applicable taxpayer
+      = false
+      cite: [i8962] p. 10, "If APTC was paid for any individuals in your tax family, skip lines 7 and 8, and go to line 9." (2025; f4ac86ad)
+  (helper) Line 16 is used: line 10 No and coverage in May
+      = false
+      cite: [i8962] p. 17, Column (c), "If columns (a) and (b) of any of lines 12 through 23 are blank, leave column (c) of the corresponding line blank." (2025; f4ac86ad)
+  (helper) Line 16 is used and you are an applicable taxpayer
+      = false
+      cite: [i8962] p. 10, "If APTC was paid for any individuals in your tax family, skip lines 7 and 8, and go to line 9." (2025; f4ac86ad)
+  (helper) Line 17 is used: line 10 No and coverage in June
+      = false
+      cite: [i8962] p. 17, Column (c), "If columns (a) and (b) of any of lines 12 through 23 are blank, leave column (c) of the corresponding line blank." (2025; f4ac86ad)
+  (helper) Line 17 is used and you are an applicable taxpayer
+      = false
+      cite: [i8962] p. 10, "If APTC was paid for any individuals in your tax family, skip lines 7 and 8, and go to line 9." (2025; f4ac86ad)
+  (helper) Line 18 is used: line 10 No and coverage in July
+      = false
+      cite: [i8962] p. 17, Column (c), "If columns (a) and (b) of any of lines 12 through 23 are blank, leave column (c) of the corresponding line blank." (2025; f4ac86ad)
+  (helper) Line 18 is used and you are an applicable taxpayer
+      = false
+      cite: [i8962] p. 10, "If APTC was paid for any individuals in your tax family, skip lines 7 and 8, and go to line 9." (2025; f4ac86ad)
+  (helper) Line 19 is used: line 10 No and coverage in August
+      = false
+      cite: [i8962] p. 17, Column (c), "If columns (a) and (b) of any of lines 12 through 23 are blank, leave column (c) of the corresponding line blank." (2025; f4ac86ad)
+  (helper) Line 19 is used and you are an applicable taxpayer
+      = false
+      cite: [i8962] p. 10, "If APTC was paid for any individuals in your tax family, skip lines 7 and 8, and go to line 9." (2025; f4ac86ad)
+  (helper) Line 20 is used: line 10 No and coverage in September
+      = false
+      cite: [i8962] p. 17, Column (c), "If columns (a) and (b) of any of lines 12 through 23 are blank, leave column (c) of the corresponding line blank." (2025; f4ac86ad)
+  (helper) Line 20 is used and you are an applicable taxpayer
+      = false
+      cite: [i8962] p. 10, "If APTC was paid for any individuals in your tax family, skip lines 7 and 8, and go to line 9." (2025; f4ac86ad)
+  (helper) Line 21 is used: line 10 No and coverage in October
+      = false
+      cite: [i8962] p. 17, Column (c), "If columns (a) and (b) of any of lines 12 through 23 are blank, leave column (c) of the corresponding line blank." (2025; f4ac86ad)
+  (helper) Line 21 is used and you are an applicable taxpayer
+      = false
+      cite: [i8962] p. 10, "If APTC was paid for any individuals in your tax family, skip lines 7 and 8, and go to line 9." (2025; f4ac86ad)
+  (helper) Line 22 is used: line 10 No and coverage in November
+      = false
+      cite: [i8962] p. 17, Column (c), "If columns (a) and (b) of any of lines 12 through 23 are blank, leave column (c) of the corresponding line blank." (2025; f4ac86ad)
+  (helper) Line 22 is used and you are an applicable taxpayer
+      = false
+      cite: [i8962] p. 10, "If APTC was paid for any individuals in your tax family, skip lines 7 and 8, and go to line 9." (2025; f4ac86ad)
+  (helper) Line 23 is used: line 10 No and coverage in December
+      = false
+      cite: [i8962] p. 17, Column (c), "If columns (a) and (b) of any of lines 12 through 23 are blank, leave column (c) of the corresponding line blank." (2025; f4ac86ad)
+  (helper) Line 23 is used and you are an applicable taxpayer
+      = false
+      cite: [i8962] p. 10, "If APTC was paid for any individuals in your tax family, skip lines 7 and 8, and go to line 9." (2025; f4ac86ad)
+  (helper) Lines 12 through 23, column (e), added
+      = UNKNOWN (no input supplied for f1040.tax_exempt_interest)
+      cite: [f8962] p. 1, Part II, line 24, "Total PTC. Enter the amount from line 11, column (e), or add lines 12 through 23, column (e), and enter the total here" (2025; dc7d2c6b)
+  (helper) Lines 12 through 23, column (f), added
+      = $0
+      cite: [f8962] p. 1, Part II, line 25, "Advance payment of PTC. Enter the amount from line 11, column (f), or add lines 12 through 23, column (f), and enter the total here" (2025; dc7d2c6b)
+  (helper) The PTC allowed: line 11, column (e), or lines 12 through 23, column (e), added
+      = UNKNOWN (no input supplied for f1040.tax_exempt_interest)
+      cite: [f8962] p. 1, Part II, line 24, "Total PTC. Enter the amount from line 11, column (e), or add lines 12 through 23, column (e), and enter the total here" (2025; dc7d2c6b)
+      note: taken: {"eq":["f8962.line10",{"const":true}],"op":"test"}
+  (helper) Form 8962 completed past line 5 and line 24 is at least line 25 (line 26 is used)
+      = false
+      cite: [f8962] p. 1, Part II, line 26, "If line 24 equals line 25, enter -0-. Stop here. If line 25 is greater than line 24, leave this line blank and continue to line 27" (2025; dc7d2c6b)
+  (helper) Form 8962 completed past line 5 and line 25 is greater than line 24 (Part III is used)
+      = false
+      cite: [f8962] p. 1, Part III, line 27, "Excess advance payment of PTC. If line 25 is greater than line 24, subtract line 24 from line 25. Enter the difference here" (2025; dc7d2c6b)
+  (helper) Table 5 limitation, line 5 below 200
+      = $375
+      cite: [i8962] p. 18, Line 28, "The excess APTC you must repay may be limited to the amounts in Table 5." (2025; f4ac86ad)
+  (helper) Table 5 limitation, line 5 below 300
+      = $975
+      cite: [i8962] p. 18, Line 28, "The excess APTC you must repay may be limited to the amounts in Table 5." (2025; f4ac86ad)
+  (helper) Table 5 limitation, line 5 below 400
+      = $1,625
+      cite: [i8962] p. 18, Line 28, "The excess APTC you must repay may be limited to the amounts in Table 5." (2025; f4ac86ad)
+  (helper) Line 28 is used (Part III, and line 5 below 400)
+      = false
+      cite: [i8962] p. 18, Line 28, "If your entry on Form 8962, line 5, is 400 or more, there is no repayment limitation." (2025; f4ac86ad)
+
 == Form 8995 — Qualified Business Income Deduction Simplified Computation ==
   2   Total qualified business income or (loss). Combine lines 1i through 1v, column (c)
       = $0
@@ -1957,7 +2148,10 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Fails a condition of the election
       = false
       cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; 6998cf8c)
-  (helper) Smaller of ftc.taxes, f1040.line16
+  (helper) Regular tax for the limit (Form 1040 line 16 plus Schedule 2 line 1z)
+      = $20,267
+      cite: [i1116] p. 25, Line 20, "Enter the total of Form 1040, 1040-SR, or 1040-NR, line 16, and Schedule 2 (Form 1040), Part I, line 1z, less any tax included on line 16 from Form 4972." (2025; printed date 2025-12-23; 6998cf8c)
+  (helper) Smaller of ftc.taxes, ftc.regular_tax
       = $0
       cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; 6998cf8c)
   (helper) Credit is the smaller of creditable foreign tax and regular income tax; zero if no foreign tax
@@ -4244,18 +4438,25 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Are you required to file Form 6251 or do you have an AMT adjustment requiring its review?
       = false
       cite: [f1040s2] Schedule 2 (2025), lines 2, 3, 11, 12 and 21 (2025; created 2025-05-08; 64d867b6)
-  (helper) Any amount on Schedule 2 other than self-employment tax from Schedule SE, Additional Medicare Tax, Net Investment Income Tax or the additional 20% tax on taxable HSA distributions (Form 8889 line 17b, which this tool figures), for example the alternative minimum tax, repayment of excess advance premium tax credit or of a clean vehicle credit, household employment taxes, the additional tax on early retirement distributions (often called a penalty) or on an HSA you did not keep as an eligible individual (Form 8889 Part III), uncollected social security or Medicare tax on tips or group-term life insurance (W-2 box 12 codes A, B, M or N), tax on unreported tips (Form 4137), or interest on deferred tax?
+  (helper) Any amount on Schedule 2 other than self-employment tax from Schedule SE, Additional Medicare Tax, Net Investment Income Tax or the additional 20% tax on taxable HSA distributions (Form 8889 line 17b, which this tool figures), for example the alternative minimum tax, repayment of a clean vehicle credit, household employment taxes, the additional tax on early retirement distributions (often called a penalty) or on an HSA you did not keep as an eligible individual (Form 8889 Part III), uncollected social security or Medicare tax on tips or group-term life insurance (W-2 box 12 codes A, B, M or N), tax on unreported tips (Form 4137), or interest on deferred tax?
       = false
       cite: [f1040s2] Schedule 2 (2025), lines 2, 3, 11, 12 and 21 (2025; created 2025-05-08; 64d867b6)
   (helper) Year parameter sales.zero
       = $0
       cite: [f1040s2] Schedule 2 (2025), lines 2, 3, 11, 12 and 21 (2025; created 2025-05-08; 64d867b6)
+  1a  Excess advance premium tax credit repayment. Attach Form 8962
+      = $0
+      cite: [f1040s2] p. 1, Part I, line 1a, "Excess advance premium tax credit repayment. Attach Form 8962"; i1040gi p. 111, "If the advance credit payments were more than the premium tax credit you can claim, the amount you must repay will be shown on Form 8962, line 29." (2025; created 2025-05-08; 64d867b6)
+      note: taken: {"eq":["f8962.any",{"const":false}],"op":"test"}
+  1z  Add lines 1a through 1y (lines 1b to 1y are refused by the Schedule 2 screen)
+      = $0
+      cite: [f1040s2] p. 1, Part I, line 1z, "Add lines 1a through 1y" (2025; created 2025-05-08; 64d867b6)
   2   Amount from s2.zero
       = $0
       cite: [f1040s2] Schedule 2 (2025), lines 2, 3, 11, 12 and 21 (2025; created 2025-05-08; 64d867b6)
-  3   Amount from s2.zero
+  3   Add lines 1z and 2
       = $0
-      cite: [f1040s2] Schedule 2 (2025), lines 2, 3, 11, 12 and 21 (2025; created 2025-05-08; 64d867b6)
+      cite: [f1040s2] p. 1, Part I, line 3, "Add lines 1z and 2. Enter here and on Form 1040, 1040-SR, or 1040-NR, line 17" (2025; created 2025-05-08; 64d867b6)
   4   Self-employment tax. Attach Schedule SE
       = $0
       cite: [f1040s2] Schedule 2 (2025), line 4; i1040sse p. 2, Joint Returns, "Enter the combined SE tax on Schedule 2 (Form 1040), line 4" (2025; created 2025-05-08; 64d867b6)
@@ -4307,7 +4508,8 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [i1040gi] p. 14, Married Filing Separately (2025; printed date 2026-02-25; 482e9c48)
   9   Net premium tax credit. Attach Form 8962
       = $0
-      cite: [f1040s3] Schedule 3 (2025), line 9 (2025; created 2025-11-17; 008cfd3f)
+      cite: [f1040s3] p. 1, Part II, line 9, "Net premium tax credit. Attach Form 8962"; i1040gi p. 117, "your net premium tax credit will be shown on Form 8962, line 26." (2025; created 2025-11-17; 008cfd3f)
+      note: taken: {"eq":["f8962.any",{"const":false}],"op":"test"}
   10  Amount paid with request for extension to file (see instructions)
       = $0
       cite: [f1040s3] Schedule 3 (2025), line 10 (2025; created 2025-11-17; 008cfd3f)
@@ -4805,7 +5007,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately (business income or loss from Schedule C; a taxable state or local income tax refund; alimony under an agreement made before 2019; unemployment compensation; the line 8 items asked one by one; educator expenses; the HSA deduction; the deductible part of self-employment tax; self-employed SEP and SIMPLE contributions; the self-employed health insurance deduction; the penalty on early withdrawal of savings; the IRA deduction; student loan interest; jury duty pay you gave your employer), including statutory-employee wages or clergy income; church employee income (wages from a church that elected exemption from social security and Medicare taxes); other qualified retirement plans for the self-employed (such as a solo 401(k) or other Keogh plan); a refund or other recovery of an amount you deducted or took a credit for in an earlier year, other than a state or local income tax refund (for example a refund of general sales tax, real estate tax or personal property tax, a refund of mortgage interest in box 4 of Form 1098, a reimbursement of medical expenses, or a payment on a bad debt you deducted); sales of business property (Form 4797); a net operating loss deduction; rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1); rental of personal property; farm income (Schedule F); an exclusion of Medicaid waiver payments (Schedule 1 line 8s); or an adjustment on Schedule 1 line 12, 14 or 23? (Schedule 1-A deductions are asked separately.)
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
-  (helper) Do you want to claim any credit other than the foreign tax credit claimed without Form 1116, the excess social security credit, the child tax credit, the credit for other dependents, the additional child tax credit, the earned income credit, the credit for child and dependent care expenses (Form 2441), the retirement savings contributions credit (Form 8880), the residential energy credits (Form 5695) and the net premium tax credit you enter from Form 8962 (Schedule 3 line 9), or do you have any other amount for Schedule 3 Part I (for example a Form 8978 adjustment)?
+  (helper) Do you want to claim any credit other than the foreign tax credit claimed without Form 1116, the excess social security credit, the child tax credit, the credit for other dependents, the additional child tax credit, the earned income credit, the credit for child and dependent care expenses (Form 2441), the retirement savings contributions credit (Form 8880), the residential energy credits (Form 5695) and the net premium tax credit this tool figures on Form 8962 from your Forms 1095-A (Schedule 3 line 9), or do you have any other amount for Schedule 3 Part I (for example a Form 8978 adjustment)?
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
   (helper) Any nonresident alien status (you or your spouse, for any part of 2025) or other income or return treatment outside wages, interest, dividends, supported securities sales, Form 1099-R distributions and social security benefits, including wages or tips not on a Form W-2, Medicaid waiver payments (whether or not in Form W-2 box 1), adoption benefits, dependent care benefits other than those shown in box 10 of a Form W-2 (or a grace-period amount from such a plan), other earned income (Form 1040 lines 1b to 1d and 1f to 1h), or income or loss from a passive activity (including gain on selling an interest in one)?
@@ -5602,6 +5804,8 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   f1040.line16: chose $20,267 (guard 1)
       not taken: guard 0 = false
+  s2.line1a: chose $0 (guard 1)
+      not taken: guard 0 = false
   ftc.credit: chose $0 (guard 1)
       not taken: guard 0 = false
   s3.ftc.credit: chose $0 (guard 1)
@@ -5642,6 +5846,8 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   s8812.line27: chose $0 (guard 0)
   f1040.s8812.line27: chose $0 (guard 0)
+  s3.line9: chose $0 (guard 1)
+      not taken: guard 0 = false
   person[taxpayer].credit: chose $0 (guard 1)
       not taken: guard 0 = false
   f2441.line1_paid: chose $0 (guard 1)
@@ -5677,6 +5883,8 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   f8880.line6b: chose $0 (guard 0)
   f8880.s3.line2: chose $0 (guard 1)
       not taken: guard 0 = false
+  f8962.allowed: chose UNKNOWN (no input supplied for f1040.tax_exempt_interest) (guard 0)
+  f8962.line28: chose UNKNOWN (no input supplied for f1040.tax_exempt_interest)
   f8995.line16: chose $0 (guard 1)
       not taken: guard 0 = false
   ftc.f1040.line16: chose $20,267 (guard 1)
@@ -6302,9 +6510,14 @@ Derivations:
   root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.tax: choose(root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.below_boundary = false; true = true; root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.below_boundary = false; false = false; root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.worksheet_tax = $20,267)
   f1040.non_sdtw_tax: choose(f1040.gate.qdcg_applies = false; true = true; f1040.gate.qdcg_applies = false; false = false; bind amount = f1040.line15 = $114,250; bind status = f1040.status = single)
   f1040.line16: choose(scope.other_line16 = false; f1040.gate.sdtw = false; true = true; f1040.gate.sdtw = false; false = false; f1040.non_sdtw_tax = $20,267)
+  f8962.any: test(f8962.forms = 0; 0 = 0)
+  s2.f8962.any: test(f8962.forms = 0; 0 = 0)
   s2.zero: param(#sales.zero = $0)
-  s2.line3: copy(s2.amt = false; s2.other = false; s2.zero = $0)
-  f1040.s2.line3: copy(s2.amt = false; s2.other = false; s2.zero = $0)
+  s2.line1a: choose(f8962.any = false; true = true; f8962.any = false; false = false; s2.zero = $0)
+  s2.line1z: copy(s2.line1a = $0)
+  s2.line2: copy(s2.amt = false; s2.other = false; s2.zero = $0)
+  s2.line3: sum(s2.amt = false; s2.other = false; s2.line1z = $0; s2.line2 = $0)
+  f1040.s2.line3: sum(s2.amt = false; s2.other = false; s2.line1z = $0; s2.line2 = $0)
   f1040.line17: copy(s2.line3 = $0)
   f1040.line18: sum(f1040.line16 = $20,267; f1040.line17 = $0)
   s8812.line8: sum(s8812.line5 = $0; s8812.line7 = $0)
@@ -6489,6 +6702,8 @@ Derivations:
   f1040.line28_box: test(true = true; false = false)
   f1040.line29: param(scope.credits = false; #sales.zero = $0)
   f1040.line30: param(scope.credits = false; #sales.zero = $0)
+  s3.f8962.any: test(f8962.forms = 0; 0 = 0)
+  s3.line9: choose(f8962.any = false; true = true; f8962.any = false; false = false; s3.zero = $0)
   s3.mfs: test(f1040.status = single; "mfs" = mfs)
   person[taxpayer].w2[emp_a].over: test(person[taxpayer].w2[emp_a].box4 = $8,060; #ss.limit = $10,918.20)
   person[taxpayer].overcount: sum_over(person[taxpayer].w2[emp_a].over = false; true = true)
@@ -6710,6 +6925,116 @@ Derivations:
   f8880.line11: copy(f8880.clw3 = $20,267)
   f8880.agi_limit: param(#savers.agi_limit = $39,500)
   f8880.line12_figured: smaller_of(f8880.line10 = $0; f8880.line11 = $20,267)
+  f8962.zero: param(#sales.zero = $0)
+  f8962.marriage: test(f1040.status = single; "mfj" = mfj)
+  f8962.two_counted: test(f8962.forms = 0; 1 = 1)
+  f8962.household.persons: sum_over(person[taxpayer].one = 1)
+  f8962.line1: sum(household.persons = 1; f8962.deps = 0)
+  f8962.f1040.line11a: subtract(f1040.line9 = $130,000; f1040.line10 = $0)
+  f8962.ws1_1: copy(f1040.line11a = $130,000)
+  f8962.f1040.line2a: sum(f1040.tax_exempt_interest = UNKNOWN (no input supplied for f1040.tax_exempt_interest); div.box12 = UNKNOWN (no input supplied for div.box12))
+  f8962.ws1_2: copy(f1040.line2a = UNKNOWN (no input supplied for f1040.tax_exempt_interest))
+  f8962.ws1_3: copy(sa.excluded_income = false; f8962.zero = $0)
+  f8962.f1040.line6a: copy(ssb.line1 = $0)
+  f8962.f1040.line6b: copy(ssb.line18 = $0)
+  f8962.ws1_4: subtract_floor0(f1040.line6a = $0; f1040.line6b = $0)
+  f8962.line2a: sum(f8962.ws1_1 = $130,000; f8962.ws1_2 = UNKNOWN (no input supplied for f1040.tax_exempt_interest); f8962.ws1_3 = $0; f8962.ws1_4 = $0)
+  f8962.income_total: sum(f8962.line2a = UNKNOWN (no input supplied for f1040.tax_exempt_interest); f8962.line2b = $0)
+  f8962.line3: subtract_floor0(f8962.income_total = UNKNOWN (no input supplied for f1040.tax_exempt_interest); f8962.zero = $0)
+  f8962.big_family: test(f8962.line1 = 1; 20 = 20)
+  f8962.line4: keyed_lookup(f8962.big_family = false; f8962.fpl_table = UNKNOWN (no input supplied for f8962.fpl_table); f8962.line1 = 1)
+  f8962.line5: percent_floor(f8962.line3 = UNKNOWN (no input supplied for f1040.tax_exempt_interest); f8962.line4 = UNKNOWN (no input supplied for f8962.fpl_table))
+  f8962.aptc: test(f8962.aptc_total = $0; 0 = $0)
+  f8962.applicable: test(f8962.line5 = UNKNOWN (no input supplied for f1040.tax_exempt_interest); 100 = 100; f8962.aptc = false; true = true)
+  f8962.show_applicable: test(f8962.any = false; true = true)
+  f8962.filing: test(f8962.any = false; true = true)
+  f8962.alien_branch: test(f8962.any = false; true = true)
+  f8962.line7: keyed_lookup(f8962.line5 = UNKNOWN (no input supplied for f1040.tax_exempt_interest))
+  f8962.line8a: multiply_rate(f8962.line3 = UNKNOWN (no input supplied for f1040.tax_exempt_interest); f8962.line7 = UNKNOWN (no input supplied for f1040.tax_exempt_interest))
+  f8962.line8b: multiply_rate(f8962.line8a = UNKNOWN (no input supplied for f1040.tax_exempt_interest); #ptc.twelfth = 1/12)
+  f8962.line9: test(f8962.alloc = UNKNOWN (no input supplied for f8962.alloc); true = true; f8962.marriage = false; true = true)
+  f8962.line10: test(f8962.nonuniform = 0; 0 = 0)
+  f8962.show_annual: test(f8962.filing = false; true = true)
+  f8962.show_annual_calc: test(f8962.show_annual = false; true = true)
+  f8962.line11c: copy(f8962.line8a = UNKNOWN (no input supplied for f1040.tax_exempt_interest))
+  f8962.line11d: subtract_floor0(f8962.line11b = $0; f8962.line11c = UNKNOWN (no input supplied for f1040.tax_exempt_interest))
+  f8962.line11e: smaller_of(f8962.line11a = $0; f8962.line11d = UNKNOWN (no input supplied for f1040.tax_exempt_interest))
+  f8962.line11f: copy(f8962.aptc_total = $0)
+  f8962.show_jan: test(f8962.filing = false; true = true)
+  f8962.show_jan_calc: test(f8962.show_jan = false; true = true)
+  f8962.line12c: copy(f8962.line8b = UNKNOWN (no input supplied for f1040.tax_exempt_interest))
+  f8962.line12d: subtract_floor0(f8962.line12b = $0; f8962.line12c = UNKNOWN (no input supplied for f1040.tax_exempt_interest))
+  f8962.line12e: smaller_of(f8962.line12a = $0; f8962.line12d = UNKNOWN (no input supplied for f1040.tax_exempt_interest))
+  f8962.show_feb: test(f8962.filing = false; true = true)
+  f8962.show_feb_calc: test(f8962.show_feb = false; true = true)
+  f8962.line13c: copy(f8962.line8b = UNKNOWN (no input supplied for f1040.tax_exempt_interest))
+  f8962.line13d: subtract_floor0(f8962.line13b = $0; f8962.line13c = UNKNOWN (no input supplied for f1040.tax_exempt_interest))
+  f8962.line13e: smaller_of(f8962.line13a = $0; f8962.line13d = UNKNOWN (no input supplied for f1040.tax_exempt_interest))
+  f8962.show_mar: test(f8962.filing = false; true = true)
+  f8962.show_mar_calc: test(f8962.show_mar = false; true = true)
+  f8962.line14c: copy(f8962.line8b = UNKNOWN (no input supplied for f1040.tax_exempt_interest))
+  f8962.line14d: subtract_floor0(f8962.line14b = $0; f8962.line14c = UNKNOWN (no input supplied for f1040.tax_exempt_interest))
+  f8962.line14e: smaller_of(f8962.line14a = $0; f8962.line14d = UNKNOWN (no input supplied for f1040.tax_exempt_interest))
+  f8962.show_apr: test(f8962.filing = false; true = true)
+  f8962.show_apr_calc: test(f8962.show_apr = false; true = true)
+  f8962.line15c: copy(f8962.line8b = UNKNOWN (no input supplied for f1040.tax_exempt_interest))
+  f8962.line15d: subtract_floor0(f8962.line15b = $0; f8962.line15c = UNKNOWN (no input supplied for f1040.tax_exempt_interest))
+  f8962.line15e: smaller_of(f8962.line15a = $0; f8962.line15d = UNKNOWN (no input supplied for f1040.tax_exempt_interest))
+  f8962.show_may: test(f8962.filing = false; true = true)
+  f8962.show_may_calc: test(f8962.show_may = false; true = true)
+  f8962.line16c: copy(f8962.line8b = UNKNOWN (no input supplied for f1040.tax_exempt_interest))
+  f8962.line16d: subtract_floor0(f8962.line16b = $0; f8962.line16c = UNKNOWN (no input supplied for f1040.tax_exempt_interest))
+  f8962.line16e: smaller_of(f8962.line16a = $0; f8962.line16d = UNKNOWN (no input supplied for f1040.tax_exempt_interest))
+  f8962.show_jun: test(f8962.filing = false; true = true)
+  f8962.show_jun_calc: test(f8962.show_jun = false; true = true)
+  f8962.line17c: copy(f8962.line8b = UNKNOWN (no input supplied for f1040.tax_exempt_interest))
+  f8962.line17d: subtract_floor0(f8962.line17b = $0; f8962.line17c = UNKNOWN (no input supplied for f1040.tax_exempt_interest))
+  f8962.line17e: smaller_of(f8962.line17a = $0; f8962.line17d = UNKNOWN (no input supplied for f1040.tax_exempt_interest))
+  f8962.show_jul: test(f8962.filing = false; true = true)
+  f8962.show_jul_calc: test(f8962.show_jul = false; true = true)
+  f8962.line18c: copy(f8962.line8b = UNKNOWN (no input supplied for f1040.tax_exempt_interest))
+  f8962.line18d: subtract_floor0(f8962.line18b = $0; f8962.line18c = UNKNOWN (no input supplied for f1040.tax_exempt_interest))
+  f8962.line18e: smaller_of(f8962.line18a = $0; f8962.line18d = UNKNOWN (no input supplied for f1040.tax_exempt_interest))
+  f8962.show_aug: test(f8962.filing = false; true = true)
+  f8962.show_aug_calc: test(f8962.show_aug = false; true = true)
+  f8962.line19c: copy(f8962.line8b = UNKNOWN (no input supplied for f1040.tax_exempt_interest))
+  f8962.line19d: subtract_floor0(f8962.line19b = $0; f8962.line19c = UNKNOWN (no input supplied for f1040.tax_exempt_interest))
+  f8962.line19e: smaller_of(f8962.line19a = $0; f8962.line19d = UNKNOWN (no input supplied for f1040.tax_exempt_interest))
+  f8962.show_sep: test(f8962.filing = false; true = true)
+  f8962.show_sep_calc: test(f8962.show_sep = false; true = true)
+  f8962.line20c: copy(f8962.line8b = UNKNOWN (no input supplied for f1040.tax_exempt_interest))
+  f8962.line20d: subtract_floor0(f8962.line20b = $0; f8962.line20c = UNKNOWN (no input supplied for f1040.tax_exempt_interest))
+  f8962.line20e: smaller_of(f8962.line20a = $0; f8962.line20d = UNKNOWN (no input supplied for f1040.tax_exempt_interest))
+  f8962.show_oct: test(f8962.filing = false; true = true)
+  f8962.show_oct_calc: test(f8962.show_oct = false; true = true)
+  f8962.line21c: copy(f8962.line8b = UNKNOWN (no input supplied for f1040.tax_exempt_interest))
+  f8962.line21d: subtract_floor0(f8962.line21b = $0; f8962.line21c = UNKNOWN (no input supplied for f1040.tax_exempt_interest))
+  f8962.line21e: smaller_of(f8962.line21a = $0; f8962.line21d = UNKNOWN (no input supplied for f1040.tax_exempt_interest))
+  f8962.show_nov: test(f8962.filing = false; true = true)
+  f8962.show_nov_calc: test(f8962.show_nov = false; true = true)
+  f8962.line22c: copy(f8962.line8b = UNKNOWN (no input supplied for f1040.tax_exempt_interest))
+  f8962.line22d: subtract_floor0(f8962.line22b = $0; f8962.line22c = UNKNOWN (no input supplied for f1040.tax_exempt_interest))
+  f8962.line22e: smaller_of(f8962.line22a = $0; f8962.line22d = UNKNOWN (no input supplied for f1040.tax_exempt_interest))
+  f8962.show_dec: test(f8962.filing = false; true = true)
+  f8962.show_dec_calc: test(f8962.show_dec = false; true = true)
+  f8962.line23c: copy(f8962.line8b = UNKNOWN (no input supplied for f1040.tax_exempt_interest))
+  f8962.line23d: subtract_floor0(f8962.line23b = $0; f8962.line23c = UNKNOWN (no input supplied for f1040.tax_exempt_interest))
+  f8962.line23e: smaller_of(f8962.line23a = $0; f8962.line23d = UNKNOWN (no input supplied for f1040.tax_exempt_interest))
+  f8962.monthly_e: sum(f8962.line12e = UNKNOWN (no input supplied for f1040.tax_exempt_interest); f8962.line13e = UNKNOWN (no input supplied for f1040.tax_exempt_interest); f8962.line14e = UNKNOWN (no input supplied for f1040.tax_exempt_interest); f8962.line15e = UNKNOWN (no input supplied for f1040.tax_exempt_interest); f8962.line16e = UNKNOWN (no input supplied for f1040.tax_exempt_interest); f8962.line17e = UNKNOWN (no input supplied for f1040.tax_exempt_interest); f8962.line18e = UNKNOWN (no input supplied for f1040.tax_exempt_interest); f8962.line19e = UNKNOWN (no input supplied for f1040.tax_exempt_interest); f8962.line20e = UNKNOWN (no input supplied for f1040.tax_exempt_interest); f8962.line21e = UNKNOWN (no input supplied for f1040.tax_exempt_interest); f8962.line22e = UNKNOWN (no input supplied for f1040.tax_exempt_interest); f8962.line23e = UNKNOWN (no input supplied for f1040.tax_exempt_interest))
+  f8962.monthly_f: sum(f8962.line12f = $0; f8962.line13f = $0; f8962.line14f = $0; f8962.line15f = $0; f8962.line16f = $0; f8962.line17f = $0; f8962.line18f = $0; f8962.line19f = $0; f8962.line20f = $0; f8962.line21f = $0; f8962.line22f = $0; f8962.line23f = $0)
+  f8962.allowed: choose(f8962.line10 = true; true = true; f8962.line11e = UNKNOWN (no input supplied for f1040.tax_exempt_interest))
+  f8962.line24: gate(f8962.alloc = UNKNOWN (no input supplied for f8962.alloc))
+  f8962.line25: gate(f8962.alloc = UNKNOWN (no input supplied for f8962.alloc))
+  f8962.net: test(f8962.filing = false; true = true)
+  f8962.line26: subtract_floor0(f8962.line24 = UNKNOWN (no input supplied for f8962.alloc); f8962.line25 = UNKNOWN (no input supplied for f8962.alloc))
+  f8962.excess: test(f8962.filing = false; true = true)
+  f8962.line27: subtract_floor0(f8962.line25 = UNKNOWN (no input supplied for f8962.alloc); f8962.line24 = UNKNOWN (no input supplied for f8962.alloc))
+  f8962.repay_200: param(#ptc.repay_200 = $375)
+  f8962.repay_300: param(#ptc.repay_300 = $975)
+  f8962.repay_400: param(#ptc.repay_400 = $1,625)
+  f8962.show_28: test(f8962.excess = false; true = true)
+  f8962.line28: choose(f8962.line5 = UNKNOWN (no input supplied for f1040.tax_exempt_interest); 0 = 0; f8962.line5 = UNKNOWN (no input supplied for f1040.tax_exempt_interest); 200 = 200)
+  f8962.line29: smaller_of(f8962.line27 = UNKNOWN (no input supplied for f8962.alloc); f8962.line28 = UNKNOWN (no input supplied for f1040.tax_exempt_interest))
   f8995.line7: copy(qbi.zero = $0)
   f8995.loss: test(f8995.line4_sum = $0; #sales.zero = $0)
   f8995.line16: choose(f8995.loss = false; true = true; f8995.loss = false; false = false; qbi.zero = $0)
@@ -6734,7 +7059,9 @@ Derivations:
   f8995a.line39: sum(f8995a.line37 = $0; f8995a.line38 = $0)
   ftc.limit: param(#ftc.limit = $300)
   ftc.f1040.line16: choose(scope.other_line16 = false; f1040.gate.sdtw = false; true = true; f1040.gate.sdtw = false; false = false; f1040.non_sdtw_tax = $20,267)
-  ftc.limited: smaller_of(ftc.taxes = $0; f1040.line16 = $20,267)
+  ftc.s2.line1z: copy(s2.line1a = $0)
+  ftc.regular_tax: sum(f1040.line16 = $20,267; s2.line1z = $0)
+  ftc.limited: smaller_of(ftc.taxes = $0; ftc.regular_tax = $20,267)
   g28.sd.line17: test(sd.line15 = $0; 0 = $0)
   g28.reached: test(sd.line17 = false; true = true)
   g28.div.screen: param(div.section1202 = false; div.amt = false; div.unsupported = false; div.bad_special = false; div.bad_components = false; #sales.zero = $0)
@@ -7111,7 +7438,6 @@ Derivations:
   s1a.spouse_died_before_65: test(s1a.spouse_died_before_65_count = 0; 0 = 0)
   s1a.spouse_senior_decedent: test(s1a.spouse_died_before_65 = false; true = true)
   s1a.line36b_senior: copy(s1a.spouse_senior_decedent = false; s1a.line35 = $0)
-  s2.line2: copy(s2.amt = false; s2.other = false; s2.zero = $0)
   s8812.show13: test(s8812.line12 = $0; #sales.zero = $0)
   s8812.show16b: test(s8812.show13 = false; true = true)
   s8812.show_iia: test(s8812.show16b = false; true = true)
@@ -7533,7 +7859,7 @@ Interpretation amb.2025.clwb_claiming_part1: The first (f5695.claiming_part1). T
 Interpretation amb.2025.dc_ineligible_providers: The first (dcprov.related asks Pub. 503's list; a Yes refuses Form 2441). The owner's decision (Stage 15, decision 6). The publication is the more specific text, and both lists agree on a dependent and a child under 19. A provider in either list refuses, so the reading decides only which question is asked. (p503, p. 8, Payments to Relatives or Dependents, "However, don't count any amounts you pay to")
 Interpretation amb.2025.dc_line30: The first (f2441.line30; dependent.dc_paid and dependent.dc_line2d ask and show each person's expenses including those paid with dependent care benefits). The owner's decision (Stage 15, decision 6). The total is determined by the text and verifiable; an allocation of line 28 among persons is not. In Pub. 503's example (the Paris family, p. 13) the benefits covered one child's expenses and the total less the benefits is the line 30 the example uses ($19,500 less $1,000). (f2441, Form 2441 (2025), line 30)
 Interpretation amb.2025.dc_line1e_attribution: The first (person.dc_1e, f2441.attrib_gate). On a return that is not joint there is one person and line 1e is theirs. When the split is undetermined but no credit remains (line 31 is zero, so line 3 and line 6 are zero whatever lines 4 and 5 hold), line 1e is shown in the taxpayer's line 4, keeping lines 4 and 5 together equal to line 1z plus self-employment earnings; the credit cannot differ. The owner's decision (Stage 15, decision 6). Taxable benefits arise from one spouse's plan; the instructions give no rule for dividing a joint line 26, and the case where it matters (benefits over the exclusion with a credit still left) is rare, since excluded benefits of $5,000 leave at most $1,000 of the $6,000 limit. (i2441, p. 4, Lines 4 and 5, "If filing jointly, figure your and your spouse's earned income separately")
-Interpretation amb.2025.dc_rate_nonpositive_agi: The first (tables/2025/dc_rate.yaml, the first band open below). The owner's ruling. In this tool the readings cannot differ in the credit. Line 7 (adjusted gross income) of zero or less gives taxable income of zero and no tax on Form 1040 line 16, and Schedule 2 Part I (line 17) is zero here, the alternative minimum tax and the repayment of excess advance premium tax credit being refused (s2.amt and the Schedule 2 screen); so line 18 is zero, and the Credit Limit Worksheet's line 3 and line 10 are zero. A rate is still needed for line 8 to be known. (f2441, Form 2441 (2025), line 8)
+Interpretation amb.2025.dc_rate_nonpositive_agi: The first (tables/2025/dc_rate.yaml, the first band open below). The owner's ruling. Line 7 (adjusted gross income) of zero or less gives taxable income of zero and no tax on Form 1040 line 16, but since Stage 18 Schedule 2 line 1a can be positive there (a repayment of excess advance premium tax credit, limited by Table 5 to $375 or $750 when household income is below the poverty line), so line 18, and with it the Credit Limit Worksheet's lines 3 and 10, can be above zero, and the readings can differ in the credit. The ruling chose the first reading, a rate for line 8, regardless of that; T-049 re-examined the reason after Stage 18. (f2441, Form 2441 (2025), line 8)
 Interpretation amb.2025.dc_plan_maximum: The first (f2441.plan_max, f2441.plans_differ). The owner's decision (Stage 15, decision 6). Where every plan allows the same maximum the readings agree; where they differ the text does not decide, so that case is refused. (i2441, p. 5, Line 21, "Don't enter more than the maximum amount allowed under your dependent care plan")
 Interpretation amb.2025.f5695_battery_second_home: The first (f5695.line5a asks for battery storage technology installed in connection with your home in the United States, not your main home). The owner's decision. The text names the main home where it means it (fuel cell property, line 7a) and does not for the battery; the Part I general rule is that improvements to "more than one home that you used as a residence" go on one Form 5695 (i5695 p. 2). (i5695, p. 2, Qualified battery storage technology costs, "installed in connection with your home located in the United States")
 Interpretation amb.2025.f5695_17abc_section_a: The first (f5695.sec_a_claimed gates lines 18b, 19h and 20d only). The owner's decision. Section B has its own residence test on line 21a, "a home located in the United States that you use as a residence", which is not limited to the main home, and its own original-use test on line 21b, and the audit has its own test on line 26a; the form's direction is "Do not complete Part II, Section A". Reading the No as disallowing Section B would make line 21a's wider residence test unreachable for anyone without Section A improvements on a main home. (f5695, Form 5695 (2025), lines 17a to 17c and 21a; i5695 p. 5, Lines 17a Through 17e)
@@ -7542,6 +7868,9 @@ Interpretation amb.2025.f5695_category_cap: The first (f5695.ac_capped, wh_cappe
 Interpretation amb.2025.savers_2026_joint: The first (person.sav_prior_joint includes 2026; f8880.prior_joint). The owner's decision (Stage 15 premise map, decision 4). The 2026 return cannot be known when the 2025 return is prepared, and the 2025 return's filing status is the one fact available. (f8880, p. 2, Line 4, "Exception. Don’t include your spouse’s distributions with yours when entering an amount on line 4 if you and your spouse didn’t file a joint return for the year the distribution was received")
 Interpretation amb.2025.savers_line4_gross: The first (retirement.sav_gross; f8880.line4a and f8880.line4b). The owner's decision (Stage 15 premise map, decision 4). The text says "total amount of distributions" and excludes only the kinds it lists; a rollover is excluded because it is "not taxable as the result of a rollover", and the other exclusions it lists either need a form this tool refuses (retirement.special, retirement.bad_code) or are asked for each Form 1099-R (retirement.sav_military, retirement.sav_404k, retirement.sav_inherited). (f8880, p. 2, Line 4, "Enter the total amount of distributions"; "Don’t include any of the following")
 Interpretation amb.2025.savers_ineligible_column: The first (f8880.line6a and f8880.line6b through f8880.elig_a and f8880.elig_b). The owner's decision (Stage 15 premise map, decision 4). The test is of "the person(s) who made the qualified contribution or elective deferral", so it reads as a test of each contributor, and the form keeps each spouse's contributions in their own column. Whether a person is claimed as a dependent is asked of each person (person.sav_claimed), not read from the return's "can claim" question; it is asked only when someone can claim you or your spouse (sa.dependent), since otherwise no one is claimed. (f8880, p. 2, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a) was born after January 1, 2008; (b) is claimed as a dependent on someone else’s 2025 tax return; or (c) was a student")
+Interpretation amb.2025.ptc_dependent_filing: The first (dependent.ptc_files, with Chart B in its question). The instructions name the income filing threshold, which is Chart B's test; Chart C's reasons are other requirements. The statute (26 U.S.C. 36B, archived as usc-26-36b) is the second reading. Owner's decision D7(b), 2026-10-28. (i8962, p. 8, Line 2b, "Only include your dependents who are required to file an income tax return because their income meets the income tax return filing threshold.")
+Interpretation amb.2025.ptc_not_applicable: The first (f8962.line24 is zero when f8962.applicable is false). A taxpayer who is "not eligible to take the PTC" is allowed none; the columns that would figure it read the skipped lines 7 and 8. Owner's decision D7(a), 2026-10-28. (i8962, p. 10, "If APTC was paid for any individuals in your tax family, skip lines 7 and 8, and go to line 9.")
+Interpretation amb.2025.ptc_annual_route: The first (f8962.line10 derived from the entries). The instructions make line 10 a test ("Check “Yes” and continue to line 11 if all of the following apply"), not a choice. Owner's decision D7(d), 2026-10-28. (i8962, p. 14, Line 10, "Check “Yes” and continue to line 11 if all of the following apply for each qualified health plan")
 Interpretation amb.2025.hoh_community_property: The second, for the nine states the instructions list (Direct File''s knockout tests eight; Louisiana is in the text and so in the question). The owner's decision of 2026-10-22 (integrity plan decision 10). The archived text states the community income rule but not a prohibition on the filing status; the refusal rests on the rule being outside the tool, not on a forbidden status. Married filing separately, the other case Direct File knocks out, is refused throughout the tool already. A registered domestic partner in Nevada, Washington or California (same paragraph) is not asked and is a gap to note. (i1040gi, p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555")
 Interpretation amb.2025.ira_covered: The first (person.ira_cov). The owner's decision (Stage 16 decision 9(b)). A self-employed person's own qualified plan other than a SEP or SIMPLE (such as a solo 401(k)) is refused by scope.schedule1, so person.plan covers the self-employed plans this tool computes. (i1040gi, p. 96, Were You Covered by a Retirement Plan?, "The “Retirement plan” box in box 13 of your Form W-2 should be checked if you were covered by a plan at work even if you weren’t vested in the plan")
 Interpretation amb.2025.ira_ssb_copy: The first (ssb.ira_line20, person.ira_ssb, ira.cov_gate). The owner's decision (Stage 16 decision 7). The IRA worksheet stays a literal transcription, and the special case sits where the instructions carve the exception, in the social security worksheet's own list. The copy's refusal fires only on a return that ssb.pub915 already refuses when answered as the instructions require. (i1040gi, p. 31, Lines 6a and 6b, Exception; p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, "If you checked “No” on line 1a (and “No” on line 1b if married filing jointly), skip lines 2 through 6")

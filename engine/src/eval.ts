@@ -392,17 +392,23 @@ function evalExpr(ctx: Ctx, frame: Frame, lineId: string, expr: Expr, cite: Cite
       return d(missing ?? (fieldType === "Count" ? { kind: "count", value: safeNumber(total) } : { kind: "money", cents: safeNumber(total) }), "sum_over", ops, [], [`confirmed roster ${rosterKey}: ${roster.join(", ")}`.trimEnd()]);
     }
     case "sum": {
+      // All operands money, or all Counts (the checker allows nothing else).
       let total = 0n;
       let unknown: Value | null = null;
       let wrong: Value | null = null;
+      let kind: "money" | "count" | null = null;
       for (const ref of expr.of) {
         const v = evalOperand(ctx, frame, ref, ops);
-        if (v.kind === "money") total += BigInt(v.cents);
+        if (v.kind === "money" || v.kind === "count") {
+          if (kind !== null && kind !== v.kind) wrong ??= { kind: "unknown", reason: "sum operands mix money and Counts" };
+          kind ??= v.kind;
+          total += BigInt(v.kind === "money" ? v.cents : v.value);
+        }
         else if (v.kind === "refusal") return d(v, "sum", ops);
         else if (v.kind === "unknown") unknown ??= v;
-        else wrong ??= { kind: "unknown", reason: `sum operand ${operandDisplay(ref)} is not money` };
+        else wrong ??= { kind: "unknown", reason: `sum operand ${operandDisplay(ref)} is not money or a Count` };
       }
-      return d(unknown ?? wrong ?? { kind: "money", cents: safeNumber(total) }, "sum", ops);
+      return d(unknown ?? wrong ?? (kind === "count" ? { kind: "count", value: safeNumber(total) } : { kind: "money", cents: safeNumber(total) }), "sum", ops);
     }
     case "subtract":
     case "subtract_floor0": {
@@ -467,8 +473,27 @@ function evalExpr(ctx: Ctx, frame: Frame, lineId: string, expr: Expr, cite: Cite
       if (amount.kind !== "money" || rate.kind !== "rate") {
         return d({ kind: "unknown", reason: "multiply_rate operands wrong" }, "multiply_rate", ops);
       }
+      if (expr.unit !== undefined) {
+        // One rounding of the exact product, half-up to a multiple of `unit` cents.
+        if (!(Number.isInteger(expr.unit) && expr.unit > 0)) return d({ kind: "unknown", reason: "multiply_rate unit is not a positive integer" }, "multiply_rate", ops);
+        const cents = safeNumber(BigInt(multiplyRateHalfUp(amount.cents, rate.num, rate.den * expr.unit)) * BigInt(expr.unit));
+        return d({ kind: "money", cents }, "multiply_rate", ops, [], [`exact product rounded once, half-up to a multiple of ${expr.unit} cents`]);
+      }
       const cents = multiplyRateHalfUp(amount.cents, rate.num, rate.den);
       return d({ kind: "money", cents }, "multiply_rate", ops, [], ["half-up to the cent per the ambiguity register"]);
+    }
+    case "percent_floor": {
+      const part = evalOperand(ctx, frame, expr.part, ops);
+      const whole = evalOperand(ctx, frame, expr.whole, ops);
+      const incomplete = incompleteOperand([part, whole]);
+      if (incomplete) return d(incomplete, "percent_floor", ops);
+      if (part.kind !== "money" || whole.kind !== "money" || whole.cents <= 0) {
+        return d({ kind: "unknown", reason: "percent_floor operands wrong" }, "percent_floor", ops);
+      }
+      const p = BigInt(part.cents), w = BigInt(whole.cents), cap = BigInt(expr.cap);
+      if (100n * p > cap * w) return d({ kind: "count", value: expr.cap + 1 }, "percent_floor", ops, [], [`part more than ${expr.cap}% of the whole: ${expr.cap + 1}`]);
+      const pct = p <= 0n ? 0n : (100n * p) / w;
+      return d({ kind: "count", value: safeNumber(pct) }, "percent_floor", ops, [], ["100 times part divided by whole, decimals dropped"]);
     }
     case "round": {
       const v = evalOperand(ctx, frame, expr.of, ops);
