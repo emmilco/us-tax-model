@@ -76,6 +76,16 @@
 - Status: Owner ruling after Stage 16 (reading 1).
 - Cite: [i8889] p. 2, Last-month rule; p. 4, Line 3, rules 2 to 4; p. 7, Line 6, Step 1 (2025; sha256 da6f2f58)
 
+## amb.2025.hsa_step4_other_limits
+
+- Text at issue: Form 8889 instructions p. 7, Line 6, Step 4, "Determine any other contribution limits that apply for the tax year and add that amount to the result in Step 3", for spouses with separate HSAs and family coverage, when line 3 is raised by rule 4 (p. 4, the greater of the Line 3 Limitation Chart and the December 1 maximum) above the chart total.
+- Candidate readings: Step 4 is the self-only monthly amount for each eligible month without family coverage; the amount by which rule 4 raises line 3 is family-coverage limit, divided between the spouses in Step 2. | Step 4 is line 5 less Step 1, so the rule 4 increase is added in full to the filer's own line 6.
+- **Chosen:** The first (f8889.step4_total, f8889.step4).
+- Reason: The spouse rule divides the family-coverage limit (Pub. 969 p. 6, "If either spouse has family HDHP coverage, both spouses are treated as having family HDHP coverage. ... the contribution limit is split equally between the spouses unless you agree on a different division"), and rule 4's increase is a family-coverage amount, not an "other contribution limit". On the witness (joint, family coverage 10 months and on December 1, the limit split equally) line 6 is $4,279.17 under the first reading and $4,987.50 under the second; the first is also the greater of rule 4's two amounts after the division. Found by the Stage 21 round-3 adjudication of f8889 (deepseek-flash and Claude transcriptions).
+
+- Status: Owner decision, 2026-10-29 (keep the first reading).
+- Cite: [i8889] p. 7, Line 6, Steps 1 to 4; p. 4, Line 3, rule 4 (2025; sha256 da6f2f58)
+
 ## amb.2025.sli_ratio_places
 
 - Text at issue: The Student Loan Interest Deduction Worksheet, line 7, says "Enter the result as a decimal (rounded to at least three places)".
@@ -797,7 +807,7 @@
 - Candidate readings: Refuse when a limited exception exceeds its limit for a person who also has a code S distribution. | Apply the limit first to the distributions taxed at 10% (or at 25%, or in proportion).
 - **Chosen:** The first (person.x_limit_binds refuses Form 5329 line 4).
 - Reason: The split changes the tax and the text gives no rule, so the tool refuses the narrow case rather than choose one; a session choice within the owner's D4, reported to the owner.
-- Status: Session reading, 2026-10-29, within decision D4 (research/premises/stage21-form-5329.decisions.md); to be confirmed by the owner.
+- Status: Owner decision, 2026-10-29 (confirmed the session reading made within D4, research/premises/stage21-form-5329.decisions.md).
 - Cite: [i5329] p. 5, Line 4, "If any amount on line 3 was a distribution from a SIMPLE IRA received within 2 years from the date you first participated in the SIMPLE IRA plan, you must multiply that amount by 25% instead of 10%." (2025; sha256 aec3d325)
 
 ## amb.2025.f5329_joint_box

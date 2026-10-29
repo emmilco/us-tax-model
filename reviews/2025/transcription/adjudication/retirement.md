@@ -83,7 +83,7 @@ p. 5, p590b pp. 25, 27 and 28 and f1099r p. 7 (F2 closed; F1's account-value lim
 tax overstated; it predates round 2): `exc_amount` asks for "the amount you used for that purpose" for 05, 19 and 22,
 whose source rules have no use test. F3 (SMW-SHOWN) stands as recorded in round 1.
 
-## Stage 21 round 3
+## Stage 21 round 3 (superseded subject)
 
 Subject after BUG-0205 (question text only): `exc_amount` asks per exception for the amount that qualifies (05, 19, 22, no
 use test), the amount used (09), the emergency amount (23), the premiums (07) and the education expenses (08), and 22 and 23
@@ -119,3 +119,44 @@ p. 27's "before the close of the 120th day after the day you received it"; the q
 qualification window (19 and 22 have one-year windows too), treating qualification as part of choosing the exception, so the
 120-day test is consistent with that convention, but adding it would match the source's amount rule. F3 (SMW-SHOWN) stands
 as recorded (T-081 (2)).
+
+## Stage 21 round 4
+
+Subject after the owner's round-3 answers: `exc_amount` exception 09 asks for "the amount used to pay qualified acquisition
+costs before the close of the 120th day after the day you received it" (p590b p. 27, First home, requirement 1). The 16
+compared project expressions are unchanged. Triage `../triage/retirement.json` and `../triage/retirement.deepseek.json`
+(executable-triage-v2; 1,374 fixtures, 500 generated returns seed 20261026, 1,085 partial records from 40 bases; 2,387
+comparisons; both replies valid). Rulings in `.transcription/proposed/stage21/round4/transcription.retirement[.deepseek].json` and
+`render.retirement[.deepseek].json` (render logs re-run after the 09 rewording). Class M logs are current (round 3).
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| both | transcription | retirement.is_ira | representation | 2,387/2,387 | i1040gi p. 26 | Same set. |
+| claude | transcription | retirement.has_rollover | model error and scope | 3 completed value (classm.tcw.5: code G, box 1 $0, project true, candidate false); project-refuses and partials | i1040gi pp. 27, 30 | A $0 direct rollover is still a rollover (box 1 on line 4c/5c). |
+| deepseek | transcription | retirement.has_rollover | scope | 1,989 agree; project-refuses and partials only | i1040gi pp. 27, 30 | Project reads `rolled` with its cited refusals. |
+| claude | transcription | retirement.taxable | model error and scope | 2 completed candidate-refuses (classm.tcw.15, generated 395); no value | i1040gi pp. 28, 29 | Refuses on recovered above cost (h_recovered_bad), which the source does not; signed line 7 gone. |
+| deepseek | transcription | retirement.taxable | model error and scope | 2 completed value (classm.tcw.15 $39,110.00 vs $49,089.00; generated 395 $0.00 vs $22,738.41); 16 completed candidate-unknown | i1040gi pp. 27-29 | Signed worksheet line 7; reads box 5 and annuity on IRA entries. |
+| claude | transcription | retirement.amount_a | model error and scope | 2 completed value (classm.tcw.15 $0.00 vs $39,110.00) | i1040gi pp. 28, 29 | Box 1 on line 5a for a cost-recovered annuity. |
+| deepseek | transcription | retirement.amount_a | model error and scope | 3 completed value (classm.ira.2 $20,743.00 vs $0.00; classm.tcw.15 $0.00 vs $39,110.00) | i1040gi pp. 28, 30 | Ignores box 5; box 1 for a cost-recovered annuity; regression from round 3. |
+| both | transcription | retirement.sav_amount | model error and scope | 20 completed candidate-unknown; no value | f8880 p. 2, Line 4 | Account-wrong exclusions (amb.2025.savers_inherited_plans for the inherited reading). |
+| claude | transcription | retirement.l1 | model error and scope | 40 completed candidate-unknown; no value | i5329 p. 3 | Screens on every entry. |
+| deepseek | transcription | retirement.l1 | model error and scope | 3 completed value (classm.f5329.2, code S: $25,190.00 vs $0.00; stage21.blind.e2) | i5329 pp. 3, 5 | Code S left off line 1; screens on every entry. |
+| claude | transcription | retirement.l2 | model error | 39 completed candidate-unknown; no value | i5329 p. 5, Line 2 | Exception answer needed on every entry. |
+| deepseek | transcription | retirement.l2 | model error and scope | 7 completed value, all the uncapped amount: stage21.example.teacher_education (p970 p. 56 official example) $500.00 vs $800.00 and 5 partials of it; generated 278 $0.00 vs $2,648.29 | i5329 p. 5, Line 2; p970 p. 56 | Code S left off; exception amount not capped by line 1; screens everywhere. |
+| claude | transcription | retirement.l2_e05, e09, e19, e22, e23 | model error | 872-875 candidate-unknown (33-35 completed); no value | i5329 p. 5, Line 2 | Exception answer needed on entries it is not asked of. |
+| deepseek | transcription | retirement.l2_e05, e09, e19, e22, e23 | model error | 903-915 candidate-unknown (40 completed); e19 generated 278 $0.00 vs $2,648.29 | i5329 p. 5, Line 2 | Exception amount not capped by line 1; screens everywhere. |
+| claude | transcription | retirement.is_e23 | representation | 2,387/2,387 | p590b p. 28 | Guarded on code 1 or S. |
+| deepseek | transcription | retirement.is_e23 | model error | 872 candidate-unknown (33 completed) | p590b p. 28 | Same reply as round 3. |
+| both | transcription | retirement.l1_s | model error and scope | claude 2 differ (refused); deepseek 880 candidate-unknown, no value | i5329 p. 5, Line 4 | Screens needed on entries they do not concern. |
+| claude | transcription | retirement.l2_s | model error | 1 candidate-unknown (refused) | i5329 p. 5, Line 4 | code_screen needed on a code S entry. |
+| deepseek | transcription | retirement.l2_s | model error | 879 candidate-unknown; generated 286 $0.00 vs $5,412.88 (refused) | i5329 p. 5, Lines 2, 4 | Uncapped exception amount; screens everywhere. |
+| both | transcription | (SMW 4) | representation | 2,387/2,387 | i1040gi p. 29 | Same bands and prior-year branch (deepseek's round-3 error gone). |
+| both | render | (SMW 2), (SMW 4), (SMW 10); claude (SMW 8), (SMW 11); deepseek (SMW 5) | scope | MISMATCH (claude 5 open, deepseek 4 open) | i1040gi p. 29 | Death benefit exclusion and pre-November-19-1996 annuities refused by `special` and `annuity`; same reading as round 3, reworded. |
+
+Findings: none. The exception 09 wording was checked against p590b p. 27 ("1. It must be used to pay qualified acquisition
+costs (defined next) before the close of the 120th day after the day you received it"): it quotes requirement 1 word for
+word, and it introduces no error. It asks for no more and no less than the source's amount. A 2025 distribution spent within
+120 days in 2026 still counts, and money spent after the window is excluded. The $10,000 lifetime limit stays per person
+(`person.x_prior09`, `f5329.cap_first_home`). Requirement 2, who the home may be for, is not restated, which follows the
+convention that qualification is part of choosing the exception. No reply raised the 09 wording. Round-3 observation closed.
+F3 (SMW-SHOWN) stands as recorded (T-081 (2)).

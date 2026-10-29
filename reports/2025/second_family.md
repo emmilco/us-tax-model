@@ -1,6 +1,6 @@
 # Second-family review comparison — 2025
 
-Summary: 149 form-kind pair(s) with logs from Claude and deepseek; ruled model-error noise 7.8% (361/4605 second-family lines judged; pending reviews are provisional); 63 eligible, 85 pending; raw agreement 80.8% (diagnostic only); current independence yield 262 line(s); both families disputed 493
+Summary: 149 form-kind pair(s) with logs from Claude and deepseek; ruled model-error noise 7.9% (366/4605 second-family lines judged; pending reviews are provisional); 63 eligible, 85 pending; raw agreement 80.8% (diagnostic only); current independence yield 263 line(s); both families disputed 489
 
 Written by `tools/transcription/compare_families.py` on 2026-10-29 from the review logs under `reviews/2025/`. For each form with a Claude log and a second model family's log of the same kind (`<form>.<family>.md`, families.py), the lines judged in both are compared.
 
@@ -35,7 +35,7 @@ Written by `tools/transcription/compare_families.py` on 2026-10-29 from the revi
 | f8606 | deepseek (deepseek-flash) | 5 | 2 | 40.0% | 0/5 (0.0%) | pending | 0 | 3 | 0 | 0 |
 | f8863 | deepseek (deepseek-flash) | 28 | 16 | 57.1% | 11/28 (39.3%) | pending | 7 | 5 | 0 | 0 |
 | f8880 | deepseek (deepseek-flash) | 21 | 5 | 23.8% | 16/21 (76.2%) | pending | 7 | 9 | 0 | 0 |
-| f8889 | deepseek (deepseek-flash) | 20 | 5 | 25.0% | 8/20 (40.0%) | pending | 3 | 12 | 0 | 0 |
+| f8889 | deepseek (deepseek-flash) | 20 | 6 | 30.0% | 11/20 (55.0%) | pending | 4 | 9 | 1 | 0 |
 | f8959 | deepseek (deepseek-flash) | 24 | 22 | 91.7% | 0/24 (0.0%) | pending | 0 | 2 | 0 | 0 |
 | f8960 | deepseek (deepseek-flash) | 25 | 19 | 76.0% | 3/25 (12.0%) | pending | 3 | 3 | 0 | 0 |
 | f8962 | deepseek (deepseek-flash) | 97 | 34 | 35.1% | 23/97 (23.7%) | pending | 13 | 11 | 39 | 0 |
@@ -55,7 +55,7 @@ Written by `tools/transcription/compare_families.py` on 2026-10-29 from the revi
 | qbi | deepseek (deepseek-flash) | 5 | 1 | 20.0% | 0/5 (0.0%) | pending | 2 | 2 | 0 | 0 |
 | qdcg | deepseek (deepseek-flash) | 26 | 23 | 88.5% | 0/26 (0.0%) | pass | 0 | 3 | 0 | 0 |
 | refund | deepseek (deepseek-flash) | 11 | 3 | 27.3% | 5/11 (45.5%) | pending | 5 | 3 | 0 | 0 |
-| retirement | deepseek (deepseek-flash) | 26 | 10 | 38.5% | 11/26 (42.3%) | pending | 0 | 16 | 0 | 0 |
+| retirement | deepseek (deepseek-flash) | 26 | 10 | 38.5% | 13/26 (50.0%) | pending | 0 | 16 | 0 | 0 |
 | s1 | deepseek (deepseek-flash) | 27 | 19 | 70.4% | 6/27 (22.2%) | pending | 2 | 4 | 2 | 0 |
 | s179 | deepseek (deepseek-flash) | 14 | 10 | 71.4% | 2/14 (14.3%) | pending | 1 | 2 | 1 | 0 |
 | s1a | deepseek (deepseek-flash) | 43 | 8 | 18.6% | 34/43 (79.1%) | pending | 1 | 34 | 0 | 0 |
@@ -78,7 +78,7 @@ Written by `tools/transcription/compare_families.py` on 2026-10-29 from the revi
 | tipjob | deepseek (deepseek-flash) | 3 | 2 | 66.7% | 0/3 (0.0%) | pending | 0 | 0 | 1 | 0 |
 | u1250 | deepseek (deepseek-flash) | 18 | 6 | 33.3% | 7/18 (38.9%) | pending | 4 | 6 | 2 | 0 |
 | w2 | deepseek (deepseek-flash) | 5 | 3 | 60.0% | 0/5 (0.0%) | pending | 0 | 1 | 1 | 0 |
-| **all** | | 1151 | 491 | 42.7% | | | 173 | 400 | 87 | 7 |
+| **all** | | 1151 | 492 | 42.7% | | | 174 | 397 | 88 | 7 |
 
 Pending asset [deepseek]: model-error noise above 10%.
 Pending carloan [deepseek]: model-error noise above 10%.
@@ -205,6 +205,7 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | f8880 | deepseek | 5(b) | DISAGREE | (no reason given) |
 | f8880 | deepseek | 7 | DISAGREE | (no reason given) |
 | f8889 | deepseek | 12 | DISAGREE | (no reason given) |
+| f8889 | deepseek | 14c | DISAGREE | The form does not state a zero floor for line 14c. Because line 14b is a part of line 14a and line 14c is declared NonNegDollars, I used subtract_floor0; valid entries cannot make it negative. |
 | f8889 | deepseek | 5 | DISAGREE | (no reason given) |
 | f8889 | deepseek | 8 | DISAGREE | (no reason given) |
 | f8960 | deepseek | 10 | DISAGREE | (no reason given) |
@@ -421,14 +422,11 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | f8880 | deepseek | 6(a) | DISAGREE | DISAGREE | (no reason given) |
 | f8880 | deepseek | 6(b) | DISAGREE | DISAGREE | (no reason given) |
 | f8889 | deepseek | 13 | DISAGREE | DISAGREE | (no reason given) |
-| f8889 | deepseek | 14b | DISAGREE | DISAGREE | Chosen reading: the rolled-over part cannot exceed line 14a; when line 14a is zero, line 14b is zero even if the rollover input is absent. |
-| f8889 | deepseek | 15 | DISAGREE | DISAGREE | Chosen reading: qualified medical expenses entered on line 15 cannot exceed line 14c. |
 | f8889 | deepseek | 16 | DISAGREE | DISAGREE | (no reason given) |
-| f8889 | deepseek | 17b | DISAGREE | DISAGREE | (no reason given) |
-| f8889 | deepseek | 3 | DISAGREE | DISAGREE | (no reason given) |
+| f8889 | deepseek | 3 | DISAGREE | DISAGREE | The Line 3 Limitation Chart totals each month's amount and divides by 12. I used multiply_rate with hsa.twelfth (rounded half-up to the cent) because no exact-division atom is available. I applied the last-month rule as the greater of the actual-month worksheet limit and the annual limit for December 1 coverage, as the line 3 instructions direct when coverage changed. |
 | f8889 | deepseek | 6 | DISAGREE | DISAGREE | (no reason given) |
-| f8889 | deepseek | 7 | DISAGREE | DISAGREE | Chosen reading: the additional contribution amount is prorated by family-coverage eligible months; when the last-month rule treats December family coverage as lasting all year, twelve months are used. |
-| f8889 | deepseek | f8889.excess_amt | DISAGREE | DISAGREE | (no reason given) |
+| f8889 | deepseek | 7 | DISAGREE | DISAGREE | (no reason given) |
+| f8889 | deepseek | f8889.excess_amt | DISAGREE | DISAGREE | Total excess HSA contributions: line 2 plus employer contributions on line 9 over line 8, floored at zero. Line 10 is zero in the supported slice. |
 | f8889 | deepseek | f8889.share_raw | DISAGREE | DISAGREE | (no reason given) |
 | f8889 | deepseek | f8889.split | DISAGREE | DISAGREE | (no reason given) |
 | f8889 | deepseek | f8889.step1 | DISAGREE | DISAGREE | (no reason given) |
@@ -543,22 +541,22 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | refund | deepseek | 6 | DISAGREE | DISAGREE | (no reason given) |
 | refund | deepseek | 8 | DISAGREE | DISAGREE | The worksheet's note for married filing separately when the spouse itemized deductions is implemented by copying line 4 to line 8 and bypassing lines 5 through 7. |
 | refund | deepseek | 9 | DISAGREE | DISAGREE | The STOP conditions on lines 3 and 8 are carried into zero through subtract_floor0 and the smaller of line 3 or line 8. |
-| retirement | deepseek | (SMW 4) | DISAGREE | DISAGREE | The worksheet's line 3 has a pre-November 19, 1996 column; the retirement.annuity input limits this slice to annuities with an annuity starting date after November 18, 1996, so only that column is used. |
-| retirement | deepseek | retirement.amount_a | DISAGREE | DISAGREE | Entered on line 4a or 5a only when the distribution is not fully taxable; fully taxable distributions go only on 4b or 5b. |
+| retirement | deepseek | (SMW 4) | DISAGREE | DISAGREE | (no reason given) |
+| retirement | deepseek | retirement.amount_a | DISAGREE | DISAGREE | (no reason given) |
 | retirement | deepseek | retirement.has_rollover | DISAGREE | DISAGREE | (no reason given) |
 | retirement | deepseek | retirement.is_e23 | DISAGREE | DISAGREE | (no reason given) |
 | retirement | deepseek | retirement.is_ira | DISAGREE | DISAGREE | (no reason given) |
-| retirement | deepseek | retirement.l1 | DISAGREE | DISAGREE | The early amount is the taxable amount for early, SIMPLE, code 2, disability and death codes; normal, rollover and qualified Roth distributions are not early. The screening gates refuse partial code 2, recapture and other unsupported cases. |
+| retirement | deepseek | retirement.l1 | DISAGREE | DISAGREE | (no reason given) |
 | retirement | deepseek | retirement.l1_s | DISAGREE | DISAGREE | (no reason given) |
-| retirement | deepseek | retirement.l2 | DISAGREE | DISAGREE | For codes 2, 3 and 4 the exception is treated as covering the whole early amount; otherwise the exception amount is the smaller of the early amount and exc_amount. Per-person dollar caps are applied later. |
+| retirement | deepseek | retirement.l2 | DISAGREE | DISAGREE | (no reason given) |
 | retirement | deepseek | retirement.l2_e05 | DISAGREE | DISAGREE | (no reason given) |
 | retirement | deepseek | retirement.l2_e09 | DISAGREE | DISAGREE | (no reason given) |
 | retirement | deepseek | retirement.l2_e19 | DISAGREE | DISAGREE | (no reason given) |
 | retirement | deepseek | retirement.l2_e22 | DISAGREE | DISAGREE | (no reason given) |
 | retirement | deepseek | retirement.l2_e23 | DISAGREE | DISAGREE | (no reason given) |
 | retirement | deepseek | retirement.l2_s | DISAGREE | DISAGREE | (no reason given) |
-| retirement | deepseek | retirement.sav_amount | DISAGREE | DISAGREE | Form 8880 line 4 excludes rollovers and the military, 404(k) and inherited IRA distributions; other exclusions are in retirement.special and are refused. |
-| retirement | deepseek | retirement.taxable | DISAGREE | DISAGREE | Within the supported scope, taxable is zero for direct rollovers and qualified Roth distributions; for a plan with a Simplified Method annuity it is SMW9; otherwise it is gross minus rollover (and box 5 for a plan). A nonqualified Roth distribution needs Form 8606 and is refused. |
+| retirement | deepseek | retirement.sav_amount | DISAGREE | DISAGREE | (no reason given) |
+| retirement | deepseek | retirement.taxable | DISAGREE | DISAGREE | (no reason given) |
 | s1 | deepseek | 1 | DISAGREE | DISAGREE | (no reason given) |
 | s1 | deepseek | 16 | DISAGREE | DISAGREE | (no reason given) |
 | s1 | deepseek | 7 | DISAGREE | DISAGREE | (no reason given) |
@@ -744,7 +742,7 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | f8606 | deepseek (deepseek-flash) | 5 | 3 | 60.0% | 0/5 (0.0%) | pending | 1 | 0 | 1 | 0 |
 | f8863 | deepseek (deepseek-flash) | 25 | 20 | 80.0% | 1/25 (4.0%) | pass | 1 | 4 | 0 | 0 |
 | f8880 | deepseek (deepseek-flash) | 21 | 20 | 95.2% | 0/21 (0.0%) | pass | 0 | 1 | 0 | 0 |
-| f8889 | deepseek (deepseek-flash) | 19 | 18 | 94.7% | 0/19 (0.0%) | pass | 0 | 1 | 0 | 0 |
+| f8889 | deepseek (deepseek-flash) | 19 | 18 | 94.7% | 0/19 (0.0%) | pass | 0 | 0 | 1 | 0 |
 | f8959 | deepseek (deepseek-flash) | 24 | 23 | 95.8% | 0/24 (0.0%) | pass | 0 | 0 | 1 | 0 |
 | f8960 | deepseek (deepseek-flash) | 25 | 22 | 88.0% | 0/25 (0.0%) | pass | 1 | 2 | 0 | 0 |
 | f8962 | deepseek (deepseek-flash) | 95 | 91 | 95.8% | 0/95 (0.0%) | pass | 0 | 1 | 3 | 0 |
@@ -787,7 +785,7 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | tipjob | deepseek (deepseek-flash) | 3 | 3 | 100.0% | 0/3 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | u1250 | deepseek (deepseek-flash) | 18 | 4 | 22.2% | 0/18 (0.0%) | pass | 0 | 13 | 1 | 0 |
 | w2 | deepseek (deepseek-flash) | 17 | 17 | 100.0% | 0/17 (0.0%) | pass | 0 | 0 | 0 | 0 |
-| **all** | | 1291 | 1128 | 87.4% | | | 53 | 87 | 23 | 0 |
+| **all** | | 1291 | 1128 | 87.4% | | | 53 | 86 | 24 | 0 |
 
 Pending asset [deepseek]: 4 open, unclassified or interface-gap rulings.
 Pending dependent [deepseek]: 6 open, unclassified or interface-gap rulings.
@@ -842,7 +840,7 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 | ltc | deepseek | 2(a) | MISMATCH | The IRS note excludes payments for any month you were eligible to participate in a long-term care insurance plan subsidized by your employer or your spouse's employer, or the employer of either your dependent or your child who was under age 27 at the end of 2025; the restatement instead states the exclusion in terms of the covered person's eligibility for a plan subsidized by an employer. |
 | oi8z | deepseek | 8z (amount) | MISMATCH | The line is NonNegDollars, but the IRS line 8z examples include a 'Loss on certain corrective distributions of excess deferrals'; a loss cannot be entered as a nonnegative amount to include in income. |
 | person | deepseek | Step 3 | MISMATCH | IRS Step 3 says only 'Net earnings from self-employment. Subtract step 2 from step 1'; it does not provide a zero-or-less floor. |
-| retirement | deepseek | (SMW 5) | MISMATCH | IRS line 5 adds: 'If your annuity starting date was before 1987, skip lines 6 and 7 and enter this amount on line 8. Otherwise, go to line 6'; the restatement omits this condition. |
+| retirement | deepseek | (SMW 5) | MISMATCH | IRS line 5 adds: "If your annuity starting date was before 1987, skip lines 6 and 7 and enter this amount on line 8"; the restatement omits that pre-1987 rule. |
 | s1 | deepseek | 15 | MISMATCH | The IRS says 'If you were self-employed and owe self-employment tax, fill in Schedule SE'; the restatement returns zero unless the person has at least one Schedule C, without refusing partnership or other self-employment income on that path. |
 | s1 | deepseek | 16 | MISMATCH | The IRS line is 'Self-employed SEP, SIMPLE, and qualified plans'; the restatement computes only a 'Self-employed SEP or SIMPLE deduction' and returns zero when there is no Schedule C. |
 | s1 | deepseek | 17 | MISMATCH | The IRS instructions allow the deduction for 'a partner with net earnings from self-employment' and a 'more-than-2% shareholder in an S corporation,' but the restatement only sums Schedule C (sc) Form 7206 line 14 amounts. |
@@ -895,7 +893,6 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 | f8863 | deepseek | 2 | MISMATCH | MISMATCH | IRS line 2 says '$180,000 if married filing jointly; or $90,000 if single, head of household, or qualifying surviving spouse.' It does not provide an MFS amount, and MFS filers cannot claim the education credit. |
 | f8863 | deepseek | 5 | MISMATCH | MISMATCH | IRS line 5 says '$20,000 if married filing jointly; or $10,000 if single, head of household, or qualifying surviving spouse.' It does not provide an MFS amount, and MFS filers cannot claim the credit. |
 | f8880 | deepseek | (CLW 2) | MISMATCH | MISMATCH | The IRS worksheet says "Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l," but the restatement adds only Schedule 3 lines 1 through 3, omitting 6d and 6l. |
-| f8889 | deepseek | 7 | MISMATCH | MISMATCH | The IRS worksheet counts months where 'You or your spouse had family coverage under an HDHP and were, or were considered to be, an eligible individual on the first day of the month,' but the program uses the general number of eligible months, overstating line 7 when family coverage exists only part of the year. |
 | f8960 | deepseek | 5a | MISMATCH | MISMATCH | IRS line 5a instructions say to combine 'Form 1040 or 1040-SR, line 7a, and Schedule 1 (Form 1040), line 4'; the restatement uses only f1040 line 7a. |
 | f8960 | deepseek | 5b | MISMATCH | MISMATCH | The carryforward refusal is gated by f8960.carryforward_adj, which requires line 15 over $0; IRS says 'Starting in 2014, capital loss carryforwards must be adjusted if any sum of all capital gain or loss amounts excluded from NII on lines 5b and 5c was a net loss' with no MAGI-over-threshold condition. |
 | f8962 | deepseek | 24 | MISMATCH | MISMATCH | The restatement treats line 5 >= 100 or the Marketplace estimate as sufficient for an applicable taxpayer, but IRS says if married at the end of 2025 you generally must file a joint return, and you cannot take the PTC with married filing separately unless an exception applies. |
@@ -915,9 +912,9 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 | qbi | deepseek | 3 | MISMATCH | MISMATCH | IRS line 3 is "Qualified business net (loss) carryforward from the prior year" shown with parentheses, and line 4 says "Combine lines 2 and 3," so the carryforward is a negative amount; the restatement instead says "entered as a positive amount." The line 3 instructions also require the "qualified portion" allowed in calculating taxable income in the current year, not merely prior-year line 16. |
 | refund | deepseek | 1 | MISMATCH | MISMATCH | The min(refund, 2024 Schedule A line 5d) computation is right, but the IRS says to use Pub. 525 instead of this worksheet if the refund is for a tax year other than 2024 or if the last 2024 estimated state or local income tax payment was made in 2025; the refusal rules omit those exceptions. |
 | refund | deepseek | 6 | UNCLEAR | MISMATCH | IRS line 6 says to multiply the number of boxes checked by $1,550 ($1,950 if the 2024 status was single or head of household), and for MFS the spouse boxes count only if the spouse had no income, isn’t filing, and can’t be claimed as a dependent; the restatement adds per-box amounts and omits the MFS conditions. |
-| retirement | deepseek | (SMW 10) | MISMATCH | MISMATCH | IRS line 10 asks 'Was your annuity starting date before 1987?' and says if Yes, 'STOP Do not complete the rest of this worksheet'; the restatement unconditionally adds lines 6 and 8. |
-| retirement | deepseek | (SMW 2) | MISMATCH | MISMATCH | IRS says to include any death benefit exclusion (up to $5,000) in the amount entered on line 2 for a beneficiary of a deceased employee who died before August 21, 1996; the helper defines only cost/net investment and omits that addition. |
-| retirement | deepseek | (SMW 4) | MISMATCH | MISMATCH | Table 1 has a before-November-19-1996 column (300, 260, 240, 170, 120), but the helper uses only the after-November-18-1996 numbers (360, 310, 260, 210, 160); no refusal covers pre-November-19-1996 annuities. |
+| retirement | deepseek | (SMW 10) | MISMATCH | MISMATCH | IRS line 10 asks "Was your annuity starting date before 1987?" and says "Yes. STOP Do not complete the rest of this worksheet"; the restatement only gives the No-branch addition. |
+| retirement | deepseek | (SMW 2) | MISMATCH | MISMATCH | The worksheet before-you-begin note says to "include any death benefit exclusion that you are entitled to (up to $5,000) in the amount entered on line 2 below"; the restatement uses only the cost helper and omits that addition. |
+| retirement | deepseek | (SMW 4) | MISMATCH | MISMATCH | The Table 1 helper uses only the after-November 18, 1996 numbers (e.g., 360 for age 55 or under), but IRS Table 1 says for an annuity starting date "before November 19, 1996, enter on line 3" 300 for age 55 or under. |
 | s1 | deepseek | 1 | MISMATCH | MISMATCH | The IRS Exception requires Pub. 525 instead of the worksheet in cases such as 'You owed alternative minimum tax in 2024' or 'You couldn’t use the full amount of credits...'; the restatement only refuses box 8 and not_2024. |
 | s1 | deepseek | 10 | MISMATCH | MISMATCH | The IRS line says 'Combine lines 1 through 7 and 9'; the restatement adds only lines 1, 2a, 3, 7, and 9, omitting lines 4, 5, and 6. |
 | s1 | deepseek | 25 | MISMATCH | MISMATCH | The IRS line says 'Total other adjustments. Add lines 24a through 24z'; the restatement enters only line 24a, omitting 24b through 24z. |

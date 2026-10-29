@@ -217,3 +217,8 @@ Inferred: that `shown_when` lines on the person and dependent entries give a rea
 project's Tax Table and EIC Table (not run); the shares of every refused sub-situation (none measured); the effect of
 the thin microdata on the +4.0; the coverage figure itself (read from the report; the estimator was not run, since it
 rewrites the report); the final 2026 text.
+
+## Confirmed after the stage (2026-10-29)
+
+- The return-level screen `f8863.paid` ("Did anyone pay qualified education expenses in 2025 for you, your spouse or a
+  dependent you claim?"), asked before D2's per-person question: confirmed by the owner.

@@ -1013,6 +1013,7 @@ form:
     cite:
       doc: i8889
       locator: 'p. 7, Line 6, Step 4, "Determine any other contribution limits that apply for the tax year and add that amount to the result in Step 3. Enter the total on line 6"'
+    ambiguity: amb.2025.hsa_step4_other_limits
   - id: f8889.step4
     printed: (helper)
     label: 'Step 4: other contribution limits (the total divided by 12)'

@@ -110,19 +110,10 @@
    "triage": "candidate invalid"
   },
   {
-   "candidate": "f8889.line14b",
-   "handle": "14b",
+   "candidate": "f8889.line14c",
+   "handle": "14c",
    "open_at_triage": true,
-   "project": "f8889.line14b",
-   "shown_when": null,
-   "status": "DISAGREE",
-   "triage": "candidate invalid"
-  },
-  {
-   "candidate": "f8889.line15",
-   "handle": "15",
-   "open_at_triage": true,
-   "project": "f8889.line15",
+   "project": "f8889.line14c",
    "shown_when": null,
    "status": "DISAGREE",
    "triage": "candidate invalid"
@@ -135,21 +126,12 @@
    "shown_when": null,
    "status": "DISAGREE",
    "triage": "candidate invalid"
-  },
-  {
-   "candidate": "f8889.line17b",
-   "handle": "17b",
-   "open_at_triage": true,
-   "project": "f8889.line17b",
-   "shown_when": null,
-   "status": "DISAGREE",
-   "triage": "candidate invalid"
   }
  ],
- "log_sha256_at_triage": "8b3ca0f759ed03328c835bd1d20b7c334873bf346cadcec5c80087ccacb2af6c",
+ "log_sha256_at_triage": "0b77c4bdb864201634c45cc976201e56b06fa7a779f8f3ccc322d988946eb578",
  "policy": "executable-triage-v2",
- "response_sha256": "6528e53bf598b12afbf8bab3ef50eea8705e107066d51e2c9b35abff126c92ff",
+ "response_sha256": "28e2b086315868ebe028013d79ba1e3a724ddc42f8c27edb13bd29eb18a14c0a",
  "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
  "state": "invalid",
- "subject_sha256": "f5bbdd1045f47064a05f134395f5ebc13c463cfdba5073729a3c4217e1316075"
+ "subject_sha256": "18edc485f2f07661fe977864979b4a160899eaa35b334194d5a56633ba793d47"
 }

@@ -1291,10 +1291,11 @@ form:
       source: 'Amount of this distribution that the exception covers (the tool applies the dollar limits per person). Medical
         expenses (05), birth or adoption (19) and domestic abuse (22): the amount of the distribution that qualifies, whatever
         it was spent on; for 05 the tool limits it to the medical expenses above 7.5% of AGI, and for 22 enter no more than
-        50% of the present value of the IRA or plan account. First home (09): the amount used to pay qualified acquisition costs.
-        Emergency expenses (23): no more than your total interest in the IRA or plan account minus $1,000. Health insurance
-        premiums while unemployed (07): the premiums you paid. Higher education (08): your adjusted qualified education expenses
-        (Pub. 970, chapter 8). Other exceptions: the amount the exception covers.'
+        50% of the present value of the IRA or plan account. First home (09): the amount used to pay qualified acquisition costs
+        before the close of the 120th day after the day you received it. Emergency expenses (23): no more than your total interest
+        in the IRA or plan account minus $1,000. Health insurance premiums while unemployed (07): the premiums you paid. Higher
+        education (08): your adjusted qualified education expenses (Pub. 970, chapter 8). Other exceptions: the amount the exception
+        covers.'
     cite:
       doc: i5329
       locator: p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable
