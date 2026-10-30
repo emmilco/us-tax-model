@@ -56,6 +56,8 @@ the route is reached.
 
 ## Facts a fresh session needs
 
+- `/tmp/s19/gen.py` still writes `person.yaml` from its pre-Stage-21 copy and undoes Stage 21's person changes (about
+  1,900 lines). After running it for `f8863.yaml`, restore `person.yaml` with `git checkout forms/2025/person.yaml`.
 - An implicit per-person form takes no inputs: put inputs on `person` (`person.x_hsa_value`), as eval rejects
   `person[p].f5329[form].<input>`.
 - `choose` returns money only; count a person with `sum_over ... where` (`person.x_must`).

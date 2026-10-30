@@ -24,6 +24,22 @@
   {
    "line": "f8880.line4b",
    "message": "model introduced an input outside the closed interface"
+  },
+  {
+   "line": "f8880.h_line6a_raw",
+   "message": "malformed expression (project schema): data/of/1 must be string, data/of/1 must be string, data/of/1 must be string"
+  },
+  {
+   "line": "f8880.h_line6b_raw",
+   "message": "malformed expression (project schema): data/of/1 must be string, data/of/1 must be string, data/of/1 must be string"
+  },
+  {
+   "line": "f8880.h_line6a_raw",
+   "message": "f8880.f8880.h_line6a_raw: malformed expression"
+  },
+  {
+   "line": "f8880.h_line6b_raw",
+   "message": "f8880.f8880.h_line6b_raw: malformed expression"
   }
  ],
  "failures": [],
@@ -152,16 +168,7 @@
    "handle": "10",
    "open_at_triage": true,
    "project": "f8880.line10",
-   "shown_when": null,
-   "status": "DISAGREE",
-   "triage": "candidate invalid"
-  },
-  {
-   "candidate": "f8880.clw2",
-   "handle": "(CLW 2)",
-   "open_at_triage": true,
-   "project": "f8880.clw2",
-   "shown_when": null,
+   "shown_when": "f8880.past9",
    "status": "DISAGREE",
    "triage": "candidate invalid"
   },
@@ -170,15 +177,15 @@
    "handle": "12",
    "open_at_triage": true,
    "project": "f8880.line12",
-   "shown_when": null,
+   "shown_when": "f8880.past9",
    "status": "DISAGREE",
    "triage": "candidate invalid"
   }
  ],
- "log_sha256_at_triage": "691d26eddba1b5c4dffe32360315265f58eea97a6dba063bd238a36961925eef",
+ "log_sha256_at_triage": "fbfd1e318b499c3067dc99b7802c4ab12a117f5d9e5304b589db002706949a70",
  "policy": "executable-triage-v2",
- "response_sha256": "d82a0d46561a35b32c7faf8111785d80c7d2d96306063b76fa10d55e0d2e1422",
+ "response_sha256": "e92923647d2bd269b6d54b0efa4f9a6f200407653232047c56557fb2b0cb71f6",
  "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
  "state": "invalid",
- "subject_sha256": "c4ece4d4ea848b3ec418270c1c973703e0f2e0bee97109bd95d0a16cb18b9d4c"
+ "subject_sha256": "81d00b90ac4e26efd51adf5680347910c3132344872f53a7dc8ab29d15a1a051"
 }

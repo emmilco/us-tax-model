@@ -86,6 +86,8 @@ export function integrationChecks(): void {
     badData(d=>{line(d,"person.over").expr={op:"test",eq:["person.over",{const:true}]};});
     // shown_when must name a Bool line of the same document; an implicit collection needs a parent.
     badData(d=>{line(d,"asset.bonus").shown_when="asset.cost";});
+    // ... and may hide a printed or worksheet line, never a helper.
+    badData(d=>{line(d,"s8812.show13").shown_when="s8812.clwb_complete";});
     badData(d=>{const f=d.forms.find(x=>x.id==="f4562")!;f.collection={implicit:"form",cite:f.collection!.cite};});
     badData(d=>{line(d,"person.credit").expr={op:"choose",alternatives:[{guard:{op:"test",eq:["person.credit",{const:0}]},then:"person.zero"}]};});
     badData(d=>{line(d,"person.withheld").expr={op:"sum_over",collection:"w2",field:"w2.over"};});

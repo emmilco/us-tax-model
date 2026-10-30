@@ -467,8 +467,21 @@ form:
     cite:
       doc: f8880
       locator: 'Form 8880 (2025), line 7; p. 2, Line 7, "Add the amounts from line 6, columns (a) and (b), and enter the total"'
+  - id: f8880.past7
+    printed: (helper)
+    label: Line 7 is more than zero (the form continues after line 7)
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - f8880.line7
+      - const: 0
+    cite:
+      doc: f8880
+      locator: 'Form 8880 (2025), line 7, "If zero, stop; you can’t take this credit"'
   - id: f8880.line8
     printed: '8'
+    shown_when: f8880.past7
     label: Enter the amount from Form 1040, 1040-SR, or 1040-NR, line 11a
     type: Dollars
     expr:
@@ -489,6 +502,7 @@ form:
           or income from American Samoa"'
   - id: f8880.line9
     printed: '9'
+    shown_when: f8880.past7
     label: Enter the applicable decimal amount from the table below
     type: Rate
     expr:
@@ -499,8 +513,27 @@ form:
     cite:
       doc: f8880
       locator: Form 8880 (2025), line 9, "Enter the applicable decimal amount from the table below"
+  - id: f8880.past9
+    printed: (helper)
+    label: Line 9 is more than zero after line 7 (line 8 not more than the limit, the last band of the line 9 table being 0.0)
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8880.past7
+        - const: true
+      - op: test
+        le:
+        - f8880.line8
+        - f8880.agi_limit
+    cite:
+      doc: f8880
+      locator: 'Form 8880 (2025), line 9, "If line 9 is zero, stop; you can’t take this credit"; line 9 table, the last band "$79,000 --- 0.0 0.0 0.0"'
   - id: f8880.line10
     printed: '10'
+    shown_when: f8880.past9
     label: Multiply line 7 by line 9
     type: NonNegDollars
     expr:
@@ -512,6 +545,7 @@ form:
       locator: Form 8880 (2025), line 10
   - id: f8880.clw1
     printed: (CLW 1)
+    shown_when: f8880.past9
     label: Enter the amount from Form 1040, 1040-SR, or 1040-NR, line 18
     type: Dollars
     expr:
@@ -522,6 +556,7 @@ form:
       locator: 'p. 2, Credit Limit Worksheet, "1. Enter the amount from Form 1040, 1040-SR, or 1040-NR, line 18"'
   - id: f8880.clw2
     printed: (CLW 2)
+    shown_when: f8880.past9
     label: Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l
     type: Dollars
     expr:
@@ -536,6 +571,7 @@ form:
         (lines 6d and 6l are refused by scope.credits)'
   - id: f8880.clw3
     printed: (CLW 3)
+    shown_when: f8880.past9
     label: Subtract line 2 from line 1. Also enter this amount on Form 8880, line 11. But if zero or less, stop; you can't
       take the credit
     type: NonNegDollars
@@ -549,6 +585,7 @@ form:
         But if zero or less, stop; you can’t take the credit"'
   - id: f8880.line11
     printed: '11'
+    shown_when: f8880.past9
     label: Limitation based on tax liability. Enter the amount from the Credit Limit Worksheet in the instructions
     type: NonNegDollars
     expr:
@@ -623,6 +660,7 @@ form:
       locator: Form 8880 (2025), line 12
   - id: f8880.line12
     printed: '12'
+    shown_when: f8880.past9
     label: Credit for qualified retirement savings contributions. Enter the smaller of line 10 or line 11 here and on Schedule
       3 (Form 1040), line 4
     type: NonNegDollars

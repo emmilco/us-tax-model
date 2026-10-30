@@ -2,12 +2,8 @@
  "bank": null,
  "errors": [
   {
-   "line": "f8863.kid_needed",
-   "message": "malformed expression (project schema): data/all/1/gt/0 must be string, data/all/1/gt/0 must have required property 'const', data/all/1/gt/0 must NOT have additional properties"
-  },
-  {
-   "line": "f8863.kid_needed",
-   "message": "f8863.f8863.kid_needed: comparison operands have incompatible types"
+   "line": "f8863.line19",
+   "message": "model changed a published result type"
   }
  ],
  "failures": [],
@@ -60,56 +56,11 @@
    "triage": "candidate invalid"
   },
   {
-   "candidate": "f8863.line9",
-   "handle": "9",
-   "open_at_triage": true,
-   "project": "f8863.line9",
-   "shown_when": "f8863.show_after4",
-   "status": "DISAGREE",
-   "triage": "candidate invalid"
-  },
-  {
    "candidate": "f8863.line10",
    "handle": "10",
    "open_at_triage": true,
    "project": "f8863.line10",
    "shown_when": "f8863.show_after4",
-   "status": "DISAGREE",
-   "triage": "candidate invalid"
-  },
-  {
-   "candidate": "f8863.clw2",
-   "handle": "(CLW 2)",
-   "open_at_triage": true,
-   "project": "f8863.clw2",
-   "shown_when": null,
-   "status": "DISAGREE",
-   "triage": "candidate invalid"
-  },
-  {
-   "candidate": "f8863.clw3",
-   "handle": "(CLW 3)",
-   "open_at_triage": true,
-   "project": "f8863.clw3",
-   "shown_when": null,
-   "status": "DISAGREE",
-   "triage": "candidate invalid"
-  },
-  {
-   "candidate": "f8863.clw6",
-   "handle": "(CLW 6)",
-   "open_at_triage": true,
-   "project": "f8863.clw6",
-   "shown_when": null,
-   "status": "DISAGREE",
-   "triage": "candidate invalid"
-  },
-  {
-   "candidate": "f8863.clw7",
-   "handle": "(CLW 7)",
-   "open_at_triage": true,
-   "project": "f8863.clw7",
-   "shown_when": null,
    "status": "DISAGREE",
    "triage": "candidate invalid"
   },
@@ -123,10 +74,10 @@
    "triage": "candidate invalid"
   }
  ],
- "log_sha256_at_triage": "41d400f376b596f29e09add607ea43730023258b18b3c2c32254790986e4901f",
+ "log_sha256_at_triage": "b8ed3cd454aa6ca9fa468f638c5e3f540659d0ce9db27c0053c98b31a7c1bfeb",
  "policy": "executable-triage-v2",
- "response_sha256": "56e0cbaefdbf01babf186072245a590177f43be6c31fd9ac24c4e2396b49270e",
+ "response_sha256": "e0d20fd618be33381b23a6fd2dca37507076402059bf4a9a40d76bc3b9b5f592",
  "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
  "state": "invalid",
- "subject_sha256": "89c77a74f5250176c5aa6bb1e879d28547dd7b694c705dacb2dd35831b5bf5b2"
+ "subject_sha256": "924753e886e3ced209e30cbca5649cee2e7015c34dc3891dc547d8197625ffee"
 }

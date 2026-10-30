@@ -319,21 +319,6 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Step 5 is reached (Steps 1 and 2 passed and Step 3 or 4 sends you to Step 5)
       = false
       cite: [i1040gi] p. 42, Step 4, "Go to Step 5"; each earlier "STOP You can't take the credit" ends the flowchart (pp. 40-42) (2025; printed date 2026-02-25; 482e9c48)
-  (Step 5, 1) Enter the amount from Form 1040 or 1040-SR, line 1z
-      = $90,000
-      cite: [i1040gi] p. 42, Step 5, worksheet line 1 (2025; printed date 2026-02-25; 482e9c48)
-  (Step 5, 2) Medicaid waiver payments excluded from income on Schedule 1, line 8s, unless chosen as earned income; zero in this tool
-      = $0
-      cite: [i1040gi] p. 42, Step 5, worksheet line 2 (2025; printed date 2026-02-25; 482e9c48)
-  (Step 5, 3) Subtract line 2 from line 1
-      = $90,000
-      cite: [i1040gi] p. 42, Step 5, worksheet line 3 (2025; printed date 2026-02-25; 482e9c48)
-  (Step 5, 4) Nontaxable combat pay you elect to include in earned income; zero in this tool
-      = $0
-      cite: [i1040gi] p. 42, Step 5, worksheet line 4 (2025; printed date 2026-02-25; 482e9c48)
-  (Step 5, 5) Add lines 3 and 4. This is your earned income
-      = $90,000
-      cite: [i1040gi] p. 42, Step 5, worksheet line 5 (2025; printed date 2026-02-25; 482e9c48)
   (helper) Number of Schedules C on the return
       = 0
       cite: [i1040gi] p. 42, Step 5, question 2, "Were you self-employed at any time in 2025" (2025; printed date 2026-02-25; 482e9c48)
@@ -1548,27 +1533,6 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Year parameter llc.rate (20%)
       = 20/100
       cite: [f8863] p. 1, Part II, line 12, "Multiply line 11 by 20% (0.20)" (2025; a251a1cf)
-  (CLW 1) Enter the amount from Form 8863, line 18
-      = $0
-      cite: [i8863] p. 8, Credit Limit Worksheet, "1. Enter the amount from Form 8863, line 18" (2025; 195cfd5e)
-  (CLW 2) Enter the amount from Form 8863, line 9
-      = $0
-      cite: [i8863] p. 8, Credit Limit Worksheet, "2. Enter the amount from Form 8863, line 9" (2025; 195cfd5e)
-  (CLW 3) Add lines 1 and 2
-      = $0
-      cite: [i8863] p. 8, Credit Limit Worksheet, "3. Add lines 1 and 2" (2025; 195cfd5e)
-  (CLW 4) Enter the amount from Form 1040 or 1040-SR, line 18
-      = $10,777
-      cite: [i8863] p. 8, Credit Limit Worksheet, "4. Enter the amount from Form 1040 or 1040-SR, line 18" (2025; 195cfd5e)
-  (CLW 5) Enter the total of your credits from Schedule 3 (Form 1040), lines 1, 2, 6d, and 6l (lines 6d and 6l are refused in this tool)
-      = $120
-      cite: [i8863] p. 8, Credit Limit Worksheet, "5. Enter the total of your credits from Schedule 3 (Form 1040), lines 1, 2, 6d, and 6l" (2025; 195cfd5e)
-  (CLW 6) Subtract line 5 from line 4
-      = $10,657
-      cite: [i8863] p. 8, Credit Limit Worksheet, "6. Subtract line 5 from line 4" (2025; 195cfd5e)
-  (CLW 7) Enter the smaller of line 3 or line 6 here and on Form 8863, line 19
-      = $0
-      cite: [i8863] p. 8, Credit Limit Worksheet, "7. Enter the smaller of line 3 or line 6 here and on Form 8863, line 19" (2025; 195cfd5e)
 
 == Form 8880 — Credit for Qualified Retirement Savings Contributions (the saver's credit) ==
   (helper) Year parameter sales.zero
@@ -1672,29 +1636,12 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   7   Add the amounts on line 6. If zero, stop; you can't take this credit
       = $0
       cite: [f8880] Form 8880 (2025), line 7; p. 2, Line 7, "Add the amounts from line 6, columns (a) and (b), and enter the total" (2025; created 2025-11-04; ba2b2877)
-  8   Enter the amount from Form 1040, 1040-SR, or 1040-NR, line 11a
-      = $102,500
-      cite: [f8880] Form 8880 (2025), line 8 (2025; created 2025-11-04; ba2b2877)
-  9   Enter the applicable decimal amount from the table below
-      = 0/10
-      cite: [f8880] Form 8880 (2025), line 9, "Enter the applicable decimal amount from the table below" (2025; created 2025-11-04; ba2b2877)
-      note: band over 7900000 but not over -; column other
-  10  Multiply line 7 by line 9
-      = $0
-      cite: [f8880] Form 8880 (2025), line 10 (2025; created 2025-11-04; ba2b2877)
-      note: half-up to the cent per the ambiguity register
-  (CLW 1) Enter the amount from Form 1040, 1040-SR, or 1040-NR, line 18
-      = $10,777
-      cite: [f8880] p. 2, Credit Limit Worksheet, "1. Enter the amount from Form 1040, 1040-SR, or 1040-NR, line 18" (2025; created 2025-11-04; ba2b2877)
-  (CLW 2) Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l
-      = $120
-      cite: [f8880] p. 2, Credit Limit Worksheet, "2. Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l" (lines 6d and 6l are refused by scope.credits) (2025; created 2025-11-04; ba2b2877)
-  (CLW 3) Subtract line 2 from line 1. Also enter this amount on Form 8880, line 11. But if zero or less, stop; you can't take the credit
-      = $10,657
-      cite: [f8880] p. 2, Credit Limit Worksheet, "3. Subtract line 2 from line 1. Also enter this amount on Form 8880, line 11. But if zero or less, stop; you can’t take the credit" (2025; created 2025-11-04; ba2b2877)
-  11  Limitation based on tax liability. Enter the amount from the Credit Limit Worksheet in the instructions
-      = $10,657
-      cite: [f8880] Form 8880 (2025), line 11; p. 2, Line 11, "Complete this worksheet to figure the amount to enter on line 11" (2025; created 2025-11-04; ba2b2877)
+  (helper) Line 7 is more than zero (the form continues after line 7)
+      = false
+      cite: [f8880] Form 8880 (2025), line 7, "If zero, stop; you can’t take this credit" (2025; created 2025-11-04; ba2b2877)
+  (helper) Line 9 is more than zero after line 7 (line 8 not more than the limit, the last band of the line 9 table being 0.0)
+      = false
+      cite: [f8880] Form 8880 (2025), line 9, "If line 9 is zero, stop; you can’t take this credit"; line 9 table, the last band "$79,000 --- 0.0 0.0 0.0" (2025; created 2025-11-04; ba2b2877)
   (helper) Year parameter savers.agi_limit ($39,500; $59,250 if head of household; $79,000 if married filing jointly)
       = $39,500
       cite: [f8880] p. 1, Caution, "The amount on Form 1040, 1040-SR, or 1040-NR, line 11a, is more than $39,500 ($59,250 if head of household; $79,000 if married filing jointly)" (2025; created 2025-11-04; ba2b2877)
@@ -1707,10 +1654,6 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) The smaller of line 10 or line 11
       = $0
       cite: [f8880] Form 8880 (2025), line 12 (2025; created 2025-11-04; ba2b2877)
-  12  Credit for qualified retirement savings contributions. Enter the smaller of line 10 or line 11 here and on Schedule 3 (Form 1040), line 4
-      = $0
-      cite: [f8880] Form 8880 (2025), line 12 (2025; created 2025-11-04; ba2b2877)
-      note: taken: {"eq":["f8880.can_take",{"const":false}],"op":"test"}
 
 == Form 8959 — Additional Medicare Tax on wages and self-employment income ==
   (helper) Any church employee income or other self-employment income outside Schedule SE as this tool prepares it, RRTA compensation, tips not reported to your employer or allocated tips in Form W-2 box 8 (Form 4137), Form 8919 wages, uncollected Medicare tax in Form W-2 box 12 (codes B or N), or Medicare wages on a wage statement from a U.S. territory (such as Form 499R-2/W-2PR)?
@@ -5037,22 +4980,6 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   12  Is the amount on line 8 more than the amount on line 11? No. Stop here; you cannot take the credits. Yes. Subtract line 11 from line 8
       = $0
       cite: [f1040s8812] Schedule 8812 (2025), line 12 (2025; created 2025-07-30; 6936462d)
-  (helper) Credit Limit Worksheet A, line 1. Enter the amount from line 18 of your Form 1040
-      = $10,777
-      cite: [i1040s8812] p. 4, Credit Limit Worksheet A, line 1 (2025; printed date 2026-01-23; bb9788cd)
-  (helper) Credit Limit Worksheet A, line 2. Schedule 3 lines 1, 2, 3, 4, 5b, 6d, 6f, 6l and 6m; in this tool lines 1, 2, 3, 4 and 5b, the other credits being refused
-      = $120
-      cite: [i1040s8812] p. 4, Credit Limit Worksheet A, line 2 (2025; printed date 2026-01-23; bb9788cd)
-  (helper) Credit Limit Worksheet A, line 3. Subtract line 2 from line 1
-      = $10,657
-      cite: [i1040s8812] p. 4, Credit Limit Worksheet A, line 3 (2025; printed date 2026-01-23; bb9788cd)
-  (helper) Credit Limit Worksheet A, line 4. If you are not completing Credit Limit Worksheet B, enter -0-; otherwise, enter the amount from Credit Limit Worksheet B
-      = $0
-      cite: [i1040s8812] p. 4, Credit Limit Worksheet A, line 4, "If you are not completing Credit Limit Worksheet B, enter -0-; otherwise, enter the amount from Credit Limit Worksheet B" (2025; printed date 2026-01-23; bb9788cd)
-      note: taken: {"eq":["s8812.clwb_complete",{"const":false}],"op":"test"}
-  (helper) Credit Limit Worksheet A, line 5. Subtract line 4 from line 3. Enter here and on Schedule 8812, line 13
-      = $10,657
-      cite: [i1040s8812] p. 4, Credit Limit Worksheet A, line 5 (2025; printed date 2026-01-23; bb9788cd)
   (helper) Line 12 is more than zero (no stop at line 12)
       = false
       cite: [f1040s8812] Schedule 8812 (2025), line 12, "No. Stop here. You cannot take the child tax credit, credit for other dependents, or additional child tax credit" (2025; created 2025-07-30; 6936462d)
@@ -5155,41 +5082,18 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Complete Credit Limit Worksheet B (claiming the residential clean energy credit, Form 5695 Part I, and line 4 of Schedule 8812 is more than zero)
       = false
       cite: [i1040s8812] p. 4, Credit Limit Worksheet A, "Complete Credit Limit Worksheet B only if you meet all the following", "Line 4 of Schedule 8812 is more than zero" (2025; printed date 2026-01-23; bb9788cd)
-  (helper) Credit Limit Worksheet B, line 1. Enter the amount from Schedule 8812, line 12
-      = $0
-      cite: [i1040s8812] p. 5, Credit Limit Worksheet B, line 1, "Enter the amount from Schedule 8812, line 12" (2025; printed date 2026-01-23; bb9788cd)
-  (helper) Credit Limit Worksheet B, line 2. Number of qualifying children under age 17 with the required social security number × $1,700
-      = $0
-      cite: [i1040s8812] p. 5, Credit Limit Worksheet B, line 2, "The number of children you use for this line is the same as the number of children you used for line 4 of Schedule 8812" (2025; printed date 2026-01-23; bb9788cd)
-  (helper) Credit Limit Worksheet B, line 3. Enter your earned income from line 7 of the Earned Income Worksheet
-      = $90,000
-      cite: [i1040s8812] p. 5, Credit Limit Worksheet B, line 3, "Enter your earned income from line 7 of the Earned Income Worksheet" (2025; printed date 2026-01-23; bb9788cd)
-  (helper) Credit Limit Worksheet B, line 4. Is the amount on line 3 more than $2,500? No. Leave line 4 blank, enter -0- on line 5. Yes. Subtract $2,500 from the amount on line 3
-      = $87,500
-      cite: [i1040s8812] p. 5, Credit Limit Worksheet B, line 4, "Is the amount on line 3 more than $2,500?" (2025; printed date 2026-01-23; bb9788cd)
-  (helper) Credit Limit Worksheet B, line 5. Multiply the amount on line 4 by 15% (0.15) and enter the result
-      = $13,125
-      cite: [i1040s8812] p. 5, Credit Limit Worksheet B, line 5, "Multiply the amount on line 4 by 15% (0.15) and enter the result" (2025; printed date 2026-01-23; bb9788cd)
-      note: half-up to the cent per the ambiguity register; Interpretation amb.2025.multiplication_subcent: Round the product half-up to the nearest cent at the multiplication. Matches the half-up convention of the printed whole-dollar rounding rules. The whole-dollar default is unaffected: whole-dollar amounts multiplied by these rates produce exact cents, so the reading only matters when cents are turned on.
- (i1040gi, QDCGT worksheet, lines 18 and 21; Rounding Off to Whole Dollars, p. 23)
+  (helper) Credit Limit Worksheet B is completed (Worksheet A is reached and the conditions for Worksheet B hold)
+      = false
+      cite: [i1040s8812] p. 4, Credit Limit Worksheet A, "Complete Credit Limit Worksheet B only if you meet all the following" (2025; printed date 2026-01-23; bb9788cd)
   (helper) Credit Limit Worksheet B, line 6. On line 2 of this worksheet, is the amount $5,100 or more?
       = false
       cite: [i1040s8812] p. 5, Credit Limit Worksheet B, line 6, "On line 2 of this worksheet, is the amount $5,100 or more?" (2025; printed date 2026-01-23; bb9788cd)
   (helper) Credit Limit Worksheet B, line 6. Line 5 is equal to or more than line 1
       = true
       cite: [i1040s8812] p. 5, Credit Limit Worksheet B, line 6, "If line 5 above is equal to or more than line 1 above, leave lines 7 through 10 blank, enter -0- on line 11" (2025; printed date 2026-01-23; bb9788cd)
-  (helper) Credit Limit Worksheet B, line 7. Social security and Medicare tax withheld (Forms W-2, boxes 4 and 6); with Additional Medicare Tax, the amount from the Additional Medicare Tax and RRTA Tax Worksheet
-      = $6,885
-      cite: [i1040s8812] p. 5, Credit Limit Worksheet B, line 7, "If your employer withheld or you paid Additional Medicare Tax or Tier 1 RRTA taxes, use the Additional Medicare Tax and RRTA Tax Worksheet to figure the amount to enter" (2025; printed date 2026-01-23; bb9788cd)
-  (helper) Credit Limit Worksheet B, line 8. Enter the total of any amounts from Schedule 1, line 15; Schedule 2, line 5; Schedule 2, line 6; and Schedule 2, line 13
-      = $0
-      cite: [i1040s8812] p. 5, Credit Limit Worksheet B, line 8, "Enter the total of any amounts from" (2025; printed date 2026-01-23; bb9788cd)
-  (helper) Credit Limit Worksheet B, line 9. Add lines 7 and 8
-      = $6,885
-      cite: [i1040s8812] p. 5, Credit Limit Worksheet B, line 9, "Add lines 7 and 8" (2025; printed date 2026-01-23; bb9788cd)
-  (helper) Credit Limit Worksheet B, line 10. 1040 and 1040-SR filers. Enter the total of the amounts from Form 1040, line 27a, and Schedule 3, line 11
-      = $0
-      cite: [i1040s8812] p. 6, Credit Limit Worksheet B—Continued, line 10, "1040 and 1040-SR filers. Enter the total of the amounts from Form 1040 or 1040-SR, line 27a, and Schedule 3, line 11" (2025; printed date 2026-01-23; bb9788cd)
+  (helper) Credit Limit Worksheet B, lines 7 through 10 are completed (line 6 sends you to line 7)
+      = false
+      cite: [i1040s8812] p. 5, Credit Limit Worksheet B, line 6, "On line 2 of this worksheet, is the amount $5,100 or more?" (2025; printed date 2026-01-23; bb9788cd)
   (helper) Credit Limit Worksheet B, line 11 when lines 7 through 10 are completed. Subtract line 10 from line 9. If the result is zero or less, enter -0-
       = $6,885
       cite: [i1040s8812] p. 6, Credit Limit Worksheet B—Continued, line 11, "Subtract line 10 from line 9. If the result is zero or less, enter -0-" (2025; printed date 2026-01-23; bb9788cd)
@@ -5197,22 +5101,6 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = $0
       cite: [i1040s8812] p. 5, Credit Limit Worksheet B, line 6, "Yes. If line 5 above is equal to or more than line 1 above, leave lines 7 through 10 blank, enter -0- on line 11, and go to line 12. Otherwise, go to line 7" (2025; printed date 2026-01-23; bb9788cd)
       note: taken: {"eq":["s8812.clwb_5_covers",{"const":true}],"op":"test"}
-  (helper) Credit Limit Worksheet B, line 11. Zero when line 2 is less than $5,100; otherwise as line 6 directs
-      = $0
-      cite: [i1040s8812] p. 5, Credit Limit Worksheet B, line 6, "No. If you are a bona fide resident of Puerto Rico and line 5 above is less than line 1 above, go to line 7. Otherwise, leave lines 7 through 10 blank, enter -0- on line 11" (2025; printed date 2026-01-23; bb9788cd)
-      note: taken: {"eq":["s8812.clwb_three",{"const":false}],"op":"test"}
-  (helper) Credit Limit Worksheet B, line 12. Enter the larger of line 5 or line 11
-      = $13,125
-      cite: [i1040s8812] p. 6, Credit Limit Worksheet B—Continued, line 12, "Enter the larger of line 5 or line 11" (2025; printed date 2026-01-23; bb9788cd)
-  (helper) Credit Limit Worksheet B, line 13. Enter the smaller of line 2 or line 12
-      = $0
-      cite: [i1040s8812] p. 6, Credit Limit Worksheet B—Continued, line 13, "Enter the smaller of line 2 or line 12" (2025; printed date 2026-01-23; bb9788cd)
-  (helper) Credit Limit Worksheet B, line 14. Is the amount on line 13 of this worksheet more than the amount on line 1? No. Subtract line 13 from line 1. Yes. Enter -0-
-      = $0
-      cite: [i1040s8812] p. 6, Credit Limit Worksheet B—Continued, line 14, "Is the amount on line 13 of this worksheet more than the amount on line 1? No. Subtract line 13 from line 1. Enter the result. Yes. Enter -0-" (2025; printed date 2026-01-23; bb9788cd)
-  (helper) Credit Limit Worksheet B, line 15. Enter the total of the amounts from Schedule 3, lines 5a, 6c, 6g and 6h; in this tool line 5a, the others being refused. Enter this amount on line 4 of Credit Limit Worksheet A
-      = $0
-      cite: [i1040s8812] p. 6, Credit Limit Worksheet B—Continued, line 15, "Enter this amount on line 4 of Credit Limit Worksheet A" (2025; printed date 2026-01-23; bb9788cd)
 
 == Schedule A — supported itemized deductions and standard comparison ==
   (helper) Any casualty or theft loss (including a disaster loss added to the standard deduction); a deduction from the Schedule A line 16 list other than gambling losses; a foreign tax or generation-skipping tax deduction; mortgage interest or points not on Form 1098 or subject to the debt or use limits (loan proceeds not all used to buy, build or improve the home, or debt over the limit); or the sales-tax election?
@@ -7707,9 +7595,11 @@ Derivations:
   f8880.line6a: choose(f8880.elig_a = true; true = true; f8880.line6a_figured = $0)
   f8880.line6b: choose(f8880.elig_b = true; true = true; f8880.line6b_figured = $0)
   f8880.line7: sum(f8880.line6a = $0; f8880.line6b = $0)
+  f8880.past7: test(f8880.line7 = $0; 0 = $0)
   f8880.f1040.line11a: subtract(f1040.line9 = $102,500; f1040.line10 = $0)
   f8880.line8: copy(sa.excluded_income = false; f1040.line11a = $102,500)
   f8880.line9: rate_lookup(f8880.line8 = $102,500; f1040.status = single)
+  f8880.past9: test(f8880.past7 = false; true = true)
   f8880.line10: multiply_rate(f8880.line7 = $0; f8880.line9 = 0/10)
   f8880.f1040.line18: sum(f1040.line16 = $10,777; f1040.line17 = $0)
   f8880.clw1: copy(f1040.line18 = $10,777)
@@ -8199,6 +8089,7 @@ Derivations:
   s8812.earned_covers: test(s8812.line20 = $13,125; s8812.line17 = $0)
   s8812.from_part_iib: smaller_of(s8812.line17 = $0; s8812.line26 = $13,125)
   s8812.part_iib_result: choose(s8812.earned_covers = true; true = true; s8812.line17 = $0)
+  s8812.show_clwb: test(s8812.show13 = false; true = true)
   s8812.clwb_1: copy(s8812.line12 = $0)
   s8812.clwb_2: copy(s8812.line16b = $0)
   s8812.clwb_3: copy(s8812.eiw_7 = $90,000)
@@ -8206,6 +8097,7 @@ Derivations:
   s8812.clwb_5: multiply_rate(s8812.clwb_4 = $87,500; #actc.rate = 15/100)
   s8812.clwb_three: test(s8812.clwb_2 = $0; #actc.three_children = $5,100)
   s8812.clwb_5_covers: test(s8812.clwb_5 = $13,125; s8812.clwb_1 = $0)
+  s8812.clwb_to7: test(s8812.show_clwb = false; true = true)
   s8812.clwb_7: copy(s8812.line21 = $6,885)
   s8812.clwb_8: copy(s8812.line22 = $0)
   s8812.clwb_9: sum(s8812.clwb_7 = $6,885; s8812.clwb_8 = $0)

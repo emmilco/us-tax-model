@@ -4,6 +4,153 @@
  "family": "deepseek",
  "rulings": [
   {
+   "printed": "(CLW A 4)",
+   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"f5695.part1_any\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": 0}, {\"ref\": \"f5695.line13\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"line\": \"4\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"then\": {\"line\": \"(CLW B 15)\"}}, {\"guard\": {\"args\": [{\"args\": [{\"args\": [{\"ref\": \"f5695.line13\"}, {\"const\": 0}], \"test\": \"le\"}, {\"args\": [{\"const\": true}, {\"input\": \"f5695.part1_any\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"line\": \"4\"}, {\"const\": 0, \"type\": \"Count\"}], \"test\": \"le\"}], \"test\": \"any\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
+   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"f5695.part1_any\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": 0}, {\"ref\": \"f5695.line13\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"line\": \"4\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": true}, {\"ref\": \"sa.excluded_income\"}], \"test\": \"ne\"}], \"test\": \"all\"}, \"then\": {\"line\": \"(CLW B 15)\"}}, {\"guard\": {\"args\": [{\"args\": [{\"args\": [{\"ref\": \"f5695.line13\"}, {\"const\": 0}], \"test\": \"le\"}, {\"args\": [{\"const\": true}, {\"input\": \"f5695.part1_any\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"const\": true}, {\"ref\": \"sa.excluded_income\"}], \"test\": \"eq\"}, {\"args\": [{\"line\": \"4\"}, {\"const\": 0, \"type\": \"Count\"}], \"test\": \"le\"}], \"test\": \"any\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
+   "ruling": "Ruling: representation; by reading (reply invalid, not executed; this line's closure, its clwb_complete and (CLW B 15), has no validation failure). i1040s8812 p. 4, Credit Limit Worksheet A, line 4: \"If you are not completing Credit Limit Worksheet B, enter -0-; otherwise, enter the amount from Credit Limit Worksheet B\". The condition is its clwb_complete (see that ruling): the same as the project's except on returns refused at lines 2a-2c.",
+   "context": "49549f1c48660a364b93fd30e4362be9863b8c1ad7d93e27404ab8ed17dab1e1"
+  },
+  {
+   "printed": "(CLW A 4)",
+   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"f5695.part1_any\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": 0}, {\"ref\": \"f5695.line13\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"line\": \"4\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"then\": {\"line\": \"(CLW B 15)\"}}, {\"guard\": {\"args\": [{\"args\": [{\"args\": [{\"ref\": \"f5695.line13\"}, {\"const\": 0}], \"test\": \"le\"}, {\"args\": [{\"const\": true}, {\"input\": \"f5695.part1_any\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"line\": \"4\"}, {\"const\": 0, \"type\": \"Count\"}], \"test\": \"le\"}], \"test\": \"any\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
+   "second": "{\"expression\": {\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"f5695.part1_any\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": 0}, {\"ref\": \"f5695.line13\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"line\": \"2b\"}, {\"const\": 0}], \"test\": \"le\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"then\": {\"line\": \"(CLW B 15)\"}}, {\"guard\": {\"args\": [{\"args\": [{\"args\": [{\"ref\": \"f5695.line13\"}, {\"const\": 0}], \"test\": \"le\"}, {\"args\": [{\"const\": true}, {\"input\": \"f5695.part1_any\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"line\": \"4\"}, {\"const\": 0}], \"test\": \"le\"}, {\"args\": [{\"const\": 0}, {\"line\": \"2b\"}], \"test\": \"lt\"}], \"test\": \"any\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}, \"invalid_model_types\": [{\"line\": \"s8812.clwb_complete\", \"message\": \"s8812.s8812.clwb_complete: comparison operands have incompatible types\"}]}",
+   "ruling": "Ruling: model error; on the validation failure in the line's closure, not the tax reading. The reply fails host validation (`../triage/s8812.deepseek.json`, state invalid; nothing executed): s8812.clwb_complete \"comparison operands have incompatible types\" and s8812.line22 \"collection reference requires sum_over\". This line's closure contains s8812.clwb_complete (incompatible types). The candidate is rejected and not executed or repaired. By reading it is i1040s8812 p. 4, line 4, \"If you are not completing Credit Limit Worksheet B, enter -0-; otherwise, enter the amount from Credit Limit Worksheet B\", with the condition of its clwb_complete.",
+   "context": "6dcc527c94d6f607970a485026e515f6d8c8f0f79e1ebd1b6493d24e3afd9180"
+  },
+  {
+   "printed": "(CLW A 5)",
+   "project": "{\"from\": {\"line\": \"(CLW A 3)\"}, \"op\": \"subtract\", \"take\": {\"line\": \"(CLW A 4)\"}}",
+   "second": "{\"expression\": {\"from\": {\"line\": \"(CLW A 3)\"}, \"op\": \"subtract\", \"take\": {\"line\": \"(CLW A 4)\"}}, \"invalid_model_types\": [{\"line\": \"s8812.clwb_complete\", \"message\": \"s8812.s8812.clwb_complete: comparison operands have incompatible types\"}]}",
+   "ruling": "Ruling: model error; on the validation failure in the line's closure, not the tax reading. The reply fails host validation (`../triage/s8812.deepseek.json`, state invalid; nothing executed): s8812.clwb_complete \"comparison operands have incompatible types\" and s8812.line22 \"collection reference requires sum_over\". This line's closure contains line (CLW A 4) and so s8812.clwb_complete. The candidate is rejected and not executed or repaired. Its own step is the project's.",
+   "context": "6dcc527c94d6f607970a485026e515f6d8c8f0f79e1ebd1b6493d24e3afd9180"
+  },
+  {
+   "printed": "(CLW B 10)",
+   "project": "{\"of\": [{\"ref\": \"f1040.line27a\"}, {\"ref\": \"s3.line11\"}], \"op\": \"sum\"}",
+   "second": "{\"line\": \"24\"}",
+   "ruling": "Ruling: model error; by reading (reply invalid, not executed). i1040s8812 p. 6, line 10: \"1040 and 1040-SR filers. Enter the total of the amounts from Form 1040 or 1040-SR, line 27a, and Schedule 3, line 11.\" Copying its line 24 (same 1040 text, agreeing with the project) gives the project's value; but The reply declares no shown_when, so the line is shown where the source skips it (the claude candidate's same omission gives candidate-shows-skipped in `../triage/s8812.json`). Here that includes the line 6 branches that \"leave lines 7 through 10 blank\" (the project hides them by s8812.clwb_to7, BUG-0210). Same reply text as round 1.",
+   "context": "49549f1c48660a364b93fd30e4362be9863b8c1ad7d93e27404ab8ed17dab1e1"
+  },
+  {
+   "printed": "(CLW B 11)",
+   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"param\": \"actc.three_children\"}, {\"line\": \"(CLW B 2)\"}], \"test\": \"le\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"line\": \"(CLW B 1)\"}, {\"line\": \"(CLW B 5)\"}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"line\": \"(CLW B 5)\"}, {\"line\": \"(CLW B 1)\"}], \"test\": \"lt\"}, \"then\": {\"from\": {\"line\": \"(CLW B 9)\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"(CLW B 10)\"}}}], \"op\": \"choose\"}}, {\"guard\": {\"args\": [{\"line\": \"(CLW B 2)\"}, {\"param\": \"actc.three_children\"}], \"test\": \"lt\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
+   "second": "{\"expression\": {\"from\": {\"line\": \"(CLW B 9)\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"(CLW B 10)\"}}, \"invalid_model_types\": [{\"line\": \"s8812.line22\", \"message\": \"s8812.s8812.line22: collection reference requires sum_over\"}]}",
+   "ruling": "Ruling: model error; on the validation failure in the line's closure, not the tax reading. The reply fails host validation (`../triage/s8812.deepseek.json`, state invalid; nothing executed): s8812.clwb_complete \"comparison operands have incompatible types\" and s8812.line22 \"collection reference requires sum_over\". This line's closure contains (CLW B 9) and so line 22. The candidate is rejected and not executed or repaired. By reading it is also wrong: i1040s8812 p. 5, line 6: \"No. If you are a bona fide resident of Puerto Rico and line 5 above is less than line 1 above, go to line 7. Otherwise, leave lines 7 through 10 blank, enter -0- on line 11 ... Yes. If line 5 above is equal to or more than line 1 above, leave lines 7 through 10 blank, enter -0- on line 11\". The candidate always takes line 9 less line 10, floored, so with fewer than three children or line 5 at least line 1 it can enter a positive line 11 and raise line 12 (the larger of lines 5 and 11), and through lines 13 to 15 Credit Limit Worksheet A line 4.",
+   "context": "6dcc527c94d6f607970a485026e515f6d8c8f0f79e1ebd1b6493d24e3afd9180"
+  },
+  {
+   "printed": "(CLW B 11)",
+   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"param\": \"actc.three_children\"}, {\"line\": \"(CLW B 2)\"}], \"test\": \"le\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"line\": \"(CLW B 1)\"}, {\"line\": \"(CLW B 5)\"}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"line\": \"(CLW B 5)\"}, {\"line\": \"(CLW B 1)\"}], \"test\": \"lt\"}, \"then\": {\"from\": {\"line\": \"(CLW B 9)\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"(CLW B 10)\"}}}], \"op\": \"choose\"}}, {\"guard\": {\"args\": [{\"line\": \"(CLW B 2)\"}, {\"param\": \"actc.three_children\"}], \"test\": \"lt\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
+   "second": "{\"from\": {\"line\": \"(CLW B 9)\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"(CLW B 10)\"}}",
+   "ruling": "Ruling: model error; by reading (reply invalid, not executed; no validation failure in this line itself). i1040s8812 p. 5, Credit Limit Worksheet B, line 6: \"No. If you are a bona fide resident of Puerto Rico and line 5 above is less than line 1 above, go to line 7. Otherwise, leave lines 7 through 10 blank, enter -0- on line 11, and go to line 12. Yes. If line 5 above is equal to or more than line 1 above, leave lines 7 through 10 blank, enter -0- on line 11, and go to line 12. Otherwise, go to line 7.\" The candidate always takes line 9 less line 10, floored, so with line 2 under $5,100 or line 5 at least line 1 it can enter a positive line 11 and raise line 12 (the larger of lines 5 and 11) and, through lines 13 to 15, Credit Limit Worksheet A line 4. Same reading as round 1.",
+   "context": "49549f1c48660a364b93fd30e4362be9863b8c1ad7d93e27404ab8ed17dab1e1"
+  },
+  {
+   "printed": "(CLW B 12)",
+   "project": "{\"of\": [{\"line\": \"(CLW B 11)\"}, {\"line\": \"(CLW B 5)\"}], \"op\": \"larger_of\"}",
+   "second": "{\"expression\": {\"of\": [{\"line\": \"(CLW B 11)\"}, {\"line\": \"(CLW B 5)\"}], \"op\": \"larger_of\"}, \"invalid_model_types\": [{\"line\": \"s8812.line18a\", \"message\": \"model changed a published result type\"}, {\"line\": \"s8812.clwb_3\", \"message\": \"model changed a published result type\"}]}",
+   "ruling": "Ruling: model error; on the validation failure in the line's closure, not the tax reading. The reply fails host validation (`../triage/s8812.deepseek.json`, state invalid; nothing executed): s8812.line18a, s8812.line21, s8812.line23 and s8812.clwb_3 \"model changed a published result type\". This line's closure contains (CLW B 5) and so (CLW B 3). The candidate is rejected and not executed or repaired. Its own step is the project's. The reply declares no shown_when, so the line is shown where the source skips it (the claude candidate's same omission gives candidate-shows-skipped in `../triage/s8812.json`).",
+   "context": "49549f1c48660a364b93fd30e4362be9863b8c1ad7d93e27404ab8ed17dab1e1"
+  },
+  {
+   "printed": "(CLW B 12)",
+   "project": "{\"of\": [{\"line\": \"(CLW B 11)\"}, {\"line\": \"(CLW B 5)\"}], \"op\": \"larger_of\"}",
+   "second": "{\"expression\": {\"of\": [{\"line\": \"(CLW B 11)\"}, {\"line\": \"(CLW B 5)\"}], \"op\": \"larger_of\"}, \"invalid_model_types\": [{\"line\": \"s8812.line22\", \"message\": \"s8812.s8812.line22: collection reference requires sum_over\"}]}",
+   "ruling": "Ruling: model error; on the validation failure in the line's closure, not the tax reading. The reply fails host validation (`../triage/s8812.deepseek.json`, state invalid; nothing executed): s8812.clwb_complete \"comparison operands have incompatible types\" and s8812.line22 \"collection reference requires sum_over\". This line's closure contains (CLW B 11) and so line 22. The candidate is rejected and not executed or repaired. Its own step is the project's. The reply declares no shown_when anywhere, so this Worksheet B line is shown on returns where the worksheet is not completed (i1040s8812 p. 4, \"Complete Credit Limit Worksheet B only if you meet all the following\"; the claude candidate's same omission gives the candidate-shows-skipped counts in `../triage/s8812.json`).",
+   "context": "6dcc527c94d6f607970a485026e515f6d8c8f0f79e1ebd1b6493d24e3afd9180"
+  },
+  {
+   "printed": "(CLW B 13)",
+   "project": "{\"of\": [{\"line\": \"(CLW B 12)\"}, {\"line\": \"(CLW B 2)\"}], \"op\": \"smaller_of\"}",
+   "second": "{\"expression\": {\"of\": [{\"line\": \"(CLW B 12)\"}, {\"line\": \"(CLW B 2)\"}], \"op\": \"smaller_of\"}, \"invalid_model_types\": [{\"line\": \"s8812.line18a\", \"message\": \"model changed a published result type\"}, {\"line\": \"s8812.clwb_3\", \"message\": \"model changed a published result type\"}]}",
+   "ruling": "Ruling: model error; on the validation failure in the line's closure, not the tax reading. The reply fails host validation (`../triage/s8812.deepseek.json`, state invalid; nothing executed): s8812.line18a, s8812.line21, s8812.line23 and s8812.clwb_3 \"model changed a published result type\". This line's closure contains (CLW B 12) and so (CLW B 3). The candidate is rejected and not executed or repaired. Its own step is the project's. The reply declares no shown_when, so the line is shown where the source skips it (the claude candidate's same omission gives candidate-shows-skipped in `../triage/s8812.json`).",
+   "context": "49549f1c48660a364b93fd30e4362be9863b8c1ad7d93e27404ab8ed17dab1e1"
+  },
+  {
+   "printed": "(CLW B 13)",
+   "project": "{\"of\": [{\"line\": \"(CLW B 12)\"}, {\"line\": \"(CLW B 2)\"}], \"op\": \"smaller_of\"}",
+   "second": "{\"expression\": {\"of\": [{\"line\": \"(CLW B 12)\"}, {\"line\": \"(CLW B 2)\"}], \"op\": \"smaller_of\"}, \"invalid_model_types\": [{\"line\": \"s8812.line22\", \"message\": \"s8812.s8812.line22: collection reference requires sum_over\"}]}",
+   "ruling": "Ruling: model error; on the validation failure in the line's closure, not the tax reading. The reply fails host validation (`../triage/s8812.deepseek.json`, state invalid; nothing executed): s8812.clwb_complete \"comparison operands have incompatible types\" and s8812.line22 \"collection reference requires sum_over\". This line's closure contains (CLW B 12) and so line 22. The candidate is rejected and not executed or repaired. Its own step is the project's. The reply declares no shown_when anywhere, so this Worksheet B line is shown on returns where the worksheet is not completed (i1040s8812 p. 4, \"Complete Credit Limit Worksheet B only if you meet all the following\"; the claude candidate's same omission gives the candidate-shows-skipped counts in `../triage/s8812.json`).",
+   "context": "6dcc527c94d6f607970a485026e515f6d8c8f0f79e1ebd1b6493d24e3afd9180"
+  },
+  {
+   "printed": "(CLW B 14)",
+   "project": "{\"from\": {\"line\": \"(CLW B 1)\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"(CLW B 13)\"}}",
+   "second": "{\"expression\": {\"from\": {\"line\": \"(CLW B 1)\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"(CLW B 13)\"}}, \"invalid_model_types\": [{\"line\": \"s8812.line18a\", \"message\": \"model changed a published result type\"}, {\"line\": \"s8812.clwb_3\", \"message\": \"model changed a published result type\"}]}",
+   "ruling": "Ruling: model error; on the validation failure in the line's closure, not the tax reading. The reply fails host validation (`../triage/s8812.deepseek.json`, state invalid; nothing executed): s8812.line18a, s8812.line21, s8812.line23 and s8812.clwb_3 \"model changed a published result type\". This line's closure contains (CLW B 13) and so (CLW B 3). The candidate is rejected and not executed or repaired. Its own step is the project's. The reply declares no shown_when, so the line is shown where the source skips it (the claude candidate's same omission gives candidate-shows-skipped in `../triage/s8812.json`).",
+   "context": "49549f1c48660a364b93fd30e4362be9863b8c1ad7d93e27404ab8ed17dab1e1"
+  },
+  {
+   "printed": "(CLW B 14)",
+   "project": "{\"from\": {\"line\": \"(CLW B 1)\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"(CLW B 13)\"}}",
+   "second": "{\"expression\": {\"from\": {\"line\": \"(CLW B 1)\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"(CLW B 13)\"}}, \"invalid_model_types\": [{\"line\": \"s8812.line22\", \"message\": \"s8812.s8812.line22: collection reference requires sum_over\"}]}",
+   "ruling": "Ruling: model error; on the validation failure in the line's closure, not the tax reading. The reply fails host validation (`../triage/s8812.deepseek.json`, state invalid; nothing executed): s8812.clwb_complete \"comparison operands have incompatible types\" and s8812.line22 \"collection reference requires sum_over\". This line's closure contains (CLW B 13) and so line 22. The candidate is rejected and not executed or repaired. Its own step is the project's. The reply declares no shown_when anywhere, so this Worksheet B line is shown on returns where the worksheet is not completed (i1040s8812 p. 4, \"Complete Credit Limit Worksheet B only if you meet all the following\"; the claude candidate's same omission gives the candidate-shows-skipped counts in `../triage/s8812.json`).",
+   "context": "6dcc527c94d6f607970a485026e515f6d8c8f0f79e1ebd1b6493d24e3afd9180"
+  },
+  {
+   "printed": "(CLW B 2)",
+   "project": "{\"line\": \"16b\"}",
+   "second": "{\"amount\": {\"param\": \"actc.per_child\"}, \"count\": {\"line\": \"4\"}, \"op\": \"multiply_count\"}",
+   "ruling": "Ruling: model error; by reading (reply invalid, not executed). i1040s8812 p. 4, Credit Limit Worksheet A: \"Complete Credit Limit Worksheet B only if you meet all the following. 1. You are claiming one or more of the following credits. ... c. Residential clean energy credit, Form 5695, Part I. ... 2. You are not filing Form 2555. 3. Line 4 of Schedule 8812 is more than zero.\" Line 4 x $1,700 equals the project's (CLW B 2) (line 16b). The reply declares no shown_when, so the line is shown where the source skips it (the claude candidate's same omission gives candidate-shows-skipped in `../triage/s8812.json`). (claude: 248 candidate-shows-skipped on the same expression).",
+   "context": "49549f1c48660a364b93fd30e4362be9863b8c1ad7d93e27404ab8ed17dab1e1"
+  },
+  {
+   "printed": "(CLW B 3)",
+   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"of\": [{\"ref\": \"f1040.line1z\"}, {\"ref\": \"s1.line3\"}], \"op\": \"sum\"}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"of\": [{\"ref\": \"f1040.line1z\"}, {\"ref\": \"s1.line3\"}], \"op\": \"sum\"}], \"test\": \"lt\"}, \"then\": {\"from\": {\"from\": {\"of\": [{\"ref\": \"f1040.line1z\"}, {\"ref\": \"s1.line3\"}], \"op\": \"sum\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}, \"op\": \"subtract\", \"take\": {\"ref\": \"s1.line15\"}}}], \"op\": \"choose\"}",
+   "second": "{\"expression\": {\"line\": \"18a\"}, \"invalid_model_types\": [{\"line\": \"s8812.line18a\", \"message\": \"model changed a published result type\"}, {\"line\": \"s8812.clwb_3\", \"message\": \"model changed a published result type\"}]}",
+   "ruling": "Ruling: model error; on the validation failure in the line's closure, not the tax reading. The reply fails host validation (`../triage/s8812.deepseek.json`, state invalid; nothing executed): s8812.line18a, s8812.line21, s8812.line23 and s8812.clwb_3 \"model changed a published result type\". This line's closure contains the line itself (published type changed; it copies line 18a). The candidate is rejected and not executed or repaired. By reading it is also wrong: i1040s8812 p. 5, line 3, \"Enter your earned income from line 7 of the Earned Income Worksheet\"; the candidate copies its line 18a (Step 5 earned income), not the worksheet. The reply declares no shown_when, so the line is shown where the source skips it (the claude candidate's same omission gives candidate-shows-skipped in `../triage/s8812.json`).",
+   "context": "49549f1c48660a364b93fd30e4362be9863b8c1ad7d93e27404ab8ed17dab1e1"
+  },
+  {
+   "printed": "(CLW B 3)",
+   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"of\": [{\"ref\": \"f1040.line1z\"}, {\"ref\": \"s1.line3\"}], \"op\": \"sum\"}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"of\": [{\"ref\": \"f1040.line1z\"}, {\"ref\": \"s1.line3\"}], \"op\": \"sum\"}], \"test\": \"lt\"}, \"then\": {\"from\": {\"from\": {\"of\": [{\"ref\": \"f1040.line1z\"}, {\"ref\": \"s1.line3\"}], \"op\": \"sum\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}, \"op\": \"subtract\", \"take\": {\"ref\": \"s1.line15\"}}}], \"op\": \"choose\"}",
+   "second": "{\"from\": {\"from\": {\"of\": [{\"line\": \"18b\"}, {\"collection\": \"person\", \"field\": \"person.sc_total\", \"op\": \"sum_over\", \"where\": null}, {\"ref\": \"f1040.line1z\"}], \"op\": \"sum\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}, \"op\": \"subtract_floor0\", \"take\": {\"ref\": \"s1.line15\"}}",
+   "ruling": "Ruling: model error; by reading (reply invalid, not executed). i1040s8812 p. 5, Credit Limit Worksheet B, line 3: \"Enter your earned income from line 7 of the Earned Income Worksheet\"; p. 8, Earned Income Worksheet, line 7: \"Subtract line 6 from line 3\". The candidate's worksheet (as its line 18a) floors line 7 at zero, which the worksheet does not, and adds its own line 18b (zero in the reply); otherwise it is the project's. The reply declares no shown_when anywhere, so this Worksheet B line is shown on returns where the worksheet is not completed (i1040s8812 p. 4, \"Complete Credit Limit Worksheet B only if you meet all the following\"; the claude candidate's same omission gives the candidate-shows-skipped counts in `../triage/s8812.json`).",
+   "context": "6dcc527c94d6f607970a485026e515f6d8c8f0f79e1ebd1b6493d24e3afd9180"
+  },
+  {
+   "printed": "(CLW B 4)",
+   "project": "{\"from\": {\"line\": \"(CLW B 3)\"}, \"op\": \"subtract_floor0\", \"take\": {\"param\": \"actc.earned_floor\"}}",
+   "second": "{\"expression\": {\"from\": {\"line\": \"(CLW B 3)\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 250000}}, \"invalid_model_types\": [{\"line\": \"s8812.line18a\", \"message\": \"model changed a published result type\"}, {\"line\": \"s8812.clwb_3\", \"message\": \"model changed a published result type\"}]}",
+   "ruling": "Ruling: model error; on the validation failure in the line's closure, not the tax reading. The reply fails host validation (`../triage/s8812.deepseek.json`, state invalid; nothing executed): s8812.line18a, s8812.line21, s8812.line23 and s8812.clwb_3 \"model changed a published result type\". This line's closure contains (CLW B 3). The candidate is rejected and not executed or repaired. Its own step is the project's. The reply declares no shown_when, so the line is shown where the source skips it (the claude candidate's same omission gives candidate-shows-skipped in `../triage/s8812.json`).",
+   "context": "49549f1c48660a364b93fd30e4362be9863b8c1ad7d93e27404ab8ed17dab1e1"
+  },
+  {
+   "printed": "(CLW B 4)",
+   "project": "{\"from\": {\"line\": \"(CLW B 3)\"}, \"op\": \"subtract_floor0\", \"take\": {\"param\": \"actc.earned_floor\"}}",
+   "second": "{\"from\": {\"line\": \"(CLW B 3)\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 250000}}",
+   "ruling": "Ruling: model error; by reading (reply invalid, not executed). i1040s8812 p. 5, Credit Limit Worksheet B, line 4: \"Is the amount on line 3 more than $2,500? No. Leave line 4 blank, enter -0- on line 5 ... Yes. Subtract $2,500 from the amount on line 3.\" Its own step (line 3 less a $2,500 constant, floored) equals the project's (actc.earned_floor); it inherits (CLW B 3). The reply declares no shown_when anywhere, so this Worksheet B line is shown on returns where the worksheet is not completed (i1040s8812 p. 4, \"Complete Credit Limit Worksheet B only if you meet all the following\"; the claude candidate's same omission gives the candidate-shows-skipped counts in `../triage/s8812.json`).",
+   "context": "6dcc527c94d6f607970a485026e515f6d8c8f0f79e1ebd1b6493d24e3afd9180"
+  },
+  {
+   "printed": "(CLW B 5)",
+   "project": "{\"amount\": {\"line\": \"(CLW B 4)\"}, \"op\": \"multiply_rate\", \"rate\": {\"param\": \"actc.rate\"}}",
+   "second": "{\"expression\": {\"amount\": {\"line\": \"(CLW B 4)\"}, \"op\": \"multiply_rate\", \"rate\": {\"param\": \"actc.rate\"}}, \"invalid_model_types\": [{\"line\": \"s8812.line18a\", \"message\": \"model changed a published result type\"}, {\"line\": \"s8812.clwb_3\", \"message\": \"model changed a published result type\"}]}",
+   "ruling": "Ruling: model error; on the validation failure in the line's closure, not the tax reading. The reply fails host validation (`../triage/s8812.deepseek.json`, state invalid; nothing executed): s8812.line18a, s8812.line21, s8812.line23 and s8812.clwb_3 \"model changed a published result type\". This line's closure contains (CLW B 4) and so (CLW B 3). The candidate is rejected and not executed or repaired. Its own step is the project's. The reply declares no shown_when, so the line is shown where the source skips it (the claude candidate's same omission gives candidate-shows-skipped in `../triage/s8812.json`).",
+   "context": "49549f1c48660a364b93fd30e4362be9863b8c1ad7d93e27404ab8ed17dab1e1"
+  },
+  {
+   "printed": "(CLW B 7)",
+   "project": "{\"line\": \"21\"}",
+   "second": "{\"const\": 0}",
+   "ruling": "Ruling: model error; by reading (reply invalid, not executed). i1040s8812 p. 5, Credit Limit Worksheet B, line 6: \"No. If you are a bona fide resident of Puerto Rico and line 5 above is less than line 1 above, go to line 7. Otherwise, leave lines 7 through 10 blank, enter -0- on line 11, and go to line 12. Yes. If line 5 above is equal to or more than line 1 above, leave lines 7 through 10 blank, enter -0- on line 11, and go to line 12. Otherwise, go to line 7.\" i1040s8812 p. 5, line 7: Social security tax withheld from Form(s) W-2, box 4, and Medicare tax withheld from Form(s) W-2, box 6 (or the Additional Medicare Tax and RRTA Tax Worksheet). The candidate enters -0- and, by its note, refuses when Worksheet B is completed, on the ground that the interface has no box 4 and 6 total; person.withheld and person.medicare6 are published. On a return where line 6 sends the filer to line 7, it refuses or gives $0 where the source computes.",
+   "context": "49549f1c48660a364b93fd30e4362be9863b8c1ad7d93e27404ab8ed17dab1e1"
+  },
+  {
+   "printed": "(CLW B 8)",
+   "project": "{\"line\": \"22\"}",
+   "second": "{\"expression\": {\"line\": \"22\"}, \"invalid_model_types\": [{\"line\": \"s8812.line22\", \"message\": \"s8812.s8812.line22: collection reference requires sum_over\"}]}",
+   "ruling": "Ruling: model error; on the validation failure in the line's closure, not the tax reading. The reply fails host validation (`../triage/s8812.deepseek.json`, state invalid; nothing executed): s8812.clwb_complete \"comparison operands have incompatible types\" and s8812.line22 \"collection reference requires sum_over\". This line's closure contains line 22 (\"collection reference requires sum_over\"). The candidate is rejected and not executed or repaired. Its own step is the project's. The reply declares no shown_when anywhere, so this Worksheet B line is shown on returns where the worksheet is not completed (i1040s8812 p. 4, \"Complete Credit Limit Worksheet B only if you meet all the following\"; the claude candidate's same omission gives the candidate-shows-skipped counts in `../triage/s8812.json`).",
+   "context": "6dcc527c94d6f607970a485026e515f6d8c8f0f79e1ebd1b6493d24e3afd9180"
+  },
+  {
+   "printed": "(CLW B 9)",
+   "project": "{\"of\": [{\"line\": \"(CLW B 7)\"}, {\"line\": \"(CLW B 8)\"}], \"op\": \"sum\"}",
+   "second": "{\"expression\": {\"of\": [{\"line\": \"(CLW B 7)\"}, {\"line\": \"(CLW B 8)\"}], \"op\": \"sum\"}, \"invalid_model_types\": [{\"line\": \"s8812.line22\", \"message\": \"s8812.s8812.line22: collection reference requires sum_over\"}]}",
+   "ruling": "Ruling: model error; on the validation failure in the line's closure, not the tax reading. The reply fails host validation (`../triage/s8812.deepseek.json`, state invalid; nothing executed): s8812.clwb_complete \"comparison operands have incompatible types\" and s8812.line22 \"collection reference requires sum_over\". This line's closure contains (CLW B 8) and so line 22. The candidate is rejected and not executed or repaired. Its own step is the project's. The reply declares no shown_when anywhere, so this Worksheet B line is shown on returns where the worksheet is not completed (i1040s8812 p. 4, \"Complete Credit Limit Worksheet B only if you meet all the following\"; the claude candidate's same omission gives the candidate-shows-skipped counts in `../triage/s8812.json`).",
+   "context": "6dcc527c94d6f607970a485026e515f6d8c8f0f79e1ebd1b6493d24e3afd9180"
+  },
+  {
    "printed": "12",
    "project": "{\"from\": {\"line\": \"8\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"11\"}}",
    "second": "{\"expression\": {\"from\": {\"line\": \"8\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"11\"}}, \"invalid_model_types\": [{\"line\": \"s8812.line12\", \"message\": \"model changed a published result type\"}]}",
@@ -39,6 +186,20 @@
    "context": "3ec59f19384232025cd5654358c30da0fc364f2561cf405564b01e1eb75377d3"
   },
   {
+   "printed": "13",
+   "project": "{\"line\": \"(CLW A 5)\"}",
+   "second": "{\"expression\": {\"line\": \"(CLW A 5)\"}, \"invalid_model_types\": [{\"line\": \"s8812.clwb_complete\", \"message\": \"s8812.s8812.clwb_complete: comparison operands have incompatible types\"}]}",
+   "ruling": "Ruling: model error; on the validation failure in the line's closure, not the tax reading. The reply fails host validation (`../triage/s8812.deepseek.json`, state invalid; nothing executed): s8812.clwb_complete \"comparison operands have incompatible types\" and s8812.line22 \"collection reference requires sum_over\". This line's closure contains (CLW A 5), (CLW A 4) and so s8812.clwb_complete. The candidate is rejected and not executed or repaired. Its own step is the project's.",
+   "context": "6dcc527c94d6f607970a485026e515f6d8c8f0f79e1ebd1b6493d24e3afd9180"
+  },
+  {
+   "printed": "14",
+   "project": "{\"of\": [{\"line\": \"12\"}, {\"line\": \"13\"}], \"op\": \"smaller_of\"}",
+   "second": "{\"expression\": {\"of\": [{\"line\": \"12\"}, {\"line\": \"13\"}], \"op\": \"smaller_of\"}, \"invalid_model_types\": [{\"line\": \"s8812.clwb_complete\", \"message\": \"s8812.s8812.clwb_complete: comparison operands have incompatible types\"}]}",
+   "ruling": "Ruling: model error; on the validation failure in the line's closure, not the tax reading. The reply fails host validation (`../triage/s8812.deepseek.json`, state invalid; nothing executed): s8812.clwb_complete \"comparison operands have incompatible types\" and s8812.line22 \"collection reference requires sum_over\". This line's closure contains line 13 and so s8812.clwb_complete. The candidate is rejected and not executed or repaired. Its own step is the project's.",
+   "context": "6dcc527c94d6f607970a485026e515f6d8c8f0f79e1ebd1b6493d24e3afd9180"
+  },
+  {
    "printed": "14",
    "project": "{\"of\": [{\"line\": \"12\"}, {\"line\": \"13\"}], \"op\": \"smaller_of\"}",
    "second": "{\"expression\": {\"of\": [{\"line\": \"12\"}, {\"line\": \"13\"}], \"op\": \"smaller_of\"}, \"invalid_model_types\": [{\"line\": \"s8812.line12\", \"message\": \"model changed a published result type\"}, {\"line\": \"s8812.h_clw_a2\", \"message\": \"s8812.s8812.h_clw_a2: declared NonNegDollars but the expression does not prove non-negativity\"}]}",
@@ -65,6 +226,13 @@
    "second": "{\"expression\": {\"of\": [{\"line\": \"12\"}, {\"line\": \"13\"}], \"op\": \"smaller_of\"}, \"invalid_model_types\": [{\"line\": \"s8812.line21\", \"message\": \"model changed a published result type\"}, {\"line\": \"s8812.line23\", \"message\": \"model changed a published result type\"}, {\"line\": \"s8812.h_w2_box4_total\", \"message\": \"s8812.s8812.h_w2_box4_total: collection parent binding mismatch\"}, {\"line\": \"s8812.h_w2_box6_total\", \"message\": \"s8812.s8812.h_w2_box6_total: collection parent binding mismatch\"}, {\"line\": \"s8812.h_clw_a_line2\", \"message\": \"s8812.s8812.h_clw_a_line2: declared NonNegDollars but the expression does not prove non-negativity\"}, {\"line\": \"s8812.line21\", \"message\": \"s8812.s8812.__type_gate_16: collection reference requires sum_over\"}, {\"line\": \"s8812.line21\", \"message\": \"s8812.s8812.__type_gate_16: comparison operands have incompatible types\"}]}",
    "ruling": "Ruling: model error; on the validation failure in the line's closure, not the tax reading. The reply fails host validation (`../triage/s8812.deepseek.json`, state invalid; nothing executed): s8812.h_clw_a_line2 \"declared NonNegDollars but the expression does not prove non-negativity\"; s8812.h_w2_box4_total and s8812.h_w2_box6_total \"collection parent binding mismatch\"; s8812.line21 and s8812.line23 \"model changed a published result type\"; s8812.line21 __type_gate_16 \"collection reference requires sum_over\" and \"comparison operands have incompatible types\". This line's closure contains s8812.h_clw_a_line2 and, through line 13, s8812.h_w2_box4_total and s8812.h_w2_box6_total (parent binding), s8812.line21 and s8812.line23 (type changes). The candidate is rejected and not executed or repaired.",
    "context": "187a9c0989ef82e9f36932589c41cca74462491d6324ebc33b8dfd8cabb0691a"
+  },
+  {
+   "printed": "16a",
+   "project": "{\"from\": {\"line\": \"12\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"14\"}}",
+   "second": "{\"expression\": {\"from\": {\"line\": \"12\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"14\"}}, \"invalid_model_types\": [{\"line\": \"s8812.clwb_complete\", \"message\": \"s8812.s8812.clwb_complete: comparison operands have incompatible types\"}]}",
+   "ruling": "Ruling: model error; on the validation failure in the line's closure, not the tax reading. The reply fails host validation (`../triage/s8812.deepseek.json`, state invalid; nothing executed): s8812.clwb_complete \"comparison operands have incompatible types\" and s8812.line22 \"collection reference requires sum_over\". This line's closure contains line 14 and so s8812.clwb_complete. The candidate is rejected and not executed or repaired. Its own step is the project's.",
+   "context": "6dcc527c94d6f607970a485026e515f6d8c8f0f79e1ebd1b6493d24e3afd9180"
   },
   {
    "printed": "16a",
@@ -98,8 +266,15 @@
    "printed": "16b",
    "project": "{\"collection\": \"dependent\", \"field\": \"dependent.actc_amount\", \"op\": \"sum_over\", \"where\": null}",
    "second": "{\"amount\": {\"param\": \"actc.per_child\"}, \"count\": {\"line\": \"4\"}, \"op\": \"multiply_count\"}",
-   "ruling": "Ruling: model error; by reading (reply invalid, not executed). f1040s8812 p. 2, line 16a: \"If zero, stop here; you cannot take the additional child tax credit\"; line 16b: \"If zero, stop here; you cannot claim the additional child tax credit\". The candidate (line 4 x $1,700) declares no shown_when, so it shows 16b after the 16a stop; the claude candidate of the same form shows 67 candidate-shows-skipped in `../triage/s8812.json` (witness 0 classm.f2441.1.deepseek: 16a 0.00, candidate 1,700.00, project hidden via s8812.show16b). Value otherwise equal. Same ruling as round 2.",
-   "context": "187a9c0989ef82e9f36932589c41cca74462491d6324ebc33b8dfd8cabb0691a"
+   "ruling": "Ruling: model error; by reading (reply invalid, not executed). f1040s8812 p. 2, line 16a: \"If zero, stop here; you cannot take the additional child tax credit\". Line 4 x $1,700 with no shown_when shows 16b after the 16a stop, as the claude candidate's identical line (`../triage/s8812.json`: 72 candidate-shows-skipped, classm.f2441.1.deepseek $1,700.00). Value otherwise equal.",
+   "context": "49549f1c48660a364b93fd30e4362be9863b8c1ad7d93e27404ab8ed17dab1e1"
+  },
+  {
+   "printed": "17",
+   "project": "{\"of\": [{\"line\": \"16a\"}, {\"line\": \"16b\"}], \"op\": \"smaller_of\"}",
+   "second": "{\"expression\": {\"of\": [{\"line\": \"16a\"}, {\"line\": \"16b\"}], \"op\": \"smaller_of\"}, \"invalid_model_types\": [{\"line\": \"s8812.clwb_complete\", \"message\": \"s8812.s8812.clwb_complete: comparison operands have incompatible types\"}]}",
+   "ruling": "Ruling: model error; on the validation failure in the line's closure, not the tax reading. The reply fails host validation (`../triage/s8812.deepseek.json`, state invalid; nothing executed): s8812.clwb_complete \"comparison operands have incompatible types\" and s8812.line22 \"collection reference requires sum_over\". This line's closure contains line 16a and so s8812.clwb_complete. The candidate is rejected and not executed or repaired. Its own step is the project's.",
+   "context": "6dcc527c94d6f607970a485026e515f6d8c8f0f79e1ebd1b6493d24e3afd9180"
   },
   {
    "printed": "17",
@@ -140,36 +315,43 @@
    "printed": "18a",
    "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"ref\": \"f1040.line27a\"}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"of\": [{\"ref\": \"f1040.line1z\"}, {\"ref\": \"s1.line3\"}], \"op\": \"sum\"}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"of\": [{\"ref\": \"f1040.line1z\"}, {\"ref\": \"s1.line3\"}], \"op\": \"sum\"}], \"test\": \"lt\"}, \"then\": {\"from\": {\"from\": {\"of\": [{\"ref\": \"f1040.line1z\"}, {\"ref\": \"s1.line3\"}], \"op\": \"sum\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}, \"op\": \"subtract\", \"take\": {\"ref\": \"s1.line15\"}}}], \"op\": \"choose\"}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"ref\": \"f1040.line27a\"}], \"test\": \"lt\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"collection\": \"person\", \"field\": \"person.sc_count\", \"op\": \"sum_over\", \"where\": null}, {\"const\": 0, \"type\": \"Count\"}], \"test\": \"le\"}, \"then\": {\"ref\": \"eic.earned_income\"}}, {\"guard\": {\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.sc_count\", \"op\": \"sum_over\", \"where\": null}], \"test\": \"lt\"}, \"then\": {\"ref\": \"eic.wsb_4b\"}}], \"op\": \"choose\"}}], \"op\": \"choose\"}",
    "second": "{\"expression\": {\"from\": {\"ref\": \"eic.earned_income\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}, \"invalid_model_types\": [{\"line\": \"s8812.line18a\", \"message\": \"model changed a published result type\"}]}",
-   "ruling": "Ruling: model error; on the validation failure: the reply fails host validation (triage/s8812.deepseek.json state \"invalid\": \"model changed a published result type\" on s8812.line13, line18a, line21, line23, clw_a5, clwb_3, clwb_7, clwb_9; \"s8812.s8812.__type_gate_4: collection reference requires sum_over\" and \"comparison operands have incompatible types\" on line 21, whose refusal gate person.rrta is a collection field used as a return-level gate), so nothing was executed and nothing is repaired. Line 18a itself changes its published Dollars type to NonNegDollars. This adjudicates the unusable declaration, not the tax reading of the line.",
-   "context": "7e2cfa5f65397578efe8135a1fd10d26b33d8995d8410524f3c4bf41ae215031"
+   "ruling": "Ruling: model error; on the declaration (published type changed) and by reading. The reply fails host validation (`../triage/s8812.deepseek.json`, state invalid; nothing executed): s8812.line18a, s8812.line21, s8812.line23 and s8812.clwb_3 \"model changed a published result type\". By reading it is also wrong: i1040s8812 p. 7, Earned Income Chart, sends a filer who is not taking the EIC to \"the amount figured using the Earned Income Worksheet next\" and a self-employed EIC filer to \"your earned income from Worksheet B ..., line 4b\"; the candidate takes eic.earned_income (Step 5) on every return. No shown_when either.",
+   "context": "49549f1c48660a364b93fd30e4362be9863b8c1ad7d93e27404ab8ed17dab1e1"
   },
   {
    "printed": "18a",
    "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"ref\": \"f1040.line27a\"}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"of\": [{\"ref\": \"f1040.line1z\"}, {\"ref\": \"s1.line3\"}], \"op\": \"sum\"}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"of\": [{\"ref\": \"f1040.line1z\"}, {\"ref\": \"s1.line3\"}], \"op\": \"sum\"}], \"test\": \"lt\"}, \"then\": {\"from\": {\"from\": {\"of\": [{\"ref\": \"f1040.line1z\"}, {\"ref\": \"s1.line3\"}], \"op\": \"sum\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}, \"op\": \"subtract\", \"take\": {\"ref\": \"s1.line15\"}}}], \"op\": \"choose\"}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"ref\": \"f1040.line27a\"}], \"test\": \"lt\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"collection\": \"person\", \"field\": \"person.sc_count\", \"op\": \"sum_over\", \"where\": null}, {\"const\": 0, \"type\": \"Count\"}], \"test\": \"le\"}, \"then\": {\"ref\": \"eic.earned_income\"}}, {\"guard\": {\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.sc_count\", \"op\": \"sum_over\", \"where\": null}], \"test\": \"lt\"}, \"then\": {\"ref\": \"eic.wsb_4b\"}}], \"op\": \"choose\"}}], \"op\": \"choose\"}",
    "second": "{\"from\": {\"from\": {\"of\": [{\"line\": \"18b\"}, {\"collection\": \"person\", \"field\": \"person.sc_total\", \"op\": \"sum_over\", \"where\": null}, {\"ref\": \"f1040.line1z\"}], \"op\": \"sum\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}, \"op\": \"subtract_floor0\", \"take\": {\"ref\": \"s1.line15\"}}",
-   "ruling": "Ruling: model error; by reading (reply invalid, not executed; its closure has no validation failure). f1040s8812 p. 2, line 16a: \"If zero, stop here; you cannot take the additional child tax credit\"; line 16b: \"If zero, stop here; you cannot claim the additional child tax credit\"; line 18a is in Part II-A, after them. The candidate declares no shown_when, so it shows 18a on returns that stop at 16a or 16b (as the claude candidate's 897 candidate-shows-skipped in `../triage/s8812.json`, witness 0 classm.f2441.1.deepseek 50,000.00). It also takes the Earned Income Worksheet (line 1z plus its own line 18b plus the Schedule C totals, less Schedule 1 line 15) on every return, where i1040s8812 p. 7, Earned Income Chart, sends a filer taking the EIC to \"your earned income from Worksheet B ..., line 4b\" or \"your earned income from Step 5\"; whether that changes any value in the slice was not executed and is not decided here.",
-   "context": "187a9c0989ef82e9f36932589c41cca74462491d6324ebc33b8dfd8cabb0691a"
+   "ruling": "Ruling: model error; by reading (reply invalid, not executed; its closure has no validation failure). f1040s8812 p. 2, lines 16a and 16b, \"If zero, stop here\"; line 18a follows them. The candidate declares no shown_when, so it shows 18a when Part II-A is not reached (as the claude candidate's 954 candidate-shows-skipped in `../triage/s8812.json`, classm.f2441.1.deepseek $50,000.00). It also takes the Earned Income Worksheet (line 1z plus its line 18b plus person.sc_total, the same as Schedule 1 line 3, less Schedule 1 line 15, floored at zero where worksheet line 7 is not) on every return, where i1040s8812 p. 7, Earned Income Chart, sends a filer taking the EIC to \"your earned income from Worksheet B ..., line 4b\" or \"your earned income from Step 5\"; whether that changes a value in the slice was not executed and is not decided here. Same reply text as Stage 19.",
+   "context": "6dcc527c94d6f607970a485026e515f6d8c8f0f79e1ebd1b6493d24e3afd9180"
   },
   {
    "printed": "19",
    "project": "{\"from\": {\"line\": \"18a\"}, \"op\": \"subtract_floor0\", \"take\": {\"param\": \"actc.earned_floor\"}}",
    "second": "{\"expression\": {\"from\": {\"line\": \"18a\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 250000}}, \"invalid_model_types\": [{\"line\": \"s8812.line18a\", \"message\": \"model changed a published result type\"}]}",
-   "ruling": "Ruling: model error; on the validation failure: the reply fails host validation (triage/s8812.deepseek.json state \"invalid\": \"model changed a published result type\" on s8812.line13, line18a, line21, line23, clw_a5, clwb_3, clwb_7, clwb_9; \"s8812.s8812.__type_gate_4: collection reference requires sum_over\" and \"comparison operands have incompatible types\" on line 21, whose refusal gate person.rrta is a collection field used as a return-level gate), so nothing was executed and nothing is repaired. Line 19 reads line 18a (type change). This adjudicates the unusable declaration, not the tax reading of the line.",
-   "context": "7e2cfa5f65397578efe8135a1fd10d26b33d8995d8410524f3c4bf41ae215031"
+   "ruling": "Ruling: model error; on the validation failure in the line's closure, not the tax reading. The reply fails host validation (`../triage/s8812.deepseek.json`, state invalid; nothing executed): s8812.line18a, s8812.line21, s8812.line23 and s8812.clwb_3 \"model changed a published result type\". This line's closure contains line 18a (published type changed). The candidate is rejected and not executed or repaired. Its own step is the project's.",
+   "context": "49549f1c48660a364b93fd30e4362be9863b8c1ad7d93e27404ab8ed17dab1e1"
   },
   {
    "printed": "19",
    "project": "{\"from\": {\"line\": \"18a\"}, \"op\": \"subtract_floor0\", \"take\": {\"param\": \"actc.earned_floor\"}}",
    "second": "{\"from\": {\"line\": \"18a\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 250000}}",
-   "ruling": "Ruling: finding; Ruled on the expressions; triage could not execute the reply because of validation errors on other lines (s8812.h_clw_a2, s8812.line12, s8812.h_ss4, s8812.h_med6), none in this line's dependency closure. f1040s8812 p. 2, line 19: \"Is the amount on line 18a more than $2,500? No. Leave line 19 blank and enter -0- on line 20. Yes. Subtract $2,500 from the amount on line 18a.\" The candidate's constant 250000 equals actc.earned_floor (params/2025.yaml, 250000), so line 19's own step is the project's; its value differs only through the candidate's line 18a (model error, see 18a). The line carries the project defect: f1040s8812 p. 2, line 16a: \"If zero, stop here; you cannot take the additional child tax credit\", line 16b: \"If zero, stop here; you cannot claim the additional child tax credit\", and after line 20: \"Next. On line 16b, is the amount $5,100 or more? No. If you are a bona fide resident of Puerto Rico, go to line 21. Otherwise, skip Part II-B and enter the smaller of line 17 or line 20 on line 27. Yes. If line 20 is equal to or more than line 17, skip Part II-B and enter the amount from line 17 on line 27.\" The project computes line 19 after such a stop (stage8.hoh.child.ctc: line 16a 0.00, line 19 117,500.00). Under the README skipped-line rule a nonzero amount on a line the source says to skip is a defect of the side producing it. See s8812.findings.md F1.",
-   "context": "3ec59f19384232025cd5654358c30da0fc364f2561cf405564b01e1eb75377d3"
+   "ruling": "Ruling: model error; by reading (reply invalid, not executed). f1040s8812 p. 2, line 19: \"Is the amount on line 18a more than $2,500? No. Leave line 19 blank and enter -0- on line 20. Yes. Subtract $2,500 from the amount on line 18a.\" Its own step (18a less a $2,500 constant, floored) equals the project's (actc.earned_floor), but it inherits line 18a's chart reading and, with no shown_when, shows line 19 when Part II-A is not reached.",
+   "context": "6dcc527c94d6f607970a485026e515f6d8c8f0f79e1ebd1b6493d24e3afd9180"
   },
   {
    "printed": "20",
    "project": "{\"amount\": {\"line\": \"19\"}, \"op\": \"multiply_rate\", \"rate\": {\"param\": \"actc.rate\"}}",
    "second": "{\"expression\": {\"amount\": {\"line\": \"19\"}, \"op\": \"multiply_rate\", \"rate\": {\"param\": \"actc.rate\"}}, \"invalid_model_types\": [{\"line\": \"s8812.line18a\", \"message\": \"model changed a published result type\"}]}",
-   "ruling": "Ruling: model error; on the validation failure: the reply fails host validation (triage/s8812.deepseek.json state \"invalid\": \"model changed a published result type\" on s8812.line13, line18a, line21, line23, clw_a5, clwb_3, clwb_7, clwb_9; \"s8812.s8812.__type_gate_4: collection reference requires sum_over\" and \"comparison operands have incompatible types\" on line 21, whose refusal gate person.rrta is a collection field used as a return-level gate), so nothing was executed and nothing is repaired. Line 20 reads line 19, whose closure carries the line 18a type change. This adjudicates the unusable declaration, not the tax reading of the line.",
-   "context": "7e2cfa5f65397578efe8135a1fd10d26b33d8995d8410524f3c4bf41ae215031"
+   "ruling": "Ruling: model error; on the validation failure in the line's closure, not the tax reading. The reply fails host validation (`../triage/s8812.deepseek.json`, state invalid; nothing executed): s8812.line18a, s8812.line21, s8812.line23 and s8812.clwb_3 \"model changed a published result type\". This line's closure contains line 19 and so line 18a. The candidate is rejected and not executed or repaired. Its own step is the project's.",
+   "context": "49549f1c48660a364b93fd30e4362be9863b8c1ad7d93e27404ab8ed17dab1e1"
+  },
+  {
+   "printed": "21",
+   "project": "{\"of\": [{\"amount\": {\"ref\": \"f8959.line13\"}, \"op\": \"multiply_rate\", \"rate\": {\"param\": \"se.rate_50\"}}, {\"from\": {\"of\": [{\"collection\": \"person\", \"field\": \"person.withheld\", \"op\": \"sum_over\", \"where\": null}, {\"ref\": \"f8959.line19\"}, {\"ref\": \"f8959.line7\"}], \"op\": \"sum\"}, \"op\": \"subtract\", \"take\": {\"ref\": \"f8959.line22\"}}], \"op\": \"sum\"}",
+   "second": "{\"const\": 0}",
+   "ruling": "Ruling: model error; by reading (reply invalid, not executed). f1040s8812 p. 2, line 21: \"Withheld social security, Medicare, and Additional Medicare taxes from Form(s) W-2, boxes 4 and 6. If married filing jointly, include your spouse's amounts with yours.\" The candidate enters $0 on the ground that the interface has no return-level sum of boxes 4 and 6; the prompt publishes person.withheld and person.medicare6 (and f8959.line19), which the project and the claude candidate sum. Every Part II-B return with W-2 withholding gets a wrong line 21. No shown_when either.",
+   "context": "6dcc527c94d6f607970a485026e515f6d8c8f0f79e1ebd1b6493d24e3afd9180"
   },
   {
    "printed": "21",
@@ -177,6 +359,13 @@
    "second": "{\"expression\": {\"const\": 0}, \"invalid_model_types\": [{\"line\": \"s8812.line21\", \"message\": \"model changed a published result type\"}, {\"line\": \"s8812.line21\", \"message\": \"s8812.s8812.__type_gate_4: collection reference requires sum_over\"}, {\"line\": \"s8812.line21\", \"message\": \"s8812.s8812.__type_gate_4: comparison operands have incompatible types\"}]}",
    "ruling": "Ruling: model error; on the validation failure: the reply fails host validation (triage/s8812.deepseek.json state \"invalid\": \"model changed a published result type\" on s8812.line13, line18a, line21, line23, clw_a5, clwb_3, clwb_7, clwb_9; \"s8812.s8812.__type_gate_4: collection reference requires sum_over\" and \"comparison operands have incompatible types\" on line 21, whose refusal gate person.rrta is a collection field used as a return-level gate), so nothing was executed and nothing is repaired. Line 21 itself changes its published type and fails the type gate on its refusal person.rrta. This adjudicates the unusable declaration, not the tax reading of the line.",
    "context": "7e2cfa5f65397578efe8135a1fd10d26b33d8995d8410524f3c4bf41ae215031"
+  },
+  {
+   "printed": "21",
+   "project": "{\"of\": [{\"amount\": {\"ref\": \"f8959.line13\"}, \"op\": \"multiply_rate\", \"rate\": {\"param\": \"se.rate_50\"}}, {\"from\": {\"of\": [{\"collection\": \"person\", \"field\": \"person.withheld\", \"op\": \"sum_over\", \"where\": null}, {\"ref\": \"f8959.line19\"}, {\"ref\": \"f8959.line7\"}], \"op\": \"sum\"}, \"op\": \"subtract\", \"take\": {\"ref\": \"f8959.line22\"}}], \"op\": \"sum\"}",
+   "second": "{\"expression\": {\"const\": 0}, \"invalid_model_types\": [{\"line\": \"s8812.line21\", \"message\": \"model changed a published result type\"}]}",
+   "ruling": "Ruling: model error; on the declaration (published type changed) and by reading. The reply fails host validation (`../triage/s8812.deepseek.json`, state invalid; nothing executed): s8812.line18a, s8812.line21, s8812.line23 and s8812.clwb_3 \"model changed a published result type\". f1040s8812 p. 2, line 21: \"Withheld social security, Medicare, and Additional Medicare taxes from Form(s) W-2, boxes 4 and 6. If married filing jointly, include your spouse's amounts with yours.\" The candidate enters $0 (refusing when Part II-B is needed) on the ground that the interface has no box 4 and 6 total; the prompt publishes person.withheld and person.medicare6 (and f8959.line19), which the project and the claude candidate sum. Same reading as round 1.",
+   "context": "49549f1c48660a364b93fd30e4362be9863b8c1ad7d93e27404ab8ed17dab1e1"
   },
   {
    "printed": "21",
@@ -198,6 +387,20 @@
    "second": "{\"expression\": {\"of\": [{\"amount\": {\"ref\": \"f8959.line13\"}, \"op\": \"multiply_rate\", \"rate\": {\"param\": \"ssb.half\"}}, {\"from\": {\"of\": [{\"of\": [{\"collection\": \"w2\", \"field\": \"w2.box4\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"w2\", \"field\": \"w2.box6\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"sum\"}, {\"ref\": \"f8959.line7\"}], \"op\": \"sum\"}, \"op\": \"subtract_floor0\", \"take\": {\"ref\": \"f8959.line22\"}}], \"op\": \"sum\"}, \"invalid_model_types\": [{\"line\": \"s8812.line21\", \"message\": \"model changed a published result type\"}, {\"line\": \"s8812.h_w2_ss\", \"message\": \"s8812.s8812.h_w2_ss: collection parent binding mismatch\"}, {\"line\": \"s8812.h_w2_medicare\", \"message\": \"s8812.s8812.h_w2_medicare: collection parent binding mismatch\"}, {\"line\": \"s8812.line21\", \"message\": \"s8812.s8812.__type_gate_7: collection reference requires sum_over\"}, {\"line\": \"s8812.line21\", \"message\": \"s8812.s8812.__type_gate_7: comparison operands have incompatible types\"}]}",
    "ruling": "Ruling: model error; the returned IR violates the explicitly supplied closed schema/type/reference interface: model changed a published result type / s8812.s8812.__type_gate_7: collection reference requires sum_over / s8812.s8812.__type_gate_7: comparison operands have incompatible types / s8812.s8812.h_w2_medicare: collection parent binding mismatch / s8812.s8812.h_w2_ss: collection parent binding mismatch. The candidate is rejected and not executed or repaired. This adjudicates the unusable declaration, not the underlying tax reading; source qualification still requires a valid replacement.",
    "context": "9be23386398bb26afbdfd0d235c138da0a3f9e6288fc092e629fab0151dbfe6a"
+  },
+  {
+   "printed": "22",
+   "project": "{\"ref\": \"s1.line15\"}",
+   "second": "{\"expression\": {\"of\": [{\"ref\": \"f8889.line17b\"}, {\"ref\": \"f8959.line24\"}, {\"ref\": \"f8960.line17\"}, {\"ref\": \"s1.line15\"}], \"op\": \"sum\"}, \"invalid_model_types\": [{\"line\": \"s8812.line22\", \"message\": \"s8812.s8812.line22: collection reference requires sum_over\"}]}",
+   "ruling": "Ruling: model error; on the validation failure in the line's closure, not the tax reading. The reply fails host validation (`../triage/s8812.deepseek.json`, state invalid; nothing executed): s8812.clwb_complete \"comparison operands have incompatible types\" and s8812.line22 \"collection reference requires sum_over\". This line's closure contains the line itself (\"collection reference requires sum_over\"). The candidate is rejected and not executed or repaired. By reading it is also wrong: f1040s8812 p. 2, line 22: \"Enter the total of the amounts from Schedule 1 (Form 1040), line 15; Schedule 2 (Form 1040), line 5; Schedule 2 (Form 1040), line 6; and Schedule 2 (Form 1040), line 13\"; the candidate adds Form 8889 line 17b, Form 8959 line 24 and Form 8960 line 17 to Schedule 1 line 15, none of them Schedule 2 lines 5, 6 or 13 (which the project refuses through s2.other).",
+   "context": "6dcc527c94d6f607970a485026e515f6d8c8f0f79e1ebd1b6493d24e3afd9180"
+  },
+  {
+   "printed": "22",
+   "project": "{\"ref\": \"s1.line15\"}",
+   "second": "{\"of\": [{\"collection\": \"person\", \"field\": \"person.hsa_addtax\", \"op\": \"sum_over\", \"where\": null}, {\"ref\": \"f8959.line24\"}, {\"ref\": \"f8960.line17\"}, {\"ref\": \"s1.line15\"}], \"op\": \"sum\"}",
+   "ruling": "Ruling: model error; by reading (reply invalid, not executed; no validation failure in this line itself). f1040s8812 p. 2, line 22: \"Enter the total of the amounts from Schedule 1 (Form 1040), line 15; Schedule 2 (Form 1040), line 5; Schedule 2 (Form 1040), line 6; and Schedule 2 (Form 1040), line 13\". The candidate adds person.hsa_addtax, Form 8959 line 24 and Form 8960 line 17 as Schedule 2 lines 5, 6 and 13; they are not (Schedule 2 line 5 is Form 4137, line 6 Form 8919, line 13 uncollected tax on tips and group-term life insurance, which the project refuses through s2.other). Every Part II-B return with Additional Medicare Tax, net investment income tax or an HSA additional tax gets a wrong line 22. Same error as round 1 in a different form.",
+   "context": "49549f1c48660a364b93fd30e4362be9863b8c1ad7d93e27404ab8ed17dab1e1"
   },
   {
    "printed": "22",
@@ -235,6 +438,20 @@
    "context": "7e2cfa5f65397578efe8135a1fd10d26b33d8995d8410524f3c4bf41ae215031"
   },
   {
+   "printed": "23",
+   "project": "{\"of\": [{\"line\": \"21\"}, {\"line\": \"22\"}], \"op\": \"sum\"}",
+   "second": "{\"expression\": {\"of\": [{\"line\": \"21\"}, {\"line\": \"22\"}], \"op\": \"sum\"}, \"invalid_model_types\": [{\"line\": \"s8812.line21\", \"message\": \"model changed a published result type\"}, {\"line\": \"s8812.line23\", \"message\": \"model changed a published result type\"}]}",
+   "ruling": "Ruling: model error; on the validation failure in the line's closure, not the tax reading. The reply fails host validation (`../triage/s8812.deepseek.json`, state invalid; nothing executed): s8812.line18a, s8812.line21, s8812.line23 and s8812.clwb_3 \"model changed a published result type\". This line's closure contains the line itself and line 21 (published types changed). The candidate is rejected and not executed or repaired. Its own step is the project's.",
+   "context": "49549f1c48660a364b93fd30e4362be9863b8c1ad7d93e27404ab8ed17dab1e1"
+  },
+  {
+   "printed": "23",
+   "project": "{\"of\": [{\"line\": \"21\"}, {\"line\": \"22\"}], \"op\": \"sum\"}",
+   "second": "{\"expression\": {\"of\": [{\"line\": \"21\"}, {\"line\": \"22\"}], \"op\": \"sum\"}, \"invalid_model_types\": [{\"line\": \"s8812.line22\", \"message\": \"s8812.s8812.line22: collection reference requires sum_over\"}]}",
+   "ruling": "Ruling: model error; on the validation failure in the line's closure, not the tax reading. The reply fails host validation (`../triage/s8812.deepseek.json`, state invalid; nothing executed): s8812.clwb_complete \"comparison operands have incompatible types\" and s8812.line22 \"collection reference requires sum_over\". This line's closure contains line 22 (\"collection reference requires sum_over\"). The candidate is rejected and not executed or repaired. Its own step is the project's.",
+   "context": "6dcc527c94d6f607970a485026e515f6d8c8f0f79e1ebd1b6493d24e3afd9180"
+  },
+  {
    "printed": "25",
    "project": "{\"from\": {\"line\": \"23\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"24\"}}",
    "second": "{\"expression\": {\"from\": {\"line\": \"23\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"24\"}}, \"invalid_model_types\": [{\"line\": \"s8812.h_ss4\", \"message\": \"s8812.s8812.h_ss4: collection parent binding mismatch\"}, {\"line\": \"s8812.h_med6\", \"message\": \"s8812.s8812.h_med6: collection parent binding mismatch\"}]}",
@@ -263,6 +480,20 @@
    "context": "7e2cfa5f65397578efe8135a1fd10d26b33d8995d8410524f3c4bf41ae215031"
   },
   {
+   "printed": "25",
+   "project": "{\"from\": {\"line\": \"23\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"24\"}}",
+   "second": "{\"expression\": {\"from\": {\"line\": \"23\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"24\"}}, \"invalid_model_types\": [{\"line\": \"s8812.line21\", \"message\": \"model changed a published result type\"}, {\"line\": \"s8812.line23\", \"message\": \"model changed a published result type\"}]}",
+   "ruling": "Ruling: model error; on the validation failure in the line's closure, not the tax reading. The reply fails host validation (`../triage/s8812.deepseek.json`, state invalid; nothing executed): s8812.line18a, s8812.line21, s8812.line23 and s8812.clwb_3 \"model changed a published result type\". This line's closure contains line 23 and so line 21. The candidate is rejected and not executed or repaired. Its own step is the project's.",
+   "context": "49549f1c48660a364b93fd30e4362be9863b8c1ad7d93e27404ab8ed17dab1e1"
+  },
+  {
+   "printed": "25",
+   "project": "{\"from\": {\"line\": \"23\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"24\"}}",
+   "second": "{\"expression\": {\"from\": {\"line\": \"23\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"24\"}}, \"invalid_model_types\": [{\"line\": \"s8812.line22\", \"message\": \"s8812.s8812.line22: collection reference requires sum_over\"}]}",
+   "ruling": "Ruling: model error; on the validation failure in the line's closure, not the tax reading. The reply fails host validation (`../triage/s8812.deepseek.json`, state invalid; nothing executed): s8812.clwb_complete \"comparison operands have incompatible types\" and s8812.line22 \"collection reference requires sum_over\". This line's closure contains line 23 and so line 22. The candidate is rejected and not executed or repaired. Its own step is the project's.",
+   "context": "6dcc527c94d6f607970a485026e515f6d8c8f0f79e1ebd1b6493d24e3afd9180"
+  },
+  {
    "printed": "26",
    "project": "{\"of\": [{\"line\": \"20\"}, {\"line\": \"25\"}], \"op\": \"larger_of\"}",
    "second": "{\"expression\": {\"of\": [{\"line\": \"20\"}, {\"line\": \"25\"}], \"op\": \"larger_of\"}, \"invalid_model_types\": [{\"line\": \"s8812.h_ss4\", \"message\": \"s8812.s8812.h_ss4: collection parent binding mismatch\"}, {\"line\": \"s8812.h_med6\", \"message\": \"s8812.s8812.h_med6: collection parent binding mismatch\"}]}",
@@ -279,6 +510,13 @@
   {
    "printed": "26",
    "project": "{\"of\": [{\"line\": \"20\"}, {\"line\": \"25\"}], \"op\": \"larger_of\"}",
+   "second": "{\"expression\": {\"of\": [{\"line\": \"20\"}, {\"line\": \"25\"}], \"op\": \"larger_of\"}, \"invalid_model_types\": [{\"line\": \"s8812.line18a\", \"message\": \"model changed a published result type\"}, {\"line\": \"s8812.line21\", \"message\": \"model changed a published result type\"}, {\"line\": \"s8812.line23\", \"message\": \"model changed a published result type\"}]}",
+   "ruling": "Ruling: model error; on the validation failure in the line's closure, not the tax reading. The reply fails host validation (`../triage/s8812.deepseek.json`, state invalid; nothing executed): s8812.line18a, s8812.line21, s8812.line23 and s8812.clwb_3 \"model changed a published result type\". This line's closure contains lines 20 and 25 and so lines 18a, 21 and 23. The candidate is rejected and not executed or repaired. Its own step is the project's.",
+   "context": "49549f1c48660a364b93fd30e4362be9863b8c1ad7d93e27404ab8ed17dab1e1"
+  },
+  {
+   "printed": "26",
+   "project": "{\"of\": [{\"line\": \"20\"}, {\"line\": \"25\"}], \"op\": \"larger_of\"}",
    "second": "{\"expression\": {\"of\": [{\"line\": \"20\"}, {\"line\": \"25\"}], \"op\": \"larger_of\"}, \"invalid_model_types\": [{\"line\": \"s8812.line21\", \"message\": \"model changed a published result type\"}, {\"line\": \"s8812.h_w2_ss\", \"message\": \"s8812.s8812.h_w2_ss: collection parent binding mismatch\"}, {\"line\": \"s8812.h_w2_medicare\", \"message\": \"s8812.s8812.h_w2_medicare: collection parent binding mismatch\"}, {\"line\": \"s8812.line21\", \"message\": \"s8812.s8812.__type_gate_7: collection reference requires sum_over\"}, {\"line\": \"s8812.line21\", \"message\": \"s8812.s8812.__type_gate_7: comparison operands have incompatible types\"}]}",
    "ruling": "Ruling: model error; the returned IR violates the explicitly supplied closed schema/type/reference interface: model changed a published result type / s8812.s8812.__type_gate_7: collection reference requires sum_over / s8812.s8812.__type_gate_7: comparison operands have incompatible types / s8812.s8812.h_w2_medicare: collection parent binding mismatch / s8812.s8812.h_w2_ss: collection parent binding mismatch. The candidate is rejected and not executed or repaired. This adjudicates the unusable declaration, not the underlying tax reading; source qualification still requires a valid replacement.",
    "context": "9be23386398bb26afbdfd0d235c138da0a3f9e6288fc092e629fab0151dbfe6a"
@@ -291,11 +529,32 @@
    "context": "187a9c0989ef82e9f36932589c41cca74462491d6324ebc33b8dfd8cabb0691a"
   },
   {
+   "printed": "26",
+   "project": "{\"of\": [{\"line\": \"20\"}, {\"line\": \"25\"}], \"op\": \"larger_of\"}",
+   "second": "{\"expression\": {\"of\": [{\"line\": \"20\"}, {\"line\": \"25\"}], \"op\": \"larger_of\"}, \"invalid_model_types\": [{\"line\": \"s8812.line22\", \"message\": \"s8812.s8812.line22: collection reference requires sum_over\"}]}",
+   "ruling": "Ruling: model error; on the validation failure in the line's closure, not the tax reading. The reply fails host validation (`../triage/s8812.deepseek.json`, state invalid; nothing executed): s8812.clwb_complete \"comparison operands have incompatible types\" and s8812.line22 \"collection reference requires sum_over\". This line's closure contains line 25 and so line 22. The candidate is rejected and not executed or repaired. Its own step is the project's.",
+   "context": "6dcc527c94d6f607970a485026e515f6d8c8f0f79e1ebd1b6493d24e3afd9180"
+  },
+  {
+   "printed": "27",
+   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"param\": \"actc.three_children\"}, {\"line\": \"16b\"}], \"test\": \"le\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"line\": \"17\"}, {\"line\": \"20\"}], \"test\": \"le\"}, \"then\": {\"line\": \"17\"}}, {\"guard\": {\"args\": [{\"line\": \"20\"}, {\"line\": \"17\"}], \"test\": \"lt\"}, \"then\": {\"of\": [{\"line\": \"17\"}, {\"line\": \"26\"}], \"op\": \"smaller_of\"}}], \"op\": \"choose\"}}, {\"guard\": {\"args\": [{\"line\": \"16b\"}, {\"param\": \"actc.three_children\"}], \"test\": \"lt\"}, \"then\": {\"of\": [{\"line\": \"17\"}, {\"line\": \"20\"}], \"op\": \"smaller_of\"}}], \"op\": \"choose\"}",
+   "second": "{\"expression\": {\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"s8812.puerto_rico\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": 510000}, {\"line\": \"16b\"}], \"test\": \"le\"}], \"test\": \"any\"}, {\"args\": [{\"args\": [{\"line\": \"16b\"}, {\"const\": 510000}], \"test\": \"lt\"}, {\"args\": [{\"line\": \"20\"}, {\"line\": \"17\"}], \"test\": \"lt\"}], \"test\": \"any\"}], \"test\": \"all\"}, \"then\": {\"of\": [{\"line\": \"17\"}, {\"line\": \"26\"}], \"op\": \"smaller_of\"}}, {\"guard\": {\"args\": [{\"args\": [{\"args\": [{\"const\": 510000}, {\"line\": \"16b\"}], \"test\": \"le\"}, {\"args\": [{\"line\": \"17\"}, {\"line\": \"20\"}], \"test\": \"le\"}], \"test\": \"all\"}, {\"args\": [{\"args\": [{\"line\": \"16b\"}, {\"const\": 510000}], \"test\": \"lt\"}, {\"args\": [{\"const\": true}, {\"input\": \"s8812.puerto_rico\"}], \"test\": \"ne\"}], \"test\": \"all\"}], \"test\": \"any\"}, \"then\": {\"of\": [{\"line\": \"17\"}, {\"line\": \"20\"}], \"op\": \"smaller_of\"}}], \"op\": \"choose\"}, \"invalid_model_types\": [{\"line\": \"s8812.line18a\", \"message\": \"model changed a published result type\"}, {\"line\": \"s8812.line21\", \"message\": \"model changed a published result type\"}, {\"line\": \"s8812.line23\", \"message\": \"model changed a published result type\"}]}",
+   "ruling": "Ruling: model error; on the validation failure in the line's closure, not the tax reading. The reply fails host validation (`../triage/s8812.deepseek.json`, state invalid; nothing executed): s8812.line18a, s8812.line21, s8812.line23 and s8812.clwb_3 \"model changed a published result type\". This line's closure contains lines 17, 20 and 26 and so lines 18a, 21 and 23. The candidate is rejected and not executed or repaired. Its own routing is the project's (f1040s8812 p. 2, after line 20), with $5,100 as a constant.",
+   "context": "49549f1c48660a364b93fd30e4362be9863b8c1ad7d93e27404ab8ed17dab1e1"
+  },
+  {
    "printed": "27",
    "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"param\": \"actc.three_children\"}, {\"line\": \"16b\"}], \"test\": \"le\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"line\": \"17\"}, {\"line\": \"20\"}], \"test\": \"le\"}, \"then\": {\"line\": \"17\"}}, {\"guard\": {\"args\": [{\"line\": \"20\"}, {\"line\": \"17\"}], \"test\": \"lt\"}, \"then\": {\"of\": [{\"line\": \"17\"}, {\"line\": \"26\"}], \"op\": \"smaller_of\"}}], \"op\": \"choose\"}}, {\"guard\": {\"args\": [{\"line\": \"16b\"}, {\"param\": \"actc.three_children\"}], \"test\": \"lt\"}, \"then\": {\"of\": [{\"line\": \"17\"}, {\"line\": \"20\"}], \"op\": \"smaller_of\"}}], \"op\": \"choose\"}",
    "second": "{\"expression\": {\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": 510000}, {\"line\": \"16b\"}], \"test\": \"le\"}, {\"args\": [{\"line\": \"17\"}, {\"line\": \"20\"}], \"test\": \"le\"}], \"test\": \"all\"}, \"then\": {\"line\": \"17\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": 510000}, {\"line\": \"16b\"}], \"test\": \"le\"}, {\"args\": [{\"line\": \"20\"}, {\"line\": \"17\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"then\": {\"of\": [{\"line\": \"17\"}, {\"line\": \"26\"}], \"op\": \"smaller_of\"}}, {\"guard\": {\"args\": [{\"line\": \"16b\"}, {\"const\": 510000}], \"test\": \"lt\"}, \"then\": {\"of\": [{\"line\": \"17\"}, {\"line\": \"20\"}], \"op\": \"smaller_of\"}}], \"op\": \"choose\"}, \"invalid_model_types\": [{\"line\": \"s8812.line12\", \"message\": \"model changed a published result type\"}, {\"line\": \"s8812.h_clw_a2\", \"message\": \"s8812.s8812.h_clw_a2: declared NonNegDollars but the expression does not prove non-negativity\"}, {\"line\": \"s8812.h_ss4\", \"message\": \"s8812.s8812.h_ss4: collection parent binding mismatch\"}, {\"line\": \"s8812.h_med6\", \"message\": \"s8812.s8812.h_med6: collection parent binding mismatch\"}]}",
    "ruling": "Ruling: model error; on the validation failure: The DeepSeek reply fails host validation (log \"Host-side model expression type checks\"; triage/s8812.deepseek.json state \"invalid\"), so no line of it was executed. This line depends on s8812.line12 is declared Dollars where the published interface gives \"printed '12' (id s8812.line12; type NonNegDollars)\" (\"model changed a published result type\"); s8812.h_clw_a2 is declared NonNegDollars but sums s3.line1, published as Dollars (prompt: \"s3.line1 (form s3; printed '1'; type Dollars)\"); s8812.h_ss4 and s8812.h_med6 sum collection w2 directly from the s8812 form, but the prompt publishes \"collection `w2` nested in each `person` entry\" (the per-person totals, e.g. person.withheld, are the published route), \"collection parent binding mismatch\". Each error is the reply's own declaration against the published interface, not a checker defect. The ruling adjudicates the declaration, not the tax reading.",
    "context": "3ec59f19384232025cd5654358c30da0fc364f2561cf405564b01e1eb75377d3"
+  },
+  {
+   "printed": "27",
+   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"param\": \"actc.three_children\"}, {\"line\": \"16b\"}], \"test\": \"le\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"line\": \"17\"}, {\"line\": \"20\"}], \"test\": \"le\"}, \"then\": {\"line\": \"17\"}}, {\"guard\": {\"args\": [{\"line\": \"20\"}, {\"line\": \"17\"}], \"test\": \"lt\"}, \"then\": {\"of\": [{\"line\": \"17\"}, {\"line\": \"26\"}], \"op\": \"smaller_of\"}}], \"op\": \"choose\"}}, {\"guard\": {\"args\": [{\"line\": \"16b\"}, {\"param\": \"actc.three_children\"}], \"test\": \"lt\"}, \"then\": {\"of\": [{\"line\": \"17\"}, {\"line\": \"20\"}], \"op\": \"smaller_of\"}}], \"op\": \"choose\"}",
+   "second": "{\"expression\": {\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": 510000}, {\"line\": \"16b\"}], \"test\": \"le\"}, {\"args\": [{\"line\": \"17\"}, {\"line\": \"20\"}], \"test\": \"le\"}], \"test\": \"all\"}, \"then\": {\"line\": \"17\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": 510000}, {\"line\": \"16b\"}], \"test\": \"le\"}, {\"args\": [{\"line\": \"20\"}, {\"line\": \"17\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"then\": {\"of\": [{\"line\": \"17\"}, {\"line\": \"26\"}], \"op\": \"smaller_of\"}}, {\"guard\": {\"args\": [{\"line\": \"16b\"}, {\"const\": 510000}], \"test\": \"lt\"}, \"then\": {\"of\": [{\"line\": \"17\"}, {\"line\": \"20\"}], \"op\": \"smaller_of\"}}], \"op\": \"choose\"}, \"invalid_model_types\": [{\"line\": \"s8812.line22\", \"message\": \"s8812.s8812.line22: collection reference requires sum_over\"}, {\"line\": \"s8812.clwb_complete\", \"message\": \"s8812.s8812.clwb_complete: comparison operands have incompatible types\"}]}",
+   "ruling": "Ruling: model error; on the validation failure in the line's closure, not the tax reading. The reply fails host validation (`../triage/s8812.deepseek.json`, state invalid; nothing executed): s8812.clwb_complete \"comparison operands have incompatible types\" and s8812.line22 \"collection reference requires sum_over\". This line's closure contains line 26 and so line 22, and line 17 and so s8812.clwb_complete. The candidate is rejected and not executed or repaired. Its own routing is the project's (f1040s8812 p. 2, after line 20), with $5,100 as a constant.",
+   "context": "6dcc527c94d6f607970a485026e515f6d8c8f0f79e1ebd1b6493d24e3afd9180"
   },
   {
    "printed": "27",
@@ -322,15 +581,15 @@
    "printed": "5",
    "project": "{\"collection\": \"dependent\", \"field\": \"dependent.ctc_amount\", \"op\": \"sum_over\", \"where\": null}",
    "second": "{\"amount\": {\"param\": \"ctc.per_child\"}, \"count\": {\"line\": \"4\"}, \"op\": \"multiply_count\"}",
-   "ruling": "Ruling: representation; by reading (reply invalid, not executed). f1040s8812 p. 1, line 5: \"Multiply line 4 by $2,200\". The candidate multiplies its per-child $2,200 by line 4 (multiply_count), the project sums dependent.ctc_amount, $2,200 exactly for each child counted on line 4: the same number. The claude candidate of the same form agrees on 1,884 of 1,886 comparisons in `../triage/s8812.json` (the 2 differences are the cited Form 8862 refusal). Its closure (line 4) has no validation failure.",
-   "context": "187a9c0989ef82e9f36932589c41cca74462491d6324ebc33b8dfd8cabb0691a"
+   "ruling": "Ruling: representation; by reading (reply invalid, not executed). f1040s8812 p. 1, line 5: \"Multiply line 4 by $2,200\". Line 4 x $2,200 equals the project's sum of dependent.ctc_amount; the claude candidate's identical line differs from the project only by line 4's refusals on refused returns (`../triage/s8812.json`, 1,902 of 1,956). No validation failure in its closure.",
+   "context": "49549f1c48660a364b93fd30e4362be9863b8c1ad7d93e27404ab8ed17dab1e1"
   },
   {
    "printed": "7",
    "project": "{\"collection\": \"dependent\", \"field\": \"dependent.odc_amount\", \"op\": \"sum_over\", \"where\": null}",
    "second": "{\"amount\": {\"param\": \"odc.per_dependent\"}, \"count\": {\"line\": \"6\"}, \"op\": \"multiply_count\"}",
-   "ruling": "Ruling: representation; by reading (reply invalid, not executed). f1040s8812 p. 1, line 7: \"Multiply line 6 by $500\". Line 6 x $500 equals the project's sum of dependent.odc_amount; the claude candidate of the same form agrees on 1,884 of 1,886 comparisons (`../triage/s8812.json`). No validation failure in its closure.",
-   "context": "187a9c0989ef82e9f36932589c41cca74462491d6324ebc33b8dfd8cabb0691a"
+   "ruling": "Ruling: representation; by reading (reply invalid, not executed). f1040s8812 p. 1, line 7: \"Multiply line 6 by $500\". Line 6 x $500 equals the project's sum of dependent.odc_amount; the claude candidate's identical line differs only on refused or incomplete records (`../triage/s8812.json`). No validation failure in its closure.",
+   "context": "49549f1c48660a364b93fd30e4362be9863b8c1ad7d93e27404ab8ed17dab1e1"
   },
   {
    "printed": "s8812.clw_a3",
@@ -377,6 +636,13 @@
   {
    "printed": "s8812.clwb_complete",
    "project": "{\"args\": [{\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"f5695.part1_any\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": 0}, {\"ref\": \"f5695.line13\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"line\": \"4\"}], \"test\": \"lt\"}], \"test\": \"all\"}",
+   "second": "{\"args\": [{\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"f5695.part1_any\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": 0}, {\"ref\": \"f5695.line13\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"line\": \"4\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": true}, {\"ref\": \"sa.excluded_income\"}], \"test\": \"ne\"}], \"test\": \"all\"}",
+   "ruling": "Ruling: representation; by reading (reply invalid, not executed; this line's closure has no validation failure). i1040s8812 p. 4, Credit Limit Worksheet A: \"Complete Credit Limit Worksheet B only if you meet all the following. 1. You are claiming one or more of the following credits. ... c. Residential clean energy credit, Form 5695, Part I. ... 2. You are not filing Form 2555. 3. Line 4 of Schedule 8812 is more than zero.\" The candidate tests the Form 5695 Part I credit (f5695.part1_any with line 13 above zero), line 4 above zero and sa.excluded_income not true for condition 2; the project tests the first two and refuses sa.excluded_income (\"Are you filing Form 2555 or Form 4563, or do you have income excluded as a bona fide resident of Puerto Rico?\") at Schedule 8812 lines 2a-2c, so the extra condition differs only on refused returns. The other Worksheet B credits are refused by scope.credits on both sides.",
+   "context": "49549f1c48660a364b93fd30e4362be9863b8c1ad7d93e27404ab8ed17dab1e1"
+  },
+  {
+   "printed": "s8812.clwb_complete",
+   "project": "{\"args\": [{\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"f5695.part1_any\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": 0}, {\"ref\": \"f5695.line13\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"line\": \"4\"}], \"test\": \"lt\"}], \"test\": \"all\"}",
    "second": "{\"args\": [{\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"f5695.part1_any\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": 0}, {\"ref\": \"f5695.line13\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": false}, {\"ref\": \"sa.excluded_income\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"line\": \"4\"}], \"test\": \"lt\"}], \"test\": \"all\"}",
    "ruling": "Ruling: representation; by reading, not executed. Triage cannot execute a reply with any validation error (triage/s8812.deepseek.json, state \"invalid\"); this line's own expression and dependency closure carry none, so it is ruled by reading the expressions against the source. i1040s8812 p. 4, Credit Limit Worksheet A: \"Complete Credit Limit Worksheet B only if you meet all the following. 1. You are claiming one or more of the following credits. a. Mortgage interest credit, Form 8396. b. Adoption credit, Form 8839. c. Residential clean energy credit, Form 5695, Part I. d. District of Columbia first-time homebuyer credit, Form 8859. 2. You are not filing Form 2555. 3. Line 4 of Schedule 8812 is more than zero.\" The candidate tests f5695.claiming_part1, sa.excluded_income false and line 4 more than zero; the project tests f5695.claiming_part1 and line 4 more than zero. The only difference is condition 2, Form 2555: sa.excluded_income true refuses the return at the project's lines 2a to 2c (forms/2025/s8812.yaml, refuses sa.excluded_income), so the two agree on every return the project completes; Forms 8396, 8839 and 8859 are refused by scope.credits on Credit Limit Worksheet A, so condition 1 is Form 5695 Part I alone on both sides. A Bool helper, so the skipped-line rule does not apply. Project stands.",
    "context": "7e2cfa5f65397578efe8135a1fd10d26b33d8995d8410524f3c4bf41ae215031"
@@ -394,6 +660,13 @@
    "second": "{\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"line\": \"4\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"ref\": \"s3.line5a\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": true}, {\"ref\": \"sa.excluded_income\"}], \"test\": \"ne\"}], \"test\": \"all\"}",
    "ruling": "Ruling: model error; Ruled on the expressions; triage could not execute the reply because of validation errors on other lines (s8812.h_clw_a2, s8812.line12, s8812.h_ss4, s8812.h_med6), none in this line's dependency closure. i1040s8812 p. 4: \"Complete Credit Limit Worksheet B only if you meet all the following. 1. You are claiming one or more of the following credits. ... c. Residential clean energy credit, Form 5695, Part I. ... 2. You are not filing Form 2555. 3. Line 4 of Schedule 8812 is more than zero.\" The candidate tests s3.line5a > 0, which is Form 5695 line 15, the credit after the line 14 limit (forms/2025/f5695.yaml: line 15 \"the smaller of line 13 or line 14\"); whether the filer is claiming the Part I credit is fixed before that limit, and the project tests f5695.part1_any with f5695.line13 > 0. A filer whose line 13 credit is cut to zero by the line 14 limit is claiming the credit under the text and fails the candidate's test. Its \"not filing Form 2555\" condition (sa.excluded_income No) is the project's scope screen and changes nothing in scope.",
    "context": "3ec59f19384232025cd5654358c30da0fc364f2561cf405564b01e1eb75377d3"
+  },
+  {
+   "printed": "s8812.clwb_complete",
+   "project": "{\"args\": [{\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"f5695.part1_any\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": 0}, {\"ref\": \"f5695.line13\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"line\": \"4\"}], \"test\": \"lt\"}], \"test\": \"all\"}",
+   "second": "{\"expression\": {\"args\": [{\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"f5695.part1_any\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": 0}, {\"ref\": \"f5695.line13\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"line\": \"2b\"}, {\"const\": 0}], \"test\": \"le\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"invalid_model_types\": [{\"line\": \"s8812.clwb_complete\", \"message\": \"s8812.s8812.clwb_complete: comparison operands have incompatible types\"}]}",
+   "ruling": "Ruling: model error; on the declaration, not the tax reading. The reply fails host validation (`../triage/s8812.deepseek.json`, state invalid; nothing executed): s8812.clwb_complete \"comparison operands have incompatible types\" and s8812.line22 \"collection reference requires sum_over\". This line is the failing declaration (its Form 2555 test compares line 2b with an untyped zero). By reading, the condition is i1040s8812 p. 4, \"Complete Credit Limit Worksheet B only if you meet all the following. ... 2. You are not filing Form 2555. 3. Line 4 of Schedule 8812 is more than zero\": the candidate tests f5695.part1_any with line 13 above zero, line 2b not above zero and line 4 above zero; the project tests the first and last and refuses Form 2555 filers at lines 2a-2c (sa.excluded_income), so the extra condition would differ only on refused returns.",
+   "context": "6dcc527c94d6f607970a485026e515f6d8c8f0f79e1ebd1b6493d24e3afd9180"
   }
  ]
 }

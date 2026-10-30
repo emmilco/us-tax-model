@@ -4,6 +4,20 @@
  "family": "deepseek",
  "rulings": [
   {
+   "printed": "(CLW B 10)",
+   "restated": "Add f1040 line 27a and s3 line 11.",
+   "model": "IRS gives a separate 1040-NR rule: '1040-NR filers: Enter the amount from Schedule 3, line 11'; the restatement always adds Form 1040 line 27a.",
+   "ruling": "Ruling: scope; screen scope.other_income. i1040s8812 p. 6, Credit Limit Worksheet B, line 10: \"1040 and 1040-SR filers. Enter the total of the amounts from Form 1040 or 1040-SR, line 27a, and Schedule 3, line 11. 1040-NR filers. Enter the amount from Schedule 3, line 11.\" As line 24: the tool prepares Form 1040 only and nonresident alien status is refused by scope.other_income, so the 1040-NR branch never applies. The English is right for the branch it reaches. New section only because T-067 gave the worksheet line a printed marker; the line's display after the line 6 instruction to leave lines 7 through 10 blank is finding T067-8812-L6, not this point. Project stands.",
+   "context": "af762654bed1cdbea2b5df4992cf8a202118e0d3748827d0eb8499558352763b"
+  },
+  {
+   "printed": "(CLW B 15)",
+   "restated": "Enter the amount from s3 line 5a.",
+   "model": "IRS line 15 totals Schedule 3 lines 5a, 6c, 6g, and 6h; the restatement enters only Schedule 3 line 5a.",
+   "ruling": "Ruling: scope; screen scope.credits. i1040s8812 p. 6, Credit Limit Worksheet B, line 15: \"Enter the total of the amounts from — Schedule 3, line 5a; Schedule 3, line 6c; Schedule 3, line 6g; and Schedule 3, line 6h.\" Lines 6c, 6g and 6h are the adoption, mortgage interest and District of Columbia homebuyer credits (Forms 8839, 8396, 8859); the project refuses them through scope.credits on Credit Limit Worksheet A line 4 (refusal \"Credit Limit Worksheet B (Forms 8396, 8839, 8859)\") and on Schedule 3, so on every return that completes the worksheet they are zero and line 5a is the total. The rendered English cannot show the refusal on another line. Project stands.",
+   "context": "af762654bed1cdbea2b5df4992cf8a202118e0d3748827d0eb8499558352763b"
+  },
+  {
    "printed": "18a",
    "restated": "Choose — [helper \"Taking the EIC on Form 1040, line 27a\" = true → helper \"Earned Income Chart, taking the EIC: Worksheet B, line 4b, or the earned income from Step 5\"] [helper \"Taking the EIC on Form 1040, line 27a\" = false → helper \"Earned Income Worksheet, line 7, the amount for line 18a of Schedule 8812 (zero when line 3 is zero or less)\"]",
    "model": "The Earned Income Chart says optional-method self-employment uses the Earned Income Worksheet 'even if you are also taking the EIC,' and the EIC rows add nontaxable combat pay not elected; the restatement instead routes taking-EIC filers to Worksheet B or Step 5 and does not add that combat pay.",
@@ -13,9 +27,23 @@
   {
    "printed": "18a",
    "restated": "Choose — [helper \"Taking the EIC on Form 1040, line 27a\" = true → helper \"Earned Income Chart, taking the EIC: Worksheet B, line 4b, or the earned income from Step 5\"] [helper \"Taking the EIC on Form 1040, line 27a\" = false → helper \"Earned Income Worksheet, line 7, the amount for line 18a of Schedule 8812 (zero when line 3 is zero or less)\"]",
+   "model": "The Earned Income Chart sends net earnings from self-employment figured using either optional method to the Earned Income Worksheet 'even if you are also taking the EIC'; the restatement sends every EIC filer to Worksheet B line 4b or Step 5.",
+   "ruling": "Ruling: scope; i1040s8812 p. 7, Earned Income Chart, first row: a filer who has \"net earnings from self-employment\" and will \"use either optional method to figure those net earnings\" uses \"the amount figured using the Earned Income Worksheet next (even if you are also taking the EIC)\". The optional methods are refused through person.se_screened (person.se_screen asks about the Schedule SE optional methods), which every self-employment path into line 18a reads, so that row never applies to a return the tool completes. The rendered English (rendered/2025/s8812.md, line 18a) shows only the line's own operands and cannot show refusals on other lines. Same ruling as Stage 19 and the claude log. Project stands.",
+   "context": "af762654bed1cdbea2b5df4992cf8a202118e0d3748827d0eb8499558352763b"
+  },
+  {
+   "printed": "18a",
+   "restated": "Choose — [helper \"Taking the EIC on Form 1040, line 27a\" = true → helper \"Earned Income Chart, taking the EIC: Worksheet B, line 4b, or the earned income from Step 5\"] [helper \"Taking the EIC on Form 1040, line 27a\" = false → helper \"Earned Income Worksheet, line 7, the amount for line 18a of Schedule 8812 (zero when line 3 is zero or less)\"]",
    "model": "The instructions require the Earned Income Worksheet when the filer uses either self-employment optional method 'even if you are also taking the EIC,' and require adding nontaxable combat pay not elected for the EIC; the restatement only chooses Worksheet B/Step 5 from taking the EIC and omits combat pay.",
    "ruling": "Ruling: scope; two points, both refused upstream (S4). (1) i1040s8812 p. 7, Earned Income Chart, first row: a filer who has \"net earnings from self-employment\" and will \"use either optional method to figure those net earnings\" uses \"the amount figured using the Earned Income Worksheet next (even if you are also taking the EIC)\". The optional methods are refused through person.se_screened (person.se_screen asks about, among others, the Schedule SE optional methods; refusal form \"Schedule SE items outside this tool (... optional methods ...)\", forms/2025/person.yaml), which every self-employment path into line 18a reads, so that row never applies to a return the tool completes. (2) Combat pay: the same chart, taking the EIC, adds \"all of your nontaxable combat pay if you did not elect to include it in earned income for the EIC\". Nontaxable combat pay is refused: s8812.eiw_1b refuses on s8812.combat_pay (\"Any nontaxable combat pay (Form W-2, box 12, code Q)?\", remedy \"Nontaxable combat pay is outside this tool.\"), and line 18b, shown under the same s8812.show_iia as line 18a, copies s8812.eiw_1b, so every return that reaches line 18a with combat pay is refused. The rendered English (rendered/2025/s8812.md, line 18a) shows only the line's own operands and cannot show refusals on other lines; the model read the page correctly. Same ruling as round 2 and the Stage 19 Claude log (render.s8812.json); Stage 19 did not change this line. Project stands.",
    "context": "8f2adf8d1b65853d50e7eee8ba6cd6dc6b3fc66e7ac01db174ffd436b258be91"
+  },
+  {
+   "printed": "21",
+   "restated": "Add helper \"Additional Medicare Tax and RRTA Tax Worksheet, line 6. Subtract line 5 (the Additional Medicare Tax withheld, Form 8959, line 22) from line 4\" and helper \"Additional Medicare Tax and RRTA Tax Worksheet, line 7. One-half of the Additional Medicare Tax on self-employment income (one-half of Form 8959, line 13)\".",
+   "model": "IRS line 21 calls for the Additional Medicare Tax and RRTA Tax Worksheet amount; that worksheet line 16 says 'Add lines 6, 7, 11, and 15,' but the restatement adds only lines 6 and 7, omitting the Tier 1 RRTA amounts on lines 11 and 15.",
+   "ruling": "Ruling: scope; i1040s8812 p. 9, Additional Medicare Tax and RRTA Tax Worksheet, line 16: \"Add lines 6, 7, 11, and 15. Enter here and on line 21 of Schedule 8812\". Lines 11 and 15 are the Tier 1 RRTA amounts, outside the slice: person.rrta refuses the per-person Medicare totals that Form 8959 line 19 sums, and f8959.line19 refuses f8959.unsupported (\"RRTA compensation\"), so a return with RRTA compensation refuses before this line. The rendered line cannot show that upstream refusal; the model agrees the line is boxes 4 and 6 without RRTA. Same ruling as round 1. Project stands.",
+   "context": "b55162df9c83ab78a518f49c2488b4759d582a51691dc5266f3f56e2bd9f9d96"
   },
   {
    "printed": "21",
@@ -30,6 +58,20 @@
    "model": "The Additional Medicare Tax and RRTA Tax Worksheet says 'Add lines 6, 7, 11, and 15' for the line 21 amount; the restatement adds only lines 6 and 7 and has no RRTA refusal.",
    "ruling": "Ruling: scope; i1040s8812 p. 9, Additional Medicare Tax and RRTA Tax Worksheet: \"16. Add lines 6, 7, 11, and 15. Enter here and on line 21 of Schedule 8812 and, if applicable, line 7 of Credit Limit Worksheet B\". Lines 11 and 15 are the Tier 1 RRTA amounts. The rendered line (rendered/2025/s8812.md, line 21) adds worksheet lines 6 and 7 and its citation says \"(lines 11 and 15, Tier 1 RRTA taxes, are refused)\"; the refusal sits upstream, where the render cannot show it: line 21 reads s8812.amt_ws4, which reads f8959.line19, the sum of person.medicare6, which refuses when person.rrta (\"Do any wage statements report railroad retirement compensation or taxes (W-2 box 14) ...\", \"Form 8959 RRTA computation\"), and f8959.line19 itself refuses f8959.unsupported (\"RRTA compensation\"). So lines 11 and 15 are zero on every return the tool completes. The model correctly read the page and the English; the omission is outside the slice and refused. Project stands.",
    "context": "f823040046d541f63d6bebfda8b813cdfd96be32f842f1fb4edd48e0235db3b7"
+  },
+  {
+   "printed": "21",
+   "restated": "Add helper \"Additional Medicare Tax and RRTA Tax Worksheet, line 6. Subtract line 5 (the Additional Medicare Tax withheld, Form 8959, line 22) from line 4\" and helper \"Additional Medicare Tax and RRTA Tax Worksheet, line 7. One-half of the Additional Medicare Tax on self-employment income (one-half of Form 8959, line 13)\".",
+   "model": "The worksheet amount entered on line 21 is line 6 plus line 7 plus lines 11 and 15, including Tier 1 RRTA taxes; the restatement adds only lines 6 and 7.",
+   "ruling": "Ruling: scope; i1040s8812 p. 9, Additional Medicare Tax and RRTA Tax Worksheet, line 16: \"Add lines 6, 7, 11, and 15. Enter here and on line 21 of Schedule 8812\". Lines 11 and 15 are the Tier 1 RRTA amounts, outside the slice: person.rrta refuses the per-person Medicare totals that Form 8959 line 19 sums, and f8959.line19 refuses f8959.unsupported (\"RRTA compensation\"), so a return with RRTA compensation refuses before this line. The rendered line cannot show that upstream refusal. Same ruling as Stage 19. Project stands.",
+   "context": "af762654bed1cdbea2b5df4992cf8a202118e0d3748827d0eb8499558352763b"
+  },
+  {
+   "printed": "24",
+   "restated": "Add f1040 line 27a and s3 line 11.",
+   "model": "IRS gives a separate 1040-NR rule: '1040-NR filers: Enter the amount from Schedule 3 (Form 1040), line 11'; the restatement always adds Form 1040 line 27a.",
+   "ruling": "Ruling: scope; screen scope.other_income. f1040s8812 p. 2, line 24: \"1040 and 1040-SR filers: Enter the total of the amounts from Form 1040 or 1040-SR, line 27a, and Schedule 3 (Form 1040), line 11. 1040-NR filers: Enter the amount from Schedule 3 (Form 1040), line 11.\" The tool prepares Form 1040 only, and nonresident alien status is refused for the whole return by scope.other_income (\"Any nonresident alien status (you or your spouse, for any part of 2025) ...\"), so the 1040-NR branch never applies. Same ruling as Stage 19. Project stands.",
+   "context": "af762654bed1cdbea2b5df4992cf8a202118e0d3748827d0eb8499558352763b"
   },
   {
    "printed": "24",

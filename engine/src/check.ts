@@ -18,6 +18,9 @@ import type {
   ValueType,
 } from "./types.js";
 
+// Markers of lines that are not lines of any form or worksheet; worksheet and column markers such as "(CLW 3)" are printed lines.
+const HELPER_MARKERS = new Set(["(helper)", "(gate)", "(computed helper)", "(question)", "(status)", "(screen)"]);
+
 type Ty =
   | { kind: "money"; nonneg: boolean }
   | { kind: "count" }
@@ -83,7 +86,7 @@ export function runChecks(data: CanonicalData): { errors: string[]; stats: strin
       if (!line.shown_when) continue;
       const cond = doc.lines.find((l) => l.id === line.shown_when);
       if (!cond || cond.type !== "Bool") ctx.errors.push(`${line.id}: shown_when ${line.shown_when} is not a Bool line of ${doc.id}`);
-      if (line.printed.startsWith("(")) ctx.errors.push(`${line.id}: shown_when on a helper; only a printed line is shown or left out`);
+      if (HELPER_MARKERS.has(line.printed)) ctx.errors.push(`${line.id}: shown_when on a helper; only a printed line or worksheet line is shown or left out`);
     }
     if (doc.collection) {
       checkCite(ctx, doc.collection.cite, `${doc.id} collection`);

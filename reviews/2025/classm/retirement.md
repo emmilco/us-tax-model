@@ -11,8 +11,8 @@
 | system sha256 | 18ff9cfe094eedd0548bba02012b0ebf2a58d0606e834e3633432585b4192cb7 |
 | reasoning effort | provider default |
 | output token budget | transport default (65536 for DeepSeek) |
-| subject sha256 | bab37e774cf6e78d4acf71f846c6754e4fcac86c1cc607a649ffb269ad60ab8c |
-| cases | 6 |
+| subject sha256 | 923b5f567ff0cb14238e4936411c45fc789fee82e9cb8ffb14bddd00c1642c01 |
+| cases | 5 |
 | worked target scope | printed IRS lines |
 
 ## Source pages given to the model
@@ -26,7 +26,7 @@
 
 ## Lines
 
-### case classm.retirement.1 — prompt sha256 1d8a445839943786a3c79fdd3361a2c58b5e070d30a334656bf2d78453b50b85; branches: retirement.special:false, retirement.annuity:false, retirement.annuity:true, retirement.used_last_year:false, retirement.used_last_year:true, retirement.joint_life:false, retirement.joint_life:true, retirement.is_ira:false, retirement.is_ira:true, retirement.roth:false, retirement.direct:false, retirement.bad_code:false, retirement.rolled#1, retirement.has_rollover:false, retirement.has_rollover:true, retirement.smw4_table1#1, retirement.smw4_table1#4, retirement.smw4_table2#0, retirement.smw4_table2#4, retirement.smw4_new#0, retirement.smw4_new#1, retirement.smw4#0, retirement.smw4#1, retirement.smw8:left, retirement.smw8:right, retirement.smw9:floor, retirement.smw9:positive, retirement.cost_left:false, retirement.cost_left:true, retirement.annuity_with_cost:false, retirement.annuity_with_cost:true, retirement.annuity_rollover:false, retirement.annuity_taxable#0, retirement.annuity_taxable#1, retirement.ira_taxable#1, retirement.ira_not_rolled:floor, retirement.ira_not_rolled:positive, retirement.plan_simple:floor, retirement.plan_simple:positive, retirement.plan_taxable#0, retirement.plan_taxable#1, retirement.taxable#0, retirement.taxable#1, retirement.show_a:true, retirement.amount_a#0, retirement.sav_military:false, retirement.sav_404k:false, retirement.sav_inherited:false, retirement.sav_excluded:false, retirement.sav_gross:floor, retirement.sav_gross:positive, retirement.sav_amount#1, retirement.early:false, retirement.early:true, retirement.early_screen:false, retirement.code_screen:false, retirement.screen_refused:false, retirement.has_exception:false, retirement.has_exception:true, retirement.wrong_kind:false, retirement.l1#0, retirement.l1#1, retirement.exc_capped:left, retirement.exc_capped:right, retirement.l2#0, retirement.l2#1, retirement.is_e05:false, retirement.l2_e05#1, retirement.is_e09:false, retirement.l2_e09#1, retirement.is_e19:false, retirement.l2_e19#1, retirement.is_e22:false, retirement.is_e22:true, retirement.l2_e22#0, retirement.l2_e22#1, retirement.is_e23:false, retirement.l2_e23#1, retirement.is_s:false, retirement.l1_s#1, retirement.l2_s#1
+### case classm.retirement.1 — prompt sha256 5c7f160f456bf0e3610189121bbd10bcaf52a6364adf748bdcb3b09ed1bf74d1; branches: retirement.special:false, retirement.annuity:false, retirement.annuity:true, retirement.used_last_year:false, retirement.used_last_year:true, retirement.joint_life:false, retirement.joint_life:true, retirement.is_ira:false, retirement.is_ira:true, retirement.roth:false, retirement.direct:false, retirement.bad_code:false, retirement.rolled#1, retirement.has_rollover:false, retirement.has_rollover:true, retirement.smw_shown:false, retirement.smw_shown:true, retirement.smw4_table1#1, retirement.smw4_table1#4, retirement.smw4_table2#0, retirement.smw4_table2#4, retirement.smw4_new#0, retirement.smw4_new#1, retirement.smw4#0, retirement.smw4#1, retirement.smw8:left, retirement.smw8:right, retirement.smw9:floor, retirement.smw9:positive, retirement.cost_left:false, retirement.cost_left:true, retirement.annuity_with_cost:false, retirement.annuity_with_cost:true, retirement.annuity_rollover:false, retirement.annuity_taxable#0, retirement.annuity_taxable#1, retirement.ira_taxable#1, retirement.ira_not_rolled:floor, retirement.ira_not_rolled:positive, retirement.plan_simple:floor, retirement.plan_simple:positive, retirement.plan_taxable#0, retirement.plan_taxable#1, retirement.taxable#0, retirement.taxable#1, retirement.show_a:true, retirement.amount_a#0, retirement.sav_military:false, retirement.sav_404k:false, retirement.sav_inherited:false, retirement.sav_excluded:false, retirement.sav_gross:floor, retirement.sav_gross:positive, retirement.sav_amount#1, retirement.early:false, retirement.early:true, retirement.early_screen:false, retirement.code_screen:false, retirement.screen_refused:false, retirement.has_exception:false, retirement.has_exception:true, retirement.wrong_kind:false, retirement.l1#0, retirement.l1#1, retirement.exc_capped:left, retirement.exc_capped:right, retirement.l2#0, retirement.l2#1, retirement.is_e05:false, retirement.l2_e05#1, retirement.is_e09:false, retirement.l2_e09#1, retirement.is_e19:false, retirement.l2_e19#1, retirement.is_e22:false, retirement.is_e22:true, retirement.l2_e22#0, retirement.l2_e22#1, retirement.is_e23:false, retirement.l2_e23#1, retirement.is_s:false, retirement.l1_s#1, retirement.l2_s#1
 
 ### classm.retirement.1 — person[taxpayer].retirement[r1].smw1 — Enter the total pension or annuity payments from Form 1099-R, box 1
 Status: **AGREE**
@@ -78,135 +78,27 @@ Status: **AGREE**
 
 Value: $0.00
 
-### classm.retirement.1 — person[taxpayer].retirement[r2].smw1 — Enter the total pension or annuity payments from Form 1099-R, box 1
-Status: **DISAGREE**
-
-Project: $28,224.00
-Model: $0.00
-Work: Simplified Method does not apply (traditional IRA, no after-tax cost), so the worksheet is not used
-
-Ruling: finding (F3, SMW-SHOWN in .transcription/proposed/stage21/retirement.findings.md); i1040gi p. 28, Partially Taxable Pensions and Annuities: "But if your annuity starting date (defined later) was after July 1, 1986, see Simplified Method, later, to find out if you must use that method to figure the taxable part"; p. 29, the worksheet's title, "Simplified Method Worksheet—Lines 5a and 5b", and "If you had more than one partially taxable pension or annuity, figure the taxable part of each separately". Entry r2 of classm.retirement.1 is a traditional IRA distribution (code 7, box 1 $28,224.00, $22,801.00 rolled over, retirement.annuity false); its taxable amount goes to line 4b by Exception 1 ($5,423.00, agreed) and it never reaches the worksheet. The project still shows the worksheet line, line 1 $28,224.00 on the values sheet (the retirement.smw* lines have no shown_when), which the skipped-line rule forbids (README: a line of a worksheet the filer never reaches must not show an amount). No other amount changes. The model's $0.00 is the right display once the line is hidden, so it is kept. Dropped: the Simplified Method Worksheet lines are helpers the values sheet cannot hide (T-081 (2)), so the model's blank for a worksheet that does not apply is not evidence about the project's value; F3 is recorded there. [dropped]
-
-### classm.retirement.1 — person[taxpayer].retirement[r2].smw2 — Enter your cost in the plan at the annuity starting date
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.retirement.1 — person[taxpayer].retirement[r2].smw4 — Divide line 2 by the number on line 3 (or, if you completed this worksheet last
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.retirement.1 — person[taxpayer].retirement[r2].smw5 — Multiply line 4 by the number of months for which this year's payments were made
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.retirement.1 — person[taxpayer].retirement[r2].smw6 — Enter the amount, if any, recovered tax free in years after 1986
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.retirement.1 — person[taxpayer].retirement[r2].smw7 — Subtract line 6 from line 2
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.retirement.1 — person[taxpayer].retirement[r2].smw8 — Enter the smaller of line 5 or line 7
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.retirement.1 — person[taxpayer].retirement[r2].smw9 — Taxable amount. Subtract line 8 from line 1. Enter the result, but not less than
-Status: **DISAGREE**
-
-Project: $28,224.00
-Model: $0.00
-Work: Worksheet not used; IRA taxable amount is figured under the line 4b rollover rule instead
-
-Ruling: finding (F3, SMW-SHOWN in .transcription/proposed/stage21/retirement.findings.md); i1040gi p. 28, Partially Taxable Pensions and Annuities: "But if your annuity starting date (defined later) was after July 1, 1986, see Simplified Method, later, to find out if you must use that method to figure the taxable part"; p. 29, the worksheet's title, "Simplified Method Worksheet—Lines 5a and 5b", and "If you had more than one partially taxable pension or annuity, figure the taxable part of each separately". Entry r2 of classm.retirement.1 is a traditional IRA distribution (code 7, box 1 $28,224.00, $22,801.00 rolled over, retirement.annuity false); its taxable amount goes to line 4b by Exception 1 ($5,423.00, agreed) and it never reaches the worksheet. The project still shows the worksheet line, line 9 $28,224.00 on the values sheet (the retirement.smw* lines have no shown_when), which the skipped-line rule forbids (README: a line of a worksheet the filer never reaches must not show an amount). No other amount changes. The model's $0.00 is the right display once the line is hidden, so it is kept. Dropped: the Simplified Method Worksheet lines are helpers the values sheet cannot hide (T-081 (2)), so the model's blank for a worksheet that does not apply is not evidence about the project's value; F3 is recorded there. [dropped]
-
-### classm.retirement.1 — person[taxpayer].retirement[r2].smw10 — Add lines 6 and 8. This is the amount you have recovered tax free through 2025
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.retirement.1 — person[taxpayer].retirement[r2].smw11 — Balance of cost to be recovered. Subtract line 10 from line 2
-Status: **AGREE**
-
-Value: $0.00
-
-### case classm.retirement.2 — prompt sha256 16265d5053532888d3bcd8763e98d8e3248737646749f34e903762f9ebc8bb90; branches: retirement.special:false, retirement.annuity:false, retirement.used_last_year:false, retirement.used_last_year:true, retirement.joint_life:false, retirement.joint_life:true, retirement.is_ira:true, retirement.roth:false, retirement.roth:true, retirement.direct:false, retirement.bad_code:false, retirement.rolled#1, retirement.has_rollover:false, retirement.smw4_table1#1, retirement.smw4_table1#2, retirement.smw4_table2#1, retirement.smw4_table2#2, retirement.smw4_new#0, retirement.smw4_new#1, retirement.smw4#0, retirement.smw4#1, retirement.smw8:left, retirement.smw9:floor, retirement.smw9:positive, retirement.cost_left:false, retirement.annuity_with_cost:false, retirement.annuity_rollover:false, retirement.annuity_taxable#1, retirement.ira_taxable#0, retirement.ira_taxable#1, retirement.ira_not_rolled:floor, retirement.ira_not_rolled:positive, retirement.plan_simple:floor, retirement.plan_simple:positive, retirement.plan_taxable#1, retirement.taxable#0, retirement.show_a:false, retirement.show_a:true, retirement.amount_a#0, retirement.amount_a#1, retirement.sav_military:false, retirement.sav_404k:false, retirement.sav_inherited:false, retirement.sav_inherited:true, retirement.sav_excluded:false, retirement.sav_excluded:true, retirement.sav_gross:floor, retirement.sav_gross:positive, retirement.sav_amount#0, retirement.sav_amount#1, retirement.early:false, retirement.early:true, retirement.early_screen:false, retirement.code_screen:false, retirement.screen_refused:false, retirement.has_exception:false, retirement.wrong_kind:false, retirement.l1#0, retirement.l1#1, retirement.exc_capped:left, retirement.l2#1, retirement.is_e05:false, retirement.l2_e05#1, retirement.is_e09:false, retirement.l2_e09#1, retirement.is_e19:false, retirement.l2_e19#1, retirement.is_e22:false, retirement.l2_e22#1, retirement.is_e23:false, retirement.l2_e23#1, retirement.is_s:false, retirement.l1_s#1, retirement.l2_s#1
-
-### classm.retirement.2 — person[taxpayer].retirement[r1].smw1 — Enter the total pension or annuity payments from Form 1099-R, box 1
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.retirement.2 — person[taxpayer].retirement[r1].smw2 — Enter your cost in the plan at the annuity starting date
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.retirement.2 — person[taxpayer].retirement[r1].smw4 — Divide line 2 by the number on line 3 (or, if you completed this worksheet last
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.retirement.2 — person[taxpayer].retirement[r1].smw5 — Multiply line 4 by the number of months for which this year's payments were made
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.retirement.2 — person[taxpayer].retirement[r1].smw6 — Enter the amount, if any, recovered tax free in years after 1986
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.retirement.2 — person[taxpayer].retirement[r1].smw7 — Subtract line 6 from line 2
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.retirement.2 — person[taxpayer].retirement[r1].smw8 — Enter the smaller of line 5 or line 7
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.retirement.2 — person[taxpayer].retirement[r1].smw9 — Taxable amount. Subtract line 8 from line 1. Enter the result, but not less than
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.retirement.2 — person[taxpayer].retirement[r1].smw10 — Add lines 6 and 8. This is the amount you have recovered tax free through 2025
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.retirement.2 — person[taxpayer].retirement[r1].smw11 — Balance of cost to be recovered. Subtract line 10 from line 2
-Status: **AGREE**
-
-Value: $0.00
+### case classm.retirement.2 — prompt sha256 951de37dbe484966a1a982bf0831a25da9e2b4edebc1a5bfde73e185d08621f6; branches: retirement.special:false, retirement.annuity:false, retirement.annuity:true, retirement.used_last_year:false, retirement.joint_life:false, retirement.is_ira:false, retirement.roth:false, retirement.direct:false, retirement.bad_code:false, retirement.rolled#1, retirement.has_rollover:false, retirement.smw_shown:false, retirement.smw_shown:true, retirement.smw4_table1#2, retirement.smw4_table1#4, retirement.smw4_table2#1, retirement.smw4_table2#4, retirement.smw4_new#1, retirement.smw4#1, retirement.smw8:left, retirement.smw9:positive, retirement.cost_left:false, retirement.cost_left:true, retirement.annuity_with_cost:false, retirement.annuity_with_cost:true, retirement.annuity_rollover:false, retirement.annuity_taxable#0, retirement.annuity_taxable#1, retirement.ira_taxable#1, retirement.ira_not_rolled:positive, retirement.plan_simple:positive, retirement.plan_taxable#0, retirement.plan_taxable#1, retirement.taxable#1, retirement.show_a:false, retirement.show_a:true, retirement.amount_a#0, retirement.amount_a#1, retirement.sav_military:false, retirement.sav_military:true, retirement.sav_404k:false, retirement.sav_inherited:false, retirement.sav_excluded:false, retirement.sav_excluded:true, retirement.sav_gross:positive, retirement.sav_amount#0, retirement.sav_amount#1, retirement.early:false, retirement.early_screen:false, retirement.code_screen:false, retirement.screen_refused:false, retirement.has_exception:false, retirement.wrong_kind:false, retirement.l1#1, retirement.exc_capped:left, retirement.l2#1, retirement.is_e05:false, retirement.l2_e05#1, retirement.is_e09:false, retirement.l2_e09#1, retirement.is_e19:false, retirement.l2_e19#1, retirement.is_e22:false, retirement.l2_e22#1, retirement.is_e23:false, retirement.l2_e23#1, retirement.is_s:false, retirement.l1_s#1, retirement.l2_s#1
 
 ### classm.retirement.2 — person[taxpayer].retirement[r2].smw1 — Enter the total pension or annuity payments from Form 1099-R, box 1
 Status: **AGREE**
 
-Value: $36,791.00
+Value: $5,091.00
 
 ### classm.retirement.2 — person[taxpayer].retirement[r2].smw2 — Enter your cost in the plan at the annuity starting date
 Status: **AGREE**
 
-Value: $0.00
+Value: $20,379.00
 
 ### classm.retirement.2 — person[taxpayer].retirement[r2].smw4 — Divide line 2 by the number on line 3 (or, if you completed this worksheet last
 Status: **AGREE**
 
-Value: $0.00
+Value: $78.38
 
 ### classm.retirement.2 — person[taxpayer].retirement[r2].smw5 — Multiply line 4 by the number of months for which this year's payments were made
 Status: **AGREE**
 
-Value: $0.00
+Value: $940.56
 
 ### classm.retirement.2 — person[taxpayer].retirement[r2].smw6 — Enter the amount, if any, recovered tax free in years after 1986
 Status: **AGREE**
@@ -216,343 +108,183 @@ Value: $0.00
 ### classm.retirement.2 — person[taxpayer].retirement[r2].smw7 — Subtract line 6 from line 2
 Status: **AGREE**
 
-Value: $0.00
+Value: $20,379.00
 
 ### classm.retirement.2 — person[taxpayer].retirement[r2].smw8 — Enter the smaller of line 5 or line 7
 Status: **AGREE**
 
-Value: $0.00
+Value: $940.56
 
 ### classm.retirement.2 — person[taxpayer].retirement[r2].smw9 — Taxable amount. Subtract line 8 from line 1. Enter the result, but not less than
 Status: **AGREE**
 
-Value: $36,791.00
+Value: $4,150.44
 
 ### classm.retirement.2 — person[taxpayer].retirement[r2].smw10 — Add lines 6 and 8. This is the amount you have recovered tax free through 2025
 Status: **AGREE**
 
-Value: $0.00
+Value: $940.56
 
 ### classm.retirement.2 — person[taxpayer].retirement[r2].smw11 — Balance of cost to be recovered. Subtract line 10 from line 2
 Status: **AGREE**
 
-Value: $0.00
+Value: $19,438.44
 
-### case classm.retirement.3 — prompt sha256 ca1de3903391b2f048d052f5ce7956ff560a1eaa61751982fc367ce94f1b7197; branches: retirement.special:false, retirement.annuity:false, retirement.used_last_year:true, retirement.joint_life:true, retirement.is_ira:true, retirement.roth:false, retirement.direct:false, retirement.bad_code:false, retirement.rolled#1, retirement.has_rollover:false, retirement.smw4_table1#4, retirement.smw4_table2#1, retirement.smw4_new#0, retirement.smw4#0, retirement.smw8:left, retirement.smw9:positive, retirement.cost_left:false, retirement.annuity_with_cost:false, retirement.annuity_rollover:false, retirement.annuity_taxable#1, retirement.ira_taxable#1, retirement.ira_not_rolled:positive, retirement.plan_simple:positive, retirement.plan_taxable#1, retirement.taxable#0, retirement.show_a:false, retirement.amount_a#1, retirement.sav_military:false, retirement.sav_404k:false, retirement.sav_inherited:false, retirement.sav_excluded:false, retirement.sav_gross:positive, retirement.sav_amount#1, retirement.early:true, retirement.early_screen:false, retirement.code_screen:false, retirement.screen_refused:false, retirement.has_exception:true, retirement.wrong_kind:false, retirement.l1#0, retirement.exc_capped:left, retirement.l2#0, retirement.is_e05:false, retirement.l2_e05#1, retirement.is_e09:false, retirement.l2_e09#1, retirement.is_e19:true, retirement.l2_e19#0, retirement.is_e22:false, retirement.l2_e22#1, retirement.is_e23:false, retirement.l2_e23#1, retirement.is_s:true, retirement.l1_s#0, retirement.l2_s#0
+### case classm.retirement.3 — prompt sha256 e8781c6723ad672a493449a1c9f219109df967071b017da65418d144c87a8941; branches: retirement.special:false, retirement.annuity:false, retirement.annuity:true, retirement.used_last_year:false, retirement.used_last_year:true, retirement.joint_life:false, retirement.joint_life:true, retirement.is_ira:false, retirement.is_ira:true, retirement.roth:false, retirement.roth:true, retirement.direct:false, retirement.bad_code:false, retirement.rolled#1, retirement.has_rollover:false, retirement.smw_shown:false, retirement.smw_shown:true, retirement.smw4_table1#3, retirement.smw4_table1#4, retirement.smw4_table2#1, retirement.smw4_table2#3, retirement.smw4_new#0, retirement.smw4_new#1, retirement.smw4#0, retirement.smw4#1, retirement.smw8:left, retirement.smw9:positive, retirement.cost_left:false, retirement.cost_left:true, retirement.annuity_with_cost:false, retirement.annuity_with_cost:true, retirement.annuity_rollover:false, retirement.annuity_taxable#0, retirement.annuity_taxable#1, retirement.ira_taxable#0, retirement.ira_taxable#1, retirement.ira_not_rolled:positive, retirement.plan_simple:positive, retirement.plan_taxable#0, retirement.plan_taxable#1, retirement.taxable#0, retirement.taxable#1, retirement.show_a:true, retirement.amount_a#0, retirement.sav_military:false, retirement.sav_404k:false, retirement.sav_inherited:false, retirement.sav_excluded:false, retirement.sav_gross:positive, retirement.sav_amount#1, retirement.early:false, retirement.early_screen:false, retirement.code_screen:false, retirement.screen_refused:false, retirement.has_exception:false, retirement.wrong_kind:false, retirement.l1#1, retirement.exc_capped:left, retirement.l2#1, retirement.is_e05:false, retirement.l2_e05#1, retirement.is_e09:false, retirement.l2_e09#1, retirement.is_e19:false, retirement.l2_e19#1, retirement.is_e22:false, retirement.l2_e22#1, retirement.is_e23:false, retirement.l2_e23#1, retirement.is_s:false, retirement.l1_s#1, retirement.l2_s#1
 
 ### classm.retirement.3 — person[taxpayer].retirement[r1].smw1 — Enter the total pension or annuity payments from Form 1099-R, box 1
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $11,843.00
-Model: $0.00
-Work: Traditional IRA with Simplified Method test = no; worksheet not used (IRA goes on lines 4a/4b), so no entry
-
-Ruling: finding (F3, SMW-SHOWN in .transcription/proposed/stage21/retirement.findings.md; not changed in round 2, T-081 (2)); i1040gi p. 28, Partially Taxable Pensions and Annuities: "But if your annuity starting date (defined later) was after July 1, 1986, see Simplified Method, later, to find out if you must use that method to figure the taxable part"; p. 29, the worksheet's title, "Simplified Method Worksheet—Lines 5a and 5b". The case inputs (fixtures/2025/classm.json, classm.retirement.3): one entry r1, account traditional_ira, code simple_S, box 1 $11,843.00, rollover $0, retirement.annuity false, exception e19 with $4,915.00. It is an IRA distribution, fully taxable on line 4b ($11,843.00, eval run), and never reaches the worksheet; the worksheet inputs the generator also filled (used_last_year, joint_life, age 77) are read only by the worksheet. The project still shows the worksheet line, line 1 $11,843.00 on the values sheet (the retirement.smw* lines have no shown_when), which the skipped-line rule forbids (README: a line of a worksheet the filer never reaches must not show an amount). No other amount changes: Form 5329 lines 1 to 4 are $11,843.00, $4,915.00, $6,928.00 and $1,732.00 (25% of line 3, code S), Schedule 2 line 8 $1,732.00. The model's $0.00 is the right display once the line is hidden. Dropped, as in round 1: the worksheet lines are helpers the values sheet cannot hide (T-081 (2)), so the model's blank for a worksheet that does not apply is not evidence about the project's value, and the expectation is what makes the fixture fail. [dropped]
+Value: $15,200.00
 
 ### classm.retirement.3 — person[taxpayer].retirement[r1].smw2 — Enter your cost in the plan at the annuity starting date
 Status: **AGREE**
 
-Value: $0.00
+Value: $58,010.00
 
 ### classm.retirement.3 — person[taxpayer].retirement[r1].smw4 — Divide line 2 by the number on line 3 (or, if you completed this worksheet last
 Status: **AGREE**
 
-Value: $0.00
+Value: $276.24
 
 ### classm.retirement.3 — person[taxpayer].retirement[r1].smw5 — Multiply line 4 by the number of months for which this year's payments were made
 Status: **AGREE**
 
-Value: $0.00
+Value: $3,314.88
 
 ### classm.retirement.3 — person[taxpayer].retirement[r1].smw6 — Enter the amount, if any, recovered tax free in years after 1986
 Status: **AGREE**
 
-Value: $0.00
+Value: $18,614.00
 
 ### classm.retirement.3 — person[taxpayer].retirement[r1].smw7 — Subtract line 6 from line 2
 Status: **AGREE**
 
-Value: $0.00
+Value: $39,396.00
 
 ### classm.retirement.3 — person[taxpayer].retirement[r1].smw8 — Enter the smaller of line 5 or line 7
 Status: **AGREE**
 
-Value: $0.00
+Value: $3,314.88
 
 ### classm.retirement.3 — person[taxpayer].retirement[r1].smw9 — Taxable amount. Subtract line 8 from line 1. Enter the result, but not less than
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $11,843.00
-Model: $0.00
-Work: Worksheet not used; IRA is fully taxable and the $11,843.00 goes on line 4b instead
-
-Ruling: finding (F3, SMW-SHOWN in .transcription/proposed/stage21/retirement.findings.md; not changed in round 2, T-081 (2)); i1040gi p. 28, Partially Taxable Pensions and Annuities: "But if your annuity starting date (defined later) was after July 1, 1986, see Simplified Method, later, to find out if you must use that method to figure the taxable part"; p. 29, the worksheet's title, "Simplified Method Worksheet—Lines 5a and 5b". The case inputs (fixtures/2025/classm.json, classm.retirement.3): one entry r1, account traditional_ira, code simple_S, box 1 $11,843.00, rollover $0, retirement.annuity false, exception e19 with $4,915.00. It is an IRA distribution, fully taxable on line 4b ($11,843.00, eval run), and never reaches the worksheet; the worksheet inputs the generator also filled (used_last_year, joint_life, age 77) are read only by the worksheet. The project still shows the worksheet line, line 9 $11,843.00 on the values sheet (the retirement.smw* lines have no shown_when), which the skipped-line rule forbids (README: a line of a worksheet the filer never reaches must not show an amount). No other amount changes: Form 5329 lines 1 to 4 are $11,843.00, $4,915.00, $6,928.00 and $1,732.00 (25% of line 3, code S), Schedule 2 line 8 $1,732.00. The model's $0.00 is the right display once the line is hidden. Dropped, as in round 1: the worksheet lines are helpers the values sheet cannot hide (T-081 (2)), so the model's blank for a worksheet that does not apply is not evidence about the project's value, and the expectation is what makes the fixture fail. [dropped]
+Value: $11,885.12
 
 ### classm.retirement.3 — person[taxpayer].retirement[r1].smw10 — Add lines 6 and 8. This is the amount you have recovered tax free through 2025
 Status: **AGREE**
 
-Value: $0.00
+Value: $21,928.88
 
 ### classm.retirement.3 — person[taxpayer].retirement[r1].smw11 — Balance of cost to be recovered. Subtract line 10 from line 2
 Status: **AGREE**
 
-Value: $0.00
+Value: $36,081.12
 
-### case classm.retirement.4 — prompt sha256 16e6243fad015d4e0f21dd9f04dcce9a326bbc2d14f5bf39d95f27c9f00db437; branches: retirement.special:false, retirement.annuity:false, retirement.used_last_year:true, retirement.joint_life:false, retirement.is_ira:false, retirement.is_ira:true, retirement.roth:false, retirement.direct:false, retirement.direct:true, retirement.bad_code:false, retirement.rolled#0, retirement.rolled#1, retirement.has_rollover:false, retirement.has_rollover:true, retirement.smw4_table1#0, retirement.smw4_table1#3, retirement.smw4_table2#1, retirement.smw4_table2#3, retirement.smw4_new#1, retirement.smw4#0, retirement.smw8:left, retirement.smw9:positive, retirement.cost_left:false, retirement.annuity_with_cost:false, retirement.annuity_rollover:false, retirement.annuity_taxable#1, retirement.ira_taxable#1, retirement.ira_not_rolled:floor, retirement.ira_not_rolled:positive, retirement.plan_simple:floor, retirement.plan_simple:positive, retirement.plan_taxable#1, retirement.taxable#0, retirement.taxable#1, retirement.show_a:false, retirement.show_a:true, retirement.amount_a#0, retirement.amount_a#1, retirement.sav_military:false, retirement.sav_404k:false, retirement.sav_inherited:false, retirement.sav_excluded:false, retirement.sav_gross:floor, retirement.sav_gross:positive, retirement.sav_amount#1, retirement.early:false, retirement.early_screen:false, retirement.code_screen:false, retirement.screen_refused:false, retirement.has_exception:false, retirement.wrong_kind:false, retirement.l1#1, retirement.exc_capped:left, retirement.l2#1, retirement.is_e05:false, retirement.l2_e05#1, retirement.is_e09:false, retirement.l2_e09#1, retirement.is_e19:false, retirement.l2_e19#1, retirement.is_e22:false, retirement.l2_e22#1, retirement.is_e23:false, retirement.l2_e23#1, retirement.is_s:false, retirement.l1_s#1, retirement.l2_s#1
+### case classm.retirement.4 — prompt sha256 a340aa16ce2f6c701d2cbb70df321a6f3848370a425f2232e4acf4b276e1b5e6; branches: retirement.special:false, retirement.annuity:false, retirement.annuity:true, retirement.used_last_year:false, retirement.used_last_year:true, retirement.joint_life:false, retirement.is_ira:false, retirement.roth:false, retirement.direct:false, retirement.bad_code:false, retirement.rolled#1, retirement.has_rollover:false, retirement.smw_shown:false, retirement.smw_shown:true, retirement.smw4_table1#0, retirement.smw4_table1#1, retirement.smw4_table2#1, retirement.smw4_table2#2, retirement.smw4_new#1, retirement.smw4#0, retirement.smw4#1, retirement.smw8:left, retirement.smw9:positive, retirement.cost_left:false, retirement.cost_left:true, retirement.annuity_with_cost:false, retirement.annuity_with_cost:true, retirement.annuity_rollover:false, retirement.annuity_taxable#0, retirement.annuity_taxable#1, retirement.ira_taxable#1, retirement.ira_not_rolled:positive, retirement.plan_simple:positive, retirement.plan_taxable#0, retirement.plan_taxable#1, retirement.taxable#1, retirement.show_a:false, retirement.show_a:true, retirement.amount_a#0, retirement.amount_a#1, retirement.sav_military:false, retirement.sav_404k:false, retirement.sav_inherited:false, retirement.sav_excluded:false, retirement.sav_gross:positive, retirement.sav_amount#1, retirement.early:false, retirement.early_screen:false, retirement.code_screen:false, retirement.screen_refused:false, retirement.has_exception:false, retirement.wrong_kind:false, retirement.l1#1, retirement.exc_capped:left, retirement.l2#1, retirement.is_e05:false, retirement.l2_e05#1, retirement.is_e09:false, retirement.l2_e09#1, retirement.is_e19:false, retirement.l2_e19#1, retirement.is_e22:false, retirement.l2_e22#1, retirement.is_e23:false, retirement.l2_e23#1, retirement.is_s:false, retirement.l1_s#1, retirement.l2_s#1
 
 ### classm.retirement.4 — person[taxpayer].retirement[r1].smw1 — Enter the total pension or annuity payments from Form 1099-R, box 1
 Status: **AGREE**
 
-Value: $10,905.00
+Value: $59,417.00
 
 ### classm.retirement.4 — person[taxpayer].retirement[r1].smw2 — Enter your cost in the plan at the annuity starting date
 Status: **AGREE**
 
-Value: $0.00
+Value: $193,265.00
 
 ### classm.retirement.4 — person[taxpayer].retirement[r1].smw4 — Divide line 2 by the number on line 3 (or, if you completed this worksheet last
 Status: **AGREE**
 
-Value: $0.00
+Value: $623.44
 
 ### classm.retirement.4 — person[taxpayer].retirement[r1].smw5 — Multiply line 4 by the number of months for which this year's payments were made
 Status: **AGREE**
 
-Value: $0.00
+Value: $7,481.28
 
 ### classm.retirement.4 — person[taxpayer].retirement[r1].smw6 — Enter the amount, if any, recovered tax free in years after 1986
 Status: **AGREE**
 
-Value: $0.00
+Value: $5,744.00
 
 ### classm.retirement.4 — person[taxpayer].retirement[r1].smw7 — Subtract line 6 from line 2
 Status: **AGREE**
 
-Value: $0.00
+Value: $187,521.00
 
 ### classm.retirement.4 — person[taxpayer].retirement[r1].smw8 — Enter the smaller of line 5 or line 7
 Status: **AGREE**
 
-Value: $0.00
+Value: $7,481.28
 
 ### classm.retirement.4 — person[taxpayer].retirement[r1].smw9 — Taxable amount. Subtract line 8 from line 1. Enter the result, but not less than
 Status: **AGREE**
 
-Value: $10,905.00
+Value: $51,935.72
 
 ### classm.retirement.4 — person[taxpayer].retirement[r1].smw10 — Add lines 6 and 8. This is the amount you have recovered tax free through 2025
 Status: **AGREE**
 
-Value: $0.00
+Value: $13,225.28
 
 ### classm.retirement.4 — person[taxpayer].retirement[r1].smw11 — Balance of cost to be recovered. Subtract line 10 from line 2
 Status: **AGREE**
 
-Value: $0.00
+Value: $180,039.72
 
-### classm.retirement.4 — person[taxpayer].retirement[r2].smw1 — Enter the total pension or annuity payments from Form 1099-R, box 1
-Status: **AGREE**
-
-Value: $37,628.00
-
-### classm.retirement.4 — person[taxpayer].retirement[r2].smw2 — Enter your cost in the plan at the annuity starting date
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.retirement.4 — person[taxpayer].retirement[r2].smw4 — Divide line 2 by the number on line 3 (or, if you completed this worksheet last
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.retirement.4 — person[taxpayer].retirement[r2].smw5 — Multiply line 4 by the number of months for which this year's payments were made
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.retirement.4 — person[taxpayer].retirement[r2].smw6 — Enter the amount, if any, recovered tax free in years after 1986
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.retirement.4 — person[taxpayer].retirement[r2].smw7 — Subtract line 6 from line 2
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.retirement.4 — person[taxpayer].retirement[r2].smw8 — Enter the smaller of line 5 or line 7
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.retirement.4 — person[taxpayer].retirement[r2].smw9 — Taxable amount. Subtract line 8 from line 1. Enter the result, but not less than
-Status: **AGREE**
-
-Value: $37,628.00
-
-### classm.retirement.4 — person[taxpayer].retirement[r2].smw10 — Add lines 6 and 8. This is the amount you have recovered tax free through 2025
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.retirement.4 — person[taxpayer].retirement[r2].smw11 — Balance of cost to be recovered. Subtract line 10 from line 2
-Status: **AGREE**
-
-Value: $0.00
-
-### case classm.retirement.5 — prompt sha256 2ab2507d280b5ff266b233f86ea1300266a3cf86f460512973c6a8fba785e866; branches: retirement.special:false, retirement.annuity:false, retirement.used_last_year:false, retirement.joint_life:true, retirement.is_ira:true, retirement.roth:false, retirement.direct:false, retirement.bad_code:false, retirement.rolled#1, retirement.has_rollover:false, retirement.smw4_table1#0, retirement.smw4_table2#4, retirement.smw4_new#0, retirement.smw4#1, retirement.smw8:left, retirement.smw9:floor, retirement.cost_left:false, retirement.annuity_with_cost:false, retirement.annuity_rollover:false, retirement.annuity_taxable#1, retirement.ira_taxable#1, retirement.ira_not_rolled:floor, retirement.plan_simple:floor, retirement.plan_taxable#1, retirement.taxable#0, retirement.show_a:false, retirement.amount_a#1, retirement.sav_military:false, retirement.sav_404k:false, retirement.sav_inherited:false, retirement.sav_excluded:false, retirement.sav_gross:floor, retirement.sav_amount#1, retirement.early:true, retirement.early_screen:false, retirement.code_screen:false, retirement.screen_refused:false, retirement.has_exception:true, retirement.wrong_kind:false, retirement.l1#0, retirement.exc_capped:right, retirement.l2#0, retirement.is_e05:false, retirement.l2_e05#1, retirement.is_e09:false, retirement.l2_e09#1, retirement.is_e19:false, retirement.l2_e19#1, retirement.is_e22:false, retirement.l2_e22#1, retirement.is_e23:true, retirement.l2_e23#0, retirement.is_s:false, retirement.l1_s#1, retirement.l2_s#1
+### case classm.retirement.5 — prompt sha256 d34fd9249f685dc8f570bf339739d2fbdec45aad4fdca12a7f45478da03c6f12; branches: retirement.special:false, retirement.annuity:false, retirement.annuity:true, retirement.used_last_year:false, retirement.used_last_year:true, retirement.joint_life:false, retirement.joint_life:true, retirement.is_ira:false, retirement.is_ira:true, retirement.roth:false, retirement.direct:false, retirement.bad_code:false, retirement.rolled#1, retirement.has_rollover:false, retirement.smw_shown:false, retirement.smw_shown:true, retirement.smw4_table1#1, retirement.smw4_table1#4, retirement.smw4_table2#4, retirement.smw4_new#0, retirement.smw4_new#1, retirement.smw4#0, retirement.smw4#1, retirement.smw8:left, retirement.smw9:positive, retirement.cost_left:false, retirement.cost_left:true, retirement.annuity_with_cost:false, retirement.annuity_with_cost:true, retirement.annuity_rollover:false, retirement.annuity_taxable#0, retirement.annuity_taxable#1, retirement.ira_taxable#1, retirement.ira_not_rolled:positive, retirement.plan_simple:positive, retirement.plan_taxable#0, retirement.plan_taxable#1, retirement.taxable#0, retirement.taxable#1, retirement.show_a:false, retirement.show_a:true, retirement.amount_a#0, retirement.amount_a#1, retirement.sav_military:false, retirement.sav_404k:false, retirement.sav_inherited:false, retirement.sav_inherited:true, retirement.sav_excluded:false, retirement.sav_excluded:true, retirement.sav_gross:positive, retirement.sav_amount#0, retirement.sav_amount#1, retirement.early:false, retirement.early_screen:false, retirement.code_screen:false, retirement.screen_refused:false, retirement.has_exception:false, retirement.wrong_kind:false, retirement.l1#1, retirement.exc_capped:left, retirement.l2#1, retirement.is_e05:false, retirement.l2_e05#1, retirement.is_e09:false, retirement.l2_e09#1, retirement.is_e19:false, retirement.l2_e19#1, retirement.is_e22:false, retirement.l2_e22#1, retirement.is_e23:false, retirement.l2_e23#1, retirement.is_s:false, retirement.l1_s#1, retirement.l2_s#1
 
 ### classm.retirement.5 — person[taxpayer].retirement[r1].smw1 — Enter the total pension or annuity payments from Form 1099-R, box 1
 Status: **AGREE**
 
-Value: $0.00
+Value: $28,870.00
 
 ### classm.retirement.5 — person[taxpayer].retirement[r1].smw2 — Enter your cost in the plan at the annuity starting date
 Status: **AGREE**
 
-Value: $0.00
+Value: $40,538.00
 
 ### classm.retirement.5 — person[taxpayer].retirement[r1].smw4 — Divide line 2 by the number on line 3 (or, if you completed this worksheet last
 Status: **AGREE**
 
-Value: $0.00
+Value: $253.36
 
 ### classm.retirement.5 — person[taxpayer].retirement[r1].smw5 — Multiply line 4 by the number of months for which this year's payments were made
 Status: **AGREE**
 
-Value: $0.00
+Value: $3,040.32
 
 ### classm.retirement.5 — person[taxpayer].retirement[r1].smw6 — Enter the amount, if any, recovered tax free in years after 1986
 Status: **AGREE**
 
-Value: $0.00
+Value: $28,247.00
 
 ### classm.retirement.5 — person[taxpayer].retirement[r1].smw7 — Subtract line 6 from line 2
 Status: **AGREE**
 
-Value: $0.00
+Value: $12,291.00
 
 ### classm.retirement.5 — person[taxpayer].retirement[r1].smw8 — Enter the smaller of line 5 or line 7
 Status: **AGREE**
 
-Value: $0.00
+Value: $3,040.32
 
 ### classm.retirement.5 — person[taxpayer].retirement[r1].smw9 — Taxable amount. Subtract line 8 from line 1. Enter the result, but not less than
 Status: **AGREE**
 
-Value: $0.00
+Value: $25,829.68
 
 ### classm.retirement.5 — person[taxpayer].retirement[r1].smw10 — Add lines 6 and 8. This is the amount you have recovered tax free through 2025
 Status: **AGREE**
 
-Value: $0.00
+Value: $31,287.32
 
 ### classm.retirement.5 — person[taxpayer].retirement[r1].smw11 — Balance of cost to be recovered. Subtract line 10 from line 2
 Status: **AGREE**
 
-Value: $0.00
-
-### case classm.retirement.6 — prompt sha256 89c3762a68e020a3d65d7e08100a76e960ed5c8226311d824f6779459557e88d; branches: retirement.special:false, retirement.annuity:false, retirement.used_last_year:true, retirement.joint_life:false, retirement.joint_life:true, retirement.is_ira:false, retirement.is_ira:true, retirement.roth:false, retirement.direct:false, retirement.bad_code:false, retirement.rolled#1, retirement.has_rollover:false, retirement.smw4_table1#0, retirement.smw4_table1#4, retirement.smw4_table2#2, retirement.smw4_table2#4, retirement.smw4_new#0, retirement.smw4_new#1, retirement.smw4#0, retirement.smw8:left, retirement.smw9:positive, retirement.cost_left:false, retirement.annuity_with_cost:false, retirement.annuity_rollover:false, retirement.annuity_taxable#1, retirement.ira_taxable#1, retirement.ira_not_rolled:positive, retirement.plan_simple:positive, retirement.plan_taxable#1, retirement.taxable#0, retirement.taxable#1, retirement.show_a:false, retirement.amount_a#1, retirement.sav_military:false, retirement.sav_military:true, retirement.sav_404k:false, retirement.sav_inherited:false, retirement.sav_excluded:false, retirement.sav_excluded:true, retirement.sav_gross:positive, retirement.sav_amount#0, retirement.sav_amount#1, retirement.early:false, retirement.early_screen:false, retirement.code_screen:false, retirement.screen_refused:false, retirement.has_exception:false, retirement.wrong_kind:false, retirement.l1#1, retirement.exc_capped:left, retirement.l2#1, retirement.is_e05:false, retirement.l2_e05#1, retirement.is_e09:false, retirement.l2_e09#1, retirement.is_e19:false, retirement.l2_e19#1, retirement.is_e22:false, retirement.l2_e22#1, retirement.is_e23:false, retirement.l2_e23#1, retirement.is_s:false, retirement.l1_s#1, retirement.l2_s#1
-
-### classm.retirement.6 — person[taxpayer].retirement[r1].smw1 — Enter the total pension or annuity payments from Form 1099-R, box 1
-Status: **AGREE**
-
-Value: $1,173.00
-
-### classm.retirement.6 — person[taxpayer].retirement[r1].smw2 — Enter your cost in the plan at the annuity starting date
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.retirement.6 — person[taxpayer].retirement[r1].smw4 — Divide line 2 by the number on line 3 (or, if you completed this worksheet last
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.retirement.6 — person[taxpayer].retirement[r1].smw5 — Multiply line 4 by the number of months for which this year's payments were made
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.retirement.6 — person[taxpayer].retirement[r1].smw6 — Enter the amount, if any, recovered tax free in years after 1986
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.retirement.6 — person[taxpayer].retirement[r1].smw7 — Subtract line 6 from line 2
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.retirement.6 — person[taxpayer].retirement[r1].smw8 — Enter the smaller of line 5 or line 7
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.retirement.6 — person[taxpayer].retirement[r1].smw9 — Taxable amount. Subtract line 8 from line 1. Enter the result, but not less than
-Status: **AGREE**
-
-Value: $1,173.00
-
-### classm.retirement.6 — person[taxpayer].retirement[r1].smw10 — Add lines 6 and 8. This is the amount you have recovered tax free through 2025
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.retirement.6 — person[taxpayer].retirement[r1].smw11 — Balance of cost to be recovered. Subtract line 10 from line 2
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.retirement.6 — person[taxpayer].retirement[r2].smw1 — Enter the total pension or annuity payments from Form 1099-R, box 1
-Status: **AGREE**
-
-Value: $28,849.00
-
-### classm.retirement.6 — person[taxpayer].retirement[r2].smw2 — Enter your cost in the plan at the annuity starting date
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.retirement.6 — person[taxpayer].retirement[r2].smw4 — Divide line 2 by the number on line 3 (or, if you completed this worksheet last
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.retirement.6 — person[taxpayer].retirement[r2].smw5 — Multiply line 4 by the number of months for which this year's payments were made
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.retirement.6 — person[taxpayer].retirement[r2].smw6 — Enter the amount, if any, recovered tax free in years after 1986
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.retirement.6 — person[taxpayer].retirement[r2].smw7 — Subtract line 6 from line 2
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.retirement.6 — person[taxpayer].retirement[r2].smw8 — Enter the smaller of line 5 or line 7
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.retirement.6 — person[taxpayer].retirement[r2].smw9 — Taxable amount. Subtract line 8 from line 1. Enter the result, but not less than
-Status: **AGREE**
-
-Value: $28,849.00
-
-### classm.retirement.6 — person[taxpayer].retirement[r2].smw10 — Add lines 6 and 8. This is the amount you have recovered tax free through 2025
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.retirement.6 — person[taxpayer].retirement[r2].smw11 — Balance of cost to be recovered. Subtract line 10 from line 2
-Status: **AGREE**
-
-Value: $0.00
+Value: $9,250.68
 
 ## Raw responses
 
@@ -569,13 +301,13 @@ lines:
     work: "Cost in plan at annuity starting date = 6,276.00"
   - printed: "person[taxpayer].retirement[r1].smw4"
     value: "892.00"
-    work: "Worksheet completed last year, so skip line 3 and use last year's line 4 = 892.00"
+    work: "Worksheet completed last year; skip line 3 and use last year's line 4 = 892.00"
   - printed: "person[taxpayer].retirement[r1].smw5"
     value: "10704.00"
     work: "892.00 x 12 months = 10,704.00"
   - printed: "person[taxpayer].retirement[r1].smw6"
     value: "4043.00"
-    work: "Line 10 of last year's worksheet = 4,043.00"
+    work: "Last year's line 10 = 4,043.00"
   - printed: "person[taxpayer].retirement[r1].smw7"
     value: "2233.00"
     work: "6,276.00 - 4,043.00 = 2,233.00"
@@ -584,43 +316,13 @@ lines:
     work: "Smaller of 10,704.00 or 2,233.00 = 2,233.00"
   - printed: "person[taxpayer].retirement[r1].smw9"
     value: "0.00"
-    work: "0.00 - 2,233.00 is less than zero, so enter 0"
+    work: "0.00 - 2,233.00 < 0; not less than zero = 0.00"
   - printed: "person[taxpayer].retirement[r1].smw10"
     value: "6276.00"
-    work: "Annuity started after 1986, so line 6 + line 8: 4,043.00 + 2,233.00 = 6,276.00"
+    work: "Starting date not before 1987; 4,043.00 + 2,233.00 = 6,276.00"
   - printed: "person[taxpayer].retirement[r1].smw11"
     value: "0.00"
-    work: "6,276.00 - 6,276.00 = 0.00, so the worksheet is not needed next year"
-  - printed: "person[taxpayer].retirement[r2].smw1"
-    value: "0.00"
-    work: "Simplified Method does not apply (traditional IRA, no after-tax cost), so the worksheet is not used"
-  - printed: "person[taxpayer].retirement[r2].smw2"
-    value: "0.00"
-    work: "Worksheet not used; cost given as 0.00"
-  - printed: "person[taxpayer].retirement[r2].smw4"
-    value: "0.00"
-    work: "Worksheet not used; line 2 is 0, so result is 0"
-  - printed: "person[taxpayer].retirement[r2].smw5"
-    value: "0.00"
-    work: "Worksheet not used; 0 x 12 = 0"
-  - printed: "person[taxpayer].retirement[r2].smw6"
-    value: "0.00"
-    work: "Worksheet not used; nothing recovered tax free"
-  - printed: "person[taxpayer].retirement[r2].smw7"
-    value: "0.00"
-    work: "Worksheet not used; 0 - 0 = 0"
-  - printed: "person[taxpayer].retirement[r2].smw8"
-    value: "0.00"
-    work: "Worksheet not used; smaller of 0 or 0 = 0"
-  - printed: "person[taxpayer].retirement[r2].smw9"
-    value: "0.00"
-    work: "Worksheet not used; IRA taxable amount is figured under the line 4b rollover rule instead"
-  - printed: "person[taxpayer].retirement[r2].smw10"
-    value: "0.00"
-    work: "Worksheet not used; 0 + 0 = 0"
-  - printed: "person[taxpayer].retirement[r2].smw11"
-    value: "0.00"
-    work: "Worksheet not used; 0 - 0 = 0"
+    work: "6,276.00 - 6,276.00 = 0.00"
 ```
 ```
 
@@ -629,66 +331,36 @@ lines:
 ```yaml
 ```yaml
 lines:
-  - printed: "person[taxpayer].retirement[r1].smw1"
-    value: "0.00"
-    work: "Form 1099-R box 1 = 0.00"
-  - printed: "person[taxpayer].retirement[r1].smw2"
-    value: "0.00"
-    work: "Cost in plan at annuity starting date = 0.00"
-  - printed: "person[taxpayer].retirement[r1].smw4"
-    value: "0.00"
-    work: "Not completed last year; joint-life test no, so Table 1 applies; age 57 after 11/18/1996 gives 310; 0.00 / 310 = 0.00"
-  - printed: "person[taxpayer].retirement[r1].smw5"
-    value: "0.00"
-    work: "0.00 x 12 months = 0.00"
-  - printed: "person[taxpayer].retirement[r1].smw6"
-    value: "0.00"
-    work: "Amount recovered tax free after 1986 = 0.00"
-  - printed: "person[taxpayer].retirement[r1].smw7"
-    value: "0.00"
-    work: "Line 2 0.00 - line 6 0.00 = 0.00"
-  - printed: "person[taxpayer].retirement[r1].smw8"
-    value: "0.00"
-    work: "Smaller of line 5 (0.00) or line 7 (0.00) = 0.00"
-  - printed: "person[taxpayer].retirement[r1].smw9"
-    value: "0.00"
-    work: "Line 1 0.00 - line 8 0.00 = 0.00, not less than zero"
-  - printed: "person[taxpayer].retirement[r1].smw10"
-    value: "0.00"
-    work: "Line 6 0.00 + line 8 0.00 = 0.00"
-  - printed: "person[taxpayer].retirement[r1].smw11"
-    value: "0.00"
-    work: "Line 2 0.00 - line 10 0.00 = 0.00"
   - printed: "person[taxpayer].retirement[r2].smw1"
-    value: "36791.00"
-    work: "Form 1099-R box 1 = 36,791.00"
+    value: "5091.00"
+    work: "Form 1099-R box 1 gross distribution = 5,091.00"
   - printed: "person[taxpayer].retirement[r2].smw2"
-    value: "0.00"
-    work: "Cost in plan at annuity starting date = 0.00"
+    value: "20379.00"
+    work: "Cost in plan at annuity starting date = 20,379.00"
   - printed: "person[taxpayer].retirement[r2].smw4"
-    value: "0.00"
-    work: "Worksheet completed last year, so skip line 3 and use last year's line 4 = 0.00"
+    value: "78.38"
+    work: "Not done last year; Table 1, age 65, start after 11/18/1996 = 260; 20,379 / 260 = 78.38"
   - printed: "person[taxpayer].retirement[r2].smw5"
-    value: "0.00"
-    work: "0.00 x 12 months = 0.00"
+    value: "940.56"
+    work: "78.38 x 12 months = 940.56"
   - printed: "person[taxpayer].retirement[r2].smw6"
     value: "0.00"
-    work: "Last year's line 10 = 0.00"
+    work: "No amount recovered tax free after 1986"
   - printed: "person[taxpayer].retirement[r2].smw7"
-    value: "0.00"
-    work: "Line 2 0.00 - line 6 0.00 = 0.00"
+    value: "20379.00"
+    work: "20,379.00 - 0.00 = 20,379.00"
   - printed: "person[taxpayer].retirement[r2].smw8"
-    value: "0.00"
-    work: "Smaller of line 5 (0.00) or line 7 (0.00) = 0.00"
+    value: "940.56"
+    work: "Smaller of line 5 (940.56) or line 7 (20,379.00)"
   - printed: "person[taxpayer].retirement[r2].smw9"
-    value: "36791.00"
-    work: "Line 1 36,791.00 - line 8 0.00 = 36,791.00"
+    value: "4150.44"
+    work: "5,091.00 - 940.56 = 4,150.44 (not less than zero)"
   - printed: "person[taxpayer].retirement[r2].smw10"
-    value: "0.00"
-    work: "Line 6 0.00 + line 8 0.00 = 0.00"
+    value: "940.56"
+    work: "Annuity start not before 1987; line 6 + line 8 = 0.00 + 940.56"
   - printed: "person[taxpayer].retirement[r2].smw11"
-    value: "0.00"
-    work: "Line 2 0.00 - line 10 0.00 = 0.00"
+    value: "19438.44"
+    work: "20,379.00 - 940.56 = 19,438.44"
 ```
 ```
 
@@ -698,35 +370,35 @@ lines:
 ```yaml
 lines:
   - printed: "person[taxpayer].retirement[r1].smw1"
-    value: "0.00"
-    work: "Traditional IRA with Simplified Method test = no; worksheet not used (IRA goes on lines 4a/4b), so no entry"
+    value: "15200.00"
+    work: "Form 1099-R box 1 gross distribution = 15,200.00"
   - printed: "person[taxpayer].retirement[r1].smw2"
-    value: "0.00"
-    work: "Worksheet not used; cost given as 0.00"
+    value: "58010.00"
+    work: "Cost in plan at annuity starting date = 58,010.00"
   - printed: "person[taxpayer].retirement[r1].smw4"
-    value: "0.00"
-    work: "Worksheet not used; last year's line 4 = 0.00"
+    value: "276.24"
+    work: "Not completed last year; single-life Table 1, age 66, start after 11/18/1996 = 210; 58,010.00 / 210 = 276.24"
   - printed: "person[taxpayer].retirement[r1].smw5"
-    value: "0.00"
-    work: "0.00 x 12 = 0.00"
+    value: "3314.88"
+    work: "276.24 x 12 months = 3,314.88"
   - printed: "person[taxpayer].retirement[r1].smw6"
-    value: "0.00"
-    work: "Last year's line 10 = 0.00"
+    value: "18614.00"
+    work: "Amount recovered tax free after 1986 = 18,614.00"
   - printed: "person[taxpayer].retirement[r1].smw7"
-    value: "0.00"
-    work: "0.00 - 0.00 = 0.00"
+    value: "39396.00"
+    work: "58,010.00 - 18,614.00 = 39,396.00"
   - printed: "person[taxpayer].retirement[r1].smw8"
-    value: "0.00"
-    work: "Smaller of 0.00 or 0.00"
+    value: "3314.88"
+    work: "Smaller of 3,314.88 (line 5) or 39,396.00 (line 7) = 3,314.88"
   - printed: "person[taxpayer].retirement[r1].smw9"
-    value: "0.00"
-    work: "Worksheet not used; IRA is fully taxable and the $11,843.00 goes on line 4b instead"
+    value: "11885.12"
+    work: "15,200.00 - 3,314.88 = 11,885.12 (not less than zero)"
   - printed: "person[taxpayer].retirement[r1].smw10"
-    value: "0.00"
-    work: "0.00 + 0.00 = 0.00"
+    value: "21928.88"
+    work: "Annuity start not before 1987; 18,614.00 + 3,314.88 = 21,928.88"
   - printed: "person[taxpayer].retirement[r1].smw11"
-    value: "0.00"
-    work: "0.00 - 0.00 = 0.00"
+    value: "36081.12"
+    work: "58,010.00 - 21,928.88 = 36,081.12"
 ```
 ```
 
@@ -736,65 +408,35 @@ lines:
 ```yaml
 lines:
   - printed: "person[taxpayer].retirement[r1].smw1"
-    value: "10905.00"
-    work: "Form 1099-R box 1 gross distribution = 10,905.00"
+    value: "59417.00"
+    work: "Form 1099-R box 1 gross distribution"
   - printed: "person[taxpayer].retirement[r1].smw2"
-    value: "0.00"
-    work: "Cost in plan at annuity starting date = 0.00"
+    value: "193265.00"
+    work: "Cost in the plan at the annuity starting date"
   - printed: "person[taxpayer].retirement[r1].smw4"
-    value: "0.00"
-    work: "Worksheet completed last year, so line 3 is skipped and line 4 = last year's line 4 = 0.00"
+    value: "623.44"
+    work: "Worksheet not done last year and not joint-life; Table 1, age 59, after 11/18/1996 = 310; 193,265 / 310 = 623.44"
   - printed: "person[taxpayer].retirement[r1].smw5"
-    value: "0.00"
-    work: "0.00 x 12 months = 0.00"
+    value: "7481.28"
+    work: "623.44 x 12 months"
   - printed: "person[taxpayer].retirement[r1].smw6"
-    value: "0.00"
-    work: "Last year's line 10 = 0.00"
+    value: "5744.00"
+    work: "Amount recovered tax free after 1986, as given"
   - printed: "person[taxpayer].retirement[r1].smw7"
-    value: "0.00"
-    work: "Line 2 minus line 6: 0.00 - 0.00 = 0.00"
+    value: "187521.00"
+    work: "193,265 - 5,744"
   - printed: "person[taxpayer].retirement[r1].smw8"
-    value: "0.00"
-    work: "Smaller of line 5 (0.00) or line 7 (0.00) = 0.00"
+    value: "7481.28"
+    work: "Smaller of 7,481.28 or 187,521"
   - printed: "person[taxpayer].retirement[r1].smw9"
-    value: "10905.00"
-    work: "Line 1 minus line 8: 10,905.00 - 0.00 = 10,905.00, not less than zero"
+    value: "51935.72"
+    work: "59,417 - 7,481.28, not less than zero"
   - printed: "person[taxpayer].retirement[r1].smw10"
-    value: "0.00"
-    work: "Line 6 plus line 8: 0.00 + 0.00 = 0.00"
+    value: "13225.28"
+    work: "Annuity started after 1986; 5,744 + 7,481.28"
   - printed: "person[taxpayer].retirement[r1].smw11"
-    value: "0.00"
-    work: "Line 2 minus line 10: 0.00 - 0.00 = 0.00"
-  - printed: "person[taxpayer].retirement[r2].smw1"
-    value: "37628.00"
-    work: "Form 1099-R box 1 gross distribution = 37,628.00"
-  - printed: "person[taxpayer].retirement[r2].smw2"
-    value: "0.00"
-    work: "Cost in plan at annuity starting date = 0.00"
-  - printed: "person[taxpayer].retirement[r2].smw4"
-    value: "0.00"
-    work: "Worksheet completed last year, so line 3 is skipped and line 4 = last year's line 4 = 0.00"
-  - printed: "person[taxpayer].retirement[r2].smw5"
-    value: "0.00"
-    work: "0.00 x 12 months = 0.00"
-  - printed: "person[taxpayer].retirement[r2].smw6"
-    value: "0.00"
-    work: "Last year's line 10 = 0.00"
-  - printed: "person[taxpayer].retirement[r2].smw7"
-    value: "0.00"
-    work: "Line 2 minus line 6: 0.00 - 0.00 = 0.00"
-  - printed: "person[taxpayer].retirement[r2].smw8"
-    value: "0.00"
-    work: "Smaller of line 5 (0.00) or line 7 (0.00) = 0.00"
-  - printed: "person[taxpayer].retirement[r2].smw9"
-    value: "37628.00"
-    work: "Line 1 minus line 8: 37,628.00 - 0.00 = 37,628.00, not less than zero"
-  - printed: "person[taxpayer].retirement[r2].smw10"
-    value: "0.00"
-    work: "Line 6 plus line 8: 0.00 + 0.00 = 0.00"
-  - printed: "person[taxpayer].retirement[r2].smw11"
-    value: "0.00"
-    work: "Line 2 minus line 10: 0.00 - 0.00 = 0.00"
+    value: "180039.72"
+    work: "193,265 - 13,225.28"
 ```
 ```
 
@@ -804,102 +446,34 @@ lines:
 ```yaml
 lines:
   - printed: "person[taxpayer].retirement[r1].smw1"
-    value: "0.00"
-    work: "Form 1099-R box 1 gross distribution = 0.00"
+    value: "28870.00"
+    work: "Form 1099-R box 1 gross distribution"
   - printed: "person[taxpayer].retirement[r1].smw2"
-    value: "0.00"
-    work: "Cost in plan at annuity starting date = 0.00"
+    value: "40538.00"
+    work: "Cost in plan at annuity starting date"
   - printed: "person[taxpayer].retirement[r1].smw4"
-    value: "0.00"
-    work: "Not done last year; line 3 = 210 (Table 2, combined ages 146 is 141 or older); 0.00 / 210 = 0.00"
+    value: "253.36"
+    work: "Not completed last year; Table 1, age 72, start after 11/18/1996 = 160; 40,538 / 160 = 253.36"
   - printed: "person[taxpayer].retirement[r1].smw5"
-    value: "0.00"
-    work: "0.00 x 12 months = 0.00"
+    value: "3040.32"
+    work: "253.36 x 12 months"
   - printed: "person[taxpayer].retirement[r1].smw6"
-    value: "0.00"
-    work: "Amount recovered tax free after 1986 = 0.00"
+    value: "28247.00"
+    work: "Amount recovered tax free after 1986"
   - printed: "person[taxpayer].retirement[r1].smw7"
-    value: "0.00"
-    work: "Line 2 minus line 6: 0.00 - 0.00 = 0.00"
+    value: "12291.00"
+    work: "40,538 - 28,247"
   - printed: "person[taxpayer].retirement[r1].smw8"
-    value: "0.00"
-    work: "Smaller of line 5 (0.00) or line 7 (0.00) = 0.00"
+    value: "3040.32"
+    work: "Smaller of line 5 (3,040.32) or line 7 (12,291)"
   - printed: "person[taxpayer].retirement[r1].smw9"
-    value: "0.00"
-    work: "Line 1 minus line 8: 0.00 - 0.00 = 0.00, not less than zero"
+    value: "25829.68"
+    work: "28,870 - 3,040.32"
   - printed: "person[taxpayer].retirement[r1].smw10"
-    value: "0.00"
-    work: "Annuity starting date not before 1987; line 6 plus line 8: 0.00 + 0.00 = 0.00"
+    value: "31287.32"
+    work: "Start date not before 1987; 28,247 + 3,040.32"
   - printed: "person[taxpayer].retirement[r1].smw11"
-    value: "0.00"
-    work: "Line 2 minus line 10: 0.00 - 0.00 = 0.00"
-```
-```
-
-### classm.retirement.6
-
-```yaml
-```yaml
-lines:
-  - printed: "person[taxpayer].retirement[r1].smw1"
-    value: "1173.00"
-    work: "Form 1099-R box 1 gross distribution = 1,173.00"
-  - printed: "person[taxpayer].retirement[r1].smw2"
-    value: "0.00"
-    work: "Cost in the plan at the annuity starting date = 0.00"
-  - printed: "person[taxpayer].retirement[r1].smw4"
-    value: "0.00"
-    work: "Worksheet completed last year, so skip line 3 and use last year's line 4 = 0.00"
-  - printed: "person[taxpayer].retirement[r1].smw5"
-    value: "0.00"
-    work: "0.00 x 12 months = 0.00"
-  - printed: "person[taxpayer].retirement[r1].smw6"
-    value: "0.00"
-    work: "Last year's line 10 = 0.00"
-  - printed: "person[taxpayer].retirement[r1].smw7"
-    value: "0.00"
-    work: "0.00 - 0.00 = 0.00"
-  - printed: "person[taxpayer].retirement[r1].smw8"
-    value: "0.00"
-    work: "Smaller of line 5 (0.00) or line 7 (0.00) = 0.00"
-  - printed: "person[taxpayer].retirement[r1].smw9"
-    value: "1173.00"
-    work: "1,173.00 - 0.00 = 1,173.00, not less than zero"
-  - printed: "person[taxpayer].retirement[r1].smw10"
-    value: "0.00"
-    work: "Annuity start was not before 1987; 0.00 + 0.00 = 0.00"
-  - printed: "person[taxpayer].retirement[r1].smw11"
-    value: "0.00"
-    work: "0.00 - 0.00 = 0.00"
-  - printed: "person[taxpayer].retirement[r2].smw1"
-    value: "28849.00"
-    work: "Form 1099-R box 1 gross distribution = 28,849.00"
-  - printed: "person[taxpayer].retirement[r2].smw2"
-    value: "0.00"
-    work: "Cost in the plan at the annuity starting date = 0.00"
-  - printed: "person[taxpayer].retirement[r2].smw4"
-    value: "0.00"
-    work: "Worksheet completed last year, so use last year's line 4 = 0.00"
-  - printed: "person[taxpayer].retirement[r2].smw5"
-    value: "0.00"
-    work: "0.00 x 12 months = 0.00"
-  - printed: "person[taxpayer].retirement[r2].smw6"
-    value: "0.00"
-    work: "Last year's line 10 = 0.00"
-  - printed: "person[taxpayer].retirement[r2].smw7"
-    value: "0.00"
-    work: "0.00 - 0.00 = 0.00"
-  - printed: "person[taxpayer].retirement[r2].smw8"
-    value: "0.00"
-    work: "Smaller of line 5 (0.00) or line 7 (0.00) = 0.00"
-  - printed: "person[taxpayer].retirement[r2].smw9"
-    value: "28849.00"
-    work: "28,849.00 - 0.00 = 28,849.00, not less than zero"
-  - printed: "person[taxpayer].retirement[r2].smw10"
-    value: "0.00"
-    work: "Annuity start was not before 1987; 0.00 + 0.00 = 0.00"
-  - printed: "person[taxpayer].retirement[r2].smw11"
-    value: "0.00"
-    work: "0.00 - 0.00 = 0.00"
+    value: "9250.68"
+    work: "40,538 - 31,287.32"
 ```
 ```

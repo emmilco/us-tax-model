@@ -2,7 +2,53 @@
 
 Method: `README.md` in this directory.
 
-## Stage 19 round 2
+## T-067
+
+Subject after T-067 (owner's decision 2026-10-29, worksheet markers): the Step 5 worksheet lines `(Step 5, 1)` to
+`(Step 5, 5)` now carry `shown_when: eic.reached_step5`; no computing expression changed. Fresh reviews of 2026-10-29
+(claude-opus-5-5 and deepseek-flash, transcription and render; render eic and eic.deepseek have no open section).
+Triage `../triage/eic.json` (1,998 comparisons, 124 partial records) and `../triage/eic.deepseek.json` (2,005
+comparisons, 131 partial records), both executable-triage-v2 with 1,374 fixtures and 500 generated returns seed
+20261026; both replies are valid. Every completed-return difference was read with the witness cap lifted
+(`triage.mjs` direct, scratch only; T-083). Rulings in `.transcription/proposed/t067/transcription.eic[.deepseek].json`.
+Both reviewers had i1040gi pp. 40-60; no page gap.
+
+T-067 check (`eic.reached_step5` = `eic.reached_step3` and `eic.step34`): it is true exactly when Step 1 questions 1
+and 2, Step 2 and Step 3 (filer with a qualifying child) or Step 4 (filer without) are passed, the point at which
+i1040gi p. 42 says "No. Complete the following worksheet" (Step 5, question 1); Step 1 questions 3 and 4, Step 2
+question 4, Step 4 question 6 and Step 5 question 1 Yes are refusals. The worksheet precedes Step 5 questions 2 and 3,
+so it stays shown for a Worksheet B filer and after the question 3 STOP. Evaluated: shown on classm.eic.4 and
+stage9.eic.no_schedule_c.earned_over_limit (question 3 STOP); hidden on classm.f1040.2 (Step 1 q1, line 11b
+$258,609.00), stage13.eic_spouse_no_ssn (Step 1 q2), stage9.eic.investment_income (Step 2), stage9.eic.no_child.over65
+(Step 4 q2). No line the source completes is hidden and no skipped Step 5 line is shown. The fresh logs give no
+independent test of it: the Step 5 lines AGREE in both families because the comparison ignores `shown_when` (T-076 (2));
+neither reply uses `shown_when`.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | eic.credit | model error | 1,906/1,998; 38 candidate-unknown (8 completed, all line 11b $120,000 or $215,300), 38 candidate-refuses, 3 value (refused), 9 project-unknown, 4 project-refuses | i1040gi p. 40, Step 1 q1 | Child-count limit needs dependent.us_half above every Step 1 limit; the 3 values are MFS filers with household.married no passed through Step 4 q1. |
+| claude | transcription | eic.check_27c | model error | 1,914/1,998; 46 candidate-unknown (13 completed, all above the largest limit), 1 value (generated 480, refused), 37 refusals | i1040gi p. 43, Line 27c; p. 40 | Same unknowns; same MFS reading. |
+| claude | transcription | eic.separated_box | model error | 1,954/1,998; 4 value (classm.eic.8, generated 115, 415; refused), 3 candidate-unknown (1 completed), 37 refusals | i1040gi p. 41, Step 3 q3, q6; amb.2025.separated_spouses_box | MFS filer with household.married no gets no box; child-count unknowns. |
+| claude | transcription | eic.clergy | scope | 1,981/1,998; 17 project-refuses (scope.schedule1) | i1040gi p. 42, Step 5 q1; p. 43, Line 27b | Cited screen; no value difference. |
+| claude | transcription | 4b | model error | 658/1,998; 1,311 candidate-shows-skipped (720 completed) | i1040gi p. 47, Worksheet B use; p. 42, Step 5 q2 | No shown_when: Worksheet B line 4b shown for every filer (classm.f2441.2.deepseek $85,000). |
+| claude | transcription | 2 | model error | 1,286/1,998; 622 candidate-unknown (302 completed: 289 no-band), 63 candidate-shows-skipped (23 completed) | i1040gi p. 40; p. 46 | Looked up and shown after STOPs (classm.f4952.2.deepseek $308). |
+| claude | transcription | 5 | model error | 1,517/1,998; 409 candidate-unknown (185 completed, no-band), 22 shows-skipped (10 completed), 11 value (refused, T-070 (2)) | i1040gi p. 46, lines 2, 4, 5 | Shown where skipped (stage14.eic.wsb_line5_stop_27c $83). |
+| claude | transcription | 6 (eic.line6) | model error | 1,182/1,998; 756 candidate-unknown (365 completed), 29 shows-skipped (10 completed) | i1040gi pp. 40, 46 | Shown after STOPs (stage13.eic_spouse_no_ssn $649). |
+| deepseek | transcription | eic.self_employed | model error | 1,754/2,005; 169 value (55 completed, all a Schedule C without Schedule SE), 82 candidate-refuses | i1040gi p. 42, Step 5 q2 | Schedule SE only; misses Schedule C losses and small profits. |
+| deepseek | transcription | eic.credit | model error | 1,050/2,005; 40 value (20 completed: 9 Schedule C without SE, 11 ignored STOPs), 836 candidate-unknown (368 completed) | i1040gi pp. 40-42; p. 47 | No Steps 1 to 5; Worksheet A for Schedule C filers (classm.eic.3 $4,910 / $5,490). |
+| deepseek | transcription | eic.check_27c | model error | 731/2,005; 344 value (212 completed: 204 no-box STOPs checked, 8 box STOPs missed), 845 candidate-unknown | i1040gi p. 43, Line 27c; p. 40, Step 1 | Checked whenever the credit is zero. |
+| deepseek | transcription | eic.separated_box | model error | 1,191/2,005; 177 value (54 completed), 194 candidate-unknown (93 completed), 443 project-refuses | i1040gi p. 41, Step 3 q3, q6; Form 1040 box | Status alone: unmarried HOH, above-limit and no-child filers get the box. |
+| deepseek | transcription | eic.clergy | scope | 1,948/2,005; 21 project-refuses, 36 project-unknown (no scope.schedule1) | i1040gi p. 43, Line 27b | Cited screen; constant no. |
+| deepseek | transcription | 1 | model error | 808/2,005; 994 shows-skipped (471 completed), 98 value (16 completed, all Worksheet B filers) | i1040gi pp. 40, 46, 48 | Shown after STOPs; Step 5 earned income instead of Worksheet B line 6. |
+| deepseek | transcription | 2 | model error | 854/2,005; 898 candidate-unknown (359 completed), 94 shows-skipped (42 completed), 22 value (10 completed, Worksheet B filers) | i1040gi p. 46 | As line 1. |
+| deepseek | transcription | 5 | model error | 1,074/2,005; 160 shows-skipped (110 completed), 735 candidate-unknown | i1040gi p. 46, lines 4, 5 | Looked up when line 4 is Yes (classm.f2441.1.deepseek $65). |
+| deepseek | transcription | 6 (eic.line6) | model error | MISSING; reply printed "6" for the requested "6 (eic.line6)" | i1040gi pp. 40, 46 | Reply format; by reading also figured after every STOP. |
+
+Findings: none. `eic.reached_step5` hides the Step 5 lines exactly when the flowchart never reaches Step 5, and the
+T-067 change altered no filed amount. Tooling: T-076 (2) (shown_when not compared) means no review exercised the new
+condition; T-083 (witness cap) required direct `triage.mjs` runs for every completed difference.
+
+## Stage 19 round 2 (superseded subject)
 
 Fresh reviews of 2026-10-29 (Claude claude-opus-5-5 and deepseek-flash, transcription; Claude class M). eic was not
 reviewed in Stage 19 round 1; its only change since round 4 is BUG-0195, the wording of `eic.us_home` ("Was your main

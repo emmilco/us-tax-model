@@ -2,6 +2,10 @@
  "bank": null,
  "errors": [
   {
+   "line": "s8812.line18a",
+   "message": "model changed a published result type"
+  },
+  {
    "line": "s8812.line21",
    "message": "model changed a published result type"
   },
@@ -10,24 +14,8 @@
    "message": "model changed a published result type"
   },
   {
-   "line": "s8812.h_w2_box4_total",
-   "message": "s8812.s8812.h_w2_box4_total: collection parent binding mismatch"
-  },
-  {
-   "line": "s8812.h_w2_box6_total",
-   "message": "s8812.s8812.h_w2_box6_total: collection parent binding mismatch"
-  },
-  {
-   "line": "s8812.h_clw_a_line2",
-   "message": "s8812.s8812.h_clw_a_line2: declared NonNegDollars but the expression does not prove non-negativity"
-  },
-  {
-   "line": "s8812.line21",
-   "message": "s8812.s8812.__type_gate_16: collection reference requires sum_over"
-  },
-  {
-   "line": "s8812.line21",
-   "message": "s8812.s8812.__type_gate_16: comparison operands have incompatible types"
+   "line": "s8812.clwb_3",
+   "message": "model changed a published result type"
   }
  ],
  "failures": [],
@@ -35,28 +23,10 @@
  "form": "s8812",
  "lines": [
   {
-   "candidate": "s8812.clw_a3",
-   "handle": "s8812.clw_a3",
-   "open_at_triage": true,
-   "project": "s8812.clw_a3",
-   "shown_when": null,
-   "status": "DISAGREE",
-   "triage": "candidate invalid"
-  },
-  {
    "candidate": "s8812.clwb_complete",
    "handle": "s8812.clwb_complete",
    "open_at_triage": true,
    "project": "s8812.clwb_complete",
-   "shown_when": null,
-   "status": "DISAGREE",
-   "triage": "candidate invalid"
-  },
-  {
-   "candidate": "s8812.clwb_14",
-   "handle": "s8812.clwb_14",
-   "open_at_triage": true,
-   "project": "s8812.clwb_14",
    "shown_when": null,
    "status": "DISAGREE",
    "triage": "candidate invalid"
@@ -80,29 +50,11 @@
    "triage": "candidate invalid"
   },
   {
-   "candidate": "s8812.line13",
-   "handle": "13",
+   "candidate": "s8812.clw_a4",
+   "handle": "(CLW A 4)",
    "open_at_triage": true,
-   "project": "s8812.line13",
+   "project": "s8812.clw_a4",
    "shown_when": "s8812.show13",
-   "status": "DISAGREE",
-   "triage": "candidate invalid"
-  },
-  {
-   "candidate": "s8812.line14",
-   "handle": "14",
-   "open_at_triage": true,
-   "project": "s8812.line14",
-   "shown_when": null,
-   "status": "DISAGREE",
-   "triage": "candidate invalid"
-  },
-  {
-   "candidate": "s8812.line16a",
-   "handle": "16a",
-   "open_at_triage": true,
-   "project": "s8812.line16a",
-   "shown_when": null,
    "status": "DISAGREE",
    "triage": "candidate invalid"
   },
@@ -116,15 +68,6 @@
    "triage": "candidate invalid"
   },
   {
-   "candidate": "s8812.line17",
-   "handle": "17",
-   "open_at_triage": true,
-   "project": "s8812.line17",
-   "shown_when": "s8812.show_iia",
-   "status": "DISAGREE",
-   "triage": "candidate invalid"
-  },
-  {
    "candidate": "s8812.line18a",
    "handle": "18a",
    "open_at_triage": true,
@@ -134,10 +77,37 @@
    "triage": "candidate invalid"
   },
   {
+   "candidate": "s8812.line19",
+   "handle": "19",
+   "open_at_triage": true,
+   "project": "s8812.line19",
+   "shown_when": "s8812.show_iia",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "s8812.line20",
+   "handle": "20",
+   "open_at_triage": true,
+   "project": "s8812.line20",
+   "shown_when": "s8812.show_iia",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
    "candidate": "s8812.line21",
    "handle": "21",
    "open_at_triage": true,
    "project": "s8812.line21",
+   "shown_when": "s8812.show_iib",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "s8812.line22",
+   "handle": "22",
+   "open_at_triage": true,
+   "project": "s8812.line22",
    "shown_when": "s8812.show_iib",
    "status": "DISAGREE",
    "triage": "candidate invalid"
@@ -177,12 +147,102 @@
    "shown_when": null,
    "status": "DISAGREE",
    "triage": "candidate invalid"
+  },
+  {
+   "candidate": "s8812.clwb_2",
+   "handle": "(CLW B 2)",
+   "open_at_triage": true,
+   "project": "s8812.clwb_2",
+   "shown_when": "s8812.show_clwb",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "s8812.clwb_3",
+   "handle": "(CLW B 3)",
+   "open_at_triage": true,
+   "project": "s8812.clwb_3",
+   "shown_when": "s8812.show_clwb",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "s8812.clwb_4",
+   "handle": "(CLW B 4)",
+   "open_at_triage": true,
+   "project": "s8812.clwb_4",
+   "shown_when": "s8812.show_clwb",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "s8812.clwb_5",
+   "handle": "(CLW B 5)",
+   "open_at_triage": true,
+   "project": "s8812.clwb_5",
+   "shown_when": "s8812.show_clwb",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "s8812.clwb_7",
+   "handle": "(CLW B 7)",
+   "open_at_triage": true,
+   "project": "s8812.clwb_7",
+   "shown_when": "s8812.clwb_to7",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "s8812.clwb_10",
+   "handle": "(CLW B 10)",
+   "open_at_triage": true,
+   "project": "s8812.clwb_10",
+   "shown_when": "s8812.clwb_to7",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "s8812.clwb_11",
+   "handle": "(CLW B 11)",
+   "open_at_triage": true,
+   "project": "s8812.clwb_11",
+   "shown_when": "s8812.show_clwb",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "s8812.clwb_12",
+   "handle": "(CLW B 12)",
+   "open_at_triage": true,
+   "project": "s8812.clwb_12",
+   "shown_when": "s8812.show_clwb",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "s8812.clwb_13",
+   "handle": "(CLW B 13)",
+   "open_at_triage": true,
+   "project": "s8812.clwb_13",
+   "shown_when": "s8812.show_clwb",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "s8812.clwb_14",
+   "handle": "(CLW B 14)",
+   "open_at_triage": true,
+   "project": "s8812.clwb_14",
+   "shown_when": "s8812.show_clwb",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
   }
  ],
- "log_sha256_at_triage": "1cf50239c929bd515373abbe08f7ea3ec9b82df0c368a8a25696c50eea9c184a",
+ "log_sha256_at_triage": "d6f4c18695fad6503ff000243bcb0b38ddeb14d75a3d1c4293e29198b8f9c085",
  "policy": "executable-triage-v2",
- "response_sha256": "8da8f97da26a8445b3b26581710c7c8654536646158c6bcb5a0bb6c74d618bf1",
+ "response_sha256": "d7de19c054964e453cde3604c189bf46d5a1fc10b296b33e2c7c2595bf8e4587",
  "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
  "state": "invalid",
- "subject_sha256": "ed31082b0eef8e898be08312192222c11f1f7beb2d032f97217b64c00bf2432c"
+ "subject_sha256": "597e3b313995dbbd88118eb4287b6b6ef77c68f1852e8d91e9eb87ee9d4389b7"
 }

@@ -575,6 +575,7 @@ form:
   - id: f8863.clw1
     printed: (CLW 1)
     label: Enter the amount from Form 8863, line 18
+    shown_when: f8863.show_after4
     type: NonNegDollars
     expr:
       op: copy
@@ -585,6 +586,7 @@ form:
   - id: f8863.clw2
     printed: (CLW 2)
     label: Enter the amount from Form 8863, line 9
+    shown_when: f8863.show_after4
     type: NonNegDollars
     expr:
       op: copy
@@ -595,6 +597,7 @@ form:
   - id: f8863.clw3
     printed: (CLW 3)
     label: Add lines 1 and 2
+    shown_when: f8863.show_after4
     type: NonNegDollars
     expr:
       op: sum
@@ -607,6 +610,7 @@ form:
   - id: f8863.clw4
     printed: (CLW 4)
     label: Enter the amount from Form 1040 or 1040-SR, line 18
+    shown_when: f8863.show_after4
     type: Dollars
     expr:
       op: copy
@@ -618,6 +622,7 @@ form:
     printed: (CLW 5)
     label: Enter the total of your credits from Schedule 3 (Form 1040), lines 1, 2, 6d, and 6l (lines 6d and 6l are refused
       in this tool)
+    shown_when: f8863.show_after4
     type: Dollars
     expr:
       op: sum
@@ -640,6 +645,7 @@ form:
   - id: f8863.clw6
     printed: (CLW 6)
     label: Subtract line 5 from line 4
+    shown_when: f8863.show_after4
     type: Dollars
     expr:
       op: subtract
@@ -651,6 +657,7 @@ form:
   - id: f8863.clw7
     printed: (CLW 7)
     label: Enter the smaller of line 3 or line 6 here and on Form 8863, line 19
+    shown_when: f8863.show_after4
     type: Dollars
     expr:
       op: smaller_of

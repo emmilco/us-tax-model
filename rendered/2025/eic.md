@@ -272,6 +272,7 @@
 - **Authored helper label:** Enter the amount from Form 1040 or 1040-SR, line 1z
 - **Encoded (NonNegDollars):** Enter the amount from f1040 line 1z.
 - **Refusal:** when scope.schedule1 is true, cannot complete Clergy, church employees and statutory employees (EIC, Step 5, questions 1 and 2; Worksheet B). Clergy, church employee and statutory employee income are outside this tool. Cite: [i1040gi] p. 42, Step 5, questions 1 and 2; p. 43, Clergy and Church employees; p. 47, Worksheet B (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Shown on the values sheet only when:** Step 5 is reached (Steps 1 and 2 passed and Step 3 or 4 sends you to Step 5) (`eic.reached_step5`)
 - Expr: `{"from":"f1040.line1z","op":"copy"}`
 - Cite: [i1040gi] p. 42, Step 5, worksheet line 1 (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -280,6 +281,7 @@
 - **Authored helper label:** Medicaid waiver payments excluded from income on Schedule 1, line 8s, unless chosen as earned income; zero in this tool
 - **Encoded (NonNegDollars):** Enter the amount from helper "No amount".
 - **Refusal:** when scope.other_income is true, cannot complete Medicaid waiver payments (EIC, Step 5, line 2). Medicaid waiver payments are outside this tool. Cite: [i1040gi] p. 42, Step 5, worksheet line 2 (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Shown on the values sheet only when:** Step 5 is reached (Steps 1 and 2 passed and Step 3 or 4 sends you to Step 5) (`eic.reached_step5`)
 - Expr: `{"from":"eic.zero","op":"copy"}`
 - Cite: [i1040gi] p. 42, Step 5, worksheet line 2 (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -287,6 +289,7 @@
 
 - **Authored helper label:** Subtract line 2 from line 1
 - **Encoded (Dollars):** Subtract column (Step 5, 2) from column (Step 5, 1).
+- **Shown on the values sheet only when:** Step 5 is reached (Steps 1 and 2 passed and Step 3 or 4 sends you to Step 5) (`eic.reached_step5`)
 - Expr: `{"from":"eic.step5_line1","op":"subtract","take":"eic.step5_line2"}`
 - Cite: [i1040gi] p. 42, Step 5, worksheet line 3 (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -295,6 +298,7 @@
 - **Authored helper label:** Nontaxable combat pay you elect to include in earned income; zero in this tool
 - **Encoded (NonNegDollars):** Enter the amount from helper "No amount".
 - **Refusal:** when s8812.combat_pay is true, cannot complete Nontaxable combat pay (EIC, Step 5, line 4). Nontaxable combat pay is outside this tool. Cite: [i1040gi] p. 42, Step 5, worksheet line 4; p. 43, Combat pay, nontaxable (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Shown on the values sheet only when:** Step 5 is reached (Steps 1 and 2 passed and Step 3 or 4 sends you to Step 5) (`eic.reached_step5`)
 - Expr: `{"from":"eic.zero","op":"copy"}`
 - Cite: [i1040gi] p. 42, Step 5, worksheet line 4 (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -302,6 +306,7 @@
 
 - **Authored helper label:** Add lines 3 and 4. This is your earned income
 - **Encoded (Dollars):** Add column (Step 5, 3) and column (Step 5, 4).
+- **Shown on the values sheet only when:** Step 5 is reached (Steps 1 and 2 passed and Step 3 or 4 sends you to Step 5) (`eic.reached_step5`)
 - Expr: `{"of":["eic.step5_line3","eic.step5_line4"],"op":"sum"}`
 - Cite: [i1040gi] p. 42, Step 5, worksheet line 5 (2025; printed date 2026-02-25; sha256 482e9c48)
 

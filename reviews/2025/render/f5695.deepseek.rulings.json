@@ -4,11 +4,25 @@
  "family": "deepseek",
  "rulings": [
   {
+   "printed": "14",
+   "restated": "Enter the amount from helper \"Residential Clean Energy Credit Limit Worksheet, line 3. Subtract line 2 from line 1. If zero or less, enter -0-\".",
+   "model": "The helper for the child tax credit omits the IRS condition that Credit Limit Worksheet B is completed only if 'You are not filing Form 2555.'",
+   "ruling": "Ruling: scope; project retained. i1040s8812 p. 4, Credit Limit Worksheet A: \"Complete Credit Limit Worksheet B only if you meet all the following ... 2. You are not filing Form 2555\". f5695.ctc_line19 and s8812.clwb_complete do not test condition 2 because a Form 2555 filer is refused elsewhere: Schedule 8812 lines 2a to 2c refuse when sa.excluded_income (\"Are you filing Form 2555 or Form 4563, or do you have income excluded as a bona fide resident of Puerto Rico?\") is Yes, as the note on s8812.clwb_complete records. The model raised the same point as the claude render. The refusal sits on another form, so the model was not shown it. The Schedule 8812 lines the rendered English names (line 12, Credit Limit Worksheet A line 3, Worksheet B) are unchanged by BUG-0210, which only hides Worksheet B lines 7 to 10; the worksheet is judged in the s8812 logs. Same ruling as round 1.",
+   "context": "ac7a79138d65bcfcda8164dffc0b2dec7cfb03da223b8fd470b20267feb553e6"
+  },
+  {
    "printed": "32a",
    "restated": "helper \"Did you occupy the home jointly with someone other than your spouse, each occupant completing their own Form 5695?\" = true",
    "model": "IRS line 32a applies when you occupied the home jointly with someone—'If you occupied your home jointly with someone, each occupant must complete their own Form 5695'—without requiring a joint return; the helper asks whether you occupied it jointly 'on a joint return,' so it would fail to check the box for unmarried joint occupants.",
    "ruling": "Ruling: model error; the restatement checks the box exactly when f5695.joint_occupancy is Yes, as i5695 p. 7, Line 32a, says: \"Joint occupants of a home who are claiming the energy efficient home improvement credit must check the box on line 32a\" (p. 3, Joint occupancy, \"If you occupied your home jointly with someone, each occupant must complete their own Form 5695\"). The model reads the input's qualifier \"with someone other than your spouse on a joint return\" as limiting the question to joint returns; it excludes the spouse of a joint return from \"someone\", and the interview help says so (\"These rules do not apply to married individuals filing a joint return. Joint occupancy is refused by this tool.\", interview/questions-2025.yaml). An unmarried joint occupant answers Yes and is refused on line 30 (owner decision 7). The phrasing is awkward; a clearer wording (\"with someone, other than a spouse with whom you file this joint return\") would remove the misreading, but the English does not misstate the source.",
    "context": "a652e8d1244c14b6d46aa777f0d7a5b563fc78b91e10fea69360eeb331538d1d"
+  },
+  {
+   "printed": "32a",
+   "restated": "helper \"Did you occupy the home jointly with someone other than your spouse, each occupant completing their own Form 5695?\" = true",
+   "model": "The helper adds a condition that you are 'on a joint return'; the IRS says 'If you occupied your home jointly with someone, each occupant must complete their own Form 5695.'",
+   "ruling": "Ruling: model error; the restatement checks the box exactly when f5695.joint_occupancy is Yes, as i5695 p. 7, Line 32a, says: \"Joint occupants of a home who are claiming the energy efficient home improvement credit must check the box on line 32a\" (p. 3, Joint occupancy, \"If you occupied your home jointly with someone, each occupant must complete their own Form 5695 ... These rules don't apply to married individuals filing a joint return\"). The model reads the input's qualifier \"with someone other than your spouse on a joint return\" as requiring a joint return; it only excludes from \"someone\" the spouse with whom a joint return is filed, which is the source's own exception. Joint occupancy is refused on line 30, so the box is unchecked on every completed return. Same ruling as the earlier rounds; the line is unchanged.",
+   "context": "ac7a79138d65bcfcda8164dffc0b2dec7cfb03da223b8fd470b20267feb553e6"
   },
   {
    "printed": "32a",

@@ -41,7 +41,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 
 ## Branch coverage of the generated corpus
 
-2487 of 2808 branches (choose guards, Bool lines both ways, floor and positive sides of subtract_floor0, left and right of smaller_of and larger_of) reached by the 400 generated returns. Unreached:
+2495 of 2818 branches (choose guards, Bool lines both ways, floor and positive sides of subtract_floor0, left and right of smaller_of and larger_of) reached by the 400 generated returns. Unreached:
 
 - asset.outside:true
 - asset.screen:true
@@ -322,7 +322,9 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - s8812.show_iib:true
 - s8812.few_children:false
 - s8812.line27#1
+- s8812.show_clwb:true
 - s8812.clwb_three:true
+- s8812.clwb_to7:true
 - s8812.clwb_11#0
 - s8812.clwb_12:right
 - sa.line16_gambling:right

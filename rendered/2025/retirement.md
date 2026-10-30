@@ -167,10 +167,18 @@
 - Expr: `{"any":[{"gt":["retirement.rolled",{"param":"sales.zero"}],"op":"test"},{"eq":["retirement.direct",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 27, Exception 1 ('Also check box 1 on line 4c'); p. 30, Rollovers ('Use lines 5a and 5b to report a rollover, including a direct rollover'); p. 31, Line 5c (2025; printed date 2026-02-25; sha256 482e9c48)
 
+## (helper) — `retirement.smw_shown`
+
+- **Authored helper label:** The Simplified Method Worksheet is completed (a pension or annuity, not an IRA, with some cost left to recover)
+- **Encoded (Bool):** helper "IRA distribution (lines 4a and 4b)" = false and helper "The Simplified Method applies and some cost is left to recover" = true
+- Expr: `{"all":[{"eq":["retirement.is_ira",{"const":false}],"op":"test"},{"eq":["retirement.annuity_with_cost",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [i1040gi] p. 28, Fully Taxable Pensions and Annuities, "Your payments are fully taxable if (a) you didn’t contribute to the cost (see Cost, later) of your pension or annuity, or (b) you got your entire cost back tax free before 2025."; p. 29, Simplified Method Worksheet—Lines 5a and 5b (2025; printed date 2026-02-25; sha256 482e9c48)
+
 ## (SMW 1) — `retirement.smw1`
 
 - **Authored helper label:** Enter the total pension or annuity payments from Form 1099-R, box 1
 - **Encoded (NonNegDollars):** Enter the amount from helper "Gross distribution, box 1".
+- **Shown on the values sheet only when:** The Simplified Method Worksheet is completed (a pension or annuity, not an IRA, with some cost left to recover) (`retirement.smw_shown`)
 - Expr: `{"from":"retirement.box1","op":"copy"}`
 - Cite: [i1040gi] p. 29, Simplified Method Worksheet, line 1 (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -178,6 +186,7 @@
 
 - **Authored helper label:** Enter your cost in the plan at the annuity starting date
 - **Encoded (NonNegDollars):** Enter the amount from helper "Your cost in the plan at the annuity starting date (Simplified Method Worksheet, line 2)".
+- **Shown on the values sheet only when:** The Simplified Method Worksheet is completed (a pension or annuity, not an IRA, with some cost left to recover) (`retirement.smw_shown`)
 - Expr: `{"from":"retirement.cost","op":"copy"}`
 - Cite: [i1040gi] p. 29, Simplified Method Worksheet, line 2 (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -276,6 +285,7 @@
 
 - **Authored helper label:** Divide line 2 by the number on line 3 (or, if you completed this worksheet last year, line 4 of last year's worksheet)
 - **Encoded (NonNegDollars):** Choose — [helper "Did you complete this worksheet for this annuity last year?" = true → helper "Line 4 of last year's Simplified Method Worksheet"] [helper "Did you complete this worksheet for this annuity last year?" = false → helper "Line 2 divided by the number on line 3 (Table 2 for a joint and survivor annuity starting after 1997, Table 1 otherwise)"]
+- **Shown on the values sheet only when:** The Simplified Method Worksheet is completed (a pension or annuity, not an IRA, with some cost left to recover) (`retirement.smw_shown`)
 - Expr: `{"alternatives":[{"guard":{"eq":["retirement.used_last_year",{"const":true}],"op":"test"},"then":"retirement.last_line4"},{"guard":{"eq":["retirement.used_last_year",{"const":false}],"op":"test"},"then":"retirement.smw4_new"}],"op":"choose"}`
 - Cite: [i1040gi] p. 29, Simplified Method Worksheet, line 4, and the note under line 2 (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -283,6 +293,7 @@
 
 - **Authored helper label:** Multiply line 4 by the number of months for which this year's payments were made
 - **Encoded (NonNegDollars):** Multiply column (SMW 4) by the number on helper "Number of months for which this year's payments were made".
+- **Shown on the values sheet only when:** The Simplified Method Worksheet is completed (a pension or annuity, not an IRA, with some cost left to recover) (`retirement.smw_shown`)
 - Expr: `{"amount":"retirement.smw4","count":"retirement.months","op":"multiply_count"}`
 - Cite: [i1040gi] p. 29, Simplified Method Worksheet, line 5 (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -290,6 +301,7 @@
 
 - **Authored helper label:** Enter the amount, if any, recovered tax free in years after 1986
 - **Encoded (NonNegDollars):** Enter the amount from helper "Amount recovered tax free in years after 1986 (line 10 of last year's worksheet)".
+- **Shown on the values sheet only when:** The Simplified Method Worksheet is completed (a pension or annuity, not an IRA, with some cost left to recover) (`retirement.smw_shown`)
 - Expr: `{"from":"retirement.recovered","op":"copy"}`
 - Cite: [i1040gi] p. 29, Simplified Method Worksheet, line 6 (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -297,6 +309,7 @@
 
 - **Authored helper label:** Subtract line 6 from line 2
 - **Encoded (Dollars):** Subtract column (SMW 6) from column (SMW 2).
+- **Shown on the values sheet only when:** The Simplified Method Worksheet is completed (a pension or annuity, not an IRA, with some cost left to recover) (`retirement.smw_shown`)
 - Expr: `{"from":"retirement.smw2","op":"subtract","take":"retirement.smw6"}`
 - Cite: [i1040gi] p. 29, Simplified Method Worksheet, line 7 (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -304,6 +317,7 @@
 
 - **Authored helper label:** Enter the smaller of line 5 or line 7
 - **Encoded (Dollars):** Enter the smaller of column (SMW 5) or column (SMW 7).
+- **Shown on the values sheet only when:** The Simplified Method Worksheet is completed (a pension or annuity, not an IRA, with some cost left to recover) (`retirement.smw_shown`)
 - Expr: `{"of":["retirement.smw5","retirement.smw7"],"op":"smaller_of"}`
 - Cite: [i1040gi] p. 29, Simplified Method Worksheet, line 8 (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -311,6 +325,7 @@
 
 - **Authored helper label:** Taxable amount. Subtract line 8 from line 1. Enter the result, but not less than zero
 - **Encoded (NonNegDollars):** Subtract column (SMW 8) from column (SMW 1). If zero or less, enter -0-.
+- **Shown on the values sheet only when:** The Simplified Method Worksheet is completed (a pension or annuity, not an IRA, with some cost left to recover) (`retirement.smw_shown`)
 - Expr: `{"from":"retirement.smw1","op":"subtract_floor0","take":"retirement.smw8"}`
 - Cite: [i1040gi] p. 29, Simplified Method Worksheet, line 9 (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -318,6 +333,7 @@
 
 - **Authored helper label:** Add lines 6 and 8. This is the amount you have recovered tax free through 2025
 - **Encoded (Dollars):** Add column (SMW 6) and column (SMW 8).
+- **Shown on the values sheet only when:** The Simplified Method Worksheet is completed (a pension or annuity, not an IRA, with some cost left to recover) (`retirement.smw_shown`)
 - Expr: `{"of":["retirement.smw6","retirement.smw8"],"op":"sum"}`
 - Cite: [i1040gi] p. 29, Simplified Method Worksheet, line 10, "No. Add lines 6 and 8. This is the amount you have recovered tax free through 2025" (the worksheet is used here only for an annuity starting date after November 18, 1996, so line 10's question, "Was your annuity starting date before 1987?", is answered No) (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -325,6 +341,7 @@
 
 - **Authored helper label:** Balance of cost to be recovered. Subtract line 10 from line 2
 - **Encoded (Dollars):** Subtract column (SMW 10) from column (SMW 2).
+- **Shown on the values sheet only when:** The Simplified Method Worksheet is completed (a pension or annuity, not an IRA, with some cost left to recover) (`retirement.smw_shown`)
 - Expr: `{"from":"retirement.smw2","op":"subtract","take":"retirement.smw10"}`
 - Cite: [i1040gi] p. 29, Simplified Method Worksheet, line 11, "Balance of cost to be recovered. Subtract line 10 from line 2. If zero, you won't have to complete this worksheet next year. The payments you receive next year will generally be fully taxable" (2025; printed date 2026-02-25; sha256 482e9c48)
 

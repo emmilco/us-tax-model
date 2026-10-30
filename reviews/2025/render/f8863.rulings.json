@@ -3,11 +3,32 @@
  "form": "f8863",
  "rulings": [
   {
+   "printed": "1",
+   "restated": "Choose — [helper \"An education credit can be claimed on this return: expenses paid, and neither you nor your spouse is claimed as a dependent\" = true → helper \"All Parts III, line 30\"] [helper \"An education credit can be claimed on this return: expenses paid, and neither you nor your spouse is claimed as a dependent\" = false → helper \"Zero\"]",
+   "model": "The total of Parts III, line 30 is right. The gate checks only that expenses were paid and that the filer isn't a dependent, so a married filing separately return still gets a credit, while the instructions say 'You cannot claim an education credit on a 2025 tax return if ... 2. Your filing status is married filing separately.'",
+   "ruling": "Ruling: scope; screen s3.mfs. f8863 p. 1, line 1: \"After completing Part III for each student, enter the total of all amounts from all Parts III, line 30\"; i8863 p. 3, Who cannot claim a credit: \"You cannot claim an education credit on a 2025 tax return if any of the following apply. 1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return. 2. Your filing status is married filing separately.\" The model's point is that f8863.eligible has no mfs test. A married filing separately return never reaches Form 8863: scope.ready refuses the whole return on s3.mfs (i1040gi p. 14); the triage mfs witnesses for this line (generated 63, 115, 128, 132, 219, 302, 318) are all refused returns. The English is right for every status the tool completes. No finding.",
+   "context": "a0860c73bb58a0c4b157af5bbc03e985914733124d29be3a131cb39ac29ca5aa"
+  },
+  {
+   "printed": "10",
+   "restated": "Choose — [helper \"An education credit can be claimed on this return: expenses paid, and neither you nor your spouse is claimed as a dependent\" = true → helper \"All Parts III, line 31\"] [helper \"An education credit can be claimed on this return: expenses paid, and neither you nor your spouse is claimed as a dependent\" = false → helper \"Zero\"]",
+   "model": "The total of Parts III, line 31 is right. The eligibility gate omits the married filing separately bar ('You cannot claim an education credit ... if ... Your filing status is married filing separately'), so an mfs return can get a lifetime learning credit.",
+   "ruling": "Ruling: scope; screen s3.mfs. f8863 p. 1, line 10: \"After completing Part III for each student, enter the total of all amounts from all Parts III, line 31.\" i8863 p. 3, Who cannot claim a credit: \"You cannot claim an education credit on a 2025 tax return if any of the following apply. 1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return. 2. Your filing status is married filing separately.\" As line 1: the missing mfs test is covered by the whole-return refusal on s3.mfs (scope.ready, i1040gi p. 14), so no married filing separately return gets a lifetime learning credit. No finding.",
+   "context": "a0860c73bb58a0c4b157af5bbc03e985914733124d29be3a131cb39ac29ca5aa"
+  },
+  {
    "printed": "13",
    "restated": "Enter single $90,000; mfj $180,000; mfs $90,000; hoh $90,000; qss $90,000 (edu.magi_limit).",
    "model": "The form gives '$180,000 if married filing jointly; or $90,000 if single, head of household, or qualifying surviving spouse', and the instructions bar the credit if 'Your filing status is married filing separately.' The restatement enters $90,000 for mfs without excluding that status.",
    "ruling": "Ruling: scope; screen s3.mfs. f8863 p. 1, line 13: \"Enter $180,000 if married filing jointly; or $90,000 if single, head of household, or qualifying surviving spouse\"; i8863 p. 3, Who cannot claim a credit, \"2. Your filing status is married filing separately.\". The English (rendered/2025/f8863.md, line 13) gives the page's amount for every status the tool completes. Married filing separately never reaches the line: scope.ready refuses the whole return on s3.mfs (\"Married filing separately\", remedy \"Married filing jointly is supported\", i1040gi p. 14), and the parameter records the mfs amount as never reached (params/2025.yaml, edu.magi_limit: \"married filing separately is refused for the whole return, so its amount is never reached\"; Stage 19 settled item 9). The triage of the same form confirms it: every mfs witness with expenses (gen#82, #155, #415) is refused under the full interview. The refusal sits on another form, so the rendered line cannot show it; the model's \"an MFS filer would be computed a credit\" is not so. Project stands.",
    "context": "fa507132b8210221ab154b96fbe7629565d3cc1fc593162765babcddee632c7a"
+  },
+  {
+   "printed": "13",
+   "restated": "Enter single $90,000; mfj $180,000; mfs $90,000; hoh $90,000; qss $90,000 (edu.magi_limit).",
+   "model": "The form says 'Enter $180,000 if married filing jointly; or $90,000 if single, head of household, or qualifying surviving spouse' and gives no mfs amount, since mfs filers cannot claim the credit. The restatement enters $90,000 for mfs.",
+   "ruling": "Ruling: scope; screen s3.mfs. f8863 p. 1, line 13: \"Enter $180,000 if married filing jointly; or $90,000 if single, head of household, or qualifying surviving spouse\"; i8863 p. 3, Who cannot claim a credit: \"You cannot claim an education credit on a 2025 tax return if any of the following apply. 1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return. 2. Your filing status is married filing separately.\" The English (rendered/2025/f8863.md, line 13) gives the page's amount for every status the tool completes (edu.magi_limit). The married filing separately amount is never reached: scope.ready refuses the whole return on s3.mfs (\"Married filing separately\", remedy \"Married filing jointly is supported\", i1040gi p. 14), and params/2025.yaml records the mfs amount as never reached; the transcription triage confirms it (mfs witnesses generated 63, 115, 128 are refused returns). No line or English defect.",
+   "context": "a0860c73bb58a0c4b157af5bbc03e985914733124d29be3a131cb39ac29ca5aa"
   },
   {
    "printed": "13",
@@ -24,6 +45,13 @@
    "context": "ffe12189d0ad42bb06109c1a8432df9812006bb6ac262b8c598a8ab9f99cea74"
   },
   {
+   "printed": "16",
+   "restated": "Enter single $10,000; mfj $20,000; mfs $10,000; hoh $10,000; qss $10,000 (edu.phaseout_range).",
+   "model": "The form says 'Enter $20,000 if married filing jointly; or $10,000 if single, head of household, or qualifying surviving spouse.' The restatement supplies $10,000 for mfs, which cannot claim the credit.",
+   "ruling": "Ruling: scope; screen s3.mfs. f8863 p. 1, line 16: \"Enter $20,000 if married filing jointly; or $10,000 if single, head of household, or qualifying surviving spouse\"; i8863 p. 3, Who cannot claim a credit: \"You cannot claim an education credit on a 2025 tax return if any of the following apply. 1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return. 2. Your filing status is married filing separately.\" The English (rendered/2025/f8863.md, line 16) gives the page's amount for every status the tool completes (edu.phaseout_range). The married filing separately amount is never reached: scope.ready refuses the whole return on s3.mfs (\"Married filing separately\", remedy \"Married filing jointly is supported\", i1040gi p. 14), and params/2025.yaml records the mfs amount as never reached; the transcription triage confirms it (mfs witnesses generated 63, 115, 128 are refused returns). No line or English defect.",
+   "context": "a0860c73bb58a0c4b157af5bbc03e985914733124d29be3a131cb39ac29ca5aa"
+  },
+  {
    "printed": "2",
    "restated": "Enter single $90,000; mfj $180,000; mfs $90,000; hoh $90,000; qss $90,000 (edu.magi_limit).",
    "model": "The form gives amounts only for 'married filing jointly' and 'single, head of household, or qualifying surviving spouse', and the instructions say you cannot claim an education credit if 'Your filing status is married filing separately.' The restatement enters $90,000 for mfs, and neither the eligibility gate nor a refusal excludes mfs, so an MFS filer would be computed a credit.",
@@ -38,11 +66,25 @@
    "context": "ffe12189d0ad42bb06109c1a8432df9812006bb6ac262b8c598a8ab9f99cea74"
   },
   {
+   "printed": "2",
+   "restated": "Enter single $90,000; mfj $180,000; mfs $90,000; hoh $90,000; qss $90,000 (edu.magi_limit).",
+   "model": "The form says 'Enter $180,000 if married filing jointly; or $90,000 if single, head of household, or qualifying surviving spouse' and gives no amount for married filing separately, a status that cannot claim the credit. The restatement enters $90,000 for mfs.",
+   "ruling": "Ruling: scope; screen s3.mfs. f8863 p. 1, line 2: \"Enter $180,000 if married filing jointly; or $90,000 if single, head of household, or qualifying surviving spouse\"; i8863 p. 3, Who cannot claim a credit: \"You cannot claim an education credit on a 2025 tax return if any of the following apply. 1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return. 2. Your filing status is married filing separately.\" The English (rendered/2025/f8863.md, line 2) gives the page's amount for every status the tool completes (edu.magi_limit). The married filing separately amount is never reached: scope.ready refuses the whole return on s3.mfs (\"Married filing separately\", remedy \"Married filing jointly is supported\", i1040gi p. 14), and params/2025.yaml records the mfs amount as never reached; the transcription triage confirms it (mfs witnesses generated 63, 115, 128 are refused returns). No line or English defect.",
+   "context": "a0860c73bb58a0c4b157af5bbc03e985914733124d29be3a131cb39ac29ca5aa"
+  },
+  {
    "printed": "5",
    "restated": "Enter single $10,000; mfj $20,000; mfs $10,000; hoh $10,000; qss $10,000 (edu.phaseout_range).",
    "model": "The form says 'Enter $20,000 if married filing jointly; or $10,000 if single, head of household, or qualifying surviving spouse'. The restatement adds an mfs amount of $10,000, but MFS filers cannot claim the credit.",
    "ruling": "Ruling: scope; screen s3.mfs. f8863 p. 1, line 5: \"Enter $20,000 if married filing jointly; or $10,000 if single, head of household, or qualifying surviving spouse\"; i8863 p. 3, Who cannot claim a credit, \"2. Your filing status is married filing separately.\" The English (rendered/2025/f8863.md, line 5) gives the page's amount for every status the tool completes. Married filing separately never reaches the line: scope.ready refuses the whole return on s3.mfs (\"Married filing separately\", remedy \"Married filing jointly is supported\", i1040gi p. 14), and the parameter records the mfs amount as never reached (params/2025.yaml, edu.phaseout_range). The transcription triage confirms it: the mfs witnesses with expenses (gen#82, #155, #415) are refused under the full interview (S1).",
    "context": "ffe12189d0ad42bb06109c1a8432df9812006bb6ac262b8c598a8ab9f99cea74"
+  },
+  {
+   "printed": "5",
+   "restated": "Enter single $10,000; mfj $20,000; mfs $10,000; hoh $10,000; qss $10,000 (edu.phaseout_range).",
+   "model": "The form says 'Enter $20,000 if married filing jointly; or $10,000 if single, head of household, or qualifying surviving spouse.' The restatement supplies $10,000 for mfs, a status that cannot take the credit.",
+   "ruling": "Ruling: scope; screen s3.mfs. f8863 p. 1, line 5: \"Enter $20,000 if married filing jointly; or $10,000 if single, head of household, or qualifying surviving spouse\"; i8863 p. 3, Who cannot claim a credit: \"You cannot claim an education credit on a 2025 tax return if any of the following apply. 1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return. 2. Your filing status is married filing separately.\" The English (rendered/2025/f8863.md, line 5) gives the page's amount for every status the tool completes (edu.phaseout_range). The married filing separately amount is never reached: scope.ready refuses the whole return on s3.mfs (\"Married filing separately\", remedy \"Married filing jointly is supported\", i1040gi p. 14), and params/2025.yaml records the mfs amount as never reached; the transcription triage confirms it (mfs witnesses generated 63, 115, 128 are refused returns). No line or English defect.",
+   "context": "a0860c73bb58a0c4b157af5bbc03e985914733124d29be3a131cb39ac29ca5aa"
   }
  ]
 }

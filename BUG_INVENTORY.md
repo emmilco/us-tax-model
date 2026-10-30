@@ -3097,3 +3097,53 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
 - **Fix:** the gate's key is built in the enclosing collection entry (`enclosingKey`), as a read of that entry's line is.
   Returned values were never affected.
 - **Tags:** tool-defect; value-neutral; latent-until-new-input; caught-by-evaluator-comparison
+
+## BUG-0207 — The Simplified Method Worksheet was shown on IRA entries
+
+- **Date:** 2026-10-29
+- **Caught by:** the T-067 adjudication of retirement (`.transcription/proposed/t067/retirement.findings.md`, F5), in the
+  change that introduced it. Witness: classm.s2.3.deepseek without the pension answers (a traditional IRA, box 1 $92), all
+  ten `(SMW n)` lines printed, `(SMW 1)` $92.
+- **Symptom:** the worksheet lines' condition was `retirement.annuity`, which the interview never asks on an IRA entry; the
+  values sheet hides a line only on a known false, so the worksheet printed. The worksheet is for lines 5a and 5b (i1040gi
+  p. 29); IRA distributions go on lines 4a and 4b (p. 27).
+- **Where:** `forms/2025/retirement.yaml`, the `(SMW 1)` to `(SMW 11)` lines.
+- **Fix:** `shown_when: retirement.smw_shown` (not an IRA, tested first, and `retirement.annuity_with_cost`). Regression
+  `stage21.t067.smw_hidden_ira`.
+- **Tags:** skipped-line-shown; value-neutral; caught-by-source-adjudication
+
+## BUG-0208 — The Simplified Method Worksheet was shown on an annuity whose cost was already recovered
+
+- **Date:** 2026-10-29
+- **Caught by:** the T-067 adjudication of retirement (F6). Witness: stage10.smw.cost_recovered, `(SMW 9)` $12,000 printed
+  beside line 5a $0; generated 395, `(SMW 9)` $22,738.41 against a taxable amount of $0.
+- **Symptom:** i1040gi p. 28, Fully Taxable Pensions and Annuities: "Your payments are fully taxable if ... (b) you got your
+  entire cost back tax free before 2025"; such payments go on line 5b without the worksheet, which was still shown.
+- **Where:** `forms/2025/retirement.yaml`, the `(SMW n)` lines.
+- **Fix:** with BUG-0207 (`retirement.smw_shown` requires `retirement.annuity_with_cost`). Regression
+  `stage21.t067.smw_hidden_cost_recovered`.
+- **Tags:** skipped-line-shown; value-neutral; caught-by-source-adjudication
+
+## BUG-0209 — Form 8880 lines 10 to 12 were shown after the line 9 stop
+
+- **Date:** 2026-10-29
+- **Caught by:** the T-067 adjudication of f8880 (`.transcription/proposed/t067/f8880.findings.md`, T067-8880-L9). Witness:
+  stage15.f8880.s6, line 9 0.0 with the Credit Limit Worksheet and line 11 showing Form 1040 line 18 ($2,615.00).
+- **Symptom:** Form 8880 (2025), line 9: "If line 9 is zero, stop; you can’t take this credit". T-067 hid only what
+  follows the line 7 stop.
+- **Where:** `forms/2025/f8880.yaml`.
+- **Fix:** `f8880.past9` (`f8880.past7` and line 8 not more than `savers.agi_limit`, above which every band of the line 9
+  table is 0.0) hides line 10, the worksheet and lines 11 and 12. Regression `stage21.t067.f8880_line9_stop`.
+- **Tags:** skipped-line-shown; stop-instruction-ignored; value-neutral; caught-by-source-adjudication
+
+## BUG-0210 — Credit Limit Worksheet B lines 7 to 10 were shown when line 6 says to leave them blank
+
+- **Date:** 2026-10-29
+- **Caught by:** the T-067 adjudication of s8812 (`.transcription/proposed/t067/s8812.findings.md`, T067-8812-L6). Witness:
+  classm.s8812.4, `(CLW B 7)` $3,442.50 and `(CLW B 10)` $2,587.00 shown; both class M models left them blank.
+- **Symptom:** i1040s8812 p. 5, Credit Limit Worksheet B, line 6: "leave lines 7 through 10 blank, enter -0- on line 11,
+  and go to line 12" (line 2 under $5,100, or line 5 at least line 1).
+- **Where:** `forms/2025/s8812.yaml`, `s8812.clwb_7` to `s8812.clwb_10`.
+- **Fix:** `shown_when: s8812.clwb_to7` (Worksheet B completed, line 2 $5,100 or more, line 5 less than line 1).
+  Regression `stage21.t067.s8812_clwb_line6_blank`.
+- **Tags:** skipped-line-shown; value-neutral; caught-by-source-adjudication

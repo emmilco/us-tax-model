@@ -354,8 +354,27 @@ form:
       doc: i1040gi
       locator: p. 27, Exception 1 ('Also check box 1 on line 4c'); p. 30, Rollovers ('Use lines 5a and 5b to report
         a rollover, including a direct rollover'); p. 31, Line 5c
+  - id: retirement.smw_shown
+    printed: (helper)
+    label: The Simplified Method Worksheet is completed (a pension or annuity, not an IRA, with some cost left to recover)
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - retirement.is_ira
+        - const: false
+      - op: test
+        eq:
+        - retirement.annuity_with_cost
+        - const: true
+    cite:
+      doc: i1040gi
+      locator: 'p. 28, Fully Taxable Pensions and Annuities, "Your payments are fully taxable if (a) you didn’t contribute to the cost (see Cost, later) of your pension or annuity, or (b) you got your entire cost back tax free before 2025."; p. 29, Simplified Method Worksheet—Lines 5a and 5b'
   - id: retirement.smw1
     printed: (SMW 1)
+    shown_when: retirement.smw_shown
     label: Enter the total pension or annuity payments from Form 1099-R, box 1
     type: NonNegDollars
     expr:
@@ -366,6 +385,7 @@ form:
       locator: p. 29, Simplified Method Worksheet, line 1
   - id: retirement.smw2
     printed: (SMW 2)
+    shown_when: retirement.smw_shown
     label: Enter your cost in the plan at the annuity starting date
     type: NonNegDollars
     expr:
@@ -665,6 +685,7 @@ form:
       locator: p. 29, Simplified Method Worksheet, line 3
   - id: retirement.smw4
     printed: (SMW 4)
+    shown_when: retirement.smw_shown
     label: Divide line 2 by the number on line 3 (or, if you completed this worksheet last year, line 4 of last
       year's worksheet)
     type: NonNegDollars
@@ -688,6 +709,7 @@ form:
       locator: p. 29, Simplified Method Worksheet, line 4, and the note under line 2
   - id: retirement.smw5
     printed: (SMW 5)
+    shown_when: retirement.smw_shown
     label: Multiply line 4 by the number of months for which this year's payments were made
     type: NonNegDollars
     expr:
@@ -699,6 +721,7 @@ form:
       locator: p. 29, Simplified Method Worksheet, line 5
   - id: retirement.smw6
     printed: (SMW 6)
+    shown_when: retirement.smw_shown
     label: Enter the amount, if any, recovered tax free in years after 1986
     type: NonNegDollars
     expr:
@@ -709,6 +732,7 @@ form:
       locator: p. 29, Simplified Method Worksheet, line 6
   - id: retirement.smw7
     printed: (SMW 7)
+    shown_when: retirement.smw_shown
     label: Subtract line 6 from line 2
     type: Dollars
     expr:
@@ -720,6 +744,7 @@ form:
       locator: p. 29, Simplified Method Worksheet, line 7
   - id: retirement.smw8
     printed: (SMW 8)
+    shown_when: retirement.smw_shown
     label: Enter the smaller of line 5 or line 7
     type: Dollars
     expr:
@@ -732,6 +757,7 @@ form:
       locator: p. 29, Simplified Method Worksheet, line 8
   - id: retirement.smw9
     printed: (SMW 9)
+    shown_when: retirement.smw_shown
     label: Taxable amount. Subtract line 8 from line 1. Enter the result, but not less than zero
     type: NonNegDollars
     expr:
@@ -743,6 +769,7 @@ form:
       locator: p. 29, Simplified Method Worksheet, line 9
   - id: retirement.smw10
     printed: (SMW 10)
+    shown_when: retirement.smw_shown
     label: Add lines 6 and 8. This is the amount you have recovered tax free through 2025
     type: Dollars
     expr:
@@ -757,6 +784,7 @@ form:
         10''s question, "Was your annuity starting date before 1987?", is answered No)'
   - id: retirement.smw11
     printed: (SMW 11)
+    shown_when: retirement.smw_shown
     label: Balance of cost to be recovered. Subtract line 10 from line 2
     display: 'Shown on the values sheet so the filer knows whether next year''s payments are fully taxable: "If zero, you won''t have to complete this worksheet next year."'
     type: Dollars

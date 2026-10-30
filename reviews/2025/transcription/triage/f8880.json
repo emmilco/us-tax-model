@@ -1,7 +1,7 @@
 {
  "bank": {
   "evaluation_failures": 0,
-  "fixtures": 1372,
+  "fixtures": 1376,
   "generated": 500,
   "partial_bases": 40,
   "partial_records": 0,
@@ -14,34 +14,26 @@
  "lines": [
   {
    "absent": 0,
-   "agree": 1858,
+   "agree": 1875,
    "candidate": "f8880.line1a",
-   "compared": 1872,
-   "differ": 14,
+   "compared": 1876,
+   "differ": 1,
    "handle": "1(a)",
-   "in_scope": 1851,
-   "in_scope_agree": 1837,
+   "in_scope": 1857,
+   "in_scope_agree": 1857,
    "kinds": {
-    "candidate-unknown": 5,
-    "value": 9
+    "project-refuses": 1
    },
    "kinds_by_return": {
-    "completed": {
-     "candidate-unknown": 2,
-     "value": 2
-    },
-    "incomplete": {
-     "candidate-unknown": 3
-    },
     "refused": {
-     "value": 7
+     "project-refuses": 1
     }
    },
    "open_at_triage": true,
    "project": "f8880.line1a",
    "shown_when": null,
    "sources": {
-    "fixture": 1372,
+    "fixture": 1376,
     "generated": 500
    },
    "status": "DISAGREE",
@@ -49,7 +41,7 @@
    "witnesses": [
     {
      "candidate": {
-      "cents": 0,
+      "cents": 500000,
       "kind": "money"
      },
      "candidate_operands": [
@@ -61,39 +53,31 @@
        }
       },
       {
-       "ref": "person[taxpayer].role",
+       "ref": "f8880.h_trad_tp",
        "value": {
-        "kind": "enum",
-        "value": "taxpayer"
+        "cents": 500000,
+        "kind": "money"
        }
       },
       {
-       "ref": "\"taxpayer\"",
+       "ref": "f8880.h_roth_tp",
        "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_born",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
+        "cents": 0,
+        "kind": "money"
        }
       }
      ],
      "instance": "f8880",
-     "kind": "value",
+     "kind": "project-refuses",
      "project": {
-      "cents": 73500,
-      "kind": "money"
+      "cite": {
+       "doc": "p590a",
+       "locator": "p. 35, Excess Contributions, \"Generally, an excess contribution is the amount contributed to your traditional IRAs for the year that is more than the smaller of\""
+      },
+      "form": "Excess or recharacterized IRA contributions (Form 5329 Parts III and IV, Pub. 590-A)",
+      "gate": "person[taxpayer].ira_excess_gate",
+      "kind": "refusal",
+      "remedy": "Traditional or Roth IRA contributions for 2025 that are more than allowed or were recharacterized, and an excess contribution from an earlier year still in an IRA, are outside this tool."
      },
      "project_operands": [
       {
@@ -113,1121 +97,52 @@
       {
        "ref": "person[taxpayer].sav_line1",
        "value": {
-        "cents": 73500,
-        "kind": "money"
+        "cite": {
+         "doc": "p590a",
+         "locator": "p. 35, Excess Contributions, \"Generally, an excess contribution is the amount contributed to your traditional IRAs for the year that is more than the smaller of\""
+        },
+        "form": "Excess or recharacterized IRA contributions (Form 5329 Parts III and IV, Pub. 590-A)",
+        "gate": "person[taxpayer].ira_excess_gate",
+        "kind": "refusal",
+        "remedy": "Traditional or Roth IRA contributions for 2025 that are more than allowed or were recharacterized, and an excess contribution from an earlier year still in an IRA, are outside this tool."
        }
       }
      ],
      "project_return": "refused",
      "source": {
-      "id": "classm.clcw.3.deepseek",
+      "id": "stage16.refuse.person.ira_excess",
       "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f8880.h_able",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_born",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_student",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_claimed",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      }
-     ],
-     "instance": "f8880",
-     "kind": "value",
-     "project": {
-      "cents": 561600,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_line1",
-       "value": {
-        "cents": 561600,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f5695.2.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f8880.h_able",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_born",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_student",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_claimed",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      }
-     ],
-     "instance": "f8880",
-     "kind": "value",
-     "project": {
-      "cents": 561600,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_line1",
-       "value": {
-        "cents": 561600,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f5695.2",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f8880.h_able",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_born",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "f8880",
-     "kind": "value",
-     "project": {
-      "cents": 73500,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_line1",
-       "value": {
-        "cents": 73500,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.clcw.3",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "person[taxpayer].sav_born",
-      "kind": "unknown",
-      "reason": "no input supplied for person[taxpayer].sav_born"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f8880.h_able",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[spouse].role",
-       "value": {
-        "kind": "enum",
-        "value": "spouse"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_born",
-       "value": {
-        "input": "person[taxpayer].sav_born",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sav_born"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_student",
-       "value": {
-        "input": "person[taxpayer].sav_student",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sav_student"
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_claimed",
-       "value": {
-        "input": "person[taxpayer].sav_claimed",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sav_claimed"
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      }
-     ],
-     "instance": "f8880",
-     "kind": "candidate-unknown",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[spouse].role",
-       "value": {
-        "kind": "enum",
-        "value": "spouse"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_line1",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "incomplete",
-     "source": {
-      "id": "stage16.cleanup.f5695_no_audit",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "person[taxpayer].sav_born",
-      "kind": "unknown",
-      "reason": "no input supplied for person[taxpayer].sav_born"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f8880.h_able",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_born",
-       "value": {
-        "input": "person[taxpayer].sav_born",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sav_born"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_student",
-       "value": {
-        "input": "person[taxpayer].sav_student",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sav_student"
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_claimed",
-       "value": {
-        "input": "person[taxpayer].sav_claimed",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sav_claimed"
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      }
-     ],
-     "instance": "f8880",
-     "kind": "candidate-unknown",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_line1",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "incomplete",
-     "source": {
-      "id": "stage16.cleanup.f5695_no_section_b",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "person[taxpayer].sav_born",
-      "kind": "unknown",
-      "reason": "no input supplied for person[taxpayer].sav_born"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f8880.h_able",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_born",
-       "value": {
-        "input": "person[taxpayer].sav_born",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sav_born"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_student",
-       "value": {
-        "input": "person[taxpayer].sav_student",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sav_student"
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_claimed",
-       "value": {
-        "input": "person[taxpayer].sav_claimed",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sav_claimed"
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      }
-     ],
-     "instance": "f8880",
-     "kind": "candidate-unknown",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_line1",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "stage16.cleanup.mut.clwb_three_figured",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "person[taxpayer].sav_born",
-      "kind": "unknown",
-      "reason": "no input supplied for person[taxpayer].sav_born"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f8880.h_able",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_born",
-       "value": {
-        "input": "person[taxpayer].sav_born",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sav_born"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_student",
-       "value": {
-        "input": "person[taxpayer].sav_student",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sav_student"
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_claimed",
-       "value": {
-        "input": "person[taxpayer].sav_claimed",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sav_claimed"
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      }
-     ],
-     "instance": "f8880",
-     "kind": "candidate-unknown",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_line1",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "incomplete",
-     "source": {
-      "id": "stage16.cleanup.mut.clwb_two_children",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "person[taxpayer].sav_claimed",
-      "kind": "unknown",
-      "reason": "no input supplied for person[taxpayer].sav_claimed"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f8880.h_able",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_born",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_student",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_claimed",
-       "value": {
-        "input": "person[taxpayer].sav_claimed",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sav_claimed"
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      }
-     ],
-     "instance": "f8880",
-     "kind": "candidate-unknown",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_line1",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "stage16.cleanup.f5695_small_wind",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f8880.h_able",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_born",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_student",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_claimed",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      }
-     ],
-     "instance": "f8880",
-     "kind": "value",
-     "project": {
-      "cents": 12,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_line1",
-       "value": {
-        "cents": 12,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "index": 102,
-      "kind": "generated",
-      "seed": 20261026
-     }
-    },
-    {
-     "candidate": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f8880.h_able",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[spouse].role",
-       "value": {
-        "kind": "enum",
-        "value": "spouse"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_born",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "f8880",
-     "kind": "value",
-     "project": {
-      "cents": 84056,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[spouse].role",
-       "value": {
-        "kind": "enum",
-        "value": "spouse"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_line1",
-       "value": {
-        "cents": 84056,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "index": 234,
-      "kind": "generated",
-      "seed": 20261026
      }
     }
    ]
   },
   {
    "absent": 0,
-   "agree": 1692,
+   "agree": 1701,
    "candidate": "f8880.line1b",
-   "compared": 1872,
-   "differ": 180,
+   "compared": 1876,
+   "differ": 175,
    "handle": "1(b)",
-   "in_scope": 1852,
-   "in_scope_agree": 1692,
+   "in_scope": 1858,
+   "in_scope_agree": 1701,
    "kinds": {
-    "candidate-refuses": 20,
-    "candidate-unknown": 158,
-    "value": 2
+    "candidate-refuses": 18,
+    "candidate-unknown": 157
    },
    "kinds_by_return": {
-    "completed": {
-     "value": 1
-    },
     "incomplete": {
-     "candidate-unknown": 109
+     "candidate-unknown": 108
     },
     "refused": {
-     "candidate-refuses": 20,
-     "candidate-unknown": 49,
-     "value": 1
+     "candidate-refuses": 18,
+     "candidate-unknown": 49
     }
    },
    "open_at_triage": true,
    "project": "f8880.line1b",
    "shown_when": null,
    "sources": {
-    "fixture": 1372,
+    "fixture": 1376,
     "generated": 500
    },
    "status": "DISAGREE",
@@ -1410,97 +325,7 @@
      ],
      "project_return": "refused",
      "source": {
-      "id": "classm.retirement.5.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cite": null,
-      "form": "model-declared refusal",
-      "gate": "f8880.h_able",
-      "kind": "refusal",
-      "remedy": "Outside candidate scope"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f8880.h_able",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "f8880",
-     "kind": "candidate-refuses",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"spouse\"",
-       "value": {
-        "kind": "enum",
-        "value": "spouse"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
       "id": "classm.dcprov.1",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cite": null,
-      "form": "model-declared refusal",
-      "gate": "f8880.h_able",
-      "kind": "refusal",
-      "remedy": "Outside candidate scope"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f8880.h_able",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "f8880",
-     "kind": "candidate-refuses",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"spouse\"",
-       "value": {
-        "kind": "enum",
-        "value": "spouse"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.retirement.5",
       "kind": "fixture"
      }
     },
@@ -1592,6 +417,51 @@
      "project_return": "refused",
      "source": {
       "id": "classm.sd.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "f8880.h_able",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_able",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].role",
+       "value": {
+        "kind": "enum",
+        "value": "taxpayer"
+       }
+      },
+      {
+       "ref": "\"spouse\"",
+       "value": {
+        "kind": "enum",
+        "value": "spouse"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.sli.2",
       "kind": "fixture"
      }
     },
@@ -1689,6 +559,51 @@
     },
     {
      "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "f8880.h_able",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_able",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].role",
+       "value": {
+        "kind": "enum",
+        "value": "taxpayer"
+       }
+      },
+      {
+       "ref": "\"spouse\"",
+       "value": {
+        "kind": "enum",
+        "value": "spouse"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8863.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
       "input": "person[taxpayer].sav_able",
       "kind": "unknown",
       "lowerBound": 0,
@@ -1778,2039 +693,39 @@
       "id": "table.band.mid",
       "kind": "fixture"
      }
-    },
-    {
-     "candidate": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f8880.h_able",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f8880.h_joint",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f8880.h_1b_spouse",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "f8880",
-     "kind": "value",
-     "project": {
-      "cents": 100000,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[spouse].role",
-       "value": {
-        "kind": "enum",
-        "value": "spouse"
-       }
-      },
-      {
-       "ref": "\"spouse\"",
-       "value": {
-        "kind": "enum",
-        "value": "spouse"
-       }
-      },
-      {
-       "ref": "person[spouse].sav_line1",
-       "value": {
-        "cents": 100000,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"spouse\"",
-       "value": {
-        "kind": "enum",
-        "value": "spouse"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "stage15.f8880.s13",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f8880.h_able",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f8880.h_joint",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f8880.h_1b_spouse",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "f8880",
-     "kind": "value",
-     "project": {
-      "cents": 33223,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[spouse].role",
-       "value": {
-        "kind": "enum",
-        "value": "spouse"
-       }
-      },
-      {
-       "ref": "\"spouse\"",
-       "value": {
-        "kind": "enum",
-        "value": "spouse"
-       }
-      },
-      {
-       "ref": "person[spouse].sav_line1",
-       "value": {
-        "cents": 33223,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"spouse\"",
-       "value": {
-        "kind": "enum",
-        "value": "spouse"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "index": 113,
-      "kind": "generated",
-      "seed": 20261026
-     }
     }
    ]
   },
   {
    "absent": 0,
-   "agree": 1830,
-   "candidate": "f8880.line2a",
-   "compared": 1872,
-   "differ": 42,
-   "handle": "2(a)",
-   "in_scope": 1832,
-   "in_scope_agree": 1812,
-   "kinds": {
-    "candidate-refuses": 18,
-    "candidate-unknown": 5,
-    "project-refuses": 4,
-    "value": 15
-   },
-   "kinds_by_return": {
-    "completed": {
-     "candidate-refuses": 4,
-     "candidate-unknown": 2
-    },
-    "incomplete": {
-     "candidate-unknown": 3,
-     "value": 1
-    },
-    "refused": {
-     "candidate-refuses": 14,
-     "project-refuses": 4,
-     "value": 14
-    }
-   },
-   "open_at_triage": true,
-   "project": "f8880.line2a",
-   "shown_when": null,
-   "sources": {
-    "fixture": 1372,
-    "generated": 500
-   },
-   "status": "DISAGREE",
-   "triage": "differs",
-   "witnesses": [
-    {
-     "candidate": {
-      "cite": null,
-      "form": "model-declared refusal",
-      "gate": "f8880.h_excess",
-      "kind": "refusal",
-      "remedy": "Outside candidate scope"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f8880.h_excess",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "f8880",
-     "kind": "candidate-refuses",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_line2",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.clcw.1.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f8880.h_excess",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_born",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "f8880",
-     "kind": "value",
-     "project": {
-      "cents": 1184600,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_line2",
-       "value": {
-        "cents": 1184600,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.clcw.3.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f8880.h_excess",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_born",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "f8880",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "p560",
-       "locator": "pp. 8\u201311, 14\u201317, 38\u201340, chapters 2, 3 and 5"
-      },
-      "form": "Retirement plan contributions outside this tool",
-      "gate": "person[taxpayer].plan_screened",
-      "kind": "refusal",
-      "remedy": "These retirement contributions are outside this tool."
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_line2",
-       "value": {
-        "cite": {
-         "doc": "p560",
-         "locator": "pp. 8\u201311, 14\u201317, 38\u201340, chapters 2, 3 and 5"
-        },
-        "form": "Retirement plan contributions outside this tool",
-        "gate": "person[taxpayer].plan_screened",
-        "kind": "refusal",
-        "remedy": "These retirement contributions are outside this tool."
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.clcw.4.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f8880.h_excess",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_born",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_student",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      }
-     ],
-     "instance": "f8880",
-     "kind": "value",
-     "project": {
-      "cents": 438400,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_line2",
-       "value": {
-        "cents": 438400,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.dependent.6.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cite": null,
-      "form": "model-declared refusal",
-      "gate": "f8880.h_excess",
-      "kind": "refusal",
-      "remedy": "Outside candidate scope"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f8880.h_excess",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "f8880",
-     "kind": "candidate-refuses",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_line2",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.dependent.7.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cite": null,
-      "form": "model-declared refusal",
-      "gate": "f8880.h_excess",
-      "kind": "refusal",
-      "remedy": "Outside candidate scope"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f8880.h_excess",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "f8880",
-     "kind": "candidate-refuses",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_line2",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.s3.3.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cite": null,
-      "form": "model-declared refusal",
-      "gate": "f8880.h_excess",
-      "kind": "refusal",
-      "remedy": "Outside candidate scope"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f8880.h_excess",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "f8880",
-     "kind": "candidate-refuses",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_line2",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f5695.8.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f8880.h_excess",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_born",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "f8880",
-     "kind": "value",
-     "project": {
-      "cents": 539400,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_line2",
-       "value": {
-        "cents": 539400,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.eic.7.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cite": null,
-      "form": "model-declared refusal",
-      "gate": "f8880.h_excess",
-      "kind": "refusal",
-      "remedy": "Outside candidate scope"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f8880.h_excess",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "f8880",
-     "kind": "candidate-refuses",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_line2",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.carloan.1",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cite": null,
-      "form": "model-declared refusal",
-      "gate": "f8880.h_excess",
-      "kind": "refusal",
-      "remedy": "Outside candidate scope"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f8880.h_excess",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "f8880",
-     "kind": "candidate-refuses",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_line2",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f5695.8",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f8880.h_excess",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_born",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_student",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_claimed",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      }
-     ],
-     "instance": "f8880",
-     "kind": "value",
-     "project": {
-      "cents": 1042700,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_line2",
-       "value": {
-        "cents": 1042700,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.sa.5",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f8880.h_excess",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_born",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_student",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      }
-     ],
-     "instance": "f8880",
-     "kind": "value",
-     "project": {
-      "cents": 438400,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_line2",
-       "value": {
-        "cents": 438400,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.dependent.6",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f8880.h_excess",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_born",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "f8880",
-     "kind": "value",
-     "project": {
-      "cents": 539400,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_line2",
-       "value": {
-        "cents": 539400,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.eic.7",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f8880.h_excess",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_born",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "f8880",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "p560",
-       "locator": "pp. 8\u201311, 14\u201317, 38\u201340, chapters 2, 3 and 5"
-      },
-      "form": "Retirement plan contributions outside this tool",
-      "gate": "person[taxpayer].plan_screened",
-      "kind": "refusal",
-      "remedy": "These retirement contributions are outside this tool."
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_line2",
-       "value": {
-        "cite": {
-         "doc": "p560",
-         "locator": "pp. 8\u201311, 14\u201317, 38\u201340, chapters 2, 3 and 5"
-        },
-        "form": "Retirement plan contributions outside this tool",
-        "gate": "person[taxpayer].plan_screened",
-        "kind": "refusal",
-        "remedy": "These retirement contributions are outside this tool."
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.clcw.4",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "person[taxpayer].sav_born",
-      "kind": "unknown",
-      "reason": "no input supplied for person[taxpayer].sav_born"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f8880.h_excess",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[spouse].role",
-       "value": {
-        "kind": "enum",
-        "value": "spouse"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_born",
-       "value": {
-        "input": "person[taxpayer].sav_born",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sav_born"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_student",
-       "value": {
-        "input": "person[taxpayer].sav_student",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sav_student"
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_claimed",
-       "value": {
-        "input": "person[taxpayer].sav_claimed",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sav_claimed"
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      }
-     ],
-     "instance": "f8880",
-     "kind": "candidate-unknown",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[spouse].role",
-       "value": {
-        "kind": "enum",
-        "value": "spouse"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_line2",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "incomplete",
-     "source": {
-      "id": "stage16.cleanup.f5695_no_audit",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "person[taxpayer].sav_born",
-      "kind": "unknown",
-      "reason": "no input supplied for person[taxpayer].sav_born"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f8880.h_excess",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_born",
-       "value": {
-        "input": "person[taxpayer].sav_born",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sav_born"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_student",
-       "value": {
-        "input": "person[taxpayer].sav_student",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sav_student"
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_claimed",
-       "value": {
-        "input": "person[taxpayer].sav_claimed",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sav_claimed"
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      }
-     ],
-     "instance": "f8880",
-     "kind": "candidate-unknown",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_line2",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "incomplete",
-     "source": {
-      "id": "stage16.cleanup.f5695_no_section_b",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "person[taxpayer].sav_born",
-      "kind": "unknown",
-      "reason": "no input supplied for person[taxpayer].sav_born"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f8880.h_excess",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_born",
-       "value": {
-        "input": "person[taxpayer].sav_born",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sav_born"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_student",
-       "value": {
-        "input": "person[taxpayer].sav_student",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sav_student"
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_claimed",
-       "value": {
-        "input": "person[taxpayer].sav_claimed",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sav_claimed"
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      }
-     ],
-     "instance": "f8880",
-     "kind": "candidate-unknown",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_line2",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "stage16.cleanup.mut.clwb_three_figured",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "person[taxpayer].sav_born",
-      "kind": "unknown",
-      "reason": "no input supplied for person[taxpayer].sav_born"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f8880.h_excess",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_born",
-       "value": {
-        "input": "person[taxpayer].sav_born",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sav_born"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_student",
-       "value": {
-        "input": "person[taxpayer].sav_student",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sav_student"
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_claimed",
-       "value": {
-        "input": "person[taxpayer].sav_claimed",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sav_claimed"
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      }
-     ],
-     "instance": "f8880",
-     "kind": "candidate-unknown",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_line2",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "incomplete",
-     "source": {
-      "id": "stage16.cleanup.mut.clwb_two_children",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "person[taxpayer].sav_claimed",
-      "kind": "unknown",
-      "reason": "no input supplied for person[taxpayer].sav_claimed"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f8880.h_excess",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_born",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_student",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_claimed",
-       "value": {
-        "input": "person[taxpayer].sav_claimed",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sav_claimed"
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      }
-     ],
-     "instance": "f8880",
-     "kind": "candidate-unknown",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_line2",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "stage16.cleanup.f5695_small_wind",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f8880.h_excess",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_born",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_student",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      }
-     ],
-     "instance": "f8880",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "p560",
-       "locator": "pp. 8\u201311, 14\u201317, 38\u201340, chapters 2, 3 and 5"
-      },
-      "form": "Retirement plan contributions outside this tool",
-      "gate": "person[taxpayer].plan_screened",
-      "kind": "refusal",
-      "remedy": "These retirement contributions are outside this tool."
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_line2",
-       "value": {
-        "cite": {
-         "doc": "p560",
-         "locator": "pp. 8\u201311, 14\u201317, 38\u201340, chapters 2, 3 and 5"
-        },
-        "form": "Retirement plan contributions outside this tool",
-        "gate": "person[taxpayer].plan_screened",
-        "kind": "refusal",
-        "remedy": "These retirement contributions are outside this tool."
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "index": 218,
-      "kind": "generated",
-      "seed": 20261026
-     }
-    },
-    {
-     "candidate": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f8880.h_excess",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_born",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_student",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      }
-     ],
-     "instance": "f8880",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "p560",
-       "locator": "pp. 8\u201311, 14\u201317, 38\u201340, chapters 2, 3 and 5"
-      },
-      "form": "Retirement plan contributions outside this tool",
-      "gate": "person[taxpayer].plan_screened",
-      "kind": "refusal",
-      "remedy": "These retirement contributions are outside this tool."
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"taxpayer\"",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sav_line2",
-       "value": {
-        "cite": {
-         "doc": "p560",
-         "locator": "pp. 8\u201311, 14\u201317, 38\u201340, chapters 2, 3 and 5"
-        },
-        "form": "Retirement plan contributions outside this tool",
-        "gate": "person[taxpayer].plan_screened",
-        "kind": "refusal",
-        "remedy": "These retirement contributions are outside this tool."
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "index": 297,
-      "kind": "generated",
-      "seed": 20261026
-     }
-    }
-   ]
-  },
-  {
-   "absent": 0,
-   "agree": 1691,
+   "agree": 1697,
    "candidate": "f8880.line2b",
-   "compared": 1872,
-   "differ": 181,
+   "compared": 1876,
+   "differ": 179,
    "handle": "2(b)",
-   "in_scope": 1850,
-   "in_scope_agree": 1691,
+   "in_scope": 1854,
+   "in_scope_agree": 1697,
    "kinds": {
     "candidate-refuses": 22,
-    "candidate-unknown": 158,
-    "value": 1
+    "candidate-unknown": 157
    },
    "kinds_by_return": {
     "completed": {
      "candidate-refuses": 4
     },
     "incomplete": {
-     "candidate-unknown": 109
+     "candidate-unknown": 108
     },
     "refused": {
      "candidate-refuses": 18,
-     "candidate-unknown": 49,
-     "value": 1
+     "candidate-unknown": 49
     }
    },
    "open_at_triage": true,
    "project": "f8880.line2b",
    "shown_when": null,
    "sources": {
-    "fixture": 1372,
+    "fixture": 1376,
     "generated": 500
    },
    "status": "DISAGREE",
@@ -4382,110 +1297,25 @@
       "id": "table.band.mid",
       "kind": "fixture"
      }
-    },
-    {
-     "candidate": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f8880.h_excess",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f8880.h_joint",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f8880.h_2b_spouse",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "f8880",
-     "kind": "value",
-     "project": {
-      "cents": 190066,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[spouse].role",
-       "value": {
-        "kind": "enum",
-        "value": "spouse"
-       }
-      },
-      {
-       "ref": "\"spouse\"",
-       "value": {
-        "kind": "enum",
-        "value": "spouse"
-       }
-      },
-      {
-       "ref": "person[spouse].sav_line2",
-       "value": {
-        "cents": 190066,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "person[taxpayer].role",
-       "value": {
-        "kind": "enum",
-        "value": "taxpayer"
-       }
-      },
-      {
-       "ref": "\"spouse\"",
-       "value": {
-        "kind": "enum",
-        "value": "spouse"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "index": 113,
-      "kind": "generated",
-      "seed": 20261026
-     }
     }
    ]
   },
   {
    "absent": 0,
-   "agree": 1872,
+   "agree": 1876,
    "candidate": "f8880.line4a",
-   "compared": 1872,
+   "compared": 1876,
    "differ": 0,
    "handle": "4(a)",
-   "in_scope": 1821,
-   "in_scope_agree": 1821,
+   "in_scope": 1827,
+   "in_scope_agree": 1827,
    "kinds": {},
    "kinds_by_return": {},
    "open_at_triage": true,
    "project": "f8880.line4a",
    "shown_when": null,
    "sources": {
-    "fixture": 1372,
+    "fixture": 1376,
     "generated": 500
    },
    "status": "DISAGREE",
@@ -4494,20 +1324,20 @@
   },
   {
    "absent": 0,
-   "agree": 1872,
+   "agree": 1876,
    "candidate": "f8880.line4b",
-   "compared": 1872,
+   "compared": 1876,
    "differ": 0,
    "handle": "4(b)",
-   "in_scope": 1863,
-   "in_scope_agree": 1863,
+   "in_scope": 1867,
+   "in_scope_agree": 1867,
    "kinds": {},
    "kinds_by_return": {},
    "open_at_triage": true,
    "project": "f8880.line4b",
    "shown_when": null,
    "sources": {
-    "fixture": 1372,
+    "fixture": 1376,
     "generated": 500
    },
    "status": "DISAGREE",
@@ -4516,16 +1346,17 @@
   },
   {
    "absent": 0,
-   "agree": 1839,
+   "agree": 1851,
    "candidate": "f8880.line6a",
-   "compared": 1872,
-   "differ": 33,
+   "compared": 1876,
+   "differ": 25,
    "handle": "6(a)",
-   "in_scope": 1789,
-   "in_scope_agree": 1778,
+   "in_scope": 1804,
+   "in_scope_agree": 1793,
    "kinds": {
-    "candidate-refuses": 22,
+    "candidate-refuses": 13,
     "candidate-unknown": 1,
+    "project-refuses": 1,
     "value": 10
    },
    "kinds_by_return": {
@@ -4535,7 +1366,8 @@
      "value": 2
     },
     "refused": {
-     "candidate-refuses": 18,
+     "candidate-refuses": 9,
+     "project-refuses": 1,
      "value": 8
     }
    },
@@ -4543,7 +1375,7 @@
    "project": "f8880.line6a",
    "shown_when": null,
    "sources": {
-    "fixture": 1372,
+    "fixture": 1376,
     "generated": 500
    },
    "status": "DISAGREE",
@@ -4553,45 +1385,13 @@
      "candidate": {
       "cite": null,
       "form": "model-declared refusal",
-      "gate": "f8880.h_able",
+      "gate": "f8880.h_excess",
       "kind": "refusal",
       "remedy": "Outside candidate scope"
      },
      "candidate_operands": [
       {
-       "ref": "f8880.line5a",
-       "value": {
-        "cite": null,
-        "form": "model-declared refusal",
-        "gate": "f8880.h_able",
-        "kind": "refusal",
-        "remedy": "Outside candidate scope"
-       }
-      }
-     ],
-     "instance": "f8880",
-     "kind": "candidate-refuses",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "f8880.elig_a",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f8880.elig_a",
+       "ref": "f8880.h_inel_tp",
        "value": {
         "kind": "bool",
         "value": false
@@ -4605,30 +1405,7 @@
        }
       },
       {
-       "ref": "f8880.zero",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.sd.3.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cite": null,
-      "form": "model-declared refusal",
-      "gate": "f8880.h_excess",
-      "kind": "refusal",
-      "remedy": "Outside candidate scope"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f8880.line5a",
+       "ref": "f8880.h_line6a_raw",
        "value": {
         "cite": null,
         "form": "model-declared refusal",
@@ -4683,7 +1460,21 @@
      },
      "candidate_operands": [
       {
-       "ref": "f8880.line5a",
+       "ref": "f8880.h_inel_tp",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.h_line6a_raw",
        "value": {
         "cite": null,
         "form": "model-declared refusal",
@@ -4735,16 +1526,37 @@
      },
      "candidate_operands": [
       {
-       "ref": "f8880.line5a",
+       "ref": "f8880.h_inel_tp",
        "value": {
-        "cents": 0,
-        "kind": "money"
+        "kind": "bool",
+        "value": true
        }
       },
       {
-       "ref": "f8880.h_cap",
+       "ref": "false",
        "value": {
-        "cents": 200000,
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.h_inel_tp",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.h_zero",
+       "value": {
+        "cents": 0,
         "kind": "money"
        }
       }
@@ -4794,7 +1606,21 @@
      },
      "candidate_operands": [
       {
-       "ref": "f8880.line5a",
+       "ref": "f8880.h_inel_tp",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.h_line6a_raw",
        "value": {
         "cite": null,
         "form": "model-declared refusal",
@@ -4843,45 +1669,13 @@
      "candidate": {
       "cite": null,
       "form": "model-declared refusal",
-      "gate": "f8880.h_able",
+      "gate": "f8880.h_excess",
       "kind": "refusal",
       "remedy": "Outside candidate scope"
      },
      "candidate_operands": [
       {
-       "ref": "f8880.line5a",
-       "value": {
-        "cite": null,
-        "form": "model-declared refusal",
-        "gate": "f8880.h_able",
-        "kind": "refusal",
-        "remedy": "Outside candidate scope"
-       }
-      }
-     ],
-     "instance": "f8880",
-     "kind": "candidate-refuses",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "f8880.elig_a",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f8880.elig_a",
+       "ref": "f8880.h_inel_tp",
        "value": {
         "kind": "bool",
         "value": false
@@ -4895,30 +1689,7 @@
        }
       },
       {
-       "ref": "f8880.zero",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.f8863.3.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cite": null,
-      "form": "model-declared refusal",
-      "gate": "f8880.h_excess",
-      "kind": "refusal",
-      "remedy": "Outside candidate scope"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f8880.line5a",
+       "ref": "f8880.h_line6a_raw",
        "value": {
         "cite": null,
         "form": "model-declared refusal",
@@ -4970,16 +1741,37 @@
      },
      "candidate_operands": [
       {
-       "ref": "f8880.line5a",
+       "ref": "f8880.h_inel_tp",
        "value": {
-        "cents": 0,
-        "kind": "money"
+        "kind": "bool",
+        "value": true
        }
       },
       {
-       "ref": "f8880.h_cap",
+       "ref": "false",
        "value": {
-        "cents": 200000,
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.h_inel_tp",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.h_zero",
+       "value": {
+        "cents": 0,
         "kind": "money"
        }
       }
@@ -5021,21 +1813,180 @@
     },
     {
      "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "f8880.h_excess",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_inel_tp",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.h_line6a_raw",
+       "value": {
+        "cite": null,
+        "form": "model-declared refusal",
+        "gate": "f8880.h_excess",
+        "kind": "refusal",
+        "remedy": "Outside candidate scope"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 200000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.elig_a",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.line6a_figured",
+       "value": {
+        "cents": 200000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f5695.8",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "f8880.h_excess",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_inel_tp",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.h_line6a_raw",
+       "value": {
+        "cite": null,
+        "form": "model-declared refusal",
+        "gate": "f8880.h_excess",
+        "kind": "refusal",
+        "remedy": "Outside candidate scope"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 200000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.elig_a",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.line6a_figured",
+       "value": {
+        "cents": 200000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.s3.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
       "cents": 0,
       "kind": "money"
      },
      "candidate_operands": [
       {
-       "ref": "f8880.line5a",
+       "ref": "f8880.h_inel_tp",
        "value": {
-        "cents": 0,
-        "kind": "money"
+        "kind": "bool",
+        "value": true
        }
       },
       {
-       "ref": "f8880.h_cap",
+       "ref": "false",
        "value": {
-        "cents": 200000,
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.h_inel_tp",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.h_zero",
+       "value": {
+        "cents": 0,
         "kind": "money"
        }
       }
@@ -5077,24 +2028,101 @@
     },
     {
      "candidate": {
+      "cents": 200000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.h_inel_tp",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.h_line6a_raw",
+       "value": {
+        "cents": 200000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "p590a",
+       "locator": "p. 35, Excess Contributions, \"Generally, an excess contribution is the amount contributed to your traditional IRAs for the year that is more than the smaller of\""
+      },
+      "form": "Excess or recharacterized IRA contributions (Form 5329 Parts III and IV, Pub. 590-A)",
+      "gate": "person[taxpayer].ira_excess_gate",
+      "kind": "refusal",
+      "remedy": "Traditional or Roth IRA contributions for 2025 that are more than allowed or were recharacterized, and an excess contribution from an earlier year still in an IRA, are outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.elig_a",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.line6a_figured",
+       "value": {
+        "cite": {
+         "doc": "p590a",
+         "locator": "p. 35, Excess Contributions, \"Generally, an excess contribution is the amount contributed to your traditional IRAs for the year that is more than the smaller of\""
+        },
+        "form": "Excess or recharacterized IRA contributions (Form 5329 Parts III and IV, Pub. 590-A)",
+        "gate": "person[taxpayer].ira_excess_gate",
+        "kind": "refusal",
+        "remedy": "Traditional or Roth IRA contributions for 2025 that are more than allowed or were recharacterized, and an excess contribution from an earlier year still in an IRA, are outside this tool."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage16.refuse.person.ira_excess",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
       "input": "person[taxpayer].sav_claimed",
       "kind": "unknown",
+      "lowerBound": 0,
       "reason": "no input supplied for person[taxpayer].sav_claimed"
      },
      "candidate_operands": [
       {
-       "ref": "f8880.line5a",
+       "ref": "f8880.h_inel_tp",
        "value": {
         "input": "person[taxpayer].sav_claimed",
         "kind": "unknown",
+        "lowerBound": 0,
         "reason": "no input supplied for person[taxpayer].sav_claimed"
        }
       },
       {
-       "ref": "f8880.h_cap",
+       "ref": "false",
        "value": {
-        "cents": 200000,
-        "kind": "money"
+        "kind": "bool",
+        "value": false
        }
       }
      ],
@@ -5140,16 +2168,37 @@
      },
      "candidate_operands": [
       {
-       "ref": "f8880.line5a",
+       "ref": "f8880.h_inel_tp",
        "value": {
-        "cents": 0,
-        "kind": "money"
+        "kind": "bool",
+        "value": true
        }
       },
       {
-       "ref": "f8880.h_cap",
+       "ref": "false",
        "value": {
-        "cents": 200000,
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.h_inel_tp",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.h_zero",
+       "value": {
+        "cents": 0,
         "kind": "money"
        }
       }
@@ -5197,16 +2246,37 @@
      },
      "candidate_operands": [
       {
-       "ref": "f8880.line5a",
+       "ref": "f8880.h_inel_tp",
        "value": {
-        "cents": 0,
-        "kind": "money"
+        "kind": "bool",
+        "value": true
        }
       },
       {
-       "ref": "f8880.h_cap",
+       "ref": "false",
        "value": {
-        "cents": 200000,
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.h_inel_tp",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.h_zero",
+       "value": {
+        "cents": 0,
         "kind": "money"
        }
       }
@@ -5254,16 +2324,37 @@
      },
      "candidate_operands": [
       {
-       "ref": "f8880.line5a",
+       "ref": "f8880.h_inel_tp",
        "value": {
-        "cents": 0,
-        "kind": "money"
+        "kind": "bool",
+        "value": true
        }
       },
       {
-       "ref": "f8880.h_cap",
+       "ref": "false",
        "value": {
-        "cents": 200000,
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.h_inel_tp",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.h_zero",
+       "value": {
+        "cents": 0,
         "kind": "money"
        }
       }
@@ -5308,15 +2399,15 @@
   },
   {
    "absent": 0,
-   "agree": 1677,
+   "agree": 1683,
    "candidate": "f8880.line6b",
-   "compared": 1872,
-   "differ": 195,
+   "compared": 1876,
+   "differ": 193,
    "handle": "6(b)",
-   "in_scope": 1825,
-   "in_scope_agree": 1668,
+   "in_scope": 1831,
+   "in_scope_agree": 1674,
    "kinds": {
-    "candidate-refuses": 38,
+    "candidate-refuses": 36,
     "candidate-unknown": 157
    },
    "kinds_by_return": {
@@ -5327,7 +2418,7 @@
      "candidate-unknown": 108
     },
     "refused": {
-     "candidate-refuses": 34,
+     "candidate-refuses": 32,
      "candidate-unknown": 49
     }
    },
@@ -5335,7 +2426,7 @@
    "project": "f8880.line6b",
    "shown_when": null,
    "sources": {
-    "fixture": 1372,
+    "fixture": 1376,
     "generated": 500
    },
    "status": "DISAGREE",
@@ -5350,19 +2441,26 @@
      },
      "candidate_operands": [
       {
-       "ref": "f8880.line5b",
+       "ref": "f8880.h_inel_sp",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.h_line6b_raw",
        "value": {
         "input": "person[sample].sav_able",
         "kind": "unknown",
         "lowerBound": 0,
         "reason": "no input supplied for person[sample].sav_able"
-       }
-      },
-      {
-       "ref": "f8880.h_cap",
-       "value": {
-        "cents": 200000,
-        "kind": "money"
        }
       }
      ],
@@ -5411,7 +2509,21 @@
      },
      "candidate_operands": [
       {
-       "ref": "f8880.line5b",
+       "ref": "f8880.h_inel_sp",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.h_line6b_raw",
        "value": {
         "cite": null,
         "form": "model-declared refusal",
@@ -5466,7 +2578,21 @@
      },
      "candidate_operands": [
       {
-       "ref": "f8880.line5b",
+       "ref": "f8880.h_inel_sp",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.h_line6b_raw",
        "value": {
         "cite": null,
         "form": "model-declared refusal",
@@ -5521,7 +2647,21 @@
      },
      "candidate_operands": [
       {
-       "ref": "f8880.line5b",
+       "ref": "f8880.h_inel_sp",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.h_line6b_raw",
        "value": {
         "cite": null,
         "form": "model-declared refusal",
@@ -5576,7 +2716,21 @@
      },
      "candidate_operands": [
       {
-       "ref": "f8880.line5b",
+       "ref": "f8880.h_inel_sp",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.h_line6b_raw",
        "value": {
         "cite": null,
         "form": "model-declared refusal",
@@ -5631,7 +2785,21 @@
      },
      "candidate_operands": [
       {
-       "ref": "f8880.line5b",
+       "ref": "f8880.h_inel_sp",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.h_line6b_raw",
        "value": {
         "cite": null,
         "form": "model-declared refusal",
@@ -5686,7 +2854,21 @@
      },
      "candidate_operands": [
       {
-       "ref": "f8880.line5b",
+       "ref": "f8880.h_inel_sp",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.h_line6b_raw",
        "value": {
         "cite": null,
         "form": "model-declared refusal",
@@ -5740,19 +2922,26 @@
      },
      "candidate_operands": [
       {
-       "ref": "f8880.line5b",
+       "ref": "f8880.h_inel_sp",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.h_line6b_raw",
        "value": {
         "input": "person[taxpayer].sav_able",
         "kind": "unknown",
         "lowerBound": 0,
         "reason": "no input supplied for person[taxpayer].sav_able"
-       }
-      },
-      {
-       "ref": "f8880.h_cap",
-       "value": {
-        "cents": 200000,
-        "kind": "money"
        }
       }
      ],
@@ -5800,19 +2989,26 @@
      },
      "candidate_operands": [
       {
-       "ref": "f8880.line5b",
+       "ref": "f8880.h_inel_sp",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.h_line6b_raw",
        "value": {
         "input": "person[taxpayer].sav_able",
         "kind": "unknown",
         "lowerBound": 0,
         "reason": "no input supplied for person[taxpayer].sav_able"
-       }
-      },
-      {
-       "ref": "f8880.h_cap",
-       "value": {
-        "cents": 200000,
-        "kind": "money"
        }
       }
      ],
@@ -5860,19 +3056,26 @@
      },
      "candidate_operands": [
       {
-       "ref": "f8880.line5b",
+       "ref": "f8880.h_inel_sp",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.h_line6b_raw",
        "value": {
         "input": "person[sample].sav_able",
         "kind": "unknown",
         "lowerBound": 0,
         "reason": "no input supplied for person[sample].sav_able"
-       }
-      },
-      {
-       "ref": "f8880.h_cap",
-       "value": {
-        "cents": 200000,
-        "kind": "money"
        }
       }
      ],
@@ -5920,19 +3123,26 @@
      },
      "candidate_operands": [
       {
-       "ref": "f8880.line5b",
+       "ref": "f8880.h_inel_sp",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.h_line6b_raw",
        "value": {
         "input": "person[taxpayer].sav_able",
         "kind": "unknown",
         "lowerBound": 0,
         "reason": "no input supplied for person[taxpayer].sav_able"
-       }
-      },
-      {
-       "ref": "f8880.h_cap",
-       "value": {
-        "cents": 200000,
-        "kind": "money"
        }
       }
      ],
@@ -5980,19 +3190,26 @@
      },
      "candidate_operands": [
       {
-       "ref": "f8880.line5b",
+       "ref": "f8880.h_inel_sp",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8880.h_line6b_raw",
        "value": {
         "input": "person[taxpayer].sav_able",
         "kind": "unknown",
         "lowerBound": 0,
         "reason": "no input supplied for person[taxpayer].sav_able"
-       }
-      },
-      {
-       "ref": "f8880.h_cap",
-       "value": {
-        "cents": 200000,
-        "kind": "money"
        }
       }
      ],
@@ -6035,16 +3252,17 @@
   },
   {
    "absent": 0,
-   "agree": 1189,
+   "agree": 1166,
    "candidate": "f8880.line12",
-   "compared": 1872,
-   "differ": 683,
+   "compared": 1876,
+   "differ": 710,
    "handle": "12",
-   "in_scope": 1156,
-   "in_scope_agree": 986,
+   "in_scope": 1169,
+   "in_scope_agree": 995,
    "kinds": {
-    "candidate-refuses": 513,
-    "candidate-unknown": 170
+    "candidate-refuses": 536,
+    "candidate-unknown": 173,
+    "value": 1
    },
    "kinds_by_return": {
     "completed": {
@@ -6052,18 +3270,19 @@
      "candidate-unknown": 2
     },
     "incomplete": {
-     "candidate-unknown": 140
+     "candidate-unknown": 141
     },
     "refused": {
-     "candidate-refuses": 509,
-     "candidate-unknown": 28
+     "candidate-refuses": 532,
+     "candidate-unknown": 30,
+     "value": 1
     }
    },
    "open_at_triage": true,
    "project": "f8880.line12",
-   "shown_when": null,
+   "shown_when": "f8880.past9",
    "sources": {
-    "fixture": 1372,
+    "fixture": 1376,
     "generated": 500
    },
    "status": "DISAGREE",
@@ -6098,8 +3317,7 @@
      "instance": "f8880",
      "kind": "candidate-refuses",
      "project": {
-      "cents": 0,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_operands": [
       {
@@ -6180,8 +3398,7 @@
      "instance": "f8880",
      "kind": "candidate-refuses",
      "project": {
-      "cents": 0,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_operands": [
       {
@@ -6228,29 +3445,34 @@
     },
     {
      "candidate": {
-      "cite": null,
-      "form": "model-declared refusal",
+      "cite": {
+       "doc": "i2441",
+       "locator": "p. 4, Lines 4 and 5, \"Excluded as foreign earned income (including any housing exclusion) on Form 2555, line 43\""
+      },
+      "form": "Earned income less excluded foreign earned income (Form 2441, lines 4, 5, 18 and 19; Forms 2555 and 4563)",
       "gate": "sa.excluded_income",
       "kind": "refusal",
-      "remedy": "Outside candidate scope"
+      "remedy": "Excluded foreign earned income, foreign housing and possessions income are outside this tool."
      },
      "candidate_operands": [
       {
        "ref": "f8880.line10",
        "value": {
-        "cite": null,
-        "form": "model-declared refusal",
+        "cite": {
+         "doc": "i2441",
+         "locator": "p. 4, Lines 4 and 5, \"Excluded as foreign earned income (including any housing exclusion) on Form 2555, line 43\""
+        },
+        "form": "Earned income less excluded foreign earned income (Form 2441, lines 4, 5, 18 and 19; Forms 2555 and 4563)",
         "gate": "sa.excluded_income",
         "kind": "refusal",
-        "remedy": "Outside candidate scope"
+        "remedy": "Excluded foreign earned income, foreign housing and possessions income are outside this tool."
        }
       }
      ],
      "instance": "f8880",
      "kind": "candidate-refuses",
      "project": {
-      "cents": 0,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_operands": [
       {
@@ -6331,8 +3553,7 @@
      "instance": "f8880",
      "kind": "candidate-refuses",
      "project": {
-      "cents": 0,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_operands": [
       {
@@ -6413,8 +3634,7 @@
      "instance": "f8880",
      "kind": "candidate-refuses",
      "project": {
-      "cents": 0,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_operands": [
       {
@@ -6495,8 +3715,7 @@
      "instance": "f8880",
      "kind": "candidate-refuses",
      "project": {
-      "cents": 0,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_operands": [
       {
@@ -6567,8 +3786,7 @@
      "instance": "f8880",
      "kind": "candidate-unknown",
      "project": {
-      "cents": 0,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_operands": [
       {
@@ -6615,19 +3833,75 @@
     },
     {
      "candidate": {
-      "input": "person[taxpayer].sav_able",
-      "kind": "unknown",
-      "lowerBound": 0,
-      "reason": "no input supplied for person[taxpayer].sav_able"
+      "cents": 0,
+      "kind": "money"
      },
      "candidate_operands": [
       {
        "ref": "f8880.line10",
        "value": {
-        "input": "person[taxpayer].sav_able",
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f8880.line11",
+       "value": {
+        "cents": 116800,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8880",
+     "kind": "value",
+     "project": {
+      "cents": 100000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8880.can_take",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8880.line12_figured",
+       "value": {
+        "cents": 100000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.sa.5",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].sav_born",
+      "kind": "unknown",
+      "lowerBound": 0,
+      "reason": "no input supplied for person[taxpayer].sav_born"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8880.line10",
+       "value": {
+        "input": "person[taxpayer].sav_born",
         "kind": "unknown",
         "lowerBound": 0,
-        "reason": "no input supplied for person[taxpayer].sav_able"
+        "reason": "no input supplied for person[taxpayer].sav_born"
        }
       },
       {
@@ -6642,8 +3916,7 @@
      "instance": "f8880",
      "kind": "candidate-unknown",
      "project": {
-      "cents": 0,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_operands": [
       {
@@ -6690,19 +3963,19 @@
     },
     {
      "candidate": {
-      "input": "person[taxpayer].sav_able",
+      "input": "person[taxpayer].sav_born",
       "kind": "unknown",
       "lowerBound": 0,
-      "reason": "no input supplied for person[taxpayer].sav_able"
+      "reason": "no input supplied for person[taxpayer].sav_born"
      },
      "candidate_operands": [
       {
        "ref": "f8880.line10",
        "value": {
-        "input": "person[taxpayer].sav_able",
+        "input": "person[taxpayer].sav_born",
         "kind": "unknown",
         "lowerBound": 0,
-        "reason": "no input supplied for person[taxpayer].sav_able"
+        "reason": "no input supplied for person[taxpayer].sav_born"
        }
       },
       {
@@ -6717,8 +3990,7 @@
      "instance": "f8880",
      "kind": "candidate-unknown",
      "project": {
-      "cents": 0,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_operands": [
       {
@@ -6765,19 +4037,19 @@
     },
     {
      "candidate": {
-      "input": "person[taxpayer].sav_able",
+      "input": "person[taxpayer].sav_born",
       "kind": "unknown",
       "lowerBound": 0,
-      "reason": "no input supplied for person[taxpayer].sav_able"
+      "reason": "no input supplied for person[taxpayer].sav_born"
      },
      "candidate_operands": [
       {
        "ref": "f8880.line10",
        "value": {
-        "input": "person[taxpayer].sav_able",
+        "input": "person[taxpayer].sav_born",
         "kind": "unknown",
         "lowerBound": 0,
-        "reason": "no input supplied for person[taxpayer].sav_able"
+        "reason": "no input supplied for person[taxpayer].sav_born"
        }
       },
       {
@@ -6792,8 +4064,7 @@
      "instance": "f8880",
      "kind": "candidate-unknown",
      "project": {
-      "cents": 0,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_operands": [
       {
@@ -6840,19 +4111,19 @@
     },
     {
      "candidate": {
-      "input": "person[taxpayer].sav_able",
+      "input": "person[taxpayer].sav_born",
       "kind": "unknown",
       "lowerBound": 0,
-      "reason": "no input supplied for person[taxpayer].sav_able"
+      "reason": "no input supplied for person[taxpayer].sav_born"
      },
      "candidate_operands": [
       {
        "ref": "f8880.line10",
        "value": {
-        "input": "person[taxpayer].sav_able",
+        "input": "person[taxpayer].sav_born",
         "kind": "unknown",
         "lowerBound": 0,
-        "reason": "no input supplied for person[taxpayer].sav_able"
+        "reason": "no input supplied for person[taxpayer].sav_born"
        }
       },
       {
@@ -6867,8 +4138,7 @@
      "instance": "f8880",
      "kind": "candidate-unknown",
      "project": {
-      "cents": 0,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_operands": [
       {
@@ -6915,19 +4185,19 @@
     },
     {
      "candidate": {
-      "input": "person[taxpayer].sav_able",
+      "input": "person[taxpayer].sav_born",
       "kind": "unknown",
       "lowerBound": 0,
-      "reason": "no input supplied for person[taxpayer].sav_able"
+      "reason": "no input supplied for person[taxpayer].sav_born"
      },
      "candidate_operands": [
       {
        "ref": "f8880.line10",
        "value": {
-        "input": "person[taxpayer].sav_able",
+        "input": "person[taxpayer].sav_born",
         "kind": "unknown",
         "lowerBound": 0,
-        "reason": "no input supplied for person[taxpayer].sav_able"
+        "reason": "no input supplied for person[taxpayer].sav_born"
        }
       },
       {
@@ -6942,8 +4212,7 @@
      "instance": "f8880",
      "kind": "candidate-unknown",
      "project": {
-      "cents": 0,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_operands": [
       {
@@ -6991,10 +4260,10 @@
    ]
   }
  ],
- "log_sha256_at_triage": "2f346692b11d1599696eb446bb4329826e4598fed4a2b01211b48891bd9cb306",
+ "log_sha256_at_triage": "9d23422ec3b57b20d38b655022bd548ed64558cfb58f6c46637cb30f48a237bd",
  "policy": "executable-triage-v2",
- "response_sha256": "b74e0da84aab97c9240a5fea271f9f39ba706b2e246aae06265a3a4117b04df5",
+ "response_sha256": "99e668f46303d360bd748b5a00c49cac936aa1b26f43cf7fac1b9d957b138156",
  "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
  "state": "evaluated",
- "subject_sha256": "c4ece4d4ea848b3ec418270c1c973703e0f2e0bee97109bd95d0a16cb18b9d4c"
+ "subject_sha256": "81d00b90ac4e26efd51adf5680347910c3132344872f53a7dc8ab29d15a1a051"
 }

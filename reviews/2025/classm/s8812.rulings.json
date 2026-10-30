@@ -4,6 +4,177 @@
  "rulings": [
   {
    "case": "classm.s8812.1",
+   "printed": "(CLW A 1)",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.s8812.1.prompt.txt) lists the line as \"line (CLW A 1)\"; the reply names it \"CLW A 1\" without the parentheses, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (known defect T-070 (1), T-081 (1); case classm.s8812.4 writes \"(CLW B n)\" and was read). The worksheet is reached (line 12 $3,200.00, s8812.show13 true; f1040s8812 p. 1, line 13, \"Enter the amount from Credit Limit Worksheet A\"). The reply's value is $0.00 (Form 1040 line 18 $0.00, Schedule 3 lines $0.00, line 4 -0- with no Worksheet B credit), equal to the project's $0.00, and line 13 $0.00 agrees. No project defect. No expectation exists for a line without a parsed answer; the drop is a no-op.",
+   "drop": true,
+   "context": "71b4e30d2bf36832ad1b3e6ce81f331ef1cd367c35d98db5477df16f02c18134"
+  },
+  {
+   "case": "classm.s8812.1",
+   "printed": "(CLW A 2)",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.s8812.1.prompt.txt) lists the line as \"line (CLW A 2)\"; the reply names it \"CLW A 2\" without the parentheses, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (known defect T-070 (1), T-081 (1); case classm.s8812.4 writes \"(CLW B n)\" and was read). The worksheet is reached (line 12 $3,200.00, s8812.show13 true; f1040s8812 p. 1, line 13, \"Enter the amount from Credit Limit Worksheet A\"). The reply's value is $0.00 (Form 1040 line 18 $0.00, Schedule 3 lines $0.00, line 4 -0- with no Worksheet B credit), equal to the project's $0.00, and line 13 $0.00 agrees. No project defect. No expectation exists for a line without a parsed answer; the drop is a no-op.",
+   "drop": true,
+   "context": "71b4e30d2bf36832ad1b3e6ce81f331ef1cd367c35d98db5477df16f02c18134"
+  },
+  {
+   "case": "classm.s8812.1",
+   "printed": "(CLW A 3)",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.s8812.1.prompt.txt) lists the line as \"line (CLW A 3)\"; the reply names it \"CLW A 3\" without the parentheses, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (known defect T-070 (1), T-081 (1); case classm.s8812.4 writes \"(CLW B n)\" and was read). The worksheet is reached (line 12 $3,200.00, s8812.show13 true; f1040s8812 p. 1, line 13, \"Enter the amount from Credit Limit Worksheet A\"). The reply's value is $0.00 (Form 1040 line 18 $0.00, Schedule 3 lines $0.00, line 4 -0- with no Worksheet B credit), equal to the project's $0.00, and line 13 $0.00 agrees. No project defect. No expectation exists for a line without a parsed answer; the drop is a no-op.",
+   "drop": true,
+   "context": "71b4e30d2bf36832ad1b3e6ce81f331ef1cd367c35d98db5477df16f02c18134"
+  },
+  {
+   "case": "classm.s8812.1",
+   "printed": "(CLW A 4)",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.s8812.1.prompt.txt) lists the line as \"line (CLW A 4)\"; the reply names it \"CLW A 4\" without the parentheses, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (known defect T-070 (1), T-081 (1); case classm.s8812.4 writes \"(CLW B n)\" and was read). The worksheet is reached (line 12 $3,200.00, s8812.show13 true; f1040s8812 p. 1, line 13, \"Enter the amount from Credit Limit Worksheet A\"). The reply's value is $0.00 (Form 1040 line 18 $0.00, Schedule 3 lines $0.00, line 4 -0- with no Worksheet B credit), equal to the project's $0.00, and line 13 $0.00 agrees. No project defect. No expectation exists for a line without a parsed answer; the drop is a no-op.",
+   "drop": true,
+   "context": "71b4e30d2bf36832ad1b3e6ce81f331ef1cd367c35d98db5477df16f02c18134"
+  },
+  {
+   "case": "classm.s8812.1",
+   "printed": "(CLW A 5)",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.s8812.1.prompt.txt) lists the line as \"line (CLW A 5)\"; the reply names it \"CLW A 5\" without the parentheses, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (known defect T-070 (1), T-081 (1); case classm.s8812.4 writes \"(CLW B n)\" and was read). The worksheet is reached (line 12 $3,200.00, s8812.show13 true; f1040s8812 p. 1, line 13, \"Enter the amount from Credit Limit Worksheet A\"). The reply's value is $0.00 (Form 1040 line 18 $0.00, Schedule 3 lines $0.00, line 4 -0- with no Worksheet B credit), equal to the project's $0.00, and line 13 $0.00 agrees. No project defect. No expectation exists for a line without a parsed answer; the drop is a no-op.",
+   "drop": true,
+   "context": "71b4e30d2bf36832ad1b3e6ce81f331ef1cd367c35d98db5477df16f02c18134"
+  },
+  {
+   "case": "classm.s8812.1",
+   "printed": "(CLW B 1)",
+   "project": "$3,200.00",
+   "model": "no answer",
+   "ruling": "Ruling: representation; skipped line (README skipped-line rule; T-079 (1)). i1040s8812 p. 4, Credit Limit Worksheet A: \"Complete Credit Limit Worksheet B only if you meet all the following. 1. You are claiming one or more of the following credits. ... c. Residential clean energy credit, Form 5695, Part I. ... 2. You are not filing Form 2555. 3. Line 4 of Schedule 8812 is more than zero.\" The case claims no Form 5695 Part I credit, so s8812.clwb_complete is false, s8812.show_clwb is false and the project now hides (CLW B 1) (shown_when s8812.show_clwb, T-067); the $3,200.00 in the log is the hidden internal value, requested only because the class M fill of a non-collection document ignores shown_when (T-079 (1)). The reply leaves the line blank (\"CLW B not completed\"), which follows the source; Credit Limit Worksheet A line 4 is -0- on both sides. The prompt (.classm/classm.s8812.1.prompt.txt) lists the line as \"line (CLW B 1)\"; the reply names it \"CLW B 1\" without the parentheses, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (known defect T-070 (1), T-081 (1); case classm.s8812.4 writes \"(CLW B n)\" and was read). Not a model error and not a project defect. Expectation dropped (none was recorded).",
+   "drop": true,
+   "context": "71b4e30d2bf36832ad1b3e6ce81f331ef1cd367c35d98db5477df16f02c18134"
+  },
+  {
+   "case": "classm.s8812.1",
+   "printed": "(CLW B 10)",
+   "project": "$2,798.00",
+   "model": "no answer",
+   "ruling": "Ruling: representation; skipped line (README skipped-line rule; T-079 (1)). i1040s8812 p. 4, Credit Limit Worksheet A: \"Complete Credit Limit Worksheet B only if you meet all the following. 1. You are claiming one or more of the following credits. ... c. Residential clean energy credit, Form 5695, Part I. ... 2. You are not filing Form 2555. 3. Line 4 of Schedule 8812 is more than zero.\" The case claims no Form 5695 Part I credit, so s8812.clwb_complete is false, s8812.show_clwb is false and the project now hides (CLW B 10) (shown_when s8812.show_clwb, T-067); the $2,798.00 in the log is the hidden internal value, requested only because the class M fill of a non-collection document ignores shown_when (T-079 (1)). The reply leaves the line blank (\"CLW B not completed\"), which follows the source; Credit Limit Worksheet A line 4 is -0- on both sides. The prompt (.classm/classm.s8812.1.prompt.txt) lists the line as \"line (CLW B 10)\"; the reply names it \"CLW B 10\" without the parentheses, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (known defect T-070 (1), T-081 (1); case classm.s8812.4 writes \"(CLW B n)\" and was read). Not a model error and not a project defect. Expectation dropped (none was recorded).",
+   "drop": true,
+   "context": "71b4e30d2bf36832ad1b3e6ce81f331ef1cd367c35d98db5477df16f02c18134"
+  },
+  {
+   "case": "classm.s8812.1",
+   "printed": "(CLW B 11)",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: representation; skipped line (README skipped-line rule; T-079 (1)). i1040s8812 p. 4, Credit Limit Worksheet A: \"Complete Credit Limit Worksheet B only if you meet all the following. 1. You are claiming one or more of the following credits. ... c. Residential clean energy credit, Form 5695, Part I. ... 2. You are not filing Form 2555. 3. Line 4 of Schedule 8812 is more than zero.\" The case claims no Form 5695 Part I credit, so s8812.clwb_complete is false, s8812.show_clwb is false and the project now hides (CLW B 11) (shown_when s8812.show_clwb, T-067); the $0.00 in the log is the hidden internal value, requested only because the class M fill of a non-collection document ignores shown_when (T-079 (1)). The reply leaves the line blank (\"CLW B not completed\"), which follows the source; Credit Limit Worksheet A line 4 is -0- on both sides. The prompt (.classm/classm.s8812.1.prompt.txt) lists the line as \"line (CLW B 11)\"; the reply names it \"CLW B 11\" without the parentheses, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (known defect T-070 (1), T-081 (1); case classm.s8812.4 writes \"(CLW B n)\" and was read). Not a model error and not a project defect. Expectation dropped (none was recorded).",
+   "drop": true,
+   "context": "71b4e30d2bf36832ad1b3e6ce81f331ef1cd367c35d98db5477df16f02c18134"
+  },
+  {
+   "case": "classm.s8812.1",
+   "printed": "(CLW B 12)",
+   "project": "$4,565.40",
+   "model": "no answer",
+   "ruling": "Ruling: representation; skipped line (README skipped-line rule; T-079 (1)). i1040s8812 p. 4, Credit Limit Worksheet A: \"Complete Credit Limit Worksheet B only if you meet all the following. 1. You are claiming one or more of the following credits. ... c. Residential clean energy credit, Form 5695, Part I. ... 2. You are not filing Form 2555. 3. Line 4 of Schedule 8812 is more than zero.\" The case claims no Form 5695 Part I credit, so s8812.clwb_complete is false, s8812.show_clwb is false and the project now hides (CLW B 12) (shown_when s8812.show_clwb, T-067); the $4,565.40 in the log is the hidden internal value, requested only because the class M fill of a non-collection document ignores shown_when (T-079 (1)). The reply leaves the line blank (\"CLW B not completed\"), which follows the source; Credit Limit Worksheet A line 4 is -0- on both sides. The prompt (.classm/classm.s8812.1.prompt.txt) lists the line as \"line (CLW B 12)\"; the reply names it \"CLW B 12\" without the parentheses, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (known defect T-070 (1), T-081 (1); case classm.s8812.4 writes \"(CLW B n)\" and was read). Not a model error and not a project defect. Expectation dropped (none was recorded).",
+   "drop": true,
+   "context": "71b4e30d2bf36832ad1b3e6ce81f331ef1cd367c35d98db5477df16f02c18134"
+  },
+  {
+   "case": "classm.s8812.1",
+   "printed": "(CLW B 13)",
+   "project": "$1,700.00",
+   "model": "no answer",
+   "ruling": "Ruling: representation; skipped line (README skipped-line rule; T-079 (1)). i1040s8812 p. 4, Credit Limit Worksheet A: \"Complete Credit Limit Worksheet B only if you meet all the following. 1. You are claiming one or more of the following credits. ... c. Residential clean energy credit, Form 5695, Part I. ... 2. You are not filing Form 2555. 3. Line 4 of Schedule 8812 is more than zero.\" The case claims no Form 5695 Part I credit, so s8812.clwb_complete is false, s8812.show_clwb is false and the project now hides (CLW B 13) (shown_when s8812.show_clwb, T-067); the $1,700.00 in the log is the hidden internal value, requested only because the class M fill of a non-collection document ignores shown_when (T-079 (1)). The reply leaves the line blank (\"CLW B not completed\"), which follows the source; Credit Limit Worksheet A line 4 is -0- on both sides. The prompt (.classm/classm.s8812.1.prompt.txt) lists the line as \"line (CLW B 13)\"; the reply names it \"CLW B 13\" without the parentheses, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (known defect T-070 (1), T-081 (1); case classm.s8812.4 writes \"(CLW B n)\" and was read). Not a model error and not a project defect. Expectation dropped (none was recorded).",
+   "drop": true,
+   "context": "71b4e30d2bf36832ad1b3e6ce81f331ef1cd367c35d98db5477df16f02c18134"
+  },
+  {
+   "case": "classm.s8812.1",
+   "printed": "(CLW B 14)",
+   "project": "$1,500.00",
+   "model": "no answer",
+   "ruling": "Ruling: representation; skipped line (README skipped-line rule; T-079 (1)). i1040s8812 p. 4, Credit Limit Worksheet A: \"Complete Credit Limit Worksheet B only if you meet all the following. 1. You are claiming one or more of the following credits. ... c. Residential clean energy credit, Form 5695, Part I. ... 2. You are not filing Form 2555. 3. Line 4 of Schedule 8812 is more than zero.\" The case claims no Form 5695 Part I credit, so s8812.clwb_complete is false, s8812.show_clwb is false and the project now hides (CLW B 14) (shown_when s8812.show_clwb, T-067); the $1,500.00 in the log is the hidden internal value, requested only because the class M fill of a non-collection document ignores shown_when (T-079 (1)). The reply leaves the line blank (\"CLW B not completed\"), which follows the source; Credit Limit Worksheet A line 4 is -0- on both sides. The prompt (.classm/classm.s8812.1.prompt.txt) lists the line as \"line (CLW B 14)\"; the reply names it \"CLW B 14\" without the parentheses, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (known defect T-070 (1), T-081 (1); case classm.s8812.4 writes \"(CLW B n)\" and was read). Not a model error and not a project defect. Expectation dropped (none was recorded).",
+   "drop": true,
+   "context": "71b4e30d2bf36832ad1b3e6ce81f331ef1cd367c35d98db5477df16f02c18134"
+  },
+  {
+   "case": "classm.s8812.1",
+   "printed": "(CLW B 15)",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: representation; skipped line (README skipped-line rule; T-079 (1)). i1040s8812 p. 4, Credit Limit Worksheet A: \"Complete Credit Limit Worksheet B only if you meet all the following. 1. You are claiming one or more of the following credits. ... c. Residential clean energy credit, Form 5695, Part I. ... 2. You are not filing Form 2555. 3. Line 4 of Schedule 8812 is more than zero.\" The case claims no Form 5695 Part I credit, so s8812.clwb_complete is false, s8812.show_clwb is false and the project now hides (CLW B 15) (shown_when s8812.show_clwb, T-067); the $0.00 in the log is the hidden internal value, requested only because the class M fill of a non-collection document ignores shown_when (T-079 (1)). The reply leaves the line blank (\"CLW B not completed\"), which follows the source; Credit Limit Worksheet A line 4 is -0- on both sides. The prompt (.classm/classm.s8812.1.prompt.txt) lists the line as \"line (CLW B 15)\"; the reply names it \"CLW B 15\" without the parentheses, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (known defect T-070 (1), T-081 (1); case classm.s8812.4 writes \"(CLW B n)\" and was read). Not a model error and not a project defect. Expectation dropped (none was recorded).",
+   "drop": true,
+   "context": "71b4e30d2bf36832ad1b3e6ce81f331ef1cd367c35d98db5477df16f02c18134"
+  },
+  {
+   "case": "classm.s8812.1",
+   "printed": "(CLW B 2)",
+   "project": "$1,700.00",
+   "model": "no answer",
+   "ruling": "Ruling: representation; skipped line (README skipped-line rule; T-079 (1)). i1040s8812 p. 4, Credit Limit Worksheet A: \"Complete Credit Limit Worksheet B only if you meet all the following. 1. You are claiming one or more of the following credits. ... c. Residential clean energy credit, Form 5695, Part I. ... 2. You are not filing Form 2555. 3. Line 4 of Schedule 8812 is more than zero.\" The case claims no Form 5695 Part I credit, so s8812.clwb_complete is false, s8812.show_clwb is false and the project now hides (CLW B 2) (shown_when s8812.show_clwb, T-067); the $1,700.00 in the log is the hidden internal value, requested only because the class M fill of a non-collection document ignores shown_when (T-079 (1)). The reply leaves the line blank (\"CLW B not completed\"), which follows the source; Credit Limit Worksheet A line 4 is -0- on both sides. The prompt (.classm/classm.s8812.1.prompt.txt) lists the line as \"line (CLW B 2)\"; the reply names it \"CLW B 2\" without the parentheses, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (known defect T-070 (1), T-081 (1); case classm.s8812.4 writes \"(CLW B n)\" and was read). Not a model error and not a project defect. Expectation dropped (none was recorded).",
+   "drop": true,
+   "context": "71b4e30d2bf36832ad1b3e6ce81f331ef1cd367c35d98db5477df16f02c18134"
+  },
+  {
+   "case": "classm.s8812.1",
+   "printed": "(CLW B 3)",
+   "project": "$32,936.00",
+   "model": "no answer",
+   "ruling": "Ruling: representation; skipped line (README skipped-line rule; T-079 (1)). i1040s8812 p. 4, Credit Limit Worksheet A: \"Complete Credit Limit Worksheet B only if you meet all the following. 1. You are claiming one or more of the following credits. ... c. Residential clean energy credit, Form 5695, Part I. ... 2. You are not filing Form 2555. 3. Line 4 of Schedule 8812 is more than zero.\" The case claims no Form 5695 Part I credit, so s8812.clwb_complete is false, s8812.show_clwb is false and the project now hides (CLW B 3) (shown_when s8812.show_clwb, T-067); the $32,936.00 in the log is the hidden internal value, requested only because the class M fill of a non-collection document ignores shown_when (T-079 (1)). The reply leaves the line blank (\"CLW B not completed\"), which follows the source; Credit Limit Worksheet A line 4 is -0- on both sides. The prompt (.classm/classm.s8812.1.prompt.txt) lists the line as \"line (CLW B 3)\"; the reply names it \"CLW B 3\" without the parentheses, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (known defect T-070 (1), T-081 (1); case classm.s8812.4 writes \"(CLW B n)\" and was read). Not a model error and not a project defect. Expectation dropped (none was recorded).",
+   "drop": true,
+   "context": "71b4e30d2bf36832ad1b3e6ce81f331ef1cd367c35d98db5477df16f02c18134"
+  },
+  {
+   "case": "classm.s8812.1",
+   "printed": "(CLW B 4)",
+   "project": "$30,436.00",
+   "model": "no answer",
+   "ruling": "Ruling: representation; skipped line (README skipped-line rule; T-079 (1)). i1040s8812 p. 4, Credit Limit Worksheet A: \"Complete Credit Limit Worksheet B only if you meet all the following. 1. You are claiming one or more of the following credits. ... c. Residential clean energy credit, Form 5695, Part I. ... 2. You are not filing Form 2555. 3. Line 4 of Schedule 8812 is more than zero.\" The case claims no Form 5695 Part I credit, so s8812.clwb_complete is false, s8812.show_clwb is false and the project now hides (CLW B 4) (shown_when s8812.show_clwb, T-067); the $30,436.00 in the log is the hidden internal value, requested only because the class M fill of a non-collection document ignores shown_when (T-079 (1)). The reply leaves the line blank (\"CLW B not completed\"), which follows the source; Credit Limit Worksheet A line 4 is -0- on both sides. The prompt (.classm/classm.s8812.1.prompt.txt) lists the line as \"line (CLW B 4)\"; the reply names it \"CLW B 4\" without the parentheses, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (known defect T-070 (1), T-081 (1); case classm.s8812.4 writes \"(CLW B n)\" and was read). Not a model error and not a project defect. Expectation dropped (none was recorded).",
+   "drop": true,
+   "context": "71b4e30d2bf36832ad1b3e6ce81f331ef1cd367c35d98db5477df16f02c18134"
+  },
+  {
+   "case": "classm.s8812.1",
+   "printed": "(CLW B 5)",
+   "project": "$4,565.40",
+   "model": "no answer",
+   "ruling": "Ruling: representation; skipped line (README skipped-line rule; T-079 (1)). i1040s8812 p. 4, Credit Limit Worksheet A: \"Complete Credit Limit Worksheet B only if you meet all the following. 1. You are claiming one or more of the following credits. ... c. Residential clean energy credit, Form 5695, Part I. ... 2. You are not filing Form 2555. 3. Line 4 of Schedule 8812 is more than zero.\" The case claims no Form 5695 Part I credit, so s8812.clwb_complete is false, s8812.show_clwb is false and the project now hides (CLW B 5) (shown_when s8812.show_clwb, T-067); the $4,565.40 in the log is the hidden internal value, requested only because the class M fill of a non-collection document ignores shown_when (T-079 (1)). The reply leaves the line blank (\"CLW B not completed\"), which follows the source; Credit Limit Worksheet A line 4 is -0- on both sides. The prompt (.classm/classm.s8812.1.prompt.txt) lists the line as \"line (CLW B 5)\"; the reply names it \"CLW B 5\" without the parentheses, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (known defect T-070 (1), T-081 (1); case classm.s8812.4 writes \"(CLW B n)\" and was read). Not a model error and not a project defect. Expectation dropped (none was recorded).",
+   "drop": true,
+   "context": "71b4e30d2bf36832ad1b3e6ce81f331ef1cd367c35d98db5477df16f02c18134"
+  },
+  {
+   "case": "classm.s8812.1",
+   "printed": "(CLW B 7)",
+   "project": "$2,925.57",
+   "model": "no answer",
+   "ruling": "Ruling: representation; skipped line (README skipped-line rule; T-079 (1)). i1040s8812 p. 4, Credit Limit Worksheet A: \"Complete Credit Limit Worksheet B only if you meet all the following. 1. You are claiming one or more of the following credits. ... c. Residential clean energy credit, Form 5695, Part I. ... 2. You are not filing Form 2555. 3. Line 4 of Schedule 8812 is more than zero.\" The case claims no Form 5695 Part I credit, so s8812.clwb_complete is false, s8812.show_clwb is false and the project now hides (CLW B 7) (shown_when s8812.show_clwb, T-067); the $2,925.57 in the log is the hidden internal value, requested only because the class M fill of a non-collection document ignores shown_when (T-079 (1)). The reply leaves the line blank (\"CLW B not completed\"), which follows the source; Credit Limit Worksheet A line 4 is -0- on both sides. The prompt (.classm/classm.s8812.1.prompt.txt) lists the line as \"line (CLW B 7)\"; the reply names it \"CLW B 7\" without the parentheses, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (known defect T-070 (1), T-081 (1); case classm.s8812.4 writes \"(CLW B n)\" and was read). Not a model error and not a project defect. Expectation dropped (none was recorded).",
+   "drop": true,
+   "context": "71b4e30d2bf36832ad1b3e6ce81f331ef1cd367c35d98db5477df16f02c18134"
+  },
+  {
+   "case": "classm.s8812.1",
+   "printed": "(CLW B 8)",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: representation; skipped line (README skipped-line rule; T-079 (1)). i1040s8812 p. 4, Credit Limit Worksheet A: \"Complete Credit Limit Worksheet B only if you meet all the following. 1. You are claiming one or more of the following credits. ... c. Residential clean energy credit, Form 5695, Part I. ... 2. You are not filing Form 2555. 3. Line 4 of Schedule 8812 is more than zero.\" The case claims no Form 5695 Part I credit, so s8812.clwb_complete is false, s8812.show_clwb is false and the project now hides (CLW B 8) (shown_when s8812.show_clwb, T-067); the $0.00 in the log is the hidden internal value, requested only because the class M fill of a non-collection document ignores shown_when (T-079 (1)). The reply leaves the line blank (\"CLW B not completed\"), which follows the source; Credit Limit Worksheet A line 4 is -0- on both sides. The prompt (.classm/classm.s8812.1.prompt.txt) lists the line as \"line (CLW B 8)\"; the reply names it \"CLW B 8\" without the parentheses, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (known defect T-070 (1), T-081 (1); case classm.s8812.4 writes \"(CLW B n)\" and was read). Not a model error and not a project defect. Expectation dropped (none was recorded).",
+   "drop": true,
+   "context": "71b4e30d2bf36832ad1b3e6ce81f331ef1cd367c35d98db5477df16f02c18134"
+  },
+  {
+   "case": "classm.s8812.1",
+   "printed": "(CLW B 9)",
+   "project": "$2,925.57",
+   "model": "no answer",
+   "ruling": "Ruling: representation; skipped line (README skipped-line rule; T-079 (1)). i1040s8812 p. 4, Credit Limit Worksheet A: \"Complete Credit Limit Worksheet B only if you meet all the following. 1. You are claiming one or more of the following credits. ... c. Residential clean energy credit, Form 5695, Part I. ... 2. You are not filing Form 2555. 3. Line 4 of Schedule 8812 is more than zero.\" The case claims no Form 5695 Part I credit, so s8812.clwb_complete is false, s8812.show_clwb is false and the project now hides (CLW B 9) (shown_when s8812.show_clwb, T-067); the $2,925.57 in the log is the hidden internal value, requested only because the class M fill of a non-collection document ignores shown_when (T-079 (1)). The reply leaves the line blank (\"CLW B not completed\"), which follows the source; Credit Limit Worksheet A line 4 is -0- on both sides. The prompt (.classm/classm.s8812.1.prompt.txt) lists the line as \"line (CLW B 9)\"; the reply names it \"CLW B 9\" without the parentheses, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (known defect T-070 (1), T-081 (1); case classm.s8812.4 writes \"(CLW B n)\" and was read). Not a model error and not a project defect. Expectation dropped (none was recorded).",
+   "drop": true,
+   "context": "71b4e30d2bf36832ad1b3e6ce81f331ef1cd367c35d98db5477df16f02c18134"
+  },
+  {
+   "case": "classm.s8812.1",
    "printed": "16b",
    "project": "$1,700.00",
    "model": "$0.00",

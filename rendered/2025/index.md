@@ -22,7 +22,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | f5695.md | form | 141 |
 | f8606.md | form | 6 |
 | f8863.md | form | 44 |
-| f8880.md | form | 40 |
+| f8880.md | form | 42 |
 | f8889.md | form | 100 |
 | f8959.md | form | 26 |
 | f8960.md | form | 32 |
@@ -43,13 +43,13 @@ Review these renderings line by line against the archived IRS sources in `source
 | qbi.md | form | 13 |
 | qdcg.md | worksheet | 27 |
 | refund.md | form | 48 |
-| retirement.md | form | 88 |
+| retirement.md | form | 89 |
 | s1.md | form | 66 |
 | s179.md | form | 28 |
 | s1a.md | form | 136 |
 | s2.md | form | 19 |
 | s3.md | form | 15 |
-| s8812.md | form | 85 |
+| s8812.md | form | 87 |
 | sa.md | form | 61 |
 | sales.md | form | 25 |
 | sb.md | form | 12 |

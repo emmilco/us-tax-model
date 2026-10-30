@@ -120,7 +120,7 @@ qualification window (19 and 22 have one-year windows too), treating qualificati
 120-day test is consistent with that convention, but adding it would match the source's amount rule. F3 (SMW-SHOWN) stands
 as recorded (T-081 (2)).
 
-## Stage 21 round 4
+## Stage 21 round 4 (superseded subject)
 
 Subject after the owner's round-3 answers: `exc_amount` exception 09 asks for "the amount used to pay qualified acquisition
 costs before the close of the 120th day after the day you received it" (p590b p. 27, First home, requirement 1). The 16
@@ -160,3 +160,97 @@ word, and it introduces no error. It asks for no more and no less than the sourc
 (`person.x_prior09`, `f5329.cap_first_home`). Requirement 2, who the home may be for, is not restated, which follows the
 convention that qualification is part of choosing the exception. No reply raised the 09 wording. Round-3 observation closed.
 F3 (SMW-SHOWN) stands as recorded (T-081 (2)).
+
+## T-067 (superseded subject)
+
+The subject after T-067 (the owner's decision of 2026-10-29 on worksheet markers): the ten Simplified Method Worksheet lines
+`(SMW 1)` to `(SMW 11)` carry `shown_when: retirement.annuity`, and no computing expression changed. Triage is
+`../triage/retirement.json` and `../triage/retirement.deepseek.json` (executable-triage-v2: 1,374 fixtures, 500 generated
+returns with seed 20261026, 1,096 partial records from 40 bases, 2,379 comparisons; both replies valid). Every completed
+difference was checked against an uncapped re-run of `triage.mjs` in scratch. The rulings are in
+`.transcription/proposed/t067/` (`transcription.retirement[.deepseek].json` and `render.retirement.deepseek.json`). The
+Claude render log has no open section. "Screens" has the same meaning as in the Stage 21 table.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | retirement.has_rollover | model error and scope | 3 completed value (classm.tcw.5: code G, box 1 $0, project true, candidate false); the rest are project-refuses and partials | i1040gi pp. 27, 30 | A $0 direct rollover is still a rollover. |
+| deepseek | transcription | retirement.has_rollover | scope | 2,066 agree; only project-refuses and partials, none completed | i1040gi pp. 27, 30 | The project reads `rolled` with its cited refusals. |
+| both | transcription | retirement.taxable | model error and scope | 2 completed value (classm.tcw.15 $39,110.00 vs $49,089.00; generated 395 $0.00 vs $22,738.41); deepseek also has 10 completed candidate-unknown on box 5 of IRA entries | i1040gi pp. 28, 29 | Signed worksheet line 7 on a cost-recovered annuity. |
+| claude | transcription | retirement.amount_a | model error and scope | 2 completed value (classm.tcw.15 $0.00 vs $39,110.00; generated 314 $0.00 vs $46,209.90) | i1040gi p. 28 | Box 1 on line 5a for a fully taxable annuity. |
+| deepseek | transcription | retirement.amount_a | model error and scope | 328 completed value, all project $0.00 against box 1 (classm.s2.3 $92.00) | i1040gi pp. 27, 28 | Copies box 1 to 4a/5a on every entry. |
+| both | transcription | retirement.sav_amount | model error and scope | 27 completed candidate-unknown (sav_military 10, sav_404k 10, sav_inherited 7); no value | f8880 p. 2, Line 4 | Exclusions applied to the wrong account kinds (amb.2025.savers_inherited_plans). |
+| both | transcription | retirement.l1 | model error and scope | claude 57, deepseek 63 completed candidate-unknown; no value | i5329 pp. 3, 5 | Screens on every entry; deepseek's round-4 code S error is gone. |
+| claude | transcription | retirement.l2 | model error | 51 completed candidate-unknown; no value | i5329 p. 5, Line 2 | Exception and screens needed on every entry. |
+| deepseek | transcription | retirement.l2 | model error and scope | 59 completed candidate-unknown; no value | i5329 p. 5, Line 2 | Screens on every entry; the round-4 cap and code S errors are gone. |
+| claude | transcription | retirement.l2_e05, e09, e19, e22, e23 | model error | 48-50 completed candidate-unknown; no value | i5329 p. 5, Line 2 | Exception answer needed on entries where it is not asked. |
+| deepseek | transcription | retirement.l2_e05, e09, e19, e22, e23 | model error and scope | 57-58 completed candidate-unknown; no value | i5329 p. 5, Line 2 | Screens on every entry; now capped by line 1. |
+| claude | transcription | retirement.is_e23 | representation | 2,379/2,379 | p590b p. 28 | Guarded on code 1 or S. |
+| deepseek | transcription | retirement.is_e23 | model error | 48 completed candidate-unknown | p590b p. 28 | Exception answer needed on every entry. |
+| claude | transcription | retirement.l1_s, l2_s | model error (+ scope) | 2 candidate-unknown, on refused returns only | i5329 p. 5, Line 4 | code_screen needed on a code S entry. |
+| deepseek | transcription | retirement.l1_s, l2_s | model error (+ scope) | 57 completed candidate-unknown; no value | i5329 p. 5, Line 4 | Screens on every entry. |
+| claude | transcription | (SMW 4) | finding (F5) and representation | 546 candidate-unknown and 15 candidate-shows-skipped, all on project-hidden lines; with the candidate's own `shown_when` applied, 2,346 agree and the 33 left are partials withholding `annuity` on IRA entries (project shows) | i1040gi pp. 29, 30 | The candidate's account guard is right; the project's condition fails open on IRA entries. |
+| deepseek | transcription | (SMW 4) | model error and finding (F5) | the same 561 differences, all on project-hidden lines (classm.dcprov.1: candidate $624.31 shown) | i1040gi pp. 29, 30 | No hiding condition, so the line asks for worksheet answers on entries that never use the worksheet. |
+| deepseek | render | (SMW 1), (SMW 2), (SMW 4) to (SMW 11) | scope | MISMATCH (10 open) | i1040gi p. 30, Simplified Method | Condition 1 alone (start July 2, 1986 to November 18, 1996) is refused by `special`. |
+
+The brief's check: `shown_when: retirement.annuity` hides the worksheet correctly for a fully taxable pension. The plan
+entry is asked `annuity`, the answer is false, and the worksheet is hidden (stage10.plan.direct_rollover with code 7: no
+`(SMW` line, 5a $0, 5b $20,000). It fails on an IRA, because the interview never asks `annuity` on an IRA entry, so the
+condition is unknown and all ten lines print, with `(SMW 1)` = box 1 (classm.s2.3.deepseek without the worksheet answers:
+the interview completes and `(SMW 1)` shows $92). It also fails on an annuity whose cost was recovered before 2025, where
+the project is fully taxable through `cost_left` yet shows the worksheet (generated 395: `(SMW 9)` $22,738.41 against a
+taxable amount of $0; stage10.smw.cost_recovered). Suspected tooling defect: `triage.mjs` applies only the project's
+`shown_when` and ignores a `shown_when` the candidate declares (Claude's `h_smw`), so the Claude (SMW 4) record counts
+561 differences that the reply's own condition removes. T-079 (1) does not apply: retirement is a collection with no open
+class M section.
+
+Findings (`.transcription/proposed/t067/retirement.findings.md`): F5 (SMW-IRA-SHOWN, medium, display only): the worksheet is
+shown on every IRA entry because `retirement.annuity` is never asked there. F6 (SMW-RECOVERED-SHOWN, medium, display only):
+the worksheet is shown on an annuity whose cost was recovered before 2025, contrary to i1040gi p. 28 (b) and p. 29 line 11.
+One helper fixes both (`is_ira` false and `annuity_with_cost`). F3 (SMW-SHOWN) is now closed for non-annuity plan entries
+only.
+
+## T-067 round 2
+
+The subject after BUG-0207 and BUG-0208: the ten `(SMW n)` lines carry `shown_when: retirement.smw_shown`, a Bool that is
+true when `is_ira` is false (tested first) and `annuity_with_cost` is true. Regressions: `stage21.t067.smw_hidden_ira` and
+`stage21.t067.smw_hidden_cost_recovered`. No computing expression changed. Triage is `../triage/retirement[.deepseek].json`
+(executable-triage-v2: 1,376 fixtures, 500 generated returns with seed 20261026, 1,000 partial records from 40 bases, 1,894
+comparisons). Every completed difference was checked against an uncapped scratch re-run. The replies are fresh and declare
+no `shown_when`. The rulings are in `.transcription/proposed/t067/round2/`.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| both | transcription | retirement.is_ira | representation | 1,894/1,894 | i1040gi p. 26 | Same set. |
+| claude | transcription | retirement.has_rollover | model error and scope | 3 completed value (classm.tcw.5: code G, box 1 $0, project true, candidate false) | i1040gi pp. 27, 30 | A $0 direct rollover is a rollover. |
+| deepseek | transcription | retirement.has_rollover | scope | nothing completed; project-refuses and partials | i1040gi pp. 27, 30 | The project's cited gates. |
+| claude | transcription | retirement.taxable | model error and scope | 12 completed candidate-refuses (h_recovered_bad: classm.tcw.15 and partials, generated 395) | i1040gi p. 28 | Refuses a cost-recovered annuity, which the source makes fully taxable. |
+| deepseek | transcription | retirement.taxable | model error and scope | 8 completed value (classm.tcw.15 $39,110.00 vs $49,089.00; generated 395 $0.00 vs $22,738.41); 4 completed candidate-unknown | i1040gi pp. 28, 29 | Signed line 7. |
+| claude | transcription | retirement.amount_a | model error and scope | 12 completed candidate-refuses; generated 314 $0.00 vs $46,209.90 (cost $0) | i1040gi p. 28 | Box 1 on line 5a for a fully taxable annuity. |
+| deepseek | transcription | retirement.amount_a | model error and scope | 157 completed value, all project $0.00 against box 1 | i1040gi pp. 27, 28 | Copies box 1 to line 4a/5a. |
+| both | transcription | retirement.sav_amount | model error and scope | 18 completed candidate-unknown (sav_military 8, sav_404k 8, sav_inherited 2) | f8880 p. 2, Line 4 | Exclusions asked of the wrong account kinds. |
+| claude | transcription | retirement.l1, l2 | ambiguity and model error | 2 completed value (generated 175 $0.00 vs $52,095.29; generated 348, code 2); 61 and 56 completed candidate-unknown | i5329 pp. 3, 5; amb.2025.f5329_line1_codes | Code 2 on line 1 offset on line 2; screens on every entry. |
+| claude | transcription | retirement.l2_e05, e09, e19, e22, e23; is_e23 | model error | 53-54 completed candidate-unknown; no value | i5329 p. 5; p590b p. 28 | Exception answer needed on every entry (is_e23 lost its round-1 guard). |
+| claude | transcription | retirement.l1_s | model error and scope | 2 completed candidate-unknown (code_screen on code S) | i5329 p. 5, Line 4 | A screen for codes 2, 4 and 7 only. |
+| claude | transcription | retirement.l2_s | representation | 1,894/1,894 | i5329 p. 5, Line 4 | Same share. |
+| deepseek | transcription | retirement.l1, l2, l2_e05 to e23, l1_s, l2_s | model error and scope | 61-62 completed candidate-unknown (early_screen 54, code_screen 7); no value | i5329 pp. 3, 5 | Screens on every entry. |
+| deepseek | transcription | retirement.is_e23 | model error | 54 completed candidate-unknown | p590b p. 28 | Exception answer on every entry. |
+| both | transcription | (SMW 4) | model error | 398 differences, all on project-hidden lines: 85 candidate-shows-skipped (cost-recovered annuities, e.g. generated 395 $1,550.08; classm.dcprov.1 IRA), 313 candidate-unknown (87 completed) | i1040gi pp. 28-30 | No hiding condition in the reply; the value matches wherever the project shows the line. |
+| claude | render | (SMW 2), (SMW 4), (SMW 8), (SMW 10), (SMW 11) | scope | MISMATCH | i1040gi p. 29 | Death benefit exclusion and pre-November-19-1996 annuities are refused by `special`. |
+| deepseek | render | (SMW 2), (SMW 4), (SMW 6), (SMW 7), (SMW 8), (SMW 10), (SMW 11) | scope | MISMATCH | i1040gi p. 29 | Same. |
+
+Check of the fix, by evaluating cases, since the comparison ignores `shown_when`:
+
+- **IRA with the pension answers unasked.** classm.s2.3.deepseek with those answers removed, and the regression
+  `smw_hidden_ira`: the interview completes and no `(SMW` line shows. A traditional IRA answered `annuity` true is also
+  hidden.
+- **Cost recovered or $0.** stage10.smw.cost_recovered, recovered_exceeds_cost, `smw_hidden_cost_recovered`,
+  classm.tcw.15 and generated 395 are hidden, with line 5a $0 and line 5b equal to box 1.
+- **Fully taxable pension.** A code 7 plan entry with `annuity` false is hidden (5b $20,000).
+- **Cost left.** stage10.smw.first_year and a variant with $500 of cost left show all ten lines, and `(SMW 9)` equals 5b.
+
+A sweep of every fixture and generated return found `smw_shown` equal to (plan, annuity true, cost above recovered) on every
+entry where those inputs are answered, and false on every IRA entry. It is unknown only on a plan entry of a return refused
+on `special` before `annuity` is asked (stage16.cleanup.refuse.retirement.special_first). That is an observation, not a
+finding, because the return is refused.
+
+Findings: none. F5 and F6 are closed by BUG-0207 and BUG-0208. F3 (SMW-SHOWN) is closed.

@@ -748,6 +748,7 @@ form:
         locator: p. 42, Step 4, "Go to Step 5"; each earlier "STOP You can't take the credit" ends the flowchart (pp. 40-42)
     - id: eic.step5_line1
       printed: (Step 5, 1)
+      shown_when: eic.reached_step5
       type: NonNegDollars
       label: Enter the amount from Form 1040 or 1040-SR, line 1z
       expr:
@@ -765,6 +766,7 @@ form:
             locator: p. 42, Step 5, questions 1 and 2; p. 43, Clergy and Church employees; p. 47, Worksheet B
     - id: eic.step5_line2
       printed: (Step 5, 2)
+      shown_when: eic.reached_step5
       type: NonNegDollars
       label: Medicaid waiver payments excluded from income on Schedule 1, line 8s, unless chosen as earned income; zero in this tool
       expr:
@@ -782,6 +784,7 @@ form:
             locator: p. 42, Step 5, worksheet line 2
     - id: eic.step5_line3
       printed: (Step 5, 3)
+      shown_when: eic.reached_step5
       type: Dollars
       label: Subtract line 2 from line 1
       expr:
@@ -793,6 +796,7 @@ form:
         locator: p. 42, Step 5, worksheet line 3
     - id: eic.step5_line4
       printed: (Step 5, 4)
+      shown_when: eic.reached_step5
       type: NonNegDollars
       label: Nontaxable combat pay you elect to include in earned income; zero in this tool
       expr:
@@ -810,6 +814,7 @@ form:
             locator: p. 42, Step 5, worksheet line 4; p. 43, Combat pay, nontaxable
     - id: eic.earned_income
       printed: (Step 5, 5)
+      shown_when: eic.reached_step5
       type: Dollars
       label: Add lines 3 and 4. This is your earned income
       expr:

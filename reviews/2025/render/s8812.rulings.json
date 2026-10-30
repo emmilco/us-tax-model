@@ -35,9 +35,23 @@
   {
    "printed": "18a",
    "restated": "Choose — [helper \"Taking the EIC on Form 1040, line 27a\" = true → helper \"Earned Income Chart, taking the EIC: Worksheet B, line 4b, or the earned income from Step 5\"] [helper \"Taking the EIC on Form 1040, line 27a\" = false → helper \"Earned Income Worksheet, line 7, the amount for line 18a of Schedule 8812 (zero when line 3 is zero or less)\"]",
+   "model": "The Earned Income Chart sends filers who 'use either optional method to figure those net earnings' to 'the Earned Income Worksheet ... (even if you are also taking the EIC)'. The restatement chooses only on whether the filer takes the EIC, and the text shown has no refusal for the optional methods. Apart from that case, the EIC Worksheet B line 4b, Step 5 and Earned Income Worksheet branches match.",
+   "ruling": "Ruling: scope; the English is the chart within the slice (rendered/2025/s8812.md, line 18a). i1040s8812 p. 7, Earned Income Chart, first row: \"have net earnings from self-employment\" \"use either optional method to figure those net earnings,\" \"the amount figured using the Earned Income Worksheet next (even if you are also taking the EIC).\" The optional methods are refused upstream through person.se_screen (\"electing an optional method (Schedule SE Part II)\"), raised by person.se_screened on Schedule SE, which every self-employment path into line 18a reads; so the first row never applies to a return the tool completes. The rendered English shows only line 18a's own operands and cannot show that refusal. The model found the other branches to match. Same ruling as round 1; BUG-0210 did not change this line. Project stands.",
+   "context": "df7ba89ffaf0a88fe6acb90fe3f3bfebf148f446e1c2974c958942052acacd53"
+  },
+  {
+   "printed": "18a",
+   "restated": "Choose — [helper \"Taking the EIC on Form 1040, line 27a\" = true → helper \"Earned Income Chart, taking the EIC: Worksheet B, line 4b, or the earned income from Step 5\"] [helper \"Taking the EIC on Form 1040, line 27a\" = false → helper \"Earned Income Worksheet, line 7, the amount for line 18a of Schedule 8812 (zero when line 3 is zero or less)\"]",
    "model": "The Earned Income Chart's first row requires the Earned Income Worksheet for filers who \"use either optional method to figure those net earnings ... (even if you are also taking the EIC)\". The restatement chooses only on whether the EIC is taken and has no refusal for optional methods.",
    "ruling": "Ruling: scope; the English is the chart within the slice (rendered/2025/s8812.md, line 18a). i1040s8812 p. 7, Earned Income Chart, first row: a filer who has net earnings from self-employment and will \"use either optional method to figure those net earnings\" uses \"the amount figured using the Earned Income Worksheet next (even if you are also taking the EIC)\". The optional methods are refused upstream through person.se_screen, whose question includes \"electing an optional method (Schedule SE Part II)\", raised by person.se_screened on every self-employment path into line 18a; the refusal sits on another form, so the render cannot show it. Same ruling as the earlier rounds; Stage 19 did not touch this line.",
    "context": "282922494e02f5235c1372a26e000c78b849566f3ace0f855d98057da2495b35"
+  },
+  {
+   "printed": "18a",
+   "restated": "Choose — [helper \"Taking the EIC on Form 1040, line 27a\" = true → helper \"Earned Income Chart, taking the EIC: Worksheet B, line 4b, or the earned income from Step 5\"] [helper \"Taking the EIC on Form 1040, line 27a\" = false → helper \"Earned Income Worksheet, line 7, the amount for line 18a of Schedule 8812 (zero when line 3 is zero or less)\"]",
+   "model": "The Earned Income Chart's first row says that filers who \"have net earnings from self-employment\" and \"use either optional method\" use the Earned Income Worksheet \"even if you are also taking the EIC.\" The restatement does not test for this, and no refusal for the optional methods is shown. The chart's clergy adjustment is also not reflected.",
+   "ruling": "Ruling: scope; the English is the chart within the slice (rendered/2025/s8812.md, line 18a). i1040s8812 p. 7, Earned Income Chart, first row: \"have net earnings from self-employment\" \"use either optional method to figure those net earnings,\" \"the amount figured using the Earned Income Worksheet next (even if you are also taking the EIC).\" The optional methods are refused upstream through person.se_screen (\"electing an optional method (Schedule SE Part II)\"), raised by person.se_screened on Schedule SE, which every self-employment path into line 18a reads; so the first row never applies to a return the tool completes. The clergy adjustment of the Worksheet B row is outside the slice through scope.schedule1 (clergy). The rendered English shows only line 18a's own operands and cannot show those refusals. Same ruling as Stage 19; T-067 did not change this line. Project stands.",
+   "context": "415bdc44569182087c228d186d145f59ce1d9c455aa8e954a3c581d188017ef0"
   },
   {
    "printed": "18a",
@@ -55,8 +69,22 @@
   {
    "printed": "21",
    "restated": "Add helper \"Additional Medicare Tax and RRTA Tax Worksheet, line 6. Subtract line 5 (the Additional Medicare Tax withheld, Form 8959, line 22) from line 4\" and helper \"Additional Medicare Tax and RRTA Tax Worksheet, line 7. One-half of the Additional Medicare Tax on self-employment income (one-half of Form 8959, line 13)\".",
+   "model": "Only lines 6 and 7 of the Additional Medicare Tax and RRTA Tax Worksheet are added. The IRS says \"Add lines 6, 7, 11, and 15,\" and lines 11 and 15 hold tier 1 RRTA taxes. No refusal names RRTA filers.",
+   "ruling": "Ruling: scope; i1040s8812 p. 9, Additional Medicare Tax and RRTA Tax Worksheet, line 16: \"Add lines 6, 7, 11, and 15. Enter here and on line 21 of Schedule 8812\". Lines 11 and 15 are the Tier 1 RRTA amounts, outside the slice: person.rrta refuses the per-person Medicare totals that Form 8959 line 19 sums, and f8959.line19 refuses f8959.unsupported (\"RRTA compensation\"), so a return with RRTA compensation refuses before this line. The rendered line cannot show that upstream refusal. Same ruling as Stage 19. Project stands.",
+   "context": "415bdc44569182087c228d186d145f59ce1d9c455aa8e954a3c581d188017ef0"
+  },
+  {
+   "printed": "21",
+   "restated": "Add helper \"Additional Medicare Tax and RRTA Tax Worksheet, line 6. Subtract line 5 (the Additional Medicare Tax withheld, Form 8959, line 22) from line 4\" and helper \"Additional Medicare Tax and RRTA Tax Worksheet, line 7. One-half of the Additional Medicare Tax on self-employment income (one-half of Form 8959, line 13)\".",
    "model": "The restatement adds only worksheet lines 6 and 7. The worksheet's line 16 says \"Add lines 6, 7, 11, and 15\", so the Tier 1 RRTA amounts on lines 11 and 15 are left out, and no refusal excludes RRTA filers.",
    "ruling": "Ruling: scope; project retained. The Tier 1 RRTA amounts on lines 11 and 15 of the Additional Medicare Tax and RRTA Tax Worksheet are outside the slice: `person.rrta` refuses the per-person Medicare totals that Form 8959 line 19 sums, and this line reads that total, so a return with RRTA compensation refuses here. No change to the data. Line 7 of the worksheet (one-half of Form 8959 line 13) is included since BUG-0053."
+  },
+  {
+   "printed": "21",
+   "restated": "Add helper \"Additional Medicare Tax and RRTA Tax Worksheet, line 6. Subtract line 5 (the Additional Medicare Tax withheld, Form 8959, line 22) from line 4\" and helper \"Additional Medicare Tax and RRTA Tax Worksheet, line 7. One-half of the Additional Medicare Tax on self-employment income (one-half of Form 8959, line 13)\".",
+   "model": "The restatement uses Additional Medicare Tax and RRTA Tax Worksheet lines 6 and 7. The worksheet's line 21 amount is 'Add lines 6, 7, 11, and 15', and the restatement leaves out the tier 1 RRTA lines 11 and 15 with no refusal shown for RRTA. Without RRTA, it equals W-2 boxes 4 and 6 as the form requires.",
+   "ruling": "Ruling: scope; i1040s8812 p. 9, Additional Medicare Tax and RRTA Tax Worksheet, line 16: \"Add lines 6, 7, 11, and 15. Enter here and on line 21 of Schedule 8812\". Lines 11 and 15 are the Tier 1 RRTA amounts, outside the slice: person.rrta refuses the per-person Medicare totals that Form 8959 line 19 sums, and f8959.line19 refuses f8959.unsupported (\"RRTA compensation\"), so a return with RRTA compensation refuses before this line. The rendered line cannot show that upstream refusal; the model agrees the line is boxes 4 and 6 without RRTA. Same ruling as round 1. Project stands.",
+   "context": "df7ba89ffaf0a88fe6acb90fe3f3bfebf148f446e1c2974c958942052acacd53"
   },
   {
    "printed": "21",

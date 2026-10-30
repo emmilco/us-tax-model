@@ -6,6 +6,20 @@
   {
    "printed": "(CLW 2)",
    "restated": "Add s3 line 1, s3 line 2, and s3 line 3.",
+   "model": "The IRS says 'Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l'; the restatement adds only s3 lines 1, 2, and 3, omitting 6d and 6l.",
+   "ruling": "Ruling: scope; the English is the source within the slice. f8880 p. 2, Credit Limit Worksheet: \"2. Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l\". The rendered line (rendered/2025/f8880.md, (CLW 2)) adds Schedule 3 lines 1, 2 and 3 and its citation says \"(lines 6d and 6l are refused by scope.credits)\": the credit for the elderly or the disabled (line 6d) and any other Schedule 3 line 6 credit are refused through scope.credits on Schedule 3 line 8 (\"Other credit forms (Schedule 3 lines 6a to 6z; Form 1040 lines 30 and 31)\"), so on every return that reaches the worksheet they are zero. The refusal sits on Schedule 3, which the render does not show. Same ruling as round 1; BUG-0209 changed only this line's shown_when (f8880.past9).",
+   "context": "62f5019d084787dc30569bd36c3992625384b50feceb71dfcb30d3cebf38f6ae"
+  },
+  {
+   "printed": "(CLW 2)",
+   "restated": "Add s3 line 1, s3 line 2, and s3 line 3.",
+   "model": "The IRS worksheet line 2 says to total credits from 'Schedule 3, lines 1 through 3, 6d, and 6l'; the restatement adds only Schedule 3 lines 1, 2, and 3, omitting 6d and 6l.",
+   "ruling": "Ruling: scope; the English is the source within the slice. f8880 p. 2, Credit Limit Worksheet: \"2. Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l\". The model raised the same point as the claude render. The rendered line (rendered/2025/f8880.md, (CLW 2)) adds Schedule 3 lines 1, 2 and 3 and its citation says \"(lines 6d and 6l are refused by scope.credits)\": the credit for the elderly or the disabled (line 6d) and any other Schedule 3 line 6 credit are refused through scope.credits on Schedule 3 line 8 (\"Other credit forms (Schedule 3 lines 6a to 6z; Form 1040 lines 30 and 31)\"), so on every return that reaches the worksheet they are zero. The refusal sits on Schedule 3, which the render does not show. Same ruling as Stages 19 and 21; T-067 added only shown_when f8880.past7 to this line.",
+   "context": "bd61ba9088c85063fea7a5d742f6a04fc26acd97d4d7bcda6edb8667f877d49c"
+  },
+  {
+   "printed": "(CLW 2)",
+   "restated": "Add s3 line 1, s3 line 2, and s3 line 3.",
    "model": "The IRS worksheet says \"Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l,\" but the restatement adds only Schedule 3 lines 1 through 3, omitting 6d and 6l.",
    "ruling": "Ruling: scope; the English is the source within the slice. f8880 p. 2, Credit Limit Worksheet: \"2. Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l\". The rendered line (the model raised the same point as the Claude render) adds Schedule 3 lines 1, 2 and 3 and its citation says \"(lines 6d and 6l are refused by scope.credits)\": the credit for the elderly or the disabled (line 6d) and any other Schedule 3 line 6 credit are refused through scope.credits on Schedule 3 line 8 (\"Other credit forms (Schedule 3 lines 6a to 6z; Form 1040 lines 30 and 31)\"), so on every return that reaches the worksheet they are zero. The refusal sits on Schedule 3, which the render does not show. Same ruling as Stage 19.",
    "context": "55a0a0828bc485412a7246bd9c637f39b0202f07292d0f662ac9b08c88a4c693"
@@ -16,6 +30,27 @@
    "model": "The IRS worksheet says to enter the total of Schedule 3 lines 1 through 3, 6d, and 6l, but the restatement adds only Schedule 3 lines 1, 2, and 3, omitting 6d and 6l.",
    "ruling": "Ruling: scope; the English is the source within the slice. f8880 p. 2, Credit Limit Worksheet: \"2. Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l\". The rendered line (rendered/2025/f8880.md, (CLW 2); the model raised the same point as the claude render) adds Schedule 3 lines 1, 2 and 3, the last being the education credits since Stage 19, and its citation says \"(lines 6d and 6l are refused by scope.credits)\": the credit for the elderly or the disabled (line 6d) and any other Schedule 3 line 6 credit are refused through scope.credits on Schedule 3 line 8 (\"Other credit forms (Schedule 3 lines 6a to 6z; Form 1040 lines 30 and 31)\"), so on every return that reaches the worksheet they are zero. The refusal sits on Schedule 3, which the render does not show.",
    "context": "679329ca4f0bf3dbc100df8cae5dd88d42543ec61901b274b36649a402ea591e"
+  },
+  {
+   "printed": "1(b)",
+   "restated": "Add person.sav_line1 over every confirmed person entry for which helper \"Whose entry is this, yours or your spouse's?\" = 'spouse', within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "The IRS says 'Complete column (b) only if you're filing a joint return'; the restatement sums spouse entries without an MFJ gate.",
+   "ruling": "Ruling: representation; f8880 p. 2, Column (b): \"Complete column (b) only if you're filing a joint return\". The rendered sum over spouse entries has no filing-status condition of its own because the roster has a spouse entry only on a joint return (interview/questions-2025.yaml, $person: \"Who is on this return? Enter [\\\"taxpayer\\\"], or [\\\"taxpayer\\\",\\\"spouse\\\"] if you are married filing jointly\"), help \"One entry for you and, on a joint return, one for your spouse\"; so the sum is zero on any other return. The claude transcription candidate's explicitly guarded line agrees on every comparison where both compute (`../triage/f8880.json`, 1(b): no value difference). Same ruling as earlier rounds. Project stands.",
+   "context": "62f5019d084787dc30569bd36c3992625384b50feceb71dfcb30d3cebf38f6ae"
+  },
+  {
+   "printed": "2(b)",
+   "restated": "Add person.sav_line2 over every confirmed person entry for which helper \"Whose entry is this, yours or your spouse's?\" = 'spouse', within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "The IRS says 'Complete column (b) only if you're filing a joint return'; the restatement sums spouse entries without an MFJ gate.",
+   "ruling": "Ruling: representation; as line 1(b). f8880 p. 2, Column (b): \"Complete column (b) only if you're filing a joint return\"; the roster has a spouse entry only on a joint return (interview/questions-2025.yaml, $person: \"Who is on this return? Enter [\\\"taxpayer\\\"], or [\\\"taxpayer\\\",\\\"spouse\\\"] if you are married filing jointly\"), so the spouse sum is column (b) of a joint return and zero otherwise. The claude transcription candidate's guarded line has no value difference (`../triage/f8880.json`, 2(b)). Project stands.",
+   "context": "62f5019d084787dc30569bd36c3992625384b50feceb71dfcb30d3cebf38f6ae"
+  },
+  {
+   "printed": "4(a)",
+   "restated": "Add helper \"Distributions received in 2025 that line 4 counts (the Forms 1099-R of the return, less rollovers and the excluded kinds)\", helper \"Distributions from years filed jointly, counted in both columns (on a joint return; none otherwise)\", and helper \"Your own distributions in 2023, 2024 and 2026 (before the due date) from years not filed jointly with your spouse; on a return that is not joint, all of your distributions in those years\".",
+   "model": "The IRS line says 'If married filing jointly, include both spouses’ amounts in both columns'; the restatement's dist_2025 sums every confirmed person's 2025 distributions even on a nonjoint return.",
+   "ruling": "Ruling: representation; f8880 p. 2, Line 4: \"Enter the total amount of distributions you, and your spouse if filing jointly, received after 2022 and before the due date of your 2025 return (including extensions)\"; \"If you're filing a joint return, include both spouses' amounts in both columns\"; Exception: \"Don't include your spouse's distributions with yours when entering an amount on line 4 if you and your spouse didn't file a joint return for the year the distribution was received\". The model reads helper f8880.dist_2025 (every confirmed person's 2025 Forms 1099-R) as adding a spouse's distributions on a return that is not joint; the roster has a spouse entry only on a joint return (interview/questions-2025.yaml, $person: \"Who is on this return? Enter [\\\"taxpayer\\\"], or [\\\"taxpayer\\\",\\\"spouse\\\"] if you are married filing jointly\"), so on such a return the sum is the taxpayer's own, and on a joint return both spouses' 2025 amounts belong in both columns. The claude transcription candidate, which writes the joint and non-joint branches separately, agrees on 1,876 of 1,876 comparisons (`../triage/f8880.json`, 4(a)). Project stands.",
+   "context": "62f5019d084787dc30569bd36c3992625384b50feceb71dfcb30d3cebf38f6ae"
   }
  ]
 }
