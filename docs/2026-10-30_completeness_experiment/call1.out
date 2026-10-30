@@ -1,0 +1,98 @@
+# Completeness review: Dependents, Qualifying Child for Child Tax Credit, and Credit for Other Dependents (i1040gi pp. 17–22)
+
+I reviewed the labels, question text, and refusals you listed, not the underlying logic. Where a finding depends on how a label reads, the entry says so.
+
+## Gaps that could change a tax amount or eligibility
+
+**1. Kidnapped child**
+- **Rule (p. 21):** "If your child is presumed by law enforcement authorities to have been kidnapped by someone who isn't a family member, you may be able to take the child into account in determining your eligibility for head of household or qualifying surviving spouse filing status, the child tax credit, the credit for other dependents, and the earned income credit (EIC)."
+- **Why it isn't covered:** Nothing asks about or refuses this. The closest item, `dependent.months`, counts only temporary absences for school, vacation, business, medical care, military service, or juvenile detention. `dependent.qualifying_child` and `dependent.qualifying_relative` have no kidnapping refusal.
+- **Effect:** Eligibility and tax amount. The child would fail the residency test, which can remove the child tax credit (CTC), credit for other dependents (ODC), EIC, or head of household status.
+
+**2. Public assistance used as support**
+- **Rule (p. 21):** "If you received payments under the Temporary Assistance for Needy Families (TANF) program or other public assistance program and you used the money to support another person, see Pub. 501."
+- **Why it isn't covered:** The closest item, `dependent.supported`, asks only whether you provided over half of the support and doesn't address the source of the money. No refusal applies. This sentence is a pointer to Pub. 501, but it directly affects the support test.
+- **Effect:** Eligibility and tax amount, through qualifying relative status.
+
+**3. Full-time student definition**
+- **Rule (p. 21):** "A full-time student is a child who during any part of 5 calendar months of 2025 was enrolled as a full-time student at a school or took a full-time, on-farm training course given by a school or a state, county, or local government agency. A school includes a technical, trade, or mechanical school. It doesn't include an on-the-job training course, correspondence school, or school offering courses only through the Internet."
+- **Why it isn't covered:** `dependent.student` asks only "Was this person a full-time student in 2025?" It omits the five-month test, the farm-course inclusion, and the school exclusions. `person.sav_student` spells out this same definition, but only for Form 8880.
+- **Effect:** Eligibility and tax amount. For example, an online-only student age 19–23 could be wrongly treated as a qualifying child.
+
+**4. Foster child definition**
+- **Rule (p. 21):** "A foster child is any child placed with you by an authorized placement agency or by judgment, decree, or other order of any court of competent jurisdiction."
+- **Why it isn't covered:** `dependent.relationship` lists "foster child" without this requirement. `dependent.months` mentions an "eligible foster child" but doesn't define it.
+- **Effect:** Eligibility and tax amount. An informally placed child could be treated as a qualifying child when they should be tested under Step 4, which requires all-year residence, the income test, and the support test.
+
+**5. Adopted and lawfully placed children**
+- **Rule (p. 20):** "An adopted child is always treated as your own child. An adopted child includes a child lawfully placed with you for legal adoption."
+- **Why it isn't covered:** The "child" option in `dependent.relationship` lists son, daughter, stepchild, and foster child, but not an adopted or placed child. `dependent.months` covers placement only for time lived with you, and `dependent.citizen` covers only the citizenship exception.
+- **Effect:** Eligibility and tax amount. A child placed but not yet adopted might be entered as "other" and fail qualifying child status. This would most likely reduce the $2,200 CTC to the $500 ODC, or deny dependent status.
+
+**6. SSN valid only with DHS authorization**
+- **Rule (p. 22):** "However, if "Valid for Work Only With DHS Authorization" is printed on your child's social security card, your child has the required SSN only as long as the DHS authorization is valid."
+- **Why it isn't covered:** `dependent.work_ssn` asks only whether the SSN is valid for employment and issued before the due date. `dependent.eic_ssn` includes this condition, but it applies only to the EIC.
+- **Effect:** Tax amount. A child whose authorization has lapsed could wrongly receive the CTC.
+
+**7. SSN of a child who was a citizen when it was received**
+- **Rule (p. 22):** "If your child was a U.S. citizen when the child received the SSN, the SSN is valid for employment."
+- **Why it isn't covered:** `dependent.work_ssn` doesn't include this rule. A filer whose citizen child has a card with a restrictive legend could answer "No."
+- **Effect:** Tax amount. The child could get the $500 ODC instead of the $2,200 CTC.
+
+**8. Pending ITIN of the other spouse, for the CTC**
+- **Rule (p. 22):** "If you apply for an ITIN on or before the due date of your 2025 return (including extensions) and the IRS issues you an ITIN as a result of the application, the IRS will consider your ITIN as issued on or before the due date of your return."
+- **Why it isn't covered:** `household.tin_count` and `household.all_tin` count people who have applied for an ITIN, so the ODC path includes this rule. The CTC path uses `household.id_count` and `household.ctc_ssn`, whose labels mention only an SSN or ITIN. `person.itin_applied` cites only Step 5. This reading rests on the labels, so check the logic.
+- **Effect:** Tax amount and eligibility. A joint return could lose the CTC when one spouse has a work-valid SSN and the other has a timely ITIN application.
+
+**9. Child who was born and died in 2025 without an SSN**
+- **Rule (p. 22):** "If your dependent child was born and died in 2025 and you do not have an SSN for the child, enter "Died" on row (3) of the Dependents section and include a copy of the child's birth certificate, death certificate, or hospital records. The document must show the child was born alive."
+- **Why it isn't covered:** `dependent.tin` and `dependent.months` come closest, but neither provides the "Died" entry, the required document, or the born-alive condition. `dependent.dc_no_tin` applies only to Form 2441.
+- **Effect:** Eligibility and presentation. Without the required document, the dependent claim and benefits based on it may not be supported.
+
+**10. Entering each dependent's SSN and matching the card**
+- **Rule (p. 22):** "You must enter each dependent's social security number (SSN). Be sure the name and SSN entered agree with the dependent's social security card. Otherwise, at the time we process your return, we may reduce or disallow any tax benefits (such as the child tax credit) based on that dependent."
+- **Why it isn't covered:** `dependent.tin` and `dependent.work_ssn` ask whether a number exists. No item captures the dependent's name or number, or checks them against the card.
+- **Effect:** Mainly presentation, but a mismatch can reduce or disallow a benefit when the IRS processes the return.
+
+## Gaps that affect only presentation or attachments
+
+**11. Revoked release of a claim**
+- **Rule (p. 20):** "A custodial parent who has revoked their previous release of a claim to certain tax benefits for a child must include a copy of the revocation with their return."
+- **Why it isn't covered:** The closest item, `dependent.divorced_rule`, asks whether a release or decree lets the noncustodial parent claim the child. A custodial parent who has revoked the release could reasonably answer "No," so the return proceeds with no refusal and no attachment requirement.
+- **Effect:** Presentation, specifically a required attachment.
+
+**12. More than four dependents**
+- **Rule (p. 17):** "If you have more than four dependents, check the box under Dependents on page 1 of Form 1040 or 1040-SR and include a statement showing the information requested in the Dependents section."
+- **Why it isn't covered:** `dependent.one` and `dependent.claimed` identify and count dependents, but no line produces the checkbox or statement.
+- **Effect:** Presentation only.
+
+**13. Dependents section row entries**
+- **Rule (pp. 17–20):** These instructions all require specific entries:
+  - "If the child is a full-time student, check the "Full-time student" box on row (6)" (p. 17)
+  - "If the child is permanently and totally disabled, check the "Permanently and totally disabled" box on row (6)" (p. 17)
+  - "If the child lived with you for more than half of 2025, check the "Yes" box (box (a)) on row (5)" (p. 17)
+  - "Complete rows (1) through (4), (5)(a), and (6)" (p. 18)
+  - "Check the "Child tax credit" box on row (7)" (p. 18)
+  - "Check the "Credit for other dependents" box on row (7)" (pp. 18, 20)
+- **Why it isn't covered:** The underlying facts and statuses exist, such as `dependent.student`, `dependent.disabled`, `dependent.lived_half`, `dependent.ctc_child`, and `dependent.odc_person`. However, all are helpers, and no listed line represents these rows.
+- **Effect:** Presentation only, because the credit amounts are figured separately.
+
+## Reviewed and not counted
+
+**Covered by a refusal or question**
+- **Children of divorced or separated parents:** This includes Form 8332, the decree rules, and custodial status. `dependent.divorced_rule` covers these rules by refusal.
+- **Qualifying child of more than one person:** `dependent.other_claimant` covers the tie-breaker rules by refusal.
+- **Other refused rules:** Refusals cover the married person rules, multiple support agreements, and the gross income exception.
+- **Other covered rules:** Questions cover the citizenship exception, the time-lived exceptions, and the Step 3 and Step 5 ID rules.
+
+**Worth checking in the logic, though not counted**
+- **"Could you be claimed as a dependent?" (Step 2, Q3–4; Step 4, Q4–5):** `dependent.qc_dependent` and `dependent.qr_dependent` cite this rule, and `person.sav_ineligible` implies the question exists. The question text isn't in the list, so I couldn't check its refund-only carve-out or the joint-return branch.
+- **"Wasn't a qualifying child of any taxpayer" (Step 4):** `other_claimant` is listed as a refusal on `qualifying_child` and `eic_child`, but not on `qualifying_relative`. I treated this as covered only if the qualifying child refusal also fires on the Step 4 path.
+- **Divorced-parent rule on the Step 4 path:** This has the same dependency, because `divorced_rule` is listed as a refusal only on `qualifying_child`.
+
+**Borderline judgment calls**
+- **Permanently and totally disabled definition (p. 21):** `dependent.disabled` uses the exact defined term and the "at any time in 2025" timing, so I treated it as covered. It doesn't state the substantial gainful activity test or the doctor's determination, so adding them would be a cheap improvement.
+- **ATIN procedure (p. 20):** `dependent.tin` covers whether the person has or has applied for a number, and the rest is procedural.
+- **Card with a "Not Valid for Employment" legend (p. 22):** Asking the SSA for a new card is a procedural step. Its effect on eligibility is already captured by `dependent.work_ssn`.
+
+**Count of gaps: 13** (10 that could affect tax amount or eligibility, and 3 presentation-only)

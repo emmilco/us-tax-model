@@ -1,0 +1,98 @@
+# Gaps in the EIC encoding (Lines 27a–27c, i1040gi pp. 40–48)
+
+I checked this against the encoding list only, not the underlying code. Gap 5 and part of Gap 12 depend on how labels are wired, so they should be confirmed in the code.
+
+## Gaps that could change eligibility or the amount
+
+**1. Two-year and ten-year bans (p. 40, restated p. 43)**
+- **Quote:** "If you claim the EIC even though you aren't eligible and it is determined that your error is due to reckless or intentional disregard of the EIC rules, you won't be allowed to take the credit for 2 years even if you are otherwise eligible to do so." and "If you fraudulently claim the EIC, you won't be allowed to take the credit for 10 years."
+- **Why it's uncovered:** Nothing asks about or refuses a prior final determination. The closest item, `eic.eligible`, only chains Steps 1 to 5, which don't include this test.
+- **Effect:** Eligibility and amount. The encoding allows a credit that is barred.
+
+**2. Form 8862 after a prior reduction or disallowance (p. 43; reminders pp. 46, 48)**
+- **Quote:** "You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error."
+- **Why it's uncovered:** No question, line or refusal covers the prior-year history or the two exceptions that follow this sentence. The closest item is `eic.credit`, which has no such condition.
+- **Effect:** Eligibility, since the credit can't be taken without the required form, and a filing requirement.
+
+**3. Worksheet B exclusions (p. 47)**
+- **Quote:** "Don't include on these lines any statutory employee income, any net profit from services performed as a notary public, any amount exempt from self-employment tax as the result of the filing and approval of Form 4029 or Form 4361, or any other amounts exempt from self-employment tax."
+- **Why it's uncovered:** `eic.wsb_se` combines lines 1e and 2c with no notary or exempt-amount adjustment, and no question asks about them. Statutory employees are refused at `eic.step5_line1`, but that doesn't reach the other exclusions.
+- **Effect:** Amount, because earned income is overstated, and possibly eligibility through the limit test.
+
+**4. Spouse's main home (p. 42, Step 4, question 3)**
+- **Quote:** "Was your main home, and your spouse's if filing a joint return, in the United States for more than half of 2025?"
+- **Why it's uncovered:** The `eic.us_home` question asks only "Was your main home…" and never mentions the spouse. `eic.step4` also describes the test as "main home in the United States".
+- **Effect:** Eligibility for joint filers without a qualifying child.
+
+**5. Joint filers skip Step 4, questions 5 and 6 (p. 42, Step 4, question 4)**
+- **Quote:** "Are you filing a joint return for 2025? Yes. Skip questions 5 and 6; go to Step 5."
+- **Why it's uncovered:** `eic.step4` is described as requiring "not a qualifying child or dependent of another person", with no joint-return bypass. By contrast, `eic.step3` states its joint path explicitly. `eic.qc_of_another` also has no joint carve-out.
+- **Effect:** Eligibility. A joint filer who could be someone's qualifying child may be wrongly denied. Confirm this in the code, because the finding rests on the label.
+
+**6. Death in 2025 and the age test (pp. 41–42, Step 4, question 2)**
+- **Quote:** "If your spouse died in 2025 or if you are preparing a return for someone who died in 2025, see Pub. 596 before you answer."
+- **Why it's uncovered:** `eic.age_range_count` and `eic.age_range` test birth dates or age only. No question or refusal mentions a death in 2025.
+- **Effect:** Eligibility for filers without a qualifying child.
+
+**7. Full-time student definition (p. 44)**
+- **Quote:** "A full-time student is a child who during any part of 5 calendar months of 2025 was enrolled as a full-time student at a school or took a full-time, on-farm training course given by a school or a state, county, or local government agency." and "It doesn't include an on-the-job training course, correspondence school, or school offering courses only through the Internet."
+- **Why it's uncovered:** `dependent.student` asks only "Was this person a full-time student in 2025?" It conveys neither the 5-month test nor the excluded schools, though other questions in the encoding do spell out their definitions.
+- **Effect:** Eligibility and amount, through the qualifying child count, for ages 19 to 23.
+
+**8. Foster child definition (p. 43)**
+- **Quote:** "A foster child is any child placed with you by an authorized placement agency or by judgment, decree, or other order of any court of competent jurisdiction."
+- **Why it's uncovered:** `dependent.relationship` lists "foster child" without the placement requirement. An informally taken-in child could therefore be counted.
+- **Effect:** Eligibility and amount.
+
+**9. Child placed for adoption (p. 43)**
+- **Quote:** "An adopted child includes a child lawfully placed with you for legal adoption."
+- **Why it's uncovered:** `dependent.relationship` doesn't mention adopted or placed children. `dependent.us_half` mentions placement only for the time-lived test, so a child whose adoption isn't final may be classified as "other".
+- **Effect:** Eligibility and amount.
+
+**10. Permanently and totally disabled definition (p. 44)**
+- **Quote:** "A person is permanently and totally disabled if, at any time in 2025, the person couldn't engage in any substantial gainful activity because of a physical or mental condition and a doctor has determined that this condition (a) has lasted or can be expected to last continuously for at least a year, or (b) can be expected to lead to death."
+- **Why it's uncovered:** `dependent.disabled` uses the term without the substantial-activity or doctor tests. `dependent.dc_incapable` is expressly a different test.
+- **Effect:** Eligibility and amount, because this condition removes the age limit. This is the weakest of the definition gaps, since the question uses the exact term.
+
+**11. Kidnapped child (p. 43; also the tip on p. 41)**
+- **Quote:** "Also see Kidnapped child under Who Qualifies as Your Dependent, earlier, and Members of the military, later."
+- **Why it's uncovered:** `dependent.us_half` and `dependent.months` list the other exceptions (temporary absences, birth, death, adoption or foster placement, and military duty) but omit kidnapping. Nothing refuses this case.
+- **Effect:** Eligibility and amount.
+
+**12. Filer's SSN: DHS legend and issue date (p. 45; p. 40, Step 1, question 2)**
+- **Quote:** "However, if "Valid for Work Only With DHS Authorization" is printed on your social security card, your SSN is valid for EIC purposes only as long as the DHS authorization is still valid." and "If you didn't have an SSN issued on or before the due date of your 2025 return (including extensions), you can't claim the EIC on your original or an amended 2025 return."
+- **Why it's uncovered:** `dependent.eic_ssn` carries these rules, but it is scoped to "this person" and cited for children. `eic.step1_ssn` relies on `household.all_work_ssn`, and the closest listed input appears to be `dependent.work_ssn` ("SSN valid for employment, issued before the due date"). That input omits the DHS condition and excludes an SSN issued on the due date itself.
+- **Effect:** Eligibility, in narrow cases. Confirm which input feeds `household.work_ssn_count`.
+
+**13. Voluntary choice not to claim (p. 43, Line 27c)**
+- **Quote:** "Check the box on line 27c if you do not want to claim the earned income credit or if you have been instructed to check the box in the instructions for line 27a."
+- **Why it's uncovered:** The second condition is covered, but `eic.check_27c` itself says "the filer's own choice not to claim the EIC is not asked".
+- **Effect:** Amount, because line 27a would show a credit the filer chose not to claim.
+
+## Gaps that affect presentation or filing only
+
+**14. Schedule EIC (p. 40; reminders pp. 46, 48)**
+- **Quote:** "If you have at least one child who meets the conditions to be your qualifying child for purposes of claiming the EIC, complete and attach Schedule EIC, even if that child doesn't have a valid SSN."
+- **Why it's uncovered:** `eic.has_qc` detects the condition, but no line, output or refusal produces the schedule.
+- **Effect:** Presentation and a required attachment, with no change to the computed amount.
+
+**15. Dependents-section and address-block boxes (pp. 41–42)**
+- **Quotes:**
+  - "If the child is a full-time student, check the "Full-time student" box on row (6) of the Dependents section on page 1 of Form 1040 or 1040-SR" (a matching instruction covers the disabled box)
+  - "If the child lived with you in the United States for more than half of 2025, check both boxes (box (a) and box (b)) on row (5) of the Dependents section on page 1 of Form 1040 or 1040-SR."
+  - "Also, make sure to check the box to the right of the address block on page 1 of Form 1040 or 1040-SR."
+- **Why it's uncovered:** The underlying facts are asked (`dependent.student`, `dependent.disabled`, `dependent.us_half`, `eic.us_home`), but no item produces these boxes. Only `eic.separated_box` and `eic.check_27c` produce a box-type instruction.
+- **Effect:** Presentation only.
+
+**16. Credit figured by the IRS (p. 43)**
+- **Quote:** "Enter "EIC" on the dotted line next to line 27a."
+- **Why it's uncovered:** `eic.eligible` always takes the "No. Go to Worksheet A" branch of Step 6, question 1, and the choice is never asked.
+- **Effect:** Presentation only, because the tool computes the credit itself.
+
+## Considered but not counted
+- **Extended active duty definition (p. 44):** `eic.us_home` and `dependent.us_half` use the term without defining it. The effect is marginal given the more-than-half-year test.
+- **Self-employment tax note (p. 47):** "we may reduce your credit by the amount of self-employment tax not paid" describes IRS discretion, not something a filer computes.
+- **Form 4797 (p. 43):** no refusal is listed under that name, but `eic.step2_income` says it is refused earlier, so I treated it as covered.
+- **Items covered by refusals:** nonresident aliens, clergy and church employees, combat pay, Medicaid waiver payments, married children and the tie-breaker rules.
+
+**Count of gaps: 16** (13 affecting eligibility or amount, 3 presentation or filing only).

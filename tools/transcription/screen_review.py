@@ -11,8 +11,10 @@ and the archived pages those lines cite, and asks for every case the wording mis
 
     screen_review.py [--screens a,b] [--dry-run] [--from-response] [--jobs 6] [--model M]
 
-One-time review, adjudicated in reviews/<year>/screens/screen_review.md (rerun it when the
-sources are refetched). Each call is one fixed-prompt `claude -p` with no tools (fixed-prompt, curated input, no action surface).
+Standing review (T-088): a screen whose prompt hash (its question, the gated lines' English and refusals, and
+the pages they cite) differs from its recorded review is stale in check-all (tools/transcription/check_screens.py)
+and is rerun with --screens, which merges into reviews/<year>/screens/screen_review.json; findings are adjudicated
+in reviews/<year>/screens/screen_review.md and ruled in reviews/<year>/screens/rulings.json. Each call is one fixed-prompt `claude -p` with no tools (fixed-prompt, curated input, no action surface).
 """
 import argparse, datetime, glob, hashlib, json, os, re, sys
 from concurrent.futures import ThreadPoolExecutor
@@ -111,11 +113,17 @@ Use an empty list when the question covers the lines exactly. No prose before or
 """
 
 
-def run_one(screen, gated, lines, mani, model, dry, from_response):
+def prompt_for(screen, gated, lines, mani):
+    """The review prompt of one screen and the pages it gives; its hash is the screen's review subject."""
     sdoc, sline = lines[screen]
     pseudo = {"id": screen, "lines": [sline] + [l for _, l, _ in gated] + [{"cite": r["cite"], "expr": {}} for _, _, r in gated]}
     excerpt, used = excerpt_for(pseudo, mani)
-    prompt = build_prompt(screen, sline, gated, excerpt)
+    return build_prompt(screen, sline, gated, excerpt), used
+
+
+def run_one(screen, gated, lines, mani, model, dry, from_response):
+    sdoc, sline = lines[screen]
+    prompt, used = prompt_for(screen, gated, lines, mani)
     os.makedirs(RAW, exist_ok=True)
     base = os.path.join(RAW, screen)
     open(base + ".prompt.txt", "w", encoding="utf-8").write(prompt)
@@ -150,7 +158,12 @@ def main():
         print(f"{len(results)} screens, {sum(r['chars'] for r in results):,} chars in all")
         return
     os.makedirs(OUT, exist_ok=True)
-    json.dump(results, open(os.path.join(OUT, "screen_review.json"), "w"), indent=1, ensure_ascii=False)
+    path = os.path.join(OUT, "screen_review.json")
+    # A run over some screens replaces their entries and keeps the others (the standing review, T-088).
+    previous = json.load(open(path)) if os.path.exists(path) else []
+    rerun = {r["screen"] for r in results}
+    merged = [r for r in previous if r["screen"] not in rerun] + results
+    json.dump(sorted(merged, key=lambda r: r["screen"]), open(path, "w"), indent=1, ensure_ascii=False)
     cost = sum(r["cost"] for r in results)
     print(f"{len(results)} screens; verdicts: " + ", ".join(f"{v} {sum(1 for r in results if r['verdict'] == v)}" for v in sorted({r['verdict'] for r in results})) + f"; cost {cost:.2f}")
 

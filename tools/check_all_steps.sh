@@ -82,6 +82,18 @@ step citations python3 tools/citations.py --strict "$@"
 step citations_self_test python3 tools/citations.py --self-test "$@"
 step year_diff_self_test python3 tools/year_diff.py --self-test "$@"
 step build build_and_render "$@"
+# Source-coverage checks (T-084 to T-089) read the canonical data and rendered English the build writes.
+step instruction_cites python3 tools/check_instruction_cites.py
+step instruction_cites_self_test python3 tools/check_instruction_cites.py --self-test
+step operands python3 tools/check_operands.py
+step operands_self_test python3 tools/check_operands.py --self-test
+step signs python3 tools/check_signs.py
+step signs_self_test python3 tools/check_signs.py --self-test
+step screen_currency python3 tools/transcription/check_screens.py
+step consumers python3 tools/check_consumers.py
+step consumers_self_test python3 tools/check_consumers.py --self-test
+step limits python3 tools/check_limits.py
+step limits_self_test python3 tools/check_limits.py --self-test
 wave
 
 step conjecture "${node[@]}" conjecture "$@"
