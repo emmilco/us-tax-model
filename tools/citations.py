@@ -73,6 +73,7 @@ import argparse
 import collections
 import glob
 import html
+import io
 import json
 import os
 import re
@@ -91,6 +92,8 @@ from archive_text import DRAFT_COVER  # noqa: E402
 RULINGS = ROOT / "reviews" / Y / "citations.json"
 REPORT = ROOT / "reports" / Y / "citations.md"
 RULINGS_PAGE = ROOT / "reports" / Y / "citations.html"
+INPUT_QUOTES = ROOT / "reviews" / Y / "input_quotes.json"
+INPUT_QUOTES_REPORT = ROOT / "reports" / Y / "input_quotes.md"
 
 PAGES_RE = r"(\d+(?:\s*[–—-]\s*\d+)?(?:(?:,\s*|\s+and\s+)\d+(?:\s*[–—-]\s*\d+)?)*)"
 SEGMENT_RE = re.compile(r"^(?:(?P<doc>[a-z][a-z0-9-]*)\s+)?(?P<pp>pp?\.)\s*" + PAGES_RE + r"(?P<rest>.*)$", re.S)
@@ -522,6 +525,137 @@ def check_computed(arch, rows, rulings=frozenset()):
     return counts, findings
 
 
+# ---------- quotes outside computed lines and page locators ----------
+
+def quote_sites(stream, path_label, exempt=frozenset()):
+    """Quotes the page check does not reach, in one YAML document: those of a
+    locator segment that names no page, and those of a citation's `quote` key.
+    Computed lines (their locator at a line in `exempt`) are checked by
+    check_computed. Each site is a dict with the owner (the nearest enclosing
+    line, parameter or table, keyed by its id), the owner's canonical data
+    (`subject`), the document, the quote and its file line."""
+    loader = yaml.SafeLoader("")
+    root = yaml.compose(stream)
+    stem = os.path.basename(path_label).rsplit(".", 1)[0]
+    sites = []
+
+    def owner_of(stack):
+        for name, node in reversed(stack):
+            if isinstance(node, yaml.MappingNode):
+                ids = [v.value for k, v in node.value if isinstance(k, yaml.ScalarNode) and k.value == "id"
+                       and isinstance(v, yaml.ScalarNode)]
+                if ids:
+                    return ids[0], node
+                if name is not None and len(stack) > 1 and name != "params":
+                    return name, node
+        return stem, root
+
+    def walk(node, stack, name):
+        if isinstance(node, yaml.MappingNode):
+            keys = {k.value: v for k, v in node.value if isinstance(k, yaml.ScalarNode)}
+            stack = stack + [(name, node)]
+            if "doc" in keys and "locator" in keys and isinstance(keys["locator"], yaml.ScalarNode):
+                owner, onode = owner_of(stack[:-1])
+                subject = json.dumps(loader.construct_object(onode, deep=True), sort_keys=True, default=str)
+                doc, locator = keys["doc"].value, keys["locator"].value
+                at = keys["locator"].start_mark.line + 1
+                if (path_label, at) not in exempt:
+                    for plain, quotes in split_top(locator):
+                        if quotes and not SEGMENT_RE.match(plain.strip()):
+                            m = re.match(r"^([a-z][a-z0-9-]*)\s", plain.strip())
+                            for q in quotes:
+                                sites.append({"owner": f"{stem}:{owner}", "subject": subject, "doc": doc,
+                                              "lead_doc": m.group(1) if m else None, "quote": q,
+                                              "file": path_label, "line": at, "via": "locator"})
+                if isinstance(keys.get("quote"), yaml.ScalarNode):
+                    sites.append({"owner": f"{stem}:{owner}", "subject": subject, "doc": doc, "lead_doc": None,
+                                  "quote": keys["quote"].value, "file": path_label,
+                                  "line": keys["quote"].start_mark.line + 1, "via": "quote key"})
+            for k, v in node.value:
+                walk(v, stack, k.value if isinstance(k, yaml.ScalarNode) else None)
+        elif isinstance(node, yaml.SequenceNode):
+            for v in node.value:
+                walk(v, stack, None)
+    walk(root, [], None)
+    return sites
+
+
+def diagnose(whole, qp):
+    """Why a quote is not found in a document's text: the cause in words."""
+    flat = lambda t: re.sub(r"[^a-z0-9]", "", t)
+    text = " ".join(whole)
+    squeezed = flat(text)
+    missing = [p for p in qp if not any(p in w for w in whole)] or qp
+    if all(flat(p) in squeezed for p in missing):
+        return "typography or spacing only (matches once punctuation and spaces are ignored)"
+    words = " ".join(missing).split()
+    best = 0
+    for i in range(len(words)):
+        for j in range(len(words), i + best, -1):
+            if " ".join(words[i:j]) in text:
+                best = j - i
+                break
+    if best >= max(4, len(words) // 2):
+        return f"partly printed (longest matching run {best} of {len(words)} words): a paraphrase or an alteration"
+    if best >= 3:
+        return f"mostly absent (longest matching run {best} of {len(words)} words): a paraphrase"
+    return "absent from the document's text"
+
+
+def check_input_quotes(arch, sites, rulings=frozenset()):
+    """Check each site's quote against the whole text of its document (a segment's
+    leading document id, else the citation's). Returns the counts and the findings
+    in the form tools/baseline_check.py takes."""
+    counts, found, seen = collections.Counter(), [], set()
+    for s in sites:
+        doc = s["lead_doc"] if s["lead_doc"] in arch.docs else s["doc"]
+        qp = parts_of(s["quote"])
+        if not qp:
+            continue
+        counts["quotes checked"] += 1
+        counts[f"quotes checked: {s['via']}"] += 1
+        whole = arch.whole(doc)
+        if whole is None:
+            cause = f"{doc} has no archived text"
+        elif ("quote", doc, s["quote"]) in rulings:
+            counts["quotes ruled in citations.json"] += 1
+            continue
+        elif any(all(p in w for p in qp) for w in whole):
+            counts["quotes matched"] += 1
+            continue
+        else:
+            cause = diagnose(whole, qp)
+        counts["quotes unmatched"] += 1
+        k = f"{s['owner']} {doc} “{' '.join(s['quote'].split())[:70]}”"
+        if k in seen:
+            continue
+        seen.add(k)
+        found.append({"kind": "input-quote", "line": k, "form": s["owner"], "subject": s["subject"],
+                      "detail": f"`{s['file']}:{s['line']}` {doc}, {s['via']} “{' '.join(s['quote'].split())}”: {cause}",
+                      "cause": cause})
+    return counts, found
+
+
+def input_quotes(strict=False, rebaseline=False):
+    import baseline_check
+    arch, rulings = Archive(), load_rulings()
+    exempt = {(rel(p), row[5]) for p in form_files() for row in computed_lines(p)}
+    sites = []
+    for path in data_files():
+        with open(path, encoding="utf-8") as f:
+            sites += quote_sites(f, rel(path), exempt)
+    counts, found = check_input_quotes(arch, sites, rulings)
+    legend = ("Quotes of citations outside computed lines that no page locator reaches (a locator segment without "
+              "pages, a citation's `quote` key) must appear in the cited document. Unmatched quotes are accepted by "
+              f"the baseline in `reviews/{Y}/input_quotes.json`; an entry comes due when its own line, parameter "
+              "or table changes. " + ", ".join(f"{k}: {v}" for k, v in sorted(counts.items())))
+    status = baseline_check.run("input quotes", [], found, INPUT_QUOTES, INPUT_QUOTES_REPORT,
+                                f"Input, parameter and gate citation quotes, tax year {Y}", legend, rebaseline)
+    print(f"input quotes: {counts['quotes checked']} checked, {counts['quotes unmatched']} unmatched "
+          f"({counts['quotes matched']} matched)")
+    return status if strict else 0
+
+
 # ---------- check ----------
 
 def load_rulings():
@@ -904,7 +1038,8 @@ def self_test():
     status = _report_plan("relocated again, half the evidence a page early", planned) or status
 
     computed, rewrite, cover = self_test_computed(arch), self_test_rewrite(), self_test_cover(arch, items)
-    return status or computed or rewrite or cover
+    quotes = self_test_input_quotes(arch)
+    return status or computed or rewrite or cover or quotes
 
 
 COVER_TEST_DOC = "f4952"  # cited on several pages at once, by no single-page quote: no shift evidence
@@ -963,6 +1098,35 @@ def self_test_computed(arch):
         if bool(found) != expect_finding:
             bad.append(f"  WRONG planted {name} locator “{locator}” {'reported' if found else 'passed'}")
     print(f"self-test, planted computed-line locators: {len(planted) - len(bad)} of {len(planted)} behaved")
+    for b in bad:
+        print(b)
+    return 1 if bad else 0
+
+
+def self_test_input_quotes(arch):
+    """Plant an input line citing a quote of Form 8959 as printed and one misquoted (in a locator and in a
+    `quote` key); only the misquotes are unmatched, and the baseline entry of a misquote comes due when its
+    own line changes."""
+    import baseline_check
+    printed = "Add lines 1 through 3"
+    text = lambda quote, extra="": (
+        "form:\n  id: f8959\n  lines:\n"
+        "    - id: f8959.x\n      expr: {op: input, source: x}\n      cite:\n        doc: f8959\n"
+        f"        locator: 'Line 4, \"{quote}\"'{extra}\n")
+    run = lambda t: check_input_quotes(arch, quote_sites(io.StringIO(t), "self-test.yaml"))[1]
+    miss = "Add lines 1 through 9 and halve"
+    bad = []
+    if run(text(printed)):
+        bad.append("  WRONG a quote as printed was reported")
+    wrong = run(text(miss))
+    if len(wrong) != 1:
+        bad.append("  WRONG a misquoted input line was not reported")
+    if len(run(text(printed, f"\n        quote: '{miss}'"))) != 1:
+        bad.append("  WRONG a misquoted `quote` key was not reported")
+    moved = run(text(miss) + "      label: new\n")
+    if wrong and (not moved or baseline_check.subject_hash(moved[0], {}) == baseline_check.subject_hash(wrong[0], {})):
+        bad.append("  WRONG a baseline entry did not come due when its line changed")
+    print(f"self-test, planted input-line quotes: {4 - len(bad)} of 4 behaved")
     for b in bad:
         print(b)
     return 1 if bad else 0
@@ -1113,13 +1277,16 @@ def main():
     ap.add_argument("--from", dest="from_year", type=int,
                     help="with --relocate: the year whose archive the locators were written for (default: this year's)")
     ap.add_argument("--self-test", action="store_true")
-    ap.add_argument("--strict", action="store_true", help="fail on computed-line locators to rewrite, not only report them")
+    ap.add_argument("--strict", action="store_true", help="fail on computed-line locators to rewrite and on new unmatched input quotes, not only report them")
+    ap.add_argument("--rebaseline-input-quotes", action="store_true",
+                    help="record the current unmatched input quotes as the baseline (reviews/<year>/input_quotes.json)")
     a = ap.parse_args()
     if a.self_test:
         return self_test()
     if a.relocate:
         return relocate(a.from_year)
-    return check(strict=a.strict)
+    status = check(strict=a.strict)
+    return input_quotes(a.strict, a.rebaseline_input_quotes) or status
 
 
 if __name__ == "__main__":

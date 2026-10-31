@@ -2,65 +2,72 @@
 
 Cases: 1700 generated returns, single, head of household and married filing jointly (tools/engines/generate_cases.py). Engines run locally under .engines/ (tools/engines/setup.sh); versions: PolicyEngine-US 2.49.4, Tax-Calculator 6.8.5, OpenTaxSolver 23.06 (package 0_README.txt; the Form 1040 program reports v23.05), UsTaxes 0.1.23 (git d276c7241dc8, src/forms/Y2025).
 
-`table-adjusted` means the engine equals the project's tax lines recomputed with every Tax Table lookup replaced by the rate schedule (engines compute from the schedule where the form prescribes the table), keeping the worksheet path and re-taking its smaller-of; an identified cause, not a tolerance. For Form 1040 line 27a, `table-adjusted` means the engine is within $1 of the project's Worksheet A path recomputed with each EIC Table lookup replaced by the credit at the exact amount (the engines compute from the formula where the instructions prescribe the table built at each $50 band's midpoint); the $1 allows for the engines' statutory percentages, which the archive does not hold, against the rates the Rev. Proc. 2024-40 amounts imply (at most about $0.20 apart over the table's range). `float` means the difference is within two units in the last place of the engine's floating-point representation (PolicyEngine-US computes in float32, Tax-Calculator in float64), a bound derived from the engine's precision. `unrounded` (OpenTaxSolver, which computes in doubles, rounds nothing and prints each program's lines to the cent) means the engine equals the project's own derivation of the line re-evaluated in exact arithmetic without the project's half-up cent rounding of products and ratios (amb.2025.multiplication_subcent), with each amount that passes between the engine's programs taken at the cent it prints and the result printed to the cent; where the exact value is within 1/1000 cent of a half cent either neighbouring cent is the print (an engine double stays within 1/10,000 cent of the exact value at these amounts). No difference is allowed beyond what that recomputation gives; a line the adapter supplies as an amount is recomputed only where the project's value is that amount, and a case whose exact values take another branch, test or table band than the project's is not recomputed. An identified cause, not a tolerance. OpenTaxSolver builds its tax from the Tax Table below $100,000 as the form does, so it has no `table-adjusted` reading. `table-midpoint` (UsTaxes, which emulates the Tax Table by applying the rate schedule at the midpoint of the band holding the whole-dollar amount, without the table's rounding to whole dollars, and rounds Form 8960 line 17 to whole dollars) means the engine equals the project's lines recomputed by those two methods along the project's own worksheet path: each Tax Table lookup replaced by the schedule at the band midpoint, Form 8960 line 17 by 3.8% of line 16 rounded half up to whole dollars, and the lines that follow (the worksheet's tax lines, Form 1040 lines 16 to 37, Schedule 8812 lines 14 to 27) re-taken; within the engine's `float` bound, it is an identified cause, not a tolerance. `excluded` lines carry the engine limitation stated below; the features that trigger them are the generator's, those read off the project's values, and those the engine's adapter reports about its own run. Every other difference must be explained in fixtures/2025/differential/engine_investigations.json or the run fails.
+`table-adjusted` means the engine equals the project's tax lines recomputed with every Tax Table lookup replaced by the rate schedule (engines compute from the schedule where the form prescribes the table), keeping the worksheet path and re-taking its smaller-of; an identified cause, not a tolerance. For Form 1040 line 27a, `table-adjusted` means the engine is within $1 of the project's Worksheet A path recomputed with each EIC Table lookup replaced by the credit at the exact amount (the engines compute from the formula where the instructions prescribe the table built at each $50 band's midpoint); the $1 allows for the engines' statutory percentages, which the archive does not hold, against the rates the Rev. Proc. 2024-40 amounts imply (at most about $0.20 apart over the table's range). `float` means the difference is within two units in the last place of the engine's floating-point representation (PolicyEngine-US computes in float32, Tax-Calculator in float64), a bound derived from the engine's precision. `unrounded` (OpenTaxSolver, which computes in doubles, rounds nothing and prints each program's lines to the cent) means the engine equals the project's own derivation of the line re-evaluated in exact arithmetic without the project's half-up cent rounding of products and ratios (amb.2025.multiplication_subcent), with each amount that passes between the engine's programs taken at the cent it prints and the result printed to the cent; where the exact value is within 1/1000 cent of a half cent either neighbouring cent is the print (an engine double stays within 1/10,000 cent of the exact value at these amounts). No difference is allowed beyond what that recomputation gives; a line the adapter supplies as an amount is recomputed only where the project's value is that amount, and a case whose exact values take another branch, test or table band than the project's is not recomputed. An identified cause, not a tolerance. OpenTaxSolver builds its tax from the Tax Table below $100,000 as the form does, so it has no `table-adjusted` reading. `table-midpoint` (UsTaxes, which emulates the Tax Table by applying the rate schedule at the midpoint of the band holding the whole-dollar amount, without the table's rounding to whole dollars, and rounds Form 8960 line 17 to whole dollars) means the engine equals the project's lines recomputed by those two methods along the project's own worksheet path: each Tax Table lookup replaced by the schedule at the band midpoint, Form 8960 line 17 by 3.8% of line 16 rounded half up to whole dollars, and the lines that follow (the worksheet's tax lines, Form 1040 lines 16 to 37, Schedule 8812 lines 14 to 27) re-taken; within the engine's `float` bound, it is an identified cause, not a tolerance. `contribution-unrounded` (PolicyEngine-US, which does not round the Form 8962 contribution) means the engine is within its `float` bound of the project's Form 8962 recomputed along its own annual path with line 8a taken as line 3 times line 7 exactly instead of rounded to whole dollars, and lines 11c to 11e and 26 re-taken; an identified cause, not a tolerance. `excluded` lines carry the engine limitation stated below; the features that trigger them are the generator's, those read off the project's values, and those the engine's adapter reports about its own run. Every other difference must be explained in fixtures/2025/differential/engine_investigations.json or the run fails.
 
 Not-computed floor: the run fails when the project left more than 5% of an engine's cases without a value on a mapped line (a refusal, an unknown input, a non-money value), measured outside the allow-listed returns that do not file the form: f2441.line11 unknown where `f2441.care` is false (Form 2441 is not filed without care expenses; Schedule 3 line 2 carries the zero and is compared on every return); f2441.line9c unknown where `f2441.care` is false (Form 2441 is not filed without care expenses; Schedule 3 line 2 carries the zero and is compared on every return); f5695.line13 unknown where `f5695.part1_any` is false (Form 5695 Part I is not filed without Part I costs; Schedule 3 line 5a carries the zero and is compared on every return); f5695.line15 unknown where `f5695.part1_any` is false (Form 5695 Part I is not filed without Part I costs; Schedule 3 line 5a carries the zero and is compared on every return); f5695.line30 unknown where `f5695.part2_any` is false (Form 5695 Part II is not filed without Part II costs; Schedule 3 line 5b carries the zero and is compared on every return); f5695.line32 unknown where `f5695.part2_any` is false (Form 5695 Part II is not filed without Part II costs; Schedule 3 line 5b carries the zero and is compared on every return).
 
 ## PolicyEngine-US
 
-| line | exact | table-adjusted | table-midpoint | float | unrounded | excluded | explained | UNEXPLAINED | not computed | not computed outside the allow-list (share) |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| eic.earned_income | 1214 | 0 | 0 | 186 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
-| eic.line1 | 1401 | 0 | 0 | 299 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line10 | 1559 | 0 | 0 | 81 | 0 | 19 | 0 | 0 | 41 | 41 (2.4%) |
-| f1040.line11b | 1101 | 0 | 0 | 539 | 0 | 19 | 0 | 0 | 41 | 41 (2.4%) |
-| f1040.line13a | 1471 | 0 | 0 | 19 | 0 | 139 | 0 | 0 | 71 | 71 (4.2%) |
-| f1040.line13b | 1533 | 0 | 0 | 3 | 0 | 143 | 0 | 0 | 21 | 21 (1.2%) |
-| f1040.line15 | 934 | 0 | 0 | 448 | 0 | 256 | 2 | 0 | 60 | 60 (3.5%) |
-| f1040.line16 | 454 | 783 | 0 | 105 | 0 | 298 | 0 | 0 | 60 | 60 (3.5%) |
-| f1040.line19 | 776 | 96 | 0 | 0 | 0 | 788 | 0 | 0 | 40 | 40 (2.4%) |
-| f1040.line27a | 1289 | 222 | 0 | 0 | 0 | 150 | 0 | 0 | 39 | 39 (2.3%) |
-| f1040.line28 | 812 | 59 | 0 | 1 | 0 | 788 | 0 | 0 | 40 | 40 (2.4%) |
-| f1040.line29 | 1529 | 0 | 0 | 0 | 0 | 164 | 0 | 0 | 7 | 7 (0.4%) |
-| f1040.line6b | 1636 | 0 | 0 | 30 | 0 | 19 | 0 | 0 | 15 | 15 (0.9%) |
-| f1040.tax_before_credits | 368 | 645 | 0 | 105 | 0 | 527 | 0 | 0 | 55 | 55 (3.2%) |
-| f2441.line11 | 196 | 13 | 0 | 0 | 0 | 404 | 0 | 0 | 1087 | 9 (0.5%) |
-| f2441.line9c | 259 | 0 | 0 | 0 | 0 | 150 | 0 | 0 | 1291 | 5 (0.3%) |
-| f5695.line13 | 170 | 0 | 0 | 3 | 0 | 19 | 0 | 0 | 1508 | 0 (0.0%) |
-| f5695.line15 | 79 | 41 | 0 | 1 | 0 | 418 | 0 | 0 | 1161 | 4 (0.2%) |
-| f5695.line30 | 139 | 0 | 0 | 7 | 0 | 59 | 0 | 0 | 1495 | 0 (0.0%) |
-| f5695.line32 | 101 | 6 | 0 | 5 | 0 | 445 | 0 | 0 | 1143 | 3 (0.2%) |
-| f8863.line18 | 1625 | 0 | 0 | 0 | 0 | 34 | 0 | 0 | 41 | 41 (2.4%) |
-| f8863.line19 | 1204 | 21 | 0 | 0 | 0 | 418 | 0 | 0 | 57 | 57 (3.4%) |
-| f8863.line7 | 1625 | 0 | 0 | 0 | 0 | 34 | 0 | 0 | 41 | 41 (2.4%) |
-| f8863.line8 | 1625 | 0 | 0 | 0 | 0 | 34 | 0 | 0 | 41 | 41 (2.4%) |
-| f8863.line9 | 1625 | 0 | 0 | 0 | 0 | 34 | 0 | 0 | 41 | 41 (2.4%) |
-| f8880.line10 | 1634 | 0 | 0 | 3 | 0 | 22 | 0 | 0 | 41 | 41 (2.4%) |
-| f8880.line12 | 1233 | 9 | 0 | 1 | 0 | 420 | 0 | 0 | 37 | 37 (2.2%) |
-| f8959.tax | 1676 | 0 | 0 | 5 | 0 | 19 | 0 | 0 | 0 | 0 (0.0%) |
-| f8960.tax | 1469 | 0 | 0 | 3 | 0 | 189 | 0 | 0 | 39 | 39 (2.3%) |
-| person[taxpayer].se_line12 | 1655 | 0 | 0 | 45 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| person[taxpayer].se_line13 | 1621 | 0 | 0 | 79 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| s1.line15 | 1621 | 0 | 0 | 79 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| s1.line20 | 1640 | 0 | 0 | 0 | 0 | 19 | 0 | 0 | 41 | 41 (2.4%) |
-| s1a.line13 | 1554 | 0 | 0 | 0 | 0 | 143 | 0 | 0 | 3 | 3 (0.2%) |
-| s1a.line21 | 1553 | 0 | 0 | 0 | 0 | 143 | 0 | 0 | 4 | 4 (0.2%) |
-| s1a.line30 | 1552 | 0 | 0 | 0 | 0 | 143 | 0 | 0 | 5 | 5 (0.3%) |
-| s1a.line37 | 1665 | 0 | 0 | 3 | 0 | 19 | 0 | 0 | 13 | 13 (0.8%) |
-| s2.line4 | 1655 | 0 | 0 | 45 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| s3.line2 | 1274 | 13 | 0 | 0 | 0 | 404 | 0 | 0 | 9 | 9 (0.5%) |
-| s3.line3 | 1252 | 21 | 0 | 0 | 0 | 418 | 0 | 0 | 9 | 9 (0.5%) |
-| s3.line5a | 1236 | 41 | 0 | 1 | 0 | 418 | 0 | 0 | 4 | 4 (0.2%) |
-| s3.line5b | 1241 | 6 | 0 | 5 | 0 | 445 | 0 | 0 | 3 | 3 (0.2%) |
-| s8812.line12 | 1511 | 0 | 0 | 0 | 0 | 150 | 0 | 0 | 39 | 39 (2.3%) |
-| sa.deduction | 1509 | 0 | 0 | 4 | 0 | 172 | 0 | 0 | 15 | 15 (0.9%) |
-| sa.line17 | 1509 | 0 | 0 | 4 | 0 | 172 | 0 | 0 | 15 | 15 (0.9%) |
-| sa.standard | 1681 | 0 | 0 | 0 | 0 | 19 | 0 | 0 | 0 | 0 (0.0%) |
+| line | exact | table-adjusted | table-midpoint | float | unrounded | contribution-unrounded | excluded | explained | UNEXPLAINED | not computed | not computed outside the allow-list (share) |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| eic.earned_income | 1214 | 0 | 0 | 186 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
+| eic.line1 | 1401 | 0 | 0 | 299 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line10 | 1559 | 0 | 0 | 81 | 0 | 0 | 19 | 0 | 0 | 41 | 41 (2.4%) |
+| f1040.line11b | 1101 | 0 | 0 | 539 | 0 | 0 | 19 | 0 | 0 | 41 | 41 (2.4%) |
+| f1040.line13a | 1471 | 0 | 0 | 19 | 0 | 0 | 139 | 0 | 0 | 71 | 71 (4.2%) |
+| f1040.line13b | 1533 | 0 | 0 | 3 | 0 | 0 | 143 | 0 | 0 | 21 | 21 (1.2%) |
+| f1040.line15 | 934 | 0 | 0 | 448 | 0 | 0 | 256 | 2 | 0 | 60 | 60 (3.5%) |
+| f1040.line16 | 454 | 783 | 0 | 105 | 0 | 0 | 298 | 0 | 0 | 60 | 60 (3.5%) |
+| f1040.line19 | 776 | 96 | 0 | 0 | 0 | 0 | 788 | 0 | 0 | 40 | 40 (2.4%) |
+| f1040.line27a | 1289 | 222 | 0 | 0 | 0 | 0 | 150 | 0 | 0 | 39 | 39 (2.3%) |
+| f1040.line28 | 812 | 59 | 0 | 1 | 0 | 0 | 788 | 0 | 0 | 40 | 40 (2.4%) |
+| f1040.line29 | 1529 | 0 | 0 | 0 | 0 | 0 | 164 | 0 | 0 | 7 | 7 (0.4%) |
+| f1040.line6b | 1636 | 0 | 0 | 30 | 0 | 0 | 19 | 0 | 0 | 15 | 15 (0.9%) |
+| f1040.tax_before_credits | 368 | 645 | 0 | 105 | 0 | 0 | 527 | 0 | 0 | 55 | 55 (3.2%) |
+| f2441.line11 | 196 | 13 | 0 | 0 | 0 | 0 | 404 | 0 | 0 | 1087 | 9 (0.5%) |
+| f2441.line9c | 259 | 0 | 0 | 0 | 0 | 0 | 150 | 0 | 0 | 1291 | 5 (0.3%) |
+| f5695.line13 | 170 | 0 | 0 | 3 | 0 | 0 | 19 | 0 | 0 | 1508 | 0 (0.0%) |
+| f5695.line15 | 79 | 41 | 0 | 1 | 0 | 0 | 418 | 0 | 0 | 1161 | 4 (0.2%) |
+| f5695.line30 | 139 | 0 | 0 | 7 | 0 | 0 | 59 | 0 | 0 | 1495 | 0 (0.0%) |
+| f5695.line32 | 101 | 6 | 0 | 5 | 0 | 0 | 445 | 0 | 0 | 1143 | 3 (0.2%) |
+| f8863.line18 | 1625 | 0 | 0 | 0 | 0 | 0 | 34 | 0 | 0 | 41 | 41 (2.4%) |
+| f8863.line19 | 1204 | 21 | 0 | 0 | 0 | 0 | 418 | 0 | 0 | 57 | 57 (3.4%) |
+| f8863.line7 | 1625 | 0 | 0 | 0 | 0 | 0 | 34 | 0 | 0 | 41 | 41 (2.4%) |
+| f8863.line8 | 1625 | 0 | 0 | 0 | 0 | 0 | 34 | 0 | 0 | 41 | 41 (2.4%) |
+| f8863.line9 | 1625 | 0 | 0 | 0 | 0 | 0 | 34 | 0 | 0 | 41 | 41 (2.4%) |
+| f8880.line10 | 1634 | 0 | 0 | 3 | 0 | 0 | 22 | 0 | 0 | 41 | 41 (2.4%) |
+| f8880.line12 | 1233 | 9 | 0 | 1 | 0 | 0 | 420 | 0 | 0 | 37 | 37 (2.2%) |
+| f8959.tax | 1676 | 0 | 0 | 5 | 0 | 0 | 19 | 0 | 0 | 0 | 0 (0.0%) |
+| f8960.tax | 1469 | 0 | 0 | 3 | 0 | 0 | 189 | 0 | 0 | 39 | 39 (2.3%) |
+| f8962.line11d | 66 | 0 | 0 | 0 | 0 | 48 | 18 | 0 | 0 | 1 | 1 (0.8%) |
+| f8962.line11e | 75 | 0 | 0 | 0 | 0 | 39 | 18 | 0 | 0 | 1 | 1 (0.8%) |
+| f8962.line26 | 19 | 0 | 0 | 0 | 0 | 10 | 103 | 0 | 0 | 1 | 1 (0.8%) |
+| f8962.line3 | 83 | 0 | 0 | 46 | 0 | 0 | 2 | 0 | 0 | 2 | 2 (1.5%) |
+| f8962.line8a | 23 | 0 | 0 | 0 | 0 | 102 | 7 | 0 | 0 | 1 | 1 (0.8%) |
+| person[taxpayer].se_line12 | 1655 | 0 | 0 | 45 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| person[taxpayer].se_line13 | 1621 | 0 | 0 | 79 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| s1.line15 | 1621 | 0 | 0 | 79 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| s1.line20 | 1640 | 0 | 0 | 0 | 0 | 0 | 19 | 0 | 0 | 41 | 41 (2.4%) |
+| s1a.line13 | 1554 | 0 | 0 | 0 | 0 | 0 | 143 | 0 | 0 | 3 | 3 (0.2%) |
+| s1a.line21 | 1553 | 0 | 0 | 0 | 0 | 0 | 143 | 0 | 0 | 4 | 4 (0.2%) |
+| s1a.line30 | 1552 | 0 | 0 | 0 | 0 | 0 | 143 | 0 | 0 | 5 | 5 (0.3%) |
+| s1a.line37 | 1665 | 0 | 0 | 3 | 0 | 0 | 19 | 0 | 0 | 13 | 13 (0.8%) |
+| s2.line4 | 1655 | 0 | 0 | 45 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| s3.line2 | 1274 | 13 | 0 | 0 | 0 | 0 | 404 | 0 | 0 | 9 | 9 (0.5%) |
+| s3.line3 | 1252 | 21 | 0 | 0 | 0 | 0 | 418 | 0 | 0 | 9 | 9 (0.5%) |
+| s3.line5a | 1236 | 41 | 0 | 1 | 0 | 0 | 418 | 0 | 0 | 4 | 4 (0.2%) |
+| s3.line5b | 1241 | 6 | 0 | 5 | 0 | 0 | 445 | 0 | 0 | 3 | 3 (0.2%) |
+| s8812.line12 | 1511 | 0 | 0 | 0 | 0 | 0 | 150 | 0 | 0 | 39 | 39 (2.3%) |
+| sa.deduction | 1509 | 0 | 0 | 4 | 0 | 0 | 172 | 0 | 0 | 15 | 15 (0.9%) |
+| sa.line17 | 1509 | 0 | 0 | 4 | 0 | 0 | 172 | 0 | 0 | 15 | 15 (0.9%) |
+| sa.standard | 1681 | 0 | 0 | 0 | 0 | 0 | 19 | 0 | 0 | 0 | 0 (0.0%) |
 
 Exclusions:
 
 - PolicyEngine-US deducts investment interest expense in full; it does not apply the Form 4952 net-investment-income limit
 - PolicyEngine-US does not deduct investment interest expense (Form 4952 line 8) on Form 8960 line 9a
+- PolicyEngine-US has no reconciliation of advance payments (Form 8962 lines 25 to 29); line 26 is compared only where line 25 is zero, where it equals line 24
+- PolicyEngine-US interpolates the applicable figure within each band exactly (aca_required_contribution_percentage); Form 8962 line 7 takes it from the Applicable Figure Table, rounded to four places, so returns where the exact figure has a fifth place (300% to 400% of the poverty line at an odd percentage) are not compared on the lines it moves
 - PolicyEngine-US limits the state and local tax deduction to adjusted gross income; Schedule A line 5e limits it only by the statutory cap
 - PolicyEngine-US lists capped_qualified_furnace_or_hot_water_boiler_credit twice in gov.irs.credits.energy_efficient_home_improvement.qualified_expenditures.credits, so it counts the furnace credit twice in Form 5695 line 27
 - PolicyEngine-US phases the education credits out by the exact fraction of the excess of modified AGI over $80,000 ($160,000 joint) (education_credit_phase_out, lifetime_learning_credit_phase_out); Form 8863 lines 6 and 17 round the ratio to three places ("rounded to at least three places"; the project rounds to three, amb.2025.edu_ratio_places), so returns whose ratio is not exact at three places are not compared on the lines it moves
@@ -71,12 +78,15 @@ Exclusions:
 - PolicyEngine-US's eitc_earned_income includes net earnings from self-employment less half the self-employment tax; Step 5 earned income (Form 1040 instructions, line 27) holds wages only and Worksheet B adds the self-employment amounts, so Worksheet B line 6 (eic.line1) is compared instead on self-employed returns
 - PolicyEngine-US's energy_efficient_home_improvement_credit_potential takes the larger of the $1,200-capped total and the heat pump credit; Form 5695 line 30 adds line 28 and line 29h
 - PolicyEngine-US's saver's credit rate (gov.irs.credits.retirement_saving.rate.joint, a bracket scale whose first threshold is $0) is zero for an adjusted gross income below zero; the Form 8880 line 9 table's first row has no lower bound ("---" to $23,750, $35,625 or $47,500: 0.5)
+- below 100% of the poverty line (Form 8962 line 5) PolicyEngine-US's eligibility test zeroes the credit columns, allowing the credit there only for a lawfully present immigrant (aca_ptc_below_fpl_immigration_exception) and not for a taxpayer who received advance payments (Form 8962 line 5 instructions; 26 CFR 1.36B-2(b)(6)); the project still figures line 11 columns (d) and (e) and allows or denies the credit after them (line 24), so those columns are not compared there; line 26 is
+- the engine computes the premium tax credit (Form 8962 lines 3 to 11, compared) but has no reconciliation of advance payments and no Schedule 2 line 1a or Schedule 3 line 9, so its tax, credits and payments omit the reconciliation the project figures on these returns
 - the engine does not compute Form 5329: it has no input for the code of a Form 1099-R distribution and takes Schedule 2 line 8 (if at all) as an entered amount, so on returns where the project figures the 10% (25% for a SIMPLE IRA in its first 2 years) additional tax on early distributions, or the 6% tax on HSA excess contributions, its total tax omits it
 - the engine has no Form 8863 line 7 test: it makes 40% of the American opportunity credit refundable on every return, where a filer under 24 who is not filing jointly and meets line 7 conditions 1 and 2 checks the line 7 box and has no refundable part (i8863 p. 7, Line 7; 26 U.S.C. 25A(i)(6)); returns with the box checked are not compared on the lines it moves
-- the engine is given no Form 1095-A, so its tax, credits and payments omit the premium tax credit reconciliation (Form 8962) the project figures on these returns
 
 Project result lines not mapped:
 
+- f8962.line24: reached through Form 8962 line 11 column (e), a copy of it on the annual route
+- f8962.line29: the engine has no reconciliation of advance payments (Form 8962 lines 25 to 29)
 - person[taxpayer].f8889[hsa].line13: health_savings_account_ald is an input with no formula; the engine does not compute Form 8889
 - ssb.line18: reached through Form 1040 line 6b, a copy of it
 - s1a.line38: reached through Form 1040 line 13b, a copy of it
@@ -89,43 +99,43 @@ Project result lines not mapped:
 
 ## Tax-Calculator
 
-| line | exact | table-adjusted | table-midpoint | float | unrounded | excluded | explained | UNEXPLAINED | not computed | not computed outside the allow-list (share) |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| eic.earned_income | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
-| eic.line1 | 1624 | 0 | 0 | 76 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line10 | 1302 | 0 | 0 | 68 | 0 | 330 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line11b | 1272 | 0 | 0 | 98 | 0 | 330 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line13a | 1033 | 0 | 0 | 6 | 0 | 643 | 0 | 0 | 18 | 18 (1.1%) |
-| f1040.line13b | 1368 | 0 | 0 | 2 | 0 | 330 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line15 | 832 | 0 | 0 | 69 | 0 | 798 | 1 | 0 | 0 | 0 (0.0%) |
-| f1040.line16 | 350 | 506 | 0 | 55 | 0 | 772 | 0 | 0 | 17 | 17 (1.0%) |
-| f1040.line19 | 577 | 77 | 0 | 0 | 0 | 1046 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line20 | 535 | 317 | 0 | 0 | 0 | 840 | 0 | 0 | 8 | 8 (0.5%) |
-| f1040.line24 | 390 | 266 | 0 | 73 | 0 | 956 | 0 | 0 | 15 | 15 (0.9%) |
-| f1040.line27a | 1070 | 190 | 0 | 0 | 0 | 440 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line28 | 606 | 48 | 0 | 0 | 0 | 1046 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line29 | 1258 | 0 | 0 | 0 | 0 | 442 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line6b | 1343 | 0 | 0 | 27 | 0 | 330 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.tax_before_credits | 275 | 418 | 0 | 65 | 0 | 927 | 0 | 0 | 15 | 15 (0.9%) |
-| f2441.line11 | 146 | 6 | 0 | 0 | 0 | 840 | 0 | 0 | 708 | 1 (0.1%) |
-| f8863.line19 | 830 | 14 | 0 | 0 | 0 | 840 | 0 | 0 | 16 | 16 (0.9%) |
-| f8863.line7 | 1368 | 0 | 0 | 0 | 0 | 332 | 0 | 0 | 0 | 0 (0.0%) |
-| f8863.line8 | 1368 | 0 | 0 | 0 | 0 | 332 | 0 | 0 | 0 | 0 (0.0%) |
-| f8863.line9 | 1368 | 0 | 0 | 0 | 0 | 332 | 0 | 0 | 0 | 0 (0.0%) |
-| f8959.tax | 1366 | 0 | 0 | 4 | 0 | 330 | 0 | 0 | 0 | 0 (0.0%) |
-| f8960.tax | 1300 | 0 | 0 | 0 | 0 | 400 | 0 | 0 | 0 | 0 (0.0%) |
-| person[taxpayer].se_line12 | 1656 | 0 | 0 | 44 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| person[taxpayer].se_line13 | 1624 | 0 | 0 | 76 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| s1.line15 | 1624 | 0 | 0 | 76 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line13 | 1370 | 0 | 0 | 0 | 0 | 330 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line21 | 1370 | 0 | 0 | 0 | 0 | 330 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line30 | 1370 | 0 | 0 | 0 | 0 | 330 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line37 | 1368 | 0 | 0 | 2 | 0 | 330 | 0 | 0 | 0 | 0 (0.0%) |
-| s2.line4 | 1656 | 0 | 0 | 44 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| s3.line2 | 853 | 6 | 0 | 0 | 0 | 840 | 0 | 0 | 1 | 1 (0.1%) |
-| s3.line3 | 841 | 14 | 0 | 0 | 0 | 840 | 0 | 0 | 5 | 5 (0.3%) |
-| sa.deduction | 900 | 0 | 0 | 2 | 0 | 798 | 0 | 0 | 0 | 0 (0.0%) |
-| sa.line17 | 1188 | 0 | 0 | 2 | 0 | 510 | 0 | 0 | 0 | 0 (0.0%) |
+| line | exact | table-adjusted | table-midpoint | float | unrounded | contribution-unrounded | excluded | explained | UNEXPLAINED | not computed | not computed outside the allow-list (share) |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| eic.earned_income | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
+| eic.line1 | 1624 | 0 | 0 | 76 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line10 | 1302 | 0 | 0 | 68 | 0 | 0 | 330 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line11b | 1272 | 0 | 0 | 98 | 0 | 0 | 330 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line13a | 1033 | 0 | 0 | 6 | 0 | 0 | 643 | 0 | 0 | 18 | 18 (1.1%) |
+| f1040.line13b | 1368 | 0 | 0 | 2 | 0 | 0 | 330 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line15 | 832 | 0 | 0 | 69 | 0 | 0 | 798 | 1 | 0 | 0 | 0 (0.0%) |
+| f1040.line16 | 350 | 506 | 0 | 55 | 0 | 0 | 772 | 0 | 0 | 17 | 17 (1.0%) |
+| f1040.line19 | 577 | 77 | 0 | 0 | 0 | 0 | 1046 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line20 | 535 | 317 | 0 | 0 | 0 | 0 | 840 | 0 | 0 | 8 | 8 (0.5%) |
+| f1040.line24 | 390 | 266 | 0 | 73 | 0 | 0 | 956 | 0 | 0 | 15 | 15 (0.9%) |
+| f1040.line27a | 1070 | 190 | 0 | 0 | 0 | 0 | 440 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line28 | 606 | 48 | 0 | 0 | 0 | 0 | 1046 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line29 | 1258 | 0 | 0 | 0 | 0 | 0 | 442 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line6b | 1343 | 0 | 0 | 27 | 0 | 0 | 330 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.tax_before_credits | 275 | 418 | 0 | 65 | 0 | 0 | 927 | 0 | 0 | 15 | 15 (0.9%) |
+| f2441.line11 | 146 | 6 | 0 | 0 | 0 | 0 | 840 | 0 | 0 | 708 | 1 (0.1%) |
+| f8863.line19 | 830 | 14 | 0 | 0 | 0 | 0 | 840 | 0 | 0 | 16 | 16 (0.9%) |
+| f8863.line7 | 1368 | 0 | 0 | 0 | 0 | 0 | 332 | 0 | 0 | 0 | 0 (0.0%) |
+| f8863.line8 | 1368 | 0 | 0 | 0 | 0 | 0 | 332 | 0 | 0 | 0 | 0 (0.0%) |
+| f8863.line9 | 1368 | 0 | 0 | 0 | 0 | 0 | 332 | 0 | 0 | 0 | 0 (0.0%) |
+| f8959.tax | 1366 | 0 | 0 | 4 | 0 | 0 | 330 | 0 | 0 | 0 | 0 (0.0%) |
+| f8960.tax | 1300 | 0 | 0 | 0 | 0 | 0 | 400 | 0 | 0 | 0 | 0 (0.0%) |
+| person[taxpayer].se_line12 | 1656 | 0 | 0 | 44 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| person[taxpayer].se_line13 | 1624 | 0 | 0 | 76 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| s1.line15 | 1624 | 0 | 0 | 76 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.line13 | 1370 | 0 | 0 | 0 | 0 | 0 | 330 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.line21 | 1370 | 0 | 0 | 0 | 0 | 0 | 330 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.line30 | 1370 | 0 | 0 | 0 | 0 | 0 | 330 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.line37 | 1368 | 0 | 0 | 2 | 0 | 0 | 330 | 0 | 0 | 0 | 0 (0.0%) |
+| s2.line4 | 1656 | 0 | 0 | 44 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| s3.line2 | 853 | 6 | 0 | 0 | 0 | 0 | 840 | 0 | 0 | 1 | 1 (0.1%) |
+| s3.line3 | 841 | 14 | 0 | 0 | 0 | 0 | 840 | 0 | 0 | 5 | 5 (0.3%) |
+| sa.deduction | 900 | 0 | 0 | 2 | 0 | 0 | 798 | 0 | 0 | 0 | 0 (0.0%) |
+| sa.line17 | 1188 | 0 | 0 | 2 | 0 | 0 | 510 | 0 | 0 | 0 | 0 (0.0%) |
 
 Exclusions:
 
@@ -169,244 +179,244 @@ Project result lines not mapped:
 
 ## OpenTaxSolver
 
-| line | exact | table-adjusted | table-midpoint | float | unrounded | excluded | explained | UNEXPLAINED | not computed | not computed outside the allow-list (share) |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| clcw.line1 | 238 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| clcw.line10 | 153 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| clcw.line11 | 153 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| clcw.line12 | 153 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| clcw.line13 | 153 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| clcw.line2 | 238 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| clcw.line3 | 238 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| clcw.line4 | 238 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| clcw.line5 | 196 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| clcw.line6 | 196 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| clcw.line7 | 196 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| clcw.line8 | 196 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| clcw.line9 | 153 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line10 | 1514 | 0 | 0 | 0 | 75 | 111 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line11b | 1485 | 0 | 0 | 0 | 104 | 111 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line12e | 1474 | 0 | 0 | 0 | 2 | 224 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line13a | 370 | 0 | 0 | 0 | 17 | 130 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line13b | 1435 | 0 | 0 | 0 | 2 | 263 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line14 | 1215 | 0 | 0 | 0 | 20 | 465 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line15 | 1149 | 0 | 0 | 0 | 86 | 465 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line16 | 1021 | 0 | 0 | 0 | 54 | 625 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line17 | 1462 | 0 | 0 | 0 | 0 | 238 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line18 | 943 | 0 | 0 | 0 | 50 | 707 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line19 | 359 | 0 | 0 | 0 | 0 | 611 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line1z | 1700 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line20 | 632 | 0 | 0 | 0 | 0 | 1068 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line21 | 632 | 0 | 0 | 0 | 0 | 1068 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line22 | 597 | 0 | 0 | 0 | 35 | 1068 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line23 | 1223 | 0 | 0 | 0 | 41 | 436 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line24 | 541 | 0 | 0 | 0 | 46 | 1113 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line25d | 1567 | 0 | 0 | 0 | 0 | 133 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line28 | 232 | 0 | 0 | 0 | 1 | 737 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line32 | 475 | 0 | 0 | 0 | 1 | 1224 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line33 | 475 | 0 | 0 | 0 | 1 | 1224 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line34 | 421 | 0 | 0 | 0 | 17 | 1262 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line37 | 416 | 0 | 0 | 0 | 22 | 1262 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line6b | 1557 | 0 | 0 | 0 | 32 | 111 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line7a | 1700 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line8 | 1700 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line9 | 1558 | 0 | 0 | 0 | 31 | 111 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.tax_before_credits | 853 | 0 | 0 | 0 | 71 | 776 | 0 | 0 | 0 | 0 (0.0%) |
-| f2441.line10 | 158 | 0 | 0 | 0 | 4 | 123 | 0 | 0 | 0 | 0 (0.0%) |
-| f2441.line11 | 162 | 0 | 0 | 0 | 0 | 123 | 0 | 0 | 0 | 0 (0.0%) |
-| f2441.line3 | 285 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| f2441.line4 | 273 | 0 | 0 | 0 | 12 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| f2441.line6 | 285 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| f2441.line7 | 251 | 0 | 0 | 0 | 16 | 18 | 0 | 0 | 0 | 0 (0.0%) |
-| f2441.line9a | 266 | 0 | 0 | 0 | 0 | 19 | 0 | 0 | 0 | 0 (0.0%) |
-| f2441.line9c | 250 | 0 | 0 | 0 | 0 | 35 | 0 | 0 | 0 | 0 (0.0%) |
-| f8959.line13 | 1700 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| f8959.line17 | 1700 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| f8959.line18 | 1695 | 0 | 0 | 0 | 5 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| f8959.line21 | 1700 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| f8959.line22 | 1700 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| f8959.line24 | 1700 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| f8959.line7 | 1699 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| f8959.tax | 1695 | 0 | 0 | 0 | 5 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| f8960.line11 | 1540 | 0 | 0 | 0 | 0 | 121 | 0 | 0 | 39 | 39 (2.3%) |
-| f8960.line12 | 1540 | 0 | 0 | 0 | 0 | 121 | 0 | 0 | 39 | 39 (2.3%) |
-| f8960.line15 | 1575 | 0 | 0 | 0 | 14 | 111 | 0 | 0 | 0 | 0 (0.0%) |
-| f8960.line16 | 1474 | 0 | 0 | 0 | 4 | 222 | 0 | 0 | 0 | 0 (0.0%) |
-| f8960.line17 | 1477 | 0 | 0 | 0 | 1 | 222 | 0 | 0 | 0 | 0 (0.0%) |
-| f8960.line8 | 1695 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 5 | 5 (0.3%) |
-| f8960.tax | 1477 | 0 | 0 | 0 | 1 | 222 | 0 | 0 | 0 | 0 (0.0%) |
-| f8995.line10 | 495 | 0 | 0 | 0 | 22 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| f8995.line11 | 292 | 0 | 0 | 0 | 64 | 130 | 31 | 0 | 0 | 0 (0.0%) |
-| f8995.line13 | 324 | 0 | 0 | 0 | 63 | 130 | 0 | 0 | 0 | 0 (0.0%) |
-| f8995.line14 | 369 | 0 | 0 | 0 | 18 | 130 | 0 | 0 | 0 | 0 (0.0%) |
-| f8995.line15 | 370 | 0 | 0 | 0 | 17 | 130 | 0 | 0 | 0 | 0 (0.0%) |
-| f8995.line2 | 441 | 0 | 0 | 0 | 76 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| f8995.line4 | 441 | 0 | 0 | 0 | 76 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| f8995.line5 | 504 | 0 | 0 | 0 | 13 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| f8995.line8 | 517 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| f8995.line9 | 517 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| person[taxpayer].f8889[hsa].line12 | 257 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| person[taxpayer].f8889[hsa].line13 | 257 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| person[taxpayer].sc[biz].line28 | 296 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| person[taxpayer].sc[biz].line29 | 296 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| person[taxpayer].sc[biz].line31 | 296 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| person[taxpayer].sc[biz].line7 | 296 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| person[taxpayer].se_line12 | 252 | 0 | 0 | 0 | 44 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| person[taxpayer].se_line13 | 220 | 0 | 0 | 0 | 76 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| person[taxpayer].se_line4c | 296 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| person[taxpayer].se_line6 | 296 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| qbi.deduction | 370 | 0 | 0 | 0 | 17 | 130 | 0 | 0 | 0 | 0 (0.0%) |
-| qdcg.line1 | 732 | 0 | 0 | 0 | 61 | 313 | 0 | 0 | 0 | 0 (0.0%) |
-| qdcg.line10 | 790 | 0 | 0 | 0 | 3 | 313 | 0 | 0 | 0 | 0 (0.0%) |
-| qdcg.line11 | 786 | 0 | 0 | 0 | 7 | 313 | 0 | 0 | 0 | 0 (0.0%) |
-| qdcg.line12 | 789 | 0 | 0 | 0 | 4 | 313 | 0 | 0 | 0 | 0 (0.0%) |
-| qdcg.line13 | 793 | 0 | 0 | 0 | 0 | 313 | 0 | 0 | 0 | 0 (0.0%) |
-| qdcg.line14 | 732 | 0 | 0 | 0 | 61 | 313 | 0 | 0 | 0 | 0 (0.0%) |
-| qdcg.line15 | 736 | 0 | 0 | 0 | 57 | 313 | 0 | 0 | 0 | 0 (0.0%) |
-| qdcg.line16 | 789 | 0 | 0 | 0 | 4 | 313 | 0 | 0 | 0 | 0 (0.0%) |
-| qdcg.line17 | 789 | 0 | 0 | 0 | 4 | 313 | 0 | 0 | 0 | 0 (0.0%) |
-| qdcg.line18 | 776 | 0 | 0 | 0 | 17 | 313 | 0 | 0 | 0 | 0 (0.0%) |
-| qdcg.line19 | 790 | 0 | 0 | 0 | 3 | 313 | 0 | 0 | 0 | 0 (0.0%) |
-| qdcg.line2 | 793 | 0 | 0 | 0 | 0 | 313 | 0 | 0 | 0 | 0 (0.0%) |
-| qdcg.line20 | 793 | 0 | 0 | 0 | 0 | 313 | 0 | 0 | 0 | 0 (0.0%) |
-| qdcg.line21 | 793 | 0 | 0 | 0 | 0 | 313 | 0 | 0 | 0 | 0 (0.0%) |
-| qdcg.line22 | 781 | 0 | 0 | 0 | 12 | 313 | 0 | 0 | 0 | 0 (0.0%) |
-| qdcg.line23 | 741 | 0 | 0 | 0 | 52 | 313 | 0 | 0 | 0 | 0 (0.0%) |
-| qdcg.line24 | 784 | 0 | 0 | 0 | 9 | 313 | 0 | 0 | 0 | 0 (0.0%) |
-| qdcg.line25 | 741 | 0 | 0 | 0 | 52 | 313 | 0 | 0 | 0 | 0 (0.0%) |
-| qdcg.line3 | 793 | 0 | 0 | 0 | 0 | 313 | 0 | 0 | 0 | 0 (0.0%) |
-| qdcg.line4 | 793 | 0 | 0 | 0 | 0 | 313 | 0 | 0 | 0 | 0 (0.0%) |
-| qdcg.line5 | 735 | 0 | 0 | 0 | 58 | 313 | 0 | 0 | 0 | 0 (0.0%) |
-| qdcg.line6 | 793 | 0 | 0 | 0 | 0 | 313 | 0 | 0 | 0 | 0 (0.0%) |
-| qdcg.line7 | 768 | 0 | 0 | 0 | 25 | 313 | 0 | 0 | 0 | 0 (0.0%) |
-| qdcg.line8 | 767 | 0 | 0 | 0 | 26 | 313 | 0 | 0 | 0 | 0 (0.0%) |
-| qdcg.line9 | 786 | 0 | 0 | 0 | 7 | 313 | 0 | 0 | 0 | 0 (0.0%) |
-| s1.line10 | 1700 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| s1.line21 | 1589 | 0 | 0 | 0 | 0 | 111 | 0 | 0 | 0 | 0 (0.0%) |
-| s1.line26 | 1514 | 0 | 0 | 0 | 75 | 111 | 0 | 0 | 0 | 0 (0.0%) |
-| s1.line9 | 1700 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line13 | 1589 | 0 | 0 | 0 | 0 | 111 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line21 | 1589 | 0 | 0 | 0 | 0 | 111 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line30 | 1437 | 0 | 0 | 0 | 0 | 263 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line37 | 1587 | 0 | 0 | 0 | 2 | 111 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line38 | 1435 | 0 | 0 | 0 | 2 | 263 | 0 | 0 | 0 | 0 (0.0%) |
-| s2.line21 | 1223 | 0 | 0 | 0 | 41 | 436 | 0 | 0 | 0 | 0 (0.0%) |
-| s3.line2 | 993 | 0 | 0 | 0 | 0 | 707 | 0 | 0 | 0 | 0 (0.0%) |
-| s3.line8 | 632 | 0 | 0 | 0 | 0 | 1068 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line10 | 829 | 0 | 0 | 0 | 0 | 141 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line11 | 829 | 0 | 0 | 0 | 0 | 141 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line12 | 829 | 0 | 0 | 0 | 0 | 141 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line14 | 359 | 0 | 0 | 0 | 0 | 611 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line16a | 359 | 0 | 0 | 0 | 0 | 611 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line16b | 275 | 0 | 0 | 0 | 0 | 32 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line17 | 359 | 0 | 0 | 0 | 0 | 611 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line19 | 253 | 0 | 0 | 0 | 13 | 39 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line20 | 259 | 0 | 0 | 0 | 9 | 39 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line27 | 232 | 0 | 0 | 0 | 1 | 737 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line5 | 889 | 0 | 0 | 0 | 0 | 81 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line7 | 889 | 0 | 0 | 0 | 0 | 81 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line8 | 889 | 0 | 0 | 0 | 0 | 81 | 0 | 0 | 0 | 0 (0.0%) |
-| sa.deduction | 1474 | 0 | 0 | 0 | 2 | 224 | 0 | 0 | 0 | 0 (0.0%) |
-| sa.line10 | 1579 | 0 | 0 | 0 | 0 | 121 | 0 | 0 | 0 | 0 (0.0%) |
-| sa.line14 | 1697 | 0 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | 0 (0.0%) |
-| sa.line17 | 1473 | 0 | 0 | 0 | 3 | 224 | 0 | 0 | 0 | 0 (0.0%) |
-| sa.line3 | 1557 | 0 | 0 | 0 | 29 | 111 | 0 | 0 | 0 | 0 (0.0%) |
-| sa.line4 | 1583 | 0 | 0 | 0 | 3 | 114 | 0 | 0 | 0 | 0 (0.0%) |
-| sa.line5d | 1700 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| sa.line5e | 1659 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 41 | 41 (2.4%) |
-| sa.line7 | 1659 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 41 | 41 (2.4%) |
-| sa.line8e | 1700 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| sa.standard | 1700 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| sd.line13 | 1404 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| sd.line14 | 260 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| sd.line15 | 1404 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| sd.line16 | 1404 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| sd.line18 | 736 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| sd.line19 | 721 | 0 | 0 | 0 | 0 | 15 | 0 | 0 | 0 | 0 (0.0%) |
-| sd.line1b.d | 1404 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| sd.line1b.e | 1404 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| sd.line1b.g | 1404 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| sd.line1b.h | 1404 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| sd.line2.d | 1404 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| sd.line2.e | 1404 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| sd.line2.g | 1404 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| sd.line2.h | 1404 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| sd.line21 | 1404 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| sd.line6 | 260 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| sd.line7 | 1404 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| sd.line8b.d | 1404 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| sd.line8b.e | 1404 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| sd.line8b.g | 1404 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| sd.line8b.h | 1404 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| sd.line9.d | 1404 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| sd.line9.e | 1404 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| sd.line9.g | 1404 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| sd.line9.h | 1404 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| sdtw.line1 | 76 | 0 | 0 | 0 | 7 | 41 | 0 | 0 | 0 | 0 (0.0%) |
-| sdtw.line10 | 83 | 0 | 0 | 0 | 0 | 41 | 0 | 0 | 0 | 0 (0.0%) |
-| sdtw.line11 | 83 | 0 | 0 | 0 | 0 | 41 | 0 | 0 | 0 | 0 (0.0%) |
-| sdtw.line12 | 83 | 0 | 0 | 0 | 0 | 41 | 0 | 0 | 0 | 0 (0.0%) |
-| sdtw.line13 | 83 | 0 | 0 | 0 | 0 | 41 | 0 | 0 | 0 | 0 (0.0%) |
-| sdtw.line14 | 75 | 0 | 0 | 0 | 8 | 41 | 0 | 0 | 0 | 0 (0.0%) |
-| sdtw.line15 | 83 | 0 | 0 | 0 | 0 | 41 | 0 | 0 | 0 | 0 (0.0%) |
-| sdtw.line16 | 78 | 0 | 0 | 0 | 5 | 41 | 0 | 0 | 0 | 0 (0.0%) |
-| sdtw.line17 | 78 | 0 | 0 | 0 | 5 | 41 | 0 | 0 | 0 | 0 (0.0%) |
-| sdtw.line18 | 76 | 0 | 0 | 0 | 7 | 41 | 0 | 0 | 0 | 0 (0.0%) |
-| sdtw.line19 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
-| sdtw.line2 | 83 | 0 | 0 | 0 | 0 | 41 | 0 | 0 | 0 | 0 (0.0%) |
-| sdtw.line20 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
-| sdtw.line21 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
-| sdtw.line22 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
-| sdtw.line23 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
-| sdtw.line24 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
-| sdtw.line25 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
-| sdtw.line26 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
-| sdtw.line27 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
-| sdtw.line28 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
-| sdtw.line29 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
-| sdtw.line3 | 73 | 0 | 0 | 0 | 0 | 51 | 0 | 0 | 0 | 0 (0.0%) |
-| sdtw.line30 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
-| sdtw.line31 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
-| sdtw.line32 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
-| sdtw.line33 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
-| sdtw.line34 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
-| sdtw.line35 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
-| sdtw.line36 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
-| sdtw.line37 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
-| sdtw.line38 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
-| sdtw.line39 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
-| sdtw.line4 | 73 | 0 | 0 | 0 | 0 | 51 | 0 | 0 | 0 | 0 (0.0%) |
-| sdtw.line40 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
-| sdtw.line41 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
-| sdtw.line42 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
-| sdtw.line43 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
-| sdtw.line44 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
-| sdtw.line45 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
-| sdtw.line46 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
-| sdtw.line47 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
-| sdtw.line5 | 83 | 0 | 0 | 0 | 0 | 41 | 0 | 0 | 0 | 0 (0.0%) |
-| sdtw.line6 | 83 | 0 | 0 | 0 | 0 | 41 | 0 | 0 | 0 | 0 (0.0%) |
-| sdtw.line7 | 83 | 0 | 0 | 0 | 0 | 41 | 0 | 0 | 0 | 0 (0.0%) |
-| sdtw.line8 | 83 | 0 | 0 | 0 | 0 | 41 | 0 | 0 | 0 | 0 (0.0%) |
-| sdtw.line9 | 83 | 0 | 0 | 0 | 0 | 41 | 0 | 0 | 0 | 0 (0.0%) |
-| ssb.line1 | 530 | 0 | 0 | 0 | 0 | 20 | 0 | 0 | 0 | 0 (0.0%) |
-| ssb.line10 | 477 | 0 | 0 | 0 | 0 | 17 | 0 | 0 | 0 | 0 (0.0%) |
-| ssb.line11 | 405 | 0 | 0 | 0 | 125 | 20 | 0 | 0 | 0 | 0 (0.0%) |
-| ssb.line12 | 526 | 0 | 0 | 0 | 4 | 20 | 0 | 0 | 0 | 0 (0.0%) |
-| ssb.line13 | 520 | 0 | 0 | 0 | 10 | 20 | 0 | 0 | 0 | 0 (0.0%) |
-| ssb.line14 | 459 | 0 | 0 | 0 | 71 | 20 | 0 | 0 | 0 | 0 (0.0%) |
-| ssb.line15 | 409 | 0 | 0 | 0 | 121 | 20 | 0 | 0 | 0 | 0 (0.0%) |
-| ssb.line16 | 334 | 0 | 0 | 0 | 196 | 20 | 0 | 0 | 0 | 0 (0.0%) |
-| ssb.line17 | 459 | 0 | 0 | 0 | 18 | 17 | 0 | 0 | 0 | 0 (0.0%) |
-| ssb.line18 | 498 | 0 | 0 | 0 | 32 | 20 | 0 | 0 | 0 | 0 (0.0%) |
-| ssb.line2 | 407 | 0 | 0 | 0 | 123 | 20 | 0 | 0 | 0 | 0 (0.0%) |
-| ssb.line3 | 530 | 0 | 0 | 0 | 0 | 20 | 0 | 0 | 0 | 0 (0.0%) |
-| ssb.line4 | 530 | 0 | 0 | 0 | 0 | 20 | 0 | 0 | 0 | 0 (0.0%) |
-| ssb.line5 | 397 | 0 | 0 | 0 | 133 | 20 | 0 | 0 | 0 | 0 (0.0%) |
-| ssb.line6 | 508 | 0 | 0 | 0 | 22 | 20 | 0 | 0 | 0 | 0 (0.0%) |
-| ssb.line7 | 380 | 0 | 0 | 0 | 150 | 20 | 0 | 0 | 0 | 0 (0.0%) |
-| ssb.line8 | 530 | 0 | 0 | 0 | 0 | 20 | 0 | 0 | 0 | 0 (0.0%) |
-| ssb.line9 | 401 | 0 | 0 | 0 | 129 | 20 | 0 | 0 | 0 | 0 (0.0%) |
+| line | exact | table-adjusted | table-midpoint | float | unrounded | contribution-unrounded | excluded | explained | UNEXPLAINED | not computed | not computed outside the allow-list (share) |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| clcw.line1 | 238 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| clcw.line10 | 153 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| clcw.line11 | 153 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| clcw.line12 | 153 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| clcw.line13 | 153 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| clcw.line2 | 238 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| clcw.line3 | 238 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| clcw.line4 | 238 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| clcw.line5 | 196 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| clcw.line6 | 196 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| clcw.line7 | 196 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| clcw.line8 | 196 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| clcw.line9 | 153 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line10 | 1514 | 0 | 0 | 0 | 75 | 0 | 111 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line11b | 1485 | 0 | 0 | 0 | 104 | 0 | 111 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line12e | 1474 | 0 | 0 | 0 | 2 | 0 | 224 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line13a | 370 | 0 | 0 | 0 | 17 | 0 | 130 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line13b | 1435 | 0 | 0 | 0 | 2 | 0 | 263 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line14 | 1215 | 0 | 0 | 0 | 20 | 0 | 465 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line15 | 1149 | 0 | 0 | 0 | 86 | 0 | 465 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line16 | 1021 | 0 | 0 | 0 | 54 | 0 | 625 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line17 | 1462 | 0 | 0 | 0 | 0 | 0 | 238 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line18 | 943 | 0 | 0 | 0 | 50 | 0 | 707 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line19 | 359 | 0 | 0 | 0 | 0 | 0 | 611 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line1z | 1700 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line20 | 632 | 0 | 0 | 0 | 0 | 0 | 1068 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line21 | 632 | 0 | 0 | 0 | 0 | 0 | 1068 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line22 | 597 | 0 | 0 | 0 | 35 | 0 | 1068 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line23 | 1223 | 0 | 0 | 0 | 41 | 0 | 436 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line24 | 541 | 0 | 0 | 0 | 46 | 0 | 1113 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line25d | 1567 | 0 | 0 | 0 | 0 | 0 | 133 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line28 | 232 | 0 | 0 | 0 | 1 | 0 | 737 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line32 | 475 | 0 | 0 | 0 | 1 | 0 | 1224 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line33 | 475 | 0 | 0 | 0 | 1 | 0 | 1224 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line34 | 421 | 0 | 0 | 0 | 17 | 0 | 1262 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line37 | 416 | 0 | 0 | 0 | 22 | 0 | 1262 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line6b | 1557 | 0 | 0 | 0 | 32 | 0 | 111 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line7a | 1700 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line8 | 1700 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line9 | 1558 | 0 | 0 | 0 | 31 | 0 | 111 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.tax_before_credits | 853 | 0 | 0 | 0 | 71 | 0 | 776 | 0 | 0 | 0 | 0 (0.0%) |
+| f2441.line10 | 158 | 0 | 0 | 0 | 4 | 0 | 123 | 0 | 0 | 0 | 0 (0.0%) |
+| f2441.line11 | 162 | 0 | 0 | 0 | 0 | 0 | 123 | 0 | 0 | 0 | 0 (0.0%) |
+| f2441.line3 | 285 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| f2441.line4 | 273 | 0 | 0 | 0 | 12 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| f2441.line6 | 285 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| f2441.line7 | 251 | 0 | 0 | 0 | 16 | 0 | 18 | 0 | 0 | 0 | 0 (0.0%) |
+| f2441.line9a | 266 | 0 | 0 | 0 | 0 | 0 | 19 | 0 | 0 | 0 | 0 (0.0%) |
+| f2441.line9c | 250 | 0 | 0 | 0 | 0 | 0 | 35 | 0 | 0 | 0 | 0 (0.0%) |
+| f8959.line13 | 1700 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| f8959.line17 | 1700 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| f8959.line18 | 1695 | 0 | 0 | 0 | 5 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| f8959.line21 | 1700 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| f8959.line22 | 1700 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| f8959.line24 | 1700 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| f8959.line7 | 1699 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| f8959.tax | 1695 | 0 | 0 | 0 | 5 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| f8960.line11 | 1540 | 0 | 0 | 0 | 0 | 0 | 121 | 0 | 0 | 39 | 39 (2.3%) |
+| f8960.line12 | 1540 | 0 | 0 | 0 | 0 | 0 | 121 | 0 | 0 | 39 | 39 (2.3%) |
+| f8960.line15 | 1575 | 0 | 0 | 0 | 14 | 0 | 111 | 0 | 0 | 0 | 0 (0.0%) |
+| f8960.line16 | 1474 | 0 | 0 | 0 | 4 | 0 | 222 | 0 | 0 | 0 | 0 (0.0%) |
+| f8960.line17 | 1477 | 0 | 0 | 0 | 1 | 0 | 222 | 0 | 0 | 0 | 0 (0.0%) |
+| f8960.line8 | 1695 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 5 | 5 (0.3%) |
+| f8960.tax | 1477 | 0 | 0 | 0 | 1 | 0 | 222 | 0 | 0 | 0 | 0 (0.0%) |
+| f8995.line10 | 495 | 0 | 0 | 0 | 22 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| f8995.line11 | 292 | 0 | 0 | 0 | 64 | 0 | 130 | 31 | 0 | 0 | 0 (0.0%) |
+| f8995.line13 | 324 | 0 | 0 | 0 | 63 | 0 | 130 | 0 | 0 | 0 | 0 (0.0%) |
+| f8995.line14 | 369 | 0 | 0 | 0 | 18 | 0 | 130 | 0 | 0 | 0 | 0 (0.0%) |
+| f8995.line15 | 370 | 0 | 0 | 0 | 17 | 0 | 130 | 0 | 0 | 0 | 0 (0.0%) |
+| f8995.line2 | 441 | 0 | 0 | 0 | 76 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| f8995.line4 | 441 | 0 | 0 | 0 | 76 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| f8995.line5 | 504 | 0 | 0 | 0 | 13 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| f8995.line8 | 517 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| f8995.line9 | 517 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| person[taxpayer].f8889[hsa].line12 | 257 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| person[taxpayer].f8889[hsa].line13 | 257 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| person[taxpayer].sc[biz].line28 | 296 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| person[taxpayer].sc[biz].line29 | 296 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| person[taxpayer].sc[biz].line31 | 296 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| person[taxpayer].sc[biz].line7 | 296 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| person[taxpayer].se_line12 | 252 | 0 | 0 | 0 | 44 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| person[taxpayer].se_line13 | 220 | 0 | 0 | 0 | 76 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| person[taxpayer].se_line4c | 296 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| person[taxpayer].se_line6 | 296 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| qbi.deduction | 370 | 0 | 0 | 0 | 17 | 0 | 130 | 0 | 0 | 0 | 0 (0.0%) |
+| qdcg.line1 | 732 | 0 | 0 | 0 | 61 | 0 | 313 | 0 | 0 | 0 | 0 (0.0%) |
+| qdcg.line10 | 790 | 0 | 0 | 0 | 3 | 0 | 313 | 0 | 0 | 0 | 0 (0.0%) |
+| qdcg.line11 | 786 | 0 | 0 | 0 | 7 | 0 | 313 | 0 | 0 | 0 | 0 (0.0%) |
+| qdcg.line12 | 789 | 0 | 0 | 0 | 4 | 0 | 313 | 0 | 0 | 0 | 0 (0.0%) |
+| qdcg.line13 | 793 | 0 | 0 | 0 | 0 | 0 | 313 | 0 | 0 | 0 | 0 (0.0%) |
+| qdcg.line14 | 732 | 0 | 0 | 0 | 61 | 0 | 313 | 0 | 0 | 0 | 0 (0.0%) |
+| qdcg.line15 | 736 | 0 | 0 | 0 | 57 | 0 | 313 | 0 | 0 | 0 | 0 (0.0%) |
+| qdcg.line16 | 789 | 0 | 0 | 0 | 4 | 0 | 313 | 0 | 0 | 0 | 0 (0.0%) |
+| qdcg.line17 | 789 | 0 | 0 | 0 | 4 | 0 | 313 | 0 | 0 | 0 | 0 (0.0%) |
+| qdcg.line18 | 776 | 0 | 0 | 0 | 17 | 0 | 313 | 0 | 0 | 0 | 0 (0.0%) |
+| qdcg.line19 | 790 | 0 | 0 | 0 | 3 | 0 | 313 | 0 | 0 | 0 | 0 (0.0%) |
+| qdcg.line2 | 793 | 0 | 0 | 0 | 0 | 0 | 313 | 0 | 0 | 0 | 0 (0.0%) |
+| qdcg.line20 | 793 | 0 | 0 | 0 | 0 | 0 | 313 | 0 | 0 | 0 | 0 (0.0%) |
+| qdcg.line21 | 793 | 0 | 0 | 0 | 0 | 0 | 313 | 0 | 0 | 0 | 0 (0.0%) |
+| qdcg.line22 | 781 | 0 | 0 | 0 | 12 | 0 | 313 | 0 | 0 | 0 | 0 (0.0%) |
+| qdcg.line23 | 741 | 0 | 0 | 0 | 52 | 0 | 313 | 0 | 0 | 0 | 0 (0.0%) |
+| qdcg.line24 | 784 | 0 | 0 | 0 | 9 | 0 | 313 | 0 | 0 | 0 | 0 (0.0%) |
+| qdcg.line25 | 741 | 0 | 0 | 0 | 52 | 0 | 313 | 0 | 0 | 0 | 0 (0.0%) |
+| qdcg.line3 | 793 | 0 | 0 | 0 | 0 | 0 | 313 | 0 | 0 | 0 | 0 (0.0%) |
+| qdcg.line4 | 793 | 0 | 0 | 0 | 0 | 0 | 313 | 0 | 0 | 0 | 0 (0.0%) |
+| qdcg.line5 | 735 | 0 | 0 | 0 | 58 | 0 | 313 | 0 | 0 | 0 | 0 (0.0%) |
+| qdcg.line6 | 793 | 0 | 0 | 0 | 0 | 0 | 313 | 0 | 0 | 0 | 0 (0.0%) |
+| qdcg.line7 | 768 | 0 | 0 | 0 | 25 | 0 | 313 | 0 | 0 | 0 | 0 (0.0%) |
+| qdcg.line8 | 767 | 0 | 0 | 0 | 26 | 0 | 313 | 0 | 0 | 0 | 0 (0.0%) |
+| qdcg.line9 | 786 | 0 | 0 | 0 | 7 | 0 | 313 | 0 | 0 | 0 | 0 (0.0%) |
+| s1.line10 | 1700 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| s1.line21 | 1589 | 0 | 0 | 0 | 0 | 0 | 111 | 0 | 0 | 0 | 0 (0.0%) |
+| s1.line26 | 1514 | 0 | 0 | 0 | 75 | 0 | 111 | 0 | 0 | 0 | 0 (0.0%) |
+| s1.line9 | 1700 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.line13 | 1589 | 0 | 0 | 0 | 0 | 0 | 111 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.line21 | 1589 | 0 | 0 | 0 | 0 | 0 | 111 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.line30 | 1437 | 0 | 0 | 0 | 0 | 0 | 263 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.line37 | 1587 | 0 | 0 | 0 | 2 | 0 | 111 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.line38 | 1435 | 0 | 0 | 0 | 2 | 0 | 263 | 0 | 0 | 0 | 0 (0.0%) |
+| s2.line21 | 1223 | 0 | 0 | 0 | 41 | 0 | 436 | 0 | 0 | 0 | 0 (0.0%) |
+| s3.line2 | 993 | 0 | 0 | 0 | 0 | 0 | 707 | 0 | 0 | 0 | 0 (0.0%) |
+| s3.line8 | 632 | 0 | 0 | 0 | 0 | 0 | 1068 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line10 | 829 | 0 | 0 | 0 | 0 | 0 | 141 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line11 | 829 | 0 | 0 | 0 | 0 | 0 | 141 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line12 | 829 | 0 | 0 | 0 | 0 | 0 | 141 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line14 | 359 | 0 | 0 | 0 | 0 | 0 | 611 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line16a | 359 | 0 | 0 | 0 | 0 | 0 | 611 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line16b | 275 | 0 | 0 | 0 | 0 | 0 | 32 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line17 | 359 | 0 | 0 | 0 | 0 | 0 | 611 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line19 | 253 | 0 | 0 | 0 | 13 | 0 | 39 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line20 | 259 | 0 | 0 | 0 | 9 | 0 | 39 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line27 | 232 | 0 | 0 | 0 | 1 | 0 | 737 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line5 | 889 | 0 | 0 | 0 | 0 | 0 | 81 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line7 | 889 | 0 | 0 | 0 | 0 | 0 | 81 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line8 | 889 | 0 | 0 | 0 | 0 | 0 | 81 | 0 | 0 | 0 | 0 (0.0%) |
+| sa.deduction | 1474 | 0 | 0 | 0 | 2 | 0 | 224 | 0 | 0 | 0 | 0 (0.0%) |
+| sa.line10 | 1579 | 0 | 0 | 0 | 0 | 0 | 121 | 0 | 0 | 0 | 0 (0.0%) |
+| sa.line14 | 1697 | 0 | 0 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | 0 (0.0%) |
+| sa.line17 | 1473 | 0 | 0 | 0 | 3 | 0 | 224 | 0 | 0 | 0 | 0 (0.0%) |
+| sa.line3 | 1557 | 0 | 0 | 0 | 29 | 0 | 111 | 0 | 0 | 0 | 0 (0.0%) |
+| sa.line4 | 1583 | 0 | 0 | 0 | 3 | 0 | 114 | 0 | 0 | 0 | 0 (0.0%) |
+| sa.line5d | 1700 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| sa.line5e | 1659 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 41 | 41 (2.4%) |
+| sa.line7 | 1659 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 41 | 41 (2.4%) |
+| sa.line8e | 1700 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| sa.standard | 1700 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| sd.line13 | 1404 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| sd.line14 | 260 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| sd.line15 | 1404 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| sd.line16 | 1404 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| sd.line18 | 736 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| sd.line19 | 721 | 0 | 0 | 0 | 0 | 0 | 15 | 0 | 0 | 0 | 0 (0.0%) |
+| sd.line1b.d | 1404 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| sd.line1b.e | 1404 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| sd.line1b.g | 1404 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| sd.line1b.h | 1404 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| sd.line2.d | 1404 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| sd.line2.e | 1404 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| sd.line2.g | 1404 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| sd.line2.h | 1404 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| sd.line21 | 1404 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| sd.line6 | 260 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| sd.line7 | 1404 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| sd.line8b.d | 1404 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| sd.line8b.e | 1404 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| sd.line8b.g | 1404 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| sd.line8b.h | 1404 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| sd.line9.d | 1404 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| sd.line9.e | 1404 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| sd.line9.g | 1404 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| sd.line9.h | 1404 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| sdtw.line1 | 76 | 0 | 0 | 0 | 7 | 0 | 41 | 0 | 0 | 0 | 0 (0.0%) |
+| sdtw.line10 | 83 | 0 | 0 | 0 | 0 | 0 | 41 | 0 | 0 | 0 | 0 (0.0%) |
+| sdtw.line11 | 83 | 0 | 0 | 0 | 0 | 0 | 41 | 0 | 0 | 0 | 0 (0.0%) |
+| sdtw.line12 | 83 | 0 | 0 | 0 | 0 | 0 | 41 | 0 | 0 | 0 | 0 (0.0%) |
+| sdtw.line13 | 83 | 0 | 0 | 0 | 0 | 0 | 41 | 0 | 0 | 0 | 0 (0.0%) |
+| sdtw.line14 | 75 | 0 | 0 | 0 | 8 | 0 | 41 | 0 | 0 | 0 | 0 (0.0%) |
+| sdtw.line15 | 83 | 0 | 0 | 0 | 0 | 0 | 41 | 0 | 0 | 0 | 0 (0.0%) |
+| sdtw.line16 | 78 | 0 | 0 | 0 | 5 | 0 | 41 | 0 | 0 | 0 | 0 (0.0%) |
+| sdtw.line17 | 78 | 0 | 0 | 0 | 5 | 0 | 41 | 0 | 0 | 0 | 0 (0.0%) |
+| sdtw.line18 | 76 | 0 | 0 | 0 | 7 | 0 | 41 | 0 | 0 | 0 | 0 (0.0%) |
+| sdtw.line19 | 0 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
+| sdtw.line2 | 83 | 0 | 0 | 0 | 0 | 0 | 41 | 0 | 0 | 0 | 0 (0.0%) |
+| sdtw.line20 | 0 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
+| sdtw.line21 | 0 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
+| sdtw.line22 | 0 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
+| sdtw.line23 | 0 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
+| sdtw.line24 | 0 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
+| sdtw.line25 | 0 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
+| sdtw.line26 | 0 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
+| sdtw.line27 | 0 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
+| sdtw.line28 | 0 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
+| sdtw.line29 | 0 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
+| sdtw.line3 | 73 | 0 | 0 | 0 | 0 | 0 | 51 | 0 | 0 | 0 | 0 (0.0%) |
+| sdtw.line30 | 0 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
+| sdtw.line31 | 0 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
+| sdtw.line32 | 0 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
+| sdtw.line33 | 0 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
+| sdtw.line34 | 0 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
+| sdtw.line35 | 0 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
+| sdtw.line36 | 0 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
+| sdtw.line37 | 0 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
+| sdtw.line38 | 0 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
+| sdtw.line39 | 0 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
+| sdtw.line4 | 73 | 0 | 0 | 0 | 0 | 0 | 51 | 0 | 0 | 0 | 0 (0.0%) |
+| sdtw.line40 | 0 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
+| sdtw.line41 | 0 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
+| sdtw.line42 | 0 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
+| sdtw.line43 | 0 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
+| sdtw.line44 | 0 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
+| sdtw.line45 | 0 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
+| sdtw.line46 | 0 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
+| sdtw.line47 | 0 | 0 | 0 | 0 | 0 | 0 | 124 | 0 | 0 | 0 | 0 (0.0%) |
+| sdtw.line5 | 83 | 0 | 0 | 0 | 0 | 0 | 41 | 0 | 0 | 0 | 0 (0.0%) |
+| sdtw.line6 | 83 | 0 | 0 | 0 | 0 | 0 | 41 | 0 | 0 | 0 | 0 (0.0%) |
+| sdtw.line7 | 83 | 0 | 0 | 0 | 0 | 0 | 41 | 0 | 0 | 0 | 0 (0.0%) |
+| sdtw.line8 | 83 | 0 | 0 | 0 | 0 | 0 | 41 | 0 | 0 | 0 | 0 (0.0%) |
+| sdtw.line9 | 83 | 0 | 0 | 0 | 0 | 0 | 41 | 0 | 0 | 0 | 0 (0.0%) |
+| ssb.line1 | 530 | 0 | 0 | 0 | 0 | 0 | 20 | 0 | 0 | 0 | 0 (0.0%) |
+| ssb.line10 | 477 | 0 | 0 | 0 | 0 | 0 | 17 | 0 | 0 | 0 | 0 (0.0%) |
+| ssb.line11 | 405 | 0 | 0 | 0 | 125 | 0 | 20 | 0 | 0 | 0 | 0 (0.0%) |
+| ssb.line12 | 526 | 0 | 0 | 0 | 4 | 0 | 20 | 0 | 0 | 0 | 0 (0.0%) |
+| ssb.line13 | 520 | 0 | 0 | 0 | 10 | 0 | 20 | 0 | 0 | 0 | 0 (0.0%) |
+| ssb.line14 | 459 | 0 | 0 | 0 | 71 | 0 | 20 | 0 | 0 | 0 | 0 (0.0%) |
+| ssb.line15 | 409 | 0 | 0 | 0 | 121 | 0 | 20 | 0 | 0 | 0 | 0 (0.0%) |
+| ssb.line16 | 334 | 0 | 0 | 0 | 196 | 0 | 20 | 0 | 0 | 0 | 0 (0.0%) |
+| ssb.line17 | 459 | 0 | 0 | 0 | 18 | 0 | 17 | 0 | 0 | 0 | 0 (0.0%) |
+| ssb.line18 | 498 | 0 | 0 | 0 | 32 | 0 | 20 | 0 | 0 | 0 | 0 (0.0%) |
+| ssb.line2 | 407 | 0 | 0 | 0 | 123 | 0 | 20 | 0 | 0 | 0 | 0 (0.0%) |
+| ssb.line3 | 530 | 0 | 0 | 0 | 0 | 0 | 20 | 0 | 0 | 0 | 0 (0.0%) |
+| ssb.line4 | 530 | 0 | 0 | 0 | 0 | 0 | 20 | 0 | 0 | 0 | 0 (0.0%) |
+| ssb.line5 | 397 | 0 | 0 | 0 | 133 | 0 | 20 | 0 | 0 | 0 | 0 (0.0%) |
+| ssb.line6 | 508 | 0 | 0 | 0 | 22 | 0 | 20 | 0 | 0 | 0 | 0 (0.0%) |
+| ssb.line7 | 380 | 0 | 0 | 0 | 150 | 0 | 20 | 0 | 0 | 0 | 0 (0.0%) |
+| ssb.line8 | 530 | 0 | 0 | 0 | 0 | 0 | 20 | 0 | 0 | 0 | 0 (0.0%) |
+| ssb.line9 | 401 | 0 | 0 | 0 | 129 | 0 | 20 | 0 | 0 | 0 | 0 (0.0%) |
 
 Exclusions:
 
@@ -454,203 +464,203 @@ Project result lines not mapped:
 
 ## UsTaxes
 
-| line | exact | table-adjusted | table-midpoint | float | unrounded | excluded | explained | UNEXPLAINED | not computed | not computed outside the allow-list (share) |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| f1040.line10 | 1153 | 0 | 0 | 0 | 0 | 547 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line11a | 1133 | 0 | 0 | 20 | 0 | 547 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line11b | 1133 | 0 | 0 | 20 | 0 | 547 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line12e | 1055 | 0 | 0 | 2 | 0 | 643 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line13a | 819 | 0 | 0 | 0 | 0 | 881 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line13b | 818 | 0 | 0 | 1 | 0 | 881 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line14 | 817 | 0 | 0 | 2 | 0 | 881 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line15 | 798 | 0 | 0 | 21 | 0 | 881 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line16 | 411 | 0 | 266 | 40 | 0 | 983 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line17 | 682 | 0 | 0 | 0 | 0 | 1018 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line18 | 391 | 0 | 253 | 38 | 0 | 1018 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line19 | 358 | 0 | 18 | 0 | 0 | 1324 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line1a | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line1z | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line20 | 376 | 0 | 0 | 0 | 0 | 1324 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line21 | 358 | 0 | 18 | 0 | 0 | 1324 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line22 | 239 | 0 | 112 | 25 | 0 | 1324 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line23 | 842 | 0 | 82 | 0 | 0 | 776 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line24 | 172 | 0 | 144 | 18 | 0 | 1366 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line25a | 1330 | 0 | 0 | 0 | 0 | 370 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line25d | 1330 | 0 | 0 | 0 | 0 | 370 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line27a | 867 | 0 | 0 | 0 | 0 | 833 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line28 | 243 | 0 | 3 | 0 | 0 | 1454 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line29 | 127 | 0 | 0 | 0 | 0 | 85 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line32 | 243 | 0 | 3 | 0 | 0 | 1454 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line33 | 241 | 0 | 3 | 0 | 0 | 1456 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line34 | 140 | 0 | 71 | 9 | 0 | 1480 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line37 | 176 | 0 | 32 | 12 | 0 | 1480 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line6b | 1132 | 0 | 0 | 21 | 0 | 547 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line7a | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line8 | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line9 | 1133 | 0 | 0 | 20 | 0 | 547 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.tax_before_credits | 302 | 0 | 296 | 22 | 0 | 1080 | 0 | 0 | 0 | 0 (0.0%) |
-| f8863.line1 | 137 | 0 | 0 | 0 | 0 | 75 | 0 | 0 | 0 | 0 (0.0%) |
-| f8863.line12 | 137 | 0 | 0 | 0 | 0 | 75 | 0 | 0 | 0 | 0 (0.0%) |
-| f8863.line18 | 137 | 0 | 0 | 0 | 0 | 75 | 0 | 0 | 0 | 0 (0.0%) |
-| f8863.line19 | 92 | 0 | 0 | 0 | 0 | 120 | 0 | 0 | 0 | 0 (0.0%) |
-| f8863.line8 | 137 | 0 | 0 | 0 | 0 | 75 | 0 | 0 | 0 | 0 (0.0%) |
-| f8863.line9 | 137 | 0 | 0 | 0 | 0 | 75 | 0 | 0 | 0 | 0 (0.0%) |
-| f8959.line1 | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
-| f8959.line18 | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
-| f8959.line19 | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
-| f8959.line21 | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
-| f8959.line22 | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
-| f8959.line24 | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
-| f8959.line4 | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
-| f8959.line6 | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
-| f8959.line7 | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
-| f8959.tax | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
-| f8960.line11 | 892 | 0 | 0 | 0 | 0 | 808 | 0 | 0 | 0 | 0 (0.0%) |
-| f8960.line12 | 892 | 0 | 0 | 0 | 0 | 808 | 0 | 0 | 0 | 0 (0.0%) |
-| f8960.line15 | 1151 | 0 | 0 | 2 | 0 | 547 | 0 | 0 | 0 | 0 (0.0%) |
-| f8960.line16 | 1030 | 0 | 0 | 1 | 0 | 669 | 0 | 0 | 0 | 0 (0.0%) |
-| f8960.line17 | 938 | 0 | 93 | 0 | 0 | 669 | 0 | 0 | 0 | 0 (0.0%) |
-| f8960.line8 | 1395 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 5 | 5 (0.3%) |
-| f8960.line9a | 1057 | 0 | 0 | 0 | 0 | 643 | 0 | 0 | 0 | 0 (0.0%) |
-| f8960.line9b | 955 | 0 | 0 | 0 | 0 | 745 | 0 | 0 | 0 | 0 (0.0%) |
-| f8960.line9d | 892 | 0 | 0 | 0 | 0 | 808 | 0 | 0 | 0 | 0 (0.0%) |
-| f8960.tax | 938 | 0 | 93 | 0 | 0 | 669 | 0 | 0 | 0 | 0 (0.0%) |
-| f8962.line11e | 36 | 0 | 0 | 0 | 0 | 73 | 0 | 0 | 0 | 0 (0.0%) |
-| f8962.line25 | 36 | 0 | 0 | 0 | 0 | 73 | 0 | 0 | 0 | 0 (0.0%) |
-| f8962.line26 | 36 | 0 | 0 | 0 | 0 | 73 | 0 | 0 | 0 | 0 (0.0%) |
-| f8962.line29 | 36 | 0 | 0 | 0 | 0 | 73 | 0 | 0 | 0 | 0 (0.0%) |
-| f8962.line8a | 36 | 0 | 0 | 0 | 0 | 73 | 0 | 0 | 0 | 0 (0.0%) |
-| person[taxpayer].f5329[form].l1 | 1072 | 0 | 0 | 0 | 0 | 628 | 0 | 0 | 0 | 0 (0.0%) |
-| person[taxpayer].f5329[form].l4 | 1072 | 0 | 0 | 0 | 0 | 628 | 0 | 0 | 0 | 0 (0.0%) |
-| person[taxpayer].f8889[hsa].line11 | 221 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| person[taxpayer].f8889[hsa].line12 | 113 | 0 | 0 | 0 | 0 | 108 | 0 | 0 | 0 | 0 (0.0%) |
-| person[taxpayer].f8889[hsa].line13 | 1316 | 0 | 0 | 0 | 0 | 384 | 0 | 0 | 0 | 0 (0.0%) |
-| person[taxpayer].f8889[hsa].line3 | 188 | 0 | 0 | 0 | 0 | 33 | 0 | 0 | 0 | 0 (0.0%) |
-| person[taxpayer].f8889[hsa].line5 | 188 | 0 | 0 | 0 | 0 | 33 | 0 | 0 | 0 | 0 (0.0%) |
-| person[taxpayer].f8889[hsa].line6 | 106 | 0 | 0 | 0 | 0 | 115 | 0 | 0 | 0 | 0 (0.0%) |
-| person[taxpayer].f8889[hsa].line8 | 113 | 0 | 0 | 0 | 0 | 108 | 0 | 0 | 0 | 0 (0.0%) |
-| qdcg.line1 | 503 | 0 | 0 | 12 | 0 | 555 | 0 | 0 | 0 | 0 (0.0%) |
-| qdcg.line10 | 515 | 0 | 0 | 0 | 0 | 555 | 0 | 0 | 0 | 0 (0.0%) |
-| qdcg.line11 | 515 | 0 | 0 | 0 | 0 | 555 | 0 | 0 | 0 | 0 (0.0%) |
-| qdcg.line12 | 515 | 0 | 0 | 0 | 0 | 555 | 0 | 0 | 0 | 0 (0.0%) |
-| qdcg.line13 | 515 | 0 | 0 | 0 | 0 | 555 | 0 | 0 | 0 | 0 (0.0%) |
-| qdcg.line14 | 503 | 0 | 0 | 12 | 0 | 555 | 0 | 0 | 0 | 0 (0.0%) |
-| qdcg.line15 | 503 | 0 | 0 | 12 | 0 | 555 | 0 | 0 | 0 | 0 (0.0%) |
-| qdcg.line16 | 515 | 0 | 0 | 0 | 0 | 555 | 0 | 0 | 0 | 0 (0.0%) |
-| qdcg.line17 | 515 | 0 | 0 | 0 | 0 | 555 | 0 | 0 | 0 | 0 (0.0%) |
-| qdcg.line18 | 501 | 0 | 0 | 14 | 0 | 555 | 0 | 0 | 0 | 0 (0.0%) |
-| qdcg.line19 | 515 | 0 | 0 | 0 | 0 | 555 | 0 | 0 | 0 | 0 (0.0%) |
-| qdcg.line2 | 515 | 0 | 0 | 0 | 0 | 555 | 0 | 0 | 0 | 0 (0.0%) |
-| qdcg.line20 | 515 | 0 | 0 | 0 | 0 | 555 | 0 | 0 | 0 | 0 (0.0%) |
-| qdcg.line21 | 515 | 0 | 0 | 0 | 0 | 555 | 0 | 0 | 0 | 0 (0.0%) |
-| qdcg.line22 | 326 | 0 | 184 | 5 | 0 | 555 | 0 | 0 | 0 | 0 (0.0%) |
-| qdcg.line23 | 294 | 0 | 184 | 37 | 0 | 555 | 0 | 0 | 0 | 0 (0.0%) |
-| qdcg.line24 | 323 | 0 | 186 | 6 | 0 | 555 | 0 | 0 | 0 | 0 (0.0%) |
-| qdcg.line25 | 294 | 0 | 184 | 37 | 0 | 555 | 0 | 0 | 0 | 0 (0.0%) |
-| qdcg.line3 | 515 | 0 | 0 | 0 | 0 | 555 | 0 | 0 | 0 | 0 (0.0%) |
-| qdcg.line4 | 515 | 0 | 0 | 0 | 0 | 555 | 0 | 0 | 0 | 0 (0.0%) |
-| qdcg.line5 | 503 | 0 | 0 | 12 | 0 | 555 | 0 | 0 | 0 | 0 (0.0%) |
-| qdcg.line6 | 515 | 0 | 0 | 0 | 0 | 555 | 0 | 0 | 0 | 0 (0.0%) |
-| qdcg.line7 | 510 | 0 | 0 | 5 | 0 | 555 | 0 | 0 | 0 | 0 (0.0%) |
-| qdcg.line8 | 510 | 0 | 0 | 5 | 0 | 555 | 0 | 0 | 0 | 0 (0.0%) |
-| qdcg.line9 | 515 | 0 | 0 | 0 | 0 | 555 | 0 | 0 | 0 | 0 (0.0%) |
-| s1.line10 | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
-| s1.line11 | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
-| s1.line13 | 1316 | 0 | 0 | 0 | 0 | 384 | 0 | 0 | 0 | 0 (0.0%) |
-| s1.line21 | 1153 | 0 | 0 | 0 | 0 | 547 | 0 | 0 | 0 | 0 (0.0%) |
-| s1.line26 | 1153 | 0 | 0 | 0 | 0 | 547 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line12 | 135 | 0 | 0 | 0 | 0 | 24 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line13 | 1153 | 0 | 0 | 0 | 0 | 547 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line14c | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line15 | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line16 | 125 | 0 | 0 | 1 | 0 | 34 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line20 | 126 | 0 | 0 | 0 | 0 | 34 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line21 | 1153 | 0 | 0 | 0 | 0 | 547 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line23 | 1266 | 0 | 0 | 0 | 0 | 434 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line24 | 1266 | 0 | 0 | 0 | 0 | 434 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line25 | 113 | 0 | 0 | 1 | 0 | 20 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line29 | 114 | 0 | 0 | 0 | 0 | 20 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line3 | 1133 | 0 | 0 | 20 | 0 | 547 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line30 | 1039 | 0 | 0 | 0 | 0 | 661 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line31 | 170 | 0 | 0 | 4 | 0 | 62 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line34 | 172 | 0 | 0 | 2 | 0 | 62 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line35 | 172 | 0 | 0 | 2 | 0 | 62 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line36a | 1152 | 0 | 0 | 1 | 0 | 547 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line36b | 1152 | 0 | 0 | 1 | 0 | 547 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line37 | 1151 | 0 | 0 | 2 | 0 | 547 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line38 | 1062 | 0 | 0 | 2 | 0 | 636 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line4c | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line6 | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line7 | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line8 | 133 | 0 | 0 | 2 | 0 | 24 | 0 | 0 | 0 | 0 (0.0%) |
-| s2.line21 | 842 | 0 | 82 | 0 | 0 | 776 | 0 | 0 | 0 | 0 (0.0%) |
-| s2.line8 | 1083 | 0 | 0 | 0 | 0 | 617 | 0 | 0 | 0 | 0 (0.0%) |
-| s3.line11 | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
-| s3.line15 | 1288 | 0 | 0 | 0 | 0 | 412 | 0 | 0 | 0 | 0 (0.0%) |
-| s3.line3 | 92 | 0 | 0 | 0 | 0 | 120 | 0 | 0 | 0 | 0 (0.0%) |
-| s3.line8 | 376 | 0 | 0 | 0 | 0 | 1324 | 0 | 0 | 0 | 0 (0.0%) |
-| s3.line9 | 36 | 0 | 0 | 0 | 0 | 73 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line10 | 611 | 0 | 0 | 0 | 0 | 176 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line11 | 611 | 0 | 0 | 0 | 0 | 176 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line12 | 611 | 0 | 0 | 0 | 0 | 176 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line14 | 165 | 0 | 18 | 0 | 0 | 604 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line16a | 165 | 0 | 18 | 0 | 0 | 604 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line16b | 737 | 0 | 0 | 0 | 0 | 50 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line17 | 171 | 0 | 12 | 0 | 0 | 604 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line18a | 712 | 0 | 0 | 0 | 0 | 50 | 0 | 0 | 25 | 25 (3.2%) |
-| s8812.line19 | 712 | 0 | 0 | 0 | 0 | 50 | 0 | 0 | 25 | 25 (3.2%) |
-| s8812.line20 | 702 | 0 | 0 | 10 | 0 | 50 | 0 | 0 | 25 | 25 (3.2%) |
-| s8812.line21 | 610 | 0 | 0 | 0 | 0 | 177 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line23 | 610 | 0 | 0 | 0 | 0 | 177 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line24 | 430 | 0 | 0 | 0 | 0 | 357 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line25 | 332 | 0 | 0 | 0 | 0 | 455 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line26 | 327 | 0 | 0 | 5 | 0 | 455 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line27 | 99 | 0 | 3 | 0 | 0 | 685 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line3 | 600 | 0 | 0 | 11 | 0 | 176 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line5 | 737 | 0 | 0 | 0 | 0 | 50 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line7 | 737 | 0 | 0 | 0 | 0 | 50 | 0 | 0 | 0 | 0 (0.0%) |
-| s8812.line8 | 737 | 0 | 0 | 0 | 0 | 50 | 0 | 0 | 0 | 0 (0.0%) |
-| sa.deduction | 1055 | 0 | 0 | 2 | 0 | 643 | 0 | 0 | 0 | 0 (0.0%) |
-| sa.line10 | 1057 | 0 | 0 | 0 | 0 | 643 | 0 | 0 | 0 | 0 (0.0%) |
-| sa.line14 | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
-| sa.line17 | 1055 | 0 | 0 | 2 | 0 | 643 | 0 | 0 | 0 | 0 (0.0%) |
-| sa.line3 | 1132 | 0 | 0 | 21 | 0 | 547 | 0 | 0 | 0 | 0 (0.0%) |
-| sa.line4 | 1151 | 0 | 0 | 2 | 0 | 547 | 0 | 0 | 0 | 0 (0.0%) |
-| sa.line5d | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
-| sa.line5e | 1153 | 0 | 0 | 0 | 0 | 547 | 0 | 0 | 0 | 0 (0.0%) |
-| sa.line7 | 1153 | 0 | 0 | 0 | 0 | 547 | 0 | 0 | 0 | 0 (0.0%) |
-| sa.line8e | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
-| sa.standard | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
-| sb.line2 | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
-| sb.line4 | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
-| sd.line15 | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
-| sd.line16 | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
-| sd.line21 | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
-| sd.line7 | 1400 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
-| sli.line1 | 206 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| sli.line2 | 159 | 0 | 0 | 0 | 0 | 47 | 0 | 0 | 0 | 0 (0.0%) |
-| sli.line3 | 159 | 0 | 0 | 0 | 0 | 47 | 0 | 0 | 0 | 0 (0.0%) |
-| sli.line4 | 159 | 0 | 0 | 0 | 0 | 47 | 0 | 0 | 0 | 0 (0.0%) |
-| sli.line8 | 159 | 0 | 0 | 0 | 0 | 47 | 0 | 0 | 0 | 0 (0.0%) |
-| sli.line9 | 159 | 0 | 0 | 0 | 0 | 47 | 0 | 0 | 0 | 0 (0.0%) |
-| ssb.line1 | 463 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| ssb.line10 | 338 | 0 | 0 | 0 | 0 | 125 | 0 | 0 | 0 | 0 (0.0%) |
-| ssb.line11 | 258 | 0 | 0 | 80 | 0 | 125 | 0 | 0 | 0 | 0 (0.0%) |
-| ssb.line12 | 334 | 0 | 0 | 4 | 0 | 125 | 0 | 0 | 0 | 0 (0.0%) |
-| ssb.line13 | 329 | 0 | 0 | 9 | 0 | 125 | 0 | 0 | 0 | 0 (0.0%) |
-| ssb.line14 | 291 | 0 | 0 | 47 | 0 | 125 | 0 | 0 | 0 | 0 (0.0%) |
-| ssb.line15 | 258 | 0 | 0 | 80 | 0 | 125 | 0 | 0 | 0 | 0 (0.0%) |
-| ssb.line16 | 205 | 0 | 0 | 133 | 0 | 125 | 0 | 0 | 0 | 0 (0.0%) |
-| ssb.line17 | 330 | 0 | 0 | 8 | 0 | 125 | 0 | 0 | 0 | 0 (0.0%) |
-| ssb.line18 | 317 | 0 | 0 | 21 | 0 | 125 | 0 | 0 | 0 | 0 (0.0%) |
-| ssb.line2 | 353 | 0 | 0 | 110 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| ssb.line3 | 463 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| ssb.line4 | 463 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| ssb.line5 | 339 | 0 | 0 | 124 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| ssb.line6 | 338 | 0 | 0 | 0 | 0 | 125 | 0 | 0 | 0 | 0 (0.0%) |
-| ssb.line7 | 240 | 0 | 0 | 98 | 0 | 125 | 0 | 0 | 0 | 0 (0.0%) |
-| ssb.line8 | 338 | 0 | 0 | 0 | 0 | 125 | 0 | 0 | 0 | 0 (0.0%) |
-| ssb.line9 | 251 | 0 | 0 | 87 | 0 | 125 | 0 | 0 | 0 | 0 (0.0%) |
+| line | exact | table-adjusted | table-midpoint | float | unrounded | contribution-unrounded | excluded | explained | UNEXPLAINED | not computed | not computed outside the allow-list (share) |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| f1040.line10 | 1153 | 0 | 0 | 0 | 0 | 0 | 547 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line11a | 1133 | 0 | 0 | 20 | 0 | 0 | 547 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line11b | 1133 | 0 | 0 | 20 | 0 | 0 | 547 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line12e | 1055 | 0 | 0 | 2 | 0 | 0 | 643 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line13a | 819 | 0 | 0 | 0 | 0 | 0 | 881 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line13b | 818 | 0 | 0 | 1 | 0 | 0 | 881 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line14 | 817 | 0 | 0 | 2 | 0 | 0 | 881 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line15 | 798 | 0 | 0 | 21 | 0 | 0 | 881 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line16 | 411 | 0 | 266 | 40 | 0 | 0 | 983 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line17 | 682 | 0 | 0 | 0 | 0 | 0 | 1018 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line18 | 391 | 0 | 253 | 38 | 0 | 0 | 1018 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line19 | 358 | 0 | 18 | 0 | 0 | 0 | 1324 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line1a | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line1z | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line20 | 376 | 0 | 0 | 0 | 0 | 0 | 1324 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line21 | 358 | 0 | 18 | 0 | 0 | 0 | 1324 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line22 | 239 | 0 | 112 | 25 | 0 | 0 | 1324 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line23 | 842 | 0 | 82 | 0 | 0 | 0 | 776 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line24 | 172 | 0 | 144 | 18 | 0 | 0 | 1366 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line25a | 1330 | 0 | 0 | 0 | 0 | 0 | 370 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line25d | 1330 | 0 | 0 | 0 | 0 | 0 | 370 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line27a | 867 | 0 | 0 | 0 | 0 | 0 | 833 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line28 | 243 | 0 | 3 | 0 | 0 | 0 | 1454 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line29 | 127 | 0 | 0 | 0 | 0 | 0 | 85 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line32 | 243 | 0 | 3 | 0 | 0 | 0 | 1454 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line33 | 241 | 0 | 3 | 0 | 0 | 0 | 1456 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line34 | 140 | 0 | 71 | 9 | 0 | 0 | 1480 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line37 | 176 | 0 | 32 | 12 | 0 | 0 | 1480 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line6b | 1132 | 0 | 0 | 21 | 0 | 0 | 547 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line7a | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line8 | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line9 | 1133 | 0 | 0 | 20 | 0 | 0 | 547 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.tax_before_credits | 302 | 0 | 296 | 22 | 0 | 0 | 1080 | 0 | 0 | 0 | 0 (0.0%) |
+| f8863.line1 | 137 | 0 | 0 | 0 | 0 | 0 | 75 | 0 | 0 | 0 | 0 (0.0%) |
+| f8863.line12 | 137 | 0 | 0 | 0 | 0 | 0 | 75 | 0 | 0 | 0 | 0 (0.0%) |
+| f8863.line18 | 137 | 0 | 0 | 0 | 0 | 0 | 75 | 0 | 0 | 0 | 0 (0.0%) |
+| f8863.line19 | 92 | 0 | 0 | 0 | 0 | 0 | 120 | 0 | 0 | 0 | 0 (0.0%) |
+| f8863.line8 | 137 | 0 | 0 | 0 | 0 | 0 | 75 | 0 | 0 | 0 | 0 (0.0%) |
+| f8863.line9 | 137 | 0 | 0 | 0 | 0 | 0 | 75 | 0 | 0 | 0 | 0 (0.0%) |
+| f8959.line1 | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
+| f8959.line18 | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
+| f8959.line19 | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
+| f8959.line21 | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
+| f8959.line22 | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
+| f8959.line24 | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
+| f8959.line4 | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
+| f8959.line6 | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
+| f8959.line7 | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
+| f8959.tax | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
+| f8960.line11 | 892 | 0 | 0 | 0 | 0 | 0 | 808 | 0 | 0 | 0 | 0 (0.0%) |
+| f8960.line12 | 892 | 0 | 0 | 0 | 0 | 0 | 808 | 0 | 0 | 0 | 0 (0.0%) |
+| f8960.line15 | 1151 | 0 | 0 | 2 | 0 | 0 | 547 | 0 | 0 | 0 | 0 (0.0%) |
+| f8960.line16 | 1030 | 0 | 0 | 1 | 0 | 0 | 669 | 0 | 0 | 0 | 0 (0.0%) |
+| f8960.line17 | 938 | 0 | 93 | 0 | 0 | 0 | 669 | 0 | 0 | 0 | 0 (0.0%) |
+| f8960.line8 | 1395 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 5 | 5 (0.3%) |
+| f8960.line9a | 1057 | 0 | 0 | 0 | 0 | 0 | 643 | 0 | 0 | 0 | 0 (0.0%) |
+| f8960.line9b | 955 | 0 | 0 | 0 | 0 | 0 | 745 | 0 | 0 | 0 | 0 (0.0%) |
+| f8960.line9d | 892 | 0 | 0 | 0 | 0 | 0 | 808 | 0 | 0 | 0 | 0 (0.0%) |
+| f8960.tax | 938 | 0 | 93 | 0 | 0 | 0 | 669 | 0 | 0 | 0 | 0 (0.0%) |
+| f8962.line11e | 36 | 0 | 0 | 0 | 0 | 0 | 73 | 0 | 0 | 0 | 0 (0.0%) |
+| f8962.line25 | 36 | 0 | 0 | 0 | 0 | 0 | 73 | 0 | 0 | 0 | 0 (0.0%) |
+| f8962.line26 | 36 | 0 | 0 | 0 | 0 | 0 | 73 | 0 | 0 | 0 | 0 (0.0%) |
+| f8962.line29 | 36 | 0 | 0 | 0 | 0 | 0 | 73 | 0 | 0 | 0 | 0 (0.0%) |
+| f8962.line8a | 36 | 0 | 0 | 0 | 0 | 0 | 73 | 0 | 0 | 0 | 0 (0.0%) |
+| person[taxpayer].f5329[form].l1 | 1072 | 0 | 0 | 0 | 0 | 0 | 628 | 0 | 0 | 0 | 0 (0.0%) |
+| person[taxpayer].f5329[form].l4 | 1072 | 0 | 0 | 0 | 0 | 0 | 628 | 0 | 0 | 0 | 0 (0.0%) |
+| person[taxpayer].f8889[hsa].line11 | 221 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| person[taxpayer].f8889[hsa].line12 | 113 | 0 | 0 | 0 | 0 | 0 | 108 | 0 | 0 | 0 | 0 (0.0%) |
+| person[taxpayer].f8889[hsa].line13 | 1316 | 0 | 0 | 0 | 0 | 0 | 384 | 0 | 0 | 0 | 0 (0.0%) |
+| person[taxpayer].f8889[hsa].line3 | 188 | 0 | 0 | 0 | 0 | 0 | 33 | 0 | 0 | 0 | 0 (0.0%) |
+| person[taxpayer].f8889[hsa].line5 | 188 | 0 | 0 | 0 | 0 | 0 | 33 | 0 | 0 | 0 | 0 (0.0%) |
+| person[taxpayer].f8889[hsa].line6 | 106 | 0 | 0 | 0 | 0 | 0 | 115 | 0 | 0 | 0 | 0 (0.0%) |
+| person[taxpayer].f8889[hsa].line8 | 113 | 0 | 0 | 0 | 0 | 0 | 108 | 0 | 0 | 0 | 0 (0.0%) |
+| qdcg.line1 | 503 | 0 | 0 | 12 | 0 | 0 | 555 | 0 | 0 | 0 | 0 (0.0%) |
+| qdcg.line10 | 515 | 0 | 0 | 0 | 0 | 0 | 555 | 0 | 0 | 0 | 0 (0.0%) |
+| qdcg.line11 | 515 | 0 | 0 | 0 | 0 | 0 | 555 | 0 | 0 | 0 | 0 (0.0%) |
+| qdcg.line12 | 515 | 0 | 0 | 0 | 0 | 0 | 555 | 0 | 0 | 0 | 0 (0.0%) |
+| qdcg.line13 | 515 | 0 | 0 | 0 | 0 | 0 | 555 | 0 | 0 | 0 | 0 (0.0%) |
+| qdcg.line14 | 503 | 0 | 0 | 12 | 0 | 0 | 555 | 0 | 0 | 0 | 0 (0.0%) |
+| qdcg.line15 | 503 | 0 | 0 | 12 | 0 | 0 | 555 | 0 | 0 | 0 | 0 (0.0%) |
+| qdcg.line16 | 515 | 0 | 0 | 0 | 0 | 0 | 555 | 0 | 0 | 0 | 0 (0.0%) |
+| qdcg.line17 | 515 | 0 | 0 | 0 | 0 | 0 | 555 | 0 | 0 | 0 | 0 (0.0%) |
+| qdcg.line18 | 501 | 0 | 0 | 14 | 0 | 0 | 555 | 0 | 0 | 0 | 0 (0.0%) |
+| qdcg.line19 | 515 | 0 | 0 | 0 | 0 | 0 | 555 | 0 | 0 | 0 | 0 (0.0%) |
+| qdcg.line2 | 515 | 0 | 0 | 0 | 0 | 0 | 555 | 0 | 0 | 0 | 0 (0.0%) |
+| qdcg.line20 | 515 | 0 | 0 | 0 | 0 | 0 | 555 | 0 | 0 | 0 | 0 (0.0%) |
+| qdcg.line21 | 515 | 0 | 0 | 0 | 0 | 0 | 555 | 0 | 0 | 0 | 0 (0.0%) |
+| qdcg.line22 | 326 | 0 | 184 | 5 | 0 | 0 | 555 | 0 | 0 | 0 | 0 (0.0%) |
+| qdcg.line23 | 294 | 0 | 184 | 37 | 0 | 0 | 555 | 0 | 0 | 0 | 0 (0.0%) |
+| qdcg.line24 | 323 | 0 | 186 | 6 | 0 | 0 | 555 | 0 | 0 | 0 | 0 (0.0%) |
+| qdcg.line25 | 294 | 0 | 184 | 37 | 0 | 0 | 555 | 0 | 0 | 0 | 0 (0.0%) |
+| qdcg.line3 | 515 | 0 | 0 | 0 | 0 | 0 | 555 | 0 | 0 | 0 | 0 (0.0%) |
+| qdcg.line4 | 515 | 0 | 0 | 0 | 0 | 0 | 555 | 0 | 0 | 0 | 0 (0.0%) |
+| qdcg.line5 | 503 | 0 | 0 | 12 | 0 | 0 | 555 | 0 | 0 | 0 | 0 (0.0%) |
+| qdcg.line6 | 515 | 0 | 0 | 0 | 0 | 0 | 555 | 0 | 0 | 0 | 0 (0.0%) |
+| qdcg.line7 | 510 | 0 | 0 | 5 | 0 | 0 | 555 | 0 | 0 | 0 | 0 (0.0%) |
+| qdcg.line8 | 510 | 0 | 0 | 5 | 0 | 0 | 555 | 0 | 0 | 0 | 0 (0.0%) |
+| qdcg.line9 | 515 | 0 | 0 | 0 | 0 | 0 | 555 | 0 | 0 | 0 | 0 (0.0%) |
+| s1.line10 | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
+| s1.line11 | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
+| s1.line13 | 1316 | 0 | 0 | 0 | 0 | 0 | 384 | 0 | 0 | 0 | 0 (0.0%) |
+| s1.line21 | 1153 | 0 | 0 | 0 | 0 | 0 | 547 | 0 | 0 | 0 | 0 (0.0%) |
+| s1.line26 | 1153 | 0 | 0 | 0 | 0 | 0 | 547 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.line12 | 135 | 0 | 0 | 0 | 0 | 0 | 24 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.line13 | 1153 | 0 | 0 | 0 | 0 | 0 | 547 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.line14c | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.line15 | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.line16 | 125 | 0 | 0 | 1 | 0 | 0 | 34 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.line20 | 126 | 0 | 0 | 0 | 0 | 0 | 34 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.line21 | 1153 | 0 | 0 | 0 | 0 | 0 | 547 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.line23 | 1266 | 0 | 0 | 0 | 0 | 0 | 434 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.line24 | 1266 | 0 | 0 | 0 | 0 | 0 | 434 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.line25 | 113 | 0 | 0 | 1 | 0 | 0 | 20 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.line29 | 114 | 0 | 0 | 0 | 0 | 0 | 20 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.line3 | 1133 | 0 | 0 | 20 | 0 | 0 | 547 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.line30 | 1039 | 0 | 0 | 0 | 0 | 0 | 661 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.line31 | 170 | 0 | 0 | 4 | 0 | 0 | 62 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.line34 | 172 | 0 | 0 | 2 | 0 | 0 | 62 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.line35 | 172 | 0 | 0 | 2 | 0 | 0 | 62 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.line36a | 1152 | 0 | 0 | 1 | 0 | 0 | 547 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.line36b | 1152 | 0 | 0 | 1 | 0 | 0 | 547 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.line37 | 1151 | 0 | 0 | 2 | 0 | 0 | 547 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.line38 | 1062 | 0 | 0 | 2 | 0 | 0 | 636 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.line4c | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.line6 | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.line7 | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.line8 | 133 | 0 | 0 | 2 | 0 | 0 | 24 | 0 | 0 | 0 | 0 (0.0%) |
+| s2.line21 | 842 | 0 | 82 | 0 | 0 | 0 | 776 | 0 | 0 | 0 | 0 (0.0%) |
+| s2.line8 | 1083 | 0 | 0 | 0 | 0 | 0 | 617 | 0 | 0 | 0 | 0 (0.0%) |
+| s3.line11 | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
+| s3.line15 | 1288 | 0 | 0 | 0 | 0 | 0 | 412 | 0 | 0 | 0 | 0 (0.0%) |
+| s3.line3 | 92 | 0 | 0 | 0 | 0 | 0 | 120 | 0 | 0 | 0 | 0 (0.0%) |
+| s3.line8 | 376 | 0 | 0 | 0 | 0 | 0 | 1324 | 0 | 0 | 0 | 0 (0.0%) |
+| s3.line9 | 36 | 0 | 0 | 0 | 0 | 0 | 73 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line10 | 611 | 0 | 0 | 0 | 0 | 0 | 176 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line11 | 611 | 0 | 0 | 0 | 0 | 0 | 176 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line12 | 611 | 0 | 0 | 0 | 0 | 0 | 176 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line14 | 165 | 0 | 18 | 0 | 0 | 0 | 604 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line16a | 165 | 0 | 18 | 0 | 0 | 0 | 604 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line16b | 737 | 0 | 0 | 0 | 0 | 0 | 50 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line17 | 171 | 0 | 12 | 0 | 0 | 0 | 604 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line18a | 712 | 0 | 0 | 0 | 0 | 0 | 50 | 0 | 0 | 25 | 25 (3.2%) |
+| s8812.line19 | 712 | 0 | 0 | 0 | 0 | 0 | 50 | 0 | 0 | 25 | 25 (3.2%) |
+| s8812.line20 | 702 | 0 | 0 | 10 | 0 | 0 | 50 | 0 | 0 | 25 | 25 (3.2%) |
+| s8812.line21 | 610 | 0 | 0 | 0 | 0 | 0 | 177 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line23 | 610 | 0 | 0 | 0 | 0 | 0 | 177 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line24 | 430 | 0 | 0 | 0 | 0 | 0 | 357 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line25 | 332 | 0 | 0 | 0 | 0 | 0 | 455 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line26 | 327 | 0 | 0 | 5 | 0 | 0 | 455 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line27 | 99 | 0 | 3 | 0 | 0 | 0 | 685 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line3 | 600 | 0 | 0 | 11 | 0 | 0 | 176 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line5 | 737 | 0 | 0 | 0 | 0 | 0 | 50 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line7 | 737 | 0 | 0 | 0 | 0 | 0 | 50 | 0 | 0 | 0 | 0 (0.0%) |
+| s8812.line8 | 737 | 0 | 0 | 0 | 0 | 0 | 50 | 0 | 0 | 0 | 0 (0.0%) |
+| sa.deduction | 1055 | 0 | 0 | 2 | 0 | 0 | 643 | 0 | 0 | 0 | 0 (0.0%) |
+| sa.line10 | 1057 | 0 | 0 | 0 | 0 | 0 | 643 | 0 | 0 | 0 | 0 (0.0%) |
+| sa.line14 | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
+| sa.line17 | 1055 | 0 | 0 | 2 | 0 | 0 | 643 | 0 | 0 | 0 | 0 (0.0%) |
+| sa.line3 | 1132 | 0 | 0 | 21 | 0 | 0 | 547 | 0 | 0 | 0 | 0 (0.0%) |
+| sa.line4 | 1151 | 0 | 0 | 2 | 0 | 0 | 547 | 0 | 0 | 0 | 0 (0.0%) |
+| sa.line5d | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
+| sa.line5e | 1153 | 0 | 0 | 0 | 0 | 0 | 547 | 0 | 0 | 0 | 0 (0.0%) |
+| sa.line7 | 1153 | 0 | 0 | 0 | 0 | 0 | 547 | 0 | 0 | 0 | 0 (0.0%) |
+| sa.line8e | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
+| sa.standard | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
+| sb.line2 | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
+| sb.line4 | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
+| sd.line15 | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
+| sd.line16 | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
+| sd.line21 | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
+| sd.line7 | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
+| sli.line1 | 206 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| sli.line2 | 159 | 0 | 0 | 0 | 0 | 0 | 47 | 0 | 0 | 0 | 0 (0.0%) |
+| sli.line3 | 159 | 0 | 0 | 0 | 0 | 0 | 47 | 0 | 0 | 0 | 0 (0.0%) |
+| sli.line4 | 159 | 0 | 0 | 0 | 0 | 0 | 47 | 0 | 0 | 0 | 0 (0.0%) |
+| sli.line8 | 159 | 0 | 0 | 0 | 0 | 0 | 47 | 0 | 0 | 0 | 0 (0.0%) |
+| sli.line9 | 159 | 0 | 0 | 0 | 0 | 0 | 47 | 0 | 0 | 0 | 0 (0.0%) |
+| ssb.line1 | 463 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| ssb.line10 | 338 | 0 | 0 | 0 | 0 | 0 | 125 | 0 | 0 | 0 | 0 (0.0%) |
+| ssb.line11 | 258 | 0 | 0 | 80 | 0 | 0 | 125 | 0 | 0 | 0 | 0 (0.0%) |
+| ssb.line12 | 334 | 0 | 0 | 4 | 0 | 0 | 125 | 0 | 0 | 0 | 0 (0.0%) |
+| ssb.line13 | 329 | 0 | 0 | 9 | 0 | 0 | 125 | 0 | 0 | 0 | 0 (0.0%) |
+| ssb.line14 | 291 | 0 | 0 | 47 | 0 | 0 | 125 | 0 | 0 | 0 | 0 (0.0%) |
+| ssb.line15 | 258 | 0 | 0 | 80 | 0 | 0 | 125 | 0 | 0 | 0 | 0 (0.0%) |
+| ssb.line16 | 205 | 0 | 0 | 133 | 0 | 0 | 125 | 0 | 0 | 0 | 0 (0.0%) |
+| ssb.line17 | 330 | 0 | 0 | 8 | 0 | 0 | 125 | 0 | 0 | 0 | 0 (0.0%) |
+| ssb.line18 | 317 | 0 | 0 | 21 | 0 | 0 | 125 | 0 | 0 | 0 | 0 (0.0%) |
+| ssb.line2 | 353 | 0 | 0 | 110 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| ssb.line3 | 463 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| ssb.line4 | 463 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| ssb.line5 | 339 | 0 | 0 | 124 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| ssb.line6 | 338 | 0 | 0 | 0 | 0 | 0 | 125 | 0 | 0 | 0 | 0 (0.0%) |
+| ssb.line7 | 240 | 0 | 0 | 98 | 0 | 0 | 125 | 0 | 0 | 0 | 0 (0.0%) |
+| ssb.line8 | 338 | 0 | 0 | 0 | 0 | 0 | 125 | 0 | 0 | 0 | 0 (0.0%) |
+| ssb.line9 | 251 | 0 | 0 | 87 | 0 | 0 | 125 | 0 | 0 | 0 | 0 (0.0%) |
 
 Exclusions:
 

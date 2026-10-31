@@ -420,6 +420,311 @@
   "model": "claude-opus-5-5"
  },
  {
+  "form": "f2441",
+  "prompt_sha": "284becf9ba08d2217f0321b6ba7f181259c7ce0f4239b8adc514eff7c76d1c58",
+  "claims": [
+   {
+    "item": "f2441.paid_total",
+    "sentences": [
+     {
+      "quote": "Child support payments aren't qualified expenses.",
+      "page": "i2441 p. 2"
+     },
+     {
+      "quote": "Also, expenses reimbursed by a state social service agency aren't qualified expenses.",
+      "page": "i2441 p. 2"
+     },
+     {
+      "quote": "Generally, if you worked or actively looked for work during only part of the period in which you incurred the expenses, you must figure your expenses for each day.",
+      "page": "i2441 p. 2"
+     },
+     {
+      "quote": "Also, if part of an expense is work related (for either household services or the care of a qualifying person) and part is for other purposes, you have to divide the expense.",
+      "page": "i2441 p. 2"
+     },
+     {
+      "quote": "However, they don't include the services of a chauffeur, bartender, or gardener.",
+      "page": "i2441 p. 2"
+     },
+     {
+      "quote": "It doesn't include the cost of food, lodging, education, clothing, or entertainment.",
+      "page": "i2441 p. 2"
+     },
+     {
+      "quote": "You can include the cost of care provided outside your home for your dependent under age 13, or any other qualifying person who regularly spends at least 8 hours a day in your home.",
+      "page": "i2441 p. 2"
+     },
+     {
+      "quote": "If the care was provided by a dependent care center, the center must meet all applicable state and local regulations.",
+      "page": "i2441 p. 2"
+     },
+     {
+      "quote": "But don't include the cost of schooling for a child in kindergarten or above.",
+      "page": "i2441 p. 2"
+     },
+     {
+      "quote": "But don't include any expenses for sending your child to an overnight camp, a summer school, or a tutoring program.",
+      "page": "i2441 p. 2"
+     },
+     {
+      "quote": "However, you can't claim the same expense as both a dependent care expense and a medical expense.",
+      "page": "i2441 p. 2"
+     },
+     {
+      "quote": "You determine a person's qualifying status each day.",
+      "page": "p503 p. 3"
+     },
+     {
+      "quote": "If you pay for services before they are provided, you can count the prepaid expenses only in the year the care is received.",
+      "page": "p503 p. 10"
+     },
+     {
+      "quote": "If a state social services agency pays you a nontaxable amount to reimburse you for some of your child and dependent care expenses, you can't count the expenses that are reimbursed as work-related expenses.",
+      "page": "p503 p. 10"
+     }
+    ],
+    "quote": "Child support payments aren't qualified expenses. / Also, expenses reimbursed by a state social service agency aren't qualified expenses. / Generally, if you worked or actively looked for work during only part of the period in which you incurred the expenses, you must figure your expenses for each day. / Also, if part of an expense is work related (for either household services or the care of a qualifying person) and part is for other purposes, you have to divide the expense. / However, they don't include the services of a chauffeur, bartender, or gardener. / It doesn't include the cost of food, lodging, education, clothing, or entertainment. / You can include the cost of care provided outside your home for your dependent under age 13, or any other qualifying person who regularly spends at least 8 hours a day in your home. / If the care was provided by a dependent care center, the center must meet all applicable state and local regulations. / But don't include the cost of schooling for a child in kindergarten or above. / But don't include any expenses for sending your child to an overnight camp, a summer school, or a tutoring program. / However, you can't claim the same expense as both a dependent care expense and a medical expense. / You determine a person's qualifying status each day. / If you pay for services before they are provided, you can count the prepaid expenses only in the year the care is received. / If a state social services agency pays you a nontaxable amount to reimburse you for some of your child and dependent care expenses, you can't count the expenses that are reimbursed as work-related expenses.",
+    "page": "i2441 p. 2; p503 p. 3; p503 p. 10",
+    "why_uncovered": "The item only totals amounts labeled as qualified expenses. No listed question, line or refusal states these inclusion rules, reductions or apportionments, or the treatment of expenses prepaid in 2024. The refusals on this item concern only non-dependents and ineligible related providers, and line 30 removes only employer benefits on line 28.",
+    "closest_item": "f2441.paid_total",
+    "effect": "amount"
+   },
+   {
+    "item": "f2441.qp_count",
+    "sentences": [
+     {
+      "quote": "Generally, the noncustodial parent can't treat the child as a qualifying person even if that parent is entitled to claim the child as a dependent under the special rules for a child of divorced or separated parents or parents who live apart.",
+      "page": "i2441 p. 1"
+     },
+     {
+      "quote": "To be a qualifying person, generally the person must have lived with you for more than half of 2025.",
+      "page": "i2441 p. 1"
+     },
+     {
+      "quote": "You must enter the qualifying person's SSN.",
+      "page": "i2441 p. 3"
+     },
+     {
+      "quote": "Otherwise, at the time we process your return, we may reduce or disallow your credit.",
+      "page": "i2441 p. 3"
+     },
+     {
+      "quote": "If the child was born and died in 2025 and didn't have an SSN, enter “Died” in column (b) and attach a copy of the child's birth certificate, death certificate, or hospital medical records.",
+      "page": "i2441 p. 3"
+     },
+     {
+      "quote": "If your qualifying person is a nonresident or resident alien who doesn't have and can't get an SSN, use that person's ITIN.",
+      "page": "p503 p. 3"
+     },
+     {
+      "quote": "If your qualifying person is a child who was placed in your home for adoption and for whom you don't have an SSN, you must get an ATIN for the child.",
+      "page": "p503 p. 3"
+     }
+    ],
+    "quote": "Generally, the noncustodial parent can't treat the child as a qualifying person even if that parent is entitled to claim the child as a dependent under the special rules for a child of divorced or separated parents or parents who live apart. / To be a qualifying person, generally the person must have lived with you for more than half of 2025. / You must enter the qualifying person's SSN. / Otherwise, at the time we process your return, we may reduce or disallow your credit. / If the child was born and died in 2025 and didn't have an SSN, enter “Died” in column (b) and attach a copy of the child's birth certificate, death certificate, or hospital medical records. / If your qualifying person is a nonresident or resident alien who doesn't have and can't get an SSN, use that person's ITIN. / If your qualifying person is a child who was placed in your home for adoption and for whom you don't have an SSN, you must get an ATIN for the child.",
+    "page": "i2441 p. 1; i2441 p. 3; p503 p. 3",
+    "why_uncovered": "The nondependent question and gate address only people who are not the filer's dependents, including a custodial parent's child. Nothing excludes a noncustodial parent's dependent child or a dependent who did not live with the filer for more than half the year. No listed item tests or reports the qualifying person's identification number or handles the born-and-died child case.",
+    "closest_item": "f2441.qp_count",
+    "effect": "eligibility"
+   },
+   {
+    "item": "f2441.line12",
+    "sentences": [
+     {
+      "quote": "Benefits you received as a partner should be shown in box 13 of your Schedule K-1 (Form 1065) with code O.",
+      "page": "i2441 p. 1"
+     },
+     {
+      "quote": "If you were self-employed or a partner, include amounts you received under a dependent care assistance program from your sole proprietorship or partnership.",
+      "page": "i2441 p. 5"
+     }
+    ],
+    "quote": "Benefits you received as a partner should be shown in box 13 of your Schedule K-1 (Form 1065) with code O. / If you were self-employed or a partner, include amounts you received under a dependent care assistance program from your sole proprietorship or partnership.",
+    "page": "i2441 p. 1; i2441 p. 5",
+    "why_uncovered": "The f2441.benefits question and the line 12 label refer only to Form W-2 box 10 and grace-period amounts. No question or refusal captures benefits from a sole proprietorship or partnership.",
+    "closest_item": "f2441.line12",
+    "effect": "amount"
+   },
+   {
+    "item": "f2441.line22",
+    "sentences": [
+     {
+      "quote": "If you are self-employed and receive benefits from a qualified dependent care benefit plan, you are treated as both employer and employee.",
+      "page": "p503 p. 10"
+     },
+     {
+      "quote": "Therefore, you wouldn't get an exclusion from wages.",
+      "page": "p503 p. 10"
+     }
+    ],
+    "quote": "If you are self-employed and receive benefits from a qualified dependent care benefit plan, you are treated as both employer and employee. / Therefore, you wouldn't get an exclusion from wages.",
+    "page": "p503 p. 10",
+    "why_uncovered": "Line 22 is listed without a question or refusal, so nothing identifies benefits that come from the filer's own business. Those benefits could therefore be treated as excluded on line 25 rather than deductible on line 24.",
+    "closest_item": "f2441.line22",
+    "effect": "amount"
+   },
+   {
+    "item": "f2441.line24",
+    "sentences": [
+     {
+      "quote": "Include your deductible benefits in the total entered on Schedule C (Form 1040), line 14; Schedule E (Form 1040), line 19 or line 28; or Schedule F (Form 1040), line 15, whichever applies.",
+      "page": "i2441 p. 5"
+     }
+    ],
+    "quote": "Include your deductible benefits in the total entered on Schedule C (Form 1040), line 14; Schedule E (Form 1040), line 19 or line 28; or Schedule F (Form 1040), line 15, whichever applies.",
+    "page": "i2441 p. 5",
+    "why_uncovered": "Line 24 is computed, but no listed item carries the deductible benefits to Schedule C, E or F, and no refusal covers that flow. The handled-elsewhere refusals do not specifically address this deduction.",
+    "closest_item": "f2441.line24",
+    "effect": "amount"
+   },
+   {
+    "item": "f2441.line4",
+    "sentences": [
+     {
+      "quote": "If you use either optional method to figure self-employment tax, subtract any deduction you claim on Schedule 1 (Form 1040), line 15, from the total of the amounts shown on Schedule SE (Form 1040), lines 3 and 4b.",
+      "page": "i2441 p. 4"
+     },
+     {
+      "quote": "If you use an optional method to figure net earnings for self-employment tax purposes, include those net earnings in your earned income for this credit.",
+      "page": "p503 p. 11"
+     }
+    ],
+    "quote": "If you use either optional method to figure self-employment tax, subtract any deduction you claim on Schedule 1 (Form 1040), line 15, from the total of the amounts shown on Schedule SE (Form 1040), lines 3 and 4b. / If you use an optional method to figure net earnings for self-employment tax purposes, include those net earnings in your earned income for this credit.",
+    "page": "i2441 p. 4; p503 p. 11",
+    "why_uncovered": "The refusals on line 4 cover deemed income, combat pay, excluded income and the attribution of benefits. Its citations mention only the self-employment loss rule. No listed item implements or refuses optional-method net earnings, and the handled-elsewhere Schedule SE refusal is limited to clergy.",
+    "closest_item": "f2441.line4",
+    "effect": "amount"
+   },
+   {
+    "item": "f2441.provider_count",
+    "sentences": [
+     {
+      "quote": "If you had neither a qualifying person nor any care providers for 2025, and you are filing Form 2441 only to report taxable income in Part III, enter “none” on line 1, column (a).",
+      "page": "i2441 p. 3"
+     },
+     {
+      "quote": "If the care provider is an individual, enter their SSN or individual taxpayer identification number (ITIN).",
+      "page": "i2441 p. 3"
+     },
+     {
+      "quote": "Otherwise, enter the provider's employer identification number (EIN).",
+      "page": "i2441 p. 3"
+     },
+     {
+      "quote": "If the provider is a tax-exempt organization, enter “Tax-Exempt” in column (c).",
+      "page": "i2441 p. 3"
+     },
+     {
+      "quote": "If so, enter “LAFCP” (Living Abroad Foreign Care Provider) in the space for the care provider's taxpayer identification number.",
+      "page": "i2441 p. 3"
+     }
+    ],
+    "quote": "If you had neither a qualifying person nor any care providers for 2025, and you are filing Form 2441 only to report taxable income in Part III, enter “none” on line 1, column (a). / If the care provider is an individual, enter their SSN or individual taxpayer identification number (ITIN). / Otherwise, enter the provider's employer identification number (EIN). / If the provider is a tax-exempt organization, enter “Tax-Exempt” in column (c). / If so, enter “LAFCP” (Living Abroad Foreign Care Provider) in the space for the care provider's taxpayer identification number.",
+    "page": "i2441 p. 3",
+    "why_uncovered": "The listed provider items cover counts, related-person status, the statement count, household-employee status and amounts paid. None sets the required column (a) or column (c) entries for these situations.",
+    "closest_item": "f2441.provider_count",
+    "effect": "presentation"
+   },
+   {
+    "item": "f2441.employer_care",
+    "sentences": [
+     {
+      "quote": "Then, enter “See W-2” in column (b), leave column (c) blank, check the “No” box in column (d), and enter -0- in column (e).",
+      "page": "i2441 p. 3"
+     },
+     {
+      "quote": "But if your employer paid a third party (not hired by your employer) on your behalf to provide the care, you must provide information on the third party in columns (a) through (e).",
+      "page": "i2441 p. 3"
+     }
+    ],
+    "quote": "Then, enter “See W-2” in column (b), leave column (c) blank, check the “No” box in column (d), and enter -0- in column (e). / But if your employer paid a third party (not hired by your employer) on your behalf to provide the care, you must provide information on the third party in columns (a) through (e).",
+    "page": "i2441 p. 3",
+    "why_uncovered": "The employer_care question feeds only the refusals on lines 17 and 30. No listed item produces the prescribed line 1 entries for employer-furnished care or third-party information for employer-paid care.",
+    "closest_item": "f2441.employer_care",
+    "effect": "presentation"
+   },
+   {
+    "item": "f2441.line1_box",
+    "sentences": [
+     {
+      "quote": "Be sure to put your name and social security number (SSN) on the statement.",
+      "page": "i2441 p. 2"
+     },
+     {
+      "quote": "In this situation, all the lines on line 1 of Form 2441 must be completed with information for the three highest paid providers.",
+      "page": "i2441 p. 2"
+     },
+     {
+      "quote": "The attached statement must provide the same information for the additional providers not listed on the form.",
+      "page": "i2441 pp. 2-3"
+     }
+    ],
+    "quote": "Be sure to put your name and social security number (SSN) on the statement. / In this situation, all the lines on line 1 of Form 2441 must be completed with information for the three highest paid providers. / The attached statement must provide the same information for the additional providers not listed on the form.",
+    "page": "i2441 p. 2; i2441 pp. 2-3",
+    "why_uncovered": "The item only checks the box. No listed item selects the three highest-paid providers or requires the statement's contents.",
+    "closest_item": "f2441.line1_box",
+    "effect": "presentation"
+   },
+   {
+    "item": "f2441.line2_box",
+    "sentences": [
+     {
+      "quote": "Be sure to put your name and SSN on the statement.",
+      "page": "i2441 p. 3"
+     },
+     {
+      "quote": "In this situation, all the lines on line 2 of Form 2441 must be completed with information for the three people with the highest qualifying expenses.",
+      "page": "i2441 p. 3"
+     },
+     {
+      "quote": "The attached statement must provide the same information for the additional qualifying people not listed on the form.",
+      "page": "i2441 p. 3"
+     },
+     {
+      "quote": "Check the box in column (c) if the qualifying person listed in column (a) was over age 12 at the time the care was provided and was disabled.",
+      "page": "i2441 p. 3"
+     }
+    ],
+    "quote": "Be sure to put your name and SSN on the statement. / In this situation, all the lines on line 2 of Form 2441 must be completed with information for the three people with the highest qualifying expenses. / The attached statement must provide the same information for the additional qualifying people not listed on the form. / Check the box in column (c) if the qualifying person listed in column (a) was over age 12 at the time the care was provided and was disabled.",
+    "page": "i2441 p. 3",
+    "why_uncovered": "The item only checks the box for more than three qualifying persons. No listed item selects the three people with the highest expenses, requires the statement's contents, or produces the column (c) disabled checkbox.",
+    "closest_item": "f2441.line2_box",
+    "effect": "presentation"
+   }
+  ],
+  "used": [
+   {
+    "doc": "i2441",
+    "pages": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6
+    ]
+   },
+   {
+    "doc": "p503",
+    "pages": [
+     3
+    ]
+   },
+   {
+    "doc": "p503",
+    "pages": [
+     8,
+     9,
+     10,
+     11,
+     12
+    ]
+   }
+  ],
+  "cost": 0.494588,
+  "model": "claude-opus-5-5"
+ },
+ {
   "form": "household",
   "prompt_sha": "66464b9ecfd786e89dd1fc1b87219f24daac60fc332e11227fc02234a280619a",
   "claims": [

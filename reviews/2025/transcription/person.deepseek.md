@@ -4,24 +4,24 @@ Second transcription of `Each person on the return — per-person facts and tota
 
 | field | value |
 | --- | --- |
-| date | 2026-10-30 |
+| date | 2026-10-31 |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
-| prompt sha256 | 228beb7d02996aad27975fec7478712d83a54ccf0697498143c056a8566d8f9b |
+| prompt sha256 | fbb0b90085c677b54c74484efed9459ec355688a6a915b2f9279d1babcef961e |
 | prompt policy | source-only-computation-v2 |
 | comparison policy | checked-expression-types-v2 |
 | input context policy | required-review-interfaces-v2 |
 | complete input context | pass |
-| required input context sha256 | 25a027e7aa88c70d64dda6eb43ac51e5a2717be1571ef98eb893397e37eb52cb |
+| required input context sha256 | f28dc3dec4ac74fa91c5b6004be1cf526c5fb9df0b14cf6e5e1137b30b201eac |
 | type validation policy | project-expression-types-v3 |
 | model type validation | fail |
 | system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
 | reasoning effort | provider default |
 | output token budget | 65536 |
 | interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
-| subject sha256 | 2b3224752ef85bc094959c9f6706438fd33497470ba985e73879f419226182f1 |
+| subject sha256 | e5e6cc683f161ee8f7df05d52a261013150b9ebbd9fddf49af8e047f52e19504 |
 | printed lines compared | 99 |
-| agree / disagree / missing | 3 / 96 / 0 |
+| agree / disagree / missing | 35 / 64 / 0 |
 | extra printed lines in second | none |
 
 ## Source pages given to the model
@@ -60,61 +60,16 @@ Second transcription of `Each person on the return — per-person facts and tota
 ## Host-side model expression type checks
 
 The build's reference/type checker rejected these model expressions; none were executed.
-- person.person.employers: reference 'one' does not resolve
-- person.person.overcount: reference 'one' does not resolve
-- person.person.wages: reference 'wages' does not resolve
-- person.person.withheld: reference 'box4' does not resolve
-- person.person.hsa_forms: reference 'one' does not resolve
-- person.person.hsa_split: reference 'one' does not resolve
-- person.person.hsa_agreed: reference 'one' does not resolve
-- person.person.hsa_step1: reference 'step1' does not resolve
-- person.person.hsa_share: reference 'share' does not resolve
-- person.person.hsa_deduction: reference 'line13' does not resolve
-- person.person.hsa_taxable: reference 'line16' does not resolve
-- person.person.hsa_addtax: reference 'line17b' does not resolve
-- person.person.tip_employers: reference 'one' does not resolve
-- person.person.tip_total: reference 'col_d' does not resolve
-- person.person.tip_reported: reference 'amount' does not resolve
-- person.person.ot_employers: reference 'one' does not resolve
-- person.person.ot_total: reference 'col_b' does not resolve
-- person.person.box1: reference 'box1' does not resolve
-- person.person.box2: reference 'box2' does not resolve
-- person.person.ira_amount_a: reference 'amount_a' does not resolve
-- person.person.ira_taxable: reference 'ira_taxable' does not resolve
-- person.person.ira_rollovers: reference 'one' does not resolve
-- person.person.plan_amount_a: reference 'amount_a' does not resolve
-- person.person.plan_taxable: reference 'plan_taxable' does not resolve
-- person.person.plan_rollovers: reference 'one' does not resolve
-- person.person.sav_dist: reference 'sav_amount' does not resolve
-- person.person.medicare5: reference 'box5' does not resolve
-- person.person.medicare6: reference 'box6' does not resolve
-- person.person.sc_count: reference 'one' does not resolve
-- person.person.ho_count: reference 'one' does not resolve
-- person.person.mq_q4: reference 'mq_q4' does not resolve
-- person.person.mq_total: reference 'mq_total' does not resolve
-- person.person.cost179: reference 'cost179' does not resolve
-- person.person.s179_nonlisted: reference 's179_allowed' does not resolve
-- person.person.income179: reference 'line31' does not resolve
-- person.person.sc_total: reference 'line31' does not resolve
-- person.person.positive_profits: reference 'line31' does not resolve
-- person.person.sehi: reference 'f7206_line14' does not resolve
-- person.person.qbi: reference 'qbi' does not resolve
-- person.person.dc_benefits: reference 'dc_benefits' does not resolve
-- person.person.ira_8606_line14: reference 'line14' does not resolve
-- person.person.x_l1: reference 'l1' does not resolve
-- person.person.x_l2_all: reference 'l2' does not resolve
-- person.person.x_l1_s: reference 'l1_s' does not resolve
-- person.person.x_l2_s: reference 'l2_s' does not resolve
-- person.person.x_tax: reference 'tax' does not resolve
-- person.person.x_must: reference 'one' does not resolve
-- person.person.x_c05: reference 'l2_e05' does not resolve
-- person.person.x_limited_sum: reference 'l2' does not resolve
-- person.person.x_hsa_excess: reference 'l49' does not resolve
-- person.h_sav_deferral: reference 'sav_deferral' does not resolve
-- person.h_se_4a_pos: declared NonNegDollars but the expression does not prove non-negativity
-- person.h_ss_wages: reference 'wages' does not resolve
-- person.h_ss_room: reference 'ss.base' does not resolve
-- person.h_e23_count: reference 'one' does not resolve
+- person.person.edu_line31: 'aqee' has no line 'line31'
+- person.person.ira_line2: reference 'ira.line2' does not resolve
+- person.person.__type_gate_0: collection reference requires sum_over
+- person.person.__type_gate_0: comparison operands have incompatible types
+- person.person.__type_gate_1: collection reference requires sum_over
+- person.person.__type_gate_1: comparison operands have incompatible types
+- person.person.__type_gate_2: collection reference requires sum_over
+- person.person.__type_gate_2: comparison operands have incompatible types
+- person.person.__type_gate_15: collection reference requires sum_over
+- person.person.__type_gate_15: comparison operands have incompatible types
 
 ## Lines
 
@@ -133,44 +88,16 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.eligible_educator"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": true}, {"input": "person.eligible_educator"}], "test": "eq"}, "then": {"of": [{"input": "person.educator_expenses"}, {"param": "s1.educator_max"}], "op": "smaller_of"}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.eligible_educator"}], "test": "eq"}, "then": {"line": "zero"}}, {"guard": {"args": [{"const": true}, {"input": "person.eligible_educator"}], "test": "eq"}, "then": {"of": [{"input": "person.educator_expenses"}, {"param": "s1.educator_max"}], "op": "smaller_of"}}], "op": "choose"}
 ```
 
-Ruling: representation; Not executable: the reply fails validation on 55 declarations (53 collection sums naming the field without its collection's prefix, for example person.hsa_forms: "reference 'one' does not resolve"; h_ss_room: "reference 'ss.base' does not resolve"; h_se_4a_pos: "declared NonNegDollars but the expression does not prove non-negativity"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. i1040gi p. 93, Line 11: "If you were an eligible educator in 2025, you can deduct on line 11 up to $300 of qualified expenses you paid in 2025." Same expression as fix round 3: the smaller of the expenses and $300 (s1.educator_max) for an eligible educator and zero otherwise, the Claude reply's formula, ruled representation in that log (only the order of the two dispositive questions differs; eligibility is asked where the expenses are zero). Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: representation; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. i1040gi p. 93, Line 11: "If you were an eligible educator in 2025, you can deduct on line 11 up to $300 of qualified expenses you paid in 2025." Same formula as fix round 4 (now through its helper person.h_educator_allowed): the smaller of the expenses and $300 (s1.educator_max) for an eligible educator and zero otherwise, the Claude reply's formula, ruled representation in that log: only the order of the two dispositive questions differs. Every candidate-unknown record lacks person.eligible_educator where the expenses are zero and the project rightly does not ask it (stage14.sc.basic, completed: project $0.00); every project-unknown record is a partial withholding person.educator_expenses, where the candidate's zero follows from eligibility false. No value differs. Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 1,672 of 4,728 comparisons (1,644 candidate-unknown, 28 project-unknown); on returns the full interview completes: 97 candidate-unknown. Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.hsa_forms — Number of Forms 8889 entered for this person
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"collection": "f8889", "field": "f8889.one", "op": "sum_over", "where": null}
-```
-
-Second:
-
-```json
-{"expression": {"collection": "f8889", "field": "one", "op": "sum_over", "where": null}, "invalid_model_types": [{"line": "person.hsa_forms", "message": "person.person.hsa_forms: reference 'one' does not resolve"}]}
-```
-
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line (person.hsa_forms) is one of them, so this ruling adjudicates the declaration, not the tax reading. By reading, with the prefix restored it is the project's expression or the same quantity; scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record) shows no difference on any record. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Status: **AGREE**
 
 ### person.hsa_split — This persons Form 8889 uses the spouse rule of line 6
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"collection": "f8889", "field": "f8889.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "f8889.last_month"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "f8889.dec_coverage"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "family"}, {"input": "f8889.dec_coverage"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"args": [{"const": "none"}, {"input": "f8889.dec_coverage"}], "test": "eq"}, {"args": [{"const": true}, {"input": "f8889.last_month"}], "test": "ne"}], "test": "any"}, {"args": [{"const": 0, "type": "Count"}, {"input": "f8889.months_family"}], "test": "lt"}], "test": "all"}], "test": "any"}, {"args": [{"const": true}, {"ref": "household.married"}], "test": "eq"}], "test": "all"}, {"args": [{"const": 2, "type": "Count"}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"const": 0, "type": "Count"}, {"collection": "f8889", "field": "f8889.one", "op": "sum_over", "where": null}], "test": "lt"}}], "test": "eq"}], "test": "all"}}
-```
-
-Second:
-
-```json
-{"expression": {"collection": "f8889", "field": "one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "f8889.last_month"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "f8889.dec_coverage"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "family"}, {"input": "f8889.dec_coverage"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"args": [{"const": "none"}, {"input": "f8889.dec_coverage"}], "test": "eq"}, {"args": [{"const": true}, {"input": "f8889.last_month"}], "test": "ne"}], "test": "any"}, {"args": [{"const": 0, "type": "Count"}, {"input": "f8889.months_family"}], "test": "lt"}], "test": "all"}], "test": "any"}, {"args": [{"const": true}, {"ref": "household.married"}], "test": "eq"}], "test": "all"}, {"args": [{"const": 2, "type": "Count"}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"const": 0, "type": "Count"}, {"collection": "f8889", "field": "f8889.one", "op": "sum_over", "where": null}], "test": "lt"}}], "test": "eq"}], "test": "all"}}, "invalid_model_types": [{"line": "person.hsa_split", "message": "person.person.hsa_split: reference 'one' does not resolve"}]}
-```
-
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line (person.hsa_split) is one of them, so this ruling adjudicates the declaration, not the tax reading. By reading, with the prefix restored it is the project's expression or the same quantity; scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record) shows no difference on any record. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Status: **AGREE**
 
 ### person.hsa_agreed — This persons Form 8889 uses an agreed allocation under the spouse rule of line 6
 Status: **DISAGREE**
@@ -184,10 +111,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"collection": "f8889", "field": "one", "op": "sum_over", "where": {"args": [{"const": "agreed"}, {"ref": "f8889.allocation"}], "test": "eq"}}, "invalid_model_types": [{"line": "person.hsa_agreed", "message": "person.person.hsa_agreed: reference 'one' does not resolve"}]}
+{"collection": "f8889", "field": "f8889.one", "op": "sum_over", "where": {"args": [{"const": "agreed"}, {"ref": "f8889.allocation"}], "test": "eq"}}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line (person.hsa_agreed) is one of them, so this ruling adjudicates the declaration, not the tax reading. By reading, as in fix round 3: forms with f8889.allocation agreed, without the spouse-rule filter; the allocation is asked only within the spouse rule and household.hsa_agreed_count is read only on split forms. A scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record) differs on 253 refused-return records (project 0 against 1 on forms outside the rule) and on 11 completed ones that ask the allocation outside the rule (stage13.hsa_one_spouse_family, stage16.small.s4). Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. i8889 p. 7, Line 6: "Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025, use the following rules to figure the amount on line 6". As in fix round 4: Forms 8889 with f8889.allocation agreed, without the spouse-rule filter (f8889.split); the allocation is asked only within the rule. Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 294 of 4,728 comparisons (253 value, 41 candidate-unknown); on returns the full interview completes: none (project 0 against 1 on forms outside the rule, classm.f8889.6.deepseek; the unknowns ask the allocation outside the rule, stage11.hsa.family_55). Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.hsa_step1 — This persons Step 1 limit under the spouse rule of line 6
 Status: **DISAGREE**
@@ -201,10 +128,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"collection": "f8889", "field": "step1", "op": "sum_over", "where": null}, "invalid_model_types": [{"line": "person.hsa_step1", "message": "person.person.hsa_step1: reference 'step1' does not resolve"}]}
+{"collection": "f8889", "field": "f8889.step1", "op": "sum_over", "where": null}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line (person.hsa_step1) is one of them, so this ruling adjudicates the declaration, not the tax reading. By reading, as in fix round 3: the sum of f8889.step1 over all of the person's forms; it feeds only household.hsa_step1_sum, read only in f8889.allocation_bad on a split form, where the two sums are equal. A scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record) differs on non-split forms where the project's line is $0.00 (129 completed, for example classm.s3.3.deepseek $0.00 against $712.50), which reach no printed amount. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. i8889 p. 7, Line 6, Step 1: "Refigure the contribution limit that would have been entered on line 5 if you had entered family coverage" (within the spouse rule quoted above). As in fix round 4: the sum of f8889.step1 over all the person's forms, without the spouse-rule filter; it feeds household.hsa_step1_sum, read only in f8889.allocation_bad on a split form. Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 288 of 4,728 comparisons (285 value, 3 candidate-unknown); on returns the full interview completes: 127 value (classm.s3.3.deepseek $0.00 against $712.50, a form outside the rule; no printed amount reached). Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.hsa_share — This persons part of the Step 1 limit under the spouse rule of line 6
 Status: **DISAGREE**
@@ -218,10 +145,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"collection": "f8889", "field": "share", "op": "sum_over", "where": null}, "invalid_model_types": [{"line": "person.hsa_share", "message": "person.person.hsa_share: reference 'share' does not resolve"}]}
+{"collection": "f8889", "field": "f8889.share", "op": "sum_over", "where": null}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line (person.hsa_share) is one of them, so this ruling adjudicates the declaration, not the tax reading. By reading, as in fix round 3: it sums f8889.share, the published field carrying the f8889.allocation_bad refusal whose test reads household.hsa_share_sum, which sums this line: a cycle ("cycle at household.hsa_share_sum" in the scratch evaluation), and without the spouse-rule filter it also differs on non-split forms (127 completed, for example classm.s3.3.deepseek $0.00 against $356.25). The interface gave f8889.share_raw and f8889.share by id and type only (fix round 3's interface gap). Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. i8889 p. 7, Line 6, Step 2: "Divide the refigured contribution limit from Step 1 equally between you and your spouse, unless you both agree on a different allocation". As in fix round 4: it sums f8889.share, the published field carrying the f8889.allocation_bad refusal whose test reads household.hsa_share_sum, which sums this line: a cycle ("cycle at household.hsa_share_sum", classm.f8889.6.deepseek), and without the spouse-rule filter it differs on non-split forms (classm.s3.3.deepseek $0.00 against $356.25, completed). Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 600 of 4,728 comparisons (296 candidate-unknown, 274 value, 30 candidate-refuses); on returns the full interview completes: 127 value. The interface gave f8889.share_raw and f8889.share by id and type only (the interface gap ruled in the Claude log). Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.hsa_deduction — Form 8889 line 13 for this person
 Status: **DISAGREE**
@@ -235,10 +162,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"collection": "f8889", "field": "line13", "op": "sum_over", "where": null}, "invalid_model_types": [{"line": "person.hsa_deduction", "message": "person.person.hsa_deduction: reference 'line13' does not resolve"}]}
+{"expression": {"collection": "f8889", "field": "f8889.line13", "op": "sum_over", "where": null}, "invalid_model_types": [{"line": "person.hsa_deduction", "message": "person.person.__type_gate_0: collection reference requires sum_over"}, {"line": "person.hsa_deduction", "message": "person.person.__type_gate_0: comparison operands have incompatible types"}]}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line (person.hsa_deduction) is one of them, so this ruling adjudicates the declaration, not the tax reading. By reading, the sum of f8889.line13, the project's expression; scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record) differs only on stage13.hsa_agreed_all_to_you (completed), where the reply's person.hsa_share cycle reaches it, and on refused returns. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types"; this line is one of them (its refusal declaration names f8889.unsupported, a field of the per-person f8889 collection, as a person-level gate: "collection reference requires sum_over"), so this ruling adjudicates the declaration, not the tax reading. By reading, the expression is the project's, the sum of f8889.line13 (i8889 p. 4: "Combine the amounts on line 13 of both Forms 8889 and enter this amount on Schedule 1 (Form 1040), line 13"); Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 6 of 4,728 comparisons (5 project-refuses, 1 candidate-unknown); on returns the full interview completes: none (stage13.hsa_agreed_all_to_you, incomplete: the reply's person.hsa_share cycle reaches it; the project refusals are the cited person.hsa_repeated, i8889 p. 3, and f8889.allocation_bad on stage13.refuse.hsa_over_allocated and stage13.refuse.hsa_two_forms). Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.hsa_taxable — Form 8889 line 16 for this person
 Status: **DISAGREE**
@@ -252,10 +179,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"collection": "f8889", "field": "line16", "op": "sum_over", "where": null}, "invalid_model_types": [{"line": "person.hsa_taxable", "message": "person.person.hsa_taxable: reference 'line16' does not resolve"}]}
+{"expression": {"collection": "f8889", "field": "f8889.line16", "op": "sum_over", "where": null}, "invalid_model_types": [{"line": "person.hsa_taxable", "message": "person.person.__type_gate_1: collection reference requires sum_over"}, {"line": "person.hsa_taxable", "message": "person.person.__type_gate_1: comparison operands have incompatible types"}]}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line (person.hsa_taxable) is one of them, so this ruling adjudicates the declaration, not the tax reading. By reading, with the prefix restored it is the project's expression or the same quantity; scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record) shows no difference on any record. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types"; this line is one of them (its refusal declaration names f8889.unsupported, a field of the per-person f8889 collection, as a person-level gate: "collection reference requires sum_over"), so this ruling adjudicates the declaration, not the tax reading. By reading, the expression is the project's, the sum of f8889.line16 (f8889 line 16: "Taxable HSA distributions. Subtract line 15 from line 14c. If zero or less, enter -0-"); Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation shows no difference on any of its 4,728 comparisons. Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.hsa_addtax — Form 8889 line 17b for this person
 Status: **DISAGREE**
@@ -269,44 +196,16 @@ Project:
 Second:
 
 ```json
-{"expression": {"collection": "f8889", "field": "line17b", "op": "sum_over", "where": null}, "invalid_model_types": [{"line": "person.hsa_addtax", "message": "person.person.hsa_addtax: reference 'line17b' does not resolve"}]}
+{"expression": {"collection": "f8889", "field": "f8889.line17b", "op": "sum_over", "where": null}, "invalid_model_types": [{"line": "person.hsa_addtax", "message": "person.person.__type_gate_2: collection reference requires sum_over"}, {"line": "person.hsa_addtax", "message": "person.person.__type_gate_2: comparison operands have incompatible types"}]}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line (person.hsa_addtax) is one of them, so this ruling adjudicates the declaration, not the tax reading. By reading, with the prefix restored it is the project's expression or the same quantity; scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record) shows no difference on any record. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types"; this line is one of them (its refusal declaration names f8889.unsupported, a field of the per-person f8889 collection, as a person-level gate: "collection reference requires sum_over"), so this ruling adjudicates the declaration, not the tax reading. By reading, the expression is the project's, the sum of f8889.line17b (f8889 line 17b: "Also, include this amount in the total on Schedule 2 (Form 1040), Part II, line 17c"); Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation shows no difference on any of its 4,728 comparisons. Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.tip_employers — Number of employers that paid this person qualified tips
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"collection": "tipjob", "field": "tipjob.one", "op": "sum_over", "where": null}
-```
-
-Second:
-
-```json
-{"expression": {"collection": "tipjob", "field": "one", "op": "sum_over", "where": null}, "invalid_model_types": [{"line": "person.tip_employers", "message": "person.person.tip_employers: reference 'one' does not resolve"}]}
-```
-
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line (person.tip_employers) is one of them, so this ruling adjudicates the declaration, not the tax reading. By reading, with the prefix restored it is the project's expression or the same quantity; scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record) shows no difference on any record. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Status: **AGREE**
 
 ### person.tip_total — This person's worksheet column (d) total
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"collection": "tipjob", "field": "tipjob.col_d", "op": "sum_over", "where": null}
-```
-
-Second:
-
-```json
-{"expression": {"collection": "tipjob", "field": "col_d", "op": "sum_over", "where": null}, "invalid_model_types": [{"line": "person.tip_total", "message": "person.person.tip_total: reference 'col_d' does not resolve"}]}
-```
-
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line (person.tip_total) is one of them, so this ruling adjudicates the declaration, not the tax reading. By reading, with the prefix restored it is the project's expression or the same quantity; scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record) shows no difference on any record. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Status: **AGREE**
 
 ### person.tip_reported — This person's worksheet column (b) total
 Status: **DISAGREE**
@@ -320,78 +219,22 @@ Project:
 Second:
 
 ```json
-{"expression": {"collection": "tipjob", "field": "amount", "op": "sum_over", "where": null}, "invalid_model_types": [{"line": "person.tip_reported", "message": "person.person.tip_reported: reference 'amount' does not resolve"}]}
+{"collection": "tipjob", "field": "tipjob.col_c", "op": "sum_over", "where": null}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line (person.tip_reported) is one of them, so this ruling adjudicates the declaration, not the tax reading. By reading, with the prefix restored it is the project's expression or the same quantity; scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record) shows no difference on any record. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. i1040gi p. 104, Qualified Tips From More Than One Employer Worksheet: column (b) "Amount of qualified tips reported by this employer on Form W-2, or reported by you to this employer on Form(s) 4070", column (c) "Qualified tips reported on Form 4137, column 1(c), for this employer". The project's line is the column (b) total (tipjob.amount), read by s1a.tip_reported; the reply changed: it sums column (c) (tipjob.col_c, the Form 4137 amount, zero in the project and refused at s2.other). Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 381 of 4,728 comparisons (306 value, 70 candidate-refuses, 5 project-refuses); on returns the full interview completes: 1 value (stage14.sch1a.tips_with_sc, completed: $8,000.00 against $0.00; the 70 candidate refusals are s2.other reached through col_c on refused returns). Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.ot_employers — Number of employers that paid this person qualified overtime compensation
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"collection": "otjob", "field": "otjob.one", "op": "sum_over", "where": null}
-```
-
-Second:
-
-```json
-{"expression": {"collection": "otjob", "field": "one", "op": "sum_over", "where": null}, "invalid_model_types": [{"line": "person.ot_employers", "message": "person.person.ot_employers: reference 'one' does not resolve"}]}
-```
-
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line (person.ot_employers) is one of them, so this ruling adjudicates the declaration, not the tax reading. By reading, with the prefix restored it is the project's expression or the same quantity; scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record) shows no difference on any record. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Status: **AGREE**
 
 ### person.ot_total — This person's overtime worksheet column (b) total
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"collection": "otjob", "field": "otjob.col_b", "op": "sum_over", "where": null}
-```
-
-Second:
-
-```json
-{"expression": {"collection": "otjob", "field": "col_b", "op": "sum_over", "where": null}, "invalid_model_types": [{"line": "person.ot_total", "message": "person.person.ot_total: reference 'col_b' does not resolve"}]}
-```
-
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line (person.ot_total) is one of them, so this ruling adjudicates the declaration, not the tax reading. By reading, with the prefix restored it is the project's expression or the same quantity; scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record) shows no difference on any record. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Status: **AGREE**
 
 ### person.box1 — Total W-2 box 1 for this person
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"collection": "w2", "field": "w2.box1", "op": "sum_over", "where": null}
-```
-
-Second:
-
-```json
-{"expression": {"collection": "w2", "field": "box1", "op": "sum_over", "where": null}, "invalid_model_types": [{"line": "person.box1", "message": "person.person.box1: reference 'box1' does not resolve"}]}
-```
-
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line (person.box1) is one of them, so this ruling adjudicates the declaration, not the tax reading. By reading, with the prefix restored it is the project's expression or the same quantity; scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record) shows no difference on any record. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Status: **AGREE**
 
 ### person.box2 — Total W-2 box 2 for this person
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"collection": "w2", "field": "w2.box2", "op": "sum_over", "where": null}
-```
-
-Second:
-
-```json
-{"expression": {"collection": "w2", "field": "box2", "op": "sum_over", "where": null}, "invalid_model_types": [{"line": "person.box2", "message": "person.person.box2: reference 'box2' does not resolve"}]}
-```
-
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line (person.box2) is one of them, so this ruling adjudicates the declaration, not the tax reading. By reading, with the prefix restored it is the project's expression or the same quantity; scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record) shows no difference on any record. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Status: **AGREE**
 
 ### person.ira_amount_a — IRA distributions on this person's Forms 1099-R (line 4a amounts)
 Status: **DISAGREE**
@@ -405,10 +248,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"collection": "retirement", "field": "amount_a", "op": "sum_over", "where": {"args": [{"const": "traditional_ira"}, {"ref": "retirement.account"}], "test": "eq"}}, "invalid_model_types": [{"line": "person.ira_amount_a", "message": "person.person.ira_amount_a: reference 'amount_a' does not resolve"}]}
+{"collection": "retirement", "field": "retirement.amount_a", "op": "sum_over", "where": {"args": [{"args": [{"const": "roth_ira"}, {"ref": "retirement.account"}], "test": "eq"}, {"args": [{"const": "traditional_ira"}, {"ref": "retirement.account"}], "test": "eq"}], "test": "any"}}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line (person.ira_amount_a) is one of them, so this ruling adjudicates the declaration, not the tax reading. By reading, it sums line 4a amounts over entries whose account is traditional_ira, where the project sums every IRA entry (retirement.is_ira); A scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record) differs on 10 completed generated returns (generated 90, 181, 224: for example $24,237.07 against $0.00), IRA entries whose account is not traditional_ira. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: representation; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. i1040gi pp. 26-30, Lines 4a, 4b, 5a and 5b; retirement.account is an input with exactly three values (traditional_ira, roth_ira, plan) and retirement.is_ira is account other than plan, so the reply's account filter (traditional_ira or roth_ira, or plan) selects the same entries as the project's is_ira test: the same line 4a amounts of IRA entries. The reply changed from fix round 4 (it now includes Roth IRA entries). Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation shows no difference on any of its 4,728 comparisons. Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.ira_taxable — Taxable IRA distributions on this person's Forms 1099-R (line 4b amounts)
 Status: **DISAGREE**
@@ -422,10 +265,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"collection": "retirement", "field": "ira_taxable", "op": "sum_over", "where": null}, "invalid_model_types": [{"line": "person.ira_taxable", "message": "person.person.ira_taxable: reference 'ira_taxable' does not resolve"}]}
+{"collection": "retirement", "field": "retirement.ira_taxable", "op": "sum_over", "where": {"args": [{"args": [{"const": "roth_ira"}, {"ref": "retirement.account"}], "test": "eq"}, {"args": [{"const": "traditional_ira"}, {"ref": "retirement.account"}], "test": "eq"}], "test": "any"}}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line (person.ira_taxable) is one of them, so this ruling adjudicates the declaration, not the tax reading. By reading, it sums retirement.ira_taxable over every entry, where the project sums retirement.taxable over IRA entries (retirement.is_ira). A scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record) differs on 20 completed records (classm.f8962.2 $0.00 against $44,119.00; classm.ira.2 $7,514.00 against $28,257.00; stage21.blind.e1 $5,123.45 against $7,580.23). Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: scope; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. i1040gi p. 27, line 4b: "figure the taxable amount of each distribution and enter the total of the taxable amounts on line 4b". The reply sums retirement.ira_taxable over IRA entries; the project sums retirement.taxable over the same entries, which on an IRA entry is retirement.ira_taxable with the cited refusals of retirement.taxable (retirement.special, retirement.bad_code, retirement.screen_refused; i1040gi pp. 27-30 and f1099r box 7). Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 12 of 4,728 comparisons (11 project-refuses, 1 project-unknown); on returns the full interview completes: none: every difference is such a refusal (classm.otjob.1, stage10.refuse.roth_not_q) or a record where the project needs the distribution code for that refusal (stage10.ira.roth_code_unanswered). No value differs. Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.ira_rollovers — Number of this person's IRA distributions with a rollover
 Status: **DISAGREE**
@@ -439,10 +282,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"collection": "retirement", "field": "one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": 0}, {"alternatives": [{"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"input": "retirement.box1"}}, {"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"input": "retirement.rollover"}}], "op": "choose"}], "test": "lt"}], "test": "any"}, {"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "ne"}], "test": "all"}}, "invalid_model_types": [{"line": "person.ira_rollovers", "message": "person.person.ira_rollovers: reference 'one' does not resolve"}]}
+{"collection": "retirement", "field": "retirement.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": 0}, {"alternatives": [{"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"input": "retirement.box1"}}, {"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"input": "retirement.rollover"}}], "op": "choose"}], "test": "lt"}], "test": "any"}, {"args": [{"args": [{"const": "roth_ira"}, {"ref": "retirement.account"}], "test": "eq"}, {"args": [{"const": "traditional_ira"}, {"ref": "retirement.account"}], "test": "eq"}], "test": "any"}], "test": "all"}}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line (person.ira_rollovers) is one of them, so this ruling adjudicates the declaration, not the tax reading. By reading, with the prefix restored it is the project's expression or the same quantity; scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record) shows no difference on any record. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: representation; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. i1040gi pp. 26-30, Lines 4a, 4b, 5a and 5b; retirement.account is an input with exactly three values (traditional_ira, roth_ira, plan) and retirement.is_ira is account other than plan, so the reply's account filter (traditional_ira or roth_ira, or plan) selects the same entries as the project's is_ira test: the same IRA entries with a rollover. The reply changed from fix round 4 (it now includes Roth IRA entries). Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation shows no difference on any of its 4,728 comparisons. Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.plan_amount_a — Pension and annuity distributions on this person's Forms 1099-R (line 5a amounts)
 Status: **DISAGREE**
@@ -456,10 +299,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"collection": "retirement", "field": "amount_a", "op": "sum_over", "where": {"args": [{"const": "plan"}, {"ref": "retirement.account"}], "test": "eq"}}, "invalid_model_types": [{"line": "person.plan_amount_a", "message": "person.person.plan_amount_a: reference 'amount_a' does not resolve"}]}
+{"collection": "retirement", "field": "retirement.amount_a", "op": "sum_over", "where": {"args": [{"const": "plan"}, {"ref": "retirement.account"}], "test": "eq"}}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line (person.plan_amount_a) is one of them, so this ruling adjudicates the declaration, not the tax reading. By reading, with the prefix restored it is the project's expression or the same quantity; scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record) shows no difference on any record. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: representation; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. i1040gi pp. 26-30, Lines 4a, 4b, 5a and 5b; retirement.account is an input with exactly three values (traditional_ira, roth_ira, plan) and retirement.is_ira is account other than plan, so the reply's account filter (traditional_ira or roth_ira, or plan) selects the same entries as the project's is_ira test: the same line 5a amounts of plan entries. The reply changed from fix round 4 (it now includes Roth IRA entries). Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation shows no difference on any of its 4,728 comparisons. Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.plan_taxable — Taxable pension and annuity distributions on this person's Forms 1099-R (line 5b amounts)
 Status: **DISAGREE**
@@ -473,10 +316,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"collection": "retirement", "field": "plan_taxable", "op": "sum_over", "where": null}, "invalid_model_types": [{"line": "person.plan_taxable", "message": "person.person.plan_taxable: reference 'plan_taxable' does not resolve"}]}
+{"collection": "retirement", "field": "retirement.plan_taxable", "op": "sum_over", "where": {"args": [{"const": "plan"}, {"ref": "retirement.account"}], "test": "eq"}}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line (person.plan_taxable) is one of them, so this ruling adjudicates the declaration, not the tax reading. By reading, it sums retirement.plan_taxable, bypassing the refusals the project's operand retirement.taxable carries (as fix round 2's reply did). A scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record) differs on 48 completed records (classm.f5329.2 $0.00 against $25,190.00; classm.ira.2 $20,082.00 against $27,596.00) and the candidate computes where the project refuses at retirement special and bad_code (cited). Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: scope; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. i1040gi pp. 28-30, Lines 5a and 5b. The reply sums retirement.plan_taxable over plan entries; the project sums retirement.taxable over the same entries, which on a plan entry is retirement.plan_taxable with the cited refusals of retirement.taxable (retirement.bad_code, retirement.annuity_rollover; i1040gi p. 27, Exception 2, and the Simplified Method). The value differences of fix round 4 are gone. Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 7 of 4,728 comparisons (7 project-refuses); on returns the full interview completes: none (stage10.refuse.annuity_rollover, classm.f8959.1): refusals only. Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.plan_rollovers — Number of this person's pension distributions with a rollover
 Status: **DISAGREE**
@@ -490,27 +333,13 @@ Project:
 Second:
 
 ```json
-{"expression": {"collection": "retirement", "field": "one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": 0}, {"alternatives": [{"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"input": "retirement.box1"}}, {"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"input": "retirement.rollover"}}], "op": "choose"}], "test": "lt"}], "test": "any"}, {"args": [{"const": "plan"}, {"ref": "retirement.account"}], "test": "eq"}], "test": "all"}}, "invalid_model_types": [{"line": "person.plan_rollovers", "message": "person.person.plan_rollovers: reference 'one' does not resolve"}]}
+{"collection": "retirement", "field": "retirement.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": 0}, {"alternatives": [{"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"input": "retirement.box1"}}, {"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"input": "retirement.rollover"}}], "op": "choose"}], "test": "lt"}], "test": "any"}, {"args": [{"const": "plan"}, {"ref": "retirement.account"}], "test": "eq"}], "test": "all"}}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line (person.plan_rollovers) is one of them, so this ruling adjudicates the declaration, not the tax reading. By reading, with the prefix restored it is the project's expression or the same quantity; scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record) shows no difference on any record. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: representation; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. i1040gi pp. 26-30, Lines 4a, 4b, 5a and 5b; retirement.account is an input with exactly three values (traditional_ira, roth_ira, plan) and retirement.is_ira is account other than plan, so the reply's account filter (traditional_ira or roth_ira, or plan) selects the same entries as the project's is_ira test: the same plan entries with a rollover. The reply changed from fix round 4 (it now includes Roth IRA entries). Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation shows no difference on any of its 4,728 comparisons. Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.sav_dist — Distributions received in 2025 that Form 8880 line 4 counts, on this person's Forms 1099-R
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"collection": "retirement", "field": "retirement.sav_amount", "op": "sum_over", "where": null}
-```
-
-Second:
-
-```json
-{"expression": {"collection": "retirement", "field": "sav_amount", "op": "sum_over", "where": null}, "invalid_model_types": [{"line": "person.sav_dist", "message": "person.person.sav_dist: reference 'sav_amount' does not resolve"}]}
-```
-
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line (person.sav_dist) is one of them, so this ruling adjudicates the declaration, not the tax reading. By reading, with the prefix restored it is the project's expression or the same quantity; scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record) shows no difference on any record. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Status: **AGREE**
 
 ### person.medicare5 — Total W-2 box 5 for this person
 Status: **DISAGREE**
@@ -524,10 +353,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"collection": "w2", "field": "box5", "op": "sum_over", "where": null}, "invalid_model_types": [{"line": "person.medicare5", "message": "person.person.medicare5: reference 'box5' does not resolve"}]}
+{"param": "medicare.threshold"}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line (person.medicare5) is one of them, so this ruling adjudicates the declaration, not the tax reading. By reading, the sum of W-2 Medicare wages, the project's amount, without the project's railroad refusal (person.rrta, cited Form 8959 lines 1 to 7: RRTA compensation outside the supported path); A scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record) differs only by that cited refusal on refused returns and by records where the project needs the railroad answer (incomplete or refused returns). Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. Form 8959 (2025), line 1: "Medicare wages and tips from Form W-2, box 5"; the project's person.medicare5 is the total of this person's W-2 box 5 (published label "Total W-2 box 5 for this person"), refused for railroad compensation (person.rrta, cited). The reply changed: it enters the Additional Medicare Tax threshold (medicare.threshold, Form 8959 line 5), a different quantity. Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 4,629 of 4,728 comparisons (4,387 value, 224 project-unknown, 18 project-refuses); on returns the full interview completes: 1,013 value (classm.f8889.1.deepseek spouse, completed: $179,819.00 against $250,000.00). Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.medicare6 — Total W-2 box 6 for this person
 Status: **DISAGREE**
@@ -541,95 +370,25 @@ Project:
 Second:
 
 ```json
-{"expression": {"collection": "w2", "field": "box6", "op": "sum_over", "where": null}, "invalid_model_types": [{"line": "person.medicare6", "message": "person.person.medicare6: reference 'box6' does not resolve"}]}
+{"from": {"collection": "w2", "field": "w2.box5", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"param": "medicare.threshold"}}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line (person.medicare6) is one of them, so this ruling adjudicates the declaration, not the tax reading. By reading, the sum of W-2 Medicare wages, the project's amount, without the project's railroad refusal (person.rrta, cited Form 8959 lines 1 to 7: RRTA compensation outside the supported path); A scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record) differs only by that cited refusal on refused returns and by records where the project needs the railroad answer (incomplete or refused returns). Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. Form 8959 (2025), line 19: "Medicare tax withheld from Form W-2, box 6"; the project's person.medicare6 is the total of this person's W-2 box 6 (published label "Total W-2 box 6 for this person"). The reply changed: Medicare wages over the threshold (its box 5 total less medicare.threshold, Form 8959 line 6), with a refusal naming f8959.unsupported. Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 3,437 of 4,728 comparisons (3,032 value, 333 candidate-refuses, 49 project-unknown, 18 project-refuses, 5 candidate-unknown); on returns the full interview completes: 724 value (classm.f8889.1.deepseek spouse, completed: $2,607.00 against $0.00; the 333 candidate refusals are f8959.unsupported on refused returns). Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.sc_count — Number of Schedules C for this person
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}
-```
-
-Second:
-
-```json
-{"expression": {"collection": "sc", "field": "one", "op": "sum_over", "where": null}, "invalid_model_types": [{"line": "person.sc_count", "message": "person.person.sc_count: reference 'one' does not resolve"}]}
-```
-
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line (person.sc_count) is one of them, so this ruling adjudicates the declaration, not the tax reading. By reading, with the prefix restored it is the project's expression or the same quantity; scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record) shows no difference on any record. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Status: **AGREE**
 
 ### person.ho_count — Number of this person's Schedules C that claim the business use of the home
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"collection": "sc", "field": "sc.one", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "sc.ho_uses"}], "test": "eq"}}
-```
-
-Second:
-
-```json
-{"expression": {"collection": "sc", "field": "one", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "sc.ho_uses"}], "test": "eq"}}, "invalid_model_types": [{"line": "person.ho_count", "message": "person.person.ho_count: reference 'one' does not resolve"}]}
-```
-
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line (person.ho_count) is one of them, so this ruling adjudicates the declaration, not the tax reading. By reading, with the prefix restored it is the project's expression or the same quantity; scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record) shows no difference on any record. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Status: **AGREE**
 
 ### person.mq_q4 — Mid-quarter test basis, fourth quarter, this person
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"collection": "sc", "field": "sc.mq_q4", "op": "sum_over", "where": null}
-```
-
-Second:
-
-```json
-{"expression": {"collection": "sc", "field": "mq_q4", "op": "sum_over", "where": null}, "invalid_model_types": [{"line": "person.mq_q4", "message": "person.person.mq_q4: reference 'mq_q4' does not resolve"}]}
-```
-
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line (person.mq_q4) is one of them, so this ruling adjudicates the declaration, not the tax reading. By reading, with the prefix restored it is the project's expression or the same quantity; scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record) shows no difference on any record. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Status: **AGREE**
 
 ### person.mq_total — Mid-quarter test basis, 2025, this person
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"collection": "sc", "field": "sc.mq_total", "op": "sum_over", "where": null}
-```
-
-Second:
-
-```json
-{"expression": {"collection": "sc", "field": "mq_total", "op": "sum_over", "where": null}, "invalid_model_types": [{"line": "person.mq_total", "message": "person.person.mq_total: reference 'mq_total' does not resolve"}]}
-```
-
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line (person.mq_total) is one of them, so this ruling adjudicates the declaration, not the tax reading. By reading, with the prefix restored it is the project's expression or the same quantity; scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record) shows no difference on any record. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Status: **AGREE**
 
 ### person.cost179 — Cost of section 179 property, this person
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"collection": "sc", "field": "sc.cost179", "op": "sum_over", "where": null}
-```
-
-Second:
-
-```json
-{"expression": {"collection": "sc", "field": "cost179", "op": "sum_over", "where": null}, "invalid_model_types": [{"line": "person.cost179", "message": "person.person.cost179: reference 'cost179' does not resolve"}]}
-```
-
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line (person.cost179) is one of them, so this ruling adjudicates the declaration, not the tax reading. By reading, with the prefix restored it is the project's expression or the same quantity; scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record) shows no difference on any record. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Status: **AGREE**
 
 ### person.s179_nonlisted — Section 179 elected, other than listed property, this person
 Status: **DISAGREE**
@@ -643,12 +402,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"collection": "sc", "field": "s179_allowed", "op": "sum_over", "where": null}, "invalid_model_types": [{"line": "person.s179_nonlisted", "message": "person.person.s179_nonlisted: reference 's179_allowed' does not resolve"}]}
+{"ref": "s179.line7"}
 ```
 
-Second transcription's note: The child Schedule C fields do not split listed from nonlisted section 179; this reading puts the allowed section 179 amount in nonlisted property.
-
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line (person.s179_nonlisted) is one of them, so this ruling adjudicates the declaration, not the tax reading. By reading, the cost of the businesses' section 179 property less its listed figure, the cost rather than the elected amount (published as sc.f6; i4562 p. 5, Line 6, "Column (c)—Elected cost. Enter the amount you elect to expense"). On returns with a Schedule C the reply's graph is circular: its person.income179 (the section 179 business income limit) sums sc.line31, which is after the section 179 deduction that the limit governs (i4562 p. 5, Line 11: "computed without regard to any section 179 expense deduction"), so the scratch evaluation reports "cycle at sc.s179_allowed" on every such return (343 completed records). Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. i4562 p. 5, Line 6, "Column (c)—Elected cost. Enter the amount you elect to expense"; the project sums each business's elected cost other than listed property (sc.f6). The reply changed: it copies s179.line7, a line of the Form 4562 section 179 computation that is itself built from this person's section 179 lines, so its graph is circular on every return ("cycle at person[taxpayer].s179_nonlisted", "cycle at s179.line7"). Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 4,706 of 4,728 comparisons (4,706 candidate-unknown); on returns the full interview completes: 1,013 candidate-unknown. Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.s179_listed — Section 179 elected on listed property, this person
 Status: **DISAGREE**
@@ -662,12 +419,10 @@ Project:
 Second:
 
 ```json
-{"const": 0}
+{"ref": "s179.line6"}
 ```
 
-Second transcription's note: The child Schedule C fields do not split listed from nonlisted section 179; this reading puts listed property at zero.
-
-Ruling: interface gap; Not executable: the reply fails validation on 55 declarations (53 collection sums naming the field without its collection's prefix, for example person.hsa_forms: "reference 'one' does not resolve"; h_ss_room: "reference 'ss.base' does not resolve"; h_se_4a_pos: "declared NonNegDollars but the expression does not prove non-negativity"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. i4562 p. 5, Line 7: "Enter the amount that you elected to expense for listed property (defined earlier) on line 29 here." The reply changed: it now enters zero (its note: "The child Schedule C fields do not split listed from nonlisted section 179"), so listed property elected under section 179 is lost (A scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record): classm.eic.3 $10,918.00 against $0.00, stage14.veh.suv_179 $31,300.00 against $0.00, stage14.asset.listed_and_not $400.00 against $0.00; completed). The pages given omit the p. 5 line 7 instruction and sc.f29 was published by id and type only (as ruled since round 2). Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. i4562 p. 5, Line 7: "Enter the amount that you elected to expense for listed property (defined earlier) on line 29 here." The project sums sc.f29. The reply changed from fix round 4's zero (ruled interface gap there): it copies s179.line6, a line of the return's Form 4562 computation that reads this person's section 179 lines, so its graph is circular on every return ("cycle at s179.line6", "cycle at person[taxpayer].s179_nonlisted"); the interface published sc.f29, which the reply does not use. Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 4,706 of 4,728 comparisons (4,610 candidate-unknown, 96 project-refuses); on returns the full interview completes: 1,013 candidate-unknown; the project refusals are the cited vehicle screens (scveh low_use). Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.income179 — Business net profit or loss without section 179, this person
 Status: **DISAGREE**
@@ -681,27 +436,13 @@ Project:
 Second:
 
 ```json
-{"expression": {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, "invalid_model_types": [{"line": "person.income179", "message": "person.person.income179: reference 'line31' does not resolve"}]}
+{"of": [{"collection": "person", "field": "person.income179", "op": "sum_over", "where": null}, {"ref": "f1040.line1a"}], "op": "sum"}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line (person.income179) is one of them, so this ruling adjudicates the declaration, not the tax reading. By reading: On returns with a Schedule C the reply's graph is circular: its person.income179 (the section 179 business income limit) sums sc.line31, which is after the section 179 deduction that the limit governs (i4562 p. 5, Line 11: "computed without regard to any section 179 expense deduction"), so the scratch evaluation reports "cycle at sc.s179_allowed" on every such return (343 completed records). Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. i4562 p. 5, Line 11: "computed without regard to any section 179 expense deduction"; the project sums each business's profit or loss before section 179 (sc.line31_pre179). The reply changed: it copies s179.income, the return-level business income limit, which is built from this line, so its graph is circular on every return ("cycle at s179.income"). Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 4,706 of 4,728 comparisons (4,577 candidate-unknown, 125 project-refuses, 4 candidate-refuses); on returns the full interview completes: 1,013 candidate-unknown. Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.sc_total — This person's Schedule C net profit or loss (all businesses)
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}
-```
-
-Second:
-
-```json
-{"expression": {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, "invalid_model_types": [{"line": "person.sc_total", "message": "person.person.sc_total: reference 'line31' does not resolve"}]}
-```
-
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line (person.sc_total) is one of them, so this ruling adjudicates the declaration, not the tax reading. By reading: On returns with a Schedule C the reply's graph is circular: its person.income179 (the section 179 business income limit) sums sc.line31, which is after the section 179 deduction that the limit governs (i4562 p. 5, Line 11: "computed without regard to any section 179 expense deduction"), so the scratch evaluation reports "cycle at sc.s179_allowed" on every such return (343 completed records). Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Status: **AGREE**
 
 ### person.se_line6 — Schedule SE line 6 for this person
 Status: **DISAGREE**
@@ -715,10 +456,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"const": 0}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"const": 0}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"const": 0}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "invalid_model_types": [{"line": "person.sc_total", "message": "person.person.sc_total: reference 'line31' does not resolve"}, {"line": "h_se_4a_pos", "message": "person.h_se_4a_pos: declared NonNegDollars but the expression does not prove non-negativity"}]}
+{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line reads h_se_4a_pos, person.sc_total, which are among them, so this ruling adjudicates the declaration, not the tax reading. By reading, the se definition bound to its person.sc_total and person.wages, without the project's se_screen and railroad refusals (person.se_screened, person.se_rrta, cited i1040sse pp. 1-5 and Schedule SE line 8a). On returns with a Schedule C the reply's graph is circular: its person.income179 (the section 179 business income limit) sums sc.line31, which is after the section 179 deduction that the limit governs (i4562 p. 5, Line 11: "computed without regard to any section 179 expense deduction"), so the scratch evaluation reports "cycle at sc.s179_allowed" on every such return (343 completed records). Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. i1040sse p. 1-5 and Schedule SE (2025) lines 6, 12 and 13; the project computes the se definition on person.se_line2 and person.wages for a person with a Schedule C (zero otherwise) and refuses railroad compensation at person.se_rrta (cited). The reply binds the definition to its own Schedule C total (sum of sc.result) and W-2 wages for every person, and declares the inputs person.se_screen and person.rrta as refusals, so it asks se_screen of every person, an answer the source does not need for a person without self-employment income, and refuses this person's Schedule SE lines wherever it is Yes, where the project enters zero (classm.f5695.2, completed). Its Schedule C total reads sc.result, which goes through the section 179 computation that reads the reply's circular section 179 lines, so on returns with a Schedule C its graph is circular ("cycle at s179.line6"; classm.f4952.1.deepseek, completed: project $134,439.44 line 6). Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 2,493 of 4,728 comparisons (2,458 candidate-unknown, 25 candidate-refuses, 10 project-refuses); on returns the full interview completes: 355 candidate-unknown, 3 candidate-refuses. Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.se_line12 — Schedule SE line 12 (self-employment tax) for this person
 Status: **DISAGREE**
@@ -732,10 +473,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"const": 0}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"const": 0}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"const": 0}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"const": 0}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"const": 0}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"const": 0}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"ref": "ss.base"}, "op": "subtract_floor0", "take": {"collection": "w2", "field": "wages", "op": "sum_over", "where": null}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "invalid_model_types": [{"line": "person.sc_total", "message": "person.person.sc_total: reference 'line31' does not resolve"}, {"line": "h_se_4a_pos", "message": "person.h_se_4a_pos: declared NonNegDollars but the expression does not prove non-negativity"}, {"line": "h_ss_wages", "message": "person.h_ss_wages: reference 'wages' does not resolve"}, {"line": "h_ss_room", "message": "person.h_ss_room: reference 'ss.base' does not resolve"}]}
+{"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"collection": "w2", "field": "w2.wages", "op": "sum_over", "where": null}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line reads h_se_4a_pos, h_ss_room, h_ss_wages and others, which are among them, so this ruling adjudicates the declaration, not the tax reading. By reading, the se definition bound to its person.sc_total and person.wages, without the project's se_screen and railroad refusals (person.se_screened, person.se_rrta, cited i1040sse pp. 1-5 and Schedule SE line 8a). On returns with a Schedule C the reply's graph is circular: its person.income179 (the section 179 business income limit) sums sc.line31, which is after the section 179 deduction that the limit governs (i4562 p. 5, Line 11: "computed without regard to any section 179 expense deduction"), so the scratch evaluation reports "cycle at sc.s179_allowed" on every such return (343 completed records). Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. i1040sse p. 1-5 and Schedule SE (2025) lines 6, 12 and 13; the project computes the se definition on person.se_line2 and person.wages for a person with a Schedule C (zero otherwise) and refuses railroad compensation at person.se_rrta (cited). The reply binds the definition to its own Schedule C total (sum of sc.result) and W-2 wages for every person, and declares the inputs person.se_screen and person.rrta as refusals, so it asks se_screen of every person, an answer the source does not need for a person without self-employment income, and refuses this person's Schedule SE lines wherever it is Yes, where the project enters zero (classm.f5695.2, completed). Its Schedule C total reads sc.result, which goes through the section 179 computation that reads the reply's circular section 179 lines, so on returns with a Schedule C its graph is circular ("cycle at s179.line6"; classm.f4952.1.deepseek, completed: project $134,439.44 line 6). Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 2,493 of 4,728 comparisons (2,458 candidate-unknown, 25 candidate-refuses, 10 project-refuses); on returns the full interview completes: 355 candidate-unknown, 3 candidate-refuses. Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.se_line13 — Schedule SE line 13 (deduction for one-half of self-employment tax) for this person
 Status: **DISAGREE**
@@ -749,10 +490,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"amount": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"const": 0}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"const": 0}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"const": 0}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"const": 0}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"const": 0}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"const": 0}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"ref": "ss.base"}, "op": "subtract_floor0", "take": {"collection": "w2", "field": "wages", "op": "sum_over", "where": null}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}, "invalid_model_types": [{"line": "person.sc_total", "message": "person.person.sc_total: reference 'line31' does not resolve"}, {"line": "h_se_4a_pos", "message": "person.h_se_4a_pos: declared NonNegDollars but the expression does not prove non-negativity"}, {"line": "h_ss_wages", "message": "person.h_ss_wages: reference 'wages' does not resolve"}, {"line": "h_ss_room", "message": "person.h_ss_room: reference 'ss.base' does not resolve"}]}
+{"amount": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"collection": "w2", "field": "w2.wages", "op": "sum_over", "where": null}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line reads h_se_4a_pos, h_ss_room, h_ss_wages and others, which are among them, so this ruling adjudicates the declaration, not the tax reading. By reading, the se definition bound to its person.sc_total and person.wages, without the project's se_screen and railroad refusals (person.se_screened, person.se_rrta, cited i1040sse pp. 1-5 and Schedule SE line 8a). On returns with a Schedule C the reply's graph is circular: its person.income179 (the section 179 business income limit) sums sc.line31, which is after the section 179 deduction that the limit governs (i4562 p. 5, Line 11: "computed without regard to any section 179 expense deduction"), so the scratch evaluation reports "cycle at sc.s179_allowed" on every such return (343 completed records). Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. i1040sse p. 1-5 and Schedule SE (2025) lines 6, 12 and 13; the project computes the se definition on person.se_line2 and person.wages for a person with a Schedule C (zero otherwise) and refuses railroad compensation at person.se_rrta (cited). The reply binds the definition to its own Schedule C total (sum of sc.result) and W-2 wages for every person, and declares the inputs person.se_screen and person.rrta as refusals, so it asks se_screen of every person, an answer the source does not need for a person without self-employment income, and refuses this person's Schedule SE lines wherever it is Yes, where the project enters zero (classm.f5695.2, completed). Its Schedule C total reads sc.result, which goes through the section 179 computation that reads the reply's circular section 179 lines, so on returns with a Schedule C its graph is circular ("cycle at s179.line6"; classm.f4952.1.deepseek, completed: project $134,439.44 line 6). Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 2,493 of 4,728 comparisons (2,458 candidate-unknown, 25 candidate-refuses, 10 project-refuses); on returns the full interview completes: 355 candidate-unknown, 3 candidate-refuses. Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.s16 — Schedule 1 line 16 for this person
 Status: **DISAGREE**
@@ -766,44 +507,16 @@ Project:
 Second:
 
 ```json
-{"expression": {"alternatives": [{"guard": {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "sep"}, {"input": "person.plan"}], "test": "eq"}, "then": {"of": [{"input": "person.sep_contrib"}, {"line": "Step 21"}], "op": "smaller_of"}}, {"guard": {"args": [{"const": "simple"}, {"input": "person.plan"}], "test": "eq"}, "then": {"of": [{"input": "person.simple_deferral"}, {"input": "person.simple_employer"}], "op": "sum"}}], "op": "choose"}, "invalid_model_types": [{"line": "person.sc_total", "message": "person.person.sc_total: reference 'line31' does not resolve"}, {"line": "h_se_4a_pos", "message": "person.h_se_4a_pos: declared NonNegDollars but the expression does not prove non-negativity"}, {"line": "h_ss_wages", "message": "person.h_ss_wages: reference 'wages' does not resolve"}, {"line": "h_ss_room", "message": "person.h_ss_room: reference 'ss.base' does not resolve"}]}
+{"alternatives": [{"guard": {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, "then": {"line": "zero"}}, {"guard": {"args": [{"const": "sep"}, {"input": "person.plan"}], "test": "eq"}, "then": {"of": [{"input": "person.sep_contrib"}, {"line": "Step 21"}], "op": "smaller_of"}}, {"guard": {"args": [{"const": "simple"}, {"input": "person.plan"}], "test": "eq"}, "then": {"of": [{"input": "person.simple_deferral"}, {"input": "person.simple_employer"}], "op": "sum"}}], "op": "choose"}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line reads h_se_4a_pos, h_ss_room, h_ss_wages and others, which are among them, so this ruling adjudicates the declaration, not the tax reading. By reading, it chooses on person.plan with no Schedule C gate, so it asks plan of a person with no Schedule C (placement; 729 completed records) and computes a SEP or SIMPLE amount for such a person where the project enters zero (A scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record): 73 completed records, classm.f1040.5 $0.00 against $2,053.00, classm.s3.4 $0.00 against $8,925.00, each supplying a plan for a person with no Schedule C); it also inherits the section 179 cycle on returns with a Schedule C. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. i1040gi p. 93, Schedule 1, line 16: "If you were self-employed or a partner, you may be able to take this". As in fix round 4: it chooses on person.plan with no Schedule C gate (the project enters zero without a Schedule C), now taking the SEP contribution limited to its Step 21 or the SIMPLE deferral plus employer contribution, without the project's cited refusals (person.plan_screened, person.simple_excess, person.sep_excess). It asks plan of a person with no Schedule C (stage14.joint.spouse_wages, completed) and computes an amount for such a person where the project enters zero (classm.f8889.1.deepseek spouse, completed: $0.00 against $2,952.00; a plan supplied with no Schedule C). Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 1,978 of 4,728 comparisons (1,512 candidate-unknown, 337 value, 127 project-refuses, 2 project-unknown); on returns the full interview completes: 196 value, 15 candidate-unknown. Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.positive_profits — Total of all net profits of this person's businesses (losses not included)
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"collection": "sc", "field": "sc.profit_pos", "op": "sum_over", "where": null}
-```
-
-Second:
-
-```json
-{"expression": {"collection": "sc", "field": "line31", "op": "sum_over", "where": {"args": [{"const": 0}, {"ref": "sc.line31"}], "test": "lt"}}, "invalid_model_types": [{"line": "person.positive_profits", "message": "person.person.positive_profits: reference 'line31' does not resolve"}]}
-```
-
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line (person.positive_profits) is one of them, so this ruling adjudicates the declaration, not the tax reading. By reading: On returns with a Schedule C the reply's graph is circular: its person.income179 (the section 179 business income limit) sums sc.line31, which is after the section 179 deduction that the limit governs (i4562 p. 5, Line 11: "computed without regard to any section 179 expense deduction"), so the scratch evaluation reports "cycle at sc.s179_allowed" on every such return (343 completed records). Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Status: **AGREE**
 
 ### person.sehi — Self-employed health insurance deduction, this person
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"collection": "sc", "field": "sc.f7206_line14", "op": "sum_over", "where": null}
-```
-
-Second:
-
-```json
-{"expression": {"collection": "sc", "field": "f7206_line14", "op": "sum_over", "where": null}, "invalid_model_types": [{"line": "person.sehi", "message": "person.person.sehi: reference 'f7206_line14' does not resolve"}]}
-```
-
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line (person.sehi) is one of them, so this ruling adjudicates the declaration, not the tax reading. By reading: On returns with a Schedule C the reply's graph is circular: its person.income179 (the section 179 business income limit) sums sc.line31, which is after the section 179 deduction that the limit governs (i4562 p. 5, Line 11: "computed without regard to any section 179 expense deduction"), so the scratch evaluation reports "cycle at sc.s179_allowed" on every such return (343 completed records). Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Status: **AGREE**
 
 ### person.qbi — Qualified business income or loss of this person's businesses
 Status: **DISAGREE**
@@ -817,10 +530,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"collection": "sc", "field": "qbi", "op": "sum_over", "where": null}, "invalid_model_types": [{"line": "person.qbi", "message": "person.person.qbi: reference 'qbi' does not resolve"}]}
+{"alternatives": [{"guard": {"args": [{"from": {"ref": "f1040.line11b"}, "op": "subtract_floor0", "take": {"of": [{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "ne"}], "test": "any"}, {"args": [{"ref": "sa.line17"}, {"alternatives": [{"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "eq"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "ne"}], "test": "any"}, "then": {"of": [{"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"const": false}, {"ref": "person.died_before_65"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.age65"}], "test": "eq"}], "test": "all"}}, "op": "multiply_count"}, {"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "person.blind"}], "test": "eq"}}, "op": "multiply_count"}, {"param": "sa.standard_base"}], "op": "sum"}}], "op": "choose"}], "test": "le"}, {"args": [{"const": true}, {"input": "sa.elect_itemize"}], "test": "ne"}], "test": "all"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "eq"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "ne"}], "test": "any"}, "then": {"of": [{"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"const": false}, {"ref": "person.died_before_65"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.age65"}], "test": "eq"}], "test": "all"}}, "op": "multiply_count"}, {"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "person.blind"}], "test": "eq"}}, "op": "multiply_count"}, {"param": "sa.standard_base"}], "op": "sum"}}], "op": "choose"}}, {"guard": {"args": [{"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "eq"}], "test": "all"}, {"args": [{"const": true}, {"input": "sa.elect_itemize"}], "test": "eq"}, {"args": [{"alternatives": [{"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "eq"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "ne"}], "test": "any"}, "then": {"of": [{"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"const": false}, {"ref": "person.died_before_65"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.age65"}], "test": "eq"}], "test": "all"}}, "op": "multiply_count"}, {"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "person.blind"}], "test": "eq"}}, "op": "multiply_count"}, {"param": "sa.standard_base"}], "op": "sum"}}], "op": "choose"}, {"ref": "sa.line17"}], "test": "lt"}], "test": "any"}, "then": {"ref": "sa.line17"}}], "op": "choose"}, {"ref": "f1040.line13b"}], "op": "sum"}}, {"param": "qbi.threshold"}], "test": "le"}, "then": {"ref": "f8995.line15"}}, {"guard": {"args": [{"param": "qbi.threshold"}, {"from": {"ref": "f1040.line11b"}, "op": "subtract_floor0", "take": {"of": [{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "ne"}], "test": "any"}, {"args": [{"ref": "sa.line17"}, {"alternatives": [{"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "eq"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "ne"}], "test": "any"}, "then": {"of": [{"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"const": false}, {"ref": "person.died_before_65"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.age65"}], "test": "eq"}], "test": "all"}}, "op": "multiply_count"}, {"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "person.blind"}], "test": "eq"}}, "op": "multiply_count"}, {"param": "sa.standard_base"}], "op": "sum"}}], "op": "choose"}], "test": "le"}, {"args": [{"const": true}, {"input": "sa.elect_itemize"}], "test": "ne"}], "test": "all"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "eq"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "ne"}], "test": "any"}, "then": {"of": [{"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"const": false}, {"ref": "person.died_before_65"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.age65"}], "test": "eq"}], "test": "all"}}, "op": "multiply_count"}, {"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "person.blind"}], "test": "eq"}}, "op": "multiply_count"}, {"param": "sa.standard_base"}], "op": "sum"}}], "op": "choose"}}, {"guard": {"args": [{"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "eq"}], "test": "all"}, {"args": [{"const": true}, {"input": "sa.elect_itemize"}], "test": "eq"}, {"args": [{"alternatives": [{"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "eq"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "ne"}], "test": "any"}, "then": {"of": [{"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"const": false}, {"ref": "person.died_before_65"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.age65"}], "test": "eq"}], "test": "all"}}, "op": "multiply_count"}, {"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "person.blind"}], "test": "eq"}}, "op": "multiply_count"}, {"param": "sa.standard_base"}], "op": "sum"}}], "op": "choose"}, {"ref": "sa.line17"}], "test": "lt"}], "test": "any"}, "then": {"ref": "sa.line17"}}], "op": "choose"}, {"ref": "f1040.line13b"}], "op": "sum"}}], "test": "lt"}, "then": {"ref": "f8995a.line39"}}], "op": "choose"}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line (person.qbi) is one of them, so this ruling adjudicates the declaration, not the tax reading. By reading: On returns with a Schedule C the reply's graph is circular: its person.income179 (the section 179 business income limit) sums sc.line31, which is after the section 179 deduction that the limit governs (i4562 p. 5, Line 11: "computed without regard to any section 179 expense deduction"), so the scratch evaluation reports "cycle at sc.s179_allowed" on every such return (343 completed records). Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. i8995 p. 4, Line 1: "Enter on line 1(c) the net QBI or (loss) for the trade, business, or aggregation"; the project's line is the qualified business income or loss of this person's businesses (sum of sc.qbi). The reply changed: it copies qbi.deduction, the return's QBI deduction, a different quantity that is itself built from this line (cycles at s179.line6, person.ira_deduction, ira.line12a), with a refusal naming qbi.unsupported. Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 4,536 of 4,728 comparisons (3,126 candidate-unknown, 1,392 candidate-refuses, 18 project-refuses); on returns the full interview completes: 1,010 candidate-unknown, 3 candidate-refuses. Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.eic_se — Worksheet B, Parts 1 and 2, for this person
 Status: **DISAGREE**
@@ -834,10 +547,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"from": {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, "op": "subtract", "take": {"amount": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"const": 0}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"const": 0}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"const": 0}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"const": 0}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"const": 0}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"const": 0}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"ref": "ss.base"}, "op": "subtract_floor0", "take": {"collection": "w2", "field": "wages", "op": "sum_over", "where": null}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}}, "invalid_model_types": [{"line": "person.sc_total", "message": "person.person.sc_total: reference 'line31' does not resolve"}, {"line": "h_se_4a_pos", "message": "person.h_se_4a_pos: declared NonNegDollars but the expression does not prove non-negativity"}, {"line": "h_ss_wages", "message": "person.h_ss_wages: reference 'wages' does not resolve"}, {"line": "h_ss_room", "message": "person.h_ss_room: reference 'ss.base' does not resolve"}]}
+{"collection": "person", "field": "person.eic_se", "op": "sum_over", "where": null}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line reads h_se_4a_pos, h_ss_room, h_ss_wages and others, which are among them, so this ruling adjudicates the declaration, not the tax reading. By reading, the se definition bound to its person.sc_total and person.wages, without the project's se_screen and railroad refusals (person.se_screened, person.se_rrta, cited i1040sse pp. 1-5 and Schedule SE line 8a). On returns with a Schedule C the reply's graph is circular: its person.income179 (the section 179 business income limit) sums sc.line31, which is after the section 179 deduction that the limit governs (i4562 p. 5, Line 11: "computed without regard to any section 179 expense deduction"), so the scratch evaluation reports "cycle at sc.s179_allowed" on every such return (343 completed records). Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. i1040gi p. 47, Worksheet B, Parts 1 and 2 (self-employment earned income); the project computes this person's part (person.eic_se_has with a Schedule C, zero otherwise). The reply changed: it copies eic.wsb_se, the return-level Worksheet B amount, which sums this line, so its graph is circular on every return ("cycle at eic.wsb_se"). Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 4,656 of 4,728 comparisons (4,509 candidate-unknown, 147 project-refuses); on returns the full interview completes: 1,013 candidate-unknown. Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.sc_1a — This person's Schedules C with Schedule 1-A tips or overtime
 Status: **DISAGREE**
@@ -851,27 +564,13 @@ Project:
 Second:
 
 ```json
-{"expression": {"collection": "sc", "field": "one", "op": "sum_over", "where": null}, "invalid_model_types": [{"line": "person.sc_count", "message": "person.person.sc_count: reference 'one' does not resolve"}]}
+{"collection": "person", "field": "person.sc_1a", "op": "sum_over", "where": null}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line reads person.sc_count, which is among them, so this ruling adjudicates the declaration, not the tax reading. By reading, it copies person.sc_count (every Schedule C) where the project counts only Schedules C with Schedule 1-A tips or overtime (sc.tips_ot; i1040gi p. 104, Schedule 1-A Line 5, "Include the qualified tips you and/or your spouse received in the course of a trade or business"). A scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record) differs on 343 completed records (classm.f4952.1.deepseek 0 against 1). Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. i1040gi p. 104, Schedule 1-A, Line 5: "Include the qualified tips you and/or your spouse received in the course of a trade or business"; the project counts this person's Schedules C with Schedule 1-A tips or overtime (sc.tips_ot). The reply changed: it copies s1.sc_1a_count, the return-level count built from this line, so its graph is circular on every return ("cycle at s1.sc_1a_count"). Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 4,705 of 4,728 comparisons (4,705 candidate-unknown); on returns the full interview completes: 1,013 candidate-unknown. Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.dc_benefits — This person's dependent care benefits from Forms W-2 box 10, less the part reported in box
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"collection": "w2", "field": "w2.dc_benefits", "op": "sum_over", "where": null}
-```
-
-Second:
-
-```json
-{"expression": {"collection": "w2", "field": "dc_benefits", "op": "sum_over", "where": null}, "invalid_model_types": [{"line": "person.dc_benefits", "message": "person.person.dc_benefits: reference 'dc_benefits' does not resolve"}]}
-```
-
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line (person.dc_benefits) is one of them, so this ruling adjudicates the declaration, not the tax reading. By reading, with the prefix restored it is the project's expression or the same quantity; scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record) shows no difference on any record. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Status: **AGREE**
 
 ### person.dc_has_box10 — This person's Forms W-2 show dependent care benefits in box 10
 Status: **DISAGREE**
@@ -885,10 +584,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"args": [{"const": 0}, {"collection": "w2", "field": "dc_benefits", "op": "sum_over", "where": null}], "test": "lt"}, "invalid_model_types": [{"line": "person.dc_benefits", "message": "person.person.dc_benefits: reference 'dc_benefits' does not resolve"}]}
+{"args": [{"const": 0, "type": "Count"}, {"collection": "w2", "field": "w2.one", "op": "sum_over", "where": {"args": [{"const": 0}, {"ref": "w2.box10"}], "test": "lt"}}], "test": "lt"}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line reads person.dc_benefits, which is among them, so this ruling adjudicates the declaration, not the tax reading. By reading, the count of Forms W-2 with dependent care benefits above zero, the project's test in another form; scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record) differs only on one refused return (a candidate refusal reached through its other lines). Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: representation; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. i2441 p. 4, Lines 4 and 5 (box 10 dependent care benefits). The reply counts the Forms W-2 whose box 10 is above zero (w2.has_box10) and tests the count above zero; the project tests the box 10 total above zero: with non-negative amounts the two tests are the same. Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation shows no difference on any of its 4,728 comparisons. Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.dc_earned — This person's earned income for Form 2441 lines 4 and 5: Form W-2 box 1, the person's shar
 Status: **DISAGREE**
@@ -902,10 +601,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"from": {"collection": "w2", "field": "box1", "op": "sum_over", "where": null}, "op": "subtract", "take": {"const": 0}}, "invalid_model_types": [{"line": "person.box1", "message": "person.person.box1: reference 'box1' does not resolve"}]}
+{"from": {"of": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"collection": "w2", "field": "w2.box1", "op": "sum_over", "where": null}], "op": "sum"}, "op": "subtract", "take": {"amount": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"collection": "w2", "field": "w2.wages", "op": "sum_over", "where": null}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line reads person.box1, which is among them, so this ruling adjudicates the declaration, not the tax reading. By reading, W-2 box 1 only: it omits the line 1e part of line 1z (amb.2025.dc_line1e_attribution) and the self-employment part (i2441 p. 4: "2. The amount shown on Schedule SE (Form 1040), line 3, minus any deduction you claim on Schedule 1 (Form 1040), line 15"). A scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record) differs on 364 completed records (classm.f2441.4 $5,000.00 against $3,000.00; classm.f4952.1.deepseek $168,227.38 against $32,936.00). Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. i2441 p. 4, Lines 4 and 5: earned income is "The amount shown on Form 1040, 1040-SR, or 1040-NR, line 1z" and "The amount shown on Schedule SE (Form 1040), line 3, minus any deduction you claim on Schedule 1 (Form 1040), line 15"; the project adds W-2 box 1, the person's share of line 1e (amb.2025.dc_line1e_attribution) and person.eic_se. The reply changed: W-2 box 1 plus its Schedule C total less its person.se_line13, without the line 1e share, so it inherits that line's se_screen question (asked of every person) and its section 179 cycle on returns with a Schedule C (classm.f4952.1.deepseek, completed: project $168,227.38). Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 2,476 of 4,728 comparisons (2,427 candidate-unknown, 25 candidate-refuses, 22 project-refuses, 2 value); on returns the full interview completes: 355 candidate-unknown, 3 candidate-refuses (value records refused only: classm.carloan.1 $238,056.00 against $234,528.00). Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.dc_earned_b — This person's earned income for Form 2441 lines 18 and 19: as for lines 4 and 5, without t
 Status: **DISAGREE**
@@ -919,10 +618,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"from": {"collection": "w2", "field": "box1", "op": "sum_over", "where": null}, "op": "subtract", "take": {"const": 0}}, "invalid_model_types": [{"line": "person.box1", "message": "person.person.box1: reference 'box1' does not resolve"}]}
+{"from": {"from": {"of": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"collection": "w2", "field": "w2.box1", "op": "sum_over", "where": null}], "op": "sum"}, "op": "subtract", "take": {"amount": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"collection": "w2", "field": "w2.wages", "op": "sum_over", "where": null}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}}, "op": "subtract_floor0", "take": {"collection": "w2", "field": "w2.dc_benefits", "op": "sum_over", "where": null}}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line reads person.box1, which is among them, so this ruling adjudicates the declaration, not the tax reading. By reading, W-2 box 1 only, omitting the self-employment part (i2441 p. 4, item 2). A scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record) differs on 343 completed records (classm.f4952.1.deepseek $168,227.38 against $32,936.00; classm.f8863.2 -$146,616.56 against $0.00). Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. i2441 p. 5, Line 18: earned income for lines 18 and 19 is figured as for the credit, but "for purposes of lines 18 and 19, earned income doesn't include any dependent care benefits shown on line 12"; the project adds W-2 box 1 and person.eic_se. The reply changed: its person.dc_earned less the dependent care benefits, floored, so it inherits that line's se_screen question and section 179 cycle. Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 2,485 of 4,728 comparisons (2,444 candidate-unknown, 28 candidate-refuses, 10 project-refuses, 3 value); on returns the full interview completes: 355 candidate-unknown, 3 candidate-refuses (value records refused only: classm.carloan.1 $234,528.00 against $231,000.00). Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.sav_ineligible — Born after January 1, 2008, claimed as a dependent on someone else's 2025 return, or a stu
 Status: **DISAGREE**
@@ -939,7 +638,7 @@ Second:
 {"args": [{"args": [{"const": false}, {"input": "person.sav_born"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.sav_claimed"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.sav_student"}], "test": "eq"}], "test": "any"}
 ```
 
-Ruling: ambiguity; Not executable: the reply fails validation on 55 declarations (53 collection sums naming the field without its collection's prefix, for example person.hsa_forms: "reference 'one' does not resolve"; h_ss_room: "reference 'ss.base' does not resolve"; h_se_4a_pos: "declared NonNegDollars but the expression does not prove non-negativity"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. amb.2025.savers_ineligible_column (owner decision). f8880 p. 2, Who Can Take This Credit: "(a) was born after January 1, 2008; (b) is claimed as a dependent on someone else's 2025 tax return; or (c) was a student." The reply changed in form only (born after January 1, 2008, a dependent claimed by someone else, or a student, each as its own test), the Claude reply's reading, ruled ambiguity in that log (every value record supplies sav_claimed yes with sa.dependent no, a record the interview does not produce; the scratch evaluation shows the same 197 records). Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: ambiguity; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. amb.2025.savers_ineligible_column (owner decision). f8880 p. 2, Who Can Take This Credit: "(a) was born after January 1, 2008; (b) is claimed as a dependent on someone else's 2025 tax return; or (c) was a student." Same expression as fix round 4 (ruled ambiguity there): each condition as its own test, the Claude reply's reading, ruled ambiguity in that log; every value record supplies sav_claimed Yes with sa.dependent No, a record the interview does not produce (classm.f5695.2, completed: project False, candidate True). Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 247 of 4,728 comparisons (197 value, 46 candidate-unknown, 4 project-unknown); on returns the full interview completes: 13 candidate-unknown, 2 value. Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.sav_line1 — Form 8880 line 1 for this person (traditional IRA contributions for 2025, deductible or no
 Status: **DISAGREE**
@@ -956,7 +655,7 @@ Second:
 {"of": [{"input": "person.ira_trad"}, {"input": "person.sav_roth"}], "op": "sum"}
 ```
 
-Ruling: scope; Not executable: the reply fails validation on 55 declarations (53 collection sums naming the field without its collection's prefix, for example person.hsa_forms: "reference 'one' does not resolve"; h_ss_room: "reference 'ss.base' does not resolve"; h_se_4a_pos: "declared NonNegDollars but the expression does not prove non-negativity"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. f8880 line 1: "Traditional and Roth IRA contributions, and ABLE account contributions by the designated beneficiary for 2025". Same expression as fix rounds 2 and 3: person.ira_trad plus person.sav_roth, without the project's sav_trad gate (the amount is the same wherever ira_trad is asked; the reply asks the amount where the project infers zero from a No: placement); the project refuses excess contributions at person.ira_excess_gate (p590a p. 35). Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: scope; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. f8880 line 1: "Traditional and Roth IRA contributions, and ABLE account contributions by the designated beneficiary for 2025". Same expression as fix round 4 (ruled scope there): person.ira_trad plus person.sav_roth, without the project's sav_trad gate (the amount is the same wherever ira_trad is asked; the reply asks the amount where the project infers zero from a No: placement); the project refuses excess contributions at person.ira_excess_gate (p590a p. 35, cited). Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 1,552 of 4,728 comparisons (1,517 candidate-unknown, 33 project-unknown, 1 project-refuses, 1 candidate-refuses); on returns the full interview completes: 126 candidate-unknown. Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.sav_line2 — Form 8880 line 2 for this person (box 12 deferrals, voluntary contributions and own SIMPLE
 Status: **DISAGREE**
@@ -970,10 +669,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"of": [{"input": "person.sav_voluntary"}, {"collection": "w2", "field": "sav_deferral", "op": "sum_over", "where": null}], "op": "sum"}, "invalid_model_types": [{"line": "h_sav_deferral", "message": "person.h_sav_deferral: reference 'sav_deferral' does not resolve"}]}
+{"of": [{"input": "person.sav_voluntary"}, {"collection": "w2", "field": "w2.sav_deferral", "op": "sum_over", "where": null}], "op": "sum"}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line reads h_sav_deferral, which is among them, so this ruling adjudicates the declaration, not the tax reading. By reading, box 12 deferrals and voluntary contributions only, as in fix round 3, omitting a self-employed person's own SIMPLE salary reduction contributions (person.sav_simple) and the excess-deferral refusal (person.sav_excess_gate, cited). A scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record) differs on 5 completed records (stage14.simple.at_limit $16,500.00 against $0.00; classm.se.2 spouse $7,815.00 against $0.00). Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. f8880 p. 2, Line 2: "Include on line 2 any of the following amounts. • Elective deferrals (including designated Roth contributions under section 402A, if applicable) to a 401(k), 403(b), governmental 457(b), SEP, SIMPLE, or the federal TSP." As in fix round 4: W-2 box 12 deferrals and voluntary contributions only, omitting a self-employed person's own SIMPLE salary reduction contributions (person.sav_simple), and it declares the input person.sav_excess as a refusal in place of the project's cited person.sav_excess_gate. Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 104 of 4,728 comparisons (42 candidate-unknown, 17 value, 16 candidate-refuses, 15 project-refuses, 14 project-unknown); on returns the full interview completes: 12 candidate-unknown, 5 value, 4 candidate-refuses (stage14.simple.at_limit, completed: $16,500.00 against $0.00; classm.se.2 spouse $7,815.00 against $0.00; candidate refusals at sav_excess on completed classm.s3.3.deepseek). Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.ira_contrib — This person's traditional IRA contributions for 2025 (zero if the traditional IRA question
 Status: **DISAGREE**
@@ -990,7 +689,7 @@ Second:
 {"input": "person.ira_trad"}
 ```
 
-Ruling: scope; Not executable: the reply fails validation on 55 declarations (53 collection sums naming the field without its collection's prefix, for example person.hsa_forms: "reference 'one' does not resolve"; h_ss_room: "reference 'ss.base' does not resolve"; h_se_4a_pos: "declared NonNegDollars but the expression does not prove non-negativity"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. i1040gi p. 98, line 11. Same expression as fix rounds 2 and 3: person.ira_trad for everyone; the project asks the amount after a Yes to person.sav_trad (placement) and refuses excess contributions at person.ira_excess_gate (p590a p. 35). Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: scope; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. i1040gi p. 98, line 11: "Enter traditional IRA contributions made, or that will be made by the due date of your 2025 return not counting extensions ... for 2025". Same expression as fix round 4 (ruled scope there): person.ira_trad for everyone; the project asks the amount after a Yes to person.sav_trad (placement) and refuses excess contributions at person.ira_excess_gate (p590a p. 35). Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 1,781 of 4,728 comparisons (1,751 candidate-unknown, 30 project-unknown); on returns the full interview completes: 128 candidate-unknown: no value differs. Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.ira_cov — Covered by a retirement plan (worksheet line 1a or 1b for this person)
 Status: **DISAGREE**
@@ -1007,7 +706,7 @@ Second:
 {"input": "person.ira_work_plan"}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (53 collection sums naming the field without its collection's prefix, for example person.hsa_forms: "reference 'one' does not resolve"; h_ss_room: "reference 'ss.base' does not resolve"; h_se_4a_pos: "declared NonNegDollars but the expression does not prove non-negativity"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. i1040gi p. 96, Were You Covered by a Retirement Plan?: "You are also covered by a plan if you were self-employed and had a SEP, SIMPLE, or qualified retirement plan." Same expression as fix rounds 2 and 3: person.ira_work_plan alone, dropping the person's own SEP or SIMPLE plan (the project reads person.ira_se_plan; amb.2025.ira_covered). Scratch evaluation: classm.ira.2 spouse and generated 163 (completed, a Schedule C with a plan): project True, candidate False. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. i1040gi p. 96, Were You Covered by a Retirement Plan?: "You are also covered by a plan if you were self-employed and had a SEP, SIMPLE, or qualified retirement plan." Same expression as fix round 4 (ruled model error there): person.ira_work_plan alone, dropping the person's own SEP or SIMPLE plan (the project reads person.ira_se_plan; amb.2025.ira_covered). Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 155 of 4,728 comparisons (121 value, 24 candidate-unknown, 10 project-unknown); on returns the full interview completes: 8 candidate-unknown, 2 value (classm.ira.2 spouse and generated 163, completed: project True, candidate False). Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.ira_line2 — Worksheet line 2 for this person's column
 Status: **DISAGREE**
@@ -1021,10 +720,10 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2"}}], "op": "choose"}
+{"expression": {"ref": "ira.line2"}, "invalid_model_types": [{"line": "person.ira_line2", "message": "person.person.ira_line2: reference 'ira.line2' does not resolve"}]}
 ```
 
-Ruling: representation; Not executable: the reply fails validation on 55 declarations (53 collection sums naming the field without its collection's prefix, for example person.hsa_forms: "reference 'one' does not resolve"; h_ss_room: "reference 'ss.base' does not resolve"; h_se_4a_pos: "declared NonNegDollars but the expression does not prove non-negativity"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. i1040gi p. 97, line 2 ("Married filing jointly, enter $146,000 in both columns. But if you checked "No" on either line 1a or 1b, enter $246,000 for the person who wasn't covered by a plan"), after line 1: "If you checked "No" on line 1a (and "No" on line 1b if married filing jointly), skip lines 2 through 6". Same structure as fix round 2: the status amount for a covered person and $246,000 otherwise, which equals the source on every worksheet that reaches line 2 (a person not covered reaches it only on a joint return whose spouse is covered); the scratch evaluation's values are single or qualifying-surviving-spouse persons not covered (classm.f4952.1.deepseek $89,000.00 against $246,000.00), inside skipped lines. It reads its own person.ira_cov, ruled there. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types"; this line is one of them (it copies ira.line2, a parameter named as a line: "reference 'ira.line2' does not resolve"), so this ruling adjudicates the declaration, not the tax reading. i1040gi p. 97, line 2: "Married filing jointly, enter $146,000 in both columns. But if you checked “No” on either line 1a or 1b, enter $246,000 for the person who wasn’t covered by a plan". On the merits, read as the parameter, it is the filing-status amount for everyone, never the $246,000 for the person not covered on a joint return whose spouse is covered: Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 1,538 of 4,728 comparisons (1,030 value, 508 project-unknown); on returns the full interview completes: 295 value, 14 project-unknown; most completed records have neither spouse covered (lines 2 to 6 skipped), but classm.ira.2 (completed; taxpayer not covered, spouse covered) gives $246,000.00 against $146,000.00 on a line the worksheet reaches. Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.ira_line6 — Worksheet line 6 for this person's column: is line 5 less than line 2? If yes, subtract li
 Status: **DISAGREE**
@@ -1038,10 +737,10 @@ Project:
 Second:
 
 ```json
-{"from": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "f1040.line11a"}}
+{"ref": "ira.line6a"}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (53 collection sums naming the field without its collection's prefix, for example person.hsa_forms: "reference 'one' does not resolve"; h_ss_room: "reference 'ss.base' does not resolve"; h_se_4a_pos: "declared NonNegDollars but the expression does not prove non-negativity"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. i1040gi p. 97, line 6: "Subtract line 5 from line 2 in each column". The reply changed: its line 2 less its worksheet line 5. Its worksheet line 5 (h_ira_line5) copies f1040.line11a, adjusted gross income, which includes the IRA deduction itself, where the source starts from line 9 less the Schedule 1 adjustments other than the IRA deduction (i1040gi p. 97: "Enter the amount from Form 1040 or 1040-SR, line 9" and "Enter the total of the amounts from Schedule 1, lines 11 through 19a, plus 23 and 25"): a cycle ("cycle at person.ira_line6" in the scratch evaluation), on 363 of its 1,426 completed candidate-unknown records; the others ask ira_work_plan where the interview does not (514) or inherit the section 179 cycle. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. i1040gi p. 97, line 6: "Subtract line 5 from line 2 in each column". The reply changed: it copies ira.line6a, the return's display line for the taxpayer's column, which is zero where lines 2 to 6 are skipped and reads person.ira_line6 where they are not: for the spouse it takes the taxpayer's column, and where the worksheet reaches line 6 its graph is circular ("cycle at ira.line6a"). Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 3,585 of 4,728 comparisons (1,459 value, 1,022 candidate-unknown, 977 project-refuses, 127 project-unknown); on returns the full interview completes: 644 value, 105 candidate-unknown, 3 project-unknown (classm.f8889.1.deepseek, completed: $71,339.00 against $0.00 for both persons). Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.ira_line7 — Worksheet line 7 for this person's column
 Status: **DISAGREE**
@@ -1055,12 +754,10 @@ Project:
 Second:
 
 ```json
-{"of": [{"of": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "f1040.line11a"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_70"}}, "op": "round", "rule": "up", "unit": 1000}, {"param": "ira.min"}], "op": "larger_of"}
+{"ref": "ira.line7a"}
 ```
 
-Second transcription's note: Uses the 70% rate and the $200 floor as a default; age and filing-status rate variants are not encoded.
-
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (53 collection sums naming the field without its collection's prefix, for example person.hsa_forms: "reference 'one' does not resolve"; h_ss_room: "reference 'ss.base' does not resolve"; h_se_4a_pos: "declared NonNegDollars but the expression does not prove non-negativity"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. i1040gi p. 98, line 7: "Multiply lines 6a and 6b by the percentage below that applies to you. If the result isn't a multiple of $10, increase it to the next multiple of $10 ... But if it is less than $200, enter $200", with 70% or 80% (age 50 or older) and the joint-return rates; lines 2 to 6 are skipped for a person not covered (line 1). The reply changed: the larger of its rounded 70% figure and $200 for everyone (its note: "age and filing-status rate variants are not encoded"), with no branch for a person not covered or for line 6 zero ("None of your IRA contributions are deductible"); and through its line 6 it inherits the worksheet cycle: Its worksheet line 5 (h_ira_line5) copies f1040.line11a, adjusted gross income, which includes the IRA deduction itself, where the source starts from line 9 less the Schedule 1 adjustments other than the IRA deduction (i1040gi p. 97: "Enter the amount from Form 1040 or 1040-SR, line 9" and "Enter the total of the amounts from Schedule 1, lines 11 through 19a, plus 23 and 25"): a cycle ("cycle at person.ira_line6" in the scratch evaluation) (900 completed candidate-unknown records in the scratch evaluation; the 361 candidate refusals are other forms' refusals reached through it on refused returns). Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. i1040gi p. 98, line 7: "Multiply lines 6a and 6b by the percentage below that applies to you", and p. 97: "If you checked “No” on line 1a (and “No” on line 1b if married filing jointly), skip lines 2 through 6, enter the applicable amount below on line 7a (and line 7b, if applicable)". The reply changed: it copies ira.line7a, the return's display line for the taxpayer's column, for both persons; it is circular where the worksheet reaches it ("cycle at ira.line7a") and gives zero where the project enters the contribution limit for a person not covered. Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 2,979 of 4,728 comparisons (2,601 value, 220 project-refuses, 82 candidate-unknown, 76 project-unknown); on returns the full interview completes: 852 value, 27 project-unknown, 16 candidate-unknown (classm.f8889.1.deepseek, completed: $7,000.00 against $0.00 for both persons). Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.ira_deduction — This person's IRA deduction (worksheet line 12; zero with no traditional IRA contributions
 Status: **DISAGREE**
@@ -1074,12 +771,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"of": [{"input": "person.ira_trad"}, {"of": [{"of": [{"of": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "f1040.line11a"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_70"}}, "op": "round", "rule": "up", "unit": 1000}, {"param": "ira.min"}], "op": "larger_of"}, {"collection": "w2", "field": "box1", "op": "sum_over", "where": null}], "op": "smaller_of"}], "op": "smaller_of"}, "invalid_model_types": [{"line": "person.box1", "message": "person.person.box1: reference 'box1' does not resolve"}]}
+{"ref": "ira.line12a"}
 ```
 
-Second transcription's note: Earned income for the line 10 limit is read from Form W-2 box 1; self-employment earned income is not added.
-
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line reads person.box1, which is among them, so this ruling adjudicates the declaration, not the tax reading. By reading: Its worksheet line 5 (h_ira_line5) copies f1040.line11a, adjusted gross income, which includes the IRA deduction itself, where the source starts from line 9 less the Schedule 1 adjustments other than the IRA deduction (i1040gi p. 97: "Enter the amount from Form 1040 or 1040-SR, line 9" and "Enter the total of the amounts from Schedule 1, lines 11 through 19a, plus 23 and 25"): a cycle ("cycle at person.ira_line6" in the scratch evaluation), which reaches this line in the scratch evaluation on 1,730 completed records. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. i1040gi p. 98, line 12: "Add the amounts on lines 12a and 12b and enter the total on Schedule 1, line 20"; the project computes this person's worksheet line 12 and refuses at person.ira_dist_gate (cited). The reply changed: its person.ira_deduction copies ira.line12a, the return's line 12a (the taxpayer's column), which is built from this person's lines, so its graph is circular on every return ("cycle at ira.line12a", "cycle at person[taxpayer].ira_deduction"), and for the spouse it would take the taxpayer's column. Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 4,657 of 4,728 comparisons (4,644 candidate-unknown, 13 project-refuses); on returns the full interview completes: 1,013 candidate-unknown. Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.ira_nondeductible — This person's nondeductible traditional IRA contributions for 2025 (Form 8606 line 1)
 Status: **DISAGREE**
@@ -1093,10 +788,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"from": {"input": "person.ira_trad"}, "op": "subtract_floor0", "take": {"of": [{"input": "person.ira_trad"}, {"of": [{"of": [{"of": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "f1040.line11a"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_70"}}, "op": "round", "rule": "up", "unit": 1000}, {"param": "ira.min"}], "op": "larger_of"}, {"collection": "w2", "field": "box1", "op": "sum_over", "where": null}], "op": "smaller_of"}], "op": "smaller_of"}}, "invalid_model_types": [{"line": "person.box1", "message": "person.person.box1: reference 'box1' does not resolve"}]}
+{"from": {"input": "person.ira_trad"}, "op": "subtract_floor0", "take": {"ref": "ira.line12a"}}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line reads person.box1, which is among them, so this ruling adjudicates the declaration, not the tax reading. By reading: Its worksheet line 5 (h_ira_line5) copies f1040.line11a, adjusted gross income, which includes the IRA deduction itself, where the source starts from line 9 less the Schedule 1 adjustments other than the IRA deduction (i1040gi p. 97: "Enter the amount from Form 1040 or 1040-SR, line 9" and "Enter the total of the amounts from Schedule 1, lines 11 through 19a, plus 23 and 25"): a cycle ("cycle at person.ira_line6" in the scratch evaluation), which reaches this line in the scratch evaluation on 1,730 completed records. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. Form 8606 (2025), line 1: "Enter your nondeductible contributions to traditional IRAs for 2025". The reply's expression (contributions less the IRA deduction, floored) is the quantity, but its person.ira_deduction copies ira.line12a, the return's line 12a (the taxpayer's column), which is built from this person's lines, so its graph is circular on every return ("cycle at ira.line12a", "cycle at person[taxpayer].ira_deduction"), and its person.ira_contrib asks ira_trad of every person. Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 4,657 of 4,728 comparisons (4,645 candidate-unknown, 12 project-refuses); on returns the full interview completes: 1,013 candidate-unknown. Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.ira_files_8606 — This person files Form 8606 for nondeductible contributions to a traditional IRA for 2025
 Status: **DISAGREE**
@@ -1110,10 +805,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"args": [{"const": 0}, {"from": {"input": "person.ira_trad"}, "op": "subtract_floor0", "take": {"of": [{"input": "person.ira_trad"}, {"of": [{"of": [{"of": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "f1040.line11a"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_70"}}, "op": "round", "rule": "up", "unit": 1000}, {"param": "ira.min"}], "op": "larger_of"}, {"collection": "w2", "field": "box1", "op": "sum_over", "where": null}], "op": "smaller_of"}], "op": "smaller_of"}}], "test": "lt"}, "invalid_model_types": [{"line": "person.box1", "message": "person.person.box1: reference 'box1' does not resolve"}]}
+{"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_dist"}], "test": "eq"}, {"args": [{"const": 0}, {"input": "person.ira_basis"}], "test": "lt"}], "test": "all"}, {"args": [{"const": 0}, {"from": {"input": "person.ira_trad"}, "op": "subtract_floor0", "take": {"ref": "ira.line12a"}}], "test": "lt"}], "test": "any"}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line reads person.box1, which is among them, so this ruling adjudicates the declaration, not the tax reading. By reading: Its worksheet line 5 (h_ira_line5) copies f1040.line11a, adjusted gross income, which includes the IRA deduction itself, where the source starts from line 9 less the Schedule 1 adjustments other than the IRA deduction (i1040gi p. 97: "Enter the amount from Form 1040 or 1040-SR, line 9" and "Enter the total of the amounts from Schedule 1, lines 11 through 19a, plus 23 and 25"): a cycle ("cycle at person.ira_line6" in the scratch evaluation), which reaches this line in the scratch evaluation on 1,730 completed records. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. i8606 p. 2, Who Must File: "You made nondeductible contributions to a traditional IRA for 2025"; the project tests person.ira_nondeductible above zero. The reply adds a distribution with prior basis (person.ira_dist and person.ira_basis, answers asked of every person) and reads its circular person.ira_nondeductible: its person.ira_deduction copies ira.line12a, the return's line 12a (the taxpayer's column), which is built from this person's lines, so its graph is circular on every return ("cycle at ira.line12a", "cycle at person[taxpayer].ira_deduction"). Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 4,657 of 4,728 comparisons (4,645 candidate-unknown, 12 project-refuses); on returns the full interview completes: 1,013 candidate-unknown. Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.ira_8606_line2 — Form 8606 line 2 for this person (asked only when the person files Form 8606)
 Status: **DISAGREE**
@@ -1127,10 +822,10 @@ Project:
 Second:
 
 ```json
-{"input": "person.ira_basis"}
+{"collection": "f8606", "field": "f8606.line2", "op": "sum_over", "where": null}
 ```
 
-Ruling: scope; Not executable: the reply fails validation on 55 declarations (53 collection sums naming the field without its collection's prefix, for example person.hsa_forms: "reference 'one' does not resolve"; h_ss_room: "reference 'ss.base' does not resolve"; h_se_4a_pos: "declared NonNegDollars but the expression does not prove non-negativity"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. i8606 p. 9, Line 2: "Generally, if this is the first year you are required to file Form 8606, enter -0-" and otherwise the Total Basis Chart amount. Same expression as fix rounds 2 and 3: it copies person.ira_basis for everyone; the project asks the basis only of a Form 8606 filer and refuses an adjusted basis at person.ira_basis_gate (cited): placement and that cited refusal. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. i8606 p. 9, Line 2: "Generally, if this is the first year you are required to file Form 8606, enter -0-" and otherwise the Total Basis Chart amount; the project asks person.ira_basis of a Form 8606 filer and refuses an adjusted basis at person.ira_basis_gate (cited). The reply changed from fix round 4: it sums f8606.line2 over the person's f8606 entries, a line built from this person's line, so its graph is circular on every return ("cycle at person[taxpayer].ira_8606_line2"). Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 4,657 of 4,728 comparisons (4,644 candidate-unknown, 13 project-refuses); on returns the full interview completes: 1,013 candidate-unknown. Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.ira_dist_gate — Nondeductible contributions for 2025 with a 2025 traditional IRA distribution or Roth conv
 Status: **DISAGREE**
@@ -1144,27 +839,13 @@ Project:
 Second:
 
 ```json
-{"input": "person.ira_dist"}
+{"args": [{"args": [{"const": true}, {"input": "person.ira_dist"}], "test": "eq"}, {"args": [{"const": 0}, {"input": "person.ira_basis"}], "test": "lt"}], "test": "all"}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (53 collection sums naming the field without its collection's prefix, for example person.hsa_forms: "reference 'one' does not resolve"; h_ss_room: "reference 'ss.base' does not resolve"; h_se_4a_pos: "declared NonNegDollars but the expression does not prove non-negativity"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. f8606 (2025) Part I: "In 2025, did you take a distribution from a traditional IRA, or make a Roth IRA conversion?"; p590a p. 15, Both contributions for 2025 and distributions in 2025. The reply changed: it copies person.ira_dist for everyone, where the project's gate is a distribution together with nondeductible contributions for 2025 (the case it refuses). It asks ira_dist of every person (A scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record): 817 completed candidate-unknown records, classm.f2441.1.deepseek; the interview asks it only of a Form 8606 filer), an answer the source does not need, and its person.ira_8606_line14 then refuses any person with a distribution. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. Form 8606 (2025) Part I: "In 2025, did you take a distribution from a traditional IRA, or make a Roth IRA conversion?"; p590a p. 15, Both contributions for 2025 and distributions in 2025. The project's gate is a 2025 distribution together with nondeductible contributions for 2025 (the case it refuses). The reply changed: a distribution with prior basis above zero, which tests the basis rather than the 2025 nondeductible contributions and asks ira_dist of every person (classm.f8995.2, completed), an answer the source does not need. Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 1,732 of 4,728 comparisons (1,719 candidate-unknown, 12 project-refuses, 1 value); on returns the full interview completes: 116 candidate-unknown (stage16.refuse.ira.dist: project True, candidate False). Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.ira_8606_line14 — Form 8606 line 14 for this person (total basis in traditional IRAs for 2025 and earlier ye
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"collection": "f8606", "field": "f8606.line14", "op": "sum_over", "where": null}
-```
-
-Second:
-
-```json
-{"expression": {"collection": "f8606", "field": "line14", "op": "sum_over", "where": null}, "invalid_model_types": [{"line": "person.ira_8606_line14", "message": "person.person.ira_8606_line14: reference 'line14' does not resolve"}]}
-```
-
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line (person.ira_8606_line14) is one of them, so this ruling adjudicates the declaration, not the tax reading. By reading: Its worksheet line 5 (h_ira_line5) copies f1040.line11a, adjusted gross income, which includes the IRA deduction itself, where the source starts from line 9 less the Schedule 1 adjustments other than the IRA deduction (i1040gi p. 97: "Enter the amount from Form 1040 or 1040-SR, line 9" and "Enter the total of the amounts from Schedule 1, lines 11 through 19a, plus 23 and 25"): a cycle ("cycle at person.ira_line6" in the scratch evaluation), which reaches this line in the scratch evaluation on 1,730 completed records. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Status: **AGREE**
 
 ### person.ira_ssb — This person's IRA deduction as the Social Security Benefits Worksheet reads it (zero with
 Status: **DISAGREE**
@@ -1178,10 +859,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"of": [{"input": "person.ira_trad"}, {"of": [{"of": [{"of": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "f1040.line11a"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_70"}}, "op": "round", "rule": "up", "unit": 1000}, {"param": "ira.min"}], "op": "larger_of"}, {"collection": "w2", "field": "box1", "op": "sum_over", "where": null}], "op": "smaller_of"}], "op": "smaller_of"}, "invalid_model_types": [{"line": "person.box1", "message": "person.person.box1: reference 'box1' does not resolve"}]}
+{"collection": "person", "field": "person.ira_ssb", "op": "sum_over", "where": null}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line reads person.box1, which is among them, so this ruling adjudicates the declaration, not the tax reading. By reading: Its worksheet line 5 (h_ira_line5) copies f1040.line11a, adjusted gross income, which includes the IRA deduction itself, where the source starts from line 9 less the Schedule 1 adjustments other than the IRA deduction (i1040gi p. 97: "Enter the amount from Form 1040 or 1040-SR, line 9" and "Enter the total of the amounts from Schedule 1, lines 11 through 19a, plus 23 and 25"): a cycle ("cycle at person.ira_line6" in the scratch evaluation), which reaches this line in the scratch evaluation on 1,730 completed records. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. i1040gi p. 32, Social Security Benefits Worksheet, line 6 (the IRA deduction figured for that worksheet); the project computes this person's amount. The reply changed: it copies ssb.ira_line20, the return-level worksheet amount built from this line, so its graph is circular on every return ("cycle at ssb.ira_line20"). Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 4,657 of 4,728 comparisons (4,645 candidate-unknown, 12 project-refuses); on returns the full interview completes: 1,013 candidate-unknown. Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.ira_se — This person's part of worksheet line 9 (zero without a Schedule C)
 Status: **DISAGREE**
@@ -1195,10 +876,12 @@ Project:
 Second:
 
 ```json
-{"expression": {"of": [{"input": "person.ira_trad"}, {"of": [{"of": [{"of": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "f1040.line11a"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_70"}}, "op": "round", "rule": "up", "unit": 1000}, {"param": "ira.min"}], "op": "larger_of"}, {"collection": "w2", "field": "box1", "op": "sum_over", "where": null}], "op": "smaller_of"}], "op": "smaller_of"}, "invalid_model_types": [{"line": "person.box1", "message": "person.person.box1: reference 'box1' does not resolve"}]}
+{"ref": "ira.line12a"}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line reads person.box1, which is among them, so this ruling adjudicates the declaration, not the tax reading. By reading: Its worksheet line 5 (h_ira_line5) copies f1040.line11a, adjusted gross income, which includes the IRA deduction itself, where the source starts from line 9 less the Schedule 1 adjustments other than the IRA deduction (i1040gi p. 97: "Enter the amount from Form 1040 or 1040-SR, line 9" and "Enter the total of the amounts from Schedule 1, lines 11 through 19a, plus 23 and 25"): a cycle ("cycle at person.ira_line6" in the scratch evaluation), which reaches this line in the scratch evaluation on 1,730 completed records. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Second transcription's note: No supplied input separately identifies the self-employment portion of the IRA deduction; this uses the total IRA deduction.
+
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. i1040gi p. 98, IRA Deduction Worksheet, line 9: "Generally, this is your (and your spouse’s if filing jointly) net earnings from self-employment if your personal services were a material income-producing factor"; the project's line is this person's part of line 9 (zero without a Schedule C). The reply copies its person.ira_deduction (its note: "No supplied input separately identifies the self-employment portion of the IRA deduction"), a different quantity, and inherits that line's cycle: its person.ira_deduction copies ira.line12a, the return's line 12a (the taxpayer's column), which is built from this person's lines, so its graph is circular on every return ("cycle at ira.line12a", "cycle at person[taxpayer].ira_deduction"). Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 4,647 of 4,728 comparisons (4,460 candidate-unknown, 187 project-refuses); on returns the full interview completes: 1,013 candidate-unknown. Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.edu_kid — Line 7 conditions 1 and 2 for you: under 18; or 18 with earned income less than half of yo
 Status: **DISAGREE**
@@ -1212,10 +895,10 @@ Project:
 Second:
 
 ```json
-{"args": [{"args": [{"const": false}, {"line": "23"}], "test": "eq"}, {"args": [{"const": false}, {"line": "25"}], "test": "eq"}, {"args": [{"const": false}, {"line": "26"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.edu_1098t"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.edu_ein"}], "test": "eq"}, {"args": [{"const": true}, {"line": "24"}], "test": "eq"}], "test": "all"}
+{"args": [{"args": [{"const": false}, {"line": "23"}], "test": "eq"}, {"args": [{"const": false}, {"line": "25"}], "test": "eq"}, {"args": [{"const": false}, {"line": "26"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.edu"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.edu_1098t"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.edu_ein"}], "test": "eq"}, {"args": [{"const": true}, {"line": "24"}], "test": "eq"}], "test": "all"}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (53 collection sums naming the field without its collection's prefix, for example person.hsa_forms: "reference 'one' does not resolve"; h_ss_room: "reference 'ss.base' does not resolve"; h_se_4a_pos: "declared NonNegDollars but the expression does not prove non-negativity"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. i8863 p. 7, Line 7: "You don't qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you." The published person.edu_kid is that test (read by f8863.no_refund). As in fix round 3 the reply redefines the line as "Student qualifies for the American opportunity credit" (lines 23 to 26, Form 1098-T and EIN answers), a different quantity, so in its graph the refundable part is withheld from eligible students and allowed to filers the test bars (A scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record): stage19.example.bill.ex1 False against True, 13 completed records); it also needs person.edu_line23 on every return (951 completed records), an answer the interview asks only of a student. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. i8863 p. 7, Line 7: "You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you." The published person.edu_kid is that test (read by f8863.no_refund). As in fix round 4 the reply redefines the line as an American opportunity student (lines 23 to 26, Form 1098-T and EIN answers), a different quantity, and asks person.edu of every person (classm.f4952.1.deepseek, completed). Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 2,479 of 4,728 comparisons (2,356 candidate-unknown, 97 project-refuses, 23 value, 3 project-unknown); on returns the full interview completes: 258 candidate-unknown, 2 value (generated 403 and 405, completed: project False, candidate True). Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.x_l1 — Form 5329 line 1 for this person: early distributions includible in income
 Status: **DISAGREE**
@@ -1229,10 +912,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"collection": "retirement", "field": "l1", "op": "sum_over", "where": null}, "invalid_model_types": [{"line": "person.x_l1", "message": "person.person.x_l1: reference 'l1' does not resolve"}]}
+{"collection": "f5329", "field": "f5329.l1", "op": "sum_over", "where": null}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line (person.x_l1) is one of them, so this ruling adjudicates the declaration, not the tax reading. By reading, with the prefix restored it is the project's expression or the same quantity; scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record) shows no difference on any record. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. i5329 p. 3, Line 1: "Enter the amount of early distributions includible in income (other than qualified disaster recovery distributions) that you received from:" The project sums retirement.l1 over the person's Forms 1099-R (published fields). The reply changed: it sums f5329.l1 over the person's f5329 entries; its graph is circular on every return: the f5329 collection's lines are built from this person's lines ("cycle at person[taxpayer].x_l1", "cycle at person[taxpayer].f5329[form].l3_s"). Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 4,709 of 4,728 comparisons (4,707 candidate-unknown, 2 project-refuses); on returns the full interview completes: 1,013 candidate-unknown. Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.x_l2_all — Exception amounts before the per-person limits
 Status: **DISAGREE**
@@ -1246,10 +929,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"collection": "retirement", "field": "l2", "op": "sum_over", "where": null}, "invalid_model_types": [{"line": "person.x_l2_all", "message": "person.person.x_l2_all: reference 'l2' does not resolve"}]}
+{"collection": "f5329", "field": "f5329.l2", "op": "sum_over", "where": null}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line (person.x_l2_all) is one of them, so this ruling adjudicates the declaration, not the tax reading. By reading, with the prefix restored it is the project's expression or the same quantity; scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record) shows no difference on any record. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. i5329 p. 5, Line 2: "Enter on line 2 the amount that you can exclude." The project sums retirement.l2 over the person's Forms 1099-R (published fields). The reply changed: it sums f5329.l2 over the person's f5329 entries; its graph is circular on every return: the f5329 collection's lines are built from this person's lines ("cycle at person[taxpayer].x_l1", "cycle at person[taxpayer].f5329[form].l3_s"). Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 4,709 of 4,728 comparisons (4,708 candidate-unknown, 1 project-refuses); on returns the full interview completes: 1,013 candidate-unknown. Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.x_l1_s — Line 1 amounts from code S distributions
 Status: **DISAGREE**
@@ -1263,10 +946,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"collection": "retirement", "field": "l1_s", "op": "sum_over", "where": null}, "invalid_model_types": [{"line": "person.x_l1_s", "message": "person.person.x_l1_s: reference 'l1_s' does not resolve"}]}
+{"collection": "f5329", "field": "f5329.l3_s", "op": "sum_over", "where": null}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line (person.x_l1_s) is one of them, so this ruling adjudicates the declaration, not the tax reading. By reading, with the prefix restored it is the project's expression or the same quantity; scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record) shows no difference on any record. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. i5329 p. 5, Line 4: "If any amount on line 3 was a distribution from a SIMPLE IRA received within 2 years from the date you first participated in the SIMPLE IRA plan, you must multiply that amount by 25% instead of 10%." The project sums retirement.l1_s (line 1 amounts of code S distributions) over the person's Forms 1099-R (published fields). The reply changed: it sums f5329.l3_s over the person's f5329 entries; its graph is circular on every return: the f5329 collection's lines are built from this person's lines ("cycle at person[taxpayer].x_l1", "cycle at person[taxpayer].f5329[form].l3_s"), and the field is a different quantity. Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 4,709 of 4,728 comparisons (4,708 candidate-unknown, 1 project-refuses); on returns the full interview completes: 1,013 candidate-unknown. Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.x_l2_s — Line 2 amounts from code S distributions
 Status: **DISAGREE**
@@ -1280,44 +963,16 @@ Project:
 Second:
 
 ```json
-{"expression": {"collection": "retirement", "field": "l2_s", "op": "sum_over", "where": null}, "invalid_model_types": [{"line": "person.x_l2_s", "message": "person.person.x_l2_s: reference 'l2_s' does not resolve"}]}
+{"collection": "f5329", "field": "f5329.l3_other", "op": "sum_over", "where": null}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line (person.x_l2_s) is one of them, so this ruling adjudicates the declaration, not the tax reading. By reading, with the prefix restored it is the project's expression or the same quantity; scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record) shows no difference on any record. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. i5329 p. 5, Line 4 (quoted at person.x_l1_s) The project sums retirement.l2_s (line 2 amounts of code S distributions) over the person's Forms 1099-R (published fields). The reply changed: it sums f5329.l3_other over the person's f5329 entries; its graph is circular on every return: the f5329 collection's lines are built from this person's lines ("cycle at person[taxpayer].x_l1", "cycle at person[taxpayer].f5329[form].l3_s"), and the field is a different quantity. Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 4,709 of 4,728 comparisons (4,709 candidate-unknown); on returns the full interview completes: 1,013 candidate-unknown. Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.x_tax — This person's Form 5329 taxes
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"collection": "f5329", "field": "f5329.tax", "op": "sum_over", "where": null}
-```
-
-Second:
-
-```json
-{"expression": {"collection": "f5329", "field": "tax", "op": "sum_over", "where": null}, "invalid_model_types": [{"line": "person.x_tax", "message": "person.person.x_tax: reference 'tax' does not resolve"}]}
-```
-
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line (person.x_tax) is one of them, so this ruling adjudicates the declaration, not the tax reading. By reading, the sum of f5329.tax; through its person.x_hsa_excess (which sums f5329.l49, a line that reads this person's lines) the scratch evaluation reports "cycle at f5329.l49" on 1,719 completed records, and it refuses at its x_limit_binds on 11 completed ones (stage21.blind.e3). Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Status: **AGREE**
 
 ### person.x_must — One if this person must file Form 5329
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"collection": "f5329", "field": "f5329.one", "op": "sum_over", "where": {"args": [{"args": [{"const": 0}, {"collection": "retirement", "field": "retirement.l1_s", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": 0}, {"collection": "retirement", "field": "retirement.l2", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": 0}, {"ref": "f5329.l48"}], "test": "lt"}], "test": "any"}}
-```
-
-Second:
-
-```json
-{"expression": {"collection": "f5329", "field": "one", "op": "sum_over", "where": {"args": [{"args": [{"const": 0}, {"collection": "retirement", "field": "retirement.l1_s", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": 0}, {"collection": "retirement", "field": "retirement.l2", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": 0}, {"ref": "f5329.l48"}], "test": "lt"}], "test": "any"}}, "invalid_model_types": [{"line": "person.x_must", "message": "person.person.x_must: reference 'one' does not resolve"}]}
-```
-
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line (person.x_must) is one of them, so this ruling adjudicates the declaration, not the tax reading. By reading, with the prefix restored it is the project's expression (f5329 forms with f5329.must); but through the reply's person.x_hsa_excess, read by the Form 5329 lines that f5329.must reads, the scratch evaluation reports "cycle at f5329.l49" on 1,716 completed records. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Status: **AGREE**
 
 ### person.x_c05 — Exception 05 limited to the medical expenses above 7.5% of AGI (Schedule A line 4)
 Status: **DISAGREE**
@@ -1331,10 +986,12 @@ Project:
 Second:
 
 ```json
-{"expression": {"collection": "retirement", "field": "l2_e05", "op": "sum_over", "where": null}, "invalid_model_types": [{"line": "person.x_c05", "message": "person.person.x_c05: reference 'l2_e05' does not resolve"}]}
+{"line": "zero"}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line (person.x_c05) is one of them, so this ruling adjudicates the declaration, not the tax reading. By reading, as in fix round 3: the exception 05 amounts with no limit, where the project limits them to Schedule A line 4 (i5329 p. 5, exception 05: "up to the amount you paid for unreimbursed medical expenses during the year minus 7.5% of your adjusted gross income"; decision D4). A scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record): stage21.blind.e6 (completed) $7,475.00 against $9,000.00. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Second transcription's note: No supplied field separately reports exception 05; this transcription uses zero.
+
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. i5329 p. 5, Line 2, exception 05: "Qualified retirement plan distributions up to the amount you paid for unreimbursed medical expenses during the year minus 7.5% of your adjusted gross income (AGI) for the year." The project limits the exception 05 amounts (retirement.l2_e05) to Schedule A line 4. The reply changed: zero (its note: "No supplied field separately reports exception 05"); the interface published retirement.is_e05 and retirement.l2_e05, so exception 05 is never excluded. Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 24 of 4,728 comparisons (19 project-unknown, 5 value); on returns the full interview completes: none (stage21.blind.e6, incomplete: $7,475.00 against $0.00; stage21.refuse.e05_joint, refused). The project-unknown records read the person's Forms 1099-R on records whose collection roster is not confirmed (classm.f8889.3.deepseek), where the reply's zero needs nothing. Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.x_two23 — Exception 23 claimed on more than one distribution
 Status: **DISAGREE**
@@ -1348,10 +1005,12 @@ Project:
 Second:
 
 ```json
-{"expression": {"args": [{"const": 1, "type": "Count"}, {"collection": "retirement", "field": "one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, {"args": [{"const": "none"}, {"input": "retirement.exception"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "e23"}, {"input": "retirement.exception"}], "test": "eq"}], "test": "all"}}], "test": "lt"}, "invalid_model_types": [{"line": "h_e23_count", "message": "person.h_e23_count: reference 'one' does not resolve"}]}
+{"args": [{"const": false}, {"const": true}], "test": "eq"}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line reads h_e23_count, which is among them, so this ruling adjudicates the declaration, not the tax reading. By reading, with the prefix restored it is the project's expression or the same quantity; scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record) shows no difference on any record. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Second transcription's note: No supplied field distinguishes multiple exception 23 situations; this transcription uses false.
+
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. p590b p. 28, Distribution limits: "You are limited to taking one emergency personal expense distribution per calendar year"; the project counts the Forms 1099-R claiming exception 23 (retirement.is_e23) and tests more than one. The reply changed: the constant false (its note: "No supplied field distinguishes multiple exception 23 situations"); the interface published retirement.is_e23. Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 20 of 4,728 comparisons (19 project-unknown, 1 value); on returns the full interview completes: none (stage21.refuse.two23: project True, candidate False, a refused return; the project-unknown records read the Forms 1099-R where the collection roster is not confirmed). Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.x_limited_sum — Exceptions 05, 09, 19, 22 and 23 within their limits
 Status: **DISAGREE**
@@ -1365,10 +1024,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"collection": "retirement", "field": "l2", "op": "sum_over", "where": null}, "invalid_model_types": [{"line": "person.x_limited_sum", "message": "person.person.x_limited_sum: reference 'l2' does not resolve"}]}
+{"collection": "f5329", "field": "f5329.l3", "op": "sum_over", "where": null}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line (person.x_limited_sum) is one of them, so this ruling adjudicates the declaration, not the tax reading. By reading, it sums every exception amount (retirement.l2) with none of the 05, 09, 19, 22 or 23 limits (p590b p. 27: "up to $10,000" for exception 09). A scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record) differs on 8 completed records (stage21.blind.e4 $13,800.00 against $19,000.00; stage21.mut.e23_over_cap $1,000.00 against $1,500.00; stage21.blind.e3 $0.00 against $11,200.00). Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. i5329 p. 5, Line 2: "Enter on line 2 the amount that you can exclude."; p590b p. 27: "up to $10,000" for exception 09; the project adds exceptions 05, 09, 19, 22 and 23 within their limits. The reply changed: it sums f5329.l3 (Form 5329 line 3, the amount subject to the additional tax), a different quantity, and its graph is circular on every return: the f5329 collection's lines are built from this person's lines ("cycle at person[taxpayer].x_l1"). Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 4,709 of 4,728 comparisons (4,709 candidate-unknown); on returns the full interview completes: 1,013 candidate-unknown. Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.x_other_exc — Exceptions without a fixed limit
 Status: **DISAGREE**
@@ -1382,10 +1041,10 @@ Project:
 Second:
 
 ```json
-{"const": 0}
+{"collection": "f5329", "field": "f5329.l3_other", "op": "sum_over", "where": null}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (53 collection sums naming the field without its collection's prefix, for example person.hsa_forms: "reference 'one' does not resolve"; h_ss_room: "reference 'ss.base' does not resolve"; h_se_4a_pos: "declared NonNegDollars but the expression does not prove non-negativity"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. i5329 p. 5, Line 2: "Enter on line 2 the amount that you can exclude." The reply enters zero for the exceptions without a fixed limit, so the exceptions without a fixed limit (for example the higher education expenses exception) are never excluded (A scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record): stage21.example.teacher_education $500.00 against $0.00, stage21.blind.e3 $11,200.00 against $0.00, stage21.blind.e8 $15,000.00 against $0.00; completed). Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. i5329 p. 5, Line 2: "Enter on line 2 the amount that you can exclude."; the project's line is the exceptions without a fixed limit (line 2 amounts less the capped ones). The reply changed: it sums f5329.l3_other over the person's f5329 entries, and its graph is circular on every return: the f5329 collection's lines are built from this person's lines ("cycle at person[taxpayer].x_l1"). Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 4,709 of 4,728 comparisons (4,708 candidate-unknown, 1 project-refuses); on returns the full interview completes: 1,013 candidate-unknown. Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.x_limit_binds — A limited exception over its limit on a person with a code S distribution
 Status: **DISAGREE**
@@ -1399,10 +1058,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"args": [{"const": 0}, {"collection": "retirement", "field": "l2", "op": "sum_over", "where": null}], "test": "lt"}, "invalid_model_types": [{"line": "person.x_limited_sum", "message": "person.person.x_limited_sum: reference 'l2' does not resolve"}]}
+{"args": [{"const": 0}, {"collection": "f5329", "field": "f5329.tax", "op": "sum_over", "where": null}], "test": "lt"}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line reads person.x_limited_sum, which is among them, so this ruling adjudicates the declaration, not the tax reading. By reading, it is true where its unlimited sum exceeds the limited one, without the project's code S condition (amb.2025.f5329_simple_limits), and through person.x_limited_sum it is true wherever any exception is claimed: A scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record) gives True against False on 11 completed records (stage21.example.teacher_education, stage21.blind.e3, e4), where the reply's person.x_tax then refuses returns the project computes. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. i5329 p. 5, Line 4: "If any amount on line 3 was a distribution from a SIMPLE IRA received within 2 years from the date you first participated in the SIMPLE IRA plan, you must multiply that amount by 25% instead of 10%." The project's test is a limited exception over its limit on a person with a code S distribution (amb.2025.f5329_simple_limits). The reply changed: Form 5329 additional tax above zero (sum of f5329.tax), a different test, and its graph is circular on every return: the f5329 collection's lines are built from this person's lines ("cycle at person[taxpayer].x_tax"). Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 4,709 of 4,728 comparisons (4,707 candidate-unknown, 1 candidate-refuses, 1 project-refuses); on returns the full interview completes: 1,013 candidate-unknown. Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### person.x_hsa_excess — This person's 2025 HSA excess contributions (Form 8889)
 Status: **DISAGREE**
@@ -1416,95 +1075,25 @@ Project:
 Second:
 
 ```json
-{"expression": {"collection": "f5329", "field": "l49", "op": "sum_over", "where": null}, "invalid_model_types": [{"line": "person.x_hsa_excess", "message": "person.person.x_hsa_excess: reference 'l49' does not resolve"}]}
+{"expression": {"collection": "f8889", "field": "f8889.excess_amt", "op": "sum_over", "where": null}, "invalid_model_types": [{"line": "person.x_hsa_excess", "message": "person.person.__type_gate_15: collection reference requires sum_over"}, {"line": "person.x_hsa_excess", "message": "person.person.__type_gate_15: comparison operands have incompatible types"}]}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line (person.x_hsa_excess) is one of them, so this ruling adjudicates the declaration, not the tax reading. By reading, it sums f5329.l49 (the 6% tax on HSA excess contributions), a line of the per-person Form 5329 that reads this person's lines, so the scratch evaluation reports "cycle at f5329.l49" on 1,730 completed records. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types"; this line is one of them (its refusal declaration names f8889.unsupported, a field of the per-person f8889 collection, as a person-level gate: "collection reference requires sum_over"), so this ruling adjudicates the declaration, not the tax reading. By reading, the expression is the project's, the sum of f8889.excess_amt (i5329 p. 8, Line 47: "Enter the excess of your contributions ... to your HSAs for 2025 from Form 8889, line 2 (unless withdrawn—discussed next), over your contribution limit (Form 8889, line 12)."); Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 6 of 4,728 comparisons (4 project-refuses, 2 candidate-unknown); on returns the full interview completes: none (stage13.hsa_agreed_all_to_you through the reply's hsa_share cycle; the project refusals are the cited f8889.allocation_bad). Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### employers — Total w2.one for this person
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"collection": "w2", "field": "w2.one", "op": "sum_over", "where": null}
-```
-
-Second:
-
-```json
-{"expression": {"collection": "w2", "field": "one", "op": "sum_over", "where": null}, "invalid_model_types": [{"line": "person.employers", "message": "person.person.employers: reference 'one' does not resolve"}]}
-```
-
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line (person.employers) is one of them, so this ruling adjudicates the declaration, not the tax reading. By reading, with the prefix restored it is the project's expression or the same quantity; scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record) shows no difference on any record. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Status: **AGREE**
 
 ### overcount — Number of employers that withheld more than the limit
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"collection": "w2", "field": "w2.one", "op": "sum_over", "where": {"args": [{"param": "ss.limit"}, {"ref": "w2.box4"}], "test": "lt"}}
-```
-
-Second:
-
-```json
-{"expression": {"collection": "w2", "field": "one", "op": "sum_over", "where": {"args": [{"param": "ss.limit"}, {"ref": "w2.box4"}], "test": "lt"}}, "invalid_model_types": [{"line": "person.overcount", "message": "person.person.overcount: reference 'one' does not resolve"}]}
-```
-
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line (person.overcount) is one of them, so this ruling adjudicates the declaration, not the tax reading. By reading, with the prefix restored it is the project's expression or the same quantity; scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record) shows no difference on any record. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Status: **AGREE**
 
 ### over — Any employer withheld more than the limit
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"args": [{"const": 0, "type": "Count"}, {"line": "overcount"}], "test": "lt"}
-```
-
-Second:
-
-```json
-{"expression": {"args": [{"const": 0, "type": "Count"}, {"line": "overcount"}], "test": "lt"}, "invalid_model_types": [{"line": "person.overcount", "message": "person.person.overcount: reference 'one' does not resolve"}]}
-```
-
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line reads person.overcount, which is among them, so this ruling adjudicates the declaration, not the tax reading. By reading, with the prefix restored it is the project's expression or the same quantity; scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record) shows no difference on any record. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Status: **AGREE**
 
 ### wages — Total w2.wages for this person
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"collection": "w2", "field": "w2.wages", "op": "sum_over", "where": null}
-```
-
-Second:
-
-```json
-{"expression": {"collection": "w2", "field": "wages", "op": "sum_over", "where": null}, "invalid_model_types": [{"line": "person.wages", "message": "person.person.wages: reference 'wages' does not resolve"}]}
-```
-
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line (person.wages) is one of them, so this ruling adjudicates the declaration, not the tax reading. By reading, with the prefix restored it is the project's expression or the same quantity; scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record) shows no difference on any record. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Status: **AGREE**
 
 ### withheld — Total w2.box4 for this person
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"collection": "w2", "field": "w2.box4", "op": "sum_over", "where": null}
-```
-
-Second:
-
-```json
-{"expression": {"collection": "w2", "field": "box4", "op": "sum_over", "where": null}, "invalid_model_types": [{"line": "person.withheld", "message": "person.person.withheld: reference 'box4' does not resolve"}]}
-```
-
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line (person.withheld) is one of them, so this ruling adjudicates the declaration, not the tax reading. By reading, with the prefix restored it is the project's expression or the same quantity; scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record) shows no difference on any record. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Status: **AGREE**
 
 ### eligible — More than one employer and total social security wages over $176,100
 Status: **DISAGREE**
@@ -1518,64 +1107,22 @@ Project:
 Second:
 
 ```json
-{"expression": {"args": [{"args": [{"const": false}, {"line": "over"}], "test": "eq"}, {"args": [{"const": 1, "type": "Count"}, {"line": "employers"}], "test": "lt"}, {"args": [{"param": "ss.base"}, {"line": "wages"}], "test": "lt"}], "test": "all"}, "invalid_model_types": [{"line": "person.employers", "message": "person.person.employers: reference 'one' does not resolve"}, {"line": "person.overcount", "message": "person.person.overcount: reference 'one' does not resolve"}, {"line": "person.wages", "message": "person.person.wages: reference 'wages' does not resolve"}]}
+{"args": [{"args": [{"const": 0, "type": "Count"}, {"line": "overcount"}], "test": "eq"}, {"args": [{"const": 1, "type": "Count"}, {"line": "employers"}], "test": "lt"}, {"args": [{"param": "ss.base"}, {"line": "wages"}], "test": "lt"}], "test": "all"}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line reads person.employers, person.overcount, person.wages, which are among them, so this ruling adjudicates the declaration, not the tax reading. By reading, it adds "no employer withheld more than the limit" (i1040gi p. 117, Line 11: "But if any one employer withheld more than $10,918.20, you can't claim the excess on your return"); the project refuses person.credit when person.over; A scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record) differs only on refused returns (classm.w2.1, ss.multi.over: project True, candidate False), as ruled representation in the Claude log. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: representation; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. i1040gi p. 117, Line 11: "But if any one employer withheld more than $10,918.20, you can't claim the excess on your return. The employer should adjust the tax for you." The reply adds "no employer withheld more than the limit"; the project keeps that out of person.eligible and refuses person.credit when person.over, and eligible feeds only person.credit (as ruled representation in the Claude log). Every value record has person.over true, all refused returns (classm.w2.1.deepseek, classm.f8959.2: project True, candidate False); the project-unknown record is ss.early.refusal. Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 8 of 4,728 comparisons (7 value, 1 project-unknown); on returns the full interview completes: none. Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### excess — Withholding above $10,918.20, if any
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"from": {"line": "withheld"}, "op": "subtract_floor0", "take": {"param": "ss.limit"}}
-```
-
-Second:
-
-```json
-{"expression": {"alternatives": [{"guard": {"args": [{"const": false}, {"line": "eligible"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": true}, {"line": "eligible"}], "test": "eq"}, "then": {"from": {"line": "withheld"}, "op": "subtract_floor0", "take": {"param": "ss.limit"}}}], "op": "choose"}, "invalid_model_types": [{"line": "person.employers", "message": "person.person.employers: reference 'one' does not resolve"}, {"line": "person.overcount", "message": "person.person.overcount: reference 'one' does not resolve"}, {"line": "person.wages", "message": "person.person.wages: reference 'wages' does not resolve"}, {"line": "person.withheld", "message": "person.person.withheld: reference 'box4' does not resolve"}]}
-```
-
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line reads person.employers, person.overcount, person.wages and others, which are among them, so this ruling adjudicates the declaration, not the tax reading. By reading, the withholding above the limit, the project's amount; A scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record) differs only on refused returns and partials. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Status: **AGREE**
 
 ### zero — No excess credit
 Status: **AGREE**
 
 ### credit — Excess social security tax withheld, figured separately for this person
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"alternatives": [{"guard": {"args": [{"const": false}, {"line": "eligible"}], "test": "eq"}, "then": {"line": "zero"}}, {"guard": {"args": [{"const": true}, {"line": "eligible"}], "test": "eq"}, "then": {"line": "excess"}}], "op": "choose"}
-```
-
-Second:
-
-```json
-{"expression": {"line": "excess"}, "invalid_model_types": [{"line": "person.employers", "message": "person.person.employers: reference 'one' does not resolve"}, {"line": "person.overcount", "message": "person.person.overcount: reference 'one' does not resolve"}, {"line": "person.wages", "message": "person.person.wages: reference 'wages' does not resolve"}, {"line": "person.withheld", "message": "person.person.withheld: reference 'box4' does not resolve"}]}
-```
-
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line reads person.employers, person.overcount, person.wages and others, which are among them, so this ruling adjudicates the declaration, not the tax reading. By reading, it copies person.excess without the project's eligibility choice and railroad and over-withholding refusals (person.rrta, person.over, cited); A scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record) differs only by those cited refusals on refused returns and by incomplete records. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Status: **AGREE**
 
 ### Step 1 — Net profit from Schedule C, line 31
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}
-```
-
-Second:
-
-```json
-{"expression": {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, "invalid_model_types": [{"line": "person.sc_total", "message": "person.person.sc_total: reference 'line31' does not resolve"}]}
-```
-
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line reads person.sc_total, which is among them, so this ruling adjudicates the declaration, not the tax reading. By reading, it copies person.sc_total, the project's operand, without the project's refusal at person.se_screened (cited above), and inherits the reply's section 179 cycle: On returns with a Schedule C the reply's graph is circular: its person.income179 (the section 179 business income limit) sums sc.line31, which is after the section 179 deduction that the limit governs (i4562 p. 5, Line 11: "computed without regard to any section 179 expense deduction"), so the scratch evaluation reports "cycle at sc.s179_allowed" on every such return (343 completed records). Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Status: **AGREE**
 
 ### Step 2 — Deduction for self-employment tax from Schedule 1, line 15
 Status: **DISAGREE**
@@ -1589,27 +1136,13 @@ Project:
 Second:
 
 ```json
-{"expression": {"amount": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"const": 0}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"const": 0}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"const": 0}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"const": 0}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"const": 0}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"const": 0}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"collection": "sc", "field": "line31", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"ref": "ss.base"}, "op": "subtract_floor0", "take": {"collection": "w2", "field": "wages", "op": "sum_over", "where": null}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}, "invalid_model_types": [{"line": "person.sc_total", "message": "person.person.sc_total: reference 'line31' does not resolve"}, {"line": "h_se_4a_pos", "message": "person.h_se_4a_pos: declared NonNegDollars but the expression does not prove non-negativity"}, {"line": "h_ss_wages", "message": "person.h_ss_wages: reference 'wages' does not resolve"}, {"line": "h_ss_room", "message": "person.h_ss_room: reference 'ss.base' does not resolve"}]}
+{"amount": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"collection": "w2", "field": "w2.wages", "op": "sum_over", "where": null}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line reads h_se_4a_pos, h_ss_room, h_ss_wages and others, which are among them, so this ruling adjudicates the declaration, not the tax reading. By reading, the se definition bound to its person.sc_total and person.wages, without the project's se_screen and railroad refusals (person.se_screened, person.se_rrta, cited i1040sse pp. 1-5 and Schedule SE line 8a). On returns with a Schedule C the reply's graph is circular: its person.income179 (the section 179 business income limit) sums sc.line31, which is after the section 179 deduction that the limit governs (i4562 p. 5, Line 11: "computed without regard to any section 179 expense deduction"), so the scratch evaluation reports "cycle at sc.s179_allowed" on every such return (343 completed records). Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. p560 p. 39, Deduction Worksheet for Self-Employed, Step 2: "Enter your deduction for self-employment tax from Schedule 1 (Form 1040), line 15". Both copy this person's Schedule SE line 13; the differences are those of the reply's person.se_line13: i1040sse p. 1-5 and Schedule SE (2025) lines 6, 12 and 13; the project computes the se definition on person.se_line2 and person.wages for a person with a Schedule C (zero otherwise) and refuses railroad compensation at person.se_rrta (cited). The reply binds the definition to its own Schedule C total (sum of sc.result) and W-2 wages for every person, and declares the inputs person.se_screen and person.rrta as refusals, so it asks se_screen of every person, an answer the source does not need for a person without self-employment income, and refuses this person's Schedule SE lines wherever it is Yes, where the project enters zero (classm.f5695.2, completed). Its Schedule C total reads sc.result, which goes through the section 179 computation that reads the reply's circular section 179 lines, so on returns with a Schedule C its graph is circular ("cycle at s179.line6"; classm.f4952.1.deepseek, completed: project $134,439.44 line 6). Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 2,493 of 4,728 comparisons (2,458 candidate-unknown, 25 candidate-refuses, 10 project-refuses); on returns the full interview completes: 355 candidate-unknown, 3 candidate-refuses. Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### Step 3 — Net earnings from self-employment. Subtract step 2 from step 1
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"from": {"line": "Step 1"}, "op": "subtract_floor0", "take": {"line": "Step 2"}}
-```
-
-Second:
-
-```json
-{"expression": {"from": {"line": "Step 1"}, "op": "subtract_floor0", "take": {"line": "Step 2"}}, "invalid_model_types": [{"line": "person.sc_total", "message": "person.person.sc_total: reference 'line31' does not resolve"}, {"line": "h_se_4a_pos", "message": "person.h_se_4a_pos: declared NonNegDollars but the expression does not prove non-negativity"}, {"line": "h_ss_wages", "message": "person.h_ss_wages: reference 'wages' does not resolve"}, {"line": "h_ss_room", "message": "person.h_ss_room: reference 'ss.base' does not resolve"}]}
-```
-
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line reads h_se_4a_pos, h_ss_room, h_ss_wages and others, which are among them, so this ruling adjudicates the declaration, not the tax reading. By reading, Step 3 (Step 1 less Step 2, floored at zero); it inherits the section 179 cycle through Step 1: On returns with a Schedule C the reply's graph is circular: its person.income179 (the section 179 business income limit) sums sc.line31, which is after the section 179 deduction that the limit governs (i4562 p. 5, Line 11: "computed without regard to any section 179 expense deduction"), so the scratch evaluation reports "cycle at sc.s179_allowed" on every such return (343 completed records). Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Status: **AGREE**
 
 ### Step 5 — Multiply step 3 by step 4 (the plan rate divided by the plan rate plus 1, to six decimal p
 Status: **DISAGREE**
@@ -1623,12 +1156,12 @@ Project:
 Second:
 
 ```json
-{"expression": {"line": "Step 3"}, "invalid_model_types": [{"line": "person.sc_total", "message": "person.person.sc_total: reference 'line31' does not resolve"}, {"line": "h_se_4a_pos", "message": "person.h_se_4a_pos: declared NonNegDollars but the expression does not prove non-negativity"}, {"line": "h_ss_wages", "message": "person.h_ss_wages: reference 'wages' does not resolve"}, {"line": "h_ss_room", "message": "person.h_ss_room: reference 'ss.base' does not resolve"}]}
+{"input": "person.sep_contrib"}
 ```
 
-Second transcription's note: The reduced SEP rate table is not expressible with the available atoms; this reading uses net earnings as step 5.
+Second transcription's note: The worksheet requires the reduced self-employed rate from the Pub. 560 rate table or rate worksheet; no supplied table or atom expresses the conversion from the plan contribution percentage to that rate. This transcription uses the actual SEP contribution as the step 5 amount.
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line reads h_se_4a_pos, h_ss_room, h_ss_wages and others, which are among them, so this ruling adjudicates the declaration, not the tax reading. By reading, Step 5 (it copies Step 3, without the reduced-rate figure p560 p. 39 asks for: "Multiply step 3 by step 4", the rate from the Rate Table for Self-Employed); it inherits the section 179 cycle through Step 1: On returns with a Schedule C the reply's graph is circular: its person.income179 (the section 179 business income limit) sums sc.line31, which is after the section 179 deduction that the limit governs (i4562 p. 5, Line 11: "computed without regard to any section 179 expense deduction"), so the scratch evaluation reports "cycle at sc.s179_allowed" on every such return (343 completed records). Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. p560 pp. 39-40, Deduction Worksheet for Self-Employed, Steps 4 and 5: "Enter your rate from the Rate Table for Self-Employed or Rate Worksheet for Self-Employed", "Multiply step 3 by step 4". The reply changed: it copies the actual SEP contribution (person.sep_contrib; its note: "no supplied table or atom expresses the conversion from the plan contribution percentage to that rate"); the interface expresses it (prorate by the rate over the rate plus 100, the project's form). Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 832 of 4,728 comparisons (533 value, 165 project-refuses, 102 project-unknown, 32 candidate-unknown); on returns the full interview completes: 259 value, 20 project-unknown, 13 candidate-unknown, 3 project-refuses (classm.f4952.1.deepseek, completed: $3,940.50 against $0.00). Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### Step 6 — Multiply $350,000 by your plan contribution rate (not the reduced rate)
 Status: **DISAGREE**
@@ -1645,46 +1178,18 @@ Second:
 {"param": "ret.comp_limit"}
 ```
 
-Second transcription's note: Multiplying the $350,000 compensation limit by the plan rate is not expressible; this reading uses the compensation limit itself as step 6.
+Second transcription's note: The worksheet requires multiplying $350,000 by the plan contribution rate; the supplied atoms do not multiply money by a whole-percent Count. This transcription uses the compensation limit itself, which does not reduce step 7 unless the step 5 amount exceeds $350,000.
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (53 collection sums naming the field without its collection's prefix, for example person.hsa_forms: "reference 'one' does not resolve"; h_ss_room: "reference 'ss.base' does not resolve"; h_se_4a_pos: "declared NonNegDollars but the expression does not prove non-negativity"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. p560 p. 39, Step 6: "Multiply $350,000 by your plan contribution rate (not the reduced rate)". The reply changed: it enters the $350,000 limit itself (its note: "Multiplying the $350,000 compensation limit by the plan rate is not expressible"); the interface expresses it (prorate with a count, the project's form, and fix round 3's reply's). A scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record) gives $350,000.00 against the rate's amount on 919 completed records (classm.f4952.1.deepseek $10,500.00 against $350,000.00). Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. p560 p. 39, Step 6: "Multiply $350,000 by your plan contribution rate (not the reduced rate)". Same expression as fix round 4 (ruled model error there; only its note changed): the $350,000 limit itself; the interface expresses the product (prorate with a count, the project's form). Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 4,728 of 4,728 comparisons (3,043 value, 1,685 project-unknown); on returns the full interview completes: 919 value, 94 project-unknown (classm.f8889.1.deepseek taxpayer, completed: $35,000.00 against $350,000.00; the project-unknown records lack the plan rate where the project asks it). Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### Step 7 — Enter the smaller of step 5 or step 6
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"of": [{"line": "Step 5"}, {"line": "Step 6"}], "op": "smaller_of"}
-```
-
-Second:
-
-```json
-{"expression": {"of": [{"line": "Step 5"}, {"line": "Step 6"}], "op": "smaller_of"}, "invalid_model_types": [{"line": "person.sc_total", "message": "person.person.sc_total: reference 'line31' does not resolve"}, {"line": "h_se_4a_pos", "message": "person.h_se_4a_pos: declared NonNegDollars but the expression does not prove non-negativity"}, {"line": "h_ss_wages", "message": "person.h_ss_wages: reference 'wages' does not resolve"}, {"line": "h_ss_room", "message": "person.h_ss_room: reference 'ss.base' does not resolve"}]}
-```
-
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line reads h_se_4a_pos, h_ss_room, h_ss_wages and others, which are among them, so this ruling adjudicates the declaration, not the tax reading. By reading, Step 7; it inherits the section 179 cycle through Step 1: On returns with a Schedule C the reply's graph is circular: its person.income179 (the section 179 business income limit) sums sc.line31, which is after the section 179 deduction that the limit governs (i4562 p. 5, Line 11: "computed without regard to any section 179 expense deduction"), so the scratch evaluation reports "cycle at sc.s179_allowed" on every such return (343 completed records). Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Status: **AGREE**
 
 ### Step 8 — Contribution dollar limit
 Status: **AGREE**
 
 ### Step 21 — Maximum deductible contribution (the smaller of step 7 or step 8; no elective deferrals)
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"of": [{"line": "Step 7"}, {"line": "Step 8"}], "op": "smaller_of"}
-```
-
-Second:
-
-```json
-{"expression": {"of": [{"line": "Step 7"}, {"line": "Step 8"}], "op": "smaller_of"}, "invalid_model_types": [{"line": "person.sc_total", "message": "person.person.sc_total: reference 'line31' does not resolve"}, {"line": "h_se_4a_pos", "message": "person.h_se_4a_pos: declared NonNegDollars but the expression does not prove non-negativity"}, {"line": "h_ss_wages", "message": "person.h_ss_wages: reference 'wages' does not resolve"}, {"line": "h_ss_room", "message": "person.h_ss_room: reference 'ss.base' does not resolve"}]}
-```
-
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (triage/person.deepseek.json, state invalid), so triage executed none of its lines: 53 collection sums name the field without its collection's prefix (for example person.hsa_forms sums field "one" of f8889: "person.person.hsa_forms: reference 'one' does not resolve"; the published field is f8889.one), h_ss_room names the parameter ss.base as a line ("reference 'ss.base' does not resolve"), and h_se_4a_pos is "declared NonNegDollars but the expression does not prove non-negativity". This line reads h_se_4a_pos, h_ss_room, h_ss_wages and others, which are among them, so this ruling adjudicates the declaration, not the tax reading. By reading, Step 21; it inherits the section 179 cycle through Step 1: On returns with a Schedule C the reply's graph is circular: its person.income179 (the section 179 business income limit) sums sc.line31, which is after the section 179 deduction that the limit governs (i4562 p. 5, Line 11: "computed without regard to any section 179 expense deduction"), so the scratch evaluation reports "cycle at sc.s179_allowed" on every such return (343 completed records). Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Status: **AGREE**
 
 ### 27 — Adjusted qualified education expenses. Don't enter more than $4,000
 Status: **DISAGREE**
@@ -1698,10 +1203,10 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"const": false}, {"line": "23"}], "test": "eq"}, {"args": [{"const": false}, {"line": "25"}], "test": "eq"}, {"args": [{"const": false}, {"line": "26"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.edu_1098t"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.edu_ein"}], "test": "eq"}, {"args": [{"const": true}, {"line": "24"}], "test": "eq"}], "test": "all"}, "then": {"of": [{"from": {"of": [{"input": "person.edu_inst"}, {"input": "person.edu_mat"}], "op": "sum"}, "op": "subtract_floor0", "take": {"of": [{"input": "person.edu_a2025"}, {"input": "person.edu_a2026"}, {"input": "person.edu_refunds"}], "op": "sum"}}, {"param": "aoc.expense_cap"}], "op": "smaller_of"}}, {"guard": {"args": [{"args": [{"const": false}, {"line": "23"}], "test": "ne"}, {"args": [{"const": false}, {"line": "25"}], "test": "ne"}, {"args": [{"const": false}, {"line": "26"}], "test": "ne"}, {"args": [{"const": true}, {"input": "person.edu_1098t"}], "test": "ne"}, {"args": [{"const": true}, {"input": "person.edu_ein"}], "test": "ne"}, {"args": [{"const": true}, {"line": "24"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
+{"of": [{"from": {"of": [{"input": "person.edu_inst"}, {"input": "person.edu_mat"}], "op": "sum"}, "op": "subtract_floor0", "take": {"of": [{"input": "person.edu_a2025"}, {"input": "person.edu_a2026"}, {"input": "person.edu_refunds"}], "op": "sum"}}, {"param": "aoc.expense_cap"}], "op": "smaller_of"}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (53 collection sums naming the field without its collection's prefix, for example person.hsa_forms: "reference 'one' does not resolve"; h_ss_room: "reference 'ss.base' does not resolve"; h_se_4a_pos: "declared NonNegDollars but the expression does not prove non-negativity"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. i8863 p. 2: "You may be able to claim an education credit if you, your spouse, or a dependent you claim on your tax return was a student enrolled at or attending an eligible educational institution." The reply changed: the aqee arithmetic for a person whose redefined person.edu_kid is true (lines 23 to 26, Form 1098-T and EIN answers). That gate has no TIN test at all (i8863 p. 3: "5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions)"; neither person.tin nor person.itin_applied, so BUG-0259's rewording does not reach it), omits the filers' TIN test (household.all_tin, amb.2025.edu_filer_tin) and the f8863.paid screen, so it needs person.edu_line23 of every person (A scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record): 951 completed candidate-unknown records, classm.f2441.1.deepseek), an answer the source does not need where no qualified expenses were paid. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. f8863 p. 2, line 26: "No—Complete lines 27 through 30 for this student."; lines 23 to 26: "Yes—Stop! Go to line 31 for this student."; "If you complete lines 27 through 30 for this student, don’t complete line 31." The project computes the aqee definition for an American opportunity student (person.edu_aoc) and hides the line otherwise (shown_when person.edu_aoc). The reply changed: it copies the aqee line with no eligibility gate at all (adjustments bound to its own sum of lines 2a to 2c, the project's person.edu_adj_sum without the student gate), so it shows an amount on lines the source skips (candidate-shows-skipped: classm.f1040.2.deepseek spouse, completed, $4,000.00) and asks person.edu_inst of every person (classm.f4952.1.deepseek, completed). Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 2,635 of 4,728 comparisons (2,484 candidate-unknown, 139 candidate-shows-skipped, 11 project-unknown, 1 project-refuses); on returns the full interview completes: 299 candidate-unknown, 46 candidate-shows-skipped. Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### 28 — Subtract $2,000 from line 27. If zero or less, enter -0-
 Status: **DISAGREE**
@@ -1715,10 +1220,10 @@ Project:
 Second:
 
 ```json
-{"from": {"line": "27"}, "op": "subtract_floor0", "take": {"const": 200000}}
+{"from": {"of": [{"from": {"of": [{"input": "person.edu_inst"}, {"input": "person.edu_mat"}], "op": "sum"}, "op": "subtract_floor0", "take": {"of": [{"input": "person.edu_a2025"}, {"input": "person.edu_a2026"}, {"input": "person.edu_refunds"}], "op": "sum"}}, {"param": "aoc.expense_cap"}], "op": "smaller_of"}, "op": "subtract_floor0", "take": {"param": "aoc.full_band"}}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (53 collection sums naming the field without its collection's prefix, for example person.hsa_forms: "reference 'one' does not resolve"; h_ss_room: "reference 'ss.base' does not resolve"; h_se_4a_pos: "declared NonNegDollars but the expression does not prove non-negativity"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. i8863 p. 2: "You may be able to claim an education credit if you, your spouse, or a dependent you claim on your tax return was a student enrolled at or attending an eligible educational institution." The reply changed: the aqee arithmetic for a person whose redefined person.edu_kid is true (lines 23 to 26, Form 1098-T and EIN answers). That gate has no TIN test at all (i8863 p. 3: "5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions)"; neither person.tin nor person.itin_applied, so BUG-0259's rewording does not reach it), omits the filers' TIN test (household.all_tin, amb.2025.edu_filer_tin) and the f8863.paid screen, so it needs person.edu_line23 of every person (A scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record): 951 completed candidate-unknown records, classm.f2441.1.deepseek), an answer the source does not need where no qualified expenses were paid. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. f8863 p. 2, line 26: "No—Complete lines 27 through 30 for this student."; lines 23 to 26: "Yes—Stop! Go to line 31 for this student."; "If you complete lines 27 through 30 for this student, don’t complete line 31." The project computes the aqee definition for an American opportunity student (person.edu_aoc) and hides the line otherwise (shown_when person.edu_aoc). The reply changed: it copies the aqee line with no eligibility gate at all (adjustments bound to its own sum of lines 2a to 2c, the project's person.edu_adj_sum without the student gate), so it shows an amount on lines the source skips (candidate-shows-skipped: classm.f1040.2.deepseek spouse, completed, $2,000.00) and asks person.edu_inst of every person (classm.f4952.1.deepseek, completed). Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 2,633 of 4,728 comparisons (2,484 candidate-unknown, 137 candidate-shows-skipped, 11 project-unknown, 1 project-refuses); on returns the full interview completes: 299 candidate-unknown, 46 candidate-shows-skipped. Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### 29 — Multiply line 28 by 25% (0.25)
 Status: **DISAGREE**
@@ -1732,10 +1237,10 @@ Project:
 Second:
 
 ```json
-{"amount": {"line": "28"}, "op": "multiply_rate", "rate": {"param": "aoc.second_rate"}}
+{"amount": {"from": {"of": [{"from": {"of": [{"input": "person.edu_inst"}, {"input": "person.edu_mat"}], "op": "sum"}, "op": "subtract_floor0", "take": {"of": [{"input": "person.edu_a2025"}, {"input": "person.edu_a2026"}, {"input": "person.edu_refunds"}], "op": "sum"}}, {"param": "aoc.expense_cap"}], "op": "smaller_of"}, "op": "subtract_floor0", "take": {"param": "aoc.full_band"}}, "op": "multiply_rate", "rate": {"param": "aoc.second_rate"}}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (53 collection sums naming the field without its collection's prefix, for example person.hsa_forms: "reference 'one' does not resolve"; h_ss_room: "reference 'ss.base' does not resolve"; h_se_4a_pos: "declared NonNegDollars but the expression does not prove non-negativity"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. i8863 p. 2: "You may be able to claim an education credit if you, your spouse, or a dependent you claim on your tax return was a student enrolled at or attending an eligible educational institution." The reply changed: the aqee arithmetic for a person whose redefined person.edu_kid is true (lines 23 to 26, Form 1098-T and EIN answers). That gate has no TIN test at all (i8863 p. 3: "5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions)"; neither person.tin nor person.itin_applied, so BUG-0259's rewording does not reach it), omits the filers' TIN test (household.all_tin, amb.2025.edu_filer_tin) and the f8863.paid screen, so it needs person.edu_line23 of every person (A scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record): 951 completed candidate-unknown records, classm.f2441.1.deepseek), an answer the source does not need where no qualified expenses were paid. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. f8863 p. 2, line 26: "No—Complete lines 27 through 30 for this student."; lines 23 to 26: "Yes—Stop! Go to line 31 for this student."; "If you complete lines 27 through 30 for this student, don’t complete line 31." The project computes the aqee definition for an American opportunity student (person.edu_aoc) and hides the line otherwise (shown_when person.edu_aoc). The reply changed: it copies the aqee line with no eligibility gate at all (adjustments bound to its own sum of lines 2a to 2c, the project's person.edu_adj_sum without the student gate), so it shows an amount on lines the source skips (candidate-shows-skipped: classm.f1040.2.deepseek spouse, completed, $500.00) and asks person.edu_inst of every person (classm.f4952.1.deepseek, completed). Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 2,633 of 4,728 comparisons (2,484 candidate-unknown, 137 candidate-shows-skipped, 11 project-unknown, 1 project-refuses); on returns the full interview completes: 299 candidate-unknown, 46 candidate-shows-skipped. Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### 30 — American opportunity credit for this student. If line 28 is zero, enter the amount from li
 Status: **DISAGREE**
@@ -1749,10 +1254,10 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"line": "28"}, {"const": 0}], "test": "le"}, "then": {"line": "27"}}, {"guard": {"args": [{"const": 0}, {"line": "28"}], "test": "lt"}, "then": {"of": [{"line": "29"}, {"param": "aoc.full_band"}], "op": "sum"}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"const": 0}, {"from": {"of": [{"from": {"of": [{"input": "person.edu_inst"}, {"input": "person.edu_mat"}], "op": "sum"}, "op": "subtract_floor0", "take": {"of": [{"input": "person.edu_a2025"}, {"input": "person.edu_a2026"}, {"input": "person.edu_refunds"}], "op": "sum"}}, {"param": "aoc.expense_cap"}], "op": "smaller_of"}, "op": "subtract_floor0", "take": {"param": "aoc.full_band"}}], "test": "eq"}, "then": {"of": [{"from": {"of": [{"input": "person.edu_inst"}, {"input": "person.edu_mat"}], "op": "sum"}, "op": "subtract_floor0", "take": {"of": [{"input": "person.edu_a2025"}, {"input": "person.edu_a2026"}, {"input": "person.edu_refunds"}], "op": "sum"}}, {"param": "aoc.expense_cap"}], "op": "smaller_of"}}, {"guard": {"args": [{"const": 0}, {"from": {"of": [{"from": {"of": [{"input": "person.edu_inst"}, {"input": "person.edu_mat"}], "op": "sum"}, "op": "subtract_floor0", "take": {"of": [{"input": "person.edu_a2025"}, {"input": "person.edu_a2026"}, {"input": "person.edu_refunds"}], "op": "sum"}}, {"param": "aoc.expense_cap"}], "op": "smaller_of"}, "op": "subtract_floor0", "take": {"param": "aoc.full_band"}}], "test": "ne"}, "then": {"of": [{"amount": {"from": {"of": [{"from": {"of": [{"input": "person.edu_inst"}, {"input": "person.edu_mat"}], "op": "sum"}, "op": "subtract_floor0", "take": {"of": [{"input": "person.edu_a2025"}, {"input": "person.edu_a2026"}, {"input": "person.edu_refunds"}], "op": "sum"}}, {"param": "aoc.expense_cap"}], "op": "smaller_of"}, "op": "subtract_floor0", "take": {"param": "aoc.full_band"}}, "op": "multiply_rate", "rate": {"param": "aoc.second_rate"}}, {"param": "aoc.full_band"}], "op": "sum"}}], "op": "choose"}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (53 collection sums naming the field without its collection's prefix, for example person.hsa_forms: "reference 'one' does not resolve"; h_ss_room: "reference 'ss.base' does not resolve"; h_se_4a_pos: "declared NonNegDollars but the expression does not prove non-negativity"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. i8863 p. 2: "You may be able to claim an education credit if you, your spouse, or a dependent you claim on your tax return was a student enrolled at or attending an eligible educational institution." The reply changed: the aqee arithmetic for a person whose redefined person.edu_kid is true (lines 23 to 26, Form 1098-T and EIN answers). That gate has no TIN test at all (i8863 p. 3: "5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions)"; neither person.tin nor person.itin_applied, so BUG-0259's rewording does not reach it), omits the filers' TIN test (household.all_tin, amb.2025.edu_filer_tin) and the f8863.paid screen, so it needs person.edu_line23 of every person (A scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record): 951 completed candidate-unknown records, classm.f2441.1.deepseek), an answer the source does not need where no qualified expenses were paid. Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types", so triage ran none of its lines; this line is outside those declarations' dependency closure and is ruled by reading the expressions against the source. f8863 p. 2, line 26: "No—Complete lines 27 through 30 for this student."; lines 23 to 26: "Yes—Stop! Go to line 31 for this student."; "If you complete lines 27 through 30 for this student, don’t complete line 31." The project computes the aqee definition for an American opportunity student (person.edu_aoc) and hides the line otherwise (shown_when person.edu_aoc). The reply changed: it copies the aqee line with no eligibility gate at all (adjustments bound to its own sum of lines 2a to 2c, the project's person.edu_adj_sum without the student gate), so it shows an amount on lines the source skips (candidate-shows-skipped: classm.f1040.2.deepseek spouse, completed, $2,500.00) and asks person.edu_inst of every person (classm.f4952.1.deepseek, completed). Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 2,635 of 4,728 comparisons (2,484 candidate-unknown, 139 candidate-shows-skipped, 11 project-unknown, 1 project-refuses); on returns the full interview completes: 299 candidate-unknown, 46 candidate-shows-skipped. Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
 
 ### 31 — Adjusted qualified education expenses for the lifetime learning credit
 Status: **DISAGREE**
@@ -1766,10 +1271,34 @@ Project:
 Second:
 
 ```json
-{"from": {"of": [{"input": "person.edu_inst"}, {"input": "person.edu_mat"}], "op": "sum"}, "op": "subtract_floor0", "take": {"of": [{"input": "person.edu_a2025"}, {"input": "person.edu_a2026"}, {"input": "person.edu_refunds"}], "op": "sum"}}
+{"expression": {"unknown": "def line line31"}, "invalid_model_types": [{"line": "person.edu_line31", "message": "person.person.edu_line31: 'aqee' has no line 'line31'"}]}
 ```
 
-Ruling: model error; Not executable: the reply fails validation on 55 declarations (53 collection sums naming the field without its collection's prefix, for example person.hsa_forms: "reference 'one' does not resolve"; h_ss_room: "reference 'ss.base' does not resolve"; h_se_4a_pos: "declared NonNegDollars but the expression does not prove non-negativity"), so triage cannot run any of its lines (triage/person.deepseek.json, state invalid); this line is outside those errors' dependency closure and is ruled by reading the expressions against the source. i8863 p. 2, as at line 27; line 31 is the lifetime learning credit amount, for a student for whom the American opportunity credit is not claimed. The reply changed: it copies its own net-expense helper (h_edu_net) for every person, with no lifetime learning eligibility gate (edu, Form 1098-T, TIN, f8863.paid) and no exclusion of American opportunity students. A scratch evaluation of the reply with the prefixes restored (also ss.base as a parameter and floors on h_se_4a_pos and person.positive_profits; tools/transcription/triage.mjs on the same bank with the witness cap lifted, a reading aid and not a triage record) shows it on lines the project hides for an American opportunity student (18 completed records: classm.f8863.4 $4,000.00, stage19.example.bill.ex1 $5,600.00), different amounts where both show it (8 completed: classm.f5695.2 $2,429.00 against $2,990.00, stage19.blind.e10 $5,600.00 against $5,900.00), and needs edu_inst of every person (992 completed records). Fix round 4 re-check: the only project change since fix round 3 is BUG-0259 (person.itin_applied now counts an application to renew an expired ITIN), which this line does not read.
+Ruling: model error; Not executable: the reply fails validation on 6 declarations (triage/person.deepseek.json, state invalid, 10 messages): person.edu_line31 "'aqee' has no line 'line31'"; person.ira_line2 "reference 'ira.line2' does not resolve"; and the refusal declarations of person.hsa_deduction, person.hsa_taxable, person.hsa_addtax and person.x_hsa_excess (refuses: [f8889.unsupported], a field of the f8889 collection), "collection reference requires sum_over" and "comparison operands have incompatible types"; this line is one of them (it copies line31 of the aqee definition, which has none: "'aqee' has no line 'line31'"), so this ruling adjudicates the declaration, not the tax reading. f8863 p. 2, line 26: "No—Complete lines 27 through 30 for this student."; lines 23 to 26: "Yes—Stop! Go to line 31 for this student."; "If you complete lines 27 through 30 for this student, don’t complete line 31." The project computes the aqee definition for an American opportunity student (person.edu_aoc) and hides the line otherwise (shown_when person.edu_aoc), and line 31 for a lifetime learning student (person.edu_llc, hidden otherwise). On the merits, read as the definition's ws4_llc, it has no eligibility gate and no exclusion of American opportunity students, so it shows an amount on lines the source skips (gen403, completed, $9,375.58 where the project hides the line; classm.f8863.4, incomplete, $4,000.00) and asks person.edu_inst of every person: Scratch evaluation (a reading aid, not a triage record: the six declarations patched in /tmp, the f8889.unsupported refusals dropped, ira.line2 read as the parameter and line31 as the definition's ws4_llc; tools/transcription/triage.mjs on the triage bank, 1,390 fixtures, 500 generated returns seed 20261026 and partial records, with the witness cap lifted): the scratch evaluation differs on 2,573 of 4,728 comparisons (2,461 candidate-unknown, 95 candidate-shows-skipped, 17 project-unknown); on returns the full interview completes: 290 candidate-unknown, 3 candidate-shows-skipped. Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor), value-neutral; the disagreement is not on visibility alone.
+
+## Refusal gates listed by the second transcription
+
+Reported, not judged: the project often refuses before a worksheet is used, on the line that chooses it, which a per-line comparison cannot see.
+
+| line | gates listed | not read by the project's line |
+| --- | --- | --- |
+| person.hsa_deduction | f8889.unsupported | - |
+| person.hsa_taxable | f8889.unsupported | - |
+| person.hsa_addtax | f8889.unsupported | - |
+| person.sav_dist | person.sav_able | person.sav_able |
+| person.medicare6 | f8959.unsupported | f8959.unsupported |
+| person.se_line6 | person.rrta, person.se_screen | person.rrta, person.se_screen |
+| person.se_line12 | person.rrta, person.se_screen | person.rrta, person.se_screen |
+| person.se_line13 | person.rrta, person.se_screen | person.rrta, person.se_screen |
+| person.sehi | person.h_sehi_refused | person.h_sehi_refused |
+| person.qbi | qbi.unsupported | qbi.unsupported |
+| person.dc_earned | person.rrta, person.se_screen | person.rrta, person.se_screen |
+| person.dc_earned_b | person.rrta, person.se_screen | person.rrta, person.se_screen |
+| person.sav_line1 | person.sav_able | - |
+| person.sav_line2 | person.sav_excess | person.sav_excess |
+| person.x_hsa_excess | f8889.unsupported | - |
+| Step 2 | person.rrta, person.se_screen | person.rrta, person.se_screen |
+| Step 3 | person.rrta, person.se_screen | person.rrta, person.se_screen |
 
 ## Raw second transcription
 
@@ -1777,54 +1306,69 @@ Ruling: model error; Not executable: the reply fails validation on 55 declaratio
 lines:
   - id: person.employers
     printed: "employers"
-    label: "Number of employers"
+    label: "Number of Forms W-2 for this person"
     type: Count
-    expr: {op: sum_over, collection: w2, field: one}
+    expr: {op: sum_over, collection: w2, field: w2.one}
   - id: person.overcount
     printed: "overcount"
-    label: "Number of employers that withheld more than the Social Security limit"
+    label: "Number of employers whose Social Security tax withheld exceeds the maximum"
     type: Count
-    expr: {op: sum_over, collection: w2, field: one, where: {op: test, eq: [w2.over, {const: true}]}}
+    expr:
+      op: sum_over
+      collection: w2
+      field: w2.one
+      where: {op: test, eq: [w2.over, {const: true}]}
   - id: person.over
     printed: "over"
-    label: "Any employer withheld more than the Social Security limit"
+    label: "Any employer withheld more than the maximum Social Security tax"
     type: Bool
     expr: {op: test, gt: [person.overcount, {const: 0, type: Count}]}
   - id: person.wages
     printed: "wages"
-    label: "Social Security wages and tips"
+    label: "Total Social Security wages and tips for this person"
     type: NonNegDollars
-    expr: {op: sum_over, collection: w2, field: wages}
+    expr: {op: sum_over, collection: w2, field: w2.wages}
   - id: person.withheld
     printed: "withheld"
-    label: "Social Security tax withheld"
+    label: "Total Social Security tax withheld for this person"
     type: NonNegDollars
-    expr: {op: sum_over, collection: w2, field: box4}
+    expr: {op: sum_over, collection: w2, field: w2.box4}
   - id: person.eligible
     printed: "eligible"
     label: "Eligible for the excess Social Security credit"
     type: Bool
-    expr: {op: test, all: [{op: test, gt: [person.employers, {const: 1, type: Count}]}, {op: test, gt: [person.wages, {param: ss.base}]}, {op: test, eq: [person.over, {const: false}]}]}
+    expr:
+      op: test
+      all:
+        - {op: test, gt: [person.employers, {param: ss.one}]}
+        - {op: test, gt: [person.wages, {param: ss.base}]}
+        - {op: test, eq: [person.overcount, {const: 0, type: Count}]}
   - id: person.excess
     printed: "excess"
-    label: "Excess Social Security tax"
+    label: "Social Security tax withheld over the maximum"
     type: NonNegDollars
-    expr: {op: choose, alternatives: [{guard: {op: test, eq: [person.eligible, {const: true}]}, then: h_excess_raw}, {guard: {op: test, eq: [person.eligible, {const: false}]}, then: h_zero_money}]}
+    expr: {op: subtract_floor0, from: person.withheld, take: {param: ss.limit}}
   - id: person.zero
     printed: "zero"
-    label: "Zero"
+    label: "Zero amount"
     type: NonNegDollars
     expr: {op: param, ref: ss.zero}
   - id: person.credit
     printed: "credit"
-    label: "Excess Social Security credit"
+    label: "Excess Social Security credit for this person"
     type: NonNegDollars
-    expr: {op: copy, from: person.excess}
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [person.eligible, {const: true}]}
+          then: person.excess
+        - guard: {op: test, eq: [person.eligible, {const: false}]}
+          then: person.zero
   - id: person.sep_s1
     printed: "Step 1"
-    label: "Net profit from Schedule C, Schedule F or Schedule K-1"
+    label: "Net profit from Schedule C, Schedule F, or Schedule K-1"
     type: Dollars
-    expr: {op: copy, from: person.sc_total}
+    expr: {op: sum_over, collection: sc, field: sc.result}
   - id: person.sep_s2
     printed: "Step 2"
     label: "Deduction for self-employment tax"
@@ -1839,14 +1383,14 @@ lines:
     printed: "Step 5"
     label: "Step 3 multiplied by the self-employed rate"
     type: NonNegDollars
-    expr: {op: copy, from: person.sep_s3}
-    note: "The reduced SEP rate table is not expressible with the available atoms; this reading uses net earnings as step 5."
+    expr: {op: copy, from: person.sep_contrib}
+    note: "The worksheet requires the reduced self-employed rate from the Pub. 560 rate table or rate worksheet; no supplied table or atom expresses the conversion from the plan contribution percentage to that rate. This transcription uses the actual SEP contribution as the step 5 amount."
   - id: person.sep_s6
     printed: "Step 6"
-    label: "$350,000 multiplied by the plan contribution rate"
+    label: "Compensation limit multiplied by the plan contribution rate"
     type: NonNegDollars
     expr: {op: param, ref: ret.comp_limit}
-    note: "Multiplying the $350,000 compensation limit by the plan rate is not expressible; this reading uses the compensation limit itself as step 6."
+    note: "The worksheet requires multiplying $350,000 by the plan contribution rate; the supplied atoms do not multiply money by a whole-percent Count. This transcription uses the compensation limit itself, which does not reduce step 7 unless the step 5 amount exceeds $350,000."
   - id: person.sep_s7
     printed: "Step 7"
     label: "Smaller of step 5 or step 6"
@@ -1866,287 +1410,432 @@ lines:
     printed: "27"
     label: "Adjusted qualified education expenses for the American opportunity credit"
     type: NonNegDollars
-    expr: {op: choose, alternatives: [{guard: {op: test, eq: [person.edu_kid, {const: true}]}, then: h_edu_27_min}, {guard: {op: test, eq: [person.edu_kid, {const: false}]}, then: h_zero_money}]}
+    expr:
+      op: copy
+      from:
+        def: aqee
+        bind:
+          inst: person.edu_inst
+          mat: person.edu_mat
+          adj: person.h_edu_adj
+        line: line27
   - id: person.edu_line28
     printed: "28"
-    label: "Line 27 less $2,000"
+    label: "Line 27 minus $2,000, not below zero"
     type: NonNegDollars
-    expr: {op: subtract_floor0, from: person.edu_line27, take: {const: 200000}}
+    expr:
+      op: copy
+      from:
+        def: aqee
+        bind:
+          inst: person.edu_inst
+          mat: person.edu_mat
+          adj: person.h_edu_adj
+        line: line28
   - id: person.edu_line29
     printed: "29"
     label: "Line 28 multiplied by 25%"
     type: NonNegDollars
-    expr: {op: multiply_rate, amount: person.edu_line28, rate: {param: aoc.second_rate}}
+    expr:
+      op: copy
+      from:
+        def: aqee
+        bind:
+          inst: person.edu_inst
+          mat: person.edu_mat
+          adj: person.h_edu_adj
+        line: line29
   - id: person.edu_line30
     printed: "30"
-    label: "American opportunity credit before allocation"
+    label: "American opportunity credit amount for this student"
     type: NonNegDollars
-    expr: {op: choose, alternatives: [{guard: {op: test, eq: [person.edu_line28, {const: 0}]}, then: person.edu_line27}, {guard: {op: test, ne: [person.edu_line28, {const: 0}]}, then: h_edu_line30_calc}]}
+    expr:
+      op: copy
+      from:
+        def: aqee
+        bind:
+          inst: person.edu_inst
+          mat: person.edu_mat
+          adj: person.h_edu_adj
+        line: line30
   - id: person.edu_line31
     printed: "31"
     label: "Adjusted qualified education expenses for the lifetime learning credit"
     type: NonNegDollars
-    expr: {op: copy, from: h_edu_net}
+    expr:
+      op: copy
+      from:
+        def: aqee
+        bind:
+          inst: person.edu_inst
+          mat: person.edu_mat
+          adj: person.h_edu_adj
+        line: line31
   - id: person.one
     printed: "(helper)"
-    label: "One person"
+    label: "One"
     type: Count
     expr: {op: param, ref: person.one}
   - id: person.educator_deduction
     printed: "(helper)"
-    label: "Educator expenses deduction"
+    label: "Educator expense deduction for this person"
     type: NonNegDollars
-    expr: {op: choose, alternatives: [{guard: {op: test, eq: [person.eligible_educator, {const: true}]}, then: h_educator_min}, {guard: {op: test, eq: [person.eligible_educator, {const: false}]}, then: h_zero_money}]}
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [person.eligible_educator, {const: true}]}
+          then: person.h_educator_allowed
+        - guard: {op: test, eq: [person.eligible_educator, {const: false}]}
+          then: person.zero
   - id: person.hsa_forms
     printed: "(helper)"
-    label: "Number of HSA forms"
+    label: "Number of Forms 8889 for this person"
     type: Count
-    expr: {op: sum_over, collection: f8889, field: one}
+    expr: {op: sum_over, collection: f8889, field: f8889.one}
   - id: person.hsa_split
     printed: "(helper)"
-    label: "Number of HSA forms with a split family limit"
+    label: "Number of Forms 8889 using a split allocation"
     type: Count
-    expr: {op: sum_over, collection: f8889, field: one, where: {op: test, eq: [f8889.split, {const: true}]}}
+    expr:
+      op: sum_over
+      collection: f8889
+      field: f8889.one
+      where: {op: test, eq: [f8889.split, {const: true}]}
   - id: person.hsa_agreed
     printed: "(helper)"
-    label: "Number of HSA forms with an agreed allocation"
+    label: "Number of Forms 8889 using an agreed allocation"
     type: Count
-    expr: {op: sum_over, collection: f8889, field: one, where: {op: test, eq: [f8889.allocation, {const: "agreed"}]}}
+    expr:
+      op: sum_over
+      collection: f8889
+      field: f8889.one
+      where: {op: test, eq: [f8889.allocation, {const: "agreed"}]}
   - id: person.hsa_step1
     printed: "(helper)"
-    label: "Total HSA Step 1 family contribution limit"
+    label: "Total HSA Step 1 contribution limit"
     type: NonNegDollars
-    expr: {op: sum_over, collection: f8889, field: step1}
+    expr: {op: sum_over, collection: f8889, field: f8889.step1}
   - id: person.hsa_share
     printed: "(helper)"
-    label: "Total HSA allocated share"
+    label: "Total HSA contribution limit allocated to this person"
     type: NonNegDollars
-    expr: {op: sum_over, collection: f8889, field: share}
+    expr: {op: sum_over, collection: f8889, field: f8889.share}
   - id: person.hsa_deduction
     printed: "(helper)"
-    label: "Total HSA deduction"
+    label: "HSA deduction for this person"
     type: NonNegDollars
-    expr: {op: sum_over, collection: f8889, field: line13}
+    expr: {op: sum_over, collection: f8889, field: f8889.line13}
+    refuses: [f8889.unsupported]
   - id: person.hsa_taxable
     printed: "(helper)"
-    label: "Total taxable HSA distributions"
+    label: "Taxable HSA distributions for this person"
     type: NonNegDollars
-    expr: {op: sum_over, collection: f8889, field: line16}
+    expr: {op: sum_over, collection: f8889, field: f8889.line16}
+    refuses: [f8889.unsupported]
   - id: person.hsa_addtax
     printed: "(helper)"
-    label: "Total additional 20% tax on HSA distributions"
+    label: "Additional 20% tax on taxable HSA distributions"
     type: NonNegDollars
-    expr: {op: sum_over, collection: f8889, field: line17b}
+    expr: {op: sum_over, collection: f8889, field: f8889.line17b}
+    refuses: [f8889.unsupported]
   - id: person.tip_employers
     printed: "(helper)"
     label: "Number of employers with qualified tips"
     type: Count
-    expr: {op: sum_over, collection: tipjob, field: one}
+    expr: {op: sum_over, collection: tipjob, field: tipjob.one}
   - id: person.tip_total
     printed: "(helper)"
-    label: "Total qualified tips"
+    label: "Total qualified tips from more than one employer"
     type: NonNegDollars
-    expr: {op: sum_over, collection: tipjob, field: col_d}
+    expr: {op: sum_over, collection: tipjob, field: tipjob.col_d}
   - id: person.tip_reported
     printed: "(helper)"
-    label: "Qualified tips reported by employers"
+    label: "Qualified tips reported on Form 4137"
     type: NonNegDollars
-    expr: {op: sum_over, collection: tipjob, field: amount}
+    expr: {op: sum_over, collection: tipjob, field: tipjob.col_c}
   - id: person.ot_employers
     printed: "(helper)"
-    label: "Number of employers with qualified overtime"
+    label: "Number of employers with qualified overtime compensation"
     type: Count
-    expr: {op: sum_over, collection: otjob, field: one}
+    expr: {op: sum_over, collection: otjob, field: otjob.one}
   - id: person.ot_total
     printed: "(helper)"
-    label: "Total qualified overtime"
+    label: "Total qualified overtime compensation"
     type: NonNegDollars
-    expr: {op: sum_over, collection: otjob, field: col_b}
+    expr: {op: sum_over, collection: otjob, field: otjob.col_b}
   - id: person.box1
     printed: "(helper)"
-    label: "Total Form W-2 box 1 wages"
+    label: "Total Form W-2 box 1 wages for this person"
     type: NonNegDollars
-    expr: {op: sum_over, collection: w2, field: box1}
+    expr: {op: sum_over, collection: w2, field: w2.box1}
   - id: person.box2
     printed: "(helper)"
-    label: "Total Form W-2 box 2 withholding"
+    label: "Total Form W-2 box 2 federal income tax withheld for this person"
     type: NonNegDollars
-    expr: {op: sum_over, collection: w2, field: box2}
+    expr: {op: sum_over, collection: w2, field: w2.box2}
   - id: person.ira_amount_a
     printed: "(helper)"
-    label: "Traditional IRA distributions"
+    label: "Total IRA distributions for this person"
     type: NonNegDollars
-    expr: {op: sum_over, collection: retirement, field: amount_a, where: {op: test, eq: [retirement.account, {const: "traditional_ira"}]}}
+    expr:
+      op: sum_over
+      collection: retirement
+      field: retirement.amount_a
+      where:
+        op: test
+        any:
+          - {op: test, eq: [retirement.account, {const: "traditional_ira"}]}
+          - {op: test, eq: [retirement.account, {const: "roth_ira"}]}
   - id: person.ira_taxable
     printed: "(helper)"
-    label: "Taxable traditional IRA distributions"
+    label: "Taxable IRA distributions for this person"
     type: NonNegDollars
-    expr: {op: sum_over, collection: retirement, field: ira_taxable}
+    expr:
+      op: sum_over
+      collection: retirement
+      field: retirement.ira_taxable
+      where:
+        op: test
+        any:
+          - {op: test, eq: [retirement.account, {const: "traditional_ira"}]}
+          - {op: test, eq: [retirement.account, {const: "roth_ira"}]}
   - id: person.ira_rollovers
     printed: "(helper)"
     label: "Number of IRA distributions with rollovers"
     type: Count
-    expr: {op: sum_over, collection: retirement, field: one, where: {op: test, all: [{op: test, eq: [retirement.is_ira, {const: true}]}, {op: test, eq: [retirement.has_rollover, {const: true}]}]}}
+    expr:
+      op: sum_over
+      collection: retirement
+      field: retirement.one
+      where:
+        op: test
+        all:
+          - op: test
+            any:
+              - {op: test, eq: [retirement.account, {const: "traditional_ira"}]}
+              - {op: test, eq: [retirement.account, {const: "roth_ira"}]}
+          - {op: test, eq: [retirement.has_rollover, {const: true}]}
   - id: person.plan_amount_a
     printed: "(helper)"
-    label: "Plan distributions"
+    label: "Total pension and annuity distributions for this person"
     type: NonNegDollars
-    expr: {op: sum_over, collection: retirement, field: amount_a, where: {op: test, eq: [retirement.account, {const: "plan"}]}}
+    expr:
+      op: sum_over
+      collection: retirement
+      field: retirement.amount_a
+      where: {op: test, eq: [retirement.account, {const: "plan"}]}
   - id: person.plan_taxable
     printed: "(helper)"
-    label: "Taxable plan distributions"
+    label: "Taxable pension and annuity distributions for this person"
     type: NonNegDollars
-    expr: {op: sum_over, collection: retirement, field: plan_taxable}
+    expr:
+      op: sum_over
+      collection: retirement
+      field: retirement.plan_taxable
+      where: {op: test, eq: [retirement.account, {const: "plan"}]}
   - id: person.plan_rollovers
     printed: "(helper)"
-    label: "Number of plan distributions with rollovers"
+    label: "Number of pension and annuity distributions with rollovers"
     type: Count
-    expr: {op: sum_over, collection: retirement, field: one, where: {op: test, all: [{op: test, eq: [retirement.account, {const: "plan"}]}, {op: test, eq: [retirement.has_rollover, {const: true}]}]}}
+    expr:
+      op: sum_over
+      collection: retirement
+      field: retirement.one
+      where:
+        op: test
+        all:
+          - {op: test, eq: [retirement.account, {const: "plan"}]}
+          - {op: test, eq: [retirement.has_rollover, {const: true}]}
   - id: person.sav_dist
     printed: "(helper)"
-    label: "Retirement distributions for the saver's credit"
+    label: "Certain distributions for the retirement savings contributions credit"
     type: NonNegDollars
-    expr: {op: sum_over, collection: retirement, field: sav_amount}
+    expr: {op: sum_over, collection: retirement, field: retirement.sav_amount}
+    refuses: [person.sav_able]
   - id: person.medicare5
     printed: "(helper)"
-    label: "Total Medicare wages"
+    label: "Additional Medicare Tax threshold for the filing status"
     type: NonNegDollars
-    expr: {op: sum_over, collection: w2, field: box5}
+    expr: {op: param, ref: medicare.threshold}
   - id: person.medicare6
     printed: "(helper)"
-    label: "Total Medicare tax withheld"
+    label: "Medicare wages over the Additional Medicare Tax threshold"
     type: NonNegDollars
-    expr: {op: sum_over, collection: w2, field: box6}
+    expr: {op: subtract_floor0, from: person.h_medicare4, take: person.medicare5}
+    refuses: [f8959.unsupported]
   - id: person.sc_count
     printed: "(helper)"
-    label: "Number of Schedule C businesses"
+    label: "Number of Schedule C businesses for this person"
     type: Count
-    expr: {op: sum_over, collection: sc, field: one}
+    expr: {op: sum_over, collection: sc, field: sc.one}
   - id: person.ho_count
     printed: "(helper)"
-    label: "Number of Schedule C businesses with home office deductions"
+    label: "Number of Schedule C businesses with a home-office deduction"
     type: Count
-    expr: {op: sum_over, collection: sc, field: one, where: {op: test, eq: [sc.ho_uses, {const: true}]}}
+    expr:
+      op: sum_over
+      collection: sc
+      field: sc.one
+      where: {op: test, eq: [sc.ho_uses, {const: true}]}
   - id: person.mq_q4
     printed: "(helper)"
-    label: "Total mid-quarter fourth-quarter depreciation"
+    label: "Total fourth-quarter mid-quarter depreciation"
     type: NonNegDollars
-    expr: {op: sum_over, collection: sc, field: mq_q4}
+    expr: {op: sum_over, collection: sc, field: sc.mq_q4}
   - id: person.mq_total
     printed: "(helper)"
     label: "Total mid-quarter depreciation"
     type: NonNegDollars
-    expr: {op: sum_over, collection: sc, field: mq_total}
+    expr: {op: sum_over, collection: sc, field: sc.mq_total}
   - id: person.cost179
     printed: "(helper)"
-    label: "Total section 179 cost"
+    label: "Total cost of section 179 property"
     type: NonNegDollars
-    expr: {op: sum_over, collection: sc, field: cost179}
+    expr: {op: sum_over, collection: sc, field: sc.cost179}
   - id: person.s179_nonlisted
     printed: "(helper)"
-    label: "Section 179 deduction on nonlisted property"
+    label: "Section 179 deduction for non-listed property"
     type: NonNegDollars
-    expr: {op: sum_over, collection: sc, field: s179_allowed}
-    note: "The child Schedule C fields do not split listed from nonlisted section 179; this reading puts the allowed section 179 amount in nonlisted property."
+    expr: {op: copy, from: s179.line7}
   - id: person.s179_listed
     printed: "(helper)"
-    label: "Section 179 deduction on listed property"
+    label: "Section 179 deduction for listed property"
     type: NonNegDollars
-    expr: {op: param, ref: ss.zero}
-    note: "The child Schedule C fields do not split listed from nonlisted section 179; this reading puts listed property at zero."
+    expr: {op: copy, from: s179.line6}
   - id: person.income179
     printed: "(helper)"
-    label: "Business income for the section 179 limitation"
+    label: "Business income limitation for the section 179 deduction"
     type: Dollars
-    expr: {op: sum_over, collection: sc, field: line31}
+    expr: {op: copy, from: s179.income}
   - id: person.sc_total
     printed: "(helper)"
-    label: "Total Schedule C net profit or loss"
+    label: "Total net profit or loss from Schedule C businesses"
     type: Dollars
-    expr: {op: sum_over, collection: sc, field: line31}
+    expr: {op: sum_over, collection: sc, field: sc.result}
   - id: person.se_line6
     printed: "(helper)"
-    label: "Schedule SE line 6"
+    label: "Schedule SE line 6 net earnings"
     type: NonNegDollars
-    expr: {op: choose, alternatives: [{guard: {op: test, ge: [h_se_4a, h_400]}, then: h_se_4a}, {guard: {op: test, lt: [h_se_4a, h_400]}, then: h_zero_money}]}
+    expr:
+      op: copy
+      from:
+        def: se
+        bind:
+          line2: person.sc_total
+          line8a: person.h_se8a
+        line: line6
+    refuses: [person.se_screen, person.rrta]
   - id: person.se_line12
     printed: "(helper)"
     label: "Schedule SE line 12 self-employment tax"
     type: NonNegDollars
-    expr: {op: sum, of: [h_tax_ss, h_tax_med]}
+    expr:
+      op: copy
+      from:
+        def: se
+        bind:
+          line2: person.sc_total
+          line8a: person.h_se8a
+        line: line12
+    refuses: [person.se_screen, person.rrta]
   - id: person.se_line13
     printed: "(helper)"
     label: "Schedule SE line 13 deduction for one-half of self-employment tax"
     type: NonNegDollars
-    expr: {op: multiply_rate, amount: person.se_line12, rate: {param: se.rate_50}}
+    expr:
+      op: copy
+      from:
+        def: se
+        bind:
+          line2: person.sc_total
+          line8a: person.h_se8a
+        line: line13
+    refuses: [person.se_screen, person.rrta]
   - id: person.s16
     printed: "(helper)"
-    label: "SEP, SIMPLE and qualified plan deduction"
+    label: "Self-employed SEP, SIMPLE, and qualified plan deduction"
     type: NonNegDollars
-    expr: {op: choose, alternatives: [{guard: {op: test, eq: [person.plan, {const: "none"}]}, then: h_zero_money}, {guard: {op: test, eq: [person.plan, {const: "sep"}]}, then: h_sep_actual}, {guard: {op: test, eq: [person.plan, {const: "simple"}]}, then: h_simple_actual}]}
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [person.plan, {const: "none"}]}
+          then: person.zero
+        - guard: {op: test, eq: [person.plan, {const: "sep"}]}
+          then: person.h_sep_actual
+        - guard: {op: test, eq: [person.plan, {const: "simple"}]}
+          then: person.h_simple_contrib
   - id: person.positive_profits
     printed: "(helper)"
-    label: "Total positive net profits from businesses"
+    label: "Total positive Schedule C profits"
     type: NonNegDollars
-    expr: {op: sum_over, collection: sc, field: line31, where: {op: test, gt: [sc.line31, {const: 0}]}}
+    expr: {op: sum_over, collection: sc, field: sc.profit_pos}
   - id: person.sehi
     printed: "(helper)"
     label: "Self-employed health insurance deduction"
     type: NonNegDollars
-    expr: {op: sum_over, collection: sc, field: f7206_line14}
+    expr: {op: sum_over, collection: sc, field: sc.f7206_line14}
+    refuses: [person.h_sehi_refused]
   - id: person.qbi
     printed: "(helper)"
     label: "Qualified business income deduction"
     type: Dollars
-    expr: {op: sum_over, collection: sc, field: qbi}
+    expr: {op: copy, from: qbi.deduction}
+    refuses: [qbi.unsupported]
   - id: person.eic_se
     printed: "(helper)"
-    label: "Self-employment earned income for the earned income credit"
+    label: "Self-employment earned income for the EIC"
     type: Dollars
-    expr: {op: subtract, from: person.sc_total, take: person.se_line13}
+    expr: {op: copy, from: eic.wsb_se}
   - id: person.sc_1a
     printed: "(helper)"
-    label: "Number of Schedule C businesses for the earned income credit worksheet"
+    label: "Number of Schedule C statutory employee or notary entries"
     type: Count
-    expr: {op: copy, from: person.sc_count}
+    expr: {op: copy, from: s1.sc_1a_count}
   - id: person.dc_benefits
     printed: "(helper)"
-    label: "Dependent care benefits"
+    label: "Dependent care benefits for this person"
     type: NonNegDollars
-    expr: {op: sum_over, collection: w2, field: dc_benefits}
+    expr: {op: sum_over, collection: w2, field: w2.dc_benefits}
   - id: person.dc_has_box10
     printed: "(helper)"
-    label: "Any dependent care benefits in Form W-2 box 10"
+    label: "Any Form W-2 box 10 dependent care benefits"
     type: Bool
-    expr: {op: test, gt: [person.dc_benefits, {const: 0}]}
+    expr: {op: test, gt: [person.h_dc_box10_count, {const: 0, type: Count}]}
   - id: person.dc_earned
     printed: "(helper)"
     label: "Earned income for the child and dependent care credit"
     type: Dollars
-    expr: {op: subtract, from: person.box1, take: {const: 0}}
+    expr: {op: subtract, from: person.h_dc_earned_raw, take: person.se_line13}
   - id: person.dc_earned_b
     printed: "(helper)"
-    label: "Spouse's earned income for the child and dependent care credit"
+    label: "Earned income for dependent care benefits"
     type: Dollars
-    expr: {op: subtract, from: person.box1, take: {const: 0}}
+    expr: {op: subtract_floor0, from: person.dc_earned, take: person.dc_benefits}
   - id: person.sav_ineligible
     printed: "(helper)"
-    label: "Ineligible for the saver's credit"
+    label: "Ineligible for the retirement savings contributions credit"
     type: Bool
-    expr: {op: test, any: [{op: test, eq: [person.sav_born, {const: false}]}, {op: test, eq: [person.sav_claimed, {const: true}]}, {op: test, eq: [person.sav_student, {const: true}]}]}
+    expr:
+      op: test
+      any:
+        - {op: test, eq: [person.sav_born, {const: false}]}
+        - {op: test, eq: [person.sav_claimed, {const: true}]}
+        - {op: test, eq: [person.sav_student, {const: true}]}
   - id: person.sav_line1
     printed: "(helper)"
-    label: "Retirement savings contributions credit line 1"
+    label: "Traditional and Roth IRA contributions for the saver's credit"
     type: NonNegDollars
     expr: {op: sum, of: [person.ira_trad, person.sav_roth]}
+    refuses: [person.sav_able]
   - id: person.sav_line2
     printed: "(helper)"
-    label: "Retirement savings contributions credit line 2"
+    label: "Elective deferrals and voluntary contributions for the saver's credit"
     type: NonNegDollars
-    expr: {op: sum, of: [h_sav_deferral, person.sav_voluntary]}
+    expr: {op: sum, of: [person.h_sav_w2, person.sav_voluntary]}
+    refuses: [person.sav_excess]
   - id: person.ira_contrib
     printed: "(helper)"
-    label: "Traditional IRA contributions"
+    label: "Traditional IRA contributions for this person"
     type: NonNegDollars
     expr: {op: copy, from: person.ira_trad}
   - id: person.ira_cov
@@ -2158,277 +1847,216 @@ lines:
     printed: "(helper)"
     label: "IRA deduction worksheet line 2"
     type: NonNegDollars
-    expr: {op: choose, alternatives: [{guard: {op: test, eq: [person.ira_cov, {const: true}]}, then: h_ira_line2_cov}, {guard: {op: test, eq: [person.ira_cov, {const: false}]}, then: h_ira_line2_nocov}]}
+    expr: {op: copy, from: ira.line2}
   - id: person.ira_line6
     printed: "(helper)"
     label: "IRA deduction worksheet line 6"
     type: NonNegDollars
-    expr: {op: subtract_floor0, from: person.ira_line2, take: h_ira_line5}
+    expr: {op: copy, from: ira.line6a}
   - id: person.ira_line7
     printed: "(helper)"
     label: "IRA deduction worksheet line 7"
     type: NonNegDollars
-    expr: {op: larger_of, of: [h_ira_line7_round, h_ira_200]}
-    note: "Uses the 70% rate and the $200 floor as a default; age and filing-status rate variants are not encoded."
+    expr: {op: copy, from: ira.line7a}
   - id: person.ira_deduction
     printed: "(helper)"
-    label: "IRA deduction"
+    label: "IRA deduction for this person"
     type: NonNegDollars
-    expr: {op: smaller_of, of: [h_ira_min1, person.ira_trad]}
-    note: "Earned income for the line 10 limit is read from Form W-2 box 1; self-employment earned income is not added."
+    expr: {op: copy, from: ira.line12a}
   - id: person.ira_nondeductible
     printed: "(helper)"
     label: "Nondeductible traditional IRA contributions"
     type: NonNegDollars
-    expr: {op: subtract_floor0, from: person.ira_trad, take: person.ira_deduction}
+    expr: {op: subtract_floor0, from: person.ira_contrib, take: person.ira_deduction}
   - id: person.ira_files_8606
     printed: "(helper)"
-    label: "Must file Form 8606"
+    label: "Form 8606 required"
     type: Bool
-    expr: {op: test, gt: [person.ira_nondeductible, {const: 0}]}
+    expr:
+      op: test
+      any:
+        - {op: test, gt: [person.ira_nondeductible, {const: 0}]}
+        - op: test
+          all:
+            - {op: test, eq: [person.ira_dist, {const: true}]}
+            - {op: test, gt: [person.ira_basis, {const: 0}]}
   - id: person.ira_8606_line2
     printed: "(helper)"
     label: "Form 8606 line 2 total basis"
     type: NonNegDollars
-    expr: {op: copy, from: person.ira_basis}
+    expr: {op: sum_over, collection: f8606, field: f8606.line2}
   - id: person.ira_dist_gate
     printed: "(helper)"
-    label: "Traditional IRA distribution or Roth conversion in 2025"
+    label: "IRA distributions require basis computation"
     type: Bool
-    expr: {op: copy, from: person.ira_dist}
+    expr:
+      op: test
+      all:
+        - {op: test, eq: [person.ira_dist, {const: true}]}
+        - {op: test, gt: [person.ira_basis, {const: 0}]}
   - id: person.ira_8606_line14
     printed: "(helper)"
-    label: "Form 8606 line 14 total basis for 2025 and earlier years"
+    label: "Form 8606 line 14 total basis"
     type: NonNegDollars
-    expr: {op: sum_over, collection: f8606, field: line14}
+    expr: {op: sum_over, collection: f8606, field: f8606.line14}
   - id: person.ira_ssb
     printed: "(helper)"
     label: "IRA deduction used in the Social Security Benefits Worksheet"
     type: NonNegDollars
-    expr: {op: copy, from: person.ira_deduction}
+    expr: {op: copy, from: ssb.ira_line20}
   - id: person.ira_se
     printed: "(helper)"
-    label: "IRA deduction used in the self-employment calculation"
+    label: "IRA deduction attributable to self-employment"
     type: NonNegDollars
     expr: {op: copy, from: person.ira_deduction}
+    note: "No supplied input separately identifies the self-employment portion of the IRA deduction; this uses the total IRA deduction."
   - id: person.edu_kid
     printed: "(helper)"
-    label: "Student qualifies for the American opportunity credit"
+    label: "Student eligible for the American opportunity credit"
     type: Bool
-    expr: {op: test, all: [{op: test, eq: [person.edu_line23, {const: false}]}, {op: test, eq: [person.edu_line24, {const: true}]}, {op: test, eq: [person.edu_line25, {const: false}]}, {op: test, eq: [person.edu_line26, {const: false}]}, {op: test, eq: [person.edu_1098t, {const: true}]}, {op: test, eq: [person.edu_ein, {const: true}]}]}
+    expr:
+      op: test
+      all:
+        - {op: test, eq: [person.edu, {const: true}]}
+        - {op: test, eq: [person.edu_1098t, {const: true}]}
+        - {op: test, eq: [person.edu_line23, {const: false}]}
+        - {op: test, eq: [person.edu_line24, {const: true}]}
+        - {op: test, eq: [person.edu_line25, {const: false}]}
+        - {op: test, eq: [person.edu_line26, {const: false}]}
+        - {op: test, eq: [person.edu_ein, {const: true}]}
   - id: person.x_l1
     printed: "(helper)"
-    label: "Early distributions includible in income"
+    label: "Form 5329 line 1 early distributions"
     type: NonNegDollars
-    expr: {op: sum_over, collection: retirement, field: l1}
+    expr: {op: sum_over, collection: f5329, field: f5329.l1}
   - id: person.x_l2_all
     printed: "(helper)"
-    label: "Total early distribution exceptions"
+    label: "Form 5329 line 2 early distributions not subject to additional tax"
     type: NonNegDollars
-    expr: {op: sum_over, collection: retirement, field: l2}
+    expr: {op: sum_over, collection: f5329, field: f5329.l2}
   - id: person.x_l1_s
     printed: "(helper)"
-    label: "SIMPLE IRA early distributions"
+    label: "Form 5329 SIMPLE early distribution amount"
     type: NonNegDollars
-    expr: {op: sum_over, collection: retirement, field: l1_s}
+    expr: {op: sum_over, collection: f5329, field: f5329.l3_s}
   - id: person.x_l2_s
     printed: "(helper)"
-    label: "SIMPLE IRA exceptions"
+    label: "Form 5329 other exception amount"
     type: NonNegDollars
-    expr: {op: sum_over, collection: retirement, field: l2_s}
+    expr: {op: sum_over, collection: f5329, field: f5329.l3_other}
   - id: person.x_tax
     printed: "(helper)"
-    label: "Form 5329 additional tax on early distributions"
+    label: "Form 5329 additional tax"
     type: NonNegDollars
-    expr: {op: sum_over, collection: f5329, field: tax}
+    expr: {op: sum_over, collection: f5329, field: f5329.tax}
   - id: person.x_must
     printed: "(helper)"
-    label: "Number of Forms 5329 that must be filed"
+    label: "Number of Forms 5329 required"
     type: Count
-    expr: {op: sum_over, collection: f5329, field: one, where: {op: test, eq: [f5329.must, {const: true}]}}
+    expr:
+      op: sum_over
+      collection: f5329
+      field: f5329.one
+      where: {op: test, eq: [f5329.must, {const: true}]}
   - id: person.x_c05
     printed: "(helper)"
-    label: "Medical expense exception amount"
+    label: "Medical expenses exception amount"
     type: NonNegDollars
-    expr: {op: sum_over, collection: retirement, field: l2_e05}
+    expr: {op: copy, from: person.zero}
+    note: "No supplied field separately reports exception 05; this transcription uses zero."
   - id: person.x_two23
     printed: "(helper)"
-    label: "More than one emergency personal expense exception"
+    label: "More than one exception 23 applies"
     type: Bool
-    expr: {op: test, gt: [h_e23_count, {const: 1, type: Count}]}
+    expr: {op: test, eq: [{const: false}, {const: true}]}
+    note: "No supplied field distinguishes multiple exception 23 situations; this transcription uses false."
   - id: person.x_limited_sum
     printed: "(helper)"
-    label: "Limited exception amount"
+    label: "Form 5329 amount subject to additional tax"
     type: NonNegDollars
-    expr: {op: sum_over, collection: retirement, field: l2}
+    expr: {op: sum_over, collection: f5329, field: f5329.l3}
   - id: person.x_other_exc
     printed: "(helper)"
-    label: "Other exception amount"
+    label: "Other Form 5329 exception amount"
     type: NonNegDollars
-    expr: {op: param, ref: ss.zero}
+    expr: {op: sum_over, collection: f5329, field: f5329.l3_other}
   - id: person.x_limit_binds
     printed: "(helper)"
-    label: "An exception limit reduces the distribution"
+    label: "Form 5329 additional tax is positive"
     type: Bool
-    expr: {op: test, gt: [person.x_limited_sum, {const: 0}]}
+    expr: {op: test, gt: [person.x_tax, {const: 0}]}
   - id: person.x_hsa_excess
     printed: "(helper)"
-    label: "Additional tax on excess HSA contributions"
+    label: "Excess HSA contributions"
     type: NonNegDollars
-    expr: {op: sum_over, collection: f5329, field: l49}
-  - id: h_zero_money
+    expr: {op: sum_over, collection: f8889, field: f8889.excess_amt}
+    refuses: [f8889.unsupported]
+  - id: person.h_educator_max
     printed: "(helper)"
-    label: "Zero"
-    type: NonNegDollars
-    expr: {op: param, ref: ss.zero}
-  - id: h_excess_raw
-    printed: "(helper)"
-    label: "Excess Social Security withholding before eligibility"
-    type: NonNegDollars
-    expr: {op: subtract_floor0, from: person.withheld, take: {param: ss.limit}}
-  - id: h_educator_max
-    printed: "(helper)"
-    label: "Educator expense limit"
+    label: "Maximum educator expense deduction"
     type: NonNegDollars
     expr: {op: param, ref: s1.educator_max}
-  - id: h_educator_min
+  - id: person.h_educator_allowed
     printed: "(helper)"
-    label: "Educator expenses limited by the maximum"
+    label: "Qualified educator expenses limited to the maximum"
     type: NonNegDollars
-    expr: {op: smaller_of, of: [person.educator_expenses, h_educator_max]}
-  - id: h_sav_deferral
+    expr: {op: smaller_of, of: [person.educator_expenses, person.h_educator_max]}
+  - id: person.h_medicare4
     printed: "(helper)"
-    label: "Elective deferrals for the saver's credit"
+    label: "Total Medicare wages and tips"
     type: NonNegDollars
-    expr: {op: sum_over, collection: w2, field: sav_deferral}
-  - id: h_ira_line2_cov
+    expr: {op: sum_over, collection: w2, field: w2.box5}
+  - id: person.h_se8a
     printed: "(helper)"
-    label: "IRA worksheet line 2 when covered"
+    label: "Total Social Security wages and tips for Schedule SE line 8a"
     type: NonNegDollars
-    expr: {op: param, ref: ira.line2}
-  - id: h_ira_line2_nocov
+    expr: {op: sum_over, collection: w2, field: w2.wages}
+  - id: person.h_simple_contrib
     printed: "(helper)"
-    label: "IRA worksheet line 2 when not covered"
-    type: NonNegDollars
-    expr: {op: param, ref: ira.line2_not_covered}
-  - id: h_ira_line5
-    printed: "(helper)"
-    label: "IRA worksheet line 5 modified AGI"
-    type: Dollars
-    expr: {op: copy, from: f1040.line11a}
-  - id: h_ira_line7_raw
-    printed: "(helper)"
-    label: "IRA worksheet line 7 before rounding"
-    type: NonNegDollars
-    expr: {op: multiply_rate, amount: person.ira_line6, rate: {param: ira.rate_70}}
-  - id: h_ira_line7_round
-    printed: "(helper)"
-    label: "IRA worksheet line 7 rounded up to the next $10"
-    type: NonNegDollars
-    expr: {op: round, of: h_ira_line7_raw, unit: 1000, rule: up}
-  - id: h_ira_200
-    printed: "(helper)"
-    label: "IRA worksheet $200 floor"
-    type: NonNegDollars
-    expr: {op: param, ref: ira.min}
-  - id: h_ira_line10_nn
-    printed: "(helper)"
-    label: "IRA worksheet line 10 earned income"
-    type: NonNegDollars
-    expr: {op: copy, from: person.box1}
-  - id: h_ira_min1
-    printed: "(helper)"
-    label: "Smaller of IRA line 7 and line 10"
-    type: NonNegDollars
-    expr: {op: smaller_of, of: [person.ira_line7, h_ira_line10_nn]}
-  - id: h_edu_total
-    printed: "(helper)"
-    label: "Total qualified education expenses"
-    type: NonNegDollars
-    expr: {op: sum, of: [person.edu_inst, person.edu_mat]}
-  - id: h_edu_adjust_sum
-    printed: "(helper)"
-    label: "Total reductions to qualified education expenses"
-    type: NonNegDollars
-    expr: {op: sum, of: [person.edu_a2025, person.edu_a2026, person.edu_refunds]}
-  - id: h_edu_net
-    printed: "(helper)"
-    label: "Adjusted qualified education expenses"
-    type: NonNegDollars
-    expr: {op: subtract_floor0, from: h_edu_total, take: h_edu_adjust_sum}
-  - id: h_edu_cap
-    printed: "(helper)"
-    label: "American opportunity credit expense cap"
-    type: NonNegDollars
-    expr: {op: param, ref: aoc.expense_cap}
-  - id: h_edu_27_min
-    printed: "(helper)"
-    label: "American opportunity credit expenses limited to the cap"
-    type: NonNegDollars
-    expr: {op: smaller_of, of: [h_edu_net, h_edu_cap]}
-  - id: h_2000
-    printed: "(helper)"
-    label: "$2,000"
-    type: NonNegDollars
-    expr: {op: param, ref: aoc.full_band}
-  - id: h_edu_line30_calc
-    printed: "(helper)"
-    label: "American opportunity credit when line 28 is positive"
-    type: NonNegDollars
-    expr: {op: sum, of: [h_2000, person.edu_line29]}
-  - id: h_se_4a_pos
-    printed: "(helper)"
-    label: "Schedule SE line 4a when line 3 is positive"
-    type: NonNegDollars
-    expr: {op: multiply_rate, amount: person.sc_total, rate: {param: se.rate_9235}}
-  - id: h_se_4a
-    printed: "(helper)"
-    label: "Schedule SE line 4a"
-    type: NonNegDollars
-    expr: {op: choose, alternatives: [{guard: {op: test, gt: [person.sc_total, {const: 0}]}, then: h_se_4a_pos}, {guard: {op: test, le: [person.sc_total, {const: 0}]}, then: h_zero_money}]}
-  - id: h_400
-    printed: "(helper)"
-    label: "$400 self-employment floor"
-    type: NonNegDollars
-    expr: {op: param, ref: se.floor}
-  - id: h_ss_wages
-    printed: "(helper)"
-    label: "Social Security wages and tips for Schedule SE line 8a"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: w2, field: wages}
-  - id: h_ss_room
-    printed: "(helper)"
-    label: "Social Security wage base remaining"
-    type: NonNegDollars
-    expr: {op: subtract_floor0, from: ss.base, take: h_ss_wages}
-  - id: h_se_base
-    printed: "(helper)"
-    label: "Schedule SE line 10 base"
-    type: NonNegDollars
-    expr: {op: smaller_of, of: [person.se_line6, h_ss_room]}
-  - id: h_tax_ss
-    printed: "(helper)"
-    label: "Social Security part of self-employment tax"
-    type: NonNegDollars
-    expr: {op: multiply_rate, amount: h_se_base, rate: {param: se.rate_124}}
-  - id: h_tax_med
-    printed: "(helper)"
-    label: "Medicare part of self-employment tax"
-    type: NonNegDollars
-    expr: {op: multiply_rate, amount: person.se_line6, rate: {param: se.rate_029}}
-  - id: h_simple_actual
-    printed: "(helper)"
-    label: "Actual SIMPLE IRA contributions"
+    label: "SIMPLE IRA contributions for this person"
     type: NonNegDollars
     expr: {op: sum, of: [person.simple_deferral, person.simple_employer]}
-  - id: h_sep_actual
+  - id: person.h_sep_actual
     printed: "(helper)"
     label: "Actual SEP contribution limited to the maximum deductible amount"
     type: NonNegDollars
-    expr: {op: smaller_of, of: [person.sep_contrib, person.sep_s21]}
-  - id: h_e23_count
+    expr: {op: smaller_of, of: [person.sep_s21, person.sep_contrib]}
+  - id: person.h_sehi_screened_count
     printed: "(helper)"
-    label: "Number of emergency personal expense exception 23 distributions"
+    label: "Number of Schedule C businesses with screened self-employed health insurance"
     type: Count
-    expr: {op: sum_over, collection: retirement, field: one, where: {op: test, eq: [retirement.is_e23, {const: true}]}}
+    expr:
+      op: sum_over
+      collection: sc
+      field: sc.one
+      where: {op: test, eq: [sc.hi_screened, {const: true}]}
+  - id: person.h_sehi_refused
+    printed: "(helper)"
+    label: "Self-employed health insurance requires unsupported handling"
+    type: Bool
+    expr: {op: test, gt: [person.h_sehi_screened_count, {const: 0, type: Count}]}
+  - id: person.h_dc_box10_count
+    printed: "(helper)"
+    label: "Number of Forms W-2 with box 10 benefits"
+    type: Count
+    expr:
+      op: sum_over
+      collection: w2
+      field: w2.one
+      where: {op: test, eq: [w2.has_box10, {const: true}]}
+  - id: person.h_dc_earned_raw
+    printed: "(helper)"
+    label: "Earned income before self-employment tax deduction"
+    type: Dollars
+    expr: {op: sum, of: [person.box1, person.sc_total]}
+  - id: person.h_sav_w2
+    printed: "(helper)"
+    label: "Total elective deferrals from Forms W-2"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: w2, field: w2.sav_deferral}
+  - id: person.h_edu_adj
+    printed: "(helper)"
+    label: "Total adjustments to qualified education expenses"
+    type: NonNegDollars
+    expr: {op: sum, of: [person.edu_a2025, person.edu_a2026, person.edu_refunds]}
 ```

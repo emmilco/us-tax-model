@@ -611,6 +611,7 @@
 
 - **Authored helper label:** Net earnings from self-employment. Subtract step 2 from step 1
 - **Encoded (NonNegDollars):** Subtract line Step 2 from line Step 1. If zero or less, enter -0-.
+- Interpretation: amb.2025.sep_loss_floor
 - Expr: `{"from":"person.sep_s1","op":"subtract_floor0","take":"person.sep_s2"}`
 - Cite: [p560] p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 3 (For use in preparing 2025 returns; sha256 1f1f7abe)
 

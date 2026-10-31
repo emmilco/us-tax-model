@@ -7,7 +7,7 @@
         "f2441"
       ],
       "evidence": "M",
-      "evidence_note": "Class M: deepseek-flash; prompt sha256 a835dde6c17b4d0019eaa6698111703d4b880a38f4f341531ed6410ff15d4808; pages f2441 1,2 (f39ca34d11c1); i2441 1,2,3,4,5,6 (361baee739cc); p503 8,11,12 (a1ff9e2c3120); branches f2441.benefits:true, f2441.care:true, f2441.filing:true, f2441.student_disabled:false, f2441.spouse_died:false, f2441.spouse_died_gate:false, f2441.nondependent:false, f2441.nondependent_gate:false, f2441.provider_ineligible:false, f2441.line1_box:false, f2441.statement_notice:false, f2441.household_notice:false, f2441.line1_paid#0, f2441.line2_box:false, f2441.two_or_more:false, f2441.limit#1, f2441.line3_expenses:right, f2441.line3#0, f2441.has_1e:false, f2441.one_box10:true, f2441.attrib_gate:false, f2441.line5#1, f2441.joint:false, f2441.line6_34:left, f2441.line6_345:left, f2441.line6:floor, f2441.prior_year:false, f2441.clw3:positive, f2441.line11:left, f2441.line14_bad:false, f2441.line17:left, f2441.line19#1, f2441.line20_17_18:left, f2441.line20_all:left, f2441.line20:positive, f2441.plans_differ:false, f2441.employer_care:false, f2441.employer_care_gate:false, f2441.line21:left, f2441.line24_20_21:left, f2441.line24:right, f2441.line25:positive, f2441.line26:floor, f2441.line29:floor, f2441.line30:positive, f2441.line31:left",
+      "evidence_note": "Class M: deepseek-flash; prompt sha256 1863e833fd0ab04b057f4975070cc89ee55fbbd0b6d10ac3493d987c6be0e218; pages f2441 1,2 (f39ca34d11c1); i2441 1,2,3,4,5,6 (361baee739cc); p503 3,8,11,12 (a1ff9e2c3120); branches f2441.benefits:true, f2441.care:true, f2441.filing:true, f2441.student_disabled:false, f2441.spouse_died:false, f2441.spouse_died_gate:false, f2441.nondependent:false, f2441.nondependent_gate:false, f2441.provider_ineligible:false, f2441.line1_box:false, f2441.statement_notice:false, f2441.household_notice:false, f2441.line1_paid#0, f2441.line2_box:false, f2441.two_or_more:false, f2441.limit#1, f2441.line3_expenses:right, f2441.line3#0, f2441.has_1e:false, f2441.one_box10:true, f2441.attrib_gate:false, f2441.line5#1, f2441.joint:false, f2441.line6_34:left, f2441.line6_345:left, f2441.line6:floor, f2441.prior_year:false, f2441.clw3:positive, f2441.line11:left, f2441.line14_bad:false, f2441.line17:left, f2441.employer_care_l16:false, f2441.line19#1, f2441.line20_17_18:left, f2441.line20_all:left, f2441.line20:positive, f2441.plans_differ:false, f2441.employer_care:false, f2441.employer_care_gate:false, f2441.line21:left, f2441.line24_20_21:left, f2441.line24:right, f2441.line25:positive, f2441.line26:floor, f2441.line29:floor, f2441.line30:positive, f2441.line31:left",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -277,7 +277,7 @@
         "f2441"
       ],
       "evidence": "M",
-      "evidence_note": "Class M: deepseek-flash; prompt sha256 cbb701fe268228a21e61845fa006bca7b708b8b15d9dd50f7c04e3429aeeea5e; pages f2441 1,2 (f39ca34d11c1); i2441 1,2,3,4,5,6 (361baee739cc); p503 8,11,12 (a1ff9e2c3120); branches f2441.benefits:true, f2441.care:true, f2441.filing:true, f2441.student_disabled:false, f2441.spouse_died:false, f2441.spouse_died_gate:false, f2441.nondependent:false, f2441.nondependent_gate:false, f2441.provider_ineligible:false, f2441.line1_box:false, f2441.statement_notice:false, f2441.household_notice:false, f2441.line1_paid#0, f2441.line2_box:false, f2441.two_or_more:true, f2441.limit#0, f2441.line3_expenses:right, f2441.line3#0, f2441.has_1e:false, f2441.one_box10:true, f2441.attrib_gate:false, f2441.line5#0, f2441.joint:true, f2441.line6_34:left, f2441.line6_345:left, f2441.line6:positive, f2441.prior_year:false, f2441.clw3:positive, f2441.line11:left, f2441.line14_bad:false, f2441.line17:left, f2441.line19#0, f2441.line20_17_18:left, f2441.line20_all:left, f2441.line20:positive, f2441.plans_differ:false, f2441.employer_care:false, f2441.employer_care_gate:false, f2441.line21:left, f2441.line24_20_21:left, f2441.line24:right, f2441.line25:positive, f2441.line26:floor, f2441.line29:positive, f2441.line30:positive, f2441.line31:left",
+      "evidence_note": "Class M: deepseek-flash; prompt sha256 d60727db610f3719def8f50a3a877fc1dca78ce8c2c7e72c5c61b0b2578c3896; pages f2441 1,2 (f39ca34d11c1); i2441 1,2,3,4,5,6 (361baee739cc); p503 3,8,11,12 (a1ff9e2c3120); branches f2441.benefits:true, f2441.care:true, f2441.filing:true, f2441.student_disabled:false, f2441.spouse_died:false, f2441.spouse_died_gate:false, f2441.nondependent:false, f2441.nondependent_gate:false, f2441.provider_ineligible:false, f2441.line1_box:false, f2441.statement_notice:false, f2441.household_notice:false, f2441.line1_paid#0, f2441.line2_box:false, f2441.two_or_more:true, f2441.limit#0, f2441.line3_expenses:right, f2441.line3#0, f2441.has_1e:false, f2441.one_box10:true, f2441.attrib_gate:false, f2441.line5#0, f2441.joint:true, f2441.line6_34:left, f2441.line6_345:left, f2441.line6:positive, f2441.prior_year:false, f2441.clw3:positive, f2441.line11:left, f2441.line14_bad:false, f2441.line17:left, f2441.employer_care_l16:false, f2441.line19#0, f2441.line20_17_18:left, f2441.line20_all:left, f2441.line20:positive, f2441.plans_differ:false, f2441.employer_care:false, f2441.employer_care_gate:false, f2441.line21:left, f2441.line24_20_21:left, f2441.line24:right, f2441.line25:positive, f2441.line26:floor, f2441.line29:positive, f2441.line30:positive, f2441.line31:left",
       "inputs": {
         "person[taxpayer].x_other": false,
         "person[spouse].x_other": false,
@@ -686,7 +686,7 @@
         "f2441"
       ],
       "evidence": "M",
-      "evidence_note": "Class M: deepseek-flash; prompt sha256 10b099541604246630feb512bdd6a18fb034fdd1853d39825d62a6ad882eb53d; pages f2441 1,2 (f39ca34d11c1); i2441 1,2,3,4,5,6 (361baee739cc); p503 8,11,12 (a1ff9e2c3120); branches f2441.benefits:true, f2441.care:true, f2441.filing:true, f2441.student_disabled:false, f2441.spouse_died:false, f2441.spouse_died_gate:false, f2441.nondependent:false, f2441.nondependent_gate:false, f2441.provider_ineligible:false, f2441.line1_box:false, f2441.statement_notice:false, f2441.household_notice:false, f2441.line1_paid#0, f2441.line2_box:false, f2441.two_or_more:false, f2441.limit#1, f2441.line3_expenses:right, f2441.line3#0, f2441.has_1e:true, f2441.one_box10:true, f2441.attrib_gate:false, f2441.line5#1, f2441.joint:false, f2441.line6_34:left, f2441.line6_345:left, f2441.line6:floor, f2441.prior_year:false, f2441.clw3:positive, f2441.line11:left, f2441.line14_bad:false, f2441.line17:right, f2441.line19#1, f2441.line20_17_18:left, f2441.line20_all:left, f2441.line20:positive, f2441.plans_differ:false, f2441.employer_care:false, f2441.employer_care_gate:false, f2441.line21:left, f2441.line24_20_21:left, f2441.line24:right, f2441.line25:positive, f2441.line26:positive, f2441.line29:floor, f2441.line30:floor, f2441.line31:left",
+      "evidence_note": "Class M: deepseek-flash; prompt sha256 25847c7db8203edea9d67f9c5027ab0f2f91d0d1352a6a45e350de8ae57b021c; pages f2441 1,2 (f39ca34d11c1); i2441 1,2,3,4,5,6 (361baee739cc); p503 3,8,11,12 (a1ff9e2c3120); branches f2441.benefits:true, f2441.care:true, f2441.filing:true, f2441.student_disabled:false, f2441.spouse_died:false, f2441.spouse_died_gate:false, f2441.nondependent:false, f2441.nondependent_gate:false, f2441.provider_ineligible:false, f2441.line1_box:false, f2441.statement_notice:false, f2441.household_notice:false, f2441.line1_paid#0, f2441.line2_box:false, f2441.two_or_more:false, f2441.limit#1, f2441.line3_expenses:right, f2441.line3#0, f2441.has_1e:true, f2441.one_box10:true, f2441.attrib_gate:false, f2441.line5#1, f2441.joint:false, f2441.line6_34:left, f2441.line6_345:left, f2441.line6:floor, f2441.prior_year:false, f2441.clw3:positive, f2441.line11:left, f2441.line14_bad:false, f2441.line17:right, f2441.employer_care_l16:false, f2441.line19#1, f2441.line20_17_18:left, f2441.line20_all:left, f2441.line20:positive, f2441.plans_differ:false, f2441.employer_care:false, f2441.employer_care_gate:false, f2441.line21:left, f2441.line24_20_21:left, f2441.line24:right, f2441.line25:positive, f2441.line26:positive, f2441.line29:floor, f2441.line30:floor, f2441.line31:left",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -888,6 +888,59 @@
           "kind": "bool",
           "value": false
         },
+        "f2441.line4": {
+          "kind": "money",
+          "cents": 4150000
+        },
+        "f2441.line5": {
+          "kind": "money",
+          "cents": 4150000
+        },
+        "f2441.line6": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f2441.line7": {
+          "kind": "money",
+          "cents": 4150000
+        },
+        "f2441.line8": {
+          "kind": "rate",
+          "num": 21,
+          "den": 100
+        },
+        "f2441.line9a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f2441.line9b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f2441.line9c": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f2441.clw1": {
+          "kind": "money",
+          "cents": 180500
+        },
+        "f2441.clw2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f2441.clw3": {
+          "kind": "money",
+          "cents": 180500
+        },
+        "f2441.line10": {
+          "kind": "money",
+          "cents": 180500
+        },
+        "f2441.line11": {
+          "kind": "money",
+          "cents": 0
+        },
         "f2441.line12": {
           "kind": "money",
           "cents": 500000
@@ -956,7 +1009,7 @@
         "f2441"
       ],
       "evidence": "M",
-      "evidence_note": "Class M: deepseek-flash; prompt sha256 c2100257bdb3e1ec5cc8f339f9ad29a7b507cccc0aae923ec5fc2dd5ef4771d3; pages f2441 1,2 (f39ca34d11c1); i2441 1,2,3,4,5,6 (361baee739cc); p503 8,11,12 (a1ff9e2c3120); branches f2441.benefits:true, f2441.care:true, f2441.filing:true, f2441.student_disabled:false, f2441.spouse_died:false, f2441.spouse_died_gate:false, f2441.nondependent:false, f2441.nondependent_gate:false, f2441.provider_ineligible:false, f2441.line1_box:false, f2441.statement_notice:false, f2441.household_notice:false, f2441.line1_paid#0, f2441.line2_box:false, f2441.two_or_more:false, f2441.limit#1, f2441.line3_expenses:right, f2441.line3#0, f2441.has_1e:true, f2441.one_box10:true, f2441.attrib_gate:false, f2441.line5#1, f2441.joint:false, f2441.line6_34:left, f2441.line6_345:left, f2441.line6:floor, f2441.prior_year:false, f2441.clw3:floor, f2441.line11:left, f2441.line14_bad:false, f2441.line17:left, f2441.line19#1, f2441.line20_17_18:right, f2441.line20_all:left, f2441.line20:positive, f2441.plans_differ:false, f2441.employer_care:false, f2441.employer_care_gate:false, f2441.line21:left, f2441.line24_20_21:left, f2441.line24:right, f2441.line25:positive, f2441.line26:positive, f2441.line29:floor, f2441.line30:positive, f2441.line31:left",
+      "evidence_note": "Class M: deepseek-flash; prompt sha256 c1a3b54b9d2677a5ee0fd05d654e6b25383500d5a94d1ee129ccfd922fe5d14f; pages f2441 1,2 (f39ca34d11c1); i2441 1,2,3,4,5,6 (361baee739cc); p503 3,8,11,12 (a1ff9e2c3120); branches f2441.benefits:true, f2441.care:true, f2441.filing:true, f2441.student_disabled:false, f2441.spouse_died:false, f2441.spouse_died_gate:false, f2441.nondependent:false, f2441.nondependent_gate:false, f2441.provider_ineligible:false, f2441.line1_box:false, f2441.statement_notice:false, f2441.household_notice:false, f2441.line1_paid#0, f2441.line2_box:false, f2441.two_or_more:false, f2441.limit#1, f2441.line3_expenses:right, f2441.line3#0, f2441.has_1e:true, f2441.one_box10:true, f2441.attrib_gate:false, f2441.line5#1, f2441.joint:false, f2441.line6_34:left, f2441.line6_345:left, f2441.line6:floor, f2441.prior_year:false, f2441.clw3:floor, f2441.line11:left, f2441.line14_bad:false, f2441.line17:left, f2441.employer_care_l16:false, f2441.line19#1, f2441.line20_17_18:right, f2441.line20_all:left, f2441.line20:positive, f2441.plans_differ:false, f2441.employer_care:false, f2441.employer_care_gate:false, f2441.line21:left, f2441.line24_20_21:left, f2441.line24:right, f2441.line25:positive, f2441.line26:positive, f2441.line29:floor, f2441.line30:positive, f2441.line31:left",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -1158,63 +1211,6 @@
           "kind": "bool",
           "value": false
         },
-        "f2441.line3": {
-          "kind": "money",
-          "cents": 0
-        },
-        "f2441.line4": {
-          "kind": "money",
-          "cents": 500000
-        },
-        "f2441.line5": {
-          "kind": "money",
-          "cents": 500000
-        },
-        "f2441.line6": {
-          "kind": "money",
-          "cents": 0
-        },
-        "f2441.line7": {
-          "kind": "money",
-          "cents": 500000
-        },
-        "f2441.line8": {
-          "kind": "rate",
-          "num": 35,
-          "den": 100
-        },
-        "f2441.line9a": {
-          "kind": "money",
-          "cents": 0
-        },
-        "f2441.line9b": {
-          "kind": "money",
-          "cents": 0
-        },
-        "f2441.line9c": {
-          "kind": "money",
-          "cents": 0
-        },
-        "f2441.clw1": {
-          "kind": "money",
-          "cents": 0
-        },
-        "f2441.clw2": {
-          "kind": "money",
-          "cents": 0
-        },
-        "f2441.clw3": {
-          "kind": "money",
-          "cents": 0
-        },
-        "f2441.line10": {
-          "kind": "money",
-          "cents": 0
-        },
-        "f2441.line11": {
-          "kind": "money",
-          "cents": 0
-        },
         "f2441.line12": {
           "kind": "money",
           "cents": 500000
@@ -1287,7 +1283,7 @@
         "f2441"
       ],
       "evidence": "M",
-      "evidence_note": "Class M: deepseek-flash; prompt sha256 30faafe98b0cfec291dc60c7044e00b7c110a127ce3915135416c15c491d8ec9; pages f2441 1,2 (f39ca34d11c1); i2441 1,2,3,4,5,6 (361baee739cc); p503 8,11,12 (a1ff9e2c3120); branches f2441.benefits:true, f2441.care:true, f2441.filing:true, f2441.student_disabled:false, f2441.spouse_died:false, f2441.spouse_died_gate:false, f2441.nondependent:false, f2441.nondependent_gate:false, f2441.provider_ineligible:false, f2441.line1_box:false, f2441.statement_notice:false, f2441.household_notice:false, f2441.line1_paid#0, f2441.line2_box:false, f2441.two_or_more:true, f2441.limit#0, f2441.line3_expenses:left, f2441.line3#0, f2441.has_1e:false, f2441.one_box10:true, f2441.attrib_gate:false, f2441.line5#1, f2441.joint:false, f2441.line6_34:left, f2441.line6_345:left, f2441.line6:positive, f2441.prior_year:false, f2441.clw3:positive, f2441.line11:right, f2441.line14_bad:false, f2441.line17:left, f2441.line19#1, f2441.line20_17_18:left, f2441.line20_all:left, f2441.line20:positive, f2441.plans_differ:false, f2441.employer_care:false, f2441.employer_care_gate:false, f2441.line21:left, f2441.line24_20_21:left, f2441.line24:right, f2441.line25:positive, f2441.line26:floor, f2441.line29:positive, f2441.line30:positive, f2441.line31:left",
+      "evidence_note": "Class M: deepseek-flash; prompt sha256 b5c013db0f5fecbbe35b537aca11d108f40a593872c136060e29fbc424f35677; pages f2441 1,2 (f39ca34d11c1); i2441 1,2,3,4,5,6 (361baee739cc); p503 3,8,11,12 (a1ff9e2c3120); branches f2441.benefits:true, f2441.care:true, f2441.filing:true, f2441.student_disabled:false, f2441.spouse_died:false, f2441.spouse_died_gate:false, f2441.nondependent:false, f2441.nondependent_gate:false, f2441.provider_ineligible:false, f2441.line1_box:false, f2441.statement_notice:false, f2441.household_notice:false, f2441.line1_paid#0, f2441.line2_box:false, f2441.two_or_more:true, f2441.limit#0, f2441.line3_expenses:left, f2441.line3#0, f2441.has_1e:false, f2441.one_box10:true, f2441.attrib_gate:false, f2441.line5#1, f2441.joint:false, f2441.line6_34:left, f2441.line6_345:left, f2441.line6:positive, f2441.prior_year:false, f2441.clw3:positive, f2441.line11:right, f2441.line14_bad:false, f2441.line17:left, f2441.employer_care_l16:false, f2441.line19#1, f2441.line20_17_18:left, f2441.line20_all:left, f2441.line20:positive, f2441.plans_differ:false, f2441.employer_care:false, f2441.employer_care_gate:false, f2441.line21:left, f2441.line24_20_21:left, f2441.line24:right, f2441.line25:positive, f2441.line26:floor, f2441.line29:positive, f2441.line30:positive, f2441.line31:left",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -1651,7 +1647,7 @@
         "f2441"
       ],
       "evidence": "M",
-      "evidence_note": "Class M: deepseek-flash; prompt sha256 ad78204d4ebce9e008ced444d6e002c962019415a2952718655241cda4d5119a; pages f2441 1,2 (f39ca34d11c1); i2441 1,2,3,4,5,6 (361baee739cc); p503 8,11,12 (a1ff9e2c3120); branches f2441.benefits:true, f2441.care:true, f2441.filing:true, f2441.student_disabled:false, f2441.spouse_died:false, f2441.spouse_died_gate:false, f2441.nondependent:false, f2441.nondependent_gate:false, f2441.provider_ineligible:false, f2441.line1_box:false, f2441.statement_notice:false, f2441.household_notice:false, f2441.line1_paid#0, f2441.line2_box:false, f2441.two_or_more:false, f2441.limit#1, f2441.line3_expenses:right, f2441.line3#0, f2441.has_1e:false, f2441.one_box10:true, f2441.attrib_gate:false, f2441.line5#1, f2441.joint:false, f2441.line6_34:left, f2441.line6_345:left, f2441.line6:floor, f2441.prior_year:false, f2441.clw3:positive, f2441.line11:left, f2441.line14_bad:false, f2441.line17:left, f2441.line19#1, f2441.line20_17_18:left, f2441.line20_all:left, f2441.line20:positive, f2441.plans_differ:false, f2441.employer_care:false, f2441.employer_care_gate:false, f2441.line21:left, f2441.line24_20_21:left, f2441.line24:right, f2441.line25:positive, f2441.line26:floor, f2441.line29:floor, f2441.line30:floor, f2441.line31:left",
+      "evidence_note": "Class M: deepseek-flash; prompt sha256 44b80c2284fa21af6e666c729298b19221958db45765ee3783902ff00706b3e2; pages f2441 1,2 (f39ca34d11c1); i2441 1,2,3,4,5,6 (361baee739cc); p503 3,8,11,12 (a1ff9e2c3120); branches f2441.benefits:true, f2441.care:true, f2441.filing:true, f2441.student_disabled:false, f2441.spouse_died:false, f2441.spouse_died_gate:false, f2441.nondependent:false, f2441.nondependent_gate:false, f2441.provider_ineligible:false, f2441.line1_box:false, f2441.statement_notice:false, f2441.household_notice:false, f2441.line1_paid#0, f2441.line2_box:false, f2441.two_or_more:false, f2441.limit#1, f2441.line3_expenses:right, f2441.line3#0, f2441.has_1e:false, f2441.one_box10:true, f2441.attrib_gate:false, f2441.line5#1, f2441.joint:false, f2441.line6_34:left, f2441.line6_345:left, f2441.line6:floor, f2441.prior_year:false, f2441.clw3:positive, f2441.line11:left, f2441.line14_bad:false, f2441.line17:left, f2441.employer_care_l16:false, f2441.line19#1, f2441.line20_17_18:left, f2441.line20_all:left, f2441.line20:positive, f2441.plans_differ:false, f2441.employer_care:false, f2441.employer_care_gate:false, f2441.line21:left, f2441.line24_20_21:left, f2441.line24:right, f2441.line25:positive, f2441.line26:floor, f2441.line29:floor, f2441.line30:floor, f2441.line31:left",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -1853,6 +1849,63 @@
           "kind": "bool",
           "value": false
         },
+        "f2441.line3": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f2441.line4": {
+          "kind": "money",
+          "cents": 4500000
+        },
+        "f2441.line5": {
+          "kind": "money",
+          "cents": 4500000
+        },
+        "f2441.line6": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f2441.line7": {
+          "kind": "money",
+          "cents": 4500000
+        },
+        "f2441.line8": {
+          "kind": "rate",
+          "num": 20,
+          "den": 100
+        },
+        "f2441.line9a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f2441.line9b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f2441.line9c": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f2441.clw1": {
+          "kind": "money",
+          "cents": 222500
+        },
+        "f2441.clw2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f2441.clw3": {
+          "kind": "money",
+          "cents": 222500
+        },
+        "f2441.line10": {
+          "kind": "money",
+          "cents": 222500
+        },
+        "f2441.line11": {
+          "kind": "money",
+          "cents": 0
+        },
         "f2441.line12": {
           "kind": "money",
           "cents": 400000
@@ -1912,6 +1965,10 @@
         "f2441.line28": {
           "kind": "money",
           "cents": 430000
+        },
+        "f2441.line29": {
+          "kind": "money",
+          "cents": 0
         }
       }
     },

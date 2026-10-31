@@ -1303,6 +1303,7 @@ form:
       cite:
         doc: p560
         locator: p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 3
+      ambiguity: amb.2025.sep_loss_floor
     - id: person.sep_s5
       printed: Step 5
       label: Multiply step 3 by step 4 (the plan rate divided by the plan rate plus 1, to six decimal places)

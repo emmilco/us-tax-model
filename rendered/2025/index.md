@@ -15,7 +15,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | eic.md | worksheet | 88 |
 | f1040.md | form | 65 |
 | f1095a.md | form | 76 |
-| f2441.md | form | 82 |
+| f2441.md | form | 83 |
 | f4562.md | form | 15 |
 | f4952.md | form | 26 |
 | f5329.md | form | 22 |

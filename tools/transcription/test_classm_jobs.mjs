@@ -35,6 +35,17 @@ try {
   assert.ok(hsaJobs.some(job => Object.entries(job.inputs).some(([key, value]) => key.endsWith('.line14a') && value > 0)), 'positive distributions must be worked, not only incidental zeroes');
   assert.ok(hsaJobs.every(job => job.given.every(value => !['household.hsa_share_sum', 'household.hsa_step1_sum', 'household.hsa_split_count'].includes(value.ref))), 'validation-only calculations must not feed the reviewed computation back as authoritative givens');
   console.log(`classm HSA: ${hsaJobs.length} printed-output jobs retain helper-branch selection`);
+  // Lines hidden by shown_when show no amount: the 28% Rate Gain Worksheet on a return that never
+  // reaches it has nothing to fill, so no job compares its hidden lines.
+  const g28Out = join(temp, 'g28-jobs.json');
+  const g28 = spawnSync(process.execPath, ['engine/dist/main.js', 'classm-jobs',
+    '--docs', 'g28', '--corpus', '300', '--include-fixtures', '--out', g28Out],
+  { encoding: 'utf8', maxBuffer: 8 * 1024 * 1024 });
+  assert.equal(g28.status, 0, g28.stderr);
+  const g28Jobs = JSON.parse(readFileSync(g28Out, 'utf8')).jobs;
+  assert.ok(g28Jobs.length > 0, 'a reached 28% Rate Gain Worksheet must still be worked');
+  assert.ok(g28Jobs.every(job => !job.branches.includes('g28.reached:false')), 'hidden worksheet lines must not be filled or written into class M expectations');
+  console.log(`classm shown_when: ${g28Jobs.length} g28 jobs, none on an unreached worksheet`);
 } finally {
   rmSync(temp, { recursive: true, force: true });
 }

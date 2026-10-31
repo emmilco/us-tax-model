@@ -4,6 +4,7 @@
 // No model-generated JavaScript, commands, tools, paths or network calls are executed.
 import { readFileSync } from 'node:fs';
 import { executableCandidate } from './candidate_runtime.mjs';
+import { displayed, recordWitness } from './triage_rules.mjs';
 import { evaluate, allTargets } from '../../engine/dist/eval.js';
 import { loadCases } from '../../engine/dist/fixtures.js';
 import { sampleReturns } from '../../engine/dist/generate.js';
@@ -85,7 +86,7 @@ function operands(derivations, key) {
 }
 
 const stats = new Map(pairs.map(pair => [pair.handle, { handle: pair.handle, project: pair.project, candidate: pair.candidate, shown_when: pair.shown_when ?? null,
-  compared: 0, agree: 0, differ: 0, absent: 0, in_scope: 0, in_scope_agree: 0, kinds: {}, kinds_by_return: {}, sources: {}, witnesses: [] }]));
+  compared: 0, agree: 0, differ: 0, absent: 0, in_scope: 0, in_scope_agree: 0, kinds: {}, kinds_by_return: {}, sources: {}, witnesses: [], completed_witnesses: [] }]));
 const known = value => value && !['refusal', 'unknown'].includes(value.kind);
 
 function run(source, inputs) {
@@ -102,8 +103,7 @@ function run(source, inputs) {
     const [handle, prefix] = key.split('\u0000');
     const cond = stats.get(handle).shown_when;
     if (!cond) continue;
-    const c = project.values.get(`${prefix}.${localOf(cond)}`);
-    if (c?.kind === 'bool' && !c.value) p.set(key, { kind: 'hidden' });
+    p.set(key, displayed(value, project.values.get(`${prefix}.${localOf(cond)}`)));
   }
   let reached = false, whole = null;
   for (const key of new Set([...p.keys(), ...m.keys()])) {
@@ -123,13 +123,9 @@ function run(source, inputs) {
     whole ??= returnState(inputs);
     s.kinds_by_return[whole] ??= {};
     s.kinds_by_return[whole][kind] = (s.kinds_by_return[whole][kind] ?? 0) + 1;
-    const sameKind = s.witnesses.filter(w => w.kind === kind).length;
-    if (sameKind < maxWitnesses) {
-      const pair = stats.get(handle);
-      s.witnesses.push({ kind, source, instance: prefix, project_return: whole, project: a, candidate: b,
-        project_operands: operands(project.derivations, `${prefix}.${localOf(pair.project)}`),
-        candidate_operands: operands(model.derivations, `${prefix}.${localOf(pair.candidate)}`) });
-    }
+    recordWitness(s, kind, whole, () => ({ kind, source, instance: prefix, project_return: whole, project: a, candidate: b,
+      project_operands: operands(project.derivations, `${prefix}.${localOf(s.project)}`),
+      candidate_operands: operands(model.derivations, `${prefix}.${localOf(s.candidate)}`) }), maxWitnesses);
   }
   return { reached };
 }

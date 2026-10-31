@@ -3804,3 +3804,39 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
 - **Where:** `forms/2025/household.yaml`, `household.home_cost`, `household.qss_eligible`.
 - **Fix:** both carry the cost definition and the own-funds rule, quoting p501 p. 9.
 - **Tags:** question-incomplete; definition-omitted; fix-sibling-missed; caught-by-completeness-review
+
+## BUG-0261 — A section 179 carryover with no business in 2025 was never asked
+
+- **Date:** 2026-10-31
+- **Caught by:** the refusal-fixture reachability scan (T-068, `stage14.s179.refuse_orphan`), worked in hardening.
+- **Symptom:** Form 4562 was reached only through a Schedule C, so `s179.line10` (the carryover from 2024) was never asked of a
+  filer with no business and `s179.orphan` could not fire; an interview with a $3,000 carryover and no Schedule C completed.
+  i4562 p. 5, Line 12, puts the deduction on a business's own Form 4562, so with no business there is nowhere to take it.
+- **Where:** `interview/full-2025.yaml` (targets).
+- **Fix:** `s179.line13` (the carryover to 2026) is an interview target, so `s179.line10` is asked of every filer and the orphan
+  carryover is refused; a Schedule C filer has line 13 reported. Regressions `stage21.t068.orphan_with_wages_refused`,
+  `stage21.t068.no_business_no_carryover`.
+- **Tags:** unreachable-gate; caught-by-audit
+
+## BUG-0262 — Employer-furnished care with nothing paid made all dependent care benefits taxable
+
+- **Date:** 2026-10-31
+- **Caught by:** the round-4 adjudication of Form 2441 (`reviews/2025/transcription/adjudication/f2441.md`; T-073).
+- **Symptom:** with care furnished by the employer and no expenses paid, `f2441.employer_care_gate` did not fire, line 16 was $0
+  and all of W-2 box 10 became taxable (stage16 employer-care case: line 26 and Form 1040 line 1e $2,000). The archived i2441,
+  Pub. 503 and the W-2 instructions do not say whether the value of employer-furnished care is a qualified expense incurred on
+  line 16 (section 129 is not archived).
+- **Where:** `forms/2025/f2441.yaml`.
+- **Fix:** `f2441.employer_care_l16` (care furnished by the employer and line 16 less than line 15) refuses line 17 with a
+  cited remedy. Regressions `stage21.t073.employer_care_nothing_paid_refused`, `stage21.t073.employer_care_paid_equals_benefits`.
+- **Tags:** source-silent; refusal-added; caught-by-source-adjudication
+
+## BUG-0263 — `person.sep_s3` lacked its ambiguity link
+
+- **Date:** 2026-10-31
+- **Caught by:** BUG-0181's follow-up (T-074).
+- **Symptom:** the register entry `amb.2025.sep_loss_floor` named the line, but the line did not name the entry, so the values
+  sheet printed no interpretation note.
+- **Where:** `forms/2025/person.yaml`, `person.sep_s3`.
+- **Fix:** `ambiguity: amb.2025.sep_loss_floor`. No value change (`stage14.sep.loss_floor` pins the reading).
+- **Tags:** traceability; value-neutral

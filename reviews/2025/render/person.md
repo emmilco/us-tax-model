@@ -4,7 +4,7 @@ The rendered English of every printed line of `Each person on the return — per
 
 | field | value |
 | --- | --- |
-| date | 2026-10-30 |
+| date | 2026-10-31 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | c1b75915f8a4ecbae2dc19e04ac57fe02e10c2fc90380b5d533a1b7b723fe3cf |
@@ -12,7 +12,7 @@ The rendered English of every printed line of `Each person on the return — per
 | system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
 | reasoning effort | provider default |
 | output token budget | transport default (65536 for DeepSeek) |
-| subject sha256 | 1f8afc8c95273ce56ad5d5f6580af08e0629862b312ed9b7231dc39d833461a3 |
+| subject sha256 | 409c7e8c2c1530dcd5df1e9aa5cd76b9d543901c2a6405e9469a110ad5cec4cc |
 | lines judged | 32 |
 | match / mismatch / unclear / missing | 27 / 5 / 0 / 0 |
 | verdicts for lines not in the form | none |
@@ -59,283 +59,281 @@ The rendered English of every printed line of `Each person on the return — per
 ### rrta — Do any wage statements report railroad retirement compensation or taxes (W-2 box 14), or d
 Status: **MATCH**
 
-Model: The Form W-2 instructions say railroad employers report RRTA compensation and taxes in box 14, and the Form 8959 instructions refer to employee representatives filing Form CT-2. The input asks about both.
+Model: The screen matches the W-2 instructions, which report RRTA compensation and Tier 1 and Tier 2 taxes in box 14, and the Form 8959 instructions on employee representatives filing Form CT-2. It gates the refusal of the RRTA path that Schedule 3, line 11 would otherwise cover.
 
 ### employers — Total w2.one for this person
 Status: **MATCH**
 
-Model: Counting the person's Forms W-2 implements the Schedule 3, line 11 test 'had more than one employer for 2025', figured separately for each spouse.
+Model: Counting one per W-2 employer entry implements the Schedule 3, line 11 test of whether the person 'had more than one employer for 2025', figured separately for each spouse.
 
 ### overcount — Number of employers that withheld more than the limit
 Status: **MATCH**
 
-Model: This counts the employers to which the text 'if any one employer withheld more than $10,918.20' applies.
+Model: This counts the employers that withheld more than $10,918.20, as in 'if any one employer withheld more than $10,918.20'. The W-2 box 4 instructions give the same amount ($176,100 x 6.2%).
 
 ### over — Any employer withheld more than the limit
 Status: **MATCH**
 
-Model: A count above zero means 'any one employer withheld more than $10,918.20', the condition the instruction addresses.
+Model: True when any one employer overwithheld, which is the condition under which 'you can't claim the excess on your return'.
 
 ### wages — Total w2.wages for this person
 Status: **MATCH**
 
-Model: The instruction's 'total wages' is restated as W-2 boxes 3 and 7 added across employers. That is the wage measure for the $176,100 social security base, and it decides the same eligibility within the supported non-RRTA cases.
+Model: Boxes 3 and 7 are social security wages and tips, summed per person, which fits 'total wages' under the line 11 test. Schedule SE line 8a uses the same total.
 
 ### withheld — Total w2.box4 for this person
 Status: **MATCH**
 
-Model: Summing W-2 box 4 gives the total social security tax withheld for this person, which is the figure the line 11 credit compares with $10,918.20.
+Model: Summing W-2 box 4 per person gives the social security tax withheld that the line 11 instruction compares with $10,918.20, figured 'separately for you and your spouse'.
 
 ### eligible — More than one employer and total social security wages over $176,100
 Status: **MATCH**
 
-Model: This restates 'had more than one employer for 2025 and total wages of more than $176,100', with the same operands and strict comparisons.
+Model: This matches 'had more than one employer for 2025 and total wages of more than $176,100'.
 
 ### excess — Withholding above $10,918.20, if any
 Status: **MATCH**
 
-Model: The instruction allows a credit 'for the amount withheld in excess of $10,918.20'. Subtracting that amount from total withholding and flooring at zero computes this.
+Model: This matches 'the amount withheld in excess of $10,918.20'. The zero floor changes nothing because no excess means no credit.
 
 ### zero — No excess credit
 Status: **MATCH**
 
-Model: This is a program constant with no separate IRS wording. It supplies a zero credit when the instruction's eligibility conditions are not met.
+Model: This program constant supplies the no-credit branch when the line 11 conditions are not met. It does not conflict with the IRS text.
 
 ### credit — Excess social security tax withheld, figured separately for this person
 Status: **MATCH**
 
-Model: The excess applies only when eligible. The refusals match the text 'you can't claim the excess on your return' for one-employer overwithholding, with Form 843 as the remedy, and they exclude the RRTA path, including Tier 2 claims on Form 843.
+Model: The credit equals the excess when the line 11 conditions are met and zero otherwise. The refusals correctly exclude the RRTA path and Form 843 cases, including 'If the employer doesn't adjust the overcollection, you can file a claim for refund using Form 843'.
 
 ### (screen) (person.se_screen) — Does any of these apply to this person's self-employment?
 Status: **MATCH**
 
-Model: The screen narrows the program by excluding the church, clergy, partnership, other self-employment, farm, CRP, optional-method, chapter 11, community-income, exempt-income and Form 4137/8919 cases covered by the Schedule SE form and instructions. It does not change the computation for supported cases.
+Model: The screen covers the Schedule SE items outside a Schedule C-only computation: church income, clergy and Forms 4361 and 4029, K-1 and other income, farm and CRP amounts, optional methods, chapter 11, community income, exempt income, and lines 8b and 8c. Each item is supported by Schedule SE and its instructions.
 
 ### (screen) (person.plan_screen) — Does any of these apply to this person's retirement contributions?
 Status: **MATCH**
 
-Model: The screen excludes SARSEPs, non-whole or above-25% rates, section 117 SIMPLE limits, multiple or qualified plans, other deferrals, Roth contributions and excess contributions. Pub. 560 treats these cases separately or as limits on the worksheet's use.
+Model: The screen narrows the plan cases consistently with Pub. 560: no SARSEPs on the worksheet, the Rate Table for whole percentages up to 25%, the section 117 higher SIMPLE limits, and one plan only. It names what is excluded.
 
 ### Step 1 — Net profit from Schedule C, line 31
 Status: **MATCH**
 
-Model: Pub. 560 Step 1 enters net profit from Schedule C, line 31. Non-Schedule C items are refused through the self-employment screen, and a plan with more than one Schedule C is refused, so summing Schedule C results gives the net profit of the one business in supported cases.
+Model: This enters net profit from Schedule C, line 31. Schedule F and K-1 amounts, and the footnote reductions tied to them, are excluded by the named self-employment refusal.
 
 ### Step 2 — Deduction for self-employment tax from Schedule 1, line 15
 Status: **MATCH**
 
-Model: Step 2 uses the deduction from Schedule 1, line 15, and the Form 1040 instructions state 'The deductible part of your self-employment tax is on line 13 of Schedule SE.'
+Model: Worksheet step 2 uses Schedule 1, line 15, which the Form 1040 instructions and Schedule SE line 13 identify as the deductible part of self-employment tax.
 
 ### Step 3 — Net earnings from self-employment. Subtract step 2 from step 1
 Status: **MATCH**
 
-Model: This restates 'Subtract step 2 from step 1.' The added floor at zero is not printed in Pub. 560, but it affects only loss cases, where the worksheet yields no deductible contribution.
+Model: This matches 'Subtract step 2 from step 1'. The added zero floor only prevents a negative base when there are no net earnings, and no deduction would result in that case.
 
 ### Step 5 — Multiply step 3 by step 4 (the plan rate divided by the plan rate plus 1, to six decimal p
 Status: **MATCH**
 
-Model: This multiplies Step 3 by the reduced rate, plan rate divided by plan rate plus 1. Rounding to 6 decimals reproduces the Rate Table values for whole-percent rates, such as 0.090909 at 10%.
+Model: The rate divided by (rate + 100%), rounded to six places, reproduces the Rate Table (for example 10% gives 0.090909, 25% gives 0.200000), and 'Multiply step 3 by step 4' is then applied. The Rate Worksheet uses the same formula.
 
 ### Step 6 — Multiply $350,000 by your plan contribution rate (not the reduced rate)
 Status: **MATCH**
 
-Model: This restates 'Multiply $350,000 by your plan contribution rate (not the reduced rate).' The rate helpers reduce to the whole-percent plan rate.
+Model: This matches 'Multiply $350,000 by your plan contribution rate (not the reduced rate)'.
 
 ### Step 7 — Enter the smaller of step 5 or step 6
 Status: **MATCH**
 
-Model: This restates 'Enter the smaller of step 5 or step 6.'
+Model: This matches 'Enter the smaller of step 5 or step 6'.
 
 ### Step 8 — Contribution dollar limit
 Status: **MATCH**
 
-Model: Pub. 560 gives the contribution dollar limit as $70,000.
+Model: This matches the printed 'Contribution dollar limit' of $70,000.
 
 ### Step 21 — Maximum deductible contribution (the smaller of step 7 or step 8; no elective deferrals)
 Status: **MATCH**
 
-Model: The worksheet says to 'skip steps 9 through 20 and enter the smaller of step 7 or step 8 on step 21' when there are no elective deferrals to the self-employed plan. SARSEP and Roth cases are screened out.
+Model: The worksheet says that without elective deferrals you 'skip steps 9 through 20 and enter the smaller of step 7 or step 8 on step 21'. The plan screen excludes SARSEP and Roth cases that would involve deferrals.
 
 ### (screen) (person.sav_able) — As the designated beneficiary of an ABLE account, did you contribute to it for 2025, or di
 Status: **MATCH**
 
-Model: This tracks Form 8880 line 1's ABLE contributions by the designated beneficiary and the line 4 instruction on distributions received 'after 2022 and before the due date' (including extensions) from ABLE accounts.
+Model: This tracks Form 8880 line 1 ('ABLE account contributions by the designated beneficiary') and line 4 (distributions 'received after 2022 and before the due date (including extensions)', including ABLE accounts).
 
 ### (screen) (person.sav_excess) — Were your elective deferrals and designated Roth contributions for 2025 more than the limi
 Status: **MATCH**
 
-Model: The W-2 instructions give the 2025 limit for elective deferrals and designated Roth contributions as $23,500 and show these amounts in box 12, with catch-up contributions reported there. The screen excludes returns with excess deferrals.
+Model: This agrees with the W-2 instructions' 2025 limit: 'the 2025 limit for elective deferrals and designated Roth contributions is $23,500', reported in box 12. Catch-up contributions are allowed for for employees age 50 or older.
 
 ### (screen) (person.ira_excess) — Were your 2025 IRA contributions more than allowed, recharacterized, or is an earlier exce
 Status: **MATCH**
 
-Model: This follows the $7,000/$8,000 and taxable-compensation limits, the Roth income limit, the rule on excess contributions not withdrawn with earnings by the return due date, recharacterizations, and Form 5329's prior-year excess contributions.
+Model: This reflects the combined limit (the smaller of $7,000 or $8,000, or taxable compensation) and the Roth income limit in the Form 8606 instructions. It also reflects withdrawal with earnings by the due date, recharacterizations, and prior-year excess carried on Form 5329.
 
 ### 23 — Has the American opportunity credit been claimed for this student for any 4 prior tax year
 Status: **MATCH**
 
-Model: The question matches Form 8863 line 23 and the instruction text 'has not been claimed (by you or anyone else) for this student for any 4 tax years before 2025.' The TIN and Form 1098-T issues in the eligibility gate are reported at lines 27 to 31.
+Model: The question matches Form 8863 line 23 and the instruction that the credit 'has not been claimed (by you or anyone else) for this student for any 4 tax years before 2025'. The problems in the eligible-student gate affect the credit amounts and are recorded at lines 27 to 31.
 
 ### 24 — Was the student enrolled at least half-time for at least one academic period that began or
 Status: **MATCH**
 
-Model: The question matches line 24. Its period 'in the first 3 months of 2026 if paid for in 2025' restates the form's 'treated as having begun in 2025' under the instructions. The Form 1098-T box 8 reference does not change the test.
+Model: This matches line 24 and the instruction to treat an academic period beginning in the first 3 months of 2026 as beginning in 2025 if its expenses were paid in 2025. The reporting gate follows the form's 'Go to line 25' flow.
 
 ### 25 — Did the student complete the first 4 years of postsecondary education before 2025?
 Status: **MATCH**
 
-Model: This matches line 25 and the instruction that completion is 'as determined by the eligible educational institution', excluding credit awarded solely for proficiency examinations.
+Model: This matches line 25 and the instructions: 4 years not completed as of the beginning of 2025 'as determined by the eligible educational institution', excluding credit awarded solely for proficiency examinations.
 
 ### 26 — Was the student convicted, before the end of 2025, of a felony for possession or distribut
 Status: **MATCH**
 
-Model: This matches line 26 and the instruction's 'federal or state felony for possessing or distributing a controlled substance' as of the end of 2025.
+Model: This matches line 26 and the instruction on a 'federal or state felony for possessing or distributing a controlled substance' as of the end of 2025.
 
 ### 27 — Adjusted qualified education expenses. Don't enter more than $4,000
 Status: **MISMATCH**
 
 Restated: Choose — [helper "An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available" = true → "line27" of Form 8863, Part III lines 27 to 31 with the Adjusted Qualified Education Expenses Worksheet, one per student with adj = helper "Adjusted Qualified Education Expenses Worksheet, line 3 for an eligible student: add lines 2a, 2b and 2c", inst = helper "Qualified education expenses required to be paid to the institution", and mat = helper "Other course materials (American opportunity credit only)"] [helper "An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available" = false → line zero]
 
-Model: The worksheet arithmetic and $4,000 cap match, but the gate accepts an ITIN merely applied for, while the instructions say 'Filers and students must have been issued a TIN by the due date of their 2025 return.' The Form 1098-T helper also uses 'after February 2, 2026' where the text says 'After January 31, 2026.'
+Model: The worksheet arithmetic and $4,000 cap are right, but the gate accepts an applied-for ITIN, while the instructions say 'Filers and students must have been issued a TIN by the due date of their 2025 return'. The gate also requires a Form 1098-T request 'after February 2, 2026', while the IRS text says 'After January 31, 2026'.
 
-Ruling: ambiguity; amb.2025.edu_1098t_date (owner decision D7(d), 2026-10-29): i8863 p. 1, "After January 31, 2026, but before you file the return"; p970 p. 2, "After February 2, 2026 (January 31 falls on a Saturday)"; the register chooses Pub. 970, which the reviewer was not given. The TIN objection is an interface gap: p970 p. 11 (not among its pages): "If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as issued on or before the due date of the return", so the gate's "applied for" (person.itin_applied, household.all_tin) says what the source allows (amb.2025.edu_filer_tin for the filers on a joint return). The worksheet arithmetic and the $4,000 cap match, as the model says. Why the line is new to the open list: lines 27 to 31 were judged MATCH in Stage 21; the render prompt changed only in the reworded questions of person.tin (BUG-0225), person.edu_1098t (BUG-0226), person.edu_inst (BUG-0227) and person.x_other (BUG-0242). The reviewer objects to text the fixes did not touch (the date and the applied-for ITIN, as in the dependent render log), and raises no objection to the new cooperation condition of the Form 1098-T exception, which matches i8863 p. 1 ("You must fully cooperate with the educational institution's efforts to gather the information needed to furnish the Form 1098-T."), or to the new expense exclusions. Fix round 4 re-check: the render prompt changed only in the person.itin_applied wording of BUG-0259 (an application to renew an expired ITIN by the due date now counts as the application); the reviewer raises no objection to the renewal wording, and its applied-for objection is the one ruled above: the p970 deeming, under which an ITIN applied for (a renewal is filed as an application on Form W-7) and issued counts as issued by the due date. Project stands.
+Ruling: ambiguity; amb.2025.edu_1098t_date (owner decision D7(d), 2026-10-29): i8863 p. 1, "After January 31, 2026, but before you file the return"; p970 p. 2, "After February 2, 2026 (January 31 falls on a Saturday)"; the register chooses Pub. 970, which the reviewer was not given. The TIN objection is an interface gap: p970 p. 11 (not among its pages): "If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as issued on or before the due date of the return", so the gate's "applied for" (person.itin_applied, household.all_tin) says what the source allows (amb.2025.edu_filer_tin for the filers on a joint return). The worksheet arithmetic and the $4,000 cap match, as the model says. Why the line is new to the open list: lines 27 to 31 were judged MATCH in Stage 21; the render prompt changed only in the reworded questions of person.tin (BUG-0225), person.edu_1098t (BUG-0226), person.edu_inst (BUG-0227) and person.x_other (BUG-0242). The reviewer objects to text the fixes did not touch (the date and the applied-for ITIN, as in the dependent render log), and raises no objection to the new cooperation condition of the Form 1098-T exception, which matches i8863 p. 1 ("You must fully cooperate with the educational institution's efforts to gather the information needed to furnish the Form 1098-T."), or to the new expense exclusions. Fix round 4 re-check: the render prompt changed only in the person.itin_applied wording of BUG-0259 (an application to renew an expired ITIN by the due date now counts as the application); the reviewer raises no objection to the renewal wording, and its applied-for objection is the one ruled above: the p970 deeming, under which an ITIN applied for (a renewal is filed as an application on Form W-7) and issued counts as issued by the due date. Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor; no value change), which these lines do not read; the fresh reply repeats the same two objections in new words (the applied-for ITIN and the Form 1098-T request date), both ruled above, and raises no new one. Project stands.
 
 ### 28 — Subtract $2,000 from line 27. If zero or less, enter -0-
 Status: **MISMATCH**
 
 Restated: Choose — [helper "An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available" = true → "line28" of Form 8863, Part III lines 27 to 31 with the Adjusted Qualified Education Expenses Worksheet, one per student with adj = helper "Adjusted Qualified Education Expenses Worksheet, line 3 for an eligible student: add lines 2a, 2b and 2c", inst = helper "Qualified education expenses required to be paid to the institution", and mat = helper "Other course materials (American opportunity credit only)"] [helper "An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available" = false → line zero]
 
-Model: Subtracting $2,000 with a zero floor matches, but the line is computed under a gate that accepts an applied-for ITIN, contrary to 'Filers and students must have been issued a TIN by the due date of their 2025 return.'
+Model: Subtracting $2,000 with a zero floor is right, but the line inherits a gate that accepts an applied-for ITIN, contrary to 'must have been issued a TIN by the due date'. The gate also uses 'after February 2, 2026' where the IRS text says 'After January 31, 2026'.
 
-Ruling: ambiguity; amb.2025.edu_1098t_date (owner decision D7(d), 2026-10-29): i8863 p. 1, "After January 31, 2026, but before you file the return"; p970 p. 2, "After February 2, 2026 (January 31 falls on a Saturday)"; the register chooses Pub. 970, which the reviewer was not given. The TIN objection is an interface gap: p970 p. 11 (not among its pages): "If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as issued on or before the due date of the return", so the gate's "applied for" (person.itin_applied, household.all_tin) says what the source allows (amb.2025.edu_filer_tin for the filers on a joint return). The subtraction matches, as the model says. Why the line is new to the open list: lines 27 to 31 were judged MATCH in Stage 21; the render prompt changed only in the reworded questions of person.tin (BUG-0225), person.edu_1098t (BUG-0226), person.edu_inst (BUG-0227) and person.x_other (BUG-0242). The reviewer objects to text the fixes did not touch (the date and the applied-for ITIN, as in the dependent render log), and raises no objection to the new cooperation condition of the Form 1098-T exception, which matches i8863 p. 1 ("You must fully cooperate with the educational institution's efforts to gather the information needed to furnish the Form 1098-T."), or to the new expense exclusions. Fix round 4 re-check: the render prompt changed only in the person.itin_applied wording of BUG-0259 (an application to renew an expired ITIN by the due date now counts as the application); the reviewer raises no objection to the renewal wording, and its applied-for objection is the one ruled above: the p970 deeming, under which an ITIN applied for (a renewal is filed as an application on Form W-7) and issued counts as issued by the due date. Project stands.
+Ruling: ambiguity; amb.2025.edu_1098t_date (owner decision D7(d), 2026-10-29): i8863 p. 1, "After January 31, 2026, but before you file the return"; p970 p. 2, "After February 2, 2026 (January 31 falls on a Saturday)"; the register chooses Pub. 970, which the reviewer was not given. The TIN objection is an interface gap: p970 p. 11 (not among its pages): "If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as issued on or before the due date of the return", so the gate's "applied for" (person.itin_applied, household.all_tin) says what the source allows (amb.2025.edu_filer_tin for the filers on a joint return). The subtraction matches, as the model says. Why the line is new to the open list: lines 27 to 31 were judged MATCH in Stage 21; the render prompt changed only in the reworded questions of person.tin (BUG-0225), person.edu_1098t (BUG-0226), person.edu_inst (BUG-0227) and person.x_other (BUG-0242). The reviewer objects to text the fixes did not touch (the date and the applied-for ITIN, as in the dependent render log), and raises no objection to the new cooperation condition of the Form 1098-T exception, which matches i8863 p. 1 ("You must fully cooperate with the educational institution's efforts to gather the information needed to furnish the Form 1098-T."), or to the new expense exclusions. Fix round 4 re-check: the render prompt changed only in the person.itin_applied wording of BUG-0259 (an application to renew an expired ITIN by the due date now counts as the application); the reviewer raises no objection to the renewal wording, and its applied-for objection is the one ruled above: the p970 deeming, under which an ITIN applied for (a renewal is filed as an application on Form W-7) and issued counts as issued by the due date. Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor; no value change), which these lines do not read; the fresh reply repeats the same two objections in new words (the applied-for ITIN and the Form 1098-T request date), both ruled above, and raises no new one. Project stands.
 
 ### 29 — Multiply line 28 by 25% (0.25)
 Status: **MISMATCH**
 
 Restated: Choose — [helper "An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available" = true → "line29" of Form 8863, Part III lines 27 to 31 with the Adjusted Qualified Education Expenses Worksheet, one per student with adj = helper "Adjusted Qualified Education Expenses Worksheet, line 3 for an eligible student: add lines 2a, 2b and 2c", inst = helper "Qualified education expenses required to be paid to the institution", and mat = helper "Other course materials (American opportunity credit only)"] [helper "An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available" = false → line zero]
 
-Model: Multiplying line 28 by 25% matches, but the line is computed under a gate that accepts an applied-for ITIN, contrary to 'Filers and students must have been issued a TIN by the due date of their 2025 return.'
+Model: Multiplying line 28 by 25% is right, but the line inherits a gate that accepts an applied-for ITIN, contrary to 'must have been issued a TIN by the due date'. The gate also uses 'after February 2, 2026' where the IRS text says 'After January 31, 2026'.
 
-Ruling: ambiguity; amb.2025.edu_1098t_date (owner decision D7(d), 2026-10-29): i8863 p. 1, "After January 31, 2026, but before you file the return"; p970 p. 2, "After February 2, 2026 (January 31 falls on a Saturday)"; the register chooses Pub. 970, which the reviewer was not given. The TIN objection is an interface gap: p970 p. 11 (not among its pages): "If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as issued on or before the due date of the return", so the gate's "applied for" (person.itin_applied, household.all_tin) says what the source allows (amb.2025.edu_filer_tin for the filers on a joint return). The 25% matches, as the model says. Why the line is new to the open list: lines 27 to 31 were judged MATCH in Stage 21; the render prompt changed only in the reworded questions of person.tin (BUG-0225), person.edu_1098t (BUG-0226), person.edu_inst (BUG-0227) and person.x_other (BUG-0242). The reviewer objects to text the fixes did not touch (the date and the applied-for ITIN, as in the dependent render log), and raises no objection to the new cooperation condition of the Form 1098-T exception, which matches i8863 p. 1 ("You must fully cooperate with the educational institution's efforts to gather the information needed to furnish the Form 1098-T."), or to the new expense exclusions. Fix round 4 re-check: the render prompt changed only in the person.itin_applied wording of BUG-0259 (an application to renew an expired ITIN by the due date now counts as the application); the reviewer raises no objection to the renewal wording, and its applied-for objection is the one ruled above: the p970 deeming, under which an ITIN applied for (a renewal is filed as an application on Form W-7) and issued counts as issued by the due date. Project stands.
+Ruling: ambiguity; amb.2025.edu_1098t_date (owner decision D7(d), 2026-10-29): i8863 p. 1, "After January 31, 2026, but before you file the return"; p970 p. 2, "After February 2, 2026 (January 31 falls on a Saturday)"; the register chooses Pub. 970, which the reviewer was not given. The TIN objection is an interface gap: p970 p. 11 (not among its pages): "If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as issued on or before the due date of the return", so the gate's "applied for" (person.itin_applied, household.all_tin) says what the source allows (amb.2025.edu_filer_tin for the filers on a joint return). The 25% matches, as the model says. Why the line is new to the open list: lines 27 to 31 were judged MATCH in Stage 21; the render prompt changed only in the reworded questions of person.tin (BUG-0225), person.edu_1098t (BUG-0226), person.edu_inst (BUG-0227) and person.x_other (BUG-0242). The reviewer objects to text the fixes did not touch (the date and the applied-for ITIN, as in the dependent render log), and raises no objection to the new cooperation condition of the Form 1098-T exception, which matches i8863 p. 1 ("You must fully cooperate with the educational institution's efforts to gather the information needed to furnish the Form 1098-T."), or to the new expense exclusions. Fix round 4 re-check: the render prompt changed only in the person.itin_applied wording of BUG-0259 (an application to renew an expired ITIN by the due date now counts as the application); the reviewer raises no objection to the renewal wording, and its applied-for objection is the one ruled above: the p970 deeming, under which an ITIN applied for (a renewal is filed as an application on Form W-7) and issued counts as issued by the due date. Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor; no value change), which these lines do not read; the fresh reply repeats the same two objections in new words (the applied-for ITIN and the Form 1098-T request date), both ruled above, and raises no new one. Project stands.
 
 ### 30 — American opportunity credit for this student. If line 28 is zero, enter the amount from li
 Status: **MISMATCH**
 
 Restated: Choose — [helper "An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available" = true → "line30" of Form 8863, Part III lines 27 to 31 with the Adjusted Qualified Education Expenses Worksheet, one per student with adj = helper "Adjusted Qualified Education Expenses Worksheet, line 3 for an eligible student: add lines 2a, 2b and 2c", inst = helper "Qualified education expenses required to be paid to the institution", and mat = helper "Other course materials (American opportunity credit only)"] [helper "An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available" = false → line zero]
 
-Model: The line 30 choice matches the form, but the line is computed under a gate that accepts an applied-for ITIN, contrary to 'Filers and students must have been issued a TIN by the due date of their 2025 return.'
+Model: The line 28 zero test and the $2,000 addition are right, but the line inherits a gate that accepts an applied-for ITIN, contrary to 'must have been issued a TIN by the due date'. The gate also uses 'after February 2, 2026' where the IRS text says 'After January 31, 2026'.
 
-Ruling: ambiguity; amb.2025.edu_1098t_date (owner decision D7(d), 2026-10-29): i8863 p. 1, "After January 31, 2026, but before you file the return"; p970 p. 2, "After February 2, 2026 (January 31 falls on a Saturday)"; the register chooses Pub. 970, which the reviewer was not given. The TIN objection is an interface gap: p970 p. 11 (not among its pages): "If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as issued on or before the due date of the return", so the gate's "applied for" (person.itin_applied, household.all_tin) says what the source allows (amb.2025.edu_filer_tin for the filers on a joint return). The line 30 rule matches, as the model says. Why the line is new to the open list: lines 27 to 31 were judged MATCH in Stage 21; the render prompt changed only in the reworded questions of person.tin (BUG-0225), person.edu_1098t (BUG-0226), person.edu_inst (BUG-0227) and person.x_other (BUG-0242). The reviewer objects to text the fixes did not touch (the date and the applied-for ITIN, as in the dependent render log), and raises no objection to the new cooperation condition of the Form 1098-T exception, which matches i8863 p. 1 ("You must fully cooperate with the educational institution's efforts to gather the information needed to furnish the Form 1098-T."), or to the new expense exclusions. Fix round 4 re-check: the render prompt changed only in the person.itin_applied wording of BUG-0259 (an application to renew an expired ITIN by the due date now counts as the application); the reviewer raises no objection to the renewal wording, and its applied-for objection is the one ruled above: the p970 deeming, under which an ITIN applied for (a renewal is filed as an application on Form W-7) and issued counts as issued by the due date. Project stands.
+Ruling: ambiguity; amb.2025.edu_1098t_date (owner decision D7(d), 2026-10-29): i8863 p. 1, "After January 31, 2026, but before you file the return"; p970 p. 2, "After February 2, 2026 (January 31 falls on a Saturday)"; the register chooses Pub. 970, which the reviewer was not given. The TIN objection is an interface gap: p970 p. 11 (not among its pages): "If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as issued on or before the due date of the return", so the gate's "applied for" (person.itin_applied, household.all_tin) says what the source allows (amb.2025.edu_filer_tin for the filers on a joint return). The line 30 rule matches, as the model says. Why the line is new to the open list: lines 27 to 31 were judged MATCH in Stage 21; the render prompt changed only in the reworded questions of person.tin (BUG-0225), person.edu_1098t (BUG-0226), person.edu_inst (BUG-0227) and person.x_other (BUG-0242). The reviewer objects to text the fixes did not touch (the date and the applied-for ITIN, as in the dependent render log), and raises no objection to the new cooperation condition of the Form 1098-T exception, which matches i8863 p. 1 ("You must fully cooperate with the educational institution's efforts to gather the information needed to furnish the Form 1098-T."), or to the new expense exclusions. Fix round 4 re-check: the render prompt changed only in the person.itin_applied wording of BUG-0259 (an application to renew an expired ITIN by the due date now counts as the application); the reviewer raises no objection to the renewal wording, and its applied-for objection is the one ruled above: the p970 deeming, under which an ITIN applied for (a renewal is filed as an application on Form W-7) and issued counts as issued by the due date. Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor; no value change), which these lines do not read; the fresh reply repeats the same two objections in new words (the applied-for ITIN and the Form 1098-T request date), both ruled above, and raises no new one. Project stands.
 
 ### 31 — Adjusted qualified education expenses for the lifetime learning credit
 Status: **MISMATCH**
 
 Restated: Choose — [helper "A lifetime learning credit student: an eligible student who is not an American opportunity credit student" = true → "ws4_llc" of Form 8863, Part III lines 27 to 31 with the Adjusted Qualified Education Expenses Worksheet, one per student with adj = helper "Adjusted Qualified Education Expenses Worksheet, line 3 for an eligible student: add lines 2a, 2b and 2c", inst = helper "Qualified education expenses required to be paid to the institution", and mat = helper "Other course materials (American opportunity credit only)"] [helper "A lifetime learning credit student: an eligible student who is not an American opportunity credit student" = false → line zero]
 
-Model: The expense computation matches the worksheet for the lifetime learning credit, but the student gate accepts an applied-for ITIN, while Table 1 says 'Students must have been issued a TIN by the due date of their 2025 return.' The Form 1098-T helper also uses 'after February 2, 2026' where the text says 'After January 31, 2026.'
+Model: Institution-required expenses less adjustments is right, but the gate accepts a student's applied-for ITIN, while the IRS text says 'Students must have been issued a TIN by the due date of their 2025 return'. The gate also uses 'after February 2, 2026' where the IRS text says 'After January 31, 2026'.
 
-Ruling: ambiguity; amb.2025.edu_1098t_date (owner decision D7(d), 2026-10-29): i8863 p. 1, "After January 31, 2026, but before you file the return"; p970 p. 2, "After February 2, 2026 (January 31 falls on a Saturday)"; the register chooses Pub. 970, which the reviewer was not given. The TIN objection is an interface gap: p970 p. 11 (not among its pages): "If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as issued on or before the due date of the return", so the gate's "applied for" (person.itin_applied, household.all_tin) says what the source allows (amb.2025.edu_filer_tin for the filers on a joint return). The lifetime learning amount (expenses required to be paid to the institution) matches, as the model says. Why the line is new to the open list: lines 27 to 31 were judged MATCH in Stage 21; the render prompt changed only in the reworded questions of person.tin (BUG-0225), person.edu_1098t (BUG-0226), person.edu_inst (BUG-0227) and person.x_other (BUG-0242). The reviewer objects to text the fixes did not touch (the date and the applied-for ITIN, as in the dependent render log), and raises no objection to the new cooperation condition of the Form 1098-T exception, which matches i8863 p. 1 ("You must fully cooperate with the educational institution's efforts to gather the information needed to furnish the Form 1098-T."), or to the new expense exclusions. Fix round 4 re-check: the render prompt changed only in the person.itin_applied wording of BUG-0259 (an application to renew an expired ITIN by the due date now counts as the application); the reviewer raises no objection to the renewal wording, and its applied-for objection is the one ruled above: the p970 deeming, under which an ITIN applied for (a renewal is filed as an application on Form W-7) and issued counts as issued by the due date. Project stands.
+Ruling: ambiguity; amb.2025.edu_1098t_date (owner decision D7(d), 2026-10-29): i8863 p. 1, "After January 31, 2026, but before you file the return"; p970 p. 2, "After February 2, 2026 (January 31 falls on a Saturday)"; the register chooses Pub. 970, which the reviewer was not given. The TIN objection is an interface gap: p970 p. 11 (not among its pages): "If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as issued on or before the due date of the return", so the gate's "applied for" (person.itin_applied, household.all_tin) says what the source allows (amb.2025.edu_filer_tin for the filers on a joint return). The lifetime learning amount (expenses required to be paid to the institution) matches, as the model says. Why the line is new to the open list: lines 27 to 31 were judged MATCH in Stage 21; the render prompt changed only in the reworded questions of person.tin (BUG-0225), person.edu_1098t (BUG-0226), person.edu_inst (BUG-0227) and person.x_other (BUG-0242). The reviewer objects to text the fixes did not touch (the date and the applied-for ITIN, as in the dependent render log), and raises no objection to the new cooperation condition of the Form 1098-T exception, which matches i8863 p. 1 ("You must fully cooperate with the educational institution's efforts to gather the information needed to furnish the Form 1098-T."), or to the new expense exclusions. Fix round 4 re-check: the render prompt changed only in the person.itin_applied wording of BUG-0259 (an application to renew an expired ITIN by the due date now counts as the application); the reviewer raises no objection to the renewal wording, and its applied-for objection is the one ruled above: the p970 deeming, under which an ITIN applied for (a renewal is filed as an application on Form W-7) and issued counts as issued by the due date. Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor; no value change), which these lines do not read; the fresh reply repeats the same two objections in new words (the applied-for ITIN and the Form 1098-T request date), both ruled above, and raises no new one. Project stands.
 
 ## Raw response
 
 ```yaml
-```yaml
 lines:
   - key: "rrta"
     status: MATCH
-    reason: "The Form W-2 instructions say railroad employers report RRTA compensation and taxes in box 14, and the Form 8959 instructions refer to employee representatives filing Form CT-2. The input asks about both."
+    reason: "The screen matches the W-2 instructions, which report RRTA compensation and Tier 1 and Tier 2 taxes in box 14, and the Form 8959 instructions on employee representatives filing Form CT-2. It gates the refusal of the RRTA path that Schedule 3, line 11 would otherwise cover."
   - key: "employers"
     status: MATCH
-    reason: "Counting the person's Forms W-2 implements the Schedule 3, line 11 test 'had more than one employer for 2025', figured separately for each spouse."
+    reason: "Counting one per W-2 employer entry implements the Schedule 3, line 11 test of whether the person 'had more than one employer for 2025', figured separately for each spouse."
   - key: "overcount"
     status: MATCH
-    reason: "This counts the employers to which the text 'if any one employer withheld more than $10,918.20' applies."
+    reason: "This counts the employers that withheld more than $10,918.20, as in 'if any one employer withheld more than $10,918.20'. The W-2 box 4 instructions give the same amount ($176,100 x 6.2%)."
   - key: "over"
     status: MATCH
-    reason: "A count above zero means 'any one employer withheld more than $10,918.20', the condition the instruction addresses."
+    reason: "True when any one employer overwithheld, which is the condition under which 'you can't claim the excess on your return'."
   - key: "wages"
     status: MATCH
-    reason: "The instruction's 'total wages' is restated as W-2 boxes 3 and 7 added across employers. That is the wage measure for the $176,100 social security base, and it decides the same eligibility within the supported non-RRTA cases."
+    reason: "Boxes 3 and 7 are social security wages and tips, summed per person, which fits 'total wages' under the line 11 test. Schedule SE line 8a uses the same total."
   - key: "withheld"
     status: MATCH
-    reason: "Summing W-2 box 4 gives the total social security tax withheld for this person, which is the figure the line 11 credit compares with $10,918.20."
+    reason: "Summing W-2 box 4 per person gives the social security tax withheld that the line 11 instruction compares with $10,918.20, figured 'separately for you and your spouse'."
   - key: "eligible"
     status: MATCH
-    reason: "This restates 'had more than one employer for 2025 and total wages of more than $176,100', with the same operands and strict comparisons."
+    reason: "This matches 'had more than one employer for 2025 and total wages of more than $176,100'."
   - key: "excess"
     status: MATCH
-    reason: "The instruction allows a credit 'for the amount withheld in excess of $10,918.20'. Subtracting that amount from total withholding and flooring at zero computes this."
+    reason: "This matches 'the amount withheld in excess of $10,918.20'. The zero floor changes nothing because no excess means no credit."
   - key: "zero"
     status: MATCH
-    reason: "This is a program constant with no separate IRS wording. It supplies a zero credit when the instruction's eligibility conditions are not met."
+    reason: "This program constant supplies the no-credit branch when the line 11 conditions are not met. It does not conflict with the IRS text."
   - key: "credit"
     status: MATCH
-    reason: "The excess applies only when eligible. The refusals match the text 'you can't claim the excess on your return' for one-employer overwithholding, with Form 843 as the remedy, and they exclude the RRTA path, including Tier 2 claims on Form 843."
+    reason: "The credit equals the excess when the line 11 conditions are met and zero otherwise. The refusals correctly exclude the RRTA path and Form 843 cases, including 'If the employer doesn't adjust the overcollection, you can file a claim for refund using Form 843'."
   - key: "(screen) (person.se_screen)"
     status: MATCH
-    reason: "The screen narrows the program by excluding the church, clergy, partnership, other self-employment, farm, CRP, optional-method, chapter 11, community-income, exempt-income and Form 4137/8919 cases covered by the Schedule SE form and instructions. It does not change the computation for supported cases."
+    reason: "The screen covers the Schedule SE items outside a Schedule C-only computation: church income, clergy and Forms 4361 and 4029, K-1 and other income, farm and CRP amounts, optional methods, chapter 11, community income, exempt income, and lines 8b and 8c. Each item is supported by Schedule SE and its instructions."
   - key: "(screen) (person.plan_screen)"
     status: MATCH
-    reason: "The screen excludes SARSEPs, non-whole or above-25% rates, section 117 SIMPLE limits, multiple or qualified plans, other deferrals, Roth contributions and excess contributions. Pub. 560 treats these cases separately or as limits on the worksheet's use."
+    reason: "The screen narrows the plan cases consistently with Pub. 560: no SARSEPs on the worksheet, the Rate Table for whole percentages up to 25%, the section 117 higher SIMPLE limits, and one plan only. It names what is excluded."
   - key: "Step 1"
     status: MATCH
-    reason: "Pub. 560 Step 1 enters net profit from Schedule C, line 31. Non-Schedule C items are refused through the self-employment screen, and a plan with more than one Schedule C is refused, so summing Schedule C results gives the net profit of the one business in supported cases."
+    reason: "This enters net profit from Schedule C, line 31. Schedule F and K-1 amounts, and the footnote reductions tied to them, are excluded by the named self-employment refusal."
   - key: "Step 2"
     status: MATCH
-    reason: "Step 2 uses the deduction from Schedule 1, line 15, and the Form 1040 instructions state 'The deductible part of your self-employment tax is on line 13 of Schedule SE.'"
+    reason: "Worksheet step 2 uses Schedule 1, line 15, which the Form 1040 instructions and Schedule SE line 13 identify as the deductible part of self-employment tax."
   - key: "Step 3"
     status: MATCH
-    reason: "This restates 'Subtract step 2 from step 1.' The added floor at zero is not printed in Pub. 560, but it affects only loss cases, where the worksheet yields no deductible contribution."
+    reason: "This matches 'Subtract step 2 from step 1'. The added zero floor only prevents a negative base when there are no net earnings, and no deduction would result in that case."
   - key: "Step 5"
     status: MATCH
-    reason: "This multiplies Step 3 by the reduced rate, plan rate divided by plan rate plus 1. Rounding to 6 decimals reproduces the Rate Table values for whole-percent rates, such as 0.090909 at 10%."
+    reason: "The rate divided by (rate + 100%), rounded to six places, reproduces the Rate Table (for example 10% gives 0.090909, 25% gives 0.200000), and 'Multiply step 3 by step 4' is then applied. The Rate Worksheet uses the same formula."
   - key: "Step 6"
     status: MATCH
-    reason: "This restates 'Multiply $350,000 by your plan contribution rate (not the reduced rate).' The rate helpers reduce to the whole-percent plan rate."
+    reason: "This matches 'Multiply $350,000 by your plan contribution rate (not the reduced rate)'."
   - key: "Step 7"
     status: MATCH
-    reason: "This restates 'Enter the smaller of step 5 or step 6.'"
+    reason: "This matches 'Enter the smaller of step 5 or step 6'."
   - key: "Step 8"
     status: MATCH
-    reason: "Pub. 560 gives the contribution dollar limit as $70,000."
+    reason: "This matches the printed 'Contribution dollar limit' of $70,000."
   - key: "Step 21"
     status: MATCH
-    reason: "The worksheet says to 'skip steps 9 through 20 and enter the smaller of step 7 or step 8 on step 21' when there are no elective deferrals to the self-employed plan. SARSEP and Roth cases are screened out."
+    reason: "The worksheet says that without elective deferrals you 'skip steps 9 through 20 and enter the smaller of step 7 or step 8 on step 21'. The plan screen excludes SARSEP and Roth cases that would involve deferrals."
   - key: "(screen) (person.sav_able)"
     status: MATCH
-    reason: "This tracks Form 8880 line 1's ABLE contributions by the designated beneficiary and the line 4 instruction on distributions received 'after 2022 and before the due date' (including extensions) from ABLE accounts."
+    reason: "This tracks Form 8880 line 1 ('ABLE account contributions by the designated beneficiary') and line 4 (distributions 'received after 2022 and before the due date (including extensions)', including ABLE accounts)."
   - key: "(screen) (person.sav_excess)"
     status: MATCH
-    reason: "The W-2 instructions give the 2025 limit for elective deferrals and designated Roth contributions as $23,500 and show these amounts in box 12, with catch-up contributions reported there. The screen excludes returns with excess deferrals."
+    reason: "This agrees with the W-2 instructions' 2025 limit: 'the 2025 limit for elective deferrals and designated Roth contributions is $23,500', reported in box 12. Catch-up contributions are allowed for for employees age 50 or older."
   - key: "(screen) (person.ira_excess)"
     status: MATCH
-    reason: "This follows the $7,000/$8,000 and taxable-compensation limits, the Roth income limit, the rule on excess contributions not withdrawn with earnings by the return due date, recharacterizations, and Form 5329's prior-year excess contributions."
+    reason: "This reflects the combined limit (the smaller of $7,000 or $8,000, or taxable compensation) and the Roth income limit in the Form 8606 instructions. It also reflects withdrawal with earnings by the due date, recharacterizations, and prior-year excess carried on Form 5329."
   - key: "23"
     status: MATCH
-    reason: "The question matches Form 8863 line 23 and the instruction text 'has not been claimed (by you or anyone else) for this student for any 4 tax years before 2025.' The TIN and Form 1098-T issues in the eligibility gate are reported at lines 27 to 31."
+    reason: "The question matches Form 8863 line 23 and the instruction that the credit 'has not been claimed (by you or anyone else) for this student for any 4 tax years before 2025'. The problems in the eligible-student gate affect the credit amounts and are recorded at lines 27 to 31."
   - key: "24"
     status: MATCH
-    reason: "The question matches line 24. Its period 'in the first 3 months of 2026 if paid for in 2025' restates the form's 'treated as having begun in 2025' under the instructions. The Form 1098-T box 8 reference does not change the test."
+    reason: "This matches line 24 and the instruction to treat an academic period beginning in the first 3 months of 2026 as beginning in 2025 if its expenses were paid in 2025. The reporting gate follows the form's 'Go to line 25' flow."
   - key: "25"
     status: MATCH
-    reason: "This matches line 25 and the instruction that completion is 'as determined by the eligible educational institution', excluding credit awarded solely for proficiency examinations."
+    reason: "This matches line 25 and the instructions: 4 years not completed as of the beginning of 2025 'as determined by the eligible educational institution', excluding credit awarded solely for proficiency examinations."
   - key: "26"
     status: MATCH
-    reason: "This matches line 26 and the instruction's 'federal or state felony for possessing or distributing a controlled substance' as of the end of 2025."
+    reason: "This matches line 26 and the instruction on a 'federal or state felony for possessing or distributing a controlled substance' as of the end of 2025."
   - key: "27"
     status: MISMATCH
-    reason: "The worksheet arithmetic and $4,000 cap match, but the gate accepts an ITIN merely applied for, while the instructions say 'Filers and students must have been issued a TIN by the due date of their 2025 return.' The Form 1098-T helper also uses 'after February 2, 2026' where the text says 'After January 31, 2026.'"
+    reason: "The worksheet arithmetic and $4,000 cap are right, but the gate accepts an applied-for ITIN, while the instructions say 'Filers and students must have been issued a TIN by the due date of their 2025 return'. The gate also requires a Form 1098-T request 'after February 2, 2026', while the IRS text says 'After January 31, 2026'."
   - key: "28"
     status: MISMATCH
-    reason: "Subtracting $2,000 with a zero floor matches, but the line is computed under a gate that accepts an applied-for ITIN, contrary to 'Filers and students must have been issued a TIN by the due date of their 2025 return.'"
+    reason: "Subtracting $2,000 with a zero floor is right, but the line inherits a gate that accepts an applied-for ITIN, contrary to 'must have been issued a TIN by the due date'. The gate also uses 'after February 2, 2026' where the IRS text says 'After January 31, 2026'."
   - key: "29"
     status: MISMATCH
-    reason: "Multiplying line 28 by 25% matches, but the line is computed under a gate that accepts an applied-for ITIN, contrary to 'Filers and students must have been issued a TIN by the due date of their 2025 return.'"
+    reason: "Multiplying line 28 by 25% is right, but the line inherits a gate that accepts an applied-for ITIN, contrary to 'must have been issued a TIN by the due date'. The gate also uses 'after February 2, 2026' where the IRS text says 'After January 31, 2026'."
   - key: "30"
     status: MISMATCH
-    reason: "The line 30 choice matches the form, but the line is computed under a gate that accepts an applied-for ITIN, contrary to 'Filers and students must have been issued a TIN by the due date of their 2025 return.'"
+    reason: "The line 28 zero test and the $2,000 addition are right, but the line inherits a gate that accepts an applied-for ITIN, contrary to 'must have been issued a TIN by the due date'. The gate also uses 'after February 2, 2026' where the IRS text says 'After January 31, 2026'."
   - key: "31"
     status: MISMATCH
-    reason: "The expense computation matches the worksheet for the lifetime learning credit, but the student gate accepts an applied-for ITIN, while Table 1 says 'Students must have been issued a TIN by the due date of their 2025 return.' The Form 1098-T helper also uses 'after February 2, 2026' where the text says 'After January 31, 2026.'"
-```
+    reason: "Institution-required expenses less adjustments is right, but the gate accepts a student's applied-for ITIN, while the IRS text says 'Students must have been issued a TIN by the due date of their 2025 return'. The gate also uses 'after February 2, 2026' where the IRS text says 'After January 31, 2026'."
 ```

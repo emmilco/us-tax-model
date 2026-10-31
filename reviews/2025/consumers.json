@@ -263,6 +263,12 @@
    "question_phrase": "collectibles (works of art, rugs, antiques, metals ...), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property)",
    "source_phrase": "You have an adjustment not explained earlier in this column",
    "reason": "This page of column (f) codes and column (g) adjustments sets no definition of collectibles, section 1202 stock or section 1250 property; the line refuses on yes."
+  },
+  "consumer:f2441.employer_care@i2441:p5": {
+   "verdict": "same",
+   "question_phrase": "Did your employer furnish dependent care to you itself, at your workplace or by hiring a care provider",
+   "source_phrase": "Line 16 (p. 5), \"Enter the total of all qualified expenses incurred in 2025 for the care of your qualifying person(s)\", read with p. 3, Columns (a) and (b), \"your employer furnished the care (either at your workplace or by hiring a care provider)\"",
+   "reason": "f2441.employer_care_l16 (T-073) needs to know whether the employer itself furnished care whose value is among the benefits on line 12, which is what the question asks in the p. 3 words; line 16 is the line that care leaves undetermined, and the gate refuses rather than reading the question as an expense amount."
   }
  },
  "baseline": {

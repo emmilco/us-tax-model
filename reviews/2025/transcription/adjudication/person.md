@@ -955,7 +955,7 @@ Engine change in progress (spec 4.7.5): no witness examined for these rulings lo
 traced to an unanswered refusal gate let a count's lower bound decide a test); stage21.f1.lower_bound_still_decides (Claude `person.ira_line7`) is decided by a lower bound with an unanswered input,
 which the change should leave as it is.
 
-## Fix round 4
+## Fix round 4 (superseded subject)
 
 Subject after BUG-0259 (2026-10-30): `person.itin_applied` now counts an application to renew an expired ITIN ("If you have
 neither (or your ITIN has expired and was not renewed), have you applied for an ITIN, or for the renewal of your expired
@@ -1133,3 +1133,151 @@ Schedule 2 line 8 box differs), `person.x_l2_all` (model error), `person.x_two23
 declarations fail validation), `Step 6` (representation to model error: the reply now enters $350,000 itself). 36 deepseek
 lines are new to the open list, most through the field-prefix failure; the deepseek render log's `person.ira_excess` screen
 is new (L1).
+
+## Hardening round
+
+Subject after BUG-0263 (2026-10-31): `person.sep_s3` now links `amb.2025.sep_loss_floor` (the line's own register entry);
+no expression changed (checked in the form diff). The review tools changed too: the transcription comparison also compares
+`shown_when` (no person section disagrees on visibility alone), class M of single documents skips hidden lines, and triage
+keeps a separate sample of completed-return witnesses. Fresh replies of 2026-10-31 (claude-opus-5-5, deepseek-flash). Full
+ruling text: `.transcription/proposed/hard1/transcription.person.json`, `transcription.person.deepseek.json`,
+`render.person.json`. Claude triage: `../triage/person.json`, executable-triage-v2 (1,394 fixtures, 500 generated returns
+seed 20261026, 2,014 partial records; 4,728 comparisons per line); every witness was listed by a scratch rerun of
+`tools/transcription/triage.mjs` with the witness cap lifted (counts identical to the record), and every completed-return
+value difference was checked against its ruling's mechanism by evaluating both graphs on each witness, with the printed
+amounts it could reach (IRA worksheet lines 7a, 7b, 12a, 12b, Schedule 1 line 20, Form 8863 line 7, Form 5329 lines 2 and
+4) read in both. The deepseek-flash reply fails validation on 6 declarations (`person.edu_line31` naming a missing aqee
+line, `person.ira_line2` naming the parameter `ira.line2` as a line, and four refusal declarations naming the collection
+field `f8889.unsupported`), so `../triage/person.deepseek.json` is `invalid`; those 6 lines are model errors on the
+declaration and the other 58 are ruled by reading (merits checked in a scratch evaluation with the 6 declarations patched,
+not a triage record). The class M logs and the deepseek render log have no open line. Rulings repeated from fix round 4
+were re-checked; 12 Claude and 4 deepseek replies are unchanged.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | person.educator_deduction | representation | 3,056/4,728 agree; 28 project-unknown, 1,644 candidate-unknown; completed: 97 candidate-unknown | i1040gi p. 93, Line 11 | Unchanged; question order only. |
+| claude | transcription | person.hsa_share | interface gap | 4,706/4,728 agree; 16 candidate-refuses, 6 candidate-unknown | i8889 p. 7, Line 6 Steps 2-3 | Unchanged; f8889.share cycle, interface gave share/share_raw unlabelled. |
+| claude | transcription | person.ira_amount_a | representation | 4,728/4,728 agree | i1040gi pp. 26-27, Lines 4a-4b | Field named as a reference, not an input; same answer. |
+| claude | transcription | person.ira_taxable | representation | 4,728/4,728 agree | i1040gi p. 27, line 4b | As ira_amount_a. |
+| claude | transcription | person.ira_rollovers | representation | 4,728/4,728 agree | i1040gi p. 27, Exception 1 | As ira_amount_a. |
+| claude | transcription | person.plan_amount_a | representation | 4,728/4,728 agree | i1040gi pp. 28-30, Lines 5a-5b | As ira_amount_a. |
+| claude | transcription | person.plan_taxable | representation | 4,728/4,728 agree | i1040gi p. 29, Simplified Method Worksheet | As ira_amount_a. |
+| claude | transcription | person.plan_rollovers | representation | 4,728/4,728 agree | i1040gi p. 30, Rollovers | As ira_amount_a. |
+| claude | transcription | person.se_line6 | representation | 4,728/4,728 agree | i1040sse p. 1, Who Must File | Refusal now needs a Schedule C; round-4 placements gone, no difference. |
+| claude | transcription | person.se_line12 | model error | 4,718/4,728 agree; 10 candidate-unknown; completed: 1 candidate-unknown | i1040sse p. 1, Who Must File | Same SE tax; asks W-2 box 3 of a person with no Schedule C (unneeded answer). |
+| claude | transcription | person.se_line13 | model error | 4,718/4,728 agree; 10 candidate-unknown; completed: 1 candidate-unknown | i1040sse p. 1, Who Must File | As se_line12. |
+| claude | transcription | Step 2 | model error | 4,718/4,728 agree; 10 candidate-unknown; completed: 1 candidate-unknown | p560 p. 39, Step 2; i1040sse p. 1 | As se_line13. |
+| claude | transcription | person.eic_se | model error | 4,716/4,728 agree; 2 candidate-refuses, 10 candidate-unknown; completed: 1 candidate-unknown | i1040gi EIC Worksheet B; i1040sse p. 1 | Same amount; W-2 box 3 demand of se_line12. |
+| claude | transcription | person.dc_earned_b | model error | 4,717/4,728 agree; 2 candidate-refuses, 9 candidate-unknown; completed: 1 candidate-unknown | i2441 p. 5, Line 18; p. 4 | Same sum; W-2 box 3 demand of eic_se. |
+| claude | transcription | person.dc_earned | model error | 4,664/4,728 agree; 36 value, 14 project-refuses, 2 candidate-refuses, 3 project-unknown, 9 candidate-unknown; completed: 1 candidate-unknown | i2441 p. 4, Lines 4 and 5, item 1 (line 1z) | Line 1e now left out of earned income: Form 2441 line 4 lower by dc_1e on 36 records (none completed). |
+| claude | transcription | person.s16 | scope | 3,164/4,728 agree; 37 project-refuses, 5 candidate-refuses, 1,522 candidate-unknown; completed: 20 candidate-unknown | p560 p. 39; i1040gi p. 93, Line 16 | Same deduction; plan asked without a Schedule C: placement (amb.2025.ira_covered). |
+| claude | transcription | person.ira_se | model error | 3,167/4,728 agree; 36 project-refuses, 3 candidate-refuses, 1,522 candidate-unknown; completed: 20 candidate-unknown | i1040gi p. 98, line 9 | Same amount; plan placements of s16 and box 3 demand of eic_se. |
+| claude | transcription | person.dc_has_box10 | representation | 4,728/4,728 agree | i2441 p. 5, Line 12 | Unchanged. |
+| claude | transcription | person.sav_ineligible | ambiguity | 4,481/4,728 agree; 197 value, 4 project-unknown, 46 candidate-unknown; completed: 2 value, 13 candidate-unknown | f8880 p. 2, Who Can Take This Credit | Unchanged; sav_claimed with sa.dependent no, not produced. |
+| claude | transcription | person.sav_line2 | scope | 3,197/4,728 agree; 149 value, 15 project-refuses, 16 candidate-refuses, 1 project-unknown, 1,350 candidate-unknown; completed: 69 value, 4 candidate-refuses, 25 candidate-unknown | f8880 p. 2, Line 2 | Unchanged; plan simple without a Schedule C, not produced. |
+| claude | transcription | person.ira_cov | ambiguity | 4,252/4,728 agree; 421 value, 9 project-unknown, 46 candidate-unknown; completed: 204 value, 3 project-unknown, 7 candidate-unknown | i1040gi p. 96, Were You Covered | Unchanged; plan reading; no traditional contribution, printed lines equal. |
+| claude | transcription | person.ira_line2 | model error | 1,771/4,728 agree; 1,635 value, 5 candidate-refuses, 6 project-unknown, 1,311 candidate-unknown; completed: 625 value, 2 project-unknown, 113 candidate-unknown | i1040gi p. 97, lines 1-2 | Coverage tested first: $246,000 where lines 2-6 are skipped (unreached); needs ira_work_plan of non-contributors. |
+| claude | transcription | person.ira_line6 | representation | 2,315/4,728 agree; 1,215 value, 41 project-refuses, 1 candidate-refuses, 27 project-unknown, 1,129 candidate-unknown; completed: 588 value, 2 project-unknown, 147 candidate-unknown | i1040gi p. 97, line 6 | Same formula; line 2 values inherited, printed lines equal. |
+| claude | transcription | person.ira_line7 | representation | 4,461/4,728 agree; 71 value, 35 project-refuses, 38 candidate-refuses, 8 project-unknown, 115 candidate-unknown; completed: 31 value, 5 project-unknown, 26 candidate-unknown | i1040gi p. 97, line 1 | Plan reading only; no contribution, printed lines equal. |
+| claude | transcription | person.ira_deduction | model error | 2,518/4,728 agree; 11 project-refuses, 245 candidate-refuses, 1,954 candidate-unknown; completed: 175 candidate-unknown | i1040gi p. 98, line 12; p. 95, Line 20 | No ira_has gate: worksheet answers of non-contributors. |
+| claude | transcription | person.ira_nondeductible | model error | 2,518/4,728 agree; 10 project-refuses, 245 candidate-refuses, 1,955 candidate-unknown; completed: 175 candidate-unknown | i8606 p. 9, Line 1; i1040gi p. 95 | As ira_deduction. |
+| claude | transcription | person.ira_files_8606 | model error | 2,518/4,728 agree; 10 project-refuses, 245 candidate-refuses, 1,955 candidate-unknown; completed: 175 candidate-unknown | i8606 p. 2, Who Must File; i1040gi p. 95 | As ira_deduction. |
+| claude | transcription | person.ira_8606_line14 | model error | 2,463/4,728 agree; 11 project-refuses, 245 candidate-refuses, 2,009 candidate-unknown; completed: 199 candidate-unknown | f8606 Part I, line 14 | As ira_deduction. |
+| claude | transcription | person.ira_ssb | model error | 2,604/4,728 agree; 10 project-refuses, 204 candidate-refuses, 1,910 candidate-unknown; completed: 160 candidate-unknown | i1040gi p. 98, line 12; amb.2025.ira_ssb_copy | As ira_deduction (ira_age50). |
+| claude | transcription | person.ira_dist_gate | model error | 2,994/4,728 agree; 12 project-refuses, 14 candidate-refuses, 1,708 candidate-unknown; completed: 116 candidate-unknown | f8606 Part I | No contribution test: ira_dist asked of non-contributors. |
+| claude | transcription | person.ira_8606_line2 | model error | 2,907/4,728 agree; 12 project-refuses, 30 project-unknown, 1,779 candidate-unknown; completed: 140 candidate-unknown | i8606 p. 9, Line 2 | Unchanged; basis asked of non-contributors. |
+| claude | transcription | person.edu_kid | model error | 2,881/4,728 agree; 66 value, 97 project-refuses, 1,684 candidate-unknown; completed: 237 candidate-unknown | i8863 pp. 6-7, Line 7 | Not-MFJ condition restored (round-4 values gone); no kid_needed gate. |
+| claude | transcription | person.x_c05 | model error | 4,727/4,728 agree; 1 value | i5329 p. 5, Line 2, exception 05 | Exception 05 unlimited: line 2 $9,000 against $7,475 on stage21.blind.e6 (incomplete). |
+| claude | transcription | person.x_other_exc | model error | 4,723/4,728 agree; 5 value | i5329 p. 5, Line 2, exception 05 | Carries 05 unlimited; split only where within the limit. |
+| claude | transcription | person.x_limited_sum | model error | 2,037/4,728 agree; 2,691 candidate-unknown; completed: 419 candidate-unknown | i5329 p. 5; p590b p. 27 | 05 moved out; x_prior09/x_births asked of everyone. |
+| claude | transcription | person.x_limit_binds | interface gap | 2,035/4,728 agree; 2 value, 1 project-refuses, 2,690 candidate-unknown; completed: 1 value, 419 candidate-unknown | i5329 p. 5, Line 4; amb.2025.f5329_simple_limits | No code S condition; scope decision withheld from the prompt. |
+| claude | transcription | wages | representation | 4,728/4,728 agree | i1040gi p. 117; iw2w3 p. 18 | Boxes 3 and 7 summed directly; same as w2.wages. |
+| claude | transcription | eligible | representation | 4,720/4,728 agree; 7 value, 1 project-unknown | i1040gi p. 117, Line 11 | Over-limit test inside eligible; refused returns only. |
+| claude | transcription | Step 6 | representation | 4,728/4,728 agree | p560 p. 39, Step 6 | Unchanged. |
+| claude | transcription | 27 | model error | 2,383/4,728 agree; 2,345 candidate-unknown; completed: 258 candidate-unknown | i8863 pp. 2-3; p970 p. 11 | tin only again (applied-for ITIN gap, p970 not given); no f8863.paid (unneeded answers). |
+| claude | transcription | 28 | model error | 2,383/4,728 agree; 2,345 candidate-unknown; completed: 258 candidate-unknown | i8863 pp. 2-3; p970 p. 11 | As 27. |
+| claude | transcription | 29 | model error | 2,383/4,728 agree; 2,345 candidate-unknown; completed: 258 candidate-unknown | i8863 pp. 2-3; p970 p. 11 | As 27. |
+| claude | transcription | 30 | model error | 2,383/4,728 agree; 2,345 candidate-unknown; completed: 258 candidate-unknown | i8863 pp. 2-3; p970 p. 11 | As 27. |
+| claude | transcription | 31 | model error | 2,382/4,728 agree; 2,346 candidate-unknown; completed: 259 candidate-unknown | i8863 pp. 2-3; p970 p. 11 | As 27; EIN-less student to line 31 as the project. |
+| deepseek | transcription | person.educator_deduction | representation | scratch 3,056/4,728 agree; completed: 97 candidate-unknown | i1040gi p. 93, Line 11 | Unchanged formula; question order only. |
+| deepseek | transcription | person.hsa_agreed | model error | scratch 4,434/4,728 agree | i8889 p. 7, Line 6 | No spouse-rule filter; asks allocation outside the rule. |
+| deepseek | transcription | person.hsa_step1 | model error | scratch 4,440/4,728 agree; completed: 127 value | i8889 p. 7, Line 6 | No spouse-rule filter; non-split forms differ. |
+| deepseek | transcription | person.hsa_share | model error | scratch 4,128/4,728 agree; completed: 127 value | i8889 p. 7, Line 6 | Sums f8889.share: cycle at household.hsa_share_sum; no split filter. |
+| deepseek | transcription | person.hsa_deduction | model error | invalid declaration; scratch 4,722/4,728 agree | i8889 p. 7, Line 6 | Declaration: refusal names f8889.unsupported (collection field) without sum_over; merits the project sum. |
+| deepseek | transcription | person.hsa_taxable | model error | invalid declaration; scratch 4,728/4,728 agree | i8889 p. 7, Line 6 | Declaration: refusal f8889.unsupported; merits identical, no difference. |
+| deepseek | transcription | person.hsa_addtax | model error | invalid declaration; scratch 4,728/4,728 agree | i8889 p. 7, Line 6 | Declaration: refusal f8889.unsupported; merits identical, no difference. |
+| deepseek | transcription | person.x_hsa_excess | model error | invalid declaration; scratch 4,722/4,728 agree | i5329 pp. 3-5 | Declaration: refusal f8889.unsupported; merits the project sum. |
+| deepseek | transcription | person.tip_reported | model error | scratch 4,347/4,728 agree; completed: 1 value | i1040gi p. 104, tips worksheet cols (b),(c) | Sums column (c) (Form 4137) not column (b). |
+| deepseek | transcription | person.ira_amount_a | representation | scratch 4,728/4,728 agree | i1040gi pp. 26-30, lines 4a-5b | Account filter equals is_ira (three-valued input); no difference. |
+| deepseek | transcription | person.ira_rollovers | representation | scratch 4,728/4,728 agree | i1040gi pp. 26-30, lines 4a-5b | Same entries; no difference. |
+| deepseek | transcription | person.plan_amount_a | representation | scratch 4,728/4,728 agree | i1040gi pp. 26-30, lines 4a-5b | Same entries; no difference. |
+| deepseek | transcription | person.plan_rollovers | representation | scratch 4,728/4,728 agree | i1040gi pp. 26-30, lines 4a-5b | Same entries; no difference. |
+| deepseek | transcription | person.ira_taxable | scope | scratch 4,716/4,728 agree | i1040gi pp. 26-30, lines 4a-5b | Only differences are retirement.taxable cited refusals. |
+| deepseek | transcription | person.plan_taxable | scope | scratch 4,721/4,728 agree | i1040gi pp. 26-30, lines 4a-5b | Only differences are retirement.taxable cited refusals. |
+| deepseek | transcription | person.medicare5 | model error | scratch 99/4,728 agree; completed: 1,013 value | f8959 line 1 | Enters the 8959 threshold, not W-2 box 5. |
+| deepseek | transcription | person.medicare6 | model error | scratch 1,291/4,728 agree; completed: 724 value | f8959 line 19 | Wages over threshold, not W-2 box 6. |
+| deepseek | transcription | person.s179_nonlisted | model error | scratch 22/4,728 agree; completed: 1,013 candidate-unknown | i4562 p. 5 | Copies s179.line7: cycle on every return. |
+| deepseek | transcription | person.s179_listed | model error | scratch 22/4,728 agree; completed: 1,013 candidate-unknown | i4562 p. 5 | Copies s179.line6: cycle on every return. |
+| deepseek | transcription | person.income179 | model error | scratch 22/4,728 agree; completed: 1,013 candidate-unknown | i4562 p. 5 | Copies s179.income: cycle on every return. |
+| deepseek | transcription | person.se_line6 | model error | scratch 2,235/4,728 agree; completed: 355 candidate-unknown, 3 candidate-refuses | i1040sse; p560 p. 39 | Asks se_screen of everyone, refuses on it; section 179 cycle. |
+| deepseek | transcription | person.se_line12 | model error | scratch 2,235/4,728 agree; completed: 355 candidate-unknown, 3 candidate-refuses | i1040sse; p560 p. 39 | As se_line6. |
+| deepseek | transcription | person.se_line13 | model error | scratch 2,235/4,728 agree; completed: 355 candidate-unknown, 3 candidate-refuses | i1040sse; p560 p. 39 | As se_line6. |
+| deepseek | transcription | Step 2 | model error | scratch 2,235/4,728 agree; completed: 355 candidate-unknown, 3 candidate-refuses | i1040sse; p560 p. 39 | As se_line13. |
+| deepseek | transcription | person.s16 | model error | scratch 2,750/4,728 agree; completed: 196 value, 15 candidate-unknown | i1040gi p. 93, line 16 | No Schedule C gate; asks plan of everyone. |
+| deepseek | transcription | person.qbi | model error | scratch 192/4,728 agree; completed: 1,010 candidate-unknown, 3 candidate-refuses | i8995 p. 4, Line 1 | Copies qbi.deduction (return-level deduction): cycles. |
+| deepseek | transcription | person.eic_se | model error | scratch 72/4,728 agree; completed: 1,013 candidate-unknown | i1040gi p. 47, Worksheet B | Copies eic.wsb_se: cycle. |
+| deepseek | transcription | person.sc_1a | model error | scratch 23/4,728 agree; completed: 1,013 candidate-unknown | i1040gi p. 104, Sch. 1-A line 5 | Copies s1.sc_1a_count: cycle. |
+| deepseek | transcription | person.dc_has_box10 | representation | scratch 4,728/4,728 agree | i2441 pp. 4-5 | Count of W-2s with box 10 > 0 equals total > 0; no difference. |
+| deepseek | transcription | person.dc_earned | model error | scratch 2,252/4,728 agree; completed: 355 candidate-unknown, 3 candidate-refuses | i2441 pp. 4-5 | No line 1e share; inherits se_screen question and cycle. |
+| deepseek | transcription | person.dc_earned_b | model error | scratch 2,243/4,728 agree; completed: 355 candidate-unknown, 3 candidate-refuses | i2441 pp. 4-5 | Inherits dc_earned errors. |
+| deepseek | transcription | person.sav_ineligible | ambiguity | scratch 4,481/4,728 agree; completed: 2 value, 13 candidate-unknown | f8880 p. 2 | Unchanged; amb.2025.savers_ineligible_column. |
+| deepseek | transcription | person.sav_line1 | scope | scratch 3,176/4,728 agree; completed: 126 candidate-unknown | f8880 line 1; p590a p. 35 | Unchanged; placement and cited ira_excess_gate. |
+| deepseek | transcription | person.sav_line2 | model error | scratch 4,624/4,728 agree; completed: 4 candidate-refuses, 5 value, 12 candidate-unknown | f8880 p. 2, Line 2 | Omits own SIMPLE deferrals; input as refusal. |
+| deepseek | transcription | person.ira_contrib | scope | scratch 2,947/4,728 agree; completed: 128 candidate-unknown | i1040gi pp. 97-98, IRA worksheet | Unchanged; placement and cited ira_excess_gate. |
+| deepseek | transcription | person.ira_cov | model error | scratch 4,573/4,728 agree; completed: 2 value, 8 candidate-unknown | i1040gi p. 96 | Unchanged; drops own SEP/SIMPLE plan. |
+| deepseek | transcription | person.ira_line2 | model error | invalid declaration; scratch 3,190/4,728 agree; completed: 295 value, 14 project-unknown | i1040gi p. 97, line 2 | Declaration: parameter named as line; merits never $246,000 (classm.ira.2). |
+| deepseek | transcription | person.ira_line6 | model error | scratch 1,143/4,728 agree; completed: 644 value, 105 candidate-unknown, 3 project-unknown | i1040gi pp. 97-98, IRA worksheet | Copies ira.line6a (taxpayer column display): wrong/circular. |
+| deepseek | transcription | person.ira_line7 | model error | scratch 1,749/4,728 agree; completed: 852 value, 16 candidate-unknown, 27 project-unknown | i1040gi pp. 97-98, IRA worksheet | Copies ira.line7a: wrong/circular. |
+| deepseek | transcription | person.ira_deduction | model error | scratch 71/4,728 agree; completed: 1,013 candidate-unknown | i1040gi pp. 97-98, IRA worksheet | Copies ira.line12a: cycle. |
+| deepseek | transcription | person.ira_nondeductible | model error | scratch 71/4,728 agree; completed: 1,013 candidate-unknown | i1040gi pp. 97-98, IRA worksheet | Inherits ira_deduction cycle. |
+| deepseek | transcription | person.ira_files_8606 | model error | scratch 71/4,728 agree; completed: 1,013 candidate-unknown | i1040gi pp. 97-98, IRA worksheet | Widened test; inherits cycle. |
+| deepseek | transcription | person.ira_8606_line2 | model error | scratch 71/4,728 agree; completed: 1,013 candidate-unknown | i1040gi pp. 97-98, IRA worksheet | Sums f8606.line2: cycle. |
+| deepseek | transcription | person.ira_dist_gate | model error | scratch 2,996/4,728 agree; completed: 116 candidate-unknown | i1040gi pp. 97-98, IRA worksheet | Tests prior basis, asks ira_dist of everyone. |
+| deepseek | transcription | person.ira_ssb | model error | scratch 71/4,728 agree; completed: 1,013 candidate-unknown | i1040gi pp. 97-98, IRA worksheet | Copies ssb.ira_line20: cycle. |
+| deepseek | transcription | person.ira_se | model error | scratch 81/4,728 agree; completed: 1,013 candidate-unknown | i1040gi pp. 97-98, IRA worksheet | Copies the IRA deduction, not SE earnings. |
+| deepseek | transcription | person.edu_kid | model error | scratch 2,249/4,728 agree; completed: 258 candidate-unknown, 2 value | i8863 p. 7, Line 7 | Redefined as AOC student test. |
+| deepseek | transcription | person.x_l1 | model error | scratch 19/4,728 agree; completed: 1,013 candidate-unknown | i5329 pp. 3-5 | Sums f5329.l1: cycle. |
+| deepseek | transcription | person.x_l2_all | model error | scratch 19/4,728 agree; completed: 1,013 candidate-unknown | i5329 pp. 3-5 | Sums f5329.l2: cycle. |
+| deepseek | transcription | person.x_l1_s | model error | scratch 19/4,728 agree; completed: 1,013 candidate-unknown | i5329 pp. 3-5 | Sums f5329.l3_s: cycle, other quantity. |
+| deepseek | transcription | person.x_l2_s | model error | scratch 19/4,728 agree; completed: 1,013 candidate-unknown | i5329 pp. 3-5 | Sums f5329.l3_other: cycle, other quantity. |
+| deepseek | transcription | person.x_c05 | model error | scratch 4,704/4,728 agree | i5329 p. 5, Line 2 | Zero; exception 05 never excluded (l2_e05 published). |
+| deepseek | transcription | person.x_two23 | model error | scratch 4,708/4,728 agree | p590b p. 28 | Constant false (is_e23 published). |
+| deepseek | transcription | person.x_limited_sum | model error | scratch 19/4,728 agree; completed: 1,013 candidate-unknown | i5329 pp. 3-5 | Sums f5329.l3: other quantity, cycle. |
+| deepseek | transcription | person.x_other_exc | model error | scratch 19/4,728 agree; completed: 1,013 candidate-unknown | i5329 pp. 3-5 | Sums f5329.l3_other: cycle. |
+| deepseek | transcription | person.x_limit_binds | model error | scratch 19/4,728 agree; completed: 1,013 candidate-unknown | i5329 pp. 3-5 | Tests x_tax > 0: other test, cycle. |
+| deepseek | transcription | eligible | representation | scratch 4,720/4,728 agree | i1040gi p. 117, Line 11 | Adds over test; differs only on refused returns. |
+| deepseek | transcription | Step 5 | model error | scratch 3,896/4,728 agree; completed: 259 value, 3 project-refuses, 20 project-unknown, 13 candidate-unknown | p560 pp. 39-40, Steps 4-5 | Copies actual SEP contribution, no rate. |
+| deepseek | transcription | Step 6 | model error | scratch 0/4,728 agree; completed: 919 value, 94 project-unknown | p560 p. 39, Step 6 | Unchanged; $350,000 not multiplied by rate. |
+| deepseek | transcription | 27 | model error | scratch 2,093/4,728 agree; completed: 299 candidate-unknown, 46 candidate-shows-skipped | f8863 p. 2, lines 26-31 | No eligibility gate: shows skipped lines, asks edu_inst of all. |
+| deepseek | transcription | 28 | model error | scratch 2,095/4,728 agree; completed: 299 candidate-unknown, 46 candidate-shows-skipped | f8863 p. 2, lines 26-31 | As 27. |
+| deepseek | transcription | 29 | model error | scratch 2,095/4,728 agree; completed: 299 candidate-unknown, 46 candidate-shows-skipped | f8863 p. 2, lines 26-31 | As 27. |
+| deepseek | transcription | 30 | model error | scratch 2,093/4,728 agree; completed: 299 candidate-unknown, 46 candidate-shows-skipped | f8863 p. 2, lines 26-31 | As 27. |
+| deepseek | transcription | 31 | model error | invalid declaration; scratch 2,155/4,728 agree; completed: 290 candidate-unknown, 3 candidate-shows-skipped | f8863 p. 2, lines 26-31 | Declaration: aqee has no line31; merits ungated, shows skipped lines. |
+| claude | render | 27 | ambiguity | render MISMATCH | i8863 p. 1; p970 pp. 2, 11 | amb.2025.edu_1098t_date; applied-for ITIN interface gap; same objections reworded. |
+| claude | render | 28 | ambiguity | render MISMATCH | i8863 p. 1; p970 pp. 2, 11 | amb.2025.edu_1098t_date; applied-for ITIN interface gap; same objections reworded. |
+| claude | render | 29 | ambiguity | render MISMATCH | i8863 p. 1; p970 pp. 2, 11 | amb.2025.edu_1098t_date; applied-for ITIN interface gap; same objections reworded. |
+| claude | render | 30 | ambiguity | render MISMATCH | i8863 p. 1; p970 pp. 2, 11 | amb.2025.edu_1098t_date; applied-for ITIN interface gap; same objections reworded. |
+| claude | render | 31 | ambiguity | render MISMATCH | i8863 p. 1; p970 pp. 2, 11 | amb.2025.edu_1098t_date; applied-for ITIN interface gap; same objections reworded. |
+
+Errors introduced by the fixes: none. BUG-0263 adds only the ambiguity link (value-neutral); no line of either log reads a
+changed expression. Findings: none of medium or higher severity (`.transcription/proposed/hard1/person.findings.md`).
+Completed-return value differences (Claude): `person.sav_ineligible` 2, `person.sav_line2` 69, `person.ira_cov` 204 (all
+on records the interview does not produce, as in fix round 4), `person.ira_line2` 625, `person.ira_line6` 588,
+`person.ira_line7` 31 (all on returns with no traditional IRA contribution, printed lines equal in both graphs) and
+`person.x_limit_binds` 1 (generated 236, interface gap). Reclassified from fix round 4 (same project line, changed reply):
+Claude `person.se_line12`, `person.se_line13`, `Step 2`, `person.eic_se`, `person.dc_earned_b` and `person.ira_se` (scope to
+model error: the se_screen placements are gone, but the reply now asks W-2 box 3 of a person with no Schedule C),
+`person.se_line6` (scope to representation), `person.ira_line2` (ambiguity to model error: coverage now tested first, so it
+asks ira_work_plan of non-contributors), `person.x_other_exc` (representation to model error: exception 05 unlimited again);
+new Claude disagreements `person.x_c05` (model error), `wages` and the six 1099-R count and amount lines (representation).
+`person.dc_earned` stays model error on a new ground (line 1e left out of earned income).

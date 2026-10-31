@@ -43,6 +43,13 @@
    "context": "4bb7c17a0c11658d245d9d55a00ab1f998359317eab17341b3996bf17579b072"
   },
   {
+   "printed": "12",
+   "restated": "Add person.dc_benefits over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "The IRS line says 'If you were self-employed or a partner, include amounts you received under a dependent care assistance program from your sole proprietorship or partnership'; the restatement sums only W-2 box 10 benefits and has no refusal for that case.",
+   "ruling": "Ruling: scope; the model says line 12 omits benefits from your own sole proprietorship or partnership. Form 2441 p. 2, line 12, \"If you were self-employed or a partner, include amounts you received under a dependent care assistance program from your sole proprietorship or partnership\". Those cases are refused on every return the tool computes: sc.special screens contributions made on your own behalf as a self-employed person to a dependent care assistance program (sc.screened at sc.line1), and scope.schedule1 refuses partnerships and Schedules K-1 (f1040.line8 and line 10). On the remaining returns line 12 is the employee benefits from Form W-2 box 10 less the part in box 1 (i2441 p. 5, Line 12). Same ruling as the earlier round. Re-checked for the hardening round: person.dc_earned, person.dc_earned_b, scope.other_income, sc.statutory and person.se_screened are unchanged since round 4 (BUG-0262 changes only f2441 lines 16 and 17; BUG-0263 only person.sep_s3).",
+   "context": "382a4ddcf23767bed9354c0406c6873563c1e72c31f924260d1f407f9c714f97"
+  },
+  {
    "printed": "16",
    "restated": "Add helper \"Total of the qualified expenses incurred and paid in 2025 for the qualifying persons (line 2, column (d), before excluding any benefits)\" and helper \"Qualified expenses for care of the qualifying persons in 2025 that you paid, or will pay, in 2026\".",
    "model": "IRS line 16 is total qualified expenses incurred in 2025 and says 'It doesn't matter when the expenses were paid'; the restatement only adds amounts paid in 2025 and paid or to be paid in 2026.",
@@ -67,6 +74,13 @@
    "model": "The IRS says earned income for lines 18 and 19 is determined as for lines 4 and 5 but does not include dependent care benefits shown on line 12; the restatement's person.dc_earned_b instead removes line 1e, not line 12 benefits.",
    "ruling": "Ruling: model error; i2441 (2025) p.5 Line18 excludes the dependent-care benefits on line12. Under p.5 Line12, amounts already reported as W-2 box1 wages are excluded from line12. In the supported employee slice, the excluded portion of line12 is absent from wages already, and its taxable portion enters wages only through Form1040 line1e (f2441 p.2 Line26). person.dc_earned_b sums box1 wages and net SE earnings without adding line1e, so no line12 benefit remains to subtract again. For stage15.f2441.s4, box1/line1z are $50000, line12 is $5000, line1e is zero and line18 is correctly $50000; subtracting the excluded $5000 again would be wrong. The values are saved in .transcription/f2441-benefit-earned-witness.json. The objection provides no contrary supported computation; the scope exceptions for self-employed plans and other wage lines remain explicitly excluded.",
    "context": "4bb7c17a0c11658d245d9d55a00ab1f998359317eab17341b3996bf17579b072"
+  },
+  {
+   "printed": "18",
+   "restated": "Add person.dc_earned_b over every confirmed person entry for which helper \"Whose entry is this, yours or your spouse's?\" = 'taxpayer', within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "The helper person.dc_earned_b removes line 1e, but the IRS says only that 'earned income doesn’t include any dependent care benefits shown on line 12'; line 1e is not line 12.",
+   "ruling": "Ruling: representation; the model says person.dc_earned_b removes line 1e while i2441 excludes only \"dependent care benefits shown on line 12\". i2441 p. 5, Line 18, earned income for lines 18 and 19 \"is determined in the same way as earned income for figuring the credit ... however, for purposes of lines 18 and 19, earned income doesn't include any dependent care benefits shown on line 12\"; the credit's earned income starts from Form 1040 line 1z (p. 4, Lines 4 and 5), and the only dependent care benefits in line 1z are line 1e, the taxable benefits of line 26 (p. 6, Line 26), which line 23 takes from line 15, that is from the line 12 benefits plus the line 13 grace-period carryover (Form 2441 lines 15 and 23). Excluded benefits are in neither W-2 box 1 nor line 1z, and benefits over the plan's exclusion reported in box 1 are not on line 12 (i2441 p. 5, Line 12) and stay in person.box1. So box 1 plus net self-employment earnings, without line 1e, is line 1z less the line 12 benefits on every return the tool computes, except where line 1e includes line 13 carryover (the form does not say which part of line 26 comes from line 13; it can matter only when earned income is below line 17; low, noted for T-092).",
+   "context": "382a4ddcf23767bed9354c0406c6873563c1e72c31f924260d1f407f9c714f97"
   },
   {
    "printed": "18",
@@ -115,6 +129,13 @@
    "context": "4bb7c17a0c11658d245d9d55a00ab1f998359317eab17341b3996bf17579b072"
   },
   {
+   "printed": "19",
+   "restated": "Choose — [helper \"Married filing jointly\" = true → helper \"Your spouse's earned income for line 19\"] [helper \"Married filing jointly\" = false → line 18]",
+   "model": "The spouse-earned-income helper for line 19 uses the same line-18/19 definition that removes line 1e, while the IRS excludes only dependent care benefits 'shown on line 12'.",
+   "ruling": "Ruling: representation; the model says the spouse's person.dc_earned_b removes line 1e while i2441 excludes only \"dependent care benefits shown on line 12\". i2441 p. 5, Line 18, earned income for lines 18 and 19 \"is determined in the same way as earned income for figuring the credit ... however, for purposes of lines 18 and 19, earned income doesn't include any dependent care benefits shown on line 12\"; the credit's earned income starts from Form 1040 line 1z (p. 4, Lines 4 and 5), and the only dependent care benefits in line 1z are line 1e, the taxable benefits of line 26 (p. 6, Line 26), which line 23 takes from line 15, that is from the line 12 benefits plus the line 13 grace-period carryover (Form 2441 lines 15 and 23). Excluded benefits are in neither W-2 box 1 nor line 1z, and benefits over the plan's exclusion reported in box 1 are not on line 12 (i2441 p. 5, Line 12) and stay in person.box1. So box 1 plus net self-employment earnings, without line 1e, is line 1z less the line 12 benefits on every return the tool computes, except where line 1e includes line 13 carryover (the form does not say which part of line 26 comes from line 13; it can matter only when earned income is below line 17; low, noted for T-092). On a joint return line 19 is the spouse's amount on the same definition (Form 2441 line 19).",
+   "context": "382a4ddcf23767bed9354c0406c6873563c1e72c31f924260d1f407f9c714f97"
+  },
+  {
    "printed": "21",
    "restated": "Enter the smaller of helper \"Year parameter dc.exclusion_max ($5,000)\" or helper \"The maximum amount your dependent care plan allows to be excluded for 2025\".",
    "model": "Line 21's own text says '$5,000 ($2,500 if married filing separately and you were required to enter your spouse's earned income on line 19).' The restatement always compares the $5,000 parameter to the plan maximum and does not provide the $2,500 MFS amount or an MFS refusal on this line.",
@@ -144,6 +165,13 @@
    "restated": "Enter the amount from helper \"Year parameter sales.zero\".",
    "model": "The IRS line 22 is a Yes/No branch: 'Is any amount on line 12 or 13 from your sole proprietorship or partnership? ... Yes. Enter the amount here.' The restatement always enters zero and does not refuse the Yes case.",
    "ruling": "Ruling: scope; i2441 (2025) p. 5 Line 12 includes sole-proprietor/partnership dependent care assistance, and f2441 p. 2 line 22 takes its amount. sc.special expressly screens contributions made on the filer's own behalf to a self-employed dependent care assistance program, with sc.screened refusing at sc.line1; scope.schedule1 excludes partnerships/K-1s and is enforced at f1040.line8/line10. For supported completed returns line 12 therefore uses employee benefits and line 22 is zero. The IRS cases identified by the reviewer remain excluded, not model errors."
+  },
+  {
+   "printed": "22",
+   "restated": "Enter the amount from helper \"Year parameter sales.zero\".",
+   "model": "The IRS line asks whether any amount on line 12 or 13 is from a sole proprietorship or partnership and enters that amount if yes; the restatement always enters $0.",
+   "ruling": "Ruling: scope; the model says the program enters zero unconditionally. Form 2441 p. 2, line 22, \"Is any amount on line 12 or 13 from your sole proprietorship or partnership? No. Enter -0-. Yes. Enter the amount here\". Both Yes cases are refused on every return the tool computes (sole proprietorship by sc.special at sc.line1, partnership by scope.schedule1 at f1040.line8 and line 10), so the answer is always No and line 22 is zero. Same ruling as the earlier rounds. Re-checked for the hardening round: person.dc_earned, person.dc_earned_b, scope.other_income, sc.statutory and person.se_screened are unchanged since round 4 (BUG-0262 changes only f2441 lines 16 and 17; BUG-0263 only person.sep_s3).",
+   "context": "382a4ddcf23767bed9354c0406c6873563c1e72c31f924260d1f407f9c714f97"
   },
   {
    "printed": "22",
@@ -235,6 +263,13 @@
    "model": "The Credit Limit Worksheet line 2 says to enter Schedule 3 line 1 (foreign tax credit) and line 6l (Form 8978, line 14); the restatement uses only s3 line 1.",
    "ruling": "Ruling: scope; i2441 (2025) p. 5 Line 10 Credit Limit Worksheet line 2 includes Schedule 3 lines 1 and 6l (Form 8978). scope.credits explicitly asks about Form 8978 adjustments and refuses them at s3.line8; scope.additional_tax also screens Form 8978 at f1040.line16. A supported completed return therefore has no Form 8978 amount and the worksheet reduces to s3.line1. This is an acknowledged scope reduction, not a claim that the IRS text omits line 6l.",
    "context": "afa3070e8b8ad32f1a9fdd60b1be1f911b304f7ef76b9f45789682ae1a2f31a8"
+  },
+  {
+   "printed": "CLW 2",
+   "restated": "Enter the amount from s3 line 1.",
+   "model": "The IRS Credit Limit Worksheet line 2 is the amount from 'Schedule 3 (Form 1040), line 1 (foreign tax credit) and line 6l (Form 8978, line 14)'; the restatement enters only s3 line 1 and omits line 6l.",
+   "ruling": "Ruling: scope; the model says Schedule 3 line 6l (Form 8978, line 14) is omitted with no refusal. i2441 p. 5, Line 10 Credit Limit Worksheet, line 2: \"Enter the amount from Schedule 3 (Form 1040), line 1 (foreign tax credit) and line 6l (Form 8978, line 14)\". scope.credits asks about Form 8978 adjustments and refuses at s3.line8, and scope.other_line16 screens Form 8978 at f1040.line16, so on every computed return line 6l is zero and worksheet line 2 is Schedule 3 line 1. Same ruling as the earlier rounds. Re-checked for the hardening round: person.dc_earned, person.dc_earned_b, scope.other_income, sc.statutory and person.se_screened are unchanged since round 4 (BUG-0262 changes only f2441 lines 16 and 17; BUG-0263 only person.sep_s3).",
+   "context": "382a4ddcf23767bed9354c0406c6873563c1e72c31f924260d1f407f9c714f97"
   },
   {
    "printed": "CLW 2",

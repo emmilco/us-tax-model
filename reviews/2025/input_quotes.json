@@ -1,0 +1,11 @@
+{
+ "rulings": {},
+ "baseline": {
+  "input-quote:2025:ctc.threshold f1040s8812 \u201cMarried filing jointly\u2014$400,000; All other filing statuses\u2014$200,000\u201d": "47039c7a340f1279",
+  "input-quote:2025:qdcg.fifteen_rate_ceiling i1040gi \u201c$533,400 if single, $300,000 if married filing separately, $600,050 if\u201d": "5ce5fa9e42f9a461",
+  "input-quote:2025:qdcg.zero_rate_ceiling i1040gi \u201c$48,350 if single or married filing separately, $96,700 if married fil\u201d": "bbad4f63a5b17b5c",
+  "input-quote:class_lives:class_lives p946 \u201cGenerally, if the property is listed in Table B-1, you use the recover\u201d": "7b79874c6570aca0",
+  "input-quote:f2441:f2441.benefits f2441 \u201cDid you receive dependent care benefits? No. Complete only Part II bel\u201d": "632113082f73e74c",
+  "input-quote:recovery_year:recovery_year p946 \u201cThis is $100,000 multiplied by 0.03636 (the percentage for the seventh\u201d": "40af905e83f15a08"
+ }
+}

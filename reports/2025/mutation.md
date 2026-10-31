@@ -7,9 +7,9 @@ the fixture test compares).
 
 | Metric | Value |
 | --- | --- |
-| Mutants | 2721 |
+| Mutants | 2722 |
 | Killed by the checker | 294 |
-| Killed by fixtures | 2314 |
+| Killed by fixtures | 2315 |
 | Surviving | 113 (113 provably equivalent) |
 | Mutation score (raw) | 95.8% |
 | Mutation score (equivalent mutants excluded) | 100.0% |

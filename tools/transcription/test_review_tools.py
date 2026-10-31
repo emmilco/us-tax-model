@@ -1199,6 +1199,129 @@ class DefinitionInterfaces(unittest.TestCase):
                 self.assertEqual(families.load("classm")["required"], ["claude"])
 
 
+def node_module(script):
+    """Run an ES module snippet from this directory and return its JSON output."""
+    out = subprocess.run(["node", "--input-type=module", "-e", script], cwd=str(Path(__file__).resolve().parent),
+                         capture_output=True, text=True, check=True)
+    return json.loads(out.stdout)
+
+
+class ClassMReplyHandles(unittest.TestCase):
+    """T-070 (1), T-081 (1), T-076 (1): answers keyed in a form the prompt did not give."""
+
+    def write(self, fill, verdicts, existing=()):
+        with tempfile.TemporaryDirectory() as temp, patch.object(rulings, "REVIEWS", temp), \
+                patch.object(M, "LOGS", temp), patch.object(M.subjects, "current", return_value="a" * 64), \
+                patch.object(M, "fixture_path", return_value=str(Path(temp, "fixtures.json"))):
+            Path(temp, "classm").mkdir()
+            if existing:
+                Path(temp, "fixtures.json").write_text(json.dumps({"tax_year": 2025, "cases": list(existing)}))
+            job = {"id": "classm.x.1", "branches": [], "inputs": {"x.a": 1}, "fill": fill,
+                   "project": {l["id"]: {"kind": "money", "cents": 500} for l in fill}}
+            run = {"used": [], "verdicts": verdicts, "raw": "raw", "prompt_sha": "b" * 64}
+            err = io.StringIO()
+            with patch.object(sys, "stderr", err):
+                _, counts = M.write_outputs({"id": "x", "title": "Test"}, "claude-opus-5-5", [job],
+                                            {job["id"]: run}, {job["id"]: {"model_reported": ["claude-opus-5-5"]}})
+            return counts, err.getvalue()
+
+    def test_unparenthesised_worksheet_marker_is_an_answer(self):
+        fill = [{"id": "x.s5_1", "printed": "(Step 5, 1)", "label": "Step 5", "type": "Dollars"},
+                {"id": "x.clw1", "printed": "(CLW 1)", "label": "CLW", "type": "Dollars"}]
+        verdicts = M.extract('lines:\n  - printed: "Step 5, 1"\n    value: "5.00"\n  - printed: "line CLW 1"\n    value: "5.00"\n')
+        counts, _ = self.write(fill, verdicts)
+        self.assertEqual((counts["AGREE"], counts["MISSING"]), (2, 0))
+
+    def test_echoed_value_type_is_an_answer_but_another_parenthesis_is_not(self):
+        fill = [{"id": "x.line1", "printed": "1", "label": "One", "type": "NonNegDollars"},
+                {"id": "x.line2", "printed": "2", "label": "Two", "type": "Dollars"}]
+        verdicts = M.extract('lines:\n  - printed: "line 1 (NonNegDollars)"\n    value: "5.00"\n'
+                             '  - printed: "line 2 (NonNegDollars)"\n    value: "5.00"\n')
+        counts, _ = self.write(fill, verdicts)
+        self.assertEqual((counts["AGREE"], counts["MISSING"]), (1, 1))
+
+    def test_prompt_does_not_parenthesise_the_value_type_after_the_line_number(self):
+        job = {"given": [], "own_inputs": [], "collections": {}, "status": "single",
+               "fill": [{"id": "x.line1", "printed": "1", "label": "Enter the gain", "type": "NonNegDollars"}]}
+        prompt = M.build_prompt({"id": "x", "title": "T", "tax_year": 2025}, "", job)
+        self.assertNotIn("line 1 (NonNegDollars)", prompt)
+        self.assertIn("- line 1: Enter the gain [value type: NonNegDollars]", prompt)
+
+    def test_replaced_cases_are_named_for_the_mutation_step(self):
+        fill = [{"id": "x.line1", "printed": "1", "label": "One", "type": "Dollars"}]
+        old = [{"id": "classm.x.1", "inputs": {"x.a": 1}, "expect": {}}, {"id": "classm.x.2", "inputs": {"x.a": 9}, "expect": {}}]
+        _, err = self.write(fill, {"1": {"value": "5.00", "work": ""}}, old)
+        self.assertIn("1 earlier class M case(s) replaced (classm.x.2)", err)
+
+
+class TranscriptionVisibility(unittest.TestCase):
+    """T-076 (2): equal amounts do not agree when only the project hides the line."""
+
+    def test_candidate_without_shown_when_differs_on_hidden_lines(self):
+        import copy
+        doc = T.load_form("g28")
+        second = copy.deepcopy(doc["lines"])
+        hidden = {T.marker_keys(doc["lines"])[l["id"]] for l in doc["lines"] if l.get("shown_when")}
+        self.assertTrue(hidden)
+        results, _ = T.compare("g28", doc["lines"], second)
+        self.assertTrue(all(r["status"] == "AGREE" for r in results))
+        for line in second:
+            line.pop("shown_when", None)
+        results, _ = T.compare("g28", doc["lines"], second)
+        for r in results:
+            if r["printed"] in hidden:
+                self.assertEqual(r["status"], "DISAGREE", r["printed"])
+                self.assertIn('"shown_when"', r["project"])
+
+
+class TriageWitnesses(unittest.TestCase):
+    """T-070 (2), T-070 (3), T-083."""
+
+    def test_refused_or_unknown_visibility_is_not_a_shown_amount(self):
+        out = node_module("import { displayed } from './triage_rules.mjs';"
+                          "const v = { kind: 'money', cents: 500 };"
+                          "console.log(JSON.stringify([displayed(v, { kind: 'refusal', reason: 'r' }), displayed(v, { kind: 'unknown' }),"
+                          "displayed(v, { kind: 'bool', value: false }), displayed(v, { kind: 'bool', value: true })]))")
+        self.assertEqual(out, [{"kind": "refusal"}, {"kind": "unknown"}, {"kind": "hidden"}, {"kind": "money", "cents": 500}])
+
+    def test_completed_witnesses_are_sampled_apart_from_refused_ones(self):
+        out = node_module("import { recordWitness } from './triage_rules.mjs';"
+                          "const s = { witnesses: [], completed_witnesses: [] };"
+                          "for (let i = 0; i < 10; i++) recordWitness(s, 'value', 'refused', () => ({ kind: 'value', i }), 6);"
+                          "for (let i = 10; i < 26; i++) recordWitness(s, 'value', 'completed', () => ({ kind: 'value', i, project_return: 'completed' }), 6);"
+                          "recordWitness(s, 'project-unknown', 'completed', () => ({ kind: 'project-unknown', i: 30 }), 6);"
+                          "console.log(JSON.stringify([s.witnesses.length, s.completed_witnesses.map(w => w.i)]))")
+        self.assertEqual(out, [7, [10, 11, 12, 13, 14, 15, 30]])
+
+    def record(self, temp, line):
+        import triage
+        stem = families.stem("x", "deepseek")
+        Path(temp, stem + ".json").write_text(json.dumps({"state": "invalid", "errors": ["bad ref"], "lines": [line]}))
+        return triage
+
+    def test_explain_reports_a_line_without_witnesses(self):
+        with tempfile.TemporaryDirectory() as temp:
+            triage = self.record(temp, {"handle": "3", "triage": "candidate invalid"})
+            with patch.object(triage, "OUT", temp), self.assertRaisesRegex(SystemExit, "no witnesses .*candidate invalid"):
+                triage.explain("x", "deepseek", "3", 0, 6)
+
+    def test_explain_reaches_completed_witnesses(self):
+        with tempfile.TemporaryDirectory() as temp:
+            w = {"kind": "value", "source": {"kind": "fixture", "id": "f"}, "instance": "x", "project_return": "completed"}
+            triage = self.record(temp, {"handle": "3", "triage": "differs", "project": "x.line3", "candidate": "x.line3",
+                                        "witnesses": [], "completed_witnesses": [w]})
+            seen = {}
+            def run(cmd, input, **kw):
+                seen["payload"] = json.loads(input)
+                return subprocess.CompletedProcess(cmd, 0, stdout="{}", stderr="")
+            with patch.object(triage, "OUT", temp), patch.object(triage.subprocess, "run", side_effect=run), \
+                    patch("builtins.open", side_effect=lambda p, *a, **k: io.StringIO("lines: []") if str(p).endswith(".response.txt") else io.open(p, *a, **k)), \
+                    patch.object(triage.T, "load_form", return_value={"lines": []}), patch.object(triage.T, "load_defs", return_value={}), \
+                    patch.object(triage.T, "model_type_context", return_value={}), patch.object(sys, "stdout", io.StringIO()):
+                triage.explain("x", "deepseek", "3", 0, 6, completed=True)
+            self.assertEqual(seen["payload"]["explain"]["source"], w["source"])
+
+
 class ClassMProvenance(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()

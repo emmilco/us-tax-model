@@ -574,9 +574,11 @@ Keyed collections (Form W-2s, payers, sales, gifts): a total over entries is wri
 collection is summed within each parent entry, and the parent's per-entry totals summed again:
 {collection_notes(form_doc['id'])}
 
-The reviewed collection's computed fields are not supplied facts. Define every local computed
-helper you reference in your own reply, even if a familiar name occurs elsewhere in the catalog.
-Only the listed input lines are already provided locally. A foreign collection field cannot be
+The computed fields of the document under review are not supplied facts. Define every computed
+helper of this document that you reference in your own reply, even if a familiar name occurs
+elsewhere in the catalog. Fields of another form or collection that the catalog lists are
+referenced by their ids (a collection's fields through sum_over); do not redefine them. Only the
+listed input lines are already provided locally. A foreign collection field cannot be
 used as a return-level refusal gate without an explicitly defined, correctly bound aggregate.
 
 Screening inputs (answered yes, the tool refuses the lines that list them under `refuses`):
@@ -992,6 +994,15 @@ def compare(form_id, project_lines, second_lines):
         except Exception as ex:  # malformed second transcription
             sb = f"<unparseable: {ex}>"
         sb = checked_second(sb, type_errors, s["id"], second_by_id)
+        if pa == sb:
+            # Equal amounts agree only where both show them: a line the project hides by its
+            # shown_when is blank on the form, so a reply that would show the amount there differs.
+            # The visibility is added only to such lines, so the key of every other line is unchanged.
+            pv = a.ref(l["shown_when"], 0) if l.get("shown_when") else None
+            sv = b.ref(s["shown_when"], 0) if s.get("shown_when") else None
+            if canonical(pv) != canonical(sv):
+                pa = canonical({"shown_when": pv, "value": json.loads(pa)})
+                sb = canonical({"shown_when": sv, "value": json.loads(sb)})
         results.append(gate_check({"printed": pkeys[l["id"]], "label": l["label"], "status": "AGREE" if pa == sb else "DISAGREE",
                         "project": pa, "second": sb, "note": s.get("note")}, l["id"], s, second_by_id))
     extra = [p for p in second_by_printed if p not in set(pkeys.values())]

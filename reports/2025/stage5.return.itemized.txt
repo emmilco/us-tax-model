@@ -850,6 +850,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   17  Enter the smaller of line 15 or 16
       = UNKNOWN (no input supplied for f2441.line14)
       cite: [f2441] Form 2441 (2025), line 17 (2025; created 2025-03-18; 6c3c2d19)
+  (gate) Your employer furnished the care and line 16 is less than line 15
+      = false
+      cite: [i2441] p. 5, Line 16, "Enter the total of all qualified expenses incurred in 2025 for the care of your qualifying person(s)"; p. 3, Columns (a) and (b), "your employer furnished the care (either at your workplace or by hiring a care provider)" (2025; 86f0669e)
   18  Enter your earned income
       = UNKNOWN (no input supplied for f2441.student_disabled)
       cite: [i2441] p. 5, Line 18, "Enter your earned income on line 18 and your spouse's earned income on line 19" (2025; 86f0669e)
@@ -2910,6 +2913,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   Step 3 Net earnings from self-employment. Subtract step 2 from step 1
       = UNKNOWN (no input supplied for person[taxpayer].se_screen)
       cite: [p560] p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 3 (For use in preparing 2025 returns; 1f1f7abe)
+      note: Interpretation amb.2025.sep_loss_floor: The second. A maximum deductible contribution below zero has no meaning, and the first reading would make a zero contribution exceed it, refusing every return with a SEP plan and a Schedule C loss at person.sep_excess. On the second, a zero contribution deducts zero and any contribution above zero is refused as excess, which is the deduction the first reading gives wherever it gives one. Where both readings complete the return, no Form 1040 or Schedule 1 amount differs; only the printed worksheet steps do (BUG-0180, regression stage14.sep.loss_floor). (p560, p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 3, "Subtract step 2 from step 1", and Step 21, "This is your maximum deductible contribution")
   Step 5 Multiply step 3 by step 4 (the plan rate divided by the plan rate plus 1, to six decimal places)
       = UNKNOWN (no input supplied for person[taxpayer].se_screen)
       cite: [p560] pp. 39–40, chapter 5, Deduction Worksheet for Self-Employed, Steps 4 and 5, "Enter your rate from the Rate Table for Self-Employed or Rate Worksheet for Self-Employed", "Multiply step 3 by step 4"; p. 38, chapter 5, Rate Table for Self-Employed, "If your plan's contribution rate is 10% of a participant's compensation, your rate is 0.090909" (amb.2025.sep_rate_places) (For use in preparing 2025 returns; 1f1f7abe)
@@ -4303,7 +4307,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = true
       cite: [i4562] p. 5, Line 5, "If line 5 is zero, you cannot elect to expense any section 179 property. In this case, skip lines 6 through 11" (2025; 5c1c95b7)
   10  Carryover of disallowed deduction from line 13 of your 2024 Form 4562
-      = UNKNOWN (no input supplied for s179.line10)
+      = $0
       cite: [i4562] p. 5, Line 10, "If you filed Form 4562 for 2024, enter the amount from line 13 of your 2024 Form 4562" (owner: the printed amount) (2025; 5c1c95b7)
   (helper) Net profit or loss of the businesses, figured without the section 179 deduction
       = $0
@@ -4319,23 +4323,23 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = $90,000
       cite: [i4562] p. 5, Line 11 (2025; 5c1c95b7)
   (helper) Add lines 9 and 10
-      = UNKNOWN (no input supplied for s179.line10)
+      = $0
       cite: [f4562] Form 4562 (2025), line 12 (2025; created 2025-10-09; c05f9d1f)
   12  Section 179 expense deduction. Add lines 9 and 10, but don't enter more than line 11
-      = UNKNOWN (no input supplied for s179.line10)
+      = $0
       cite: [f4562] Form 4562 (2025), line 12 (2025; created 2025-10-09; c05f9d1f)
   (helper) Number of Schedules C on the return
       = 0
       cite: [i4562] p. 5, Line 12, "if you have more than one business or activity, you may allocate your allowable section 179 expense deduction among them" (2025; 5c1c95b7)
       note: confirmed roster $person: taxpayer
   (gate) A carryover with no Schedule C on the return
-      = UNKNOWN (no input supplied for s179.line10)
+      = false
       cite: [i4562] p. 5, Line 12 (2025; 5c1c95b7)
   13  Carryover of disallowed deduction to 2026. Add lines 9 and 10, less line 12
-      = UNKNOWN (no input supplied for s179.line10)
+      = $0
       cite: [f4562] Form 4562 (2025), line 13 (2025; created 2025-10-09; c05f9d1f)
   (helper) The deduction differs from the amounts elected for 2025
-      = UNKNOWN (no input supplied for s179.line10)
+      = false
       cite: [i4562] p. 5, Line 12 (2025; 5c1c95b7)
   (gate) The deduction must be allocated among more than one business
       = false
@@ -7426,7 +7430,8 @@ Derivations:
   f2441.line14_bad: test(f2441.line14 = UNKNOWN (no input supplied for f2441.line14); f2441.line12 = UNKNOWN (no input supplied for person[taxpayer].w2[emp_a].box10))
   f2441.line15: gate(f2441.line14_bad = UNKNOWN (no input supplied for f2441.line14))
   f2441.line16: sum(f2441.paid_total = UNKNOWN (collection roster not confirmed); f2441.paid_2026 = UNKNOWN (no input supplied for f2441.paid_2026))
-  f2441.line17: smaller_of(f2441.line15 = UNKNOWN (no input supplied for f2441.line14); f2441.line16 = UNKNOWN (collection roster not confirmed))
+  f2441.employer_care_l16: test(f2441.employer_care = false; true = true)
+  f2441.line17: smaller_of(f2441.employer_care_l16 = false; f2441.line15 = UNKNOWN (no input supplied for f2441.line14); f2441.line16 = UNKNOWN (collection roster not confirmed))
   f2441.line18: gate(f2441.student_disabled = UNKNOWN (no input supplied for f2441.student_disabled))
   f2441.spouse_earned_b: sum_over(person[taxpayer].role = taxpayer; "spouse" = spouse)
   f2441.line19: gate(f2441.student_disabled = UNKNOWN (no input supplied for f2441.student_disabled))
@@ -7946,13 +7951,13 @@ Derivations:
   s179.income: sum(s179.income_sc = $0; f1040.line1a = $90,000)
   s179.income0: subtract_floor0(s179.income = $90,000; #sales.zero = $0)
   s179.line11: smaller_of(s179.income0 = $90,000; s179.line5 = $2,500,000)
-  s179.line9_10: sum(s179.line9 = $0; s179.line10 = UNKNOWN (no input supplied for s179.line10))
-  s179.line12: smaller_of(s179.line9_10 = UNKNOWN (no input supplied for s179.line10); s179.line11 = $90,000)
+  s179.line9_10: sum(s179.line9 = $0; s179.line10 = $0)
+  s179.line12: smaller_of(s179.line9_10 = $0; s179.line11 = $90,000)
   s179.sc_count: sum_over(person[taxpayer].sc_count = 0)
-  s179.orphan: test(s179.line10 = UNKNOWN (no input supplied for s179.line10); #sales.zero = $0; s179.sc_count = 0; 0 = 0)
-  s179.line13: gate(s179.orphan = UNKNOWN (no input supplied for s179.line10))
-  s179.differs: test(s179.line12 = UNKNOWN (no input supplied for s179.line10); s179.line8 = $0)
-  s179.multi: test(s179.differs = UNKNOWN (no input supplied for s179.line10); true = true; s179.sc_count = 0; 1 = 1)
+  s179.orphan: test(s179.line10 = $0; #sales.zero = $0)
+  s179.line13: subtract_floor0(s179.orphan = false; s179.line9_10 = $0; s179.line12 = $0)
+  s179.differs: test(s179.line12 = $0; s179.line8 = $0)
+  s179.multi: test(s179.differs = false; true = true)
   s1a.f1040.line11b: copy(f1040.line11a = $102,500)
   s1a.line1: copy(f1040.line11b = $102,500)
   s1a.line2a: param(sa.excluded_income = false; #sales.zero = $0)
@@ -8542,6 +8547,7 @@ Interpretation amb.2025.gambling_losses: The first (sa.line16_gambling, sa.line1
 Interpretation amb.2025.sli_ratio_places: Round the ratio half-up to three decimal places (the prorate atom with places 3 on sli.line8_figured). The owner's ruling. Three places is the least precision the text allows and the usual hand computation; the readings differ by at most a few cents of deduction (for example $167.50 against $166.67 on line 8 when line 6 is $1,000 and line 1 is $2,500).
  (i1040gi, p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 7)
 Interpretation amb.2025.ss_wages: Use boxes 3 plus 7, summed across employers separately per person. Owner approved the Stage 2 proposal. iw2w3 p. 18 defines these boxes and their combined wage base; box 1 can exclude deferrals subject to Social Security. (iw2w3, p. 18, boxes 3 and 7; compare i1040gi p. 117, Schedule 3 line 11)
+Interpretation amb.2025.sep_loss_floor: The second. A maximum deductible contribution below zero has no meaning, and the first reading would make a zero contribution exceed it, refusing every return with a SEP plan and a Schedule C loss at person.sep_excess. On the second, a zero contribution deducts zero and any contribution above zero is refused as excess, which is the deduction the first reading gives wherever it gives one. Where both readings complete the return, no Form 1040 or Schedule 1 amount differs; only the printed worksheet steps do (BUG-0180, regression stage14.sep.loss_floor). (p560, p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 3, "Subtract step 2 from step 1", and Step 21, "This is your maximum deductible contribution")
 Interpretation amb.2025.savers_sep_contrib: The first (person.sav_simple_plan). The owner's decision (Stage 15 premise map, decision 2). Only elective deferrals to a SEP (code F, a salary reduction SEP) are named; a SEP contribution a self-employed person makes for themselves is a nonelective contribution. (f8880, p. 2, Line 2, "Elective deferrals (including designated Roth contributions under section 402A, if applicable) to a 401(k), 403(b), governmental 457(b), SEP, SIMPLE, or the federal TSP")
 Interpretation amb.2025.ira_line7_cents: The first. The project's rule for products (amb.2025.multiplication_subcent). The readings differ only when the exact product is less than half a cent above a multiple of $10. (i1040gi, p. 98, IRA Deduction Worksheet—Continued, line 7, "If the result isn’t a multiple of $10, increase it to the next multiple of $10 (for example, increase $490.30 to $500)")
 Interpretation amb.2025.edu_1098t_date: The first, in the help text of person.edu_1098t and dependent.edu_1098t. Pub. 970 is the later revision and explains the shift (January 31 falls on a Saturday). Owner's decision D7(d), 2026-10-29. (p970, p. 2, Reminders, "After February 2, 2026 (January 31 falls on a Saturday), but before you file your 2025 tax return, you or the student must request that the educational institution furnish Form 1098-T.")

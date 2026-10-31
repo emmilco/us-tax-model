@@ -8,7 +8,8 @@ The result is evidence for adjudication, not a ruling: agreement on every input 
 equivalence on that sample, and each difference comes with witness inputs and both values.
 
 Usage: triage.py --form sd [--family deepseek] [--generated 500] [--seed 20261026] [--partial-bases 40]
-       triage.py --form sd [--family deepseek] --explain <handle> [--witness N] [--depth 6]
+       triage.py --form sd [--family deepseek] --explain <handle> [--witness N] [--completed] [--depth 6]
+--completed indexes the line's separate sample of witnesses on completed returns.
 Writes reviews/<year>/transcription/triage/<stem>.json. Raw replies are read, never changed.
 """
 import argparse, hashlib, json, os, subprocess, sys
@@ -113,12 +114,21 @@ def triage(form, family, generated, seed, partial_bases, max_witnesses=6):
     return path, record
 
 
-def explain(form, family, handle, witness, depth):
+def explain(form, family, handle, witness, depth, completed=False):
     """Rebuild one recorded witness and print both derivation trees of the disputed line."""
     stem = families.stem(form, family)
     record = json.load(open(os.path.join(OUT, stem + ".json"), encoding="utf-8"))
-    line = next(l for l in record["lines"] if l["handle"] == handle)
-    w = line["witnesses"][witness]
+    line = next((l for l in record["lines"] if l["handle"] == handle), None)
+    if line is None:
+        raise SystemExit(f"{stem}: no line {handle!r} in the triage record")
+    which = "completed_witnesses" if completed else "witnesses"
+    found = line.get(which) or []
+    if not found:
+        raise SystemExit(f"{stem}: line {handle!r} has no {which.replace('_', ' ')} (triage: {line['triage']}"
+                         + (f"; {record['state']}: {record.get('errors')}" if record.get("state") != "evaluated" else "") + ")")
+    if not 0 <= witness < len(found):
+        raise SystemExit(f"{stem}: line {handle!r} has {len(found)} {which.replace('_', ' ')}; --witness {witness} is out of range")
+    w = found[witness]
     raw = open(os.path.join(ROOT, ".transcription", stem + ".response.txt"), encoding="utf-8").read()
     doc = T.load_form(form)
     second = T.extract_yaml(raw)["lines"]
@@ -144,10 +154,11 @@ def main():
     ap.add_argument("--partial-bases", type=int, default=40)
     ap.add_argument("--explain", metavar="HANDLE", help="print both derivation trees for one recorded witness")
     ap.add_argument("--witness", type=int, default=0, help="index of the witness to explain")
+    ap.add_argument("--completed", action="store_true", help="index the witnesses on completed returns")
     ap.add_argument("--depth", type=int, default=6)
     a = ap.parse_args()
     if a.explain:
-        return explain(a.form, a.family, a.explain, a.witness, a.depth)
+        return explain(a.form, a.family, a.explain, a.witness, a.depth, a.completed)
     path, record = triage(a.form, a.family, a.generated, a.seed, a.partial_bases)
     tally = {}
     for line in record["lines"]:

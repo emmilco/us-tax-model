@@ -271,6 +271,7 @@ the engine computes are mapped):
 | EIC Step 5 earned income (`eic.earned_income`); Worksheet A/B line 1 (`eic.line1`) | `eitc_earned_income` | `earned` |
 | Schedule 1 line 20 (IRA deduction) | `traditional_ira_deduction` | `e03150` is an input |
 | Schedule SE lines 12 and 13 (the filer's) | `self_employment_tax`, `self_employment_tax_ald_person` (person level) | `setax`, `c03260` |
+| Form 8962 lines 3, 8a, 11d, 11e, 26 (returns with a Form 1095-A; `PE_PTC_MAP`) | `aca_magi`, `aca_magi` × `aca_required_contribution_percentage`, `aca_ptc`, `used_aca_ptc` (11e and 26) | not mapped |
 | Schedule 1-A lines 13, 21, 30, 37 | `tip_income_deduction`, `overtime_income_deduction`, `auto_loan_interest_deduction`, `additional_senior_deduction` | the same names; `senior_deduction` |
 
 Form 8889 line 13 is an input to both engines (`health_savings_account_ald`,
@@ -317,6 +318,11 @@ floor also bounds how much of the generated population the project refuses.
   schedule at the band's midpoint, unrounded, and Form 8960 line 17 rounded to
   whole dollars, along the project's own worksheet path (`midpoint_tax`,
   `niit_whole_dollar`, `midpoint_mode_expectations` in `compare.py`).
+- **contribution-unrounded** — PolicyEngine-US only: within the `float` bound
+  of the project's Form 8962 recomputed along its own annual path with line 8a
+  taken as line 3 times line 7 exactly instead of rounded to whole dollars, and
+  lines 11c to 11e and 26 re-taken (`ptc_unrounded_expectations` in
+  `compare.py`). An identified cause, not a tolerance.
 - **excluded** — the engine cannot model a feature of the case. Each rule
   names the feature, the lines and the reason (`run_engines.py`, the
   `*_LIMITATIONS` lists; `ots_adapter.limitations()`). Some features are read
@@ -412,6 +418,20 @@ floor also bounds how much of the generated population the project refuses.
   limitation that sets Form 1040 line 16 aside, and `compare.py` recomputes
   them along the project's own credit-limit chain for the `table-adjusted`
   category, including Schedule 8812 Credit Limit Worksheet B.
+- Form 8962 (PolicyEngine-US, `PE_PTC_MAP`): on returns with a Form 1095-A the
+  engine is given column B as `slcsp`, column A as `slcsp` times
+  `selected_marketplace_plan_benchmark_ratio`, and every member as enrolled
+  (`pays_aca_premium`). It computes modified AGI (line 3), the poverty-line
+  percentage truncated to a whole percent against the prior-year guideline,
+  the applicable figure (line 7, by exact interpolation), the contribution
+  (line 8a, unrounded) and line 11 columns (d) (`aca_ptc`) and (e)
+  (`used_aca_ptc`, the smaller of the credit and the premium). It has no
+  Table 2 rounding (`ptc_figure_five_places`, reported by the adapter), no
+  advance-payment reconciliation (line 26 only where line 25 is zero,
+  `ptc_advance_payments`; lines 25 to 29 unmapped), no below-100% allowance
+  after advance payments (`ptc_below_poverty`) and no monthly route
+  (`ptc_monthly`). Its tax, credits and payments on these returns stay
+  excluded (`marketplace`).
 
 ## Dependents and head of household (Stage 8)
 

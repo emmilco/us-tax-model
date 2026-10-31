@@ -82,6 +82,13 @@ function isCount(key: string, data: CanonicalData): boolean {
   return false;
 }
 
+/** A printed line of a single document that its shown_when hides on this return: the form shows no amount there. */
+function hiddenLine(l: Line, r: EvalResult): boolean {
+  if (!l.shown_when) return false;
+  const cond = r.derivations.get(l.shown_when)?.value;
+  return cond?.kind === "bool" && !cond.value;
+}
+
 function computed(v: Value | undefined): boolean { return !!v && (v.kind === "money" || v.kind === "bool" || v.kind === "count" || v.kind === "enum" || v.kind === "rate"); }
 
 function docKeys(doc: FormDoc): string[] {
@@ -146,7 +153,9 @@ function buildJob(data: CanonicalData, doc: FormDoc, inputs: Inputs, r: EvalResu
     }
   }
   if (entryLevel) return { id: `classm.${doc.id}.${n}`, doc: doc.id, inputs, status, given, own_inputs: [], collections, fill: [], project: {}, branches };
-  const fill = doc.lines.filter((l) => !isHelper(l) && l.expr.op !== "input" && !defLines.includes(l)).map((l) => ({ id: l.id, printed: l.printed, type: l.type, label: l.label }));
+  // A printed line the form does not show on this return (its shown_when is false) is no form value.
+  const fill = doc.lines.filter((l) => !isHelper(l) && l.expr.op !== "input" && !defLines.includes(l) && !hiddenLine(l, r)).map((l) => ({ id: l.id, printed: l.printed, type: l.type, label: l.label }));
+  if (fill.length === 0) return null;
   const project: Record<string, Value> = {};
   for (const l of fill) { const v = val(l.id); if (!computed(v)) return null; project[l.id] = v!; }
   return { id: `classm.${doc.id}.${n}`, doc: doc.id, inputs, status, given, own_inputs, collections, fill, project, branches };
@@ -337,7 +346,7 @@ export function classmJobs(args: string[]): void {
         const filing = results[i]!.derivations.get(`${doc.id}.filing`)?.value;
         if (filing?.kind !== "bool" || !filing.value) return false;
       }
-      if (!isCollection) return doc.lines.filter((l) => !isHelper(l)).every((l) => computed(results[i]!.derivations.get(l.id)?.value));
+      if (!isCollection) return doc.lines.filter((l) => !isHelper(l) && !hiddenLine(l, results[i]!)).every((l) => computed(results[i]!.derivations.get(l.id)?.value));
       const entries = entriesOf(doc.id, results[i]!);
       // Every value derived for an entry must be computed: a refusal anywhere in the entry (a
       // screen held on a constant line included) puts the case outside the hand-worked scope.

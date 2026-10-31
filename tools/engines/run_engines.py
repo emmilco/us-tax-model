@@ -131,6 +131,19 @@ PE_MAP = {
     "s3.line3": ["education_tax_credits"],
     "f1040.line29": ["refundable_american_opportunity_credit"],
 }
+# Form 8962 (annual route, line 11), read only on returns with a Form 1095-A. The engine is given column B as `slcsp`
+# and column A as `slcsp` times `selected_marketplace_plan_benchmark_ratio`; it computes modified AGI (line 3), the
+# poverty-line percentage truncated to a whole percent against the prior-year guideline (lines 4 and 5), the
+# applicable figure by interpolating within each band (line 7), the contribution (line 8a, not rounded), the
+# credit before the premium (aca_ptc, column (d)) and the credit used against the premium (used_aca_ptc, column (e)).
+# Line 26 is column (e) where no advance payments were made (limitation ptc_advance_payments).
+PE_PTC_MAP = {
+    "f8962.line3": ["aca_magi"],
+    "f8962.line8a": ["mul:aca_magi,aca_required_contribution_percentage"],
+    "f8962.line11d": ["aca_ptc"],
+    "f8962.line11e": ["used_aca_ptc"],
+    "f8962.line26": ["used_aca_ptc"],
+}
 PE_PRECISION = "float32"
 # Lines the engine takes whole from the generator's facts (none), components of computed lines
 # that enter as generator facts rather than the engine's own form arithmetic, and project result
@@ -139,7 +152,14 @@ PE_PASS_THROUGH = {"lines": [], "components": {
     "f1040.line10": "the HSA deduction (Form 8889 line 13) enters as the generator's health_savings_account_ald; "
                     "the engine computes the educator, half-of-self-employment-tax, IRA and student loan interest "
                     "components and the sum",
+    "f8962.line11d": "the Form 1095-A column B total (line 11 column (b)) enters as the engine's slcsp, and every member of the "
+                     "return as enrolled (pays_aca_premium); the engine computes the contribution and the difference",
+    "f8962.line11e": "the Form 1095-A column A total (line 11 column (a)) enters as slcsp times "
+                     "selected_marketplace_plan_benchmark_ratio; the engine takes the smaller of it and the credit (used_aca_ptc)",
+    "f8962.line26": "as line 11 column (e); compared only where no advance payments were made",
 }, "unmapped": {
+    "f8962.line24": "reached through Form 8962 line 11 column (e), a copy of it on the annual route",
+    "f8962.line29": "the engine has no reconciliation of advance payments (Form 8962 lines 25 to 29)",
     "person[taxpayer].f8889[hsa].line13": "health_savings_account_ald is an input with no formula; the engine does not compute Form 8889",
     "ssb.line18": "reached through Form 1040 line 6b, a copy of it",
     "s1a.line38": "reached through Form 1040 line 13b, a copy of it",
@@ -311,9 +331,36 @@ EARLY_REASON = ("the engine does not compute Form 5329: it has no input for the 
                 "first 2 years) additional tax on early distributions, or the 6% tax on HSA excess contributions, its total tax omits it")
 for _mapping, _limitations in ((PE_MAP, PE_LIMITATIONS), (TC_MAP, TC_LIMITATIONS)):
     _limitations.append({"feature": "early_distribution_tax", "lines": [l for l in _mapping if EARLY_MOVED.match(l)], "reason": EARLY_REASON})
-for _mapping, _limitations in ((PE_MAP, PE_LIMITATIONS), (TC_MAP, TC_LIMITATIONS)):
-    _limitations.append({"feature": "marketplace", "lines": [l for l in _mapping if PTC_MOVED.match(l)], "reason": PTC_REASON})
+PE_PTC_REASON = ("the engine computes the premium tax credit (Form 8962 lines 3 to 11, compared) but has no reconciliation of "
+                 "advance payments and no Schedule 2 line 1a or Schedule 3 line 9, so its tax, credits and payments omit the "
+                 "reconciliation the project figures on these returns")
+for _mapping, _limitations, _reason in ((PE_MAP, PE_LIMITATIONS, PE_PTC_REASON), (TC_MAP, TC_LIMITATIONS, PTC_REASON)):
+    _limitations.append({"feature": "marketplace", "lines": [l for l in _mapping if PTC_MOVED.match(l)], "reason": _reason})
     _limitations.append({"feature": "edu_no_refund", "lines": [l for l in _mapping if EDU_MOVED.match(l)], "reason": EDU_NO_REFUND})
+# Form 8962 on PolicyEngine-US: every limitation that sets adjusted gross income aside sets modified AGI and the credit
+# aside; the rest are the engine's own simplifications of the form.
+for _lim in PE_LIMITATIONS:
+    if "f1040.line11b" in _lim["lines"]:
+        _lim["lines"] = list(_lim["lines"]) + list(PE_PTC_MAP)
+PE_LIMITATIONS += [
+    {"feature": "ptc_below_poverty", "lines": ["f8962.line11d", "f8962.line11e"],
+     "reason": "below 100% of the poverty line (Form 8962 line 5) PolicyEngine-US's eligibility test zeroes the credit "
+               "columns, allowing the credit there only for a lawfully present immigrant "
+               "(aca_ptc_below_fpl_immigration_exception) and not for a taxpayer who received advance payments (Form 8962 "
+               "line 5 instructions; 26 CFR 1.36B-2(b)(6)); the project still figures line 11 columns (d) and (e) and "
+               "allows or denies the credit after them (line 24), so those columns are not compared there; line 26 is"},
+    {"feature": "ptc_figure_five_places", "lines": ["f8962.line8a", "f8962.line11d", "f8962.line11e", "f8962.line26"],
+     "reason": "PolicyEngine-US interpolates the applicable figure within each band exactly "
+               "(aca_required_contribution_percentage); Form 8962 line 7 takes it from the Applicable Figure Table, "
+               "rounded to four places, so returns where the exact figure has a fifth place (300% to 400% of the poverty "
+               "line at an odd percentage) are not compared on the lines it moves"},
+    {"feature": "ptc_advance_payments", "lines": ["f8962.line26"],
+     "reason": "PolicyEngine-US has no reconciliation of advance payments (Form 8962 lines 25 to 29); line 26 is compared "
+               "only where line 25 is zero, where it equals line 24"},
+    {"feature": "ptc_monthly", "lines": list(PE_PTC_MAP),
+     "reason": "PolicyEngine-US computes the credit for the year only; returns that must complete Form 8962 lines 12 "
+               "to 23 month by month (line 10 No) are not compared"},
+]
 PE_LIMITATIONS.append({"feature": "edu_phaseout_inexact", "lines": [l for l in PE_MAP if EDU_MOVED.match(l)],
                        "reason": "PolicyEngine-US phases the education credits out by the exact fraction of the excess of modified AGI "
                                  "over $80,000 ($160,000 joint) (education_credit_phase_out, lifetime_learning_credit_phase_out); "
@@ -327,12 +374,15 @@ for _mapping, _limitations in ((PE_MAP, PE_LIMITATIONS), (TC_MAP, TC_LIMITATIONS
 
 
 def combine(get, spec):
-    """Sum of the named variables; a leading "-" subtracts; "min:a,b" takes the smaller of two."""
+    """Sum of the named variables; a leading "-" subtracts; "min:a,b" takes the smaller of two; "mul:a,b" their product."""
     total = 0.0
     for v in spec:
         if v.startswith("min:"):
             a, b = v[4:].split(",")
             total += min(get(a), get(b))
+        elif v.startswith("mul:"):
+            a, b = v[4:].split(",")
+            total += get(a) * get(b)
         else:
             total += -get(v[1:]) if v.startswith("-") else get(v)
     return total
@@ -432,6 +482,13 @@ def run_policyengine(cases):
         fams[pid] = {"members": members}
         # Care expenses are an SPM-unit input the engine prorates over the unit's children.
         spms[pid] = {"members": members, "spm_unit_pre_subsidy_childcare_expenses": y(dollars(f.get("care_expenses", 0)))}
+        if (mk := f.get("marketplace")):
+            # Form 1095-A, the same columns A and B every month: column B is the benchmark (slcsp, a monthly variable given
+            # its year total) and column A its multiple; every member of the return is enrolled.
+            units[pid].update({"slcsp": y(dollars(12 * mk["slcsp"])),
+                               "selected_marketplace_plan_benchmark_ratio": y(mk["premium"] / mk["slcsp"])})
+            for m in members:
+                people[m]["pays_aca_premium"] = y(True)
         hhs[pid] = {"members": members, "state_code": y("TX"),
                     "qualified_passenger_vehicle_loan_interest": y(dollars(f.get("car_loan_interest", 0)))}
     sim = Simulation(situation={"people": people, "tax_units": units, "families": fams, "spm_units": spms, "households": hhs})
@@ -449,12 +506,25 @@ def run_policyengine(cases):
                 entity = sim.tax_benefit_system.variables[name].entity.key
                 cache[name] = sim.calculate(name, YEAR, map_to="tax_unit") if entity == "person" else sim.calculate(name, YEAR)
         return cache[name]
-    lines = {pid: {} for pid in order}
-    for line, spec in PE_MAP.items():
-        for i, pid in enumerate(order):
-            lines[pid][line] = cents(combine(lambda n: float(var(n)[head_index[pid] if n.startswith("head:") else i]), spec))
+    lines, features = {pid: {} for pid in order}, {}
+    marketplace = {c["id"] for c in cases if c["facts"].get("marketplace")}
+    for i, pid in enumerate(order):
+        get = lambda n: float(var(n)[head_index[pid] if n.startswith("head:") else i])
+        for line, spec in PE_MAP.items():
+            lines[pid][line] = cents(combine(get, spec))
+        if pid in marketplace:
+            for line, spec in PE_PTC_MAP.items():
+                lines[pid][line] = cents(combine(get, spec))
+            # Form 8962 line 7 is read from a table that holds four places; the engine's figure may hold a fifth.
+            figure = get("aca_required_contribution_percentage") * 10_000
+            if abs(figure - round(figure)) > 1e-3:
+                features[pid] = ["ptc_figure_five_places"]
+    # Line 8a is a product of two engine values, so its float bound counts both; columns (d) and (e) carry the
+    # contribution's product and the benchmark's, and (e) the premium's ratio.
+    components = {line: len(spec) for line, spec in PE_MAP.items()} | {"f8962.line3": 1, "f8962.line8a": 2, "f8962.line11d": 3,
+                                                                        "f8962.line11e": 4, "f8962.line26": 4}
     return {"version": pkg_version("policyengine-us"), "precision": PE_PRECISION, "lines": lines, "limitations": PE_LIMITATIONS,
-            "pass_through": PE_PASS_THROUGH, "components": {line: len(spec) for line, spec in PE_MAP.items()}}
+            "features": features, "ptc_contribution": "unrounded", "pass_through": PE_PASS_THROUGH, "components": components}
 
 
 def run_taxcalc(cases):

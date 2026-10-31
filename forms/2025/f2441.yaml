@@ -959,6 +959,34 @@ form:
       cite:
         doc: f2441
         locator: Form 2441 (2025), line 17
+      refuses:
+        - when: f2441.employer_care_l16
+          form: Form 2441, line 16, with employer-furnished care
+          remedy: Your employer furnished care whose value is among your dependent care benefits, and the expenses you
+            entered are less than your benefits. The instructions do not say whether the value of the care your employer
+            furnished is a qualified expense incurred for line 16, and that decides how much of your benefits is excluded;
+            this tool does not figure that case.
+          cite:
+            doc: i2441
+            locator: 'p. 5, Line 16, "Enter the total of all qualified expenses incurred in 2025 for the care of your qualifying person(s)"; p. 1, Dependent Care Benefits, "The fair market value of care in a daycare facility provided or sponsored by your employer"; p. 3, Columns (a) and (b), "If you were covered by your employer''s dependent care plan and your employer furnished the care (either at your workplace or by hiring a care provider), enter your employer''s name in column (a)"'
+    - id: f2441.employer_care_l16
+      printed: (gate)
+      type: Bool
+      label: Your employer furnished the care and line 16 is less than line 15
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - f2441.employer_care
+              - const: true
+          - op: test
+            lt:
+              - f2441.line16
+              - f2441.line15
+      cite:
+        doc: i2441
+        locator: 'p. 5, Line 16, "Enter the total of all qualified expenses incurred in 2025 for the care of your qualifying person(s)"; p. 3, Columns (a) and (b), "your employer furnished the care (either at your workplace or by hiring a care provider)"'
     - id: f2441.line18
       printed: "18"
       type: Dollars

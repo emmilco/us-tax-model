@@ -111,7 +111,9 @@ def build_prompt(form_doc, excerpt, job):
     for cname, entries in job["collections"].items():
         for entry, fields in entries.items():
             coll.append(f"- {entry}: " + "; ".join(f"{f['label']} = {dollars(f['value'])}" for f in fields))
-    fill = "\n".join(f'- line {handle(job, l)} ({l["type"]}): {l["label"]}' for l in job["fill"])
+    # The value type follows the label in brackets: in parentheses after the number it reads as
+    # part of the handle (the form shared line numbers take) and is echoed back.
+    fill = "\n".join(f'- line {handle(job, l)}: {l["label"]} [value type: {l["type"]}]' for l in job["fill"])
     return f"""You are filling in one IRS form or worksheet by hand for one taxpayer, working ONLY from the IRS
 text provided below and the amounts given here. Do not rely on memory of the tax law or of any
 software. Follow the printed line instructions exactly, including every "if zero or less, enter -0-",
@@ -291,6 +293,27 @@ def extract(text):
     return out
 
 
+def answers_for(job, verdicts):
+    """The worked answers keyed by the handles of the job's lines. A reply key that is not a handle
+    is matched when it is one with its parentheses dropped ("Step 5, 1" or "CLW 1" for "(Step 5, 1)")
+    or with the line's value type echoed after it ("1 (NonNegDollars)"); an exact key wins."""
+    handles = {handle(job, l): l for l in job["fill"]}
+    out = {k: v for k, v in verdicts.items() if k in handles}
+    for key, v in verdicts.items():
+        if key in handles:
+            continue
+        aliases = [(f"({key})", None)]
+        typed = re.match(r"^(.*?)\s*\(([^()]*(?:\([^()]*\))?)\)$", key)
+        if typed:
+            aliases += [(typed.group(1), typed.group(2)), (f"({typed.group(1)})", typed.group(2))]
+        for alias, echoed in aliases:
+            line = handles.get(alias)
+            if line is not None and echoed in (None, line["type"]):
+                out.setdefault(alias, v)
+                break
+    return out
+
+
 def same(a, b):
     if a.get("kind") == "rate" and b.get("kind") == "rate":
         return a["num"] * b["den"] == b["num"] * a["den"]
@@ -332,8 +355,9 @@ def write_outputs(form_doc, model, jobs, runs, meta_all):
         out.append(f"### case {job['id']} — prompt sha256 {run['prompt_sha']}; branches: {', '.join(job['branches'])}")
         out.append("")
         expect = {}
+        answers = answers_for(job, run["verdicts"])
         for l in job["fill"]:
-            v = run["verdicts"].get(handle(job, l))
+            v = answers.get(handle(job, l))
             proj = job["project"][l["id"]]
             if v is None:
                 status = "MISSING"; model_v = None
@@ -371,6 +395,14 @@ def write_outputs(form_doc, model, jobs, runs, meta_all):
     open(path, "w", encoding="utf-8").write("\n".join(out))
     # Merge this document's cases into the family's fixture file.
     fx = json.load(open(fixture)) if os.path.exists(fixture) else {"tax_year": YEAR, "cases": []}
+    # A rerun regenerates the cases, so a mutant only a replaced case killed can survive: name the
+    # replaced cases so any the mutation step needs can be kept in a stage fixture.
+    kept_inputs = {json.dumps(c["inputs"], sort_keys=True) for c in fixture_cases}
+    replaced = [c["id"] for c in fx["cases"] if c["id"].startswith(f"classm.{fid}.")
+                and json.dumps(c["inputs"], sort_keys=True) not in kept_inputs]
+    if replaced:
+        print(f"{fid}: {len(replaced)} earlier class M case(s) replaced ({', '.join(replaced)}); rerun the mutation step and keep "
+              "any case a mutant needs in a stage fixture", file=sys.stderr)
     merged, inserted = [], False
     for case in fx["cases"]:
         if case["id"].startswith(f"classm.{fid}."):

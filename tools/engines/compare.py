@@ -23,6 +23,12 @@ Categories per (engine, case, line):
                  (amb.<year>.multiplication_subcent), each value that passes between the
                  engine's programs taken at its printed cent, and the result printed to
                  the cent (UnroundedModel); an identified cause, not a tolerance
+  contribution-unrounded
+                 for an engine whose record declares "ptc_contribution": "unrounded"
+                 (PolicyEngine-US), the engine is within its float bound of the project's
+                 Form 8962 lines recomputed with line 8a (line 3 x line 7) not rounded to
+                 whole dollars and lines 11c to 11e and 26 re-taken on the project's own
+                 annual path (ptc_unrounded_expectations); an identified cause, not a tolerance
   excluded       the engine cannot model a feature of the case; reason recorded. The
                  features are the generator's, those derived here from the project's own
                  values, and those the engine's adapter reports about its own run
@@ -635,6 +641,14 @@ def derived_features(case, values):
         # payment or Schedule R (irsForms/Schedule3.ts `isNeeded`), so a net premium tax credit alone never reaches line 31.
         if (m("s3.line9") or 0) > 0 and (m("s3.line1") or 0) == 0 and (m("s3.line11") or 0) == 0:
             feats.add("ustaxes_ptc_no_schedule3")
+        # Engines without the Form 8962 rules for advance payments: the below-100% allowance that follows them, and lines
+        # 25 to 29; and the month-by-month route (line 10 No).
+        if (m("f8962.line25") or 0) > 0:
+            feats.add("ptc_advance_payments")
+        if l5.get("kind") == "count" and l5["value"] < 100:
+            feats.add("ptc_below_poverty")
+        if not (l10.get("kind") == "bool" and l10["value"]):
+            feats.add("ptc_monthly")
     # Form 8863. The line 7 box (no refundable American opportunity credit), which no engine models; a phase-out ratio
     # (lines 6 and 17: line 4 over line 5) that three places do not hold exactly, where an engine keeps it unrounded;
     # the Credit Limit Worksheet limiting line 19; cents on the lines an engine rounds to whole dollars; and a
@@ -724,6 +738,25 @@ def derived_features(case, values):
     return feats
 
 
+def ptc_unrounded_expectations(values):
+    """Form 8962 lines 8a, 11c to 11e and 26 (exact cents, as Fractions) recomputed along the project's annual path with
+    line 8a taken as line 3 times line 7 without the form's rounding to whole dollars; line 26 only where line 25 is
+    zero. Empty when the project did not take the annual path or a value is missing."""
+    def v(k):
+        return values.get(k, {}).get("value", {})
+    l3, l7, a, b, l10 = v("f8962.line3"), v("f8962.line7"), v("f8962.line11a"), v("f8962.line11b"), v("f8962.line10")
+    if not (l10.get("kind") == "bool" and l10["value"]) or l7.get("kind") != "rate" \
+            or any(x.get("kind") != "money" for x in (l3, a, b)):
+        return {}
+    c = Fraction(max(0, l3["cents"])) * Fraction(l7["num"], l7["den"])
+    d = max(Fraction(0), b["cents"] - c)
+    e = min(Fraction(a["cents"]), d)
+    out = {"f8962.line8a": c, "f8962.line11c": c, "f8962.line11d": d, "f8962.line11e": e, "f8962.line24": e}
+    if v("f8962.line25").get("kind") == "money" and v("f8962.line25")["cents"] == 0:
+        out["f8962.line26"] = e
+    return out
+
+
 def money(v):
     return v["cents"] if v and v.get("kind") == "money" else None
 
@@ -808,6 +841,9 @@ def main():
             # An engine that emulates the Tax Table at the band midpoint without rounding (UsTaxes) is read against the
             # project's lines recomputed by that method.
             midpoint = midpoint_mode_expectations(values, case, tables) if eng.get("tax_table") == "midpoint-unrounded" else {}
+            # An engine that does not round the Form 8962 contribution to whole dollars (PolicyEngine-US) is read against
+            # the project's Form 8962 recomputed that way.
+            ptc = ptc_unrounded_expectations(values) if eng.get("ptc_contribution") == "unrounded" and "marketplace" in feats else {}
             for line, ev in elines.items():
                 pv, kind = project_line(values, line)
                 reason = next((l["reason"] for l in eng["limitations"] if l["feature"] in feats and line in l["lines"]), None)
@@ -837,6 +873,8 @@ def main():
                 bound = 0 if unrounded else float_bound_cents(eng.get("precision", "float64"), ev, eng.get("components", {}).get(line, 1))
                 if midpoint.get(line) is not None and midpoint[line] != pv and abs(ev - midpoint[line]) <= bound:
                     stats[(ename, line)]["table-midpoint"] += 1; continue
+                if ptc.get(line) is not None and ptc[line] != pv and abs(ev - ptc[line]) <= bound:
+                    stats[(ename, line)]["contribution-unrounded"] += 1; continue
                 if not uses_table and line in TAX_LINES and schedule_mode[line] != pv and abs(ev - schedule_mode[line]) <= bound:
                     stats[(ename, line)]["table-adjusted"] += 1; continue
                 if not uses_table and line == "f1040.line27a" and (ef := eic_formula(values, tables)) is not None and abs(ev - ef) <= max(bound, 100):
@@ -857,7 +895,7 @@ def main():
                  f"Cases: {len(cases)} generated returns, single, head of household and married filing jointly (tools/engines/generate_cases.py). "
                  "Engines run locally under .engines/ (tools/engines/setup.sh); versions: "
                  + ", ".join(f"{n} {e['version']}" for n, e in engines.items()) + ".", "",
-                 f"`table-adjusted` means the engine equals the project's tax lines recomputed with every Tax Table lookup replaced by the rate schedule (engines compute from the schedule where the form prescribes the table), keeping the worksheet path and re-taking its smaller-of; an identified cause, not a tolerance. For Form 1040 line 27a, `table-adjusted` means the engine is within $1 of the project's Worksheet A path recomputed with each EIC Table lookup replaced by the credit at the exact amount (the engines compute from the formula where the instructions prescribe the table built at each $50 band's midpoint); the $1 allows for the engines' statutory percentages, which the archive does not hold, against the rates the Rev. Proc. 2024-40 amounts imply (at most about $0.20 apart over the table's range). `float` means the difference is within two units in the last place of the engine's floating-point representation (PolicyEngine-US computes in float32, Tax-Calculator in float64), a bound derived from the engine's precision. `unrounded` (OpenTaxSolver, which computes in doubles, rounds nothing and prints each program's lines to the cent) means the engine equals the project's own derivation of the line re-evaluated in exact arithmetic without the project's half-up cent rounding of products and ratios (amb.{Y}.multiplication_subcent), with each amount that passes between the engine's programs taken at the cent it prints and the result printed to the cent; where the exact value is within 1/1000 cent of a half cent either neighbouring cent is the print (an engine double stays within 1/10,000 cent of the exact value at these amounts). No difference is allowed beyond what that recomputation gives; a line the adapter supplies as an amount is recomputed only where the project's value is that amount, and a case whose exact values take another branch, test or table band than the project's is not recomputed. An identified cause, not a tolerance. OpenTaxSolver builds its tax from the Tax Table below $100,000 as the form does, so it has no `table-adjusted` reading. `table-midpoint` (UsTaxes, which emulates the Tax Table by applying the rate schedule at the midpoint of the band holding the whole-dollar amount, without the table's rounding to whole dollars, and rounds Form 8960 line 17 to whole dollars) means the engine equals the project's lines recomputed by those two methods along the project's own worksheet path: each Tax Table lookup replaced by the schedule at the band midpoint, Form 8960 line 17 by 3.8% of line 16 rounded half up to whole dollars, and the lines that follow (the worksheet's tax lines, Form 1040 lines 16 to 37, Schedule 8812 lines 14 to 27) re-taken; within the engine's `float` bound, it is an identified cause, not a tolerance. `excluded` lines carry the engine limitation stated below; the features that trigger them are the generator's, those read off the project's values, and those the engine's adapter reports about its own run. Every other difference must be explained in fixtures/{Y}/differential/engine_investigations.json or the run fails.", ""]
+                 f"`table-adjusted` means the engine equals the project's tax lines recomputed with every Tax Table lookup replaced by the rate schedule (engines compute from the schedule where the form prescribes the table), keeping the worksheet path and re-taking its smaller-of; an identified cause, not a tolerance. For Form 1040 line 27a, `table-adjusted` means the engine is within $1 of the project's Worksheet A path recomputed with each EIC Table lookup replaced by the credit at the exact amount (the engines compute from the formula where the instructions prescribe the table built at each $50 band's midpoint); the $1 allows for the engines' statutory percentages, which the archive does not hold, against the rates the Rev. Proc. 2024-40 amounts imply (at most about $0.20 apart over the table's range). `float` means the difference is within two units in the last place of the engine's floating-point representation (PolicyEngine-US computes in float32, Tax-Calculator in float64), a bound derived from the engine's precision. `unrounded` (OpenTaxSolver, which computes in doubles, rounds nothing and prints each program's lines to the cent) means the engine equals the project's own derivation of the line re-evaluated in exact arithmetic without the project's half-up cent rounding of products and ratios (amb.{Y}.multiplication_subcent), with each amount that passes between the engine's programs taken at the cent it prints and the result printed to the cent; where the exact value is within 1/1000 cent of a half cent either neighbouring cent is the print (an engine double stays within 1/10,000 cent of the exact value at these amounts). No difference is allowed beyond what that recomputation gives; a line the adapter supplies as an amount is recomputed only where the project's value is that amount, and a case whose exact values take another branch, test or table band than the project's is not recomputed. An identified cause, not a tolerance. OpenTaxSolver builds its tax from the Tax Table below $100,000 as the form does, so it has no `table-adjusted` reading. `table-midpoint` (UsTaxes, which emulates the Tax Table by applying the rate schedule at the midpoint of the band holding the whole-dollar amount, without the table's rounding to whole dollars, and rounds Form 8960 line 17 to whole dollars) means the engine equals the project's lines recomputed by those two methods along the project's own worksheet path: each Tax Table lookup replaced by the schedule at the band midpoint, Form 8960 line 17 by 3.8% of line 16 rounded half up to whole dollars, and the lines that follow (the worksheet's tax lines, Form 1040 lines 16 to 37, Schedule 8812 lines 14 to 27) re-taken; within the engine's `float` bound, it is an identified cause, not a tolerance. `contribution-unrounded` (PolicyEngine-US, which does not round the Form 8962 contribution) means the engine is within its `float` bound of the project's Form 8962 recomputed along its own annual path with line 8a taken as line 3 times line 7 exactly instead of rounded to whole dollars, and lines 11c to 11e and 26 re-taken; an identified cause, not a tolerance. `excluded` lines carry the engine limitation stated below; the features that trigger them are the generator's, those read off the project's values, and those the engine's adapter reports about its own run. Every other difference must be explained in fixtures/{Y}/differential/engine_investigations.json or the run fails.", ""]
     # The not-computed floor: the share of the engine's cases on which the project left the line without a
     # value, outside the allow-list's unfiled-form cases.
     shares, floor_failures = {}, []
@@ -871,13 +909,13 @@ def main():
                   "(a refusal, an unknown input, a non-money value), measured outside the allow-listed returns that do not file the form: "
                   + "; ".join(f"{line} unknown where `{inp}` is false ({reason})" for line, (inp, reason) in sorted(NOT_COMPUTED_ALLOW.items())) + ".", ""]
     for ename in engines:
-        lines_out += [f"## {ename}", "", "| line | exact | table-adjusted | table-midpoint | float | unrounded | excluded | explained | UNEXPLAINED | not computed | not computed outside the allow-list (share) |",
-                      "| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |"]
+        lines_out += [f"## {ename}", "", "| line | exact | table-adjusted | table-midpoint | float | unrounded | contribution-unrounded | excluded | explained | UNEXPLAINED | not computed | not computed outside the allow-list (share) |",
+                      "| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |"]
         for (en, line), c in sorted(stats.items()):
             if en != ename: continue
             notc = sum(v for k, v in c.items() if k.startswith("project-"))
             outside = notc - summary[(ename, line)]["not_computed_allowed"]
-            lines_out.append(f"| {line} | {c['exact']} | {c['table-adjusted']} | {c['table-midpoint']} | {c['float']} | {c['unrounded']} | {c['excluded']} | {c['explained']} | {c['UNEXPLAINED']} | {notc} | {outside} ({shares[(ename, line)]:.1%}) |")
+            lines_out.append(f"| {line} | {c['exact']} | {c['table-adjusted']} | {c['table-midpoint']} | {c['float']} | {c['unrounded']} | {c['contribution-unrounded']} | {c['excluded']} | {c['explained']} | {c['UNEXPLAINED']} | {notc} | {outside} ({shares[(ename, line)]:.1%}) |")
         lines_out.append("")
         reasons = {r for (en, _), rc in excluded_reasons.items() if en == ename for r in rc}
         if reasons:
@@ -908,7 +946,7 @@ def main():
                               "compared": sm["compared"], "compared_nonzero": sm["compared_nonzero"],
                               "excluded": c["excluded"], "excluded_nonzero": sm["excluded_nonzero"],
                               "unexplained": c["UNEXPLAINED"], "exact": c["exact"], "table_adjusted": c["table-adjusted"], "table_midpoint": c["table-midpoint"],
-                              "float": c["float"], "unrounded": c["unrounded"], "explained": c["explained"],
+                              "float": c["float"], "unrounded": c["unrounded"], "contribution_unrounded": c["contribution-unrounded"], "explained": c["explained"],
                               "not_computed": sum(v for k, v in c.items() if k.startswith("project-")),
                               "not_computed_allowed": sm["not_computed_allowed"],
                               "not_computed_share": round(shares[(ename, line)], 4)}
