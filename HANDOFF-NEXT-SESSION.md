@@ -1,3 +1,18 @@
+# Handoff — updated 2026-10-31 (Claude Opus 5.5)
+
+## State: the hardening phase is under way
+
+The first coverage goal is reached (82.2%, Stage 21). The owner then directed hardening before Schedule E. Done and
+committed through a75729f: the bug root-cause analysis and the mitigation pressure test; six source-coverage checks and
+two standing model reviews (screens, completeness) in check-all; BUG-0206 to BUG-0263, including the qualifying surviving
+spouse test (BUG-0219) and an evaluator fix for unanswered refusal gates (BUG-0257); review-tool and engine tasks T-068 to
+T-083. The full record, the owner's decisions and the facts a fresh session needs are in
+`handoffs/HANDOFF-HARDENING-1.md`; read it first.
+
+Next, per the owner: T-091 (three dependent-test logic changes) and T-092 (batched low findings); T-094 (the baseline
+burn-down) is the remaining large item, and the owner has not yet chosen whether to finish it first or run it alongside;
+then Schedule E (Stage 17). The working tree is clean at the last commit.
+
 # Handoff — updated 2026-10-29, evening (Claude Opus 5.5)
 
 ## State after Stage 21: the 80% goal is reached

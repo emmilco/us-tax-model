@@ -66,7 +66,7 @@ rounding open, the reading chosen is in `ambiguities/<year>.yaml`.
 `spec/spec.md` section 6.3 (`Lemmas.lean`: `subtractFloor0_nonneg`, `roundHalfUpToUnit_idem`,
 `prorate_le_amount`), and has a reference evaluator over the same canonical JSON as the TypeScript one,
 proved to terminate and to be deterministic (`EvalProps.lean`). Both evaluators run over every fixture
-and generated return; `reports/2025/evaluator_agreement.md` reports 1,648 cases, 2,895,826 line values
+and generated return; `reports/2025/evaluator_agreement.md` reports 1,994 cases, 4,470,945 line values
 compared, 0 differences. Guarantees: the atoms behave as specified, and two independently written
 evaluators of the same data compute the same values. Does not guarantee: anything about whether the data
 matches the IRS text. Both evaluators read the same files, so agreement shows the evaluators agree, not
@@ -122,7 +122,7 @@ The mutation tool applies single-atom mutations to the data (swap `smaller_of` f
 floor, change an operand) and asks whether the checker or a fixture notices; `reports/2025/mutation.md`
 reports 2,278 mutants, 128 surviving, each with a written proof of equivalence, so 94.4% raw and 100.0%
 with equivalents excluded. Property tests check the data-level properties of spec 6.3 over 400 generated
-returns; `reports/2025/properties.md` reports 8 properties, all holding. The interview's finite path
+returns; `reports/2025/properties.md` reports 9 properties, all holding. The interview's finite path
 checks (`engine/`, `spec/spec.md` section 6.4) enumerate answer combinations: every path ends in a
 complete form set or a cited refusal, answer order does not change the return, and no question is asked
 whose answer cannot reach a line. Guarantees: the fixtures are sensitive to the data they claim to test,
@@ -139,6 +139,23 @@ tested, and a run is green only if nothing outside its own outputs changed while
 (`tools/README.md`, "Commit guard"). Guarantees: the defect record cannot be edited, and no commit lands
 without the whole suite having passed on that exact tree. Does not guarantee: that the suite catches what
 it does not test for; the "why it survived" field exists to turn each such miss into a new check.
+
+### 12. Source-coverage checks and standing reviews
+
+A root-cause analysis of the recorded bugs (`docs/2026-10-29_bug_root_cause_analysis.md`, tested in
+`docs/2026-10-30_mitigation_strategy_pressure_test.md`) found that wrong amounts came mostly from the gap
+between the source text and the encoding, which the evaluator, mutation and engine checks cannot see. Six
+checks in `check-all` look at that gap directly: every printed line cites the instruction page with its
+"Line N" section; printed arithmetic ("Add lines 1 through 3") matches the line's operands; rate products of
+amounts that can go negative are floored or ruled; an input read under another page's rule carries a verdict
+that the definitions agree; limit sentences ("can't be more than", "per calendar year") are tied to the line
+that enforces them; and quotes outside computed lines are verified. Two model reviews are kept current the
+same way: each scope screen is reviewed against the lines it gates, and each form's instruction sections are
+read for operative rules nothing encodes, asks or refuses; a review goes stale when its prompt changes and its
+findings must be ruled. Findings that existed when a check was introduced are recorded in a baseline that
+comes due when the line, question or sentence it concerns changes (`TASKS.md` T-094). Guarantees: new gaps of
+these kinds are caught when they are written. Does not guarantee: that a question's wording or a rule's
+reading is right; those are still judged by review and adjudication.
 
 ## What this does not establish
 
@@ -172,8 +189,8 @@ when it affects their return. No lawyer has reviewed the legal position the proj
 The forms and lines computed are listed in `spec/spec.md` section 2.1, the situations refused with a
 cited explanation in section 2.2, and the order of the remaining additions in section 2.4; the tool never
 refuses silently. Coverage is measured over whole returns (a return counts only when nothing on it is
-refused) by `tools/coverage/estimate.py` into `reports/2025/filer_coverage.md`, which today reads 68.6%
-of individual returns. Its caveat: 148 of the 157 refusal gates are not measured (no IRS count or
+refused) by `tools/coverage/estimate.py` into `reports/2025/filer_coverage.md`, which today reads 82.2%
+of individual returns. Its caveat: 170 of the 177 refusal gates are not measured (no IRS count or
 microdata variable), so the figure is of the measured situations only and the true coverage is lower by
 the unmeasured gates' share.
 
