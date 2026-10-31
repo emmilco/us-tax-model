@@ -1,0 +1,450 @@
+{
+ "unruled:f2441.student_disabled": {
+  "reason": "WIDE and minor UNCLEAR only; no defect. Every finding refuses a case the tool computes (actual earned income) or is wording whose loose reading refuses.",
+  "findings": [
+   {
+    "n": 0,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "Unmarried student/disabled filer refused; i2441 p. 4 ('These rules ... also apply to you if you were a student or disabled') states no joint-return limit, and refusing is safe either way."
+   },
+   {
+    "n": 1,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "Actual earnings above the $250/$500 floor every month: the tool's actual earned income is right; refusal costs coverage only."
+   },
+   {
+    "n": 2,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "Correspondence/internet/on-the-job school (i2441 p. 4 'A school doesn't include...'): YES refuses a case computed correctly from actual earnings."
+   },
+   {
+    "n": 3,
+    "kind": "UNCLEAR",
+    "class": "accepted (minor UNCLEAR, leans WIDE)",
+    "evidence": "i2441 p. 1 test (can't dress, clean or feed; constant attention): a filer meeting it would answer yes to 'not able to care for yourself'; the loose reading refuses (WIDE). Narrow misreading not plausible."
+   }
+  ],
+  "bugs": []
+ },
+ "unruled:f4952.carryover": {
+  "reason": "Retired as a screen: f4952.carryover is now a plain input (line 2 = f4952.prior_7 when true) and no line names it as a refusal gate, so check_screens no longer lists it; the record is obsolete. Findings classed for the record.",
+  "findings": [
+   {
+    "n": 0,
+    "kind": "NARROW",
+    "class": "covered",
+    "evidence": "Other line 5 investment expenses are asked by f4952.unsupported ('any deductible investment expense other than interest (for example depreciation or depletion ... or investment expenses on a Schedule K-1)'), which refuses f4952.line2, election, line5 and required."
+   },
+   {
+    "n": 1,
+    "kind": "UNCLEAR",
+    "class": "out of scope (obsolete)",
+    "evidence": "Input now reads 'an amount on line 7 of your 2024 Form 4952' and no longer refuses anything; a yes asks for f4952.prior_7, which a used-up carryover answers with 0."
+   }
+  ],
+  "bugs": []
+ },
+ "unruled:f4952.unsupported": {
+  "reason": "No defect: the alternative 4g allocation is screened by f4952.alternative_allocation on the same four lines; the rest is WIDE or a computed case.",
+  "findings": [
+   {
+    "n": 0,
+    "kind": "NARROW",
+    "class": "covered",
+    "evidence": "f4952.alternative_allocation ('Elect an alternative allocation of Form 4952 line 4g to qualified dividends instead of capital gains first?') refuses f4952.line2, election, line5 and required — exactly the f4952 p. 4 'Elec.' choice."
+   },
+   {
+    "n": 1,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "Passive, business or tax-exempt-related interest is not investment interest (f4952 p. 3); 'any interest expense' refuses it. Safe."
+   },
+   {
+    "n": 2,
+    "kind": "UNCLEAR",
+    "class": "accepted (computed either way)",
+    "evidence": "f4952.line4d = max(0, sd.line16); Schedule D line 16 already includes capital gain distributions (line 13) and the capital loss carryover (line 14), so a NO computes f4952 p. 3 line 4d correctly; a YES is WIDE."
+   }
+  ],
+  "bugs": []
+ },
+ "unruled:f8960.refund": {
+  "reason": "No defect: the section 1411 NOL case is screened by f8960.unsupported on the same lines; the rest is WIDE or leans WIDE.",
+  "findings": [
+   {
+    "n": 0,
+    "kind": "NARROW",
+    "class": "covered",
+    "evidence": "f8960.unsupported names 'a section 1411 net operating loss' and refuses all eleven lines including f8960.line7; the i8960 p. 15 worksheet caution ('This rule doesn't apply if you incurred an NOL in such year, and a portion of such NOL constitutes a section 1411 NOL') presupposes such an NOL. Same ruling as T-008."
+   },
+   {
+    "n": 1,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "Recovery of a deduction that did not reduce section 1411 liability (i8960 p. 15): line 7 is zero, which the tool computes; refusal safe."
+   },
+   {
+    "n": 2,
+    "kind": "UNCLEAR",
+    "class": "accepted (minor UNCLEAR, leans WIDE)",
+    "evidence": "The question conditions on 'an amount deducted on an earlier Form 8960'; a filer who did deduct reads YES. The other reading refuses a filer with nothing to recover (WIDE)."
+   }
+  ],
+  "bugs": []
+ },
+ "unruled:person.sav_able": {
+  "reason": "WIDE only, plus one minor UNCLEAR; no defect. Rollovers, returned excess and rollover contributions are excluded from Form 8880 lines 1 and 4 and refusing them is safe.",
+  "findings": [
+   {
+    "n": 0,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "f8880 p. 2 line 4 excludes rollover/trustee-to-trustee distributions; refusing them is safe."
+   },
+   {
+    "n": 1,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "f8880 p. 2 line 4 excludes distributions of excess contributions; refusing is safe."
+   },
+   {
+    "n": 2,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "f8880 p. 1 line 1 'Do not include rollover contributions'; refusing is safe."
+   },
+   {
+    "n": 3,
+    "kind": "UNCLEAR",
+    "class": "accepted (minor UNCLEAR)",
+    "evidence": "Only an ABLE account's designated beneficiary receives its distributions, so a filer with a line 4 ABLE distribution was the beneficiary when paid; the miss needs a former beneficiary who reads 'As the designated beneficiary' as present status. Optional rewording: 'did you receive, as its designated beneficiary, any distribution...'."
+   }
+  ],
+  "bugs": []
+ },
+ "unruled:person.x_other": {
+  "reason": "One defect: a partial or later-corrected RMD shortfall can be answered no and Form 5329 Part IX tax is then silently zero. The HSA carryover finding is covered by f8889.unsupported (derived refusal).",
+  "findings": [
+   {
+    "n": 0,
+    "kind": "NARROW",
+    "class": "covered (derived refusal)",
+    "evidence": "f5329 lines 42-46 are zero in this tool, but a filer with a 2025 Form 8889 is asked f8889.unsupported ('excess HSA contributions from an earlier year that remain in your HSA'), which refuses f8889.line13/line16; eval of fixture stage16.refuse.f8889.unsupported_part2 shows the refusal reaching s1.line13, s2.line8, f1040.line24 and line37."
+   },
+   {
+    "n": 1,
+    "kind": "UNCLEAR",
+    "class": "defect",
+    "evidence": "i5329 p. 9: 'The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed'; f5329 p. 3 line 52a/54a (10% when corrected in the window). No Part IX lines exist; 'a required minimum distribution ... that you did not take' reads as missed entirely."
+   }
+  ],
+  "bugs": [
+   "PENDING-2-1"
+  ]
+ },
+ "unruled:retirement.special": {
+  "reason": "One defect (three findings): cases i1040gi pp. 28 and 30 route to Pub. 525/575/721 are missing from the list. Roth non-Q is refused by retirement.bad_code; the box 5 finding misreads the computation; rest WIDE/covered.",
+  "findings": [
+   {
+    "n": 0,
+    "kind": "NARROW",
+    "class": "covered",
+    "evidence": "retirement.bad_code refuses account roth_ira with any code other than qualified_roth_Q (codes T, J and others) and gates rolled, taxable and amount_a. Same ruling as T-008."
+   },
+   {
+    "n": 1,
+    "kind": "NARROW",
+    "class": "defect",
+    "evidence": "i1040gi p. 28: 'Fully taxable pensions and annuities also include military retirement pay shown on Form 1099-R. For details on military disability pensions, see Pub. 525.' Coded 7, a NO computes box 1 less box 5 as taxable (retirement.plan_simple); only code 3 is refused (bad_code)."
+   },
+   {
+    "n": 2,
+    "kind": "NARROW",
+    "class": "defect",
+    "evidence": "i1040gi p. 30: 'If you are the beneficiary of an employee who died, see Pub. 575. If there is more than one beneficiary, see Pub. 575 or Pub. 721 to figure each beneficiary's taxable amount.' retirement.cost asks 'Your cost ... in the plan' with no allocation, so a shared annuity can take the whole cost."
+   },
+   {
+    "n": 3,
+    "kind": "NARROW",
+    "class": "defect",
+    "evidence": "i1040gi p. 30: 'See Pub. 575 for more details on rollovers, including special rules that apply to ... partial rollovers of property, and distributions under qualified domestic relations orders.' The tool subtracts a plain rollover amount."
+   },
+   {
+    "n": 4,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "A fully taxable plan loan offset not rolled over is computed correctly; refusal safe."
+   },
+   {
+    "n": 5,
+    "kind": "UNCLEAR",
+    "class": "accepted (covered / WIDE)",
+    "evidence": "'nondeductible contributions to any traditional IRA' says any, so a filer with basis answers YES; a 2025 conversion has its own Form 1099-R on which the filer answers YES, refusing the return. The over-reading (pension with IRA basis) is WIDE."
+   },
+   {
+    "n": 6,
+    "kind": "UNCLEAR",
+    "class": "model error",
+    "evidence": "retirement.plan_simple = box 1 less box 5 less the rollover for every plan distribution, the i1040gi p. 30 rule the finding quotes; a NO computes it, a YES is WIDE. Same ruling as T-008."
+   }
+  ],
+  "bugs": [
+   "PENDING-2-2"
+  ]
+ },
+ "unruled:s1.cod_unsupported": {
+  "reason": "One defect: the cash-method deductible-debt exception is screened only for box 3 interest and business debt; other WIDE/UNCLEAR findings accepted.",
+  "findings": [
+   {
+    "n": 0,
+    "kind": "NARROW",
+    "class": "defect",
+    "evidence": "p4681 p. 6, Deductible Debt: 'If you use the cash method of accounting, you don't realize income from the cancellation of debt if the payment of the debt would have been a deductible expense.' A canceled medical bill answered NO is copied into line 8c (s1.cod_refused = s1.cod_amount)."
+   },
+   {
+    "n": 1,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "A fully taxable canceled student loan is refused; safe."
+   },
+   {
+    "n": 2,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "Nonrecourse debt with collateral retained and a discount (p4681 p. 3) is taxable and computable; refusal safe."
+   },
+   {
+    "n": 3,
+    "kind": "UNCLEAR",
+    "class": "accepted (minor UNCLEAR)",
+    "evidence": "p4681 p. 6 balance-sheet test; the everyday reading ('can't pay my bills') tends to YES (WIDE). Optional gloss: 'your debts were more than the value of everything you owned, including retirement accounts, just before the cancellation'."
+   },
+   {
+    "n": 4,
+    "kind": "UNCLEAR",
+    "class": "accepted (minor UNCLEAR)",
+    "evidence": "f1099c p. 3 box 5 reads 'If checked, the debtor was personally liable', which tells the filer the polarity; a not-liable filer misreading to NO is computed correctly in the case p4681 p. 3 taxes (collateral retained) and foreclosure/abandonment is screened separately (box 7, Form 1099-A)."
+   }
+  ],
+  "bugs": [
+   "PENDING-2-3"
+  ]
+ },
+ "unruled:s1.uc_unsupported": {
+  "reason": "One low defect: the contribution clause does not say payroll-withheld contributions count or that any year counts; WIDE findings accepted as in T-008.",
+  "findings": [
+   {
+    "n": 0,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "Contributions with no 2025 compensation: line 7 is zero either way; refusal safe."
+   },
+   {
+    "n": 1,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "Repayment of $3,000 or less is refused; accepted in T-008 (Pub. 525 not archived)."
+   },
+   {
+    "n": 2,
+    "kind": "UNCLEAR",
+    "class": "defect",
+    "evidence": "i1040gi p. 89: 'If you made contributions to a governmental unemployment compensation program and you aren't itemizing deductions, reduce the amount you report on line 7 by those contributions.' Wage-withheld employee contributions are contributions; a NO leaves line 7 unreduced (s1.line7_figured = uc_paid - uc_repaid)."
+   },
+   {
+    "n": 3,
+    "kind": "UNCLEAR",
+    "class": "defect",
+    "evidence": "Same sentence, untimed; T-008 reverted a 2025 limit because the instructions do not limit the year, but the question does not say so and a filer whose contributions were earlier can read it as 2025 only."
+   }
+  ],
+  "bugs": [
+   "PENDING-2-4"
+  ]
+ },
+ "unruled:sa.charity_limited": {
+  "reason": "No defect: every non-charitable item is screened by sa.unsupported, which gates the same eight lines; the two UNCLEARs compute correctly on NO.",
+  "findings": [
+   {
+    "n": 0,
+    "kind": "NARROW",
+    "class": "covered",
+    "evidence": "sa.unsupported: 'a foreign tax or generation-skipping tax deduction' (gates sa.line6)."
+   },
+   {
+    "n": 1,
+    "kind": "NARROW",
+    "class": "covered",
+    "evidence": "sa.unsupported: 'mortgage interest or points not on Form 1098' (gates sa.line8b)."
+   },
+   {
+    "n": 2,
+    "kind": "NARROW",
+    "class": "covered",
+    "evidence": "sa.unsupported: 'mortgage interest or points not on Form 1098' (gates sa.line8c)."
+   },
+   {
+    "n": 3,
+    "kind": "NARROW",
+    "class": "covered",
+    "evidence": "sa.unsupported: 'Any casualty or theft loss' (gates sa.line15)."
+   },
+   {
+    "n": 4,
+    "kind": "NARROW",
+    "class": "covered",
+    "evidence": "sa.unsupported: 'a deduction from the Schedule A line 16 list other than gambling losses' (gates sa.line16)."
+   },
+   {
+    "n": 5,
+    "kind": "NARROW",
+    "class": "covered",
+    "evidence": "sa.unsupported: 'including a disaster loss added to the standard deduction' (gates sa.line16, line17)."
+   },
+   {
+    "n": 6,
+    "kind": "UNCLEAR",
+    "class": "accepted (minor UNCLEAR)",
+    "evidence": "Expired or currently non-deductible carryover: NO gives line 13 zero, which the finding itself says is correct; YES is WIDE."
+   },
+   {
+    "n": 7,
+    "kind": "UNCLEAR",
+    "class": "model error",
+    "evidence": "The appreciated-property reduction is not an income limit; it is asked in gift.deduction ('Deduction before income limits ... after required valuation/basis reductions'), which feeds sa.line12, so a NO computes it."
+   }
+  ],
+  "bugs": []
+ },
+ "unruled:sa.unsupported": {
+  "reason": "No defect: a charitable carryover is screened by sa.charity_limited on the same lines; the casualty finding is WIDE.",
+  "findings": [
+   {
+    "n": 0,
+    "kind": "NARROW",
+    "class": "covered",
+    "evidence": "sa.charity_limited ('or carried over from a prior year') gates sa.line13 and sa.line17 among the same eight lines. Same ruling as T-008."
+   },
+   {
+    "n": 1,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "A non-disaster personal casualty loss is not deductible (i1040sca p. 11); refusing it is safe."
+   }
+  ],
+  "bugs": []
+ },
+ "unruled:sb.line8": {
+  "reason": "Amount findings covered by sb.unsupported (all Schedule B screens gate sb.line2, line3, line6); one low defect: the question is narrower than the i1040sb p. 3 line 8 instruction.",
+  "findings": [
+   {
+    "n": 0,
+    "kind": "NARROW",
+    "class": "covered",
+    "evidence": "sb.unsupported: 'a savings bond interest exclusion'."
+   },
+   {
+    "n": 1,
+    "kind": "NARROW",
+    "class": "covered",
+    "evidence": "sb.unsupported: 'Any nominee income, original issue discount reported in an amount other than on Form 1099-OID, accrued interest paid on a bond purchase, bond premium adjustment'."
+   },
+   {
+    "n": 2,
+    "kind": "NARROW",
+    "class": "covered",
+    "evidence": "sb.unsupported: 'Any nominee income' (gates sb.line6)."
+   },
+   {
+    "n": 3,
+    "kind": "NARROW",
+    "class": "covered",
+    "evidence": "sb.unsupported: 'accrued market discount, a contingent payment debt instrument'."
+   },
+   {
+    "n": 4,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "Foreign-trust facts do not change lines 2, 3 and 6; refusal safe (T-008)."
+   },
+   {
+    "n": 5,
+    "kind": "UNCLEAR",
+    "class": "defect",
+    "evidence": "i1040sb p. 3: 'a loan of cash or marketable securities is generally considered to be a distribution' and 'If you were the grantor of, or transferor to, a foreign trust that existed during 2025, you may have to file Form 3520.' The question ('were grantor of ... a foreign trust during 2025') reads as acting in 2025, so line 8 prints No and the return computes."
+   }
+  ],
+  "bugs": [
+   "PENDING-2-5"
+  ]
+ },
+ "unruled:sc.inventory_other": {
+  "reason": "No defect: a 2025 accounting-method change is screened by sc.method_other (through sc.screened on sc.line1); the rest is WIDE or minor UNCLEAR.",
+  "findings": [
+   {
+    "n": 0,
+    "kind": "NARROW",
+    "class": "covered (derived refusal)",
+    "evidence": "sc.method_other asks 'did you change your accounting method for 2025 (Form 3115 or a section 481(a) adjustment)'; it feeds sc.screened, which refuses sc.line1 and so the whole Schedule C. This is the i1040sc p. 15 line 35 case."
+   },
+   {
+    "n": 1,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "Consistent use of another IRS-approved method (i1040sc p. 15 line 33): line 35 is last year's closing inventory and computable; refusal safe."
+   },
+   {
+    "n": 2,
+    "kind": "UNCLEAR",
+    "class": "accepted (minor UNCLEAR)",
+    "evidence": "Small business taxpayer not keeping an inventory (i1040sc p. 15): the method must 'clearly reflect income'; goods on hand at cost entered on lines 35/41 compute the same; risk is a filer entering zero, an input question rather than this screen. Optional gloss: 'Answer No only if you hold no goods for sale.'"
+   },
+   {
+    "n": 3,
+    "kind": "UNCLEAR",
+    "class": "accepted (leans WIDE)",
+    "evidence": "Reading ordinary count/cost differences as a 'change' refuses a computed case; the narrow misreading is not plausible (it mirrors Schedule C line 34's own wording)."
+   }
+  ],
+  "bugs": []
+ },
+ "unruled:scope.credits": {
+  "reason": "No defect: the Schedule 3 Part II amounts named are collected as inputs, not dropped.",
+  "findings": [
+   {
+    "n": 0,
+    "kind": "NARROW",
+    "class": "model error",
+    "evidence": "Line 10 is the input s3.line10 ('Amount paid with request for extension to file') and lines 13a-13z, including 13c and 13d, enter through s3.line14 ('Total other payments or refundable credits (supplied subtotal)'), both summed into s3.line15/f1040.line31; the reviewer did not have these inputs."
+   }
+  ],
+  "bugs": []
+ },
+ "unruled:scope.schedule1a": {
+  "reason": "Retired as a screen: Stage 12 (handoffs/HANDOFF-STAGE-12.md: 'scope.schedule1a is retired; Form 1040 line 13b copies Schedule 1-A line 38'); the id is no longer in forms/2025 and check_screens does not list it; the record is obsolete. Findings classed for the record.",
+  "findings": [
+   {
+    "n": 0,
+    "kind": "WIDE",
+    "class": "out of scope (obsolete)",
+    "evidence": "Senior deduction phase-out is now computed (forms/2025/s1a.yaml, $75,000/$150,000 and 6%); no screen remains."
+   },
+   {
+    "n": 1,
+    "kind": "UNCLEAR",
+    "class": "out of scope (obsolete)",
+    "evidence": "Tips/overtime qualification is now asked by the Schedule 1-A inputs (s1a, tipjob, otjob), not this screen."
+   },
+   {
+    "n": 2,
+    "kind": "UNCLEAR",
+    "class": "out of scope (obsolete)",
+    "evidence": "No screen; f1040.line13b = s1a.line38."
+   }
+  ],
+  "bugs": []
+ }
+}

@@ -10,6 +10,475 @@
    "context": "68ea7e261b6ddd60d491a370f5604e9636c98e21babac3b609c03bb6ba81fa86"
   },
   {
+   "printed": "1",
+   "restated": "Add household helper \"Number of people on the return (you, and your spouse if filing jointly)\" and helper \"Dependents you claim\".",
+   "model": "The restatement counts everyone on the return with no carve-out or refusal for a claimable filer or spouse. IRS: 'If you checked the \"Someone can claim you as a dependent\" box, or if you are filing jointly and you checked the \"Someone can claim your spouse as a dependent\" box on your tax return, you or your spouse is not included in the tax family size calculation'.",
+   "ruling": "Ruling: scope; screen sa.dependent (root S2). i8962 p. 8, Line 1, \"If you checked the “Someone can claim you as a dependent” box, or if you are filing jointly and you checked the “Someone can claim your spouse as a dependent” box on your tax return, you or your spouse is not included in the tax family size calculation\". A return on which you or your spouse can be claimed is never completed: sa.dependent (\"Can someone claim you or your spouse as a dependent for 2025 ...\", forms/2025/sa.yaml) refuses f1040.line12e on every return, and D1 keeps the claimable filer refused. On the returns computed nobody on the return can be claimed, so everyone on it is in the tax family, as the restatement says. Re-checked this round on stage18.married_in_2025_single (a completed fixture; line 24 $3,560) with one answer changed by the adjudicator (constructed variants, not fixtures): sa.dependent true refuses Form 1040 lines 12e, 16 and 37 with gate sa.dependent.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "11(a)",
+   "restated": "Add f1095a.line33a over every confirmed f1095a entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "The total is right when the column applies, but no gate or refusal handles this case. IRS: 'If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).'",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1 of Stage 18; the shared cause of the 65 married-filing-separately sections of this log, 11(a) to 11(e) and 12(a) to 23(e), stated in full here). f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" The reviewer says the columns have no filing-status gate. No married filing separately return is completed: scope.ready refuses on s3.mfs (forms/2025/s3.yaml, scope.yaml; i1040gi p. 14, \"Married Filing Separately\"), Exception 2 included, as the owner's decision D1 keeps, and the form note says married filing separately is refused for the whole return. On every return computed the filing status is not married filing separately, so columns (a) to (e) are completed as the restatement says; the reviewer finds the amounts themselves right. Re-checked this round on stage18.married_in_2025_single (a completed fixture; line 24 $3,560) with one answer changed by the adjudicator (constructed variants, not fixtures): f1040.status mfs refuses scope.ready and Form 1040 line 37 with gate s3.mfs; sa.dependent true refuses Form 1040 lines 12e, 16 and 37 with gate sa.dependent; scope.other_line16 true refuses scope.ready and lines 16 and 37 with gate scope.other_line16. The fixes of this round (BUG-0237, BUG-0238, rewording the f8962.alloc and f8962.other questions; BUG-0219, the qualifying surviving spouse test) do not touch s3.mfs or these columns.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "11(b)",
+   "restated": "Add f1095a.line33b over every confirmed f1095a entry for which helper \"This form's column B is counted (the only form, or counted under the one-form-a-month rule)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "The one-form rule and refusal fit the column (b) instructions, but no gate or refusal handles this case. IRS: 'If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).'",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). Annual, column (b), applicable SLCSP premium: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the applicable SLCSP premium itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "11(c)",
+   "restated": "Enter the amount from line 8a.",
+   "model": "Line 8a is the right operand, but the applicable-taxpayer gate has no filing-status test. IRS: 'If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).'",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). Annual, column (c), contribution amount: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the contribution amount itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "11(d)",
+   "restated": "Subtract line 11(c) from line 11(b). If zero or less, enter -0-.",
+   "model": "The subtraction is right, but the applicable-taxpayer gate has no filing-status test. IRS: 'If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).'",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). Annual, column (d), maximum premium assistance: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the maximum premium assistance itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "11(e)",
+   "restated": "Enter the smaller of line 11(a) or line 11(d).",
+   "model": "The smaller-of rule is right, but the applicable-taxpayer gate has no filing-status test. IRS: 'If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).'",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). Annual, column (e), PTC allowed: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the PTC allowed itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "12(a)",
+   "restated": "Add f1095a.a_jan over every confirmed f1095a entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "The monthly total is right when the column applies, but no gate or refusal handles this case. IRS: 'you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).'",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). January, column (a), enrollment premiums: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the enrollment premiums itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "12(b)",
+   "restated": "Add f1095a.b_jan over every confirmed f1095a entry for which helper \"This form's column B is counted (the only form, or counted under the one-form-a-month rule)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "The one-form rule fits column (b), but no gate or refusal handles this case. IRS: 'you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).'",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). January, column (b), applicable SLCSP premium: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the applicable SLCSP premium itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "12(c)",
+   "restated": "Enter the amount from line 8b.",
+   "model": "Line 8b is the right operand, but the applicable-taxpayer gate has no filing-status test. IRS: 'you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).'",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). January, column (c), contribution amount: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the contribution amount itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "12(d)",
+   "restated": "Subtract line 12(c) from line 12(b). If zero or less, enter -0-.",
+   "model": "The subtraction is right, but the applicable-taxpayer gate has no filing-status test. IRS: 'you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).'",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). January, column (d), maximum premium assistance: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the maximum premium assistance itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "12(e)",
+   "restated": "Enter the smaller of line 12(a) or line 12(d).",
+   "model": "The smaller-of rule is right, but the applicable-taxpayer gate has no filing-status test. IRS: 'you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).'",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). January, column (e), PTC allowed: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the PTC allowed itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "13(a)",
+   "restated": "Add f1095a.a_feb over every confirmed f1095a entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "Same married-filing-separately omission as 12(a): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). February, column (a), enrollment premiums: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the enrollment premiums itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "13(b)",
+   "restated": "Add f1095a.b_feb over every confirmed f1095a entry for which helper \"This form's column B is counted (the only form, or counted under the one-form-a-month rule)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "Same married-filing-separately omission as 12(b): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). February, column (b), applicable SLCSP premium: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the applicable SLCSP premium itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "13(c)",
+   "restated": "Enter the amount from line 8b.",
+   "model": "Same married-filing-separately omission as 12(c): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). February, column (c), contribution amount: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the contribution amount itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "13(d)",
+   "restated": "Subtract line 13(c) from line 13(b). If zero or less, enter -0-.",
+   "model": "Same married-filing-separately omission as 12(d): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). February, column (d), maximum premium assistance: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the maximum premium assistance itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "13(e)",
+   "restated": "Enter the smaller of line 13(a) or line 13(d).",
+   "model": "Same married-filing-separately omission as 12(e): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). February, column (e), PTC allowed: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the PTC allowed itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "14(a)",
+   "restated": "Add f1095a.a_mar over every confirmed f1095a entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "Same married-filing-separately omission as 12(a): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). March, column (a), enrollment premiums: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the enrollment premiums itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "14(b)",
+   "restated": "Add f1095a.b_mar over every confirmed f1095a entry for which helper \"This form's column B is counted (the only form, or counted under the one-form-a-month rule)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "Same married-filing-separately omission as 12(b): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). March, column (b), applicable SLCSP premium: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the applicable SLCSP premium itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "14(c)",
+   "restated": "Enter the amount from line 8b.",
+   "model": "Same married-filing-separately omission as 12(c): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). March, column (c), contribution amount: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the contribution amount itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "14(d)",
+   "restated": "Subtract line 14(c) from line 14(b). If zero or less, enter -0-.",
+   "model": "Same married-filing-separately omission as 12(d): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). March, column (d), maximum premium assistance: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the maximum premium assistance itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "14(e)",
+   "restated": "Enter the smaller of line 14(a) or line 14(d).",
+   "model": "Same married-filing-separately omission as 12(e): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). March, column (e), PTC allowed: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the PTC allowed itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "15(a)",
+   "restated": "Add f1095a.a_apr over every confirmed f1095a entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "Same married-filing-separately omission as 12(a): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). April, column (a), enrollment premiums: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the enrollment premiums itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "15(b)",
+   "restated": "Add f1095a.b_apr over every confirmed f1095a entry for which helper \"This form's column B is counted (the only form, or counted under the one-form-a-month rule)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "Same married-filing-separately omission as 12(b): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). April, column (b), applicable SLCSP premium: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the applicable SLCSP premium itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "15(c)",
+   "restated": "Enter the amount from line 8b.",
+   "model": "Same married-filing-separately omission as 12(c): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). April, column (c), contribution amount: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the contribution amount itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "15(d)",
+   "restated": "Subtract line 15(c) from line 15(b). If zero or less, enter -0-.",
+   "model": "Same married-filing-separately omission as 12(d): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). April, column (d), maximum premium assistance: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the maximum premium assistance itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "15(e)",
+   "restated": "Enter the smaller of line 15(a) or line 15(d).",
+   "model": "Same married-filing-separately omission as 12(e): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). April, column (e), PTC allowed: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the PTC allowed itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "16(a)",
+   "restated": "Add f1095a.a_may over every confirmed f1095a entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "Same married-filing-separately omission as 12(a): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). May, column (a), enrollment premiums: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the enrollment premiums itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "16(b)",
+   "restated": "Add f1095a.b_may over every confirmed f1095a entry for which helper \"This form's column B is counted (the only form, or counted under the one-form-a-month rule)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "Same married-filing-separately omission as 12(b): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). May, column (b), applicable SLCSP premium: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the applicable SLCSP premium itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "16(c)",
+   "restated": "Enter the amount from line 8b.",
+   "model": "Same married-filing-separately omission as 12(c): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). May, column (c), contribution amount: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the contribution amount itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "16(d)",
+   "restated": "Subtract line 16(c) from line 16(b). If zero or less, enter -0-.",
+   "model": "Same married-filing-separately omission as 12(d): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). May, column (d), maximum premium assistance: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the maximum premium assistance itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "16(e)",
+   "restated": "Enter the smaller of line 16(a) or line 16(d).",
+   "model": "Same married-filing-separately omission as 12(e): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). May, column (e), PTC allowed: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the PTC allowed itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "17(a)",
+   "restated": "Add f1095a.a_jun over every confirmed f1095a entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "Same married-filing-separately omission as 12(a): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). June, column (a), enrollment premiums: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the enrollment premiums itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "17(b)",
+   "restated": "Add f1095a.b_jun over every confirmed f1095a entry for which helper \"This form's column B is counted (the only form, or counted under the one-form-a-month rule)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "Same married-filing-separately omission as 12(b): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). June, column (b), applicable SLCSP premium: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the applicable SLCSP premium itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "17(c)",
+   "restated": "Enter the amount from line 8b.",
+   "model": "Same married-filing-separately omission as 12(c): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). June, column (c), contribution amount: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the contribution amount itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "17(d)",
+   "restated": "Subtract line 17(c) from line 17(b). If zero or less, enter -0-.",
+   "model": "Same married-filing-separately omission as 12(d): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). June, column (d), maximum premium assistance: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the maximum premium assistance itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "17(e)",
+   "restated": "Enter the smaller of line 17(a) or line 17(d).",
+   "model": "Same married-filing-separately omission as 12(e): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). June, column (e), PTC allowed: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the PTC allowed itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "18(a)",
+   "restated": "Add f1095a.a_jul over every confirmed f1095a entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "Same married-filing-separately omission as 12(a): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). July, column (a), enrollment premiums: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the enrollment premiums itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "18(b)",
+   "restated": "Add f1095a.b_jul over every confirmed f1095a entry for which helper \"This form's column B is counted (the only form, or counted under the one-form-a-month rule)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "Same married-filing-separately omission as 12(b): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). July, column (b), applicable SLCSP premium: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the applicable SLCSP premium itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "18(c)",
+   "restated": "Enter the amount from line 8b.",
+   "model": "Same married-filing-separately omission as 12(c): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). July, column (c), contribution amount: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the contribution amount itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "18(d)",
+   "restated": "Subtract line 18(c) from line 18(b). If zero or less, enter -0-.",
+   "model": "Same married-filing-separately omission as 12(d): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). July, column (d), maximum premium assistance: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the maximum premium assistance itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "18(e)",
+   "restated": "Enter the smaller of line 18(a) or line 18(d).",
+   "model": "Same married-filing-separately omission as 12(e): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). July, column (e), PTC allowed: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the PTC allowed itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "19(a)",
+   "restated": "Add f1095a.a_aug over every confirmed f1095a entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "Same married-filing-separately omission as 12(a): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). August, column (a), enrollment premiums: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the enrollment premiums itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "19(b)",
+   "restated": "Add f1095a.b_aug over every confirmed f1095a entry for which helper \"This form's column B is counted (the only form, or counted under the one-form-a-month rule)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "Same married-filing-separately omission as 12(b): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). August, column (b), applicable SLCSP premium: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the applicable SLCSP premium itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "19(c)",
+   "restated": "Enter the amount from line 8b.",
+   "model": "Same married-filing-separately omission as 12(c): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). August, column (c), contribution amount: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the contribution amount itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "19(d)",
+   "restated": "Subtract line 19(c) from line 19(b). If zero or less, enter -0-.",
+   "model": "Same married-filing-separately omission as 12(d): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). August, column (d), maximum premium assistance: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the maximum premium assistance itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "19(e)",
+   "restated": "Enter the smaller of line 19(a) or line 19(d).",
+   "model": "Same married-filing-separately omission as 12(e): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). August, column (e), PTC allowed: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the PTC allowed itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "20(a)",
+   "restated": "Add f1095a.a_sep over every confirmed f1095a entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "Same married-filing-separately omission as 12(a): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). September, column (a), enrollment premiums: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the enrollment premiums itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "20(b)",
+   "restated": "Add f1095a.b_sep over every confirmed f1095a entry for which helper \"This form's column B is counted (the only form, or counted under the one-form-a-month rule)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "Same married-filing-separately omission as 12(b): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). September, column (b), applicable SLCSP premium: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the applicable SLCSP premium itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "20(c)",
+   "restated": "Enter the amount from line 8b.",
+   "model": "Same married-filing-separately omission as 12(c): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). September, column (c), contribution amount: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the contribution amount itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "20(d)",
+   "restated": "Subtract line 20(c) from line 20(b). If zero or less, enter -0-.",
+   "model": "Same married-filing-separately omission as 12(d): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). September, column (d), maximum premium assistance: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the maximum premium assistance itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "20(e)",
+   "restated": "Enter the smaller of line 20(a) or line 20(d).",
+   "model": "Same married-filing-separately omission as 12(e): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). September, column (e), PTC allowed: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the PTC allowed itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "21(a)",
+   "restated": "Add f1095a.a_oct over every confirmed f1095a entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "Same married-filing-separately omission as 12(a): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). October, column (a), enrollment premiums: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the enrollment premiums itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "21(b)",
+   "restated": "Add f1095a.b_oct over every confirmed f1095a entry for which helper \"This form's column B is counted (the only form, or counted under the one-form-a-month rule)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "Same married-filing-separately omission as 12(b): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). October, column (b), applicable SLCSP premium: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the applicable SLCSP premium itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "21(c)",
+   "restated": "Enter the amount from line 8b.",
+   "model": "Same married-filing-separately omission as 12(c): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). October, column (c), contribution amount: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the contribution amount itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "21(d)",
+   "restated": "Subtract line 21(c) from line 21(b). If zero or less, enter -0-.",
+   "model": "Same married-filing-separately omission as 12(d): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). October, column (d), maximum premium assistance: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the maximum premium assistance itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "21(e)",
+   "restated": "Enter the smaller of line 21(a) or line 21(d).",
+   "model": "Same married-filing-separately omission as 12(e): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). October, column (e), PTC allowed: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the PTC allowed itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "22(a)",
+   "restated": "Add f1095a.a_nov over every confirmed f1095a entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "Same married-filing-separately omission as 12(a): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). November, column (a), enrollment premiums: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the enrollment premiums itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "22(b)",
+   "restated": "Add f1095a.b_nov over every confirmed f1095a entry for which helper \"This form's column B is counted (the only form, or counted under the one-form-a-month rule)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "Same married-filing-separately omission as 12(b): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). November, column (b), applicable SLCSP premium: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the applicable SLCSP premium itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "22(c)",
+   "restated": "Enter the amount from line 8b.",
+   "model": "Same married-filing-separately omission as 12(c): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). November, column (c), contribution amount: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the contribution amount itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "22(d)",
+   "restated": "Subtract line 22(c) from line 22(b). If zero or less, enter -0-.",
+   "model": "Same married-filing-separately omission as 12(d): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). November, column (d), maximum premium assistance: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the maximum premium assistance itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "22(e)",
+   "restated": "Enter the smaller of line 22(a) or line 22(d).",
+   "model": "Same married-filing-separately omission as 12(e): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). November, column (e), PTC allowed: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the PTC allowed itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "23(a)",
+   "restated": "Add f1095a.a_dec over every confirmed f1095a entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "Same married-filing-separately omission as 12(a): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). December, column (a), enrollment premiums: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the enrollment premiums itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "23(b)",
+   "restated": "Add f1095a.b_dec over every confirmed f1095a entry for which helper \"This form's column B is counted (the only form, or counted under the one-form-a-month rule)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "Same married-filing-separately omission as 12(b): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). December, column (b), applicable SLCSP premium: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the applicable SLCSP premium itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "23(c)",
+   "restated": "Enter the amount from line 8b.",
+   "model": "Same married-filing-separately omission as 12(c): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). December, column (c), contribution amount: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the contribution amount itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "23(d)",
+   "restated": "Subtract line 23(c) from line 23(b). If zero or less, enter -0-.",
+   "model": "Same married-filing-separately omission as 12(d): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). December, column (d), maximum premium assistance: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the maximum premium assistance itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "23(e)",
+   "restated": "Enter the smaller of line 23(a) or line 23(d).",
+   "model": "Same married-filing-separately omission as 12(e): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
+   "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). December, column (e), PTC allowed: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the PTC allowed itself is accepted by the reviewer.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
+   "printed": "24",
+   "restated": "Choose — [helper \"You are an applicable taxpayer (line 5 at least 100, or the Marketplace estimate exception)\" = false → helper \"Year parameter sales.zero\"] [helper \"You are an applicable taxpayer (line 5 at least 100, or the Marketplace estimate exception)\" = true → helper \"The PTC allowed: line 11, column (e), or lines 12 through 23, column (e), added\"]",
+   "model": "The applicable-taxpayer test looks only at line 5 and the estimate exception, so an ineligible filer can get a credit. IRS: 'If you are not an applicable taxpayer because you are using filing status married filing separately and Exception 2, earlier, does not apply to you, you cannot take the PTC... enter -0- on line 24'; also, 'no one can claim you as a dependent' is required.",
+   "ruling": "Ruling: scope; screens s3.mfs (root S1, stated in full at 11(a)) and sa.dependent (root S2). f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 16, Not an applicable taxpayer, \"If you are not an applicable taxpayer because you are using filing status married filing separately and Exception 2, earlier, does not apply to you, you cannot take the PTC ... enter -0- on line 24\"; i8962 p. 3, \"2. No one can claim you as a dependent for the year.\" Both conditions the reviewer names are refused for the whole return: scope.ready on s3.mfs and Form 1040 line 12e on sa.dependent, so on every completed return the applicable-taxpayer test reduces to line 5 and the estimate exception (with its advance payments), as restated; the alien branch stays refused by f8962.alien_branch. Re-checked this round on stage18.married_in_2025_single (a completed fixture; line 24 $3,560) with one answer changed by the adjudicator (constructed variants, not fixtures): f1040.status mfs refuses scope.ready and Form 1040 line 37 with gate s3.mfs; sa.dependent true refuses Form 1040 lines 12e, 16 and 37 with gate sa.dependent.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
    "printed": "24",
    "restated": "Choose — [helper \"You are an applicable taxpayer (line 5 at least 100, or the Marketplace estimate exception)\" = false → helper \"Year parameter sales.zero\"] [helper \"You are an applicable taxpayer (line 5 at least 100, or the Marketplace estimate exception)\" = true → helper \"The PTC allowed: line 11, column (e), or lines 12 through 23, column (e), added\"]",
    "model": "The applicable-taxpayer test uses only line 5 and the Marketplace-estimate exception. It ignores the married-filing-separately bar: \"If you are not an applicable taxpayer because you are using filing status married filing separately and Exception 2, earlier, does not apply to you ... enter -0- on line 24\". No refusal covers MFS.",
@@ -24,11 +493,25 @@
    "context": "68ea7e261b6ddd60d491a370f5604e9636c98e21babac3b609c03bb6ba81fa86"
   },
   {
+   "printed": "28",
+   "restated": "Choose — [line 5 ≥ 0 (a count) and line 5 < 200 (a count) → helper \"Table 5 limitation, line 5 below 200\"] [line 5 ≥ 200 (a count) and line 5 < 300 (a count) → helper \"Table 5 limitation, line 5 below 300\"] [line 5 ≥ 300 (a count) and line 5 < 400 (a count) → helper \"Table 5 limitation, line 5 below 400\"] [line 5 ≥ 400 (a count) → line 27]",
+   "model": "The Table 5 amounts and the blank line at 400 or more are right, but a self-employed case is neither handled nor refused. IRS: 'If you are self-employed and are claiming the self-employed health insurance deduction, see Self-Employed Health Insurance Deduction and PTC in Pub. 974 for the amount to enter on line 28.'",
+   "ruling": "Ruling: scope; screen sc.hi_screen through sc.hi_screened (root S5). i8962 p. 18, Line 28, \"If you are self-employed and are claiming the self-employed health insurance deduction, see Self-Employed Health Insurance Deduction and PTC in Pub. 974 for the amount to enter on line 28.\" sc.hi_screen (\"the insurance was obtained through the Marketplace and advance payments of the premium tax credit were made or you are claiming the premium tax credit ...\") refuses through sc.hi_screened (forms/2025/sc.yaml, when: sc.hi_screened; i1040gi p. 95, Exceptions); a self-employed health insurance deduction from a partnership, S corporation or farm is refused by scope.schedule1. D1 keeps the self-employed health insurance deduction with a Marketplace plan refused. The Table 5 amounts and the blank line at 400 or more match, as the reviewer says (Rev. Proc. 2024-40; i8962 p. 18). Neither screen changed this round.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
+  },
+  {
    "printed": "2b",
    "restated": "Add dependent.ptc_magi_counted over every confirmed dependent entry for which helper \"Your dependent\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "It adds only the MAGI of dependents required to file. It leaves out the Form 8814 rule: \"If you are filing Form 8814 ... and the amount on Form 8814, line 4, is more than $1,350, you must include on line 1 of Worksheet 1-2 the sum of the tax-exempt interest from Form 8814, line 1b; the lesser of Form 8814, line 4 or line 5; and any nontaxable social security benefits your child received\". No refusal covers Form 8814.",
    "ruling": "Ruling: scope; screen scope.other_line16 (root S3 of round 1). i8962 p. 8, Line 2b, \"Form 8814. If you are filing Form 8814, Parents’ Election To Report Child’s Interest and Dividends, and the amount on Form 8814, line 4, is more than $1,350, you must include on line 1 of Worksheet 1-2 the sum of ...\". The omitted rule concerns a child's income reported on the parent's return, which is Form 8814. scope.other_line16 (\"Any additional Form 1040 line 16 tax or filing, including filing Form 8814 (even with no tax) ...\") refuses every such return at scope.ready and at f1040.line16 (forms/2025/scope.yaml, f1040.yaml), and D1 keeps Form 8814 refused. The rest of the restatement (dependents required to file because of their income, through dependent.ptc_magi_counted, D7(b)) matches the line, as the reviewer says. Re-checked for round 3: unchanged by f8962.filing (line 2b stays on f8962.any). Re-checked this round: scope.other_line16 is still a refusal of scope.ready (forms/2025/scope.yaml).",
    "context": "68ea7e261b6ddd60d491a370f5604e9636c98e21babac3b609c03bb6ba81fa86"
+  },
+  {
+   "printed": "2b",
+   "restated": "Add dependent.ptc_magi_counted over every confirmed dependent entry for which helper \"Your dependent\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "The dependent input uses amounts from the dependent's own return, with no Form 8814 amount or refusal. IRS: 'If you are filing Form 8814... and the amount on Form 8814, line 4, is more than $1,350, you must include on line 1 of Worksheet 1-2 the sum of the tax-exempt interest from Form 8814, line 1b; the lesser of Form 8814, line 4 or line 5; and any nontaxable social security benefits your child received.'",
+   "ruling": "Ruling: scope; screen scope.other_line16 (root S3). i8962 p. 8, Line 2b, \"Form 8814. If you are filing Form 8814, Parents’ Election To Report Child’s Interest and Dividends, and the amount on Form 8814, line 4, is more than $1,350, you must include on line 1 of Worksheet 1-2 the sum of ...\". scope.other_line16 (\"Any additional Form 1040 line 16 tax or filing, including filing Form 8814 (even with no tax) ...\") refuses every such return at scope.ready and f1040.line16 (forms/2025/scope.yaml, f1040.yaml), and D1 keeps Form 8814 refused; this round's rewording of the screen (Form 8615 conditions, i1040gi p. 36) keeps Form 8814 named. The rest of the restatement (dependents required to file because of their income, through dependent.ptc_magi_counted) matches the line, as the reviewer says. Re-checked this round: stage18.married_in_2025_single with scope.other_line16 true (constructed variant) refuses scope.ready and Form 1040 lines 16 and 37 with gate scope.other_line16.",
+   "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807"
   }
  ]
 }

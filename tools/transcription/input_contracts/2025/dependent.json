@@ -39,6 +39,7 @@
     "dependent[sample].tin": true,
     "dependent[sample].work_ssn": true,
     "dependent[sample].eic_ssn": true,
+    "dependent[sample].kidnapped": false,
     "dependent[sample].other_claimant": false,
     "dependent[sample].divorced_rule": false,
     "dependent[sample].multiple_support": false,

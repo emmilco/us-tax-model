@@ -27,6 +27,7 @@ sys.path.insert(0, str(ROOT / "tools"))
 from taxyear import Y  # noqa: E402
 from citations import segments  # noqa: E402
 import baseline_check  # noqa: E402
+from baseline_check import line_subject  # noqa: E402
 import archive_text  # noqa: E402
 
 SOURCES = ROOT / "sources" / Y
@@ -140,7 +141,7 @@ def findings(forms):
                 continue
             cited = cited_pages(line.get("cite", {})).get(idoc, set())
             if not cited & pages:
-                out.append({"kind": "section", "line": line["id"], "form": form["id"],
+                out.append({"kind": "section", "line": line["id"], "subject": line_subject(line), "form": form["id"],
                             "detail": f"{idoc} p. {', '.join(map(str, sorted(pages)))} has the Line {number} section; "
                                       f"the citation names {', '.join(map(str, sorted(cited))) or 'no page'} of {idoc}"})
             if line.get("expr", {}).get("op") == "input":
@@ -148,7 +149,7 @@ def findings(forms):
                 for name, ref in REFERENCE.findall(text):
                     target = names.get(name)
                     if target and target != form["id"] and ref in computed.get(target, ()):
-                        out.append({"kind": "xref", "line": line["id"], "form": form["id"],
+                        out.append({"kind": "xref", "line": line["id"], "subject": line_subject(line), "form": form["id"],
                                     "detail": f"its {idoc} Line {number} section refers to {name}, line {ref}, "
                                               f"which this project computes ({target})"})
     return out

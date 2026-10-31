@@ -1,0 +1,3966 @@
+{
+ "bank": {
+  "evaluation_failures": 0,
+  "fixtures": 1382,
+  "generated": 500,
+  "partial_bases": 40,
+  "partial_records": 156,
+  "seed": 20261026
+ },
+ "errors": [],
+ "failures": [],
+ "family": "claude",
+ "form": "ssb",
+ "lines": [
+  {
+   "absent": 0,
+   "agree": 2038,
+   "candidate": "ssb.has_benefits",
+   "compared": 2038,
+   "differ": 0,
+   "handle": "ssb.has_benefits",
+   "in_scope": 2038,
+   "in_scope_agree": 2038,
+   "kinds": {},
+   "kinds_by_return": {},
+   "open_at_triage": true,
+   "project": "ssb.has_benefits",
+   "shown_when": null,
+   "sources": {
+    "fixture": 1382,
+    "generated": 500,
+    "partial": 156
+   },
+   "status": "DISAGREE",
+   "triage": "agrees on sample",
+   "witnesses": []
+  },
+  {
+   "absent": 0,
+   "agree": 2024,
+   "candidate": "ssb.line6",
+   "compared": 2038,
+   "differ": 14,
+   "handle": "6",
+   "in_scope": 1850,
+   "in_scope_agree": 1838,
+   "kinds": {
+    "candidate-refuses": 1,
+    "candidate-unknown": 12,
+    "project-refuses": 1
+   },
+   "kinds_by_return": {
+    "completed": {
+     "candidate-unknown": 10
+    },
+    "refused": {
+     "candidate-refuses": 1,
+     "candidate-unknown": 2,
+     "project-refuses": 1
+    }
+   },
+   "open_at_triage": true,
+   "project": "ssb.line6",
+   "shown_when": null,
+   "sources": {
+    "fixture": 1382,
+    "generated": 500,
+    "partial": 156
+   },
+   "status": "DISAGREE",
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "kind": "unknown",
+      "reason": "cycle at ssb.line6"
+     },
+     "candidate_operands": [
+      {
+       "ref": "scope.schedule1",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "s1.line11",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line13",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line15",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line16",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line17",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line18",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line19a",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line20",
+       "value": {
+        "kind": "unknown",
+        "reason": "cycle at ssb.line6"
+       }
+      },
+      {
+       "ref": "s1.line25",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 1400000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "scope.schedule1",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "s1.line11",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line13",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line15",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line16",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line17",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line18",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line19a",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "ssb.ira_line20",
+       "value": {
+        "cents": 1400000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line25",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "stage16.ira.i1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f1040.tax_exempt_interest",
+      "kind": "unknown",
+      "reason": "no input supplied for f1040.tax_exempt_interest"
+     },
+     "candidate_operands": [
+      {
+       "ref": "scope.schedule1",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "s1.line11",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line13",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line15",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line16",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line17",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line18",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line19a",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line20",
+       "value": {
+        "input": "f1040.tax_exempt_interest",
+        "kind": "unknown",
+        "reason": "no input supplied for f1040.tax_exempt_interest"
+       }
+      },
+      {
+       "ref": "s1.line25",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 700000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "scope.schedule1",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "s1.line11",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line13",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line15",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line16",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line17",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line18",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line19a",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "ssb.ira_line20",
+       "value": {
+        "cents": 700000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line25",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "stage16.ira.i2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f1040.tax_exempt_interest",
+      "kind": "unknown",
+      "reason": "no input supplied for f1040.tax_exempt_interest"
+     },
+     "candidate_operands": [
+      {
+       "ref": "scope.schedule1",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "s1.line11",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line13",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line15",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line16",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line17",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line18",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line19a",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line20",
+       "value": {
+        "input": "f1040.tax_exempt_interest",
+        "kind": "unknown",
+        "reason": "no input supplied for f1040.tax_exempt_interest"
+       }
+      },
+      {
+       "ref": "s1.line25",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 700000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "scope.schedule1",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "s1.line11",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line13",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line15",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line16",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line17",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line18",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line19a",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "ssb.ira_line20",
+       "value": {
+        "cents": 700000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line25",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "stage16.ira.i3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f1040.tax_exempt_interest",
+      "kind": "unknown",
+      "reason": "no input supplied for f1040.tax_exempt_interest"
+     },
+     "candidate_operands": [
+      {
+       "ref": "scope.schedule1",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "s1.line11",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line13",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line15",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line16",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line17",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line18",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line19a",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line20",
+       "value": {
+        "input": "f1040.tax_exempt_interest",
+        "kind": "unknown",
+        "reason": "no input supplied for f1040.tax_exempt_interest"
+       }
+      },
+      {
+       "ref": "s1.line25",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 700000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "scope.schedule1",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "s1.line11",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line13",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line15",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line16",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line17",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line18",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line19a",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "ssb.ira_line20",
+       "value": {
+        "cents": 700000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line25",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "stage16.ira.i4",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f1040.tax_exempt_interest",
+      "kind": "unknown",
+      "reason": "no input supplied for f1040.tax_exempt_interest"
+     },
+     "candidate_operands": [
+      {
+       "ref": "scope.schedule1",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "s1.line11",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line13",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line15",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line16",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line17",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line18",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line19a",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line20",
+       "value": {
+        "input": "f1040.tax_exempt_interest",
+        "kind": "unknown",
+        "reason": "no input supplied for f1040.tax_exempt_interest"
+       }
+      },
+      {
+       "ref": "s1.line25",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 800000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "scope.schedule1",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "s1.line11",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line13",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line15",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line16",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line17",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line18",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line19a",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "ssb.ira_line20",
+       "value": {
+        "cents": 800000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line25",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "stage16.ira.i5",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "unknown",
+      "reason": "cycle at ssb.line6"
+     },
+     "candidate_operands": [
+      {
+       "ref": "scope.schedule1",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "s1.line11",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line13",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line15",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line16",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line17",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line18",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line19a",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line20",
+       "value": {
+        "kind": "unknown",
+        "reason": "cycle at ssb.line6"
+       }
+      },
+      {
+       "ref": "s1.line25",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 1400000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "scope.schedule1",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "s1.line11",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line13",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line15",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line16",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line17",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line18",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line19a",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "ssb.ira_line20",
+       "value": {
+        "cents": 1400000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line25",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "stage16.ira.i8",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "unknown",
+      "reason": "cycle at ssb.line6"
+     },
+     "candidate_operands": [
+      {
+       "ref": "scope.schedule1",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "s1.line11",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line13",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line15",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line16",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line17",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line18",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line19a",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line20",
+       "value": {
+        "kind": "unknown",
+        "reason": "cycle at ssb.line6"
+       }
+      },
+      {
+       "ref": "s1.line25",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 31, Lines 6a and 6b, Exception"
+      },
+      "form": "Social security benefits with an IRA deduction and retirement plan coverage (Pub. 590-A Appendix B)",
+      "gate": "ira.cov_gate",
+      "kind": "refusal",
+      "remedy": "With social security benefits, traditional IRA contributions for 2025 and you or your spouse covered by a retirement plan, the taxable benefits and the IRA deduction are figured with the worksheets in Pub. 590-A, which this tool does not prepare."
+     },
+     "project_operands": [
+      {
+       "ref": "scope.schedule1",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "s1.line11",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line13",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line15",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line16",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line17",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line18",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line19a",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "ssb.ira_line20",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 31, Lines 6a and 6b, Exception"
+        },
+        "form": "Social security benefits with an IRA deduction and retirement plan coverage (Pub. 590-A Appendix B)",
+        "gate": "ira.cov_gate",
+        "kind": "refusal",
+        "remedy": "With social security benefits, traditional IRA contributions for 2025 and you or your spouse covered by a retirement plan, the taxable benefits and the IRA deduction are figured with the worksheets in Pub. 590-A, which this tool does not prepare."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage16.refuse.ira.ssb_covered",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 98, IRA Deduction Worksheet\u2014Continued, line 12, \"Or, if you want, you can deduct a smaller amount and treat the rest as a nondeductible contribution (see Form 8606)\""
+      },
+      "form": "An IRA deduction smaller than the most you can deduct (Form 8606)",
+      "gate": "ira.less_gate",
+      "kind": "refusal",
+      "remedy": "Deducting less than the most you can and treating the rest as nondeductible is outside this tool; the tool takes the most you can deduct."
+     },
+     "candidate_operands": [
+      {
+       "ref": "scope.schedule1",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "s1.line11",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line13",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line15",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line16",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line17",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line18",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line19a",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line20",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 98, IRA Deduction Worksheet\u2014Continued, line 12, \"Or, if you want, you can deduct a smaller amount and treat the rest as a nondeductible contribution (see Form 8606)\""
+        },
+        "form": "An IRA deduction smaller than the most you can deduct (Form 8606)",
+        "gate": "ira.less_gate",
+        "kind": "refusal",
+        "remedy": "Deducting less than the most you can and treating the rest as nondeductible is outside this tool; the tool takes the most you can deduct."
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 500000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "scope.schedule1",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "s1.line11",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line13",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line15",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line16",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line17",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line18",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line19a",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "ssb.ira_line20",
+       "value": {
+        "cents": 500000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s1.line25",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage16.refuse.ira.deduct_less",
+      "kind": "fixture"
+     }
+    }
+   ]
+  },
+  {
+   "absent": 0,
+   "agree": 2038,
+   "candidate": "ssb.line8",
+   "compared": 2038,
+   "differ": 0,
+   "handle": "8",
+   "in_scope": 2038,
+   "in_scope_agree": 2038,
+   "kinds": {},
+   "kinds_by_return": {},
+   "open_at_triage": true,
+   "project": "ssb.line8",
+   "shown_when": null,
+   "sources": {
+    "fixture": 1382,
+    "generated": 500,
+    "partial": 156
+   },
+   "status": "DISAGREE",
+   "triage": "agrees on sample",
+   "witnesses": []
+  },
+  {
+   "absent": 0,
+   "agree": 1427,
+   "candidate": "ssb.line9",
+   "compared": 2038,
+   "differ": 611,
+   "handle": "9",
+   "in_scope": 1606,
+   "in_scope_agree": 1064,
+   "kinds": {
+    "candidate-refuses": 1,
+    "project-refuses": 68,
+    "project-unknown": 477,
+    "value": 65
+   },
+   "kinds_by_return": {
+    "completed": {
+     "project-refuses": 4,
+     "project-unknown": 312
+    },
+    "incomplete": {
+     "project-unknown": 63
+    },
+    "refused": {
+     "candidate-refuses": 1,
+     "project-refuses": 64,
+     "project-unknown": 102,
+     "value": 65
+    }
+   },
+   "open_at_triage": true,
+   "project": "ssb.line9",
+   "shown_when": null,
+   "sources": {
+    "fixture": 1382,
+    "generated": 500,
+    "partial": 156
+   },
+   "status": "DISAGREE",
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "cents": 2500000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.h_mfs_together",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "ssb.h_mfs_together",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "ssb.h_line9_figured",
+       "value": {
+        "cents": 2500000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "project-unknown",
+     "project": {
+      "input": "ssb.pub915",
+      "kind": "unknown",
+      "reason": "no input supplied for ssb.pub915"
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.line7",
+       "value": {
+        "input": "ssb.pub915",
+        "kind": "unknown",
+        "reason": "no input supplied for ssb.pub915"
+       }
+      },
+      {
+       "ref": "ssb.line8",
+       "value": {
+        "cents": 2500000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 5300000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.h_mfs_together",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "ssb.h_mfs_together",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "ssb.h_line9_figured",
+       "value": {
+        "cents": 5300000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "project-unknown",
+     "project": {
+      "input": "ssb.pub915",
+      "kind": "unknown",
+      "reason": "no input supplied for ssb.pub915"
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.line7",
+       "value": {
+        "input": "ssb.pub915",
+        "kind": "unknown",
+        "reason": "no input supplied for ssb.pub915"
+       }
+      },
+      {
+       "ref": "ssb.line8",
+       "value": {
+        "cents": 3200000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 1650000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.h_mfs_together",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "ssb.h_mfs_together",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "ssb.h_line9_figured",
+       "value": {
+        "cents": 1650000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "project-unknown",
+     "project": {
+      "input": "ssb.pub915",
+      "kind": "unknown",
+      "reason": "no input supplied for ssb.pub915"
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.line7",
+       "value": {
+        "input": "ssb.pub915",
+        "kind": "unknown",
+        "reason": "no input supplied for ssb.pub915"
+       }
+      },
+      {
+       "ref": "ssb.line8",
+       "value": {
+        "cents": 2500000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.h_mfs_together",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "ssb.h_mfs_together",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "ssb.h_line9_figured",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "project-unknown",
+     "project": {
+      "input": "ssb.pub915",
+      "kind": "unknown",
+      "reason": "no input supplied for ssb.pub915"
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.line7",
+       "value": {
+        "input": "ssb.pub915",
+        "kind": "unknown",
+        "reason": "no input supplied for ssb.pub915"
+       }
+      },
+      {
+       "ref": "ssb.line8",
+       "value": {
+        "cents": 2500000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.4.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 300000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.h_mfs_together",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "ssb.h_mfs_together",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "ssb.h_line9_figured",
+       "value": {
+        "cents": 300000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "project-unknown",
+     "project": {
+      "input": "ssb.pub915",
+      "kind": "unknown",
+      "reason": "no input supplied for ssb.pub915"
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.line7",
+       "value": {
+        "input": "ssb.pub915",
+        "kind": "unknown",
+        "reason": "no input supplied for ssb.pub915"
+       }
+      },
+      {
+       "ref": "ssb.line8",
+       "value": {
+        "cents": 2500000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.5.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 2000000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.h_mfs_together",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "ssb.h_mfs_together",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "ssb.h_line9_figured",
+       "value": {
+        "cents": 2000000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "project-unknown",
+     "project": {
+      "input": "ssb.pub915",
+      "kind": "unknown",
+      "reason": "no input supplied for ssb.pub915"
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.line7",
+       "value": {
+        "input": "ssb.pub915",
+        "kind": "unknown",
+        "reason": "no input supplied for ssb.pub915"
+       }
+      },
+      {
+       "ref": "ssb.line8",
+       "value": {
+        "cents": 2500000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.6.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 17719855,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.h_mfs_together",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "ssb.h_mfs_together",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "ssb.h_line9_figured",
+       "value": {
+        "cents": 17719855,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 31, Lines 6a and 6b, Disability payments"
+      },
+      "form": "Pub. 3920 (disability payments for injuries from a terrorist attack)",
+      "gate": "ssb.terror_disability",
+      "kind": "refusal",
+      "remedy": "Excluding disability payments for injuries from a terrorist attack is outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.line7",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 31, Lines 6a and 6b, Disability payments"
+        },
+        "form": "Pub. 3920 (disability payments for injuries from a terrorist attack)",
+        "gate": "ssb.terror_disability",
+        "kind": "refusal",
+        "remedy": "Excluding disability payments for injuries from a terrorist attack is outside this tool."
+       }
+      },
+      {
+       "ref": "ssb.line8",
+       "value": {
+        "cents": 2500000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8889.4.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 14758889,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.h_mfs_together",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "ssb.h_mfs_together",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "ssb.h_line9_figured",
+       "value": {
+        "cents": 14758889,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 31, Lines 6a and 6b, Exception"
+      },
+      "form": "Pub. 915 or Pub. 590-A worksheet",
+      "gate": "ssb.pub915",
+      "kind": "refusal",
+      "remedy": "The Social Security Benefits Worksheet in the Form 1040 instructions does not apply; use the worksheet in the publication."
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.line7",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 31, Lines 6a and 6b, Exception"
+        },
+        "form": "Pub. 915 or Pub. 590-A worksheet",
+        "gate": "ssb.pub915",
+        "kind": "refusal",
+        "remedy": "The Social Security Benefits Worksheet in the Form 1040 instructions does not apply; use the worksheet in the publication."
+       }
+      },
+      {
+       "ref": "ssb.line8",
+       "value": {
+        "cents": 2500000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.clcw.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.h_mfs_together",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "ssb.h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "value",
+     "project": {
+      "cents": 5173100,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.line7",
+       "value": {
+        "cents": 5173100,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "ssb.line8",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.clcw26.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.h_mfs_together",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "ssb.h_mfs_together",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "ssb.h_line9_figured",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 31, Lines 6a and 6b, Exception"
+      },
+      "form": "Pub. 915 or Pub. 590-A worksheet",
+      "gate": "ssb.pub915",
+      "kind": "refusal",
+      "remedy": "The Social Security Benefits Worksheet in the Form 1040 instructions does not apply; use the worksheet in the publication."
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.line7",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 31, Lines 6a and 6b, Exception"
+        },
+        "form": "Pub. 915 or Pub. 590-A worksheet",
+        "gate": "ssb.pub915",
+        "kind": "refusal",
+        "remedy": "The Social Security Benefits Worksheet in the Form 1040 instructions does not apply; use the worksheet in the publication."
+       }
+      },
+      {
+       "ref": "ssb.line8",
+       "value": {
+        "cents": 2500000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.s3.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.h_mfs_together",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "ssb.h_mfs_together",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "ssb.h_line9_figured",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 31, Lines 6a and 6b, Exception"
+      },
+      "form": "Pub. 915 or Pub. 590-A worksheet",
+      "gate": "ssb.pub915",
+      "kind": "refusal",
+      "remedy": "The Social Security Benefits Worksheet in the Form 1040 instructions does not apply; use the worksheet in the publication."
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.line7",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 31, Lines 6a and 6b, Exception"
+        },
+        "form": "Pub. 915 or Pub. 590-A worksheet",
+        "gate": "ssb.pub915",
+        "kind": "refusal",
+        "remedy": "The Social Security Benefits Worksheet in the Form 1040 instructions does not apply; use the worksheet in the publication."
+       }
+      },
+      {
+       "ref": "ssb.line8",
+       "value": {
+        "cents": 2500000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f5695.8.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.h_mfs_together",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "ssb.h_mfs_together",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "ssb.h_line9_figured",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 31, Lines 6a and 6b, Exception"
+      },
+      "form": "Pub. 915 or Pub. 590-A worksheet",
+      "gate": "ssb.pub915",
+      "kind": "refusal",
+      "remedy": "The Social Security Benefits Worksheet in the Form 1040 instructions does not apply; use the worksheet in the publication."
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.line7",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 31, Lines 6a and 6b, Exception"
+        },
+        "form": "Pub. 915 or Pub. 590-A worksheet",
+        "gate": "ssb.pub915",
+        "kind": "refusal",
+        "remedy": "The Social Security Benefits Worksheet in the Form 1040 instructions does not apply; use the worksheet in the publication."
+       }
+      },
+      {
+       "ref": "ssb.line8",
+       "value": {
+        "cents": 2500000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.aqee.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.h_mfs_together",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "ssb.h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "value",
+     "project": {
+      "cents": 6553815,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.line7",
+       "value": {
+        "cents": 6553815,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "ssb.line8",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.eic.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.h_mfs_together",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "ssb.h_mfs_together",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "ssb.h_line9_figured",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 31, Lines 6a and 6b, Exception"
+      },
+      "form": "Pub. 915 or Pub. 590-A worksheet",
+      "gate": "ssb.pub915",
+      "kind": "refusal",
+      "remedy": "The Social Security Benefits Worksheet in the Form 1040 instructions does not apply; use the worksheet in the publication."
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.line7",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 31, Lines 6a and 6b, Exception"
+        },
+        "form": "Pub. 915 or Pub. 590-A worksheet",
+        "gate": "ssb.pub915",
+        "kind": "refusal",
+        "remedy": "The Social Security Benefits Worksheet in the Form 1040 instructions does not apply; use the worksheet in the publication."
+       }
+      },
+      {
+       "ref": "ssb.line8",
+       "value": {
+        "cents": 2500000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.eic.4.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.h_mfs_together",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "ssb.h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "value",
+     "project": {
+      "cents": 2361800,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.line7",
+       "value": {
+        "cents": 2361800,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "ssb.line8",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.eic.8.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.h_mfs_together",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "ssb.h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "value",
+     "project": {
+      "cents": 15697244,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.line7",
+       "value": {
+        "cents": 15697244,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "ssb.line8",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.retirement.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.h_mfs_together",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "ssb.h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "value",
+     "project": {
+      "cents": 18057672,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.line7",
+       "value": {
+        "cents": 18057672,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "ssb.line8",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.retirement.4.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.h_mfs_together",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "ssb.h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "value",
+     "project": {
+      "cents": 15697244,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.line7",
+       "value": {
+        "cents": 15697244,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "ssb.line8",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.retirement.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 98, IRA Deduction Worksheet\u2014Continued, line 12, \"Or, if you want, you can deduct a smaller amount and treat the rest as a nondeductible contribution (see Form 8606)\""
+      },
+      "form": "An IRA deduction smaller than the most you can deduct (Form 8606)",
+      "gate": "ira.less_gate",
+      "kind": "refusal",
+      "remedy": "Deducting less than the most you can and treating the rest as nondeductible is outside this tool; the tool takes the most you can deduct."
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.h_mfs_together",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "ssb.h_mfs_together",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "ssb.h_line9_figured",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 98, IRA Deduction Worksheet\u2014Continued, line 12, \"Or, if you want, you can deduct a smaller amount and treat the rest as a nondeductible contribution (see Form 8606)\""
+        },
+        "form": "An IRA deduction smaller than the most you can deduct (Form 8606)",
+        "gate": "ira.less_gate",
+        "kind": "refusal",
+        "remedy": "Deducting less than the most you can and treating the rest as nondeductible is outside this tool; the tool takes the most you can deduct."
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "candidate-refuses",
+     "project": {
+      "input": "ssb.pub915",
+      "kind": "unknown",
+      "reason": "no input supplied for ssb.pub915"
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.line7",
+       "value": {
+        "input": "ssb.pub915",
+        "kind": "unknown",
+        "reason": "no input supplied for ssb.pub915"
+       }
+      },
+      {
+       "ref": "ssb.line8",
+       "value": {
+        "cents": 2500000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage16.refuse.ira.deduct_less",
+      "kind": "fixture"
+     }
+    }
+   ]
+  },
+  {
+   "absent": 0,
+   "agree": 2038,
+   "candidate": "ssb.line10",
+   "compared": 2038,
+   "differ": 0,
+   "handle": "10",
+   "in_scope": 2038,
+   "in_scope_agree": 2038,
+   "kinds": {},
+   "kinds_by_return": {},
+   "open_at_triage": true,
+   "project": "ssb.line10",
+   "shown_when": null,
+   "sources": {
+    "fixture": 1382,
+    "generated": 500,
+    "partial": 156
+   },
+   "status": "DISAGREE",
+   "triage": "agrees on sample",
+   "witnesses": []
+  },
+  {
+   "absent": 0,
+   "agree": 1142,
+   "candidate": "ssb.line18",
+   "compared": 2038,
+   "differ": 896,
+   "handle": "18",
+   "in_scope": 1632,
+   "in_scope_agree": 1092,
+   "kinds": {
+    "candidate-refuses": 354,
+    "candidate-unknown": 540,
+    "project-refuses": 2
+   },
+   "kinds_by_return": {
+    "completed": {
+     "candidate-unknown": 202
+    },
+    "incomplete": {
+     "candidate-unknown": 208
+    },
+    "refused": {
+     "candidate-refuses": 354,
+     "candidate-unknown": 130,
+     "project-refuses": 2
+    }
+   },
+   "open_at_triage": true,
+   "project": "ssb.line18",
+   "shown_when": null,
+   "sources": {
+    "fixture": 1382,
+    "generated": 500,
+    "partial": 156
+   },
+   "status": "DISAGREE",
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i2441",
+       "locator": "p. 5, Line 14, \"enter on line 14 the total of the following amounts included on line 12\""
+      },
+      "form": "Form 2441 line 14 amounts",
+      "gate": "f2441.line14_bad",
+      "kind": "refusal",
+      "remedy": "The amounts forfeited or carried forward on line 14 are amounts included on line 12, so line 14 cannot be more than line 12. Check the amounts with your employer."
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.h_lump_gate",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "ssb.line16",
+       "value": {
+        "cite": {
+         "doc": "i2441",
+         "locator": "p. 5, Line 14, \"enter on line 14 the total of the following amounts included on line 12\""
+        },
+        "form": "Form 2441 line 14 amounts",
+        "gate": "f2441.line14_bad",
+        "kind": "refusal",
+        "remedy": "The amounts forfeited or carried forward on line 14 are amounts included on line 12, so line 14 cannot be more than line 12. Check the amounts with your employer."
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.has_benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "ssb.has_benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "ssb.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.w2.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i1040sb",
+       "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+      },
+      "form": "Form 3520 / Form 3520-A",
+      "gate": "sb.line8",
+      "kind": "refusal",
+      "remedy": "Review and prepare the required foreign-trust information returns; this path is outside scope."
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.h_lump_gate",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "ssb.line16",
+       "value": {
+        "cite": {
+         "doc": "i1040sb",
+         "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+        },
+        "form": "Form 3520 / Form 3520-A",
+        "gate": "sb.line8",
+        "kind": "refusal",
+        "remedy": "Review and prepare the required foreign-trust information returns; this path is outside scope."
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.has_benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "ssb.has_benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "ssb.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8889.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i2441",
+       "locator": "p. 4, Lines 4 and 5, \"Excluded as foreign earned income (including any housing exclusion) on Form 2555, line 43\""
+      },
+      "form": "Earned income less excluded foreign earned income (Form 2441, lines 4, 5, 18 and 19; Forms 2555 and 4563)",
+      "gate": "sa.excluded_income",
+      "kind": "refusal",
+      "remedy": "Excluded foreign earned income, foreign housing and possessions income are outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.h_lump_gate",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "ssb.line16",
+       "value": {
+        "cite": {
+         "doc": "i2441",
+         "locator": "p. 4, Lines 4 and 5, \"Excluded as foreign earned income (including any housing exclusion) on Form 2555, line 43\""
+        },
+        "form": "Earned income less excluded foreign earned income (Form 2441, lines 4, 5, 18 and 19; Forms 2555 and 4563)",
+        "gate": "sa.excluded_income",
+        "kind": "refusal",
+        "remedy": "Excluded foreign earned income, foreign housing and possessions income are outside this tool."
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.has_benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "ssb.has_benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "ssb.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8889.5.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i4562",
+       "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
+      },
+      "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+      "gate": "person[spouse].sc[biz_a].scveh[car_1].low_use",
+      "kind": "refusal",
+      "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.h_lump_gate",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "ssb.line16",
+       "value": {
+        "cite": {
+         "doc": "i4562",
+         "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
+        },
+        "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+        "gate": "person[spouse].sc[biz_a].scveh[car_1].low_use",
+        "kind": "refusal",
+        "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.has_benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "ssb.has_benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "ssb.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.g28.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "p560",
+       "locator": "pp. 8\u201311, 14\u201317, 38\u201340, chapters 2, 3 and 5"
+      },
+      "form": "Retirement plan contributions outside this tool",
+      "gate": "person[taxpayer].plan_screened",
+      "kind": "refusal",
+      "remedy": "These retirement contributions are outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.h_lump_gate",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "ssb.line16",
+       "value": {
+        "cite": {
+         "doc": "p560",
+         "locator": "pp. 8\u201311, 14\u201317, 38\u201340, chapters 2, 3 and 5"
+        },
+        "form": "Retirement plan contributions outside this tool",
+        "gate": "person[taxpayer].plan_screened",
+        "kind": "refusal",
+        "remedy": "These retirement contributions are outside this tool."
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.has_benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "ssb.has_benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "ssb.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.clcw.4.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "p560",
+       "locator": "pp. 11, 39, chapter 2, Excess contributions; chapter 5"
+      },
+      "form": "SEP contributions above the maximum deductible contribution",
+      "gate": "person[taxpayer].sep_excess",
+      "kind": "refusal",
+      "remedy": "Excess SEP contributions are outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.h_lump_gate",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "ssb.line16",
+       "value": {
+        "cite": {
+         "doc": "p560",
+         "locator": "pp. 11, 39, chapter 2, Excess contributions; chapter 5"
+        },
+        "form": "SEP contributions above the maximum deductible contribution",
+        "gate": "person[taxpayer].sep_excess",
+        "kind": "refusal",
+        "remedy": "Excess SEP contributions are outside this tool."
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.has_benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "ssb.has_benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "ssb.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dependent.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f1040.tax_exempt_interest",
+      "kind": "unknown",
+      "reason": "no input supplied for f1040.tax_exempt_interest"
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.h_lump_gate",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "ssb.line16",
+       "value": {
+        "input": "f1040.tax_exempt_interest",
+        "kind": "unknown",
+        "reason": "no input supplied for f1040.tax_exempt_interest"
+       }
+      },
+      {
+       "ref": "ssb.line17",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.has_benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "ssb.has_benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "ssb.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f5695.5.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f1040.tax_exempt_interest",
+      "kind": "unknown",
+      "reason": "no input supplied for f1040.tax_exempt_interest"
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.h_lump_gate",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "ssb.line16",
+       "value": {
+        "input": "f1040.tax_exempt_interest",
+        "kind": "unknown",
+        "reason": "no input supplied for f1040.tax_exempt_interest"
+       }
+      },
+      {
+       "ref": "ssb.line17",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.has_benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "ssb.has_benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "ssb.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f5695.6.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f1040.tax_exempt_interest",
+      "kind": "unknown",
+      "reason": "no input supplied for f1040.tax_exempt_interest"
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.h_lump_gate",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "ssb.line16",
+       "value": {
+        "input": "f1040.tax_exempt_interest",
+        "kind": "unknown",
+        "reason": "no input supplied for f1040.tax_exempt_interest"
+       }
+      },
+      {
+       "ref": "ssb.line17",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.has_benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "ssb.has_benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "ssb.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f5695.9.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f1040.tax_exempt_interest",
+      "kind": "unknown",
+      "reason": "no input supplied for f1040.tax_exempt_interest"
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.h_lump_gate",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "ssb.line16",
+       "value": {
+        "input": "f1040.tax_exempt_interest",
+        "kind": "unknown",
+        "reason": "no input supplied for f1040.tax_exempt_interest"
+       }
+      },
+      {
+       "ref": "ssb.line17",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.has_benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "ssb.has_benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "ssb.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f5695.10.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f1040.tax_exempt_interest",
+      "kind": "unknown",
+      "reason": "no input supplied for f1040.tax_exempt_interest"
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.h_lump_gate",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "ssb.line16",
+       "value": {
+        "input": "f1040.tax_exempt_interest",
+        "kind": "unknown",
+        "reason": "no input supplied for f1040.tax_exempt_interest"
+       }
+      },
+      {
+       "ref": "ssb.line17",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.has_benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "ssb.has_benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "ssb.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f5695.11.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f1040.tax_exempt_interest",
+      "kind": "unknown",
+      "reason": "no input supplied for f1040.tax_exempt_interest"
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.h_lump_gate",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "ssb.line16",
+       "value": {
+        "input": "f1040.tax_exempt_interest",
+        "kind": "unknown",
+        "reason": "no input supplied for f1040.tax_exempt_interest"
+       }
+      },
+      {
+       "ref": "ssb.line17",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.has_benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "ssb.has_benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "ssb.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f5695.12.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "unknown",
+      "reason": "cycle at ssb.line6"
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.h_lump_gate",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "ssb.line16",
+       "value": {
+        "kind": "unknown",
+        "reason": "cycle at ssb.line6"
+       }
+      },
+      {
+       "ref": "ssb.line17",
+       "value": {
+        "cents": 1020000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 31, Lines 6a and 6b, Exception"
+      },
+      "form": "Social security benefits with an IRA deduction and retirement plan coverage (Pub. 590-A Appendix B)",
+      "gate": "ira.cov_gate",
+      "kind": "refusal",
+      "remedy": "With social security benefits, traditional IRA contributions for 2025 and you or your spouse covered by a retirement plan, the taxable benefits and the IRA deduction are figured with the worksheets in Pub. 590-A, which this tool does not prepare."
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.has_benefits",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "ssb.line18_figured",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 31, Lines 6a and 6b, Exception"
+        },
+        "form": "Social security benefits with an IRA deduction and retirement plan coverage (Pub. 590-A Appendix B)",
+        "gate": "ira.cov_gate",
+        "kind": "refusal",
+        "remedy": "With social security benefits, traditional IRA contributions for 2025 and you or your spouse covered by a retirement plan, the taxable benefits and the IRA deduction are figured with the worksheets in Pub. 590-A, which this tool does not prepare."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage16.refuse.ira.ssb_covered",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "ssb.lump_sum",
+      "kind": "unknown",
+      "reason": "no input supplied for ssb.lump_sum"
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.h_lump_gate",
+       "value": {
+        "input": "ssb.lump_sum",
+        "kind": "unknown",
+        "reason": "no input supplied for ssb.lump_sum"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040sb",
+       "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+      },
+      "form": "FinCEN Form 114 (FBAR)",
+      "gate": "sb.fbar_required",
+      "kind": "refusal",
+      "remedy": "Foreign-account reporting and the required country list are outside this tool. Prepare the separate FBAR and Schedule B disclosures."
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.has_benefits",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "ssb.line18_figured",
+       "value": {
+        "cite": {
+         "doc": "i1040sb",
+         "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+        },
+        "form": "FinCEN Form 114 (FBAR)",
+        "gate": "sb.fbar_required",
+        "kind": "refusal",
+        "remedy": "Foreign-account reporting and the required country list are outside this tool. Prepare the separate FBAR and Schedule B disclosures."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.dcprov.1",
+      "kind": "partial",
+      "withheld": "ssb.lump_sum"
+     }
+    }
+   ]
+  }
+ ],
+ "log_sha256_at_triage": "27cc8d2fb7b79e7e43b77e8f63a03c8d45ea946e1dbd74b53ce98bd49df24917",
+ "policy": "executable-triage-v2",
+ "response_sha256": "06b6d12efe53de67d3a2ec5d114e001b51884e3c7dd293dde33f0dc31050840d",
+ "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
+ "state": "evaluated",
+ "subject_sha256": "b93a8941c8753854e2828567250e8d13c5651ceddaca932ec87f5c4ec81c8d22"
+}

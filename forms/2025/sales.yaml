@@ -48,14 +48,14 @@ form:
         locator: pp. 7–11, columns (e) through (h), codes B and W
     - id: sales.special
       printed: (helper)
-      label: 'Does this sale involve collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, gems, stamps, coins, alcoholic beverages or other tangible property of that kind), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property), or an interest in a partnership, S corporation or trust holding such property?'
+      label: 'Does this sale involve collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, including shares of an exchange-traded fund or trust that holds gold, silver, platinum or other metals, gems, stamps, coins, alcoholic beverages or other tangible property of that kind), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property), or an interest in a partnership, S corporation or trust holding such property?'
       type: Bool
       expr:
         op: input
-        source: 'Does this sale involve collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, gems, stamps, coins, alcoholic beverages or other tangible property of that kind), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property), or an interest in a partnership, S corporation or trust holding such property?'
+        source: 'Does this sale involve collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, including shares of an exchange-traded fund or trust that holds gold, silver, platinum or other metals, gems, stamps, coins, alcoholic beverages or other tangible property of that kind), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property), or an interest in a partnership, S corporation or trust holding such property?'
       cite:
         doc: i1040sd
-        locator: pp. 11–12, lines 18 and 19
+        locator: pp. 11–12, lines 18 and 19; p. 11, line 18, "Include on the worksheet any gain (but not loss) from the sale or exchange of an interest in a partnership, S corporation, or trust held for more than 1 year and attributable to unrealized appreciation of collectibles."
     - id: sales.aggregate_eligible
       printed: (helper)
       label: "Confirm all aggregate conditions: basis reported, no broker adjustments,

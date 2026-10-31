@@ -4,11 +4,116 @@
  "family": "deepseek",
  "rulings": [
   {
+   "printed": "filer_under16",
+   "restated": "helper \"Number of people on the return under age 16 at the end of 2025\" > 0 (a count)",
+   "model": "The IRS text provided does not make being under age 16 a filing-status or return-eligibility rule; the only mention is the Self-Select PIN restriction.",
+   "ruling": "Ruling: ambiguity; amb.2025.filer_under_16 (owner's decision, 2026-10-22), reading 2 chosen: refuse a return on which you, or your spouse if filing jointly, were under 16, as an entry check. The refusal cites the one sentence the text has about age 16 (i1040gi p. 66, Self-Select PIN) and names the register entry; it does not claim the text forbids the return, which is the model's point.",
+   "context": "6b19c0fbf412ccec99a942f2268a4ddf3b15752d8e380a03687e43f73c3b818d"
+  },
+  {
+   "printed": "hsa_share_sum",
+   "restated": "Add person.hsa_share over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "Equal shares are half of the Step 1 limit, but the restatement's Step 1 forces Form 8889 line 4 to zero instead of subtracting Archer MSA contributions, so the shares are overstated.",
+   "ruling": "Ruling: interface gap; i8889 p. 7, Line 6, Step 1 and Step 2; Form 8889 line 4 is zero because Archer MSA contributions are refused by f8889.unsupported, a Form 8889 screen outside the household render. The equal-division shares are Step 2's, and the sum adds both spouses' parts. Same as hsa_step1_sum. Project stands.",
+   "context": "6b19c0fbf412ccec99a942f2268a4ddf3b15752d8e380a03687e43f73c3b818d"
+  },
+  {
+   "printed": "hsa_share_sum",
+   "restated": "Add person.hsa_share over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "For equal allocation the share is half of a Step 1 limit that subtracts a zero line 4, but IRS line 4 requires Archer MSA contributions; the summed spouses' parts are therefore wrong in equal-allocation cases.",
+   "ruling": "Ruling: interface gap; i8889 p. 7, Line 6, Step 1: \"When refiguring line 5, use the same amount you previously entered on line 4\"; Form 8889 line 4 (Archer MSA contributions). The project enters zero on line 4 because Archer MSA contributions are refused by f8889.unsupported (forms/2025/f8889.yaml, line 4 cite \"Archer MSA contributions are refused by f8889.unsupported\"), a screen on Form 8889 that the household render does not show. Equal division halves a Step 1 limit whose line 4 is zero on every computed return. Same as fix round 2. Project stands.",
+   "context": "927660fcdc2a26fab7ebd8daa75663a68706ebdfbfcf6f577225cf1e8f0f5d29"
+  },
+  {
+   "printed": "hsa_step1_sum",
+   "restated": "Add person.hsa_step1 over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "Form 8889 line 4 is 'Enter the amount you and your employer contributed to your Archer MSAs for 2025 from Form 8853, lines 1 and 2,' not zero; forcing line 4 to zero overstates the Step 1 limits because Step 1 subtracts line 4 from refigured line 3.",
+   "ruling": "Ruling: interface gap; i8889 p. 7, Line 6, Step 1: \"When refiguring line 5, use the same amount you previously entered on line 4\"; Form 8889 line 4 (Archer MSA contributions). The project enters zero on line 4 because Archer MSA contributions are refused by f8889.unsupported (forms/2025/f8889.yaml, line 4 cite \"Archer MSA contributions are refused by f8889.unsupported\"), a screen on Form 8889 that the household render does not show. The sum is what Step 1 and Step 2 add for both spouses. Same as the completeness-fixes ruling of the Claude render. Project stands.",
+   "context": "6b19c0fbf412ccec99a942f2268a4ddf3b15752d8e380a03687e43f73c3b818d"
+  },
+  {
+   "printed": "hsa_step1_sum",
+   "restated": "Add person.hsa_step1 over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "The Step 1 computation treats f8889 line 4 as zero, but IRS line 4 says 'Enter the amount you and your employer contributed to your Archer MSAs for 2025 from Form 8853, lines 1 and 2'; the summed Step 1 limit is therefore overstated when Archer MSA contributions exist.",
+   "ruling": "Ruling: interface gap; i8889 p. 7, Line 6, Step 1: \"When refiguring line 5, use the same amount you previously entered on line 4\"; Form 8889 line 4 (Archer MSA contributions). The project enters zero on line 4 because Archer MSA contributions are refused by f8889.unsupported (forms/2025/f8889.yaml, line 4 cite \"Archer MSA contributions are refused by f8889.unsupported\"), a screen on Form 8889 that the household render does not show. The model's overstatement needs a nonzero line 4, which no computed return has. Same as fix round 2. Project stands.",
+   "context": "927660fcdc2a26fab7ebd8daa75663a68706ebdfbfcf6f577225cf1e8f0f5d29"
+  },
+  {
+   "printed": "roster_bad",
+   "restated": "helper \"One entry for you, and one for your spouse exactly when filing jointly\" = false",
+   "model": "It uses the joint-only spouse rule, so it would flag a married filing separately return with the required spouse information as bad; IRS says for MFS to 'Enter your spouse’s name in the entry space. Be sure to enter your spouse’s SSN or ITIN.'",
+   "ruling": "Ruling: scope; same objection as roster_ok, which this line negates. Married filing separately is refused for the whole return (s3.mfs), so the joint-only spouse entry rejects no return the tool computes.",
+   "context": "6b19c0fbf412ccec99a942f2268a4ddf3b15752d8e380a03687e43f73c3b818d"
+  },
+  {
+   "printed": "roster_ok",
+   "restated": "(f1040 line Filing Status = 'mfj' and helper \"Number of entries for you\" = 1 (a count) and helper \"Number of entries for your spouse\" = 1 (a count) or f1040 line Filing Status ≠ 'mfj' and helper \"Number of entries for you\" = 1 (a count) and helper \"Number of entries for your spouse\" = 0 (a count))",
+   "model": "IRS requires a married filing separately return to enter the spouse's name and SSN/ITIN, but the restatement allows a spouse entry only when filing jointly: 'Enter your spouse’s name in the entry space. Be sure to enter your spouse’s SSN or ITIN.'",
+   "ruling": "Ruling: scope; the model says a married filing separately return must show the spouse's name and SSN (i1040gi p. 14, Married Filing Separately, \"Enter your spouse's name in the entry space. Be sure to enter your spouse's SSN or ITIN\"), so a spouse entry should be allowed off a joint return. The person collection holds the people whose income and items are on the return (f1040 p. 1, \"If joint return, spouse's first name and middle initial\"). Married filing separately is refused for the whole return (s3.mfs, i1040gi p. 14), so no computed return needs the separate filer's spouse as a name entry.",
+   "context": "6b19c0fbf412ccec99a942f2268a4ddf3b15752d8e380a03687e43f73c3b818d"
+  },
+  {
+   "printed": "test1_met",
+   "restated": "helper \"Number of parents who qualify you under Test 1\" > 0 (a count)",
+   "model": "Because it is test1_persons > 0, it inherits the live-in-parent exclusion and can report Test 1 not met even though the IRS text says 'Your parent didn't have to live with you.'",
+   "ruling": "Ruling: representation; i1040gi p. 14, Test 1: \"Your parent didn't have to live with you.\" The objection is test1_persons' (the helper label read as excluding a parent who lives with you), inherited through the count: Test 1 met is test1_persons above 0, which is the source's \"either Test 1 or Test 2 applies\" for Test 1. As ruled for test1_persons, the helper dependent.hoh_test1 has no residence condition, and a co-resident parent who fails Test 1 on the label's reading meets Test 2 on the same facts. Project stands.",
+   "context": "cf89f7f3a325c00103f4dd242a7d63948822962d229964b0213e94484e133bc8"
+  },
+  {
+   "printed": "test1_met",
+   "restated": "helper \"Number of parents who qualify you under Test 1\" > 0 (a count)",
+   "model": "IRS Test 1 requires 'You paid over half the cost of keeping up a home that was the main home for all of 2025 of your parent...'; the restatement only checks that a Test 1 parent exists.",
+   "ruling": "Ruling: interface gap; the model says Test 1 requires \"You paid over half the cost of keeping up a home that was the main home for all of 2025 of your parent\" (i1040gi p. 14) and that the restatement only checks that a Test 1 parent exists. The cost condition is inside the per-entry helper dependent.hoh_test1, which is defined in rendered/2025/dependent.md, outside the text given: dependent.parent_home_paid asks whether you paid over half the cost of keeping up your parent's main home for all of 2025 (or the part of the year the parent was alive, p501 p. 9; a rest home counts, p501 p. 9). The count is Test 1 met. As round 2's test1_persons ruling. Project stands.",
+   "context": "6b19c0fbf412ccec99a942f2268a4ddf3b15752d8e380a03687e43f73c3b818d"
+  },
+  {
+   "printed": "test1_persons",
+   "restated": "Add dependent.one over every confirmed dependent entry for which helper \"Qualifies you for head of household under Test 1 through a parent who does not live with you (a parent who lives with you qualifies you through Test 2)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "IRS Test 1 does not exclude a parent who lives with you; it says 'Your parent didn’t have to live with you.' The restatement routes such a parent only to Test 2.",
+   "ruling": "Ruling: representation; i1040gi p. 14, Test 1: \"You paid over half the cost of keeping up a home that was the main home for all of 2025 of your parent whom you can claim as a dependent ... Your parent didn't have to live with you.\" The model reads the helper's label (\"through a parent who does not live with you (a parent who lives with you qualifies you through Test 2)\") as excluding a parent who lives with you. The helper's expression (dependent.hoh_test1: parent, your dependent, dependent.parent_home_paid) has no residence condition, and parent_home_paid asks about \"a home that was their main home\" without one, so such a parent counts under Test 1. If a filer answered no for that parent because of the label, Test 2 qualifies on the same facts. The label is imprecise but has no wrong effect. Same as the completeness-fixes ruling. Project stands.",
+   "context": "6b19c0fbf412ccec99a942f2268a4ddf3b15752d8e380a03687e43f73c3b818d"
+  },
+  {
+   "printed": "test1_persons",
+   "restated": "Add dependent.one over every confirmed dependent entry for which helper \"Qualifies you for head of household under Test 1 through a parent who does not live with you (a parent who lives with you qualifies you through Test 2)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "IRS Test 1 says 'Your parent didn’t have to live with you'; it does not require the parent to live elsewhere. The restatement excludes a parent who lives with you from Test 1, although such a parent can still meet Test 1.",
+   "ruling": "Ruling: representation; i1040gi p. 14, Test 1: \"You paid over half the cost of keeping up a home that was the main home for all of 2025 of your parent whom you can claim as a dependent ... Your parent didn't have to live with you.\" The model reads the helper's label (\"through a parent who does not live with you (a parent who lives with you qualifies you through Test 2)\") as excluding a co-resident parent. The helper's expression (dependent.hoh_test1: parent, your dependent, dependent.parent_home_paid) has no residence condition, and parent_home_paid asks \"did you pay over half the cost of keeping up a home that was their main home for all of 2025\" without one, so a co-resident parent counts under Test 1. Were a filer to answer no for such a parent from the label, Test 2 qualifies on the same facts (household.home_cost for the home you share; the parent your dependent and living with you more than half the year; no multiple support). The label is imprecise, not wrong in effect. Project stands.",
+   "context": "79c4ef11c1758e0f4cee42536f8eec6afa4913c45fe378054255ee22e7607ecf"
+  },
+  {
+   "printed": "test1_persons",
+   "restated": "Add dependent.one over every confirmed dependent entry for which helper \"Qualifies you for head of household under Test 1 through a parent who does not live with you (a parent who lives with you qualifies you through Test 2)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "The restatement limits Test 1 to a parent 'who does not live with you,' but the IRS text says 'Your parent didn't have to live with you,' so a live-in parent can still meet Test 1.",
+   "ruling": "Ruling: representation; i1040gi p. 14, Test 1: \"You paid over half the cost of keeping up a home that was the main home for all of 2025 of your parent whom you can claim as a dependent ... Your parent didn't have to live with you.\" The model reads the helper's label (\"through a parent who does not live with you (a parent who lives with you qualifies you through Test 2)\") as excluding a co-resident parent. The helper's expression (dependent.hoh_test1: parent, your dependent, dependent.parent_home_paid) has no residence condition, and parent_home_paid asks about \"a home that was their main home\" without one, so such a parent counts under Test 1. Were a filer to answer no for that parent because of the label, Test 2 qualifies on the same facts (household.home_cost for the home you share, which since BUG-0258 and BUG-0260 carries the same p501 p. 9 cost definition and own-funds rule as parent_home_paid; the parent your dependent and living with you more than half the year). The label is imprecise, not wrong in effect. The restatement and the objection are those ruled in fix round 2 and the completeness-fixes round. Project stands.",
+   "context": "cf89f7f3a325c00103f4dd242a7d63948822962d229964b0213e94484e133bc8"
+  },
+  {
+   "printed": "test2_persons",
+   "restated": "Add dependent.one over every confirmed dependent entry for which helper \"A Test 2 person who lived with you more than half the year, or of the part of the year a relative was alive (the home-cost condition of Test 2 is tested on the household form)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "IRS Test 2 includes 'Your unmarried qualifying child who isn’t your dependent' and a married qualifying child who isn’t your dependent only because you can be claimed elsewhere. The restatement counts only confirmed dependent entries, omitting those non-dependent Test 2 persons.",
+   "ruling": "Ruling: model error; the model read \"every confirmed dependent entry\" as every person who is your dependent. It is the renderer's wording for every entry of the dependent collection (every person listed), and dependent.hoh_test2 has a second branch for \"Your unmarried qualifying child who isn't your dependent\" (i1040gi p. 14, Test 2, item 2): qualifying_child, not married, lived with you more than half the year, with no dependency condition. Item 3 (a married child not your dependent only because you can be claimed) is refused through dependent.married, item 4 through dependent.divorced_rule. As ruled in round 2. Project stands.",
+   "context": "79c4ef11c1758e0f4cee42536f8eec6afa4913c45fe378054255ee22e7607ecf"
+  },
+  {
+   "printed": "test2_persons",
+   "restated": "Add dependent.one over every confirmed dependent entry for which helper \"A Test 2 person who lived with you more than half the year, or of the part of the year a relative was alive (the home-cost condition of Test 2 is tested on the household form)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "IRS Test 2 includes certain non-dependent qualifying children ('Your unmarried qualifying child who isn’t your dependent' and a married qualifying child not your dependent), but the restatement counts only confirmed dependent entries.",
+   "ruling": "Ruling: model error; the model read \"every confirmed dependent entry\" as every person who is your dependent. It is the renderer's wording for every entry of the dependent collection (every person listed), and dependent.hoh_test2 has a second branch for \"Your unmarried qualifying child who isn't your dependent\" (i1040gi p. 14, Test 2, item 2): qualifying_child, not married, lived with you more than half the year, with no dependency condition. Item 3 (a married child not your dependent only because you can be claimed) is refused through dependent.married, item 4 through dependent.divorced_rule. As ruled in round 2 and the completeness fixes. Project stands.",
+   "context": "6b19c0fbf412ccec99a942f2268a4ddf3b15752d8e380a03687e43f73c3b818d"
+  },
+  {
    "printed": "test2_persons",
    "restated": "Add dependent.one over every confirmed dependent entry for which helper \"A Test 2 person who lived with you more than half the year, or of the part of the year a relative was alive (the home-cost condition of Test 2 is tested on the household form)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "The restatement counts only confirmed dependent entries, but IRS Test 2 expressly includes 'Your unmarried qualifying child who isn’t your dependent' and other qualifying children who are not dependents.",
    "ruling": "Ruling: model error; the model read \"every confirmed dependent entry\" as every person who is your dependent. It is the renderer's wording for every entry of the dependent collection (every person listed, as the round-1 ruling on the same text found), and the helper dependent.hoh_test2 it sums has a second branch for \"Your unmarried qualifying child who isn't your dependent\" (i1040gi p. 14, Test 2, item 2): qualifying_child, not married, lived with you more than half the year, with no dependency condition. Items 3 and 4 (a married child not your dependent only because you can be claimed, and the custodial parent's released child) are refused through dependent.married and dependent.divorced_rule.",
    "context": "55b35b4588335d4d9a70be93ca26c04b5b019e766b44060c41ed50a8c47870c1"
+  },
+  {
+   "printed": "under16_count",
+   "restated": "Add person.one over every confirmed person entry for which helper \"Were you under age 16 at the end of 2025?\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "The IRS text provided does not define an under-16 count or filing restriction; the only mention is the Self-Select PIN rule for first-time filers under 16.",
+   "ruling": "Ruling: ambiguity; amb.2025.filer_under_16 (owner's decision, 2026-10-22). The model is right that the text has no age-16 filing rule; the register says so (\"The archived instructions state no minimum age for a filer or a spouse on a joint return\"; i1040gi p. 66, \"You can't use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025\"). The count feeds the owner's entry check household.filer_under16, reading 2 (chosen).",
+   "context": "6b19c0fbf412ccec99a942f2268a4ddf3b15752d8e380a03687e43f73c3b818d"
   }
  ]
 }

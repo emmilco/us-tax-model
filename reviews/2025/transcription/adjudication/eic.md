@@ -2,7 +2,63 @@
 
 Method: `README.md` in this directory.
 
-## T-067
+## Fix round 2
+
+Subject after BUG-0241: a new screen, `eic.died_2025`, refuses `eic.age_range` with the Pub. 596 referral. No other eic
+expression changed. The dependent lines read by the EIC were reworded (BUG-0211 to BUG-0217, BUG-0221 to BUG-0229, BUG-0234).
+Fresh reviews of 2026-10-30; previous logs archived in `.transcription/archive/before-fix-round2-2026-10-30/`. Rulings in
+`.transcription/proposed/fixr2/transcription.eic.json` and `transcription.eic.deepseek.json`.
+
+Triage `../triage/eic.json` is executable-triage-v2: 1,382 fixtures, 500 generated returns seed 20261026, 161 partial records;
+2,043 comparisons. Every completed-return difference was read with the witness cap lifted. The deepseek reply is invalid: seven
+helpers put `all:` mappings inside `any:` without `op: test`. `../triage/eic.deepseek.json` executed nothing, so that reply is
+ruled by reading.
+
+Render eic, render eic.deepseek and both class M eic logs have no open section. The rerun class M logs (8 cases each) have no
+DISAGREE: Claude 43 AGREE and 61 SKIPPED, deepseek 52 and 52. Claude's classm.eic.2 is all SKIPPED, a Step 1 STOP where the
+project hides every line. The sidecar `../../classm/eic.rulings.json` (2026-10-29) still holds 93 rulings for the previous
+logs.
+
+BUG-0241 check. The refusal is reached only through `eic.step4`. That means Steps 1 and 2 are passed, there is no qualifying
+child, and the filer is not married filing separately or a married head of household. That is the point of the Step 4
+question 2 referral. Evaluated cases:
+- `stage21.pending.eic_death_pub596_refused`: refused.
+- The same return with line 11b $65,000.00: $0.00, a Step 1 STOP.
+- `stage9.eic.one_child.line5` with a death answer: $3,261.00.
+
+The Claude reply's `eic.h_s4_died` gates the same case. Triage finds no eic.credit value difference on any compared return.
+Neither too wide nor too narrow on the archived source. Pub. 596 itself is not archived.
+
+Counts:
+- Claude transcription: model error 7, scope 1, representation 1.
+- Deepseek transcription: model error 7, scope 1, representation 1.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | eic.self_employed | scope | 2,007/2,043 agree; completed returns: none | i1040gi p. 42, Step 5 q. 2 | Only scope.schedule1 refusals and records omitting that screen differ. |
+| claude | transcription | eic.credit | model error | 1,945/2,043 agree; completed returns: 8 candidate-unknown | i1040gi p. 40, Step 1 q. 1 | Child-count limit needs dependent.us_half above every Step 1 limit (8 completed); no value differs; died_2025 gated alike. |
+| claude | transcription | eic.check_27c | model error | 1,957/2,043 agree; completed returns: 13 candidate-unknown | i1040gi p. 43, Line 27c; p. 40 | Same us_half unknowns (13 completed). |
+| claude | transcription | eic.separated_box | model error | 1,998/2,043 agree; completed returns: 1 candidate-unknown | i1040gi p. 41, Step 3 q. 3, q. 6 | Same us_half unknown (1 completed); MFS reading of last round gone. |
+| claude | transcription | eic.clergy | representation | 2,043/2,043 agree | i1040gi p. 42, Step 5 q. 1; p. 43, Line 27b | No difference. |
+| claude | transcription | 1 | model error | 967/2,043 agree; completed returns: 544 candidate-shows-skipped | i1040gi pp. 40, 46 | No shown_when: shown after STOPs (544 completed). |
+| claude | transcription | 2 | model error | 1,824/2,043 agree; completed returns: 21 candidate-shows-skipped, 13 candidate-unknown | i1040gi pp. 40, 46 | Shown after STOPs (21 completed); us_half unknowns (13). |
+| claude | transcription | 5 | model error | 1,955/2,043 agree; completed returns: 9 candidate-shows-skipped | i1040gi p. 46, lines 2, 4, 5 | Shown after STOPs (9 completed); 13 refused-return values (T-070 (2)). |
+| claude | transcription | 6 (eic.line6) | model error | 1,935/2,043 agree; completed returns: 13 candidate-unknown, 10 candidate-shows-skipped | i1040gi pp. 40, 46 | Shown after STOPs (10 completed); us_half unknowns (13). |
+| deepseek | transcription | eic.self_employed | representation | not executable (reply invalid) | i1040gi p. 42, Step 5 q. 2; person.yaml files_se | By reading: files_se implies a Schedule C, so equal to sc_count over zero. |
+| deepseek | transcription | eic.credit | model error | not executable (reply invalid) | i1040gi p. 40, Step 1 q. 2; p. 41, Step 4 qq. 1-2 | Invalid helpers; no SSN STOP, no age test, every HOH stopped at Step 4 q. 1. |
+| deepseek | transcription | eic.check_27c | model error | not executable (reply invalid) | i1040gi p. 43, Line 27c; p. 40 | Invalid dependency; checked whenever the credit is zero. |
+| deepseek | transcription | eic.separated_box | model error | not executable (reply invalid) | i1040gi p. 41, Step 3 q. 3, q. 6 | Status alone; skips Steps 1 and 2. |
+| deepseek | transcription | eic.clergy | scope | not executable (reply invalid) | i1040gi p. 43, Line 27b | Constant no; project refuses on scope.schedule1. |
+| deepseek | transcription | 1 | model error | not executable (reply invalid) | i1040gi pp. 40, 46, 48 | Shown after STOPs; Step 5 income for Worksheet B filers. |
+| deepseek | transcription | 2 | model error | not executable (reply invalid) | i1040gi p. 46 | As line 1; no-band lookups. |
+| deepseek | transcription | 5 | model error | not executable (reply invalid) | i1040gi p. 46, lines 4, 5 | Looked up whatever lines 4 and 5 say. |
+| deepseek | transcription | 6 (eic.line6) | model error | not executable (reply invalid) | i1040gi pp. 40, 46 | Invalid helper; figured after every STOP. |
+
+Findings: none for eic. The Claude reply's remaining errors are display errors: lines 1, 2, 5 and 6 are shown after STOPs,
+and the child-count limit asks dependent.us_half above every Step 1 limit. Its credit agrees with the project on every
+completed return. The previous round's married-filing-separately reading is gone.
+
+## T-067 (superseded subject)
 
 Subject after T-067 (owner's decision 2026-10-29, worksheet markers): the Step 5 worksheet lines `(Step 5, 1)` to
 `(Step 5, 5)` now carry `shown_when: eic.reached_step5`; no computing expression changed. Fresh reviews of 2026-10-29

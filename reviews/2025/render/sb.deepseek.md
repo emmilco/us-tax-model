@@ -4,15 +4,15 @@ The rendered English of every printed line of `Schedule B — supported interest
 
 | field | value |
 | --- | --- |
-| date | 2026-10-23 |
+| date | 2026-10-30 |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
-| prompt sha256 | 90a753d8b497c534f6548d9cb811ea1ce524fc72173458f99b5715c5e7c17584 |
+| prompt sha256 | 05e8035a29baa702d70000bc13723d9584e8df3d251b0f972e148ca3b75888ab |
 | prompt policy | render-source-comparison-v2 |
 | system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
 | reasoning effort | provider default |
-| output token budget | 65536 |
-| subject sha256 | 1653644d146cd14999e7af99813dfad5a8f3bd84cea082c511a2dc8f699bcf55 |
+| output token budget | 131072 |
+| subject sha256 | e65eb40f5fe17145dcc2dd734860326e0622165c47a3cefa8b422ba36f24419a |
 | lines judged | 6 |
 | match / mismatch / unclear / missing | 4 / 1 / 1 / 0 |
 | verdicts for lines not in the form | none |
@@ -30,38 +30,38 @@ Status: **MISMATCH**
 
 Restated: Input — Any financial interest in or signature authority over a foreign financial account during 2025?
 
-Model: The restatement covers only Line 7a—Question 1; the IRS also has 'Line 7a—Question 2' requiring a Yes box 'if you are required to file the form' (FinCEN Form 114).
+Model: The restatement covers only Question 1; the IRS line also has Line 7a—Question 2, which asks whether you are required to file FinCEN Form 114.
 
-Ruling: open
+Ruling: representation; i1040sb p. 3, "Line 7a—Question 2. See FinCEN Form 114 and its instructions at FINCEN.gov to determine whether you must file the form. Check the “Yes” box if you are required to file the form." Question 1 is the printed line sb.line7a, which the restatement shows; Question 2 is the separate helper sb.fbar_required ("Are you required to file FinCEN Form 114 (FBAR)? Determine under its instructions ..."), so both answers of line 7a are asked. The render shows only the printed line; nothing is missing. Unchanged by the fix round. Restatement accepted.
 
-### 8 — Received a distribution from, or were grantor of or transferor to, a foreign trust during 
+### 8 — During 2025, did you receive a distribution from a foreign trust (a loan of cash or market
 Status: **MATCH**
 
-Model: It restates the line 8 condition for receiving a foreign-trust distribution or being grantor/transferor to a foreign trust during 2025.
+Model: It reflects receiving a foreign-trust distribution, including a loan of cash or marketable securities, or being a grantor or transferor to a foreign trust existing in 2025, as the line 8 instructions state.
 
 ### 2 — Total taxable interest from all payers
 Status: **MATCH**
 
-Model: Within supported cases, line 2 is the total taxable interest from the interest entries; the refusals exclude nominee/OID/ABP and other special-treatment items.
+Model: For the unadjusted interest cases the program supports, summing taxable interest entries gives the line 2 total; the refusals exclude the special-treatment adjustments named in the instructions.
 
 ### 3 — Amount from sb.zero
 Status: **MATCH**
 
-Model: In supported cases line 3 is $0, and the program refuses when a savings bond interest exclusion/Form 8815 issue is present, matching the line 3 exclusion instruction.
+Model: The program refuses the savings-bond exclusion through sb.unsupported and otherwise enters zero, which is correct for the supported unadjusted case; the refusal names Form 8815.
 
 ### 4 — Subtract sb.line3 from sb.line2
 Status: **UNCLEAR**
 
 Restated: Subtract line 3 from line 2.
 
-Model: The provided IRS instructions do not state line 4's text or computation; they mention lines 2 and 3 but not line 4.
+Model: The provided IRS text contains no line 4 instruction or statement that line 4 is line 2 minus line 3, so the arithmetic cannot be verified from the text given.
 
-Ruling: open
+Ruling: interface gap; f1040sb (2025) p. 1, line 4: "Subtract line 3 from line 2. Enter the result here and on Form 1040 or 1040-SR, line 2b", which is the restatement. The model was given only i1040sb pp. 1-3, which has no line 4 instruction, as it says (a coverage gap of the review). Restatement accepted.
 
 ### 6 — Amount from sb.ordinary_dividends
 Status: **MATCH**
 
-Model: Within supported cases, line 6 is total ordinary dividends from Form 1099-DIV box 1a, and the refusals exclude nominee and other adjustments.
+Model: The instructions say ordinary dividends are reported from Form 1099-DIV box 1a and, after any nominee subtraction, entered on line 6; the program refuses nominee cases through sb.unsupported.
 
 ## Raw response
 
@@ -69,20 +69,20 @@ Model: Within supported cases, line 6 is total ordinary dividends from Form 1099
 lines:
   - key: "7a"
     status: MISMATCH
-    reason: "The restatement covers only Line 7a—Question 1; the IRS also has 'Line 7a—Question 2' requiring a Yes box 'if you are required to file the form' (FinCEN Form 114)."
+    reason: "The restatement covers only Question 1; the IRS line also has Line 7a—Question 2, which asks whether you are required to file FinCEN Form 114."
   - key: "8"
     status: MATCH
-    reason: "It restates the line 8 condition for receiving a foreign-trust distribution or being grantor/transferor to a foreign trust during 2025."
+    reason: "It reflects receiving a foreign-trust distribution, including a loan of cash or marketable securities, or being a grantor or transferor to a foreign trust existing in 2025, as the line 8 instructions state."
   - key: "2"
     status: MATCH
-    reason: "Within supported cases, line 2 is the total taxable interest from the interest entries; the refusals exclude nominee/OID/ABP and other special-treatment items."
+    reason: "For the unadjusted interest cases the program supports, summing taxable interest entries gives the line 2 total; the refusals exclude the special-treatment adjustments named in the instructions."
   - key: "3"
     status: MATCH
-    reason: "In supported cases line 3 is $0, and the program refuses when a savings bond interest exclusion/Form 8815 issue is present, matching the line 3 exclusion instruction."
+    reason: "The program refuses the savings-bond exclusion through sb.unsupported and otherwise enters zero, which is correct for the supported unadjusted case; the refusal names Form 8815."
   - key: "4"
     status: UNCLEAR
-    reason: "The provided IRS instructions do not state line 4's text or computation; they mention lines 2 and 3 but not line 4."
+    reason: "The provided IRS text contains no line 4 instruction or statement that line 4 is line 2 minus line 3, so the arithmetic cannot be verified from the text given."
   - key: "6"
     status: MATCH
-    reason: "Within supported cases, line 6 is total ordinary dividends from Form 1099-DIV box 1a, and the refusals exclude nominee and other adjustments."
+    reason: "The instructions say ordinary dividends are reported from Form 1099-DIV box 1a and, after any nominee subtraction, entered on line 6; the program refuses nominee cases through sb.unsupported."
 ```

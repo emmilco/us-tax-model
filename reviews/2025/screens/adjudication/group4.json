@@ -1,0 +1,765 @@
+{
+ "unruled:dependent.divorced_rule": {
+  "reason": "Round-1 PENDING-0-1 closed (the question now tells the custodial parent who signed the release to answer yes); the rewording adds only WIDE refusals; the third-party claimant is covered by dependent.other_claimant.",
+  "prompt_sha": "696407ed2a4e27b745fa8ecdd5f8d1f2ab253afce63ce96c7ab9cb3c1f0d13b6",
+  "findings": [
+   {
+    "n": 0,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "i1040gi p. 20: A post-2008 decree without Form 8332 now draws a yes (from the BUG-0228 clause) and is refused; Step 1 would compute the child correctly for the custodial parent. Widening introduced by the fix; safe."
+   },
+   {
+    "n": 1,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "i1040gi p. 20: Release exists but conditions 1-3 fail: yes refuses a case the tool computes. Safe (round 1)."
+   },
+   {
+    "n": 2,
+    "kind": "UNCLEAR",
+    "class": "accepted WIDE",
+    "evidence": "i1040gi p. 20: Parents' status alone: a yes refuses (safe); a no is the correct answer and the tool computes the ordinary case."
+   },
+   {
+    "n": 3,
+    "kind": "UNCLEAR",
+    "class": "accepted WIDE",
+    "evidence": "i1040gi p. 20: Release only for another year, or revoked: yes refuses (safe); no is correct (no release applies to 2025, ordinary Step 1). The revocation-copy attachment is a filing step, not a computed line."
+   },
+   {
+    "n": 4,
+    "kind": "UNCLEAR",
+    "class": "covered",
+    "evidence": "i1040gi pp. 17, 20; forms/2025/dependent.yaml: Grandparent living with the child and the custodial parent: the child is the custodial parent's qualifying child, so dependent.other_claimant is yes and refuses dependent.qualifying_child (refuses: other_claimant, divorced_rule, married)."
+   }
+  ],
+  "bugs": []
+ },
+ "unruled:dependent.kidnapped": {
+  "reason": "Round-1 wording defect closed (tense, 'a child', Pub. 501 phrase), but the new 'at any time during 2025' anchor drops a presumption made after 2025 for a 2025 kidnapping (PENDING-4-1, low); the qualifying-relative branch stays ungated by BUG-0234's choice (understatement only); the rest WIDE.",
+  "prompt_sha": "94406e81acc666c0f9032e6d053a3b06734f28a2822689c97d7a42bbb19c97f8",
+  "findings": [
+   {
+    "n": 0,
+    "kind": "NARROW",
+    "class": "defect",
+    "evidence": "p501 p. 13: PENDING-4-1. The rule ties the year to when the kidnapping occurred and sets no deadline for the presumption; the BUG-0234 wording ('at any time during 2025, was presumed') lets a filer whose 2025 kidnapping was presumed in early 2026 answer no truthfully. dependent.months then counts the absence, lived_half/eic_child can be false and the CTC/EIC/HOH are denied (understatement). Introduced by the rewording (the old present tense caught it)."
+   },
+   {
+    "n": 1,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "p501 p. 13: Child already meets the time-lived test: refused though computed correctly. Safe."
+   },
+   {
+    "n": 2,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "p501 p. 13: Statements 2 and 3 not met: refused; the ordinary months count would be right. Safe."
+   },
+   {
+    "n": 3,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "p501 p. 13: Treatment ended (age 18 / death in an earlier year): refused; ordinary count correct. Safe."
+   },
+   {
+    "n": 4,
+    "kind": "UNCLEAR",
+    "class": "accepted WIDE",
+    "evidence": "i1040gi p. 21; p501 p. 13: An adult or a sibling reading 'a child' as covering them answers yes and is refused (safe); the reading that excludes them computes the ordinary test, which is correct for an adult past the age-18 cutoff and matches i1040gi's 'your child' for the qualifying-child test."
+   }
+  ],
+  "bugs": [
+   "PENDING-4-1"
+  ]
+ },
+ "unruled:dependent.married": {
+  "reason": "Round-1 PENDING-0-2 closed (both marriage questions now name a joint return filed by the surviving spouse); both findings are WIDE as in round 1.",
+  "prompt_sha": "07e7735bc49ac721e4fd4f32057b210f7d25a7641df3d3ae38fdffb9ed934687",
+  "findings": [
+   {
+    "n": 0,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "i1040gi pp. 21, 44: Married, no joint return or refund-only joint return: refused on qualifying_child/qualifying_relative though computable; still needed for eic_child. Safe (round 1)."
+   },
+   {
+    "n": 1,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "i1040gi pp. 17, 41, 44: Refund-only joint return by a person whose spouse died: refused though dependent.joint_return carves it out. Safe (round 1)."
+   }
+  ],
+  "bugs": []
+ },
+ "unruled:dependent.other_claimant": {
+  "reason": "No round-1 defect; re-reviewed because its siblings changed. NARROW findings are covered by dependent.divorced_rule and dependent.married; the rest WIDE or the source's own wording.",
+  "prompt_sha": "4690c3d384d62fd8c1f29cc7f7bd6bfedbc3af6a3d5ffd6bfae7aa051e99afb9",
+  "findings": [
+   {
+    "n": 0,
+    "kind": "NARROW",
+    "class": "covered",
+    "evidence": "i1040gi p. 20; forms/2025/dependent.yaml: dependent.divorced_rule gates dependent.qualifying_child and now tells both the custodial parent who signed the release and the noncustodial parent using it to answer yes. EIC is unaffected by a release."
+   },
+   {
+    "n": 1,
+    "kind": "NARROW",
+    "class": "covered",
+    "evidence": "i1040gi p. 44; forms/2025/dependent.yaml: A child married at the end of 2025 answers yes to dependent.married, which gates dependent.eic_child (and qualifying_child, qualifying_relative)."
+   },
+   {
+    "n": 2,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "i1040gi p. 17: EIC branch refuses a child who fails the support test for the dependent rules. Safe."
+   },
+   {
+    "n": 3,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "i1040gi pp. 21, 44: Sole-parent tie-breaker: refusal of a correct computation. Safe."
+   },
+   {
+    "n": 4,
+    "kind": "UNCLEAR",
+    "class": "accepted WIDE",
+    "evidence": "i1040gi pp. 17, 21: The question repeats i1040gi p. 17 ('meets the conditions to be a qualifying child of any other person'); the literal reading answers yes and refuses. Round-1 ruling kept."
+   }
+  ],
+  "bugs": []
+ },
+ "unruled:eic.died_2025": {
+  "reason": "New screen (BUG-0241) closes round-1 PENDING-1-9; the one finding is a model error: a filer with a qualifying child never reaches eic.age_range, and eval shows the refusal does not reach line 27a.",
+  "prompt_sha": "24a5687f3c8ebf7f5c93dc81d97e94846e564955e0d270199436385549a9236b",
+  "findings": [
+   {
+    "n": 0,
+    "kind": "WIDE",
+    "class": "model error",
+    "evidence": "i1040gi p. 41; forms/2025/eic.yaml; eval: eic.has_qc = false is tested before eic.step4/eic.age_range, and the engine short-circuits. Eval of stage14.actc.wsb, stage15.f8880.s8 and stage15.f8880.s14 with eic.died_2025 = yes: eic.age_range refuses but f1040.line27a is unchanged (e.g. $3,154). The finding's condition ('unless the tool asks this question only on the no-qualifying-child path') holds in effect."
+   }
+  ],
+  "bugs": []
+ },
+ "unruled:f5695.business_use": {
+  "reason": "Round-1 PENDING-3-1 closed (the gloss now names renting out and other income-producing use); the reviewer found no gap.",
+  "prompt_sha": "9b2533b7b5c8f4e3c5de501798a9a0afec2ad7c3b386be8ad64c929c75539e2c",
+  "findings": [],
+  "bugs": []
+ },
+ "unruled:f5695.joint_occupancy": {
+  "reason": "Round-1 PENDING-1-3 closed (no conditional clause; same or different items); two WIDE accepted; 'the home' misses Section B property at a second, shared home (PENDING-4-2, low); the timing ambiguity is safe.",
+  "prompt_sha": "e722c6e7f46c753e83a07380a34d06b4d95c65f9bf55ac7c9c28721fa6100857",
+  "findings": [
+   {
+    "n": 0,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "i5695 p. 3: Co-occupant paid nothing: fraction is 1, refusal unnecessary. Safe."
+   },
+   {
+    "n": 1,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "i5695 p. 3: Aggregate within every limit: refusal unnecessary. Safe."
+   },
+   {
+    "n": 2,
+    "kind": "UNCLEAR",
+    "class": "defect",
+    "evidence": "i5695 pp. 3, 6: PENDING-4-2. Residential energy property is for 'a home that you used during 2025' (p. 3) and line 21c asks for 'each home'; the f5695 cost questions say 'for a home in the United States'. A filer who lives alone in the main home and has a heat pump at a second home shared with a sibling can read 'the home' as the main home and answer no; line 30 then takes the full category limit where the allocable share applies (credit overstated). Pre-existing wording."
+   },
+   {
+    "n": 3,
+    "kind": "UNCLEAR",
+    "class": "accepted WIDE",
+    "evidence": "i5695 pp. 1, 3: 'Did you occupy' is past tense with no limit; the readings a filer with a 2025 co-occupant who paid would take give yes. Any-past-time reading refuses more. Safe."
+   }
+  ],
+  "bugs": [
+   "PENDING-4-2"
+  ]
+ },
+ "unruled:f8889.unsupported": {
+  "reason": "Round-1 PENDING-1-4 closed (any contribution by anyone to the spouse's Archer MSA); the reviewer found no gap.",
+  "prompt_sha": "9e28cfd08c1e8a3c1070f7a7f0632ede2e5171ce0d65b8580e2551fc9ad5f828",
+  "findings": [],
+  "bugs": []
+ },
+ "unruled:f8960.unsupported": {
+  "reason": "Round-1 PENDING-3-2 closed (NUA named under line 5b); most line 7 and line 13 items are covered by sibling or derived gates; section 404(k) dividends paid directly on Form 1099-DIV have no gate (PENDING-4-3, low).",
+  "prompt_sha": "cea788a24d679f22dae96ea1819f80af9866c9785284051596434dc5b8e33321",
+  "findings": [
+   {
+    "n": 0,
+    "kind": "NARROW",
+    "class": "covered",
+    "evidence": "i8960 pp. 14-15; forms/2025/f8960.yaml: f8960.refund ('Any recovery or refund in 2025 of an amount deducted on an earlier Form 8960 ...') gates 11 f8960 lines including line 7 (round 1)."
+   },
+   {
+    "n": 1,
+    "kind": "NARROW",
+    "class": "covered",
+    "evidence": "i8960 p. 13; forms/2025/s1.yaml: These are Schedule 1 line 8z items; s1.line8_other refuses them, and scope.schedule1 refuses f8960 lines 13/17 (round-1 eval). Form 8814 is also named in scope.other_line16."
+   },
+   {
+    "n": 2,
+    "kind": "NARROW",
+    "class": "covered",
+    "evidence": "i8960 p. 13; forms/2025/sa.yaml: Casualty and theft losses: sa.unsupported ('Any casualty or theft loss') refuses (round-1 eval). Life insurance contract gain: the Form 1099-R input offers only traditional_ira, roth_ira or plan (retirement.account), so a contract surrender has no supported entry; see uncertainties."
+   },
+   {
+    "n": 3,
+    "kind": "NARROW",
+    "class": "defect",
+    "evidence": "i8960 pp. 7, 13; i1099div p. 4: PENDING-4-3 for section 404(k) dividends: paid directly by the corporation they are in Form 1099-DIV box 1a (i1099div p. 4), so they are on line 2, and i8960 requires a negative line 7 modification. No screen names them (no match for 404(k) or ESOP outside retirement.yaml's Form 8880 question). NIIT is overstated. Self-charged interest needs a loan to the filer's own partnership or S corporation, whose Schedule K-1 makes the filer answer yes here ('pass-through income') and to scope.schedule1: covered."
+   },
+   {
+    "n": 4,
+    "kind": "NARROW",
+    "class": "covered",
+    "evidence": "i8960 p. 9; forms/2025/f8960.yaml: f8960.carryforward_adj gates line 5b for a capital loss carryover with a 2024 Net Gains and Losses Worksheet line 2(i) amount (round 1)."
+   },
+   {
+    "n": 5,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "i8960 p. 13: Early withdrawal penalty is computed on line 10; a yes only refuses. Safe."
+   },
+   {
+    "n": 6,
+    "kind": "UNCLEAR",
+    "class": "covered",
+    "evidence": "i8960 p. 13; forms/2025/scope.yaml: A Schedule K-1 (Form 1041) beneficiary answers yes to scope.schedule1 ('estates or trusts (Schedule E or a Schedule K-1)'), which refuses f8960 lines 13/17 (round-1 eval)."
+   },
+   {
+    "n": 7,
+    "kind": "UNCLEAR",
+    "class": "covered",
+    "evidence": "i8960 p. 22; forms/2025/scope.yaml: Indirect ownership runs through a partnership, S corporation, estate or trust (Schedule K-1, scope.schedule1) or a foreign corporation (itself a CFC/PFIC holding); a section 1291 holding also draws scope.other_line16 (Form 8621)."
+   },
+   {
+    "n": 8,
+    "kind": "UNCLEAR",
+    "class": "accepted WIDE",
+    "evidence": "f8960 line 3; i8960 p. 9: 'Any annuity' sweeps in qualified-plan annuities: refusal only. Safe (round 1)."
+   }
+  ],
+  "bugs": [
+   "PENDING-4-3"
+  ]
+ },
+ "unruled:f8962.alloc": {
+  "reason": "Round-1 PENDING-1-5 closed (a policy whose Form 1095-A went only to someone else; a child you claim whom someone else enrolled); finding 0 WIDE; finding 1 is caught by the question's own first limb.",
+  "prompt_sha": "ad10008712993d4376a4f95f427ac660cce6c860e19fbb62546cd96514e2a518",
+  "findings": [
+   {
+    "n": 0,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "i8962 p. 12: Condition 2 unmet (each family has an accurate Form 1095-A): refused though computable. Safe."
+   },
+   {
+    "n": 1,
+    "kind": "UNCLEAR",
+    "class": "covered",
+    "evidence": "i8962 pp. 3, 12-13: A former spouse divorced during 2025 is not in the filer's 2025 tax family, so a policy that covered both in earlier months is 'a policy that covered someone in your tax family and also someone who is not in it'. The first limb names 'a former spouse' as its first example, so the filer answers yes there whatever 'while enrolled' means."
+   }
+  ],
+  "bugs": []
+ },
+ "unruled:f8962.other": {
+  "reason": "Round-1 PENDING-1-6 closed (unextended due date, 120-day rule); the lawfully present alien and dependent-filer findings are covered; eligibility for other minimum essential coverage has no screen (PENDING-4-4, low to medium); HRA findings WIDE.",
+  "prompt_sha": "5f5fb02450042398838ef28cabf386aa18e7c53366ced0327c53ae8beb8b2351",
+  "findings": [
+   {
+    "n": 0,
+    "kind": "NARROW",
+    "class": "model error",
+    "evidence": "i8962 p. 9; forms/2025/f8962.yaml: f8962.alien_below asks this exact question, and f8962.alien_branch (Form 1095-A, line 5 < 100, alien_below) refuses f8962.line24. The reviewer saw only the applicable-taxpayer label."
+   },
+   {
+    "n": 1,
+    "kind": "NARROW",
+    "class": "defect",
+    "evidence": "i8962 pp. 3-6, 15: PENDING-4-4. 'An individual in your tax family who is eligible for MEC ... for a month is not in your coverage family for that month' (p. 5). No screen asks about it; the only route is f1095a's 'correct applicable SLCSP premium if column B is ... wrong', which does not say MEC eligibility makes column B wrong (p. 15, Example 3). A filer who took an affordable employer offer mid-year without telling the Marketplace answers no; the months keep the full SLCSP and PTC, understating the excess APTC."
+   },
+   {
+    "n": 2,
+    "kind": "NARROW",
+    "class": "covered",
+    "evidence": "i8962 pp. 3, 9; forms/2025/sa.yaml: sa.dependent ('Can someone claim you or your spouse as a dependent for 2025 ...') refuses the standard deduction (sa.yaml) and the EIC, so the return does not complete for a claimable filer on the standard deduction. Itemizers are not caught, so this is a return-level backstop rather than a gate on lines 24/25; see uncertainties."
+   },
+   {
+    "n": 3,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "i8962 pp. 1, 3: A QSEHRA that was offered but did not cover anyone: refused. Safe (round 1)."
+   },
+   {
+    "n": 4,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "i8962 p. 3: HRA of a relative outside the tax family: refused. Safe (round 1)."
+   },
+   {
+    "n": 5,
+    "kind": "UNCLEAR",
+    "class": "accepted WIDE",
+    "evidence": "i8962 p. 3: 'Family member' read broadly (relatives) refuses more; read as the tax family, it matches the IRS rule. Safe either way."
+   }
+  ],
+  "bugs": [
+   "PENDING-4-4"
+  ]
+ },
+ "unruled:gift.special": {
+  "reason": "Round-1 PENDING-1-7 closed (similar items defined here and in gift.deduction); WIDE findings accepted; 'publicly traded securities' is undefined in this question and in gift.public_securities, so an over-$5,000 gift of thinly traded stock can compute (PENDING-4-5, low).",
+  "prompt_sha": "5c320260136696dcb1146b2c3e0902e334074cbfa69df5319d00bb16b3a4ff9d",
+  "findings": [
+   {
+    "n": 0,
+    "kind": "NARROW",
+    "class": "defect",
+    "evidence": "i8283 p. 9: PENDING-4-5. i8283 p. 9: publicly traded means '(a) listed on a recognized stock exchange whose quotations are published daily; (b) regularly traded on a national or regional over-the-counter market; or (c) quoted daily in a national newspaper ... mutual fund shares'. A $12,000 gift of stock that has a ticker but is not regularly traded answers no here (the exception) and yes to gift.public_securities ('Is this group publicly traded securities?', no definition), so gift.section_b is false and gift.allowed passes $12,000 with no Section B or appraisal. Round 1 accepted the parallel finding on the assumption the filer knows the p. 9 definition; neither question states it."
+   },
+   {
+    "n": 1,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "i8283 p. 3: Partial or restricted interests at $5,000 or less: refused. Safe."
+   },
+   {
+    "n": 2,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "i8283 p. 3: Vehicles, intellectual property, inventory reportable in Section A: refused. Safe."
+   },
+   {
+    "n": 3,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "i8283 p. 3: 'Certain other securities': refused. Safe (round 1)."
+   },
+   {
+    "n": 4,
+    "kind": "UNCLEAR",
+    "class": "accepted WIDE",
+    "evidence": "i8283 pp. 3, 9: Mutual fund shares read as not publicly traded: yes here, or no to gift.public_securities and gift.section_b refuses. Safe either way (round 1)."
+   }
+  ],
+  "bugs": [
+   "PENDING-4-5"
+  ]
+ },
+ "unruled:person.x_other": {
+  "reason": "Round-1 PENDING-2-1 closed (an RMD not received in full, including a shortfall made up later); the HSA carryover is covered by f8889.unsupported; the present-tense 'are still in the IRA' lets an earlier excess removed in 2026 escape the 2025 6% tax (PENDING-4-6, low to medium); the rest WIDE.",
+  "prompt_sha": "a08c66227c6ec23377e834fde63b11139ad969a7a2b6c6724937ae6f9cbb4eb5",
+  "findings": [
+   {
+    "n": 0,
+    "kind": "NARROW",
+    "class": "covered",
+    "evidence": "f5329 p. 2; forms/2025/f8889.yaml: A filer with a 2025 Form 8889 is asked f8889.unsupported ('excess HSA contributions from an earlier year that remain in your HSA'), which refuses f8889.line13/line16; round-1 eval showed the refusal reaching f1040 lines 24 and 37."
+   },
+   {
+    "n": 1,
+    "kind": "NARROW",
+    "class": "defect",
+    "evidence": "f5329 p. 1, lines 16-17; forms/2025/person.yaml: PENDING-4-6. Line 17 taxes 6% of the smaller of line 16 or 'the value of your traditional IRAs on December 31, 2025', and only 2025 distributions reduce the carryover. A filer with a 2023 excess that stayed in the IRA through 2025 and was withdrawn in February 2026 truthfully answers no to 'are still in the IRA'. person.ira_excess has the same present tense and is asked only with a 2025 contribution. No Part III/IV lines exist, so the 6% tax is missing from Schedule 2 line 8. Pre-existing wording."
+   },
+   {
+    "n": 2,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "i5329 p. 9: RMD shortfall belonging to another year's return: refused. Safe."
+   },
+   {
+    "n": 3,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "i5329 p. 9: Returned ABLE excess: refused. Safe."
+   },
+   {
+    "n": 4,
+    "kind": "UNCLEAR",
+    "class": "accepted WIDE",
+    "evidence": "f5329 pp. 1-2: Untimed past-year items: an any-year reading answers yes and refuses (safe); the 2025 reading is correct."
+   },
+   {
+    "n": 5,
+    "kind": "UNCLEAR",
+    "class": "accepted WIDE",
+    "evidence": "f5329 p. 2: HSA excess already cleared: yes refuses (safe); no is correct."
+   }
+  ],
+  "bugs": [
+   "PENDING-4-6"
+  ]
+ },
+ "unruled:refund.not_2024": {
+  "reason": "Round-1 PENDING-0-3 closed (any 2024 tax paid in 2025); the other worksheet exceptions are covered by refund.exc_tax and refund.exc_who; a 2024 tax paid before 2024 is still unscreened (PENDING-4-7, very low); WIDE accepted.",
+  "prompt_sha": "46e2e9b74315e5423c0de00f98b5e9b9fcbb5e9002d6c5139b737eeed2465d01",
+  "findings": [
+   {
+    "n": 0,
+    "kind": "NARROW",
+    "class": "defect",
+    "evidence": "p525 p. 24: PENDING-4-7. 'If you receive a refund or other recovery that is for amounts you paid in 2 or more separate years, you must allocate, on a pro rata basis'. A 2024 estimated payment made in December 2023 (deducted in 2023) is not asked about. The filer answers no, and the worksheet treats the whole refund as a recovery of tax paid in 2024. Rare."
+   },
+   {
+    "n": 1,
+    "kind": "NARROW",
+    "class": "covered",
+    "evidence": "i1040gi pp. 88-89; forms/2025/refund.yaml: Exceptions 2-4 and 6-9 are asked by refund.exc_tax (AMT, unused credits, 0% rate, refund over the income-minus-sales-tax deduction) and refund.exc_who (dependent, 1040-NR, joint state return), both gating refund.line1."
+   },
+   {
+    "n": 2,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "i1040gi p. 88: Non-itemizer or sales-tax elector refused though the taxable refund is zero. Safe."
+   },
+   {
+    "n": 3,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "p525 p. 24; i1040gi p. 89: A 2025 payment to a different state or a locality draws yes: refused though the worksheet applies. Widening introduced by BUG-0230; safe."
+   }
+  ],
+  "bugs": [
+   "PENDING-4-7"
+  ]
+ },
+ "unruled:retirement.special": {
+  "reason": "Round-1 PENDING-2-2 closed (military disability pension, beneficiary or shared annuity, property or QDRO rollover named); the remaining findings repeat round-1 rulings.",
+  "prompt_sha": "a04d0663d49f935c448d4f12481de7adcedc5286c81e67549d933889aa9ad0d7",
+  "findings": [
+   {
+    "n": 0,
+    "kind": "NARROW",
+    "class": "covered",
+    "evidence": "i1040gi p. 27; forms/2025/retirement.yaml: retirement.bad_code refuses a roth_ira distribution with any code other than qualified_roth_Q and gates rolled, taxable and amount_a (round 1, T-008)."
+   },
+   {
+    "n": 1,
+    "kind": "UNCLEAR",
+    "class": "accepted WIDE",
+    "evidence": "i1040gi p. 27: 'Nondeductible contributions to any traditional IRA' says any, so a filer with basis answers yes; a 2025 conversion has its own Form 1099-R on which the filer answers yes, refusing f1040 line 4b. Over-reading is WIDE (round 1)."
+   },
+   {
+    "n": 2,
+    "kind": "UNCLEAR",
+    "class": "model error",
+    "evidence": "i1040gi p. 30; forms/2025/retirement.yaml: retirement.plan_simple is box 1 less box 5 less the rollover for every plan distribution, the p. 30 rule the finding quotes; a no computes it correctly (round 1, T-008)."
+   }
+  ],
+  "bugs": []
+ },
+ "unruled:s1.alimony_unsupported": {
+  "reason": "Round-1 PENDING-1-8 closed (home payments, child contingencies, and cash-only amount questions); the post-2018 modification and noncash/community items are excluded by the amount questions; a part that must continue after the recipient's death is not screened (PENDING-4-8, low); the rest WIDE or safe.",
+  "prompt_sha": "d10d9608daaab6c73cd67c3f84cc80c3fb58650d1ed7b05186c9c04fa3411514",
+  "findings": [
+   {
+    "n": 0,
+    "kind": "NARROW",
+    "class": "defect",
+    "evidence": "p504 p. 15: PENDING-4-8. 'If any part of payments you make must continue to be made for any period after your spouse's death, that part of your payments isn't alimony whether made before or after the death.' Not in the screen's list of non-alimony parts, nor in s1.alimony_received/paid. A $30,000 payment of which $10,000 must continue after death is entered whole; $10,000 too much is deducted and included. Pre-existing wording."
+   },
+   {
+    "n": 1,
+    "kind": "NARROW",
+    "class": "covered",
+    "evidence": "p504 p. 13; forms/2025/s1.yaml: s1.alimony_received and s1.alimony_paid now say 'cash payments only, so do not include child support, noncash property settlements, your spouse's part of community income, or payments to keep up or the use of ... property' (BUG-0240)."
+   },
+   {
+    "n": 2,
+    "kind": "NARROW",
+    "class": "model error",
+    "evidence": "i1040gi p. 89; forms/2025/s1.yaml: s1.alimony and both amount questions exclude agreements changed after 2018 to make alimony non-includible (round 1)."
+   },
+   {
+    "n": 3,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "p504 p. 13: Home owned only by the recipient: refused though fully alimony. Widening introduced by BUG-0240; safe."
+   },
+   {
+    "n": 4,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "p504 p. 16: Decrease with no 2025 recapture: refused. Safe."
+   },
+   {
+    "n": 5,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "p504 p. 12: Post-2018 instruments: refused, no effect on these lines. Safe."
+   },
+   {
+    "n": 6,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "p504 p. 13: Fully paid separately stated child support: refused. Safe."
+   },
+   {
+    "n": 7,
+    "kind": "UNCLEAR",
+    "class": "accepted WIDE",
+    "evidence": "p504 pp. 13-14: 'A home either of you owns' includes a home both own (each owns it); a strained reading that excludes joint ownership is the only route to no. The question also cites Pub. 504 Table 4, the joint-ownership table."
+   },
+   {
+    "n": 8,
+    "kind": "UNCLEAR",
+    "class": "accepted WIDE",
+    "evidence": "p504 pp. 15-16: 'Associated with' is looser than 'clearly associated'; the loose reading refuses more. Safe."
+   }
+  ],
+  "bugs": [
+   "PENDING-4-8"
+  ]
+ },
+ "unruled:s1.cod_unsupported": {
+  "reason": "Round-1 PENDING-2-3 closed (any other amount deductible if paid); the short-sale finding is covered (p4681's own short-sale example uses the canceled amount, and the property sale is refused by scope.other_income); the rest WIDE.",
+  "prompt_sha": "a30db9007c7b2baa2b489e423dffd9c79350aa40d4db97fe9a604f63330b9970",
+  "findings": [
+   {
+    "n": 0,
+    "kind": "NARROW",
+    "class": "covered",
+    "evidence": "p4681 pp. 4, 10; forms/2025/scope.yaml: p4681 p. 10, Example 3 (short sale): the lender cancels 'the remaining $115,000 of the outstanding $735,000 debt' and that $115,000 is the canceled debt: the Form 1099-C box 2 amount the tool enters. The gain or loss on selling the property is not a supported securities sale, so scope.other_income ('other income ... outside ... supported securities sales') refuses."
+   },
+   {
+    "n": 1,
+    "kind": "UNCLEAR",
+    "class": "accepted WIDE",
+    "evidence": "p525 p. 20: The 'would have been deductible' qualifier read as also covering box 3 interest: a filer with nondeductible interest answers yes and is refused (safe); the other reading is correct."
+   },
+   {
+    "n": 2,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "p4681 p. 4: Taxable nonbusiness student loan: refused. Safe."
+   },
+   {
+    "n": 3,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "p4681 p. 3: Nonrecourse discount with collateral kept: refused though computable. Safe."
+   }
+  ],
+  "bugs": []
+ },
+ "unruled:s1.uc_unsupported": {
+  "reason": "Round-1 PENDING-2-4 closed (wage withholding and any year named); WIDE accepted; the new 'not counting employer-paid tax' carve-out can lead a self-employed filer who paid for elective state coverage to answer no (PENDING-4-9, very low).",
+  "prompt_sha": "c4aa7b67287a0e3cb3abc8ce954a4da03a724eaf15ab3cf0548a8ce43efeef35",
+  "findings": [
+   {
+    "n": 0,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "i1040gi p. 89: Contributions with no 2025 compensation: line 7 zero either way. Safe."
+   },
+   {
+    "n": 1,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "i1040gi p. 89: Repayment of $3,000 or less: refused (T-008). Safe."
+   },
+   {
+    "n": 2,
+    "kind": "UNCLEAR",
+    "class": "defect",
+    "evidence": "i1040gi p. 89: PENDING-4-9. 'If you made contributions to a governmental unemployment compensation program and you aren't itemizing deductions, reduce the amount you report on line 7 by those contributions.' The BUG-0245 carve-out 'not counting employer-paid tax' can be read by a self-employed person who paid for their own elective coverage as excluding their payment, so they answer no and line 7 is not reduced (income overstated). Introduced by the rewording; rare."
+   }
+  ],
+  "bugs": [
+   "PENDING-4-9"
+  ]
+ },
+ "unruled:sales.special": {
+  "reason": "Round-1 PENDING-0-4 closed (metal ETFs and trusts named); the former-rental and installment findings are covered by scope.other_income and sd.other_forms; 'holding such property' can be read as section 1250 property only (PENDING-4-10, very low); WIDE accepted.",
+  "prompt_sha": "b5ecf467534bc23cb3bdde3386c8d9911c962230355d4b187f277e913deeb55d",
+  "findings": [
+   {
+    "n": 0,
+    "kind": "NARROW",
+    "class": "covered",
+    "evidence": "i1040sd p. 11; forms/2025/scope.yaml, sales.yaml: The sales collection is 'manually classified securities transactions'. Selling a former rental house is not a supported securities sale, so scope.other_income ('other income ... outside ... supported securities sales') is yes and refuses."
+   },
+   {
+    "n": 1,
+    "kind": "NARROW",
+    "class": "covered",
+    "evidence": "i1040sd p. 11; forms/2025/sd.yaml: An installment payment belongs on Form 6252, which sd.other_forms names; it gates sd lines 4, 5, 6, 11, 12, 14 and others. It is also not a securities sale (scope.other_income)."
+   },
+   {
+    "n": 2,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "i1040sd pp. 11-12: S corporation or trust interest holding section 1250 property: refused. Safe (round 1)."
+   },
+   {
+    "n": 3,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "i1040sd p. 11: Short-term collectibles or section 1250 property: refused. Safe (round 1)."
+   },
+   {
+    "n": 4,
+    "kind": "UNCLEAR",
+    "class": "defect",
+    "evidence": "i1040sd p. 11: PENDING-4-10. Line 18 includes gain on 'an interest in a partnership, S corporation, or trust held for more than 1 year and attributable to unrealized appreciation of collectibles'. 'Holding such property' follows 'depreciable real property (section 1250 property)', and BUG-0231's parenthetical put more distance between it and 'collectibles'. A long-term sale of S corporation stock (a security) in a company holding appreciated art can be answered no, and the 28% part is taxed at 15/20%. Metal ETFs and trusts are now named."
+   }
+  ],
+  "bugs": [
+   "PENDING-4-10"
+  ]
+ },
+ "unruled:sb.line8": {
+  "reason": "Round-1 PENDING-2-5 closed (loans count; a trust that existed at any time during 2025); the grantor-trust owner is outside the line 8 question and the gated lines; WIDE accepted.",
+  "prompt_sha": "bac1d7745a6c4e4b90d1449fbf5df780355eb8cbc0383a8e87dd907469971f1e",
+  "findings": [
+   {
+    "n": 0,
+    "kind": "NARROW",
+    "class": "out of scope / presentation",
+    "evidence": "i1040sb p. 3; f1040sb line 8; forms/2025/sb.yaml: Schedule B line 8 asks only about a distribution, a grantor or a transferor. The p. 3 sentence on owners under the grantor trust rules concerns the trust's Form 3520-A, not this return. The gated lines (sb.line2, line3, line6) do not change, and the printed No answers the form's question."
+   },
+   {
+    "n": 1,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "i1040sb p. 3: A loan outside the 'generally' rule draws yes: refused. Safe (widening from BUG-0246)."
+   },
+   {
+    "n": 2,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "i1040sb p. 3: Grantor or transferor with no Form 3520 requirement: refused; lines unaffected. Safe."
+   },
+   {
+    "n": 3,
+    "kind": "UNCLEAR",
+    "class": "accepted WIDE",
+    "evidence": "i1040sb p. 3: Transfer before 2025 to a trust still in existence: the clause 'a foreign trust that existed at any time during 2025' points to yes. A reading that keeps the opening 'During 2025' for the grantor limb prints No on line 8, and lines 2, 3 and 6 are unaffected. The residual comes from the form's own line 8 wording. No action needed."
+   }
+  ],
+  "bugs": []
+ },
+ "unruled:scope.other_line16": {
+  "reason": "Round-1 PENDING-0-5 closed (the Form 8615 conditions are stated and match i1040gi p. 36); passive Schedule C is covered; Schedule J is elective; section 965(i) falls under the opening clause; WIDE accepted.",
+  "prompt_sha": "fa3680b1daaef0d69192e911fc167e421b6a4fdfee3338e551ca9c954903547e",
+  "findings": [
+   {
+    "n": 0,
+    "kind": "NARROW",
+    "class": "covered",
+    "evidence": "i1040gi p. 40; forms/2025/sc.yaml, scope.yaml: sc.passive -> sc.screened refuses sc.line1, and scope.other_income asks about 'income or loss from a passive activity' (round 1)."
+   },
+   {
+    "n": 1,
+    "kind": "NARROW",
+    "class": "out of scope / presentation",
+    "evidence": "i1040gi p. 36: Schedule J is an election ('your tax may be less if you choose'); a no computes the ordinary tax correctly (round 1)."
+   },
+   {
+    "n": 2,
+    "kind": "UNCLEAR",
+    "class": "out of scope / presentation",
+    "evidence": "i1040gi p. 36: A section 965(i) triggering event is 'additional Form 1040 line 16 tax' under the opening clause, and 'including' does not limit the list. Section 965 filers also have section 962/CFC facts the list names. Rare; no change needed."
+   },
+   {
+    "n": 3,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "i1040gi p. 34: Form 8621 with no line 16e tax: refused. Safe (round 1)."
+   },
+   {
+    "n": 4,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "i1040gi p. 36: January 1 birthday rule: actual age gives a yes for a filer treated as one year older. Refused. Safe. The rule only ever makes a filer older, so no NARROW reading."
+   }
+  ],
+  "bugs": []
+ },
+ "unruled:scope.schedule1": {
+  "reason": "Round-1 PENDING-0-6 closed (the three clergy groups are named); the NARROW findings are covered by sibling gates as in round 1, but 'wages from a church' omits qualified church-controlled organizations (PENDING-4-11, low); WIDE accepted.",
+  "prompt_sha": "a378653f24c5685e5ad5cad0495bb352319f7499f8b1d714245d66dd38faaaeb",
+  "findings": [
+   {
+    "n": 0,
+    "kind": "NARROW",
+    "class": "covered",
+    "evidence": "i1040gi p. 40; forms/2025/sc.yaml, scope.yaml: Passive Schedule C: sc.passive / scope.other_income (round 1)."
+   },
+   {
+    "n": 1,
+    "kind": "NARROW",
+    "class": "covered",
+    "evidence": "i1040gi p. 104; forms/2025/s1.yaml: s1a.line5_calc is gated by s1.sc_1a (sc.tips_ot) (round 1)."
+   },
+   {
+    "n": 2,
+    "kind": "NARROW",
+    "class": "covered",
+    "evidence": "i1040gi p. 108; forms/2025/s1.yaml: s1a.line14b_calc is gated by s1.sc_1a; 1099-MISC box 3 outside Schedule C is refused by oi8z.figured (round 1)."
+   },
+   {
+    "n": 3,
+    "kind": "NARROW",
+    "class": "covered",
+    "evidence": "i1040s8812 p. 8; forms/2025/sd.yaml, person.yaml: A section 1256 dealer answers yes to sd.other_forms (Form 6781) and person.se_screen (round 1)."
+   },
+   {
+    "n": 4,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "i1040gi pp. 42-43: Minister with W-2 only and Form 4361: refused. Safe (round 1)."
+   },
+   {
+    "n": 5,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "i1040gi p. 42: Church wages under $108.28: refused. Safe (round 1)."
+   },
+   {
+    "n": 6,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "i1040gi p. 40: Rental of personal property in a trade or business: refused. Safe."
+   },
+   {
+    "n": 7,
+    "kind": "UNCLEAR",
+    "class": "defect",
+    "evidence": "i1040sse p. 1; i1040gi p. 11; p334 p. 44: PENDING-4-11. Church employee income is wages from 'a church or qualified church-controlled organization that has a certificate in effect electing an exemption' (i1040sse p. 1). The question's gloss 'wages from a church that elected exemption' (also in person.se_screen) lets a filer employed by an electing church-controlled school or hospital answer no. Effect: EIC Step 5 uses line 1z with no adjustment, and no SE tax is figured on wages of $108.28 or more. f8959.unsupported uses the bare term 'church employee income' and may catch a filer who knows it."
+   },
+   {
+    "n": 8,
+    "kind": "UNCLEAR",
+    "class": "accepted WIDE",
+    "evidence": "i1040gi p. 43: The list names 'income as a minister ...' and 'church employee income' after 'including', so a filer reads the named items as part of the question. Either reading that matters leads to yes. Safe."
+   }
+  ],
+  "bugs": [
+   "PENDING-4-11"
+  ]
+ },
+ "unruled:ssb.terror_disability": {
+  "reason": "Round-1 PENDING-3-4 closed ('eligible for coverage ... whether or not you made a claim'); the full-retirement-age finding remains WIDE (T-008).",
+  "prompt_sha": "32b055c485c0a25e182e4c4934b2052ee9dd390a33dac74ea3fc51c14bfc19f5",
+  "findings": [
+   {
+    "n": 0,
+    "kind": "UNCLEAR",
+    "class": "accepted WIDE",
+    "evidence": "i1040gi p. 31: Benefits after full retirement age read as disability payments: yes refuses what the tool computes. Safe (T-008, round 1)."
+   }
+  ],
+  "bugs": []
+ }
+}

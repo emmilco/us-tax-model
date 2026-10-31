@@ -1,5 +1,20 @@
 {
- "rulings": {},
+ "rulings": {
+  "limit:p504:p15:fa6a6490": {
+   "enforced_by": [
+    "s1.alimony_unsupported",
+    "s1.alimony_refused"
+   ],
+   "reason": "Pub. 504's presumption that alimony reduced at a time clearly associated with a child contingency is child support; the tool does not apply it but refuses: s1.alimony_unsupported asks for \"an amount the instrument reduces on a contingency relating to a child, such as reaching a certain age, or at a time associated with one\", which takes in every reduction this window describes, and s1.alimony_refused refuses on yes."
+  },
+  "limit:p504:p15:9ff004aa": {
+   "enforced_by": [
+    "s1.alimony_unsupported",
+    "s1.alimony_refused"
+   ],
+   "reason": "Pub. 504's presumption that alimony reduced at a time clearly associated with a child contingency is child support; the tool does not apply it but refuses: s1.alimony_unsupported asks for \"an amount the instrument reduces on a contingency relating to a child, such as reaching a certain age, or at a time associated with one\", which takes in every reduction this window describes, and s1.alimony_refused refuses on yes."
+  }
+ },
  "baseline": {
   "limit:f4952:p3:5a83c475": "5a83c475cccd7121",
   "limit:fr-2025-24154:p21:a0713134": "a0713134c6c477e5",

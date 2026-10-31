@@ -40,10 +40,10 @@
 
 ## 8 — `sb.line8`
 
-- **IRS:** Received a distribution from, or were grantor of or transferor to, a foreign trust during 2025?
-- **Encoded (Bool):** Input — Received a distribution from, or were grantor of or transferor to, a foreign trust during 2025?
-- Expr: `{"op":"input","source":"Received a distribution from, or were grantor of or transferor to, a foreign trust during 2025?"}`
-- Cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; sha256 b92f31ec)
+- **IRS:** During 2025, did you receive a distribution from a foreign trust (a loan of cash or marketable securities counts), or were you the grantor of, or a transferor to, a foreign trust that existed at any time during 2025?
+- **Encoded (Bool):** Input — During 2025, did you receive a distribution from a foreign trust (a loan of cash or marketable securities counts), or were you the grantor of, or a transferor to, a foreign trust that existed at any time during 2025?
+- Expr: `{"op":"input","source":"During 2025, did you receive a distribution from a foreign trust (a loan of cash or marketable securities counts), or were you the grantor of, or a transferor to, a foreign trust that existed at any time during 2025?"}`
+- Cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts; p. 3, Line 8, "a loan of cash or marketable securities is generally considered to be a distribution"; "If you were the grantor of, or transferor to, a foreign trust that existed during 2025, you may have to file Form 3520." (TY2025; printed April 23, 2025; sha256 b92f31ec)
 
 ## (helper) — `sb.zero`
 

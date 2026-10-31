@@ -1,0 +1,1573 @@
+{
+ "bank": {
+  "evaluation_failures": 0,
+  "fixtures": 1382,
+  "generated": 500,
+  "partial_bases": 40,
+  "partial_records": 630,
+  "seed": 20261026
+ },
+ "errors": [],
+ "failures": [],
+ "family": "deepseek",
+ "form": "sales",
+ "lines": [
+  {
+   "absent": 0,
+   "agree": 2166,
+   "candidate": "sales.e",
+   "compared": 2245,
+   "differ": 79,
+   "handle": "(e)",
+   "in_scope": 2243,
+   "in_scope_agree": 2166,
+   "kinds": {
+    "candidate-refuses": 2,
+    "candidate-unknown": 70,
+    "value": 7
+   },
+   "kinds_by_return": {
+    "completed": {
+     "candidate-unknown": 28
+    },
+    "incomplete": {
+     "candidate-unknown": 5
+    },
+    "refused": {
+     "candidate-refuses": 2,
+     "candidate-unknown": 37,
+     "value": 7
+    }
+   },
+   "open_at_triage": true,
+   "project": "sales.e",
+   "shown_when": null,
+   "sources": {
+    "fixture": 341,
+    "generated": 554,
+    "partial": 1350
+   },
+   "status": "DISAGREE",
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "sales[a].special",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sales[a].special",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "sales[a]",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 200000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sales[a].covered",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sales[a].reported_basis",
+       "value": {
+        "cents": 200000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "sales.refuse.special",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 222476,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sales[s1].special",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sales[s1].h_basis_reported",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sales[s1].reported_basis",
+       "value": {
+        "cents": 222476,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "sales[s1]",
+     "kind": "value",
+     "project": {
+      "cents": 285386,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sales[s1].covered",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sales[s1].covered",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sales[s1].correct_basis",
+       "value": {
+        "cents": 285386,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 8,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "cents": 1623966,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sales[s2].special",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sales[s2].h_basis_reported",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sales[s2].reported_basis",
+       "value": {
+        "cents": 1623966,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "sales[s2]",
+     "kind": "value",
+     "project": {
+      "cents": 1327795,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sales[s2].covered",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sales[s2].covered",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sales[s2].correct_basis",
+       "value": {
+        "cents": 1327795,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 21,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "cents": 2025982,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sales[s1].special",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sales[s1].h_basis_reported",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sales[s1].reported_basis",
+       "value": {
+        "cents": 2025982,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "sales[s1]",
+     "kind": "value",
+     "project": {
+      "cents": 2541438,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sales[s1].covered",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sales[s1].covered",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sales[s1].correct_basis",
+       "value": {
+        "cents": 2541438,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 92,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sales[s2].special",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sales[s2].h_basis_reported",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sales[s2].reported_basis",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "sales[s2]",
+     "kind": "value",
+     "project": {
+      "cents": 2015126,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sales[s2].covered",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sales[s2].covered",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sales[s2].correct_basis",
+       "value": {
+        "cents": 2015126,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 160,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "cents": 4572105,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sales[s3].special",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sales[s3].h_basis_reported",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sales[s3].reported_basis",
+       "value": {
+        "cents": 4572105,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "sales[s3]",
+     "kind": "value",
+     "project": {
+      "cents": 8976602,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sales[s3].covered",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sales[s3].covered",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sales[s3].correct_basis",
+       "value": {
+        "cents": 8976602,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 256,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "cents": 4552714,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sales[s1].special",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sales[s1].h_basis_reported",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sales[s1].reported_basis",
+       "value": {
+        "cents": 4552714,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "sales[s1]",
+     "kind": "value",
+     "project": {
+      "cents": 1990727,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sales[s1].covered",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sales[s1].covered",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sales[s1].correct_basis",
+       "value": {
+        "cents": 1990727,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 357,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "sales[s1].special",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sales[s1].special",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "sales[s1]",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 4835959,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sales[s1].covered",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sales[s1].covered",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sales[s1].correct_basis",
+       "value": {
+        "cents": 4835959,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 380,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "input": "sales[s1].special",
+      "kind": "unknown",
+      "reason": "no input supplied for sales[s1].special"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sales[s1].special",
+       "value": {
+        "input": "sales[s1].special",
+        "kind": "unknown",
+        "reason": "no input supplied for sales[s1].special"
+       }
+      }
+     ],
+     "instance": "sales[s1]",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 2702000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sales[s1].covered",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sales[s1].covered",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sales[s1].correct_basis",
+       "value": {
+        "cents": 2702000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "base": "classm.f8889.1.deepseek",
+      "kind": "partial",
+      "withheld": "sales[s1].special"
+     }
+    },
+    {
+     "candidate": {
+      "input": "sales[s2].special",
+      "kind": "unknown",
+      "reason": "no input supplied for sales[s2].special"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sales[s2].special",
+       "value": {
+        "input": "sales[s2].special",
+        "kind": "unknown",
+        "reason": "no input supplied for sales[s2].special"
+       }
+      }
+     ],
+     "instance": "sales[s2]",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 1739900,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sales[s2].covered",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sales[s2].covered",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sales[s2].correct_basis",
+       "value": {
+        "cents": 1739900,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "base": "classm.f8889.1.deepseek",
+      "kind": "partial",
+      "withheld": "sales[s2].special"
+     }
+    },
+    {
+     "candidate": {
+      "input": "sales[s1].special",
+      "kind": "unknown",
+      "reason": "no input supplied for sales[s1].special"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sales[s1].special",
+       "value": {
+        "input": "sales[s1].special",
+        "kind": "unknown",
+        "reason": "no input supplied for sales[s1].special"
+       }
+      }
+     ],
+     "instance": "sales[s1]",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 4499300,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sales[s1].covered",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sales[s1].covered",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sales[s1].correct_basis",
+       "value": {
+        "cents": 4499300,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.sd.2.deepseek",
+      "kind": "partial",
+      "withheld": "sales[s1].special"
+     }
+    },
+    {
+     "candidate": {
+      "input": "sales[s2].special",
+      "kind": "unknown",
+      "reason": "no input supplied for sales[s2].special"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sales[s2].special",
+       "value": {
+        "input": "sales[s2].special",
+        "kind": "unknown",
+        "reason": "no input supplied for sales[s2].special"
+       }
+      }
+     ],
+     "instance": "sales[s2]",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 79000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sales[s2].covered",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sales[s2].covered",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sales[s2].correct_basis",
+       "value": {
+        "cents": 79000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.sd.2.deepseek",
+      "kind": "partial",
+      "withheld": "sales[s2].special"
+     }
+    },
+    {
+     "candidate": {
+      "input": "sales[s1].special",
+      "kind": "unknown",
+      "reason": "no input supplied for sales[s1].special"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sales[s1].special",
+       "value": {
+        "input": "sales[s1].special",
+        "kind": "unknown",
+        "reason": "no input supplied for sales[s1].special"
+       }
+      }
+     ],
+     "instance": "sales[s1]",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 1414000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sales[s1].covered",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sales[s1].reported_basis",
+       "value": {
+        "cents": 1414000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.clcw26.3.deepseek",
+      "kind": "partial",
+      "withheld": "sales[s1].special"
+     }
+    },
+    {
+     "candidate": {
+      "input": "sales[s1].special",
+      "kind": "unknown",
+      "reason": "no input supplied for sales[s1].special"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sales[s1].special",
+       "value": {
+        "input": "sales[s1].special",
+        "kind": "unknown",
+        "reason": "no input supplied for sales[s1].special"
+       }
+      }
+     ],
+     "instance": "sales[s1]",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 61900,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sales[s1].covered",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sales[s1].covered",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sales[s1].correct_basis",
+       "value": {
+        "cents": 61900,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "base": "classm.s2.2.deepseek",
+      "kind": "partial",
+      "withheld": "sales[s1].special"
+     }
+    }
+   ]
+  },
+  {
+   "absent": 0,
+   "agree": 2172,
+   "candidate": "sales.g",
+   "compared": 2245,
+   "differ": 73,
+   "handle": "(g)",
+   "in_scope": 2242,
+   "in_scope_agree": 2172,
+   "kinds": {
+    "candidate-refuses": 3,
+    "candidate-unknown": 70
+   },
+   "kinds_by_return": {
+    "completed": {
+     "candidate-unknown": 28
+    },
+    "incomplete": {
+     "candidate-unknown": 5
+    },
+    "refused": {
+     "candidate-refuses": 3,
+     "candidate-unknown": 37
+    }
+   },
+   "open_at_triage": true,
+   "project": "sales.g",
+   "shown_when": null,
+   "sources": {
+    "fixture": 341,
+    "generated": 554,
+    "partial": 1350
+   },
+   "status": "DISAGREE",
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "sales[a].special",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sales[a].h_code_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sales[a].special",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "sales[a]",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sales[a].b",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sales[a].w",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "sales.refuse.special",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "sales[a].h_code_other",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sales[a].h_code_other",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "sales[a]",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sales[a].b",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sales[a].w",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "sales.refuse.code",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "sales[s1].special",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sales[s1].h_code_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sales[s1].special",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "sales[s1]",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sales[s1].b",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sales[s1].w",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 380,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "input": "sales[s1].special",
+      "kind": "unknown",
+      "reason": "no input supplied for sales[s1].special"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sales[s1].h_code_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sales[s1].special",
+       "value": {
+        "input": "sales[s1].special",
+        "kind": "unknown",
+        "reason": "no input supplied for sales[s1].special"
+       }
+      }
+     ],
+     "instance": "sales[s1]",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sales[s1].b",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sales[s1].w",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "base": "classm.f8889.1.deepseek",
+      "kind": "partial",
+      "withheld": "sales[s1].special"
+     }
+    },
+    {
+     "candidate": {
+      "input": "sales[s2].special",
+      "kind": "unknown",
+      "reason": "no input supplied for sales[s2].special"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sales[s2].h_code_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sales[s2].special",
+       "value": {
+        "input": "sales[s2].special",
+        "kind": "unknown",
+        "reason": "no input supplied for sales[s2].special"
+       }
+      }
+     ],
+     "instance": "sales[s2]",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sales[s2].b",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sales[s2].w",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "base": "classm.f8889.1.deepseek",
+      "kind": "partial",
+      "withheld": "sales[s2].special"
+     }
+    },
+    {
+     "candidate": {
+      "input": "sales[s1].special",
+      "kind": "unknown",
+      "reason": "no input supplied for sales[s1].special"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sales[s1].h_code_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sales[s1].special",
+       "value": {
+        "input": "sales[s1].special",
+        "kind": "unknown",
+        "reason": "no input supplied for sales[s1].special"
+       }
+      }
+     ],
+     "instance": "sales[s1]",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sales[s1].b",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sales[s1].w",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.sd.2.deepseek",
+      "kind": "partial",
+      "withheld": "sales[s1].special"
+     }
+    },
+    {
+     "candidate": {
+      "input": "sales[s2].special",
+      "kind": "unknown",
+      "reason": "no input supplied for sales[s2].special"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sales[s2].h_code_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sales[s2].special",
+       "value": {
+        "input": "sales[s2].special",
+        "kind": "unknown",
+        "reason": "no input supplied for sales[s2].special"
+       }
+      }
+     ],
+     "instance": "sales[s2]",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sales[s2].b",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sales[s2].w",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.sd.2.deepseek",
+      "kind": "partial",
+      "withheld": "sales[s2].special"
+     }
+    },
+    {
+     "candidate": {
+      "input": "sales[s1].special",
+      "kind": "unknown",
+      "reason": "no input supplied for sales[s1].special"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sales[s1].h_code_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sales[s1].special",
+       "value": {
+        "input": "sales[s1].special",
+        "kind": "unknown",
+        "reason": "no input supplied for sales[s1].special"
+       }
+      }
+     ],
+     "instance": "sales[s1]",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sales[s1].b",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sales[s1].w",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.clcw26.3.deepseek",
+      "kind": "partial",
+      "withheld": "sales[s1].special"
+     }
+    },
+    {
+     "candidate": {
+      "input": "sales[s1].special",
+      "kind": "unknown",
+      "reason": "no input supplied for sales[s1].special"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sales[s1].h_code_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sales[s1].special",
+       "value": {
+        "input": "sales[s1].special",
+        "kind": "unknown",
+        "reason": "no input supplied for sales[s1].special"
+       }
+      }
+     ],
+     "instance": "sales[s1]",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sales[s1].b",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sales[s1].w",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "base": "classm.s2.2.deepseek",
+      "kind": "partial",
+      "withheld": "sales[s1].special"
+     }
+    }
+   ]
+  }
+ ],
+ "log_sha256_at_triage": "9878a3653a92b4b98c3c2a8989560d988239e206feb0170c1800e1b88b542d03",
+ "policy": "executable-triage-v2",
+ "response_sha256": "f98c10bcd4ffd5ff80f3e54b1b02b12b2f8b1498a3dfd264e4831b6df5fe71ca",
+ "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
+ "state": "evaluated",
+ "subject_sha256": "c177a67ab70473e97cf0386866ab53d29cf069a64bd59c531f548e1350c1924e"
+}

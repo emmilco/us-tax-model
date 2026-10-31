@@ -27,6 +27,13 @@
   {
    "printed": "(SMW 10)",
    "restated": "Add column (SMW 6) and column (SMW 8).",
+   "model": "IRS line 10 asks 'Was your annuity starting date before 1987?' and says 'Yes. STOP Do not complete the rest of this worksheet'; the restatement always adds lines 6 and 8.",
+   "ruling": "Ruling: scope; i1040gi p. 29, Simplified Method Worksheet: line 5: \"If your annuity starting date was before 1987, skip lines 6 and 7 and enter this amount on line 8\"; line 10: \"Was your annuity starting date before 1987? Yes. STOP Do not complete the rest of this worksheet.\" retirement.special still refuses every annuity with after-tax cost whose starting date was before November 19, 1996 (so every pre-1987 annuity), and the worksheet is shown only under retirement.smw_shown (an annuity with cost left), so the before-1987 skip and STOP are never reached. Re-checked against the current forms/2025/retirement.yaml: BUG-0243 only added items to the retirement.special list; the two items relied on here are unchanged and the worksheet lines are unchanged. Same model reading as earlier rounds. Project stands on the English.",
+   "context": "99a91496d7b39ceb41022a88f23ed56284e8311c38361d0c9df88715c22b7d2c"
+  },
+  {
+   "printed": "(SMW 10)",
+   "restated": "Add column (SMW 6) and column (SMW 8).",
    "model": "IRS line 10 asks 'Was your annuity starting date before 1987?' and says if Yes, 'STOP Do not complete the rest of this worksheet'; the restatement unconditionally adds lines 6 and 8.",
    "ruling": "Ruling: scope; i1040gi p. 29, Simplified Method Worksheet, line 10: \"Was your annuity starting date before 1987? Yes. STOP Do not complete the rest of this worksheet. No. Add lines 6 and 8.\" retirement.special refuses \"a pension or annuity in which you have after-tax cost whose annuity starting date was before November 19, 1996\" (so every annuity starting before 1987), and retirement.annuity, which routes an entry to the worksheet, asks for \"an annuity starting date after November 18, 1996\", so the question is answered No on every entry that reaches the worksheet and its No branch is the project's sum; the skipped-line rule is not engaged. Same model reading as rounds 1 and 2. Project stands.",
    "context": "a6accce0290876be96963c9260b0b442745e3057b885fb4fe1c7e895f049f75f"
@@ -76,6 +83,13 @@
   {
    "printed": "(SMW 11)",
    "restated": "Subtract column (SMW 10) from column (SMW 2).",
+   "model": "IRS line 10 says 'Yes. STOP Do not complete the rest of this worksheet' for an annuity starting date before 1987; the restatement always subtracts line 10 from line 2.",
+   "ruling": "Ruling: scope; i1040gi p. 29, Simplified Method Worksheet: line 5: \"If your annuity starting date was before 1987, skip lines 6 and 7 and enter this amount on line 8\"; line 10: \"Was your annuity starting date before 1987? Yes. STOP Do not complete the rest of this worksheet.\" retirement.special still refuses every annuity with after-tax cost whose starting date was before November 19, 1996 (so every pre-1987 annuity), and the worksheet is shown only under retirement.smw_shown (an annuity with cost left), so the before-1987 skip and STOP are never reached. Re-checked against the current forms/2025/retirement.yaml: BUG-0243 only added items to the retirement.special list; the two items relied on here are unchanged and the worksheet lines are unchanged. Same model reading as earlier rounds. Project stands on the English.",
+   "context": "99a91496d7b39ceb41022a88f23ed56284e8311c38361d0c9df88715c22b7d2c"
+  },
+  {
+   "printed": "(SMW 11)",
+   "restated": "Subtract column (SMW 10) from column (SMW 2).",
    "model": "Line 11 follows only after a No answer to the line 10 before-1987 question; the restatement would compute it even when the IRS says 'STOP Do not complete the rest of this worksheet'.",
    "ruling": "Ruling: scope; i1040gi p. 29, Simplified Method Worksheet: line 5: \"If your annuity starting date was before 1987, skip lines 6 and 7 and enter this amount on line 8\"; line 10: \"Was your annuity starting date before 1987? Yes. STOP Do not complete the rest of this worksheet.\" retirement.special refuses every annuity with after-tax cost whose starting date was before November 19, 1996 (so every pre-1987 annuity), and the worksheet is shown only under retirement.smw_shown, so the before-1987 branch and STOP are never reached. The new hiding condition retirement.smw_shown was checked by evaluating cases (IRA with the pension answers unasked, cost recovered, fully taxable, cost left): it hides the worksheet exactly where i1040gi pp. 28-30 skip it. Same model reading as earlier rounds. Project stands on the English.",
    "context": "a5df70537ddc01518738820cf0510d7a854abef31d0ee02552b6d7ad210f0efa"
@@ -111,6 +125,13 @@
   {
    "printed": "(SMW 2)",
    "restated": "Enter the amount from helper \"Your cost in the plan at the annuity starting date (Simplified Method Worksheet, line 2)\".",
+   "model": "The IRS before-you-begin note says 'If you are the beneficiary of a deceased employee or former employee who died before August 21, 1996, include any death benefit exclusion that you are entitled to (up to $5,000) in the amount entered on line 2 below'; the restatement only enters the cost helper and omits that addition.",
+   "ruling": "Ruling: scope; i1040gi p. 29, Simplified Method Worksheet: \"If you are the beneficiary of a deceased employee or former employee who died before August 21, 1996, include any death benefit exclusion that you are entitled to (up to $5,000) in the amount entered on line 2 below.\" retirement.special still asks about \"a death benefit exclusion\" and refuses the entry's taxable amount (retirement.taxable and retirement.rolled), so line 2 is the cost alone on every entry the worksheet reaches. Re-checked against the current forms/2025/retirement.yaml: BUG-0243 only added items to the retirement.special list; the two items relied on here are unchanged and the worksheet lines are unchanged. Same model reading as earlier rounds. Project stands on the English.",
+   "context": "99a91496d7b39ceb41022a88f23ed56284e8311c38361d0c9df88715c22b7d2c"
+  },
+  {
+   "printed": "(SMW 2)",
+   "restated": "Enter the amount from helper \"Your cost in the plan at the annuity starting date (Simplified Method Worksheet, line 2)\".",
    "model": "The gate limits the line to the second Simplified Method condition (annuity starting date after November 18, 1996, with the age/guaranteed-payment tests), but the IRS text says you must use the Simplified Method if either that condition or 'your annuity starting date was after July 1, 1986, and you used this method last year'; the restatement omits the latter condition.",
    "ruling": "Ruling: scope; i1040gi p. 30, Simplified Method: \"You must use the Simplified Method if either of the following applies. 1. Your annuity starting date was after July 1, 1986, and you used this method last year to figure the taxable part. 2. Your annuity starting date was after November 18, 1996, and both of the following apply.\" The model says the hiding condition (retirement.annuity, condition 2) omits condition 1. Condition 1 alone reaches only an annuity starting from July 2, 1986 to November 18, 1996 (a later start that met the method last year met condition 2 on its starting date, which does not change); retirement.special refuses \"a pension or annuity in which you have after-tax cost whose annuity starting date was before November 19, 1996, or for which the Simplified Method does not apply (the General Rule)\" and is read by retirement.taxable, so every condition-1-only annuity is refused (screen retirement.special). The English of the line and of its condition is right for every entry the tool computes. Not raised by the model, and ruled separately: the same condition shows the worksheet on IRA entries (F5) and on annuities whose cost was recovered before 2025 (F6). Project stands on the English.",
    "context": "864cc5908973e6bfaa3a163cde92833fe75028941b40dcbc532c50c823728fdd"
@@ -135,6 +156,13 @@
    "model": "The worksheet's before-you-begin note says to 'include any death benefit exclusion that you are entitled to (up to $5,000) in the amount entered on line 2'; the restatement uses only the cost helper and omits that addition.",
    "ruling": "Ruling: scope; i1040gi (2025) p.29 worksheet preamble includes any entitled death-benefit exclusion in line2. The retirement.special question expressly screens a death-benefit exclusion; retirement.taxable and retirement.amount_a refuse it, as does retirement.rolled. A supported completed distribution therefore has no such addition and uses after-tax cost. The broader source case is excluded, not model noise; no standalone correctness claim is made on an excluded distribution.",
    "context": "331a9db6f5f9be1f0129a77b9961cba4026f385622f8a88de30660aa08ad5eeb"
+  },
+  {
+   "printed": "(SMW 4)",
+   "restated": "Choose — [helper \"Did you complete this worksheet for this annuity last year?\" = true → helper \"Line 4 of last year's Simplified Method Worksheet\"] [helper \"Did you complete this worksheet for this annuity last year?\" = false → helper \"Line 2 divided by the number on line 3 (Table 2 for a joint and survivor annuity starting after 1997, Table 1 otherwise)\"]",
+   "model": "IRS Table 1 distinguishes 'before November 19, 1996' from 'after November 18, 1996' and gives different numbers (for example, '55 or under' is 300 before but 360 after); the program's Table 1 helper uses only the after-November 18, 1996 values.",
+   "ruling": "Ruling: scope; i1040gi p. 29, Simplified Method Worksheet: Table 1 for Line 3 has \"before November 19, 1996\" (300, 260, 240, 170, 120) and \"after November 18, 1996\" (360, 310, 260, 210, 160) columns. retirement.special still refuses \"a pension or annuity in which you have after-tax cost whose annuity starting date was before November 19, 1996\", so only the after-November-18-1996 column is reached. Re-checked against the current forms/2025/retirement.yaml: BUG-0243 only added items to the retirement.special list; the two items relied on here are unchanged and the worksheet lines are unchanged. Same model reading as earlier rounds. Project stands on the English.",
+   "context": "99a91496d7b39ceb41022a88f23ed56284e8311c38361d0c9df88715c22b7d2c"
   },
   {
    "printed": "(SMW 4)",
@@ -209,6 +237,13 @@
   {
    "printed": "(SMW 6)",
    "restated": "Enter the amount from helper \"Amount recovered tax free in years after 1986 (line 10 of last year's worksheet)\".",
+   "model": "IRS line 5 says 'If your annuity starting date was before 1987, skip lines 6 and 7 and enter this amount on line 8'; the restatement reports line 6 for any completed Simplified Method worksheet without this exclusion.",
+   "ruling": "Ruling: scope; i1040gi p. 29, Simplified Method Worksheet: line 5: \"If your annuity starting date was before 1987, skip lines 6 and 7 and enter this amount on line 8\"; line 10: \"Was your annuity starting date before 1987? Yes. STOP Do not complete the rest of this worksheet.\" retirement.special still refuses every annuity with after-tax cost whose starting date was before November 19, 1996 (so every pre-1987 annuity), and the worksheet is shown only under retirement.smw_shown (an annuity with cost left), so the before-1987 skip and STOP are never reached. Re-checked against the current forms/2025/retirement.yaml: BUG-0243 only added items to the retirement.special list; the two items relied on here are unchanged and the worksheet lines are unchanged. Same model reading as earlier rounds. Project stands on the English.",
+   "context": "99a91496d7b39ceb41022a88f23ed56284e8311c38361d0c9df88715c22b7d2c"
+  },
+  {
+   "printed": "(SMW 6)",
+   "restated": "Enter the amount from helper \"Amount recovered tax free in years after 1986 (line 10 of last year's worksheet)\".",
    "model": "IRS line 5 says 'If your annuity starting date was before 1987, skip lines 6 and 7'; the restatement reports line 6 for any completed Simplified Method Worksheet without that exclusion.",
    "ruling": "Ruling: scope; i1040gi p. 29, Simplified Method Worksheet: line 5: \"If your annuity starting date was before 1987, skip lines 6 and 7 and enter this amount on line 8\"; line 10: \"Was your annuity starting date before 1987? Yes. STOP Do not complete the rest of this worksheet.\" retirement.special refuses every annuity with after-tax cost whose starting date was before November 19, 1996 (so every pre-1987 annuity), and the worksheet is shown only under retirement.smw_shown, so the before-1987 branch and STOP are never reached. The new hiding condition retirement.smw_shown was checked by evaluating cases (IRA with the pension answers unasked, cost recovered, fully taxable, cost left): it hides the worksheet exactly where i1040gi pp. 28-30 skip it. Same model reading as earlier rounds. Project stands on the English.",
    "context": "a5df70537ddc01518738820cf0510d7a854abef31d0ee02552b6d7ad210f0efa"
@@ -226,6 +261,13 @@
    "model": "The gate limits the line to the second Simplified Method condition (annuity starting date after November 18, 1996, with the age/guaranteed-payment tests), but the IRS text says you must use the Simplified Method if either that condition or 'your annuity starting date was after July 1, 1986, and you used this method last year'; the restatement omits the latter condition.",
    "ruling": "Ruling: scope; i1040gi p. 30, Simplified Method: \"You must use the Simplified Method if either of the following applies. 1. Your annuity starting date was after July 1, 1986, and you used this method last year to figure the taxable part. 2. Your annuity starting date was after November 18, 1996, and both of the following apply.\" The model says the hiding condition (retirement.annuity, condition 2) omits condition 1. Condition 1 alone reaches only an annuity starting from July 2, 1986 to November 18, 1996 (a later start that met the method last year met condition 2 on its starting date, which does not change); retirement.special refuses \"a pension or annuity in which you have after-tax cost whose annuity starting date was before November 19, 1996, or for which the Simplified Method does not apply (the General Rule)\" and is read by retirement.taxable, so every condition-1-only annuity is refused (screen retirement.special). The English of the line and of its condition is right for every entry the tool computes. Not raised by the model, and ruled separately: the same condition shows the worksheet on IRA entries (F5) and on annuities whose cost was recovered before 2025 (F6). Project stands on the English.",
    "context": "864cc5908973e6bfaa3a163cde92833fe75028941b40dcbc532c50c823728fdd"
+  },
+  {
+   "printed": "(SMW 7)",
+   "restated": "Subtract column (SMW 6) from column (SMW 2).",
+   "model": "IRS line 5 says 'If your annuity starting date was before 1987, skip lines 6 and 7 and enter this amount on line 8'; the restatement always subtracts line 6 from line 2.",
+   "ruling": "Ruling: scope; i1040gi p. 29, Simplified Method Worksheet: line 5: \"If your annuity starting date was before 1987, skip lines 6 and 7 and enter this amount on line 8\"; line 10: \"Was your annuity starting date before 1987? Yes. STOP Do not complete the rest of this worksheet.\" retirement.special still refuses every annuity with after-tax cost whose starting date was before November 19, 1996 (so every pre-1987 annuity), and the worksheet is shown only under retirement.smw_shown (an annuity with cost left), so the before-1987 skip and STOP are never reached. Re-checked against the current forms/2025/retirement.yaml: BUG-0243 only added items to the retirement.special list; the two items relied on here are unchanged and the worksheet lines are unchanged. Same model reading as earlier rounds. Project stands on the English.",
+   "context": "99a91496d7b39ceb41022a88f23ed56284e8311c38361d0c9df88715c22b7d2c"
   },
   {
    "printed": "(SMW 7)",
@@ -254,6 +296,13 @@
    "model": "For an annuity starting date before 1987, the IRS says to 'skip lines 6 and 7 and enter this amount on line 8' (the line 5 amount); the restatement instead always takes the smaller of line 5 or line 7.",
    "ruling": "Ruling: scope; i1040gi p. 29, Simplified Method Worksheet: line 5: \"If your annuity starting date was before 1987, skip lines 6 and 7 and enter this amount on line 8\"; line 10: \"Was your annuity starting date before 1987? Yes. STOP Do not complete the rest of this worksheet.\" retirement.special refuses every annuity with after-tax cost whose starting date was before November 19, 1996 (so every pre-1987 annuity), and the worksheet is shown only under retirement.smw_shown, so the before-1987 branch and STOP are never reached. The new hiding condition retirement.smw_shown was checked by evaluating cases (IRA with the pension answers unasked, cost recovered, fully taxable, cost left): it hides the worksheet exactly where i1040gi pp. 28-30 skip it. Same model reading as earlier rounds. Project stands on the English.",
    "context": "a5df70537ddc01518738820cf0510d7a854abef31d0ee02552b6d7ad210f0efa"
+  },
+  {
+   "printed": "(SMW 8)",
+   "restated": "Enter the smaller of column (SMW 5) or column (SMW 7).",
+   "model": "IRS line 5 says 'If your annuity starting date was before 1987, skip lines 6 and 7 and enter this amount on line 8'; the restatement instead always takes the smaller of line 5 or line 7.",
+   "ruling": "Ruling: scope; i1040gi p. 29, Simplified Method Worksheet: line 5: \"If your annuity starting date was before 1987, skip lines 6 and 7 and enter this amount on line 8\"; line 10: \"Was your annuity starting date before 1987? Yes. STOP Do not complete the rest of this worksheet.\" retirement.special still refuses every annuity with after-tax cost whose starting date was before November 19, 1996 (so every pre-1987 annuity), and the worksheet is shown only under retirement.smw_shown (an annuity with cost left), so the before-1987 skip and STOP are never reached. Re-checked against the current forms/2025/retirement.yaml: BUG-0243 only added items to the retirement.special list; the two items relied on here are unchanged and the worksheet lines are unchanged. Same model reading as earlier rounds. Project stands on the English.",
+   "context": "99a91496d7b39ceb41022a88f23ed56284e8311c38361d0c9df88715c22b7d2c"
   },
   {
    "printed": "(SMW 8)",

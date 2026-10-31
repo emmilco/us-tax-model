@@ -1,0 +1,21 @@
+{
+ "unruled:refund.box8": {
+  "reason": "No defect: the UNCLEAR reading errs only toward YES (refusal of a refund the tool computes), and the nontaxable business-tax refund is refused; both accepted WIDE.",
+  "prompt_sha": "2713d1b018178dca2dfbcd489b5d613dac00b23732438614a8cf05695b968b23",
+  "findings": [
+   {
+    "n": 0,
+    "kind": "UNCLEAR",
+    "class": "accepted WIDE",
+    "evidence": "f1099g p. 5 Box 8: 'an income tax that applies exclusively to income from a trade or business and is not a tax of general application'. The misreading the model describes (a general income tax that in the filer's case reached only business income) yields YES and a refusal (eval: stage16.mut.refund_single_unasked with refund.box8 yes -> refund.taxable, s1.line1, f1040.line11a, f1040.line24 refuse on gate refund.box8; with no, s1.line1 $1,400.00). The opposite error, a business-only tax answered NO, is not invited: the question names the kind of tax and gives box 8 as the example. Safe; adding 'not a tax of general application' would sharpen it (optional)."
+   },
+   {
+    "n": 1,
+    "kind": "WIDE",
+    "class": "accepted WIDE",
+    "evidence": "A business-only income tax refund never deducted is refused although the tool's zero would be right (f1099g p. 5: 'If taxable, report the amount in box 2 on Schedule C or F'). Refusal is safe; same disposition as group 3 finding 1."
+   }
+  ],
+  "bugs": []
+ }
+}

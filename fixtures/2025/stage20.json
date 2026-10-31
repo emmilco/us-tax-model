@@ -844,6 +844,7 @@
         "div.box12": 0,
         "person[taxpayer].born_before_2001": true,
         "person[taxpayer].born_after_1960": true,
+        "eic.died_2025": false,
         "eic.us_home": true,
         "eic.qc_of_another": false,
         "$f1095a": []
@@ -1980,6 +1981,7 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "eic.qc_of_another": false,
+        "eic.died_2025": false,
         "eic.us_home": true,
         "household.married": true,
         "household.credit_disallowed": false,

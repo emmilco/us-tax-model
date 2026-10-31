@@ -36,6 +36,13 @@ form:
             doc: f1040
             locator: Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first
               name and middle initial"; Filing Status
+        - when: household.rdp_community_property
+          form: Community income of a registered domestic partner (Form 8958; Pub. 555)
+          remedy: A registered domestic partner in Nevada, Washington or California must generally report half the combined
+            community income of the partners; Form 8958 and the community property rules of Pub. 555 are outside this tool.
+          cite:
+            doc: i1040gi
+            locator: 'p. 23, Community Property States, Nevada, Washington, and California domestic partners, "A registered domestic partner in Nevada, Washington, or California must generally report half the combined community income of the individual and their domestic partner. See Form 8958 and Pub. 555"'
     - id: f1040.line1e
       printed: 1e
       label: Taxable dependent care benefits from Form 2441, line 26
@@ -384,6 +391,12 @@ form:
           cite:
             doc: i1040gi
             locator: p. 14, Head of Household
+        - when: household.qss_fails
+          form: Qualifying surviving spouse filing status
+          remedy: Qualifying surviving spouse is checked but the tests are not met; your spouse must have died in 2023 or 2024 and you must not have remarried before the end of 2025, a child or stepchild (not a foster child) you can claim as a dependent must have lived in your home all year, you must have paid over half the cost of keeping up your home, and you must have been able to file jointly the year your spouse died.
+          cite:
+            doc: i1040gi
+            locator: p. 15, Qualifying Surviving Spouse
     - id: f1040.line13a
       printed: 13a
       label: Qualified business income deduction from Form 8995 or Form 8995-A

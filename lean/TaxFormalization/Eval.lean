@@ -69,6 +69,14 @@ def isUnknown (v : Json) : Bool := kindOf v == some "unknown" || kindOf v == som
 def isMoney (v : Json) : Bool := kindOf v == some "money"
 def isRefusal (v : Json) : Bool := kindOf v == some "refusal"
 
+/-- An unknown that traces back to a refusal gate awaiting its answer: it may become a refusal
+rather than a value (the TypeScript evaluator's `GATE_PENDING` mark). -/
+def isPending (v : Json) : Bool := kindOf v == some "unknown" && objGet v "gatePending" == some (Json.bool true)
+
+/-- The value, marked as awaiting a refusal gate's answer when `pending` and it is an unknown. -/
+def markPending (v : Json) (pending : Bool) : Json :=
+  if pending && kindOf v == some "unknown" && !isPending v then v.setObjVal! "gatePending" (Json.bool true) else v
+
 /-- What an atom's evaluated operands leave it before it computes: the first refusal among
 them in operand order, else the first unknown, else none (every operand is known). A refusal
 outranks an unknown, so a refusal is not held back behind an operand whose value cannot change
@@ -76,7 +84,7 @@ the outcome. -/
 def incompleteOperand (vs : List Json) : Option Json :=
   match vs.find? isRefusal with
   | some r => some r
-  | none => vs.find? (fun v => kindOf v == some "unknown")
+  | none => (vs.find? (fun v => kindOf v == some "unknown")).map (markPending · (vs.any isPending))
 def isBool (v : Json) : Bool := kindOf v == some "bool"
 def isEnum (v : Json) : Bool := kindOf v == some "enum"
 def isRate (v : Json) : Bool := kindOf v == some "rate"
@@ -229,24 +237,28 @@ def eval (ctx : Ctx) : Nat → Frame → Cmd → EvalM Json
     match objGet t "all" with
     | some (.arr ts) =>
       let mut missing : Option Json := none
+      let mut pending := false
       for x in ts do
         let v ← eval ctx fuel frame (.test x)
         if kindOf v == some "refusal" then return v
         if isUnknown v then
           missing := missing <|> some v
+          pending := pending || isPending v
         else if objGet v "value" == some (Json.bool false) then return mkBool false
-      return missing.getD (mkBool true)
+      return (missing.map (markPending · pending)).getD (mkBool true)
     | _ =>
     match objGet t "any" with
     | some (.arr ts) =>
       let mut missing : Option Json := none
+      let mut pending := false
       for x in ts do
         let v ← eval ctx fuel frame (.test x)
         if kindOf v == some "refusal" then return v
         if isUnknown v then
           missing := missing <|> some v
+          pending := pending || isPending v
         else if objGet v "value" == some (Json.bool true) then return mkBool true
-      return missing.getD (mkBool false)
+      return (missing.map (markPending · pending)).getD (mkBool false)
     | _ =>
     match objGet t "not" with
     | some inner =>
@@ -263,7 +275,7 @@ def eval (ctx : Ctx) : Nat → Frame → Cmd → EvalM Json
           | some (.arr #[a, b]) => do
             let av ← eval ctx fuel frame (.operand a)
             let bv ← eval ctx fuel frame (.operand b)
-            match numGet av "lowerBound", numGet bv "value" with
+            match (if isPending av then none else numGet av "lowerBound"), numGet bv "value" with
             | some lower, some bound =>
               let certain := if k == "gt" || k == "le" then lower > bound else if k == "ge" || k == "lt" then lower ≥ bound else lower > bound
               if certain then return mkBool (k == "gt" || k == "ge" || k == "ne")
@@ -312,7 +324,7 @@ def eval (ctx : Ctx) : Nat → Frame → Cmd → EvalM Json
           if kindOf gv == some "unknown" && objGet r "when_known" == some (Json.bool true) then
             set before
             continue
-          if isUnknown gv then return gv
+          if isUnknown gv then return markPending gv true
           if objGet gv "value" == some (Json.bool true) then
             -- The gate's key is the key of the entry it is read in: this frame, or an enclosing collection entry.
             let gateFormId := (gate.splitOn ".").headD ""
@@ -399,6 +411,7 @@ def eval (ctx : Ctx) : Nat → Frame → Cmd → EvalM Json
           let isCount := strGet ((findLine doc field).getD Json.null) "type" == some "Count"
           let mut total : Int := 0
           let mut missing : Option Json := none
+          let mut gatePending := false
           let sorted := entries.qsort (fun a b => a.compress < b.compress)
           for entry in sorted do
             let entryKey := entry.getStr?.toOption.getD ""
@@ -410,14 +423,18 @@ def eval (ctx : Ctx) : Nat → Frame → Cmd → EvalM Json
             if kindOf selected == some "refusal" then return selected
             if isUnknown selected then
               missing := missing <|> some selected
+              gatePending := gatePending || isPending selected
             else if objGet selected "value" == some (Json.bool true) then
               let v ← eval ctx fuel inner (.line field)
               if kindOf v == some "refusal" then return v
               if isUnknown v then
                 missing := missing <|> some v
+                gatePending := gatePending || isPending v
               else total := total + (if isCount then numGet v "value" else moneyOf v).getD 0
           match missing with
-          | some v => return if isCount then Json.mkObj [("kind", Json.str "unknown"), ("reason", Json.str "partial count"), ("lowerBound", Json.num (JsonNumber.fromInt total))] else v
+          -- An entry whose unknown traces back to a refusal gate awaiting its answer may become a
+          -- refusal rather than a count: the known entries then bound nothing.
+          | some v => return if isCount && !gatePending then Json.mkObj [("kind", Json.str "unknown"), ("reason", Json.str "partial count"), ("lowerBound", Json.num (JsonNumber.fromInt total))] else markPending v gatePending
           | none => return if isCount then mkCount total else mkMoney total
         | _ => return unknown "collection roster not confirmed"
     | "sum" =>
@@ -426,6 +443,7 @@ def eval (ctx : Ctx) : Nat → Frame → Cmd → EvalM Json
         -- All operands money, or all Counts (the checker allows nothing else).
         let mut total : Int := 0
         let mut unk : Option Json := none
+        let mut unkPending := false
         let mut wrong : Option Json := none
         let mut kind : Option String := none
         for r in refs do
@@ -441,11 +459,12 @@ def eval (ctx : Ctx) : Nat → Frame → Cmd → EvalM Json
               total := total + (if isMoney v then (moneyOf v).getD 0 else (numGet v "value").getD 0)
             else if isUnknown v then
               if unk.isNone then unk := some v
+              unkPending := unkPending || isPending v
             else
               if wrong.isNone then wrong := some (unknown s!"sum operand {ref} is not money or a Count")
           | .error _ => return unknown "sum operand not a reference"
         match unk, wrong with
-        | some u, _ => return u
+        | some u, _ => return markPending u unkPending
         | none, some w => return w
         | none, none => return (if kind == some "count" then mkCount total else mkMoney total)
       | _ => pure (unknown "sum has no operands")

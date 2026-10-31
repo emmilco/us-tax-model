@@ -3147,3 +3147,660 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
 - **Fix:** `shown_when: s8812.clwb_to7` (Worksheet B completed, line 2 $5,100 or more, line 5 less than line 1).
   Regression `stage21.t067.s8812_clwb_line6_blank`.
 - **Tags:** skipped-line-shown; value-neutral; caught-by-source-adjudication
+
+## BUG-0211 — A child placed for adoption had no relationship value
+
+- **Date:** 2026-10-30
+- **Caught by:** the section completeness-review experiment (`docs/2026-10-30_completeness_experiment/`, D1; dependents
+  claim 5, EIC claim 9), adjudicated. Witness: stage9.eic.one_child.line5 with the child entered as `other`, as the
+  question's wording invites for a child placed but not yet adopted: head of household refused and line 27a $0 instead
+  of $3,261.
+- **Symptom:** `dependent.relationship`'s `child` read "son, daughter, stepchild, foster child or their descendant";
+  i1040gi pp. 20 and 43: "An adopted child is always treated as your own child. An adopted child includes a child
+  lawfully placed with you for legal adoption."
+- **Where:** `forms/2025/dependent.yaml`, `dependent.relationship`.
+- **Fix:** the `child` gloss names an adopted child, including one lawfully placed for legal adoption, as your son or
+  daughter (with BUG-0214).
+- **Tags:** question-incomplete; definition-omitted; caught-by-completeness-review
+
+## BUG-0212 — "Full-time student" was asked without its definition
+
+- **Date:** 2026-10-30
+- **Caught by:** the completeness-review experiment (D2; dependents claim 3, EIC claim 7), adjudicated. Witness: the
+  stage9 one-child case with the child aged 20: yes gives line 27a $4,324, no gives $0.
+- **Symptom:** `dependent.student` asked "Was this person a full-time student in 2025?"; i1040gi p. 21 defines the term
+  (5 calendar months; on-farm courses count; on-the-job, correspondence and Internet-only schools do not).
+- **Where:** `forms/2025/dependent.yaml`, `dependent.student`.
+- **Fix:** the question states the definition, quoting p. 21.
+- **Tags:** question-incomplete; definition-omitted; caught-by-completeness-review
+
+## BUG-0213 — No rule for a child presumed kidnapped
+
+- **Date:** 2026-10-30
+- **Caught by:** the completeness-review experiment (D3; dependents claim 1, EIC claim 11), adjudicated.
+- **Symptom:** i1040gi p. 21, Kidnapped child: such a child may be taken into account for head of household, the child
+  tax credit, the credit for other dependents and the EIC (Pub. 501; Pub. 596). The months and residency questions
+  listed absences without it, so the child failed the residency tests and the filer lost the credits.
+- **Where:** `forms/2025/dependent.yaml`.
+- **Fix:** a screen `dependent.kidnapped` refusing `dependent.lived_half` and `dependent.eic_child` (Pub. 501's
+  conditions are not encoded); asked of every dependent; the generator answers no. Regression
+  `stage21.d3.kidnapped_child_refused`.
+- **Tags:** scope-screen-missing; caught-by-completeness-review
+
+## BUG-0214 — "Foster child" was asked without the placement requirement
+
+- **Date:** 2026-10-30
+- **Caught by:** the completeness-review experiment (D4; dependents claim 4, EIC claim 8), adjudicated. Witness: a child
+  in the filer's care without an agency or court placement entered as `child` gets the qualifying-child path (EIC
+  $4,324 and the child tax credit).
+- **Symptom:** i1040gi p. 21: "A foster child is any child placed with you by an authorized placement agency or by
+  judgment, decree, or other order of any court of competent jurisdiction."
+- **Where:** `forms/2025/dependent.yaml`, `dependent.relationship`.
+- **Fix:** the gloss names an eligible foster child with that placement and routes a child in your care without it to
+  `household_member` or `other` (with BUG-0211).
+- **Tags:** question-incomplete; definition-omitted; caught-by-completeness-review
+
+## BUG-0215 — A child's SSN valid only with DHS authorization was not qualified
+
+- **Date:** 2026-10-30
+- **Caught by:** the completeness-review experiment (D6; dependents claim 6), adjudicated.
+- **Symptom:** i1040gi p. 22: with "Valid for Work Only With DHS Authorization" on the card, "your child has the required
+  SSN only as long as the DHS authorization is valid"; `dependent.work_ssn` did not say so (`dependent.eic_ssn` did).
+  A yes with lapsed authorization gave line 19 $2,200 where the source gives $500.
+- **Where:** `forms/2025/dependent.yaml`, `dependent.work_ssn`.
+- **Fix:** the question carries the condition.
+- **Tags:** question-incomplete; caught-by-completeness-review
+
+## BUG-0216 — TANF used to support a person was not counted as the filer's support
+
+- **Date:** 2026-10-30
+- **Caught by:** the completeness-review experiment (D7; dependents claim 2), adjudicated.
+- **Symptom:** i1040gi p. 21 refers to Pub. 501, which (p501 p. 20) treats TANF and similar payments used to support
+  another person as support the filer provided; `dependent.supported` gave no guidance, so a filer could answer no and
+  lose a qualifying relative (the $500 credit and possibly head of household).
+- **Where:** `forms/2025/dependent.yaml`, `dependent.supported`.
+- **Fix:** the question says such payments count as support you provided.
+- **Tags:** question-incomplete; caught-by-completeness-review
+
+## BUG-0217 — "Permanently and totally disabled" was asked without its definition
+
+- **Date:** 2026-10-30
+- **Caught by:** the completeness-review experiment (D9; EIC claim 10), adjudicated.
+- **Symptom:** i1040gi p. 21 (and p. 44) defines the term (no substantial gainful activity, and a doctor's
+  determination); `dependent.disabled` used the term alone, and a yes removes the age limit for the qualifying child,
+  the EIC and head of household.
+- **Where:** `forms/2025/dependent.yaml`, `dependent.disabled`.
+- **Fix:** the question states the definition, quoting p. 21.
+- **Tags:** question-incomplete; definition-omitted; caught-by-completeness-review
+
+## BUG-0218 — Closure: BUG-0095, BUG-0096 and BUG-0097 were fixed in a65e6af
+
+- **Date:** 2026-10-30
+- **Caught by:** the adjudication of the completeness-review experiment (note N1): the three entries still read "Fix:
+  open (owner's decision 2026-10-22)".
+- **Symptom:** the inventory did not record the fixes.
+- **Where:** `BUG_INVENTORY.md`.
+- **Fix:** recorded here (the inventory is append-only). `a65e6af` ("Integrity plan Phase 1, second batch"): BUG-0095 by
+  `dependent.claimed_no_tin`; BUG-0096 by `person.eic_ssn` and `household.all_eic_ssn`; BUG-0097 by
+  `household.credit_disallowed`.
+- **Tags:** closes-earlier-entry
+
+## BUG-0219 — A qualifying surviving spouse filing status was never tested
+
+- **Date:** 2026-10-30
+- **Caught by:** the standing section completeness review of dependent and household, adjudicated (PENDING-1). Witness:
+  stage5.return.owed, a single filer switched to qss: tax $18,500 becomes $10,350, with no refusal.
+- **Symptom:** `f1040.status` accepted `qss` with no test of the conditions; i1040gi p. 15: "You can check the
+  'Qualifying surviving spouse' box ... if all of the following apply. 1. Your spouse died in 2023 or 2024 and you
+  didn't remarry before the end of 2025. 2. You have a child or stepchild (not a foster child) whom you can claim as a
+  dependent ..." Head of household had `household.hoh_eligible` and `household.hoh_fails`; qss had neither.
+- **Where:** `forms/2025/household.yaml`, `forms/2025/f1040.yaml`.
+- **Fix:** `household.qss_eligible` asks the five tests; `household.qss_fails` (status qss and the answer no) refuses at
+  `f1040.line12e`. Regressions `stage21.pending1.single_claims_qss_refused` and `stage21.pending1.qss_valid_computes`.
+- **Tags:** scope-screen-missing; amount-affecting; caught-by-completeness-review
+
+## BUG-0220 — A registered domestic partner's community income was neither asked nor refused
+
+- **Date:** 2026-10-30
+- **Caught by:** the standing section completeness review of dependent and household, adjudicated (PENDING-2). Witness:
+  audit.household.single_community_property, single, wages $215,300: no refusal.
+- **Symptom:** i1040gi p. 23: "A registered domestic partner in Nevada, Washington, or California must generally report
+  half the combined community income of the individual and their domestic partner." The only community property gate
+  needed a married head of household filer, so the whole $215,300 was reported where the source reports half the
+  combined income.
+- **Where:** `forms/2025/household.yaml`; `forms/2025/f1040.yaml`.
+- **Fix:** `household.rdp` asks about registered domestic partnership; `household.rdp_community_property` (not mfj,
+  community property and rdp all yes) refuses at `f1040` with the Form 8958 / Pub. 555 remedy. Regression
+  `stage21.pending2.rdp_community_income_refused`.
+- **Tags:** scope-screen-missing; amount-affecting; caught-by-completeness-review
+
+## BUG-0221 — A former spouse and relatives by an ended marriage were not covered by the relationship gloss
+
+- **Date:** 2026-10-30
+- **Caught by:** the standing section completeness review of dependent and household, adjudicated (PENDING-3 and
+  PENDING-5). Witness: stage8.hoh.parent.test1 filed single, `household_member`, 12 months: line 19 $500, the source
+  gives $0.
+- **Symptom:** p501 p. 19: "If at any time during the year the person was your spouse, that person can't be your
+  qualifying relative." and "Any of these relationships that were established by marriage aren't ended by death or
+  divorce." The `household_member` gloss said only "other than your spouse", so a spouse divorced in 2025 passed; a
+  former in-law was entered as `other`.
+- **Where:** `forms/2025/dependent.yaml`, `dependent.relationship`.
+- **Fix:** The `household_member` gloss excludes a person who was your spouse at any time during 2025; the `in_law`
+  gloss includes a relationship begun by a marriage since ended by death or divorce.
+- **Tags:** question-incomplete; definition-omitted; caught-by-completeness-review
+
+## BUG-0222 — A rest home was not said to count as a parent's main home
+
+- **Date:** 2026-10-30
+- **Caught by:** the standing section completeness review of dependent and household, adjudicated (PENDING-6). Witness:
+  stage8.hoh.parent.test1: `parent_home_paid` yes gives head of household (line 16 $14,378); no, the literal answer of a
+  filer paying a care home, gives the refusal `household.hoh_fails`.
+- **Symptom:** p501 p. 9: "If you pay more than half the cost of keeping your parent in a rest home or home for the
+  elderly, that counts as paying more than half the cost of keeping up your parent's main home."
+  `dependent.parent_home_paid` asked about "a home that was their main home" only.
+- **Where:** `forms/2025/dependent.yaml`, `dependent.parent_home_paid`.
+- **Fix:** The question states that a rest home or home for the elderly counts as the parent's main home if you paid
+  over half the cost of keeping your parent there.
+- **Tags:** question-incomplete; definition-omitted; caught-by-completeness-review
+
+## BUG-0223 — The support questions omitted Pub. 501's support rules
+
+- **Date:** 2026-10-30
+- **Caught by:** the standing section completeness review of dependent and household, adjudicated (PENDING-8, five
+  claims). Witness: stage8.hoh.parent.test1 single, `supported` yes $500, no $0.
+- **Symptom:** p501 pp. 19-20: "A person's own funds aren't support unless they are actually spent for support."; "For
+  lodging, the amount of support is the fair rental value of the lodging."; "Payments you receive for the support of a
+  foster child from a child placement agency are considered support provided by the agency." `dependent.supported` had
+  only the TANF sentence and `dependent.self_support` none.
+- **Where:** `forms/2025/dependent.yaml`, `dependent.supported` and `dependent.self_support`.
+- **Fix:** Both questions carry the rules: own funds count only if spent for support, lodging at fair rental value, both
+  parts of a military allotment as the filer's, agency payments and support the child paid for with the child's wages
+  are not the filer's.
+- **Tags:** question-incomplete; definition-omitted; caught-by-completeness-review
+
+## BUG-0224 — The care-expense question omitted the definition of care
+
+- **Date:** 2026-10-30
+- **Caught by:** the standing section completeness review of dependent and household, adjudicated (PENDING-9, five
+  claims). Witness: stage15.f2441.s2, $2,000 of each $3,500 being kindergarten tuition: line 11 $1,200 as computed, $600
+  by the source.
+- **Symptom:** i2441 p. 2: "It doesn't include the cost of food, lodging, education, clothing, or entertainment."; "But
+  don't include any expenses for sending your child to an overnight camp, a summer school, or a tutoring program."
+  `dependent.dc_paid` excluded only prior-year and 2026 care, reimbursements, ineligible providers and medical expenses.
+- **Where:** `forms/2025/dependent.yaml`, `dependent.dc_paid`.
+- **Fix:** The exclusion list adds food, lodging, education (never kindergarten or above), clothing, entertainment,
+  camp, summer school, tutoring, out-of-home care under 8 hours a day, and a non-compliant care center.
+- **Tags:** question-incomplete; definition-omitted; amount-affecting; caught-by-completeness-review
+
+## BUG-0225 — An expired, unrenewed ITIN answered the TIN question yes
+
+- **Date:** 2026-10-30
+- **Caught by:** the standing section completeness review of dependent and household, adjudicated (PENDING-10). Witness:
+  stage8.hoh.parent.test1 single: `tin` yes gives line 19 $500; no, correct for an expired ITIN, gives the refusal
+  `dependent.claimed_no_tin`.
+- **Symptom:** p503 p. 3: "If your ITIN wasn't included on at least one U.S. federal tax return for the last 3
+  consecutive tax years, it expires on December 31 of the third consecutive tax year, and must be renewed before being
+  used again on a U.S. federal tax return." An expired ITIN was issued, so the questions answered yes.
+- **Where:** `forms/2025/dependent.yaml`, `dependent.tin`; `forms/2025/person.yaml`, `person.tin`.
+- **Fix:** Both questions say an expired ITIN counts only if it has been renewed, or renewal applied for, by the due
+  date; the locators cite p503 p. 3.
+- **Tags:** question-incomplete; caught-by-completeness-review
+
+## BUG-0226 — The Form 1098-T exception omitted the cooperation condition
+
+- **Date:** 2026-10-30
+- **Caught by:** the standing section completeness review of dependent and household, adjudicated (PENDING-11). Witness:
+  stage19.example.jack_kay: `edu_1098t` yes gives line 30 $2,500, no gives $0.
+- **Symptom:** i8863 p. 1: "You must fully cooperate with the educational institution's efforts to gather the
+  information needed to furnish the Form 1098-T." The exception required only a request after February 2, 2026 and proof
+  of enrollment and payments.
+- **Where:** `forms/2025/dependent.yaml`, `dependent.edu_1098t`; `forms/2025/person.yaml`, `person.edu_1098t`.
+- **Fix:** Both exceptions add that the filer fully cooperated with the institution's efforts to furnish the form; the
+  locators quote i8863 p. 1.
+- **Tags:** question-incomplete; caught-by-completeness-review
+
+## BUG-0227 — Sports, hobby and noncredit courses were not excluded from education expenses
+
+- **Date:** 2026-10-30
+- **Caught by:** the standing section completeness review of dependent and household, adjudicated (PENDING-12). Witness:
+  stage19.example.jack_kay: `edu_inst` $4,300 gives line 30 $2,500; $3,300 without a $1,000 hobby course gives $2,325
+  (line 29 falls from $1,000 to $930).
+- **Symptom:** i8863 p. 4: "Any course or other education involving sports, games, or hobbies, or any noncredit course,
+  unless such course or other education is part of the student's degree program or (for the lifetime learning credit
+  only) helps the student acquire or improve job skills." `edu_inst` excluded personal expenses, expenses deducted
+  elsewhere and tax-free distributions only.
+- **Where:** `forms/2025/dependent.yaml`, `dependent.edu_inst`; `forms/2025/person.yaml`, `person.edu_inst`.
+- **Fix:** Both questions exclude such a course unless it is part of the degree program or, where the student cannot get
+  the American opportunity credit, helps acquire or improve job skills.
+- **Tags:** question-incomplete; definition-omitted; amount-affecting; caught-by-completeness-review
+
+## BUG-0228 — The divorced-parents question could be read as not applying to the custodial parent
+
+- **Date:** 2026-10-30
+- **Caught by:** the standing screen review (T-088), adjudicated (PENDING-0-1).
+- **Symptom:** i1040gi p. 20: "If conditions (1) through (4) apply, only the noncustodial parent can claim the child for
+  purposes of the child tax credit and credit for other dependents." The example was written from the noncustodial side,
+  so a custodial parent who signed Form 8332 could answer no and `dependent.qualifying_child` (residency, age,
+  relationship tests only) stayed true, claiming the CTC/ODC on both returns.
+- **Where:** `forms/2025/dependent.yaml`, `dependent.divorced_rule`.
+- **Fix:** The question says to answer yes whether you are the custodial parent who signed the release (or whose decree
+  or agreement lets the other parent claim the child) or the noncustodial parent using it.
+- **Tags:** question-wording; amount-affecting; caught-by-screen-review
+
+## BUG-0229 — A joint return filed after the person's death could be answered no to both marriage questions
+
+- **Date:** 2026-10-30
+- **Caught by:** the standing screen review (T-088), adjudicated (PENDING-0-2).
+- **Symptom:** i1040gi p. 21: "If the person is married and files a joint return, you can't claim that person as your
+  dependent." A would-be dependent who died in 2025 while married, included in the surviving spouse's joint return, was
+  read as "not filing"; `dependent.married` and `dependent.joint_return` both gave no.
+- **Where:** `forms/2025/dependent.yaml`, `dependent.married` and `dependent.joint_return`.
+- **Fix:** Both ask whether a joint return is being filed for 2025 that includes this person, including one filed by
+  this person's surviving spouse after this person died.
+- **Tags:** question-wording; caught-by-screen-review
+
+## BUG-0230 — The 2024 state tax refund screen covered only a late estimated payment
+
+- **Date:** 2026-10-30
+- **Caught by:** the standing screen review (T-088), adjudicated (PENDING-0-3).
+- **Symptom:** p525 p. 24: "If you receive a refund or other recovery that is for amounts you paid in 2 or more separate
+  years, you must allocate, on a pro rata basis, the recovered amount between the years in which you paid it."
+  `refund.not_2024` asked only about a last estimated payment made in 2025, so an extension or balance-due payment
+  answered no and the whole refund ran through the 2024 recovery worksheet.
+- **Where:** `forms/2025/refund.yaml`, `refund.not_2024` and its refusal.
+- **Fix:** The question asks whether any of the 2024 state or local income tax was paid in 2025 (a last estimated
+  payment, a payment with an extension, or a balance due); the refusal text matches.
+- **Tags:** scope-screen-narrower-than-line; amount-affecting; caught-by-screen-review
+
+## BUG-0231 — Shares of a metals trust were not reached by the collectibles question
+
+- **Date:** 2026-10-30
+- **Caught by:** the standing screen review (T-088), adjudicated (PENDING-0-4).
+- **Symptom:** i1040sd p. 11, line 18: "Include on the worksheet any gain (but not loss) from the sale or exchange of an
+  interest in a partnership, S corporation, or trust held for more than 1 year and attributable to unrealized
+  appreciation of collectibles." A holder of exchange-traded shares of a physically backed gold trust thinks of the sale
+  as a stock sale and answers no, so the gain is taxed at 0/15/20% instead of through the 28% Rate Gain Worksheet.
+- **Where:** `forms/2025/sales.yaml`, `sales.special`.
+- **Fix:** The question names shares of an exchange-traded fund or trust that holds gold, silver, platinum or other
+  metals; the locator quotes i1040sd p. 11.
+- **Tags:** question-incomplete; definition-omitted; amount-affecting; caught-by-screen-review
+
+## BUG-0232 — Form 8615 was named in the screen by number only
+
+- **Date:** 2026-10-30
+- **Caught by:** the standing screen review (T-088), adjudicated (PENDING-0-5).
+- **Symptom:** i1040gi p. 36: "You must file Form 8615 if you meet all of the following conditions. 1. You had more than
+  $2,700 of unearned income ... 4. At least one of your parents was alive at the end of 2025. 5. You don't file a joint
+  return in 2025." A 16-year-old with $10,000 of dividends, not already preparing the form, answered no and was taxed at
+  the child's own rates.
+- **Where:** `forms/2025/scope.yaml`, `scope.other_line16`.
+- **Fix:** The question states the Form 8615 conditions (unearned income over $2,700, required to file, not filing
+  jointly, a parent alive at the end of 2025, and the age or student and support tests).
+- **Tags:** question-incomplete; definition-omitted; amount-affecting; caught-by-screen-review
+
+## BUG-0233 — "Clergy income" was undefined in the Schedule 1 screen
+
+- **Date:** 2026-10-30
+- **Caught by:** the standing screen review (T-088), adjudicated (PENDING-0-6).
+- **Symptom:** i1040gi p. 43, Clergy: "The following instructions apply to ministers, members of religious orders who
+  have not taken a vow of poverty, and Christian Science practitioners." A member of a religious order paid on Form W-2
+  with no Schedule C read "clergy income" as ministers only; `person.se_screen` names all three groups but is reached
+  only with a Schedule C.
+- **Where:** `forms/2025/scope.yaml`, `scope.schedule1`.
+- **Fix:** The question names the three groups, matching `person.se_screen`; the locator quotes i1040gi p. 43.
+- **Tags:** question-incomplete; definition-omitted; caught-by-screen-review
+
+## BUG-0234 — The kidnapped-child question said "your child" and was in the present tense
+
+- **Date:** 2026-10-30
+- **Caught by:** the standing screen review (T-088), adjudicated (PENDING-1-1).
+- **Symptom:** p501 p. 13: "In the year of the child's return, the child lived with you for more than half the part of
+  the year following the date of the child's return." A child returned before the interview, or a household member child
+  (p501 p. 18: "You can treat a child as your qualifying relative even if the child has been kidnapped"), drew a
+  truthful no, so the credits were understated.
+- **Where:** `forms/2025/dependent.yaml`, `dependent.kidnapped`.
+- **Fix:** The question asks about a child who at any time during 2025 was presumed kidnapped by someone who is not a
+  member of your family or the child's family, even if since returned (Pub. 501's phrase). The refusal stays on
+  `dependent.lived_half` and `dependent.eic_child` (BUG-0213); `dependent.qr_relationship` was not given a refusal.
+- **Tags:** question-wording; caught-by-screen-review
+
+## BUG-0235 — The joint-occupancy question read as a condition on the other occupant filing
+
+- **Date:** 2026-10-30
+- **Caught by:** the standing screen review (T-088), adjudicated (PENDING-1-3). Witness (write-up case): filer and
+  housemate each pay $2,000 for windows, housemate does not file: line 30 windows credit $600, allocable share $300.
+- **Symptom:** i5695 p. 3: "If the aggregate credit that would be allowed to all occupants for any item of property
+  exceeds the credit limit below, then you must figure your allocable share ... The denominator is the total amount paid
+  by you and all other occupants." The clause "so that each occupant completes their own Form 5695 for the same
+  property" read as a condition, so the filer answered no and over-claimed by $300.
+- **Where:** `forms/2025/f5695.yaml`, `f5695.joint_occupancy`.
+- **Fix:** The question asks about joint occupancy with someone other than a spouse on a joint return, whether or not
+  the other occupant files Form 5695 and whether the items paid for are the same or different; the neighbor
+  parenthetical is kept.
+- **Tags:** question-wording; amount-affecting; caught-by-screen-review
+
+## BUG-0236 — The Archer MSA screen covered only contributions by the filer or the employer
+
+- **Date:** 2026-10-30
+- **Caught by:** the standing screen review (T-088), adjudicated (PENDING-1-4).
+- **Symptom:** f8889 p. 1, line 4: "If you or your spouse had family coverage under an HDHP at any time during 2025,
+  also include any amount contributed to your spouse's Archer MSAs." The screen read as contributions by you or your
+  employer, so a spouse's employer contribution answered no, `f8889.line4` stayed zero and the HSA deduction could be
+  overstated.
+- **Where:** `forms/2025/f8889.yaml`, `f8889.unsupported`.
+- **Fix:** The question says any contribution by anyone to the spouse's Archer MSA when you or your spouse had family
+  HDHP coverage; the locator quotes f8889 p. 1.
+- **Tags:** scope-screen-narrower-than-line; amount-affecting; caught-by-screen-review
+
+## BUG-0237 — A policy whose Form 1095-A went to the other tax family was not reached by the allocation screen
+
+- **Date:** 2026-10-30
+- **Caught by:** the standing screen review (T-088), adjudicated (PENDING-1-5).
+- **Symptom:** i8962 p. 12: "The other tax family received a Form 1095-A for the policy that includes a member of your
+  tax family"; example: "your ex-spouse enrolled a child whom you are claiming as a dependent". A filer holding only
+  their own Form 1095-A read the question as the forms held and answered no, leaving the child's premiums, SLCSP and
+  APTC out of lines 24 and 25 and understating the excess APTC.
+- **Where:** `forms/2025/f8962.yaml`, `f8962.alloc`.
+- **Fix:** The question asks about any Marketplace policy, including one whose Form 1095-A went only to someone else,
+  and adds a child you claim whom someone else enrolled.
+- **Tags:** question-incomplete; amount-affecting; caught-by-screen-review
+
+## BUG-0238 — The premium-payment screen ignored the unextended due date and the appeal 120-day rule
+
+- **Date:** 2026-10-30
+- **Caught by:** the standing screen review (T-088), adjudicated (PENDING-1-6).
+- **Symptom:** i8962 p. 3: "paid by the due date of your tax return (not including extensions)" and, for retroactive
+  enrollment after an appeal, "must be paid on or before the 120th day following the date of the appeals decision." A
+  premium paid between the unextended and extended dates, or after the 120th day, answered no and the month computed as
+  a coverage month.
+- **Where:** `forms/2025/f8962.yaml`, `f8962.other`.
+- **Fix:** The question says the due date of your return, not including extensions, and gives the 120th day after the
+  appeals decision for coverage enrolled in retroactively.
+- **Tags:** question-incomplete; amount-affecting; caught-by-screen-review
+
+## BUG-0239 — "Similar items" of donated property was undefined
+
+- **Date:** 2026-10-30
+- **Caught by:** the standing screen review (T-088), adjudicated (PENDING-1-7).
+- **Symptom:** i8283 p. 3: "Similar items of property are items of the same general category or type, such as coin
+  collections, paintings, books, clothing, jewelry, nonpublicly traded stock, land, or buildings." Two paintings of
+  $3,000 each entered as two groups never reached `gift.section_b` (a group over $5,000), so $6,000 passed without
+  Section B or a qualified appraisal.
+- **Where:** `forms/2025/gift.yaml`, `gift.deduction` and `gift.special`.
+- **Fix:** Both carry the definition of similar items quoted from i8283 p. 3.
+- **Tags:** question-incomplete; definition-omitted; amount-affecting; caught-by-screen-review
+
+## BUG-0240 — The alimony screen named only child support as a non-alimony part
+
+- **Date:** 2026-10-30
+- **Caught by:** the standing screen review (T-088), adjudicated (PENDING-1-8).
+- **Symptom:** p504 p. 13: "Alimony doesn't include: Child support, Noncash property settlements, Payments that are your
+  spouse's part of community income ..., Payments to keep up the payer's property, or Use of the payer's property." and,
+  for a jointly owned home, "see Table 4" (half the mortgage payments are alimony). A payer of the whole mortgage, or of
+  a payment reduced at a child's age, answered no and entered the whole payment as alimony.
+- **Where:** `forms/2025/s1.yaml`, `s1.alimony_unsupported`, `s1.alimony_received`, `s1.alimony_paid`.
+- **Fix:** The screen adds payments for a home either of you owns and amounts reduced on a contingency relating to a
+  child; the two amount questions say cash payments only and exclude child support, noncash settlements, community
+  income and the payer's property.
+- **Tags:** scope-screen-narrower-than-line; amount-affecting; caught-by-screen-review
+
+## BUG-0241 — The EIC age test had no screen for a death in 2025
+
+- **Date:** 2026-10-30
+- **Caught by:** the standing screen review (T-088), adjudicated (PENDING-1-9; sa.dependent finding 1).
+- **Symptom:** i1040gi p. 42, EIC Step 4 question 2: "If your spouse died in 2025 or if you are preparing a return for
+  someone who died in 2025, see Pub. 596 before you answer." `eic.age_range` read the birth-date flags only and no
+  screen asked about a death; Pub. 596 is not archived, so the rule itself is unconfirmed here.
+- **Where:** `forms/2025/eic.yaml`.
+- **Fix:** A new screen `eic.died_2025` refuses `eic.age_range` with the Pub. 596 referral. Regression
+  `stage21.pending.eic_death_pub596_refused`. It closes the substance of T-037.
+- **Tags:** scope-screen-missing; amount-affecting; caught-by-screen-review
+
+## BUG-0242 — The RMD shortfall question missed a partial or late-corrected distribution
+
+- **Date:** 2026-10-30
+- **Caught by:** the standing screen review (T-088), adjudicated (PENDING-2-1).
+- **Symptom:** f5329 p. 3, Part IX: "Complete this part if you did not receive the minimum required distribution from
+  your qualified retirement plan." i5329 p. 9: "The additional tax is 25% of the excess accumulation, which is the
+  difference between the amount that was required to be distributed and the amount that was actually distributed." A
+  filer who took $8,000 of a $10,000 RMD answered no to "did not take", and the excise tax was missing from Schedule 2
+  line 8.
+- **Where:** `forms/2025/person.yaml`, `person.x_other`.
+- **Fix:** The last item reads a required minimum distribution "that you did not receive in full by its deadline
+  (including a shortfall you made up later)"; the locator quotes f5329 p. 3 and i5329 p. 9.
+- **Tags:** scope-screen-narrower-than-line; amount-affecting; caught-by-screen-review
+
+## BUG-0243 — The retirement screen omitted the military disability, beneficiary and property-rollover cases
+
+- **Date:** 2026-10-30
+- **Caught by:** the standing screen review (T-088), adjudicated (PENDING-2-2).
+- **Symptom:** i1040gi p. 28: "For details on military disability pensions, see Pub. 525." p. 30: "If you are the
+  beneficiary of an employee who died, see Pub. 575. If there is more than one beneficiary, see Pub. 575 or Pub. 721 to
+  figure each beneficiary's taxable amount." These cases answered no and computed as a plain cash rollover or with the
+  whole cost entered.
+- **Where:** `forms/2025/retirement.yaml`, `retirement.special`.
+- **Fix:** The list adds a military disability pension, an annuity received as beneficiary of an employee who died or
+  shared among beneficiaries, and a rollover of property other than cash or of a QDRO distribution.
+- **Tags:** scope-screen-narrower-than-line; caught-by-screen-review
+
+## BUG-0244 — The canceled-debt screen reached deductible debt only as box 3 interest
+
+- **Date:** 2026-10-30
+- **Caught by:** the standing screen review (T-088), adjudicated (PENDING-2-3).
+- **Symptom:** p4681 p. 6, Deductible Debt: "If you use the cash method of accounting, you don't realize income from the
+  cancellation of debt if the payment of the debt would have been a deductible expense." An unpaid medical bill canceled
+  with no box 3 interest answered no, and `s1.cod_refused` copied the whole amount to Schedule 1 line 8c.
+- **Where:** `forms/2025/s1.yaml`, `s1.cod_unsupported`.
+- **Fix:** The screen reads "deductible interest or other deductible debt" and the question adds any other amount that
+  would have been deductible if paid, for example an unpaid medical bill.
+- **Tags:** scope-screen-narrower-than-line; amount-affecting; caught-by-screen-review
+
+## BUG-0245 — The unemployment screen did not say which contributions count
+
+- **Date:** 2026-10-30
+- **Caught by:** the standing screen review (T-088), adjudicated (PENDING-2-4).
+- **Symptom:** i1040gi p. 89: "If you made contributions to a governmental unemployment compensation program and you
+  aren't itemizing deductions, reduce the amount you report on line 7 by those contributions." A filer whose state
+  unemployment share was withheld from wages, or paid in an earlier year, answered no and line 7 stayed overstated.
+- **Where:** `forms/2025/s1.yaml`, `s1.uc_unsupported`.
+- **Fix:** The question asks about contributions in 2025 or any earlier year, including amounts withheld from wages, not
+  employer-paid tax or paid family leave or disability insurance contributions; the locator quotes p. 89.
+- **Tags:** scope-screen-narrower-than-line; amount-affecting; caught-by-screen-review
+
+## BUG-0246 — The foreign trust question was narrower than the Schedule B line 8 instruction
+
+- **Date:** 2026-10-30
+- **Caught by:** the standing screen review (T-088), adjudicated (PENDING-2-5).
+- **Symptom:** i1040sb p. 3, Line 8: "For this purpose, a loan of cash or marketable securities is generally considered
+  to be a distribution ... If you were the grantor of, or transferor to, a foreign trust that existed during 2025, you
+  may have to file Form 3520." A grantor of a trust created earlier, or a borrower from one, answered no, printing No on
+  line 8.
+- **Where:** `forms/2025/sb.yaml`, `sb.line8`.
+- **Fix:** The question counts a loan of cash or marketable securities as a distribution and covers a foreign trust that
+  existed at any time during 2025.
+- **Tags:** scope-screen-narrower-than-line; caught-by-screen-review
+
+## BUG-0247 — The business-use gloss narrowed "nonbusiness purposes"
+
+- **Date:** 2026-10-30
+- **Caught by:** the standing screen review (T-088), adjudicated (PENDING-3-1).
+- **Symptom:** i5695 p. 1, Costs: "If less than 80% of the use of an item is for nonbusiness purposes, only that portion
+  of the costs that is allocable to the nonbusiness use can be used to determine either credit." The parenthetical "(is
+  more than 20% of its use for a business)" read as excluding renting out part of the home, so the full cost stayed in
+  line 6a and line 30.
+- **Where:** `forms/2025/f5695.yaml`, `f5695.business_use`.
+- **Fix:** The parenthetical adds "for renting out or for another income-producing purpose"; the IRS clause is kept.
+- **Tags:** question-wording; amount-affecting; caught-by-screen-review
+
+## BUG-0248 — "A disposition adjustment" did not reach NUA gain in the net investment income screen
+
+- **Date:** 2026-10-30
+- **Caught by:** the standing screen review (T-088), adjudicated (PENDING-3-2).
+- **Symptom:** i8960 p. 9, line 5b: "Any gain attributable to NUA (within the meaning of section 402(e)(4)) that you
+  realize on a disposition of employer securities held by a qualified plan is a distribution within the meaning of
+  section 1411(c)(5) and isn't included in NII." A filer selling employer stock with NUA did not recognize it as a
+  disposition adjustment; `f8960.line5b` is a fixed zero, so the gain stayed in NII (inferred from the expressions, not
+  run).
+- **Where:** `forms/2025/f8960.yaml`, `f8960.unsupported`.
+- **Fix:** The clause is glossed: a disposition adjustment (Form 8960 line 5b or 5c, for example NUA gain on employer
+  securities from a qualified plan, or the sale of business property or a partnership or S corporation interest); the
+  locator quotes i8960 p. 9.
+- **Tags:** scope-screen-narrower-than-line; amount-affecting; caught-by-screen-review
+
+## BUG-0249 — The September 11 fund clause required coverage rather than eligibility
+
+- **Date:** 2026-10-30
+- **Caught by:** the standing screen review (T-088), adjudicated (PENDING-3-4).
+- **Symptom:** i1040gi p. 31, Disability payments: "In the case of the September 11 attacks, injuries eligible for
+  coverage by the September 11 Victim Compensation Fund are treated as incurred as a direct result of the attack." A
+  filer with an eligible injury who never filed a claim read "covered by" as "compensated by" and answered no, so
+  excludable benefits stayed in `ssb.line1`.
+- **Where:** `forms/2025/ssb.yaml`, `ssb.terror_disability`.
+- **Fix:** The parenthetical reads "for the September 11 attacks, any injury eligible for coverage by the September 11
+  Victim Compensation Fund, whether or not you made a claim".
+- **Tags:** question-wording; amount-affecting; caught-by-screen-review
+
+## BUG-0250 — The `child` gloss's routing sentence could be read to cover a related child
+
+- **Date:** 2026-10-30
+- **Caught by:** the log adjudication of dependent (Q1; `.transcription/proposed/dfix/dependent.findings.md`).
+  Introduced by BUG-0214.
+- **Symptom:** The BUG-0214 sentence "a child in your care without such a placement is entered as household_member or
+  other" read literally covers a grandchild, niece or nephew in the filer's care, who is a `child` or `sibling`
+  descendant under i1040gi p. 17, Step 1 ("or a descendant of any of them (for example, your grandchild, niece, or
+  nephew)"). Entering `household_member` drops the qualifying-child path: the CTC, EIC and head of household Test 2 are
+  lost. No witness; a wording risk.
+- **Where:** `forms/2025/dependent.yaml`, `dependent.relationship`.
+- **Fix:** The sentence now reads "a child in your care without such a placement who is not otherwise your relative is
+  entered as household_member or other".
+- **Tags:** question-wording; caught-by-review
+
+## BUG-0251 — The business-income-tax refund screen asked only about Form 1099-G box 8
+
+- **Date:** 2026-10-30
+- **Caught by:** the standing screen review (T-088), adjudicated (`reviews/2025/screens/adjudication/group3.md`,
+  PENDING-3-3); left out of the first fix round because the group's JSON did not list it.
+- **Symptom:** `refund.box8` asked whether box 8 was checked on a Form 1099-G, but `refund.received` includes refunds with
+  no Form 1099-G (i1040gi p. 88, "Report any taxable refund you received even if you didn't receive Form 1099-G"); a
+  Schedule C filer refunded a business-only income tax without one answered no, and the refund went through the
+  itemized-deduction worksheet instead of Schedule C (f1099g p. 5, Box 8, "If taxable, report the amount in box 2 on
+  Schedule C or F").
+- **Where:** `forms/2025/refund.yaml`, `refund.box8`.
+- **Fix:** the question asks whether any refund is of a state or local income tax that applies only to trade or business
+  income, box 8 being an example, including one with no Form 1099-G.
+- **Tags:** scope-screen-narrower-than-line; caught-by-screen-review
+
+## BUG-0252 — The support questions omitted the scholarship and state-support rules
+
+- **Date:** 2026-10-30
+- **Caught by:** the standing completeness review of `dependent`, round 2, adjudicated (`reviews/2025/completeness/r2.findings.md`,
+  PENDING-r2-1). Witness: jack_kay with the student earning $8,000: a yes to self-support drops $500, $1,000 and $1,500 of
+  credits to $0.
+- **Symptom:** p501 p. 15, "A scholarship received by a student isn't taken into account in determining whether the student
+  provided more than half of their own support"; p501 p. 20, benefits provided by the state to a needy person are support
+  provided by the state. `dependent.self_support` and `dependent.supported` (reworded in BUG-0223) did not say so.
+- **Where:** `forms/2025/dependent.yaml`, `dependent.self_support`, `dependent.supported`.
+- **Fix:** both questions state the rules, quoting p501 pp. 15, 20 and 21.
+- **Tags:** question-incomplete; definition-omitted; caught-by-completeness-review
+
+## BUG-0253 — Gross income for the qualifying-relative test was asked without its definition
+
+- **Date:** 2026-10-30
+- **Caught by:** the completeness review of `dependent`, round 2 (PENDING-r2-2). Witness: a parent with gross rents: entering
+  net rent of $4,000 passes the $5,200 test and gives head of household and the $500 credit, where the gross amount refuses.
+- **Symptom:** p501 p. 19 defines gross income ("all income in the form of money, property, and services that isn't exempt
+  from tax"), counting gross rents and a partner's share of gross income; `dependent.gross_income` gave no definition.
+- **Where:** `forms/2025/dependent.yaml`, `dependent.gross_income`.
+- **Fix:** the question states the definition and its inclusions and exclusions, quoting p501 p. 19.
+- **Tags:** question-incomplete; definition-omitted; caught-by-completeness-review
+
+## BUG-0254 — A pre-2019 alimony agreement changed in 2025 lost the payments made before the change
+
+- **Date:** 2026-10-30
+- **Caught by:** the fix-round-2 adjudication of `s1` (`.transcription/proposed/fixr2/s1.findings.md`, F1). Witness: line 2a
+  $0 instead of $5,000; tax $1,475 instead of $2,075.
+- **Symptom:** the `s1.alimony` screen counted alimony only under an agreement "not changed after 2018"; p504 p. 16, Example 2:
+  "The alimony payments made in January 2025 through May 2025 are includible in the recipient’s income and deductible from
+  the payer’s income."
+- **Where:** `forms/2025/s1.yaml`, `s1.alimony`.
+- **Fix:** the question counts the payments made before any post-2018 change that excludes alimony from income.
+- **Tags:** question-wrong; caught-by-source-adjudication
+
+## BUG-0255 — The alimony-received question said "your spouse's part of community income"
+
+- **Date:** 2026-10-30
+- **Caught by:** the fix-round-2 adjudication of `s1` (F2); introduced by BUG-0240's rewording, which copied the payer's wording.
+- **Symptom:** for a recipient the excluded amount is the recipient's own part of community income.
+- **Where:** `forms/2025/s1.yaml`, `s1.alimony_received`.
+- **Fix:** "your own part of community income".
+- **Tags:** question-wrong; value-neutral; caught-by-source-adjudication
+
+## BUG-0256 — A pending ITIN renewal satisfied the child tax credit's other-spouse test
+
+- **Date:** 2026-10-30
+- **Caught by:** the fix-round-2 adjudication of `person` (`.transcription/proposed/fixr2/person.findings.md`, F1); introduced
+  by BUG-0225's mirror of the dependent wording. Witness: stage13.ctc_spouse_ssn, line 19 $2,200 where the chosen reading gives $0.
+- **Symptom:** `person.tin` said an expired ITIN counts if "renewed, or renewal applied for"; the child tax credit's
+  other-spouse test needs an ITIN issued by the due date, and `amb.2025.ctc_spouse_itin_application` excludes an application.
+- **Where:** `forms/2025/person.yaml`, `person.tin`.
+- **Fix:** an expired ITIN counts only if renewed by the due date; a renewal only applied for does not (`dependent.tin`, read
+  by the credit for other dependents, keeps the application).
+- **Tags:** question-wrong; reused-question; caught-by-source-adjudication
+
+## BUG-0257 — An unanswered refusal gate let a count's lower bound decide a test, completing the return
+
+- **Date:** 2026-10-30
+- **Caught by:** the fix-round-2 adjudication of `sales` (`.transcription/proposed/fixr2/sales.findings.md`, F1), reproduced
+  by the session: classm.f8889.1.deepseek with `sales[s1].special` withheld or null gave `sd.count` unknown but `sd.screen`
+  false, and the return completed (line 7a −$3,000, line 16 $18,089.13), as if the collectibles screen had been answered no.
+- **Symptom:** `sum_over` attached a lower bound to a partial Count, and comparisons were decided from the bound, even when an
+  entry's unknown came from a refusal gate still awaiting its answer, which may yet refuse the whole sum. The same happened
+  through `where` tests and nested sums (`household.test2_persons`, `eic.has_qc`, the Form 8863, 2441, 8962 and Schedule 8812
+  counts, the rollover counts, `person.x_must`); `household.test2_persons` was decided in three fixture evaluations while
+  `dependent.kidnapped` was unanswered.
+- **Where:** `engine/src/eval.ts` and `lean/TaxFormalization/Eval.lean` (the lower-bound rule); `spec/spec.md` 4.7.5.
+- **Fix:** a pending gate marks its unknown; the mark propagates through operands, sums, tests, `where` and copies; a marked
+  partial count has no lower bound and no test is decided from one. Mirrored in Lean (compare 0 differing on 1990 cases);
+  spec 4.7.5 states the rule and its two remaining limits (a deciding conjunct of `all`/`any`; unevaluated `choose`
+  alternatives, T-093). Regressions in `fixtures/2025/stage21.json` (the four sales witnesses, two `where` witnesses, and two
+  cases where the bound still decides). No existing expectation changed.
+- **Tags:** evaluator-semantics; amount-affecting; caught-by-source-adjudication
+
+## BUG-0258 — The cost of keeping up a home was asked without its definition
+
+- **Date:** 2026-10-30
+- **Caught by:** the standing completeness review of `dependent`, round 3, adjudicated (`reviews/2025/completeness/r3.findings.md`,
+  PENDING-r3-1). Witness: stage8.hoh.parent.test1: yes gives head of household (line 24 $13,878); no is refused (`hoh_fails`).
+- **Symptom:** i1040gi p. 15, "To find out what is included in the cost of keeping up a home, see Pub. 501"; p501 p. 9 lists
+  the costs included and excluded, and treats amounts paid out of a qualifying person's own funds, such as Social Security, as
+  paid by that person. `dependent.parent_home_paid` and `household.home_cost` gave no definition.
+- **Where:** `forms/2025/dependent.yaml`, `dependent.parent_home_paid`; `forms/2025/household.yaml`, `household.home_cost`.
+- **Fix:** both questions state the included and excluded costs, and the parent's own funds rule, quoting p501 p. 9 and
+  i1040gi p. 15.
+- **Tags:** question-incomplete; definition-omitted; caught-by-completeness-review
+
+## BUG-0259 — A pending renewal of an expired ITIN was not said to count for the credit for other dependents
+
+- **Date:** 2026-10-30
+- **Caught by:** the fix-round-3 adjudication of `person` (`.transcription/proposed/fixr3/person.findings.md`); the mirror of
+  BUG-0256. Witness: stage13.odc_spouse_no_tin with a renewal applied for: line 19 $0 where the source gives $500.
+- **Symptom:** i1040gi p. 19, Step 5, question 1, "Answer 'Yes' if you are applying for an ITIN on or before the return due
+  date"; after BUG-0256 `person.tin` excludes an expired ITIN with only a renewal applied for, and `person.itin_applied` did not
+  say that the renewal application counts as the application the credit for other dependents accepts.
+- **Where:** `forms/2025/person.yaml`, `person.itin_applied`.
+- **Fix:** the question asks about an application for an ITIN or for the renewal of an expired one by the due date.
+- **Tags:** question-incomplete; caught-by-source-adjudication
+
+## BUG-0260 — The household home-cost questions lacked the own-funds rule and, for QSS, the definition
+
+- **Date:** 2026-10-30
+- **Caught by:** the completeness review of `household`, round 4 (`reviews/2025/completeness/r4.findings.md`, PENDING-r4-1), and
+  the fix-round-4 adjudication of `household` (`.transcription/proposed/fixr4/household.findings.md`, F1 and F2); a sibling
+  BUG-0258 left. Witness: stage8.hoh.child.ctc: a yes that counts the child's Social Security as the filer's payment gives head
+  of household (line 24 $12,153) where single gives $15,642.
+- **Symptom:** p501 p. 9, Note, "Amounts paid out of funds received in the child’s or qualifying person’s name, such as Social
+  Security, are considered paid by the child, not you"; BUG-0258 put the rule only on `dependent.parent_home_paid`, and the
+  home-cost test inside `household.qss_eligible` had no definition at all.
+- **Where:** `forms/2025/household.yaml`, `household.home_cost`, `household.qss_eligible`.
+- **Fix:** both carry the cost definition and the own-funds rule, quoting p501 p. 9.
+- **Tags:** question-incomplete; definition-omitted; fix-sibling-missed; caught-by-completeness-review

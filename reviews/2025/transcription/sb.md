@@ -4,21 +4,22 @@ Second transcription of `Schedule B — supported interest and ordinary dividend
 
 | field | value |
 | --- | --- |
-| date | 2026-10-25 |
+| date | 2026-10-30 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | bfedbf7e5675dda81cdb01d0bf165e212af6a645e8896e39ae75e55f2792680c |
+| prompt sha256 | d2c505cbc097fbee4ffcf21b5afec5ff0babcc0050a4d00257e10075cc7824c9 |
 | prompt policy | source-only-computation-v2 |
 | comparison policy | checked-expression-types-v2 |
-| input context policy | complete-input-context-v1 |
+| input context policy | required-review-interfaces-v2 |
 | complete input context | pass |
-| type validation policy | project-expression-types-v1 |
+| required input context sha256 | a4ce3487d66ecb85d66e609fa07731ce64dbd9dd38ddc8074e69f61161ceeadc |
+| type validation policy | project-expression-types-v3 |
 | model type validation | pass |
 | system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
 | reasoning effort | provider default |
 | output token budget | transport default (65536 for DeepSeek) |
 | interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
-| subject sha256 | 8cbf53cdc390adfc64adcee83de78308e2bfaf4ad1ed432d17ec6cdd93e463a5 |
+| subject sha256 | ffe5a4e74bb1183dfab3be1ef94ed1938c33867886cfb8518e6775439cb6f86b |
 | printed lines compared | 4 |
 | agree / disagree / missing | 4 / 0 / 0 |
 | extra printed lines in second | none |
@@ -49,10 +50,10 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 
 | line | gates listed | not read by the project's line |
 | --- | --- | --- |
-| 2 | sb.unsupported | - |
+| 2 | sb.fbar_required, sb.form8938, sb.line8, sb.unsupported | - |
 | 3 | sb.unsupported | - |
-| 4 | sb.unsupported | - |
-| 6 | sb.unsupported | - |
+| 4 | sb.fbar_required, sb.form8938, sb.line8, sb.unsupported | - |
+| 6 | sb.fbar_required, sb.form8938, sb.line8, sb.unsupported | - |
 
 ## Raw second transcription
 
@@ -61,39 +62,40 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 lines:
   - id: sb.line2
     printed: "2"
-    label: "Add the amounts on line 1"
+    label: "Total of all taxable interest listed on line 1 (subtotal of line 1, less any amount subtracted under the Nominee, Accrued Interest, OID Adjustment or ABP Adjustment rules)"
     type: NonNegDollars
     expr:
       op: sum_over
       collection: interest
       field: interest.amount
-    refuses: [sb.unsupported]
-    note: "Line 1 lists each payer's taxable interest. Line 2 is that total. The instructions also cover subtracting nominee distributions, accrued interest, OID adjustments and ABP adjustments from the line 1 subtotal before line 2. The tool does not compute those, so they are refused through sb.unsupported. In the case the tool computes, line 2 is the total of the per-payer taxable interest."
+    refuses: [sb.unsupported, sb.fbar_required, sb.form8938, sb.line8]
+    note: "Subtractions from the line 1 subtotal (nominee, accrued interest, OID adjustment, ABP adjustment) and the other special cases are outside the tool and refused by sb.unsupported, so line 2 is the plain total of the payer amounts. The supplied text does not say where to enforce the Part III screens (FBAR, Form 8938, foreign trust), and Part III has no requested money line. I chose to list them on lines 2 and 6, the two Schedule B lines fed directly by inputs. sb.line7a is not used in a refusal because the instructions make a Yes to Question 1 reportable even if FinCEN Form 114 is not required."
   - id: sb.line3
     printed: "3"
-    label: "Excludable interest on series EE and I U.S. savings bonds issued after 1989. Attach Form 8815"
+    label: "Excludable interest on series EE and I U.S. savings bonds issued after 1989 (Form 8815)"
     type: NonNegDollars
     expr:
       op: param
       ref: ss.zero
     refuses: [sb.unsupported]
-    note: "Line 3 comes from Form 8815, which this tool does not prepare. A savings bond interest exclusion is refused through sb.unsupported. In the case the tool computes, there is no exclusion, so line 3 is zero. No zero parameter exists for Schedule B, so the zero comes from the money parameter ss.zero (value 0)."
+    note: "The savings bond interest exclusion (Form 8815) is refused by sb.unsupported, so the only case the tool computes has no exclusion and the line is zero. The catalog has no zero parameter specific to Schedule B, so I used the zero-valued money parameter ss.zero."
   - id: sb.line4
     printed: "4"
-    label: "Subtract line 3 from line 2. Enter the result here and on Form 1040 or 1040-SR, line 2b"
+    label: "Subtract line 3 from line 2"
     type: Dollars
     expr:
       op: subtract
       from: sb.line2
       take: sb.line3
+    note: "The supplied instructions have no entry for line 4 and do not include the face of the form. I read it as line 2 minus line 3, because line 3 is described as an exclusion from the interest totalled on line 2. The label is my wording, not quoted IRS text."
   - id: sb.line6
     printed: "6"
-    label: "Add the amounts on line 5. Enter the total here and on Form 1040 or 1040-SR, line 3b"
+    label: "Total of all ordinary dividends listed on line 5 (subtotal of line 5, less any nominee distribution)"
     type: NonNegDollars
     expr:
       op: copy
       from: sb.ordinary_dividends
-    refuses: [sb.unsupported]
-    note: "Line 5 lists ordinary dividends (Form 1099-DIV box 1a) by payer. Line 6 is that total. The only input for this is the supplied total sb.ordinary_dividends, so line 6 copies it. Subtracting nominee dividends before line 6 is not computed and is refused through sb.unsupported."
+    refuses: [sb.unsupported, sb.fbar_required, sb.form8938, sb.line8]
+    note: "Line 5 reports the ordinary dividends shown in box 1a of Forms 1099-DIV. The interface supplies that total as sb.ordinary_dividends, and the nominee subtraction is refused by sb.unsupported, so line 6 equals that total. The Part III screens are repeated here so that a return with dividends but no interest entries still stops on them."
 ```
 ```

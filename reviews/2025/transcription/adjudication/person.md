@@ -535,7 +535,7 @@ Form 4562 line 6, 7 and 11 instructions; `person.s179_nonlisted` and `s179_liste
 cited-page selection misses p. 5 (a citation-locator gap, not a tax error). The Claude section 179 placements are ruled
 interface gap on that ground.
 
-## Stage 21
+## Stage 21 (superseded subject)
 
 Subject after Stage 21 (Form 5329 Parts I and VII, decisions D1 to D10 in
 `research/premises/stage21-form-5329.decisions.md`): the per-person Form 1099-R totals of D1 (`person.ira_amount_a` to
@@ -677,3 +677,459 @@ item), `x_hsa_value` asked only with an excess, `x_hsa_excess` (line 2 less line
 `x_must` against i5329 p. 1; each was evaluated on the 24 `stage21` fixtures. Noted: the three-year rule of exception 23
 (p590b p. 28) is not screened (left to the filer's exception answer), and the `retirement.code` question wording does not
 list the Stage 21 codes (retirement's owner).
+
+## Fix round 2 (superseded subject)
+
+Subject after the screen and completeness fixes of 2026-10-30 (BUG-0219 to BUG-0251): no person expression changed; the
+reworded questions are `person.tin` (BUG-0225, an expired ITIN), `person.edu_1098t` (BUG-0226, the cooperation condition),
+`person.edu_inst` (BUG-0227, sports, hobby and noncredit courses) and `person.x_other` (BUG-0242, an RMD not received in
+full). Fresh replies of 2026-10-30 (claude-opus-5-5, deepseek-flash); Stage 21 logs archived in
+`.transcription/archive/before-fix-round2-2026-10-30/`. Full ruling text: `.transcription/proposed/fixr2/transcription.person.json`,
+`transcription.person.deepseek.json`, `render.person.json`, `render.person.deepseek.json`. Claude triage: `../triage/person.json`,
+executable-triage-v2 (1,382 fixtures, 500 generated returns seed 20261026, 2,014 partial records; 4,711 comparisons per line);
+every witness was listed by a scratch rerun of `tools/transcription/triage.mjs` with the witness cap lifted, and every
+completed-return value difference was checked against its ruling's mechanism. The deepseek-flash reply fails validation on
+three expressions (`person.positive_profits`, `person.dc_earned`, `person.dc_earned_b`: "model changed a published result
+type"), so `../triage/person.deepseek.json` is `invalid`; those three are model errors on the declaration and the others are
+ruled by reading. The class M logs have no open line.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | person.educator_deduction | representation | 3,046/4,711 agree; 28 project-unknown, 1,637 candidate-unknown | i1040gi p. 93, Line 11 | Same deduction; question order only. |
+| claude | transcription | person.hsa_step1 | representation | 4,423/4,711 agree; 285 value, 3 candidate-unknown | i8889 p. 7, Line 6, Step 2 | All values non-split forms, project $0.00; no amount. |
+| claude | transcription | person.hsa_share | interface gap | 4,111/4,711 agree; 274 value, 30 candidate-refuses, 296 candidate-unknown | i8889 p. 7, Line 6, Steps 2-3 | Cycle through f8889.share (unlabelled interface); values non-split. |
+| claude | transcription | person.ira_amount_a | representation | 4,711/4,711 agree | i1040gi p. 26, Lines 4a and 4b | Same per-person sum (D1). |
+| claude | transcription | person.ira_taxable | representation | 4,711/4,711 agree | i1040gi p. 26, Lines 4a and 4b | Same per-person sum (D1). |
+| claude | transcription | person.ira_rollovers | representation | 4,711/4,711 agree | i1040gi pp. 26-27, rollovers | Same count (D1). |
+| claude | transcription | person.plan_amount_a | representation | 4,711/4,711 agree | i1040gi p. 28, Lines 5a and 5b | Same per-person sum (D1). |
+| claude | transcription | person.plan_taxable | representation | 4,711/4,711 agree | i1040gi p. 28, Lines 5a and 5b | Same per-person sum (D1). |
+| claude | transcription | person.plan_rollovers | representation | 4,711/4,711 agree | i1040gi pp. 28-29, rollovers | Same count (D1). |
+| claude | transcription | person.se_line6 | scope | 3,166/4,711 agree; 25 candidate-refuses, 1,520 candidate-unknown | i1040sse p. 1, Who Must File Schedule SE | Now on sc.result; se_screen/rrta placement only; no value. |
+| claude | transcription | person.se_line12 | scope | 3,166/4,711 agree; 25 candidate-refuses, 1,520 candidate-unknown | i1040sse p. 1, Who Must File Schedule SE | Now on sc.result; se_screen/rrta placement only; no value. |
+| claude | transcription | person.se_line13 | scope | 3,166/4,711 agree; 25 candidate-refuses, 1,520 candidate-unknown | f1040sse line 13 | Now on sc.result; se_screen/rrta placement only; no value. |
+| claude | transcription | Step 2 | scope | 3,166/4,711 agree; 25 candidate-refuses, 1,520 candidate-unknown | p560 p. 39, Step 2 | Copies se_line13; placements. |
+| claude | transcription | person.eic_se | scope | 3,164/4,711 agree; 27 candidate-refuses, 1,520 candidate-unknown | i1040gi EIC Worksheet B, Parts 1-2 | Now on sc.result; same amount; placements. |
+| claude | transcription | person.dc_earned_b | scope | 3,182/4,711 agree; 27 candidate-refuses, 1,502 candidate-unknown | i2441 p. 5, Line 18 | Same sum; placements. |
+| claude | transcription | person.dc_earned | model error | 3,181/4,711 agree; 2 value, 11 project-refuses, 25 candidate-refuses, 1,492 candidate-unknown | i2441 p. 4 | Still omits line 1e (classm.carloan.1: $238,056.00 against $234,528.00, refused). |
+| claude | transcription | person.dc_has_box10 | representation | 4,711/4,711 agree | i2441 p. 5, Line 12 | No difference. |
+| claude | transcription | person.s16 | scope | 3,147/4,711 agree; 37 project-refuses, 8 candidate-refuses, 1,519 candidate-unknown | p560 p. 39, after Step 21 | SIMPLE helpers restructured; no value; cited refusals and placements. |
+| claude | transcription | person.sav_ineligible | ambiguity | 4,466/4,711 agree; 197 value, 4 project-unknown, 44 candidate-unknown | f8880 p. 2; amb.2025.savers_ineligible_column | All 197 values: sav_claimed yes with sa.dependent no (unproducible). |
+| claude | transcription | person.sav_line2 | scope | 3,248/4,711 agree; 10 value, 10 project-refuses, 98 candidate-refuses, 1,345 candidate-unknown | f8880 p. 2, Line 2 | Own SIMPLE deferral now capped at compensation; values only where project refuses simple_excess. |
+| claude | transcription | person.ira_cov | ambiguity | 4,238/4,711 agree; 419 value, 8 project-unknown, 46 candidate-unknown | i1040gi p. 96; amb.2025.ira_covered | All 419 values: plan answer without Schedule C; completed ones without traditional contribution. |
+| claude | transcription | person.ira_line2 | ambiguity | 1,764/4,711 agree; 1,636 value, 1 candidate-refuses, 5 project-unknown, 1,305 candidate-unknown | i1040gi p. 97, line 2; amb.2025.ira_covered | $246,000 now status-free: equal wherever line 2 is reached; joint values follow ira_cov. |
+| claude | transcription | person.ira_line6 | representation | 2,288/4,711 agree; 1,186 value, 41 project-refuses, 10 candidate-refuses, 26 project-unknown, 1,160 candidate-unknown | i1040gi p. 97, line 6 | Inherited from line 2 and ira_cov; all completed values inside skipped lines. |
+| claude | transcription | person.ira_line7 | model error | 63/4,711 agree; 2,589 value, 220 project-refuses, 1 candidate-refuses, 1,770 project-unknown, 68 candidate-unknown | i1040gi p. 97, line 6; p. 98, line 7 | New zero for a non-contributor: printed 7b $7,000.00 against $0.00 (stage16.mut.ira_joint_full_edge); 867 others reach nothing. |
+| claude | transcription | person.ira_deduction | scope | 4,669/4,711 agree; 11 project-refuses, 2 candidate-refuses, 29 candidate-unknown | i1040gi p. 98, line 12 | Now sav_trad-gated; no value; cited Pub. 590-A refusals. |
+| claude | transcription | person.ira_nondeductible | scope | 2,582/4,711 agree; 10 project-refuses, 232 candidate-refuses, 1,887 candidate-unknown | i8606 p. 9, Line 1 | Same formula; placements. |
+| claude | transcription | person.ira_files_8606 | scope | 2,551/4,711 agree; 10 project-refuses, 232 candidate-refuses, 1,918 candidate-unknown | i8606 p. 2, Who Must File | Basis condition screened at retirement.special; placements. |
+| claude | transcription | person.ira_8606_line2 | scope | 2,897/4,711 agree; 12 project-refuses, 30 project-unknown, 1,772 candidate-unknown | i8606 p. 9, Line 2 | Same expression; placements. |
+| claude | transcription | person.ira_dist_gate | scope | 2,761/4,711 agree; 10 project-refuses, 232 candidate-refuses, 1,708 candidate-unknown | f8606 Part I | Same gate plus screened basis condition; placements. |
+| claude | transcription | person.ira_8606_line14 | scope | 2,496/4,711 agree; 11 project-refuses, 232 candidate-refuses, 1,972 candidate-unknown | f8606 Part I, line 14 | Same two amounts; placements. |
+| claude | transcription | person.ira_ssb | scope | 4,670/4,711 agree; 10 project-refuses, 1 candidate-refuses, 30 candidate-unknown | i1040gi p. 98; amb.2025.ira_ssb_copy | Now sav_trad-gated; no value; placements. |
+| claude | transcription | person.ira_se | scope | 3,090/4,711 agree; 36 project-refuses, 28 candidate-refuses, 1,557 candidate-unknown | i1040gi p. 98, line 9 | sc.result less lines 15 and 16, floored; same amount. |
+| claude | transcription | person.edu_kid | model error | 2,887/4,711 agree; 65 value, 97 project-refuses, 2 project-unknown, 1,660 candidate-unknown | i8863 pp. 6-7, Line 7 | Still no f8863.kid_needed gate; values only with kid_needed false. |
+| claude | transcription | person.x_l2_all | scope | 4,705/4,711 agree; 5 value, 1 candidate-refuses | i5329 p. 5, Line 2 | Unknowns gone; after-limit line 2 against before-limit helper; f5329.must agrees. |
+| claude | transcription | person.x_c05 | model error | 4,710/4,711 agree; 1 value | i5329 p. 5, exception 05 | No Schedule A line 4 limit (stage21.blind.e6: $9,000.00 against $7,475.00). |
+| claude | transcription | person.x_other_exc | model error | 4,706/4,711 agree; 5 value | i5329 p. 5, exception 05 | Carries 05 unlimited (stage21.blind.e6). |
+| claude | transcription | person.x_limited_sum | model error | 4,701/4,711 agree; 10 value | i5329 p. 5, Line 2 | 05 limit never applied (e6); before/after-limit meaning not in interface. |
+| claude | transcription | person.x_limit_binds | interface gap | 4,706/4,711 agree; 4 value, 1 project-refuses | i5329 p. 5, Line 4; amb.2025.f5329_simple_limits | No code S condition; the project scope decision is not in the id-only interface (Stage 21: model error). |
+| claude | transcription | eligible | representation | 4,703/4,711 agree; 7 value, 1 project-unknown | i1040gi p. 117, Line 11 | Over test placed in eligible; values only where project refuses person.credit. |
+| claude | transcription | Step 6 | representation | 4,711/4,711 agree | p560 p. 39, Step 6 | No difference. |
+| claude | transcription | 27 | model error | 2,371/4,711 agree; 2 value, 1 project-unknown, 2,337 candidate-unknown | i8863 p. 3, Who cannot claim a credit | Adds sav_claimed; still no itin_applied or f8863.paid; values unproducible. |
+| claude | transcription | 28 | model error | 2,371/4,711 agree; 2 value, 1 project-unknown, 2,337 candidate-unknown | i8863 p. 3, Who cannot claim a credit | Adds sav_claimed; still no itin_applied or f8863.paid; values unproducible. |
+| claude | transcription | 29 | model error | 2,371/4,711 agree; 2 value, 1 project-unknown, 2,337 candidate-unknown | i8863 p. 3, Who cannot claim a credit | Adds sav_claimed; still no itin_applied or f8863.paid; values unproducible. |
+| claude | transcription | 30 | model error | 2,371/4,711 agree; 2 value, 1 project-unknown, 2,337 candidate-unknown | i8863 p. 3, Who cannot claim a credit | Adds sav_claimed; still no itin_applied or f8863.paid; values unproducible. |
+| claude | transcription | 31 | model error | 2,306/4,711 agree; 56 value, 9 project-unknown, 2,340 candidate-unknown | i8863 p. 3, Who cannot claim a credit | Adds sav_claimed; still no itin_applied or f8863.paid; values unproducible. |
+| deepseek | transcription | person.educator_deduction | representation | not executable (reply invalid) | i1040gi p. 93, Line 11 | Now the Claude formula; question order only. |
+| deepseek | transcription | person.hsa_agreed | representation | not executable (reply invalid) | i8889 p. 7, Line 6, Step 2 | As Stage 21. |
+| deepseek | transcription | person.hsa_step1 | representation | not executable (reply invalid) | i8889 p. 7, Line 6, Step 2 | As Stage 21; adds h_hsa_unsupported placement. |
+| deepseek | transcription | person.hsa_share | interface gap | not executable (reply invalid) | i8889 p. 7, Line 6, Step 3 | As Stage 21: cycle through f8889.share. |
+| deepseek | transcription | person.ira_taxable | scope | not executable (reply invalid) | i1040gi p. 26, Lines 4a and 4b | IRA filter fixed; bypasses retirement.taxable refusals. |
+| deepseek | transcription | person.plan_taxable | scope | not executable (reply invalid) | i1040gi p. 28, Lines 5a and 5b | Same amount; bypasses retirement.taxable refusals. |
+| deepseek | transcription | person.s179_nonlisted | model error | not executable (reply invalid) | i4562 p. 5, Line 6 | Reads line 12 (allowed deduction): cycle; sc.f6 published. |
+| deepseek | transcription | person.s179_listed | interface gap | not executable (reply invalid) | i4562 p. 5, Line 7 | As Stage 21; p. 5 not given. |
+| deepseek | transcription | person.income179 | model error | not executable (reply invalid) | i4562 p. 5, Line 11 | Schedule C line 31 after section 179: cycle. |
+| deepseek | transcription | person.sc_total | scope | not executable (reply invalid) | i1040sc p. 15, Line 32 | As Stage 21: at-risk refusal. |
+| deepseek | transcription | person.se_line6 | scope | not executable (reply invalid) | f1040sse lines 4a-6 | Now valid and correct; se_screen placement, no rrta refusal (cited project refusal). |
+| deepseek | transcription | person.se_line12 | scope | not executable (reply invalid) | f1040sse lines 9-12 | Now valid and correct; placements. |
+| deepseek | transcription | person.se_line13 | scope | not executable (reply invalid) | f1040sse line 13 | Now valid and correct; placements. |
+| deepseek | transcription | person.s16 | scope | not executable (reply invalid) | p560 p. 39; p. 17 | SIMPLE unlimited only where project refuses simple_excess; placements. |
+| deepseek | transcription | person.positive_profits | model error | not executable (reply invalid) | f7206 line 5 | Declaration error: Bool for NonNegDollars. |
+| deepseek | transcription | person.eic_se | scope | not executable (reply invalid) | i1040gi EIC Worksheet B | Now valid; same amount; placements. |
+| deepseek | transcription | person.sc_1a | model error | not executable (reply invalid) | i1040gi p. 104, Schedule 1-A Line 5 | As Stage 21: statutory, not tips_ot. |
+| deepseek | transcription | person.dc_has_box10 | representation | not executable (reply invalid) | i2441 p. 5, Line 12 | Now the Claude expression. |
+| deepseek | transcription | person.dc_earned | model error | not executable (reply invalid) | i2441 p. 4 | Declaration error; omits line 1e, floors SE loss. |
+| deepseek | transcription | person.dc_earned_b | model error | not executable (reply invalid) | i2441 p. 5, Line 18 | Declaration error. |
+| deepseek | transcription | person.sav_ineligible | ambiguity | not executable (reply invalid) | f8880 p. 2; amb.2025.savers_ineligible_column | Now the Claude expression. |
+| deepseek | transcription | person.sav_line1 | scope | not executable (reply invalid) | f8880 line 1 | As Stage 21. |
+| deepseek | transcription | person.sav_line2 | model error | not executable (reply invalid) | f8880 p. 2, Line 2 | Omits own SIMPLE deferrals. |
+| deepseek | transcription | person.ira_contrib | scope | not executable (reply invalid) | i1040gi p. 98, line 11 | As Stage 21; refusal no longer declared. |
+| deepseek | transcription | person.ira_cov | model error | not executable (reply invalid) | i1040gi p. 96 | As Stage 21: drops own SEP/SIMPLE coverage. |
+| deepseek | transcription | person.ira_line2 | representation | not executable (reply invalid) | i1040gi p. 97, line 2 | Now the Claude structure; inherits ira_cov. |
+| deepseek | transcription | person.ira_line6 | model error | not executable (reply invalid) | i1040gi p. 97, lines 3-6 | AGI line 11a for worksheet line 5: cycle. |
+| deepseek | transcription | person.ira_line7 | model error | not executable (reply invalid) | i1040gi pp. 97-98, lines 6-7 | $200 floor at zero, no full-limit threshold, wrong uncovered rule. |
+| deepseek | transcription | person.ira_deduction | model error | not executable (reply invalid) | i1040gi p. 98, line 12 | Omits line 10. |
+| deepseek | transcription | person.ira_nondeductible | model error | not executable (reply invalid) | i8606 p. 9, Line 1 | Omits line 10. |
+| deepseek | transcription | person.ira_files_8606 | scope | not executable (reply invalid) | i8606 p. 2, Who Must File | Now the Claude test. |
+| deepseek | transcription | person.ira_8606_line2 | scope | not executable (reply invalid) | i8606 p. 9, Line 2 | Basis for everyone; no adjusted-basis refusal (cited project refusal). |
+| deepseek | transcription | person.ira_dist_gate | scope | not executable (reply invalid) | f8606 Part I | Project test plus screened basis condition. |
+| deepseek | transcription | person.ira_8606_line14 | scope | not executable (reply invalid) | f8606 Part I, line 14 | Same amounts; placements. |
+| deepseek | transcription | person.ira_ssb | model error | not executable (reply invalid) | i1040gi p. 98; amb.2025.ira_ssb_copy | Copies circular deduction. |
+| deepseek | transcription | person.ira_se | scope | not executable (reply invalid) | i1040gi p. 98, line 9 | Now valid; same amount; placements. |
+| deepseek | transcription | person.edu_kid | model error | not executable (reply invalid) | i8863 p. 7, Line 7 | Drops age bands; no kid_needed gate. |
+| deepseek | transcription | person.x_c05 | model error | not executable (reply invalid) | i5329 p. 5, exception 05 | Zero: no medical exception. |
+| deepseek | transcription | person.x_two23 | model error | not executable (reply invalid) | p590b p. 28 | Always false. |
+| deepseek | transcription | person.x_limited_sum | model error | not executable (reply invalid) | p590b pp. 27-28; i5329 p. 5 | Zero: no limits. |
+| deepseek | transcription | person.x_other_exc | model error | not executable (reply invalid) | i5329 p. 5, Line 2 | All exceptions unlimited. |
+| deepseek | transcription | person.x_limit_binds | model error | not executable (reply invalid) | i5329 p. 5, Line 4 | Always false. |
+| deepseek | transcription | person.x_hsa_excess | model error | not executable (reply invalid) | f5329 Part VII, lines 47-49 | Sums the line 49 tax: wrong quantity, cycle. |
+| deepseek | transcription | eligible | representation | not executable (reply invalid) | i1040gi p. 117, Line 11 | Now the Claude test. |
+| deepseek | transcription | excess | scope | not executable (reply invalid) | i1040gi p. 117, Line 11 | Gated on eligible; differs only where project refuses credit. |
+| deepseek | transcription | credit | scope | not executable (reply invalid) | i1040gi p. 117, Line 11 | Zero where one employer over-withheld; project refuses (Form 843). |
+| deepseek | transcription | Step 1 | scope | not executable (reply invalid) | p560 p. 39, Step 1 | As Stage 21. |
+| deepseek | transcription | Step 2 | scope | not executable (reply invalid) | p560 p. 39, Step 2 | Now valid; copies se_line13. |
+| deepseek | transcription | Step 5 | model error | not executable (reply invalid) | p560 p. 38, Rate Table | Rate to 3 places, table has 6 (0.091 for 0.090909). |
+| deepseek | transcription | Step 6 | scope | not executable (reply invalid) | p560 p. 39, Step 6 | Now valid; exact for whole rates; placement. |
+| deepseek | transcription | 27 | model error | not executable (reply invalid) | i8863 pp. 2-3 | As Stage 21: no gates; edu_over refusal dropped. |
+| deepseek | transcription | 28 | model error | not executable (reply invalid) | i8863 pp. 2-3 | As Stage 21: no gates; edu_over refusal dropped. |
+| deepseek | transcription | 29 | model error | not executable (reply invalid) | i8863 pp. 2-3 | As Stage 21: no gates; edu_over refusal dropped. |
+| deepseek | transcription | 30 | model error | not executable (reply invalid) | i8863 pp. 2-3 | As Stage 21: no gates; edu_over refusal dropped. |
+| deepseek | transcription | 31 | model error | not executable (reply invalid) | i8863 pp. 2-3 | As Stage 21: no gates; edu_over refusal dropped. |
+| claude | render | 27 | ambiguity | render MISMATCH | i8863 p. 1; p970 pp. 2, 11 | amb.2025.edu_1098t_date; applied-for ITIN interface gap; new only because the prompt changed. |
+| claude | render | 28 | ambiguity | render MISMATCH | i8863 p. 1; p970 pp. 2, 11 | amb.2025.edu_1098t_date; applied-for ITIN interface gap; new only because the prompt changed. |
+| claude | render | 29 | ambiguity | render MISMATCH | i8863 p. 1; p970 pp. 2, 11 | amb.2025.edu_1098t_date; applied-for ITIN interface gap; new only because the prompt changed. |
+| claude | render | 30 | ambiguity | render MISMATCH | i8863 p. 1; p970 pp. 2, 11 | amb.2025.edu_1098t_date; applied-for ITIN interface gap; new only because the prompt changed. |
+| claude | render | 31 | ambiguity | render MISMATCH | i8863 p. 1; p970 pp. 2, 11 | amb.2025.edu_1098t_date; applied-for ITIN interface gap; new only because the prompt changed. |
+| deepseek | render | Step 3 | ambiguity | render MISMATCH | p560 p. 39, Step 3 | amb.2025.sep_loss_floor; unchanged. |
+
+Errors introduced by the fixes: one, low severity, found by scrutiny of the reworded questions rather than by a reply: F1
+`EXPIRED-ITIN-RENEWAL`, the new `person.tin` sentence counts an expired ITIN whose renewal was only applied for by the due
+date, and `household.id_count` reads `person.tin` for the child tax credit's other-spouse test, where
+`amb.2025.ctc_spouse_itin_application` chose that an application does not count (p503 p. 3: an expired ITIN "must be renewed
+before being used again"); `.transcription/proposed/fixr2/person.findings.md`. Checked without finding: `person.x_other`
+(Part IX applies to a shortfall made up later, f5329 p. 3 and i5329 p. 9, so the wider screen is the source's);
+`person.edu_1098t` (the cooperation sentence is i8863 p. 1's); `person.edu_inst` (the job-skills exception limited to the
+lifetime learning credit, i8863 p. 4).
+Reclassified from Stage 21: Claude `person.x_limit_binds` (model error to interface gap; the code S condition is a project
+scope decision the id-only interface does not carry).
+
+## Fix round 3 (superseded subject)
+
+Subject after BUG-0256 (2026-10-30): `person.tin` no longer counts an expired ITIN whose renewal was only applied for
+("An ITIN that has expired counts only if it has been renewed by then (a renewal only applied for does not count here)");
+no person expression changed. Fresh replies of 2026-10-30 (claude-opus-5-5, deepseek-flash); fix-round-2 logs archived in
+`.transcription/archive/before-fix-round3-2026-10-30/`. Full ruling text: `.transcription/proposed/fixr3/transcription.person.json`,
+`transcription.person.deepseek.json`, `render.person.json`, `render.person.deepseek.json`. Claude triage: `../triage/person.json`,
+executable-triage-v2 (1,390 fixtures, 500 generated returns seed 20261026, 2,014 partial records; 4,724 comparisons per line);
+every witness was listed by a scratch rerun of `tools/transcription/triage.mjs` with the witness cap lifted, and every
+completed-return value difference was checked against its ruling's mechanism. The deepseek-flash reply fails validation on
+three declarations (`person.positive_profits`, non-negativity unproven; `person.h_llc31`, aqee has no line31;
+`person.h_ira_line4`, `s1.line23` does not resolve), so `../triage/person.deepseek.json` is `invalid`; lines reaching them are
+model errors on the declaration and the others are ruled by reading, illustrated by a scratch evaluation with the three
+declarations minimally repaired (not a triage record). The class M logs have no open line. Rulings repeated from fix round 2
+were re-checked against the new replies; most replies changed.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | person.educator_deduction | representation | 3,056/4,724 agree; 28 project-unknown, 1,640 candidate-unknown | i1040gi p. 93, Line 11 | Unchanged; question order only. |
+| claude | transcription | person.hsa_share | interface gap | 4,702/4,724 agree; 16 candidate-refuses, 6 candidate-unknown | i8889 p. 7, Line 6, Steps 2-3 | Spouse-rule filter added; still the f8889.share cycle (id-only interface). |
+| claude | transcription | person.tip_reported | scope | 4,719/4,724 agree; 5 project-refuses | i1040gi p. 103, qualified tips | New: qualified rows only; differences are the cited tipjob.mixed refusal. |
+| claude | transcription | person.sc_total | scope | 4,723/4,724 agree; 1 project-refuses | i1040sc p. 15, Line 32 | New: sc.line31; at-risk refusal only. |
+| claude | transcription | person.se_line6 | scope | 3,204/4,724 agree; 1 project-refuses, 17 candidate-refuses, 1,502 candidate-unknown | i1040sse p. 1, Who Must File | Back on sc.line31: at-risk refusal again; se_screen placement; no value. |
+| claude | transcription | person.se_line12 | scope | 3,204/4,724 agree; 1 project-refuses, 17 candidate-refuses, 1,502 candidate-unknown | i1040sse p. 1, Who Must File | Back on sc.line31: at-risk refusal again; placement; no value. |
+| claude | transcription | person.se_line13 | scope | 3,204/4,724 agree; 1 project-refuses, 17 candidate-refuses, 1,502 candidate-unknown | f1040sse line 13 | Back on sc.line31: at-risk refusal again; placement; no value. |
+| claude | transcription | Step 2 | scope | 3,204/4,724 agree; 1 project-refuses, 17 candidate-refuses, 1,502 candidate-unknown | p560 p. 39, Step 2 | Copies se_line13; as there. |
+| claude | transcription | person.eic_se | scope | 3,204/4,724 agree; 1 project-refuses, 17 candidate-refuses, 1,502 candidate-unknown | i1040gi EIC Worksheet B, Parts 1-2 | Back on sc.line31; same amount; placements. |
+| claude | transcription | person.dc_earned_b | scope | 3,222/4,724 agree; 1 project-refuses, 17 candidate-refuses, 1,484 candidate-unknown | i2441 p. 5, Line 18 | Back on sc.line31; same sum; placements. |
+| claude | transcription | person.dc_earned | model error | 3,128/4,724 agree; 6 project-refuses, 16 candidate-refuses, 1,574 candidate-unknown | i2441 p. 4; amb.2025.dc_line1e_attribution | Line 1e now added (round-2 error fixed) but to both spouses when both have box 10; no sample record. |
+| claude | transcription | person.dc_has_box10 | representation | 4,724/4,724 agree; none differ | i2441 p. 5, Line 12 | No difference. |
+| claude | transcription | person.s16 | scope | 2,982/4,724 agree; 37 project-refuses, 20 candidate-refuses, 1,685 candidate-unknown | p560 p. 39, after Step 21 | SIMPLE helpers on sc.line31; no value; cited refusals, placements. |
+| claude | transcription | person.sav_ineligible | ambiguity | 4,479/4,724 agree; 197 value, 4 project-unknown, 44 candidate-unknown | f8880 p. 2; amb.2025.savers_ineligible_column | Unchanged; values unproducible (sav_claimed without sa.dependent). |
+| claude | transcription | person.sav_line2 | scope | 3,197/4,724 agree; 149 value, 15 project-refuses, 16 candidate-refuses, 1 project-unknown, 1,346 candidate-unknown | f8880 p. 2, Line 2; amb.2025.ira_covered | Schedule C gate dropped: all 149 values are plan simple without a Schedule C (unproducible). |
+| claude | transcription | person.ira_cov | ambiguity | 4,248/4,724 agree; 421 value, 9 project-unknown, 46 candidate-unknown | i1040gi p. 96; amb.2025.ira_covered | Unchanged; values plan answer without Schedule C, no contribution. |
+| claude | transcription | person.ira_line2 | ambiguity | 4,488/4,724 agree; 164 value, 5 candidate-refuses, 6 project-unknown, 61 candidate-unknown | i1040gi p. 97, line 2; amb.2025.ira_covered | Joint-return test restored; 124 completed values all ira_cov plan reading. |
+| claude | transcription | person.ira_line6 | representation | 3,424/4,724 agree; 129 value, 42 project-refuses, 11 candidate-refuses, 29 project-unknown, 1,089 candidate-unknown | i1040gi p. 97, line 6 | Inherited from line 2; completed values inside skipped lines. |
+| claude | transcription | person.ira_line7 | representation | 4,390/4,724 agree; 6 value, 220 project-refuses, 1 candidate-refuses, 48 project-unknown, 59 candidate-unknown | i1040gi p. 97, line 1 | Round-2 zero branch gone; 6 values on returns with no contribution (printed lines zero). |
+| claude | transcription | person.ira_deduction | model error | 2,518/4,724 agree; 11 project-refuses, 231 candidate-refuses, 1,964 candidate-unknown | i1040gi pp. 95, 98 | sav_trad gate dropped: needs coverage answers of 873 non-contributors (completed). |
+| claude | transcription | person.ira_nondeductible | model error | 2,518/4,724 agree; 10 project-refuses, 231 candidate-refuses, 1,965 candidate-unknown | i8606 p. 9, Line 1; i1040gi p. 95 | sav_trad gate dropped: unneeded answers. |
+| claude | transcription | person.ira_files_8606 | model error | 2,518/4,724 agree; 10 project-refuses, 231 candidate-refuses, 1,965 candidate-unknown | i8606 p. 2; i1040gi p. 95 | sav_trad gate dropped: unneeded answers. |
+| claude | transcription | person.ira_8606_line2 | model error | 2,518/4,724 agree; 11 project-refuses, 231 candidate-refuses, 1,964 candidate-unknown | i8606 p. 9, Line 2; i1040gi p. 95 | Filer gate through ira_nondeductible: unneeded answers. |
+| claude | transcription | person.ira_dist_gate | model error | 2,770/4,724 agree; 10 project-refuses, 231 candidate-refuses, 1,713 candidate-unknown | f8606 Part I; i1040gi p. 95 | Through ira_nondeductible: unneeded answers. |
+| claude | transcription | person.ira_8606_line14 | model error | 2,518/4,724 agree; 12 project-refuses, 231 candidate-refuses, 1,963 candidate-unknown | f8606 Part I, line 14; i1040gi p. 95 | sav_trad gate dropped: unneeded answers. |
+| claude | transcription | person.ira_ssb | model error | 2,522/4,724 agree; 10 project-refuses, 231 candidate-refuses, 1,961 candidate-unknown | i1040gi pp. 95, 98; amb.2025.ira_ssb_copy | sav_trad gate dropped: unneeded answers (871 completed). |
+| claude | transcription | person.ira_se | scope | 2,984/4,724 agree; 39 project-refuses, 33 candidate-refuses, 1,668 candidate-unknown | i1040gi p. 98, line 9 | Back on sc.line31: at-risk refusal; same amount. |
+| claude | transcription | person.edu_kid | model error | 2,881/4,724 agree; 66 value, 97 project-refuses, 1,680 candidate-unknown | i8863 pp. 6-7, Line 7 | Reordered; still no kid_needed gate; values only with kid_needed false. |
+| claude | transcription | person.x_c05 | model error | 4,723/4,724 agree; 1 value | i5329 p. 5, exception 05 | Unchanged: no Schedule A line 4 limit (stage21.blind.e6). |
+| claude | transcription | person.x_limited_sum | model error | 4,718/4,724 agree; 5 value, 1 candidate-refuses | i5329 p. 5, Line 2 | Limits now inside; 05 limit never applied (e6); interface-gap kind gone. |
+| claude | transcription | person.x_other_exc | model error | 4,719/4,724 agree; 5 value | i5329 p. 5, exception 05 | Unchanged: 05 unlimited (e6). |
+| claude | transcription | person.x_limit_binds | interface gap | 4,718/4,724 agree; 4 value, 1 project-refuses, 1 candidate-refuses | i5329 p. 5, Line 4; amb.2025.f5329_simple_limits | Unchanged; no code S condition (id-only interface). |
+| claude | transcription | wages | representation | 4,724/4,724 agree; none differ | i1040gi p. 117; iw2w3 p. 18 | New: box 3 + box 7 = w2.wages. |
+| claude | transcription | eligible | representation | 4,716/4,724 agree; 7 value, 1 project-unknown | i1040gi p. 117, Line 11 | Unchanged; values only where project refuses person.credit. |
+| claude | transcription | Step 1 | scope | 3,187/4,724 agree; 23 project-refuses, 1 candidate-refuses, 1,513 project-unknown | p560 p. 39, Step 1 | New: no se_screened refusal (cited); project helper unknown where unreached. |
+| claude | transcription | Step 6 | representation | 4,724/4,724 agree; none differ | p560 p. 39, Step 6 | No difference. |
+| claude | transcription | 27 | model error | 2,381/4,724 agree; 2,343 candidate-unknown | i8863 pp. 2-3; p970 p. 11 | sav_claimed dropped; still no itin_applied or f8863.paid (unneeded answers). |
+| claude | transcription | 28 | model error | 2,381/4,724 agree; 2,343 candidate-unknown | i8863 pp. 2-3; p970 p. 11 | sav_claimed dropped; still no itin_applied or f8863.paid (unneeded answers). |
+| claude | transcription | 29 | model error | 2,381/4,724 agree; 2,343 candidate-unknown | i8863 pp. 2-3; p970 p. 11 | sav_claimed dropped; still no itin_applied or f8863.paid (unneeded answers). |
+| claude | transcription | 30 | model error | 2,381/4,724 agree; 2,343 candidate-unknown | i8863 pp. 2-3; p970 p. 11 | sav_claimed dropped; still no itin_applied or f8863.paid (unneeded answers). |
+| claude | transcription | 31 | model error | 2,380/4,724 agree; 1 candidate-refuses, 2,343 candidate-unknown | i8863 pp. 2-3; p970 p. 11 | sav_claimed dropped; still no itin_applied or f8863.paid; edu_over refusal as project. |
+| deepseek | transcription | person.educator_deduction | representation | not executable (reply invalid) | i1040gi p. 93, Line 11 | Claude formula; question order only. |
+| deepseek | transcription | person.hsa_agreed | representation | not executable (reply invalid) | i8889 p. 7, Line 6, Step 2 | As fix round 2. |
+| deepseek | transcription | person.hsa_step1 | representation | not executable (reply invalid) | i8889 p. 7, Line 6, Step 2 | As fix round 2; non-split values. |
+| deepseek | transcription | person.hsa_share | interface gap | not executable (reply invalid) | i8889 p. 7, Line 6, Step 3 | As fix round 2: f8889.share cycle. |
+| deepseek | transcription | person.tip_employers | scope | not executable (reply invalid) | i1040gi p. 103 | New: qualified rows only; cited tipjob.mixed refusal. |
+| deepseek | transcription | person.tip_total | scope | not executable (reply invalid) | i1040gi p. 103 | New: qualified rows only; cited refusal. |
+| deepseek | transcription | person.tip_reported | scope | not executable (reply invalid) | i1040gi p. 103 | New: qualified rows only; cited refusal. |
+| deepseek | transcription | person.ot_total | model error | not executable (reply invalid) | i1040gi p. 106, Schedule 1-A | New: otjob.figured without the FLSA test. |
+| deepseek | transcription | person.plan_amount_a | representation | not executable (reply invalid) | i1040gi p. 28 | Same sum. |
+| deepseek | transcription | person.plan_taxable | representation | not executable (reply invalid) | i1040gi p. 28 | Now the project expression. |
+| deepseek | transcription | person.plan_rollovers | representation | not executable (reply invalid) | i1040gi pp. 28-29 | has_rollover is the project condition. |
+| deepseek | transcription | person.sav_dist | model error | not executable (reply invalid) | f8880 p. 2, Line 4 | Prior-year questions instead of 2025 Forms 1099-R. |
+| deepseek | transcription | person.s179_nonlisted | interface gap | not executable (reply invalid) | i4562 p. 5, Line 6 | Cost, not elected amount; p. 5 and form face not given. |
+| deepseek | transcription | person.s179_listed | interface gap | not executable (reply invalid) | i4562 p. 5, Line 7 | Vehicle cost, not line 29; p. 5 not given. |
+| deepseek | transcription | person.income179 | model error | not executable (reply invalid) | i4562 p. 5, Line 11 | sc.line31 after section 179: cycle. |
+| deepseek | transcription | person.se_line6 | scope | not executable (reply invalid) | f1040sse lines 4a-6 | Correct computation; no se_screen/rrta refusal (cited project refusals); inherited 179 cycle. |
+| deepseek | transcription | person.se_line12 | scope | not executable (reply invalid) | f1040sse lines 9-12 | As se_line6. |
+| deepseek | transcription | person.se_line13 | scope | not executable (reply invalid) | f1040sse line 13 | As se_line6. |
+| deepseek | transcription | Step 2 | scope | not executable (reply invalid) | p560 p. 39, Step 2 | Copies se_line13. |
+| deepseek | transcription | person.s16 | scope | not executable (reply invalid) | p560 pp. 14-17, 39 | As fix round 2; plan without Schedule C unproducible. |
+| deepseek | transcription | person.eic_se | model error | not executable (reply invalid) | i1040gi EIC Worksheet B, line 1a | Schedule SE line 6 for line 3. |
+| deepseek | transcription | person.sc_1a | model error | not executable (reply invalid) | i1040gi p. 104 | statutory, not tips_ot. |
+| deepseek | transcription | person.dc_has_box10 | representation | not executable (reply invalid) | i2441 p. 5, Line 12 | Same test. |
+| deepseek | transcription | person.dc_earned | model error | not executable (reply invalid) | i2441 p. 4 | No line 1e; SE line 6 for line 3; loss floored. |
+| deepseek | transcription | person.dc_earned_b | model error | not executable (reply invalid) | i2441 p. 5, Line 18 | Subtracts all box 10 benefits from box 1. |
+| deepseek | transcription | person.sav_ineligible | ambiguity | not executable (reply invalid) | f8880 p. 2; amb.2025.savers_ineligible_column | Claude expression; unproducible values. |
+| deepseek | transcription | person.sav_line1 | scope | not executable (reply invalid) | f8880 line 1 | As fix round 2. |
+| deepseek | transcription | person.sav_line2 | model error | not executable (reply invalid) | f8880 p. 2, Line 2 | Omits own SIMPLE deferrals. |
+| deepseek | transcription | person.ira_contrib | scope | not executable (reply invalid) | i1040gi p. 98, line 11 | As fix round 2. |
+| deepseek | transcription | person.ira_cov | model error | not executable (reply invalid) | i1040gi p. 96 | Drops own SEP/SIMPLE coverage. |
+| deepseek | transcription | person.ira_line2 | representation | not executable (reply invalid) | i1040gi p. 97, line 2 | As fix round 2; values inside skipped lines. |
+| deepseek | transcription | person.ira_8606_line2 | scope | not executable (reply invalid) | i8606 p. 9, Line 2 | As fix round 2. |
+| deepseek | transcription | person.ira_dist_gate | model error | not executable (reply invalid) | f8606 Part I | Distribution with basis only; misses nondeductible-contribution case. |
+| deepseek | transcription | person.ira_se | model error | not executable (reply invalid) | i1040gi p. 98, line 9 | Schedule SE line 6 for net profit. |
+| deepseek | transcription | person.edu_kid | model error | not executable (reply invalid) | i8863 p. 7, Line 7 | Redefined as an AOC-student test. |
+| deepseek | transcription | person.x_l2_all | model error | not executable (reply invalid) | i5329 p. 5, Line 2 | Needs x_prior09 and x_births of everyone. |
+| deepseek | transcription | person.x_tax | model error | not executable (reply invalid) | f1040s2 line 8; f5329 line 49 | Omits line 49 (HSA excess tax). |
+| deepseek | transcription | person.x_c05 | model error | not executable (reply invalid) | i5329 p. 5, exception 05 | Unlimited exception 05. |
+| deepseek | transcription | person.x_two23 | model error | not executable (reply invalid) | p590b p. 28 | Tests 22 and 23, not two 23s. |
+| deepseek | transcription | person.x_limited_sum | model error | not executable (reply invalid) | i5329 p. 5; p590b pp. 27-28 | 05 unlimited; unneeded answers. |
+| deepseek | transcription | person.x_limit_binds | interface gap | not executable (reply invalid) | i5329 p. 5, Line 4 | Claude reading: no code S condition. |
+| deepseek | transcription | over | model error | not executable (reply invalid) | i1040gi p. 117, Line 11 | Redefined as wages over the base. |
+| deepseek | transcription | eligible | representation | not executable (reply invalid) | i1040gi p. 117, Line 11 | Claude test as a whole. |
+| deepseek | transcription | Step 1 | scope | not executable (reply invalid) | p560 p. 39, Step 1 | As fix round 2; cited se_screened refusal. |
+| deepseek | transcription | Step 5 | model error | not executable (reply invalid) | p560 p. 38, Rate Table | Rate to 9 places (table 6): a cent. |
+| deepseek | transcription | Step 6 | representation | not executable (reply invalid) | p560 p. 39, Step 6 | Exact for whole rates. |
+| deepseek | transcription | Step 21 | scope | not executable (reply invalid) | p560 p. 39, Steps 8-21 | Extra half-of-step-3 term never binds. |
+| deepseek | transcription | 27 | model error | not executable (reply invalid) | i8863 pp. 2-3; p970 p. 11 | Gate on redefined edu_kid: no itin_applied, filer TIN or f8863.paid. |
+| deepseek | transcription | 28 | model error | not executable (reply invalid) | i8863 pp. 2-3; p970 p. 11 | Gate on redefined edu_kid: no itin_applied, filer TIN or f8863.paid. |
+| deepseek | transcription | 29 | model error | not executable (reply invalid) | i8863 pp. 2-3; p970 p. 11 | Gate on redefined edu_kid: no itin_applied, filer TIN or f8863.paid. |
+| deepseek | transcription | 30 | model error | not executable (reply invalid) | i8863 pp. 2-3; p970 p. 11 | Gate on redefined edu_kid: no itin_applied, filer TIN or f8863.paid. |
+| deepseek | transcription | 31 | model error | not executable (reply invalid) | i8863 pp. 2-3 | Declaration error via h_llc31 (aqee has no line31). |
+| deepseek | transcription | person.positive_profits | model error | not executable (reply invalid) | f7206 line 5 | Declaration error: non-negativity unproven. |
+| deepseek | transcription | person.ira_line6 | model error | not executable (reply invalid) | i1040gi p. 97, lines 3-6 | Declaration error via h_ira_line4 (s1.line23). |
+| deepseek | transcription | person.ira_line7 | model error | not executable (reply invalid) | i1040gi pp. 97-98 | Declaration error; full limit where source says STOP. |
+| deepseek | transcription | person.ira_deduction | model error | not executable (reply invalid) | i1040gi p. 98, line 12 | Declaration error via h_ira_line4. |
+| deepseek | transcription | person.ira_nondeductible | model error | not executable (reply invalid) | i8606 p. 9, Line 1 | Declaration error; omits line 10. |
+| deepseek | transcription | person.ira_files_8606 | model error | not executable (reply invalid) | i8606 p. 2 | Declaration error via h_ira_line4. |
+| deepseek | transcription | person.ira_8606_line14 | model error | not executable (reply invalid) | f8606 Part I, line 14 | Declaration error via h_ira_line4. |
+| deepseek | transcription | person.ira_ssb | model error | not executable (reply invalid) | i1040gi p. 98; amb.2025.ira_ssb_copy | Declaration error; still circular through line 9. |
+| claude | render | 27 | ambiguity | render MISMATCH | i8863 p. 1; p970 pp. 2, 11 | amb.2025.edu_1098t_date; applied-for ITIN interface gap; unchanged objection. |
+| claude | render | 28 | ambiguity | render MISMATCH | i8863 p. 1; p970 pp. 2, 11 | amb.2025.edu_1098t_date; applied-for ITIN interface gap; unchanged objection. |
+| claude | render | 29 | ambiguity | render MISMATCH | i8863 p. 1; p970 pp. 2, 11 | amb.2025.edu_1098t_date; applied-for ITIN interface gap; unchanged objection. |
+| claude | render | 30 | ambiguity | render MISMATCH | i8863 p. 1; p970 pp. 2, 11 | amb.2025.edu_1098t_date; applied-for ITIN interface gap; unchanged objection. |
+| claude | render | 31 | ambiguity | render MISMATCH | i8863 p. 1; p970 pp. 2, 11 | amb.2025.edu_1098t_date; applied-for ITIN interface gap; unchanged objection. |
+| claude | render | 23 | ambiguity | render MISMATCH | i8863 p. 1; p970 pp. 2, 11 | New: objects only to the gate (date, applied-for ITIN), as at 27-31. |
+| deepseek | render | Step 3 | ambiguity | render MISMATCH | p560 p. 39, Step 3 | amb.2025.sep_loss_floor; unchanged. |
+
+Errors introduced by the fixes: none of medium or higher severity. BUG-0256 removes fix round 2's F1 (the pending renewal no
+longer satisfies the child tax credit's other-spouse test); low L1 for T-092: `person.itin_applied` still does not say whether
+a pending renewal is an application, so a filer sent away by the new "does not count here" may answer No and lose the credit
+for other dependents (stage13.odc_spouse_no_tin witness: `f1040.line19` $0.00 against $500.00);
+`.transcription/proposed/fixr3/person.findings.md`.
+Reclassified from fix round 2 (same project line, changed reply): Claude `person.ira_deduction`, `person.ira_nondeductible`,
+`person.ira_files_8606`, `person.ira_8606_line2`, `person.ira_dist_gate`, `person.ira_8606_line14`, `person.ira_ssb` (scope to
+model error: the sav_trad gate was dropped, so coverage answers are needed of non-contributors); Claude `person.ira_line7`
+(model error to representation: the zero branch is gone); deepseek `person.s179_nonlisted` (model error to interface gap),
+`person.eic_se`, `person.ira_se`, `person.ira_dist_gate` (scope to model error), `person.x_limit_binds` (model error to interface
+gap, the Claude reading), `person.ira_files_8606`, `person.ira_8606_line14` (scope to model error, declaration closure).
+Engine change in progress (spec 4.7.5): no witness examined for these rulings looks affected (none was seen where an unknown
+traced to an unanswered refusal gate let a count's lower bound decide a test); stage21.f1.lower_bound_still_decides (Claude `person.ira_line7`) is decided by a lower bound with an unanswered input,
+which the change should leave as it is.
+
+## Fix round 4
+
+Subject after BUG-0259 (2026-10-30): `person.itin_applied` now counts an application to renew an expired ITIN ("If you have
+neither (or your ITIN has expired and was not renewed), have you applied for an ITIN, or for the renewal of your expired
+ITIN, on or before the due date of your 2025 return (including extensions)?"); no person expression changed. Fresh replies
+of 2026-10-30 (claude-opus-5-5, deepseek-flash). Full ruling text: `.transcription/proposed/fixr4/transcription.person.json`,
+`transcription.person.deepseek.json`, `render.person.json`, `render.person.deepseek.json`. Claude triage: `../triage/person.json`,
+executable-triage-v2 (1,390 fixtures, 500 generated returns seed 20261026, 2,014 partial records; 4,724 comparisons per line);
+every witness was listed by a scratch rerun of `tools/transcription/triage.mjs` with the witness cap lifted (counts identical
+to the record), and every completed-return value difference was checked against its ruling's mechanism, with printed
+amounts read in both graphs where a helper differs. The deepseek-flash reply fails validation on 55 declarations (53
+collection sums naming the field without its collection's prefix, `h_ss_room` naming the parameter `ss.base` as a line,
+`h_se_4a_pos` non-negativity unproven), so `../triage/person.deepseek.json` is `invalid`; lines reaching them are model errors
+on the declaration (merits noted from a scratch evaluation with the prefixes restored, not a triage record) and the 19 lines
+outside that closure are ruled by reading. The class M logs have no open line. Rulings repeated from fix round 3 were
+re-checked; 8 Claude replies are unchanged, most others changed.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | person.educator_deduction | representation | 3,056/4,724 agree; 28 project-unknown, 1,640 candidate-unknown | i1040gi p. 93, Line 11 | Unchanged; question order only. |
+| claude | transcription | person.hsa_share | interface gap | 4,702/4,724 agree; 16 candidate-refuses, 6 candidate-unknown | i8889 p. 7, Line 6, Steps 2-3 | Unchanged; f8889.share cycle (id-only interface). |
+| claude | transcription | person.dc_has_box10 | representation | 4,724/4,724 agree; none differ | i2441 p. 5, Line 12 | Unchanged; no difference. |
+| claude | transcription | person.sav_ineligible | ambiguity | 4,479/4,724 agree; 197 value, 4 project-unknown, 44 candidate-unknown | f8880 p. 2; amb.2025.savers_ineligible_column | Unchanged; values unproducible. |
+| claude | transcription | person.sav_line2 | scope | 3,197/4,724 agree; 149 value, 15 project-refuses, 16 candidate-refuses, 1 project-unknown, 1,346 candidate-unknown | f8880 p. 2, Line 2; amb.2025.ira_covered | Unchanged; values plan simple without Schedule C. |
+| claude | transcription | person.ira_cov | ambiguity | 4,248/4,724 agree; 421 value, 9 project-unknown, 46 candidate-unknown | i1040gi p. 96; amb.2025.ira_covered | Unchanged; plan answer without Schedule C, no contribution. |
+| claude | transcription | eligible | representation | 4,716/4,724 agree; 7 value, 1 project-unknown | i1040gi p. 117, Line 11 | Unchanged; values only where project refuses person.credit. |
+| claude | transcription | Step 6 | representation | 4,724/4,724 agree; none differ | p560 p. 39, Step 6 | Unchanged; no difference. |
+| claude | transcription | person.se_line6 | scope | 3,176/4,724 agree; 25 candidate-refuses, 1,523 candidate-unknown | i1040sse p. 1, Who Must File | Back on sc.result: at-risk kind gone; se_screen/rrta placement; no value. |
+| claude | transcription | person.se_line12 | scope | 3,176/4,724 agree; 25 candidate-refuses, 1,523 candidate-unknown | i1040sse p. 1, Who Must File | As se_line6. |
+| claude | transcription | person.se_line13 | scope | 3,176/4,724 agree; 25 candidate-refuses, 1,523 candidate-unknown | i1040sse p. 1, Who Must File | As se_line6. |
+| claude | transcription | Step 2 | scope | 3,176/4,724 agree; 25 candidate-refuses, 1,523 candidate-unknown | p560 p. 39, Step 2 | Copies se_line13; as there. |
+| claude | transcription | person.eic_se | scope | 3,176/4,724 agree; 25 candidate-refuses, 1,523 candidate-unknown | i1040gi EIC Worksheet B, Parts 1-2 | Back on sc.result; same amount; placements. |
+| claude | transcription | person.dc_earned_b | scope | 3,194/4,724 agree; 25 candidate-refuses, 1,505 candidate-unknown | i2441 p. 5, Line 18 | Back on sc.result; same sum; placements. |
+| claude | transcription | person.dc_earned | model error | 3,101/4,724 agree; 5 project-refuses, 23 candidate-refuses, 1,595 candidate-unknown | i2441 p. 4; amb.2025.dc_line1e_attribution | Line 1e (now f1040.line1e) still added to both spouses with box 10. |
+| claude | transcription | person.s16 | scope | 3,153/4,724 agree; 37 project-refuses, 8 candidate-refuses, 1,526 candidate-unknown | p560 p. 39, after Step 21 | Back on sc.result; no value; cited refusals, placements. |
+| claude | transcription | person.ira_se | scope | 3,098/4,724 agree; 38 project-refuses, 28 candidate-refuses, 1,560 candidate-unknown | i1040gi p. 98, line 9 | Back on sc.result; same amount; placements. |
+| claude | transcription | person.ira_line2 | ambiguity | 4,535/4,724 agree; 164 value, 6 project-unknown, 19 candidate-unknown | i1040gi p. 97, line 2; amb.2025.ira_covered | Unchanged; values inherit ira_cov, printed lines zero. |
+| claude | transcription | person.ira_line6 | representation | 3,432/4,724 agree; 128 value, 41 project-refuses, 10 candidate-refuses, 29 project-unknown, 1,084 candidate-unknown | i1040gi p. 97, line 6 | Unchanged; values inside skipped lines (one more fixture). |
+| claude | transcription | person.ira_line7 | representation | 4,443/4,724 agree; 68 value, 35 project-refuses, 41 candidate-refuses, 8 project-unknown, 129 candidate-unknown | i1040gi pp. 97-98, lines 1, 7 | Branches on ira.anyone_covered; 31 completed values with printed lines zero. |
+| claude | transcription | person.ira_deduction | model error | 2,450/4,724 agree; 11 project-refuses, 270 candidate-refuses, 1,993 candidate-unknown | i1040gi pp. 95, 98 | sav_trad gate inside a smaller-of: still needs answers of 875 non-contributors. |
+| claude | transcription | person.ira_nondeductible | model error | 2,450/4,724 agree; 10 project-refuses, 270 candidate-refuses, 1,994 candidate-unknown | i8606 p. 9, Line 1; i1040gi p. 95 | As ira_deduction. |
+| claude | transcription | person.ira_files_8606 | model error | 2,450/4,724 agree; 10 project-refuses, 270 candidate-refuses, 1,994 candidate-unknown | i8606 p. 2; i1040gi p. 95 | As ira_deduction. |
+| claude | transcription | person.ira_dist_gate | model error | 2,743/4,724 agree; 10 project-refuses, 270 candidate-refuses, 1,701 candidate-unknown | f8606 Part I; i1040gi p. 95 | Through ira_nondeductible: unneeded answers (805). |
+| claude | transcription | person.ira_8606_line14 | model error | 2,395/4,724 agree; 11 project-refuses, 270 candidate-refuses, 2,048 candidate-unknown | f8606 Part I, line 14; i1040gi p. 95 | As ira_deduction. |
+| claude | transcription | person.ira_8606_line2 | model error | 2,907/4,724 agree; 12 project-refuses, 30 project-unknown, 1,775 candidate-unknown | i8606 p. 9, Line 2 | Now copies ira_basis for everyone: unneeded answers (829). |
+| claude | transcription | person.ira_ssb | model error | 2,534/4,724 agree; 10 project-refuses, 227 candidate-refuses, 1,953 candidate-unknown | i1040gi pp. 95, 98; amb.2025.ira_ssb_copy | sav_trad gate inside a smaller-of: unneeded answers (860). |
+| claude | transcription | person.edu_kid | model error | 2,032/4,724 agree; 202 value, 97 project-refuses, 2,393 candidate-unknown | i8863 pp. 6-7, Line 7 | MFJ condition dropped; no kid_needed gate; 110 values reach no amount. |
+| claude | transcription | person.x_limited_sum | model error | 2,037/4,724 agree; 1 candidate-refuses, 2,686 candidate-unknown | i5329 p. 5, Line 2; p590b p. 27 | 05 limit now applied; x_prior09 asked of everyone. |
+| claude | transcription | person.x_l2_all | model error | 2,036/4,724 agree; 2 value, 1 candidate-refuses, 2,685 candidate-unknown | i5329 p. 5, Line 2; p590b p. 27 | New: after-limit amount under the pre-limit id; x_prior09 asked of everyone. |
+| claude | transcription | person.x_other_exc | representation | 4,724/4,724 agree; none differ | i5329 p. 5, Line 2 | Unlimited exceptions summed directly; no difference. |
+| claude | transcription | person.x_limit_binds | interface gap | 2,035/4,724 agree; 2 value, 1 project-refuses, 2 candidate-refuses, 2,684 candidate-unknown | i5329 p. 5, Line 4; amb.2025.f5329_simple_limits | Form only; no code S condition (id-only interface). |
+| claude | transcription | person.x_must | model error | 4,367/4,724 agree; 297 value, 57 project-refuses, 1 candidate-refuses, 2 project-unknown | i5329 p. 1, Who Must File; f1040s2 line 8 | New: omits HSA excess as a reason; Schedule 2 line 8 box checked (119 completed). |
+| claude | transcription | person.x_two23 | representation | 4,724/4,724 agree; none differ | p590b p. 28 | New: same test (>1 vs >=2). |
+| claude | transcription | over | representation | 4,724/4,724 agree; none differ | i1040gi p. 117, Line 11 | New: same test (>0 vs >=1). |
+| claude | transcription | 27 | model error | 2,372/4,724 agree; 2,352 candidate-unknown | i8863 pp. 2-3; p970 p. 11 | itin_applied now tested (round-3 TIN kind gone); still no f8863.paid (unneeded answers). |
+| claude | transcription | 28 | model error | 2,372/4,724 agree; 2,352 candidate-unknown | i8863 pp. 2-3; p970 p. 11 | itin_applied now tested (round-3 TIN kind gone); still no f8863.paid (unneeded answers). |
+| claude | transcription | 29 | model error | 2,372/4,724 agree; 2,352 candidate-unknown | i8863 pp. 2-3; p970 p. 11 | itin_applied now tested (round-3 TIN kind gone); still no f8863.paid (unneeded answers). |
+| claude | transcription | 30 | model error | 2,372/4,724 agree; 2,352 candidate-unknown | i8863 pp. 2-3; p970 p. 11 | itin_applied now tested (round-3 TIN kind gone); still no f8863.paid (unneeded answers). |
+| claude | transcription | 31 | model error | 2,371/4,724 agree; 1 candidate-refuses, 2,352 candidate-unknown | i8863 pp. 2-3; p970 p. 11 | As 27; edu_over refusal as project. |
+| deepseek | transcription | person.educator_deduction | representation | not executable (reply invalid) | i1040gi p. 93, Line 11 | Unchanged; Claude formula. |
+| deepseek | transcription | person.hsa_forms | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error (unprefixed collection field); otherwise the project expression. |
+| deepseek | transcription | person.hsa_split | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error (unprefixed collection field); otherwise the project expression. |
+| deepseek | transcription | person.hsa_agreed | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error (unprefixed collection field); as fix round 3 (refused-return values). |
+| deepseek | transcription | person.hsa_step1 | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error (unprefixed collection field); as fix round 3 (non-split values, no printed amount). |
+| deepseek | transcription | person.hsa_share | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error (unprefixed collection field); reply graph circular. |
+| deepseek | transcription | person.hsa_deduction | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error (unprefixed collection field); also wrong on the merits. |
+| deepseek | transcription | person.hsa_taxable | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error (unprefixed collection field); otherwise the project expression. |
+| deepseek | transcription | person.hsa_addtax | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error (unprefixed collection field); otherwise the project expression. |
+| deepseek | transcription | person.tip_employers | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error (unprefixed collection field); otherwise the project expression. |
+| deepseek | transcription | person.tip_total | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error (unprefixed collection field); otherwise the project expression. |
+| deepseek | transcription | person.tip_reported | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error (unprefixed collection field); otherwise the project expression. |
+| deepseek | transcription | person.ot_employers | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error (unprefixed collection field); otherwise the project expression. |
+| deepseek | transcription | person.ot_total | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error (unprefixed collection field); otherwise the project expression. |
+| deepseek | transcription | person.box1 | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error (unprefixed collection field); otherwise the project expression. |
+| deepseek | transcription | person.box2 | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error (unprefixed collection field); otherwise the project expression. |
+| deepseek | transcription | person.ira_amount_a | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error (unprefixed collection field); also wrong on the merits. |
+| deepseek | transcription | person.ira_taxable | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error (unprefixed collection field); also wrong on the merits. |
+| deepseek | transcription | person.ira_rollovers | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error (unprefixed collection field); otherwise the project expression. |
+| deepseek | transcription | person.plan_amount_a | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error (unprefixed collection field); otherwise the project expression. |
+| deepseek | transcription | person.plan_taxable | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error (unprefixed collection field); also wrong on the merits. |
+| deepseek | transcription | person.plan_rollovers | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error (unprefixed collection field); otherwise the project expression. |
+| deepseek | transcription | person.sav_dist | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error (unprefixed collection field); otherwise the project expression. |
+| deepseek | transcription | person.medicare5 | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error (unprefixed collection field); cited rrta refusal only. |
+| deepseek | transcription | person.medicare6 | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error (unprefixed collection field); cited rrta refusal only. |
+| deepseek | transcription | person.sc_count | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error (unprefixed collection field); otherwise the project expression. |
+| deepseek | transcription | person.ho_count | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error (unprefixed collection field); otherwise the project expression. |
+| deepseek | transcription | person.mq_q4 | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error (unprefixed collection field); otherwise the project expression. |
+| deepseek | transcription | person.mq_total | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error (unprefixed collection field); otherwise the project expression. |
+| deepseek | transcription | person.cost179 | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error (unprefixed collection field); otherwise the project expression. |
+| deepseek | transcription | person.s179_nonlisted | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error (unprefixed collection field); reply graph circular. |
+| deepseek | transcription | person.s179_listed | interface gap | not executable (reply invalid) | i4562 p. 5, Line 7 | Now zero; sc.f29 id-only, p. 5 not given. |
+| deepseek | transcription | person.income179 | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error (unprefixed collection field); reply graph circular. |
+| deepseek | transcription | person.sc_total | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error (unprefixed collection field); reply graph circular. |
+| deepseek | transcription | person.se_line6 | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error via h_se_4a_pos; reply graph circular. |
+| deepseek | transcription | person.se_line12 | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error via h_se_4a_pos; reply graph circular. |
+| deepseek | transcription | person.se_line13 | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error via h_se_4a_pos; reply graph circular. |
+| deepseek | transcription | person.s16 | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error via h_se_4a_pos; also wrong on the merits. |
+| deepseek | transcription | person.positive_profits | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error (unprefixed collection field); reply graph circular. |
+| deepseek | transcription | person.sehi | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error (unprefixed collection field); reply graph circular. |
+| deepseek | transcription | person.qbi | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error (unprefixed collection field); reply graph circular. |
+| deepseek | transcription | person.eic_se | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error via h_se_4a_pos; reply graph circular. |
+| deepseek | transcription | person.sc_1a | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error via person.sc_count; also wrong on the merits. |
+| deepseek | transcription | person.dc_benefits | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error (unprefixed collection field); otherwise the project expression. |
+| deepseek | transcription | person.dc_has_box10 | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error via person.dc_benefits; same test. |
+| deepseek | transcription | person.dc_earned | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error via person.box1; also wrong on the merits. |
+| deepseek | transcription | person.dc_earned_b | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error via person.box1; also wrong on the merits. |
+| deepseek | transcription | person.sav_ineligible | ambiguity | not executable (reply invalid) | f8880 p. 2; amb.2025.savers_ineligible_column | Form only; unproducible values. |
+| deepseek | transcription | person.sav_line1 | scope | not executable (reply invalid) | f8880 line 1 | Unchanged. |
+| deepseek | transcription | person.sav_line2 | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error via h_sav_deferral; also wrong on the merits. |
+| deepseek | transcription | person.ira_contrib | scope | not executable (reply invalid) | i1040gi p. 98, line 11 | Unchanged. |
+| deepseek | transcription | person.ira_cov | model error | not executable (reply invalid) | i1040gi p. 96 | Unchanged: drops own SEP/SIMPLE coverage. |
+| deepseek | transcription | person.ira_line2 | representation | not executable (reply invalid) | i1040gi p. 97, line 2 | Unchanged. |
+| deepseek | transcription | person.ira_line6 | model error | not executable (reply invalid) | i1040gi p. 97, lines 3-6 | Line 5 copies AGI: cycle through the IRA deduction. |
+| deepseek | transcription | person.ira_line7 | model error | not executable (reply invalid) | i1040gi p. 98, line 7 | 70% and $200 for everyone; inherits the cycle. |
+| deepseek | transcription | person.ira_deduction | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error via person.box1; reply graph circular. |
+| deepseek | transcription | person.ira_nondeductible | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error via person.box1; reply graph circular. |
+| deepseek | transcription | person.ira_files_8606 | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error via person.box1; reply graph circular. |
+| deepseek | transcription | person.ira_8606_line2 | scope | not executable (reply invalid) | i8606 p. 9, Line 2 | Unchanged. |
+| deepseek | transcription | person.ira_dist_gate | model error | not executable (reply invalid) | f8606 Part I; p590a p. 15 | Any distribution; ira_dist asked of everyone. |
+| deepseek | transcription | person.ira_8606_line14 | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error (unprefixed collection field); reply graph circular. |
+| deepseek | transcription | person.ira_ssb | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error via person.box1; reply graph circular. |
+| deepseek | transcription | person.ira_se | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error via person.box1; reply graph circular. |
+| deepseek | transcription | person.edu_kid | model error | not executable (reply invalid) | i8863 p. 7, Line 7 | Redefined as an AOC-student test. |
+| deepseek | transcription | person.x_l1 | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error (unprefixed collection field); otherwise the project expression. |
+| deepseek | transcription | person.x_l2_all | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error (unprefixed collection field); otherwise the project expression. |
+| deepseek | transcription | person.x_l1_s | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error (unprefixed collection field); otherwise the project expression. |
+| deepseek | transcription | person.x_l2_s | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error (unprefixed collection field); otherwise the project expression. |
+| deepseek | transcription | person.x_tax | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error (unprefixed collection field); reply graph circular. |
+| deepseek | transcription | person.x_must | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error (unprefixed collection field); reply graph circular. |
+| deepseek | transcription | person.x_c05 | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error (unprefixed collection field); also wrong on the merits. |
+| deepseek | transcription | person.x_two23 | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error via h_e23_count; otherwise the project expression. |
+| deepseek | transcription | person.x_limited_sum | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error (unprefixed collection field); also wrong on the merits. |
+| deepseek | transcription | person.x_other_exc | model error | not executable (reply invalid) | i5329 p. 5, Line 2 | Zero: unlimited exceptions never excluded. |
+| deepseek | transcription | person.x_limit_binds | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error via person.x_limited_sum; also wrong on the merits. |
+| deepseek | transcription | person.x_hsa_excess | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error (unprefixed collection field); reply graph circular. |
+| deepseek | transcription | employers | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error (unprefixed collection field); otherwise the project expression. |
+| deepseek | transcription | overcount | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error (unprefixed collection field); otherwise the project expression. |
+| deepseek | transcription | over | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error via person.overcount; otherwise the project expression. |
+| deepseek | transcription | wages | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error (unprefixed collection field); otherwise the project expression. |
+| deepseek | transcription | withheld | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error (unprefixed collection field); otherwise the project expression. |
+| deepseek | transcription | eligible | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error via person.employers; Claude test as a whole. |
+| deepseek | transcription | excess | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error via person.employers; differs on refused returns only. |
+| deepseek | transcription | credit | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error via person.employers; cited refusals only. |
+| deepseek | transcription | Step 1 | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error via person.sc_total; reply graph circular. |
+| deepseek | transcription | Step 2 | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error via h_se_4a_pos; reply graph circular. |
+| deepseek | transcription | Step 3 | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error via h_se_4a_pos; reply graph circular. |
+| deepseek | transcription | Step 5 | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error via h_se_4a_pos; reply graph circular. |
+| deepseek | transcription | Step 6 | model error | not executable (reply invalid) | p560 p. 39, Step 6 | $350,000 itself ("not expressible"). |
+| deepseek | transcription | Step 7 | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error via h_se_4a_pos; reply graph circular. |
+| deepseek | transcription | Step 21 | model error | not executable (reply invalid) | validation record (triage/person.deepseek.json) | Declaration error via h_se_4a_pos; reply graph circular. |
+| deepseek | transcription | 27 | model error | not executable (reply invalid) | i8863 pp. 2-3 | Gate on redefined edu_kid: no TIN test, no f8863.paid. |
+| deepseek | transcription | 28 | model error | not executable (reply invalid) | i8863 pp. 2-3 | As 27. |
+| deepseek | transcription | 29 | model error | not executable (reply invalid) | i8863 pp. 2-3 | As 27. |
+| deepseek | transcription | 30 | model error | not executable (reply invalid) | i8863 pp. 2-3 | As 27. |
+| deepseek | transcription | 31 | model error | not executable (reply invalid) | i8863 pp. 2-3 | No eligibility gate; shown for AOC students; amounts differ. |
+| claude | render | 27 | ambiguity | render MISMATCH | i8863 p. 1; p970 pp. 2, 11 | amb.2025.edu_1098t_date; applied-for ITIN interface gap; renewal wording not objected to. |
+| claude | render | 28 | ambiguity | render MISMATCH | i8863 p. 1; p970 pp. 2, 11 | amb.2025.edu_1098t_date; applied-for ITIN interface gap; renewal wording not objected to. |
+| claude | render | 29 | ambiguity | render MISMATCH | i8863 p. 1; p970 pp. 2, 11 | amb.2025.edu_1098t_date; applied-for ITIN interface gap; renewal wording not objected to. |
+| claude | render | 30 | ambiguity | render MISMATCH | i8863 p. 1; p970 pp. 2, 11 | amb.2025.edu_1098t_date; applied-for ITIN interface gap; renewal wording not objected to. |
+| claude | render | 31 | ambiguity | render MISMATCH | i8863 p. 1; p970 pp. 2, 11 | amb.2025.edu_1098t_date; applied-for ITIN interface gap; renewal wording not objected to. |
+| deepseek | render | Step 3 | ambiguity | render MISMATCH | p560 p. 39, Step 3 | amb.2025.sep_loss_floor; unchanged. |
+| deepseek | render | (screen) (person.ira_excess) | finding (low) | render MISMATCH | p590a p. 35 | "including extensions" omitted: over-refusal only; L1 for T-092. |
+
+Errors introduced by the fixes: none. BUG-0259 is not wider than its sources for its two readers (the credit for other
+dependents, i1040gi p. 19, Step 5; the education credits, p970 p. 11), does not reach the child tax credit's other-spouse
+test (`household.id_count` reads `person.tin` only), and both replies read the answer where the project does. Low for
+T-092: L1 `person.ira_excess` omits "including extensions" from the withdrawal deadline (over-refusal only; raised by the
+deepseek render reviewer); L2 the `person.itin_applied` label and help still describe the old scope (no answer changes);
+`.transcription/proposed/fixr4/person.findings.md`.
+Reclassified from fix round 3 (same project line, changed reply): Claude `person.x_other_exc` (model error to representation:
+exception 05 no longer unlimited); new Claude disagreements `person.x_must` (model error: HSA excess omitted, printed
+Schedule 2 line 8 box differs), `person.x_l2_all` (model error), `person.x_two23` and `over` (representation); deepseek
+`person.hsa_agreed`, `person.hsa_step1`, `person.hsa_share`, `person.tip_*`, `person.plan_amount_a`, `person.plan_taxable`,
+`person.plan_rollovers`, `person.s179_nonlisted`, `person.se_line6`, `person.se_line12`, `person.se_line13`, `person.s16`,
+`Step 1`, `Step 2`, `Step 21`, `person.dc_has_box10`, `person.x_limit_binds`, `eligible` (to model error: the new reply's
+declarations fail validation), `Step 6` (representation to model error: the reply now enters $350,000 itself). 36 deepseek
+lines are new to the open list, most through the field-prefix failure; the deepseek render log's `person.ira_excess` screen
+is new (L1).

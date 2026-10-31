@@ -67,7 +67,7 @@ form:
       deferrals or contributions; a qualified charitable distribution or HSA funding distribution; nondeductible
       contributions to any traditional IRA; a conversion or recharacterization (Form 8606); a 2024 or 2025 IRA contribution returned to you, or excess contributions for an earlier year returned to you in 2025;
       a rollover to a Roth IRA or designated Roth account; a lump-sum distribution you may report on Form 4972;
-      a nonqualified annuity; the retired public safety officer premium exclusion; a death benefit exclusion; a plan loan offset; a Form RRB-1099-R; U.S. Civil Service retirement benefits under the alternative annuity option (Pub. 721); or a pension or annuity in which you have after-tax cost whose annuity starting date was before November 19, 1996, or for which the Simplified Method does not apply (the General Rule)?'
+      a nonqualified annuity; the retired public safety officer premium exclusion; a death benefit exclusion; a military disability pension; an annuity you receive as the beneficiary of an employee who died, or that is shared among more than one beneficiary; a rollover of property other than cash, or of a distribution under a qualified domestic relations order; a plan loan offset; a Form RRB-1099-R; U.S. Civil Service retirement benefits under the alternative annuity option (Pub. 721); or a pension or annuity in which you have after-tax cost whose annuity starting date was before November 19, 1996, or for which the Simplified Method does not apply (the General Rule)?'
     type: Bool
     expr:
       op: input
@@ -75,12 +75,16 @@ form:
         deferrals or contributions; a qualified charitable distribution or HSA funding distribution; nondeductible
         contributions to any traditional IRA; a conversion or recharacterization (Form 8606); a 2024 or 2025 IRA contribution returned to you, or excess contributions for an earlier year returned to you in 2025;
         a rollover to a Roth IRA or designated Roth account; a lump-sum distribution you may report on Form 4972;
-        a nonqualified annuity; the retired public safety officer premium exclusion; a death benefit exclusion;
+        a nonqualified annuity; the retired public safety officer premium exclusion; a death benefit exclusion; a military disability pension; an annuity you receive as the beneficiary of an employee who died, or that is shared among more than one beneficiary; a rollover of property other than cash, or of a distribution under a qualified domestic relations order;
         a plan loan offset; a Form RRB-1099-R; U.S. Civil Service retirement benefits under the alternative annuity option (Pub. 721); or a pension or annuity in which you have after-tax cost whose annuity starting date was before November 19, 1996, or for which the Simplified Method does not apply (the General Rule)?'
     cite:
       doc: i1040gi
       locator: 'pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public
-        Safety Officers, Simplified Method; f1099r Box 7 codes'
+        Safety Officers, Simplified Method; f1099r Box 7 codes; p. 28, "For details on military disability pensions, see Pub.
+        525."; p. 30, "If you are the beneficiary of an employee who died, see Pub. 575. If there is more than one beneficiary,
+        see Pub. 575 or Pub. 721 to figure each beneficiary’s taxable amount." and "See Pub. 575 for more details on rollovers,
+        including special rules that apply to rollovers from designated Roth accounts, partial rollovers of property, and
+        distributions under qualified domestic relations orders."'
   - id: retirement.annuity
     printed: (helper)
     label: Is this a pension or annuity from a qualified plan, section 403(b) plan or tax-sheltered annuity, paid

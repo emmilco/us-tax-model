@@ -81,7 +81,7 @@ def gen_case(rng, i):
         # Earned income credit questions: an adult aged 25 to 64 living in the United States who is
         # nobody's qualifying child, with no tax-exempt interest.
         "f1040.tax_exempt_interest": 0, "div.box12": 0, "eic.qc_of_another": False, "person[taxpayer].born_before_2001": True, "person[taxpayer].born_after_1960": True, "eic.us_home": True, "household.married": False,
-        "household.credit_disallowed": False, "household.community_property": False,
+        "household.credit_disallowed": False, "household.community_property": False, "household.rdp": False, "eic.died_2025": False,
         "person[taxpayer].eic_ssn": True, "person[taxpayer].under16": False,
         "$retirement@person[taxpayer]": [],
         # Form 2441: no care expenses and no dependent care benefits.
@@ -194,7 +194,7 @@ def gen_case(rng, i):
         inputs.update({f"{key}.relationship": "child", f"{key}.age": age, f"{key}.younger": True, f"{key}.student": age >= 17, f"{key}.disabled": False,
                        f"{key}.months": 12, f"{key}.self_support": False, f"{key}.joint_return": False, f"{key}.citizen": True,
                        f"{key}.canada_mexico": False, f"{key}.married": False, f"{key}.tin": True, f"{key}.work_ssn": True,
-                       f"{key}.gross_income": 0, f"{key}.supported": True, f"{key}.other_claimant": False,
+                       f"{key}.gross_income": 0, f"{key}.supported": True, f"{key}.kidnapped": False, f"{key}.other_claimant": False,
                        f"{key}.divorced_rule": False, f"{key}.multiple_support": False, f"{key}.parent_home_paid": False,
                        f"{key}.us_half": True, f"{key}.eic_ssn": True})
     hoh = n_children > 0 and rng.random() < 0.5

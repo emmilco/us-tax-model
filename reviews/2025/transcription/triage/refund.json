@@ -1,0 +1,1466 @@
+{
+ "bank": {
+  "evaluation_failures": 0,
+  "fixtures": 1382,
+  "generated": 500,
+  "partial_bases": 40,
+  "partial_records": 640,
+  "seed": 20261026
+ },
+ "errors": [],
+ "failures": [],
+ "family": "claude",
+ "form": "refund",
+ "lines": [
+  {
+   "absent": 0,
+   "agree": 1242,
+   "candidate": "refund.taxable",
+   "compared": 2522,
+   "differ": 1280,
+   "handle": "refund.taxable",
+   "in_scope": 2517,
+   "in_scope_agree": 1238,
+   "kinds": {
+    "candidate-unknown": 40,
+    "project-refuses": 1,
+    "project-unknown": 1239
+   },
+   "kinds_by_return": {
+    "completed": {
+     "project-unknown": 524
+    },
+    "incomplete": {
+     "candidate-unknown": 16,
+     "project-unknown": 281
+    },
+    "refused": {
+     "candidate-unknown": 24,
+     "project-refuses": 1,
+     "project-unknown": 434
+    }
+   },
+   "open_at_triage": true,
+   "project": "refund.taxable",
+   "shown_when": null,
+   "sources": {
+    "fixture": 1382,
+    "generated": 500,
+    "partial": 640
+   },
+   "status": "DISAGREE",
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "refund.has",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "refund.h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "refund",
+     "kind": "project-unknown",
+     "project": {
+      "input": "refund.box8",
+      "kind": "unknown",
+      "reason": "no input supplied for refund.box8"
+     },
+     "project_operands": [
+      {
+       "ref": "refund.box8",
+       "value": {
+        "input": "refund.box8",
+        "kind": "unknown",
+        "reason": "no input supplied for refund.box8"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "refund.has",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "refund.h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "refund",
+     "kind": "project-unknown",
+     "project": {
+      "input": "refund.box8",
+      "kind": "unknown",
+      "reason": "no input supplied for refund.box8"
+     },
+     "project_operands": [
+      {
+       "ref": "refund.box8",
+       "value": {
+        "input": "refund.box8",
+        "kind": "unknown",
+        "reason": "no input supplied for refund.box8"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "refund.has",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "refund.h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "refund",
+     "kind": "project-unknown",
+     "project": {
+      "input": "refund.box8",
+      "kind": "unknown",
+      "reason": "no input supplied for refund.box8"
+     },
+     "project_operands": [
+      {
+       "ref": "refund.box8",
+       "value": {
+        "input": "refund.box8",
+        "kind": "unknown",
+        "reason": "no input supplied for refund.box8"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "refund.has",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "refund.h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "refund",
+     "kind": "project-unknown",
+     "project": {
+      "input": "refund.box8",
+      "kind": "unknown",
+      "reason": "no input supplied for refund.box8"
+     },
+     "project_operands": [
+      {
+       "ref": "refund.box8",
+       "value": {
+        "input": "refund.box8",
+        "kind": "unknown",
+        "reason": "no input supplied for refund.box8"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.4.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "refund.has",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "refund.h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "refund",
+     "kind": "project-unknown",
+     "project": {
+      "input": "refund.box8",
+      "kind": "unknown",
+      "reason": "no input supplied for refund.box8"
+     },
+     "project_operands": [
+      {
+       "ref": "refund.box8",
+       "value": {
+        "input": "refund.box8",
+        "kind": "unknown",
+        "reason": "no input supplied for refund.box8"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.5.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "refund.has",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "refund.h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "refund",
+     "kind": "project-unknown",
+     "project": {
+      "input": "refund.box8",
+      "kind": "unknown",
+      "reason": "no input supplied for refund.box8"
+     },
+     "project_operands": [
+      {
+       "ref": "refund.box8",
+       "value": {
+        "input": "refund.box8",
+        "kind": "unknown",
+        "reason": "no input supplied for refund.box8"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f2441.6.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 300000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "refund.has",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "refund.has",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "refund.h_deducted",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "refund.has",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "refund.h_deducted",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "refund.line9",
+       "value": {
+        "cents": 300000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "refund",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040sca",
+       "locator": "p. 7, Line 5e, \"enter the smaller of line 5d or $40,000 ($20,000 if married filing separately)\""
+      },
+      "form": "State and Local Income Tax Refund Worksheet, line 2 (2024 Schedule A lines 5d and 5e)",
+      "gate": "refund.line5e_bad",
+      "kind": "refusal",
+      "remedy": "The amount on 2024 Schedule A line 5e cannot be more than line 5d, since line 5e is the smaller of line 5d and the limit. Check both amounts against your 2024 Schedule A."
+     },
+     "project_operands": [
+      {
+       "ref": "refund.box8",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "refund.not_2024",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "refund.worksheet",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "refund.worksheet",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "refund.line9",
+       "value": {
+        "cite": {
+         "doc": "i1040sca",
+         "locator": "p. 7, Line 5e, \"enter the smaller of line 5d or $40,000 ($20,000 if married filing separately)\""
+        },
+        "form": "State and Local Income Tax Refund Worksheet, line 2 (2024 Schedule A lines 5d and 5e)",
+        "gate": "refund.line5e_bad",
+        "kind": "refusal",
+        "remedy": "The amount on 2024 Schedule A line 5e cannot be more than line 5d, since line 5e is the smaller of line 5d and the limit. Check both amounts against your 2024 Schedule A."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage16.refuse.refund.line5e_bad",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "refund.received",
+      "kind": "unknown",
+      "reason": "no input supplied for refund.received"
+     },
+     "candidate_operands": [
+      {
+       "ref": "refund.has",
+       "value": {
+        "input": "refund.received",
+        "kind": "unknown",
+        "reason": "no input supplied for refund.received"
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      }
+     ],
+     "instance": "refund",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "refund.box8",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "refund.not_2024",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "refund.worksheet",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "refund.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.w2.1.deepseek",
+      "kind": "partial",
+      "withheld": "refund.received"
+     }
+    },
+    {
+     "candidate": {
+      "input": "refund.received",
+      "kind": "unknown",
+      "reason": "no input supplied for refund.received"
+     },
+     "candidate_operands": [
+      {
+       "ref": "refund.has",
+       "value": {
+        "input": "refund.received",
+        "kind": "unknown",
+        "reason": "no input supplied for refund.received"
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      }
+     ],
+     "instance": "refund",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "refund.box8",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "refund.not_2024",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "refund.worksheet",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "refund.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.f8889.5.deepseek",
+      "kind": "partial",
+      "withheld": "refund.received"
+     }
+    },
+    {
+     "candidate": {
+      "input": "refund.received",
+      "kind": "unknown",
+      "reason": "no input supplied for refund.received"
+     },
+     "candidate_operands": [
+      {
+       "ref": "refund.has",
+       "value": {
+        "input": "refund.received",
+        "kind": "unknown",
+        "reason": "no input supplied for refund.received"
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      }
+     ],
+     "instance": "refund",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "refund.box8",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "refund.not_2024",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "refund.worksheet",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "refund.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.f4952.3.deepseek",
+      "kind": "partial",
+      "withheld": "refund.received"
+     }
+    },
+    {
+     "candidate": {
+      "input": "refund.received",
+      "kind": "unknown",
+      "reason": "no input supplied for refund.received"
+     },
+     "candidate_operands": [
+      {
+       "ref": "refund.has",
+       "value": {
+        "input": "refund.received",
+        "kind": "unknown",
+        "reason": "no input supplied for refund.received"
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      }
+     ],
+     "instance": "refund",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "refund.box8",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "refund.not_2024",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "refund.worksheet",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "refund.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "base": "classm.g28.1.deepseek",
+      "kind": "partial",
+      "withheld": "refund.received"
+     }
+    },
+    {
+     "candidate": {
+      "input": "refund.received",
+      "kind": "unknown",
+      "reason": "no input supplied for refund.received"
+     },
+     "candidate_operands": [
+      {
+       "ref": "refund.has",
+       "value": {
+        "input": "refund.received",
+        "kind": "unknown",
+        "reason": "no input supplied for refund.received"
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      }
+     ],
+     "instance": "refund",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "refund.box8",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "refund.not_2024",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "refund.worksheet",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "refund.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.sd.3.deepseek",
+      "kind": "partial",
+      "withheld": "refund.received"
+     }
+    },
+    {
+     "candidate": {
+      "input": "refund.received",
+      "kind": "unknown",
+      "reason": "no input supplied for refund.received"
+     },
+     "candidate_operands": [
+      {
+       "ref": "refund.has",
+       "value": {
+        "input": "refund.received",
+        "kind": "unknown",
+        "reason": "no input supplied for refund.received"
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      }
+     ],
+     "instance": "refund",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "refund.box8",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "refund.not_2024",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "refund.worksheet",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "refund.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.clcw.2.deepseek",
+      "kind": "partial",
+      "withheld": "refund.received"
+     }
+    }
+   ]
+  },
+  {
+   "absent": 0,
+   "agree": 2482,
+   "candidate": "refund.line6",
+   "compared": 2522,
+   "differ": 40,
+   "handle": "6",
+   "in_scope": 2522,
+   "in_scope_agree": 2482,
+   "kinds": {
+    "project-unknown": 40
+   },
+   "kinds_by_return": {
+    "completed": {
+     "project-unknown": 16
+    },
+    "refused": {
+     "project-unknown": 24
+    }
+   },
+   "open_at_triage": true,
+   "project": "refund.line6",
+   "shown_when": null,
+   "sources": {
+    "fixture": 1382,
+    "generated": 500,
+    "partial": 640
+   },
+   "status": "DISAGREE",
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "refund.h_boxes_first",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "refund.h_spouse_born",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "refund.h_spouse_blind",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "refund",
+     "kind": "project-unknown",
+     "project": {
+      "input": "refund.status",
+      "kind": "unknown",
+      "reason": "no input supplied for refund.status"
+     },
+     "project_operands": [
+      {
+       "ref": "refund.amt_you_born",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "refund.amt_you_blind",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "refund.amt_spouse_born",
+       "value": {
+        "input": "refund.status",
+        "kind": "unknown",
+        "reason": "no input supplied for refund.status"
+       }
+      },
+      {
+       "ref": "refund.amt_spouse_blind",
+       "value": {
+        "input": "refund.status",
+        "kind": "unknown",
+        "reason": "no input supplied for refund.status"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.w2.1.deepseek",
+      "kind": "partial",
+      "withheld": "refund.status"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "refund.h_boxes_first",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "refund.h_spouse_born",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "refund.h_spouse_blind",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "refund",
+     "kind": "project-unknown",
+     "project": {
+      "input": "refund.status",
+      "kind": "unknown",
+      "reason": "no input supplied for refund.status"
+     },
+     "project_operands": [
+      {
+       "ref": "refund.amt_you_born",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "refund.amt_you_blind",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "refund.amt_spouse_born",
+       "value": {
+        "input": "refund.status",
+        "kind": "unknown",
+        "reason": "no input supplied for refund.status"
+       }
+      },
+      {
+       "ref": "refund.amt_spouse_blind",
+       "value": {
+        "input": "refund.status",
+        "kind": "unknown",
+        "reason": "no input supplied for refund.status"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.f8889.5.deepseek",
+      "kind": "partial",
+      "withheld": "refund.status"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "refund.h_boxes_first",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "refund.h_spouse_born",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "refund.h_spouse_blind",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "refund",
+     "kind": "project-unknown",
+     "project": {
+      "input": "refund.status",
+      "kind": "unknown",
+      "reason": "no input supplied for refund.status"
+     },
+     "project_operands": [
+      {
+       "ref": "refund.amt_you_born",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "refund.amt_you_blind",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "refund.amt_spouse_born",
+       "value": {
+        "input": "refund.status",
+        "kind": "unknown",
+        "reason": "no input supplied for refund.status"
+       }
+      },
+      {
+       "ref": "refund.amt_spouse_blind",
+       "value": {
+        "input": "refund.status",
+        "kind": "unknown",
+        "reason": "no input supplied for refund.status"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.f4952.3.deepseek",
+      "kind": "partial",
+      "withheld": "refund.status"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "refund.h_boxes_first",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "refund.h_spouse_born",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "refund.h_spouse_blind",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "refund",
+     "kind": "project-unknown",
+     "project": {
+      "input": "refund.status",
+      "kind": "unknown",
+      "reason": "no input supplied for refund.status"
+     },
+     "project_operands": [
+      {
+       "ref": "refund.amt_you_born",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "refund.amt_you_blind",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "refund.amt_spouse_born",
+       "value": {
+        "input": "refund.status",
+        "kind": "unknown",
+        "reason": "no input supplied for refund.status"
+       }
+      },
+      {
+       "ref": "refund.amt_spouse_blind",
+       "value": {
+        "input": "refund.status",
+        "kind": "unknown",
+        "reason": "no input supplied for refund.status"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "base": "classm.g28.1.deepseek",
+      "kind": "partial",
+      "withheld": "refund.status"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "refund.h_boxes_first",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "refund.h_spouse_born",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "refund.h_spouse_blind",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "refund",
+     "kind": "project-unknown",
+     "project": {
+      "input": "refund.status",
+      "kind": "unknown",
+      "reason": "no input supplied for refund.status"
+     },
+     "project_operands": [
+      {
+       "ref": "refund.amt_you_born",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "refund.amt_you_blind",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "refund.amt_spouse_born",
+       "value": {
+        "input": "refund.status",
+        "kind": "unknown",
+        "reason": "no input supplied for refund.status"
+       }
+      },
+      {
+       "ref": "refund.amt_spouse_blind",
+       "value": {
+        "input": "refund.status",
+        "kind": "unknown",
+        "reason": "no input supplied for refund.status"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.sd.3.deepseek",
+      "kind": "partial",
+      "withheld": "refund.status"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "refund.h_boxes_first",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "refund.h_spouse_born",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "refund.h_spouse_blind",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "refund",
+     "kind": "project-unknown",
+     "project": {
+      "input": "refund.status",
+      "kind": "unknown",
+      "reason": "no input supplied for refund.status"
+     },
+     "project_operands": [
+      {
+       "ref": "refund.amt_you_born",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "refund.amt_you_blind",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "refund.amt_spouse_born",
+       "value": {
+        "input": "refund.status",
+        "kind": "unknown",
+        "reason": "no input supplied for refund.status"
+       }
+      },
+      {
+       "ref": "refund.amt_spouse_blind",
+       "value": {
+        "input": "refund.status",
+        "kind": "unknown",
+        "reason": "no input supplied for refund.status"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.clcw.2.deepseek",
+      "kind": "partial",
+      "withheld": "refund.status"
+     }
+    }
+   ]
+  },
+  {
+   "absent": 0,
+   "agree": 2522,
+   "candidate": "refund.line8",
+   "compared": 2522,
+   "differ": 0,
+   "handle": "8",
+   "in_scope": 2522,
+   "in_scope_agree": 2522,
+   "kinds": {},
+   "kinds_by_return": {},
+   "open_at_triage": true,
+   "project": "refund.line8",
+   "shown_when": null,
+   "sources": {
+    "fixture": 1382,
+    "generated": 500,
+    "partial": 640
+   },
+   "status": "DISAGREE",
+   "triage": "agrees on sample",
+   "witnesses": []
+  }
+ ],
+ "log_sha256_at_triage": "1852dfa2d9a7fff647c67661565fd47fbe4c7f26dc6e1ca9cf3e261e9e3db268",
+ "policy": "executable-triage-v2",
+ "response_sha256": "954168c026d8198700ff421849680bfeb0104f02d08639b7ecda9c79e8943830",
+ "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
+ "state": "evaluated",
+ "subject_sha256": "fa2340bf10b343c4d737d5266a44774128963c71af1a288bb6c011108890e372"
+}

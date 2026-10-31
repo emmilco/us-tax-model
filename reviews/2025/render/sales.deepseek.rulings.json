@@ -1,0 +1,21 @@
+{
+ "kind": "render",
+ "form": "sales",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "(e)",
+   "restated": "Choose — [helper \"Basis reported to IRS\" = true → helper \"Basis shown on broker report\"] [helper \"Basis reported to IRS\" = false → helper \"Correct adjusted basis from records\"]",
+   "model": "The restatement's 'Basis reported to IRS' gate is true only for classifications A or D, but the IRS form also treats boxes G and J as 'reported on Form(s) 1099-DA showing basis was reported to the IRS'; for those rows column (e) must use the reported basis, not the records basis.",
+   "ruling": "Ruling: scope; f8949 p. 1, box G: \"Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS\"; i8949 p. 8, code B. Boxes G to L are refused at the transaction: sales.one refuses when sales.digital (\"Form 8949 digital asset boxes G–L\"), and the refusal reaches every Schedule D total and Form 1040 line 7a (checked: sales.refuse.digital.G gives sd.line15, f1040.line7a and f1040.line16 refused on sales.digital, while the row's own column (e) shows $2,000.00 and reaches no Schedule D line). Within boxes A to F the gate reads as the instructions do. The gate must widen to G and J if digital assets come into scope. Project stands on the English.",
+   "context": "9b43e79c4bfb09f4d39ad5c2d32acbcc705214faf4e7e317f51933b0d55f06b4"
+  },
+  {
+   "printed": "(g)",
+   "restated": "Add helper \"Basis correction in column (g)\" and helper \"Wash-sale adjustment in column (g)\".",
+   "model": "IRS column (g) says 'Enter in this column any necessary adjustments to gain (or loss)' and, for multiple codes, 'enter the net adjustment in column (g)'; the restatement only adds B basis correction and W wash-sale adjustment, omitting other required adjustment codes.",
+   "ruling": "Ruling: scope; i8949 p. 8, code B; i8949 pp. 7–11, columns (f) and (g). Boxes G and J are refused with every digital-asset box (see column (e)), so the A/D condition of the basis correction is the whole supported case. Codes other than B and W are refused: sales.one refuses when sales.bad_code (\"Only applicable B and W adjustments are supported\"), and the refusal reaches the Schedule D totals and Form 1040 (checked: sales.refuse.code gives sd.line15, f1040.line7a and f1040.line16 refused on sales.bad_code while the row's own column (g) shows $0.00). Project stands on the English.",
+   "context": "9b43e79c4bfb09f4d39ad5c2d32acbcc705214faf4e7e317f51933b0d55f06b4"
+  }
+ ]
+}

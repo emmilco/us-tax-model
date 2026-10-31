@@ -47,6 +47,16 @@ form:
         locator: p. 41, Step 4, question 2, "Were you, or your spouse if filing a joint return, at least age 25 but under
           age 65 at the end of 2025? (Check 'Yes' if you, or your spouse if filing a joint return, were born after December
           31, 1960, and before January 2, 2001.)"
+    - id: eic.died_2025
+      printed: (helper)
+      type: Bool
+      label: Spouse died in 2025, or a return for someone who died in 2025?
+      expr:
+        op: input
+        source: Did your spouse die in 2025, or are you preparing this return for someone who died in 2025?
+      cite:
+        doc: i1040gi
+        locator: p. 42, Step 4, question 2, "spouse died in 2025 or if you are preparing a return for someone who died in 2025, see Pub. 596 before you answer."
     - id: eic.age_range
       printed: (helper)
       type: Bool
@@ -61,6 +71,13 @@ form:
         doc: i1040gi
         locator: p. 41, Step 4, question 2, "Were you, or your spouse if filing a joint return, at least age 25 but under
           age 65 at the end of 2025?"
+      refuses:
+        - when: eic.died_2025
+          form: EIC age test after a death in 2025 (Pub. 596)
+          remedy: When your spouse died in 2025 or the return is for someone who died in 2025, the EIC age test is answered under Pub. 596, which this tool does not apply.
+          cite:
+            doc: i1040gi
+            locator: p. 42, Step 4, question 2, "spouse died in 2025 or if you are preparing a return for someone who died in 2025, see Pub. 596 before you answer."
     - id: eic.us_home
       printed: (helper)
       type: Bool

@@ -1,0 +1,105 @@
+{
+ "kind": "render",
+ "form": "s1",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "10",
+   "restated": "Add line 1, line 2a, line 3, line 7, and line 9.",
+   "model": "IRS line 10 says 'Combine lines 1 through 7 and 9'; the restatement adds only lines 1, 2a, 3, 7, and 9, omitting lines 4, 5, and 6.",
+   "ruling": "Ruling: scope; f1040s1 line 10, \"Combine lines 1 through 7 and 9\". Lines 4 to 6 are refused by scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately ...\"), which refuses Form 1040 line 8 and line 10 and every line after them: it names \"sales of business property (Form 4797)\", \"rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1)\" and \"farm income (Schedule F)\", and a Form 4684 gain falls under its opening clause; within scope they are zero, as the line's citation says. Lines 1, 2a, 3, 7 and 9 are figured. Same ruling as the earlier rounds; unchanged by fix round 3.",
+   "context": "592f4736288df2d3c768037385399136ae34f1ea628b3dbe8946ec70574d23a1"
+  },
+  {
+   "printed": "10",
+   "restated": "Add line 1, line 2a, line 3, line 7, and line 9.",
+   "model": "IRS line 10 says 'Combine lines 1 through 7 and 9.' The restatement omits lines 4, 5, and 6.",
+   "ruling": "Ruling: scope; f1040s1 line 10, \"Combine lines 1 through 7 and 9\". Lines 4 to 6 are refused by scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately ...\"), which refuses Form 1040 line 8 and line 10 and every line after them: it names \"sales of business property (Form 4797)\", \"rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1)\" and \"farm income (Schedule F)\", and a Form 4684 gain falls under its opening clause; within scope they are zero, as the line's citation says. Lines 1, 2a, 3, 7 and 9 are figured. Same ruling as the earlier rounds; the fix round changed only the clergy wording of that screen (BUG-0233), which does not touch these lines.",
+   "context": "ff5e80e7a641e4c6497714e5fbe9477e1fa6b90cd39cee790496ca9a6ec4cbea"
+  },
+  {
+   "printed": "15",
+   "restated": "Add person.se_line13 over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "The helper returns zero when there is no Schedule C; IRS line 15 is the Schedule SE line 13 deduction for any self-employment, such as farm or partnership income, and no refusal covers that case.",
+   "ruling": "Ruling: scope; i1040gi p. 93, Line 15: \"If you were self-employed and owe self-employment tax, fill in Schedule SE to figure the amount of your deduction.\" Self-employment income other than Schedule C (farm income on Schedule F, partnership income on a Schedule K-1, church employee income, and since BUG-0233 income as a minister, a member of a religious order who has not taken a vow of poverty, or a Christian Science practitioner) is named in scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately ...\"), which refuses Form 1040 line 8 and line 10 and every line after them, so within scope only a Schedule C reaches Schedule SE, and person.se_line13 is that deduction. Unchanged by the fix round apart from the clergy wording, which widens the screen.",
+   "context": "ff5e80e7a641e4c6497714e5fbe9477e1fa6b90cd39cee790496ca9a6ec4cbea"
+  },
+  {
+   "printed": "16",
+   "restated": "Add person.s16 over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "IRS line 16 is 'Self-employed SEP, SIMPLE, and qualified plans'; the helper computes only SEP or SIMPLE and returns zero for a qualified plan such as a solo 401(k) without refusing it.",
+   "ruling": "Ruling: scope; i1040gi p. 93, Line 16, \"Self-Employed SEP, SIMPLE, and Qualified Plans ... If you were self-employed or a partner, you may be able to take this deduction\". Qualified plans other than SEP and SIMPLE are named in scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately ...\"), which refuses Form 1040 line 8 and line 10 and every line after them (\"other qualified retirement plans for the self-employed (such as a solo 401(k) or other Keogh plan)\"), and partners are refused there too; within scope person.s16 is the SEP or SIMPLE deduction of a person with a Schedule C, and a filer with a qualified plan answering \"none\" to person.plan has already answered yes to the screen. Unchanged by fix round 3.",
+   "context": "592f4736288df2d3c768037385399136ae34f1ea628b3dbe8946ec70574d23a1"
+  },
+  {
+   "printed": "16",
+   "restated": "Add person.s16 over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "IRS line 16 is 'Self-employed SEP, SIMPLE, and qualified plans'; the restatement computes only SEP/SIMPLE and does not refuse a qualified plan when the plan answer is 'none'.",
+   "ruling": "Ruling: scope; i1040gi p. 93, Line 16, \"Self-Employed SEP, SIMPLE, and Qualified Plans ... If you were self-employed or a partner, you may be able to take this deduction\". Qualified plans other than SEP and SIMPLE are named in scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately ...\"), which refuses Form 1040 line 8 and line 10 and every line after them (\"other qualified retirement plans for the self-employed (such as a solo 401(k) or other Keogh plan)\"), and partners are refused there too; within scope person.s16 is the SEP or SIMPLE deduction of a person with a Schedule C, and a filer with a qualified plan answering \"none\" to person.plan has already answered yes to the screen. Unchanged by the fix round.",
+   "context": "ff5e80e7a641e4c6497714e5fbe9477e1fa6b90cd39cee790496ca9a6ec4cbea"
+  },
+  {
+   "printed": "17",
+   "restated": "Add person.sehi over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "The restatement sums only Schedule C Form 7206 amounts; IRS line 17 also covers partners and S corporation shareholders, and no refusal excludes those cases.",
+   "ruling": "Ruling: scope; i1040gi p. 93, Line 17 (self-employed health insurance, Form 7206), which also reaches partners and more-than-2% S corporation shareholders. The screen scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately ...\"), which refuses Form 1040 line 8 and line 10 and every line after them names \"partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1)\", so within scope the deduction arises only from a Schedule C business, which person.sehi computes. Unchanged by the fix round.",
+   "context": "ff5e80e7a641e4c6497714e5fbe9477e1fa6b90cd39cee790496ca9a6ec4cbea"
+  },
+  {
+   "printed": "20",
+   "restated": "Enter the amount from ira helper \"The total of lines 12a and 12b for Schedule 1, line 20\".",
+   "model": "The IRA worksheet uses $89,000 for married filing separately who lived apart all year; the helper uses $10,000 for MFS regardless of the line 20 checkbox.",
+   "ruling": "Ruling: scope; i1040gi p. 97, IRA Deduction Worksheet line 2: \"Single, head of household, or married filing separately and you lived apart from your spouse for all of 2025, enter $89,000 ... Married filing separately and you lived with your spouse at any time in 2025, enter $10,000\"; p. 96: \"Married persons filing separately. If you weren't covered by a retirement plan but your spouse was, you are considered covered by a plan unless you lived apart from your spouse for all of 2025.\" The model says the helper uses $10,000 for married filing separately regardless of the line 20 checkbox. Both rules are for married filing separately only, and a married filing separately return is refused at the return level (s3.mfs on scope.ready: \"The rules for a married filing separately return ... are outside this tool. Married filing jointly is supported.\", i1040gi p. 14). On a joint return the worksheet's own spouse rule ($246,000 for the person not covered) is applied (person.ira_not_covered_joint). Line 20 copies the worksheet total; unchanged by the fix round. Project stands.",
+   "context": "ff5e80e7a641e4c6497714e5fbe9477e1fa6b90cd39cee790496ca9a6ec4cbea"
+  },
+  {
+   "printed": "25",
+   "restated": "Enter the amount from line 24a.",
+   "model": "IRS line 25 says 'Add lines 24a through 24z.' The restatement enters only line 24a.",
+   "ruling": "Ruling: scope; f1040s1 line 25, \"Add lines 24a through 24z\". Lines 24b to 24z are refused by scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately ...\"), which refuses Form 1040 line 8 and line 10 and every line after them (it lists jury duty pay given to the employer, line 24a, among the items asked separately); within scope they are zero, as the line's citation says. Line 24a is figured (decision D3). Same ruling as the earlier rounds.",
+   "context": "ff5e80e7a641e4c6497714e5fbe9477e1fa6b90cd39cee790496ca9a6ec4cbea"
+  },
+  {
+   "printed": "25",
+   "restated": "Enter the amount from line 24a.",
+   "model": "IRS line 25 says 'Total other adjustments. Add lines 24a through 24z'; the restatement enters only line 24a.",
+   "ruling": "Ruling: scope; f1040s1 line 25, \"Add lines 24a through 24z\". Lines 24b to 24z are refused by scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately ...\"), which refuses Form 1040 line 8 and line 10 and every line after them (it lists jury duty pay given to the employer, line 24a, among the items asked separately); within scope they are zero, as the line's citation says. Line 24a is figured (decision D3). Same ruling as the earlier rounds; unchanged by fix round 3.",
+   "context": "592f4736288df2d3c768037385399136ae34f1ea628b3dbe8946ec70574d23a1"
+  },
+  {
+   "printed": "26",
+   "restated": "Add line 11, line 13, line 15, line 16, line 17, line 18, line 19a, line 20, line 21, and line 25.",
+   "model": "IRS line 26 says 'Add lines 11 through 23 and 25'; the restatement omits lines 12, 14, and 23.",
+   "ruling": "Ruling: scope; f1040s1 line 26, \"Add lines 11 through 23 and 25\". Lines 12, 14 and 23 are named in scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately ...\"), which refuses Form 1040 line 8 and line 10 and every line after them (\"or an adjustment on Schedule 1 line 12, 14 or 23?\"); within scope they are zero, as the line's citation says. Line 22 is reserved; every other line is added. Same ruling as the earlier rounds; unchanged by fix round 3.",
+   "context": "592f4736288df2d3c768037385399136ae34f1ea628b3dbe8946ec70574d23a1"
+  },
+  {
+   "printed": "26",
+   "restated": "Add line 11, line 13, line 15, line 16, line 17, line 18, line 19a, line 20, line 21, and line 25.",
+   "model": "IRS line 26 says 'Add lines 11 through 23 and 25.' The restatement omits lines 12, 14, and 23.",
+   "ruling": "Ruling: scope; f1040s1 line 26, \"Add lines 11 through 23 and 25\". Lines 12, 14 and 23 are named in scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately ...\"), which refuses Form 1040 line 8 and line 10 and every line after them (\"or an adjustment on Schedule 1 line 12, 14 or 23?\"); within scope they are zero, as the line's citation says. Line 22 is reserved; every other line is added. Same ruling as the earlier rounds.",
+   "context": "ff5e80e7a641e4c6497714e5fbe9477e1fa6b90cd39cee790496ca9a6ec4cbea"
+  },
+  {
+   "printed": "8f",
+   "restated": "Add person.hsa_taxable over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "IRS line 8f says 'Enter the total of the amounts from Form 8889, lines 16 and 20'; the restatement uses only Form 8889 line 16.",
+   "ruling": "Ruling: scope; i1040gi p. 91, Line 8f: \"Enter the total of the amounts from Form 8889, lines 16 and 20.\" Line 20 (Part III, income from failing to remain an eligible individual during a testing period) arises from a qualified HSA funding distribution or from a testing period that began in an earlier year (a last-month-rule testing period that begins in December 2025 cannot be failed in 2025); both are refused by f8889.unsupported (\"a qualified HSA funding distribution from an IRA in 2025 ... failing to remain an eligible individual during a testing period that began in an earlier year\"), as the line's citation says. Within scope line 20 is zero and person.hsa_taxable is line 16. Project stands.",
+   "context": "592f4736288df2d3c768037385399136ae34f1ea628b3dbe8946ec70574d23a1"
+  },
+  {
+   "printed": "8i",
+   "restated": "Input — Prizes and awards you (and, on a joint return, your spouse) received in 2025 that are not gambling winnings, not wages from an employer and not Olympic or Paralympic medals or USOC prize money (for example a contest, quiz or drawing prize, or a scholarship prize you need not use for education), goods or services at their fair market value; leave out a prize you refused and a prize transferred under the section 74(b) rules; zero if none",
+   "model": "IRS Pub. 525 says 'These rules don’t apply to scholarship or fellowship awards. See Scholarships and fellowships, later'; the restatement puts a 'scholarship prize' on line 8i.",
+   "ruling": "Ruling: model error; p525 p. 36, Scholarships and fellowships, Prizes: \"Scholarship prizes won in a contest aren't scholarships or fellowships if you don't have to use the prizes for educational purposes. You must include these amounts in your income on Schedule 1 (Form 1040), line 8i, whether or not you use the amounts for educational purposes.\" The p. 35 sentence the model quotes (\"These rules don't apply to scholarship or fellowship awards\") concerns scholarships and fellowships proper; a contest prize that need not be used for education is a line 8i prize, as the question says. Project stands.",
+   "context": "592f4736288df2d3c768037385399136ae34f1ea628b3dbe8946ec70574d23a1"
+  },
+  {
+   "printed": "8j",
+   "restated": "Input — Income you (and, on a joint return, your spouse) received in 2025 from an activity not engaged in for profit, such as a hobby (not a business you report on Schedule C and not the rental of personal property); zero if none",
+   "model": "IRS line 8j is activity-not-for-profit income; line 8l covers rental of personal property only 'if you engaged in the rental for profit but were not in the business of renting such property.' The restatement excludes rental of personal property altogether.",
+   "ruling": "Ruling: scope; i1040gi p. 91, Line 8j, \"Activity not engaged in for profit income. See Pub. 525\", and Line 8l, \"Income from the rental of personal property if you engaged in the rental for profit but were not in the business of renting such property\". The question excludes the rental of personal property from line 8j, and scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately ...\"), which refuses Form 1040 line 8 and line 10 and every line after them names \"rental of personal property\" without a for-profit qualifier, so a rental of personal property not for profit (which would belong on line 8j) and one for profit (line 8l) are both refused rather than computed. A refusal by a cited scope screen; no computed amount is wrong. Unchanged by the fix round.",
+   "context": "ff5e80e7a641e4c6497714e5fbe9477e1fa6b90cd39cee790496ca9a6ec4cbea"
+  }
+ ]
+}

@@ -285,8 +285,8 @@
 - Text at issue: Form 2441 line 21: "However, don't enter more than the maximum amount allowed under your dependent care plan"; i2441 p. 5, Line 21: "if your dependent care plan only allows a maximum of $4,000 to be excluded, substitute $4,000". The text speaks of one plan; spouses, or one person with two employers, may have more than one.
 - Candidate readings: One plan maximum for the return (f2441.plan_max), the smaller of it and $5,000; refused when the plans allow different maximums. | The $5,000 limit, reduced only if every plan's maximum is lower. | The sum of the plans' maximums, not more than $5,000.
 - **Chosen:** The first (f2441.plan_max, f2441.plans_differ).
-- Reason: The owner's decision (Stage 15, decision 6). Where every plan allows the same maximum the readings agree; where they differ the text does not decide, so that case is refused.
-- Status: Owner ruling, Stage 15 (T-048).
+- Reason: The owner's decision (Stage 15, decision 6), confirmed 2026-10-30. Where every plan allows the same maximum, readings 1 and 2 agree but reading 3 differs (two $3,000 plans give $3,000 under reading 1 and $5,000 under reading 3); the owner keeps reading 1 for that case. Where the plans allow different maximums the text does not decide, so that case is refused.
+- Status: Owner ruling, Stage 15 (T-048); same-maximum case confirmed 2026-10-30 (screen review PENDING-1-2).
 - Cite: [i2441] p. 5, Line 21, "Don't enter more than the maximum amount allowed under your dependent care plan" (2025; sha256 86f0669e)
 
 ## amb.2025.dc_rate_nonpositive_agi
@@ -635,7 +635,7 @@
 - Text at issue: i1040gi p. 23, Community Property States: "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555." The text names nine states (Arizona, California, Idaho, Louisiana, Nevada, New Mexico, Texas, Washington, and Wisconsin). Pub. 555 and Form 8958 are not archived. A married person filing as head of household (considered unmarried) reports their own income, which state law may define as half the community income.
 - Candidate readings: Compute the return from the income entered, leaving community income allocation to the filer. | Refuse a married filer who files as head of household and lived in a community property state (household.hoh_community_property), since the tool cannot apply Pub. 555.
 - **Chosen:** The second, for the nine states the instructions list (Direct File''s knockout tests eight; Louisiana is in the text and so in the question).
-- Reason: The owner's decision of 2026-10-22 (integrity plan decision 10). The archived text states the community income rule but not a prohibition on the filing status; the refusal rests on the rule being outside the tool, not on a forbidden status. Married filing separately, the other case Direct File knocks out, is refused throughout the tool already. A registered domestic partner in Nevada, Washington or California (same paragraph) is not asked and is a gap to note.
+- Reason: The owner's decision of 2026-10-22 (integrity plan decision 10). The archived text states the community income rule but not a prohibition on the filing status; the refusal rests on the rule being outside the tool, not on a forbidden status. Married filing separately, the other case Direct File knocks out, is refused throughout the tool already. A registered domestic partner in Nevada, Washington or California (same paragraph) is asked and refused by household.rdp_community_property (BUG-0220).
 - Status: Owner decision, 2026-10-22 (docs/2026-10-22_integrity_plan.md, decision 10).
 - Cite: [i1040gi] p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555" (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -818,3 +818,13 @@
 - Reason: The tax is the same either way, and the instructions give no way to mark the mixed case. Owner's decision D5, 2026-10-29.
 - Status: Owner decision, 2026-10-29 (research/premises/stage21-form-5329.decisions.md, D5).
 - Cite: [f1040s2] p. 1, Part II, line 8, "Additional tax on IRAs or other tax-favored accounts. Attach Form 5329 if required. If not required, check here" (2025; created 2025-05-08; sha256 64d867b6)
+
+## amb.2025.ctc_spouse_itin_application
+
+- Text at issue: i1040gi p. 22, after the credit for other dependents sentence: "If you apply for an ITIN on or before the due date of your 2025 return (including extensions) and the IRS issues you an ITIN as a result of the application, the IRS will consider your ITIN as issued on or before the due date of your return." Whether it also applies to the child tax credit's rule that the other spouse on a joint return "must have either an SSN or ITIN, and it must have been issued on or before the due date".
+- Candidate readings: The deeming applies to the credit for other dependents only; the child tax credit's other spouse needs an SSN or ITIN issued by the due date. | The deeming applies wherever an ITIN must be issued by the due date, including the child tax credit's other spouse.
+- **Chosen:** The first (household.id_count reads person.tin, not person.itin_applied; household.tin_count, for the credit for other dependents, reads both).
+- Reason: The Schedule 8812 instructions, the specific source for the credit, state the other-spouse rule under "SSN Required Before the Due Date of Your Return To Claim the CTC and ACTC" without the deeming sentence and print the deeming sentence only under "TIN Required by Due Date of Your Return To Claim the ODC"; the general instructions place it after the credit for other dependents sentence. This keeps BUG-0049's reading. Raised by the completeness-review experiment (D5); the owner left the ruling to the session's judgment, 2026-10-30.
+
+- Status: Session reading under the owner's delegation, 2026-10-30.
+- Cite: [i1040s8812] SSN Required Before the Due Date of Your Return To Claim the CTC and ACTC; TIN Required by Due Date of Your Return To Claim the ODC (2025; printed date 2026-01-23; sha256 bb9788cd)

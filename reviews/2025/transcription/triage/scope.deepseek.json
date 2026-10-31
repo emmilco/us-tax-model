@@ -5,10 +5,10 @@
  "family": "deepseek",
  "form": "scope",
  "lines": [],
- "log_sha256_at_triage": "330cbe1bc5b688bf8105a72d786bc92461fb3d7f68c88c008e933b5a310ad7dd",
+ "log_sha256_at_triage": "60bc27baa22599e010bc999186924874c8be9cf8f24538e5acd2dfd70b9ff44d",
  "policy": "executable-triage-v2",
  "response_sha256": "967fa1aa147bac0855e8d7cee4749b7f5534ed5c7b19584eb1cfe23a46067dc6",
  "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
  "state": "no candidate lines",
- "subject_sha256": "f20949791e737a3a5a3208a079db7881d94ebdce21a902a586d72768afa13b63"
+ "subject_sha256": "2db9a544af76c4170f0f4e30bf15978c0630078ac7f82b9f107b8b9e83c885b2"
 }

@@ -57,7 +57,7 @@ form:
     expr:
       op: input
       source: Is any item whose cost you are entering on Form 5695 used less than 80% for nonbusiness purposes (that is,
-        is more than 20% of its use for a business)?
+        is more than 20% of its use for a business, for renting out or for another income-producing purpose)?
     cite:
       doc: i5695
       locator: p. 1, Costs, "If less than 80% of the use of an item is for nonbusiness purposes, only that portion of the
@@ -1954,17 +1954,21 @@ form:
       locator: Form 5695 (2025), lines 21b and 29h, "Skip lines 22 through 25 and line 29"
   - id: f5695.joint_occupancy
     printed: (helper)
-    label: Did you occupy the home jointly with someone other than your spouse, each occupant completing their own Form 5695?
+    label: Did you occupy the home jointly with someone other than your spouse on a joint return (whether or not the other
+      occupant claims the credit)?
     type: Bool
     expr:
       op: input
-      source: Did you occupy the home jointly with someone other than your spouse on a joint return, so that each occupant
-        completes their own Form 5695 for the same property? (Answer No if you and a neighbor only shared the cost of
-        property benefiting each of your own main homes, and enter only the part of the cost you paid.)
+      source: Did you occupy the home jointly with someone other than your spouse on a joint return (whether or not the other
+        occupant files Form 5695, and whether you paid for the same items or for different ones)? (Answer No if you and a
+        neighbor only shared the cost of property benefiting each of your own main homes, and enter only the part of the cost
+        you paid.)
     cite:
       doc: i5695
       locator: p. 3, Joint occupancy, "If you occupied your home jointly with someone, each occupant must complete their own
-        Form 5695"; p. 3, Joint ownership of qualified property, "You figure your credit on the part of the cost you paid"
+        Form 5695" and "If the aggregate credit that would be allowed to all occupants for any item of property exceeds the
+        credit limit below, then you must figure your allocable share of the credit from each property"; p. 3, Joint
+        ownership of qualified property, "You figure your credit on the part of the cost you paid"
   - id: f5695.separate_homes
     printed: (helper)
     label: Did you and your spouse own and live apart in separate main homes?

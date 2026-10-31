@@ -132,6 +132,7 @@ interview:
   - dependent.work_ssn
   - dependent.gross_income
   - dependent.supported
+  - dependent.kidnapped
   - dependent.other_claimant
   - dependent.divorced_rule
   - dependent.multiple_support
@@ -148,6 +149,8 @@ interview:
   - household.unmarried
   - household.married
   - household.community_property
+  - household.rdp
+  - household.qss_eligible
   - household.credit_disallowed
   - s8812.combat_pay
   - s8812.puerto_rico

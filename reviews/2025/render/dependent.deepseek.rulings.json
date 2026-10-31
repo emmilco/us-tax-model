@@ -18,6 +18,13 @@
   {
    "printed": "2(c)",
    "restated": "helper \"A qualifying person for Form 2441 (you have care expenses, and this person is your dependent and either your qualifying child under 13 or not able to care for themselves and living with you for more than half the year)\" = true and helper \"Physically or mentally not able to care for themselves?\" = true and (helper \"Age at the end of 2025\" > 13 (dc.child_age) or helper \"Age at the end of 2025\" = 13 (dc.child_age) and helper \"Care provided while this qualifying person was age 13 or older and disabled\" = true)",
+   "model": "IRS line 2(c) checks 'over age 12 at the time the care was provided and was disabled'; for anyone over 13 at year-end the restatement uses age at year-end and a general 2025 disability status instead of the care-time disability helper.",
+   "ruling": "Ruling: model error; the model says that for anyone over 13 at year end the restatement uses a general 2025 disability status instead of disability at the time of care. i2441 p. 3, Column (c): \"Check the box in column (c) if the qualifying person listed in column (a) was over age 12 at the time the care was provided and was disabled\". A person over 13 at year end was over 12 throughout 2025, and the expenses on line 2 are only those \"for this person's care while they were a qualifying person (under age 13, or not able to care for themselves)\" (dependent.dc_paid; p503 p. 3, Person qualifying for part of year, \"You determine a person's qualifying status each day\"), so every included expense was for care while the person was over 12 and disabled; at exactly 13 the restatement uses the care-time answer dc_over12_care. As ruled in round 3 and Stage 19 round 2. Project stands.",
+   "context": "2794b4ea6f0f070b878ed76033131131a92f3226a93921bb21a6681466652cbd"
+  },
+  {
+   "printed": "2(c)",
+   "restated": "helper \"A qualifying person for Form 2441 (you have care expenses, and this person is your dependent and either your qualifying child under 13 or not able to care for themselves and living with you for more than half the year)\" = true and helper \"Physically or mentally not able to care for themselves?\" = true and (helper \"Age at the end of 2025\" > 13 (dc.child_age) or helper \"Age at the end of 2025\" = 13 (dc.child_age) and helper \"Care provided while this qualifying person was age 13 or older and disabled\" = true)",
    "model": "The IRS instruction says the box is checked if the person 'was over age 12 at the time the care was provided and was disabled.' For someone over 13, the restatement only requires age over 13 and a year-level disability, so it can check the box even if the care was provided before the disability.",
    "ruling": "Ruling: model error; i2441 p. 3, Column (c): \"Check the box in column (c) if the qualifying person listed in column (a) was over age 12 at the time the care was provided and was disabled.\" The English restates the project: the box for a qualifying person who cannot care for themselves and was over 13 at the end of 2025, or 13 with care included while age 13 or older and disabled (dc_over12_care). The model's concern, care provided before the disability, cannot arise on the project's lines: column (d) holds only care \"while they were a qualifying person (under age 13, or not able to care for themselves)\" (dependent.dc_paid), and a person over 13 at the end of 2025 was over 12 for all of 2025, so every included expense was for care of a person over 12 who was disabled. The English says what the page says for every amount the project lists; as ruled in round 3 (adjudication/dependent.md).",
    "context": "7e6286a1813deffe5961b542ea5442279ba8859da8f35d9c2e161ed44a4a9ea2"
@@ -32,9 +39,30 @@
   {
    "printed": "2(d)",
    "restated": "Enter the amount from helper \"Qualified expenses incurred and paid in 2025 for this person's care\".",
+   "model": "Form 2441 column (d) instructions say: 'If you completed Part III, don't include in column (d) any benefits shown on line 28.' The helper instead includes 'expenses paid with dependent care benefits' and relies on Form 2441 to subtract them, so line 2(d) can be overstated.",
+   "ruling": "Ruling: ambiguity; amb.2025.dc_line30 (owner ruling, Stage 15 decision 6, T-048). Form 2441 line 30: \"Complete line 2 on page 1 of this form. Don't include in column (d) any benefits shown on line 28 above. Then, add the amounts in column (d) and enter the total here\"; i2441 p. 3, Column (d): \"If you completed Part III, don't include in column (d) any benefits shown on line 28\"; the instructions give no rule for dividing line 28 among persons. The model reads the register's rejected reading (column (d) net of benefits). The chosen reading shows each person's expenses including those paid with dependent care benefits and subtracts line 28 once at line 30, and the helper's English says what the project asks. Unchanged by the BUG-0211 to BUG-0217 fixes; as ruled since round 2. Project stands.",
+   "context": "4811788d64e3d007249bcfddd5b3f49f418b9460367123f1bb8974b032435e7a"
+  },
+  {
+   "printed": "2(d)",
+   "restated": "Enter the amount from helper \"Qualified expenses incurred and paid in 2025 for this person's care\".",
    "model": "Form 2441 column (d) says 'If you completed Part III, don't include in column (d) any benefits shown on line 28'; line 28 is lines 24 plus 25. The restatement instead says to include expenses paid with dependent care benefits and subtract only 'benefits you exclude,' so it can leave deductible benefits (line 24) in column (d).",
    "ruling": "Ruling: ambiguity; amb.2025.dc_line30 (owner ruling, Stage 15, T-048). The model reads the rejected reading (column (d) net of benefits). Its further claim that deductible benefits (line 24) can stay in the computation is a misreading: f2441.line30 subtracts f2441.line28, \"Add lines 24 and 25\", from the column (d) total, which is Form 2441 line 30, \"Don't include in column (d) any benefits shown on line 28 above\". The dc_paid help sentence \"Form 2441 subtracts the benefits you exclude\" names only excluded benefits, but nothing the filer enters depends on it (both kinds are included in the expenses asked), so no amount or answer changes.",
    "context": "efff77743429ec21de072102d7fb29a91ff9ec6f4549acb8c7fd1170fec33505"
+  },
+  {
+   "printed": "2(d)",
+   "restated": "Enter the amount from helper \"Qualified expenses incurred and paid in 2025 for this person's care\".",
+   "model": "Form 2441 line 2(d) says: 'If you completed Part III, don't include in column (d) any benefits shown on line 28.' The helper instead says to include expenses paid with dependent care benefits, and the line does not subtract them.",
+   "ruling": "Ruling: ambiguity; amb.2025.dc_line30 (owner ruling, Stage 15 decision 6, T-048). i2441 p. 3, Column (d): \"If you completed Part III, don't include in column (d) any benefits shown on line 28\"; Form 2441 line 30 subtracts them once (\"Don't include in column (d) any benefits shown on line 28 above. Then, add the amounts in column (d)\"); the instructions give no rule for dividing line 28 among persons. The deepseek model reads the register's rejected reading. As ruled since round 2. The subject change of this round (BUG-0258, dependent.parent_home_paid) does not touch this line. Project stands.",
+   "context": "ae83a946b636c68b0ad12782172583bb25d034165021feae0f56150fcbb4a071"
+  },
+  {
+   "printed": "2(d)",
+   "restated": "Enter the amount from helper \"Qualified expenses incurred and paid in 2025 for this person's care\".",
+   "model": "The Form 2441 instructions for line 2(d) say 'If you completed Part III, don't include in column (d) any benefits shown on line 28,' but the helper includes expenses paid with dependent care benefits.",
+   "ruling": "Ruling: ambiguity; amb.2025.dc_line30 (owner ruling, Stage 15 decision 6, T-048). i2441 p. 3, Column (d): \"If you completed Part III, don't include in column (d) any benefits shown on line 28\"; Form 2441 line 30 subtracts them once (\"Don't include in column (d) any benefits shown on line 28 above. Then, add the amounts in column (d)\"); the instructions give no rule for dividing line 28 among persons. The deepseek model reads the register's rejected reading. As ruled since round 2. Project stands.",
+   "context": "2794b4ea6f0f070b878ed76033131131a92f3226a93921bb21a6681466652cbd"
   },
   {
    "printed": "2(d)",
@@ -47,6 +75,13 @@
    "restated": "Enter the amount from helper \"Qualified expenses incurred and paid in 2025 for this person's care\".",
    "model": "The IRS instructions for column (d) say: 'If you completed Part III, don't include in column (d) any benefits shown on line 28,' but the helper includes expenses paid with dependent care benefits and says Form 2441 subtracts them later, so the amount entered on line 2(d) can be too high.",
    "ruling": "Ruling: ambiguity; existing owner ruling amb.2025.dc_line30, Stage 15 decision 6 (T-048). Archived f2441 (2025) p. 2 line 30 and i2441 p. 3 Column (d) request excluding benefits shown on line 28. The project deliberately presents each person's gross expenses and subtracts the excluded benefits once in the aggregate f2441.line30; the register records the owner's choice because the sources give no allocation rule among persons. This is an acknowledged departure in per-person display under that recorded ruling, not model error and not a claim that literal column (d) wording matches. Retain the ambiguity reference and the objection."
+  },
+  {
+   "printed": "2(d)",
+   "restated": "Enter the amount from helper \"Qualified expenses incurred and paid in 2025 for this person's care\".",
+   "model": "The helper includes 'expenses paid with dependent care benefits,' but the IRS instruction for column (d) says 'If you completed Part III, don't include in column (d) any benefits shown on line 28.'",
+   "ruling": "Ruling: ambiguity; amb.2025.dc_line30 (owner ruling, Stage 15 decision 6, T-048). Form 2441 line 30: \"Complete line 2 on page 1 of this form. Don't include in column (d) any benefits shown on line 28 above. Then, add the amounts in column (d) and enter the total here\"; i2441 p. 3, Column (d): \"If you completed Part III, don't include in column (d) any benefits shown on line 28\"; the instructions give no rule for dividing line 28 among persons. The deepseek model reads the register's rejected reading (column (d) net of benefits). The chosen reading shows each person's expenses including those paid with dependent care benefits and subtracts line 28 once at line 30. The BUG-0224 exclusions added to dependent.dc_paid (food, lodging, education, clothing, entertainment, camps, summer school, tutoring, out-of-home care under 8 hours, non-compliant centers) match i2441 p. 2, Care of the qualifying person, and the model raised no objection to them. As ruled since round 2. Project stands.",
+   "context": "efae3122dc8b1d3728b97ce110517e5a1bacab99283b1d7361d3c6dfab48844f"
   },
   {
    "printed": "2(d)",

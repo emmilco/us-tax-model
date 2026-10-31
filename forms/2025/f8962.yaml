@@ -48,13 +48,15 @@ form:
     type: Bool
     expr:
       op: input
-      source: Did any Form 1095-A policy cover someone in your tax family and also someone who is not in it (for example a
-        former spouse, or a child someone else claims), or were you divorced or legally separated during 2025 while enrolled
+      source: Did any Marketplace policy, including one whose Form 1095-A went only to someone else, cover someone in your tax
+        family and also someone who is not in it (for example a former spouse, a child someone else claims, or a child you
+        claim whom someone else enrolled), or were you divorced or legally separated during 2025 while enrolled
         in a policy with your former spouse?
     cite:
       doc: i8962
       locator: p. 12, Allocating policy amounts, "The policy covered at least one individual in your tax family and at least
-        one individual in another tax family"
+        one individual in another tax family" and "The other tax family received a Form 1095-A for the policy that includes
+        a member of your tax family"; p. 12, example, "your ex-spouse enrolled a child whom you are claiming as a dependent"
   - id: f8962.married_in_2025
     printed: (gate)
     label: Married during 2025 with coverage before the first full month of marriage
@@ -94,7 +96,9 @@ form:
       op: input
       source: 'Does any of these apply: someone enrolled was not lawfully present in the United States; you or a family member
         were offered or covered by a qualified small employer HRA (QSEHRA, W-2 box 12 code FF) or an individual coverage HRA
-        for 2025; any part of a month''s premium was not paid by the due date of your return, or a Form 1095-A shows zero
+        for 2025; any part of a month''s premium was not paid by the due date of your return, not including extensions (or, for coverage
+        you enrolled in retroactively after a successful eligibility appeal, by the 120th day after the appeals decision),
+        or a Form 1095-A shows zero
         in column A for a month whose premium you paid; or advance payments were made for someone who is in no one''s tax
         family?'
     cite:
@@ -103,7 +107,10 @@ form:
         coverage in a qualified health plan through a Marketplace."; p. 3, "If you were covered under an individual coverage
         HRA for 2025, you are not allowed a PTC for your 2025 Marketplace health insurance."; p. 1, "If the QSEHRA is affordable
         for a month, no PTC is allowed for the month."; p. 4, Enrollment premiums, "You are generally not allowed a monthly
-        credit amount for the month if any part of that month"
+        credit amount for the month if any part of that month"; p. 3, "if you became eligible for APTC because of a successful
+        eligibility appeal and you retroactively enrolled in the plan, then the portion of the enrollment premium for which
+        you are responsible must be paid on or before the 120th day following the date of the appeals decision"; p. 4, "due
+        date of your tax return (not including extensions)"
   - id: f8962.two_counted
     printed: (gate)
     label: Column B counted on two Forms 1095-A from the same state for the same month

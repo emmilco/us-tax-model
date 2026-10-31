@@ -4,14 +4,14 @@
 
 | field | value |
 | --- | --- |
-| date | 2026-10-29 |
+| date | 2026-10-30 |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
 | prompt policy | worked-values-request-bound-v2 |
 | system sha256 | 18ff9cfe094eedd0548bba02012b0ebf2a58d0606e834e3633432585b4192cb7 |
 | reasoning effort | provider default |
 | output token budget | 65536 |
-| subject sha256 | d8cd1e7cfda63ac5ad42f4c11c90f6933c451f95a3d0ca28d3bfc1891171479f |
+| subject sha256 | ae5c9f11087bd77489d49692a8d8e463240dc399a2a63de2773d7e097d4f8ceb |
 | cases | 8 |
 
 ## Source pages given to the model
@@ -22,7 +22,7 @@
 
 ## Lines
 
-### case classm.eic.1 — prompt sha256 2f0a2b64de8a51b6cc63c69982986356143de9a7e0690f51696f0b29c8bab90a; branches: eic.qc_of_another:false, eic.age_range:true, eic.us_home:true, eic.has_qc:true, eic.married_rules:false, eic.top_limit#3, eic.below_top:true, eic.limit_other#1, eic.limit_joint#1, eic.limit#3, eic.step1_income:true, eic.step1_ssn:true, eic.step1_foreign:true, eic.step1_resident:true, eic.gain_7a:floor, eic.step2_income:true, eic.step2_other:true, eic.same_home:false, eic.legally_separated:false, eic.step3_married:true, eic.step3:true, eic.step4:true, eic.step34:true, eic.reached_step5:true, eic.self_employed:false, eic.show_wsb4b:false, eic.show_wsb6:false, eic.wsb_6:positive, eic.earned_for_limit#0, eic.step5_income:true, eic.eligible:true, eic.line1#0, eic.line1_in_table:true, eic.line1_table#1, eic.line2#0, eic.show3:true, eic.line4:true, eic.threshold_other#1, eic.threshold_joint#1, eic.line5_threshold#3, eic.line5_blank:false, eic.show5:false, eic.line5#1, eic.smaller:left, eic.after_line4#1, eic.line6#0, eic.credit#0, eic.reached_step3:true, eic.check_27c:false, eic.wsb_4b_positive:true, eic.wsb_line5_stop:false, eic.separated_box:false, eic.clergy:false
+### case classm.eic.1 — prompt sha256 6fc5cb49f093a0cf00f2c0a267a3b03ffa440f99ea7af3cd64edd292303399ad; branches: eic.qc_of_another:false, eic.died_2025:false, eic.age_range:true, eic.us_home:true, eic.has_qc:true, eic.married_rules:false, eic.top_limit#3, eic.below_top:true, eic.limit_other#1, eic.limit_joint#1, eic.limit#3, eic.step1_income:true, eic.step1_ssn:true, eic.step1_foreign:true, eic.step1_resident:true, eic.gain_7a:floor, eic.step2_income:true, eic.step2_other:true, eic.same_home:false, eic.legally_separated:false, eic.step3_married:true, eic.step3:true, eic.step4:true, eic.step34:true, eic.reached_step5:true, eic.self_employed:false, eic.show_wsb4b:false, eic.show_wsb6:false, eic.wsb_6:positive, eic.earned_for_limit#0, eic.step5_income:true, eic.eligible:true, eic.line1#0, eic.line1_in_table:true, eic.line1_table#1, eic.line2#0, eic.show3:true, eic.line4:true, eic.threshold_other#1, eic.threshold_joint#1, eic.line5_threshold#3, eic.line5_blank:false, eic.show5:false, eic.line5#1, eic.smaller:left, eic.after_line4#1, eic.line6#0, eic.credit#0, eic.reached_step3:true, eic.check_27c:false, eic.wsb_4b_positive:true, eic.wsb_line5_stop:false, eic.separated_box:false, eic.clergy:false
 
 ### classm.eic.1 — (Step 5, 1) — Enter the amount from Form 1040 or 1040-SR, line 1z
 Status: **AGREE**
@@ -89,7 +89,7 @@ Value: yes
 Status: **SKIPPED**
 
 Model: blank
-Work: Skipped because line 4 is Yes
+Work: Skipped because line 4 is Yes; use line 2 amount on line 6
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -98,85 +98,58 @@ Status: **AGREE**
 
 Value: $2,798.00
 
-### case classm.eic.2 — prompt sha256 f6af437905efb58814c93ae8f9f82cd49b2f0a3abc7416121def126fbf7b40d1; branches: eic.qc_of_another:false, eic.age_range:true, eic.us_home:true, eic.has_qc:false, eic.married_rules:true, eic.top_limit#2, eic.below_top:false, eic.limit_other#0, eic.limit_joint#0, eic.limit#2, eic.step1_income:false, eic.step1_ssn:true, eic.step1_foreign:true, eic.step1_resident:true, eic.gain_7a:positive, eic.step2_income:false, eic.step2_other:true, eic.same_home:false, eic.legally_separated:false, eic.step3_married:true, eic.step3:true, eic.step4:false, eic.step34:false, eic.reached_step5:false, eic.self_employed:true, eic.show_wsb4b:false, eic.show_wsb6:false, eic.wsb_6:floor, eic.earned_for_limit#1, eic.step5_income:true, eic.eligible:false, eic.line1#1, eic.line1_in_table:false, eic.line1_table#0, eic.line2#1, eic.show3:false, eic.line4:false, eic.threshold_other#0, eic.threshold_joint#0, eic.line5_threshold#2, eic.line5_blank:false, eic.show5:false, eic.line5#0, eic.smaller:left, eic.after_line4#1, eic.line6#1, eic.credit#1, eic.reached_step3:false, eic.check_27c:false, eic.wsb_4b_positive:false, eic.wsb_line5_stop:false, eic.separated_box:false, eic.clergy:false
+### case classm.eic.2 — prompt sha256 197065e2bd63fb2daf584aa01900546c97d97878c07709e8253f10aab2d0b6df; branches: eic.qc_of_another:false, eic.died_2025:false, eic.age_range:true, eic.us_home:true, eic.has_qc:false, eic.married_rules:true, eic.top_limit#2, eic.below_top:false, eic.limit_other#0, eic.limit_joint#0, eic.limit#2, eic.step1_income:false, eic.step1_ssn:true, eic.step1_foreign:true, eic.step1_resident:true, eic.gain_7a:positive, eic.step2_income:false, eic.step2_other:true, eic.same_home:false, eic.legally_separated:false, eic.step3_married:true, eic.step3:true, eic.step4:false, eic.step34:false, eic.reached_step5:false, eic.self_employed:true, eic.show_wsb4b:false, eic.show_wsb6:false, eic.wsb_6:floor, eic.earned_for_limit#1, eic.step5_income:true, eic.eligible:false, eic.line1#1, eic.line1_in_table:false, eic.line1_table#0, eic.line2#1, eic.show3:false, eic.line4:false, eic.threshold_other#0, eic.threshold_joint#0, eic.line5_threshold#2, eic.line5_blank:false, eic.show5:false, eic.line5#0, eic.smaller:left, eic.after_line4#1, eic.line6#1, eic.credit#1, eic.reached_step3:false, eic.check_27c:false, eic.wsb_4b_positive:false, eic.wsb_line5_stop:false, eic.separated_box:false, eic.clergy:false
 
 ### classm.eic.2 — (Step 5, 1) — Enter the amount from Form 1040 or 1040-SR, line 1z
-Status: **SKIPPED**
+Status: **AGREE**
 
-Model: blank
-Work: Stopped at Step 1: AGI $65,538.15 exceeds the no-child threshold and all applicable child thresholds for MFS.
-
-No numeric assertion or class M credit: the model left this line blank.
+Value: $31,939.00
 
 ### classm.eic.2 — (Step 5, 2) — Medicaid waiver payments excluded from income on Schedule 1, line 8s, unless cho
-Status: **SKIPPED**
+Status: **AGREE**
 
-Model: blank
-Work: Step 5 not reached because Step 1 STOP disallows the EIC.
-
-No numeric assertion or class M credit: the model left this line blank.
+Value: $0.00
 
 ### classm.eic.2 — (Step 5, 3) — Subtract line 2 from line 1
-Status: **SKIPPED**
+Status: **AGREE**
 
-Model: blank
-Work: Step 5 not reached because Step 1 STOP disallows the EIC.
-
-No numeric assertion or class M credit: the model left this line blank.
+Value: $31,939.00
 
 ### classm.eic.2 — (Step 5, 4) — Nontaxable combat pay you elect to include in earned income; zero in this tool
-Status: **SKIPPED**
+Status: **AGREE**
 
-Model: blank
-Work: Step 5 not reached because Step 1 STOP disallows the EIC.
-
-No numeric assertion or class M credit: the model left this line blank.
+Value: $0.00
 
 ### classm.eic.2 — (Step 5, 5) — Add lines 3 and 4. This is your earned income
-Status: **SKIPPED**
+Status: **AGREE**
 
-Model: blank
-Work: Step 5 not reached because Step 1 STOP disallows the EIC.
-
-No numeric assertion or class M credit: the model left this line blank.
+Value: $31,939.00
 
 ### classm.eic.2 — 4b — Worksheet B, line 4b. Combine lines 1e, 2c, 3, and 4a. This is your total earned
-Status: **SKIPPED**
+Status: **AGREE**
 
-Model: blank
-Work: Worksheet B not reached because the EIC is disallowed at Step 1.
-
-No numeric assertion or class M credit: the model left this line blank.
+Value: $-17,247.85
 
 ### classm.eic.2 — 6 (eic.wsb_6) — Worksheet B, line 6. Enter your total earned income from Part 4, line 4b (zero i
-Status: **SKIPPED**
+Status: **AGREE**
 
-Model: blank
-Work: Worksheet B not reached because the EIC is disallowed at Step 1.
-
-No numeric assertion or class M credit: the model left this line blank.
+Value: $0.00
 
 ### classm.eic.2 — 1 — Enter your earned income from Step 5 (Worksheet A, line 1), or Worksheet B, line
-Status: **SKIPPED**
+Status: **AGREE**
 
-Model: blank
-Work: Worksheet A not reached because the EIC is disallowed at Step 1.
-
-No numeric assertion or class M credit: the model left this line blank.
+Value: $0.00
 
 ### classm.eic.2 — 2 — Look up the amount on line 1 in the EIC Table to find the credit, using the colu
-Status: **SKIPPED**
+Status: **AGREE**
 
-Model: blank
-Work: Worksheet A not reached because the EIC is disallowed at Step 1.
-
-No numeric assertion or class M credit: the model left this line blank.
+Value: $0.00
 
 ### classm.eic.2 — 3 — Enter the amount from Form 1040 or 1040-SR, line 11b
 Status: **SKIPPED**
 
 Model: blank
-Work: Worksheet A not reached because the EIC is disallowed at Step 1.
+Work: STOP at line 2 because line 2 is zero
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -184,7 +157,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Worksheet A not reached because the EIC is disallowed at Step 1.
+Work: STOP at line 2 because line 2 is zero
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -192,7 +165,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Worksheet A not reached because the EIC is disallowed at Step 1.
+Work: STOP at line 2 because line 2 is zero
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -200,11 +173,11 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: No earned income credit allowed after Step 1 STOP.
+Work: STOP at line 2 because line 2 is zero
 
 No numeric assertion or class M credit: the model left this line blank.
 
-### case classm.eic.3 — prompt sha256 ff595cf497062f7ed3ce51027787eb85d27841ba24dff1c203670fa86bb82330; branches: eic.qc_of_another:false, eic.age_range:true, eic.us_home:true, eic.has_qc:true, eic.married_rules:false, eic.top_limit#0, eic.below_top:true, eic.limit_other#2, eic.limit_joint#2, eic.limit#0, eic.step1_income:true, eic.step1_ssn:true, eic.step1_foreign:true, eic.step1_resident:true, eic.gain_7a:floor, eic.step2_income:true, eic.step2_other:true, eic.same_home:false, eic.legally_separated:false, eic.step3_married:true, eic.step3:true, eic.step4:true, eic.step34:true, eic.reached_step5:true, eic.self_employed:true, eic.show_wsb4b:true, eic.show_wsb6:true, eic.wsb_6:positive, eic.earned_for_limit#1, eic.step5_income:true, eic.eligible:true, eic.line1#1, eic.line1_in_table:true, eic.line1_table#2, eic.line2#0, eic.show3:true, eic.line4:true, eic.threshold_other#1, eic.threshold_joint#1, eic.line5_threshold#0, eic.line5_blank:true, eic.show5:false, eic.line5#2, eic.smaller:left, eic.after_line4#0, eic.line6#0, eic.credit#0, eic.reached_step3:true, eic.check_27c:false, eic.wsb_4b_positive:true, eic.wsb_line5_stop:false, eic.separated_box:false, eic.clergy:false
+### case classm.eic.3 — prompt sha256 dd6f81fd38c45ba7d056ea1db79f58c4a01172f2c6c4db4f8df6764a893d3c5c; branches: eic.qc_of_another:false, eic.died_2025:false, eic.age_range:true, eic.us_home:true, eic.has_qc:true, eic.married_rules:false, eic.top_limit#0, eic.below_top:true, eic.limit_other#2, eic.limit_joint#2, eic.limit#0, eic.step1_income:true, eic.step1_ssn:true, eic.step1_foreign:true, eic.step1_resident:true, eic.gain_7a:floor, eic.step2_income:true, eic.step2_other:true, eic.same_home:false, eic.legally_separated:false, eic.step3_married:true, eic.step3:true, eic.step4:true, eic.step34:true, eic.reached_step5:true, eic.self_employed:true, eic.show_wsb4b:true, eic.show_wsb6:true, eic.wsb_6:positive, eic.earned_for_limit#1, eic.step5_income:true, eic.eligible:true, eic.line1#1, eic.line1_in_table:true, eic.line1_table#2, eic.line2#0, eic.show3:true, eic.line4:true, eic.threshold_other#1, eic.threshold_joint#1, eic.line5_threshold#0, eic.line5_blank:true, eic.show5:false, eic.line5#2, eic.smaller:left, eic.after_line4#0, eic.line6#0, eic.credit#0, eic.reached_step3:true, eic.check_27c:false, eic.wsb_4b_positive:true, eic.wsb_line5_stop:false, eic.separated_box:false, eic.clergy:false
 
 ### classm.eic.3 — (Step 5, 1) — Enter the amount from Form 1040 or 1040-SR, line 1z
 Status: **AGREE**
@@ -265,7 +238,7 @@ Value: yes
 Status: **SKIPPED**
 
 Model: blank
-Work: Skipped because line 4 is yes
+Work: Skipped because line 4 is Yes
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -274,7 +247,7 @@ Status: **AGREE**
 
 Value: $4,910.00
 
-### case classm.eic.4 — prompt sha256 60f126faf7f84feb08c9618673a18384791c153959f8fc9e826973677100a2c0; branches: eic.qc_of_another:false, eic.age_range:true, eic.us_home:true, eic.has_qc:true, eic.married_rules:false, eic.top_limit#4, eic.below_top:true, eic.limit_other#1, eic.limit_joint#1, eic.limit#4, eic.step1_income:true, eic.step1_ssn:true, eic.step1_foreign:true, eic.step1_resident:true, eic.gain_7a:floor, eic.step2_income:true, eic.step2_other:true, eic.same_home:true, eic.legally_separated:true, eic.step3_married:true, eic.step3:true, eic.step4:true, eic.step34:true, eic.reached_step5:true, eic.self_employed:false, eic.show_wsb4b:false, eic.show_wsb6:false, eic.wsb_6:positive, eic.earned_for_limit#0, eic.step5_income:true, eic.eligible:true, eic.line1#0, eic.line1_in_table:true, eic.line1_table#1, eic.line2#0, eic.show3:true, eic.line4:false, eic.threshold_other#1, eic.threshold_joint#1, eic.line5_threshold#4, eic.line5_blank:true, eic.show5:false, eic.line5#1, eic.smaller:right, eic.after_line4#0, eic.line6#1, eic.credit#0, eic.reached_step3:true, eic.check_27c:false, eic.wsb_4b_positive:true, eic.wsb_line5_stop:false, eic.separated_box:false, eic.clergy:false
+### case classm.eic.4 — prompt sha256 cf805b435e7c79a07f05189ddc6daf660f7582e391b1d217b0ad3a6a11db3935; branches: eic.qc_of_another:false, eic.died_2025:false, eic.age_range:true, eic.us_home:true, eic.has_qc:true, eic.married_rules:false, eic.top_limit#4, eic.below_top:true, eic.limit_other#1, eic.limit_joint#1, eic.limit#4, eic.step1_income:true, eic.step1_ssn:true, eic.step1_foreign:true, eic.step1_resident:true, eic.gain_7a:floor, eic.step2_income:true, eic.step2_other:true, eic.same_home:true, eic.legally_separated:true, eic.step3_married:true, eic.step3:true, eic.step4:true, eic.step34:true, eic.reached_step5:true, eic.self_employed:false, eic.show_wsb4b:false, eic.show_wsb6:false, eic.wsb_6:positive, eic.earned_for_limit#0, eic.step5_income:true, eic.eligible:true, eic.line1#0, eic.line1_in_table:true, eic.line1_table#1, eic.line2#0, eic.show3:true, eic.line4:false, eic.threshold_other#1, eic.threshold_joint#1, eic.line5_threshold#4, eic.line5_blank:true, eic.show5:false, eic.line5#1, eic.smaller:right, eic.after_line4#0, eic.line6#1, eic.credit#0, eic.reached_step3:true, eic.check_27c:false, eic.wsb_4b_positive:true, eic.wsb_line5_stop:false, eic.separated_box:false, eic.clergy:false
 
 ### classm.eic.4 — (Step 5, 1) — Enter the amount from Form 1040 or 1040-SR, line 1z
 Status: **AGREE**
@@ -305,7 +278,7 @@ Value: $5,137.00
 Status: **SKIPPED**
 
 Model: blank
-Work: Worksheet B not used; no self-employment, so skipped
+Work: Worksheet B not used; Step 5 Q2 = No
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -313,7 +286,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Worksheet B not used; skipped
+Work: Worksheet B not used; Step 5 Q2 = No
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -341,7 +314,7 @@ Value: no
 Status: **SKIPPED**
 
 Model: blank
-Work: 1+ child and 16,019.00 < 23,350.00: leave line 5 blank
+Work: 1+ qualifying child and line 3 $16,019.00 < $23,350; leave blank
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -350,13 +323,13 @@ Status: **AGREE**
 
 Value: $1,743.00
 
-### case classm.eic.5 — prompt sha256 56c6a40aa252e36592aa4bad3f25cbcf397a3581342f61224073148dc0d63b81; branches: eic.qc_of_another:false, eic.age_range:true, eic.us_home:true, eic.has_qc:true, eic.married_rules:false, eic.top_limit#1, eic.below_top:true, eic.limit_other#1, eic.limit_joint#1, eic.limit#1, eic.step1_income:true, eic.step1_ssn:false, eic.step1_foreign:true, eic.step1_resident:true, eic.gain_7a:floor, eic.step2_income:true, eic.step2_other:true, eic.same_home:false, eic.legally_separated:false, eic.step3_married:true, eic.step3:true, eic.step4:true, eic.step34:true, eic.reached_step5:false, eic.self_employed:false, eic.show_wsb4b:false, eic.show_wsb6:false, eic.wsb_6:positive, eic.earned_for_limit#0, eic.step5_income:true, eic.eligible:false, eic.line1#0, eic.line1_in_table:true, eic.line1_table#1, eic.line2#0, eic.show3:false, eic.line4:true, eic.threshold_other#1, eic.threshold_joint#1, eic.line5_threshold#1, eic.line5_blank:false, eic.show5:false, eic.line5#1, eic.smaller:left, eic.after_line4#1, eic.line6#0, eic.credit#1, eic.reached_step3:false, eic.check_27c:true, eic.wsb_4b_positive:true, eic.wsb_line5_stop:false, eic.separated_box:false, eic.clergy:false
+### case classm.eic.5 — prompt sha256 36fd4d30bc8649d88edfddbce26ba21feba36260bd9b8b099db7abaf8dc7395e; branches: eic.qc_of_another:false, eic.died_2025:false, eic.age_range:true, eic.us_home:true, eic.has_qc:true, eic.married_rules:false, eic.top_limit#1, eic.below_top:true, eic.limit_other#1, eic.limit_joint#1, eic.limit#1, eic.step1_income:true, eic.step1_ssn:false, eic.step1_foreign:true, eic.step1_resident:true, eic.gain_7a:floor, eic.step2_income:true, eic.step2_other:true, eic.same_home:false, eic.legally_separated:false, eic.step3_married:true, eic.step3:true, eic.step4:true, eic.step34:true, eic.reached_step5:false, eic.self_employed:false, eic.show_wsb4b:false, eic.show_wsb6:false, eic.wsb_6:positive, eic.earned_for_limit#0, eic.step5_income:true, eic.eligible:false, eic.line1#0, eic.line1_in_table:true, eic.line1_table#1, eic.line2#0, eic.show3:false, eic.line4:true, eic.threshold_other#1, eic.threshold_joint#1, eic.line5_threshold#1, eic.line5_blank:false, eic.show5:false, eic.line5#1, eic.smaller:left, eic.after_line4#1, eic.line6#0, eic.credit#1, eic.reached_step3:false, eic.check_27c:true, eic.wsb_4b_positive:true, eic.wsb_line5_stop:false, eic.separated_box:false, eic.clergy:false
 
 ### classm.eic.5 — (Step 5, 1) — Enter the amount from Form 1040 or 1040-SR, line 1z
 Status: **SKIPPED**
 
 Model: blank
-Work: Step 1 Q2 No (no valid EIC SSN); STOP, cannot take credit.
+Work: Skipped: Step 1 Q2 is no (no valid EIC SSN), so STOP—cannot take the EIC.
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -364,7 +337,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Step 1 Q2 No (no valid EIC SSN); STOP, cannot take credit.
+Work: Skipped: Step 1 Q2 is no (no valid EIC SSN), so STOP—cannot take the EIC.
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -372,7 +345,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Step 1 Q2 No (no valid EIC SSN); STOP, cannot take credit.
+Work: Skipped: Step 1 Q2 is no (no valid EIC SSN), so STOP—cannot take the EIC.
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -380,7 +353,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Step 1 Q2 No (no valid EIC SSN); STOP, cannot take credit.
+Work: Skipped: Step 1 Q2 is no (no valid EIC SSN), so STOP—cannot take the EIC.
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -388,7 +361,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Step 1 Q2 No (no valid EIC SSN); STOP, cannot take credit.
+Work: Skipped: Step 1 Q2 is no (no valid EIC SSN), so STOP—cannot take the EIC.
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -396,7 +369,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Step 1 Q2 No (no valid EIC SSN); STOP, cannot take credit.
+Work: Skipped: Step 1 Q2 is no (no valid EIC SSN), so STOP—cannot take the EIC.
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -404,7 +377,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Step 1 Q2 No (no valid EIC SSN); STOP, cannot take credit.
+Work: Skipped: Step 1 Q2 is no (no valid EIC SSN), so STOP—cannot take the EIC.
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -412,7 +385,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Step 1 Q2 No (no valid EIC SSN); STOP, cannot take credit.
+Work: Skipped: Step 1 Q2 is no (no valid EIC SSN), so STOP—cannot take the EIC.
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -420,7 +393,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Step 1 Q2 No (no valid EIC SSN); STOP, cannot take credit.
+Work: Skipped: Step 1 Q2 is no (no valid EIC SSN), so STOP—cannot take the EIC.
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -428,7 +401,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Step 1 Q2 No (no valid EIC SSN); STOP, cannot take credit.
+Work: Skipped: Step 1 Q2 is no (no valid EIC SSN), so STOP—cannot take the EIC.
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -436,7 +409,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Step 1 Q2 No (no valid EIC SSN); STOP, cannot take credit.
+Work: Skipped: Step 1 Q2 is no (no valid EIC SSN), so STOP—cannot take the EIC.
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -444,7 +417,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Step 1 Q2 No (no valid EIC SSN); STOP, cannot take credit.
+Work: Skipped: Step 1 Q2 is no (no valid EIC SSN), so STOP—cannot take the EIC.
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -452,17 +425,17 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Step 1 Q2 No (no valid EIC SSN); STOP, cannot take credit.
+Work: Skipped: Step 1 Q2 is no (no valid EIC SSN), so STOP—cannot take the EIC.
 
 No numeric assertion or class M credit: the model left this line blank.
 
-### case classm.eic.6 — prompt sha256 1dc893df8ef83d795e0dca51d4cd3b3b1ea02a033207b76d21fc7f738d89adef; branches: eic.qc_of_another:true, eic.age_range:true, eic.us_home:false, eic.has_qc:false, eic.married_rules:true, eic.top_limit#3, eic.below_top:true, eic.limit_other#0, eic.limit_joint#0, eic.limit#3, eic.step1_income:true, eic.step1_ssn:true, eic.step1_resident:true, eic.gain_7a:floor, eic.step2_income:true, eic.step2_other:true, eic.same_home:true, eic.legally_separated:false, eic.step3_married:false, eic.step3:false, eic.step4:false, eic.step34:false, eic.self_employed:false, eic.wsb_6:floor, eic.earned_for_limit#0, eic.step5_income:true, eic.line1#0, eic.line1_in_table:false, eic.line1_table#0, eic.line2#1, eic.line4:false, eic.threshold_other#0, eic.threshold_joint#0, eic.line5_threshold#3, eic.line5_blank:true, eic.line5#0, eic.smaller:right, eic.after_line4#0, eic.line6#1, eic.wsb_4b_positive:false, eic.clergy:false
+### case classm.eic.6 — prompt sha256 402e2cfa8cea93a9cee367f4b70dc2db72d37643e20226794f42d76de1544a53; branches: eic.qc_of_another:true, eic.died_2025:false, eic.age_range:true, eic.us_home:false, eic.has_qc:false, eic.married_rules:true, eic.top_limit#3, eic.below_top:true, eic.limit_other#0, eic.limit_joint#0, eic.limit#3, eic.step1_income:true, eic.step1_ssn:true, eic.step1_resident:true, eic.gain_7a:floor, eic.step2_income:true, eic.step2_other:true, eic.same_home:true, eic.legally_separated:false, eic.step3_married:false, eic.step3:false, eic.step4:false, eic.step34:false, eic.self_employed:false, eic.wsb_6:floor, eic.earned_for_limit#0, eic.step5_income:true, eic.line1#0, eic.line1_in_table:false, eic.line1_table#0, eic.line2#1, eic.line4:false, eic.threshold_other#0, eic.threshold_joint#0, eic.line5_threshold#3, eic.line5_blank:true, eic.line5#0, eic.smaller:right, eic.after_line4#0, eic.line6#1, eic.wsb_4b_positive:false, eic.clergy:false
 
 ### classm.eic.6 — (Step 5, 1) — Enter the amount from Form 1040 or 1040-SR, line 1z
 Status: **SKIPPED**
 
 Model: blank
-Work: Skipped: Step 1 Q3 is yes (Form 2555), so the EIC stops and cannot be taken.
+Work: Skipped: no EIC per Step 4 Q1 STOP (married HOH, no qualifying child).
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -470,7 +443,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Skipped: Step 1 Q3 is yes (Form 2555), so the EIC stops and cannot be taken.
+Work: Skipped: no EIC per Step 4 Q1 STOP (married HOH, no qualifying child).
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -478,7 +451,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Skipped: Step 1 Q3 is yes (Form 2555), so the EIC stops and cannot be taken.
+Work: Skipped: no EIC per Step 4 Q1 STOP (married HOH, no qualifying child).
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -486,7 +459,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Skipped: Step 1 Q3 is yes (Form 2555), so the EIC stops and cannot be taken.
+Work: Skipped: no EIC per Step 4 Q1 STOP (married HOH, no qualifying child).
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -494,7 +467,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Skipped: Step 1 Q3 is yes (Form 2555), so the EIC stops and cannot be taken.
+Work: Skipped: no EIC per Step 4 Q1 STOP (married HOH, no qualifying child).
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -502,7 +475,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Skipped: Step 1 Q3 is yes (Form 2555), so Worksheet B is not used.
+Work: Worksheet B not used; no EIC per Step 4 Q1 STOP.
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -510,7 +483,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Skipped: Step 1 Q3 is yes (Form 2555), so Worksheet B is not used.
+Work: Worksheet B not used; no EIC per Step 4 Q1 STOP.
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -518,7 +491,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Skipped: Step 1 Q3 is yes (Form 2555), so Worksheet A is not used.
+Work: Worksheet A not completed; no EIC per Step 4 Q1 STOP.
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -526,7 +499,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Skipped: Step 1 Q3 is yes (Form 2555), so Worksheet A is not used.
+Work: Worksheet A not completed; no EIC per Step 4 Q1 STOP.
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -534,7 +507,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Skipped: Step 1 Q3 is yes (Form 2555), so Worksheet A is not used.
+Work: Worksheet A not completed; no EIC per Step 4 Q1 STOP.
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -542,7 +515,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Skipped: Step 1 Q3 is yes (Form 2555), so Worksheet A is not used.
+Work: Worksheet A not completed; no EIC per Step 4 Q1 STOP.
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -550,7 +523,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Skipped: Step 1 Q3 is yes (Form 2555), so Worksheet A is not used.
+Work: Worksheet A not completed; no EIC per Step 4 Q1 STOP.
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -558,42 +531,57 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Skipped: Step 1 Q3 is yes (Form 2555), so no EIC is allowed.
+Work: No EIC: Step 4 Q1 STOP; also main home not in U.S. more than half of 2025.
 
 No numeric assertion or class M credit: the model left this line blank.
 
-### case classm.eic.7 — prompt sha256 30c2ed71b94888cb0249caf897533d8328f99392f3feaa8f9554a46e0a5f91c2; branches: eic.qc_of_another:false, eic.age_range:false, eic.us_home:true, eic.has_qc:false, eic.married_rules:false, eic.top_limit#0, eic.below_top:true, eic.limit_other#0, eic.limit_joint#0, eic.limit#0, eic.step1_income:false, eic.step1_ssn:true, eic.step1_foreign:true, eic.step1_resident:true, eic.gain_7a:floor, eic.step2_income:true, eic.same_home:false, eic.legally_separated:false, eic.step3_married:true, eic.step3:true, eic.step4:false, eic.step34:false, eic.reached_step5:false, eic.self_employed:false, eic.show_wsb4b:false, eic.show_wsb6:false, eic.wsb_6:positive, eic.earned_for_limit#0, eic.step5_income:false, eic.eligible:false, eic.line1#0, eic.line1_in_table:true, eic.line1_table#0, eic.line2#0, eic.show3:false, eic.line4:false, eic.threshold_other#0, eic.threshold_joint#0, eic.line5_threshold#0, eic.line5_blank:false, eic.show5:false, eic.line5#0, eic.smaller:left, eic.after_line4#1, eic.line6#1, eic.credit#1, eic.reached_step3:false, eic.check_27c:false, eic.wsb_4b_positive:true, eic.wsb_line5_stop:false, eic.separated_box:false, eic.clergy:false
+### case classm.eic.7 — prompt sha256 ad9b0222aebbc9260bbada37dec653b822137f1579de6315d9f580276c50e234; branches: eic.qc_of_another:false, eic.died_2025:false, eic.age_range:false, eic.us_home:true, eic.has_qc:false, eic.married_rules:false, eic.top_limit#0, eic.below_top:true, eic.limit_other#0, eic.limit_joint#0, eic.limit#0, eic.step1_income:false, eic.step1_ssn:true, eic.step1_foreign:true, eic.step1_resident:true, eic.gain_7a:floor, eic.step2_income:true, eic.same_home:false, eic.legally_separated:false, eic.step3_married:true, eic.step3:true, eic.step4:false, eic.step34:false, eic.reached_step5:false, eic.self_employed:false, eic.show_wsb4b:false, eic.show_wsb6:false, eic.wsb_6:positive, eic.earned_for_limit#0, eic.step5_income:false, eic.eligible:false, eic.line1#0, eic.line1_in_table:true, eic.line1_table#0, eic.line2#0, eic.show3:false, eic.line4:false, eic.threshold_other#0, eic.threshold_joint#0, eic.line5_threshold#0, eic.line5_blank:false, eic.show5:false, eic.line5#0, eic.smaller:left, eic.after_line4#1, eic.line6#1, eic.credit#1, eic.reached_step3:false, eic.check_27c:false, eic.wsb_4b_positive:true, eic.wsb_line5_stop:false, eic.separated_box:false, eic.clergy:false
 
 ### classm.eic.7 — (Step 5, 1) — Enter the amount from Form 1040 or 1040-SR, line 1z
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $52,948.00
+Model: blank
+Work: Step 1 stop: no qualifying child and AGI $50,354 is not less than $19,104; no EIC
+
+No numeric assertion or class M credit: the model left this line blank.
 
 ### classm.eic.7 — (Step 5, 2) — Medicaid waiver payments excluded from income on Schedule 1, line 8s, unless cho
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: Skipped: Step 1 stop; cannot take the credit
+
+No numeric assertion or class M credit: the model left this line blank.
 
 ### classm.eic.7 — (Step 5, 3) — Subtract line 2 from line 1
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $52,948.00
+Model: blank
+Work: Skipped: Step 1 stop; cannot take the credit
+
+No numeric assertion or class M credit: the model left this line blank.
 
 ### classm.eic.7 — (Step 5, 4) — Nontaxable combat pay you elect to include in earned income; zero in this tool
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: Skipped: Step 1 stop; cannot take the credit
+
+No numeric assertion or class M credit: the model left this line blank.
 
 ### classm.eic.7 — (Step 5, 5) — Add lines 3 and 4. This is your earned income
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $52,948.00
+Model: blank
+Work: Skipped: Step 1 stop; cannot take the credit
+
+No numeric assertion or class M credit: the model left this line blank.
 
 ### classm.eic.7 — 4b — Worksheet B, line 4b. Combine lines 1e, 2c, 3, and 4a. This is your total earned
 Status: **SKIPPED**
 
 Model: blank
-Work: Worksheet B not used; Step 5 Q2 = No
+Work: Skipped: Step 1 stop; Worksheet B not used
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -601,25 +589,31 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Worksheet B not used; skipped
+Work: Skipped: Step 1 stop; Worksheet B not used
 
 No numeric assertion or class M credit: the model left this line blank.
 
 ### classm.eic.7 — 1 — Enter your earned income from Step 5 (Worksheet A, line 1), or Worksheet B, line
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $52,948.00
+Model: blank
+Work: Skipped: Step 1 stop; Worksheet A not completed
+
+No numeric assertion or class M credit: the model left this line blank.
 
 ### classm.eic.7 — 2 — Look up the amount on line 1 in the EIC Table to find the credit, using the colu
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: Skipped: Step 1 stop; Worksheet A not completed
+
+No numeric assertion or class M credit: the model left this line blank.
 
 ### classm.eic.7 — 3 — Enter the amount from Form 1040 or 1040-SR, line 11b
 Status: **SKIPPED**
 
 Model: blank
-Work: Skipped—Worksheet A line 2 is zero; STOP, no credit
+Work: Skipped: Step 1 stop; Worksheet A not completed
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -627,7 +621,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Skipped after STOP at Worksheet A line 2
+Work: Skipped: Step 1 stop; Worksheet A not completed
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -635,7 +629,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Skipped after STOP at Worksheet A line 2
+Work: Skipped: Step 1 stop; Worksheet A not completed
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -643,11 +637,11 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: No earned income credit; STOP at Worksheet A line 2
+Work: Skipped: Step 1 stop; no earned income credit
 
 No numeric assertion or class M credit: the model left this line blank.
 
-### case classm.eic.8 — prompt sha256 ebacd93a25734e78ae7d70c3cf6d577f6465467f97d237a69e74494af93fa798; branches: eic.qc_of_another:false, eic.age_range:true, eic.us_home:true, eic.has_qc:true, eic.married_rules:true, eic.top_limit#2, eic.below_top:true, eic.limit_other#1, eic.limit_joint#1, eic.limit#2, eic.step1_income:true, eic.step1_ssn:true, eic.step1_foreign:true, eic.step1_resident:true, eic.gain_7a:floor, eic.step2_income:true, eic.step2_other:true, eic.same_home:false, eic.legally_separated:false, eic.step3_married:true, eic.step3:true, eic.step4:false, eic.step34:true, eic.reached_step5:true, eic.self_employed:false, eic.show_wsb4b:false, eic.show_wsb6:false, eic.wsb_6:positive, eic.earned_for_limit#0, eic.step5_income:true, eic.eligible:true, eic.line1#0, eic.line1_in_table:true, eic.line1_table#1, eic.line2#0, eic.show3:true, eic.line4:false, eic.threshold_other#1, eic.threshold_joint#1, eic.line5_threshold#2, eic.line5_blank:false, eic.show5:true, eic.line5#1, eic.smaller:right, eic.after_line4#1, eic.line6#1, eic.credit#0, eic.reached_step3:true, eic.check_27c:false, eic.wsb_4b_positive:true, eic.wsb_line5_stop:false, eic.separated_box:true, eic.clergy:false
+### case classm.eic.8 — prompt sha256 cda756dd5c1df6474be6ac34d86c30dd4dcf8cb99647f5bea223aa14828786a3; branches: eic.qc_of_another:false, eic.died_2025:false, eic.age_range:true, eic.us_home:true, eic.has_qc:true, eic.married_rules:true, eic.top_limit#2, eic.below_top:true, eic.limit_other#1, eic.limit_joint#1, eic.limit#2, eic.step1_income:true, eic.step1_ssn:true, eic.step1_foreign:true, eic.step1_resident:true, eic.gain_7a:floor, eic.step2_income:true, eic.step2_other:true, eic.same_home:false, eic.legally_separated:false, eic.step3_married:true, eic.step3:true, eic.step4:false, eic.step34:true, eic.reached_step5:true, eic.self_employed:false, eic.show_wsb4b:false, eic.show_wsb6:false, eic.wsb_6:positive, eic.earned_for_limit#0, eic.step5_income:true, eic.eligible:true, eic.line1#0, eic.line1_in_table:true, eic.line1_table#1, eic.line2#0, eic.show3:true, eic.line4:false, eic.threshold_other#1, eic.threshold_joint#1, eic.line5_threshold#2, eic.line5_blank:false, eic.show5:true, eic.line5#1, eic.smaller:right, eic.after_line4#1, eic.line6#1, eic.credit#0, eic.reached_step3:true, eic.check_27c:false, eic.wsb_4b_positive:true, eic.wsb_line5_stop:false, eic.separated_box:true, eic.clergy:false
 
 ### classm.eic.8 — (Step 5, 1) — Enter the amount from Form 1040 or 1040-SR, line 1z
 Status: **AGREE**
@@ -678,7 +672,7 @@ Value: $25,118.00
 Status: **SKIPPED**
 
 Model: blank
-Work: Skipped; Worksheet B not used because Step 5 Q2 is No
+Work: Worksheet B not used; Step 5 Q2 = no
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -686,7 +680,7 @@ No numeric assertion or class M credit: the model left this line blank.
 Status: **SKIPPED**
 
 Model: blank
-Work: Skipped; Worksheet B not used because Step 5 Q2 is No
+Work: Worksheet B not used; Step 5 Q2 = no
 
 No numeric assertion or class M credit: the model left this line blank.
 
@@ -731,16 +725,16 @@ lines:
     work: "Form 1040 line 1z = 32,936.00"
   - printed: "line (Step 5, 2)"
     value: "0.00"
-    work: "Medicaid waiver payments excluded = 0"
+    work: "Medicaid waiver payments excluded = 0.00"
   - printed: "line (Step 5, 3)"
     value: "32936.00"
     work: "32,936.00 - 0.00 = 32,936.00"
   - printed: "line (Step 5, 4)"
     value: "0.00"
-    work: "No nontaxable combat pay election"
+    work: "Nontaxable combat pay elected = 0.00"
   - printed: "line (Step 5, 5)"
     value: "32936.00"
-    work: "32,936.00 + 0.00 = 32,936.00"
+    work: "32,936.00 + 0.00 = 32,936.00 earned income"
   - printed: "line 4b"
     value: ""
     work: "Worksheet B not used because Step 5 Q2 is No"
@@ -749,10 +743,10 @@ lines:
     work: "Worksheet B not used because Step 5 Q2 is No"
   - printed: "line 1"
     value: "32936.00"
-    work: "Earned income from Step 5 = 32,936.00"
+    work: "Earned income from Step 5, line 5 = 32,936.00"
   - printed: "line 2"
     value: "2798.00"
-    work: "EIC Table row 32,900-32,950, HOH, 1 child = 2,798"
+    work: "EIC table: HOH, 1 qualifying child, amount 32,936 is in 32,900-32,950 row"
   - printed: "line 3"
     value: "32936.00"
     work: "Form 1040 line 11b = 32,936.00"
@@ -761,10 +755,10 @@ lines:
     work: "Line 3 32,936.00 equals line 1 32,936.00"
   - printed: "line 5"
     value: ""
-    work: "Skipped because line 4 is Yes"
+    work: "Skipped because line 4 is Yes; use line 2 amount on line 6"
   - printed: "line 6 (eic.line6)"
     value: "2798.00"
-    work: "Line 4 Yes: enter line 2 amount = 2,798.00"
+    work: "Line 4 is Yes; enter line 2 credit = 2,798.00"
 ```
 
 ### classm.eic.2
@@ -772,44 +766,44 @@ lines:
 ```yaml
 lines:
   - printed: "line (Step 5, 1)"
-    value: ""
-    work: "Stopped at Step 1: AGI $65,538.15 exceeds the no-child threshold and all applicable child thresholds for MFS."
+    value: "31939.00"
+    work: "Form 1040 line 1z = 31,939.00"
   - printed: "line (Step 5, 2)"
-    value: ""
-    work: "Step 5 not reached because Step 1 STOP disallows the EIC."
+    value: "0.00"
+    work: "Medicaid waiver payments excluded = 0"
   - printed: "line (Step 5, 3)"
-    value: ""
-    work: "Step 5 not reached because Step 1 STOP disallows the EIC."
+    value: "31939.00"
+    work: "31,939.00 - 0.00 = 31,939.00"
   - printed: "line (Step 5, 4)"
-    value: ""
-    work: "Step 5 not reached because Step 1 STOP disallows the EIC."
+    value: "0.00"
+    work: "Nontaxable combat pay elected = 0"
   - printed: "line (Step 5, 5)"
-    value: ""
-    work: "Step 5 not reached because Step 1 STOP disallows the EIC."
+    value: "31939.00"
+    work: "31,939.00 + 0.00 = 31,939.00"
   - printed: "line 4b"
-    value: ""
-    work: "Worksheet B not reached because the EIC is disallowed at Step 1."
+    value: "-17247.85"
+    work: "Parts 1/2 total -49,186.85 + Part 3 0 + Step 5 31,939.00 = -17,247.85"
   - printed: "line 6 (eic.wsb_6)"
-    value: ""
-    work: "Worksheet B not reached because the EIC is disallowed at Step 1."
+    value: "0.00"
+    work: "Line 4b is zero or less, so enter zero"
   - printed: "line 1"
-    value: ""
-    work: "Worksheet A not reached because the EIC is disallowed at Step 1."
+    value: "0.00"
+    work: "Using Worksheet B, line 6 = 0.00"
   - printed: "line 2"
-    value: ""
-    work: "Worksheet A not reached because the EIC is disallowed at Step 1."
+    value: "0.00"
+    work: "EIC Table lookup for 0.00 in MFS/no-child column = 0"
   - printed: "line 3"
     value: ""
-    work: "Worksheet A not reached because the EIC is disallowed at Step 1."
+    work: "STOP at line 2 because line 2 is zero"
   - printed: "line 4"
     value: ""
-    work: "Worksheet A not reached because the EIC is disallowed at Step 1."
+    work: "STOP at line 2 because line 2 is zero"
   - printed: "line 5"
     value: ""
-    work: "Worksheet A not reached because the EIC is disallowed at Step 1."
+    work: "STOP at line 2 because line 2 is zero"
   - printed: "line 6 (eic.line6)"
     value: ""
-    work: "No earned income credit allowed after Step 1 STOP."
+    work: "STOP at line 2 because line 2 is zero"
 ```
 
 ### classm.eic.3
@@ -821,28 +815,28 @@ lines:
     work: "Form 1040 line 1z = 13,709.00"
   - printed: "line (Step 5, 2)"
     value: "0.00"
-    work: "Medicaid waiver payments = 0.00"
+    work: "Medicaid waiver payments excluded = 0.00"
   - printed: "line (Step 5, 3)"
     value: "13709.00"
     work: "13,709.00 - 0.00 = 13,709.00"
   - printed: "line (Step 5, 4)"
     value: "0.00"
-    work: "Nontaxable combat pay elected = 0.00"
+    work: "No nontaxable combat pay elected = 0.00"
   - printed: "line (Step 5, 5)"
     value: "13709.00"
     work: "13,709.00 + 0.00 = 13,709.00"
   - printed: "line 4b"
     value: "12259.68"
-    work: "Worksheet B Parts 1&2 -1,449.32 + line 4a 13,709.00 = 12,259.68"
+    work: "0 + (-1,449.32) + 0 + 13,709.00 = 12,259.68"
   - printed: "line 6 (eic.wsb_6)"
     value: "12259.68"
-    work: "Line 4b is positive: 12,259.68"
+    work: "Line 4b is positive, so enter 12,259.68"
   - printed: "line 1"
     value: "12259.68"
     work: "Use Worksheet B line 6 = 12,259.68"
   - printed: "line 2"
     value: "4910.00"
-    work: "EIC Table: 12,250 to <12,300; single, 2 valid-SSN children = 4,910.00"
+    work: "EIC Table row 12,250 to less than 12,300, single, 2 children = 4,910"
   - printed: "line 3"
     value: "12259.68"
     work: "Form 1040 line 11b = 12,259.68"
@@ -851,10 +845,10 @@ lines:
     work: "12,259.68 equals 12,259.68"
   - printed: "line 5"
     value: ""
-    work: "Skipped because line 4 is yes"
+    work: "Skipped because line 4 is Yes"
   - printed: "line 6 (eic.line6)"
     value: "4910.00"
-    work: "Line 4 yes: enter line 2 amount = 4,910.00"
+    work: "Line 4 Yes: enter line 2 amount = 4,910.00"
 ```
 
 ### classm.eic.4
@@ -863,88 +857,88 @@ lines:
 lines:
   - printed: "line (Step 5, 1)"
     value: "5137.00"
-    work: "Form 1040 line 1z = 5,137.00"
+    work: "Form 1040 line 1z = $5,137.00"
   - printed: "line (Step 5, 2)"
     value: "0.00"
-    work: "Medicaid waiver payments excluded = 0"
+    work: "Medicaid waiver payments = $0.00 per tool"
   - printed: "line (Step 5, 3)"
     value: "5137.00"
-    work: "5,137.00 - 0.00 = 5,137.00"
+    work: "line 1 - line 2 = 5,137.00 - 0.00"
   - printed: "line (Step 5, 4)"
     value: "0.00"
-    work: "Nontaxable combat pay elected = 0"
+    work: "Nontaxable combat pay election = $0.00 per tool"
   - printed: "line (Step 5, 5)"
     value: "5137.00"
-    work: "5,137.00 + 0.00 = 5,137.00"
+    work: "line 3 + line 4 = 5,137.00 + 0.00"
   - printed: "line 4b"
     value: ""
-    work: "Worksheet B not used; no self-employment, so skipped"
+    work: "Worksheet B not used; Step 5 Q2 = No"
   - printed: "line 6 (eic.wsb_6)"
     value: ""
-    work: "Worksheet B not used; skipped"
+    work: "Worksheet B not used; Step 5 Q2 = No"
   - printed: "line 1"
     value: "5137.00"
-    work: "Use Step 5 line 5 earned income = 5,137.00"
+    work: "Worksheet A line 1 = Step 5 earned income"
   - printed: "line 2"
     value: "1743.00"
-    work: "EIC Table 5,100-5,150, QSS, 1 child = 1,743"
+    work: "EIC Table, QSS/1 child, $5,137 in $5,100-$5,150 row"
   - printed: "line 3"
     value: "16019.00"
-    work: "Form 1040 line 11b = 16,019.00"
+    work: "Form 1040 line 11b = $16,019.00"
   - printed: "line 4"
     value: "no"
-    work: "16,019.00 is not equal to 5,137.00"
+    work: "line 3 $16,019.00 does not equal line 1 $5,137.00"
   - printed: "line 5"
     value: ""
-    work: "1+ child and 16,019.00 < 23,350.00: leave line 5 blank"
+    work: "1+ qualifying child and line 3 $16,019.00 < $23,350; leave blank"
   - printed: "line 6 (eic.line6)"
     value: "1743.00"
-    work: "Line 4 No; line 3 below threshold, so enter line 2 amount"
+    work: "enter line 2 amount because line 5 is blank"
 ```
 
 ### classm.eic.5
 
 ```yaml
 lines:
-  - printed: "line (Step 5, 1)"
-    value: ""
-    work: "Step 1 Q2 No (no valid EIC SSN); STOP, cannot take credit."
-  - printed: "line (Step 5, 2)"
-    value: ""
-    work: "Step 1 Q2 No (no valid EIC SSN); STOP, cannot take credit."
-  - printed: "line (Step 5, 3)"
-    value: ""
-    work: "Step 1 Q2 No (no valid EIC SSN); STOP, cannot take credit."
-  - printed: "line (Step 5, 4)"
-    value: ""
-    work: "Step 1 Q2 No (no valid EIC SSN); STOP, cannot take credit."
-  - printed: "line (Step 5, 5)"
-    value: ""
-    work: "Step 1 Q2 No (no valid EIC SSN); STOP, cannot take credit."
-  - printed: "line 4b"
-    value: ""
-    work: "Step 1 Q2 No (no valid EIC SSN); STOP, cannot take credit."
-  - printed: "line 6 (eic.wsb_6)"
-    value: ""
-    work: "Step 1 Q2 No (no valid EIC SSN); STOP, cannot take credit."
-  - printed: "line 1"
-    value: ""
-    work: "Step 1 Q2 No (no valid EIC SSN); STOP, cannot take credit."
-  - printed: "line 2"
-    value: ""
-    work: "Step 1 Q2 No (no valid EIC SSN); STOP, cannot take credit."
-  - printed: "line 3"
-    value: ""
-    work: "Step 1 Q2 No (no valid EIC SSN); STOP, cannot take credit."
-  - printed: "line 4"
-    value: ""
-    work: "Step 1 Q2 No (no valid EIC SSN); STOP, cannot take credit."
-  - printed: "line 5"
-    value: ""
-    work: "Step 1 Q2 No (no valid EIC SSN); STOP, cannot take credit."
-  - printed: "line 6 (eic.line6)"
-    value: ""
-    work: "Step 1 Q2 No (no valid EIC SSN); STOP, cannot take credit."
+  - printed: "(Step 5, 1)"
+    value: "blank"
+    work: "Skipped: Step 1 Q2 is no (no valid EIC SSN), so STOP—cannot take the EIC."
+  - printed: "(Step 5, 2)"
+    value: "blank"
+    work: "Skipped: Step 1 Q2 is no (no valid EIC SSN), so STOP—cannot take the EIC."
+  - printed: "(Step 5, 3)"
+    value: "blank"
+    work: "Skipped: Step 1 Q2 is no (no valid EIC SSN), so STOP—cannot take the EIC."
+  - printed: "(Step 5, 4)"
+    value: "blank"
+    work: "Skipped: Step 1 Q2 is no (no valid EIC SSN), so STOP—cannot take the EIC."
+  - printed: "(Step 5, 5)"
+    value: "blank"
+    work: "Skipped: Step 1 Q2 is no (no valid EIC SSN), so STOP—cannot take the EIC."
+  - printed: "4b"
+    value: "blank"
+    work: "Skipped: Step 1 Q2 is no (no valid EIC SSN), so STOP—cannot take the EIC."
+  - printed: "6 (eic.wsb_6)"
+    value: "blank"
+    work: "Skipped: Step 1 Q2 is no (no valid EIC SSN), so STOP—cannot take the EIC."
+  - printed: "1"
+    value: "blank"
+    work: "Skipped: Step 1 Q2 is no (no valid EIC SSN), so STOP—cannot take the EIC."
+  - printed: "2"
+    value: "blank"
+    work: "Skipped: Step 1 Q2 is no (no valid EIC SSN), so STOP—cannot take the EIC."
+  - printed: "3"
+    value: "blank"
+    work: "Skipped: Step 1 Q2 is no (no valid EIC SSN), so STOP—cannot take the EIC."
+  - printed: "4"
+    value: "blank"
+    work: "Skipped: Step 1 Q2 is no (no valid EIC SSN), so STOP—cannot take the EIC."
+  - printed: "5"
+    value: "blank"
+    work: "Skipped: Step 1 Q2 is no (no valid EIC SSN), so STOP—cannot take the EIC."
+  - printed: "6 (eic.line6)"
+    value: "blank"
+    work: "Skipped: Step 1 Q2 is no (no valid EIC SSN), so STOP—cannot take the EIC."
 ```
 
 ### classm.eic.6
@@ -953,43 +947,43 @@ lines:
 lines:
   - printed: "line (Step 5, 1)"
     value: ""
-    work: "Skipped: Step 1 Q3 is yes (Form 2555), so the EIC stops and cannot be taken."
+    work: "Skipped: no EIC per Step 4 Q1 STOP (married HOH, no qualifying child)."
   - printed: "line (Step 5, 2)"
     value: ""
-    work: "Skipped: Step 1 Q3 is yes (Form 2555), so the EIC stops and cannot be taken."
+    work: "Skipped: no EIC per Step 4 Q1 STOP (married HOH, no qualifying child)."
   - printed: "line (Step 5, 3)"
     value: ""
-    work: "Skipped: Step 1 Q3 is yes (Form 2555), so the EIC stops and cannot be taken."
+    work: "Skipped: no EIC per Step 4 Q1 STOP (married HOH, no qualifying child)."
   - printed: "line (Step 5, 4)"
     value: ""
-    work: "Skipped: Step 1 Q3 is yes (Form 2555), so the EIC stops and cannot be taken."
+    work: "Skipped: no EIC per Step 4 Q1 STOP (married HOH, no qualifying child)."
   - printed: "line (Step 5, 5)"
     value: ""
-    work: "Skipped: Step 1 Q3 is yes (Form 2555), so the EIC stops and cannot be taken."
+    work: "Skipped: no EIC per Step 4 Q1 STOP (married HOH, no qualifying child)."
   - printed: "line 4b"
     value: ""
-    work: "Skipped: Step 1 Q3 is yes (Form 2555), so Worksheet B is not used."
+    work: "Worksheet B not used; no EIC per Step 4 Q1 STOP."
   - printed: "line 6 (eic.wsb_6)"
     value: ""
-    work: "Skipped: Step 1 Q3 is yes (Form 2555), so Worksheet B is not used."
+    work: "Worksheet B not used; no EIC per Step 4 Q1 STOP."
   - printed: "line 1"
     value: ""
-    work: "Skipped: Step 1 Q3 is yes (Form 2555), so Worksheet A is not used."
+    work: "Worksheet A not completed; no EIC per Step 4 Q1 STOP."
   - printed: "line 2"
     value: ""
-    work: "Skipped: Step 1 Q3 is yes (Form 2555), so Worksheet A is not used."
+    work: "Worksheet A not completed; no EIC per Step 4 Q1 STOP."
   - printed: "line 3"
     value: ""
-    work: "Skipped: Step 1 Q3 is yes (Form 2555), so Worksheet A is not used."
+    work: "Worksheet A not completed; no EIC per Step 4 Q1 STOP."
   - printed: "line 4"
     value: ""
-    work: "Skipped: Step 1 Q3 is yes (Form 2555), so Worksheet A is not used."
+    work: "Worksheet A not completed; no EIC per Step 4 Q1 STOP."
   - printed: "line 5"
     value: ""
-    work: "Skipped: Step 1 Q3 is yes (Form 2555), so Worksheet A is not used."
+    work: "Worksheet A not completed; no EIC per Step 4 Q1 STOP."
   - printed: "line 6 (eic.line6)"
     value: ""
-    work: "Skipped: Step 1 Q3 is yes (Form 2555), so no EIC is allowed."
+    work: "No EIC: Step 4 Q1 STOP; also main home not in U.S. more than half of 2025."
 ```
 
 ### classm.eic.7
@@ -997,44 +991,44 @@ lines:
 ```yaml
 lines:
   - printed: "line (Step 5, 1)"
-    value: "52948.00"
-    work: "Form 1040 line 1z = 52,948.00"
+    value: ""
+    work: "Step 1 stop: no qualifying child and AGI $50,354 is not less than $19,104; no EIC"
   - printed: "line (Step 5, 2)"
-    value: "0.00"
-    work: "Medicaid waiver payments excluded from income = 0.00"
+    value: ""
+    work: "Skipped: Step 1 stop; cannot take the credit"
   - printed: "line (Step 5, 3)"
-    value: "52948.00"
-    work: "52,948.00 - 0.00 = 52,948.00"
+    value: ""
+    work: "Skipped: Step 1 stop; cannot take the credit"
   - printed: "line (Step 5, 4)"
-    value: "0.00"
-    work: "No nontaxable combat pay elected = 0.00"
+    value: ""
+    work: "Skipped: Step 1 stop; cannot take the credit"
   - printed: "line (Step 5, 5)"
-    value: "52948.00"
-    work: "52,948.00 + 0.00 = 52,948.00"
+    value: ""
+    work: "Skipped: Step 1 stop; cannot take the credit"
   - printed: "line 4b"
     value: ""
-    work: "Worksheet B not used; Step 5 Q2 = No"
+    work: "Skipped: Step 1 stop; Worksheet B not used"
   - printed: "line 6 (eic.wsb_6)"
     value: ""
-    work: "Worksheet B not used; skipped"
+    work: "Skipped: Step 1 stop; Worksheet B not used"
   - printed: "line 1"
-    value: "52948.00"
-    work: "Worksheet A uses Step 5 earned income = 52,948.00"
+    value: ""
+    work: "Skipped: Step 1 stop; Worksheet A not completed"
   - printed: "line 2"
-    value: "0.00"
-    work: "EIC table: single, 0 qualifying children, 52,948.00 = 0.00"
+    value: ""
+    work: "Skipped: Step 1 stop; Worksheet A not completed"
   - printed: "line 3"
     value: ""
-    work: "Skipped—Worksheet A line 2 is zero; STOP, no credit"
+    work: "Skipped: Step 1 stop; Worksheet A not completed"
   - printed: "line 4"
     value: ""
-    work: "Skipped after STOP at Worksheet A line 2"
+    work: "Skipped: Step 1 stop; Worksheet A not completed"
   - printed: "line 5"
     value: ""
-    work: "Skipped after STOP at Worksheet A line 2"
+    work: "Skipped: Step 1 stop; Worksheet A not completed"
   - printed: "line 6 (eic.line6)"
     value: ""
-    work: "No earned income credit; STOP at Worksheet A line 2"
+    work: "Skipped: Step 1 stop; no earned income credit"
 ```
 
 ### classm.eic.8
@@ -1043,41 +1037,41 @@ lines:
 lines:
   - printed: "line (Step 5, 1)"
     value: "25118.00"
-    work: "Form 1040 line 1z"
+    work: "Form 1040 line 1z = 25,118.00"
   - printed: "line (Step 5, 2)"
     value: "0.00"
-    work: "No Medicaid waiver payments excluded"
+    work: "Medicaid waiver payments = 0.00"
   - printed: "line (Step 5, 3)"
     value: "25118.00"
-    work: "25,118 - 0"
+    work: "25,118.00 - 0.00 = 25,118.00"
   - printed: "line (Step 5, 4)"
     value: "0.00"
-    work: "No nontaxable combat pay elected"
+    work: "Nontaxable combat pay election = 0.00"
   - printed: "line (Step 5, 5)"
     value: "25118.00"
-    work: "25,118 + 0 = earned income"
+    work: "25,118.00 + 0.00 = 25,118.00"
   - printed: "line 4b"
     value: ""
-    work: "Skipped; Worksheet B not used because Step 5 Q2 is No"
+    work: "Worksheet B not used; Step 5 Q2 = no"
   - printed: "line 6 (eic.wsb_6)"
     value: ""
-    work: "Skipped; Worksheet B not used because Step 5 Q2 is No"
+    work: "Worksheet B not used; Step 5 Q2 = no"
   - printed: "line 1"
     value: "25118.00"
-    work: "Use Step 5 earned income"
+    work: "Use Step 5 line 5 = 25,118.00"
   - printed: "line 2"
     value: "4044.00"
-    work: "EIC Table: 25,118; MFS uses single column, 1 child"
+    work: "EIC table: 25,100-<25,150, MFS qualifying, 1 child = 4,044"
   - printed: "line 3"
     value: "23618.00"
-    work: "Form 1040 line 11b"
+    work: "Form 1040 line 11b = 23,618.00"
   - printed: "line 4"
     value: "no"
-    work: "23,618 is not equal to 25,118"
+    work: "23,618.00 is not equal to 25,118.00"
   - printed: "line 5"
     value: "4284.00"
-    work: "23,618 not less than 23,350; table row 23,600-23,650, 1 child"
+    work: "23,618 is in 23,600-<23,650, MFS qualifying, 1 child = 4,284"
   - printed: "line 6 (eic.line6)"
     value: "4044.00"
-    work: "Smaller of line 5 4,284 and line 2 4,044"
+    work: "smaller of line 5 4,284.00 and line 2 4,044.00 = 4,044.00"
 ```

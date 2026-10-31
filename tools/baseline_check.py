@@ -4,7 +4,7 @@
 A check produces findings {"kind", "line", "form", "detail"}. A finding is accepted by a ruling
 (`rulings`: key -> reason) or by the baseline of findings that existed when the check was introduced
 (`baseline`: key -> hash of the finding's subject). The subject is the form's canonical data unless the finding
-names a narrower one (`subject`, e.g. one sentence or one input-and-section pair). A baseline entry holds only while
+names a narrower one (`subject`: the line itself for line findings, one sentence, or one input-and-section pair). A baseline entry holds only while
 its subject is unchanged, so the baseline is worked off as each subject is next changed; it may only shrink, and an
 entry or ruling that no longer fails is an error.
 """
@@ -28,6 +28,11 @@ def form_hashes(forms):
 
 def key(f):
     return f"{f['kind']}:{f['line']}"
+
+
+def line_subject(line):
+    """A line's own canonical data: a finding about one line comes due when that line changes (owner's decision 2026-10-30)."""
+    return json.dumps(line, sort_keys=True)
 
 
 def subject_hash(f, hashes):
@@ -60,7 +65,10 @@ def run(name, forms, found, rulings_path, report_path, title, legend, rebaseline
             "| Kind | Line | Detail | Status |", "| --- | --- | --- | --- |"]
     for k in sorted(current):
         f = current[k]
-        status = f"ruled: {rulings[k]}" if k in rulings else ("baseline" if k in baseline else "**new**")
+        r = rulings.get(k)
+        if isinstance(r, dict):  # a structured ruling: its class or verdict, then its reason
+            r = "; ".join(str(r[x]) for x in ("class", "verdict", "reason", "evidence", "refusal", "bug", "line", "gate") if r.get(x))
+        status = f"ruled: {r}" if k in rulings else ("baseline" if k in baseline else "**new**")
         rows.append(f"| {f['kind']} | `{f['line']}` | {f['detail']} | {status} |")
     report_path.write_text("\n".join(rows) + "\n", encoding="utf-8")
 

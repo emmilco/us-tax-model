@@ -4,18 +4,24 @@ Second transcription of `State and Local Income Tax Refund Worksheet—Schedule 
 
 | field | value |
 | --- | --- |
-| date | 2026-10-23 |
+| date | 2026-10-30 |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
-| prompt sha256 | 2c06ed661628b2815c3f5430bbfff5658f6e3e91312848849cb0cf0b5a9d786b |
+| prompt sha256 | ec284b7b6e500a6af34dfa28e0c6586edf38a274d00591245eb3d28ca72750c6 |
 | prompt policy | source-only-computation-v2 |
+| comparison policy | checked-expression-types-v2 |
+| input context policy | required-review-interfaces-v2 |
+| complete input context | pass |
+| required input context sha256 | 69df1010e4e816288a5a5b432d1e05ff1cb4465198994712e0fd778c0d38e0e1 |
+| type validation policy | project-expression-types-v3 |
+| model type validation | pass |
 | system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
 | reasoning effort | provider default |
 | output token budget | 65536 |
 | interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
-| subject sha256 | 19b64f2343c301d334f12697341c4e987cb0338554757fa20f2d9aea79795acc |
+| subject sha256 | fa2340bf10b343c4d737d5266a44774128963c71af1a288bb6c011108890e372 |
 | printed lines compared | 11 |
-| agree / disagree / missing | 3 / 8 / 0 |
+| agree / disagree / missing | 6 / 5 / 0 |
 | extra printed lines in second | none |
 
 ## Source pages given to the model
@@ -44,9 +50,7 @@ Second:
 {"args": [{"const": 0}, {"line": "9"}], "test": "lt"}
 ```
 
-Second transcription's note: The IRS worksheet does not print a separate yes/no result; I encode has as true exactly when the taxable part on line 9 is greater than zero.
-
-Ruling: model error; i1040gi p. 88, Line 1: "If you received a refund, credit, or offset of state or local income taxes in 2025, you may be required to report this amount." refund.has is whether a refund was received (the project tests refund.received > 0, which s1.line1 uses to decide whether to ask anything else); the candidate redefines it as line 9 > 0 and so reads the itemizing questions on every return. Triage executable-triage-v1 (triage/refund.deepseek.json; 1,083 fixtures, 500 generated returns, 295 partial records over 17 bases): 870 of 1,878 comparisons agree. The 981 candidate-unknown records are returns with no refund (classm.f2441.1.deepseek: refund.received $0, project false) on which the candidate requires refund.itemized, which the text does not need. The 6 value differences (stage16.refund.f1, f2, f4, f7, stage16.cleanup.refuse.sa_charity.simultaneous, sa_excluded.simultaneous: a $1,000 refund with refund.itemized false, project true, candidate false) leave Schedule 1 line 1 at zero on both sides, but the candidate then never asks the box 8 and other-year questions the project asks of every refund (amb.2025.refund_exceptions). The 17 project-unknown records withhold refund.received, which the source needs. The 4 candidate-refuses records (stage16.refuse.refund.exc_tax, exc_who, box8, not_2024) are refused by the project on refund.taxable or line 1 under the same gates. Project stands.
+Ruling: model error; i1040gi p. 88, Line 1: "If you received a refund, credit, or offset of state or local income taxes in 2025, you may be required to report this amount". refund.has is whether a refund was received (refund.received more than zero, which s1.line1 uses to decide whether to read anything else); the candidate redefines it as line 9 more than zero. executable-triage-v2 (`reviews/2025/transcription/triage/refund.deepseek.json`; 1,382 fixtures, 500 generated returns seed 20261026, 445 partial records from 40 bases; 2,327 comparisons; every witness enumerated by an uncapped scratch rerun of tools/transcription/triage.mjs, the record keeps 6 per kind): 1,034 of 2,327 agree; 1,256 candidate-unknown (558 completed), 6 value (4 completed), 4 candidate-refuses, 27 project-unknown (none completed). Completed value, all enumerated: stage16.refund.f1 (no itemizing), f2 (sales-tax election), f4 and f7 (worksheet gives zero): project true, candidate false; Schedule 1 line 1 is $0.00 on both sides. Completed candidate-unknown: 476 no-refund fixtures (for example classm.f2441.1.deepseek) and 80 no-refund partial records on which the candidate needs refund.box8 or another exception gate, since its line 9 declares all four, answers the text does not need without a refund; and stage16.mut.refund_single_unasked and stage16.mut.refund_line3_stop, which need refund.mfs_spouse_itemized through line 8 (see lines 8 and 9). The 2 refused value records (stage16.cleanup.refuse.sa_charity.simultaneous, sa_excluded.simultaneous) are the same mechanism. The 4 candidate-refuses (stage16.refuse.refund.exc_tax, exc_who, box8, not_2024) are refused by the project on refund.taxable or line 1 under the same gates; the project-unknown records withhold refund.received, which the source needs. Project stands.
 
 ### refund.taxable — Taxable part of your refund (zero when you did not itemize for 2024 or deducted general sa
 Status: **DISAGREE**
@@ -63,65 +67,19 @@ Second:
 {"line": "9"}
 ```
 
-Ruling: model error; f1099g p. 5, Instructions for Recipient: "Box 8. If this box is checked, the amount in box 2 is attributable to an income tax that applies exclusively to income from a trade or business" and "If taxable, report the amount in box 2 on Schedule C or F (Form 1040), as appropriate"; i1040gi p. 88, TIP: "None of your refund is taxable if, in the year you paid the tax, you either (a) didn't itemize deductions". Neither the box 8 rule nor a refund for a year other than 2024 depends on 2024 itemizing, and the project asks both of every refund (amb.2025.refund_exceptions, chosen reading); the candidate copies its line 9, which puts all four exception gates on line 1 behind the 2024 itemizing test, so it gives zero without asking them. Triage executable-triage-v1 (triage/refund.deepseek.json; 1,083 fixtures, 500 generated returns, 295 partial records over 17 bases): 1,841 of 1,878 agree. The 34 project-unknown records (17 bases each withholding refund.box8 or refund.not_2024, e.g. classm.f8889.2.deepseek with refund.itemized false: project unknown, candidate $0.00) are that omission. The 2 candidate-unknown records are inherited from lines 6 and 9: stage16.mut.refund_single_unasked (single filer, project $1,400.00, candidate needs refund.spouse_born) and stage16.mut.refund_line3_stop (project $0.00 at the line 3 STOP, candidate needs refund.status). The 1 project-refuses record (stage16.refuse.refund.line5e_bad, candidate $3,000.00) is the cited impossible-entry screen refund.line5e_bad (i1040sca p. 7, Line 5e, "enter the smaller of line 5d or $40,000"), scope. Project stands.
+Ruling: model error and scope; inherited from lines 8 and 9. i1040gi p. 88, Line 1, TIP: "None of your refund is taxable if, in the year you paid the tax, you either (a) didn’t itemize deductions, or (b) elected to deduct state and local general sales taxes"; i1040gi p. 90, worksheet line 3: "Is the amount on line 1 more than the amount on line 2? No. STOP None of your refund is taxable.". executable-triage-v2 (`reviews/2025/transcription/triage/refund.deepseek.json`; 1,382 fixtures, 500 generated returns seed 20261026, 445 partial records from 40 bases; 2,327 comparisons; every witness enumerated by an uncapped scratch rerun of tools/transcription/triage.mjs, the record keeps 6 per kind): 2,270 of 2,327 agree; 56 candidate-unknown (34 completed), 1 project-refuses. The candidate copies its line 9, which now declares all four exception gates itself, so box 8 and refund.not_2024 are asked of every refund (the earlier omission is gone); by reading it also asks exc_tax and exc_who of a filer who did not itemize, where the project asks them only on the worksheet path (line 1), answers the text does not need (no sampled refund return reaches it: the bank's partial bases have no refund). Completed candidate-unknown, all enumerated: 32 no-refund partial records withholding refund.exc_tax or refund.exc_who (project $0.00; s1.line1 reads refund.taxable only when refund.has (refund.received more than zero) is true (forms/2025/s1.yaml), and every partial base of the bank has no refund (refund.has false)); stage16.mut.refund_single_unasked (single 2024 filer, project $1,400.00) and stage16.mut.refund_line3_stop (project $0.00 at the line 3 STOP), on which the candidate needs refund.mfs_spouse_itemized: model error (lines 8 and 9). The project-refuses record (stage16.refuse.refund.line5e_bad, candidate $3,000.00) is the cited impossible-entry screen refund.line5e_bad (i1040sca p. 7, Line 5e, "enter the smaller of line 5d or $40,000"): scope. Project stands.
 
 ### 1 — Enter the income tax refund from Form(s) 1099-G (or similar statement). But don’t enter mo
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"of": [{"input": "refund.line5d_2024"}, {"input": "refund.received"}], "op": "smaller_of"}
-```
-
-Second:
-
-```json
-{"alternatives": [{"guard": {"args": [{"args": [{"const": true}, {"input": "refund.itemized"}], "test": "eq"}, {"args": [{"const": true}, {"input": "refund.sales"}], "test": "ne"}], "test": "all"}, "then": {"of": [{"input": "refund.line5d_2024"}, {"input": "refund.received"}], "op": "smaller_of"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "refund.sales"}], "test": "eq"}, {"args": [{"const": true}, {"input": "refund.itemized"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
-```
-
-Second transcription's note: The IRS says none of the refund is taxable if you did not itemize or elected general sales taxes; I set line 1 to zero in those cases so that line 9 is zero.
-
-Ruling: representation; i1040gi p. 90, worksheet line 1: "Enter the income tax refund from Form(s) 1099-G (or similar statement). But don't enter more than the amount of your state and local income taxes shown on your 2024 Schedule A, line 5d"; p. 88: the worksheet is used "If the refund was for a tax you paid in 2024 and you deducted state and local income taxes on your 2024 Schedule A". Where the worksheet is used (itemized, no sales-tax election) the candidate takes the same smaller of refund.received and line 5d; it enters zero otherwise, where the project's refund.taxable never reads line 1. Triage executable-triage-v1 (triage/refund.deepseek.json; 1,083 fixtures, 500 generated returns, 295 partial records over 17 bases): 1,791 of 1,878 agree. The 34 project-unknown records (17 bases withholding refund.received or refund.line5d_2024) and the 51 candidate-unknown records (withholding refund.itemized, refund.box8 or refund.not_2024) are partial records on which the candidate yields $0.00, so its eligibility test is false there and the worksheet is not reached; in the interview refund.itemized, box 8 and not_2024 are answered on refund.taxable before line 1 is read. The 2 candidate-refuses records (stage16.refuse.refund.box8, not_2024; project line 1 $3,000.00) are returns the project refuses on refund.taxable under the same gates, scope. No printed amount differs.
+Status: **AGREE**
 
 ### 2 — Subtract the amount on your 2024 Schedule A, line 5e, from the amount of state and local i
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"from": {"input": "refund.line5d_2024"}, "op": "subtract_floor0", "take": {"input": "refund.line5e_2024"}}
-```
-
-Second:
-
-```json
-{"alternatives": [{"guard": {"args": [{"args": [{"const": true}, {"input": "refund.itemized"}], "test": "eq"}, {"args": [{"const": true}, {"input": "refund.sales"}], "test": "ne"}], "test": "all"}, "then": {"from": {"input": "refund.line5d_2024"}, "op": "subtract_floor0", "take": {"input": "refund.line5e_2024"}}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "refund.sales"}], "test": "eq"}, {"args": [{"const": true}, {"input": "refund.itemized"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
-```
-
-Ruling: representation; i1040gi p. 90, worksheet line 2: "Is the amount ... paid in 2024 (generally, this is the amount reported on your 2024 Schedule A, line 5d) more than the amount on your 2024 Schedule A, line 5e? No. Enter the amount from line 1 on line 3 and go to line 4. Yes. Subtract the amount on your 2024 Schedule A, line 5e". Both take line 5d less line 5e floored at zero where the worksheet is used; the candidate enters zero where it is not. Triage executable-triage-v1 (triage/refund.deepseek.json; 1,083 fixtures, 500 generated returns, 295 partial records over 17 bases): 1,826 of 1,878 agree. The 34 project-unknown (withholding refund.line5d_2024 or refund.line5e_2024) and 17 candidate-unknown (withholding refund.itemized) records are partial records off the worksheet path (candidate $0.00 from its false eligibility test). The 1 project-refuses record (stage16.refuse.refund.line5e_bad, candidate $0.00) is the cited impossible-entry screen (i1040sca p. 7, Line 5e, "enter the smaller of line 5d or $40,000"), scope. Project stands.
+Status: **AGREE**
 
 ### 3 — Subtract line 2 from line 1
 Status: **AGREE**
 
 ### 4 — Enter your total itemized deductions from your 2024 Schedule A, line 17
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"input": "refund.line17_2024"}
-```
-
-Second:
-
-```json
-{"alternatives": [{"guard": {"args": [{"const": true}, {"input": "refund.itemized"}], "test": "eq"}, "then": {"input": "refund.line17_2024"}}, {"guard": {"args": [{"const": true}, {"input": "refund.itemized"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}
-```
-
-Second transcription's note: If there were no 2024 itemized deductions, line 4 is set to zero because the worksheet is not used.
-
-Ruling: representation; i1040gi p. 90, worksheet line 4: "Enter your total itemized deductions from your 2024 Schedule A, line 17." Both enter refund.line17_2024 when 2024 deductions were itemized; the candidate enters zero otherwise, where the worksheet is not used and the project's line 4 is not reached. Triage executable-triage-v1 (triage/refund.deepseek.json; 1,083 fixtures, 500 generated returns, 295 partial records over 17 bases): 1,844 of 1,878 agree; the 17 candidate-unknown records withhold refund.itemized and the 17 project-unknown records withhold refund.line17_2024 on bases where the candidate gives $0.00 (not itemized), all partial records off the worksheet path. Project stands.
+Status: **AGREE**
 
 ### 5 — Enter the amount shown below for the filing status claimed on your 2024 Form 1040 or 1040-
 Status: **AGREE**
@@ -138,15 +96,15 @@ Project:
 Second:
 
 ```json
-{"of": [{"alternatives": [{"guard": {"args": [{"const": true}, {"input": "refund.spouse_blind"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "hoh"}, {"input": "refund.status"}], "test": "eq"}, {"args": [{"const": "single"}, {"input": "refund.status"}], "test": "eq"}], "test": "any"}, "then": {"param": "refund.box_unmarried"}}, {"guard": {"args": [{"args": [{"const": "mfj"}, {"input": "refund.status"}], "test": "eq"}, {"args": [{"const": "mfs"}, {"input": "refund.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"input": "refund.status"}], "test": "eq"}], "test": "any"}, "then": {"param": "refund.box_married"}}], "op": "choose"}}, {"guard": {"args": [{"const": true}, {"input": "refund.spouse_blind"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}, {"alternatives": [{"guard": {"args": [{"const": true}, {"input": "refund.spouse_born"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "hoh"}, {"input": "refund.status"}], "test": "eq"}, {"args": [{"const": "single"}, {"input": "refund.status"}], "test": "eq"}], "test": "any"}, "then": {"param": "refund.box_unmarried"}}, {"guard": {"args": [{"args": [{"const": "mfj"}, {"input": "refund.status"}], "test": "eq"}, {"args": [{"const": "mfs"}, {"input": "refund.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"input": "refund.status"}], "test": "eq"}], "test": "any"}, "then": {"param": "refund.box_married"}}], "op": "choose"}}, {"guard": {"args": [{"const": true}, {"input": "refund.spouse_born"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}, {"alternatives": [{"guard": {"args": [{"const": true}, {"input": "refund.you_blind"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "hoh"}, {"input": "refund.status"}], "test": "eq"}, {"args": [{"const": "single"}, {"input": "refund.status"}], "test": "eq"}], "test": "any"}, "then": {"param": "refund.box_unmarried"}}, {"guard": {"args": [{"args": [{"const": "mfj"}, {"input": "refund.status"}], "test": "eq"}, {"args": [{"const": "mfs"}, {"input": "refund.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"input": "refund.status"}], "test": "eq"}], "test": "any"}, "then": {"param": "refund.box_married"}}], "op": "choose"}}, {"guard": {"args": [{"const": true}, {"input": "refund.you_blind"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}, {"alternatives": [{"guard": {"args": [{"const": true}, {"input": "refund.you_born"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "hoh"}, {"input": "refund.status"}], "test": "eq"}, {"args": [{"const": "single"}, {"input": "refund.status"}], "test": "eq"}], "test": "any"}, "then": {"param": "refund.box_unmarried"}}, {"guard": {"args": [{"args": [{"const": "mfj"}, {"input": "refund.status"}], "test": "eq"}, {"args": [{"const": "mfs"}, {"input": "refund.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"input": "refund.status"}], "test": "eq"}], "test": "any"}, "then": {"param": "refund.box_married"}}], "op": "choose"}}, {"guard": {"args": [{"const": true}, {"input": "refund.you_born"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}], "op": "sum"}
+{"of": [{"alternatives": [{"guard": {"args": [{"const": false}, {"input": "refund.spouse_blind"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": true}, {"input": "refund.spouse_blind"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "hoh"}, {"input": "refund.status"}], "test": "eq"}, {"args": [{"const": "single"}, {"input": "refund.status"}], "test": "eq"}], "test": "any"}, "then": {"param": "refund.box_unmarried"}}, {"guard": {"args": [{"args": [{"const": "mfj"}, {"input": "refund.status"}], "test": "eq"}, {"args": [{"const": "mfs"}, {"input": "refund.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"input": "refund.status"}], "test": "eq"}], "test": "any"}, "then": {"param": "refund.box_married"}}], "op": "choose"}}], "op": "choose"}, {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "refund.spouse_born"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": true}, {"input": "refund.spouse_born"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "hoh"}, {"input": "refund.status"}], "test": "eq"}, {"args": [{"const": "single"}, {"input": "refund.status"}], "test": "eq"}], "test": "any"}, "then": {"param": "refund.box_unmarried"}}, {"guard": {"args": [{"args": [{"const": "mfj"}, {"input": "refund.status"}], "test": "eq"}, {"args": [{"const": "mfs"}, {"input": "refund.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"input": "refund.status"}], "test": "eq"}], "test": "any"}, "then": {"param": "refund.box_married"}}], "op": "choose"}}], "op": "choose"}, {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "refund.you_blind"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": true}, {"input": "refund.you_blind"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "hoh"}, {"input": "refund.status"}], "test": "eq"}, {"args": [{"const": "single"}, {"input": "refund.status"}], "test": "eq"}], "test": "any"}, "then": {"param": "refund.box_unmarried"}}, {"guard": {"args": [{"args": [{"const": "mfj"}, {"input": "refund.status"}], "test": "eq"}, {"args": [{"const": "mfs"}, {"input": "refund.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"input": "refund.status"}], "test": "eq"}], "test": "any"}, "then": {"param": "refund.box_married"}}], "op": "choose"}}], "op": "choose"}, {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "refund.you_born"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": true}, {"input": "refund.you_born"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "hoh"}, {"input": "refund.status"}], "test": "eq"}, {"args": [{"const": "single"}, {"input": "refund.status"}], "test": "eq"}], "test": "any"}, "then": {"param": "refund.box_unmarried"}}, {"guard": {"args": [{"args": [{"const": "mfj"}, {"input": "refund.status"}], "test": "eq"}, {"args": [{"const": "mfs"}, {"input": "refund.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"input": "refund.status"}], "test": "eq"}], "test": "any"}, "then": {"param": "refund.box_married"}}], "op": "choose"}}], "op": "choose"}], "op": "sum"}
 ```
 
-Ruling: model error; i1040gi p. 90, worksheet line 6: "Spouse was born before January 2, 1960. Spouse is blind." with "*If your filing status is married filing separately, you can check the boxes for your spouse only if your spouse had no income", and i1040gi p. 33, Line 12d (given to the reviewer): "Don't check any boxes for your spouse if your filing status is head of household". The project asks the spouse boxes only for a 2024 joint or separate return (amb.2025.refund_boxes_2024); the candidate asks refund.spouse_born and refund.spouse_blind of every filer, including single and head of household, answers the text does not need. Triage executable-triage-v1 (triage/refund.deepseek.json; 1,083 fixtures, 500 generated returns, 295 partial records over 17 bases): 1,826 of 1,878 agree. Of the 35 candidate-unknown records, stage16.mut.refund_single_unasked is a single filer (project $0.00, candidate needs refund.spouse_born) and the other 34 withhold a spouse question the project does not ask on that base. The 17 project-unknown records withhold refund.status where no box is checked; the project reads status for line 6 even then, but line 5 needs status whenever line 6 is used (lines 5 to 7 are skipped only for a 2024 separate return, itself a status answer), so this is not a reachable difference. Box amounts and status mapping otherwise agree. Project stands.
+Ruling: model error and scope; i1040gi p. 90, worksheet line 6: "Multiply the number of boxes checked by $1,550 ($1,950 if your 2024 filing status was single or head of household)" and footnote "*If your filing status is married filing separately, you can check the boxes for your spouse only if your spouse had no income, isn’t filing a return, and can’t be claimed as a dependent on another person’s return"; p. 33, Line 12d: "Don’t check any boxes for your spouse if your filing status is head of household". executable-triage-v2 (`reviews/2025/transcription/triage/refund.deepseek.json`; 1,382 fixtures, 500 generated returns seed 20261026, 445 partial records from 40 bases; 2,327 comparisons; every witness enumerated by an uncapped scratch rerun of tools/transcription/triage.mjs, the record keeps 6 per kind): 2,133 of 2,327 agree; 163 candidate-unknown (97 completed), 27 project-unknown (16 completed), 4 candidate-refuses. The candidate counts the spouse boxes for every 2024 filing status (a single or head of household filer answering yes would add $1,950 per spouse box), where the project asks them only for a joint or separate return (amb.2025.refund_boxes_2024); same reading as the archived ruling. Completed candidate-unknown, all enumerated: stage16.mut.refund_single_unasked (single filer, project $0.00, candidate needs refund.spouse_born) and 96 no-refund partial records withholding a spouse box question the project does not ask on that base or one of the four exception gates the candidate declares on line 6. The 16 completed project-unknown withhold refund.status where no box is checked; line 5 needs the status whenever line 6 is used, so not reachable. The candidate-refuses (stage16.refuse.refund.exc_tax, exc_who, box8, not_2024) are refused by the project on refund.taxable or line 1: scope. Box amounts otherwise agree. Project stands.
 
 ### 7 — Add lines 5 and 6
 Status: **AGREE**
 
-### 8 — Subtract line 7 from line 4 (if your 2024 filing status was married filing separately and 
+### 8 — Subtract line 7 from line 4 (if your 2024 filing status was married filing separately and
 Status: **DISAGREE**
 
 Project:
@@ -158,12 +116,12 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"const": "mfs"}, {"input": "refund.status"}], "test": "eq"}, {"args": [{"const": true}, {"input": "refund.mfs_spouse_itemized"}], "test": "eq"}], "test": "all"}, "then": {"line": "4"}}, {"guard": {"args": [{"args": [{"const": "mfs"}, {"input": "refund.status"}], "test": "ne"}, {"args": [{"const": true}, {"input": "refund.mfs_spouse_itemized"}], "test": "ne"}], "test": "any"}, "then": {"from": {"line": "4"}, "op": "subtract_floor0", "take": {"line": "7"}}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"const": false}, {"input": "refund.mfs_spouse_itemized"}], "test": "eq"}, "then": {"from": {"line": "4"}, "op": "subtract_floor0", "take": {"line": "7"}}}, {"guard": {"args": [{"const": true}, {"input": "refund.mfs_spouse_itemized"}], "test": "eq"}, "then": {"line": "4"}}], "op": "choose"}
 ```
 
-Second transcription's note: The worksheet's note for married filing separately when the spouse itemized deductions is implemented by copying line 4 to line 8 and bypassing lines 5 through 7.
+Second transcription's note: If the 2024 filing status was married filing separately and the spouse itemized, the worksheet says to skip lines 5 through 7 and enter line 4 on line 8; the true branch does that.
 
-Ruling: model error; i1040gi p. 90, Note: "If the filing status on your 2024 Form 1040 or 1040-SR was married filing separately and your spouse itemized deductions in 2024, skip lines 5 through 7, enter the amount from line 4 on line 8", and line 8: "Is the amount on line 7 less than the amount on line 4? No. STOP ... Yes. Subtract line 7 from line 4". The candidate's own line 8 logic (copy line 4 for a separate return with an itemizing spouse, else line 4 less line 7 floored) is equivalent to the project's; the differences are inherited. Triage executable-triage-v1 (triage/refund.deepseek.json; 1,083 fixtures, 500 generated returns, 295 partial records over 17 bases): 1,809 of 1,878 agree. Of the 52 candidate-unknown records, stage16.mut.refund_single_unasked (single filer, project $1,400.00) and 34 partial records need the spouse questions of line 6, the model error ruled there; 17 withhold refund.itemized (line 4 guard, off the worksheet path). The 17 project-unknown records withhold refund.line17_2024 on bases not using the worksheet (candidate $0.00). Project stands.
+Ruling: model error and scope; i1040gi p. 90, Note: "If the filing status on your 2024 Form 1040 or 1040-SR was married filing separately and your spouse itemized deductions in 2024, skip lines 5 through 7, enter the amount from line 4 on line 8". executable-triage-v2 (`reviews/2025/transcription/triage/refund.deepseek.json`; 1,382 fixtures, 500 generated returns seed 20261026, 445 partial records from 40 bases; 2,327 comparisons; every witness enumerated by an uncapped scratch rerun of tools/transcription/triage.mjs, the record keeps 6 per kind): 2,133 of 2,327 agree; 190 candidate-unknown (113 completed), 4 candidate-refuses. The candidate copies line 4 whenever refund.mfs_spouse_itemized is true without testing the 2024 status, so it asks every filer whether a spouse itemized (and a non-separate filer answering yes would skip lines 5 to 7); the Note applies only to a separate return. Completed candidate-unknown, all enumerated: stage16.mut.refund_single_unasked (single filer, project $1,400.00, candidate needs refund.mfs_spouse_itemized) and 112 no-refund partial records withholding refund.mfs_spouse_itemized, a spouse box question or an exception gate the candidate declares on line 8. The candidate-refuses (stage16.refuse.refund.exc_tax, exc_who, box8, not_2024; project $15,400.00) are refused by the project on refund.taxable or line 1: scope. Project stands.
 
 ### 9 — Taxable part of your refund. Enter the smaller of line 3 or line 8 here and on Schedule 1,
 Status: **DISAGREE**
@@ -177,12 +135,12 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"const": true}, {"input": "refund.itemized"}], "test": "eq"}, {"args": [{"const": true}, {"input": "refund.sales"}], "test": "ne"}], "test": "all"}, "then": {"of": [{"line": "3"}, {"line": "8"}], "op": "smaller_of"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "refund.sales"}], "test": "eq"}, {"args": [{"const": true}, {"input": "refund.itemized"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"args": [{"const": false}, {"input": "refund.sales"}], "test": "eq"}, {"args": [{"const": true}, {"input": "refund.itemized"}], "test": "eq"}], "test": "all"}, "then": {"of": [{"line": "3"}, {"line": "8"}], "op": "smaller_of"}}, {"guard": {"args": [{"args": [{"const": false}, {"input": "refund.sales"}], "test": "ne"}, {"args": [{"const": true}, {"input": "refund.itemized"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
 ```
 
-Second transcription's note: The STOP conditions on lines 3 and 8 are carried into zero through subtract_floor0 and the smaller of line 3 or line 8.
+Second transcription's note: The opening instruction says none of the refund is taxable if you did not itemize deductions or elected state and local general sales taxes instead of income taxes; line 9 is zero in those cases, otherwise it is the smaller of lines 3 and 8.
 
-Ruling: model error; i1040gi p. 90, worksheet line 3: "Is the amount on line 1 more than the amount on line 2? No. STOP None of your refund is taxable." The project stops at line 3 (refund.line3_more false gives zero without lines 4 to 8); the candidate always takes the smaller of line 3 and line 8, so after a line 3 STOP it still needs line 8 and the 2024 filing status, which the text does not need, and it inherits the line 6 spouse questions. Triage executable-triage-v1 (triage/refund.deepseek.json; 1,083 fixtures, 500 generated returns, 295 partial records over 17 bases): 1,771 of 1,878 agree. Candidate-unknown 19: stage16.mut.refund_line3_stop (project $0.00, candidate needs refund.status), stage16.mut.refund_single_unasked (project $1,400.00, needs refund.spouse_born), and 17 partial records withholding refund.itemized, which the project answers on refund.taxable before line 9. Project-unknown 85: 17 bases each withholding refund.received, refund.exc_tax, refund.exc_who, refund.line5d_2024 or refund.line5e_2024 where the candidate gives $0.00 (not itemized), so the project's refund.taxable takes zero without line 9. Candidate-refuses 2 (stage16.refuse.refund.box8, not_2024; project line 9 $0.00) are refused by the project on refund.taxable, scope; project-refuses 1 (stage16.refuse.refund.line5e_bad, candidate $3,000.00) is the cited impossible-entry screen (i1040sca p. 7, Line 5e), scope. Project stands.
+Ruling: model error and scope; i1040gi p. 90, worksheet line 3: "Is the amount on line 1 more than the amount on line 2? No. STOP None of your refund is taxable."; line 9: "Enter the smaller of line 3 or line 8". executable-triage-v2 (`reviews/2025/transcription/triage/refund.deepseek.json`; 1,382 fixtures, 500 generated returns seed 20261026, 445 partial records from 40 bases; 2,327 comparisons; every witness enumerated by an uncapped scratch rerun of tools/transcription/triage.mjs, the record keeps 6 per kind): 2,160 of 2,327 agree; 83 candidate-unknown (50 completed), 81 project-unknown (32 completed), 2 candidate-refuses, 1 project-refuses. The candidate takes the smaller of lines 3 and 8 whenever the worksheet applies, so after a line 3 STOP it still needs line 8 and the questions behind it, and it inherits line 8's spouse-itemized question. Completed candidate-unknown, all enumerated: stage16.mut.refund_line3_stop (project $0.00 at the STOP) and stage16.mut.refund_single_unasked (project $1,400.00), both needing refund.mfs_spouse_itemized; 48 no-refund partial records withholding refund.box8, refund.not_2024 or refund.itemized. The 32 completed project-unknown are no-refund partial records withholding refund.line5d_2024 or refund.line5e_2024 where the candidate gives $0.00 (worksheet not used), on which refund.taxable does not read line 9. The candidate-refuses (stage16.refuse.refund.box8, not_2024; project $0.00) are refused by the project on refund.taxable: scope. The project-refuses record (stage16.refuse.refund.line5e_bad, candidate $3,000.00) is the cited impossible-entry screen refund.line5e_bad (i1040sca p. 7, Line 5e, "enter the smaller of line 5d or $40,000"): scope. Project stands.
 
 ## Refusal gates listed by the second transcription
 
@@ -193,7 +151,13 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 | refund.has | refund.box8, refund.exc_tax, refund.exc_who, refund.not_2024 | refund.box8, refund.exc_tax, refund.exc_who, refund.not_2024 |
 | refund.taxable | refund.box8, refund.exc_tax, refund.exc_who, refund.not_2024 | - |
 | 1 | refund.box8, refund.exc_tax, refund.exc_who, refund.not_2024 | refund.box8, refund.not_2024 |
+| 2 | refund.box8, refund.exc_tax, refund.exc_who, refund.not_2024 | refund.box8, refund.exc_tax, refund.exc_who, refund.not_2024 |
 | 3 | refund.box8, refund.exc_tax, refund.exc_who, refund.not_2024 | refund.box8, refund.not_2024 |
+| 4 | refund.box8, refund.exc_tax, refund.exc_who, refund.not_2024 | refund.box8, refund.exc_tax, refund.exc_who, refund.not_2024 |
+| 5 | refund.box8, refund.exc_tax, refund.exc_who, refund.not_2024 | refund.box8, refund.exc_tax, refund.exc_who, refund.not_2024 |
+| 6 | refund.box8, refund.exc_tax, refund.exc_who, refund.not_2024 | refund.box8, refund.exc_tax, refund.exc_who, refund.not_2024 |
+| 7 | refund.box8, refund.exc_tax, refund.exc_who, refund.not_2024 | refund.box8, refund.exc_tax, refund.exc_who, refund.not_2024 |
+| 8 | refund.box8, refund.exc_tax, refund.exc_who, refund.not_2024 | refund.box8, refund.exc_tax, refund.exc_who, refund.not_2024 |
 | 9 | refund.box8, refund.exc_tax, refund.exc_who, refund.not_2024 | refund.box8, refund.not_2024 |
 
 ## Raw second transcription
@@ -205,86 +169,83 @@ lines:
     label: "Enter the income tax refund from Form(s) 1099-G (or similar statement). But don’t enter more than the amount of your state and local income taxes shown on your 2024 Schedule A, line 5d."
     type: NonNegDollars
     expr:
-      op: choose
-      alternatives:
-        - guard: {op: test, eq: [refund.h_eligible_initial, {const: true}]}
-          then: refund.h_line1_amount
-        - guard: {op: test, not: {op: test, eq: [refund.h_eligible_initial, {const: true}]}}
-          then: refund.h_zero
+      op: smaller_of
+      of: [refund.received, refund.line5d_2024]
     refuses: [refund.box8, refund.not_2024, refund.exc_tax, refund.exc_who]
-    note: "The IRS says none of the refund is taxable if you did not itemize or elected general sales taxes; I set line 1 to zero in those cases so that line 9 is zero."
   - id: refund.line2
     printed: "2"
-    label: "Is the amount of state and local income taxes (or general sales taxes), real estate taxes, and personal property taxes paid in 2024 (generally, this is the amount reported on your 2024 Schedule A, line 5d) more than the amount on your 2024 Schedule A, line 5e?"
+    label: "Is the amount of state and local income taxes (or general sales taxes), real estate taxes, and personal property taxes paid in 2024 (generally, this is the amount reported on your 2024 Schedule A, line 5d) more than the amount on your 2024 Schedule A, line 5e? No. Enter the amount from line 1 on line 3 and go to line 4. Yes. Subtract the amount on your 2024 Schedule A, line 5e, from the amount of state and local income taxes (or general sales taxes), real estate taxes, and personal property taxes paid in 2024 (generally, this is the amount reported on your 2024 Schedule A, line 5d)."
     type: NonNegDollars
     expr:
-      op: choose
-      alternatives:
-        - guard: {op: test, eq: [refund.h_eligible_initial, {const: true}]}
-          then: refund.h_line2_amount
-        - guard: {op: test, not: {op: test, eq: [refund.h_eligible_initial, {const: true}]}}
-          then: refund.h_zero
+      op: subtract_floor0
+      from: refund.line5d_2024
+      take: refund.line5e_2024
+    refuses: [refund.box8, refund.not_2024, refund.exc_tax, refund.exc_who]
+    note: "If 2024 Schedule A line 5d is not more than line 5e, the worksheet directs line 1 to line 3; line 2 is set to zero so that line 3 equals line 1."
   - id: refund.line3
     printed: "3"
-    label: "Is the amount on line 1 more than the amount on line 2? No. STOP None of your refund is taxable. Yes. Subtract line 2 from line 1."
+    label: "Is the amount on line 1 more than the amount on line 2? No. STOP. None of your refund is taxable. Yes. Subtract line 2 from line 1."
     type: NonNegDollars
-    expr: {op: subtract_floor0, from: refund.line1, take: refund.line2}
-    note: "The STOP case on line 3 is carried to zero by subtract_floor0."
+    expr:
+      op: subtract_floor0
+      from: refund.line1
+      take: refund.line2
+    refuses: [refund.box8, refund.not_2024, refund.exc_tax, refund.exc_who]
   - id: refund.line4
     printed: "4"
     label: "Enter your total itemized deductions from your 2024 Schedule A, line 17."
     type: NonNegDollars
     expr:
-      op: choose
-      alternatives:
-        - guard: {op: test, eq: [refund.itemized, {const: true}]}
-          then: refund.h_line4_amount
-        - guard: {op: test, not: {op: test, eq: [refund.itemized, {const: true}]}}
-          then: refund.h_zero
-    note: "If there were no 2024 itemized deductions, line 4 is set to zero because the worksheet is not used."
+      op: copy
+      from: refund.line17_2024
+    refuses: [refund.box8, refund.not_2024, refund.exc_tax, refund.exc_who]
   - id: refund.line5
     printed: "5"
-    label: "Enter the amount shown below for the filing status claimed on your 2024 Form 1040 or 1040-SR. Single or married filing separately—$14,600; Married filing jointly or qualifying surviving spouse—$29,200; Head of household—$21,900."
+    label: "Enter the amount shown below for the filing status claimed on your 2024 Form 1040 or 1040-SR. • Single or married filing separately—$14,600 • Married filing jointly or qualifying surviving spouse—$29,200 • Head of household—$21,900."
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
-        - guard:
-            op: test
-            any:
-              - {op: test, eq: [refund.status, {const: "single"}]}
-              - {op: test, eq: [refund.status, {const: "mfs"}]}
+        - guard: {op: test, eq: [refund.status, {const: "single"}]}
           then: refund.h_std_single
-        - guard:
-            op: test
-            any:
-              - {op: test, eq: [refund.status, {const: "mfj"}]}
-              - {op: test, eq: [refund.status, {const: "qss"}]}
+        - guard: {op: test, eq: [refund.status, {const: "mfs"}]}
+          then: refund.h_std_single
+        - guard: {op: test, eq: [refund.status, {const: "mfj"}]}
+          then: refund.h_std_joint
+        - guard: {op: test, eq: [refund.status, {const: "qss"}]}
           then: refund.h_std_joint
         - guard: {op: test, eq: [refund.status, {const: "hoh"}]}
           then: refund.h_std_hoh
+    refuses: [refund.box8, refund.not_2024, refund.exc_tax, refund.exc_who]
   - id: refund.line6
     printed: "6"
     label: "Check any boxes that apply. No boxes checked. Enter -0-. Multiply the number of boxes checked by $1,550 ($1,950 if your 2024 filing status was single or head of household)."
     type: NonNegDollars
-    expr: {op: sum, of: [refund.h_box_you_born, refund.h_box_you_blind, refund.h_box_spouse_born, refund.h_box_spouse_blind]}
+    expr:
+      op: sum
+      of: [refund.h_box_you_born, refund.h_box_you_blind, refund.h_box_spouse_born, refund.h_box_spouse_blind]
+    refuses: [refund.box8, refund.not_2024, refund.exc_tax, refund.exc_who]
   - id: refund.line7
     printed: "7"
     label: "Add lines 5 and 6."
     type: NonNegDollars
-    expr: {op: sum, of: [refund.line5, refund.line6]}
+    expr:
+      op: sum
+      of: [refund.line5, refund.line6]
+    refuses: [refund.box8, refund.not_2024, refund.exc_tax, refund.exc_who]
   - id: refund.line8
     printed: "8"
-    label: "Is the amount on line 7 less than the amount on line 4? No. STOP None of your refund is taxable. Yes. Subtract line 7 from line 4."
+    label: "Is the amount on line 7 less than the amount on line 4? No. STOP. None of your refund is taxable. Yes. Subtract line 7 from line 4."
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
-        - guard: {op: test, eq: [refund.h_skip, {const: true}]}
+        - guard: {op: test, eq: [refund.mfs_spouse_itemized, {const: true}]}
           then: refund.line4
-        - guard: {op: test, not: {op: test, eq: [refund.h_skip, {const: true}]}}
-          then: refund.h_line8_normal
-    note: "The worksheet's note for married filing separately when the spouse itemized deductions is implemented by copying line 4 to line 8 and bypassing lines 5 through 7."
+        - guard: {op: test, eq: [refund.mfs_spouse_itemized, {const: false}]}
+          then: refund.h_line8_diff
+    refuses: [refund.box8, refund.not_2024, refund.exc_tax, refund.exc_who]
+    note: "If the 2024 filing status was married filing separately and the spouse itemized, the worksheet says to skip lines 5 through 7 and enter line 4 on line 8; the true branch does that."
   - id: refund.line9
     printed: "9"
     label: "Taxable part of your refund. Enter the smaller of line 3 or line 8 here and on Schedule 1, line 1."
@@ -292,65 +253,54 @@ lines:
     expr:
       op: choose
       alternatives:
-        - guard: {op: test, eq: [refund.h_eligible_initial, {const: true}]}
-          then: refund.h_line9_amount
-        - guard: {op: test, not: {op: test, eq: [refund.h_eligible_initial, {const: true}]}}
+        - guard: {op: test, eq: [refund.h_applies, {const: true}]}
+          then: refund.h_min_line3_line8
+        - guard: {op: test, eq: [refund.h_applies, {const: false}]}
           then: refund.h_zero
-    note: "The STOP conditions on lines 3 and 8 are carried into zero through subtract_floor0 and the smaller of line 3 or line 8."
+    refuses: [refund.box8, refund.not_2024, refund.exc_tax, refund.exc_who]
+    note: "The opening instruction says none of the refund is taxable if you did not itemize deductions or elected state and local general sales taxes instead of income taxes; line 9 is zero in those cases, otherwise it is the smaller of lines 3 and 8."
   - id: refund.h_zero
     printed: "(helper)"
-    label: "Zero amount."
+    label: "Zero amount helper."
     type: NonNegDollars
-    expr: {op: param, ref: sales.zero}
+    expr:
+      op: param
+      ref: sales.zero
   - id: refund.h_std_single
     printed: "(helper)"
-    label: "Standard deduction amount for single or married filing separately on the 2024 return."
+    label: "2024 standard amount for single or married filing separately."
     type: NonNegDollars
-    expr: {op: param, ref: refund.std_single}
+    expr:
+      op: param
+      ref: refund.std_single
   - id: refund.h_std_joint
     printed: "(helper)"
-    label: "Standard deduction amount for married filing jointly or qualifying surviving spouse on the 2024 return."
+    label: "2024 standard amount for married filing jointly or qualifying surviving spouse."
     type: NonNegDollars
-    expr: {op: param, ref: refund.std_joint}
+    expr:
+      op: param
+      ref: refund.std_joint
   - id: refund.h_std_hoh
     printed: "(helper)"
-    label: "Standard deduction amount for head of household on the 2024 return."
+    label: "2024 standard amount for head of household."
     type: NonNegDollars
-    expr: {op: param, ref: refund.std_hoh}
-  - id: refund.h_box_married
-    printed: "(helper)"
-    label: "Amount per checked box if the 2024 filing status was neither single nor head of household."
-    type: NonNegDollars
-    expr: {op: param, ref: refund.box_married}
-  - id: refund.h_box_unmarried
-    printed: "(helper)"
-    label: "Amount per checked box if the 2024 filing status was single or head of household."
-    type: NonNegDollars
-    expr: {op: param, ref: refund.box_unmarried}
-  - id: refund.h_eligible_initial
-    printed: "(helper)"
-    label: "Whether the refund worksheet can reach a taxable amount: 2024 deductions were itemized and general sales taxes were not elected."
-    type: Bool
     expr:
-      op: test
-      all:
-        - {op: test, eq: [refund.itemized, {const: true}]}
-        - {op: test, not: {op: test, eq: [refund.sales, {const: true}]}}
-  - id: refund.h_line1_amount
+      op: param
+      ref: refund.std_hoh
+  - id: refund.h_box_1550
     printed: "(helper)"
-    label: "Line 1 before applying the no-itemize or sales-tax election stop."
+    label: "Amount per checked box, $1,550."
     type: NonNegDollars
-    expr: {op: smaller_of, of: [refund.received, refund.line5d_2024]}
-  - id: refund.h_line2_amount
+    expr:
+      op: param
+      ref: refund.box_married
+  - id: refund.h_box_1950
     printed: "(helper)"
-    label: "Line 2 subtraction when 2024 Schedule A line 5d is more than line 5e."
+    label: "Amount per checked box, $1,950."
     type: NonNegDollars
-    expr: {op: subtract_floor0, from: refund.line5d_2024, take: refund.line5e_2024}
-  - id: refund.h_line4_amount
-    printed: "(helper)"
-    label: "2024 total itemized deductions before applying the no-itemize stop."
-    type: NonNegDollars
-    expr: {op: copy, from: refund.line17_2024}
+    expr:
+      op: param
+      ref: refund.box_unmarried
   - id: refund.h_box_amount
     printed: "(helper)"
     label: "Amount per checked box for the 2024 filing status."
@@ -358,91 +308,96 @@ lines:
     expr:
       op: choose
       alternatives:
-        - guard:
-            op: test
-            any:
-              - {op: test, eq: [refund.status, {const: "single"}]}
-              - {op: test, eq: [refund.status, {const: "hoh"}]}
-          then: refund.h_box_unmarried
-        - guard:
-            op: test
-            any:
-              - {op: test, eq: [refund.status, {const: "mfs"}]}
-              - {op: test, eq: [refund.status, {const: "mfj"}]}
-              - {op: test, eq: [refund.status, {const: "qss"}]}
-          then: refund.h_box_married
+        - guard: {op: test, eq: [refund.status, {const: "single"}]}
+          then: refund.h_box_1950
+        - guard: {op: test, eq: [refund.status, {const: "hoh"}]}
+          then: refund.h_box_1950
+        - guard: {op: test, eq: [refund.status, {const: "mfs"}]}
+          then: refund.h_box_1550
+        - guard: {op: test, eq: [refund.status, {const: "mfj"}]}
+          then: refund.h_box_1550
+        - guard: {op: test, eq: [refund.status, {const: "qss"}]}
+          then: refund.h_box_1550
   - id: refund.h_box_you_born
     printed: "(helper)"
-    label: "Amount for the box that the taxpayer was born before January 2, 1960."
+    label: "Amount for the box that you were born before January 2, 1960."
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
         - guard: {op: test, eq: [refund.you_born, {const: true}]}
           then: refund.h_box_amount
-        - guard: {op: test, not: {op: test, eq: [refund.you_born, {const: true}]}}
+        - guard: {op: test, eq: [refund.you_born, {const: false}]}
           then: refund.h_zero
   - id: refund.h_box_you_blind
     printed: "(helper)"
-    label: "Amount for the box that the taxpayer was blind."
+    label: "Amount for the box that you were blind at the end of 2024."
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
         - guard: {op: test, eq: [refund.you_blind, {const: true}]}
           then: refund.h_box_amount
-        - guard: {op: test, not: {op: test, eq: [refund.you_blind, {const: true}]}}
+        - guard: {op: test, eq: [refund.you_blind, {const: false}]}
           then: refund.h_zero
   - id: refund.h_box_spouse_born
     printed: "(helper)"
-    label: "Amount for the box that the spouse was born before January 2, 1960."
+    label: "Amount for the box that your spouse was born before January 2, 1960."
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
         - guard: {op: test, eq: [refund.spouse_born, {const: true}]}
           then: refund.h_box_amount
-        - guard: {op: test, not: {op: test, eq: [refund.spouse_born, {const: true}]}}
+        - guard: {op: test, eq: [refund.spouse_born, {const: false}]}
           then: refund.h_zero
   - id: refund.h_box_spouse_blind
     printed: "(helper)"
-    label: "Amount for the box that the spouse was blind."
+    label: "Amount for the box that your spouse was blind at the end of 2024."
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
         - guard: {op: test, eq: [refund.spouse_blind, {const: true}]}
           then: refund.h_box_amount
-        - guard: {op: test, not: {op: test, eq: [refund.spouse_blind, {const: true}]}}
+        - guard: {op: test, eq: [refund.spouse_blind, {const: false}]}
           then: refund.h_zero
-  - id: refund.h_line8_normal
+  - id: refund.h_line8_diff
     printed: "(helper)"
-    label: "Line 8 subtraction when the married-filing-separately spouse-itemized skip does not apply."
+    label: "Line 8 amount before the married-filing-separately spouse-itemized branch."
     type: NonNegDollars
-    expr: {op: subtract_floor0, from: refund.line4, take: refund.line7}
-  - id: refund.h_skip
+    expr:
+      op: subtract_floor0
+      from: refund.line4
+      take: refund.line7
+  - id: refund.h_applies
     printed: "(helper)"
-    label: "Whether the 2024 filing status was married filing separately and the spouse itemized deductions."
+    label: "Whether the refund worksheet can produce a taxable amount: deductions were itemized for 2024 and state and local general sales taxes were not elected."
     type: Bool
     expr:
       op: test
       all:
-        - {op: test, eq: [refund.status, {const: "mfs"}]}
-        - {op: test, eq: [refund.mfs_spouse_itemized, {const: true}]}
-  - id: refund.h_line9_amount
+        - {op: test, eq: [refund.itemized, {const: true}]}
+        - {op: test, eq: [refund.sales, {const: false}]}
+  - id: refund.h_min_line3_line8
     printed: "(helper)"
-    label: "Smaller of line 3 or line 8 before applying the no-itemize or sales-tax election stop."
+    label: "Smaller of lines 3 and 8."
     type: NonNegDollars
-    expr: {op: smaller_of, of: [refund.line3, refund.line8]}
-  - id: refund.taxable
-    printed: "(helper)"
-    label: "Taxable part of the refund from line 9, for Schedule 1, line 1."
-    type: NonNegDollars
-    expr: {op: copy, from: refund.line9}
+    expr:
+      op: smaller_of
+      of: [refund.line3, refund.line8]
   - id: refund.has
     printed: "(helper)"
-    label: "Whether any part of the refund is taxable (line 9 greater than zero)."
+    label: "Whether any part of the refund is taxable."
     type: Bool
-    expr: {op: test, gt: [refund.taxable, refund.h_zero]}
-    note: "The IRS worksheet does not print a separate yes/no result; I encode has as true exactly when the taxable part on line 9 is greater than zero."
+    expr:
+      op: test
+      gt: [refund.line9, {const: 0}]
+  - id: refund.taxable
+    printed: "(helper)"
+    label: "Taxable part of the refund."
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: refund.line9
 ```

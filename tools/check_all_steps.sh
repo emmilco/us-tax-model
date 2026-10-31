@@ -94,6 +94,8 @@ step consumers python3 tools/check_consumers.py
 step consumers_self_test python3 tools/check_consumers.py --self-test
 step limits python3 tools/check_limits.py
 step limits_self_test python3 tools/check_limits.py --self-test
+step completeness python3 tools/transcription/check_completeness.py
+step completeness_self_test python3 tools/transcription/check_completeness.py --self-test
 wave
 
 step conjecture "${node[@]}" conjecture "$@"

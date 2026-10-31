@@ -7,6 +7,13 @@
    "restated": "Subtract line 3 from line 2.",
    "model": "The instructions provided contain no text for line 4, and the Schedule B form face is not included. The subtraction of line 3 from line 2 cannot be confirmed from the given text.",
    "ruling": "Ruling: representation; project retained. The form face reads \"4 Subtract line 3 from line 2. Enter the result here and on Form 1040 or 1040-SR, line 2b\" (f1040sb p. 1), which is the restatement. No change to the data."
+  },
+  {
+   "printed": "4",
+   "restated": "Subtract line 3 from line 2.",
+   "model": "The provided text has no instruction for line 4 and does not include the form's own line wording, so the subtraction of line 3 from line 2 cannot be confirmed. The face of Schedule B showing line 4 is needed.",
+   "ruling": "Ruling: interface gap; f1040sb (2025) p. 1, line 4: \"Subtract line 3 from line 2. Enter the result here and on Form 1040 or 1040-SR, line 2b\", which is the restatement. The model was given only i1040sb pp. 1-3, which has no line 4 instruction, as it says (a coverage gap of the review). Unchanged since the earlier ruling (representation on the form face). Restatement accepted.",
+   "context": "24f7dc8a218291ceca8c23763da85fcef453c3c6af2fec18b9845ec950f293b2"
   }
  ]
 }

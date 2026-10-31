@@ -1,0 +1,140 @@
+{
+ "rulings": {
+  "unruled:dependent#1": {
+   "class": "out of scope",
+   "prompt_sha": "a1b75dcb86dbfc85db05df81d6878092f53c60ffe71c9868cee2578c9add683b",
+   "evidence": "low, batched in T-092. Repeat of round-3 dependent#3 (r3 L1), widened to the whole support list of p501 pp. 15 and 20-21. Covered in substance by dependent.supported: lodging at fair rental value (the person's own home, and lodging they give you, are theirs), own funds actually spent (savings, tax-exempt income, borrowed amounts), the dependency allotment, care payments you make (care you pay for is support you provide). Arithmetic of the over-half test: household-expense division, fair market value, capital items. Rare: fiscal year, borrowed money repaid later, lump-sum home-for-the-aged payment, foster-care expenses of a business or charitable caregiver, one check to both spouses, GI Bill. Not in the question and plausible: medical insurance premiums you pay are your support and Medicare and other insurance benefits are not (p501 p. 21; r3 L1); income and social security taxes the person pays, life insurance premiums and funeral expenses are not support (p501 p. 21), so a filer who counts a parent's life insurance premiums or funeral costs as support may cross the over-half line. Support-definition omissions are Low, as round-1 PENDING-8 and r3 L1."
+  },
+  "unruled:dependent#2": {
+   "class": "out of scope",
+   "prompt_sha": "a1b75dcb86dbfc85db05df81d6878092f53c60ffe71c9868cee2578c9add683b",
+   "evidence": "low, batched in T-092. Repeat of round-3 dependent#4 (r3 L2), which named state benefits, GI Bill and DEA payments. dependent.self_support carries own funds actually spent (which covers savings, tax-exempt income and borrowed amounts spent), lodging at fair rental value (which covers a home the person owns), foster payments, scholarships and social security. Arithmetic: capital items. Not in the question: GI Bill amounts are in total support, DEA payments used for the child's support are excluded, Medicare and insurance benefits are not support, and income and social security taxes the person pays from their own income are not support (p501 p. 21). The tax rule needs a working child whose withheld taxes would carry them past half their own support; GI Bill and DEA students are rare. Low."
+  },
+  "unruled:dependent#3": {
+   "class": "out of scope",
+   "gate": "dependent.other_claimant",
+   "prompt_sha": "a1b75dcb86dbfc85db05df81d6878092f53c60ffe71c9868cee2578c9add683b",
+   "evidence": "Repeat of round-3 dependent#1 (r3 N1): the non-taxpayer carve-out (i1040gi p. 19; p501 p. 18) is absent from dependent.other_claimant, but a Yes refuses, through the refusal on dependent.qualifying_child, which reaches the qualifying-relative path. Witness rerun on the current tree (stage8.hoh.parent.test1 filed single; /tmp/adj-compl-r4/w/q_single*): other_claimant No gives line 19 $500; Yes gives the refusal 'Qualifying child of more than one person (tie-breaker rules)' on line 19 and household.hoh_eligible. An over-refusal, never a wrong amount."
+  },
+  "unruled:dependent#4": {
+   "class": "out of scope",
+   "prompt_sha": "a1b75dcb86dbfc85db05df81d6878092f53c60ffe71c9868cee2578c9add683b",
+   "evidence": "open as T-091 (item 1, round-1 PENDING-4); repeat of round-3 dependent#2. On a joint return a relative of either spouse counts (p501 p. 19), but dependent.relationship feeds the qualifying-child and qualifying-relative tests alike, so the fix needs logic. The spouse's-stepparent sentence arises only on a married filing separately return, which is refused (s3.mfs, scope.ready)."
+  },
+  "unruled:dependent#5": {
+   "class": "out of scope",
+   "prompt_sha": "a1b75dcb86dbfc85db05df81d6878092f53c60ffe71c9868cee2578c9add683b",
+   "evidence": "open as T-091 (item 2, round-1 PENDING-7); repeat of round-3 dependent#6. The reasonable-return condition (p501 p. 9) and the indefinite nursing-home stay (p501 p. 19) pull dependent.months (and part_year_home) in opposite directions for head of household and the qualifying-relative household test. Keeping up the home during the absence is household.home_cost (Test 2, 'for 2025') or dependent.parent_home_paid (Test 1). New in this round, and covered in substance: a required hospital stay after birth is a temporary absence for medical care, which dependent.months counts as time lived with you."
+  },
+  "unruled:dependent#6": {
+   "class": "covered",
+   "line": "dependent.student",
+   "prompt_sha": "a1b75dcb86dbfc85db05df81d6878092f53c60ffe71c9868cee2578c9add683b",
+   "evidence": "Repeat of round-3 dependent#5: dependent.student asks whether the person was enrolled as a full-time student at a school, including a technical, trade or mechanical school. A co-op student is enrolled in the school's regular course, of which the co-op job is part, so the plain answer is Yes; the on-the-job-training exclusion concerns training courses, not a school's co-op. 'Enrolled as a full-time student' is naturally read by the school's own standard, which is the second quoted sentence."
+  },
+  "unruled:dependent#7": {
+   "class": "out of scope",
+   "prompt_sha": "a1b75dcb86dbfc85db05df81d6878092f53c60ffe71c9868cee2578c9add683b",
+   "evidence": "low, batched in T-092. Repeat of round-3 dependent#8 (r3 L3). dependent.divorced_rule asks whether a Form 8332 release or a decree lets the noncustodial parent claim the child, and a Yes refuses (dependent.qualifying_child). It does not say that a revocation counts for 2025 only if written notice was given in 2024 or earlier (p501 pp. 14-15); a custodial parent who revoked in 2025 plausibly answers No when the release still holds and the answer should be Yes (refusal). The attachment of the revocation is a paper entry. Rare: it needs a release revoked in 2025 specifically."
+  },
+  "unruled:dependent#8": {
+   "class": "covered",
+   "line": "dependent.dc_paid",
+   "prompt_sha": "a1b75dcb86dbfc85db05df81d6878092f53c60ffe71c9868cee2578c9add683b",
+   "evidence": "Repeat of round-3 dependent#9: dc_paid asks only for expenses for the person's care so that the filer could work or look for work, which carries the daily allocation for part-period work and the division of mixed-purpose expenses; chauffeur, bartender and gardener services are not care of the person. Child support goes to a child who does not live with the payer, who is then not the payer's qualifying person (dependent.dc_qp)."
+  },
+  "unruled:dependent#9": {
+   "class": "out of scope",
+   "gate": "f8863.ban_refused",
+   "prompt_sha": "a1b75dcb86dbfc85db05df81d6878092f53c60ffe71c9868cee2578c9add683b",
+   "evidence": "Repeat of round-3 dependent#10: f8863.ban asks about a denial or reduction after 2015 needing Form 8862 and the 2- and 10-year bans, and f8863.ban_refused refuses Form 8863 line 7. The HANDLED ELSEWHERE list still misses it because the refusal is on f8863.line7, which reads dependent only through other f8863 lines."
+  },
+  "unruled:dependent#10": {
+   "class": "out of scope",
+   "prompt_sha": "a1b75dcb86dbfc85db05df81d6878092f53c60ffe71c9868cee2578c9add683b",
+   "evidence": "low, batched in T-092. New. The American opportunity credit needs the student's TIN issued by the due date (i8863 pp. 1 and 3); dependent.edu_student reads dependent.tin, which also answers Yes for an ITIN or ATIN merely applied for by then (the Step 3 and credit-for-other-dependents standard; amb.2025.ctc_spouse_itin_application confines the deeming of an applied-for ITIN to the credit for other dependents). Witness (stage19.example.jack_kay; /tmp/adj-compl-r4/w/e_*): tin Yes gives line 29 $1,000 and Form 8863 line 19 $1,500; No refuses the return (dependent.claimed_no_tin), so a student with an ITIN applied for but not issued gets the credit wrongly and no answer is right. Rare: a dependent student who needs an ITIN and whose application is pending at the due date; the same rarity as round-1 PENDING-10 (expired ITIN, Low)."
+  },
+  "unruled:household#1": {
+   "class": "out of scope",
+   "gate": "household.hoh_fails",
+   "prompt_sha": "66464b9ecfd786e89dd1fc1b87219f24daac60fc332e11227fc02234a280619a",
+   "evidence": "Low, batched in T-092. p501 p. 9, Note: TANF or similar payments you received and used to support another person are support you provided. household.home_cost (BUG-0260) states the included and excluded costs and the own-funds rule but not TANF; a filer whose TANF grant is issued for the child may read the own-funds sentence as making the rent paid from it the child's and answer No. A No ends in a refusal at household.hoh_fails when no other test is met, never a wrong amount (stage8.hoh.child.ctc with home_cost false: lines 12e, 16 and 24 refused at household.hoh_fails; /tmp/adj-fixr5-household-refund/). Repeat of fix round 4 L1 (.transcription/proposed/fixr4/household.findings.md); see r5.findings.md and .transcription/proposed/fixr5/household.findings.md L1."
+  },
+  "unruled:household#2": {
+   "class": "out of scope",
+   "gate": "household.qss_fails",
+   "prompt_sha": "66464b9ecfd786e89dd1fc1b87219f24daac60fc332e11227fc02234a280619a",
+   "evidence": "Low, batched in T-092. Two sentences. (1) The TANF note of p501 p. 9 is missing from test 4 of household.qss_eligible, as in household#1; a wrong No ends in a refusal at household.qss_fails (stage21.pending1.qss_valid_computes with qss_eligible false: lines 12e, 16 and 24 refused), never a wrong amount. (2) The name of an unclaimed qualifying child (i1040gi p. 15) is a page-1 paper entry, presentation, as round-4 household#4; the child condition itself is in test 2 of the question. See r5.findings.md."
+  },
+  "unruled:household#3": {
+   "class": "presentation",
+   "prompt_sha": "66464b9ecfd786e89dd1fc1b87219f24daac60fc332e11227fc02234a280619a",
+   "evidence": "Repeat of round-4 household#3 (and round-3 household#3): the name of an unclaimed qualifying child is a paper entry beside the head of household box (i1040gi p. 14). The tool already lets such a child qualify the filer (dependent.hoh_test2) and produces no page-1 name entries."
+  },
+  "unruled:household#4": {
+   "class": "out of scope",
+   "gate": "household.credit_disallowed",
+   "prompt_sha": "66464b9ecfd786e89dd1fc1b87219f24daac60fc332e11227fc02234a280619a",
+   "evidence": "Repeat of round-4 household#2 (r3 N1, r4 N1): household.credit_disallowed omits the exceptions to filing Form 8862 (i1040gi pp. 39 and 43, i1040s8812 p. 2), so a filer within one answers Yes literally and is refused through eic.credit and s8812.line12. An over-refusal, never a wrong amount; carried as in r4 N1."
+  }
+ },
+ "baseline": {
+  "stale:aqee": "d15582a45b6b1039",
+  "stale:asset": "9c99a6489678e918",
+  "stale:carloan": "44531dc4ccfd9e43",
+  "stale:clcw": "885c3876f926cc8b",
+  "stale:clcw26": "e3c46be5e85a7726",
+  "stale:dcprov": "fd8b358c3c3132e0",
+  "stale:div": "3deed82bc592ec40",
+  "stale:eic": "f9839c7000d5c609",
+  "stale:f1040": "a3cbacf974bd1760",
+  "stale:f1095a": "e5d55081fea45091",
+  "stale:f2441": "7ddd0497761f5d8d",
+  "stale:f4562": "3b54e59971843c84",
+  "stale:f5329": "ef503afdbb69d36d",
+  "stale:f5695": "4fd3ec308474d4ff",
+  "stale:f8606": "28d26176121f19b8",
+  "stale:f8863": "89102319000cb31a",
+  "stale:f8889": "018f5d48a1d27eeb",
+  "stale:f8959": "e9f1f8ad4bf41b47",
+  "stale:f8960": "0b50cebd96c4ff01",
+  "stale:f8962": "62ff36ce10ea3610",
+  "stale:f8995": "c6f2f32ab2d5ab70",
+  "stale:f8995a": "86ce0a903667413c",
+  "stale:ftc": "269edc66a7f596b0",
+  "stale:g28": "0a1e35e73f1d28b2",
+  "stale:gift": "fcd3987b7a83c19d",
+  "stale:interest": "97f205f37a88494d",
+  "stale:ira": "2ae2bbd35ba14464",
+  "stale:ltc": "45d20b2831a8f520",
+  "stale:mq": "a99b6b462733fb77",
+  "stale:oi8z": "a2c769cd8e33535e",
+  "stale:otjob": "cd3314ea0e1ad44f",
+  "stale:qbi": "3d4b8e9fffc24418",
+  "stale:qdcg": "7fe831bd6833e058",
+  "stale:refund": "22b096a50738b536",
+  "stale:retirement": "4e1dc2b1934d4694",
+  "stale:s1": "adeed2e4f9c5484e",
+  "stale:s179": "9f52e471fb1a984b",
+  "stale:s1a": "c556f9599c4daa11",
+  "stale:s2": "7eecf3a5d4be4472",
+  "stale:s3": "cac21688557f2f64",
+  "stale:s8812": "f2586d134aa9f899",
+  "stale:sa": "e698461b58cd2c52",
+  "stale:sales": "614e07bdc846f102",
+  "stale:sb": "0f0a684b10c9f479",
+  "stale:sc": "7ab4da489a665cea",
+  "stale:scope": "477e2bc8dc8b081b",
+  "stale:scveh": "4160cbe5f22fae98",
+  "stale:sd": "5113116df3dad152",
+  "stale:sdtw": "dd17643c30dd8c36",
+  "stale:se": "6b1cfbae347682c0",
+  "stale:sli": "05e0cd85adaedb89",
+  "stale:ssb": "790b403a8f0a743a",
+  "stale:tax_on_amount": "c72ec94877503867",
+  "stale:tcw": "b2725528be301e6d",
+  "stale:tipjob": "c840977b8b9629f7",
+  "stale:u1250": "06908376dca570ad",
+  "stale:w2": "aef29c773db0970e"
+ }
+}

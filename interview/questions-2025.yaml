@@ -521,6 +521,10 @@ bank:
     order: 2
     help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
       do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: dependent.kidnapped
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
   - input: dependent.other_claimant
     order: 2
     help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
@@ -671,6 +675,10 @@ bank:
     order: 30
     help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
       do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: eic.died_2025
+    order: 30
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
   - input: eic.us_home
     order: 30
     help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
@@ -682,9 +690,20 @@ bank:
       married. Unknown may be null; do not guess.
   - input: household.community_property
     order: 2
-    help: Answer true or false. Asked of a married filer who files as head of household; a married filer in one of the
-      nine community property states is refused, since community income under state law (Form 8958, Pub. 555) is outside
-      this tool. Unknown may be null; do not guess.
+    help: Answer true or false. Asked of every filer not filing jointly; a married filer who files as head of household
+      in one of the nine community property states, or a registered domestic partner in Nevada, Washington or California,
+      is refused, since community income under state law (Form 8958, Pub. 555) is outside this tool. Unknown may be null;
+      do not guess.
+  - input: household.rdp
+    order: 2
+    help: Answer true or false. Asked when you lived in a community property state and are not filing jointly; a Yes is
+      refused, since a registered domestic partner in Nevada, Washington or California must generally report half the
+      partners' combined community income (Form 8958, Pub. 555), which is outside this tool. Unknown may be null; do not
+      guess.
+  - input: household.qss_eligible
+    order: 2
+    help: Answer true or false. Asked only when your filing status is qualifying surviving spouse; a No refuses the return,
+      since that status requires all five tests. Unknown may be null; do not guess.
   - input: household.credit_disallowed
     order: 20
     help: Answer true or false. A reduction or disallowance by an IRS notice for any year after 1996 counts, other than a

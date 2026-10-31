@@ -8,7 +8,7 @@ pages they cite) must equal the `prompt_sha` recorded in reviews/<year>/screens/
 question, gated lines or citations changed is `stale` and is rerun with
 `python3 tools/transcription/screen_review.py --screens <id>`. A current review whose verdict is not COVERS is
 `unruled` until its findings are adjudicated and ruled in reviews/<year>/screens/rulings.json under
-"unruled:<screen>" (the subject is the review's prompt hash, so a rerun needs a new ruling).
+"unruled:<screen>" with the `prompt_sha` of the review it rules (so a rerun needs a new ruling).
 
 Screens that were stale or unruled when the check was introduced form the baseline (tools/baseline_check.py), each
 held while its prompt is unchanged.
@@ -38,6 +38,7 @@ def findings():
     lines = load_lines()
     mani = manifest()
     reviewed = {r["screen"]: r for r in json.loads(RECORD.read_text())} if RECORD.exists() else {}
+    rulings = json.loads(RULINGS.read_text()).get("rulings", {}) if RULINGS.exists() else {}
     out = []
     for screen, gated in screens(lines).items():
         prompt, _ = prompt_for(screen, gated, lines, mani)
@@ -49,9 +50,13 @@ def findings():
             out.append({"kind": "stale", "line": screen, "form": form, "subject": sha,
                         "detail": f"{why}; rerun screen_review.py --screens {screen}"})
         elif r.get("verdict") != "COVERS":
-            out.append({"kind": "unruled", "line": screen, "form": form, "subject": sha,
+            ruling = rulings.get(f"unruled:{screen}")
+            # A ruling judges one review: it names the prompt hash of the review it ruled. A ruling of an earlier
+            # review does not accept this one; the finding then has its own key, and the old ruling goes stale.
+            kind = "rerun" if isinstance(ruling, dict) and ruling.get("prompt_sha") not in (None, sha) else "unruled"
+            out.append({"kind": kind, "line": screen, "form": form, "subject": sha,
                         "detail": f"verdict {r.get('verdict')} with {len(r.get('findings') or [])} finding(s); "
-                                  f"adjudicate in screen_review.md and rule"})
+                                  f"adjudicate and rule with prompt_sha {sha[:12]}"})
     return out
 
 

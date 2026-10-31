@@ -27,6 +27,13 @@
   {
    "printed": "1z",
    "restated": "Add line 1a and line 1e.",
+   "model": "IRS says \"Add lines 1a through 1h\"; the restatement adds only line 1a and line 1e.",
+   "ruling": "Ruling: scope; the model says the restatement adds only lines 1a and 1e of \"Add lines 1a through 1h\". Lines 1b to 1d and 1f to 1h are refused: scope.other_income asks for \"other earned income (Form 1040 lines 1b to 1d and 1f to 1h)\", and f1040.line8 refuses on it, so those lines are zero on every computed return and the sum is Form 1040 line 1z. Same ruling as rounds 2 and 3 and Stage 20.",
+   "context": "75ca7f4a11a575ddde2dd458a127d8fbc338c40e86692904df3bdbbcdb74f830"
+  },
+  {
+   "printed": "1z",
+   "restated": "Add line 1a and line 1e.",
    "model": "IRS text says \"Add lines 1a through 1h\"; the restatement adds only line 1a and line 1e.",
    "ruling": "Ruling: scope; the model says the restatement adds only lines 1a and 1e of \"Add lines 1a through 1h\". Lines 1b to 1d and 1f to 1h are refused: scope.other_income asks for \"other earned income (Form 1040 lines 1b to 1d and 1f to 1h)\", wages or tips not on a Form W-2, Medicaid waiver payments and adoption benefits, and f1040.line8 refuses on it (\"Prepare the required unsupported income or return treatment\", citing Form 1040 lines 8, 10, 13b, 16, 19-20 and 27-31). On every computed return those lines are zero, so the sum is Form 1040 line 1z. Same ruling as round 2.",
    "context": "6f486f2c34ed05a4cadfbd637a74fe69ad70f1ec99b0f3d21dd2960a59bf6872"
@@ -97,6 +104,13 @@
   {
    "printed": "27c",
    "restated": "Enter the amount from eic helper \"The instructions say to check the box on line 27c (a STOP that says so, or Worksheet A line 2 is zero); the filer's own choice not to claim the EIC is not asked\".",
+   "model": "IRS says to check the box if you do not want the EIC or if instructed; the restatement computes only instructed cases and does not ask the filer opt-out.",
+   "ruling": "Ruling: scope; the model says the filer's own choice not to claim the EIC is not asked. i1040gi p. 43, Line 27c: \"Check the box on line 27c if you do not want to claim the earned income credit or if you have been instructed to check the box in the instructions for line 27a\". The rendered English states the limit itself, a recorded design limit (TASKS.md T-027). Same ruling as rounds 2 to 4 and Stages 19 to 21.",
+   "context": "75ca7f4a11a575ddde2dd458a127d8fbc338c40e86692904df3bdbbcdb74f830"
+  },
+  {
+   "printed": "27c",
+   "restated": "Enter the amount from eic helper \"The instructions say to check the box on line 27c (a STOP that says so, or Worksheet A line 2 is zero); the filer's own choice not to claim the EIC is not asked\".",
    "model": "The IRS line says 'If you do not want to claim the EIC, check here,' but the restatement only handles instructed STOP cases and expressly does not ask the filer's own choice.",
    "ruling": "Ruling: scope; the model says the filer's own choice not to claim the EIC is not asked. i1040gi p. 43, Line 27c: \"Check the box on line 27c if you do not want to claim the earned income credit or if you have been instructed to check the box in the instructions for line 27a\". The rendered English states the limit itself (\"the filer's own choice not to claim the EIC is not asked\"), a recorded design limit (TASKS.md T-027). Unchanged by Stage 20; same ruling as rounds 2 to 4.",
    "context": "5e508b2a542e2e95b6b95b47e5256aedd765e56e46d197842551e61056f10694"
@@ -107,6 +121,13 @@
    "model": "IRS says \"If you do not want to claim the ACTC, check here\"; the restatement only enters the amount from Schedule 8812 line 27 and omits that election.",
    "ruling": "Ruling: finding; the model says the line omits the box \"If you do not want to claim the ACTC, check here\". Form 1040 (2025) p. 2, line 28: \"Additional child tax credit (ACTC) from Schedule 8812. If you do not want to claim the ACTC, check here\"; i1040gi p. 61, Line 28: \"If you do not want to claim the additional child tax credit, check the box on line 28.\" The project has no line for the box and no question for the election, and unlike line 27c (TASKS.md T-027) no scope or register record covers it: every return claims the ACTC and the box prints unchecked. The project's amount is right for a filer who claims the credit; a filer who elects not to claim gets line 28 = Schedule 8812 line 27 instead of the box checked and no credit. Severity: a printed box on every return, and an amount (line 28, 32, 33, refund) only for a filer who would opt out. Finding F1 in f1040.findings.md.",
    "context": "6f486f2c34ed05a4cadfbd637a74fe69ad70f1ec99b0f3d21dd2960a59bf6872"
+  },
+  {
+   "printed": "28 (box)",
+   "restated": "true = false",
+   "model": "IRS says \"If you do not want to claim the ACTC, check here\"; the restatement fixes the box to false and never supports the opt-out.",
+   "ruling": "Ruling: scope; the model says the box is fixed unchecked. Form 1040 (2025) line 28, \"If you do not want to claim the ACTC, check here\"; i1040gi p. 61, Line 28. This is the recorded design limit BUG-0174 (owner's decision, 2026-10-27), and the printed label says so (\"not asked; this tool always claims the credit\"). Same ruling as round 4 and Stages 19 to 21.",
+   "context": "75ca7f4a11a575ddde2dd458a127d8fbc338c40e86692904df3bdbbcdb74f830"
   },
   {
    "printed": "28 (box)",

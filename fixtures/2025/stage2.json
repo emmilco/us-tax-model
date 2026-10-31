@@ -1441,6 +1441,7 @@
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
         "f1040.status": "qss",
+        "household.qss_eligible": true,
         "$person": [
           "taxpayer"
         ],

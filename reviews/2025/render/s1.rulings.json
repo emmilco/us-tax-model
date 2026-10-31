@@ -17,6 +17,20 @@
   {
    "printed": "10",
    "restated": "Add line 1, line 2a, line 3, line 7, and line 9.",
+   "model": "The IRS line says 'Combine lines 1 through 7 and 9,' but the restatement omits lines 4, 5 and 6. No refusal given here excludes Form 4797 or 4684 gains, Schedule E income or Schedule F income.",
+   "ruling": "Ruling: scope; f1040s1 line 10, \"Combine lines 1 through 7 and 9\". Lines 4 to 6 are refused by scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately ...\"), which refuses Form 1040 line 8 and line 10 and every line after them: it names \"sales of business property (Form 4797)\", \"rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1)\" and \"farm income (Schedule F)\", and a Form 4684 gain falls under its opening clause; within scope they are zero, as the line's citation says. Lines 1, 2a, 3, 7 and 9 are figured. Same ruling as the earlier rounds; the fix round changed only the clergy wording of that screen (BUG-0233), which does not touch these lines.",
+   "context": "318573643a0fbeae2d1ffc8d824795dfedef4e7266716fb7a9b2e5dbbe2b817d"
+  },
+  {
+   "printed": "10",
+   "restated": "Add line 1, line 2a, line 3, line 7, and line 9.",
+   "model": "The IRS says 'Combine lines 1 through 7 and 9', but the restatement leaves out lines 4, 5 and 6. No refusal shown for this line names those exclusions, so the total is wrong if any of them has an amount.",
+   "ruling": "Ruling: scope; f1040s1 line 10, \"Combine lines 1 through 7 and 9\". Lines 4 to 6 are refused by scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately ...\"), which refuses Form 1040 line 8 and line 10 and every line after them: it names \"sales of business property (Form 4797)\", \"rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1)\" and \"farm income (Schedule F)\", and a Form 4684 gain falls under its opening clause; within scope they are zero, as the line's citation says. Lines 1, 2a, 3, 7 and 9 are figured. Same ruling as the earlier rounds; unchanged by fix round 3.",
+   "context": "f1ebfbe1b2e4dfdc0f93874886ba18fc588976bbf8725412d115be2bdc995a23"
+  },
+  {
+   "printed": "10",
+   "restated": "Add line 1, line 2a, line 3, line 7, and line 9.",
    "model": "The IRS says 'Combine lines 1 through 7 and 9'. The program adds only lines 1, 2a, 3, 7 and 9, leaves out lines 4, 5 and 6 (other gains, Schedule E, Schedule F), and has no refusal for them.",
    "ruling": "Ruling: refusal located elsewhere; project retained. Lines 4 to 6 are refused by scope.schedule1, which names them (\"sales of business property (Form 4797) ... rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1) ... farm income (Schedule F)\", and a Form 4684 gain under its opening \"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately\") and refuses Form 1040 line 8, the line this one is entered on, and every line after it; within scope they are zero, as the line's citation says (f1040s1, line 10, \"Combine lines 1 through 7 and 9\"). Lines 1, 2a, 3, 7 and 9 are figured."
   },
@@ -63,6 +77,34 @@
    "ruling": "Ruling: scope; project retained. The $600 maximum is for a joint return with two eligible educators; married filing statuses are refused (s3.married), so the $300 limit is the one within scope."
   },
   {
+   "printed": "13",
+   "restated": "Add person.hsa_deduction over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "For a married filer age 55 or older, line 7 uses $1,000 times all eligible months when not using the last-month rule, including self-only months. The line 7 instruction counts a month only if 'You or your spouse had family coverage under an HDHP,' so 6 family and 6 self-only months give $500 rather than $1,000, which can raise lines 8, 12 and 13.",
+   "ruling": "Ruling: ambiguity; amb.2025.hsa_line7_months (owner accepted after Stage 13), reading 2 (count only the months of family coverage), not chosen. The model quotes i8889 p. 7, Line 7, \"You or your spouse had family coverage under an HDHP\", and says 6 family and 6 self-only months should give $500. The chosen reading counts every month treated as eligible (f8889.elig_months): i8889 p. 7, Additional Contribution Amount Worksheet, \"1. $1,000 × number of months eligible\", and p. 5, Line 3, Note, under which counting only family months would drop the additional amount for the self-only months altogether. Same reading as the round-4 rulings of f8889 line 7 (stage21/round4/render.f8889.json, witness classm.f8889.2: $1,000.00 against $750.00, refused). Line 13 copies the per-person Form 8889 deduction; unchanged by the fix round.",
+   "context": "318573643a0fbeae2d1ffc8d824795dfedef4e7266716fb7a9b2e5dbbe2b817d"
+  },
+  {
+   "printed": "19a",
+   "restated": "Choose — [helper \"Did you receive or pay alimony or separate maintenance in 2025 under a divorce or separation agreement entered into on or before December 31, 2018, or must you include or may you deduct a recapture of alimony?\" = true → helper \"Alimony paid, before the screen for more than one agreement, recapture and child support\"] [helper \"Did you receive or pay alimony or separate maintenance in 2025 under a divorce or separation agreement entered into on or before December 31, 2018, or must you include or may you deduct a recapture of alimony?\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "The gate gives zero for the whole year when a pre-2019 agreement was changed after 2018 to expressly exclude alimony. Pub. 504 Example 2 says payments 'made in January 2025 through May 2025 are includible in the recipient's income and deductible from the payer's income' when the change took effect in June 2025.",
+   "ruling": "Ruling: finding (F1 in fixr2/s1.findings.md), as line 2a for the payer. p504 p. 16, Example 2: \"The alimony payments made in January 2025 through May 2025 are includible in the recipient's income and deductible from the payer's income\". The gate s1.alimony (\"... (and not changed after 2018 to expressly provide that alimony received isn't included in income) ...\") sends a payer whose pre-2019 agreement was changed in 2025 to zero for the year, though s1.alimony_paid excludes only \"payments made after the agreement was changed\" and amb.2025.alimony_screen asks the payments before the change. Mirror of the line 2a witness: a payer of $1,000 a month answering no deducts $0.00 on line 19a instead of the $5,000.00 paid before a June change. Pre-existing wording; the BUG-0240 rewording of s1.alimony_paid (\"cash payments only, so do not include child support, noncash property settlements, your spouse's part of community income, or payments to keep up or the use of your property\") matches p504 p. 13, \"Alimony doesn't include\", and p. 14, \"Only cash payments, including checks and money orders, qualify as alimony\", and introduces no error.",
+   "context": "318573643a0fbeae2d1ffc8d824795dfedef4e7266716fb7a9b2e5dbbe2b817d"
+  },
+  {
+   "printed": "20",
+   "restated": "Enter the amount from ira helper \"The total of lines 12a and 12b for Schedule 1, line 20\".",
+   "model": "The line 2 table enters $10,000 for every married-filing-separately return, but the worksheet says 'married filing separately and you lived apart from your spouse for all of 2025, enter $89,000.' Coverage also uses only the person's own plan, though the instructions say 'If you weren't covered by a retirement plan but your spouse was, you are considered covered by a plan unless you lived apart from your spouse for all of 2025,' and no refusal names these cases.",
+   "ruling": "Ruling: scope; i1040gi p. 97, IRA Deduction Worksheet line 2: \"Single, head of household, or married filing separately and you lived apart from your spouse for all of 2025, enter $89,000 ... Married filing separately and you lived with your spouse at any time in 2025, enter $10,000\"; p. 96: \"Married persons filing separately. If you weren't covered by a retirement plan but your spouse was, you are considered covered by a plan unless you lived apart from your spouse for all of 2025.\" The model says the line 2 table uses $10,000 for every married-filing-separately return and coverage uses only the person's own plan. Both rules are for married filing separately only, and a married filing separately return is refused at the return level (s3.mfs on scope.ready: \"The rules for a married filing separately return ... are outside this tool. Married filing jointly is supported.\", i1040gi p. 14). On a joint return the worksheet's own spouse rule ($246,000 for the person not covered) is applied (person.ira_not_covered_joint). Line 20 copies the worksheet total; unchanged by the fix round. Project stands.",
+   "context": "318573643a0fbeae2d1ffc8d824795dfedef4e7266716fb7a9b2e5dbbe2b817d"
+  },
+  {
+   "printed": "20",
+   "restated": "Enter the amount from ira helper \"The total of lines 12a and 12b for Schedule 1, line 20\".",
+   "model": "The restatement uses $10,000 on worksheet line 2 for every married filing separately filer, but the IRS says 'married filing separately and you lived apart from your spouse for all of 2025, enter $89,000', and no refusal covers this. The IRS also sends filers covered by a plan who file Form 8815 or exclude adoption benefits to Pub. 590-A ('you file Form 2555 or 8815, or you exclude employer-provided adoption benefits'), and no such refusal is shown.",
+   "ruling": "Ruling: scope; i1040gi p. 97, IRA Deduction Worksheet line 2: \"Single, head of household, or married filing separately and you lived apart from your spouse for all of 2025, enter $89,000 ... Married filing separately and you lived with your spouse at any time in 2025, enter $10,000\"; p. 96: \"Married persons filing separately. If you weren't covered by a retirement plan but your spouse was, you are considered covered by a plan unless you lived apart from your spouse for all of 2025.\" The model says the line 2 table uses $10,000 for every married-filing-separately return and coverage uses only the person's own plan. Both rules are for married filing separately only, and a married filing separately return is refused at the return level (s3.mfs on scope.ready: \"The rules for a married filing separately return ... are outside this tool. Married filing jointly is supported.\", i1040gi p. 14). On a joint return the worksheet's own spouse rule ($246,000 for the person not covered) is applied (person.ira_not_covered_joint). The model also says no refusal covers a covered filer who files Form 8815 or excludes employer-provided adoption benefits (i1040gi p. 96, \"If you were covered by a retirement plan and you file Form 2555 or 8815, or you exclude employer-provided adoption benefits, see Pub. 590-A\"). Both are refused before line 20: a savings bond interest exclusion by sb.unsupported (\"... a savings bond interest exclusion ...\", refusing Schedule B line 2, form \"Schedule B special treatment / Form 8815\"), and adoption benefits by scope.other_income (\"... adoption benefits ...\"); Form 2555 by ira.excl_gate. Line 20 copies the worksheet total; unchanged by fix round 3. Project stands.",
+   "context": "f1ebfbe1b2e4dfdc0f93874886ba18fc588976bbf8725412d115be2bdc995a23"
+  },
+  {
    "printed": "21",
    "restated": "Enter the amount from sli helper \"Student loan interest deduction (Schedule 1, line 21)\".",
    "model": "The form says only \"Student loan interest deduction.\" The line 21 instructions and the Student Loan Interest Deduction Worksheet (including its line 9 and its eligibility conditions) are not in the pages given, so the computed amount cannot be checked.",
@@ -85,6 +127,34 @@
    "restated": "Enter the amount from sli helper \"Student loan interest deduction (Schedule 1, line 21)\".",
    "model": "The text says 'Use Pub. 970 instead of the worksheet ... if you file Form 2555 or 4563, or you exclude income from sources within Puerto Rico.' Form 2555 is screened only indirectly through the line 8d refusal, and the Form 4563 and Puerto Rico cases are not refused, so the worksheet is applied where the IRS says not to use it.",
    "ruling": "Ruling: refusal located elsewhere; project retained. Form 2555, Form 4563 and excluded Puerto Rico income are refused by sa.excluded_income (\"Are you filing Form 2555 or Form 4563, or do you have income excluded as a bona fide resident of Puerto Rico?\") on worksheet line 1 (sli.line1), which the deduction reads (i1040gi p. 98, Line 21, \"Use Pub. 970 instead of the worksheet ... if you file Form 2555 or 4563, or you exclude income from sources within Puerto Rico\"). Line 21 copies the worksheet's result; the worksheet is judged in the render log of `sli`."
+  },
+  {
+   "printed": "21",
+   "restated": "Enter the amount from sli helper \"Student loan interest deduction (Schedule 1, line 21)\".",
+   "model": "Worksheet line 3 says 'lines 11 through 20, and 23 and 25', but the restatement adds only lines 11, 13, 15, 16, 17, 18, 19a, 20 and 25. It omits lines 12, 14 and 23 with no refusal shown, which can change modified AGI and the deduction; the other worksheet lines match.",
+   "ruling": "Ruling: scope; i1040gi p. 99, Student Loan Interest Deduction Worksheet, line 3 (\"the total of the amounts from Schedule 1, lines 11 through 20, and 23 and 25\"). Lines 12, 14 and 23 are named in scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately ...\"), which refuses Form 1040 line 8 and line 10 and every line after them (\"or an adjustment on Schedule 1 line 12, 14 or 23?\"), so within scope they are zero and worksheet line 3 is the sum of the lines figured. The worksheet itself is judged in the render log of `sli`. Unchanged by fix round 3.",
+   "context": "f1ebfbe1b2e4dfdc0f93874886ba18fc588976bbf8725412d115be2bdc995a23"
+  },
+  {
+   "printed": "21",
+   "restated": "Enter the amount from sli helper \"Student loan interest deduction (Schedule 1, line 21)\".",
+   "model": "Worksheet line 3 says 'the total of the amounts from Schedule 1, lines 11 through 20, and 23 and 25,' but the restatement omits lines 12, 14 and 23 and gives no refusal for them. Those amounts would change the modified AGI used for the phaseout.",
+   "ruling": "Ruling: scope; i1040gi p. 99, Student Loan Interest Deduction Worksheet, line 3 (\"the total of the amounts from Schedule 1, lines 11 through 20, and 23 and 25\"). Lines 12, 14 and 23 are named in scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately ...\"), which refuses Form 1040 line 8 and line 10 and every line after them (\"or an adjustment on Schedule 1 line 12, 14 or 23?\"), so within scope they are zero and worksheet line 3 is the sum of the lines figured. The worksheet itself is judged in the render log of `sli`. Unchanged by the fix round.",
+   "context": "318573643a0fbeae2d1ffc8d824795dfedef4e7266716fb7a9b2e5dbbe2b817d"
+  },
+  {
+   "printed": "25",
+   "restated": "Enter the amount from line 24a.",
+   "model": "The IRS line says 'Add lines 24a through 24z,' but the restatement enters only line 24a. No refusal given here excludes lines 24b through 24z.",
+   "ruling": "Ruling: scope; f1040s1 line 25, \"Add lines 24a through 24z\". Lines 24b to 24z are refused by scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately ...\"), which refuses Form 1040 line 8 and line 10 and every line after them (it lists jury duty pay given to the employer, line 24a, among the items asked separately); within scope they are zero, as the line's citation says. Line 24a is figured (decision D3). Same ruling as the earlier rounds.",
+   "context": "318573643a0fbeae2d1ffc8d824795dfedef4e7266716fb7a9b2e5dbbe2b817d"
+  },
+  {
+   "printed": "25",
+   "restated": "Enter the amount from line 24a.",
+   "model": "The IRS says 'Add lines 24a through 24z', but the restatement enters only line 24a. No refusal shown for this line names lines 24b through 24z.",
+   "ruling": "Ruling: scope; f1040s1 line 25, \"Add lines 24a through 24z\". Lines 24b to 24z are refused by scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately ...\"), which refuses Form 1040 line 8 and line 10 and every line after them (it lists jury duty pay given to the employer, line 24a, among the items asked separately); within scope they are zero, as the line's citation says. Line 24a is figured (decision D3). Same ruling as the earlier rounds; unchanged by fix round 3.",
+   "context": "f1ebfbe1b2e4dfdc0f93874886ba18fc588976bbf8725412d115be2bdc995a23"
   },
   {
    "printed": "25",
@@ -125,6 +195,20 @@
   {
    "printed": "26",
    "restated": "Add line 11, line 13, line 15, line 16, line 17, line 18, line 19a, line 20, line 21, and line 25.",
+   "model": "The IRS line says 'Add lines 11 through 23 and 25,' but the restatement omits lines 12, 14 and 23. No refusal given here excludes reservist and similar business expenses, military moving expenses or the Archer MSA deduction.",
+   "ruling": "Ruling: scope; f1040s1 line 26, \"Add lines 11 through 23 and 25\". Lines 12, 14 and 23 are named in scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately ...\"), which refuses Form 1040 line 8 and line 10 and every line after them (\"or an adjustment on Schedule 1 line 12, 14 or 23?\"); within scope they are zero, as the line's citation says. Line 22 is reserved; every other line is added. Same ruling as the earlier rounds.",
+   "context": "318573643a0fbeae2d1ffc8d824795dfedef4e7266716fb7a9b2e5dbbe2b817d"
+  },
+  {
+   "printed": "26",
+   "restated": "Add line 11, line 13, line 15, line 16, line 17, line 18, line 19a, line 20, line 21, and line 25.",
+   "model": "The IRS says 'Add lines 11 through 23 and 25', but the restatement omits lines 12, 14 and 23. No refusal shown for this line names those exclusions.",
+   "ruling": "Ruling: scope; f1040s1 line 26, \"Add lines 11 through 23 and 25\". Lines 12, 14 and 23 are named in scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately ...\"), which refuses Form 1040 line 8 and line 10 and every line after them (\"or an adjustment on Schedule 1 line 12, 14 or 23?\"); within scope they are zero, as the line's citation says. Line 22 is reserved; every other line is added. Same ruling as the earlier rounds; unchanged by fix round 3.",
+   "context": "f1ebfbe1b2e4dfdc0f93874886ba18fc588976bbf8725412d115be2bdc995a23"
+  },
+  {
+   "printed": "26",
+   "restated": "Add line 11, line 13, line 15, line 16, line 17, line 18, line 19a, line 20, line 21, and line 25.",
    "model": "The IRS says 'Add lines 11 through 23 and 25'. The program leaves out lines 12 (Form 2106 expenses), 14 (Armed Forces moving expenses) and 23 (Archer MSA deduction), and has no refusal for them.",
    "ruling": "Ruling: refusal located elsewhere; project retained. Lines 12, 14 and 23 are named in scope.schedule1 (\"or an adjustment on Schedule 1 line 12, 14 or 23?\"), which refuses Form 1040 line 10, the line this one is entered on; within scope they are zero, as the line's citation says (f1040s1, line 26, \"Add lines 11 through 23 and 25\"). Line 22 is reserved; every other line is added."
   },
@@ -133,6 +217,13 @@
    "restated": "Add line 11, line 13, line 15, line 16, line 17, line 18, line 19a, line 20, line 21, and line 25.",
    "model": "The form says 'Add lines 11 through 23 and 25'. The restatement omits line 12 (Form 2106 expenses), line 14 (moving expenses) and line 23 (Archer MSA deduction), and no refusal names them.",
    "ruling": "Ruling: refusal located elsewhere; project retained. Lines 12, 14 and 23 are named in scope.schedule1 (\"or an adjustment on Schedule 1 line 12, 14 or 23?\"), which refuses Form 1040 line 10, the line this one is entered on; within scope they are zero, as the line's citation says (f1040s1, line 26, \"Add lines 11 through 23 and 25\"). Line 22 is reserved; every other line is added."
+  },
+  {
+   "printed": "2a",
+   "restated": "Choose — [helper \"Did you receive or pay alimony or separate maintenance in 2025 under a divorce or separation agreement entered into on or before December 31, 2018, or must you include or may you deduct a recapture of alimony?\" = true → helper \"Alimony received, before the screen for more than one agreement, recapture and child support\"] [helper \"Did you receive or pay alimony or separate maintenance in 2025 under a divorce or separation agreement entered into on or before December 31, 2018, or must you include or may you deduct a recapture of alimony?\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "The gate requires an agreement 'not changed after 2018' to expressly exclude alimony, so such an agreement gives zero for the whole year. Pub. 504, Certain Rules for Instruments Executed or Modified After 2018, Example 2, says payments 'made in January 2025 through May 2025 are includible in the recipient's income' when the modification took effect in June 2025.",
+   "ruling": "Ruling: finding (F1 in fixr2/s1.findings.md; amount-affecting, the year an agreement is changed). p504 p. 16, Certain Rules for Instruments Executed or Modified After 2018, Example 2: \"the modification expressly provided that the post-2018 alimony rules apply. The alimony payments made in January 2025 through May 2025 are includible in the recipient's income and deductible from the payer's income. The alimony payments made in June 2025 through December 2025 are neither includible ... nor deductible\". The model is right: the gate s1.alimony asks \"Did you receive or pay alimony ... under a divorce or separation agreement entered into on or before December 31, 2018 (and not changed after 2018 to expressly provide that alimony received isn't included in income) ...\", so a filer whose agreement was changed in 2025 answers no and line 2a is zero for the whole year, though the amount question itself (s1.alimony_received, \"or payments made after the agreement was changed ...\") and the register's chosen reading (amb.2025.alimony_screen: amounts \"after a change that expressly excludes them, are not asked\") count the payments before the change. i1040gi p. 89, Line 2a (\"unless that agreement was changed after December 31, 2018, ...\") does not address the split year; p504 does. Witness (engine eval of stage16.small.s2 varied, single, $1,000 a month): s1.alimony false gives line 2a $0.00, AGI $30,000, tax (line 24) $1,475.00; s1.alimony true with the January-May $5,000 gives line 2a $5,000.00, AGI $35,000, tax $2,075.00. Pre-existing wording, not introduced by the fix round. The BUG-0240 rewording of s1.alimony_received is ruled in F2 (cosmetic).",
+   "context": "318573643a0fbeae2d1ffc8d824795dfedef4e7266716fb7a9b2e5dbbe2b817d"
   },
   {
    "printed": "8z",

@@ -73,7 +73,7 @@ form:
       locator: pp. 1-2, Who Must File (you or your employer made contributions to your HSA for 2025)
   - id: f8889.unsupported
     printed: (helper)
-    label: 'Any of these: a qualified HSA funding distribution from an IRA in 2025; contributions to an Archer MSA for 2025 (Form 8853), or, if you or your spouse had family coverage at any time during 2025, to your spouse''s Archer MSA; excess
+    label: 'Any of these: a qualified HSA funding distribution from an IRA in 2025; contributions to an Archer MSA for 2025 (Form 8853), or, if you or your spouse had family coverage at any time during 2025, any contribution by anyone to your spouse''s Archer MSA; excess
       HSA contributions from an earlier year that remain in your HSA; failing to remain an eligible individual during a testing
       period that began in an earlier year; an HSA you acquired because of the account beneficiary''s death; the HSA of a person who died in 2025 whose
       estate is the beneficiary; a deemed distribution
@@ -83,7 +83,7 @@ form:
     expr:
       op: input
       source: 'Any of these: a qualified HSA funding distribution from an IRA in 2025; contributions by you or your employer to
-        an Archer MSA for 2025 (Form 8853), or, if you or your spouse had family coverage under an HDHP at any time during 2025, to your spouse''s Archer MSA; excess HSA contributions from an earlier year that remain in your HSA; failing
+        an Archer MSA for 2025 (Form 8853), or, if you or your spouse had family coverage under an HDHP at any time during 2025, any contribution by anyone to your spouse''s Archer MSA; excess HSA contributions from an earlier year that remain in your HSA; failing
         to remain an eligible individual during a testing period that began in an earlier year (last-month rule or qualified
         HSA funding distribution); an HSA you acquired because of the account beneficiary''s death; the HSA of a person who
         died in 2025 whose estate is the beneficiary (its value at death is included on the final return); a deemed distribution
@@ -91,9 +91,10 @@ form:
         excess contributions or their earnings, made in 2025 or in 2026 by the due date of your 2025 return, including extensions; or a mistaken distribution you repaid to your HSA?'
     cite:
       doc: i8889
-      locator: Parts II and III, line 4 (Archer MSAs), line 10 (qualified HSA funding distributions), line 13 (Prior Year
+      locator: 'f8889 p. 1, line 4, "If you or your spouse had family coverage under an HDHP at any time during 2025, also
+        include any amount contributed to your spouse’s Archer MSAs"; Parts II and III, line 4 (Archer MSAs), line 10 (qualified HSA funding distributions), line 13 (Prior Year
         Excess Contributions), line 14b (excess contributions withdrawn), Lines 17a and 17b (mistaken distributions), Death
-        of HSA Account Beneficiary, and Deemed Distributions From HSAs
+        of HSA Account Beneficiary, and Deemed Distributions From HSAs'
   - id: f8889.mfs
     printed: (gate)
     label: 'Married filing separately'

@@ -10,13 +10,15 @@ form:
     - id: f8960.unsupported
       printed: (helper)
       type: Bool
-      label: 'Any annuity, rental, royalty, business or pass-through income; a CFC or PFIC holding; a section 911 exclusion; a disposition adjustment; a section 1411 net operating loss; excluded savings bond interest (Form 8815); a deductible investment expense other than investment interest or state and local tax; or another net investment income adjustment?'
+      label: 'Any annuity, rental, royalty, business or pass-through income; a CFC or PFIC holding; a section 911 exclusion; a disposition adjustment (Form 8960 line 5b or 5c, for example gain on employer securities attributable to net unrealized appreciation (NUA) from a qualified plan, or the sale of property held in a trade or business or of an interest in a partnership or S corporation); a section 1411 net operating loss; excluded savings bond interest (Form 8815); a deductible investment expense other than investment interest or state and local tax; or another net investment income adjustment?'
       expr:
         op: input
-        source: 'Any annuity, rental, royalty, business or pass-through income; a CFC or PFIC holding; a section 911 exclusion; a disposition adjustment; a section 1411 net operating loss; excluded savings bond interest (Form 8815); a deductible investment expense other than investment interest or state and local tax; or another net investment income adjustment?'
+        source: 'Any annuity, rental, royalty, business or pass-through income; a CFC or PFIC holding; a section 911 exclusion; a disposition adjustment (Form 8960 line 5b or 5c, for example gain on employer securities attributable to net unrealized appreciation (NUA) from a qualified plan, or the sale of property held in a trade or business or of an interest in a partnership or S corporation); a section 1411 net operating loss; excluded savings bond interest (Form 8815); a deductible investment expense other than investment interest or state and local tax; or another net investment income adjustment?'
       cite:
         doc: f8960
-        locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+        locator: 'Form 8960 (2025), Parts I–III, individual lines 1–17; i8960 p. 9, line 5b, "Any gain attributable to NUA (within
+          the meaning of section 402(e)(4)) that you realize on a disposition of employer securities held by a qualified plan
+          is a distribution within the meaning of section 1411(c)(5) and isn’t included in NII."'
     - id: f8960.prior_2i
       printed: (gate)
       type: Bool

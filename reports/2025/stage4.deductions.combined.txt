@@ -304,9 +304,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [f8959] p. 1, Part V, line 24, "Total Additional Medicare Tax withholding. Add lines 22 and 23"; i8959 pp. 1–3 (2025; created 2025-04-30; 13e64004)
 
 == Form 8960 — wage, interest, dividend and securities slice ==
-  (helper) Any annuity, rental, royalty, business or pass-through income; a CFC or PFIC holding; a section 911 exclusion; a disposition adjustment; a section 1411 net operating loss; excluded savings bond interest (Form 8815); a deductible investment expense other than investment interest or state and local tax; or another net investment income adjustment?
+  (helper) Any annuity, rental, royalty, business or pass-through income; a CFC or PFIC holding; a section 911 exclusion; a disposition adjustment (Form 8960 line 5b or 5c, for example gain on employer securities attributable to net unrealized appreciation (NUA) from a qualified plan, or the sale of property held in a trade or business or of an interest in a partnership or S corporation); a section 1411 net operating loss; excluded savings bond interest (Form 8815); a deductible investment expense other than investment interest or state and local tax; or another net investment income adjustment?
       = false
-      cite: [f8960] Form 8960 (2025), Parts I–III, individual lines 1–17 (2025; created 2025-08-19; 9b323b71)
+      cite: [f8960] Form 8960 (2025), Parts I–III, individual lines 1–17; i8960 p. 9, line 5b, "Any gain attributable to NUA (within the meaning of section 402(e)(4)) that you realize on a disposition of employer securities held by a qualified plan is a distribution within the meaning of section 1411(c)(5) and isn’t included in NII." (2025; created 2025-08-19; 9b323b71)
   (gate) A capital loss carryover with a 2024 Net Gains and Losses Worksheet line 2(i) amount, on a return whose modified adjusted gross income is over the threshold
       = false
       cite: [i8960] p. 9, "capital loss carryforwards must be adjusted"; p. 10, Net Gains and Losses Worksheet, line 2(h), "Enter the amount reported on line 2(i) of this worksheet from your prior tax year return calculations" (2025; printed date 2026-02-04; b10fbb23)
@@ -473,13 +473,13 @@ Values sheet — tax year 2025 (not a complete return for all filers)
 == Form 8283 — groups of similar noncash property — gift[books] ==
   (helper) Deduction before income limits for this item or group of similar items across all donees, after required valuation/basis reductions
       = $200
-      cite: [i8283] pp. 1–3, Who Must File and Which Sections To Complete; f8283 Section A (December 2025; printed date 2026-01-30; 2de015f7)
+      cite: [i8283] pp. 1–3, Who Must File and Which Sections To Complete; f8283 Section A; p. 3, Similar Items of Property, "Similar items of property are items of the same general category or type, such as coin collections, paintings, books, clothing, jewelry, nonpublicly traded stock, land, or buildings." (December 2025; printed date 2026-01-30; 2de015f7)
   (helper) Is this group publicly traded securities?
       = false
       cite: [i8283] pp. 1–3, Who Must File and Which Sections To Complete; f8283 Section A (December 2025; printed date 2026-01-30; 2de015f7)
-  (helper) Does this group need an appraisal or other special treatment: a deduction over $5,000 (before any income limit), or property worth more than $5,000, for one item or for similar items given to all donees together (other than publicly traded securities), a noncash contribution reaching you through a Schedule K-1, vehicles, pass-through entity interests, intellectual property, inventory, conservation or partial interests, property with restrictions on its use, or a clothing or household item over $500 not in good used condition?
+  (helper) Does this group need an appraisal or other special treatment: a deduction over $5,000 (before any income limit), or property worth more than $5,000, for one item or for similar items (items of the same general category or type, such as coin collections, paintings, books, clothing, jewelry, nonpublicly traded stock, land or buildings) given to all donees together (other than publicly traded securities), a noncash contribution reaching you through a Schedule K-1, vehicles, pass-through entity interests, intellectual property, inventory, conservation or partial interests, property with restrictions on its use, or a clothing or household item over $500 not in good used condition?
       = false
-      cite: [i8283] pp. 1–3, Who Must File and Which Sections To Complete; f8283 Section A (December 2025; printed date 2026-01-30; 2de015f7)
+      cite: [i8283] pp. 1–3, Who Must File and Which Sections To Complete; f8283 Section A; p. 3, Similar Items of Property, "Similar items of property are items of the same general category or type, such as coin collections, paintings, books, clothing, jewelry, nonpublicly traded stock, land, or buildings." (December 2025; printed date 2026-01-30; 2de015f7)
   (helper) Appraisal threshold: non-publicly-traded group over $5,000
       = false
       cite: [i8283] pp. 1–3, Who Must File and Which Sections To Complete; f8283 p. 1, Section A, "Also list publicly traded securities and certain other property even if the deduction is more than $5,000", Section B, "for which you claimed a deduction of more than $5,000 per item or group (except contributions reportable in Section A)" (December 2025; printed date 2026-01-30; 2de015f7)
@@ -510,9 +510,18 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = false
       cite: [i1040gi] p. 66, Self-Select PIN, "You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025" (2025; printed date 2026-02-25; 482e9c48)
       note: Interpretation amb.2025.filer_under_16: The second. The refusal cites the one sentence the text has about age 16 and names the register entry; it does not claim the text forbids the return. The owner's decision of 2026-10-22 (integrity plan decision 10). A return for a child under 16 is one the tool's slice does not model well (Form 8615 is refused through scope.other_line16 only when the filer knows to answer it); the refusal makes the age an explicit entry rather than a silent assumption. (i1040gi, p. 66, Self-Select PIN, "You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025")
+  (helper) Did you live in a community property state at any time in 2025?
+      = false
+      cite: [i1040gi] p. 23, Community Property States, "Community property states include Arizona, California, Idaho, Louisiana, Nevada, New Mexico, Texas, Washington, and Wisconsin" (2025; printed date 2026-02-25; 482e9c48)
   (gate) Head of household checked without meeting its tests
       = false
       cite: [i1040gi] p. 14, Head of Household (2025; printed date 2026-02-25; 482e9c48)
+  (gate) Qualifying surviving spouse checked without meeting its tests
+      = false
+      cite: [i1040gi] p. 15, Qualifying Surviving Spouse, "use joint return tax rates for 2025 if all of the following apply" (2025; printed date 2026-02-25; 482e9c48)
+  (gate) Not filing jointly, living in a community property state, and a registered domestic partner in Nevada, Washington or California
+      = false
+      cite: [i1040gi] p. 23, Community Property States, Nevada, Washington, and California domestic partners, "A registered domestic partner in Nevada, Washington, or California must generally report half the combined community income of the individual and their domestic partner. See Form 8958 and Pub. 555" (2025; printed date 2026-02-25; 482e9c48)
 
 == Schedule B — interest payer entries — interest[bank] ==
   (helper) Taxable interest from this payer, including Treasury interest; exclude tax-exempt interest
@@ -764,7 +773,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       note: Interpretation amb.2025.f5329_simple_limits: The first (person.x_limit_binds refuses Form 5329 line 4). The split changes the tax and the text gives no rule, so the tool refuses the narrow case rather than choose one; a session choice within the owner's D4, reported to the owner. (i5329, p. 5, Line 4, "If any amount on line 3 was a distribution from a SIMPLE IRA received within 2 years from the date you first participated in the SIMPLE IRA plan, you must multiply that amount by 25% instead of 10%.")
   (gate) Form 5329 parts this tool does not prepare
       = false
-      cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account." (2025; 2ad77023)
+      cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed." (2025; 2ad77023)
   (helper) This person's 2025 HSA excess contributions (Form 8889)
       = $0
       cite: [i5329] p. 8, Line 47, "Enter the excess of your contributions (made by you or on your behalf) to your HSAs for 2025 from Form 8889, line 2 (unless withdrawn—discussed next), over your contribution limit (Form 8889, line 12)." (2025; aec3d325)
@@ -962,7 +971,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       note: confirmed roster $oi8z:
   (helper) Did you receive or pay alimony or separate maintenance in 2025 under a divorce or separation agreement entered into on or before December 31, 2018, or must you include or may you deduct a recapture of alimony?
       = false
-      cite: [i1040gi] p. 89, Line 2a, "Enter amounts received as alimony or separate maintenance pursuant to a divorce or separation agreement entered into on or before December 31, 2018"; p. 95, Line 19a, "You can't take a deduction for alimony payments you made to or for your spouse if you entered into your divorce or separation agreement after December 31, 2018" (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 89, Line 2a, "Enter amounts received as alimony or separate maintenance pursuant to a divorce or separation agreement entered into on or before December 31, 2018"; p. 95, Line 19a, "You can't take a deduction for alimony payments you made to or for your spouse if you entered into your divorce or separation agreement after December 31, 2018"; p504 p. 16, Example 2, "The alimony payments made in January 2025 through May 2025 are includible in the recipient’s income and deductible from the payer’s income." (2025; printed date 2026-02-25; 482e9c48)
   2a  Alimony received
       = $0
       cite: [f1040s1] Schedule 1 (2025), line 2a; i1040gi p. 89, Line 2a, "Alimony received is not included in your income if you entered into a divorce or separation agreement after December 31, 2018" (2025; created 2025-07-25; 8dafec71)
@@ -1324,9 +1333,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Are you required to file Form 8938 for specified foreign financial assets?
       = false
       cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
-  8   Received a distribution from, or were grantor of or transferor to, a foreign trust during 2025?
+  8   During 2025, did you receive a distribution from a foreign trust (a loan of cash or marketable securities counts), or were you the grantor of, or a transferor to, a foreign trust that existed at any time during 2025?
       = false
-      cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
+      cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts; p. 3, Line 8, "a loan of cash or marketable securities is generally considered to be a distribution"; "If you were the grantor of, or transferor to, a foreign trust that existed during 2025, you may have to file Form 3520." (TY2025; printed April 23, 2025; b92f31ec)
   (helper) Year parameter sales.zero
       = $0
       cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
@@ -1345,18 +1354,18 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
 
 == Proof-of-concept scope screening ==
-  (helper) Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately (business income or loss from Schedule C; a taxable state or local income tax refund; alimony under an agreement made before 2019; unemployment compensation; the line 8 items asked one by one; educator expenses; the HSA deduction; the deductible part of self-employment tax; self-employed SEP and SIMPLE contributions; the self-employed health insurance deduction; the penalty on early withdrawal of savings; the IRA deduction; student loan interest; jury duty pay you gave your employer), including statutory-employee wages or clergy income; church employee income (wages from a church that elected exemption from social security and Medicare taxes); other qualified retirement plans for the self-employed (such as a solo 401(k) or other Keogh plan); a refund or other recovery of an amount you deducted or took a credit for in an earlier year, other than a state or local income tax refund (for example a refund of general sales tax, real estate tax or personal property tax, a refund of mortgage interest in box 4 of Form 1098, a reimbursement of medical expenses, or a payment on a bad debt you deducted); sales of business property (Form 4797); a net operating loss deduction; rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1); rental of personal property; farm income (Schedule F); an exclusion of Medicaid waiver payments (Schedule 1 line 8s); or an adjustment on Schedule 1 line 12, 14 or 23? (Schedule 1-A deductions are asked separately.)
+  (helper) Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately (business income or loss from Schedule C; a taxable state or local income tax refund; alimony under an agreement made before 2019; unemployment compensation; the line 8 items asked one by one; educator expenses; the HSA deduction; the deductible part of self-employment tax; self-employed SEP and SIMPLE contributions; the self-employed health insurance deduction; the penalty on early withdrawal of savings; the IRA deduction; student loan interest; jury duty pay you gave your employer), including statutory-employee wages or income as a minister, a member of a religious order who has not taken a vow of poverty, or a Christian Science practitioner; church employee income (wages from a church that elected exemption from social security and Medicare taxes); other qualified retirement plans for the self-employed (such as a solo 401(k) or other Keogh plan); a refund or other recovery of an amount you deducted or took a credit for in an earlier year, other than a state or local income tax refund (for example a refund of general sales tax, real estate tax or personal property tax, a refund of mortgage interest in box 4 of Form 1098, a reimbursement of medical expenses, or a payment on a bad debt you deducted); sales of business property (Form 4797); a net operating loss deduction; rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1); rental of personal property; farm income (Schedule F); an exclusion of Medicaid waiver payments (Schedule 1 line 8s); or an adjustment on Schedule 1 line 12, 14 or 23? (Schedule 1-A deductions are asked separately.)
       = false
-      cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
+      cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31; i1040gi p. 43, Clergy, "The following instructions apply to ministers, members of religious orders who have not taken a vow of poverty, and Christian Science practitioners." (2025; created 2025-09-05; 3d31c226)
   (helper) Do you want to claim any credit other than the foreign tax credit claimed without Form 1116, the excess social security credit, the child tax credit, the credit for other dependents, the additional child tax credit, the earned income credit, the credit for child and dependent care expenses (Form 2441), the retirement savings contributions credit (Form 8880), the residential energy credits (Form 5695), the net premium tax credit this tool figures on Form 8962 from your Forms 1095-A (Schedule 3 line 9) and the education credits this tool figures on Form 8863 (the American opportunity and lifetime learning credits), or do you have any other amount for Schedule 3 Part I (for example a Form 8978 adjustment)?
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
   (helper) Any nonresident alien status (you or your spouse, for any part of 2025) or other income or return treatment outside wages, interest, dividends, supported securities sales, Form 1099-R distributions and social security benefits, including wages or tips not on a Form W-2, Medicaid waiver payments (whether or not in Form W-2 box 1), adoption benefits, dependent care benefits other than those shown in box 10 of a Form W-2 (or a grace-period amount from such a plan), other earned income (Form 1040 lines 1b to 1d and 1f to 1h), or income or loss from a passive activity (including gain on selling an interest in one)?
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
-  (helper) Any additional Form 1040 line 16 tax or filing, including filing Form 8814 (even with no tax), Form 4972, Form 8615, a section 962 election, Form 8621, a Form 8978 amount, or recapture of an education credit?
+  (helper) Any additional Form 1040 line 16 tax or filing, including filing Form 8814 (even with no tax), Form 4972, Form 8615 (required if you had more than $2,700 of unearned income, are required to file, do not file jointly, have a parent who was alive at the end of 2025, and were under 18 at the end of 2025, or 18 with earned income of not more than half your support, or a full-time student 19 to 23 with earned income of not more than half your support), a section 962 election, Form 8621, a Form 8978 amount, or recapture of an education credit?
       = false
-      cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
+      cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31; i1040gi p. 36, "You must file Form 8615 if you meet all of the following conditions." (2025; created 2025-09-05; 3d31c226)
   (helper) All declared scope screens passed
       = true
       cite: [f1040] Form 1040 (2025), the lines the screens cover: line 8, "Additional income from Schedule 1, line 10", line 10, "Adjustments to income from Schedule 1, line 26", line 13b, "Additional deductions from Schedule 1-A, line 38", line 16, "Tax (see instructions). Check if any from Form(s)", line 19, "Child tax credit or credit for other dependents from Schedule 8812", line 20, "Amount from Schedule 3, line 8", line 27a, "Earned income credit (EIC)", line 28, "Additional child tax credit (ACTC) from Schedule 8812", line 29, "American opportunity credit from Form 8863, line 8", line 30, "Refundable adoption credit from Form 8839, line 13", line 31, "Amount from Schedule 3, line 15" (2025; created 2025-09-05; 3d31c226)
@@ -1637,8 +1646,10 @@ Derivations:
   household.roster_ok: test(household.filer_under16 = false; f1040.status = single; "mfj" = mfj; f1040.status = single; "mfj" = mfj; household.taxpayers = 1; 1 = 1; household.spouses = 0; 0 = 0)
   household.roster_bad: test(household.roster_ok = true; false = false)
   f1040.household.roster_bad: test(household.roster_ok = true; false = false)
+  household.rdp_community_property: test(f1040.status = single; "mfj" = mfj; household.community_property = false; true = true)
+  f1040.household.rdp_community_property: test(f1040.status = single; "mfj" = mfj; household.community_property = false; true = true)
   person[taxpayer].box1: sum_over(person[taxpayer].w2[a].box1 = $98,000)
-  f1040.line1a: sum_over(household.roster_bad = false; person[taxpayer].box1 = $98,000)
+  f1040.line1a: sum_over(household.roster_bad = false; household.rdp_community_property = false; person[taxpayer].box1 = $98,000)
   f2441.zero: param(#sales.zero = $0)
   f1040.f2441.zero: param(#sales.zero = $0)
   f1040.line1e: choose(f2441.benefits = false; true = true; f2441.benefits = false; false = false; f2441.zero = $0)
@@ -1723,6 +1734,8 @@ Derivations:
   f1040.line11b: copy(f1040.line11a = $100,000)
   household.hoh_fails: test(f1040.status = single; "hoh" = hoh)
   f1040.household.hoh_fails: test(f1040.status = single; "hoh" = hoh)
+  household.qss_fails: test(f1040.status = single; "qss" = qss)
+  f1040.household.qss_fails: test(f1040.status = single; "qss" = qss)
   sa.mfs: test(f1040.status = single; "mfs" = mfs)
   sa.mfs_spouse_itemizes: test(sa.mfs = false; true = true)
   sa.f1040.line11b: copy(f1040.line11a = $100,000)
@@ -1794,7 +1807,7 @@ Derivations:
   sa.itemizes: test(sa.elect_itemize = false; true = true; sa.mfs_spouse_itemizes = false; true = true; sa.line17 = $27,700; sa.standard = $15,750)
   sa.deduction: choose(sa.itemizes = true; true = true; sa.line17 = $27,700)
   f1040.sa.deduction: choose(sa.itemizes = true; true = true; sa.line17 = $27,700)
-  f1040.line12e: copy(household.hoh_fails = false; sa.deduction = $27,700)
+  f1040.line12e: copy(household.hoh_fails = false; household.qss_fails = false; sa.deduction = $27,700)
   qbi.sa.agi: copy(f1040.line11b = $100,000)
   qbi.sa.deduction: choose(sa.itemizes = true; true = true; sa.line17 = $27,700)
   s1.sc_1a_count: sum_over(person[taxpayer].sc_1a = 0)

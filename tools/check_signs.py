@@ -18,6 +18,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 from taxyear import Y  # noqa: E402
 import baseline_check  # noqa: E402
+from baseline_check import line_subject  # noqa: E402
 
 CANONICAL = ROOT / "canonical" / Y
 RULINGS = ROOT / "reviews" / Y / "signs.json"
@@ -46,7 +47,7 @@ def findings(forms):
         for line in form["lines"]:
             for op, amount in amount_of(line.get("expr")):
                 if types.get(amount) == "Dollars":
-                    out.append({"kind": "sign", "line": line["id"], "form": form["id"],
+                    out.append({"kind": "sign", "line": line["id"], "subject": line_subject(line), "form": form["id"],
                                 "detail": f"`{op}` of `{amount}`, a signed Dollars line"})
     return out
 

@@ -26,10 +26,10 @@
 
 ## (helper) — `ssb.terror_disability`
 
-- **Authored helper label:** Are any of the social security or railroad retirement benefits on your Forms SSA-1099 or RRB-1099 disability payments for injuries incurred as a direct result of a terrorist attack directed against the United States or its allies (including injuries covered by the September 11 Victim Compensation Fund)?
-- **Encoded (Bool):** Input — Are any of the social security or railroad retirement benefits on your Forms SSA-1099 or RRB-1099 disability payments for injuries incurred as a direct result of a terrorist attack directed against the United States or its allies (including injuries covered by the September 11 Victim Compensation Fund)?
-- Expr: `{"op":"input","source":"Are any of the social security or railroad retirement benefits on your Forms SSA-1099 or RRB-1099 disability payments for injuries incurred as a direct result of a terrorist attack directed against the United States or its allies (including injuries covered by the September 11 Victim Compensation Fund)?"}`
-- Cite: [i1040gi] p. 31, Lines 6a and 6b, Disability payments (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Authored helper label:** Are any of the social security or railroad retirement benefits on your Forms SSA-1099 or RRB-1099 disability payments for injuries incurred as a direct result of a terrorist attack directed against the United States or its allies (for the September 11 attacks, any injury eligible for coverage by the September 11 Victim Compensation Fund, whether or not you made a claim)?
+- **Encoded (Bool):** Input — Are any of the social security or railroad retirement benefits on your Forms SSA-1099 or RRB-1099 disability payments for injuries incurred as a direct result of a terrorist attack directed against the United States or its allies (for the September 11 attacks, any injury eligible for coverage by the September 11 Victim Compensation Fund, whether or not you made a claim)?
+- Expr: `{"op":"input","source":"Are any of the social security or railroad retirement benefits on your Forms SSA-1099 or RRB-1099 disability payments for injuries incurred as a direct result of a terrorist attack directed against the United States or its allies (for the September 11 attacks, any injury eligible for coverage by the September 11 Victim Compensation Fund, whether or not you made a claim)?"}`
+- Cite: [i1040gi] p. 31, Lines 6a and 6b, Disability payments, "In the case of the September 11 attacks, injuries eligible for coverage by the September 11 Victim Compensation Fund are treated as incurred as a direct result of the attack." (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `ssb.lived_apart`
 

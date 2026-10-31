@@ -2,6 +2,22 @@
  "bank": null,
  "errors": [
   {
+   "line": "dependent.h_qr_dep",
+   "message": "dependent.dependent.h_qr_dep: reference 'dependent.h_qr_rel' does not resolve"
+  },
+  {
+   "line": "dependent.h_qr_dep",
+   "message": "dependent.dependent.h_qr_dep: comparison operands have incompatible types"
+  },
+  {
+   "line": "dependent.h_dc_would_be",
+   "message": "dependent.dependent.h_dc_would_be: reference 'dependent.h_qr_rel' does not resolve"
+  },
+  {
+   "line": "dependent.h_dc_would_be",
+   "message": "dependent.dependent.h_dc_would_be: comparison operands have incompatible types"
+  },
+  {
    "line": "dependent.dc_count",
    "message": "dependent.dependent.dc_count: collection parent binding mismatch"
   }
@@ -119,10 +135,10 @@
    "triage": "candidate invalid"
   },
   {
-   "candidate": "dependent.dc_line2d",
-   "handle": "2(d)",
+   "candidate": "dependent.ptc_magi_counted",
+   "handle": "dependent.ptc_magi_counted",
    "open_at_triage": true,
-   "project": "dependent.dc_line2d",
+   "project": "dependent.ptc_magi_counted",
    "shown_when": null,
    "status": "DISAGREE",
    "triage": "candidate invalid"
@@ -182,10 +198,10 @@
    "triage": "candidate invalid"
   }
  ],
- "log_sha256_at_triage": "dfdc556e2dafbdb604004952e85d198959e6221ddadff6f8fdc2905c0fe8afd8",
+ "log_sha256_at_triage": "0664c98534803a7fa7298be6118353b8f1e5cc09875a91afeb87af19e7e25f3f",
  "policy": "executable-triage-v2",
- "response_sha256": "466f9c9cead39e2e1d5880a521b7307417f414bce8ca6c71bae8792d4a15a0b4",
+ "response_sha256": "d41ce10e9a8098af2f7918c1d478a5738537ad0cc5a03e5021546aada0daf006",
  "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
  "state": "invalid",
- "subject_sha256": "c5346b1b85b4df02782588401f524a68ed6cbc01e65cef1dee6822235c267030"
+ "subject_sha256": "9447fba25075e5716eb5ee416844e8b751d79adc45a511815db0feebab514f4b"
 }

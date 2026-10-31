@@ -2,8 +2,12 @@
  "bank": null,
  "errors": [
   {
-   "line": "f8889.line3",
-   "message": "model changed a published result type"
+   "line": "f8889.split",
+   "message": "malformed expression (project schema): data/all/0 must be object, data/all/0 must be object, data/all/0 must be object"
+  },
+  {
+   "line": "f8889.split",
+   "message": "f8889.f8889.split: malformed expression"
   }
  ],
  "failures": [],
@@ -56,15 +60,6 @@
    "triage": "candidate invalid"
   },
   {
-   "candidate": "f8889.line5",
-   "handle": "5",
-   "open_at_triage": true,
-   "project": "f8889.line5",
-   "shown_when": null,
-   "status": "DISAGREE",
-   "triage": "candidate invalid"
-  },
-  {
    "candidate": "f8889.line6",
    "handle": "6",
    "open_at_triage": true,
@@ -110,10 +105,19 @@
    "triage": "candidate invalid"
   },
   {
-   "candidate": "f8889.line14c",
-   "handle": "14c",
+   "candidate": "f8889.line14b",
+   "handle": "14b",
    "open_at_triage": true,
-   "project": "f8889.line14c",
+   "project": "f8889.line14b",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8889.line15",
+   "handle": "15",
+   "open_at_triage": true,
+   "project": "f8889.line15",
    "shown_when": null,
    "status": "DISAGREE",
    "triage": "candidate invalid"
@@ -126,12 +130,21 @@
    "shown_when": null,
    "status": "DISAGREE",
    "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8889.line17b",
+   "handle": "17b",
+   "open_at_triage": true,
+   "project": "f8889.line17b",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
   }
  ],
- "log_sha256_at_triage": "0b77c4bdb864201634c45cc976201e56b06fa7a779f8f3ccc322d988946eb578",
+ "log_sha256_at_triage": "c1cbc0b35d1b495b04333728200d52bf5b5248c83a4854040e2f46bb04351c32",
  "policy": "executable-triage-v2",
- "response_sha256": "28e2b086315868ebe028013d79ba1e3a724ddc42f8c27edb13bd29eb18a14c0a",
+ "response_sha256": "f8e4883f1bb2469a606489d3570550aba331fa3ed4c36fffd5c83518a1b596a0",
  "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
  "state": "invalid",
- "subject_sha256": "18edc485f2f07661fe977864979b4a160899eaa35b334194d5a56633ba793d47"
+ "subject_sha256": "79c60bf9932b030f9f08f341a8d5c3a650d43b73947734f5851cbcc73cb846a9"
 }

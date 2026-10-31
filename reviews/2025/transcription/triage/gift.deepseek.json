@@ -1,0 +1,14 @@
+{
+ "bank": null,
+ "errors": [],
+ "failures": [],
+ "family": "deepseek",
+ "form": "gift",
+ "lines": [],
+ "log_sha256_at_triage": "1d59b9c6620f175be1c12d8469479be88f51499bbfbf26721ad19b5b0b88ddfc",
+ "policy": "executable-triage-v2",
+ "response_sha256": "b89d7b26978ccd27f326c152f973e0251f8991e255c064ff8c22c9fffca9e368",
+ "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
+ "state": "no candidate lines",
+ "subject_sha256": "4b41963405bbce880647ac9dc9dbdfcc9507404cb92dc7cb300a4c5c877321a2"
+}

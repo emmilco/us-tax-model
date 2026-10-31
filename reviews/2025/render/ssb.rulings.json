@@ -3,6 +3,13 @@
  "form": "ssb",
  "rulings": [
   {
+   "printed": "6",
+   "restated": "Add s1 line 11, s1 line 13, s1 line 15, s1 line 16, s1 line 17, s1 line 18, s1 line 19a, helper \"Schedule 1, line 20 (IRA deduction) as this worksheet reads it, figured with no one covered by a retirement plan\", and s1 line 25.",
+   "model": "The IRS total includes the actual Schedule 1 line 20 ('lines 11 through 20, and 23 and 25'), and the IRA worksheet says 'you can deduct a smaller amount and treat the rest as a nondeductible contribution.' The helper always uses the maximum (smallest of the applicable amount, line 10, and line 11), and no shown refusal or link to the deduct-less screen covers that election; the omitted lines 12, 14, and 23 and retirement-plan coverage are properly refused.",
+   "ruling": "Ruling: scope; i1040gi p. 32, worksheet line 6 (\"lines 11 through 20, and 23 and 25\"); p. 98, IRA Deduction Worksheet line 12: \"Or, if you want, you can deduct a smaller amount and treat the rest as a nondeductible contribution (see Form 8606)\"; amb.2025.ira_ssb_copy. The copy ssb.ira_line20 is the register's chosen reading of line 20 on the no-coverage path. The election to deduct less is refused for the return by ira.less_gate on s1.line20 (amb.2025.ira_deduct_less): checked on stage16.refuse.ira.deduct_less with $20,000 of benefits, Form 1040 line 24 is refused on ira.less_gate, so the maximum the copy figures never reaches a completed return. Coverage is refused by ira.cov_gate and ssb.pub915, and lines 12, 14 and 23 by scope.schedule1, as the model accepts. Project stands on the English.",
+   "context": "cd55f4f3421e463c42cce87c8440983a98dd9f4d816b2f5ca5b6337880ca12c2"
+  },
+  {
    "printed": "9",
    "restated": "Subtract line 8 from line 7. If zero or less, enter -0-.",
    "model": "The IRS says MFS filers who lived with their spouse 'skip lines 8 through 15.' The restatement computes line 9 anyway, giving line 7 minus 0, so lines 9, 11 and 15 get nonzero amounts where the IRS has none. Line 16 is unaffected, and in all other cases the restatement matches 'Subtract line 8 from line 7' with the STOP shown as -0-.",

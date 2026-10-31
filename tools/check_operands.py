@@ -26,6 +26,7 @@ sys.path.insert(0, str(ROOT / "tools"))
 from taxyear import Y  # noqa: E402
 from citations import split_top  # noqa: E402
 import baseline_check  # noqa: E402
+from baseline_check import line_subject  # noqa: E402
 
 CANONICAL = ROOT / "canonical" / Y
 RULINGS = ROOT / "reviews" / Y / "operands.json"
@@ -171,7 +172,7 @@ def findings(forms):
                 detail += f"; not an operand: {', '.join(sorted(missing))}"
             if extra:
                 detail += f"; operand not named: {', '.join(sorted(extra))}"
-            out.append({"kind": "operands", "line": lid, "form": line["form"], "detail": detail,
+            out.append({"kind": "operands", "line": lid, "subject": line_subject(line), "form": line["form"], "detail": detail,
                         "refuses": [r.get("when") for r in line.get("refuses", []) or []]})
     return out
 

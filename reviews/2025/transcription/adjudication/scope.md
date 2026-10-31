@@ -21,7 +21,7 @@ Findings: one, F3 in `.transcription/proposed/stage18/scope.findings.md` (cosmet
 `scope.credits` remedy (scope.yaml, f1040.yaml twice, s3.yaml) still calls the premium tax credit "entered from Form
 8962". The question's own Stage 18 wording is right.
 
-## Stage 19
+## Stage 19 (superseded subject)
 
 Subject after Stage 19. `scope.credits` now lists "the education credits this tool figures on Form 8863 (the
 American opportunity and lifetime learning credits)" as supported. Its refusal now reads "Other credit forms
@@ -39,3 +39,20 @@ in `.transcription/proposed/stage19/render.scope[.deepseek].json`.
 | deepseek | render | ready | interface gap | UNCLEAR | i1040gi p. 14 | The married filing separately refusal is right; F3's stale remedy is fixed. |
 
 Findings: none for scope in Stage 19.
+
+## Fix round 2
+
+Subject after BUG-0232 (`scope.other_line16` states the Form 8615 conditions) and BUG-0233 (`scope.schedule1` names
+ministers, members of religious orders without a vow of poverty and Christian Science practitioners). Both transcription
+logs and the deepseek render log have no open section. The Claude render model was given Form 1040 pp. 1-2 and i1040gi
+pp. 14, 36 and 43, and judged both changed questions MATCH against pp. 36 and 43. Full ruling text:
+`.transcription/proposed/fixr2/render.scope.json`.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | render | schedule1 | interface gap | UNCLEAR | f1040 lines 8, 10; i1040gi p. 43, Clergy | Schedule 1 not given; the clergy wording quotes p. 43. |
+| claude | render | credits | interface gap | UNCLEAR | f1040s3 p. 1 | Schedule 3 not given; question unchanged. |
+
+Fix check: the Form 8615 gloss matches i1040gi p. 36 conditions 1 to 5 ("didn't have earned income that was more than half
+of your support" as "earned income of not more than half your support"; "at least age 19 but under age 24" as "19 to 23");
+the clergy wording is p. 43 verbatim. Both widen refusing screens. No error introduced. Findings: none.

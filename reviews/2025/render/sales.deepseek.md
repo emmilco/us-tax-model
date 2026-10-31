@@ -4,15 +4,15 @@ The rendered English of every printed line of `Form 8949 and Schedule D — manu
 
 | field | value |
 | --- | --- |
-| date | 2026-10-23 |
+| date | 2026-10-30 |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
-| prompt sha256 | 52fcec313b912a306525806a211cdc13937f210340d190810eb19cf434ced46d |
+| prompt sha256 | 74e3ca5be95249eea928afb4f183ed167d4f45059f34856cfe7cbd82f0730630 |
 | prompt policy | render-source-comparison-v2 |
 | system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
 | reasoning effort | provider default |
 | output token budget | 65536 |
-| subject sha256 | 913d7bd7361f8781fad6e9e34c411bbe6bd93d16fba1df2a3150b2913c23e7f2 |
+| subject sha256 | a01b9dad55ae9373326a25daed5400919aad8e0b5f9d7e71b501603fb67ebb37 |
 | lines judged | 3 |
 | match / mismatch / unclear / missing | 1 / 2 / 0 / 0 |
 | verdicts for lines not in the form | none |
@@ -32,23 +32,23 @@ Status: **MISMATCH**
 
 Restated: Choose — [helper "Basis reported to IRS" = true → helper "Basis shown on broker report"] [helper "Basis reported to IRS" = false → helper "Correct adjusted basis from records"]
 
-Model: The restatement treats only A/D as 'Basis reported to IRS'; IRS column (e) says 'For covered securities, enter the basis shown on Form 1099-B or Form 1099-DA (or substitute statement) in column (e),' and Box G/J transactions also have basis reported to the IRS, so G/J would wrongly use correct basis instead of reported basis.
+Model: The restatement's 'Basis reported to IRS' gate is true only for classifications A or D, but the IRS form also treats boxes G and J as 'reported on Form(s) 1099-DA showing basis was reported to the IRS'; for those rows column (e) must use the reported basis, not the records basis.
 
-Ruling: open
+Ruling: scope; f8949 p. 1, box G: "Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS"; i8949 p. 8, code B. Boxes G to L are refused at the transaction: sales.one refuses when sales.digital ("Form 8949 digital asset boxes G–L"), and the refusal reaches every Schedule D total and Form 1040 line 7a (checked: sales.refuse.digital.G gives sd.line15, f1040.line7a and f1040.line16 refused on sales.digital, while the row's own column (e) shows $2,000.00 and reaches no Schedule D line). Within boxes A to F the gate reads as the instructions do. The gate must widen to G and J if digital assets come into scope. Project stands on the English.
 
 ### (g) — Column (g): net adjustments
 Status: **MISMATCH**
 
 Restated: Add helper "Basis correction in column (g)" and helper "Wash-sale adjustment in column (g)".
 
-Model: The basis-correction helper is gated on 'Basis reported to IRS' being true only for A/D; for Box G/J with code B the IRS table says to 'enter the basis shown on Form 1099-B or Form 1099-DA (or substitute statement) in column (e), even though that basis is incorrect. Correct the error by entering an adjustment in column (g),' but the restatement would enter no basis correction.
+Model: IRS column (g) says 'Enter in this column any necessary adjustments to gain (or loss)' and, for multiple codes, 'enter the net adjustment in column (g)'; the restatement only adds B basis correction and W wash-sale adjustment, omitting other required adjustment codes.
 
-Ruling: open
+Ruling: scope; i8949 p. 8, code B; i8949 pp. 7–11, columns (f) and (g). Boxes G and J are refused with every digital-asset box (see column (e)), so the A/D condition of the basis correction is the whole supported case. Codes other than B and W are refused: sales.one refuses when sales.bad_code ("Only applicable B and W adjustments are supported"), and the refusal reaches the Schedule D totals and Form 1040 (checked: sales.refuse.code gives sd.line15, f1040.line7a and f1040.line16 refused on sales.bad_code while the row's own column (g) shows $0.00). Project stands on the English.
 
 ### (h) — Column (h): proceeds less basis plus adjustments
 Status: **MATCH**
 
-Model: IRS column (h) says to 'Subtract column (e) from column (d) and combine the result with column (g),' and the restatement subtracts column (e) from column (d) and adds column (g).
+Model: Form 8949 column (h) says to subtract column (e) from column (d) and combine the result with column (g); the restatement's proceeds-less-(e) plus column (g) does exactly that.
 
 ## Raw response
 
@@ -56,11 +56,11 @@ Model: IRS column (h) says to 'Subtract column (e) from column (d) and combine t
 lines:
   - key: "(e)"
     status: MISMATCH
-    reason: "The restatement treats only A/D as 'Basis reported to IRS'; IRS column (e) says 'For covered securities, enter the basis shown on Form 1099-B or Form 1099-DA (or substitute statement) in column (e),' and Box G/J transactions also have basis reported to the IRS, so G/J would wrongly use correct basis instead of reported basis."
+    reason: "The restatement's 'Basis reported to IRS' gate is true only for classifications A or D, but the IRS form also treats boxes G and J as 'reported on Form(s) 1099-DA showing basis was reported to the IRS'; for those rows column (e) must use the reported basis, not the records basis."
   - key: "(g)"
     status: MISMATCH
-    reason: "The basis-correction helper is gated on 'Basis reported to IRS' being true only for A/D; for Box G/J with code B the IRS table says to 'enter the basis shown on Form 1099-B or Form 1099-DA (or substitute statement) in column (e), even though that basis is incorrect. Correct the error by entering an adjustment in column (g),' but the restatement would enter no basis correction."
+    reason: "IRS column (g) says 'Enter in this column any necessary adjustments to gain (or loss)' and, for multiple codes, 'enter the net adjustment in column (g)'; the restatement only adds B basis correction and W wash-sale adjustment, omitting other required adjustment codes."
   - key: "(h)"
     status: MATCH
-    reason: "IRS column (h) says to 'Subtract column (e) from column (d) and combine the result with column (g),' and the restatement subtracts column (e) from column (d) and adds column (g)."
+    reason: "Form 8949 column (h) says to subtract column (e) from column (d) and combine the result with column (g); the restatement's proceeds-less-(e) plus column (g) does exactly that."
 ```

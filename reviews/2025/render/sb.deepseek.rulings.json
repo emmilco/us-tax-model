@@ -1,0 +1,21 @@
+{
+ "kind": "render",
+ "form": "sb",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "4",
+   "restated": "Subtract line 3 from line 2.",
+   "model": "The provided IRS text contains no line 4 instruction or statement that line 4 is line 2 minus line 3, so the arithmetic cannot be verified from the text given.",
+   "ruling": "Ruling: interface gap; f1040sb (2025) p. 1, line 4: \"Subtract line 3 from line 2. Enter the result here and on Form 1040 or 1040-SR, line 2b\", which is the restatement. The model was given only i1040sb pp. 1-3, which has no line 4 instruction, as it says (a coverage gap of the review). Restatement accepted.",
+   "context": "3778a59514379a42ff2e77e43a413851f5bb723a9e0d1de6da138ddc8bd265ec"
+  },
+  {
+   "printed": "7a",
+   "restated": "Input — Any financial interest in or signature authority over a foreign financial account during 2025?",
+   "model": "The restatement covers only Question 1; the IRS line also has Line 7a—Question 2, which asks whether you are required to file FinCEN Form 114.",
+   "ruling": "Ruling: representation; i1040sb p. 3, \"Line 7a—Question 2. See FinCEN Form 114 and its instructions at FINCEN.gov to determine whether you must file the form. Check the “Yes” box if you are required to file the form.\" Question 1 is the printed line sb.line7a, which the restatement shows; Question 2 is the separate helper sb.fbar_required (\"Are you required to file FinCEN Form 114 (FBAR)? Determine under its instructions ...\"), so both answers of line 7a are asked. The render shows only the printed line; nothing is missing. Unchanged by the fix round. Restatement accepted.",
+   "context": "3778a59514379a42ff2e77e43a413851f5bb723a9e0d1de6da138ddc8bd265ec"
+  }
+ ]
+}

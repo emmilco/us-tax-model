@@ -2,44 +2,224 @@
  "bank": null,
  "errors": [
   {
-   "line": "person.se_line6",
-   "message": "malformed expression (project schema): data/alternatives/0/guard must be object, data/alternatives/0/guard must be object, data/alternatives/0/guard must be object"
+   "line": "person.employers",
+   "message": "person.person.employers: reference 'one' does not resolve"
   },
   {
-   "line": "person.se_line12",
-   "message": "malformed expression (project schema): data/alternatives/0/guard must be object, data/alternatives/0/guard must be object, data/alternatives/0/guard must be object"
+   "line": "person.overcount",
+   "message": "person.person.overcount: reference 'one' does not resolve"
   },
   {
-   "line": "person.h_sep_10000",
-   "message": "malformed expression (project schema): data/count must be string, data/op must be equal to constant, data/op must be equal to constant"
+   "line": "person.wages",
+   "message": "person.person.wages: reference 'wages' does not resolve"
   },
   {
-   "line": "person.h_educator_cap",
-   "message": "malformed expression (project schema): data/of/1 must be string, data/of/1 must be string, data/of/1 must be string"
+   "line": "person.withheld",
+   "message": "person.person.withheld: reference 'box4' does not resolve"
   },
   {
-   "line": "person.h_se_line4a",
-   "message": "malformed expression (project schema): data/alternatives/0/guard must be object, data/alternatives/0/guard must be object, data/alternatives/0/guard must be object"
+   "line": "person.hsa_forms",
+   "message": "person.person.hsa_forms: reference 'one' does not resolve"
   },
   {
-   "line": "person.se_line6",
-   "message": "person.person.se_line6: malformed expression"
+   "line": "person.hsa_split",
+   "message": "person.person.hsa_split: reference 'one' does not resolve"
   },
   {
-   "line": "person.se_line12",
-   "message": "person.person.se_line12: malformed expression"
+   "line": "person.hsa_agreed",
+   "message": "person.person.hsa_agreed: reference 'one' does not resolve"
   },
   {
-   "line": "person.h_sep_10000",
-   "message": "person.person.h_sep_10000: malformed expression"
+   "line": "person.hsa_step1",
+   "message": "person.person.hsa_step1: reference 'step1' does not resolve"
   },
   {
-   "line": "person.h_educator_cap",
-   "message": "person.person.h_educator_cap: malformed expression"
+   "line": "person.hsa_share",
+   "message": "person.person.hsa_share: reference 'share' does not resolve"
   },
   {
-   "line": "person.h_se_line4a",
-   "message": "person.person.h_se_line4a: malformed expression"
+   "line": "person.hsa_deduction",
+   "message": "person.person.hsa_deduction: reference 'line13' does not resolve"
+  },
+  {
+   "line": "person.hsa_taxable",
+   "message": "person.person.hsa_taxable: reference 'line16' does not resolve"
+  },
+  {
+   "line": "person.hsa_addtax",
+   "message": "person.person.hsa_addtax: reference 'line17b' does not resolve"
+  },
+  {
+   "line": "person.tip_employers",
+   "message": "person.person.tip_employers: reference 'one' does not resolve"
+  },
+  {
+   "line": "person.tip_total",
+   "message": "person.person.tip_total: reference 'col_d' does not resolve"
+  },
+  {
+   "line": "person.tip_reported",
+   "message": "person.person.tip_reported: reference 'amount' does not resolve"
+  },
+  {
+   "line": "person.ot_employers",
+   "message": "person.person.ot_employers: reference 'one' does not resolve"
+  },
+  {
+   "line": "person.ot_total",
+   "message": "person.person.ot_total: reference 'col_b' does not resolve"
+  },
+  {
+   "line": "person.box1",
+   "message": "person.person.box1: reference 'box1' does not resolve"
+  },
+  {
+   "line": "person.box2",
+   "message": "person.person.box2: reference 'box2' does not resolve"
+  },
+  {
+   "line": "person.ira_amount_a",
+   "message": "person.person.ira_amount_a: reference 'amount_a' does not resolve"
+  },
+  {
+   "line": "person.ira_taxable",
+   "message": "person.person.ira_taxable: reference 'ira_taxable' does not resolve"
+  },
+  {
+   "line": "person.ira_rollovers",
+   "message": "person.person.ira_rollovers: reference 'one' does not resolve"
+  },
+  {
+   "line": "person.plan_amount_a",
+   "message": "person.person.plan_amount_a: reference 'amount_a' does not resolve"
+  },
+  {
+   "line": "person.plan_taxable",
+   "message": "person.person.plan_taxable: reference 'plan_taxable' does not resolve"
+  },
+  {
+   "line": "person.plan_rollovers",
+   "message": "person.person.plan_rollovers: reference 'one' does not resolve"
+  },
+  {
+   "line": "person.sav_dist",
+   "message": "person.person.sav_dist: reference 'sav_amount' does not resolve"
+  },
+  {
+   "line": "person.medicare5",
+   "message": "person.person.medicare5: reference 'box5' does not resolve"
+  },
+  {
+   "line": "person.medicare6",
+   "message": "person.person.medicare6: reference 'box6' does not resolve"
+  },
+  {
+   "line": "person.sc_count",
+   "message": "person.person.sc_count: reference 'one' does not resolve"
+  },
+  {
+   "line": "person.ho_count",
+   "message": "person.person.ho_count: reference 'one' does not resolve"
+  },
+  {
+   "line": "person.mq_q4",
+   "message": "person.person.mq_q4: reference 'mq_q4' does not resolve"
+  },
+  {
+   "line": "person.mq_total",
+   "message": "person.person.mq_total: reference 'mq_total' does not resolve"
+  },
+  {
+   "line": "person.cost179",
+   "message": "person.person.cost179: reference 'cost179' does not resolve"
+  },
+  {
+   "line": "person.s179_nonlisted",
+   "message": "person.person.s179_nonlisted: reference 's179_allowed' does not resolve"
+  },
+  {
+   "line": "person.income179",
+   "message": "person.person.income179: reference 'line31' does not resolve"
+  },
+  {
+   "line": "person.sc_total",
+   "message": "person.person.sc_total: reference 'line31' does not resolve"
+  },
+  {
+   "line": "person.positive_profits",
+   "message": "person.person.positive_profits: reference 'line31' does not resolve"
+  },
+  {
+   "line": "person.sehi",
+   "message": "person.person.sehi: reference 'f7206_line14' does not resolve"
+  },
+  {
+   "line": "person.qbi",
+   "message": "person.person.qbi: reference 'qbi' does not resolve"
+  },
+  {
+   "line": "person.dc_benefits",
+   "message": "person.person.dc_benefits: reference 'dc_benefits' does not resolve"
+  },
+  {
+   "line": "person.ira_8606_line14",
+   "message": "person.person.ira_8606_line14: reference 'line14' does not resolve"
+  },
+  {
+   "line": "person.x_l1",
+   "message": "person.person.x_l1: reference 'l1' does not resolve"
+  },
+  {
+   "line": "person.x_l2_all",
+   "message": "person.person.x_l2_all: reference 'l2' does not resolve"
+  },
+  {
+   "line": "person.x_l1_s",
+   "message": "person.person.x_l1_s: reference 'l1_s' does not resolve"
+  },
+  {
+   "line": "person.x_l2_s",
+   "message": "person.person.x_l2_s: reference 'l2_s' does not resolve"
+  },
+  {
+   "line": "person.x_tax",
+   "message": "person.person.x_tax: reference 'tax' does not resolve"
+  },
+  {
+   "line": "person.x_must",
+   "message": "person.person.x_must: reference 'one' does not resolve"
+  },
+  {
+   "line": "person.x_c05",
+   "message": "person.person.x_c05: reference 'l2_e05' does not resolve"
+  },
+  {
+   "line": "person.x_limited_sum",
+   "message": "person.person.x_limited_sum: reference 'l2' does not resolve"
+  },
+  {
+   "line": "person.x_hsa_excess",
+   "message": "person.person.x_hsa_excess: reference 'l49' does not resolve"
+  },
+  {
+   "line": "h_sav_deferral",
+   "message": "person.h_sav_deferral: reference 'sav_deferral' does not resolve"
+  },
+  {
+   "line": "h_se_4a_pos",
+   "message": "person.h_se_4a_pos: declared NonNegDollars but the expression does not prove non-negativity"
+  },
+  {
+   "line": "h_ss_wages",
+   "message": "person.h_ss_wages: reference 'wages' does not resolve"
+  },
+  {
+   "line": "h_ss_room",
+   "message": "person.h_ss_room: reference 'ss.base' does not resolve"
+  },
+  {
+   "line": "h_e23_count",
+   "message": "person.h_e23_count: reference 'one' does not resolve"
   }
  ],
  "failures": [],
@@ -60,6 +240,15 @@
    "handle": "person.hsa_forms",
    "open_at_triage": true,
    "project": "person.hsa_forms",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.hsa_split",
+   "handle": "person.hsa_split",
+   "open_at_triage": true,
+   "project": "person.hsa_split",
    "shown_when": null,
    "status": "DISAGREE",
    "triage": "candidate invalid"
@@ -92,10 +281,118 @@
    "triage": "candidate invalid"
   },
   {
+   "candidate": "person.hsa_deduction",
+   "handle": "person.hsa_deduction",
+   "open_at_triage": true,
+   "project": "person.hsa_deduction",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.hsa_taxable",
+   "handle": "person.hsa_taxable",
+   "open_at_triage": true,
+   "project": "person.hsa_taxable",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.hsa_addtax",
+   "handle": "person.hsa_addtax",
+   "open_at_triage": true,
+   "project": "person.hsa_addtax",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.tip_employers",
+   "handle": "person.tip_employers",
+   "open_at_triage": true,
+   "project": "person.tip_employers",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.tip_total",
+   "handle": "person.tip_total",
+   "open_at_triage": true,
+   "project": "person.tip_total",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.tip_reported",
+   "handle": "person.tip_reported",
+   "open_at_triage": true,
+   "project": "person.tip_reported",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.ot_employers",
+   "handle": "person.ot_employers",
+   "open_at_triage": true,
+   "project": "person.ot_employers",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.ot_total",
+   "handle": "person.ot_total",
+   "open_at_triage": true,
+   "project": "person.ot_total",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.box1",
+   "handle": "person.box1",
+   "open_at_triage": true,
+   "project": "person.box1",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.box2",
+   "handle": "person.box2",
+   "open_at_triage": true,
+   "project": "person.box2",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.ira_amount_a",
+   "handle": "person.ira_amount_a",
+   "open_at_triage": true,
+   "project": "person.ira_amount_a",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
    "candidate": "person.ira_taxable",
    "handle": "person.ira_taxable",
    "open_at_triage": true,
    "project": "person.ira_taxable",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.ira_rollovers",
+   "handle": "person.ira_rollovers",
+   "open_at_triage": true,
+   "project": "person.ira_rollovers",
    "shown_when": null,
    "status": "DISAGREE",
    "triage": "candidate invalid"
@@ -123,6 +420,78 @@
    "handle": "person.plan_rollovers",
    "open_at_triage": true,
    "project": "person.plan_rollovers",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.sav_dist",
+   "handle": "person.sav_dist",
+   "open_at_triage": true,
+   "project": "person.sav_dist",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.medicare5",
+   "handle": "person.medicare5",
+   "open_at_triage": true,
+   "project": "person.medicare5",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.medicare6",
+   "handle": "person.medicare6",
+   "open_at_triage": true,
+   "project": "person.medicare6",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.sc_count",
+   "handle": "person.sc_count",
+   "open_at_triage": true,
+   "project": "person.sc_count",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.ho_count",
+   "handle": "person.ho_count",
+   "open_at_triage": true,
+   "project": "person.ho_count",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.mq_q4",
+   "handle": "person.mq_q4",
+   "open_at_triage": true,
+   "project": "person.mq_q4",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.mq_total",
+   "handle": "person.mq_total",
+   "open_at_triage": true,
+   "project": "person.mq_total",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.cost179",
+   "handle": "person.cost179",
+   "open_at_triage": true,
+   "project": "person.cost179",
    "shown_when": null,
    "status": "DISAGREE",
    "triage": "candidate invalid"
@@ -209,6 +578,24 @@
    "triage": "candidate invalid"
   },
   {
+   "candidate": "person.sehi",
+   "handle": "person.sehi",
+   "open_at_triage": true,
+   "project": "person.sehi",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.qbi",
+   "handle": "person.qbi",
+   "open_at_triage": true,
+   "project": "person.qbi",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
    "candidate": "person.eic_se",
    "handle": "person.eic_se",
    "open_at_triage": true,
@@ -222,6 +609,15 @@
    "handle": "person.sc_1a",
    "open_at_triage": true,
    "project": "person.sc_1a",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.dc_benefits",
+   "handle": "person.dc_benefits",
+   "open_at_triage": true,
+   "project": "person.dc_benefits",
    "shown_when": null,
    "status": "DISAGREE",
    "triage": "candidate invalid"
@@ -371,6 +767,15 @@
    "triage": "candidate invalid"
   },
   {
+   "candidate": "person.ira_8606_line14",
+   "handle": "person.ira_8606_line14",
+   "open_at_triage": true,
+   "project": "person.ira_8606_line14",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
    "candidate": "person.ira_ssb",
    "handle": "person.ira_ssb",
    "open_at_triage": true,
@@ -393,6 +798,42 @@
    "handle": "person.edu_kid",
    "open_at_triage": true,
    "project": "person.edu_kid",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.x_l1",
+   "handle": "person.x_l1",
+   "open_at_triage": true,
+   "project": "person.x_l1",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.x_l2_all",
+   "handle": "person.x_l2_all",
+   "open_at_triage": true,
+   "project": "person.x_l2_all",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.x_l1_s",
+   "handle": "person.x_l1_s",
+   "open_at_triage": true,
+   "project": "person.x_l1_s",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.x_l2_s",
+   "handle": "person.x_l2_s",
+   "open_at_triage": true,
+   "project": "person.x_l2_s",
    "shown_when": null,
    "status": "DISAGREE",
    "triage": "candidate invalid"
@@ -443,6 +884,15 @@
    "triage": "candidate invalid"
   },
   {
+   "candidate": "person.x_other_exc",
+   "handle": "person.x_other_exc",
+   "open_at_triage": true,
+   "project": "person.x_other_exc",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
    "candidate": "person.x_limit_binds",
    "handle": "person.x_limit_binds",
    "open_at_triage": true,
@@ -452,10 +902,82 @@
    "triage": "candidate invalid"
   },
   {
+   "candidate": "person.x_hsa_excess",
+   "handle": "person.x_hsa_excess",
+   "open_at_triage": true,
+   "project": "person.x_hsa_excess",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.employers",
+   "handle": "employers",
+   "open_at_triage": true,
+   "project": "person.employers",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.overcount",
+   "handle": "overcount",
+   "open_at_triage": true,
+   "project": "person.overcount",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.over",
+   "handle": "over",
+   "open_at_triage": true,
+   "project": "person.over",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.wages",
+   "handle": "wages",
+   "open_at_triage": true,
+   "project": "person.wages",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.withheld",
+   "handle": "withheld",
+   "open_at_triage": true,
+   "project": "person.withheld",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
    "candidate": "person.eligible",
    "handle": "eligible",
    "open_at_triage": true,
    "project": "person.eligible",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.excess",
+   "handle": "excess",
+   "open_at_triage": true,
+   "project": "person.excess",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "person.credit",
+   "handle": "credit",
+   "open_at_triage": true,
+   "project": "person.credit",
    "shown_when": null,
    "status": "DISAGREE",
    "triage": "candidate invalid"
@@ -569,10 +1091,10 @@
    "triage": "candidate invalid"
   }
  ],
- "log_sha256_at_triage": "619f0644c3a50fcf8a02ccac977ca88e76ac81621ab44a4fcccf05e4f4ac4466",
+ "log_sha256_at_triage": "9d583e50ae613fb0ecb738e2e917051f8b4da8ed8d10fec9110878de0deadd6f",
  "policy": "executable-triage-v2",
- "response_sha256": "a5c98cd0860a5c8dfbb1d787d756252c842d7df48c2fd9d41e2ed1e5e6e53535",
+ "response_sha256": "7109dc2e59295dfa062af60f1d3b20be459178a026861c3d0288bc0c6ec1f0d7",
  "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
  "state": "invalid",
- "subject_sha256": "ebe28dcf736bff381f44e46fc56978601981c79e9abaeb44fbcd80d025cd38c6"
+ "subject_sha256": "2b3224752ef85bc094959c9f6706438fd33497470ba985e73879f419226182f1"
 }

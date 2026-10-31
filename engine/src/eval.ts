@@ -6,6 +6,10 @@
 
 import type { CanonicalData, CiteFilled, Expr, FormDoc, Operand, TableDoc, TestExpr, Inputs, Line } from "./types.js";
 
+/** Marks an unknown that traces back to a refusal gate awaiting its answer: it may become a refusal
+ * rather than a value. A symbol key, so it is never serialized and never shown. */
+export const GATE_PENDING: unique symbol = Symbol("gatePending");
+
 export type Value =
   | { kind: "count"; value: number }
   | { kind: "refusal"; gate: string; form: string; remedy: string; cite: CiteFilled }
@@ -13,7 +17,7 @@ export type Value =
   | { kind: "rate"; num: number; den: number }
   | { kind: "bool"; value: boolean }
   | { kind: "enum"; value: string }
-  | { kind: "unknown"; reason: string; input?: string; lowerBound?: number };
+  | { kind: "unknown"; reason: string; input?: string; lowerBound?: number; [GATE_PENDING]?: true };
 
 export interface Derivation {
   line: string; // canonical id (instance keyed when inside a def)
@@ -221,7 +225,7 @@ function evalLine(ctx: Ctx, frame: Frame, lineId: string): Derivation {
         blocked = { kind: "refusal", gate: gate.line, form: refusal.form, remedy: refusal.remedy, cite: refusal.cite };
         break;
       }
-      if (gate.value.kind !== "bool") { blocked = gate.value; break; }
+      if (gate.value.kind !== "bool") { blocked = markPending(gate.value, true); break; }
     }
     if (blocked) {
       result = { line: key, op: "gate", value: blocked, operands: [], cite: line.cite, guardsNotTaken: [], notes: [] };
@@ -299,7 +303,18 @@ function evalOperand(ctx: Ctx, frame: Frame, op: Operand, operandsOut?: { ref: s
  * operand order, else the first unknown, else null (every operand is known). A refusal outranks an
  * unknown, so a refusal is not held back behind an operand whose value cannot change the outcome. */
 export function incompleteOperand(vals: Value[]): Value | null {
-  return vals.find((v) => v.kind === "refusal") ?? vals.find((v) => v.kind === "unknown") ?? null;
+  const unknown = vals.find((v) => v.kind === "unknown");
+  return vals.find((v) => v.kind === "refusal") ?? (unknown ? markPending(unknown, anyPending(vals)) : null);
+}
+
+/** Whether any of the values is an unknown awaiting a refusal gate's answer. */
+export function anyPending(vals: Value[]): boolean {
+  return vals.some((v) => v.kind === "unknown" && v[GATE_PENDING] === true);
+}
+
+/** The value, marked as awaiting a refusal gate's answer when `pending` and it is an unknown. */
+export function markPending(v: Value, pending: boolean): Value {
+  return pending && v.kind === "unknown" && v[GATE_PENDING] !== true ? { ...v, [GATE_PENDING]: true } : v;
 }
 
 /** Half-up at the cent: floor((2*a*n + d) / (2*d)) computes round-half-up of a*n/d toward +infinity. */
@@ -372,29 +387,34 @@ function evalExpr(ctx: Ctx, frame: Frame, lineId: string, expr: Expr, cite: Cite
       if (!roster) return d({ kind: "unknown", reason: "collection roster not confirmed", input: rosterKey }, "sum_over", ops);
       let total = 0n;
       let missing: Value | null = null;
+      // An entry whose unknown traces back to a refusal gate awaiting its answer (through its `where`
+      // test or its field) may become a refusal rather than a count: the known entries then bound nothing.
+      let gatePending = false;
       const fieldType = entry.lines.find(l => l.id === expr.field)!.type;
       for (const key of [...roster].sort()) {
         const inner: Frame = { doc: entry, instKey: `${parent ? parent + "." : ""}${entry.id}[${key}]`, bind: null, caller: frame };
         if (expr.where) {
           const selected = evalTest(ctx, inner, expr.where, ops);
           if (selected.kind === "refusal") return d(selected, "sum_over", ops);
-          if (selected.kind !== "bool") { missing ??= selected; continue; }
+          if (selected.kind !== "bool") { missing ??= selected; gatePending ||= anyPending([selected]); continue; }
           if (!selected.value) continue;
         }
         const item = evalLine(ctx, inner, expr.field);
         ops.push({ ref: item.line, value: item.value });
         if (item.value.kind === "refusal") return d(item.value, "sum_over", ops);
-        if (item.value.kind === "unknown") { missing ??= item.value; continue; }
+        if (item.value.kind === "unknown") { missing ??= item.value; gatePending ||= anyPending([item.value]); continue; }
         if (item.value.kind === "money") total += BigInt(item.value.cents);
         else if (item.value.kind === "count") total += BigInt(item.value.value);
       }
-      if (missing?.kind === "unknown" && fieldType === "Count") missing = { ...missing, lowerBound: safeNumber(total) };
+      if (missing) missing = markPending(missing, gatePending);
+      if (missing?.kind === "unknown" && fieldType === "Count" && !gatePending) missing = { ...missing, lowerBound: safeNumber(total) };
       return d(missing ?? (fieldType === "Count" ? { kind: "count", value: safeNumber(total) } : { kind: "money", cents: safeNumber(total) }), "sum_over", ops, [], [`confirmed roster ${rosterKey}: ${roster.join(", ")}`.trimEnd()]);
     }
     case "sum": {
       // All operands money, or all Counts (the checker allows nothing else).
       let total = 0n;
       let unknown: Value | null = null;
+      let unknownPending = false;
       let wrong: Value | null = null;
       let kind: "money" | "count" | null = null;
       for (const ref of expr.of) {
@@ -405,10 +425,10 @@ function evalExpr(ctx: Ctx, frame: Frame, lineId: string, expr: Expr, cite: Cite
           total += BigInt(v.kind === "money" ? v.cents : v.value);
         }
         else if (v.kind === "refusal") return d(v, "sum", ops);
-        else if (v.kind === "unknown") unknown ??= v;
+        else if (v.kind === "unknown") { unknown ??= v; unknownPending ||= anyPending([v]); }
         else wrong ??= { kind: "unknown", reason: `sum operand ${operandDisplay(ref)} is not money or a Count` };
       }
-      return d(unknown ?? wrong ?? (kind === "count" ? { kind: "count", value: safeNumber(total) } : { kind: "money", cents: safeNumber(total) }), "sum", ops);
+      return d((unknown && markPending(unknown, unknownPending)) ?? wrong ?? (kind === "count" ? { kind: "count", value: safeNumber(total) } : { kind: "money", cents: safeNumber(total) }), "sum", ops);
     }
     case "subtract":
     case "subtract_floor0": {
@@ -637,13 +657,14 @@ function evalTest(ctx: Ctx, frame: Frame, test: TestExpr, ops?: { ref: string; v
     const isAll = "all" in test;
     const tests = "all" in test ? test.all : test.any;
     let pending: Value | null = null;
+    let gatePending = false;
     for (const t of tests) {
       const v = evalTest(ctx, frame, t, ops);
       if (v.kind === "refusal") return v;
-      if (v.kind !== "bool") { pending ??= v; continue; }
+      if (v.kind !== "bool") { pending ??= v; gatePending ||= anyPending([v]); continue; }
       if (v.value !== isAll) return {kind:"bool", value: !isAll};
     }
-    return pending ?? {kind:"bool", value:isAll};
+    return pending ? markPending(pending, gatePending) : {kind:"bool", value:isAll};
   }
   if ("not" in test) {
     const v = evalTest(ctx, frame, test.not, ops);
@@ -654,7 +675,7 @@ function evalTest(ctx: Ctx, frame: Frame, test: TestExpr, ops?: { ref: string; v
   const [a, b] = (test as unknown as Record<string, [Operand, Operand]>)[key]!;
   const av = evalOperand(ctx, frame, a, ops);
   const bv = evalOperand(ctx, frame, b, ops);
-  if (av.kind === "unknown" && av.lowerBound !== undefined && bv.kind === "count") {
+  if (av.kind === "unknown" && av.lowerBound !== undefined && av[GATE_PENDING] !== true && bv.kind === "count") {
     const certain = (key === "gt" || key === "le") ? av.lowerBound > bv.value : (key === "ge" || key === "lt") ? av.lowerBound >= bv.value : av.lowerBound > bv.value;
     if (certain) return {kind:"bool",value:key === "gt" || key === "ge" || key === "ne"};
   }

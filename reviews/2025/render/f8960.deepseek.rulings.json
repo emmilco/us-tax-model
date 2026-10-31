@@ -11,11 +11,25 @@
    "context": "ca160e4930b9fcc82437f568d27cf24b53c8b6e7b8f984f8726dab3d3ab367ab"
   },
   {
+   "printed": "5a",
+   "restated": "Enter the amount from f1040 line 7a.",
+   "model": "IRS line 5a instructions say to combine Form 1040 or 1040-SR line 7a with Schedule 1 (Form 1040), line 4; the restatement takes only Form 1040 line 7a.",
+   "ruling": "Ruling: scope; the model says the restatement takes only Form 1040 line 7a. i8960 p. 9, Line 5a: \"Calculate and enter the amount of net gain or loss from the disposition of property by combining the following amounts from your properly completed return. - Form 1040 or 1040-SR, line 7a, and Schedule 1 (Form 1040), line 4.\" Schedule 1 line 4 is refused by scope.schedule1, not by f8960.unsupported: it names \"sales of business property (Form 4797)\", and a Form 4684 gain entered on line 4 falls under its opening \"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately\"; it refuses Form 1040 line 8 and every later line, so on every computed return Schedule 1 line 4 is zero and line 5a is Form 1040 line 7a. Other dispositions adjusted on lines 5b and 5c are refused by f8960.unsupported, whose BUG-0248 gloss now names NUA gain and the sale of business property or a partnership or S corporation interest (i8960 p. 9). Same reading as Stage 20.",
+   "context": "b3b0f3dd71ad778746623915db1d209124a1405932e0a10075c683897afbedaa"
+  },
+  {
    "printed": "5b",
    "restated": "Enter the amount from helper \"Year parameter sales.zero\".",
    "model": "The carryforward refusal is gated by f8960.carryforward_adj, which requires line 15 over $0; IRS says 'Starting in 2014, capital loss carryforwards must be adjusted if any sum of all capital gain or loss amounts excluded from NII on lines 5b and 5c was a net loss' with no MAGI-over-threshold condition.",
    "ruling": "Ruling: scope; the model says the p. 9 adjustment has no MAGI-over-threshold condition. i8960 p. 10, Net Gains and Losses Worksheet, line 2(h): \"Enter the amount reported on line 2(i) of this worksheet from your prior tax year return calculations\"; p. 9: \"Starting in 2014, capital loss carryforwards must be adjusted if any sum of all capital gain or loss amounts excluded from NII on lines 5b and 5c was a net loss\". The screen f8960.carryforward_adj (a 2025 carryover, line 15 above zero, and a 2024 line 2(i) amount) refuses line 5b; it is limited to returns over the threshold by the owner's decision D3 (research/premises/stage20-capital-loss-carryover.decisions.md: the line 2(i) question is \"asked only when Form 8960 is required and a carryover exists\"). At or below the threshold Form 8960 is not filed (i8960 p. 1, Who Must File: \"Attach Form 8960 to your return if your modified adjusted gross income (MAGI) is greater than the applicable threshold amount\", a page not given) and lines 15 to 17 make the tax zero whatever line 5b holds, so no amount changes. In scope (no 2(a)-2(g) or line 3 amounts, no 2024 line 2(i)) line 2(j) is zero, so line 5b is zero. Not ruled a finding; noted in the Stage 20 summary that the 2025 worksheet line 2(i), which a filer with a 2024 line 2(i) below the threshold would carry to 2026, is not shown.",
    "context": "ca160e4930b9fcc82437f568d27cf24b53c8b6e7b8f984f8726dab3d3ab367ab"
+  },
+  {
+   "printed": "9b",
+   "restated": "Choose — [sa helper \"Itemize if elected, required, or itemized total exceeds standard\" = true → helper \"Deductible state/local income and property taxes reasonably allocated to net investment income; exclude foreign taxes for which a credit is claimed\"] [sa helper \"Itemize if elected, required, or itemized total exceeds standard\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "IRS line 9b includes state, local, and foreign income taxes and foreign real property taxes; the restatement is limited to state and local income and property taxes and only notes an exclusion for foreign credits.",
+   "ruling": "Ruling: scope; the model says the helper omits foreign income and foreign real property taxes. i8960 p. 17, Line 9b: \"Include state, local, and foreign income taxes you paid for the tax year that are attributable to NII. Include also state, local, and foreign real property taxes\". A deduction for foreign taxes is refused on Schedule A (sa.unsupported, \"a foreign tax or generation-skipping tax deduction\"), so within scope the deducted taxes allocable to net investment income are the state and local taxes, which is what the f8960.bad_allocation cap holds. Same ruling as Stage 20; unchanged by the fix round.",
+   "context": "b3b0f3dd71ad778746623915db1d209124a1405932e0a10075c683897afbedaa"
   },
   {
    "printed": "9b",

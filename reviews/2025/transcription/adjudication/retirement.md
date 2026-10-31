@@ -209,7 +209,7 @@ the worksheet is shown on an annuity whose cost was recovered before 2025, contr
 One helper fixes both (`is_ira` false and `annuity_with_cost`). F3 (SMW-SHOWN) is now closed for non-annuity plan entries
 only.
 
-## T-067 round 2
+## T-067 round 2 (superseded subject)
 
 The subject after BUG-0207 and BUG-0208: the ten `(SMW n)` lines carry `shown_when: retirement.smw_shown`, a Bool that is
 true when `is_ira` is false (tested first) and `annuity_with_cost` is true. Regressions: `stage21.t067.smw_hidden_ira` and
@@ -254,3 +254,40 @@ on `special` before `annuity` is asked (stage16.cleanup.refuse.retirement.specia
 finding, because the return is refused.
 
 Findings: none. F5 and F6 are closed by BUG-0207 and BUG-0208. F3 (SMW-SHOWN) is closed.
+
+## Fix round 2
+
+The subject after BUG-0243 widened the `retirement.special` question. It now also lists a military disability pension, an
+annuity received as the beneficiary of an employee who died or shared among beneficiaries, and a rollover of property
+other than cash or of a QDRO distribution. No compared expression changed, and `retirement.smw_shown` and the (SMW n)
+lines are unchanged. The replies are fresh. Triage is `../triage/retirement[.deepseek].json` (executable-triage-v2: 1,382
+fixtures and 500 generated returns, seed 20261026; 1,035 / 1,026 partial records from 40 bases; 2,066 / 1,963
+comparisons). An uncapped scratch re-run of `triage.mjs` gave the same counts, and every completed difference was read
+from it. The rulings are in `.transcription/proposed/fixr2/` (`transcription.retirement[.deepseek].json` and
+`render.retirement[.deepseek].json`). There is no open class M section. "Screens" has the same meaning as in the Stage
+21 table.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| deepseek | transcription | retirement.is_ira | representation | 1,963/1,963 | i1040gi p. 26 | Same set. |
+| claude | transcription | retirement.has_rollover | model error and scope | 3 completed value (classm.tcw.5, classm.f1040.3[.deepseek]: code G, box 1 $0, project true, candidate false); rest refused/partials | i1040gi pp. 27, 30 | A $0 direct rollover is a rollover. |
+| deepseek | transcription | retirement.has_rollover | scope | nothing completed; project-refuses (bad_code, special) and partials | i1040gi pp. 27, 30 | The project's cited gates. |
+| both | transcription | retirement.taxable | model error and scope | 8 completed value (classm.tcw.15 $39,110.00 vs $49,089.00 and partials; generated 395 $0.00 vs $22,738.41); deepseek also 10 completed candidate-unknown on box 5 of IRA entries | i1040gi pp. 27-29 | Signed worksheet line 7; deepseek subtracts box 5 on IRAs. |
+| claude | transcription | retirement.amount_a | model error and scope | 12 completed value (classm.tcw.15 $0.00 vs $39,110.00 and partials; generated 314 $0.00 vs $46,209.90) | i1040gi p. 28 | Box 1 on line 5a for a fully taxable annuity. |
+| deepseek | transcription | retirement.amount_a | model error and scope | 222 completed value, each checked: project $0.00, candidate box 1, fully taxable entry | i1040gi pp. 27, 28 | Copies box 1 to line 4a/5a. |
+| both | transcription | retirement.sav_amount | model error and scope | claude 23, deepseek 27 completed candidate-unknown (sav_military, sav_404k on IRAs; sav_inherited on plans); no value | f8880 p. 2, Line 4 | Exclusions asked of the wrong account kinds. |
+| claude | transcription | retirement.l1 | model error and scope | 62 completed candidate-unknown (early_screen 52, code_screen 10); no value | i5329 p. 3 | Screens on every entry; code 2 now off line 1. |
+| deepseek | transcription | retirement.l1 | model error and scope | 6 completed value (generated 22 code 4 $0.00 vs $18,218.60; 175, 348 code 2; 314, 381, 421 code 4); 74 completed candidate-unknown | i5329 pp. 3, 5 | Codes 2-4 on line 1 with no line 2 offset (not the register's second reading); screens on every entry. |
+| claude | transcription | retirement.l2, l2_e05, l2_e23, l1_s | model error (l1_s + scope) | 5 / 2 / 1 / 1 completed candidate-unknown, all code_screen partials on code 1/S entries; no value | i5329 p. 5 | code_screen needed through line 1. |
+| claude | transcription | retirement.l2_e09, l2_e19, l2_e22, l2_s | representation | 2,066/2,066 | i5329 p. 5 | Same split. |
+| deepseek | transcription | retirement.l2, l2_e05 to l2_e23, l1_s, l2_s | model error and scope | 67-76 completed candidate-unknown (early_screen 57, code_screen 10, exception 7, box 5 0-2); no value | i5329 pp. 3, 5 | Screens and exception on every entry. |
+| deepseek | transcription | retirement.is_e23 | model error | 57 completed candidate-unknown | p590b p. 28 | Exception answer on every entry. |
+| both | transcription | (SMW 4) | model error (claude + scope) | all differences on project-hidden lines (completed: generated 395 shows $1,550.08; 155 / 106 candidate-unknown); claude's 4 shown are special partials on refused/incomplete returns | i1040gi pp. 28-30 | No hiding condition in the reply; value matches where shown. |
+| both | render | (SMW 2), (SMW 4), (SMW 6), (SMW 7), (SMW 8), (SMW 10), (SMW 11) | scope | MISMATCH (7 open each) | i1040gi p. 29 | Death benefit exclusion and pre-November-19-1996 annuities still refused by `special`. |
+
+The brief's check: BUG-0243 causes no transcription or render difference. The military disability, shared-annuity and
+QDRO items match i1040gi pp. 28 and 30. Two items refuse more than the source does, which changes no amount. Findings
+(`.transcription/proposed/fixr2/retirement.findings.md`): F1 (BENEFICIARY-VS-SURVIVOR, low): "the beneficiary of an
+employee who died" can be read by a survivor of a retiree, a case p. 30 computes and `retirement.age` provides for. F2
+(PROPERTY-ROLLOVER, low): "a rollover of property other than cash" covers whole in-kind rollovers, where p. 30 names only
+"partial rollovers of property".

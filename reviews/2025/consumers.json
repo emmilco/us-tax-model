@@ -1,5 +1,270 @@
 {
- "rulings": {},
+ "rulings": {
+  "consumer:dependent.kidnapped@i1040gi:p17": {
+   "verdict": "same",
+   "question_phrase": "presumed by law enforcement authorities to have been kidnapped by someone who isn't a family member",
+   "source_phrase": "Who lived with you for more than half of 2025 (p. 17), with p. 21, Kidnapped child, \"presumed by law enforcement authorities to have been kidnapped by someone who isn't a family member\"",
+   "reason": "The screen names the p. 21 exception to the p. 17 residency test in the source's own words; the line refuses rather than applying Pub. 501."
+  },
+  "consumer:dependent.kidnapped@i1040gi:p41": {
+   "verdict": "same",
+   "question_phrase": "presumed by law enforcement authorities to have been kidnapped by someone who isn't a family member",
+   "source_phrase": "Who lived with you in the United States for more than half of 2025 (p. 41), with the EIC pointer to Kidnapped child (p. 43) and Pub. 596",
+   "reason": "The EIC residency test takes the same kidnapped-child exception (p. 21 names the EIC); the line refuses."
+  },
+  "consumer:dependent.disabled@i1040gi:p19": {
+   "verdict": "same",
+   "question_phrase": "permanently and totally disabled at any time in 2025, that is, unable to engage in any substantial gainful activity",
+   "source_phrase": "If the person was permanently and totally disabled, see Exception to gross income test (p. 19), the term defined on p. 21",
+   "reason": "Step 4's gross-income exception uses the term the question now defines from p. 21."
+  },
+  "consumer:dependent.relationship@i1040gi:p14": {
+   "verdict": "same",
+   "question_phrase": "child (son, daughter, stepchild, eligible foster child ...); household_member (any other person ... who lived with you all year as a member of your household)",
+   "source_phrase": "Test 2 ... But don't include: ... Any person who is your dependent only because he or she lived with you for all of 2025 (p. 14)",
+   "reason": "Head of household Test 2 sorts persons by the same relationship categories, distinguishing the all-year household member the question names."
+  },
+  "consumer:dependent.divorced_rule@i1040gi:p17": {
+   "verdict": "same",
+   "question_phrase": "Does the special rule for children of divorced or separated parents, or parents who lived apart (including parents who never married), apply to this person",
+   "source_phrase": "Who lived with you for more than half of 2025. If the child didn't live with you for the required time, see Exception to time lived with you, later",
+   "reason": "Step 1's residency test points to the exceptions on p. 21, of which the rule for children of divorced or separated parents is the one this question names; the line refuses on yes, and p. 17 sets no other definition of the rule."
+  },
+  "consumer:dependent.married@i1040gi:p17": {
+   "verdict": "same",
+   "question_phrase": "Was this person married at the end of 2025 ... or is a joint return being filed for 2025 that includes this person",
+   "source_phrase": "Who isn't filing a joint return for 2025 or is filing a joint return for 2025 only to claim a refund of withheld income tax or estimated tax paid",
+   "reason": "The question asks for every person on a joint return (and every married person), so every person Step 1's joint-return condition reaches is refused through it; the line's own joint-return test reads dependent.joint_return."
+  },
+  "consumer:dependent.married@i1040gi:p19": {
+   "verdict": "same",
+   "question_phrase": "Was this person married at the end of 2025 (a person legally separated under a decree of divorce or separate maintenance is not married)",
+   "source_phrase": "3. Was your qualifying relative married? Yes. See Married person",
+   "reason": "Step 4, question 3 asks the same married test the question asks, and the line refuses on yes rather than applying Married person."
+  },
+  "consumer:dependent.married@i1040gi:p41": {
+   "verdict": "same",
+   "question_phrase": "Was this person married at the end of 2025 ... or is a joint return being filed for 2025 that includes this person",
+   "source_phrase": "If the child was married, see Married child, later; Who isn't filing a joint return for 2025 or is filing a joint return for 2025 only to claim a refund",
+   "reason": "The EIC step sends a married child to Married child (married at the end of 2025), which the question asks; the line refuses on yes, and its own joint-return test reads dependent.joint_return."
+  },
+  "consumer:dependent.married@i1040gi:p14": {
+   "verdict": "same",
+   "question_phrase": "Was this person married at the end of 2025 (a person legally separated under a decree of divorce or separate maintenance is not married), or is a joint return being filed for 2025 that includes this person (including one filed by this person with a spouse who died during 2025",
+   "source_phrase": "2. Your unmarried qualifying child who isn't your dependent",
+   "reason": "Head of household Test 2 item 2 needs the child to be unmarried; the question's no is unmarried at the end of 2025 with legal separation counted as unmarried and a spouse who died in 2025 counted as married, the year-end status the filing-status rules use."
+  },
+  "consumer:dependent.joint_return@i1040gi:p41": {
+   "verdict": "same",
+   "question_phrase": "Is a joint return being filed for 2025 that includes this person ... other than one filed only to claim a refund of withheld or estimated tax",
+   "source_phrase": "Who isn't filing a joint return for 2025 or is filing a joint return for 2025 only to claim a refund of withheld income tax or estimated tax paid",
+   "reason": "The EIC qualifying-child test words the joint-return condition and its refund-only exception exactly as Step 1 does, which the question asks."
+  },
+  "consumer:dependent.tin@i1040gi:p22": {
+   "verdict": "same",
+   "question_phrase": "an SSN, ITIN or ATIN issued on or before the due date of your 2025 return (including extensions), or have you applied for an ITIN or ATIN for this person by then",
+   "source_phrase": "You must enter each dependent's social security number (SSN) ... If your dependent won't have a number by the date your return is due, see What if You Can't File on Time?",
+   "reason": "The page requires a number for each listed dependent, which the question asks with the ITIN and ATIN of Steps 3 and 5; the born-and-died child entered as \"Died\" is refused by dependent.claimed rather than read through this question."
+  },
+  "consumer:dependent.tin@i8863:p2": {
+   "verdict": "same",
+   "question_phrase": "an SSN, ITIN or ATIN issued on or before the due date of your 2025 return (including extensions), or have you applied for an ITIN or ATIN for this person by then",
+   "source_phrase": "Students must have been issued a TIN by the due date of their 2025 return (including extensions)",
+   "reason": "Read with Pub. 970 (\"If an ATIN or ITIN is applied for on or before the due date ... and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as issued on or before the due date\"), an application by the due date meets the issued-by-the-due-date test, as the question counts it."
+  },
+  "consumer:dependent.edu_1098t@i8863:p2": {
+   "verdict": "same",
+   "question_phrase": "Did the student receive a 2025 Form 1098-T from the educational institution? Answer yes also if the institution was not required to furnish one",
+   "source_phrase": "If a student is claimed as a dependent on another person's tax return, all qualified education expenses of the student are treated as having been paid by that person",
+   "reason": "Page 2 sets no Form 1098-T condition of its own; the line reads the p. 1 requirement, the question's own definition, for the dependent it treats as an eligible student here."
+  },
+  "consumer:eic.died_2025@i1040gi:p41": {
+   "verdict": "same",
+   "question_phrase": "Did your spouse die in 2025, or are you preparing this return for someone who died in 2025?",
+   "source_phrase": "Were you, or your spouse if filing a joint return, at least age 25 but under age 65 at the end of 2025? ... If your [spouse died in 2025 or if you are preparing a return for someone who died in 2025, see Pub. 596]",
+   "reason": "The age question on p. 41 continues onto p. 42 with the death condition the question asks in the same words; the line refuses on yes."
+  },
+  "consumer:f1040.status@i1040gi:p15": {
+   "verdict": "same",
+   "question_phrase": "Qualifying surviving spouse (QSS)",
+   "source_phrase": "You can check the \"Qualifying surviving spouse\" box in the Filing Status section ... if all of the following apply",
+   "reason": "The line tests that the QSS box, which the input is, was checked without the p. 15 tests being met; the page means the same checkbox."
+  },
+  "consumer:f5695.joint_occupancy@i5695:p7": {
+   "verdict": "same",
+   "question_phrase": "Did you occupy the home jointly with someone other than your spouse on a joint return",
+   "source_phrase": "Line 32a. Joint occupants of a home who are claiming the energy efficient home improvement credit must check the box on line 32a",
+   "reason": "Joint occupants are those who occupied the home jointly (p. 3, which excludes married individuals filing a joint return), as the question asks; the claiming-the-credit condition is the line's, and joint occupancy is refused on line 30."
+  },
+  "consumer:f8960.unsupported@i8960:p13": {
+   "verdict": "same",
+   "question_phrase": "a section 1411 net operating loss ... a deductible investment expense other than investment interest or state and local tax; or another net investment income adjustment",
+   "source_phrase": "Note: Early withdrawal penalty (Schedule 1 (Form 1040), line 18) is reported on Form 8960, line 10",
+   "reason": "Line 10 copies only the early withdrawal penalty the note names; every other line 7 or line 10 modification on the page, including traders' Schedule C items (business income), is within the question's catch-all and refused."
+  },
+  "consumer:f8960.unsupported@i8960:p18": {
+   "verdict": "same",
+   "question_phrase": "a deductible investment expense other than investment interest or state and local tax; or another net investment income adjustment",
+   "source_phrase": "On line 10, report additional deductions or modifications to NII that aren't otherwise reflected on lines 1-9",
+   "reason": "The question asks for any such additional deduction or modification, and the line refuses on yes, figuring only the early withdrawal penalty."
+  },
+  "consumer:f8960.unsupported@i8960:p22": {
+   "verdict": "same",
+   "question_phrase": "a CFC or PFIC holding; a section 911 exclusion",
+   "source_phrase": "If you didn't exclude any amounts from your gross income under section 911 and you don't own an interest in a CFC or PFIC, your MAGI is your AGI",
+   "reason": "The two conditions that make MAGI differ from AGI are the ones the question asks; the line copies AGI and refuses on yes."
+  },
+  "consumer:f8962.alloc@f8962:p1": {
+   "verdict": "same",
+   "question_phrase": "Did any Marketplace policy ... cover someone in your tax family and also someone who is not in it ... or were you divorced or legally separated during 2025 while enrolled in a policy with your former spouse",
+   "source_phrase": "Are you allocating policy amounts with another taxpayer or do you want to use the alternative calculation for year of marriage? See instructions",
+   "reason": "The instructions (i8962 p. 12) require allocation in exactly the shared-policy and divorce-or-separation cases the question asks; line 9 also reads f8962.marriage for the alternative calculation, and line 24 refuses on yes."
+  },
+  "consumer:f8962.other@f8962:p1": {
+   "verdict": "same",
+   "question_phrase": "someone enrolled was not lawfully present ... a qualified small employer HRA ... or an individual coverage HRA ... any part of a month's premium was not paid by the due date ... advance payments were made for someone who is in no one's tax family",
+   "source_phrase": "Total PTC. Enter the amount from line 11, column (e), or add lines 12 through 23, column (e)",
+   "reason": "Line 24 sets no condition of its own; the conditions that bar or change the credit are the i8962 rules the question quotes, and the line refuses on yes."
+  },
+  "consumer:person.edu_1098t@i8863:p3": {
+   "verdict": "same",
+   "question_phrase": "Did the student receive a 2025 Form 1098-T from the educational institution? Answer yes also if the institution was not required to furnish one",
+   "source_phrase": "Who cannot claim a credit ... 5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions)",
+   "reason": "Page 3 sets no Form 1098-T condition of its own; the line reads the p. 1 requirement, the question's own definition."
+  },
+  "consumer:person.tin@i8863:p3": {
+   "verdict": "same",
+   "question_phrase": "Do you have an SSN or ITIN issued on or before the due date of your 2025 return (including extensions)? An ITIN that has expired counts only if it has been renewed by then",
+   "source_phrase": "5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions)",
+   "reason": "Both ask for a number issued by the due date including extensions."
+  },
+  "consumer:person.itin_applied@i8863:p3": {
+   "verdict": "same",
+   "question_phrase": "have you applied for an ITIN, or for the renewal of your expired ITIN, on or before the due date of your 2025 return (including extensions)",
+   "source_phrase": "5. Filers and students must have been issued a TIN by the due date of their 2025 return (including extensions)",
+   "reason": "Pub. 970 deems an ITIN applied for on or before the due date and issued as a result to be issued on or before the due date, and an expired ITIN was issued before, so the application the question asks meets the page's test."
+  },
+  "consumer:person.itin_applied@i1040gi:p17": {
+   "verdict": "same",
+   "question_phrase": "have you applied for an ITIN, or for the renewal of your expired ITIN, on or before the due date of your 2025 return (including extensions)",
+   "source_phrase": "If you want to claim the credit for other dependents, you, and your spouse if filing jointly, must have either an SSN or ITIN issued on or before the due date of your 2025 return (including extensions)",
+   "reason": "p. 22 deems an ITIN applied for by the due date and issued as a result to be issued by the due date for the credit for other dependents (amb.2025.ctc_spouse_itin_application keeps the deeming off the child tax credit's id_count)."
+  },
+  "consumer:person.x_other@f5329:p2": {
+   "verdict": "same",
+   "question_phrase": "excess HSA contributions from an earlier year when you have no Form 8889 for 2025",
+   "source_phrase": "Complete this part if you, someone on your behalf, or your employer contributed more to your HSAs for 2025 than is allowable or you had an amount on line 49 of your 2024 Form 5329",
+   "reason": "The earlier-year excess Part VII needs on line 42 is asked here for returns without Form 8889 and by the Form 8889 screen (prior-year excess contributions) for the others, and line 49 refuses on yes."
+  },
+  "consumer:refund.box8@i1040gi:p88": {
+   "verdict": "same",
+   "question_phrase": "a refund of a state or local income tax that applies only to income from a trade or business (for example, box 8 is checked on the Form 1099-G",
+   "source_phrase": "If you received a refund, credit, or offset of state or local income taxes in 2025, you may be required to",
+   "reason": "Page 88 does not treat the business-only tax refund (reported on Schedule C or F) at all; the question names that refund in the words of Form 1099-G box 8 and the line refuses on yes."
+  },
+  "consumer:refund.not_2024@i1040gi:p88": {
+   "verdict": "same",
+   "question_phrase": "Is any of these refunds for a tax year other than 2024 ... or did you pay any of your 2024 state or local income tax in 2025",
+   "source_phrase": "If the refund was for a tax you paid in 2024 and you deducted state and local income taxes on your 2024 Schedule A, use the State and Local Income Tax Refund Worksheet ... Exception. See Itemized Deduction Recoveries in Pub. 525",
+   "reason": "The worksheet applies to a refund of tax paid in 2024; the question asks the cases outside it that the Exception list sends to Pub. 525, and the line refuses on yes."
+  },
+  "consumer:s1.alimony_unsupported@i1040gi:p89": {
+   "verdict": "same",
+   "question_phrase": "payments under more than one divorce or separation agreement, or paid to more than one person",
+   "source_phrase": "If you have alimony payments from more than one divorce or separation agreement, on line 2b enter the month and year of the divorce or separation agreement for which you received the most ... Attach a statement listing the month and year of the other agreements",
+   "reason": "Line 2b's multiple-agreement case is the one the question asks, and the line refuses on yes."
+  },
+  "consumer:s1.cod_unsupported@p525:p20": {
+   "verdict": "same",
+   "question_phrase": "it was a business, rental or farm debt ... or is otherwise excluded from income ... canceled as a gift or inheritance",
+   "source_phrase": "If the debt is a nonbusiness debt, report the canceled amount on Schedule 1 (Form 1040), line 8c. If it's a business debt, report the amount on Schedule C",
+   "reason": "The page's nonbusiness-debt condition and its gift-or-bequest exception are among the cases the question asks, and the line refuses on yes."
+  },
+  "consumer:scope.other_line16@i1040gi:p34": {
+   "verdict": "same",
+   "question_phrase": "Any additional Form 1040 line 16 tax or filing, including filing Form 8814 (even with no tax), Form 4972, Form 8615 ..., a section 962 election, Form 8621, a Form 8978 amount, or recapture of an education credit",
+   "source_phrase": "Include in the total on the entry space on line 16 all of the following taxes that apply ... Tax from Form(s) 8814 ... Tax from Form 4972 ... Tax with respect to a section 962 election",
+   "reason": "The line 16 taxes other than the tax on taxable income are the ones the question lists, and the line refuses on yes."
+  },
+  "consumer:scope.other_line16@i1040gi:p40": {
+   "verdict": "same",
+   "question_phrase": "including filing Form 8814 (even with no tax)",
+   "source_phrase": "You are filing Form 8814 (relating to election to report child's interest and dividends on your return)",
+   "reason": "EIC Step 2, question 4's Form 8814 condition is filing the form, which the question asks."
+  },
+  "consumer:scope.schedule1@i1040gi:p40": {
+   "verdict": "same",
+   "question_phrase": "rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1); rental of personal property",
+   "source_phrase": "You are filing Schedule E. You are reporting income from the rental of personal property not used in a trade or business. ... You have income or loss from a passive activity",
+   "reason": "Schedule E and rental of personal property are asked here and Form 8814 by scope.other_line16; passive activity income is asked by scope.other_income, which refuses the return."
+  },
+  "consumer:scope.schedule1@i1040gi:p42": {
+   "verdict": "same",
+   "question_phrase": "statutory-employee wages or income as a minister, a member of a religious order who has not taken a vow of poverty, or a Christian Science practitioner; church employee income",
+   "source_phrase": "Are you filing Schedule SE because you were a member of the clergy or you had church employee income of $108.28 or more?",
+   "reason": "Clergy and church employee income are asked, and the line refuses on yes."
+  },
+  "consumer:scope.schedule1@i1040gi:p32": {
+   "verdict": "same",
+   "question_phrase": "or an adjustment on Schedule 1 line 12, 14 or 23",
+   "source_phrase": "Enter the total of the amounts from Schedule 1, lines 11 through 20, and 23 and 25",
+   "reason": "The worksheet's Schedule 1 lines the tool does not figure (12, 14 and 23) are named in the question; the others are computed lines."
+  },
+  "consumer:scope.schedule1@i1040gi:p104": {
+   "verdict": "same",
+   "question_phrase": "other than the ones this tool asks about separately (business income or loss from Schedule C; ... rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1); ... farm income (Schedule F)",
+   "source_phrase": "Line 5. Include the qualified tips you and/or your spouse received in the course of a trade or business",
+   "reason": "A trade or business other than Schedule C is asked here and Schedule C by s1.sc_1a; the line refuses on either."
+  },
+  "consumer:scope.schedule1@i1040gi:p108": {
+   "verdict": "same",
+   "question_phrase": "other than the ones this tool asks about separately (business income or loss from Schedule C; ... including statutory-employee wages",
+   "source_phrase": "Qualified overtime reported on Form 1099-NEC, box 1, or Form 1099-MISC, box 3",
+   "reason": "Nonemployee overtime belongs to a trade or business, asked here and (Schedule C) by s1.sc_1a; the line refuses on either."
+  },
+  "consumer:scope.schedule1@i1040s8812:p8": {
+   "verdict": "same",
+   "question_phrase": "statutory-employee wages ... church employee income ... partnerships ... (Schedule E or a Schedule K-1) ... farm income (Schedule F)",
+   "source_phrase": "Next, if you are filing Schedule C, F, or SE, or you received a Schedule K-1 (Form 1065), go to line 2a ... a. Enter any statutory employee income reported on line 1 of Schedule C",
+   "reason": "Statutory employee, farm, partnership and church employee income are asked here and refused; Schedule C net profit is figured on line 2b (s8812.eiw_2b)."
+  },
+  "consumer:ssb.terror_disability@i1040gi:p32": {
+   "verdict": "same",
+   "question_phrase": "disability payments for injuries incurred as a direct result of a terrorist attack directed against the United States or its allies",
+   "source_phrase": "1. Enter the total amount from box 5 of all your Forms SSA-1099 and RRB-1099",
+   "reason": "The worksheet takes all box 5 benefits and sets no definition of these payments; the question asks the excluded terrorist-attack disability payments in the words of the exclusion, and the line refuses on yes."
+  },
+  "consumer:sales.special@i8949:p7": {
+   "verdict": "same",
+   "question_phrase": "collectibles (works of art, rugs, antiques, metals ...), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property)",
+   "source_phrase": "Increase the basis of your property by capital improvements",
+   "reason": "This page of column (f) codes and column (g) adjustments sets no definition of collectibles, section 1202 stock or section 1250 property; the line refuses on yes."
+  },
+  "consumer:sales.special@i8949:p8": {
+   "verdict": "same",
+   "question_phrase": "collectibles (works of art, rugs, antiques, metals ...), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property)",
+   "source_phrase": "You disposed of collectibles (see the Schedule D instructions)",
+   "reason": "Code C's collectibles are those of the Schedule D instructions, which the question lists; the transaction is refused on yes."
+  },
+  "consumer:sales.special@i8949:p9": {
+   "verdict": "same",
+   "question_phrase": "collectibles (works of art, rugs, antiques, metals ...), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property)",
+   "source_phrase": "You sold or exchanged QSB stock and can exclude part of the gain",
+   "reason": "Code Q's QSB stock exclusion is the section 1202 exclusion the question asks; the transaction is refused on yes."
+  },
+  "consumer:sales.special@i8949:p10": {
+   "verdict": "same",
+   "question_phrase": "collectibles (works of art, rugs, antiques, metals ...), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property)",
+   "source_phrase": "You can exclude all or part of your gain under the rules explained in the Schedule D instructions",
+   "reason": "This page of column (f) codes and column (g) adjustments sets no definition of collectibles, section 1202 stock or section 1250 property; the line refuses on yes."
+  },
+  "consumer:sales.special@i8949:p11": {
+   "verdict": "same",
+   "question_phrase": "collectibles (works of art, rugs, antiques, metals ...), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property)",
+   "source_phrase": "You have an adjustment not explained earlier in this column",
+   "reason": "This page of column (f) codes and column (g) adjustments sets no definition of collectibles, section 1202 stock or section 1250 property; the line refuses on yes."
+  }
+ },
  "baseline": {
   "consumer:asset.class@i4562:p11": "a4b749cbeea7d7f3",
   "consumer:asset.class@p946:p100": "a4b749cbeea7d7f3",
@@ -383,14 +648,12 @@
   "consumer:scope.other_income@i1040gi:p40": "e00061a51c73a832",
   "consumer:scope.other_income@i1040gi:p42": "e00061a51c73a832",
   "consumer:scope.other_line16@i1040gi:p34": "98b5845b83df5d6b",
-  "consumer:scope.other_line16@i1040gi:p36": "98b5845b83df5d6b",
   "consumer:scope.other_line16@i1040gi:p40": "98b5845b83df5d6b",
   "consumer:scope.schedule1@i1040gi:p104": "5d95d3a04feb741a",
   "consumer:scope.schedule1@i1040gi:p108": "5d95d3a04feb741a",
   "consumer:scope.schedule1@i1040gi:p32": "5d95d3a04feb741a",
   "consumer:scope.schedule1@i1040gi:p40": "5d95d3a04feb741a",
   "consumer:scope.schedule1@i1040gi:p42": "5d95d3a04feb741a",
-  "consumer:scope.schedule1@i1040gi:p43": "5d95d3a04feb741a",
   "consumer:scope.schedule1@i1040s8812:p8": "5d95d3a04feb741a",
   "consumer:scveh.after_jan19@i4562:p5": "335e091048de0d8c",
   "consumer:scveh.bonus_choice@i4562:p5": "4cbcf5fcfd979826",

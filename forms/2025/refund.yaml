@@ -48,11 +48,13 @@ form:
       locator: p. 88, Line 1, "If you received a refund, credit, or offset of state or local income taxes in 2025"
   - id: refund.box8
     printed: (gate)
-    label: Is box 8 ("If checked, box 2 is trade or business income") checked on any Form 1099-G that reports these refunds?
+    label: Is any of these refunds of a state or local income tax that applies only to income from a trade or business?
     type: Bool
     expr:
       op: input
-      source: Is box 8 ("If checked, box 2 is trade or business income") checked on any Form 1099-G that reports these refunds?
+      source: Is any of these refunds a refund of a state or local income tax that applies only to income from a trade or
+        business (for example, box 8 is checked on the Form 1099-G that reports it), including such a refund for which you
+        received no Form 1099-G?
     cite:
       doc: f1099g
       locator: p. 5, Instructions for Recipient, "Box 8. If this box is checked, the amount in box 2 is attributable to an
@@ -60,18 +62,21 @@ form:
         2 on Schedule C or F (Form 1040), as appropriate"
   - id: refund.not_2024
     printed: (gate)
-    label: Is any of these refunds for a tax year other than 2024 (box 3 of Form 1099-G), or did you make your last payment
-      of 2024 estimated state or local income tax in 2025?
+    label: Is any of these refunds for a tax year other than 2024 (box 3 of Form 1099-G), or did you pay any of your 2024
+      state or local income tax in 2025?
     type: Bool
     expr:
       op: input
-      source: Is any of these refunds for a tax year other than 2024 (box 3 of Form 1099-G), or did you make your last payment
-        of 2024 estimated state or local income tax in 2025?
+      source: Is any of these refunds for a tax year other than 2024 (box 3 of Form 1099-G), or did you pay any of your 2024
+        state or local income tax in 2025 (for example a last estimated payment in January 2025, a payment with an extension,
+        or a balance due)?
     cite:
       doc: i1040gi
       locator: p. 89, Line 1, "1. You received a refund in 2025 that is for a tax year other than 2024" and "5. You made
         your last payment of 2024 estimated state or local income tax in 2025"; f1099g p. 5, Instructions for Recipient,
-        "Box 3. Identifies the tax year for which the box 2 refunds, credits, or offsets shown were made"
+        "Box 3. Identifies the tax year for which the box 2 refunds, credits, or offsets shown were made"; p525 p. 24, Recovery
+        for 2 or more years, "If you receive a refund or other recovery that is for amounts you paid in 2 or more separate
+        years, you must allocate, on a pro rata basis, the recovered amount between the years in which you paid it."
     ambiguity: amb.2025.refund_exceptions
   - id: refund.itemized
     printed: (helper)
@@ -877,8 +882,8 @@ form:
           income tax that applies exclusively to income from a trade or business"
     - when: refund.not_2024
       form: Pub. 525, Itemized Deduction Recoveries (Worksheet 2)
-      remedy: A refund for a tax year other than 2024, or a refund when your last 2024 estimated state or local tax payment
-        was made in 2025, is figured with Pub. 525 (and may reduce your 2025 deduction for taxes); that is outside this tool.
+      remedy: A refund for a tax year other than 2024, or a refund when any of your 2024 state or local income tax was paid
+        in 2025 (a last estimated payment, a payment with an extension, or a balance due), is figured with Pub. 525 (and may reduce your 2025 deduction for taxes); that is outside this tool.
       cite:
         doc: i1040gi
         locator: pp. 88–89, Line 1, "Exception. See Itemized Deduction Recoveries in Pub. 525 instead of using the State and

@@ -1,10 +1,10 @@
 {
  "bank": {
   "evaluation_failures": 0,
-  "fixtures": 1083,
+  "fixtures": 1382,
   "generated": 500,
   "partial_bases": 40,
-  "partial_records": 168,
+  "partial_records": 156,
   "seed": 20261026
  },
  "errors": [],
@@ -14,43 +14,21 @@
  "lines": [
   {
    "absent": 0,
-   "agree": 1751,
-   "candidate": "ssb.has_benefits",
-   "compared": 1751,
-   "differ": 0,
-   "handle": "ssb.has_benefits",
-   "in_scope": 1751,
-   "in_scope_agree": 1751,
-   "kinds": {},
-   "kinds_by_return": {},
-   "open_at_triage": false,
-   "project": "ssb.has_benefits",
-   "sources": {
-    "fixture": 1083,
-    "generated": 500,
-    "partial": 168
-   },
-   "status": "DISAGREE",
-   "triage": "agrees on sample",
-   "witnesses": []
-  },
-  {
-   "absent": 0,
-   "agree": 1738,
+   "agree": 2024,
    "candidate": "ssb.line6",
-   "compared": 1751,
-   "differ": 13,
+   "compared": 2038,
+   "differ": 14,
    "handle": "6",
-   "in_scope": 1541,
-   "in_scope_agree": 1530,
+   "in_scope": 1850,
+   "in_scope_agree": 1838,
    "kinds": {
     "candidate-refuses": 1,
-    "candidate-unknown": 11,
+    "candidate-unknown": 12,
     "project-refuses": 1
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-unknown": 9
+     "candidate-unknown": 10
     },
     "refused": {
      "candidate-refuses": 1,
@@ -58,21 +36,22 @@
      "project-refuses": 1
     }
    },
-   "open_at_triage": false,
+   "open_at_triage": true,
    "project": "ssb.line6",
+   "shown_when": null,
    "sources": {
-    "fixture": 1083,
+    "fixture": 1382,
     "generated": 500,
-    "partial": 168
+    "partial": 156
    },
    "status": "DISAGREE",
    "triage": "differs",
    "witnesses": [
     {
      "candidate": {
-      "input": "ssb.lump_sum",
+      "input": "ssb.pub915",
       "kind": "unknown",
-      "reason": "no input supplied for ssb.lump_sum"
+      "reason": "no input supplied for ssb.pub915"
      },
      "candidate_operands": [
       {
@@ -134,9 +113,9 @@
       {
        "ref": "s1.line20",
        "value": {
-        "input": "ssb.lump_sum",
+        "input": "ssb.pub915",
         "kind": "unknown",
-        "reason": "no input supplied for ssb.lump_sum"
+        "reason": "no input supplied for ssb.pub915"
        }
       },
       {
@@ -233,9 +212,9 @@
     },
     {
      "candidate": {
-      "input": "ssb.lump_sum",
+      "input": "ssb.pub915",
       "kind": "unknown",
-      "reason": "no input supplied for ssb.lump_sum"
+      "reason": "no input supplied for ssb.pub915"
      },
      "candidate_operands": [
       {
@@ -297,9 +276,9 @@
       {
        "ref": "s1.line20",
        "value": {
-        "input": "ssb.lump_sum",
+        "input": "ssb.pub915",
         "kind": "unknown",
-        "reason": "no input supplied for ssb.lump_sum"
+        "reason": "no input supplied for ssb.pub915"
        }
       },
       {
@@ -396,9 +375,9 @@
     },
     {
      "candidate": {
-      "input": "ssb.lump_sum",
+      "input": "ssb.pub915",
       "kind": "unknown",
-      "reason": "no input supplied for ssb.lump_sum"
+      "reason": "no input supplied for ssb.pub915"
      },
      "candidate_operands": [
       {
@@ -460,9 +439,9 @@
       {
        "ref": "s1.line20",
        "value": {
-        "input": "ssb.lump_sum",
+        "input": "ssb.pub915",
         "kind": "unknown",
-        "reason": "no input supplied for ssb.lump_sum"
+        "reason": "no input supplied for ssb.pub915"
        }
       },
       {
@@ -559,9 +538,9 @@
     },
     {
      "candidate": {
-      "input": "ssb.lump_sum",
+      "input": "ssb.pub915",
       "kind": "unknown",
-      "reason": "no input supplied for ssb.lump_sum"
+      "reason": "no input supplied for ssb.pub915"
      },
      "candidate_operands": [
       {
@@ -623,9 +602,9 @@
       {
        "ref": "s1.line20",
        "value": {
-        "input": "ssb.lump_sum",
+        "input": "ssb.pub915",
         "kind": "unknown",
-        "reason": "no input supplied for ssb.lump_sum"
+        "reason": "no input supplied for ssb.pub915"
        }
       },
       {
@@ -722,9 +701,9 @@
     },
     {
      "candidate": {
-      "input": "ssb.lump_sum",
+      "input": "ssb.pub915",
       "kind": "unknown",
-      "reason": "no input supplied for ssb.lump_sum"
+      "reason": "no input supplied for ssb.pub915"
      },
      "candidate_operands": [
       {
@@ -786,9 +765,9 @@
       {
        "ref": "s1.line20",
        "value": {
-        "input": "ssb.lump_sum",
+        "input": "ssb.pub915",
         "kind": "unknown",
-        "reason": "no input supplied for ssb.lump_sum"
+        "reason": "no input supplied for ssb.pub915"
        }
       },
       {
@@ -885,9 +864,9 @@
     },
     {
      "candidate": {
-      "input": "ssb.lump_sum",
+      "input": "ssb.pub915",
       "kind": "unknown",
-      "reason": "no input supplied for ssb.lump_sum"
+      "reason": "no input supplied for ssb.pub915"
      },
      "candidate_operands": [
       {
@@ -949,9 +928,9 @@
       {
        "ref": "s1.line20",
        "value": {
-        "input": "ssb.lump_sum",
+        "input": "ssb.pub915",
         "kind": "unknown",
-        "reason": "no input supplied for ssb.lump_sum"
+        "reason": "no input supplied for ssb.pub915"
        }
       },
       {
@@ -1382,88 +1361,37 @@
   },
   {
    "absent": 0,
-   "agree": 1751,
+   "agree": 1864,
    "candidate": "ssb.line8",
-   "compared": 1751,
-   "differ": 0,
+   "compared": 2038,
+   "differ": 174,
    "handle": "8",
-   "in_scope": 1751,
-   "in_scope_agree": 1751,
-   "kinds": {},
-   "kinds_by_return": {},
-   "open_at_triage": false,
-   "project": "ssb.line8",
-   "sources": {
-    "fixture": 1083,
-    "generated": 500,
-    "partial": 168
-   },
-   "status": "DISAGREE",
-   "triage": "agrees on sample",
-   "witnesses": []
-  },
-  {
-   "absent": 0,
-   "agree": 1751,
-   "candidate": "ssb.line10",
-   "compared": 1751,
-   "differ": 0,
-   "handle": "10",
-   "in_scope": 1751,
-   "in_scope_agree": 1751,
-   "kinds": {},
-   "kinds_by_return": {},
-   "open_at_triage": false,
-   "project": "ssb.line10",
-   "sources": {
-    "fixture": 1083,
-    "generated": 500,
-    "partial": 168
-   },
-   "status": "DISAGREE",
-   "triage": "agrees on sample",
-   "witnesses": []
-  },
-  {
-   "absent": 0,
-   "agree": 1722,
-   "candidate": "ssb.line16",
-   "compared": 1751,
-   "differ": 29,
-   "handle": "16",
-   "in_scope": 1325,
-   "in_scope_agree": 1302,
+   "in_scope": 2038,
+   "in_scope_agree": 1864,
    "kinds": {
-    "candidate-refuses": 1,
-    "project-refuses": 5,
-    "project-unknown": 23
+    "project-unknown": 46,
+    "value": 128
    },
    "kinds_by_return": {
-    "completed": {
-     "project-unknown": 10
-    },
-    "incomplete": {
-     "project-unknown": 1
-    },
     "refused": {
-     "candidate-refuses": 1,
-     "project-refuses": 5,
-     "project-unknown": 12
+     "project-unknown": 46,
+     "value": 128
     }
    },
-   "open_at_triage": false,
-   "project": "ssb.line16",
+   "open_at_triage": true,
+   "project": "ssb.line8",
+   "shown_when": null,
    "sources": {
-    "fixture": 1083,
+    "fixture": 1382,
     "generated": 500,
-    "partial": 168
+    "partial": 156
    },
    "status": "DISAGREE",
    "triage": "differs",
    "witnesses": [
     {
      "candidate": {
-      "cents": 2776440,
+      "cents": 2500000,
       "kind": "money"
      },
      "candidate_operands": [
@@ -1471,21 +1399,78 @@
        "ref": "f1040.status",
        "value": {
         "kind": "enum",
-        "value": "single"
+        "value": "mfs"
        }
       },
       {
-       "ref": "\"mfs\"",
+       "ref": "\"mfj\"",
        "value": {
         "kind": "enum",
-        "value": "mfs"
+        "value": "mfj"
        }
       },
       {
        "ref": "f1040.status",
        "value": {
         "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "ssb.h_base_single",
+       "value": {
+        "cents": 2500000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "value",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
         "value": "single"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
        }
       },
       {
@@ -1496,77 +1481,22 @@
        }
       },
       {
-       "ref": "ssb.h_line16_normal",
+       "ref": "ssb.mfs_base",
        "value": {
-        "cents": 2776440,
+        "cents": 0,
         "kind": "money"
-       }
-      }
-     ],
-     "instance": "ssb",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "i1040gi",
-       "locator": "p. 31, Line 6c"
-      },
-      "form": "Lump-Sum Election (Pub. 915)",
-      "gate": "ssb.lump_sum",
-      "kind": "refusal",
-      "remedy": "The lump-sum election method is outside this tool."
-     },
-     "project_operands": [
-      {
-       "ref": "ssb.mfs_together",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "ssb.mfs_together",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "ssb.line16_sum",
-       "value": {
-        "cite": {
-         "doc": "i1040gi",
-         "locator": "p. 31, Line 6c"
-        },
-        "form": "Lump-Sum Election (Pub. 915)",
-        "gate": "ssb.lump_sum",
-        "kind": "refusal",
-        "remedy": "The lump-sum election method is outside this tool."
        }
       }
      ],
      "project_return": "refused",
      "source": {
-      "id": "classm.eic.6",
+      "id": "classm.clcw26.3.deepseek",
       "kind": "fixture"
      }
     },
     {
      "candidate": {
-      "cents": 2660000,
+      "cents": 2500000,
       "kind": "money"
      },
      "candidate_operands": [
@@ -1574,21 +1504,78 @@
        "ref": "f1040.status",
        "value": {
         "kind": "enum",
-        "value": "single"
+        "value": "mfs"
        }
       },
       {
-       "ref": "\"mfs\"",
+       "ref": "\"mfj\"",
        "value": {
         "kind": "enum",
-        "value": "mfs"
+        "value": "mfj"
        }
       },
       {
        "ref": "f1040.status",
        "value": {
         "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "ssb.h_base_single",
+       "value": {
+        "cents": 2500000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "value",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
         "value": "single"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
        }
       },
       {
@@ -1599,99 +1586,101 @@
        }
       },
       {
-       "ref": "ssb.h_line16_normal",
+       "ref": "ssb.mfs_base",
        "value": {
-        "cents": 2660000,
+        "cents": 0,
         "kind": "money"
-       }
-      }
-     ],
-     "instance": "ssb",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "i1040gi",
-       "locator": "p. 31, Line 6c"
-      },
-      "form": "Lump-Sum Election (Pub. 915)",
-      "gate": "ssb.lump_sum",
-      "kind": "refusal",
-      "remedy": "The lump-sum election method is outside this tool."
-     },
-     "project_operands": [
-      {
-       "ref": "ssb.mfs_together",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "ssb.mfs_together",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "ssb.line16_sum",
-       "value": {
-        "cite": {
-         "doc": "i1040gi",
-         "locator": "p. 31, Line 6c"
-        },
-        "form": "Lump-Sum Election (Pub. 915)",
-        "gate": "ssb.lump_sum",
-        "kind": "refusal",
-        "remedy": "The lump-sum election method is outside this tool."
        }
       }
      ],
      "project_return": "refused",
      "source": {
-      "id": "stage10.refuse.lump_sum",
+      "id": "classm.dependent.3.deepseek",
       "kind": "fixture"
      }
     },
     {
      "candidate": {
-      "kind": "unknown",
-      "reason": "cycle at ssb.line6"
+      "cents": 2500000,
+      "kind": "money"
      },
      "candidate_operands": [
       {
        "ref": "f1040.status",
        "value": {
         "kind": "enum",
-        "value": "single"
+        "value": "mfs"
        }
       },
       {
-       "ref": "\"mfs\"",
+       "ref": "\"mfj\"",
        "value": {
         "kind": "enum",
-        "value": "mfs"
+        "value": "mfj"
        }
       },
       {
        "ref": "f1040.status",
        "value": {
         "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "ssb.h_base_single",
+       "value": {
+        "cents": 2500000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "value",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
         "value": "single"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
        }
       },
       {
@@ -1702,105 +1691,101 @@
        }
       },
       {
-       "ref": "ssb.h_line16_normal",
+       "ref": "ssb.mfs_base",
        "value": {
-        "kind": "unknown",
-        "reason": "cycle at ssb.line6"
-       }
-      }
-     ],
-     "instance": "ssb",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "i1040gi",
-       "locator": "p. 31, Lines 6a and 6b, Exception"
-      },
-      "form": "Social security benefits with an IRA deduction and retirement plan coverage (Pub. 590-A Appendix B)",
-      "gate": "ira.cov_gate",
-      "kind": "refusal",
-      "remedy": "With social security benefits, traditional IRA contributions for 2025 and you or your spouse covered by a retirement plan, the taxable benefits and the IRA deduction are figured with the worksheets in Pub. 590-A, which this tool does not prepare."
-     },
-     "project_operands": [
-      {
-       "ref": "ssb.mfs_together",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "ssb.mfs_together",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "ssb.line16_sum",
-       "value": {
-        "cite": {
-         "doc": "i1040gi",
-         "locator": "p. 31, Lines 6a and 6b, Exception"
-        },
-        "form": "Social security benefits with an IRA deduction and retirement plan coverage (Pub. 590-A Appendix B)",
-        "gate": "ira.cov_gate",
-        "kind": "refusal",
-        "remedy": "With social security benefits, traditional IRA contributions for 2025 and you or your spouse covered by a retirement plan, the taxable benefits and the IRA deduction are figured with the worksheets in Pub. 590-A, which this tool does not prepare."
+        "cents": 0,
+        "kind": "money"
        }
       }
      ],
      "project_return": "refused",
      "source": {
-      "id": "stage16.refuse.ira.ssb_covered",
+      "id": "classm.eic.2.deepseek",
       "kind": "fixture"
      }
     },
     {
      "candidate": {
-      "cite": {
-       "doc": "i1040gi",
-       "locator": "p. 98, IRA Deduction Worksheet\u2014Continued, line 12, \"Or, if you want, you can deduct a smaller amount and treat the rest as a nondeductible contribution (see Form 8606)\""
-      },
-      "form": "An IRA deduction smaller than the most you can deduct (Form 8606)",
-      "gate": "ira.less_gate",
-      "kind": "refusal",
-      "remedy": "Deducting less than the most you can and treating the rest as nondeductible is outside this tool; the tool takes the most you can deduct."
+      "cents": 2500000,
+      "kind": "money"
      },
      "candidate_operands": [
       {
        "ref": "f1040.status",
        "value": {
         "kind": "enum",
-        "value": "single"
+        "value": "mfs"
        }
       },
       {
-       "ref": "\"mfs\"",
+       "ref": "\"mfj\"",
        "value": {
         "kind": "enum",
-        "value": "mfs"
+        "value": "mfj"
        }
       },
       {
        "ref": "f1040.status",
        "value": {
         "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "ssb.h_base_single",
+       "value": {
+        "cents": 2500000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "value",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
         "value": "single"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
        }
       },
       {
@@ -1811,84 +1796,104 @@
        }
       },
       {
-       "ref": "ssb.h_line16_normal",
+       "ref": "ssb.mfs_base",
        "value": {
-        "cite": {
-         "doc": "i1040gi",
-         "locator": "p. 98, IRA Deduction Worksheet\u2014Continued, line 12, \"Or, if you want, you can deduct a smaller amount and treat the rest as a nondeductible contribution (see Form 8606)\""
-        },
-        "form": "An IRA deduction smaller than the most you can deduct (Form 8606)",
-        "gate": "ira.less_gate",
-        "kind": "refusal",
-        "remedy": "Deducting less than the most you can and treating the rest as nondeductible is outside this tool; the tool takes the most you can deduct."
-       }
-      }
-     ],
-     "instance": "ssb",
-     "kind": "candidate-refuses",
-     "project": {
-      "input": "ssb.pub915",
-      "kind": "unknown",
-      "reason": "no input supplied for ssb.pub915"
-     },
-     "project_operands": [
-      {
-       "ref": "ssb.mfs_together",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "ssb.mfs_together",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "ssb.line16_sum",
-       "value": {
-        "input": "ssb.pub915",
-        "kind": "unknown",
-        "reason": "no input supplied for ssb.pub915"
+        "cents": 0,
+        "kind": "money"
        }
       }
      ],
      "project_return": "refused",
      "source": {
-      "id": "stage16.refuse.ira.deduct_less",
+      "id": "classm.eic.8.deepseek",
       "kind": "fixture"
      }
     },
     {
      "candidate": {
-      "cents": 1359920,
+      "cents": 2500000,
       "kind": "money"
      },
      "candidate_operands": [
       {
        "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "ssb.h_base_single",
+       "value": {
+        "cents": 2500000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "value",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"single\"",
        "value": {
         "kind": "enum",
         "value": "single"
        }
       },
       {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
        "ref": "\"mfs\"",
        "value": {
         "kind": "enum",
@@ -1896,13 +1901,104 @@
        }
       },
       {
+       "ref": "ssb.mfs_base",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.retirement.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 2500000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
        "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "ssb.h_base_single",
+       "value": {
+        "cents": 2500000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "value",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"single\"",
        "value": {
         "kind": "enum",
         "value": "single"
        }
       },
       {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
        "ref": "\"mfs\"",
        "value": {
         "kind": "enum",
@@ -1910,81 +2006,97 @@
        }
       },
       {
-       "ref": "ssb.h_line16_normal",
+       "ref": "ssb.mfs_base",
        "value": {
-        "cents": 1359920,
+        "cents": 0,
         "kind": "money"
-       }
-      }
-     ],
-     "instance": "ssb",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "i1040gi",
-       "locator": "p. 31, Line 6c"
-      },
-      "form": "Lump-Sum Election (Pub. 915)",
-      "gate": "ssb.lump_sum",
-      "kind": "refusal",
-      "remedy": "The lump-sum election method is outside this tool."
-     },
-     "project_operands": [
-      {
-       "ref": "ssb.mfs_together",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "ssb.mfs_together",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "ssb.line16_sum",
-       "value": {
-        "cite": {
-         "doc": "i1040gi",
-         "locator": "p. 31, Line 6c"
-        },
-        "form": "Lump-Sum Election (Pub. 915)",
-        "gate": "ssb.lump_sum",
-        "kind": "refusal",
-        "remedy": "The lump-sum election method is outside this tool."
        }
       }
      ],
      "project_return": "refused",
      "source": {
-      "index": 131,
-      "kind": "generated",
-      "seed": 20261026
+      "id": "classm.retirement.4.deepseek",
+      "kind": "fixture"
      }
     },
     {
      "candidate": {
-      "cents": 12857608,
+      "cents": 2500000,
       "kind": "money"
      },
      "candidate_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "ssb.h_base_single",
+       "value": {
+        "cents": 2500000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "project-unknown",
+     "project": {
+      "input": "ssb.lived_apart",
+      "kind": "unknown",
+      "reason": "no input supplied for ssb.lived_apart"
+     },
+     "project_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
       {
        "ref": "f1040.status",
        "value": {
@@ -2000,78 +2112,23 @@
        }
       },
       {
-       "ref": "ssb.lived_apart",
+       "ref": "ssb.mfs_base",
        "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "ssb.h_line16_mfs",
-       "value": {
-        "cents": 12857608,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "ssb",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "i1040gi",
-       "locator": "p. 31, Line 6c"
-      },
-      "form": "Lump-Sum Election (Pub. 915)",
-      "gate": "ssb.lump_sum",
-      "kind": "refusal",
-      "remedy": "The lump-sum election method is outside this tool."
-     },
-     "project_operands": [
-      {
-       "ref": "ssb.mfs_together",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "ssb.line16_together",
-       "value": {
-        "cite": {
-         "doc": "i1040gi",
-         "locator": "p. 31, Line 6c"
-        },
-        "form": "Lump-Sum Election (Pub. 915)",
-        "gate": "ssb.lump_sum",
-        "kind": "refusal",
-        "remedy": "The lump-sum election method is outside this tool."
+        "input": "ssb.lived_apart",
+        "kind": "unknown",
+        "reason": "no input supplied for ssb.lived_apart"
        }
       }
      ],
      "project_return": "refused",
      "source": {
-      "index": 302,
-      "kind": "generated",
-      "seed": 20261026
+      "id": "classm.qdcg.3",
+      "kind": "fixture"
      }
     },
     {
      "candidate": {
-      "cents": 28912512,
+      "cents": 2500000,
       "kind": "money"
      },
      "candidate_operands": [
@@ -2079,34 +2136,34 @@
        "ref": "f1040.status",
        "value": {
         "kind": "enum",
-        "value": "mfj"
+        "value": "mfs"
        }
       },
       {
-       "ref": "\"mfs\"",
+       "ref": "\"mfj\"",
        "value": {
         "kind": "enum",
-        "value": "mfs"
+        "value": "mfj"
        }
       },
       {
        "ref": "f1040.status",
        "value": {
         "kind": "enum",
-        "value": "mfj"
-       }
-      },
-      {
-       "ref": "\"mfs\"",
-       "value": {
-        "kind": "enum",
         "value": "mfs"
        }
       },
       {
-       "ref": "ssb.h_line16_normal",
+       "ref": "\"mfj\"",
        "value": {
-        "cents": 28912512,
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "ssb.h_base_single",
+       "value": {
+        "cents": 2500000,
         "kind": "money"
        }
       }
@@ -2114,58 +2171,71 @@
      "instance": "ssb",
      "kind": "project-unknown",
      "project": {
-      "input": "ssb.lump_sum",
+      "input": "ssb.lived_apart",
       "kind": "unknown",
-      "reason": "no input supplied for ssb.lump_sum"
+      "reason": "no input supplied for ssb.lived_apart"
      },
      "project_operands": [
       {
-       "ref": "ssb.mfs_together",
+       "ref": "f1040.status",
        "value": {
-        "kind": "bool",
-        "value": false
+        "kind": "enum",
+        "value": "mfs"
        }
       },
       {
-       "ref": "true",
+       "ref": "\"single\"",
        "value": {
-        "kind": "bool",
-        "value": true
+        "kind": "enum",
+        "value": "single"
        }
       },
       {
-       "ref": "ssb.mfs_together",
+       "ref": "f1040.status",
        "value": {
-        "kind": "bool",
-        "value": false
+        "kind": "enum",
+        "value": "mfs"
        }
       },
       {
-       "ref": "false",
+       "ref": "\"mfj\"",
        "value": {
-        "kind": "bool",
-        "value": false
+        "kind": "enum",
+        "value": "mfj"
        }
       },
       {
-       "ref": "ssb.line16_sum",
+       "ref": "f1040.status",
        "value": {
-        "input": "ssb.lump_sum",
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfs\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "ssb.mfs_base",
+       "value": {
+        "input": "ssb.lived_apart",
         "kind": "unknown",
-        "reason": "no input supplied for ssb.lump_sum"
+        "reason": "no input supplied for ssb.lived_apart"
        }
       }
      ],
      "project_return": "refused",
      "source": {
-      "base": "classm.f8889.2.deepseek",
-      "kind": "partial",
-      "withheld": "ssb.lump_sum"
+      "id": "classm.tax_on_amount.2",
+      "kind": "fixture"
      }
     },
     {
      "candidate": {
-      "cents": 12057157,
+      "cents": 2500000,
       "kind": "money"
      },
      "candidate_operands": [
@@ -2173,34 +2243,34 @@
        "ref": "f1040.status",
        "value": {
         "kind": "enum",
-        "value": "mfj"
+        "value": "mfs"
        }
       },
       {
-       "ref": "\"mfs\"",
+       "ref": "\"mfj\"",
        "value": {
         "kind": "enum",
-        "value": "mfs"
+        "value": "mfj"
        }
       },
       {
        "ref": "f1040.status",
        "value": {
         "kind": "enum",
-        "value": "mfj"
-       }
-      },
-      {
-       "ref": "\"mfs\"",
-       "value": {
-        "kind": "enum",
         "value": "mfs"
        }
       },
       {
-       "ref": "ssb.h_line16_normal",
+       "ref": "\"mfj\"",
        "value": {
-        "cents": 12057157,
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "ssb.h_base_single",
+       "value": {
+        "cents": 2500000,
         "kind": "money"
        }
       }
@@ -2208,58 +2278,71 @@
      "instance": "ssb",
      "kind": "project-unknown",
      "project": {
-      "input": "ssb.lump_sum",
+      "input": "ssb.lived_apart",
       "kind": "unknown",
-      "reason": "no input supplied for ssb.lump_sum"
+      "reason": "no input supplied for ssb.lived_apart"
      },
      "project_operands": [
       {
-       "ref": "ssb.mfs_together",
+       "ref": "f1040.status",
        "value": {
-        "kind": "bool",
-        "value": false
+        "kind": "enum",
+        "value": "mfs"
        }
       },
       {
-       "ref": "true",
+       "ref": "\"single\"",
        "value": {
-        "kind": "bool",
-        "value": true
+        "kind": "enum",
+        "value": "single"
        }
       },
       {
-       "ref": "ssb.mfs_together",
+       "ref": "f1040.status",
        "value": {
-        "kind": "bool",
-        "value": false
+        "kind": "enum",
+        "value": "mfs"
        }
       },
       {
-       "ref": "false",
+       "ref": "\"mfj\"",
        "value": {
-        "kind": "bool",
-        "value": false
+        "kind": "enum",
+        "value": "mfj"
        }
       },
       {
-       "ref": "ssb.line16_sum",
+       "ref": "f1040.status",
        "value": {
-        "input": "ssb.lump_sum",
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfs\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "ssb.mfs_base",
+       "value": {
+        "input": "ssb.lived_apart",
         "kind": "unknown",
-        "reason": "no input supplied for ssb.lump_sum"
+        "reason": "no input supplied for ssb.lived_apart"
        }
       }
      ],
      "project_return": "refused",
      "source": {
-      "base": "classm.asset.1",
-      "kind": "partial",
-      "withheld": "ssb.lump_sum"
+      "id": "tcw.mfs.b1",
+      "kind": "fixture"
      }
     },
     {
      "candidate": {
-      "cents": 18604375,
+      "cents": 2500000,
       "kind": "money"
      },
      "candidate_operands": [
@@ -2267,34 +2350,34 @@
        "ref": "f1040.status",
        "value": {
         "kind": "enum",
-        "value": "mfj"
+        "value": "mfs"
        }
       },
       {
-       "ref": "\"mfs\"",
+       "ref": "\"mfj\"",
        "value": {
         "kind": "enum",
-        "value": "mfs"
+        "value": "mfj"
        }
       },
       {
        "ref": "f1040.status",
        "value": {
         "kind": "enum",
-        "value": "mfj"
-       }
-      },
-      {
-       "ref": "\"mfs\"",
-       "value": {
-        "kind": "enum",
         "value": "mfs"
        }
       },
       {
-       "ref": "ssb.h_line16_normal",
+       "ref": "\"mfj\"",
        "value": {
-        "cents": 18604375,
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "ssb.h_base_single",
+       "value": {
+        "cents": 2500000,
         "kind": "money"
        }
       }
@@ -2302,66 +2385,44 @@
      "instance": "ssb",
      "kind": "project-unknown",
      "project": {
-      "input": "ssb.lump_sum",
+      "input": "ssb.lived_apart",
       "kind": "unknown",
-      "reason": "no input supplied for ssb.lump_sum"
+      "reason": "no input supplied for ssb.lived_apart"
      },
      "project_operands": [
-      {
-       "ref": "ssb.mfs_together",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "ssb.mfs_together",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "ssb.line16_sum",
-       "value": {
-        "input": "ssb.lump_sum",
-        "kind": "unknown",
-        "reason": "no input supplied for ssb.lump_sum"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "base": "classm.f5695.2",
-      "kind": "partial",
-      "withheld": "ssb.lump_sum"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 34439535,
-      "kind": "money"
-     },
-     "candidate_operands": [
       {
        "ref": "f1040.status",
        "value": {
         "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
         "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
        }
       },
       {
@@ -2372,82 +2433,23 @@
        }
       },
       {
-       "ref": "f1040.status",
+       "ref": "ssb.mfs_base",
        "value": {
-        "kind": "enum",
-        "value": "mfj"
-       }
-      },
-      {
-       "ref": "\"mfs\"",
-       "value": {
-        "kind": "enum",
-        "value": "mfs"
-       }
-      },
-      {
-       "ref": "ssb.h_line16_normal",
-       "value": {
-        "cents": 34439535,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "ssb",
-     "kind": "project-unknown",
-     "project": {
-      "input": "ssb.lump_sum",
-      "kind": "unknown",
-      "reason": "no input supplied for ssb.lump_sum"
-     },
-     "project_operands": [
-      {
-       "ref": "ssb.mfs_together",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "ssb.mfs_together",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "ssb.line16_sum",
-       "value": {
-        "input": "ssb.lump_sum",
+        "input": "ssb.lived_apart",
         "kind": "unknown",
-        "reason": "no input supplied for ssb.lump_sum"
+        "reason": "no input supplied for ssb.lived_apart"
        }
       }
      ],
      "project_return": "refused",
      "source": {
-      "base": "classm.f5695.6",
-      "kind": "partial",
-      "withheld": "ssb.lump_sum"
+      "id": "tcw.mfs.b2",
+      "kind": "fixture"
      }
     },
     {
      "candidate": {
-      "cents": 2447813,
+      "cents": 2500000,
       "kind": "money"
      },
      "candidate_operands": [
@@ -2455,34 +2457,34 @@
        "ref": "f1040.status",
        "value": {
         "kind": "enum",
-        "value": "mfj"
+        "value": "mfs"
        }
       },
       {
-       "ref": "\"mfs\"",
+       "ref": "\"mfj\"",
        "value": {
         "kind": "enum",
-        "value": "mfs"
+        "value": "mfj"
        }
       },
       {
        "ref": "f1040.status",
        "value": {
         "kind": "enum",
-        "value": "mfj"
-       }
-      },
-      {
-       "ref": "\"mfs\"",
-       "value": {
-        "kind": "enum",
         "value": "mfs"
        }
       },
       {
-       "ref": "ssb.h_line16_normal",
+       "ref": "\"mfj\"",
        "value": {
-        "cents": 2447813,
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "ssb.h_base_single",
+       "value": {
+        "cents": 2500000,
         "kind": "money"
        }
       }
@@ -2490,58 +2492,71 @@
      "instance": "ssb",
      "kind": "project-unknown",
      "project": {
-      "input": "ssb.lump_sum",
+      "input": "ssb.lived_apart",
       "kind": "unknown",
-      "reason": "no input supplied for ssb.lump_sum"
+      "reason": "no input supplied for ssb.lived_apart"
      },
      "project_operands": [
       {
-       "ref": "ssb.mfs_together",
+       "ref": "f1040.status",
        "value": {
-        "kind": "bool",
-        "value": false
+        "kind": "enum",
+        "value": "mfs"
        }
       },
       {
-       "ref": "true",
+       "ref": "\"single\"",
        "value": {
-        "kind": "bool",
-        "value": true
+        "kind": "enum",
+        "value": "single"
        }
       },
       {
-       "ref": "ssb.mfs_together",
+       "ref": "f1040.status",
        "value": {
-        "kind": "bool",
-        "value": false
+        "kind": "enum",
+        "value": "mfs"
        }
       },
       {
-       "ref": "false",
+       "ref": "\"mfj\"",
        "value": {
-        "kind": "bool",
-        "value": false
+        "kind": "enum",
+        "value": "mfj"
        }
       },
       {
-       "ref": "ssb.line16_sum",
+       "ref": "f1040.status",
        "value": {
-        "input": "ssb.lump_sum",
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfs\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "ssb.mfs_base",
+       "value": {
+        "input": "ssb.lived_apart",
         "kind": "unknown",
-        "reason": "no input supplied for ssb.lump_sum"
+        "reason": "no input supplied for ssb.lived_apart"
        }
       }
      ],
-     "project_return": "completed",
+     "project_return": "refused",
      "source": {
-      "base": "classm.f8880.2",
-      "kind": "partial",
-      "withheld": "ssb.lump_sum"
+      "id": "tcw.mfs.b3",
+      "kind": "fixture"
      }
     },
     {
      "candidate": {
-      "cents": 23329684,
+      "cents": 2500000,
       "kind": "money"
      },
      "candidate_operands": [
@@ -2549,34 +2564,34 @@
        "ref": "f1040.status",
        "value": {
         "kind": "enum",
-        "value": "mfj"
+        "value": "mfs"
        }
       },
       {
-       "ref": "\"mfs\"",
+       "ref": "\"mfj\"",
        "value": {
         "kind": "enum",
-        "value": "mfs"
+        "value": "mfj"
        }
       },
       {
        "ref": "f1040.status",
        "value": {
         "kind": "enum",
-        "value": "mfj"
-       }
-      },
-      {
-       "ref": "\"mfs\"",
-       "value": {
-        "kind": "enum",
         "value": "mfs"
        }
       },
       {
-       "ref": "ssb.h_line16_normal",
+       "ref": "\"mfj\"",
        "value": {
-        "cents": 23329684,
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "ssb.h_base_single",
+       "value": {
+        "cents": 2500000,
         "kind": "money"
        }
       }
@@ -2584,108 +2599,1426 @@
      "instance": "ssb",
      "kind": "project-unknown",
      "project": {
-      "input": "ssb.lump_sum",
+      "input": "ssb.lived_apart",
       "kind": "unknown",
-      "reason": "no input supplied for ssb.lump_sum"
+      "reason": "no input supplied for ssb.lived_apart"
      },
      "project_operands": [
       {
-       "ref": "ssb.mfs_together",
+       "ref": "f1040.status",
        "value": {
-        "kind": "bool",
-        "value": false
+        "kind": "enum",
+        "value": "mfs"
        }
       },
       {
-       "ref": "true",
+       "ref": "\"single\"",
        "value": {
-        "kind": "bool",
-        "value": true
+        "kind": "enum",
+        "value": "single"
        }
       },
       {
-       "ref": "ssb.mfs_together",
+       "ref": "f1040.status",
        "value": {
-        "kind": "bool",
-        "value": false
+        "kind": "enum",
+        "value": "mfs"
        }
       },
       {
-       "ref": "false",
+       "ref": "\"mfj\"",
        "value": {
-        "kind": "bool",
-        "value": false
+        "kind": "enum",
+        "value": "mfj"
        }
       },
       {
-       "ref": "ssb.line16_sum",
+       "ref": "f1040.status",
        "value": {
-        "input": "ssb.lump_sum",
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfs\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "ssb.mfs_base",
+       "value": {
+        "input": "ssb.lived_apart",
         "kind": "unknown",
-        "reason": "no input supplied for ssb.lump_sum"
+        "reason": "no input supplied for ssb.lived_apart"
        }
       }
      ],
-     "project_return": "completed",
+     "project_return": "refused",
      "source": {
-      "base": "classm.f8995.2",
-      "kind": "partial",
-      "withheld": "ssb.lump_sum"
+      "id": "tcw.mfs.b4",
+      "kind": "fixture"
      }
     }
    ]
   },
   {
    "absent": 0,
-   "agree": 529,
-   "candidate": "ssb.line18",
-   "compared": 1751,
-   "differ": 1222,
-   "handle": "18",
-   "in_scope": 1462,
-   "in_scope_agree": 476,
+   "agree": 1864,
+   "candidate": "ssb.line10",
+   "compared": 2038,
+   "differ": 174,
+   "handle": "10",
+   "in_scope": 2038,
+   "in_scope_agree": 1864,
    "kinds": {
-    "candidate-refuses": 232,
-    "candidate-unknown": 986,
-    "project-refuses": 4
+    "project-unknown": 46,
+    "value": 128
    },
    "kinds_by_return": {
-    "completed": {
-     "candidate-refuses": 2,
-     "candidate-unknown": 380
-    },
-    "incomplete": {
-     "candidate-unknown": 264
-    },
     "refused": {
-     "candidate-refuses": 230,
-     "candidate-unknown": 342,
-     "project-refuses": 4
+     "project-unknown": 46,
+     "value": 128
     }
    },
-   "open_at_triage": false,
-   "project": "ssb.line18",
+   "open_at_triage": true,
+   "project": "ssb.line10",
+   "shown_when": null,
    "sources": {
-    "fixture": 1083,
+    "fixture": 1382,
     "generated": 500,
-    "partial": 168
+    "partial": 156
    },
    "status": "DISAGREE",
    "triage": "differs",
    "witnesses": [
     {
      "candidate": {
-      "input": "ssb.lump_sum",
-      "kind": "unknown",
-      "reason": "no input supplied for ssb.lump_sum"
+      "cents": 900000,
+      "kind": "money"
      },
      "candidate_operands": [
       {
-       "ref": "ssb.lump_sum",
+       "ref": "f1040.status",
        "value": {
-        "input": "ssb.lump_sum",
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "ssb.h_adjust_single",
+       "value": {
+        "cents": 900000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "value",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfs\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "ssb.mfs_adjust",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.clcw26.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 900000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "ssb.h_adjust_single",
+       "value": {
+        "cents": 900000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "value",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfs\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "ssb.mfs_adjust",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dependent.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 900000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "ssb.h_adjust_single",
+       "value": {
+        "cents": 900000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "value",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfs\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "ssb.mfs_adjust",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.eic.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 900000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "ssb.h_adjust_single",
+       "value": {
+        "cents": 900000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "value",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfs\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "ssb.mfs_adjust",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.eic.8.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 900000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "ssb.h_adjust_single",
+       "value": {
+        "cents": 900000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "value",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfs\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "ssb.mfs_adjust",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.retirement.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 900000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "ssb.h_adjust_single",
+       "value": {
+        "cents": 900000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "value",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfs\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "ssb.mfs_adjust",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.retirement.4.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 900000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "ssb.h_adjust_single",
+       "value": {
+        "cents": 900000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "project-unknown",
+     "project": {
+      "input": "ssb.lived_apart",
+      "kind": "unknown",
+      "reason": "no input supplied for ssb.lived_apart"
+     },
+     "project_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfs\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "ssb.mfs_adjust",
+       "value": {
+        "input": "ssb.lived_apart",
         "kind": "unknown",
-        "reason": "no input supplied for ssb.lump_sum"
+        "reason": "no input supplied for ssb.lived_apart"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.qdcg.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 900000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "ssb.h_adjust_single",
+       "value": {
+        "cents": 900000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "project-unknown",
+     "project": {
+      "input": "ssb.lived_apart",
+      "kind": "unknown",
+      "reason": "no input supplied for ssb.lived_apart"
+     },
+     "project_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfs\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "ssb.mfs_adjust",
+       "value": {
+        "input": "ssb.lived_apart",
+        "kind": "unknown",
+        "reason": "no input supplied for ssb.lived_apart"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.tax_on_amount.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 900000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "ssb.h_adjust_single",
+       "value": {
+        "cents": 900000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "project-unknown",
+     "project": {
+      "input": "ssb.lived_apart",
+      "kind": "unknown",
+      "reason": "no input supplied for ssb.lived_apart"
+     },
+     "project_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfs\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "ssb.mfs_adjust",
+       "value": {
+        "input": "ssb.lived_apart",
+        "kind": "unknown",
+        "reason": "no input supplied for ssb.lived_apart"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "tcw.mfs.b1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 900000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "ssb.h_adjust_single",
+       "value": {
+        "cents": 900000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "project-unknown",
+     "project": {
+      "input": "ssb.lived_apart",
+      "kind": "unknown",
+      "reason": "no input supplied for ssb.lived_apart"
+     },
+     "project_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfs\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "ssb.mfs_adjust",
+       "value": {
+        "input": "ssb.lived_apart",
+        "kind": "unknown",
+        "reason": "no input supplied for ssb.lived_apart"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "tcw.mfs.b2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 900000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "ssb.h_adjust_single",
+       "value": {
+        "cents": 900000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "project-unknown",
+     "project": {
+      "input": "ssb.lived_apart",
+      "kind": "unknown",
+      "reason": "no input supplied for ssb.lived_apart"
+     },
+     "project_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfs\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "ssb.mfs_adjust",
+       "value": {
+        "input": "ssb.lived_apart",
+        "kind": "unknown",
+        "reason": "no input supplied for ssb.lived_apart"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "tcw.mfs.b3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 900000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "ssb.h_adjust_single",
+       "value": {
+        "cents": 900000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "project-unknown",
+     "project": {
+      "input": "ssb.lived_apart",
+      "kind": "unknown",
+      "reason": "no input supplied for ssb.lived_apart"
+     },
+     "project_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfs\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "ssb.mfs_adjust",
+       "value": {
+        "input": "ssb.lived_apart",
+        "kind": "unknown",
+        "reason": "no input supplied for ssb.lived_apart"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "tcw.mfs.b4",
+      "kind": "fixture"
+     }
+    }
+   ]
+  },
+  {
+   "absent": 0,
+   "agree": 652,
+   "candidate": "ssb.line18",
+   "compared": 2038,
+   "differ": 1386,
+   "handle": "18",
+   "in_scope": 1764,
+   "in_scope_agree": 603,
+   "kinds": {
+    "candidate-refuses": 222,
+    "candidate-unknown": 1161,
+    "project-refuses": 3
+   },
+   "kinds_by_return": {
+    "completed": {
+     "candidate-refuses": 4,
+     "candidate-unknown": 514
+    },
+    "incomplete": {
+     "candidate-unknown": 271
+    },
+    "refused": {
+     "candidate-refuses": 218,
+     "candidate-unknown": 376,
+     "project-refuses": 3
+    }
+   },
+   "open_at_triage": true,
+   "project": "ssb.line18",
+   "shown_when": null,
+   "sources": {
+    "fixture": 1382,
+    "generated": 500,
+    "partial": 156
+   },
+   "status": "DISAGREE",
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "input": "ssb.pub915",
+      "kind": "unknown",
+      "reason": "no input supplied for ssb.pub915"
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.pub915",
+       "value": {
+        "input": "ssb.pub915",
+        "kind": "unknown",
+        "reason": "no input supplied for ssb.pub915"
        }
       }
      ],
@@ -2740,17 +4073,17 @@
     },
     {
      "candidate": {
-      "input": "ssb.lump_sum",
+      "input": "ssb.pub915",
       "kind": "unknown",
-      "reason": "no input supplied for ssb.lump_sum"
+      "reason": "no input supplied for ssb.pub915"
      },
      "candidate_operands": [
       {
-       "ref": "ssb.lump_sum",
+       "ref": "ssb.pub915",
        "value": {
-        "input": "ssb.lump_sum",
+        "input": "ssb.pub915",
         "kind": "unknown",
-        "reason": "no input supplied for ssb.lump_sum"
+        "reason": "no input supplied for ssb.pub915"
        }
       }
      ],
@@ -2805,17 +4138,17 @@
     },
     {
      "candidate": {
-      "input": "ssb.lump_sum",
+      "input": "ssb.pub915",
       "kind": "unknown",
-      "reason": "no input supplied for ssb.lump_sum"
+      "reason": "no input supplied for ssb.pub915"
      },
      "candidate_operands": [
       {
-       "ref": "ssb.lump_sum",
+       "ref": "ssb.pub915",
        "value": {
-        "input": "ssb.lump_sum",
+        "input": "ssb.pub915",
         "kind": "unknown",
-        "reason": "no input supplied for ssb.lump_sum"
+        "reason": "no input supplied for ssb.pub915"
        }
       }
      ],
@@ -2870,17 +4203,17 @@
     },
     {
      "candidate": {
-      "input": "ssb.lump_sum",
+      "input": "ssb.pub915",
       "kind": "unknown",
-      "reason": "no input supplied for ssb.lump_sum"
+      "reason": "no input supplied for ssb.pub915"
      },
      "candidate_operands": [
       {
-       "ref": "ssb.lump_sum",
+       "ref": "ssb.pub915",
        "value": {
-        "input": "ssb.lump_sum",
+        "input": "ssb.pub915",
         "kind": "unknown",
-        "reason": "no input supplied for ssb.lump_sum"
+        "reason": "no input supplied for ssb.pub915"
        }
       }
      ],
@@ -2935,17 +4268,17 @@
     },
     {
      "candidate": {
-      "input": "ssb.lump_sum",
+      "input": "ssb.pub915",
       "kind": "unknown",
-      "reason": "no input supplied for ssb.lump_sum"
+      "reason": "no input supplied for ssb.pub915"
      },
      "candidate_operands": [
       {
-       "ref": "ssb.lump_sum",
+       "ref": "ssb.pub915",
        "value": {
-        "input": "ssb.lump_sum",
+        "input": "ssb.pub915",
         "kind": "unknown",
-        "reason": "no input supplied for ssb.lump_sum"
+        "reason": "no input supplied for ssb.pub915"
        }
       }
      ],
@@ -3000,17 +4333,17 @@
     },
     {
      "candidate": {
-      "input": "ssb.lump_sum",
+      "input": "ssb.pub915",
       "kind": "unknown",
-      "reason": "no input supplied for ssb.lump_sum"
+      "reason": "no input supplied for ssb.pub915"
      },
      "candidate_operands": [
       {
-       "ref": "ssb.lump_sum",
+       "ref": "ssb.pub915",
        "value": {
-        "input": "ssb.lump_sum",
+        "input": "ssb.pub915",
         "kind": "unknown",
-        "reason": "no input supplied for ssb.lump_sum"
+        "reason": "no input supplied for ssb.pub915"
        }
       }
      ],
@@ -3075,6 +4408,13 @@
       "remedy": "The amounts forfeited or carried forward on line 14 are amounts included on line 12, so line 14 cannot be more than line 12. Check the amounts with your employer."
      },
      "candidate_operands": [
+      {
+       "ref": "ssb.pub915",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
       {
        "ref": "ssb.lump_sum",
        "value": {
@@ -3147,16 +4487,93 @@
     },
     {
      "candidate": {
-      "cite": {
-       "doc": "f1040sd",
-       "locator": "Schedule D (2025), Parts I\u2013III"
-      },
-      "form": "Schedule D additional source forms",
-      "gate": "sd.other_forms",
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "ssb.lump_sum",
       "kind": "refusal",
-      "remedy": "Prepare the required source forms; their gains/losses are outside the supported securities slice."
+      "remedy": "Outside candidate scope"
      },
      "candidate_operands": [
+      {
+       "ref": "ssb.pub915",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "ssb.lump_sum",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.has_benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "ssb.has_benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "ssb.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8889.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "ssb.terror_disability",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.pub915",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
       {
        "ref": "ssb.lump_sum",
        "value": {
@@ -3167,14 +4584,11 @@
       {
        "ref": "ssb.line16",
        "value": {
-        "cite": {
-         "doc": "f1040sd",
-         "locator": "Schedule D (2025), Parts I\u2013III"
-        },
-        "form": "Schedule D additional source forms",
-        "gate": "sd.other_forms",
+        "cite": null,
+        "form": "model-declared refusal",
+        "gate": "ssb.terror_disability",
         "kind": "refusal",
-        "remedy": "Prepare the required source forms; their gains/losses are outside the supported securities slice."
+        "remedy": "Outside candidate scope"
        }
       }
      ],
@@ -3230,15 +4644,22 @@
     {
      "candidate": {
       "cite": {
-       "doc": "f1040sd",
-       "locator": "Schedule D (2025), Parts I\u2013III"
+       "doc": "i2441",
+       "locator": "p. 4, Lines 4 and 5, \"Excluded as foreign earned income (including any housing exclusion) on Form 2555, line 43\""
       },
-      "form": "Capital Loss Carryover Worksheet",
-      "gate": "sd.carryover",
+      "form": "Earned income less excluded foreign earned income (Form 2441, lines 4, 5, 18 and 19; Forms 2555 and 4563)",
+      "gate": "sa.excluded_income",
       "kind": "refusal",
-      "remedy": "Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet."
+      "remedy": "Excluded foreign earned income, foreign housing and possessions income are outside this tool."
      },
      "candidate_operands": [
+      {
+       "ref": "ssb.pub915",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
       {
        "ref": "ssb.lump_sum",
        "value": {
@@ -3250,13 +4671,13 @@
        "ref": "ssb.line16",
        "value": {
         "cite": {
-         "doc": "f1040sd",
-         "locator": "Schedule D (2025), Parts I\u2013III"
+         "doc": "i2441",
+         "locator": "p. 4, Lines 4 and 5, \"Excluded as foreign earned income (including any housing exclusion) on Form 2555, line 43\""
         },
-        "form": "Capital Loss Carryover Worksheet",
-        "gate": "sd.carryover",
+        "form": "Earned income less excluded foreign earned income (Form 2441, lines 4, 5, 18 and 19; Forms 2555 and 4563)",
+        "gate": "sa.excluded_income",
         "kind": "refusal",
-        "remedy": "Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet."
+        "remedy": "Excluded foreign earned income, foreign housing and possessions income are outside this tool."
        }
       }
      ],
@@ -3312,15 +4733,22 @@
     {
      "candidate": {
       "cite": {
-       "doc": "f8949",
-       "locator": "Parts I and II, boxes G\u2013L"
+       "doc": "i4562",
+       "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
       },
-      "form": "Form 8949 digital asset boxes G\u2013L",
-      "gate": "sales[s1].digital",
+      "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+      "gate": "person[spouse].sc[biz_a].scveh[car_1].low_use",
       "kind": "refusal",
-      "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part."
+      "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
      },
      "candidate_operands": [
+      {
+       "ref": "ssb.pub915",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
       {
        "ref": "ssb.lump_sum",
        "value": {
@@ -3332,13 +4760,13 @@
        "ref": "ssb.line16",
        "value": {
         "cite": {
-         "doc": "f8949",
-         "locator": "Parts I and II, boxes G\u2013L"
+         "doc": "i4562",
+         "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
         },
-        "form": "Form 8949 digital asset boxes G\u2013L",
-        "gate": "sales[s1].digital",
+        "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+        "gate": "person[spouse].sc[biz_a].scveh[car_1].low_use",
         "kind": "refusal",
-        "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part."
+        "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
        }
       }
      ],
@@ -3387,40 +4815,24 @@
      ],
      "project_return": "refused",
      "source": {
-      "id": "classm.asset.2",
+      "id": "classm.g28.2.deepseek",
       "kind": "fixture"
      }
     },
     {
      "candidate": {
-      "cite": {
-       "doc": "i1040sb",
-       "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
-      },
-      "form": "Schedule B special treatment / Form 8815",
-      "gate": "sb.unsupported",
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "ssb.pub915",
       "kind": "refusal",
-      "remedy": "Prepare the applicable adjustment or exclusion; this tool supports unadjusted taxable interest and ordinary dividends."
+      "remedy": "Outside candidate scope"
      },
      "candidate_operands": [
       {
-       "ref": "ssb.lump_sum",
+       "ref": "ssb.pub915",
        "value": {
         "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "ssb.line16",
-       "value": {
-        "cite": {
-         "doc": "i1040sb",
-         "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
-        },
-        "form": "Schedule B special treatment / Form 8815",
-        "gate": "sb.unsupported",
-        "kind": "refusal",
-        "remedy": "Prepare the applicable adjustment or exclusion; this tool supports unadjusted taxable interest and ordinary dividends."
+        "value": true
        }
       }
      ],
@@ -3469,89 +4881,7 @@
      ],
      "project_return": "refused",
      "source": {
-      "id": "classm.asset.3",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cite": {
-       "doc": "i1040sb",
-       "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
-      },
-      "form": "Form 8938",
-      "gate": "sb.form8938",
-      "kind": "refusal",
-      "remedy": "Prepare the required foreign financial asset disclosure; this tool does not prepare Form 8938."
-     },
-     "candidate_operands": [
-      {
-       "ref": "ssb.lump_sum",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "ssb.line16",
-       "value": {
-        "cite": {
-         "doc": "i1040sb",
-         "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
-        },
-        "form": "Form 8938",
-        "gate": "sb.form8938",
-        "kind": "refusal",
-        "remedy": "Prepare the required foreign financial asset disclosure; this tool does not prepare Form 8938."
-       }
-      }
-     ],
-     "instance": "ssb",
-     "kind": "candidate-refuses",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "ssb.has_benefits",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "ssb.has_benefits",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "ssb.zero",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.carloan.1",
+      "id": "classm.clcw.2.deepseek",
       "kind": "fixture"
      }
     },
@@ -3561,6 +4891,13 @@
       "reason": "cycle at ssb.line6"
      },
      "candidate_operands": [
+      {
+       "ref": "ssb.pub915",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
       {
        "ref": "ssb.lump_sum",
        "value": {
@@ -3632,11 +4969,82 @@
     },
     {
      "candidate": {
+      "input": "ssb.pub915",
+      "kind": "unknown",
+      "reason": "no input supplied for ssb.pub915"
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.pub915",
+       "value": {
+        "input": "ssb.pub915",
+        "kind": "unknown",
+        "reason": "no input supplied for ssb.pub915"
+       }
+      }
+     ],
+     "instance": "ssb",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040sb",
+       "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+      },
+      "form": "FinCEN Form 114 (FBAR)",
+      "gate": "sb.fbar_required",
+      "kind": "refusal",
+      "remedy": "Foreign-account reporting and the required country list are outside this tool. Prepare the separate FBAR and Schedule B disclosures."
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.has_benefits",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "ssb.line18_figured",
+       "value": {
+        "cite": {
+         "doc": "i1040sb",
+         "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+        },
+        "form": "FinCEN Form 114 (FBAR)",
+        "gate": "sb.fbar_required",
+        "kind": "refusal",
+        "remedy": "Foreign-account reporting and the required country list are outside this tool. Prepare the separate FBAR and Schedule B disclosures."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.dcprov.1",
+      "kind": "partial",
+      "withheld": "ssb.pub915"
+     }
+    },
+    {
+     "candidate": {
       "input": "ssb.lump_sum",
       "kind": "unknown",
       "reason": "no input supplied for ssb.lump_sum"
      },
      "candidate_operands": [
+      {
+       "ref": "ssb.pub915",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
       {
        "ref": "ssb.lump_sum",
        "value": {
@@ -3693,142 +5101,14 @@
       "kind": "partial",
       "withheld": "ssb.lump_sum"
      }
-    },
-    {
-     "candidate": {
-      "input": "ssb.lump_sum",
-      "kind": "unknown",
-      "reason": "no input supplied for ssb.lump_sum"
-     },
-     "candidate_operands": [
-      {
-       "ref": "ssb.lump_sum",
-       "value": {
-        "input": "ssb.lump_sum",
-        "kind": "unknown",
-        "reason": "no input supplied for ssb.lump_sum"
-       }
-      }
-     ],
-     "instance": "ssb",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "i1040gi",
-       "locator": "p. 27, Exception 2; f1099r Box 7"
-      },
-      "form": "Form 8606 or another Form 1099-R code",
-      "gate": "retirement[r1].bad_code",
-      "kind": "refusal",
-      "remedy": "A Roth IRA distribution other than a qualified distribution (code Q), or a distribution code other than 7, 4, 2, G or Q, is outside this tool."
-     },
-     "project_operands": [
-      {
-       "ref": "ssb.has_benefits",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "ssb.line18_figured",
-       "value": {
-        "cite": {
-         "doc": "i1040gi",
-         "locator": "p. 27, Exception 2; f1099r Box 7"
-        },
-        "form": "Form 8606 or another Form 1099-R code",
-        "gate": "retirement[r1].bad_code",
-        "kind": "refusal",
-        "remedy": "A Roth IRA distribution other than a qualified distribution (code Q), or a distribution code other than 7, 4, 2, G or Q, is outside this tool."
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "base": "classm.otjob.1",
-      "kind": "partial",
-      "withheld": "ssb.lump_sum"
-     }
-    },
-    {
-     "candidate": {
-      "input": "ssb.lump_sum",
-      "kind": "unknown",
-      "reason": "no input supplied for ssb.lump_sum"
-     },
-     "candidate_operands": [
-      {
-       "ref": "ssb.lump_sum",
-       "value": {
-        "input": "ssb.lump_sum",
-        "kind": "unknown",
-        "reason": "no input supplied for ssb.lump_sum"
-       }
-      }
-     ],
-     "instance": "ssb",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "i1040gi",
-       "locator": "pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method"
-      },
-      "form": "Form 1099-R special cases (Forms 5329, 8606, 4972, 8915-F, Pub. 575 or 939)",
-      "gate": "retirement[r1].special",
-      "kind": "refusal",
-      "remedy": "This distribution needs a form or rule outside this tool."
-     },
-     "project_operands": [
-      {
-       "ref": "ssb.has_benefits",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "ssb.line18_figured",
-       "value": {
-        "cite": {
-         "doc": "i1040gi",
-         "locator": "pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method"
-        },
-        "form": "Form 1099-R special cases (Forms 5329, 8606, 4972, 8915-F, Pub. 575 or 939)",
-        "gate": "retirement[r1].special",
-        "kind": "refusal",
-        "remedy": "This distribution needs a form or rule outside this tool."
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "base": "classm.w2.1",
-      "kind": "partial",
-      "withheld": "ssb.lump_sum"
-     }
     }
    ]
   }
  ],
- "log_sha256_at_triage": "f81a458d9756ef2022d6f5d38c34135c77d39bada7a1a2a06067f3a4486e0cd6",
- "policy": "executable-triage-v1",
- "response_sha256": "c0bfb2bc2f1ea9a57b5e6758cab1cf5531d6e03612fcf75134612d0c6af3e5f5",
+ "log_sha256_at_triage": "c2c5b11a692b9de60aba513eed838d0e3086409c98b63c1a6530c12301f4a845",
+ "policy": "executable-triage-v2",
+ "response_sha256": "7a1a919622893df64aa4a597b686e006a92bafcd9bb995ad901bba12f58ba710",
  "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
  "state": "evaluated",
- "subject_sha256": "f175d7d2b004e32273f8a05a00bea25f741221a1fc9c0f321ed9026de9666d77"
+ "subject_sha256": "b93a8941c8753854e2828567250e8d13c5651ceddaca932ec87f5c4ec81c8d22"
 }

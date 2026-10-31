@@ -4,11 +4,46 @@
  "family": "deepseek",
  "rulings": [
   {
+   "printed": "10",
+   "restated": "Enter the amount from helper \"Year parameter sales.zero\".",
+   "model": "The IRS line is 'Qualified HSA funding distributions' and the instructions say 'Enter this amount on line 10'; the restatement always enters zero.",
+   "ruling": "Ruling: scope; f8889 p. 1, line 10. Qualified HSA funding distributions are refused by f8889.unsupported (\"a qualified HSA funding distribution from an IRA in 2025\"), as the line's cite says; zero is the value on every completed return.",
+   "context": "6e0ce3fbedf9395d0661300a38d173855326834fc50e83310bba70f6918708bb"
+  },
+  {
+   "printed": "14b",
+   "restated": "Choose — [helper \"Any HSA distributions in 2025\" = true → helper \"Distributions included on line 14a that you rolled over to another HSA\"] [helper \"Any HSA distributions in 2025\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "The IRS line says 'Distributions included on line 14a that you rolled over to another HSA. Also include any excess contributions (and the earnings on those excess contributions) included on line 14a that were withdrawn by the due date'; the restatement includes only rollovers.",
+   "ruling": "Ruling: scope; f8889 p. 1, line 14b; i8889 p. 8, Line 14b. Excess contributions withdrawn by the due date are refused by f8889.unsupported (\"a withdrawal of excess contributions or their earnings, made in 2025 or in 2026 by the due date of your 2025 return, including extensions\"), as the line's cite says, so on a completed return line 14b holds rollovers only.",
+   "context": "6e0ce3fbedf9395d0661300a38d173855326834fc50e83310bba70f6918708bb"
+  },
+  {
+   "printed": "15",
+   "restated": "Choose — [helper \"Any HSA distributions in 2025\" = true → helper \"Qualified medical expenses paid using HSA distributions\"] [helper \"Any HSA distributions in 2025\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "The IRS instructions say 'Do not include the distribution of an excess contribution taken out after the due date, including extensions, of your return even if used for qualified medical expenses'; the restatement omits that exclusion.",
+   "ruling": "Ruling: scope; i8889 p. 8, Line 15 (\"Do not include the distribution of an excess contribution taken out after the due date, including extensions, of your return even if used for qualified medical expenses\"). Any withdrawal of excess contributions made in 2025, and any earlier-year excess remaining in the HSA, is refused by f8889.unsupported, so the case cannot reach line 15 on a completed return.",
+   "context": "6e0ce3fbedf9395d0661300a38d173855326834fc50e83310bba70f6918708bb"
+  },
+  {
+   "printed": "17a",
+   "restated": "Input — Were any of your taxable HSA distributions made after you became disabled or turned age 65 (the exceptions to the additional 20% tax)?",
+   "model": "The IRS exceptions are distributions made after the account beneficiary 'Dies, Becomes disabled or Turns age 65'; the restatement lists only disabled or age 65.",
+   "ruling": "Ruling: scope; i8889 p. 9, Exceptions to the Additional 20% Tax (\"distributions made after the account beneficiary: Dies, Becomes disabled or Turns age 65\"). A distribution made after the account beneficiary's death is reported by the beneficiary or the estate; f8889.unsupported refuses \"an HSA you acquired because of the account beneficiary's death\" and \"the HSA of a person who died in 2025 whose estate is the beneficiary\", so only disability and age 65 can apply on a completed return.",
+   "context": "6e0ce3fbedf9395d0661300a38d173855326834fc50e83310bba70f6918708bb"
+  },
+  {
    "printed": "3",
    "restated": "Choose — [helper \"Eligible individual on the first day of every month of 2025\" = true → helper \"Line 3 for an eligible individual all year\"] [helper \"Eligible individual on the first day of every month of 2025\" = false → helper \"Line 3 when not an eligible individual every month\"]",
    "model": "For a filer not eligible every month who uses the last-month rule, the restatement uses a greater-of worksheet amount based on actual coverage changes; the IRS says 'You are treated as having the same HDHP coverage for the entire year as you had on the first day of the last month,' so the December 1 coverage amount governs.",
    "ruling": "Ruling: ambiguity; amb.2025.hsa_last_month_change (owner ruling after Stage 11: keep rule 4). The model says that under the last-month rule the December 1 coverage amount governs (i8889 p. 4, Line 3, rule 2: \"If the last-month rule (see Last-month rule, earlier) applies, you are considered an eligible individual for the entire year. You are treated as having the same HDHP coverage for the entire year as you had on the first day of the last month of your tax year\"); the restatement applies rule 4's greater-of when the coverage type changed (i8889 p. 4, Line 3, rule 4: \"If you were, or were considered, an eligible individual for the entire year and you changed your type of coverage during the year, enter on line 3 (see (6) in this list) the greater of: a. The limitation shown on the last line of the Line 3 Limitation Chart and Worksheet (in these instructions), or b. The maximum amount that can be contributed based on the type of HDHP coverage you had on the first day of the last month of your tax year\"), the reading the owner chose because rule 4 names a filer who \"were considered\" eligible all year. The English states that reading accurately.",
    "context": "1386054167d115015b836b860e06998f1f4b1bf06116bf87480b70de5ef20624"
+  },
+  {
+   "printed": "4",
+   "restated": "Enter the amount from helper \"Year parameter sales.zero\".",
+   "model": "The IRS line says 'Enter the amount you and your employer contributed to your Archer MSAs for 2025 from Form 8853, lines 1 and 2' and to include spouse's Archer MSA contributions in family-coverage cases; the restatement always enters zero.",
+   "ruling": "Ruling: scope; f8889 p. 1, line 4: \"Enter the amount you and your employer contributed to your Archer MSAs for 2025 from Form 8853, lines 1 and 2. If you or your spouse had family coverage under an HDHP at any time during 2025, also include any amount contributed to your spouse's Archer MSAs\". Every case with a nonzero line 4 is refused by f8889.unsupported, which since BUG-0236 asks about \"contributions by you or your employer to an Archer MSA for 2025 (Form 8853), or, if you or your spouse had family coverage under an HDHP at any time during 2025, any contribution by anyone to your spouse's Archer MSA\"; the line's cite names the refusal. Zero is the value on every completed return.",
+   "context": "6e0ce3fbedf9395d0661300a38d173855326834fc50e83310bba70f6918708bb"
   },
   {
    "printed": "7",

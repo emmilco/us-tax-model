@@ -1,10 +1,10 @@
 {
  "bank": {
   "evaluation_failures": 0,
-  "fixtures": 1083,
+  "fixtures": 1390,
   "generated": 500,
   "partial_bases": 40,
-  "partial_records": 627,
+  "partial_records": 671,
   "seed": 20261026
  },
  "errors": [],
@@ -14,33 +14,34 @@
  "lines": [
   {
    "absent": 0,
-   "agree": 944,
+   "agree": 1281,
    "candidate": "s1.line1",
-   "compared": 2210,
-   "differ": 1266,
+   "compared": 2561,
+   "differ": 1280,
    "handle": "1",
-   "in_scope": 2205,
-   "in_scope_agree": 939,
+   "in_scope": 2556,
+   "in_scope_agree": 1276,
    "kinds": {
-    "candidate-unknown": 1266
+    "candidate-unknown": 1280
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-unknown": 366
+     "candidate-unknown": 487
     },
     "incomplete": {
-     "candidate-unknown": 374
+     "candidate-unknown": 405
     },
     "refused": {
-     "candidate-unknown": 526
+     "candidate-unknown": 388
     }
    },
    "open_at_triage": true,
    "project": "s1.line1",
+   "shown_when": null,
    "sources": {
-    "fixture": 1083,
+    "fixture": 1390,
     "generated": 500,
-    "partial": 627
+    "partial": 671
    },
    "status": "DISAGREE",
    "triage": "differs",
@@ -355,36 +356,38 @@
   },
   {
    "absent": 0,
-   "agree": 1213,
+   "agree": 1391,
    "candidate": "s1.line7",
-   "compared": 2210,
-   "differ": 997,
+   "compared": 2561,
+   "differ": 1170,
    "handle": "7",
-   "in_scope": 2104,
-   "in_scope_agree": 1175,
+   "in_scope": 2491,
+   "in_scope_agree": 1384,
    "kinds": {
-    "candidate-refuses": 68,
-    "candidate-unknown": 929
+    "candidate-refuses": 63,
+    "candidate-unknown": 1107
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-refuses": 1,
-     "candidate-unknown": 269
+     "candidate-refuses": 18,
+     "candidate-unknown": 391
     },
     "incomplete": {
-     "candidate-unknown": 322
+     "candidate-refuses": 24,
+     "candidate-unknown": 391
     },
     "refused": {
-     "candidate-refuses": 67,
-     "candidate-unknown": 338
+     "candidate-refuses": 21,
+     "candidate-unknown": 325
     }
    },
    "open_at_triage": true,
    "project": "s1.line7",
+   "shown_when": null,
    "sources": {
-    "fixture": 1083,
+    "fixture": 1390,
     "generated": 500,
-    "partial": 627
+    "partial": 671
    },
    "status": "DISAGREE",
    "triage": "differs",
@@ -774,9 +777,9 @@
        }
       }
      ],
-     "project_return": "refused",
+     "project_return": "completed",
      "source": {
-      "id": "classm.carloan.1",
+      "id": "classm.f1040.6.deepseek",
       "kind": "fixture"
      }
     },
@@ -841,7 +844,7 @@
      ],
      "project_return": "completed",
      "source": {
-      "id": "classm.f2441.1",
+      "id": "classm.s8812.4.deepseek",
       "kind": "fixture"
      }
     },
@@ -907,7 +910,73 @@
      ],
      "project_return": "completed",
      "source": {
-      "id": "classm.f5695.5",
+      "id": "classm.f5695.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "s1.uc_unsupported",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "s1.uc_unsupported",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "s1",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "s1.has_uc",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "s1.has_uc",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "s1.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f5695.2",
       "kind": "fixture"
      }
     },
@@ -1108,503 +1177,33 @@
       "id": "classm.s1a.1",
       "kind": "fixture"
      }
-    },
-    {
-     "candidate": {
-      "cite": null,
-      "form": "model-declared refusal",
-      "gate": "s1.uc_unsupported",
-      "kind": "refusal",
-      "remedy": "Outside candidate scope"
-     },
-     "candidate_operands": [
-      {
-       "ref": "s1.uc_unsupported",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "s1",
-     "kind": "candidate-refuses",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "s1.has_uc",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "s1.has_uc",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "s1.zero",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.scveh.6",
-      "kind": "fixture"
-     }
     }
    ]
   },
   {
    "absent": 0,
-   "agree": 2187,
-   "candidate": "s1.line8z",
-   "compared": 2210,
-   "differ": 23,
-   "handle": "8z",
-   "in_scope": 2180,
-   "in_scope_agree": 2180,
-   "kinds": {
-    "project-refuses": 23
-   },
-   "kinds_by_return": {
-    "refused": {
-     "project-refuses": 23
-    }
-   },
-   "open_at_triage": true,
-   "project": "s1.line8z",
-   "sources": {
-    "fixture": 1083,
-    "generated": 500,
-    "partial": 627
-   },
-   "status": "DISAGREE",
-   "triage": "differs",
-   "witnesses": [
-    {
-     "candidate": {
-      "cents": 699900,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "s1.h_8z_unsupported",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "oi8z[item_a].amount",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "oi8z[item_b].amount",
-       "value": {
-        "cents": 699900,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "s1",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "i1040gi",
-       "locator": "p. 92, Line 8z, \"For more details, see Miscellaneous Income in Pub. 525\""
-      },
-      "form": "Pub. 525, Miscellaneous Income (Schedule 1, line 8z)",
-      "gate": "oi8z[item_b].figured",
-      "kind": "refusal",
-      "remedy": "Line 8z items other than RTAA payments and kickbacks are outside this tool."
-     },
-     "project_operands": [
-      {
-       "ref": "oi8z[item_a].taxable",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "oi8z[item_b].taxable",
-       "value": {
-        "cite": {
-         "doc": "i1040gi",
-         "locator": "p. 92, Line 8z, \"For more details, see Miscellaneous Income in Pub. 525\""
-        },
-        "form": "Pub. 525, Miscellaneous Income (Schedule 1, line 8z)",
-        "gate": "oi8z[item_b].figured",
-        "kind": "refusal",
-        "remedy": "Line 8z items other than RTAA payments and kickbacks are outside this tool."
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.dependent.3",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 230000,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "s1.h_8z_unsupported",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "oi8z[z0].amount",
-       "value": {
-        "cents": 150000,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "oi8z[z1].amount",
-       "value": {
-        "cents": 80000,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "s1",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "i1040gi",
-       "locator": "p. 92, Line 8z, \"For more details, see Miscellaneous Income in Pub. 525\""
-      },
-      "form": "Pub. 525, Miscellaneous Income (Schedule 1, line 8z)",
-      "gate": "oi8z[z0].figured",
-      "kind": "refusal",
-      "remedy": "Line 8z items other than RTAA payments and kickbacks are outside this tool."
-     },
-     "project_operands": [
-      {
-       "ref": "oi8z[z0].taxable",
-       "value": {
-        "cite": {
-         "doc": "i1040gi",
-         "locator": "p. 92, Line 8z, \"For more details, see Miscellaneous Income in Pub. 525\""
-        },
-        "form": "Pub. 525, Miscellaneous Income (Schedule 1, line 8z)",
-        "gate": "oi8z[z0].figured",
-        "kind": "refusal",
-        "remedy": "Line 8z items other than RTAA payments and kickbacks are outside this tool."
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "stage16.refuse.oi8z.figured",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 641754,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "s1.h_8z_unsupported",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "oi8z[item_a].amount",
-       "value": {
-        "cents": 641754,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "s1",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "i1040gi",
-       "locator": "p. 92, Line 8z, \"For more details, see Miscellaneous Income in Pub. 525\""
-      },
-      "form": "Pub. 525, Miscellaneous Income (Schedule 1, line 8z)",
-      "gate": "oi8z[item_a].figured",
-      "kind": "refusal",
-      "remedy": "Line 8z items other than RTAA payments and kickbacks are outside this tool."
-     },
-     "project_operands": [
-      {
-       "ref": "oi8z[item_a].taxable",
-       "value": {
-        "cite": {
-         "doc": "i1040gi",
-         "locator": "p. 92, Line 8z, \"For more details, see Miscellaneous Income in Pub. 525\""
-        },
-        "form": "Pub. 525, Miscellaneous Income (Schedule 1, line 8z)",
-        "gate": "oi8z[item_a].figured",
-        "kind": "refusal",
-        "remedy": "Line 8z items other than RTAA payments and kickbacks are outside this tool."
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "index": 0,
-      "kind": "generated",
-      "seed": 20261026
-     }
-    },
-    {
-     "candidate": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "s1.h_8z_unsupported",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "oi8z[item_a].amount",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "s1",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "i1040gi",
-       "locator": "p. 92, Line 8z, \"For more details, see Miscellaneous Income in Pub. 525\""
-      },
-      "form": "Pub. 525, Miscellaneous Income (Schedule 1, line 8z)",
-      "gate": "oi8z[item_a].figured",
-      "kind": "refusal",
-      "remedy": "Line 8z items other than RTAA payments and kickbacks are outside this tool."
-     },
-     "project_operands": [
-      {
-       "ref": "oi8z[item_a].taxable",
-       "value": {
-        "cite": {
-         "doc": "i1040gi",
-         "locator": "p. 92, Line 8z, \"For more details, see Miscellaneous Income in Pub. 525\""
-        },
-        "form": "Pub. 525, Miscellaneous Income (Schedule 1, line 8z)",
-        "gate": "oi8z[item_a].figured",
-        "kind": "refusal",
-        "remedy": "Line 8z items other than RTAA payments and kickbacks are outside this tool."
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "index": 28,
-      "kind": "generated",
-      "seed": 20261026
-     }
-    },
-    {
-     "candidate": {
-      "cents": 2358855,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "s1.h_8z_unsupported",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "oi8z[item_a].amount",
-       "value": {
-        "cents": 858869,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "oi8z[item_b].amount",
-       "value": {
-        "cents": 1499986,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "s1",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "i1040gi",
-       "locator": "p. 92, Line 8z, \"For more details, see Miscellaneous Income in Pub. 525\""
-      },
-      "form": "Pub. 525, Miscellaneous Income (Schedule 1, line 8z)",
-      "gate": "oi8z[item_b].figured",
-      "kind": "refusal",
-      "remedy": "Line 8z items other than RTAA payments and kickbacks are outside this tool."
-     },
-     "project_operands": [
-      {
-       "ref": "oi8z[item_a].taxable",
-       "value": {
-        "cents": 858869,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "oi8z[item_b].taxable",
-       "value": {
-        "cite": {
-         "doc": "i1040gi",
-         "locator": "p. 92, Line 8z, \"For more details, see Miscellaneous Income in Pub. 525\""
-        },
-        "form": "Pub. 525, Miscellaneous Income (Schedule 1, line 8z)",
-        "gate": "oi8z[item_b].figured",
-        "kind": "refusal",
-        "remedy": "Line 8z items other than RTAA payments and kickbacks are outside this tool."
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "index": 39,
-      "kind": "generated",
-      "seed": 20261026
-     }
-    },
-    {
-     "candidate": {
-      "cents": 787545,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "s1.h_8z_unsupported",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "oi8z[item_a].amount",
-       "value": {
-        "cents": 787545,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "oi8z[item_b].amount",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "s1",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "i1040gi",
-       "locator": "p. 92, Line 8z, \"For more details, see Miscellaneous Income in Pub. 525\""
-      },
-      "form": "Pub. 525, Miscellaneous Income (Schedule 1, line 8z)",
-      "gate": "oi8z[item_a].figured",
-      "kind": "refusal",
-      "remedy": "Line 8z items other than RTAA payments and kickbacks are outside this tool."
-     },
-     "project_operands": [
-      {
-       "ref": "oi8z[item_a].taxable",
-       "value": {
-        "cite": {
-         "doc": "i1040gi",
-         "locator": "p. 92, Line 8z, \"For more details, see Miscellaneous Income in Pub. 525\""
-        },
-        "form": "Pub. 525, Miscellaneous Income (Schedule 1, line 8z)",
-        "gate": "oi8z[item_a].figured",
-        "kind": "refusal",
-        "remedy": "Line 8z items other than RTAA payments and kickbacks are outside this tool."
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "index": 50,
-      "kind": "generated",
-      "seed": 20261026
-     }
-    }
-   ]
-  },
-  {
-   "absent": 0,
-   "agree": 934,
+   "agree": 2560,
    "candidate": "s1.line8c",
-   "compared": 2210,
-   "differ": 1276,
+   "compared": 2561,
+   "differ": 1,
    "handle": "8c",
-   "in_scope": 2209,
-   "in_scope_agree": 933,
+   "in_scope": 2559,
+   "in_scope_agree": 2558,
    "kinds": {
-    "candidate-unknown": 1276
+    "candidate-unknown": 1
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-unknown": 383
-    },
-    "incomplete": {
-     "candidate-unknown": 365
-    },
-    "refused": {
-     "candidate-unknown": 528
+     "candidate-unknown": 1
     }
    },
    "open_at_triage": true,
    "project": "s1.line8c",
+   "shown_when": null,
    "sources": {
-    "fixture": 1083,
+    "fixture": 1390,
     "generated": 500,
-    "partial": 627
+    "partial": 671
    },
    "status": "DISAGREE",
    "triage": "differs",
@@ -1617,7 +1216,21 @@
      },
      "candidate_operands": [
       {
-       "ref": "s1.cod_unsupported",
+       "ref": "s1.cod_any",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "s1.h_cod_amount",
        "value": {
         "input": "s1.cod_unsupported",
         "kind": "unknown",
@@ -1636,7 +1249,7 @@
        "ref": "s1.cod_any",
        "value": {
         "kind": "bool",
-        "value": false
+        "value": true
        }
       },
       {
@@ -1647,21 +1260,7 @@
        }
       },
       {
-       "ref": "s1.cod_any",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "s1.zero",
+       "ref": "s1.cod_figured",
        "value": {
         "cents": 0,
         "kind": "money"
@@ -1670,332 +1269,7 @@
      ],
      "project_return": "completed",
      "source": {
-      "id": "classm.f2441.1.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "s1.cod_unsupported",
-      "kind": "unknown",
-      "reason": "no input supplied for s1.cod_unsupported"
-     },
-     "candidate_operands": [
-      {
-       "ref": "s1.cod_unsupported",
-       "value": {
-        "input": "s1.cod_unsupported",
-        "kind": "unknown",
-        "reason": "no input supplied for s1.cod_unsupported"
-       }
-      }
-     ],
-     "instance": "s1",
-     "kind": "candidate-unknown",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "s1.cod_any",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "s1.cod_any",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "s1.zero",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f2441.2.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "s1.cod_unsupported",
-      "kind": "unknown",
-      "reason": "no input supplied for s1.cod_unsupported"
-     },
-     "candidate_operands": [
-      {
-       "ref": "s1.cod_unsupported",
-       "value": {
-        "input": "s1.cod_unsupported",
-        "kind": "unknown",
-        "reason": "no input supplied for s1.cod_unsupported"
-       }
-      }
-     ],
-     "instance": "s1",
-     "kind": "candidate-unknown",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "s1.cod_any",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "s1.cod_any",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "s1.zero",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f2441.3.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "s1.cod_unsupported",
-      "kind": "unknown",
-      "reason": "no input supplied for s1.cod_unsupported"
-     },
-     "candidate_operands": [
-      {
-       "ref": "s1.cod_unsupported",
-       "value": {
-        "input": "s1.cod_unsupported",
-        "kind": "unknown",
-        "reason": "no input supplied for s1.cod_unsupported"
-       }
-      }
-     ],
-     "instance": "s1",
-     "kind": "candidate-unknown",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "s1.cod_any",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "s1.cod_any",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "s1.zero",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f2441.4.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "s1.cod_unsupported",
-      "kind": "unknown",
-      "reason": "no input supplied for s1.cod_unsupported"
-     },
-     "candidate_operands": [
-      {
-       "ref": "s1.cod_unsupported",
-       "value": {
-        "input": "s1.cod_unsupported",
-        "kind": "unknown",
-        "reason": "no input supplied for s1.cod_unsupported"
-       }
-      }
-     ],
-     "instance": "s1",
-     "kind": "candidate-unknown",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "s1.cod_any",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "s1.cod_any",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "s1.zero",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f2441.5.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "s1.cod_unsupported",
-      "kind": "unknown",
-      "reason": "no input supplied for s1.cod_unsupported"
-     },
-     "candidate_operands": [
-      {
-       "ref": "s1.cod_unsupported",
-       "value": {
-        "input": "s1.cod_unsupported",
-        "kind": "unknown",
-        "reason": "no input supplied for s1.cod_unsupported"
-       }
-      }
-     ],
-     "instance": "s1",
-     "kind": "candidate-unknown",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "s1.cod_any",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "s1.cod_any",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "s1.zero",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f2441.6.deepseek",
+      "id": "stage16.regress.s1.cod_yes_zero",
       "kind": "fixture"
      }
     }
@@ -2003,36 +1277,38 @@
   },
   {
    "absent": 0,
-   "agree": 1066,
+   "agree": 1302,
    "candidate": "s1.line16",
-   "compared": 2210,
-   "differ": 1144,
+   "compared": 2561,
+   "differ": 1259,
    "handle": "16",
-   "in_scope": 1977,
-   "in_scope_agree": 1017,
+   "in_scope": 2339,
+   "in_scope_agree": 1234,
    "kinds": {
-    "candidate-refuses": 184,
-    "candidate-unknown": 960
+    "candidate-refuses": 154,
+    "candidate-unknown": 1105
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-refuses": 33,
-     "candidate-unknown": 287
+     "candidate-refuses": 54,
+     "candidate-unknown": 418
     },
     "incomplete": {
-     "candidate-unknown": 326
+     "candidate-refuses": 13,
+     "candidate-unknown": 390
     },
     "refused": {
-     "candidate-refuses": 151,
-     "candidate-unknown": 347
+     "candidate-refuses": 87,
+     "candidate-unknown": 297
     }
    },
    "open_at_triage": true,
    "project": "s1.line16",
+   "shown_when": null,
    "sources": {
-    "fixture": 1083,
+    "fixture": 1390,
     "generated": 500,
-    "partial": 627
+    "partial": 671
    },
    "status": "DISAGREE",
    "triage": "differs",
@@ -2322,9 +1598,9 @@
        }
       }
      ],
-     "project_return": "refused",
+     "project_return": "completed",
      "source": {
-      "id": "classm.f8889.2.deepseek",
+      "id": "classm.f8889.1.deepseek",
       "kind": "fixture"
      }
     },
@@ -2335,7 +1611,54 @@
        "locator": "pp. 14\u201317, chapter 3"
       },
       "form": "SIMPLE contributions above the limits",
-      "gate": "person[spouse].simple_excess",
+      "gate": "person[taxpayer].simple_excess",
+      "kind": "refusal",
+      "remedy": "Excess SIMPLE contributions are outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].plan_deduction",
+       "value": {
+        "cite": {
+         "doc": "p560",
+         "locator": "pp. 14\u201317, chapter 3"
+        },
+        "form": "SIMPLE contributions above the limits",
+        "gate": "person[taxpayer].simple_excess",
+        "kind": "refusal",
+        "remedy": "Excess SIMPLE contributions are outside this tool."
+       }
+      }
+     ],
+     "instance": "s1",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].s16",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.clcw.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "p560",
+       "locator": "pp. 14\u201317, chapter 3"
+      },
+      "form": "SIMPLE contributions above the limits",
+      "gate": "person[taxpayer].simple_excess",
       "kind": "refusal",
       "remedy": "Excess SIMPLE contributions are outside this tool."
      },
@@ -2343,12 +1666,19 @@
       {
        "ref": "person[spouse].plan_deduction",
        "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].plan_deduction",
+       "value": {
         "cite": {
          "doc": "p560",
          "locator": "pp. 14\u201317, chapter 3"
         },
         "form": "SIMPLE contributions above the limits",
-        "gate": "person[spouse].simple_excess",
+        "gate": "person[taxpayer].simple_excess",
         "kind": "refusal",
         "remedy": "Excess SIMPLE contributions are outside this tool."
        }
@@ -2376,63 +1706,9 @@
        }
       }
      ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.f8889.4.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cite": {
-       "doc": "p560",
-       "locator": "pp. 11, 39, chapter 2, Excess contributions; chapter 5"
-      },
-      "form": "SEP contributions above the maximum deductible contribution",
-      "gate": "person[spouse].sep_excess",
-      "kind": "refusal",
-      "remedy": "Excess SEP contributions are outside this tool."
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[spouse].plan_deduction",
-       "value": {
-        "cite": {
-         "doc": "p560",
-         "locator": "pp. 11, 39, chapter 2, Excess contributions; chapter 5"
-        },
-        "form": "SEP contributions above the maximum deductible contribution",
-        "gate": "person[spouse].sep_excess",
-        "kind": "refusal",
-        "remedy": "Excess SEP contributions are outside this tool."
-       }
-      }
-     ],
-     "instance": "s1",
-     "kind": "candidate-refuses",
-     "project": {
-      "cents": 144900,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[spouse].s16",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "person[taxpayer].s16",
-       "value": {
-        "cents": 144900,
-        "kind": "money"
-       }
-      }
-     ],
      "project_return": "completed",
      "source": {
-      "id": "classm.f5695.5",
+      "id": "classm.clcw26.2.deepseek",
       "kind": "fixture"
      }
     },
@@ -2486,7 +1762,7 @@
      ],
      "project_return": "completed",
      "source": {
-      "id": "classm.f8960.2",
+      "id": "classm.s2.3.deepseek",
       "kind": "fixture"
      }
     },
@@ -2494,12 +1770,12 @@
      "candidate": {
       "cite": {
        "doc": "p560",
-       "locator": "pp. 11, 39, chapter 2, Excess contributions; chapter 5"
+       "locator": "pp. 14\u201317, chapter 3"
       },
-      "form": "SEP contributions above the maximum deductible contribution",
-      "gate": "person[taxpayer].sep_excess",
+      "form": "SIMPLE contributions above the limits",
+      "gate": "person[taxpayer].simple_excess",
       "kind": "refusal",
-      "remedy": "Excess SEP contributions are outside this tool."
+      "remedy": "Excess SIMPLE contributions are outside this tool."
      },
      "candidate_operands": [
       {
@@ -2507,12 +1783,59 @@
        "value": {
         "cite": {
          "doc": "p560",
-         "locator": "pp. 11, 39, chapter 2, Excess contributions; chapter 5"
+         "locator": "pp. 14\u201317, chapter 3"
         },
-        "form": "SEP contributions above the maximum deductible contribution",
-        "gate": "person[taxpayer].sep_excess",
+        "form": "SIMPLE contributions above the limits",
+        "gate": "person[taxpayer].simple_excess",
         "kind": "refusal",
-        "remedy": "Excess SEP contributions are outside this tool."
+        "remedy": "Excess SIMPLE contributions are outside this tool."
+       }
+      }
+     ],
+     "instance": "s1",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].s16",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.s3.4.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "p560",
+       "locator": "pp. 14\u201317, chapter 3"
+      },
+      "form": "SIMPLE contributions above the limits",
+      "gate": "person[taxpayer].simple_excess",
+      "kind": "refusal",
+      "remedy": "Excess SIMPLE contributions are outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].plan_deduction",
+       "value": {
+        "cite": {
+         "doc": "p560",
+         "locator": "pp. 14\u201317, chapter 3"
+        },
+        "form": "SIMPLE contributions above the limits",
+        "gate": "person[taxpayer].simple_excess",
+        "kind": "refusal",
+        "remedy": "Excess SIMPLE contributions are outside this tool."
        }
       }
      ],
@@ -2533,703 +1856,17 @@
      ],
      "project_return": "refused",
      "source": {
-      "id": "classm.oi8z.1",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cite": {
-       "doc": "p560",
-       "locator": "pp. 11, 39, chapter 2, Excess contributions; chapter 5"
-      },
-      "form": "SEP contributions above the maximum deductible contribution",
-      "gate": "person[taxpayer].sep_excess",
-      "kind": "refusal",
-      "remedy": "Excess SEP contributions are outside this tool."
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].plan_deduction",
-       "value": {
-        "cite": {
-         "doc": "p560",
-         "locator": "pp. 11, 39, chapter 2, Excess contributions; chapter 5"
-        },
-        "form": "SEP contributions above the maximum deductible contribution",
-        "gate": "person[taxpayer].sep_excess",
-        "kind": "refusal",
-        "remedy": "Excess SEP contributions are outside this tool."
-       }
-      }
-     ],
-     "instance": "s1",
-     "kind": "candidate-refuses",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].s16",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.retirement.3",
-      "kind": "fixture"
-     }
-    }
-   ]
-  },
-  {
-   "absent": 0,
-   "agree": 2184,
-   "candidate": "s1.line20",
-   "compared": 2210,
-   "differ": 26,
-   "handle": "20",
-   "in_scope": 2198,
-   "in_scope_agree": 2179,
-   "kinds": {
-    "candidate-unknown": 19,
-    "project-refuses": 7
-   },
-   "kinds_by_return": {
-    "completed": {
-     "candidate-unknown": 16
-    },
-    "incomplete": {
-     "candidate-unknown": 2
-    },
-    "refused": {
-     "candidate-unknown": 1,
-     "project-refuses": 7
-    }
-   },
-   "open_at_triage": true,
-   "project": "s1.line20",
-   "sources": {
-    "fixture": 1083,
-    "generated": 500,
-    "partial": 627
-   },
-   "status": "DISAGREE",
-   "triage": "differs",
-   "witnesses": [
-    {
-     "candidate": {
-      "input": "refund.box8",
-      "kind": "unknown",
-      "reason": "no input supplied for refund.box8"
-     },
-     "candidate_operands": [
-      {
-       "ref": "ira.line12a",
-       "value": {
-        "input": "refund.box8",
-        "kind": "unknown",
-        "reason": "no input supplied for refund.box8"
-       }
-      },
-      {
-       "ref": "ira.line12b",
-       "value": {
-        "input": "refund.box8",
-        "kind": "unknown",
-        "reason": "no input supplied for refund.box8"
-       }
-      }
-     ],
-     "instance": "s1",
-     "kind": "candidate-unknown",
-     "project": {
-      "cents": 1383000,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "ira.line20",
-       "value": {
-        "cents": 1383000,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "stage16.ira.i1",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "refund.box8",
-      "kind": "unknown",
-      "reason": "no input supplied for refund.box8"
-     },
-     "candidate_operands": [
-      {
-       "ref": "ira.line12a",
-       "value": {
-        "input": "refund.box8",
-        "kind": "unknown",
-        "reason": "no input supplied for refund.box8"
-       }
-      },
-      {
-       "ref": "ira.line12b",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "s1",
-     "kind": "candidate-unknown",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "ira.line20",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "stage16.ira.i2",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "refund.box8",
-      "kind": "unknown",
-      "reason": "no input supplied for refund.box8"
-     },
-     "candidate_operands": [
-      {
-       "ref": "ira.line12a",
-       "value": {
-        "input": "refund.box8",
-        "kind": "unknown",
-        "reason": "no input supplied for refund.box8"
-       }
-      },
-      {
-       "ref": "ira.line12b",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "s1",
-     "kind": "candidate-unknown",
-     "project": {
-      "cents": 280000,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "ira.line20",
-       "value": {
-        "cents": 280000,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "stage16.ira.i3",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "refund.box8",
-      "kind": "unknown",
-      "reason": "no input supplied for refund.box8"
-     },
-     "candidate_operands": [
-      {
-       "ref": "ira.line12a",
-       "value": {
-        "input": "refund.box8",
-        "kind": "unknown",
-        "reason": "no input supplied for refund.box8"
-       }
-      },
-      {
-       "ref": "ira.line12b",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "s1",
-     "kind": "candidate-unknown",
-     "project": {
-      "cents": 544000,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "ira.line20",
-       "value": {
-        "cents": 544000,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "stage16.ira.i4",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "refund.box8",
-      "kind": "unknown",
-      "reason": "no input supplied for refund.box8"
-     },
-     "candidate_operands": [
-      {
-       "ref": "ira.line12a",
-       "value": {
-        "input": "refund.box8",
-        "kind": "unknown",
-        "reason": "no input supplied for refund.box8"
-       }
-      },
-      {
-       "ref": "ira.line12b",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "s1",
-     "kind": "candidate-unknown",
-     "project": {
-      "cents": 20000,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "ira.line20",
-       "value": {
-        "cents": 20000,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "stage16.ira.i5",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "s1.alimony_unsupported",
-      "kind": "unknown",
-      "reason": "no input supplied for s1.alimony_unsupported"
-     },
-     "candidate_operands": [
-      {
-       "ref": "ira.line12a",
-       "value": {
-        "input": "s1.alimony_unsupported",
-        "kind": "unknown",
-        "reason": "no input supplied for s1.alimony_unsupported"
-       }
-      },
-      {
-       "ref": "ira.line12b",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "s1",
-     "kind": "candidate-unknown",
-     "project": {
-      "cents": 400000,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "ira.line20",
-       "value": {
-        "cents": 400000,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "incomplete",
-     "source": {
-      "id": "stage16.ira.i6",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "s1.alimony_unsupported",
-      "kind": "unknown",
-      "reason": "no input supplied for s1.alimony_unsupported"
-     },
-     "candidate_operands": [
-      {
-       "ref": "ira.line12a",
-       "value": {
-        "input": "s1.alimony_unsupported",
-        "kind": "unknown",
-        "reason": "no input supplied for s1.alimony_unsupported"
-       }
-      },
-      {
-       "ref": "ira.line12b",
-       "value": {
-        "input": "s1.alimony_unsupported",
-        "kind": "unknown",
-        "reason": "no input supplied for s1.alimony_unsupported"
-       }
-      }
-     ],
-     "instance": "s1",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "i1040gi",
-       "locator": "p. 98, IRA Deduction Worksheet\u2014Continued, Caution, \"stop here and use the worksheet in Pub. 590-A to figure your IRA deduction\""
-      },
-      "form": "IRA deduction on a joint return with little compensation (Pub. 590-A worksheet)",
-      "gate": "ira.kbh_short",
-      "kind": "refusal",
-      "remedy": "On a joint return with line 10 of the IRA Deduction Worksheet under $14,000 ($15,000 or $16,000 with spouses age 50 or older), the IRA deduction is figured with the worksheet in Pub. 590-A, which this tool does not prepare."
-     },
-     "project_operands": [
-      {
-       "ref": "ira.line20",
-       "value": {
-        "cite": {
-         "doc": "i1040gi",
-         "locator": "p. 98, IRA Deduction Worksheet\u2014Continued, Caution, \"stop here and use the worksheet in Pub. 590-A to figure your IRA deduction\""
-        },
-        "form": "IRA deduction on a joint return with little compensation (Pub. 590-A worksheet)",
-        "gate": "ira.kbh_short",
-        "kind": "refusal",
-        "remedy": "On a joint return with line 10 of the IRA Deduction Worksheet under $14,000 ($15,000 or $16,000 with spouses age 50 or older), the IRA deduction is figured with the worksheet in Pub. 590-A, which this tool does not prepare."
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "stage16.refuse.ira.kbh_short",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "s1.alimony_unsupported",
-      "kind": "unknown",
-      "reason": "no input supplied for s1.alimony_unsupported"
-     },
-     "candidate_operands": [
-      {
-       "ref": "ira.line12a",
-       "value": {
-        "input": "s1.alimony_unsupported",
-        "kind": "unknown",
-        "reason": "no input supplied for s1.alimony_unsupported"
-       }
-      },
-      {
-       "ref": "ira.line12b",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "s1",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "p590a",
-       "locator": "p. 35, Excess Contributions, \"Your taxable compensation for the year\""
-      },
-      "form": "Excess IRA contributions (Form 5329 Part III, Pub. 590-A)",
-      "gate": "ira.over_comp",
-      "kind": "refusal",
-      "remedy": "The traditional and Roth IRA contributions for 2025 on this return are more than the compensation on line 10 of the IRA Deduction Worksheet, an excess contribution, which is outside this tool."
-     },
-     "project_operands": [
-      {
-       "ref": "ira.line20",
-       "value": {
-        "cite": {
-         "doc": "p590a",
-         "locator": "p. 35, Excess Contributions, \"Your taxable compensation for the year\""
-        },
-        "form": "Excess IRA contributions (Form 5329 Part III, Pub. 590-A)",
-        "gate": "ira.over_comp",
-        "kind": "refusal",
-        "remedy": "The traditional and Roth IRA contributions for 2025 on this return are more than the compensation on line 10 of the IRA Deduction Worksheet, an excess contribution, which is outside this tool."
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "stage16.refuse.ira.over_comp",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "s1.alimony_unsupported",
-      "kind": "unknown",
-      "reason": "no input supplied for s1.alimony_unsupported"
-     },
-     "candidate_operands": [
-      {
-       "ref": "ira.line12a",
-       "value": {
-        "input": "s1.alimony_unsupported",
-        "kind": "unknown",
-        "reason": "no input supplied for s1.alimony_unsupported"
-       }
-      },
-      {
-       "ref": "ira.line12b",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "s1",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "i1040gi",
-       "locator": "p. 95, Line 20, \"don\u2019t include that income on line 8 of the worksheet\" and \"Don\u2019t include any repayments of qualified reservist distributions\"; p590a p. 6, What Is Compensation?, \"certain non-tuition fellowship and stipend payments not reported to you on Form W-2 are treated as taxable compensation for IRA purposes\""
-      },
-      "form": "IRA deduction special cases (Pub. 590-A)",
-      "gate": "ira.special_gate",
-      "kind": "refusal",
-      "remedy": "Nonqualified deferred compensation in box 1 (Form W-2 box 11 or code Z, Form 1099-MISC box 15), fellowship or stipend payments not on a Form W-2, repayments of qualified reservist distributions and difficulty of care payments change the IRA compensation or contribution limits; they are outside this tool."
-     },
-     "project_operands": [
-      {
-       "ref": "ira.line20",
-       "value": {
-        "cite": {
-         "doc": "i1040gi",
-         "locator": "p. 95, Line 20, \"don\u2019t include that income on line 8 of the worksheet\" and \"Don\u2019t include any repayments of qualified reservist distributions\"; p590a p. 6, What Is Compensation?, \"certain non-tuition fellowship and stipend payments not reported to you on Form W-2 are treated as taxable compensation for IRA purposes\""
-        },
-        "form": "IRA deduction special cases (Pub. 590-A)",
-        "gate": "ira.special_gate",
-        "kind": "refusal",
-        "remedy": "Nonqualified deferred compensation in box 1 (Form W-2 box 11 or code Z, Form 1099-MISC box 15), fellowship or stipend payments not on a Form W-2, repayments of qualified reservist distributions and difficulty of care payments change the IRA compensation or contribution limits; they are outside this tool."
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "stage16.refuse.ira.special",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "refund.box8",
-      "kind": "unknown",
-      "reason": "no input supplied for refund.box8"
-     },
-     "candidate_operands": [
-      {
-       "ref": "ira.line12a",
-       "value": {
-        "input": "refund.box8",
-        "kind": "unknown",
-        "reason": "no input supplied for refund.box8"
-       }
-      },
-      {
-       "ref": "ira.line12b",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "s1",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "i1040gi",
-       "locator": "p. 96, Were You Covered by a Retirement Plan?, \"If you were covered by a retirement plan and you file Form 2555 or 8815, or you exclude employer-provided adoption benefits, see Pub. 590-A to figure the amount, if any, of your IRA deduction\""
-      },
-      "form": "IRA deduction with excluded foreign or possession income (Pub. 590-A)",
-      "gate": "ira.excl_gate",
-      "kind": "refusal",
-      "remedy": "With a retirement plan coverage and Form 2555 (or excluded income from Form 4563 or Puerto Rico), the IRA deduction is figured with Pub. 590-A, which this tool does not prepare."
-     },
-     "project_operands": [
-      {
-       "ref": "ira.line20",
-       "value": {
-        "cite": {
-         "doc": "i1040gi",
-         "locator": "p. 96, Were You Covered by a Retirement Plan?, \"If you were covered by a retirement plan and you file Form 2555 or 8815, or you exclude employer-provided adoption benefits, see Pub. 590-A to figure the amount, if any, of your IRA deduction\""
-        },
-        "form": "IRA deduction with excluded foreign or possession income (Pub. 590-A)",
-        "gate": "ira.excl_gate",
-        "kind": "refusal",
-        "remedy": "With a retirement plan coverage and Form 2555 (or excluded income from Form 4563 or Puerto Rico), the IRA deduction is figured with Pub. 590-A, which this tool does not prepare."
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "stage16.refuse.ira.excluded_income",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "s1.alimony_unsupported",
-      "kind": "unknown",
-      "reason": "no input supplied for s1.alimony_unsupported"
-     },
-     "candidate_operands": [
-      {
-       "ref": "ira.line12a",
-       "value": {
-        "input": "s1.alimony_unsupported",
-        "kind": "unknown",
-        "reason": "no input supplied for s1.alimony_unsupported"
-       }
-      },
-      {
-       "ref": "ira.line12b",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "s1",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "i1040gi",
-       "locator": "p. 98, IRA Deduction Worksheet\u2014Continued, line 8, \"Nontaxable combat pay. This amount should be reported in box 12 of Form W-2 with code Q or reported on Form 1040, line 1i\""
-      },
-      "form": "Nontaxable combat pay in IRA compensation (IRA Deduction Worksheet, line 8)",
-      "gate": "ira.combat_gate",
-      "kind": "refusal",
-      "remedy": "Nontaxable combat pay counts as compensation for the IRA deduction; it is outside this tool."
-     },
-     "project_operands": [
-      {
-       "ref": "ira.line20",
-       "value": {
-        "cite": {
-         "doc": "i1040gi",
-         "locator": "p. 98, IRA Deduction Worksheet\u2014Continued, line 8, \"Nontaxable combat pay. This amount should be reported in box 12 of Form W-2 with code Q or reported on Form 1040, line 1i\""
-        },
-        "form": "Nontaxable combat pay in IRA compensation (IRA Deduction Worksheet, line 8)",
-        "gate": "ira.combat_gate",
-        "kind": "refusal",
-        "remedy": "Nontaxable combat pay counts as compensation for the IRA deduction; it is outside this tool."
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "stage16.refuse.ira.combat_pay",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "s1.alimony_unsupported",
-      "kind": "unknown",
-      "reason": "no input supplied for s1.alimony_unsupported"
-     },
-     "candidate_operands": [
-      {
-       "ref": "ira.line12a",
-       "value": {
-        "input": "s1.alimony_unsupported",
-        "kind": "unknown",
-        "reason": "no input supplied for s1.alimony_unsupported"
-       }
-      },
-      {
-       "ref": "ira.line12b",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "s1",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "p590a",
-       "locator": "p. 15, Both contributions for 2025 and distributions in 2025, \"you must figure the taxable part of the traditional IRA distribution before you can figure your modified AGI\""
-      },
-      "form": "Nondeductible IRA contributions with a 2025 distribution or conversion (Form 8606 lines 4 to 13, Pub. 590-B)",
-      "gate": "person[taxpayer].ira_dist_gate",
-      "kind": "refusal",
-      "remedy": "With nondeductible traditional IRA contributions for 2025 and a 2025 traditional IRA distribution or Roth conversion, the taxable part of the distribution is figured on Form 8606 lines 4 to 13 (Pub. 590-B Worksheet 1-1), which this tool does not prepare."
-     },
-     "project_operands": [
-      {
-       "ref": "ira.line20",
-       "value": {
-        "cite": {
-         "doc": "p590a",
-         "locator": "p. 15, Both contributions for 2025 and distributions in 2025, \"you must figure the taxable part of the traditional IRA distribution before you can figure your modified AGI\""
-        },
-        "form": "Nondeductible IRA contributions with a 2025 distribution or conversion (Form 8606 lines 4 to 13, Pub. 590-B)",
-        "gate": "person[taxpayer].ira_dist_gate",
-        "kind": "refusal",
-        "remedy": "With nondeductible traditional IRA contributions for 2025 and a 2025 traditional IRA distribution or Roth conversion, the taxable part of the distribution is figured on Form 8606 lines 4 to 13 (Pub. 590-B Worksheet 1-1), which this tool does not prepare."
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "stage16.refuse.ira.dist",
+      "id": "classm.f8962.1.deepseek",
       "kind": "fixture"
      }
     }
    ]
   }
  ],
- "log_sha256_at_triage": "c0b0e82271769d32fc3440978d22cd118c28eef3f5f5297e8eb3944d09220887",
- "policy": "executable-triage-v1",
- "response_sha256": "545579e30c3faf56a705c51108de68673c004bf03b6a494cb4cca936d4309f9f",
+ "log_sha256_at_triage": "b23221d9480ec48af2d1569d02778bbeb8bc4e6417730359899f9d96f9d12b48",
+ "policy": "executable-triage-v2",
+ "response_sha256": "3ccd12dac699bc85511092f44b09731a4c31580c659e4f21f1a9b60188491c30",
  "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
  "state": "evaluated",
- "subject_sha256": "87c0618840f1d0ccee45e889b3be34a1580db32b6141c946071a7e7260c4f2a2"
+ "subject_sha256": "e15544958f8e3201ba94947b9578eb328941595fbb62db4c7c24a7212a9a2661"
 }
